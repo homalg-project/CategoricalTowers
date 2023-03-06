@@ -128,7 +128,7 @@
   [33X[1;0Y[29X[2XIsFiniteStrictCoproductCocompletion[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of a finite coproduct cocompletion category.[133X
+  [33X[0;0YThe [5XGAP[105X category of finite coproduct cocompletion categories.[133X
   
   [1X1.3-2 IsCellInFiniteStrictCoproductCocompletion[101X
   
@@ -311,7 +311,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
-    [4X[28Xwith the above associated map[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XLUC := LazyCategory( UC );[127X[104X
     [4X[28XLazyCategory([128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )[128X[104X
@@ -425,7 +425,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )[128X[104X
-    [4X[28Xwith the above associated map[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xid_a := IdentityMorphism( C.a );[127X[104X
     [4X[28X(a)-[(a)]->(a)[128X[104X
     [4X[25Xgap>[125X [27Xdelta = CocartesianCodiagonal( a, 2 );[127X[104X
@@ -522,7 +522,7 @@
     [4X[28XAn object in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
-    [4X[25Xgap>[125X [27XUniversalMorphismFromInitialObject( t ) = UniversalMorphismIntoTerminalObject( i );[127X[104X
+    [4X[25Xgap>[125X [27XUniversalMorphismFromInitialObject(t) = UniversalMorphismIntoTerminalObject(i);[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA := [ 3, [ "A0" / T, "A1" / T, "A2" / T ] ] / sFinSets;[127X[104X
     [4X[28X<An object in[128X[104X
@@ -557,7 +557,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
-    [4X[28Xwith the above associated map[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XpiB := ProjectionInFactorOfDirectProduct( [ A, B ], 2 );[127X[104X
     [4X[28X<A morphism in[128X[104X
     [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
@@ -573,7 +573,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
-    [4X[28Xwith the above associated map[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XIsOne( UniversalMorphismIntoDirectProduct( [ piA, piB ] ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XI := HomStructure( sFinSets );[127X[104X
@@ -640,7 +640,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
-    [4X[28Xwith the above associated map[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xgamma := HomStructure( A, B, homAB[2] );[127X[104X
     [4X[28X<A morphism in[128X[104X
     [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
@@ -651,7 +651,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
-    [4X[28Xwith the above associated map[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xhom_alpha_gamma := HomStructure( alpha, gamma );[127X[104X
     [4X[28X<A morphism in[128X[104X
     [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
@@ -670,7 +670,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
-    [4X[28Xwith the above associated map[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( hom_alpha_gamma );[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X

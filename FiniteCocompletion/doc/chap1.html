@@ -15,7 +15,7 @@
 <body class="chap1"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
 
@@ -199,7 +199,7 @@ true
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFiniteStrictCoproductCocompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of a finite coproduct cocompletion category.</p>
+<p>The <strong class="pkg">GAP</strong> category of finite coproduct cocompletion categories.</p>
 
 <p><a id="X7DD4900682F224AF" name="X7DD4900682F224AF"></a></p>
 
@@ -393,7 +393,7 @@ true
 
 A morphism in
 FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
-with the above associated map
+given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LUC := LazyCategory( UC );</span>
 LazyCategory(
 FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
@@ -509,7 +509,7 @@ true
 
 A morphism in
 FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
-with the above associated map
+given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_a := IdentityMorphism( C.a );</span>
 (a)-[(a)]-&gt;(a)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta = CocartesianCodiagonal( a, 2 );</span>
@@ -608,7 +608,7 @@ true
 An object in
 FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
 given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismFromInitialObject( t ) = UniversalMorphismIntoTerminalObject( i );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismFromInitialObject(t) = UniversalMorphismIntoTerminalObject(i);</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := [ 3, [ "A0" / T, "A1" / T, "A2" / T ] ] / sFinSets;</span>
 &lt;An object in
@@ -643,7 +643,7 @@ given by the above data
 
 A morphism in
 FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
-with the above associated map
+given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">piB := ProjectionInFactorOfDirectProduct( [ A, B ], 2 );</span>
 &lt;A morphism in
  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;
@@ -659,7 +659,7 @@ with the above associated map
 
 A morphism in
 FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
-with the above associated map
+given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( UniversalMorphismIntoDirectProduct( [ piA, piB ] ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := HomStructure( sFinSets );</span>
@@ -726,7 +726,7 @@ true
 
 A morphism in
 FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
-with the above associated map
+given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := HomStructure( A, B, homAB[2] );</span>
 &lt;A morphism in
  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;
@@ -737,7 +737,7 @@ with the above associated map
 
 A morphism in
 FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
-with the above associated map
+given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_alpha_gamma := HomStructure( alpha, gamma );</span>
 &lt;A morphism in
  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;
@@ -756,7 +756,7 @@ with the above associated map
 
 A morphism in
 FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
-with the above associated map
+given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( hom_alpha_gamma );</span>
 true
 </pre></div>
@@ -921,7 +921,7 @@ true
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

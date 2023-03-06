@@ -128,7 +128,7 @@
   [33X[1;0Y[29X[2XIsFiniteStrictProductCompletion[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of a finite product completion category.[133X
+  [33X[0;0YThe [5XGAP[105X category of finite product completion categories.[133X
   
   [1X3.3-2 IsCellInFiniteStrictProductCompletion[101X
   
@@ -219,7 +219,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
-    [4X[28Xwith the above associated map[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xgamma = CartesianBraiding( a, b );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLPC := LazyCategory( PC );[127X[104X
@@ -338,7 +338,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )[128X[104X
-    [4X[28Xwith the above associated map[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xid_a := IdentityMorphism( C.a );[127X[104X
     [4X[28X(a)-[(a)]->(a)[128X[104X
     [4X[25Xgap>[125X [27Xdelta = CartesianDiagonal( a, 2 );[127X[104X

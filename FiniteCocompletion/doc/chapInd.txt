@@ -6,19 +6,35 @@
       for IsObjectInSkeletalFinSets 2.1-2 
   [2XCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[102X 2.2-1 
   [2XCoYonedaEmbeddingOfUnderlyingCategory[102X, for IsFiniteStrictProductCompletion 3.1-4 
+  [2XCreateColimitDiagram[102X, for IsFiniteColimitCocompletionWithStrictCoproducts, IsList 7.3-2 
+  [2XCreateMorphismOfColimitDiagrams[102X, for IsObjectInFiniteColimitCocompletionWithStrictCoproducts, IsList 7.3-3 
+  [2XDefiningCoequalizerPair[102X, for IsObjectInFiniteCoequalizerClosureOfCocartesianCategory 6.3-1 
+  [2XDefiningPairOfMorphismBetweenCoequalizerPairs[102X, for IsMorphismInFiniteCoequalizerClosureOfCocartesianCategory 6.3-2 
+  [2XDefiningPairOfQuiverInCategory[102X, for IsObjectInFiniteColimitCocompletionWithStrictCoproducts 7.2-1 
+  [2XDefiningPairOfQuiverMorphismInCategory[102X, for IsMorphismInFiniteColimitCocompletionWithStrictCoproducts 7.2-2 
   [2XExtendFunctorToFiniteStrictCoproductCocompletion[102X, for IsCapFunctor 1.1-5 
   [2XExtendFunctorToFiniteStrictProductCompletion[102X, for IsCapFunctor 3.1-5 
+  [2XFiniteCoequalizerClosureOfCocartesianCategory[102X, for IsCapCategory 6.4-1 
+  [2XFiniteColimitCocompletionWithStrictCoproducts[102X, for IsCapCategory 7.3-1 
   [2XFiniteStrictCoproductCocompletion[102X, for IsCapCategory 1.2-1 
   [2XFiniteStrictProductCompletion[102X, for IsCapCategory 3.2-1 
   [2XIsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[102X, for IsCapCategory 2.3-1 
+  [2XIsCellInFiniteCoequalizerClosureOfCocartesianCategory[102X, for IsCapCategoryCell 6.1-2 
+  [2XIsCellInFiniteColimitCocompletionWithStrictCoproducts[102X, for IsCapCategoryCell 7.1-2 
   [2XIsCellInFiniteStrictCoproductCocompletion[102X, for IsCapCategoryCell 1.3-2 
   [2XIsCellInFiniteStrictProductCompletion[102X, for IsCapCategoryCell 3.3-2 
   [2XIsCellSkeletalFinSets[102X, for IsCapCategoryCell 2.3-2 
+  [2XIsFiniteCoequalizerClosureOfCocartesianCategory[102X, for IsCapCategory 6.1-1 
+  [2XIsFiniteColimitCocompletionWithStrictCoproducts[102X, for IsCapCategory 7.1-1 
   [2XIsFiniteStrictCoproductCocompletion[102X, for IsCapCategory 1.3-1 
   [2XIsFiniteStrictProductCompletion[102X, for IsCapCategory 3.3-1 
+  [2XIsMorphismInFiniteCoequalizerClosureOfCocartesianCategory[102X, for IsCellInFiniteCoequalizerClosureOfCocartesianCategory and IsCapCategoryMorphism 6.1-4 
+  [2XIsMorphismInFiniteColimitCocompletionWithStrictCoproducts[102X, for IsCellInFiniteColimitCocompletionWithStrictCoproducts andIsCapCategoryMorphism 7.1-4 
   [2XIsMorphismInFiniteStrictCoproductCocompletion[102X, for IsCellInFiniteStrictCoproductCocompletion and IsCapCategoryMorphism 1.3-4 
   [2XIsMorphismInFiniteStrictProductCompletion[102X, for IsCellInFiniteStrictProductCompletion and IsCapCategoryMorphism 3.3-4 
   [2XIsMorphismInSkeletalFinSets[102X, for IsCellSkeletalFinSets and IsCapCategoryMorphism 2.3-4 
+  [2XIsObjectInFiniteCoequalizerClosureOfCocartesianCategory[102X, for IsCellInFiniteCoequalizerClosureOfCocartesianCategory and IsCapCategoryObject 6.1-3 
+  [2XIsObjectInFiniteColimitCocompletionWithStrictCoproducts[102X, for IsCellInFiniteColimitCocompletionWithStrictCoproducts andIsCapCategoryObject 7.1-3 
   [2XIsObjectInFiniteStrictCoproductCocompletion[102X, for IsCellInFiniteStrictCoproductCocompletion and IsCapCategoryObject 1.3-3 
   [2XIsObjectInFiniteStrictProductCompletion[102X, for IsCellInFiniteStrictProductCompletion and IsCapCategoryObject 3.3-3 
   [2XIsObjectInSkeletalFinSets[102X, for IsCellSkeletalFinSets and IsCapCategoryObject 2.3-3 
@@ -27,6 +43,7 @@
       for IsObjectInFiniteStrictProductCompletion 3.1-1 
   [2XPairOfLists[102X, for IsMorphismInFiniteStrictCoproductCocompletion 1.1-2 
       for IsMorphismInFiniteStrictProductCompletion 3.1-2 
+  [2XQuiverOfCategoryOfQuivers[102X 6.2-1 
   [2XSkeletalFinSetsAsFreeElementaryToposOfInitialCategory[102X 2.2-2 
   [2XUnderlyingCategory[102X, for IsFiniteStrictCoproductCocompletion 1.1-3 
       for IsFiniteStrictProductCompletion 3.1-3 
