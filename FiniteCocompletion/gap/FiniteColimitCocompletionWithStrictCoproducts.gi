@@ -5,11 +5,11 @@
 #
 
 ##
-InstallOtherMethodForCompilerForCAP( CreateColimitDiagram,
+InstallOtherMethodForCompilerForCAP( CreateColimitQuiver,
         "for the finite colimit cocompletion of a category and a pair",
         [ IsFiniteColimitCocompletionWithStrictCoproducts, IsList ],
         
-  function ( category_of_quivers, pair )
+  function ( ColimitQuivers, pair )
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0,
@@ -21,22 +21,22 @@ InstallOtherMethodForCompilerForCAP( CreateColimitDiagram,
             ForAll( pair[2], e -> IsInt( e[1] ) and IsInt( e[3] ) ) and
             ForAll( pair[2], e -> IsCapCategoryMorphism( e[2] ) ) );
     
-    return CreateCapCategoryObjectWithAttributes( category_of_quivers,
-                   DefiningPairOfQuiverInCategory, pair );
+    return CreateCapCategoryObjectWithAttributes( ColimitQuivers,
+                   DefiningPairOfColimitQuiver, pair );
     
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( CreateMorphismOfColimitDiagrams,
+InstallOtherMethodForCompilerForCAP( CreateMorphismOfColimitQuivers,
         "for a category of quivers, two objects in a category of quivers, and a pair",
         [ IsFiniteColimitCocompletionWithStrictCoproducts, IsObjectInFiniteColimitCocompletionWithStrictCoproducts, IsList, IsObjectInFiniteColimitCocompletionWithStrictCoproducts ],
         
-  function ( category_of_quivers, source, images, range )
+  function ( ColimitQuivers, source, images, range )
     
-    return CreateCapCategoryMorphismWithAttributes( category_of_quivers,
+    return CreateCapCategoryMorphismWithAttributes( ColimitQuivers,
                    source,
                    range,
-                   DefiningPairOfQuiverMorphismInCategory, images );
+                   DefiningPairOfColimitQuiverMorphism, images );
     
 end );
 
@@ -51,19 +51,19 @@ InstallMethod( FiniteColimitCocompletionWithStrictCoproducts,
           F, UC, Coeq,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
-          Quivers;
+          ColimitQuivers;
     
     ##
-    object_constructor := CreateColimitDiagram;
+    object_constructor := CreateColimitQuiver;
     
     ##
-    object_datum := { Quivers, o } -> DefiningPairOfQuiverInCategory( o );
+    object_datum := { ColimitQuivers, o } -> DefiningPairOfColimitQuiver( o );
     
     ##
-    morphism_constructor := CreateMorphismOfColimitDiagrams;
+    morphism_constructor := CreateMorphismOfColimitQuivers;
     
     ##
-    morphism_datum := { Quivers, m } -> DefiningPairOfQuiverMorphismInCategory( m );
+    morphism_datum := { ColimitQuivers, m } -> DefiningPairOfColimitQuiverMorphism( m );
     
     ## building the categorical tower:
     F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := SkeletalFinSets, FinalizeCategory := true );
@@ -71,15 +71,15 @@ InstallMethod( FiniteColimitCocompletionWithStrictCoproducts,
     F := CategoryFromDataTables( F : FinalizeCategory := true );
     
     UC := FiniteStrictCoproductCocompletion( C : FinalizeCategory := true );
-
+    
     Coeq := FiniteCoequalizerClosureOfCocartesianCategory( UC : FinalizeCategory := true );
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
-      function( Quivers, pair )
+      function( ColimitQuivers, pair )
         local Coeq, PSh, UC, C, objects, decorated_morphisms, V, A, map_s, mor_s, s, map_t, mor_t, t;
         
-        Coeq := ModelingCategory( Quivers );
+        Coeq := ModelingCategory( ColimitQuivers );
         
         PSh := ModelingCategory( Coeq );
         
@@ -121,10 +121,10 @@ InstallMethod( FiniteColimitCocompletionWithStrictCoproducts,
     
     ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
-      function( Quivers, obj )
+      function( ColimitQuivers, obj )
         local Coeq, PSh, UC, pair, s, t, V, objects, s_datum, t_datum, decorated_morphisms;
         
-        Coeq := ModelingCategory( Quivers );
+        Coeq := ModelingCategory( ColimitQuivers );
         
         PSh := ModelingCategory( Coeq );
         
@@ -153,10 +153,10 @@ InstallMethod( FiniteColimitCocompletionWithStrictCoproducts,
     
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
-      function( Quivers, source, images, range )
+      function( ColimitQuivers, source, images, range )
         local Coeq, PSh, UC, source_datum, range_datum, V, source_s_datum, A;
         
-        Coeq := ModelingCategory( Quivers );
+        Coeq := ModelingCategory( ColimitQuivers );
         
         PSh := ModelingCategory( Coeq );
         
@@ -187,10 +187,10 @@ InstallMethod( FiniteColimitCocompletionWithStrictCoproducts,
     
     ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
-      function( Quivers, mor )
+      function( ColimitQuivers, mor )
         local Coeq, PSh, UC, mor_datum, V_datum, A_datum;
         
-        Coeq := ModelingCategory( Quivers );
+        Coeq := ModelingCategory( ColimitQuivers );
         
         PSh := ModelingCategory( Coeq );
         
@@ -209,35 +209,35 @@ InstallMethod( FiniteColimitCocompletionWithStrictCoproducts,
     ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
-    Quivers := WrapperCategory( Coeq,
-                       rec( name := Concatenation( "FiniteColimitCocompletionWithStrictCoproducts( ", Name( C ), " )" ),
-                            category_filter := IsFiniteColimitCocompletionWithStrictCoproducts,
-                            category_object_filter := IsObjectInFiniteColimitCocompletionWithStrictCoproducts,
-                            category_morphism_filter := IsMorphismInFiniteColimitCocompletionWithStrictCoproducts,
-                            object_constructor := object_constructor,
-                            object_datum := object_datum,
-                            morphism_datum := morphism_datum,
-                            morphism_constructor := morphism_constructor,
-                            modeling_tower_object_constructor := modeling_tower_object_constructor,
-                            modeling_tower_object_datum := modeling_tower_object_datum,
-                            modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
-                            modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                            only_primitive_operations := true )
-                       : FinalizeCategory := false );
+    ColimitQuivers := WrapperCategory( Coeq,
+                              rec( name := Concatenation( "FiniteColimitCocompletionWithStrictCoproducts( ", Name( C ), " )" ),
+                                   category_filter := IsFiniteColimitCocompletionWithStrictCoproducts,
+                                   category_object_filter := IsObjectInFiniteColimitCocompletionWithStrictCoproducts,
+                                   category_morphism_filter := IsMorphismInFiniteColimitCocompletionWithStrictCoproducts,
+                                   object_constructor := object_constructor,
+                                   object_datum := object_datum,
+                                   morphism_datum := morphism_datum,
+                                   morphism_constructor := morphism_constructor,
+                                   modeling_tower_object_constructor := modeling_tower_object_constructor,
+                                   modeling_tower_object_datum := modeling_tower_object_datum,
+                                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+                                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+                                   only_primitive_operations := true )
+                              : FinalizeCategory := false );
     
-    SetUnderlyingCategory( Quivers, C );
+    SetUnderlyingCategory( ColimitQuivers, C );
     
-    Quivers!.compiler_hints.category_attribute_names :=
-           [ "ModelingCategory",
-            ];
+    ColimitQuivers!.compiler_hints.category_attribute_names :=
+      [ "ModelingCategory",
+        ];
     
     if ValueOption( "no_precompiled_code" ) <> true then
         
     fi;
     
-    Finalize( Quivers );
+    Finalize( ColimitQuivers );
     
-    return Quivers;
+    return ColimitQuivers;
     
 end );
 

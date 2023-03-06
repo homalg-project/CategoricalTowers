@@ -2472,7 +2472,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     
     decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], triples ) );
     
-    return CreateColimitDiagram( FiniteColimitCocompletionWithStrictCoproducts( B ),
+    return CreateColimitQuiver( FiniteColimitCocompletionWithStrictCoproducts( B ),
                    Pair( objects,
                          decorated_morphisms ) );
     
@@ -2527,7 +2527,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
     
     map_of_decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], imgs ) );
     
-    return CreateMorphismOfColimitDiagrams( FiniteColimitCocompletionWithStrictCoproducts( B ),
+    return CreateMorphismOfColimitQuivers( FiniteColimitCocompletionWithStrictCoproducts( B ),
                    source,
                    Pair( map_of_objects,
                          map_of_decorated_morphisms ),
