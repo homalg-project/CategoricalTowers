@@ -15,23 +15,24 @@ source_presheaf := ModelingObject( Cbar,
                            ModelingObject( FinBouquets, source_bouquet ) );
 #! <An object in
 #!  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>
-source_quiver := CoYonedaLemmaOnObjects( source_presheaf );
+source_colimit_quiver := CoYonedaLemmaOnObjects( source_presheaf );
 #! <An object in FiniteColimitCocompletionWithStrictCoproducts(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
-Display( source_quiver );
+Display( source_colimit_quiver );
 #! [ [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)> ],
 #!   [ [ 0, (P)-[(b)]->(L), 3 ], [ 0, (P)-[(b)]->(L), 4 ],
 #!     [ 1, (P)-[(b)]->(L), 5 ] ] ]
 #! 
 #! An object in FiniteColimitCocompletionWithStrictCoproducts(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
-IsWellDefined( source_quiver );
+IsWellDefined( source_colimit_quiver );
 #! true
-s_coeq_pair := ModelingObject( CapCategory( source_quiver ), source_quiver );
+source_coeq_pair :=
+  ModelingObject( CapCategory( source_colimit_quiver ), source_colimit_quiver );
 #! <An object in FiniteCoequalizerClosureOfCocartesianCategory(
 #!  FiniteStrictCoproductCocompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
-Display( s_coeq_pair );
+Display( source_coeq_pair );
 #! Image of <(V)>:
 #! [ 6, [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)> ] ]
 #! 
@@ -67,7 +68,8 @@ Display( s_coeq_pair );
 #! An object in FiniteCoequalizerClosureOfCocartesianCategory(
 #! FiniteStrictCoproductCocompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
-ModeledObject( CapCategory( source_quiver ), s_coeq_pair ) = source_quiver;
+ModeledObject( CapCategory( source_colimit_quiver ),
+        source_coeq_pair ) = source_colimit_quiver;
 #! true
 target_bouquet := CreateBouquet( 2, [ 0, 0, 0, 0, 1 ] );
 #! <An object in FinBouquets>
@@ -77,10 +79,10 @@ target_presheaf := ModelingObject( Cbar,
                            ModelingObject( FinBouquets, target_bouquet ) );
 #! <An object in
 #!  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>
-target_quiver := CoYonedaLemmaOnObjects( target_presheaf );
+target_colimit_quiver := CoYonedaLemmaOnObjects( target_presheaf );
 #! <An object in FiniteColimitCocompletionWithStrictCoproducts(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
-Display( target_quiver );
+Display( target_colimit_quiver );
 #! [ [ <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)>, <(L)> ],
 #!   [ [ 0, (P)-[(b)]->(L), 2 ], [ 0, (P)-[(b)]->(L), 3 ],
 #!     [ 0, (P)-[(b)]->(L), 4 ], [ 0, (P)-[(b)]->(L), 5 ],
@@ -89,13 +91,14 @@ Display( target_quiver );
 #! An object in FiniteColimitCocompletionWithStrictCoproducts(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )
 #! given by the above data
-IsWellDefined( target_quiver );
+IsWellDefined( target_colimit_quiver );
 #! true
-t_coeq_pair := ModelingObject( CapCategory( target_quiver ), target_quiver );
+target_coeq_pair :=
+  ModelingObject( CapCategory( target_colimit_quiver ), target_colimit_quiver );
 #! <An object in FiniteCoequalizerClosureOfCocartesianCategory(
 #!  FiniteStrictCoproductCocompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
-Display( t_coeq_pair );
+Display( target_coeq_pair );
 #! Image of <(V)>:
 #! [ 7, [ <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)>, <(L)> ] ]
 #! 
@@ -131,7 +134,8 @@ Display( t_coeq_pair );
 #! An object in FiniteCoequalizerClosureOfCocartesianCategory(
 #! FiniteStrictCoproductCocompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
-ModeledObject( CapCategory( target_quiver ), t_coeq_pair ) = target_quiver;
+ModeledObject( CapCategory( target_colimit_quiver ),
+        target_coeq_pair ) = target_colimit_quiver;
 #! true
 bouquet_morphism := CreateBouquetMorphism(
                             source_bouquet,
@@ -144,17 +148,17 @@ presheaf_morphism := ModelingMorphism( Cbar,
                              ModelingMorphism( FinBouquets, bouquet_morphism ) );
 #! <A morphism in
 #!  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>
-quiver_morphism := CoYonedaLemmaOnMorphisms( presheaf_morphism );
+colimit_quiver_morphism := CoYonedaLemmaOnMorphisms( presheaf_morphism );
 #! <A morphism in FiniteColimitCocompletionWithStrictCoproducts(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
-IsWellDefined( quiver_morphism );
+IsWellDefined( colimit_quiver_morphism );
 #! true
-coeq_pair_m :=
-  ModelingMorphism( CapCategory( quiver_morphism ), quiver_morphism );
+coeq_pair_morphism :=
+  ModelingMorphism( CapCategory( colimit_quiver_morphism ), colimit_quiver_morphism );
 #! <A morphism in FiniteCoequalizerClosureOfCocartesianCategory(
 #!  FiniteStrictCoproductCocompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
-Display( coeq_pair_m );
+Display( coeq_pair_morphism );
 #! Image of <(V)>:
 #! { 0,..., 5 } ⱶ[ 0, 1, 1, 3, 5, 6 ]→ { 0,..., 6 }
 #! 
@@ -179,8 +183,10 @@ Display( coeq_pair_m );
 #! A morphism in FiniteCoequalizerClosureOfCocartesianCategory(
 #! FiniteStrictCoproductCocompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
-ModeledMorphism( CapCategory( quiver_morphism ),
-        source_quiver, coeq_pair_m, target_quiver ) = quiver_morphism;
+ModeledMorphism( CapCategory( colimit_quiver_morphism ),
+        source_colimit_quiver,
+        coeq_pair_morphism,
+        target_colimit_quiver ) = colimit_quiver_morphism;
 #! true
 #! @EndExample
 #! @EndChunk
