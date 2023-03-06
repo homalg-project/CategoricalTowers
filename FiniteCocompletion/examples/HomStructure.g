@@ -43,7 +43,7 @@ Display( i );
 #! An object in
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
 #! given by the above data
-UniversalMorphismFromInitialObject( t ) = UniversalMorphismIntoTerminalObject( i );
+UniversalMorphismFromInitialObject(t) = UniversalMorphismIntoTerminalObject(i);
 #! true
 A := [ 3, [ "A0" / T, "A1" / T, "A2" / T ] ] / sFinSets;
 #! <An object in
@@ -78,7 +78,7 @@ Display( piA );
 #! 
 #! A morphism in
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
-#! with the above associated map
+#! given by the above data
 piB := ProjectionInFactorOfDirectProduct( [ A, B ], 2 );
 #! <A morphism in
 #!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
@@ -94,7 +94,7 @@ Display( piB );
 #! 
 #! A morphism in
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
-#! with the above associated map
+#! given by the above data
 IsOne( UniversalMorphismIntoDirectProduct( [ piA, piB ] ) );
 #! true
 I := HomStructure( sFinSets );
@@ -161,7 +161,7 @@ Display( alpha );
 #! 
 #! A morphism in
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
-#! with the above associated map
+#! given by the above data
 gamma := HomStructure( A, B, homAB[2] );
 #! <A morphism in
 #!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
@@ -172,7 +172,7 @@ Display( gamma );
 #! 
 #! A morphism in
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
-#! with the above associated map
+#! given by the above data
 hom_alpha_gamma := HomStructure( alpha, gamma );
 #! <A morphism in
 #!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
@@ -191,7 +191,7 @@ Display( hom_alpha_gamma );
 #! 
 #! A morphism in
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
-#! with the above associated map
+#! given by the above data
 IsWellDefined( hom_alpha_gamma );
 #! true
 #! @EndExample

@@ -13,7 +13,7 @@
 ####################################
 
 #! @Description
-#!  The &GAP; category of a finite coproduct cocompletion category.
+#!  The &GAP; category of finite coproduct cocompletion categories.
 DeclareCategory( "IsFiniteStrictCoproductCocompletion",
         IsCapCategory );
 

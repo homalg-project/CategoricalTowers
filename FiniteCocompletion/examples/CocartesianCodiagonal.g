@@ -64,7 +64,7 @@ Display( delta );
 #! 
 #! A morphism in
 #! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
-#! with the above associated map
+#! given by the above data
 id_a := IdentityMorphism( C.a );
 #! (a)-[(a)]->(a)
 delta = CocartesianCodiagonal( a, 2 );

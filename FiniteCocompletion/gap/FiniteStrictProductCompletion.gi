@@ -358,6 +358,6 @@ InstallMethod( Display,
     
     Print( MorphismDatum( phi )[2], "\n\n" );
     
-    Print( "A morphism in ", Name( CapCategory( phi ) ), " with the above associated map\n" );
+    Print( "A morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
     
 end );

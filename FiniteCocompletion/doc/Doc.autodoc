@@ -57,3 +57,17 @@
 
 @Subsection Cartesian diagonal
 @InsertChunk CartesianDiagonal
+
+@Chapter The category of quivers in a category
+
+@Section Constructors
+
+@Chapter Category of copresheaves of a finitely presented (linear) category
+
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section &GAP; Categories

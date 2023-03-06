@@ -62,7 +62,7 @@ Display( gamma );
 #! 
 #! A morphism in
 #! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
-#! with the above associated map
+#! given by the above data
 gamma = CartesianBraiding( a, b );
 #! true
 LPC := LazyCategory( PC );
