@@ -60,16 +60,10 @@
   
   [1X5.4 [33X[0;0YGlobal variables[133X[101X
   
-  [33X[0;0YThe quiver generating the category of quivers[133X
-  
-  [1X5.4-1 QuiverOfCategoryOfQuivers[101X
-  
-  [33X[1;0Y[29X[2XQuiverOfCategoryOfQuivers[102X [32X global variable[133X
-  
   [33X[0;0YThe  category  of  quivers  as  a  category  of  presheaves  with  values in
   [10XSkeletalFinSets[110X.[133X
   
-  [1X5.4-2 FinQuivers[101X
+  [1X5.4-1 FinQuivers[101X
   
   [33X[1;0Y[29X[2XFinQuivers[102X [32X global variable[133X
   
