@@ -5,6 +5,8 @@
   [2XApplyMorphismInPreSheafCategoryToObject[102X, for IsPreSheafCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject 1.1-10 
   [2XApplyObjectInPreSheafCategoryToMorphism[102X, for IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism 1.1-9 
   [2XApplyObjectInPreSheafCategoryToObject[102X, for IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryObject 1.1-8 
+  [2XCoYonedaLemmaOnMorphisms[102X, for IsMorphismInPreSheafCategory 1.1-12 
+  [2XCoYonedaLemmaOnObjects[102X, for IsObjectInPreSheafCategory 1.1-11 
   [2XIsCellInPreSheafCategory[102X, for IsCapCategoryCell 1.3-2 
   [2XIsMorphismInPreSheafCategory[102X, for IsCellInPreSheafCategory andIsCapCategoryMorphism 1.3-4 
   [2XIsObjectInPreSheafCategory[102X, for IsCellInPreSheafCategory andIsCapCategoryObject 1.3-3 
