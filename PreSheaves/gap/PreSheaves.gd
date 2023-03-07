@@ -199,6 +199,14 @@ DeclareOperation( "ApplyObjectInPreSheafCategoryToMorphism",
 DeclareOperation( "ApplyMorphismInPreSheafCategoryToObject",
         [ IsPreSheafCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ] );
 
+#! @Arguments F
+DeclareAttribute( "CoYonedaLemmaOnObjects",
+        IsObjectInPreSheafCategory );
+
+#! @Arguments phi
+DeclareAttribute( "CoYonedaLemmaOnMorphisms",
+        IsMorphismInPreSheafCategory );
+
 ####################################
 #
 #! @Section Constructors

@@ -44,12 +44,12 @@ DeclareCategory( "IsMorphismInFiniteColimitCocompletionWithStrictCoproducts",
 #
 ####################################
 
-#! @Arguments quiver
-DeclareAttribute( "DefiningPairOfQuiverInCategory",
+#! @Arguments colimit_quiver
+DeclareAttribute( "DefiningPairOfColimitQuiver",
         IsObjectInFiniteColimitCocompletionWithStrictCoproducts );
 
-#! @Arguments quiver_morphism
-DeclareAttribute( "DefiningPairOfQuiverMorphismInCategory",
+#! @Arguments colimit_quiver_morphism
+DeclareAttribute( "DefiningPairOfColimitQuiverMorphism",
         IsMorphismInFiniteColimitCocompletionWithStrictCoproducts );
 
 ####################################
@@ -68,9 +68,9 @@ DeclareAttribute( "FiniteColimitCocompletionWithStrictCoproducts",
 #! @InsertChunk FinReflexiveQuiversAsFiniteColimitCocompletion
 
 #!
-DeclareOperation( "CreateColimitDiagram",
+DeclareOperation( "CreateColimitQuiver",
         [ IsFiniteColimitCocompletionWithStrictCoproducts, IsList ] );
 
 #!
-DeclareOperation( "CreateMorphismOfColimitDiagrams",
+DeclareOperation( "CreateMorphismOfColimitQuivers",
         [ IsObjectInFiniteColimitCocompletionWithStrictCoproducts, IsList ] );

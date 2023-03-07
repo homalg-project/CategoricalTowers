@@ -1814,13 +1814,13 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     #if false then
     if ValueOption( "no_precompiled_code" ) <> true then
         
-        if IsFpCategory( B ) then
+        if IsFpCategory( B ) and IsCategoryOfSkeletalFinSets( C ) then
             
             ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled( PSh );
             
             ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsSubobjectClassifierPrecompiled( PSh );
             
-        elif IsCategoryFromDataTables( B ) then
+        elif IsCategoryFromDataTables( B ) and IsCategoryOfSkeletalFinSets( C ) then
             
             ADD_FUNCTIONS_FOR_PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled( PSh );
             
@@ -2472,7 +2472,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     
     decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], triples ) );
     
-    return CreateColimitDiagram( FiniteColimitCocompletionWithStrictCoproducts( B ),
+    return CreateColimitQuiver( FiniteColimitCocompletionWithStrictCoproducts( B ),
                    Pair( objects,
                          decorated_morphisms ) );
     
@@ -2527,7 +2527,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
     
     map_of_decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], imgs ) );
     
-    return CreateMorphismOfColimitDiagrams( FiniteColimitCocompletionWithStrictCoproducts( B ),
+    return CreateMorphismOfColimitQuivers( FiniteColimitCocompletionWithStrictCoproducts( B ),
                    source,
                    Pair( map_of_objects,
                          map_of_decorated_morphisms ),
