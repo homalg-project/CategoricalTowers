@@ -1814,13 +1814,13 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     #if false then
     if ValueOption( "no_precompiled_code" ) <> true then
         
-        if IsFpCategory( B ) then
+        if IsFpCategory( B ) and IsCategoryOfSkeletalFinSets( C ) then
             
             ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled( PSh );
             
             ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsSubobjectClassifierPrecompiled( PSh );
             
-        elif IsCategoryFromDataTables( B ) then
+        elif IsCategoryFromDataTables( B ) and IsCategoryOfSkeletalFinSets( C ) then
             
             ADD_FUNCTIONS_FOR_PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled( PSh );
             
