@@ -151,6 +151,29 @@ presheaf_morphism := ModelingMorphism( Cbar,
 colimit_quiver_morphism := CoYonedaLemmaOnMorphisms( presheaf_morphism );
 #! <A morphism in FiniteColimitCocompletionWithStrictCoproducts(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
+Display( colimit_quiver_morphism );
+#! Source: [ [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)> ],
+#!         [ [ 0, (P)-[(b)]->(L), 3 ], [ 0, (P)-[(b)]->(L), 4 ],
+#!           [ 1, (P)-[(b)]->(L), 5 ] ] ]
+#! 
+#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
+#! 
+#! Datum:  [ [ [ 0, 1, 1, 3, 5, 6 ],
+#!             [ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P),
+#!               (L)-[(L)]->(L), (L)-[(L)]->(L), (L)-[(L)]->(L) ] ],
+#!           [ 1, 3, 4 ] ]
+#! 
+#! Range:  [ [ <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)>, <(L)> ],
+#!           [ [ 0, (P)-[(b)]->(L), 2 ], [ 0, (P)-[(b)]->(L), 3 ],
+#!             [ 0, (P)-[(b)]->(L), 4 ], [ 0, (P)-[(b)]->(L), 5 ],
+#!             [ 1, (P)-[(b)]->(L), 6 ] ] ]
+#! 
+#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
+#! 
+#! A morphism in FiniteColimitCocompletionWithStrictCoproducts(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 IsWellDefined( colimit_quiver_morphism );
 #! true
 coeq_pair_morphism :=
