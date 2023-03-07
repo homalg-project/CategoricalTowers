@@ -6,12 +6,12 @@
       for IsObjectInSkeletalFinSets 2.1-2 
   [2XCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[102X 2.2-1 
   [2XCoYonedaEmbeddingOfUnderlyingCategory[102X, for IsFiniteStrictProductCompletion 3.1-4 
-  [2XCreateColimitDiagram[102X, for IsFiniteColimitCocompletionWithStrictCoproducts, IsList 7.3-2 
-  [2XCreateMorphismOfColimitDiagrams[102X, for IsObjectInFiniteColimitCocompletionWithStrictCoproducts, IsList 7.3-3 
+  [2XCreateColimitQuiver[102X, for IsFiniteColimitCocompletionWithStrictCoproducts, IsList 7.3-2 
+  [2XCreateMorphismOfColimitQuivers[102X, for IsObjectInFiniteColimitCocompletionWithStrictCoproducts, IsList 7.3-3 
   [2XDefiningCoequalizerPair[102X, for IsObjectInFiniteCoequalizerClosureOfCocartesianCategory 6.3-1 
+  [2XDefiningPairOfColimitQuiver[102X, for IsObjectInFiniteColimitCocompletionWithStrictCoproducts 7.2-1 
+  [2XDefiningPairOfColimitQuiverMorphism[102X, for IsMorphismInFiniteColimitCocompletionWithStrictCoproducts 7.2-2 
   [2XDefiningPairOfMorphismBetweenCoequalizerPairs[102X, for IsMorphismInFiniteCoequalizerClosureOfCocartesianCategory 6.3-2 
-  [2XDefiningPairOfQuiverInCategory[102X, for IsObjectInFiniteColimitCocompletionWithStrictCoproducts 7.2-1 
-  [2XDefiningPairOfQuiverMorphismInCategory[102X, for IsMorphismInFiniteColimitCocompletionWithStrictCoproducts 7.2-2 
   [2XExtendFunctorToFiniteStrictCoproductCocompletion[102X, for IsCapFunctor 1.1-5 
   [2XExtendFunctorToFiniteStrictProductCompletion[102X, for IsCapFunctor 3.1-5 
   [2XFiniteCoequalizerClosureOfCocartesianCategory[102X, for IsCapCategory 6.4-1 

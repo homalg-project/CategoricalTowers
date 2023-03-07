@@ -36,15 +36,15 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7C701DBF7BAE649A">7.2 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7F949C857C5DF310">7.2-1 DefiningPairOfQuiverInCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7CA4EC3A7EB32FB1">7.2-2 DefiningPairOfQuiverMorphismInCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7A539E1286B00526">7.2-1 DefiningPairOfColimitQuiver</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7A0557BC7DDBD339">7.2-2 DefiningPairOfColimitQuiverMorphism</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X86EC0F0A78ECBC10">7.3 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X816E9B307C801B82">7.3-1 FiniteColimitCocompletionWithStrictCoproducts</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8459F7968501F7C2">7.3-2 CreateColimitDiagram</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X78202B667A2CFB9A">7.3-3 CreateMorphismOfColimitDiagrams</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8601054B79119211">7.3-2 CreateColimitQuiver</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7FE78D15866DD233">7.3-3 CreateMorphismOfColimitQuivers</a></span>
 </div></div>
 </div>
 
@@ -94,16 +94,16 @@
 
 <h4>7.2 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X7F949C857C5DF310" name="X7F949C857C5DF310"></a></p>
+<p><a id="X7A539E1286B00526" name="X7A539E1286B00526"></a></p>
 
-<h5>7.2-1 DefiningPairOfQuiverInCategory</h5>
+<h5>7.2-1 DefiningPairOfColimitQuiver</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningPairOfQuiverInCategory</code>( <var class="Arg">quiver</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7CA4EC3A7EB32FB1" name="X7CA4EC3A7EB32FB1"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningPairOfColimitQuiver</code>( <var class="Arg">colimit_quiver</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7A0557BC7DDBD339" name="X7A0557BC7DDBD339"></a></p>
 
-<h5>7.2-2 DefiningPairOfQuiverMorphismInCategory</h5>
+<h5>7.2-2 DefiningPairOfColimitQuiverMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningPairOfQuiverMorphismInCategory</code>( <var class="Arg">quiver_morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningPairOfColimitQuiverMorphism</code>( <var class="Arg">colimit_quiver_morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
 <h4>7.3 <span class="Heading">Constructors</span></h4>
@@ -133,23 +133,24 @@ FiniteCocompletion( FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                           ModelingObject( FinBouquets, source_bouquet ) );</span>
 &lt;An object in
  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ), SkeletalFinSets )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">source_quiver := CoYonedaLemmaOnObjects( source_presheaf );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">source_colimit_quiver := CoYonedaLemmaOnObjects( source_presheaf );</span>
 &lt;An object in FiniteColimitCocompletionWithStrictCoproducts(
  FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( source_quiver );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( source_colimit_quiver );</span>
 [ [ &lt;(P)&gt;, &lt;(P)&gt;, &lt;(P)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt; ],
   [ [ 0, (P)-[(b)]-&gt;(L), 3 ], [ 0, (P)-[(b)]-&gt;(L), 4 ],
     [ 1, (P)-[(b)]-&gt;(L), 5 ] ] ]
 
 An object in FiniteColimitCocompletionWithStrictCoproducts(
 FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( source_quiver );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( source_colimit_quiver );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s_coeq_pair := ModelingObject( CapCategory( source_quiver ), source_quiver );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">source_coeq_pair :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  ModelingObject( CapCategory( source_colimit_quiver ), source_colimit_quiver );</span>
 &lt;An object in FiniteCoequalizerClosureOfCocartesianCategory(
  FiniteStrictCoproductCocompletion(
  FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( s_coeq_pair );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( source_coeq_pair );</span>
 Image of &lt;(V)&gt;:
 [ 6, [ &lt;(P)&gt;, &lt;(P)&gt;, &lt;(P)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt; ] ]
 
@@ -185,7 +186,8 @@ FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) given by the above data
 An object in FiniteCoequalizerClosureOfCocartesianCategory(
 FiniteStrictCoproductCocompletion( FreeCategory(
 RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModeledObject( CapCategory( source_quiver ), s_coeq_pair ) = source_quiver;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModeledObject( CapCategory( source_colimit_quiver ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        source_coeq_pair ) = source_colimit_quiver;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">target_bouquet := CreateBouquet( 2, [ 0, 0, 0, 0, 1 ] );</span>
 &lt;An object in FinBouquets&gt;
@@ -195,10 +197,10 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                           ModelingObject( FinBouquets, target_bouquet ) );</span>
 &lt;An object in
  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ), SkeletalFinSets )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">target_quiver := CoYonedaLemmaOnObjects( target_presheaf );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">target_colimit_quiver := CoYonedaLemmaOnObjects( target_presheaf );</span>
 &lt;An object in FiniteColimitCocompletionWithStrictCoproducts(
  FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( target_quiver );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( target_colimit_quiver );</span>
 [ [ &lt;(P)&gt;, &lt;(P)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt; ],
   [ [ 0, (P)-[(b)]-&gt;(L), 2 ], [ 0, (P)-[(b)]-&gt;(L), 3 ],
     [ 0, (P)-[(b)]-&gt;(L), 4 ], [ 0, (P)-[(b)]-&gt;(L), 5 ],
@@ -207,13 +209,14 @@ true
 An object in FiniteColimitCocompletionWithStrictCoproducts(
 FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )
 given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( target_quiver );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( target_colimit_quiver );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t_coeq_pair := ModelingObject( CapCategory( target_quiver ), target_quiver );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">target_coeq_pair :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  ModelingObject( CapCategory( target_colimit_quiver ), target_colimit_quiver );</span>
 &lt;An object in FiniteCoequalizerClosureOfCocartesianCategory(
  FiniteStrictCoproductCocompletion(
  FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t_coeq_pair );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( target_coeq_pair );</span>
 Image of &lt;(V)&gt;:
 [ 7, [ &lt;(P)&gt;, &lt;(P)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt; ] ]
 
@@ -249,7 +252,8 @@ FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) given by the above data
 An object in FiniteCoequalizerClosureOfCocartesianCategory(
 FiniteStrictCoproductCocompletion( FreeCategory(
 RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModeledObject( CapCategory( target_quiver ), t_coeq_pair ) = target_quiver;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModeledObject( CapCategory( target_colimit_quiver ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        target_coeq_pair ) = target_colimit_quiver;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bouquet_morphism := CreateBouquetMorphism(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                            source_bouquet,</span>
@@ -262,17 +266,40 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                             ModelingMorphism( FinBouquets, bouquet_morphism ) );</span>
 &lt;A morphism in
  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ), SkeletalFinSets )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver_morphism := CoYonedaLemmaOnMorphisms( presheaf_morphism );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">colimit_quiver_morphism := CoYonedaLemmaOnMorphisms( presheaf_morphism );</span>
 &lt;A morphism in FiniteColimitCocompletionWithStrictCoproducts(
  FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( quiver_morphism );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( colimit_quiver_morphism );</span>
+Source: [ [ &lt;(P)&gt;, &lt;(P)&gt;, &lt;(P)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt; ],
+        [ [ 0, (P)-[(b)]-&gt;(L), 3 ], [ 0, (P)-[(b)]-&gt;(L), 4 ],
+          [ 1, (P)-[(b)]-&gt;(L), 5 ] ] ]
+
+An object in FiniteColimitCocompletionWithStrictCoproducts(
+FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+
+Datum:  [ [ [ 0, 1, 1, 3, 5, 6 ],
+            [ (P)-[(P)]-&gt;(P), (P)-[(P)]-&gt;(P), (P)-[(P)]-&gt;(P),
+              (L)-[(L)]-&gt;(L), (L)-[(L)]-&gt;(L), (L)-[(L)]-&gt;(L) ] ],
+          [ 1, 3, 4 ] ]
+
+Range:  [ [ &lt;(P)&gt;, &lt;(P)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt; ],
+          [ [ 0, (P)-[(b)]-&gt;(L), 2 ], [ 0, (P)-[(b)]-&gt;(L), 3 ],
+            [ 0, (P)-[(b)]-&gt;(L), 4 ], [ 0, (P)-[(b)]-&gt;(L), 5 ],
+            [ 1, (P)-[(b)]-&gt;(L), 6 ] ] ]
+
+An object in FiniteColimitCocompletionWithStrictCoproducts(
+FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+
+A morphism in FiniteColimitCocompletionWithStrictCoproducts(
+FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( colimit_quiver_morphism );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coeq_pair_m :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  ModelingMorphism( CapCategory( quiver_morphism ), quiver_morphism );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coeq_pair_morphism :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  ModelingMorphism( CapCategory( colimit_quiver_morphism ), colimit_quiver_morphism );</span>
 &lt;A morphism in FiniteCoequalizerClosureOfCocartesianCategory(
  FiniteStrictCoproductCocompletion(
  FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( coeq_pair_m );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( coeq_pair_morphism );</span>
 Image of &lt;(V)&gt;:
 { 0,..., 5 } ⱶ[ 0, 1, 1, 3, 5, 6 ]→ { 0,..., 6 }
 
@@ -297,8 +324,10 @@ FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) given by the above data
 A morphism in FiniteCoequalizerClosureOfCocartesianCategory(
 FiniteStrictCoproductCocompletion(
 FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModeledMorphism( CapCategory( quiver_morphism ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        source_quiver, coeq_pair_m, target_quiver ) = quiver_morphism;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModeledMorphism( CapCategory( colimit_quiver_morphism ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        source_colimit_quiver,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        coeq_pair_morphism,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        target_colimit_quiver ) = colimit_quiver_morphism;</span>
 true
 </pre></div>
 
@@ -363,16 +392,16 @@ SkeletalFinSets )&gt;
 true
 </pre></div>
 
-<p><a id="X8459F7968501F7C2" name="X8459F7968501F7C2"></a></p>
+<p><a id="X8601054B79119211" name="X8601054B79119211"></a></p>
 
-<h5>7.3-2 CreateColimitDiagram</h5>
+<h5>7.3-2 CreateColimitQuiver</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateColimitDiagram</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X78202B667A2CFB9A" name="X78202B667A2CFB9A"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateColimitQuiver</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X7FE78D15866DD233" name="X7FE78D15866DD233"></a></p>
 
-<h5>7.3-3 CreateMorphismOfColimitDiagrams</h5>
+<h5>7.3-3 CreateMorphismOfColimitQuivers</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateMorphismOfColimitDiagrams</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateMorphismOfColimitQuivers</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Next Chapter]</a>&nbsp;  </div>
 

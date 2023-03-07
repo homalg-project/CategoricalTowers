@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2023.03-08
+                                   2023.03-09
   
   
-                                  6 March 2023
+                                  7 March 2023
   
   
                                 Mohamed Barakat
@@ -113,12 +113,12 @@
       7.1-3 IsObjectInFiniteColimitCocompletionWithStrictCoproducts
       7.1-4 IsMorphismInFiniteColimitCocompletionWithStrictCoproducts
     7.2 [33X[0;0YAttributes[133X
-      7.2-1 DefiningPairOfQuiverInCategory
-      7.2-2 DefiningPairOfQuiverMorphismInCategory
+      7.2-1 DefiningPairOfColimitQuiver
+      7.2-2 DefiningPairOfColimitQuiverMorphism
     7.3 [33X[0;0YConstructors[133X
       7.3-1 FiniteColimitCocompletionWithStrictCoproducts
-      7.3-2 CreateColimitDiagram
-      7.3-3 CreateMorphismOfColimitDiagrams
+      7.3-2 CreateColimitQuiver
+      7.3-3 CreateMorphismOfColimitQuivers
   8 [33X[0;0YPrecompilation[133X
     8.1 [33X[0;0YPrecompiling SkeletalFinSets[133X
   
