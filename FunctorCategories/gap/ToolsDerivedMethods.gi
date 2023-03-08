@@ -17,5 +17,6 @@ end :
   CategoryFilter := cat ->
                     IsMatrixCategory( cat ) or
                     ( IsCategoryOfRows( cat ) and
+                      HasCommutativeRingOfLinearCategory( cat ) and
                       HasIsFieldForHomalg( CommutativeRingOfLinearCategory( cat ) ) and
                       IsFieldForHomalg( CommutativeRingOfLinearCategory( cat ) ) ) );
