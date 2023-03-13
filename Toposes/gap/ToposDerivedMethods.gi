@@ -718,9 +718,5 @@ end
              IsBoundGlobal( "IsCategoryOfSkeletalFinSets" ) and
              ValueGlobal( "IsCategoryOfSkeletalFinSets" )( RangeCategoryOfHomomorphismStructure( cat ) );
     end,
-    FunctionCalledBeforeInstallation :=
-      function( cat )
-        SetIsEquippedWithHomomorphismStructure( cat, true );
-    end,
     Description := "adding the homomorphism structure using MorphismsOfExternalHom"
 );
