@@ -1875,22 +1875,21 @@ end
         
 ########
 function ( cat_1, S_1, source_diagram_1, mat_1, range_diagram_1, T_1 )
-    local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_5_1;
-    deduped_5_1 := Range( cat_1 );
-    deduped_3_1 := UnderlyingRing( deduped_5_1 );
-    hoisted_2_1 := ValuesOfPreSheaf( T_1 )[1];
+    local hoisted_1_1, hoisted_3_1, deduped_4_1, deduped_6_1, deduped_7_1;
+    deduped_7_1 := Range( cat_1 );
+    deduped_6_1 := ValuesOfPreSheaf( T_1 )[1];
+    deduped_4_1 := UnderlyingRing( deduped_7_1 );
+    hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_1_1 := ValuesOfPreSheaf( S_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local deduped_1_2;
-              deduped_1_2 := hoisted_2_1[o_2];
-              return CreateCapCategoryMorphismWithAttributes( deduped_5_1, hoisted_1_1[o_2], deduped_1_2, UnderlyingMatrix, UnionOfRows( deduped_3_1, RankOfObject( deduped_1_2 ), ListN( List( source_diagram_1, function ( Si_3 )
+              return CreateCapCategoryMorphismWithAttributes( deduped_7_1, hoisted_1_1[o_2], deduped_6_1[o_2], UnderlyingMatrix, UnionOfRows( deduped_4_1, hoisted_3_1[o_2], ListN( List( source_diagram_1, function ( Si_3 )
                             return ValuesOfPreSheaf( Si_3 )[1][o_2];
                         end ), List( mat_1, function ( row_3 )
                             return List( row_3, function ( m_4 )
                                     return ValuesOnAllObjects( m_4 )[o_2];
                                 end );
                         end ), function ( logic_new_func_x_3, logic_new_func_y_3 )
-                          return UnionOfColumns( deduped_3_1, RankOfObject( logic_new_func_x_3 ), List( logic_new_func_y_3, UnderlyingMatrix ) );
+                          return UnionOfColumns( deduped_4_1, RankOfObject( logic_new_func_x_3 ), List( logic_new_func_y_3, UnderlyingMatrix ) );
                       end ) ) );
           end ) );
 end
