@@ -43,17 +43,17 @@ end
         
 ########
 function ( cat_1, source_1, alpha_1, beta_1, range_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1;
+    local deduped_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1;
     hoisted_6_1 := [ 0 .. Length( Source( alpha_1 ) ) - 1 ];
     hoisted_5_1 := Length( Range( beta_1 ) );
     hoisted_4_1 := AsList( beta_1 );
     hoisted_3_1 := AsList( alpha_1 );
     hoisted_2_1 := [ 0 .. Length( Range( alpha_1 ) ) - 1 ];
-    hoisted_1_1 := Length( Source( beta_1 ) );
+    deduped_1_1 := Length( Source( beta_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( logic_new_func_x_2 )
               local hoisted_1_2;
               hoisted_1_2 := List( hoisted_2_1, function ( i_3 )
-                      return REM_INT( QUO_INT( logic_new_func_x_2, hoisted_1_1 ^ i_3 ), hoisted_1_1 );
+                      return REM_INT( QUO_INT( logic_new_func_x_2, deduped_1_1 ^ i_3 ), deduped_1_1 );
                   end );
               return Sum( hoisted_6_1, function ( i_3 )
                       return hoisted_4_1[(1 + hoisted_1_2[(1 + hoisted_3_1[(1 + CAP_JIT_INCOMPLETE_LOGIC( i_3 ))])])] * hoisted_5_1 ^ i_3;
@@ -135,11 +135,11 @@ end
         
 ########
 function ( cat_1, source_1, range_1, alpha_1 )
-    local hoisted_1_1, hoisted_2_1;
+    local deduped_1_1, hoisted_2_1;
     hoisted_2_1 := AsList( alpha_1 )[1];
-    hoisted_1_1 := Length( range_1 );
+    deduped_1_1 := Length( range_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( i_2 )
-              return REM_INT( QUO_INT( hoisted_2_1, hoisted_1_1 ^ i_2 ), hoisted_1_1 );
+              return REM_INT( QUO_INT( hoisted_2_1, deduped_1_1 ^ i_2 ), deduped_1_1 );
           end ) );
 end
 ########
@@ -376,9 +376,8 @@ end
         
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_5_1;
     deduped_5_1 := [ 0 .. Length( objects_1 ) - 1 ];
-    hoisted_4_1 := deduped_5_1;
     hoisted_2_1 := List( objects_1, Length );
     hoisted_3_1 := List( deduped_5_1, function ( j_2 )
             return Product( hoisted_2_1{[ 1 .. j_2 ]} );
@@ -387,7 +386,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, AsList, List( [ 0 .. Length( T_1 ) - 1 ], function ( i_2 )
               local hoisted_1_2;
               hoisted_1_2 := 1 + i_2;
-              return Sum( hoisted_4_1, function ( j_3 )
+              return Sum( deduped_5_1, function ( j_3 )
                       local deduped_1_3;
                       deduped_1_3 := 1 + j_3;
                       return hoisted_1_1[deduped_1_3][hoisted_1_2] * hoisted_3_1[deduped_1_3];
