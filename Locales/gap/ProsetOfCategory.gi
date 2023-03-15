@@ -184,7 +184,7 @@ end );
 
 ##
 InstallOtherMethod( \/,
-        "for a CAP morphism",
+        "for a CAP morphism and a proset or poset of a CAP category",
         [ IsCapCategoryMorphism, IsProsetOrPosetOfCapCategory ],
         
   function( morphism, P )
