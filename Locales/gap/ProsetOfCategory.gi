@@ -562,6 +562,32 @@ InstallMethod( \.,
     
 end );
 
+##
+InstallMethod( SetOfObjects,
+        "for a proset or poset of a CAP category",
+        [ IsProsetOrPosetOfCapCategory and IsFinite ],
+        
+  function( P )
+    
+    return List( SetOfObjects( AmbientCategory( P ) ), o -> ObjectConstructor( P, o ) );
+    
+end );
+
+##
+InstallMethod( SetOfGeneratingMorphisms,
+        "for a proset or poset of a CAP category",
+        [ IsProsetOrPosetOfCapCategory and IsFinite ],
+        
+  function( P )
+    
+    return List( SetOfGeneratingMorphisms( AmbientCategory( P ) ), m ->
+                 MorphismConstructor( P,
+                         ObjectConstructor( P, Source( m ) ),
+                         m,
+                         ObjectConstructor( P, Range( m ) ) ) );
+    
+end );
+
 ##################################
 ##
 ## View & Display

@@ -128,6 +128,30 @@ CapJitAddTypeSignature( "UnderlyingCell", [ IsCapCategoryMorphismInPosetOfACateg
     
 end );
 
+##
+DeclareAttribute( "SetOfObjects",
+        IsProsetOrPosetOfCapCategory );
+
+CapJitAddTypeSignature( "SetOfObjects", [ IsProsetOrPosetOfCapCategory ],
+  function ( input_types )
+    
+    return rec( filter := IsList,
+                element_type := CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+    
+end );
+
+##
+DeclareAttribute( "SetOfGeneratingMorphisms",
+        IsProsetOrPosetOfCapCategory );
+
+CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsProsetOrPosetOfCapCategory ],
+  function ( input_types )
+    
+    return rec( filter := IsList,
+                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
+    
+end );
+
 ####################################
 #
 #! @Section Constructors
