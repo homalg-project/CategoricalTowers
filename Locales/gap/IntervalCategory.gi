@@ -193,6 +193,14 @@ InstallGlobalFunction( "CreateIntervalCategory",
         
     end );
     
+    ##
+    AddExactCoverWithGlobalElements( IntervalCategory,
+      function( cat, a )
+        
+        return MorphismsOfExternalHom( cat, TerminalObject( cat ), a );
+        
+    end );
+    
     Finalize( IntervalCategory );
     
     return IntervalCategory;
