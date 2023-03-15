@@ -224,6 +224,7 @@ AddFinalDerivationBundle(
           [ IsHomSetInhabited, 1 ],
           [ InitialObject, 1, RangeCategoryOfHomomorphismStructure ],
           [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1, RangeCategoryOfHomomorphismStructure ],
+          [ UniqueMorphism, 1, RangeCategoryOfHomomorphismStructure ],
           [ UniqueMorphism, 1 ],
           ],
         [ DistinguishedObjectOfHomomorphismStructure,
@@ -267,7 +268,7 @@ end
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
     
-    return UniqueMorphism( cat, s, r );
+    return UniqueMorphism( range_cat, s, r );
     
 end
 ],
