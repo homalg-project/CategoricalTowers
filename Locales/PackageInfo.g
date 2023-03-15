@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "Locales",
 Subtitle := "Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets",
-Version := "2023.03-09",
+Version := "2023.03-10",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
@@ -107,7 +107,7 @@ Dependencies := rec(
                 [ "CategoryConstructor", ">= 2022.11-10" ],
                 [ "MonoidalCategories", ">= 2023.02-04" ],
                 [ "CartesianCategories", ">= 2023.02-04" ],
-                [ "Toposes", ">= 2022.11-06" ],
+                [ "Toposes", ">= 2023.03-05" ],
                 [ "Digraphs", ">= 0.12.1" ],
                 ],
   SuggestedOtherPackages := [ ],

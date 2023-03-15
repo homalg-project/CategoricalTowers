@@ -588,6 +588,17 @@ InstallMethod( SetOfGeneratingMorphisms,
     
 end );
 
+##
+InstallMethod( DefiningTripleOfUnderlyingQuiver,
+        "for a proset or poset of a CAP category",
+        [ IsProsetOrPosetOfCapCategory ],
+        
+  function( P )
+    
+    return DefiningTripleOfUnderlyingQuiver( AmbientCategory( P ) );
+    
+end );
+
 ##################################
 ##
 ## View & Display
