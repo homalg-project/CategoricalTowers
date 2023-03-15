@@ -383,6 +383,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
        IsCategoryFromNerveData( B ) or
        IsCategoryFromDataTables( B ) or
+       (HasIsFinite and IsFinite)( B ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
         
         create_func_bool :=
@@ -869,6 +870,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
        IsCategoryFromNerveData( B ) or
        IsCategoryFromDataTables( B ) or
+       (HasIsFinite and IsFinite)( B ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
         
         AddIsWellDefinedForMorphisms( PSh,
