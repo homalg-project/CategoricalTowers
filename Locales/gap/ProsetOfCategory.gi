@@ -398,6 +398,10 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  category_as_first_argument := true
                  );
     
+    if ( HasIsFinite and IsFinite )( C ) then
+        SetIsFinite( P, true );
+    fi;
+    
     ADD_COMMON_METHODS_FOR_PREORDERED_SETS( P );
     
     P!.compiler_hints.category_attribute_names := [
