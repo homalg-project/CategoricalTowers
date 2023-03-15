@@ -7,10 +7,10 @@
                                     quivers [101X
   
   
-                                   2023.03-07
+                                   2023.03-08
   
   
-                                 14 March 2023
+                                 15 March 2023
   
   
                                 Mohamed Barakat
@@ -267,7 +267,6 @@
   9 [33X[0;0YTools[133X
     9.1 [33X[0;0YTools for quivers[133X
       9.1-1 DefiningTripleOfAQuiver
-      9.1-2 DefiningTripleOfUnderlyingQuiver
     9.2 [33X[0;0YTools for categories[133X
       9.2-1 NerveTruncatedInDegree2Data
       9.2-2 DataTablesOfCategory

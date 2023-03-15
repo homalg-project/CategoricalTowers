@@ -63,7 +63,6 @@
   [2XDataTablesOfCategory[102X, for IsCapCategory 9.2-2 
   [2XDecomposeQuiverAlgebraElement[102X, for IsQuiverAlgebraElement 5.3-1 
   [2XDefiningTripleOfAQuiver[102X, for IsQuiver 9.1-1 
-  [2XDefiningTripleOfUnderlyingQuiver[102X, for IsCapCategory 9.1-2 
   [2XDescentToZDefinedByBasisPaths[102X, for IsAlgebroid 5.4-2 
   [2XDimension[102X, for IsAlgebroid 5.2-3 
   [2XElementaryTensor[102X, for IsMorphismInAlgebroid, IsObjectInAlgebroid, IsAlgebroid 5.3-7 
