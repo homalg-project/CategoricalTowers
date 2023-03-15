@@ -306,18 +306,65 @@ end
 ####################################
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( PrintString,
         "for an object in an interval category",
         [ IsObjectInIntervalCategory ],
         
   function( obj )
     
     if ObjectDatum( obj ) = false then
-        Print( "<(⊥)>" );
+        return "<(⊥)>";
     elif ObjectDatum( obj ) = true then
-        Print( "<(⊤)>" );
+        return "<(⊤)>";
     else
-        TryNextMethod( );
+        Error( "ObjectDatum( obj ) is not in [ false, true ]\n" );
+    fi;
+    
+end );
+
+##
+InstallMethod( ViewObj,
+        "for an object in an interval category",
+        [ IsObjectInIntervalCategory ],
+        
+  function( obj )
+    
+    Print( PrintString( obj ) );
+    
+end );
+
+##
+InstallMethod( Display,
+        "for an object in an interval category",
+        [ IsObjectInIntervalCategory ],
+        
+  function( obj )
+    
+    Print( PrintString( obj ), "\n" );
+    
+end );
+
+##
+InstallMethod( PrintString,
+        "for a morphism in an interval category",
+        [ IsMorphismInIntervalCategory ],
+        
+  function( mor )
+    local obj;
+    
+    if IsEndomorphism( mor ) then
+        obj := Source( mor );
+        if ObjectDatum( obj ) = false then
+            return "(⊥)-[(⊥)]->(⊥)";
+        elif ObjectDatum( obj ) = true then
+            return "(⊤)-[(⊤)]->(⊤)";
+        else
+            Error( "ObjectDatum( obj ) is not in [ false, true ]\n" );
+        fi;
+    elif IsInitial( Source( mor ) ) and IsTerminal( Range( mor ) ) then
+        return "(⊥)-[(⇒)]->(⊤)";
+    else
+        Error( "the morphism <mor> of the interval category is not well-defined\n" );
     fi;
     
 end );
@@ -328,21 +375,18 @@ InstallMethod( ViewObj,
         [ IsMorphismInIntervalCategory ],
         
   function( mor )
-    local obj;
     
-    if IsEndomorphism( mor ) then
-        obj := Source( mor );
-        if ObjectDatum( obj ) = false then
-            Print( "(⊥)-[(⊥)]->(⊥)" );
-        elif ObjectDatum( obj ) = true then
-            Print( "(⊤)-[(⊤)]->(⊤)" );
-        else
-            TryNextMethod( );
-        fi;
-    elif IsInitial( Source( mor ) ) and IsTerminal( Range( mor ) ) then
-        Print( "(⊥)-[(⇒)]->(⊤)" );
-    else
-        TryNextMethod( );
-    fi;
+    Print( PrintString( mor ) );
+    
+end );
+
+##
+InstallMethod( Display,
+        "for a morphism in an interval category",
+        [ IsMorphismInIntervalCategory ],
+        
+  function( mor )
+    
+    Print( PrintString( mor ), "\n" );
     
 end );
