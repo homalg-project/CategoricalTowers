@@ -1901,6 +1901,17 @@ end );
 
 ##
 InstallMethodWithCache( PreSheaves,
+        "for a finite category and a category",
+        [ IsCapCategory and IsFinite, IsCapCategory ],
+        
+  function ( B, C )
+    
+    return PreSheavesOfFpEnrichedCategory( B, C );
+    
+end );
+
+##
+InstallMethodWithCache( PreSheaves,
         "for a CAP category and a homalg field",
         [ IsAlgebroid, IsHomalgRing and IsFieldForHomalg ],
         
