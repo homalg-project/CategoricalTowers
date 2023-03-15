@@ -1039,11 +1039,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             ## Set the range category of the homomorphism structure of the functor category to be
             ## the range category of the homomorphism structure of the range category C of the functor category:
             SetRangeCategoryOfHomomorphismStructure( PSh, H );
+            SetIsEquippedWithHomomorphismStructure( PSh, true );
             
             ## Be sure the above assignment succeeded:
             Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( PSh ), H ) );
-            
-            SetIsEquippedWithHomomorphismStructure( PSh, true );
             
             ##
             AddDistinguishedObjectOfHomomorphismStructure( PSh,
