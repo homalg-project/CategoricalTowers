@@ -14,9 +14,10 @@ F := CategoryOfRows( R );
 S := SliceCategoryOverTensorUnit( F );
 #! SliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) )
 P := PosetOfCategory( S );
-#! Poset( SliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) ) )
+#! PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) ) )
 L := StablePosetOfCategory( P );
-#! StablePoset( Poset( SliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) ) ) )
+#! StablePosetOfCategory( PosetOfCategory(
+#! SliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) ) ) )
 N := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;
 #! An object in the poset given by:
 #! An object in the slice category given by: <A morphism in Rows( Q[x]/( x^2 ) )>

@@ -383,6 +383,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
        IsCategoryFromNerveData( B ) or
        IsCategoryFromDataTables( B ) or
+       (HasIsFinite and IsFinite)( B ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
         
         create_func_bool :=
@@ -869,6 +870,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
        IsCategoryFromNerveData( B ) or
        IsCategoryFromDataTables( B ) or
+       (HasIsFinite and IsFinite)( B ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
         
         AddIsWellDefinedForMorphisms( PSh,
@@ -1039,11 +1041,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             ## Set the range category of the homomorphism structure of the functor category to be
             ## the range category of the homomorphism structure of the range category C of the functor category:
             SetRangeCategoryOfHomomorphismStructure( PSh, H );
+            SetIsEquippedWithHomomorphismStructure( PSh, true );
             
             ## Be sure the above assignment succeeded:
             Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( PSh ), H ) );
-            
-            SetIsEquippedWithHomomorphismStructure( PSh, true );
             
             ##
             AddDistinguishedObjectOfHomomorphismStructure( PSh,
@@ -1891,6 +1892,17 @@ end );
 InstallMethodWithCache( PreSheaves,
         "for a category form data tables and a category",
         [ IsCategoryFromDataTables, IsCapCategory ],
+        
+  function ( B, C )
+    
+    return PreSheavesOfFpEnrichedCategory( B, C );
+    
+end );
+
+##
+InstallMethodWithCache( PreSheaves,
+        "for a finite category and a category",
+        [ IsCapCategory and IsFinite, IsCapCategory ],
         
   function ( B, C )
     

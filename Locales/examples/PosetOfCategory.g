@@ -14,7 +14,7 @@ F := CategoryOfRows( R );
 S := SliceCategoryOverTensorUnit( F );
 #! SliceCategoryOverTensorUnit( Rows( Q[x,y] ) )
 P := PosetOfCategory( S );
-#! Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
+#! PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
 I := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;
 #! An object in the poset given by: An object in the slice category given by:
 #! <A morphism in Rows( Q[x,y] )>
@@ -44,7 +44,7 @@ IJqJ := InternalHom( J, IJ ); ## this is the ideal quotient IJ : J
 IJqJ = I;
 #! true
 iota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );
-#! <An epi-, monomorphism in Poset( SliceCategoryOverTensorUnit( \
+#! <An epi-, monomorphism in PosetOfCategory( SliceCategoryOverTensorUnit( \
 #!  Rows( Q[x,y] ) ) )>
 IsWellDefined( iota );
 #! true

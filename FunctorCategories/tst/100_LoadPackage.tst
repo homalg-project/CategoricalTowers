@@ -11,12 +11,16 @@ gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
 gap> LoadPackage( "Toposes", false );
 true
+gap> LoadPackage( "Locales", false );
+true
 gap> LoadPackage( "FunctorCategories", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
 gap> LoadPackage( "FreydCategoriesForCAP" );
 true
 gap> LoadPackage( "Toposes" );
+true
+gap> LoadPackage( "Locales" );
 true
 gap> LoadPackage( "FunctorCategories" );
 true

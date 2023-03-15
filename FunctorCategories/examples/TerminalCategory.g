@@ -3,23 +3,28 @@
 #! @Example
 LoadPackage( "FunctorCategories", false );
 #! true
+LoadPackage( "Locales", false );
+#! true
 T := FiniteCompletion( InitialCategory( ) );
 #! FiniteCompletion( InitialCategory( ) )
+IsIdenticalObj( RangeCategoryOfHomomorphismStructure( T ), T );
+#! true
 IsTerminalCategory( T );
 #! true
 Display( T );
 #! A CAP category with name FiniteCompletion( InitialCategory( ) ):
 #! 
-#! 91 primitive operations were used to derive 486 operations for this category
+#! 90 primitive operations were used to derive 499 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
-#! * IsBicartesianClosedCategory
-#! * IsBicartesianCoclosedCategory
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
+#! * IsClosedMonoidalLattice
+#! * IsCoclosedMonoidalLattice
+#! * IsBooleanAlgebra
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
 #! and furthermore mathematically

@@ -18,29 +18,6 @@ DeclareAttribute( "DefiningTripleOfAQuiver",
         IsQuiver );
 #! @InsertChunk DefiningTripleOfAQuiver
 
-#! @Description
-#!  The defining triple of the quiver underlying the finitely presented category <A>C</A>.
-#! @Arguments C
-#! @Returns a pair
-DeclareAttribute( "DefiningTripleOfUnderlyingQuiver",
-        IsCapCategory );
-
-CapJitAddTypeSignature( "DefiningTripleOfUnderlyingQuiver", [ IsCapCategory ],
-  function ( input_types )
-    
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsInt ),
-                  rec( filter := IsInt ),
-                  rec( filter := IsList,
-                       element_type :=
-                       rec( filter := IsNTuple,
-                            element_types :=
-                            [ rec( filter := IsInt ),
-                              rec( filter := IsInt ) ] ) ) ] );
-    
-end );
-
 #! @Section Tools for categories
 
 #! @Description

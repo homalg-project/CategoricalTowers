@@ -184,7 +184,7 @@ end );
 
 ##
 InstallOtherMethod( \/,
-        "for a CAP morphism",
+        "for a CAP morphism and a proset or poset of a CAP category",
         [ IsCapCategoryMorphism, IsProsetOrPosetOfCapCategory ],
         
   function( morphism, P )
@@ -212,12 +212,12 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     skeletal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "skeletal", false );
     
     if IsIdenticalObj( skeletal, true ) then
-        name := "Poset";
+        name := "PosetOfCategory";
         category_filter := IsPosetOfCapCategory;
         category_object_filter := IsCapCategoryObjectInPosetOfACategory;
         category_morphism_filter := IsCapCategoryMorphismInPosetOfACategory;
     else
-        name := "Proset";
+        name := "ProsetOfCategory";
         category_filter := IsProsetOfCapCategory;
         category_object_filter := IsCapCategoryObjectInProsetOfACategory;
         category_morphism_filter := IsCapCategoryMorphismInProsetOfACategory;
@@ -398,6 +398,10 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  category_as_first_argument := true
                  );
     
+    if ( HasIsFinite and IsFinite )( C ) then
+        SetIsFinite( P, true );
+    fi;
+    
     ADD_COMMON_METHODS_FOR_PREORDERED_SETS( P );
     
     P!.compiler_hints.category_attribute_names := [
@@ -524,6 +528,74 @@ InstallMethod( StablePosetOfCategory,
   function( C )
     
     return PosetOfCategory( C : stable := true );
+    
+end );
+
+##
+InstallMethod( \.,
+        "for a proset or poset of a CAP category and a positive integer",
+        [ IsProsetOrPosetOfCapCategory, IsPosInt ],
+        
+  function( P, string_as_int )
+    local name, C, cell;
+    
+    name := NameRNam( string_as_int );
+    
+    C := AmbientCategory( P );
+    
+    cell := C.(name);
+    
+    if IsCapCategoryObject( cell ) then
+        
+        return ObjectConstructor( P, cell );
+        
+    elif IsCapCategoryMorphism( cell ) then
+        
+        return MorphismConstructor( P,
+                       ObjectConstructor( P, Source( cell ) ),
+                       cell,
+                       ObjectConstructor( P, Range( cell ) ) );
+        
+    fi;
+    
+    Error( "<cell> is neither an object nor a morphism in the ambient category <C>" );
+    
+end );
+
+##
+InstallMethod( SetOfObjects,
+        "for a proset or poset of a CAP category",
+        [ IsProsetOrPosetOfCapCategory and IsFinite ],
+        
+  function( P )
+    
+    return List( SetOfObjects( AmbientCategory( P ) ), o -> ObjectConstructor( P, o ) );
+    
+end );
+
+##
+InstallMethod( SetOfGeneratingMorphisms,
+        "for a proset or poset of a CAP category",
+        [ IsProsetOrPosetOfCapCategory and IsFinite ],
+        
+  function( P )
+    
+    return List( SetOfGeneratingMorphisms( AmbientCategory( P ) ), m ->
+                 MorphismConstructor( P,
+                         ObjectConstructor( P, Source( m ) ),
+                         m,
+                         ObjectConstructor( P, Range( m ) ) ) );
+    
+end );
+
+##
+InstallMethod( DefiningTripleOfUnderlyingQuiver,
+        "for a proset or poset of a CAP category",
+        [ IsProsetOrPosetOfCapCategory ],
+        
+  function( P )
+    
+    return DefiningTripleOfUnderlyingQuiver( AmbientCategory( P ) );
     
 end );
 

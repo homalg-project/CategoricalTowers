@@ -34,7 +34,7 @@ K := K / P;
 S := SliceCategoryOverTensorUnit( P );
 #! SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) )
 L := PosetOfCategory( S );
-#! Poset( SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )
+#! PosetOfCategory( SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )
 I := I / S / L;
 #! An object in the poset given by: An object in the slice category given by:
 #! <An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>

@@ -34,28 +34,28 @@ K := K / P;
 S := LazyCategory( SliceCategoryOverTensorUnit( P ) );
 #! LazyCategory( SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )
 L := LazyCategory( PosetOfCategory( S ) );
-#! LazyCategory( Poset( LazyCategory( SliceCategoryOverTensorUnit(
-#!   LazyCategory( Rows( Q[x,y] ) ) ) ) ) )
+#! LazyCategory( PosetOfCategory( LazyCategory(
+#! SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )
 I := I / S; SetLabel( I, "I" );
 #! <An evaluated object in LazyCategory(
 #!  SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )>
 I := I / L; SetLabel( I, "I" );
-#! <An evaluated object in LazyCategory( Poset( LazyCategory(
+#! <An evaluated object in LazyCategory( PosetOfCategory( LazyCategory(
 #!  SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )>
 J := J / S; SetLabel( J, "J" );
 #! <An evaluated object in LazyCategory(
 #!  SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )>
 J := J / L; SetLabel( J, "J" );
-#! <An evaluated object in LazyCategory( Poset( LazyCategory(
+#! <An evaluated object in LazyCategory( PosetOfCategory( LazyCategory(
 #!  SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )>
 K := K / S; SetLabel( K, "K" );
 #! <An evaluated object in LazyCategory(
 #!  SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )>
 K := K / L; SetLabel( K, "K" );
-#! <An evaluated object in LazyCategory( Poset( LazyCategory(
+#! <An evaluated object in LazyCategory( PosetOfCategory( LazyCategory(
 #!  SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )>
 IqJ := InternalHom( J, I ); ## this is the ideal quotient I : J
-#! <An object in LazyCategory( Poset( LazyCategory(
+#! <An object in LazyCategory( PosetOfCategory( LazyCategory(
 #!  SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )>
 IsHomSetInhabited( K, IqJ );
 #! true
