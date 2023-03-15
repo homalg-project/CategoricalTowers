@@ -212,12 +212,12 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     skeletal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "skeletal", false );
     
     if IsIdenticalObj( skeletal, true ) then
-        name := "Poset";
+        name := "PosetOfCategory";
         category_filter := IsPosetOfCapCategory;
         category_object_filter := IsCapCategoryObjectInPosetOfACategory;
         category_morphism_filter := IsCapCategoryMorphismInPosetOfACategory;
     else
-        name := "Proset";
+        name := "ProsetOfCategory";
         category_filter := IsProsetOfCapCategory;
         category_object_filter := IsCapCategoryObjectInProsetOfACategory;
         category_morphism_filter := IsCapCategoryMorphismInProsetOfACategory;

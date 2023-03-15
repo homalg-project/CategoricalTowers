@@ -14,10 +14,10 @@ F := CategoryOfRows( R );
 S := SliceCategoryOverTensorUnit( F );
 #! SliceCategoryOverTensorUnit( Rows( Q[x,y] ) )
 P := PosetOfCategory( S );
-#! Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
+#! PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
 Display( P );
 #! A CAP category with name
-#! Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):
+#! PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):
 #! 
 #! 16 primitive operations were used to derive 253 operations for this category
 #! which algorithmically
@@ -30,10 +30,12 @@ Display( P );
 #! * IsStrictCocartesianCategory
 #! * IsStrictMonoidalCategory
 L := StablePosetOfCategory( P );
-#! StablePoset( Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )
+#! StablePosetOfCategory( PosetOfCategory(
+#! SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )
 Display( L );
 #! A CAP category with name
-#! StablePoset( Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):
+#! StablePosetOfCategory( PosetOfCategory(
+#! SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):
 #! 
 #! 15 primitive operations were used to derive 303 operations for this category
 #! which algorithmically
@@ -82,7 +84,7 @@ IJqJ := InternalHom( J, IJ ); ## this is the ideal quotient IJ : J
 IJqJ = I;
 #! true
 iota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );
-#! <An epi-, monomorphism in StablePoset( Poset( \
+#! <An epi-, monomorphism in StablePosetOfCategory( PosetOfCategory(
 #!  SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )>
 IsWellDefined( iota );
 #! true
