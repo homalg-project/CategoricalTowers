@@ -206,7 +206,7 @@ LazyCategory( Rows( Q[x,y] ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SliceCategoryOverTensorUnit( P );</span>
 SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := PosetOfCategory( S );</span>
-Poset( SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )
+PosetOfCategory( SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := I / S / L;</span>
 An object in the poset given by: An object in the slice category given by:
 &lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
@@ -256,7 +256,7 @@ LazyCategory( Rows( Q[x,y] ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SliceCategoryOverTensorUnit( P );</span>
 SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := PosetOfCategory( S );</span>
-Poset( SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )
+PosetOfCategory( SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := I / S / L;</span>
 An object in the poset given by: An object in the slice category given by:
 &lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
@@ -306,28 +306,28 @@ LazyCategory( Rows( Q[x,y] ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := LazyCategory( SliceCategoryOverTensorUnit( P ) );</span>
 LazyCategory( SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := LazyCategory( PosetOfCategory( S ) );</span>
-LazyCategory( Poset( LazyCategory( SliceCategoryOverTensorUnit(
-  LazyCategory( Rows( Q[x,y] ) ) ) ) ) )
+LazyCategory( PosetOfCategory( LazyCategory(
+SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := I / S; SetLabel( I, "I" );</span>
 &lt;An evaluated object in LazyCategory(
  SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := I / L; SetLabel( I, "I" );</span>
-&lt;An evaluated object in LazyCategory( Poset( LazyCategory(
+&lt;An evaluated object in LazyCategory( PosetOfCategory( LazyCategory(
  SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := J / S; SetLabel( J, "J" );</span>
 &lt;An evaluated object in LazyCategory(
  SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := J / L; SetLabel( J, "J" );</span>
-&lt;An evaluated object in LazyCategory( Poset( LazyCategory(
+&lt;An evaluated object in LazyCategory( PosetOfCategory( LazyCategory(
  SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := K / S; SetLabel( K, "K" );</span>
 &lt;An evaluated object in LazyCategory(
  SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := K / L; SetLabel( K, "K" );</span>
-&lt;An evaluated object in LazyCategory( Poset( LazyCategory(
+&lt;An evaluated object in LazyCategory( PosetOfCategory( LazyCategory(
  SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IqJ := InternalHom( J, I ); ## this is the ideal quotient I : J</span>
-&lt;An object in LazyCategory( Poset( LazyCategory(
+&lt;An object in LazyCategory( PosetOfCategory( LazyCategory(
  SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( K, IqJ );</span>
 true
@@ -356,7 +356,7 @@ Rows( Q[x,y] )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SliceCategoryOverTensorUnit( F );</span>
 SliceCategoryOverTensorUnit( Rows( Q[x,y] ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PosetOfCategory( S );</span>
-Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
+PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;</span>
 An object in the poset given by: An object in the slice category given by:
 &lt;A morphism in Rows( Q[x,y] )&gt;
@@ -386,7 +386,7 @@ An object in the poset given by: An object in the slice category given by:
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJqJ = I;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );</span>
-&lt;An epi-, monomorphism in Poset( SliceCategoryOverTensorUnit( \
+&lt;An epi-, monomorphism in PosetOfCategory( SliceCategoryOverTensorUnit( \
  Rows( Q[x,y] ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iota );</span>
 true
@@ -424,9 +424,10 @@ Rows( Q[x]/( x^2 ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SliceCategoryOverTensorUnit( F );</span>
 SliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PosetOfCategory( S );</span>
-Poset( SliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) ) )
+PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := StablePosetOfCategory( P );</span>
-StablePoset( Poset( SliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) ) ) )
+StablePosetOfCategory( PosetOfCategory(
+SliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;</span>
 An object in the poset given by:
 An object in the slice category given by: &lt;A morphism in Rows( Q[x]/( x^2 ) )&gt;
@@ -470,10 +471,10 @@ Rows( Q[x,y] )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SliceCategoryOverTensorUnit( F );</span>
 SliceCategoryOverTensorUnit( Rows( Q[x,y] ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PosetOfCategory( S );</span>
-Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
+PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
 A CAP category with name
-Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):
+PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):
 
 16 primitive operations were used to derive 253 operations for this category
 which algorithmically
@@ -486,10 +487,12 @@ and furthermore mathematically
 * IsStrictCocartesianCategory
 * IsStrictMonoidalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := StablePosetOfCategory( P );</span>
-StablePoset( Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )
+StablePosetOfCategory( PosetOfCategory(
+SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( L );</span>
 A CAP category with name
-StablePoset( Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):
+StablePosetOfCategory( PosetOfCategory(
+SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):
 
 15 primitive operations were used to derive 303 operations for this category
 which algorithmically
@@ -538,7 +541,7 @@ An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJqJ = I;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );</span>
-&lt;An epi-, monomorphism in StablePoset( Poset( \
+&lt;An epi-, monomorphism in StablePosetOfCategory( PosetOfCategory(
  SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iota );</span>
 true
