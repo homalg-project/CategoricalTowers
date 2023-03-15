@@ -531,6 +531,37 @@ InstallMethod( StablePosetOfCategory,
     
 end );
 
+##
+InstallMethod( \.,
+        "for a proset or poset of a CAP category and a positive integer",
+        [ IsProsetOrPosetOfCapCategory, IsPosInt ],
+        
+  function( P, string_as_int )
+    local name, C, cell;
+    
+    name := NameRNam( string_as_int );
+    
+    C := AmbientCategory( P );
+    
+    cell := C.(name);
+    
+    if IsCapCategoryObject( cell ) then
+        
+        return ObjectConstructor( P, cell );
+        
+    elif IsCapCategoryMorphism( cell ) then
+        
+        return MorphismConstructor( P,
+                       ObjectConstructor( P, Source( cell ) ),
+                       cell,
+                       ObjectConstructor( P, Range( cell ) ) );
+        
+    fi;
+    
+    Error( "<cell> is neither an object nor a morphism in the ambient category <C>" );
+    
+end );
+
 ##################################
 ##
 ## View & Display
