@@ -46,6 +46,12 @@ DeclareAttribute( "FiniteStrictProductCompletion",
         IsCapCategory );
 #! @InsertChunk TerminalCategory_as_FiniteStrictProductCompletion
 
+CapJitAddTypeSignature( "FiniteStrictProductCompletion", [ IsCapCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( FiniteStrictProductCompletion( input_types[1].category ) );
+    
+end );
+
 ####################################
 #
 #! @Section Attributes

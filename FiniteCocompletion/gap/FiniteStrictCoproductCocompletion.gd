@@ -46,6 +46,12 @@ DeclareAttribute( "FiniteStrictCoproductCocompletion",
         IsCapCategory );
 #! @InsertChunk TerminalCategory_as_FiniteStrictCoproductCocompletion
 
+CapJitAddTypeSignature( "FiniteStrictCoproductCocompletion", [ IsCapCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( FiniteStrictCoproductCocompletion( input_types[1].category ) );
+    
+end );
+
 ####################################
 #
 #! @Section Attributes
