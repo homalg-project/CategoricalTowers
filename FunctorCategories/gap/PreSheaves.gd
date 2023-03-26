@@ -166,6 +166,13 @@ DeclareOperation( "ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ] );
 
 #! @Description
+#!  Apply the presheaf <A>F</A> to the morphism <A>mor</A> which is either a generating morphism or an identity morphism.
+#! @Arguments F, mor
+#! @Returns a &CAP; morphism
+DeclareOperation( "ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity",
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ] );
+
+#! @Description
 #!  Apply the presheaf morphism <A>eta</A> to the object <A>obj</A>.
 #!  The shorthand is <A>eta</A>(<A>o</A>).
 #! @Arguments eta, obj

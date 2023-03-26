@@ -2370,6 +2370,22 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
 end );
 
 ##
+InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity,
+        "for a presheaf category, an object in it, and a CAP morphism",
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ],
+        
+  function ( PSh, F, morB )
+    
+    if IsEqualToIdentityMorphism( Source( PSh ), morB ) then
+        return IdentityMorphism( Range( PSh ),
+                       ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
+    fi;
+    
+    return ValuesOfPreSheaf( F )[2][SafeUniquePosition( SetOfGeneratingMorphisms( Source( PSh ) ), morB )];
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject,
         "for a presheaf category, a morphism in it, and a CAP object",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject ],
