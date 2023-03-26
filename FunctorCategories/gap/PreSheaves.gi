@@ -1139,7 +1139,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 
                 H := RangeCategoryOfHomomorphismStructure( PSh );
                 
-                ## the component eta_o defines a morphism DistinguishedObjectOfHomomorphismStructure( PSh ) -> Hom( o, o ), for o in objects:
                 mors := List( ListOfValues( ValuesOnAllObjects( eta ) ),
                               m -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, m ) );
                 
