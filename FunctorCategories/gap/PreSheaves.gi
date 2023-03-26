@@ -2457,7 +2457,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     
     objects := Concatenation( List( [ 0 .. nr_objs - 1 ], i -> ListWithIdenticalEntries( Length( F_vals[1][1 + i] ), objs[1 + i] ) ) );
     
-    offsets := List( [ 0 .. nr_objs - 1 ], i -> Sum( [ 1 .. i ], j -> Length( F_vals[1][j] ) ) );
+    offsets := List( [ 0 .. nr_objs - 1 ], i -> Sum( List( [ 1 .. i ], j -> Length( F_vals[1][j] ) ) ) );
     
     triples :=
       function( j )
