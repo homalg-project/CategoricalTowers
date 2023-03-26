@@ -2350,7 +2350,7 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
     
     if IsInt( pos ) then
         return ValuesOfPreSheaf( F )[2][pos];
-    elif IsOne( Source( PSh ), morB ) then
+    elif IsEqualToIdentityMorphism( Source( PSh ), morB ) then
         return IdentityMorphism( Range( PSh ),
                        ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
     fi;
