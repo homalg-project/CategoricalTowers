@@ -480,10 +480,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     #          R(t(m)) --R(m)-> R(s(m))
                     
                     l := List( etas, eta ->
-                               [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
-                                 ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                                 ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
-                                 ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
+                               [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Range( morB ) )
+                                 ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Source( eta ), morB )
+                                 ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Range( eta ), morB )
+                                 ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Source( morB ) )
                                  ] );
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
@@ -528,10 +528,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     #          R(t(m)) --R(m)-> R(s(m))
                     
                     l := List( etas, eta ->
-                               [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
-                                 ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                                 ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
-                                 ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
+                               [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Range( morB ) )
+                                 ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Source( eta ), morB )
+                                 ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Range( eta ), morB )
+                                 ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Source( morB ) )
                                  ] );
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
@@ -603,10 +603,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     #             v                v
                     #          R(t(m)) --R(m)-> R(s(m))
                     
-                    L := [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
-                           ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                           ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
-                           ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
+                    L := [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Range( morB ) )
+                           ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Source( eta ), morB )
+                           ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Range( eta ), morB )
+                           ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Source( morB ) )
                            ];
                     
                     return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
@@ -2300,7 +2300,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( ApplyObjectInPreSheafCategoryToObject,
+InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject,
         "for a presheaf category, an object in it, and a CAP object",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject ],
         
@@ -2339,7 +2339,7 @@ InstallMethod( UnderlyingCapTwoCategoryCell,
 end );
 
 ##
-InstallMethod( ApplyObjectInPreSheafCategoryToMorphism,
+InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism,
         "for a presheaf category, an object in it, and a CAP morphism",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ],
         
@@ -2352,7 +2352,7 @@ InstallMethod( ApplyObjectInPreSheafCategoryToMorphism,
         return ValuesOfPreSheaf( F )[2][pos];
     elif IsOne( Source( PSh ), morB ) then
         return IdentityMorphism( Range( PSh ),
-                       ApplyObjectInPreSheafCategoryToObject( PSh, F, Source( morB ) ) );
+                       ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
     fi;
     
     B_op := OppositeOfSource( PSh );
@@ -2363,14 +2363,14 @@ InstallMethod( ApplyObjectInPreSheafCategoryToMorphism,
                        ObjectInFpCategory( B_op, OppositePath( UnderlyingVertex( Source( morB ) ) ) ) );
     
     return FunctorMorphismOperation( UnderlyingCapTwoCategoryCell( PSh, F ) )(
-                   ApplyObjectInPreSheafCategoryToObject( PSh, F, Range( morB ) ),
+                   ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Range( morB ) ),
                    morB_op,
-                   ApplyObjectInPreSheafCategoryToObject( PSh, F, Source( morB ) ) );
+                   ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
     
 end );
 
 ##
-InstallMethod( ApplyMorphismInPreSheafCategoryToObject,
+InstallMethodForCompilerForCAP( ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject,
         "for a presheaf category, a morphism in it, and a CAP object",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject ],
         
@@ -2394,9 +2394,9 @@ InstallMethod( CallFuncList,
     PSh := CapCategory( F );
     
     if IsCapCategoryObject( L[1] ) then
-        return ApplyObjectInPreSheafCategoryToObject( PSh, F, L[1] );
+        return ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, L[1] );
     elif IsCapCategoryMorphism( L[1] ) then
-        return ApplyObjectInPreSheafCategoryToMorphism( PSh, F, L[1] );
+        return ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, F, L[1] );
     fi;
     
     Error( "the argument ", L[1], " is neither an object nor a morphism in ", Source( F ), "\n" );
@@ -2411,7 +2411,7 @@ InstallMethod( CallFuncList,
   function ( eta, L )
     
     if IsCapCategoryObject( L[1] ) then
-        return ApplyMorphismInPreSheafCategoryToObject( CapCategory( eta ), eta, L[1] );
+        return ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( CapCategory( eta ), eta, L[1] );
     fi;
     
     Error( "the argument ", L[1], " is not an object in ", Source( Source( eta ) ), "\n" );
