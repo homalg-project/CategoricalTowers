@@ -4,6 +4,21 @@
 # Declarations
 #
 
+DeclareOperation( "CoequalizerDataOfPreSheaf",
+    [ IsCapCategory, IsObjectInPreSheafCategory ] );
+
+DeclareOperation( "ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion",
+    [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInFiniteStrictCoproductCocompletion ] );
+
+DeclareOperation( "ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion",
+    [ IsCapCategory, IsObjectInPreSheafCategory, IsMorphismInFiniteStrictCoproductCocompletion ] );
+
+DeclareOperation( "ExternalHomAsEqualizerOnObjects",
+    [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ] );
+
+DeclareOperation( "ExternalHomAsEqualizerOnMorphisms",
+    [ IsCapCategory, IsMorphismInPreSheafCategory, IsMorphismInPreSheafCategory ] );
+
 DeclareOperation( "ExternalHomDiagram",
     [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ] );
 

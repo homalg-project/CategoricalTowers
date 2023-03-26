@@ -1211,6 +1211,124 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             Add( PSh!.compiler_hints.category_attribute_names,
                  "AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory" );
             
+            if IsCategoryOfSkeletalFinSets( C ) then
+                
+                ##
+                AddHomomorphismStructureOnObjects( PSh,
+                  function ( PSh, F, G )
+                    local H, hom_equalizer_diagram;
+                    
+                    H := RangeCategoryOfHomomorphismStructure( PSh );
+                    
+                    hom_equalizer_diagram := ExternalHomAsEqualizerOnObjects( PSh, F, G );
+                    
+                    return Equalizer( H,
+                                   DirectProduct( H, hom_equalizer_diagram[1] ),
+                                   hom_equalizer_diagram[2] );
+                    
+                end );
+                
+                ## η: F → G, ρ: S → T
+                AddHomomorphismStructureOnMorphismsWithGivenObjects( PSh,
+                  function ( PSh, s, eta, rho, r )
+                    
+                    return EqualizerFunctorialWithGivenEqualizers( RangeCategoryOfHomomorphismStructure( PSh ),
+                                   s,
+                                   ExternalHomAsEqualizerOnObjects( PSh, Range( eta ), Source( rho ) )[2],
+                                   ExternalHomAsEqualizerOnMorphisms( PSh, eta, rho ),
+                                   ExternalHomAsEqualizerOnObjects( PSh, Source( eta ), Range( rho ) )[2],
+                                   r );
+                    
+                end );
+                
+                ##
+                AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( PSh,
+                  function ( PSh, eta )
+                    local C, H, mors, distinguished_object, mor, hom_equalizer_diagram;
+                    
+                    C := Range( PSh );
+                    
+                    H := RangeCategoryOfHomomorphismStructure( PSh );
+                    
+                    mors := List( ListOfValues( ValuesOnAllObjects( eta ) ),
+                                  m -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, m ) );
+                    
+                    distinguished_object := DistinguishedObjectOfHomomorphismStructure( PSh );
+                    
+                    mor := UniversalMorphismIntoDirectProduct( H,
+                                   List( mors, Range ),
+                                   distinguished_object,
+                                   mors );
+                    
+                    hom_equalizer_diagram := ExternalHomAsEqualizerOnObjects( PSh, Source( eta ), Range( eta ) );
+                    
+                    return UniversalMorphismIntoEqualizer( H,
+                                   DirectProduct( H, hom_equalizer_diagram[1] ),
+                                   hom_equalizer_diagram[2],
+                                   distinguished_object,
+                                   mor );
+                    
+                end );
+                
+                ##
+                AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh,
+                  function ( PSh, F, G, iota )
+                    local C, H, hom_equalizer_diagram, hom_F_V_G, emb, mor,
+                          F_vals, F_lengths, nr_objs, hom_F_V_G_diagrams, hom_F_V_G_diagram_collected, hom_F_V_G_diagram, prjs, G_vals, etas;
+                    
+                    C := Range( PSh );
+                    
+                    H := RangeCategoryOfHomomorphismStructure( PSh );
+                    
+                    hom_equalizer_diagram := ExternalHomAsEqualizerOnObjects( PSh, F, G );
+                    
+                    hom_F_V_G_diagram := hom_equalizer_diagram[1];
+                    
+                    hom_F_V_G := DirectProduct( H, hom_F_V_G_diagram );
+                    
+                    emb := EmbeddingOfEqualizer( H,
+                                   hom_F_V_G,
+                                   hom_equalizer_diagram[2] );
+                    
+                    mor := PreCompose( C,
+                                   iota,
+                                   emb );
+                    
+                    F_vals := ListOfValues( ValuesOfPreSheaf( F )[1] );
+                    
+                    F_lengths := List( F_vals, Length );
+                    
+                    nr_objs := DefiningTripleOfUnderlyingQuiver( Source( PSh ) )[1];
+                    
+                    hom_F_V_G_diagrams := List( [ 1 .. nr_objs ], i -> hom_F_V_G_diagram{[ 1 + Sum( F_lengths{[ 1 .. i - 1 ]} ) .. Sum( F_lengths{[ 1 .. i ]} ) ]} );
+                    
+                    hom_F_V_G_diagram_collected := List( hom_F_V_G_diagrams, L -> DirectProduct( H, L ) );
+                    
+                    prjs := List( [ 1 .. nr_objs ], i ->
+                                  ProjectionInFactorOfDirectProductWithGivenDirectProduct( H,
+                                          hom_F_V_G_diagram_collected,
+                                          i,
+                                          hom_F_V_G ) );
+                    
+                    G_vals := ValuesOfPreSheaf( G )[1];
+                    
+                    etas := List( [ 1 .. nr_objs ], i ->
+                                  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( H,
+                                          F_vals[i],
+                                          G_vals[i],
+                                          PreCompose( H,
+                                                  mor,
+                                                  prjs[i] ) ) );
+                    
+                    return CreatePreSheafMorphismByValues( PSh,
+                                   F,
+                                   etas,
+                                   G );
+                    
+                end );
+                
+            fi;
+            
         fi;
         
         ## for an Abelian H install cheaper methods
