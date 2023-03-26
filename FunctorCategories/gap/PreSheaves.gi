@@ -1208,6 +1208,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 
             end );
             
+            Add( PSh!.compiler_hints.category_attribute_names,
+                 "AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory" );
+            
         fi;
         
         ## for an Abelian H install cheaper methods
@@ -2481,7 +2484,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     
     decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], triples ) );
     
-    return CreateColimitQuiver( FiniteColimitCocompletionWithStrictCoproducts( B ),
+    return CreateColimitQuiver( AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory( PSh ),
                    Pair( objects,
                          decorated_morphisms ) );
     
@@ -2505,7 +2508,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
           IsObjectInFiniteColimitCocompletionWithStrictCoproducts ],
         
   function ( PSh, source, phi, range )
-    local B, C, defining_triple, nr_objs, nr_mors, source_datum, phi_vals, map_of_objects,
+    local B, C, defining_triple, nr_objs, nr_mors, Bhat, source_datum, phi_vals, map_of_objects,
           range_vals, range_offsets, imgs, map_of_decorated_morphisms;
     
     B := Source( PSh );
@@ -2515,7 +2518,9 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
     nr_objs := defining_triple[1];
     nr_mors := defining_triple[2];
     
-    source_datum := ObjectDatum( CapCategory( source ), source );
+    Bhat := AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory( PSh );
+    
+    source_datum := ObjectDatum( Bhat, source );
     
     phi_vals := ListOfValues( ValuesOnAllObjects( phi ) );
     
@@ -2536,7 +2541,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
     
     map_of_decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], imgs ) );
     
-    return CreateMorphismOfColimitQuivers( FiniteColimitCocompletionWithStrictCoproducts( B ),
+    return CreateMorphismOfColimitQuivers( Bhat,
                    source,
                    Pair( map_of_objects,
                          map_of_decorated_morphisms ),
@@ -2562,11 +2567,11 @@ InstallOtherMethodForCompilerForCAP( SomeDiagramOfRepresentables,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
-    local B, diagram, Yoneda, triple;
+    local Bhat, diagram, Yoneda, triple;
     
-    B := Source( PSh );
+    Bhat := AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    diagram := ObjectDatum( FiniteColimitCocompletionWithStrictCoproducts( B ),
+    diagram := ObjectDatum( Bhat,
                        CoYonedaLemmaOnObjects( PSh, F ) );
     
     Yoneda := YonedaEmbeddingData( PSh );

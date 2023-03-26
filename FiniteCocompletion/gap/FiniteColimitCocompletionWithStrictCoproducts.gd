@@ -74,3 +74,18 @@ DeclareOperation( "CreateColimitQuiver",
 #!
 DeclareOperation( "CreateMorphismOfColimitQuivers",
         [ IsObjectInFiniteColimitCocompletionWithStrictCoproducts, IsList ] );
+
+#! @Description
+#!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
+#!  the equivalent category <C>FiniteColimitCocompletionWithStrictCoproducts</C>( $C$ ).
+#! @Arguments PSh
+#! @Returns a &CAP; category
+DeclareAttribute( "AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory",
+        IsPreSheafCategory );
+
+CapJitAddTypeSignature( "AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory", [ IsPreSheafCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( FiniteColimitCocompletionWithStrictCoproducts( Source( input_types[1].category ) ) );
+    
+end );
