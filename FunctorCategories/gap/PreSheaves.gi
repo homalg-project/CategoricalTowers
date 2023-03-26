@@ -2347,9 +2347,7 @@ InstallMethod( ApplyObjectInPreSheafCategoryToMorphism,
     
     if IsInt( pos ) then
         return ValuesOfPreSheaf( F )[2][pos];
-    fi;
-    
-    if IsOne( morB ) then
+    elif IsOne( Source( PSh ), morB ) then
         return IdentityMorphism( Range( PSh ),
                        ApplyObjectInPreSheafCategoryToObject( PSh, F, Source( morB ) ) );
     fi;
