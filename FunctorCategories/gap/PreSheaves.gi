@@ -2517,7 +2517,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
     
     source_datum := ObjectDatum( CapCategory( source ), source );
     
-    phi_vals := ValuesOnAllObjects( phi );
+    phi_vals := ListOfValues( ValuesOnAllObjects( phi ) );
     
     map_of_objects := Pair( AsList( CoproductFunctorial( C, phi_vals ) ),
                             List( source_datum[1], objB -> IdentityMorphism( B, objB ) ) );
