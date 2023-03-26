@@ -71,7 +71,7 @@ CapJitAddTypeSignature( "Source", [ IsPreSheafCategory ],
 end );
 
 #! @Description
-#!  The source category $V$ of the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$).
+#!  The range category $V$ of the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$).
 #! @Arguments PSh
 #! @Returns a &CAP; category
 DeclareAttribute( "Range",

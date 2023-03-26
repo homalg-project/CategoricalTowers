@@ -6,8 +6,8 @@
 
 ##
 InstallMethodForCompilerForCAP( ExternalHomDiagram,
-          [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ],
-          
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ],
+        
   function ( PSh, F, G )
     local defining_triple, nr_o, nr_m, mors, F_o, G_o, C, sources,
           F_m, G_m, mor_pair, morphisms, objects;
