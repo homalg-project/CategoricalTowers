@@ -2474,7 +2474,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
             Assert( 0, Source( mors[1 + j] ) = objects[1 + s] );
             #% CAP_JIT_DROP_NEXT_STATEMENT
             Assert( 0, Range( mors[1 + j] ) = objects[1 + t] );
-            return [ s, mors[1 + j], t ];
+            return Triple( s, mors[1 + j], t );
         end;
         return List( Source( Fmor ), triple );
     end;
