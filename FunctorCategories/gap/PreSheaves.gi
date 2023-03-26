@@ -480,10 +480,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     #          R(t(m)) --R(m)-> R(s(m))
                     
                     l := List( etas, eta ->
-                               [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
-                                 ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                                 ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
-                                 ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
+                               [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Range( morB ) )
+                                 ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Source( eta ), morB )
+                                 ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Range( eta ), morB )
+                                 ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Source( morB ) )
                                  ] );
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
@@ -528,10 +528,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     #          R(t(m)) --R(m)-> R(s(m))
                     
                     l := List( etas, eta ->
-                               [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
-                                 ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                                 ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
-                                 ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
+                               [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Range( morB ) )
+                                 ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Source( eta ), morB )
+                                 ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Range( eta ), morB )
+                                 ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Source( morB ) )
                                  ] );
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
@@ -603,10 +603,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     #             v                v
                     #          R(t(m)) --R(m)-> R(s(m))
                     
-                    L := [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
-                           ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                           ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
-                           ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
+                    L := [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Range( morB ) )
+                           ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Source( eta ), morB )
+                           ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Range( eta ), morB )
+                           ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Source( morB ) )
                            ];
                     
                     return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
@@ -1139,7 +1139,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 
                 H := RangeCategoryOfHomomorphismStructure( PSh );
                 
-                ## the component eta_o defines a morphism DistinguishedObjectOfHomomorphismStructure( PSh ) -> Hom( o, o ), for o in objects:
                 mors := List( ListOfValues( ValuesOnAllObjects( eta ) ),
                               m -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, m ) );
                 
@@ -1208,6 +1207,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                G );
                 
             end );
+            
+            Add( PSh!.compiler_hints.category_attribute_names,
+                 "AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory" );
             
         fi;
         
@@ -2298,7 +2300,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( ApplyObjectInPreSheafCategoryToObject,
+InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject,
         "for a presheaf category, an object in it, and a CAP object",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject ],
         
@@ -2337,7 +2339,7 @@ InstallMethod( UnderlyingCapTwoCategoryCell,
 end );
 
 ##
-InstallMethod( ApplyObjectInPreSheafCategoryToMorphism,
+InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism,
         "for a presheaf category, an object in it, and a CAP morphism",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ],
         
@@ -2348,11 +2350,9 @@ InstallMethod( ApplyObjectInPreSheafCategoryToMorphism,
     
     if IsInt( pos ) then
         return ValuesOfPreSheaf( F )[2][pos];
-    fi;
-    
-    if IsOne( morB ) then
+    elif IsEqualToIdentityMorphism( Source( PSh ), morB ) then
         return IdentityMorphism( Range( PSh ),
-                       ApplyObjectInPreSheafCategoryToObject( PSh, F, Source( morB ) ) );
+                       ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
     fi;
     
     B_op := OppositeOfSource( PSh );
@@ -2363,14 +2363,30 @@ InstallMethod( ApplyObjectInPreSheafCategoryToMorphism,
                        ObjectInFpCategory( B_op, OppositePath( UnderlyingVertex( Source( morB ) ) ) ) );
     
     return FunctorMorphismOperation( UnderlyingCapTwoCategoryCell( PSh, F ) )(
-                   ApplyObjectInPreSheafCategoryToObject( PSh, F, Range( morB ) ),
+                   ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Range( morB ) ),
                    morB_op,
-                   ApplyObjectInPreSheafCategoryToObject( PSh, F, Source( morB ) ) );
+                   ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
     
 end );
 
 ##
-InstallMethod( ApplyMorphismInPreSheafCategoryToObject,
+InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity,
+        "for a presheaf category, an object in it, and a CAP morphism",
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ],
+        
+  function ( PSh, F, morB )
+    
+    if IsEqualToIdentityMorphism( Source( PSh ), morB ) then
+        return IdentityMorphism( Range( PSh ),
+                       ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
+    fi;
+    
+    return ValuesOfPreSheaf( F )[2][SafeUniquePosition( SetOfGeneratingMorphisms( Source( PSh ) ), morB )];
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject,
         "for a presheaf category, a morphism in it, and a CAP object",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject ],
         
@@ -2394,9 +2410,9 @@ InstallMethod( CallFuncList,
     PSh := CapCategory( F );
     
     if IsCapCategoryObject( L[1] ) then
-        return ApplyObjectInPreSheafCategoryToObject( PSh, F, L[1] );
+        return ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, L[1] );
     elif IsCapCategoryMorphism( L[1] ) then
-        return ApplyObjectInPreSheafCategoryToMorphism( PSh, F, L[1] );
+        return ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, F, L[1] );
     fi;
     
     Error( "the argument ", L[1], " is neither an object nor a morphism in ", Source( F ), "\n" );
@@ -2411,7 +2427,7 @@ InstallMethod( CallFuncList,
   function ( eta, L )
     
     if IsCapCategoryObject( L[1] ) then
-        return ApplyMorphismInPreSheafCategoryToObject( CapCategory( eta ), eta, L[1] );
+        return ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( CapCategory( eta ), eta, L[1] );
     fi;
     
     Error( "the argument ", L[1], " is not an object in ", Source( Source( eta ) ), "\n" );
@@ -2460,7 +2476,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     
     objects := Concatenation( List( [ 0 .. nr_objs - 1 ], i -> ListWithIdenticalEntries( Length( F_vals[1][1 + i] ), objs[1 + i] ) ) );
     
-    offsets := List( [ 0 .. nr_objs - 1 ], i -> Sum( [ 1 .. i ], j -> Length( F_vals[1][j] ) ) );
+    offsets := List( [ 0 .. nr_objs - 1 ], i -> Sum( List( [ 1 .. i ], j -> Length( F_vals[1][j] ) ) ) );
     
     triples :=
       function( j )
@@ -2477,14 +2493,14 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
             Assert( 0, Source( mors[1 + j] ) = objects[1 + s] );
             #% CAP_JIT_DROP_NEXT_STATEMENT
             Assert( 0, Range( mors[1 + j] ) = objects[1 + t] );
-            return [ s, mors[1 + j], t ];
+            return Triple( s, mors[1 + j], t );
         end;
         return List( Source( Fmor ), triple );
     end;
     
     decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], triples ) );
     
-    return CreateColimitQuiver( FiniteColimitCocompletionWithStrictCoproducts( B ),
+    return CreateColimitQuiver( AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory( PSh ),
                    Pair( objects,
                          decorated_morphisms ) );
     
@@ -2508,7 +2524,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
           IsObjectInFiniteColimitCocompletionWithStrictCoproducts ],
         
   function ( PSh, source, phi, range )
-    local B, C, defining_triple, nr_objs, nr_mors, source_datum, phi_vals, map_of_objects,
+    local B, C, defining_triple, nr_objs, nr_mors, Bhat, source_datum, phi_vals, map_of_objects,
           range_vals, range_offsets, imgs, map_of_decorated_morphisms;
     
     B := Source( PSh );
@@ -2518,9 +2534,11 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
     nr_objs := defining_triple[1];
     nr_mors := defining_triple[2];
     
-    source_datum := ObjectDatum( CapCategory( source ), source );
+    Bhat := AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    phi_vals := ValuesOnAllObjects( phi );
+    source_datum := ObjectDatum( Bhat, source );
+    
+    phi_vals := ListOfValues( ValuesOnAllObjects( phi ) );
     
     map_of_objects := Pair( AsList( CoproductFunctorial( C, phi_vals ) ),
                             List( source_datum[1], objB -> IdentityMorphism( B, objB ) ) );
@@ -2539,7 +2557,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
     
     map_of_decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], imgs ) );
     
-    return CreateMorphismOfColimitQuivers( FiniteColimitCocompletionWithStrictCoproducts( B ),
+    return CreateMorphismOfColimitQuivers( Bhat,
                    source,
                    Pair( map_of_objects,
                          map_of_decorated_morphisms ),
@@ -2565,11 +2583,11 @@ InstallOtherMethodForCompilerForCAP( SomeDiagramOfRepresentables,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
-    local B, diagram, Yoneda, triple;
+    local Bhat, diagram, Yoneda, triple;
     
-    B := Source( PSh );
+    Bhat := AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    diagram := ObjectDatum( FiniteColimitCocompletionWithStrictCoproducts( B ),
+    diagram := ObjectDatum( Bhat,
                        CoYonedaLemmaOnObjects( PSh, F ) );
     
     Yoneda := YonedaEmbeddingData( PSh );

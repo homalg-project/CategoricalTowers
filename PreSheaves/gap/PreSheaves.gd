@@ -91,6 +91,13 @@ end );
 DeclareAttribute( "OppositeOfSource",
         IsPreSheafCategory );
 
+CapJitAddTypeSignature( "OppositeOfSource", [ IsPreSheafCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( Opposite( Source( input_types[1].category ) ) );
+    
+end );
+
 #! @Description
 #!  The source of the presheaf <A>F</A>.
 #! @Arguments F

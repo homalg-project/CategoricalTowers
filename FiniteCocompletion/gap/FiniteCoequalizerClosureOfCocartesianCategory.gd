@@ -53,9 +53,33 @@ fi;
 DeclareAttribute( "DefiningCoequalizerPair",
         IsObjectInFiniteCoequalizerClosureOfCocartesianCategory );
 
+CapJitAddTypeSignature( "DefiningCoequalizerPair", [ IsObjectInFiniteCoequalizerClosureOfCocartesianCategory ],
+ function ( input_types )
+    
+    Assert( 0, IsFiniteCoequalizerClosureOfCocartesianCategory( input_types[1].category ) );
+    
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ),
+                  CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ] );
+    
+end );
+
 #! @Arguments quiver_morphism
 DeclareAttribute( "DefiningPairOfMorphismBetweenCoequalizerPairs",
         IsMorphismInFiniteCoequalizerClosureOfCocartesianCategory );
+
+CapJitAddTypeSignature( "DefiningPairOfMorphismBetweenCoequalizerPairs", [ IsMorphismInFiniteCoequalizerClosureOfCocartesianCategory ],
+ function ( input_types )
+    
+    Assert( 0, IsFiniteCoequalizerClosureOfCocartesianCategory( input_types[1].category ) );
+    
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ),
+                  CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ] );
+    
+end );
 
 ####################################
 #

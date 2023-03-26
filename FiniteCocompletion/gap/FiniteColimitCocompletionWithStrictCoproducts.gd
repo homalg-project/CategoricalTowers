@@ -48,9 +48,46 @@ DeclareCategory( "IsMorphismInFiniteColimitCocompletionWithStrictCoproducts",
 DeclareAttribute( "DefiningPairOfColimitQuiver",
         IsObjectInFiniteColimitCocompletionWithStrictCoproducts );
 
+CapJitAddTypeSignature( "DefiningPairOfColimitQuiver", [ IsObjectInFiniteColimitCocompletionWithStrictCoproducts ],
+  function ( input_types )
+    
+    Assert( 0, IsFiniteColimitCocompletionWithStrictCoproducts( input_types[1].category ) );
+    
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ rec( filter := IsList,
+                       element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ),
+                  rec( filter := IsList,
+                       element_type :=
+                       rec( filter := IsNTuple,
+                            element_types :=
+                            [ rec( filter := IsInt ),
+                              CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ),
+                              rec( filter := IsInt ) ] ) ) ] );
+    
+end );
+
 #! @Arguments colimit_quiver_morphism
 DeclareAttribute( "DefiningPairOfColimitQuiverMorphism",
         IsMorphismInFiniteColimitCocompletionWithStrictCoproducts );
+
+CapJitAddTypeSignature( "DefiningPairOfColimitQuiverMorphism", [ IsMorphismInFiniteColimitCocompletionWithStrictCoproducts ],
+  function ( input_types )
+    
+    Assert( 0, IsFiniteColimitCocompletionWithStrictCoproducts( input_types[1].category ) );
+    
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ rec( filter := IsNTuple,
+                       element_types :=
+                       [ rec( filter := IsList,
+                              element_type := rec( filter := IsInt ) ),
+                         rec( filter := IsList,
+                              element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ] ),
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsInt ) ) ] );
+    
+end );
 
 ####################################
 #
@@ -67,6 +104,12 @@ DeclareAttribute( "FiniteColimitCocompletionWithStrictCoproducts",
 #! @InsertChunk FinBouquetsAsFiniteColimitCocompletion
 #! @InsertChunk FinReflexiveQuiversAsFiniteColimitCocompletion
 
+CapJitAddTypeSignature( "FiniteColimitCocompletionWithStrictCoproducts", [ IsCapCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( FiniteColimitCocompletionWithStrictCoproducts( input_types[1].category ) );
+    
+end );
+
 #!
 DeclareOperation( "CreateColimitQuiver",
         [ IsFiniteColimitCocompletionWithStrictCoproducts, IsList ] );
@@ -74,3 +117,18 @@ DeclareOperation( "CreateColimitQuiver",
 #!
 DeclareOperation( "CreateMorphismOfColimitQuivers",
         [ IsObjectInFiniteColimitCocompletionWithStrictCoproducts, IsList ] );
+
+#! @Description
+#!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
+#!  the equivalent category <C>FiniteColimitCocompletionWithStrictCoproducts</C>( $C$ ).
+#! @Arguments PSh
+#! @Returns a &CAP; category
+DeclareAttribute( "AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory",
+        IsPreSheafCategory );
+
+CapJitAddTypeSignature( "AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory", [ IsPreSheafCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( FiniteColimitCocompletionWithStrictCoproducts( Source( input_types[1].category ) ) );
+    
+end );

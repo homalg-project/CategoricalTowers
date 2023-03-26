@@ -241,6 +241,16 @@ InstallMethod( FiniteColimitCocompletionWithStrictCoproducts,
     
 end );
 
+##
+InstallMethod( AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory,
+        [ IsPreSheafCategory ],
+        
+  function( PSh )
+    
+    return FiniteColimitCocompletionWithStrictCoproducts( Source( PSh ) );
+    
+end );
+
 ####################################
 #
 # View, Print, Display and LaTeX methods:

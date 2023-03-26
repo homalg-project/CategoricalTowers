@@ -149,6 +149,37 @@ CapJitAddTypeSignature( "ListOfValues", [ IsList ],
     
 end );
 
+#! @Description
+#!  Apply the presheaf <A>F</A> to the object <A>obj</A>.
+#!  The shorthand is <A>F</A>(<A>obj</A>).
+#! @Arguments F, obj
+#! @Returns a &CAP; object
+DeclareOperation( "ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject",
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject ] );
+
+#! @Description
+#!  Apply the presheaf <A>F</A> to the morphism <A>mor</A>.
+#!  The shorthand is <A>F</A>(<A>mor</A>).
+#! @Arguments F, mor
+#! @Returns a &CAP; morphism
+DeclareOperation( "ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism",
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ] );
+
+#! @Description
+#!  Apply the presheaf <A>F</A> to the morphism <A>mor</A> which is either a generating morphism or an identity morphism.
+#! @Arguments F, mor
+#! @Returns a &CAP; morphism
+DeclareOperation( "ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity",
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ] );
+
+#! @Description
+#!  Apply the presheaf morphism <A>eta</A> to the object <A>obj</A>.
+#!  The shorthand is <A>eta</A>(<A>o</A>).
+#! @Arguments eta, obj
+#! @Returns a &CAP; morphism
+DeclareOperation( "ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject",
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject ] );
+
 ####################################
 #
 #! @Section Constructors
