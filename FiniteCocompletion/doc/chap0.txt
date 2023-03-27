@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2023.03-12
+                                   2023.03-14
   
   
-                                 15 March 2023
+                                 27 March 2023
   
   
                                 Mohamed Barakat
@@ -119,6 +119,7 @@
       7.3-1 FiniteColimitCocompletionWithStrictCoproducts
       7.3-2 CreateColimitQuiver
       7.3-3 CreateMorphismOfColimitQuivers
+      7.3-4 AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory
   8 [33X[0;0YPrecompilation[133X
     8.1 [33X[0;0YPrecompiling SkeletalFinSets[133X
   
