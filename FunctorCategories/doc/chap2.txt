@@ -361,6 +361,35 @@
   
   [1X2.3 [33X[0;0YOperations[133X[101X
   
+  [1X2.3-1 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject[101X
+  
+  [33X[1;0Y[29X[2XApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject[102X( [3XF[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YApply the presheaf [3XF[103X to the object [3Xobj[103X. The shorthand is [3XF[103X([3Xobj[103X).[133X
+  
+  [1X2.3-2 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism[101X
+  
+  [33X[1;0Y[29X[2XApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism[102X( [3XF[103X, [3Xmor[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YApply the presheaf [3XF[103X to the morphism [3Xmor[103X. The shorthand is [3XF[103X([3Xmor[103X).[133X
+  
+  [1X2.3-3 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity[101X
+  
+  [33X[1;0Y[29X[2XApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity[102X( [3XF[103X, [3Xmor[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YApply  the  presheaf  [3XF[103X  to  the  morphism  [3Xmor[103X which is either a generating
+  morphism or an identity morphism.[133X
+  
+  [1X2.3-4 ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject[101X
+  
+  [33X[1;0Y[29X[2XApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject[102X( [3Xeta[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YApply the presheaf morphism [3Xeta[103X to the object [3Xobj[103X. The shorthand is [3Xeta[103X([3Xo[103X).[133X
+  
   
   [1X2.4 [33X[0;0Y[5XGAP[105X[101X[1X Categories[133X[101X
   

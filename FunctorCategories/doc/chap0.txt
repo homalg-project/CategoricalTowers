@@ -6,7 +6,7 @@
                             [1X Categories of functors [101X
   
   
-                                   2023.03-25
+                                   2023.03-29
   
   
                                  27 March 2023
@@ -94,6 +94,10 @@
       2.2-7 NerveTruncatedInDegree2
       2.2-8 SievesOfPathsToTruth
     2.3 [33X[0;0YOperations[133X
+      2.3-1 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject
+      2.3-2 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism
+      2.3-3 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity
+      2.3-4 ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject
     2.4 [33X[0;0Y[5XGAP[105X Categories[133X
       2.4-1 IsPreSheafCategoryOfFpEnrichedCategory
       2.4-2 IsCellInPreSheafCategoryOfFpEnrichedCategory

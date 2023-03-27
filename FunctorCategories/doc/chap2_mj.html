@@ -48,7 +48,12 @@
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7DE8E16C7C2D387B">2.3 <span class="Heading">Operations</span></a>
 </span>
-</div>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C89E11C7CE7731E">2.3-1 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X81634D6E7DCD5F98">2.3-2 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X838382A379533D06">2.3-3 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X818BD23678113F05">2.3-4 ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject</a></span>
+</div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7D03633A7D98026B">2.4 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></a>
 </span>
 <div class="ContSSBlock">
@@ -429,6 +434,42 @@ true
 <p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
 
 <h4>2.3 <span class="Heading">Operations</span></h4>
+
+<p><a id="X7C89E11C7CE7731E" name="X7C89E11C7CE7731E"></a></p>
+
+<h5>2.3-1 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject</code>( <var class="Arg">F</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> object</p>
+
+<p>Apply the presheaf <var class="Arg">F</var> to the object <var class="Arg">obj</var>. The shorthand is <var class="Arg">F</var>(<var class="Arg">obj</var>).</p>
+
+<p><a id="X81634D6E7DCD5F98" name="X81634D6E7DCD5F98"></a></p>
+
+<h5>2.3-2 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism</code>( <var class="Arg">F</var>, <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p>Apply the presheaf <var class="Arg">F</var> to the morphism <var class="Arg">mor</var>. The shorthand is <var class="Arg">F</var>(<var class="Arg">mor</var>).</p>
+
+<p><a id="X838382A379533D06" name="X838382A379533D06"></a></p>
+
+<h5>2.3-3 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity</code>( <var class="Arg">F</var>, <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p>Apply the presheaf <var class="Arg">F</var> to the morphism <var class="Arg">mor</var> which is either a generating morphism or an identity morphism.</p>
+
+<p><a id="X818BD23678113F05" name="X818BD23678113F05"></a></p>
+
+<h5>2.3-4 ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject</code>( <var class="Arg">eta</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p>Apply the presheaf morphism <var class="Arg">eta</var> to the object <var class="Arg">obj</var>. The shorthand is <var class="Arg">eta</var>(<var class="Arg">o</var>).</p>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
