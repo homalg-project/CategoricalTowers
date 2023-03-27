@@ -990,15 +990,14 @@ end );
 ####################################
 
 ##
-InstallMethod( ViewObj,
-          [ IsObjectInFunctorCategory ],
+InstallMethod( ViewString,
+        [ IsObjectInFunctorCategory ],
+        
   function ( F )
     local algebroid, vertices, arrows, v_dim, v_string, a_dim, a_string, string;
     
     if not (IsMatrixCategory( Range( CapCategory( F ) ) ) or IsCategoryOfRows( Range( CapCategory( F ) ) )) then
-      
-      TryNextMethod();
-      
+        TryNextMethod();
     fi;
     
     algebroid := Source( CapCategory( F ) );
@@ -1034,28 +1033,30 @@ InstallMethod( ViewObj,
     
     string := Concatenation( v_string, "; ", a_string );
     
-    Print( "<", string, ">" );
+    return Concatenation( "<", string, ">" );
     
 end );
 
 ##
-InstallMethod( Display,
-          [ IsObjectInFunctorCategory ],
+InstallMethod( DisplayString,
+        [ IsObjectInFunctorCategory ],
+        
   function ( F )
-    local objects, images_of_objects, morphisms, images_of_morphisms, i;
+    local objects, images_of_objects, string, i, morphisms, images_of_morphisms;
     
     objects := SetOfObjects( Source( F ) );
     
     images_of_objects := ValuesOfFunctor( F )[1];
-
+    
+    string := "";
+    
     for i in [ 1 .. Length( objects ) ] do
-      
-      Print( "Image of " ); ViewObj( objects[i] ); Print( ":\n" );
-      
-      Display( images_of_objects[i] );
-      
-      Print( "\n" );
-      
+        
+        string := Concatenation( string,
+                          "Image of ", ViewString( objects[i] ), ":\n",
+                          StringDisplay( images_of_objects[i] ),
+                          "\n" );
+        
     od;
     
     morphisms := SetOfGeneratingMorphisms( Source( F ) );
@@ -1063,30 +1064,28 @@ InstallMethod( Display,
     images_of_morphisms := ValuesOfFunctor( F )[2];
     
     for i in [ 1 .. Length( morphisms ) ] do
-       
-      Print( "Image of " ); ViewObj( morphisms[i] ); Print( ":\n" );
-      
-      Display( images_of_morphisms[i] );
-      
-      Print( "\n" );
-      
+        
+        string := Concatenation( string,
+                          "Image of ", StringView( morphisms[i] ), ":\n",
+                          StringDisplay( images_of_morphisms[i] ),
+                          "\n" );
+        
     od;
     
-    Print( "An object in ", Name( CapCategory( F ) ), " given by the above data\n" );
+    return Concatenation( string,
+                   "An object in ", Name( CapCategory( F ) ), " given by the above data\n" );
     
 end );
 
-
 ##
-InstallMethod( ViewObj,
-          [ IsMorphismInFunctorCategory ],
+InstallMethod( ViewString,
+        [ IsMorphismInFunctorCategory ],
+        
   function ( eta )
     local vertices, s_dim, r_dim, string;
     
     if not (IsMatrixCategory( Range( CapCategory( eta ) ) ) or IsCategoryOfRows( Range( CapCategory( eta ) ) )) then
-      
-      TryNextMethod();
-      
+        TryNextMethod();
     fi;
     
     vertices := List( SetOfObjects( Source( Source( eta ) ) ), UnderlyingVertex );
@@ -1101,31 +1100,34 @@ InstallMethod( ViewObj,
     
     string := JoinStringsWithSeparator( string, ", " );
     
-    Print( "<", string, ">" );
+    return Concatenation( "<", string, ">" );
     
 end );
 
 ##
-InstallMethod( Display,
-          [ IsMorphismInFunctorCategory ],
+InstallMethod( DisplayString,
+        [ IsMorphismInFunctorCategory ],
+        
   function ( eta )
-    local objects, images_of_objects, i;
+    local objects, images_of_objects, string, i;
     
     objects := SetOfObjects( Source( Source( eta ) ) );
     
     images_of_objects := ValuesOnAllObjects( eta );
     
+    string := "";
+    
     for i in [ 1 .. Length( objects ) ] do
-      
-      Print( "Image of " ); ViewObj( objects[i] ); Print( ":\n" );
-      
-      Display( images_of_objects[i] );
-
-      Print( "\n" );
-      
+        
+        string := Concatenation( string,
+                          "Image of ", ViewString( objects[i] ), ":\n",
+                          StringDisplay( images_of_objects[i] ),
+                          "\n" );
+        
     od;
     
-    Print( "A morphism in ", Name( CapCategory( eta ) ), " given by the above data\n" );
+    return Concatenation( string,
+                   "A morphism in ", Name( CapCategory( eta ) ), " given by the above data\n" );
     
 end );
 
