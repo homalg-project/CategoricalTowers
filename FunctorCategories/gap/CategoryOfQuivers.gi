@@ -94,7 +94,9 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
     
     F := CategoryFromDataTables( F : FinalizeCategory := true );
     
-    F_hat := FiniteCocompletion( F, category_of_skeletal_finsets : FinalizeCategory := true );
+    F_hat := FiniteCocompletion( F : FinalizeCategory := true );
+    
+    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( F ), category_of_skeletal_finsets ) );
     
     ## specify the attributes the compiler should fully resolve during compilation
     F!.compiler_hints.category_attribute_resolving_functions :=
