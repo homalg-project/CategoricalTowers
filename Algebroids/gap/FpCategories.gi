@@ -2388,13 +2388,13 @@ end );
 ####################################
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for an object in a f.p. category",
         [ IsObjectInFpCategory ],
         
   function( o )
     
-    Print( "<", StringView( UnderlyingVertex( o ) ), ">" );
+    return Concatenation( "<", StringView( UnderlyingVertex( o ) ), ">" );
     
 end );
 

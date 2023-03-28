@@ -952,13 +952,13 @@ end );
 ####################################
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for an object in a category from nerve data",
         [ IsObjectInCategoryFromNerveData ],
         
   function( obj )
     
-    Print( "<(", CapCategory( obj )!.labels[1][1 + MapOfObject( obj )( 0 )], ")>" );
+    return Concatenation( "<(", CapCategory( obj )!.labels[1][1 + MapOfObject( obj )( 0 )], ")>" );
     
 end );
 

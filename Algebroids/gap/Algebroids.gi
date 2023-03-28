@@ -2206,13 +2206,13 @@ end );
 ####################################
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for an object in an algebroid",
         [ IsObjectInAlgebroid ],
         
   function( o )
     
-    Print( "<", StringView( UnderlyingVertex( o ) ), ">" );
+    return Concatenation( "<", StringView( UnderlyingVertex( o ) ), ">" );
     
 end );
 
