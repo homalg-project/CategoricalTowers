@@ -392,6 +392,19 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
     
 end );
 
+##
+InstallOtherMethod( \/,
+            [ IsCapCategoryObject, IsQuotientCapCategory ],
+  
+  { o, quotient_cat } -> ObjectConstructor( quotient_cat, o )
+);
+
+##
+InstallOtherMethod( \/,
+            [ IsCapCategoryMorphism, IsQuotientCapCategory ],
+  
+  { alpha, quotient_cat } -> MorphismConstructor( quotient_cat, Source( alpha ) / quotient_cat, alpha, Range( alpha ) / quotient_cat )
+);
 
 ##
 InstallOtherMethod( LaTeXOutput,
