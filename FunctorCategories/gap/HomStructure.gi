@@ -5,6 +5,177 @@
 #
 
 ##
+InstallMethodForCompilerForCAP( CoequalizerDataOfPreSheaf,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh, F )
+    local Bhat, F_colimit_quiver, F_coequalizer_pair, CoequalizerPairs, F_coequalizer_pair_as_presheaf;
+    
+    Bhat := AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory( PSh );
+    
+    F_colimit_quiver := CoYonedaLemmaOnObjects( PSh, F );
+    
+    F_coequalizer_pair := ModelingObject( Bhat, F_colimit_quiver );
+    
+    CoequalizerPairs := ModelingCategory( Bhat );
+    
+    F_coequalizer_pair_as_presheaf := ModelingObject( CoequalizerPairs, F_coequalizer_pair );
+    
+    return ObjectDatum( ModelingCategory( CoequalizerPairs ), F_coequalizer_pair_as_presheaf );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInFiniteStrictCoproductCocompletion ],
+        
+  function ( PSh, G, object )
+    local UC, object_data;
+    
+    ## TODO:
+    ## this code should be produced by something similar to ExtendFunctorToFiniteStrictProductCompletion:
+    ## Apply Hom(-,G) to an object (in UC)
+    
+    UC := CapCategory( object );
+    
+    object_data := ObjectDatum( UC, object );
+    
+    return List( object_data[2], objB -> ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, G, objB ) );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsMorphismInFiniteStrictCoproductCocompletion ],
+        
+  function ( PSh, G, morphism )
+    local G_on_source_diagram, G_on_range_diagram, D, G_on_source, G_on_range,
+          UC, morphism_data, map, mor, G_mor, prj, cmp;
+    
+    ## TODO:
+    ## this code should be produced by something similar to ExtendFunctorToFiniteStrictProductCompletion:
+    ## Apply Hom(-,G) to a morphism (in UC)
+    
+    G_on_source_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, Source( morphism ) );
+    G_on_range_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, Range( morphism ) );
+    
+    D := Range( PSh );
+    
+    G_on_source := DirectProduct( D, G_on_source_diagram );
+    G_on_range := DirectProduct( D, G_on_range_diagram );
+    
+    UC := CapCategory( morphism );
+    
+    morphism_data := MorphismDatum( UC, morphism );
+    
+    map := morphism_data[1];
+    mor := morphism_data[2];
+    
+    G_mor := List( mor, morB -> ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity( PSh, G, morB ) );
+    
+    prj := List( map, i ->
+                 ProjectionInFactorOfDirectProductWithGivenDirectProduct( D,
+                         G_on_range_diagram,
+                         1 + i,
+                         G_on_range ) );
+    
+    cmp := List( [ 0 .. Length( map ) - 1 ], i ->
+                 PreCompose( D,
+                         prj[1 + i],
+                         G_mor[1 + i] ) );
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( D,
+                   G_on_source_diagram,
+                   G_on_range,
+                   cmp,
+                   G_on_source );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( ExternalHomAsEqualizerOnObjects,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh, F, G )
+    local F_data, D, V, s, t;
+    
+    F_data := CoequalizerDataOfPreSheaf( PSh, F );
+    
+    D := Range( PSh );
+    
+    V := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, F_data[1][1] );
+    
+    s := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, G, F_data[2][1] );
+    t := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, G, F_data[2][2] );
+    
+    return Pair( V, [ s, t ] );
+    
+end );
+
+## η: F → G, ρ: S → T
+InstallMethodForCompilerForCAP( ExternalHomAsEqualizerOnMorphisms,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh, eta, rho )
+    local Bhat, F, G, eta_colimit_quiver_morphism,
+          eta_coequalizer_pair_morphism, CoequalizerPairs, eta_coequalizer_pair_as_presheaf_morphism, eta_coequalizer_pair_as_presheaf_morphism_datum,
+          S, eta_V_S, F_data, F_V, UC, F_V_data, diagram_F_V_S, T, diagram_F_V_T, D, F_V_rho;
+    
+    Bhat := AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory( PSh );
+    
+    F := Source( eta );
+    G := Range( eta );
+    
+    eta_colimit_quiver_morphism := CoYonedaLemmaOnMorphisms( PSh,
+                                           CoYonedaLemmaOnObjects( PSh, F ),
+                                           eta,
+                                           CoYonedaLemmaOnObjects( PSh, G ) );
+    
+    eta_coequalizer_pair_morphism :=
+      ModelingMorphism( Bhat, eta_colimit_quiver_morphism );
+    
+    CoequalizerPairs := ModelingCategory( Bhat );
+    
+    eta_coequalizer_pair_as_presheaf_morphism :=
+      ModelingMorphism( CoequalizerPairs, eta_coequalizer_pair_morphism );
+    
+    eta_coequalizer_pair_as_presheaf_morphism_datum :=
+      MorphismDatum( ModelingCategory( CoequalizerPairs ), eta_coequalizer_pair_as_presheaf_morphism )[1];
+    
+    S := Source( rho );
+    
+    eta_V_S := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, S, eta_coequalizer_pair_as_presheaf_morphism_datum );
+    
+    F_data := CoequalizerDataOfPreSheaf( PSh, F );
+    
+    F_V := F_data[1][1];
+    
+    UC := CapCategory( F_V );
+    
+    F_V_data := ObjectDatum( UC, F_V )[2];
+    
+    diagram_F_V_S := List( F_V_data, objB -> ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, S, objB ) );
+    
+    T := Range( rho );
+    
+    diagram_F_V_T := List( F_V_data, objB -> ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, T, objB ) );
+    
+    D := Range( PSh );
+    
+    F_V_rho := DirectProductFunctorialWithGivenDirectProducts( D,
+                       DirectProduct( D, diagram_F_V_S ),
+                       diagram_F_V_S,
+                       List( F_V_data, objB -> ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, rho, objB ) ),
+                       diagram_F_V_T,
+                       DirectProduct( D, diagram_F_V_T ) );
+    
+    return PreCompose( D,
+                   eta_V_S,
+                   F_V_rho );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( ExternalHomDiagram,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ],
         

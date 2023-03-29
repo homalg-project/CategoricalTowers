@@ -168,44 +168,37 @@ Perform( L, Display );
 #! { 0,..., 3 } ⱶ[ 0, 0, 0, 0 ]→ { 0,..., 3 }
 #! 
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
-#! / [ a*a*a = a*a ], SkeletalFinSets )
-#! given by the above data
+#! / [ a*a*a = a*a ], SkeletalFinSets ) given by the above data
 #! Image of <(1)>:
 #! { 0,..., 3 } ⱶ[ 3, 0, 0, 0 ]→ { 0,..., 3 }
 #! 
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
-#! / [ a*a*a = a*a ], SkeletalFinSets )
-#! given by the above data
+#! / [ a*a*a = a*a ], SkeletalFinSets ) given by the above data
 #! Image of <(1)>:
 #! { 0,..., 3 } ⱶ[ 0, 1, 2, 3 ]→ { 0,..., 3 }
 #! 
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
-#! / [ a*a*a = a*a ], SkeletalFinSets )
-#! given by the above data
+#! / [ a*a*a = a*a ], SkeletalFinSets ) given by the above data
 #! Image of <(1)>:
 #! { 0,..., 3 } ⱶ[ 3, 1, 2, 3 ]→ { 0,..., 3 }
 #! 
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
-#! / [ a*a*a = a*a ], SkeletalFinSets )
-#! given by the above data
+#! / [ a*a*a = a*a ], SkeletalFinSets ) given by the above data
 #! Image of <(1)>:
 #! { 0,..., 3 } ⱶ[ 0, 2, 3, 3 ]→ { 0,..., 3 }
 #! 
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
-#! / [ a*a*a = a*a ], SkeletalFinSets )
-#! given by the above data
-#! Image of <(1)>:
-#! { 0,..., 3 } ⱶ[ 0, 3, 3, 3 ]→ { 0,..., 3 }
-#! 
-#! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
-#! / [ a*a*a = a*a ], SkeletalFinSets )
-#! given by the above data
+#! / [ a*a*a = a*a ], SkeletalFinSets ) given by the above data
 #! Image of <(1)>:
 #! { 0,..., 3 } ⱶ[ 3, 2, 3, 3 ]→ { 0,..., 3 }
 #! 
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
-#! / [ a*a*a = a*a ], SkeletalFinSets )
-#! given by the above data
+#! / [ a*a*a = a*a ], SkeletalFinSets ) given by the above data
+#! Image of <(1)>:
+#! { 0,..., 3 } ⱶ[ 0, 3, 3, 3 ]→ { 0,..., 3 }
+#! 
+#! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
+#! / [ a*a*a = a*a ], SkeletalFinSets ) given by the above data
 #! Image of <(1)>:
 #! { 0,..., 3 } ⱶ[ 3, 3, 3, 3 ]→ { 0,..., 3 }
 #! 
