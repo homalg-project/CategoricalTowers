@@ -630,6 +630,8 @@ AddFinalDerivationBundle( # CanonicalIdentificationFromImageObjectToCoimage
                       IsomorphismFromCokernelOfKernelToCoimage ],
   [
     CanonicalIdentificationFromImageObjectToCoimage,
+    [ [ ImageObject, 1 ],
+      [ IdentityMorphism, 1 ] ],
     function( cat, mor )
       
       return IdentityMorphism( cat, ImageObject( cat, mor ) );
@@ -638,6 +640,8 @@ AddFinalDerivationBundle( # CanonicalIdentificationFromImageObjectToCoimage
   ],
   [
     CanonicalIdentificationFromCoimageToImageObject,
+    [ [ ImageObject, 1 ],
+      [ IdentityMorphism, 1 ] ],
     function( cat, mor )
     
       return IdentityMorphism( cat, ImageObject( cat, mor ) );
