@@ -245,6 +245,7 @@ AddFinalDerivationBundle(
           ],
 [
   DistinguishedObjectOfHomomorphismStructure,
+  [ [ TerminalObject, 1, RangeCategoryOfHomomorphismStructure ] ],
   function ( cat )
     local range_cat;
     
@@ -256,6 +257,9 @@ end
 ],
 [
   HomomorphismStructureOnObjects,
+  [ [ TerminalObject, 1, RangeCategoryOfHomomorphismStructure ],
+    [ IsHomSetInhabited, 1 ],
+    [ InitialObject, 1, RangeCategoryOfHomomorphismStructure ] ],
   function ( cat, a, b )
     local range_cat;
     
@@ -271,6 +275,7 @@ end
 ],
 [
   HomomorphismStructureOnMorphismsWithGivenObjects,
+  [ [ UniqueMorphism, 1, RangeCategoryOfHomomorphismStructure ] ],
   function ( cat, s, alpha, gamma, r )
     local range_cat;
     
@@ -282,6 +287,7 @@ end
 ],
 [
   InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects,
+  [ [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1, RangeCategoryOfHomomorphismStructure ] ],
   function( cat, t, alpha, r )
     local range_cat;
     
@@ -293,6 +299,7 @@ end
 ],
 [
   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+  [ [ UniqueMorphism, 1 ] ],
   function( cat, a, b, iota )
     
     return UniqueMorphism( cat, a, b );

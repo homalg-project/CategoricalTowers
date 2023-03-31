@@ -10,9 +10,9 @@
 
 ##
 AddDerivationToCAP( IsHomSetInhabited,
-        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
-          [ DirectProduct, 1 ] ],
-        
+                    [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
+                      [ DirectProduct, 1 ] ],
+                    
   function( cat, S, T )
     
     return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, DirectProduct( cat, S, T ), S );
@@ -22,8 +22,8 @@ end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetI
 
 ##
 AddDerivationToCAP( ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, D, k, P )
     
     return UniqueMorphism( cat, P, D[k] );
@@ -33,8 +33,8 @@ end : Description := "ProjectionInFactorOfDirectProductWithGivenDirectProduct as
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, D, test_object, tau, P )
         
     return UniqueMorphism( cat, test_object, P );
@@ -44,8 +44,8 @@ end : Description := "UniversalMorphismIntoDirectProductWithGivenDirectProduct a
 
 ##
 AddDerivationToCAP( DirectProductFunctorialWithGivenDirectProducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, s, source_diagram, L, range_diagram, r )
         
     return UniqueMorphism( cat, s, r );
@@ -55,8 +55,8 @@ end : Description := "DirectProductFunctorialWithGivenDirectProducts as the uniq
 
 ##
 AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, s, a, b, c, r )
         
     return UniqueMorphism( cat, s, r );
@@ -66,8 +66,8 @@ end : Description := "CartesianAssociatorRightToLeftWithGivenDirectProducts as t
 
 ##
 AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, s, a, b, c, r )
         
     return UniqueMorphism( cat, s, r );
@@ -77,8 +77,8 @@ end : Description := "CartesianAssociatorLeftToRightWithGivenDirectProducts as t
 
 ##
 AddDerivationToCAP( CartesianLeftUnitorWithGivenDirectProduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, M, TM )
         
     return UniqueMorphism( cat, TM, M );
@@ -88,8 +88,8 @@ end : Description := "CartesianLeftUnitorWithGivenDirectProduct as the unique mo
 
 ##
 AddDerivationToCAP( CartesianLeftUnitorInverseWithGivenDirectProduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, M, TM )
         
     return UniqueMorphism( cat, M, TM );
@@ -99,8 +99,8 @@ end : Description := "CartesianLeftUnitorInverseWithGivenDirectProduct as the un
 
 ##
 AddDerivationToCAP( CartesianRightUnitorWithGivenDirectProduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, M, MT )
         
     return UniqueMorphism( cat, MT, M );
@@ -110,8 +110,8 @@ end : Description := "CartesianRightUnitorWithGivenDirectProduct as the unique m
 
 ##
 AddDerivationToCAP( CartesianRightUnitorInverseWithGivenDirectProduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, M, MT )
         
     return UniqueMorphism( cat, M, MT );
@@ -121,8 +121,8 @@ end : Description := "CartesianRightUnitorInverseWithGivenDirectProduct as the u
 
 ##
 AddDerivationToCAP( CartesianBraidingWithGivenDirectProducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, MN, M, N, NM )
         
     return UniqueMorphism( cat, MN, NM );
@@ -132,8 +132,8 @@ end : Description := "CartesianBraidingWithGivenDirectProducts as the unique mor
 
 ##
 AddDerivationToCAP( CartesianBraidingInverseWithGivenDirectProducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, NM, M, N, MN )
         
     return UniqueMorphism( cat, NM, MN );
@@ -147,9 +147,9 @@ end : Description := "CartesianBraidingInverseWithGivenDirectProducts as the uni
 
 ##
 AddDerivationToCAP( IsHomSetInhabited,
-        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
-          [ Coproduct, 1 ], ],
-        
+                    [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
+                      [ Coproduct, 1 ] ],
+                    
   function( cat, S, T )
     
     return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, T, Coproduct( cat, S, T ) );
@@ -159,8 +159,8 @@ end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetI
 
 ##
 AddDerivationToCAP( InjectionOfCofactorOfCoproductWithGivenCoproduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, D, k, I )
     
     return UniqueMorphism( cat, D[k], I );
@@ -170,8 +170,8 @@ end : Description := "InjectionOfCofactorOfCoproductWithGivenCoproduct as the un
 
 ##
 AddDerivationToCAP( UniversalMorphismFromCoproductWithGivenCoproduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, D, test_object, tau, I )
         
     return UniqueMorphism( cat, I, test_object);
@@ -181,8 +181,8 @@ end : Description := "UniversalMorphismFromCoproductWithGivenCoproduct as the un
 
 ##
 AddDerivationToCAP( CoproductFunctorialWithGivenCoproducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, s, source_diagram, L, range_diagram, r )
         
     return UniqueMorphism( cat, s, r );
@@ -192,8 +192,8 @@ end : Description := "CoproductFunctorialWithGivenCoproducts as the unique morph
 
 ##
 AddDerivationToCAP( CocartesianAssociatorRightToLeftWithGivenCoproducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, s, a, b, c, r )
         
     return UniqueMorphism( cat, s, r );
@@ -203,8 +203,8 @@ end : Description := "CocartesianAssociatorRightToLeftWithGivenCoproducts as the
 
 ##
 AddDerivationToCAP( CocartesianAssociatorLeftToRightWithGivenCoproducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, s, a, b, c, r )
         
     return UniqueMorphism( cat, s, r );
@@ -214,8 +214,8 @@ end : Description := "CocartesianAssociatorLeftToRightWithGivenCoproducts as the
 
 ##
 AddDerivationToCAP( CocartesianLeftUnitorWithGivenCoproduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, M, TM )
         
     return UniqueMorphism( cat, TM, M );
@@ -225,8 +225,8 @@ end : Description := "CocartesianLeftUnitorWithGivenCoproduct as the unique morp
 
 ##
 AddDerivationToCAP( CocartesianLeftUnitorInverseWithGivenCoproduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, M, TM )
         
     return UniqueMorphism( cat, M, TM );
@@ -236,8 +236,8 @@ end : Description := "CocartesianLeftUnitorInverseWithGivenCoproduct as the uniq
 
 ##
 AddDerivationToCAP( CocartesianRightUnitorWithGivenCoproduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, M, MT )
         
     return UniqueMorphism( cat, MT, M );
@@ -247,8 +247,8 @@ end : Description := "CocartesianRightUnitorWithGivenCoproduct as the unique mor
 
 ##
 AddDerivationToCAP( CocartesianRightUnitorInverseWithGivenCoproduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, M, MT )
         
     return UniqueMorphism( cat, M, MT );
@@ -258,8 +258,8 @@ end : Description := "CocartesianRightUnitorInverseWithGivenCoproduct as the uni
 
 ##
 AddDerivationToCAP( CocartesianBraidingWithGivenCoproducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, MN, M, N, NM )
         
     return UniqueMorphism( cat, MN, NM );
@@ -269,8 +269,8 @@ end : Description := "CocartesianBraidingWithGivenCoproducts as the unique morph
 
 ##
 AddDerivationToCAP( CocartesianBraidingInverseWithGivenCoproducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, NM, M, N, MN )
         
     return UniqueMorphism( cat, NM, MN );
@@ -284,8 +284,8 @@ end : Description := "CocartesianBraidingInverseWithGivenCoproducts as the uniqu
 
 ##
 AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, s, a, L, r )
     
     return UniqueMorphism( cat, s, r );
@@ -295,8 +295,8 @@ end : Description := "LeftCartesianDistributivityExpandingWithGivenObjects as th
 
 ##
 AddDerivationToCAP( RightCartesianDistributivityExpandingWithGivenObjects,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, s, L, a, r )
     
     return UniqueMorphism( cat, s, r );
@@ -306,8 +306,8 @@ end : Description := "RightCartesianDistributivityExpandingWithGivenObjects as t
 
 ##
 AddDerivationToCAP( LeftCocartesianCodistributivityFactoringWithGivenObjects,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, s, a, L, r )
     
     return UniqueMorphism( cat, s, r );
@@ -317,8 +317,8 @@ end : Description := "LeftCocartesianCodistributivityFactoringWithGivenObjects a
 
 ##
 AddDerivationToCAP( RightCocartesianCodistributivityFactoringWithGivenObjects,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, s, L, a, r )
     
     return UniqueMorphism( cat, s, r );

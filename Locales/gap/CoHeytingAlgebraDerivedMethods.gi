@@ -14,9 +14,9 @@
 ## S ≤ T
 ##
 AddDerivationToCAP( IsHomSetInhabited,
-        [ [ IsInitial, 1 ],
-          [ CoexponentialOnObjects, 1 ] ],
-        
+                    [ [ IsInitial, 1 ],
+                      [ CoexponentialOnObjects, 1 ] ],
+                    
   function( cat, S, T )
     
     return IsInitial( cat, CoexponentialOnObjects( cat, S, T ) );
@@ -30,8 +30,8 @@ end : Description := "IsHomSetInhabited using IsInitial and CoexponentialOnObjec
 
 ##
 AddDerivationToCAP( CoexponentialOnMorphismsWithGivenCoexponentials,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, S, alpha, beta, R )
         
     return UniqueMorphism( cat, S, R );
@@ -41,8 +41,8 @@ end : Description := "CoexponentialOnMorphismsWithGivenCoexponentials as the uni
 
 ##
 AddDerivationToCAP( CocartesianEvaluationMorphismWithGivenRange,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A, B, Coex_A_B_uB )
         
     return UniqueMorphism( cat, A, Coex_A_B_uB );
@@ -52,8 +52,8 @@ end : Description := "CocartesianEvaluationMorphismWithGivenRange as the unique 
 
 ##
 AddDerivationToCAP( CocartesianCoevaluationMorphismWithGivenSource,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A, B, Coex_AuB_B )
         
     return UniqueMorphism( cat, Coex_AuB_B, A );
@@ -63,8 +63,8 @@ end : Description := "CocartesianCoevaluationMorphismWithGivenSource as the uniq
 
 ##
 AddDerivationToCAP( CoproductToCoexponentialAdjunctionMapWithGivenCoexponential,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, C, B, g, Coexp )
             
     return UniqueMorphism( cat, Coexp, C );
@@ -74,8 +74,8 @@ end : Description := "CoproductToCoexponentialAdjunctionMapWithGivenCoexponentia
 
 ##
 AddDerivationToCAP( CoexponentialToCoproductAdjunctionMapWithGivenCoproduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A, B, f, P )
         
         return UniqueMorphism( cat, A, P );
@@ -85,8 +85,8 @@ end : Description := "CoexponentialToCoproductAdjunctionMapWithGivenCoproduct us
 
 ##
 AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, Coex_A_C, A, B, C, Coex_A_BuCoex_B_C )
         
     return UniqueMorphism( cat, Coex_A_C, Coex_A_BuCoex_B_C );
@@ -96,8 +96,8 @@ end : Description := "CocartesianPreCoComposeMorphismWithGivenObjects as the uni
 
 ##
 AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, Coex_A_C, A, B, C, Coex_A_BuCoex_B_C )
         
     return UniqueMorphism( cat, Coex_A_C, Coex_A_BuCoex_B_C );
@@ -107,8 +107,8 @@ end : Description := "CocartesianPostCoComposeMorphismWithGivenObjects as the un
 
 ##
 AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, source, L, range )
         
     return UniqueMorphism( cat, source, range );
@@ -118,9 +118,9 @@ end : Description := "CoexponentialCoproductCompatibilityMorphismWithGivenObject
 
 ##
 AddDerivationToCAP( ConegationOnObjects,
-        [ [ CoexponentialOnObjects, 1 ],
-          [ TerminalObject, 1 ] ],
-        
+                    [ [ CoexponentialOnObjects, 1 ],
+                      [ TerminalObject, 1 ] ],
+                    
   function( cat, A )
     
     return CoexponentialOnObjects( cat, TerminalObject( cat ), A );
@@ -130,10 +130,10 @@ end : Description := "ConegationOnObjects using CoexponentialOnObjects and Termi
 
 ##
 AddDerivationToCAP( ConegationOnMorphismsWithGivenConegations,
-        [ [ CoexponentialOnMorphismsWithGivenCoexponentials, 1 ],
-          [ IdentityMorphism, 1 ],
-          [ TerminalObject, 1 ] ],
-        
+                    [ [ CoexponentialOnMorphismsWithGivenCoexponentials, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ TerminalObject, 1 ] ],
+                    
   function( cat, B_, u, A_ )
     
     return CoexponentialOnMorphismsWithGivenCoexponentials( cat, B_, IdentityMorphism( cat, TerminalObject( cat ) ), u, A_ );
@@ -143,9 +143,9 @@ end : Description := "ConegationOnMorphismsWithGivenConegations using Coexponent
 
 ##
 AddDerivationToCAP( MorphismFromDoubleConegation,
-        [ [ ConegationOnObjects, 2 ],
-          [ UniqueMorphism, 1 ] ],
-        
+                    [ [ ConegationOnObjects, 2 ],
+                      [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A )
     
     return UniqueMorphism( cat, ConegationOnObjects( cat, ConegationOnObjects( cat, A ) ), A );
@@ -155,8 +155,8 @@ end : Description := "MorphismFromDoubleConegation as the unique morphism from t
 
 ##
 AddDerivationToCAP( MorphismFromDoubleConegationWithGivenDoubleConegation,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A, CN )
     
     return UniqueMorphism( cat, CN, A );

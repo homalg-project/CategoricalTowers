@@ -6,8 +6,8 @@
 
 ## FIXME: CategoryFilter := C -> HasIsThinCategory( C ) and IsThinCategory( C ) and CanCompute( C, "UniqueMorphism" )
 AddDerivationToCAP( IsWellDefinedForMorphisms,
-        [ [ IsHomSetInhabited, 1 ] ],
-        
+                    [ [ IsHomSetInhabited, 1 ] ],
+                    
   function( cat, u )
     
     return IsHomSetInhabited( cat, Source( u ), Range( u ) );
@@ -17,7 +17,8 @@ end : Description := "IsWellDefinedForMorphisms checking the inhabitedness of th
 
 ##
 AddDerivationToCAP( IsCongruentForMorphisms,
-        
+                    [  ],
+                    
   function( cat, u1, u2 )
     
     return true;
@@ -27,8 +28,8 @@ end : Description := "two parallel morphisms are always congruent",
 
 ##
 AddDerivationToCAP( AreIsomorphicForObjectsIfIsHomSetInhabited,
-        [ [ IsHomSetInhabited, 1 ] ],
-        
+                    [ [ IsHomSetInhabited, 1 ] ],
+                    
   function( cat, A, B )
     
     return IsHomSetInhabited( cat, B, A );
@@ -38,8 +39,8 @@ end : Description := "AreIsomorphicForObjectsIfIsHomSetInhabited using IsHomSetI
 
 ##
 AddDerivationToCAP( IdentityMorphism,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A )
     
     return UniqueMorphism( cat, A, A );
@@ -49,8 +50,8 @@ end : Description := "IdentityMorphism is the unique endomorphism",
 
 ##
 AddDerivationToCAP( PreCompose,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, u1, u2 )
     
     return UniqueMorphism( cat, Source( u1 ), Range( u2 ) );
@@ -61,9 +62,9 @@ end : Description := "PreCompose is the unique from the source of the pre-morphi
 
 ##
 AddDerivationToCAP( IsTerminal,
-        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
-          [ TerminalObject, 1 ] ],
-        
+                    [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
+                      [ TerminalObject, 1 ] ],
+                    
   function( cat, A )
     
     return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, A, TerminalObject( cat ) );
@@ -73,9 +74,9 @@ end : Description := "IsTerminal using AreIsomorphicForObjectsIfIsHomSetInhabite
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
-        [ [ TerminalObject, 1 ],
-          [ UniqueMorphism, 1 ] ],
-        
+                    [ [ TerminalObject, 1 ],
+                      [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A )
         
     return UniqueMorphism( cat, A, TerminalObject( cat ) );
@@ -85,9 +86,9 @@ end : Description := "UniversalMorphismIntoTerminalObject using the unique morph
 
 ##
 AddDerivationToCAP( IsInitial,
-        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
-          [ InitialObject, 1 ] ],
-        
+                    [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
+                      [ InitialObject, 1 ] ],
+                    
   function( cat, A )
     
     return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, InitialObject( cat ), A );
@@ -97,9 +98,9 @@ end : Description := "IsInitial using AreIsomorphicForObjectsIfIsHomSetInhabited
 
 ##
 AddDerivationToCAP( UniversalMorphismFromInitialObject,
-        [ [ InitialObject, 1 ],
-          [ UniqueMorphism, 1 ] ],
-        
+                    [ [ InitialObject, 1 ],
+                      [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A )
     
     return UniqueMorphism( cat, InitialObject( cat ), A );
@@ -109,8 +110,8 @@ end : Description := "UniversalMorphismFromInitialObject using the unique morphi
 
 ##
 AddDerivationToCAP( IsDominating,
-        [ [ IsHomSetInhabited, 1 ] ],
-        
+                    [ [ IsHomSetInhabited, 1 ] ],
+                    
   function( cat, u1, u2 )
     
     return IsHomSetInhabited( cat, Source( u1 ), Source( u2 ) );
@@ -120,8 +121,8 @@ end : Description := "IsDominating using IsHomSetInhabited applied to the source
 
 ##
 AddDerivationToCAP( IsCodominating,
-        [ [ IsHomSetInhabited, 1 ] ],
-        
+                    [ [ IsHomSetInhabited, 1 ] ],
+                    
   function( cat, u1, u2 )
     
     return IsHomSetInhabited( cat, Range( u2 ), Range( u1 ) );
@@ -131,8 +132,8 @@ end : Description := "IsCodominating using IsHomSetInhabited applied to the rang
 
 ##
 AddDerivationToCAP( Equalizer,
-        [ ],
-        
+                    [  ],
+                    
   function( cat, A, D )
     
     return A;
@@ -142,9 +143,9 @@ end : Description := "Equalizer using Source",
 
 ##
 AddDerivationToCAP( EmbeddingOfEqualizer,
-        [ [ Equalizer, 1 ],
-          [ UniqueMorphism, 1 ] ],
-        
+                    [ [ Equalizer, 1 ],
+                      [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A, D )
     
     return UniqueMorphism( cat, Equalizer( cat, A, D ), A );
@@ -154,9 +155,9 @@ end : Description := "EmbeddingOfEqualizer using the unique morphism into source
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoEqualizer,
-        [ [ Equalizer, 1 ],
-          [ UniqueMorphism, 1 ] ],
-        
+                    [ [ Equalizer, 1 ],
+                      [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A, D, test_object, tau )
     
     return UniqueMorphism( cat, test_object, Equalizer( cat, A, D ) );
@@ -166,8 +167,8 @@ end : Description := "UniversalMorphismIntoEqualizer using the unique morphism f
 
 ##
 AddDerivationToCAP( Coequalizer,
-        [ ],
-        
+                    [  ],
+                    
   function( cat, A, D )
     
     return A;
@@ -177,9 +178,9 @@ end : Description := "Coequalizer using Range",
 
 ##
 AddDerivationToCAP( ProjectionOntoCoequalizer,
-        [ [ Coequalizer, 1 ],
-          [ UniqueMorphism, 1 ] ],
-        
+                    [ [ Coequalizer, 1 ],
+                      [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A, D )
     
     return UniqueMorphism( cat, A, Coequalizer( cat, A, D ) );
@@ -189,9 +190,9 @@ end : Description := "ProjectionOntoCoequalizer using the unique morphism from r
 
 ##
 AddDerivationToCAP( UniversalMorphismFromCoequalizer,
-        [ [ Coequalizer, 1 ],
-          [ UniqueMorphism, 1 ] ],
-        
+                    [ [ Coequalizer, 1 ],
+                      [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A, D, test_object, tau )
     
     return UniqueMorphism( cat, Coequalizer( cat, A, D ), test_object );
@@ -212,8 +213,8 @@ end : Description := "IsMonomorphism is always true in a thin category",
 
 ##
 AddDerivationToCAP( IsEpimorphism,
-        [ ],
-        
+                    [  ],
+                    
   function( cat, alpha )
     
     return true;
@@ -223,8 +224,8 @@ end : Description := "IsEpimorphism is always true in a thin category",
 
 ##
 AddDerivationToCAP( IsLiftableAlongMonomorphism,
-        [ [ IsHomSetInhabited, 1 ] ],
-        
+                    [ [ IsHomSetInhabited, 1 ] ],
+                    
   function( cat, u1, u2 )
     
     return IsHomSetInhabited( cat, Source( u1 ), Source( u2 ) );
@@ -234,8 +235,8 @@ end : Description := "IsLiftableAlongMonomorphism using IsHomSetInhabited",
 
 ##
 AddDerivationToCAP( LiftAlongMonomorphism,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, u1, u2 )
     
     ## the behavior of LiftAlongMonomorphism is unspecified on input violating the specification
@@ -246,8 +247,8 @@ end : Description := "LiftAlongMonomorphism using the unique morphism from the s
 
 ##
 AddDerivationToCAP( IsColiftableAlongEpimorphism,
-        [ [ IsHomSetInhabited, 1 ] ],
-        
+                    [ [ IsHomSetInhabited, 1 ] ],
+                    
   function( cat, u1, u2 )
     
     return IsHomSetInhabited( cat, Range( u1 ), Range( u2 ) );
@@ -257,8 +258,8 @@ end : Description := "IsColiftableAlongEpimorphism using IsHomSetInhabited",
 
 ##
 AddDerivationToCAP( ColiftAlongEpimorphism,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, u1, u2 )
     
     ## the behavior of ColiftAlongEpimorphism is unspecified on input violating the specification
@@ -269,8 +270,8 @@ end : Description := "ColiftAlongEpimorphism using the unique morphism from the 
 
 ##
 AddDerivationToCAP( IsLiftable,
-        [ [ IsLiftableAlongMonomorphism, 1 ] ],
-        
+                    [ [ IsLiftableAlongMonomorphism, 1 ] ],
+                    
   function( cat, alpha, beta )
     
     ## Caution with the order of the arguments!
@@ -281,8 +282,8 @@ end : Description := "IsLiftable using IsLiftableAlongMonomorphism",
 
 ##
 AddDerivationToCAP( Lift,
-        [ [ LiftAlongMonomorphism, 1 ] ],
-        
+                    [ [ LiftAlongMonomorphism, 1 ] ],
+                    
   function( cat, alpha, beta )
     
     ## Caution with the order of the arguments!
@@ -293,8 +294,8 @@ end : Description := "Lift using LiftAlongMonomorphism",
 
 ##
 AddDerivationToCAP( IsColiftable,
-        [ [ IsColiftableAlongEpimorphism, 1 ] ],
-        
+                    [ [ IsColiftableAlongEpimorphism, 1 ] ],
+                    
   function( cat, alpha, beta )
     
     return IsColiftableAlongEpimorphism( cat, alpha, beta );
@@ -304,8 +305,8 @@ end : Description := "IsColiftable using IsColiftableAlongEpimorphism",
 
 ##
 AddDerivationToCAP( Colift,
-        [ [ ColiftAlongEpimorphism, 1 ] ],
-        
+                    [ [ ColiftAlongEpimorphism, 1 ] ],
+                    
   function( cat, alpha, beta )
     
     return ColiftAlongEpimorphism( cat, alpha, beta );
@@ -315,8 +316,8 @@ end : Description := "Colift using ColiftAlongEpimorphism",
 
 ##
 AddDerivationToCAP( IsIsomorphism,
-        [ [ IsHomSetInhabited, 1 ] ],
-        
+                    [ [ IsHomSetInhabited, 1 ] ],
+                    
   function( cat, u )
     
     return IsHomSetInhabited( cat, Range( u ), Source( u ) );
@@ -326,8 +327,8 @@ end : Description := "IsIsomorphism using IsHomSetInhabited",
 
 ##
 AddDerivationToCAP( InverseForMorphisms,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, u )
     
     return UniqueMorphism( cat, Range( u ), Source( u ) );
@@ -337,8 +338,8 @@ end : Description := "InverseForMorphisms using the unique morphism from the ran
 
 ##
 AddDerivationToCAP( IsOne,
-        [ [ IsAutomorphism, 1 ] ],
-        
+                    [ [ IsAutomorphism, 1 ] ],
+                    
   function( cat, mor )
     
     return IsAutomorphism( cat, mor );
@@ -348,9 +349,9 @@ end : Description := "IsOne using IsAutomorphism",
 
 ##
 AddDerivationToCAP( InternalHomOnMorphisms,
-        [ [ InternalHomOnObjects, 2 ],
-          [ UniqueMorphism, 1 ] ],
-        
+                    [ [ InternalHomOnObjects, 2 ],
+                      [ UniqueMorphism, 1 ] ],
+                    
   function( cat, alpha, beta )
         
     return UniqueMorphism( cat, InternalHomOnObjects( cat, Range( alpha ), Source( beta ) ), InternalHomOnObjects( cat, Source( alpha ), Range( beta ) ) );
@@ -360,9 +361,9 @@ end : Description := "InternalHomOnMorphisms as the unique morphism",
 
 ##
 AddDerivationToCAP( InternalCoHomOnMorphisms,
-        [ [ InternalCoHomOnObjects, 2 ],
-          [ UniqueMorphism, 1 ] ],
-        
+                    [ [ InternalCoHomOnObjects, 2 ],
+                      [ UniqueMorphism, 1 ] ],
+                    
   function( cat, alpha, beta )
         
     return UniqueMorphism( cat, InternalCoHomOnObjects( cat, Source( alpha ), Range( beta ) ), InternalCoHomOnObjects( cat, Range( alpha ), Source( beta ) ) );
@@ -376,8 +377,8 @@ end : Description := "InternalCoHomOnMorphisms as the unique morphism",
 
 ##
 AddDerivationToCAP( TensorProductOnMorphismsWithGivenTensorProducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, s, alpha, beta, r )
         
     return UniqueMorphism( cat, s, r );
@@ -387,8 +388,8 @@ end : Description := "TensorProductOnMorphismsWithGivenTensorProducts as the uni
 
 ##
 AddDerivationToCAP( EvaluationMorphismWithGivenSource,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, a, b, s )
     
     return UniqueMorphism( cat, s, b );
@@ -398,8 +399,8 @@ end : Description := "EvaluationMorphismWithGivenSource as the unique morphism",
 
 ##
 AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, a, b, r )
     
     return UniqueMorphism( cat, a, r );
@@ -409,8 +410,8 @@ end : Description := "CoevaluationMorphismWithGivenRange as the unique morphism"
 
 ##
 AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, a, b, r )
     
     return UniqueMorphism( cat, a, r );
@@ -420,8 +421,8 @@ end : Description := "CoclosedEvaluationMorphismWithGivenRange as the unique mor
 
 ##
 AddDerivationToCAP( CoclosedCoevaluationMorphismWithGivenSource,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, a, b, s )
     
     return UniqueMorphism( cat, s, a );
@@ -431,8 +432,8 @@ end : Description := "CoclosedCoevaluationMorphismWithGivenSource as the unique 
 
 ##
 AddDerivationToCAP( AssociatorRightToLeftWithGivenTensorProducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, s, a, b, c, r )
     
     return UniqueMorphism( cat, s, r );
@@ -442,8 +443,8 @@ end : Description := "AssociatorRightToLeftWithGivenTensorProducts as the unique
 
 ##
 AddDerivationToCAP( AssociatorLeftToRightWithGivenTensorProducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, s, a, b, c, r )
     
     return UniqueMorphism( cat, s, r );
@@ -453,8 +454,8 @@ end : Description := "AssociatorLeftToRightWithGivenTensorProducts as the unique
 
 ##
 AddDerivationToCAP( LeftUnitorWithGivenTensorProduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, M, TM )
     
     return UniqueMorphism( cat, TM, M );
@@ -464,8 +465,8 @@ end : Description := "LeftUnitorWithGivenTensorProduct as the unique morphism",
 
 ##
 AddDerivationToCAP( LeftUnitorInverseWithGivenTensorProduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, M, TM )
     
     return UniqueMorphism( cat, M, TM );
@@ -475,8 +476,8 @@ end : Description := "LeftUnitorInverseWithGivenTensorProduct as the unique morp
 
 ##
 AddDerivationToCAP( RightUnitorWithGivenTensorProduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, M, MT )
     
     return UniqueMorphism( cat, MT, M );
@@ -486,8 +487,8 @@ end : Description := "RightUnitorWithGivenTensorProduct as the unique morphism",
 
 ##
 AddDerivationToCAP( RightUnitorInverseWithGivenTensorProduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, M, MT )
     
     return UniqueMorphism( cat, M, MT );
@@ -497,8 +498,8 @@ end : Description := "RightUnitorInverseWithGivenTensorProduct as the unique mor
 
 ##
 AddDerivationToCAP( BraidingWithGivenTensorProducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, MN, M, N, NM )
     
     return UniqueMorphism( cat, MN, NM );
@@ -508,8 +509,8 @@ end : Description := "BraidingWithGivenTensorProducts as the unique morphism",
 
 ##
 AddDerivationToCAP( BraidingInverseWithGivenTensorProducts,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, NM, M, N, MN )
     
     return UniqueMorphism( cat, NM, MN );

@@ -13,9 +13,9 @@
 ## S ≤ T
 ##
 AddDerivationToCAP( IsHomSetInhabited,
-        [ [ IsTerminal, 1 ],
-          [ ExponentialOnObjects, 1 ] ],
-        
+                    [ [ IsTerminal, 1 ],
+                      [ ExponentialOnObjects, 1 ] ],
+                    
   function( cat, S, T )
     
     return IsTerminal( cat, ExponentialOnObjects( cat, S, T ) );
@@ -29,8 +29,8 @@ end : Description := "IsHomSetInhabited using IsTerminal and ExponentialOnObject
 
 ##
 AddDerivationToCAP( ExponentialOnMorphismsWithGivenExponentials,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, S, alpha, beta, R )
         
     return UniqueMorphism( cat, S, R );
@@ -40,8 +40,8 @@ end : Description := "ExponentialOnMorphismsWithGivenExponentials as the unique 
 
 ##
 AddDerivationToCAP( CartesianEvaluationMorphismWithGivenSource,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A, B, Exp_A_B_xA )
         
     return UniqueMorphism( cat, Exp_A_B_xA, B );
@@ -51,8 +51,8 @@ end : Description := "CartesianEvaluationMorphismWithGivenSource as the unique m
 
 ##
 AddDerivationToCAP( CartesianCoevaluationMorphismWithGivenRange,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A, B, Exp_B_AxB )
         
     return UniqueMorphism( cat, A, Exp_B_AxB );
@@ -62,8 +62,8 @@ end : Description := "CartesianCoevaluationMorphismWithGivenRange as the unique 
 
 ##
 AddDerivationToCAP( DirectProductToExponentialAdjunctionMapWithGivenExponential,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A, B, f, Exp )
     
     return UniqueMorphism( cat, A, Exp );
@@ -73,8 +73,8 @@ end : Description := "DirectProductToExponentialAdjunctionMapWithGivenExponentia
 
 ##
 AddDerivationToCAP( ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, B, C, g, DP )
         
         return UniqueMorphism( cat, DP, C );
@@ -84,8 +84,8 @@ end : Description := "ExponentialToDirectProductAdjunctionMapWithGivenDirectProd
 
 ##
 AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, Exp_A_BxExp_B_C, A, B, C, Exp_A_C )
         
     return UniqueMorphism( cat, Exp_A_BxExp_B_C, Exp_A_C );
@@ -95,8 +95,8 @@ end : Description := "CartesianPreComposeMorphismWithGivenObjects as the unique 
 
 ##
 AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, Exp_B_CxExp_A_B, A, B, C, Exp_A_C )
         
     return UniqueMorphism( cat, Exp_B_CxExp_A_B, Exp_A_C );
@@ -106,8 +106,8 @@ end : Description := "CartesianPostComposeMorphismWithGivenObjects as the unique
 
 ##
 AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObjects,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, source, L, range )
         
     return UniqueMorphism( cat, source, range );
@@ -117,9 +117,9 @@ end : Description := "DirectProductExponentialCompatibilityMorphismWithGivenObje
 
 ##
 AddDerivationToCAP( NegationOnObjects,
-        [ [ ExponentialOnObjects, 1 ],
-          [ InitialObject, 1 ] ],
-        
+                    [ [ ExponentialOnObjects, 1 ],
+                      [ InitialObject, 1 ] ],
+                    
   function( cat, A )
     
     return ExponentialOnObjects( cat, A, InitialObject( cat ) );
@@ -129,10 +129,10 @@ end : Description := "NegationOnObjects using ExponentialOnObjects and InitialOb
 
 ##
 AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
-        [ [ ExponentialOnMorphismsWithGivenExponentials, 1 ],
-          [ IdentityMorphism, 1 ],
-          [ InitialObject, 1 ] ],
-        
+                    [ [ ExponentialOnMorphismsWithGivenExponentials, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ InitialObject, 1 ] ],
+                    
   function( cat, B_, u, A_ )
     
     return ExponentialOnMorphismsWithGivenExponentials( cat, B_, u, IdentityMorphism( cat, InitialObject( cat ) ), A_ );
@@ -142,9 +142,9 @@ end : Description := "NegationOnMorphismsWithGivenNegations using ExponentialOnM
 
 ##
 AddDerivationToCAP( MorphismToDoubleNegation,
-        [ [ NegationOnObjects, 2 ],
-          [ UniqueMorphism, 1 ] ],
-        
+                    [ [ NegationOnObjects, 2 ],
+                      [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A )
     
     return UniqueMorphism( cat, A, NegationOnObjects( cat, NegationOnObjects( cat, A ) ) );
@@ -154,8 +154,8 @@ end : Description := "MorphismToDoubleNegation as the unique morphism into the d
 
 ##
 AddDerivationToCAP( MorphismToDoubleNegationWithGivenDoubleNegation,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A, B )
     
     return UniqueMorphism( cat, A, B );

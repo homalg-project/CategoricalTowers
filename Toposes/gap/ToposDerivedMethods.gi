@@ -6,9 +6,9 @@
 
 ##
 AddDerivationToCAP( IsHomSetInhabited,
-        [ [ HomomorphismStructureOnObjects, 1 ],
-          [ IsInitial, 1, RangeCategoryOfHomomorphismStructure ] ],
-        
+                    [ [ HomomorphismStructureOnObjects, 1 ],
+                      [ IsInitial, 1, RangeCategoryOfHomomorphismStructure ] ],
+                    
   function( cat, a, b )
     local range_cat;
     
@@ -26,6 +26,9 @@ CategoryFilter := function( cat )
 
 ## Page 20 in Peter Freyd, Aspect of topoi, Bull. Austral. Math. Soc, 7 (1972)
 AddDerivationToCAP( ImageEmbedding,
+                    [ [ EmbeddingOfEqualizer, 1 ],
+                      [ InjectionOfCofactorOfPushout, 2 ] ],
+                    
   function( cat, mor )
     local D;
     
@@ -39,6 +42,12 @@ end : Description := "the (regular) image as the equalizer of the cokernel-pair"
 
 ##
 AddDerivationToCAP( SubobjectOfClassifyingMorphism,
+                    [ [ TruthMorphismOfTrueWithGivenObjects, 1 ],
+                      [ TerminalObject, 1 ],
+                      [ SubobjectClassifier, 1 ],
+                      [ ProjectionInFactorOfFiberProduct, 1 ],
+                      [ IsMonomorphism, 1 ] ],
+                    
   function( cat, mor )
     local truth, subobject;
     
@@ -59,6 +68,9 @@ end : Description := "SubobjectOfClassifyingMorphism using the fiber product alo
 
 ##
 AddDerivationToCAP( CartesianSquareOfSubobjectClassifier,
+                    [ [ SubobjectClassifier, 1 ],
+                      [ DirectProduct, 1 ] ],
+                    
   function( cat )
     local Omega;
     
@@ -71,6 +83,9 @@ end );
 ## [Goldblatt 1984: Topoi - The categorical analysis of logic, Exercise 4.2.1]
 ## ⊤: 𝟙 ↪ Ω classfies id_𝟙: 𝟙 ↪ 𝟙
 AddDerivationToCAP( TruthMorphismOfTrueWithGivenObjects,
+                    [ [ ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    
   function( cat, T, Omega )
     
     return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( cat,
@@ -82,6 +97,10 @@ end );
 ## [Goldblatt 1984: Topoi - The categorical analysis of logic, Section 5.4 (False)]
 ## ⊥: 𝟙 ↪ Ω classifies ∅ ↪ 𝟙
 AddDerivationToCAP( TruthMorphismOfFalseWithGivenObjects,
+                    [ [ ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier, 1 ],
+                      [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1 ],
+                      [ InitialObject, 1 ] ],
+                    
   function( cat, T, Omega )
     
     return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( cat,
@@ -93,6 +112,10 @@ end );
 ## [Goldblatt 1984: Topoi - The categorical analysis of logic, Section 6.6 (Truth-arrows in a topos)]
 ## ¬: Ω → Ω classifies ⊥: 𝟙 ↪ Ω
 AddDerivationToCAP( TruthMorphismOfNotWithGivenObjects,
+                    [ [ TerminalObject, 1 ],
+                      [ ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier, 1 ],
+                      [ TruthMorphismOfFalseWithGivenObjects, 1 ] ],
+                    
   function( cat, Omega, Omega1 )
     local T;
     
@@ -107,6 +130,11 @@ end );
 ## [Goldblatt 1984: Topoi - The categorical analysis of logic, Section 6.6 (Truth-arrows in a topos)]
 ## ∧: Ω × Ω → Ω classifies the product morphism ⟨ ⊤, ⊤ ⟩: 𝟙 ↪ Ω × Ω of twice the morphism ⊤: 𝟙 ↪ Ω
 AddDerivationToCAP( TruthMorphismOfAndWithGivenObjects,
+                    [ [ TerminalObject, 1 ],
+                      [ TruthMorphismOfTrueWithGivenObjects, 1 ],
+                      [ ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier, 1 ],
+                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ] ],
+                    
   function( cat, Omega2, Omega )
     local T, t;
     
@@ -127,6 +155,15 @@ end );
 ## [Goldblatt 1984: Topoi - The categorical analysis of logic, Section 6.6 (Truth-arrows in a topos)]
 ## ∨: Ω × Ω → Ω classifies [ ⟨⊤_Ω,id_Ω⟩, ⟨id_Ω,⊤_Ω⟩ ]: Ω ⊔ Ω ↪ Ω × Ω
 AddDerivationToCAP( TruthMorphismOfOrWithGivenObjects,
+                    [ [ TerminalObject, 1 ],
+                      [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1 ],
+                      [ TruthMorphismOfTrueWithGivenObjects, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ],
+                      [ ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier, 1 ],
+                      [ UniversalMorphismFromCoproduct, 1 ] ],
+                    
   function( cat, Omega2, Omega )
     local T, t, id, left, right;
     
@@ -163,6 +200,11 @@ end );
 
 ## ⇒: Ω × Ω → Ω classifies the equalizer embedding E ↪ Ω × Ω of (∧: Ω × Ω → Ω, π_1: Ω × Ω → Ω)
 AddDerivationToCAP( TruthMorphismOfImpliesWithGivenObjects,
+                    [ [ ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier, 1 ],
+                      [ EmbeddingOfEqualizer, 1 ],
+                      [ TruthMorphismOfAndWithGivenObjects, 1 ],
+                      [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 1 ] ],
+                    
   function( cat, Omega2, Omega )
     
     return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
@@ -182,6 +224,9 @@ end );
 
 ##
 AddDerivationToCAP( PowerObject,
+                    [ [ ExponentialOnObjects, 1 ],
+                      [ SubobjectClassifier, 1 ] ],
+                    
   function( cat, obj )
     
     return ExponentialOnObjects( cat, obj, SubobjectClassifier( cat ) );
@@ -190,6 +235,10 @@ end );
 
 ##
 AddDerivationToCAP( SingletonMorphismWithGivenPowerObject,
+                    [ [ CartesianDiagonal, 1 ],
+                      [ ClassifyingMorphismOfSubobject, 1 ],
+                      [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
+                    
   function( cat, obj, power_object )
     local Delta, delta, singleton_morphism;
     
@@ -211,6 +260,9 @@ end );
 
 ##
 AddDerivationToCAP( SingletonMorphism,
+                    [ [ SingletonMorphismWithGivenPowerObject, 1 ],
+                      [ PowerObject, 1 ] ],
+                    
   function( cat, obj )
     
     return SingletonMorphismWithGivenPowerObject( cat, obj, PowerObject( cat, obj ) );
@@ -225,7 +277,13 @@ end );
 ## Thm: For ι ∈ Sub(Ω): -ι = ( ι ⇒ ⊥_Sub(Ω) )
 ## Cor: For ι ∈ Sub(X): -ι = ( ι ⇒ ⊥_Sub(X) )
 AddDerivationToCAP( EmbeddingOfPseudoComplementSubobject,
-  function( cat, iota ) # ι: S ↪ X
+                    [ [ SubobjectOfClassifyingMorphism, 1 ],
+                      [ PreCompose, 1 ],
+                      [ ClassifyingMorphismOfSubobject, 1 ],
+                      [ TruthMorphismOfNot, 1 ] ],
+                    
+  function( cat, iota )
+    # ι: S ↪ X
     
     return SubobjectOfClassifyingMorphism( ## -ι: (S - X) ↪ X
                    cat,
@@ -237,6 +295,8 @@ end );
 
 ##
 AddDerivationToCAP( PseudoComplementSubobject,
+                    [ [ EmbeddingOfPseudoComplementSubobject, 1 ] ],
+                    
   function( cat, iota )
     
     return Source( EmbeddingOfPseudoComplementSubobject( cat, iota ) );
@@ -246,6 +306,13 @@ end );
 ## ι1 ∧ ι2 is an operation Sub(X) × Sub(X) → Sub(X) induced by ∧: Ω × Ω → Ω,
 ## however, we instead use the finite completeness and finite cocompletenss of the topos (see next method)
 AddDerivationToCAP( EmbeddingOfIntersectionSubobject,
+                    [ [ SubobjectClassifier, 1 ],
+                      [ SubobjectOfClassifyingMorphism, 1 ],
+                      [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoDirectProduct, 1 ],
+                      [ ClassifyingMorphismOfSubobject, 2 ],
+                      [ TruthMorphismOfAnd, 1 ] ],
+                    
   function( cat, iota1, iota2 )
     local Omega;
     
@@ -266,6 +333,9 @@ end );
 
 ## [Goldblatt 1984: Topoi - The categorical analysis of logic, Theorem 7.1.2]
 AddDerivationToCAP( EmbeddingOfIntersectionSubobject,
+                    [ [ MorphismFromFiberProductToSink, 1 ],
+                      [ IsMonomorphism, 1 ] ],
+                    
   function( cat, iota1, iota2 )
     local subobject;
     
@@ -282,6 +352,8 @@ end );
 
 ##
 AddDerivationToCAP( IntersectionSubobject,
+                    [ [ EmbeddingOfIntersectionSubobject, 1 ] ],
+                    
   function( cat, iota1, iota2 )
     
     return Source( EmbeddingOfIntersectionSubobject( cat, iota1, iota2 ) );
@@ -291,6 +363,13 @@ end );
 ## ι1 ∨ ι2 is an operation Sub(X) × Sub(X) → Sub(X) induced by ∨: Ω × Ω → Ω
 ## however, we instead use the finite completeness and finite cocompletenss of the topos (see next method)
 AddDerivationToCAP( EmbeddingOfUnionSubobject,
+                    [ [ SubobjectClassifier, 1 ],
+                      [ SubobjectOfClassifyingMorphism, 1 ],
+                      [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoDirectProduct, 1 ],
+                      [ ClassifyingMorphismOfSubobject, 2 ],
+                      [ TruthMorphismOfOr, 1 ] ],
+                    
   function( cat, iota1, iota2 )
     local Omega;
     
@@ -310,6 +389,9 @@ end );
 
 ## [Goldblatt 1984: Topoi - The categorical analysis of logic, Theorem 7.1.3]
 AddDerivationToCAP( EmbeddingOfUnionSubobject,
+                    [ [ ImageEmbedding, 1 ],
+                      [ UniversalMorphismFromCoproduct, 1 ] ],
+                    
   function( cat, iota1, iota2 )
     
     return ImageEmbedding( cat,
@@ -322,6 +404,8 @@ end );
 
 ##
 AddDerivationToCAP( UnionSubobject,
+                    [ [ EmbeddingOfUnionSubobject, 1 ] ],
+                    
   function( cat, iota1, iota2 )
     
     return Source( EmbeddingOfUnionSubobject( cat, iota1, iota2 ) );
@@ -330,6 +414,13 @@ end );
 
 ## ι1 ⇒ ι2 is an operation Sub(X) × Sub(X) → Sub(X) induced by ⇒: Ω × Ω → Ω
 AddDerivationToCAP( EmbeddingOfRelativePseudoComplementSubobject,
+                    [ [ SubobjectClassifier, 1 ],
+                      [ SubobjectOfClassifyingMorphism, 1 ],
+                      [ PreCompose, 1 ],
+                      [ UniversalMorphismIntoDirectProduct, 1 ],
+                      [ ClassifyingMorphismOfSubobject, 2 ],
+                      [ TruthMorphismOfImplies, 1 ] ],
+                    
   function( cat, iota1, iota2 )
     local Omega;
     
@@ -348,6 +439,8 @@ end );
 
 ##
 AddDerivationToCAP( RelativePseudoComplementSubobject,
+                    [ [ EmbeddingOfRelativePseudoComplementSubobject, 1 ] ],
+                    
   function( cat, iota1, iota2 )
     
     return Source( EmbeddingOfRelativePseudoComplementSubobject( cat, iota1, iota2 ) );
@@ -356,12 +449,12 @@ end );
 
 ##
 AddDerivationToCAP( MorphismsOfExternalHom,
-        [ [ HomomorphismStructureOnObjects, 1 ],
-          [ DistinguishedObjectOfHomomorphismStructure, 1 ],
-          [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
-          [ MorphismsOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ] ],
-        
-  function ( cat, A, B )
+                    [ [ HomomorphismStructureOnObjects, 1 ],
+                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
+                      [ MorphismsOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ] ],
+                    
+  function( cat, A, B )
     local range_cat, hom_A_B, D, morphisms;
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
@@ -386,6 +479,10 @@ end :
 
 ##
 AddDerivationToCAP( ListOfSubobjects,
+                    [ [ SubobjectClassifier, 1 ],
+                      [ MorphismsOfExternalHom, 1 ],
+                      [ SubobjectOfClassifyingMorphism, 2 ] ],
+                    
   function( cat, A )
     local Omega, chis;
     
@@ -400,15 +497,15 @@ end );
 
 ##
 AddDerivationToCAP( LawvereTierneyLocalModalityOperators,
-        [ [ DirectProductFunctorial, 1 ],
-          [ IsEqualForMorphisms, 3 ],
-          [ MorphismsOfExternalHom, 1 ],
-          [ PreCompose, 4 ],
-          [ SubobjectClassifier, 1 ],
-          [ TruthMorphismOfAnd, 1 ],
-          [ TruthMorphismOfTrue, 1 ] ],
-        
-  function ( cat )
+                    [ [ DirectProductFunctorial, 1 ],
+                      [ IsEqualForMorphisms, 3 ],
+                      [ MorphismsOfExternalHom, 1 ],
+                      [ PreCompose, 4 ],
+                      [ SubobjectClassifier, 1 ],
+                      [ TruthMorphismOfAnd, 1 ],
+                      [ TruthMorphismOfTrue, 1 ] ],
+                    
+  function( cat )
     local Omega, endos, idemp, t, jtrue, a;
     
     Omega := SubobjectClassifier( cat );
@@ -439,10 +536,10 @@ end );
 
 ##
 AddDerivationToCAP( LawvereTierneySubobjects,
-        [ [ LawvereTierneyLocalModalityOperators, 1 ],
-          [ SubobjectOfClassifyingMorphism, 2 ] ],
-        
-  function ( cat )
+                    [ [ LawvereTierneyLocalModalityOperators, 1 ],
+                      [ SubobjectOfClassifyingMorphism, 2 ] ],
+                    
+  function( cat )
     local LT;
     
     LT := LawvereTierneyLocalModalityOperators( cat );
@@ -453,10 +550,10 @@ end );
 
 ##
 AddDerivationToCAP( LawvereTierneyEmbeddingsOfSubobjectClassifiers,
-        [ [ LawvereTierneyLocalModalityOperators, 1 ],
-          [ ImageEmbedding, 2 ] ],
-        
-  function ( cat )
+                    [ [ LawvereTierneyLocalModalityOperators, 1 ],
+                      [ ImageEmbedding, 2 ] ],
+                    
+  function( cat )
     local LT;
     
     LT := LawvereTierneyLocalModalityOperators( cat );
@@ -475,6 +572,15 @@ end );
 
 ##
 AddDerivationToCAP( HasPushoutComplement,
+                    [ [ ObjectConstructor, 3 ],
+                      [ PreCompose, 2 ],
+                      [ EmbeddingOfRelativePseudoComplementSubobject, 1 ],
+                      [ PreComposeList, 2 ],
+                      [ IsEqualAsSubobjects, 1 ],
+                      [ EmbeddingOfUnionSubobject, 2 ],
+                      [ IsDominating, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    
   function( cat, f, x )
     local Rel, xx, x_i, A, Omega_A, ff, f_i, Omega_X, x_i_Omega_A, rpc, Omega_D, PC1, PC2;
     
@@ -533,6 +639,15 @@ end );
 #  v        v
 #  D <--y-- B
 AddDerivationToCAP( PushoutComplement,
+                    [ [ ObjectConstructor, 2 ],
+                      [ PreCompose, 2 ],
+                      [ EmbeddingOfRelativePseudoComplementSubobject, 1 ],
+                      [ PreComposeList, 1 ],
+                      [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 1 ],
+                      [ TerminalObject, 1 ],
+                      [ IsMonomorphism, 1 ],
+                      [ ImageEmbedding, 1 ] ],
+                    
   function( cat, f, x )
     local Rel, xx, x_i, A, Omega_A, x_i_Omega_A, ff, f_i, Omega_X, rpc, i, y;
     
@@ -578,14 +693,14 @@ end );
 
 ##
 AddDerivationToCAP( HomomorphismStructureOnMorphismsWithGivenObjects,
-        [ [ DistinguishedObjectOfHomomorphismStructure, 1 ],
-          [ ExactCoverWithGlobalElements, 1, RangeCategoryOfHomomorphismStructure ],
-          [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
-          [ PreComposeList, 2 ],
-          [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects, 2 ],
-          [ UniversalMorphismFromCoproduct, 1, RangeCategoryOfHomomorphismStructure ] ],
-        
-  function ( cat, s, alpha, gamma, r )
+                    [ [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ ExactCoverWithGlobalElements, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
+                      [ PreComposeList, 2 ],
+                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects, 2 ],
+                      [ UniversalMorphismFromCoproduct, 1, RangeCategoryOfHomomorphismStructure ] ],
+                    
+  function( cat, s, alpha, gamma, r )
     local range_cat, distinguished_object, Ls;
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
@@ -628,26 +743,26 @@ AddFinalDerivationBundle( # CanonicalIdentificationFromImageObjectToCoimage
                       UniversalMorphismIntoCoimageWithGivenCoimageObject,
                       IsomorphismFromCoimageToCokernelOfKernel,
                       IsomorphismFromCokernelOfKernelToCoimage ],
-  [
-    CanonicalIdentificationFromImageObjectToCoimage,
-    [ [ ImageObject, 1 ],
-      [ IdentityMorphism, 1 ] ],
-    function( cat, mor )
-      
-      return IdentityMorphism( cat, ImageObject( cat, mor ) );
-      
-    end
-  ],
-  [
-    CanonicalIdentificationFromCoimageToImageObject,
-    [ [ ImageObject, 1 ],
-      [ IdentityMorphism, 1 ] ],
-    function( cat, mor )
+[
+  CanonicalIdentificationFromImageObjectToCoimage,
+  [ [ ImageObject, 1 ],
+    [ IdentityMorphism, 1 ] ],
+  function( cat, mor )
     
-      return IdentityMorphism( cat, ImageObject( cat, mor ) );
+    return IdentityMorphism( cat, ImageObject( cat, mor ) );
     
-    end
-  ] : CategoryFilter := HasIsElementaryTopos and IsElementaryTopos );
+  end
+],
+[
+  CanonicalIdentificationFromCoimageToImageObject,
+  [ [ ImageObject, 1 ],
+    [ IdentityMorphism, 1 ] ],
+  function( cat, mor )
+    
+    return IdentityMorphism( cat, ImageObject( cat, mor ) );
+    
+  end
+] : CategoryFilter := HasIsElementaryTopos and IsElementaryTopos );
 
 ##
 AddFinalDerivationBundle(
@@ -667,15 +782,18 @@ AddFinalDerivationBundle(
                     ],
 [
   DistinguishedObjectOfHomomorphismStructure,
-  function ( cat )
+  [ [ TerminalObject, 1 ] ],
+  function( cat )
     
     return TerminalObject( RangeCategoryOfHomomorphismStructure( cat ) );
     
-end
+  end
 ],
 [
   HomomorphismStructureOnObjects,
-  function ( cat, a, b )
+  [ [ ObjectConstructor, 1 ],
+    [ MorphismsOfExternalHom, 1 ] ],
+  function( cat, a, b )
     local H;
     
     H := RangeCategoryOfHomomorphismStructure( cat );
@@ -683,11 +801,14 @@ end
     return ObjectConstructor( H,
                    Length( MorphismsOfExternalHom( cat, a, b ) ) );
     
-end
+  end
 ],
 [
   HomomorphismStructureOnMorphismsWithGivenObjects,
-  function ( cat, s, alpha, gamma, r )
+  [ [ MorphismsOfExternalHom, 2 ],
+    [ PreComposeList, 2 ],
+    [ MorphismConstructor, 1 ] ],
+  function( cat, s, alpha, gamma, r )
     local H, s_mors, r_mors, images;
     
     H := RangeCategoryOfHomomorphismStructure( cat );
@@ -704,10 +825,12 @@ end
                    images,
                    r );
     
-end
+  end
 ],
 [
   InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects,
+  [ [ MorphismsOfExternalHom, 1 ],
+    [ MorphismConstructor, 1 ] ],
   function( cat, t, alpha, r )
     local H, mors;
     
@@ -724,7 +847,8 @@ end
 ],
 [
   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
-  function ( cat, a, b, iota )
+  [ [ MorphismsOfExternalHom, 2 ] ],
+  function( cat, a, b, iota )
     local H, mors_H, pos;
     
     H := RangeCategoryOfHomomorphismStructure( cat );
