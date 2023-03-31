@@ -10,9 +10,9 @@
 
 ##
 AddDerivationToCAP( MorphismFromDoubleNegation,
-        [ [ NegationOnObjects, 2 ],
-          [ UniqueMorphism, 1 ] ],
-        
+                    [ [ NegationOnObjects, 2 ],
+                      [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A )
         
     return UniqueMorphism( cat, NegationOnObjects( cat, NegationOnObjects( cat, A ) ), A );
@@ -22,8 +22,8 @@ end : Description := "MorphismFromDoubleNegation as the unique morphism",
 
 ##
 AddDerivationToCAP( MorphismFromDoubleNegationWithGivenDoubleNegation,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A, B )
         
     return UniqueMorphism( cat, B, A );
@@ -33,9 +33,9 @@ end : Description := "MorphismFromDoubleNegationWithGivenDoubleNegation as the u
 
 ##
 AddDerivationToCAP( MorphismToDoubleConegation,
-        [ [ ConegationOnObjects, 2 ],
-          [ UniqueMorphism, 1 ] ],
-        
+                    [ [ ConegationOnObjects, 2 ],
+                      [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A )
         
     return UniqueMorphism( cat, A, ConegationOnObjects( cat, ConegationOnObjects( cat, A ) ) );
@@ -45,8 +45,8 @@ end : Description := "MorphismToDoubleConegation as the unique morphism",
       
 ##
 AddDerivationToCAP( MorphismToDoubleConegationWithGivenDoubleConegation,
-        [ [ UniqueMorphism, 1 ] ],
-        
+                    [ [ UniqueMorphism, 1 ] ],
+                    
   function( cat, A, B )
         
     return UniqueMorphism( cat, A, B );
@@ -56,8 +56,8 @@ end : Description := "MorphismToDoubleConegationWithGivenDoubleConegation as the
 
 ##
 AddDerivationToCAP( NegationOnObjects,
-        [ [ ConegationOnObjects, 1 ] ],
-        
+                    [ [ ConegationOnObjects, 1 ] ],
+                    
   function( cat, A )
     
     return ConegationOnObjects( cat, A );
@@ -67,8 +67,8 @@ end : Description := "NegationOnObjects as ConegationOnObjects",
 
 ##
 AddDerivationToCAP( NegationOnMorphisms,
-        [ [ ConegationOnMorphisms, 1 ] ],
-        
+                    [ [ ConegationOnMorphisms, 1 ] ],
+                    
   function( cat, A )
     
     return ConegationOnMorphisms( cat, A );
@@ -78,8 +78,8 @@ end : Description := "NegationOnMorphisms as ConegationOnMorphisms",
 
 ##
 AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
-        [ [ ConegationOnMorphismsWithGivenConegations, 1 ] ],
-        
+                    [ [ ConegationOnMorphismsWithGivenConegations, 1 ] ],
+                    
   function( cat, B_, u, A_ )
     
     return ConegationOnMorphismsWithGivenConegations( cat, B_, u, A_ );
@@ -89,8 +89,8 @@ end : Description := "NegationOnMorphismsWithGivenNegations as ConegationOnMorph
 
 ##
 AddDerivationToCAP( ConegationOnObjects,
-        [ [ NegationOnObjects, 1 ] ],
-        
+                    [ [ NegationOnObjects, 1 ] ],
+                    
   function( cat, A )
     
     return NegationOnObjects( cat, A );
@@ -100,8 +100,8 @@ end : Description := "ConegationOnObjects as NegationOnObjects",
 
 ##
 AddDerivationToCAP( ConegationOnMorphisms,
-        [ [ NegationOnMorphisms, 1 ] ],
-        
+                    [ [ NegationOnMorphisms, 1 ] ],
+                    
   function( cat, A )
     
     return NegationOnMorphisms( cat, A );
@@ -111,8 +111,8 @@ end : Description := "ConegationOnMorphisms as NegationOnMorphisms",
 
 ##
 AddDerivationToCAP( ConegationOnMorphismsWithGivenConegations,
-        [ [ NegationOnMorphismsWithGivenNegations, 1 ] ],
-        
+                    [ [ NegationOnMorphismsWithGivenNegations, 1 ] ],
+                    
   function( cat, B_, u, A_ )
     
     return NegationOnMorphismsWithGivenNegations( cat, B_, u, A_ );

@@ -12,7 +12,8 @@
 
 ##
 AddDerivationToCAP( BiasedRelativeWeakFiberProduct,
-        
+                    [ [ ProjectionOfBiasedRelativeWeakFiberProduct, 1 ] ],
+                    
   function( cat, alpha, beta, gamma )
     
     return Source( ProjectionOfBiasedRelativeWeakFiberProduct( alpha, beta, gamma ) );
@@ -21,7 +22,9 @@ end : Description := "BiasedRelativeWeakFiberProduct as the source of Projection
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoBiasedRelativeWeakFiberProduct,
-        
+                    [ [ RelativeLift, 1 ],
+                      [ ProjectionOfBiasedRelativeWeakFiberProduct, 1 ] ],
+                    
   function( cat, alpha, beta, gamma, test_mor )
     
     return RelativeLift( test_mor,
@@ -31,11 +34,10 @@ end : Description := "UniversalMorphismIntoBiasedRelativeWeakFiberProduct using 
 
 ##
 AddDerivationToCAP( MorphismOntoSumOfImagesOfAllMorphisms,
-        [ [ BasisOfExternalHom, 1 ],
-          [ UniversalMorphismFromZeroObject, 1 ],
-          [ UniversalMorphismFromDirectSum, 1 ]
-          ],
-        
+                    [ [ BasisOfExternalHom, 1 ],
+                      [ UniversalMorphismFromZeroObject, 1 ],
+                      [ UniversalMorphismFromDirectSum, 1 ] ],
+                    
   function( cat, a, b )
     local hom;
     
@@ -52,10 +54,9 @@ end : Description := "MorphismOntoSumOfImagesOfAllMorphisms using BasisOfExterna
 
 ##
 AddDerivationToCAP( EmbeddingOfSumOfImagesOfAllMorphisms,
-        [ [ MorphismOntoSumOfImagesOfAllMorphisms, 1 ],
-          [ ImageEmbedding, 1 ],
-          ],
-        
+                    [ [ MorphismOntoSumOfImagesOfAllMorphisms, 1 ],
+                      [ ImageEmbedding, 1 ] ],
+                    
   function( cat, a, b )
     
     return ImageEmbedding( cat, MorphismOntoSumOfImagesOfAllMorphisms( cat, a, b ) );
@@ -65,9 +66,8 @@ end : Description := "EmbeddingOfSumOfImagesOfAllMorphisms using MorphismOntoSum
 
 ##
 AddDerivationToCAP( SumOfImagesOfAllMorphisms,
-        [ [ EmbeddingOfSumOfImagesOfAllMorphisms, 1 ],
-          ],
-        
+                    [ [ EmbeddingOfSumOfImagesOfAllMorphisms, 1 ] ],
+                    
   function( cat, a, b )
     
     return Source( EmbeddingOfSumOfImagesOfAllMorphisms( cat, a, b ) );
@@ -77,17 +77,16 @@ end : Description := "SumOfImagesOfAllMorphisms as Source of EmbeddingOfSumOfIma
 
 ##
 AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
-        [ [ HomomorphismStructureOnMorphisms, 4 ],
-          [ DistinguishedObjectOfHomomorphismStructure, 1 ],
-          [ HomomorphismStructureOnObjects, 2 ],
-          [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 4 ],
-          [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
-          [ PreCompose, 6, RangeCategoryOfHomomorphismStructure ],
-          [ KernelEmbedding, 1, RangeCategoryOfHomomorphismStructure ],
-          [ BasisOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
-          [ ProjectionInFactorOfDirectSum, 4, RangeCategoryOfHomomorphismStructure ],
-        ],
-        
+                    [ [ HomomorphismStructureOnMorphisms, 4 ],
+                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ HomomorphismStructureOnObjects, 2 ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 4 ],
+                      [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ PreCompose, 6, RangeCategoryOfHomomorphismStructure ],
+                      [ KernelEmbedding, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ BasisOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ ProjectionInFactorOfDirectSum, 4, RangeCategoryOfHomomorphismStructure ] ],
+                    
   function( cat, left_coefficients, right_coefficients )
     local range_cat, m, n, list, H, B, summands;
     
@@ -136,17 +135,16 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
 
 ##
 AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
-        [ [ HomomorphismStructureOnMorphisms, 8 ],
-          [ HomomorphismStructureOnObjects, 2 ],
-          [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 4 ],
-          [ DistinguishedObjectOfHomomorphismStructure, 1 ],
-          [ MorphismBetweenDirectSums, 2, RangeCategoryOfHomomorphismStructure ],
-          [ PreCompose, 6, RangeCategoryOfHomomorphismStructure ],
-          [ KernelEmbedding, 1, RangeCategoryOfHomomorphismStructure ],
-          [ BasisOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
-          [ ProjectionInFactorOfDirectSum, 4, RangeCategoryOfHomomorphismStructure ],
-          ],
-        
+                    [ [ HomomorphismStructureOnMorphisms, 8 ],
+                      [ HomomorphismStructureOnObjects, 2 ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 4 ],
+                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ MorphismBetweenDirectSums, 2, RangeCategoryOfHomomorphismStructure ],
+                      [ PreCompose, 6, RangeCategoryOfHomomorphismStructure ],
+                      [ KernelEmbedding, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ BasisOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ ProjectionInFactorOfDirectSum, 4, RangeCategoryOfHomomorphismStructure ] ],
+                    
   function( cat, alpha, beta, gamma, delta )
     local range_cat, m, n, list_1, H_1, list_2, H_2, H, B, summands;
     
@@ -202,14 +200,13 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCateg
 
 ##
 AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
-        [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 2 ],
-          [ HomomorphismStructureOnMorphisms, 4 ],
-          [ UniversalMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
-          [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
-          [ IsLiftable, 1, RangeCategoryOfHomomorphismStructure ],
-          [ IsMonomorphism, 1, RangeCategoryOfHomomorphismStructure ],
-          ],
-        
+                    [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 2 ],
+                      [ HomomorphismStructureOnMorphisms, 4 ],
+                      [ UniversalMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ IsLiftable, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ IsMonomorphism, 1, RangeCategoryOfHomomorphismStructure ] ],
+                    
   function( cat, left_coefficients, right_coefficients, right_side )
     local range_cat, m, n, nu, list, H;
     
@@ -244,12 +241,10 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
 
 ##
 AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory,
-        [
-          [ HomomorphismStructureOnMorphisms, 4 ],
-          [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
-          [ IsMonomorphism, 1, RangeCategoryOfHomomorphismStructure ],
-        ],
-        
+                    [ [ HomomorphismStructureOnMorphisms, 4 ],
+                      [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ IsMonomorphism, 1, RangeCategoryOfHomomorphismStructure ] ],
+                    
   function( cat, left_coefficients, right_coefficients )
     local range_cat, m, n, list, H;
     
@@ -294,7 +289,12 @@ AddFinalDerivationBundle( # Limit
           ],
 [
   Limit,
-    function( cat, objects, decorated_morphisms )
+  [ [ Equalizer, 1 ],
+    [ DirectProduct, 2 ],
+    [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ],
+    [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ],
+    [ PreCompose, 2 ] ],
+  function( cat, objects, decorated_morphisms )
       local pair;
       
       pair := LimitPair( cat,
@@ -307,7 +307,13 @@ AddFinalDerivationBundle( # Limit
 ],
 [
   ProjectionInFactorOfLimitWithGivenLimit,
-    function( cat, objects, decorated_morphisms, k, limit )
+  [ [ PreCompose, 3 ],
+    [ EmbeddingOfEqualizerWithGivenEqualizer, 1 ],
+    [ ProjectionInFactorOfDirectProduct, 1 ],
+    [ DirectProduct, 2 ],
+    [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ],
+    [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ] ],
+  function( cat, objects, decorated_morphisms, k, limit )
       local pair;
       
       pair := LimitPair( cat,
@@ -327,7 +333,14 @@ AddFinalDerivationBundle( # Limit
 ],
 [
   UniversalMorphismIntoLimitWithGivenLimit,
-    function( cat, objects, decorated_morphisms, T, tau, limit )
+  [ [ LiftAlongMonomorphism, 1 ],
+    [ EmbeddingOfEqualizerWithGivenEqualizer, 1 ],
+    [ UniversalMorphismIntoDirectProduct, 1 ],
+    [ DirectProduct, 2 ],
+    [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ],
+    [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ],
+    [ PreCompose, 2 ] ],
+  function( cat, objects, decorated_morphisms, T, tau, limit )
       local pair;
       
       pair := LimitPair( cat,
@@ -363,7 +376,8 @@ AddFinalDerivationBundle( # Colimit
           ],
 [
   Colimit,
-    function( cat, objects, decorated_morphisms )
+  [ [ Limit, 1 ] ],
+  function( cat, objects, decorated_morphisms )
       
       return Opposite( Limit( Opposite( cat ),
                      List( objects, Opposite ),
@@ -373,7 +387,8 @@ AddFinalDerivationBundle( # Colimit
 ],
 [
   InjectionOfCofactorOfColimitWithGivenColimit,
-    function( cat, objects, decorated_morphisms, k, colimit )
+  [ [ ProjectionInFactorOfLimitWithGivenLimit, 1 ] ],
+  function( cat, objects, decorated_morphisms, k, colimit )
       
       return Opposite( ProjectionInFactorOfLimitWithGivenLimit( Opposite( cat ),
                      List( objects, Opposite ),
@@ -385,7 +400,8 @@ AddFinalDerivationBundle( # Colimit
 ],
 [
   UniversalMorphismFromColimitWithGivenColimit,
-    function( cat, objects, decorated_morphisms, T, tau, colimit )
+  [ [ UniversalMorphismIntoLimitWithGivenLimit, 1 ] ],
+  function( cat, objects, decorated_morphisms, T, tau, colimit )
       
       return Opposite( UniversalMorphismIntoLimitWithGivenLimit( Opposite( cat ),
                      List( objects, Opposite ),
@@ -409,6 +425,7 @@ AddFinalDerivationBundle( # SomeProjectiveObject
           ],
 [
   SomeProjectiveObject,
+  [ [ ProjectiveCoverObject, 1 ] ],
   function( cat, F )
     
     return ProjectiveCoverObject( cat, F );
@@ -417,6 +434,7 @@ end
 ],
 [
   EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject,
+  [ [ EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject, 1 ] ],
   function( cat, F, P )
     
     return EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject( cat, F, P );
@@ -436,6 +454,7 @@ AddFinalDerivationBundle( # SomeInjectiveObject
           ],
 [
   SomeInjectiveObject,
+  [ [ InjectiveEnvelopeObject, 1 ] ],
   function( cat, F )
     
     return InjectiveEnvelopeObject( cat, F );
@@ -444,6 +463,7 @@ end
 ],
 [
   MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject,
+  [ [ MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject, 1 ] ],
   function( cat, F, P )
     
     return MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject( cat, F, P );
