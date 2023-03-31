@@ -12,16 +12,18 @@
 
 ##
 AddDerivationToCAP( BiasedRelativeWeakFiberProduct,
+                    "BiasedRelativeWeakFiberProduct as the source of ProjectionOfBiasedRelativeWeakFiberProduct",
                     [ [ ProjectionOfBiasedRelativeWeakFiberProduct, 1 ] ],
                     
   function( cat, alpha, beta, gamma )
     
     return Source( ProjectionOfBiasedRelativeWeakFiberProduct( alpha, beta, gamma ) );
     
-end : Description := "BiasedRelativeWeakFiberProduct as the source of ProjectionOfBiasedRelativeWeakFiberProduct" );
+end );
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoBiasedRelativeWeakFiberProduct,
+                    "UniversalMorphismIntoBiasedRelativeWeakFiberProduct using RelativeLift",
                     [ [ RelativeLift, 1 ],
                       [ ProjectionOfBiasedRelativeWeakFiberProduct, 1 ] ],
                     
@@ -30,10 +32,11 @@ AddDerivationToCAP( UniversalMorphismIntoBiasedRelativeWeakFiberProduct,
     return RelativeLift( test_mor,
                  ProjectionOfBiasedRelativeWeakFiberProduct( alpha, beta, gamma ), gamma );
     
-end : Description := "UniversalMorphismIntoBiasedRelativeWeakFiberProduct using RelativeLift" );
+end );
 
 ##
 AddDerivationToCAP( MorphismOntoSumOfImagesOfAllMorphisms,
+                    "MorphismOntoSumOfImagesOfAllMorphisms using BasisOfExternalHom and UniversalMorphismFromDirectSum",
                     [ [ BasisOfExternalHom, 1 ],
                       [ UniversalMorphismFromZeroObject, 1 ],
                       [ UniversalMorphismFromDirectSum, 1 ] ],
@@ -49,11 +52,11 @@ AddDerivationToCAP( MorphismOntoSumOfImagesOfAllMorphisms,
     
     return UniversalMorphismFromDirectSum( cat, hom );
     
-end : Description := "MorphismOntoSumOfImagesOfAllMorphisms using BasisOfExternalHom and UniversalMorphismFromDirectSum",
-      CategoryFilter := IsAbelianCategory );
+end : CategoryFilter := IsAbelianCategory );
 
 ##
 AddDerivationToCAP( EmbeddingOfSumOfImagesOfAllMorphisms,
+                    "EmbeddingOfSumOfImagesOfAllMorphisms using MorphismOntoSumOfImagesOfAllMorphisms and ImageEmbedding",
                     [ [ MorphismOntoSumOfImagesOfAllMorphisms, 1 ],
                       [ ImageEmbedding, 1 ] ],
                     
@@ -61,22 +64,22 @@ AddDerivationToCAP( EmbeddingOfSumOfImagesOfAllMorphisms,
     
     return ImageEmbedding( cat, MorphismOntoSumOfImagesOfAllMorphisms( cat, a, b ) );
     
-end : Description := "EmbeddingOfSumOfImagesOfAllMorphisms using MorphismOntoSumOfImagesOfAllMorphisms and ImageEmbedding",
-      CategoryFilter := IsAbelianCategory );
+end : CategoryFilter := IsAbelianCategory );
 
 ##
 AddDerivationToCAP( SumOfImagesOfAllMorphisms,
+                    "SumOfImagesOfAllMorphisms as Source of EmbeddingOfSumOfImagesOfAllMorphisms",
                     [ [ EmbeddingOfSumOfImagesOfAllMorphisms, 1 ] ],
                     
   function( cat, a, b )
     
     return Source( EmbeddingOfSumOfImagesOfAllMorphisms( cat, a, b ) );
     
-end : Description := "SumOfImagesOfAllMorphisms as Source of EmbeddingOfSumOfImagesOfAllMorphisms",
-      CategoryFilter := IsAbelianCategory );
+end : CategoryFilter := IsAbelianCategory );
 
 ##
 AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
+                    "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory using the homomorphism structure",
                     [ [ HomomorphismStructureOnMorphisms, 4 ],
                       [ DistinguishedObjectOfHomomorphismStructure, 1 ],
                       [ HomomorphismStructureOnObjects, 2 ],
@@ -129,12 +132,12 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
       
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-  CategoryFilter := cat -> HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ),
-  Description := "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory using the homomorphism structure"
+  CategoryFilter := cat -> HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) and HasRangeCategoryOfHomomorphismStructure( cat )
 );
 
 ##
 AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
+                    "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory using the homomorphism structure",
                     [ [ HomomorphismStructureOnMorphisms, 8 ],
                       [ HomomorphismStructureOnObjects, 2 ],
                       [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 4 ],
@@ -194,12 +197,12 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCateg
       
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-  CategoryFilter := cat -> HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ),
-  Description := "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory using the homomorphism structure"
+  CategoryFilter := cat -> HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) and HasRangeCategoryOfHomomorphismStructure( cat )
 );
 
 ##
 AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
+                    "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory using the homomorphism structure",
                     [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 2 ],
                       [ HomomorphismStructureOnMorphisms, 4 ],
                       [ UniversalMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
@@ -235,12 +238,12 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
     
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-  CategoryFilter := cat -> HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ),
-  Description := "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory using the homomorphism structure"
+  CategoryFilter := cat -> HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat )
 );
 
 ##
 AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory,
+                    "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory using the homomorphism structure",
                     [ [ HomomorphismStructureOnMorphisms, 4 ],
                       [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
                       [ IsMonomorphism, 1, RangeCategoryOfHomomorphismStructure ] ],
@@ -265,12 +268,11 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCa
     
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-  CategoryFilter := cat -> HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ),
-  Description := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory using the homomorphism structure"
+  CategoryFilter := cat -> HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat )
 );
 
 ##
-AddFinalDerivationBundle( # Limit
+AddFinalDerivationBundle( "Limit using DirectProduct and Equalizer",
         [ [ DirectProduct, 2 ],
           [ Equalizer, 1 ],
           [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ], ## called in List
@@ -359,10 +361,10 @@ AddFinalDerivationBundle( # Limit
       
   end
 ]
-: Description := "Limit using DirectProduct and Equalizer" );
+ );
 
 ##
-AddFinalDerivationBundle( # Colimit
+AddFinalDerivationBundle( "Colimit using limit in the opposite category",
         ## FIXME: remove the following list and add it to CategoryFilter;
         ## problem: Input category must be finalized to create opposite category
         [ [ Limit, 1 ],
@@ -412,10 +414,10 @@ AddFinalDerivationBundle( # Colimit
       
   end
 ]
-: Description := "Colimit using limit in the opposite category" );
+ );
 
 ##
-AddFinalDerivationBundle( # SomeProjectiveObject
+AddFinalDerivationBundle( "SomeProjectiveObject from ProjectiveCoverObject",
         [ [ ProjectiveCoverObject, 1 ],
           [ EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject, 1 ],
           ],
@@ -441,10 +443,10 @@ end
     
 end
 ]
-: Description := "SomeProjectiveObject from ProjectiveCoverObject" );
+ );
 
 ##
-AddFinalDerivationBundle( # SomeInjectiveObject
+AddFinalDerivationBundle( "SomeInjectiveObject from InjectiveEnvelopeObject",
         [ [ InjectiveEnvelopeObject, 1 ],
           [ MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject, 1 ],
           ],
@@ -470,4 +472,4 @@ end
     
 end
 ]
-: Description := "SomeInjectiveObject from InjectiveEnvelopeObject" );
+ );

@@ -13,6 +13,7 @@
 ## S ≤ T
 ##
 AddDerivationToCAP( IsHomSetInhabited,
+                    "IsHomSetInhabited using IsTerminal and ExponentialOnObjects",
                     [ [ IsTerminal, 1 ],
                       [ ExponentialOnObjects, 1 ] ],
                     
@@ -20,8 +21,7 @@ AddDerivationToCAP( IsHomSetInhabited,
     
     return IsTerminal( cat, ExponentialOnObjects( cat, S, T ) );
     
-end : Description := "IsHomSetInhabited using IsTerminal and ExponentialOnObjects",
-      CategoryFilter := IsThinCategory and IsCartesianClosedCategory );
+end : CategoryFilter := IsThinCategory and IsCartesianClosedCategory );
 
 #####################################
 # Heyting algebroids
@@ -29,94 +29,95 @@ end : Description := "IsHomSetInhabited using IsTerminal and ExponentialOnObject
 
 ##
 AddDerivationToCAP( ExponentialOnMorphismsWithGivenExponentials,
+                    "ExponentialOnMorphismsWithGivenExponentials as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, S, alpha, beta, R )
         
     return UniqueMorphism( cat, S, R );
     
-end : Description := "ExponentialOnMorphismsWithGivenExponentials as the unique morphism",
-      CategoryFilter := IsHeytingAlgebroid );
+end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( CartesianEvaluationMorphismWithGivenSource,
+                    "CartesianEvaluationMorphismWithGivenSource as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B, Exp_A_B_xA )
         
     return UniqueMorphism( cat, Exp_A_B_xA, B );
     
-end : Description := "CartesianEvaluationMorphismWithGivenSource as the unique morphism",
-      CategoryFilter := IsHeytingAlgebroid );
+end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( CartesianCoevaluationMorphismWithGivenRange,
+                    "CartesianCoevaluationMorphismWithGivenRange as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B, Exp_B_AxB )
         
     return UniqueMorphism( cat, A, Exp_B_AxB );
     
-end : Description := "CartesianCoevaluationMorphismWithGivenRange as the unique morphism",
-      CategoryFilter := IsHeytingAlgebroid );
+end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( DirectProductToExponentialAdjunctionMapWithGivenExponential,
+                    "DirectProductToExponentialAdjunctionMapWithGivenExponential using the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B, f, Exp )
     
     return UniqueMorphism( cat, A, Exp );
     
-end : Description := "DirectProductToExponentialAdjunctionMapWithGivenExponential using the unique morphism",
-      CategoryFilter := IsHeytingAlgebroid );
+end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct,
+                    "ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct using the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, B, C, g, DP )
         
         return UniqueMorphism( cat, DP, C );
     
-end : Description := "ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct using the unique morphism",
-      CategoryFilter := IsHeytingAlgebroid );
+end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
+                    "CartesianPreComposeMorphismWithGivenObjects as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, Exp_A_BxExp_B_C, A, B, C, Exp_A_C )
         
     return UniqueMorphism( cat, Exp_A_BxExp_B_C, Exp_A_C );
     
-end : Description := "CartesianPreComposeMorphismWithGivenObjects as the unique morphism",
-      CategoryFilter := IsHeytingAlgebroid );
+end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
+                    "CartesianPostComposeMorphismWithGivenObjects as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, Exp_B_CxExp_A_B, A, B, C, Exp_A_C )
         
     return UniqueMorphism( cat, Exp_B_CxExp_A_B, Exp_A_C );
     
-end : Description := "CartesianPostComposeMorphismWithGivenObjects as the unique morphism",
-      CategoryFilter := IsHeytingAlgebroid );
+end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObjects,
+                    "DirectProductExponentialCompatibilityMorphismWithGivenObjects as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, source, L, range )
         
     return UniqueMorphism( cat, source, range );
     
-end : Description := "DirectProductExponentialCompatibilityMorphismWithGivenObjects as the unique morphism",
-      CategoryFilter := IsHeytingAlgebroid );
+end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( NegationOnObjects,
+                    "NegationOnObjects using ExponentialOnObjects and InitialObject",
                     [ [ ExponentialOnObjects, 1 ],
                       [ InitialObject, 1 ] ],
                     
@@ -124,11 +125,11 @@ AddDerivationToCAP( NegationOnObjects,
     
     return ExponentialOnObjects( cat, A, InitialObject( cat ) );
     
-end : Description := "NegationOnObjects using ExponentialOnObjects and InitialObject",
-      CategoryFilter := IsHeytingAlgebroid );
+end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
+                    "NegationOnMorphismsWithGivenNegations using ExponentialOnMorphismsWithGivenExponentials and IdentityMorphism and InitialObject",
                     [ [ ExponentialOnMorphismsWithGivenExponentials, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ InitialObject, 1 ] ],
@@ -137,11 +138,11 @@ AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
     
     return ExponentialOnMorphismsWithGivenExponentials( cat, B_, u, IdentityMorphism( cat, InitialObject( cat ) ), A_ );
     
-end : Description := "NegationOnMorphismsWithGivenNegations using ExponentialOnMorphismsWithGivenExponentials and IdentityMorphism and InitialObject",
-      CategoryFilter := IsHeytingAlgebroid );
+end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( MorphismToDoubleNegation,
+                    "MorphismToDoubleNegation as the unique morphism into the double-negation",
                     [ [ NegationOnObjects, 2 ],
                       [ UniqueMorphism, 1 ] ],
                     
@@ -149,16 +150,15 @@ AddDerivationToCAP( MorphismToDoubleNegation,
     
     return UniqueMorphism( cat, A, NegationOnObjects( cat, NegationOnObjects( cat, A ) ) );
     
-end : Description := "MorphismToDoubleNegation as the unique morphism into the double-negation",
-      CategoryFilter := IsHeytingAlgebroid );
+end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( MorphismToDoubleNegationWithGivenDoubleNegation,
+                    "MorphismToDoubleNegationWithGivenDoubleNegation as the unique morphism into the double-negation",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B )
     
     return UniqueMorphism( cat, A, B );
     
-end : Description := "MorphismToDoubleNegationWithGivenDoubleNegation as the unique morphism into the double-negation",
-      CategoryFilter := IsHeytingAlgebroid );
+end : CategoryFilter := IsHeytingAlgebroid );
