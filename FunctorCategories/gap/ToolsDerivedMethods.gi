@@ -6,6 +6,7 @@
 
 ##
 AddDerivationToCAP( ExactCoverWithGlobalElements,
+                    "",
         [ [ BasisOfExternalHom, 1 ],
           [ TensorUnit, 1 ] ],
         

@@ -14,6 +14,7 @@
 ## S ≤ T
 ##
 AddDerivationToCAP( IsHomSetInhabited,
+                    "IsHomSetInhabited using IsInitial and CoexponentialOnObjects",
                     [ [ IsInitial, 1 ],
                       [ CoexponentialOnObjects, 1 ] ],
                     
@@ -21,8 +22,7 @@ AddDerivationToCAP( IsHomSetInhabited,
     
     return IsInitial( cat, CoexponentialOnObjects( cat, S, T ) );
     
-end : Description := "IsHomSetInhabited using IsInitial and CoexponentialOnObjects",
-      CategoryFilter := IsThinCategory and IsCocartesianCoclosedCategory );
+end : CategoryFilter := IsThinCategory and IsCocartesianCoclosedCategory );
 
 #####################################
 # Coheyting algebroids
@@ -30,94 +30,95 @@ end : Description := "IsHomSetInhabited using IsInitial and CoexponentialOnObjec
 
 ##
 AddDerivationToCAP( CoexponentialOnMorphismsWithGivenCoexponentials,
+                    "CoexponentialOnMorphismsWithGivenCoexponentials as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, S, alpha, beta, R )
         
     return UniqueMorphism( cat, S, R );
     
-end : Description := "CoexponentialOnMorphismsWithGivenCoexponentials as the unique morphism",
-      CategoryFilter := IsCoHeytingAlgebroid );
+end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( CocartesianEvaluationMorphismWithGivenRange,
+                    "CocartesianEvaluationMorphismWithGivenRange as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B, Coex_A_B_uB )
         
     return UniqueMorphism( cat, A, Coex_A_B_uB );
     
-end : Description := "CocartesianEvaluationMorphismWithGivenRange as the unique morphism",
-      CategoryFilter := IsCoHeytingAlgebroid );
+end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( CocartesianCoevaluationMorphismWithGivenSource,
+                    "CocartesianCoevaluationMorphismWithGivenSource as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B, Coex_AuB_B )
         
     return UniqueMorphism( cat, Coex_AuB_B, A );
     
-end : Description := "CocartesianCoevaluationMorphismWithGivenSource as the unique morphism",
-      CategoryFilter := IsCoHeytingAlgebroid );
+end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( CoproductToCoexponentialAdjunctionMapWithGivenCoexponential,
+                    "CoproductToCoexponentialAdjunctionMapWithGivenCoexponential using the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, C, B, g, Coexp )
             
     return UniqueMorphism( cat, Coexp, C );
     
-end : Description := "CoproductToCoexponentialAdjunctionMapWithGivenCoexponential using the unique morphism",
-      CategoryFilter := IsCoHeytingAlgebroid );
+end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( CoexponentialToCoproductAdjunctionMapWithGivenCoproduct,
+                    "CoexponentialToCoproductAdjunctionMapWithGivenCoproduct using the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B, f, P )
         
         return UniqueMorphism( cat, A, P );
     
-end : Description := "CoexponentialToCoproductAdjunctionMapWithGivenCoproduct using the unique morphism",
-      CategoryFilter := IsCoHeytingAlgebroid );
+end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
+                    "CocartesianPreCoComposeMorphismWithGivenObjects as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, Coex_A_C, A, B, C, Coex_A_BuCoex_B_C )
         
     return UniqueMorphism( cat, Coex_A_C, Coex_A_BuCoex_B_C );
     
-end : Description := "CocartesianPreCoComposeMorphismWithGivenObjects as the unique morphism",
-      CategoryFilter := IsCoHeytingAlgebroid );
+end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
+                    "CocartesianPostCoComposeMorphismWithGivenObjects as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, Coex_A_C, A, B, C, Coex_A_BuCoex_B_C )
         
     return UniqueMorphism( cat, Coex_A_C, Coex_A_BuCoex_B_C );
     
-end : Description := "CocartesianPostCoComposeMorphismWithGivenObjects as the unique morphism",
-      CategoryFilter := IsCoHeytingAlgebroid );
+end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
+                    "CoexponentialCoproductCompatibilityMorphismWithGivenObjects as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, source, L, range )
         
     return UniqueMorphism( cat, source, range );
     
-end : Description := "CoexponentialCoproductCompatibilityMorphismWithGivenObjects as the unique morphism",
-      CategoryFilter := IsCoHeytingAlgebroid );
+end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( ConegationOnObjects,
+                    "ConegationOnObjects using CoexponentialOnObjects and TerminalObject",
                     [ [ CoexponentialOnObjects, 1 ],
                       [ TerminalObject, 1 ] ],
                     
@@ -125,11 +126,11 @@ AddDerivationToCAP( ConegationOnObjects,
     
     return CoexponentialOnObjects( cat, TerminalObject( cat ), A );
     
-end : Description := "ConegationOnObjects using CoexponentialOnObjects and TerminalObject",
-      CategoryFilter := IsCoHeytingAlgebroid );
+end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( ConegationOnMorphismsWithGivenConegations,
+                    "ConegationOnMorphismsWithGivenConegations using CoexponentialOnMorphismsWithGivenCoexponentials and IdentityMorphism and TerminalObject",
                     [ [ CoexponentialOnMorphismsWithGivenCoexponentials, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ TerminalObject, 1 ] ],
@@ -138,11 +139,11 @@ AddDerivationToCAP( ConegationOnMorphismsWithGivenConegations,
     
     return CoexponentialOnMorphismsWithGivenCoexponentials( cat, B_, IdentityMorphism( cat, TerminalObject( cat ) ), u, A_ );
     
-end : Description := "ConegationOnMorphismsWithGivenConegations using CoexponentialOnMorphismsWithGivenCoexponentials and IdentityMorphism and TerminalObject",
-      CategoryFilter := IsCoHeytingAlgebroid );
+end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( MorphismFromDoubleConegation,
+                    "MorphismFromDoubleConegation as the unique morphism from the double-conegation",
                     [ [ ConegationOnObjects, 2 ],
                       [ UniqueMorphism, 1 ] ],
                     
@@ -150,16 +151,15 @@ AddDerivationToCAP( MorphismFromDoubleConegation,
     
     return UniqueMorphism( cat, ConegationOnObjects( cat, ConegationOnObjects( cat, A ) ), A );
     
-end : Description := "MorphismFromDoubleConegation as the unique morphism from the double-conegation",
-      CategoryFilter := IsCoHeytingAlgebroid );
+end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( MorphismFromDoubleConegationWithGivenDoubleConegation,
+                    "MorphismFromDoubleConegationWithGivenDoubleConegation as the unique morphism from the double-conegation",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, CN )
     
     return UniqueMorphism( cat, CN, A );
     
-end : Description := "MorphismFromDoubleConegationWithGivenDoubleConegation as the unique morphism from the double-conegation",
-      CategoryFilter := IsCoHeytingAlgebroid );
+end : CategoryFilter := IsCoHeytingAlgebroid );
