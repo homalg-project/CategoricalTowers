@@ -1,5 +1,5 @@
 name: CategoryConstructor
-version: "2023.03-01"
+version: "2023.03-02"
 license: "GPL-2.0-or-later"
 date: 2023-03-31
 description: |
@@ -32,11 +32,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/CategoryConstruc
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.03-01/CategoryConstructor-2023.03-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.03-02/CategoryConstructor-2023.03-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.03-01/CategoryConstructor-2023.03-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.03-02/CategoryConstructor-2023.03-02.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.03-01/CategoryConstructor-2023.03-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.03-02/CategoryConstructor-2023.03-02-manual.pdf
 
 abstract: |
 
@@ -49,7 +49,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Bar31</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>CategoryConstructor, Construct categories out of given ones,
-             Version 2023.03-01</i>
+             Version 2023.03-02</i>
      (<span class='BibYear'>3-31</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CategoryConstructor">https://homalg-project.github.io/pkg/CategoryConstructor</a></span>.
@@ -57,10 +57,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ CategoryConstructor2023.03-01,
+    @misc{ CategoryConstructor2023.03-02,
       author =           {Barakat, M.},
       title =            {{CategoryConstructor},  Construct  categories  out  of
-                          given ones, {V}ersion 2023.03-01},
+                          given ones, {V}ersion 2023.03-02},
       month =            {3-},
       year =             {3-31},
       note =             {GAP package},
