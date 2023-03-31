@@ -759,7 +759,7 @@ end :
 ## Final derivations
 
 ##
-AddFinalDerivationBundle( # CanonicalIdentificationFromImageObjectToCoimage
+AddFinalDerivationBundle( "CanonicalIdentificationFromImageObjectToCoimage as the identity on the image object",
                     [ [ ImageObject, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ CanonicalIdentificationFromCoimageToImageObject,
@@ -795,7 +795,7 @@ AddFinalDerivationBundle( # CanonicalIdentificationFromImageObjectToCoimage
 ] : CategoryFilter := HasIsElementaryTopos and IsElementaryTopos );
 
 ##
-AddFinalDerivationBundle(
+AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfExternalHom",
                     [ [ TerminalObject, 1 ],
                       [ MorphismsOfExternalHom, 2 ],
                       [ ObjectConstructor, 1 ],
@@ -895,6 +895,5 @@ AddFinalDerivationBundle(
       return HasRangeCategoryOfHomomorphismStructure( cat ) and
              IsBoundGlobal( "IsCategoryOfSkeletalFinSets" ) and
              ValueGlobal( "IsCategoryOfSkeletalFinSets" )( RangeCategoryOfHomomorphismStructure( cat ) );
-    end,
-    Description := "adding the homomorphism structure using MorphismsOfExternalHom"
+    end
 );

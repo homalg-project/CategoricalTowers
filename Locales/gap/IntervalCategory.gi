@@ -227,7 +227,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_ENRICHMENT_OVER_INTERVAL_CATEGORY,
 end );
 
 ##
-AddFinalDerivationBundle(
+AddFinalDerivationBundle( "adding the homomorphism structure using IsHomSetInhabited and IntervalCategory",
         [ [ TerminalObject, 1, RangeCategoryOfHomomorphismStructure ],
           [ IsHomSetInhabited, 1 ],
           [ InitialObject, 1, RangeCategoryOfHomomorphismStructure ],
@@ -310,8 +310,7 @@ end
              HasRangeCategoryOfHomomorphismStructure( cat ) and
              IsIntervalCategory( RangeCategoryOfHomomorphismStructure( cat ) );
     end,
-    CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-    Description := "adding the homomorphism structure using IsHomSetInhabited and IntervalCategory"
+    CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure )
 );
 
 ####################################

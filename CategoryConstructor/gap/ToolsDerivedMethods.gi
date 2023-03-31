@@ -272,7 +272,7 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCa
 );
 
 ##
-AddFinalDerivationBundle( # Limit
+AddFinalDerivationBundle( "Limit using DirectProduct and Equalizer",
         [ [ DirectProduct, 2 ],
           [ Equalizer, 1 ],
           [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ], ## called in List
@@ -361,10 +361,10 @@ AddFinalDerivationBundle( # Limit
       
   end
 ]
-: Description := "Limit using DirectProduct and Equalizer" );
+ );
 
 ##
-AddFinalDerivationBundle( # Colimit
+AddFinalDerivationBundle( "Colimit using limit in the opposite category",
         ## FIXME: remove the following list and add it to CategoryFilter;
         ## problem: Input category must be finalized to create opposite category
         [ [ Limit, 1 ],
@@ -414,10 +414,10 @@ AddFinalDerivationBundle( # Colimit
       
   end
 ]
-: Description := "Colimit using limit in the opposite category" );
+ );
 
 ##
-AddFinalDerivationBundle( # SomeProjectiveObject
+AddFinalDerivationBundle( "SomeProjectiveObject from ProjectiveCoverObject",
         [ [ ProjectiveCoverObject, 1 ],
           [ EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject, 1 ],
           ],
@@ -443,10 +443,10 @@ end
     
 end
 ]
-: Description := "SomeProjectiveObject from ProjectiveCoverObject" );
+ );
 
 ##
-AddFinalDerivationBundle( # SomeInjectiveObject
+AddFinalDerivationBundle( "SomeInjectiveObject from InjectiveEnvelopeObject",
         [ [ InjectiveEnvelopeObject, 1 ],
           [ MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject, 1 ],
           ],
@@ -472,4 +472,4 @@ end
     
 end
 ]
-: Description := "SomeInjectiveObject from InjectiveEnvelopeObject" );
+ );
