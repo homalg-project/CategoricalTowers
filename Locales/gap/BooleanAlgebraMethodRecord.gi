@@ -6,10 +6,11 @@
 
 InstallValue( BOOLEAN_ALGEBRA_METHOD_NAME_RECORD,
         rec(
-MorphismFromDoubleNegation:= rec(
+MorphismFromDoubleNegation := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "s", "a" ] ],
   output_source_getter_string := "NegationOnObjects( cat, NegationOnObjects( cat, a ) )",
+  output_source_getter_preconditions := [ [ "NegationOnObjects", 2 ] ],
   output_range_getter_string := "a",
   with_given_object_position := "Source",
   return_type := "morphism",
@@ -27,6 +28,7 @@ MorphismToDoubleConegation := rec(
   io_type := [ [ "a" ], [ "a", "r" ] ],
   output_source_getter_string := "a",
   output_range_getter_string := "ConegationOnObjects( cat, ConegationOnObjects( cat, a ) )",
+  output_range_getter_preconditions := [ [ "ConegationOnObjects", 2 ] ],
   with_given_object_position := "Range",
   return_type := "morphism",
   dual_operation := "MorphismFromDoubleNegation" ),
