@@ -251,6 +251,74 @@ InstallMethod( AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCa
     
 end );
 
+##
+InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
+        "for a finite colimit cocompletion category",
+        [ IsFiniteColimitCocompletionWithStrictCoproducts ],
+        
+  function( ColimitQuivers )
+    local Y;
+    
+    Y := CapFunctor( "Yoneda embedding functor", UnderlyingCategory( ColimitQuivers ), ColimitQuivers );
+    
+    AddObjectFunction( Y, objC -> ObjectConstructor( ColimitQuivers, Pair( [ objC ], [ ] ) ) );
+    
+    AddMorphismFunction( Y, { source, morC, range } -> MorphismConstructor( ColimitQuivers, source, Pair( [ [ 0 ], [ morC ] ], [ ] ), range ) );
+    
+    return Y;
+    
+end );
+
+##
+InstallMethod( \.,
+        "for a finite colimit cocompletion category and a positive integer",
+        [ IsFiniteColimitCocompletionWithStrictCoproducts, IsPosInt ],
+        
+  function( ColimitQuivers, string_as_int )
+    local name, C, Y, Yc;
+    
+    name := NameRNam( string_as_int );
+    
+    C := UnderlyingCategory( ColimitQuivers );
+    
+    Y := YonedaEmbeddingOfUnderlyingCategory( ColimitQuivers );
+    
+    Yc := Y( C.(name) );
+    
+    if IsObjectInFiniteColimitCocompletionWithStrictCoproducts( Yc ) then
+        
+        SetIsProjective( Yc, true );
+        
+    elif IsMorphismInFiniteColimitCocompletionWithStrictCoproducts( Yc ) then
+        
+        if CanCompute( ColimitQuivers, "IsMonomorphism" ) then
+            IsMonomorphism( Yc );
+        fi;
+        
+        if CanCompute( ColimitQuivers, "IsSplitMonomorphism" ) then
+            IsSplitMonomorphism( Yc );
+        fi;
+        
+        if CanCompute( ColimitQuivers, "IsEpimorphism" ) then
+            IsEpimorphism( Yc );
+        fi;
+        
+        if CanCompute( ColimitQuivers, "IsSplitEpimorphism" ) then
+            IsSplitEpimorphism( Yc );
+        fi;
+        
+        ## IsIsomorphism = IsSplitMonomorphism and IsSplitEpimorphism
+        ## we add this here in case the logic is deactivated
+        if CanCompute( ColimitQuivers, "IsIsomorphism" ) then
+            IsIsomorphism( Yc );
+        fi;
+        
+    fi;
+    
+    return Yc;
+    
+end );
+
 ####################################
 #
 # View, Print, Display and LaTeX methods:

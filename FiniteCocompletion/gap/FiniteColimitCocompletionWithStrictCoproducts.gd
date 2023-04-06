@@ -132,3 +132,26 @@ CapJitAddTypeSignature( "AssociatedFiniteColimitCocompletionWithStrictCoproducts
     return CapJitDataTypeOfCategory( FiniteColimitCocompletionWithStrictCoproducts( Source( input_types[1].category ) ) );
     
 end );
+
+#! @Description
+#!  Return the category $C$ underlying the finite colimit cocompletion category (with strict coproducts)
+#!  <A>ColimitQuivers</A><C> := FiniteColimitCocompletionWithStrictCoproducts(</C> $C$ <C>)</C>).
+#! @Arguments ColimitQuivers
+DeclareAttribute( "UnderlyingCategory",
+        IsFiniteColimitCocompletionWithStrictCoproducts );
+
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteColimitCocompletionWithStrictCoproducts ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
+#! @Description
+#!  The full embedding functor from the category $C$ underlying
+#!  the finite colimit cocompletion (with strict coproducts) category
+#!  <A>ColimitQuivers</A> into <A>ColimitQuivers</A>.
+#! @Arguments UC
+#! @Returns a &CAP; functor
+DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
+        IsFiniteColimitCocompletionWithStrictCoproducts );

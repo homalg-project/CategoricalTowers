@@ -7,6 +7,44 @@ FinBouquets;
 #! FinBouquets
 Cbar := ModelingCategory( FinBouquets );
 #! FiniteCocompletion( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )
+Cbar2 := FiniteColimitCocompletionWithStrictCoproducts(
+                 UnderlyingCategory( FinBouquets ) );
+#! FiniteColimitCocompletionWithStrictCoproducts(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )
+P := Cbar2.P;
+#! <A projective object in FiniteColimitCocompletionWithStrictCoproducts(
+#!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
+Display( P );
+#! [ [ <(P)> ], [  ] ]
+
+#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
+L := Cbar2.L;
+#! <A projective object in FiniteColimitCocompletionWithStrictCoproducts(
+#!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
+Display( L );
+#! [ [ <(L)> ], [  ] ]
+#! 
+#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
+b := Cbar2.b;
+#! <A morphism in FiniteColimitCocompletionWithStrictCoproducts(
+#!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
+Display( b );
+#! Source: [ [ <(P)> ], [  ] ]
+#! 
+#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
+#! 
+#! Datum:  [ [ [ 0 ], [ (P)-[(b)]->(L) ] ], [  ] ]
+#! 
+#! Range:  [ [ <(L)> ], [  ] ]
+#! 
+#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
+#! 
+#! A morphism in FiniteColimitCocompletionWithStrictCoproducts(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 source_bouquet := CreateBouquet( 3, [ 0, 0, 1 ] );
 #! <An object in FinBouquets>
 Display( source_bouquet );
