@@ -1422,6 +1422,20 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
         end );
         
+        if IsCategoryOfSkeletalFinSets( C ) then
+            
+            ##
+            AddEpimorphismFromSomeProjectiveObject( PSh,
+              function( PSh, F )
+                
+                return MorphismFromCoproductOfRepresentables( PSh,
+                               CoveringListOfRepresentables( PSh, F ),
+                               F );
+                
+            end );
+            
+        fi;
+        
         ## the following code requires (2) that the range category C of the presheaf category coincides with the category SkeletalFinSets:
         if IsCategoryOfSkeletalFinSets( C ) and
            ## and requires (3) that the range category C of the presheaf category must coincide with

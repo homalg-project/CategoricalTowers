@@ -30,6 +30,10 @@ Display( Omega0 );
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #! / [ a*a*a = 1 ], SkeletalFinSets )
 #! given by the above data
+IsProjective( Omega0 );
+#! false
+IsReflexive( Omega0 );
+#! false
 e := Exponential( Omega0, Omega0 );
 #! <An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #!  / [ a*a*a = 1 ], SkeletalFinSets )>
@@ -71,6 +75,10 @@ Display( Omega1 );
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #! / [ a*a*a = a ], SkeletalFinSets )
 #! given by the above data
+IsProjective( Omega1 );
+#! false
+IsReflexive( Omega1 );
+#! false
 M2 := Fq / [ [ Fq.a^3, Fq.a^2 ] ];
 #! FreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a*a = a*a ]
 PShM2 := PreSheaves( M2 );
@@ -89,6 +97,10 @@ Display( Omega2 );
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
 #! given by the above data
+IsProjective( Omega2 );
+#! true
+IsReflexive( Omega2 );
+#! false
 true2 := TruthMorphismOfTrue( PShM2 );
 #! <A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #!  / [ a*a*a = a*a ], SkeletalFinSets )>
