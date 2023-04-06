@@ -43,6 +43,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X8601054B79119211">7.3-2 CreateColimitQuiver</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7FE78D15866DD233">7.3-3 CreateMorphismOfColimitQuivers</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X79F45C8D7BF996AC">7.3-4 AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7FBC05AA78AFB946">7.3-5 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7B96C5A178ACBC85">7.3-6 YonedaEmbeddingOfUnderlyingCategory</a></span>
 </div></div>
 </div>
 
@@ -123,6 +125,43 @@ true
 FinBouquets
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Cbar := ModelingCategory( FinBouquets );</span>
 FiniteCocompletion( FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Cbar2 := FiniteColimitCocompletionWithStrictCoproducts(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 UnderlyingCategory( FinBouquets ) );</span>
+FiniteColimitCocompletionWithStrictCoproducts(
+FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := Cbar2.P;</span>
+&lt;A projective object in FiniteColimitCocompletionWithStrictCoproducts(
+ FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
+[ [ &lt;(P)&gt; ], [  ] ]
+An object in FiniteColimitCocompletionWithStrictCoproducts(
+FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := Cbar2.L;</span>
+&lt;A projective object in FiniteColimitCocompletionWithStrictCoproducts(
+ FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( L );</span>
+[ [ &lt;(L)&gt; ], [  ] ]
+
+An object in FiniteColimitCocompletionWithStrictCoproducts(
+FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := Cbar2.b;</span>
+&lt;A morphism in FiniteColimitCocompletionWithStrictCoproducts(
+ FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( b );</span>
+Source: [ [ &lt;(P)&gt; ], [  ] ]
+
+An object in FiniteColimitCocompletionWithStrictCoproducts(
+FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+
+Datum:  [ [ [ 0 ], [ (P)-[(b)]-&gt;(L) ] ], [  ] ]
+
+Range:  [ [ &lt;(L)&gt; ], [  ] ]
+
+An object in FiniteColimitCocompletionWithStrictCoproducts(
+FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+
+A morphism in FiniteColimitCocompletionWithStrictCoproducts(
+FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">source_bouquet := CreateBouquet( 3, [ 0, 0, 1 ] );</span>
 &lt;An object in FinBouquets&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( source_bouquet );</span>
@@ -408,6 +447,22 @@ true
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
 <p>Given the presheaf category <var class="Arg">PSh</var>=<code class="code">PSh</code>(<span class="Math">C,V</span>) return the equivalent category <code class="code">FiniteColimitCocompletionWithStrictCoproducts</code>( <span class="Math">C</span> ).</p>
+
+<p><a id="X7FBC05AA78AFB946" name="X7FBC05AA78AFB946"></a></p>
+
+<h5>7.3-5 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">ColimitQuivers</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Return the category <span class="Math">C</span> underlying the finite colimit cocompletion category (with strict coproducts) <var class="Arg">ColimitQuivers</var><code class="code"> := FiniteColimitCocompletionWithStrictCoproducts(</code> <span class="Math">C</span> <code class="code">)</code>).</p>
+
+<p><a id="X7B96C5A178ACBC85" name="X7B96C5A178ACBC85"></a></p>
+
+<h5>7.3-6 YonedaEmbeddingOfUnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaEmbeddingOfUnderlyingCategory</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>The full embedding functor from the category <span class="Math">C</span> underlying the finite colimit cocompletion (with strict coproducts) category <var class="Arg">ColimitQuivers</var> into <var class="Arg">ColimitQuivers</var>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8.html">[Next Chapter]</a>&nbsp;  </div>
