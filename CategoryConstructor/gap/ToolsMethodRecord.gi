@@ -8,14 +8,12 @@ InstallValue( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD, rec(
 
 IsWeakTerminal := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsWeakInitial",
   property_of := "object" ),
 
 IsWeakInitial := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsWeakTerminal",
   property_of := "object" ),

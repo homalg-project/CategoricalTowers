@@ -8,7 +8,6 @@ InstallValue( FUNCTOR_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 IsReflexive := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsReflexive",
   property_of := "object" ),
