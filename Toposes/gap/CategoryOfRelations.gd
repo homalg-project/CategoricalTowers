@@ -18,19 +18,14 @@ DeclareCategory( "IsCategoryOfRelations",
         IsCapCategory );
 
 #! @Description
-#!  The &GAP; category of cells in a category of relations.
-DeclareCategory( "IsCellInCategoryOfRelations",
-        IsCapCategoryCell );
-
-#! @Description
 #!  The &GAP; category of objects in a category of relations.
 DeclareCategory( "IsObjectInCategoryOfRelations",
-        IsCellInCategoryOfRelations and IsCapCategoryObject  );
+        IsCapCategoryObject  );
 
 #! @Description
 #!  The &GAP; category of morphisms in a category of relations.
 DeclareCategory( "IsMorphismInCategoryOfRelations",
-        IsCellInCategoryOfRelations and IsCapCategoryMorphism );
+        IsCapCategoryMorphism );
 
 ####################################
 #
