@@ -159,6 +159,7 @@ InstallOtherMethodForCompilerForCAP( HonestRepresentative,
 end );
 
 ##
+#= comment for Julia
 InstallMethod( CategoryOfRelations,
         "for a CAP category which is cartesian",
         [ IsCapCategory and IsCartesianCategory ],
@@ -392,6 +393,7 @@ InstallMethod( CategoryOfRelations,
     return Rel;
     
 end );
+# =#
 
 ##
 InstallOtherMethod( \/,
@@ -472,25 +474,21 @@ end );
 ##################################
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         [ IsObjectInCategoryOfRelations ],
         
   function( a )
     
-    Print( "An object in the category of relations given by: " );
-    
-    ViewObj( ObjectDatum( a ) );
+    return Concatenation( "An object in the category of relations given by: ", ViewString( ObjectDatum( a ) ) );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsObjectInCategoryOfRelations ],
         
   function( a )
     
-    Display( ObjectDatum( a ) );
-    
-    Display( "\nAn object in the category of relations given by the above data" );
+    return Concatenation( DisplayString( ObjectDatum( a ) ), "\nAn object in the category of relations given by the above data" );
     
 end );
