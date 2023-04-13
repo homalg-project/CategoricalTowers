@@ -393,6 +393,13 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
 end );
 
 ##
+InstallMethod( \.,
+        [ IsQuotientCapCategory, IsPosInt ],
+  
+  { quotient_cat, string_as_int } -> UnderlyingCategory( quotient_cat ).( NameRNam( string_as_int ) ) / quotient_cat
+);
+
+##
 InstallOtherMethod( \/,
             [ IsCapCategoryObject, IsQuotientCapCategory ],
   
