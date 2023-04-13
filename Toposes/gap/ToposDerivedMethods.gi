@@ -792,7 +792,7 @@ AddFinalDerivationBundle( "CanonicalIdentificationFromImageObjectToCoimage as th
     return IdentityMorphism( cat, ImageObject( cat, mor ) );
     
   end
-] : CategoryFilter := HasIsElementaryTopos and IsElementaryTopos );
+] : CategoryFilter := IsElementaryTopos );
 
 ##
 AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfExternalHom",
