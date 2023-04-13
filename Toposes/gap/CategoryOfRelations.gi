@@ -159,6 +159,7 @@ InstallOtherMethodForCompilerForCAP( HonestRepresentative,
 end );
 
 ##
+#= comment for Julia
 InstallMethod( CategoryOfRelations,
         "for a CAP category which is cartesian",
         [ IsCapCategory and IsCartesianCategory ],
@@ -392,6 +393,7 @@ InstallMethod( CategoryOfRelations,
     return Rel;
     
 end );
+# =#
 
 ##
 InstallOtherMethod( \/,
