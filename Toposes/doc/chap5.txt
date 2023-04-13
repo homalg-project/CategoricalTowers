@@ -11,11 +11,11 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xop := Opposite( SkeletalFinSets );[127X[104X
     [4X[28XOpposite( SkeletalFinSets )[128X[104X
-    [4X[25Xgap>[125X [27XListKnownCategoricalProperties( op );[127X[104X
-    [4X[28X[ "IsBicartesianCategory", "IsBicartesianCoclosedCategory",[128X[104X
-    [4X[28X  "IsCartesianCategory", "IsCocartesianCategory",[128X[104X
-    [4X[28X  "IsCocartesianCoclosedCategory", "IsCodistributiveCategory",[128X[104X
-    [4X[28X  "IsEquippedWithHomomorphismStructure", "IsFiniteCocompleteCategory",[128X[104X
-    [4X[28X  "IsFiniteCompleteCategory", "IsSkeletalCategory" ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( ListKnownCategoricalProperties( op ) );[127X[104X
+    [4X[28X[ "IsBicartesianCategory", "IsBicartesianCoclosedCategory",\[128X[104X
+    [4X[28X "IsCartesianCategory", "IsCocartesianCategory",\[128X[104X
+    [4X[28X "IsCocartesianCoclosedCategory", "IsCodistributiveCategory",\[128X[104X
+    [4X[28X "IsEquippedWithHomomorphismStructure", "IsFiniteCocompleteCategory",\[128X[104X
+    [4X[28X "IsFiniteCompleteCategory", "IsSkeletalCategory" ][128X[104X
   [4X[32X[104X
   

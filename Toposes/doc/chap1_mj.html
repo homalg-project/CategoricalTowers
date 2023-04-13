@@ -525,18 +525,15 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LTI := LawvereTierneyLocalModalityOperators( SkeletalFinSets );</span>
-[ |2| → |2|, |2| → |2| ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LTI := LawvereTierneyLocalModalityOperators( SkeletalFinSets );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( LTI, Display );</span>
 { 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
 { 0, 1 } ⱶ[ 1, 1 ]→ { 0, 1 }
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LTS := LawvereTierneySubobjects( SkeletalFinSets );</span>
-[ |1| ↪ |2|, |2| ↪ |2| ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LTS := LawvereTierneySubobjects( SkeletalFinSets );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( LTS, Display );</span>
 { 0 } ⱶ[ 1 ]→ { 0, 1 }
 { 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LTC := LawvereTierneyEmbeddingsOfSubobjectClassifiers( SkeletalFinSets );</span>
-[ |2| → |2|, |1| → |2| ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LTC := LawvereTierneyEmbeddingsOfSubobjectClassifiers( SkeletalFinSets );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( LTC, Display );</span>
 { 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
 { 0 } ⱶ[ 1 ]→ { 0, 1 }

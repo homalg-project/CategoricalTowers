@@ -11,21 +11,14 @@
   
   [33X[0;0YThe [5XGAP[105X category of a category of relations[133X
   
-  [1X2.1-2 IsCellInCategoryOfRelations[101X
-  
-  [33X[1;0Y[29X[2XIsCellInCategoryOfRelations[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of cells in a category of relations.[133X
-  
-  [1X2.1-3 IsObjectInCategoryOfRelations[101X
+  [1X2.1-2 IsObjectInCategoryOfRelations[101X
   
   [33X[1;0Y[29X[2XIsObjectInCategoryOfRelations[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a category of relations.[133X
   
-  [1X2.1-4 IsMorphismInCategoryOfRelations[101X
+  [1X2.1-3 IsMorphismInCategoryOfRelations[101X
   
   [33X[1;0Y[29X[2XIsMorphismInCategoryOfRelations[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
