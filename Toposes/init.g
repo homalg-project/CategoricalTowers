@@ -5,14 +5,14 @@
 #
 
 ## Topos
-ReadPackage( "Toposes", "gap/Topos.gd");
-ReadPackage( "Toposes", "gap/Topos.autogen.gd");
+ReadPackage( "Toposes", "gap/Topos.gd" );
+ReadPackage( "Toposes", "gap/Topos.autogen.gd" );
 
 ## Category of relations
-ReadPackage( "Toposes", "gap/CategoryOfRelations.gd");
+ReadPackage( "Toposes", "gap/CategoryOfRelations.gd" );
 
 ## Tools
-ReadPackage( "Toposes", "gap/Tools.gd");
+ReadPackage( "Toposes", "gap/Tools.gd" );
 
 ## DPO
-ReadPackage( "Toposes", "gap/DPO.gd");
+ReadPackage( "Toposes", "gap/DPO.gd" );

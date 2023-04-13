@@ -5,16 +5,16 @@
 #
 
 ## Topos
-ReadPackage( "Toposes", "gap/ToposMethodRecord.gi");
-ReadPackage( "Toposes", "gap/Topos.gi");
+ReadPackage( "Toposes", "gap/ToposMethodRecord.gi" );
+ReadPackage( "Toposes", "gap/Topos.gi" );
 
 ReadPackage( "Toposes", "gap/ToposDerivedMethods.gi" );
 
 ## Category of relations
-ReadPackage( "Toposes", "gap/CategoryOfRelations.gi");
+ReadPackage( "Toposes", "gap/CategoryOfRelations.gi" );
 
 ## Tools
-ReadPackage( "Toposes", "gap/Tools.gi");
+ReadPackage( "Toposes", "gap/Tools.gi" );
 
 ## DPO
-ReadPackage( "Toposes", "gap/DPO.gi");
+ReadPackage( "Toposes", "gap/DPO.gi" );
