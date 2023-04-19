@@ -214,6 +214,9 @@ DeclareAttribute( "CoYonedaLemmaOnObjects",
 DeclareAttribute( "CoYonedaLemmaOnMorphisms",
         IsMorphismInPreSheafCategory );
 
+DeclareOperation( "MorphismFromRepresentableFunctor",
+        [ IsPreSheafCategory, IsCapCategoryObject, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ] );
+
 ####################################
 #
 #! @Section Constructors
@@ -238,3 +241,9 @@ DeclareOperationWithCache( "PreSheaves",
         [ IsCapCategory ] );
 
 CapJitAddTypeSignature( "PreSheaves", [ IsCapCategory ], IsPreSheafCategory );
+
+DeclareOperationWithCache( "PreSheavesOfEnrichedCategory",
+        [ IsCapCategory, IsCapCategory ] );
+
+CapJitAddTypeSignature( "PreSheavesOfEnrichedCategory", [ IsCapCategory, IsCapCategory ], IsPreSheafCategory );
+
