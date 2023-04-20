@@ -10,7 +10,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_CategoryFromDataTablesPrecompiled", function ( ca
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, 1 );
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, BigInt( 1 ) );
 end
 ########
         
@@ -48,7 +48,7 @@ function ( cat_1, a_1 )
     deduped_7_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
     deduped_6_1 := deduped_8_1[2];
     deduped_5_1 := deduped_8_1[1];
-    deduped_4_1 := CreateCapCategoryObjectWithAttributes( deduped_7_1, Length, 1 );
+    deduped_4_1 := CreateCapCategoryObjectWithAttributes( deduped_7_1, Length, BigInt( 1 ) );
     deduped_3_1 := CreateCapCategoryObjectWithAttributes( deduped_7_1, Length, deduped_5_1[1] );
     deduped_2_1 := CAP_JIT_INCOMPLETE_LOGIC( deduped_6_1[1][1 + AsList( MapOfObject( a_1 ) )[1]] );
     deduped_1_1 := 1 + deduped_2_1;
@@ -79,7 +79,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_9_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
     deduped_8_1 := deduped_10_1[2];
     deduped_7_1 := deduped_10_1[1];
-    deduped_6_1 := CreateCapCategoryObjectWithAttributes( deduped_9_1, Length, 1 );
+    deduped_6_1 := CreateCapCategoryObjectWithAttributes( deduped_9_1, Length, BigInt( 1 ) );
     deduped_5_1 := CreateCapCategoryObjectWithAttributes( deduped_9_1, Length, deduped_7_1[1] );
     deduped_4_1 := CAP_JIT_INCOMPLETE_LOGIC( deduped_8_1[8][1 + AsList( MapOfObject( source_1 ) )[1]][1 + AsList( MapOfObject( range_1 ) )[1]][1 + AsList( alpha_1 )[1]] );
     deduped_3_1 := 1 + deduped_4_1;
@@ -134,7 +134,7 @@ function ( cat_1, arg2_1 )
     deduped_2_1 := Length( Source( deduped_5_1 ) );
     return IdFunc( function (  )
                   if not ForAll( deduped_4_1, function ( a_3 )
-                               return (IsInt( a_3 ) and a_3 >= 0);
+                               return (IsBigInt( a_3 ) and a_3 >= 0);
                            end ) then
                       return false;
                   elif deduped_2_1 <> Length( deduped_4_1 ) then
@@ -165,7 +165,7 @@ function ( cat_1, arg2_1 )
     deduped_2_1 := Length( Source( deduped_5_1 ) );
     return IdFunc( function (  )
                   if not ForAll( deduped_4_1, function ( a_3 )
-                               return (IsInt( a_3 ) and a_3 >= 0);
+                               return (IsBigInt( a_3 ) and a_3 >= 0);
                            end ) then
                       return false;
                   elif deduped_2_1 <> Length( deduped_4_1 ) then
@@ -238,7 +238,7 @@ function ( cat_1, alpha_1, beta_1 )
     deduped_9_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
     deduped_8_1 := deduped_10_1[2];
     deduped_7_1 := deduped_10_1[1];
-    deduped_6_1 := CreateCapCategoryObjectWithAttributes( deduped_9_1, Length, 1 );
+    deduped_6_1 := CreateCapCategoryObjectWithAttributes( deduped_9_1, Length, BigInt( 1 ) );
     deduped_5_1 := CreateCapCategoryObjectWithAttributes( deduped_9_1, Length, deduped_7_1[1] );
     deduped_4_1 := CAP_JIT_INCOMPLETE_LOGIC( deduped_8_1[4][1 + AsList( MapOfMorphism( alpha_1 ) )[1]][1 + AsList( MapOfMorphism( beta_1 ) )[1]] );
     deduped_3_1 := 1 + deduped_4_1;
