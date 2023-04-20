@@ -1,6 +1,6 @@
 #! @Chapter Precompilation
 
-#! @Section Precompiling the presheaf category with values in a category of rows
+#! @Section Precompiling the presheaf category of an algebroid with values in a category of rows
 
 #! @Example
 
@@ -29,7 +29,7 @@ A_bar := A / [ A.ab ];;
 
 category_constructor := A -> PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;
 
-precompile_PreSheavesInCategoryOfRows :=
+precompile_PreSheavesOfAlgebroidInCategoryOfRows :=
   function( A, compiled_category_name )
     CapJitPrecompileCategoryAndCompareResult(
             category_constructor,
@@ -58,9 +58,9 @@ precompile_PreSheavesInCategoryOfRows :=
                       "IsReflexive",
                       ] ) ); end;;
 
-precompile_PreSheavesInCategoryOfRows( A, "PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled" );
+precompile_PreSheavesOfAlgebroidInCategoryOfRows( A, "PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled" );
 
-precompile_PreSheavesInCategoryOfRows( A_bar, "PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled" );
+precompile_PreSheavesOfAlgebroidInCategoryOfRows( A_bar, "PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled" );
 
 PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled( A );
 #! PreSheaves( Algebroid( Q, FreeCategory(
