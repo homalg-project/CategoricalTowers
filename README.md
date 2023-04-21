@@ -26,7 +26,7 @@
 [tests-url]: https://github.com/homalg-project/HigherHomologicalAlgebra/actions/workflows/Tests.yml?query=branch%3Amaster
 
 [codecov-img]: https://codecov.io/gh/homalg-project/HigherHomologicalAlgebra/branch/master/graph/badge.svg?flag=QuotientCategories
-[codecov-url]: https://codecov.io/gh/homalg-project/HigherHomologicalAlgebra/tree/master/QuotientCategories
+[codecov-url]: https://app.codecov.io/gh/homalg-project/HigherHomologicalAlgebra/tree/master/QuotientCategories
 
 [code-img]: https://img.shields.io/badge/-View%20code-blue?logo=github
 [code-url]: https://github.com/homalg-project/HigherHomologicalAlgebra/tree/master/QuotientCategories#top
