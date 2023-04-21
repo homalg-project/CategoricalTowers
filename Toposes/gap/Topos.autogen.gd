@@ -373,20 +373,20 @@ DeclareOperation( "AddMorphismsOfExternalHom",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `PowerObject`.
-#! $F: ( arg2 ) \mapsto \mathtt{PowerObject}(arg2)$.
+#! to the category for the basic operation `PowerOfObject`.
+#! $F: ( arg2 ) \mapsto \mathtt{PowerOfObject}(arg2)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddPowerObject",
+DeclareOperation( "AddPowerOfObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddPowerObject",
+DeclareOperation( "AddPowerOfObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddPowerObject",
+DeclareOperation( "AddPowerOfObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddPowerObject",
+DeclareOperation( "AddPowerOfObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -468,20 +468,20 @@ DeclareOperation( "AddSingletonMorphism",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `SingletonMorphismWithGivenPowerObject`.
-#! $F: ( object, power_object ) \mapsto \mathtt{SingletonMorphismWithGivenPowerObject}(object, power_object)$.
+#! to the category for the basic operation `SingletonMorphismWithGivenPowerOfObject`.
+#! $F: ( object, power_object ) \mapsto \mathtt{SingletonMorphismWithGivenPowerOfObject}(object, power_object)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddSingletonMorphismWithGivenPowerObject",
+DeclareOperation( "AddSingletonMorphismWithGivenPowerOfObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddSingletonMorphismWithGivenPowerObject",
+DeclareOperation( "AddSingletonMorphismWithGivenPowerOfObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddSingletonMorphismWithGivenPowerObject",
+DeclareOperation( "AddSingletonMorphismWithGivenPowerOfObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddSingletonMorphismWithGivenPowerObject",
+DeclareOperation( "AddSingletonMorphismWithGivenPowerOfObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

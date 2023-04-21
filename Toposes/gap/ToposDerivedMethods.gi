@@ -233,7 +233,7 @@ AddDerivationToCAP( TruthMorphismOfImpliesWithGivenObjects,
 end );
 
 ##
-AddDerivationToCAP( PowerObject,
+AddDerivationToCAP( PowerOfObject,
                     "",
                     [ [ ExponentialOnObjects, 1 ],
                       [ SubobjectClassifier, 1 ] ],
@@ -245,7 +245,7 @@ AddDerivationToCAP( PowerObject,
 end );
 
 ##
-AddDerivationToCAP( SingletonMorphismWithGivenPowerObject,
+AddDerivationToCAP( SingletonMorphismWithGivenPowerOfObject,
                     "",
                     [ [ CartesianDiagonal, 1 ],
                       [ ClassifyingMorphismOfSubobject, 1 ],
@@ -273,12 +273,12 @@ end );
 ##
 AddDerivationToCAP( SingletonMorphism,
                     "",
-                    [ [ SingletonMorphismWithGivenPowerObject, 1 ],
-                      [ PowerObject, 1 ] ],
+                    [ [ SingletonMorphismWithGivenPowerOfObject, 1 ],
+                      [ PowerOfObject, 1 ] ],
                     
   function( cat, obj )
     
-    return SingletonMorphismWithGivenPowerObject( cat, obj, PowerObject( cat, obj ) );
+    return SingletonMorphismWithGivenPowerOfObject( cat, obj, PowerOfObject( cat, obj ) );
     
 end );
 

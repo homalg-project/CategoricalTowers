@@ -254,23 +254,23 @@ DeclareOperation( "TruthMorphismOfImpliesWithGivenObjects",
 #! The output is the power object of $a$.
 #! @Arguments a
 #! @Returns an object
-DeclareAttribute( "PowerObject",
+DeclareAttribute( "PowerOfObject",
         IsCapCategoryObject );
 
 #! @Description
 #! The argument is an object $a$.
-#! The output is the singleton morphism from $a$ to the power object $\mathrm{PowerObject}(a)$.
+#! The output is the singleton morphism from $a$ to the power object $\mathrm{PowerOfObject}(a)$.
 #! @Arguments a
-#! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{PowerObject}(a) )$
+#! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{PowerOfObject}(a) )$
 DeclareAttribute( "SingletonMorphism",
         IsCapCategoryObject );
 
 #! @Description
-#! The arguments are an object $a$ and object $b$ which is equal to the power object $\mathrm{PowerObject}(a)$.
+#! The arguments are an object $a$ and object $b$ which is equal to the power object $\mathrm{PowerOfObject}(a)$.
 #! The output is the singleton morphism from $a$ to $b$.
 #! @Arguments a, b
 #! @Returns a morphism in $\mathrm{Hom}( a, b )$
-DeclareOperation( "SingletonMorphismWithGivenPowerObject",
+DeclareOperation( "SingletonMorphismWithGivenPowerOfObject",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ####################################

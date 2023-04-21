@@ -62,7 +62,7 @@ omega := SubobjectClassifier( FinBouquets );
 #! <An object in FinBouquets>
 Display( omega );
 #! ( { 0, 1 }, { 0 ↦ 0, 1 ↦ 1, 2 ↦ 1 } )
-PM := PowerObject( M );
+PM := PowerOfObject( M );
 #! <An object in FinBouquets>
 Display( PM );
 #! ( { 0,..., 7 },
