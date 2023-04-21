@@ -31,7 +31,7 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15_mj.html#X7F843BA27D4C7463">15.2 <span class="Heading">Precompiling the category of finite reflexive quivers</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15_mj.html#X81F9EDD383030BF4">15.3 <span class="Heading">Precompiling the presheaf category with values in a category of rows</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15_mj.html#X7F3EAD5984859532">15.3 <span class="Heading">Precompiling the presheaf category of an algebroid with values in a category of rows</span></a>
 </span>
 </div>
 </div>
@@ -190,9 +190,9 @@ FinReflexiveQuivers
 true
 </pre></div>
 
-<p><a id="X81F9EDD383030BF4" name="X81F9EDD383030BF4"></a></p>
+<p><a id="X7F3EAD5984859532" name="X7F3EAD5984859532"></a></p>
 
-<h4>15.3 <span class="Heading">Precompiling the presheaf category with values in a category of rows</span></h4>
+<h4>15.3 <span class="Heading">Precompiling the presheaf category of an algebroid with values in a category of rows</span></h4>
 
 
 <div class="example"><pre>
@@ -213,7 +213,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := QQ[FreeCategory( quiver )];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_bar := A / [ A.ab ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := A -&gt; PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesInCategoryOfRows :=</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesOfAlgebroidInCategoryOfRows :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( A, compiled_category_name )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            category_constructor,</span>
@@ -241,8 +241,8 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IndecomposableInjectiveObjects",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsReflexive",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                      ] ) ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesInCategoryOfRows( A, "PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesInCategoryOfRows( A_bar, "PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesOfAlgebroidInCategoryOfRows( A, "PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesOfAlgebroidInCategoryOfRows( A_bar, "PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled( A );</span>
 PreSheaves( Algebroid( Q, FreeCategory(
 RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) ),

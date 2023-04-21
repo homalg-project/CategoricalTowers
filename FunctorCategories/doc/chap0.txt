@@ -6,10 +6,10 @@
                             [1X Categories of functors [101X
   
   
-                                   2023.04-02
+                                   2023.04-04
   
   
-                                 13 April 2023
+                                 21 April 2023
   
   
                                 Mohamed Barakat
@@ -289,7 +289,8 @@
   15 [33X[0;0YPrecompilation[133X
     15.1 [33X[0;0YPrecompiling the category of finite quivers[133X
     15.2 [33X[0;0YPrecompiling the category of finite reflexive quivers[133X
-    15.3 [33X[0;0YPrecompiling the presheaf category with values in a category of rows[133X
+    15.3 [33X[0;0YPrecompiling the presheaf category of an algebroid with values in a
+    category of rows[133X
   
   
   [32X
