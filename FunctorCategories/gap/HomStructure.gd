@@ -19,6 +19,15 @@ DeclareOperation( "ExternalHomAsEqualizerOnObjects",
 DeclareOperation( "ExternalHomAsEqualizerOnMorphisms",
     [ IsCapCategory, IsMorphismInPreSheafCategory, IsMorphismInPreSheafCategory ] );
 
+DeclareOperation( "MorphismFromRepresentable",
+    [ IsPreSheafCategory, IsCapCategoryObject, IsInt, IsObjectInPreSheafCategory ] );
+
+DeclareOperation( "MorphismFromCoproductOfRepresentables",
+    [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ] );
+
+DeclareOperation( "CoveringListOfRepresentables",
+    [ IsPreSheafCategory, IsObjectInPreSheafCategory ] );
+
 DeclareOperation( "ExternalHomDiagram",
     [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ] );
 
