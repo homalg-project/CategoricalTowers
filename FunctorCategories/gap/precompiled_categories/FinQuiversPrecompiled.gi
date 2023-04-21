@@ -10,7 +10,9 @@ BindGlobal( "ADD_FUNCTIONS_FOR_FinQuiversPrecompiled", function ( cat )
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfQuiverEnrichedOverSkeletalFinSets, NTuple( 3, 0, 0, [  ] ) );
+    local deduped_1_1;
+    deduped_1_1 := BigInt( 0 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfQuiverEnrichedOverSkeletalFinSets, NTuple( 3, deduped_1_1, deduped_1_1, [  ] ) );
 end
 ########
         
@@ -62,7 +64,7 @@ end
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, 1 );
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, BigInt( 1 ) );
 end
 ########
         
@@ -86,7 +88,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_44_1 := deduped_48_1[3];
     deduped_43_1 := deduped_48_1[2];
     deduped_42_1 := CreateCapCategoryObjectWithAttributes( deduped_47_1, Length, 2 );
-    deduped_41_1 := CreateCapCategoryObjectWithAttributes( deduped_47_1, Length, 1 );
+    deduped_41_1 := CreateCapCategoryObjectWithAttributes( deduped_47_1, Length, BigInt( 1 ) );
     deduped_40_1 := deduped_48_1[1];
     deduped_39_1 := Source( ModelingCategory( ModelingCategory( cat_1 ) ) );
     deduped_38_1 := [ 0 .. deduped_43_1 - 1 ];
@@ -294,7 +296,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_71_1 := deduped_76_1[3];
     deduped_70_1 := deduped_77_1[2];
     deduped_69_1 := CreateCapCategoryObjectWithAttributes( deduped_75_1, Length, 2 );
-    deduped_68_1 := CreateCapCategoryObjectWithAttributes( deduped_75_1, Length, 1 );
+    deduped_68_1 := CreateCapCategoryObjectWithAttributes( deduped_75_1, Length, BigInt( 1 ) );
     deduped_67_1 := deduped_77_1[1];
     deduped_66_1 := deduped_76_1[2];
     deduped_65_1 := deduped_76_1[1];
@@ -547,7 +549,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_69_1 := deduped_76_1[1];
     deduped_68_1 := deduped_74_1[2];
     deduped_67_1 := CreateCapCategoryObjectWithAttributes( deduped_75_1, Length, 2 );
-    deduped_66_1 := CreateCapCategoryObjectWithAttributes( deduped_75_1, Length, 1 );
+    deduped_66_1 := CreateCapCategoryObjectWithAttributes( deduped_75_1, Length, BigInt( 1 ) );
     deduped_65_1 := deduped_74_1[1];
     deduped_64_1 := Source( ModelingCategory( ModelingCategory( cat_1 ) ) );
     deduped_63_1 := [ 0 .. deduped_68_1 - 1 ];

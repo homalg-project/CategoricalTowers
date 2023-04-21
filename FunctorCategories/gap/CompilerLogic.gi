@@ -47,7 +47,7 @@ end );
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ ],
-        src_template := "[ 0 .. - 1 ]",
+        src_template := "[ 0 .. BigInt( -1 ) ]",
         dst_template := "[ ]",
     )
 );
@@ -153,6 +153,22 @@ CapJitAddLogicTemplate(
         variable_names := [ "value1", "value2" ],
         src_template := "Sum( [ value1, value2 ] )",
         dst_template := "value1 + value2",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        src_template := "0 + number",
+        dst_template := "number",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        src_template := "number + 0",
+        dst_template := "number",
     )
 );
 

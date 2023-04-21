@@ -10,9 +10,10 @@ BindGlobal( "ADD_FUNCTIONS_FOR_FinReflexiveQuiversPrecompiled", function ( cat )
         
 ########
 function ( cat_1 )
-    local deduped_1_1;
-    deduped_1_1 := [  ];
-    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets, NTuple( 4, 0, 0, deduped_1_1, deduped_1_1 ) );
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := [  ];
+    deduped_1_1 := BigInt( 0 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets, NTuple( 4, deduped_1_1, deduped_1_1, deduped_2_1, deduped_2_1 ) );
 end
 ########
         
@@ -72,7 +73,7 @@ end
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, 1 );
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, BigInt( 1 ) );
 end
 ########
         
@@ -99,7 +100,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_47_1 := CreateCapCategoryObjectWithAttributes( deduped_50_1, Length, 7 );
     deduped_46_1 := deduped_51_1[2];
     deduped_45_1 := CreateCapCategoryObjectWithAttributes( deduped_50_1, Length, 2 );
-    deduped_44_1 := CreateCapCategoryObjectWithAttributes( deduped_50_1, Length, 1 );
+    deduped_44_1 := CreateCapCategoryObjectWithAttributes( deduped_50_1, Length, BigInt( 1 ) );
     deduped_43_1 := deduped_51_1[1];
     deduped_42_1 := Source( ModelingCategory( ModelingCategory( cat_1 ) ) );
     deduped_41_1 := [ 0 .. deduped_46_1 - 1 ];
@@ -366,7 +367,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_74_1 := CreateCapCategoryObjectWithAttributes( deduped_78_1, Length, 7 );
     deduped_73_1 := deduped_80_1[2];
     deduped_72_1 := CreateCapCategoryObjectWithAttributes( deduped_78_1, Length, 2 );
-    deduped_71_1 := CreateCapCategoryObjectWithAttributes( deduped_78_1, Length, 1 );
+    deduped_71_1 := CreateCapCategoryObjectWithAttributes( deduped_78_1, Length, BigInt( 1 ) );
     deduped_70_1 := deduped_80_1[1];
     deduped_69_1 := deduped_79_1[2];
     deduped_68_1 := deduped_79_1[1];
@@ -678,7 +679,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_72_1 := deduped_79_1[1];
     deduped_71_1 := deduped_77_1[2];
     deduped_70_1 := CreateCapCategoryObjectWithAttributes( deduped_78_1, Length, 2 );
-    deduped_69_1 := CreateCapCategoryObjectWithAttributes( deduped_78_1, Length, 1 );
+    deduped_69_1 := CreateCapCategoryObjectWithAttributes( deduped_78_1, Length, BigInt( 1 ) );
     deduped_68_1 := deduped_77_1[1];
     deduped_67_1 := Source( ModelingCategory( ModelingCategory( cat_1 ) ) );
     deduped_66_1 := [ 0 .. deduped_71_1 - 1 ];
