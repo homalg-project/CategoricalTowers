@@ -251,11 +251,28 @@ DeclareOperation( "TruthMorphismOfImpliesWithGivenObjects",
 
 #! @Description
 #! The argument is an object $a$.
-#! The output is the power object of $a$.
+#! The output is the power object $P(a)$ of $a$.
 #! @Arguments a
 #! @Returns an object
 DeclareAttribute( "PowerObject",
         IsCapCategoryObject );
+
+#! @Description
+#! The argument is a morphism $f:a \to b$.
+#! The output is the power morphism of $P(f): P(b) \to P(a)$.
+#! @Arguments f
+#! @Returns a morphism
+DeclareAttribute( "PowerObjectFunctorial",
+        IsCapCategoryMorphism );
+
+#! @Description
+#! The arguments are an object $Pb$, a morphism $f:a \to b$, and and object $Pa$,
+#! such that $Pa = P(a)$ and $Pb = P(b)$.
+#! The output is the power morphism of $P(f): Pb \to Pa$.
+#! @Arguments Pb, f, Pa
+#! @Returns a morphism
+DeclareOperation( "PowerObjectFunctorialWithGivenPowerObjects",
+        [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is an object $a$.

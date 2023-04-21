@@ -244,6 +244,19 @@ AddDerivationToCAP( PowerObject,
     
 end );
 
+## f: a → b ⇝ P(f): P(b) → P(a)
+AddDerivationToCAP( PowerObjectFunctorialWithGivenPowerObjects,
+                    "",
+                    [ [ SubobjectClassifier, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ ExponentialOnMorphismsWithGivenExponentials, 1 ] ],
+                    
+  function( cat, Pb, f, Pa )
+    
+    return ExponentialOnMorphismsWithGivenExponentials( cat, Pb, f, IdentityMorphism( cat, SubobjectClassifier( cat ) ), Pa );
+    
+end );
+
 ##
 AddDerivationToCAP( SingletonMorphismWithGivenPowerObject,
                     "",
