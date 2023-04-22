@@ -239,9 +239,26 @@
   [33X[1;0Y[29X[2XPowerObject[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
-  [33X[0;0YThe argument is an object [23Xa[123X. The output is the power object of [23Xa[123X.[133X
+  [33X[0;0YThe argument is an object [23Xa[123X. The output is the power object [23XP(a)[123X of [23Xa[123X.[133X
   
-  [1X1.4-14 SingletonMorphism[101X
+  [1X1.4-14 PowerObjectFunctorial[101X
+  
+  [33X[1;0Y[29X[2XPowerObjectFunctorial[102X( [3Xf[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YThe  argument  is  a morphism [23Xf:a \to b[123X. The output is the power morphism of
+  [23XP(f): P(b) \to P(a)[123X.[133X
+  
+  [1X1.4-15 PowerObjectFunctorialWithGivenPowerObjects[101X
+  
+  [33X[1;0Y[29X[2XPowerObjectFunctorialWithGivenPowerObjects[102X( [3XPb[103X, [3Xf[103X, [3XPa[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YThe  arguments  are  an  object [23XPb[123X, a morphism [23Xf:a \to b[123X, and and object [23XPa[123X,
+  such that [23XPa = P(a)[123X and [23XPb = P(b)[123X. The output is the power morphism of [23XP(f):
+  Pb \to Pa[123X.[133X
+  
+  [1X1.4-16 SingletonMorphism[101X
   
   [33X[1;0Y[29X[2XSingletonMorphism[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, \mathrm{PowerObject}(a) )[123X[133X
@@ -249,7 +266,7 @@
   [33X[0;0YThe  argument is an object [23Xa[123X. The output is the singleton morphism from [23Xa[123X to
   the power object [23X\mathrm{PowerObject}(a)[123X.[133X
   
-  [1X1.4-15 SingletonMorphismWithGivenPowerObject[101X
+  [1X1.4-17 SingletonMorphismWithGivenPowerObject[101X
   
   [33X[1;0Y[29X[2XSingletonMorphismWithGivenPowerObject[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, b )[123X[133X
@@ -813,7 +830,26 @@
   given  function  [23XF[123X to the category for the basic operation [10XPowerObject[110X. [23XF: (
   arg2 ) \mapsto \mathtt{PowerObject}(arg2)[123X.[133X
   
-  [1X1.9-21 AddPseudoComplementSubobject[101X
+  [1X1.9-21 AddPowerObjectFunctorial[101X
+  
+  [33X[1;0Y[29X[2XAddPowerObjectFunctorial[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XPowerObjectFunctorial[110X. [23XF: ( f ) \mapsto \mathtt{PowerObjectFunctorial}(f)[123X.[133X
+  
+  [1X1.9-22 AddPowerObjectFunctorialWithGivenPowerObjects[101X
+  
+  [33X[1;0Y[29X[2XAddPowerObjectFunctorialWithGivenPowerObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XPowerObjectFunctorialWithGivenPowerObjects[110X.   [23XF:  (  Pb,  f,  Pa  )  \mapsto
+  \mathtt{PowerObjectFunctorialWithGivenPowerObjects}(Pb, f, Pa)[123X.[133X
+  
+  [1X1.9-23 AddPseudoComplementSubobject[101X
   
   [33X[1;0Y[29X[2XAddPseudoComplementSubobject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -823,7 +859,7 @@
   [10XPseudoComplementSubobject[110X.       [23XF:       (       arg2       )       \mapsto
   \mathtt{PseudoComplementSubobject}(arg2)[123X.[133X
   
-  [1X1.9-22 AddPushoutComplement[101X
+  [1X1.9-24 AddPushoutComplement[101X
   
   [33X[1;0Y[29X[2XAddPushoutComplement[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -832,7 +868,7 @@
   given  function [23XF[123X to the category for the basic operation [10XPushoutComplement[110X.
   [23XF: ( l, m ) \mapsto \mathtt{PushoutComplement}(l, m)[123X.[133X
   
-  [1X1.9-23 AddRelativePseudoComplementSubobject[101X
+  [1X1.9-25 AddRelativePseudoComplementSubobject[101X
   
   [33X[1;0Y[29X[2XAddRelativePseudoComplementSubobject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -842,7 +878,7 @@
   [10XRelativePseudoComplementSubobject[110X.    [23XF:    (    arg2,    arg3   )   \mapsto
   \mathtt{RelativePseudoComplementSubobject}(arg2, arg3)[123X.[133X
   
-  [1X1.9-24 AddSingletonMorphism[101X
+  [1X1.9-26 AddSingletonMorphism[101X
   
   [33X[1;0Y[29X[2XAddSingletonMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -851,7 +887,7 @@
   given  function [23XF[123X to the category for the basic operation [10XSingletonMorphism[110X.
   [23XF: ( object ) \mapsto \mathtt{SingletonMorphism}(object)[123X.[133X
   
-  [1X1.9-25 AddSingletonMorphismWithGivenPowerObject[101X
+  [1X1.9-27 AddSingletonMorphismWithGivenPowerObject[101X
   
   [33X[1;0Y[29X[2XAddSingletonMorphismWithGivenPowerObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -861,7 +897,7 @@
   [10XSingletonMorphismWithGivenPowerObject[110X.  [23XF:  ( object, power_object ) \mapsto
   \mathtt{SingletonMorphismWithGivenPowerObject}(object, power_object)[123X.[133X
   
-  [1X1.9-26 AddSubobjectClassifier[101X
+  [1X1.9-28 AddSubobjectClassifier[101X
   
   [33X[1;0Y[29X[2XAddSubobjectClassifier[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -870,7 +906,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XSubobjectClassifier[110X. [23XF: ( ) \mapsto \mathtt{SubobjectClassifier}()[123X.[133X
   
-  [1X1.9-27 AddSubobjectOfClassifyingMorphism[101X
+  [1X1.9-29 AddSubobjectOfClassifyingMorphism[101X
   
   [33X[1;0Y[29X[2XAddSubobjectOfClassifyingMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -880,7 +916,7 @@
   [10XSubobjectOfClassifyingMorphism[110X.      [23XF:      (      alpha      )     \mapsto
   \mathtt{SubobjectOfClassifyingMorphism}(alpha)[123X.[133X
   
-  [1X1.9-28 AddTruthMorphismOfAnd[101X
+  [1X1.9-30 AddTruthMorphismOfAnd[101X
   
   [33X[1;0Y[29X[2XAddTruthMorphismOfAnd[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -889,7 +925,7 @@
   given function [23XF[123X to the category for the basic operation [10XTruthMorphismOfAnd[110X.
   [23XF: ( ) \mapsto \mathtt{TruthMorphismOfAnd}()[123X.[133X
   
-  [1X1.9-29 AddTruthMorphismOfAndWithGivenObjects[101X
+  [1X1.9-31 AddTruthMorphismOfAndWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddTruthMorphismOfAndWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -899,7 +935,7 @@
   [10XTruthMorphismOfAndWithGivenObjects[110X.   [23XF:   (   Omega2,   Omega   )   \mapsto
   \mathtt{TruthMorphismOfAndWithGivenObjects}(Omega2, Omega)[123X.[133X
   
-  [1X1.9-30 AddTruthMorphismOfFalse[101X
+  [1X1.9-32 AddTruthMorphismOfFalse[101X
   
   [33X[1;0Y[29X[2XAddTruthMorphismOfFalse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -908,7 +944,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XTruthMorphismOfFalse[110X. [23XF: ( ) \mapsto \mathtt{TruthMorphismOfFalse}()[123X.[133X
   
-  [1X1.9-31 AddTruthMorphismOfFalseWithGivenObjects[101X
+  [1X1.9-33 AddTruthMorphismOfFalseWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddTruthMorphismOfFalseWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -918,7 +954,7 @@
   [10XTruthMorphismOfFalseWithGivenObjects[110X.    [23XF:    (    T,   Omega   )   \mapsto
   \mathtt{TruthMorphismOfFalseWithGivenObjects}(T, Omega)[123X.[133X
   
-  [1X1.9-32 AddTruthMorphismOfImplies[101X
+  [1X1.9-34 AddTruthMorphismOfImplies[101X
   
   [33X[1;0Y[29X[2XAddTruthMorphismOfImplies[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -927,7 +963,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XTruthMorphismOfImplies[110X. [23XF: ( ) \mapsto \mathtt{TruthMorphismOfImplies}()[123X.[133X
   
-  [1X1.9-33 AddTruthMorphismOfImpliesWithGivenObjects[101X
+  [1X1.9-35 AddTruthMorphismOfImpliesWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddTruthMorphismOfImpliesWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -937,7 +973,7 @@
   [10XTruthMorphismOfImpliesWithGivenObjects[110X.   [23XF:   (  Omega2,  Omega  )  \mapsto
   \mathtt{TruthMorphismOfImpliesWithGivenObjects}(Omega2, Omega)[123X.[133X
   
-  [1X1.9-34 AddTruthMorphismOfNot[101X
+  [1X1.9-36 AddTruthMorphismOfNot[101X
   
   [33X[1;0Y[29X[2XAddTruthMorphismOfNot[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -946,7 +982,7 @@
   given function [23XF[123X to the category for the basic operation [10XTruthMorphismOfNot[110X.
   [23XF: ( ) \mapsto \mathtt{TruthMorphismOfNot}()[123X.[133X
   
-  [1X1.9-35 AddTruthMorphismOfNotWithGivenObjects[101X
+  [1X1.9-37 AddTruthMorphismOfNotWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddTruthMorphismOfNotWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -956,7 +992,7 @@
   [10XTruthMorphismOfNotWithGivenObjects[110X.   [23XF:   (   Omega,   Omega1   )   \mapsto
   \mathtt{TruthMorphismOfNotWithGivenObjects}(Omega, Omega1)[123X.[133X
   
-  [1X1.9-36 AddTruthMorphismOfOr[101X
+  [1X1.9-38 AddTruthMorphismOfOr[101X
   
   [33X[1;0Y[29X[2XAddTruthMorphismOfOr[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -965,7 +1001,7 @@
   given  function [23XF[123X to the category for the basic operation [10XTruthMorphismOfOr[110X.
   [23XF: ( ) \mapsto \mathtt{TruthMorphismOfOr}()[123X.[133X
   
-  [1X1.9-37 AddTruthMorphismOfOrWithGivenObjects[101X
+  [1X1.9-39 AddTruthMorphismOfOrWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddTruthMorphismOfOrWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -975,7 +1011,7 @@
   [10XTruthMorphismOfOrWithGivenObjects[110X.    [23XF:   (   Omega2,   Omega   )   \mapsto
   \mathtt{TruthMorphismOfOrWithGivenObjects}(Omega2, Omega)[123X.[133X
   
-  [1X1.9-38 AddTruthMorphismOfTrue[101X
+  [1X1.9-40 AddTruthMorphismOfTrue[101X
   
   [33X[1;0Y[29X[2XAddTruthMorphismOfTrue[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -984,7 +1020,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XTruthMorphismOfTrue[110X. [23XF: ( ) \mapsto \mathtt{TruthMorphismOfTrue}()[123X.[133X
   
-  [1X1.9-39 AddTruthMorphismOfTrueWithGivenObjects[101X
+  [1X1.9-41 AddTruthMorphismOfTrueWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddTruthMorphismOfTrueWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -994,7 +1030,7 @@
   [10XTruthMorphismOfTrueWithGivenObjects[110X.    [23XF:    (    T,    Omega   )   \mapsto
   \mathtt{TruthMorphismOfTrueWithGivenObjects}(T, Omega)[123X.[133X
   
-  [1X1.9-40 AddUnionSubobject[101X
+  [1X1.9-42 AddUnionSubobject[101X
   
   [33X[1;0Y[29X[2XAddUnionSubobject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
