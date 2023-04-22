@@ -546,6 +546,10 @@ Image of (1)-[(a)]-&gt;(1):
 An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
 / [ a*a*a = 1 ], SkeletalFinSets )
 given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsProjective( Omega0 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsReflexive( Omega0 );</span>
+false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := Exponential( Omega0, Omega0 );</span>
 &lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
  / [ a*a*a = 1 ], SkeletalFinSets )&gt;
@@ -587,6 +591,10 @@ Image of (1)-[(a)]-&gt;(1):
 An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
 / [ a*a*a = a ], SkeletalFinSets )
 given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsProjective( Omega1 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsReflexive( Omega1 );</span>
+false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M2 := Fq / [ [ Fq.a^3, Fq.a^2 ] ];</span>
 FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) ) / [ a*a*a = a*a ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PShM2 := PreSheaves( M2 );</span>
@@ -605,6 +613,10 @@ Image of (1)-[(a)]-&gt;(1):
 An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
 / [ a*a*a = a*a ], SkeletalFinSets )
 given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsProjective( Omega2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsReflexive( Omega2 );</span>
+false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">true2 := TruthMorphismOfTrue( PShM2 );</span>
 &lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
  / [ a*a*a = a*a ], SkeletalFinSets )&gt;

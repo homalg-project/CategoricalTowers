@@ -462,6 +462,10 @@
     [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
     [4X[28X/ [ a*a*a = 1 ], SkeletalFinSets )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsProjective( Omega0 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsReflexive( Omega0 );[127X[104X
+    [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xe := Exponential( Omega0, Omega0 );[127X[104X
     [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
     [4X[28X / [ a*a*a = 1 ], SkeletalFinSets )>[128X[104X
@@ -503,6 +507,10 @@
     [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
     [4X[28X/ [ a*a*a = a ], SkeletalFinSets )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsProjective( Omega1 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsReflexive( Omega1 );[127X[104X
+    [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XM2 := Fq / [ [ Fq.a^3, Fq.a^2 ] ];[127X[104X
     [4X[28XFreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a*a = a*a ][128X[104X
     [4X[25Xgap>[125X [27XPShM2 := PreSheaves( M2 );[127X[104X
@@ -521,6 +529,10 @@
     [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
     [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsProjective( Omega2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsReflexive( Omega2 );[127X[104X
+    [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xtrue2 := TruthMorphismOfTrue( PShM2 );[127X[104X
     [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
     [4X[28X / [ a*a*a = a*a ], SkeletalFinSets )>[128X[104X
