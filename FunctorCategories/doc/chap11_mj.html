@@ -116,7 +116,12 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( iotaC ) = P;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsReflexive( Coproduct( L, L, L ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L3 := Coproduct( L, L, L );</span>
+&lt;An object in PreSheaves( FreeCategory(
+ RightQuiver( "q(1)[a:1-&gt;1]" ) ) / [ a*a = 1 ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsProjective( L3 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsReflexive( L3 );</span>
 false
 </pre></div>
 

@@ -67,7 +67,12 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XRange( iotaC ) = P;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsReflexive( Coproduct( L, L, L ) );[127X[104X
+    [4X[25Xgap>[125X [27XL3 := Coproduct( L, L, L );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory([128X[104X
+    [4X[28X RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a = 1 ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XIsProjective( L3 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsReflexive( L3 );[127X[104X
     [4X[28Xfalse[128X[104X
   [4X[32X[104X
   
