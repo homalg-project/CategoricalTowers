@@ -61,6 +61,11 @@ Source( iotaC ) = C;
 #! true
 Range( iotaC ) = P;
 #! true
-IsReflexive( Coproduct( L, L, L ) );
+L3 := Coproduct( L, L, L );
+#! <An object in PreSheaves( FreeCategory(
+#!  RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a = 1 ], SkeletalFinSets )>
+IsProjective( L3 );
+#! true
+IsReflexive( L3 );
 #! false
 #! @EndExample
