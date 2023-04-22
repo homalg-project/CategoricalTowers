@@ -253,6 +253,7 @@ InstallMethodForCompilerForCAP( CoveringListOfRepresentables,
     
     objs := SetOfObjects( B );
     
+    ## compute all Hom(-, objB) to order them by their lengths below
     homs := List( objs, objB ->
                   ObjectDatum( C,
                           Coproduct( C,
@@ -292,7 +293,7 @@ InstallMethodForCompilerForCAP( CoveringListOfRepresentables,
         
         pos := pos_nontrivial[SafePosition( homs_relevant, max )];
         
-        return Concatenation( pi_data, [ Pair( objs[pos], diff_vals[pos] ) ] );
+        return Concatenation( pi_data, [ Pair( objs[pos], [ diff_vals[pos][1] ] ) ] );
         
     end;
     
