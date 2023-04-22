@@ -392,6 +392,44 @@ DeclareOperation( "AddPowerObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `PowerObjectFunctorial`.
+#! $F: ( f ) \mapsto \mathtt{PowerObjectFunctorial}(f)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPowerObjectFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPowerObjectFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPowerObjectFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPowerObjectFunctorial",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `PowerObjectFunctorialWithGivenPowerObjects`.
+#! $F: ( Pb, f, Pa ) \mapsto \mathtt{PowerObjectFunctorialWithGivenPowerObjects}(Pb, f, Pa)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPowerObjectFunctorialWithGivenPowerObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPowerObjectFunctorialWithGivenPowerObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPowerObjectFunctorialWithGivenPowerObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPowerObjectFunctorialWithGivenPowerObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `PseudoComplementSubobject`.
 #! $F: ( arg2 ) \mapsto \mathtt{PseudoComplementSubobject}(arg2)$.
 #! @Returns nothing

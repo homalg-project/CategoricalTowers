@@ -131,7 +131,23 @@ SubobjectOfClassifyingMorphism := rec(
 
 PowerObject := rec(
   filter_list := [ "category", "object" ],
-  return_type := "object" ),
+  return_type := "object",
+  functorial := "PowerObjectFunctorial" ),
+
+PowerObjectFunctorial := rec(
+  filter_list := [ "category", "morphism" ],
+  input_arguments_names := [ "cat", "f" ],
+  return_type := "morphism",
+  output_source_getter_string := "PowerObject( cat, Range( f ) )",
+  output_source_getter_preconditions := [ [ "PowerObject", 1 ] ],
+  output_range_getter_string := "PowerObject( cat, Source( f ) )",
+  output_range_getter_preconditions := [ [ "PowerObject", 1 ] ],
+  with_given_object_position := "both" ),
+
+PowerObjectFunctorialWithGivenPowerObjects := rec(
+  filter_list := [ "category", "object", "morphism", "object" ],
+  io_type := [ [ "Pb", "f", "Pa" ], [ "Pb", "Pa" ] ],
+  return_type := "morphism" ),
 
 SingletonMorphism := rec(
   filter_list := [ "category", "object" ],
