@@ -1209,7 +1209,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             end );
             
             Add( PSh!.compiler_hints.category_attribute_names,
-                 "AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory" );
+                 "AssociatedCategoryOfColimitQuiversOfSourceCategory" );
             
             if IsCategoryOfSkeletalFinSets( C ) then
                 
@@ -2632,7 +2632,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     
     decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], triples ) );
     
-    return CreateColimitQuiver( AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory( PSh ),
+    return CreateColimitQuiver( AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh ),
                    Pair( objects,
                          decorated_morphisms ) );
     
@@ -2651,9 +2651,9 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
         [ IsPreSheafCategoryOfFpEnrichedCategory,
-          IsObjectInFiniteColimitCocompletionWithStrictCoproducts,
+          IsObjectInCategoryOfColimitQuivers,
           IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
-          IsObjectInFiniteColimitCocompletionWithStrictCoproducts ],
+          IsObjectInCategoryOfColimitQuivers ],
         
   function ( PSh, source, phi, range )
     local B, C, defining_triple, nr_objs, nr_mors, Bhat, source_datum, phi_vals, map_of_objects,
@@ -2666,7 +2666,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
     nr_objs := defining_triple[1];
     nr_mors := defining_triple[2];
     
-    Bhat := AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory( PSh );
+    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
     
     source_datum := ObjectDatum( Bhat, source );
     
@@ -2717,7 +2717,7 @@ InstallOtherMethodForCompilerForCAP( SomeDiagramOfRepresentables,
   function ( PSh, F )
     local Bhat, diagram, Yoneda, triple;
     
-    Bhat := AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory( PSh );
+    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
     
     diagram := ObjectDatum( Bhat,
                        CoYonedaLemmaOnObjects( PSh, F ) );

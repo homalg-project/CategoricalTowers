@@ -13,7 +13,7 @@ PSh := PreSheaves( Delta1 );
 #!   "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],
 #! SkeletalFinSets )
 quiver := CoYonedaLemmaOnObjects( PSh.C1 );
-#! <An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! <An object in CategoryOfColimitQuivers(
 #!  FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #!  / [ s*id = C0, t*id = C0 ] )>
 Display( quiver );
@@ -22,7 +22,7 @@ Display( quiver );
 #!     [ 0, (C0)-[(s)]->(C1), 2 ], [ 0, (C0)-[(s)]->(C1), 3 ],
 #!     [ 1, (C0)-[(s)]->(C1), 4 ], [ 1, (C0)-[(t)]->(C1), 2 ],
 #!     [ 0, (C0)-[(t)]->(C1), 3 ], [ 1, (C0)-[(t)]->(C1), 4 ] ] ]
-#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! An object in CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ] )
 #! given by the above data
