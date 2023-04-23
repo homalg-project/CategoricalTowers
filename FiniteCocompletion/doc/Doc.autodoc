@@ -58,16 +58,16 @@
 @Subsection Cartesian diagonal
 @InsertChunk CartesianDiagonal
 
-@Chapter The category of quivers in a category
+@Chapter Binary coequalizer closure
 
+@Section Global variables
+@Section Attributes
 @Section Constructors
+@Section GAP categories
 
-@Chapter Category of copresheaves of a finitely presented (linear) category
-
-@Section Constructors
+@Chapter The finite colimit cocompletion (with strict coproducts) of a category
 
 @Section Attributes
-
-@Section Operations
-
-@Section &GAP; Categories
+@Section Constructors
+@Section GAP categories
+@Section Examples

@@ -39,7 +39,8 @@ DeclareCategory( "IsMorphismInFiniteCoequalizerClosureOfCocartesianCategory",
 ####################################
 
 if false then
-#! The quiver generating the category of quivers
+#! @Description
+#!  The quiver generating the category of quivers.
 DeclareGlobalVariable( "QuiverOfCategoryOfQuivers" );
 fi;
 
