@@ -67,7 +67,7 @@ IsWellDefined( source_colimit_quiver );
 #! true
 source_coeq_pair :=
   ModelingObject( CapCategory( source_colimit_quiver ), source_colimit_quiver );
-#! <An object in FiniteCoequalizerClosureOfCocartesianCategory(
+#! <An object in PairOfParallelArrowsCategory(
 #!  FiniteStrictCoproductCocompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
 Display( source_coeq_pair );
@@ -103,7 +103,7 @@ Display( source_coeq_pair );
 #! FiniteStrictCoproductCocompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 #! 
-#! An object in FiniteCoequalizerClosureOfCocartesianCategory(
+#! An object in PairOfParallelArrowsCategory(
 #! FiniteStrictCoproductCocompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 ModeledObject( CapCategory( source_colimit_quiver ),
@@ -133,7 +133,7 @@ IsWellDefined( target_colimit_quiver );
 #! true
 target_coeq_pair :=
   ModelingObject( CapCategory( target_colimit_quiver ), target_colimit_quiver );
-#! <An object in FiniteCoequalizerClosureOfCocartesianCategory(
+#! <An object in PairOfParallelArrowsCategory(
 #!  FiniteStrictCoproductCocompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
 Display( target_coeq_pair );
@@ -169,7 +169,7 @@ Display( target_coeq_pair );
 #! FiniteStrictCoproductCocompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 #! 
-#! An object in FiniteCoequalizerClosureOfCocartesianCategory(
+#! An object in PairOfParallelArrowsCategory(
 #! FiniteStrictCoproductCocompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 ModeledObject( CapCategory( target_colimit_quiver ),
@@ -216,7 +216,7 @@ IsWellDefined( colimit_quiver_morphism );
 #! true
 coeq_pair_morphism :=
   ModelingMorphism( CapCategory( colimit_quiver_morphism ), colimit_quiver_morphism );
-#! <A morphism in FiniteCoequalizerClosureOfCocartesianCategory(
+#! <A morphism in PairOfParallelArrowsCategory(
 #!  FiniteStrictCoproductCocompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
 Display( coeq_pair_morphism );
@@ -241,7 +241,7 @@ Display( coeq_pair_morphism );
 #! FiniteStrictCoproductCocompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 #! 
-#! A morphism in FiniteCoequalizerClosureOfCocartesianCategory(
+#! A morphism in PairOfParallelArrowsCategory(
 #! FiniteStrictCoproductCocompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 ModeledMorphism( CapCategory( colimit_quiver_morphism ),

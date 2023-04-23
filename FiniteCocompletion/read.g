@@ -17,7 +17,7 @@ ReadPackage( "FiniteCocompletion", "gap/FiniteStrictProductCompletion.gi");
 ReadPackage( "FiniteCocompletion", "gap/SkeletalFinSets.gi");
 
 ##
-ReadPackage( "FiniteCocompletion", "gap/FiniteCoequalizerClosureOfCocartesianCategory.gi");
+ReadPackage( "FiniteCocompletion", "gap/PairOfParallelArrowsCategory.gi");
 
 ##
 ReadPackage( "FiniteCocompletion", "gap/FiniteColimitCocompletionWithStrictCoproducts.gi");

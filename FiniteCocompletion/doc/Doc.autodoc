@@ -58,7 +58,7 @@
 @Subsection Cartesian diagonal
 @InsertChunk CartesianDiagonal
 
-@Chapter Binary coequalizer closure
+@Chapter The pair of parallel arrows category of a category
 
 @Section Global variables
 @Section Attributes

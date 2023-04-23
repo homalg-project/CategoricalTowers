@@ -72,7 +72,7 @@ InstallMethod( FiniteColimitCocompletionWithStrictCoproducts,
     
     UC := FiniteStrictCoproductCocompletion( C : FinalizeCategory := true );
     
-    Coeq := FiniteCoequalizerClosureOfCocartesianCategory( UC : FinalizeCategory := true );
+    Coeq := PairOfParallelArrowsCategory( UC : FinalizeCategory := true );
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=

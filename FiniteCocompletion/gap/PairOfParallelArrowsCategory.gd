@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Binary coequalizer closure
+#! @Chapter The pair of parallel arrows category of a category
 
 ####################################
 #
@@ -13,24 +13,24 @@
 ####################################
 
 #! @Description
-#!  The &GAP; category of finite coequalizer closures of cocartesian categories.
-DeclareCategory( "IsFiniteCoequalizerClosureOfCocartesianCategory",
+#!  The &GAP; category of pair of parallel arrows categories.
+DeclareCategory( "IsPairOfParallelArrowsCategory",
         IsCapCategory );
 
 #! @Description
-#!  The &GAP; category of cells in the finite coequalizer closure of a cocartesian category.
-DeclareCategory( "IsCellInFiniteCoequalizerClosureOfCocartesianCategory",
+#!  The &GAP; category of cells in the pair of parallel arrows category of a category.
+DeclareCategory( "IsCellInPairOfParallelArrowsCategory",
         IsCapCategoryCell );
 
 #! @Description
-#!  The &GAP; category of objects in the finite coequalizer closure of a cocartesian category.
-DeclareCategory( "IsObjectInFiniteCoequalizerClosureOfCocartesianCategory",
-        IsCellInFiniteCoequalizerClosureOfCocartesianCategory and IsCapCategoryObject  );
+#!  The &GAP; category of objects in the pair of parallel arrows category of a category.
+DeclareCategory( "IsObjectInPairOfParallelArrowsCategory",
+        IsCellInPairOfParallelArrowsCategory and IsCapCategoryObject  );
 
 #! @Description
-#!  The &GAP; category of morphisms in the finite coequalizer closure of a cocartesian category.
-DeclareCategory( "IsMorphismInFiniteCoequalizerClosureOfCocartesianCategory",
-        IsCellInFiniteCoequalizerClosureOfCocartesianCategory and IsCapCategoryMorphism );
+#!  The &GAP; category of morphisms in the pair of parallel arrows category of a category.
+DeclareCategory( "IsMorphismInPairOfParallelArrowsCategory",
+        IsCellInPairOfParallelArrowsCategory and IsCapCategoryMorphism );
 
 ####################################
 #
@@ -51,13 +51,13 @@ fi;
 ####################################
 
 #! @Arguments quiver
-DeclareAttribute( "DefiningCoequalizerPair",
-        IsObjectInFiniteCoequalizerClosureOfCocartesianCategory );
+DeclareAttribute( "DefiningParallelPair",
+        IsObjectInPairOfParallelArrowsCategory );
 
-CapJitAddTypeSignature( "DefiningCoequalizerPair", [ IsObjectInFiniteCoequalizerClosureOfCocartesianCategory ],
+CapJitAddTypeSignature( "DefiningParallelPair", [ IsObjectInPairOfParallelArrowsCategory ],
  function ( input_types )
     
-    Assert( 0, IsFiniteCoequalizerClosureOfCocartesianCategory( input_types[1].category ) );
+    Assert( 0, IsPairOfParallelArrowsCategory( input_types[1].category ) );
     
     return rec( filter := IsNTuple,
                 element_types :=
@@ -67,13 +67,13 @@ CapJitAddTypeSignature( "DefiningCoequalizerPair", [ IsObjectInFiniteCoequalizer
 end );
 
 #! @Arguments quiver_morphism
-DeclareAttribute( "DefiningPairOfMorphismBetweenCoequalizerPairs",
-        IsMorphismInFiniteCoequalizerClosureOfCocartesianCategory );
+DeclareAttribute( "DefiningPairOfMorphismBetweenParallelPairs",
+        IsMorphismInPairOfParallelArrowsCategory );
 
-CapJitAddTypeSignature( "DefiningPairOfMorphismBetweenCoequalizerPairs", [ IsMorphismInFiniteCoequalizerClosureOfCocartesianCategory ],
+CapJitAddTypeSignature( "DefiningPairOfMorphismBetweenParallelPairs", [ IsMorphismInPairOfParallelArrowsCategory ],
  function ( input_types )
     
-    Assert( 0, IsFiniteCoequalizerClosureOfCocartesianCategory( input_types[1].category ) );
+    Assert( 0, IsPairOfParallelArrowsCategory( input_types[1].category ) );
     
     return rec( filter := IsNTuple,
                 element_types :=
@@ -91,5 +91,5 @@ end );
 #! @Description
 #!  Return the finite coequalizer closure of the coartesian category <A>cat</A>.
 #! @Arguments cat
-DeclareAttribute( "FiniteCoequalizerClosureOfCocartesianCategory",
+DeclareAttribute( "PairOfParallelArrowsCategory",
         IsCapCategory );

@@ -489,7 +489,7 @@ rec(
 );
 
 ##
-InstallMethod( FiniteCoequalizerClosureOfCocartesianCategory,
+InstallMethod( PairOfParallelArrowsCategory,
         "for a CAP category",
         [ IsCapCategory and IsCocartesianCategory ],
         
@@ -499,33 +499,33 @@ InstallMethod( FiniteCoequalizerClosureOfCocartesianCategory,
           F, PSh,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
-          CoequalizerPairs;
+          ParallelPairs;
     
     ##
     object_constructor :=
-      function( CoequalizerPairs, coequalizer_pair )
+      function( ParallelPairs, coequalizer_pair )
         
-        return CreateCapCategoryObjectWithAttributes( CoequalizerPairs,
-                       DefiningCoequalizerPair, coequalizer_pair );
+        return CreateCapCategoryObjectWithAttributes( ParallelPairs,
+                       DefiningParallelPair, coequalizer_pair );
         
     end;
     
     ##
-    object_datum := { CoequalizerPairs, o } -> DefiningCoequalizerPair( o );
+    object_datum := { ParallelPairs, o } -> DefiningParallelPair( o );
     
     ##
     morphism_constructor :=
-      function( CoequalizerPairs, source, pair, range )
+      function( ParallelPairs, source, pair, range )
         
-        return CreateCapCategoryMorphismWithAttributes( CoequalizerPairs,
+        return CreateCapCategoryMorphismWithAttributes( ParallelPairs,
                        source,
                        range,
-                       DefiningPairOfMorphismBetweenCoequalizerPairs, pair );
+                       DefiningPairOfMorphismBetweenParallelPairs, pair );
         
     end;
     
     ##
-    morphism_datum := { CoequalizerPairs, m } -> DefiningPairOfMorphismBetweenCoequalizerPairs( m );
+    morphism_datum := { ParallelPairs, m } -> DefiningPairOfMorphismBetweenParallelPairs( m );
     
     ## building the categorical tower:
     F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := SkeletalFinSets, FinalizeCategory := true );
@@ -534,13 +534,6 @@ InstallMethod( FiniteCoequalizerClosureOfCocartesianCategory,
     
     PSh := PreSheaves( F, C : FinalizeCategory := false );
 
-    #AddIsCongruentForMorphisms( PSh,
-    #  function( cat, phi, psi )
-    #    
-    #    Error( "Todo" );
-    #    
-    #end );
-    
     Finalize( PSh : FinalizeCategory := true );
     
     ## specify the attributes the compiler should fully resolve during compilation
@@ -552,10 +545,10 @@ InstallMethod( FiniteCoequalizerClosureOfCocartesianCategory,
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
-      function( CoequalizerPairs, pair )
+      function( ParallelPairs, pair )
         local PSh, s, t, A, V;
         
-        PSh := ModelingCategory( CoequalizerPairs );
+        PSh := ModelingCategory( ParallelPairs );
         
         s := pair[1];
         t := pair[2];
@@ -569,10 +562,10 @@ InstallMethod( FiniteCoequalizerClosureOfCocartesianCategory,
     
     ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
-      function( CoequalizerPairs, obj )
+      function( ParallelPairs, obj )
         local PSh, st;
         
-        PSh := ModelingCategory( CoequalizerPairs );
+        PSh := ModelingCategory( ParallelPairs );
         
         st := ObjectDatum( PSh, obj )[2];
         
@@ -582,10 +575,10 @@ InstallMethod( FiniteCoequalizerClosureOfCocartesianCategory,
     
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
-      function( CoequalizerPairs, source, pair, range )
+      function( ParallelPairs, source, pair, range )
         local PSh, V, A;
         
-        PSh := ModelingCategory( CoequalizerPairs );
+        PSh := ModelingCategory( ParallelPairs );
         
         V := pair[1];
         A := pair[2];
@@ -599,10 +592,10 @@ InstallMethod( FiniteCoequalizerClosureOfCocartesianCategory,
     
     ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
-      function( CoequalizerPairs, mor )
+      function( ParallelPairs, mor )
         local PSh, mor_datum;
         
-        PSh := ModelingCategory( CoequalizerPairs );
+        PSh := ModelingCategory( ParallelPairs );
         
         mor_datum := MorphismDatum( PSh, mor );
         
@@ -614,11 +607,11 @@ InstallMethod( FiniteCoequalizerClosureOfCocartesianCategory,
     ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
-    CoequalizerPairs := WrapperCategory( PSh,
-                                rec( name := Concatenation( "FiniteCoequalizerClosureOfCocartesianCategory( ", Name( C ), " )" ),
-                                     category_filter := IsFiniteCoequalizerClosureOfCocartesianCategory,
-                                     category_object_filter := IsObjectInFiniteCoequalizerClosureOfCocartesianCategory,
-                                     category_morphism_filter := IsMorphismInFiniteCoequalizerClosureOfCocartesianCategory,
+    ParallelPairs := WrapperCategory( PSh,
+                                rec( name := Concatenation( "PairOfParallelArrowsCategory( ", Name( C ), " )" ),
+                                     category_filter := IsPairOfParallelArrowsCategory,
+                                     category_object_filter := IsObjectInPairOfParallelArrowsCategory,
+                                     category_morphism_filter := IsMorphismInPairOfParallelArrowsCategory,
                                      object_constructor := object_constructor,
                                      object_datum := object_datum,
                                      morphism_datum := morphism_datum,
@@ -630,9 +623,9 @@ InstallMethod( FiniteCoequalizerClosureOfCocartesianCategory,
                                      only_primitive_operations := true )
                                 : FinalizeCategory := false );
     
-    SetUnderlyingCategory( CoequalizerPairs, C );
+    SetUnderlyingCategory( ParallelPairs, C );
     
-    CoequalizerPairs!.compiler_hints.category_attribute_names :=
+    ParallelPairs!.compiler_hints.category_attribute_names :=
            [ "ModelingCategory",
              ];
     
@@ -640,9 +633,9 @@ InstallMethod( FiniteCoequalizerClosureOfCocartesianCategory,
         
     fi;
     
-    Finalize( CoequalizerPairs );
+    Finalize( ParallelPairs );
     
-    return CoequalizerPairs;
+    return ParallelPairs;
     
 end );
 
@@ -654,8 +647,8 @@ end );
 
 ##
 InstallMethod( Display,
-        "for an object in the finite coequalizer closure of a cocartesian category",
-        [ IsObjectInFiniteCoequalizerClosureOfCocartesianCategory ],
+        "for an object in the pair of parallel arrows category of a category",
+        [ IsObjectInPairOfParallelArrowsCategory ],
         
   function ( coequalizer_pair )
     local Coeq;
@@ -670,8 +663,8 @@ end );
 
 ##
 InstallMethod( Display,
-        "for a morphism in the finite coequalizer closure of a cocartesian category",
-        [ IsMorphismInFiniteCoequalizerClosureOfCocartesianCategory ],
+        "for a morphism in the pair of parallel arrows category of a category",
+        [ IsMorphismInPairOfParallelArrowsCategory ],
         
   function ( coequalizer_pair_morphism )
     local Coeq;
