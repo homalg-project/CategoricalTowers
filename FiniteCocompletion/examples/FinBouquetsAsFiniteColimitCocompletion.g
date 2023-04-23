@@ -16,7 +16,7 @@ P := Cbar2.P;
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
 Display( P );
 #! [ [ <(P)> ], [  ] ]
-
+#! 
 #! An object in FiniteColimitCocompletionWithStrictCoproducts(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 L := Cbar2.L;
