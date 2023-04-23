@@ -65,7 +65,7 @@
 @Section Constructors
 @Section GAP categories
 
-@Chapter The finite colimit cocompletion (with strict coproducts) of a category
+@Chapter The category of colimit quivers in a category
 
 @Section Attributes
 @Section Constructors

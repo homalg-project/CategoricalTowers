@@ -7,43 +7,43 @@ FinBouquets;
 #! FinBouquets
 Cbar := ModelingCategory( FinBouquets );
 #! FiniteCocompletion( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )
-Cbar2 := FiniteColimitCocompletionWithStrictCoproducts(
+Cbar2 := CategoryOfColimitQuivers(
                  UnderlyingCategory( FinBouquets ) );
-#! FiniteColimitCocompletionWithStrictCoproducts(
+#! CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )
 P := Cbar2.P;
-#! <A projective object in FiniteColimitCocompletionWithStrictCoproducts(
+#! <A projective object in CategoryOfColimitQuivers(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
 Display( P );
 #! [ [ <(P)> ], [  ] ]
 #! 
-#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! An object in CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 L := Cbar2.L;
-#! <A projective object in FiniteColimitCocompletionWithStrictCoproducts(
+#! <A projective object in CategoryOfColimitQuivers(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
 Display( L );
 #! [ [ <(L)> ], [  ] ]
 #! 
-#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! An object in CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 b := Cbar2.b;
-#! <A morphism in FiniteColimitCocompletionWithStrictCoproducts(
+#! <A morphism in CategoryOfColimitQuivers(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
 Display( b );
 #! Source: [ [ <(P)> ], [  ] ]
 #! 
-#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! An object in CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Datum:  [ [ [ 0 ], [ (P)-[(b)]->(L) ] ], [  ] ]
 #! 
 #! Range:  [ [ <(L)> ], [  ] ]
 #! 
-#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! An object in CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
-#! A morphism in FiniteColimitCocompletionWithStrictCoproducts(
+#! A morphism in CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 source_bouquet := CreateBouquet( 3, [ 0, 0, 1 ] );
 #! <An object in FinBouquets>
@@ -54,14 +54,14 @@ source_presheaf := ModelingObject( Cbar,
 #! <An object in
 #!  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>
 source_colimit_quiver := CoYonedaLemmaOnObjects( source_presheaf );
-#! <An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! <An object in CategoryOfColimitQuivers(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
 Display( source_colimit_quiver );
 #! [ [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)> ],
 #!   [ [ 0, (P)-[(b)]->(L), 3 ], [ 0, (P)-[(b)]->(L), 4 ],
 #!     [ 1, (P)-[(b)]->(L), 5 ] ] ]
 #! 
-#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! An object in CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 IsWellDefined( source_colimit_quiver );
 #! true
@@ -118,7 +118,7 @@ target_presheaf := ModelingObject( Cbar,
 #! <An object in
 #!  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>
 target_colimit_quiver := CoYonedaLemmaOnObjects( target_presheaf );
-#! <An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! <An object in CategoryOfColimitQuivers(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
 Display( target_colimit_quiver );
 #! [ [ <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)>, <(L)> ],
@@ -126,7 +126,7 @@ Display( target_colimit_quiver );
 #!     [ 0, (P)-[(b)]->(L), 4 ], [ 0, (P)-[(b)]->(L), 5 ],
 #!     [ 1, (P)-[(b)]->(L), 6 ] ] ]
 #! 
-#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! An object in CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )
 #! given by the above data
 IsWellDefined( target_colimit_quiver );
@@ -187,14 +187,14 @@ presheaf_morphism := ModelingMorphism( Cbar,
 #! <A morphism in
 #!  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>
 colimit_quiver_morphism := CoYonedaLemmaOnMorphisms( presheaf_morphism );
-#! <A morphism in FiniteColimitCocompletionWithStrictCoproducts(
+#! <A morphism in CategoryOfColimitQuivers(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
 Display( colimit_quiver_morphism );
 #! Source: [ [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)> ],
 #!         [ [ 0, (P)-[(b)]->(L), 3 ], [ 0, (P)-[(b)]->(L), 4 ],
 #!           [ 1, (P)-[(b)]->(L), 5 ] ] ]
 #! 
-#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! An object in CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Datum:  [ [ [ 0, 1, 1, 3, 5, 6 ],
@@ -207,10 +207,10 @@ Display( colimit_quiver_morphism );
 #!             [ 0, (P)-[(b)]->(L), 4 ], [ 0, (P)-[(b)]->(L), 5 ],
 #!             [ 1, (P)-[(b)]->(L), 6 ] ] ]
 #! 
-#! An object in FiniteColimitCocompletionWithStrictCoproducts(
+#! An object in CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
-#! A morphism in FiniteColimitCocompletionWithStrictCoproducts(
+#! A morphism in CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 IsWellDefined( colimit_quiver_morphism );
 #! true

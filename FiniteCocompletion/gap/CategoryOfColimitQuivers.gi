@@ -6,8 +6,8 @@
 
 ##
 InstallOtherMethodForCompilerForCAP( CreateColimitQuiver,
-        "for the finite colimit cocompletion of a category and a pair",
-        [ IsFiniteColimitCocompletionWithStrictCoproducts, IsList ],
+        "for the category of colimit quivers in a category and a pair",
+        [ IsCategoryOfColimitQuivers, IsList ],
         
   function ( ColimitQuivers, pair )
     
@@ -29,7 +29,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( CreateMorphismOfColimitQuivers,
         "for a category of quivers, two objects in a category of quivers, and a pair",
-        [ IsFiniteColimitCocompletionWithStrictCoproducts, IsObjectInFiniteColimitCocompletionWithStrictCoproducts, IsList, IsObjectInFiniteColimitCocompletionWithStrictCoproducts ],
+        [ IsCategoryOfColimitQuivers, IsObjectInCategoryOfColimitQuivers, IsList, IsObjectInCategoryOfColimitQuivers ],
         
   function ( ColimitQuivers, source, images, range )
     
@@ -41,7 +41,7 @@ InstallOtherMethodForCompilerForCAP( CreateMorphismOfColimitQuivers,
 end );
 
 ##
-InstallMethod( FiniteColimitCocompletionWithStrictCoproducts,
+InstallMethod( CategoryOfColimitQuivers,
         "for a category",
         [ IsCapCategory ],
         
@@ -210,10 +210,10 @@ InstallMethod( FiniteColimitCocompletionWithStrictCoproducts,
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
     ColimitQuivers := WrapperCategory( Coeq,
-                              rec( name := Concatenation( "FiniteColimitCocompletionWithStrictCoproducts( ", Name( C ), " )" ),
-                                   category_filter := IsFiniteColimitCocompletionWithStrictCoproducts,
-                                   category_object_filter := IsObjectInFiniteColimitCocompletionWithStrictCoproducts,
-                                   category_morphism_filter := IsMorphismInFiniteColimitCocompletionWithStrictCoproducts,
+                              rec( name := Concatenation( "CategoryOfColimitQuivers( ", Name( C ), " )" ),
+                                   category_filter := IsCategoryOfColimitQuivers,
+                                   category_object_filter := IsObjectInCategoryOfColimitQuivers,
+                                   category_morphism_filter := IsMorphismInCategoryOfColimitQuivers,
                                    object_constructor := object_constructor,
                                    object_datum := object_datum,
                                    morphism_datum := morphism_datum,
@@ -242,19 +242,19 @@ InstallMethod( FiniteColimitCocompletionWithStrictCoproducts,
 end );
 
 ##
-InstallMethod( AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory,
+InstallMethod( AssociatedCategoryOfColimitQuiversOfSourceCategory,
         [ IsPreSheafCategory ],
         
   function( PSh )
     
-    return FiniteColimitCocompletionWithStrictCoproducts( Source( PSh ) );
+    return CategoryOfColimitQuivers( Source( PSh ) );
     
 end );
 
 ##
 InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
-        "for a finite colimit cocompletion category",
-        [ IsFiniteColimitCocompletionWithStrictCoproducts ],
+        "for the category of colimit quivers in a category",
+        [ IsCategoryOfColimitQuivers ],
         
   function( ColimitQuivers )
     local Y;
@@ -271,8 +271,8 @@ end );
 
 ##
 InstallMethod( \.,
-        "for a finite colimit cocompletion category and a positive integer",
-        [ IsFiniteColimitCocompletionWithStrictCoproducts, IsPosInt ],
+        "for the category of colimit quivers in a category and a positive integer",
+        [ IsCategoryOfColimitQuivers, IsPosInt ],
         
   function( ColimitQuivers, string_as_int )
     local name, C, Y, Yc;
@@ -285,11 +285,11 @@ InstallMethod( \.,
     
     Yc := Y( C.(name) );
     
-    if IsObjectInFiniteColimitCocompletionWithStrictCoproducts( Yc ) then
+    if IsObjectInCategoryOfColimitQuivers( Yc ) then
         
         SetIsProjective( Yc, true );
         
-    elif IsMorphismInFiniteColimitCocompletionWithStrictCoproducts( Yc ) then
+    elif IsMorphismInCategoryOfColimitQuivers( Yc ) then
         
         if CanCompute( ColimitQuivers, "IsMonomorphism" ) then
             IsMonomorphism( Yc );
@@ -327,8 +327,8 @@ end );
 
 ##
 InstallMethod( Display,
-        "for an object in the finite colimit cocompletion of a category",
-        [ IsObjectInFiniteColimitCocompletionWithStrictCoproducts ],
+        "for an object in the category of colimit quivers in a category",
+        [ IsObjectInCategoryOfColimitQuivers ],
         
   function ( quiver )
     
@@ -340,8 +340,8 @@ end );
 
 ##
 InstallMethod( Display,
-        "for a morphism in the finite colimit cocompletion of a category",
-        [ IsMorphismInFiniteColimitCocompletionWithStrictCoproducts ],
+        "for a morphism in the category of colimit quivers in a category",
+        [ IsMorphismInCategoryOfColimitQuivers ],
         
   function ( quiver_morphism )
 

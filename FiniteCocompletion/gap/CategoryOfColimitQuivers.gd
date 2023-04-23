@@ -4,38 +4,38 @@
 # Declarations
 #
 
-#! @Chapter The finite colimit cocompletion (with strict coproducts) of a category
+#! @Chapter The category of colimit quivers in a category
 
 ####################################
 #
-#! @Section &GAP; Categories
+#! @Section GAP Categories
 #
 ####################################
 
 #! @Description
-#!  The &GAP; category of finite colimit cocompletions (with strict coproducts) of categories.
+#!  The &GAP; category of categories of colimit quivers in a category.
 #! @Arguments category
-DeclareCategory( "IsFiniteColimitCocompletionWithStrictCoproducts",
+DeclareCategory( "IsCategoryOfColimitQuivers",
         IsCapCategory );
 
 #! @Description
-#!  The &GAP; category of cells in the finite colimit cocompletion (with strict coproducts) of a category.
+#!  The &GAP; category of cells in the category of colimit quivers in a category.
 #! @Arguments cell
-DeclareCategory( "IsCellInFiniteColimitCocompletionWithStrictCoproducts",
+DeclareCategory( "IsCellInCategoryOfColimitQuivers",
         IsCapCategoryCell );
 
 #! @Description
-#!  The &GAP; category of objects in the finite colimit cocompletion (with strict coproducts) of a category.
+#!  The &GAP; category of objects in the category of colimit quivers in a category.
 #! @Arguments obj
-DeclareCategory( "IsObjectInFiniteColimitCocompletionWithStrictCoproducts",
-        IsCellInFiniteColimitCocompletionWithStrictCoproducts and
+DeclareCategory( "IsObjectInCategoryOfColimitQuivers",
+        IsCellInCategoryOfColimitQuivers and
         IsCapCategoryObject );
 
 #! @Description
-#!  The &GAP; category of morphisms in the finite colimit cocompletion (with strict coproducts) of a category.
+#!  The &GAP; category of morphisms in the category of colimit quivers in a category.
 #! @Arguments mor
-DeclareCategory( "IsMorphismInFiniteColimitCocompletionWithStrictCoproducts",
-        IsCellInFiniteColimitCocompletionWithStrictCoproducts and
+DeclareCategory( "IsMorphismInCategoryOfColimitQuivers",
+        IsCellInCategoryOfColimitQuivers and
         IsCapCategoryMorphism );
 
 ####################################
@@ -46,12 +46,12 @@ DeclareCategory( "IsMorphismInFiniteColimitCocompletionWithStrictCoproducts",
 
 #! @Arguments colimit_quiver
 DeclareAttribute( "DefiningPairOfColimitQuiver",
-        IsObjectInFiniteColimitCocompletionWithStrictCoproducts );
+        IsObjectInCategoryOfColimitQuivers );
 
-CapJitAddTypeSignature( "DefiningPairOfColimitQuiver", [ IsObjectInFiniteColimitCocompletionWithStrictCoproducts ],
+CapJitAddTypeSignature( "DefiningPairOfColimitQuiver", [ IsObjectInCategoryOfColimitQuivers ],
   function ( input_types )
     
-    Assert( 0, IsFiniteColimitCocompletionWithStrictCoproducts( input_types[1].category ) );
+    Assert( 0, IsCategoryOfColimitQuivers( input_types[1].category ) );
     
     return rec( filter := IsNTuple,
                 element_types :=
@@ -69,12 +69,12 @@ end );
 
 #! @Arguments colimit_quiver_morphism
 DeclareAttribute( "DefiningPairOfColimitQuiverMorphism",
-        IsMorphismInFiniteColimitCocompletionWithStrictCoproducts );
+        IsMorphismInCategoryOfColimitQuivers );
 
-CapJitAddTypeSignature( "DefiningPairOfColimitQuiverMorphism", [ IsMorphismInFiniteColimitCocompletionWithStrictCoproducts ],
+CapJitAddTypeSignature( "DefiningPairOfColimitQuiverMorphism", [ IsMorphismInCategoryOfColimitQuivers ],
   function ( input_types )
     
-    Assert( 0, IsFiniteColimitCocompletionWithStrictCoproducts( input_types[1].category ) );
+    Assert( 0, IsCategoryOfColimitQuivers( input_types[1].category ) );
     
     return rec( filter := IsNTuple,
                 element_types :=
@@ -96,51 +96,51 @@ end );
 ####################################
 
 #! @Description
-#!  Construct the finite colimit cocompletion (with strict coproducts) of the category <A>C</A>.
+#!  Construct the category colimit quivers in the category <A>C</A>.
 #! @Returns a &CAP; category
 #! @Arguments C
-DeclareAttribute( "FiniteColimitCocompletionWithStrictCoproducts",
+DeclareAttribute( "CategoryOfColimitQuivers",
         IsCapCategory );
 #! @InsertChunk FinBouquetsAsFiniteColimitCocompletion
 #! @InsertChunk FinReflexiveQuiversAsFiniteColimitCocompletion
 
-CapJitAddTypeSignature( "FiniteColimitCocompletionWithStrictCoproducts", [ IsCapCategory ], function ( input_types )
+CapJitAddTypeSignature( "CategoryOfColimitQuivers", [ IsCapCategory ], function ( input_types )
     
-    return CapJitDataTypeOfCategory( FiniteColimitCocompletionWithStrictCoproducts( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( CategoryOfColimitQuivers( input_types[1].category ) );
     
 end );
 
 #!
 DeclareOperation( "CreateColimitQuiver",
-        [ IsFiniteColimitCocompletionWithStrictCoproducts, IsList ] );
+        [ IsCategoryOfColimitQuivers, IsList ] );
 
 #!
 DeclareOperation( "CreateMorphismOfColimitQuivers",
-        [ IsObjectInFiniteColimitCocompletionWithStrictCoproducts, IsList ] );
+        [ IsObjectInCategoryOfColimitQuivers, IsList ] );
 
 #! @Description
 #!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
-#!  the equivalent category <C>FiniteColimitCocompletionWithStrictCoproducts</C>( $C$ ).
+#!  the equivalent category <C>CategoryOfColimitQuivers</C>( $C$ ).
 #! @Arguments PSh
 #! @Returns a &CAP; category
-DeclareAttribute( "AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory",
+DeclareAttribute( "AssociatedCategoryOfColimitQuiversOfSourceCategory",
         IsPreSheafCategory );
 
-CapJitAddTypeSignature( "AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory", [ IsPreSheafCategory ],
+CapJitAddTypeSignature( "AssociatedCategoryOfColimitQuiversOfSourceCategory", [ IsPreSheafCategory ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( FiniteColimitCocompletionWithStrictCoproducts( Source( input_types[1].category ) ) );
+    return CapJitDataTypeOfCategory( CategoryOfColimitQuivers( Source( input_types[1].category ) ) );
     
 end );
 
 #! @Description
-#!  Return the category $C$ underlying the finite colimit cocompletion category (with strict coproducts)
-#!  <A>ColimitQuivers</A><C> := FiniteColimitCocompletionWithStrictCoproducts(</C> $C$ <C>)</C>).
+#!  Return the category $C$ underlying the category of colimit quivers
+#!  <A>ColimitQuivers</A><C> := CategoryOfColimitQuivers(</C> $C$ <C>)</C>).
 #! @Arguments ColimitQuivers
 DeclareAttribute( "UnderlyingCategory",
-        IsFiniteColimitCocompletionWithStrictCoproducts );
+        IsCategoryOfColimitQuivers );
 
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteColimitCocompletionWithStrictCoproducts ],
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsCategoryOfColimitQuivers ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
@@ -149,9 +149,9 @@ end );
 
 #! @Description
 #!  The full embedding functor from the category $C$ underlying
-#!  the finite colimit cocompletion (with strict coproducts) category
+#!  the category of colimit quivers
 #!  <A>ColimitQuivers</A> into <A>ColimitQuivers</A>.
-#! @Arguments UC
+#! @Arguments ColimitQuivers
 #! @Returns a &CAP; functor
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
-        IsFiniteColimitCocompletionWithStrictCoproducts );
+        IsCategoryOfColimitQuivers );

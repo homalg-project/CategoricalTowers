@@ -11,7 +11,7 @@ InstallMethodForCompilerForCAP( CoequalizerDataOfPreSheaf,
   function ( PSh, F )
     local Bhat, F_colimit_quiver, F_coequalizer_pair, CoequalizerPairs, F_coequalizer_pair_as_presheaf;
     
-    Bhat := AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory( PSh );
+    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
     
     F_colimit_quiver := CoYonedaLemmaOnObjects( PSh, F );
     
@@ -121,7 +121,7 @@ InstallMethodForCompilerForCAP( ExternalHomAsEqualizerOnMorphisms,
           eta_coequalizer_pair_morphism, CoequalizerPairs, eta_coequalizer_pair_as_presheaf_morphism, eta_coequalizer_pair_as_presheaf_morphism_datum,
           S, eta_V_S, F_data, F_V, UC, F_V_data, diagram_F_V_S, T, diagram_F_V_T, D, F_V_rho;
     
-    Bhat := AssociatedFiniteColimitCocompletionWithStrictCoproductsOfSourceCategory( PSh );
+    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
     
     F := Source( eta );
     G := Range( eta );

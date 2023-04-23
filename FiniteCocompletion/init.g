@@ -17,4 +17,4 @@ ReadPackage( "FiniteCocompletion", "gap/SkeletalFinSets.gd");
 ReadPackage( "FiniteCocompletion", "gap/PairOfParallelArrowsCategory.gd");
 
 ##
-ReadPackage( "FiniteCocompletion", "gap/FiniteColimitCocompletionWithStrictCoproducts.gd");
+ReadPackage( "FiniteCocompletion", "gap/CategoryOfColimitQuivers.gd");
