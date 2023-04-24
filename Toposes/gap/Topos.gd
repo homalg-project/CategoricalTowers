@@ -264,6 +264,7 @@ DeclareAttribute( "PowerObject",
 #! @Returns a morphism
 DeclareAttribute( "PowerObjectFunctorial",
         IsCapCategoryMorphism );
+#! @InsertChunk PowerObjectFunctorial
 
 #! @Description
 #! The arguments are an object $Pb$, a morphism $f:a \to b$, and and object $Pa$,
