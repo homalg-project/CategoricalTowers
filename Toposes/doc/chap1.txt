@@ -249,6 +249,21 @@
   [33X[0;0YThe  argument  is  a morphism [23Xf:a \to b[123X. The output is the power morphism of
   [23XP(f): P(b) \to P(a)[123X.[133X
   
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xa := FinSet( 3 );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27Xb := FinSet( 4 );[127X[104X
+    [4X[28X|4|[128X[104X
+    [4X[25Xgap>[125X [27Xf := MapOfFinSets( a, [ 0, 1, 1 ], b );[127X[104X
+    [4X[28X|3| → |4|[128X[104X
+    [4X[25Xgap>[125X [27XPf := PowerObjectFunctorial( f );[127X[104X
+    [4X[28X|16| → |8|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Pf );[127X[104X
+    [4X[28X{ 0,..., 15 } ⱶ[ 0, 1, 6, 7, 0, 1, 6, 7, 0, 1, 6, 7, 0, 1, 6, 7 ]→ { 0,..., 7 }[128X[104X
+  [4X[32X[104X
+  
   [1X1.4-15 PowerObjectFunctorialWithGivenPowerObjects[101X
   
   [33X[1;0Y[29X[2XPowerObjectFunctorialWithGivenPowerObjects[102X( [3XPb[103X, [3Xf[103X, [3XPa[103X ) [32X operation[133X

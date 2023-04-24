@@ -398,6 +398,22 @@
 
 <p>The argument is a morphism <span class="SimpleMath">\(f:a \to b\)</span>. The output is the power morphism of <span class="SimpleMath">\(P(f): P(b) \to P(a)\)</span>.</p>
 
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := FinSet( 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := FinSet( 4 );</span>
+|4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := MapOfFinSets( a, [ 0, 1, 1 ], b );</span>
+|3| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Pf := PowerObjectFunctorial( f );</span>
+|16| → |8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Pf );</span>
+{ 0,..., 15 } ⱶ[ 0, 1, 6, 7, 0, 1, 6, 7, 0, 1, 6, 7, 0, 1, 6, 7 ]→ { 0,..., 7 }
+</pre></div>
+
 <p><a id="X82F5A4868504B741" name="X82F5A4868504B741"></a></p>
 
 <h5>1.4-15 PowerObjectFunctorialWithGivenPowerObjects</h5>
