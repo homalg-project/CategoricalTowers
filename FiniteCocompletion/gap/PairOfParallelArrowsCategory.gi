@@ -639,6 +639,54 @@ InstallMethod( PairOfParallelArrowsCategory,
     
 end );
 
+##
+InstallMethod( \.,
+        "for an object in a pair of parallel arrows category and a positive integer",
+        [ IsObjectInPairOfParallelArrowsCategory, IsPosInt ],
+        
+  function ( obj, string_as_int )
+    local pair, name;
+    
+    pair := ObjectDatum( obj );
+    
+    name := NameRNam( string_as_int );
+    
+    if name = "V" then
+        return Range( pair[1] );
+    elif name = "A" then
+        return Source( pair[1] );
+    elif name = "s" then
+        return pair[1];
+    elif name = "t" then
+        return pair[2];
+    fi;
+    
+    Error( "obj has no component with the name \"", name, "\"\n" );
+    
+end );
+
+##
+InstallMethod( \.,
+        "for a morphism in a pair of parallel arrows category and a positive integer",
+        [ IsMorphismInPairOfParallelArrowsCategory, IsPosInt ],
+        
+  function ( mor, string_as_int )
+    local datum, name;
+    
+    datum := MorphismDatum( mor );
+    
+    name := NameRNam( string_as_int );
+    
+    if name = "V" then
+        return datum[1];
+    elif name = "A" then
+        return datum[2];
+    fi;
+    
+    Error( "mor has no component with the name \"", name, "\"\n" );
+    
+end );
+
 ####################################
 #
 # View, Print, Display and LaTeX methods:
