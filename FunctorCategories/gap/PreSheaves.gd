@@ -271,6 +271,18 @@ DeclareOperation( "CreatePreSheafMorphismByFunction",
 DeclareAttribute( "SomeDiagramOfRepresentables",
         IsObjectInPreSheafCategory );
 
+#! @Arguments PSh, objB, i, F
+DeclareOperation( "MorphismFromRepresentable",
+    [ IsPreSheafCategory, IsCapCategoryObject, IsInt, IsObjectInPreSheafCategory ] );
+
+#! @Arguments PSh, list, F
+DeclareOperation( "MorphismFromCoproductOfRepresentables",
+    [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ] );
+
+#! @Arguments F
+DeclareAttribute( "CoveringListOfRepresentables",
+        IsObjectInPreSheafCategory );
+
 #! @Description
 #!  Construct the category of categories internal to the monoidal or cartesian category <A>C</A>.
 #!  The output the full subcategory of the subcategory of functors from the
