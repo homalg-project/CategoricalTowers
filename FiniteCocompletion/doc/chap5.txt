@@ -302,7 +302,7 @@
     [4X[25Xgap>[125X [27XIsWellDefined( quiver );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xq := SomeDiagramOfRepresentables( PSh.C1 );;[127X[104X
-    [4X[25Xgap>[125X [27Xcolimit := Colimit( q[1], q[2] );[127X[104X
+    [4X[25Xgap>[125X [27Xcolimit := Colimit( q );[127X[104X
     [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver([128X[104X
     [4X[28X "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],[128X[104X
     [4X[28XSkeletalFinSets )>[128X[104X
