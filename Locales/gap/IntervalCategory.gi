@@ -94,14 +94,6 @@ InstallGlobalFunction( "CreateIntervalCategory",
     end );
     
     ##
-    AddIsCongruentForMorphisms( IntervalCategory,
-      function( cat, mor_1, mor_2 )
-        
-        return true;
-        
-    end );
-    
-    ##
     AddInitialObject( IntervalCategory,
       function( cat )
         
