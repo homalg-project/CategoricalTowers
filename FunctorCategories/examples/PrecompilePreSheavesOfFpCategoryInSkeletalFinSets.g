@@ -4,6 +4,8 @@
 
 # @Example
 
+# #@if ValueOption( "no_precompiled_code" ) <> true
+
 LoadPackage( "FunctorCategories", false );
 #! true
 
@@ -51,14 +53,9 @@ PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled( given_arguments[1] );
 cat := PreSheaves( free_category_of_quiver( given_arguments[1], SkeletalFinSets ) );
 #! PreSheaves( FreeCategory( RightQuiver( "q(2)[m:1->2]" ) ), SkeletalFinSets )
 
-# Now we check whether the compiled code is loaded automatically.
-# For this we use the name of the argument of `InitialObject`;
-# for non-compiled code it is "cat", while for compiled code it is "cat_1":
-argument_name := NamesLocalVariablesFunction(
-    Last( cat!.added_functions.InitialObject )[1] )[1];;
-
-(ValueOption( "no_precompiled_code" ) = true and argument_name = "cat") or
-    (ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1");
+cat!.precompiled_functions_added;
 #! true
+
+# #@fi
 
 # @EndExample

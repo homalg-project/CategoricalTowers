@@ -4,6 +4,8 @@
 
 #! @Example
 
+#! #@if ValueOption( "no_precompiled_code" ) <> true
+
 LoadPackage( "FunctorCategories", false );
 #! true
 
@@ -72,14 +74,9 @@ cat := PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled( A_bar );
 #! RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) ) / relations,
 #! Rows( Q ) )
 
-# Now we check whether the compiled code is loaded automatically.
-# For this we use the name of the argument of `InitialObject`;
-# for non-compiled code it is "cat", while for compiled code it is "cat_1":
-argument_name := NamesLocalVariablesFunction(
-    Last( cat!.added_functions.ZeroObject )[1] )[1];;
-
-(ValueOption( "no_precompiled_code" ) = true and argument_name = "cat") or
-    (ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1");
+cat!.precompiled_functions_added;
 #! true
+
+#! #@fi
 
 #! @EndExample
