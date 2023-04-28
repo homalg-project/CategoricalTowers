@@ -9,7 +9,7 @@ gap> LoadPackage("Locales", false);;
 
 gap> T := TerminalCategoryWithMultipleObjects( : FinalizeCategory := false );;
 
-gap> AddUniqueMorphism( T, function( cat, A, B ) return CreateCapCategoryMorphismWithAttributes( cat, A, B ); end, 50 );;
+gap> AddUniqueMorphism( T, function( cat, A, B ) return CreateCapCategoryMorphismWithAttributes( cat, A, B ); end, 1 );;
 
 gap> Finalize( T : FinalizeCategory := true );;
 
