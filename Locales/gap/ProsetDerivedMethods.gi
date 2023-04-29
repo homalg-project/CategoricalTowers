@@ -50,7 +50,7 @@ end : CategoryFilter := IsThinCategory );
 
 ##
 AddDerivationToCAP( PreCompose,
-                    "PreCompose is the unique from the source of the pre-morphism to the target of the post-morphism",
+                    "PreCompose is the unique morphism from the source of the pre-morphism to the target of the post-morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, u1, u2 )
@@ -59,6 +59,16 @@ AddDerivationToCAP( PreCompose,
     
 end : CategoryFilter := IsThinCategory );
 
+##
+AddDerivationToCAP( PostCompose,
+                    "PostCompose is the unique morphism from the source of the pre-morphism to the target of the post-morphism",
+                    [ [ UniqueMorphism, 1 ] ],
+                    
+  function( cat, u1, u2 )
+    
+    return UniqueMorphism( cat, Source( u2 ), Range( u1 ) );
+    
+end : CategoryFilter := IsThinCategory );
 
 ##
 AddDerivationToCAP( IsTerminal,

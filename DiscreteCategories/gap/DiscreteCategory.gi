@@ -107,13 +107,6 @@ InstallMethodWithCache( DiscreteCategory,
         
     end );
     
-    AddIsCongruentForMorphisms( D,
-      function( cat, mor_pre, mor_post )
-        
-        return true;
-        
-    end );
-    
     AddPreCompose( D,
       function( cat, mor_pre, mor_post )
         

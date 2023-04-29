@@ -99,8 +99,8 @@ hom_03 := BasisOfExternalHom( B.("0"), B.("3") );
 #!   <1*(a•b•e^2):(0) -≻ (3)>, <1*(c•d•e^2):(0) -≻ (3)> ]
 alpha := 2*hom_03[1] + 3*hom_03[6];
 #! <2*(a•b) + 3*(c•d•e^2):(0) -≻ (3)>
-Print( LaTeXOutput( alpha ) );
-#! {0}-\left({2\cdot ab + 3\cdot cd{e}^{2}}\right)\rightarrow{3}
+LaTeXOutput( alpha );
+#! "{0}-\\left({2\\cdot ab + 3\\cdot cd{e}^{2}}\\right)\\rightarrow{3}"
 alpha = CreateMorphism( B, B.("0"), [2, 0, 0, 0, 0, 3 ], B.("3") );
 #! true
 DecompositionOfMorphismInAlgebroid( alpha );
