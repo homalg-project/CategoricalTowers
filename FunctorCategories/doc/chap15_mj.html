@@ -44,6 +44,7 @@
 
 
 <div class="example"><pre>
+#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2022.09-02", false );</span>
@@ -80,18 +81,14 @@ true
 CategoryOfBouquetsEnrichedOver( SkeletalFinSets )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := CategoryOfBouquetsEnrichedOver( SkeletalFinSets );</span>
 FinBouquets
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># Now we check whether the compiled code is loaded automatically.</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># For this we use the name of the argument of `InitialObject`;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># for non-compiled code it is "cat", while for compiled code it is "cat_1":</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">argument_name := NamesLocalVariablesFunction(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Last( cat!.added_functions.InitialObject )[1] )[1];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(ValueOption( "no_precompiled_code" ) = true and argument_name = "cat") or</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    (ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1");</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat!.precompiled_functions_added;</span>
 true
+#@fi
 </pre></div>
 
 
 <div class="example"><pre>
+#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2022.09-02", false );</span>
@@ -128,14 +125,9 @@ true
 CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := CategoryOfQuiversEnrichedOver( SkeletalFinSets );</span>
 FinQuivers
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># Now we check whether the compiled code is loaded automatically.</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># For this we use the name of the argument of `InitialObject`;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># for non-compiled code it is "cat", while for compiled code it is "cat_1":</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">argument_name := NamesLocalVariablesFunction(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Last( cat!.added_functions.InitialObject )[1] )[1];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(ValueOption( "no_precompiled_code" ) = true and argument_name = "cat") or</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    (ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1");</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat!.precompiled_functions_added;</span>
 true
+#@fi
 </pre></div>
 
 <p><a id="X7F843BA27D4C7463" name="X7F843BA27D4C7463"></a></p>
@@ -144,6 +136,7 @@ true
 
 
 <div class="example"><pre>
+#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2022.09-02", false );</span>
@@ -180,14 +173,9 @@ true
 CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets );</span>
 FinReflexiveQuivers
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># Now we check whether the compiled code is loaded automatically.</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># For this we use the name of the argument of `InitialObject`;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># for non-compiled code it is "cat", while for compiled code it is "cat_1":</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">argument_name := NamesLocalVariablesFunction(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Last( cat!.added_functions.InitialObject )[1] )[1];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(ValueOption( "no_precompiled_code" ) = true and argument_name = "cat") or</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    (ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1");</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat!.precompiled_functions_added;</span>
 true
+#@fi
 </pre></div>
 
 <p><a id="X7F3EAD5984859532" name="X7F3EAD5984859532"></a></p>
@@ -196,6 +184,7 @@ true
 
 
 <div class="example"><pre>
+#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2022.09-02", false );</span>
@@ -251,14 +240,9 @@ Rows( Q ) )
 PreSheaves( Algebroid( Q, FreeCategory(
 RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) ) / relations,
 Rows( Q ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># Now we check whether the compiled code is loaded automatically.</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># For this we use the name of the argument of `InitialObject`;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># for non-compiled code it is "cat", while for compiled code it is "cat_1":</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">argument_name := NamesLocalVariablesFunction(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Last( cat!.added_functions.ZeroObject )[1] )[1];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(ValueOption( "no_precompiled_code" ) = true and argument_name = "cat") or</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    (ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1");</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat!.precompiled_functions_added;</span>
 true
+#@fi
 </pre></div>
 
 
