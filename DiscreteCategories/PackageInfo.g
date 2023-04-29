@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "DiscreteCategories",
 Subtitle := "Discrete categories",
-Version := "2023.02-03",
-Date := "2023-02-28",
+Version := "2023.04-01",
+Date := "2023-04-29",
 License := "GPL-2.0-or-later",
 
 
