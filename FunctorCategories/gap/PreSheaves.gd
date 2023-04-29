@@ -291,6 +291,10 @@ DeclareAttribute( "CoveringListOfRepresentables",
 DeclareAttribute( "SectionFromProjectiveCoverObjectIntoSomeProjectiveObject",
     IsObjectInPreSheafCategory );
 
+#! @Arguments F
+DeclareAttribute( "EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject",
+    IsObjectInPreSheafCategory );
+
 #! @Arguments PSh, presheaf, obj
 DeclareOperation( "ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion",
         [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInFiniteStrictCoproductCocompletion ] );

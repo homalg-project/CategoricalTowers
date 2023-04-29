@@ -2991,6 +2991,96 @@ InstallMethod( SectionFromProjectiveCoverObjectIntoSomeProjectiveObject,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject,
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
+        
+  function ( PSh, F )
+    local B, defining_triple, nr_objs, objs, mors, id, F_vals, offsets, coYoneda, cover,
+          Bhat, pair_category, source, s, source_list, list, UB, range, f, map_mor, epi;
+    
+    B := Source( PSh );
+    
+    defining_triple := DefiningTripleOfUnderlyingQuiver( B );
+    nr_objs := defining_triple[1];
+    
+    objs := SetOfObjects( B );
+    mors := SetOfGeneratingMorphisms( B );
+    
+    id := List( objs, obj -> IdentityMorphism( B, obj ) );
+    
+    F_vals := ValuesOfPreSheaf( F );
+    
+    offsets := List( [ 0 .. nr_objs - 1 ], i -> Sum( List( [ 1 .. i ], j -> Length( F_vals[1][j] ) ) ) );
+    
+    coYoneda := CoYonedaLemmaOnObjects( PSh, F );
+    
+    cover := CoveringListOfRepresentables( PSh, F );
+    
+    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
+    
+    pair_category := ModelingCategory( Bhat );
+    
+    source := Range( ObjectDatum( pair_category, ModelingObject( Bhat, coYoneda ) )[1] );
+    
+    s := ObjectDatum( source )[1];
+    
+    source_list := ObjectDatum( source )[2];
+    
+    list := List( cover, a -> a[1] );
+    
+    UB := UnderlyingCategory( pair_category );
+    
+    range := ObjectConstructor( UB, Pair( Length( list ), list ) );
+    
+    f :=
+      function( i )
+        local objB_pos, val, pos, objB, pos_mor, mor, map, r;
+        
+        objB_pos := SafePosition( objs, source_list[i] );
+        
+        val := i - 1 - offsets[objB_pos];
+        
+        pos := PositionProperty( cover, a -> IsEqualForObjects( B, a[1], source_list[i] ) and a[2][1] = val );
+        
+        if IsInt( pos ) then
+            return [ -1 + pos, id[objB_pos] ];
+        else
+            objB := objs[objB_pos];
+            pos_mor := SafePositionProperty( mors, a -> IsEqualForObjects( B, Source( a ), objB ) );
+            mor := mors[pos_mor];
+            map := -1 + SafePosition( AsList( F_vals[2][pos_mor] ), val );
+            r := Range( mor );
+            return [ -1 + SafePositionProperty( cover, a -> IsEqualForObjects( B, r, a[1] ) and a[2][1] = map ), mor ];
+        fi;
+        
+    end;
+    
+    map_mor := List( [ 1 .. s ], f );
+    
+    epi := MorphismConstructor( UB,
+                   source,
+                   Pair( List( map_mor, a -> a[1] ),
+                         List( map_mor, a -> a[2] ) ),
+                   range );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetIsSplitEpimorphism( epi, true );
+    
+    return epi;
+    
+end );
+
+##
+InstallMethod( EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject,
+        [ IsObjectInPreSheafCategory ],
+        
+  function ( F )
+    
+    return EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject( CapCategory( F ), F );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInFiniteStrictCoproductCocompletion ],
         
