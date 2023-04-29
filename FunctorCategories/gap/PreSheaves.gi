@@ -2929,6 +2929,68 @@ InstallMethod( CoveringListOfRepresentables,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( SectionFromProjectiveCoverObjectIntoSomeProjectiveObject,
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
+        
+  function ( PSh, F )
+    local B, defining_triple, nr_objs, objs, id, F_vals, offsets, coYoneda, cover,
+          Bhat, pair_category, range, list, s, UB, source, section;
+    
+    B := Source( PSh );
+    
+    defining_triple := DefiningTripleOfUnderlyingQuiver( B );
+    nr_objs := defining_triple[1];
+    
+    objs := SetOfObjects( B );
+    
+    id := List( objs, obj -> IdentityMorphism( B, obj ) );
+    
+    F_vals := ValuesOfPreSheaf( F );
+    
+    offsets := List( [ 0 .. nr_objs - 1 ], i -> Sum( List( [ 1 .. i ], j -> Length( F_vals[1][j] ) ) ) );
+    
+    coYoneda := CoYonedaLemmaOnObjects( PSh, F );
+    
+    cover := CoveringListOfRepresentables( PSh, F );
+    
+    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
+    
+    pair_category := ModelingCategory( Bhat );
+    
+    range := Range( ObjectDatum( pair_category, ModelingObject( Bhat, coYoneda ) )[1] );
+    
+    list := List( cover, a -> a[1] );
+    
+    s := Length( list );
+    
+    UB := UnderlyingCategory( pair_category );
+    
+    source := ObjectConstructor( UB, Pair( s, list ) );
+    
+    section := MorphismConstructor( UB,
+                       source,
+                       Pair( List( [ 1 .. s ], i -> cover[i][2][1] + offsets[SafePosition( objs, cover[i][1] )] ),
+                             List( list, obj -> id[SafePosition( objs, obj )] ) ),
+                       range );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetIsSplitMonomorphism( section, true );
+    
+    return section;
+    
+end );
+
+##
+InstallMethod( SectionFromProjectiveCoverObjectIntoSomeProjectiveObject,
+        [ IsObjectInPreSheafCategory ],
+        
+  function ( F )
+    
+    return SectionFromProjectiveCoverObjectIntoSomeProjectiveObject( CapCategory( F ), F );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInFiniteStrictCoproductCocompletion ],
         

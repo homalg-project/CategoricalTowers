@@ -287,6 +287,10 @@ DeclareOperation( "MorphismFromCoproductOfRepresentables",
 DeclareAttribute( "CoveringListOfRepresentables",
         IsObjectInPreSheafCategory );
 
+#! @Arguments F
+DeclareAttribute( "SectionFromProjectiveCoverObjectIntoSomeProjectiveObject",
+    IsObjectInPreSheafCategory );
+
 #! @Arguments PSh, presheaf, obj
 DeclareOperation( "ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion",
         [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInFiniteStrictCoproductCocompletion ] );
