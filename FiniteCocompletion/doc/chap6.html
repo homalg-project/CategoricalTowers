@@ -35,6 +35,7 @@
 
 
 <div class="example"><pre>
+#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
@@ -69,14 +70,9 @@ true
 SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );</span>
 SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># Now we check whether the compiled code is loaded automatically.</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># For this we use the name of the argument of `InitialObject`;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># for non-compiled code it is "cat", while for compiled code it is "cat_1":</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">argument_name := NamesLocalVariablesFunction(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Last( cat!.added_functions.InitialObject )[1] )[1];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(ValueOption( "no_precompiled_code" ) = true and argument_name = "cat") or</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    (ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1");</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat!.precompiled_functions_added;</span>
 true
+#@fi
 </pre></div>
 
 
