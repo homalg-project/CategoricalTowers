@@ -2858,7 +2858,7 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, F )
-    local B, C, objs, homs, F_o_vals, predicate, func, initial;
+    local B, C, objs, homs, F_o_vals, predicate, func, initial, cover;
     
     B := Source( PSh );
     C := Range( PSh );
@@ -2911,7 +2911,10 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
     
     initial := [ ];
     
-    return CapFixpoint( predicate, func, initial );
+    cover := CapFixpoint( predicate, func, initial );
+
+    ## sort according to objs
+    return Concatenation( List( objs, objB -> cover{PositionsProperty( cover, e -> IsIdenticalObj( e[1], objB ) )} ) );
     
 end );
 
