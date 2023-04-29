@@ -1226,6 +1226,17 @@ InstallMethod( ExtendFunctorToFiniteStrictCoproductCocompletion,
     
 end );
 
+##
+InstallMethod( ExtendYonedaEmbeddingToFiniteStrictCoproductCocompletion,
+        "for a CAP category",
+        [ IsCapCategory ],
+        
+  function( C )
+    
+    return ExtendFunctorToFiniteStrictCoproductCocompletion( YonedaEmbedding( C ) );
+    
+end );
+
 ##################################
 ##
 ## View & Display

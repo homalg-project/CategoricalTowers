@@ -122,3 +122,11 @@ DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
 #! @Returns a &CAP; functor
 DeclareAttribute( "ExtendFunctorToFiniteStrictCoproductCocompletion",
         IsCapFunctor );
+
+#! @Description
+#!  Extend (i.e., lift) the (full) Yoneda embedding the category <A>C</A> into <C>PreSheaves</C>( <A>C</A> ) to
+#!  the full embedding of <C>FiniteStrictCoproductCocompletion</C>( <A>C</A> ) into <C>PreSheaves</C>( <A>C</A> ).
+#! @Arguments C
+#! @Returns a &CAP; functor
+DeclareAttribute( "ExtendYonedaEmbeddingToFiniteStrictCoproductCocompletion",
+        IsCapCategory );
