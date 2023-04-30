@@ -2755,19 +2755,22 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheaf,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
-    local Bhat, F_colimit_quiver, F_coequalizer_pair, CoequalizerPairs, F_coequalizer_pair_as_presheaf;
+    local Bhat, CoequalizerPairs, PSh_CoequalizerPairs_UB,
+          F_colimit_quiver, F_coequalizer_pair, F_coequalizer_pair_as_presheaf;
     
     Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
+    
+    CoequalizerPairs := ModelingCategory( Bhat );
+    
+    PSh_CoequalizerPairs_UB := ModelingCategory( CoequalizerPairs );
     
     F_colimit_quiver := CoYonedaLemmaOnObjects( PSh, F );
     
     F_coequalizer_pair := ModelingObject( Bhat, F_colimit_quiver );
     
-    CoequalizerPairs := ModelingCategory( Bhat );
-    
     F_coequalizer_pair_as_presheaf := ModelingObject( CoequalizerPairs, F_coequalizer_pair );
     
-    return ObjectDatum( ModelingCategory( CoequalizerPairs ), F_coequalizer_pair_as_presheaf );
+    return ObjectDatum( PSh_CoequalizerPairs_UB, F_coequalizer_pair_as_presheaf );
     
 end );
 
