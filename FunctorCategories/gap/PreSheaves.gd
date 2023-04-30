@@ -295,6 +295,10 @@ DeclareAttribute( "SectionFromProjectiveCoverObjectIntoSomeProjectiveObject",
 DeclareAttribute( "EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject",
     IsObjectInPreSheafCategory );
 
+#! @Arguments F
+DeclareAttribute( "CoequalizerDataOfPreSheaf",
+        IsObjectInPreSheafCategory );
+
 #! @Arguments PSh, presheaf, obj
 DeclareOperation( "ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion",
         [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInFiniteStrictCoproductCocompletion ] );

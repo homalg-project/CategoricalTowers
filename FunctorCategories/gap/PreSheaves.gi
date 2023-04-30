@@ -3081,6 +3081,36 @@ InstallMethod( EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheaf,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh, F )
+    local Bhat, UB, F_data, epi;
+    
+    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
+    
+    UB := UnderlyingCategory( ModelingCategory( Bhat ) );
+    
+    F_data := CoYonedaLemmaCoequalizerDataOfPreSheaf( PSh, F );
+    
+    epi := EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject( PSh, F );
+    
+    return Pair( Range( epi ),
+                 List( F_data[2], mor -> PreCompose( UB, mor, epi ) ) );
+    
+end );
+
+##
+InstallMethod( CoequalizerDataOfPreSheaf,
+        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( F )
+    
+    return CoequalizerDataOfPreSheaf( CapCategory( F ), F );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInFiniteStrictCoproductCocompletion ],
         
