@@ -1222,7 +1222,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     
                     H := RangeCategoryOfHomomorphismStructure( PSh );
                     
-                    hom_equalizer_diagram := ExternalHomAsEqualizerOnObjects( PSh, F, G );
+                    hom_equalizer_diagram := ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma( PSh, F, G );
                     
                     return Equalizer( H,
                                    DirectProduct( H, hom_equalizer_diagram[1] ),
@@ -1236,9 +1236,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     
                     return EqualizerFunctorialWithGivenEqualizers( RangeCategoryOfHomomorphismStructure( PSh ),
                                    s,
-                                   ExternalHomAsEqualizerOnObjects( PSh, Range( eta ), Source( rho ) )[2],
-                                   ExternalHomAsEqualizerOnMorphisms( PSh, eta, rho ),
-                                   ExternalHomAsEqualizerOnObjects( PSh, Source( eta ), Range( rho ) )[2],
+                                   ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma( PSh, Range( eta ), Source( rho ) )[2],
+                                   ExternalHomOnMorphismsEqualizerFunctorialDataUsingCoYonedaLemma( PSh, eta, rho ),
+                                   ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma( PSh, Source( eta ), Range( rho ) )[2],
                                    r );
                     
                 end );
@@ -1262,7 +1262,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                    distinguished_object,
                                    mors );
                     
-                    hom_equalizer_diagram := ExternalHomAsEqualizerOnObjects( PSh, Source( eta ), Range( eta ) );
+                    hom_equalizer_diagram := ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma( PSh, Source( eta ), Range( eta ) );
                     
                     return UniversalMorphismIntoEqualizer( H,
                                    DirectProduct( H, hom_equalizer_diagram[1] ),
@@ -1282,7 +1282,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     
                     H := RangeCategoryOfHomomorphismStructure( PSh );
                     
-                    hom_equalizer_diagram := ExternalHomAsEqualizerOnObjects( PSh, F, G );
+                    hom_equalizer_diagram := ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma( PSh, F, G );
                     
                     hom_F_V_G_diagram := hom_equalizer_diagram[1];
                     
@@ -2751,12 +2751,12 @@ InstallMethod( SomeDiagramOfRepresentables,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheaf,
+InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerDataOfPreSheaf,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
     local Bhat, CoequalizerPairs, PSh_CoequalizerPairs_UB,
-          F_colimit_quiver, F_coequalizer_pair, F_coequalizer_pair_as_presheaf;
+          F_colimit_quiver, F_coequalizer_pair, F_coequalizer_pair_as_presheaf, F_data;
     
     Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
     
@@ -2770,20 +2770,23 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheaf,
     
     F_coequalizer_pair_as_presheaf := ModelingObject( CoequalizerPairs, F_coequalizer_pair );
     
-    return ObjectDatum( PSh_CoequalizerPairs_UB, F_coequalizer_pair_as_presheaf );
+    F_data := ObjectDatum( PSh_CoequalizerPairs_UB, F_coequalizer_pair_as_presheaf );
+    
+    return Pair( F_data[1][1], F_data[2] );
     
 end );
 
 ##
-InstallMethod( CoequalizerDataOfPreSheaf,
+InstallMethod( CoYonedaLemmaCoequalizerDataOfPreSheaf,
         [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( F )
     
-    return CoequalizerDataOfPreSheaf( CapCategory( F ), F );
+    return CoYonedaLemmaCoequalizerDataOfPreSheaf( CapCategory( F ), F );
     
 end );
 
+##
 ## a special case of InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
 InstallMethodForCompilerForCAP( MorphismFromRepresentable,
         [ IsPreSheafCategory, IsCapCategoryObject, IsInt, IsObjectInPreSheafCategory ],

@@ -272,7 +272,7 @@ DeclareAttribute( "SomeDiagramOfRepresentables",
         IsObjectInPreSheafCategory );
 
 #! @Arguments F
-DeclareAttribute( "CoequalizerDataOfPreSheaf",
+DeclareAttribute( "CoYonedaLemmaCoequalizerDataOfPreSheaf",
         IsObjectInPreSheafCategory );
 
 #! @Arguments PSh, objB, i, F

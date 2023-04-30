@@ -5,17 +5,17 @@
 #
 
 ##
-InstallMethodForCompilerForCAP( ExternalHomAsEqualizerOnObjects,
+InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F, G )
     local F_data, D, V, s, t;
     
-    F_data := CoequalizerDataOfPreSheaf( PSh, F );
+    F_data := CoYonedaLemmaCoequalizerDataOfPreSheaf( PSh, F );
     
     D := Range( PSh );
     
-    V := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, F_data[1][1] );
+    V := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, F_data[1] );
     
     s := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, G, F_data[2][1] );
     t := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, G, F_data[2][2] );
@@ -25,7 +25,7 @@ InstallMethodForCompilerForCAP( ExternalHomAsEqualizerOnObjects,
 end );
 
 ## η: F → G, ρ: S → T
-InstallMethodForCompilerForCAP( ExternalHomAsEqualizerOnMorphisms,
+InstallMethodForCompilerForCAP( ExternalHomOnMorphismsEqualizerFunctorialDataUsingCoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, eta, rho )
@@ -58,9 +58,9 @@ InstallMethodForCompilerForCAP( ExternalHomAsEqualizerOnMorphisms,
     
     eta_V_S := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, S, eta_coequalizer_pair_as_presheaf_morphism_datum );
     
-    F_data := CoequalizerDataOfPreSheaf( PSh, F );
+    F_data := CoYonedaLemmaCoequalizerDataOfPreSheaf( PSh, F );
     
-    F_V := F_data[1][1];
+    F_V := F_data[1];
     
     UC := CapCategory( F_V );
     

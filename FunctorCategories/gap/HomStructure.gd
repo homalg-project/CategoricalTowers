@@ -4,10 +4,10 @@
 # Declarations
 #
 
-DeclareOperation( "ExternalHomAsEqualizerOnObjects",
+DeclareOperation( "ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma",
     [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ] );
 
-DeclareOperation( "ExternalHomAsEqualizerOnMorphisms",
+DeclareOperation( "ExternalHomOnMorphismsEqualizerFunctorialDataUsingCoYonedaLemma",
     [ IsCapCategory, IsMorphismInPreSheafCategory, IsMorphismInPreSheafCategory ] );
 
 DeclareOperation( "ExternalHomDiagram",
