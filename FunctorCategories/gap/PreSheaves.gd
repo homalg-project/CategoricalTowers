@@ -271,6 +271,10 @@ DeclareOperation( "CreatePreSheafMorphismByFunction",
 DeclareAttribute( "SomeDiagramOfRepresentables",
         IsObjectInPreSheafCategory );
 
+#! @Arguments F
+DeclareAttribute( "CoequalizerDataOfPreSheaf",
+        IsObjectInPreSheafCategory );
+
 #! @Arguments PSh, objB, i, F
 DeclareOperation( "MorphismFromRepresentable",
     [ IsPreSheafCategory, IsCapCategoryObject, IsInt, IsObjectInPreSheafCategory ] );
@@ -282,6 +286,14 @@ DeclareOperation( "MorphismFromCoproductOfRepresentables",
 #! @Arguments F
 DeclareAttribute( "CoveringListOfRepresentables",
         IsObjectInPreSheafCategory );
+
+#! @Arguments PSh, presheaf, obj
+DeclareOperation( "ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion",
+        [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInFiniteStrictCoproductCocompletion ] );
+
+#! @Arguments PSh, presheaf, mor
+DeclareOperation( "ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion",
+        [ IsCapCategory, IsObjectInPreSheafCategory, IsMorphismInFiniteStrictCoproductCocompletion ] );
 
 #! @Description
 #!  Construct the category of categories internal to the monoidal or cartesian category <A>C</A>.
