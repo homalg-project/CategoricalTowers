@@ -1,5 +1,5 @@
 name: IntrinsicGradedModules
-version: "2023.05-01"
+version: "2023.05-02"
 license: "GPL-2.0-or-later"
 date: 2023-05-01
 description: |
@@ -69,11 +69,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/IntrinsicGradedM
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.05-01/IntrinsicGradedModules-2023.05-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.05-02/IntrinsicGradedModules-2023.05-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.05-01/IntrinsicGradedModules-2023.05-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.05-02/IntrinsicGradedModules-2023.05-02.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.05-01/IntrinsicGradedModules-2023.05-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.05-02/IntrinsicGradedModules-2023.05-02-manual.pdf
 
 abstract: |
 
@@ -86,7 +86,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BS01</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>IntrinsicGradedModules, Finitely presented graded modules over computable graded rings allowing multiple presentations and the notion of elements,
-             Version 2023.05-01</i>
+             Version 2023.05-02</i>
      (<span class='BibYear'>5-01</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/IntrinsicGradedModules">https://homalg-project.github.io/pkg/IntrinsicGradedModules</a></span>.
@@ -94,12 +94,12 @@ citeas: |
     
 
 bibtex: |
-    @misc{ IntrinsicGradedModules2023.05-01,
+    @misc{ IntrinsicGradedModules2023.05-02,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{IntrinsicGradedModules},  Finitely  presented  graded
                           modules over computable graded rings allowing multiple
                           presentations  and  the  notion of elements, {V}ersion
-                          2023.05-01},
+                          2023.05-02},
       month =            {3-},
       year =             {5-01},
       note =             {GAP package},
