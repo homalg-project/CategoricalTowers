@@ -152,8 +152,9 @@
   [33X[1;0Y[29X[2XMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[102X( [3Xleft_coeffs[103X, [3Xright_coeffs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0Ybut  the  output  is  [10Xtrue[110X  if  the  homogeneous system has only the trivial
-  solution, and [10Xfalse[110X otherwise.[133X
+  [33X[0;0YLike   [10XBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[110X,   but  the
+  output  is [10Xtrue[110X if the homogeneous system has only the trivial solution, and
+  [10Xfalse[110X otherwise.[133X
   
   [1X2.6-3 BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[101X
   
@@ -166,10 +167,10 @@
   B_j[123X,  where  [23Xi  =  1  \dots m[123X and [23Xj = 1 \dots n[123X for integers [23Xm,n \geq 1[123X. The
   second  list  [23X\beta[123X  (the right coefficients) is a list of list of morphisms
   [23X\beta_{ij}:  C_j \rightarrow D_i[123X, where [23Xi = 1 \dots m[123X and [23Xj = 1 \dots n[123X. The
-  output  is  either a generating set [23X[X^1,\dots,X^t][123X for the solutions of the
+  output  is  a  generating  set  [23X[X^1,\dots,X^t][123X  for  the  solutions  of the
   homogeneous  linear  system  defined  by [23X\alpha[123X, [23X\beta[123X, i.e., [23X\sum_{j = 1}^n
   \alpha_{ij}\cdot  X^{k}_{j}  \cdot  \beta_{ij} = 0[123X for all [23Xi = 1 \dots m[123X and
-  all [23Xk = 1 \dots t[123X or [23X\texttt{fail}[123X if no such solution exists.[133X
+  all [23Xk = 1 \dots t[123X.[133X
   
   [1X2.6-4 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[101X
   
@@ -182,11 +183,11 @@
   \rightarrow B_j[123X, where [23Xi = 1 \dots m[123X and [23Xj = 1 \dots n[123X for integers [23Xm,n \geq
   1[123X.  Each of [23X\beta[123X and [23X\delta[123X is also a list of list of morphisms [23X\beta_{ij},
   \delta_{ij}: C_j \rightarrow D_i[123X, where [23Xi = 1 \dots m[123X and [23Xj = 1 \dots n[123X. The
-  output  is  either a generating set [23X[X^1,\dots,X^t][123X for the solutions of the
+  output  is  a  generating  set  [23X[X^1,\dots,X^t][123X  for  the  solutions  of the
   homogeneous linear system defined by [23X\alpha[123X, [23X\beta[123X, [23X\gamma[123X and [23X\delta[123X, i.e.,
   [23X\sum_{j  = 1}^n \alpha_{ij}\cdot X^{k}_{j} \cdot \beta_{ij} = \sum_{j = 1}^n
   \gamma_{ij}\cdot X^{k}_{j} \cdot \delta_{ij}[123X for all [23Xi = 1 \dots m[123X and all [23Xk
-  = 1 \dots t[123X or [23X\texttt{fail}[123X if no such solution exists.[133X
+  = 1 \dots t[123X.[133X
   
   [1X2.6-5 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[101X
   
