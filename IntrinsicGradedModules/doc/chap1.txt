@@ -222,7 +222,7 @@
     [4X[28XIntrinsicCategory( CategoryWithAmbientObjects([128X[104X
     [4X[28XFreyd( GradedRows( Q[x,y,z] (with weights [ 1, 1, 1 ]) ) ) ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X121 primitive operations were used to derive 312 operations for this category[128X[104X
+    [4X[28X119 primitive operations were used to derive 310 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
@@ -407,9 +407,6 @@
   
   [30X    [33X[0;6Y[2XColiftAlongEpimorphism[102X      ([14XCAP:      ColiftAlongEpimorphism      for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XColiftOrFail[102X    ([14XCAP:    ColiftOrFail    for    IsCapCategoryMorphism,
-        IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XColimit[102X ([14XCategoryConstructor: Colimit for IsList, IsList[114X)[133X
   
@@ -880,9 +877,6 @@
   
   [30X    [33X[0;6Y[2XLiftAlongMonomorphism[102X       ([14XCAP:       LiftAlongMonomorphism      for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLiftOrFail[102X     ([14XCAP:     LiftOrFail     for     IsCapCategoryMorphism,
-        IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XLimit[102X ([14XCategoryConstructor: Limit for IsList, IsList[114X)[133X
   
