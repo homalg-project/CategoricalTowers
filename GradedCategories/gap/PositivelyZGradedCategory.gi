@@ -933,7 +933,8 @@ InstallMethod( PositivelyZGradedCategory,
     AddIsEqualForObjects( ZC, IsIdenticalObj );
     AddIsEqualForMorphisms( ZC, IsIdenticalObj );
     
-    if HasCommutativeRingOfLinearCategory( C ) then
+    if HasIsLinearCategoryOverCommutativeRing( C ) and IsLinearCategoryOverCommutativeRing( C ) and HasCommutativeRingOfLinearCategory( C ) then
+        SetIsLinearCategoryOverCommutativeRing( ZC, true );
         SetCommutativeRingOfLinearCategory( ZC, CommutativeRingOfLinearCategory( C ) );
     fi;
     

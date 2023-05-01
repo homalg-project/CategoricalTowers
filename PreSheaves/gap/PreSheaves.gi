@@ -649,8 +649,10 @@ InstallMethodWithCache( PreSheaves,
                          return Concatenation( "List( i_arg[", String( i ), "], F -> PairOfFunctionsOfPreSheaf( F )[1]( objB ) )" );
                      elif type = "list_of_morphisms" then
                          return Concatenation( "List( i_arg[", String( i ), "], eta -> FunctionOfPreSheafMorphism( eta )( PairOfFunctionsOfPreSheaf( Source( eta ) )[1]( objB ), objB, PairOfFunctionsOfPreSheaf( Range( eta ) )[1]( objB ) ) )" );
+                     elif type = "pair_of_morphisms" then
+                         return Concatenation( "Pair( FunctionOfPreSheafMorphism( i_arg[", String( i ), "][1] )( PairOfFunctionsOfPreSheaf( Source( i_arg[", String( i ), "][1] ) )[1]( objB ), objB, PairOfFunctionsOfPreSheaf( Range( i_arg[", String( i ), "][1] ) )[1]( objB ) ), FunctionOfPreSheafMorphism( i_arg[", String( i ), "][2] )( PairOfFunctionsOfPreSheaf( Source( i_arg[", String( i ), "][2] ) )[1]( objB ), objB, PairOfFunctionsOfPreSheaf( Range( i_arg[", String( i ), "][2] ) )[1]( objB ) ) )" );
                      else
-                         Error( "can only deal with \"integer\", \"object\", \"morphism\", \"list_of_objects\", \"list_of_morphisms\"" );
+                         Error( "cannot deal with ", type );
                      fi;
                      
                   end ) ) );

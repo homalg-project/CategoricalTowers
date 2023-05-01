@@ -713,14 +713,28 @@ end
         
 ########
 function ( cat_1, r_1, a_1 )
-    local hoisted_1_1, hoisted_2_1;
-    hoisted_2_1 := [ 1 .. NumberColumns( a_1 ) ];
-    hoisted_1_1 := UnderlyingCategory( cat_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), MorphismMatrix, List( [ 1 .. NumberRows( a_1 ) ], function ( i_2 )
-              return List( hoisted_2_1, function ( j_3 )
-                      local deduped_1_3;
-                      deduped_1_3 := \[\,\]( a_1, i_2, j_3 );
-                      return CreateCapCategoryMorphismWithAttributes( hoisted_1_1, Source( deduped_1_3 ), Range( deduped_1_3 ), UnderlyingQuiverAlgebraElement, r_1 * UnderlyingQuiverAlgebraElement( deduped_1_3 ) );
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
+    deduped_8_1 := MorphismMatrix( a_1 );
+    deduped_7_1 := Range( a_1 );
+    deduped_6_1 := Source( a_1 );
+    hoisted_5_1 := [ 1 .. Length( ObjectList( deduped_7_1 ) ) ];
+    hoisted_4_1 := UnderlyingCategory( cat_1 );
+    hoisted_3_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
+            return List( logic_new_func_list_2, UnderlyingQuiverAlgebraElement );
+        end );
+    hoisted_2_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
+            return List( logic_new_func_list_2, Range );
+        end );
+    hoisted_1_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
+            return List( logic_new_func_list_2, Source );
+        end );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_6_1, deduped_7_1, MorphismMatrix, List( [ 1 .. Length( ObjectList( deduped_6_1 ) ) ], function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2;
+              hoisted_3_2 := hoisted_3_1[i_2];
+              hoisted_2_2 := hoisted_2_1[i_2];
+              hoisted_1_2 := hoisted_1_1[i_2];
+              return List( hoisted_5_1, function ( j_3 )
+                      return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, hoisted_1_2[j_3], hoisted_2_2[j_3], UnderlyingQuiverAlgebraElement, r_1 * hoisted_3_2[j_3] );
                   end );
           end ) );
 end

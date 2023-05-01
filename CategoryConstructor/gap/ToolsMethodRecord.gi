@@ -119,27 +119,27 @@ SumOfImagesOfAllMorphisms := rec(
 ),
 
 MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory := rec(
-  filter_list := [ "category", IsList, IsList, "list_of_morphisms" ],
+  filter_list := [ "category", "list_of_lists_of_morphisms", "list_of_lists_of_morphisms", "list_of_morphisms" ],
   return_type := "bool"
 ),
 
 MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory := rec(
-  filter_list := [ "category", IsList, IsList ],
+  filter_list := [ "category", "list_of_lists_of_morphisms", "list_of_lists_of_morphisms" ],
   return_type := "bool"
 ),
 
 BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory := rec(
-  filter_list := [ "category", IsList, IsList ],
-  return_type := IsList
+  filter_list := [ "category", "list_of_lists_of_morphisms", "list_of_lists_of_morphisms" ],
+  return_type := "list_of_morphisms",
 ),
 
 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory := rec(
-  filter_list := [ "category", IsList, IsList, IsList, IsList ],
-  return_type := IsList
+  filter_list := [ "category", "list_of_lists_of_morphisms", "list_of_lists_of_morphisms", "list_of_lists_of_morphisms", "list_of_lists_of_morphisms" ],
+  return_type := "list_of_morphisms",
 ),
 
 Limit := rec(
-  filter_list := [ "category", "list_of_objects", IsList ],
+  filter_list := [ "category", "list_of_objects", "arbitrary_list" ],
   input_arguments_names := [ "cat", "objects", "decorated_morphisms" ],
   return_type := "object",
   
@@ -157,7 +157,7 @@ Limit := rec(
   ),
 
 ProjectionInFactorOfLimit := rec(
-  filter_list := [ "category", "list_of_objects", IsList, "integer" ],
+  filter_list := [ "category", "list_of_objects", "arbitrary_list", "integer" ],
   io_type := [ [ "objects", "decorated_morphisms", "k" ], [ "P", "objects_k" ] ],
   with_given_object_position := "Source",
   return_type := "morphism",
@@ -174,7 +174,7 @@ ProjectionInFactorOfLimit := rec(
   ),
 
 ProjectionInFactorOfLimitWithGivenLimit := rec(
-  filter_list := [ "category", "list_of_objects", IsList, "integer", "object" ],
+  filter_list := [ "category", "list_of_objects", "arbitrary_list", "integer", "object" ],
   io_type := [ [ "objects", "decorated_morphisms", "k", "P" ], [ "P", "objects_k" ] ],
   return_type := "morphism",
   
@@ -190,7 +190,7 @@ ProjectionInFactorOfLimitWithGivenLimit := rec(
   ),
 
 UniversalMorphismIntoLimit := rec(
-  filter_list := [ "category", "list_of_objects", IsList, "object", "list_of_morphisms" ],
+  filter_list := [ "category", "list_of_objects", "arbitrary_list", "object", "list_of_morphisms" ],
   io_type := [ [ "objects", "decorated_morphisms", "T", "tau" ], [ "T", "P" ] ],
   with_given_object_position := "Range",
   return_type := "morphism",
@@ -213,7 +213,7 @@ UniversalMorphismIntoLimit := rec(
   ),
 
 UniversalMorphismIntoLimitWithGivenLimit := rec(
-  filter_list := [ "category", "list_of_objects", IsList, "object", "list_of_morphisms", "object" ],
+  filter_list := [ "category", "list_of_objects", "arbitrary_list", "object", "list_of_morphisms", "object" ],
   io_type := [ [ "objects", "decorated_morphisms", "T", "tau", "P" ], [ "T", "P" ] ],
   return_type := "morphism",
   
@@ -235,7 +235,7 @@ UniversalMorphismIntoLimitWithGivenLimit := rec(
   ),
 
 Colimit := rec(
-  filter_list := [ "category", "list_of_objects", IsList ],
+  filter_list := [ "category", "list_of_objects", "arbitrary_list" ],
   input_arguments_names := [ "cat", "objects", "decorated_morphisms" ],
   return_type := "object",
   
@@ -253,7 +253,7 @@ Colimit := rec(
   ),
 
 InjectionOfCofactorOfColimit := rec(
-  filter_list := [ "category", "list_of_objects", IsList, "integer" ],
+  filter_list := [ "category", "list_of_objects", "arbitrary_list", "integer" ],
   io_type := [ [ "objects", "decorated_morphisms", "k" ], [ "objects_k", "P" ] ],
   with_given_object_position := "Range",
   return_type := "morphism",
@@ -270,7 +270,7 @@ InjectionOfCofactorOfColimit := rec(
   ),
 
 InjectionOfCofactorOfColimitWithGivenColimit := rec(
-  filter_list := [ "category", "list_of_objects", IsList, "integer", "object" ],
+  filter_list := [ "category", "list_of_objects", "arbitrary_list", "integer", "object" ],
   io_type := [ [ "objects", "decorated_morphisms", "k", "P" ], [ "objects_k", "P" ] ],
   return_type := "morphism",
   
@@ -286,7 +286,7 @@ InjectionOfCofactorOfColimitWithGivenColimit := rec(
   ),
 
 UniversalMorphismFromColimit := rec(
-  filter_list := [ "category", "list_of_objects", IsList, "object", "list_of_morphisms" ],
+  filter_list := [ "category", "list_of_objects", "arbitrary_list", "object", "list_of_morphisms" ],
   io_type := [ [ "objects", "decorated_morphisms", "T", "tau" ], [ "P", "T" ] ],
   with_given_object_position := "Source",
   return_type := "morphism",
@@ -309,7 +309,7 @@ UniversalMorphismFromColimit := rec(
   ),
 
 UniversalMorphismFromColimitWithGivenColimit := rec(
-  filter_list := [ "category", "list_of_objects", IsList, "object", "list_of_morphisms", "object" ],
+  filter_list := [ "category", "list_of_objects", "arbitrary_list", "object", "list_of_morphisms", "object" ],
   io_type := [ [ "objects", "decorated_morphisms", "T", "tau", "P" ], [ "P", "T" ] ],
   return_type := "morphism",
   

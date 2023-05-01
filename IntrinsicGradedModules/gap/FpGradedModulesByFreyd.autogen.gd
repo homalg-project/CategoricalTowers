@@ -213,7 +213,6 @@
 #! * <Ref BookName="MonoidalCategories" Func="MorphismFromTensorProductToInternalHomWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MorphismToBidual" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MorphismToBidualWithGivenBidual" Label="for Is" />
-#! * <Ref BookName="CAP" Func="MultiplyWithElementOfCommutativeRingForMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="PostCompose" Label="for Is" />
 #! * <Ref BookName="CAP" Func="PostComposeList" Label="for Is" />
 #! * <Ref BookName="CAP" Func="PostInverseForMorphisms" Label="for Is" />

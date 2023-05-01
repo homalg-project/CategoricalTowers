@@ -222,6 +222,7 @@ DeclareOperation( "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCat
                    [ IsCapCategory, IsList, IsList ] );
 
 #! @Description
+#! Like <C>BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory</C>,
 #! but the output is <C>true</C> if the homogeneous system has only the trivial solution,
 #! and <C>false</C> otherwise.
 #! @Returns a boolean
@@ -239,12 +240,11 @@ DeclareOperation( "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
 #! where $i = 1 \dots m$ and $j = 1 \dots n$ for integers $m,n \geq 1$.
 #! The second list $\beta$ (the right coefficients) is a list of list of morphisms $\beta_{ij}: C_j \rightarrow D_i$,
 #! where $i = 1 \dots m$ and $j = 1 \dots n$.
-#! The output is either
+#! The output is
 #! a generating set $[X^1,\dots,X^t]$ for the solutions of the homogeneous linear system
 #! defined by $\alpha$, $\beta$, i.e.,
 #! $\sum_{j = 1}^n \alpha_{ij}\cdot X^{k}_{j} \cdot \beta_{ij} = 0$
-#! for all $i = 1 \dots m$ and all $k = 1 \dots t$
-#! or $\texttt{fail}$ if no such solution exists.
+#! for all $i = 1 \dots m$ and all $k = 1 \dots t$.
 #! @Returns a list of lists of morphisms $[X^1, \dots, X^t]$
 #! @Arguments alpha, beta
 DeclareOperation( "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
@@ -260,16 +260,15 @@ DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCatego
 #! where $i = 1 \dots m$ and $j = 1 \dots n$ for integers $m,n \geq 1$.
 #! Each of $\beta$ and $\delta$ is also a list of list of morphisms $\beta_{ij}, \delta_{ij}: C_j \rightarrow D_i$,
 #! where $i = 1 \dots m$ and $j = 1 \dots n$.
-#! The output is either
+#! The output is
 #! a generating set $[X^1,\dots,X^t]$ for the solutions of the homogeneous linear system
 #! defined by $\alpha$, $\beta$, $\gamma$ and $\delta$, i.e.,
 #! $\sum_{j = 1}^n \alpha_{ij}\cdot X^{k}_{j} \cdot \beta_{ij} = \sum_{j = 1}^n \gamma_{ij}\cdot X^{k}_{j} \cdot \delta_{ij}$
-#! for all $i = 1 \dots m$ and all $k = 1 \dots t$
-#! or $\texttt{fail}$ if no such solution exists.
+#! for all $i = 1 \dots m$ and all $k = 1 \dots t$.
 #! @Returns a list of lists of morphisms $[X^1, \dots, X^t]$
 #! @Arguments alpha, beta, gamma, delta
 DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
-                   [ IsList, IsList, IsList, IsList] );
+                   [ IsList, IsList, IsList, IsList ] );
 
 #! @Description
 #! The arguments are two lists of lists $\alpha$, $\delta$ morphisms in some linear category
