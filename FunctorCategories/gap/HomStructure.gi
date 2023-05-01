@@ -5,6 +5,26 @@
 #
 
 ##
+InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerData,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh, F, G )
+    local F_data, D, V, s, t;
+    
+    F_data := CoequalizerDataOfPreSheaf( PSh, F );
+    
+    D := Range( PSh );
+    
+    V := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, F_data[1] );
+    
+    s := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, G, F_data[2][1] );
+    t := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, G, F_data[2][2] );
+    
+    return Pair( V, [ s, t ] );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
