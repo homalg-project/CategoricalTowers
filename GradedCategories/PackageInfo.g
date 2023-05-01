@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "GradedCategories",
 Subtitle := "Graded closures of categories",
-Version := "2023.02-07",
-Date := "2023-02-28",
+Version := "2023.05-01",
+Date := "2023-05-01",
 License := "GPL-2.0-or-later",
 
 
