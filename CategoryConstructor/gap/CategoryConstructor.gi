@@ -161,7 +161,7 @@ InstallMethod( CategoryConstructor,
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_morphism", fail );
     
-    ## e.g., Lift
+    ## e.g., LiftOrFail
     create_func_morphism_or_fail := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_morphism_or_fail", fail );
     
     ## e.g., CokernelColiftWithGivenCokernelObject
@@ -201,12 +201,6 @@ InstallMethod( CategoryConstructor,
     fi;
     
     # set default values
-    if create_func_morphism_or_fail = fail then
-        
-        create_func_morphism_or_fail := create_func_morphism;
-        
-    fi;
-    
     if create_func_universal_morphism = fail then
         
         create_func_universal_morphism := create_func_morphism;

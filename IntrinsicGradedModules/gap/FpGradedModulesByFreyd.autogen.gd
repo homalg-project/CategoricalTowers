@@ -47,7 +47,6 @@
 #! * <Ref BookName="CAP" Func="CokernelProjectionWithGivenCokernelObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="Colift" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ColiftAlongEpimorphism" Label="for Is" />
-#! * <Ref BookName="CAP" Func="ColiftOrFail" Label="for Is" />
 #! * <Ref BookName="CategoryConstructor" Func="Colimit" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ComponentOfMorphismFromCoproduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ComponentOfMorphismFromDirectSum" Label="for Is" />
@@ -189,7 +188,6 @@
 #! * <Ref BookName="MonoidalCategories" Func="LeftUnitorWithGivenTensorProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="Lift" Label="for Is" />
 #! * <Ref BookName="CAP" Func="LiftAlongMonomorphism" Label="for Is" />
-#! * <Ref BookName="CAP" Func="LiftOrFail" Label="for Is" />
 #! * <Ref BookName="CategoryConstructor" Func="Limit" Label="for Is" />
 #! * <Ref BookName="CategoryConstructor" Func="MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MonoidalPostComposeMorphism" Label="for Is" />
