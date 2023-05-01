@@ -1974,13 +1974,14 @@ end
         
 ########
 function ( cat_1, r_1, a_1 )
-    local hoisted_1_1, hoisted_2_1;
-    hoisted_2_1 := Range( cat_1 );
-    hoisted_1_1 := ValuesOnAllObjects( a_1 );
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
+    deduped_5_1 := ValuesOnAllObjects( a_1 );
+    hoisted_4_1 := Range( cat_1 );
+    hoisted_3_1 := List( deduped_5_1, UnderlyingMatrix );
+    hoisted_2_1 := List( deduped_5_1, Range );
+    hoisted_1_1 := List( deduped_5_1, Source );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local deduped_1_2;
-              deduped_1_2 := hoisted_1_1[o_2];
-              return CreateCapCategoryMorphismWithAttributes( hoisted_2_1, Source( deduped_1_2 ), Range( deduped_1_2 ), UnderlyingMatrix, r_1 * UnderlyingMatrix( deduped_1_2 ) );
+              return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, r_1 * hoisted_3_1[o_2] );
           end ) );
 end
 ########
@@ -2574,17 +2575,17 @@ end
         
 ########
 function ( cat_1, alpha_1, tau_1, I_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1;
-    hoisted_4_1 := Range( cat_1 );
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1;
+    deduped_6_1 := ValuesOnAllObjects( tau_1[2] );
+    hoisted_5_1 := Range( cat_1 );
+    hoisted_4_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_3_1 := List( ValuesOnAllObjects( alpha_1 ), function ( logic_new_func_x_2 )
             return BasisOfRows( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    hoisted_2_1 := ValuesOnAllObjects( CAP_JIT_INCOMPLETE_LOGIC( tau_1[2] ) );
+    hoisted_2_1 := List( deduped_6_1, Source );
     hoisted_1_1 := ValuesOfPreSheaf( I_1 )[1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, I_1, Range( CAP_JIT_INCOMPLETE_LOGIC( tau_1[1] ) ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local deduped_1_2;
-              deduped_1_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_2_1[o_2] );
-              return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, hoisted_1_1[o_2], Source( deduped_1_2 ), UnderlyingMatrix, UniqueRightDivide( hoisted_3_1[o_2], UnderlyingMatrix( deduped_1_2 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, I_1, Range( tau_1[1] ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+              return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, UniqueRightDivide( hoisted_3_1[o_2], hoisted_4_1[o_2] ) );
           end ) );
 end
 ########

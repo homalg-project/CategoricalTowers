@@ -164,7 +164,7 @@ InstallMethod( FpGradedLeftModules,
         [ IsHomalgGradedRing ],
         
   function( graded_ring )
-    local P, H, Freyd;
+    local P, H, B, weights, Freyd;
     
     P := CategoryOfGradedRows( graded_ring : FinalizeCategory := false );
     
@@ -209,16 +209,32 @@ InstallMethod( FpGradedLeftModules,
         
     end );
     
-    ##
-    AddMultiplyWithElementOfCommutativeRingForMorphisms( P,
-      function( r, alpha )
-        local mat;
+    if HasIsCommutative( graded_ring ) and IsCommutative( graded_ring ) then
         
-        mat := UnderlyingHomalgMatrix( alpha );
+        SetIsLinearCategoryOverCommutativeRing( P, true );
         
-        return GradedRowOrColumnMorphism( Source( alpha ), ( r / HomalgRing( mat ) ) * mat, Range( alpha ) );
+        B := BaseRing( graded_ring );
         
-    end );
+        weights := Set( WeightsOfIndeterminates( B ) );
+        
+        if HasIsCommutative( B ) and IsCommutative( B ) and
+           Length( weights ) = 1 and IsZero( weights[1] ) then
+            SetCommutativeRingOfLinearCategory( P, UnderlyingNonGradedRing( B ) );
+            
+            ##
+            AddMultiplyWithElementOfCommutativeRingForMorphisms( P,
+              function( r, alpha )
+                local mat;
+                
+                mat := UnderlyingHomalgMatrix( alpha );
+                
+                return GradedRowOrColumnMorphism( Source( alpha ), ( r / HomalgRing( mat ) ) * mat, Range( alpha ) );
+                
+            end );
+            
+        fi;
+        
+    fi;
     
     SetRangeCategoryOfHomomorphismStructure( P, P );
     SetIsEquippedWithHomomorphismStructure( P, true );

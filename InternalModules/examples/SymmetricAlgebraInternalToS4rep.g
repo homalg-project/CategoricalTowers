@@ -12,6 +12,7 @@ Display( srepG );
 #! 46 primitive operations were used to derive 277 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
+#! * IsLinearCategoryOverCommutativeRing
 #! * IsAbelianCategory
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! and furthermore mathematically

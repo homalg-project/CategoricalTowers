@@ -673,8 +673,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                          return Concatenation( "List( i_arg[", String( i ), "], F -> ValuesOfPreSheaf( F )[1][objB_index] )" );
                      elif type = "list_of_morphisms" then
                          return Concatenation( "List( i_arg[", String( i ), "], eta -> ValuesOnAllObjects( eta )[objB_index] )" );
+                     elif type = "pair_of_morphisms" then
+                         return Concatenation( "Pair( ValuesOnAllObjects( i_arg[", String( i ), "][1] )[objB_index], ValuesOnAllObjects( i_arg[", String( i ), "][2] )[objB_index] )" );
                      else
-                         Error( "can only deal with \"integer\", \"object\", \"morphism\", \"list_of_objects\", \"list_of_morphisms\"" );
+                         Error( "cannot deal with ", type );
                      fi;
                      
                   end ) ) );
