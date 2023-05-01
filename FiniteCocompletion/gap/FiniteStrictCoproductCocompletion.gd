@@ -95,7 +95,7 @@ end );
 
 #! @Description
 #!  Return the category $C$ underlying the finite coproduct cocompletion
-#!  category <A>UC</A><C> := FiniteStrictCoproductCocompletion(</C> $C$ <C>)</C>).
+#!  category <A>UC</A> := <C>FiniteStrictCoproductCocompletion</C>( $C$ ).
 #! @Arguments UC
 DeclareAttribute( "UnderlyingCategory",
         IsFiniteStrictCoproductCocompletion );
