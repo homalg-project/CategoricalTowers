@@ -41,6 +41,8 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># only valid for the construction above</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># FIXME: IsInt should be IsRat, but specializations of types are not yet supported by CompilerForCAP</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], rec( filter := IsList, element_type := rec( filter := IsInt ) ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># mixes QPA and MatricesForHomalg and thus cannot be installed using CapJitAddTypeSignatureDeferred</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddTypeSignature( "*", [ IsHomalgRingElement, IsQuiverAlgebraElement ], IsQuiverAlgebraElement );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># EXPERIMENTAL</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">Add( CAP_JIT_EXPENSIVE_FUNCTION_NAMES, "CoefficientsOfPaths" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_AdditiveClosureOfAlgebroid :=</span>
