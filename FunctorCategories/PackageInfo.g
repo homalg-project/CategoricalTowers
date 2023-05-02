@@ -10,10 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2023.05-01",
+Version := "2023.05-07",
 
-Date := "2023-05-01",
-Date := "2023-05-01",
+Date := "2023-05-02",
+Date := "2023-05-02",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -98,7 +98,7 @@ Dependencies := rec(
                    [ "RingsForHomalg", ">= 2020.02.04" ],
                    [ "LinearAlgebraForCAP", ">= 2020.01.10" ],
                    [ "FreydCategoriesForCAP", ">= 2019.11.02" ],
-                   [ "CategoryConstructor", ">= 2023.01-03" ],
+                   [ "CategoryConstructor", ">= 2023.05-03" ],
                    [ "SubcategoriesForCAP", ">= 2021.12-01" ],
                    [ "Toposes", ">= 2023.04-03" ],
                    [ "FinSetsForCAP", ">= 2023.03-02" ],
