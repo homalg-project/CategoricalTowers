@@ -562,7 +562,7 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
     ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
-    Bouquets := WrapperCategory( F_hat,
+    Bouquets := ReinterpretationOfCategory( F_hat,
                        rec( name := Concatenation( "CategoryOfBouquetsEnrichedOver( ", Name( category_of_skeletal_finsets ), " )" ),
                             category_filter := IsCategoryOfBouquets,
                             category_object_filter := IsObjectInCategoryOfBouquets,

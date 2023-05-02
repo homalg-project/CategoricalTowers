@@ -209,7 +209,7 @@ InstallMethod( CategoryOfColimitQuivers,
     ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
-    ColimitQuivers := WrapperCategory( Coeq,
+    ColimitQuivers := ReinterpretationOfCategory( Coeq,
                               rec( name := Concatenation( "CategoryOfColimitQuivers( ", Name( C ), " )" ),
                                    category_filter := IsCategoryOfColimitQuivers,
                                    category_object_filter := IsObjectInCategoryOfColimitQuivers,

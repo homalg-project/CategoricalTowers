@@ -106,7 +106,7 @@ Display( source_coeq_pair );
 #! An object in PairOfParallelArrowsCategory(
 #! FiniteStrictCoproductCocompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
-ModeledObject( CapCategory( source_colimit_quiver ),
+ReinterpretationOfObject( CapCategory( source_colimit_quiver ),
         source_coeq_pair ) = source_colimit_quiver;
 #! true
 target_bouquet := CreateBouquet( 2, [ 0, 0, 0, 0, 1 ] );
@@ -172,7 +172,7 @@ Display( target_coeq_pair );
 #! An object in PairOfParallelArrowsCategory(
 #! FiniteStrictCoproductCocompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
-ModeledObject( CapCategory( target_colimit_quiver ),
+ReinterpretationOfObject( CapCategory( target_colimit_quiver ),
         target_coeq_pair ) = target_colimit_quiver;
 #! true
 bouquet_morphism := CreateBouquetMorphism(
@@ -244,7 +244,7 @@ Display( coeq_pair_morphism );
 #! A morphism in PairOfParallelArrowsCategory(
 #! FiniteStrictCoproductCocompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
-ModeledMorphism( CapCategory( colimit_quiver_morphism ),
+ReinterpretationOfMorphism( CapCategory( colimit_quiver_morphism ),
         source_colimit_quiver,
         coeq_pair_morphism,
         target_colimit_quiver ) = colimit_quiver_morphism;

@@ -1326,7 +1326,7 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
     ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
-    Quivers := WrapperCategory( F_hat,
+    Quivers := ReinterpretationOfCategory( F_hat,
                        rec( name := Concatenation( "CategoryOfReflexiveQuiversEnrichedOver( ", Name( category_of_skeletal_finsets ), " )" ),
                             category_filter := IsCategoryOfReflexiveQuivers,
                             category_object_filter := IsObjectInCategoryOfReflexiveQuivers,

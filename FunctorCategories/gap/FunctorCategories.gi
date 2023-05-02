@@ -505,7 +505,7 @@ InstallMethodWithCache( FunctorCategory,
 
     ##
     Hom :=
-      WrapperCategory( PSh,
+      ReinterpretationOfCategory( PSh,
               rec( name := Concatenation( "FunctorCategory( ", Name( B ), ", ", Name( C ), " )" ),
                    category_filter := IsFunctorCategory,
                    category_object_filter := IsObjectInFunctorCategory,
