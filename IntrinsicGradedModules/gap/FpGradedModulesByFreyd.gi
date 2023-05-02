@@ -135,7 +135,7 @@ BindGlobal( "FP_GRADED_MODULES",
         modeling_tower_morphism_datum := modeling_tower_morphism_datum,
         # enforce defaults
         only_primitive_operations := false,
-        wrap_range_of_hom_structure := false,
+        wrap_range_of_hom_structure := HasRangeCategoryOfHomomorphismStructure( Freyd ) and IsIdenticalObj( Freyd, RangeCategoryOfHomomorphismStructure( Freyd ) ),
     ) : FinalizeCategory := false );
     
     SetUnderlyingCategory( wrapper, P );
