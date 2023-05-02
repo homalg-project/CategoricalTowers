@@ -120,7 +120,7 @@ BindGlobal( "FP_GRADED_MODULES",
         
     fi;
     
-    wrapper := WrapperCategory( Freyd, rec(
+    wrapper := ReinterpretationOfCategory( Freyd, rec(
         name := Name( Freyd ),
         category_filter := category_filter,
         category_object_filter := category_object_filter,
@@ -133,9 +133,6 @@ BindGlobal( "FP_GRADED_MODULES",
         modeling_tower_object_datum := modeling_tower_object_datum,
         modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
         modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-        # enforce defaults
-        only_primitive_operations := false,
-        wrap_range_of_hom_structure := HasRangeCategoryOfHomomorphismStructure( Freyd ) and IsIdenticalObj( Freyd, RangeCategoryOfHomomorphismStructure( Freyd ) ),
     ) : FinalizeCategory := false );
     
     SetUnderlyingCategory( wrapper, P );

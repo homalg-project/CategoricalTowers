@@ -153,7 +153,7 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
     ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
-    DecoratedQuivers := WrapperCategory( Slice,
+    DecoratedQuivers := ReinterpretationOfCategory( Slice,
                        rec( name := "CategoryOfDecoratedQuivers( decorating_quiver )",
                             category_filter := IsCategoryOfDecoratedQuivers,
                             category_object_filter := IsObjectInCategoryOfDecoratedQuivers,

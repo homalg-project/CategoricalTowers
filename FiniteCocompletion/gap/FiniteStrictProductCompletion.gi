@@ -153,7 +153,7 @@ InstallMethod( FiniteStrictProductCompletion,
     end;
     
     ##
-    PC := WrapperCategory( opUopC,
+    PC := ReinterpretationOfCategory( opUopC,
                   rec( name := Concatenation( "FiniteStrictProductCompletion( ", Name( C ), " )" ),
                        object_constructor := object_constructor,
                        object_datum := object_datum,

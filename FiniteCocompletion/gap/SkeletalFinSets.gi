@@ -97,7 +97,7 @@ InstallGlobalFunction( CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocomplet
     modeling_tower_morphism_datum := { sFinSets, mor } -> MorphismDatum( ModelingCategory( sFinSets ), mor )[1];
     
     ##
-    sFinSets := WrapperCategory( UT,
+    sFinSets := ReinterpretationOfCategory( UT,
                         rec( name := "SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory",
                              object_constructor := object_constructor,
                              object_datum := object_datum,
@@ -110,7 +110,6 @@ InstallGlobalFunction( CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocomplet
                              category_filter := IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory,
                              category_object_filter := IsObjectInSkeletalFinSets,
                              category_morphism_filter := IsMorphismInSkeletalFinSets,
-                             wrap_range_of_hom_structure := true,
                              only_primitive_operations := true ) : FinalizeCategory := false );
     
     # this is a workhorse category -> no logic and caching only via IsIdenticalObj

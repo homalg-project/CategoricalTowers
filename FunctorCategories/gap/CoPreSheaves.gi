@@ -525,7 +525,7 @@ InstallMethodWithCache( CoPreSheaves,
     
     ##
     coPSh :=
-      WrapperCategory( O,
+      ReinterpretationOfCategory( O,
               rec( name := Concatenation( "CoPreSheaves( ", Name( B ), ", ", Name( C ), " )" ),
                    category_filter := IsCoPreSheafCategory,
                    category_object_filter := IsObjectInCoPreSheafCategory,
