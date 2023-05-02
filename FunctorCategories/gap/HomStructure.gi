@@ -5,95 +5,7 @@
 #
 
 ##
-InstallMethodForCompilerForCAP( CoequalizerDataOfPreSheaf,
-        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
-        
-  function ( PSh, F )
-    local Bhat, F_colimit_quiver, F_coequalizer_pair, CoequalizerPairs, F_coequalizer_pair_as_presheaf;
-    
-    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
-    
-    F_colimit_quiver := CoYonedaLemmaOnObjects( PSh, F );
-    
-    F_coequalizer_pair := ModelingObject( Bhat, F_colimit_quiver );
-    
-    CoequalizerPairs := ModelingCategory( Bhat );
-    
-    F_coequalizer_pair_as_presheaf := ModelingObject( CoequalizerPairs, F_coequalizer_pair );
-    
-    return ObjectDatum( ModelingCategory( CoequalizerPairs ), F_coequalizer_pair_as_presheaf );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion,
-        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInFiniteStrictCoproductCocompletion ],
-        
-  function ( PSh, G, object )
-    local UC, object_data;
-    
-    ## TODO:
-    ## this code should be produced by something similar to ExtendFunctorToFiniteStrictProductCompletion:
-    ## Apply Hom(-,G) to an object (in UC)
-    
-    UC := CapCategory( object );
-    
-    object_data := ObjectDatum( UC, object );
-    
-    return List( object_data[2], objB -> ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, G, objB ) );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion,
-        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsMorphismInFiniteStrictCoproductCocompletion ],
-        
-  function ( PSh, G, morphism )
-    local G_on_source_diagram, G_on_range_diagram, D, G_on_source, G_on_range,
-          UC, morphism_data, map, mor, G_mor, prj, cmp;
-    
-    ## TODO:
-    ## this code should be produced by something similar to ExtendFunctorToFiniteStrictProductCompletion:
-    ## Apply Hom(-,G) to a morphism (in UC)
-    
-    G_on_source_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, Source( morphism ) );
-    G_on_range_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, Range( morphism ) );
-    
-    D := Range( PSh );
-    
-    G_on_source := DirectProduct( D, G_on_source_diagram );
-    G_on_range := DirectProduct( D, G_on_range_diagram );
-    
-    UC := CapCategory( morphism );
-    
-    morphism_data := MorphismDatum( UC, morphism );
-    
-    map := morphism_data[1];
-    mor := morphism_data[2];
-    
-    G_mor := List( mor, morB -> ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity( PSh, G, morB ) );
-    
-    prj := List( map, i ->
-                 ProjectionInFactorOfDirectProductWithGivenDirectProduct( D,
-                         G_on_range_diagram,
-                         1 + i,
-                         G_on_range ) );
-    
-    cmp := List( [ 0 .. Length( map ) - 1 ], i ->
-                 PreCompose( D,
-                         prj[1 + i],
-                         G_mor[1 + i] ) );
-    
-    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( D,
-                   G_on_source_diagram,
-                   G_on_range,
-                   cmp,
-                   G_on_source );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( ExternalHomAsEqualizerOnObjects,
+InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerData,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F, G )
@@ -103,7 +15,27 @@ InstallMethodForCompilerForCAP( ExternalHomAsEqualizerOnObjects,
     
     D := Range( PSh );
     
-    V := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, F_data[1][1] );
+    V := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, F_data[1] );
+    
+    s := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, G, F_data[2][1] );
+    t := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, G, F_data[2][2] );
+    
+    return Pair( V, [ s, t ] );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh, F, G )
+    local F_data, D, V, s, t;
+    
+    F_data := CoYonedaLemmaCoequalizerDataOfPreSheaf( PSh, F );
+    
+    D := Range( PSh );
+    
+    V := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, F_data[1] );
     
     s := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, G, F_data[2][1] );
     t := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, G, F_data[2][2] );
@@ -113,7 +45,7 @@ InstallMethodForCompilerForCAP( ExternalHomAsEqualizerOnObjects,
 end );
 
 ## η: F → G, ρ: S → T
-InstallMethodForCompilerForCAP( ExternalHomAsEqualizerOnMorphisms,
+InstallMethodForCompilerForCAP( ExternalHomOnMorphismsEqualizerFunctorialDataUsingCoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, eta, rho )
@@ -146,9 +78,9 @@ InstallMethodForCompilerForCAP( ExternalHomAsEqualizerOnMorphisms,
     
     eta_V_S := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, S, eta_coequalizer_pair_as_presheaf_morphism_datum );
     
-    F_data := CoequalizerDataOfPreSheaf( PSh, F );
+    F_data := CoYonedaLemmaCoequalizerDataOfPreSheaf( PSh, F );
     
-    F_V := F_data[1][1];
+    F_V := F_data[1];
     
     UC := CapCategory( F_V );
     
@@ -172,134 +104,6 @@ InstallMethodForCompilerForCAP( ExternalHomAsEqualizerOnMorphisms,
     return PreCompose( D,
                    eta_V_S,
                    F_V_rho );
-    
-end );
-
-## a special case of InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
-InstallMethodForCompilerForCAP( MorphismFromRepresentable,
-        [ IsPreSheafCategory, IsCapCategoryObject, IsInt, IsObjectInPreSheafCategory ],
-        
-  function ( PSh, objB, i, F )
-    local B, C, Y, objs, map, f;
-    
-    B := Source( PSh );
-    C := Range( PSh );
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( PSh ), C ) );
-    
-    Y := YonedaEmbeddingData( PSh )[1];
-    
-    objs := SetOfObjects( B );
-    
-    map := ExactCoverWithGlobalElements( C, ValuesOfPreSheaf( F )[1][SafePosition( objs, objB )] )[1 + i];
-    
-    f :=
-      function( source, srcB_index, range )
-        local HomB_srcB_objB, F_HomB_srcB_objB, taus;
-        
-        HomB_srcB_objB := MorphismsOfExternalHom( B,
-                                  objs[srcB_index],
-                                  objB );
-        
-        ## F applied to all morphisms from srcB to objB
-        F_HomB_srcB_objB := List( HomB_srcB_objB, F );
-        
-        taus := List( F_HomB_srcB_objB, m ->
-                      PreCompose( C,
-                              map,
-                              m ) );
-        
-        return UniversalMorphismFromCoproductWithGivenCoproduct( C,
-                       List( taus, Source ),
-                       range,
-                       taus,
-                       source );
-        
-    end;
-    
-    return CreatePreSheafMorphismByFunction( PSh, Y( objB ), f, F );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( MorphismFromCoproductOfRepresentables,
-        [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ],
-        
-  function ( PSh, L, F )
-    
-    return UniversalMorphismFromCoproduct( PSh,
-                   F,
-                   List( L, objB_list ->
-                         UniversalMorphismFromCoproduct( PSh,
-                                 F,
-                                 List( objB_list[2], i ->
-                                       MorphismFromRepresentable( PSh,
-                                               objB_list[1],
-                                               i,
-                                               F ) ) ) ) );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( CoveringListOfRepresentables,
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
-        
-  function ( PSh, F )
-    local B, C, objs, homs, F_o_vals, predicate, func, initial;
-    
-    B := Source( PSh );
-    C := Range( PSh );
-    
-    objs := SetOfObjects( B );
-    
-    ## compute all Hom(-, objB) to order them by their lengths below
-    homs := List( objs, objB ->
-                  ObjectDatum( C,
-                          Coproduct( C,
-                                  List( objs, srcB -> HomomorphismStructureOnObjects( B, srcB, objB ) ) ) ) );
-    
-    F_o_vals := List( ListOfValues( ValuesOfPreSheaf( F )[1] ), F_o -> [ 0 .. ObjectDatum( C, F_o ) - 1 ] );
-    
-    predicate :=
-      function( pi_data, pi_data_new )
-        
-        return IsEpimorphism( PSh,
-                       MorphismFromCoproductOfRepresentables( PSh,
-                               pi_data_new,
-                               F ) );
-        
-    end;
-    
-    func :=
-      function( pi_data )
-        local pi, im, im_vals, diff_vals, pos_nontrivial, homs_relevant, max, pos;
-        
-        pi := MorphismFromCoproductOfRepresentables( PSh,
-                      pi_data,
-                      F );
-        
-        im := ImageEmbedding( pi );
-        
-        im_vals := List( ListOfValues( ValuesOnAllObjects( im ) ), im_o -> MorphismDatum( C, im_o ) );
-        
-        diff_vals := ListN( F_o_vals, im_vals, { a, b } -> Difference( a, b ) );
-        
-        pos_nontrivial := PositionsProperty( diff_vals, a -> Length( a ) > 0 );
-        
-        homs_relevant := homs{pos_nontrivial};
-        
-        max := Maximum( homs_relevant );
-        
-        pos := pos_nontrivial[SafePosition( homs_relevant, max )];
-        
-        return Concatenation( pi_data, [ Pair( objs[pos], [ diff_vals[pos][1] ] ) ] );
-        
-    end;
-    
-    initial := [ ];
-    
-    return CapFixpoint( predicate, func, initial );
     
 end );
 

@@ -4,29 +4,14 @@
 # Declarations
 #
 
-DeclareOperation( "CoequalizerDataOfPreSheaf",
-    [ IsCapCategory, IsObjectInPreSheafCategory ] );
-
-DeclareOperation( "ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion",
-    [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInFiniteStrictCoproductCocompletion ] );
-
-DeclareOperation( "ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion",
-    [ IsCapCategory, IsObjectInPreSheafCategory, IsMorphismInFiniteStrictCoproductCocompletion ] );
-
-DeclareOperation( "ExternalHomAsEqualizerOnObjects",
+DeclareOperation( "ExternalHomOnObjectsEqualizerData",
     [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ] );
 
-DeclareOperation( "ExternalHomAsEqualizerOnMorphisms",
+DeclareOperation( "ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma",
+    [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ] );
+
+DeclareOperation( "ExternalHomOnMorphismsEqualizerFunctorialDataUsingCoYonedaLemma",
     [ IsCapCategory, IsMorphismInPreSheafCategory, IsMorphismInPreSheafCategory ] );
-
-DeclareOperation( "MorphismFromRepresentable",
-    [ IsPreSheafCategory, IsCapCategoryObject, IsInt, IsObjectInPreSheafCategory ] );
-
-DeclareOperation( "MorphismFromCoproductOfRepresentables",
-    [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ] );
-
-DeclareOperation( "CoveringListOfRepresentables",
-    [ IsPreSheafCategory, IsObjectInPreSheafCategory ] );
 
 DeclareOperation( "ExternalHomDiagram",
     [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ] );

@@ -503,10 +503,10 @@ InstallMethod( PairOfParallelArrowsCategory,
     
     ##
     object_constructor :=
-      function( ParallelPairs, coequalizer_pair )
+      function( ParallelPairs, parallel_pair )
         
         return CreateCapCategoryObjectWithAttributes( ParallelPairs,
-                       DefiningParallelPair, coequalizer_pair );
+                       DefiningParallelPair, parallel_pair );
         
     end;
     
@@ -698,14 +698,14 @@ InstallMethod( Display,
         "for an object in the pair of parallel arrows category of a category",
         [ IsObjectInPairOfParallelArrowsCategory ],
         
-  function ( coequalizer_pair )
-    local Coeq;
+  function ( parallel_pair )
+    local ParallelPairs;
     
-    Coeq := CapCategory( coequalizer_pair );
+    ParallelPairs := CapCategory( parallel_pair );
     
-    Display( ModelingObject( Coeq, coequalizer_pair ) );
+    Display( ModelingObject( ParallelPairs, parallel_pair ) );
     
-    Print( "\nAn object in ", Name( Coeq ), " given by the above data\n" );
+    Print( "\nAn object in ", Name( ParallelPairs ), " given by the above data\n" );
     
 end );
 
@@ -714,13 +714,13 @@ InstallMethod( Display,
         "for a morphism in the pair of parallel arrows category of a category",
         [ IsMorphismInPairOfParallelArrowsCategory ],
         
-  function ( coequalizer_pair_morphism )
-    local Coeq;
+  function ( parallel_pair_morphism )
+    local ParallelPairs;
     
-    Coeq := CapCategory( coequalizer_pair_morphism );
+    ParallelPairs := CapCategory( parallel_pair_morphism );
     
-    Display( ModelingMorphism( Coeq, coequalizer_pair_morphism ) );
+    Display( ModelingMorphism( ParallelPairs, parallel_pair_morphism ) );
     
-    Print( "\nA morphism in ", Name( Coeq ), " given by the above data\n" );
+    Print( "\nA morphism in ", Name( ParallelPairs ), " given by the above data\n" );
     
 end );

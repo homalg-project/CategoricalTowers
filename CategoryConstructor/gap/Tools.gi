@@ -366,6 +366,17 @@ InstallMethodForCompilerForCAP( LimitPair,
 end );
 
 ##
+InstallOtherMethod( LimitPair,
+        "for a list",
+        [ IsList ],
+        
+  function( pair )
+    
+    return LimitPair( CapCategory( pair[1][1] ), pair[1], pair[2] );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( ColimitPair,
         "for a catgory and two lists",
         [ IsCapCategory, IsList, IsList ],
@@ -396,6 +407,17 @@ InstallMethodForCompilerForCAP( ColimitPair,
                     diagram, range, compositions, source );
     
     return Pair( range, [ mor1, mor2 ] );
+    
+end );
+
+##
+InstallOtherMethod( ColimitPair,
+        "for a list",
+        [ IsList ],
+        
+  function( pair )
+    
+    return ColimitPair( CapCategory( pair[1][1] ), pair[1], pair[2] );
     
 end );
 

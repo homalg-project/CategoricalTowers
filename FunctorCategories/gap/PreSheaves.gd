@@ -271,6 +271,42 @@ DeclareOperation( "CreatePreSheafMorphismByFunction",
 DeclareAttribute( "SomeDiagramOfRepresentables",
         IsObjectInPreSheafCategory );
 
+#! @Arguments F
+DeclareAttribute( "CoYonedaLemmaCoequalizerDataOfPreSheaf",
+        IsObjectInPreSheafCategory );
+
+#! @Arguments PSh, objB, i, F
+DeclareOperation( "MorphismFromRepresentable",
+    [ IsPreSheafCategory, IsCapCategoryObject, IsInt, IsObjectInPreSheafCategory ] );
+
+#! @Arguments PSh, list, F
+DeclareOperation( "MorphismFromCoproductOfRepresentables",
+    [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ] );
+
+#! @Arguments F
+DeclareAttribute( "CoveringListOfRepresentables",
+        IsObjectInPreSheafCategory );
+
+#! @Arguments F
+DeclareAttribute( "SectionFromProjectiveCoverObjectIntoSomeProjectiveObject",
+    IsObjectInPreSheafCategory );
+
+#! @Arguments F
+DeclareAttribute( "EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject",
+    IsObjectInPreSheafCategory );
+
+#! @Arguments F
+DeclareAttribute( "CoequalizerDataOfPreSheaf",
+        IsObjectInPreSheafCategory );
+
+#! @Arguments PSh, presheaf, obj
+DeclareOperation( "ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion",
+        [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInFiniteStrictCoproductCocompletion ] );
+
+#! @Arguments PSh, presheaf, mor
+DeclareOperation( "ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion",
+        [ IsCapCategory, IsObjectInPreSheafCategory, IsMorphismInFiniteStrictCoproductCocompletion ] );
+
 #! @Description
 #!  Construct the category of categories internal to the monoidal or cartesian category <A>C</A>.
 #!  The output the full subcategory of the subcategory of functors from the

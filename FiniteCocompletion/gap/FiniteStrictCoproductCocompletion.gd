@@ -95,7 +95,7 @@ end );
 
 #! @Description
 #!  Return the category $C$ underlying the finite coproduct cocompletion
-#!  category <A>UC</A><C> := FiniteStrictCoproductCocompletion(</C> $C$ <C>)</C>).
+#!  category <A>UC</A> := <C>FiniteStrictCoproductCocompletion</C>( $C$ ).
 #! @Arguments UC
 DeclareAttribute( "UnderlyingCategory",
         IsFiniteStrictCoproductCocompletion );
@@ -122,3 +122,11 @@ DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
 #! @Returns a &CAP; functor
 DeclareAttribute( "ExtendFunctorToFiniteStrictCoproductCocompletion",
         IsCapFunctor );
+
+#! @Description
+#!  Extend (i.e., lift) the (full) Yoneda embedding the category <A>C</A> into <C>PreSheaves</C>( <A>C</A> ) to
+#!  the full embedding of <C>FiniteStrictCoproductCocompletion</C>( <A>C</A> ) into <C>PreSheaves</C>( <A>C</A> ).
+#! @Arguments C
+#! @Returns a &CAP; functor
+DeclareAttribute( "ExtendYonedaEmbeddingToFiniteStrictCoproductCocompletion",
+        IsCapCategory );
