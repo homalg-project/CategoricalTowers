@@ -28,10 +28,12 @@ InstallMethod( DataTablesOfCategory,
       nr_bases_elms := Length( bases_elms ),
       
       labels_objs := List( objs, o -> LabelAsString(UnderlyingVertex(o)) ),
+      latex_strings_objs := List( objs, o -> LaTeXOutput( o ) ),
       indices_objs := List( objs, o -> Position( bases_elms, IdentityMorphism( o ) ) ),
       
       nr_gmors := Length( gmors ),
       labels_gmors := List( gmors, m -> LabelAsString( Paths( UnderlyingQuiverAlgebraElement( m ) )[1] ) ),
+      latex_strings_gmors := List( gmors, m -> LaTeXOutput( m : OnlyDatum := true ) ),
       indices_gmors := List( gmors, m -> Position( bases_elms, m ) ),
       sources_gmors := List( gmors, m -> Position( objs, Source( m ) ) ),
       ranges_gmors := List( gmors, m -> Position( objs, Range( m ) ) ),
@@ -94,12 +96,12 @@ InstallMethod( IsomorphismFromAlgebroidFromDataTables,
     
     AddObjectFunction( eta,
       
-      o -> ObjectInAlgebroid( A, Vertex( UnderlyingQuiver( A ), ObjectDatum( o ) ) )
+      o -> ObjectInAlgebroid( A, Vertex( UnderlyingQuiver( A ), ObjectIndex( o ) ) )
     );
     
     AddMorphismFunction( eta,
       
-      { s, alpha, r } -> SumOfMorphisms( A, s, ListN( MorphismDatum( alpha ), BasisOfExternalHom( s, r ), \* ), r )
+      { s, alpha, r } -> SumOfMorphisms( A, s, ListN( MorphismCoefficients( alpha ), BasisOfExternalHom( s, r ), \* ), r )
     );
     
     return eta;
@@ -139,11 +141,11 @@ InstallOtherMethod( DataTablesOfCategory,
       nr_objs := Length( objs ),
       nr_bases_elms := Length( bases_elms ),
       
-      labels_objs := (EnhancedDataTables( B ).labels_objs){support_objs},
+      labels_objs := (EnhancedDataTables( B )[3]){support_objs},
       indices_objs := List( objs, o -> Position( bases_elms, IdentityMorphism( o ) ) ),
       
       nr_gmors := Length( gmors ),
-      labels_gmors := (EnhancedDataTables( B ).labels_gmors){support_gmors},
+      labels_gmors := (EnhancedDataTables( B )[7]){support_gmors},
       indices_gmors := List( gmors, m -> Position( bases_elms, m ) ),
       sources_gmors := List( gmors, m -> Position( objs, Source( m ) ) ),
       ranges_gmors := List( gmors, m -> Position( objs, Range( m ) ) ),
@@ -223,49 +225,27 @@ BindGlobal( "_KroneckerProduct_",
 end );
 
 ##
-BindGlobal( "_LazyHListX_",
-  
-  function ( arg... )
-    local n, f, lengths, products;
-    
-    n := Length( arg ) - 1;
-    
-    f := arg[n+1];
-    Assert( 0, IsFunction( f ) );
-    
-    lengths := List( arg{[ 1 .. n ]}, Length );
-    products := List( [ 1 .. n ], i -> Product( lengths{ [ i+1 .. n ] } ) );
-    
-    return
-        LazyHList( [ 1 .. Product( lengths ) ],
-                      index -> CallFuncList( f,
-                        List( [ 1 .. n ],
-                          function ( i )
-                            local output;
-                            output := QuoInt( index - 1, products[i] );
-                            index := RemInt( index - 1, products[i] ) + 1;
-                            return arg[i][output + 1];
-                          end ) ) );
-end );
-
-
-##
 BindGlobal( "_ConcatenationLazyHLists_",
   
-  function ( L1, L2 )
-    local length;
+  function ( list )
+    local n, len, indices;
     
-    length := Length( L1 ) + Length( L2 );
+    n := Length( list );
+     
+    len := List( [ 1 .. n ], i -> Length( list[i] ) );
     
-    return LazyHList( [ 1 .. length ],
-              function ( i )
-                if i <= Length( L1 ) then
-                    return L1[i];
-                else
-                    return L2[i-Length( L1 )];
-                fi;
-          end );
+    indices := List( [ 0 .. n ], i -> Sum( len{[ 1 .. i ]} ) );
     
+    return LazyHList( [ 1 .. Sum( len ) ],
+                function ( i )
+                  local pos;
+                  
+                  pos := PositionProperty( indices, j -> j >= i );
+                  
+                  return list[pos-1][i-indices[pos-1]];
+                  
+                end );
+     
 end );
 
 ###########################
@@ -292,201 +272,294 @@ InstallOtherMethod( AlgebroidFromDataTables,
 InstallMethod( AlgebroidFromDataTables,
           [ IsRecord ],
   
-  function ( data_tables )
-    local range_category_of_hom_structure, hom_structure_objs_gmors, hom_structure_on_objs_bases_elms, hom_structure_gmors_objs, hom_structure_on_bases_elms_objs, name, o_string, gm_string, with_or_without_s, cat, external_homs;
+  function ( input_data )
+    local data, range_category_of_hom_structure, hom_structure_objs_gmors, hom_structure_on_objs_bases_elms, hom_structure_gmors_objs, hom_structure_on_bases_elms_objs, eager, name, o_string, gm_string, with_or_without_s, cat, p;
     
-    data_tables := ShallowCopy( data_tables );
+    data := [];
     
-    data_tables!.indices_composable_gmors := LazyHList( [ 1 .. data_tables.nr_gmors ],
-                                                i -> Cartesian( [ i ], Filtered( [ 1 .. data_tables.nr_gmors ],
-                                                  j -> data_tables.ranges_gmors[i] = data_tables.sources_gmors[j] ) ) );
+    # coefficient ring
     
-    if not IsBound( data_tables.colors ) then
-          
-          data_tables.colors := rec( obj := "", coeff := "", basis_elm := "", other := "", reset := "" );
-          
-    elif data_tables.colors = true then
-          
-          data_tables.colors := rec( obj := TextAttr.4, coeff := TextAttr.5, basis_elm := TextAttr.2, other := TextAttr.1, reset := TextAttr.reset );
-          # to avoid line-breaking run SizeScreen([3000,3000]);
+    data[1] := input_data.coefficients_ring;
+    
+    # objects
+    
+    data[2] := input_data.nr_objs;
+    data[3] := input_data.labels_objs;
+    
+    if IsBound( input_data.latex_strings_objs ) then
+        data[4] := input_data.latex_strings_objs;
+    else
+        data[4] := input_data.labels_objs;
     fi;
     
-    if not IsBound( data_tables.latex_strings_objs ) then
-        data_tables!.latex_strings_objs := data_tables.labels_objs;
+    data[5] := input_data.indices_objs;
+    
+    # generating morphisms
+    
+    data[6] := input_data.nr_gmors;
+    data[7] := input_data.labels_gmors;
+    
+    if IsBound( input_data.latex_strings_gmors ) then
+        data[8] := input_data.latex_strings_gmors;
+    else
+        data[8] := input_data.labels_gmors;
     fi;
     
-    if not IsBound( data_tables.latex_strings_gmors ) then
-        data_tables!.latex_strings_gmors := data_tables.labels_gmors;
+    data[9] := input_data.indices_gmors;
+    data[10] := input_data.sources_gmors;
+    data[11] := input_data.ranges_gmors;
+    
+    # all bases elements
+    
+    data[12] := input_data.nr_bases_elms;
+    data[13] := input_data.bases_elms_comps;
+    
+    data[14] := [];
+    
+    for p in [ 1 .. data[2] ] do
+          data[14][data[5][p]] := p;
+    od;
+    
+    for p in [ 1 .. data[6] ] do
+          data[14][data[9][p]] := p;
+    od;
+    
+    if IsBound( input_data.labels_of_bases_elms ) then
+          data[15] := input_data.labels_of_bases_elms;
+    else
+          data[15] :=
+              LazyHList( data[13],
+                 m -> JoinStringsWithSeparator(
+                        List( CollectEntries( List( m,
+                          function ( g )
+                            if g in data[5] then
+                                return Concatenation( "id(", data[3][data[14][g]], ")" );
+                            else
+                                return data[7][data[14][g]];
+                            fi;
+                          end ) ),
+                          function ( pair )
+                            if pair[2] = 1 then
+                                return pair[1];
+                            else
+                                return Concatenation( pair[1], "^", String( pair[2] ) );
+                            fi;
+                          end ) , "•" ) );
     fi;
     
-    if not IsBound( data_tables.labels_of_bases_elms ) then
-      
-      data_tables!.labels_of_bases_elms :=
-                      LazyHList( data_tables.bases_elms_comps,
-                                m -> JoinStringsWithSeparator(
-                                        List( CollectEntries( List( m,
-                                          function ( g )
-                                            if g in data_tables.indices_objs then
-                                                return data_tables.labels_objs[Position( data_tables.indices_objs, g )];
-                                            else
-                                                return data_tables.labels_gmors[Position( data_tables.indices_gmors, g )];
-                                            fi;
-                                          end ) ),
-                                          function ( pair )
-                                            if pair[2] = 1 then
-                                                return pair[1];
-                                            else
-                                                return Concatenation( pair[1], "^", String( pair[2] ) );
-                                            fi;
-                                          end ) , "•" ) );
-    
+    if IsBound( input_data.latex_strings_of_bases_elms ) then
+          data[16] := input_data.latex_strings_of_bases_elms;
+    else
+          data[16] :=
+              LazyHList( data[13],
+                 m -> JoinStringsWithSeparator(
+                        List( CollectEntries( List( m,
+                          function ( g )
+                            if g in data[5] then
+                                return Concatenation( "id_{", data[4][data[14][g]], "}" );
+                            else
+                                return data[8][data[14][g]];
+                            fi;
+                          end ) ),
+                          function ( pair )
+                            if pair[2] = 1 then
+                                return pair[1];
+                            else
+                                return Concatenation( "{", pair[1], "}^{", String( pair[2] ), "}" );
+                            fi;
+                          end ) , "" ) );
     fi;
     
-    if not IsBound( data_tables.latex_strings_of_bases_elms ) then
-      
-      data_tables!.latex_strings_of_bases_elms :=
-                      LazyHList( data_tables.bases_elms_comps,
-                                m -> JoinStringsWithSeparator(
-                                        List( CollectEntries( List( m,
-                                          function ( g )
-                                            if g in data_tables.indices_objs then
-                                                return data_tables.latex_strings_objs[Position( data_tables.indices_objs, g )];
-                                            else
-                                                return data_tables.latex_strings_gmors[Position( data_tables.indices_gmors, g )];
-                                            fi;
-                                          end ) ),
-                                          function ( pair )
-                                            if pair[2] = 1 then
-                                                return pair[1];
-                                            else
-                                                return Concatenation( "{", pair[1], "}^{", String( pair[2] ), "}" );
-                                            fi;
-                                          end ) , "" ) );
-      
-    fi;
+    data[17] := input_data.indices_of_bases_elms;
     
-    range_category_of_hom_structure := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", CategoryOfRows( data_tables.coefficients_ring : overhead := false ) );
+    data[18] := input_data.hom_structure_objs_gmors;
     
-    Assert( 0, IsIdenticalObj( data_tables.coefficients_ring, UnderlyingRing( range_category_of_hom_structure ) ) );
+    data[19] := input_data.hom_structure_gmors_objs;
     
-    if not IsBound( data_tables.hom_structure_ranks ) then
-        data_tables!.hom_structure_ranks := LazyHList( data_tables.indices_of_bases_elms, i -> LazyHList( i, Length )  );
-    fi;
+    # homomorphism structure
     
-    if not IsBound( data_tables.hom_structure_on_bases_elms ) then
+    data[20] := LazyHList( data[17], i -> LazyHList( i, Length ) );
+    
+    if IsBound( input_data.hom_structure_on_bases_elms ) then
         
-        hom_structure_objs_gmors := LazyHList( [ 1 .. data_tables.nr_objs ],
-                       i -> LazyHList( [ 1 .. data_tables.nr_gmors ],
-                         j -> [ data_tables.hom_structure_ranks[i][data_tables.sources_gmors[j]],
-                                data_tables.hom_structure_objs_gmors[i][j],
-                                data_tables.hom_structure_ranks[i][data_tables.ranges_gmors[j]] ] ) );
-        
-        hom_structure_on_objs_bases_elms :=
-                    LazyHList( [ 1 .. data_tables.nr_objs ],
-                      i -> List( [ 1 .. data_tables.nr_bases_elms ],
-                        function ( j )
-                          local m;
-                          
-                          m := data_tables.bases_elms_comps[j];
-                          
-                          if Length( m ) = 1 and m[1] in data_tables.indices_objs then
-                              m := data_tables.hom_structure_ranks[i][Position( data_tables.indices_objs, m[1] )];
-                              return [ m, IdentityMat( m, data_tables.coefficients_ring ), m ];
-                          else
-                              return _Product_Matrices_List_(
-                                            ListOfValues( hom_structure_objs_gmors[i] ){
-                                            List( m, index -> Position( data_tables.indices_gmors, index ) ) }, data_tables.coefficients_ring );
-                          fi;
-                          
-                        end ) );
-        
-        hom_structure_gmors_objs := LazyHList( [ 1 .. data_tables.nr_objs ],
-                       i -> LazyHList( [ 1 .. data_tables.nr_gmors ],
-                         j -> [ data_tables.hom_structure_ranks[data_tables.ranges_gmors[j]][i],
-                                data_tables.hom_structure_gmors_objs[i][j],
-                                data_tables.hom_structure_ranks[data_tables.sources_gmors[j]][i] ] ) );
-        
-        hom_structure_on_bases_elms_objs :=
-                    LazyHList( [ 1 .. data_tables.nr_objs ],
-                      i -> List( [ 1 .. data_tables.nr_bases_elms ],
-                        function ( j )
-                          local m;
-                          
-                          m := data_tables.bases_elms_comps[j];
-                          
-                          if Length(m) = 1 and m[1] in data_tables.indices_objs then
-                              m := data_tables.hom_structure_ranks[Position( data_tables.indices_objs, m[1] )][i];
-                              return [ m, IdentityMat( m, data_tables.coefficients_ring ), m ];
-                          else
-                              return _Product_Matrices_List_(
-                                            ListOfValues( hom_structure_gmors_objs[i] ){
-                                            Reversed( List( m, index -> Position( data_tables.indices_gmors, index ) ) ) }, data_tables.coefficients_ring );
-                          fi;
-                          
-                        end ) );
-        
-        data_tables!.hom_structure_on_bases_elms :=
-          LazyHList( [ 1 .. data_tables.nr_objs ],
-            i -> LazyHList( [ 1 .. data_tables.nr_objs ],
-              j -> LazyHList( [ 1 .. data_tables.nr_objs ],
-                p -> LazyHList( [ 1 .. data_tables.nr_objs ],
-                  q -> _LazyHListX_( hom_structure_on_objs_bases_elms[j]{data_tables.indices_of_bases_elms[p][q]},
-                                hom_structure_on_bases_elms_objs[q]{data_tables.indices_of_bases_elms[i][j]},
-                                  { l, r } -> _Product_Matrices_( l[1], l[2], l[3], r[1], r[2], r[3], data_tables.coefficients_ring ) ) ) ) ) );
-    
-    fi;
-    
-    if IsBound( data_tables.name ) then
-        
-        name := data_tables.name;
+        data[21] := input_data.hom_structure_on_bases_elms;
         
     else
         
-        if data_tables.nr_objs < 10 then
-            o_string := JoinStringsWithSeparator( data_tables.labels_objs, "," );
+        hom_structure_objs_gmors := LazyHList( [ 1 .. data[2] ],
+                  i -> LazyHList( [ 1 .. data[6] ],
+                    j -> [ data[20][i][data[10][j]],
+                           data[18][i][j],
+                           data[20][i][data[11][j]] ] ) );
+        
+        hom_structure_on_objs_bases_elms :=
+                LazyHList( [ 1 .. data[2] ],
+                  i -> List( [ 1 .. data[12] ],
+                    function ( j )
+                      local m;
+                      
+                      m := data[13][j];
+                      
+                      if Length( m ) = 1 and m[1] in data[5] then
+                          m := data[20][i][data[14][m[1]]];
+                          return [ m, IdentityMat( m, data[1] ), m ];
+                      else
+                          return _Product_Matrices_List_(
+                                        ListOfValues( hom_structure_objs_gmors[i] ){
+                                        List( m, index -> data[14][index] ) }, data[1] );
+                      fi;
+                      
+                    end ) );
+        
+        hom_structure_gmors_objs := LazyHList( [ 1 .. data[2] ],
+                  i -> LazyHList( [ 1 .. data[6] ],
+                    j -> [ data[20][data[11][j]][i],
+                           data[19][i][j],
+                           data[20][data[10][j]][i] ] ) );
+        
+        hom_structure_on_bases_elms_objs :=
+                LazyHList( [ 1 .. data[2] ],
+                  i -> List( [ 1 .. data[12] ],
+                    function ( j )
+                      local m;
+                      
+                      m := data[13][j];
+                      
+                      if Length(m) = 1 and m[1] in data[5] then
+                          m := data[20][data[14][m[1]]][i];
+                          return [ m, IdentityMat( m, data[1] ), m ];
+                      else
+                          return _Product_Matrices_List_(
+                                        ListOfValues( hom_structure_gmors_objs[i] ){
+                                        Reversed( List( m, index -> data[14][index] ) ) }, data[1] );
+                      fi;
+                      
+                    end ) );
+        
+        data[21] :=
+          LazyHList( [ 1 .. data[2] ],
+            i -> LazyHList( [ 1 .. data[2] ],
+              j -> LazyHList( [ 1 .. data[2] ],
+                p -> LazyHList( [ 1 .. data[2] ],
+                  q -> LazyHList( hom_structure_on_bases_elms_objs[q]{data[17][i][j]},
+                    l -> LazyHList( hom_structure_on_objs_bases_elms[j]{data[17][p][q]},
+                      r -> _Product_Matrices_( r[1], r[2], r[3], l[1], l[2], l[3], data[1] ) ) ) ) ) ) );
+    fi;
+    
+    # other
+    
+    data[22] := LazyHList( [ 1 .. data[6] ],
+                                  i -> Cartesian( [ i ], Filtered( [ 1 .. input_data.nr_gmors ],
+                                    j -> input_data.ranges_gmors[i] = input_data.sources_gmors[j] ) ) );
+    
+    if not IsBound( input_data.colors ) then
+          
+          data[23] := rec( obj := "", coeff := "", basis_elm := "", other := "", reset := "" );
+          
+    elif input_data.colors = true then
+          
+          data[23] := rec( obj := TextAttr.4, coeff := TextAttr.5, basis_elm := TextAttr.2, other := TextAttr.1, reset := TextAttr.reset );
+          # to avoid line-breaking run SizeScreen([3000,3000]);
+    else
+          data[23] := input_data.colors;
+    fi;
+    
+    data :=
+      NTuple( 23,
+         data[1],    # ring
+         data[2],    # nr_objs
+         data[3],    # labels_objs
+         data[4],    # latex_strings_objs
+         data[5],    # indices_objs
+         data[6],    # nr_gmors
+         data[7],    # labels_gmors
+         data[8],    # latex_strings_gmors
+         data[9],    # indices_gmors
+         data[10],   # sources_gmors
+         data[11],   # ranges_gmors
+         data[12],   # nr_bases_elms
+         data[13],   # bases_elms_comps
+         data[14],   # pos_of_objs_gmors
+         data[15],   # labels_of_bases_elms
+         data[16],   # latex_strings_of_bases_elms
+         data[17],   # indices_of_bases_elms
+         data[18],   # hom_structure_objs_gmors
+         data[19],   # hom_structure_gmors_objs
+         data[20],   # hom_structure_ranks
+         data[21],   # hom_structure_on_bases_elms
+         data[22],   # indices_composable_gmors
+         data[23] ); # colors
+    
+    eager := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "eager", true );
+    
+    if eager then
+        
+        ListOfValues( data[15] );
+        
+        ListOfValues( data[16] );
+        
+        List( ListOfValues( data[20] ), ListOfValues );
+        
+        List( ListOfValues( data[21] ),
+          a -> List( ListOfValues( a ),
+            b -> List( ListOfValues( b ),
+              c -> List( ListOfValues( c ),
+                d -> List( ListOfValues( d ),
+                  e -> ListOfValues( e ) ) ) ) ) );
+        
+    fi;
+    
+    if IsBound( input_data.name ) then
+        
+        name := input_data.name;
+        
+    else
+        
+        if input_data.nr_objs < 10 then
+            o_string := JoinStringsWithSeparator( input_data.labels_objs, "," );
         else
             o_string := Concatenation(
-                              JoinStringsWithSeparator( data_tables.labels_objs{[1..3]}, "," ),
+                              JoinStringsWithSeparator( input_data.labels_objs{[1..3]}, "," ),
                               ",..,",
-                              JoinStringsWithSeparator( data_tables.labels_objs{[data_tables.nr_objs - 2 .. data_tables.nr_objs]}, "," ) );
+                              JoinStringsWithSeparator( input_data.labels_objs{[input_data.nr_objs - 2 .. input_data.nr_objs]}, "," ) );
         fi;
         
-        if data_tables.nr_gmors < 10 then
+        if input_data.nr_gmors < 10 then
             
             gm_string := JoinStringsWithSeparator(
-                          ListN( data_tables.labels_gmors, data_tables.sources_gmors, data_tables.ranges_gmors,
-                              { l, i, j } -> Concatenation( l, ":", data_tables.labels_objs[i], "-≻", data_tables.labels_objs[j] ) ), "," );
+                          ListN( input_data.labels_gmors, input_data.sources_gmors, input_data.ranges_gmors,
+                              { l, i, j } -> Concatenation( l, ":", input_data.labels_objs[i], "-≻", input_data.labels_objs[j] ) ), "," );
         else
             
             gm_string := Concatenation(
                               JoinStringsWithSeparator(
-                                  ListN( ListOfValues( data_tables.labels_gmors ){[1..3]}, ListOfValues( data_tables.sources_gmors ){[1..3]}, ListOfValues( data_tables.ranges_gmors ){[1..3]},
-                                    { l, i, j } -> Concatenation( l, ":", data_tables.labels_objs[i], "-≻", data_tables.labels_objs[j] ) ), "," ),
+                                  ListN( ListOfValues( input_data.labels_gmors ){[1..3]}, ListOfValues( input_data.sources_gmors ){[1..3]}, ListOfValues( input_data.ranges_gmors ){[1..3]},
+                                    { l, i, j } -> Concatenation( l, ":", input_data.labels_objs[i], "-≻", input_data.labels_objs[j] ) ), "," ),
                               ",..,",
                               JoinStringsWithSeparator(
-                                  ListN( ListOfValues( data_tables.labels_gmors ){[data_tables.nr_objs - 2 .. data_tables.nr_objs]},
-                                    ListOfValues( data_tables.sources_gmors){[data_tables.nr_objs - 2 .. data_tables.nr_objs]},
-                                    ListOfValues( data_tables.ranges_gmors ){[data_tables.nr_objs - 2 .. data_tables.nr_objs]},
-                                    { l, i, j } -> Concatenation( l, ":", data_tables.labels_objs[i], "-≻", data_tables.labels_objs[j] ) ), "," ) );
+                                  ListN( ListOfValues( input_data.labels_gmors ){[input_data.nr_objs - 2 .. input_data.nr_objs]},
+                                    ListOfValues( input_data.sources_gmors){[input_data.nr_objs - 2 .. input_data.nr_objs]},
+                                    ListOfValues( input_data.ranges_gmors ){[input_data.nr_objs - 2 .. input_data.nr_objs]},
+                                    { l, i, j } -> Concatenation( l, ":", input_data.labels_objs[i], "-≻", input_data.labels_objs[j] ) ), "," ) );
         
         fi;
         
         with_or_without_s := nr -> Concatenation( Concatenation( [ "" ], ListWithIdenticalEntries( Position( [ false, true ], nr <> 1 ) - 1, "s" ) ) );
         
         name := Concatenation(
-                      RingName( data_tables.coefficients_ring ),
+                      RingName( input_data.coefficients_ring ),
                       "-algebroid( {",
                       o_string,
                       "}[",
                       gm_string,
                       "] ) defined by ",
-                      String( data_tables.nr_objs ),
+                      String( input_data.nr_objs ),
                       " object",
-                      with_or_without_s( data_tables.nr_objs ),
+                      with_or_without_s( input_data.nr_objs ),
                       " and ",
-                      String( data_tables.nr_gmors ),
+                      String( input_data.nr_gmors ),
                       " generating morphism",
-                      with_or_without_s( data_tables.nr_gmors ) );
+                      with_or_without_s( input_data.nr_gmors ) );
         
     fi;
     
@@ -501,22 +574,41 @@ InstallMethod( AlgebroidFromDataTables,
     CapCategorySwitchLogicOff( cat );
     DisableSanityChecks( cat );
     
-    SetEnhancedDataTables( cat, data_tables );
+    SetEnhancedDataTables( cat, data );
     
     cat!.category_as_first_argument := true;
     
     SetIsAbCategory( cat, true );
     SetIsLinearCategoryOverCommutativeRing( cat, true );
-    SetCommutativeRingOfLinearCategory( cat, data_tables.coefficients_ring );
+    SetCommutativeRingOfLinearCategory( cat, input_data.coefficients_ring );
     
-    SetSetOfObjects( cat, List( [ 1 .. data_tables.nr_objs ], index -> CreateCapCategoryObjectWithAttributes( cat, ObjectDatum, index ) ) );
+    range_category_of_hom_structure := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", CategoryOfRows( data[1] : FinalizeCategory := true ) );
     
-    external_homs := LazyHList( [ 1 .. data_tables.nr_objs ],
-                        i -> LazyHList( [ 1 .. data_tables.nr_objs ],
-                          j -> ListN( [ 1 .. data_tables.hom_structure_ranks[i][j] ], IdentityMat( data_tables.hom_structure_ranks[i][j], data_tables.coefficients_ring ),
-                            { index, coeff } -> CreateMorphism( cat, SetOfObjects( cat )[i], coeff, [ index ], SetOfObjects( cat )[j] ) ) ) );
+    SetSetOfObjects( cat, List( [ 1 .. data[2] ], index -> CreateCapCategoryObjectWithAttributes( cat, ObjectIndex, index ) ) );
     
-    SetSetOfBasesOfExternalHomsLazyHList( cat, external_homs );
+    SetSetOfBasesOfExternalHomsLazyHList( cat,
+                    LazyHList( [ 1 .. data[2] ],
+                        i -> LazyHList( [ 1 .. data[2] ],
+                          j -> ListN( [ 1 .. data[20][i][j] ], IdentityMat( data[20][i][j], data[1] ),
+                            { index, coeff } -> CreateMorphism( cat, SetOfObjects( cat )[i], coeff, [ index ], SetOfObjects( cat )[j] ) ) ) ) );
+    
+    if eager then
+        List( ListOfValues( SetOfBasesOfExternalHomsLazyHList( cat ) ), ListOfValues );
+    fi;
+    
+    cat!.compiler_hints :=
+      rec( category_attribute_names :=
+           [ "SetOfObjects",
+             "SetOfGeneratingMorphisms",
+             "EnhancedDataTables",
+             "SetOfBasesOfExternalHomsLazyHList",
+             "CommutativeRingOfLinearCategory",
+            ],
+            precompiled_towers := [
+            rec(
+                remaining_constructors_in_tower := [ "AdditiveClosure" ],
+                precompiled_functions_adder := ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidFromDataTablesPrecompiled ),
+            ] );
     
     ##
     AddObjectConstructor( cat,
@@ -527,49 +619,51 @@ InstallMethod( AlgebroidFromDataTables,
     ##
     AddObjectDatum( cat,
       
-      { cat, obj } -> ObjectDatum( obj )
+      { cat, obj } -> ObjectIndex( obj )
     );
     
     ##
     AddMorphismConstructor( cat,
       
-      { cat, obj_1, coeffs, obj_2 } -> CreateMorphism( cat, obj_1, coeffs, obj_2 )
+      { cat, obj_1, datum, obj_2 } -> CreateCapCategoryMorphismWithAttributes( cat,
+                                            obj_1, obj_2,
+                                            MorphismCoefficients, datum )
     );
     
     ##
     AddMorphismDatum( cat,
       
-      { cat, alpha } -> MorphismDatum( alpha )
+      { cat, alpha } -> MorphismCoefficients( alpha )
     );
     
     ##
     AddIsWellDefinedForObjects( cat,
       
-      { cat, obj } -> IsPosInt( ObjectDatum( obj ) ) and ObjectDatum( obj ) <= EnhancedDataTables( cat ).nr_objs
+      { cat, obj } -> 0 < ObjectIndex( obj ) and ObjectIndex( obj ) <= EnhancedDataTables( cat )[2]
     );
     
     ##
     AddIsEqualForObjects( cat,
       
-      { cat, obj_1, obj_2 } -> ObjectDatum( obj_1 ) = ObjectDatum( obj_2 )
+      { cat, obj_1, obj_2 } -> ObjectIndex( obj_1 ) = ObjectIndex( obj_2 )
      );
     
     ##
     AddIsWellDefinedForMorphisms( cat,
       
-      { cat, mor } -> EnhancedDataTables( cat ).hom_structure_ranks[ObjectDatum( Source( mor ) )][ObjectDatum( Range( mor ) )] = Length( MorphismDatum( mor ) )
+      { cat, mor } -> EnhancedDataTables( cat )[20][ObjectIndex( Source( mor ) )][ObjectIndex( Range( mor ) )] = Length( MorphismCoefficients( mor ) )
     );
 
     ##
     AddIsEqualForMorphisms( cat,
       
-      { cat, mor_1, mor_2 } -> MorphismDatum( mor_1 ) = MorphismDatum( mor_2 )
+      { cat, mor_1, mor_2 } -> MorphismCoefficients( mor_1 ) = MorphismCoefficients( mor_2 )
     );
     
     ##
     AddIsCongruentForMorphisms( cat,
       
-      { cat, mor_1, mor_2 } -> MorphismDatum( mor_1 ) = MorphismDatum( mor_2 )
+      { cat, mor_1, mor_2 } -> MorphismCoefficients( mor_1 ) = MorphismCoefficients( mor_2 )
     );
     
     ##
@@ -578,51 +672,51 @@ InstallMethod( AlgebroidFromDataTables,
       function ( cat, obj )
         local i;
         
-        i := ObjectDatum( obj );
+        i := ObjectIndex( obj );
         
-        return SetOfBasesOfExternalHomsLazyHList( cat )[i][i][Position( EnhancedDataTables( cat ).indices_of_bases_elms[i][i], EnhancedDataTables( cat ).indices_objs[i] )];
+        return SetOfBasesOfExternalHomsLazyHList( cat )[i][i][SafePosition( EnhancedDataTables( cat )[17][i][i], EnhancedDataTables( cat )[5][i] )];
         
     end );
     
     ##
     AddZeroMorphism( cat,
       
-      { cat, obj_1, obj_2 } -> CreateMorphism( cat,
+      { cat, obj_1, obj_2 } -> MorphismConstructor( cat,
                                     obj_1,
                                     ListWithIdenticalEntries(
-                                      EnhancedDataTables( cat ).hom_structure_ranks[ObjectDatum( obj_1 )][ObjectDatum( obj_2 )],
-                                      Zero( CommutativeRingOfLinearCategory( cat ) ) ),
+                                        EnhancedDataTables( cat )[20][ObjectIndex( obj_1 )][ObjectIndex( obj_2 )],
+                                        ZeroImmutable( CommutativeRingOfLinearCategory( cat ) ) ),
                                     obj_2 )
     );
     
     ##
     AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
       
-      { cat, r, alpha } -> CreateMorphism( cat, Source( alpha ), r * MorphismDatum( alpha ), Range( alpha ) )
+      { cat, r, alpha } -> MorphismConstructor( cat, Source( alpha ), List( MorphismCoefficients( alpha ), c -> r * c ), Range( alpha ) )
     );
     
     ##
     AddAdditionForMorphisms( cat,
       
-      { cat, alpha_1, alpha_2 } -> CreateMorphism( cat, Source( alpha_1 ), Sum( List( [ alpha_1, alpha_2 ], MorphismDatum ) ), Range( alpha_1 ) )
+      { cat, alpha_1, alpha_2 } -> MorphismConstructor( cat, Source( alpha_1 ), Sum( List( [ alpha_1, alpha_2 ], MorphismCoefficients ) ), Range( alpha_1 ) )
     );
     
     ##
     AddAdditiveInverseForMorphisms( cat,
       
-      { cat, alpha } -> CreateMorphism( cat, Source( alpha ), -MorphismDatum( alpha ), Range( alpha ) )
+      { cat, alpha } -> MorphismConstructor( cat, Source( alpha ), List( MorphismCoefficients( alpha ), c -> -c ), Range( alpha ) )
     );
     
-    ##
+    #
     AddBasisOfExternalHom( cat,
       
-      { cat, obj_1, obj_2 } -> SetOfBasesOfExternalHomsLazyHList( cat )[ObjectDatum( obj_1 )][ObjectDatum( obj_2 )]
+      { cat, obj_1, obj_2 } -> SetOfBasesOfExternalHomsLazyHList( cat )[ObjectIndex( obj_1 )][ObjectIndex( obj_2 )]
     );
     
-    ##
+    #
     AddCoefficientsOfMorphism( cat,
       
-      { cat, alpha } -> MorphismDatum( alpha )
+      { cat, alpha } -> MorphismCoefficients( alpha )
     );
     
     ## Hom-Structure
@@ -634,47 +728,51 @@ InstallMethod( AlgebroidFromDataTables,
     ##
     AddDistinguishedObjectOfHomomorphismStructure( cat,
       
-      cat -> CategoryOfRowsObject( range_category_of_hom_structure, 1 )
+      cat -> ObjectConstructor( RangeCategoryOfHomomorphismStructure( cat ), 1 )
     );
     
     ##
     AddHomomorphismStructureOnObjects( cat,
       
-      { cat, obj_1, obj_2 } -> CategoryOfRowsObject(
-                                        range_category_of_hom_structure,
-                                        EnhancedDataTables( cat ).hom_structure_ranks[ObjectDatum( obj_1 )][ObjectDatum( obj_2 )] )
+      { cat, obj_1, obj_2 } -> ObjectConstructor( RangeCategoryOfHomomorphismStructure( cat ),
+                                      EnhancedDataTables( cat )[20][ObjectIndex( obj_1 )][ObjectIndex( obj_2 )] )
     );
     
-    ##  H(alpha:i->j, gamma:p->q) = H( alpha*j, gamma*q ) = H(j, gamma) * H(alpha, q)
+    ##  H(α:i->j, γ:p->q) = H( α•id_j, γ•id_q ) = H(id_j, γ)•H(α, id_q)
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
       
       function ( cat, s, alpha, gamma, r )
-        local i, j, p, q, hom_ijpq, s_gamma, s_alpha, coeffs_gamma, coeffs_alpha, rank_ij, mat;
+        local s_alpha, s_gamma, i, j, p, q, hom_ijpq, coeffs_alpha, coeffs_gamma, mat;
         
-        s_gamma := SupportOfMorphismAttr( gamma );
-        s_alpha := SupportOfMorphismAttr( alpha );
-        
-        if RankOfObject( s ) = 0 or RankOfObject( r ) = 0 or IsEmpty( s_gamma ) or IsEmpty( s_alpha ) then
-            return ZeroMorphism( range_category_of_hom_structure, s, r );
+        if (RankOfObject( s ) = 0 or Length( MorphismSupport( alpha ) ) = 0)  or (RankOfObject( r ) = 0 or Length( MorphismSupport( gamma ) ) = 0) then
+
+            return ZeroMorphism( RangeCategoryOfHomomorphismStructure( cat ), s, r );
+
+        else
+
+            s_alpha := MorphismSupport( alpha );
+            s_gamma := MorphismSupport( gamma );
+
+            i := ObjectIndex( Source( alpha ) );
+            j := ObjectIndex( Range( alpha ) );
+
+            p := ObjectIndex( Source( gamma ) );
+            q := ObjectIndex( Range( gamma ) );
+
+            hom_ijpq := EnhancedDataTables( cat )[21][i][j][p][q];
+
+            coeffs_alpha := MorphismCoefficients( alpha );
+            coeffs_gamma := MorphismCoefficients( gamma );
+
+            mat := Sum( List( s_alpha, l -> Sum( List( s_gamma, r -> List( hom_ijpq[l][r], x -> List( x, y -> (coeffs_alpha[l] * coeffs_gamma[r]) * y ) ) ) ) ) );
+
+            return MorphismConstructor( RangeCategoryOfHomomorphismStructure( cat ),
+                          s,
+                          HomalgMatrixListList( mat, RankOfObject( s ), RankOfObject( r ), CommutativeRingOfLinearCategory( cat ) ),
+                          r );
+
         fi;
-        
-        i := ObjectDatum( Source( alpha ) );
-        j := ObjectDatum( Range( alpha ) );
-        
-        p := ObjectDatum( Source( gamma ) );
-        q := ObjectDatum( Range( gamma ) );
-        
-        hom_ijpq := EnhancedDataTables( cat ).hom_structure_on_bases_elms[i][j][p][q];
-        
-        coeffs_gamma := MorphismDatum( gamma );
-        coeffs_alpha := MorphismDatum( alpha );
-        
-        rank_ij := Length( coeffs_alpha );
-        
-        mat := Sum( ListX( s_gamma, s_alpha, {u,v} -> coeffs_gamma[u] * coeffs_alpha[v] * hom_ijpq[(u-1) * rank_ij + v] ) );
-        
-        return CategoryOfRowsMorphism( range_category_of_hom_structure, s, HomalgMatrixListList( mat, RankOfObject( s ), RankOfObject( r ), CommutativeRingOfLinearCategory( cat ) ), r );
         
     end );
     
@@ -684,35 +782,37 @@ InstallMethod( AlgebroidFromDataTables,
       function ( cat, alpha )
         local dim;
         
-        dim := EnhancedDataTables( cat ).hom_structure_ranks[ObjectDatum( Source( alpha ) )][ObjectDatum( Range( alpha ) )];
+        dim := EnhancedDataTables( cat )[20][ObjectIndex( Source( alpha ) )][ObjectIndex( Range( alpha ) )];
         
-        return CategoryOfRowsMorphism( range_category_of_hom_structure,
+        return MorphismConstructor( RangeCategoryOfHomomorphismStructure( cat ),
                             DistinguishedObjectOfHomomorphismStructure( cat ),
-                            HomalgRowVector( MorphismDatum( alpha ), dim, CommutativeRingOfLinearCategory( cat ) ),
-                            CategoryOfRowsObject( dim, range_category_of_hom_structure ) );
+                            HomalgMatrixListList( [ MorphismCoefficients( alpha ) ], 1, dim, CommutativeRingOfLinearCategory( cat ) ),
+                            ObjectConstructor( RangeCategoryOfHomomorphismStructure( cat ), dim ) );
     end );
     
-    ##
+    #
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
       
-      { cat, distinguished_object, alpha, r } -> CategoryOfRowsMorphism( range_category_of_hom_structure,
-                                                            distinguished_object,
-                                                            HomalgRowVector( MorphismDatum( alpha ), RankOfObject( r ), CommutativeRingOfLinearCategory( cat ) ),
+      { cat, distinguished_object, alpha, r } -> MorphismConstructor( RangeCategoryOfHomomorphismStructure( cat ),
+                                                            DistinguishedObjectOfHomomorphismStructure( cat ),
+                                                            HomalgMatrixListList( [ MorphismCoefficients( alpha ) ], 1, RankOfObject( r ), CommutativeRingOfLinearCategory( cat ) ),
                                                             r )
     );
     
-    ##
+    #
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
       
-      { cat, obj_1, obj_2, eta } -> CreateMorphism( cat, obj_1, EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( eta ) )[1], obj_2 )
+      { cat, obj_1, obj_2, eta } -> MorphismConstructor( cat, obj_1, EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( eta ) )[1], obj_2 )
     );
     
+    ## α:i->j, β:j->k
+    ## α•β = ν⁻¹(ν(α•β)) = ν⁻¹(ν(α•id_j•β)) = ν⁻¹(ν(id_j)•H(α,β))
     ##
     AddPreCompose( cat,
       
       { cat, alpha, beta } -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Source( alpha ), Range( beta ),
-                                  PreCompose( range_category_of_hom_structure,
-                                      InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, IdentityMorphism( Range( alpha ) ) ),
+                                  PreCompose( RangeCategoryOfHomomorphismStructure( cat ),
+                                      InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, IdentityMorphism( cat, Range( alpha ) ) ),
                                       HomomorphismStructureOnMorphisms( cat, alpha, beta ) ) )
     );
     
@@ -734,7 +834,7 @@ InstallMethod( AlgebroidFromDataTables,
         
         r := Random( Filtered( SetOfObjects( cat ), o -> not IsZero( HomomorphismStructureOnObjects( cat, obj, o ) ) ) );
         
-        basis := SetOfBasesOfExternalHomsLazyHList( cat )[ObjectDatum( obj )][ObjectDatum( r )];
+        basis := SetOfBasesOfExternalHomsLazyHList( cat )[ObjectIndex( obj )][ObjectIndex( r )];
         
         return Sum( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( basis ) );
         
@@ -750,7 +850,7 @@ InstallMethod( AlgebroidFromDataTables,
         
         s := Random( Filtered( SetOfObjects( cat ), o -> not IsZero( HomomorphismStructureOnObjects( cat, o, obj ) ) ) );
         
-        basis := SetOfBasesOfExternalHomsLazyHList( cat )[ObjectDatum( s )][ObjectDatum( obj )];
+        basis := SetOfBasesOfExternalHomsLazyHList( cat )[ObjectIndex( s )][ObjectIndex( obj )];
         
         return SumOfMorphisms( cat, s, List( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( basis ) ), obj );
         
@@ -764,7 +864,7 @@ InstallMethod( AlgebroidFromDataTables,
         
         ring := CommutativeRingOfLinearCategory( cat );
         
-        morphisms := Concatenation( [ ZeroMorphism( cat, s, r ) ], SetOfBasesOfExternalHomsLazyHList( cat )[ObjectDatum( s )][ObjectDatum( r )] );
+        morphisms := Concatenation( [ ZeroMorphism( cat, s, r ) ], SetOfBasesOfExternalHomsLazyHList( cat )[ObjectIndex( s )][ObjectIndex( r )] );
         
         return SumOfMorphisms( cat, s, List( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( morphisms ) ), r );
         
@@ -780,8 +880,8 @@ end );
 InstallMethod( SetOfGeneratingMorphisms,
           [ IsAlgebroidFromDataTables ],
   
-  B -> ListN( EnhancedDataTables( B ).sources_gmors, EnhancedDataTables( B ).ranges_gmors, EnhancedDataTables( B ).indices_gmors,
-            { i, j, g } -> SetOfBasesOfExternalHomsLazyHList( B )[i][j][Position( EnhancedDataTables( B ).indices_of_bases_elms[i][j], g )] )
+  B -> ListN( EnhancedDataTables( B )[9], EnhancedDataTables( B )[10], EnhancedDataTables( B )[11],
+            { g, i, j } -> SetOfBasesOfExternalHomsLazyHList( B )[i][j][Position( EnhancedDataTables( B )[17][i][j], g )] )
 );
 
 ##
@@ -815,14 +915,14 @@ InstallOtherMethod( \[\],
 InstallMethod( CreateMorphism,
           [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTablesObject, IsDenseList, IsAlgebroidFromDataTablesObject ],
   
-  { cat, S, coeffs, R } -> CreateMorphism( cat, S, coeffs, PositionsProperty( coeffs, c -> not IsZero( c ) ), R )
+  MorphismConstructor
 );
 
 ##
 InstallOtherMethod( CreateMorphism,
           [ IsAlgebroidFromDataTablesObject, IsDenseList, IsAlgebroidFromDataTablesObject ],
   
-  { S, coeffs, R } -> CreateMorphism( CapCategory( S ), S, coeffs, R )
+  MorphismConstructor
 );
 
 ##
@@ -831,8 +931,15 @@ InstallOtherMethod( CreateMorphism,
   
   { cat, S, coeffs, support, R } -> CreateCapCategoryMorphismWithAttributes( cat,
                                         S, R,
-                                        MorphismDatum, coeffs,
-                                        SupportOfMorphismAttr, support )
+                                        MorphismCoefficients, coeffs,
+                                        MorphismSupport, support )
+);
+
+##
+InstallMethod( MorphismSupport,
+          [ IsAlgebroidFromDataTablesMorphism ],
+  
+  alpha -> PositionsProperty( MorphismCoefficients( alpha ), c -> not IsZero( c ) )
 );
 
 ##
@@ -840,25 +947,25 @@ InstallMethod( DecompositionOfMorphismInAlgebroid,
           [ IsAlgebroidFromDataTablesMorphism ],
   
   function ( mor )
-    local B, indices_objs, indices_gmors, source_index, range_index, supp, coeffs, precomps;
+    local B, indices_objs, indices_gmors, source, range, supp, coeffs, precomps;
     
     B := CapCategory( mor );
-    indices_objs := EnhancedDataTables( B ).indices_objs;
-    indices_gmors := EnhancedDataTables( B ).indices_gmors;
+    indices_objs := EnhancedDataTables( B )[5];
+    indices_gmors := EnhancedDataTables( B )[9];
     
-    source_index := ObjectDatum( Source( mor ) );
-    range_index := ObjectDatum( Range( mor ) );
+    source := ObjectIndex( Source( mor ) );
+    range := ObjectIndex( Range( mor ) );
     
-    supp := SupportOfMorphismAttr( mor );
-    coeffs := MorphismDatum( mor ){ supp };
-    precomps := List( EnhancedDataTables( B ).indices_of_bases_elms[source_index][range_index]{supp},
+    supp := MorphismSupport( mor );
+    coeffs := MorphismCoefficients( mor ){ supp };
+    precomps := List( EnhancedDataTables( B )[17][source][range]{supp},
                         function ( j )
                           local m;
-                          m := EnhancedDataTables( B ).bases_elms_comps[j];
+                          m := EnhancedDataTables( B )[13][j];
                           if Length( m ) = 1 and m[1] in indices_objs then
-                              return [ IdentityMorphism( SetOfObjects( B )[Position( indices_objs, m[1] )] ) ];
+                              return [ IdentityMorphism( SetOfObjects( B )[EnhancedDataTables( B )[14][m[1]]] ) ];
                           else
-                              return List( m, index -> SetOfGeneratingMorphisms( B )[Position( indices_gmors, index )] );
+                              return List( m, index -> SetOfGeneratingMorphisms( B )[EnhancedDataTables( B )[14][index]] );
                           fi;
                         end );
     
@@ -877,53 +984,52 @@ InstallOtherMethod( OppositeAlgebroid,
           [ IsAlgebroidFromDataTables ],
   
   function ( cat )
-    local data_tables, data_tables_op;
+    local data, data_op;
     
-    data_tables := EnhancedDataTables( cat );
+    data := EnhancedDataTables( cat );
     
-    data_tables_op := rec();
+    data_op := rec();
     
-    data_tables_op!.coefficients_ring := data_tables.coefficients_ring;
+    data_op!.coefficients_ring := data[1];
     
-    data_tables_op!.nr_objs := data_tables.nr_objs;
+    data_op!.nr_objs := data[2];
     
-    data_tables_op!.nr_bases_elms := data_tables.nr_bases_elms;
+    data_op!.nr_bases_elms := data[12];
     
-    data_tables_op!.labels_objs := data_tables.labels_objs;
+    data_op!.labels_objs := data[3];
     
-    data_tables_op!.indices_objs := data_tables.indices_objs;
+    data_op!.indices_objs := data[5];
     
-    data_tables_op!.nr_gmors := data_tables.nr_gmors;
+    data_op!.nr_gmors := data[6];
     
-    data_tables_op!.labels_gmors := data_tables.labels_gmors;
+    data_op!.labels_gmors := data[7];
     
-    data_tables_op!.indices_gmors := data_tables.indices_gmors;
+    data_op!.indices_gmors := data[9];
     
-    data_tables_op!.sources_gmors := data_tables.ranges_gmors;
+    data_op!.sources_gmors := data[11];
     
-    data_tables_op!.ranges_gmors := data_tables.sources_gmors;
+    data_op!.ranges_gmors := data[10];
     
-    data_tables_op!.bases_elms_comps := List( data_tables.bases_elms_comps, Reversed );
+    data_op!.bases_elms_comps := List( data[13], Reversed );
     
-    data_tables_op!.indices_of_bases_elms := TransposedMat( data_tables.indices_of_bases_elms );
+    data_op!.indices_of_bases_elms := TransposedMat( data[17] );
     
-    data_tables_op!.hom_structure_objs_gmors := data_tables.hom_structure_gmors_objs;
+    data_op!.hom_structure_objs_gmors := data[19];
     
-    data_tables_op!.hom_structure_gmors_objs := data_tables.hom_structure_objs_gmors;
+    data_op!.hom_structure_gmors_objs := data[18];
     
-    data_tables_op!.hom_structure_ranks := TransposedMat( data_tables.hom_structure_ranks );
+    data_op!.hom_structure_ranks := TransposedMat( data[20] );
     
-    data_tables_op!.hom_structure_on_bases_elms :=
-        List( [ 1 .. data_tables_op.nr_objs ],
-          i -> List( [ 1 .. data_tables_op.nr_objs ],
-            j -> List( [ 1 .. data_tables_op.nr_objs ],
-              p -> List( [ 1 .. data_tables_op.nr_objs ],
-                q -> ListX(
-                  [ 1 .. data_tables_op.hom_structure_ranks[p][q] ],
-                  [ 1 .. data_tables_op.hom_structure_ranks[i][j] ],
-                    { u, v } -> data_tables.hom_structure_on_bases_elms[q][p][j][i][(v-1) * data_tables_op.hom_structure_ranks[p][q] + u] ) ) ) ) );
+    data_op!.hom_structure_on_bases_elms :=
+        List( [ 1 .. data_op.nr_objs ],
+          i -> List( [ 1 .. data_op.nr_objs ],
+            j -> List( [ 1 .. data_op.nr_objs ],
+              p -> List( [ 1 .. data_op.nr_objs ],
+                q -> List( [ 1 .. data_op.hom_structure_ranks[i][j] ],
+                  l -> List( [ 1 .. data_op.hom_structure_ranks[p][q] ],
+                    r -> data[21][q][p][j][i][r][l] ) ) ) ) ) );
     
-    return AlgebroidFromDataTables( data_tables_op : range_of_HomStructure := RangeCategoryOfHomomorphismStructure( cat ) );
+    return AlgebroidFromDataTables( data_op : range_of_HomStructure := RangeCategoryOfHomomorphismStructure( cat ) );
     
 end );
 
@@ -937,159 +1043,172 @@ end );
 InstallMethod( \*,
           [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTables ],
   
-  TensorProductOfAlgebroids );
+  { B_1, B_2 } -> TensorProductOfAlgebroids( B_1, B_2 : eager := false )
+);
 
 ##
 InstallMethodWithCache( TensorProductOfAlgebroids,
           [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTables ],
   
   function ( B_1, B_2 )
-    local data_tables_1, data_tables_2, data_tables;
+    local data_1, data_2, data;
     
-    data_tables_1 := EnhancedDataTables( B_1 );
-    data_tables_2 := EnhancedDataTables( B_2 );
+    data_1 := EnhancedDataTables( B_1 );
+    data_2 := EnhancedDataTables( B_2 );
     
-    if not IsIdenticalObj( data_tables_1.coefficients_ring, data_tables_2.coefficients_ring ) then
-        Error( "the categories should be linear over the same commutative ring!" );
+    if not IsIdenticalObj( data_1[1], data_2[1] ) then
+        Error( "the algebroids must be linear over the same commutative ring!" );
     fi;
     
-    data_tables := rec();
+    data := rec();
     
-    data_tables!.coefficients_ring := data_tables_1.coefficients_ring;
+    data!.coefficients_ring := data_1[1];
     
-    data_tables!.nr_objs := data_tables_1.nr_objs * data_tables_2.nr_objs;
+    data!.nr_objs := data_1[2] * data_2[2];
     
-    data_tables!.nr_bases_elms := data_tables_1.nr_bases_elms * data_tables_2.nr_bases_elms;
+    data!.nr_bases_elms := data_1[12] * data_2[12];
     
-    data_tables!.indices_objs := ListX( data_tables_1.indices_objs, data_tables_2.indices_objs, { l, r } -> (l-1)*data_tables_2.nr_bases_elms + r );
+    data!.indices_objs := Concatenation( List( data_1[5], l -> List( data_2[5], r -> (l-1) * data_2[12] + r ) ) );
     
-    data_tables!.labels_objs := ListX( data_tables_1.labels_objs, data_tables_2.labels_objs, { l, r } -> Concatenation( l, "⊗", r ) );
+    data!.labels_objs := Concatenation( List( data_1[3], l -> List( data_2[3], r -> Concatenation( l, "⊗", r ) ) ) );
     
-    data_tables!.latex_strings_objs := ListX( data_tables_1.latex_strings_objs, data_tables_2.latex_strings_objs, { l, r } -> Concatenation( l, "{\\otimes}", r ) );
+    data!.latex_strings_objs := Concatenation( List( data_1[4], l -> List( data_2[4], r -> Concatenation( l, "{\\otimes}", r ) ) ) );
     
-    data_tables!.nr_gmors := data_tables_1.nr_objs * data_tables_2.nr_gmors + data_tables_1.nr_gmors * data_tables_2.nr_objs;
+    data!.nr_gmors := data_1[2] * data_2[6] + data_1[6] * data_2[2];
     
-    data_tables!.indices_gmors :=
+    data!.indices_gmors :=
                     _ConcatenationLazyHLists_(
-                        _LazyHListX_( data_tables_1.indices_objs, data_tables_2.indices_gmors, { l, r } -> (l-1) * data_tables_2.nr_bases_elms + r ),
-                        _LazyHListX_( data_tables_1.indices_gmors, data_tables_2.indices_objs, { l, r } -> (l-1) * data_tables_2.nr_bases_elms + r ) );
+                        [ _ConcatenationLazyHLists_( LazyHList( data_1[5], l -> LazyHList( data_2[9], r -> (l-1) * data_2[12] + r ) ) ),
+                          _ConcatenationLazyHLists_( LazyHList( data_1[9], l -> LazyHList( data_2[5], r -> (l-1) * data_2[12] + r ) ) ) ] );
     
-    data_tables!.labels_gmors :=
+    data!.labels_gmors :=
                     _ConcatenationLazyHLists_(
-                        _LazyHListX_( data_tables_1.labels_objs, data_tables_2.labels_gmors, { l, r } -> Concatenation( l, "⊗", r ) ),
-                        _LazyHListX_( data_tables_1.labels_gmors, data_tables_2.labels_objs, { l, r } -> Concatenation( l, "⊗", r ) ) );
+                        [ _ConcatenationLazyHLists_( LazyHList( data_1[3], l -> LazyHList( data_2[7], r -> Concatenation( l, "⊗", r ) ) ) ),
+                          _ConcatenationLazyHLists_( LazyHList( data_1[7], l -> LazyHList( data_2[3], r -> Concatenation( l, "⊗", r ) ) ) ) ] );
     
-    data_tables!.latex_strings_gmors :=
+    data!.latex_strings_gmors :=
                     _ConcatenationLazyHLists_(
-                        _LazyHListX_( data_tables_1.latex_strings_objs, data_tables_2.latex_strings_gmors, { l, r } -> Concatenation( l, "{\\otimes}", r ) ),
-                        _LazyHListX_( data_tables_1.latex_strings_gmors, data_tables_2.latex_strings_objs, { l, r } -> Concatenation( l, "{\\otimes}", r ) ) );
+                        [ _ConcatenationLazyHLists_( LazyHList( data_1[4], l -> LazyHList( data_2[8], r -> Concatenation( l, "{\\otimes}", r ) ) ) ),
+                          _ConcatenationLazyHLists_( LazyHList( data_1[8], l -> LazyHList( data_2[4], r -> Concatenation( l, "{\\otimes}", r ) ) ) ) ] );
 
-    data_tables!.sources_gmors :=
+    data!.sources_gmors :=
                     _ConcatenationLazyHLists_(
-                        _LazyHListX_( [ 1 .. data_tables_1.nr_objs ], data_tables_2.sources_gmors, { l, r } -> (l-1) * data_tables_2.nr_objs + r ),
-                        _LazyHListX_( data_tables_1.sources_gmors, [ 1 .. data_tables_2.nr_objs ], { l, r } -> (l-1) * data_tables_2.nr_objs + r ) );
+                        [ _ConcatenationLazyHLists_( LazyHList( [ 1 .. data_1[2] ], l -> LazyHList( data_2[10], r -> (l-1) * data_2[2] + r ) ) ),
+                          _ConcatenationLazyHLists_( LazyHList( data_1[10], l -> LazyHList( [ 1 .. data_2[2] ], r -> (l-1) * data_2[2] + r ) ) ) ] );
     
-    data_tables!.ranges_gmors :=
+    data!.ranges_gmors :=
                     _ConcatenationLazyHLists_(
-                        _LazyHListX_( [ 1 .. data_tables_1.nr_objs ], data_tables_2.ranges_gmors, { l, r } -> (l-1) * data_tables_2.nr_objs + r ),
-                        _LazyHListX_( data_tables_1.ranges_gmors, [ 1 .. data_tables_2.nr_objs ], { l, r } -> (l-1) * data_tables_2.nr_objs + r ) );
+                        [ _ConcatenationLazyHLists_( LazyHList( [ 1 .. data_1[2] ], l -> LazyHList( data_2[11], r -> (l-1) * data_2[2] + r ) ) ),
+                          _ConcatenationLazyHLists_( LazyHList( data_1[11], l -> LazyHList( [ 1 .. data_2[2] ], r -> (l-1) * data_2[2] + r ) ) ) ] );
     
-    data_tables!.hom_structure_objs_gmors :=
-        _LazyHListX_( [ 1 .. data_tables_1.nr_objs ], [ 1 .. data_tables_2.nr_objs ],
-            { i, p } -> _ConcatenationLazyHLists_(
-                            _LazyHListX_( [ 1 .. data_tables_1.nr_objs ], [ 1 .. Length( data_tables_2.indices_gmors ) ],
-                                { j, index_2 } -> _KroneckerProduct_(
-                                                        data_tables_1.hom_structure_ranks[i][j],
-                                                        IdentityMat( data_tables_1.hom_structure_ranks[i][j], data_tables.coefficients_ring ),
-                                                        data_tables_1.hom_structure_ranks[i][j],
-                                                        data_tables_2.hom_structure_ranks[p][data_tables_2.sources_gmors[index_2]],
-                                                        data_tables_2.hom_structure_objs_gmors[p][index_2],
-                                                        data_tables_2.hom_structure_ranks[p][data_tables_2.ranges_gmors[index_2]] ) ),
-                            _LazyHListX_( [ 1 .. Length( data_tables_1.indices_gmors ) ], [ 1 .. data_tables_2.nr_objs ],
-                                { index_1, q } -> _KroneckerProduct_(
-                                                        data_tables_1.hom_structure_ranks[i][data_tables_1.sources_gmors[index_1]],
-                                                        data_tables_1.hom_structure_objs_gmors[i][index_1],
-                                                        data_tables_1.hom_structure_ranks[i][data_tables_1.ranges_gmors[index_1]],
-                                                        data_tables_2.hom_structure_ranks[p][q],
-                                                        IdentityMat( data_tables_2.hom_structure_ranks[p][q], data_tables.coefficients_ring ),
-                                                        data_tables_2.hom_structure_ranks[p][q] ) ) ) );
+    data!.hom_structure_objs_gmors :=
+        _ConcatenationLazyHLists_(
+            LazyHList( [ 1 .. data_1[2] ],
+                i -> LazyHList( [ 1 .. data_2[2] ],
+                    p -> _ConcatenationLazyHLists_(
+                              [ _ConcatenationLazyHLists_(
+                                  LazyHList( [ 1 .. data_1[2] ],
+                                    j -> LazyHList( [ 1 .. Length( data_2[9] ) ],
+                                        index_2 -> _KroneckerProduct_(
+                                                        data_1[20][i][j],
+                                                        IdentityMat( data_1[20][i][j], data.coefficients_ring ),
+                                                        data_1[20][i][j],
+                                                        data_2[20][p][data_2[10][index_2]],
+                                                        data_2[18][p][index_2],
+                                                        data_2[20][p][data_2[11][index_2]] ) ) ) ),
+                              _ConcatenationLazyHLists_(
+                                  LazyHList( [ 1 .. Length( data_1[9] ) ],
+                                    index_1 -> LazyHList( [ 1 .. data_2[2] ],
+                                              q -> _KroneckerProduct_(
+                                                        data_1[20][i][data_1[10][index_1]],
+                                                        data_1[18][i][index_1],
+                                                        data_1[20][i][data_1[11][index_1]],
+                                                        data_2[20][p][q],
+                                                        IdentityMat( data_2[20][p][q], data.coefficients_ring ),
+                                                        data_2[20][p][q] ) ) ) ) ] ) ) ) );
     
-    data_tables!.hom_structure_gmors_objs :=
-        _LazyHListX_( [ 1 .. data_tables_1.nr_objs ], [ 1 .. data_tables_2.nr_objs ],
-            { i, p } -> _ConcatenationLazyHLists_(
-                            _LazyHListX_( [ 1 .. data_tables_1.nr_objs ], [ 1 .. Length( data_tables_2.indices_gmors ) ],
-                                { j, index_2 } -> _KroneckerProduct_(
-                                                        data_tables_1.hom_structure_ranks[j][i],
-                                                        IdentityMat( data_tables_1.hom_structure_ranks[j][i], data_tables.coefficients_ring ),
-                                                        data_tables_1.hom_structure_ranks[j][i],
-                                                        data_tables_2.hom_structure_ranks[data_tables_2.ranges_gmors[index_2]][p],
-                                                        data_tables_2.hom_structure_gmors_objs[p][index_2],
-                                                        data_tables_2.hom_structure_ranks[data_tables_2.sources_gmors[index_2]][p] ) ),
-                            _LazyHListX_( [ 1 .. Length( data_tables_1.indices_gmors ) ], [ 1 .. data_tables_2.nr_objs ],
-                                { index_1, q } -> _KroneckerProduct_(
-                                                        data_tables_1.hom_structure_ranks[data_tables_1.ranges_gmors[index_1]][i],
-                                                        data_tables_1.hom_structure_gmors_objs[i][index_1],
-                                                        data_tables_1.hom_structure_ranks[data_tables_1.sources_gmors[index_1]][i],
-                                                        data_tables_2.hom_structure_ranks[q][p],
-                                                        IdentityMat( data_tables_2.hom_structure_ranks[q][p], data_tables.coefficients_ring ),
-                                                        data_tables_2.hom_structure_ranks[q][p] ) ) ) );
+    data!.hom_structure_gmors_objs :=
+        _ConcatenationLazyHLists_(
+            LazyHList( [ 1 .. data_1[2] ],
+                i -> LazyHList( [ 1 .. data_2[2] ],
+                    p -> _ConcatenationLazyHLists_(
+                              [ _ConcatenationLazyHLists_(
+                                  LazyHList( [ 1 .. data_1[2] ],
+                                    j -> LazyHList( [ 1 .. Length( data_2[9] ) ],
+                                        index_2 -> _KroneckerProduct_(
+                                                        data_1[20][j][i],
+                                                        IdentityMat( data_1[20][j][i], data.coefficients_ring ),
+                                                        data_1[20][j][i],
+                                                        data_2[20][data_2[11][index_2]][p],
+                                                        data_2[19][p][index_2],
+                                                        data_2[20][data_2[10][index_2]][p] ) ) ) ),
+                                _ConcatenationLazyHLists_(
+                                  LazyHList( [ 1 .. Length( data_1[9] ) ],
+                                    index_1 -> LazyHList( [ 1 .. data_2[2] ],
+                                              q -> _KroneckerProduct_(
+                                                        data_1[20][data_1[11][index_1]][i],
+                                                        data_1[19][i][index_1],
+                                                        data_1[20][data_1[10][index_1]][i],
+                                                        data_2[20][q][p],
+                                                        IdentityMat( data_2[20][q][p], data.coefficients_ring ),
+                                                        data_2[20][q][p] ) ) ) ) ] ) ) ) );
     
-    data_tables!.bases_elms_comps :=
-        _LazyHListX_( data_tables_1.bases_elms_comps, data_tables_2.bases_elms_comps,
-            function ( l, r )
-              local index_l, index_r, l_is_object, r_is_object;
-              
-              if Length( l ) = 1 and l[1] in data_tables_1.indices_objs then
-                index_l := l[1];
-                l_is_object := true;
-              else
-                index_l := data_tables_1.indices_objs[data_tables_1.ranges_gmors[Position( data_tables_1.indices_gmors, l[Length( l )] )]];
-                l_is_object := false;
-              fi;
-              
-              if Length( r ) = 1 and r[1] in data_tables_2.indices_objs then
-                index_r := r[1];
-                r_is_object := true;
-              else
-                index_r := data_tables_2.indices_objs[data_tables_2.sources_gmors[Position( data_tables_2.indices_gmors, r[1] )]];
-                r_is_object := false;
-              fi;
-              
-              if l_is_object and r_is_object then
-                return [ (index_l-1) * data_tables_2.nr_bases_elms + index_r ];
-              elif r_is_object then
-                return List( l, i -> (i-1) * data_tables_2.nr_bases_elms + index_r );
-              elif l_is_object then
-                return List( r, j -> (index_l-1) * data_tables_2.nr_bases_elms + j );
-              else
-                return Concatenation(
-                          List( l, i -> (i-1) * data_tables_2.nr_bases_elms + index_r ),
-                          List( r, j -> (index_l-1) * data_tables_2.nr_bases_elms + j ) );
-              fi;
-              
-            end );
+    data!.bases_elms_comps :=
+        _ConcatenationLazyHLists_(
+            LazyHList( data_1[13],
+              l -> LazyHList( data_2[13],
+                      function ( r )
+                        local index_l, index_r, l_is_object, r_is_object;
+                        
+                        if Length( l ) = 1 and l[1] in data_1[5] then
+                          index_l := l[1];
+                          l_is_object := true;
+                        else
+                          index_l := data_1[5][data_1[11][data_1[14][l[Length( l )]]]];
+                          l_is_object := false;
+                        fi;
+                        
+                        if Length( r ) = 1 and r[1] in data_2[5] then
+                          index_r := r[1];
+                          r_is_object := true;
+                        else
+                          index_r := data_2[5][data_2[10][data_2[14][r[1]]]];
+                          r_is_object := false;
+                        fi;
+                        
+                        if l_is_object and r_is_object then
+                          return [ (index_l-1) * data_2[12] + index_r ];
+                        elif r_is_object then
+                          return List( l, i -> (i-1) * data_2[12] + index_r );
+                        elif l_is_object then
+                          return List( r, j -> (index_l-1) * data_2[12] + j );
+                        else
+                          return Concatenation(
+                                    List( l, i -> (i-1) * data_2[12] + index_r ),
+                                    List( r, j -> (index_l-1) * data_2[12] + j ) );
+                        fi;
+                        
+                      end ) ) );
     
-    data_tables.labels_of_bases_elms :=
-        _LazyHListX_(  data_tables_1.labels_of_bases_elms,
-                data_tables_2.labels_of_bases_elms,
-                { l, r } -> Concatenation( l, "⊗", r ) );
+    data.labels_of_bases_elms :=
+        _ConcatenationLazyHLists_( LazyHList( data_1[15], l -> LazyHList( data_2[15], r -> Concatenation( l, "⊗", r ) ) ) );
     
-    data_tables.latex_strings_of_bases_elms :=
-        _LazyHListX_(  data_tables_1.latex_strings_of_bases_elms,
-                data_tables_2.latex_strings_of_bases_elms,
-                { l, r } -> Concatenation( l, "{\\otimes}", r ) );
+    data.latex_strings_of_bases_elms :=
+        _ConcatenationLazyHLists_( LazyHList( data_1[16], l -> LazyHList( data_2[16], r -> Concatenation( l, "{\\otimes}", r ) ) ) );
     
-    data_tables!.indices_of_bases_elms :=
-        _LazyHListX_( [ 1 .. data_tables_1.nr_objs ], [ 1 .. data_tables_2.nr_objs ],
-            function ( i, p )
-                return ListX( [ 1 .. data_tables_1.nr_objs ], [ 1 .. data_tables_2.nr_objs ],
-                    function ( j, q )
-                        return ListX( data_tables_1.indices_of_bases_elms[i][j], data_tables_2.indices_of_bases_elms[p][q],
-                                  { l, r } -> (l-1) * data_tables_2.nr_bases_elms + r );
-                    end );
-            end );
+    data!.indices_of_bases_elms :=
+        _ConcatenationLazyHLists_( LazyHList( [ 1 .. data_1[2] ], i -> LazyHList( [ 1 .. data_2[2] ],
+            function ( p )
+                return Concatenation( List( [ 1 .. data_1[2] ], j -> List( [ 1 .. data_2[2] ],
+                    function ( q )
+                        return Concatenation( List( data_1[17][i][j], l -> List( data_2[17][p][q],
+                                  r -> (l-1) * data_2[12] + r ) ) );
+                    end ) ) );
+            end ) ) );
     
-    return AlgebroidFromDataTables( data_tables : range_of_HomStructure := RangeCategoryOfHomomorphismStructure( B_1 ) );
+    data!.colors := data_1[23];
+    
+    return AlgebroidFromDataTables( data : range_of_HomStructure := RangeCategoryOfHomomorphismStructure( B_1 ) );
     
 end );
 
@@ -1097,7 +1216,7 @@ end );
 InstallMethod( ElementaryTensor,
         [ IsAlgebroidFromDataTablesObject, IsAlgebroidFromDataTablesObject, IsAlgebroidFromDataTables ],
   
-  { obj_1, obj_2, B1_x_B2 } -> SetOfObjects( B1_x_B2 )[( ObjectDatum( obj_1 ) - 1 ) * Length( SetOfObjects( CapCategory( obj_2 ) ) ) + ObjectDatum( obj_2 )]
+  { obj_1, obj_2, B1_x_B2 } -> SetOfObjects( B1_x_B2 )[( ObjectIndex( obj_1 ) - 1 ) * Length( SetOfObjects( CapCategory( obj_2 ) ) ) + ObjectIndex( obj_2 )]
 );
 
 ##
@@ -1106,9 +1225,8 @@ InstallMethod( ElementaryTensor,
   
   { mor_1, mor_2, B1_x_B2 } -> CreateMorphism( B1_x_B2,
                                     ElementaryTensor( Source( mor_1 ), Source( mor_2 ), B1_x_B2 ),
-                                    ListX( MorphismDatum( mor_1 ), MorphismDatum( mor_2 ), \* ),
-                                    ListX( SupportOfMorphismAttr( mor_1 ), SupportOfMorphismAttr( mor_2 ),
-                                      { l, r } -> (l-1) * Length( MorphismDatum( mor_2 ) ) + r ),
+                                    Concatenation( List( MorphismCoefficients( mor_1 ), c_1 -> List( MorphismCoefficients( mor_2 ), c_2 -> c_1 * c_2 ) ) ),
+                                    Concatenation( List( MorphismSupport( mor_1 ), l -> List( MorphismSupport( mor_2 ), r -> (l-1) * Length( MorphismCoefficients( mor_2 ) ) + r ) ) ),
                                     ElementaryTensor( Range( mor_1 ), Range( mor_2 ), B1_x_B2 ) )
 );
 
@@ -1153,7 +1271,7 @@ InstallMethod( AssignSetOfObjects,
   function ( B, label )
     local names, func;
     
-    names := EnhancedDataTables( B ).labels_objs;
+    names := EnhancedDataTables( B )[3];
     
     if label = "" and ForAny( names, name -> Int( name ) <> fail ) then
         Error( "the <label> passed to 'AssignSetOfObjects' must be a non-empty string!\n" );
@@ -1190,7 +1308,7 @@ InstallMethod( AssignSetOfGeneratingMorphisms,
   function ( B, label )
     local names, morphisms, func;
     
-    names := EnhancedDataTables( B ).labels_gmors;
+    names := EnhancedDataTables( B )[7];
     
     if label = "" and ForAny( names, name -> Int( name ) <> fail ) then
         Error( "the <label> passed to 'AssignSetOfGeneratingMorphisms' must be a non-empty string!\n" );
@@ -1232,19 +1350,19 @@ InstallMethod( \.,
     
     name := NameRNam( string_as_int );
     
-    p := Position( EnhancedDataTables( B ).labels_objs, name );
+    p := Position( EnhancedDataTables( B )[3], name );
     
     if p <> fail then
         return SetOfObjects( B )[p];
     fi;
     
-    p := PositionProperty( EnhancedDataTables( B ).labels_of_bases_elms, m -> ReplacedString( m, "•", "" ) = ReplacedString( name, "•", "" ) );
+    p := PositionProperty( EnhancedDataTables( B )[15], m -> ReplacedString( m, "•", "" ) = ReplacedString( name, "•", "" ) );
     
     if p <> fail then
         
-        nr_objs := EnhancedDataTables( B ).nr_objs;
+        nr_objs := EnhancedDataTables( B )[2];
         
-        indices_of_bases_elms := EnhancedDataTables( B ).indices_of_bases_elms;
+        indices_of_bases_elms := EnhancedDataTables( B )[17];
         
         pairs := Cartesian( [ 1 .. nr_objs ], [ 1 .. nr_objs ] );
         
@@ -1273,11 +1391,11 @@ InstallMethod( PreSheaves,
   function ( B )
     local bool, PSh;
     
-    bool := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "enhance_presheaves_category_of_linear_algebroid_from_data_tables", true );
+    bool := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "enhance_presheaves_category_of_linear_algebroid_from_data", true );
     
     if bool then
         
-        PSh := PreSheaves( B : enhance_presheaves_category_of_linear_algebroid_from_data_tables := false, FinalizeCategory := false );
+        PSh := PreSheaves( B : enhance_presheaves_category_of_linear_algebroid_from_data := false, FinalizeCategory := false );
         
         if not IsFinalized( PSh ) then
           
@@ -1323,7 +1441,7 @@ InstallMethod( PreSheaves,
               C := Range( PSh );
               
               gmors := SetOfGeneratingMorphisms( B );
-              pairs := Concatenation( ListOfValues( EnhancedDataTables( B ).indices_composable_gmors ) );
+              pairs := Concatenation( ListOfValues( EnhancedDataTables( B )[22] ) );
               
               return ForAll( pairs, p -> IsCongruentForMorphisms( C, obj( PreCompose( B, gmors[p[1]], gmors[p[2]] ) ), PostCompose( C, obj( gmors[p[1]] ), obj( gmors[p[2]] ) ) ) );
               
@@ -1431,19 +1549,20 @@ InstallMethod( AlgebroidAsObjectInPreSheavesCategoryData,
   function ( B )
     local nr_objs, nr_gmors, images_of_objs, images_of_gmorphisms;
     
-    nr_objs := EnhancedDataTables( B ).nr_objs;
-    nr_gmors := EnhancedDataTables( B ).nr_gmors;
+    nr_objs := EnhancedDataTables( B )[2];
+    nr_gmors := EnhancedDataTables( B )[6];
     
     images_of_objs :=
-                _LazyHListX_( [ 1 .. nr_objs ], [ 1 .. nr_objs ],
-                        {l, r} -> HomomorphismStructureOnObjects( B, SetOfObjects( B )[r], SetOfObjects( B )[l] ) );
+      _ConcatenationLazyHLists_( LazyHList( [ 1 .. nr_objs ],
+          l -> LazyHList( [ 1 .. nr_objs ],
+            r -> HomomorphismStructureOnObjects( B, SetOfObjects( B )[r], SetOfObjects( B )[l] ) ) ) );
     
     images_of_gmorphisms :=
                 _ConcatenationLazyHLists_(
-                    _LazyHListX_( [ 1 .. nr_objs ], [ 1 .. nr_gmors ],
-                        {l, r} -> HomomorphismStructureOnMorphisms( B, SetOfGeneratingMorphisms( B )[r], IdentityMorphism( SetOfObjects( B )[l] ) ) ),
-                    _LazyHListX_( [ 1 .. nr_gmors ], [ 1 .. nr_objs ],
-                        {l, r} -> HomomorphismStructureOnMorphisms( B, IdentityMorphism( SetOfObjects( B )[r] ), SetOfGeneratingMorphisms( B )[l] ) ) );
+                     [ _ConcatenationLazyHLists_( LazyHList( [ 1 .. nr_objs ], l -> LazyHList( [ 1 .. nr_gmors ],
+                        r -> HomomorphismStructureOnMorphisms( B, SetOfGeneratingMorphisms( B )[r], IdentityMorphism( SetOfObjects( B )[l] ) ) ) ) ),
+                    _ConcatenationLazyHLists_( LazyHList( [ 1 .. nr_gmors ], l -> LazyHList( [ 1 .. nr_objs ],
+                        r -> HomomorphismStructureOnMorphisms( B, IdentityMorphism( SetOfObjects( B )[r] ), SetOfGeneratingMorphisms( B )[l] ) ) ) ) ] );
     
     return Pair( images_of_objs, images_of_gmorphisms );
     
@@ -1456,8 +1575,8 @@ InstallMethod( AlgebroidAsObjectInPreSheavesCategory,
   function ( B )
     local nr_objs, nr_gmors, B_op, B_op_x_B, PSh, range_cat, presheaf_on_objs, presheaf_on_id_or_gmor, presheaf_on_mors;
     
-    nr_objs := EnhancedDataTables( B ).nr_objs;
-    nr_gmors := EnhancedDataTables( B ).nr_gmors;
+    nr_objs := EnhancedDataTables( B )[2];
+    nr_gmors := EnhancedDataTables( B )[6];
     
     B_op := OppositeAlgebroid( B );
     B_op_x_B := TensorProductOfAlgebroids( B_op, B );
@@ -1467,7 +1586,7 @@ InstallMethod( AlgebroidAsObjectInPreSheavesCategory,
     
     Assert( 0, IsIdenticalObj( range_cat, Range( PSh ) ) );
     
-    presheaf_on_objs := obj -> AlgebroidAsObjectInPreSheavesCategoryData( B )[1][ObjectDatum( obj )];
+    presheaf_on_objs := obj -> AlgebroidAsObjectInPreSheavesCategoryData( B )[1][ObjectIndex( obj )];
     
     presheaf_on_id_or_gmor :=
       function ( w )
@@ -1475,7 +1594,7 @@ InstallMethod( AlgebroidAsObjectInPreSheavesCategory,
         
         if IsEqualToIdentityMorphism( w ) then
               
-              datum := ObjectDatum( Source( w ) );
+              datum := ObjectIndex( Source( w ) );
               
               l := QuoInt( datum - 1, nr_objs ) + 1;
               r := RemInt( datum - 1, nr_objs ) + 1;
@@ -1517,7 +1636,7 @@ InstallMethod( AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory,
     F := AlgebroidAsObjectInPreSheavesCategory( B );
     PSh := CapCategory( F );
     
-    obj := ElementaryTensor( SetOfObjects( B_op )[ObjectDatum( Range( m ) )], Source( m ), B_op_x_B );
+    obj := ElementaryTensor( SetOfObjects( B_op )[ObjectIndex( Range( m ) )], Source( m ), B_op_x_B );
     
     Y_obj := YonedaEmbeddingOfSourceCategory( PSh )( obj );
     
@@ -1544,7 +1663,7 @@ InstallOtherMethod( QuotientCategory,
     local B_op, B_op_x_B, F, PSh, C, tau, pi, congruence_function, name, quotient_category, FinalizeCategory, range_of_HomStructure, ring;
     
     B_op := OppositeAlgebroid( B );
-    B_op_x_B := TensorProductOfAlgebroids( B_op, B );
+    B_op_x_B := TensorProductOfAlgebroids( B_op, B : eager := false );
     
     F := AlgebroidAsObjectInPreSheavesCategory( B );
     
@@ -1561,7 +1680,7 @@ InstallOtherMethod( QuotientCategory,
           function ( m )
             local obj;
             
-            obj := ElementaryTensor( SetOfObjects( B_op )[ObjectDatum( Range( m ) )], Source( m ), B_op_x_B );
+            obj := ElementaryTensor( SetOfObjects( B_op )[ObjectIndex( Range( m ) )], Source( m ), B_op_x_B );
             
             return IsZeroForMorphisms( C, PreCompose( C, AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory( m )( obj ), pi( obj ) ) );
             
@@ -1573,7 +1692,7 @@ InstallOtherMethod( QuotientCategory,
           function ( m )
             local obj;
             
-            obj := ElementaryTensor( SetOfObjects( B_op )[ObjectDatum( Range( m ) )], Source( m ), B_op_x_B );
+            obj := ElementaryTensor( SetOfObjects( B_op )[ObjectIndex( Range( m ) )], Source( m ), B_op_x_B );
             
             return IsLiftable( C, AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory( m )( obj ), tau( obj ) );
             
@@ -1622,7 +1741,7 @@ InstallOtherMethod( QuotientCategory,
             obj1 := UnderlyingCell( obj1 );
             obj2 := UnderlyingCell( obj2 );
             
-            obj2_op := SetOfObjects( B_op )[ObjectDatum( obj2 )];
+            obj2_op := SetOfObjects( B_op )[ObjectIndex( obj2 )];
             
             return Range( pi )( ElementaryTensor( obj2_op, obj1, B_op_x_B ) );
             
@@ -1636,10 +1755,10 @@ InstallOtherMethod( QuotientCategory,
             
             g_op := CreateMorphism(
                       B_op,
-                      SetOfObjects( B_op )[ObjectDatum( UnderlyingCell( Range( g ) ) )],
+                      SetOfObjects( B_op )[ObjectIndex( UnderlyingCell( Range( g ) ) )],
                       CoefficientsOfMorphism( UnderlyingCell( g ) ),
-                      SupportOfMorphismAttr( UnderlyingCell( g ) ),
-                      SetOfObjects( B_op )[ObjectDatum( UnderlyingCell( Source( g ) ) )] );
+                      MorphismSupport( UnderlyingCell( g ) ),
+                      SetOfObjects( B_op )[ObjectIndex( UnderlyingCell( Source( g ) ) )] );
             
             g_op_x_f := ElementaryTensor( g_op, f, B_op_x_B );
             
@@ -1663,7 +1782,7 @@ InstallOtherMethod( QuotientCategory,
             obj1 := Source( mor );
             obj2 := Range( mor );
             
-            obj2_op := SetOfObjects( B_op )[ObjectDatum( obj2 )];
+            obj2_op := SetOfObjects( B_op )[ObjectIndex( obj2 )];
             
             obj2_op_x_obj1 := ElementaryTensor( obj2_op, obj1, B_op_x_B );
             
@@ -1681,7 +1800,7 @@ InstallOtherMethod( QuotientCategory,
             obj1 := UnderlyingCell( obj1 );
             obj2 := UnderlyingCell( obj2 );
             
-            obj2_op := SetOfObjects( B_op )[ObjectDatum( obj2 )];
+            obj2_op := SetOfObjects( B_op )[ObjectIndex( obj2 )];
             obj2_op_x_obj1 := ElementaryTensor( obj2_op, obj1, B_op_x_B );
             
             ell := ProjectiveLift( range_of_HomStructure, eta, pi( obj2_op_x_obj1 ) );
@@ -1712,7 +1831,7 @@ InstallOtherMethod( QuotientCategory,
             obj1 := UnderlyingCell( obj1 );
             obj2 := UnderlyingCell( obj2 );
             
-            obj2_op := SetOfObjects( B_op )[ObjectDatum( obj2 )];
+            obj2_op := SetOfObjects( B_op )[ObjectIndex( obj2 )];
             
             return FreydCategoryObject( range_of_HomStructure, tau( ElementaryTensor( obj2_op, obj1, B_op_x_B ) ) );
             
@@ -1726,10 +1845,10 @@ InstallOtherMethod( QuotientCategory,
             
             g_op := CreateMorphism(
                       B_op,
-                      SetOfObjects( B_op )[ObjectDatum( UnderlyingCell( Range( g ) ) )],
+                      SetOfObjects( B_op )[ObjectIndex( UnderlyingCell( Range( g ) ) )],
                       CoefficientsOfMorphism( UnderlyingCell( g ) ),
-                      SupportOfMorphismAttr( UnderlyingCell( g ) ),
-                      SetOfObjects( B_op )[ObjectDatum( UnderlyingCell( Source( g ) ) )] );
+                      MorphismSupport( UnderlyingCell( g ) ),
+                      SetOfObjects( B_op )[ObjectIndex( UnderlyingCell( Source( g ) ) )] );
             
             g_op_x_f := ElementaryTensor( g_op, f, B_op_x_B );
             
@@ -1823,7 +1942,7 @@ InstallMethod( ViewString,
   
   function ( obj )
     
-    return Concatenation( "<(", EnhancedDataTables( CapCategory( obj ) ).labels_objs[ObjectDatum( obj )], ")>" );
+    return Concatenation( "<(", EnhancedDataTables( CapCategory( obj ) )[3][ObjectIndex( obj )], ")>" );
     
 end );
 
@@ -1840,7 +1959,7 @@ InstallMethod( LaTeXOutput,
   
   function ( obj )
     
-    return EnhancedDataTables( CapCategory( obj ) ).latex_strings_objs[ObjectDatum(obj)];
+    return EnhancedDataTables( CapCategory( obj ) )[4][ObjectIndex(obj)];
     
 end );
 
@@ -1853,13 +1972,13 @@ InstallMethod( ViewString,
     
     B := CapCategory( alpha );
     
-    i := ObjectDatum( Source( alpha ) );
-    j := ObjectDatum( Range( alpha ) );
+    i := ObjectIndex( Source( alpha ) );
+    j := ObjectIndex( Range( alpha ) );
     
-    coeffs := MorphismDatum( alpha );
-    support := SupportOfMorphismAttr( alpha );
+    coeffs := MorphismCoefficients( alpha );
+    support := MorphismSupport( alpha );
     
-    colors := EnhancedDataTables( B ).colors;
+    colors := EnhancedDataTables( B )[23];
     
     if IsEmpty( support ) then
         datum_string := Concatenation( colors.coeff, "0", colors.reset );
@@ -1867,10 +1986,10 @@ InstallMethod( ViewString,
         coeffs := List( coeffs{support}, String );
         coeffs := List( coeffs, c -> Concatenation( colors.coeff, c, colors.reset ) );
         
-        labels := (ListOfValues(EnhancedDataTables( B ).labels_of_bases_elms){EnhancedDataTables( B ).indices_of_bases_elms[i][j]}){support};
+        labels := (ListOfValues(EnhancedDataTables( B )[15]){EnhancedDataTables( B )[17][i][j]}){support};
         labels := List( labels, l -> Concatenation( colors.basis_elm, l, colors.reset ) );
         
-        datum_string := JoinStringsWithSeparator( ListN( coeffs, labels, { c, l } -> Concatenation( c, "*(", l, ")" ) ), " + " );
+        datum_string := JoinStringsWithSeparator( ListN( coeffs, labels, { c, l } -> Concatenation( c, "*", l ) ), " + " );
         datum_string := ReplacedString( datum_string, Concatenation( "+ ", colors.coeff, "-" ), Concatenation( "- ", colors.coeff ) );
     fi;
     
@@ -1883,7 +2002,7 @@ InstallMethod( ViewString,
           colors.reset,
           "(",
           colors.obj,
-          EnhancedDataTables( B ).labels_objs[i],
+          EnhancedDataTables( B )[3][i],
           colors.reset,
           ") ",
           colors.other,
@@ -1891,7 +2010,7 @@ InstallMethod( ViewString,
           colors.reset,
           " (",
           colors.obj,
-          EnhancedDataTables( B ).labels_objs[j],
+          EnhancedDataTables( B )[3][j],
           colors.reset,
           ")>" );
     
@@ -1912,11 +2031,11 @@ InstallMethod( LaTeXOutput,
     
     B := CapCategory( alpha );
     
-    i := ObjectDatum( Source( alpha ) );
-    j := ObjectDatum( Range( alpha ) );
+    i := ObjectIndex( Source( alpha ) );
+    j := ObjectIndex( Range( alpha ) );
     
-    coeffs := MorphismDatum( alpha );
-    support := SupportOfMorphismAttr( alpha );
+    coeffs := MorphismCoefficients( alpha );
+    support := MorphismSupport( alpha );
     
     if IsEmpty( support ) then
         string := "0";
@@ -1931,7 +2050,7 @@ InstallMethod( LaTeXOutput,
                                             
                                           end );
         
-        string := (ListOfValues(EnhancedDataTables( B ).latex_strings_of_bases_elms){EnhancedDataTables( B ).indices_of_bases_elms[i][j]}){support};
+        string := (ListOfValues(EnhancedDataTables( B )[16]){EnhancedDataTables( B )[17][i][j]}){support};
         string := ReplacedString( JoinStringsWithSeparator( ListN( coeffs, string, { c, l } -> Concatenation( c, l ) ), " + " ), "+ -", "- " );
     fi;
     

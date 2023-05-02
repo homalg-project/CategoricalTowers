@@ -13,6 +13,7 @@ ReadPackage( "Algebroids", "gap/precompiled_categories/CategoryFromDataTablesPre
 
 ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled.gi" );
 ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverZPrecompiled.gi" );
+ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidFromDataTablesPrecompiled.gi" );
 
 ReadPackage( "Algebroids", "gap/precompiled_categories/AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled.gi" );
 ReadPackage( "Algebroids", "gap/precompiled_categories/AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverZPrecompiled.gi" );
