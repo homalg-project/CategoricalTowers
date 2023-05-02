@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FiniteCocompletion",
 Subtitle := "Finite (co)product/(co)limit (co)completions",
-Version := "2023.04-10",
+Version := "2023.05-01",
 Date := "2023-05-02",
 Date := "2023-05-02",
 License := "GPL-2.0-or-later",
@@ -71,7 +71,7 @@ Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2023.02-09" ],
+                   [ "CAP", ">= 2023.05-03" ],
                    [ "CartesianCategories", ">= 2023.02-04" ],
                    [ "MonoidalCategories", ">= 2023.02-04" ],
                    [ "Toposes", ">= 2023.04-03" ],
