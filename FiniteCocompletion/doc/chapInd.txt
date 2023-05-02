@@ -16,6 +16,7 @@
   [2XDefiningParallelPair[102X, for IsObjectInPairOfParallelArrowsCategory 4.2-1 
   [2XExtendFunctorToFiniteStrictCoproductCocompletion[102X, for IsCapFunctor 1.1-5 
   [2XExtendFunctorToFiniteStrictProductCompletion[102X, for IsCapFunctor 3.1-5 
+  [2XExtendYonedaEmbeddingToFiniteStrictCoproductCocompletion[102X, for IsCapCategory 1.1-6 
   [2XFiniteStrictCoproductCocompletion[102X, for IsCapCategory 1.2-1 
   [2XFiniteStrictProductCompletion[102X, for IsCapCategory 3.2-1 
   [2XIsCategoryOfColimitQuivers[102X, for IsCapCategory 5.3-1 
