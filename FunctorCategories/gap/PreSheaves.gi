@@ -612,7 +612,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
                     
                 end;
-
+                
                 return CreatePreSheafByFunctions( cat, presheaf_on_objects, presheaf_on_morphisms );
                 
             end
@@ -638,9 +638,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           ReplacedStringViaRecord(
           """
           function ( input_arguments... )
-            local B, C, i_arg, natural_transformation_on_objects;
+            local C, i_arg, natural_transformation_on_objects;
             
-            B := Source( cat );
             C := Range( cat );
             
             i_arg := NTuple( number_of_arguments, input_arguments... );
