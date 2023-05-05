@@ -84,9 +84,9 @@ IsEqualForObjects( B.("0"), V_0 );
 CreateObject( B, 1 ) = B.("0");
 #! true
 SetOfGeneratingMorphisms( B );
-#! [ <1*(a):(0) -≻ (1)>, <1*(b):(1) -≻ (3)>,
-#!   <1*(c):(0) -≻ (2)>, <1*(d):(2) -≻ (3)>,
-#!   <1*(e):(3) -≻ (3)> ]
+#! [ <1*a:(0) -≻ (1)>, <1*b:(1) -≻ (3)>,
+#!   <1*c:(0) -≻ (2)>, <1*d:(2) -≻ (3)>,
+#!   <1*e:(3) -≻ (3)> ]
 IsCongruentForMorphisms( B.("a"), a );
 #! true
 Perform( [ "V_0", "V_1", "V_2", "V_3" ], MakeReadWriteGlobal );
@@ -94,23 +94,23 @@ Perform( [ "a", "b", "c", "d", "e" ], MakeReadWriteGlobal );
 HomStructure( B.("0"), B.("3") );
 #! <A row module over Q of rank 6>
 hom_03 := BasisOfExternalHom( B.("0"), B.("3") );
-#! [ <1*(a•b):(0) -≻ (3)>, <1*(c•d):(0) -≻ (3)>,
-#!   <1*(a•b•e):(0) -≻ (3)>, <1*(c•d•e):(0) -≻ (3)>,
-#!   <1*(a•b•e^2):(0) -≻ (3)>, <1*(c•d•e^2):(0) -≻ (3)> ]
+#! [ <1*a•b:(0) -≻ (3)>, <1*c•d:(0) -≻ (3)>,
+#!   <1*a•b•e:(0) -≻ (3)>, <1*c•d•e:(0) -≻ (3)>,
+#!   <1*a•b•e^2:(0) -≻ (3)>, <1*c•d•e^2:(0) -≻ (3)> ]
 alpha := 2*hom_03[1] + 3*hom_03[6];
-#! <2*(a•b) + 3*(c•d•e^2):(0) -≻ (3)>
+#! <2*a•b + 3*c•d•e^2:(0) -≻ (3)>
 LaTeXOutput( alpha );
-#! "{0}-\\left({2\\cdot ab + 3\\cdot cd{e}^{2}}\\right)\\rightarrow{3}"
+#! "{0}-\\left({2\\cdot {a}{b} + 3\\cdot {c}{d}{{e}}^{2}}\\right)\\rightarrow{3}"
 alpha = CreateMorphism( B, B.("0"), [2, 0, 0, 0, 0, 3 ], B.("3") );
 #! true
 DecompositionOfMorphismInAlgebroid( alpha );
-#! [ [ 2, [ <1*(a):(0) -≻ (1)>, <1*(b):(1) -≻ (3)> ] ],
-#!   [ 3, [ <1*(c):(0) -≻ (2)>, <1*(d):(2) -≻ (3)>,
-#!          <1*(e):(3) -≻ (3)>, <1*(e):(3) -≻ (3)> ] ] ]
+#! [ [ 2, [ <1*a:(0) -≻ (1)>, <1*b:(1) -≻ (3)> ] ],
+#!   [ 3, [ <1*c:(0) -≻ (2)>, <1*d:(2) -≻ (3)>,
+#!          <1*e:(3) -≻ (3)>, <1*e:(3) -≻ (3)> ] ] ]
 B.("a•b•e");
-#! <1*(a•b•e):(0) -≻ (3)>
+#! <1*a•b•e:(0) -≻ (3)>
 B.("abe");
-#! <1*(a•b•e):(0) -≻ (3)>
+#! <1*a•b•e:(0) -≻ (3)>
 PreCompose( B.("a"), B.("b") ) = B.("ab");
 #! true
 U := IsomorphismOntoAlgebroidFromDataTables( A );
@@ -119,6 +119,37 @@ V := IsomorphismFromAlgebroidFromDataTables( A );
 #! Isomorphism functor from algebroid from data tables
 ApplyFunctor( PreCompose( V, U ), alpha ) = alpha;
 #! true
+#! #@if ValueOption( "no_precompiled_code" ) <> true
+V := ExtendFunctorToAdditiveClosures( V );
+#! Extension of Isomorphism functor from algebroid from data tables to
+#! additive closures
+AddC_B := SourceOfFunctor( V );
+#! Additive closure( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
+#! defined by 4 objects and 5 generating morphisms )
+AddC_B!.precompiled_functions_added;
+#! true
+AddC_A := RangeOfFunctor( V );
+#! Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(0,1,2,3)[a:0->1,
+#! b:1->3,c:0->2,d:2->3,e:3->3]" ) ) ) / relations )
+AddC_A!.precompiled_functions_added;
+#! true
+o1 :=  RandomObject( AddC_B, [ [ 20 ], [ 1 ] ] );;
+o2 :=  RandomObject( AddC_B, [ [ 20 ], [ 1 ] ] );;
+V_o1 := V( o1 );;
+V_o2 := V( o2 );;
+s1 := Sum( BasisOfExternalHom( o1, o2 ) );;
+s2 := Sum( BasisOfExternalHom( V_o1, V_o2 ) );;
+V( s1 ) = s2;
+#! true
+f := RandomMorphism( o1, o2, 20 );;
+g := RandomMorphism( o1, o2, 20 );;
+V_f := V( f );;
+V_g := V( g );;
+m1 := UnderlyingMatrix( HomStructure( f, g ) );;
+m2 := UnderlyingMatrix( HomStructure( V_f, V_g ) );;
+m1 = m2;
+#! true
+#! #@fi
 PSh := PreSheaves( B );
 #! PreSheaves( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,
 #! e:3-≻3] ) defined by 4 objects and 5 generating morphisms, Rows( Q ) )
@@ -137,7 +168,7 @@ B_op := OppositeAlgebroid( B );
 #! Q-algebroid( {0,1,2,3}[a:1-≻0,b:3-≻1,c:2-≻0,d:3-≻2,e:3-≻3] ) defined by
 #! 4 objects and 5 generating morphisms
 B_op.("ba");
-#! <1*(b•a):(3) -≻ (0)>
+#! <1*b•a:(3) -≻ (0)>
 AddC_B := AdditiveClosure( B );
 #! Additive closure( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
 #! defined by 4 objects and 5 generating morphisms )
@@ -158,11 +189,11 @@ BB := TensorProductOfAlgebroids( B, B );
 ElementaryTensor( B.0, B.1 );
 #! <(0⊗1)>
 ElementaryTensor( B.a, B.b );
-#! <1*(a⊗b):(0⊗1) -≻ (1⊗3)>
+#! <1*a⊗b:(0⊗1) -≻ (1⊗3)>
 ElementaryTensor( B.0, B.b );
-#! <1*(0⊗b):(0⊗1) -≻ (0⊗3)>
+#! <1*id(0)⊗b:(0⊗1) -≻ (0⊗3)>
 ElementaryTensor( B.a, B.1 );
-#! <1*(a⊗1):(0⊗1) -≻ (1⊗1)>
+#! <1*a⊗id(1):(0⊗1) -≻ (1⊗1)>
 3x3 := BB.("3⊗3");
 #! <(3⊗3)>
 u := RandomMorphism( 3x3, 3x3, 15 );;
@@ -186,7 +217,7 @@ f := RandomMorphism( qB, 20 );;
 1/2 * HomStructure( Source( f ), Range( f ), 2*HomStructure( f ) ) = f;
 #! true
 ideal := List( [ B.0, B.1, B.2 ], IdentityMorphism );
-#! [ <1*(0):(0) -≻ (0)>, <1*(1):(1) -≻ (1)>, <1*(2):(2) -≻ (2)> ]
+#! [ <1*id(0):(0) -≻ (0)>, <1*id(1):(1) -≻ (1)>, <1*id(2):(2) -≻ (2)> ]
 qB := B / ideal;
 #! QuotientCategory( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
 #! defined by 4 objects and 5 generating morphisms, 2-sided ideal generated
@@ -200,7 +231,7 @@ D := AlgebroidFromDataTables( data_tables_2 );; # or alternatively
 D := AlgebroidFromDataTables( qB );
 #! Q-algebroid( {3}[e:3-≻3] ) defined by 1 object and 1 generating morphism
 BasisOfExternalHom( D.3, D.3 );
-#! [ <1*(3):(3) -≻ (3)>, <1*(e):(3) -≻ (3)>, <1*(e^2):(3) -≻ (3)> ]
+#! [ <1*id(3):(3) -≻ (3)>, <1*e:(3) -≻ (3)>, <1*e^2:(3) -≻ (3)> ]
 data_tables_Z := ShallowCopy( data_tables );;
 data_tables_Z!.coefficients_ring := HomalgRingOfIntegers();;
 C := AlgebroidFromDataTables( data_tables_Z );;

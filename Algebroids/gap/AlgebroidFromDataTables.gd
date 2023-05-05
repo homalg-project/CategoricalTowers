@@ -106,6 +106,119 @@ DeclareOperation( "QuotientCategory",
 DeclareAttribute( "EnhancedDataTables",
         IsAlgebroidFromDataTables );
 
+CapJitAddTypeSignature( "EnhancedDataTables", [ IsAlgebroidFromDataTables ],
+  function ( input_types )
+
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ # (1) ring
+                  rec( filter := IsHomalgRing ),
+                  
+                  # (2) nr_objs
+                  rec( filter := IsInt ),
+                  
+                  # (3) labels_objs
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsString ) ),
+                  
+                  # (4) latex_strings_objs
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsString ) ),
+                  
+                  # (5) indices_objs
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsInt ) ),
+                  
+                  # (6) nr_gmors
+                  rec( filter := IsInt ),
+                  
+                  # (7) labels_gmors
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsString ) ),
+                  
+                  # (8) latex_strings_gmors
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsString ) ),
+                  
+                  # (9) indices_gmors
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsInt ) ),
+                  
+                  # (10) sources_gmors
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsInt ) ),
+                  
+                  # (11) ranges_gmors
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsInt ) ),
+                  
+                  # (12) nr_bases_elms
+                  rec( filter := IsInt ),
+                  
+                  # (13) bases_elms_comps
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsList,
+                                            element_type := rec( filter := IsInt ) ) ),
+                  
+                  # (14) pos_of_objs_gmors
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsInt ) ),
+                  
+                  # (15) labels_of_bases_elms
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsString ) ),
+                  
+                  # (16) latex_strings_of_bases_elms
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsString ) ),
+                  
+                  # (17) indices_of_bases_elms
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsList,
+                                            element_type := rec( filter := IsList,
+                                                                 element_type := rec( filter := IsInt ) ) ) ),
+                  
+                  # (18) hom_structure_objs_gmors
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsList,
+                                            element_type := rec( filter := IsList,
+                                                                 element_type := rec( filter := IsList,
+                                                                                      element_type := rec( filter := IsHomalgRingElement ) ) ) ) ),
+                  
+                  # (19) hom_structure_gmors_objs
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsList,
+                                            element_type := rec( filter := IsList,
+                                                                 element_type := rec( filter := IsList,
+                                                                                      element_type := rec( filter := IsHomalgRingElement ) ) ) ) ),
+                  
+                  # (20) hom_structure_ranks
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsList,
+                                            element_type := rec( filter := IsInt ) ) ),
+                  
+                  # (21) hom_structure_on_bases_elms
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsList,
+                                            element_type := rec( filter := IsList,
+                                                                 element_type := rec( filter := IsList,
+                                                                                      element_type := rec( filter := IsList,
+                                                                                                           element_type := rec( filter := IsList,
+                                                                                                                                element_type := rec( filter := IsList,
+                                                                                                                                                      element_type := rec( filter := IsList,
+                                                                                                                                                                            element_type := rec( filter := IsHomalgRingElement ) ) ) ) ) ) ) ) ),
+                  
+                  # (22) indices_composable_gmors
+                  rec( filter := IsList,
+                       element_type := rec( filter := IsList,
+                                            element_type := rec( filter := IsList,
+                                                                 element_type := rec( filter := IsInt ) ) ) ),
+                  
+                  # (23) colors
+                  rec( filter := IsRecord ) ] );
+
+end );
+
 #! @Description
 #!  The argument is an algebroid <A>B</A>.
 #!  The output is the finite set of objects of <A>B</A>.
@@ -156,6 +269,15 @@ DeclareOperation( "CreateObject",
             [ IsAlgebroidFromDataTables, IsInt ] );
 
 #! @Description
+#!  The argument is an object <A>v</A> in an algebroid <A>B</A>.
+#!  The output is the index of <A>v</A> in <C>SetOfObjects</C>(<A>B</A>).
+#! @Arguments v
+#! @Returns an integer
+DeclareAttribute( "ObjectIndex", IsAlgebroidFromDataTablesObject );
+
+CapJitAddTypeSignature( "ObjectIndex", [ IsAlgebroidFromDataTablesObject ], IsInt );
+
+#! @Description
 #!  The arguments are an algebroid <A>B</A> (over a commutative ring $k$), two objects <A>u,v</A> in <A>B</A> and list <A>coeffs</A> of elements in
 #!  $k$ of length $\mathrm{dim}_k~\mathrm{Hom}_{B}(u,v)$.
 #!  The output is the $k$-linear combination of the basis elements of $\mathrm{Hom}_B(u,v)$ with the coefficients-list <A>coeffs</A>.
@@ -164,7 +286,31 @@ DeclareOperation( "CreateObject",
 DeclareOperation( "CreateMorphism",
             [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTablesObject, IsDenseList, IsAlgebroidFromDataTablesObject ] );
 
-DeclareAttribute( "SupportOfMorphismAttr", IsAlgebroidFromDataTablesMorphism );
+#! @Description
+#!  The argument is a morphism <A>alpha</A> in an algebroid <A>B</A>.
+#!  The output is the list of coefficients of <A>alpha</A> with respect to the basis of external hom $\mathrm{Hom}_B(u,v)$ where $u$ and $v$ are source resp. range of <A>alpha</A>.
+#! @Arguments alpha
+#! @Returns a &CAP; category morphism
+DeclareAttribute( "MorphismCoefficients", IsAlgebroidFromDataTablesMorphism );
+
+CapJitAddTypeSignature( "MorphismCoefficients", [ IsAlgebroidFromDataTablesMorphism ], function ( input_types )
+    
+    return rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) );
+    
+end );
+
+#! @Description
+#!  The argument is a morphism <A>alpha</A> in an algebroid <A>B</A>.
+#!  The output is the list of indices of the nonzero entries of <C>MorphismCoefficients</C>(<A>alpha</A>).
+#! @Arguments alpha
+#! @Returns a &CAP; category morphism
+DeclareAttribute( "MorphismSupport", IsAlgebroidFromDataTablesMorphism );
+
+CapJitAddTypeSignature( "MorphismSupport", [ IsAlgebroidFromDataTablesMorphism ], function ( input_types )
+    
+    return rec( filter := IsList, element_type := rec( filter := IsInt ) );
+    
+end );
 
 #! @Description
 #!  The argument is a morphism <A>alpha</A> in an algebroid $B$ (over a commutative ring $k$).
@@ -236,3 +382,13 @@ DeclareAttribute( "AlgebroidAsObjectInPreSheavesCategoryData", IsAlgebroidFromDa
 DeclareAttribute( "AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory", IsAlgebroidFromDataTablesMorphism );
 
 DeclareAttribute( "SetOfBasesOfExternalHomsLazyHList", IsAlgebroidFromDataTables );
+
+CapJitAddTypeSignature( "SetOfBasesOfExternalHomsLazyHList", [ IsAlgebroidFromDataTables ], function ( input_types )
+    
+    return rec( filter := IsList,
+                element_type := rec(  filter := IsList,
+                                      element_type := rec( filter := IsList,
+                                                           element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) ) ) );
+    
+end );
+
