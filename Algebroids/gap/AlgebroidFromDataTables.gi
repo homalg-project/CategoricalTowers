@@ -449,8 +449,8 @@ InstallMethod( AlgebroidFromDataTables,
     # other
     
     data[22] := LazyHList( [ 1 .. data[6] ],
-                                  i -> Cartesian( [ i ], Filtered( [ 1 .. input_data.nr_gmors ],
-                                    j -> input_data.ranges_gmors[i] = input_data.sources_gmors[j] ) ) );
+                  i -> Cartesian( [ i ], Filtered( [ 1 .. input_data.nr_gmors ],
+                    j -> input_data.ranges_gmors[i] = input_data.sources_gmors[j] ) ) );
     
     if not IsBound( input_data.colors ) then
           
@@ -1561,7 +1561,7 @@ InstallMethod( AlgebroidAsObjectInPreSheavesCategoryData,
                 _ConcatenationLazyHLists_(
                      [ _ConcatenationLazyHLists_( LazyHList( [ 1 .. nr_objs ], l -> LazyHList( [ 1 .. nr_gmors ],
                         r -> HomomorphismStructureOnMorphisms( B, SetOfGeneratingMorphisms( B )[r], IdentityMorphism( SetOfObjects( B )[l] ) ) ) ) ),
-                    _ConcatenationLazyHLists_( LazyHList( [ 1 .. nr_gmors ], l -> LazyHList( [ 1 .. nr_objs ],
+                       _ConcatenationLazyHLists_( LazyHList( [ 1 .. nr_gmors ], l -> LazyHList( [ 1 .. nr_objs ],
                         r -> HomomorphismStructureOnMorphisms( B, IdentityMorphism( SetOfObjects( B )[r] ), SetOfGeneratingMorphisms( B )[l] ) ) ) ) ] );
     
     return Pair( images_of_objs, images_of_gmorphisms );
