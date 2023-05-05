@@ -525,6 +525,234 @@ DeclareOperation( "AddRelativePseudoComplementSubobject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `RelativeTruthMorphismOfAnd`.
+#! $F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfAnd}(a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRelativeTruthMorphismOfAnd",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfAnd",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfAnd",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfAnd",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RelativeTruthMorphismOfAndWithGivenObjects`.
+#! $F: ( PaxPa, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfAndWithGivenObjects}(PaxPa, a, Pa)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRelativeTruthMorphismOfAndWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfAndWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfAndWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfAndWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RelativeTruthMorphismOfFalse`.
+#! $F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfFalse}(a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRelativeTruthMorphismOfFalse",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfFalse",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfFalse",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfFalse",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RelativeTruthMorphismOfFalseWithGivenObjects`.
+#! $F: ( T, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfFalseWithGivenObjects}(T, a, Pa)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRelativeTruthMorphismOfFalseWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfFalseWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfFalseWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfFalseWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RelativeTruthMorphismOfImplies`.
+#! $F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfImplies}(a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRelativeTruthMorphismOfImplies",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfImplies",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfImplies",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfImplies",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RelativeTruthMorphismOfImpliesWithGivenObjects`.
+#! $F: ( PaxPa, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfImpliesWithGivenObjects}(PaxPa, a, Pa)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRelativeTruthMorphismOfImpliesWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfImpliesWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfImpliesWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfImpliesWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RelativeTruthMorphismOfNot`.
+#! $F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfNot}(a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRelativeTruthMorphismOfNot",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfNot",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfNot",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfNot",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RelativeTruthMorphismOfNotWithGivenObjects`.
+#! $F: ( Pa, a, Pa1 ) \mapsto \mathtt{RelativeTruthMorphismOfNotWithGivenObjects}(Pa, a, Pa1)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRelativeTruthMorphismOfNotWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfNotWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfNotWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfNotWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RelativeTruthMorphismOfOr`.
+#! $F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfOr}(a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRelativeTruthMorphismOfOr",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfOr",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfOr",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfOr",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RelativeTruthMorphismOfOrWithGivenObjects`.
+#! $F: ( PaxPa, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfOrWithGivenObjects}(PaxPa, a, Pa)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRelativeTruthMorphismOfOrWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfOrWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfOrWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfOrWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RelativeTruthMorphismOfTrue`.
+#! $F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfTrue}(a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRelativeTruthMorphismOfTrue",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfTrue",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfTrue",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfTrue",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RelativeTruthMorphismOfTrueWithGivenObjects`.
+#! $F: ( T, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfTrueWithGivenObjects}(T, a, Pa)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRelativeTruthMorphismOfTrueWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfTrueWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfTrueWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRelativeTruthMorphismOfTrueWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `SingletonMorphism`.
 #! $F: ( a ) \mapsto \mathtt{SingletonMorphism}(a)$.
 #! @Returns nothing

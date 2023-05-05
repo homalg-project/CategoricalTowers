@@ -179,6 +179,102 @@ IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects := rec(
   io_type := [ [ "ExpaOmega2", "a", "PaxPa" ], [ "ExpaOmega2", "PaxPa" ] ],
   return_type := "morphism" ),
 
+RelativeTruthMorphismOfTrue := rec(
+  filter_list := [ "category", "object" ],
+  input_arguments_names := [ "cat", "a" ],
+  output_source_getter_string := "TerminalObject( cat )",
+  output_source_getter_preconditions := [ [ "TerminalObject", 1 ] ],
+  output_range_getter_string := "PowerObject( cat, a )",
+  output_range_getter_preconditions := [ [ "PowerObject", 1 ] ],
+  with_given_object_position := "both",
+  io_type := [ [ "a" ], [ "T", "Pa" ] ],
+  return_type := "morphism" ),
+
+RelativeTruthMorphismOfTrueWithGivenObjects := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  io_type := [ [ "T", "a", "Pa" ], [ "T", "Pa" ] ],
+  return_type := "morphism" ),
+
+RelativeTruthMorphismOfFalse := rec(
+  filter_list := [ "category", "object" ],
+  input_arguments_names := [ "cat", "a" ],
+  output_source_getter_string := "TerminalObject( cat )",
+  output_source_getter_preconditions := [ [ "TerminalObject", 1 ] ],
+  output_range_getter_string := "PowerObject( cat, a )",
+  output_range_getter_preconditions := [ [ "PowerObject", 1 ] ],
+  with_given_object_position := "both",
+  io_type := [ [ "a" ], [ "T", "Pa" ] ],
+  return_type := "morphism" ),
+
+RelativeTruthMorphismOfFalseWithGivenObjects := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  io_type := [ [ "T", "a", "Pa" ], [ "T", "Pa" ] ],
+  return_type := "morphism" ),
+
+RelativeTruthMorphismOfNot := rec(
+  filter_list := [ "category", "object" ],
+  input_arguments_names := [ "cat", "a" ],
+  output_source_getter_string := "PowerObject( cat, a )",
+  output_source_getter_preconditions := [ [ "PowerObject", 1 ] ],
+  output_range_getter_string := "PowerObject( cat, a )",
+  output_range_getter_preconditions := [ [ "PowerObject", 1 ] ],
+  with_given_object_position := "both",
+  io_type := [ [ "a" ], [ "Pa", "Pa1" ] ],
+  return_type := "morphism" ),
+
+RelativeTruthMorphismOfNotWithGivenObjects := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  io_type := [ [ "Pa", "a", "Pa1" ], [ "Pa", "Pa1" ] ],
+  return_type := "morphism" ),
+
+RelativeTruthMorphismOfAnd := rec(
+  filter_list := [ "category", "object" ],
+  input_arguments_names := [ "cat", "a" ],
+  output_source_getter_string := "DirectProduct( cat, [ PowerObject( cat, a ), PowerObject( cat, a ) ] )",
+  output_source_getter_preconditions := [ [ "DirectProduct", 1 ], [ "PowerObject", 2 ] ],
+  output_range_getter_string := "PowerObject( cat, a )",
+  output_range_getter_preconditions := [ [ "PowerObject", 1 ] ],
+  with_given_object_position := "both",
+  io_type := [ [ "a" ], [ "PaxPa", "Pa" ] ],
+  return_type := "morphism" ),
+
+RelativeTruthMorphismOfAndWithGivenObjects := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  io_type := [ [ "PaxPa", "a", "Pa" ], [ "PaxPa", "Pa" ] ],
+  return_type := "morphism" ),
+
+RelativeTruthMorphismOfOr := rec(
+  filter_list := [ "category", "object" ],
+  input_arguments_names := [ "cat", "a" ],
+  output_source_getter_string := "DirectProduct( cat, [ PowerObject( cat, a ), PowerObject( cat, a ) ] )",
+  output_source_getter_preconditions := [ [ "DirectProduct", 1 ], [ "PowerObject", 2 ] ],
+  output_range_getter_string := "PowerObject( cat, a )",
+  output_range_getter_preconditions := [ [ "PowerObject", 1 ] ],
+  with_given_object_position := "both",
+  io_type := [ [ "a" ], [ "PaxPa", "Pa" ] ],
+  return_type := "morphism" ),
+
+RelativeTruthMorphismOfOrWithGivenObjects := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  io_type := [ [ "PaxPa", "a", "Pa" ], [ "PaxPa", "Pa" ] ],
+  return_type := "morphism" ),
+
+RelativeTruthMorphismOfImplies := rec(
+  filter_list := [ "category", "object" ],
+  input_arguments_names := [ "cat", "a" ],
+  output_source_getter_string := "DirectProduct( cat, [ PowerObject( cat, a ), PowerObject( cat, a ) ] )",
+  output_source_getter_preconditions := [ [ "DirectProduct", 1 ], [ "PowerObject", 2 ] ],
+  output_range_getter_string := "PowerObject( cat, a )",
+  output_range_getter_preconditions := [ [ "PowerObject", 1 ] ],
+  with_given_object_position := "both",
+  io_type := [ [ "a" ], [ "PaxPa", "Pa" ] ],
+  return_type := "morphism" ),
+
+RelativeTruthMorphismOfImpliesWithGivenObjects := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  io_type := [ [ "PaxPa", "a", "Pa" ], [ "PaxPa", "Pa" ] ],
+  return_type := "morphism" ),
+
 ListOfSubobjects := rec(
   filter_list := [ "category", "object" ],
   return_type := "list_of_morphisms" ),

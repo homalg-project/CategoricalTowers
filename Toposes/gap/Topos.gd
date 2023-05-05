@@ -319,6 +319,122 @@ DeclareOperation( "IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects",
 
 ####################################
 ##
+#! @Section Relative truth morphisms
+##
+####################################
+
+#! @Description
+#! The argument is an object <A>a</A> in a category $C$.
+#! The output is the relative truth morphism
+#! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{PowerObject}( a )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{PowerObect}( a ) )$
+#! @Arguments a
+DeclareAttribute( "RelativeTruthMorphismOfTrue",
+        IsCapCategoryObject );
+
+#! @Description
+#! The arguments are the terminal object of the category $C$, an object <A>a</A>, and the power object <A>Pa</A> of <A>a</A>.
+#! The output is the relative truth morphism
+#! $\mathrm{true}: T \rightarrow Pa$.
+#! @Returns a morphism in $\mathrm{Hom}( T, Pa )$
+#! @Arguments T, a, Pa
+DeclareOperation( "RelativeTruthMorphismOfTrueWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The argument is an object <A>a</A> in a category $C$.
+#! The output is the relative truth morphism
+#! $\mathrm{false}: \mathrm{TerminalObject} \rightarrow \mathrm{PowerObject}( a )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{PowerObect}( a ) )$
+#! @Arguments a
+DeclareAttribute( "RelativeTruthMorphismOfFalse",
+        IsCapCategoryObject );
+
+#! @Description
+#! The arguments are the terminal object of the category $C$, an object <A>a</A>, and the power object <A>Pa</A> of <A>a</A>.
+#! The output is the relative truth morphism
+#! $\mathrm{false}: T \rightarrow Pa$.
+#! @Returns a morphism in $\mathrm{Hom}( T, Pa )$
+#! @Arguments T, a, Pa
+DeclareOperation( "RelativeTruthMorphismOfFalseWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The argument is an object <A>a</A> in a category $C$.
+#! The output is the relative truth endomorphism
+#! $\mathrm{not}: \mathrm{PowerObject}( a ) \rightarrow \mathrm{PowerObject}( a )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{PowerObject}( a ), \mathrm{PowerObect}( a ) )$
+#! @Arguments a
+DeclareAttribute( "RelativeTruthMorphismOfNot",
+        IsCapCategoryObject );
+
+#! @Description
+#! The arguments are the power object <A>Pa</A> of <A>a</A>, the object <A>a</A>, and <A>Pa</A>.
+#! The output is the relative truth endomorphism
+#! $\mathrm{not}: Pa \rightarrow Pa$.
+#! @Returns a morphism in $\mathrm{Hom}( Pa, Pa )$
+#! @Arguments Pa, a, Pa
+DeclareOperation( "RelativeTruthMorphismOfNotWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The argument is an object <A>a</A> in a category $C$.
+#! The output is the relative truth morphism
+#! $\mathrm{and}: \mathrm{PowerObject}( a ) \times \mathrm{PowerObject}( a ) \rightarrow \mathrm{PowerObject}( a )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{PowerObject}( a ) \times \mathrm{PowerObject}( a ), \mathrm{PowerObject}( a ) )$
+#! @Arguments a
+DeclareAttribute( "RelativeTruthMorphismOfAnd",
+        IsCapCategoryObject );
+
+#! @Description
+#! The arguments are the cartesian square <A>PaxPa</A> of the power object <A>Pa</A> of <A>a</A>, the object <A>a</A>, and <A>Pa</A>.
+#! The output is the relative truth morphism
+#! $\mathrm{and}: PaxPa \rightarrow Pa$.
+#! @Returns a morphism in $\mathrm{Hom}( PaxPa, Pa )$
+#! @Arguments PaxPa, a, Pa
+DeclareOperation( "RelativeTruthMorphismOfAndWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The argument is an object <A>a</A> in a category $C$.
+#! The output is the relative truth morphism
+#! $\mathrm{or}: \mathrm{PowerObject}( a ) \times \mathrm{PowerObject}( a ) \rightarrow \mathrm{PowerObject}( a )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{PowerObject}( a ) \times \mathrm{PowerObject}( a ), \mathrm{PowerObject}( a ) )$
+#! @Arguments a
+DeclareAttribute( "RelativeTruthMorphismOfOr",
+        IsCapCategoryObject );
+
+#! @Description
+#! The arguments are the cartesian square <A>PaxPa</A> of the power object <A>Pa</A> of <A>a</A>, the object <A>a</A>, and <A>Pa</A>.
+#! The output is the relative truth morphism
+#! $\mathrm{or}: PaxPa \rightarrow Pa$.
+#! @Returns a morphism in $\mathrm{Hom}( PaxPa, Pa )$
+#! @Arguments PaxPa, a, Pa
+DeclareOperation( "RelativeTruthMorphismOfOrWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The argument is an object <A>a</A> in a category $C$.
+#! The output is the relative truth morphism
+#! $\mathrm{implies}: \mathrm{PowerObject}( a ) \times \mathrm{PowerObject}( a ) \rightarrow \mathrm{PowerObject}( a )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{PowerObject}( a ) \times \mathrm{PowerObject}( a ), \mathrm{PowerObject}( a ) )$
+#! @Arguments a
+DeclareAttribute( "RelativeTruthMorphismOfImplies",
+        IsCapCategoryObject );
+
+#! @Description
+#! The arguments are the cartesian square <A>PaxPa</A> of the power object <A>Pa</A> of <A>a</A>, the object <A>a</A>, and <A>Pa</A>.
+#! The output is the relative truth morphism
+#! $\mathrm{implies}: PaxPa \rightarrow Pa$.
+#! @Returns a morphism in $\mathrm{Hom}( PaxPa, Pa )$
+#! @Arguments PaxPa, a, Pa
+DeclareOperation( "RelativeTruthMorphismOfImpliesWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @InsertChunk RelativeTruthMorphisms
+
+####################################
+##
 #! @Section Heyting algebra of subobjects
 ##
 ####################################
