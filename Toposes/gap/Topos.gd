@@ -153,7 +153,7 @@ DeclareAttribute( "TruthMorphismOfTrue",
 #! @Returns a morphism in $\mathrm{Hom}( T, \Omega )$
 #! @Arguments T, Omega
 DeclareOperation( "TruthMorphismOfTrueWithGivenObjects",
-        [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is a category $C$.
@@ -172,7 +172,7 @@ DeclareAttribute( "TruthMorphismOfFalse",
 #! @Returns a morphism in $\mathrm{Hom}( T, \Omega )$
 #! @Arguments T, Omega
 DeclareOperation( "TruthMorphismOfFalseWithGivenObjects",
-        [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is a category $C$.
@@ -190,7 +190,7 @@ DeclareAttribute( "TruthMorphismOfNot",
 #! @Returns a morphism in $\mathrm{Hom}( \Omega, \Omega )$
 #! @Arguments Omega, Omega
 DeclareOperation( "TruthMorphismOfNotWithGivenObjects",
-        [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is a category $C$.
@@ -209,7 +209,7 @@ DeclareAttribute( "TruthMorphismOfAnd",
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
 #! @Arguments Omega2, Omega
 DeclareOperation( "TruthMorphismOfAndWithGivenObjects",
-        [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is a category $C$.
@@ -228,7 +228,7 @@ DeclareAttribute( "TruthMorphismOfOr",
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
 #! @Arguments Omega2, Omega
 DeclareOperation( "TruthMorphismOfOrWithGivenObjects",
-        [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is a category $C$.
@@ -247,7 +247,7 @@ DeclareAttribute( "TruthMorphismOfImplies",
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
 #! @Arguments Omega2, Omega
 DeclareOperation( "TruthMorphismOfImpliesWithGivenObjects",
-        [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ####################################
 ##
@@ -310,7 +310,7 @@ DeclareOperation( "SingletonMorphismWithGivenPowerObject",
 #! @Returns an object
 #! @Arguments iota
 DeclareOperation( "PseudoComplementSubobject",
-                  [ IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The argument is a monomorphism $\iota: S \hookrightarrow A$.
@@ -319,7 +319,7 @@ DeclareOperation( "PseudoComplementSubobject",
 #! @Returns an object
 #! @Arguments iota
 DeclareOperation( "EmbeddingOfPseudoComplementSubobject",
-                  [ IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The argument is a monomorphism $\iota: S \hookrightarrow A$ and an object $T$ with
@@ -329,7 +329,7 @@ DeclareOperation( "EmbeddingOfPseudoComplementSubobject",
 #! @Returns an object
 #! @Arguments iota
 DeclareOperation( "EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement",
-                  [ IsCapCategoryMorphism, IsCapCategoryObject ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
@@ -338,7 +338,7 @@ DeclareOperation( "EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement
 #! @Returns an object
 #! @Arguments iota1, iota2
 DeclareOperation( "IntersectionSubobject",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
@@ -346,7 +346,7 @@ DeclareOperation( "IntersectionSubobject",
 #! @Returns a monomorphism
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfIntersectionSubobject",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
@@ -355,7 +355,7 @@ DeclareOperation( "EmbeddingOfIntersectionSubobject",
 #! @Returns a monomorphism
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfIntersectionSubobjectWithGivenIntersection",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
@@ -364,7 +364,7 @@ DeclareOperation( "EmbeddingOfIntersectionSubobjectWithGivenIntersection",
 #! @Returns an object
 #! @Arguments iota1, iota2
 DeclareOperation( "UnionSubobject",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
@@ -372,7 +372,7 @@ DeclareOperation( "UnionSubobject",
 #! @Returns a monomorphism
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfUnionSubobject",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
@@ -381,7 +381,7 @@ DeclareOperation( "EmbeddingOfUnionSubobject",
 #! @Returns a monomorphism
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfUnionSubobjectWithGivenUnion",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
@@ -389,7 +389,7 @@ DeclareOperation( "EmbeddingOfUnionSubobjectWithGivenUnion",
 #! @Returns an object
 #! @Arguments iota1, iota2
 DeclareOperation( "RelativePseudoComplementSubobject",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
@@ -398,7 +398,7 @@ DeclareOperation( "RelativePseudoComplementSubobject",
 #! @Returns a monomorphism
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobject",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
@@ -407,7 +407,7 @@ DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobject",
 #! @Returns a monomorphism
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);
+        [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 ###################################
 ##
