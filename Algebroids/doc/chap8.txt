@@ -54,6 +54,48 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], rec( filter := IsHomalgRingElement ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
+    [4X[25X>[125X [27X  data_tables -> AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables.coefficients_ring : FinalizeCategory := true ), FinalizeCategory := true ) );;[127X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments :=[127X[104X
+    [4X[25X>[125X [27X  [ rec( coefficients_ring := Q,[127X[104X
+    [4X[25X>[125X [27X         nr_objs := 1,[127X[104X
+    [4X[25X>[125X [27X         labels_objs := [ "*" ],[127X[104X
+    [4X[25X>[125X [27X         indices_objs := [ 1 ],[127X[104X
+    [4X[25X>[125X [27X         nr_gmors := 1,[127X[104X
+    [4X[25X>[125X [27X         labels_gmors := [ "x" ],[127X[104X
+    [4X[25X>[125X [27X         ranges_gmors := [ 1 ],[127X[104X
+    [4X[25X>[125X [27X         sources_gmors := [ 1 ],[127X[104X
+    [4X[25X>[125X [27X         indices_gmors := [ 2 ],[127X[104X
+    [4X[25X>[125X [27X         nr_bases_elms := 3,[127X[104X
+    [4X[25X>[125X [27X         bases_elms_comps := [ [ 1 ], [ 2 ], [ 2, 2 ] ],[127X[104X
+    [4X[25X>[125X [27X         indices_of_bases_elms := [ [ [ 1, 2, 3 ] ] ],[127X[104X
+    [4X[25X>[125X [27X         hom_structure_gmors_objs := [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ],[127X[104X
+    [4X[25X>[125X [27X         hom_structure_objs_gmors := [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ] ) ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "AdditiveClosureOfAlgebroidFromDataTablesPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "Algebroids";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name[127X[104X
+    [4X[25X>[125X [27X    : operations := "primitive"[127X[104X
+    [4X[25X>[125X [27X    );;[127X[104X
+    [4X[25Xgap>[125X [27XA := AdditiveClosureOfAlgebroidFromDataTablesPrecompiled( given_arguments[1] );;[127X[104X
+    [4X[25Xgap>[125X [27XA!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
     [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
     [4X[25Xgap>[125X [27XA := PathAlgebra( QQ, snake_quiver );;[127X[104X

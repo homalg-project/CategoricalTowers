@@ -45,15 +45,18 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X821DFF538376FFC6">9.2-10 AssignSetOfObjects</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7CC9D637849C77D1">9.2-11 AssignSetOfGeneratingMorphisms</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X78C2D22B7EC1CC45">9.2-12 CreateObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X8084F7247D83B465">9.2-13 CreateMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7D00675E8470FF43">9.2-14 DecompositionOfMorphismInAlgebroid</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X78F3294482D413A3">9.2-15 OppositeAlgebroid</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7DD9A91578D68E0A">9.2-16 TensorProductOfAlgebroids</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X816FDB3783C17B55"><code>9.2-17 \*</code></a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X826BDBCC7C3FB09A">9.2-18 ElementaryTensor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X8093CB917A51EC36">9.2-19 ElementaryTensor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X789C404380EAC9CF">9.2-20 AlgebroidAsObjectInPreSheavesCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7CA3344780309FE5">9.2-21 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7981BDB984CC3F08">9.2-13 ObjectIndex</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X8084F7247D83B465">9.2-14 CreateMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X81028F5A8593F39E">9.2-15 MorphismCoefficients</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X80F86CC77B1E3713">9.2-16 MorphismSupport</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7D00675E8470FF43">9.2-17 DecompositionOfMorphismInAlgebroid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X78F3294482D413A3">9.2-18 OppositeAlgebroid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7DD9A91578D68E0A">9.2-19 TensorProductOfAlgebroids</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X816FDB3783C17B55"><code>9.2-20 \*</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X826BDBCC7C3FB09A">9.2-21 ElementaryTensor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X8093CB917A51EC36">9.2-22 ElementaryTensor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X789C404380EAC9CF">9.2-23 AlgebroidAsObjectInPreSheavesCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7CA3344780309FE5">9.2-24 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory</a></span>
 </div></div>
 </div>
 
@@ -200,9 +203,9 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CreateObject( B, 1 ) = B.("0");</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( B );</span>
-[ &lt;1*(a):(0) -≻ (1)&gt;, &lt;1*(b):(1) -≻ (3)&gt;,
-  &lt;1*(c):(0) -≻ (2)&gt;, &lt;1*(d):(2) -≻ (3)&gt;,
-  &lt;1*(e):(3) -≻ (3)&gt; ]
+[ &lt;1*a:(0) -≻ (1)&gt;, &lt;1*b:(1) -≻ (3)&gt;,
+  &lt;1*c:(0) -≻ (2)&gt;, &lt;1*d:(2) -≻ (3)&gt;,
+  &lt;1*e:(3) -≻ (3)&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( B.("a"), a );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( [ "V_0", "V_1", "V_2", "V_3" ], MakeReadWriteGlobal );</span>
@@ -210,23 +213,23 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( B.("0"), B.("3") );</span>
 &lt;A row module over Q of rank 6&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_03 := BasisOfExternalHom( B.("0"), B.("3") );</span>
-[ &lt;1*(a•b):(0) -≻ (3)&gt;, &lt;1*(c•d):(0) -≻ (3)&gt;,
-  &lt;1*(a•b•e):(0) -≻ (3)&gt;, &lt;1*(c•d•e):(0) -≻ (3)&gt;,
-  &lt;1*(a•b•e^2):(0) -≻ (3)&gt;, &lt;1*(c•d•e^2):(0) -≻ (3)&gt; ]
+[ &lt;1*a•b:(0) -≻ (3)&gt;, &lt;1*c•d:(0) -≻ (3)&gt;,
+  &lt;1*a•b•e:(0) -≻ (3)&gt;, &lt;1*c•d•e:(0) -≻ (3)&gt;,
+  &lt;1*a•b•e^2:(0) -≻ (3)&gt;, &lt;1*c•d•e^2:(0) -≻ (3)&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := 2*hom_03[1] + 3*hom_03[6];</span>
-&lt;2*(a•b) + 3*(c•d•e^2):(0) -≻ (3)&gt;
+&lt;2*a•b + 3*c•d•e^2:(0) -≻ (3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LaTeXOutput( alpha );</span>
-"{0}-\\left({2\\cdot ab + 3\\cdot cd{e}^{2}}\\right)\\rightarrow{3}"
+"{0}-\\left({2\\cdot {a}{b} + 3\\cdot {c}{d}{{e}}^{2}}\\right)\\rightarrow{3}"
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha = CreateMorphism( B, B.("0"), [2, 0, 0, 0, 0, 3 ], B.("3") );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecompositionOfMorphismInAlgebroid( alpha );</span>
-[ [ 2, [ &lt;1*(a):(0) -≻ (1)&gt;, &lt;1*(b):(1) -≻ (3)&gt; ] ],
-  [ 3, [ &lt;1*(c):(0) -≻ (2)&gt;, &lt;1*(d):(2) -≻ (3)&gt;,
-         &lt;1*(e):(3) -≻ (3)&gt;, &lt;1*(e):(3) -≻ (3)&gt; ] ] ]
+[ [ 2, [ &lt;1*a:(0) -≻ (1)&gt;, &lt;1*b:(1) -≻ (3)&gt; ] ],
+  [ 3, [ &lt;1*c:(0) -≻ (2)&gt;, &lt;1*d:(2) -≻ (3)&gt;,
+         &lt;1*e:(3) -≻ (3)&gt;, &lt;1*e:(3) -≻ (3)&gt; ] ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B.("a•b•e");</span>
-&lt;1*(a•b•e):(0) -≻ (3)&gt;
+&lt;1*a•b•e:(0) -≻ (3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B.("abe");</span>
-&lt;1*(a•b•e):(0) -≻ (3)&gt;
+&lt;1*a•b•e:(0) -≻ (3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( B.("a"), B.("b") ) = B.("ab");</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := IsomorphismOntoAlgebroidFromDataTables( A );</span>
@@ -235,6 +238,37 @@ Isomorphism functor onto algebroid from data tables
 Isomorphism functor from algebroid from data tables
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( PreCompose( V, U ), alpha ) = alpha;</span>
 true
+#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ExtendFunctorToAdditiveClosures( V );</span>
+Extension of Isomorphism functor from algebroid from data tables to
+additive closures
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddC_B := SourceOfFunctor( V );</span>
+Additive closure( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
+defined by 4 objects and 5 generating morphisms )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddC_B!.precompiled_functions_added;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddC_A := RangeOfFunctor( V );</span>
+Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(0,1,2,3)[a:0-&gt;1,
+b:1-&gt;3,c:0-&gt;2,d:2-&gt;3,e:3-&gt;3]" ) ) ) / relations )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddC_A!.precompiled_functions_added;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o1 :=  RandomObject( AddC_B, [ [ 20 ], [ 1 ] ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o2 :=  RandomObject( AddC_B, [ [ 20 ], [ 1 ] ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V_o1 := V( o1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V_o2 := V( o2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s1 := Sum( BasisOfExternalHom( o1, o2 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s2 := Sum( BasisOfExternalHom( V_o1, V_o2 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V( s1 ) = s2;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := RandomMorphism( o1, o2, 20 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := RandomMorphism( o1, o2, 20 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V_f := V( f );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V_g := V( g );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m1 := UnderlyingMatrix( HomStructure( f, g ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m2 := UnderlyingMatrix( HomStructure( V_f, V_g ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m1 = m2;</span>
+true
+#@fi
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( B );</span>
 PreSheaves( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,
 e:3-≻3] ) defined by 4 objects and 5 generating morphisms, Rows( Q ) )
@@ -253,7 +287,7 @@ true
 Q-algebroid( {0,1,2,3}[a:1-≻0,b:3-≻1,c:2-≻0,d:3-≻2,e:3-≻3] ) defined by
 4 objects and 5 generating morphisms
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B_op.("ba");</span>
-&lt;1*(b•a):(3) -≻ (0)&gt;
+&lt;1*b•a:(3) -≻ (0)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddC_B := AdditiveClosure( B );</span>
 Additive closure( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
 defined by 4 objects and 5 generating morphisms )
@@ -274,11 +308,11 @@ by 16 objects and 40 generating morphisms
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( B.0, B.1 );</span>
 &lt;(0⊗1)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( B.a, B.b );</span>
-&lt;1*(a⊗b):(0⊗1) -≻ (1⊗3)&gt;
+&lt;1*a⊗b:(0⊗1) -≻ (1⊗3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( B.0, B.b );</span>
-&lt;1*(0⊗b):(0⊗1) -≻ (0⊗3)&gt;
+&lt;1*id(0)⊗b:(0⊗1) -≻ (0⊗3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( B.a, B.1 );</span>
-&lt;1*(a⊗1):(0⊗1) -≻ (1⊗1)&gt;
+&lt;1*a⊗id(1):(0⊗1) -≻ (1⊗1)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">3x3 := BB.("3⊗3");</span>
 &lt;(3⊗3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RandomMorphism( 3x3, 3x3, 15 );;</span>
@@ -302,7 +336,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">1/2 * HomStructure( Source( f ), Range( f ), 2*HomStructure( f ) ) = f;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ideal := List( [ B.0, B.1, B.2 ], IdentityMorphism );</span>
-[ &lt;1*(0):(0) -≻ (0)&gt;, &lt;1*(1):(1) -≻ (1)&gt;, &lt;1*(2):(2) -≻ (2)&gt; ]
+[ &lt;1*id(0):(0) -≻ (0)&gt;, &lt;1*id(1):(1) -≻ (1)&gt;, &lt;1*id(2):(2) -≻ (2)&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qB := B / ideal;</span>
 QuotientCategory( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
 defined by 4 objects and 5 generating morphisms, 2-sided ideal generated
@@ -316,7 +350,7 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := AlgebroidFromDataTables( qB );</span>
 Q-algebroid( {3}[e:3-≻3] ) defined by 1 object and 1 generating morphism
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BasisOfExternalHom( D.3, D.3 );</span>
-[ &lt;1*(3):(3) -≻ (3)&gt;, &lt;1*(e):(3) -≻ (3)&gt;, &lt;1*(e^2):(3) -≻ (3)&gt; ]
+[ &lt;1*id(3):(3) -≻ (3)&gt;, &lt;1*e:(3) -≻ (3)&gt;, &lt;1*e^2:(3) -≻ (3)&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables_Z := ShallowCopy( data_tables );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables_Z!.coefficients_ring := HomalgRingOfIntegers();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := AlgebroidFromDataTables( data_tables_Z );;</span>
@@ -447,18 +481,45 @@ true
 
 <p>The arguments are an algebroid <var class="Arg">B</var> and an integer <var class="Arg">i</var>. The output is the <var class="Arg">i</var>'th object in <code class="code">SetOfObjects</code>(<var class="Arg">B</var>).</p>
 
+<p><a id="X7981BDB984CC3F08" name="X7981BDB984CC3F08"></a></p>
+
+<h5>9.2-13 ObjectIndex</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectIndex</code>( <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>The argument is an object <var class="Arg">v</var> in an algebroid <var class="Arg">B</var>. The output is the index of <var class="Arg">v</var> in <code class="code">SetOfObjects</code>(<var class="Arg">B</var>).</p>
+
 <p><a id="X8084F7247D83B465" name="X8084F7247D83B465"></a></p>
 
-<h5>9.2-13 CreateMorphism</h5>
+<h5>9.2-14 CreateMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateMorphism</code>( <var class="Arg">B</var>, <var class="Arg">u</var>, <var class="Arg">coeffs</var>, <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
 
 <p>The arguments are an algebroid <var class="Arg">B</var> (over a commutative ring <span class="Math">k</span>), two objects <var class="Arg">u,v</var> in <var class="Arg">B</var> and list <var class="Arg">coeffs</var> of elements in <span class="Math">k</span> of length <span class="Math">\mathrm{dim}_k~\mathrm{Hom}_{B}(u,v)</span>. The output is the <span class="Math">k</span>-linear combination of the basis elements of <span class="Math">\mathrm{Hom}_B(u,v)</span> with the coefficients-list <var class="Arg">coeffs</var>.</p>
 
+<p><a id="X81028F5A8593F39E" name="X81028F5A8593F39E"></a></p>
+
+<h5>9.2-15 MorphismCoefficients</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismCoefficients</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+
+<p>The argument is a morphism <var class="Arg">alpha</var> in an algebroid <var class="Arg">B</var>. The output is the list of coefficients of <var class="Arg">alpha</var> with respect to the basis of external hom <span class="Math">\mathrm{Hom}_B(u,v)</span> where <span class="Math">u</span> and <span class="Math">v</span> are source resp. range of <var class="Arg">alpha</var>.</p>
+
+<p><a id="X80F86CC77B1E3713" name="X80F86CC77B1E3713"></a></p>
+
+<h5>9.2-16 MorphismSupport</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismSupport</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+
+<p>The argument is a morphism <var class="Arg">alpha</var> in an algebroid <var class="Arg">B</var>. The output is the list of indices of the nonzero entries of <code class="code">MorphismCoefficients</code>(<var class="Arg">alpha</var>).</p>
+
 <p><a id="X7D00675E8470FF43" name="X7D00675E8470FF43"></a></p>
 
-<h5>9.2-14 DecompositionOfMorphismInAlgebroid</h5>
+<h5>9.2-17 DecompositionOfMorphismInAlgebroid</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DecompositionOfMorphismInAlgebroid</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list of pairs</p>
@@ -467,7 +528,7 @@ true
 
 <p><a id="X78F3294482D413A3" name="X78F3294482D413A3"></a></p>
 
-<h5>9.2-15 OppositeAlgebroid</h5>
+<h5>9.2-18 OppositeAlgebroid</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OppositeAlgebroid</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
@@ -476,7 +537,7 @@ true
 
 <p><a id="X7DD9A91578D68E0A" name="X7DD9A91578D68E0A"></a></p>
 
-<h5>9.2-16 TensorProductOfAlgebroids</h5>
+<h5>9.2-19 TensorProductOfAlgebroids</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductOfAlgebroids</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
@@ -485,7 +546,7 @@ true
 
 <p><a id="X816FDB3783C17B55" name="X816FDB3783C17B55"></a></p>
 
-<h5><code>9.2-17 \*</code></h5>
+<h5><code>9.2-20 \*</code></h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \*</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
@@ -494,7 +555,7 @@ true
 
 <p><a id="X826BDBCC7C3FB09A" name="X826BDBCC7C3FB09A"></a></p>
 
-<h5>9.2-18 ElementaryTensor</h5>
+<h5>9.2-21 ElementaryTensor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ElementaryTensor</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category object</p>
@@ -503,7 +564,7 @@ true
 
 <p><a id="X8093CB917A51EC36" name="X8093CB917A51EC36"></a></p>
 
-<h5>9.2-19 ElementaryTensor</h5>
+<h5>9.2-22 ElementaryTensor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ElementaryTensor</code>( <var class="Arg">f</var>, <var class="Arg">g</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
@@ -512,7 +573,7 @@ true
 
 <p><a id="X789C404380EAC9CF" name="X789C404380EAC9CF"></a></p>
 
-<h5>9.2-20 AlgebroidAsObjectInPreSheavesCategory</h5>
+<h5>9.2-23 AlgebroidAsObjectInPreSheavesCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AlgebroidAsObjectInPreSheavesCategory</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
@@ -521,7 +582,7 @@ true
 
 <p><a id="X7CA3344780309FE5" name="X7CA3344780309FE5"></a></p>
 
-<h5>9.2-21 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory</h5>
+<h5>9.2-24 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>

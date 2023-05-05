@@ -7,10 +7,10 @@
                                     quivers [101X
   
   
-                                   2023.05-01
+                                   2023.05-02
   
   
-                                   1 May 2023
+                                   5 May 2023
   
   
                                 Mohamed Barakat
@@ -283,15 +283,18 @@
       9.2-10 AssignSetOfObjects
       9.2-11 AssignSetOfGeneratingMorphisms
       9.2-12 CreateObject
-      9.2-13 CreateMorphism
-      9.2-14 DecompositionOfMorphismInAlgebroid
-      9.2-15 OppositeAlgebroid
-      9.2-16 TensorProductOfAlgebroids
-      9.2-17 \*
-      9.2-18 ElementaryTensor
-      9.2-19 ElementaryTensor
-      9.2-20 AlgebroidAsObjectInPreSheavesCategory
-      9.2-21 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory
+      9.2-13 ObjectIndex
+      9.2-14 CreateMorphism
+      9.2-15 MorphismCoefficients
+      9.2-16 MorphismSupport
+      9.2-17 DecompositionOfMorphismInAlgebroid
+      9.2-18 OppositeAlgebroid
+      9.2-19 TensorProductOfAlgebroids
+      9.2-20 \*
+      9.2-21 ElementaryTensor
+      9.2-22 ElementaryTensor
+      9.2-23 AlgebroidAsObjectInPreSheavesCategory
+      9.2-24 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory
   10 [33X[0;0YTools[133X
     10.1 [33X[0;0YTools for quivers[133X
       10.1-1 DefiningTripleOfAQuiver

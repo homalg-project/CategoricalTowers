@@ -84,6 +84,49 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], rec( filter := IsHomalgRingElement ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  data_tables -&gt; AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables.coefficients_ring : FinalizeCategory := true ), FinalizeCategory := true ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [ rec( coefficients_ring := Q,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         nr_objs := 1,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         labels_objs := [ "*" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         indices_objs := [ 1 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         nr_gmors := 1,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         labels_gmors := [ "x" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         ranges_gmors := [ 1 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         sources_gmors := [ 1 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         indices_gmors := [ 2 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         nr_bases_elms := 3,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         bases_elms_comps := [ [ 1 ], [ 2 ], [ 2, 2 ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         indices_of_bases_elms := [ [ [ 1, 2, 3 ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         hom_structure_gmors_objs := [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         hom_structure_objs_gmors := [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ] ) ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "AdditiveClosureOfAlgebroidFromDataTablesPrecompiled";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "Algebroids";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    : operations := "primitive"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AdditiveClosureOfAlgebroidFromDataTablesPrecompiled( given_arguments[1] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A!.precompiled_functions_added;</span>
+true
+#@fi
+</pre></div>
+
+
+<div class="example"><pre>
+#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">snake_quiver := RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := PathAlgebra( QQ, snake_quiver );;</span>
