@@ -43,7 +43,7 @@ DeclareAttribute( "ExactCoverWithGlobalElements",
 
 ####################################
 ##
-#! @Section Subobject Classifier
+#! @Section Subobject classifier
 ##
 ####################################
 
@@ -132,7 +132,7 @@ DeclareAttribute( "ListOfSubobjects",
 
 ####################################
 ##
-#! @Section Truth Morphisms
+#! @Section Truth morphisms
 ##
 ####################################
 
@@ -299,7 +299,7 @@ DeclareOperation( "SingletonMorphismWithGivenPowerObject",
 
 ####################################
 ##
-#! @Section Heyting Algebra of Subobjects
+#! @Section Heyting algebra of subobjects
 ##
 ####################################
 
