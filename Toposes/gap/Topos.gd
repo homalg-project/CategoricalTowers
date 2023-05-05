@@ -138,7 +138,7 @@ DeclareAttribute( "ListOfSubobjects",
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is the truth morphism of true into the subobject classifier
+#! The output is the truth morphism
 #! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
@@ -148,16 +148,16 @@ DeclareAttribute( "TruthMorphismOfTrue",
 #! @Description
 #! The arguments are a terminal object of the category and
 #! a subobject classifier.
-#! The output is the truth morphism of true into the subobject classifier <A>Omega</A>
-#! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \Omega$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \Omega )$
+#! The output is the truth morphism
+#! $\mathrm{true}: T \rightarrow \Omega$.
+#! @Returns a morphism in $\mathrm{Hom}( T, \Omega )$
 #! @Arguments T, Omega
 DeclareOperation( "TruthMorphismOfTrueWithGivenObjects",
         [ IsCapCategoryObject, IsCapCategoryObject ]);
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is the truth morphism of false into the subobject classifier
+#! The output is the truth morphism
 #! $\mathrm{false}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
@@ -167,16 +167,16 @@ DeclareAttribute( "TruthMorphismOfFalse",
 #! @Description
 #! The arguments are a terminal object of the category and
 #! a subobject classifier.
-#! The output is the truth morphism of false into the subobject classifier <A>Omega</A>
-#! $\mathrm{false}: \mathrm{TerminalObject} \rightarrow \Omega$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \Omega )$
+#! The output is the truth morphism
+#! $\mathrm{false}: T \rightarrow \Omega$.
+#! @Returns a morphism in $\mathrm{Hom}( T, \Omega )$
 #! @Arguments T, Omega
 DeclareOperation( "TruthMorphismOfFalseWithGivenObjects",
         [ IsCapCategoryObject, IsCapCategoryObject ]);
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is the truth morphism of <Q>not</Q> of the subobject classifier
+#! The output is the truth endomorphism
 #! $\mathrm{not}: \mathrm{SubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{SubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
@@ -184,8 +184,8 @@ DeclareAttribute( "TruthMorphismOfNot",
         IsCapCategory );
 
 #! @Description
-#! The argument is a subobject classifier.
-#! The output is the truth endomorphism of <Q>not</Q> of the subobject classifier <A>Omega</A>
+#! The arguments are the subobject classifier as first and as second argument.
+#! The output is the truth endomorphism
 #! $\mathrm{not}: \Omega \rightarrow \Omega$.
 #! @Returns a morphism in $\mathrm{Hom}( \Omega, \Omega )$
 #! @Arguments Omega, Omega
@@ -194,7 +194,7 @@ DeclareOperation( "TruthMorphismOfNotWithGivenObjects",
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is the truth morphism of <Q>and</Q> into the subobject classifier
+#! The output is the truth morphism
 #! $\mathrm{and}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
@@ -204,16 +204,16 @@ DeclareAttribute( "TruthMorphismOfAnd",
 #! @Description
 #! The arguments are a cartesian square of a subobject classifier of the category and
 #! a subobject classifier.
-#! The output is the truth morphism of <Q>and</Q> into the subobject classifier <A>Omega</A>
+#! The output is the truth morphism
 #! $\mathrm{and}: \Omega^{\times 2} \rightarrow \Omega$.
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
 #! @Arguments Omega2, Omega
 DeclareOperation( "TruthMorphismOfAndWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ]);
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is the truth morphism of <Q>or</Q> into the subobject classifier
+#! The output is the truth morphism
 #! $\mathrm{or}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
@@ -223,7 +223,7 @@ DeclareAttribute( "TruthMorphismOfOr",
 #! @Description
 #! The arguments are a cartesian square of a subobject classifier of the category and
 #! a subobject classifier.
-#! The output is the truth morphism of <Q>or</Q> into the subobject classifier <A>Omega</A>
+#! The output is the truth morphism
 #! $\mathrm{or}: \Omega^{\times 2} \rightarrow \Omega$.
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
 #! @Arguments Omega2, Omega
@@ -232,7 +232,7 @@ DeclareOperation( "TruthMorphismOfOrWithGivenObjects",
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is the truth morphism of <Q>implies</Q> into the subobject classifier
+#! The output is the truth morphism
 #! $\mathrm{implies}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
@@ -242,7 +242,7 @@ DeclareAttribute( "TruthMorphismOfImplies",
 #! @Description
 #! The arguments are a cartesian square of a subobject classifier of the category and
 #! a subobject classifier.
-#! The output is the truth morphism of <Q>implies</Q> into the subobject classifier <A>Omega</A>
+#! The output is the truth morphism
 #! $\mathrm{implies}: \Omega^{\times 2} \rightarrow \Omega$.
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
 #! @Arguments Omega2, Omega
