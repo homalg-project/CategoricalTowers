@@ -240,9 +240,9 @@ BindGlobal( "_ConcatenationLazyHLists_",
                 function ( i )
                   local pos;
                   
-                  pos := PositionProperty( indices, j -> j >= i );
+                  pos := PositionSorted( indices, i ) - 1;
                   
-                  return list[pos-1][i-indices[pos-1]];
+                  return list[pos][i-indices[pos]];
                   
                 end );
      
