@@ -794,7 +794,7 @@ InstallMethod( AlgebroidFromDataTables,
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
       
       { cat, distinguished_object, alpha, r } -> MorphismConstructor( RangeCategoryOfHomomorphismStructure( cat ),
-                                                            DistinguishedObjectOfHomomorphismStructure( cat ),
+                                                            distinguished_object,
                                                             HomalgMatrixListList( [ MorphismCoefficients( alpha ) ], 1, RankOfObject( r ), CommutativeRingOfLinearCategory( cat ) ),
                                                             r )
     );
