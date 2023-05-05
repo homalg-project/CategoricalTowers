@@ -249,6 +249,12 @@ DeclareAttribute( "TruthMorphismOfImplies",
 DeclareOperation( "TruthMorphismOfImpliesWithGivenObjects",
         [ IsCapCategoryObject, IsCapCategoryObject ]);
 
+####################################
+##
+#! @Section Power object
+##
+####################################
+
 #! @Description
 #! The argument is an object $a$.
 #! The output is the power object $P(a)$ of $a$.
