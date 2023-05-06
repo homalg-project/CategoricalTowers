@@ -39,9 +39,3 @@ variations are implemented in the CAP-based package `CartesianCategories`.
 @Chapter Category of relations
 
 @Chapter Tools
-
-@Chapter The initial category
-
-@Section &GAP; Categories
-
-@Section Constructor
