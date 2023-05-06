@@ -298,6 +298,25 @@ DeclareAttribute( "SingletonMorphism",
 DeclareOperation( "SingletonMorphismWithGivenPowerObject",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The argument is an object <A>a</A> in a category $C$.
+#! The output is the isomorphism
+#! $\mathrm{Exponential}( a, \mathrm{CartesianSquareOfSubobjectClassifier}( C ) ) \rightarrow \mathrm{DirectProduct}( \mathrm{PowerObject}(a), \mathrm{PowerObject}(a) )$.
+#! @Arguments a
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}( a, \mathrm{CartesianSquareOfSubobjectClassifier}( C ) ), \mathrm{DirectProduct}( \mathrm{PowerObject}(a), \mathrm{PowerObject}(a) ) )$
+DeclareAttribute( "IsomorphismOntoCartesianSquareOfPowerObject",
+        IsCapCategoryObject );
+#! @InsertChunk IsomorphismOntoCartesianSquareOfPowerObject
+
+#! @Description
+#! The arguments are an object the exponential <A>Exp_a_Omega2</A> = <C>Exponential</C>( <A>a</A>, <C>CartesianSquareOfSubobjectClassifier</C> ),
+#! an object <A>a</A> in a category $C$, and the cartesian squre <A>PaxPa</A> of the power object <C>PowerObject</C>( <A>a</A> ).
+#! The output is the isomorphism $Exp\_a\_Omega2 \stackrel{\sim}{\rightarrow} PaxPa$
+#! @Arguments Exp_a_Omega2, a, PaxPa
+#! @Returns a morphism in $\mathrm{Hom}( Exp\_a\_Omega2, PaxPa )$
+DeclareOperation( "IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
 ####################################
 ##
 #! @Section Heyting algebra of subobjects

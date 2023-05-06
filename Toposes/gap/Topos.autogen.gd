@@ -278,6 +278,44 @@ DeclareOperation( "AddIntersectionSubobject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `IsomorphismOntoCartesianSquareOfPowerObject`.
+#! $F: ( a ) \mapsto \mathtt{IsomorphismOntoCartesianSquareOfPowerObject}(a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismOntoCartesianSquareOfPowerObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismOntoCartesianSquareOfPowerObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismOntoCartesianSquareOfPowerObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismOntoCartesianSquareOfPowerObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects`.
+#! $F: ( ExpaOmega2, a, PaxPa ) \mapsto \mathtt{IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects}(ExpaOmega2, a, PaxPa)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `LawvereTierneyEmbeddingsOfSubobjectClassifiers`.
 #! $F: (  ) \mapsto \mathtt{LawvereTierneyEmbeddingsOfSubobjectClassifiers}()$.
 #! @Returns nothing

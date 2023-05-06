@@ -283,6 +283,62 @@ AddDerivationToCAP( SingletonMorphismWithGivenPowerObject,
     
 end );
 
+##
+AddDerivationToCAP( IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects,
+                    "",
+                    [ [ SubobjectClassifier, 1 ],
+                      [ CartesianSquareOfSubobjectClassifier, 1 ],
+                      [ PowerObject, 1 ],
+                      [ IdentityMorphism, 2 ],
+                      [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ],
+                      [ ExponentialOnMorphismsWithGivenExponentials, 2 ],
+                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ] ],
+                    
+  function( cat, Exp_a_Omega2, a, PaxPa )
+    local Omega, diagram, Omega2, Pa, tau, u;
+    
+    Omega := SubobjectClassifier( cat );
+    
+    diagram := [ Omega, Omega ];
+    
+    Omega2 := CartesianSquareOfSubobjectClassifier( cat );
+
+    Pa := PowerObject( cat, a );
+    
+    ## [ Exp(a, π₁): Exp(a, Ω²) ↠ Exp(a, Ω), Exp(a, π₂): Exp(a, Ω²) ↠ Exp(a, Ω) ]
+    tau := [ ExponentialOnMorphismsWithGivenExponentials( cat,
+                   Exp_a_Omega2,
+                   IdentityMorphism( cat, a ),
+                   ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
+                           diagram,
+                           1,
+                           Omega2 ),
+                   Pa ),
+             ExponentialOnMorphismsWithGivenExponentials( cat,
+                   Exp_a_Omega2,
+                     IdentityMorphism( cat, a ),
+                   ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
+                           diagram,
+                           2,
+                           Omega2 ),
+                   Pa ) ];
+    
+    ## Exp(a, Ω²) ⭇ Exp(a, Ω) × Exp(a, Ω)
+    u := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
+                 [ Pa, Pa ],
+                 Exp_a_Omega2,
+                 tau,
+                 PaxPa );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if HasIsCartesianClosedCategory( cat ) and IsCartesianClosedCategory( cat ) then
+        SetIsIsomorphism( u, true );
+    fi;
+    
+    return u;
+    
+end );
+
 ## Note that |Sub(Ω)| = |End(Ω)|
 ## * but id_Ω ≜ ⊤_Ω ∈ Sub(Ω) does not correspond to id_Ω ∈ End(Ω) but to ⊤_Ω: Ω → 𝟙 → Ω ∈ End(Ω), which is generally not an iso
 ## * and id_Ω ∈ End(Ω) corresponds to ⊤: 𝟙 → Ω

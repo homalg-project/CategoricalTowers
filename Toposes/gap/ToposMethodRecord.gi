@@ -164,6 +164,21 @@ SingletonMorphismWithGivenPowerObject := rec(
   io_type := [ [ "a", "Pa" ], [ "a", "Pa" ] ],
   return_type := "morphism" ),
 
+IsomorphismOntoCartesianSquareOfPowerObject := rec(
+  filter_list := [ "category", "object" ],
+  input_arguments_names := [ "cat", "a" ],
+  return_type := "morphism",
+  output_source_getter_string := "ExponentialOnObjects( cat, a, CartesianSquareOfSubobjectClassifier( cat ) )",
+  output_source_getter_preconditions := [ [ "ExponentialOnObjects", 1 ], [ "CartesianSquareOfSubobjectClassifier", 1 ] ],
+  output_range_getter_string := "DirectProduct( cat, [ PowerObject( cat, a ), PowerObject( cat, a ) ] )",
+  output_range_getter_preconditions := [ [ "DirectProduct", 1 ], [ "PowerObject", 2 ] ],
+  with_given_object_position := "both" ),
+
+IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  io_type := [ [ "ExpaOmega2", "a", "PaxPa" ], [ "ExpaOmega2", "PaxPa" ] ],
+  return_type := "morphism" ),
+
 ListOfSubobjects := rec(
   filter_list := [ "category", "object" ],
   return_type := "list_of_morphisms" ),
