@@ -288,12 +288,13 @@ DeclareOperation( "PowerObjectFunctorialWithGivenPowerObjects",
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{PowerObject}(a) )$
 DeclareAttribute( "SingletonMorphism",
         IsCapCategoryObject );
+#! @InsertChunk SingletonMorphism
 
 #! @Description
-#! The arguments are an object $a$ and object $b$ which is equal to the power object $\mathrm{PowerObject}(a)$.
-#! The output is the singleton morphism from $a$ to $b$.
-#! @Arguments a, b
-#! @Returns a morphism in $\mathrm{Hom}( a, b )$
+#! The arguments are an object $a$ and object $Pa$ which is equal to the power object $\mathrm{PowerObject}(a)$.
+#! The output is the singleton morphism from $a$ to $Pa$.
+#! @Arguments a, Pa
+#! @Returns a morphism in $\mathrm{Hom}( a, Pa )$
 DeclareOperation( "SingletonMorphismWithGivenPowerObject",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
 

@@ -283,18 +283,6 @@ AddDerivationToCAP( SingletonMorphismWithGivenPowerObject,
     
 end );
 
-##
-AddDerivationToCAP( SingletonMorphism,
-                    "",
-                    [ [ SingletonMorphismWithGivenPowerObject, 1 ],
-                      [ PowerObject, 1 ] ],
-                    
-  function( cat, obj )
-    
-    return SingletonMorphismWithGivenPowerObject( cat, obj, PowerObject( cat, obj ) );
-    
-end );
-
 ## Note that |Sub(Ω)| = |End(Ω)|
 ## * but id_Ω ≜ ⊤_Ω ∈ Sub(Ω) does not correspond to id_Ω ∈ End(Ω) but to ⊤_Ω: Ω → 𝟙 → Ω ∈ End(Ω), which is generally not an iso
 ## * and id_Ω ∈ End(Ω) corresponds to ⊤: 𝟙 → Ω

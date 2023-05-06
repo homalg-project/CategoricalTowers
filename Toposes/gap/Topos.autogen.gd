@@ -488,7 +488,7 @@ DeclareOperation( "AddRelativePseudoComplementSubobject",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `SingletonMorphism`.
-#! $F: ( object ) \mapsto \mathtt{SingletonMorphism}(object)$.
+#! $F: ( a ) \mapsto \mathtt{SingletonMorphism}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddSingletonMorphism",
@@ -507,7 +507,7 @@ DeclareOperation( "AddSingletonMorphism",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `SingletonMorphismWithGivenPowerObject`.
-#! $F: ( object, power_object ) \mapsto \mathtt{SingletonMorphismWithGivenPowerObject}(object, power_object)$.
+#! $F: ( a, Pa ) \mapsto \mathtt{SingletonMorphismWithGivenPowerObject}(a, Pa)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddSingletonMorphismWithGivenPowerObject",

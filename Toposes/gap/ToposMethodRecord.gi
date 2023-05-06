@@ -151,17 +151,17 @@ PowerObjectFunctorialWithGivenPowerObjects := rec(
 
 SingletonMorphism := rec(
   filter_list := [ "category", "object" ],
-  io_type := [ [ "object" ], [ "object", "power_object" ] ],
-  output_source_getter_string := "object",
-  output_range_getter_string := "PowerObject( cat, object )",
+  input_arguments_names := [ "cat", "a" ],
+  return_type := "morphism",
+  output_source_getter_string := "a",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "PowerObject( cat, a )",
   output_range_getter_preconditions := [ [ "PowerObject", 1 ] ],
-  return_type := "morphism" ),
+  with_given_object_position := "Range" ),
 
 SingletonMorphismWithGivenPowerObject := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "object", "power_object" ], [ "object", "power_object" ] ],
-  output_source_getter_string := "object",
-  output_range_getter_string := "power_object",
+  io_type := [ [ "a", "Pa" ], [ "a", "Pa" ] ],
   return_type := "morphism" ),
 
 ListOfSubobjects := rec(
