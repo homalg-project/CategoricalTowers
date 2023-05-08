@@ -10,11 +10,15 @@ variations are implemented in the CAP-based package `CartesianCategories`.
 
 @Section Exact cover with global elements
 
-@Section Subobject Classifier
+@Section Subobject classifier
 
-@Section Truth Morphisms
+@Section Truth morphisms
 
-@Section Heyting Algebra of Subobjects
+@Section Power object
+
+@Section Relative truth morphisms
+
+@Section Heyting algebra of subobjects
 
 @Section Lawvere-Tierney topologies
 
@@ -37,9 +41,3 @@ variations are implemented in the CAP-based package `CartesianCategories`.
 @Chapter Category of relations
 
 @Chapter Tools
-
-@Chapter The initial category
-
-@Section &GAP; Categories
-
-@Section Constructor

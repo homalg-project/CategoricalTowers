@@ -43,7 +43,7 @@ DeclareAttribute( "ExactCoverWithGlobalElements",
 
 ####################################
 ##
-#! @Section Subobject Classifier
+#! @Section Subobject classifier
 ##
 ####################################
 
@@ -132,13 +132,13 @@ DeclareAttribute( "ListOfSubobjects",
 
 ####################################
 ##
-#! @Section Truth Morphisms
+#! @Section Truth morphisms
 ##
 ####################################
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is the truth morphism of true into the subobject classifier
+#! The output is the truth morphism
 #! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
@@ -148,16 +148,16 @@ DeclareAttribute( "TruthMorphismOfTrue",
 #! @Description
 #! The arguments are a terminal object of the category and
 #! a subobject classifier.
-#! The output is the truth morphism of true into the subobject classifier <A>Omega</A>
-#! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \Omega$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \Omega )$
+#! The output is the truth morphism
+#! $\mathrm{true}: T \rightarrow \Omega$.
+#! @Returns a morphism in $\mathrm{Hom}( T, \Omega )$
 #! @Arguments T, Omega
 DeclareOperation( "TruthMorphismOfTrueWithGivenObjects",
-        [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is the truth morphism of false into the subobject classifier
+#! The output is the truth morphism
 #! $\mathrm{false}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
@@ -167,16 +167,16 @@ DeclareAttribute( "TruthMorphismOfFalse",
 #! @Description
 #! The arguments are a terminal object of the category and
 #! a subobject classifier.
-#! The output is the truth morphism of false into the subobject classifier <A>Omega</A>
-#! $\mathrm{false}: \mathrm{TerminalObject} \rightarrow \Omega$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \Omega )$
+#! The output is the truth morphism
+#! $\mathrm{false}: T \rightarrow \Omega$.
+#! @Returns a morphism in $\mathrm{Hom}( T, \Omega )$
 #! @Arguments T, Omega
 DeclareOperation( "TruthMorphismOfFalseWithGivenObjects",
-        [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is the truth morphism of <Q>not</Q> of the subobject classifier
+#! The output is the truth endomorphism
 #! $\mathrm{not}: \mathrm{SubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{SubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
@@ -184,17 +184,17 @@ DeclareAttribute( "TruthMorphismOfNot",
         IsCapCategory );
 
 #! @Description
-#! The argument is a subobject classifier.
-#! The output is the truth endomorphism of <Q>not</Q> of the subobject classifier <A>Omega</A>
+#! The arguments are the subobject classifier as first and as second argument.
+#! The output is the truth endomorphism
 #! $\mathrm{not}: \Omega \rightarrow \Omega$.
 #! @Returns a morphism in $\mathrm{Hom}( \Omega, \Omega )$
 #! @Arguments Omega, Omega
 DeclareOperation( "TruthMorphismOfNotWithGivenObjects",
-        [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is the truth morphism of <Q>and</Q> into the subobject classifier
+#! The output is the truth morphism
 #! $\mathrm{and}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
@@ -204,16 +204,16 @@ DeclareAttribute( "TruthMorphismOfAnd",
 #! @Description
 #! The arguments are a cartesian square of a subobject classifier of the category and
 #! a subobject classifier.
-#! The output is the truth morphism of <Q>and</Q> into the subobject classifier <A>Omega</A>
+#! The output is the truth morphism
 #! $\mathrm{and}: \Omega^{\times 2} \rightarrow \Omega$.
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
 #! @Arguments Omega2, Omega
 DeclareOperation( "TruthMorphismOfAndWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is the truth morphism of <Q>or</Q> into the subobject classifier
+#! The output is the truth morphism
 #! $\mathrm{or}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
@@ -223,16 +223,16 @@ DeclareAttribute( "TruthMorphismOfOr",
 #! @Description
 #! The arguments are a cartesian square of a subobject classifier of the category and
 #! a subobject classifier.
-#! The output is the truth morphism of <Q>or</Q> into the subobject classifier <A>Omega</A>
+#! The output is the truth morphism
 #! $\mathrm{or}: \Omega^{\times 2} \rightarrow \Omega$.
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
 #! @Arguments Omega2, Omega
 DeclareOperation( "TruthMorphismOfOrWithGivenObjects",
-        [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is the truth morphism of <Q>implies</Q> into the subobject classifier
+#! The output is the truth morphism
 #! $\mathrm{implies}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
@@ -242,12 +242,18 @@ DeclareAttribute( "TruthMorphismOfImplies",
 #! @Description
 #! The arguments are a cartesian square of a subobject classifier of the category and
 #! a subobject classifier.
-#! The output is the truth morphism of <Q>implies</Q> into the subobject classifier <A>Omega</A>
+#! The output is the truth morphism
 #! $\mathrm{implies}: \Omega^{\times 2} \rightarrow \Omega$.
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
 #! @Arguments Omega2, Omega
 DeclareOperation( "TruthMorphismOfImpliesWithGivenObjects",
-        [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+####################################
+##
+#! @Section Power object
+##
+####################################
 
 #! @Description
 #! The argument is an object $a$.
@@ -282,18 +288,154 @@ DeclareOperation( "PowerObjectFunctorialWithGivenPowerObjects",
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{PowerObject}(a) )$
 DeclareAttribute( "SingletonMorphism",
         IsCapCategoryObject );
+#! @InsertChunk SingletonMorphism
 
 #! @Description
-#! The arguments are an object $a$ and object $b$ which is equal to the power object $\mathrm{PowerObject}(a)$.
-#! The output is the singleton morphism from $a$ to $b$.
-#! @Arguments a, b
-#! @Returns a morphism in $\mathrm{Hom}( a, b )$
+#! The arguments are an object $a$ and object $Pa$ which is equal to the power object $\mathrm{PowerObject}(a)$.
+#! The output is the singleton morphism from $a$ to $Pa$.
+#! @Arguments a, Pa
+#! @Returns a morphism in $\mathrm{Hom}( a, Pa )$
 DeclareOperation( "SingletonMorphismWithGivenPowerObject",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! The argument is an object <A>a</A> in a category $C$.
+#! The output is the isomorphism
+#! $\mathrm{Exponential}( a, \mathrm{CartesianSquareOfSubobjectClassifier}( C ) ) \rightarrow \mathrm{DirectProduct}( \mathrm{PowerObject}(a), \mathrm{PowerObject}(a) )$.
+#! @Arguments a
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}( a, \mathrm{CartesianSquareOfSubobjectClassifier}( C ) ), \mathrm{DirectProduct}( \mathrm{PowerObject}(a), \mathrm{PowerObject}(a) ) )$
+DeclareAttribute( "IsomorphismOntoCartesianSquareOfPowerObject",
+        IsCapCategoryObject );
+#! @InsertChunk IsomorphismOntoCartesianSquareOfPowerObject
+
+#! @Description
+#! The arguments are an object the exponential <A>Exp_a_Omega2</A> = <C>Exponential</C>( <A>a</A>, <C>CartesianSquareOfSubobjectClassifier</C> ),
+#! an object <A>a</A> in a category $C$, and the cartesian squre <A>PaxPa</A> of the power object <C>PowerObject</C>( <A>a</A> ).
+#! The output is the isomorphism $Exp\_a\_Omega2 \stackrel{\sim}{\rightarrow} PaxPa$
+#! @Arguments Exp_a_Omega2, a, PaxPa
+#! @Returns a morphism in $\mathrm{Hom}( Exp\_a\_Omega2, PaxPa )$
+DeclareOperation( "IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
 ####################################
 ##
-#! @Section Heyting Algebra of Subobjects
+#! @Section Relative truth morphisms
+##
+####################################
+
+#! @Description
+#! The argument is an object <A>a</A> in a category $C$.
+#! The output is the relative truth morphism
+#! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{PowerObject}( a )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{PowerObect}( a ) )$
+#! @Arguments a
+DeclareAttribute( "RelativeTruthMorphismOfTrue",
+        IsCapCategoryObject );
+
+#! @Description
+#! The arguments are the terminal object of the category $C$, an object <A>a</A>, and the power object <A>Pa</A> of <A>a</A>.
+#! The output is the relative truth morphism
+#! $\mathrm{true}: T \rightarrow Pa$.
+#! @Returns a morphism in $\mathrm{Hom}( T, Pa )$
+#! @Arguments T, a, Pa
+DeclareOperation( "RelativeTruthMorphismOfTrueWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The argument is an object <A>a</A> in a category $C$.
+#! The output is the relative truth morphism
+#! $\mathrm{false}: \mathrm{TerminalObject} \rightarrow \mathrm{PowerObject}( a )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{PowerObect}( a ) )$
+#! @Arguments a
+DeclareAttribute( "RelativeTruthMorphismOfFalse",
+        IsCapCategoryObject );
+
+#! @Description
+#! The arguments are the terminal object of the category $C$, an object <A>a</A>, and the power object <A>Pa</A> of <A>a</A>.
+#! The output is the relative truth morphism
+#! $\mathrm{false}: T \rightarrow Pa$.
+#! @Returns a morphism in $\mathrm{Hom}( T, Pa )$
+#! @Arguments T, a, Pa
+DeclareOperation( "RelativeTruthMorphismOfFalseWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The argument is an object <A>a</A> in a category $C$.
+#! The output is the relative truth endomorphism
+#! $\mathrm{not}: \mathrm{PowerObject}( a ) \rightarrow \mathrm{PowerObject}( a )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{PowerObject}( a ), \mathrm{PowerObect}( a ) )$
+#! @Arguments a
+DeclareAttribute( "RelativeTruthMorphismOfNot",
+        IsCapCategoryObject );
+
+#! @Description
+#! The arguments are the power object <A>Pa</A> of <A>a</A>, the object <A>a</A>, and <A>Pa</A>.
+#! The output is the relative truth endomorphism
+#! $\mathrm{not}: Pa \rightarrow Pa$.
+#! @Returns a morphism in $\mathrm{Hom}( Pa, Pa )$
+#! @Arguments Pa, a, Pa
+DeclareOperation( "RelativeTruthMorphismOfNotWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The argument is an object <A>a</A> in a category $C$.
+#! The output is the relative truth morphism
+#! $\mathrm{and}: \mathrm{PowerObject}( a ) \times \mathrm{PowerObject}( a ) \rightarrow \mathrm{PowerObject}( a )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{PowerObject}( a ) \times \mathrm{PowerObject}( a ), \mathrm{PowerObject}( a ) )$
+#! @Arguments a
+DeclareAttribute( "RelativeTruthMorphismOfAnd",
+        IsCapCategoryObject );
+
+#! @Description
+#! The arguments are the cartesian square <A>PaxPa</A> of the power object <A>Pa</A> of <A>a</A>, the object <A>a</A>, and <A>Pa</A>.
+#! The output is the relative truth morphism
+#! $\mathrm{and}: PaxPa \rightarrow Pa$.
+#! @Returns a morphism in $\mathrm{Hom}( PaxPa, Pa )$
+#! @Arguments PaxPa, a, Pa
+DeclareOperation( "RelativeTruthMorphismOfAndWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The argument is an object <A>a</A> in a category $C$.
+#! The output is the relative truth morphism
+#! $\mathrm{or}: \mathrm{PowerObject}( a ) \times \mathrm{PowerObject}( a ) \rightarrow \mathrm{PowerObject}( a )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{PowerObject}( a ) \times \mathrm{PowerObject}( a ), \mathrm{PowerObject}( a ) )$
+#! @Arguments a
+DeclareAttribute( "RelativeTruthMorphismOfOr",
+        IsCapCategoryObject );
+
+#! @Description
+#! The arguments are the cartesian square <A>PaxPa</A> of the power object <A>Pa</A> of <A>a</A>, the object <A>a</A>, and <A>Pa</A>.
+#! The output is the relative truth morphism
+#! $\mathrm{or}: PaxPa \rightarrow Pa$.
+#! @Returns a morphism in $\mathrm{Hom}( PaxPa, Pa )$
+#! @Arguments PaxPa, a, Pa
+DeclareOperation( "RelativeTruthMorphismOfOrWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The argument is an object <A>a</A> in a category $C$.
+#! The output is the relative truth morphism
+#! $\mathrm{implies}: \mathrm{PowerObject}( a ) \times \mathrm{PowerObject}( a ) \rightarrow \mathrm{PowerObject}( a )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{PowerObject}( a ) \times \mathrm{PowerObject}( a ), \mathrm{PowerObject}( a ) )$
+#! @Arguments a
+DeclareAttribute( "RelativeTruthMorphismOfImplies",
+        IsCapCategoryObject );
+
+#! @Description
+#! The arguments are the cartesian square <A>PaxPa</A> of the power object <A>Pa</A> of <A>a</A>, the object <A>a</A>, and <A>Pa</A>.
+#! The output is the relative truth morphism
+#! $\mathrm{implies}: PaxPa \rightarrow Pa$.
+#! @Returns a morphism in $\mathrm{Hom}( PaxPa, Pa )$
+#! @Arguments PaxPa, a, Pa
+DeclareOperation( "RelativeTruthMorphismOfImpliesWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @InsertChunk RelativeTruthMorphisms
+
+####################################
+##
+#! @Section Heyting algebra of subobjects
 ##
 ####################################
 
@@ -304,7 +446,7 @@ DeclareOperation( "SingletonMorphismWithGivenPowerObject",
 #! @Returns an object
 #! @Arguments iota
 DeclareOperation( "PseudoComplementSubobject",
-                  [ IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The argument is a monomorphism $\iota: S \hookrightarrow A$.
@@ -313,7 +455,7 @@ DeclareOperation( "PseudoComplementSubobject",
 #! @Returns an object
 #! @Arguments iota
 DeclareOperation( "EmbeddingOfPseudoComplementSubobject",
-                  [ IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The argument is a monomorphism $\iota: S \hookrightarrow A$ and an object $T$ with
@@ -323,7 +465,7 @@ DeclareOperation( "EmbeddingOfPseudoComplementSubobject",
 #! @Returns an object
 #! @Arguments iota
 DeclareOperation( "EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement",
-                  [ IsCapCategoryMorphism, IsCapCategoryObject ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
@@ -332,7 +474,7 @@ DeclareOperation( "EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement
 #! @Returns an object
 #! @Arguments iota1, iota2
 DeclareOperation( "IntersectionSubobject",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
@@ -340,7 +482,7 @@ DeclareOperation( "IntersectionSubobject",
 #! @Returns a monomorphism
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfIntersectionSubobject",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
@@ -349,7 +491,7 @@ DeclareOperation( "EmbeddingOfIntersectionSubobject",
 #! @Returns a monomorphism
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfIntersectionSubobjectWithGivenIntersection",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
@@ -358,7 +500,7 @@ DeclareOperation( "EmbeddingOfIntersectionSubobjectWithGivenIntersection",
 #! @Returns an object
 #! @Arguments iota1, iota2
 DeclareOperation( "UnionSubobject",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
@@ -366,7 +508,7 @@ DeclareOperation( "UnionSubobject",
 #! @Returns a monomorphism
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfUnionSubobject",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
@@ -375,7 +517,7 @@ DeclareOperation( "EmbeddingOfUnionSubobject",
 #! @Returns a monomorphism
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfUnionSubobjectWithGivenUnion",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
@@ -383,7 +525,7 @@ DeclareOperation( "EmbeddingOfUnionSubobjectWithGivenUnion",
 #! @Returns an object
 #! @Arguments iota1, iota2
 DeclareOperation( "RelativePseudoComplementSubobject",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
@@ -392,7 +534,7 @@ DeclareOperation( "RelativePseudoComplementSubobject",
 #! @Returns a monomorphism
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobject",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
@@ -401,7 +543,7 @@ DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobject",
 #! @Returns a monomorphism
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);
+        [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 ###################################
 ##
