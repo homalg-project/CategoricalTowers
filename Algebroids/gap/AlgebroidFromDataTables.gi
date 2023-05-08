@@ -584,8 +584,6 @@ InstallMethod( AlgebroidFromDataTables,
     
     range_category_of_hom_structure := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", CategoryOfRows( data[1] : FinalizeCategory := true ) );
     
-    SetSetOfObjects( cat, List( [ 1 .. data[2] ], index -> CreateCapCategoryObjectWithAttributes( cat, ObjectIndex, index ) ) );
-    
     SetSetOfBasesOfExternalHomsLazyHList( cat,
                     LazyHList( [ 1 .. data[2] ],
                         i -> LazyHList( [ 1 .. data[2] ],
@@ -875,6 +873,13 @@ InstallMethod( AlgebroidFromDataTables,
     return cat;
     
 end );
+
+##
+InstallMethod( SetOfObjects,
+          [ IsAlgebroidFromDataTables ],
+  
+  B -> List( [ 1 .. EnhancedDataTables( B )[2] ], index -> CreateCapCategoryObjectWithAttributes( B, ObjectIndex, index ) )
+);
 
 ##
 InstallMethod( SetOfGeneratingMorphisms,
