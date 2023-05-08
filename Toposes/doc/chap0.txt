@@ -6,10 +6,10 @@
                               [1X Elementary toposes [101X
   
   
-                                   2023.04-04
+                                   2023.05-03
   
   
-                                 24 April 2023
+                                   8 May 2023
   
   
                                 Mohamed Barakat
@@ -65,7 +65,7 @@
       1.1-1 MorphismsOfExternalHom
     1.2 [33X[0;0YExact cover with global elements[133X
       1.2-1 ExactCoverWithGlobalElements
-    1.3 [33X[0;0YSubobject Classifier[133X
+    1.3 [33X[0;0YSubobject classifier[133X
       1.3-1 IsElementaryTopos
       1.3-2 SubobjectClassifier
       1.3-3 CartesianSquareOfSubobjectClassifier
@@ -73,7 +73,7 @@
       1.3-5 ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier
       1.3-6 SubobjectOfClassifyingMorphism
       1.3-7 ListOfSubobjects
-    1.4 [33X[0;0YTruth Morphisms[133X
+    1.4 [33X[0;0YTruth morphisms[133X
       1.4-1 TruthMorphismOfTrue
       1.4-2 TruthMorphismOfTrueWithGivenObjects
       1.4-3 TruthMorphismOfFalse
@@ -86,78 +86,108 @@
       1.4-10 TruthMorphismOfOrWithGivenObjects
       1.4-11 TruthMorphismOfImplies
       1.4-12 TruthMorphismOfImpliesWithGivenObjects
-      1.4-13 PowerObject
-      1.4-14 PowerObjectFunctorial
-      1.4-15 PowerObjectFunctorialWithGivenPowerObjects
-      1.4-16 SingletonMorphism
-      1.4-17 SingletonMorphismWithGivenPowerObject
-    1.5 [33X[0;0YHeyting Algebra of Subobjects[133X
-      1.5-1 PseudoComplementSubobject
-      1.5-2 EmbeddingOfPseudoComplementSubobject
-      1.5-3 EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement
-      1.5-4 IntersectionSubobject
-      1.5-5 EmbeddingOfIntersectionSubobject
-      1.5-6 EmbeddingOfIntersectionSubobjectWithGivenIntersection
-      1.5-7 UnionSubobject
-      1.5-8 EmbeddingOfUnionSubobject
-      1.5-9 EmbeddingOfUnionSubobjectWithGivenUnion
-      1.5-10 RelativePseudoComplementSubobject
-      1.5-11 EmbeddingOfRelativePseudoComplementSubobject
-      1.5-12 EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication
-    1.6 [33X[0;0YLawvere-Tierney topologies[133X
-      1.6-1 LawvereTierneyLocalModalityOperators
-      1.6-2 LawvereTierneySubobjects
-      1.6-3 LawvereTierneyEmbeddingsOfSubobjectClassifiers
-    1.7 [33X[0;0YPushout complements[133X
-      1.7-1 [33X[0;0YExample in FinSets[133X
-      1.7-2 [33X[0;0YExample in SkeletalFinSets[133X
-      1.7-3 HasPushoutComplement
-      1.7-4 PushoutComplement
-    1.8 [33X[0;0YDouble-pushout rewriting[133X
-      1.8-1 DPO
-    1.9 [33X[0;0YAdd-methods[133X
-      1.9-1 AddCartesianSquareOfSubobjectClassifier
-      1.9-2 AddClassifyingMorphismOfSubobject
-      1.9-3 AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier
-      1.9-4 AddEmbeddingOfIntersectionSubobject
-      1.9-5 AddEmbeddingOfIntersectionSubobjectWithGivenIntersection
-      1.9-6 AddEmbeddingOfPseudoComplementSubobject
-      1.9-7 AddEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement
-      1.9-8 AddEmbeddingOfRelativePseudoComplementSubobject
-      1.9-9 AddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication
-      1.9-10 AddEmbeddingOfUnionSubobject
-      1.9-11 AddEmbeddingOfUnionSubobjectWithGivenUnion
-      1.9-12 AddExactCoverWithGlobalElements
-      1.9-13 AddHasPushoutComplement
-      1.9-14 AddIntersectionSubobject
-      1.9-15 AddLawvereTierneyEmbeddingsOfSubobjectClassifiers
-      1.9-16 AddLawvereTierneyLocalModalityOperators
-      1.9-17 AddLawvereTierneySubobjects
-      1.9-18 AddListOfSubobjects
-      1.9-19 AddMorphismsOfExternalHom
-      1.9-20 AddPowerObject
-      1.9-21 AddPowerObjectFunctorial
-      1.9-22 AddPowerObjectFunctorialWithGivenPowerObjects
-      1.9-23 AddPseudoComplementSubobject
-      1.9-24 AddPushoutComplement
-      1.9-25 AddRelativePseudoComplementSubobject
-      1.9-26 AddSingletonMorphism
-      1.9-27 AddSingletonMorphismWithGivenPowerObject
-      1.9-28 AddSubobjectClassifier
-      1.9-29 AddSubobjectOfClassifyingMorphism
-      1.9-30 AddTruthMorphismOfAnd
-      1.9-31 AddTruthMorphismOfAndWithGivenObjects
-      1.9-32 AddTruthMorphismOfFalse
-      1.9-33 AddTruthMorphismOfFalseWithGivenObjects
-      1.9-34 AddTruthMorphismOfImplies
-      1.9-35 AddTruthMorphismOfImpliesWithGivenObjects
-      1.9-36 AddTruthMorphismOfNot
-      1.9-37 AddTruthMorphismOfNotWithGivenObjects
-      1.9-38 AddTruthMorphismOfOr
-      1.9-39 AddTruthMorphismOfOrWithGivenObjects
-      1.9-40 AddTruthMorphismOfTrue
-      1.9-41 AddTruthMorphismOfTrueWithGivenObjects
-      1.9-42 AddUnionSubobject
+    1.5 [33X[0;0YPower object[133X
+      1.5-1 PowerObject
+      1.5-2 PowerObjectFunctorial
+      1.5-3 PowerObjectFunctorialWithGivenPowerObjects
+      1.5-4 SingletonMorphism
+      1.5-5 SingletonMorphismWithGivenPowerObject
+      1.5-6 IsomorphismOntoCartesianSquareOfPowerObject
+      1.5-7 IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects
+    1.6 [33X[0;0YRelative truth morphisms[133X
+      1.6-1 RelativeTruthMorphismOfTrue
+      1.6-2 RelativeTruthMorphismOfTrueWithGivenObjects
+      1.6-3 RelativeTruthMorphismOfFalse
+      1.6-4 RelativeTruthMorphismOfFalseWithGivenObjects
+      1.6-5 RelativeTruthMorphismOfNot
+      1.6-6 RelativeTruthMorphismOfNotWithGivenObjects
+      1.6-7 RelativeTruthMorphismOfAnd
+      1.6-8 RelativeTruthMorphismOfAndWithGivenObjects
+      1.6-9 RelativeTruthMorphismOfOr
+      1.6-10 RelativeTruthMorphismOfOrWithGivenObjects
+      1.6-11 RelativeTruthMorphismOfImplies
+      1.6-12 RelativeTruthMorphismOfImpliesWithGivenObjects
+    1.7 [33X[0;0YHeyting algebra of subobjects[133X
+      1.7-1 PseudoComplementSubobject
+      1.7-2 EmbeddingOfPseudoComplementSubobject
+      1.7-3 EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement
+      1.7-4 IntersectionSubobject
+      1.7-5 EmbeddingOfIntersectionSubobject
+      1.7-6 EmbeddingOfIntersectionSubobjectWithGivenIntersection
+      1.7-7 UnionSubobject
+      1.7-8 EmbeddingOfUnionSubobject
+      1.7-9 EmbeddingOfUnionSubobjectWithGivenUnion
+      1.7-10 RelativePseudoComplementSubobject
+      1.7-11 EmbeddingOfRelativePseudoComplementSubobject
+      1.7-12 EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication
+    1.8 [33X[0;0YLawvere-Tierney topologies[133X
+      1.8-1 LawvereTierneyLocalModalityOperators
+      1.8-2 LawvereTierneySubobjects
+      1.8-3 LawvereTierneyEmbeddingsOfSubobjectClassifiers
+    1.9 [33X[0;0YPushout complements[133X
+      1.9-1 [33X[0;0YExample in FinSets[133X
+      1.9-2 [33X[0;0YExample in SkeletalFinSets[133X
+      1.9-3 HasPushoutComplement
+      1.9-4 PushoutComplement
+    1.10 [33X[0;0YDouble-pushout rewriting[133X
+      1.10-1 DPO
+    1.11 [33X[0;0YAdd-methods[133X
+      1.11-1 AddCartesianSquareOfSubobjectClassifier
+      1.11-2 AddClassifyingMorphismOfSubobject
+      1.11-3 AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier
+      1.11-4 AddEmbeddingOfIntersectionSubobject
+      1.11-5 AddEmbeddingOfIntersectionSubobjectWithGivenIntersection
+      1.11-6 AddEmbeddingOfPseudoComplementSubobject
+      1.11-7 AddEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement
+      1.11-8 AddEmbeddingOfRelativePseudoComplementSubobject
+      1.11-9 AddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication
+      1.11-10 AddEmbeddingOfUnionSubobject
+      1.11-11 AddEmbeddingOfUnionSubobjectWithGivenUnion
+      1.11-12 AddExactCoverWithGlobalElements
+      1.11-13 AddHasPushoutComplement
+      1.11-14 AddIntersectionSubobject
+      1.11-15 AddIsomorphismOntoCartesianSquareOfPowerObject
+      1.11-16 AddIsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects
+      1.11-17 AddLawvereTierneyEmbeddingsOfSubobjectClassifiers
+      1.11-18 AddLawvereTierneyLocalModalityOperators
+      1.11-19 AddLawvereTierneySubobjects
+      1.11-20 AddListOfSubobjects
+      1.11-21 AddMorphismsOfExternalHom
+      1.11-22 AddPowerObject
+      1.11-23 AddPowerObjectFunctorial
+      1.11-24 AddPowerObjectFunctorialWithGivenPowerObjects
+      1.11-25 AddPseudoComplementSubobject
+      1.11-26 AddPushoutComplement
+      1.11-27 AddRelativePseudoComplementSubobject
+      1.11-28 AddRelativeTruthMorphismOfAnd
+      1.11-29 AddRelativeTruthMorphismOfAndWithGivenObjects
+      1.11-30 AddRelativeTruthMorphismOfFalse
+      1.11-31 AddRelativeTruthMorphismOfFalseWithGivenObjects
+      1.11-32 AddRelativeTruthMorphismOfImplies
+      1.11-33 AddRelativeTruthMorphismOfImpliesWithGivenObjects
+      1.11-34 AddRelativeTruthMorphismOfNot
+      1.11-35 AddRelativeTruthMorphismOfNotWithGivenObjects
+      1.11-36 AddRelativeTruthMorphismOfOr
+      1.11-37 AddRelativeTruthMorphismOfOrWithGivenObjects
+      1.11-38 AddRelativeTruthMorphismOfTrue
+      1.11-39 AddRelativeTruthMorphismOfTrueWithGivenObjects
+      1.11-40 AddSingletonMorphism
+      1.11-41 AddSingletonMorphismWithGivenPowerObject
+      1.11-42 AddSubobjectClassifier
+      1.11-43 AddSubobjectOfClassifyingMorphism
+      1.11-44 AddTruthMorphismOfAnd
+      1.11-45 AddTruthMorphismOfAndWithGivenObjects
+      1.11-46 AddTruthMorphismOfFalse
+      1.11-47 AddTruthMorphismOfFalseWithGivenObjects
+      1.11-48 AddTruthMorphismOfImplies
+      1.11-49 AddTruthMorphismOfImpliesWithGivenObjects
+      1.11-50 AddTruthMorphismOfNot
+      1.11-51 AddTruthMorphismOfNotWithGivenObjects
+      1.11-52 AddTruthMorphismOfOr
+      1.11-53 AddTruthMorphismOfOrWithGivenObjects
+      1.11-54 AddTruthMorphismOfTrue
+      1.11-55 AddTruthMorphismOfTrueWithGivenObjects
+      1.11-56 AddUnionSubobject
   2 [33X[0;0YCategory of relations[133X
     2.1 [33X[0;0YGAP categories[133X
       2.1-1 IsCategoryOfRelations
@@ -187,10 +217,8 @@
       3.1-1 DefiningTripleOfUnderlyingQuiver
     3.2 [33X[0;0YVisualizing posets of subobjects[133X
       3.2-1 DigraphOfSubobjects
-  4 [33X[0;0YThe initial category[133X
-    4.1 [33X[0;0Y[5XGAP[105X Categories[133X
-  5 [33X[0;0YExamples and Tests[133X
-    5.1 [33X[0;0YOpposite category[133X
+  4 [33X[0;0YExamples and Tests[133X
+    4.1 [33X[0;0YOpposite category[133X
   
   
   [32X
