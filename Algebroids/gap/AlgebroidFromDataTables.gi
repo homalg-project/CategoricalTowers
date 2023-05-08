@@ -240,9 +240,9 @@ BindGlobal( "_ConcatenationLazyHLists_",
                 function ( i )
                   local pos;
                   
-                  pos := PositionProperty( indices, j -> j >= i );
+                  pos := PositionSorted( indices, i ) - 1;
                   
-                  return list[pos-1][i-indices[pos-1]];
+                  return list[pos][i-indices[pos]];
                   
                 end );
      
@@ -449,8 +449,8 @@ InstallMethod( AlgebroidFromDataTables,
     # other
     
     data[22] := LazyHList( [ 1 .. data[6] ],
-                                  i -> Cartesian( [ i ], Filtered( [ 1 .. input_data.nr_gmors ],
-                                    j -> input_data.ranges_gmors[i] = input_data.sources_gmors[j] ) ) );
+                  i -> Cartesian( [ i ], Filtered( [ 1 .. input_data.nr_gmors ],
+                    j -> input_data.ranges_gmors[i] = input_data.sources_gmors[j] ) ) );
     
     if not IsBound( input_data.colors ) then
           
@@ -583,8 +583,6 @@ InstallMethod( AlgebroidFromDataTables,
     SetCommutativeRingOfLinearCategory( cat, input_data.coefficients_ring );
     
     range_category_of_hom_structure := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", CategoryOfRows( data[1] : FinalizeCategory := true ) );
-    
-    SetSetOfObjects( cat, List( [ 1 .. data[2] ], index -> CreateCapCategoryObjectWithAttributes( cat, ObjectIndex, index ) ) );
     
     SetSetOfBasesOfExternalHomsLazyHList( cat,
                     LazyHList( [ 1 .. data[2] ],
@@ -794,7 +792,7 @@ InstallMethod( AlgebroidFromDataTables,
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
       
       { cat, distinguished_object, alpha, r } -> MorphismConstructor( RangeCategoryOfHomomorphismStructure( cat ),
-                                                            DistinguishedObjectOfHomomorphismStructure( cat ),
+                                                            distinguished_object,
                                                             HomalgMatrixListList( [ MorphismCoefficients( alpha ) ], 1, RankOfObject( r ), CommutativeRingOfLinearCategory( cat ) ),
                                                             r )
     );
@@ -875,6 +873,13 @@ InstallMethod( AlgebroidFromDataTables,
     return cat;
     
 end );
+
+##
+InstallMethod( SetOfObjects,
+          [ IsAlgebroidFromDataTables ],
+  
+  B -> List( [ 1 .. EnhancedDataTables( B )[2] ], index -> CreateCapCategoryObjectWithAttributes( B, ObjectIndex, index ) )
+);
 
 ##
 InstallMethod( SetOfGeneratingMorphisms,
@@ -1561,7 +1566,7 @@ InstallMethod( AlgebroidAsObjectInPreSheavesCategoryData,
                 _ConcatenationLazyHLists_(
                      [ _ConcatenationLazyHLists_( LazyHList( [ 1 .. nr_objs ], l -> LazyHList( [ 1 .. nr_gmors ],
                         r -> HomomorphismStructureOnMorphisms( B, SetOfGeneratingMorphisms( B )[r], IdentityMorphism( SetOfObjects( B )[l] ) ) ) ) ),
-                    _ConcatenationLazyHLists_( LazyHList( [ 1 .. nr_gmors ], l -> LazyHList( [ 1 .. nr_objs ],
+                       _ConcatenationLazyHLists_( LazyHList( [ 1 .. nr_gmors ], l -> LazyHList( [ 1 .. nr_objs ],
                         r -> HomomorphismStructureOnMorphisms( B, IdentityMorphism( SetOfObjects( B )[r] ), SetOfGeneratingMorphisms( B )[l] ) ) ) ) ] );
     
     return Pair( images_of_objs, images_of_gmorphisms );
