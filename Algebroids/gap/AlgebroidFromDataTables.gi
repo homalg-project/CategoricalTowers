@@ -228,15 +228,17 @@ end );
 BindGlobal( "_ConcatenationLazyHLists_",
   
   function ( list )
-    local n, len, indices;
+    local n, indices, i;
     
     n := Length( list );
-     
-    len := List( [ 1 .. n ], i -> Length( list[i] ) );
     
-    indices := List( [ 0 .. n ], i -> Sum( len{[ 1 .. i ]} ) );
+    indices := [ 0 ];
     
-    return LazyHList( [ 1 .. Sum( len ) ],
+    for i in [ 1 .. n ] do
+        Add( indices, indices[i] + Length( list[i] ) );
+    od;
+    
+    return LazyHList( [ 1 .. indices[n+1] ],
                 function ( i )
                   local pos;
                   
