@@ -91,6 +91,13 @@ CapJitAddTypeSignature( "SetOfObjects", [ IsCategoryFromNerveData ],
     
 end );
 
+#! @Description
+#!  The finite set of morphisms of the category <A>C</A> created from nerve data.
+#! @Arguments C
+#! @Returns a list
+DeclareAttribute( "SetOfMorphisms",
+        IsCategoryFromNerveData );
+
 DeclareAttribute( "IndicesOfGeneratingMorphisms",
         IsCategoryFromNerveData );
 

@@ -83,6 +83,40 @@ InstallOtherMethod( AssignSetOfObjects,
 end );
 
 ##
+InstallMethodForCompilerForCAP( SetOfMorphisms,
+        "for a category from data tables",
+        [ IsFpCategory and IsFinite ],
+        
+  function( C )
+    local objs;
+    
+    objs := SetOfObjects( C );
+    
+    ## varying the target (column-index) before varying the source ("row"-index)
+    ## in the for-loops below is enforced by SetOfMorphisms for IsCategoryFromNerveData,
+    ## which in turn is enforced by our convention for ProjectionInFactorOfDirectProduct,
+    ## which is the "reverse" convention of the GAP command Cartesian:
+    
+    # gap> A := FinSet( 3 );
+    # |3|
+    # gap> B := FinSet( 4 );
+    # |4|
+    # gap> pi1 := ProjectionInFactorOfDirectProduct( [ A, B ], 1 );
+    # |12| → |3|
+    # gap> pi2 := ProjectionInFactorOfDirectProduct( [ A, B ], 2 );
+    # |12| → |4|
+    # gap> List( [ 0 .. 11 ], i -> [ pi1(i), pi2(i) ] );
+    # [ [ 0, 0 ], [ 1, 0 ], [ 2, 0 ], [ 0, 1 ], [ 1, 1 ], [ 2, 1 ], [ 0, 2 ], [ 1, 2 ], [ 2, 2 ], [ 0, 3 ], [ 1, 3 ], [ 2, 3 ] ]
+    # gap> Cartesian( [ 0 .. 2 ], [ 0 .. 3 ] );
+    # [ [ 0, 0 ], [ 0, 1 ], [ 0, 2 ], [ 0, 3 ], [ 1, 0 ], [ 1, 1 ], [ 1, 2 ], [ 1, 3 ], [ 2, 0 ], [ 2, 1 ], [ 2, 2 ], [ 2, 3 ] ]
+    
+    return Concatenation( List( objs, t ->
+                   Concatenation( List( objs, s ->
+                           MorphismsOfExternalHom( C, s, t ) ) ) ) );
+    
+end );
+
+##
 InstallMethod( SetOfGeneratingMorphisms,
         "for a f.p. category",
         [ IsFpCategory and HasUnderlyingQuiver ],

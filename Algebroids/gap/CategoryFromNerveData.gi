@@ -676,6 +676,17 @@ InstallMethodForCompilerForCAP( SetOfObjects,
 end );
 
 ##
+InstallMethodForCompilerForCAP( SetOfMorphisms,
+        "for a category from data tables",
+        [ IsCategoryFromNerveData ],
+        
+  function( C )
+    
+    return List( [ 0 .. Length( NerveData( C )[1][2] ) - 1 ], i -> CreateMorphism( C, i ) );
+    
+end );
+
+##
 InstallMethod( SetOfGeneratingMorphisms,
         "for a category from nerve data",
         [ IsCategoryFromNerveData ],

@@ -175,6 +175,13 @@ DeclareOperation( "AssignSetOfObjects",
         [ IsFpCategory, IsString ] );
 
 #! @Description
+#!  The finite set of morphisms of the finitely presented category <E>finite</E> category <A>C</A>.
+#! @Arguments C
+#! @Returns a list
+DeclareAttribute( "SetOfMorphisms",
+        IsFpCategory );
+
+#! @Description
 #!  The finite set of morphisms generating the finitely presented category <A>C</A>.
 #! @Arguments C
 #! @Returns a list
