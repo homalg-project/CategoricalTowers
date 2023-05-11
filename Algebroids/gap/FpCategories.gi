@@ -234,6 +234,40 @@ InstallMethod( IndicesOfGeneratingMorphisms,
   IndicesOfGeneratingMorphismsFromHomStructure );
 
 ##
+InstallMethod( DecompositionOfMorphismInCategory,
+        "for a morphism in a f.p. category",
+        [ IsMorphismInFpCategory ],
+        
+  function( mor )
+    local C, gmors;
+    
+    if IsEqualToIdentityMorphism( mor ) then
+        return [ ];
+    fi;
+    
+    C := CapCategory( mor );
+    
+    mor := UnderlyingQuiverAlgebraElement( mor );
+    
+    mor := DecomposeQuiverAlgebraElement( mor );
+    
+    Assert( 0, ForAll( mor[1], IsOne ) );
+    
+    Assert( 0, Length( mor[2] ) = 1 );
+    
+    mor := mor[2][1];
+    
+    if ForAny( mor, IsCapCategoryObject) then
+        Error( "one of the generating morphisms is an identity morphism\n" );
+    fi;
+    
+    gmors := List( SetOfGeneratingMorphisms( C ), p -> BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( p ) ) );
+    
+    return List( mor, g -> -1 + SafePosition( gmors, g ) );
+    
+end );
+
+##
 InstallMethod( DataTablesOfCategory,
         "for a f.p. category",
         [ IsFpCategory ],
