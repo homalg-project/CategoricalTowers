@@ -665,7 +665,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( SetOfObjects,
+InstallMethodForCompilerForCAP( SetOfObjects,
         "for a category from nerve data",
         [ IsCategoryFromNerveData ],
         
