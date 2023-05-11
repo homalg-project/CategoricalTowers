@@ -210,6 +210,12 @@ DeclareAttribute( "CategoryFromNerveData",
 DeclareAttribute( "CategoryFromNerveData",
         IsFpCategory );
 
+if false then
+#! @Arguments C
+DeclareAttribute( "CategoryFromNerveData",
+        IsCategoryFromDataTables );
+fi;
+
 #! @Description
 #!  Construct the <A>o</A>-th object in the category <A>C</A> created from nerve data.
 #! @Arguments C, o

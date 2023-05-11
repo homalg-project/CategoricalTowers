@@ -313,7 +313,7 @@ InstallMethod( CategoryFromDataTables,
                    rec( name := Name( C ),
                         range_of_HomStructure := RangeCategoryOfHomomorphismStructure( C ),
                         data_tables := DataTablesOfCategory( C ),
-                        indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := [ List( SetOfObjects( C ), Label ), List( SetOfGeneratingMorphisms( C ), Label ) ],
                         properties := ListKnownCategoricalProperties( C ) ) );

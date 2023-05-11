@@ -527,7 +527,7 @@ InstallMethod( CategoryFromNerveData,
     return CategoryFromNerveData(
                    rec( name := Name( C ),
                         nerve_data := NerveTruncatedInDegree2Data( C ),
-                        indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := [ List( SetOfObjects( C ), Label ), List( SetOfGeneratingMorphisms( C ), Label ) ],
                         properties := ListKnownCategoricalProperties( C ) ) );
@@ -544,7 +544,7 @@ InstallOtherMethod( CategoryFromNerveData,
     return CategoryFromNerveData(
                    rec( name := Name( C ),
                         nerve_data := NerveTruncatedInDegree2Data( C ),
-                        indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := C!.labels,
                         properties := ListKnownCategoricalProperties( C ) ) );
@@ -800,12 +800,14 @@ InstallMethod( OppositeCategoryFromNerveData,
                         labels := C!.labels,
                         properties := ListKnownCategoricalProperties( Opposite( C ) ) ) );
     
+    Assert( 0, IsIdenticalObj( IndicesOfGeneratingMorphisms( Cop ), IndicesOfGeneratingMorphisms( C ) ) );
+    
     ## now construct the "normalized" opposite category
     C_op := CategoryFromNerveData(
                     rec( name := Name( Cop ),
                          ## now the "normalized" data tables
                          nerve_data := NerveTruncatedInDegree2Data( Cop ),
-                         indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( Cop ),
+                         indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( Cop ),
                          relations := RelationsAmongGeneratingMorphisms( Cop ),
                          labels := Cop!.labels,
                          properties := ListKnownCategoricalProperties( Cop ) ) );
