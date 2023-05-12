@@ -54,11 +54,11 @@ DeclareCategory( "IsAlgebroidFromDataTablesMorphism",
 #!  * <A>bases_elms_comps</A>: a list of length <A>nr_bases_elms</A> of lists of elements in <A>[-1,-2,..,-nr_objs]</A> or <A>[1,2,..,nr_gmors]</A>.
 #!     The $i$'th entry identifies the $i$'th element of list-of-all-bases-elements as an identity morphism or as a precomposition of generating morphisms.
 #!  * <A>indices_of_bases_elms</A>: a list $L$ of length <A>nr_objs</A> of lists each of length <A>nr_objs</A> where the entry $L[i][j]$ is the list of indices
-#!    of the basis elements of $\mathrm{Hom}_{B}(u_i,u_j)$ in the list-of-all-bases-elements in $B$ where $u_i$ and $u_j$ are the $i$'th resp. $j$'th objects.
-#!  * <A>hom_structure_objs_gmors</A>: a list $L$ of length <A>nr_objs</A> of lists of length <A>nr_gmors</A> where the entry $L[i][j]$
-#!    is the list of entries of the matrix of the $k$-linear map $\mathrm{Hom}_{B}(a_i,m_j)$ where $a_i$ and $m_j$ are the $i$'th object and the $j$'th generating morphism.
+#!    of the basis elements of $\mathrm{Hom}_{B}(u_j,u_i)$ in the list-of-all-bases-elements in $B$ where $u_i$ and $u_j$ are the $i$'th resp. $j$'th objects.
 #!  * <A>hom_structure_gmors_objs</A>: a list $L$ of length <A>nr_objs</A> of lists of length <A>nr_gmors</A> where the entry $L[i][j]$
-#!    is the list of entries of the matrix of the $k$-linear map $\mathrm{Hom}_{B}(m_j,a_i)$ where $a_i$ and $m_j$ are the $i$'th object and the $j$'th generating morphism.
+#!    is the list of entries of the matrix of the $k$-linear map $\mathrm{Hom}_{B}(m_j,u_i)$ where $u_i$ and $m_j$ are the $i$'th object and the $j$'th generating morphism.
+#!  * <A>hom_structure_objs_gmors</A>: a list $L$ of length <A>nr_objs</A> of lists of length <A>nr_gmors</A> where the entry $L[i][j]$
+#!    is the list of entries of the matrix of the $k$-linear map $\mathrm{Hom}_{B}(u_i,m_j)$ where $u_i$ and $m_j$ are the $i$'th object and the $j$'th generating morphism.
 #! @Arguments data_tables
 #! @Returns a &CAP; category
 DeclareAttribute( "AlgebroidFromDataTables",
