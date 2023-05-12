@@ -129,6 +129,19 @@ DeclareAttribute( "IndicesOfGeneratingMorphisms",
 #    
 #end );
 
+DeclareAttribute( "DecompositionOfAllMorphisms",
+        IsCategoryFromDataTables );
+
+#CapJitAddTypeSignature( "DecompositionOfAllMorphisms", [ IsCategoryFromDataTables ],
+#  function ( input_types )
+#    
+#    return rec( filter := IsList,
+#                element_type :=
+#                rec( filter := IsList,
+#                     element_type := rec( filter := IsInt ) ) );
+#    
+#end );
+
 DeclareAttribute( "RelationsAmongGeneratingMorphisms",
         IsCategoryFromDataTables );
 

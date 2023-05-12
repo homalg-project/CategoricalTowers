@@ -268,6 +268,29 @@ InstallMethod( DecompositionOfMorphismInCategory,
 end );
 
 ##
+InstallMethod( DecompositionOfAllMorphismsFromHomStructure,
+        "for a f.p. category",
+        [ IsFpCategory and IsFinite ],
+        
+  function( C )
+    local objs;
+    
+    objs := SetOfObjects( C );
+    
+    return List( objs, t ->
+                 List( objs, s ->
+                       List( MorphismsOfExternalHom( C, s, t ), DecompositionOfMorphismInCategory ) ) );
+    
+end );
+
+##
+InstallMethod( DecompositionOfAllMorphisms,
+        "for a f.p. category",
+        [ IsFpCategory and IsFinite ],
+        
+  DecompositionOfAllMorphismsFromHomStructure  );
+
+##
 InstallMethod( DataTablesOfCategory,
         "for a f.p. category",
         [ IsFpCategory ],

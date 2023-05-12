@@ -328,6 +328,12 @@ DeclareOperation( "POW",
 DeclareAttribute( "DecompositionOfMorphismInCategory",
         IsMorphismInFpCategory );
 
+DeclareAttribute( "DecompositionOfAllMorphismsFromHomStructure",
+        IsFpCategory );
+
+DeclareAttribute( "DecompositionOfAllMorphisms",
+        IsFpCategory );
+
 #! @Description
 #!  The input is a finitely presented category <A>C</A> equipped with a homomorphism structure
 #!  with values in the skeletal category <C>SkeletalFinSets</C> of finite sets.

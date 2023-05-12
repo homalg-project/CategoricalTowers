@@ -56,13 +56,13 @@ idC1 := CreateMorphism( C, 4 );
 IsOne( idC1 );
 #! true
 sigma := CreateMorphism( C, 5 );
-#! (C1)-[(5)]->(C1)
+#! (C1)-[(id*s)]->(C1)
 IsEndomorphism( sigma );
 #! true
 IsOne( sigma );
 #! false
 tau := CreateMorphism( C, 6 );
-#! (C1)-[(6)]->(C1)
+#! (C1)-[(id*t)]->(C1)
 IsEndomorphism( tau );
 #! true
 IsOne( tau );
