@@ -339,7 +339,7 @@ AddDerivationToCAP( IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects,
     
 end );
 
-##
+## ⊤_a: 𝟙 ↪ Pa
 AddDerivationToCAP( RelativeTruthMorphismOfTrueWithGivenObjects,
         "",
         [ [ ExponentialOnMorphismsWithGivenExponentials, 1 ],
@@ -347,7 +347,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfTrueWithGivenObjects,
           [ TruthMorphismOfTrue, 1 ] ],
         
   function( cat, T, a, Pa )
-    
+
     return ExponentialOnMorphismsWithGivenExponentials( cat,
                    T,
                    IdentityMorphism( cat, a ),
@@ -356,7 +356,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfTrueWithGivenObjects,
     
 end );
 
-##
+## ⊥_a: 𝟙 ↪ Pa
 AddDerivationToCAP( RelativeTruthMorphismOfFalseWithGivenObjects,
         "",
         [ [ ExponentialOnMorphismsWithGivenExponentials, 1 ],
@@ -373,7 +373,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfFalseWithGivenObjects,
     
 end );
 
-##
+## ¬_a: Pa ⭇ Pa
 AddDerivationToCAP( RelativeTruthMorphismOfNotWithGivenObjects,
         "",
         [ [ ExponentialOnMorphismsWithGivenExponentials, 1 ],
@@ -390,7 +390,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfNotWithGivenObjects,
     
 end );
 
-##
+## ∧_a: Pa × Pa → Pa
 AddDerivationToCAP( RelativeTruthMorphismOfAndWithGivenObjects,
         "",
         [ [ CartesianSquareOfSubobjectClassifier, 1 ],
@@ -429,7 +429,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfAndWithGivenObjects,
     
 end );
 
-##
+## ∨_a: Pa × Pa → Pa
 AddDerivationToCAP( RelativeTruthMorphismOfOrWithGivenObjects,
         "",
         [ [ CartesianSquareOfSubobjectClassifier, 1 ],
