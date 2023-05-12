@@ -7,17 +7,18 @@
 #! 2 \arrow[r, "d"']                & 3 \arrow[out=0,in=270, loop, "e"]
 #! \end{tikzcd}
 #! \end{center}
-#! The list of all bases elements in $B$ is
+#! The list of all bases elements\footnote{The order of elements is irrelevant.} in $B$ is
 #! \begin{center}
-#! $[ \mathrm{id}_{0}, a, c, ab, cd, abe, cde, abe^2, cde^2, \mathrm{id}_{1}, b, be, be^2, \mathrm{id}_{2}, d, de, de^2, \mathrm{id}_{3}, e, e^2 ]$.
+#! $[ \mathrm{id}_{0}, a, \mathrm{id}_{1}, c, \mathrm{id}_{2}, ab, cd, abe, cde, abe^2, cde^2, b, be, be^2, d, de, de^2, \mathrm{id}_{3}, e, e^2 ]$
 #! \end{center}
 #! Collecting these $20$ morphisms in a table allows us to read out the required key values:
 #! \begin{table}[ht]
 #! \begin{tabular}{llll}
-#!  $B(0,0)=[\mathrm{id}_{0}]$ & $B(0,1)=[a]$& $B(0,2)=[c]$&$B(0,3)=[ab,cd,abe, cde, abe^2, cde^2]$\\
-#!  $B(1,0)=[~]$&$B(1,1)=[\mathrm{id}_{1}]$&$B(1,2)=[~]$&$B(1,3)=[b,be, be^2]$\\
-#!  $B(2,0)=[~]$&$B(2,1)=[~]$&$B(2,2)=[\mathrm{id}_{2}]$& $B(2,3)=[d, de, de^2]$\\
-#!  $B(3,0)=[~]$&$B(3,1)=[~]$&$B(3,2)=[~]$&$B(3,3)=[\mathrm{id}_{3}, e, e^2]$\\
+
+#!  $B(0,0)=[\mathrm{id}_{0}]$&B(1,0)=[~]$&$B(2,0)=[~]$&$B(3,0)=[~]$ \\
+#!  $B(0,1)=[a]$&$B(1,1)=[\mathrm{id}_{1}]$&$B(2,1)=[~]$&$B(3,1)=[~]$ \\
+#!  $B(0,2)=[c]$&$B(1,2)=[~]$&$B(2,2)=[\mathrm{id}_{2}]$&$B(3,2)=[~]$ \\
+#!  $B(0,3)=[ab,cd,abe, cde, abe^2, cde^2]$&$B(1,3)=[b,be, be^2]$&$B(2,3)=[d, de, de^2]$&$B(3,3)=[\mathrm{id}_{3}, e, e^2]$ \\
 #! \end{tabular}
 #! \end{table} \\
 #! \begin{itemize}
@@ -26,20 +27,22 @@
 #!    \item \texttt{nr\_gmors} = 5
 #!    \item \texttt{labels\_gmors} = [ "a", "b", "c", "d", "e" ]
 #!    \item \texttt{nr\_bases\_elms} = 20
-#!    \item \texttt{indices\_objs} = [ 1, 10, 14, 18 ]
-#!    \item \texttt{indices\_gmors} = [ 2, 11, 3, 15, 19 ]
+#!    \item \texttt{indices\_objs} = [ 1, 3, 5, 18 ]
+#!    \item \texttt{indices\_gmors} = [ 2, 12, 4, 15, 19 ]
 #!    \item \texttt{sources\_gmors} = [ 1, 2, 1, 3, 4 ]
 #!    \item \texttt{ranges\_gmors} = [ 2, 4, 3, 4, 4 ]
-#!    \item \texttt{bases\_elms\_comps} = [ [ -1 ], [ 1 ], [ 3 ], [ 1, 2 ], [ 3, 4 ], [ 1, 2, 5 ], [ 3, 4, 5 ], [ 1, 2, 5, 5 ], [ 3, 4, 5, 5 ],
-#!                                          [ -2 ], [ 2 ], [ 2, 5 ], [ 2, 5, 5 ], [ -3 ], [ 4 ], [ 4, 5 ], [ 4, 5, 5 ], [ -4 ], [ 5 ], [ 5, 5 ] ]
-#!    \item \texttt{indices\_of\_bases\_elms} = [ [ [ 1 ], [ 2 ], [ 3 ], [ 4, 5, 6, 7, 8, 9 ] ], [ [  ], [ 10 ], [  ], [ 11, 12, 13 ] ],
-#!          [ [  ], [  ], [ 14 ], [ 15, 16, 17 ] ], [ [  ], [  ], [  ], [ 18, 19, 20 ] ] ]
-#!    \item \texttt{hom\_structure\_objs\_gmors} is a list of length 4 consisting of lists of length 5. For example, the 5'th entry of the second row is the matrix of the
-#!          linear map $$1\bullet(-)\bullet e=\mathrm{Hom}(1,e):\mathrm{Hom}(1,3) \to \mathrm{Hom}(1,3)$$ because 1 is the second object and $e:3 \to 3$ is the 5'th generating morphism in $B$.
-#!          The matrix of the above linear map is clearly [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ].
+#!    \item \texttt{bases\_elms\_comps} = [ [ -1 ], [ 1 ], [ -2 ], [ 3 ], [ -3 ], [ 1, 2 ], [ 3, 4 ], [ 1, 2, 5 ], [ 3, 4, 5 ],
+#!           [ 1, 2, 5, 5 ], [ 3, 4, 5, 5 ], [ 2 ], [ 2, 5 ], [ 2, 5, 5 ], [ 4 ], [ 4, 5 ], [ 4, 5, 5 ], [ -4 ], [ 5 ], [ 5, 5 ] ]
+#!    \item \texttt{indices\_of\_bases\_elms} =  [ [ [ 1 ], [  ], [  ], [  ] ],
+#!                                                 [ [ 2 ], [ 3 ], [  ], [  ] ],
+#!                                                 [ [ 4 ], [  ], [ 5 ], [  ] ],
+#!                                                 [ [ 6, 7, 8, 9, 10, 11 ], [ 12, 13, 14 ], [ 15, 16, 17 ], [ 18, 19, 20 ] ] ]
 #!    \item \texttt{hom\_structure\_gmors\_objs} is a list of length 4 consisting of lists of length 5. For example, the first entry of the 4'th row is the matrix of the
 #!          linear map $$a\bullet(-)\bullet 3=\mathrm{Hom}(a,3):\mathrm{Hom}(1,3) \to \mathrm{Hom}(0,3)$$ because 3 is the 4'th object and $a:0 \to 1$ is the first generating morphism in $B$.
 #!          The matrix of the above linear map is clearly [ [ 1, 0, 0, 0, 0, 0 ], [ 0, 0, 1, 0, 0, 0 ], [ 0, 0, 0, 0, 1, 0 ] ].
+#!    \item \texttt{hom\_structure\_objs\_gmors} is a list of length 4 consisting of lists of length 5. For example, the 5'th entry of the second row is the matrix of the
+#!          linear map $$1\bullet(-)\bullet e=\mathrm{Hom}(1,e):\mathrm{Hom}(1,3) \to \mathrm{Hom}(1,3)$$ because 1 is the second object and $e:3 \to 3$ is the 5'th generating morphism in $B$.
+#!          The matrix of the above linear map is clearly [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ].
 #! \end{itemize}
 #! @EndLatexOnly
 #! @Example
