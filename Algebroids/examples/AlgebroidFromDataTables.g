@@ -30,8 +30,8 @@
 #!    \item \texttt{indices\_gmors} = [ 2, 11, 3, 15, 19 ]
 #!    \item \texttt{sources\_gmors} = [ 1, 2, 1, 3, 4 ]
 #!    \item \texttt{ranges\_gmors} = [ 2, 4, 3, 4, 4 ]
-#!    \item \texttt{bases\_elms\_comps} = [ [ 1 ], [ 2 ], [ 3 ], [ 2, 11 ], [ 3, 15 ], [ 2, 11, 19 ],[ 3, 15, 19 ], [ 2, 11, 19, 19 ],
-#!          [ 3, 15, 19, 19 ], [ 10 ], [ 11 ], [ 11, 19 ], [ 11, 19, 19 ], [ 14 ], [ 15 ], [ 15, 19 ], [ 15, 19, 19 ], [ 18 ], [ 19 ], [ 19, 19 ] ]
+#!    \item \texttt{bases\_elms\_comps} = [ [ -1 ], [ 1 ], [ 3 ], [ 1, 2 ], [ 3, 4 ], [ 1, 2, 5 ], [ 3, 4, 5 ], [ 1, 2, 5, 5 ], [ 3, 4, 5, 5 ],
+#!                                          [ -2 ], [ 2 ], [ 2, 5 ], [ 2, 5, 5 ], [ -3 ], [ 4 ], [ 4, 5 ], [ 4, 5, 5 ], [ -4 ], [ 5 ], [ 5, 5 ] ]
 #!    \item \texttt{indices\_of\_bases\_elms} = [ [ [ 1 ], [ 2 ], [ 3 ], [ 4, 5, 6, 7, 8, 9 ] ], [ [  ], [ 10 ], [  ], [ 11, 12, 13 ] ],
 #!          [ [  ], [  ], [ 14 ], [ 15, 16, 17 ] ], [ [  ], [  ], [  ], [ 18, 19, 20 ] ] ]
 #!    \item \texttt{hom\_structure\_objs\_gmors} is a list of length 4 consisting of lists of length 5. For example, the 5'th entry of the second row is the matrix of the
@@ -183,9 +183,10 @@ HomStructure( PreCompose( [ u, v, w ] ) )
       = PreCompose( HomStructure( v ), HomStructure( u, w ) );
 #! true
 BB := TensorProductOfAlgebroids( B, B );
-#! Q-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[0⊗a:0⊗0-≻0⊗1,0⊗b:0⊗1-≻0⊗3,
-#! 0⊗c:0⊗0-≻0⊗2,..,2⊗d:2⊗2-≻2⊗3,2⊗e:2⊗3-≻2⊗3,3⊗a:3⊗0-≻3⊗1] ) defined
-#! by 16 objects and 40 generating morphisms
+#! Q-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[id(0)⊗a:0⊗0-≻0⊗1,
+#! id(0)⊗b:0⊗1-≻0⊗3,id(0)⊗c:0⊗0-≻0⊗2,..,id(2)⊗d:2⊗2-≻2⊗3,
+#! id(2)⊗e:2⊗3-≻2⊗3,id(3)⊗a:3⊗0-≻3⊗1] ) defined by 16 objects and 40
+#! generating morphisms
 ElementaryTensor( B.0, B.1 );
 #! <(0⊗1)>
 ElementaryTensor( B.a, B.b );

@@ -173,7 +173,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                     return ObjectIndex( Range( logic_new_func_x_3 ) );
                 end );
         end );
-    hoisted_15_1 := deduped_24_1[21];
+    hoisted_15_1 := deduped_24_1[20];
     hoisted_14_1 := List( deduped_30_1, function ( logic_new_func_x_2 )
             return List( logic_new_func_x_2, function ( logic_new_func_x_3 )
                     return ObjectIndex( Source( logic_new_func_x_3 ) );
@@ -191,7 +191,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
         end );
     deduped_7_1 := [ 1 .. Length( deduped_27_1 ) ];
     hoisted_6_1 := List( deduped_27_1, ObjectIndex );
-    deduped_2_1 := deduped_24_1[20];
+    deduped_2_1 := deduped_24_1[19];
     deduped_8_1 := List( deduped_22_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
             hoisted_1_2 := deduped_2_1[ObjectIndex( CAP_JIT_INCOMPLETE_LOGIC( deduped_26_1[logic_new_func_x_2] ) )];
@@ -280,7 +280,7 @@ end
 function ( cat_1, arg2_1, arg3_1 )
     local hoisted_3_1, hoisted_4_1;
     hoisted_4_1 := ObjectList( arg3_1 );
-    hoisted_3_1 := EnhancedDataTables( UnderlyingCategory( cat_1 ) )[20];
+    hoisted_3_1 := EnhancedDataTables( UnderlyingCategory( cat_1 ) )[19];
     return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, Sum( Concatenation( List( ObjectList( arg2_1 ), function ( logic_new_func_x_2 )
                   local hoisted_1_2;
                   hoisted_1_2 := hoisted_3_1[ObjectIndex( logic_new_func_x_2 )];
@@ -304,9 +304,9 @@ function ( cat_1, a_1 )
     deduped_11_1 := EnhancedDataTables( deduped_13_1 );
     deduped_10_1 := [ 1 .. Length( deduped_12_1 ) ];
     hoisted_7_1 := ZeroImmutable( CommutativeRingOfLinearCategory( deduped_13_1 ) );
-    hoisted_6_1 := deduped_11_1[20];
+    hoisted_6_1 := deduped_11_1[19];
     hoisted_4_1 := deduped_11_1[5];
-    hoisted_3_1 := deduped_11_1[17];
+    hoisted_3_1 := deduped_11_1[16];
     hoisted_2_1 := SetOfBasesOfExternalHomsLazyHList( deduped_13_1 );
     deduped_1_1 := List( deduped_12_1, ObjectIndex );
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, MorphismMatrix, List( deduped_10_1, function ( i_2 )
@@ -364,7 +364,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_9_1 := Length( deduped_11_1 );
     hoisted_8_1 := [ 1 .. deduped_9_1 ];
     hoisted_6_1 := CAP_JIT_INCOMPLETE_LOGIC( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( alpha_1 ) )[1] );
-    hoisted_3_1 := EnhancedDataTables( deduped_12_1 )[20];
+    hoisted_3_1 := EnhancedDataTables( deduped_12_1 )[19];
     deduped_5_1 := Concatenation( List( deduped_10_1, function ( logic_new_func_x_2 )
               local hoisted_1_2;
               hoisted_1_2 := hoisted_3_1[ObjectIndex( logic_new_func_x_2 )];
@@ -510,7 +510,7 @@ function ( cat_1, arg2_1 )
                     return ObjectIndex( Range( logic_new_func_x_3 ) );
                 end );
         end );
-    hoisted_5_1 := EnhancedDataTables( deduped_17_1 )[20];
+    hoisted_5_1 := EnhancedDataTables( deduped_17_1 )[19];
     deduped_4_1 := List( deduped_16_1, function ( logic_new_func_x_2 )
             return List( logic_new_func_x_2, function ( logic_new_func_x_3 )
                     return ObjectIndex( Source( logic_new_func_x_3 ) );
@@ -596,7 +596,7 @@ function ( cat_1, arg2_1 )
                     return ObjectIndex( Range( logic_new_func_x_3 ) );
                 end );
         end );
-    hoisted_2_1 := EnhancedDataTables( deduped_8_1 )[20];
+    hoisted_2_1 := EnhancedDataTables( deduped_8_1 )[19];
     hoisted_1_1 := List( deduped_7_1, function ( logic_new_func_x_2 )
             return List( logic_new_func_x_2, function ( logic_new_func_x_3 )
                     return ObjectIndex( Source( logic_new_func_x_3 ) );
@@ -723,7 +723,7 @@ function ( cat_1, alpha_1, beta_1 )
     hoisted_23_1 := List( deduped_36_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, MorphismCoefficients );
         end );
-    hoisted_22_1 := deduped_31_1[21];
+    hoisted_22_1 := deduped_31_1[20];
     deduped_19_1 := ZeroImmutable( deduped_32_1 );
     hoisted_18_1 := CAP_JIT_INCOMPLETE_LOGIC( 1 );
     hoisted_17_1 := List( deduped_33_1, function ( logic_new_func_list_2 )
@@ -741,7 +741,7 @@ function ( cat_1, alpha_1, beta_1 )
                 end );
         end );
     hoisted_15_1 := deduped_31_1[5];
-    hoisted_14_1 := deduped_31_1[17];
+    hoisted_14_1 := deduped_31_1[16];
     hoisted_13_1 := List( deduped_33_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_list_3 )
                     return List( logic_new_func_list_3, MorphismCoefficients );
@@ -772,7 +772,7 @@ function ( cat_1, alpha_1, beta_1 )
                     return ObjectIndex( Source( logic_new_func_x_3 ) );
                 end );
         end );
-    deduped_6_1 := deduped_31_1[20];
+    deduped_6_1 := deduped_31_1[19];
     hoisted_5_1 := List( deduped_36_1, function ( logic_new_func_x_2 )
             return List( logic_new_func_x_2, function ( logic_new_func_x_3 )
                     return ObjectIndex( Range( logic_new_func_x_3 ) );
@@ -881,7 +881,7 @@ function ( cat_1, a_1, b_1 )
     hoisted_7_1 := [ 1 .. Length( deduped_9_1 ) ];
     hoisted_5_1 := ZeroImmutable( CommutativeRingOfLinearCategory( deduped_10_1 ) );
     hoisted_4_1 := List( deduped_9_1, ObjectIndex );
-    hoisted_3_1 := EnhancedDataTables( deduped_10_1 )[20];
+    hoisted_3_1 := EnhancedDataTables( deduped_10_1 )[19];
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, b_1, MorphismMatrix, List( [ 1 .. Length( deduped_8_1 ) ], function ( i_2 )
               local hoisted_1_2, deduped_3_2;
               deduped_3_2 := deduped_8_1[i_2];

@@ -51,7 +51,7 @@ DeclareCategory( "IsAlgebroidFromDataTablesMorphism",
 #!  * <A>indices_gmors</A>: the indices of the generating morphisms in the list-of-all-bases-elements in $B$.
 #!  * <A>sources_gmors</A>: the indices of sources of the generating morphisms in the list of objects of $B$.
 #!  * <A>ranges_gmors</A>: the indices of ranges of the generating morphisms in the list of objects of $B$.
-#!  * <A>bases_elms_comps</A>: a list of length <A>nr_bases_elms</A> of lists of elements in <A>indices_objs</A> or <A>indices_gmors</A>.
+#!  * <A>bases_elms_comps</A>: a list of length <A>nr_bases_elms</A> of lists of elements in <A>[-1,-2,..,-nr_objs]</A> or <A>[1,2,..,nr_gmors]</A>.
 #!     The $i$'th entry identifies the $i$'th element of list-of-all-bases-elements as an identity morphism or as a precomposition of generating morphisms.
 #!  * <A>indices_of_bases_elms</A>: a list $L$ of length <A>nr_objs</A> of lists each of length <A>nr_objs</A> where the entry $L[i][j]$ is the list of indices
 #!    of the basis elements of $\mathrm{Hom}_{B}(u_i,u_j)$ in the list-of-all-bases-elements in $B$ where $u_i$ and $u_j$ are the $i$'th resp. $j$'th objects.
@@ -160,44 +160,40 @@ CapJitAddTypeSignature( "EnhancedDataTables", [ IsAlgebroidFromDataTables ],
                        element_type := rec( filter := IsList,
                                             element_type := rec( filter := IsInt ) ) ),
                   
-                  # (14) pos_of_objs_gmors
-                  rec( filter := IsList,
-                       element_type := rec( filter := IsInt ) ),
-                  
-                  # (15) labels_of_bases_elms
+                  # (14) labels_of_bases_elms
                   rec( filter := IsList,
                        element_type := rec( filter := IsString ) ),
                   
-                  # (16) latex_strings_of_bases_elms
+                  # (15) latex_strings_of_bases_elms
                   rec( filter := IsList,
                        element_type := rec( filter := IsString ) ),
                   
-                  # (17) indices_of_bases_elms
+                  # (16) indices_of_bases_elms
                   rec( filter := IsList,
                        element_type := rec( filter := IsList,
                                             element_type := rec( filter := IsList,
                                                                  element_type := rec( filter := IsInt ) ) ) ),
                   
-                  # (18) hom_structure_objs_gmors
+                  # (17) hom_structure_objs_gmors
                   rec( filter := IsList,
                        element_type := rec( filter := IsList,
                                             element_type := rec( filter := IsList,
                                                                  element_type := rec( filter := IsList,
                                                                                       element_type := rec( filter := IsHomalgRingElement ) ) ) ) ),
                   
-                  # (19) hom_structure_gmors_objs
+                  # (18) hom_structure_gmors_objs
                   rec( filter := IsList,
                        element_type := rec( filter := IsList,
                                             element_type := rec( filter := IsList,
                                                                  element_type := rec( filter := IsList,
                                                                                       element_type := rec( filter := IsHomalgRingElement ) ) ) ) ),
                   
-                  # (20) hom_structure_ranks
+                  # (19) hom_structure_ranks
                   rec( filter := IsList,
                        element_type := rec( filter := IsList,
                                             element_type := rec( filter := IsInt ) ) ),
                   
-                  # (21) hom_structure_on_bases_elms
+                  # (20) hom_structure_on_bases_elms
                   rec( filter := IsList,
                        element_type := rec( filter := IsList,
                                             element_type := rec( filter := IsList,
@@ -208,13 +204,13 @@ CapJitAddTypeSignature( "EnhancedDataTables", [ IsAlgebroidFromDataTables ],
                                                                                                                                                       element_type := rec( filter := IsList,
                                                                                                                                                                             element_type := rec( filter := IsHomalgRingElement ) ) ) ) ) ) ) ) ),
                   
-                  # (22) indices_composable_gmors
+                  # (21) indices_composable_gmors
                   rec( filter := IsList,
                        element_type := rec( filter := IsList,
                                             element_type := rec( filter := IsList,
                                                                  element_type := rec( filter := IsInt ) ) ) ),
                   
-                  # (23) colors
+                  # (22) colors
                   rec( filter := IsRecord ) ] );
 
 end );
