@@ -83,13 +83,13 @@ end );
 DeclareAttribute( "SetOfObjects",
         IsCategoryFromNerveData );
 
-CapJitAddTypeSignature( "SetOfObjects", [ IsCategoryFromNerveData ],
-  function ( input_types )
-    
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "SetOfObjects", [ IsCategoryFromNerveData ],
+#  function ( input_types )
+#    
+#    return rec( filter := IsList,
+#                element_type := CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+#    
+#end );
 
 #! @Description
 #!  The finite set of morphisms of the category <A>C</A> created from nerve data.
@@ -101,30 +101,30 @@ DeclareAttribute( "SetOfMorphisms",
 DeclareAttribute( "IndicesOfGeneratingMorphisms",
         IsCategoryFromNerveData );
 
-CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromNerveData ],
-  function ( input_types )
-    
-    return rec( filter := IsList,
-                element_type := rec( filter := IsInt ) );
-    
-end );
+#CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromNerveData ],
+#  function ( input_types )
+#    
+#    return rec( filter := IsList,
+#                element_type := rec( filter := IsInt ) );
+#    
+#end );
 
 DeclareAttribute( "RelationsAmongGeneratingMorphisms",
         IsCategoryFromNerveData );
 
-CapJitAddTypeSignature( "RelationsAmongGeneratingMorphisms", [ IsCategoryFromNerveData ],
-  function ( input_types )
-    
-    return rec( filter := IsList,
-                element_type :=
-                rec( filter := IsNTuple,
-                     element_types := [
-                             rec( filter := IsList,
-                                  element_type := rec( filter := IsInt ) ),
-                             rec( filter := IsList,
-                                  element_type := rec( filter := IsInt ) ) ] ) );
-    
-end );
+#CapJitAddTypeSignature( "RelationsAmongGeneratingMorphisms", [ IsCategoryFromNerveData ],
+#  function ( input_types )
+#    
+#    return rec( filter := IsList,
+#                element_type :=
+#                rec( filter := IsNTuple,
+#                     element_types :=
+#                     [ rec( filter := IsList,
+#                            element_type := rec( filter := IsInt ) ),
+#                       rec( filter := IsList,
+#                            element_type := rec( filter := IsInt ) ) ] ) );
+#    
+#end );
 
 #! @Description
 #!  The finite set of morphisms generating the category <A>C</A> created from nerve data.
@@ -133,13 +133,13 @@ end );
 DeclareAttribute( "SetOfGeneratingMorphisms",
         IsCategoryFromNerveData );
 
-CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsCategoryFromNerveData ],
-  function ( input_types )
-    
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsCategoryFromNerveData ],
+#  function ( input_types )
+#    
+#    return rec( filter := IsList,
+#                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
+#    
+#end );
 
 #! @Description
 #!  The number of morphisms in the category <A>C</A> created from nerve data.

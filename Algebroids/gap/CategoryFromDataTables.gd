@@ -121,30 +121,30 @@ DeclareAttribute( "SetOfMorphisms",
 DeclareAttribute( "IndicesOfGeneratingMorphisms",
         IsCategoryFromDataTables );
 
-CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromDataTables ],
-  function ( input_types )
-    
-    return rec( filter := IsList,
-                element_type := rec( filter := IsInt ) );
-    
-end );
+#CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromDataTables ],
+#  function ( input_types )
+#    
+#    return rec( filter := IsList,
+#                element_type := rec( filter := IsInt ) );
+#    
+#end );
 
 DeclareAttribute( "RelationsAmongGeneratingMorphisms",
         IsCategoryFromDataTables );
 
-CapJitAddTypeSignature( "RelationsAmongGeneratingMorphisms", [ IsCategoryFromDataTables ],
-  function ( input_types )
-    
-    return rec( filter := IsList,
-                element_type :=
-                rec( filter := IsNTuple,
-                     element_types := [
-                             rec( filter := IsList,
-                                  element_type := rec( filter := IsInt ) ),
-                             rec( filter := IsList,
-                                  element_type := rec( filter := IsInt ) ) ] ) );
-    
-end );
+#CapJitAddTypeSignature( "RelationsAmongGeneratingMorphisms", [ IsCategoryFromDataTables ],
+#  function ( input_types )
+#    
+#    return rec( filter := IsList,
+#                element_type :=
+#                rec( filter := IsNTuple,
+#                     element_types :=
+#                     [ rec( filter := IsList,
+#                            element_type := rec( filter := IsInt ) ),
+#                       rec( filter := IsList,
+#                            element_type := rec( filter := IsInt ) ) ] ) );
+#    
+#end );
 
 #! @Description
 #!  The finite set of morphisms generating the category <A>C</A> created from data tables.
