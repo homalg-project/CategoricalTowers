@@ -72,9 +72,9 @@
         list of objects of [23XB[123X.[133X
   
   [30X    [33X[0;6Y[3Xbases_elms_comps[103X:  a list of length [3Xnr_bases_elms[103X of lists of elements
-        in  [3Xindices_objs[103X  or [3Xindices_gmors[103X. The [23Xi[123X'th entry identifies the [23Xi[123X'th
-        element  of list-of-all-bases-elements as an identity morphism or as a
-        precomposition of generating morphisms.[133X
+        in [3X[-1,-2,..,-nr_objs][103X or [3X[1,2,..,nr_gmors][103X. The [23Xi[123X'th entry identifies
+        the [23Xi[123X'th element of list-of-all-bases-elements as an identity morphism
+        or as a precomposition of generating morphisms.[133X
   
   [30X    [33X[0;6Y[3Xindices_of_bases_elms[103X:  a  list  [23XL[123X  of length [3Xnr_objs[103X of lists each of
         length  [3Xnr_objs[103X  where the entry [23XL[i][j][123X is the list of indices of the
@@ -233,9 +233,10 @@
     [4X[25X>[125X [27X      = PreCompose( HomStructure( v ), HomStructure( u, w ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XBB := TensorProductOfAlgebroids( B, B );[127X[104X
-    [4X[28XQ-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[0⊗a:0⊗0-≻0⊗1,0⊗b:0⊗1-≻0⊗3,[128X[104X
-    [4X[28X0⊗c:0⊗0-≻0⊗2,..,2⊗d:2⊗2-≻2⊗3,2⊗e:2⊗3-≻2⊗3,3⊗a:3⊗0-≻3⊗1] ) defined[128X[104X
-    [4X[28Xby 16 objects and 40 generating morphisms[128X[104X
+    [4X[28XQ-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[id(0)⊗a:0⊗0-≻0⊗1,[128X[104X
+    [4X[28Xid(0)⊗b:0⊗1-≻0⊗3,id(0)⊗c:0⊗0-≻0⊗2,..,id(2)⊗d:2⊗2-≻2⊗3,[128X[104X
+    [4X[28Xid(2)⊗e:2⊗3-≻2⊗3,id(3)⊗a:3⊗0-≻3⊗1] ) defined by 16 objects and 40[128X[104X
+    [4X[28Xgenerating morphisms[128X[104X
     [4X[25Xgap>[125X [27XElementaryTensor( B.0, B.1 );[127X[104X
     [4X[28X<(0⊗1)>[128X[104X
     [4X[25Xgap>[125X [27XElementaryTensor( B.a, B.b );[127X[104X

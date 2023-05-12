@@ -69,7 +69,7 @@
     [4X[25X>[125X [27X         sources_gmors := [ 1 ],[127X[104X
     [4X[25X>[125X [27X         indices_gmors := [ 2 ],[127X[104X
     [4X[25X>[125X [27X         nr_bases_elms := 3,[127X[104X
-    [4X[25X>[125X [27X         bases_elms_comps := [ [ 1 ], [ 2 ], [ 2, 2 ] ],[127X[104X
+    [4X[25X>[125X [27X         bases_elms_comps := [ [ -1 ], [ 1 ], [ 1, 1 ] ],[127X[104X
     [4X[25X>[125X [27X         indices_of_bases_elms := [ [ [ 1, 2, 3 ] ] ],[127X[104X
     [4X[25X>[125X [27X         hom_structure_gmors_objs := [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ],[127X[104X
     [4X[25X>[125X [27X         hom_structure_objs_gmors := [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ] ) ];;[127X[104X
