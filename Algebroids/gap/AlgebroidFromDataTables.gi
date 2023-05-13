@@ -369,7 +369,7 @@ InstallMethod( AlgebroidFromDataTables,
                             if pair[2] = 1 then
                                 return pair[1];
                             else
-                                return Concatenation( "{", pair[1], "}^{", String( pair[2] ), "}" );
+                                return Concatenation( pair[1], "^{", String( pair[2] ), "}" );
                             fi;
                           end ) , "" ) );
     fi;
@@ -1076,34 +1076,34 @@ InstallMethodWithCache( TensorProductOfAlgebroids,
     
     data!.labels_objs  := _ConcatenationLazyHLists_( LazyHList( data_1[3], l -> LazyHList( data_2[3], r -> Concatenation( l, "⊗", r ) ) ) );
     
-    data!.latex_strings_objs := _ConcatenationLazyHLists_( LazyHList( data_1[4], l -> LazyHList( data_2[4], r -> Concatenation( l, "{\\otimes}", r ) ) ) );
+    data!.latex_strings_objs := _ConcatenationLazyHLists_( LazyHList( data_1[4], l -> LazyHList( data_2[4], r -> Concatenation( l, "\\otimes ", r ) ) ) );
     
     data!.nr_gmors := data_1[2] * data_2[6] + data_1[6] * data_2[2];
     
     data!.indices_gmors :=
-                    _ConcatenationLazyHLists_(
-                        [ _ConcatenationLazyHLists_( LazyHList( data_1[5], l -> LazyHList( data_2[9], r -> (l-1) * data_2[12] + r ) ) ),
-                          _ConcatenationLazyHLists_( LazyHList( data_1[9], l -> LazyHList( data_2[5], r -> (l-1) * data_2[12] + r ) ) ) ] );
+        _ConcatenationLazyHLists_(
+            [ _ConcatenationLazyHLists_( LazyHList( data_1[5], l -> LazyHList( data_2[9], r -> (l-1) * data_2[12] + r ) ) ),
+              _ConcatenationLazyHLists_( LazyHList( data_1[9], l -> LazyHList( data_2[5], r -> (l-1) * data_2[12] + r ) ) ) ] );
     
     data!.labels_gmors :=
-                    _ConcatenationLazyHLists_(
-                        [ _ConcatenationLazyHLists_( LazyHList( data_1[3], l -> LazyHList( data_2[7], r -> Concatenation( "id(", l, ")⊗", r ) ) ) ),
-                          _ConcatenationLazyHLists_( LazyHList( data_1[7], l -> LazyHList( data_2[3], r -> Concatenation( l, "⊗id(", r, ")" ) ) ) ) ] );
+        _ConcatenationLazyHLists_(
+            [ _ConcatenationLazyHLists_( LazyHList( data_1[14]{ListOfValues(data_1[5])}, l -> LazyHList( data_2[7], r -> Concatenation( l, "⊗", r ) ) ) ),
+              _ConcatenationLazyHLists_( LazyHList( data_1[7], l -> LazyHList( data_2[14]{ListOfValues(data_2[5])}, r -> Concatenation( l, "⊗", r ) ) ) ) ] );
     
     data!.latex_strings_gmors :=
-                    _ConcatenationLazyHLists_(
-                        [ _ConcatenationLazyHLists_( LazyHList( data_1[4], l -> LazyHList( data_2[8], r -> Concatenation( "id_{", l, "}{\\otimes}", r ) ) ) ),
-                          _ConcatenationLazyHLists_( LazyHList( data_1[8], l -> LazyHList( data_2[4], r -> Concatenation( l, "{\\otimes}id_{", r, "}" ) ) ) ) ] );
+        _ConcatenationLazyHLists_(
+            [ _ConcatenationLazyHLists_( LazyHList( data_1[15]{ListOfValues(data_1[5])}, l -> LazyHList( data_2[8], r -> Concatenation( l, "\\otimes ", r ) ) ) ),
+              _ConcatenationLazyHLists_( LazyHList( data_1[8], l -> LazyHList( data_2[15]{ListOfValues(data_2[5])}, r -> Concatenation( l, "\\otimes ", r ) ) ) ) ] );
 
     data!.sources_gmors :=
-                    _ConcatenationLazyHLists_(
-                        [ _ConcatenationLazyHLists_( LazyHList( [ 1 .. data_1[2] ], l -> LazyHList( data_2[10], r -> (l-1) * data_2[2] + r ) ) ),
-                          _ConcatenationLazyHLists_( LazyHList( data_1[10], l -> LazyHList( [ 1 .. data_2[2] ], r -> (l-1) * data_2[2] + r ) ) ) ] );
+        _ConcatenationLazyHLists_(
+            [ _ConcatenationLazyHLists_( LazyHList( [ 1 .. data_1[2] ], l -> LazyHList( data_2[10], r -> (l-1) * data_2[2] + r ) ) ),
+              _ConcatenationLazyHLists_( LazyHList( data_1[10], l -> LazyHList( [ 1 .. data_2[2] ], r -> (l-1) * data_2[2] + r ) ) ) ] );
     
     data!.ranges_gmors :=
-                    _ConcatenationLazyHLists_(
-                        [ _ConcatenationLazyHLists_( LazyHList( [ 1 .. data_1[2] ], l -> LazyHList( data_2[11], r -> (l-1) * data_2[2] + r ) ) ),
-                          _ConcatenationLazyHLists_( LazyHList( data_1[11], l -> LazyHList( [ 1 .. data_2[2] ], r -> (l-1) * data_2[2] + r ) ) ) ] );
+        _ConcatenationLazyHLists_(
+            [ _ConcatenationLazyHLists_( LazyHList( [ 1 .. data_1[2] ], l -> LazyHList( data_2[11], r -> (l-1) * data_2[2] + r ) ) ),
+              _ConcatenationLazyHLists_( LazyHList( data_1[11], l -> LazyHList( [ 1 .. data_2[2] ], r -> (l-1) * data_2[2] + r ) ) ) ] );
     
     data!.hom_structure_objs_gmors :=
         _ConcatenationLazyHLists_(
@@ -1198,7 +1198,7 @@ InstallMethodWithCache( TensorProductOfAlgebroids,
         _ConcatenationLazyHLists_( LazyHList( data_1[14], l -> LazyHList( data_2[14], r -> Concatenation( l, "⊗", r ) ) ) );
     
     data.latex_strings_of_bases_elms :=
-        _ConcatenationLazyHLists_( LazyHList( data_1[15], l -> LazyHList( data_2[15], r -> Concatenation( l, "{\\otimes}", r ) ) ) );
+        _ConcatenationLazyHLists_( LazyHList( data_1[15], l -> LazyHList( data_2[15], r -> Concatenation( l, "\\otimes ", r ) ) ) );
     
     data!.indices_of_bases_elms :=
         _ConcatenationLazyHLists_( LazyHList( [ 1 .. data_1[2] ], i -> LazyHList( [ 1 .. data_2[2] ],

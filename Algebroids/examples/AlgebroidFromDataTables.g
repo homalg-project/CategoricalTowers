@@ -103,7 +103,7 @@ hom_03 := BasisOfExternalHom( B.("0"), B.("3") );
 alpha := 2*hom_03[1] + 3*hom_03[6];
 #! <2*a•b + 3*c•d•e^2:(0) -≻ (3)>
 LaTeXOutput( alpha );
-#! "{0}-\\left({2\\cdot {a}{b} + 3\\cdot {c}{d}{{e}}^{2}}\\right)\\rightarrow{3}"
+#! "{0}-\\left({2\\cdot {a}{b} + 3\\cdot {c}{d}{e}^{2}}\\right)\\rightarrow{3}"
 alpha = CreateMorphism( B, B.("0"), [2, 0, 0, 0, 0, 3 ], B.("3") );
 #! true
 DecompositionOfMorphismInAlgebroid( alpha );
@@ -186,10 +186,9 @@ HomStructure( PreCompose( [ u, v, w ] ) )
       = PreCompose( HomStructure( v ), HomStructure( u, w ) );
 #! true
 BB := TensorProductOfAlgebroids( B, B );
-#! Q-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[id(0)⊗a:0⊗0-≻0⊗1,
-#! id(0)⊗b:0⊗1-≻0⊗3,id(0)⊗c:0⊗0-≻0⊗2,..,id(2)⊗d:2⊗2-≻2⊗3,
-#! id(2)⊗e:2⊗3-≻2⊗3,id(3)⊗a:3⊗0-≻3⊗1] ) defined by 16 objects and 40
-#! generating morphisms
+#! Q-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[id(0)⊗a:0⊗0-≻0⊗1,id(0)⊗b:0⊗1-≻0⊗3
+#! ,id(0)⊗c:0⊗0-≻0⊗2,..,e⊗id(1):3⊗1-≻3⊗1,e⊗id(2):3⊗2-≻3⊗2,e⊗id(3):3⊗3-≻3⊗3] )
+#! defined by 16 objects and 40 generating morphisms
 ElementaryTensor( B.0, B.1 );
 #! <(0⊗1)>
 ElementaryTensor( B.a, B.b );
