@@ -536,9 +536,9 @@ InstallMethod( AlgebroidFromDataTables,
                                     { l, i, j } -> Concatenation( l, ":", input_data.labels_objs[i], "-≻", input_data.labels_objs[j] ) ), "," ),
                               ",..,",
                               JoinStringsWithSeparator(
-                                  ListN( input_data.labels_gmors{[input_data.nr_objs - 2 .. input_data.nr_objs]},
-                                         input_data.sources_gmors{[input_data.nr_objs - 2 .. input_data.nr_objs]},
-                                         input_data.ranges_gmors{[input_data.nr_objs - 2 .. input_data.nr_objs]},
+                                  ListN( input_data.labels_gmors{[input_data.nr_gmors - 2 .. input_data.nr_gmors]},
+                                         input_data.sources_gmors{[input_data.nr_gmors - 2 .. input_data.nr_gmors]},
+                                         input_data.ranges_gmors{[input_data.nr_gmors - 2 .. input_data.nr_gmors]},
                                             { l, i, j } -> Concatenation( l, ":", input_data.labels_objs[i], "-≻", input_data.labels_objs[j] ) ), "," ) );
         
         fi;
