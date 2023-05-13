@@ -7,10 +7,10 @@
                                     quivers [101X
   
   
-                                   2023.05-04
+                                   2023.05-09
   
   
-                                  12 May 2023
+                                  13 May 2023
   
   
                                 Mohamed Barakat
@@ -105,25 +105,26 @@
       2.2-6 HomStructureOnBasisPaths
       2.2-7 SetOfObjects
       2.2-8 AssignSetOfObjects
-      2.2-9 SetOfGeneratingMorphisms
+      2.2-9 SetOfMorphisms
       2.2-10 SetOfGeneratingMorphisms
       2.2-11 SetOfGeneratingMorphisms
       2.2-12 SetOfGeneratingMorphisms
-      2.2-13 AssignSetOfGeneratingMorphisms
-      2.2-14 RelationsOfFpCategory
-      2.2-15 OppositeFpCategory
-      2.2-16 Antipode
-      2.2-17 UnderlyingVertex
-      2.2-18 UnderlyingQuiverAlgebraElement
-      2.2-19 UnderlyingAlgebra
-      2.2-20 Parity
-      2.2-21 POW
-      2.2-22 NerveTruncatedInDegree2AsFunctor
-      2.2-23 YonedaFibrationAsNaturalTransformation
-      2.2-24 YonedaProjectionAsNaturalEpimorphism
-      2.2-25 YonedaCompositionAsNaturalEpimorphism
-      2.2-26 TruthMorphismOfTrueToSieveFunctor
-      2.2-27 SieveFunctor
+      2.2-13 SetOfGeneratingMorphisms
+      2.2-14 AssignSetOfGeneratingMorphisms
+      2.2-15 RelationsOfFpCategory
+      2.2-16 OppositeFpCategory
+      2.2-17 Antipode
+      2.2-18 UnderlyingVertex
+      2.2-19 UnderlyingQuiverAlgebraElement
+      2.2-20 UnderlyingAlgebra
+      2.2-21 Parity
+      2.2-22 POW
+      2.2-23 NerveTruncatedInDegree2AsFunctor
+      2.2-24 YonedaFibrationAsNaturalTransformation
+      2.2-25 YonedaProjectionAsNaturalEpimorphism
+      2.2-26 YonedaCompositionAsNaturalEpimorphism
+      2.2-27 TruthMorphismOfTrueToSieveFunctor
+      2.2-28 SieveFunctor
     2.3 [33X[0;0YOperations[133X
       2.3-1 TrivialCategory
       2.3-2 \*
@@ -148,13 +149,15 @@
     3.1 [33X[0;0YAttributes[133X
       3.1-1 NerveData
       3.1-2 SetOfObjects
-      3.1-3 SetOfGeneratingMorphisms
-      3.1-4 Size
-      3.1-5 OppositeCategoryFromNerveData
+      3.1-3 SetOfMorphisms
+      3.1-4 SetOfGeneratingMorphisms
+      3.1-5 Size
+      3.1-6 OppositeCategoryFromNerveData
     3.2 [33X[0;0YConstructors[133X
       3.2-1 CategoryFromNerveData
       3.2-2 CategoryFromNerveData
-      3.2-3 CreateObject
+      3.2-3 CategoryFromNerveData
+      3.2-4 CreateObject
     3.3 [33X[0;0YGAP categories[133X
       3.3-1 IsCategoryFromNerveData
       3.3-2 IsCellInCategoryFromNerveData
@@ -233,75 +236,78 @@
       5.5-4 IsAlgebroid
       5.5-5 IsAlgebraAsCategory
       5.5-6 IsAlgebroidMorphism
-  6 [33X[0;0YCategory of algebroids[133X
-    6.1 [33X[0;0YProperties[133X
-      6.1-1 IsCommutative
-      6.1-2 IsCounitary
-      6.1-3 IsCoassociative
-    6.2 [33X[0;0YAttributes[133X
-      6.2-1 AsCapCategory
-      6.2-2 AsCapFunctor
-    6.3 [33X[0;0YOperations[133X
-      6.3-1 Twist
-    6.4 [33X[0;0YConstructors[133X
-      6.4-1 CategoryOfAlgebroids
-      6.4-2 CategoryOfAlgebroidsObject
-      6.4-3 CategoryOfAlgebroidsMorphism
-      6.4-4 CategoryOfAlgebroidsMorphism
-    6.5 [33X[0;0YGAP categories[133X
-      6.5-1 IsCategoryOfAlgebroidsObject
-      6.5-2 IsCategoryOfAlgebroidsMorphism
-  7 [33X[0;0YBialgebroids as algebroids with more structure[133X
+  6 [33X[0;0YAlgebroids from data tables[133X
+    6.1 [33X[0;0YAttributes[133X
+      6.1-1 DataTablesOfCategory
+      6.1-2 IsomorphismOntoAlgebroidFromDataTables
+      6.1-3 IsomorphismFromAlgebroidFromDataTables
+      6.1-4 QuotientCategory
+      6.1-5 EnhancedDataTables
+      6.1-6 SetOfObjects
+      6.1-7 SetOfGeneratingMorphisms
+      6.1-8 SetOfBasesOfExternalHoms
+    6.2 [33X[0;0YOperations[133X
+      6.2-1 AssignSetOfObjects
+      6.2-2 AssignSetOfGeneratingMorphisms
+      6.2-3 CreateObject
+      6.2-4 ObjectIndex
+      6.2-5 CreateMorphism
+      6.2-6 MorphismCoefficients
+      6.2-7 MorphismSupport
+      6.2-8 DecompositionOfMorphismInAlgebroid
+      6.2-9 OppositeAlgebroid
+      6.2-10 TensorProductOfAlgebroids
+      6.2-11 \*
+      6.2-12 ElementaryTensor
+      6.2-13 ElementaryTensor
+      6.2-14 AlgebroidAsObjectInPreSheavesCategory
+      6.2-15 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory
+    6.3 [33X[0;0YConstructors[133X
+      6.3-1 AlgebroidFromDataTables
+    6.4 [33X[0;0YGAP categories[133X
+      6.4-1 IsAlgebroidFromDataTablesObject
+      6.4-2 IsCellInAlgebroidFromDataTables
+      6.4-3 IsAlgebroidFromDataTables
+      6.4-4 IsAlgebroidFromDataTablesMorphism
+  7 [33X[0;0YCategory of algebroids[133X
     7.1 [33X[0;0YProperties[133X
-      7.1-1 IsCocommutative
-      7.1-2 IsHopfAlgebroid
+      7.1-1 IsCommutative
+      7.1-2 IsCounitary
+      7.1-3 IsCoassociative
     7.2 [33X[0;0YAttributes[133X
-      7.2-1 Counit
-      7.2-2 Comultiplication
-    7.3 [33X[0;0YConstructors[133X
-      7.3-1 AddBialgebroidStructure
-      7.3-2 AddAntipode
-    7.4 [33X[0;0YGAP categories[133X
-      7.4-1 IsBialgebroid
-  8 [33X[0;0YPrecompilation[133X
-  9 [33X[0;0YAlgebroids from data tables[133X
-    9.1 [33X[0;0YGAP categories[133X
-      9.1-1 IsAlgebroidFromDataTablesObject
-      9.1-2 IsCellInAlgebroidFromDataTables
-      9.1-3 IsAlgebroidFromDataTables
-      9.1-4 IsAlgebroidFromDataTablesMorphism
-    9.2 [33X[0;0YConstructors[133X
-      9.2-1 AlgebroidFromDataTables
-      9.2-2 DataTablesOfCategory
-      9.2-3 IsomorphismOntoAlgebroidFromDataTables
-      9.2-4 IsomorphismFromAlgebroidFromDataTables
-      9.2-5 QuotientCategory
-      9.2-6 EnhancedDataTables
-      9.2-7 SetOfObjects
-      9.2-8 SetOfGeneratingMorphisms
-      9.2-9 SetOfBasesOfExternalHoms
-      9.2-10 AssignSetOfObjects
-      9.2-11 AssignSetOfGeneratingMorphisms
-      9.2-12 CreateObject
-      9.2-13 ObjectIndex
-      9.2-14 CreateMorphism
-      9.2-15 MorphismCoefficients
-      9.2-16 MorphismSupport
-      9.2-17 DecompositionOfMorphismInAlgebroid
-      9.2-18 OppositeAlgebroid
-      9.2-19 TensorProductOfAlgebroids
-      9.2-20 \*
-      9.2-21 ElementaryTensor
-      9.2-22 ElementaryTensor
-      9.2-23 AlgebroidAsObjectInPreSheavesCategory
-      9.2-24 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory
+      7.2-1 AsCapCategory
+      7.2-2 AsCapFunctor
+    7.3 [33X[0;0YOperations[133X
+      7.3-1 Twist
+    7.4 [33X[0;0YConstructors[133X
+      7.4-1 CategoryOfAlgebroids
+      7.4-2 CategoryOfAlgebroidsObject
+      7.4-3 CategoryOfAlgebroidsMorphism
+      7.4-4 CategoryOfAlgebroidsMorphism
+    7.5 [33X[0;0YGAP categories[133X
+      7.5-1 IsCategoryOfAlgebroidsObject
+      7.5-2 IsCategoryOfAlgebroidsMorphism
+  8 [33X[0;0YBialgebroids as algebroids with more structure[133X
+    8.1 [33X[0;0YProperties[133X
+      8.1-1 IsCocommutative
+      8.1-2 IsHopfAlgebroid
+    8.2 [33X[0;0YAttributes[133X
+      8.2-1 Counit
+      8.2-2 Comultiplication
+    8.3 [33X[0;0YConstructors[133X
+      8.3-1 AddBialgebroidStructure
+      8.3-2 AddAntipode
+    8.4 [33X[0;0YGAP categories[133X
+      8.4-1 IsBialgebroid
+  9 [33X[0;0YPrecompilation[133X
   10 [33X[0;0YTools[133X
     10.1 [33X[0;0YTools for quivers[133X
       10.1-1 DefiningTripleOfAQuiver
     10.2 [33X[0;0YTools for categories[133X
       10.2-1 NerveTruncatedInDegree2Data
-      10.2-2 DataTablesOfCategory
-      10.2-3 OppositeFiniteCategory
+      10.2-2 IndicesOfGeneratingMorphismsFromHomStructure
+      10.2-3 DataTablesOfCategory
+      10.2-4 OppositeFiniteCategory
   11 [33X[0;0YExamples and Tests[133X
     11.1 [33X[0;0YAdelman 5 lemma[133X
     11.2 [33X[0;0YBasics of additive closure[133X

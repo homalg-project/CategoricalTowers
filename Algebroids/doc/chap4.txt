@@ -86,6 +86,10 @@
     [4X[28X7[128X[104X
     [4X[25Xgap>[125X [27XNerveTruncatedInDegree2Data( C ) = NerveTruncatedInDegree2Data( Delta1 );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIndicesOfGeneratingMorphisms( C );[127X[104X
+    [4X[28X[ 1, 2, 3 ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( C );[127X[104X
+    [4X[28X[ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1) ][128X[104X
     [4X[25Xgap>[125X [27XDisplay( C );[127X[104X
     [4X[28XA CAP category with name[128X[104X
     [4X[28XFreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )[128X[104X
@@ -123,13 +127,13 @@
     [4X[25Xgap>[125X [27XIsOne( idC1 );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xsigma := CreateMorphism( C, 5 );[127X[104X
-    [4X[28X(C1)-[(5)]->(C1)[128X[104X
+    [4X[28X(C1)-[(id*s)]->(C1)[128X[104X
     [4X[25Xgap>[125X [27XIsEndomorphism( sigma );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( sigma );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xtau := CreateMorphism( C, 6 );[127X[104X
-    [4X[28X(C1)-[(6)]->(C1)[128X[104X
+    [4X[28X(C1)-[(id*t)]->(C1)[128X[104X
     [4X[25Xgap>[125X [27XIsEndomorphism( tau );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( tau );[127X[104X
@@ -186,6 +190,10 @@
     [4X[28X/ [ s*id = C0, t*id = C0 ] )[128X[104X
     [4X[25Xgap>[125X [27XIsIdenticalObj( OppositeCategoryFromDataTables( C_op ), C );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIndicesOfGeneratingMorphisms( C_op );[127X[104X
+    [4X[28X[ 3, 1, 2 ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( C_op );[127X[104X
+    [4X[28X[ (C0)-[(id)]->(C1), (C1)-[(s)]->(C0), (C1)-[(t)]->(C0) ][128X[104X
   [4X[32X[104X
   
   [1X4.2-2 CategoryFromDataTables[101X

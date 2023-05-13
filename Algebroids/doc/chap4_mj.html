@@ -164,6 +164,10 @@ FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" 
 7
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NerveTruncatedInDegree2Data( C ) = NerveTruncatedInDegree2Data( Delta1 );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IndicesOfGeneratingMorphisms( C );</span>
+[ 1, 2, 3 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( C );</span>
+[ (C1)-[(id)]-&gt;(C0), (C0)-[(s)]-&gt;(C1), (C0)-[(t)]-&gt;(C1) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( C );</span>
 A CAP category with name
 FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) )
@@ -201,13 +205,13 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( idC1 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sigma := CreateMorphism( C, 5 );</span>
-(C1)-[(5)]-&gt;(C1)
+(C1)-[(id*s)]-&gt;(C1)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEndomorphism( sigma );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( sigma );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tau := CreateMorphism( C, 6 );</span>
-(C1)-[(6)]-&gt;(C1)
+(C1)-[(id*t)]-&gt;(C1)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEndomorphism( tau );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( tau );</span>
@@ -264,6 +268,10 @@ FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" 
 / [ s*id = C0, t*id = C0 ] )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( OppositeCategoryFromDataTables( C_op ), C );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IndicesOfGeneratingMorphisms( C_op );</span>
+[ 3, 1, 2 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( C_op );</span>
+[ (C0)-[(id)]-&gt;(C1), (C1)-[(s)]-&gt;(C0), (C1)-[(t)]-&gt;(C0) ]
 </pre></div>
 
 <p><a id="X7BFA46AA7E326524" name="X7BFA46AA7E326524"></a></p>

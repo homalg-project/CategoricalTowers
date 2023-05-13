@@ -104,14 +104,22 @@
   variables.  Names  of  the variables are the concatenation of [3Xlabel[103X with the
   names of the defining vertices.[133X
   
-  [1X2.2-9 SetOfGeneratingMorphisms[101X
+  [1X2.2-9 SetOfMorphisms[101X
+  
+  [33X[1;0Y[29X[2XSetOfMorphisms[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  finite  set  of  morphisms  of  the  finitely presented category [13Xfinite[113X
+  category [3XC[103X.[133X
+  
+  [1X2.2-10 SetOfGeneratingMorphisms[101X
   
   [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
   [33X[0;0YThe finite set of morphisms generating the finitely presented category [3XC[103X.[133X
   
-  [1X2.2-10 SetOfGeneratingMorphisms[101X
+  [1X2.2-11 SetOfGeneratingMorphisms[101X
   
   [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XC[103X, [3Xobj_1[103X, [3Xobj_2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -119,7 +127,7 @@
   [33X[0;0YThe  subset  of  the  generating  morphisms  that start at [3Xobj_1[103X and ends at
   [3Xobj_2[103X.[133X
   
-  [1X2.2-11 SetOfGeneratingMorphisms[101X
+  [1X2.2-12 SetOfGeneratingMorphisms[101X
   
   [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3Xobj_1[103X, [3Xobj_2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -127,7 +135,7 @@
   [33X[0;0YThe  subset  of  the  generating  morphisms  that start at [3Xobj_1[103X and ends at
   [3Xobj_2[103X.[133X
   
-  [1X2.2-12 SetOfGeneratingMorphisms[101X
+  [1X2.2-13 SetOfGeneratingMorphisms[101X
   
   [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XC[103X, [3Xi[103X, [3Xj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -135,7 +143,7 @@
   [33X[0;0YDelegates     to     [10XSetOfGeneratingMorphisms[110X(     [3XC[103X,    [10XSetOfObjects[110X([3XC[103X)[[3Xi[103X],
   [10XSetOfObjects[110X([3XC[103X)[[3Xj[103X] ).[133X
   
-  [1X2.2-13 AssignSetOfGeneratingMorphisms[101X
+  [1X2.2-14 AssignSetOfGeneratingMorphisms[101X
   
   [33X[1;0Y[29X[2XAssignSetOfGeneratingMorphisms[102X( [3XC[103X, [3Xlabel[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -144,7 +152,7 @@
   global variables. Names of the variables are the concatenation of [3Xlabel[103X with
   the names of the defining arrows.[133X
   
-  [1X2.2-14 RelationsOfFpCategory[101X
+  [1X2.2-15 RelationsOfFpCategory[101X
   
   [33X[1;0Y[29X[2XRelationsOfFpCategory[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XQPA[105X path algebra[133X
@@ -152,7 +160,7 @@
   [33X[0;0YThe  relations  of  the  finitely  presented  category  [3XC[103X  corresponding  to
   [10XRelationsOfAlgebra( UnderlyingQuiverAlgebra( [3XC[103X[10X ) )[110X.[133X
   
-  [1X2.2-15 OppositeFpCategory[101X
+  [1X2.2-16 OppositeFpCategory[101X
   
   [33X[1;0Y[29X[2XOppositeFpCategory[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
@@ -160,14 +168,14 @@
   [33X[0;0YThe  finitely  presented  category defined by the opposite of the underlying
   quiver with relations.[133X
   
-  [1X2.2-16 Antipode[101X
+  [1X2.2-17 Antipode[101X
   
   [33X[1;0Y[29X[2XAntipode[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
   
   [33X[0;0YThe antipode of the Hopf finitely presented category [3XB[103X.[133X
   
-  [1X2.2-17 UnderlyingVertex[101X
+  [1X2.2-18 UnderlyingVertex[101X
   
   [33X[1;0Y[29X[2XUnderlyingVertex[102X( [3Xobj[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya vertex in a [5XQPA[105X quiver[133X
@@ -175,7 +183,7 @@
   [33X[0;0YThe  vertex  of the quiver underlying the object [3Xobj[103X in a finitely presented
   category.[133X
   
-  [1X2.2-18 UnderlyingQuiverAlgebraElement[101X
+  [1X2.2-19 UnderlyingQuiverAlgebraElement[101X
   
   [33X[1;0Y[29X[2XUnderlyingQuiverAlgebraElement[102X( [3Xmor[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan element in a [5XQPA[105X path algebra[133X
@@ -183,21 +191,21 @@
   [33X[0;0YThe  quiver  algebra  element  underlying  the  morphism  [3Xmor[103X  in a finitely
   presented category.[133X
   
-  [1X2.2-19 UnderlyingAlgebra[101X
+  [1X2.2-20 UnderlyingAlgebra[101X
   
   [33X[1;0Y[29X[2XUnderlyingAlgebra[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya ring[133X
   
   [33X[0;0YThe underlying algebra of the finitely presented category [3XC[103X.[133X
   
-  [1X2.2-20 Parity[101X
+  [1X2.2-21 Parity[101X
   
   [33X[1;0Y[29X[2XParity[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya string ("left" or "right")[133X
   
   [33X[0;0YThe parity of the finitely presented category [3XC[103X.[133X
   
-  [1X2.2-21 POW[101X
+  [1X2.2-22 POW[101X
   
   [33X[1;0Y[29X[2XPOW[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
@@ -205,7 +213,7 @@
   [33X[0;0YThe [3Xn[103X-th power of the finitely presented category [3XC[103X. Admissible values for [3Xn[103X
   are [23X0,1,2[123X.[133X
   
-  [1X2.2-22 NerveTruncatedInDegree2AsFunctor[101X
+  [1X2.2-23 NerveTruncatedInDegree2AsFunctor[101X
   
   [33X[1;0Y[29X[2XNerveTruncatedInDegree2AsFunctor[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
@@ -262,7 +270,7 @@
     [4X[28X{ 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }[128X[104X
   [4X[32X[104X
   
-  [1X2.2-23 YonedaFibrationAsNaturalTransformation[101X
+  [1X2.2-24 YonedaFibrationAsNaturalTransformation[101X
   
   [33X[1;0Y[29X[2XYonedaFibrationAsNaturalTransformation[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X natural transformation[133X
@@ -273,7 +281,7 @@
   targe  is  the  constant  functor  of  [23X0[123X-cells  [23XB \to H, c \mapsto B_0, \psi
   \mapsto \mathrm{id}_{B_0}[123X.[133X
   
-  [1X2.2-24 YonedaProjectionAsNaturalEpimorphism[101X
+  [1X2.2-25 YonedaProjectionAsNaturalEpimorphism[101X
   
   [33X[1;0Y[29X[2XYonedaProjectionAsNaturalEpimorphism[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X natural transformation[133X
@@ -285,7 +293,7 @@
   [23XB   \to  H,  c  \mapsto  \sqcup_{a\in  B}  \mathrm{Hom}(a,c),  \psi  \mapsto
   \sqcup_{a\in B} \mathrm{Hom}(a,\psi)[123X.[133X
   
-  [1X2.2-25 YonedaCompositionAsNaturalEpimorphism[101X
+  [1X2.2-26 YonedaCompositionAsNaturalEpimorphism[101X
   
   [33X[1;0Y[29X[2XYonedaCompositionAsNaturalEpimorphism[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X natural transformation[133X
@@ -356,7 +364,7 @@
     [4X[28XSkeletalFinSets[128X[104X
   [4X[32X[104X
   
-  [1X2.2-26 TruthMorphismOfTrueToSieveFunctor[101X
+  [1X2.2-27 TruthMorphismOfTrueToSieveFunctor[101X
   
   [33X[1;0Y[29X[2XTruthMorphismOfTrueToSieveFunctor[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
@@ -439,7 +447,7 @@
     [4X[28X{ 0,..., 3 } ⱶ[ 0, 4, 6, 7 ]→ { 0,..., 7 }[128X[104X
   [4X[32X[104X
   
-  [1X2.2-27 SieveFunctor[101X
+  [1X2.2-28 SieveFunctor[101X
   
   [33X[1;0Y[29X[2XSieveFunctor[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X

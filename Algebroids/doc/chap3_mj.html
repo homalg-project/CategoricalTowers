@@ -30,16 +30,18 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E3FA58F7A494BA5">3.1-1 NerveData</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E05C37E7F355D4D">3.1-2 SetOfObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83496CF2824C1AF7">3.1-3 SetOfGeneratingMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F8C00D07A057EC1">3.1-4 Size</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8286BD957E169BEC">3.1-5 OppositeCategoryFromNerveData</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8248F11F7FCADBF4">3.1-3 SetOfMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83496CF2824C1AF7">3.1-4 SetOfGeneratingMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F8C00D07A057EC1">3.1-5 Size</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8286BD957E169BEC">3.1-6 OppositeCategoryFromNerveData</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X86EC0F0A78ECBC10">3.2 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84359855851AD698">3.2-1 CategoryFromNerveData</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X877E969678BBE306">3.2-2 CategoryFromNerveData</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A7ED53F78DF5204">3.2-3 CreateObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7AAC960D78EE093A">3.2-3 CategoryFromNerveData</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A7ED53F78DF5204">3.2-4 CreateObject</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7D03633A7D98026B">3.3 <span class="Heading">GAP categories</span></a>
 </span>
@@ -75,9 +77,18 @@
 
 <p>The finite set of objects of the category <var class="Arg">C</var> created from nerve data.</p>
 
+<p><a id="X8248F11F7FCADBF4" name="X8248F11F7FCADBF4"></a></p>
+
+<h5>3.1-3 SetOfMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetOfMorphisms</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The finite set of morphisms of the category <var class="Arg">C</var> created from nerve data.</p>
+
 <p><a id="X83496CF2824C1AF7" name="X83496CF2824C1AF7"></a></p>
 
-<h5>3.1-3 SetOfGeneratingMorphisms</h5>
+<h5>3.1-4 SetOfGeneratingMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetOfGeneratingMorphisms</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
@@ -86,7 +97,7 @@
 
 <p><a id="X7F8C00D07A057EC1" name="X7F8C00D07A057EC1"></a></p>
 
-<h5>3.1-4 Size</h5>
+<h5>3.1-5 Size</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Size</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a nonnegative integer</p>
@@ -95,7 +106,7 @@
 
 <p><a id="X8286BD957E169BEC" name="X8286BD957E169BEC"></a></p>
 
-<h5>3.1-5 OppositeCategoryFromNerveData</h5>
+<h5>3.1-6 OppositeCategoryFromNerveData</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OppositeCategoryFromNerveData</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
@@ -155,6 +166,10 @@ FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" 
 7
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NerveTruncatedInDegree2Data( C ) = NerveTruncatedInDegree2Data( Delta1 );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IndicesOfGeneratingMorphisms( C );</span>
+[ 1, 2, 3 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( C );</span>
+[ (C1)-[(id)]-&gt;(C0), (C0)-[(s)]-&gt;(C1), (C0)-[(t)]-&gt;(C1) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( C );</span>
 A CAP category with name
 FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) )
@@ -192,13 +207,13 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( idC1 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sigma := CreateMorphism( C, 5 );</span>
-(C1)-[(5)]-&gt;(C1)
+(C1)-[(id*s)]-&gt;(C1)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEndomorphism( sigma );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( sigma );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tau := CreateMorphism( C, 6 );</span>
-(C1)-[(6)]-&gt;(C1)
+(C1)-[(id*t)]-&gt;(C1)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEndomorphism( tau );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( tau );</span>
@@ -257,6 +272,10 @@ FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" 
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( OppositeCategoryFromNerveData( C_op ), C );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IndicesOfGeneratingMorphisms( C_op );</span>
+[ 3, 1, 2 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( C_op );</span>
+[ (C0)-[(id)]-&gt;(C1), (C1)-[(s)]-&gt;(C0), (C1)-[(t)]-&gt;(C0) ]
 </pre></div>
 
 <p><a id="X877E969678BBE306" name="X877E969678BBE306"></a></p>
@@ -264,9 +283,14 @@ true
 <h5>3.2-2 CategoryFromNerveData</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryFromNerveData</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7AAC960D78EE093A" name="X7AAC960D78EE093A"></a></p>
+
+<h5>3.2-3 CategoryFromNerveData</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryFromNerveData</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p><a id="X7A7ED53F78DF5204" name="X7A7ED53F78DF5204"></a></p>
 
-<h5>3.2-3 CreateObject</h5>
+<h5>3.2-4 CreateObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateObject</code>( <var class="Arg">C</var>, <var class="Arg">o</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>

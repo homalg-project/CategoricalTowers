@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (Algebroids) - Chapter 7: Bialgebroids as algebroids with more structure</title>
+<title>GAP (Algebroids) - Chapter 7: Category of algebroids</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -23,113 +23,147 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap7.html">[MathJax off]</a></p>
-<p><a id="X7EC59A467F298100" name="X7EC59A467F298100"></a></p>
-<div class="ChapSects"><a href="chap7_mj.html#X7EC59A467F298100">7 <span class="Heading">Bialgebroids as algebroids with more structure</span></a>
+<p><a id="X8085365E7FF1E142" name="X8085365E7FF1E142"></a></p>
+<div class="ChapSects"><a href="chap7_mj.html#X8085365E7FF1E142">7 <span class="Heading">Category of algebroids</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X871597447BB998A1">7.1 <span class="Heading">Properties</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X87F26A8682A421A4">7.1-1 IsCocommutative</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7FF98195838EFECB">7.1-2 IsHopfAlgebroid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7B9C681978B806DE">7.1-1 IsCommutative</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X867EF69B79A3282A">7.1-2 IsCounitary</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7A21B2E1873822DB">7.1-3 IsCoassociative</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7C701DBF7BAE649A">7.2 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X793334367C093D74">7.2-1 Counit</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X831A0AF77DD45837">7.2-2 Comultiplication</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7C10B41E800149D8">7.2-1 AsCapCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X81BCDD9D82092FFF">7.2-2 AsCapFunctor</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X86EC0F0A78ECBC10">7.3 <span class="Heading">Constructors</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7DE8E16C7C2D387B">7.3 <span class="Heading">Operations</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8322D940826EDE3A">7.3-1 AddBialgebroidStructure</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8586BB507BE0A1B2">7.3-2 AddAntipode</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X80699FD67E9427FF">7.3-1 Twist</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7D03633A7D98026B">7.4 <span class="Heading">GAP categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X86EC0F0A78ECBC10">7.4 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7CE3803D8364294F">7.4-1 IsBialgebroid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7E0D64C87E1ED52D">7.4-1 CategoryOfAlgebroids</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X81E5D7777C5EC696">7.4-2 CategoryOfAlgebroidsObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7A641BFC7E08717D">7.4-3 CategoryOfAlgebroidsMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7FD855927FCD8181">7.4-4 CategoryOfAlgebroidsMorphism</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7D03633A7D98026B">7.5 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7D39198678F850B2">7.5-1 IsCategoryOfAlgebroidsObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X879EA8BB858262F4">7.5-2 IsCategoryOfAlgebroidsMorphism</a></span>
 </div></div>
 </div>
 
-<h3>7 <span class="Heading">Bialgebroids as algebroids with more structure</span></h3>
+<h3>7 <span class="Heading">Category of algebroids</span></h3>
 
 <p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
 
 <h4>7.1 <span class="Heading">Properties</span></h4>
 
-<p><a id="X87F26A8682A421A4" name="X87F26A8682A421A4"></a></p>
+<p><a id="X7B9C681978B806DE" name="X7B9C681978B806DE"></a></p>
 
-<h5>7.1-1 IsCocommutative</h5>
+<h5>7.1-1 IsCommutative</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCocommutative</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCommutative</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: true or false</p>
 
-<p>Check whether the bialgebroid <var class="Arg">B</var> is cocommutative.</p>
+<p>Check whether the algebroid <var class="Arg">A</var> is commutative.</p>
 
-<p><a id="X7FF98195838EFECB" name="X7FF98195838EFECB"></a></p>
+<p><a id="X867EF69B79A3282A" name="X867EF69B79A3282A"></a></p>
 
-<h5>7.1-2 IsHopfAlgebroid</h5>
+<h5>7.1-2 IsCounitary</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsHopfAlgebroid</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCounitary</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: true or false</p>
 
-<p>Check whether the antipode of <var class="Arg">B</var> is actually an antipode.</p>
+<p>Check whether <var class="Arg">B</var> is counitary.</p>
+
+<p><a id="X7A21B2E1873822DB" name="X7A21B2E1873822DB"></a></p>
+
+<h5>7.1-3 IsCoassociative</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCoassociative</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Check whether <var class="Arg">B</var> is coassociative.</p>
 
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
 <h4>7.2 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X793334367C093D74" name="X793334367C093D74"></a></p>
+<p><a id="X7C10B41E800149D8" name="X7C10B41E800149D8"></a></p>
 
-<h5>7.2-1 Counit</h5>
+<h5>7.2-1 AsCapCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Counit</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCapCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X81BCDD9D82092FFF" name="X81BCDD9D82092FFF"></a></p>
+
+<h5>7.2-2 AsCapFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCapFunctor</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>7.3 <span class="Heading">Operations</span></h4>
+
+<p><a id="X80699FD67E9427FF" name="X80699FD67E9427FF"></a></p>
+
+<h5>7.3-1 Twist</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Twist</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> functor</p>
 
-<p>The counit of the bialgebroid <var class="Arg">B</var>.</p>
-
-<p><a id="X831A0AF77DD45837" name="X831A0AF77DD45837"></a></p>
-
-<h5>7.2-2 Comultiplication</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Comultiplication</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
-
-<p>The comultiplication of the bialgebroid <var class="Arg">B</var>.</p>
+<p>Construct the canonical twist from <var class="Arg">A</var> <span class="SimpleMath">\(\otimes\)</span> <var class="Arg">B</var> to <var class="Arg">B</var> <span class="SimpleMath">\(\otimes\)</span> <var class="Arg">A</var></p>
 
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
-<h4>7.3 <span class="Heading">Constructors</span></h4>
+<h4>7.4 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X8322D940826EDE3A" name="X8322D940826EDE3A"></a></p>
+<p><a id="X7E0D64C87E1ED52D" name="X7E0D64C87E1ED52D"></a></p>
 
-<h5>7.3-1 AddBialgebroidStructure</h5>
+<h5>7.4-1 CategoryOfAlgebroids</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddBialgebroidStructure</code>( <var class="Arg">A</var>, <var class="Arg">counit</var>, <var class="Arg">comult</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfAlgebroids</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X81E5D7777C5EC696" name="X81E5D7777C5EC696"></a></p>
 
-<p>Add to the algebroid <var class="Arg">A</var> a counit and a comultiplication using the defining records <var class="Arg">counit</var> and <var class="Arg">comult</var>, respectively.</p>
+<h5>7.4-2 CategoryOfAlgebroidsObject</h5>
 
-<p><a id="X8586BB507BE0A1B2" name="X8586BB507BE0A1B2"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfAlgebroidsObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7A641BFC7E08717D" name="X7A641BFC7E08717D"></a></p>
 
-<h5>7.3-2 AddAntipode</h5>
+<h5>7.4-3 CategoryOfAlgebroidsMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAntipode</code>( <var class="Arg">B</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfAlgebroidsMorphism</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X7FD855927FCD8181" name="X7FD855927FCD8181"></a></p>
 
-<p>Add to the bialgebroid <var class="Arg">B</var> an antipode <var class="Arg">S</var>.</p>
+<h5>7.4-4 CategoryOfAlgebroidsMorphism</h5>
 
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfAlgebroidsMorphism</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
-<h4>7.4 <span class="Heading">GAP categories</span></h4>
+<h4>7.5 <span class="Heading">GAP categories</span></h4>
 
-<p><a id="X7CE3803D8364294F" name="X7CE3803D8364294F"></a></p>
+<p><a id="X7D39198678F850B2" name="X7D39198678F850B2"></a></p>
 
-<h5>7.4-1 IsBialgebroid</h5>
+<h5>7.5-1 IsCategoryOfAlgebroidsObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsBialgebroid</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryOfAlgebroidsObject</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of bialgebroids.</p>
+<p>The GAP category of objects in the category of algebroids over a ring <span class="SimpleMath">\(R\)</span>.</p>
+
+<p><a id="X879EA8BB858262F4" name="X879EA8BB858262F4"></a></p>
+
+<h5>7.5-2 IsCategoryOfAlgebroidsMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryOfAlgebroidsMorphism</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The GAP category of morphisms in the category of algebroids over a ring <span class="SimpleMath">\(R\)</span>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Next Chapter]</a>&nbsp;  </div>

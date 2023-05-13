@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (Algebroids) - Chapter 8: Precompilation</title>
+<title>GAP (Algebroids) - Chapter 8: Bialgebroids as algebroids with more structure</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -20,213 +20,113 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap7.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap9.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap8_mj.html">[MathJax on]</a></p>
-<p><a id="X7D7026828261C26B" name="X7D7026828261C26B"></a></p>
-<div class="ChapSects"><a href="chap8.html#X7D7026828261C26B">8 <span class="Heading">Precompilation</span></a>
+<p><a id="X7EC59A467F298100" name="X7EC59A467F298100"></a></p>
+<div class="ChapSects"><a href="chap8.html#X7EC59A467F298100">8 <span class="Heading">Bialgebroids as algebroids with more structure</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X871597447BB998A1">8.1 <span class="Heading">Properties</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X87F26A8682A421A4">8.1-1 IsCocommutative</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7FF98195838EFECB">8.1-2 IsHopfAlgebroid</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X7C701DBF7BAE649A">8.2 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X793334367C093D74">8.2-1 Counit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X831A0AF77DD45837">8.2-2 Comultiplication</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X86EC0F0A78ECBC10">8.3 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8322D940826EDE3A">8.3-1 AddBialgebroidStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8586BB507BE0A1B2">8.3-2 AddAntipode</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X7D03633A7D98026B">8.4 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7CE3803D8364294F">8.4-1 IsBialgebroid</a></span>
+</div></div>
 </div>
 
-<h3>8 <span class="Heading">Precompilation</span></h3>
+<h3>8 <span class="Heading">Bialgebroids as algebroids with more structure</span></h3>
 
+<p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
 
-<div class="example"><pre>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">snake_quiver := RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := PathAlgebra( QQ, snake_quiver );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># only valid for the construction above</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># FIXME: IsInt should be IsRat, but specializations of types are not yet supported by CompilerForCAP</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], rec( filter := IsList, element_type := rec( filter := IsInt ) ) );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># mixes QPA and MatricesForHomalg and thus cannot be installed using CapJitAddTypeSignatureDeferred</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddTypeSignature( "*", [ IsHomalgRingElement, IsQuiverAlgebraElement ], IsQuiverAlgebraElement );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># EXPERIMENTAL</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">Add( CAP_JIT_EXPENSIVE_FUNCTION_NAMES, "CoefficientsOfPaths" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_AdditiveClosureOfAlgebroid :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( Rq, over_Z, ring )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        EvalString( ReplacedString( """Rq -&gt; AdditiveClosure( Algebroid(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            Rq, over_Z : FinalizeCategory := true</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) )""", "over_Z", String( over_Z ) ) ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ Rq ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "Algebroids",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        Concatenation(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOver",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            ring,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "Precompiled"</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        operations := "primitive"</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_AdditiveClosureOfAlgebroid( A, false, "Field" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_AdditiveClosureOfAlgebroid( A, true, "Z" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled( A );</span>
-Additive closure( Algebroid( Q, FreeCategory( RightQuiver(
-"q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AdditiveClosure( Algebroid( A, false ) )!.precompiled_functions_added;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AdditiveClosure( Algebroid( A, true ) )!.precompiled_functions_added;</span>
-true
-#@fi
-</pre></div>
+<h4>8.1 <span class="Heading">Properties</span></h4>
 
+<p><a id="X87F26A8682A421A4" name="X87F26A8682A421A4"></a></p>
 
-<div class="example"><pre>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], rec( filter := IsHomalgRingElement ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  data_tables -&gt; AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables.coefficients_ring : FinalizeCategory := true ), FinalizeCategory := true ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [ rec( coefficients_ring := Q,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         nr_objs := 1,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         labels_objs := [ "*" ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         indices_objs := [ 1 ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         nr_gmors := 1,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         labels_gmors := [ "x" ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         ranges_gmors := [ 1 ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         sources_gmors := [ 1 ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         indices_gmors := [ 2 ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         nr_bases_elms := 3,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         bases_elms_comps := [ [ -1 ], [ 1 ], [ 1, 1 ] ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         indices_of_bases_elms := [ [ [ 1, 2, 3 ] ] ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         hom_structure_gmors_objs := [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         hom_structure_objs_gmors := [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ] ) ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "AdditiveClosureOfAlgebroidFromDataTablesPrecompiled";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "Algebroids";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    : operations := "primitive"</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AdditiveClosureOfAlgebroidFromDataTablesPrecompiled( given_arguments[1] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A!.precompiled_functions_added;</span>
-true
-#@fi
-</pre></div>
+<h5>8.1-1 IsCocommutative</h5>
 
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCocommutative</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
 
-<div class="example"><pre>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">snake_quiver := RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := PathAlgebra( QQ, snake_quiver );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># only valid for the construction above</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># FIXME: IsInt should be IsRat, but specializations of types are not yet supported by CompilerForCAP</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># this might already have been added by PrecompileAdditiveClosureOfAlgebroid.g</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.CoefficientsOfPaths ) then CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], rec( filter := IsList, element_type := rec( filter := IsInt ) ) ); fi;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># EXPERIMENTAL</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">Add( CAP_JIT_EXPENSIVE_FUNCTION_NAMES, "CoefficientsOfPaths" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_AdelmanCategoryOfAdditiveClosureOfAlgebroid := function( Rq, over_Z, ring )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        EvalString( ReplacedString( """Rq -&gt; AdelmanCategory( AdditiveClosure( Algebroid(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            Rq, over_Z : FinalizeCategory := true</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) : FinalizeCategory := true ) )""", "over_Z", String( over_Z ) ) ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ Rq ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "Algebroids",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        Concatenation(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOver",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            ring,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "Precompiled"</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        operations := [</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "IsZeroForMorphisms",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "CokernelProjection",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "IsDominating",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "IsEqualAsSubobjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_AdelmanCategoryOfAdditiveClosureOfAlgebroid( A, false, "Field" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_AdelmanCategoryOfAdditiveClosureOfAlgebroid( A, true, "Z" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled( A );</span>
-Adelman category( Additive closure( Algebroid( Q, FreeCategory(
-RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverZPrecompiled( A );</span>
-Adelman category( Additive closure( Algebroid( Z, FreeCategory(
-RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AdelmanCategory( AdditiveClosure( Algebroid( A, false ) ) )!.precompiled_functions_added;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AdelmanCategory( AdditiveClosure( Algebroid( A, true ) ) )!.precompiled_functions_added;</span>
-true
-#@fi
-</pre></div>
+<p>Check whether the bialgebroid <var class="Arg">B</var> is cocommutative.</p>
 
+<p><a id="X7FF98195838EFECB" name="X7FF98195838EFECB"></a></p>
 
-<div class="example"><pre>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( quiver )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true ); return CategoryFromNerveData( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ RightQuiver( "q(a,b)[m:a-&gt;b]" ) ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "CategoryFromNerveDataPrecompiled";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "Algebroids";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        : operations := Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( given_arguments[1] : no_precompiled_code := true ) ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                [ "HomomorphismStructureOnMorphismsWithGivenObjects" ] ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryFromNerveDataPrecompiled( given_arguments[1] );</span>
-FreeCategory( RightQuiver( "q(a,b)[m:a-&gt;b]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryFromNerveData( FreeCategory( given_arguments[1] ) )!.precompiled_functions_added;</span>
-true
-#@fi
-</pre></div>
+<h5>8.1-2 IsHopfAlgebroid</h5>
 
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsHopfAlgebroid</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
 
-<div class="example"><pre>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( quiver )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true ); return CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ RightQuiver( "q(a,b)[m:a-&gt;b]" ) ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "CategoryFromDataTablesPrecompiled";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "Algebroids";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        : operations := "primitive" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryFromDataTablesPrecompiled( given_arguments[1] );</span>
-FreeCategory( RightQuiver( "q(a,b)[m:a-&gt;b]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryFromDataTables( FreeCategory( given_arguments[1] ) )!.precompiled_functions_added;</span>
-true
-#@fi
-</pre></div>
+<p>Check whether the antipode of <var class="Arg">B</var> is actually an antipode.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>8.2 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X793334367C093D74" name="X793334367C093D74"></a></p>
+
+<h5>8.2-1 Counit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Counit</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>The counit of the bialgebroid <var class="Arg">B</var>.</p>
+
+<p><a id="X831A0AF77DD45837" name="X831A0AF77DD45837"></a></p>
+
+<h5>8.2-2 Comultiplication</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Comultiplication</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>The comultiplication of the bialgebroid <var class="Arg">B</var>.</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>8.3 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X8322D940826EDE3A" name="X8322D940826EDE3A"></a></p>
+
+<h5>8.3-1 AddBialgebroidStructure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddBialgebroidStructure</code>( <var class="Arg">A</var>, <var class="Arg">counit</var>, <var class="Arg">comult</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Add to the algebroid <var class="Arg">A</var> a counit and a comultiplication using the defining records <var class="Arg">counit</var> and <var class="Arg">comult</var>, respectively.</p>
+
+<p><a id="X8586BB507BE0A1B2" name="X8586BB507BE0A1B2"></a></p>
+
+<h5>8.3-2 AddAntipode</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAntipode</code>( <var class="Arg">B</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Add to the bialgebroid <var class="Arg">B</var> an antipode <var class="Arg">S</var>.</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>8.4 <span class="Heading">GAP categories</span></h4>
+
+<p><a id="X7CE3803D8364294F" name="X7CE3803D8364294F"></a></p>
+
+<h5>8.4-1 IsBialgebroid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsBialgebroid</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of bialgebroids.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap7.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap9.html">[Next Chapter]</a>&nbsp;  </div>
