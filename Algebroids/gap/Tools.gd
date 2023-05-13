@@ -28,6 +28,13 @@ DeclareAttribute( "NerveTruncatedInDegree2Data",
         IsCapCategory );
 
 #! @Description
+#!  The normalized indices of the generating morphisms of the finite category <A>C</A>.
+#! @Arguments C
+#! @Returns a list of integers
+DeclareAttribute( "IndicesOfGeneratingMorphismsFromHomStructure",
+        IsCapCategory );
+
+#! @Description
 #!  The data tables of the category <A>C</A>.
 #! @Arguments C
 #! @Returns a pair of lists

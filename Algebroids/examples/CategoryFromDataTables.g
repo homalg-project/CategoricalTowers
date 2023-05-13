@@ -15,6 +15,10 @@ Size( C );
 #! 7
 NerveTruncatedInDegree2Data( C ) = NerveTruncatedInDegree2Data( Delta1 );
 #! true
+IndicesOfGeneratingMorphisms( C );
+#! [ 1, 2, 3 ]
+SetOfGeneratingMorphisms( C );
+#! [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1) ]
 Display( C );
 #! A CAP category with name
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
@@ -52,13 +56,13 @@ idC1 := CreateMorphism( C, 4 );
 IsOne( idC1 );
 #! true
 sigma := CreateMorphism( C, 5 );
-#! (C1)-[(5)]->(C1)
+#! (C1)-[(id*s)]->(C1)
 IsEndomorphism( sigma );
 #! true
 IsOne( sigma );
 #! false
 tau := CreateMorphism( C, 6 );
-#! (C1)-[(6)]->(C1)
+#! (C1)-[(id*t)]->(C1)
 IsEndomorphism( tau );
 #! true
 IsOne( tau );
@@ -115,5 +119,9 @@ C_op := OppositeCategoryFromDataTables( C );
 #! / [ s*id = C0, t*id = C0 ] )
 IsIdenticalObj( OppositeCategoryFromDataTables( C_op ), C );
 #! true
+IndicesOfGeneratingMorphisms( C_op );
+#! [ 3, 1, 2 ]
+SetOfGeneratingMorphisms( C_op );
+#! [ (C0)-[(id)]->(C1), (C1)-[(s)]->(C0), (C1)-[(t)]->(C0) ]
 #! @EndExample
 #! @EndChunk

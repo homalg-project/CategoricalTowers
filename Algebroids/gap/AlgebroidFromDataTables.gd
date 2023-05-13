@@ -65,6 +65,12 @@ DeclareAttribute( "AlgebroidFromDataTables",
         IsRecord );
 #! @InsertChunk AlgebroidFromDataTables
 
+####################################
+#
+#! @Section Attributes
+#
+####################################
+
 if false then
 #! @Description
 #!  The argument is a $k$-algebroid <A>A</A> defined by a finite dimensional quiver-algebra.
@@ -235,6 +241,12 @@ DeclareAttribute( "SetOfGeneratingMorphisms", IsAlgebroidFromDataTables );
 #! @Arguments B
 #! @Returns a list of lists
 DeclareAttribute( "SetOfBasesOfExternalHoms", IsAlgebroidFromDataTables );
+
+####################################
+#
+#! @Section Operations
+#
+####################################
 
 #! @Description
 #!  The arguments are an algebroid <A>B</A> and a string <A>optional_string</A>.

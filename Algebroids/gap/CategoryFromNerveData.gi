@@ -17,6 +17,7 @@ InstallMethod( CategoryFromNerveData,
       rec( name := IsString,
            nerve_data := IsList,
            indices_of_generating_morphisms := IsList,
+           decomposition_of_all_morphisms := IsList,
            relations := IsList,
            labels := IsList,
            properties := IsList );
@@ -60,6 +61,7 @@ InstallMethod( CategoryFromNerveData,
     od;
     
     SetIndicesOfGeneratingMorphisms( C, input_record.indices_of_generating_morphisms );
+    SetDecompositionOfAllMorphisms( C, input_record.decomposition_of_all_morphisms );
     SetRelationsAmongGeneratingMorphisms( C, input_record.relations );
     
     C!.labels := input_record.labels;
@@ -89,6 +91,7 @@ InstallMethod( CategoryFromNerveData,
       rec( category_attribute_names :=
            [ "NerveData",
              "IndicesOfGeneratingMorphisms",
+             "DecompositionOfAllMorphisms",
              "RelationsAmongGeneratingMorphisms",
              "DefiningTripleOfUnderlyingQuiver",
              ] );
@@ -527,7 +530,8 @@ InstallMethod( CategoryFromNerveData,
     return CategoryFromNerveData(
                    rec( name := Name( C ),
                         nerve_data := NerveTruncatedInDegree2Data( C ),
-                        indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
+                        decomposition_of_all_morphisms := DecompositionOfAllMorphismsFromHomStructure( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := [ List( SetOfObjects( C ), Label ), List( SetOfGeneratingMorphisms( C ), Label ) ],
                         properties := ListKnownCategoricalProperties( C ) ) );
@@ -544,7 +548,8 @@ InstallOtherMethod( CategoryFromNerveData,
     return CategoryFromNerveData(
                    rec( name := Name( C ),
                         nerve_data := NerveTruncatedInDegree2Data( C ),
-                        indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
+                        decomposition_of_all_morphisms := DecompositionOfAllMorphisms( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := C!.labels,
                         properties := ListKnownCategoricalProperties( C ) ) );
@@ -665,13 +670,24 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( SetOfObjects,
+InstallMethodForCompilerForCAP( SetOfObjects,
         "for a category from nerve data",
         [ IsCategoryFromNerveData ],
         
   function( C )
     
     return List( [ 0 .. Length( NerveData( C )[1][1] ) - 1 ], i -> CreateObject( C, i ) );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfMorphisms,
+        "for a category from data tables",
+        [ IsCategoryFromNerveData ],
+        
+  function( C )
+    
+    return List( [ 0 .. Length( NerveData( C )[1][2] ) - 1 ], i -> CreateMorphism( C, i ) );
     
 end );
 
@@ -796,16 +812,20 @@ InstallMethod( OppositeCategoryFromNerveData,
                         ## the following nerve data is not "normalized", as it is not the result of the method NerveTruncatedInDegree2Data:
                         nerve_data := OppositeNerveData( NerveData( C ) ),
                         indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
+                        decomposition_of_all_morphisms := TransposedMat( List( DecompositionOfAllMorphisms( C ), s -> List( s, t -> List( t, Reversed ) ) ) ),
                         relations := List( RelationsAmongGeneratingMorphisms( C ), pair -> Pair( Reversed( pair[1] ), Reversed( pair[2] ) ) ),
                         labels := C!.labels,
                         properties := ListKnownCategoricalProperties( Opposite( C ) ) ) );
+    
+    Assert( 0, IsIdenticalObj( IndicesOfGeneratingMorphisms( Cop ), IndicesOfGeneratingMorphisms( C ) ) );
     
     ## now construct the "normalized" opposite category
     C_op := CategoryFromNerveData(
                     rec( name := Name( Cop ),
                          ## now the "normalized" data tables
                          nerve_data := NerveTruncatedInDegree2Data( Cop ),
-                         indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( Cop ),
+                         indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( Cop ),
+                         decomposition_of_all_morphisms := DecompositionOfAllMorphisms( Cop ),
                          relations := RelationsAmongGeneratingMorphisms( Cop ),
                          labels := Cop!.labels,
                          properties := ListKnownCategoricalProperties( Cop ) ) );
@@ -963,16 +983,19 @@ InstallMethod( ViewString,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for a morphism in a category from nerve data",
         [ IsMorphismInCategoryFromNerveData ],
         
   function( mor )
-    local C, labels, i, pos;
+    local C, labels, s, t, i, pos;
     
     C := CapCategory( mor );
     
     labels := C!.labels;
+    
+    s := MapOfObject( Source( mor ) )( 0 );
+    t := MapOfObject( Range( mor ) )( 0 );
     
     i := MapOfMorphism( mor )( 0 );
     
@@ -982,20 +1005,19 @@ InstallMethod( ViewObj,
         pos := labels[2][pos];
     else
         pos := Position( AsList( NerveTruncatedInDegree2Data( C )[2][1] ), i );
-        if not pos = fail then
+        if IsInt( pos ) then
             pos := labels[1][pos];
+        else
+            pos := JoinStringsWithSeparator(
+                           List( DecompositionOfAllMorphisms( C )[1+t, 1+s][1 + HomStructure( mor )(0)], i -> labels[2][1 + i] ),
+                           "*" );
         fi;
     fi;
     
-    Print( "(", labels[1][1 + MapOfObject( Source( mor ) )( 0 )], ")" );
-    Print( "-[(" );
-    if pos = fail then
-        Print( i );
-    else
-        Print( pos );
-    fi;
-    Print( ")]->" );
-    Print( "(", labels[1][1 + MapOfObject( Range( mor ) )( 0 )], ")" );
+    return Concatenation(
+                   "(", labels[1][1 + s], ")",
+                   "-[(", pos, ")]->",
+                   "(", labels[1][1 + t], ")" );
     
 end );
 
@@ -1024,26 +1046,24 @@ InstallMethod( PrintObj,
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in a category from nerve data",
         [ IsObjectInCategoryFromNerveData ],
         
   function( obj )
     
-    ViewObj( obj );
-    Print( "\n" );
+    return Concatenation( ViewString( obj ), "\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a morphism in a category from nerve data",
         [ IsMorphismInCategoryFromNerveData ],
         
   function( mor )
     
-    ViewObj( mor );
-    Print( "\n" );
+    return Concatenation( ViewString( mor ), "\n" );
     
 end );
 

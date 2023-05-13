@@ -18,6 +18,7 @@ InstallMethod( CategoryFromDataTables,
            range_of_HomStructure := IsCapCategory,
            data_tables := IsList,
            indices_of_generating_morphisms := IsList,
+           decomposition_of_all_morphisms := IsList,
            relations := IsList,
            labels := IsList,
            properties := IsList );
@@ -61,6 +62,7 @@ InstallMethod( CategoryFromDataTables,
     od;
     
     SetIndicesOfGeneratingMorphisms( C, input_record.indices_of_generating_morphisms );
+    SetDecompositionOfAllMorphisms( C, input_record.decomposition_of_all_morphisms );
     SetRelationsAmongGeneratingMorphisms( C, input_record.relations );
     
     C!.labels := input_record.labels;
@@ -91,6 +93,7 @@ InstallMethod( CategoryFromDataTables,
       rec( category_attribute_names :=
            [ "DataTables",
              "IndicesOfGeneratingMorphisms",
+             "DecompositionOfAllMorphisms",
              "RelationsAmongGeneratingMorphisms",
              "DefiningTripleOfUnderlyingQuiver",
              ] );
@@ -313,7 +316,8 @@ InstallMethod( CategoryFromDataTables,
                    rec( name := Name( C ),
                         range_of_HomStructure := RangeCategoryOfHomomorphismStructure( C ),
                         data_tables := DataTablesOfCategory( C ),
-                        indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
+                        decomposition_of_all_morphisms := DecompositionOfAllMorphismsFromHomStructure( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := [ List( SetOfObjects( C ), Label ), List( SetOfGeneratingMorphisms( C ), Label ) ],
                         properties := ListKnownCategoricalProperties( C ) ) );
@@ -332,6 +336,7 @@ InstallMethod( CategoryFromDataTables,
                         range_of_HomStructure := RangeCategoryOfHomomorphismStructure( C ),
                         data_tables := DataTablesOfCategory( C ),
                         indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
+                        decomposition_of_all_morphisms := DecompositionOfAllMorphisms( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := C!.labels,
                         properties := ListKnownCategoricalProperties( C ) ) );
@@ -540,16 +545,19 @@ InstallMethod( ViewString,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for a morphism in a category from data tables",
         [ IsMorphismInCategoryFromDataTables ],
         
   function( mor )
-    local C, labels, i, pos;
+    local C, labels, s, t, i, pos;
     
     C := CapCategory( mor );
     
     labels := C!.labels;
+    
+    s := MapOfObject( Source( mor ) )( 0 );
+    t := MapOfObject( Range( mor ) )( 0 );
     
     i := MapOfMorphism( mor )( 0 );
     
@@ -559,20 +567,19 @@ InstallMethod( ViewObj,
         pos := labels[2][pos];
     else
         pos := Position( DataTables( C )[2][1], i );
-        if not pos = fail then
+        if IsInt( pos ) then
             pos := labels[1][pos];
+        else
+            pos := JoinStringsWithSeparator(
+                           List( DecompositionOfAllMorphisms( C )[1+t, 1+s][1 + HomStructure( mor )(0)], i -> labels[2][1 + i] ),
+                           "*" );
         fi;
     fi;
     
-    Print( "(", labels[1][1 + MapOfObject( Source( mor ) )( 0 )], ")" );
-    Print( "-[(" );
-    if pos = fail then
-        Print( i );
-    else
-        Print( pos );
-    fi;
-    Print( ")]->" );
-    Print( "(", labels[1][1 + MapOfObject( Range( mor ) )( 0 )], ")" );
+    return Concatenation(
+                   "(", labels[1][1 + s], ")",
+                   "-[(", pos, ")]->",
+                   "(", labels[1][1 + t], ")" );
     
 end );
 
@@ -605,8 +612,7 @@ InstallMethod( Display,
         
   function( obj )
     
-    ViewObj( obj );
-    Print( "\n" );
+    return Concatenation( ViewString( obj ), "\n" );
     
 end );
 
@@ -617,8 +623,7 @@ InstallMethod( Display,
         
   function( mor )
     
-    ViewObj( mor );
-    Print( "\n" );
+    return Concatenation( ViewString( mor ), "\n" );
     
 end );
 

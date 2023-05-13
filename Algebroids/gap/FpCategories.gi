@@ -83,6 +83,40 @@ InstallOtherMethod( AssignSetOfObjects,
 end );
 
 ##
+InstallMethodForCompilerForCAP( SetOfMorphisms,
+        "for a category from data tables",
+        [ IsFpCategory and IsFinite ],
+        
+  function( C )
+    local objs;
+    
+    objs := SetOfObjects( C );
+    
+    ## varying the target (column-index) before varying the source ("row"-index)
+    ## in the for-loops below is enforced by SetOfMorphisms for IsCategoryFromNerveData,
+    ## which in turn is enforced by our convention for ProjectionInFactorOfDirectProduct,
+    ## which is the "reverse" convention of the GAP command Cartesian:
+    
+    # gap> A := FinSet( 3 );
+    # |3|
+    # gap> B := FinSet( 4 );
+    # |4|
+    # gap> pi1 := ProjectionInFactorOfDirectProduct( [ A, B ], 1 );
+    # |12| → |3|
+    # gap> pi2 := ProjectionInFactorOfDirectProduct( [ A, B ], 2 );
+    # |12| → |4|
+    # gap> List( [ 0 .. 11 ], i -> [ pi1(i), pi2(i) ] );
+    # [ [ 0, 0 ], [ 1, 0 ], [ 2, 0 ], [ 0, 1 ], [ 1, 1 ], [ 2, 1 ], [ 0, 2 ], [ 1, 2 ], [ 2, 2 ], [ 0, 3 ], [ 1, 3 ], [ 2, 3 ] ]
+    # gap> Cartesian( [ 0 .. 2 ], [ 0 .. 3 ] );
+    # [ [ 0, 0 ], [ 0, 1 ], [ 0, 2 ], [ 0, 3 ], [ 1, 0 ], [ 1, 1 ], [ 1, 2 ], [ 1, 3 ], [ 2, 0 ], [ 2, 1 ], [ 2, 2 ], [ 2, 3 ] ]
+    
+    return Concatenation( List( objs, t ->
+                   Concatenation( List( objs, s ->
+                           MorphismsOfExternalHom( C, s, t ) ) ) ) );
+    
+end );
+
+##
 InstallMethod( SetOfGeneratingMorphisms,
         "for a f.p. category",
         [ IsFpCategory and HasUnderlyingQuiver ],
@@ -197,41 +231,64 @@ InstallMethod( IndicesOfGeneratingMorphisms,
         "for a f.p. category",
         [ IsFpCategory ],
         
-  function( C )
-    local V, C0, N0, D00, N0N0, p21, p22, C1, T, st, mors;
-    
-    V := RangeCategoryOfHomomorphismStructure( C );
-    
-    C0 := SetOfObjects( C );
-    N0 := FinSet( V, Length( C0 ) );
-    
-    D00 := [ N0, N0 ];
-    
-    ## N0 × N0 -> N0
-    p21 := ProjectionInFactorOfDirectProduct( V, D00, 1 );
-    p22 := ProjectionInFactorOfDirectProduct( V, D00, 2 );
-    
-    C1 := List( DirectProduct( V, D00 ), i ->
-                HomomorphismStructureOnObjects( C,
-                        C0[1 + AsList( p21 )[1 + i]],
-                        C0[1 + AsList( p22 )[1 + i]] ) );
-    
-    T := DistinguishedObjectOfHomomorphismStructure( C );
-    
-    st := List( DefiningTripleOfUnderlyingQuiver( C )[3], pair ->
-                UniversalMorphismIntoDirectProduct( V,
-                        D00,
-                        T,
-                        [ MapOfFinSets( V, T, [ pair[1] ], N0 ),
-                          MapOfFinSets( V, T, [ pair[2] ], N0 ) ] ) );
+  IndicesOfGeneratingMorphismsFromHomStructure );
 
-    mors := SetOfGeneratingMorphisms( C );
+##
+InstallMethod( DecompositionOfMorphismInCategory,
+        "for a morphism in a f.p. category",
+        [ IsMorphismInFpCategory ],
+        
+  function( mor )
+    local C, gmors;
     
-    return List( [ 1 .. Length( st ) ], i ->
-                 Sum( C1{[ 1 .. AsList( st[i] )[1 + 0] ]}, Length ) +
-                 AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, mors[i] ) )[1 + 0] );
+    if IsEqualToIdentityMorphism( mor ) then
+        return [ ];
+    fi;
+    
+    C := CapCategory( mor );
+    
+    mor := UnderlyingQuiverAlgebraElement( mor );
+    
+    mor := DecomposeQuiverAlgebraElement( mor );
+    
+    Assert( 0, ForAll( mor[1], IsOne ) );
+    
+    Assert( 0, Length( mor[2] ) = 1 );
+    
+    mor := mor[2][1];
+    
+    if ForAny( mor, IsCapCategoryObject) then
+        Error( "one of the generating morphisms is an identity morphism\n" );
+    fi;
+    
+    gmors := List( SetOfGeneratingMorphisms( C ), p -> BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( p ) ) );
+    
+    return List( mor, g -> -1 + SafePosition( gmors, g ) );
     
 end );
+
+##
+InstallMethod( DecompositionOfAllMorphismsFromHomStructure,
+        "for a f.p. category",
+        [ IsFpCategory and IsFinite ],
+        
+  function( C )
+    local objs;
+    
+    objs := SetOfObjects( C );
+    
+    return List( objs, t ->
+                 List( objs, s ->
+                       List( MorphismsOfExternalHom( C, s, t ), DecompositionOfMorphismInCategory ) ) );
+    
+end );
+
+##
+InstallMethod( DecompositionOfAllMorphisms,
+        "for a f.p. category",
+        [ IsFpCategory and IsFinite ],
+        
+  DecompositionOfAllMorphismsFromHomStructure  );
 
 ##
 InstallMethod( DataTablesOfCategory,

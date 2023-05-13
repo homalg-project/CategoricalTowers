@@ -23,6 +23,47 @@ InstallMethod( DefiningTripleOfAQuiver,
 end );
 
 ##
+InstallMethod( IndicesOfGeneratingMorphismsFromHomStructure,
+        "for a finite category",
+        [ IsCapCategory and IsFinite ],
+        
+  function( C )
+    local V, C0, N0, D00, N0N0, p21, p22, C1, T, st, mors;
+    
+    V := RangeCategoryOfHomomorphismStructure( C );
+    
+    C0 := SetOfObjects( C );
+    N0 := FinSet( V, Length( C0 ) );
+    
+    D00 := [ N0, N0 ];
+    
+    ## N0 × N0 -> N0
+    p21 := ProjectionInFactorOfDirectProduct( V, D00, 1 );
+    p22 := ProjectionInFactorOfDirectProduct( V, D00, 2 );
+    
+    C1 := List( DirectProduct( V, D00 ), i ->
+                HomomorphismStructureOnObjects( C,
+                        C0[1 + AsList( p21 )[1 + i]],
+                        C0[1 + AsList( p22 )[1 + i]] ) );
+    
+    T := DistinguishedObjectOfHomomorphismStructure( C );
+    
+    st := List( DefiningTripleOfUnderlyingQuiver( C )[3], pair ->
+                UniversalMorphismIntoDirectProduct( V,
+                        D00,
+                        T,
+                        [ MapOfFinSets( V, T, [ pair[1] ], N0 ),
+                          MapOfFinSets( V, T, [ pair[2] ], N0 ) ] ) );
+    
+    mors := SetOfGeneratingMorphisms( C );
+    
+    return List( [ 1 .. Length( st ) ], i ->
+                 Sum( C1{[ 1 .. AsList( st[i] )[1 + 0] ]}, Length ) +
+                 AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, mors[i] ) )[1 + 0] );
+    
+end );
+
+##
 InstallMethod( OppositeFiniteCategory,
         "for a finite category",
         [ IsCapCategory and IsFinite ],

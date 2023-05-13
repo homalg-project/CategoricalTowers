@@ -111,11 +111,16 @@ DeclareAttribute( "Size",
 DeclareAttribute( "BasisPathsByVertexIndex",
         IsFpCategory );
 
-CapJitAddTypeSignature( "BasisPathsByVertexIndex", [ IsFpCategory ], function ( input_types )
-    
-    return rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsPath ) ) ) );
-    
-end );
+#CapJitAddTypeSignature( "BasisPathsByVertexIndex", [ IsFpCategory ], function ( input_types )
+#    
+#    return rec( filter := IsList,
+#                element_type :=
+#                rec( filter := IsList,
+#                     element_type :=
+#                     rec( filter := IsList,
+#                          element_type := rec( filter := IsPath ) ) ) );
+#    
+#end );
 
 #! @Description
 #!  The matrix of basis morphisms of the canonical basis of the quiver algebra (=path algebra with relations) underlying the f.p. category <A>C</A>,
@@ -125,16 +130,16 @@ end );
 DeclareAttribute( "BasisMorphismsByVertexIndex",
         IsFpCategory );
 
-CapJitAddTypeSignature( "BasisMorphismsByVertexIndex", [ IsFpCategory ], function ( input_types )
-    
-    return rec( filter := IsList,
-                element_type := rec(
-                        filter := IsList,
-                        element_type := rec(
-                                filter := IsList,
-                                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) ) ) );
-    
-end );
+#CapJitAddTypeSignature( "BasisMorphismsByVertexIndex", [ IsFpCategory ], function ( input_types )
+#    
+#    return rec( filter := IsList,
+#                element_type :=
+#                rec( filter := IsList,
+#                     element_type :=
+#                     rec( filter := IsList,
+#                          element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) ) ) );
+#    
+#end );
 
 #! @Description
 #!  The hom structure on basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the f.p. category <A>C</A>:
@@ -145,11 +150,24 @@ end );
 DeclareAttribute( "HomStructureOnBasisPaths",
         IsFpCategory );
 
-CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsFpCategory ], function ( input_types )
-    
-    return rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsInt ) ) ) ) ) ) ) );
-    
-end );
+#CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsFpCategory ], function ( input_types )
+#    
+#    return rec( filter := IsList,
+#                element_type :=
+#                rec( filter := IsList,
+#                     element_type :=
+#                     rec( filter := IsList,
+#                          element_type :=
+#                          rec( filter := IsList,
+#                               element_type :=
+#                               rec( filter := IsList,
+#                                    element_type :=
+#                                    rec( filter := IsList,
+#                                         element_type :=
+#                                         rec( filter := IsList,
+#                                              element_type := rec( filter := IsInt ) ) ) ) ) ) ) );
+#    
+#end );
 
 #! @Description
 #!  The finite set of objects of the finitely presented category <A>C</A>.
@@ -158,13 +176,13 @@ end );
 DeclareAttribute( "SetOfObjects",
         IsFpCategory );
 
-CapJitAddTypeSignature( "SetOfObjects", [ IsFpCategory ],
-  function ( input_types )
-    
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "SetOfObjects", [ IsFpCategory ],
+#  function ( input_types )
+#    
+#    return rec( filter := IsList,
+#                element_type := CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+#    
+#end );
 
 #! @Description
 #!  Assigns the objects of the finitely presented category <A>C</A> to global variables.
@@ -175,19 +193,26 @@ DeclareOperation( "AssignSetOfObjects",
         [ IsFpCategory, IsString ] );
 
 #! @Description
+#!  The finite set of morphisms of the finitely presented category <E>finite</E> category <A>C</A>.
+#! @Arguments C
+#! @Returns a list
+DeclareAttribute( "SetOfMorphisms",
+        IsFpCategory );
+
+#! @Description
 #!  The finite set of morphisms generating the finitely presented category <A>C</A>.
 #! @Arguments C
 #! @Returns a list
 DeclareAttribute( "SetOfGeneratingMorphisms",
         IsFpCategory );
 
-CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsFpCategory ],
-  function ( input_types )
-    
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsFpCategory ],
+#  function ( input_types )
+#    
+#    return rec( filter := IsList,
+#                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
+#    
+#end );
 
 #! @Description
 #!  The subset of the generating morphisms that start at <A>obj_1</A> and ends at <A>obj_2</A>.
@@ -299,6 +324,15 @@ DeclareAttribute( "Parity",
 #! @Returns a &CAP; category
 DeclareOperation( "POW",
         [ IsFpCategory, IsInt ] );
+
+DeclareAttribute( "DecompositionOfMorphismInCategory",
+        IsMorphismInFpCategory );
+
+DeclareAttribute( "DecompositionOfAllMorphismsFromHomStructure",
+        IsFpCategory );
+
+DeclareAttribute( "DecompositionOfAllMorphisms",
+        IsFpCategory );
 
 #! @Description
 #!  The input is a finitely presented category <A>C</A> equipped with a homomorphism structure
