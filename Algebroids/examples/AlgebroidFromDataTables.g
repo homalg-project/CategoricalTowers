@@ -154,8 +154,8 @@ m1 = m2;
 #! true
 #! #@fi
 PSh := PreSheaves( B );
-#! PreSheaves( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,
-#! e:3-≻3] ) defined by 4 objects and 5 generating morphisms, Rows( Q ) )
+#! PreSheaves( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
+#! defined by 4 objects and 5 generating morphisms, Rows( Q ) )
 Y := YonedaEmbeddingOfSourceCategory( PSh );
 #! Yoneda embedding functor
 IsEqualForObjects( Y(B.("3")), PSh.("3") );

@@ -643,7 +643,7 @@ InstallMethod( AlgebroidFromDataTables,
     AddIsEqualForObjects( cat,
       
       { cat, obj_1, obj_2 } -> ObjectIndex( obj_1 ) = ObjectIndex( obj_2 )
-     );
+    );
     
     ##
     AddIsWellDefinedForMorphisms( cat,
