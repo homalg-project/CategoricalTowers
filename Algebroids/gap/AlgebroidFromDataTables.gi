@@ -1904,7 +1904,7 @@ InstallOtherMethod( QuotientCategory,
     InstallMethod( DisplayString,
               [ ObjectFilter( quotient_category ) ],
     
-    ViewString );
+     o -> Concatenation( ViewString( o ), "\n" ) );
     
     InstallMethod( ViewString,
               [ ObjectFilter( quotient_category ) ],
@@ -1917,7 +1917,7 @@ InstallOtherMethod( QuotientCategory,
     InstallMethod( DisplayString,
               [ MorphismFilter( quotient_category ) ],
     
-    ViewString );
+    m -> Concatenation( ViewString( m ), "\n" ) );
     
     InstallMethod( ViewString,
               [ MorphismFilter( quotient_category ) ],
@@ -1964,7 +1964,7 @@ end );
 InstallMethod( DisplayString,
           [ IsAlgebroidFromDataTablesObject ],
   
-  ViewString );
+  o -> Concatenation( ViewString( o ), "\n" ) );
 
 
 ##
@@ -2034,7 +2034,7 @@ end );
 InstallMethod( DisplayString,
           [ IsAlgebroidFromDataTablesMorphism ],
   
-  ViewString );
+  m -> Concatenation( ViewString( m ), "\n" ) );
 
 ##
 InstallMethod( LaTeXOutput,
