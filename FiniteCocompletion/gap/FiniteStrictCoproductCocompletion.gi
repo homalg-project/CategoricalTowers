@@ -251,7 +251,8 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                ForAll( pair[2],
                        obj ->
                        IsCapCategoryObject( obj ) and
-                       IsIdenticalObj( CapCategory( obj ), C ) );
+                       IsIdenticalObj( CapCategory( obj ), C ) and
+                       IsWellDefinedForObjects( C, obj ) );
         
     end );
     
@@ -293,7 +294,8 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                            IsCapCategoryMorphism( mors[i] ) and
                            IsIdenticalObj( CapCategory( mors[i] ), C ) and
                            IsEqualForObjects( C, Source( mors[i] ), S[i] ) and
-                           IsEqualForObjects( C, Range( mors[i] ), T[1 + map[i]] ) );
+                           IsEqualForObjects( C, Range( mors[i] ), T[1 + map[i]] ) and
+                           IsWellDefinedForMorphisms( C, mors[i] ) );
         fi;
         
     end );
