@@ -578,7 +578,31 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             
             data := List( D, Di -> ObjectDatum( UC, Di ) );
             
-            cartesian := List( Cartesian( List( data, datum -> datum[2] ) ), Reversed );
+            ## using the "double-reverse" in the below GAP command Cartesian
+            ## is enforced by our convention for ProjectionInFactorOfDirectProduct in SkeletalFinSets:
+            
+            # gap> A := FinSet( 3 );
+            # |3|
+            # gap> B := FinSet( 4 );
+            # |4|
+            # gap> data := List( [ A, B ], AsList );
+            # [ [ 0 .. 2 ], [ 0 .. 3 ] ]
+            # gap> pi1 := ProjectionInFactorOfDirectProduct( [ A, B ], 1 );
+            # |12| → |3|
+            # gap> pi2 := ProjectionInFactorOfDirectProduct( [ A, B ], 2 );
+            # |12| → |4|
+            # gap> L1 := List( [ 0 .. 11 ], i -> [ pi1(i), pi2(i) ] );
+            # [ [ 0, 0 ], [ 1, 0 ], [ 2, 0 ], [ 0, 1 ], [ 1, 1 ], [ 2, 1 ], [ 0, 2 ], [ 1, 2 ], [ 2, 2 ], [ 0, 3 ], [ 1, 3 ], [ 2, 3 ] ]
+            # gap> L2 := List( Cartesian( Reversed( datum ) ), Reversed );
+            # [ [ 0, 0 ], [ 1, 0 ], [ 2, 0 ], [ 0, 1 ], [ 1, 1 ], [ 2, 1 ], [ 0, 2 ], [ 1, 2 ], [ 2, 2 ], [ 0, 3 ], [ 1, 3 ], [ 2, 3 ] ]
+            # gap> L1 = L2;
+            # true
+            # gap> L3 := Cartesian( data );
+            # [ [ 0, 0 ], [ 0, 1 ], [ 0, 2 ], [ 0, 3 ], [ 1, 0 ], [ 1, 1 ], [ 1, 2 ], [ 1, 3 ], [ 2, 0 ], [ 2, 1 ], [ 2, 2 ], [ 2, 3 ] ]
+            # gap> L1 = L3;
+            # false
+            
+            cartesian := List( Cartesian( List( Reversed( data ), datum -> datum[2] ) ), Reversed );
             
             return ObjectConstructor( UC,
                            Pair( Product( List( data, datum -> datum[1] ) ), ## SkeletalFinSets code
@@ -615,7 +639,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             
             LP := pair[2];
             
-            cartesian := List( Cartesian( List( data, datum -> datum[2] ) ), Reversed );
+            cartesian := List( Cartesian( List( Reversed( data ), datum -> datum[2] ) ), Reversed );
             
             mor := List( [ 0 .. p - 1 ], i -> ProjectionInFactorOfDirectProductWithGivenDirectProduct( C, cartesian[1 + i], k, LP[1 + i] ) );
             
@@ -654,7 +678,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             ## FiniteStrictCoproductCocompletion code:
             C := UnderlyingCategory( UC );
             
-            cartesian := List( Cartesian( List( data, datum -> datum[2] ) ), Reversed );
+            cartesian := List( Cartesian( List( Reversed( data ), datum -> datum[2] ) ), Reversed );
             
             tau_mors := List( tau, t -> MorphismDatum( UC, t )[2] );
             
