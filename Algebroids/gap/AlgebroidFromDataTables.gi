@@ -408,7 +408,7 @@ InstallMethod( AlgebroidFromDataTables,
                           m := data[19][-m[1]][i];
                           return [ m, IdentityMat( m, data[1] ), m ];
                       else
-                          return _Product_Matrices_List_( hom_structure_objs_gmors[i]{List( m, index -> index )}, data[1] );
+                          return _Product_Matrices_List_( hom_structure_objs_gmors[i]{m}, data[1] );
                       fi;
                       
                     end ) );
