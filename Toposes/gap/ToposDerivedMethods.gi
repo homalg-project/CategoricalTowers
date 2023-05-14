@@ -953,29 +953,33 @@ AddDerivationToCAP( HomomorphismStructureOnMorphismsWithGivenObjects,
                       [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
                       [ PreComposeList, 2 ],
                       [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects, 2 ],
-                      [ UniversalMorphismFromCoproduct, 1, RangeCategoryOfHomomorphismStructure ] ],
+                      [ UniversalMorphismFromCoproductWithGivenCoproduct, 1, RangeCategoryOfHomomorphismStructure ] ],
                     
-  function( cat, s, alpha, gamma, r )
-    local range_cat, distinguished_object, Ls;
+  function( cat, source, alpha, gamma, range )
+    local range_cat, distinguished_object, Ls, tau;
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
     distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
     
-    Ls := ExactCoverWithGlobalElements( range_cat, s );
+    Ls := ExactCoverWithGlobalElements( range_cat, source );
     
-    return UniversalMorphismFromCoproduct( range_cat,
-                   r,
-                   List( Ls, mor ->
-                         InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
-                                 distinguished_object,
-                                 PreComposeList( cat,
-                                         [ alpha,
-                                           InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
-                                                   Range( alpha ),
-                                                   Source( gamma ),
-                                                   mor ),
-                                           gamma ] ),
-                                 r ) ) );
+    tau := List( Ls, mor ->
+                 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
+                         distinguished_object,
+                         PreComposeList( cat,
+                                 [ alpha,
+                                   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                                           Range( alpha ),
+                                           Source( gamma ),
+                                           mor ),
+                                   gamma ] ),
+                         range ) );
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( range_cat,
+                   List( tau, Source ),
+                   range,
+                   tau,
+                   source );
     
 end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
