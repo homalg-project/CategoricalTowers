@@ -341,7 +341,7 @@
     [4X[25Xgap>[125X [27Xalpha := 2*hom_03[1] + 3*hom_03[6];[127X[104X
     [4X[28X<2*a•b + 3*c•d•e^2:(0) -≻ (3)>[128X[104X
     [4X[25Xgap>[125X [27XLaTeXOutput( alpha );[127X[104X
-    [4X[28X"{0}-\\left({2\\cdot {a}{b} + 3\\cdot {c}{d}{{e}}^{2}}\\right)\\rightarrow{3}"[128X[104X
+    [4X[28X"{0}-\\left({2\\cdot {a}{b} + 3\\cdot {c}{d}{e}^{2}}\\right)\\rightarrow{3}"[128X[104X
     [4X[25Xgap>[125X [27Xalpha = CreateMorphism( B, B.("0"), [2, 0, 0, 0, 0, 3 ], B.("3") );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDecompositionOfMorphismInAlgebroid( alpha );[127X[104X
@@ -392,8 +392,8 @@
     [4X[28Xtrue[128X[104X
     [4X[28X#@fi[128X[104X
     [4X[25Xgap>[125X [27XPSh := PreSheaves( B );[127X[104X
-    [4X[28XPreSheaves( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,[128X[104X
-    [4X[28Xe:3-≻3] ) defined by 4 objects and 5 generating morphisms, Rows( Q ) )[128X[104X
+    [4X[28XPreSheaves( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )[128X[104X
+    [4X[28Xdefined by 4 objects and 5 generating morphisms, Rows( Q ) )[128X[104X
     [4X[25Xgap>[125X [27XY := YonedaEmbeddingOfSourceCategory( PSh );[127X[104X
     [4X[28XYoneda embedding functor[128X[104X
     [4X[25Xgap>[125X [27XIsEqualForObjects( Y(B.("3")), PSh.("3") );[127X[104X
@@ -424,10 +424,9 @@
     [4X[25X>[125X [27X      = PreCompose( HomStructure( v ), HomStructure( u, w ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XBB := TensorProductOfAlgebroids( B, B );[127X[104X
-    [4X[28XQ-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[id(0)⊗a:0⊗0-≻0⊗1,[128X[104X
-    [4X[28Xid(0)⊗b:0⊗1-≻0⊗3,id(0)⊗c:0⊗0-≻0⊗2,..,id(2)⊗d:2⊗2-≻2⊗3,[128X[104X
-    [4X[28Xid(2)⊗e:2⊗3-≻2⊗3,id(3)⊗a:3⊗0-≻3⊗1] ) defined by 16 objects and 40[128X[104X
-    [4X[28Xgenerating morphisms[128X[104X
+    [4X[28XQ-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[id(0)⊗a:0⊗0-≻0⊗1,id(0)⊗b:0⊗1-≻0⊗3[128X[104X
+    [4X[28X,id(0)⊗c:0⊗0-≻0⊗2,..,e⊗id(1):3⊗1-≻3⊗1,e⊗id(2):3⊗2-≻3⊗2,e⊗id(3):3⊗3-≻3⊗3] )[128X[104X
+    [4X[28Xdefined by 16 objects and 40 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XElementaryTensor( B.0, B.1 );[127X[104X
     [4X[28X<(0⊗1)>[128X[104X
     [4X[25Xgap>[125X [27XElementaryTensor( B.a, B.b );[127X[104X
