@@ -907,7 +907,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 501 : IsPrecompiledDerivation := true );
+    , 802 : IsPrecompiledDerivation := true );
     
     if IsBound( cat!.precompiled_functions_added ) then
         
