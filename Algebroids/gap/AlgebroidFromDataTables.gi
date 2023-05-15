@@ -369,7 +369,7 @@ InstallMethod( AlgebroidFromDataTables,
                             if pair[2] = 1 then
                                 return pair[1];
                             else
-                                return Concatenation( "{", pair[1], "}^{", String( pair[2] ), "}" );
+                                return Concatenation( pair[1], "^{", String( pair[2] ), "}" );
                             fi;
                           end ) , "" ) );
     fi;
@@ -408,7 +408,7 @@ InstallMethod( AlgebroidFromDataTables,
                           m := data[19][-m[1]][i];
                           return [ m, IdentityMat( m, data[1] ), m ];
                       else
-                          return _Product_Matrices_List_( hom_structure_objs_gmors[i]{List( m, index -> index )}, data[1] );
+                          return _Product_Matrices_List_( hom_structure_objs_gmors[i]{m}, data[1] );
                       fi;
                       
                     end ) );
@@ -536,9 +536,9 @@ InstallMethod( AlgebroidFromDataTables,
                                     { l, i, j } -> Concatenation( l, ":", input_data.labels_objs[i], "-≻", input_data.labels_objs[j] ) ), "," ),
                               ",..,",
                               JoinStringsWithSeparator(
-                                  ListN( input_data.labels_gmors{[input_data.nr_objs - 2 .. input_data.nr_objs]},
-                                         input_data.sources_gmors{[input_data.nr_objs - 2 .. input_data.nr_objs]},
-                                         input_data.ranges_gmors{[input_data.nr_objs - 2 .. input_data.nr_objs]},
+                                  ListN( input_data.labels_gmors{[input_data.nr_gmors - 2 .. input_data.nr_gmors]},
+                                         input_data.sources_gmors{[input_data.nr_gmors - 2 .. input_data.nr_gmors]},
+                                         input_data.ranges_gmors{[input_data.nr_gmors - 2 .. input_data.nr_gmors]},
                                             { l, i, j } -> Concatenation( l, ":", input_data.labels_objs[i], "-≻", input_data.labels_objs[j] ) ), "," ) );
         
         fi;
@@ -643,7 +643,7 @@ InstallMethod( AlgebroidFromDataTables,
     AddIsEqualForObjects( cat,
       
       { cat, obj_1, obj_2 } -> ObjectIndex( obj_1 ) = ObjectIndex( obj_2 )
-     );
+    );
     
     ##
     AddIsWellDefinedForMorphisms( cat,
@@ -825,15 +825,19 @@ InstallMethod( AlgebroidFromDataTables,
     AddRandomMorphismWithFixedSourceByInteger( cat,
       
       function ( cat, obj, n )
-        local ring, r, basis;
+        local ring, s, indices, r, basis;
         
         ring := CommutativeRingOfLinearCategory( cat );
         
-        r := Random( Filtered( SetOfObjects( cat ), o -> not IsZero( HomomorphismStructureOnObjects( cat, obj, o ) ) ) );
+        s := ObjectIndex( obj );
         
-        basis := SetOfBasesOfExternalHomsLazyHList( cat )[ObjectIndex( r )][ObjectIndex( obj )];
+        indices := Shuffle( [ 1 .. EnhancedDataTables( cat )[2] ] );
         
-        return Sum( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( basis ) );
+        r := PositionProperty( indices, r -> EnhancedDataTables( cat )[19][r][s] <> 0 );
+        
+        basis := SetOfBasesOfExternalHomsLazyHList( cat )[indices[r]][s];
+        
+        return SumOfMorphisms( cat, obj, List( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( basis ) ), SetOfObjects( cat )[indices[r]] );
         
     end );
     
@@ -841,15 +845,19 @@ InstallMethod( AlgebroidFromDataTables,
     AddRandomMorphismWithFixedRangeByInteger( cat,
       
       function ( cat, obj, n )
-        local ring, s, basis;
+        local ring, r, indices, s, basis;
         
         ring := CommutativeRingOfLinearCategory( cat );
         
-        s := Random( Filtered( SetOfObjects( cat ), o -> not IsZero( HomomorphismStructureOnObjects( cat, o, obj ) ) ) );
+        r := ObjectIndex( obj );
         
-        basis := SetOfBasesOfExternalHomsLazyHList( cat )[ObjectIndex( obj )][ObjectIndex( s )];
+        indices := Shuffle( [ 1 .. EnhancedDataTables( cat )[2] ] );
         
-        return SumOfMorphisms( cat, s, List( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( basis ) ), obj );
+        s := PositionProperty( indices, s -> EnhancedDataTables( cat )[19][r][s] <> 0 );
+        
+        basis := SetOfBasesOfExternalHomsLazyHList( cat )[r][indices[s]];
+        
+        return SumOfMorphisms( cat, SetOfObjects( cat )[indices[s]], List( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( basis ) ), obj );
         
     end );
     
@@ -1076,34 +1084,34 @@ InstallMethodWithCache( TensorProductOfAlgebroids,
     
     data!.labels_objs  := _ConcatenationLazyHLists_( LazyHList( data_1[3], l -> LazyHList( data_2[3], r -> Concatenation( l, "⊗", r ) ) ) );
     
-    data!.latex_strings_objs := _ConcatenationLazyHLists_( LazyHList( data_1[4], l -> LazyHList( data_2[4], r -> Concatenation( l, "{\\otimes}", r ) ) ) );
+    data!.latex_strings_objs := _ConcatenationLazyHLists_( LazyHList( data_1[4], l -> LazyHList( data_2[4], r -> Concatenation( l, "\\otimes ", r ) ) ) );
     
     data!.nr_gmors := data_1[2] * data_2[6] + data_1[6] * data_2[2];
     
     data!.indices_gmors :=
-                    _ConcatenationLazyHLists_(
-                        [ _ConcatenationLazyHLists_( LazyHList( data_1[5], l -> LazyHList( data_2[9], r -> (l-1) * data_2[12] + r ) ) ),
-                          _ConcatenationLazyHLists_( LazyHList( data_1[9], l -> LazyHList( data_2[5], r -> (l-1) * data_2[12] + r ) ) ) ] );
+        _ConcatenationLazyHLists_(
+            [ _ConcatenationLazyHLists_( LazyHList( data_1[5], l -> LazyHList( data_2[9], r -> (l-1) * data_2[12] + r ) ) ),
+              _ConcatenationLazyHLists_( LazyHList( data_1[9], l -> LazyHList( data_2[5], r -> (l-1) * data_2[12] + r ) ) ) ] );
     
     data!.labels_gmors :=
-                    _ConcatenationLazyHLists_(
-                        [ _ConcatenationLazyHLists_( LazyHList( data_1[3], l -> LazyHList( data_2[7], r -> Concatenation( "id(", l, ")⊗", r ) ) ) ),
-                          _ConcatenationLazyHLists_( LazyHList( data_1[7], l -> LazyHList( data_2[3], r -> Concatenation( l, "⊗id(", r, ")" ) ) ) ) ] );
+        _ConcatenationLazyHLists_(
+            [ _ConcatenationLazyHLists_( LazyHList( data_1[14]{ListOfValues(data_1[5])}, l -> LazyHList( data_2[7], r -> Concatenation( l, "⊗", r ) ) ) ),
+              _ConcatenationLazyHLists_( LazyHList( data_1[7], l -> LazyHList( data_2[14]{ListOfValues(data_2[5])}, r -> Concatenation( l, "⊗", r ) ) ) ) ] );
     
     data!.latex_strings_gmors :=
-                    _ConcatenationLazyHLists_(
-                        [ _ConcatenationLazyHLists_( LazyHList( data_1[4], l -> LazyHList( data_2[8], r -> Concatenation( "id_{", l, "}{\\otimes}", r ) ) ) ),
-                          _ConcatenationLazyHLists_( LazyHList( data_1[8], l -> LazyHList( data_2[4], r -> Concatenation( l, "{\\otimes}id_{", r, "}" ) ) ) ) ] );
+        _ConcatenationLazyHLists_(
+            [ _ConcatenationLazyHLists_( LazyHList( data_1[15]{ListOfValues(data_1[5])}, l -> LazyHList( data_2[8], r -> Concatenation( l, "\\otimes ", r ) ) ) ),
+              _ConcatenationLazyHLists_( LazyHList( data_1[8], l -> LazyHList( data_2[15]{ListOfValues(data_2[5])}, r -> Concatenation( l, "\\otimes ", r ) ) ) ) ] );
 
     data!.sources_gmors :=
-                    _ConcatenationLazyHLists_(
-                        [ _ConcatenationLazyHLists_( LazyHList( [ 1 .. data_1[2] ], l -> LazyHList( data_2[10], r -> (l-1) * data_2[2] + r ) ) ),
-                          _ConcatenationLazyHLists_( LazyHList( data_1[10], l -> LazyHList( [ 1 .. data_2[2] ], r -> (l-1) * data_2[2] + r ) ) ) ] );
+        _ConcatenationLazyHLists_(
+            [ _ConcatenationLazyHLists_( LazyHList( [ 1 .. data_1[2] ], l -> LazyHList( data_2[10], r -> (l-1) * data_2[2] + r ) ) ),
+              _ConcatenationLazyHLists_( LazyHList( data_1[10], l -> LazyHList( [ 1 .. data_2[2] ], r -> (l-1) * data_2[2] + r ) ) ) ] );
     
     data!.ranges_gmors :=
-                    _ConcatenationLazyHLists_(
-                        [ _ConcatenationLazyHLists_( LazyHList( [ 1 .. data_1[2] ], l -> LazyHList( data_2[11], r -> (l-1) * data_2[2] + r ) ) ),
-                          _ConcatenationLazyHLists_( LazyHList( data_1[11], l -> LazyHList( [ 1 .. data_2[2] ], r -> (l-1) * data_2[2] + r ) ) ) ] );
+        _ConcatenationLazyHLists_(
+            [ _ConcatenationLazyHLists_( LazyHList( [ 1 .. data_1[2] ], l -> LazyHList( data_2[11], r -> (l-1) * data_2[2] + r ) ) ),
+              _ConcatenationLazyHLists_( LazyHList( data_1[11], l -> LazyHList( [ 1 .. data_2[2] ], r -> (l-1) * data_2[2] + r ) ) ) ] );
     
     data!.hom_structure_objs_gmors :=
         _ConcatenationLazyHLists_(
@@ -1198,7 +1206,7 @@ InstallMethodWithCache( TensorProductOfAlgebroids,
         _ConcatenationLazyHLists_( LazyHList( data_1[14], l -> LazyHList( data_2[14], r -> Concatenation( l, "⊗", r ) ) ) );
     
     data.latex_strings_of_bases_elms :=
-        _ConcatenationLazyHLists_( LazyHList( data_1[15], l -> LazyHList( data_2[15], r -> Concatenation( l, "{\\otimes}", r ) ) ) );
+        _ConcatenationLazyHLists_( LazyHList( data_1[15], l -> LazyHList( data_2[15], r -> Concatenation( l, "\\otimes ", r ) ) ) );
     
     data!.indices_of_bases_elms :=
         _ConcatenationLazyHLists_( LazyHList( [ 1 .. data_1[2] ], i -> LazyHList( [ 1 .. data_2[2] ],
@@ -1896,7 +1904,7 @@ InstallOtherMethod( QuotientCategory,
     InstallMethod( DisplayString,
               [ ObjectFilter( quotient_category ) ],
     
-    ViewString );
+     o -> Concatenation( ViewString( o ), "\n" ) );
     
     InstallMethod( ViewString,
               [ ObjectFilter( quotient_category ) ],
@@ -1909,7 +1917,7 @@ InstallOtherMethod( QuotientCategory,
     InstallMethod( DisplayString,
               [ MorphismFilter( quotient_category ) ],
     
-    ViewString );
+    m -> Concatenation( ViewString( m ), "\n" ) );
     
     InstallMethod( ViewString,
               [ MorphismFilter( quotient_category ) ],
@@ -1956,7 +1964,7 @@ end );
 InstallMethod( DisplayString,
           [ IsAlgebroidFromDataTablesObject ],
   
-  ViewString );
+  o -> Concatenation( ViewString( o ), "\n" ) );
 
 
 ##
@@ -2026,7 +2034,7 @@ end );
 InstallMethod( DisplayString,
           [ IsAlgebroidFromDataTablesMorphism ],
   
-  ViewString );
+  m -> Concatenation( ViewString( m ), "\n" ) );
 
 ##
 InstallMethod( LaTeXOutput,
