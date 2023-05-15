@@ -7,7 +7,7 @@
                                     quivers [101X
   
   
-                                   2023.05-11
+                                   2023.05-12
   
   
                                   15 May 2023
@@ -237,38 +237,41 @@
       5.5-5 IsAlgebraAsCategory
       5.5-6 IsAlgebroidMorphism
   6 [33X[0;0YAlgebroids from data tables[133X
-    6.1 [33X[0;0YAttributes[133X
-      6.1-1 DataTablesOfCategory
-      6.1-2 IsomorphismOntoAlgebroidFromDataTables
-      6.1-3 IsomorphismFromAlgebroidFromDataTables
-      6.1-4 QuotientCategory
-      6.1-5 EnhancedDataTables
-      6.1-6 SetOfObjects
-      6.1-7 SetOfGeneratingMorphisms
-      6.1-8 SetOfBasesOfExternalHoms
-    6.2 [33X[0;0YOperations[133X
-      6.2-1 AssignSetOfObjects
-      6.2-2 AssignSetOfGeneratingMorphisms
-      6.2-3 CreateObject
-      6.2-4 ObjectIndex
-      6.2-5 CreateMorphism
-      6.2-6 MorphismCoefficients
-      6.2-7 MorphismSupport
-      6.2-8 DecompositionOfMorphismInAlgebroid
-      6.2-9 OppositeAlgebroid
-      6.2-10 TensorProductOfAlgebroids
-      6.2-11 \*
-      6.2-12 ElementaryTensor
-      6.2-13 ElementaryTensor
-      6.2-14 AlgebroidAsObjectInPreSheavesCategory
-      6.2-15 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory
-    6.3 [33X[0;0YConstructors[133X
-      6.3-1 AlgebroidFromDataTables
-    6.4 [33X[0;0YGAP categories[133X
-      6.4-1 IsAlgebroidFromDataTablesObject
-      6.4-2 IsCellInAlgebroidFromDataTables
-      6.4-3 IsAlgebroidFromDataTables
-      6.4-4 IsAlgebroidFromDataTablesMorphism
+    6.1 [33X[0;0YProperties[133X
+      6.1-1 IsAdmissibleAlgebroid
+    6.2 [33X[0;0YAttributes[133X
+      6.2-1 DataTablesOfCategory
+      6.2-2 IsomorphismOntoAlgebroidFromDataTables
+      6.2-3 IsomorphismFromAlgebroidFromDataTables
+      6.2-4 QuotientCategory
+      6.2-5 EnhancedDataTables
+      6.2-6 SetOfObjects
+      6.2-7 SetOfGeneratingMorphisms
+      6.2-8 SetOfBasesOfExternalHoms
+      6.2-9 PowerOfArrowIdeal
+    6.3 [33X[0;0YOperations[133X
+      6.3-1 AssignSetOfObjects
+      6.3-2 AssignSetOfGeneratingMorphisms
+      6.3-3 CreateObject
+      6.3-4 ObjectIndex
+      6.3-5 CreateMorphism
+      6.3-6 MorphismCoefficients
+      6.3-7 MorphismSupport
+      6.3-8 DecompositionOfMorphismInAlgebroid
+      6.3-9 OppositeAlgebroid
+      6.3-10 TensorProductOfAlgebroids
+      6.3-11 \*
+      6.3-12 ElementaryTensor
+      6.3-13 ElementaryTensor
+      6.3-14 AlgebroidAsObjectInPreSheavesCategory
+      6.3-15 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory
+    6.4 [33X[0;0YConstructors[133X
+      6.4-1 AlgebroidFromDataTables
+    6.5 [33X[0;0YGAP categories[133X
+      6.5-1 IsAlgebroidFromDataTablesObject
+      6.5-2 IsCellInAlgebroidFromDataTables
+      6.5-3 IsAlgebroidFromDataTables
+      6.5-4 IsAlgebroidFromDataTablesMorphism
   7 [33X[0;0YCategory of algebroids[133X
     7.1 [33X[0;0YProperties[133X
       7.1-1 IsCommutative
