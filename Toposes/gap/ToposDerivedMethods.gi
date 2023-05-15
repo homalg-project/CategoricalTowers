@@ -956,14 +956,14 @@ AddDerivationToCAP( HomomorphismStructureOnMorphismsWithGivenObjects,
                       [ UniversalMorphismFromCoproductWithGivenCoproduct, 1, RangeCategoryOfHomomorphismStructure ] ],
                     
   function( cat, source, alpha, gamma, range )
-    local range_cat, distinguished_object, Ls, tau;
+    local range_cat, distinguished_object, global_elements, tau;
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
     distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
     
-    Ls := ExactCoverWithGlobalElements( range_cat, source );
+    global_elements := ExactCoverWithGlobalElements( range_cat, source );
     
-    tau := List( Ls, mor ->
+    tau := List( global_elements, mor ->
                  InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
                          distinguished_object,
                          PreComposeList( cat,
