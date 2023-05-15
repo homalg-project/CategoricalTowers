@@ -697,23 +697,19 @@ end );
 
 ##
 AddDerivationToCAP( MorphismsOfExternalHom,
-                    "MorphismsOfExternalHom using MorphismsOfExternalHom in RangeCategoryOfHomomorphismStructure",
+                    "MorphismsOfExternalHom using ExactCoverWithGlobalElements in RangeCategoryOfHomomorphismStructure",
                     [ [ HomomorphismStructureOnObjects, 1 ],
-                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
                       [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
-                      [ MorphismsOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ] ],
+                      [ ExactCoverWithGlobalElements, 1, RangeCategoryOfHomomorphismStructure ] ],
                     
   function( cat, A, B )
-    local range_cat, hom_A_B, D, morphisms;
+    local range_cat, hom_A_B, morphisms;
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
     
     hom_A_B := HomomorphismStructureOnObjects( cat, A, B );
     
-    D := DistinguishedObjectOfHomomorphismStructure( cat );
-    
-    morphisms := MorphismsOfExternalHom( range_cat,
-                         D, hom_A_B );
+    morphisms := ExactCoverWithGlobalElements( range_cat, hom_A_B );
     
     return List( morphisms,
                  phi -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
