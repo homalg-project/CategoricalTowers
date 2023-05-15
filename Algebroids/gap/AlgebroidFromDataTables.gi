@@ -903,6 +903,54 @@ InstallMethod( SetOfBasesOfExternalHoms,
   B -> List( ListOfValues( SetOfBasesOfExternalHomsLazyHList( B ) ), ListOfValues )
 );
 
+##
+InstallMethod( PowerOfArrowIdealOp,
+          [ IsAlgebroidFromDataTables, IsInt ],
+  function ( B, n )
+    
+    if n = 0 then
+        return Filtered( List( SetOfObjects( B ), o -> IdentityMorphism( B, o ) ), h -> not IsZero( h ) );
+    else
+        return Filtered( Concatenation( List( PowerOfArrowIdeal( B, n - 1 ),
+                f -> List( Filtered( SetOfGeneratingMorphisms( B ), g -> ObjectIndex( Range( f ) ) = ObjectIndex( Source( g ) ) ),
+                  g -> PreCompose( B, f, g ) ) ) ),
+                    h -> not IsZeroForMorphisms( B, h ) );
+    fi;
+    
+end );
+
+##
+InstallMethod( IsAdmissibleAlgebroid,
+          [ IsAlgebroidFromDataTables ],
+  
+  function ( B )
+    local dim, i;
+    
+    dim :=
+      AsZFunction(
+        function ( i )
+          local C, objs;
+          
+          C := QuotientCategory( B, PowerOfArrowIdeal( B, i ) : overhead := false );
+          
+          objs := List( SetOfObjects( B ), u -> ObjectConstructor( C, u ) );
+          
+          return Sum( List( objs, u -> Sum( List( objs, v -> RankOfObject( HomomorphismStructureOnObjects( C, u, v ) ) ) ) ) );
+          
+        end );
+    
+    i := 2;
+    
+    if dim[i] <> Sum( EnhancedDataTables( B ){[2,6]} ) then
+        return false;
+    fi;
+    
+    repeat i := i + 1; until dim[i] = dim[i-1];
+    
+    return dim[i] = EnhancedDataTables( B )[12];
+    
+end );
+
 ##############################
 #
 # Objects & Morphisms
