@@ -825,15 +825,19 @@ InstallMethod( AlgebroidFromDataTables,
     AddRandomMorphismWithFixedSourceByInteger( cat,
       
       function ( cat, obj, n )
-        local ring, r, basis;
+        local ring, s, indices, r, basis;
         
         ring := CommutativeRingOfLinearCategory( cat );
         
-        r := Random( Filtered( SetOfObjects( cat ), o -> not IsZero( HomomorphismStructureOnObjects( cat, obj, o ) ) ) );
+        s := ObjectIndex( obj );
         
-        basis := SetOfBasesOfExternalHomsLazyHList( cat )[ObjectIndex( r )][ObjectIndex( obj )];
+        indices := Shuffle( [ 1 .. EnhancedDataTables( cat )[2] ] );
         
-        return Sum( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( basis ) );
+        r := PositionProperty( indices, r -> EnhancedDataTables( cat )[19][r][s] <> 0 );
+        
+        basis := SetOfBasesOfExternalHomsLazyHList( cat )[indices[r]][s];
+        
+        return SumOfMorphisms( cat, obj, List( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( basis ) ), SetOfObjects( cat )[indices[r]] );
         
     end );
     
@@ -841,15 +845,19 @@ InstallMethod( AlgebroidFromDataTables,
     AddRandomMorphismWithFixedRangeByInteger( cat,
       
       function ( cat, obj, n )
-        local ring, s, basis;
+        local ring, r, indices, s, basis;
         
         ring := CommutativeRingOfLinearCategory( cat );
         
-        s := Random( Filtered( SetOfObjects( cat ), o -> not IsZero( HomomorphismStructureOnObjects( cat, o, obj ) ) ) );
+        r := ObjectIndex( obj );
         
-        basis := SetOfBasesOfExternalHomsLazyHList( cat )[ObjectIndex( obj )][ObjectIndex( s )];
+        indices := Shuffle( [ 1 .. EnhancedDataTables( cat )[2] ] );
         
-        return SumOfMorphisms( cat, s, List( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( basis ) ), obj );
+        s := PositionProperty( indices, s -> EnhancedDataTables( cat )[19][r][s] <> 0 );
+        
+        basis := SetOfBasesOfExternalHomsLazyHList( cat )[r][indices[s]];
+        
+        return SumOfMorphisms( cat, SetOfObjects( cat )[indices[s]], List( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( basis ) ), obj );
         
     end );
     
