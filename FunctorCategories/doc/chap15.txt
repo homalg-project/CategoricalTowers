@@ -137,7 +137,65 @@
   [4X[32X[104X
   
   
-  [1X15.3  [33X[0;0YPrecompiling  the  presheaf  category of an algebroid with values in a[101X
+  [1X15.3  [33X[0;0YPrecompiling  the  presheaf  category of an algebroid from data tables[101X
+  [1Xwith values in a category of rows[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2022.09-02", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FreydCategoriesForCAP", "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27Xquiver := RightQuiver( "q(3)[a:1->2,b:2->3]" );;[127X[104X
+    [4X[25Xgap>[125X [27XkF := k[FreeCategory( quiver )];;[127X[104X
+    [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( kF / [ kF.ab ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := A -> PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_PreSheavesOfAlgebroidFromDataTablesInCategoryOfRows :=[127X[104X
+    [4X[25X>[125X [27X  function( A, compiled_category_name )[127X[104X
+    [4X[25X>[125X [27X    CapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X            category_constructor,[127X[104X
+    [4X[25X>[125X [27X            [ A ],[127X[104X
+    [4X[25X>[125X [27X            "FunctorCategories",[127X[104X
+    [4X[25X>[125X [27X            compiled_category_name[127X[104X
+    [4X[25X>[125X [27X            : operations :=[127X[104X
+    [4X[25X>[125X [27X            Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),[127X[104X
+    [4X[25X>[125X [27X                    [ "IsZeroForObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IsZeroForMorphisms",[127X[104X
+    [4X[25X>[125X [27X                      "IsEpimorphism",[127X[104X
+    [4X[25X>[125X [27X                      "IsMonomorphism",[127X[104X
+    [4X[25X>[125X [27X                      "IsIsomorphism",[127X[104X
+    [4X[25X>[125X [27X                      "IsEqualForMorphisms",[127X[104X
+    [4X[25X>[125X [27X                      "IsWellDefinedForObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IsProjective",[127X[104X
+    [4X[25X>[125X [27X                      "IsInjective",[127X[104X
+    [4X[25X>[125X [27X                      "EpimorphismFromSomeProjectiveObject",[127X[104X
+    [4X[25X>[125X [27X                      "MonomorphismIntoSomeInjectiveObject",[127X[104X
+    [4X[25X>[125X [27X                      "ProjectiveLift",[127X[104X
+    [4X[25X>[125X [27X                      "InjectiveColift",[127X[104X
+    [4X[25X>[125X [27X                      "EpimorphismFromProjectiveCoverObject",[127X[104X
+    [4X[25X>[125X [27X                      "MonomorphismIntoInjectiveEnvelopeObject",[127X[104X
+    [4X[25X>[125X [27X                      "IndecomposableProjectiveObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IndecomposableInjectiveObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IsReflexive",[127X[104X
+    [4X[25X>[125X [27X                      ] ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_PreSheavesOfAlgebroidFromDataTablesInCategoryOfRows( A, "PreSheavesOfAlgebroidFromDataTablesInCategoryOfRowsPrecompiled" );[127X[104X
+    [4X[25Xgap>[125X [27Xcat := PreSheavesOfAlgebroidFromDataTablesInCategoryOfRowsPrecompiled( A );;[127X[104X
+    [4X[25Xgap>[125X [27Xcat!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X15.4  [33X[0;0YPrecompiling  the  presheaf  category of an algebroid with values in a[101X
   [1Xcategory of rows[133X[101X
   
   [4X[32X  Example  [32X[104X
