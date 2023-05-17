@@ -926,6 +926,12 @@ InstallMethod( IsAdmissibleAlgebroid,
   function ( B )
     local dim, i;
     
+    if HasOppositeAlgebroid( B ) and HasIsAdmissibleAlgebroid( OppositeAlgebroid( B ) ) then
+        
+        return IsAdmissibleAlgebroid( OppositeAlgebroid( B ) );
+        
+    fi;
+    
     dim :=
       AsZFunction(
         function ( i )
@@ -1044,7 +1050,7 @@ InstallOtherMethod( OppositeAlgebroid,
           [ IsAlgebroidFromDataTables ],
   
   function ( cat )
-    local data, data_op;
+    local data, data_op, cat_op;
     
     data := EnhancedDataTables( cat );
     
@@ -1089,7 +1095,13 @@ InstallOtherMethod( OppositeAlgebroid,
                   l -> List( [ 1 .. data_op.hom_structure_ranks[q][p] ],
                     r -> data[20][q][p][j][i][r][l] ) ) ) ) ) );
     
-    return AlgebroidFromDataTables( data_op : range_of_HomStructure := RangeCategoryOfHomomorphismStructure( cat ) );
+    cat_op := AlgebroidFromDataTables( data_op : range_of_HomStructure := RangeCategoryOfHomomorphismStructure( cat ) );
+    
+    if HasIsAdmissibleAlgebroid( cat ) then
+        SetIsAdmissibleAlgebroid( cat_op, IsAdmissibleAlgebroid( cat ) );
+    fi;
+    
+    return cat_op;
     
 end );
 
