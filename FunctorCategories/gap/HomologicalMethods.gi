@@ -60,31 +60,35 @@ InstallMethod( RadicalInclusionOfPreSheaf,
 ##
 InstallMethod( CoverElementByIndecomposableProjectivePreSheaf,
         [ IsObjectInPreSheafCategory, IsCapCategoryMorphism, IsInt ],
-        
+  
   function ( F, ell, j )
-    local PSh, A, C, vals_F, P, vals_P, N, basis_paths, vals_eta, tau, delta;
+    local PSh, B, C, obj, Y_obj, func_of_presheaf_morphism;
     
     PSh := CapCategory( F );
     
-    A := Source( PSh );
-    C := Range(  PSh );
+    B := Source( PSh );
+    C := Range( PSh );
     
-    vals_F := List( ValuesOfPreSheaf( F ), ListOfValues );
+    obj := SetOfObjects( B )[j];
     
-    P := IndecomposableProjectiveObjects( PSh )[j];
-    vals_P := ValuesOfPreSheaf( P );
+    Y_obj := IndecomposableProjectiveObjects( PSh )[j];
     
-    N := Length( vals_F[1] );
+    func_of_presheaf_morphism :=
+      function ( Y_obj_o, o, F_o )
+        local tau, summands;
+        
+        tau := List( BasisOfExternalHom( B, o, obj ), m -> PreCompose( C, ell, F( m ) ) );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, RankOfObject( Y_obj_o ) = Length( tau ) );
+        
+        summands := ListWithIdenticalEntries( RankOfObject( Y_obj_o ), Source( ell ) );
+        
+        return UniversalMorphismFromDirectSumWithGivenDirectSum( C, summands, F_o, tau, Y_obj_o );
+        
+    end;
     
-    basis_paths := BasisPathsByVertexIndex( A );
-    
-    delta := List( [ 1 .. N ], i -> ListWithIdenticalEntries( Length( basis_paths[i][j] ), Source( ell) ) );
-    
-    tau := List( basis_paths, u -> List( u[j], p -> PostComposeList( C, Concatenation( vals_F[2]{List( ArrowList( p ), ArrowIndex )}, [ ell ] ) ) ) );
-    
-    vals_eta := ListN( vals_P[1], delta, tau, vals_F[1], { s, D, t, r } -> UniversalMorphismFromDirectSumWithGivenDirectSum( C, D, r, t, s ) );
-    
-    return CreatePreSheafMorphismByValues( PSh, P, vals_eta, F );
+    return CreatePreSheafMorphismByValues( PSh, Y_obj, List( SetOfObjects( B ), o -> func_of_presheaf_morphism( Y_obj(o), o, F(o) ) ), F );
     
 end );
 
@@ -103,7 +107,8 @@ InstallOtherMethodForCompilerForCAP( ProjectiveCoverObjectDataOfPreSheaf,
     C := Range( PSh );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    if not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( Source( PSh ) ) ) then
+    if ( IsAlgebroid( Source( PSh ) ) and not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( Source( PSh ) ) ) ) or
+       ( IsAlgebroidFromDataTables( Source( PSh ) ) and not IsAdmissibleAlgebroid( Source( PSh ) ) ) then
         TryNextMethod( );
     fi;
     

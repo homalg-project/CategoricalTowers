@@ -311,7 +311,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, commutative_ring,
           properties, supports_empty_limits, prop, option_record,
-          PSh, objects, generating_morphisms, H;
+          PSh, objects, generating_morphisms, H, auxiliary_indices;
     
     if IsFpCategory( B ) then
         B_op := OppositeFpCategory( B : FinalizeCategory := true );
@@ -333,6 +333,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         kq := UnderlyingQuiverAlgebra( B_op );
         relations := RelationsOfAlgebroid( B_op );
         relations := List( relations, UnderlyingQuiverAlgebraElement );
+    elif IsAlgebroidFromDataTables( B ) then
+        B_op := OppositeAlgebroid( B : FinalizeCategory := true );
     else
         Error( "the first argument must be in { IsFpCategory, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsAlgebroid }\n" );
     fi;
@@ -384,7 +386,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
        IsCategoryFromNerveData( B ) or
        IsCategoryFromDataTables( B ) or
        (HasIsFinite and IsFinite)( B ) or
-       ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
+       ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) or
+       IsAlgebroidFromDataTables( B ) then
         
         create_func_bool :=
           function ( name, PSh )
@@ -872,7 +875,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
        IsCategoryFromNerveData( B ) or
        IsCategoryFromDataTables( B ) or
        (HasIsFinite and IsFinite)( B ) or
-       ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
+       ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) or
+       IsAlgebroidFromDataTables( B ) then
         
         AddIsWellDefinedForMorphisms( PSh,
           function ( PSh, eta )
@@ -948,6 +952,33 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                   
                   return ForAll( relations, m -> IsZeroForMorphisms( C, ApplyToQuiverAlgebraElement( F, m ) ) );
                   
+              end );
+              
+          elif IsAlgebroidFromDataTables( B ) then
+
+              AddIsWellDefinedForObjects( PSh,
+                function ( PSh, F )
+                  local B, C, pairs;
+
+                  B := Source( PSh );
+                  C := Range( PSh );
+
+                  if not ForAll( objects, o -> IsWellDefinedForObjects( C, F( o ) ) ) then
+                      return false;
+                  elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( C, F( m ) ) ) then
+                      return false;
+                  elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Range( m ) ), Source( F( m ) ) ) ) then
+                      return false;
+                  elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Source( m ) ), Range( F( m ) ) ) ) then
+                      return false;
+                  fi;
+
+                  pairs := Concatenation( ListOfValues( EnhancedDataTables( B )[21] ) );
+
+                  return ForAll( pairs, p -> IsCongruentForMorphisms( C,
+                                                      F( PreCompose( B, generating_morphisms[p[1]], generating_morphisms[p[2]] ) ),
+                                                      PostCompose( C, F( generating_morphisms[p[1]] ), F( generating_morphisms[p[2]] ) ) ) );
+
               end );
               
           elif IsCategoryFromNerveData( B ) or
@@ -1762,7 +1793,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    if ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( C ) ) and IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) then
+    if ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( C ) ) and
+          ( ( HasUnderlyingQuiverAlgebra( B ) and IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) ) or
+            ( HasIsAdmissibleAlgebroid( B ) and IsAdmissibleAlgebroid( B ) ) ) then
       
       SetIsAbelianCategoryWithEnoughProjectives( PSh, true );
       
@@ -1838,9 +1871,22 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
       #
       #  computes a morphism from P to G which lifts eta along epi
       #
+      
+      auxiliary_indices :=
+          List( SetOfObjects( B ),
+            u -> List( SetOfObjects( B ),
+              v -> List( BasisOfExternalHom( B, u, v ),
+                function ( b )
+                  if IsEqualToIdentityMorphism( b ) then
+                    return [];
+                  else
+                    return List( DecompositionOfMorphismInAlgebroid( b )[1][2], g -> SafeUniquePosition( SetOfGeneratingMorphisms( B ), g ) );
+                  fi;
+                end ) ) );
+      
       AddProjectiveLift( PSh,
         function ( PSh, eta, epi )
-          local A, C, vals_eta, vals_epi, N, P, G, tP, vals_tP, gens, ells, vals_P, vals_G, indices, mu, nu, delta;
+          local A, C, vals_eta, vals_epi, N, P, G, tP, vals_tP, gens, ells, vals_P, vals_G, mu, nu, delta;
           
           A := Source( PSh );
           C := Range( PSh );
@@ -1862,19 +1908,17 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           vals_P := ValuesOfPreSheaf( P );
           vals_G := ValuesOfPreSheaf( G );
           
-          indices := List( BasisPathsByVertexIndex( A ), u -> List( u, b -> List( b, p -> List( ArrowList( p ), ArrowIndex ) ) ) );
-          
           mu := List( [ 1 .. N ], i -> Concatenation(
                   List( [ 1 .. N ], j ->
-                    List( [ 1 .. Length( indices[i,j] ) ], s ->
-                      PostComposeList( C, Concatenation( List( indices[i,j][s], index -> vals_P[2][index] ), [ gens[j] ] ) ) ) ) ) );
+                    List( [ 1 .. Length( auxiliary_indices[i,j] ) ], s ->
+                      PostComposeList( C, Concatenation( List( auxiliary_indices[i,j][s], index -> vals_P[2][index] ), [ gens[j] ] ) ) ) ) ) );
           
           nu := List( [ 1 .. N ], i -> Concatenation(
                   List( [ 1 .. N ], j ->
-                    List( [ 1 .. Length( indices[i,j] ) ], s ->
-                      PostComposeList( C, Concatenation( List( indices[i,j][s], index -> vals_G[2][index] ), [ ells[j] ] ) ) ) ) ) );
+                    List( [ 1 .. Length( auxiliary_indices[i,j] ) ], s ->
+                      PostComposeList( C, Concatenation( List( auxiliary_indices[i,j][s], index -> vals_G[2][index] ), [ ells[j] ] ) ) ) ) ) );
           
-          delta := List( [ 1 .. N ], i -> Concatenation( List( [ 1 .. N ], j -> ListWithIdenticalEntries( Length( indices[i][j] ), Range( vals_tP[j] ) ) ) ) );
+          delta := List( [ 1 .. N ], i -> Concatenation( List( [ 1 .. N ], j -> ListWithIdenticalEntries( Length( auxiliary_indices[i][j] ), Range( vals_tP[j] ) ) ) ) );
           
           ells := ListN( [ 1 .. N ], delta, mu, nu, { i, D, m, n } ->
                     PreCompose( C, PreInverseForMorphisms( C, UniversalMorphismFromDirectSum( C, D, vals_P[1][i], m ) ), UniversalMorphismFromDirectSum( C, D, vals_G[1][i], n ) ) );
@@ -2072,6 +2116,17 @@ InstallMethodWithCache( PreSheaves,
     CapCategorySwitchLogicOn( PSh );
     
     return PSh;
+    
+end );
+
+##
+InstallMethodWithCache( PreSheaves,
+        "for an algebroid from data tables and a category",
+        [ IsAlgebroidFromDataTables, IsCapCategory ],
+        
+  function ( B, C )
+    
+    return PreSheavesOfFpEnrichedCategory( B, C );
     
 end );
 
@@ -2490,10 +2545,21 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
     
     B_op := OppositeOfSource( PSh );
     
-    morB_op := MorphismInFpCategory( B_op,
-                       ObjectInFpCategory( B_op, OppositePath( UnderlyingVertex( Range( morB ) ) ) ),
+    if IsAlgebroidFromDataTables( B_op ) then
+        
+        morB_op := MorphismConstructor( B_op,
+                        SetOfObjects( B_op )[ObjectIndex(  Range( morB ) )],
+                        MorphismCoefficients( morB ),
+                        SetOfObjects( B_op )[ObjectIndex( Source( morB ) )] );
+        
+    else
+        
+        morB_op := MorphismConstructor( B_op,
+                       SetOfObjects( B_op )[VertexIndex( UnderlyingVertex(  Range( morB ) ) )],
                        OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( morB ) ),
-                       ObjectInFpCategory( B_op, OppositePath( UnderlyingVertex( Source( morB ) ) ) ) );
+                       SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Source( morB ) ) )] );
+        
+    fi;
     
     return FunctorMorphismOperation( UnderlyingCapTwoCategoryCell( PSh, F ) )(
                    ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Range( morB ) ),
@@ -3376,15 +3442,17 @@ InstallMethod( ViewString,
         [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( F )
-    local algebroid, vertices, arrows, v_dim, v_string, a_dim, a_string, string;
+    local PSh, B, vertices, v_dim, v_string, arrows, a_dim, a_string, string;
     
-    if not (IsMatrixCategory( Range( F ) ) or IsCategoryOfRows( Range( F ) )) then
+    PSh := CapCategory( F );
+     
+    if not ( IsAlgebroidFromDataTables( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Range( PSh ) ) ) ) then
         TryNextMethod();
     fi;
     
-    algebroid := Source( CapCategory( F ) );
+    B := Source( CapCategory( F ) );
     
-    vertices := List( SetOfObjects( algebroid ), UnderlyingVertex );
+    vertices := EnhancedDataTables( B )[3];
     
     v_dim := List( ValuesOfPreSheaf( F )[1], ObjectDatum );
     
@@ -3392,9 +3460,49 @@ InstallMethod( ViewString,
     
     v_string := JoinStringsWithSeparator( v_string, ", " );
     
-    arrows := List( SetOfGeneratingMorphisms( algebroid ), UnderlyingQuiverAlgebraElement );
+    arrows := EnhancedDataTables( B )[7];
     
-    if not IsPathAlgebra( UnderlyingQuiverAlgebra( algebroid ) ) then
+    a_dim := List( ValuesOfPreSheaf( F )[2], m -> [ ObjectDatum( Source( m ) ), ObjectDatum( Range( m ) ) ] );
+    
+    a_string := ListN( arrows, a_dim,
+                  { arrow, dim } -> Concatenation(
+                      "(", arrow, ")->", String( dim[ 1 ] ), "x", String( dim[ 2 ] ) )
+                    );
+    
+    a_string := JoinStringsWithSeparator( a_string, ", " );
+    
+    string := Concatenation( v_string, "; ", a_string );
+    
+    return Concatenation( "<", string, ">" );
+    
+end );
+
+##
+InstallMethod( ViewString,
+        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( F )
+    local PSh, B, vertices, v_dim, v_string, arrows, a_dim, a_string, string;
+    
+    PSh := CapCategory( F );
+     
+    if not ( IsAlgebroid( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Range( PSh ) ) ) ) then
+        TryNextMethod();
+    fi;
+    
+    B := Source( CapCategory( F ) );
+    
+    vertices := List( SetOfObjects( B ), UnderlyingVertex );
+    
+    v_dim := List( ValuesOfPreSheaf( F )[1], ObjectDatum );
+    
+    v_string := ListN( vertices, v_dim, { vertex, dim } -> Concatenation( "(", String( vertex ), ")->", String( dim ) ) );
+    
+    v_string := JoinStringsWithSeparator( v_string, ", " );
+    
+    arrows := List( SetOfGeneratingMorphisms( B ), UnderlyingQuiverAlgebraElement );
+    
+    if not IsPathAlgebra( UnderlyingQuiverAlgebra( B ) ) then
       
       arrows := List( arrows, a -> Paths( Representative( a ) )[ 1 ] );
       
@@ -3464,9 +3572,42 @@ InstallMethod( ViewString,
         [ IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( eta )
-    local vertices, s_dim, r_dim, string;
+    local PSh, B, vertices, s_dim, r_dim, string;
     
-    if not (IsMatrixCategory( Range( CapCategory( eta ) ) ) or IsCategoryOfRows( Range( CapCategory( eta ) ) )) then
+    PSh := CapCategory( eta );
+    
+    if not ( IsAlgebroidFromDataTables( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Range( PSh ) ) ) ) then
+        TryNextMethod();
+    fi;
+    
+    B := Source( PSh );
+    
+    vertices := EnhancedDataTables( B )[3];
+    
+    s_dim := List( ValuesOfPreSheaf( Source( eta ) )[1], ObjectDatum );
+    
+    r_dim := List( ValuesOfPreSheaf( Range( eta ) )[1], ObjectDatum );
+    
+    string := ListN( vertices, s_dim, r_dim,
+                { vertex, s, r } ->
+                    Concatenation( "(", vertex, ")->", String( s ), "x", String( r ) ) );
+    
+    string := JoinStringsWithSeparator( string, ", " );
+    
+    return Concatenation( "<", string, ">" );
+    
+end );
+
+##
+InstallMethod( ViewString,
+        [ IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( eta )
+    local PSh, vertices, s_dim, r_dim, string;
+    
+    PSh := CapCategory( eta );
+    
+    if not ( IsAlgebroid( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Range( PSh ) ) ) ) then
         TryNextMethod();
     fi;
     
@@ -3604,3 +3745,4 @@ InstallMethod( LaTeXOutput,
     fi;
     
 end );
+

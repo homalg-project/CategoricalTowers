@@ -18,7 +18,7 @@ InstallMethodForCompilerForCAP( NakayamaLeftAdjointData,
     B := Source( coPSh );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    if not ( IsAlgebroid( B ) and HasRangeCategoryOfHomomorphismStructure( B ) ) then
+    if not ( ( IsAlgebroid( B ) or IsAlgebroidFromDataTables( B ) ) and HasRangeCategoryOfHomomorphismStructure( B ) ) then
         TryNextMethod( );
     fi;
     
@@ -98,7 +98,7 @@ InstallMethodForCompilerForCAP( NakayamaRightAdjointData,
     B := Source( PSh );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    if not ( IsAlgebroid( B ) and HasRangeCategoryOfHomomorphismStructure( B ) ) then
+    if not ( ( IsAlgebroid( B ) or IsAlgebroidFromDataTables( B ) ) and HasRangeCategoryOfHomomorphismStructure( B ) ) then
         TryNextMethod( );
     fi;
     
