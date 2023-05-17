@@ -449,7 +449,7 @@ InstallMethodWithCache( FunctorCategory,
         B_op := OppositeCategoryFromDataTables( B : FinalizeCategory := true );
     elif HasIsFinite( B ) and IsFinite( B ) then
         B_op := OppositeFiniteCategory( B : FinalizeCategory := true );
-    elif IsAlgebroid( B ) then
+    elif IsAlgebroid( B ) or IsAlgebroidFromDataTables( B ) then
         B_op := OppositeAlgebroid( B : FinalizeCategory := true );
     elif HasIsInitialCategory( B ) and IsInitialCategory( B ) then
         B_op := Opposite( B : FinalizeCategory := true );

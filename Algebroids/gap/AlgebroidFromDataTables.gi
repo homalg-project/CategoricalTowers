@@ -600,6 +600,7 @@ InstallMethod( AlgebroidFromDataTables,
              "EnhancedDataTables",
              "SetOfBasesOfExternalHomsLazyHList",
              "CommutativeRingOfLinearCategory",
+             "DefiningTripleOfUnderlyingQuiver",
             ],
             precompiled_towers := [
             rec(
@@ -926,6 +927,12 @@ InstallMethod( IsAdmissibleAlgebroid,
   function ( B )
     local dim, i;
     
+    if HasOppositeAlgebroid( B ) and HasIsAdmissibleAlgebroid( OppositeAlgebroid( B ) ) then
+        
+        return IsAdmissibleAlgebroid( OppositeAlgebroid( B ) );
+        
+    fi;
+    
     dim :=
       AsZFunction(
         function ( i )
@@ -1044,7 +1051,7 @@ InstallOtherMethod( OppositeAlgebroid,
           [ IsAlgebroidFromDataTables ],
   
   function ( cat )
-    local data, data_op;
+    local data, data_op, cat_op;
     
     data := EnhancedDataTables( cat );
     
@@ -1089,7 +1096,13 @@ InstallOtherMethod( OppositeAlgebroid,
                   l -> List( [ 1 .. data_op.hom_structure_ranks[q][p] ],
                     r -> data[20][q][p][j][i][r][l] ) ) ) ) ) );
     
-    return AlgebroidFromDataTables( data_op : range_of_HomStructure := RangeCategoryOfHomomorphismStructure( cat ) );
+    cat_op := AlgebroidFromDataTables( data_op : range_of_HomStructure := RangeCategoryOfHomomorphismStructure( cat ) );
+    
+    if HasIsAdmissibleAlgebroid( cat ) then
+        SetIsAdmissibleAlgebroid( cat_op, IsAdmissibleAlgebroid( cat ) );
+    fi;
+    
+    return cat_op;
     
 end );
 
@@ -1438,6 +1451,62 @@ InstallMethod( \.,
     
     Error( "the given string ", name, " is not a label of an object or morphism in the category ", Name( B ), "\n" );
     
+end );
+
+##
+InstallOtherMethod( CapFunctor,
+        "for an algebroid from data tables, two lists, a CAP Category",
+        [ IsAlgebroidFromDataTables, IsList, IsList, IsCapCategory ],
+
+  function( B, images_of_objects, images_of_generating_morphisms, C )
+    local F;
+    
+    F := CapFunctor( Concatenation( "Functor from ", Name( B ), " -> ", Name( C ) ), B, C );
+    
+    AddObjectFunction( F,
+      function ( obj )
+        
+        return images_of_objects[ObjectIndex( obj )];
+        
+    end );
+    
+    AddMorphismFunction( F,
+      function ( s, mor, r )
+        
+        return SumOfMorphisms( C,
+                  s,
+                  List( DecompositionOfMorphismInAlgebroid( mor ),
+                            p -> p[1] * PreComposeList( C,
+                                            List( p[2],
+                                              function ( w )
+                                                if IsEqualToIdentityMorphism( w ) then
+                                                      return IdentityMorphism( C, images_of_objects[ObjectIndex( Source( w ) )] );
+                                                else
+                                                      return images_of_generating_morphisms[Position( SetOfGeneratingMorphisms( B ), w )];
+                                                fi;
+                                              end ) ) ),
+                  r );
+        
+    end );
+    
+    return F;
+    
+end );
+
+##
+InstallOtherMethod( DefiningTripleOfUnderlyingQuiver,
+        [ IsAlgebroidFromDataTables ],
+
+  function ( B )
+    local nr_objs, nr_gmors, sources, ranges;
+
+    nr_objs := EnhancedDataTables( B )[2];
+    nr_gmors := EnhancedDataTables( B )[6];
+    sources := EnhancedDataTables( B )[10];
+    ranges := EnhancedDataTables( B )[11];
+
+    return NTuple( 3, nr_objs, nr_gmors, List( [ 1 .. nr_gmors ], i -> Pair( sources[i]-1, ranges[i]-1 ) ) );
+
 end );
 
 ########################################

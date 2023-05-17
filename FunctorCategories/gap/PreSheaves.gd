@@ -111,6 +111,7 @@ DeclareAttribute( "ImageOfYonedaEmbeddingOfSource",
 DeclareAttribute( "SimpleObjects", IsPreSheafCategory );
 
 #! @InsertChunk ProjectiveResolution
+#! @InsertChunk ProjectiveResolutionAlgebroidFromDataTables
 
 #! @Description
 #!  The input is a category <A>B</A> with finitely many objects equipped with

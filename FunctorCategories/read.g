@@ -16,6 +16,7 @@ ReadPackage( "FunctorCategories", "gap/precompiled_categories/PreSheavesOfCatego
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsSubobjectClassifierPrecompiled.gi");
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled.gi");
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled.gi");
+ReadPackage( "FunctorCategories", "gap/precompiled_categories/PreSheavesOfAlgebroidFromDataTablesInCategoryOfRowsPrecompiled.gi");
 
 ReadPackage( "FunctorCategories", "gap/Tools.gi");
 ReadPackage( "FunctorCategories", "gap/ToolsMethodRecord.gi");
