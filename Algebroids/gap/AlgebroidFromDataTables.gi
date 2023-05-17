@@ -600,6 +600,7 @@ InstallMethod( AlgebroidFromDataTables,
              "EnhancedDataTables",
              "SetOfBasesOfExternalHomsLazyHList",
              "CommutativeRingOfLinearCategory",
+             "DefiningTripleOfUnderlyingQuiver",
             ],
             precompiled_towers := [
             rec(

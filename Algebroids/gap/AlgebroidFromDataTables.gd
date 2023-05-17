@@ -228,12 +228,28 @@ end );
 #! @Returns a list of &CAP; category objects
 DeclareAttribute( "SetOfObjects", IsAlgebroidFromDataTables );
 
+CapJitAddTypeSignature( "SetOfObjects", [ IsAlgebroidFromDataTables ],
+  function ( input_types )
+    
+    return rec( filter := IsList,
+                element_type := CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #!  The argument is an algebroid <A>B</A>.
 #!  The output is the finite set of generating morphisms of <A>B</A>.
 #! @Arguments B
 #! @Returns a list of a &CAP; category morphisms
 DeclareAttribute( "SetOfGeneratingMorphisms", IsAlgebroidFromDataTables );
+
+CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsAlgebroidFromDataTables ],
+  function ( input_types )
+    
+    return rec( filter := IsList,
+                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
+    
+end );
 
 #! @Description
 #!  The argument is an algebroid <A>B</A>.
