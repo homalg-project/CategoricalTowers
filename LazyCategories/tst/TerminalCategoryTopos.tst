@@ -10,9 +10,11 @@ true
 gap> LoadPackage("Toposes", false);
 true
 
+#
 gap> T := TerminalCategoryWithMultipleObjects();;
-
 gap> L := LazyCategory( T : primitive_operations := true, optimize := 0 );;
+gap> opposite := Opposite( L, "Opposite with all operations" );;
+gap> opposite_primitive := Opposite( L, "Opposite with primitive operations" : only_primitive_operations := true );;
 
 ##############################################
 # CartesianCategoriesTest
@@ -31,19 +33,19 @@ gap> d := dT / L;;
 gap> alpha := MorphismConstructor( aT, "f_ab", bT ) / L;;
 gap> beta := MorphismConstructor( cT, "f_cd", dT ) / L;;
 
-gap> CartesianCategoriesTest( L, a, b, c, alpha, beta );;
-gap> CartesianCategoriesTest( L, a, b, c, alpha, beta : only_primitive_operations := true );;
+gap> CartesianCategoriesTest( L, opposite, a, b, c, alpha, beta );;
+gap> CartesianCategoriesTest( L, opposite_primitive, a, b, c, alpha, beta );;
 
 gap> z := ZeroObject( L );;
 
 gap> alpha := UniversalMorphismFromZeroObject( a );;
 gap> beta := UniversalMorphismIntoZeroObject( a );;
 
-gap> CartesianCategoriesTest( L, z, a, a, alpha, beta );;
-gap> CartesianCategoriesTest( L, z, a, a, alpha, beta : only_primitive_operations := true );;
+gap> CartesianCategoriesTest( L, opposite, z, a, a, alpha, beta );;
+gap> CartesianCategoriesTest( L, opposite_primitive, z, a, a, alpha, beta );;
 
-gap> CartesianCategoriesTest( L, a, z, z, beta, alpha );;
-gap> CartesianCategoriesTest( L, a, z, z, beta, alpha : only_primitive_operations := true );;
+gap> CartesianCategoriesTest( L, opposite, a, z, z, beta, alpha );;
+gap> CartesianCategoriesTest( L, opposite_primitive, a, z, z, beta, alpha );;
 
 ##############################################
 # CoartesianCategoriesTest
@@ -62,19 +64,19 @@ gap> d := dT / L;;
 gap> alpha := MorphismConstructor( aT, "f_ab", bT ) / L;;
 gap> beta := MorphismConstructor( cT, "f_cd", dT ) / L;;
 
-gap> CocartesianCategoriesTest( L, a, b, c, alpha, beta );;
-gap> CocartesianCategoriesTest( L, a, b, c, alpha, beta : only_primitive_operations := true );;
+gap> CocartesianCategoriesTest( L, opposite, a, b, c, alpha, beta );;
+gap> CocartesianCategoriesTest( L, opposite_primitive, a, b, c, alpha, beta );;
 
 gap> z := ZeroObject( L );;
 
 gap> alpha := UniversalMorphismFromZeroObject( a );;
 gap> beta := UniversalMorphismIntoZeroObject( a );;
 
-gap> CocartesianCategoriesTest( L, z, a, a, alpha, beta );;
-gap> CocartesianCategoriesTest( L, z, a, a, alpha, beta : only_primitive_operations := true );;
+gap> CocartesianCategoriesTest( L, opposite, z, a, a, alpha, beta );;
+gap> CocartesianCategoriesTest( L, opposite_primitive, z, a, a, alpha, beta );;
 
-gap> CocartesianCategoriesTest( L, a, z, z, beta, alpha );;
-gap> CocartesianCategoriesTest( L, a, z, z, beta, alpha : only_primitive_operations := true );;
+gap> CocartesianCategoriesTest( L, opposite, a, z, z, beta, alpha );;
+gap> CocartesianCategoriesTest( L, opposite_primitive, a, z, z, beta, alpha );;
 
 ##############################################
 # BraidedCartesianCategoriesTest
@@ -86,19 +88,19 @@ gap> bT := "b" / T;;
 gap> a := aT / L;;
 gap> b := bT / L;;
 
-gap> BraidedCartesianCategoriesTest( L, a, b );;
-gap> BraidedCartesianCategoriesTest( L, a, b : only_primitive_operations := true );;
+gap> BraidedCartesianCategoriesTest( L, opposite, a, b );;
+gap> BraidedCartesianCategoriesTest( L, opposite_primitive, a, b );;
 
-gap> BraidedCartesianCategoriesTest( L, b, a );;
-gap> BraidedCartesianCategoriesTest( L, b, a : only_primitive_operations := true );;
+gap> BraidedCartesianCategoriesTest( L, opposite, b, a );;
+gap> BraidedCartesianCategoriesTest( L, opposite_primitive, b, a );;
 
 gap> z := ZeroObject( L );;
 
-gap> BraidedCartesianCategoriesTest( L, z, a );;
-gap> BraidedCartesianCategoriesTest( L, z, a : only_primitive_operations := true );;
+gap> BraidedCartesianCategoriesTest( L, opposite, z, a );;
+gap> BraidedCartesianCategoriesTest( L, opposite_primitive, z, a );;
 
-gap> BraidedCartesianCategoriesTest( L, a, z );;
-gap> BraidedCartesianCategoriesTest( L, a, z : only_primitive_operations := true );;
+gap> BraidedCartesianCategoriesTest( L, opposite, a, z );;
+gap> BraidedCartesianCategoriesTest( L, opposite_primitive, a, z );;
 
 ##############################################
 # CodistributiveCocartesianCategoriesTest
@@ -107,8 +109,8 @@ gap> BraidedCartesianCategoriesTest( L, a, z : only_primitive_operations := true
 gap> a := "a" / T / L;;
 gap> l := [ "b" / T / L, "c" / T / L, "d" / T / L ];;
 
-gap> CodistributiveCocartesianCategoriesTest( L, a, l : only_primitive_operations := true );;
-gap> CodistributiveCocartesianCategoriesTest( L, a, l );;
+gap> CodistributiveCocartesianCategoriesTest( L, opposite_primitive, a, l );;
+gap> CodistributiveCocartesianCategoriesTest( L, opposite, a, l );;
 
 ##############################################
 # DistributiveCartesianCategoriesTest
@@ -117,8 +119,8 @@ gap> CodistributiveCocartesianCategoriesTest( L, a, l );;
 gap> a := "a" / T / L;;
 gap> l := [ "b" / T / L, "c" / T / L, "d" / T / L ];;
 
-gap> DistributiveCartesianCategoriesTest( L, a, l : only_primitive_operations := true );;
-gap> DistributiveCartesianCategoriesTest( L, a, l );;
+gap> DistributiveCartesianCategoriesTest( L, opposite_primitive, a, l );;
+gap> DistributiveCartesianCategoriesTest( L, opposite, a, l );;
 
 ##############################################
 # BraidedCocartesianCategoriesTest
@@ -130,19 +132,19 @@ gap> bT := "b" / T;;
 gap> a := aT / L;;
 gap> b := bT / L;;
 
-gap> BraidedCocartesianCategoriesTest( L, a, b );;
-gap> BraidedCocartesianCategoriesTest( L, a, b : only_primitive_operations := true );;
+gap> BraidedCocartesianCategoriesTest( L, opposite, a, b );;
+gap> BraidedCocartesianCategoriesTest( L, opposite_primitive, a, b );;
 
-gap> BraidedCocartesianCategoriesTest( L, b, a );;
-gap> BraidedCocartesianCategoriesTest( L, b, a : only_primitive_operations := true );;
+gap> BraidedCocartesianCategoriesTest( L, opposite, b, a );;
+gap> BraidedCocartesianCategoriesTest( L, opposite_primitive, b, a );;
 
 gap> z := ZeroObject( L );;
 
-gap> BraidedCocartesianCategoriesTest( L, z, a );;
-gap> BraidedCocartesianCategoriesTest( L, z, a : only_primitive_operations := true );;
+gap> BraidedCocartesianCategoriesTest( L, opposite, z, a );;
+gap> BraidedCocartesianCategoriesTest( L, opposite_primitive, z, a );;
 
-gap> BraidedCocartesianCategoriesTest( L, a, z );;
-gap> BraidedCocartesianCategoriesTest( L, a, z : only_primitive_operations := true );;
+gap> BraidedCocartesianCategoriesTest( L, opposite, a, z );;
+gap> BraidedCocartesianCategoriesTest( L, opposite_primitive, a, z );;
 
 ##############################################
 # CartesianClosedCategoriesTest
@@ -180,8 +182,8 @@ gap> delta := AsMorphismInLazyCategory( DirectProduct( c, d ), deltaT, TerminalO
 gap> epsilon := AsMorphismInLazyCategory( TerminalObject( L ), epsilonT, Exponential( a, b ) );;
 gap> zeta := AsMorphismInLazyCategory( TerminalObject( L ), zetaT, Exponential( c, d ) );;
 
-gap> CartesianClosedCategoriesTest( L, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
-gap> CartesianClosedCategoriesTest( L, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
+gap> CartesianClosedCategoriesTest( L, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> CartesianClosedCategoriesTest( L, opposite_primitive, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 gap> zT := ZeroObject( T );;
 gap> z := zT / L;;
@@ -206,8 +208,8 @@ gap> delta := AsMorphismInLazyCategory( DirectProduct( a, z ), deltaT, TerminalO
 gap> epsilon := AsMorphismInLazyCategory( TerminalObject( L ), epsilonT, Exponential( z, a ) );;
 gap> zeta := AsMorphismInLazyCategory( TerminalObject( L ), zetaT, Exponential( a, z ) );;
 
-gap> CartesianClosedCategoriesTest( L, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
-gap> CartesianClosedCategoriesTest( L, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
+gap> CartesianClosedCategoriesTest( L, opposite, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> CartesianClosedCategoriesTest( L, opposite_primitive, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
 
 ##############################################
 # CocartesianCoclosedCategoriesTest
@@ -245,8 +247,8 @@ gap> delta := AsMorphismInLazyCategory( InitialObject( L ), deltaT, Coproduct( c
 gap> epsilon := AsMorphismInLazyCategory( Coexponential( a, b ), epsilonT, InitialObject( L ) );;
 gap> zeta := AsMorphismInLazyCategory( Coexponential( c, d ), zetaT, InitialObject( L ) );;
 
-gap> CocartesianCoclosedCategoriesTest( L, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
-gap> CocartesianCoclosedCategoriesTest( L, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
+gap> CocartesianCoclosedCategoriesTest( L, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> CocartesianCoclosedCategoriesTest( L, opposite_primitive, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 gap> zT := ZeroObject( T );;
 gap> z := zT / L;;
@@ -271,8 +273,8 @@ gap> delta := AsMorphismInLazyCategory( InitialObject( L ), deltaT, Coproduct( a
 gap> epsilon := AsMorphismInLazyCategory( Coexponential( z, a ), epsilonT, InitialObject( L ) );;
 gap> zeta := AsMorphismInLazyCategory( Coexponential( a, z ), zetaT, InitialObject( L ) );;
 
-gap> CocartesianCoclosedCategoriesTest( L, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
-gap> CocartesianCoclosedCategoriesTest( L, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
+gap> CocartesianCoclosedCategoriesTest( L, opposite, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> CocartesianCoclosedCategoriesTest( L, opposite_primitive, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
 
 ##############################################
 
