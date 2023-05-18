@@ -159,13 +159,17 @@ InstallOtherMethodForCompilerForCAP( HonestRepresentative,
 end );
 
 ##
-#= comment for Julia
 InstallMethod( CategoryOfRelations,
-        "for a CAP category which is cartesian",
-        [ IsCapCategory and IsCartesianCategory ],
+        [ IsCapCategory ],
         
   function( C )
     local Rel;
+    
+    if not (HasIsCartesianCategory( C ) and IsCartesianCategory( C )) then
+        
+        Error( "CategoryOfRelations is not implemented for non-cartesian categories yet" );
+        
+    fi;
     
     ##
     Rel := CreateCapCategory( Concatenation( "CategoryOfRelations( ", Name( C ), " )" ), IsCategoryOfRelations, IsObjectInCategoryOfRelations, IsMorphismInCategoryOfRelations, IsCapCategoryTwoCell );
@@ -393,7 +397,6 @@ InstallMethod( CategoryOfRelations,
     return Rel;
     
 end );
-# =#
 
 ##
 InstallOtherMethod( \/,
