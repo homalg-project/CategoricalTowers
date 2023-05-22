@@ -1621,7 +1621,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
     
     B0 := SetOfObjects( B );
-    N0 := FinSet( sFinSets, Length( B0 ) );
+    N0 := ObjectConstructor( sFinSets, Length( B0 ) );
     
     ## N0 × N0
     D00 := [ N0, N0 ];
@@ -1647,7 +1647,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     Assert( 0, d = UniversalMorphismIntoDirectProduct( sFinSets, D00, N0, [ IdentityMorphism( sFinSets, N0 ), IdentityMorphism( sFinSets, N0 ) ] ) );
     
     ## N0 -> N1
-    id := MapOfFinSets( sFinSets,
+    id := MorphismConstructor( sFinSets,
                   N0,
                   List( N0, i ->
                         AsList(
@@ -1664,7 +1664,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     ## this morphism is mixing two levels and is not a CAP operation:
     ## the coproduct N1 in SkeletalFinSets is taken over the index set N0N0 (here also realized as an object in SkeletalFinSets),
     ## so this morphism is a fibration of a coproduct over its "index set" which are both assumed to be objects in the same category:
-    pi2 := MapOfFinSets( sFinSets,
+    pi2 := MorphismConstructor( sFinSets,
                    N1,
                    Concatenation( List( N0N0, i -> ListWithIdenticalEntries( Length( B1[1 + i] ), i ) ) ),
                    N0N0 );
@@ -1706,7 +1706,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                           [ p32, p33 ] ) );
     
     ## N1 -> N2
-    is := MapOfFinSets( sFinSets,
+    is := MorphismConstructor( sFinSets,
                   N1,
                   List( N1, i ->
                         AsList(
@@ -1716,7 +1716,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                        InjectionOfCofactorOfCoproduct( sFinSets,
                                                                B1,
                                                                1 + AsList( pi2 )[1 + i] ),
-                                                       MapOfFinSets( sFinSets,
+                                                       MorphismConstructor( sFinSets,
                                                                T,
                                                                [ i ],
                                                                N1 ) ),
@@ -1737,7 +1737,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                           [ p31, p32 ] ) );
     
     ## N1 -> N2
-    it := MapOfFinSets( sFinSets,
+    it := MorphismConstructor( sFinSets,
                   N1,
                   List( N1, i ->
                         AsList(
@@ -1750,7 +1750,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                          InjectionOfCofactorOfCoproduct( sFinSets,
                                                                  B1,
                                                                  1 + AsList( pi2 )[1 + i] ),
-                                                         MapOfFinSets( sFinSets,
+                                                         MorphismConstructor( sFinSets,
                                                                  T,
                                                                  [ i ],
                                                                  N1 ) ) ] ),
@@ -1774,7 +1774,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     ## this morphism is mixing two levels and is not a CAP operation:
     ## the coproduct N2 in SkeletalFinSets is taken over the index set N0N0N0 (here also realized as an object in SkeletalFinSets),
     ## so this morphism is a fibration of a coproduct over its "index set" which are both assumed to objects in the same category:
-    pi3 := MapOfFinSets( sFinSets,
+    pi3 := MorphismConstructor( sFinSets,
                    N2,
                    Concatenation( List( N0N0N0, i -> ListWithIdenticalEntries( Length( B2[1 + i] ), i ) ) ),
                    N0N0N0 );
@@ -1785,7 +1785,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     pi313 := PreCompose( sFinSets, pi3, p313 );
     
     ## N2 -> N1
-    ps := MapOfFinSets( sFinSets,
+    ps := MorphismConstructor( sFinSets,
                   N2,
                   List( N2, i ->
                         AsList(
@@ -1793,7 +1793,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                        [ LiftAlongMonomorphism( sFinSets,
                                                InjectionOfCofactorOfCoproduct( sFinSets,
                                                        B2, 1 + AsList( pi3 )[1 + i] ),
-                                               MapOfFinSets( sFinSets,
+                                               MorphismConstructor( sFinSets,
                                                        T,
                                                        [ i ],
                                                        N2 ) ),
@@ -1807,7 +1807,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                   N1 );
     
     ## N2 -> N1
-    pt := MapOfFinSets( sFinSets,
+    pt := MorphismConstructor( sFinSets,
                   N2,
                   List( N2, i ->
                         AsList(
@@ -1816,7 +1816,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                InjectionOfCofactorOfCoproduct( sFinSets,
                                                        B2,
                                                        1 + AsList( pi3 )[ 1 + i] ),
-                                               MapOfFinSets( sFinSets,
+                                               MorphismConstructor( sFinSets,
                                                        T,
                                                        [ i ],
                                                        N2 ) ),
@@ -1831,7 +1831,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     
     mus := List( N0N0N0, i ->
                  List( B2[1 + i], j ->
-                       [ MapOfFinSets( sFinSets,
+                       [ MorphismConstructor( sFinSets,
                                T,
                                [ AsList(
                                        ProjectionInFactorOfDirectProduct( sFinSets,
@@ -1839,7 +1839,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                  B1[1 + AsList( p323 )[1 + i]] ],
                                                1 ) )[1 + j] ],
                                B1[1 + AsList( p312 )[1 + i]] ),
-                         MapOfFinSets( sFinSets,
+                         MorphismConstructor( sFinSets,
                                  T,
                                  [ AsList(
                                          ProjectionInFactorOfDirectProduct( sFinSets,
@@ -1882,7 +1882,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     Assert( 0, ForAll( [ 1 .. Length( N0N0N0 ) ], i -> Source( mus3[i] ) = B2[i] ) );
     
     ## N2 -> N1
-    mu := MapOfFinSets( sFinSets,
+    mu := MorphismConstructor( sFinSets,
                   N2,
                   List( N2, i ->
                         AsList(
@@ -1891,7 +1891,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                InjectionOfCofactorOfCoproduct( sFinSets,
                                                        B2,
                                                        1 + AsList( pi3 )[1 + i] ),
-                                               MapOfFinSets( sFinSets,
+                                               MorphismConstructor( sFinSets,
                                                        T,
                                                        [ i ],
                                                        N2 ) ),
@@ -2006,7 +2006,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
                           emb2[c] ) );
     
     ## The constant functor of 0-cells B → sFinSets, c ↦ B_0, ψ ↦ id_{B_0}
-    B0 := FinSet( sFinSets, o );
+    B0 := ObjectConstructor( sFinSets, o );
     
     N0 := Pair( ListWithIdenticalEntries( o, B0 ),
                 ListWithIdenticalEntries( m, IdentityMorphism( sFinSets, B0 ) ) );
@@ -2052,14 +2052,14 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
     precompose :=
       function ( a, b, c )
         return
-          MapOfFinSets( sFinSets,
+          MorphismConstructor( sFinSets,
                   Hom3[c][a][b], # = Hom(a, b) × Hom(b, c)
                   List( Hom3[c][a][b],
                         function ( i )
                           local d, d_ab, d_bc, m_ab, m_bc, m;
                           
                           ## D → Hom(a, b) × Hom(b, c):
-                          d := MapOfFinSets( sFinSets, D, [ i ], Hom3[c][a][b] );
+                          d := MorphismConstructor( sFinSets, D, [ i ], Hom3[c][a][b] );
                           
                           ## D → Hom(a, b) × Hom(b, c) → Hom(a, b):
                           d_ab := PreCompose( sFinSets, d, ProjectionInFactorOfDirectProduct( sFinSets, hom3[c][a][b], 1 ) );
@@ -2280,8 +2280,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         
         ## define the action as an endomorphism on Hom(Hom(-, c), Ω)
         action :=
-          MapOfFinSets(
-                  sFinSets,
+          MorphismConstructor( sFinSets,
                   power, ## Hom(Hom(-, c), Ω)
                   List( power, i ->
                         ## interpreted as an "element" D → Hom(Hom(-, c), Ω)
@@ -2302,7 +2301,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
                                                                                   hom_c,
                                                                                   Omega,
                                                                                   ## an "element" D → Hom(Hom(-, c), Ω)
-                                                                                  MapOfFinSets( sFinSets, D, [ i ], power ) ) )
+                                                                                  MorphismConstructor( sFinSets, D, [ i ], power ) ) )
                                                                   ], 1 ),
                                                         ## μ_c: Hom(-, -) × Hom(-, c) ↠ Hom(-, c)
                                                         mu_c ) ) ) ) )[1 + 0] ),
