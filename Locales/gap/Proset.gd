@@ -25,13 +25,13 @@ DeclareInfoClass( "InfoLocales" );
 #!  The &GAP; category of objects in a thin &CAP; category.
 #! @Arguments object
 DeclareCategory( "IsObjectInThinCategory",
-                 IsCapCategoryObject );
+        IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a thin &CAP; category.
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInThinCategory",
-                 IsCapCategoryMorphism and IsMonomorphism and IsEpimorphism );
+        IsCapCategoryMorphism and IsMonomorphism and IsEpimorphism );
 
 ####################################
 #
