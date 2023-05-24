@@ -44,11 +44,11 @@ git subtree split --prefix=ExteriorPowersCategories -b ExteriorPowersCategories-
 git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/ExteriorPowersCategories ExteriorPowersCategories-split:master
 echo ""
 
-# FiniteCocompletion
-echo "Release FiniteCocompletion"
-GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/FiniteCocompletion" --webdir "$PWD/gh-pages/FiniteCocompletion" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
-git subtree split --prefix=FiniteCocompletion -b FiniteCocompletion-split
-git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/FiniteCocompletion FiniteCocompletion-split:master
+# FiniteCocompletions
+echo "Release FiniteCocompletions"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/FiniteCocompletions" --webdir "$PWD/gh-pages/FiniteCocompletions" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
+git subtree split --prefix=FiniteCocompletions -b FiniteCocompletions-split
+git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/FiniteCocompletions FiniteCocompletions-split:master
 echo ""
 
 # FunctorCategories
