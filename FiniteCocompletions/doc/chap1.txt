@@ -1,0 +1,840 @@
+  
+  [1X1 [33X[0;0YFinite strict coproduct cocompletion[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YAttributes[133X[101X
+  
+  [1X1.1-1 PairOfIntAndList[101X
+  
+  [33X[1;0Y[29X[2XPairOfIntAndList[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X1.1-2 PairOfLists[101X
+  
+  [33X[1;0Y[29X[2XPairOfLists[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X1.1-3 UnderlyingCategory[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3XUC[103X ) [32X attribute[133X
+  
+  [33X[0;0YReturn  the category [23XC[123X underlying the finite coproduct cocompletion category
+  [3XUC[103X := [10XFiniteStrictCoproductCocompletion[110X( [23XC[123X ).[133X
+  
+  [1X1.1-4 YonedaEmbeddingOfUnderlyingCategory[101X
+  
+  [33X[1;0Y[29X[2XYonedaEmbeddingOfUnderlyingCategory[102X( [3XUC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YThe  full  embedding  functor  from  the  category  [23XC[123X  underlying the finite
+  coproduct cocompletion [3XUC[103X into [3XUC[103X.[133X
+  
+  [1X1.1-5 ExtendFunctorToFiniteStrictCoproductCocompletion[101X
+  
+  [33X[1;0Y[29X[2XExtendFunctorToFiniteStrictCoproductCocompletion[102X( [3XUC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YThe  full  embedding  functor  from  the  category  [23XC[123X  underlying the finite
+  coproduct cocompletion [3XUC[103X into [3XUC[103X.[133X
+  
+  [1X1.1-6 ExtendYonedaEmbeddingToFiniteStrictCoproductCocompletion[101X
+  
+  [33X[1;0Y[29X[2XExtendYonedaEmbeddingToFiniteStrictCoproductCocompletion[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YExtend  (i.e.,  lift)  the  (full)  Yoneda  embedding  the  category  [3XC[103X into
+  [10XPreSheaves[110X(  [3XC[103X ) to the full embedding of [10XFiniteStrictCoproductCocompletion[110X(
+  [3XC[103X ) into [10XPreSheaves[110X( [3XC[103X ).[133X
+  
+  
+  [1X1.2 [33X[0;0YConstructors[133X[101X
+  
+  [1X1.2-1 FiniteStrictCoproductCocompletion[101X
+  
+  [33X[1;0Y[29X[2XFiniteStrictCoproductCocompletion[102X( [3Xcat[103X ) [32X attribute[133X
+  
+  [33X[0;0YReturn  the  finite  coproduct cocompletion of the category [3Xcat[103X in which the
+  cocartesian associators are given by identities.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XT := FiniteStrictCoproductCocompletion( InitialCategory( ) );[127X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( InitialCategory( ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
+    [4X[28XA CAP category with name FiniteStrictCoproductCocompletion( InitialCategory( ) ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X93 primitive operations were used to derive 530 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
+    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
+    [4X[28X* IsBicartesianCoclosedCategory[128X[104X
+    [4X[28X* IsAbelianCategoryWithEnoughInjectives[128X[104X
+    [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
+    [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
+    [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
+    [4X[28X* IsElementaryTopos[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsFinitelyPresentedCategory[128X[104X
+    [4X[28X* IsFinitelyPresentedLinearCategory[128X[104X
+    [4X[28X* IsLinearClosureOfACategory[128X[104X
+    [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
+    [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
+    [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[28X* IsStrictCartesianCategory[128X[104X
+    [4X[28X* IsStrictCocartesianCategory[128X[104X
+    [4X[28X* IsStrictMonoidalCategory[128X[104X
+    [4X[28X* IsTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xi := InitialObject( T );[127X[104X
+    [4X[28X<A zero object in FiniteStrictCoproductCocompletion( InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xt := TerminalObject( T );[127X[104X
+    [4X[28X<A zero object in FiniteStrictCoproductCocompletion( InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xz := ZeroObject( T );[127X[104X
+    [4X[28X<A zero object in FiniteStrictCoproductCocompletion( InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( i );[127X[104X
+    [4X[28X[ 0, [  ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FiniteStrictCoproductCocompletion( InitialCategory( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
+    [4X[28X[ 0, [  ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FiniteStrictCoproductCocompletion( InitialCategory( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
+    [4X[28X[ 0, [  ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FiniteStrictCoproductCocompletion( InitialCategory( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( i, z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( i, z );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( t, z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( t, z );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xid_z := IdentityMorphism( z );[127X[104X
+    [4X[28X<A zero, identity morphism in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xfn_z := ZeroObjectFunctorial( T );[127X[104X
+    [4X[28X<A zero, isomorphism in FiniteStrictCoproductCocompletion( InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( id_z, fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( id_z, fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.3 [33X[0;0YGAP categories[133X[101X
+  
+  [1X1.3-1 IsFiniteStrictCoproductCocompletion[101X
+  
+  [33X[1;0Y[29X[2XIsFiniteStrictCoproductCocompletion[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of finite coproduct cocompletion categories.[133X
+  
+  [1X1.3-2 IsCellInFiniteStrictCoproductCocompletion[101X
+  
+  [33X[1;0Y[29X[2XIsCellInFiniteStrictCoproductCocompletion[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of cells in a finite coproduct cocompletion category.[133X
+  
+  [1X1.3-3 IsObjectInFiniteStrictCoproductCocompletion[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInFiniteStrictCoproductCocompletion[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a finite coproduct cocompletion category.[133X
+  
+  [1X1.3-4 IsMorphismInFiniteStrictCoproductCocompletion[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInFiniteStrictCoproductCocompletion[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a finite coproduct cocompletion category.[133X
+  
+  
+  [1X1.4 [33X[0;0YExamples[133X[101X
+  
+  
+  [1X1.4-1 [33X[0;0YCocartesian associator[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", ">= 2023.01-02" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := RightQuiver( "Q(a,b,c)[]" );[127X[104X
+    [4X[28XQ(a,b,c)[][128X[104X
+    [4X[25Xgap>[125X [27XC := FreeCategory( Q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b,c)[]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XUC := FiniteStrictCoproductCocompletion( C );[127X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xa := UC.a;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xb := UC.b;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xc := UC.c;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xab_c := Coproduct( Coproduct( a, b ), c );[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xa_bc := Coproduct( a, Coproduct( b, c ) );[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xab_c = a_bc;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( ab_c, a_bc );[127X[104X
+    [4X[28X|1|[128X[104X
+    [4X[25Xgap>[125X [27Xhom := MorphismsOfExternalHom( ab_c, a_bc );[127X[104X
+    [4X[28X[ <A morphism in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X   FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )> ][128X[104X
+    [4X[25Xgap>[125X [27Xalpha := hom[1];[127X[104X
+    [4X[28X<A morphism in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XSource( alpha ) = ab_c;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( alpha );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( alpha );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xalpha = CocartesianAssociatorLeftToRight( a, b, c );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLUC := LazyCategory( UC );[127X[104X
+    [4X[28XLazyCategory([128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XEmb := EmbeddingFunctorOfUnderlyingCategory( LUC );[127X[104X
+    [4X[28XEmbedding functor into lazy category[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Emb );[127X[104X
+    [4X[28XEmbedding functor into lazy category:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XLazyCategory([128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XF := PreCompose( YonedaEmbeddingOfUnderlyingCategory( UC ), Emb );[127X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( F );[127X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b,c)[]" ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XLazyCategory([128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XG := ExtendFunctorToFiniteStrictCoproductCocompletion( F );[127X[104X
+    [4X[28XExtension to FiniteStrictCoproductCocompletion( Source([128X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( G );[127X[104X
+    [4X[28XExtension to FiniteStrictCoproductCocompletion( Source([128X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category ) ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XLazyCategory( FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XGalpha := G( alpha );[127X[104X
+    [4X[28X<A morphism in LazyCategory( FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Galpha );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.4-2 [33X[0;0YCocartesian braiding[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", ">= 2023.01-02" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := RightQuiver( "Q(a,b)[]" );[127X[104X
+    [4X[28XQ(a,b)[][128X[104X
+    [4X[25Xgap>[125X [27XC := FreeCategory( Q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b)[]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XSetName( C.a, "C.a" ); SetName( C.b, "C.b" );[127X[104X
+    [4X[25Xgap>[125X [27XUC := FiniteStrictCoproductCocompletion( C );[127X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xa := UC.a;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xb := UC.b;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xab := Coproduct( a, b );[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( ab );[127X[104X
+    [4X[28X[ 2, [ C.a, C.b ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xba := Coproduct( b, a );[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( ba );[127X[104X
+    [4X[28X[ 2, [ C.b, C.a ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( ab, ba );[127X[104X
+    [4X[28X|1|[128X[104X
+    [4X[25Xgap>[125X [27Xhom := MorphismsOfExternalHom( ab, ba );[127X[104X
+    [4X[28X[ <A morphism in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X   FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )> ][128X[104X
+    [4X[25Xgap>[125X [27Xgamma := hom[1];[127X[104X
+    [4X[28X<A morphism in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XSource( gamma ) = ab;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XRange( gamma ) = ba;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( gamma );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( gamma );[127X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 1, 0 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[ (a)-[(a)]->(a), (b)-[(b)]->(b) ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XLUC := LazyCategory( UC );[127X[104X
+    [4X[28XLazyCategory([128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XEmb := EmbeddingFunctorOfUnderlyingCategory( LUC );[127X[104X
+    [4X[28XEmbedding functor into lazy category[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Emb );[127X[104X
+    [4X[28XEmbedding functor into lazy category:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XLazyCategory([128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XF := PreCompose( YonedaEmbeddingOfUnderlyingCategory( UC ), Emb );[127X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( F );[127X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b)[]" ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XLazyCategory([128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XG := ExtendFunctorToFiniteStrictCoproductCocompletion( F );[127X[104X
+    [4X[28XExtension to FiniteStrictCoproductCocompletion( Source([128X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( G );[127X[104X
+    [4X[28XExtension to FiniteStrictCoproductCocompletion( Source([128X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category ) ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XLazyCategory( FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XGgamma := G( gamma );[127X[104X
+    [4X[28X<A morphism in LazyCategory([128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Ggamma );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.4-3 [33X[0;0YCocartesian codiagonal[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", ">= 2023.01-02" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := RightQuiver( "Q(a)[]" );[127X[104X
+    [4X[28XQ(a)[][128X[104X
+    [4X[25Xgap>[125X [27XC := FreeCategory( Q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a)[]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XSetName( C.a, "C.a" );[127X[104X
+    [4X[25Xgap>[125X [27XUC := FiniteStrictCoproductCocompletion( C );[127X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xa := UC.a;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xaa := Coproduct( a, a );[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( aa );[127X[104X
+    [4X[28X[ 2, [ C.a, C.a ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xa = aa;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( a, aa );[127X[104X
+    [4X[28X|2|[128X[104X
+    [4X[25Xgap>[125X [27Xhom_a_aa := MorphismsOfExternalHom( a, aa );[127X[104X
+    [4X[28X[ <A morphism in[128X[104X
+    [4X[28X   FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>,[128X[104X
+    [4X[28X  <A morphism in[128X[104X
+    [4X[28X   FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )> ][128X[104X
+    [4X[25Xgap>[125X [27Xhom_a_aa[1] = InjectionOfCofactorOfCoproduct( [ a, a ], 1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xhom_a_aa[2] = InjectionOfCofactorOfCoproduct( [ a, a ], 2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( aa, a );[127X[104X
+    [4X[28X|1|[128X[104X
+    [4X[25Xgap>[125X [27Xhom_aa_a := MorphismsOfExternalHom( aa, a );[127X[104X
+    [4X[28X[ <A morphism in[128X[104X
+    [4X[28X   FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )> ][128X[104X
+    [4X[25Xgap>[125X [27Xdelta := hom_aa_a[1];[127X[104X
+    [4X[28X<A morphism in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XSource( delta ) = aa;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XRange( delta ) = a;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismFromCoproduct( delta, [ a, a ], 1 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismFromCoproduct( delta, [ a, a ], 2 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( delta );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( delta );[127X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 0, 0 ]→ { 0 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[ (a)-[(a)]->(a), (a)-[(a)]->(a) ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xid_a := IdentityMorphism( C.a );[127X[104X
+    [4X[28X(a)-[(a)]->(a)[128X[104X
+    [4X[25Xgap>[125X [27Xdelta = CocartesianCodiagonal( a, 2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLUC := LazyCategory( UC );[127X[104X
+    [4X[28XLazyCategory([128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XEmb := EmbeddingFunctorOfUnderlyingCategory( LUC );[127X[104X
+    [4X[28XEmbedding functor into lazy category[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Emb );[127X[104X
+    [4X[28XEmbedding functor into lazy category:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XLazyCategory([128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XF := PreCompose( YonedaEmbeddingOfUnderlyingCategory( UC ), Emb );[127X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( F );[127X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a)[]" ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XLazyCategory([128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XG := ExtendFunctorToFiniteStrictCoproductCocompletion( F );[127X[104X
+    [4X[28XExtension to FiniteStrictCoproductCocompletion( Source([128X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( G );[127X[104X
+    [4X[28XExtension to FiniteStrictCoproductCocompletion( Source([128X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category ) ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XLazyCategory([128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XGdelta := G( delta );[127X[104X
+    [4X[28X<A morphism in LazyCategory([128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Gdelta );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.4-4 [33X[0;0YHomomorphism structure[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XT := TerminalCategoryWithMultipleObjects( );[127X[104X
+    [4X[28XTerminalCategoryWithMultipleObjects( )[128X[104X
+    [4X[25Xgap>[125X [27XsFinSets := FiniteStrictCoproductCocompletion( T );[127X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
+    [4X[28XA CAP category with name[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X28 primitive operations were used to derive 98 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsBicartesianCategory[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsStrictCocartesianCategory[128X[104X
+    [4X[25Xgap>[125X [27Xt := TerminalObject( sFinSets );[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsTerminal( t );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsInitial( t );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
+    [4X[28X[ 1, [ TerminalObject ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xi := InitialObject( sFinSets );[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsTerminal( i );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsInitial( i );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( i );[127X[104X
+    [4X[28X[ 0, [  ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XUniversalMorphismFromInitialObject(t) = UniversalMorphismIntoTerminalObject(i);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XA := [ 3, [ "A0" / T, "A1" / T, "A2" / T ] ] / sFinSets;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
+    [4X[28X[ 3, [ A0, A1, A2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XB := [ 2, [ "B0" / T, "B1" / T ] ] / sFinSets;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( B );[127X[104X
+    [4X[28X[ 2, [ B0, B1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XpiA := ProjectionInFactorOfDirectProduct( [ A, B ], 1 );[127X[104X
+    [4X[28X<A morphism in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( piA );[127X[104X
+    [4X[28X{ 0,..., 5 } ⱶ[ 0, 1, 2, 0, 1, 2 ]→ { 0, 1, 2 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[ ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XpiB := ProjectionInFactorOfDirectProduct( [ A, B ], 2 );[127X[104X
+    [4X[28X<A morphism in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( piB );[127X[104X
+    [4X[28X{ 0,..., 5 } ⱶ[ 0, 0, 0, 1, 1, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[ ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( UniversalMorphismIntoDirectProduct( [ piA, piB ] ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XI := HomStructure( sFinSets );[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( I );[127X[104X
+    [4X[28X[ 1, [ TerminalObject ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XU := ObjectDatum( I )[2][1];[127X[104X
+    [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( U );[127X[104X
+    [4X[28XTerminalObject[128X[104X
+    [4X[25Xgap>[125X [27XHomAB := HomStructure( A, B );[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XL := ObjectDatum( HomAB );[127X[104X
+    [4X[28X[ 8, [ <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )> ] ][128X[104X
+    [4X[25Xgap>[125X [27XhomAB := List( [ 0 .. L[1] - 1 ], i ->[127X[104X
+    [4X[25X>[125X [27X               MorphismConstructor( sFinSets,[127X[104X
+    [4X[25X>[125X [27X                       I,[127X[104X
+    [4X[25X>[125X [27X                       Pair( [ i ],[127X[104X
+    [4X[25X>[125X [27X                             [ MorphismConstructor( T,[127X[104X
+    [4X[25X>[125X [27X                                     U,[127X[104X
+    [4X[25X>[125X [27X                                     String( i ),[127X[104X
+    [4X[25X>[125X [27X                                     L[2][1 + i] ) ] ),[127X[104X
+    [4X[25X>[125X [27X                       HomAB ) );[127X[104X
+    [4X[28X[ <A morphism in[128X[104X
+    [4X[28X   FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
+    [4X[28X  <A morphism in[128X[104X
+    [4X[28X   FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
+    [4X[28X  <A morphism in[128X[104X
+    [4X[28X   FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
+    [4X[28X  <A morphism in[128X[104X
+    [4X[28X   FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
+    [4X[28X  <A morphism in[128X[104X
+    [4X[28X   FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
+    [4X[28X  <A morphism in[128X[104X
+    [4X[28X   FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
+    [4X[28X  <A morphism in[128X[104X
+    [4X[28X   FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
+    [4X[28X  <A morphism in[128X[104X
+    [4X[28X   FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )> ][128X[104X
+    [4X[25Xgap>[125X [27XList( homAB, IsWellDefined );[127X[104X
+    [4X[28X[ true, true, true, true, true, true, true, true ][128X[104X
+    [4X[25Xgap>[125X [27XList( homAB, m -> HomStructure( HomStructure( A, B, m ) ) ) = homAB;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := HomStructure( A, B, homAB[6] );[127X[104X
+    [4X[28X<A morphism in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( alpha );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 1, 0, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[ PreCompose, PreCompose, PreCompose ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xgamma := HomStructure( A, B, homAB[2] );[127X[104X
+    [4X[28X<A morphism in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( gamma );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 1, 0, 0 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[ PreCompose, PreCompose, PreCompose ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xhom_alpha_gamma := HomStructure( alpha, gamma );[127X[104X
+    [4X[28X<A morphism in[128X[104X
+    [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( hom_alpha_gamma );[127X[104X
+    [4X[28X{ 0,..., 8 } ⱶ[ 7, 5, 5, 2, 0, 0, 2, 0, 0 ]→ { 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[ UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( hom_alpha_gamma );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.4-5 [33X[0;0YReflexive pair[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", ">= 2023.01-02" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := RightQuiver( "Q(A,B)[f:A->B,g:A->B]" );[127X[104X
+    [4X[28XQ(A,B)[f:A->B,g:A->B][128X[104X
+    [4X[25Xgap>[125X [27XC := FreeCategory( Q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XSetName( C.A, "C.A" ); SetName( C.B, "C.B" );[127X[104X
+    [4X[25Xgap>[125X [27XUC := FiniteStrictCoproductCocompletion( C );[127X[104X
+    [4X[28XFiniteStrictCoproductCocompletion([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XA := UC.A;[127X[104X
+    [4X[28X<An object in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XB := UC.B;[127X[104X
+    [4X[28X<An object in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
+    [4X[28X[ 1, [ C.A ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( B );[127X[104X
+    [4X[28X[ 1, [ C.B ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xf := UC.f;[127X[104X
+    [4X[28X<A morphism in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xg := UC.g;[127X[104X
+    [4X[28X<A morphism in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XMorphismDatum( f );[127X[104X
+    [4X[28X[ [ 0 ], [ (A)-[(f)]->(B) ] ][128X[104X
+    [4X[25Xgap>[125X [27XMorphismDatum( g );[127X[104X
+    [4X[28X[ [ 0 ], [ (A)-[(g)]->(B) ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsSplitEpimorphism( f );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsSplitEpimorphism( g );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XAuB := Coproduct( A, B );[127X[104X
+    [4X[28X<An object in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AuB );[127X[104X
+    [4X[28X[ 2, [ C.A, C.B ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( AuB, B );[127X[104X
+    [4X[28X|2|[128X[104X
+    [4X[25Xgap>[125X [27Xhom := MorphismsOfExternalHom( AuB, B );[127X[104X
+    [4X[28X[ <A morphism in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X   FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )>,[128X[104X
+    [4X[28X  <A morphism in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X   FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )> ][128X[104X
+    [4X[25Xgap>[125X [27Xff := hom[1];[127X[104X
+    [4X[28X<A morphism in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xgg := hom[2];[127X[104X
+    [4X[28X<A morphism in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xff = gg;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsSplitEpimorphism( ff );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsSplitEpimorphism( gg );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMorphismDatum( ff );[127X[104X
+    [4X[28X[ [ 0, 0 ], [ (A)-[(f)]->(B), (B)-[(B)]->(B) ] ][128X[104X
+    [4X[25Xgap>[125X [27XMorphismDatum( gg );[127X[104X
+    [4X[28X[ [ 0, 0 ], [ (A)-[(g)]->(B), (B)-[(B)]->(B) ] ][128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( B, AuB );[127X[104X
+    [4X[28X|1|[128X[104X
+    [4X[25Xgap>[125X [27Xii := MorphismsOfExternalHom( B, AuB )[1];[127X[104X
+    [4X[28X<A morphism in FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xii = InjectionOfCofactorOfCoproduct( [ A, B ], 2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xf = ComponentOfMorphismFromCoproduct( ff, [ A, B ], 1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismFromCoproduct( ff, [ A, B ], 2 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xg = ComponentOfMorphismFromCoproduct( gg, [ A, B ], 1  );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismFromCoproduct( gg, [ A, B ], 2 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLUC := LazyCategory( UC );[127X[104X
+    [4X[28XLazyCategory( FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XEmb := EmbeddingFunctorOfUnderlyingCategory( LUC );[127X[104X
+    [4X[28XEmbedding functor into lazy category[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Emb );[127X[104X
+    [4X[28XEmbedding functor into lazy category:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XLazyCategory( FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XF := PreCompose( YonedaEmbeddingOfUnderlyingCategory( UC ), Emb );[127X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( F );[127X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XLazyCategory( FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XG := ExtendFunctorToFiniteStrictCoproductCocompletion( F );[127X[104X
+    [4X[28XExtension to FiniteStrictCoproductCocompletion( Source([128X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( G );[127X[104X
+    [4X[28XExtension to FiniteStrictCoproductCocompletion( Source([128X[104X
+    [4X[28XPrecomposition of Yoneda embedding functor and[128X[104X
+    [4X[28XEmbedding functor into lazy category ) ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XLazyCategory( FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XGff := G( ff );[127X[104X
+    [4X[28X<A morphism in LazyCategory( FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Gff );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XGgg := G( gg );[127X[104X
+    [4X[28X<A morphism in LazyCategory( FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Ggg );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMorphismDatum( EvaluatedCell( Gff ) );[127X[104X
+    [4X[28X[ [ 0, 0 ], [ (A)-[(f)]->(B), (B)-[(B)]->(B) ] ][128X[104X
+    [4X[25Xgap>[125X [27XMorphismDatum( EvaluatedCell( Ggg ) );[127X[104X
+    [4X[28X[ [ 0, 0 ], [ (A)-[(g)]->(B), (B)-[(B)]->(B) ] ][128X[104X
+  [4X[32X[104X
+  
