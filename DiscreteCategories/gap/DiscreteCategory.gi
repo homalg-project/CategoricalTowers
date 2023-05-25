@@ -7,7 +7,7 @@
 ##
 InstallMethodForCompilerForCAP( ObjectInDiscreteCategory,
         "for a discrete category and an object",
-        [ IsDiscreteCategory, IsObject ],
+        [ IsDiscreteCategoryFilter, IsObject ],
         
   function ( C, o )
     
@@ -19,7 +19,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( MorphismInDiscreteCategory,
         "for a discrete category and two objects in it",
-        [ IsDiscreteCategory, IsObjectInDiscreteCategory, IsObjectInDiscreteCategory ],
+        [ IsDiscreteCategoryFilter, IsObjectInDiscreteCategory, IsObjectInDiscreteCategory ],
         
   function ( C, source, range )
     
@@ -44,7 +44,7 @@ InstallMethodWithCache( DiscreteCategory,
     local D, V;
     
     D := CreateCapCategory( Concatenation( "DiscreteCategory( \"", filt, "\" )" ),
-                 IsDiscreteCategory,
+                 IsDiscreteCategoryFilter,
                  IsObjectInDiscreteCategory,
                  IsMorphismInDiscreteCategory,
                  IsCapCategoryTwoCell );

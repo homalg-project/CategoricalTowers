@@ -38,6 +38,17 @@ AddDerivationToCAP( AreIsomorphicForObjectsIfIsHomSetInhabited,
 end : CategoryFilter := IsThinCategory );
 
 ##
+AddDerivationToCAP( AreIsomorphicForObjectsIfIsHomSetInhabited,
+                    "AreIsomorphicForObjectsIfIsHomSetInhabited for IsDiscreteCategory",
+                    [ ],
+                    
+  function( cat, A, B )
+    
+    return true;
+    
+end : CategoryFilter := IsDiscreteCategory );
+
+##
 AddDerivationToCAP( IdentityMorphism,
                     "IdentityMorphism is the unique endomorphism",
                     [ [ UniqueMorphism, 1 ] ],

@@ -15,7 +15,7 @@
 #! @Description
 #!  The &GAP; category of discrete categories.
 #! @Arguments object
-DeclareCategory( "IsDiscreteCategory",
+DeclareCategory( "IsDiscreteCategoryFilter",
         IsCapCategory );
 
 #! @Description
@@ -48,7 +48,7 @@ DeclareCategory( "IsMorphismInDiscreteCategory",
 #!  Return the filter used to define the discrete category <A>C</A>.
 #! @Arguments C
 DeclareAttribute( "UnderlyingFilter",
-        IsDiscreteCategory );
+        IsDiscreteCategoryFilter );
 
 CapJitAddTypeSignature( "UnderlyingFilter", [  ], IsFilter );
 
@@ -59,7 +59,7 @@ DeclareAttribute( "UnderlyingGapObject",
 CapJitAddTypeSignature( "UnderlyingGapObject", [ IsObjectInDiscreteCategory ],
  function ( input_types )
     
-    Assert( 0, IsDiscreteCategory( input_types[1].category ) );
+    Assert( 0, IsDiscreteCategoryFilter( input_types[1].category ) );
     
     return UnderlyingFilter( input_types[1].category );
     
@@ -84,7 +84,7 @@ DeclareOperation( "DiscreteCategory",
 #! @Arguments D, o
 #! @Returns a &CAP; object
 DeclareOperation( "ObjectInDiscreteCategory",
-        [ IsDiscreteCategory, IsObject ] );
+        [ IsDiscreteCategoryFilter, IsObject ] );
 
 #! @Description
 #!  Construct a morphism <A>S</A>$\to$<A>T</A> in a discrete category.
