@@ -21,6 +21,8 @@ AutoDoc( rec(
         LaTeXOptions := rec(
             LateExtraPreamble := """
                 \usepackage{mathtools}
+                \DeclareUnicodeCharacter{22A4}{\ensuremath{\top}}
+                \DeclareUnicodeCharacter{22A5}{\ensuremath{\bot}}
             """,
         ),
     ),

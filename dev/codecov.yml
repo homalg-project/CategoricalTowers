@@ -2,7 +2,7 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 19
+  after_n_builds: 18
 flags:
   Algebroids:
     paths:
@@ -16,9 +16,6 @@ flags:
   CatReps:
     paths:
       - "CatReps/"
-  DiscreteCategories:
-    paths:
-      - "DiscreteCategories/"
   ExteriorPowersCategories:
     paths:
       - "ExteriorPowersCategories/"

@@ -22,6 +22,13 @@
 @Section Stable internal coHom
 @Section Add-methods
 
+@Chapter Preordered sets viewed as categories
+
+@Section Constructors
+@Section Attributes
+@Section Operations
+@Section GAP Categories
+
 @Chapter The (stable) proset/poset of a category
 
 @Section Global variables

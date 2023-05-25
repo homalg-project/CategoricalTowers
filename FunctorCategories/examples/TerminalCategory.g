@@ -3,7 +3,7 @@
 #! @Example
 LoadPackage( "FunctorCategories", false );
 #! true
-LoadPackage( "Locales", false );
+LoadPackage( "Locales", ">= 2023.05-05", false );
 #! true
 T := FiniteCompletion( InitialCategory( ) );
 #! FiniteCompletion( InitialCategory( ) )
@@ -28,16 +28,17 @@ Display( T );
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
 #! and furthermore mathematically
+#! * IsDiscreteCategory
 #! * IsFinitelyPresentedCategory
 #! * IsFinitelyPresentedLinearCategory
 #! * IsLinearClosureOfACategory
 #! * IsLocallyOfFiniteInjectiveDimension
 #! * IsLocallyOfFiniteProjectiveDimension
-#! * IsSkeletalCategory
 #! * IsStrictCartesianCategory
 #! * IsStrictCocartesianCategory
 #! * IsStrictMonoidalCategory
 #! * IsTerminalCategory
+#! * IsTotalOrderCategory
 i := InitialObject( T );
 #! <An object in FiniteCompletion( InitialCategory( ) )>
 t := TerminalObject( T );

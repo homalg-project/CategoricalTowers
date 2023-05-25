@@ -30,13 +30,6 @@ GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/CatReps
 #git subtree split --prefix=CatReps -b CatReps-split
 echo ""
 
-# DiscreteCategories
-echo "Simulate release of DiscreteCategories"
-GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/DiscreteCategories" --webdir "$PWD/gh-pages/DiscreteCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
-# creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
-#git subtree split --prefix=DiscreteCategories -b DiscreteCategories-split
-echo ""
-
 # ExteriorPowersCategories
 echo "Simulate release of ExteriorPowersCategories"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/ExteriorPowersCategories" --webdir "$PWD/gh-pages/ExteriorPowersCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball

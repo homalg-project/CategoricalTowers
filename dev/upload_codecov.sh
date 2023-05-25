@@ -39,10 +39,6 @@ while ! ./codecov -Z -v -s ../ -F CatReps; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F DiscreteCategories; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
 while ! ./codecov -Z -v -s ../ -F ExteriorPowersCategories; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
