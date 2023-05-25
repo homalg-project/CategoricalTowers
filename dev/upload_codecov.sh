@@ -47,7 +47,7 @@ while ! ./codecov -Z -v -s ../ -F ExteriorPowersCategories; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F FiniteCocompletion; do
+while ! ./codecov -Z -v -s ../ -F FiniteCocompletions; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done

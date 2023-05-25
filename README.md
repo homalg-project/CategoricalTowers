@@ -18,7 +18,7 @@
 | [CatReps](CatReps#readme) | Representations and cohomology of finite categories | [![HTML stable documentation][html-CatReps-img]][html-CatReps-url] [![PDF stable documentation][pdf-CatReps-img]][pdf-CatReps-url] |
 | [DiscreteCategories](DiscreteCategories#readme) | Discrete categories | [![HTML stable documentation][html-DiscreteCategories-img]][html-DiscreteCategories-url] [![PDF stable documentation][pdf-DiscreteCategories-img]][pdf-DiscreteCategories-url] |
 | [ExteriorPowersCategories](ExteriorPowersCategories#readme) | The graded category of exterior powers of objects of a given Ab-category | [![HTML stable documentation][html-ExteriorPowersCategories-img]][html-ExteriorPowersCategories-url] [![PDF stable documentation][pdf-ExteriorPowersCategories-img]][pdf-ExteriorPowersCategories-url] |
-| [FiniteCocompletion](FiniteCocompletion#readme) | Finite (co)product/(co)limit (co)completions | [![HTML stable documentation][html-FiniteCocompletion-img]][html-FiniteCocompletion-url] [![PDF stable documentation][pdf-FiniteCocompletion-img]][pdf-FiniteCocompletion-url] |
+| [FiniteCocompletions](FiniteCocompletions#readme) | Finite (co)product/(co)limit (co)completions | [![HTML stable documentation][html-FiniteCocompletions-img]][html-FiniteCocompletions-url] [![PDF stable documentation][pdf-FiniteCocompletions-img]][pdf-FiniteCocompletions-url] |
 | [FunctorCategories](FunctorCategories#readme) | Categories of functors | [![HTML stable documentation][html-FunctorCategories-img]][html-FunctorCategories-url] [![PDF stable documentation][pdf-FunctorCategories-img]][pdf-FunctorCategories-url] |
 | [GradedCategories](GradedCategories#readme) | Graded closures of categories | [![HTML stable documentation][html-GradedCategories-img]][html-GradedCategories-url] [![PDF stable documentation][pdf-GradedCategories-img]][pdf-GradedCategories-url] |
 | [InternalModules](InternalModules#readme) | Modules over internal algebras | [![HTML stable documentation][html-InternalModules-img]][html-InternalModules-url] [![PDF stable documentation][pdf-InternalModules-img]][pdf-InternalModules-url] |
@@ -74,11 +74,11 @@
 [pdf-ExteriorPowersCategories-url]: https://homalg-project.github.io/CategoricalTowers/ExteriorPowersCategories/download_pdf.html
 
 
-[html-FiniteCocompletion-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
-[html-FiniteCocompletion-url]: https://homalg-project.github.io/CategoricalTowers/FiniteCocompletion/doc/chap0_mj.html
+[html-FiniteCocompletions-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-FiniteCocompletions-url]: https://homalg-project.github.io/CategoricalTowers/FiniteCocompletions/doc/chap0_mj.html
 
-[pdf-FiniteCocompletion-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
-[pdf-FiniteCocompletion-url]: https://homalg-project.github.io/CategoricalTowers/FiniteCocompletion/download_pdf.html
+[pdf-FiniteCocompletions-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-FiniteCocompletions-url]: https://homalg-project.github.io/CategoricalTowers/FiniteCocompletions/download_pdf.html
 
 
 [html-FunctorCategories-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg

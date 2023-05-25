@@ -22,9 +22,9 @@ flags:
   ExteriorPowersCategories:
     paths:
       - "ExteriorPowersCategories/"
-  FiniteCocompletion:
+  FiniteCocompletions:
     paths:
-      - "FiniteCocompletion/"
+      - "FiniteCocompletions/"
   FunctorCategories:
     paths:
       - "FunctorCategories/"

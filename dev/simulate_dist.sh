@@ -44,11 +44,11 @@ GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/Exterio
 #git subtree split --prefix=ExteriorPowersCategories -b ExteriorPowersCategories-split
 echo ""
 
-# FiniteCocompletion
-echo "Simulate release of FiniteCocompletion"
-GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/FiniteCocompletion" --webdir "$PWD/gh-pages/FiniteCocompletion" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
+# FiniteCocompletions
+echo "Simulate release of FiniteCocompletions"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/FiniteCocompletions" --webdir "$PWD/gh-pages/FiniteCocompletions" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
-#git subtree split --prefix=FiniteCocompletion -b FiniteCocompletion-split
+#git subtree split --prefix=FiniteCocompletions -b FiniteCocompletions-split
 echo ""
 
 # FunctorCategories
