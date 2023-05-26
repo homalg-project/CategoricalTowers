@@ -133,7 +133,7 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales", "&gt;= 2023.05-05", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := FiniteCompletion( InitialCategory( ) );</span>
 FiniteCompletion( InitialCategory( ) )
@@ -158,16 +158,17 @@ which algorithmically
 * IsRigidSymmetricClosedMonoidalCategory
 * IsRigidSymmetricCoclosedMonoidalCategory
 and furthermore mathematically
+* IsDiscreteCategory
 * IsFinitelyPresentedCategory
 * IsFinitelyPresentedLinearCategory
 * IsLinearClosureOfACategory
 * IsLocallyOfFiniteInjectiveDimension
 * IsLocallyOfFiniteProjectiveDimension
-* IsSkeletalCategory
 * IsStrictCartesianCategory
 * IsStrictCocartesianCategory
 * IsStrictMonoidalCategory
 * IsTerminalCategory
+* IsTotalOrderCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := InitialObject( T );</span>
 &lt;An object in FiniteCompletion( InitialCategory( ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TerminalObject( T );</span>

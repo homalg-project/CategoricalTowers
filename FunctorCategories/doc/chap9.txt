@@ -64,7 +64,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Locales", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Locales", ">= 2023.05-05", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XT := FiniteCompletion( InitialCategory( ) );[127X[104X
     [4X[28XFiniteCompletion( InitialCategory( ) )[128X[104X
@@ -89,16 +89,17 @@
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsDiscreteCategory[128X[104X
     [4X[28X* IsFinitelyPresentedCategory[128X[104X
     [4X[28X* IsFinitelyPresentedLinearCategory[128X[104X
     [4X[28X* IsLinearClosureOfACategory[128X[104X
     [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
     [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
-    [4X[28X* IsSkeletalCategory[128X[104X
     [4X[28X* IsStrictCartesianCategory[128X[104X
     [4X[28X* IsStrictCocartesianCategory[128X[104X
     [4X[28X* IsStrictMonoidalCategory[128X[104X
     [4X[28X* IsTerminalCategory[128X[104X
+    [4X[28X* IsTotalOrderCategory[128X[104X
     [4X[25Xgap>[125X [27Xi := InitialObject( T );[127X[104X
     [4X[28X<An object in FiniteCompletion( InitialCategory( ) )>[128X[104X
     [4X[25Xgap>[125X [27Xt := TerminalObject( T );[127X[104X
