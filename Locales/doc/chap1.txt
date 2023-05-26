@@ -82,21 +82,29 @@
   
   [33X[0;0YThe property of [3XC[103X being a thin [5XCAP[105X category.[133X
   
-  [1X1.6-2 IsMonoidalProset[101X
+  [1X1.6-2 IsDiscreteCategory[101X
+  
+  [33X[1;0Y[29X[2XIsDiscreteCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  property  of  [3XC[103X  being  a  discrete [5XCAP[105X category, i.e., equivalent to a
+  category in which any morphism is an identity.[133X
+  
+  [1X1.6-3 IsMonoidalProset[101X
   
   [33X[1;0Y[29X[2XIsMonoidalProset[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe property of [3XC[103X being a monoidal thin category.[133X
   
-  [1X1.6-3 IsClosedMonoidalProset[101X
+  [1X1.6-4 IsClosedMonoidalProset[101X
   
   [33X[1;0Y[29X[2XIsClosedMonoidalProset[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe property of [3XC[103X being a closed monoidal thin category.[133X
   
-  [1X1.6-4 IsCoclosedMonoidalProset[101X
+  [1X1.6-5 IsCoclosedMonoidalProset[101X
   
   [33X[1;0Y[29X[2XIsCoclosedMonoidalProset[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X

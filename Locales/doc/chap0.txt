@@ -7,10 +7,10 @@
                   and Boolean algebras of constructible sets [101X
   
   
-                                   2023.05-02
+                                   2023.05-05
   
   
-                                  17 May 2023
+                                  27 May 2023
   
   
                                 Mohamed Barakat
@@ -68,9 +68,10 @@
       1.5-2 IsMorphismInThinCategory
     1.6 [33X[0;0YGAP Properties[133X
       1.6-1 IsThinCategory
-      1.6-2 IsMonoidalProset
-      1.6-3 IsClosedMonoidalProset
-      1.6-4 IsCoclosedMonoidalProset
+      1.6-2 IsDiscreteCategory
+      1.6-3 IsMonoidalProset
+      1.6-4 IsClosedMonoidalProset
+      1.6-5 IsCoclosedMonoidalProset
   2 [33X[0;0YPosets (partially ordered sets)[133X
     2.1 [33X[0;0YOperations[133X
       2.1-1 IsEqualForObjectsIfIsHomSetInhabited
@@ -78,9 +79,10 @@
       2.2-1 AddIsEqualForObjectsIfIsHomSetInhabited
     2.3 [33X[0;0YProperties[133X
       2.3-1 IsPosetCategory
-      2.3-2 IsMonoidalPoset
-      2.3-3 IsClosedMonoidalPoset
-      2.3-4 IsCoclosedMonoidalPoset
+      2.3-2 IsTotalOrderCategory
+      2.3-3 IsMonoidalPoset
+      2.3-4 IsClosedMonoidalPoset
+      2.3-5 IsCoclosedMonoidalPoset
   3 [33X[0;0YLattices[133X
     3.1 [33X[0;0YProperties[133X
       3.1-1 IsCartesianProset
@@ -136,177 +138,190 @@
     5.4 [33X[0;0YProperties[133X
       5.4-1 IsCoHeytingAlgebroid
       5.4-2 IsCoHeytingAlgebra
-  6 [33X[0;0YThe (stable) proset/poset of a category[133X
-    6.1 [33X[0;0YGlobal variables[133X
-      6.1-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY
+  6 [33X[0;0YPreordered sets viewed as categories[133X
+    6.1 [33X[0;0YConstructors[133X
+      6.1-1 ProsetAsCategory
+      6.1-2 DiscreteSkeletalCategory
+      6.1-3 TotalOrderAsCategory
     6.2 [33X[0;0YAttributes[133X
-      6.2-1 AmbientCategory
-      6.2-2 UnderlyingCell
-    6.3 [33X[0;0YConstructors[133X
-      6.3-1 CreateProsetOrPosetOfCategory
-      6.3-2 ProsetOfCategory
-      6.3-3 StableProsetOfCategory
-      6.3-4 PosetOfCategory
-      6.3-5 StablePosetOfCategory
-      6.3-6 AsCellOfProset
-      6.3-7 AsCellOfStableProset
-      6.3-8 AsCellOfPoset
-      6.3-9 AsCellOfStablePoset
-      6.3-10 /
-    6.4 [33X[0;0YExamples[133X
-      6.4-1 [33X[0;0YIdeal quotient[133X
-    6.5 [33X[0;0YGAP categories[133X
-      6.5-1 [33X[0;0YPoset of category[133X
-      6.5-2 [33X[0;0YStable poset of category[133X
-      6.5-3 IsProsetOrPosetOfCapCategory
-      6.5-4 IsCapCategoryCellInProsetOrPosetOfACategory
-      6.5-5 IsCapCategoryCellInStableProsetOrPosetOfACategory
-      6.5-6 IsCapCategoryObjectInProsetOrPosetOfACategory
-      6.5-7 IsProsetOfCapCategory
-      6.5-8 IsCapCategoryCellInProsetOfACategory
-      6.5-9 IsCapCategoryObjectInProsetOfACategory
-      6.5-10 IsCapCategoryMorphismInProsetOfACategory
-      6.5-11 IsPosetOfCapCategory
-      6.5-12 IsCapCategoryCellInPosetOfACategory
-      6.5-13 IsCapCategoryObjectInPosetOfACategory
-      6.5-14 IsCapCategoryMorphismInPosetOfACategory
-  7 [33X[0;0YBoolean algebras[133X
-    7.1 [33X[0;0YOperations[133X
-      7.1-1 MorphismFromDoubleNegation
-      7.1-2 MorphismFromDoubleNegationWithGivenDoubleNegation
-      7.1-3 MorphismToDoubleConegation
-      7.1-4 MorphismToDoubleConegationWithGivenDoubleConegation
-    7.2 [33X[0;0YAdd-methods[133X
-      7.2-1 AddMorphismFromDoubleNegation
-      7.2-2 AddMorphismFromDoubleNegationWithGivenDoubleNegation
-      7.2-3 AddMorphismToDoubleConegation
-      7.2-4 AddMorphismToDoubleConegationWithGivenDoubleConegation
-    7.3 [33X[0;0YProperties[133X
-      7.3-1 IsBiHeytingAlgebroid
-      7.3-2 IsBiHeytingAlgebra
-      7.3-3 IsBooleanAlgebroid
-      7.3-4 IsBooleanAlgebra
-  8 [33X[0;0YMeet-semilattice of differences[133X
-    8.1 [33X[0;0YConstructors[133X
-      8.1-1 MeetSemilatticeOfSingleDifferences
-      8.1-2 \-
-    8.2 [33X[0;0YOperations[133X
-      8.2-1 MinuendAndSubtrahendInUnderlyingLattice
-      8.2-2 DistinguishedSubtrahend
-    8.3 [33X[0;0YGAP Categories[133X
-      8.3-1 IsMeetSemilatticeOfSingleDifferences
-      8.3-2 IsObjectInMeetSemilatticeOfSingleDifferences
-      8.3-3 IsMorphismInMeetSemilatticeOfSingleDifferences
-  9 [33X[0;0YMeet-semilattice of multiple differences[133X
+      6.2-1 UnderlyingObjectFilter
+      6.2-2 UnderlyingObjectMembershipFunction
+      6.2-3 UnderlyingObjectEqualityFunction
+      6.2-4 UnderlyingPreorderFunction
+      6.2-5 UnderlyingObject
+    6.3 [33X[0;0YGAP Categories[133X
+      6.3-1 IsProsetAsCategory
+  7 [33X[0;0YThe (stable) proset/poset of a category[133X
+    7.1 [33X[0;0YGlobal variables[133X
+      7.1-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY
+    7.2 [33X[0;0YAttributes[133X
+      7.2-1 AmbientCategory
+      7.2-2 UnderlyingCell
+    7.3 [33X[0;0YConstructors[133X
+      7.3-1 CreateProsetOrPosetOfCategory
+      7.3-2 ProsetOfCategory
+      7.3-3 StableProsetOfCategory
+      7.3-4 PosetOfCategory
+      7.3-5 StablePosetOfCategory
+      7.3-6 AsCellOfProset
+      7.3-7 AsCellOfStableProset
+      7.3-8 AsCellOfPoset
+      7.3-9 AsCellOfStablePoset
+      7.3-10 /
+    7.4 [33X[0;0YExamples[133X
+      7.4-1 [33X[0;0YIdeal quotient[133X
+    7.5 [33X[0;0YGAP categories[133X
+      7.5-1 [33X[0;0YPoset of category[133X
+      7.5-2 [33X[0;0YStable poset of category[133X
+      7.5-3 IsProsetOrPosetOfCapCategory
+      7.5-4 IsCellInProsetOrPosetOfCategory
+      7.5-5 IsCellInStableProsetOrPosetOfCategory
+      7.5-6 IsObjectInProsetOrPosetOfCategory
+      7.5-7 IsProsetOfCapCategory
+      7.5-8 IsCellInProsetOfCategory
+      7.5-9 IsObjectInProsetOfCategory
+      7.5-10 IsMorphismInProsetOfCategory
+      7.5-11 IsPosetOfCapCategory
+      7.5-12 IsCellInPosetOfCategory
+      7.5-13 IsObjectInPosetOfCategory
+      7.5-14 IsMorphismInPosetOfCategory
+  8 [33X[0;0YBoolean algebras[133X
+    8.1 [33X[0;0YOperations[133X
+      8.1-1 MorphismFromDoubleNegation
+      8.1-2 MorphismFromDoubleNegationWithGivenDoubleNegation
+      8.1-3 MorphismToDoubleConegation
+      8.1-4 MorphismToDoubleConegationWithGivenDoubleConegation
+    8.2 [33X[0;0YAdd-methods[133X
+      8.2-1 AddMorphismFromDoubleNegation
+      8.2-2 AddMorphismFromDoubleNegationWithGivenDoubleNegation
+      8.2-3 AddMorphismToDoubleConegation
+      8.2-4 AddMorphismToDoubleConegationWithGivenDoubleConegation
+    8.3 [33X[0;0YProperties[133X
+      8.3-1 IsBiHeytingAlgebroid
+      8.3-2 IsBiHeytingAlgebra
+      8.3-3 IsBooleanAlgebroid
+      8.3-4 IsBooleanAlgebra
+  9 [33X[0;0YMeet-semilattice of differences[133X
     9.1 [33X[0;0YConstructors[133X
-      9.1-1 MeetSemilatticeOfMultipleDifferences
-      9.1-2 AsMultipleDifference
-    9.2 [33X[0;0YAttributes[133X
-      9.2-1 AsSingleDifference
-    9.3 [33X[0;0YOperations[133X
-      9.3-1 ListOfSingleDifferences
-      9.3-2 \[\]
-    9.4 [33X[0;0YGAP Categories[133X
-      9.4-1 IsMeetSemilatticeOfMultipleDifferences
-      9.4-2 IsObjectInMeetSemilatticeOfMultipleDifferences
-      9.4-3 IsMorphismInMeetSemilatticeOfMultipleDifferences
-  10 [33X[0;0YBoolean algebra of constructible objects[133X
+      9.1-1 MeetSemilatticeOfSingleDifferences
+      9.1-2 \-
+    9.2 [33X[0;0YOperations[133X
+      9.2-1 MinuendAndSubtrahendInUnderlyingLattice
+      9.2-2 DistinguishedSubtrahend
+    9.3 [33X[0;0YGAP Categories[133X
+      9.3-1 IsMeetSemilatticeOfSingleDifferences
+      9.3-2 IsObjectInMeetSemilatticeOfSingleDifferences
+      9.3-3 IsMorphismInMeetSemilatticeOfSingleDifferences
+  10 [33X[0;0YMeet-semilattice of multiple differences[133X
     10.1 [33X[0;0YConstructors[133X
-      10.1-1 BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences
-      10.1-2 UnionOfMultipleDifferences
-      10.1-3 BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences
-      10.1-4 UnionOfDifferences
-    10.2 [33X[0;0YProperties[133X
-      10.2-1 IsOpen
-      10.2-2 IsClosed
-      10.2-3 IsLocallyClosed
-    10.3 [33X[0;0YAttributes[133X
-      10.3-1 UnderlyingCategory
-      10.3-2 LocallyClosedPart
-      10.3-3 CanonicalObject
-      10.3-4 FactorizeObject
-      10.3-5 NormalizedObject
-      10.3-6 StandardizedObject
-      10.3-7 Closure
-      10.3-8 ClosureAsConstructibleObject
-      10.3-9 Dimension
-    10.4 [33X[0;0YOperations[133X
-      10.4-1 NormalizeObject
-      10.4-2 StandardizeObject
-      10.4-3 Length
-      10.4-4 \[\]
-      10.4-5 Iterator
-      10.4-6 ForAllOp
-      10.4-7 ForAnyOp
-      10.4-8 ListOfObjectsInMeetSemilatticeOfDifferences
-      10.4-9 ListOfObjectsInMeetSemilatticeOfDifferences
-    10.5 [33X[0;0YGAP Categories[133X
-      10.5-1 IsBooleanAlgebraOfConstructibleObjects
-      10.5-2 IsConstructibleObject
-      10.5-3 IsMorphismBetweenConstructibleObjects
-      10.5-4 IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences
-      10.5-5 IsConstructibleObjectAsUnionOfMultipleDifferences
-      10.5-6 IsMorphismBetweenConstructibleObjectsAsUnionOfMultipleDifferences
-      10.5-7 IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences
-      10.5-8 IsConstructibleObjectAsUnionOfSingleDifferences
-      10.5-9 IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences
-  11 [33X[0;0YThe interval category[133X
+      10.1-1 MeetSemilatticeOfMultipleDifferences
+      10.1-2 AsMultipleDifference
+    10.2 [33X[0;0YAttributes[133X
+      10.2-1 AsSingleDifference
+    10.3 [33X[0;0YOperations[133X
+      10.3-1 ListOfSingleDifferences
+      10.3-2 \[\]
+    10.4 [33X[0;0YGAP Categories[133X
+      10.4-1 IsMeetSemilatticeOfMultipleDifferences
+      10.4-2 IsObjectInMeetSemilatticeOfMultipleDifferences
+      10.4-3 IsMorphismInMeetSemilatticeOfMultipleDifferences
+  11 [33X[0;0YBoolean algebra of constructible objects[133X
     11.1 [33X[0;0YConstructors[133X
-      11.1-1 CreateIntervalCategory
-      11.1-2 IntervalCategory
-    11.2 [33X[0;0YGAP Categories[133X
-    11.3 [33X[0;0YGAP categories[133X
-      11.3-1 IsIntervalCategory
-      11.3-2 IsCellInIntervalCategory
-      11.3-3 IsObjectInIntervalCategory
-      11.3-4 IsMorphismInIntervalCategory
-    11.4 [33X[0;0YAttributes[133X
-      11.4-1 ClassicalTruthValue
-  12 [33X[0;0YTools[133X
-    12.1 [33X[0;0YInfo Class[133X
-      12.1-1 InfoSquashDatastructureForConstructibleObjects
-    12.2 [33X[0;0YConstructors[133X
-      12.2-1 DatastructureForConstructibleObject
-      12.2-2 NodeInDatastructureOfConstructibleObject
-      12.2-3 Attach
-    12.3 [33X[0;0YOperations[133X
-      12.3-1 IsDone
-      12.3-2 MinimalLevelOfPreNodes
-      12.3-3 Pop
-      12.3-4 IsHomSetInhabited
-      12.3-5 Remove
-      12.3-6 SquashOnce
-      12.3-7 RemoveObsoleteSubtrahends
-      12.3-8 Squash
-      12.3-9 AsUnionOfMultipleDifferences
-      12.3-10 DigraphOfParents
-      12.3-11 DigraphOfChildren
-      12.3-12 Visualize
-    12.4 [33X[0;0YGAP Categories[133X
-      12.4-1 IsDatastructureForConstructibleObjects
-      12.4-2 IsNodeInDatastructureOfConstructibleObjects
-  13 [33X[0;0YTests[133X
-    13.1 [33X[0;0YGAP Categories[133X
-      13.1-1 [33X[0;0YPrecompilation[133X
-  14 [33X[0;0YMeet-semilattice of single/multiple differences[133X
+      11.1-1 BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences
+      11.1-2 UnionOfMultipleDifferences
+      11.1-3 BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences
+      11.1-4 UnionOfDifferences
+    11.2 [33X[0;0YProperties[133X
+      11.2-1 IsOpen
+      11.2-2 IsClosed
+      11.2-3 IsLocallyClosed
+    11.3 [33X[0;0YAttributes[133X
+      11.3-1 UnderlyingCategory
+      11.3-2 LocallyClosedPart
+      11.3-3 CanonicalObject
+      11.3-4 FactorizeObject
+      11.3-5 NormalizedObject
+      11.3-6 StandardizedObject
+      11.3-7 Closure
+      11.3-8 ClosureAsConstructibleObject
+      11.3-9 Dimension
+    11.4 [33X[0;0YOperations[133X
+      11.4-1 NormalizeObject
+      11.4-2 StandardizeObject
+      11.4-3 Length
+      11.4-4 \[\]
+      11.4-5 Iterator
+      11.4-6 ForAllOp
+      11.4-7 ForAnyOp
+      11.4-8 ListOfObjectsInMeetSemilatticeOfDifferences
+      11.4-9 ListOfObjectsInMeetSemilatticeOfDifferences
+    11.5 [33X[0;0YGAP Categories[133X
+      11.5-1 IsBooleanAlgebraOfConstructibleObjects
+      11.5-2 IsConstructibleObject
+      11.5-3 IsMorphismBetweenConstructibleObjects
+      11.5-4 IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences
+      11.5-5 IsConstructibleObjectAsUnionOfMultipleDifferences
+      11.5-6 IsMorphismBetweenConstructibleObjectsAsUnionOfMultipleDifferences
+      11.5-7 IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences
+      11.5-8 IsConstructibleObjectAsUnionOfSingleDifferences
+      11.5-9 IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences
+  12 [33X[0;0YThe interval category[133X
+    12.1 [33X[0;0YConstructors[133X
+      12.1-1 CreateIntervalCategory
+      12.1-2 IntervalCategory
+    12.2 [33X[0;0YGAP Categories[133X
+    12.3 [33X[0;0YGAP categories[133X
+      12.3-1 IsIntervalCategory
+      12.3-2 IsCellInIntervalCategory
+      12.3-3 IsObjectInIntervalCategory
+      12.3-4 IsMorphismInIntervalCategory
+    12.4 [33X[0;0YAttributes[133X
+      12.4-1 ClassicalTruthValue
+  13 [33X[0;0YTools[133X
+    13.1 [33X[0;0YInfo Class[133X
+      13.1-1 InfoSquashDatastructureForConstructibleObjects
+    13.2 [33X[0;0YConstructors[133X
+      13.2-1 DatastructureForConstructibleObject
+      13.2-2 NodeInDatastructureOfConstructibleObject
+      13.2-3 Attach
+    13.3 [33X[0;0YOperations[133X
+      13.3-1 IsDone
+      13.3-2 MinimalLevelOfPreNodes
+      13.3-3 Pop
+      13.3-4 IsHomSetInhabited
+      13.3-5 Remove
+      13.3-6 SquashOnce
+      13.3-7 RemoveObsoleteSubtrahends
+      13.3-8 Squash
+      13.3-9 AsUnionOfMultipleDifferences
+      13.3-10 DigraphOfParents
+      13.3-11 DigraphOfChildren
+      13.3-12 Visualize
+    13.4 [33X[0;0YGAP Categories[133X
+      13.4-1 IsDatastructureForConstructibleObjects
+      13.4-2 IsNodeInDatastructureOfConstructibleObjects
+  14 [33X[0;0YTests[133X
     14.1 [33X[0;0YGAP Categories[133X
-      14.1-1 IsMeetSemilatticeOfDifferences
-      14.1-2 IsObjectInMeetSemilatticeOfDifferences
-      14.1-3 IsMorphismInMeetSemilatticeOfDifferences
-    14.2 [33X[0;0YProperties[133X
-      14.2-1 IsClosed
-      14.2-2 IsOpen
-      14.2-3 IsLocallyClosed
-    14.3 [33X[0;0YAttributes[133X
-      14.3-1 UnderlyingCategory
-      14.3-2 LocallyClosedPart
-      14.3-3 CanonicalObject
-      14.3-4 FactorizeObject
-      14.3-5 Closure
-      14.3-6 Dimension
-    14.4 [33X[0;0YOperations[133X
-      14.4-1 NormalizeObject
-      14.4-2 StandardizeObject
+      14.1-1 [33X[0;0YPrecompilation[133X
+  15 [33X[0;0YMeet-semilattice of single/multiple differences[133X
+    15.1 [33X[0;0YGAP Categories[133X
+      15.1-1 IsMeetSemilatticeOfDifferences
+      15.1-2 IsObjectInMeetSemilatticeOfDifferences
+      15.1-3 IsMorphismInMeetSemilatticeOfDifferences
+    15.2 [33X[0;0YProperties[133X
+      15.2-1 IsClosed
+      15.2-2 IsOpen
+      15.2-3 IsLocallyClosed
+    15.3 [33X[0;0YAttributes[133X
+      15.3-1 UnderlyingCategory
+      15.3-2 LocallyClosedPart
+      15.3-3 CanonicalObject
+      15.3-4 FactorizeObject
+      15.3-5 Closure
+      15.3-6 Dimension
+    15.4 [33X[0;0YOperations[133X
+      15.4-1 NormalizeObject
+      15.4-2 StandardizeObject
   
   
   [32X

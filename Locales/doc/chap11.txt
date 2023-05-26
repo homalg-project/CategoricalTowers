@@ -1,58 +1,223 @@
   
-  [1X11 [33X[0;0YThe interval category[133X[101X
+  [1X11 [33X[0;0YBoolean algebra of constructible objects[133X[101X
   
   
   [1X11.1 [33X[0;0YConstructors[133X[101X
   
-  [1X11.1-1 CreateIntervalCategory[101X
+  [1X11.1-1 BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences[101X
   
-  [33X[1;0Y[29X[2XCreateIntervalCategory[102X( [3Xarg[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences[102X( [3XD[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [1X11.1-2 IntervalCategory[101X
+  [33X[0;0YConstruct  the  Boolean algebra of constructible objects as union of objects
+  in the poset [3XD[103X of multiple differences.[133X
   
-  [33X[1;0Y[29X[2XIntervalCategory[102X [32X global variable[133X
+  [1X11.1-2 UnionOfMultipleDifferences[101X
+  
+  [33X[1;0Y[29X[2XUnionOfMultipleDifferences[102X( [3XD1[103X, [3XD2[103X, [3X...[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a [5XCAP[105X category[133X
+  
+  [33X[0;0YIf  [3XD1[103X=[22XA1-B1[122X,  [3XD2[103X=[22XA2-B2[122X,  ..., then the output is [10XDirectProduct[110X[22X(A1,A2,...)[122X -
+  [10XCoproduct[110X[22X(B1,B2,...)[122X.[133X
+  
+  [1X11.1-3 BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences[101X
+  
+  [33X[1;0Y[29X[2XBooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences[102X( [3XD[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YConstruct  the  Boolean algebra of constructible objects as union of objects
+  in the poset [3XD[103X of single differences.[133X
+  
+  [1X11.1-4 UnionOfDifferences[101X
+  
+  [33X[1;0Y[29X[2XUnionOfDifferences[102X( [3XD1[103X, [3XD2[103X, [3X...[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XUnionOfDifferencesOfNormalizedObjects[102X( [3XD1[103X, [3XD2[103X, [3X...[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a [5XCAP[105X category[133X
+  
+  [33X[0;0YIf  [3XD1[103X=[22XA1-B1[122X,  [3XD2[103X=[22XA2-B2[122X,  ..., then the output is [10XDirectProduct[110X[22X(A1,A2,...)[122X -
+  [10XCoproduct[110X[22X(B1,B2,...)[122X.  [10XAsFormalDifferenceOfNormalizedMorphisms[110X  assumes that
+  the input is normalized.[133X
   
   
-  [1X11.2 [33X[0;0YGAP Categories[133X[101X
+  [1X11.2 [33X[0;0YProperties[133X[101X
   
+  [1X11.2-1 IsOpen[101X
   
-  [1X11.3 [33X[0;0YGAP categories[133X[101X
-  
-  [1X11.3-1 IsIntervalCategory[101X
-  
-  [33X[1;0Y[29X[2XIsIntervalCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsOpen[102X( [3XA[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of an interval category.[133X
+  [1X11.2-2 IsClosed[101X
   
-  [33X[0;0YThe [5XGAP[105X category of cells in an interval category.[133X
+  [33X[1;0Y[29X[2XIsClosed[102X( [3XA[103X ) [32X operation[133X
   
-  [1X11.3-2 IsCellInIntervalCategory[101X
+  [1X11.2-3 IsLocallyClosed[101X
   
-  [33X[1;0Y[29X[2XIsCellInIntervalCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsLocallyClosed[102X( [3XA[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [1X11.3-3 IsObjectInIntervalCategory[101X
   
-  [33X[1;0Y[29X[2XIsObjectInIntervalCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [1X11.3 [33X[0;0YAttributes[133X[101X
+  
+  [1X11.3-1 UnderlyingCategory[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
+  
+  [33X[0;0YThe category underlying the Boolean algebra of constructible objects [3XC[103X.[133X
+  
+  [1X11.3-2 LocallyClosedPart[101X
+  
+  [33X[1;0Y[29X[2XLocallyClosedPart[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X11.3-3 CanonicalObject[101X
+  
+  [33X[1;0Y[29X[2XCanonicalObject[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X11.3-4 FactorizeObject[101X
+  
+  [33X[1;0Y[29X[2XFactorizeObject[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X11.3-5 NormalizedObject[101X
+  
+  [33X[1;0Y[29X[2XNormalizedObject[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X11.3-6 StandardizedObject[101X
+  
+  [33X[1;0Y[29X[2XStandardizedObject[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X11.3-7 Closure[101X
+  
+  [33X[1;0Y[29X[2XClosure[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a co-Heyting algebra.[133X
+  
+  [33X[0;0YThe  closure  of  the  constructible  object  [3XA[103X in the underlying co-Heyting
+  algebra.[133X
+  
+  [1X11.3-8 ClosureAsConstructibleObject[101X
+  
+  [33X[1;0Y[29X[2XClosureAsConstructibleObject[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya constructible object.[133X
+  
+  [33X[0;0YThe closure of the constructible object [3XA[103X as a constructible object.[133X
+  
+  [1X11.3-9 Dimension[101X
+  
+  [33X[1;0Y[29X[2XDimension[102X( [3XA[103X ) [32X attribute[133X
+  
+  
+  [1X11.4 [33X[0;0YOperations[133X[101X
+  
+  [1X11.4-1 NormalizeObject[101X
+  
+  [33X[1;0Y[29X[2XNormalizeObject[102X( [3XA[103X ) [32X operation[133X
+  
+  [1X11.4-2 StandardizeObject[101X
+  
+  [33X[1;0Y[29X[2XStandardizeObject[102X( [3XA[103X ) [32X operation[133X
+  
+  [1X11.4-3 Length[101X
+  
+  [33X[1;0Y[29X[2XLength[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X11.4-4 \[\][101X
+  
+  [33X[1;0Y[29X[2X\[\][102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
+  
+  [1X11.4-5 Iterator[101X
+  
+  [33X[1;0Y[29X[2XIterator[102X( [3XA[103X ) [32X operation[133X
+  
+  [1X11.4-6 ForAllOp[101X
+  
+  [33X[1;0Y[29X[2XForAllOp[102X( [3XA[103X, [3Xf[103X ) [32X operation[133X
+  
+  [1X11.4-7 ForAnyOp[101X
+  
+  [33X[1;0Y[29X[2XForAnyOp[102X( [3XA[103X, [3Xf[103X ) [32X operation[133X
+  
+  [1X11.4-8 ListOfObjectsInMeetSemilatticeOfDifferences[101X
+  
+  [33X[1;0Y[29X[2XListOfObjectsInMeetSemilatticeOfDifferences[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X morphism[133X
+  
+  [33X[0;0YA  list  of  morphisms  in  the  underlying  lattice representing the formal
+  multiple difference [3XA[103X.[133X
+  
+  [1X11.4-9 ListOfObjectsInMeetSemilatticeOfDifferences[101X
+  
+  [33X[1;0Y[29X[2XListOfObjectsInMeetSemilatticeOfDifferences[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X morphism[133X
+  
+  [33X[0;0YA  list  of  morphisms  in  the  underlying  lattice representing the formal
+  multiple difference [3XA[103X.[133X
+  
+  
+  [1X11.5 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X11.5-1 IsBooleanAlgebraOfConstructibleObjects[101X
+  
+  [33X[1;0Y[29X[2XIsBooleanAlgebraOfConstructibleObjects[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of objects in an interval category.[133X
+  [33X[0;0YThe [5XGAP[105X category of a Boolean algebra of constructible objects.[133X
   
-  [1X11.3-4 IsMorphismInIntervalCategory[101X
+  [1X11.5-2 IsConstructibleObject[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInIntervalCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsConstructibleObject[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of morphisms in an interval category.[133X
+  [33X[0;0YThe [5XGAP[105X category of objects in a Boolean algebra of constructible objects.[133X
   
+  [1X11.5-3 IsMorphismBetweenConstructibleObjects[101X
   
-  [1X11.4 [33X[0;0YAttributes[133X[101X
+  [33X[1;0Y[29X[2XIsMorphismBetweenConstructibleObjects[102X( [3Xmorphism[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [1X11.4-1 ClassicalTruthValue[101X
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a Boolean algebra of constructible objects.[133X
   
-  [33X[1;0Y[29X[2XClassicalTruthValue[102X( [3Xa[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  [1X11.5-4 IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences[101X
   
-  [33X[0;0YThe truth value of the object [3Xa[103X in the interval category.[133X
+  [33X[1;0Y[29X[2XIsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  [5XGAP[105X  category of a Boolean algebra of constructible objects as union of
+  multiple differences.[133X
+  
+  [1X11.5-5 IsConstructibleObjectAsUnionOfMultipleDifferences[101X
+  
+  [33X[1;0Y[29X[2XIsConstructibleObjectAsUnionOfMultipleDifferences[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in ...[133X
+  
+  [1X11.5-6 IsMorphismBetweenConstructibleObjectsAsUnionOfMultipleDifferences[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismBetweenConstructibleObjectsAsUnionOfMultipleDifferences[102X( [3Xmorphism[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in ...[133X
+  
+  [1X11.5-7 IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences[101X
+  
+  [33X[1;0Y[29X[2XIsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  [5XGAP[105X  category of a Boolean algebra of constructible objects as union of
+  single differences.[133X
+  
+  [1X11.5-8 IsConstructibleObjectAsUnionOfSingleDifferences[101X
+  
+  [33X[1;0Y[29X[2XIsConstructibleObjectAsUnionOfSingleDifferences[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  [5XGAP[105X  category of objects in a Boolean algebra of constructible objects,
+  the latter as unions of formal single differences.[133X
+  
+  [1X11.5-9 IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismBetweenConstructibleObjectsAsUnionOfDifferences[102X( [3Xmorphism[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a Boolean algebra of constructible objects,
+  the latter as unions of formal single differences.[133X
   

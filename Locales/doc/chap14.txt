@@ -1,100 +1,89 @@
   
-  [1X14 [33X[0;0YMeet-semilattice of single/multiple differences[133X[101X
+  [1X14 [33X[0;0YTests[133X[101X
   
   
   [1X14.1 [33X[0;0YGAP Categories[133X[101X
   
-  [1X14.1-1 IsMeetSemilatticeOfDifferences[101X
   
-  [33X[1;0Y[29X[2XIsMeetSemilatticeOfDifferences[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [1X14.1-1 [33X[0;0YPrecompilation[133X[101X
   
-  [33X[0;0YThe [5XGAP[105X category of a meet-semilattice of single/multiple differences.[133X
-  
-  [1X14.1-2 IsObjectInMeetSemilatticeOfDifferences[101X
-  
-  [33X[1;0Y[29X[2XIsObjectInMeetSemilatticeOfDifferences[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe  [5XGAP[105X  category  of  objects  in  a  meet-semilattice  of single/multiple
-  differences.[133X
-  
-  [1X14.1-3 IsMorphismInMeetSemilatticeOfDifferences[101X
-  
-  [33X[1;0Y[29X[2XIsMorphismInMeetSemilatticeOfDifferences[102X( [3Xmorphism[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe  [5XGAP[105X  category  of  morphisms  in  a meet-semilattice of single/multiple
-  differences.[133X
-  
-  
-  [1X14.2 [33X[0;0YProperties[133X[101X
-  
-  [1X14.2-1 IsClosed[101X
-  
-  [33X[1;0Y[29X[2XIsClosed[102X( [3XA[103X ) [32X operation[133X
-  
-  [33X[0;0YThe  embedding of the meet-semilattice of formal single/multiple differences
-  into  the  underlying  lattice  has  a  right  adjoint, at least in case the
-  underying  lattice  is  a  co-Heyting algebra. A formal single difference is
-  closed  if  its  component  of  the  unit  of  the  above  adjunction  is an
-  isomorphism.[133X
-  
-  [1X14.2-2 IsOpen[101X
-  
-  [33X[1;0Y[29X[2XIsOpen[102X( [3XA[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YCheck if the complement (a constructible object) of [3XA[103X is closed.[133X
-  
-  [1X14.2-3 IsLocallyClosed[101X
-  
-  [33X[1;0Y[29X[2XIsLocallyClosed[102X( [3XA[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  
-  [1X14.3 [33X[0;0YAttributes[133X[101X
-  
-  [1X14.3-1 UnderlyingCategory[101X
-  
-  [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3XD[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
-  
-  [33X[0;0YThe  category underlying the meet-semilattice of single/multiple differences
-  [3XD[103X.[133X
-  
-  [1X14.3-2 LocallyClosedPart[101X
-  
-  [33X[1;0Y[29X[2XLocallyClosedPart[102X( [3XA[103X ) [32X attribute[133X
-  
-  [1X14.3-3 CanonicalObject[101X
-  
-  [33X[1;0Y[29X[2XCanonicalObject[102X( [3XA[103X ) [32X attribute[133X
-  
-  [1X14.3-4 FactorizeObject[101X
-  
-  [33X[1;0Y[29X[2XFactorizeObject[102X( [3XA[103X ) [32X attribute[133X
-  
-  [1X14.3-5 Closure[101X
-  
-  [33X[1;0Y[29X[2XClosure[102X( [3XA[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Yan object in a co-Heyting algebra.[133X
-  
-  [33X[0;0YThe  closure  of the formal single difference [3XA[103X in the underlying co-Heyting
-  algebra.[133X
-  
-  [1X14.3-6 Dimension[101X
-  
-  [33X[1;0Y[29X[2XDimension[102X( [3XA[103X ) [32X attribute[133X
-  
-  
-  [1X14.4 [33X[0;0YOperations[133X[101X
-  
-  [1X14.4-1 NormalizeObject[101X
-  
-  [33X[1;0Y[29X[2XNormalizeObject[102X( [3XA[103X ) [32X operation[133X
-  
-  [1X14.4-2 StandardizeObject[101X
-  
-  [33X[1;0Y[29X[2XStandardizeObject[102X( [3XA[103X ) [32X operation[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Locales", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", ">= 2021.10-03", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );;[127X[104X
+    [4X[25Xgap>[125X [27X# HomalgIdentityMatrix( size, ring ) * matrix -> matrix[127X[104X
+    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "size", "ring", "matrix" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "HomalgIdentityMatrix( size, ring ) * matrix",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
+    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27X# matrix * HomalgIdentityMatrix( size, ring ) -> matrix[127X[104X
+    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "size", "ring", "matrix" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "matrix * HomalgIdentityMatrix( size, ring )",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
+    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27X# KroneckerMat( matrix, HomalgIdentityMatrix( 1, ring ) ) -> matrix[127X[104X
+    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "ring", "matrix" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "KroneckerMat( matrix, HomalgIdentityMatrix( 1, ring ) )",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
+    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27X# TransposedMatrix( HomalgIdentityMatrix( size, ring ) ) -> HomalgIdentityMatrix( size, ring )[127X[104X
+    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "size", "ring" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "TransposedMatrix( HomalgIdentityMatrix( size, ring ) )",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "HomalgIdentityMatrix( size, ring )",[127X[104X
+    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27X# KroneckerMat( HomalgIdentityMatrix( size, ring ), matrix )[127X[104X
+    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "size", "ring", "matrix" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "KroneckerMat( HomalgIdentityMatrix( size, ring ), matrix )",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "DiagMat( ring, ListWithIdenticalEntries( size, matrix ) )",[127X[104X
+    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
+    [4X[25X>[125X [27X# does not begin a new statement[127X[104X
+    [4X[25X>[125X [27Xcategory_constructor := EvalString( ReplacedString( """function( R )[127X[104X
+    [4X[25X>[125X [27X  local F, S, P, L@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    F := CategoryOfRows( R : FinalizeCategory := true )@[127X[104X
+    [4X[25X>[125X [27X    S := SliceCategoryOverTensorUnit( F : FinalizeCategory := true )@[127X[104X
+    [4X[25X>[125X [27X    P := PosetOfCategory( S : FinalizeCategory := true )@[127X[104X
+    [4X[25X>[125X [27X    L := StablePosetOfCategory( P )@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    return L@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ ZZ ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "StablePosetOfCategoryOfPosetOfCategoryOfSliceCategoryOverTensorUnitOfCategoryOfRowsOfCommutativeRingPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "Locales";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name :[127X[104X
+    [4X[25X>[125X [27X    operations := [ "ExponentialOnObjects" ],[127X[104X
+    [4X[25X>[125X [27X    number_of_objectified_objects_in_data_structure_of_object := 5,[127X[104X
+    [4X[25X>[125X [27X    number_of_objectified_morphisms_in_data_structure_of_object := 1[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+  [4X[32X[104X
   

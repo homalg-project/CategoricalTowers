@@ -1,69 +1,113 @@
   
-  [1X8 [33X[0;0YMeet-semilattice of differences[133X[101X
+  [1X8 [33X[0;0YBoolean algebras[133X[101X
   
   
-  [1X8.1 [33X[0;0YConstructors[133X[101X
+  [1X8.1 [33X[0;0YOperations[133X[101X
   
-  [1X8.1-1 MeetSemilatticeOfSingleDifferences[101X
+  [1X8.1-1 MorphismFromDoubleNegation[101X
   
-  [33X[1;0Y[29X[2XMeetSemilatticeOfSingleDifferences[102X( [3XL[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [33X[1;0Y[29X[2XMorphismFromDoubleNegation[102X( [3Xa[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\neg\neg a, a)[123X.[133X
   
-  [33X[0;0YConstruct the meet-semilattice of differences from the lattice [3XL[103X.[133X
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output  is  the  inverse  [23X\neg\neg a
+  \rightarrow a[123X of the morphism to the double negation.[133X
   
-  [1X8.1-2 \-[101X
+  [1X8.1-2 MorphismFromDoubleNegationWithGivenDoubleNegation[101X
   
-  [33X[1;0Y[29X[2X\-[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
-  [33X[1;0Y[29X[2XFormalDifferenceOfNormalizedObjects[102X( [3Xu[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMorphismFromDoubleNegationWithGivenDoubleNegation[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\neg\neg a, a)[123X.[133X
   
-  [33X[0;0YForm  the formal single difference object [3XA[103X - [3XB[103X. The expression [3XA[103X - 0 := [3XA[103X -
-  [10XInitialObject[110X(  [10XCapCategory[110X(  [3XA[103X  )  ). The expression - [3XA[103X := [10XTerminalObject[110X(
-  [10XCapCategory[110X(  [3XA[103X  ) ) - [3XA[103X. [10XFormalDifferenceOfNormalizedObjects[110X assumes that [3XA[103X
-  and [3XB[103X are [21Xnormalized[121X[133X
+  [33X[0;0YThe argument is an object [23Xa[123X, and an object [23Xs = \neg\neg a[123X. The output is the
+  inverse [23X\neg\neg a \rightarrow a[123X of the morphism to the double negation.[133X
   
+  [1X8.1-3 MorphismToDoubleConegation[101X
   
-  [1X8.2 [33X[0;0YOperations[133X[101X
+  [33X[1;0Y[29X[2XMorphismToDoubleConegation[102X( [3Xa[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, \ulcorner\ulcorner a)[123X.[133X
   
-  [1X8.2-1 MinuendAndSubtrahendInUnderlyingLattice[101X
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output  is the inverse [23Xa \rightarrow
+  \ulcorner\ulcorner a[123X of the morphism from the double conegation.[133X
   
-  [33X[1;0Y[29X[2XMinuendAndSubtrahendInUnderlyingLattice[102X( [3XA[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya pair of objects in a thin category[133X
+  [1X8.1-4 MorphismToDoubleConegationWithGivenDoubleConegation[101X
   
-  [33X[0;0YA  pair  in the underlying lattice representing the formal single difference
-  [3XA[103X.[133X
+  [33X[1;0Y[29X[2XMorphismToDoubleConegationWithGivenDoubleConegation[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, \ulcorner\ulcorner a)[123X.[133X
   
-  [1X8.2-2 DistinguishedSubtrahend[101X
-  
-  [33X[1;0Y[29X[2XDistinguishedSubtrahend[102X( [3XA[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Yan object in a thin category[133X
-  
-  [33X[0;0YThe  output  [10XS[110X  should  satisfy  [3XA[103X.I  -  [10XS[110X  = [3XA[103X. The standard method returns
-  [10XNormalizedDistinguishedSubtrahend[110X(             [3XA[103X             )            if
-  [10XHasNormalizedDistinguishedSubtrahend[110X(      [3XA[103X      )      =      [10Xtrue[110X      or
-  [10XPreDistinguishedSubtrahend[110X(  [3XA[103X  )  if  [10XHasPreDistinguishedSubtrahend[110X(  [3XA[103X ) =
-  [10Xtrue[110X. The remaining behavior is unspecified.[133X
+  [33X[0;0YThe  argument  is  an  object [23Xa[123X, and an object [23Xr = \ulcorner\ulcorner a[123X. The
+  output  is  the  inverse  [23Xa \rightarrow \ulcorner\ulcorner a[123X of the morphism
+  from the double conegation.[133X
   
   
-  [1X8.3 [33X[0;0YGAP Categories[133X[101X
+  [1X8.2 [33X[0;0YAdd-methods[133X[101X
   
-  [1X8.3-1 IsMeetSemilatticeOfSingleDifferences[101X
+  [1X8.2-1 AddMorphismFromDoubleNegation[101X
   
-  [33X[1;0Y[29X[2XIsMeetSemilatticeOfSingleDifferences[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XAddMorphismFromDoubleNegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismFromDoubleNegation[110X.        [23XF:        (       a       )       \mapsto
+  \mathtt{MorphismFromDoubleNegation}(a)[123X.[133X
+  
+  [1X8.2-2 AddMorphismFromDoubleNegationWithGivenDoubleNegation[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismFromDoubleNegationWithGivenDoubleNegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismFromDoubleNegationWithGivenDoubleNegation[110X.  [23XF:  (  a,  s  )  \mapsto
+  \mathtt{MorphismFromDoubleNegationWithGivenDoubleNegation}(a, s)[123X.[133X
+  
+  [1X8.2-3 AddMorphismToDoubleConegation[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismToDoubleConegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismToDoubleConegation[110X.        [23XF:        (       a       )       \mapsto
+  \mathtt{MorphismToDoubleConegation}(a)[123X.[133X
+  
+  [1X8.2-4 AddMorphismToDoubleConegationWithGivenDoubleConegation[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismToDoubleConegationWithGivenDoubleConegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismToDoubleConegationWithGivenDoubleConegation[110X.  [23XF:  (  a,  r ) \mapsto
+  \mathtt{MorphismToDoubleConegationWithGivenDoubleConegation}(a, r)[123X.[133X
+  
+  
+  [1X8.3 [33X[0;0YProperties[133X[101X
+  
+  [1X8.3-1 IsBiHeytingAlgebroid[101X
+  
+  [33X[1;0Y[29X[2XIsBiHeytingAlgebroid[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of a meet-semilattice of single differences.[133X
+  [33X[0;0YThe property of [3XC[103X being a bi-Heyting algebroid.[133X
   
-  [1X8.3-2 IsObjectInMeetSemilatticeOfSingleDifferences[101X
+  [1X8.3-2 IsBiHeytingAlgebra[101X
   
-  [33X[1;0Y[29X[2XIsObjectInMeetSemilatticeOfSingleDifferences[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsBiHeytingAlgebra[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of objects in a meet-semilattice of differences.[133X
+  [33X[0;0YThe property of [3XC[103X being a bi-Heyting algebra.[133X
   
-  [1X8.3-3 IsMorphismInMeetSemilatticeOfSingleDifferences[101X
+  [1X8.3-3 IsBooleanAlgebroid[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInMeetSemilatticeOfSingleDifferences[102X( [3Xmorphism[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsBooleanAlgebroid[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of morphisms in a meet-semilattice of differences.[133X
+  [33X[0;0YThe property of [3XC[103X being a Boolean algebroid.[133X
+  
+  [1X8.3-4 IsBooleanAlgebra[101X
+  
+  [33X[1;0Y[29X[2XIsBooleanAlgebra[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a Boolean algebra.[133X
   
