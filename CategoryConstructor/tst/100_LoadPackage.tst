@@ -11,12 +11,16 @@ gap> LoadPackage( "Locales", false );
 true
 gap> LoadPackage( "SubcategoriesForCAP", false );
 true
+gap> LoadPackage( "FreydCategoriesForCAP", false );
+true
 gap> LoadPackage( "CategoryConstructor", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
 gap> LoadPackage( "Locales" );
 true
 gap> LoadPackage( "SubcategoriesForCAP" );
+true
+gap> LoadPackage( "FreydCategoriesForCAP" );
 true
 gap> LoadPackage( "CategoryConstructor" );
 true

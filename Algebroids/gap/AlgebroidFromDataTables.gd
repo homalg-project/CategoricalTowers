@@ -65,6 +65,8 @@ DeclareAttribute( "AlgebroidFromDataTables",
         IsRecord );
 #! @InsertChunk AlgebroidFromDataTables
 
+DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidFromDataTables" );
+
 ####################################
 #
 #! @Section Attributes

@@ -605,7 +605,7 @@ InstallMethod( AlgebroidFromDataTables,
             precompiled_towers := [
             rec(
                 remaining_constructors_in_tower := [ "AdditiveClosure" ],
-                precompiled_functions_adder := ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidFromDataTablesPrecompiled ),
+                precompiled_functions_adder := ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidFromDataTables ),
             ] );
     
     ##
@@ -1104,6 +1104,53 @@ InstallOtherMethod( OppositeAlgebroid,
     
     return cat_op;
     
+end );
+
+####################################
+#
+# Additive Closure Of Algebroids
+#
+####################################
+
+InstallGlobalFunction( ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidFromDataTables,
+    function ( cat )
+      
+      AddWeakKernelEmbedding( cat,
+        
+        function ( cat, alpha )
+          local objs, tau, D, S;
+          
+          objs := List( SetOfObjects( UnderlyingCategory( cat ) ), o -> ObjectConstructor( cat, [ o ] ) );
+          
+          tau := Concatenation( List( objs, o -> Concatenation( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory( cat, [ [  IdentityMorphism( cat, o ) ] ], [ [ alpha ] ] ) ) ) );
+          
+          D := List( tau, Source );
+          
+          S := DirectSum( cat, D );
+          
+          return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, D, Source( alpha ), tau, S );
+          
+      end );
+      
+      AddWeakCokernelProjection( cat,
+        
+        function ( cat, alpha )
+          local objs, tau, D, S;
+          
+          objs := List( SetOfObjects( UnderlyingCategory( cat ) ), o -> ObjectConstructor( cat, [ o ] ) );
+          
+          tau := Concatenation( List( objs, o -> Concatenation( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory( cat, [ [ alpha ] ], [ [  IdentityMorphism( cat, o ) ] ]  ) ) ) );
+          
+          D := List( tau, Range );
+          
+          S := DirectSum( cat, D );
+          
+          return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, D, Range( alpha ), tau, S );
+          
+      end );
+      
+      ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidFromDataTablesPrecompiled( cat );
+      
 end );
 
 ####################################
