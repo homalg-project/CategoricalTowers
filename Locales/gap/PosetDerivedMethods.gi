@@ -6,9 +6,9 @@
 
 ##
 AddDerivationToCAP( AreIsomorphicForObjectsIfIsHomSetInhabited,
-                    "AreIsomorphicForObjectsIfIsHomSetInhabited using IsEqualForObjectsIfIsHomSetInhabited",
-                    [ [ IsEqualForObjectsIfIsHomSetInhabited, 1 ] ],
-                    
+        "AreIsomorphicForObjectsIfIsHomSetInhabited using IsEqualForObjectsIfIsHomSetInhabited",
+        [ [ IsEqualForObjectsIfIsHomSetInhabited, 1 ] ],
+        
   function( cat, A, B )
     
     return IsEqualForObjectsIfIsHomSetInhabited( cat, A, B );
@@ -17,9 +17,9 @@ end : CategoryFilter := IsPosetCategory );
 
 ##
 AddDerivationToCAP( IsEqualForObjectsIfIsHomSetInhabited,
-                    "IsEqualForObjectsIfIsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited",
-                    [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ] ],
-                    
+        "IsEqualForObjectsIfIsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited",
+        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ] ],
+        
   function( cat, A, B )
     
     return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, A, B );
@@ -28,10 +28,10 @@ end : CategoryFilter := IsPosetCategory );
 
 ##
 AddDerivationToCAP( IsEqualForObjects,
-                    "",
-                    [ [ IsHomSetInhabited, 1 ],
-                      [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ] ],
-                    
+        "",
+        [ [ IsHomSetInhabited, 1 ],
+          [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ] ],
+        
   function( cat, A, B )
     
     return IsHomSetInhabited( cat, A, B ) and
