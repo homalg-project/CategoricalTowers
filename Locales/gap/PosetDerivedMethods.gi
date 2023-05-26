@@ -38,3 +38,25 @@ AddDerivationToCAP( IsEqualForObjects,
            AreIsomorphicForObjectsIfIsHomSetInhabited( cat, A, B );
     
 end : CategoryFilter := IsPosetCategory );
+
+##
+AddDerivationToCAP( DirectProduct,
+        "",
+        [ [ IsHomSetInhabited, 1 ] ],
+        
+  function( cat, L )
+    
+    return First( SortedList( L, { A, B } -> IsHomSetInhabited( cat, A, B ) ) );
+    
+end : CategoryFilter := cat -> HasIsTotalOrderCategory( cat ) and IsTotalOrderCategory( cat ) and not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
+
+##
+AddDerivationToCAP( Coproduct,
+        "",
+        [ [ IsHomSetInhabited, 1 ] ],
+        
+  function( cat, L )
+    
+    return Last( SortedList( L, { A, B } -> IsHomSetInhabited( cat, A, B ) ) );
+    
+end : CategoryFilter := cat -> HasIsTotalOrderCategory( cat ) and IsTotalOrderCategory( cat ) and not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
