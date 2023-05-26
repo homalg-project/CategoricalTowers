@@ -284,7 +284,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list of lists of morphisms <span class="Math">[X^1, \dots, X^t]</span></p>
 
-<p>The arguments are two lists of lists <span class="Math">\alpha</span> and <span class="Math">\beta</span> of morphisms in some linear category over commutative ring. The first list <span class="Math">\alpha</span> (the left coefficients) is a list of list of morphisms <span class="Math">\alpha_{ij}: A_i \rightarrow B_j</span>, where <span class="Math">i = 1 \dots m</span> and <span class="Math">j = 1 \dots n</span> for integers <span class="Math">m,n \geq 1</span>. The second list <span class="Math">\beta</span> (the right coefficients) is a list of list of morphisms <span class="Math">\beta_{ij}: C_j \rightarrow D_i</span>, where <span class="Math">i = 1 \dots m</span> and <span class="Math">j = 1 \dots n</span>. The output is a generating set <span class="Math">[X^1,\dots,X^t]</span> for the solutions of the homogeneous linear system defined by <span class="Math">\alpha</span>, <span class="Math">\beta</span>, i.e., <span class="Math">\sum_{j = 1}^n \alpha_{ij}\cdot X^{k}_{j} \cdot \beta_{ij} = 0</span> for all <span class="Math">i = 1 \dots m</span> and all <span class="Math">k = 1 \dots t</span>.</p>
+<p>The arguments are two lists of lists <span class="Math">\alpha</span> and <span class="Math">\beta</span> of morphisms in a linear category over a commutative ring <span class="Math">k</span>. The first list <span class="Math">\alpha</span> (the left coefficients) is a list of list of morphisms <span class="Math">\alpha_{ij}: A_i \rightarrow B_j</span>, where <span class="Math">i = 1, \dots, m</span> and <span class="Math">j = 1, \dots, n</span> for integers <span class="Math">m,n \geq 1</span>. The second list <span class="Math">\beta</span> (the right coefficients) is a list of list of morphisms <span class="Math">\beta_{ij}: C_j \rightarrow D_i</span>, where <span class="Math">i = 1, \dots, m</span> and <span class="Math">j = 1, \dots, n</span>. The output is a generating set <span class="Math">[X^1,\dots,X^t]</span> for the solutions of the homogeneous linear system: <span class="Math">\sum_{j = 1}^n \alpha_{ij}\cdot X_{j} \cdot \beta_{ij} = 0, ~i = 1, \dots, m</span>. Particularly, each <span class="Math">X^k</span> is a list (of length <span class="Math">n</span>) of morphisms <span class="Math">X^k_j:B_j \to C_j, j=1,\dots,n</span>.</p>
 
 <p><a id="X798F78CE7EAA7F95" name="X798F78CE7EAA7F95"></a></p>
 
@@ -293,7 +293,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var>, <var class="Arg">delta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list of lists of morphisms <span class="Math">[X^1, \dots, X^t]</span></p>
 
-<p>The arguments are four lists of lists <span class="Math">\alpha</span>, <span class="Math">\beta</span>, <span class="Math">\gamma</span>, <span class="Math">\delta</span> of morphisms in some linear category over commutative ring. Each of <span class="Math">\alpha</span> and <span class="Math">\gamma</span> is a list of list of morphisms <span class="Math">\alpha_{ij}, \gamma_{ij}: A_i \rightarrow B_j</span>, where <span class="Math">i = 1 \dots m</span> and <span class="Math">j = 1 \dots n</span> for integers <span class="Math">m,n \geq 1</span>. Each of <span class="Math">\beta</span> and <span class="Math">\delta</span> is also a list of list of morphisms <span class="Math">\beta_{ij}, \delta_{ij}: C_j \rightarrow D_i</span>, where <span class="Math">i = 1 \dots m</span> and <span class="Math">j = 1 \dots n</span>. The output is a generating set <span class="Math">[X^1,\dots,X^t]</span> for the solutions of the homogeneous linear system defined by <span class="Math">\alpha</span>, <span class="Math">\beta</span>, <span class="Math">\gamma</span> and <span class="Math">\delta</span>, i.e., <span class="Math">\sum_{j = 1}^n \alpha_{ij}\cdot X^{k}_{j} \cdot \beta_{ij} = \sum_{j = 1}^n \gamma_{ij}\cdot X^{k}_{j} \cdot \delta_{ij}</span> for all <span class="Math">i = 1 \dots m</span> and all <span class="Math">k = 1 \dots t</span>.</p>
+<p>The arguments are four lists of lists <span class="Math">\alpha</span>, <span class="Math">\beta</span>, <span class="Math">\gamma</span>, <span class="Math">\delta</span> of morphisms in some linear category over commutative ring. Each of <span class="Math">\alpha</span> and <span class="Math">\gamma</span> is a list of list of morphisms <span class="Math">\alpha_{ij}, \gamma_{ij}: A_i \rightarrow B_j</span>, where <span class="Math">i = 1, \dots, m</span> and <span class="Math">j = 1, \dots, n</span> for integers <span class="Math">m,n \geq 1</span>. Each of <span class="Math">\beta</span> and <span class="Math">\delta</span> is also a list of list of morphisms <span class="Math">\beta_{ij}, \delta_{ij}: C_j \rightarrow D_i</span>, where <span class="Math">i = 1, \dots, m</span> and <span class="Math">j = 1, \dots, n</span>. The output is a generating set <span class="Math">[X^1,\dots,X^t]</span> for the solutions of the homogeneous linear system defined by <span class="Math">\alpha</span>, <span class="Math">\beta</span>, <span class="Math">\gamma</span> and <span class="Math">\delta</span>, i.e., <span class="Math">\sum_{j = 1}^n \alpha_{ij}\cdot X^{k}_{j} \cdot \beta_{ij} = \sum_{j = 1}^n \gamma_{ij}\cdot X^{k}_{j} \cdot \delta_{ij}</span> for all <span class="Math">i = 1, \dots, m</span> and all <span class="Math">k = 1, \dots, t</span>.</p>
 
 <p><a id="X860621FE7C1E6634" name="X860621FE7C1E6634"></a></p>
 
@@ -302,7 +302,116 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</code>( <var class="Arg">alpha</var>, <var class="Arg">delta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list of lists of morphisms <span class="Math">[X^1, \dots, X^t]</span></p>
 
-<p>The arguments are two lists of lists <span class="Math">\alpha</span>, <span class="Math">\delta</span> morphisms in some linear category over commutative ring. <span class="Math">\alpha</span> is a list of list of morphisms <span class="Math">\alpha_{ij}:A_i \rightarrow B_j</span> and <span class="Math">\delta</span> is a list of list of morphisms <span class="Math">\delta_{ij}:C_j \rightarrow D_i</span>, where <span class="Math">i = 1 \dots m</span> and <span class="Math">j = 1 \dots n</span> for integers <span class="Math">m,n \geq 1</span>. The method delegates to <code class="code">BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</code> applied on <span class="Math">\alpha</span>, <span class="Math">\beta</span>, <span class="Math">\gamma</span>, <span class="Math">\delta</span> where <span class="Math">\beta_{ij}</span> equals <code class="code">IdentityMorphism</code>(<code class="code">Source</code>(<span class="Math">\delta_{ij}</span>)) whenever <span class="Math">\delta_{ij}</span> is endomorphism and equals to <span class="Math">0*\delta_{ij}</span> otherwise; and <span class="Math">\gamma_{ij}</span> equals <code class="code">IdentityMorphism</code>(<code class="code">Source</code>(<span class="Math">\alpha_{ij}</span>)) whenever <span class="Math">\alpha_{ij}</span> is endomorphism and equals to <span class="Math">0*\alpha_{ij}</span> otherwise for all <span class="Math">i = 1 \dots m</span> and <span class="Math">j = 1 \dots n</span>.</p>
+<p>The arguments are two lists of lists <span class="Math">\alpha</span>, <span class="Math">\delta</span> morphisms in some linear category over commutative ring. <span class="Math">\alpha</span> is a list of list of morphisms <span class="Math">\alpha_{ij}:A_i \rightarrow B_j</span> and <span class="Math">\delta</span> is a list of list of morphisms <span class="Math">\delta_{ij}:C_j \rightarrow D_i</span>, where <span class="Math">i = 1, \dots, m</span> and <span class="Math">j = 1, \dots, n</span> for integers <span class="Math">m,n \geq 1</span>. The method delegates to <code class="code">BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</code> applied on <span class="Math">\alpha</span>, <span class="Math">\beta</span>, <span class="Math">\gamma</span>, <span class="Math">\delta</span> where</p>
+
+
+<ul>
+<li><p><span class="Math">\beta_{ij}</span> equals <code class="code">IdentityMorphism</code>(<code class="code">Source</code>(<span class="Math">\delta_{ij}</span>)) if <span class="Math">\delta_{ij}</span> is an endomorphism, and <code class="code">ZeroMorphism</code>(<code class="code">Source</code>(<span class="Math">\delta_{ij}</span>), <code class="code">Range</code>(<span class="Math">\delta_{ij}</span>)) otherwise,</p>
+
+</li>
+<li><p><span class="Math">\gamma_{ij}</span> equals <code class="code">IdentityMorphism</code>(<code class="code">Source</code>(<span class="Math">\alpha_{ij}</span>)) if <span class="Math">\alpha_{ij}</span> is an endomorphism, and <code class="code">ZeroMorphism</code>(<code class="code">Source</code>(<span class="Math">\alpha_{ij}</span>), <code class="code">Range</code>(<span class="Math">\alpha_{ij}</span>)) otherwise;</p>
+
+</li>
+</ul>
+<p>for all <span class="Math">i = 1, \dots, m</span> and <span class="Math">j = 1, \dots, n</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CategoryConstructor" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals();</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ_rows := CategoryOfRows( QQ );</span>
+Rows( Q )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TensorUnit( QQ_rows );</span>
+&lt;A row module over Q of rank 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_t := IdentityMorphism( t );</span>
+&lt;An identity morphism in Rows( Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">1*(11)*7 + 2*(12)*8 + 3*(13)*9;</span>
+620
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">4*(11)*3 + 5*(12)*4 + 6*(13)*1;</span>
+450
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha_s :=  [ [ 1 , 2 , 3  ], [ 4 , 5 , 6  ] ] * id_t;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta_s := [ [ 7 , 8 , 9  ], [ 3 , 4 , 1  ] ] * id_t;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma_s := [ 620 , 450  ] * id_t;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MereExistenceOfSolutionOfLinearSystemInAbCategory</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  ( QQ_rows, alpha_s, beta_s, gamma_s );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  ( QQ_rows, alpha_s, beta_s, gamma_s );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := SolveLinearSystemInAbCategory( QQ_rows, alpha_s, beta_s, gamma_s );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">1*x[1]*7 + 2*x[2]*8 + 3*x[3]*9 = gamma_s[1];</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">4*x[1]*3 + 5*x[2]*4 + 6*x[3]*1 = gamma_s[2];</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  ( QQ_rows, alpha_s, beta_s );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">basis := BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  ( QQ_rows, alpha_s, beta_s );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( basis );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( basis[1][1] );</span>
+Source:
+A row module over Q of rank 1
+
+Matrix:
+[ [  111/13 ] ]
+
+Range:
+A row module over Q of rank 1
+
+A morphism in Rows( Q )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( basis[1][2] );</span>
+Source:
+A row module over Q of rank 1
+
+Matrix:
+[ [  -141/26 ] ]
+
+Range:
+A row module over Q of rank 1
+
+A morphism in Rows( Q )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( basis[1][3] );</span>
+Source:
+A row module over Q of rank 1
+
+Matrix:
+[ [  1 ] ]
+
+Range:
+A row module over Q of rank 1
+
+A morphism in Rows( Q )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">2*(11)*5 + 3*(12)*7 + 9*(13)*2;</span>
+596
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Add( alpha_s,  [ 2 , 3 , 9  ] * id_t );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Add( beta_s, [ 5 , 7 , 2  ] * id_t );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Add( gamma_s, 596 * id_t );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MereExistenceOfSolutionOfLinearSystemInAbCategory</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  ( QQ_rows, alpha_s, beta_s, gamma_s );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  ( QQ_rows, alpha_s, beta_s, gamma_s );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := SolveLinearSystemInAbCategory( QQ_rows, alpha_s, beta_s, gamma_s );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">1*x[1]*7 + 2*x[2]*8 + 3*x[3]*9 = gamma_s[1];</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">4*x[1]*3 + 5*x[2]*4 + 6*x[3]*1 = gamma_s[2];</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">2*x[1]*5 + 3*x[2]*7 + 9*x[3]*2 = gamma_s[3];</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  ( QQ_rows, alpha_s, beta_s );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">basis := BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  ( QQ_rows, alpha_s, beta_s );</span>
+[ ]
+</pre></div>
 
 <p><a id="X7C5E6D997861A9D8" name="X7C5E6D997861A9D8"></a></p>
 

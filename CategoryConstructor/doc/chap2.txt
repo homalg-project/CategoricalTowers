@@ -161,16 +161,16 @@
   [33X[1;0Y[29X[2XBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of lists of morphisms [23X[X^1, \dots, X^t][123X[133X
   
-  [33X[0;0YThe  arguments  are two lists of lists [23X\alpha[123X and [23X\beta[123X of morphisms in some
-  linear  category  over  commutative  ring.  The  first list [23X\alpha[123X (the left
+  [33X[0;0YThe  arguments  are  two  lists  of lists [23X\alpha[123X and [23X\beta[123X of morphisms in a
+  linear  category  over a commutative ring [23Xk[123X. The first list [23X\alpha[123X (the left
   coefficients)  is  a  list of list of morphisms [23X\alpha_{ij}: A_i \rightarrow
-  B_j[123X,  where  [23Xi  =  1  \dots m[123X and [23Xj = 1 \dots n[123X for integers [23Xm,n \geq 1[123X. The
+  B_j[123X,  where [23Xi = 1, \dots, m[123X and [23Xj = 1, \dots, n[123X for integers [23Xm,n \geq 1[123X. The
   second  list  [23X\beta[123X  (the right coefficients) is a list of list of morphisms
-  [23X\beta_{ij}:  C_j \rightarrow D_i[123X, where [23Xi = 1 \dots m[123X and [23Xj = 1 \dots n[123X. The
-  output  is  a  generating  set  [23X[X^1,\dots,X^t][123X  for  the  solutions  of the
-  homogeneous  linear  system  defined  by [23X\alpha[123X, [23X\beta[123X, i.e., [23X\sum_{j = 1}^n
-  \alpha_{ij}\cdot  X^{k}_{j}  \cdot  \beta_{ij} = 0[123X for all [23Xi = 1 \dots m[123X and
-  all [23Xk = 1 \dots t[123X.[133X
+  [23X\beta_{ij}:  C_j \rightarrow D_i[123X, where [23Xi = 1, \dots, m[123X and [23Xj = 1, \dots, n[123X.
+  The  output  is  a  generating  set [23X[X^1,\dots,X^t][123X for the solutions of the
+  homogeneous  linear  system:  [23X\sum_{j  =  1}^n  \alpha_{ij}\cdot X_{j} \cdot
+  \beta_{ij}  =  0,  ~i  =  1,  \dots, m[123X. Particularly, each [23XX^k[123X is a list (of
+  length [23Xn[123X) of morphisms [23XX^k_j:B_j \to C_j, j=1,\dots,n[123X.[133X
   
   [1X2.6-4 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[101X
   
@@ -180,14 +180,14 @@
   [33X[0;0YThe  arguments  are  four  lists  of  lists [23X\alpha[123X, [23X\beta[123X, [23X\gamma[123X, [23X\delta[123X of
   morphisms  in some linear category over commutative ring. Each of [23X\alpha[123X and
   [23X\gamma[123X  is  a  list  of  list  of  morphisms  [23X\alpha_{ij},  \gamma_{ij}: A_i
-  \rightarrow B_j[123X, where [23Xi = 1 \dots m[123X and [23Xj = 1 \dots n[123X for integers [23Xm,n \geq
-  1[123X.  Each of [23X\beta[123X and [23X\delta[123X is also a list of list of morphisms [23X\beta_{ij},
-  \delta_{ij}: C_j \rightarrow D_i[123X, where [23Xi = 1 \dots m[123X and [23Xj = 1 \dots n[123X. The
-  output  is  a  generating  set  [23X[X^1,\dots,X^t][123X  for  the  solutions  of the
-  homogeneous linear system defined by [23X\alpha[123X, [23X\beta[123X, [23X\gamma[123X and [23X\delta[123X, i.e.,
-  [23X\sum_{j  = 1}^n \alpha_{ij}\cdot X^{k}_{j} \cdot \beta_{ij} = \sum_{j = 1}^n
-  \gamma_{ij}\cdot X^{k}_{j} \cdot \delta_{ij}[123X for all [23Xi = 1 \dots m[123X and all [23Xk
-  = 1 \dots t[123X.[133X
+  \rightarrow  B_j[123X, where [23Xi = 1, \dots, m[123X and [23Xj = 1, \dots, n[123X for integers [23Xm,n
+  \geq  1[123X.  Each  of  [23X\beta[123X  and  [23X\delta[123X  is  also a list of list of morphisms
+  [23X\beta_{ij},  \delta_{ij}: C_j \rightarrow D_i[123X, where [23Xi = 1, \dots, m[123X and [23Xj =
+  1,  \dots,  n[123X.  The  output  is  a  generating  set  [23X[X^1,\dots,X^t][123X for the
+  solutions  of the homogeneous linear system defined by [23X\alpha[123X, [23X\beta[123X, [23X\gamma[123X
+  and [23X\delta[123X, i.e., [23X\sum_{j = 1}^n \alpha_{ij}\cdot X^{k}_{j} \cdot \beta_{ij}
+  = \sum_{j = 1}^n \gamma_{ij}\cdot X^{k}_{j} \cdot \delta_{ij}[123X for all [23Xi = 1,
+  \dots, m[123X and all [23Xk = 1, \dots, t[123X.[133X
   
   [1X2.6-5 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[101X
   
@@ -197,15 +197,117 @@
   [33X[0;0YThe arguments are two lists of lists [23X\alpha[123X, [23X\delta[123X morphisms in some linear
   category  over  commutative  ring.  [23X\alpha[123X  is  a  list of list of morphisms
   [23X\alpha_{ij}:A_i  \rightarrow  B_j[123X  and [23X\delta[123X is a list of list of morphisms
-  [23X\delta_{ij}:C_j  \rightarrow  D_i[123X, where [23Xi = 1 \dots m[123X and [23Xj = 1 \dots n[123X for
-  integers      [23Xm,n      \geq      1[123X.      The     method     delegates     to
+  [23X\delta_{ij}:C_j  \rightarrow  D_i[123X, where [23Xi = 1, \dots, m[123X and [23Xj = 1, \dots, n[123X
+  for     integers     [23Xm,n     \geq     1[123X.    The    method    delegates    to
   [10XBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[110X  applied  on
-  [23X\alpha[123X,     [23X\beta[123X,     [23X\gamma[123X,     [23X\delta[123X     where     [23X\beta_{ij}[123X    equals
-  [10XIdentityMorphism[110X([10XSource[110X([23X\delta_{ij}[123X))  whenever  [23X\delta_{ij}[123X is endomorphism
-  and    equals   to   [23X0*\delta_{ij}[123X   otherwise;   and   [23X\gamma_{ij}[123X   equals
-  [10XIdentityMorphism[110X([10XSource[110X([23X\alpha_{ij}[123X))  whenever  [23X\alpha_{ij}[123X is endomorphism
-  and  equals to [23X0*\alpha_{ij}[123X otherwise for all [23Xi = 1 \dots m[123X and [23Xj = 1 \dots
-  n[123X.[133X
+  [23X\alpha[123X, [23X\beta[123X, [23X\gamma[123X, [23X\delta[123X where[133X
+  
+  [30X    [33X[0;6Y[23X\beta_{ij}[123X equals [10XIdentityMorphism[110X([10XSource[110X([23X\delta_{ij}[123X)) if [23X\delta_{ij}[123X
+        is     an    endomorphism,    and    [10XZeroMorphism[110X([10XSource[110X([23X\delta_{ij}[123X),
+        [10XRange[110X([23X\delta_{ij}[123X)) otherwise,[133X
+  
+  [30X    [33X[0;6Y[23X\gamma_{ij}[123X     equals     [10XIdentityMorphism[110X([10XSource[110X([23X\alpha_{ij}[123X))    if
+        [23X\alpha_{ij}[123X  is an endomorphism, and [10XZeroMorphism[110X([10XSource[110X([23X\alpha_{ij}[123X),
+        [10XRange[110X([23X\alpha_{ij}[123X)) otherwise;[133X
+  
+  [33X[0;0Yfor all [23Xi = 1, \dots, m[123X and [23Xj = 1, \dots, n[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CategoryConstructor" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQQ_rows := CategoryOfRows( QQ );[127X[104X
+    [4X[28XRows( Q )[128X[104X
+    [4X[25Xgap>[125X [27Xt := TensorUnit( QQ_rows );[127X[104X
+    [4X[28X<A row module over Q of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27Xid_t := IdentityMorphism( t );[127X[104X
+    [4X[28X<An identity morphism in Rows( Q )>[128X[104X
+    [4X[25Xgap>[125X [27X1*(11)*7 + 2*(12)*8 + 3*(13)*9;[127X[104X
+    [4X[28X620[128X[104X
+    [4X[25Xgap>[125X [27X4*(11)*3 + 5*(12)*4 + 6*(13)*1;[127X[104X
+    [4X[28X450[128X[104X
+    [4X[25Xgap>[125X [27Xalpha_s :=  [ [ 1 , 2 , 3  ], [ 4 , 5 , 6  ] ] * id_t;;[127X[104X
+    [4X[25Xgap>[125X [27Xbeta_s := [ [ 7 , 8 , 9  ], [ 3 , 4 , 1  ] ] * id_t;;[127X[104X
+    [4X[25Xgap>[125X [27Xgamma_s := [ 620 , 450  ] * id_t;;[127X[104X
+    [4X[25Xgap>[125X [27XMereExistenceOfSolutionOfLinearSystemInAbCategory[127X[104X
+    [4X[25X>[125X [27X                                  ( QQ_rows, alpha_s, beta_s, gamma_s );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[127X[104X
+    [4X[25X>[125X [27X                                  ( QQ_rows, alpha_s, beta_s, gamma_s );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xx := SolveLinearSystemInAbCategory( QQ_rows, alpha_s, beta_s, gamma_s );;[127X[104X
+    [4X[25Xgap>[125X [27X1*x[1]*7 + 2*x[2]*8 + 3*x[3]*9 = gamma_s[1];[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X4*x[1]*3 + 5*x[2]*4 + 6*x[3]*1 = gamma_s[2];[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[127X[104X
+    [4X[25X>[125X [27X                                  ( QQ_rows, alpha_s, beta_s );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xbasis := BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[127X[104X
+    [4X[25X>[125X [27X                                  ( QQ_rows, alpha_s, beta_s );;[127X[104X
+    [4X[25Xgap>[125X [27XLength( basis );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( basis[1][1] );[127X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  111/13 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( basis[1][2] );[127X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  -141/26 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( basis[1][3] );[127X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[25Xgap>[125X [27X2*(11)*5 + 3*(12)*7 + 9*(13)*2;[127X[104X
+    [4X[28X596[128X[104X
+    [4X[25Xgap>[125X [27XAdd( alpha_s,  [ 2 , 3 , 9  ] * id_t );[127X[104X
+    [4X[25Xgap>[125X [27XAdd( beta_s, [ 5 , 7 , 2  ] * id_t );[127X[104X
+    [4X[25Xgap>[125X [27XAdd( gamma_s, 596 * id_t );[127X[104X
+    [4X[25Xgap>[125X [27XMereExistenceOfSolutionOfLinearSystemInAbCategory[127X[104X
+    [4X[25X>[125X [27X                                  ( QQ_rows, alpha_s, beta_s, gamma_s );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[127X[104X
+    [4X[25X>[125X [27X                                  ( QQ_rows, alpha_s, beta_s, gamma_s );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xx := SolveLinearSystemInAbCategory( QQ_rows, alpha_s, beta_s, gamma_s );;[127X[104X
+    [4X[25Xgap>[125X [27X1*x[1]*7 + 2*x[2]*8 + 3*x[3]*9 = gamma_s[1];[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X4*x[1]*3 + 5*x[2]*4 + 6*x[3]*1 = gamma_s[2];[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X2*x[1]*5 + 3*x[2]*7 + 9*x[3]*2 = gamma_s[3];[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[127X[104X
+    [4X[25X>[125X [27X                                  ( QQ_rows, alpha_s, beta_s );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xbasis := BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[127X[104X
+    [4X[25X>[125X [27X                                  ( QQ_rows, alpha_s, beta_s );[127X[104X
+    [4X[28X[ ][128X[104X
+  [4X[32X[104X
   
   
   [1X2.7 [33X[0;0YLimit[133X[101X
