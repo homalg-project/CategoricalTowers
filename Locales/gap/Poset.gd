@@ -25,6 +25,14 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory :=
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory ) );
 
 #! @Description
+#!  The property of <A>C</A> being a total order &CAP; category.
+#! @Arguments C
+DeclareProperty( "IsTotalOrderCategory",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsTotalOrderCategory", "IsTotalOrderCategory" ] );
+
+#! @Description
 #!  The property of <A>C</A> being a closed monoidal thin skeletal category.
 #! @Arguments C
 DeclareProperty( "IsMonoidalPoset",

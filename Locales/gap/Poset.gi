@@ -8,6 +8,8 @@ InstallTrueMethod( IsPosetCategory, IsThinCategory and IsSkeletalCategory );
 InstallTrueMethod( IsThinCategory, IsPosetCategory );
 InstallTrueMethod( IsSkeletalCategory, IsPosetCategory );
 
+InstallTrueMethod( IsPosetCategory, IsTotalOrderCategory );
+
 InstallTrueMethod( IsMonoidalPoset, IsPosetCategory and IsStrictMonoidalCategory );
 InstallTrueMethod( IsPosetCategory, IsMonoidalPoset );
 InstallTrueMethod( IsStrictMonoidalCategory, IsMonoidalPoset );

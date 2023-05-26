@@ -34,3 +34,5 @@ ReadPackage( "Locales", "gap/ConstructibleObjectsAsUnionOfSingleDifferences.gd")
 ReadPackage( "Locales", "gap/ConstructibleObjectsAsUnionOfMultipleDifferences.gd");
 
 ReadPackage( "Locales", "gap/IntervalCategory.gd");
+
+ReadPackage( "Locales", "gap/ProsetAsCategory.gd");

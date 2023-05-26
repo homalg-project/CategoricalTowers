@@ -4,28 +4,40 @@
 # Declarations
 #
 
+####################################
+#
 #! @Chapter Prosets (preordered sets)
+#
+####################################
 
 #! Prosets are thin categories, i.e., each Hom-set is either a singleton or empty.
 
 #! @Section Info Class
 DeclareInfoClass( "InfoLocales" );
 
+####################################
+#
 #! @Section GAP Categories
+#
+####################################
 
 #! @Description
 #!  The &GAP; category of objects in a thin &CAP; category.
 #! @Arguments object
 DeclareCategory( "IsObjectInThinCategory",
-                 IsCapCategoryObject );
+        IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a thin &CAP; category.
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInThinCategory",
-                 IsCapCategoryMorphism and IsMonomorphism and IsEpimorphism );
+        IsCapCategoryMorphism and IsMonomorphism and IsEpimorphism );
 
+####################################
+#
 #! @Section GAP Properties
+#
+####################################
 
 #! @Description
 #!  The property of <A>C</A> being a thin &CAP; category.
@@ -40,6 +52,15 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory :=
           "AreIsomorphicForObjectsIfIsHomSetInhabited",
           ],
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a discrete &CAP; category,
+#!  i.e., equivalent to a category in which any morphism is an identity.
+#! @Arguments C
+DeclareProperty( "IsDiscreteCategory",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsDiscreteCategory", "IsDiscreteCategory" ] );
 
 #! @Description
 #!  The property of <A>C</A> being a monoidal thin category.
@@ -80,7 +101,11 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalProset :=
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalProset,
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalCategory ) );
 
+####################################
+#
 #! @Section Operations
+#
+####################################
 
 #! @Description
 #!  Check if <A>A</A> is isomorphic to <A>B</A> under the assumption that
@@ -91,7 +116,11 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalProset :=
 DeclareOperation( "AreIsomorphicForObjectsIfIsHomSetInhabited",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+####################################
+#
 #! @Section Constructors
+#
+####################################
 
 #! @Description
 #!  Construct the unique morphism with source <A>A</A> and target <A>B</A>.

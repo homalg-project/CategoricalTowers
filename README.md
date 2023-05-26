@@ -16,7 +16,6 @@
 | [CategoriesWithAmbientObjects](CategoriesWithAmbientObjects#readme) | Categories with objects having ambient objects | [![HTML stable documentation][html-CategoriesWithAmbientObjects-img]][html-CategoriesWithAmbientObjects-url] [![PDF stable documentation][pdf-CategoriesWithAmbientObjects-img]][pdf-CategoriesWithAmbientObjects-url] |
 | [CategoryConstructor](CategoryConstructor#readme) | Construct categories out of given ones | [![HTML stable documentation][html-CategoryConstructor-img]][html-CategoryConstructor-url] [![PDF stable documentation][pdf-CategoryConstructor-img]][pdf-CategoryConstructor-url] |
 | [CatReps](CatReps#readme) | Representations and cohomology of finite categories | [![HTML stable documentation][html-CatReps-img]][html-CatReps-url] [![PDF stable documentation][pdf-CatReps-img]][pdf-CatReps-url] |
-| [DiscreteCategories](DiscreteCategories#readme) | Discrete categories | [![HTML stable documentation][html-DiscreteCategories-img]][html-DiscreteCategories-url] [![PDF stable documentation][pdf-DiscreteCategories-img]][pdf-DiscreteCategories-url] |
 | [ExteriorPowersCategories](ExteriorPowersCategories#readme) | The graded category of exterior powers of objects of a given Ab-category | [![HTML stable documentation][html-ExteriorPowersCategories-img]][html-ExteriorPowersCategories-url] [![PDF stable documentation][pdf-ExteriorPowersCategories-img]][pdf-ExteriorPowersCategories-url] |
 | [FiniteCocompletions](FiniteCocompletions#readme) | Finite (co)product/(co)limit (co)completions | [![HTML stable documentation][html-FiniteCocompletions-img]][html-FiniteCocompletions-url] [![PDF stable documentation][pdf-FiniteCocompletions-img]][pdf-FiniteCocompletions-url] |
 | [FunctorCategories](FunctorCategories#readme) | Categories of functors | [![HTML stable documentation][html-FunctorCategories-img]][html-FunctorCategories-url] [![PDF stable documentation][pdf-FunctorCategories-img]][pdf-FunctorCategories-url] |
@@ -58,13 +57,6 @@
 
 [pdf-CatReps-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-CatReps-url]: https://homalg-project.github.io/CategoricalTowers/CatReps/download_pdf.html
-
-
-[html-DiscreteCategories-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
-[html-DiscreteCategories-url]: https://homalg-project.github.io/CategoricalTowers/DiscreteCategories/doc/chap0_mj.html
-
-[pdf-DiscreteCategories-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
-[pdf-DiscreteCategories-url]: https://homalg-project.github.io/CategoricalTowers/DiscreteCategories/download_pdf.html
 
 
 [html-ExteriorPowersCategories-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
