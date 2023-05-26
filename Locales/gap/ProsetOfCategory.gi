@@ -214,13 +214,13 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     if IsIdenticalObj( skeletal, true ) then
         name := "PosetOfCategory";
         category_filter := IsPosetOfCapCategory;
-        category_object_filter := IsCapCategoryObjectInPosetOfACategory;
-        category_morphism_filter := IsCapCategoryMorphismInPosetOfACategory;
+        category_object_filter := IsObjectInPosetOfCategory;
+        category_morphism_filter := IsMorphismInPosetOfCategory;
     else
         name := "ProsetOfCategory";
         category_filter := IsProsetOfCapCategory;
-        category_object_filter := IsCapCategoryObjectInProsetOfACategory;
-        category_morphism_filter := IsCapCategoryMorphismInProsetOfACategory;
+        category_object_filter := IsObjectInProsetOfCategory;
+        category_morphism_filter := IsMorphismInProsetOfCategory;
     fi;
     
     stable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "stable", false );
@@ -232,8 +232,8 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         fi;
         
         name := Concatenation( "Stable", name );
-        category_object_filter := category_object_filter and IsCapCategoryCellInStableProsetOrPosetOfACategory;
-        category_morphism_filter := category_morphism_filter and IsCapCategoryCellInStableProsetOrPosetOfACategory;
+        category_object_filter := category_object_filter and IsCellInStableProsetOrPosetOfCategory;
+        category_morphism_filter := category_morphism_filter and IsCellInStableProsetOrPosetOfCategory;
     fi;
     
     name := Concatenation( name, "( ", Name( C ), " )" );
@@ -607,7 +607,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        [ IsCapCategoryObjectInProsetOfACategory ],
+        [ IsObjectInProsetOfCategory ],
         
   function( a )
     
@@ -619,7 +619,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        [ IsCapCategoryObjectInProsetOfACategory and IsCapCategoryCellInStableProsetOrPosetOfACategory ],
+        [ IsObjectInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
         
   function( a )
     
@@ -631,7 +631,7 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsCapCategoryObjectInProsetOfACategory ],
+        [ IsObjectInProsetOfCategory ],
         
   function( a )
     
@@ -643,7 +643,7 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsCapCategoryObjectInProsetOfACategory and IsCapCategoryCellInStableProsetOrPosetOfACategory ],
+        [ IsObjectInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
         
   function( a )
     
@@ -655,7 +655,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        [ IsCapCategoryObjectInPosetOfACategory ],
+        [ IsObjectInPosetOfCategory ],
         
   function( a )
     
@@ -667,7 +667,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        [ IsCapCategoryObjectInPosetOfACategory and IsCapCategoryCellInStableProsetOrPosetOfACategory ],
+        [ IsObjectInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
         
   function( a )
     
@@ -679,7 +679,7 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsCapCategoryObjectInPosetOfACategory ],
+        [ IsObjectInPosetOfCategory ],
         
   function( a )
     
@@ -691,7 +691,7 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsCapCategoryObjectInPosetOfACategory and IsCapCategoryCellInStableProsetOrPosetOfACategory ],
+        [ IsObjectInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
         
   function( a )
     

@@ -19,18 +19,18 @@ DeclareCategory( "IsProsetOrPosetOfCapCategory",
 
 #! @Description
 #!  The &GAP; category of cells in a proset or poset of a CAP category.
-DeclareCategory( "IsCapCategoryCellInProsetOrPosetOfACategory",
+DeclareCategory( "IsCellInProsetOrPosetOfCategory",
         IsCapCategoryCell );
 
 #! @Description
 #!  The &GAP; category of cells in a stable proset or poset of a CAP category.
-DeclareCategory( "IsCapCategoryCellInStableProsetOrPosetOfACategory",
-        IsCapCategoryCellInProsetOrPosetOfACategory );
+DeclareCategory( "IsCellInStableProsetOrPosetOfCategory",
+        IsCellInProsetOrPosetOfCategory );
 
 #! @Description
 #!  The &GAP; category of objects in a proset or poset of a CAP category.
-DeclareCategory( "IsCapCategoryObjectInProsetOrPosetOfACategory",
-        IsCapCategoryCellInProsetOrPosetOfACategory and IsObjectInThinCategory );
+DeclareCategory( "IsObjectInProsetOrPosetOfCategory",
+        IsCellInProsetOrPosetOfCategory and IsObjectInThinCategory );
 
 #! @Description
 #!  The &GAP; category of a proset of a CAP category.
@@ -39,18 +39,18 @@ DeclareCategory( "IsProsetOfCapCategory",
 
 #! @Description
 #!  The &GAP; category of cells in a proset of a CAP category.
-DeclareCategory( "IsCapCategoryCellInProsetOfACategory",
-        IsCapCategoryCellInProsetOrPosetOfACategory );
+DeclareCategory( "IsCellInProsetOfCategory",
+        IsCellInProsetOrPosetOfCategory );
 
 #! @Description
 #!  The &GAP; category of objects in a proset of a CAP category.
-DeclareCategory( "IsCapCategoryObjectInProsetOfACategory",
-        IsCapCategoryCellInProsetOfACategory and IsCapCategoryObjectInProsetOrPosetOfACategory );
+DeclareCategory( "IsObjectInProsetOfCategory",
+        IsCellInProsetOfCategory and IsObjectInProsetOrPosetOfCategory );
 
 #! @Description
 #!  The &GAP; category of morphisms in a proset of a CAP category.
-DeclareCategory( "IsCapCategoryMorphismInProsetOfACategory",
-        IsCapCategoryCellInProsetOfACategory and IsMorphismInThinCategory );
+DeclareCategory( "IsMorphismInProsetOfCategory",
+        IsCellInProsetOfCategory and IsMorphismInThinCategory );
 
 #! @Description
 #!  The &GAP; category of a poset of a CAP category.
@@ -59,18 +59,18 @@ DeclareCategory( "IsPosetOfCapCategory",
 
 #! @Description
 #!  The &GAP; category of cells in a poset of a CAP category.
-DeclareCategory( "IsCapCategoryCellInPosetOfACategory",
-        IsCapCategoryCellInProsetOrPosetOfACategory );
+DeclareCategory( "IsCellInPosetOfCategory",
+        IsCellInProsetOrPosetOfCategory );
 
 #! @Description
 #!  The &GAP; category of objects in a poset of a CAP category.
-DeclareCategory( "IsCapCategoryObjectInPosetOfACategory",
-        IsCapCategoryCellInPosetOfACategory and IsCapCategoryObjectInProsetOrPosetOfACategory );
+DeclareCategory( "IsObjectInPosetOfCategory",
+        IsCellInPosetOfCategory and IsObjectInProsetOrPosetOfCategory );
 
 #! @Description
 #!  The &GAP; category of morphisms in a poset of a CAP category.
-DeclareCategory( "IsCapCategoryMorphismInPosetOfACategory",
-        IsCapCategoryCellInPosetOfACategory and IsMorphismInThinCategory );
+DeclareCategory( "IsMorphismInPosetOfCategory",
+        IsCellInPosetOfCategory and IsMorphismInThinCategory );
 
 DeclareProperty( "IsStableProset",
         IsCapCategory );
@@ -110,9 +110,9 @@ end );
 #! @Arguments cell
 #! @Returns a &CAP; cell
 DeclareAttribute( "UnderlyingCell",
-        IsCapCategoryCellInProsetOfACategory );
+        IsCellInProsetOfCategory );
 
-CapJitAddTypeSignature( "UnderlyingCell", [ IsCapCategoryObjectInPosetOfACategory ], function ( input_types )
+CapJitAddTypeSignature( "UnderlyingCell", [ IsObjectInPosetOfCategory ], function ( input_types )
     
     Assert( 0, IsProsetOrPosetOfCapCategory( input_types[1].category ) );
     
@@ -120,7 +120,7 @@ CapJitAddTypeSignature( "UnderlyingCell", [ IsCapCategoryObjectInPosetOfACategor
     
 end );
 
-CapJitAddTypeSignature( "UnderlyingCell", [ IsCapCategoryMorphismInPosetOfACategory ], function ( input_types )
+CapJitAddTypeSignature( "UnderlyingCell", [ IsMorphismInPosetOfCategory ], function ( input_types )
     
     Assert( 0, IsProsetOrPosetOfCapCategory( input_types[1].category ) );
     
