@@ -1611,48 +1611,51 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
         [ IsCapCategory and IsFinite ],
         
   function ( B )
-    local A, H, B0, N0, D00, N0N0, p21, p22, B1, N1, d, id, pi2, s, t,
+    local A, sFinSets, B0, N0, D00, N0N0, p21, p22, B1, N1, d, id, pi2, s, t,
           D000, N0N0N0, p31, p32, p33, B2, N2, T, ds, is, dt, it,
           p312, p323, p313, pi3, pi312, pi323, pi313, ps, pt, mus, mus1, mus2, mus3, mu;
     
-    H := RangeCategoryOfHomomorphismStructure( B );
+    sFinSets := RangeCategoryOfHomomorphismStructure( B );
+    
+    ## sFinSets must be the category skeletal finite sets
+    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
     
     B0 := SetOfObjects( B );
-    N0 := FinSet( H, Length( B0 ) );
+    N0 := FinSet( sFinSets, Length( B0 ) );
     
     ## N0 × N0
     D00 := [ N0, N0 ];
-    N0N0 := DirectProduct( H, D00 );
+    N0N0 := DirectProduct( sFinSets, D00 );
     
     ## N0 × N0 -> N0
-    p21 := ProjectionInFactorOfDirectProduct( H, D00, 1 );
-    p22 := ProjectionInFactorOfDirectProduct( H, D00, 2 );
+    p21 := ProjectionInFactorOfDirectProduct( sFinSets, D00, 1 );
+    p22 := ProjectionInFactorOfDirectProduct( sFinSets, D00, 2 );
     
     B1 := List( N0N0, i ->
                 HomomorphismStructureOnObjects( B,
                         B0[1 + AsList( p21 )[1 + i]],
                         B0[1 + AsList( p22 )[1 + i]] ) );
     
-    N1 := Coproduct( H, B1 );
+    N1 := Coproduct( sFinSets, B1 );
     
     ## N0 -> N0 × N0
-    d := EmbeddingOfEqualizer( H,
+    d := EmbeddingOfEqualizer( sFinSets,
                  N0N0,
                  [ p21, p22 ] );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, d = UniversalMorphismIntoDirectProduct( H, D00, N0, [ IdentityMorphism( H, N0 ), IdentityMorphism( H, N0 ) ] ) );
+    Assert( 0, d = UniversalMorphismIntoDirectProduct( sFinSets, D00, N0, [ IdentityMorphism( sFinSets, N0 ), IdentityMorphism( sFinSets, N0 ) ] ) );
     
     ## N0 -> N1
-    id := MapOfFinSets( H,
+    id := MapOfFinSets( sFinSets,
                   N0,
                   List( N0, i ->
                         AsList(
-                               PreCompose( H,
+                               PreCompose( sFinSets,
                                        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
                                                IdentityMorphism( B,
                                                        B0[1 + i] ) ),
-                                       InjectionOfCofactorOfCoproduct( H,
+                                       InjectionOfCofactorOfCoproduct( sFinSets,
                                                B1,
                                                1 + AsList( d )[1 + i] ) ) )[1 + 0] ),
                   N1 );
@@ -1661,28 +1664,28 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     ## this morphism is mixing two levels and is not a CAP operation:
     ## the coproduct N1 in SkeletalFinSets is taken over the index set N0N0 (here also realized as an object in SkeletalFinSets),
     ## so this morphism is a fibration of a coproduct over its "index set" which are both assumed to be objects in the same category:
-    pi2 := MapOfFinSets( H,
+    pi2 := MapOfFinSets( sFinSets,
                    N1,
                    Concatenation( List( N0N0, i -> ListWithIdenticalEntries( Length( B1[1 + i] ), i ) ) ),
                    N0N0 );
     
     ## N1 -> N0 × N0 -> N0
-    s := PreCompose( H, pi2, p21 );
+    s := PreCompose( sFinSets, pi2, p21 );
     
     ## N1 -> N0 × N0 -> N0
-    t := PreCompose( H, pi2, p22 );
+    t := PreCompose( sFinSets, pi2, p22 );
     
     ## N0 × N0 × N0
     D000 := [ N0, N0, N0 ];
-    N0N0N0 := DirectProduct( H, D000 );
+    N0N0N0 := DirectProduct( sFinSets, D000 );
     
     ## N0 × N0 × N0 -> N0
-    p31 := ProjectionInFactorOfDirectProduct( H, D000, 1 );
-    p32 := ProjectionInFactorOfDirectProduct( H, D000, 2 );
-    p33 := ProjectionInFactorOfDirectProduct( H, D000, 3 );
+    p31 := ProjectionInFactorOfDirectProduct( sFinSets, D000, 1 );
+    p32 := ProjectionInFactorOfDirectProduct( sFinSets, D000, 2 );
+    p33 := ProjectionInFactorOfDirectProduct( sFinSets, D000, 3 );
     
     B2 := List( N0N0N0, i ->
-                DirectProduct( H,
+                DirectProduct( sFinSets,
                         [ HomomorphismStructureOnObjects( B,
                                 B0[1 + AsList( p31 )[1 + i]],
                                 B0[1 + AsList( p32 )[1 + i]] ),
@@ -1690,156 +1693,156 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                   B0[1 + AsList( p32 )[1 + i]],
                                   B0[1 + AsList( p33 )[1 + i]] ) ] ) );
     
-    N2 := Coproduct( H, B2 );
+    N2 := Coproduct( sFinSets, B2 );
     
-    T := TerminalObject( H );
+    T := TerminalObject( sFinSets );
     
     ## N1 -> N0 × N0 -> N0 × N0 × N0
     ## this is elegant but needs a justification:
-    ds := PreCompose( H,
+    ds := PreCompose( sFinSets,
                   pi2,
-                  EmbeddingOfEqualizer( H,
+                  EmbeddingOfEqualizer( sFinSets,
                           N0N0N0,
                           [ p32, p33 ] ) );
     
     ## N1 -> N2
-    is := MapOfFinSets( H,
+    is := MapOfFinSets( sFinSets,
                   N1,
                   List( N1, i ->
                         AsList(
-                               PreCompose( H,
-                                       DirectProductFunctorial( H,
-                                               [ LiftAlongMonomorphism( H,
-                                                       InjectionOfCofactorOfCoproduct( H,
+                               PreCompose( sFinSets,
+                                       DirectProductFunctorial( sFinSets,
+                                               [ LiftAlongMonomorphism( sFinSets,
+                                                       InjectionOfCofactorOfCoproduct( sFinSets,
                                                                B1,
                                                                1 + AsList( pi2 )[1 + i] ),
-                                                       MapOfFinSets( H,
+                                                       MapOfFinSets( sFinSets,
                                                                T,
                                                                [ i ],
                                                                N1 ) ),
                                                  InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
                                                          IdentityMorphism( B,
                                                                  B0[1 + AsList( t )[1 + i]] ) ) ] ),
-                                       InjectionOfCofactorOfCoproduct( H,
+                                       InjectionOfCofactorOfCoproduct( sFinSets,
                                                B2,
                                                1 + AsList( ds )[1 + i] ) ) )[1 + 0] ),
                   N2 );
     
     ## N1 -> N0 × N0 -> N0 × N0 × N0
     ## this is elegant but needs a justification:
-    dt := PreCompose( H,
+    dt := PreCompose( sFinSets,
                   pi2,
-                  EmbeddingOfEqualizer( H,
+                  EmbeddingOfEqualizer( sFinSets,
                           N0N0N0,
                           [ p31, p32 ] ) );
     
     ## N1 -> N2
-    it := MapOfFinSets( H,
+    it := MapOfFinSets( sFinSets,
                   N1,
                   List( N1, i ->
                         AsList(
-                               PreCompose( H,
-                                       DirectProductFunctorial( H,
+                               PreCompose( sFinSets,
+                                       DirectProductFunctorial( sFinSets,
                                                [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
                                                        IdentityMorphism( B,
                                                                B0[1 + AsList( s )[1 + i]] ) ),
-                                                 LiftAlongMonomorphism( H,
-                                                         InjectionOfCofactorOfCoproduct( H,
+                                                 LiftAlongMonomorphism( sFinSets,
+                                                         InjectionOfCofactorOfCoproduct( sFinSets,
                                                                  B1,
                                                                  1 + AsList( pi2 )[1 + i] ),
-                                                         MapOfFinSets( H,
+                                                         MapOfFinSets( sFinSets,
                                                                  T,
                                                                  [ i ],
                                                                  N1 ) ) ] ),
-                                       InjectionOfCofactorOfCoproduct( H,
+                                       InjectionOfCofactorOfCoproduct( sFinSets,
                                                B2,
                                                1 + AsList( dt )[1 + i] ) ) )[1 + 0] ),
                   N2 );
     
     ## N0 × N0 × N0 -> N0 × N0
-    p312 := UniversalMorphismIntoDirectProduct( H, D00, N0N0N0, [ p31, p32 ] );
-    p323 := UniversalMorphismIntoDirectProduct( H, D00, N0N0N0, [ p32, p33 ] );
-    p313 := UniversalMorphismIntoDirectProduct( H, D00, N0N0N0, [ p31, p33 ] );
+    p312 := UniversalMorphismIntoDirectProduct( sFinSets, D00, N0N0N0, [ p31, p32 ] );
+    p323 := UniversalMorphismIntoDirectProduct( sFinSets, D00, N0N0N0, [ p32, p33 ] );
+    p313 := UniversalMorphismIntoDirectProduct( sFinSets, D00, N0N0N0, [ p31, p33 ] );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, p312 = ProjectionInFactorOfDirectProduct( H, [ N0N0, N0 ], 1 ) );
+    Assert( 0, p312 = ProjectionInFactorOfDirectProduct( sFinSets, [ N0N0, N0 ], 1 ) );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, p323 = ProjectionInFactorOfDirectProduct( H, [ N0, N0N0 ], 2 ) );
+    Assert( 0, p323 = ProjectionInFactorOfDirectProduct( sFinSets, [ N0, N0N0 ], 2 ) );
     
     ## N2 -> N0 × N0 × N0
     ## this morphism is mixing two levels and is not a CAP operation:
     ## the coproduct N2 in SkeletalFinSets is taken over the index set N0N0N0 (here also realized as an object in SkeletalFinSets),
     ## so this morphism is a fibration of a coproduct over its "index set" which are both assumed to objects in the same category:
-    pi3 := MapOfFinSets( H,
+    pi3 := MapOfFinSets( sFinSets,
                    N2,
                    Concatenation( List( N0N0N0, i -> ListWithIdenticalEntries( Length( B2[1 + i] ), i ) ) ),
                    N0N0N0 );
     
     ## N2 -> N0 × N0 × N0 -> N0 × N0
-    pi312 := PreCompose( H, pi3, p312 );
-    pi323 := PreCompose( H, pi3, p323 );
-    pi313 := PreCompose( H, pi3, p313 );
+    pi312 := PreCompose( sFinSets, pi3, p312 );
+    pi323 := PreCompose( sFinSets, pi3, p323 );
+    pi313 := PreCompose( sFinSets, pi3, p313 );
     
     ## N2 -> N1
-    ps := MapOfFinSets( H,
+    ps := MapOfFinSets( sFinSets,
                   N2,
                   List( N2, i ->
                         AsList(
-                               PreComposeList( H,
-                                       [ LiftAlongMonomorphism( H,
-                                               InjectionOfCofactorOfCoproduct( H,
+                               PreComposeList( sFinSets,
+                                       [ LiftAlongMonomorphism( sFinSets,
+                                               InjectionOfCofactorOfCoproduct( sFinSets,
                                                        B2, 1 + AsList( pi3 )[1 + i] ),
-                                               MapOfFinSets( H,
+                                               MapOfFinSets( sFinSets,
                                                        T,
                                                        [ i ],
                                                        N2 ) ),
-                                         ProjectionInFactorOfDirectProduct( H,
+                                         ProjectionInFactorOfDirectProduct( sFinSets,
                                                  [ B1[1 + AsList( pi312 )[1 + i]],
                                                    B1[1 + AsList( pi323 )[1 + i]] ],
                                                  1 ),
-                                         InjectionOfCofactorOfCoproduct( H,
+                                         InjectionOfCofactorOfCoproduct( sFinSets,
                                                  B1,
                                                  1 + AsList( pi312 )[1 + i] ) ] ) )[1 + 0] ),
                   N1 );
     
     ## N2 -> N1
-    pt := MapOfFinSets( H,
+    pt := MapOfFinSets( sFinSets,
                   N2,
                   List( N2, i ->
                         AsList(
-                               PreComposeList( H,
-                                       [ LiftAlongMonomorphism( H,
-                                               InjectionOfCofactorOfCoproduct( H,
+                               PreComposeList( sFinSets,
+                                       [ LiftAlongMonomorphism( sFinSets,
+                                               InjectionOfCofactorOfCoproduct( sFinSets,
                                                        B2,
                                                        1 + AsList( pi3 )[ 1 + i] ),
-                                               MapOfFinSets( H,
+                                               MapOfFinSets( sFinSets,
                                                        T,
                                                        [ i ],
                                                        N2 ) ),
-                                         ProjectionInFactorOfDirectProduct( H,
+                                         ProjectionInFactorOfDirectProduct( sFinSets,
                                                  [ B1[1 + AsList( pi312 )[1 + i]],
                                                    B1[1 + AsList( pi323 )[1 + i]] ],
                                                  2 ),
-                                         InjectionOfCofactorOfCoproduct( H,
+                                         InjectionOfCofactorOfCoproduct( sFinSets,
                                                  B1,
                                                  1 + AsList( pi323 )[1 + i] ) ] ) )[1 + 0] ),
                   N1 );
     
     mus := List( N0N0N0, i ->
                  List( B2[1 + i], j ->
-                       [ MapOfFinSets( H,
+                       [ MapOfFinSets( sFinSets,
                                T,
                                [ AsList(
-                                       ProjectionInFactorOfDirectProduct( H,
+                                       ProjectionInFactorOfDirectProduct( sFinSets,
                                                [ B1[1 + AsList( p312 )[1 + i]],
                                                  B1[1 + AsList( p323 )[1 + i]] ],
                                                1 ) )[1 + j] ],
                                B1[1 + AsList( p312 )[1 + i]] ),
-                         MapOfFinSets( H,
+                         MapOfFinSets( sFinSets,
                                  T,
                                  [ AsList(
-                                         ProjectionInFactorOfDirectProduct( H,
+                                         ProjectionInFactorOfDirectProduct( sFinSets,
                                                  [ B1[1 + AsList( p312 )[1 + i]],
                                                    B1[1 + AsList( p323 )[1 + i]] ],
                                                  2 ) )[1 + j] ],
@@ -1869,7 +1872,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                 mus1[1 + i][1 + j] ) ) );
     
     mus3 := List( N0N0N0, i ->
-                  UniversalMorphismFromCoproductWithGivenCoproduct( H,
+                  UniversalMorphismFromCoproductWithGivenCoproduct( sFinSets,
                           List( mus2[1 + i], Source ),
                           B1[1 + AsList( p313 )[1 + i]],
                           mus2[1 + i],
@@ -1879,21 +1882,21 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     Assert( 0, ForAll( [ 1 .. Length( N0N0N0 ) ], i -> Source( mus3[i] ) = B2[i] ) );
     
     ## N2 -> N1
-    mu := MapOfFinSets( H,
+    mu := MapOfFinSets( sFinSets,
                   N2,
                   List( N2, i ->
                         AsList(
-                               PreComposeList( H,
-                                       [ LiftAlongMonomorphism( H,
-                                               InjectionOfCofactorOfCoproduct( H,
+                               PreComposeList( sFinSets,
+                                       [ LiftAlongMonomorphism( sFinSets,
+                                               InjectionOfCofactorOfCoproduct( sFinSets,
                                                        B2,
                                                        1 + AsList( pi3 )[1 + i] ),
-                                               MapOfFinSets( H,
+                                               MapOfFinSets( sFinSets,
                                                        T,
                                                        [ i ],
                                                        N2 ) ),
                                          mus3[1 + AsList( pi3 )[1 + i]],
-                                         InjectionOfCofactorOfCoproduct( H,
+                                         InjectionOfCofactorOfCoproduct( sFinSets,
                                                  B1,
                                                  1 + AsList( pi313 )[1 + i] ) ] ) )[1 + 0] ),
                   N1 );
@@ -1942,10 +1945,13 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
         [ IsCapCategory and IsFinite ],
         
   function ( B )
-    local H, objs, mors, o, m, Hom2, hom3, Hom3, tum2, emb2, sum2, iso2,
+    local sFinSets, objs, mors, o, m, Hom2, hom3, Hom3, tum2, emb2, sum2, iso2,
           B0, N0, N1, N2, D, precompose, pt, mu, s;
     
-    H := RangeCategoryOfHomomorphismStructure( B );
+    sFinSets := RangeCategoryOfHomomorphismStructure( B );
+    
+    ## sFinSets must be the category skeletal finite sets
+    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
     
     objs := SetOfObjects( B );
     mors := SetOfGeneratingMorphisms( B );
@@ -1968,7 +1974,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
     Hom3 := List( [ 1 .. o ], c ->
                   List( [ 1 .. o ], a ->
                         List( [ 1 .. o ], b ->
-                              DirectProduct( H, hom3[c][a][b] ) ) ) );
+                              DirectProduct( sFinSets, hom3[c][a][b] ) ) ) );
     
     ## [ [ Hom(a, b) × Hom(b, c) ]_{a, b ∈ B} ]_{c ∈ B}:
     ## tum2 := List( Hom3, L -> Concatenation( TransposedMat( L ) ) );
@@ -1984,7 +1990,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
                   Concatenation(
                           List( [ 1 .. o ], a ->
                                 List( [ 1 .. o ], b ->
-                                      InjectionOfCofactorOfCoproduct( H,
+                                      InjectionOfCofactorOfCoproduct( sFinSets,
                                               tum2[c], o * ( b - 1 ) + a ) ) ) ) );
     
     ## [ [ Hom(a, b) × Hom(b, c) ]_{b, a ∈ B} ]_{c ∈ B}:
@@ -1993,48 +1999,48 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
     ## The isomorphisms
     ## [ ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) → ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ]_{c ∈ B}:
     iso2 := List( [ 1 .. o ], c ->
-                  UniversalMorphismFromCoproduct( H,
+                  UniversalMorphismFromCoproduct( sFinSets,
                           sum2[c],
-                          Coproduct( H,
+                          Coproduct( sFinSets,
                                   tum2[c] ),
                           emb2[c] ) );
     
-    ## The constant functor of 0-cells B → H, c ↦ B_0, ψ ↦ id_{B_0}
-    B0 := FinSet( H, o );
+    ## The constant functor of 0-cells B → sFinSets, c ↦ B_0, ψ ↦ id_{B_0}
+    B0 := FinSet( sFinSets, o );
     
     N0 := Pair( ListWithIdenticalEntries( o, B0 ),
-                ListWithIdenticalEntries( m, IdentityMorphism( H, B0 ) ) );
+                ListWithIdenticalEntries( m, IdentityMorphism( sFinSets, B0 ) ) );
     
-    ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
+    ## The Yoneda functor B → sFinSets, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
     ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
     ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
     N1 := Pair(
                List( [ 1 .. o ], c ->
                      ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c):
-                     Coproduct( H, Hom2[c] ) ),
+                     Coproduct( sFinSets, Hom2[c] ) ),
                List( mors, psi ->
                      ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
-                     CoproductFunctorial( H,
+                     CoproductFunctorial( sFinSets,
                              List( objs, a ->
                                    HomomorphismStructureOnMorphisms( B,
                                            IdentityMorphism( B, a ), psi ) ) ) ) );
     
-    ## The 2-Yoneda functor B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ), where
+    ## The 2-Yoneda functor B → sFinSets, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ), where
     ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c),
     ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
     N2 := Pair(
                List( [ 1 .. o ], c ->
                      ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c):
-                     Coproduct( H,
+                     Coproduct( sFinSets,
                              Concatenation( Hom3[c] ) ) ),
                List( mors, psi ->
                      ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
-                     CoproductFunctorial( H,
+                     CoproductFunctorial( sFinSets,
                              Concatenation(
                                      List( objs, a ->
                                            List( objs, b ->
                                                  ## Hom(id_a, id_b) × Hom(id_b, ψ):
-                                                 DirectProductFunctorial( H,
+                                                 DirectProductFunctorial( sFinSets,
                                                          [ HomomorphismStructureOnMorphisms( B,
                                                                  IdentityMorphism( B, a ), IdentityMorphism( B, b ) ),
                                                            HomomorphismStructureOnMorphisms( B,
@@ -2046,20 +2052,20 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
     precompose :=
       function ( a, b, c )
         return
-          MapOfFinSets( H,
+          MapOfFinSets( sFinSets,
                   Hom3[c][a][b], # = Hom(a, b) × Hom(b, c)
                   List( Hom3[c][a][b],
                         function ( i )
                           local d, d_ab, d_bc, m_ab, m_bc, m;
                           
                           ## D → Hom(a, b) × Hom(b, c):
-                          d := MapOfFinSets( H, D, [ i ], Hom3[c][a][b] );
+                          d := MapOfFinSets( sFinSets, D, [ i ], Hom3[c][a][b] );
                           
                           ## D → Hom(a, b) × Hom(b, c) → Hom(a, b):
-                          d_ab := PreCompose( H, d, ProjectionInFactorOfDirectProduct( H, hom3[c][a][b], 1 ) );
+                          d_ab := PreCompose( sFinSets, d, ProjectionInFactorOfDirectProduct( sFinSets, hom3[c][a][b], 1 ) );
                           
                           ## D → Hom(a, b) × Hom(b, c) → Hom(b, c):
-                          d_bc := PreCompose( H, d, ProjectionInFactorOfDirectProduct( H, hom3[c][a][b], 2 ) );
+                          d_bc := PreCompose( sFinSets, d, ProjectionInFactorOfDirectProduct( sFinSets, hom3[c][a][b], 2 ) );
                           
                           ## the map a → b corresponding to d_ab:
                           m_ab := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B, objs[a], objs[b], d_ab );
@@ -2079,32 +2085,32 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
     end;
     
     ## The Yoneda projection is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
-    ## B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
+    ## B → sFinSets, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
     pt := List( [ 1 .. o ], c ->
                 ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{b ∈ B} Hom(b, c):
-                PreCompose( H,
+                PreCompose( sFinSets,
                         ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) → ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c):
                         iso2[c],
                         ## ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{b ∈ B} Hom(b, c):
-                        CoproductFunctorial( H,
+                        CoproductFunctorial( sFinSets,
                                 List( [ 1 .. o ], b ->
                                       ## ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
-                                      UniversalMorphismFromCoproduct( H,
+                                      UniversalMorphismFromCoproduct( sFinSets,
                                               List( [ 1 .. o ], a -> Hom3[c][a][b] ),
                                               Hom2[c][b],
                                               List( [ 1 .. o ], a ->
                                                     ## Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
-                                                    ProjectionInFactorOfDirectProduct( H,
+                                                    ProjectionInFactorOfDirectProduct( sFinSets,
                                                             hom3[c][a][b], 2 ) ) ) ) ) ) );
     
     ## The Yoneda composition is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
     ## Hom(-, -) × Hom(-, c) ↠ Hom(-, c):
     mu := List( [ 1 .. o ], c ->
                 ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{a ∈ B} Hom(a, c):
-                CoproductFunctorial( H,
+                CoproductFunctorial( sFinSets,
                         List( [ 1 .. o ], a ->
                               ## ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
-                              UniversalMorphismFromCoproduct( H,
+                              UniversalMorphismFromCoproduct( sFinSets,
                                       List( [ 1 .. o ], b -> Hom3[c][a][b] ),
                                       Hom2[c][a],
                                       List( [ 1 .. o ], b ->
@@ -2115,10 +2121,10 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
     ## Hom(-, c) → B_0:
     s := List( [ 1 .. o ], c ->
                ## ⊔_{a ∈ B} Hom(a, c) → B_0, ϕ ↦ Source(ϕ)
-               CoproductFunctorial( H,
+               CoproductFunctorial( sFinSets,
                        List( [ 1 .. o ], a ->
                              ## Hom(a, c) → {a}, ϕ ↦ a
-                             UniversalMorphismIntoTerminalObject( H,
+                             UniversalMorphismIntoTerminalObject( sFinSets,
                                      Hom2[c][a] ) ) ) );
     
     return NTuple( 6, N0, N1, N2, pt, mu, s );
@@ -2130,28 +2136,31 @@ InstallMethod( YonedaProjectionAsNaturalEpimorphism,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local Yepis, H, N1, N2, pt;
+    local Yepis, sFinSets, N1, N2, pt;
     
     Yepis := YonedaNaturalEpimorphisms( B );
     
-    H := RangeCategoryOfHomomorphismStructure( B );
+    sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
-    ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
+    ## sFinSets must be the category skeletal finite sets
+    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
+    
+    ## The Yoneda functor B → sFinSets, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
     ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
     ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
-    N1 := CapFunctor( B, Yepis[2][1], Yepis[2][2], H );
+    N1 := CapFunctor( B, Yepis[2][1], Yepis[2][2], sFinSets );
     
-    ## The 2-Yoneda functor B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ), where
+    ## The 2-Yoneda functor B → sFinSets, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ), where
     ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c),
     ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
-    N2 := CapFunctor( B, Yepis[3][1], Yepis[3][2], H );
+    N2 := CapFunctor( B, Yepis[3][1], Yepis[3][2], sFinSets );
     
     ## The Yoneda projection is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
-    ## B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
+    ## B → sFinSets, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
     pt := NaturalTransformation(
-                  N2,   ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
+                  N2,   ## The 2-Yoneda functor: B → sFinSets, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
                   Yepis[4],
-                  N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
+                  N1 ); ## The Yoneda functor B → sFinSets, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsEpimorphism( pt, true );
@@ -2165,28 +2174,31 @@ InstallMethod( YonedaCompositionAsNaturalEpimorphism,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local Yepis, H, N1, N2, mu;
+    local Yepis, sFinSets, N1, N2, mu;
     
     Yepis := YonedaNaturalEpimorphisms( B );
     
-    H := RangeCategoryOfHomomorphismStructure( B );
+    sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
-    ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
+    ## sFinSets must be the category skeletal finite sets
+    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
+    
+    ## The Yoneda functor B → sFinSets, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
     ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
     ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
-    N1 := CapFunctor( B, Yepis[2][1], Yepis[2][2], H );
+    N1 := CapFunctor( B, Yepis[2][1], Yepis[2][2], sFinSets );
     
-    ## The 2-Yoneda functor B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ), where
+    ## The 2-Yoneda functor B → sFinSets, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ), where
     ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c),
     ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
-    N2 := CapFunctor( B, Yepis[3][1], Yepis[3][2], H );
+    N2 := CapFunctor( B, Yepis[3][1], Yepis[3][2], sFinSets );
     
     ## The Yoneda composition is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
     ## Hom(-, -) × Hom(-, c) ↠ Hom(-, c):
     mu := NaturalTransformation(
-                  N2, ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
+                  N2, ## The 2-Yoneda functor: B → sFinSets, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
                   Yepis[5],
-                  N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
+                  N1 ); ## The Yoneda functor B → sFinSets, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsEpimorphism( mu, true );
@@ -2200,24 +2212,27 @@ InstallMethod( YonedaFibrationAsNaturalTransformation,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local Yepis, H, N0, N1;
+    local Yepis, sFinSets, N0, N1;
     
     Yepis := YonedaNaturalEpimorphisms( B );
     
-    H := RangeCategoryOfHomomorphismStructure( B );
+    sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
-    ## The constant functor of 0-cells B → H, c ↦ B_0, ψ ↦ id_{B_0}
-    N0 := CapFunctor( B, Yepis[1][1], Yepis[1][2], H );
+    ## sFinSets must be the category skeletal finite sets
+    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
     
-    ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
+    ## The constant functor of 0-cells B → sFinSets, c ↦ B_0, ψ ↦ id_{B_0}
+    N0 := CapFunctor( B, Yepis[1][1], Yepis[1][2], sFinSets );
+    
+    ## The Yoneda functor B → sFinSets, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
     ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
     ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
-    N1 := CapFunctor( B, Yepis[2][1], Yepis[2][2], H );
+    N1 := CapFunctor( B, Yepis[2][1], Yepis[2][2], sFinSets );
     
     ## The source fibration is a natrual morphism from the Yoneda functor to the constant functor of 0-cells
     ## Hom(-, c) → B_0:
     return NaturalTransformation(
-                   N1, ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
+                   N1, ## The Yoneda functor B → sFinSets, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
                    Yepis[6],
                    N0 ); ## The constant functor of 0-cells
     
@@ -2228,16 +2243,19 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         [ IsCapCategory and IsFinite ],
         
   function ( B )
-    local H, D, Omega, Yepis, Ymu, Ypt, sieves, defining_triple, lobjs, lmors, arrows, id, N1,
+    local sFinSets, D, Omega, Yepis, Ymu, Ypt, sieves, defining_triple, lobjs, lmors, arrows, id, N1,
           Sieves, Sieves_emb, Sieves_maximal,
           HomHomOmega_objects, HomHomOmega_morphisms, Sieves_objects, Sieves_morphisms,
           Constant_functor, Sieves_functor, HomHomOmega_functor;
     
-    H := RangeCategoryOfHomomorphismStructure( B );
+    sFinSets := RangeCategoryOfHomomorphismStructure( B );
+    
+    ## sFinSets must be the category skeletal finite sets
+    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
     
     D := DistinguishedObjectOfHomomorphismStructure( B );
     
-    Omega := SubobjectClassifier( H );
+    Omega := SubobjectClassifier( sFinSets );
     
     Yepis := YonedaNaturalEpimorphisms( B );
     
@@ -2258,33 +2276,33 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         hom_c := Range( mu_c );
         
         ## Hom(Hom(-, c), Ω) := Hom(⊔_{a ∈ B} Hom(a, c), Ω)
-        power := HomomorphismStructureOnObjects( H, hom_c, Omega );
+        power := HomomorphismStructureOnObjects( sFinSets, hom_c, Omega );
         
         ## define the action as an endomorphism on Hom(Hom(-, c), Ω)
         action :=
           MapOfFinSets(
-                  H,
+                  sFinSets,
                   power, ## Hom(Hom(-, c), Ω)
                   List( power, i ->
                         ## interpreted as an "element" D → Hom(Hom(-, c), Ω)
-                        AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( H,
+                        AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( sFinSets,
                                 ## interpreted as a classifying morphism χ_{s'}: Hom(-, c) → Ω
-                                ClassifyingMorphismOfSubobject( H,
+                                ClassifyingMorphismOfSubobject( sFinSets,
                                         ## s' ↪ Hom(-, c)
-                                        ImageEmbedding( H,
+                                        ImageEmbedding( sFinSets,
                                                 ## Hom(-, -) × s → Hom(-, c)
-                                                PreCompose( H,
+                                                PreCompose( sFinSets,
                                                         ## Hom(-, -) × s ↪ Hom(-, -) × Hom(-, c)
-                                                        ProjectionInFactorOfFiberProduct( H,
+                                                        ProjectionInFactorOfFiberProduct( sFinSets,
                                                                 [ pt_c,
                                                                   ## interpreted as a subobject s ↪ Hom(-, c)
-                                                                  SubobjectOfClassifyingMorphism( H,
+                                                                  SubobjectOfClassifyingMorphism( sFinSets,
                                                                           ## interpreted as a  classifying morphism χ_s: Hom(-, c) → Ω
-                                                                          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( H,
+                                                                          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( sFinSets,
                                                                                   hom_c,
                                                                                   Omega,
                                                                                   ## an "element" D → Hom(Hom(-, c), Ω)
-                                                                                  MapOfFinSets( H, D, [ i ], power ) ) )
+                                                                                  MapOfFinSets( sFinSets, D, [ i ], power ) ) )
                                                                   ], 1 ),
                                                         ## μ_c: Hom(-, -) × Hom(-, c) ↠ Hom(-, c)
                                                         mu_c ) ) ) ) )[1 + 0] ),
@@ -2292,18 +2310,18 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         
         ## The sieves on c are the fixed points of the above action on Hom(Hom(-, c), Ω),
         ## resulting in the embedding Sieves(c) ↪ Hom(Hom(-, c), Ω):
-        emb := EmbeddingOfEqualizer( H, power, [ action, IdentityMorphism( H, power ) ] );
+        emb := EmbeddingOfEqualizer( sFinSets, power, [ action, IdentityMorphism( sFinSets, power ) ] );
         
         ## the "element" D → Sieves(c) corresponding to the maximal sieve:
-        maximal := LiftAlongMonomorphism( H,
+        maximal := LiftAlongMonomorphism( sFinSets,
                            ## Sieves(c) ↪ Hom(Hom(-, c), Ω):
                            emb,
                            ## interpreted as an "element" D → Hom(Hom(-, c), Ω)
-                           InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( H,
+                           InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( sFinSets,
                                    ## the corresponding classifying morphism χ: Hom(-, c) → Ω
-                                   ClassifyingMorphismOfSubobject( H,
+                                   ClassifyingMorphismOfSubobject( sFinSets,
                                            ## id: Hom(-, c) → Hom(-, c)
-                                           IdentityMorphism( H, hom_c ) ) ) );
+                                           IdentityMorphism( sFinSets, hom_c ) ) ) );
         
         return Pair( emb, maximal );
         
@@ -2316,7 +2334,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
     
     arrows := defining_triple[3];
     
-    id := IdentityMorphism( H, Omega );
+    id := IdentityMorphism( sFinSets, Omega );
     
     N1 := Yepis[2]; # Range( Ypt );
     
@@ -2327,15 +2345,15 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
     ## Hom(Hom(-, c), Ω)
     HomHomOmega_objects := List( Sieves_emb, Range );
     HomHomOmega_morphisms := List( [ 1 .. lmors ], m ->
-                                   HomomorphismStructureOnMorphisms( H,
+                                   HomomorphismStructureOnMorphisms( sFinSets,
                                            N1[2][m], # N1( m )
                                            id ) );
     
     Sieves_objects := List( Sieves_emb, Source );
     Sieves_morphisms := List( [ 1 .. lmors ], m ->
-                              LiftAlongMonomorphism( H,
+                              LiftAlongMonomorphism( sFinSets,
                                       Sieves_emb[1 + arrows[m][1]], # Source( m )
-                                      PreCompose( H,
+                                      PreCompose( sFinSets,
                                               Sieves_emb[1 + arrows[m][2]], # Range( m )
                                               HomHomOmega_morphisms[m] ) ) );
     
@@ -2343,7 +2361,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
                    Pair( Sieves_objects,
                          Sieves_morphisms ),
                    Pair( ListWithIdenticalEntries( lobjs, D ),
-                         ListWithIdenticalEntries( lmors, IdentityMorphism( H, D ) ) ),
+                         ListWithIdenticalEntries( lmors, IdentityMorphism( sFinSets, D ) ) ),
                    Pair( HomHomOmega_objects,
                          HomHomOmega_morphisms ),
                    Sieves_maximal,
@@ -2356,15 +2374,15 @@ InstallMethod( SieveFunctor,
         [ IsFpCategory ],
         
   function ( B )
-    local Bop, H, Sieves;
+    local Bop, sFinSets, Sieves;
     
     Bop := OppositeFpCategory( B );
     
-    H := RangeCategoryOfHomomorphismStructure( B );
+    sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
-    return CapFunctor( Bop, Sieves[1][1], Sieves[1][2], H );
+    return CapFunctor( Bop, Sieves[1][1], Sieves[1][2], sFinSets );
     
 end );
 
@@ -2373,15 +2391,15 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctor,
         [ IsFpCategory ],
         
   function ( B )
-    local Bop, H, Sieves, Constant_functor, Sieves_maximal, Sieves_functor;
+    local Bop, sFinSets, Sieves, Constant_functor, Sieves_maximal, Sieves_functor;
     
     Bop := OppositeFpCategory( B );
     
-    H := RangeCategoryOfHomomorphismStructure( B );
+    sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
-    Constant_functor := CapFunctor( Bop, Sieves[2][1], Sieves[2][2], H );
+    Constant_functor := CapFunctor( Bop, Sieves[2][1], Sieves[2][2], sFinSets );
     Sieves_maximal := Sieves[4];
     Sieves_functor := SieveFunctor( B );
     
@@ -2398,17 +2416,17 @@ InstallMethod( EmbeddingOfSieveFunctor,
         [ IsFpCategory ],
         
   function ( B )
-    local Bop, H, Sieves, Sieves_functor, Sieves_emb, HomHomOmega_functor;
+    local Bop, sFinSets, Sieves, Sieves_functor, Sieves_emb, HomHomOmega_functor;
     
     Bop := OppositeFpCategory( B );
     
-    H := RangeCategoryOfHomomorphismStructure( B );
+    sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
     Sieves_functor := SieveFunctor( B );
     Sieves_emb := Sieves[5];
-    HomHomOmega_functor := CapFunctor( Bop, Sieves[3][1], Sieves[3][2], H );
+    HomHomOmega_functor := CapFunctor( Bop, Sieves[3][1], Sieves[3][2], sFinSets );
     
     ## Sieves → Hom(Hom(-, c), Ω), c ↦ ( Sieves(c) ↪ Hom(Hom(-, c), Ω), s ↦ s )
     return NaturalTransformation(

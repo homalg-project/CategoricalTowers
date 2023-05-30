@@ -28,20 +28,23 @@ InstallMethod( IndicesOfGeneratingMorphismsFromHomStructure,
         [ IsCapCategory and IsFinite ],
         
   function( C )
-    local V, C0, N0, D00, N0N0, p21, p22, C1, T, st, mors;
+    local sFinSets, C0, N0, D00, N0N0, p21, p22, C1, T, st, mors;
     
-    V := RangeCategoryOfHomomorphismStructure( C );
+    sFinSets := RangeCategoryOfHomomorphismStructure( C );
+    
+    ## sFinSets must be the category skeletal finite sets
+    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
     
     C0 := SetOfObjects( C );
-    N0 := FinSet( V, Length( C0 ) );
+    N0 := FinSet( sFinSets, Length( C0 ) );
     
     D00 := [ N0, N0 ];
     
     ## N0 × N0 -> N0
-    p21 := ProjectionInFactorOfDirectProduct( V, D00, 1 );
-    p22 := ProjectionInFactorOfDirectProduct( V, D00, 2 );
+    p21 := ProjectionInFactorOfDirectProduct( sFinSets, D00, 1 );
+    p22 := ProjectionInFactorOfDirectProduct( sFinSets, D00, 2 );
     
-    C1 := List( DirectProduct( V, D00 ), i ->
+    C1 := List( DirectProduct( sFinSets, D00 ), i ->
                 HomomorphismStructureOnObjects( C,
                         C0[1 + AsList( p21 )[1 + i]],
                         C0[1 + AsList( p22 )[1 + i]] ) );
@@ -49,11 +52,11 @@ InstallMethod( IndicesOfGeneratingMorphismsFromHomStructure,
     T := DistinguishedObjectOfHomomorphismStructure( C );
     
     st := List( DefiningTripleOfUnderlyingQuiver( C )[3], pair ->
-                UniversalMorphismIntoDirectProduct( V,
+                UniversalMorphismIntoDirectProduct( sFinSets,
                         D00,
                         T,
-                        [ MapOfFinSets( V, T, [ pair[1] ], N0 ),
-                          MapOfFinSets( V, T, [ pair[2] ], N0 ) ] ) );
+                        [ MapOfFinSets( sFinSets, T, [ pair[1] ], N0 ),
+                          MapOfFinSets( sFinSets, T, [ pair[2] ], N0 ) ] ) );
     
     mors := SetOfGeneratingMorphisms( C );
     
