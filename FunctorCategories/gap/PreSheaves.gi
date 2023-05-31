@@ -1545,7 +1545,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                         ## i.e., it corresponds to a pair (t, f) ∈ G^F(b) × F(b), the entries of which we will construct below:
                         
                         ## interpret the integer i as a morphsim 1 → G^F(b) × F(b):
-                        ii := MapOfFinSets( sFinSets,
+                        ii := MorphismConstructor( sFinSets,
                                       T, ## T plays here the role of the terminal object of the range category sFinSets of the presheaf category
                                       [ i ],
                                       source );
@@ -1589,7 +1589,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     end;
                     
                     ## ev_b: G^F(b) × F(b) → G(b)
-                    return MapOfFinSets( sFinSets,
+                    return MorphismConstructor( sFinSets,
                                    source,
                                    List( source, ev_b ),
                                    range );
@@ -1648,7 +1648,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                           InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B,
                                                   b_,
                                                   b,
-                                                  MapOfFinSets( sFinSets, T, [ phi ], Yb( b_ ) ) ## φ: 1 → Hom_B(b', b)
+                                                  MorphismConstructor( sFinSets, T, [ phi ], Yb( b_ ) ) ## φ: 1 → Hom_B(b', b)
                                                   ) ); ## φ: b' → b
                             
                             Fphis := List( phis,
@@ -1658,7 +1658,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                             Fphi -> Fphi( f ) ); ## F(φ)(f) ∈ F(b')
                             
                             ## Y(b)(b') = Hom_B(b', b) → F(b'), (φ: b' → b) ↦ (F(φ)(f): F(b) → F(b'))
-                            factor1 := MapOfFinSets( sFinSets,
+                            factor1 := MorphismConstructor( sFinSets,
                                                Yb( b_ ),
                                                images,
                                                F( b_ ) );
@@ -1682,7 +1682,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     end;
                     
                     ## coev_b: F(b) → ((F × G)^G)(b)
-                    return MapOfFinSets( sFinSets,
+                    return MorphismConstructor( sFinSets,
                                    source,
                                    List( source, coev_b ),
                                    range );
@@ -3343,7 +3343,7 @@ InstallOtherMethodForCompilerForCAP( SievesOfPathsToTruth,
                             InjectionOfCofactorOfCoproduct( sFinSets,
                                     List( B_0, a -> HomStructure( a, c ) ),
                                     1 + s_c( f ) ),
-                            MapOfFinSets( sFinSets,
+                            MorphismConstructor( sFinSets,
                                     D,
                                     [ f ],
                                     hom_c ) ) )[1 + 0] );
@@ -3358,7 +3358,7 @@ InstallOtherMethodForCompilerForCAP( SievesOfPathsToTruth,
                        ## Sieve(x) ↪ Hom(-, c) as an "element" D → Hom(Hom(-, c), Ω):
                        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( sFinSets,
                                ## χ: Hom(-, c) → Ω:
-                               MapOfFinSets( sFinSets,
+                               MorphismConstructor( sFinSets,
                                        hom_c,
                                        List( List( hom_c, f ->
                                                ## Is x P(f) ∈ Q(a) ⊆ P(a), where a = Source(f)?
@@ -3375,7 +3375,7 @@ InstallOtherMethodForCompilerForCAP( SievesOfPathsToTruth,
                                                                  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B,
                                                                          B_0[1 + s_c( f )], ## = a
                                                                          c,
-                                                                         MapOfFinSets( sFinSets,
+                                                                         MorphismConstructor( sFinSets,
                                                                                  D,
                                                                                  [ pr[1 + f] ],
                                                                                  HomStructure( B_0[1 + s_c( f )], c ) ) ) ) ) ) ),
@@ -3388,9 +3388,9 @@ InstallOtherMethodForCompilerForCAP( SievesOfPathsToTruth,
     return CreatePreSheafMorphismByValues( PSh,
                    P,
                    List( B_0,
-                         c -> MapOfFinSets( sFinSets,
+                         c -> MorphismConstructor( sFinSets,
                                  P( c ),
-                                 List( P( c ), x -> paths_to_truth( c, MapOfFinSets( sFinSets, D, [ x ], P( c ) ) ) ),
+                                 List( P( c ), x -> paths_to_truth( c, MorphismConstructor( sFinSets, D, [ x ], P( c ) ) ) ),
                                  Omega( c ) ) ),
                    Omega );
     

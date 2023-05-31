@@ -36,7 +36,7 @@ InstallMethod( IndicesOfGeneratingMorphismsFromHomStructure,
     Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
     
     C0 := SetOfObjects( C );
-    N0 := FinSet( sFinSets, Length( C0 ) );
+    N0 := ObjectConstructor( sFinSets, Length( C0 ) );
     
     D00 := [ N0, N0 ];
     
@@ -55,8 +55,8 @@ InstallMethod( IndicesOfGeneratingMorphismsFromHomStructure,
                 UniversalMorphismIntoDirectProduct( sFinSets,
                         D00,
                         T,
-                        [ MapOfFinSets( sFinSets, T, [ pair[1] ], N0 ),
-                          MapOfFinSets( sFinSets, T, [ pair[2] ], N0 ) ] ) );
+                        [ MorphismConstructor( sFinSets, T, [ pair[1] ], N0 ),
+                          MorphismConstructor( sFinSets, T, [ pair[2] ], N0 ) ] ) );
     
     mors := SetOfGeneratingMorphisms( C );
     
