@@ -2373,13 +2373,14 @@ InstallMethod( SieveFunctor,
         [ IsFpCategory ],
         
   function ( B )
-    local Bop, sFinSets, Sieves;
+    local Sieves, Bop, sFinSets;
+    
+    # asserts that IsCategoryOfSkeletalFinSets( RangeCategoryOfHomomorphismStructure( B ) )
+    Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
     Bop := OppositeFpCategory( B );
     
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
-    
-    Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
     return CapFunctor( Bop, Sieves[1][1], Sieves[1][2], sFinSets );
     
@@ -2390,13 +2391,14 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctor,
         [ IsFpCategory ],
         
   function ( B )
-    local Bop, sFinSets, Sieves, Constant_functor, Sieves_maximal, Sieves_functor;
+    local Sieves, Bop, sFinSets, Constant_functor, Sieves_maximal, Sieves_functor;
+    
+    # asserts that IsCategoryOfSkeletalFinSets( RangeCategoryOfHomomorphismStructure( B ) )
+    Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
     Bop := OppositeFpCategory( B );
     
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
-    
-    Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
     Constant_functor := CapFunctor( Bop, Sieves[2][1], Sieves[2][2], sFinSets );
     Sieves_maximal := Sieves[4];
@@ -2415,13 +2417,14 @@ InstallMethod( EmbeddingOfSieveFunctor,
         [ IsFpCategory ],
         
   function ( B )
-    local Bop, sFinSets, Sieves, Sieves_functor, Sieves_emb, HomHomOmega_functor;
+    local Sieves, Bop, sFinSets, Sieves_functor, Sieves_emb, HomHomOmega_functor;
+    
+    # asserts that IsCategoryOfSkeletalFinSets( RangeCategoryOfHomomorphismStructure( B ) )
+    Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
     Bop := OppositeFpCategory( B );
     
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
-    
-    Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
     Sieves_functor := SieveFunctor( B );
     Sieves_emb := Sieves[5];
