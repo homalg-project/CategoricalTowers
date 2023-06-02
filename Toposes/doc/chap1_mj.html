@@ -219,7 +219,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExactCoverWithGlobalElements</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list of morphisms in <span class="SimpleMath">\(\mathrm{Hom}(t,a)\)</span>.</p>
 
-<p>The argument is an object <var class="Arg">a</var> of a category <span class="SimpleMath">\(\mathbf{C}\)</span>. The output is a list <span class="SimpleMath">\(D\)</span> of global elements of <var class="Arg">a</var> (i.e., morphisms from the terminal object <span class="SimpleMath">\(t\)</span> of <span class="SimpleMath">\(\mathbf{C}\)</span> to <var class="Arg">a</var>), such that <code class="code">UniversalMorphismFromCoproduct</code>(<var class="Arg">a</var>, <span class="SimpleMath">\(D\)</span>) is an isomorphism.</p>
+<p>The argument is an object <var class="Arg">a</var> of a category <span class="SimpleMath">\(\mathbf{C}\)</span> which is enriched over itself, i.e., <span class="SimpleMath">\(\mathbf{C}\)</span> = <code class="code">RangeCategoryOfHomomorphismStructure</code>( <span class="SimpleMath">\(\mathbf{C}\)</span> ). The output is a list <span class="SimpleMath">\(D\)</span> of global elements of <var class="Arg">a</var> (i.e., morphisms from the distinguished object <span class="SimpleMath">\(t :=\)</span><code class="code">DistinguishedObjectOfHomomorphismStructure</code>( <span class="SimpleMath">\(\mathbf{C}\)</span> ) to <var class="Arg">a</var>), such that <code class="code">UniversalMorphismFromCoproduct</code>(<var class="Arg">a</var>, <span class="SimpleMath">\(D\)</span>) is an isomorphism.</p>
 
 <p><a id="X87DA77E487F951EF" name="X87DA77E487F951EF"></a></p>
 

@@ -27,9 +27,11 @@
   [33X[1;0Y[29X[2XExactCoverWithGlobalElements[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of morphisms in [23X\mathrm{Hom}(t,a)[123X.[133X
   
-  [33X[0;0YThe argument is an object [3Xa[103X of a category [23X\mathbf{C}[123X. The output is a list [23XD[123X
-  of  global  elements  of  [3Xa[103X  (i.e.,  morphisms from the terminal object [23Xt[123X of
-  [23X\mathbf{C}[123X  to  [3Xa[103X),  such  that  [10XUniversalMorphismFromCoproduct[110X([3Xa[103X,  [23XD[123X) is an
+  [33X[0;0YThe  argument is an object [3Xa[103X of a category [23X\mathbf{C}[123X which is enriched over
+  itself,  i.e., [23X\mathbf{C}[123X = [10XRangeCategoryOfHomomorphismStructure[110X( [23X\mathbf{C}[123X
+  ).  The output is a list [23XD[123X of global elements of [3Xa[103X (i.e., morphisms from the
+  distinguished    object    [23Xt   :=[123X[10XDistinguishedObjectOfHomomorphismStructure[110X(
+  [23X\mathbf{C}[123X  )  to  [3Xa[103X),  such that [10XUniversalMorphismFromCoproduct[110X([3Xa[103X, [23XD[123X) is an
   isomorphism.[133X
   
   
