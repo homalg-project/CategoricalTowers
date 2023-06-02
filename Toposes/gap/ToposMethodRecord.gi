@@ -113,15 +113,15 @@ TruthMorphismOfImpliesWithGivenObjects := rec(
   io_type := [ [ "Omega2", "Omega" ], [ "Omega2", "Omega" ] ],
   return_type := "morphism" ),
 
-ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier := rec(
-  filter_list := [ "category", "morphism", "object" ],
-  io_type := [ [ "alpha", "Omega" ], [ "alpha_range", "Omega" ] ],
-  return_type := "morphism" ),
-
 ClassifyingMorphismOfSubobject := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_range", "Omega" ] ],
   with_given_object_position := "Range",
+  return_type := "morphism" ),
+
+ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier := rec(
+  filter_list := [ "category", "morphism", "object" ],
+  io_type := [ [ "alpha", "Omega" ], [ "alpha_range", "Omega" ] ],
   return_type := "morphism" ),
 
 SubobjectOfClassifyingMorphism := rec(
