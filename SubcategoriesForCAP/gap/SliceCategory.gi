@@ -78,15 +78,13 @@ InstallOtherMethodForCompilerForCAP( DualOverTensorUnit,
         [ IsCapCategory, IsCapCategoryMorphism ],
         
   function( cat, J )
-    local R;
+    local unit;
     
-    R := TensorUnit( cat );
+    unit := TensorUnit( cat );
     
-    ## R -> InternalHom( J, R )
-    return PreComposeList( cat,
-                   [ InverseForMorphisms( cat, EvaluationMorphism( cat, R, R ) ), ## R -> InternalHom( R, R ) ⊗ R
-                     RightUnitor( cat, InternalHomOnObjects( cat, R, R ) ), ## InternalHom( R, R ) ⊗ R -> InternalHom( R, R )
-                     InternalHomOnMorphisms( cat, J, IdentityMorphism( cat, R ) ) ] ); ## InternalHom( R, R ) -> InternalHom( R^m, R )
+    return PreCompose( cat,
+                       TensorProductToInternalHomAdjunctionMap( cat, unit, unit, LeftUnitor( cat, unit ) ), ## 1 -> Hom( 1, 1 )
+                       InternalHomOnMorphisms( cat, J, IdentityMorphism( cat, unit ) ) );                   ## Hom( 1, 1 ) -> InternalHom( J, 1 )
     
 end );
 

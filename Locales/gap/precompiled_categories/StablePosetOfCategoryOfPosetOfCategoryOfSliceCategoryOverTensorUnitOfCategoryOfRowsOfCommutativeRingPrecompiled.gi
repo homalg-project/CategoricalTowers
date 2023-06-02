@@ -18,12 +18,12 @@ function ( cat_1, a_1, b_1 )
     deduped_8_1 := AmbientCategory( deduped_10_1 );
     deduped_7_1 := UnderlyingRing( deduped_8_1 );
     deduped_6_1 := HomalgIdentityMatrix( 1, deduped_7_1 );
-    deduped_5_1 := DiagMat( deduped_7_1, ListWithIdenticalEntries( deduped_12_1, deduped_6_1 ) ) * HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_12_1 ], function ( i_2 )
-                      local deduped_1_2;
-                      deduped_1_2 := (i_2 - 1);
-                      return (REM_INT( deduped_1_2, 1 ) * 1 + QUO_INT( deduped_1_2, 1 ) + 1);
-                  end ) ), deduped_12_1 ), deduped_12_1, deduped_12_1, deduped_7_1 ) * DiagMat( deduped_7_1, ListWithIdenticalEntries( 1, ConvertMatrixToColumn( deduped_6_1 ) ) );
-    hoisted_4_1 := UniqueRightDivide( HomalgIdentityMatrix( NumberColumns( deduped_5_1 ), deduped_7_1 ), deduped_5_1 ) * TransposedMatrix( UnderlyingMatrix( deduped_9_1 ) );
+    deduped_5_1 := HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_12_1 ], function ( i_2 )
+                  local deduped_1_2;
+                  deduped_1_2 := i_2 - 1;
+                  return REM_INT( deduped_1_2, 1 ) * 1 + QUO_INT( deduped_1_2, 1 ) + 1;
+              end ) ), deduped_12_1 ), deduped_12_1, deduped_12_1, deduped_7_1 );
+    hoisted_4_1 := ConvertMatrixToRow( deduped_6_1 ) * deduped_5_1 * DiagMat( deduped_7_1, ListWithIdenticalEntries( 1, deduped_5_1 ) ) * DiagMat( deduped_7_1, ListWithIdenticalEntries( 1, deduped_6_1 ) ) * TransposedMatrix( UnderlyingMatrix( deduped_9_1 ) );
     hoisted_2_1 := RankOfObject( Source( deduped_9_1 ) );
     morphism_attr_1_1 := CapFixpoint( function ( x_2, y_2 )
             return IsZero( DecideZeroRows( y_2, x_2 ) );
