@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2023.05-07
+                                   2023.06-01
   
   
-                                  25 May 2023
+                                  2 June 2023
   
   
                                 Mohamed Barakat
@@ -94,6 +94,7 @@
     4.2 [33X[0;0YAttributes[133X
       4.2-1 DefiningParallelPair
       4.2-2 DefiningPairOfMorphismBetweenParallelPairs
+      4.2-3 UnderlyingCategory
     4.3 [33X[0;0YConstructors[133X
       4.3-1 PairOfParallelArrowsCategory
     4.4 [33X[0;0YGAP categories[133X
