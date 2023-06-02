@@ -31,11 +31,12 @@ DeclareOperation( "MorphismsOfExternalHom",
 ###################################
 
 #! @Description
-#!  The argument is an object <A>a</A> of a category $\mathbf{C}$.
-#!  The output is a list $D$ of global elements of <A>a</A> (i.e.,
-#!  morphisms from the terminal object $t$ of $\mathbf{C}$ to <A>a</A>),
-#!  such that <C>UniversalMorphismFromCoproduct</C>(<A>a</A>, $D$)
-#!  is an isomorphism.
+#!  The argument is an object <A>a</A> of a category $\mathbf{C}$
+#!  which is enriched over itself, i.e.,
+#!  $\mathbf{C}$ = <C>RangeCategoryOfHomomorphismStructure</C>( $\mathbf{C}$ ).
+#!  The output is a list $D$ of global elements of <A>a</A>
+#!  (i.e., morphisms from the distinguished object $t :=$<C>DistinguishedObjectOfHomomorphismStructure</C>( $\mathbf{C}$ ) to <A>a</A>),
+#!  such that <C>UniversalMorphismFromCoproduct</C>(<A>a</A>, $D$) is an isomorphism.
 #! @Returns a list of morphisms in $\mathrm{Hom}(t,a)$.
 #! @Arguments a
 DeclareAttribute( "ExactCoverWithGlobalElements",
