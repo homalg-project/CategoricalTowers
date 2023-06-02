@@ -3180,13 +3180,17 @@ InstallMethodForCompilerForCAP( ApplyPreSheafToObjectInFiniteStrictCoproductCoco
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInFiniteStrictCoproductCocompletion ],
         
   function ( PSh, G, object )
-    local UC, object_data;
+    local Bhat, CoequalizerPairs, UC, object_data;
     
     ## TODO:
     ## this code should be produced by something similar to ExtendFunctorToFiniteStrictProductCompletion:
     ## Apply Hom(-,G) to an object (in UC)
     
-    UC := CapCategory( object );
+    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
+    
+    CoequalizerPairs := ModelingCategory( Bhat );
+    
+    UC := UnderlyingCategory( CoequalizerPairs );
     
     object_data := ObjectDatum( UC, object );
     
@@ -3199,12 +3203,18 @@ InstallMethodForCompilerForCAP( ApplyPreSheafToMorphismInFiniteStrictCoproductCo
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsMorphismInFiniteStrictCoproductCocompletion ],
         
   function ( PSh, G, morphism )
-    local G_on_source_diagram, G_on_range_diagram, D, G_on_source, G_on_range,
-          UC, morphism_data, map, mor, G_mor, prj, cmp;
+    local Bhat, CoequalizerPairs, UC, G_on_source_diagram, G_on_range_diagram, D, G_on_source, G_on_range,
+          morphism_data, map, mor, G_mor, prj, cmp;
     
     ## TODO:
     ## this code should be produced by something similar to ExtendFunctorToFiniteStrictProductCompletion:
     ## Apply Hom(-,G) to a morphism (in UC)
+    
+    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
+    
+    CoequalizerPairs := ModelingCategory( Bhat );
+    
+    UC := UnderlyingCategory( CoequalizerPairs );
     
     G_on_source_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, Source( morphism ) );
     G_on_range_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, Range( morphism ) );
@@ -3213,8 +3223,6 @@ InstallMethodForCompilerForCAP( ApplyPreSheafToMorphismInFiniteStrictCoproductCo
     
     G_on_source := DirectProduct( D, G_on_source_diagram );
     G_on_range := DirectProduct( D, G_on_range_diagram );
-    
-    UC := CapCategory( morphism );
     
     morphism_data := MorphismDatum( UC, morphism );
     

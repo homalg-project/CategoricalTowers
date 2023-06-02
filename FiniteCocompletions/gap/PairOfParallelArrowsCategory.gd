@@ -82,6 +82,20 @@ CapJitAddTypeSignature( "DefiningPairOfMorphismBetweenParallelPairs", [ IsMorphi
     
 end );
 
+#! @Description
+#!  Return the category $C$ underlying the category
+#!  <A>PPAC</A> := <C>PairOfParallelArrowsCategory</C>( $C$ ).
+#! @Arguments PPAC
+DeclareAttribute( "UnderlyingCategory",
+        IsPairOfParallelArrowsCategory );
+
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsPairOfParallelArrowsCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 ####################################
 #
 #! @Section Constructors

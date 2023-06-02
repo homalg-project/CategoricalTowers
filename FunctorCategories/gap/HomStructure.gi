@@ -49,11 +49,15 @@ InstallMethodForCompilerForCAP( ExternalHomOnMorphismsEqualizerFunctorialDataUsi
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, eta, rho )
-    local Bhat, F, G, eta_colimit_quiver_morphism,
-          eta_coequalizer_pair_morphism, CoequalizerPairs, eta_coequalizer_pair_as_presheaf_morphism, eta_coequalizer_pair_as_presheaf_morphism_datum,
-          S, eta_V_S, F_data, F_V, UC, F_V_data, diagram_F_V_S, T, diagram_F_V_T, D, F_V_rho;
+    local Bhat, CoequalizerPairs, UC, F, G, eta_colimit_quiver_morphism,
+          eta_coequalizer_pair_morphism, eta_coequalizer_pair_as_presheaf_morphism, eta_coequalizer_pair_as_presheaf_morphism_datum,
+          S, eta_V_S, F_data, F_V, F_V_data, diagram_F_V_S, T, diagram_F_V_T, D, F_V_rho;
     
     Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
+    
+    CoequalizerPairs := ModelingCategory( Bhat );
+    
+    UC := UnderlyingCategory( CoequalizerPairs );
     
     F := Source( eta );
     G := Range( eta );
@@ -65,8 +69,6 @@ InstallMethodForCompilerForCAP( ExternalHomOnMorphismsEqualizerFunctorialDataUsi
     
     eta_coequalizer_pair_morphism :=
       ModelingMorphism( Bhat, eta_colimit_quiver_morphism );
-    
-    CoequalizerPairs := ModelingCategory( Bhat );
     
     eta_coequalizer_pair_as_presheaf_morphism :=
       ModelingMorphism( CoequalizerPairs, eta_coequalizer_pair_morphism );
@@ -81,8 +83,6 @@ InstallMethodForCompilerForCAP( ExternalHomOnMorphismsEqualizerFunctorialDataUsi
     F_data := CoYonedaLemmaCoequalizerDataOfPreSheaf( PSh, F );
     
     F_V := F_data[1];
-    
-    UC := CapCategory( F_V );
     
     F_V_data := ObjectDatum( UC, F_V )[2];
     
