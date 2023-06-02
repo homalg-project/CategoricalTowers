@@ -257,7 +257,7 @@ AddDerivationToCAP( PowerObjectFunctorialWithGivenPowerObjects,
     
 end );
 
-##
+## the currying {}: obj → Ω^obj of the classifying morphism of the diagonal relation Δ ⊆ obj × obj
 AddDerivationToCAP( SingletonMorphismWithGivenPowerObject,
                     "",
                     [ [ CartesianDiagonal, 1 ],
