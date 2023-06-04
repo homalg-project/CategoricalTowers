@@ -157,6 +157,10 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         Append( properties,
                 [ "IsMonoidalCategory",
                   "IsStrictMonoidalCategory",
+                  "IsBraidedMonoidalCategory",
+                  "IsSymmetricMonoidalCategory",
+                  "IsClosedMonoidal",
+                  "IsSymmetricClosedMonoidalCategory",
                   ] );
         
     fi;
@@ -788,6 +792,31 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                                              range );
             
         end );
+        
+        if HasIsBraidedMonoidalCategory( C ) and IsBraidedMonoidalCategory( C ) then
+            
+            AddBraiding( S,
+              function( cat, I, J )
+                local C, source, range;
+                
+                C := AmbientCategory( S );
+                
+                #        B_ij
+                # i ⊗ j -----> j ⊗ i
+                #      \      /
+                # I ⊗ J \    / J ⊗ I
+                #        v  v
+                #         1
+                
+                source := TensorProductOnObjectsInSliceOverTensorUnit( cat, I, J );
+                
+                range := TensorProductOnObjectsInSliceOverTensorUnit( cat, J, I );
+                
+                return MorphismConstructor( cat, source, Braiding( C, Source( UnderlyingMorphism( I ) ), Source( UnderlyingMorphism( J ) ) ), range );
+                
+            end );
+            
+        fi;
         
         if HasIsSymmetricClosedMonoidalCategory( C ) and IsSymmetricClosedMonoidalCategory( C ) and
            CanCompute( C, "UniversalMorphismIntoWeakBiFiberProduct" ) then
