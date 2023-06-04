@@ -339,7 +339,7 @@ AddDerivationToCAP( IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects,
     
 end );
 
-##
+## ⊤_a: 𝟙 ↪ Pa
 AddDerivationToCAP( RelativeTruthMorphismOfTrueWithGivenObjects,
         "",
         [ [ ExponentialOnMorphismsWithGivenExponentials, 1 ],
@@ -347,7 +347,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfTrueWithGivenObjects,
           [ TruthMorphismOfTrue, 1 ] ],
         
   function( cat, T, a, Pa )
-    
+
     return ExponentialOnMorphismsWithGivenExponentials( cat,
                    T,
                    IdentityMorphism( cat, a ),
@@ -356,7 +356,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfTrueWithGivenObjects,
     
 end );
 
-##
+## ⊥_a: 𝟙 ↪ Pa
 AddDerivationToCAP( RelativeTruthMorphismOfFalseWithGivenObjects,
         "",
         [ [ ExponentialOnMorphismsWithGivenExponentials, 1 ],
@@ -373,7 +373,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfFalseWithGivenObjects,
     
 end );
 
-##
+## ¬_a: Pa ⭇ Pa
 AddDerivationToCAP( RelativeTruthMorphismOfNotWithGivenObjects,
         "",
         [ [ ExponentialOnMorphismsWithGivenExponentials, 1 ],
@@ -390,7 +390,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfNotWithGivenObjects,
     
 end );
 
-##
+## ∧_a: Pa × Pa → Pa
 AddDerivationToCAP( RelativeTruthMorphismOfAndWithGivenObjects,
         "",
         [ [ CartesianSquareOfSubobjectClassifier, 1 ],
@@ -429,7 +429,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfAndWithGivenObjects,
     
 end );
 
-##
+## ∨_a: Pa × Pa → Pa
 AddDerivationToCAP( RelativeTruthMorphismOfOrWithGivenObjects,
         "",
         [ [ CartesianSquareOfSubobjectClassifier, 1 ],
@@ -744,76 +744,6 @@ AddDerivationToCAP( ListOfSubobjects,
     
 end );
 
-##
-AddDerivationToCAP( LawvereTierneyLocalModalityOperators,
-        "",
-        [ [ DirectProductFunctorial, 1 ],
-          [ IsEqualForMorphisms, 3 ],
-          [ MorphismsOfExternalHom, 1 ],
-          [ PreCompose, 4 ],
-          [ SubobjectClassifier, 1 ],
-          [ TruthMorphismOfAnd, 1 ],
-          [ TruthMorphismOfTrue, 1 ] ],
-        
-  function( cat )
-    local Omega, endos, idemp, t, jtrue, a;
-    
-    Omega := SubobjectClassifier( cat );
-    
-    endos := MorphismsOfExternalHom( cat, Omega, Omega );
-    
-    idemp := Filtered( endos, j -> IsEqualForMorphisms( cat, j, PreCompose( cat, j, j ) ) ); # j^2 = j
-    
-    ## ⊤: 𝟙 ↪ Ω
-    t := TruthMorphismOfTrue( cat );
-    
-    jtrue := Filtered( idemp, j -> IsEqualForMorphisms( cat, t, PreCompose( cat, t, j ) ) ); # true ⋅ j = j
-    
-    ## ∧: Ω × Ω → Ω
-    a := TruthMorphismOfAnd( cat );
-    
-    return Filtered( jtrue, j ->
-                   IsEqualForMorphisms( cat,
-                           PreCompose( cat, a, j ), # ∧ ⋅ j
-                           PreCompose( cat, # ( j × j ) ⋅ ∧
-                                   DirectProductFunctorial( cat, # j × j
-                                           [ Omega, Omega ],
-                                           [ j, j ],
-                                           [ Omega, Omega ] ),
-                                   a ) ) );
-    
-end );
-
-##
-AddDerivationToCAP( LawvereTierneySubobjects,
-        "",
-        [ [ LawvereTierneyLocalModalityOperators, 1 ],
-          [ SubobjectOfClassifyingMorphism, 2 ] ],
-        
-  function( cat )
-    local LT;
-    
-    LT := LawvereTierneyLocalModalityOperators( cat );
-    
-    return List( LT, j -> SubobjectOfClassifyingMorphism( cat, j ) );
-    
-end );
-
-##
-AddDerivationToCAP( LawvereTierneyEmbeddingsOfSubobjectClassifiers,
-        "",
-        [ [ LawvereTierneyLocalModalityOperators, 1 ],
-          [ ImageEmbedding, 2 ] ],
-        
-  function( cat )
-    local LT;
-    
-    LT := LawvereTierneyLocalModalityOperators( cat );
-    
-    return List( LT, j -> ImageEmbedding( cat, j ) );
-    
-end );
-
 ##  A <-f-- X
 ##  |       |
 ##  |       |
@@ -921,6 +851,76 @@ AddDerivationToCAP( PushoutComplement,
     deduped_2_1 := PreCompose( cat_1, ProjectionInFactorOfFiberProductWithGivenFiberProduct( cat_1, deduped_5_1, 1, deduped_4_1 ), PreCompose( cat_1, ProjectionInFactorOfFiberProductWithGivenFiberProduct( cat_1, deduped_11_1, 1, deduped_9_1 ), x_1 ) );
     deduped_1_1 := EmbeddingOfRelativePseudoComplementSubobject( cat_1, ImageEmbedding( cat_1, UniversalMorphismIntoDirectProduct( cat_1, [ Range( deduped_6_1 ), Range( deduped_7_1 ) ], deduped_8_1, [ deduped_6_1, deduped_7_1 ] ) ), ImageEmbedding( cat_1, UniversalMorphismIntoDirectProduct( cat_1, [ Range( deduped_2_1 ), Range( deduped_3_1 ) ], deduped_4_1, [ deduped_2_1, deduped_3_1 ] ) ) );
     return ImageEmbedding( cat_1, PreCompose( cat_1, deduped_1_1, ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat_1, [ Range( x_1 ), TerminalObject( cat_1 ) ], 1, Range( deduped_1_1 ) ) ) );
+end );
+
+##
+AddDerivationToCAP( LawvereTierneyLocalModalityOperators,
+        "",
+        [ [ DirectProductFunctorial, 1 ],
+          [ IsEqualForMorphisms, 3 ],
+          [ MorphismsOfExternalHom, 1 ],
+          [ PreCompose, 4 ],
+          [ SubobjectClassifier, 1 ],
+          [ TruthMorphismOfAnd, 1 ],
+          [ TruthMorphismOfTrue, 1 ] ],
+        
+  function( cat )
+    local Omega, endos, idemp, t, jtrue, a;
+    
+    Omega := SubobjectClassifier( cat );
+    
+    endos := MorphismsOfExternalHom( cat, Omega, Omega );
+    
+    idemp := Filtered( endos, j -> IsEqualForMorphisms( cat, j, PreCompose( cat, j, j ) ) ); # j^2 = j
+    
+    ## ⊤: 𝟙 ↪ Ω
+    t := TruthMorphismOfTrue( cat );
+    
+    jtrue := Filtered( idemp, j -> IsEqualForMorphisms( cat, t, PreCompose( cat, t, j ) ) ); # true ⋅ j = j
+    
+    ## ∧: Ω × Ω → Ω
+    a := TruthMorphismOfAnd( cat );
+    
+    return Filtered( jtrue, j ->
+                   IsEqualForMorphisms( cat,
+                           PreCompose( cat, a, j ), # ∧ ⋅ j
+                           PreCompose( cat, # ( j × j ) ⋅ ∧
+                                   DirectProductFunctorial( cat, # j × j
+                                           [ Omega, Omega ],
+                                           [ j, j ],
+                                           [ Omega, Omega ] ),
+                                   a ) ) );
+    
+end );
+
+##
+AddDerivationToCAP( LawvereTierneySubobjects,
+        "",
+        [ [ LawvereTierneyLocalModalityOperators, 1 ],
+          [ SubobjectOfClassifyingMorphism, 2 ] ],
+        
+  function( cat )
+    local LT;
+    
+    LT := LawvereTierneyLocalModalityOperators( cat );
+    
+    return List( LT, j -> SubobjectOfClassifyingMorphism( cat, j ) );
+    
+end );
+
+##
+AddDerivationToCAP( LawvereTierneyEmbeddingsOfSubobjectClassifiers,
+        "",
+        [ [ LawvereTierneyLocalModalityOperators, 1 ],
+          [ ImageEmbedding, 2 ] ],
+        
+  function( cat )
+    local LT;
+    
+    LT := LawvereTierneyLocalModalityOperators( cat );
+    
+    return List( LT, j -> ImageEmbedding( cat, j ) );
+    
 end );
 
 ##
