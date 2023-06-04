@@ -17,12 +17,12 @@
 ####################################
 
 #! @Description
-#! The argument are two objects <A>A</A>, <A>B</A>.
-#! The output is a list of all morphisms from <A>A</A> to <A>B</A>.
-#! @Returns a list of morphism
-#! @Arguments A, B
+#! The argument are two objects <A>a</A>, <A>b</A>.
+#! The output is a list of all morphisms from <A>a</A> to <A>b</A>.
+#! @Returns a list of morphisms in $\mathrm{Hom}( a, b )$
+#! @Arguments a, b
 DeclareOperation( "MorphismsOfExternalHom",
-                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ###################################
 ##
@@ -37,7 +37,7 @@ DeclareOperation( "MorphismsOfExternalHom",
 #!  The output is a list $D$ of global elements of <A>a</A>
 #!  (i.e., morphisms from the distinguished object $t :=$<C>DistinguishedObjectOfHomomorphismStructure</C>( $\mathbf{C}$ ) to <A>a</A>),
 #!  such that <C>UniversalMorphismFromCoproduct</C>(<A>a</A>, $D$) is an isomorphism.
-#! @Returns a list of morphisms in $\mathrm{Hom}(t,a)$.
+#! @Returns a list of morphisms in $\mathrm{Hom}( t, a )$
 #! @Arguments a
 DeclareAttribute( "ExactCoverWithGlobalElements",
         IsCapCategoryObject );
@@ -72,7 +72,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsElementaryTopos :=
                   CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCocompleteCategory,
                   CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory ) );
 
-#! A subobject classifier object consists of three parts:
+#! A subobject classifier consists of three parts:
 #! * an object $\Omega$,
 #! * a function $\mathrm{true}$ providing a morphism $\mathrm{true}: 1 \rightarrow \Omega$,
 #! * a function $\chi$ mapping each monomorphism $i : A \rightarrow S$ to a morphism $\chi_i : S \to \Omega$.
@@ -82,7 +82,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsElementaryTopos :=
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is a subobject classifier object $\Omega$ of $C$.
+#! The output is the subobject classifier object $\Omega$ of $C$.
 #! @Returns an object
 #! @Arguments C
 DeclareAttribute( "SubobjectClassifier",
@@ -90,7 +90,7 @@ DeclareAttribute( "SubobjectClassifier",
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is cartesian square of a subobject classifier object $\Omega$ of $C$.
+#! The output is the cartesian square of the subobject classifier object <A>\Omega</A> of $C$.
 #! @Returns an object
 #! @Arguments C
 DeclareAttribute( "CartesianSquareOfSubobjectClassifier",
@@ -107,7 +107,7 @@ DeclareAttribute( "ClassifyingMorphismOfSubobject",
 
 #! @Description
 #! The arguments are a monomorphism $m : A \rightarrow S$ and
-#! a subobject classifier $\Omega$. The output is the classifying morphism
+#! the subobject classifier $\Omega$. The output is the classifying morphism
 #! of the monomorphism $\chi_m : S \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Range}(m), \mathrm{SubobjectClassifier} )$
 #! @Arguments m, omega
@@ -126,7 +126,7 @@ DeclareAttribute( "SubobjectOfClassifyingMorphism",
 #! @Description
 #! The argument is an object <A>A</A>.
 #! The output is a list of all subobjects of <A>A</A>.
-#! @Returns a list of monomorphism
+#! @Returns a list of monomorphisms into $A$.
 #! @Arguments A
 DeclareAttribute( "ListOfSubobjects",
         IsCapCategoryObject );
@@ -147,8 +147,8 @@ DeclareAttribute( "TruthMorphismOfTrue",
         IsCapCategory );
 
 #! @Description
-#! The arguments are a terminal object of the category and
-#! a subobject classifier.
+#! The arguments are the terminal object of the category and
+#! the subobject classifier.
 #! The output is the truth morphism
 #! $\mathrm{true}: T \rightarrow \Omega$.
 #! @Returns a morphism in $\mathrm{Hom}( T, \Omega )$
@@ -166,8 +166,8 @@ DeclareAttribute( "TruthMorphismOfFalse",
         IsCapCategory );
 
 #! @Description
-#! The arguments are a terminal object of the category and
-#! a subobject classifier.
+#! The arguments are the terminal object <A>T</A> of the category and
+#! the subobject classifier <A>Omega</A>.
 #! The output is the truth morphism
 #! $\mathrm{false}: T \rightarrow \Omega$.
 #! @Returns a morphism in $\mathrm{Hom}( T, \Omega )$
@@ -185,7 +185,7 @@ DeclareAttribute( "TruthMorphismOfNot",
         IsCapCategory );
 
 #! @Description
-#! The arguments are the subobject classifier as first and as second argument.
+#! The arguments are a subobject classifier <A>Omega</A> as first and as second argument.
 #! The output is the truth endomorphism
 #! $\mathrm{not}: \Omega \rightarrow \Omega$.
 #! @Returns a morphism in $\mathrm{Hom}( \Omega, \Omega )$
@@ -203,8 +203,8 @@ DeclareAttribute( "TruthMorphismOfAnd",
         IsCapCategory );
 
 #! @Description
-#! The arguments are a cartesian square of a subobject classifier of the category and
-#! a subobject classifier.
+#! The arguments are the cartesian square <A>Omega^{\times 2}</A> of a subobject classifier <A>Omega</A> of the category and
+#! the subobject classifier.
 #! The output is the truth morphism
 #! $\mathrm{and}: \Omega^{\times 2} \rightarrow \Omega$.
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
@@ -222,8 +222,8 @@ DeclareAttribute( "TruthMorphismOfOr",
         IsCapCategory );
 
 #! @Description
-#! The arguments are a cartesian square of a subobject classifier of the category and
-#! a subobject classifier.
+#! The arguments are the cartesian square <A>Omega^{\times 2}</A> of a subobject classifier <A>Omega</A> of the category and
+#! the subobject classifier.
 #! The output is the truth morphism
 #! $\mathrm{or}: \Omega^{\times 2} \rightarrow \Omega$.
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
@@ -241,8 +241,8 @@ DeclareAttribute( "TruthMorphismOfImplies",
         IsCapCategory );
 
 #! @Description
-#! The arguments are a cartesian square of a subobject classifier of the category and
-#! a subobject classifier.
+#! The arguments are the cartesian square <A>Omega^{\times 2}</A> of a subobject classifier <A>Omega</A> of the category and
+#! the subobject classifier.
 #! The output is the truth morphism
 #! $\mathrm{implies}: \Omega^{\times 2} \rightarrow \Omega$.
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
@@ -257,34 +257,34 @@ DeclareOperation( "TruthMorphismOfImpliesWithGivenObjects",
 ####################################
 
 #! @Description
-#! The argument is an object $a$.
-#! The output is the power object $P(a)$ of $a$.
+#! The argument is an object <A>a</A>.
+#! The output is the power object $P(a)$ of <A>a</A>.
 #! @Arguments a
 #! @Returns an object
 DeclareAttribute( "PowerObject",
         IsCapCategoryObject );
 
 #! @Description
-#! The argument is a morphism $f:a \to b$.
+#! The argument is a morphism <A>f</A>$:a \to b$.
 #! The output is the power morphism of $P(f): P(b) \to P(a)$.
 #! @Arguments f
-#! @Returns a morphism
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{PowerObject}(b), \mathrm{PowerObject}(a) )$
 DeclareAttribute( "PowerObjectFunctorial",
         IsCapCategoryMorphism );
 #! @InsertChunk PowerObjectFunctorial
 
 #! @Description
-#! The arguments are an object $Pb$, a morphism $f:a \to b$, and and object $Pa$,
-#! such that $Pa = P(a)$ and $Pb = P(b)$.
+#! The arguments are an object <A>Pb</A>, a morphism $f:a \to b$, and object <A>Pa</A>,
+#! such that <A>Pa</A>$= P(a)$ and <A>Pb</A>$= P(b)$.
 #! The output is the power morphism of $P(f): Pb \to Pa$.
 #! @Arguments Pb, f, Pa
-#! @Returns a morphism
+#! @Returns a morphism in $\mathrm{Hom}( Pb, Pa )$
 DeclareOperation( "PowerObjectFunctorialWithGivenPowerObjects",
         [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
-#! The argument is an object $a$.
-#! The output is the singleton morphism from $a$ to the power object $\mathrm{PowerObject}(a)$.
+#! The argument is an object <A>a</A>.
+#! The output is the singleton morphism from <A>a</A> to the power object $\mathrm{PowerObject}(a)$.
 #! @Arguments a
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{PowerObject}(a) )$
 DeclareAttribute( "SingletonMorphism",
@@ -292,8 +292,8 @@ DeclareAttribute( "SingletonMorphism",
 #! @InsertChunk SingletonMorphism
 
 #! @Description
-#! The arguments are an object $a$ and object $Pa$ which is equal to the power object $\mathrm{PowerObject}(a)$.
-#! The output is the singleton morphism from $a$ to $Pa$.
+#! The arguments are an object <A>a</A> and an object <A>Pa</A> which is equal to the power object $\mathrm{PowerObject}(a)$.
+#! The output is the singleton morphism from <A>a</A> to <A>Pa</A>.
 #! @Arguments a, Pa
 #! @Returns a morphism in $\mathrm{Hom}( a, Pa )$
 DeclareOperation( "SingletonMorphismWithGivenPowerObject",
@@ -459,10 +459,10 @@ DeclareOperation( "EmbeddingOfPseudoComplementSubobject",
                   [ IsCapCategoryMorphism ] );
 
 #! @Description
-#!  The argument is a monomorphism $\iota: S \hookrightarrow A$ and an object $T$ with
-#!  <C>IsEqualForObjects</C>($T$, <C>PseudoComplementSubobject</C>($\iota$)).
+#!  The argument is a monomorphism $\iota: S \hookrightarrow A$ and an object <A>T</A> with
+#!  <C>IsEqualForObjects</C>(<A>T</A>, <C>PseudoComplementSubobject</C>($\iota$)).
 #!  The output is the embedding of $\iota:T \hookrightarrow A$
-#!  of pseudo-complement object $T$ of $\iota$.
+#!  of pseudo-complement object <A>T</A> of $\iota$.
 #! @Returns an object
 #! @Arguments iota
 DeclareOperation( "EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement",
@@ -480,17 +480,17 @@ DeclareOperation( "IntersectionSubobject",
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
 #!  The output is the embedding <C>IntersectionSubobject</C>($\iota$) $\hookrightarrow A$ of their intersection subobject.
-#! @Returns a monomorphism
+#! @Returns a monomorphism into $A$
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfIntersectionSubobject",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
-#!  <C>IsEqualForObjects</C>($T$, <C>IntersectionSubobject</C>($\iota$)).
-#!  The output the embedding $T \hookrightarrow A$ of their intersection subobject $T$.
-#! @Returns a monomorphism
-#! @Arguments iota1, iota2
+#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object <A>T</A> with
+#!  <C>IsEqualForObjects</C>(<A>T</A>, <C>IntersectionSubobject</C>(<A>iota1</A>, <A>iota2</A>)).
+#!  The output is the embedding $T \hookrightarrow A$ of their intersection subobject <A>T</A>.
+#! @Returns a monomorphism in $\mathrm{Hom}( T, A )$
+#! @Arguments iota1, iota2, T
 DeclareOperation( "EmbeddingOfIntersectionSubobjectWithGivenIntersection",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
@@ -505,18 +505,18 @@ DeclareOperation( "UnionSubobject",
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
-#!  The output is the embedding <C>UnionSubobject</C>($\iota$) $\hookrightarrow A$ of their union subobject.
-#! @Returns a monomorphism
+#!  The output is the embedding <C>UnionSubobject</C>(<A>iota1</A>, <A>iota2</A>) $\hookrightarrow A$ of their union subobject.
+#! @Returns a monomorphism into $A$
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfUnionSubobject",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
-#!  <C>IsEqualForObjects</C>($T$, <C>UnionSubobject</C>($\iota$)).
-#!  The output is the embedding $T \hookrightarrow A$ of their union subobject $T$.
-#! @Returns a monomorphism
-#! @Arguments iota1, iota2
+#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object <A>U</A> with
+#!  <C>IsEqualForObjects</C>(<A>U</A>, <C>UnionSubobject</C>(<A>iota1</A>, <A>iota2</A>)).
+#!  The output is the embedding $U \hookrightarrow A$ of their union subobject <A>U</A>.
+#! @Returns a monomorphism in $\mathrm{Hom}( U, A )$
+#! @Arguments iota1, iota2, U
 DeclareOperation( "EmbeddingOfUnionSubobjectWithGivenUnion",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
@@ -530,19 +530,19 @@ DeclareOperation( "RelativePseudoComplementSubobject",
 
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
-#!  The output is the embedding <C>RelativePseudoComplementSubobject</C>($\iota$) $\hookrightarrow A$
+#!  The output is the embedding <C>RelativePseudoComplementSubobject</C>(<A>iota1</A>, <A>iota2</A>) $\hookrightarrow A$
 #!  of their relative pseudo-complement into $A$.
-#! @Returns a monomorphism
+#! @Returns a monomorphism into $A$
 #! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobject",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
-#!  <C>IsEqualForObjects</C>($T$, <C>RelativePseudoComplementSubobject</C>($\iota$)).
-#!  The output is the embedding $T \hookrightarrow A$ of their relative pseudo-complement $T$ into $A$.
-#! @Returns a monomorphism
-#! @Arguments iota1, iota2
+#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object <A>I</A> with
+#!  <C>IsEqualForObjects</C>(<A>I</A>, <C>RelativePseudoComplementSubobject</C>(<A>iota1</A>, <A>iota2</A>)).
+#!  The output is the embedding $I \hookrightarrow A$ of their relative pseudo-complement <A>I</A> into $A$.
+#! @Returns a monomorphism in $\mathrm{Hom}( I, A )$
+#! @Arguments iota1, iota2, I
 DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication",
         [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
@@ -584,7 +584,7 @@ DeclareOperation( "PushoutComplement",
 #! @Description
 #!  The input is an elementary topos <A>T</A>.
 #!  The output is the list of Lawvere-Tierney idempotents of the subobject classifier of the topos <A>T</A>.
-#! @Returns a list
+#! @Returns a list of endomorphisms in $\mathrm{Hom}( \mathrm{SubobjectClassifier}( T ), \mathrm{SubobjectClassifier}( T ) )$
 #! @Arguments T
 DeclareAttribute( "LawvereTierneyLocalModalityOperators",
         IsCapCategory );
@@ -592,7 +592,7 @@ DeclareAttribute( "LawvereTierneyLocalModalityOperators",
 #! @Description
 #!  The input is an elementary topos <A>T</A>.
 #!  The output is the list of Lawvere-Tierney subobjects of the subobject classifier of the topos <A>T</A>.
-#! @Returns a list
+#! @Returns a list of monomorphisms into $\mathrm{SubobjectClassifier}( T )$
 #! @Arguments T
 DeclareAttribute( "LawvereTierneySubobjects",
         IsCapCategory );
@@ -601,7 +601,7 @@ DeclareAttribute( "LawvereTierneySubobjects",
 #!  The input is an elementary topos <A>T</A>.
 #!  The output is the list of embeddings of the subobject classifiers of full sheaf subtoposes
 #!  (with respect to the Lawvere-Tierney topologies of the topos <A>T</A>) into the subobject classifier of <A>T</A>.
-#! @Returns a list
+#! @Returns a list of monomorphisms $\mathrm{SubobjectClassifier}( T )$
 #! @Arguments T
 DeclareAttribute( "LawvereTierneyEmbeddingsOfSubobjectClassifiers",
         IsCapCategory );
