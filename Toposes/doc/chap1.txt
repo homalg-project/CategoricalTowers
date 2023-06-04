@@ -13,11 +13,11 @@
   
   [1X1.1-1 MorphismsOfExternalHom[101X
   
-  [33X[1;0Y[29X[2XMorphismsOfExternalHom[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya list of morphism[133X
+  [33X[1;0Y[29X[2XMorphismsOfExternalHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list of morphisms in [23X\mathrm{Hom}( a, b )[123X[133X
   
-  [33X[0;0YThe  argument  are  two  objects [3XA[103X, [3XB[103X. The output is a list of all morphisms
-  from [3XA[103X to [3XB[103X.[133X
+  [33X[0;0YThe  argument  are  two  objects [3Xa[103X, [3Xb[103X. The output is a list of all morphisms
+  from [3Xa[103X to [3Xb[103X.[133X
   
   
   [1X1.2 [33X[0;0YExact cover with global elements[133X[101X
@@ -25,7 +25,7 @@
   [1X1.2-1 ExactCoverWithGlobalElements[101X
   
   [33X[1;0Y[29X[2XExactCoverWithGlobalElements[102X( [3Xa[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of morphisms in [23X\mathrm{Hom}(t,a)[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya list of morphisms in [23X\mathrm{Hom}( t, a )[123X[133X
   
   [33X[0;0YThe  argument is an object [3Xa[103X of a category [23X\mathbf{C}[123X which is enriched over
   itself,  i.e., [23X\mathbf{C}[123X = [10XRangeCategoryOfHomomorphismStructure[110X( [23X\mathbf{C}[123X
@@ -44,7 +44,7 @@
   
   [33X[0;0YThe property of the category [3XC[103X being an elementary topos.[133X
   
-  [33X[0;0YA subobject classifier object consists of three parts:[133X
+  [33X[0;0YA subobject classifier consists of three parts:[133X
   
   [30X    [33X[0;6Yan object [23X\Omega[123X,[133X
   
@@ -64,7 +64,7 @@
   [33X[1;0Y[29X[2XSubobjectClassifier[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
-  [33X[0;0YThe  argument  is  a category [23XC[123X. The output is a subobject classifier object
+  [33X[0;0YThe  argument is a category [23XC[123X. The output is the subobject classifier object
   [23X\Omega[123X of [23XC[123X.[133X
   
   [1X1.3-3 CartesianSquareOfSubobjectClassifier[101X
@@ -72,8 +72,8 @@
   [33X[1;0Y[29X[2XCartesianSquareOfSubobjectClassifier[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
-  [33X[0;0YThe  argument is a category [23XC[123X. The output is cartesian square of a subobject
-  classifier object [23X\Omega[123X of [23XC[123X.[133X
+  [33X[0;0YThe  argument  is  a  category  [23XC[123X. The output is the cartesian square of the
+  subobject classifier object [3X\Omega[103X of [23XC[123X.[133X
   
   [1X1.3-4 ClassifyingMorphismOfSubobject[101X
   
@@ -90,7 +90,7 @@
   [6XReturns:[106X  [33X[0;10Ya      morphism      in      [23X\mathrm{Hom}(      \mathrm{Range}(m),
             \mathrm{SubobjectClassifier} )[123X[133X
   
-  [33X[0;0YThe  arguments  are  a  monomorphism  [23Xm  :  A  \rightarrow S[123X and a subobject
+  [33X[0;0YThe  arguments  are  a  monomorphism  [23Xm  : A \rightarrow S[123X and the subobject
   classifier   [23X\Omega[123X.   The   output  is  the  classifying  morphism  of  the
   monomorphism [23X\chi_m : S \rightarrow \mathrm{SubobjectClassifier}[123X.[133X
   
@@ -106,7 +106,7 @@
   [1X1.3-7 ListOfSubobjects[101X
   
   [33X[1;0Y[29X[2XListOfSubobjects[102X( [3XA[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of monomorphism[133X
+  [6XReturns:[106X  [33X[0;10Ya list of monomorphisms into [23XA[123X.[133X
   
   [33X[0;0YThe argument is an object [3XA[103X. The output is a list of all subobjects of [3XA[103X.[133X
   
@@ -128,7 +128,7 @@
   [33X[1;0Y[29X[2XTruthMorphismOfTrueWithGivenObjects[102X( [3XT[103X, [3XOmega[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, \Omega )[123X[133X
   
-  [33X[0;0YThe  arguments  are  a  terminal  object  of  the  category  and a subobject
+  [33X[0;0YThe  arguments  are  the  terminal  object of the category and the subobject
   classifier.  The  output  is the truth morphism [23X\mathrm{true}: T \rightarrow
   \Omega[123X.[133X
   
@@ -147,9 +147,9 @@
   [33X[1;0Y[29X[2XTruthMorphismOfFalseWithGivenObjects[102X( [3XT[103X, [3XOmega[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, \Omega )[123X[133X
   
-  [33X[0;0YThe  arguments  are  a  terminal  object  of  the  category  and a subobject
-  classifier.  The  output is the truth morphism [23X\mathrm{false}: T \rightarrow
-  \Omega[123X.[133X
+  [33X[0;0YThe  arguments  are  the terminal object [3XT[103X of the category and the subobject
+  classifier  [3XOmega[103X.  The  output  is  the  truth  morphism  [23X\mathrm{false}: T
+  \rightarrow \Omega[123X.[133X
   
   [1X1.4-5 TruthMorphismOfNot[101X
   
@@ -166,9 +166,9 @@
   [33X[1;0Y[29X[2XTruthMorphismOfNotWithGivenObjects[102X( [3XOmega[103X, [3XOmega[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \Omega, \Omega )[123X[133X
   
-  [33X[0;0YThe  arguments are the subobject classifier as first and as second argument.
-  The  output  is  the  truth  endomorphism  [23X\mathrm{not}:  \Omega \rightarrow
-  \Omega[123X.[133X
+  [33X[0;0YThe  arguments  are  a  subobject  classifier  [3XOmega[103X  as first and as second
+  argument.   The  output  is  the  truth  endomorphism  [23X\mathrm{not}:  \Omega
+  \rightarrow \Omega[123X.[133X
   
   [1X1.4-7 TruthMorphismOfAnd[101X
   
@@ -186,9 +186,9 @@
   [33X[1;0Y[29X[2XTruthMorphismOfAndWithGivenObjects[102X( [3XOmega2[103X, [3XOmega[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \Omega^{\times 2}, \Omega )[123X[133X
   
-  [33X[0;0YThe  arguments  are  a  cartesian  square  of  a subobject classifier of the
-  category  and  a  subobject  classifier.  The  output  is the truth morphism
-  [23X\mathrm{and}: \Omega^{\times 2} \rightarrow \Omega[123X.[133X
+  [33X[0;0YThe  arguments  are  the  cartesian  square  [3XOmega^{\times 2}[103X of a subobject
+  classifier [3XOmega[103X of the category and the subobject classifier. The output is
+  the truth morphism [23X\mathrm{and}: \Omega^{\times 2} \rightarrow \Omega[123X.[133X
   
   [1X1.4-9 TruthMorphismOfOr[101X
   
@@ -206,9 +206,9 @@
   [33X[1;0Y[29X[2XTruthMorphismOfOrWithGivenObjects[102X( [3XOmega2[103X, [3XOmega[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \Omega^{\times 2}, \Omega )[123X[133X
   
-  [33X[0;0YThe  arguments  are  a  cartesian  square  of  a subobject classifier of the
-  category  and  a  subobject  classifier.  The  output  is the truth morphism
-  [23X\mathrm{or}: \Omega^{\times 2} \rightarrow \Omega[123X.[133X
+  [33X[0;0YThe  arguments  are  the  cartesian  square  [3XOmega^{\times 2}[103X of a subobject
+  classifier [3XOmega[103X of the category and the subobject classifier. The output is
+  the truth morphism [23X\mathrm{or}: \Omega^{\times 2} \rightarrow \Omega[123X.[133X
   
   [1X1.4-11 TruthMorphismOfImplies[101X
   
@@ -226,9 +226,9 @@
   [33X[1;0Y[29X[2XTruthMorphismOfImpliesWithGivenObjects[102X( [3XOmega2[103X, [3XOmega[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \Omega^{\times 2}, \Omega )[123X[133X
   
-  [33X[0;0YThe  arguments  are  a  cartesian  square  of  a subobject classifier of the
-  category  and  a  subobject  classifier.  The  output  is the truth morphism
-  [23X\mathrm{implies}: \Omega^{\times 2} \rightarrow \Omega[123X.[133X
+  [33X[0;0YThe  arguments  are  the  cartesian  square  [3XOmega^{\times 2}[103X of a subobject
+  classifier [3XOmega[103X of the category and the subobject classifier. The output is
+  the truth morphism [23X\mathrm{implies}: \Omega^{\times 2} \rightarrow \Omega[123X.[133X
   
   
   [1X1.5 [33X[0;0YPower object[133X[101X
@@ -238,14 +238,15 @@
   [33X[1;0Y[29X[2XPowerObject[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
-  [33X[0;0YThe argument is an object [23Xa[123X. The output is the power object [23XP(a)[123X of [23Xa[123X.[133X
+  [33X[0;0YThe argument is an object [3Xa[103X. The output is the power object [23XP(a)[123X of [3Xa[103X.[133X
   
   [1X1.5-2 PowerObjectFunctorial[101X
   
   [33X[1;0Y[29X[2XPowerObjectFunctorial[102X( [3Xf[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya     morphism     in    [23X\mathrm{Hom}(    \mathrm{PowerObject}(b),
+            \mathrm{PowerObject}(a) )[123X[133X
   
-  [33X[0;0YThe  argument  is  a morphism [23Xf:a \to b[123X. The output is the power morphism of
+  [33X[0;0YThe  argument  is  a morphism [3Xf[103X[23X:a \to b[123X. The output is the power morphism of
   [23XP(f): P(b) \to P(a)[123X.[133X
   
   [4X[32X  Example  [32X[104X
@@ -266,18 +267,18 @@
   [1X1.5-3 PowerObjectFunctorialWithGivenPowerObjects[101X
   
   [33X[1;0Y[29X[2XPowerObjectFunctorialWithGivenPowerObjects[102X( [3XPb[103X, [3Xf[103X, [3XPa[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( Pb, Pa )[123X[133X
   
-  [33X[0;0YThe  arguments  are  an  object [23XPb[123X, a morphism [23Xf:a \to b[123X, and and object [23XPa[123X,
-  such that [23XPa = P(a)[123X and [23XPb = P(b)[123X. The output is the power morphism of [23XP(f):
-  Pb \to Pa[123X.[133X
+  [33X[0;0YThe  arguments  are  an object [3XPb[103X, a morphism [23Xf:a \to b[123X, and object [3XPa[103X, such
+  that [3XPa[103X[23X= P(a)[123X and [3XPb[103X[23X= P(b)[123X. The output is the power morphism of [23XP(f): Pb \to
+  Pa[123X.[133X
   
   [1X1.5-4 SingletonMorphism[101X
   
   [33X[1;0Y[29X[2XSingletonMorphism[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, \mathrm{PowerObject}(a) )[123X[133X
   
-  [33X[0;0YThe  argument is an object [23Xa[123X. The output is the singleton morphism from [23Xa[123X to
+  [33X[0;0YThe  argument is an object [3Xa[103X. The output is the singleton morphism from [3Xa[103X to
   the power object [23X\mathrm{PowerObject}(a)[123X.[133X
   
   [4X[32X  Example  [32X[104X
@@ -296,9 +297,9 @@
   [33X[1;0Y[29X[2XSingletonMorphismWithGivenPowerObject[102X( [3Xa[103X, [3XPa[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, Pa )[123X[133X
   
-  [33X[0;0YThe  arguments  are  an  object  [23Xa[123X and object [23XPa[123X which is equal to the power
-  object  [23X\mathrm{PowerObject}(a)[123X. The output is the singleton morphism from [23Xa[123X
-  to [23XPa[123X.[133X
+  [33X[0;0YThe  arguments  are an object [3Xa[103X and an object [3XPa[103X which is equal to the power
+  object  [23X\mathrm{PowerObject}(a)[123X. The output is the singleton morphism from [3Xa[103X
+  to [3XPa[103X.[133X
   
   [1X1.5-6 IsomorphismOntoCartesianSquareOfPowerObject[101X
   
@@ -523,9 +524,9 @@
   [33X[1;0Y[29X[2XEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement[102X( [3Xiota[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
-  [33X[0;0YThe  argument  is  a monomorphism [23X\iota: S \hookrightarrow A[123X and an object [23XT[123X
-  with  [10XIsEqualForObjects[110X([23XT[123X,  [10XPseudoComplementSubobject[110X([23X\iota[123X)). The output is
-  the  embedding of [23X\iota:T \hookrightarrow A[123X of pseudo-complement object [23XT[123X of
+  [33X[0;0YThe  argument  is  a monomorphism [23X\iota: S \hookrightarrow A[123X and an object [3XT[103X
+  with  [10XIsEqualForObjects[110X([3XT[103X,  [10XPseudoComplementSubobject[110X([23X\iota[123X)). The output is
+  the  embedding of [23X\iota:T \hookrightarrow A[123X of pseudo-complement object [3XT[103X of
   [23X\iota[123X.[133X
   
   [1X1.7-4 IntersectionSubobject[101X
@@ -540,7 +541,7 @@
   [1X1.7-5 EmbeddingOfIntersectionSubobject[101X
   
   [33X[1;0Y[29X[2XEmbeddingOfIntersectionSubobject[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism into [23XA[123X[133X
   
   [33X[0;0YThe  arguments  are  two  monomorphisms  [23X\iota_i:  S_i \hookrightarrow A[123X for
   [23Xi=1,2[123X.    The   output   is   the   embedding   [10XIntersectionSubobject[110X([23X\iota[123X)
@@ -548,12 +549,13 @@
   
   [1X1.7-6 EmbeddingOfIntersectionSubobjectWithGivenIntersection[101X
   
-  [33X[1;0Y[29X[2XEmbeddingOfIntersectionSubobjectWithGivenIntersection[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
+  [33X[1;0Y[29X[2XEmbeddingOfIntersectionSubobjectWithGivenIntersection[102X( [3Xiota1[103X, [3Xiota2[103X, [3XT[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism in [23X\mathrm{Hom}( T, A )[123X[133X
   
   [33X[0;0YThe arguments are two monomorphisms [23X\iota_i: S_i \hookrightarrow A[123X for [23Xi=1,2[123X
-  and an object [23XT[123X with [10XIsEqualForObjects[110X([23XT[123X, [10XIntersectionSubobject[110X([23X\iota[123X)). The
-  output the embedding [23XT \hookrightarrow A[123X of their intersection subobject [23XT[123X.[133X
+  and  an  object  [3XT[103X  with  [10XIsEqualForObjects[110X([3XT[103X,  [10XIntersectionSubobject[110X([3Xiota1[103X,
+  [3Xiota2[103X)).   The  output  is  the  embedding  [23XT  \hookrightarrow  A[123X  of  their
+  intersection subobject [3XT[103X.[133X
   
   [1X1.7-7 UnionSubobject[101X
   
@@ -567,20 +569,20 @@
   [1X1.7-8 EmbeddingOfUnionSubobject[101X
   
   [33X[1;0Y[29X[2XEmbeddingOfUnionSubobject[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism into [23XA[123X[133X
   
   [33X[0;0YThe  arguments  are  two  monomorphisms  [23X\iota_i:  S_i \hookrightarrow A[123X for
-  [23Xi=1,2[123X.  The  output is the embedding [10XUnionSubobject[110X([23X\iota[123X) [23X\hookrightarrow A[123X
-  of their union subobject.[133X
+  [23Xi=1,2[123X.   The   output   is   the   embedding   [10XUnionSubobject[110X([3Xiota1[103X,  [3Xiota2[103X)
+  [23X\hookrightarrow A[123X of their union subobject.[133X
   
   [1X1.7-9 EmbeddingOfUnionSubobjectWithGivenUnion[101X
   
-  [33X[1;0Y[29X[2XEmbeddingOfUnionSubobjectWithGivenUnion[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
+  [33X[1;0Y[29X[2XEmbeddingOfUnionSubobjectWithGivenUnion[102X( [3Xiota1[103X, [3Xiota2[103X, [3XU[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism in [23X\mathrm{Hom}( U, A )[123X[133X
   
   [33X[0;0YThe arguments are two monomorphisms [23X\iota_i: S_i \hookrightarrow A[123X for [23Xi=1,2[123X
-  and an object [23XT[123X with [10XIsEqualForObjects[110X([23XT[123X, [10XUnionSubobject[110X([23X\iota[123X)). The output
-  is the embedding [23XT \hookrightarrow A[123X of their union subobject [23XT[123X.[133X
+  and an object [3XU[103X with [10XIsEqualForObjects[110X([3XU[103X, [10XUnionSubobject[110X([3Xiota1[103X, [3Xiota2[103X)). The
+  output is the embedding [23XU \hookrightarrow A[123X of their union subobject [3XU[103X.[133X
   
   [1X1.7-10 RelativePseudoComplementSubobject[101X
   
@@ -593,21 +595,21 @@
   [1X1.7-11 EmbeddingOfRelativePseudoComplementSubobject[101X
   
   [33X[1;0Y[29X[2XEmbeddingOfRelativePseudoComplementSubobject[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism into [23XA[123X[133X
   
   [33X[0;0YThe  arguments  are  two  monomorphisms  [23X\iota_i:  S_i \hookrightarrow A[123X for
-  [23Xi=1,2[123X.  The output is the embedding [10XRelativePseudoComplementSubobject[110X([23X\iota[123X)
-  [23X\hookrightarrow A[123X of their relative pseudo-complement into [23XA[123X.[133X
+  [23Xi=1,2[123X.  The output is the embedding [10XRelativePseudoComplementSubobject[110X([3Xiota1[103X,
+  [3Xiota2[103X) [23X\hookrightarrow A[123X of their relative pseudo-complement into [23XA[123X.[133X
   
   [1X1.7-12 EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication[101X
   
-  [33X[1;0Y[29X[2XEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
+  [33X[1;0Y[29X[2XEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication[102X( [3Xiota1[103X, [3Xiota2[103X, [3XI[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism in [23X\mathrm{Hom}( I, A )[123X[133X
   
   [33X[0;0YThe arguments are two monomorphisms [23X\iota_i: S_i \hookrightarrow A[123X for [23Xi=1,2[123X
-  and        an        object        [23XT[123X        with        [10XIsEqualForObjects[110X([23XT[123X,
-  [10XRelativePseudoComplementSubobject[110X([23X\iota[123X)).  The  output  is  the embedding [23XT
-  \hookrightarrow A[123X of their relative pseudo-complement [23XT[123X into [23XA[123X.[133X
+  and        an        object        [3XI[103X        with        [10XIsEqualForObjects[110X([3XI[103X,
+  [10XRelativePseudoComplementSubobject[110X([3Xiota1[103X,   [3Xiota2[103X)).   The   output   is  the
+  embedding [23XI \hookrightarrow A[123X of their relative pseudo-complement [3XI[103X into [23XA[123X.[133X
   
   
   [1X1.8 [33X[0;0YPushout complements[133X[101X
@@ -821,7 +823,9 @@
   [1X1.10-1 LawvereTierneyLocalModalityOperators[101X
   
   [33X[1;0Y[29X[2XLawvereTierneyLocalModalityOperators[102X( [3XT[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
+  [6XReturns:[106X  [33X[0;10Ya       list      of      endomorphisms      in      [23X\mathrm{Hom}(
+            \mathrm{SubobjectClassifier}( T ), \mathrm{SubobjectClassifier}( T
+            ) )[123X[133X
   
   [33X[0;0YThe   input   is   an  elementary  topos  [3XT[103X.  The  output  is  the  list  of
   Lawvere-Tierney idempotents of the subobject classifier of the topos [3XT[103X.[133X
@@ -829,7 +833,7 @@
   [1X1.10-2 LawvereTierneySubobjects[101X
   
   [33X[1;0Y[29X[2XLawvereTierneySubobjects[102X( [3XT[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
+  [6XReturns:[106X  [33X[0;10Ya list of monomorphisms into [23X\mathrm{SubobjectClassifier}( T )[123X[133X
   
   [33X[0;0YThe   input   is   an  elementary  topos  [3XT[103X.  The  output  is  the  list  of
   Lawvere-Tierney subobjects of the subobject classifier of the topos [3XT[103X.[133X
@@ -837,7 +841,7 @@
   [1X1.10-3 LawvereTierneyEmbeddingsOfSubobjectClassifiers[101X
   
   [33X[1;0Y[29X[2XLawvereTierneyEmbeddingsOfSubobjectClassifiers[102X( [3XT[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
+  [6XReturns:[106X  [33X[0;10Ya list of monomorphisms [23X\mathrm{SubobjectClassifier}( T )[123X[133X
   
   [33X[0;0YThe  input is an elementary topos [3XT[103X. The output is the list of embeddings of
   the  subobject  classifiers  of  full  sheaf subtoposes (with respect to the

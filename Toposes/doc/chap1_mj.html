@@ -203,10 +203,10 @@
 
 <h5>1.1-1 MorphismsOfExternalHom</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismsOfExternalHom</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a list of morphism</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismsOfExternalHom</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list of morphisms in <span class="SimpleMath">\(\mathrm{Hom}( a, b )\)</span></p>
 
-<p>The argument are two objects <var class="Arg">A</var>, <var class="Arg">B</var>. The output is a list of all morphisms from <var class="Arg">A</var> to <var class="Arg">B</var>.</p>
+<p>The argument are two objects <var class="Arg">a</var>, <var class="Arg">b</var>. The output is a list of all morphisms from <var class="Arg">a</var> to <var class="Arg">b</var>.</p>
 
 <p><a id="X80B4B4D781D153B6" name="X80B4B4D781D153B6"></a></p>
 
@@ -217,7 +217,7 @@
 <h5>1.2-1 ExactCoverWithGlobalElements</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExactCoverWithGlobalElements</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list of morphisms in <span class="SimpleMath">\(\mathrm{Hom}(t,a)\)</span>.</p>
+<p>Returns: a list of morphisms in <span class="SimpleMath">\(\mathrm{Hom}( t, a )\)</span></p>
 
 <p>The argument is an object <var class="Arg">a</var> of a category <span class="SimpleMath">\(\mathbf{C}\)</span> which is enriched over itself, i.e., <span class="SimpleMath">\(\mathbf{C}\)</span> = <code class="code">RangeCategoryOfHomomorphismStructure</code>( <span class="SimpleMath">\(\mathbf{C}\)</span> ). The output is a list <span class="SimpleMath">\(D\)</span> of global elements of <var class="Arg">a</var> (i.e., morphisms from the distinguished object <span class="SimpleMath">\(t :=\)</span><code class="code">DistinguishedObjectOfHomomorphismStructure</code>( <span class="SimpleMath">\(\mathbf{C}\)</span> ) to <var class="Arg">a</var>), such that <code class="code">UniversalMorphismFromCoproduct</code>(<var class="Arg">a</var>, <span class="SimpleMath">\(D\)</span>) is an isomorphism.</p>
 
@@ -234,7 +234,7 @@
 
 <p>The property of the category <var class="Arg">C</var> being an elementary topos.</p>
 
-<p>A subobject classifier object consists of three parts:</p>
+<p>A subobject classifier consists of three parts:</p>
 
 
 <ul>
@@ -257,7 +257,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SubobjectClassifier</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
-<p>The argument is a category <span class="SimpleMath">\(C\)</span>. The output is a subobject classifier object <span class="SimpleMath">\(\Omega\)</span> of <span class="SimpleMath">\(C\)</span>.</p>
+<p>The argument is a category <span class="SimpleMath">\(C\)</span>. The output is the subobject classifier object <span class="SimpleMath">\(\Omega\)</span> of <span class="SimpleMath">\(C\)</span>.</p>
 
 <p><a id="X795F4E368142FD05" name="X795F4E368142FD05"></a></p>
 
@@ -266,7 +266,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianSquareOfSubobjectClassifier</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
-<p>The argument is a category <span class="SimpleMath">\(C\)</span>. The output is cartesian square of a subobject classifier object <span class="SimpleMath">\(\Omega\)</span> of <span class="SimpleMath">\(C\)</span>.</p>
+<p>The argument is a category <span class="SimpleMath">\(C\)</span>. The output is the cartesian square of the subobject classifier object <var class="Arg">\Omega</var> of <span class="SimpleMath">\(C\)</span>.</p>
 
 <p><a id="X7E86ACBB830223AC" name="X7E86ACBB830223AC"></a></p>
 
@@ -284,7 +284,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</code>( <var class="Arg">m</var>, <var class="Arg">omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{Range}(m), \mathrm{SubobjectClassifier} )\)</span></p>
 
-<p>The arguments are a monomorphism <span class="SimpleMath">\(m : A \rightarrow S\)</span> and a subobject classifier <span class="SimpleMath">\(\Omega\)</span>. The output is the classifying morphism of the monomorphism <span class="SimpleMath">\(\chi_m : S \rightarrow \mathrm{SubobjectClassifier}\)</span>.</p>
+<p>The arguments are a monomorphism <span class="SimpleMath">\(m : A \rightarrow S\)</span> and the subobject classifier <span class="SimpleMath">\(\Omega\)</span>. The output is the classifying morphism of the monomorphism <span class="SimpleMath">\(\chi_m : S \rightarrow \mathrm{SubobjectClassifier}\)</span>.</p>
 
 <p><a id="X85AA59EA7D780BAB" name="X85AA59EA7D780BAB"></a></p>
 
@@ -300,7 +300,7 @@
 <h5>1.3-7 ListOfSubobjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ListOfSubobjects</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list of monomorphism</p>
+<p>Returns: a list of monomorphisms into <span class="SimpleMath">\(A\)</span>.</p>
 
 <p>The argument is an object <var class="Arg">A</var>. The output is a list of all subobjects of <var class="Arg">A</var>.</p>
 
@@ -324,7 +324,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfTrueWithGivenObjects</code>( <var class="Arg">T</var>, <var class="Arg">Omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( T, \Omega )\)</span></p>
 
-<p>The arguments are a terminal object of the category and a subobject classifier. The output is the truth morphism <span class="SimpleMath">\(\mathrm{true}: T \rightarrow \Omega\)</span>.</p>
+<p>The arguments are the terminal object of the category and the subobject classifier. The output is the truth morphism <span class="SimpleMath">\(\mathrm{true}: T \rightarrow \Omega\)</span>.</p>
 
 <p><a id="X7EEF378379770B26" name="X7EEF378379770B26"></a></p>
 
@@ -342,7 +342,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfFalseWithGivenObjects</code>( <var class="Arg">T</var>, <var class="Arg">Omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( T, \Omega )\)</span></p>
 
-<p>The arguments are a terminal object of the category and a subobject classifier. The output is the truth morphism <span class="SimpleMath">\(\mathrm{false}: T \rightarrow \Omega\)</span>.</p>
+<p>The arguments are the terminal object <var class="Arg">T</var> of the category and the subobject classifier <var class="Arg">Omega</var>. The output is the truth morphism <span class="SimpleMath">\(\mathrm{false}: T \rightarrow \Omega\)</span>.</p>
 
 <p><a id="X7A1822BE85806336" name="X7A1822BE85806336"></a></p>
 
@@ -360,7 +360,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfNotWithGivenObjects</code>( <var class="Arg">Omega</var>, <var class="Arg">Omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \Omega, \Omega )\)</span></p>
 
-<p>The arguments are the subobject classifier as first and as second argument. The output is the truth endomorphism <span class="SimpleMath">\(\mathrm{not}: \Omega \rightarrow \Omega\)</span>.</p>
+<p>The arguments are a subobject classifier <var class="Arg">Omega</var> as first and as second argument. The output is the truth endomorphism <span class="SimpleMath">\(\mathrm{not}: \Omega \rightarrow \Omega\)</span>.</p>
 
 <p><a id="X79BB2A4887FE9C30" name="X79BB2A4887FE9C30"></a></p>
 
@@ -378,7 +378,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfAndWithGivenObjects</code>( <var class="Arg">Omega2</var>, <var class="Arg">Omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \Omega^{\times 2}, \Omega )\)</span></p>
 
-<p>The arguments are a cartesian square of a subobject classifier of the category and a subobject classifier. The output is the truth morphism <span class="SimpleMath">\(\mathrm{and}: \Omega^{\times 2} \rightarrow \Omega\)</span>.</p>
+<p>The arguments are the cartesian square <var class="Arg">Omega^{\times 2}</var> of a subobject classifier <var class="Arg">Omega</var> of the category and the subobject classifier. The output is the truth morphism <span class="SimpleMath">\(\mathrm{and}: \Omega^{\times 2} \rightarrow \Omega\)</span>.</p>
 
 <p><a id="X7BE2B34C7E54904D" name="X7BE2B34C7E54904D"></a></p>
 
@@ -396,7 +396,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfOrWithGivenObjects</code>( <var class="Arg">Omega2</var>, <var class="Arg">Omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \Omega^{\times 2}, \Omega )\)</span></p>
 
-<p>The arguments are a cartesian square of a subobject classifier of the category and a subobject classifier. The output is the truth morphism <span class="SimpleMath">\(\mathrm{or}: \Omega^{\times 2} \rightarrow \Omega\)</span>.</p>
+<p>The arguments are the cartesian square <var class="Arg">Omega^{\times 2}</var> of a subobject classifier <var class="Arg">Omega</var> of the category and the subobject classifier. The output is the truth morphism <span class="SimpleMath">\(\mathrm{or}: \Omega^{\times 2} \rightarrow \Omega\)</span>.</p>
 
 <p><a id="X819AC9D47F7BB3C1" name="X819AC9D47F7BB3C1"></a></p>
 
@@ -414,7 +414,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfImpliesWithGivenObjects</code>( <var class="Arg">Omega2</var>, <var class="Arg">Omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \Omega^{\times 2}, \Omega )\)</span></p>
 
-<p>The arguments are a cartesian square of a subobject classifier of the category and a subobject classifier. The output is the truth morphism <span class="SimpleMath">\(\mathrm{implies}: \Omega^{\times 2} \rightarrow \Omega\)</span>.</p>
+<p>The arguments are the cartesian square <var class="Arg">Omega^{\times 2}</var> of a subobject classifier <var class="Arg">Omega</var> of the category and the subobject classifier. The output is the truth morphism <span class="SimpleMath">\(\mathrm{implies}: \Omega^{\times 2} \rightarrow \Omega\)</span>.</p>
 
 <p><a id="X78CC3B4E7C532748" name="X78CC3B4E7C532748"></a></p>
 
@@ -427,16 +427,16 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PowerObject</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
-<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the power object <span class="SimpleMath">\(P(a)\)</span> of <span class="SimpleMath">\(a\)</span>.</p>
+<p>The argument is an object <var class="Arg">a</var>. The output is the power object <span class="SimpleMath">\(P(a)\)</span> of <var class="Arg">a</var>.</p>
 
 <p><a id="X81E6C578866589DB" name="X81E6C578866589DB"></a></p>
 
 <h5>1.5-2 PowerObjectFunctorial</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PowerObjectFunctorial</code>( <var class="Arg">f</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism</p>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{PowerObject}(b), \mathrm{PowerObject}(a) )\)</span></p>
 
-<p>The argument is a morphism <span class="SimpleMath">\(f:a \to b\)</span>. The output is the power morphism of <span class="SimpleMath">\(P(f): P(b) \to P(a)\)</span>.</p>
+<p>The argument is a morphism <var class="Arg">f</var><span class="SimpleMath">\(:a \to b\)</span>. The output is the power morphism of <span class="SimpleMath">\(P(f): P(b) \to P(a)\)</span>.</p>
 
 
 <div class="example"><pre>
@@ -459,9 +459,9 @@ true
 <h5>1.5-3 PowerObjectFunctorialWithGivenPowerObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PowerObjectFunctorialWithGivenPowerObjects</code>( <var class="Arg">Pb</var>, <var class="Arg">f</var>, <var class="Arg">Pa</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism</p>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( Pb, Pa )\)</span></p>
 
-<p>The arguments are an object <span class="SimpleMath">\(Pb\)</span>, a morphism <span class="SimpleMath">\(f:a \to b\)</span>, and and object <span class="SimpleMath">\(Pa\)</span>, such that <span class="SimpleMath">\(Pa = P(a)\)</span> and <span class="SimpleMath">\(Pb = P(b)\)</span>. The output is the power morphism of <span class="SimpleMath">\(P(f): Pb \to Pa\)</span>.</p>
+<p>The arguments are an object <var class="Arg">Pb</var>, a morphism <span class="SimpleMath">\(f:a \to b\)</span>, and object <var class="Arg">Pa</var>, such that <var class="Arg">Pa</var><span class="SimpleMath">\(= P(a)\)</span> and <var class="Arg">Pb</var><span class="SimpleMath">\(= P(b)\)</span>. The output is the power morphism of <span class="SimpleMath">\(P(f): Pb \to Pa\)</span>.</p>
 
 <p><a id="X87B4C65E81277DCB" name="X87B4C65E81277DCB"></a></p>
 
@@ -470,7 +470,7 @@ true
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SingletonMorphism</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a, \mathrm{PowerObject}(a) )\)</span></p>
 
-<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the singleton morphism from <span class="SimpleMath">\(a\)</span> to the power object <span class="SimpleMath">\(\mathrm{PowerObject}(a)\)</span>.</p>
+<p>The argument is an object <var class="Arg">a</var>. The output is the singleton morphism from <var class="Arg">a</var> to the power object <span class="SimpleMath">\(\mathrm{PowerObject}(a)\)</span>.</p>
 
 
 <div class="example"><pre>
@@ -491,7 +491,7 @@ true
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SingletonMorphismWithGivenPowerObject</code>( <var class="Arg">a</var>, <var class="Arg">Pa</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a, Pa )\)</span></p>
 
-<p>The arguments are an object <span class="SimpleMath">\(a\)</span> and object <span class="SimpleMath">\(Pa\)</span> which is equal to the power object <span class="SimpleMath">\(\mathrm{PowerObject}(a)\)</span>. The output is the singleton morphism from <span class="SimpleMath">\(a\)</span> to <span class="SimpleMath">\(Pa\)</span>.</p>
+<p>The arguments are an object <var class="Arg">a</var> and an object <var class="Arg">Pa</var> which is equal to the power object <span class="SimpleMath">\(\mathrm{PowerObject}(a)\)</span>. The output is the singleton morphism from <var class="Arg">a</var> to <var class="Arg">Pa</var>.</p>
 
 <p><a id="X7DDD48897DA3DE59" name="X7DDD48897DA3DE59"></a></p>
 
@@ -713,7 +713,7 @@ true
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement</code>( <var class="Arg">iota</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
-<p>The argument is a monomorphism <span class="SimpleMath">\(\iota: S \hookrightarrow A\)</span> and an object <span class="SimpleMath">\(T\)</span> with <code class="code">IsEqualForObjects</code>(<span class="SimpleMath">\(T\)</span>, <code class="code">PseudoComplementSubobject</code>(<span class="SimpleMath">\(\iota\)</span>)). The output is the embedding of <span class="SimpleMath">\(\iota:T \hookrightarrow A\)</span> of pseudo-complement object <span class="SimpleMath">\(T\)</span> of <span class="SimpleMath">\(\iota\)</span>.</p>
+<p>The argument is a monomorphism <span class="SimpleMath">\(\iota: S \hookrightarrow A\)</span> and an object <var class="Arg">T</var> with <code class="code">IsEqualForObjects</code>(<var class="Arg">T</var>, <code class="code">PseudoComplementSubobject</code>(<span class="SimpleMath">\(\iota\)</span>)). The output is the embedding of <span class="SimpleMath">\(\iota:T \hookrightarrow A\)</span> of pseudo-complement object <var class="Arg">T</var> of <span class="SimpleMath">\(\iota\)</span>.</p>
 
 <p><a id="X7F74000B7CDA90C3" name="X7F74000B7CDA90C3"></a></p>
 
@@ -729,7 +729,7 @@ true
 <h5>1.7-5 EmbeddingOfIntersectionSubobject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfIntersectionSubobject</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a monomorphism</p>
+<p>Returns: a monomorphism into <span class="SimpleMath">\(A\)</span></p>
 
 <p>The arguments are two monomorphisms <span class="SimpleMath">\(\iota_i: S_i \hookrightarrow A\)</span> for <span class="SimpleMath">\(i=1,2\)</span>. The output is the embedding <code class="code">IntersectionSubobject</code>(<span class="SimpleMath">\(\iota\)</span>) <span class="SimpleMath">\(\hookrightarrow A\)</span> of their intersection subobject.</p>
 
@@ -737,10 +737,10 @@ true
 
 <h5>1.7-6 EmbeddingOfIntersectionSubobjectWithGivenIntersection</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfIntersectionSubobjectWithGivenIntersection</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a monomorphism</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfIntersectionSubobjectWithGivenIntersection</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a monomorphism in <span class="SimpleMath">\(\mathrm{Hom}( T, A )\)</span></p>
 
-<p>The arguments are two monomorphisms <span class="SimpleMath">\(\iota_i: S_i \hookrightarrow A\)</span> for <span class="SimpleMath">\(i=1,2\)</span> and an object <span class="SimpleMath">\(T\)</span> with <code class="code">IsEqualForObjects</code>(<span class="SimpleMath">\(T\)</span>, <code class="code">IntersectionSubobject</code>(<span class="SimpleMath">\(\iota\)</span>)). The output the embedding <span class="SimpleMath">\(T \hookrightarrow A\)</span> of their intersection subobject <span class="SimpleMath">\(T\)</span>.</p>
+<p>The arguments are two monomorphisms <span class="SimpleMath">\(\iota_i: S_i \hookrightarrow A\)</span> for <span class="SimpleMath">\(i=1,2\)</span> and an object <var class="Arg">T</var> with <code class="code">IsEqualForObjects</code>(<var class="Arg">T</var>, <code class="code">IntersectionSubobject</code>(<var class="Arg">iota1</var>, <var class="Arg">iota2</var>)). The output is the embedding <span class="SimpleMath">\(T \hookrightarrow A\)</span> of their intersection subobject <var class="Arg">T</var>.</p>
 
 <p><a id="X8223CFD9815B185D" name="X8223CFD9815B185D"></a></p>
 
@@ -756,18 +756,18 @@ true
 <h5>1.7-8 EmbeddingOfUnionSubobject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnionSubobject</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a monomorphism</p>
+<p>Returns: a monomorphism into <span class="SimpleMath">\(A\)</span></p>
 
-<p>The arguments are two monomorphisms <span class="SimpleMath">\(\iota_i: S_i \hookrightarrow A\)</span> for <span class="SimpleMath">\(i=1,2\)</span>. The output is the embedding <code class="code">UnionSubobject</code>(<span class="SimpleMath">\(\iota\)</span>) <span class="SimpleMath">\(\hookrightarrow A\)</span> of their union subobject.</p>
+<p>The arguments are two monomorphisms <span class="SimpleMath">\(\iota_i: S_i \hookrightarrow A\)</span> for <span class="SimpleMath">\(i=1,2\)</span>. The output is the embedding <code class="code">UnionSubobject</code>(<var class="Arg">iota1</var>, <var class="Arg">iota2</var>) <span class="SimpleMath">\(\hookrightarrow A\)</span> of their union subobject.</p>
 
 <p><a id="X783CE5AC85B51992" name="X783CE5AC85B51992"></a></p>
 
 <h5>1.7-9 EmbeddingOfUnionSubobjectWithGivenUnion</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnionSubobjectWithGivenUnion</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a monomorphism</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnionSubobjectWithGivenUnion</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var>, <var class="Arg">U</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a monomorphism in <span class="SimpleMath">\(\mathrm{Hom}( U, A )\)</span></p>
 
-<p>The arguments are two monomorphisms <span class="SimpleMath">\(\iota_i: S_i \hookrightarrow A\)</span> for <span class="SimpleMath">\(i=1,2\)</span> and an object <span class="SimpleMath">\(T\)</span> with <code class="code">IsEqualForObjects</code>(<span class="SimpleMath">\(T\)</span>, <code class="code">UnionSubobject</code>(<span class="SimpleMath">\(\iota\)</span>)). The output is the embedding <span class="SimpleMath">\(T \hookrightarrow A\)</span> of their union subobject <span class="SimpleMath">\(T\)</span>.</p>
+<p>The arguments are two monomorphisms <span class="SimpleMath">\(\iota_i: S_i \hookrightarrow A\)</span> for <span class="SimpleMath">\(i=1,2\)</span> and an object <var class="Arg">U</var> with <code class="code">IsEqualForObjects</code>(<var class="Arg">U</var>, <code class="code">UnionSubobject</code>(<var class="Arg">iota1</var>, <var class="Arg">iota2</var>)). The output is the embedding <span class="SimpleMath">\(U \hookrightarrow A\)</span> of their union subobject <var class="Arg">U</var>.</p>
 
 <p><a id="X854421877A37C521" name="X854421877A37C521"></a></p>
 
@@ -783,18 +783,18 @@ true
 <h5>1.7-11 EmbeddingOfRelativePseudoComplementSubobject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfRelativePseudoComplementSubobject</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a monomorphism</p>
+<p>Returns: a monomorphism into <span class="SimpleMath">\(A\)</span></p>
 
-<p>The arguments are two monomorphisms <span class="SimpleMath">\(\iota_i: S_i \hookrightarrow A\)</span> for <span class="SimpleMath">\(i=1,2\)</span>. The output is the embedding <code class="code">RelativePseudoComplementSubobject</code>(<span class="SimpleMath">\(\iota\)</span>) <span class="SimpleMath">\(\hookrightarrow A\)</span> of their relative pseudo-complement into <span class="SimpleMath">\(A\)</span>.</p>
+<p>The arguments are two monomorphisms <span class="SimpleMath">\(\iota_i: S_i \hookrightarrow A\)</span> for <span class="SimpleMath">\(i=1,2\)</span>. The output is the embedding <code class="code">RelativePseudoComplementSubobject</code>(<var class="Arg">iota1</var>, <var class="Arg">iota2</var>) <span class="SimpleMath">\(\hookrightarrow A\)</span> of their relative pseudo-complement into <span class="SimpleMath">\(A\)</span>.</p>
 
 <p><a id="X78B11F2F8454DE01" name="X78B11F2F8454DE01"></a></p>
 
 <h5>1.7-12 EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a monomorphism</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var>, <var class="Arg">I</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a monomorphism in <span class="SimpleMath">\(\mathrm{Hom}( I, A )\)</span></p>
 
-<p>The arguments are two monomorphisms <span class="SimpleMath">\(\iota_i: S_i \hookrightarrow A\)</span> for <span class="SimpleMath">\(i=1,2\)</span> and an object <span class="SimpleMath">\(T\)</span> with <code class="code">IsEqualForObjects</code>(<span class="SimpleMath">\(T\)</span>, <code class="code">RelativePseudoComplementSubobject</code>(<span class="SimpleMath">\(\iota\)</span>)). The output is the embedding <span class="SimpleMath">\(T \hookrightarrow A\)</span> of their relative pseudo-complement <span class="SimpleMath">\(T\)</span> into <span class="SimpleMath">\(A\)</span>.</p>
+<p>The arguments are two monomorphisms <span class="SimpleMath">\(\iota_i: S_i \hookrightarrow A\)</span> for <span class="SimpleMath">\(i=1,2\)</span> and an object <var class="Arg">I</var> with <code class="code">IsEqualForObjects</code>(<var class="Arg">I</var>, <code class="code">RelativePseudoComplementSubobject</code>(<var class="Arg">iota1</var>, <var class="Arg">iota2</var>)). The output is the embedding <span class="SimpleMath">\(I \hookrightarrow A\)</span> of their relative pseudo-complement <var class="Arg">I</var> into <span class="SimpleMath">\(A\)</span>.</p>
 
 <p><a id="X7A3A3D0A87B7A329" name="X7A3A3D0A87B7A329"></a></p>
 
@@ -1017,7 +1017,7 @@ true
 <h5>1.10-1 LawvereTierneyLocalModalityOperators</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LawvereTierneyLocalModalityOperators</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
+<p>Returns: a list of endomorphisms in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{SubobjectClassifier}( T ), \mathrm{SubobjectClassifier}( T ) )\)</span></p>
 
 <p>The input is an elementary topos <var class="Arg">T</var>. The output is the list of Lawvere-Tierney idempotents of the subobject classifier of the topos <var class="Arg">T</var>.</p>
 
@@ -1026,7 +1026,7 @@ true
 <h5>1.10-2 LawvereTierneySubobjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LawvereTierneySubobjects</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
+<p>Returns: a list of monomorphisms into <span class="SimpleMath">\(\mathrm{SubobjectClassifier}( T )\)</span></p>
 
 <p>The input is an elementary topos <var class="Arg">T</var>. The output is the list of Lawvere-Tierney subobjects of the subobject classifier of the topos <var class="Arg">T</var>.</p>
 
@@ -1035,7 +1035,7 @@ true
 <h5>1.10-3 LawvereTierneyEmbeddingsOfSubobjectClassifiers</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LawvereTierneyEmbeddingsOfSubobjectClassifiers</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
+<p>Returns: a list of monomorphisms <span class="SimpleMath">\(\mathrm{SubobjectClassifier}( T )\)</span></p>
 
 <p>The input is an elementary topos <var class="Arg">T</var>. The output is the list of embeddings of the subobject classifiers of full sheaf subtoposes (with respect to the Lawvere-Tierney topologies of the topos <var class="Arg">T</var>) into the subobject classifier of <var class="Arg">T</var>.</p>
 
