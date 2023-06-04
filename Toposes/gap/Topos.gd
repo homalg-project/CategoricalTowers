@@ -283,6 +283,52 @@ DeclareOperation( "PowerObjectFunctorialWithGivenPowerObjects",
         [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
+#!  The arguments are two objects <A>a</A>, <A>b</A> in a category $C$
+#!  and a monomorphism <A>mu</A>$: r \hookrightarrow a \times b$ defining a relation
+#!  on $a \times b$.
+#!  The output is the upper segment of the relation which is a morphism
+#!  $a \to Pb$ given by the adjunction, where $Pb$ := <C>PowerObject</C>( <A>b</A> ) is the
+#!  the power object of <A>b</A>.
+#! @Arguments a, b, mu
+#! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{PowerObject}( b ) )$
+DeclareOperation( "UpperSegmentOfRelation",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+#! @Description
+#!  The arguments are two objects <A>a</A>, <A>b</A> in a category $C$,
+#!  a monomorphism <A>mu</A>$: r \hookrightarrow a \times b$ defining a relation
+#!  on $a \times b$, and the power object <A>Pb</A> := <C>PowerObject</C>( <A>b</A> ) of <A>b</A>.
+#!  The output is the upper segment of the relation which is a morphism
+#!  $a \to Pb$ given by the adjunction.
+#! @Arguments a, b, mu, Pb
+#! @Returns a morphism in $\mathrm{Hom}( a, Pb )$
+DeclareOperation( "UpperSegmentOfRelationWithGivenRange",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#!  The arguments are two objects <A>a</A>, <A>b</A> in a category $C$
+#!  and a monomorphism <A>mu</A>$:r \hookrightarrow a \times b$ defining a relation
+#!  on $a \times b$.
+#!  The output is the lower segment of the relation which is a morphism
+#!  $b \to Pa$ given by the adjunction, where $Pa$ := <C>PowerObject</C>( <A>a</A> ) is the
+#!  the power object of <A>a</A>.
+#! @Arguments a, b, mu
+#! @Returns a morphism in $\mathrm{Hom}( b, \mathrm{PowerObject}( a ) )$
+DeclareOperation( "LowerSegmentOfRelation",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+#! @Description
+#!  The arguments are two objects <A>a</A>, <A>b</A> in a category $C$,
+#!  a monomorphism <A>mu</A>$:r \hookrightarrow a \times b$ defining a relation
+#!  on $a \times b$, and the power object <A>Pa</A> := <C>PowerObject</C>( <A>a</A> ) of <A>a</A>.
+#!  The output is the lower segment of the relation which is a morphism
+#!  $b \to Pa$ given by the adjunction.
+#! @Arguments a, b, mu, Pa
+#! @Returns a morphism in $\mathrm{Hom}( b, Pa )$
+DeclareOperation( "LowerSegmentOfRelationWithGivenRange",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
 #! The argument is an object <A>a</A>.
 #! The output is the singleton morphism from <A>a</A> to the power object $\mathrm{PowerObject}(a)$.
 #! @Arguments a

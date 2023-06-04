@@ -392,6 +392,44 @@ DeclareOperation( "AddListOfSubobjects",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `LowerSegmentOfRelation`.
+#! $F: ( a, b, mu ) \mapsto \mathtt{LowerSegmentOfRelation}(a, b, mu)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLowerSegmentOfRelation",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddLowerSegmentOfRelation",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddLowerSegmentOfRelation",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddLowerSegmentOfRelation",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `LowerSegmentOfRelationWithGivenRange`.
+#! $F: ( a, b, mu, Pa ) \mapsto \mathtt{LowerSegmentOfRelationWithGivenRange}(a, b, mu, Pa)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLowerSegmentOfRelationWithGivenRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddLowerSegmentOfRelationWithGivenRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddLowerSegmentOfRelationWithGivenRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddLowerSegmentOfRelationWithGivenRange",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismsOfExternalHom`.
 #! $F: ( arg2, arg3 ) \mapsto \mathtt{MorphismsOfExternalHom}(arg2, arg3)$.
 #! @Returns nothing
@@ -1071,4 +1109,42 @@ DeclareOperation( "AddUnionSubobject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddUnionSubobject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `UpperSegmentOfRelation`.
+#! $F: ( a, b, mu ) \mapsto \mathtt{UpperSegmentOfRelation}(a, b, mu)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUpperSegmentOfRelation",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUpperSegmentOfRelation",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUpperSegmentOfRelation",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUpperSegmentOfRelation",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `UpperSegmentOfRelationWithGivenRange`.
+#! $F: ( a, b, mu, Pb ) \mapsto \mathtt{UpperSegmentOfRelationWithGivenRange}(a, b, mu, Pb)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUpperSegmentOfRelationWithGivenRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUpperSegmentOfRelationWithGivenRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUpperSegmentOfRelationWithGivenRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUpperSegmentOfRelationWithGivenRange",
                   [ IsCapCategory, IsList ] );
