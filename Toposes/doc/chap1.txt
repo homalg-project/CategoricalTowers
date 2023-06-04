@@ -610,58 +610,10 @@
   \hookrightarrow A[123X of their relative pseudo-complement [23XT[123X into [23XA[123X.[133X
   
   
-  [1X1.8 [33X[0;0YLawvere-Tierney topologies[133X[101X
-  
-  [33X[0;0YCompute the Lawvere-Tierney topologies of [10XSkeletalFinSets[110X:[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLTI := LawvereTierneyLocalModalityOperators( SkeletalFinSets );;[127X[104X
-    [4X[25Xgap>[125X [27XPerform( LTI, Display );[127X[104X
-    [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
-    [4X[28X{ 0, 1 } ⱶ[ 1, 1 ]→ { 0, 1 }[128X[104X
-    [4X[25Xgap>[125X [27XLTS := LawvereTierneySubobjects( SkeletalFinSets );;[127X[104X
-    [4X[25Xgap>[125X [27XPerform( LTS, Display );[127X[104X
-    [4X[28X{ 0 } ⱶ[ 1 ]→ { 0, 1 }[128X[104X
-    [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
-    [4X[25Xgap>[125X [27XLTC := LawvereTierneyEmbeddingsOfSubobjectClassifiers( SkeletalFinSets );;[127X[104X
-    [4X[25Xgap>[125X [27XPerform( LTC, Display );[127X[104X
-    [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
-    [4X[28X{ 0 } ⱶ[ 1 ]→ { 0, 1 }[128X[104X
-  [4X[32X[104X
-  
-  [1X1.8-1 LawvereTierneyLocalModalityOperators[101X
-  
-  [33X[1;0Y[29X[2XLawvereTierneyLocalModalityOperators[102X( [3XT[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YThe   input   is   an  elementary  topos  [3XT[103X.  The  output  is  the  list  of
-  Lawvere-Tierney idempotents of the subobject classifier of the topos [3XT[103X.[133X
-  
-  [1X1.8-2 LawvereTierneySubobjects[101X
-  
-  [33X[1;0Y[29X[2XLawvereTierneySubobjects[102X( [3XT[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YThe   input   is   an  elementary  topos  [3XT[103X.  The  output  is  the  list  of
-  Lawvere-Tierney subobjects of the subobject classifier of the topos [3XT[103X.[133X
-  
-  [1X1.8-3 LawvereTierneyEmbeddingsOfSubobjectClassifiers[101X
-  
-  [33X[1;0Y[29X[2XLawvereTierneyEmbeddingsOfSubobjectClassifiers[102X( [3XT[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YThe  input is an elementary topos [3XT[103X. The output is the list of embeddings of
-  the  subobject  classifiers  of  full  sheaf subtoposes (with respect to the
-  Lawvere-Tierney  topologies of the topos [3XT[103X) into the subobject classifier of
-  [3XT[103X.[133X
+  [1X1.8 [33X[0;0YPushout complements[133X[101X
   
   
-  [1X1.9 [33X[0;0YPushout complements[133X[101X
-  
-  
-  [1X1.9-1 [33X[0;0YExample in FinSets[133X[101X
+  [1X1.8-1 [33X[0;0YExample in FinSets[133X[101X
   
   [33X[0;0YDefine    two    composable    monos   [23XK   \stackrel{l}{\hookrightarrow}   L
   \stackrel{m}{\hookrightarrow} G[123X in [10XFinSets[110X:[133X
@@ -698,7 +650,7 @@
   [4X[32X[104X
   
   
-  [1X1.9-2 [33X[0;0YExample in SkeletalFinSets[133X[101X
+  [1X1.8-2 [33X[0;0YExample in SkeletalFinSets[133X[101X
   
   [33X[0;0YDefine    two    composable    monos   [23XK   \stackrel{l}{\hookrightarrow}   L
   \stackrel{m}{\hookrightarrow} G[123X in [10XSkeletalFinSets[110X:[133X
@@ -736,7 +688,7 @@
     [4X[28X{ 0,..., 4 } ⱶ[ 2, 3, 4, 5, 7 ]→ { 0,..., 7 }[128X[104X
   [4X[32X[104X
   
-  [1X1.9-3 HasPushoutComplement[101X
+  [1X1.8-3 HasPushoutComplement[101X
   
   [33X[1;0Y[29X[2XHasPushoutComplement[102X( [3Xl[103X, [3Xm[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -749,7 +701,7 @@
   [23Xg[123X=[10XInjectionOfCofactorOfPushoutWithGivenPushout[110X([[23Xl,d[123X],   2).   Otherwise  the
   output is [10Xfalse[110X.[133X
   
-  [1X1.9-4 PushoutComplement[101X
+  [1X1.8-4 PushoutComplement[101X
   
   [33X[1;0Y[29X[2XPushoutComplement[102X( [3Xl[103X, [3Xm[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism[133X
@@ -762,9 +714,9 @@
   [23Xg[123X=[10XInjectionOfCofactorOfPushoutWithGivenPushout[110X([[23Xl,d[123X], 2).[133X
   
   
-  [1X1.10 [33X[0;0YDouble-pushout rewriting[133X[101X
+  [1X1.9 [33X[0;0YDouble-pushout rewriting[133X[101X
   
-  [1X1.10-1 DPO[101X
+  [1X1.9-1 DPO[101X
   
   [33X[1;0Y[29X[2XDPO[102X( [3Xm[103X, [3Xl[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya pair of morhpisms[133X
@@ -843,6 +795,54 @@
   
   [30X    [33X[0;6Y[23X4[123X  is  in [23XG[123X but it must be duplicated since it is also in [23XR[123X but not in
         [23XK[123X.[133X
+  
+  
+  [1X1.10 [33X[0;0YLawvere-Tierney topologies[133X[101X
+  
+  [33X[0;0YCompute the Lawvere-Tierney topologies of [10XSkeletalFinSets[110X:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLTI := LawvereTierneyLocalModalityOperators( SkeletalFinSets );;[127X[104X
+    [4X[25Xgap>[125X [27XPerform( LTI, Display );[127X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 1, 1 ]→ { 0, 1 }[128X[104X
+    [4X[25Xgap>[125X [27XLTS := LawvereTierneySubobjects( SkeletalFinSets );;[127X[104X
+    [4X[25Xgap>[125X [27XPerform( LTS, Display );[127X[104X
+    [4X[28X{ 0 } ⱶ[ 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
+    [4X[25Xgap>[125X [27XLTC := LawvereTierneyEmbeddingsOfSubobjectClassifiers( SkeletalFinSets );;[127X[104X
+    [4X[25Xgap>[125X [27XPerform( LTC, Display );[127X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X{ 0 } ⱶ[ 1 ]→ { 0, 1 }[128X[104X
+  [4X[32X[104X
+  
+  [1X1.10-1 LawvereTierneyLocalModalityOperators[101X
+  
+  [33X[1;0Y[29X[2XLawvereTierneyLocalModalityOperators[102X( [3XT[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe   input   is   an  elementary  topos  [3XT[103X.  The  output  is  the  list  of
+  Lawvere-Tierney idempotents of the subobject classifier of the topos [3XT[103X.[133X
+  
+  [1X1.10-2 LawvereTierneySubobjects[101X
+  
+  [33X[1;0Y[29X[2XLawvereTierneySubobjects[102X( [3XT[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe   input   is   an  elementary  topos  [3XT[103X.  The  output  is  the  list  of
+  Lawvere-Tierney subobjects of the subobject classifier of the topos [3XT[103X.[133X
+  
+  [1X1.10-3 LawvereTierneyEmbeddingsOfSubobjectClassifiers[101X
+  
+  [33X[1;0Y[29X[2XLawvereTierneyEmbeddingsOfSubobjectClassifiers[102X( [3XT[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  input is an elementary topos [3XT[103X. The output is the list of embeddings of
+  the  subobject  classifiers  of  full  sheaf subtoposes (with respect to the
+  Lawvere-Tierney  topologies of the topos [3XT[103X) into the subobject classifier of
+  [3XT[103X.[133X
   
   
   [1X1.11 [33X[0;0YAdd-methods[133X[101X

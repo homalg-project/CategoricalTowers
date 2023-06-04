@@ -65,7 +65,7 @@
   [2XClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.3-5 
   [2XDefiningTripleOfUnderlyingQuiver[102X, for IsCapCategory 3.1-1 
   [2XDigraphOfSubobjects[102X, for IsCapCategoryObject 3.2-1 
-  [2XDPO[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 1.10-1 
+  [2XDPO[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 1.9-1 
   [2XEmbeddingOfIntersectionSubobject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.7-5 
   [2XEmbeddingOfIntersectionSubobjectWithGivenIntersection[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.7-6 
   [2XEmbeddingOfPseudoComplementSubobject[102X, for IsCapCategoryMorphism 1.7-2 
@@ -76,7 +76,7 @@
   [2XEmbeddingOfUnionSubobject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.7-8 
   [2XEmbeddingOfUnionSubobjectWithGivenUnion[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.7-9 
   [2XExactCoverWithGlobalElements[102X, for IsCapCategoryObject 1.2-1 
-  [2XHasPushoutComplement[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.9-3 
+  [2XHasPushoutComplement[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.8-3 
   [2XHonestRepresentative[102X, for IsMorphismInCategoryOfRelations 2.3-13 
   [2XIntersectionSubobject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.7-4 
   [2XIsCategoryOfRelations[102X, for IsCapCategory 2.1-1 
@@ -86,9 +86,9 @@
   [2XIsObjectInCategoryOfRelations[102X, for IsCapCategoryObject 2.1-2 
   [2XIsomorphismOntoCartesianSquareOfPowerObject[102X, for IsCapCategoryObject 1.5-6 
   [2XIsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-7 
-  [2XLawvereTierneyEmbeddingsOfSubobjectClassifiers[102X, for IsCapCategory 1.8-3 
-  [2XLawvereTierneyLocalModalityOperators[102X, for IsCapCategory 1.8-1 
-  [2XLawvereTierneySubobjects[102X, for IsCapCategory 1.8-2 
+  [2XLawvereTierneyEmbeddingsOfSubobjectClassifiers[102X, for IsCapCategory 1.10-3 
+  [2XLawvereTierneyLocalModalityOperators[102X, for IsCapCategory 1.10-1 
+  [2XLawvereTierneySubobjects[102X, for IsCapCategory 1.10-2 
   [2XListOfSubobjects[102X, for IsCapCategoryObject 1.3-7 
   [2XMaximalRelationIntoTerminalObject[102X, for IsObjectInCategoryOfRelations 2.3-5 
   [2XMorphismByStandardizedSpan[102X, for IsMorphismInCategoryOfRelations 2.3-12 
@@ -99,7 +99,7 @@
   [2XPseudoComplementSubobject[102X, for IsCapCategoryMorphism 1.7-1 
   [2XPseudoInverse[102X, for IsMorphismInCategoryOfRelations 2.3-6 
   [2XPseudoInverseOfHonestMorphism[102X, for IsCapCategoryMorphism 2.3-7 
-  [2XPushoutComplement[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.9-4 
+  [2XPushoutComplement[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.8-4 
   [2XRangeProjection[102X, for IsMorphismInCategoryOfRelations 2.3-10 
   [2XRelativePseudoComplementSubobject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.7-10 
   [2XRelativeTruthMorphismOfAnd[102X, for IsCapCategoryObject 1.6-7 
