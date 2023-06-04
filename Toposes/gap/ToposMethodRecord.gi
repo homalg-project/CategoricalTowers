@@ -279,18 +279,6 @@ ListOfSubobjects := rec(
   filter_list := [ "category", "object" ],
   return_type := "list_of_morphisms" ),
 
-LawvereTierneyLocalModalityOperators := rec(
-  filter_list := [ "category" ],
-  return_type := "list_of_morphisms" ),
-
-LawvereTierneySubobjects := rec(
-  filter_list := [ "category" ],
-  return_type := "list_of_morphisms" ),
-
-LawvereTierneyEmbeddingsOfSubobjectClassifiers := rec(
-  filter_list := [ "category" ],
-  return_type := "list_of_morphisms" ),
-
 PseudoComplementSubobject := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "object" ),
@@ -423,6 +411,18 @@ PushoutComplement := rec(
     return [ true ];
   end,
 ),
+
+LawvereTierneyLocalModalityOperators := rec(
+  filter_list := [ "category" ],
+  return_type := "list_of_morphisms" ),
+
+LawvereTierneySubobjects := rec(
+  filter_list := [ "category" ],
+  return_type := "list_of_morphisms" ),
+
+LawvereTierneyEmbeddingsOfSubobjectClassifiers := rec(
+  filter_list := [ "category" ],
+  return_type := "list_of_morphisms" ),
 
  ) );
 
