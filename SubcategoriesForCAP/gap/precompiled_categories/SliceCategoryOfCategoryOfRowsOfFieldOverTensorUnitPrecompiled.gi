@@ -135,8 +135,8 @@ function ( cat_1, objects_1, k_1, P_1 )
     deduped_6_1 := AmbientCategory( cat_1 );
     deduped_5_1 := objects_1[k_1];
     deduped_4_1 := UnderlyingRing( deduped_6_1 );
-    deduped_3_1 := List( objects_1, function ( logic_new_func_x_2 )
-            return RankOfObject( Source( UnderlyingMorphism( logic_new_func_x_2 ) ) );
+    deduped_3_1 := List( objects_1, function ( Li_2 )
+            return RankOfObject( Source( UnderlyingMorphism( Li_2 ) ) );
         end );
     deduped_2_1 := deduped_3_1[k_1];
     deduped_1_1 := UnionOfColumns( HomalgZeroMatrix( deduped_2_1, Sum( deduped_3_1{[ 1 .. k_1 - 1 ]} ), deduped_4_1 ), HomalgIdentityMatrix( deduped_2_1, deduped_4_1 ), HomalgZeroMatrix( deduped_2_1, Sum( deduped_3_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_4_1 ) );
@@ -500,10 +500,10 @@ function ( cat_1, objects_1, k_1, P_1 )
         end );
     deduped_7_1 := Sum( deduped_8_1 );
     deduped_6_1 := Sum( deduped_8_1{[ 1 .. k_1 - 1 ]} ) + 1;
-    deduped_5_1 := List( [ 1 .. deduped_12_1 ], function ( logic_new_func_x_2 )
+    deduped_5_1 := List( [ 1 .. deduped_12_1 ], function ( i_2 )
             local deduped_1_2;
-            deduped_1_2 := deduped_8_1[logic_new_func_x_2];
-            return UnionOfRows( HomalgZeroMatrix( Sum( deduped_8_1{[ 1 .. (logic_new_func_x_2 - 1) ]} ), deduped_1_2, deduped_9_1 ), HomalgIdentityMatrix( deduped_1_2, deduped_9_1 ), HomalgZeroMatrix( Sum( deduped_8_1{[ (logic_new_func_x_2 + 1) .. deduped_12_1 ]} ), deduped_1_2, deduped_9_1 ) ) * UnderlyingMatrix( UnderlyingMorphism( CAP_JIT_INCOMPLETE_LOGIC( objects_1[logic_new_func_x_2] ) ) );
+            deduped_1_2 := deduped_8_1[i_2];
+            return UnionOfRows( HomalgZeroMatrix( Sum( deduped_8_1{[ 1 .. (i_2 - 1) ]} ), deduped_1_2, deduped_9_1 ), HomalgIdentityMatrix( deduped_1_2, deduped_9_1 ), HomalgZeroMatrix( Sum( deduped_8_1{[ (i_2 + 1) .. deduped_12_1 ]} ), deduped_1_2, deduped_9_1 ) ) * UnderlyingMatrix( UnderlyingMorphism( CAP_JIT_INCOMPLETE_LOGIC( objects_1[i_2] ) ) );
         end );
     deduped_4_1 := CertainColumns( SyzygiesOfRows( UnionOfColumns( deduped_9_1, deduped_7_1, deduped_5_1{[ 1 .. deduped_12_1 - 1 ]} ) + (- UnionOfColumns( deduped_9_1, deduped_7_1, deduped_5_1{[ 2 .. deduped_12_1 ]} )) ), [ deduped_6_1 .. deduped_6_1 - 1 + deduped_8_1[k_1] ] );
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, deduped_10_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_11_1, CreateCapCategoryObjectWithAttributes( deduped_11_1, RankOfObject, NumberRows( deduped_4_1 ) ), Source( UnderlyingMorphism( CAP_JIT_INCOMPLETE_LOGIC( deduped_10_1 ) ) ), UnderlyingMatrix, deduped_4_1 ) );
@@ -617,10 +617,10 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
             return RankOfObject( Source( UnderlyingMorphism( logic_new_func_x_2 ) ) );
         end );
     deduped_6_1 := Sum( deduped_7_1 );
-    deduped_5_1 := List( [ 1 .. deduped_11_1 ], function ( logic_new_func_x_2 )
+    deduped_5_1 := List( [ 1 .. deduped_11_1 ], function ( i_2 )
             local deduped_1_2;
-            deduped_1_2 := deduped_7_1[logic_new_func_x_2];
-            return UnionOfRows( HomalgZeroMatrix( Sum( deduped_7_1{[ 1 .. (logic_new_func_x_2 - 1) ]} ), deduped_1_2, deduped_9_1 ), HomalgIdentityMatrix( deduped_1_2, deduped_9_1 ), HomalgZeroMatrix( Sum( deduped_7_1{[ (logic_new_func_x_2 + 1) .. deduped_11_1 ]} ), deduped_1_2, deduped_9_1 ) ) * UnderlyingMatrix( UnderlyingMorphism( CAP_JIT_INCOMPLETE_LOGIC( objects_1[logic_new_func_x_2] ) ) );
+            deduped_1_2 := deduped_7_1[i_2];
+            return UnionOfRows( HomalgZeroMatrix( Sum( deduped_7_1{[ 1 .. (i_2 - 1) ]} ), deduped_1_2, deduped_9_1 ), HomalgIdentityMatrix( deduped_1_2, deduped_9_1 ), HomalgZeroMatrix( Sum( deduped_7_1{[ (i_2 + 1) .. deduped_11_1 ]} ), deduped_1_2, deduped_9_1 ) ) * UnderlyingMatrix( UnderlyingMorphism( CAP_JIT_INCOMPLETE_LOGIC( objects_1[i_2] ) ) );
         end );
     deduped_4_1 := UniqueRightDivide( UnionOfColumns( deduped_9_1, RankOfObject( deduped_8_1 ), List( tau_1, function ( logic_new_func_x_2 )
                 return UnderlyingMatrix( UnderlyingCell( logic_new_func_x_2 ) );
