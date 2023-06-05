@@ -238,9 +238,9 @@ AddDerivationToCAP( PowerObject,
         [ [ ExponentialOnObjects, 1 ],
           [ SubobjectClassifier, 1 ] ],
         
-  function( cat, obj )
+  function( cat, a )
     
-    return ExponentialOnObjects( cat, obj, SubobjectClassifier( cat ) );
+    return ExponentialOnObjects( cat, a, SubobjectClassifier( cat ) );
     
 end );
 
@@ -257,24 +257,62 @@ AddDerivationToCAP( PowerObjectFunctorialWithGivenPowerObjects,
     
 end );
 
-## the currying {}: obj → Ω^obj of the classifying morphism of the diagonal relation Δ ⊆ obj × obj
-AddDerivationToCAP( SingletonMorphismWithGivenPowerObject,
+## Rewrite a relation μ:R ↪ a × b as a morphism a → P(b)
+AddDerivationToCAP( UpperSegmentOfRelationWithGivenRange,
         "",
-        [ [ CartesianDiagonal, 1 ],
+        [ [ ClassifyingMorphismOfSubobject, 1 ],
+          [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
+        
+  function( C, a, b, mu, Pb )
+    local chi;
+    
+    ## χ: a × b → Ω is the classifying morphism of μ: s(μ) ↪ a × b
+    chi := ClassifyingMorphismOfSubobject( C, mu );
+    
+    ## a → P(b) encoding the relation given by μ
+    return DirectProductToExponentialAdjunctionMapWithGivenExponential( C, a, b, chi, Pb );
+    
+end );
+
+## Rewrite a relation μ:R ↪ a × b as a morphism b → P(a)
+AddDerivationToCAP( LowerSegmentOfRelationWithGivenRange,
+        "",
+        [ [ CartesianBraiding, 1 ],
+          [ PreCompose, 1 ],
           [ ClassifyingMorphismOfSubobject, 1 ],
           [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
         
-  function( cat, obj, power_object )
-    local Delta, delta, singleton_morphism;
+  function( C, a, b, mu, Pa )
+    local mu_, chi_;
     
-    ## Δ: obj → obj × obj
-    Delta := CartesianDiagonal( cat, obj, 2 );
+    ## μ⁻: s(μ) ↪ b × a is the composition s(μ) ↪ a × b ⭇ b × a
+    ## of μ: s(μ) ↪ a × b and the canonical braiding a × b ⭇ b × a
+    mu_ := PreCompose( C,
+                   mu,
+                   CartesianBraiding( C, a, b ) );
     
-    ## δ: obj × obj → Ω
-    delta := ClassifyingMorphismOfSubobject( cat, Delta );
+    ## χ⁻: b × a → Ω is the classifying morphism of μ⁻: s(μ) ↪ b × a
+    chi_ := ClassifyingMorphismOfSubobject( C, mu_ );
     
-    ## {}: obj → Ω^obj
-    singleton_morphism := DirectProductToExponentialAdjunctionMapWithGivenExponential( cat, obj, obj, delta, power_object );
+    ## b → P(a) encoding the relation given by μ
+    return DirectProductToExponentialAdjunctionMapWithGivenExponential( C, b, a, chi_, Pa );
+    
+end );
+
+## the currying {}: a → Ωᵃ of the classifying morphism of the diagonal relation Δ ⊆ a × a
+AddDerivationToCAP( SingletonMorphismWithGivenPowerObject,
+        "",
+        [ [ CartesianDiagonal, 1 ],
+          [ UpperSegmentOfRelationWithGivenRange, 1 ] ],
+        
+  function( cat, a, Pa )
+    local Delta, singleton_morphism;
+    
+    ## Δ: a → a × a
+    Delta := CartesianDiagonal( cat, a, 2 );
+    
+    ## {}: a → Ωᵃ
+    singleton_morphism := UpperSegmentOfRelationWithGivenRange( cat, a, a, Delta, Pa );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsMonomorphism( singleton_morphism, true );

@@ -1,13 +1,14 @@
-#! @Chunk IsomorphismOntoCartesianSquareOfPowerObject
+#! @Chunk SingletonMorphism
 
 #! @Example
 LoadPackage( "FinSetsForCAP" );
 #! true
-a := FinSet( 2 );
-#! |2|
-ia := IsomorphismOntoCartesianSquareOfPowerObject( a );
-#! |16| ⭇ |16|
-Display( ia );
-#! { 0,..., 15 }\
-#!  ⱶ[ 0, 1, 4, 5, 2, 3, 6, 7, 8, 9, 12, 13, 10, 11, 14, 15 ]→ { 0,..., 15 }
+a := FinSet( 3 );
+#! |3|
+sa := SingletonMorphism( a );
+#! |3| ↪ |8|
+Display( sa );
+#! { 0, 1, 2 } ⱶ[ 1, 2, 4 ]→ { 0,..., 7 }
+sa = LowerSegmentOfRelation( a, a, CartesianDiagonal( a, 2 ) );
+#! true
 #! @EndExample
