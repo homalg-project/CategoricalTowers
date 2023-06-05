@@ -128,8 +128,8 @@ function ( cat_1, alpha_1 )
             return deduped_11_1[1 + REM_INT( deduped_1_2, deduped_20_1 )] = hoisted_14_1[1 + REM_INT( QUO_INT( deduped_1_2, deduped_20_1 ), deduped_21_1 )];
         end );
     deduped_18_1 := Length( deduped_19_1 );
-    hoisted_17_1 := List( [ 0 .. deduped_18_1 - 1 ], function ( logic_new_func_x_2 )
-            return deduped_11_1[1 + REM_INT( CAP_JIT_INCOMPLETE_LOGIC( deduped_19_1[(1 + logic_new_func_x_2)] ), deduped_20_1 )];
+    hoisted_17_1 := List( [ 0 .. deduped_18_1 - 1 ], function ( i_2 )
+            return deduped_11_1[1 + REM_INT( CAP_JIT_INCOMPLETE_LOGIC( deduped_19_1[(1 + i_2)] ), deduped_20_1 )];
         end );
     hoisted_16_1 := AsList( deduped_35_1 );
     return CreateCapCategoryMorphismWithAttributes( deduped_34_1, deduped_30_1, CreateCapCategoryObjectWithAttributes( deduped_34_1, Length, deduped_18_1 ), AsList, List( [ 0 .. Length( deduped_30_1 ) - 1 ], function ( x_2 )
@@ -184,8 +184,8 @@ function ( cat_1, source_1, range_1, alpha_1 )
             deduped_1_2 := CAP_JIT_INCOMPLETE_LOGIC( x_2 );
             return deduped_13_1[1 + REM_INT( deduped_1_2, deduped_21_1 )] = hoisted_16_1[1 + REM_INT( QUO_INT( deduped_1_2, deduped_21_1 ), deduped_22_1 )];
         end );
-    hoisted_19_1 := List( [ 0 .. Length( deduped_20_1 ) - 1 ], function ( logic_new_func_x_2 )
-            return deduped_13_1[1 + REM_INT( CAP_JIT_INCOMPLETE_LOGIC( deduped_20_1[(1 + logic_new_func_x_2)] ), deduped_21_1 )];
+    hoisted_19_1 := List( [ 0 .. Length( deduped_20_1 ) - 1 ], function ( i_2 )
+            return deduped_13_1[1 + REM_INT( CAP_JIT_INCOMPLETE_LOGIC( deduped_20_1[(1 + i_2)] ), deduped_21_1 )];
         end );
     hoisted_18_1 := AsList( alpha_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, MapOfMorphism, CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), deduped_33_1, deduped_27_1, AsList, List( [ 0 .. Length( deduped_33_1 ) - 1 ], function ( i_2 )
@@ -359,9 +359,9 @@ function ( cat_1, alpha_1, beta_1 )
         end );
     hoisted_8_1 := AsList( deduped_16_1[7] );
     hoisted_7_1 := AsList( deduped_16_1[6] );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( beta_1 ), MapOfMorphism, CreateCapCategoryMorphismWithAttributes( deduped_17_1, CreateCapCategoryObjectWithAttributes( deduped_17_1, Length, deduped_18_1 ), Range( deduped_13_1 ), AsList, [ AsList( deduped_13_1 )[1 + (-1 + BigInt( SafePosition( List( [ 0 .. (Length( deduped_19_1[1][3] ) - 1) ], function ( logic_new_func_x_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( beta_1 ), MapOfMorphism, CreateCapCategoryMorphismWithAttributes( deduped_17_1, CreateCapCategoryObjectWithAttributes( deduped_17_1, Length, deduped_18_1 ), Range( deduped_13_1 ), AsList, [ AsList( deduped_13_1 )[1 + (-1 + BigInt( SafePosition( List( [ 0 .. (Length( deduped_19_1[1][3] ) - 1) ], function ( x_2 )
                              local deduped_1_2;
-                             deduped_1_2 := (1 + CAP_JIT_INCOMPLETE_LOGIC( logic_new_func_x_2 ));
+                             deduped_1_2 := (1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 ));
                              return (-1 + BigInt( SafePosition( deduped_10_1, (hoisted_7_1[deduped_1_2] + hoisted_8_1[deduped_1_2] * deduped_11_1) ) ));
                          end ), CAP_JIT_INCOMPLETE_LOGIC( [ 0 .. (Length( deduped_10_1 ) - 1) ][BigInt( SafePosition( deduped_10_1, (AsList( MapOfMorphism( alpha_1 ) )[deduped_18_1] + AsList( MapOfMorphism( beta_1 ) )[deduped_18_1] * deduped_11_1) ) )] ) ) ))] ] ) );
 end
