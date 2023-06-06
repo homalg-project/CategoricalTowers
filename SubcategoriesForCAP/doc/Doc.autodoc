@@ -30,6 +30,9 @@
 @Subsection SliceCategory
 @InsertChunk SliceCategory
 
+@Subsection SliceCategoryOverTensorUnit
+@InsertChunk SliceCategoryOverTensorUnit
+
 @Subsection IteratedInternalHom
 @InsertChunk IteratedInternalHom
 
