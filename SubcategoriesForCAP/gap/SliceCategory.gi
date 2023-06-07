@@ -78,15 +78,13 @@ InstallOtherMethodForCompilerForCAP( DualOverTensorUnit,
         [ IsCapCategory, IsCapCategoryMorphism ],
         
   function( cat, J )
-    local R;
+    local unit;
     
-    R := TensorUnit( cat );
+    unit := TensorUnit( cat );
     
-    ## R -> InternalHom( J, R )
-    return PreComposeList( cat,
-                   [ InverseForMorphisms( cat, EvaluationMorphism( cat, R, R ) ), ## R -> InternalHom( R, R ) ⊗ R
-                     RightUnitor( cat, InternalHomOnObjects( cat, R, R ) ), ## InternalHom( R, R ) ⊗ R -> InternalHom( R, R )
-                     InternalHomOnMorphisms( cat, J, IdentityMorphism( cat, R ) ) ] ); ## InternalHom( R, R ) -> InternalHom( R^m, R )
+    return PreCompose( cat,
+                       TensorProductToInternalHomAdjunctionMap( cat, unit, unit, LeftUnitor( cat, unit ) ), ## 1 -> Hom( 1, 1 )
+                       InternalHomOnMorphisms( cat, J, IdentityMorphism( cat, unit ) ) );                   ## Hom( 1, 1 ) -> InternalHom( J, 1 )
     
 end );
 
@@ -128,7 +126,7 @@ end );
 
 BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
   function( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter )
-    local C, list_of_operations_to_install, skip, func, pos, properties, morphism_constructor, morphism_datum, S;
+    local C, list_of_operations_to_install, skip, func, pos, properties, morphism_constructor, morphism_datum, S, TensorProductOnObjectsInSliceOverTensorUnit;
     
     C := CapCategory( B );
     
@@ -159,6 +157,10 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         Append( properties,
                 [ "IsMonoidalCategory",
                   "IsStrictMonoidalCategory",
+                  "IsBraidedMonoidalCategory",
+                  "IsSymmetricMonoidalCategory",
+                  "IsClosedMonoidal",
+                  "IsSymmetricClosedMonoidalCategory",
                   ] );
         
     fi;
@@ -646,18 +648,175 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
         end );
         
-        AddTensorProductOnObjects( S,
-          function( cat, I, J )
+        TensorProductOnObjectsInSliceOverTensorUnit := function( cat, I, J )
             local C;
             
             C := AmbientCategory( cat );
+            
+            # I: i -> 1
+            # J: j -> 1
+            #
+            #       I ⊗ J         λ_1
+            # i ⊗ j -----> 1 ⊗ 1 ----> 1
             
             return ObjectConstructor( cat,
                            PreCompose( C,
                                    TensorProductOnMorphisms( C, UnderlyingMorphism( I ), UnderlyingMorphism( J ) ),
                                    LeftUnitor( C, BaseObject( cat ) ) ) );
+        end;
+        
+        AddTensorProductOnObjects( S, TensorProductOnObjectsInSliceOverTensorUnit );
+        
+        AddTensorProductOnMorphisms( S,
+          function( cat, phi, psi )
+            local C, left_unitor, I, J, IP, JP, source, range, morphism_datum;
+            
+            C := AmbientCategory( cat );
+            
+            left_unitor := LeftUnitor( C, BaseObject( cat ) );
+            
+            #    φ           ψ
+            # i ---> i'   j ---> j'
+            #  \    /      \    /
+            # I \  / I'   J \  / J'
+            #    vv          vv
+            #    1           1
+            
+            I := Source( phi );
+            J := Source( psi );
+            
+            IP := Range( phi );
+            JP := Range( psi );
+            
+            # I ⊗ J: i ⊗ j -> 1
+            source := TensorProductOnObjectsInSliceOverTensorUnit( cat, I, J);
+            
+            # I' ⊗ J': i' ⊗ j' -> 1
+            range := TensorProductOnObjectsInSliceOverTensorUnit( cat, IP, JP );
+            
+            # φ ⊗ ψ: i ⊗ j -> i' ⊗ j'
+            morphism_datum := TensorProductOnMorphisms( C, UnderlyingCell( phi ), UnderlyingCell( psi ) );
+            
+            return MorphismConstructor( cat, source, morphism_datum, range );
             
         end );
+        
+        AddLeftUnitor( S,
+          function( cat, I )
+            local C, id_1, source, range;
+            
+            C := AmbientCategory( cat );
+            
+            #            λ_i
+            #     1 ⊗ i ----> i
+            #         \      /
+            # id_1 ⊗ I \    / I
+            #           v  v
+            #            1
+            
+            id_1 := ObjectConstructor( cat, IdentityMorphism( C, BaseObject( cat ) ) );
+            
+            source := TensorProductOnObjectsInSliceOverTensorUnit( cat, id_1, I );
+            
+            range := I;
+            
+            return MorphismConstructor( cat, source, LeftUnitor( C, Source( UnderlyingMorphism( I ) ) ), range );
+            
+        end );
+        
+        AddRightUnitor( S,
+          function( cat, I )
+            local C, id_1, source, range;
+            
+            C := AmbientCategory( cat );
+            
+            #            ρ_i
+            #     i ⊗ 1 ----> i
+            #         \      /
+            # I ⊗ id_1 \    / I
+            #           v  v
+            #            1
+            
+            id_1 := ObjectConstructor( cat, IdentityMorphism( C, BaseObject( cat ) ) );
+            
+            source := TensorProductOnObjectsInSliceOverTensorUnit( cat, I, id_1 );
+            
+            range := I;
+            
+            return MorphismConstructor( cat, source, RightUnitor( C, Source( UnderlyingMorphism( I ) ) ), range );
+            
+        end );
+        
+        AddAssociatorRightToLeft( S,
+          function( cat, I, J, K )
+            local C, source, range;
+            
+            C := AmbientCategory( cat );
+            
+            #                 α_i
+            #   i ⊗ ( j ⊗ k ) ---> ( i ⊗ j ) ⊗ k
+            #              \       /
+            # I ⊗ ( J ⊗ K ) \     / ( I ⊗ J ) ⊗ K
+            #                v   v
+            #                  1
+            
+            source := TensorProductOnObjectsInSliceOverTensorUnit( cat, I, TensorProductOnObjectsInSliceOverTensorUnit( cat, J, K ) );
+            
+            range := TensorProductOnObjectsInSliceOverTensorUnit( cat, TensorProductOnObjectsInSliceOverTensorUnit( cat, I, J ), K );
+            
+            return MorphismConstructor( cat, source,
+                                             AssociatorRightToLeft( C, Source( UnderlyingMorphism( I ) ), Source( UnderlyingMorphism( J ) ), Source( UnderlyingMorphism( K ) ) ),
+                                             range );
+            
+        end );
+        
+        AddAssociatorLeftToRight( S,
+          function( cat, I, J, K )
+            local C, source, range;
+            
+            C := AmbientCategory( cat );
+            
+            #                 α_i
+            #   ( i ⊗ j ) ⊗ k ---> i ⊗ ( j ⊗ k )
+            #              \       /
+            # ( I ⊗ J ) ⊗ K \     / I ⊗ ( J ⊗ K )
+            #                v   v
+            #                  1
+            
+            source := TensorProductOnObjectsInSliceOverTensorUnit( cat, TensorProductOnObjectsInSliceOverTensorUnit( cat, I, J ), K );
+            
+            range := TensorProductOnObjectsInSliceOverTensorUnit( cat, I, TensorProductOnObjectsInSliceOverTensorUnit( cat, J, K ) );
+            
+            return MorphismConstructor( cat, source,
+                                             AssociatorRightToLeft( C, Source( UnderlyingMorphism( I ) ), Source( UnderlyingMorphism( J ) ), Source( UnderlyingMorphism( K ) ) ),
+                                             range );
+            
+        end );
+        
+        if HasIsBraidedMonoidalCategory( C ) and IsBraidedMonoidalCategory( C ) then
+            
+            AddBraiding( S,
+              function( cat, I, J )
+                local C, source, range;
+                
+                C := AmbientCategory( S );
+                
+                #        B_ij
+                # i ⊗ j -----> j ⊗ i
+                #      \      /
+                # I ⊗ J \    / J ⊗ I
+                #        v  v
+                #         1
+                
+                source := TensorProductOnObjectsInSliceOverTensorUnit( cat, I, J );
+                
+                range := TensorProductOnObjectsInSliceOverTensorUnit( cat, J, I );
+                
+                return MorphismConstructor( cat, source, Braiding( C, Source( UnderlyingMorphism( I ) ), Source( UnderlyingMorphism( J ) ) ), range );
+                
+            end );
+            
+        fi;
         
         if HasIsSymmetricClosedMonoidalCategory( C ) and IsSymmetricClosedMonoidalCategory( C ) and
            CanCompute( C, "UniversalMorphismIntoWeakBiFiberProduct" ) then

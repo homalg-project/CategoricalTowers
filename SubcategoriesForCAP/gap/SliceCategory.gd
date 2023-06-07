@@ -137,6 +137,11 @@ end );
 DeclareAttribute( "InclusionFunctor",
         IsCapSliceCategory );
 
+#! @Description
+#!  The argument is an object $J \colon j \rightarrow 1$ in the slice category <A>S</A> over the tensor unit.
+#!  The output is the dual morphism $J^\vee \colon 1 \rightarrow \mathrm{\underline{Hom}}(j,1)$ in the ambient category of <A>S</A>.
+#! @Arguments J
+#! @Returns a &CAP; morphism
 DeclareAttribute( "DualOverTensorUnit",
         IsCapCategoryMorphism );
 
