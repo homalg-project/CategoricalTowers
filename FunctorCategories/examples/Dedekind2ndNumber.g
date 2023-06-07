@@ -8,7 +8,7 @@
 #! @Example
 LoadPackage( "FunctorCategories", false );
 #! true
-LoadPackage( "Locales", false );
+LoadPackage( "Locales", ">= 2023.06-01", false );
 #! true
 Q := RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" );
 #! Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]
@@ -30,7 +30,7 @@ Display( PSh );
 #! RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),
 #! IntervalCategory ):
 #! 
-#! 60 primitive operations were used to derive 203 operations for this category
+#! 60 primitive operations were used to derive 204 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsCodistributiveCategory
@@ -66,10 +66,18 @@ i := InitialObject( PSh );
 #!  IntervalCategory )>
 IsReflexive( i );
 #! false
+IsHomSetInhabited( i, f );
+#! true
+IsHomSetInhabited( f, i );
+#! false
 AC := Coproduct( A, C );
 #! <An object in PreSheaves( PosetOfCategory( FreeCategory(
 #!  RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),
 #!  IntervalCategory )>
 IsReflexive( AC );
+#! false
+IsHomSetInhabited( AC, t );
+#! true
+IsHomSetInhabited( t, AC );
 #! false
 #! @EndExample

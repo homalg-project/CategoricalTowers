@@ -219,6 +219,26 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_ENRICHMENT_OVER_INTERVAL_CATEGORY,
 end );
 
 ##
+AddDerivationToCAP( IsHomSetInhabited,
+        "IsHomSetInhabited for categories enriched over the interval category",
+        [ [ HomomorphismStructureOnObjects, 1 ],
+          [ IsInitial, 1, RangeCategoryOfHomomorphismStructure ] ],
+        
+  function( cat, a, b )
+    local range_cat;
+    
+    range_cat := RangeCategoryOfHomomorphismStructure( cat );
+    
+    return not IsInitial( range_cat,
+                   HomomorphismStructureOnObjects( cat, a, b ) );
+    
+end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
+CategoryFilter := function( cat )
+      return HasRangeCategoryOfHomomorphismStructure( cat ) and
+             IsIntervalCategory( RangeCategoryOfHomomorphismStructure( cat ) );
+  end );
+
+##
 AddFinalDerivationBundle( "adding the homomorphism structure using IsHomSetInhabited and IntervalCategory",
         [ [ TerminalObject, 1, RangeCategoryOfHomomorphismStructure ],
           [ IsHomSetInhabited, 1 ],

@@ -38,10 +38,16 @@ IsWellDefined( UniqueMorphism( one, two ) );
 #! true
 HomStructure( one, one );
 #! <(⊤)>
+IsHomSetInhabited( one, one );
+#! true
 HomStructure( one, two );
 #! <(⊤)>
+IsHomSetInhabited( one, two );
+#! true
 HomStructure( two, one );
 #! <(⊥)>
+IsHomSetInhabited( two, one );
+#! false
 DirectProduct( [ one, two ] ) = one;
 #! true
 Coproduct( [ one, two ] ) = two;
