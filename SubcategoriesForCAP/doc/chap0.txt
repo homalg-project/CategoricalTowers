@@ -6,10 +6,10 @@
         [1X Subcategory and other related constructors for CAP categories [101X
   
   
-                                   2023.06-01
+                                   2023.06-02
   
   
-                                  5 June 2023
+                                  7 June 2023
   
   
                                 Mohamed Barakat
@@ -112,6 +112,7 @@
       3.3-4 UnderlyingMorphism
       3.3-5 UnderlyingCell
       3.3-6 InclusionFunctor
+      3.3-7 DualOverTensorUnit
     3.4 [33X[0;0YConstructors[133X
       3.4-1 AsSliceCategoryCell
       3.4-2 /
@@ -134,9 +135,10 @@
       4.2-3 AsSliceCategoryCell
     4.3 [33X[0;0YExamples[133X
       4.3-1 [33X[0;0YSliceCategory[133X
-      4.3-2 [33X[0;0YIteratedInternalHom[133X
-      4.3-3 [33X[0;0YDouble pushout rewriting[133X
-      4.3-4 [33X[0;0YPrecompilation[133X
+      4.3-2 [33X[0;0YSliceCategoryOverTensorUnit[133X
+      4.3-3 [33X[0;0YIteratedInternalHom[133X
+      4.3-4 [33X[0;0YDouble pushout rewriting[133X
+      4.3-5 [33X[0;0YPrecompilation[133X
   5 [33X[0;0YSlice categories (lazy data structure)[133X
     5.1 [33X[0;0YGAP categories[133X
       5.1-1 IsCapLazySliceCategory

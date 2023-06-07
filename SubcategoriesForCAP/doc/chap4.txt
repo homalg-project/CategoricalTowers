@@ -185,7 +185,73 @@
   [4X[32X[104X
   
   
-  [1X4.3-2 [33X[0;0YIteratedInternalHom[133X[101X
+  [1X4.3-2 [33X[0;0YSliceCategoryOverTensorUnit[133X[101X
+  
+  [33X[0;0YWe type-check DualOverTensorUnit via LazyCategories.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", false );;[127X[104X
+    [4X[25Xgap>[125X [27XT := TerminalCategoryWithMultipleObjects();[127X[104X
+    [4X[28XTerminalCategoryWithMultipleObjects( )[128X[104X
+    [4X[25Xgap>[125X [27XL := LazyCategory( T : primitive_operations := true, optimize := 0 );[127X[104X
+    [4X[28XLazyCategory( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[25Xgap>[125X [27Xa := "a" / T;[127X[104X
+    [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XI := MorphismConstructor( T, a, "I", TensorUnit( T ) ) / L;[127X[104X
+    [4X[28X<An evaluated morphism in LazyCategory( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDualOverTensorUnit( L, I );[127X[104X
+    [4X[28X<A morphism in LazyCategory( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XR := Q["x,y"];[127X[104X
+    [4X[28XQ[x,y][128X[104X
+    [4X[25Xgap>[125X [27XP := CategoryOfRows( R );[127X[104X
+    [4X[28XRows( Q[x,y] )[128X[104X
+    [4X[25Xgap>[125X [27XS := SliceCategoryOverTensorUnit( P );[127X[104X
+    [4X[28XSliceCategoryOverTensorUnit( Rows( Q[x,y] ) )[128X[104X
+    [4X[25Xgap>[125X [27XI := HomalgMatrix( "[ x^2, x*y ]", 2, 1, R ) / P / S;[127X[104X
+    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XJ := HomalgMatrix( "[ x ]", 1, 1, R ) / P / S;[127X[104X
+    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27Xphi := HomalgMatrix( "[ x, y ]", 2, 1, R ) / P;[127X[104X
+    [4X[28X<A morphism in Rows( Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27Xphi := MorphismConstructor( S, I, phi, J );[127X[104X
+    [4X[28XA morphism in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( phi );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIp := HomalgMatrix( "[ x*y, x*y^2 ]", 2, 1, R ) / P / S;[127X[104X
+    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XJp := HomalgMatrix( "[ x ]", 1, 1, R ) / P / S;[127X[104X
+    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27Xpsi := HomalgMatrix( "[ y, y^2 ]", 2, 1, R ) / P;[127X[104X
+    [4X[28X<A morphism in Rows( Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27Xpsi := MorphismConstructor( S, Ip, psi, Jp );[127X[104X
+    [4X[28XA morphism in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XTensorProductOnObjects( I, J );[127X[104X
+    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XTensorProductOnMorphisms( phi, psi );[127X[104X
+    [4X[28XA morphism in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XLeftUnitor( I );[127X[104X
+    [4X[28XA morphism in the slice category given by: <An identity morphism in Rows( Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XRightUnitor( I );[127X[104X
+    [4X[28XA morphism in the slice category given by: <An identity morphism in Rows( Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XAssociatorLeftToRight( I, J, Ip );[127X[104X
+    [4X[28XA morphism in the slice category given by: <An identity morphism in Rows( Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XAssociatorRightToLeft( I, J, Ip );[127X[104X
+    [4X[28XA morphism in the slice category given by: <An identity morphism in Rows( Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XBraiding( I, J );[127X[104X
+    [4X[28XA morphism in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.3-3 [33X[0;0YIteratedInternalHom[133X[101X
   
   [33X[0;0YIteratively applying [23X\underline{Hom}(J,-)[123X to the universal morphism [23X\iota: I
   \to  T[123X,  where  [23XT[123X  is the terminal object of the slice category, might never
@@ -275,7 +341,7 @@
   [4X[32X[104X
   
   
-  [1X4.3-3 [33X[0;0YDouble pushout rewriting[133X[101X
+  [1X4.3-4 [33X[0;0YDouble pushout rewriting[133X[101X
   
   [33X[0;0YDouble  pushout  in the slice category of [10XSkeletalFinSets[110X over its subobject
   classifier.[133X
@@ -337,7 +403,7 @@
   [4X[32X[104X
   
   
-  [1X4.3-4 [33X[0;0YPrecompilation[133X[101X
+  [1X4.3-5 [33X[0;0YPrecompilation[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP" );[127X[104X

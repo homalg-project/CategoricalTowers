@@ -46,11 +46,13 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C6EC1D082F1218C">4.3-1 <span class="Heading">SliceCategory</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X782B6A7C868D3F7D">4.3-2 <span class="Heading">IteratedInternalHom</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X857B7420790B6DEA">4.3-2 <span class="Heading">SliceCategoryOverTensorUnit</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X796AC9C8870C17BB">4.3-3 <span class="Heading">Double pushout rewriting</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X782B6A7C868D3F7D">4.3-3 <span class="Heading">IteratedInternalHom</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D7026828261C26B">4.3-4 <span class="Heading">Precompilation</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X796AC9C8870C17BB">4.3-4 <span class="Heading">Double pushout rewriting</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D7026828261C26B">4.3-5 <span class="Heading">Precompilation</span></a>
 </span>
 </div></div>
 </div>
@@ -263,9 +265,78 @@ true
 true
 </pre></div>
 
+<p><a id="X857B7420790B6DEA" name="X857B7420790B6DEA"></a></p>
+
+<h5>4.3-2 <span class="Heading">SliceCategoryOverTensorUnit</span></h5>
+
+<p>We type-check DualOverTensorUnit via LazyCategories.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories", false );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalCategoryWithMultipleObjects();</span>
+TerminalCategoryWithMultipleObjects( )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := LazyCategory( T : primitive_operations := true, optimize := 0 );</span>
+LazyCategory( TerminalCategoryWithMultipleObjects( ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := "a" / T;</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := MorphismConstructor( T, a, "I", TensorUnit( T ) ) / L;</span>
+&lt;An evaluated morphism in LazyCategory( TerminalCategoryWithMultipleObjects( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DualOverTensorUnit( L, I );</span>
+&lt;A morphism in LazyCategory( TerminalCategoryWithMultipleObjects( ) )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular( );</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q["x,y"];</span>
+Q[x,y]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := CategoryOfRows( R );</span>
+Rows( Q[x,y] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SliceCategoryOverTensorUnit( P );</span>
+SliceCategoryOverTensorUnit( Rows( Q[x,y] ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := HomalgMatrix( "[ x^2, x*y ]", 2, 1, R ) / P / S;</span>
+An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := HomalgMatrix( "[ x ]", 1, 1, R ) / P / S;</span>
+An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi := HomalgMatrix( "[ x, y ]", 2, 1, R ) / P;</span>
+&lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi := MorphismConstructor( S, I, phi, J );</span>
+A morphism in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( phi );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ip := HomalgMatrix( "[ x*y, x*y^2 ]", 2, 1, R ) / P / S;</span>
+An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Jp := HomalgMatrix( "[ x ]", 1, 1, R ) / P / S;</span>
+An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := HomalgMatrix( "[ y, y^2 ]", 2, 1, R ) / P;</span>
+&lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MorphismConstructor( S, Ip, psi, Jp );</span>
+A morphism in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorProductOnObjects( I, J );</span>
+An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorProductOnMorphisms( phi, psi );</span>
+A morphism in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftUnitor( I );</span>
+A morphism in the slice category given by: &lt;An identity morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightUnitor( I );</span>
+A morphism in the slice category given by: &lt;An identity morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AssociatorLeftToRight( I, J, Ip );</span>
+A morphism in the slice category given by: &lt;An identity morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AssociatorRightToLeft( I, J, Ip );</span>
+A morphism in the slice category given by: &lt;An identity morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Braiding( I, J );</span>
+A morphism in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
+</pre></div>
+
 <p><a id="X782B6A7C868D3F7D" name="X782B6A7C868D3F7D"></a></p>
 
-<h5>4.3-2 <span class="Heading">IteratedInternalHom</span></h5>
+<h5>4.3-3 <span class="Heading">IteratedInternalHom</span></h5>
 
 <p>Iteratively applying <span class="Math">\underline{Hom}(J,-)</span> to the universal morphism <span class="Math">\iota: I \to T</span>, where <span class="Math">T</span> is the terminal object of the slice category, might never become an isomorphism. However, in this example it does.</p>
 
@@ -355,7 +426,7 @@ true
 
 <p><a id="X796AC9C8870C17BB" name="X796AC9C8870C17BB"></a></p>
 
-<h5>4.3-3 <span class="Heading">Double pushout rewriting</span></h5>
+<h5>4.3-4 <span class="Heading">Double pushout rewriting</span></h5>
 
 <p>Double pushout in the slice category of <code class="code">SkeletalFinSets</code> over its subobject classifier.</p>
 
@@ -418,7 +489,7 @@ An object in the slice category given by the above data
 
 <p><a id="X7D7026828261C26B" name="X7D7026828261C26B"></a></p>
 
-<h5>4.3-4 <span class="Heading">Precompilation</span></h5>
+<h5>4.3-5 <span class="Heading">Precompilation</span></h5>
 
 
 <div class="example"><pre>

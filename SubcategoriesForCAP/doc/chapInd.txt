@@ -18,6 +18,7 @@
   [2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY[102X 2.2-1 
   [2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY[102X 3.2-1 
   [2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY[102X 1.2-1 
+  [2XDualOverTensorUnit[102X, for IsCapCategoryMorphism 3.3-7 
   [2XFullSubcategory[102X, for IsCapCategory, IsString 2.3-1 
   [2XFullSubcategoryByObjectMembershipFunction[102X 2.3-5 
   [2XFullSubcategoryGeneratedByListOfObjects[102X 2.3-2 

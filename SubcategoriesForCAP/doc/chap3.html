@@ -48,6 +48,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82EFEF467C7BB134">3.3-4 UnderlyingMorphism</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X80F531C77F293375">3.3-5 UnderlyingCell</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X869AA36081C4BD16">3.3-6 InclusionFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C8918638236B93E">3.3-7 DualOverTensorUnit</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X86EC0F0A78ECBC10">3.4 <span class="Heading">Constructors</span></a>
 </span>
@@ -207,6 +208,15 @@
 <p>Returns: a functor</p>
 
 <p>The natural embedding functor from <var class="Arg">S</var> to <code class="code">AmbientCategory</code>(<var class="Arg">S</var>).</p>
+
+<p><a id="X7C8918638236B93E" name="X7C8918638236B93E"></a></p>
+
+<h5>3.3-7 DualOverTensorUnit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualOverTensorUnit</code>( <var class="Arg">J</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p>The argument is an object <span class="Math">J \colon j \rightarrow 1</span> in the slice category <var class="Arg">S</var> over the tensor unit. The output is the dual morphism <span class="Math">J^\vee \colon 1 \rightarrow \mathrm{\underline{Hom}}(j,1)</span> in the ambient category of <var class="Arg">S</var>.</p>
 
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
