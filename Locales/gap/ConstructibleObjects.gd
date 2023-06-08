@@ -6,7 +6,7 @@
 
 #! @Chapter Boolean algebra of constructible objects
 
-#! @Section GAP Categories
+#! @Section GAP categories
 
 #! @Description
 #!  The &GAP; category of a Boolean algebra of constructible objects.

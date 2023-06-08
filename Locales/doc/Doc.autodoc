@@ -2,24 +2,36 @@
 
 @Section Info Class
 @Section Constructors
+@Section Properties
 @Section Operations
+@Section GAP categories
 @Section Add-methods
-@Section GAP Categories
 
 @Chapter Posets (partially ordered sets)
+@Section Properties
 @Section Operations
 @Section Add-methods
 
 @Chapter Lattices
+@Section Properties
+@Section Attributes
+@Section Operations
 
 @Chapter Heyting algebras
+@Section Properties
 @Section Operations
 @Section Stable internal Hom
 @Section Add-methods
 
 @Chapter Co-Heyting algebras
+@Section Properties
 @Section Operations
 @Section Stable internal coHom
+@Section Add-methods
+
+@Chapter Boolean algebras
+@Section Properties
+@Section Operations
 @Section Add-methods
 
 @Chapter Preordered sets viewed as categories
@@ -27,13 +39,13 @@
 @Section Constructors
 @Section Attributes
 @Section Operations
-@Section GAP Categories
+@Section GAP categories
 
 @Chapter The (stable) proset/poset of a category
 
 @Section Global variables
-@Section Attributes
 @Section Constructors
+@Section Attributes
 @Section Operations
 @Section Examples
 @Subsection Ideal quotient
@@ -49,22 +61,25 @@
 @InsertChunk NilRadical
 @InsertChunk StablePosetOfCategory
 
-@Chapter Boolean algebras
+@Chapter Meet-semilattice of single/multiple differences
+
+@Section Properties
+@Section Attributes
 @Section Operations
-@Section Add-methods
+@Section GAP categories
 
 @Chapter Meet-semilattice of differences
 
 @Section Constructors
 @Section Operations
-@Section GAP Categories
+@Section GAP categories
 
 @Chapter Meet-semilattice of multiple differences
 
 @Section Constructors
 @Section Attributes
 @Section Operations
-@Section GAP Categories
+@Section GAP categories
 
 @Chapter Boolean algebra of constructible objects
 
@@ -72,19 +87,20 @@
 @Section Properties
 @Section Attributes
 @Section Operations
-@Section GAP Categories
+@Section GAP categories
 
 @Chapter The interval category
 
 @Section Constructors
-@Section GAP Categories
+@Section Attributes
+@Section GAP categories
 
 @Chapter Tools
 
 @Section Info Class
 @Section Constructors
 @Section Operations
-@Section GAP Categories
+@Section GAP categories
 
 @Chapter Tests
 

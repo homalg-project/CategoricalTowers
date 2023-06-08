@@ -6,7 +6,7 @@
 
 #! @Chapter Boolean algebras
 
-#! @Section GAP Properties
+#! @Section Properties
 
 #! @Section Properties
 
