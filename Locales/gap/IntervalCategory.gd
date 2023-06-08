@@ -57,11 +57,16 @@ end );
 #
 ####################################
 
-#!
+#! @Description
+#!  Return the interval category on two objects.
+#! @Arguments
+#! @Returns a &CAP; category
 DeclareGlobalFunction( "CreateIntervalCategory" );
 
 if false then
-#!
+#! @Description
+#!  The interval category on two objects.
+#! @Returns a &CAP; category
 DeclareGlobalVariable( "IntervalCategory" );
 fi;
 
