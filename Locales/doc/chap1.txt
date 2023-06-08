@@ -19,9 +19,48 @@
   [33X[0;0YConstruct the unique morphism with source [3XA[103X and target [3XB[103X.[133X
   
   
-  [1X1.3 [33X[0;0YOperations[133X[101X
+  [1X1.3 [33X[0;0YProperties[133X[101X
   
-  [1X1.3-1 AreIsomorphicForObjectsIfIsHomSetInhabited[101X
+  [1X1.3-1 IsThinCategory[101X
+  
+  [33X[1;0Y[29X[2XIsThinCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a thin [5XCAP[105X category.[133X
+  
+  [1X1.3-2 IsDiscreteCategory[101X
+  
+  [33X[1;0Y[29X[2XIsDiscreteCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  property  of  [3XC[103X  being  a  discrete [5XCAP[105X category, i.e., equivalent to a
+  category in which any morphism is an identity.[133X
+  
+  [1X1.3-3 IsMonoidalProset[101X
+  
+  [33X[1;0Y[29X[2XIsMonoidalProset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a monoidal thin category.[133X
+  
+  [1X1.3-4 IsClosedMonoidalProset[101X
+  
+  [33X[1;0Y[29X[2XIsClosedMonoidalProset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a closed monoidal thin category.[133X
+  
+  [1X1.3-5 IsCoclosedMonoidalProset[101X
+  
+  [33X[1;0Y[29X[2XIsCoclosedMonoidalProset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a coclosed monoidal thin category.[133X
+  
+  
+  [1X1.4 [33X[0;0YOperations[133X[101X
+  
+  [1X1.4-1 AreIsomorphicForObjectsIfIsHomSetInhabited[101X
   
   [33X[1;0Y[29X[2XAreIsomorphicForObjectsIfIsHomSetInhabited[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
@@ -31,29 +70,7 @@
   the preorder.[133X
   
   
-  [1X1.4 [33X[0;0YAdd-methods[133X[101X
-  
-  [1X1.4-1 AddAreIsomorphicForObjectsIfIsHomSetInhabited[101X
-  
-  [33X[1;0Y[29X[2XAddAreIsomorphicForObjectsIfIsHomSetInhabited[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XAreIsomorphicForObjectsIfIsHomSetInhabited[110X.   [23XF:  (  arg2,  arg3  )  \mapsto
-  \mathtt{AreIsomorphicForObjectsIfIsHomSetInhabited}(arg2, arg3)[123X.[133X
-  
-  [1X1.4-2 AddUniqueMorphism[101X
-  
-  [33X[1;0Y[29X[2XAddUniqueMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given  function [23XF[123X to the category for the basic operation [10XUniqueMorphism[110X. [23XF:
-  ( A, B ) \mapsto \mathtt{UniqueMorphism}(A, B)[123X.[133X
-  
-  
-  [1X1.5 [33X[0;0YGAP Categories[133X[101X
+  [1X1.5 [33X[0;0YGAP categories[133X[101X
   
   [1X1.5-1 IsObjectInThinCategory[101X
   
@@ -69,45 +86,28 @@
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in a thin [5XCAP[105X category.[133X
   
+  
+  [1X1.6 [33X[0;0YAdd-methods[133X[101X
+  
+  [1X1.6-1 AddAreIsomorphicForObjectsIfIsHomSetInhabited[101X
+  
+  [33X[1;0Y[29X[2XAddAreIsomorphicForObjectsIfIsHomSetInhabited[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XAreIsomorphicForObjectsIfIsHomSetInhabited[110X.   [23XF:  (  arg2,  arg3  )  \mapsto
+  \mathtt{AreIsomorphicForObjectsIfIsHomSetInhabited}(arg2, arg3)[123X.[133X
+  
+  [1X1.6-2 AddUniqueMorphism[101X
+  
+  [33X[1;0Y[29X[2XAddUniqueMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function [23XF[123X to the category for the basic operation [10XUniqueMorphism[110X. [23XF:
+  ( A, B ) \mapsto \mathtt{UniqueMorphism}(A, B)[123X.[133X
+  
   [33X[0;0YProsets  are  thin  categories,  i.e., each Hom-set is either a singleton or
   empty.[133X
-  
-  
-  [1X1.6 [33X[0;0YGAP Properties[133X[101X
-  
-  [1X1.6-1 IsThinCategory[101X
-  
-  [33X[1;0Y[29X[2XIsThinCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe property of [3XC[103X being a thin [5XCAP[105X category.[133X
-  
-  [1X1.6-2 IsDiscreteCategory[101X
-  
-  [33X[1;0Y[29X[2XIsDiscreteCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe  property  of  [3XC[103X  being  a  discrete [5XCAP[105X category, i.e., equivalent to a
-  category in which any morphism is an identity.[133X
-  
-  [1X1.6-3 IsMonoidalProset[101X
-  
-  [33X[1;0Y[29X[2XIsMonoidalProset[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe property of [3XC[103X being a monoidal thin category.[133X
-  
-  [1X1.6-4 IsClosedMonoidalProset[101X
-  
-  [33X[1;0Y[29X[2XIsClosedMonoidalProset[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe property of [3XC[103X being a closed monoidal thin category.[133X
-  
-  [1X1.6-5 IsCoclosedMonoidalProset[101X
-  
-  [33X[1;0Y[29X[2XIsCoclosedMonoidalProset[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe property of [3XC[103X being a coclosed monoidal thin category.[133X
   

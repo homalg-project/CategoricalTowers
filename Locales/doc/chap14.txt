@@ -1,89 +1,129 @@
   
-  [1X14 [33X[0;0YTests[133X[101X
+  [1X14 [33X[0;0YTools[133X[101X
   
   
-  [1X14.1 [33X[0;0YGAP Categories[133X[101X
+  [1X14.1 [33X[0;0YInfo Class[133X[101X
+  
+  [1X14.1-1 InfoSquashDatastructureForConstructibleObjects[101X
+  
+  [33X[1;0Y[29X[2XInfoSquashDatastructureForConstructibleObjects[102X [32X info class[133X
   
   
-  [1X14.1-1 [33X[0;0YPrecompilation[133X[101X
+  [1X14.2 [33X[0;0YConstructors[133X[101X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Locales", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", ">= 2021.10-03", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );;[127X[104X
-    [4X[25Xgap>[125X [27X# HomalgIdentityMatrix( size, ring ) * matrix -> matrix[127X[104X
-    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
-    [4X[25X>[125X [27X    rec([127X[104X
-    [4X[25X>[125X [27X        variable_names := [ "size", "ring", "matrix" ],[127X[104X
-    [4X[25X>[125X [27X        src_template := "HomalgIdentityMatrix( size, ring ) * matrix",[127X[104X
-    [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
-    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
-    [4X[25X>[125X [27X    )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[25Xgap>[125X [27X# matrix * HomalgIdentityMatrix( size, ring ) -> matrix[127X[104X
-    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
-    [4X[25X>[125X [27X    rec([127X[104X
-    [4X[25X>[125X [27X        variable_names := [ "size", "ring", "matrix" ],[127X[104X
-    [4X[25X>[125X [27X        src_template := "matrix * HomalgIdentityMatrix( size, ring )",[127X[104X
-    [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
-    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
-    [4X[25X>[125X [27X    )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[25Xgap>[125X [27X# KroneckerMat( matrix, HomalgIdentityMatrix( 1, ring ) ) -> matrix[127X[104X
-    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
-    [4X[25X>[125X [27X    rec([127X[104X
-    [4X[25X>[125X [27X        variable_names := [ "ring", "matrix" ],[127X[104X
-    [4X[25X>[125X [27X        src_template := "KroneckerMat( matrix, HomalgIdentityMatrix( 1, ring ) )",[127X[104X
-    [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
-    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
-    [4X[25X>[125X [27X    )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[25Xgap>[125X [27X# TransposedMatrix( HomalgIdentityMatrix( size, ring ) ) -> HomalgIdentityMatrix( size, ring )[127X[104X
-    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
-    [4X[25X>[125X [27X    rec([127X[104X
-    [4X[25X>[125X [27X        variable_names := [ "size", "ring" ],[127X[104X
-    [4X[25X>[125X [27X        src_template := "TransposedMatrix( HomalgIdentityMatrix( size, ring ) )",[127X[104X
-    [4X[25X>[125X [27X        dst_template := "HomalgIdentityMatrix( size, ring )",[127X[104X
-    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
-    [4X[25X>[125X [27X    )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[25Xgap>[125X [27X# KroneckerMat( HomalgIdentityMatrix( size, ring ), matrix )[127X[104X
-    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
-    [4X[25X>[125X [27X    rec([127X[104X
-    [4X[25X>[125X [27X        variable_names := [ "size", "ring", "matrix" ],[127X[104X
-    [4X[25X>[125X [27X        src_template := "KroneckerMat( HomalgIdentityMatrix( size, ring ), matrix )",[127X[104X
-    [4X[25X>[125X [27X        dst_template := "DiagMat( ring, ListWithIdenticalEntries( size, matrix ) )",[127X[104X
-    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
-    [4X[25X>[125X [27X    )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[25Xgap>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
-    [4X[25X>[125X [27X# does not begin a new statement[127X[104X
-    [4X[25X>[125X [27Xcategory_constructor := EvalString( ReplacedString( """function( R )[127X[104X
-    [4X[25X>[125X [27X  local F, S, P, L@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    F := CategoryOfRows( R : FinalizeCategory := true )@[127X[104X
-    [4X[25X>[125X [27X    S := SliceCategoryOverTensorUnit( F : FinalizeCategory := true )@[127X[104X
-    [4X[25X>[125X [27X    P := PosetOfCategory( S : FinalizeCategory := true )@[127X[104X
-    [4X[25X>[125X [27X    L := StablePosetOfCategory( P )@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    return L@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xgiven_arguments := [ ZZ ];;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_category_name := "StablePosetOfCategoryOfPosetOfCategoryOfSliceCategoryOverTensorUnitOfCategoryOfRowsOfCommutativeRingPrecompiled";;[127X[104X
-    [4X[25Xgap>[125X [27Xpackage_name := "Locales";;[127X[104X
-    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
-    [4X[25X>[125X [27X    category_constructor,[127X[104X
-    [4X[25X>[125X [27X    given_arguments,[127X[104X
-    [4X[25X>[125X [27X    package_name,[127X[104X
-    [4X[25X>[125X [27X    compiled_category_name :[127X[104X
-    [4X[25X>[125X [27X    operations := [ "ExponentialOnObjects" ],[127X[104X
-    [4X[25X>[125X [27X    number_of_objectified_objects_in_data_structure_of_object := 5,[127X[104X
-    [4X[25X>[125X [27X    number_of_objectified_morphisms_in_data_structure_of_object := 1[127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-  [4X[32X[104X
+  [1X14.2-1 DatastructureForConstructibleObject[101X
+  
+  [33X[1;0Y[29X[2XDatastructureForConstructibleObject[102X( [3Xnone[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yan empty datastructure of a constructible object[133X
+  
+  [33X[0;0YConstruct a datastructure of a constructible object.[133X
+  
+  [1X14.2-2 NodeInDatastructureOfConstructibleObject[101X
+  
+  [33X[1;0Y[29X[2XNodeInDatastructureOfConstructibleObject[102X( [3XC[103X, [3XA[103X, [3Xd[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya datastructure of a node in a constructible object[133X
+  
+  [33X[0;0YConstruct  a  node  of  parity [3Xb[103X in a the datastructure [3XC[103X of a constructible
+  object given an object [3XA[103X in a thin category.[133X
+  
+  [1X14.2-3 Attach[101X
+  
+  [33X[1;0Y[29X[2XAttach[102X( [3XN[103X, [3Xpos_node[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YUse  [10XNodeInDatastructureOfConstructibleObject[110X to attach to the datastructure
+  [10XC[110X of a constructible object[133X
+  
+  [30X    [33X[0;6Yat the parents of the pre-node [3XN[103X the object [3Xpos_node[103X as a new positive
+        node,[133X
+  
+  [30X    [33X[0;6Yat the resulting positive node the entries of [3XL[103X as new negative nodes,[133X
+  
+  [30X    [33X[0;6Yat  the resulting positive node the entries of [3XL[103X as new pre-nodes, and
+        return  a  list  containing  the  list of these pre-nodes as the first
+        entry and the resulting positive node as the second.[133X
+  
+  
+  [1X14.3 [33X[0;0YOperations[133X[101X
+  
+  [1X14.3-1 IsDone[101X
+  
+  [33X[1;0Y[29X[2XIsDone[102X( [3XC[103X ) [32X operation[133X
+  
+  [1X14.3-2 MinimalLevelOfPreNodes[101X
+  
+  [33X[1;0Y[29X[2XMinimalLevelOfPreNodes[102X( [3Xpos_node[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [1X14.3-3 Pop[101X
+  
+  [33X[1;0Y[29X[2XPop[102X( [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya datastructure of a node in a constructible object[133X
+  
+  [1X14.3-4 IsHomSetInhabited[101X
+  
+  [33X[1;0Y[29X[2XIsHomSetInhabited[102X( [3Xnode1[103X, [3Xnode2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YCheck  if  the object underlying [3Xnode1[103X is contained in the object underlying
+  [3Xnode2[103X.[133X
+  
+  [1X14.3-5 Remove[101X
+  
+  [33X[1;0Y[29X[2XRemove[102X( [3Xpos_node[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [1X14.3-6 SquashOnce[101X
+  
+  [33X[1;0Y[29X[2XSquashOnce[102X( [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya datastructure of a node in a constructible object[133X
+  
+  [1X14.3-7 RemoveObsoleteSubtrahends[101X
+  
+  [33X[1;0Y[29X[2XRemoveObsoleteSubtrahends[102X( [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya datastructure of a node in a constructible object[133X
+  
+  [1X14.3-8 Squash[101X
+  
+  [33X[1;0Y[29X[2XSquash[102X( [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya datastructure of a node in a constructible object[133X
+  
+  [1X14.3-9 AsUnionOfMultipleDifferences[101X
+  
+  [33X[1;0Y[29X[2XAsUnionOfMultipleDifferences[102X( [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya constructible object[133X
+  
+  [1X14.3-10 DigraphOfParents[101X
+  
+  [33X[1;0Y[29X[2XDigraphOfParents[102X( [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya digraph[133X
+  
+  [1X14.3-11 DigraphOfChildren[101X
+  
+  [33X[1;0Y[29X[2XDigraphOfChildren[102X( [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya digraph[133X
+  
+  [1X14.3-12 Visualize[101X
+  
+  [33X[1;0Y[29X[2XVisualize[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YOpens a PDF with the graph of the datastructure of a constructible object [3XA[103X.[133X
+  
+  
+  [1X14.4 [33X[0;0YGAP categories[133X[101X
+  
+  [1X14.4-1 IsDatastructureForConstructibleObjects[101X
+  
+  [33X[1;0Y[29X[2XIsDatastructureForConstructibleObjects[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of datastructures for constructible objects.[133X
+  
+  [1X14.4-2 IsNodeInDatastructureOfConstructibleObjects[101X
+  
+  [33X[1;0Y[29X[2XIsNodeInDatastructureOfConstructibleObjects[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of nodes in datastructures of constructibe objects.[133X
   

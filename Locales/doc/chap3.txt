@@ -1,9 +1,6 @@
   
   [1X3 [33X[0;0YLattices[133X[101X
   
-  [33X[0;0YLattices  are  thin,  finite  cartesian  (and hence finite complete), finite
-  cocartesian (and hence finite cocomplete), skeletal categories.[133X
-  
   
   [1X3.1 [33X[0;0YProperties[133X[101X
   
@@ -117,4 +114,7 @@
   [6XReturns:[106X  [33X[0;10Yan object in a join semilattice[133X
   
   [33X[0;0YThe join [10XCoproduct[110X([3XA[103X, [3XB[103X) of [3XA[103X and [3XB[103X.[133X
+  
+  [33X[0;0YLattices  are  thin,  finite  cartesian  (and hence finite complete), finite
+  cocartesian (and hence finite cocomplete), skeletal categories.[133X
   

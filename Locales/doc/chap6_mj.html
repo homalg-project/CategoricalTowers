@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (Locales) - Chapter 6: Preordered sets viewed as categories</title>
+<title>GAP (Locales) - Chapter 6: Boolean algebras</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -23,268 +23,155 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap6.html">[MathJax off]</a></p>
-<p><a id="X805597A77D3DD7FE" name="X805597A77D3DD7FE"></a></p>
-<div class="ChapSects"><a href="chap6_mj.html#X805597A77D3DD7FE">6 <span class="Heading">Preordered sets viewed as categories</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X86EC0F0A78ECBC10">6.1 <span class="Heading">Constructors</span></a>
+<p><a id="X78BD0EE7784086E9" name="X78BD0EE7784086E9"></a></p>
+<div class="ChapSects"><a href="chap6_mj.html#X78BD0EE7784086E9">6 <span class="Heading">Boolean algebras</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X871597447BB998A1">6.1 <span class="Heading">Properties</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X85B69E1B8178059D">6.1-1 ProsetAsCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X872C9E9280BEEE9C">6.1-2 DiscreteSkeletalCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X8245E8C37C2F304A">6.1-3 TotalOrderAsCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7AD11B5584993CEB">6.1-1 IsBiHeytingAlgebroid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X8322889679F3DD3C">6.1-2 IsBiHeytingAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7D6CF5588711486D">6.1-3 IsBooleanAlgebroid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X84921A2B7C841849">6.1-4 IsBooleanAlgebra</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X7C701DBF7BAE649A">6.2 <span class="Heading">Attributes</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X7DE8E16C7C2D387B">6.2 <span class="Heading">Operations</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X79EAEAF77DC505F1">6.2-1 UnderlyingObjectFilter</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X825BE79D7E86AABA">6.2-2 UnderlyingObjectMembershipFunction</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7BC903C378490711">6.2-3 UnderlyingObjectEqualityFunction</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7A67D58582A8CDAF">6.2-4 UnderlyingPreorderFunction</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X8356F8357863572C">6.2-5 UnderlyingObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X870996D686DDD825">6.2-1 MorphismFromDoubleNegation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X830BF6117BF525CF">6.2-2 MorphismFromDoubleNegationWithGivenDoubleNegation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7B25947483724722">6.2-3 MorphismToDoubleConegation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X8436F9C67D102179">6.2-4 MorphismToDoubleConegationWithGivenDoubleConegation</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X7D03633A7D98026B">6.3 <span class="Heading">GAP Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X85C8C80F785AEB5E">6.3 <span class="Heading">Add-methods</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X87A1F0757E5F9942">6.3-1 IsProsetAsCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X82AD6F147D5FEDF7">6.3-1 AddMorphismFromDoubleNegation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7D0626598578D4CA">6.3-2 AddMorphismFromDoubleNegationWithGivenDoubleNegation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7B97B14585A8E5B4">6.3-3 AddMorphismToDoubleConegation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7A4DD8CD7C42B2AA">6.3-4 AddMorphismToDoubleConegationWithGivenDoubleConegation</a></span>
 </div></div>
 </div>
 
-<h3>6 <span class="Heading">Preordered sets viewed as categories</span></h3>
+<h3>6 <span class="Heading">Boolean algebras</span></h3>
 
-<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+<p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
 
-<h4>6.1 <span class="Heading">Constructors</span></h4>
+<h4>6.1 <span class="Heading">Properties</span></h4>
 
-<p><a id="X85B69E1B8178059D" name="X85B69E1B8178059D"></a></p>
+<p><a id="X7AD11B5584993CEB" name="X7AD11B5584993CEB"></a></p>
 
-<h5>6.1-1 ProsetAsCategory</h5>
+<h5>6.1-1 IsBiHeytingAlgebroid</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProsetAsCategory</code>( <var class="Arg">input_record</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
-
-<p>Construct a thin category out of the <var class="Arg">input_record</var> consisting of values to the keys:</p>
-
-
-<ul>
-<li><p><var class="Arg">name</var>: the string defining the name of the category,</p>
-
-</li>
-<li><p><var class="Arg">object_datum_filter_string</var>: a string such that <code class="code">ValueGlobal</code>( <var class="Arg">object_datum_filter_string</var> ) is the <strong class="pkg">GAP</strong>-filter of the underlying objects,</p>
-
-</li>
-<li><p><var class="Arg">object_datum_membership_func</var>: the underlying-object-membership function,</p>
-
-</li>
-<li><p><var class="Arg">object_datum_equality_func</var>: the underlying-object-equality function,</p>
-
-</li>
-<li><p><var class="Arg">object_datum_preorder_func</var>: the preorder function on the underlying objects, and</p>
-
-</li>
-<li><p><var class="Arg">properties</var>: a list of categorical properties, additional to <code class="code">IsThinCategory</code>.</p>
-
-</li>
-</ul>
-
-<ul>
-<li><p>If <var class="Arg">name</var> is missing it defaults to <var class="Arg">object_datum_filter_string</var>.</p>
-
-</li>
-<li><p>If <var class="Arg">object_datum_membership_func</var> is missing it defaults to <code class="code">ValueGlobal</code>( <var class="Arg">object_datum_filter_string</var> ).</p>
-
-</li>
-<li><p>If <var class="Arg">object_datum_equality_func</var> is missing it defaults to <code class="code">EQ</code>.</p>
-
-</li>
-<li><p>If <var class="Arg">object_datum_preorder_func</var> is missing it defaults to <var class="Arg">object_datum_equality_func</var>.</p>
-
-</li>
-<li><p>If <var class="Arg">properties</var> is missing it defaults to the empty list.</p>
-
-</li>
-</ul>
-<p><a id="X872C9E9280BEEE9C" name="X872C9E9280BEEE9C"></a></p>
-
-<h5>6.1-2 DiscreteSkeletalCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DiscreteSkeletalCategory</code>( <var class="Arg">object_datum_filter_string</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
-
-<p>Construct a discrete category out of</p>
-
-
-<ul>
-<li><p>the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>( <var class="Arg">object_datum_filter_string</var> ) of the underlying objects.</p>
-
-</li>
-</ul>
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := DiscreteSkeletalCategory( "IsInt" );</span>
-DiscreteSkeletalCategory( "IsInt" )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( D );</span>
-A CAP category with name DiscreteSkeletalCategory( "IsInt" ):
-
-11 primitive operations were used to derive 74 operations for this category
-which algorithmically
-* IsPosetCategory
-* IsEquippedWithHomomorphismStructure
-and furthermore mathematically
-* IsDiscreteCategory
-* IsSkeletalCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">one := 1 / D;</span>
-&lt;An object in DiscreteSkeletalCategory( "IsInt" )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( one );</span>
-1
-
-An object in DiscreteSkeletalCategory( "IsInt" ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( one );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( "1" / D );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">two := 2 / D;</span>
-&lt;An object in DiscreteSkeletalCategory( "IsInt" )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_one := IdentityMorphism( one );</span>
-&lt;An identity morphism in DiscreteSkeletalCategory( "IsInt" )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( id_one );</span>
-fail
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( id_one, id_one ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( UniqueMorphism( one, one ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( UniqueMorphism( one, two ) );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( one, one );</span>
-&lt;(⊤)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( one, two );</span>
-&lt;(⊥)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( two, one );</span>
-&lt;(⊥)&gt;
-</pre></div>
-
-<p><a id="X8245E8C37C2F304A" name="X8245E8C37C2F304A"></a></p>
-
-<h5>6.1-3 TotalOrderAsCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TotalOrderAsCategory</code>( <var class="Arg">object_datum_filter_string</var>, <var class="Arg">object_datum_total_order_func</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
-
-<p>Construct a totol order category out of</p>
-
-
-<ul>
-<li><p>the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>( <var class="Arg">object_datum_filter_string</var> ) of the underlying objects, and</p>
-
-</li>
-<li><p>the total order function on the underlying objects.</p>
-
-</li>
-</ul>
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := TotalOrderAsCategory( "IsInt", {a,b} -&gt; a &lt;= b );</span>
-TotalOrderAsCategory( "IsInt" )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( D );</span>
-A CAP category with name TotalOrderAsCategory( "IsInt" ):
-
-11 primitive operations were used to derive 76 operations for this category
-which algorithmically
-* IsPosetCategory
-* IsEquippedWithHomomorphismStructure
-and furthermore mathematically
-* IsTotalOrderCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">one := 1 / D;</span>
-&lt;An object in TotalOrderAsCategory( "IsInt" )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( one );</span>
-1
-
-An object in TotalOrderAsCategory( "IsInt" ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( one );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( "1" / D );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">two := 2 / D;</span>
-&lt;An object in TotalOrderAsCategory( "IsInt" )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_one := IdentityMorphism( one );</span>
-&lt;An identity morphism in TotalOrderAsCategory( "IsInt" )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( id_one );</span>
-fail
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( id_one, id_one ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( UniqueMorphism( one, one ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( UniqueMorphism( one, two ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( one, one );</span>
-&lt;(⊤)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( one, one );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( one, two );</span>
-&lt;(⊤)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( one, two );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( two, one );</span>
-&lt;(⊥)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( two, one );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProduct( [ one, two ] ) = one;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Coproduct( [ one, two ] ) = two;</span>
-true
-</pre></div>
-
-<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
-
-<h4>6.2 <span class="Heading">Attributes</span></h4>
-
-<p><a id="X79EAEAF77DC505F1" name="X79EAEAF77DC505F1"></a></p>
-
-<h5>6.2-1 UnderlyingObjectFilter</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingObjectFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>The object-membership function used to define the thin category <var class="Arg">C</var>.</p>
-
-<p><a id="X825BE79D7E86AABA" name="X825BE79D7E86AABA"></a></p>
-
-<h5>6.2-2 UnderlyingObjectMembershipFunction</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingObjectMembershipFunction</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>The underlying-object-membership function used to define the thin category <var class="Arg">C</var>. This function accepts two arguments in the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>(<code class="code">UnderlyingObjectFilter</code>(<var class="Arg">C</var>)) and returns <var class="Arg">true</var> if the underlying objects are equal <var class="Arg">false</var>.</p>
-
-<p><a id="X7BC903C378490711" name="X7BC903C378490711"></a></p>
-
-<h5>6.2-3 UnderlyingObjectEqualityFunction</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingObjectEqualityFunction</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>The underlying-object-equality function used to define the thin category <var class="Arg">C</var>. This function accepts two arguments in the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>(<code class="code">UnderlyingObjectFilter</code>(<var class="Arg">C</var>)) and returns <var class="Arg">true</var> if the underlying objects are equal <var class="Arg">false</var>.</p>
-
-<p><a id="X7A67D58582A8CDAF" name="X7A67D58582A8CDAF"></a></p>
-
-<h5>6.2-4 UnderlyingPreorderFunction</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingPreorderFunction</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>The preorder function used to define the thin category <var class="Arg">C</var>. This function accepts two arguments in the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>(<code class="code">UnderlyingObjectFilter</code>(<var class="Arg">C</var>)) and returns <var class="Arg">true</var> or <var class="Arg">false</var>.</p>
-
-<p><a id="X8356F8357863572C" name="X8356F8357863572C"></a></p>
-
-<h5>6.2-5 UnderlyingObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
-
-<h4>6.3 <span class="Heading">GAP Categories</span></h4>
-
-<p><a id="X87A1F0757E5F9942" name="X87A1F0757E5F9942"></a></p>
-
-<h5>6.3-1 IsProsetAsCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsProsetAsCategory</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsBiHeytingAlgebroid</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of preordered sets viewed as categories.</p>
+<p>The property of <var class="Arg">C</var> being a bi-Heyting algebroid.</p>
+
+<p><a id="X8322889679F3DD3C" name="X8322889679F3DD3C"></a></p>
+
+<h5>6.1-2 IsBiHeytingAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsBiHeytingAlgebra</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The property of <var class="Arg">C</var> being a bi-Heyting algebra.</p>
+
+<p><a id="X7D6CF5588711486D" name="X7D6CF5588711486D"></a></p>
+
+<h5>6.1-3 IsBooleanAlgebroid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsBooleanAlgebroid</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The property of <var class="Arg">C</var> being a Boolean algebroid.</p>
+
+<p><a id="X84921A2B7C841849" name="X84921A2B7C841849"></a></p>
+
+<h5>6.1-4 IsBooleanAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsBooleanAlgebra</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The property of <var class="Arg">C</var> being a Boolean algebra.</p>
+
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>6.2 <span class="Heading">Operations</span></h4>
+
+<p><a id="X870996D686DDD825" name="X870996D686DDD825"></a></p>
+
+<h5>6.2-1 MorphismFromDoubleNegation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromDoubleNegation</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\neg\neg a, a)\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the inverse <span class="SimpleMath">\(\neg\neg a \rightarrow a\)</span> of the morphism to the double negation.</p>
+
+<p><a id="X830BF6117BF525CF" name="X830BF6117BF525CF"></a></p>
+
+<h5>6.2-2 MorphismFromDoubleNegationWithGivenDoubleNegation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromDoubleNegationWithGivenDoubleNegation</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\neg\neg a, a)\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>, and an object <span class="SimpleMath">\(s = \neg\neg a\)</span>. The output is the inverse <span class="SimpleMath">\(\neg\neg a \rightarrow a\)</span> of the morphism to the double negation.</p>
+
+<p><a id="X7B25947483724722" name="X7B25947483724722"></a></p>
+
+<h5>6.2-3 MorphismToDoubleConegation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismToDoubleConegation</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a, \ulcorner\ulcorner a)\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the inverse <span class="SimpleMath">\(a \rightarrow \ulcorner\ulcorner a\)</span> of the morphism from the double conegation.</p>
+
+<p><a id="X8436F9C67D102179" name="X8436F9C67D102179"></a></p>
+
+<h5>6.2-4 MorphismToDoubleConegationWithGivenDoubleConegation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismToDoubleConegationWithGivenDoubleConegation</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a, \ulcorner\ulcorner a)\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>, and an object <span class="SimpleMath">\(r = \ulcorner\ulcorner a\)</span>. The output is the inverse <span class="SimpleMath">\(a \rightarrow \ulcorner\ulcorner a\)</span> of the morphism from the double conegation.</p>
+
+<p><a id="X85C8C80F785AEB5E" name="X85C8C80F785AEB5E"></a></p>
+
+<h4>6.3 <span class="Heading">Add-methods</span></h4>
+
+<p><a id="X82AD6F147D5FEDF7" name="X82AD6F147D5FEDF7"></a></p>
+
+<h5>6.3-1 AddMorphismFromDoubleNegation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromDoubleNegation</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MorphismFromDoubleNegation</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{MorphismFromDoubleNegation}(a)\)</span>.</p>
+
+<p><a id="X7D0626598578D4CA" name="X7D0626598578D4CA"></a></p>
+
+<h5>6.3-2 AddMorphismFromDoubleNegationWithGivenDoubleNegation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromDoubleNegationWithGivenDoubleNegation</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MorphismFromDoubleNegationWithGivenDoubleNegation</code>. <span class="SimpleMath">\(F: ( a, s ) \mapsto \mathtt{MorphismFromDoubleNegationWithGivenDoubleNegation}(a, s)\)</span>.</p>
+
+<p><a id="X7B97B14585A8E5B4" name="X7B97B14585A8E5B4"></a></p>
+
+<h5>6.3-3 AddMorphismToDoubleConegation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismToDoubleConegation</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MorphismToDoubleConegation</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{MorphismToDoubleConegation}(a)\)</span>.</p>
+
+<p><a id="X7A4DD8CD7C42B2AA" name="X7A4DD8CD7C42B2AA"></a></p>
+
+<h5>6.3-4 AddMorphismToDoubleConegationWithGivenDoubleConegation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismToDoubleConegationWithGivenDoubleConegation</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MorphismToDoubleConegationWithGivenDoubleConegation</code>. <span class="SimpleMath">\(F: ( a, r ) \mapsto \mathtt{MorphismToDoubleConegationWithGivenDoubleConegation}(a, r)\)</span>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7_mj.html">[Next Chapter]</a>&nbsp;  </div>

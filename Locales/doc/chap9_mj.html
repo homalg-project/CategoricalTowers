@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (Locales) - Chapter 9: Meet-semilattice of differences</title>
+<title>GAP (Locales) - Chapter 9: Meet-semilattice of single/multiple differences</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -23,104 +23,155 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap10_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap9.html">[MathJax off]</a></p>
-<p><a id="X823DE8467E6033EC" name="X823DE8467E6033EC"></a></p>
-<div class="ChapSects"><a href="chap9_mj.html#X823DE8467E6033EC">9 <span class="Heading">Meet-semilattice of differences</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X86EC0F0A78ECBC10">9.1 <span class="Heading">Constructors</span></a>
+<p><a id="X8409FAE87BD55AA5" name="X8409FAE87BD55AA5"></a></p>
+<div class="ChapSects"><a href="chap9_mj.html#X8409FAE87BD55AA5">9 <span class="Heading">Meet-semilattice of single/multiple differences</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X871597447BB998A1">9.1 <span class="Heading">Properties</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7F322B9A7F84E04D">9.1-1 MeetSemilatticeOfSingleDifferences</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X838148F87A8C9B8E"><code>9.1-2 \-</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X869F6A1E82483EC1">9.1-1 IsClosed</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7D5001F080921019">9.1-2 IsOpen</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X821FDABD8208F810">9.1-3 IsLocallyClosed</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X7DE8E16C7C2D387B">9.2 <span class="Heading">Operations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X7C701DBF7BAE649A">9.2 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X81BCA16B82B204F3">9.2-1 MinuendAndSubtrahendInUnderlyingLattice</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7F0AA0917AC6E582">9.2-2 DistinguishedSubtrahend</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X792A5BC9858C02F2">9.2-1 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X80D9BCA181503772">9.2-2 LocallyClosedPart</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X86342B8A85C58F91">9.2-3 CanonicalObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7DEE29007DE8151D">9.2-4 FactorizeObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X85E6F9037820D2D7">9.2-5 Closure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7CA193087D3BA5F8">9.2-6 Dimension</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X7D03633A7D98026B">9.3 <span class="Heading">GAP Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X7DE8E16C7C2D387B">9.3 <span class="Heading">Operations</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7964CD10853A882E">9.3-1 IsMeetSemilatticeOfSingleDifferences</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7B60FB7E7EB6706B">9.3-2 IsObjectInMeetSemilatticeOfSingleDifferences</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X842E55CC83378904">9.3-3 IsMorphismInMeetSemilatticeOfSingleDifferences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7DDA92A87F8C0F8B">9.3-1 NormalizeObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X83DA057281FC16AC">9.3-2 StandardizeObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X7D03633A7D98026B">9.4 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7DEB897A86951E6C">9.4-1 IsMeetSemilatticeOfDifferences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X86E8EF857C6E149C">9.4-2 IsObjectInMeetSemilatticeOfDifferences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7CE59E2A7B81C335">9.4-3 IsMorphismInMeetSemilatticeOfDifferences</a></span>
 </div></div>
 </div>
 
-<h3>9 <span class="Heading">Meet-semilattice of differences</span></h3>
+<h3>9 <span class="Heading">Meet-semilattice of single/multiple differences</span></h3>
 
-<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+<p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
 
-<h4>9.1 <span class="Heading">Constructors</span></h4>
+<h4>9.1 <span class="Heading">Properties</span></h4>
 
-<p><a id="X7F322B9A7F84E04D" name="X7F322B9A7F84E04D"></a></p>
+<p><a id="X869F6A1E82483EC1" name="X869F6A1E82483EC1"></a></p>
 
-<h5>9.1-1 MeetSemilatticeOfSingleDifferences</h5>
+<h5>9.1-1 IsClosed</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MeetSemilatticeOfSingleDifferences</code>( <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsClosed</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>The embedding of the meet-semilattice of formal single/multiple differences into the underlying lattice has a right adjoint, at least in case the underying lattice is a co-Heyting algebra. A formal single difference is closed if its component of the unit of the above adjunction is an isomorphism.</p>
 
-<p>Construct the meet-semilattice of differences from the lattice <var class="Arg">L</var>.</p>
+<p><a id="X7D5001F080921019" name="X7D5001F080921019"></a></p>
 
-<p><a id="X838148F87A8C9B8E" name="X838148F87A8C9B8E"></a></p>
+<h5>9.1-2 IsOpen</h5>
 
-<h5><code>9.1-2 \-</code></h5>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsOpen</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \-</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FormalDifferenceOfNormalizedObjects</code>( <var class="Arg">u</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Form the formal single difference object <var class="Arg">A</var> - <var class="Arg">B</var>. The expression <var class="Arg">A</var> - 0 := <var class="Arg">A</var> - <code class="code">InitialObject</code>( <code class="code">CapCategory</code>( <var class="Arg">A</var> ) ). The expression - <var class="Arg">A</var> := <code class="code">TerminalObject</code>( <code class="code">CapCategory</code>( <var class="Arg">A</var> ) ) - <var class="Arg">A</var>. <code class="code">FormalDifferenceOfNormalizedObjects</code> assumes that <var class="Arg">A</var> and <var class="Arg">B</var> are "normalized"</p>
+<p>Check if the complement (a constructible object) of <var class="Arg">A</var> is closed.</p>
 
+<p><a id="X821FDABD8208F810" name="X821FDABD8208F810"></a></p>
+
+<h5>9.1-3 IsLocallyClosed</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsLocallyClosed</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>9.2 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X792A5BC9858C02F2" name="X792A5BC9858C02F2"></a></p>
+
+<h5>9.2-1 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP category</p>
+
+<p>The category underlying the meet-semilattice of single/multiple differences <var class="Arg">D</var>.</p>
+
+<p><a id="X80D9BCA181503772" name="X80D9BCA181503772"></a></p>
+
+<h5>9.2-2 LocallyClosedPart</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LocallyClosedPart</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X86342B8A85C58F91" name="X86342B8A85C58F91"></a></p>
+
+<h5>9.2-3 CanonicalObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanonicalObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7DEE29007DE8151D" name="X7DEE29007DE8151D"></a></p>
+
+<h5>9.2-4 FactorizeObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FactorizeObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X85E6F9037820D2D7" name="X85E6F9037820D2D7"></a></p>
+
+<h5>9.2-5 Closure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Closure</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object in a co-Heyting algebra.</p>
+
+<p>The closure of the formal single difference <var class="Arg">A</var> in the underlying co-Heyting algebra.</p>
+
+<p><a id="X7CA193087D3BA5F8" name="X7CA193087D3BA5F8"></a></p>
+
+<h5>9.2-6 Dimension</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dimension</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
 
-<h4>9.2 <span class="Heading">Operations</span></h4>
+<h4>9.3 <span class="Heading">Operations</span></h4>
 
-<p><a id="X81BCA16B82B204F3" name="X81BCA16B82B204F3"></a></p>
+<p><a id="X7DDA92A87F8C0F8B" name="X7DDA92A87F8C0F8B"></a></p>
 
-<h5>9.2-1 MinuendAndSubtrahendInUnderlyingLattice</h5>
+<h5>9.3-1 NormalizeObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MinuendAndSubtrahendInUnderlyingLattice</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a pair of objects in a thin category</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NormalizeObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X83DA057281FC16AC" name="X83DA057281FC16AC"></a></p>
 
-<p>A pair in the underlying lattice representing the formal single difference <var class="Arg">A</var>.</p>
+<h5>9.3-2 StandardizeObject</h5>
 
-<p><a id="X7F0AA0917AC6E582" name="X7F0AA0917AC6E582"></a></p>
-
-<h5>9.2-2 DistinguishedSubtrahend</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DistinguishedSubtrahend</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: an object in a thin category</p>
-
-<p>The output <code class="code">S</code> should satisfy <var class="Arg">A</var>.I - <code class="code">S</code> = <var class="Arg">A</var>. The standard method returns <code class="code">NormalizedDistinguishedSubtrahend</code>( <var class="Arg">A</var> ) if <code class="code">HasNormalizedDistinguishedSubtrahend</code>( <var class="Arg">A</var> ) = <code class="code">true</code> or <code class="code">PreDistinguishedSubtrahend</code>( <var class="Arg">A</var> ) if <code class="code">HasPreDistinguishedSubtrahend</code>( <var class="Arg">A</var> ) = <code class="code">true</code>. The remaining behavior is unspecified.</p>
-
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StandardizeObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
-<h4>9.3 <span class="Heading">GAP Categories</span></h4>
+<h4>9.4 <span class="Heading">GAP categories</span></h4>
 
-<p><a id="X7964CD10853A882E" name="X7964CD10853A882E"></a></p>
+<p><a id="X7DEB897A86951E6C" name="X7DEB897A86951E6C"></a></p>
 
-<h5>9.3-1 IsMeetSemilatticeOfSingleDifferences</h5>
+<h5>9.4-1 IsMeetSemilatticeOfDifferences</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMeetSemilatticeOfSingleDifferences</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMeetSemilatticeOfDifferences</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of a meet-semilattice of single differences.</p>
+<p>The <strong class="pkg">GAP</strong> category of a meet-semilattice of single/multiple differences.</p>
 
-<p><a id="X7B60FB7E7EB6706B" name="X7B60FB7E7EB6706B"></a></p>
+<p><a id="X86E8EF857C6E149C" name="X86E8EF857C6E149C"></a></p>
 
-<h5>9.3-2 IsObjectInMeetSemilatticeOfSingleDifferences</h5>
+<h5>9.4-2 IsObjectInMeetSemilatticeOfDifferences</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInMeetSemilatticeOfSingleDifferences</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInMeetSemilatticeOfDifferences</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of objects in a meet-semilattice of differences.</p>
+<p>The <strong class="pkg">GAP</strong> category of objects in a meet-semilattice of single/multiple differences.</p>
 
-<p><a id="X842E55CC83378904" name="X842E55CC83378904"></a></p>
+<p><a id="X7CE59E2A7B81C335" name="X7CE59E2A7B81C335"></a></p>
 
-<h5>9.3-3 IsMorphismInMeetSemilatticeOfSingleDifferences</h5>
+<h5>9.4-3 IsMorphismInMeetSemilatticeOfDifferences</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInMeetSemilatticeOfSingleDifferences</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInMeetSemilatticeOfDifferences</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of morphisms in a meet-semilattice of differences.</p>
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a meet-semilattice of single/multiple differences.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap10_mj.html">[Next Chapter]</a>&nbsp;  </div>

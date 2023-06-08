@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (Locales) - Chapter 15: Meet-semilattice of single/multiple differences</title>
+<title>GAP (Locales) - Chapter 15: Tests</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -20,156 +20,107 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap14.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap15_mj.html">[MathJax on]</a></p>
-<p><a id="X8409FAE87BD55AA5" name="X8409FAE87BD55AA5"></a></p>
-<div class="ChapSects"><a href="chap15.html#X8409FAE87BD55AA5">15 <span class="Heading">Meet-semilattice of single/multiple differences</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X7D03633A7D98026B">15.1 <span class="Heading">GAP Categories</span></a>
+<p><a id="X7A810CDA83F2897F" name="X7A810CDA83F2897F"></a></p>
+<div class="ChapSects"><a href="chap15.html#X7A810CDA83F2897F">15 <span class="Heading">Tests</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X7D03633A7D98026B">15.1 <span class="Heading">GAP categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X7DEB897A86951E6C">15.1-1 IsMeetSemilatticeOfDifferences</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X86E8EF857C6E149C">15.1-2 IsObjectInMeetSemilatticeOfDifferences</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X7CE59E2A7B81C335">15.1-3 IsMorphismInMeetSemilatticeOfDifferences</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X871597447BB998A1">15.2 <span class="Heading">Properties</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X7D7026828261C26B">15.1-1 <span class="Heading">Precompilation</span></a>
 </span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X869F6A1E82483EC1">15.2-1 IsClosed</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X7D5001F080921019">15.2-2 IsOpen</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X821FDABD8208F810">15.2-3 IsLocallyClosed</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X7C701DBF7BAE649A">15.3 <span class="Heading">Attributes</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X792A5BC9858C02F2">15.3-1 UnderlyingCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X80D9BCA181503772">15.3-2 LocallyClosedPart</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X86342B8A85C58F91">15.3-3 CanonicalObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X7DEE29007DE8151D">15.3-4 FactorizeObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X85E6F9037820D2D7">15.3-5 Closure</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X7CA193087D3BA5F8">15.3-6 Dimension</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X7DE8E16C7C2D387B">15.4 <span class="Heading">Operations</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X7DDA92A87F8C0F8B">15.4-1 NormalizeObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X83DA057281FC16AC">15.4-2 StandardizeObject</a></span>
 </div></div>
 </div>
 
-<h3>15 <span class="Heading">Meet-semilattice of single/multiple differences</span></h3>
+<h3>15 <span class="Heading">Tests</span></h3>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
-<h4>15.1 <span class="Heading">GAP Categories</span></h4>
+<h4>15.1 <span class="Heading">GAP categories</span></h4>
 
-<p><a id="X7DEB897A86951E6C" name="X7DEB897A86951E6C"></a></p>
+<p><a id="X7D7026828261C26B" name="X7D7026828261C26B"></a></p>
 
-<h5>15.1-1 IsMeetSemilatticeOfDifferences</h5>
+<h5>15.1-1 <span class="Heading">Precompilation</span></h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMeetSemilatticeOfDifferences</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of a meet-semilattice of single/multiple differences.</p>
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", "&gt;= 2021.10-03", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegers( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># HomalgIdentityMatrix( size, ring ) * matrix -&gt; matrix</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "size", "ring", "matrix" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "HomalgIdentityMatrix( size, ring ) * matrix",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "matrix",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        needed_packages := [ [ "MatricesForHomalg", "&gt;= 2020.05.19" ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># matrix * HomalgIdentityMatrix( size, ring ) -&gt; matrix</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "size", "ring", "matrix" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "matrix * HomalgIdentityMatrix( size, ring )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "matrix",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        needed_packages := [ [ "MatricesForHomalg", "&gt;= 2020.05.19" ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># KroneckerMat( matrix, HomalgIdentityMatrix( 1, ring ) ) -&gt; matrix</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "ring", "matrix" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "KroneckerMat( matrix, HomalgIdentityMatrix( 1, ring ) )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "matrix",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        needed_packages := [ [ "MatricesForHomalg", "&gt;= 2020.05.19" ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># TransposedMatrix( HomalgIdentityMatrix( size, ring ) ) -&gt; HomalgIdentityMatrix( size, ring )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "size", "ring" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "TransposedMatrix( HomalgIdentityMatrix( size, ring ) )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "HomalgIdentityMatrix( size, ring )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        needed_packages := [ [ "MatricesForHomalg", "&gt;= 2020.05.19" ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># KroneckerMat( HomalgIdentityMatrix( size, ring ), matrix )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "size", "ring", "matrix" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "KroneckerMat( HomalgIdentityMatrix( size, ring ), matrix )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "DiagMat( ring, ListWithIdenticalEntries( size, matrix ) )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        needed_packages := [ [ "MatricesForHomalg", "&gt;= 2020.05.19" ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># we have to work hard to not write semicolons so AutoDoc</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># does not begin a new statement</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := EvalString( ReplacedString( """function( R )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local F, S, P, L@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    F := CategoryOfRows( R : FinalizeCategory := true )@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    S := SliceCategoryOverTensorUnit( F : FinalizeCategory := true )@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    P := PosetOfCategory( S : FinalizeCategory := true )@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    L := StablePosetOfCategory( P )@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return L@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">end""", "@", ";" ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ ZZ ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "StablePosetOfCategoryOfPosetOfCategoryOfSliceCategoryOverTensorUnitOfCategoryOfRowsOfCommutativeRingPrecompiled";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "Locales";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := [ "ExponentialOnObjects" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_object := 5,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_object := 1</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+</pre></div>
 
-<p><a id="X86E8EF857C6E149C" name="X86E8EF857C6E149C"></a></p>
-
-<h5>15.1-2 IsObjectInMeetSemilatticeOfDifferences</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInMeetSemilatticeOfDifferences</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of objects in a meet-semilattice of single/multiple differences.</p>
-
-<p><a id="X7CE59E2A7B81C335" name="X7CE59E2A7B81C335"></a></p>
-
-<h5>15.1-3 IsMorphismInMeetSemilatticeOfDifferences</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInMeetSemilatticeOfDifferences</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of morphisms in a meet-semilattice of single/multiple differences.</p>
-
-<p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
-
-<h4>15.2 <span class="Heading">Properties</span></h4>
-
-<p><a id="X869F6A1E82483EC1" name="X869F6A1E82483EC1"></a></p>
-
-<h5>15.2-1 IsClosed</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsClosed</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>The embedding of the meet-semilattice of formal single/multiple differences into the underlying lattice has a right adjoint, at least in case the underying lattice is a co-Heyting algebra. A formal single difference is closed if its component of the unit of the above adjunction is an isomorphism.</p>
-
-<p><a id="X7D5001F080921019" name="X7D5001F080921019"></a></p>
-
-<h5>15.2-2 IsOpen</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsOpen</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>Check if the complement (a constructible object) of <var class="Arg">A</var> is closed.</p>
-
-<p><a id="X821FDABD8208F810" name="X821FDABD8208F810"></a></p>
-
-<h5>15.2-3 IsLocallyClosed</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsLocallyClosed</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
-
-<h4>15.3 <span class="Heading">Attributes</span></h4>
-
-<p><a id="X792A5BC9858C02F2" name="X792A5BC9858C02F2"></a></p>
-
-<h5>15.3-1 UnderlyingCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP category</p>
-
-<p>The category underlying the meet-semilattice of single/multiple differences <var class="Arg">D</var>.</p>
-
-<p><a id="X80D9BCA181503772" name="X80D9BCA181503772"></a></p>
-
-<h5>15.3-2 LocallyClosedPart</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LocallyClosedPart</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X86342B8A85C58F91" name="X86342B8A85C58F91"></a></p>
-
-<h5>15.3-3 CanonicalObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanonicalObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7DEE29007DE8151D" name="X7DEE29007DE8151D"></a></p>
-
-<h5>15.3-4 FactorizeObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FactorizeObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X85E6F9037820D2D7" name="X85E6F9037820D2D7"></a></p>
-
-<h5>15.3-5 Closure</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Closure</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: an object in a co-Heyting algebra.</p>
-
-<p>The closure of the formal single difference <var class="Arg">A</var> in the underlying co-Heyting algebra.</p>
-
-<p><a id="X7CA193087D3BA5F8" name="X7CA193087D3BA5F8"></a></p>
-
-<h5>15.3-6 Dimension</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dimension</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
-
-<h4>15.4 <span class="Heading">Operations</span></h4>
-
-<p><a id="X7DDA92A87F8C0F8B" name="X7DDA92A87F8C0F8B"></a></p>
-
-<h5>15.4-1 NormalizeObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NormalizeObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X83DA057281FC16AC" name="X83DA057281FC16AC"></a></p>
-
-<h5>15.4-2 StandardizeObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StandardizeObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap14.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
 

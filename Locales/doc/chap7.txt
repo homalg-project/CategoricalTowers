@@ -1,543 +1,213 @@
   
-  [1X7 [33X[0;0YThe (stable) proset/poset of a category[133X[101X
+  [1X7 [33X[0;0YPreordered sets viewed as categories[133X[101X
   
   
-  [1X7.1 [33X[0;0YGlobal variables[133X[101X
+  [1X7.1 [33X[0;0YConstructors[133X[101X
   
-  [1X7.1-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY[101X
+  [1X7.1-1 ProsetAsCategory[101X
   
-  [33X[1;0Y[29X[2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY[102X [32X global variable[133X
+  [33X[1;0Y[29X[2XProsetAsCategory[102X( [3Xinput_record[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YConstruct  a  thin  category out of the [3Xinput_record[103X consisting of values to
+  the keys:[133X
+  
+  [30X    [33X[0;6Y[3Xname[103X: the string defining the name of the category,[133X
+  
+  [30X    [33X[0;6Y[3Xobject_datum_filter_string[103X:    a   string   such   that   [10XValueGlobal[110X(
+        [3Xobject_datum_filter_string[103X  )  is  the  [5XGAP[105X-filter  of  the underlying
+        objects,[133X
+  
+  [30X    [33X[0;6Y[3Xobject_datum_membership_func[103X:     the     underlying-object-membership
+        function,[133X
+  
+  [30X    [33X[0;6Y[3Xobject_datum_equality_func[103X: the underlying-object-equality function,[133X
+  
+  [30X    [33X[0;6Y[3Xobject_datum_preorder_func[103X:  the  preorder  function on the underlying
+        objects, and[133X
+  
+  [30X    [33X[0;6Y[3Xproperties[103X:   a   list   of   categorical  properties,  additional  to
+        [10XIsThinCategory[110X.[133X
+  
+  [30X    [33X[0;6YIf [3Xname[103X is missing it defaults to [3Xobject_datum_filter_string[103X.[133X
+  
+  [30X    [33X[0;6YIf [3Xobject_datum_membership_func[103X is missing it defaults to [10XValueGlobal[110X(
+        [3Xobject_datum_filter_string[103X ).[133X
+  
+  [30X    [33X[0;6YIf [3Xobject_datum_equality_func[103X is missing it defaults to [10XEQ[110X.[133X
+  
+  [30X    [33X[0;6YIf    [3Xobject_datum_preorder_func[103X    is    missing   it   defaults   to
+        [3Xobject_datum_equality_func[103X.[133X
+  
+  [30X    [33X[0;6YIf [3Xproperties[103X is missing it defaults to the empty list.[133X
+  
+  [1X7.1-2 DiscreteSkeletalCategory[101X
+  
+  [33X[1;0Y[29X[2XDiscreteSkeletalCategory[102X( [3Xobject_datum_filter_string[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YConstruct a discrete category out of[133X
+  
+  [30X    [33X[0;6Ythe   [5XGAP[105X-filter  [10XValueGlobal[110X(  [3Xobject_datum_filter_string[103X  )  of  the
+        underlying objects.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Locales" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XD := DiscreteSkeletalCategory( "IsInt" );[127X[104X
+    [4X[28XDiscreteSkeletalCategory( "IsInt" )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( D );[127X[104X
+    [4X[28XA CAP category with name DiscreteSkeletalCategory( "IsInt" ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X11 primitive operations were used to derive 74 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsPosetCategory[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsDiscreteCategory[128X[104X
+    [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xone := 1 / D;[127X[104X
+    [4X[28X<An object in DiscreteSkeletalCategory( "IsInt" )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( one );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in DiscreteSkeletalCategory( "IsInt" ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( one );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( "1" / D );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xtwo := 2 / D;[127X[104X
+    [4X[28X<An object in DiscreteSkeletalCategory( "IsInt" )>[128X[104X
+    [4X[25Xgap>[125X [27Xid_one := IdentityMorphism( one );[127X[104X
+    [4X[28X<An identity morphism in DiscreteSkeletalCategory( "IsInt" )>[128X[104X
+    [4X[25Xgap>[125X [27XMorphismDatum( id_one );[127X[104X
+    [4X[28Xfail[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( PreCompose( id_one, id_one ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( UniqueMorphism( one, one ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( UniqueMorphism( one, two ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( one, one );[127X[104X
+    [4X[28X<(⊤)>[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( one, two );[127X[104X
+    [4X[28X<(⊥)>[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( two, one );[127X[104X
+    [4X[28X<(⊥)>[128X[104X
+  [4X[32X[104X
+  
+  [1X7.1-3 TotalOrderAsCategory[101X
+  
+  [33X[1;0Y[29X[2XTotalOrderAsCategory[102X( [3Xobject_datum_filter_string[103X, [3Xobject_datum_total_order_func[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YConstruct a totol order category out of[133X
+  
+  [30X    [33X[0;6Ythe   [5XGAP[105X-filter  [10XValueGlobal[110X(  [3Xobject_datum_filter_string[103X  )  of  the
+        underlying objects, and[133X
+  
+  [30X    [33X[0;6Ythe total order function on the underlying objects.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Locales" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XD := TotalOrderAsCategory( "IsInt", {a,b} -> a <= b );[127X[104X
+    [4X[28XTotalOrderAsCategory( "IsInt" )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( D );[127X[104X
+    [4X[28XA CAP category with name TotalOrderAsCategory( "IsInt" ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X11 primitive operations were used to derive 76 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsPosetCategory[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsTotalOrderCategory[128X[104X
+    [4X[25Xgap>[125X [27Xone := 1 / D;[127X[104X
+    [4X[28X<An object in TotalOrderAsCategory( "IsInt" )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( one );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in TotalOrderAsCategory( "IsInt" ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( one );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( "1" / D );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xtwo := 2 / D;[127X[104X
+    [4X[28X<An object in TotalOrderAsCategory( "IsInt" )>[128X[104X
+    [4X[25Xgap>[125X [27Xid_one := IdentityMorphism( one );[127X[104X
+    [4X[28X<An identity morphism in TotalOrderAsCategory( "IsInt" )>[128X[104X
+    [4X[25Xgap>[125X [27XMorphismDatum( id_one );[127X[104X
+    [4X[28Xfail[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( PreCompose( id_one, id_one ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( UniqueMorphism( one, one ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( UniqueMorphism( one, two ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( one, one );[127X[104X
+    [4X[28X<(⊤)>[128X[104X
+    [4X[25Xgap>[125X [27XIsHomSetInhabited( one, one );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( one, two );[127X[104X
+    [4X[28X<(⊤)>[128X[104X
+    [4X[25Xgap>[125X [27XIsHomSetInhabited( one, two );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( two, one );[127X[104X
+    [4X[28X<(⊥)>[128X[104X
+    [4X[25Xgap>[125X [27XIsHomSetInhabited( two, one );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XDirectProduct( [ one, two ] ) = one;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCoproduct( [ one, two ] ) = two;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
   
   
   [1X7.2 [33X[0;0YAttributes[133X[101X
   
-  [1X7.2-1 AmbientCategory[101X
+  [1X7.2-1 UnderlyingObjectFilter[101X
   
-  [33X[1;0Y[29X[2XAmbientCategory[102X( [3XP[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
+  [33X[1;0Y[29X[2XUnderlyingObjectFilter[102X( [3XC[103X ) [32X attribute[133X
   
-  [33X[0;0YThe ambient category of the proset [3XP[103X.[133X
+  [33X[0;0YThe object-membership function used to define the thin category [3XC[103X.[133X
   
-  [1X7.2-2 UnderlyingCell[101X
+  [1X7.2-2 UnderlyingObjectMembershipFunction[101X
   
-  [33X[1;0Y[29X[2XUnderlyingCell[102X( [3Xcell[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X cell[133X
+  [33X[1;0Y[29X[2XUnderlyingObjectMembershipFunction[102X( [3XC[103X ) [32X attribute[133X
   
-  [33X[0;0YThe cell in the ambient category underlying [3Xcell[103X.[133X
+  [33X[0;0YThe  underlying-object-membership  function used to define the thin category
+  [3XC[103X.    This    function    accepts    two   arguments   in   the   [5XGAP[105X-filter
+  [10XValueGlobal[110X([10XUnderlyingObjectFilter[110X([3XC[103X))  and  returns  [3Xtrue[103X if the underlying
+  objects are equal [3Xfalse[103X.[133X
   
+  [1X7.2-3 UnderlyingObjectEqualityFunction[101X
   
-  [1X7.3 [33X[0;0YConstructors[133X[101X
+  [33X[1;0Y[29X[2XUnderlyingObjectEqualityFunction[102X( [3XC[103X ) [32X attribute[133X
   
-  [1X7.3-1 CreateProsetOrPosetOfCategory[101X
+  [33X[0;0YThe  underlying-object-equality function used to define the thin category [3XC[103X.
+  This     function     accepts    two    arguments    in    the    [5XGAP[105X-filter
+  [10XValueGlobal[110X([10XUnderlyingObjectFilter[110X([3XC[103X))  and  returns  [3Xtrue[103X if the underlying
+  objects are equal [3Xfalse[103X.[133X
   
-  [33X[1;0Y[29X[2XCreateProsetOrPosetOfCategory[102X( [3XC[103X ) [32X operation[133X
+  [1X7.2-4 UnderlyingPreorderFunction[101X
   
-  [1X7.3-2 ProsetOfCategory[101X
+  [33X[1;0Y[29X[2XUnderlyingPreorderFunction[102X( [3XC[103X ) [32X attribute[133X
   
-  [33X[1;0Y[29X[2XProsetOfCategory[102X( [3XC[103X ) [32X attribute[133X
+  [33X[0;0YThe  preorder  function  used  to  define the thin category [3XC[103X. This function
+  accepts         two         arguments        in        the        [5XGAP[105X-filter
+  [10XValueGlobal[110X([10XUnderlyingObjectFilter[110X([3XC[103X)) and returns [3Xtrue[103X or [3Xfalse[103X.[133X
   
-  [1X7.3-3 StableProsetOfCategory[101X
+  [1X7.2-5 UnderlyingObject[101X
   
-  [33X[1;0Y[29X[2XStableProsetOfCategory[102X( [3XC[103X ) [32X attribute[133X
-  
-  [1X7.3-4 PosetOfCategory[101X
-  
-  [33X[1;0Y[29X[2XPosetOfCategory[102X( [3XC[103X ) [32X attribute[133X
-  
-  [1X7.3-5 StablePosetOfCategory[101X
-  
-  [33X[1;0Y[29X[2XStablePosetOfCategory[102X( [3XC[103X ) [32X attribute[133X
-  
-  [1X7.3-6 AsCellOfProset[101X
-  
-  [33X[1;0Y[29X[2XAsCellOfProset[102X( [3Xc[103X ) [32X attribute[133X
-  
-  [1X7.3-7 AsCellOfStableProset[101X
-  
-  [33X[1;0Y[29X[2XAsCellOfStableProset[102X( [3Xc[103X ) [32X attribute[133X
-  
-  [1X7.3-8 AsCellOfPoset[101X
-  
-  [33X[1;0Y[29X[2XAsCellOfPoset[102X( [3Xc[103X ) [32X attribute[133X
-  
-  [1X7.3-9 AsCellOfStablePoset[101X
-  
-  [33X[1;0Y[29X[2XAsCellOfStablePoset[102X( [3Xc[103X ) [32X attribute[133X
-  
-  [1X7.3-10 /[101X
-  
-  [33X[1;0Y[29X[2X/[102X( [3Xobject[103X, [3XP[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XUnderlyingObject[102X( [3Xarg[103X ) [32X attribute[133X
   
   
-  [1X7.4 [33X[0;0YExamples[133X[101X
+  [1X7.3 [33X[0;0YGAP categories[133X[101X
   
+  [1X7.3-1 IsProsetAsCategory[101X
   
-  [1X7.4-1 [33X[0;0YIdeal quotient[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", ">= 2020.05.01" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
-    [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XR := Q["x,y"];[127X[104X
-    [4X[28XQ[x,y][128X[104X
-    [4X[25Xgap>[125X [27XK := HomalgMatrix( "[ x, -x ]", 2, 1, R );[127X[104X
-    [4X[28X<A 2 x 1 matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27XJ := HomalgMatrix( "[ x, y ]", 2, 1, R );[127X[104X
-    [4X[28X<A 2 x 1 matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27XI := KroneckerMat( K, J );[127X[104X
-    [4X[28X<An unevaluated 4 x 1 matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27XP := CategoryOfRows( R );[127X[104X
-    [4X[28XRows( Q[x,y] )[128X[104X
-    [4X[25Xgap>[125X [27XP := LazyCategory( P : show_evaluation := false );[127X[104X
-    [4X[28XLazyCategory( Rows( Q[x,y] ) )[128X[104X
-    [4X[25Xgap>[125X [27XI := I / P; SetLabel( I, "I" ); SetLabel( Source( I ), "R^i" );[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XR := Range( I ); SetLabel( R, "R" );[127X[104X
-    [4X[28X<An evaluated object in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XJ := J / P; SetLabel( J, "J" ); SetLabel( Source( J ), "R^j" );[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XK := K / P;[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XS := SliceCategoryOverTensorUnit( P );[127X[104X
-    [4X[28XSliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XL := PosetOfCategory( S );[127X[104X
-    [4X[28XPosetOfCategory( SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XI := I / S / L;[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XJ := J / S / L;[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XK := K / S / L;[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XIqJ := InternalHom( J, I ); ## this is the ideal quotient I : J[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<A morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XK = IqJ;[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", ">= 2020.05.01" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
-    [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XR := Q["x,y"];[127X[104X
-    [4X[28XQ[x,y][128X[104X
-    [4X[25Xgap>[125X [27XK := HomalgMatrix( "[ x, -x ]", 2, 1, R );[127X[104X
-    [4X[28X<A 2 x 1 matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27XJ := HomalgMatrix( "[ x, y ]", 2, 1, R );[127X[104X
-    [4X[28X<A 2 x 1 matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27XI := KroneckerMat( K, J );[127X[104X
-    [4X[28X<An unevaluated 4 x 1 matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27XP := CategoryOfRows( R );[127X[104X
-    [4X[28XRows( Q[x,y] )[128X[104X
-    [4X[25Xgap>[125X [27XP := LazyCategory( P : primitive_operations := true, show_evaluation := false );[127X[104X
-    [4X[28XLazyCategory( Rows( Q[x,y] ) )[128X[104X
-    [4X[25Xgap>[125X [27XI := I / P; SetLabel( I, "I" ); SetLabel( Source( I ), "R^i" );[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XR := Range( I ); SetLabel( R, "R" );[127X[104X
-    [4X[28X<An evaluated object in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XJ := J / P; SetLabel( J, "J" ); SetLabel( Source( J ), "R^j" );[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XK := K / P;[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XS := SliceCategoryOverTensorUnit( P );[127X[104X
-    [4X[28XSliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XL := PosetOfCategory( S );[127X[104X
-    [4X[28XPosetOfCategory( SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XI := I / S / L;[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XJ := J / S / L;[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XK := K / S / L;[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XIqJ := InternalHom( J, I ); ## this is the ideal quotient I : J[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<A morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XK = IqJ;[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", ">= 2020.06.01" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
-    [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XR := Q["x,y"];[127X[104X
-    [4X[28XQ[x,y][128X[104X
-    [4X[25Xgap>[125X [27XK := HomalgMatrix( "[ x, -x ]", 2, 1, R );[127X[104X
-    [4X[28X<A 2 x 1 matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27XJ := HomalgMatrix( "[ x, y ]", 2, 1, R );[127X[104X
-    [4X[28X<A 2 x 1 matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27XI := KroneckerMat( K, J );[127X[104X
-    [4X[28X<An unevaluated 4 x 1 matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27XP := CategoryOfRows( R );[127X[104X
-    [4X[28XRows( Q[x,y] )[128X[104X
-    [4X[25Xgap>[125X [27XP := LazyCategory( P : show_evaluation := false );[127X[104X
-    [4X[28XLazyCategory( Rows( Q[x,y] ) )[128X[104X
-    [4X[25Xgap>[125X [27XI := I / P; SetLabel( I, "I" ); SetLabel( Source( I ), "R^i" );[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XR := Range( I ); SetLabel( R, "R" );[127X[104X
-    [4X[28X<An evaluated object in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XJ := J / P; SetLabel( J, "J" ); SetLabel( Source( J ), "R^j" );[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XK := K / P;[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>[128X[104X
-    [4X[25Xgap>[125X [27XS := LazyCategory( SliceCategoryOverTensorUnit( P ) );[127X[104X
-    [4X[28XLazyCategory( SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XL := LazyCategory( PosetOfCategory( S ) );[127X[104X
-    [4X[28XLazyCategory( PosetOfCategory( LazyCategory([128X[104X
-    [4X[28XSliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XI := I / S; SetLabel( I, "I" );[127X[104X
-    [4X[28X<An evaluated object in LazyCategory([128X[104X
-    [4X[28X SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XI := I / L; SetLabel( I, "I" );[127X[104X
-    [4X[28X<An evaluated object in LazyCategory( PosetOfCategory( LazyCategory([128X[104X
-    [4X[28X SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XJ := J / S; SetLabel( J, "J" );[127X[104X
-    [4X[28X<An evaluated object in LazyCategory([128X[104X
-    [4X[28X SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XJ := J / L; SetLabel( J, "J" );[127X[104X
-    [4X[28X<An evaluated object in LazyCategory( PosetOfCategory( LazyCategory([128X[104X
-    [4X[28X SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XK := K / S; SetLabel( K, "K" );[127X[104X
-    [4X[28X<An evaluated object in LazyCategory([128X[104X
-    [4X[28X SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XK := K / L; SetLabel( K, "K" );[127X[104X
-    [4X[28X<An evaluated object in LazyCategory( PosetOfCategory( LazyCategory([128X[104X
-    [4X[28X SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XIqJ := InternalHom( J, I ); ## this is the ideal quotient I : J[127X[104X
-    [4X[28X<An object in LazyCategory( PosetOfCategory( LazyCategory([128X[104X
-    [4X[28X SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsHomSetInhabited( K, IqJ );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsHomSetInhabited( IqJ, K );[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X7.5 [33X[0;0YGAP categories[133X[101X
-  
-  
-  [1X7.5-1 [33X[0;0YPoset of category[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2020.10-02" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
-    [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XR := Q["x,y"];[127X[104X
-    [4X[28XQ[x,y][128X[104X
-    [4X[25Xgap>[125X [27XF := CategoryOfRows( R );[127X[104X
-    [4X[28XRows( Q[x,y] )[128X[104X
-    [4X[25Xgap>[125X [27XS := SliceCategoryOverTensorUnit( F );[127X[104X
-    [4X[28XSliceCategoryOverTensorUnit( Rows( Q[x,y] ) )[128X[104X
-    [4X[25Xgap>[125X [27XP := PosetOfCategory( S );[127X[104X
-    [4X[28XPosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XI := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XJ := HomalgMatrix( "[ x, y ]", 2, 1, R ) / F / S / P;[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIJ := TensorProduct( I, J );[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIiJ := DirectProduct( I, J );[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIiJ = I;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsHomSetInhabited( IJ, IiJ );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsHomSetInhabited( IiJ, IJ );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIpJ := Coproduct( I, J );[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIpJ = J;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIJqJ := InternalHom( J, IJ ); ## this is the ideal quotient IJ : J[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIJqJ = I;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xiota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );[127X[104X
-    [4X[28X<An epi-, monomorphism in PosetOfCategory( SliceCategoryOverTensorUnit( \[128X[104X
-    [4X[28X Rows( Q[x,y] ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( iota );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsIsomorphism( iota );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIJJ := TensorProduct( IJ, J );[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIJJqJ := InternalHom( J, IJJ );[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIJJqJ = I;[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIJJsJ := StableInternalHom( J, IJJ );[127X[104X
-    [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
-    [4X[28X<A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIJJsJ = I;[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X7.5-2 [33X[0;0YStable poset of category[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2020.10-02" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
-    [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XR := Q["x"] / "x^2";[127X[104X
-    [4X[28XQ[x]/( x^2 )[128X[104X
-    [4X[25Xgap>[125X [27XF := CategoryOfRows( R );[127X[104X
-    [4X[28XRows( Q[x]/( x^2 ) )[128X[104X
-    [4X[25Xgap>[125X [27XS := SliceCategoryOverTensorUnit( F );[127X[104X
-    [4X[28XSliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XP := PosetOfCategory( S );[127X[104X
-    [4X[28XPosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XL := StablePosetOfCategory( P );[127X[104X
-    [4X[28XStablePosetOfCategory( PosetOfCategory([128X[104X
-    [4X[28XSliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XN := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;[127X[104X
-    [4X[28XAn object in the poset given by:[128X[104X
-    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x]/( x^2 ) )>[128X[104X
-    [4X[25Xgap>[125X [27XI := InitialObject( P );[127X[104X
-    [4X[28XAn object in the poset given by:[128X[104X
-    [4X[28XAn object in the slice category given by:[128X[104X
-    [4X[28X<A zero, split monomorphism in Rows( Q[x]/( x^2 ) )>[128X[104X
-    [4X[25Xgap>[125X [27XI = N;[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsInitial( I );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsInitial( N );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XrN := N / L;[127X[104X
-    [4X[28XAn object in the stable poset given by:[128X[104X
-    [4X[28XAn object in the poset given by:[128X[104X
-    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x]/( x^2 ) )>[128X[104X
-    [4X[25Xgap>[125X [27XrI := I / L;[127X[104X
-    [4X[28XAn object in the stable poset given by:[128X[104X
-    [4X[28XAn object in the poset given by:[128X[104X
-    [4X[28XAn object in the slice category given by:[128X[104X
-    [4X[28X<A zero, split monomorphism in Rows( Q[x]/( x^2 ) )>[128X[104X
-    [4X[25Xgap>[125X [27XrI = rN;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsInitial( rI );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsInitial( rN );[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2023.02-01" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
-    [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XR := Q["x,y"];[127X[104X
-    [4X[28XQ[x,y][128X[104X
-    [4X[25Xgap>[125X [27XF := CategoryOfRows( R );[127X[104X
-    [4X[28XRows( Q[x,y] )[128X[104X
-    [4X[25Xgap>[125X [27XS := SliceCategoryOverTensorUnit( F );[127X[104X
-    [4X[28XSliceCategoryOverTensorUnit( Rows( Q[x,y] ) )[128X[104X
-    [4X[25Xgap>[125X [27XP := PosetOfCategory( S );[127X[104X
-    [4X[28XPosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
-    [4X[28XA CAP category with name[128X[104X
-    [4X[28XPosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X16 primitive operations were used to derive 253 operations for this category[128X[104X
-    [4X[28Xwhich algorithmically[128X[104X
-    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
-    [4X[28X* IsClosedMonoidalLattice[128X[104X
-    [4X[28X* IsSymmetricClosedMonoidalCategory[128X[104X
-    [4X[28Xand furthermore mathematically[128X[104X
-    [4X[28X* IsSkeletalCategory[128X[104X
-    [4X[28X* IsStrictCartesianCategory[128X[104X
-    [4X[28X* IsStrictCocartesianCategory[128X[104X
-    [4X[28X* IsStrictMonoidalCategory[128X[104X
-    [4X[25Xgap>[125X [27XL := StablePosetOfCategory( P );[127X[104X
-    [4X[28XStablePosetOfCategory( PosetOfCategory([128X[104X
-    [4X[28XSliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( L );[127X[104X
-    [4X[28XA CAP category with name[128X[104X
-    [4X[28XStablePosetOfCategory( PosetOfCategory([128X[104X
-    [4X[28XSliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X15 primitive operations were used to derive 303 operations for this category[128X[104X
-    [4X[28Xwhich algorithmically[128X[104X
-    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
-    [4X[28X* IsHeytingAlgebra[128X[104X
-    [4X[28X* IsClosedMonoidalLattice[128X[104X
-    [4X[28X* IsSymmetricClosedMonoidalCategory[128X[104X
-    [4X[28Xand furthermore mathematically[128X[104X
-    [4X[28X* IsSkeletalCategory[128X[104X
-    [4X[28X* IsStableProset[128X[104X
-    [4X[28X* IsStrictCartesianCategory[128X[104X
-    [4X[28X* IsStrictCocartesianCategory[128X[104X
-    [4X[28X* IsStrictMonoidalCategory[128X[104X
-    [4X[25Xgap>[125X [27XI := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P / L;[127X[104X
-    [4X[28XAn object in the stable poset given by:[128X[104X
-    [4X[28XAn object in the poset given by:[128X[104X
-    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XJ := HomalgMatrix( "[ x, y ]", 2, 1, R ) / F / S / P / L;[127X[104X
-    [4X[28XAn object in the stable poset given by:[128X[104X
-    [4X[28XAn object in the poset given by:[128X[104X
-    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIJ := TensorProduct( I, J );[127X[104X
-    [4X[28XAn object in the stable poset given by:[128X[104X
-    [4X[28XAn object in the poset given by:[128X[104X
-    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIiJ := DirectProduct( I, J );[127X[104X
-    [4X[28XAn object in the stable poset given by:[128X[104X
-    [4X[28XAn object in the poset given by:[128X[104X
-    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIsHomSetInhabited( IJ, IiJ );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsHomSetInhabited( IiJ, IJ );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIiJ = I;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIpJ := Coproduct( I, J );[127X[104X
-    [4X[28XAn object in the stable poset given by:[128X[104X
-    [4X[28XAn object in the poset given by:[128X[104X
-    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIpJ = J;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIJqJ := InternalHom( J, IJ ); ## this is the ideal quotient IJ : J[127X[104X
-    [4X[28XAn object in the stable poset given by:[128X[104X
-    [4X[28XAn object in the poset given by:[128X[104X
-    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIJqJ = I;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xiota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );[127X[104X
-    [4X[28X<An epi-, monomorphism in StablePosetOfCategory( PosetOfCategory([128X[104X
-    [4X[28X SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( iota );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( iota );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIJJ := TensorProduct( IJ, J );[127X[104X
-    [4X[28XAn object in the stable poset given by:[128X[104X
-    [4X[28XAn object in the poset given by:[128X[104X
-    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIJJqJ := InternalHom( J, IJJ );[127X[104X
-    [4X[28XAn object in the stable poset given by:[128X[104X
-    [4X[28XAn object in the poset given by:[128X[104X
-    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIJJqJ = I;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIJJsJ := StableInternalHom( J, IJJ );[127X[104X
-    [4X[28XAn object in the stable poset given by:[128X[104X
-    [4X[28XAn object in the poset given by:[128X[104X
-    [4X[28XAn object in the slice category given by: <A morphism in Rows( Q[x,y] )>[128X[104X
-    [4X[25Xgap>[125X [27XIJJsJ = I;[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
-  
-  [1X7.5-3 IsProsetOrPosetOfCapCategory[101X
-  
-  [33X[1;0Y[29X[2XIsProsetOrPosetOfCapCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsProsetAsCategory[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of a proset or poset of a CAP category.[133X
-  
-  [1X7.5-4 IsCellInProsetOrPosetOfCategory[101X
-  
-  [33X[1;0Y[29X[2XIsCellInProsetOrPosetOfCategory[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of cells in a proset or poset of a CAP category.[133X
-  
-  [1X7.5-5 IsCellInStableProsetOrPosetOfCategory[101X
-  
-  [33X[1;0Y[29X[2XIsCellInStableProsetOrPosetOfCategory[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of cells in a stable proset or poset of a CAP category.[133X
-  
-  [1X7.5-6 IsObjectInProsetOrPosetOfCategory[101X
-  
-  [33X[1;0Y[29X[2XIsObjectInProsetOrPosetOfCategory[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of objects in a proset or poset of a CAP category.[133X
-  
-  [1X7.5-7 IsProsetOfCapCategory[101X
-  
-  [33X[1;0Y[29X[2XIsProsetOfCapCategory[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of a proset of a CAP category.[133X
-  
-  [1X7.5-8 IsCellInProsetOfCategory[101X
-  
-  [33X[1;0Y[29X[2XIsCellInProsetOfCategory[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of cells in a proset of a CAP category.[133X
-  
-  [1X7.5-9 IsObjectInProsetOfCategory[101X
-  
-  [33X[1;0Y[29X[2XIsObjectInProsetOfCategory[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of objects in a proset of a CAP category.[133X
-  
-  [1X7.5-10 IsMorphismInProsetOfCategory[101X
-  
-  [33X[1;0Y[29X[2XIsMorphismInProsetOfCategory[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of morphisms in a proset of a CAP category.[133X
-  
-  [1X7.5-11 IsPosetOfCapCategory[101X
-  
-  [33X[1;0Y[29X[2XIsPosetOfCapCategory[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of a poset of a CAP category.[133X
-  
-  [1X7.5-12 IsCellInPosetOfCategory[101X
-  
-  [33X[1;0Y[29X[2XIsCellInPosetOfCategory[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of cells in a poset of a CAP category.[133X
-  
-  [1X7.5-13 IsObjectInPosetOfCategory[101X
-  
-  [33X[1;0Y[29X[2XIsObjectInPosetOfCategory[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of objects in a poset of a CAP category.[133X
-  
-  [1X7.5-14 IsMorphismInPosetOfCategory[101X
-  
-  [33X[1;0Y[29X[2XIsMorphismInPosetOfCategory[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of morphisms in a poset of a CAP category.[133X
+  [33X[0;0YThe [5XGAP[105X category of preordered sets viewed as categories.[133X
   

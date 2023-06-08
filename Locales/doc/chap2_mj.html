@@ -25,64 +25,36 @@
 <p id="mathjaxlink" class="pcenter"><a href="chap2.html">[MathJax off]</a></p>
 <p><a id="X87700C3D7DC8A95C" name="X87700C3D7DC8A95C"></a></p>
 <div class="ChapSects"><a href="chap2_mj.html#X87700C3D7DC8A95C">2 <span class="Heading">Posets (partially ordered sets)</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7DE8E16C7C2D387B">2.1 <span class="Heading">Operations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X871597447BB998A1">2.1 <span class="Heading">Properties</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X78CB2F3C80B52C2D">2.1-1 IsEqualForObjectsIfIsHomSetInhabited</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7EE9C18E82FAE5E6">2.1-1 IsPosetCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83D37DA7797B7788">2.1-2 IsTotalOrderCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7DFDA25B8326FCEE">2.1-3 IsMonoidalPoset</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X871419A27C48F1A4">2.1-4 IsClosedMonoidalPoset</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X85D0DD1982A3FECC">2.1-5 IsCoclosedMonoidalPoset</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X85C8C80F785AEB5E">2.2 <span class="Heading">Add-methods</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7DE8E16C7C2D387B">2.2 <span class="Heading">Operations</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X848B98CE80CBD9D3">2.2-1 AddIsEqualForObjectsIfIsHomSetInhabited</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X78CB2F3C80B52C2D">2.2-1 IsEqualForObjectsIfIsHomSetInhabited</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X871597447BB998A1">2.3 <span class="Heading">Properties</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X85C8C80F785AEB5E">2.3 <span class="Heading">Add-methods</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7EE9C18E82FAE5E6">2.3-1 IsPosetCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83D37DA7797B7788">2.3-2 IsTotalOrderCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7DFDA25B8326FCEE">2.3-3 IsMonoidalPoset</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X871419A27C48F1A4">2.3-4 IsClosedMonoidalPoset</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X85D0DD1982A3FECC">2.3-5 IsCoclosedMonoidalPoset</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X848B98CE80CBD9D3">2.3-1 AddIsEqualForObjectsIfIsHomSetInhabited</a></span>
 </div></div>
 </div>
 
 <h3>2 <span class="Heading">Posets (partially ordered sets)</span></h3>
 
-<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
-
-<h4>2.1 <span class="Heading">Operations</span></h4>
-
-<p><a id="X78CB2F3C80B52C2D" name="X78CB2F3C80B52C2D"></a></p>
-
-<h5>2.1-1 IsEqualForObjectsIfIsHomSetInhabited</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualForObjectsIfIsHomSetInhabited</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
-
-<p>Check if <var class="Arg">A</var> is equal to <var class="Arg">B</var> under the assumption that there exists a morphism from <var class="Arg">A</var> to <var class="Arg">B</var>, i.e., if <var class="Arg">A</var> is known to be less or equal to <var class="Arg">B</var> w.r.t. the partial order.</p>
-
-<p><a id="X85C8C80F785AEB5E" name="X85C8C80F785AEB5E"></a></p>
-
-<h4>2.2 <span class="Heading">Add-methods</span></h4>
-
-<p><a id="X848B98CE80CBD9D3" name="X848B98CE80CBD9D3"></a></p>
-
-<h5>2.2-1 AddIsEqualForObjectsIfIsHomSetInhabited</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForObjectsIfIsHomSetInhabited</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
-
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsEqualForObjectsIfIsHomSetInhabited</code>. <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{IsEqualForObjectsIfIsHomSetInhabited}(arg2, arg3)\)</span>.</p>
-
-<p>Posets are skeletal, thin categories.</p>
-
 <p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
 
-<h4>2.3 <span class="Heading">Properties</span></h4>
+<h4>2.1 <span class="Heading">Properties</span></h4>
 
 <p><a id="X7EE9C18E82FAE5E6" name="X7EE9C18E82FAE5E6"></a></p>
 
-<h5>2.3-1 IsPosetCategory</h5>
+<h5>2.1-1 IsPosetCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPosetCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -91,7 +63,7 @@
 
 <p><a id="X83D37DA7797B7788" name="X83D37DA7797B7788"></a></p>
 
-<h5>2.3-2 IsTotalOrderCategory</h5>
+<h5>2.1-2 IsTotalOrderCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsTotalOrderCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -100,7 +72,7 @@
 
 <p><a id="X7DFDA25B8326FCEE" name="X7DFDA25B8326FCEE"></a></p>
 
-<h5>2.3-3 IsMonoidalPoset</h5>
+<h5>2.1-3 IsMonoidalPoset</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMonoidalPoset</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -109,7 +81,7 @@
 
 <p><a id="X871419A27C48F1A4" name="X871419A27C48F1A4"></a></p>
 
-<h5>2.3-4 IsClosedMonoidalPoset</h5>
+<h5>2.1-4 IsClosedMonoidalPoset</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsClosedMonoidalPoset</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -118,12 +90,40 @@
 
 <p><a id="X85D0DD1982A3FECC" name="X85D0DD1982A3FECC"></a></p>
 
-<h5>2.3-5 IsCoclosedMonoidalPoset</h5>
+<h5>2.1-5 IsCoclosedMonoidalPoset</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCoclosedMonoidalPoset</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The property of <var class="Arg">C</var> being a coclosed monoidal thin skeletal category.</p>
+
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>2.2 <span class="Heading">Operations</span></h4>
+
+<p><a id="X78CB2F3C80B52C2D" name="X78CB2F3C80B52C2D"></a></p>
+
+<h5>2.2-1 IsEqualForObjectsIfIsHomSetInhabited</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualForObjectsIfIsHomSetInhabited</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>Check if <var class="Arg">A</var> is equal to <var class="Arg">B</var> under the assumption that there exists a morphism from <var class="Arg">A</var> to <var class="Arg">B</var>, i.e., if <var class="Arg">A</var> is known to be less or equal to <var class="Arg">B</var> w.r.t. the partial order.</p>
+
+<p><a id="X85C8C80F785AEB5E" name="X85C8C80F785AEB5E"></a></p>
+
+<h4>2.3 <span class="Heading">Add-methods</span></h4>
+
+<p><a id="X848B98CE80CBD9D3" name="X848B98CE80CBD9D3"></a></p>
+
+<h5>2.3-1 AddIsEqualForObjectsIfIsHomSetInhabited</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForObjectsIfIsHomSetInhabited</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsEqualForObjectsIfIsHomSetInhabited</code>. <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{IsEqualForObjectsIfIsHomSetInhabited}(arg2, arg3)\)</span>.</p>
+
+<p>Posets are skeletal, thin categories.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>

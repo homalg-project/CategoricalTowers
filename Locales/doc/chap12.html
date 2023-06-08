@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (Locales) - Chapter 12: The interval category</title>
+<title>GAP (Locales) - Chapter 12: Boolean algebra of constructible objects</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -20,104 +20,332 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap11.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap13.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap12_mj.html">[MathJax on]</a></p>
-<p><a id="X80E5F97F78D6D1F0" name="X80E5F97F78D6D1F0"></a></p>
-<div class="ChapSects"><a href="chap12.html#X80E5F97F78D6D1F0">12 <span class="Heading">The interval category</span></a>
+<p><a id="X7B0BC7867D04815A" name="X7B0BC7867D04815A"></a></p>
+<div class="ChapSects"><a href="chap12.html#X7B0BC7867D04815A">12 <span class="Heading">Boolean algebra of constructible objects</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X86EC0F0A78ECBC10">12.1 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X81025D817EA13D49">12.1-1 CreateIntervalCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7F4A513F7A204EA7">12.1-2 IntervalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7A39A3AC84920F10">12.1-1 BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7B3E639E85156D64">12.1-2 UnionOfMultipleDifferences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X83C55019830AA527">12.1-3 BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7C4F8F3C78BFC9B4">12.1-4 UnionOfDifferences</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7D03633A7D98026B">12.2 <span class="Heading">GAP Categories</span></a>
-</span>
-</div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7D03633A7D98026B">12.3 <span class="Heading">GAP categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X871597447BB998A1">12.2 <span class="Heading">Properties</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X833BE7758732D9CF">12.3-1 IsIntervalCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7AD1A805805DEBA3">12.3-2 IsCellInIntervalCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X78B69B7786FD9997">12.3-3 IsObjectInIntervalCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X791BE77578436B7B">12.3-4 IsMorphismInIntervalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7AAC2FC07A90A7FF">12.2-1 IsOpen</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X80D907C386840562">12.2-2 IsClosed</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X829428287D952241">12.2-3 IsLocallyClosed</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7C701DBF7BAE649A">12.4 <span class="Heading">Attributes</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7C701DBF7BAE649A">12.3 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X832ED2957909B491">12.4-1 ClassicalTruthValue</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X82915E81858C69DD">12.3-1 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X806AE5EB855C884C">12.3-2 LocallyClosedPart</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X857A85987A5855C0">12.3-3 CanonicalObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X84682B918275CF4C">12.3-4 FactorizeObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X879B9746832403D5">12.3-5 NormalizedObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X873F84A287B73DED">12.3-6 StandardizedObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X828AA72F828A74A5">12.3-7 Closure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7CE6C6C27C945292">12.3-8 ClosureAsConstructibleObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X82AEAA4C78CF3143">12.3-9 Dimension</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7DE8E16C7C2D387B">12.4 <span class="Heading">Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X786D16268011D5DA">12.4-1 NormalizeObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7C74108E85F0A992">12.4-2 StandardizeObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X80CC10AC7822D669">12.4-3 Length</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7838406C85573577"><code>12.4-4 <span>\</span>[<span>\</span>]</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7D4A899682FDB75C">12.4-5 Iterator</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X80DE87B580C3329E">12.4-6 ForAllOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X78D948E3825E8E9A">12.4-7 ForAnyOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X84F59A9984C0C566">12.4-8 ListOfObjectsInMeetSemilatticeOfDifferences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7BA2435180F4871E">12.4-9 ListOfObjectsInMeetSemilatticeOfDifferences</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7D03633A7D98026B">12.5 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X801C2BA2790E15C8">12.5-1 IsBooleanAlgebraOfConstructibleObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X80ACF56F7A723151">12.5-2 IsConstructibleObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7D8BD3DB80F7D339">12.5-3 IsMorphismBetweenConstructibleObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X79CBE30D87C40D6E">12.5-4 IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X80ADB9F484975B71">12.5-5 IsConstructibleObjectAsUnionOfMultipleDifferences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X8225609885DD8474">12.5-6 IsMorphismBetweenConstructibleObjectsAsUnionOfMultipleDifferences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X8065A67481B1201B">12.5-7 IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X82B617518427C0D6">12.5-8 IsConstructibleObjectAsUnionOfSingleDifferences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7E96F9EC87F16AD9">12.5-9 IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences</a></span>
 </div></div>
 </div>
 
-<h3>12 <span class="Heading">The interval category</span></h3>
+<h3>12 <span class="Heading">Boolean algebra of constructible objects</span></h3>
 
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
 <h4>12.1 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X81025D817EA13D49" name="X81025D817EA13D49"></a></p>
+<p><a id="X7A39A3AC84920F10" name="X7A39A3AC84920F10"></a></p>
 
-<h5>12.1-1 CreateIntervalCategory</h5>
+<h5>12.1-1 BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateIntervalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p><a id="X7F4A513F7A204EA7" name="X7F4A513F7A204EA7"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences</code>( <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<h5>12.1-2 IntervalCategory</h5>
+<p>Construct the Boolean algebra of constructible objects as union of objects in the poset <var class="Arg">D</var> of multiple differences.</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntervalCategory</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
-<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+<p><a id="X7B3E639E85156D64" name="X7B3E639E85156D64"></a></p>
 
-<h4>12.2 <span class="Heading">GAP Categories</span></h4>
+<h5>12.1-2 UnionOfMultipleDifferences</h5>
 
-<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnionOfMultipleDifferences</code>( <var class="Arg">D1</var>, <var class="Arg">D2</var>, <var class="Arg">...</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: an object in a <strong class="pkg">CAP</strong> category</p>
 
-<h4>12.3 <span class="Heading">GAP categories</span></h4>
+<p>If <var class="Arg">D1</var>=<span class="SimpleMath">A1-B1</span>, <var class="Arg">D2</var>=<span class="SimpleMath">A2-B2</span>, ..., then the output is <code class="code">DirectProduct</code><span class="SimpleMath">(A1,A2,...)</span> - <code class="code">Coproduct</code><span class="SimpleMath">(B1,B2,...)</span>.</p>
 
-<p><a id="X833BE7758732D9CF" name="X833BE7758732D9CF"></a></p>
+<p><a id="X83C55019830AA527" name="X83C55019830AA527"></a></p>
 
-<h5>12.3-1 IsIntervalCategory</h5>
+<h5>12.1-3 BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsIntervalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences</code>( <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Construct the Boolean algebra of constructible objects as union of objects in the poset <var class="Arg">D</var> of single differences.</p>
+
+<p><a id="X7C4F8F3C78BFC9B4" name="X7C4F8F3C78BFC9B4"></a></p>
+
+<h5>12.1-4 UnionOfDifferences</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnionOfDifferences</code>( <var class="Arg">D1</var>, <var class="Arg">D2</var>, <var class="Arg">...</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnionOfDifferencesOfNormalizedObjects</code>( <var class="Arg">D1</var>, <var class="Arg">D2</var>, <var class="Arg">...</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: an object in a <strong class="pkg">CAP</strong> category</p>
+
+<p>If <var class="Arg">D1</var>=<span class="SimpleMath">A1-B1</span>, <var class="Arg">D2</var>=<span class="SimpleMath">A2-B2</span>, ..., then the output is <code class="code">DirectProduct</code><span class="SimpleMath">(A1,A2,...)</span> - <code class="code">Coproduct</code><span class="SimpleMath">(B1,B2,...)</span>. <code class="code">AsFormalDifferenceOfNormalizedMorphisms</code> assumes that the input is normalized.</p>
+
+<p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
+
+<h4>12.2 <span class="Heading">Properties</span></h4>
+
+<p><a id="X7AAC2FC07A90A7FF" name="X7AAC2FC07A90A7FF"></a></p>
+
+<h5>12.2-1 IsOpen</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsOpen</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of an interval category.</p>
+<p><a id="X80D907C386840562" name="X80D907C386840562"></a></p>
 
-<p>The <strong class="pkg">GAP</strong> category of cells in an interval category.</p>
+<h5>12.2-2 IsClosed</h5>
 
-<p><a id="X7AD1A805805DEBA3" name="X7AD1A805805DEBA3"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsClosed</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X829428287D952241" name="X829428287D952241"></a></p>
 
-<h5>12.3-2 IsCellInIntervalCategory</h5>
+<h5>12.2-3 IsLocallyClosed</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInIntervalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsLocallyClosed</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p><a id="X78B69B7786FD9997" name="X78B69B7786FD9997"></a></p>
-
-<h5>12.3-3 IsObjectInIntervalCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInIntervalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of objects in an interval category.</p>
-
-<p><a id="X791BE77578436B7B" name="X791BE77578436B7B"></a></p>
-
-<h5>12.3-4 IsMorphismInIntervalCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInIntervalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of morphisms in an interval category.</p>
 
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
-<h4>12.4 <span class="Heading">Attributes</span></h4>
+<h4>12.3 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X832ED2957909B491" name="X832ED2957909B491"></a></p>
+<p><a id="X82915E81858C69DD" name="X82915E81858C69DD"></a></p>
 
-<h5>12.4-1 ClassicalTruthValue</h5>
+<h5>12.3-1 UnderlyingCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClassicalTruthValue</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a boolean</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP category</p>
 
-<p>The truth value of the object <var class="Arg">a</var> in the interval category.</p>
+<p>The category underlying the Boolean algebra of constructible objects <var class="Arg">C</var>.</p>
+
+<p><a id="X806AE5EB855C884C" name="X806AE5EB855C884C"></a></p>
+
+<h5>12.3-2 LocallyClosedPart</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LocallyClosedPart</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X857A85987A5855C0" name="X857A85987A5855C0"></a></p>
+
+<h5>12.3-3 CanonicalObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanonicalObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X84682B918275CF4C" name="X84682B918275CF4C"></a></p>
+
+<h5>12.3-4 FactorizeObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FactorizeObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X879B9746832403D5" name="X879B9746832403D5"></a></p>
+
+<h5>12.3-5 NormalizedObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NormalizedObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X873F84A287B73DED" name="X873F84A287B73DED"></a></p>
+
+<h5>12.3-6 StandardizedObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StandardizedObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X828AA72F828A74A5" name="X828AA72F828A74A5"></a></p>
+
+<h5>12.3-7 Closure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Closure</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object in a co-Heyting algebra.</p>
+
+<p>The closure of the constructible object <var class="Arg">A</var> in the underlying co-Heyting algebra.</p>
+
+<p><a id="X7CE6C6C27C945292" name="X7CE6C6C27C945292"></a></p>
+
+<h5>12.3-8 ClosureAsConstructibleObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClosureAsConstructibleObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a constructible object.</p>
+
+<p>The closure of the constructible object <var class="Arg">A</var> as a constructible object.</p>
+
+<p><a id="X82AEAA4C78CF3143" name="X82AEAA4C78CF3143"></a></p>
+
+<h5>12.3-9 Dimension</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dimension</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>12.4 <span class="Heading">Operations</span></h4>
+
+<p><a id="X786D16268011D5DA" name="X786D16268011D5DA"></a></p>
+
+<h5>12.4-1 NormalizeObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NormalizeObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X7C74108E85F0A992" name="X7C74108E85F0A992"></a></p>
+
+<h5>12.4-2 StandardizeObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StandardizeObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X80CC10AC7822D669" name="X80CC10AC7822D669"></a></p>
+
+<h5>12.4-3 Length</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Length</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7838406C85573577" name="X7838406C85573577"></a></p>
+
+<h5><code>12.4-4 <span>\</span>[<span>\</span>]</code></h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; <span>\</span>[<span>\</span>]</code>( <var class="Arg">A</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X7D4A899682FDB75C" name="X7D4A899682FDB75C"></a></p>
+
+<h5>12.4-5 Iterator</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Iterator</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X80DE87B580C3329E" name="X80DE87B580C3329E"></a></p>
+
+<h5>12.4-6 ForAllOp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ForAllOp</code>( <var class="Arg">A</var>, <var class="Arg">f</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X78D948E3825E8E9A" name="X78D948E3825E8E9A"></a></p>
+
+<h5>12.4-7 ForAnyOp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ForAnyOp</code>( <var class="Arg">A</var>, <var class="Arg">f</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X84F59A9984C0C566" name="X84F59A9984C0C566"></a></p>
+
+<h5>12.4-8 ListOfObjectsInMeetSemilatticeOfDifferences</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ListOfObjectsInMeetSemilatticeOfDifferences</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list of <strong class="pkg">CAP</strong> morphism</p>
+
+<p>A list of morphisms in the underlying lattice representing the formal multiple difference <var class="Arg">A</var>.</p>
+
+<p><a id="X7BA2435180F4871E" name="X7BA2435180F4871E"></a></p>
+
+<h5>12.4-9 ListOfObjectsInMeetSemilatticeOfDifferences</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ListOfObjectsInMeetSemilatticeOfDifferences</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list of <strong class="pkg">CAP</strong> morphism</p>
+
+<p>A list of morphisms in the underlying lattice representing the formal multiple difference <var class="Arg">A</var>.</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>12.5 <span class="Heading">GAP categories</span></h4>
+
+<p><a id="X801C2BA2790E15C8" name="X801C2BA2790E15C8"></a></p>
+
+<h5>12.5-1 IsBooleanAlgebraOfConstructibleObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsBooleanAlgebraOfConstructibleObjects</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of a Boolean algebra of constructible objects.</p>
+
+<p><a id="X80ACF56F7A723151" name="X80ACF56F7A723151"></a></p>
+
+<h5>12.5-2 IsConstructibleObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsConstructibleObject</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in a Boolean algebra of constructible objects.</p>
+
+<p><a id="X7D8BD3DB80F7D339" name="X7D8BD3DB80F7D339"></a></p>
+
+<h5>12.5-3 IsMorphismBetweenConstructibleObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismBetweenConstructibleObjects</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a Boolean algebra of constructible objects.</p>
+
+<p><a id="X79CBE30D87C40D6E" name="X79CBE30D87C40D6E"></a></p>
+
+<h5>12.5-4 IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of a Boolean algebra of constructible objects as union of multiple differences.</p>
+
+<p><a id="X80ADB9F484975B71" name="X80ADB9F484975B71"></a></p>
+
+<h5>12.5-5 IsConstructibleObjectAsUnionOfMultipleDifferences</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsConstructibleObjectAsUnionOfMultipleDifferences</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in ...</p>
+
+<p><a id="X8225609885DD8474" name="X8225609885DD8474"></a></p>
+
+<h5>12.5-6 IsMorphismBetweenConstructibleObjectsAsUnionOfMultipleDifferences</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismBetweenConstructibleObjectsAsUnionOfMultipleDifferences</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in ...</p>
+
+<p><a id="X8065A67481B1201B" name="X8065A67481B1201B"></a></p>
+
+<h5>12.5-7 IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of a Boolean algebra of constructible objects as union of single differences.</p>
+
+<p><a id="X82B617518427C0D6" name="X82B617518427C0D6"></a></p>
+
+<h5>12.5-8 IsConstructibleObjectAsUnionOfSingleDifferences</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsConstructibleObjectAsUnionOfSingleDifferences</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in a Boolean algebra of constructible objects, the latter as unions of formal single differences.</p>
+
+<p><a id="X7E96F9EC87F16AD9" name="X7E96F9EC87F16AD9"></a></p>
+
+<h5>12.5-9 IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a Boolean algebra of constructible objects, the latter as unions of formal single differences.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap11.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap13.html">[Next Chapter]</a>&nbsp;  </div>

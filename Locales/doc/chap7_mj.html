@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (Locales) - Chapter 7: The (stable) proset/poset of a category</title>
+<title>GAP (Locales) - Chapter 7: Preordered sets viewed as categories</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -23,655 +23,268 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap7.html">[MathJax off]</a></p>
-<p><a id="X841B28097AFB29ED" name="X841B28097AFB29ED"></a></p>
-<div class="ChapSects"><a href="chap7_mj.html#X841B28097AFB29ED">7 <span class="Heading">The (stable) proset/poset of a category</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7D9044767BEB1523">7.1 <span class="Heading">Global variables</span></a>
+<p><a id="X805597A77D3DD7FE" name="X805597A77D3DD7FE"></a></p>
+<div class="ChapSects"><a href="chap7_mj.html#X805597A77D3DD7FE">7 <span class="Heading">Preordered sets viewed as categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X86EC0F0A78ECBC10">7.1 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X835CB9BA7B5D118D">7.1-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X85B69E1B8178059D">7.1-1 ProsetAsCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X872C9E9280BEEE9C">7.1-2 DiscreteSkeletalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8245E8C37C2F304A">7.1-3 TotalOrderAsCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7C701DBF7BAE649A">7.2 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X85702AB27ADF48CA">7.2-1 AmbientCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X812067018336213A">7.2-2 UnderlyingCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X79EAEAF77DC505F1">7.2-1 UnderlyingObjectFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X825BE79D7E86AABA">7.2-2 UnderlyingObjectMembershipFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7BC903C378490711">7.2-3 UnderlyingObjectEqualityFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7A67D58582A8CDAF">7.2-4 UnderlyingPreorderFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8356F8357863572C">7.2-5 UnderlyingObject</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X86EC0F0A78ECBC10">7.3 <span class="Heading">Constructors</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7D03633A7D98026B">7.3 <span class="Heading">GAP categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8049440E7EFD9EA3">7.3-1 CreateProsetOrPosetOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7B09E9E07E77590E">7.3-2 ProsetOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8752F6307A2CC7FF">7.3-3 StableProsetOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7CED62D3823B3875">7.3-4 PosetOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7C510918829D2DAF">7.3-5 StablePosetOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X83C7D92980FD8200">7.3-6 AsCellOfProset</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7F1751537AB8BFF5">7.3-7 AsCellOfStableProset</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X80E0FC6A79F094D5">7.3-8 AsCellOfPoset</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7D18EFF57A55C225">7.3-9 AsCellOfStablePoset</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X80BF5F0187E00004">7.3-10 /</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7A489A5D79DA9E5C">7.4 <span class="Heading">Examples</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X79AD216F87C9232C">7.4-1 <span class="Heading">Ideal quotient</span></a>
-</span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7D03633A7D98026B">7.5 <span class="Heading">GAP categories</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7881DF667EF49C5D">7.5-1 <span class="Heading">Poset of category</span></a>
-</span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7C1992657C3EAEDF">7.5-2 <span class="Heading">Stable poset of category</span></a>
-</span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7C307E3485AC0353">7.5-3 IsProsetOrPosetOfCapCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8652292C862DFF0F">7.5-4 IsCellInProsetOrPosetOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8240BBDC7B7B6516">7.5-5 IsCellInStableProsetOrPosetOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X78E2F7C278FCACDD">7.5-6 IsObjectInProsetOrPosetOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7B1247F27EA3DC1C">7.5-7 IsProsetOfCapCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X86041A6D84F1E2FB">7.5-8 IsCellInProsetOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X796309D480F78E5C">7.5-9 IsObjectInProsetOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7FD7F4A78456A57B">7.5-10 IsMorphismInProsetOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X80D74D0783D4D8F3">7.5-11 IsPosetOfCapCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X85EDEA217DD559F7">7.5-12 IsCellInPosetOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X81D7E93E86CACF58">7.5-13 IsObjectInPosetOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7B2E7E9085A5BBCF">7.5-14 IsMorphismInPosetOfCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X87A1F0757E5F9942">7.3-1 IsProsetAsCategory</a></span>
 </div></div>
 </div>
 
-<h3>7 <span class="Heading">The (stable) proset/poset of a category</span></h3>
+<h3>7 <span class="Heading">Preordered sets viewed as categories</span></h3>
 
-<p><a id="X7D9044767BEB1523" name="X7D9044767BEB1523"></a></p>
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
-<h4>7.1 <span class="Heading">Global variables</span></h4>
+<h4>7.1 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X835CB9BA7B5D118D" name="X835CB9BA7B5D118D"></a></p>
+<p><a id="X85B69E1B8178059D" name="X85B69E1B8178059D"></a></p>
 
-<h5>7.1-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY</h5>
+<h5>7.1-1 ProsetAsCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProsetAsCategory</code>( <var class="Arg">input_record</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Construct a thin category out of the <var class="Arg">input_record</var> consisting of values to the keys:</p>
+
+
+<ul>
+<li><p><var class="Arg">name</var>: the string defining the name of the category,</p>
+
+</li>
+<li><p><var class="Arg">object_datum_filter_string</var>: a string such that <code class="code">ValueGlobal</code>( <var class="Arg">object_datum_filter_string</var> ) is the <strong class="pkg">GAP</strong>-filter of the underlying objects,</p>
+
+</li>
+<li><p><var class="Arg">object_datum_membership_func</var>: the underlying-object-membership function,</p>
+
+</li>
+<li><p><var class="Arg">object_datum_equality_func</var>: the underlying-object-equality function,</p>
+
+</li>
+<li><p><var class="Arg">object_datum_preorder_func</var>: the preorder function on the underlying objects, and</p>
+
+</li>
+<li><p><var class="Arg">properties</var>: a list of categorical properties, additional to <code class="code">IsThinCategory</code>.</p>
+
+</li>
+</ul>
+
+<ul>
+<li><p>If <var class="Arg">name</var> is missing it defaults to <var class="Arg">object_datum_filter_string</var>.</p>
+
+</li>
+<li><p>If <var class="Arg">object_datum_membership_func</var> is missing it defaults to <code class="code">ValueGlobal</code>( <var class="Arg">object_datum_filter_string</var> ).</p>
+
+</li>
+<li><p>If <var class="Arg">object_datum_equality_func</var> is missing it defaults to <code class="code">EQ</code>.</p>
+
+</li>
+<li><p>If <var class="Arg">object_datum_preorder_func</var> is missing it defaults to <var class="Arg">object_datum_equality_func</var>.</p>
+
+</li>
+<li><p>If <var class="Arg">properties</var> is missing it defaults to the empty list.</p>
+
+</li>
+</ul>
+<p><a id="X872C9E9280BEEE9C" name="X872C9E9280BEEE9C"></a></p>
+
+<h5>7.1-2 DiscreteSkeletalCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DiscreteSkeletalCategory</code>( <var class="Arg">object_datum_filter_string</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Construct a discrete category out of</p>
+
+
+<ul>
+<li><p>the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>( <var class="Arg">object_datum_filter_string</var> ) of the underlying objects.</p>
+
+</li>
+</ul>
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := DiscreteSkeletalCategory( "IsInt" );</span>
+DiscreteSkeletalCategory( "IsInt" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( D );</span>
+A CAP category with name DiscreteSkeletalCategory( "IsInt" ):
+
+11 primitive operations were used to derive 74 operations for this category
+which algorithmically
+* IsPosetCategory
+* IsEquippedWithHomomorphismStructure
+and furthermore mathematically
+* IsDiscreteCategory
+* IsSkeletalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">one := 1 / D;</span>
+&lt;An object in DiscreteSkeletalCategory( "IsInt" )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( one );</span>
+1
+
+An object in DiscreteSkeletalCategory( "IsInt" ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( one );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( "1" / D );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">two := 2 / D;</span>
+&lt;An object in DiscreteSkeletalCategory( "IsInt" )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_one := IdentityMorphism( one );</span>
+&lt;An identity morphism in DiscreteSkeletalCategory( "IsInt" )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( id_one );</span>
+fail
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( id_one, id_one ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( UniqueMorphism( one, one ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( UniqueMorphism( one, two ) );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( one, one );</span>
+&lt;(⊤)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( one, two );</span>
+&lt;(⊥)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( two, one );</span>
+&lt;(⊥)&gt;
+</pre></div>
+
+<p><a id="X8245E8C37C2F304A" name="X8245E8C37C2F304A"></a></p>
+
+<h5>7.1-3 TotalOrderAsCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TotalOrderAsCategory</code>( <var class="Arg">object_datum_filter_string</var>, <var class="Arg">object_datum_total_order_func</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Construct a totol order category out of</p>
+
+
+<ul>
+<li><p>the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>( <var class="Arg">object_datum_filter_string</var> ) of the underlying objects, and</p>
+
+</li>
+<li><p>the total order function on the underlying objects.</p>
+
+</li>
+</ul>
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := TotalOrderAsCategory( "IsInt", {a,b} -&gt; a &lt;= b );</span>
+TotalOrderAsCategory( "IsInt" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( D );</span>
+A CAP category with name TotalOrderAsCategory( "IsInt" ):
+
+11 primitive operations were used to derive 76 operations for this category
+which algorithmically
+* IsPosetCategory
+* IsEquippedWithHomomorphismStructure
+and furthermore mathematically
+* IsTotalOrderCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">one := 1 / D;</span>
+&lt;An object in TotalOrderAsCategory( "IsInt" )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( one );</span>
+1
+
+An object in TotalOrderAsCategory( "IsInt" ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( one );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( "1" / D );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">two := 2 / D;</span>
+&lt;An object in TotalOrderAsCategory( "IsInt" )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_one := IdentityMorphism( one );</span>
+&lt;An identity morphism in TotalOrderAsCategory( "IsInt" )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( id_one );</span>
+fail
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( id_one, id_one ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( UniqueMorphism( one, one ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( UniqueMorphism( one, two ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( one, one );</span>
+&lt;(⊤)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( one, one );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( one, two );</span>
+&lt;(⊤)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( one, two );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( two, one );</span>
+&lt;(⊥)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( two, one );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProduct( [ one, two ] ) = one;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Coproduct( [ one, two ] ) = two;</span>
+true
+</pre></div>
+
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
 <h4>7.2 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X85702AB27ADF48CA" name="X85702AB27ADF48CA"></a></p>
+<p><a id="X79EAEAF77DC505F1" name="X79EAEAF77DC505F1"></a></p>
 
-<h5>7.2-1 AmbientCategory</h5>
+<h5>7.2-1 UnderlyingObjectFilter</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AmbientCategory</code>( <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingObjectFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The object-membership function used to define the thin category <var class="Arg">C</var>.</p>
 
-<p>The ambient category of the proset <var class="Arg">P</var>.</p>
+<p><a id="X825BE79D7E86AABA" name="X825BE79D7E86AABA"></a></p>
 
-<p><a id="X812067018336213A" name="X812067018336213A"></a></p>
+<h5>7.2-2 UnderlyingObjectMembershipFunction</h5>
 
-<h5>7.2-2 UnderlyingCell</h5>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingObjectMembershipFunction</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The underlying-object-membership function used to define the thin category <var class="Arg">C</var>. This function accepts two arguments in the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>(<code class="code">UnderlyingObjectFilter</code>(<var class="Arg">C</var>)) and returns <var class="Arg">true</var> if the underlying objects are equal <var class="Arg">false</var>.</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCell</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> cell</p>
+<p><a id="X7BC903C378490711" name="X7BC903C378490711"></a></p>
 
-<p>The cell in the ambient category underlying <var class="Arg">cell</var>.</p>
+<h5>7.2-3 UnderlyingObjectEqualityFunction</h5>
 
-<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingObjectEqualityFunction</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The underlying-object-equality function used to define the thin category <var class="Arg">C</var>. This function accepts two arguments in the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>(<code class="code">UnderlyingObjectFilter</code>(<var class="Arg">C</var>)) and returns <var class="Arg">true</var> if the underlying objects are equal <var class="Arg">false</var>.</p>
 
-<h4>7.3 <span class="Heading">Constructors</span></h4>
+<p><a id="X7A67D58582A8CDAF" name="X7A67D58582A8CDAF"></a></p>
 
-<p><a id="X8049440E7EFD9EA3" name="X8049440E7EFD9EA3"></a></p>
+<h5>7.2-4 UnderlyingPreorderFunction</h5>
 
-<h5>7.3-1 CreateProsetOrPosetOfCategory</h5>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingPreorderFunction</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The preorder function used to define the thin category <var class="Arg">C</var>. This function accepts two arguments in the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>(<code class="code">UnderlyingObjectFilter</code>(<var class="Arg">C</var>)) and returns <var class="Arg">true</var> or <var class="Arg">false</var>.</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateProsetOrPosetOfCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X7B09E9E07E77590E" name="X7B09E9E07E77590E"></a></p>
+<p><a id="X8356F8357863572C" name="X8356F8357863572C"></a></p>
 
-<h5>7.3-2 ProsetOfCategory</h5>
+<h5>7.2-5 UnderlyingObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProsetOfCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X8752F6307A2CC7FF" name="X8752F6307A2CC7FF"></a></p>
-
-<h5>7.3-3 StableProsetOfCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StableProsetOfCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7CED62D3823B3875" name="X7CED62D3823B3875"></a></p>
-
-<h5>7.3-4 PosetOfCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PosetOfCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7C510918829D2DAF" name="X7C510918829D2DAF"></a></p>
-
-<h5>7.3-5 StablePosetOfCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StablePosetOfCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X83C7D92980FD8200" name="X83C7D92980FD8200"></a></p>
-
-<h5>7.3-6 AsCellOfProset</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCellOfProset</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7F1751537AB8BFF5" name="X7F1751537AB8BFF5"></a></p>
-
-<h5>7.3-7 AsCellOfStableProset</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCellOfStableProset</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X80E0FC6A79F094D5" name="X80E0FC6A79F094D5"></a></p>
-
-<h5>7.3-8 AsCellOfPoset</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCellOfPoset</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7D18EFF57A55C225" name="X7D18EFF57A55C225"></a></p>
-
-<h5>7.3-9 AsCellOfStablePoset</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCellOfStablePoset</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X80BF5F0187E00004" name="X80BF5F0187E00004"></a></p>
-
-<h5>7.3-10 /</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; /</code>( <var class="Arg">object</var>, <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
-
-<h4>7.4 <span class="Heading">Examples</span></h4>
-
-<p><a id="X79AD216F87C9232C" name="X79AD216F87C9232C"></a></p>
-
-<h5>7.4-1 <span class="Heading">Ideal quotient</span></h5>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP", "&gt;= 2020.04.16" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories", "&gt;= 2020.05.01" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular( );</span>
-Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q["x,y"];</span>
-Q[x,y]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := HomalgMatrix( "[ x, -x ]", 2, 1, R );</span>
-&lt;A 2 x 1 matrix over an external ring&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := HomalgMatrix( "[ x, y ]", 2, 1, R );</span>
-&lt;A 2 x 1 matrix over an external ring&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := KroneckerMat( K, J );</span>
-&lt;An unevaluated 4 x 1 matrix over an external ring&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := CategoryOfRows( R );</span>
-Rows( Q[x,y] )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := LazyCategory( P : show_evaluation := false );</span>
-LazyCategory( Rows( Q[x,y] ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := I / P; SetLabel( I, "I" ); SetLabel( Source( I ), "R^i" );</span>
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Range( I ); SetLabel( R, "R" );</span>
-&lt;An evaluated object in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := J / P; SetLabel( J, "J" ); SetLabel( Source( J ), "R^j" );</span>
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := K / P;</span>
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SliceCategoryOverTensorUnit( P );</span>
-SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := PosetOfCategory( S );</span>
-PosetOfCategory( SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := I / S / L;</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := J / S / L;</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := K / S / L;</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IqJ := InternalHom( J, I ); ## this is the ideal quotient I : J</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;A morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K = IqJ;</span>
-true
-</pre></div>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP", "&gt;= 2020.04.16" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories", "&gt;= 2020.05.01" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular( );</span>
-Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q["x,y"];</span>
-Q[x,y]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := HomalgMatrix( "[ x, -x ]", 2, 1, R );</span>
-&lt;A 2 x 1 matrix over an external ring&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := HomalgMatrix( "[ x, y ]", 2, 1, R );</span>
-&lt;A 2 x 1 matrix over an external ring&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := KroneckerMat( K, J );</span>
-&lt;An unevaluated 4 x 1 matrix over an external ring&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := CategoryOfRows( R );</span>
-Rows( Q[x,y] )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := LazyCategory( P : primitive_operations := true, show_evaluation := false );</span>
-LazyCategory( Rows( Q[x,y] ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := I / P; SetLabel( I, "I" ); SetLabel( Source( I ), "R^i" );</span>
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Range( I ); SetLabel( R, "R" );</span>
-&lt;An evaluated object in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := J / P; SetLabel( J, "J" ); SetLabel( Source( J ), "R^j" );</span>
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := K / P;</span>
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SliceCategoryOverTensorUnit( P );</span>
-SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := PosetOfCategory( S );</span>
-PosetOfCategory( SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := I / S / L;</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := J / S / L;</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := K / S / L;</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IqJ := InternalHom( J, I ); ## this is the ideal quotient I : J</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;A morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K = IqJ;</span>
-true
-</pre></div>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP", "&gt;= 2020.04.16" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories", "&gt;= 2020.06.01" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular( );</span>
-Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q["x,y"];</span>
-Q[x,y]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := HomalgMatrix( "[ x, -x ]", 2, 1, R );</span>
-&lt;A 2 x 1 matrix over an external ring&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := HomalgMatrix( "[ x, y ]", 2, 1, R );</span>
-&lt;A 2 x 1 matrix over an external ring&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := KroneckerMat( K, J );</span>
-&lt;An unevaluated 4 x 1 matrix over an external ring&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := CategoryOfRows( R );</span>
-Rows( Q[x,y] )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := LazyCategory( P : show_evaluation := false );</span>
-LazyCategory( Rows( Q[x,y] ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := I / P; SetLabel( I, "I" ); SetLabel( Source( I ), "R^i" );</span>
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Range( I ); SetLabel( R, "R" );</span>
-&lt;An evaluated object in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := J / P; SetLabel( J, "J" ); SetLabel( Source( J ), "R^j" );</span>
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := K / P;</span>
-&lt;An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := LazyCategory( SliceCategoryOverTensorUnit( P ) );</span>
-LazyCategory( SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := LazyCategory( PosetOfCategory( S ) );</span>
-LazyCategory( PosetOfCategory( LazyCategory(
-SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := I / S; SetLabel( I, "I" );</span>
-&lt;An evaluated object in LazyCategory(
- SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := I / L; SetLabel( I, "I" );</span>
-&lt;An evaluated object in LazyCategory( PosetOfCategory( LazyCategory(
- SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := J / S; SetLabel( J, "J" );</span>
-&lt;An evaluated object in LazyCategory(
- SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := J / L; SetLabel( J, "J" );</span>
-&lt;An evaluated object in LazyCategory( PosetOfCategory( LazyCategory(
- SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := K / S; SetLabel( K, "K" );</span>
-&lt;An evaluated object in LazyCategory(
- SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := K / L; SetLabel( K, "K" );</span>
-&lt;An evaluated object in LazyCategory( PosetOfCategory( LazyCategory(
- SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IqJ := InternalHom( J, I ); ## this is the ideal quotient I : J</span>
-&lt;An object in LazyCategory( PosetOfCategory( LazyCategory(
- SliceCategoryOverTensorUnit( LazyCategory( Rows( Q[x,y] ) ) ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( K, IqJ );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( IqJ, K );</span>
-true
-</pre></div>
-
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
-<h4>7.5 <span class="Heading">GAP categories</span></h4>
+<h4>7.3 <span class="Heading">GAP categories</span></h4>
 
-<p><a id="X7881DF667EF49C5D" name="X7881DF667EF49C5D"></a></p>
+<p><a id="X87A1F0757E5F9942" name="X87A1F0757E5F9942"></a></p>
 
-<h5>7.5-1 <span class="Heading">Poset of category</span></h5>
+<h5>7.3-1 IsProsetAsCategory</h5>
 
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP", "&gt;= 2020.10-02" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular( );</span>
-Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q["x,y"];</span>
-Q[x,y]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := CategoryOfRows( R );</span>
-Rows( Q[x,y] )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SliceCategoryOverTensorUnit( F );</span>
-SliceCategoryOverTensorUnit( Rows( Q[x,y] ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PosetOfCategory( S );</span>
-PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := HomalgMatrix( "[ x, y ]", 2, 1, R ) / F / S / P;</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJ := TensorProduct( I, J );</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IiJ := DirectProduct( I, J );</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IiJ = I;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( IJ, IiJ );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( IiJ, IJ );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IpJ := Coproduct( I, J );</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IpJ = J;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJqJ := InternalHom( J, IJ ); ## this is the ideal quotient IJ : J</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJqJ = I;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );</span>
-&lt;An epi-, monomorphism in PosetOfCategory( SliceCategoryOverTensorUnit( \
- Rows( Q[x,y] ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iota );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( iota );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJJ := TensorProduct( IJ, J );</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJJqJ := InternalHom( J, IJJ );</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJJqJ = I;</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJJsJ := StableInternalHom( J, IJJ );</span>
-An object in the poset given by: An object in the slice category given by:
-&lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJJsJ = I;</span>
-true
-</pre></div>
-
-<p><a id="X7C1992657C3EAEDF" name="X7C1992657C3EAEDF"></a></p>
-
-<h5>7.5-2 <span class="Heading">Stable poset of category</span></h5>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP", "&gt;= 2020.10-02" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular( );</span>
-Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q["x"] / "x^2";</span>
-Q[x]/( x^2 )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := CategoryOfRows( R );</span>
-Rows( Q[x]/( x^2 ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SliceCategoryOverTensorUnit( F );</span>
-SliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PosetOfCategory( S );</span>
-PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := StablePosetOfCategory( P );</span>
-StablePosetOfCategory( PosetOfCategory(
-SliceCategoryOverTensorUnit( Rows( Q[x]/( x^2 ) ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;</span>
-An object in the poset given by:
-An object in the slice category given by: &lt;A morphism in Rows( Q[x]/( x^2 ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := InitialObject( P );</span>
-An object in the poset given by:
-An object in the slice category given by:
-&lt;A zero, split monomorphism in Rows( Q[x]/( x^2 ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I = N;</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( I );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( N );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rN := N / L;</span>
-An object in the stable poset given by:
-An object in the poset given by:
-An object in the slice category given by: &lt;A morphism in Rows( Q[x]/( x^2 ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rI := I / L;</span>
-An object in the stable poset given by:
-An object in the poset given by:
-An object in the slice category given by:
-&lt;A zero, split monomorphism in Rows( Q[x]/( x^2 ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rI = rN;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( rI );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( rN );</span>
-true
-</pre></div>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP", "&gt;= 2023.02-01" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular( );</span>
-Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q["x,y"];</span>
-Q[x,y]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := CategoryOfRows( R );</span>
-Rows( Q[x,y] )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SliceCategoryOverTensorUnit( F );</span>
-SliceCategoryOverTensorUnit( Rows( Q[x,y] ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PosetOfCategory( S );</span>
-PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
-A CAP category with name
-PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):
-
-16 primitive operations were used to derive 253 operations for this category
-which algorithmically
-* IsEquippedWithHomomorphismStructure
-* IsClosedMonoidalLattice
-* IsSymmetricClosedMonoidalCategory
-and furthermore mathematically
-* IsSkeletalCategory
-* IsStrictCartesianCategory
-* IsStrictCocartesianCategory
-* IsStrictMonoidalCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := StablePosetOfCategory( P );</span>
-StablePosetOfCategory( PosetOfCategory(
-SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( L );</span>
-A CAP category with name
-StablePosetOfCategory( PosetOfCategory(
-SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):
-
-15 primitive operations were used to derive 303 operations for this category
-which algorithmically
-* IsEquippedWithHomomorphismStructure
-* IsHeytingAlgebra
-* IsClosedMonoidalLattice
-* IsSymmetricClosedMonoidalCategory
-and furthermore mathematically
-* IsSkeletalCategory
-* IsStableProset
-* IsStrictCartesianCategory
-* IsStrictCocartesianCategory
-* IsStrictMonoidalCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P / L;</span>
-An object in the stable poset given by:
-An object in the poset given by:
-An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := HomalgMatrix( "[ x, y ]", 2, 1, R ) / F / S / P / L;</span>
-An object in the stable poset given by:
-An object in the poset given by:
-An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJ := TensorProduct( I, J );</span>
-An object in the stable poset given by:
-An object in the poset given by:
-An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IiJ := DirectProduct( I, J );</span>
-An object in the stable poset given by:
-An object in the poset given by:
-An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( IJ, IiJ );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( IiJ, IJ );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IiJ = I;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IpJ := Coproduct( I, J );</span>
-An object in the stable poset given by:
-An object in the poset given by:
-An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IpJ = J;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJqJ := InternalHom( J, IJ ); ## this is the ideal quotient IJ : J</span>
-An object in the stable poset given by:
-An object in the poset given by:
-An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJqJ = I;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );</span>
-&lt;An epi-, monomorphism in StablePosetOfCategory( PosetOfCategory(
- SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iota );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( iota );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJJ := TensorProduct( IJ, J );</span>
-An object in the stable poset given by:
-An object in the poset given by:
-An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJJqJ := InternalHom( J, IJJ );</span>
-An object in the stable poset given by:
-An object in the poset given by:
-An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJJqJ = I;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJJsJ := StableInternalHom( J, IJJ );</span>
-An object in the stable poset given by:
-An object in the poset given by:
-An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJJsJ = I;</span>
-true
-</pre></div>
-
-<p><a id="X7C307E3485AC0353" name="X7C307E3485AC0353"></a></p>
-
-<h5>7.5-3 IsProsetOrPosetOfCapCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsProsetOrPosetOfCapCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsProsetAsCategory</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of a proset or poset of a CAP category.</p>
-
-<p><a id="X8652292C862DFF0F" name="X8652292C862DFF0F"></a></p>
-
-<h5>7.5-4 IsCellInProsetOrPosetOfCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInProsetOrPosetOfCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of cells in a proset or poset of a CAP category.</p>
-
-<p><a id="X8240BBDC7B7B6516" name="X8240BBDC7B7B6516"></a></p>
-
-<h5>7.5-5 IsCellInStableProsetOrPosetOfCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInStableProsetOrPosetOfCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of cells in a stable proset or poset of a CAP category.</p>
-
-<p><a id="X78E2F7C278FCACDD" name="X78E2F7C278FCACDD"></a></p>
-
-<h5>7.5-6 IsObjectInProsetOrPosetOfCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInProsetOrPosetOfCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of objects in a proset or poset of a CAP category.</p>
-
-<p><a id="X7B1247F27EA3DC1C" name="X7B1247F27EA3DC1C"></a></p>
-
-<h5>7.5-7 IsProsetOfCapCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsProsetOfCapCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of a proset of a CAP category.</p>
-
-<p><a id="X86041A6D84F1E2FB" name="X86041A6D84F1E2FB"></a></p>
-
-<h5>7.5-8 IsCellInProsetOfCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInProsetOfCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of cells in a proset of a CAP category.</p>
-
-<p><a id="X796309D480F78E5C" name="X796309D480F78E5C"></a></p>
-
-<h5>7.5-9 IsObjectInProsetOfCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInProsetOfCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of objects in a proset of a CAP category.</p>
-
-<p><a id="X7FD7F4A78456A57B" name="X7FD7F4A78456A57B"></a></p>
-
-<h5>7.5-10 IsMorphismInProsetOfCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInProsetOfCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of morphisms in a proset of a CAP category.</p>
-
-<p><a id="X80D74D0783D4D8F3" name="X80D74D0783D4D8F3"></a></p>
-
-<h5>7.5-11 IsPosetOfCapCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPosetOfCapCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of a poset of a CAP category.</p>
-
-<p><a id="X85EDEA217DD559F7" name="X85EDEA217DD559F7"></a></p>
-
-<h5>7.5-12 IsCellInPosetOfCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInPosetOfCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of cells in a poset of a CAP category.</p>
-
-<p><a id="X81D7E93E86CACF58" name="X81D7E93E86CACF58"></a></p>
-
-<h5>7.5-13 IsObjectInPosetOfCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInPosetOfCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of objects in a poset of a CAP category.</p>
-
-<p><a id="X7B2E7E9085A5BBCF" name="X7B2E7E9085A5BBCF"></a></p>
-
-<h5>7.5-14 IsMorphismInPosetOfCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInPosetOfCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of morphisms in a poset of a CAP category.</p>
+<p>The <strong class="pkg">GAP</strong> category of preordered sets viewed as categories.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Next Chapter]</a>&nbsp;  </div>

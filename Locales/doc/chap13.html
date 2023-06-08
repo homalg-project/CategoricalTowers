@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (Locales) - Chapter 13: Tools</title>
+<title>GAP (Locales) - Chapter 13: The interval category</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -20,209 +20,210 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap12.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap14.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap13_mj.html">[MathJax on]</a></p>
-<p><a id="X8508AEF8845565A1" name="X8508AEF8845565A1"></a></p>
-<div class="ChapSects"><a href="chap13.html#X8508AEF8845565A1">13 <span class="Heading">Tools</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13.html#X7EBFC26F83EB9F72">13.1 <span class="Heading">Info Class</span></a>
+<p><a id="X80E5F97F78D6D1F0" name="X80E5F97F78D6D1F0"></a></p>
+<div class="ChapSects"><a href="chap13.html#X80E5F97F78D6D1F0">13 <span class="Heading">The interval category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13.html#X86EC0F0A78ECBC10">13.1 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7DD3A04E7CFC52CF">13.1-1 InfoSquashDatastructureForConstructibleObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X81025D817EA13D49">13.1-1 CreateIntervalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7F4A513F7A204EA7">13.1-2 IntervalCategory</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13.html#X86EC0F0A78ECBC10">13.2 <span class="Heading">Constructors</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13.html#X7C701DBF7BAE649A">13.2 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X85B819697CDE6C1D">13.2-1 DatastructureForConstructibleObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7C08230B788464A7">13.2-2 NodeInDatastructureOfConstructibleObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7D8C14BB7BAD0AA1">13.2-3 Attach</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7B0117A683ED74DD">13.2-1 SetOfObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X801404DF7C2DEF86">13.2-2 SetOfGeneratingMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X832ED2957909B491">13.2-3 ClassicalTruthValue</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13.html#X7DE8E16C7C2D387B">13.3 <span class="Heading">Operations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13.html#X7D03633A7D98026B">13.3 <span class="Heading">GAP categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7E83EF3281B014F1">13.3-1 IsDone</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X829CC5B87CB152A5">13.3-2 MinimalLevelOfPreNodes</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X818B104883E8517C">13.3-3 Pop</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7EDF57CF7EAB1448">13.3-4 IsHomSetInhabited</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7E4C4A4380758AAC">13.3-5 Remove</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X81ED6C2480A558E5">13.3-6 SquashOnce</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X82BB373F82206C80">13.3-7 RemoveObsoleteSubtrahends</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7D93D83380D802A7">13.3-8 Squash</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7F0D216779AA047E">13.3-9 AsUnionOfMultipleDifferences</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X84EBC55A7D387CBD">13.3-10 DigraphOfParents</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X8464FDE37F2C3384">13.3-11 DigraphOfChildren</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X812A4C8883A2D9B9">13.3-12 Visualize</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13.html#X7D03633A7D98026B">13.4 <span class="Heading">GAP Categories</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7A398A1778957741">13.4-1 IsDatastructureForConstructibleObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7A86A1037E358EE4">13.4-2 IsNodeInDatastructureOfConstructibleObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X833BE7758732D9CF">13.3-1 IsIntervalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7AD1A805805DEBA3">13.3-2 IsCellInIntervalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X78B69B7786FD9997">13.3-3 IsObjectInIntervalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X791BE77578436B7B">13.3-4 IsMorphismInIntervalCategory</a></span>
 </div></div>
 </div>
 
-<h3>13 <span class="Heading">Tools</span></h3>
+<h3>13 <span class="Heading">The interval category</span></h3>
 
-<p><a id="X7EBFC26F83EB9F72" name="X7EBFC26F83EB9F72"></a></p>
-
-<h4>13.1 <span class="Heading">Info Class</span></h4>
-
-<p><a id="X7DD3A04E7CFC52CF" name="X7DD3A04E7CFC52CF"></a></p>
-
-<h5>13.1-1 InfoSquashDatastructureForConstructibleObjects</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InfoSquashDatastructureForConstructibleObjects</code></td><td class="tdright">(&nbsp;info class&nbsp;)</td></tr></table></div>
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
-<h4>13.2 <span class="Heading">Constructors</span></h4>
+<h4>13.1 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X85B819697CDE6C1D" name="X85B819697CDE6C1D"></a></p>
+<p><a id="X81025D817EA13D49" name="X81025D817EA13D49"></a></p>
 
-<h5>13.2-1 DatastructureForConstructibleObject</h5>
+<h5>13.1-1 CreateIntervalCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DatastructureForConstructibleObject</code>( <var class="Arg">none</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: an empty datastructure of a constructible object</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateIntervalCategory</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<p>Construct a datastructure of a constructible object.</p>
+<p>Return the interval category on two objects.</p>
 
-<p><a id="X7C08230B788464A7" name="X7C08230B788464A7"></a></p>
+<p><a id="X7F4A513F7A204EA7" name="X7F4A513F7A204EA7"></a></p>
 
-<h5>13.2-2 NodeInDatastructureOfConstructibleObject</h5>
+<h5>13.1-2 IntervalCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NodeInDatastructureOfConstructibleObject</code>( <var class="Arg">C</var>, <var class="Arg">A</var>, <var class="Arg">d</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a datastructure of a node in a constructible object</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntervalCategory</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<p>The interval category on two objects.</p>
 
-<p>Construct a node of parity <var class="Arg">b</var> in a the datastructure <var class="Arg">C</var> of a constructible object given an object <var class="Arg">A</var> in a thin category.</p>
+<p>The category of presheaves with values in the interval category of the boolean algebra 2^1 has 3 distinct objects. This is the free distributive lattice generated by a discrete category with one object.</p>
 
-<p><a id="X7D8C14BB7BAD0AA1" name="X7D8C14BB7BAD0AA1"></a></p>
 
-<h5>13.2-3 Attach</h5>
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IntervalCategory;</span>
+IntervalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( IntervalCategory );</span>
+A CAP category with name IntervalCategory:
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Attach</code>( <var class="Arg">N</var>, <var class="Arg">pos_node</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+19 primitive operations were used to derive 294 operations for this category which algorithmically
+* IsEquippedWithHomomorphismStructure
+* IsBooleanAlgebra
+and furthermore mathematically
+* IsSkeletalCategory
+* IsStrictCartesianCategory
+* IsStrictCocartesianCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjects( IntervalCategory );</span>
+[ &lt;(⊥)&gt;, &lt;(⊤)&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( IntervalCategory );</span>
+[ (⊥)-[(⇒)]-&gt;(⊤) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( IntervalCategory );</span>
+PreSheaves( IntervalCategory, IntervalCategory )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( PSh );</span>
+A CAP category with name PreSheaves( IntervalCategory, IntervalCategory ):
+
+60 primitive operations were used to derive 204 operations for this category
+which algorithmically
+* IsEquippedWithHomomorphismStructure
+* IsCodistributiveCategory
+* IsDistributiveCategory
+and furthermore mathematically
+* IsBicartesianClosedCategory (but not yet algorithmically)
+* IsBicartesianCoclosedCategory (but not yet algorithmically)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := YonedaEmbeddingOfSourceCategory( PSh );</span>
+Yoneda embedding functor
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := Y( TerminalObject( IntervalCategory ) );</span>
+&lt;A projective object in PreSheaves( IntervalCategory, IntervalCategory )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminal( t );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
+Image of &lt;An object in IntervalCategory&gt;:
+&lt;(⊤)&gt;
+
+Image of &lt;An object in IntervalCategory&gt;:
+&lt;(⊤)&gt;
+
+Image of (⊥)-[(⇒)]-&gt;(⊤):
+(⊤)-[(⊤)]-&gt;(⊤)
+
+An object in PreSheaves( IntervalCategory, IntervalCategory )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := Y( InitialObject( IntervalCategory ) );</span>
+&lt;A projective object in PreSheaves( IntervalCategory, IntervalCategory )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( f );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( f );</span>
+Image of &lt;An object in IntervalCategory&gt;:
+&lt;(⊤)&gt;
+
+Image of &lt;An object in IntervalCategory&gt;:
+&lt;(⊥)&gt;
+
+Image of (⊥)-[(⇒)]-&gt;(⊤):
+(⊥)-[(⇒)]-&gt;(⊤)
+
+An object in PreSheaves( IntervalCategory, IntervalCategory )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := InitialObject( PSh );</span>
+&lt;An object in PreSheaves( IntervalCategory, IntervalCategory )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i );</span>
+Image of &lt;An object in IntervalCategory&gt;:
+&lt;(⊥)&gt;
+
+Image of &lt;An object in IntervalCategory&gt;:
+&lt;(⊥)&gt;
+
+Image of (⊥)-[(⇒)]-&gt;(⊤):
+(⊥)-[(⊥)]-&gt;(⊥)
+
+An object in PreSheaves( IntervalCategory, IntervalCategory )
+given by the above data
+</pre></div>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>13.2 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7B0117A683ED74DD" name="X7B0117A683ED74DD"></a></p>
+
+<h5>13.2-1 SetOfObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetOfObjects</code>( <var class="Arg">I</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Use <code class="code">NodeInDatastructureOfConstructibleObject</code> to attach to the datastructure <code class="code">C</code> of a constructible object</p>
+<p>The two-element set of objects of the interval category <var class="Arg">I</var>.</p>
 
+<p><a id="X801404DF7C2DEF86" name="X801404DF7C2DEF86"></a></p>
 
-<ul>
-<li><p>at the parents of the pre-node <var class="Arg">N</var> the object <var class="Arg">pos_node</var> as a new positive node,</p>
+<h5>13.2-2 SetOfGeneratingMorphisms</h5>
 
-</li>
-<li><p>at the resulting positive node the entries of <var class="Arg">L</var> as new negative nodes,</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetOfGeneratingMorphisms</code>( <var class="Arg">I</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
 
-</li>
-<li><p>at the resulting positive node the entries of <var class="Arg">L</var> as new pre-nodes, and return a list containing the list of these pre-nodes as the first entry and the resulting positive node as the second.</p>
+<p>The one-element set containing the generating morphism of the interval category <var class="Arg">I</var>.</p>
 
-</li>
-</ul>
-<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+<p><a id="X832ED2957909B491" name="X832ED2957909B491"></a></p>
 
-<h4>13.3 <span class="Heading">Operations</span></h4>
+<h5>13.2-3 ClassicalTruthValue</h5>
 
-<p><a id="X7E83EF3281B014F1" name="X7E83EF3281B014F1"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClassicalTruthValue</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
 
-<h5>13.3-1 IsDone</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDone</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X829CC5B87CB152A5" name="X829CC5B87CB152A5"></a></p>
-
-<h5>13.3-2 MinimalLevelOfPreNodes</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MinimalLevelOfPreNodes</code>( <var class="Arg">pos_node</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
-
-<p><a id="X818B104883E8517C" name="X818B104883E8517C"></a></p>
-
-<h5>13.3-3 Pop</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Pop</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a datastructure of a node in a constructible object</p>
-
-<p><a id="X7EDF57CF7EAB1448" name="X7EDF57CF7EAB1448"></a></p>
-
-<h5>13.3-4 IsHomSetInhabited</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsHomSetInhabited</code>( <var class="Arg">node1</var>, <var class="Arg">node2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
-
-<p>Check if the object underlying <var class="Arg">node1</var> is contained in the object underlying <var class="Arg">node2</var>.</p>
-
-<p><a id="X7E4C4A4380758AAC" name="X7E4C4A4380758AAC"></a></p>
-
-<h5>13.3-5 Remove</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Remove</code>( <var class="Arg">pos_node</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
-
-<p><a id="X81ED6C2480A558E5" name="X81ED6C2480A558E5"></a></p>
-
-<h5>13.3-6 SquashOnce</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SquashOnce</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a datastructure of a node in a constructible object</p>
-
-<p><a id="X82BB373F82206C80" name="X82BB373F82206C80"></a></p>
-
-<h5>13.3-7 RemoveObsoleteSubtrahends</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RemoveObsoleteSubtrahends</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a datastructure of a node in a constructible object</p>
-
-<p><a id="X7D93D83380D802A7" name="X7D93D83380D802A7"></a></p>
-
-<h5>13.3-8 Squash</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Squash</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a datastructure of a node in a constructible object</p>
-
-<p><a id="X7F0D216779AA047E" name="X7F0D216779AA047E"></a></p>
-
-<h5>13.3-9 AsUnionOfMultipleDifferences</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsUnionOfMultipleDifferences</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a constructible object</p>
-
-<p><a id="X84EBC55A7D387CBD" name="X84EBC55A7D387CBD"></a></p>
-
-<h5>13.3-10 DigraphOfParents</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DigraphOfParents</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a digraph</p>
-
-<p><a id="X8464FDE37F2C3384" name="X8464FDE37F2C3384"></a></p>
-
-<h5>13.3-11 DigraphOfChildren</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DigraphOfChildren</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a digraph</p>
-
-<p><a id="X812A4C8883A2D9B9" name="X812A4C8883A2D9B9"></a></p>
-
-<h5>13.3-12 Visualize</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Visualize</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
-
-<p>Opens a PDF with the graph of the datastructure of a constructible object <var class="Arg">A</var>.</p>
+<p>The truth value of the object <var class="Arg">a</var> in the interval category.</p>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
-<h4>13.4 <span class="Heading">GAP Categories</span></h4>
+<h4>13.3 <span class="Heading">GAP categories</span></h4>
 
-<p><a id="X7A398A1778957741" name="X7A398A1778957741"></a></p>
+<p><a id="X833BE7758732D9CF" name="X833BE7758732D9CF"></a></p>
 
-<h5>13.4-1 IsDatastructureForConstructibleObjects</h5>
+<h5>13.3-1 IsIntervalCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDatastructureForConstructibleObjects</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsIntervalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of datastructures for constructible objects.</p>
+<p>The <strong class="pkg">GAP</strong> category of an interval category.</p>
 
-<p><a id="X7A86A1037E358EE4" name="X7A86A1037E358EE4"></a></p>
+<p>The <strong class="pkg">GAP</strong> category of cells in an interval category.</p>
 
-<h5>13.4-2 IsNodeInDatastructureOfConstructibleObjects</h5>
+<p><a id="X7AD1A805805DEBA3" name="X7AD1A805805DEBA3"></a></p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsNodeInDatastructureOfConstructibleObjects</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<h5>13.3-2 IsCellInIntervalCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInIntervalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of nodes in datastructures of constructibe objects.</p>
+<p><a id="X78B69B7786FD9997" name="X78B69B7786FD9997"></a></p>
+
+<h5>13.3-3 IsObjectInIntervalCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInIntervalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in an interval category.</p>
+
+<p><a id="X791BE77578436B7B" name="X791BE77578436B7B"></a></p>
+
+<h5>13.3-4 IsMorphismInIntervalCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInIntervalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in an interval category.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap12.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap14.html">[Next Chapter]</a>&nbsp;  </div>
