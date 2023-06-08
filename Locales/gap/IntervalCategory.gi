@@ -19,6 +19,14 @@ InstallGlobalFunction( "CreateIntervalCategory",
     IntervalCategory!.category_as_first_argument := true;
     IntervalCategory!.supports_empty_limits := true;
     
+    SetDefiningTripleOfUnderlyingQuiver( IntervalCategory,
+            Triple( 2, 1, [ Pair( 0, 1 ) ] ) );
+
+    IntervalCategory!.compiler_hints :=
+      rec( category_attribute_names :=
+           [ "DefiningTripleOfUnderlyingQuiver",
+             ] );
+    
     SetIsFinite( IntervalCategory, true );
     
     SetIsBooleanAlgebra( IntervalCategory, true );
@@ -201,6 +209,30 @@ end );
 
 ##
 BindGlobal( "IntervalCategory", CreateIntervalCategory( ) );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for an interval category",
+        [ IsIntervalCategory ],
+        
+  function( interval_category )
+    
+    return [ InitialObject( interval_category ), TerminalObject( interval_category ) ];
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for an interval category",
+        [ IsIntervalCategory ],
+        
+  function( interval_category )
+    
+    return [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( interval_category,
+                   InitialObject( interval_category ),
+                   TerminalObject( interval_category ) ) ];
+    
+end );
 
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_ENRICHMENT_OVER_INTERVAL_CATEGORY,

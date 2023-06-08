@@ -9,14 +9,14 @@
 #! @Section Info Class
 DeclareInfoClass( "InfoSquashDatastructureForConstructibleObjects" );
 
-#! @Section GAP Categories
+#! @Section GAP categories
 #! @Description
 #!  The &GAP; category of datastructures for constructible objects.
 #! @Arguments object
 DeclareCategory( "IsDatastructureForConstructibleObjects",
                  IsAttributeStoringRep );
 
-#! @Section GAP Categories
+#! @Section GAP categories
 #! @Description
 #!  The &GAP; category of nodes in datastructures of constructibe objects.
 #! @Arguments object

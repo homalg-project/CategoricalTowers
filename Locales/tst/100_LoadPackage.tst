@@ -9,11 +9,13 @@ gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
 gap> LoadPackage( "IO_ForHomalg", false );
 true
-gap> LoadPackage( "Toposes", false );
-true
 gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
+gap> LoadPackage( "Toposes", false );
+true
 gap> LoadPackage( "SubcategoriesForCAP", false );
+true
+gap> LoadPackage( "FunctorCategories", false );
 true
 gap> LoadPackage( "LazyCategories", false );
 true
@@ -22,11 +24,13 @@ true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
 gap> LoadPackage( "IO_ForHomalg" );
 true
-gap> LoadPackage( "Toposes" );
-true
 gap> LoadPackage( "FreydCategoriesForCAP" );
 true
+gap> LoadPackage( "Toposes" );
+true
 gap> LoadPackage( "SubcategoriesForCAP" );
+true
+gap> LoadPackage( "FunctorCategories" );
 true
 gap> LoadPackage( "LazyCategories" );
 true

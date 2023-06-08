@@ -6,7 +6,7 @@
 
 #! @Chapter Meet-semilattice of differences
 
-#! @Section GAP Categories
+#! @Section GAP categories
 
 #! @Description
 #!  The &GAP; category of a meet-semilattice of single differences.

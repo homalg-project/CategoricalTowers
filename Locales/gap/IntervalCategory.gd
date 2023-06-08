@@ -38,6 +38,20 @@ DeclareCategory( "IsMorphismInIntervalCategory",
 ####################################
 
 #! @Description
+#!  The two-element set of objects of the interval category <A>I</A>.
+#! @Arguments I
+#! @Returns a list
+DeclareAttribute( "SetOfObjects",
+        IsIntervalCategory );
+
+#! @Description
+#!  The one-element set containing the generating morphism of the interval category <A>I</A>.
+#! @Arguments I
+#! @Returns a list
+DeclareAttribute( "SetOfGeneratingMorphisms",
+        IsIntervalCategory );
+
+#! @Description
 #!  The truth value of the object <A>a</A> in the interval category.
 #! @Arguments a
 #! @Returns a boolean
@@ -57,12 +71,18 @@ end );
 #
 ####################################
 
-#!
+#! @Description
+#!  Return the interval category on two objects.
+#! @Arguments
+#! @Returns a &CAP; category
 DeclareGlobalFunction( "CreateIntervalCategory" );
 
 if false then
-#!
+#! @Description
+#!  The interval category on two objects.
+#! @Returns a &CAP; category
 DeclareGlobalVariable( "IntervalCategory" );
+#! @InsertChunk Dedekind1stNumber
 fi;
 
 DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_ENRICHMENT_OVER_INTERVAL_CATEGORY" );

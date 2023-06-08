@@ -17,7 +17,7 @@ DeclareInfoClass( "InfoLocales" );
 
 ####################################
 #
-#! @Section GAP Categories
+#! @Section GAP categories
 #
 ####################################
 
@@ -35,7 +35,7 @@ DeclareCategory( "IsMorphismInThinCategory",
 
 ####################################
 #
-#! @Section GAP Properties
+#! @Section Properties
 #
 ####################################
 
