@@ -173,7 +173,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Locales", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Locales", ">= 2023.06-01", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQ := RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" );[127X[104X
     [4X[28XQ(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t][128X[104X
@@ -195,7 +195,7 @@
     [4X[28XRightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),[128X[104X
     [4X[28XIntervalCategory ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X60 primitive operations were used to derive 203 operations for this category[128X[104X
+    [4X[28X60 primitive operations were used to derive 204 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsCodistributiveCategory[128X[104X
@@ -231,11 +231,19 @@
     [4X[28X IntervalCategory )>[128X[104X
     [4X[25Xgap>[125X [27XIsReflexive( i );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsHomSetInhabited( i, f );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsHomSetInhabited( f, i );[127X[104X
+    [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XAC := Coproduct( A, C );[127X[104X
     [4X[28X<An object in PreSheaves( PosetOfCategory( FreeCategory([128X[104X
     [4X[28X RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),[128X[104X
     [4X[28X IntervalCategory )>[128X[104X
     [4X[25Xgap>[125X [27XIsReflexive( AC );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsHomSetInhabited( AC, t );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsHomSetInhabited( t, AC );[127X[104X
     [4X[28Xfalse[128X[104X
   [4X[32X[104X
   

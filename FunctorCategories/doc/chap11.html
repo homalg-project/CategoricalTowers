@@ -219,7 +219,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales", "&gt;= 2023.06-01", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(f,A,C,t)[a:f-&gt;A,b:A-&gt;t,c:f-&gt;C,d:C-&gt;t]" );</span>
 Q(f,A,C,t)[a:f-&gt;A,b:A-&gt;t,c:f-&gt;C,d:C-&gt;t]
@@ -241,7 +241,7 @@ PreSheaves( PosetOfCategory( FreeCategory(
 RightQuiver( "Q(f,A,C,t)[a:f-&gt;A,b:A-&gt;t,c:f-&gt;C,d:C-&gt;t]" ) ) / [ a*b = c*d ] ),
 IntervalCategory ):
 
-60 primitive operations were used to derive 203 operations for this category
+60 primitive operations were used to derive 204 operations for this category
 which algorithmically
 * IsEquippedWithHomomorphismStructure
 * IsCodistributiveCategory
@@ -277,11 +277,19 @@ false
  IntervalCategory )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsReflexive( i );</span>
 false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( i, f );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( f, i );</span>
+false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AC := Coproduct( A, C );</span>
 &lt;An object in PreSheaves( PosetOfCategory( FreeCategory(
  RightQuiver( "Q(f,A,C,t)[a:f-&gt;A,b:A-&gt;t,c:f-&gt;C,d:C-&gt;t]" ) ) / [ a*b = c*d ] ),
  IntervalCategory )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsReflexive( AC );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( AC, t );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( t, AC );</span>
 false
 </pre></div>
 
