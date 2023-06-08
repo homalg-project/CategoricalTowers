@@ -23,6 +23,7 @@ AutoDoc( rec(
                 \usepackage{mathtools}
                 \DeclareUnicodeCharacter{22A4}{\ensuremath{\top}}
                 \DeclareUnicodeCharacter{22A5}{\ensuremath{\bot}}
+                \DeclareUnicodeCharacter{21D2}{\ensuremath{\Rightarrow}}
             """,
         ),
     ),
