@@ -220,10 +220,16 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( one, one );</span>
 &lt;(⊤)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( one, one );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( one, two );</span>
 &lt;(⊤)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( one, two );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( two, one );</span>
 &lt;(⊥)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( two, one );</span>
+false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProduct( [ one, two ] ) = one;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Coproduct( [ one, two ] ) = two;</span>
