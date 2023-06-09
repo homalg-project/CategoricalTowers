@@ -35,9 +35,9 @@ function ( cat_1, arg2_1 )
                     local hoisted_1_2, hoisted_2_2, deduped_3_2;
                     deduped_3_2 := Sum( deduped_3_1{[ 1 .. i_2 - 1 ]} );
                     hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + deduped_3_1[i_2] - 1 ];
-                    hoisted_1_2 := List( DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( CAP_JIT_INCOMPLETE_LOGIC( arg2_1[i_2] ) )[3], function ( a_3 )
-                            return a_3[1];
-                        end );
+                    hoisted_1_2 := CAP_JIT_INCOMPLETE_LOGIC( List( DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( CAP_JIT_INCOMPLETE_LOGIC( arg2_1[i_2] ) )[3], function ( a_3 )
+                              return a_3[1];
+                          end ) );
                     return List( [ 0 .. deduped_4_1[i_2] - 1 ], function ( i_3 )
                             return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
                         end );
@@ -45,9 +45,9 @@ function ( cat_1, arg2_1 )
                     local hoisted_1_2, hoisted_2_2, deduped_3_2;
                     deduped_3_2 := Sum( deduped_3_1{[ 1 .. i_2 - 1 ]} );
                     hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + deduped_3_1[i_2] - 1 ];
-                    hoisted_1_2 := List( DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( CAP_JIT_INCOMPLETE_LOGIC( arg2_1[i_2] ) )[3], function ( a_3 )
-                            return a_3[2];
-                        end );
+                    hoisted_1_2 := CAP_JIT_INCOMPLETE_LOGIC( List( DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( CAP_JIT_INCOMPLETE_LOGIC( arg2_1[i_2] ) )[3], function ( a_3 )
+                              return a_3[2];
+                          end ) );
                     return List( [ 0 .. deduped_4_1[i_2] - 1 ], function ( i_3 )
                             return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
                         end );
@@ -264,15 +264,15 @@ function ( cat_1, arg2_1, arg3_1 )
     return CreateCapCategoryObjectWithAttributes( deduped_49_1, Length, Length( Filtered( deduped_28_1, function ( x_2 )
                 local deduped_1_2;
                 deduped_1_2 := 1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 );
-                return Sum( deduped_37_1, function ( j_3 )
-                          local deduped_1_3;
-                          deduped_1_3 := 1 + j_3;
-                          return hoisted_19_1[deduped_1_3][deduped_1_2] * deduped_22_1[deduped_1_3];
-                      end ) = Sum( deduped_37_1, function ( j_3 )
-                          local deduped_1_3;
-                          deduped_1_3 := 1 + j_3;
-                          return hoisted_27_1[deduped_1_3][deduped_1_2] * deduped_22_1[deduped_1_3];
-                      end );
+                return CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_37_1, function ( j_3 )
+                            local deduped_1_3;
+                            deduped_1_3 := 1 + j_3;
+                            return hoisted_19_1[deduped_1_3][deduped_1_2] * deduped_22_1[deduped_1_3];
+                        end ) ) = CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_37_1, function ( j_3 )
+                            local deduped_1_3;
+                            deduped_1_3 := 1 + j_3;
+                            return hoisted_27_1[deduped_1_3][deduped_1_2] * deduped_22_1[deduped_1_3];
+                        end ) );
             end ) ) );
 end
 ########
@@ -478,18 +478,18 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_32_1 := CAP_JIT_INCOMPLETE_LOGIC( Filtered( deduped_34_1, function ( x_2 )
                 local deduped_1_2;
                 deduped_1_2 := 1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 );
-                return Sum( deduped_45_1, function ( j_3 )
-                          local deduped_1_3;
-                          deduped_1_3 := 1 + j_3;
-                          return hoisted_19_1[deduped_1_3][deduped_1_2] * deduped_22_1[deduped_1_3];
-                      end ) = Sum( deduped_45_1, function ( j_3 )
-                          local deduped_1_3;
-                          deduped_1_3 := 1 + j_3;
-                          return hoisted_27_1[deduped_1_3][deduped_1_2] * deduped_22_1[deduped_1_3];
-                      end );
+                return CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_45_1, function ( j_3 )
+                            local deduped_1_3;
+                            deduped_1_3 := 1 + j_3;
+                            return hoisted_19_1[deduped_1_3][deduped_1_2] * deduped_22_1[deduped_1_3];
+                        end ) ) = CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_45_1, function ( j_3 )
+                            local deduped_1_3;
+                            deduped_1_3 := 1 + j_3;
+                            return hoisted_27_1[deduped_1_3][deduped_1_2] * deduped_22_1[deduped_1_3];
+                        end ) );
             end )[1 + AsList( alpha_1 )[(1 + CAP_JIT_INCOMPLETE_LOGIC( [ 0 .. (Length( Source( alpha_1 ) ) - 1) ][1] ))]] );
-    hoisted_31_1 := REM_INT( QUO_INT( deduped_32_1, deduped_33_1 ), Product( deduped_39_1{[ 1 + deduped_38_1 .. Sum( deduped_40_1{[ 1, 2 ]} ) ]} ) );
-    hoisted_29_1 := REM_INT( deduped_32_1, deduped_33_1 );
+    hoisted_31_1 := CAP_JIT_INCOMPLETE_LOGIC( REM_INT( QUO_INT( deduped_32_1, deduped_33_1 ), Product( deduped_39_1{[ 1 + deduped_38_1 .. Sum( deduped_40_1{[ 1, 2 ]} ) ]} ) ) );
+    hoisted_29_1 := CAP_JIT_INCOMPLETE_LOGIC( REM_INT( deduped_32_1, deduped_33_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets, NTuple( 2, List( [ 0 .. deduped_38_1 - 1 ], function ( i_2 )
                 return REM_INT( QUO_INT( hoisted_29_1, deduped_54_1 ^ i_2 ), deduped_54_1 );
             end ), List( [ 0 .. deduped_40_1[2] - 1 ], function ( i_2 )
@@ -698,15 +698,15 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_37_1 := Filtered( deduped_38_1, function ( x_2 )
             local deduped_1_2;
             deduped_1_2 := 1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 );
-            return Sum( deduped_49_1, function ( j_3 )
-                      local deduped_1_3;
-                      deduped_1_3 := 1 + j_3;
-                      return hoisted_19_1[deduped_1_3][deduped_1_2] * deduped_22_1[deduped_1_3];
-                  end ) = Sum( deduped_49_1, function ( j_3 )
-                      local deduped_1_3;
-                      deduped_1_3 := 1 + j_3;
-                      return hoisted_27_1[deduped_1_3][deduped_1_2] * deduped_22_1[deduped_1_3];
-                  end );
+            return CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_49_1, function ( j_3 )
+                        local deduped_1_3;
+                        deduped_1_3 := 1 + j_3;
+                        return hoisted_19_1[deduped_1_3][deduped_1_2] * deduped_22_1[deduped_1_3];
+                    end ) ) = CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_49_1, function ( j_3 )
+                        local deduped_1_3;
+                        deduped_1_3 := 1 + j_3;
+                        return hoisted_27_1[deduped_1_3][deduped_1_2] * deduped_22_1[deduped_1_3];
+                    end ) );
         end );
     deduped_36_1 := Length( deduped_37_1 );
     hoisted_35_1 := [ 0 .. deduped_44_1[2] - 1 ];
@@ -716,8 +716,8 @@ function ( cat_1, arg2_1, arg3_1 )
     return List( [ 0 .. deduped_36_1 - 1 ], function ( i_2 )
             local hoisted_1_2, hoisted_2_2, deduped_3_2;
             deduped_3_2 := CAP_JIT_INCOMPLETE_LOGIC( deduped_37_1[1 + REM_INT( i_2, deduped_36_1 )] );
-            hoisted_2_2 := REM_INT( QUO_INT( deduped_3_2, deduped_30_1 ), hoisted_33_1 );
-            hoisted_1_2 := REM_INT( deduped_3_2, deduped_30_1 );
+            hoisted_2_2 := CAP_JIT_INCOMPLETE_LOGIC( REM_INT( QUO_INT( deduped_3_2, deduped_30_1 ), hoisted_33_1 ) );
+            hoisted_1_2 := CAP_JIT_INCOMPLETE_LOGIC( REM_INT( deduped_3_2, deduped_30_1 ) );
             return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets, NTuple( 2, List( hoisted_32_1, function ( i_3 )
                         return REM_INT( QUO_INT( hoisted_1_2, deduped_58_1 ^ i_3 ), deduped_58_1 );
                     end ), List( hoisted_35_1, function ( i_3 )

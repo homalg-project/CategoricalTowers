@@ -113,7 +113,7 @@ function ( cat_1, arg2_1 )
         end );
     deduped_34_1 := List( deduped_50_1, function ( i_2 )
             local hoisted_1_2;
-            hoisted_1_2 := deduped_2_1[VertexIndex( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_57_1[i_2] ) ) )];
+            hoisted_1_2 := deduped_2_1[CAP_JIT_INCOMPLETE_LOGIC( VertexIndex( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_57_1[i_2] ) ) ) )];
             return List( deduped_52_1, function ( t_3 )
                     return hoisted_1_2[deduped_31_1[t_3]];
                 end );
@@ -264,9 +264,9 @@ function ( cat_1, arg2_1 )
                   end ) ) ), deduped_59_1 ), HomalgMatrixListList( UnionOfRowsListList( deduped_48_1, Concatenation( List( deduped_51_1, function ( j_2 )
                       local hoisted_1_2, deduped_2_2, hoisted_3_2;
                       hoisted_1_2 := deduped_2_1[deduped_9_1[CAP_JIT_INCOMPLETE_LOGIC( j_2 )]];
-                      deduped_2_2 := List( deduped_49_1, function ( s_3 )
-                              return hoisted_1_2[hoisted_10_1[s_3]];
-                          end );
+                      deduped_2_2 := CAP_JIT_INCOMPLETE_LOGIC( List( deduped_49_1, function ( s_3 )
+                                return hoisted_1_2[hoisted_10_1[s_3]];
+                            end ) );
                       hoisted_3_2 := Sum( deduped_49_1, function ( s_3 )
                               return deduped_2_2[s_3];
                           end );
@@ -327,10 +327,10 @@ function ( cat_1, arg2_1 )
                             end ) );
                   end ), List( [ 1 .. Length( deduped_53_1 ) ], function ( j_2 )
                       local hoisted_1_2, deduped_2_2, hoisted_3_2;
-                      hoisted_1_2 := deduped_2_1[VertexIndex( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_53_1[CAP_JIT_INCOMPLETE_LOGIC( j_2 )] ) ) )];
-                      deduped_2_2 := List( deduped_52_1, function ( s_3 )
-                              return hoisted_1_2[deduped_31_1[s_3]];
-                          end );
+                      hoisted_1_2 := deduped_2_1[CAP_JIT_INCOMPLETE_LOGIC( VertexIndex( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_53_1[CAP_JIT_INCOMPLETE_LOGIC( j_2 )] ) ) ) )];
+                      deduped_2_2 := CAP_JIT_INCOMPLETE_LOGIC( List( deduped_52_1, function ( s_3 )
+                                return hoisted_1_2[deduped_31_1[s_3]];
+                            end ) );
                       hoisted_3_2 := Sum( deduped_52_1, function ( s_3 )
                               return deduped_2_2[s_3];
                           end );
@@ -443,7 +443,7 @@ function ( cat_1, alpha_1 )
     deduped_19_1 := [ 1 .. deduped_20_1 ];
     deduped_18_1 := List( deduped_25_1, function ( i_2 )
             local hoisted_1_2;
-            hoisted_1_2 := PathAsAlgebraElement( deduped_40_1, QuiverVertexAsIdentityPath( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_35_1[i_2] ) ) ) );
+            hoisted_1_2 := PathAsAlgebraElement( deduped_40_1, CAP_JIT_INCOMPLETE_LOGIC( QuiverVertexAsIdentityPath( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_35_1[i_2] ) ) ) ) );
             return List( deduped_25_1, function ( j_3 )
                     if i_2 = j_3 then
                         return hoisted_1_2;
@@ -460,7 +460,7 @@ function ( cat_1, alpha_1 )
         end );
     hoisted_11_1 := UnionOfRowsListList( deduped_31_1, [ List( deduped_26_1, function ( i_2 )
                   local hoisted_1_2;
-                  hoisted_1_2 := PathAsAlgebraElement( deduped_40_1, QuiverVertexAsIdentityPath( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_36_1[i_2] ) ) ) );
+                  hoisted_1_2 := PathAsAlgebraElement( deduped_40_1, CAP_JIT_INCOMPLETE_LOGIC( QuiverVertexAsIdentityPath( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_36_1[i_2] ) ) ) ) );
                   return List( deduped_26_1, function ( j_3 )
                           if i_2 = j_3 then
                               return hoisted_1_2;
@@ -501,7 +501,7 @@ function ( cat_1, alpha_1 )
                     end ) ] ) ) ), UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_46_1, deduped_39_1, deduped_23_1, MorphismMatrix, UnionOfColumnsListList( deduped_27_1, [ List( deduped_24_1, function ( i_2 )
                       local hoisted_1_2, deduped_3_2;
                       deduped_3_2 := deduped_34_1[i_2];
-                      hoisted_1_2 := CreateCapCategoryMorphismWithAttributes( deduped_44_1, deduped_3_2, deduped_3_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_40_1, QuiverVertexAsIdentityPath( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_3_2 ) ) ) ) );
+                      hoisted_1_2 := CreateCapCategoryMorphismWithAttributes( deduped_44_1, deduped_3_2, deduped_3_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_40_1, CAP_JIT_INCOMPLETE_LOGIC( QuiverVertexAsIdentityPath( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_3_2 ) ) ) ) ) );
                       return List( deduped_24_1, function ( j_3 )
                               if i_2 = j_3 then
                                   return hoisted_1_2;
@@ -655,7 +655,7 @@ function ( cat_1, arg2_1, arg3_1 )
         end );
     deduped_40_1 := List( deduped_64_1, function ( i_2 )
             local hoisted_1_2;
-            hoisted_1_2 := deduped_3_1[VertexIndex( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_79_1[i_2] ) ) )];
+            hoisted_1_2 := deduped_3_1[CAP_JIT_INCOMPLETE_LOGIC( VertexIndex( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_79_1[i_2] ) ) ) )];
             return List( deduped_56_1, function ( t_3 )
                     return hoisted_1_2[deduped_4_1[t_3]];
                 end );
@@ -818,7 +818,7 @@ function ( cat_1, arg2_1, arg3_1 )
                     local hoisted_1_2, hoisted_2_2, deduped_3_2;
                     deduped_3_2 := CAP_JIT_INCOMPLETE_LOGIC( j_2 );
                     hoisted_2_2 := hoisted_7_1[deduped_3_2];
-                    hoisted_1_2 := ListWithIdenticalEntries( deduped_2_1, deduped_1_1[deduped_3_2] );
+                    hoisted_1_2 := CAP_JIT_INCOMPLETE_LOGIC( ListWithIdenticalEntries( deduped_2_1, deduped_1_1[deduped_3_2] ) );
                     return UnionOfColumnsListList( 1, List( deduped_56_1, function ( s_3 )
                               local hoisted_1_3, deduped_2_3, deduped_3_3, deduped_4_3;
                               deduped_4_3 := hoisted_5_1[s_3];
@@ -828,20 +828,20 @@ function ( cat_1, arg2_1, arg3_1 )
                                   return NullMatImmutable( 1, deduped_2_3 );
                               else
                                   hoisted_1_3 := CAP_JIT_INCOMPLETE_LOGIC( s_3 );
-                                  return [ CoefficientsOfPaths( deduped_82_1[deduped_3_3][deduped_4_3], Iterated( List( hoisted_12_1, function ( k_4 )
-                                                  return hoisted_2_2[k_4] * hoisted_11_1[k_4][hoisted_1_3];
-                                              end ), function ( alpha_4, beta_4 )
-                                                return alpha_4 + beta_4;
-                                            end, deduped_76_1 ) ) ];
+                                  return [ CoefficientsOfPaths( deduped_82_1[deduped_3_3][deduped_4_3], CAP_JIT_INCOMPLETE_LOGIC( Iterated( List( hoisted_12_1, function ( k_4 )
+                                                    return hoisted_2_2[k_4] * hoisted_11_1[k_4][hoisted_1_3];
+                                                end ), function ( alpha_4, beta_4 )
+                                                  return alpha_4 + beta_4;
+                                              end, deduped_76_1 ) ) ) ];
                               fi;
                               return;
                           end ) );
                 end ) ), 1, deduped_54_1, deduped_81_1 ), HomalgMatrixListList( UnionOfRowsListList( deduped_54_1, Concatenation( List( deduped_72_1, function ( j_2 )
                       local hoisted_1_2, deduped_2_2, hoisted_3_2;
                       hoisted_1_2 := deduped_3_1[deduped_1_1[CAP_JIT_INCOMPLETE_LOGIC( j_2 )]];
-                      deduped_2_2 := List( deduped_57_1, function ( s_3 )
-                              return hoisted_1_2[hoisted_17_1[s_3]];
-                          end );
+                      deduped_2_2 := CAP_JIT_INCOMPLETE_LOGIC( List( deduped_57_1, function ( s_3 )
+                                return hoisted_1_2[hoisted_17_1[s_3]];
+                            end ) );
                       hoisted_3_2 := Sum( deduped_57_1, function ( s_3 )
                               return deduped_2_2[s_3];
                           end );
@@ -902,10 +902,10 @@ function ( cat_1, arg2_1, arg3_1 )
                             end ) );
                   end ), List( [ 1 .. Length( deduped_73_1 ) ], function ( j_2 )
                       local hoisted_1_2, deduped_2_2, hoisted_3_2;
-                      hoisted_1_2 := deduped_3_1[VertexIndex( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_73_1[CAP_JIT_INCOMPLETE_LOGIC( j_2 )] ) ) )];
-                      deduped_2_2 := List( deduped_56_1, function ( s_3 )
-                              return hoisted_1_2[deduped_4_1[s_3]];
-                          end );
+                      hoisted_1_2 := deduped_3_1[CAP_JIT_INCOMPLETE_LOGIC( VertexIndex( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_73_1[CAP_JIT_INCOMPLETE_LOGIC( j_2 )] ) ) ) )];
+                      deduped_2_2 := CAP_JIT_INCOMPLETE_LOGIC( List( deduped_56_1, function ( s_3 )
+                                return hoisted_1_2[deduped_4_1[s_3]];
+                            end ) );
                       hoisted_3_2 := Sum( deduped_56_1, function ( s_3 )
                               return deduped_2_2[s_3];
                           end );
@@ -1520,7 +1520,7 @@ function ( cat_1, arg2_1, arg3_1 )
                       local hoisted_1_2, hoisted_2_2, deduped_3_2;
                       deduped_3_2 := CAP_JIT_INCOMPLETE_LOGIC( j_2 );
                       hoisted_2_2 := deduped_161_1[deduped_3_2];
-                      hoisted_1_2 := ListWithIdenticalEntries( deduped_2_1, deduped_1_1[deduped_3_2] );
+                      hoisted_1_2 := CAP_JIT_INCOMPLETE_LOGIC( ListWithIdenticalEntries( deduped_2_1, deduped_1_1[deduped_3_2] ) );
                       return UnionOfColumnsListList( 1, List( deduped_104_1, function ( s_3 )
                                 local hoisted_1_3, deduped_2_3, deduped_3_3, deduped_4_3;
                                 deduped_4_3 := hoisted_5_1[s_3];
@@ -1530,20 +1530,20 @@ function ( cat_1, arg2_1, arg3_1 )
                                     return NullMatImmutable( 1, deduped_2_3 );
                                 else
                                     hoisted_1_3 := CAP_JIT_INCOMPLETE_LOGIC( s_3 );
-                                    return [ CoefficientsOfPaths( deduped_160_1[deduped_3_3][deduped_4_3], Iterated( List( hoisted_12_1, function ( k_4 )
-                                                    return hoisted_2_2[k_4] * hoisted_11_1[k_4][hoisted_1_3];
-                                                end ), function ( alpha_4, beta_4 )
-                                                  return alpha_4 + beta_4;
-                                              end, deduped_149_1 ) ) ];
+                                    return [ CoefficientsOfPaths( deduped_160_1[deduped_3_3][deduped_4_3], CAP_JIT_INCOMPLETE_LOGIC( Iterated( List( hoisted_12_1, function ( k_4 )
+                                                      return hoisted_2_2[k_4] * hoisted_11_1[k_4][hoisted_1_3];
+                                                  end ), function ( alpha_4, beta_4 )
+                                                    return alpha_4 + beta_4;
+                                                end, deduped_149_1 ) ) ) ];
                                 fi;
                                 return;
                             end ) );
                   end ) ), 1, deduped_100_1, deduped_158_1 ), HomalgMatrixListList( UnionOfRowsListList( deduped_100_1, Concatenation( List( deduped_144_1, function ( j_2 )
                         local hoisted_1_2, deduped_2_2, hoisted_3_2;
                         hoisted_1_2 := deduped_3_1[deduped_1_1[CAP_JIT_INCOMPLETE_LOGIC( j_2 )]];
-                        deduped_2_2 := List( deduped_105_1, function ( s_3 )
-                                return hoisted_1_2[hoisted_17_1[s_3]];
-                            end );
+                        deduped_2_2 := CAP_JIT_INCOMPLETE_LOGIC( List( deduped_105_1, function ( s_3 )
+                                  return hoisted_1_2[hoisted_17_1[s_3]];
+                              end ) );
                         hoisted_3_2 := Sum( deduped_105_1, function ( s_3 )
                                 return deduped_2_2[s_3];
                             end );
@@ -1605,9 +1605,9 @@ function ( cat_1, arg2_1, arg3_1 )
                     end ), List( deduped_120_1, function ( j_2 )
                         local hoisted_1_2, deduped_2_2, hoisted_3_2;
                         hoisted_1_2 := deduped_3_1[deduped_137_1[CAP_JIT_INCOMPLETE_LOGIC( j_2 )]];
-                        deduped_2_2 := List( deduped_104_1, function ( s_3 )
-                                return hoisted_1_2[deduped_4_1[s_3]];
-                            end );
+                        deduped_2_2 := CAP_JIT_INCOMPLETE_LOGIC( List( deduped_104_1, function ( s_3 )
+                                  return hoisted_1_2[deduped_4_1[s_3]];
+                              end ) );
                         hoisted_3_2 := Sum( deduped_104_1, function ( s_3 )
                                 return deduped_2_2[s_3];
                             end );
@@ -1686,7 +1686,7 @@ function ( cat_1, arg2_1, arg3_1 )
                       local hoisted_1_2, hoisted_2_2, deduped_3_2;
                       deduped_3_2 := CAP_JIT_INCOMPLETE_LOGIC( j_2 );
                       hoisted_2_2 := deduped_165_1[deduped_3_2];
-                      hoisted_1_2 := ListWithIdenticalEntries( deduped_55_1, deduped_54_1[deduped_3_2] );
+                      hoisted_1_2 := CAP_JIT_INCOMPLETE_LOGIC( ListWithIdenticalEntries( deduped_55_1, deduped_54_1[deduped_3_2] ) );
                       return UnionOfColumnsListList( 1, List( deduped_106_1, function ( s_3 )
                                 local hoisted_1_3, deduped_2_3, deduped_3_3, deduped_4_3;
                                 deduped_4_3 := hoisted_57_1[s_3];
@@ -1696,20 +1696,20 @@ function ( cat_1, arg2_1, arg3_1 )
                                     return NullMatImmutable( 1, deduped_2_3 );
                                 else
                                     hoisted_1_3 := CAP_JIT_INCOMPLETE_LOGIC( s_3 );
-                                    return [ CoefficientsOfPaths( deduped_160_1[deduped_3_3][deduped_4_3], Iterated( List( hoisted_62_1, function ( k_4 )
-                                                    return hoisted_2_2[k_4] * hoisted_61_1[k_4][hoisted_1_3];
-                                                end ), function ( alpha_4, beta_4 )
-                                                  return alpha_4 + beta_4;
-                                              end, deduped_149_1 ) ) ];
+                                    return [ CoefficientsOfPaths( deduped_160_1[deduped_3_3][deduped_4_3], CAP_JIT_INCOMPLETE_LOGIC( Iterated( List( hoisted_62_1, function ( k_4 )
+                                                      return hoisted_2_2[k_4] * hoisted_61_1[k_4][hoisted_1_3];
+                                                  end ), function ( alpha_4, beta_4 )
+                                                    return alpha_4 + beta_4;
+                                                end, deduped_149_1 ) ) ) ];
                                 fi;
                                 return;
                             end ) );
                   end ) ), 1, deduped_101_1, deduped_158_1 ), HomalgMatrixListList( UnionOfRowsListList( deduped_101_1, Concatenation( List( deduped_145_1, function ( j_2 )
                         local hoisted_1_2, deduped_2_2, hoisted_3_2;
                         hoisted_1_2 := deduped_3_1[deduped_54_1[CAP_JIT_INCOMPLETE_LOGIC( j_2 )]];
-                        deduped_2_2 := List( deduped_107_1, function ( s_3 )
-                                return hoisted_1_2[hoisted_66_1[s_3]];
-                            end );
+                        deduped_2_2 := CAP_JIT_INCOMPLETE_LOGIC( List( deduped_107_1, function ( s_3 )
+                                  return hoisted_1_2[hoisted_66_1[s_3]];
+                              end ) );
                         hoisted_3_2 := Sum( deduped_107_1, function ( s_3 )
                                 return deduped_2_2[s_3];
                             end );
@@ -1771,9 +1771,9 @@ function ( cat_1, arg2_1, arg3_1 )
                     end ), List( deduped_121_1, function ( j_2 )
                         local hoisted_1_2, deduped_2_2, hoisted_3_2;
                         hoisted_1_2 := deduped_3_1[deduped_131_1[CAP_JIT_INCOMPLETE_LOGIC( j_2 )]];
-                        deduped_2_2 := List( deduped_106_1, function ( s_3 )
-                                return hoisted_1_2[deduped_56_1[s_3]];
-                            end );
+                        deduped_2_2 := CAP_JIT_INCOMPLETE_LOGIC( List( deduped_106_1, function ( s_3 )
+                                  return hoisted_1_2[deduped_56_1[s_3]];
+                              end ) );
                         hoisted_3_2 := Sum( deduped_106_1, function ( s_3 )
                                 return deduped_2_2[s_3];
                             end );

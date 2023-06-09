@@ -56,7 +56,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       return REM_INT( QUO_INT( gg_2, deduped_1_1 ^ i_3 ), deduped_1_1 );
                   end );
               return Sum( hoisted_6_1, function ( i_3 )
-                      return hoisted_4_1[(1 + hoisted_1_2[(1 + hoisted_3_1[(1 + CAP_JIT_INCOMPLETE_LOGIC( i_3 ))])])] * hoisted_5_1 ^ i_3;
+                      return CAP_JIT_INCOMPLETE_LOGIC( hoisted_4_1[(1 + hoisted_1_2[(1 + hoisted_3_1[(1 + CAP_JIT_INCOMPLETE_LOGIC( i_3 ))])])] ) * hoisted_5_1 ^ i_3;
                   end );
           end ) );
 end
