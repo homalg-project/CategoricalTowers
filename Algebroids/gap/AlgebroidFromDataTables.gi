@@ -763,7 +763,7 @@ InstallMethod( AlgebroidFromDataTables,
             coeffs_alpha := MorphismCoefficients( alpha );
             coeffs_gamma := MorphismCoefficients( gamma );
 
-            mat := Sum( List( s_alpha, l -> Sum( List( s_gamma, r -> List( hom_ijpq[l][r], x -> List( x, y -> (coeffs_alpha[l] * coeffs_gamma[r]) * y ) ) ) ) ) );
+            mat := Sum( List( [ 1 .. Length( s_alpha ) ], l -> Sum( List( [ 1 .. Length( s_gamma ) ], r -> List( hom_ijpq[s_alpha[l]][s_gamma[r]], x -> List( x, y -> (coeffs_alpha[s_alpha[l]] * coeffs_gamma[s_gamma[r]]) * y ) ) ) ) ) );
 
             return MorphismConstructor( RangeCategoryOfHomomorphismStructure( cat ),
                           s,
