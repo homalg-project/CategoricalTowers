@@ -118,6 +118,9 @@ DeclareAttribute( "CoYonedaEmbeddingOfUnderlyingCategoryData",
 DeclareAttribute( "CoYonedaEmbeddingOfUnderlyingCategory",
         IsFiniteStrictProductCompletion );
 
+DeclareOperation( "ExtendFunctorToFiniteStrictProductCompletionData",
+        [ IsCapCategory, IsList, IsCapCategory ] );
+
 #! @Description
 #!  The full embedding functor from the category $C$ underlying
 #!  the finite product completion <A>UC</A> into <A>UC</A>.

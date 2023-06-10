@@ -1208,48 +1208,49 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( ExtendFunctorToFiniteStrictCoproductCocompletion,
-        "for a functor",
-        [ IsCapFunctor ],
+InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletionData,
+        "for a two categories and a pair of functions",
+        [ IsCapCategory, IsList, IsCapCategory ],
         
-  function( F )
-    local C, D, UC, UF;
+  function( UC, pair_of_funcs, D )
+    local functor_on_objects, functor_on_morphisms,
+          extended_functor_on_objects, extended_functor_on_morphisms;
     
-    C := SourceOfFunctor( F );
-    D := RangeOfFunctor( F );
-    
-    UC := FiniteStrictCoproductCocompletion( C );
-    
-    UF := CapFunctor( Concatenation( "Extension to FiniteStrictCoproductCocompletion( Source( ", Name( F ), " ) )" ), UC, D );
+    functor_on_objects := pair_of_funcs[1];
+    functor_on_morphisms := pair_of_funcs[2];
     
     ## the code below is the doctrine-specific ur-algorithm for strict cocartesian (monoidal) categories
     
-    AddObjectFunction( UF,
+    extended_functor_on_objects :=
       function( objUC )
         local L;
         
-        L := ObjectDatum( objUC )[2];
+        L := ObjectDatum( UC, objUC )[2];
         
-        return Coproduct( D, List( L, objC -> ApplyFunctor( F, objC ) ) );
+        return Coproduct( D, List( L, objC -> functor_on_objects( objC ) ) );
         
-    end );
-    
-    AddMorphismFunction( UF,
+    end;
+
+    extended_functor_on_morphisms :=
       function( source, morUC, range )
         local pair_of_lists, map, mor, Fmor, pairS, pairT, FLS, FLT, inj, cmp;
         
-        pair_of_lists := MorphismDatum( morUC );
+        pair_of_lists := MorphismDatum( UC, morUC );
         
         map := pair_of_lists[1];
         mor := pair_of_lists[2];
         
-        Fmor := List( mor, m -> ApplyFunctor( F, m ) );
+        Fmor := List( mor, m ->
+                      functor_on_morphisms(
+                              functor_on_objects( Source( m ) ),
+                              m,
+                              functor_on_objects( Range( m ) ) ) );
         
-        pairS := ObjectDatum( Source( morUC ) );
-        pairT := ObjectDatum( Range( morUC ) );
+        pairS := ObjectDatum( UC, Source( morUC ) );
+        pairT := ObjectDatum( UC, Range( morUC ) );
         
-        FLS := List( pairS[2], S_i -> ApplyFunctor( F, S_i ) );
-        FLT := List( pairT[2], T_i -> ApplyFunctor( F, T_i ) );
+        FLS := List( pairS[2], S_i -> functor_on_objects( S_i ) );
+        FLT := List( pairT[2], T_i -> functor_on_objects( T_i ) );
         
         inj := List( map, i ->
                      InjectionOfCofactorOfCoproductWithGivenCoproduct( D,
@@ -1268,7 +1269,39 @@ InstallMethod( ExtendFunctorToFiniteStrictCoproductCocompletion,
                        cmp,
                        source );
         
-    end );
+    end;
+    
+    return Triple( UC,
+                   Pair( extended_functor_on_objects, extended_functor_on_morphisms ),
+                   D );
+    
+end );
+
+##
+InstallMethod( ExtendFunctorToFiniteStrictCoproductCocompletion,
+        "for a functor",
+        [ IsCapFunctor ],
+        
+  function( F )
+    local C, D, UC, data, UF;
+    
+    C := SourceOfFunctor( F );
+    D := RangeOfFunctor( F );
+    
+    UC := FiniteStrictCoproductCocompletion( C );
+    
+    data := ExtendFunctorToFiniteStrictCoproductCocompletionData(
+                    UC,
+                    Pair( FunctorObjectOperation( F ), FunctorMorphismOperation( F ) ),
+                    D );
+    
+    UF := CapFunctor( Concatenation( "Extension to FiniteStrictCoproductCocompletion( Source( ", Name( F ), " ) )" ), UC, D );
+    
+    AddObjectFunction( UF,
+            data[2][1] );
+    
+    AddMorphismFunction( UF,
+            data[2][2] );
     
     return UF;
     

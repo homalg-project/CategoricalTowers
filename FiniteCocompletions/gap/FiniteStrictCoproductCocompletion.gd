@@ -118,6 +118,9 @@ DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategoryData",
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
         IsFiniteStrictCoproductCocompletion );
 
+DeclareOperation( "ExtendFunctorToFiniteStrictCoproductCocompletionData",
+        [ IsCapCategory, IsList, IsCapCategory ] );
+
 #! @Description
 #!  The full embedding functor from the category $C$ underlying
 #!  the finite coproduct cocompletion <A>UC</A> into <A>UC</A>.
