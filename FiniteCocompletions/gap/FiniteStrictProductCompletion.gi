@@ -171,6 +171,9 @@ InstallMethod( FiniteStrictProductCompletion,
     
     SetUnderlyingCategory( PC, C );
     
+    Append( PC!.compiler_hints.category_attribute_names,
+            [ "UnderlyingCategory" ] );
+    
     if not HasRangeCategoryOfHomomorphismStructure( PC ) and
        (HasIsInitialCategory and IsInitialCategory)( C ) then
         
@@ -190,18 +193,40 @@ InstallMethod( FiniteStrictProductCompletion,
 end );
 
 ##
+InstallMethodForCompilerForCAP( CoYonedaEmbeddingOfUnderlyingCategoryData,
+        "for a finite coproduct cocompletion category",
+        [ IsFiniteStrictProductCompletion ],
+        
+  function( PC )
+    local yoneda_embedding_on_objects, yoneda_embedding_on_morphisms;
+    
+    yoneda_embedding_on_objects :=
+      objC -> ObjectConstructor( PC, Pair( 1, [ objC ] ) );
+    
+    yoneda_embedding_on_morphisms :=
+      { source, morC, range } -> MorphismConstructor( PC, source, Pair( [ 0 ], [ morC ] ), range );
+    
+    return Triple( UnderlyingCategory( PC ),
+                   Pair( yoneda_embedding_on_objects, yoneda_embedding_on_morphisms ),
+                   PC );
+    
+end );
+
+##
 InstallMethod( CoYonedaEmbeddingOfUnderlyingCategory,
         "for a finite coproduct cocompletion category",
         [ IsFiniteStrictProductCompletion ],
         
   function( PC )
-    local Y;
+    local data, Y;
     
-    Y := CapFunctor( "CoYoneda embedding functor", UnderlyingCategory( PC ), PC );
+    data := CoYonedaEmbeddingOfUnderlyingCategoryData( PC );
     
-    AddObjectFunction( Y, objC -> ObjectConstructor( PC, Pair( 1, [ objC ] ) ) );
+    Y := CapFunctor( "CoYoneda embedding functor", data[1], PC );
     
-    AddMorphismFunction( Y, { source, morC, range } -> MorphismConstructor( PC, source, Pair( [ 0 ], [ morC ] ), range ) );
+    AddObjectFunction( Y, data[2][1] );
+    
+    AddMorphismFunction( Y, data[2][2] );
     
     return Y;
     
@@ -259,48 +284,49 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( ExtendFunctorToFiniteStrictProductCompletion,
-        "for a functor",
-        [ IsCapFunctor ],
+InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData,
+        "for a two categories and a pair of functions",
+        [ IsCapCategory, IsList, IsCapCategory ],
         
-  function( F )
-    local C, D, PC, PF;
+  function( PC, pair_of_funcs, D )
+    local functor_on_objects, functor_on_morphisms,
+          extended_functor_on_objects, extended_functor_on_morphisms;
     
-    C := SourceOfFunctor( F );
-    D := RangeOfFunctor( F );
-    
-    PC := FiniteStrictProductCompletion( C );
-    
-    PF := CapFunctor( Concatenation( "Extension to FiniteStrictProductCompletion( Source( ", Name( F ), " ) )" ), PC, D );
+    functor_on_objects := pair_of_funcs[1];
+    functor_on_morphisms := pair_of_funcs[2];
     
     ## the code below is the doctrine-specific ur-algorithm for strict cartesian (monoidal) categories
     
-    AddObjectFunction( PF,
+    extended_functor_on_objects :=
       function( objPC )
         local L;
         
-        L := ObjectDatum( objPC )[2];
+        L := ObjectDatum( PC, objPC )[2];
         
-        return DirectProduct( D, List( L, objC -> ApplyFunctor( F, objC ) ) );
+        return DirectProduct( D, List( L, objC -> functor_on_objects( objC ) ) );
         
-    end );
+    end;
     
-    AddMorphismFunction( PF,
+    extended_functor_on_morphisms :=
       function( source, morPC, range )
         local pair_of_lists, map, mor, Fmor, pairS, pairT, FLS, FLT, prj, cmp;
         
-        pair_of_lists := MorphismDatum( morPC );
+        pair_of_lists := MorphismDatum( PC, morPC );
         
         map := pair_of_lists[1];
         mor := pair_of_lists[2];
         
-        Fmor := List( mor, m -> ApplyFunctor( F, m ) );
+        Fmor := List( mor, m ->
+                      functor_on_morphisms(
+                              functor_on_objects( Source( m ) ),
+                              m,
+                              functor_on_objects( Range( m ) ) ) );
         
-        pairS := ObjectDatum( Source( morPC ) );
-        pairT := ObjectDatum( Range( morPC ) );
+        pairS := ObjectDatum( PC, Source( morPC ) );
+        pairT := ObjectDatum( PC, Range( morPC ) );
         
-        FLS := List( pairS[2], S_i -> ApplyFunctor( F, S_i ) );
-        FLT := List( pairT[2], T_i -> ApplyFunctor( F, T_i ) );
+        FLS := List( pairS[2], S_i -> functor_on_objects( S_i ) );
+        FLT := List( pairT[2], T_i -> functor_on_objects( T_i ) );
         
         prj := List( map, i ->
                      ProjectionInFactorOfDirectProductWithGivenDirectProduct( D,
@@ -319,7 +345,39 @@ InstallMethod( ExtendFunctorToFiniteStrictProductCompletion,
                        cmp,
                        range );
         
-    end );
+    end;
+    
+    return Triple( PC,
+                   Pair( extended_functor_on_objects, extended_functor_on_morphisms ),
+                   D );
+    
+end );
+
+##
+InstallMethod( ExtendFunctorToFiniteStrictProductCompletion,
+        "for a functor",
+        [ IsCapFunctor ],
+        
+  function( F )
+    local C, D, PC, data, PF;
+    
+    C := SourceOfFunctor( F );
+    D := RangeOfFunctor( F );
+    
+    PC := FiniteStrictProductCompletion( C );
+    
+    data := ExtendFunctorToFiniteStrictProductCompletionData(
+                    PC,
+                    Pair( FunctorObjectOperation( F ), FunctorMorphismOperation( F ) ),
+                    D );
+    
+    PF := CapFunctor( Concatenation( "Extension to FiniteStrictProductCompletion( Source( ", Name( F ), " ) )" ), PC, D );
+    
+    AddObjectFunction( PF,
+            data[2][1] );
+    
+    AddMorphismFunction( PF,
+            data[2][2] );
     
     return PF;
     

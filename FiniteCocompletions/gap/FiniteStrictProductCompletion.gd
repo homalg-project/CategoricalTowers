@@ -71,7 +71,7 @@ CapJitAddTypeSignature( "PairOfIntAndList", [ IsObjectInFiniteStrictProductCompl
                 element_types :=
                 [ rec( filter := IsInt ),
                   rec( filter := IsList,
-                       element_type := CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ] );
+                       element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ] );
     
 end );
 
@@ -107,6 +107,9 @@ CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteStrictProductCompletion 
 
 end );
 
+DeclareAttribute( "CoYonedaEmbeddingOfUnderlyingCategoryData",
+        IsFiniteStrictProductCompletion );
+
 #! @Description
 #!  The full embedding functor from the category $C$ underlying
 #!  the finite product completion <A>PC</A> into <A>PC</A>.
@@ -114,6 +117,9 @@ end );
 #! @Returns a &CAP; functor
 DeclareAttribute( "CoYonedaEmbeddingOfUnderlyingCategory",
         IsFiniteStrictProductCompletion );
+
+DeclareOperation( "ExtendFunctorToFiniteStrictProductCompletionData",
+        [ IsCapCategory, IsList, IsCapCategory ] );
 
 #! @Description
 #!  The full embedding functor from the category $C$ underlying
