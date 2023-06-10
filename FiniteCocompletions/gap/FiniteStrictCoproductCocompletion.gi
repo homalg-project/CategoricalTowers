@@ -1076,7 +1076,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                 
                 value := MorphismDatum( V, morphism )[1];
                 
-                number := First( [ 0 .. t ^ s - 1 ], i -> Sum( List( homs{[ 1 .. 1 + i ]}, Length ) ) > value );
+                number := SafeFirst( [ 0 .. t ^ s - 1 ], i -> Sum( List( homs{[ 1 .. 1 + i ]}, Length ) ) > value );
                 
                 ## number -> map
                 map := List( [ 0 .. s - 1 ], i -> RemInt( QuoInt( number, t^i ), t ) );
