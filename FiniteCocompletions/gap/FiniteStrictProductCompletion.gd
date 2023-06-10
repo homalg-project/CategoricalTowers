@@ -107,6 +107,9 @@ CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteStrictProductCompletion 
 
 end );
 
+DeclareAttribute( "CoYonedaEmbeddingOfUnderlyingCategoryData",
+        IsFiniteStrictProductCompletion );
+
 #! @Description
 #!  The full embedding functor from the category $C$ underlying
 #!  the finite product completion <A>PC</A> into <A>PC</A>.

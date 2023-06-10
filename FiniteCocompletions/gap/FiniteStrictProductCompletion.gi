@@ -193,18 +193,40 @@ InstallMethod( FiniteStrictProductCompletion,
 end );
 
 ##
+InstallMethodForCompilerForCAP( CoYonedaEmbeddingOfUnderlyingCategoryData,
+        "for a finite coproduct cocompletion category",
+        [ IsFiniteStrictProductCompletion ],
+        
+  function( PC )
+    local yoneda_embedding_on_objects, yoneda_embedding_on_morphisms;
+    
+    yoneda_embedding_on_objects :=
+      objC -> ObjectConstructor( PC, Pair( 1, [ objC ] ) );
+    
+    yoneda_embedding_on_morphisms :=
+      { source, morC, range } -> MorphismConstructor( PC, source, Pair( [ 0 ], [ morC ] ), range );
+    
+    return Triple( UnderlyingCategory( PC ),
+                   Pair( yoneda_embedding_on_objects, yoneda_embedding_on_morphisms ),
+                   PC );
+    
+end );
+
+##
 InstallMethod( CoYonedaEmbeddingOfUnderlyingCategory,
         "for a finite coproduct cocompletion category",
         [ IsFiniteStrictProductCompletion ],
         
   function( PC )
-    local Y;
+    local data, Y;
     
-    Y := CapFunctor( "CoYoneda embedding functor", UnderlyingCategory( PC ), PC );
+    data := CoYonedaEmbeddingOfUnderlyingCategoryData( PC );
     
-    AddObjectFunction( Y, objC -> ObjectConstructor( PC, Pair( 1, [ objC ] ) ) );
+    Y := CapFunctor( "CoYoneda embedding functor", data[1], PC );
     
-    AddMorphismFunction( Y, { source, morC, range } -> MorphismConstructor( PC, source, Pair( [ 0 ], [ morC ] ), range ) );
+    AddObjectFunction( Y, data[2][1] );
+    
+    AddMorphismFunction( Y, data[2][2] );
     
     return Y;
     
