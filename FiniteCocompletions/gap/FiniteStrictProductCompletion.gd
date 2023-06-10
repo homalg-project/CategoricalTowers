@@ -71,7 +71,7 @@ CapJitAddTypeSignature( "PairOfIntAndList", [ IsObjectInFiniteStrictProductCompl
                 element_types :=
                 [ rec( filter := IsInt ),
                   rec( filter := IsList,
-                       element_type := CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ] );
+                       element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ] );
     
 end );
 
