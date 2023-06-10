@@ -171,6 +171,9 @@ InstallMethod( FiniteStrictProductCompletion,
     
     SetUnderlyingCategory( PC, C );
     
+    Append( PC!.compiler_hints.category_attribute_names,
+            [ "UnderlyingCategory" ] );
+    
     if not HasRangeCategoryOfHomomorphismStructure( PC ) and
        (HasIsInitialCategory and IsInitialCategory)( C ) then
         
