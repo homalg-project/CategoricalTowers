@@ -309,18 +309,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData
     
     extended_functor_on_morphisms :=
       function( source, morPC, range )
-        local pair_of_lists, map, mor, Fmor, pairS, pairT, FLS, FLT, prj, cmp;
-        
-        pair_of_lists := MorphismDatum( PC, morPC );
-        
-        map := pair_of_lists[1];
-        mor := pair_of_lists[2];
-        
-        Fmor := List( mor, m ->
-                      functor_on_morphisms(
-                              functor_on_objects( Source( m ) ),
-                              m,
-                              functor_on_objects( Range( m ) ) ) );
+        local pairS, pairT, FLS, FLT, pair_of_lists, map, mor, prj, Fmor, cmp;
         
         pairS := ObjectDatum( PC, Source( morPC ) );
         pairT := ObjectDatum( PC, Range( morPC ) );
@@ -328,11 +317,22 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData
         FLS := List( pairS[2], S_i -> functor_on_objects( S_i ) );
         FLT := List( pairT[2], T_i -> functor_on_objects( T_i ) );
         
-        prj := List( map, i ->
+        pair_of_lists := MorphismDatum( PC, morPC );
+        
+        map := pair_of_lists[1];
+        mor := pair_of_lists[2];
+        
+        prj := List( [ 0 .. pairT[1] - 1 ], i ->
                      ProjectionInFactorOfDirectProductWithGivenDirectProduct( D,
                              FLS,
-                             1 + i,
+                             1 + map[1 + i],
                              source ) );
+        
+        Fmor := List( [ 0 .. pairT[1] - 1 ], i ->
+                      functor_on_morphisms(
+                              FLT[1 + i],
+                              mor[1 + i],
+                              FLS[1 + map[1 + i]] ) );
         
         cmp := List( [ 0 .. pairT[1] - 1 ], i ->
                      PreCompose( D,
