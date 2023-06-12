@@ -135,18 +135,16 @@ function ( cat_1, arg2_1, arg3_1 )
                 hoisted_2_2 := HomalgIdentityMatrix( deduped_6_2, deduped_31_1 );
                 deduped_1_2 := deduped_33_1[i_2];
                 return UnionOfColumns( deduped_31_1, deduped_5_2 * deduped_6_2, List( deduped_28_1, function ( j_3 )
-                          local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3, deduped_5_3, deduped_6_3;
-                          deduped_6_3 := hoisted_7_1[j_3];
-                          deduped_5_3 := hoisted_6_1[j_3];
-                          deduped_4_3 := deduped_1_2 = deduped_6_3;
-                          deduped_3_3 := deduped_1_2 = deduped_5_3;
+                          local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3;
+                          deduped_4_3 := deduped_1_2 = hoisted_7_1[j_3];
+                          deduped_3_3 := deduped_1_2 = hoisted_6_1[j_3];
                           deduped_2_3 := KroneckerMat( hoisted_8_1[j_3], hoisted_2_2 );
                           deduped_1_3 := - KroneckerMat( hoisted_3_2, hoisted_10_1[j_3] );
                           if deduped_3_3 and deduped_4_3 then
                               return deduped_2_3 + deduped_1_3;
-                          elif deduped_1_2 <> deduped_5_3 and deduped_4_3 then
+                          elif not deduped_3_3 and deduped_4_3 then
                               return deduped_1_3;
-                          elif deduped_3_3 and deduped_1_2 <> deduped_6_3 then
+                          elif deduped_3_3 and not deduped_4_3 then
                               return deduped_2_3;
                           else
                               return HomalgZeroMatrix( hoisted_4_2, deduped_27_1[j_3], deduped_31_1 );
@@ -299,18 +297,16 @@ function ( cat_1, arg2_1 )
                     hoisted_2_2 := HomalgIdentityMatrix( deduped_6_2, deduped_17_1 );
                     deduped_1_2 := deduped_19_1[i_2];
                     return UnionOfColumns( deduped_17_1, deduped_5_2 * deduped_6_2, List( deduped_14_1, function ( j_3 )
-                              local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3, deduped_5_3, deduped_6_3;
-                              deduped_6_3 := hoisted_7_1[j_3];
-                              deduped_5_3 := hoisted_6_1[j_3];
-                              deduped_4_3 := deduped_1_2 = deduped_6_3;
-                              deduped_3_3 := deduped_1_2 = deduped_5_3;
+                              local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3;
+                              deduped_4_3 := deduped_1_2 = hoisted_7_1[j_3];
+                              deduped_3_3 := deduped_1_2 = hoisted_6_1[j_3];
                               deduped_2_3 := KroneckerMat( hoisted_8_1[j_3], hoisted_2_2 );
                               deduped_1_3 := - KroneckerMat( hoisted_3_2, hoisted_10_1[j_3] );
                               if deduped_3_3 and deduped_4_3 then
                                   return deduped_2_3 + deduped_1_3;
-                              elif deduped_1_2 <> deduped_5_3 and deduped_4_3 then
+                              elif not deduped_3_3 and deduped_4_3 then
                                   return deduped_1_3;
-                              elif deduped_3_3 and deduped_1_2 <> deduped_6_3 then
+                              elif deduped_3_3 and not deduped_4_3 then
                                   return deduped_2_3;
                               else
                                   return HomalgZeroMatrix( hoisted_4_2, deduped_13_1[j_3], deduped_17_1 );
@@ -1068,18 +1064,16 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                     hoisted_2_2 := HomalgIdentityMatrix( deduped_6_2, deduped_31_1 );
                     deduped_1_2 := deduped_33_1[i_2];
                     return UnionOfColumns( deduped_31_1, deduped_5_2 * deduped_6_2, List( deduped_25_1, function ( j_3 )
-                              local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3, deduped_5_3, deduped_6_3;
-                              deduped_6_3 := deduped_7_1[j_3];
-                              deduped_5_3 := deduped_6_1[j_3];
-                              deduped_4_3 := (deduped_1_2 = deduped_6_3);
-                              deduped_3_3 := (deduped_1_2 = deduped_5_3);
+                              local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3;
+                              deduped_4_3 := (deduped_1_2 = deduped_7_1[j_3]);
+                              deduped_3_3 := (deduped_1_2 = deduped_6_1[j_3]);
                               deduped_2_3 := KroneckerMat( hoisted_8_1[j_3], hoisted_2_2 );
                               deduped_1_3 := (- KroneckerMat( hoisted_3_2, hoisted_10_1[j_3] ));
                               if (deduped_3_3 and deduped_4_3) then
                                   return (deduped_2_3 + deduped_1_3);
-                              elif (deduped_1_2 <> deduped_5_3 and deduped_4_3) then
+                              elif (not deduped_3_3 and deduped_4_3) then
                                   return deduped_1_3;
-                              elif (deduped_3_3 and deduped_1_2 <> deduped_6_3) then
+                              elif (deduped_3_3 and not deduped_4_3) then
                                   return deduped_2_3;
                               else
                                   return HomalgZeroMatrix( hoisted_4_2, deduped_23_1[j_3], deduped_31_1 );
@@ -1098,18 +1092,16 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                   hoisted_2_2 := HomalgIdentityMatrix( deduped_6_2, deduped_31_1 );
                   deduped_1_2 := deduped_33_1[i_2];
                   return UnionOfColumns( deduped_31_1, deduped_5_2 * deduped_6_2, List( deduped_25_1, function ( j_3 )
-                            local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3, deduped_5_3, deduped_6_3;
-                            deduped_6_3 := deduped_7_1[j_3];
-                            deduped_5_3 := deduped_6_1[j_3];
-                            deduped_4_3 := deduped_1_2 = deduped_6_3;
-                            deduped_3_3 := deduped_1_2 = deduped_5_3;
+                            local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3;
+                            deduped_4_3 := deduped_1_2 = deduped_7_1[j_3];
+                            deduped_3_3 := deduped_1_2 = deduped_6_1[j_3];
                             deduped_2_3 := KroneckerMat( hoisted_19_1[j_3], hoisted_2_2 );
                             deduped_1_3 := - KroneckerMat( hoisted_3_2, hoisted_20_1[j_3] );
                             if deduped_3_3 and deduped_4_3 then
                                 return deduped_2_3 + deduped_1_3;
-                            elif deduped_1_2 <> deduped_5_3 and deduped_4_3 then
+                            elif not deduped_3_3 and deduped_4_3 then
                                 return deduped_1_3;
-                            elif deduped_3_3 and deduped_1_2 <> deduped_6_3 then
+                            elif deduped_3_3 and not deduped_4_3 then
                                 return deduped_2_3;
                             else
                                 return HomalgZeroMatrix( hoisted_4_2, deduped_24_1[j_3], deduped_31_1 );
@@ -1169,18 +1161,16 @@ function ( cat_1, arg2_1, arg3_1 )
                     hoisted_2_2 := HomalgIdentityMatrix( deduped_6_2, deduped_19_1 );
                     deduped_1_2 := deduped_18_1[i_2];
                     return UnionOfColumns( deduped_19_1, deduped_5_2 * deduped_6_2, List( deduped_17_1, function ( j_3 )
-                              local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3, deduped_5_3, deduped_6_3;
-                              deduped_6_3 := hoisted_7_1[j_3];
-                              deduped_5_3 := hoisted_6_1[j_3];
-                              deduped_4_3 := (deduped_1_2 = deduped_6_3);
-                              deduped_3_3 := (deduped_1_2 = deduped_5_3);
+                              local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3;
+                              deduped_4_3 := (deduped_1_2 = hoisted_7_1[j_3]);
+                              deduped_3_3 := (deduped_1_2 = hoisted_6_1[j_3]);
                               deduped_2_3 := KroneckerMat( hoisted_8_1[j_3], hoisted_2_2 );
                               deduped_1_3 := (- KroneckerMat( hoisted_3_2, hoisted_10_1[j_3] ));
                               if (deduped_3_3 and deduped_4_3) then
                                   return (deduped_2_3 + deduped_1_3);
-                              elif (deduped_1_2 <> deduped_5_3 and deduped_4_3) then
+                              elif (not deduped_3_3 and deduped_4_3) then
                                   return deduped_1_3;
-                              elif (deduped_3_3 and deduped_1_2 <> deduped_6_3) then
+                              elif (deduped_3_3 and not deduped_4_3) then
                                   return deduped_2_3;
                               else
                                   return HomalgZeroMatrix( hoisted_4_2, deduped_15_1[j_3], deduped_19_1 );
@@ -1420,18 +1410,16 @@ function ( cat_1, alpha_1 )
                   hoisted_2_2 := HomalgIdentityMatrix( deduped_6_2, deduped_18_1 );
                   deduped_1_2 := deduped_20_1[i_2];
                   return UnionOfColumns( deduped_18_1, deduped_5_2 * deduped_6_2, List( deduped_15_1, function ( j_3 )
-                            local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3, deduped_5_3, deduped_6_3;
-                            deduped_6_3 := hoisted_7_1[j_3];
-                            deduped_5_3 := hoisted_6_1[j_3];
-                            deduped_4_3 := deduped_1_2 = deduped_6_3;
-                            deduped_3_3 := deduped_1_2 = deduped_5_3;
+                            local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3;
+                            deduped_4_3 := deduped_1_2 = hoisted_7_1[j_3];
+                            deduped_3_3 := deduped_1_2 = hoisted_6_1[j_3];
                             deduped_2_3 := KroneckerMat( hoisted_8_1[j_3], hoisted_2_2 );
                             deduped_1_3 := - KroneckerMat( hoisted_3_2, hoisted_10_1[j_3] );
                             if deduped_3_3 and deduped_4_3 then
                                 return deduped_2_3 + deduped_1_3;
-                            elif deduped_1_2 <> deduped_5_3 and deduped_4_3 then
+                            elif not deduped_3_3 and deduped_4_3 then
                                 return deduped_1_3;
-                            elif deduped_3_3 and deduped_1_2 <> deduped_6_3 then
+                            elif deduped_3_3 and not deduped_4_3 then
                                 return deduped_2_3;
                             else
                                 return HomalgZeroMatrix( hoisted_4_2, deduped_14_1[j_3], deduped_18_1 );
@@ -1494,18 +1482,16 @@ function ( cat_1, source_1, range_1, alpha_1 )
                   hoisted_2_2 := HomalgIdentityMatrix( deduped_6_2, deduped_30_1 );
                   deduped_1_2 := deduped_24_1[i_2];
                   return UnionOfColumns( deduped_30_1, (deduped_5_2 * deduped_6_2), List( deduped_22_1, function ( j_3 )
-                            local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3, deduped_5_3, deduped_6_3;
-                            deduped_6_3 := hoisted_9_1[j_3];
-                            deduped_5_3 := hoisted_8_1[j_3];
-                            deduped_4_3 := (deduped_1_2 = deduped_6_3);
-                            deduped_3_3 := (deduped_1_2 = deduped_5_3);
+                            local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3;
+                            deduped_4_3 := (deduped_1_2 = hoisted_9_1[j_3]);
+                            deduped_3_3 := (deduped_1_2 = hoisted_8_1[j_3]);
                             deduped_2_3 := KroneckerMat( hoisted_10_1[j_3], hoisted_2_2 );
                             deduped_1_3 := (- KroneckerMat( hoisted_3_2, hoisted_12_1[j_3] ));
                             if (deduped_3_3 and deduped_4_3) then
                                 return (deduped_2_3 + deduped_1_3);
-                            elif (deduped_1_2 <> deduped_5_3 and deduped_4_3) then
+                            elif (not deduped_3_3 and deduped_4_3) then
                                 return deduped_1_3;
-                            elif (deduped_3_3 and deduped_1_2 <> deduped_6_3) then
+                            elif (deduped_3_3 and not deduped_4_3) then
                                 return deduped_2_3;
                             else
                                 return HomalgZeroMatrix( hoisted_4_2, deduped_20_1[j_3], deduped_30_1 );
