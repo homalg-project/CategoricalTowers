@@ -1233,32 +1233,38 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletion
 
     extended_functor_on_morphisms :=
       function( source, morUC, range )
-        local pairS, pairT, FLS, FLT, pair_of_lists, map, mor, inj, Fmor, cmp;
+        local pairS, pairT, s, t, S, T, FLS, FLT, pair_of_lists, map, mor, inj, Fmor, cmp;
         
         pairS := ObjectDatum( UC, Source( morUC ) );
         pairT := ObjectDatum( UC, Range( morUC ) );
         
-        FLS := List( pairS[2], S_i -> functor_on_objects( S_i ) );
-        FLT := List( pairT[2], T_i -> functor_on_objects( T_i ) );
+        s := pairS[1];
+        t := pairT[1];
+        
+        S := pairS[2];
+        T := pairT[2];
+        
+        FLS := List( [ 0 .. s - 1 ], i -> functor_on_objects( S[1 + i] ) );
+        FLT := List( [ 0 .. t - 1 ], i -> functor_on_objects( T[1 + i] ) );
         
         pair_of_lists := MorphismDatum( UC, morUC );
         
         map := pair_of_lists[1];
         mor := pair_of_lists[2];
         
-        inj := List( [ 0 .. pairS[1] - 1 ], i ->
+        inj := List( [ 0 .. s - 1 ], i ->
                      InjectionOfCofactorOfCoproductWithGivenCoproduct( D,
                              FLT,
                              1 + map[1 + i],
                              range ) );
         
-        Fmor := List( [ 0 .. pairS[1] - 1 ], i ->
+        Fmor := List( [ 0 .. s - 1 ], i ->
                       functor_on_morphisms(
                               FLS[1 + i],
                               mor[1 + i],
                               FLT[1 + map[1 + i]] ) );
         
-        cmp := List( [ 0 .. pairS[1] - 1 ], i ->
+        cmp := List( [ 0 .. s - 1 ], i ->
                      PreCompose( D,
                              Fmor[1 + i],
                              inj[1 + i] ) );
