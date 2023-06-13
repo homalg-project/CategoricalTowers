@@ -188,7 +188,10 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     SetIsStrictCocartesianCategory( UC, true );
     
     if ( HasIsCartesianCategory and IsCartesianCategory )( C ) then
-        SetIsCartesianCategory( UC, true );
+        if ( HasIsStrictCartesianCategory and IsStrictCartesianCategory )( C ) then
+            SetIsStrictCartesianCategory( UC, true );
+        fi;
+        SetIsDistributiveCategory( UC, true );
     fi;
     
     ##
@@ -593,7 +596,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             # |12| → |4|
             # gap> L1 := List( [ 0 .. 11 ], i -> [ pi1(i), pi2(i) ] );
             # [ [ 0, 0 ], [ 1, 0 ], [ 2, 0 ], [ 0, 1 ], [ 1, 1 ], [ 2, 1 ], [ 0, 2 ], [ 1, 2 ], [ 2, 2 ], [ 0, 3 ], [ 1, 3 ], [ 2, 3 ] ]
-            # gap> L2 := List( Cartesian( Reversed( datum ) ), Reversed );
+            # gap> L2 := List( Cartesian( Reversed( data ) ), Reversed );
             # [ [ 0, 0 ], [ 1, 0 ], [ 2, 0 ], [ 0, 1 ], [ 1, 1 ], [ 2, 1 ], [ 0, 2 ], [ 1, 2 ], [ 2, 2 ], [ 0, 3 ], [ 1, 3 ], [ 2, 3 ] ]
             # gap> L1 = L2;
             # true

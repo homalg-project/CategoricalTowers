@@ -109,7 +109,7 @@ InstallMethodForCompilerForCAP( SetOfMorphisms,
     # |12| → |4|
     # gap> List( [ 0 .. 11 ], i -> [ pi1(i), pi2(i) ] );
     # [ [ 0, 0 ], [ 1, 0 ], [ 2, 0 ], [ 0, 1 ], [ 1, 1 ], [ 2, 1 ], [ 0, 2 ], [ 1, 2 ], [ 2, 2 ], [ 0, 3 ], [ 1, 3 ], [ 2, 3 ] ]
-    # gap> List( Cartesian( Reversed( datum ) ), Reversed );
+    # gap> List( Cartesian( Reversed( data ) ), Reversed );
     # [ [ 0, 0 ], [ 1, 0 ], [ 2, 0 ], [ 0, 1 ], [ 1, 1 ], [ 2, 1 ], [ 0, 2 ], [ 1, 2 ], [ 2, 2 ], [ 0, 3 ], [ 1, 3 ], [ 2, 3 ] ]
     # gap> L1 = L2;
     # true
