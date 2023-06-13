@@ -126,6 +126,69 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions" );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(a,b,c)[]" );</span>
+Q(a,b,c)[]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := FreeCategory( Q );</span>
+FreeCategory( RightQuiver( "Q(a,b,c)[]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DC := FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion( C ) );</span>
+FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
+FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( DC );</span>
+A CAP category with name
+FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
+FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) ):
+
+27 primitive operations were used to derive 131 operations for this category
+which algorithmically
+* IsEquippedWithHomomorphismStructure
+* IsDistributiveCategory
+and furthermore mathematically
+* IsStrictCartesianCategory
+* IsStrictCocartesianCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := DC.a;</span>
+&lt;An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
+ FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := DC.b;</span>
+&lt;An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
+ FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := DC.c;</span>
+&lt;An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
+ FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProduct( DirectProduct( a, b ), c ) =</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  DirectProduct( a, DirectProduct( b, c ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a_u_bxc := DirectProduct( a, Coproduct( b, c ) );</span>
+&lt;An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
+ FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">axb_u_axc := Coproduct( DirectProduct( a, b ), DirectProduct( a, c ) );</span>
+&lt;An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
+ FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a_u_bxc = axb_u_axc;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( a_u_bxc, axb_u_axc );</span>
+|1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom := MorphismsOfExternalHom( a_u_bxc, axb_u_axc );</span>
+[ &lt;A morphism in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
+   FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := hom[1];</span>
+&lt;A morphism in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
+ FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( delta ) = a_u_bxc;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( delta ) = axb_u_axc;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( delta );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta = LeftCartesianDistributivityExpanding( a, [ b, c ] );</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := FiniteStrictCoproductCocompletion( InitialCategory( ) );</span>
 FiniteStrictCoproductCocompletion( InitialCategory( ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
@@ -591,6 +654,7 @@ which algorithmically
 * IsEquippedWithHomomorphismStructure
 * IsBicartesianCategory
 and furthermore mathematically
+* IsDistributiveCategory (but not yet algorithmically)
 * IsStrictCocartesianCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TerminalObject( sFinSets );</span>
 &lt;An object in

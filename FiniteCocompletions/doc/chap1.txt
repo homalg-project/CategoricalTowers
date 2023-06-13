@@ -57,6 +57,68 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := RightQuiver( "Q(a,b,c)[]" );[127X[104X
+    [4X[28XQ(a,b,c)[][128X[104X
+    [4X[25Xgap>[125X [27XC := FreeCategory( Q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b,c)[]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XDC := FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion( C ) );[127X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FiniteStrictProductCompletion([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( DC );[127X[104X
+    [4X[28XA CAP category with name[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion( FiniteStrictProductCompletion([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X27 primitive operations were used to derive 131 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsDistributiveCategory[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsStrictCartesianCategory[128X[104X
+    [4X[28X* IsStrictCocartesianCategory[128X[104X
+    [4X[25Xgap>[125X [27Xa := DC.a;[127X[104X
+    [4X[28X<An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xb := DC.b;[127X[104X
+    [4X[28X<An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xc := DC.c;[127X[104X
+    [4X[28X<An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDirectProduct( DirectProduct( a, b ), c ) =[127X[104X
+    [4X[25X>[125X [27X  DirectProduct( a, DirectProduct( b, c ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xa_u_bxc := DirectProduct( a, Coproduct( b, c ) );[127X[104X
+    [4X[28X<An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xaxb_u_axc := Coproduct( DirectProduct( a, b ), DirectProduct( a, c ) );[127X[104X
+    [4X[28X<An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xa_u_bxc = axb_u_axc;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( a_u_bxc, axb_u_axc );[127X[104X
+    [4X[28X|1|[128X[104X
+    [4X[25Xgap>[125X [27Xhom := MorphismsOfExternalHom( a_u_bxc, axb_u_axc );[127X[104X
+    [4X[28X[ <A morphism in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion([128X[104X
+    [4X[28X   FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )> ][128X[104X
+    [4X[25Xgap>[125X [27Xdelta := hom[1];[127X[104X
+    [4X[28X<A morphism in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XSource( delta ) = a_u_bxc;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XRange( delta ) = axb_u_axc;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( delta );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xdelta = LeftCartesianDistributivityExpanding( a, [ b, c ] );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XT := FiniteStrictCoproductCocompletion( InitialCategory( ) );[127X[104X
     [4X[28XFiniteStrictCoproductCocompletion( InitialCategory( ) )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
@@ -504,6 +566,7 @@
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsBicartesianCategory[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsDistributiveCategory (but not yet algorithmically)[128X[104X
     [4X[28X* IsStrictCocartesianCategory[128X[104X
     [4X[25Xgap>[125X [27Xt := TerminalObject( sFinSets );[127X[104X
     [4X[28X<An object in[128X[104X
