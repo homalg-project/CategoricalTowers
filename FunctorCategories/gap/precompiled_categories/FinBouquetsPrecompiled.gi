@@ -22,19 +22,19 @@ end
     AddCoproduct( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, objects_1 )
     local deduped_3_1, deduped_4_1;
-    deduped_4_1 := List( arg2_1, function ( x_2 )
+    deduped_4_1 := List( objects_1, function ( x_2 )
             return DefiningTripleOfBouquetEnrichedOverSkeletalFinSets( x_2 )[2];
         end );
-    deduped_3_1 := List( arg2_1, function ( x_2 )
+    deduped_3_1 := List( objects_1, function ( x_2 )
             return DefiningTripleOfBouquetEnrichedOverSkeletalFinSets( x_2 )[1];
         end );
-    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfBouquetEnrichedOverSkeletalFinSets, NTuple( 3, Sum( deduped_3_1 ), Sum( deduped_4_1 ), Concatenation( List( [ 1 .. Length( arg2_1 ) ], function ( i_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfBouquetEnrichedOverSkeletalFinSets, NTuple( 3, Sum( deduped_3_1 ), Sum( deduped_4_1 ), Concatenation( List( [ 1 .. Length( objects_1 ) ], function ( i_2 )
                   local hoisted_1_2, hoisted_2_2, deduped_3_2;
                   deduped_3_2 := Sum( deduped_3_1{[ 1 .. i_2 - 1 ]} );
                   hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + deduped_3_1[i_2] - 1 ];
-                  hoisted_1_2 := CAP_JIT_INCOMPLETE_LOGIC( DefiningTripleOfBouquetEnrichedOverSkeletalFinSets( CAP_JIT_INCOMPLETE_LOGIC( arg2_1[i_2] ) )[3] );
+                  hoisted_1_2 := CAP_JIT_INCOMPLETE_LOGIC( DefiningTripleOfBouquetEnrichedOverSkeletalFinSets( CAP_JIT_INCOMPLETE_LOGIC( objects_1[i_2] ) )[3] );
                   return List( [ 0 .. deduped_4_1[i_2] - 1 ], function ( i_3 )
                           return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
                       end );

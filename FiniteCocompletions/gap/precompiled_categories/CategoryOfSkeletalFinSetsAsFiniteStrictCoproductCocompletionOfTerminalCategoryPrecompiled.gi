@@ -9,8 +9,8 @@ BindGlobal( "ADD_FUNCTIONS_FOR_CategoryOfSkeletalFinSetsAsFiniteStrictCoproductC
     AddCoproduct( cat,
         
 ########
-function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Length, Sum( List( arg2_1, Length ) ) );
+function ( cat_1, objects_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Length, Sum( List( objects_1, Length ) ) );
 end
 ########
         
@@ -20,8 +20,8 @@ end
     AddDirectProduct( cat,
         
 ########
-function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Length, Product( List( arg2_1, Length ) ) );
+function ( cat_1, objects_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Length, Product( List( objects_1, Length ) ) );
 end
 ########
         
