@@ -11,6 +11,26 @@
 ####################################
 
 ##
+INSTALL_ImageEmbeddingForFpModules(
+        ImageEmbeddingForFpLeftModulesByPresentations,
+        BasisOfRows,
+        DecideZeroRows,
+        N -> CertainRows( N, NonZeroRows( N ) ),
+        LazySyzygiesOfRows,
+        AsLeftPresentation,
+        PresentationMorphism );
+
+##
+INSTALL_ImageEmbeddingForFpModules(
+        ImageEmbeddingForFpRightModulesByPresentations,
+        BasisOfColumns,
+        DecideZeroColumns,
+        N -> CertainColumns( N, NonZeroColumns( N ) ),
+        LazySyzygiesOfColumns,
+        AsRightPresentation,
+        PresentationMorphism );
+
+##
 InstallMethod( HomalgModule,
         "for a left or right CAP presentation",
         [ IsLeftOrRightPresentation ],
