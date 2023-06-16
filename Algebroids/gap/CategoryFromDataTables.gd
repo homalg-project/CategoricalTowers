@@ -173,36 +173,16 @@ DeclareAttribute( "Size",
         IsCategoryFromDataTables );
 
 ##
-DeclareAttribute( "MapOfObject",
+DeclareAttribute( "IndexOfObject",
         IsObjectInCategoryFromDataTables );
 
-CapJitAddTypeSignature( "MapOfObject", [ IsObjectInCategoryFromDataTables ],
-  function ( input_types )
-    local V;
-    
-    Assert( 0, IsCategoryFromDataTables( input_types[1].category ) );
-    
-    V := RangeCategoryOfHomomorphismStructure( input_types[1].category );
-    
-    return CapJitDataTypeOfMorphismOfCategory( V );
-    
-end );
+CapJitAddTypeSignature( "IndexOfObject", [ IsObjectInCategoryFromDataTables ], IsBigInt );
 
 ##
-DeclareAttribute( "MapOfMorphism",
+DeclareAttribute( "IndexOfMorphism",
         IsMorphismInCategoryFromDataTables );
 
-CapJitAddTypeSignature( "MapOfMorphism", [ IsMorphismInCategoryFromDataTables ],
-  function ( input_types )
-    local V;
-    
-    Assert( 0, IsCategoryFromDataTables( input_types[1].category ) );
-    
-    V := RangeCategoryOfHomomorphismStructure( input_types[1].category );
-    
-    return CapJitDataTypeOfMorphismOfCategory( V );
-    
-end );
+CapJitAddTypeSignature( "IndexOfMorphism", [ IsMorphismInCategoryFromDataTables ], IsBigInt );
 
 #! @Description
 #!  The opposite category of the category <A>C</A> defined by nerve data.
