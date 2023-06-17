@@ -13,11 +13,15 @@ V_{Q[x,y]}( <...> )
 gap> AD := Axy - Ay;
 V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 gap> Display( AD );
-V( <x*y> ) \ V( <x> )
+V( <x*y> )
+
+\ V( <x> )
 gap> NormalizeObject( AD );
 V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 gap> Display( AD );
-V( <y> ) \ V( <x,y> )
+V( <y> )
+
+\ V( <x,y> )
 gap> Oy := OpenSubsetOfSpec( "x" / R );
 D_{Q[x,y]}( <...> )
 gap> Oxy := OpenSubsetOfSpec( "x*y" / R );
@@ -26,11 +30,15 @@ gap> SD := MeetSemilatticeOfSingleDifferences( CapCategory( Oy ) );;
 gap> OD := SingleDifference( SD, Pair( Oy, Oxy ) );
 D_{Q[x,y]}( I ) \ D_{Q[x,y]}( J )
 gap> Display( OD );
-D( <x> ) \ D( <x*y> )
+D( <x> )
+
+\ D( <x*y> )
 gap> NormalizeObject( OD );
 D_{Q[x,y]}( I ) \ D_{Q[x,y]}( J )
 gap> Display( OD );
-D( <y,x> ) \ D( <y> )
+D( <y,x> )
+
+\ D( <y> )
 gap> AD = -Oxy - (-Oy);
 true
 gap> STOP_TEST("NormalizeObject.tst");

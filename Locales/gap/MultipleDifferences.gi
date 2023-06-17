@@ -741,7 +741,7 @@ InstallMethod( DisplayString,
     A := List( A );
     
     for i in [ 1 .. Length( A ) ] do
-        Append( str, Concatenation( " \\ ", DisplayString( A[i].J ) ) );
+        Append( str, Concatenation( "\n\n\\ ", DisplayString( A[i].J ) ) );
     od;
     
     return str;

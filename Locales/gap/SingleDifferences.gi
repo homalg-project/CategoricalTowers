@@ -574,7 +574,7 @@ InstallMethod( DisplayString,
     
     return Concatenation(
                    DisplayString( A[1] ),
-                   " \\ ",
+                   "\n\n\\\ ",
                    DisplayString( A[2] ) );
     
 end );

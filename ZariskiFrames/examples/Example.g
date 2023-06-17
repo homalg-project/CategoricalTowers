@@ -30,7 +30,9 @@ IsClosed( xuy );
 mxuy := -xuy;
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 Display( mxuy );
-#! V( <> ) \ { V( <y> ) ∪ V( <x> ) }
+#! V( <> )
+#! 
+#! \ { V( <y> ) ∪ V( <x> ) }
 IsClosed( mxuy );
 #! false
 IsOpen( mxuy );
@@ -38,11 +40,15 @@ IsOpen( mxuy );
 xmy := x - y;
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 Display( xmy );
-#! V( <y> ) \ V( <x> )
+#! V( <y> )
+#! 
+#! \ V( <x> )
 xmy2 := xmy - y;
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 Display( xmy2 );
-#! V( <y> ) \ V( <x> )
+#! V( <y> )
+#! 
+#! \ V( <x> )
 lc := xuy - d;
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 lc0 := lc - 0;
@@ -80,15 +86,21 @@ cc = xuy;
 t := c - lc;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( t );
-#! V( <x+y-1,y^2-y,x+y-1,x*y> ) \ ∅
+#! ( V( <x+y-1,y^2-y,x+y-1,x*y> )
+#! 
+#! \ ∅ )
 IsClosed( t );
 #! true
 z := c - c;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( z );
-#! V( <x*y> ) \ { V( <x+y-1,y^2-y> ) ∪ V( <x*y> ) }
+#! ( V( <x*y> )
+#! 
+#! \ { V( <x+y-1,y^2-y> ) ∪ V( <x*y> ) } )
 z := StandardizedObject( z );
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( z );
-#! ∅ \ ∅
+#! ( ∅
+#! 
+#! \ ∅ )
 #! @EndExample

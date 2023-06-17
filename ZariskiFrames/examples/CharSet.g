@@ -12,11 +12,17 @@ gamma := ClosedSubsetOfSpecByRadicalColumn( "[2*x+1]", R );
 im := ConstructibleProjection( gamma );
 #! ( V_{Z}( I1 ) \ V_{Z}( J1_1 ) )
 Display( im );
-#! V( <> ) \ V( <2> )
+#! ( V( <> )
+#! 
+#! \ V( <2> ) )
 char := -im;
 #! ( V_{Z}( I1 ) \ V_{Z}( J1_1 ) \ V_{Z}( J1_2 ) )
 Display( char );
-#! V( <2> ) \ ∅ \ ∅
+#! ( V( <2> )
+#! 
+#! \ ∅
+#! 
+#! \ ∅ )
 char := CanonicalObject( char );
 #! V_{Z}( <...> )
 Display( char );
