@@ -3,7 +3,7 @@ using CapAndHomalg
 
 LoadPackage( "ZariskiFrames" )
 
-UseSystemSingular(true)
+UseSystemSingular(false)
 
 ℚ = HomalgFieldOfRationalsInSingular( )
 
