@@ -20,7 +20,11 @@ gap> IsIsomorphism( MonomorphismIntoSomeInjectiveObject( I ) ) and IsInjective( 
 true
 gap> ProjectiveLift( 3 * IdentityMorphism( P ), 2 * IdentityMorphism( P ) ) = 3/2 * IdentityMorphism( P );
 true
+gap> IsEqualForMorphisms( ProjectiveLift( 3 * IdentityMorphism( P ), 2 * IdentityMorphism( P ) ), 3/2 * IdentityMorphism( P ) );
+true
 gap> InjectiveColift( 3 * IdentityMorphism( I ), 2 * IdentityMorphism( I ) ) = 2/3 * IdentityMorphism( I );
+true
+gap> IsEqualForMorphisms( InjectiveColift( 3 * IdentityMorphism( I ), 2 * IdentityMorphism( I ) ), 2/3 * IdentityMorphism( I ) );
 true
 gap> ForAll( IndecomposableProjectiveObjects( PSh ), o -> IsEqualForObjects( o, ProjectiveCoverObject( o ) ) );
 true

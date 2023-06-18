@@ -147,46 +147,6 @@ BindGlobal( "INSTALL_ImageEmbeddingForFpModules",
 end );
 
 ##
-INSTALL_ImageEmbeddingForFpModules(
-        ImageEmbeddingForFpLeftModulesByFreyd,
-        BasisOfRows,
-        DecideZeroRows,
-        N -> CertainRows( N, NonZeroRows( N ) ),
-        SyzygiesOfRows,
-        FpLeftModuleByFreyd,
-        FpModuleMorphism );
-
-##
-INSTALL_ImageEmbeddingForFpModules(
-        ImageEmbeddingForFpRightModulesByFreyd,
-        BasisOfColumns,
-        DecideZeroColumns,
-        N -> CertainColumns( N, NonZeroColumns( N ) ),
-        SyzygiesOfColumns,
-        FpRightModuleByFreyd,
-        FpModuleMorphism );
-
-##
-INSTALL_ImageEmbeddingForFpModules(
-        ImageEmbeddingForFpLeftModulesByPresentations,
-        BasisOfRows,
-        DecideZeroRows,
-        N -> CertainRows( N, NonZeroRows( N ) ),
-        LazySyzygiesOfRows,
-        AsLeftPresentation,
-        PresentationMorphism );
-
-##
-INSTALL_ImageEmbeddingForFpModules(
-        ImageEmbeddingForFpRightModulesByPresentations,
-        BasisOfColumns,
-        DecideZeroColumns,
-        N -> CertainColumns( N, NonZeroColumns( N ) ),
-        LazySyzygiesOfColumns,
-        AsRightPresentation,
-        PresentationMorphism );
-
-##
 BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
   function( R, left, filter_obj, filter_mor, filter_end, hom_filter_obj, hom_filter_mor, hom_filter_end, use_freyd )
     local info_level, A, P, etaSM, etaZG, etaLG, H;

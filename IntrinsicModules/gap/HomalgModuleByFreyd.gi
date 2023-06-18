@@ -11,6 +11,26 @@
 ####################################
 
 ##
+INSTALL_ImageEmbeddingForFpModules(
+        ImageEmbeddingForFpLeftModulesByFreyd,
+        BasisOfRows,
+        DecideZeroRows,
+        N -> CertainRows( N, NonZeroRows( N ) ),
+        SyzygiesOfRows,
+        FpLeftModuleByFreyd,
+        FpModuleMorphism );
+
+##
+INSTALL_ImageEmbeddingForFpModules(
+        ImageEmbeddingForFpRightModulesByFreyd,
+        BasisOfColumns,
+        DecideZeroColumns,
+        N -> CertainColumns( N, NonZeroColumns( N ) ),
+        SyzygiesOfColumns,
+        FpRightModuleByFreyd,
+        FpModuleMorphism );
+
+##
 InstallMethod( HomalgModule,
         "for a left or right CAP presentation",
         [ IsFreydCategoryObject ],
