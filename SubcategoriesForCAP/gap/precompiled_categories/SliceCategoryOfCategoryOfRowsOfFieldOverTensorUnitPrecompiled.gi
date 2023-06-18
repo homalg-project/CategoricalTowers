@@ -23,11 +23,11 @@ end
     AddCoproduct( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, objects_1 )
     local morphism_attr_1_1, deduped_2_1, deduped_3_1;
     deduped_3_1 := BaseObject( cat_1 );
     deduped_2_1 := AmbientCategory( cat_1 );
-    morphism_attr_1_1 := UnionOfRows( UnderlyingRing( deduped_2_1 ), RankOfObject( deduped_3_1 ), List( arg2_1, function ( logic_new_func_x_2 )
+    morphism_attr_1_1 := UnionOfRows( UnderlyingRing( deduped_2_1 ), RankOfObject( deduped_3_1 ), List( objects_1, function ( logic_new_func_x_2 )
               return UnderlyingMatrix( UnderlyingMorphism( logic_new_func_x_2 ) );
           end ) );
     return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_2_1, CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), deduped_3_1, UnderlyingMatrix, morphism_attr_1_1 ) );
@@ -40,10 +40,10 @@ end
     AddDirectProduct( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, objects_1 )
     local morphism_attr_1_1, deduped_2_1;
     deduped_2_1 := AmbientCategory( cat_1 );
-    morphism_attr_1_1 := Iterated( List( arg2_1, function ( logic_new_func_x_2 )
+    morphism_attr_1_1 := Iterated( List( objects_1, function ( logic_new_func_x_2 )
               return UnderlyingMatrix( UnderlyingMorphism( logic_new_func_x_2 ) );
           end ), function ( I_2, J_2 )
             return ReducedSyzygiesOfRows( I_2, J_2 ) * I_2;

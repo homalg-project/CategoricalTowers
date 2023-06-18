@@ -9,14 +9,14 @@ BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiv
     AddAdditionForMorphisms( cat,
         
 ########
-function ( cat_1, a_1, b_1 )
+function ( cat_1, alpha_1, beta_1 )
     local hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
-    deduped_11_1 := MorphismMatrix( a_1 );
-    deduped_10_1 := Range( a_1 );
-    deduped_9_1 := Source( a_1 );
+    deduped_11_1 := MorphismMatrix( alpha_1 );
+    deduped_10_1 := Range( alpha_1 );
+    deduped_9_1 := Source( alpha_1 );
     hoisted_8_1 := [ 1 .. Length( ObjectList( deduped_10_1 ) ) ];
     hoisted_7_1 := UnderlyingCategory( cat_1 );
-    hoisted_6_1 := List( MorphismMatrix( b_1 ), function ( logic_new_func_list_2 )
+    hoisted_6_1 := List( MorphismMatrix( beta_1 ), function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, UnderlyingQuiverAlgebraElement );
         end );
     hoisted_5_1 := List( deduped_11_1, function ( logic_new_func_list_2 )
@@ -47,11 +47,11 @@ end
     AddAdditiveInverseForMorphisms( cat,
         
 ########
-function ( cat_1, a_1 )
+function ( cat_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
-    deduped_8_1 := MorphismMatrix( a_1 );
-    deduped_7_1 := Range( a_1 );
-    deduped_6_1 := Source( a_1 );
+    deduped_8_1 := MorphismMatrix( alpha_1 );
+    deduped_7_1 := Range( alpha_1 );
+    deduped_6_1 := Source( alpha_1 );
     hoisted_5_1 := [ 1 .. Length( ObjectList( deduped_7_1 ) ) ];
     hoisted_4_1 := UnderlyingCategory( cat_1 );
     hoisted_3_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
@@ -118,8 +118,8 @@ end
     AddDirectSum( cat,
         
 ########
-function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, ObjectList, Concatenation( List( arg2_1, ObjectList ) ) );
+function ( cat_1, objects_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, ObjectList, Concatenation( List( objects_1, ObjectList ) ) );
 end
 ########
         
@@ -712,11 +712,11 @@ end
     AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
         
 ########
-function ( cat_1, r_1, a_1 )
+function ( cat_1, r_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
-    deduped_8_1 := MorphismMatrix( a_1 );
-    deduped_7_1 := Range( a_1 );
-    deduped_6_1 := Source( a_1 );
+    deduped_8_1 := MorphismMatrix( alpha_1 );
+    deduped_7_1 := Range( alpha_1 );
+    deduped_6_1 := Source( alpha_1 );
     hoisted_5_1 := [ 1 .. Length( ObjectList( deduped_7_1 ) ) ];
     hoisted_4_1 := UnderlyingCategory( cat_1 );
     hoisted_3_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
