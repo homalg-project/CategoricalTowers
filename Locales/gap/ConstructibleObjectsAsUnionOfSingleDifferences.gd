@@ -122,3 +122,7 @@ DeclareOperation( "\+",
 #! @Arguments D1, D2, ...
 #! @Group AsFormalDifference_group
 DeclareGlobalFunction( "UnionOfDifferencesOfNormalizedObjects" );
+
+##
+DeclareOperation( "DifferenceOfSingleDifferences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsObjectInMeetSemilatticeOfSingleDifferences ] );

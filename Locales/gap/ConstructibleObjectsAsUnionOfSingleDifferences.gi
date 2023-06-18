@@ -137,7 +137,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     BinaryDirectProduct := function( cat, A, B )
         local D, L, l, I, U;
-        
+
         #% CAP_JIT_RESOLVE_FUNCTION
         
         D := UnderlyingMeetSemilatticeOfDifferences( cat );
@@ -176,6 +176,23 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         
         ## an advantage of this specific data structure for constructible objects
         return UnionOfListOfDifferences( cat, Filtered( differences, d -> not IsInitial( D, d ) ) );
+        
+    end );
+    
+    ##
+    AddCoexponentialOnObjects( C,
+      function( cat, A, B )
+        local D, DB;
+        
+        D := UnderlyingMeetSemilatticeOfDifferences( cat );
+        
+        DB := ListOfPreObjectsInMeetSemilatticeOfDifferences( B );
+        
+        return Coproduct( C,
+                       List( ListOfPreObjectsInMeetSemilatticeOfDifferences( A ), A_i ->
+                             DirectProduct( C,
+                                     List( DB, B_j ->
+                                           DifferenceOfSingleDifferences( D, A_i, B_j ) ) ) ) );
         
     end );
     
@@ -472,6 +489,32 @@ InstallMethod( StandardizedObject,
     fi;
     
     return UnionOfDifferences( L );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( DifferenceOfSingleDifferences,
+        [ IsMeetSemilatticeOfSingleDifferences, IsObjectInMeetSemilatticeOfSingleDifferences, IsObjectInMeetSemilatticeOfSingleDifferences ],
+        
+  function( D, A, B )
+    local H, C, A_ms, B_ms, A_m, A_s, B_m, B_s;
+    
+    H := UnderlyingCategory( D );
+    
+    C := BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences( H );
+    
+    A_ms := MinuendAndSubtrahendInUnderlyingLattice( A );
+    B_ms := MinuendAndSubtrahendInUnderlyingLattice( B );
+
+    A_m := A_ms[1];
+    A_s := A_ms[2];
+    
+    B_m := B_ms[1];
+    B_s := B_ms[2];
+    
+    return UnionOfListOfDifferences( C,
+                   [ SingleDifference( D, Pair( A_m, Coproduct( H, [ A_s, B_m ] ) ) ),
+                     SingleDifference( D, Pair( DirectProduct( H, [ A_m, B_s ] ), A_s ) ) ] );
     
 end );
 
