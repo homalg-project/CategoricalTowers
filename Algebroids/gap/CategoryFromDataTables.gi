@@ -100,10 +100,10 @@ InstallMethod( CategoryFromDataTables,
     
     ##
     AddObjectConstructor( C,
-      function( C, obj_map )
+      function( C, obj_index )
         
         return CreateCapCategoryObjectWithAttributes( C,
-                       MapOfObject, obj_map );
+                       IndexOfObject, obj_index );
         
     end );
     
@@ -111,18 +111,18 @@ InstallMethod( CategoryFromDataTables,
     AddObjectDatum( C,
       function( C, obj )
         
-        return MapOfObject( obj );
+        return IndexOfObject( obj );
         
     end );
     
     ##
     AddMorphismConstructor( C,
-      function( C, source, mor_map, range )
+      function( C, source, mor_index, range )
         
         return CreateCapCategoryMorphismWithAttributes( C,
                        source,
                        range,
-                       MapOfMorphism, mor_map );
+                       IndexOfMorphism, mor_index );
         
     end );
     
@@ -130,74 +130,61 @@ InstallMethod( CategoryFromDataTables,
     AddMorphismDatum( C,
       function( C, mor )
         
-        return MapOfMorphism( mor );
+        return IndexOfMorphism( mor );
         
     end );
     
     ##
     AddIsWellDefinedForObjects( C,
       function( C, obj )
-        local V, C0, obj_map;
-        
-        V := RangeCategoryOfHomomorphismStructure( C );
+        local C0, obj_index;
         
         C0 := DataTables( C )[1][1];
         
-        obj_map := ObjectDatum( C, obj );
+        obj_index := ObjectDatum( C, obj );
         
-        return IsWellDefinedForMorphisms( V, obj_map ) and
-               IsTerminal( V, Source( obj_map ) ) and
-               C0 = ObjectDatum( V, Range( obj_map ) );
+        return IsBigInt( obj_index ) and
+               obj_index >= 0 and
+               obj_index < C0;
         
     end );
     
     ##
     AddIsWellDefinedForMorphisms( C,
       function( C, mor )
-        local V, C1, mor_map;
-        
-        V := RangeCategoryOfHomomorphismStructure( C );
+        local C1, mor_index;
         
         C1 := DataTables( C )[1][2];
         
-        mor_map := MorphismDatum( C, mor );
+        mor_index := MorphismDatum( C, mor );
         
-        return IsWellDefinedForMorphisms( V, mor_map ) and
-               IsTerminal( V, Source( mor_map ) ) and
-               C1 = ObjectDatum( V, Range( mor_map ) );
+        return IsBigInt( mor_index ) and
+               mor_index >= 0 and
+               mor_index < C1;
         
     end );
     
     ##
     AddIsEqualForObjects( C,
       function( C, obj_1, obj_2 )
-        local V;
         
-        V := RangeCategoryOfHomomorphismStructure( C );
-        
-        return IsCongruentForMorphisms( V, ObjectDatum( C, obj_1 ), ObjectDatum( C, obj_2 ) );
+        return ObjectDatum( C, obj_1 ) = ObjectDatum( C, obj_2 );
         
     end );
     
     ##
     AddIsEqualForMorphisms( C,
       function( C, mor_1, mor_2 )
-        local V;
         
-        V := RangeCategoryOfHomomorphismStructure( C );
-        
-        return IsEqualForMorphisms( V, MorphismDatum( C, mor_1 ), MorphismDatum( C, mor_2 ) );
+        return MorphismDatum( C, mor_1 ) = MorphismDatum( C, mor_2 );
         
     end );
     
     ##
     AddIsCongruentForMorphisms( C,
       function( C, mor_1, mor_2 )
-        local V;
         
-        V := RangeCategoryOfHomomorphismStructure( C );
-        
-        return IsCongruentForMorphisms( V, MorphismDatum( C, mor_1 ), MorphismDatum( C, mor_2 ) );
+        return MorphismDatum( C, mor_1 ) = MorphismDatum( C, mor_2 );
         
     end );
     
@@ -206,7 +193,7 @@ InstallMethod( CategoryFromDataTables,
       function( C, obj )
         local o;
         
-        o := AsList( ObjectDatum( C, obj ) )[1 + 0];
+        o := ObjectDatum( C, obj );
         
         return SetOfMorphisms( C )[1 + DataTables( C )[2][1][1 + o]];
         
@@ -217,8 +204,8 @@ InstallMethod( CategoryFromDataTables,
       function( C, mor_1, mor_2 )
         local m1, m2;
         
-        m1 := AsList( MorphismDatum( C, mor_1 ) )[1 + 0];
-        m2 := AsList( MorphismDatum( C, mor_2 ) )[1 + 0];
+        m1 := MorphismDatum( C, mor_1 );
+        m2 := MorphismDatum( C, mor_2 );
         
         return SetOfMorphisms( C )[1 + DataTables( C )[2][4][1 + m1][1 + m2]];
         
@@ -241,8 +228,8 @@ InstallMethod( CategoryFromDataTables,
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        o1 := AsList( ObjectDatum( C, obj_1 ) )[1 + 0];
-        o2 := AsList( ObjectDatum( C, obj_2 ) )[1 + 0];
+        o1 := ObjectDatum( C, obj_1 );
+        o2 := ObjectDatum( C, obj_2 );
         
         return ObjectConstructor( V,
                        DataTables( C )[2][5][1 + o1][1 + o2] );
@@ -254,8 +241,8 @@ InstallMethod( CategoryFromDataTables,
       function( C, source, mor_1, mor_2, range )
         local m1, m2;
         
-        m1 := AsList( MorphismDatum( C, mor_1 ) )[1 + 0];
-        m2 := AsList( MorphismDatum( C, mor_2 ) )[1 + 0];
+        m1 := MorphismDatum( C, mor_1 );
+        m2 := MorphismDatum( C, mor_2 );
         
         return MorphismConstructor( V,
                        source,
@@ -269,7 +256,7 @@ InstallMethod( CategoryFromDataTables,
       function( C, distinguished_object, mor, range )
         local m;
         
-        m := AsList( MorphismDatum( C, mor ) )[1 + 0];
+        m := MorphismDatum( C, mor );
         
         return MorphismConstructor( V,
                        distinguished_object,
@@ -283,8 +270,8 @@ InstallMethod( CategoryFromDataTables,
       function( C, obj_1, obj_2, mor )
         local o1, o2, m;
         
-        o1 := AsList( ObjectDatum( C, obj_1 ) )[1 + 0];
-        o2 := AsList( ObjectDatum( C, obj_2 ) )[1 + 0];
+        o1 := ObjectDatum( C, obj_1 );
+        o2 := ObjectDatum( C, obj_2 );
         
         m := AsList( mor )[1 + 0];
         
@@ -360,18 +347,8 @@ InstallMethodForCompilerForCAP( CreateObject,
         [ IsCategoryFromDataTables, IsInt ],
         
   function( C, o )
-    local V, C0, obj_map;
     
-    V := RangeCategoryOfHomomorphismStructure( C );
-    
-    C0 := DataTables( C )[1][1];
-    
-    obj_map := MorphismConstructor( V,
-                       TerminalObject( V ),
-                       [ o ],
-                       ObjectConstructor( V, C0 ) );
-    
-    return ObjectConstructor( C, obj_map );
+    return ObjectConstructor( C, o );
     
 end );
 
@@ -392,20 +369,10 @@ InstallOtherMethodForCompilerForCAP( CreateMorphism,
         [ IsCategoryFromDataTables, IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables ],
         
   function( C, source, m, range )
-    local V, C1, mor_map;
-    
-    V := RangeCategoryOfHomomorphismStructure( C );
-    
-    C1 := DataTables( C )[1][2];
-    
-    mor_map := MorphismConstructor( V,
-                       TerminalObject( V ),
-                       [ m ],
-                       ObjectConstructor( V, C1 ) );
     
     return MorphismConstructor( C,
                    source,
-                   mor_map,
+                   m,
                    range );
     
 end );
@@ -540,7 +507,7 @@ InstallMethod( ViewString,
         
   function( obj )
     
-    return Concatenation( "<(", CapCategory( obj )!.labels[1][1 + MapOfObject( obj )( 0 )], ")>" );
+    return Concatenation( "<(", CapCategory( obj )!.labels[1][1 + IndexOfObject( obj )], ")>" );
     
 end );
 
@@ -556,10 +523,10 @@ InstallMethod( ViewString,
     
     labels := C!.labels;
     
-    s := MapOfObject( Source( mor ) )( 0 );
-    t := MapOfObject( Range( mor ) )( 0 );
+    s := IndexOfObject( Source( mor ) );
+    t := IndexOfObject( Range( mor ) );
     
-    i := MapOfMorphism( mor )( 0 );
+    i := IndexOfMorphism( mor );
     
     pos := Position( IndicesOfGeneratingMorphisms( C ), i );
     
@@ -634,7 +601,7 @@ InstallMethod( LaTeXOutput,
         
   function( obj )
     
-    return String( MapOfObject( obj )( 0 ) );
+    return String( IndexOfObject( obj ) );
     
 end );
 
@@ -646,7 +613,7 @@ InstallMethod( LaTeXOutput,
   function( mor )
     local s;
     
-    s := String( MapOfMorphism( mor )( 0 ) );
+    s := String( IndexOfMorphism( mor ) );
     
     if ValueOption( "OnlyDatum" ) = true then
         
