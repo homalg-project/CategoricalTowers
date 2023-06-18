@@ -58,7 +58,7 @@
   
   [1X2.1-6 MorphismFromRepresentable[101X
   
-  [33X[1;0Y[29X[2XMorphismFromRepresentable[102X( [3XPSh[103X, [3XobjB[103X, [3Xi[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMorphismFromRepresentable[102X( [3XPSh[103X, [3XobjB[103X, [3XmorC[103X, [3XF[103X ) [32X operation[133X
   
   [1X2.1-7 MorphismFromCoproductOfRepresentables[101X
   

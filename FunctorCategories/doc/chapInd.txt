@@ -141,7 +141,7 @@
   [2XLoops[102X, for IsObjectInCategoryOfBouquets 4.2-3 
       for IsObjectInCategoryOfReflexiveQuivers 7.2-3 
   [2XMorphismFromCoproductOfRepresentables[102X, for IsPreSheafCategory, IsList, IsObjectInPreSheafCategory 2.1-7 
-  [2XMorphismFromRepresentable[102X, for IsPreSheafCategory, IsCapCategoryObject, IsInt, IsObjectInPreSheafCategory 2.1-6 
+  [2XMorphismFromRepresentable[102X, for IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory 2.1-6 
   [2XNakayamaLeftAdjoint[102X, for IsAlgebroid 11.2-1 
       for IsPreSheafCategory, IsCoPreSheafCategory 11.2-1 
   [2XNakayamaRightAdjoint[102X, for IsAlgebroid 11.2-2 

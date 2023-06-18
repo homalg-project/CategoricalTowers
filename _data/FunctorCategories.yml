@@ -1,5 +1,5 @@
 name: FunctorCategories
-version: "2023.06-08"
+version: "2023.06-09"
 license: "GPL-2.0-or-later"
 date: 2023-06-18
 description: |
@@ -72,11 +72,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FunctorCategorie
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.06-08/FunctorCategories-2023.06-08.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.06-09/FunctorCategories-2023.06-09.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.06-08/FunctorCategories-2023.06-08.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.06-09/FunctorCategories-2023.06-09.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.06-08/FunctorCategories-2023.06-08-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.06-09/FunctorCategories-2023.06-09-manual.pdf
 
 abstract: |
 
@@ -89,7 +89,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BS18</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FunctorCategories, Categories of functors,
-             Version 2023.06-08</i>
+             Version 2023.06-09</i>
      (<span class='BibYear'>6-18</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FunctorCategories">https://homalg-project.github.io/pkg/FunctorCategories</a></span>.
@@ -97,10 +97,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ FunctorCategories2023.06-08,
+    @misc{ FunctorCategories2023.06-09,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FunctorCategories}, Categories of functors, {V}ersion
-                          2023.06-08},
+                          2023.06-09},
       month =            {3-},
       year =             {6-18},
       note =             {GAP package},
