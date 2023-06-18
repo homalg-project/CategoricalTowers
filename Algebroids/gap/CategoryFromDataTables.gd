@@ -121,13 +121,12 @@ DeclareAttribute( "SetOfMorphisms",
 DeclareAttribute( "IndicesOfGeneratingMorphisms",
         IsCategoryFromDataTables );
 
-#CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromDataTables ],
-#  function ( input_types )
-#    
-#    return rec( filter := IsList,
-#                element_type := rec( filter := IsInt ) );
-#    
-#end );
+CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromDataTables ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf( IsInt );
+    
+end );
 
 DeclareAttribute( "DecompositionOfAllMorphisms",
         IsCategoryFromDataTables );
