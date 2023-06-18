@@ -2854,10 +2854,10 @@ end );
 ##
 ## a special case of InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
 InstallMethodForCompilerForCAP( MorphismFromRepresentable,
-        [ IsPreSheafCategory, IsCapCategoryObject, IsInt, IsObjectInPreSheafCategory ],
+        [ IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory ],
         
-  function ( PSh, objB, i, F )
-    local B, C, Y, objs, map, f;
+  function ( PSh, objB, mor, F )
+    local B, C, Y, objs, f;
     
     B := Source( PSh );
     C := Range( PSh );
@@ -2868,8 +2868,6 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentable,
     Y := YonedaEmbeddingData( PSh )[1];
     
     objs := SetOfObjects( B );
-    
-    map := ExactCoverWithGlobalElements( C, ValuesOfPreSheaf( F )[1][SafePosition( objs, objB )] )[1 + i];
     
     f :=
       function( source, srcB_index, range )
@@ -2884,7 +2882,7 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentable,
         
         taus := List( F_HomB_srcB_objB, m ->
                       PreCompose( C,
-                              map,
+                              mor,
                               m ) );
         
         return UniversalMorphismFromCoproductWithGivenCoproduct( C,
@@ -2904,17 +2902,30 @@ InstallMethodForCompilerForCAP( MorphismFromCoproductOfRepresentables,
         [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ],
         
   function ( PSh, L, F )
+    local B, C, objs, cover_objB;
+    
+    B := Source( PSh );
+    C := Range( PSh );
+    
+    objs := SetOfObjects( B );
+    
+    cover_objB :=
+      function( objB_list )
+        local objB, elFV;
+        
+        objB := objB_list[1];
+        
+        elFV := ExactCoverWithGlobalElements( C, ValuesOfPreSheaf( F )[1][SafePosition( objs, objB )] );
+        
+        return MorphismFromRepresentable( PSh,
+                       objB,
+                       elFV[1 + objB_list[2]],
+                       F );
+    end;
     
     return UniversalMorphismFromCoproduct( PSh,
                    F,
-                   List( L, objB_list ->
-                         UniversalMorphismFromCoproduct( PSh,
-                                 F,
-                                 List( objB_list[2], i ->
-                                       MorphismFromRepresentable( PSh,
-                                               objB_list[1],
-                                               i,
-                                               F ) ) ) ) );
+                   List( L, cover_objB ) );
     
 end );
 
@@ -2970,16 +2981,16 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
         
         pos := pos_nontrivial[SafePosition( homs_relevant, max )];
         
-        return Concatenation( pi_data, [ Pair( objs[pos], [ diff_vals[pos][1] ] ) ] );
+        return Concatenation( pi_data, [ Pair( objs[pos], diff_vals[pos][1] ) ] );
         
     end;
     
     initial := [ ];
     
     cover := CapFixpoint( predicate, func, initial );
-
+    
     ## sort according to objs
-    return Concatenation( List( objs, objB -> cover{PositionsProperty( cover, e -> IsIdenticalObj( e[1], objB ) )} ) );
+    return Concatenation( List( objs, objB -> Filtered( cover, e -> IsIdenticalObj( e[1], objB ) ) ) );
     
 end );
 
@@ -3105,7 +3116,7 @@ InstallOtherMethodForCompilerForCAP( EpimorphismFromSomeProjectiveObjectOntoProj
         
         val := i - 1 - offsets[objB_pos];
         
-        pos := PositionProperty( cover, a -> IsEqualForObjects( B, a[1], source_list[i] ) and a[2][1] = val );
+        pos := PositionProperty( cover, a -> IsEqualForObjects( B, a[1], source_list[i] ) and a[2] = val );
         
         if IsInt( pos ) then
             return [ -1 + pos, id[objB_pos] ];
@@ -3115,7 +3126,7 @@ InstallOtherMethodForCompilerForCAP( EpimorphismFromSomeProjectiveObjectOntoProj
             mor := mors[pos_mor];
             map := -1 + SafePosition( AsList( F_vals[2][pos_mor] ), val );
             r := Range( mor );
-            return [ -1 + SafePositionProperty( cover, a -> IsEqualForObjects( B, r, a[1] ) and a[2][1] = map ), mor ];
+            return [ -1 + SafePositionProperty( cover, a -> IsEqualForObjects( B, r, a[1] ) and a[2] = map ), mor ];
         fi;
         
     end;

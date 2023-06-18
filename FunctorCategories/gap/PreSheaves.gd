@@ -276,9 +276,9 @@ DeclareAttribute( "SomeDiagramOfRepresentables",
 DeclareAttribute( "CoYonedaLemmaCoequalizerDataOfPreSheaf",
         IsObjectInPreSheafCategory );
 
-#! @Arguments PSh, objB, i, F
+#! @Arguments PSh, objB, morC, F
 DeclareOperation( "MorphismFromRepresentable",
-    [ IsPreSheafCategory, IsCapCategoryObject, IsInt, IsObjectInPreSheafCategory ] );
+    [ IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory ] );
 
 #! @Arguments PSh, list, F
 DeclareOperation( "MorphismFromCoproductOfRepresentables",
