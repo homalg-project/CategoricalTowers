@@ -153,11 +153,17 @@ V_{Z[x]}( &lt;...&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">im := ConstructibleProjection( gamma );</span>
 ( V_{Z}( I1 ) \ V_{Z}( J1_1 ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( im );</span>
-V( &lt;&gt; ) \ V( &lt;2&gt; )
+( V( &lt;&gt; )
+
+\ V( &lt;2&gt; ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">char := -im;</span>
 ( V_{Z}( I1 ) \ V_{Z}( J1_1 ) \ V_{Z}( J1_2 ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( char );</span>
-V( &lt;2&gt; ) \ ∅ \ ∅
+( V( &lt;2&gt; )
+
+\ ∅
+
+\ ∅ )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">char := CanonicalObject( char );</span>
 V_{Z}( &lt;...&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( char );</span>
@@ -175,11 +181,15 @@ Q[a][b]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V1 := -ClosedSubsetOfSpec( "a*b", R );</span>
 V_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( V1 );</span>
-V( &lt;&gt; ) \ V( &lt;a*b&gt; )
+V( &lt;&gt; )
+
+\ V( &lt;a*b&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W1 := ConstructibleProjection( V1 );</span>
 ( V_{Q[a]}( I1 ) \ V_{Q[a]}( J1_1 ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( W1 );</span>
-V( &lt;&gt; ) \ V( &lt;a&gt; )
+( V( &lt;&gt; )
+
+\ V( &lt;a&gt; ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V2 := ClosedSubsetOfSpec( "a", R ) - ClosedSubsetOfSpec( "b", R );</span>
 V_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( V2 );</span>
@@ -187,45 +197,71 @@ V( &lt;a&gt; ) \ V( &lt;b&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W2 := ConstructibleProjection( V2 );</span>
 ( V_{Q[a]}( I1 ) \ V_{Q[a]}( J1_1 ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( W2 );</span>
-V( &lt;a&gt; ) \ ∅
+( V( &lt;a&gt; )
+
+\ ∅ )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V3 := ClosedSubsetOfSpec( "a^2-1", R ) - ClosedSubsetOfSpec( "b", R );</span>
 V_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( V3 );</span>
-V( &lt;a^2-1&gt; ) \ V( &lt;b&gt; )
+V( &lt;a^2-1&gt; )
+
+\ V( &lt;b&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W3 := ConstructibleProjection( V3 );</span>
 ( V_{Q[a]}( I1 ) \ V_{Q[a]}( J1_1 ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( W3 );</span>
-V( &lt;a^2-1&gt; ) \ ∅
+( V( &lt;a^2-1&gt; )
+
+\ ∅ )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V4 := ClosedSubsetOfSpec( "b-a^2+1", R ) - ClosedSubsetOfSpec( "a*b", R );</span>
 V_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( V4 );</span>
-V( &lt;b-a^2+1&gt; ) \ V( &lt;a*b&gt; )
+V( &lt;b-a^2+1&gt; )
+
+\ V( &lt;a*b&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W4 := ConstructibleProjection( V4 );</span>
 ( V_{Q[a]}( I1 ) \ V_{Q[a]}( J1_1 ) \ .. \ V_{Q[a]}( J1_3 ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( W4 );</span>
-V( &lt;&gt; ) \ V( &lt;a&gt; ) \ V( &lt;a-1&gt; ) \ V( &lt;a+1&gt; )
+( V( &lt;&gt; )
+
+\ V( &lt;a&gt; )
+
+\ V( &lt;a-1&gt; )
+
+\ V( &lt;a+1&gt; ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V5 := (ClosedSubsetOfSpec( "b-a^2+1", R ) + ClosedSubsetOfSpec( "a-1", R ))</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">      - ClosedSubsetOfSpec( "a*b", R );</span>
 V_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( V5 );</span>
-{ V( &lt;b-a^2+1&gt; ) ∪ V( &lt;a-1&gt; ) } \ V( &lt;a*b&gt; )
+{ V( &lt;b-a^2+1&gt; ) ∪ V( &lt;a-1&gt; ) }
+
+\ V( &lt;a*b&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W5 := ConstructibleProjection( V5 );</span>
 ( V_{Q[a]}( I1 ) \ V_{Q[a]}( J1_1 ) \ V_{Q[a]}( J1_2 ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( W5 );</span>
-V( &lt;&gt; ) \ V( &lt;a+1&gt; ) \ V( &lt;a&gt; )
+( V( &lt;&gt; )
+
+\ V( &lt;a+1&gt; )
+
+\ V( &lt;a&gt; ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V6 := (ClosedSubsetOfSpec( "b-a^2+1", R ) + ClosedSubsetOfSpec( "a^2-1", R ))</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">      - ClosedSubsetOfSpec( "a*b", R );</span>
 V_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( V6 );</span>
-{ V( &lt;b-a^2+1&gt; ) ∪ V( &lt;a^2-1&gt; ) } \ V( &lt;a*b&gt; )
+{ V( &lt;b-a^2+1&gt; ) ∪ V( &lt;a^2-1&gt; ) }
+
+\ V( &lt;a*b&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W6 := ConstructibleProjection( V6 );</span>
 ( V_{Q[a]}( I1 ) \ V_{Q[a]}( J1_1 ) ) ∪ ( V_{Q[a]}( I2 ) \ V_{Q[a]}( J2_1 ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( W6 );</span>
-V( &lt;&gt; ) \ V( &lt;a&gt; )
+( V( &lt;&gt; )
+
+\ V( &lt;a&gt; ) )
 
 ∪
 
-V( &lt;a^2-1&gt; ) \ ∅
+( V( &lt;a^2-1&gt; )
+
+\ ∅ )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegersInSingular( );</span>
 Z
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := ZZ * "a";</span>
@@ -234,11 +270,17 @@ Z[a]
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">      - ClosedSubsetOfSpec( "3*a-1", S ) - ClosedSubsetOfSpec( "a+1", S );</span>
 V_{Z[a]}( I ) \ V_{Z[a]}( J )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( V7 );</span>
-V( &lt;2*a^2-2*a+1&gt; ) \ { V( &lt;3*a-1&gt; ) ∪ V( &lt;a+1&gt; ) }
+V( &lt;2*a^2-2*a+1&gt; )
+
+\ { V( &lt;3*a-1&gt; ) ∪ V( &lt;a+1&gt; ) }
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W7 := ConstructibleProjection( V7 );</span>
 ( V_{Z}( I1 ) \ V_{Z}( J1_1 ) \ V_{Z}( J1_2 ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( W7 );</span>
-V( &lt;&gt; ) \ V( &lt;2&gt; ) \ V( &lt;5&gt; )
+( V( &lt;&gt; )
+
+\ V( &lt;2&gt; )
+
+\ V( &lt;5&gt; ) )
 </pre></div>
 
 <p><a id="X83456044841E04F8" name="X83456044841E04F8"></a></p>

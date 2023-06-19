@@ -111,7 +111,9 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mxuy := -xuy;</span>
 V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( mxuy );</span>
-V( &lt;&gt; ) \ { V( &lt;y&gt; ) ∪ V( &lt;x&gt; ) }
+V( &lt;&gt; )
+
+\ { V( &lt;y&gt; ) ∪ V( &lt;x&gt; ) }
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsClosed( mxuy );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOpen( mxuy );</span>
@@ -119,11 +121,15 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">xmy := x - y;</span>
 V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( xmy );</span>
-V( &lt;y&gt; ) \ V( &lt;x&gt; )
+V( &lt;y&gt; )
+
+\ V( &lt;x&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">xmy2 := xmy - y;</span>
 V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( xmy2 );</span>
-V( &lt;y&gt; ) \ V( &lt;x&gt; )
+V( &lt;y&gt; )
+
+\ V( &lt;x&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lc := xuy - d;</span>
 V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lc0 := lc - 0;</span>
@@ -161,17 +167,23 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := c - lc;</span>
 ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
-V( &lt;x+y-1,y^2-y,x+y-1,x*y&gt; ) \ ∅
+( V( &lt;x+y-1,y^2-y,x+y-1,x*y&gt; )
+
+\ ∅ )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsClosed( t );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := c - c;</span>
 ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
-V( &lt;x*y&gt; ) \ { V( &lt;x+y-1,y^2-y&gt; ) ∪ V( &lt;x*y&gt; ) }
+( V( &lt;x*y&gt; )
+
+\ { V( &lt;x+y-1,y^2-y&gt; ) ∪ V( &lt;x*y&gt; ) } )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := StandardizedObject( z );</span>
 ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
-∅ \ ∅
+( ∅
+
+\ ∅ )
 </pre></div>
 
 
