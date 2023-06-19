@@ -346,11 +346,11 @@ InstallMethod( DisplayString,
     
     n := Length( A );
     
-    display := DisplayString( A[1] );
+    display := Concatenation( "( ", DisplayString( A[1] ), " )" );
     
     for i in [ 2 .. n ] do
         Append( display, "\n\n∪\n\n" );
-        Append( display, DisplayString( A[i] ) );
+        Append( display, Concatenation( "( ", DisplayString( A[i] ), " )" ) );
     od;
     
     return display;
