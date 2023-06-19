@@ -14,8 +14,9 @@ Display( sFinSets );
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsBicartesianCategory
+#! and not yet algorithmically
+#! * IsDistributiveCategory
 #! and furthermore mathematically
-#! * IsDistributiveCategory (but not yet algorithmically)
 #! * IsStrictCartesianCategory
 #! * IsStrictCocartesianCategory
 s := ObjectConstructor( sFinSets, 7 );

@@ -14,7 +14,6 @@ Display( D );
 #! * IsEquippedWithHomomorphismStructure
 #! and furthermore mathematically
 #! * IsDiscreteCategory
-#! * IsSkeletalCategory
 one := 1 / D;
 #! <An object in DiscreteSkeletalCategory( "IsPosInt" )>
 Display( one );

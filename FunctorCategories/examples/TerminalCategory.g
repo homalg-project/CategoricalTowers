@@ -34,9 +34,6 @@ Display( T );
 #! * IsLinearClosureOfACategory
 #! * IsLocallyOfFiniteInjectiveDimension
 #! * IsLocallyOfFiniteProjectiveDimension
-#! * IsStrictCartesianCategory
-#! * IsStrictCocartesianCategory
-#! * IsStrictMonoidalCategory
 #! * IsTerminalCategory
 #! * IsTotalOrderCategory
 i := InitialObject( T );

@@ -17,10 +17,6 @@ Display( IntervalCategory );
 #! 19 primitive operations were used to derive 302 operations for this category which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsBooleanAlgebra
-#! and furthermore mathematically
-#! * IsSkeletalCategory
-#! * IsStrictCartesianCategory
-#! * IsStrictCocartesianCategory
 SetOfObjects( IntervalCategory );
 #! [ <(⊥)>, <(⊤)> ]
 SetOfGeneratingMorphisms( IntervalCategory );
@@ -35,9 +31,9 @@ Display( PSh );
 #! * IsEquippedWithHomomorphismStructure
 #! * IsCodistributiveCategory
 #! * IsDistributiveCategory
-#! and furthermore mathematically
-#! * IsBicartesianClosedCategory (but not yet algorithmically)
-#! * IsBicartesianCoclosedCategory (but not yet algorithmically)
+#! and not yet algorithmically
+#! * IsBicartesianClosedCategory
+#! * IsBicartesianCoclosedCategory
 Y := YonedaEmbeddingOfSourceCategory( PSh );
 #! Yoneda embedding functor
 t := Y( TerminalObject( IntervalCategory ) );

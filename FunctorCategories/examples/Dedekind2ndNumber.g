@@ -34,9 +34,9 @@ Display( PSh );
 #! * IsEquippedWithHomomorphismStructure
 #! * IsCodistributiveCategory
 #! * IsDistributiveCategory
-#! and furthermore mathematically
-#! * IsBicartesianClosedCategory (but not yet algorithmically)
-#! * IsBicartesianCoclosedCategory (but not yet algorithmically)
+#! and not yet algorithmically
+#! * IsBicartesianClosedCategory
+#! * IsBicartesianCoclosedCategory
 f := PSh.f;
 #! <A projective object in PreSheaves( PosetOfCategory( FreeCategory(
 #!  RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),
