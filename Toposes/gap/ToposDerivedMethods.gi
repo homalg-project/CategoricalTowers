@@ -20,10 +20,10 @@ AddDerivationToCAP( IsHomSetInhabited,
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
 CategoryFilter := function( cat )
-      return HasRangeCategoryOfHomomorphismStructure( cat ) and
-             IsBoundGlobal( "IsCategoryOfSkeletalFinSets" ) and
-             ValueGlobal( "IsCategoryOfSkeletalFinSets" )( RangeCategoryOfHomomorphismStructure( cat ) );
-  end );
+    return HasRangeCategoryOfHomomorphismStructure( cat ) and
+           IsBoundGlobal( "IsCategoryOfSkeletalFinSets" ) and
+           ValueGlobal( "IsCategoryOfSkeletalFinSets" )( RangeCategoryOfHomomorphismStructure( cat ) );
+end );
 
 ## Page 20 in Peter Freyd, Aspect of topoi, Bull. Austral. Math. Soc, 7 (1972)
 AddDerivationToCAP( ImageEmbedding,
