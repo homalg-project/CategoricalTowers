@@ -25,6 +25,23 @@ CategoryFilter := function( cat )
            ValueGlobal( "IsCategoryOfSkeletalFinSets" )( RangeCategoryOfHomomorphismStructure( cat ) );
 end );
 
+##
+AddDerivationToCAP( NonliftableMorphismFromDistinguishedObject,
+        "",
+        [ [ ExactCoverWithGlobalElements, 1 ],
+          [ IsLiftableAlongMonomorphism, 1 ] ],
+        
+  function( cat, iota )
+    
+    return SafeFirst( ExactCoverWithGlobalElements( cat, Range( iota ) ),
+                   mor -> not IsLiftableAlongMonomorphism( cat, iota, mor ) );
+    
+end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
+CategoryFilter := function( cat )
+    return HasRangeCategoryOfHomomorphismStructure( cat ) and
+           IsIdenticalObj( cat, RangeCategoryOfHomomorphismStructure( cat ) );
+end );
+
 ## Page 20 in Peter Freyd, Aspect of topoi, Bull. Austral. Math. Soc, 7 (1972)
 AddDerivationToCAP( ImageEmbedding,
         "the (regular) image as the equalizer of the cokernel-pair",

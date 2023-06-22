@@ -15,6 +15,15 @@ ExactCoverWithGlobalElements := rec(
   filter_list := [ "category", "object" ],
   return_type := "list_of_morphisms" ),
 
+NonliftableMorphismFromDistinguishedObject := rec(
+  filter_list := [ "category", "morphism" ],
+  return_type := "morphism",
+  input_arguments_names := [ "cat", "iota" ],
+  output_source_getter_string := "DistinguishedObjectOfHomomorphismStructure( cat )",
+  output_source_getter_preconditions := [ [ "DistinguishedObjectOfHomomorphismStructure", 1 ] ],
+  output_range_getter_string := "Range( iota )",
+  output_range_getter_preconditions := [ ] ),
+
 SubobjectClassifier := rec(
   filter_list := [ "category" ],
   return_type := "object" ),
