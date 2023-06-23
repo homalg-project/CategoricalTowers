@@ -168,9 +168,14 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     ##
     AddCoproduct( C,
       function( cat, L )
+        local D, differences;
+        
+        D := UnderlyingMeetSemilatticeOfDifferences( cat );
+        
+        differences := Concatenation( List( L, ListOfObjectsInMeetSemilatticeOfDifferences ) );
         
         ## an advantage of this specific data structure for constructible objects
-        return UnionOfListOfDifferences( cat, Concatenation( List( L, ListOfObjectsInMeetSemilatticeOfDifferences ) ) );
+        return UnionOfListOfDifferences( cat, Filtered( differences, d -> not IsInitial( D, d ) ) );
         
     end );
     
