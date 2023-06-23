@@ -119,3 +119,27 @@ AddDerivationToCAP( ConegationOnMorphismsWithGivenConegations,
     return NegationOnMorphismsWithGivenNegations( cat, B_, u, A_ );
     
 end : CategoryFilter := IsBooleanAlgebroid );
+
+##
+AddDerivationToCAP( ExponentialOnObjects,
+        "ExponentialOnObjects from CoexponentialOnObjects and ConegationOnObjects",
+        [ [ CoexponentialOnObjects, 1 ],
+          [ ConegationOnObjects, 1 ] ],
+        
+  function( cat, A, B )
+    
+    return ConegationOnObjects( cat, CoexponentialOnObjects( cat, A, B ) );
+    
+end : CategoryFilter := IsBooleanAlgebroid );
+
+##
+AddDerivationToCAP( CoexponentialOnObjects,
+        "CoexponentialOnObjects from ExponentialOnObjects and NegationOnObjects",
+        [ [ ExponentialOnObjects, 1 ],
+          [ NegationOnObjects, 1 ] ],
+        
+  function( cat, A, B )
+    
+    return NegationOnObjects( cat, ExponentialOnObjects( cat, A, B ) );
+    
+end : CategoryFilter := IsBooleanAlgebroid );
