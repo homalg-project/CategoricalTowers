@@ -70,6 +70,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
                  IsCapCategoryTwoCell );
     
     C!.category_as_first_argument := true;
+    C!.supports_empty_limits := true;
     
     SetIsBooleanAlgebra( C, true );
     
@@ -162,7 +163,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     AddDirectProduct( C,
       function( cat, L )
         
-        return Iterated( L, { A, B } -> BinaryDirectProduct( cat, A, B ) );
+        return Iterated( L, { A, B } -> BinaryDirectProduct( cat, A, B ), TerminalObject( C ) );
         
     end );
     
