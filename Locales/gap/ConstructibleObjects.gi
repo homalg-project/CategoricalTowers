@@ -300,6 +300,10 @@ InstallMethod( ViewString,
     A := List( A );
     
     n := Length( A );
+
+    if n = 0 then
+        return "∅";
+    fi;
     
     str := "( ";
     
@@ -345,6 +349,10 @@ InstallMethod( DisplayString,
     A := List( A );
     
     n := Length( A );
+    
+    if n = 0 then
+        return "( ∅\n\n\\ ∅ )";
+    fi;
     
     display := Concatenation( "( ", DisplayString( A[1] ), " )" );
     

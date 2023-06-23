@@ -121,11 +121,8 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     ##
     AddInitialObject( C,
       function( cat )
-        local I;
         
-        I := InitialObject( UnderlyingMeetSemilatticeOfDifferences( cat ) );
-        
-        return UnionOfListOfDifferences( cat, [ I ] );
+        return UnionOfListOfDifferences( cat, [ ] );
         
     end );
     
