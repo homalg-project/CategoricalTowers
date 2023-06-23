@@ -5,6 +5,18 @@
 #
 
 ##
+InstallMethodForCompilerForCAP( UnionOfListOfDifferences,
+        "for a Boolean algebra of constructible objects and a list",
+        [ IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences, IsList ],
+        
+  function( C, L )
+    
+    return CreateCapCategoryObjectWithAttributes( C,
+                   ListOfPreObjectsInMeetSemilatticeOfDifferences, L );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( IsHomSetInhabitedWithTypeCast,
         "for a meet-semilattice of formal single differences, an object in that meet-semilattice of formal single differences, and a constructible object as a union of formal single differences",
         [ IsMeetSemilatticeOfSingleDifferences, IsObjectInMeetSemilatticeOfSingleDifferences, IsConstructibleObjectAsUnionOfSingleDifferences ],
@@ -55,6 +67,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
                  IsCapCategoryTwoCell );
     
     C!.category_as_first_argument := true;
+    C!.supports_empty_limits := true;
     
     SetIsBooleanAlgebra( C, true );
     
@@ -106,11 +119,8 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     ##
     AddInitialObject( C,
       function( cat )
-        local I;
         
-        I := InitialObject( UnderlyingMeetSemilatticeOfDifferences( cat ) );
-        
-        return UnionOfListOfDifferences( cat, [ I ] );
+        return UnionOfListOfDifferences( cat, [ ] );
         
     end );
     
@@ -121,7 +131,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         
         D := UnderlyingMeetSemilatticeOfDifferences( cat );
         
-        return ForAll( ListOfObjectsInMeetSemilatticeOfDifferences( A ), M -> IsInitial( D, M ) );
+        return ForAll( ListOfObjectsInMeetSemilatticeOfDifferences( A ), d -> IsInitial( D, d ) );
         
     end );
     
@@ -151,16 +161,21 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     AddDirectProduct( C,
       function( cat, L )
         
-        return Iterated( L, { A, B } -> BinaryDirectProduct( cat, A, B ) );
+        return Iterated( L, { A, B } -> BinaryDirectProduct( cat, A, B ), TerminalObject( C ) );
         
     end );
     
     ##
     AddCoproduct( C,
       function( cat, L )
+        local D, differences;
+        
+        D := UnderlyingMeetSemilatticeOfDifferences( cat );
+        
+        differences := Concatenation( List( L, ListOfObjectsInMeetSemilatticeOfDifferences ) );
         
         ## an advantage of this specific data structure for constructible objects
-        return UnionOfListOfDifferences( cat, Concatenation( List( L, ListOfObjectsInMeetSemilatticeOfDifferences ) ) );
+        return UnionOfListOfDifferences( cat, Filtered( differences, d -> not IsInitial( D, d ) ) );
         
     end );
     
@@ -175,18 +190,6 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     Finalize( C );
     
     return C;
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( UnionOfListOfDifferences,
-        "for a Boolean algebra of constructible objects and a list",
-        [ IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences, IsList ],
-        
-  function( C, L )
-    
-    return CreateCapCategoryObjectWithAttributes( C,
-                   ListOfPreObjectsInMeetSemilatticeOfDifferences, L );
     
 end );
 
