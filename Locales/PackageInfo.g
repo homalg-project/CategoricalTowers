@@ -107,7 +107,7 @@ Dependencies := rec(
                 [ "CategoryConstructor", ">= 2022.11-10" ],
                 [ "MonoidalCategories", ">= 2023.02-04" ],
                 [ "CartesianCategories", ">= 2023.02-04" ],
-                [ "Toposes", ">= 2023.03-05" ],
+                [ "Toposes", ">= 2023.06-05" ],
                 [ "Digraphs", ">= 0.12.1" ],
                 ],
   SuggestedOtherPackages := [ ],
