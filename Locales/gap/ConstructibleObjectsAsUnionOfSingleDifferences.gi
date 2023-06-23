@@ -133,7 +133,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         
         D := UnderlyingMeetSemilatticeOfDifferences( cat );
         
-        return ForAll( ListOfObjectsInMeetSemilatticeOfDifferences( A ), M -> IsInitial( D, M ) );
+        return ForAll( ListOfObjectsInMeetSemilatticeOfDifferences( A ), d -> IsInitial( D, d ) );
         
     end );
     
