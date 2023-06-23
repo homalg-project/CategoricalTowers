@@ -5,6 +5,18 @@
 #
 
 ##
+InstallMethodForCompilerForCAP( UnionOfListOfDifferences,
+        "for a Boolean algebra of constructible objects and a list",
+        [ IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences, IsList ],
+        
+  function( C, L )
+    
+    return CreateCapCategoryObjectWithAttributes( C,
+                   ListOfPreObjectsInMeetSemilatticeOfDifferences, L );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( IsHomSetInhabitedWithTypeCast,
         "for a meet-semilattice of formal single differences, an object in that meet-semilattice of formal single differences, and a constructible object as a union of formal single differences",
         [ IsMeetSemilatticeOfSingleDifferences, IsObjectInMeetSemilatticeOfSingleDifferences, IsConstructibleObjectAsUnionOfSingleDifferences ],
@@ -175,18 +187,6 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     Finalize( C );
     
     return C;
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( UnionOfListOfDifferences,
-        "for a Boolean algebra of constructible objects and a list",
-        [ IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences, IsList ],
-        
-  function( C, L )
-    
-    return CreateCapCategoryObjectWithAttributes( C,
-                   ListOfPreObjectsInMeetSemilatticeOfDifferences, L );
     
 end );
 

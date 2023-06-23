@@ -5,6 +5,21 @@
 #
 
 ##
+InstallMethodForCompilerForCAP( UnionOfListOfDifferences,
+        "for a Boolean algebra of constructible objects and a list",
+        [ IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences, IsList ],
+        
+  function( C, L )
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, ForAll( L, IsObjectInMeetSemilatticeOfMultipleDifferences ) );
+    
+    return CreateCapCategoryObjectWithAttributes( C,
+                   ListOfPreObjectsInMeetSemilatticeOfDifferences, L );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( IsHomSetInhabitedWithTypeCast,
         "for a meet-semilattice of formal multiple differences, an object in this meet-semilattice of formal multiple differences, and a constructible object as a union of formal multiple differences",
         [ IsMeetSemilatticeOfMultipleDifferences, IsObjectInMeetSemilatticeOfMultipleDifferences, IsConstructibleObjectAsUnionOfMultipleDifferences ],
@@ -174,21 +189,6 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     Finalize( C );
     
     return C;
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( UnionOfListOfDifferences,
-        "for a Boolean algebra of constructible objects and a list",
-        [ IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences, IsList ],
-        
-  function( C, L )
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, ForAll( L, IsObjectInMeetSemilatticeOfMultipleDifferences ) );
-    
-    return CreateCapCategoryObjectWithAttributes( C,
-                   ListOfPreObjectsInMeetSemilatticeOfDifferences, L );
     
 end );
 
