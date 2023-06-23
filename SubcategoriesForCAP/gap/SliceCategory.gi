@@ -640,6 +640,98 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     fi;
     
+    if CanCompute( C, "PowerObject" ) and
+       CanCompute( C, "PowerObjectFunctorialWithGivenPowerObjects" ) and
+       CanCompute( C, "SingletonMorphism" ) and
+       CanCompute( C, "RelativeTruthMorphismOfAndWithGivenObjects" ) and
+       CanCompute( C, "DirectProductFunctorialWithGivenDirectProducts" ) then
+        
+        ##
+        AddPowerObject( Slice_over_B,
+          function( cat, M )
+            local C, B, f, S, e, pi_2;
+            
+            C := AmbientCategory( cat );
+            
+            B := BaseObject( cat );
+            
+            ## f: S → B
+            f := UnderlyingMorphism( M );
+            
+            S := Source( f );
+            
+            ## e: P_f ↪ PS × B
+            e := EmbeddingOfRelativePowerObject( C, f );
+            
+            ## π₂: PS × B → PS
+            pi_2 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( C,
+                            [ PowerObject( S ), B ],
+                            2,
+                            Range( e ) );
+            
+            ## P_f → B as an object of the slice category
+            return ObjectConstructor( cat,
+                           PreCompose( C,
+                                   e,
+                                   pi_2 ) );
+            
+        end );
+        
+        ##
+        AddPowerObjectFunctorialWithGivenPowerObjects( Slice_over_B,
+          function( cat, P_BT, g, P_BS )
+            local C, B, s, t, S, T, PS, PT, P_s, P_t, Pg_CxB;
+            
+            C := AmbientCategory( cat );
+            
+            B := BaseObject( cat );
+            
+            ## s: S → B
+            s := UnderlyingMorphism( Source( g ) );
+            ## t: T → B
+            t := UnderlyingMorphism( Range( g ) );
+            
+            S := Source( s );
+            T := Source( t );
+            
+            PS := PowerObject( C, S );
+            PT := PowerObject( C, T );
+            
+            ## P_s ↪ PS × B
+            P_s := EmbeddingOfRelativePowerObject( C, s );
+            ## P_t ↪ PT × B
+            P_t := EmbeddingOfRelativePowerObject( C, t );
+            
+            ## PT × B → PS × B
+            Pg_CxB := DirectProductFunctorialWithGivenDirectProducts( C,
+                              ## PT × B
+                              Range( P_t ),
+                              [ PT, B ],
+                              [ ## PT → PS
+                                PowerObjectFunctorialWithGivenPowerObjects( C, PT, UnderlyingCell( g ), PS ),
+                                ## 1_B: B → B
+                                IdentityMorphism( C, B ) ],
+                              [ PS, B ],
+                              ## PS × B
+                              Range( P_s ) );
+            
+            ## P_B(S) → P_B(T)
+            return MorphismConstructor( cat,
+                           P_BT,
+                           LiftAlongMonomorphism( C,
+                                   ## P_s ↪ PS × B
+                                   P_s,
+                                   PreCompose( C,
+                                           ## P_t ↪ PT × B
+                                           P_t,
+                                           ## PT × B → PS × B
+                                           Pg_CxB ) ),
+                           P_BS );
+            
+        end );
+        
+    fi;
+    
     if IsIdenticalObj( over_tensor_unit, true ) then
         
         AddTensorUnit( Slice_over_B,
