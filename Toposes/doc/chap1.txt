@@ -390,6 +390,15 @@
   cartesian  squre  [3XPaxPa[103X  of the power object [10XPowerObject[110X( [3Xa[103X ). The output is
   the isomorphism [23XExp\_a\_Omega2 \stackrel{\sim}{\rightarrow} PaxPa[123X[133X
   
+  [1X1.5-12 EmbeddingOfRelativePowerObject[101X
+  
+  [33X[1;0Y[29X[2XEmbeddingOfRelativePowerObject[102X( [3Xf[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism [23X\mathrm{Hom}( P_f, Pa \times b )[123X[133X
+  
+  [33X[0;0YThe  input  is  a  morphism  [3Xf[103X:  [23Xa \to b[123X. The output is the embedding of the
+  relative   power  object  [23XP_f  \hookrightarrow  Pa  \times  b[123X,  where  [23XPa[123X  =
+  [10XPowerObject[110X([23Xa[123X).[133X
+  
   
   [1X1.6 [33X[0;0YRelative truth morphisms[133X[101X
   

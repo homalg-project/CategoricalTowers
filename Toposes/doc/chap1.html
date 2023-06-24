@@ -74,6 +74,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X826931087E3B0D70">1.5-9 SingletonMorphismWithGivenPowerObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7DDD48897DA3DE59">1.5-10 IsomorphismOntoCartesianSquareOfPowerObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7980A7177ECF3D96">1.5-11 IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X839A6DC58037CF41">1.5-12 EmbeddingOfRelativePowerObject</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X842A71D97DF9B275">1.6 <span class="Heading">Relative truth morphisms</span></a>
 </span>
@@ -577,6 +578,15 @@ true
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( Exp\_a\_Omega2, PaxPa )</span></p>
 
 <p>The arguments are an object the exponential <var class="Arg">Exp_a_Omega2</var> = <code class="code">Exponential</code>( <var class="Arg">a</var>, <code class="code">CartesianSquareOfSubobjectClassifier</code> ), an object <var class="Arg">a</var> in a category <span class="Math">C</span>, and the cartesian squre <var class="Arg">PaxPa</var> of the power object <code class="code">PowerObject</code>( <var class="Arg">a</var> ). The output is the isomorphism <span class="Math">Exp\_a\_Omega2 \stackrel{\sim}{\rightarrow} PaxPa</span></p>
+
+<p><a id="X839A6DC58037CF41" name="X839A6DC58037CF41"></a></p>
+
+<h5>1.5-12 EmbeddingOfRelativePowerObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfRelativePowerObject</code>( <var class="Arg">f</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a monomorphism <span class="Math">\mathrm{Hom}( P_f, Pa \times b )</span></p>
+
+<p>The input is a morphism <var class="Arg">f</var>: <span class="Math">a \to b</span>. The output is the embedding of the relative power object <span class="Math">P_f \hookrightarrow Pa \times b</span>, where <span class="Math">Pa</span> = <code class="code">PowerObject</code>(<span class="Math">a</span>).</p>
 
 <p><a id="X842A71D97DF9B275" name="X842A71D97DF9B275"></a></p>
 
