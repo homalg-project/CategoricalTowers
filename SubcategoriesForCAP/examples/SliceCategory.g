@@ -102,4 +102,34 @@ th = List( H, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismSt
 H = List( th, m ->
         InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( o1, o2, m ) );
 #! true
+Display( o1 );
+#! { 0, 1, 2 } ⱶ[ 0, 1, 0 ]→ { 0, 1 }
+#! 
+#! An object in the slice category given by the above data
+Po1 := PowerObject( o1 );
+#! An object in the slice category given by: |6| → |2|
+Display( Po1 );
+#! { 0,..., 5 } ⱶ[ 0, 0, 0, 0, 1, 1 ]→ { 0, 1 }
+#! 
+#! An object in the slice category given by the above data
+Display( o2 );
+#! { 0,..., 3 } ⱶ[ 1, 0, 1, 0 ]→ { 0, 1 }
+#! 
+#! An object in the slice category given by the above data
+Po2 := PowerObject( o2 );
+#! An object in the slice category given by: |8| → |2|
+Display( Po2 );
+#! { 0,..., 7 } ⱶ[ 0, 0, 0, 0, 1, 1, 1, 1 ]→ { 0, 1 }
+#! 
+#! An object in the slice category given by the above data
+Display( m1 );
+#! { 0, 1, 2 } ⱶ[ 1, 0, 3 ]→ { 0,..., 3 }
+#! 
+#! A morphism in the slice category given by the above data
+Pm1 := PowerObjectFunctorial( m1 );
+#! A morphism in the slice category given by: |8| → |6|
+Display( Pm1 );
+#! { 0,..., 7 } ⱶ[ 0, 1, 2, 3, 4, 5, 4, 5 ]→ { 0,..., 5 }
+#! 
+#! A morphism in the slice category given by the above data
 #! @EndExample
