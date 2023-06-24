@@ -126,7 +126,8 @@ end );
 
 BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
   function( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter )
-    local C, list_of_operations_to_install, skip, func, pos, properties, morphism_constructor, morphism_datum, S, TensorProductOnObjectsInSliceOverTensorUnit;
+    local C, list_of_operations_to_install, skip, func, pos, properties, morphism_constructor, morphism_datum,
+          Slice_over_B, TensorProductOnObjectsInSliceOverTensorUnit;
     
     C := CapCategory( B );
     
@@ -197,36 +198,36 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     end;
     
-    S := CategoryConstructor( rec(
-                 name := name,
-                 category_filter := category_filter,
-                 category_object_filter := category_object_filter,
-                 category_morphism_filter := category_morphism_filter,
-                 properties := properties,
-                 morphism_constructor := morphism_constructor,
-                 morphism_datum := morphism_datum,
-                 list_of_operations_to_install := list_of_operations_to_install,
-                 create_func_bool := "default",
-                 create_func_morphism := "default",
-                 create_func_morphism_or_fail := "default",
-                 underlying_category_getter_string := "AmbientCategory",
-                 # UnderlyingMorphism is an attribute in the eager case but a proper operation in the lazy case
-                 underlying_object_getter_string := "({ cat, obj } -> Source( UnderlyingMorphism( obj ) ))",
-                 underlying_morphism_getter_string := "MorphismDatum",
-                 top_object_getter_string := "ObjectConstructor",
-                 top_morphism_getter_string := "MorphismConstructor",
-                 ) );
+    Slice_over_B := CategoryConstructor( rec(
+                     name := name,
+                     category_filter := category_filter,
+                     category_object_filter := category_object_filter,
+                     category_morphism_filter := category_morphism_filter,
+                     properties := properties,
+                     morphism_constructor := morphism_constructor,
+                     morphism_datum := morphism_datum,
+                     list_of_operations_to_install := list_of_operations_to_install,
+                     create_func_bool := "default",
+                     create_func_morphism := "default",
+                     create_func_morphism_or_fail := "default",
+                     underlying_category_getter_string := "AmbientCategory",
+                     # UnderlyingMorphism is an attribute in the eager case but a proper operation in the lazy case
+                     underlying_object_getter_string := "({ cat, obj } -> Source( UnderlyingMorphism( obj ) ))",
+                     underlying_morphism_getter_string := "MorphismDatum",
+                     top_object_getter_string := "ObjectConstructor",
+                     top_morphism_getter_string := "MorphismConstructor",
+                     ) );
     
-    S!.compiler_hints.category_attribute_names := [
+    Slice_over_B!.compiler_hints.category_attribute_names := [
         "AmbientCategory",
         "BaseObject",
     ];
     
-    SetAmbientCategory( S, C );
+    SetAmbientCategory( Slice_over_B, C );
     
-    SetBaseObject( S, B );
+    SetBaseObject( Slice_over_B, B );
     
-    AddIsWellDefinedForObjects( S,
+    AddIsWellDefinedForObjects( Slice_over_B,
       function( cat, a )
         local C, m;
         
@@ -239,7 +240,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     end );
     
-    AddIsWellDefinedForMorphisms( S,
+    AddIsWellDefinedForMorphisms( Slice_over_B,
       function( cat, phi )
         local C, mS, mT, phi_underlying;
         
@@ -256,7 +257,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     end );
     
-    AddIsEqualForObjects( S,
+    AddIsEqualForObjects( Slice_over_B,
       function( cat, a, b )
         local a_underlying, b_underlying;
         
@@ -267,14 +268,14 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     end );
     
-    AddIsEqualForMorphisms( S,
+    AddIsEqualForMorphisms( Slice_over_B,
       function( cat, phi, psi )
         
         return IsEqualForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
         
     end );
     
-    AddIsCongruentForMorphisms( S,
+    AddIsCongruentForMorphisms( Slice_over_B,
       function( cat, phi, psi )
         
         return IsCongruentForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
@@ -283,14 +284,14 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     
     if CanCompute( C, "IsEqualForCacheForMorphisms" ) then
         
-        AddIsEqualForCacheForObjects( S,
+        AddIsEqualForCacheForObjects( Slice_over_B,
           function( cat, a, b )
             
             return IsEqualForCacheForMorphisms( AmbientCategory( cat ), UnderlyingMorphism( a ), UnderlyingMorphism( b ) );
             
         end );
         
-        AddIsEqualForCacheForMorphisms( S,
+        AddIsEqualForCacheForMorphisms( Slice_over_B,
           function( cat, phi, psi )
             
             return IsEqualForCacheForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
@@ -299,28 +300,28 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     fi;
     
-    AddInitialObject( S,
+    AddInitialObject( Slice_over_B,
       function( cat )
         
         return ObjectConstructor( cat, UniversalMorphismFromInitialObject( AmbientCategory( cat ), BaseObject( cat ) ) );
         
     end );
     
-    AddTerminalObject( S,
+    AddTerminalObject( Slice_over_B,
       function( cat )
         
         return ObjectConstructor( cat, IdentityMorphism( AmbientCategory( cat ), BaseObject( cat ) ) );
         
     end );
     
-    AddIsTerminal( S,
+    AddIsTerminal( Slice_over_B,
       function( cat, M )
         
         return IsIsomorphism( AmbientCategory( cat ), UnderlyingMorphism( M ) );
         
     end );
     
-    AddUniversalMorphismIntoTerminalObject( S,
+    AddUniversalMorphismIntoTerminalObject( Slice_over_B,
       function( cat, M )
         
         return MorphismConstructor( cat, M, UnderlyingMorphism( M ), TerminalObject( cat ) );
@@ -329,7 +330,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     
     if CanCompute( C, "ZeroObject" ) and CanCompute( C, "IsZeroForMorphisms" ) then
         
-        AddIsWeakInitial( S,
+        AddIsWeakInitial( Slice_over_B,
           function( cat, M )
             
             return IsZeroForMorphisms( AmbientCategory( cat ), UnderlyingMorphism( M ) );
@@ -340,7 +341,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
 
     if CanCompute( C, "IsLiftable" ) then
         
-        AddIsHomSetInhabited( S,
+        AddIsHomSetInhabited( Slice_over_B,
           function( cat, M, N )
             
             return IsLiftable( AmbientCategory( cat ), UnderlyingMorphism( M ), UnderlyingMorphism( N ) );
@@ -352,10 +353,10 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     if CanCompute( C, "ProjectionInFactorOfFiberProductWithGivenFiberProduct" ) and
        CanCompute( C, "UniversalMorphismIntoFiberProductWithGivenFiberProduct" ) then
         
-        SetIsCartesianCategory( S, true );
+        SetIsCartesianCategory( Slice_over_B, true );
         
         ##
-        AddProjectionInFactorOfDirectProductWithGivenDirectProduct( S,
+        AddProjectionInFactorOfDirectProductWithGivenDirectProduct( Slice_over_B,
           function( cat, L, k, P )
             
             return MorphismConstructor( cat,
@@ -369,7 +370,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         end );
         
         ##
-        AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( S,
+        AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( Slice_over_B,
           function( cat, L, T, tau, P )
             
             return MorphismConstructor( cat,
@@ -388,10 +389,10 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     if CanCompute( C, "InjectionOfCofactorOfCoproductWithGivenCoproduct" ) and
        CanCompute( C, "UniversalMorphismFromCoproductWithGivenCoproduct" ) then
         
-        SetIsCocartesianCategory( S, true );
+        SetIsCocartesianCategory( Slice_over_B, true );
         
         ##
-        AddInjectionOfCofactorOfCoproductWithGivenCoproduct( S,
+        AddInjectionOfCofactorOfCoproductWithGivenCoproduct( Slice_over_B,
           function( cat, L, k, I )
             
             return MorphismConstructor( cat,
@@ -405,7 +406,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         end );
         
         ##
-        AddUniversalMorphismFromCoproductWithGivenCoproduct( S,
+        AddUniversalMorphismFromCoproductWithGivenCoproduct( Slice_over_B,
           function( cat, L, T, tau, I )
             
             return MorphismConstructor( cat,
@@ -424,7 +425,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     if CanCompute( C, "EmbeddingOfEqualizer" ) then
         
         ##
-        AddEmbeddingOfEqualizer( S,
+        AddEmbeddingOfEqualizer( Slice_over_B,
           function( cat, A, L )
             local C, A_mor, emb, E;
             
@@ -453,7 +454,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     if CanCompute( C, "UniversalMorphismIntoEqualizerWithGivenEqualizer" ) then
         
         ##
-        AddUniversalMorphismIntoEqualizerWithGivenEqualizer( S,
+        AddUniversalMorphismIntoEqualizerWithGivenEqualizer( Slice_over_B,
           function( cat, A, L, T, tau, E )
             
             return MorphismConstructor( cat,
@@ -473,7 +474,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     if CanCompute( C, "ProjectionOntoCoequalizer" ) then
         
         ##
-        AddProjectionOntoCoequalizer( S,
+        AddProjectionOntoCoequalizer( Slice_over_B,
           function( cat, A, L )
             local C, A_mor, prj, E;
             
@@ -502,7 +503,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     if CanCompute( C, "UniversalMorphismFromCoequalizerWithGivenCoequalizer" ) then
         
         ##
-        AddUniversalMorphismFromCoequalizerWithGivenCoequalizer( S,
+        AddUniversalMorphismFromCoequalizerWithGivenCoequalizer( Slice_over_B,
           function( cat, A, L, T, tau, E )
             
             return MorphismConstructor( cat,
@@ -522,7 +523,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     if CanCompute( C, "ImageEmbedding" ) then
         
         ##
-        AddImageEmbedding( S,
+        AddImageEmbedding( Slice_over_B,
           function( cat, phi )
             local C, emb, range, im;
             
@@ -550,7 +551,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     if CanCompute( C, "MorphismsOfExternalHom" ) and
        HasRangeCategoryOfHomomorphismStructure( C ) then
         
-        SetRangeCategoryOfHomomorphismStructure( S, RangeCategoryOfHomomorphismStructure( C ) );
+        SetRangeCategoryOfHomomorphismStructure( Slice_over_B, RangeCategoryOfHomomorphismStructure( C ) );
         
         #     M ---m--> N
         #      \       /
@@ -560,11 +561,11 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         #          B
         
         ##
-        AddMorphismsOfExternalHom( S,
+        AddMorphismsOfExternalHom( Slice_over_B,
           function( cat, M, N )
             local C, M_mor, N_mor, mors, mors_slice;
             
-            C := AmbientCategory( S );
+            C := AmbientCategory( Slice_over_B );
             
             M_mor := UnderlyingMorphism( M );
             N_mor := UnderlyingMorphism( N );
@@ -594,7 +595,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
        CanCompute( C, "ProjectionInFactorOfDirectProduct" ) then
         
         ##
-        AddSubobjectClassifier( S,
+        AddSubobjectClassifier( Slice_over_B,
           function( cat )
             local C;
             
@@ -614,7 +615,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
        CanCompute( C, "UniversalMorphismIntoDirectProductWithGivenDirectProduct" ) then
         
         ##
-        AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( S,
+        AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( Slice_over_B,
           function( cat, mono, Omega )
             local C, mono_C, Omega_C, chi_C;
             
@@ -641,7 +642,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     
     if IsIdenticalObj( over_tensor_unit, true ) then
         
-        AddTensorUnit( S,
+        AddTensorUnit( Slice_over_B,
           function( cat )
             
             return ObjectConstructor( cat, IdentityMorphism( AmbientCategory( cat ), BaseObject( cat ) ) );
@@ -665,9 +666,9 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                                    LeftUnitor( C, BaseObject( cat ) ) ) );
         end;
         
-        AddTensorProductOnObjects( S, TensorProductOnObjectsInSliceOverTensorUnit );
+        AddTensorProductOnObjects( Slice_over_B, TensorProductOnObjectsInSliceOverTensorUnit );
         
-        AddTensorProductOnMorphisms( S,
+        AddTensorProductOnMorphisms( Slice_over_B,
           function( cat, phi, psi )
             local C, left_unitor, I, J, IP, JP, source, range, morphism_datum;
             
@@ -701,7 +702,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
         end );
         
-        AddLeftUnitor( S,
+        AddLeftUnitor( Slice_over_B,
           function( cat, I )
             local C, id_1, source, range;
             
@@ -724,7 +725,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
         end );
         
-        AddRightUnitor( S,
+        AddRightUnitor( Slice_over_B,
           function( cat, I )
             local C, id_1, source, range;
             
@@ -747,7 +748,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
         end );
         
-        AddAssociatorRightToLeft( S,
+        AddAssociatorRightToLeft( Slice_over_B,
           function( cat, I, J, K )
             local C, source, range;
             
@@ -770,7 +771,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
         end );
         
-        AddAssociatorLeftToRight( S,
+        AddAssociatorLeftToRight( Slice_over_B,
           function( cat, I, J, K )
             local C, source, range;
             
@@ -795,11 +796,11 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
         if HasIsBraidedMonoidalCategory( C ) and IsBraidedMonoidalCategory( C ) then
             
-            AddBraiding( S,
+            AddBraiding( Slice_over_B,
               function( cat, I, J )
                 local C, source, range;
                 
-                C := AmbientCategory( S );
+                C := AmbientCategory( Slice_over_B );
                 
                 #        B_ij
                 # i ⊗ j -----> j ⊗ i
@@ -821,9 +822,9 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         if HasIsSymmetricClosedMonoidalCategory( C ) and IsSymmetricClosedMonoidalCategory( C ) and
            CanCompute( C, "UniversalMorphismIntoWeakBiFiberProduct" ) then
             
-            SetIsSymmetricClosedMonoidalCategory( S, true );
+            SetIsSymmetricClosedMonoidalCategory( Slice_over_B, true );
             
-            AddInternalHomOnObjects( S,
+            AddInternalHomOnObjects( Slice_over_B,
               function( cat, J, I ) ## the abstraction of the ideal quotient I:J
                 local C, I2, J2;
                 
@@ -842,7 +843,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                 
             end );
             
-            AddInternalHomOnMorphismsWithGivenInternalHoms( S, ## I:J' = Hom( J', I ) -> Hom( J, I' ) = I':J
+            AddInternalHomOnMorphismsWithGivenInternalHoms( Slice_over_B, ## I:J' = Hom( J', I ) -> Hom( J, I' ) = I':J
               function( cat, source, phi, psi, target ) ## phi: J -> J', psi: I -> I'
                 local C, J, Jp, I, Ip, tau1, tau2;
                 
@@ -876,7 +877,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             ## FIXME: comply with the internal Hom operations and replace
             ## the weak binary pullback with a weak biased pullback
-            AddTensorProductToInternalHomAdjunctionMap( S,
+            AddTensorProductToInternalHomAdjunctionMap( Slice_over_B,
               function( cat, K, J, f ) ## (f: K ⊗ J -> I) -> (g: K -> Hom( J, I ) = I:J)
                 local C, I, source, target, K2, J2, I2, tau2;
                 
@@ -906,7 +907,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             ## FIXME: comply with the internal Hom operations and replace
             ## the weak binary pullback with a weak biased pullback
-            AddInternalHomToTensorProductAdjunctionMap( S,
+            AddInternalHomToTensorProductAdjunctionMap( Slice_over_B,
               function( cat, J, I, g ) ## (g: K -> Hom( J, I ) = I:J) -> (f: K ⊗ J -> I)
                 local C, K, source, target, K2, J2, I2, g2, tau2;
                 
@@ -938,7 +939,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     fi;
     
-    return S;
+    return Slice_over_B;
     
 end );
 
