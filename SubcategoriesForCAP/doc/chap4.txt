@@ -182,6 +182,36 @@
     [4X[25Xgap>[125X [27XH = List( th, m ->[127X[104X
     [4X[25X>[125X [27X        InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( o1, o2, m ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( o1 );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 0, 1, 0 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the slice category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XPo1 := PowerObject( o1 );[127X[104X
+    [4X[28XAn object in the slice category given by: |6| → |2|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Po1 );[127X[104X
+    [4X[28X{ 0,..., 5 } ⱶ[ 0, 0, 0, 0, 1, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the slice category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( o2 );[127X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 1, 0, 1, 0 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the slice category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XPo2 := PowerObject( o2 );[127X[104X
+    [4X[28XAn object in the slice category given by: |8| → |2|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Po2 );[127X[104X
+    [4X[28X{ 0,..., 7 } ⱶ[ 0, 0, 0, 0, 1, 1, 1, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the slice category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( m1 );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 1, 0, 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in the slice category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XPm1 := PowerObjectFunctorial( m1 );[127X[104X
+    [4X[28XA morphism in the slice category given by: |8| → |6|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Pm1 );[127X[104X
+    [4X[28X{ 0,..., 7 } ⱶ[ 0, 1, 2, 3, 4, 5, 4, 5 ]→ { 0,..., 5 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in the slice category given by the above data[128X[104X
   [4X[32X[104X
   
   
