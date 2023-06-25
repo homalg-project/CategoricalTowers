@@ -212,6 +212,20 @@
     [4X[28X{ 0,..., 7 } ⱶ[ 0, 1, 2, 3, 4, 5, 4, 5 ]→ { 0,..., 5 }[128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in the slice category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Pm1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( m2 );[127X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 1, 2, 1, 0 ]→ { 0, 1, 2 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in the slice category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XPm2 := PowerObjectFunctorial( m2 );[127X[104X
+    [4X[28XA morphism in the slice category given by: |6| → |8|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Pm2 );[127X[104X
+    [4X[28X{ 0,..., 5 } ⱶ[ 0, 2, 1, 3, 4, 7 ]→ { 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in the slice category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Pm2 );[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   
