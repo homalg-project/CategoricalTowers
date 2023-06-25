@@ -1,7 +1,7 @@
 name: Locales
-version: "2023.06-10"
+version: "2023.06-12"
 license: "GPL-2.0-or-later"
-date: 2023-06-23
+date: 2023-06-25
 description: |
     Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets
 
@@ -46,8 +46,10 @@ needed-pkgs:
     - name: "Toposes"
       version: ">= 2023.06-05"
       url: "https://homalg-project.github.io/pkg/Toposes"
+
+suggested-pkgs:
     - name: "Digraphs"
-      version: ">= 0.12.1"
+      version: ">= 1.3.1"
       url: "https://digraphs.github.io/Digraphs"
 
 www: https://homalg-project.github.io/pkg/Locales
@@ -56,11 +58,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/Locales/PackageI
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.06-10/Locales-2023.06-10.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.06-12/Locales-2023.06-12.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.06-10/Locales-2023.06-10.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.06-12/Locales-2023.06-12.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.06-10/Locales-2023.06-10-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.06-12/Locales-2023.06-12-manual.pdf
 
 abstract: |
 
@@ -71,29 +73,29 @@ keywords: |
     locale, frame, coframe, locally closed, constructible.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BLK23</span>]   <b class='BibAuthor'>Barakat, M., Lange-Hegermann, M. and Kuhmichel, T.</b>,
+    [<span class='BibKey'>BLK25</span>]   <b class='BibAuthor'>Barakat, M., Lange-Hegermann, M. and Kuhmichel, T.</b>,
      <i class='BibTitle'>Locales, Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets,
-             Version 2023.06-10</i>
-     (<span class='BibYear'>6-23</span>)<br />
+             Version 2023.06-12</i>
+     (<span class='BibYear'>6-25</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/Locales">https://homalg-project.github.io/pkg/Locales</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ Locales2023.06-10,
+    @misc{ Locales2023.06-12,
       author =           {Barakat, M. and Lange-Hegermann, M. and Kuhmichel, T.},
       title =            {{Locales},    Locales,    frames,    coframes,    meet
                           semi-lattices  of  locally closed subsets, and Boolean
-                          algebras of constructible sets, {V}ersion 2023.06-10},
+                          algebras of constructible sets, {V}ersion 2023.06-12},
       month =            {3-},
-      year =             {6-23},
+      year =             {6-25},
       note =             {GAP package},
       howpublished =     {\href   {https://homalg-project.github.io/pkg/Locales}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{Locales}}},
       keywords =         {locale, frame, coframe, locally closed, constructible},
-      printedkey =       {BLK23}
+      printedkey =       {BLK25}
     }
 

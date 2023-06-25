@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "Locales",
 Subtitle := "Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets",
-Version := "2023.06-10",
-Date := "2023-06-23",
-Date := "2023-06-23",
+Version := "2023.06-12",
+Date := "2023-06-25",
+Date := "2023-06-25",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -108,9 +108,10 @@ Dependencies := rec(
                 [ "MonoidalCategories", ">= 2023.02-04" ],
                 [ "CartesianCategories", ">= 2023.02-04" ],
                 [ "Toposes", ">= 2023.06-05" ],
-                [ "Digraphs", ">= 0.12.1" ],
                 ],
-  SuggestedOtherPackages := [ ],
+  SuggestedOtherPackages := [
+                   [ "Digraphs", ">= 1.3.1" ],
+                   ],
   ExternalConditions := [ ],
 ),
 
