@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "LazyCategories",
 Subtitle := "Construct an equivalent lazy category out of a CAP category",
-Version := "2023.06-02",
-Date := "2023-06-19",
-Date := "2023-06-19",
+Version := "2023.06-03",
+Date := "2023-06-25",
+Date := "2023-06-25",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -76,10 +76,10 @@ Dependencies := rec(
                    [ "MonoidalCategories", ">= 2022.06-03" ],
                    [ "CategoryConstructor", ">= 2022.11-10" ],
                    [ "Toposes", ">= 2022.04-19" ],
-                   [ "Digraphs", ">= 0.12.1" ],
                   ],
   SuggestedOtherPackages := [
-                  ],
+                   [ "Digraphs", ">= 1.3.1" ],
+                   ],
   ExternalConditions := [ ],
 ),
 
