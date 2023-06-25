@@ -9,10 +9,14 @@ gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
 gap> LoadPackage( "IO_ForHomalg", false );
 true
+gap> LoadPackage( "Digraphs", false );
+true
 gap> LoadPackage( "ZariskiFrames", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
 gap> LoadPackage( "IO_ForHomalg" );
+true
+gap> LoadPackage( "Digraphs" );
 true
 gap> LoadPackage( "ZariskiFrames" );
 true
