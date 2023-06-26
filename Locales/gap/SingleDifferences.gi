@@ -264,7 +264,7 @@ InstallOtherMethodForCompilerForCAP( NormalizedMinuendAndSubtrahendInUnderlyingH
     # the following line performed better than the previous one
     H := ExponentialOnObjects( L, Coproduct( minuend, subtrahend ), subtrahend );
     
-    return [ Coproduct( H, minuend ), H ];
+    return Pair( Coproduct( H, minuend ), H );
     
 end );
 
@@ -280,7 +280,7 @@ InstallOtherMethodForCompilerForCAP( NormalizedMinuendAndSubtrahendInUnderlyingH
     # the following line performed better than the previous one
     H := CoexponentialOnObjects( L, minuend, DirectProduct( subtrahend, minuend ) );
     
-    return [ H, DirectProduct( subtrahend, H ) ];
+    return Pair( H, DirectProduct( subtrahend, H ) );
     
 end );
 
