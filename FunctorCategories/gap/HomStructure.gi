@@ -5,7 +5,7 @@
 #
 
 ##
-InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerData,
+InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerDataUsingOptimizedCoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F, G )

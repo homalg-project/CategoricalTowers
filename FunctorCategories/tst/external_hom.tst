@@ -33,7 +33,7 @@ gap> Equalizer( eq2[2] );
 |336|
 
 #
-gap> eq3 := ExternalHomOnObjectsEqualizerData( PSh, N, N );
+gap> eq3 := ExternalHomOnObjectsEqualizerDataUsingOptimizedCoYonedaLemma( PSh, N, N );
 [ [ |3|, |4|, |4|, |4|, |4| ], [ |768| → |81|, |768| → |81| ] ]
 gap> Equalizer( eq3[2] );
 |336|

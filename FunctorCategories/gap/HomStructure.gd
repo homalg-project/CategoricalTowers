@@ -4,7 +4,7 @@
 # Declarations
 #
 
-DeclareOperation( "ExternalHomOnObjectsEqualizerData",
+DeclareOperation( "ExternalHomOnObjectsEqualizerDataUsingOptimizedCoYonedaLemma",
     [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ] );
 
 DeclareOperation( "ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma",
