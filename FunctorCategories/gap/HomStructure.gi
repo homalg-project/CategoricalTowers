@@ -11,7 +11,7 @@ InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerData,
   function ( PSh, F, G )
     local F_data, D, V, s, t;
     
-    F_data := CoequalizerDataOfPreSheaf( PSh, F );
+    F_data := CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma( PSh, F );
     
     D := Range( PSh );
     
@@ -31,7 +31,7 @@ InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerDataUsingCoYonedaLe
   function ( PSh, F, G )
     local F_data, D, V, s, t;
     
-    F_data := CoYonedaLemmaCoequalizerDataOfPreSheaf( PSh, F );
+    F_data := CoequalizerDataOfPreSheafUsingCoYonedaLemma( PSh, F );
     
     D := Range( PSh );
     
@@ -80,7 +80,7 @@ InstallMethodForCompilerForCAP( ExternalHomOnMorphismsEqualizerFunctorialDataUsi
     
     eta_V_S := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, S, eta_coequalizer_pair_as_presheaf_morphism_datum );
     
-    F_data := CoYonedaLemmaCoequalizerDataOfPreSheaf( PSh, F );
+    F_data := CoequalizerDataOfPreSheafUsingCoYonedaLemma( PSh, F );
     
     F_V := F_data[1];
     

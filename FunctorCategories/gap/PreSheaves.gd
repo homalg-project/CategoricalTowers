@@ -273,7 +273,7 @@ DeclareAttribute( "SomeDiagramOfRepresentables",
         IsObjectInPreSheafCategory );
 
 #! @Arguments F
-DeclareAttribute( "CoYonedaLemmaCoequalizerDataOfPreSheaf",
+DeclareAttribute( "CoequalizerDataOfPreSheafUsingCoYonedaLemma",
         IsObjectInPreSheafCategory );
 
 #! @Arguments PSh, objB, morC, F
@@ -297,7 +297,7 @@ DeclareAttribute( "EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaP
     IsObjectInPreSheafCategory );
 
 #! @Arguments F
-DeclareAttribute( "CoequalizerDataOfPreSheaf",
+DeclareAttribute( "CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma",
         IsObjectInPreSheafCategory );
 
 #! @Arguments PSh, presheaf, obj

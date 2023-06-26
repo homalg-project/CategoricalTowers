@@ -2816,7 +2816,7 @@ InstallMethod( SomeDiagramOfRepresentables,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerDataOfPreSheaf,
+InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingCoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
@@ -2842,12 +2842,12 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerDataOfPreSheaf,
 end );
 
 ##
-InstallMethod( CoYonedaLemmaCoequalizerDataOfPreSheaf,
+InstallMethod( CoequalizerDataOfPreSheafUsingCoYonedaLemma,
         [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( F )
     
-    return CoYonedaLemmaCoequalizerDataOfPreSheaf( CapCategory( F ), F );
+    return CoequalizerDataOfPreSheafUsingCoYonedaLemma( CapCategory( F ), F );
     
 end );
 
@@ -3157,7 +3157,7 @@ InstallMethod( EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProje
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheaf,
+InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
@@ -3167,7 +3167,7 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheaf,
     
     UB := UnderlyingCategory( ModelingCategory( Bhat ) );
     
-    F_data := CoYonedaLemmaCoequalizerDataOfPreSheaf( PSh, F );
+    F_data := CoequalizerDataOfPreSheafUsingCoYonedaLemma( PSh, F );
     
     epi := EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( PSh, F );
     
@@ -3177,12 +3177,12 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheaf,
 end );
 
 ##
-InstallMethod( CoequalizerDataOfPreSheaf,
+InstallMethod( CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma,
         [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( F )
     
-    return CoequalizerDataOfPreSheaf( CapCategory( F ), F );
+    return CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma( CapCategory( F ), F );
     
 end );
 
