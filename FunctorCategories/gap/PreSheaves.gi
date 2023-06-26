@@ -3005,7 +3005,7 @@ InstallMethod( CoveringListOfRepresentables,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( SectionFromProjectiveCoverObjectIntoSomeProjectiveObject,
+InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, F )
@@ -3057,17 +3057,17 @@ InstallOtherMethodForCompilerForCAP( SectionFromProjectiveCoverObjectIntoSomePro
 end );
 
 ##
-InstallMethod( SectionFromProjectiveCoverObjectIntoSomeProjectiveObject,
+InstallMethod( SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject,
         [ IsObjectInPreSheafCategory ],
         
   function ( F )
     
-    return SectionFromProjectiveCoverObjectIntoSomeProjectiveObject( CapCategory( F ), F );
+    return SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( CapCategory( F ), F );
     
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject,
+InstallOtherMethodForCompilerForCAP( EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, F )
@@ -3147,12 +3147,12 @@ InstallOtherMethodForCompilerForCAP( EpimorphismFromSomeProjectiveObjectOntoProj
 end );
 
 ##
-InstallMethod( EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject,
+InstallMethod( EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
         [ IsObjectInPreSheafCategory ],
         
   function ( F )
     
-    return EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject( CapCategory( F ), F );
+    return EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( CapCategory( F ), F );
     
 end );
 
@@ -3169,7 +3169,7 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheaf,
     
     F_data := CoYonedaLemmaCoequalizerDataOfPreSheaf( PSh, F );
     
-    epi := EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject( PSh, F );
+    epi := EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( PSh, F );
     
     return Pair( Range( epi ),
                  List( F_data[2], mor -> PreCompose( UB, mor, epi ) ) );

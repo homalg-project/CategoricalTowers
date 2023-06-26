@@ -289,11 +289,11 @@ DeclareAttribute( "CoveringListOfRepresentables",
         IsObjectInPreSheafCategory );
 
 #! @Arguments F
-DeclareAttribute( "SectionFromProjectiveCoverObjectIntoSomeProjectiveObject",
+DeclareAttribute( "SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject",
     IsObjectInPreSheafCategory );
 
 #! @Arguments F
-DeclareAttribute( "EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject",
+DeclareAttribute( "EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject",
     IsObjectInPreSheafCategory );
 
 #! @Arguments F
