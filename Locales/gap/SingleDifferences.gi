@@ -36,6 +36,11 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
   function( P )
     local name, D, L;
     
+    if not ( HasIsDistributiveBicartesianProset( P ) and IsDistributiveBicartesianProset( P ) ) then
+        Error( "the input category `P` must be a distributive (bicartesian) proset (e.g. a distributive lattice) ",
+               "for the meet-semilattice of single differences to be well-defined\n" );
+    fi;
+    
     name := "The meet-semilattice of single differences of ";
     
     name := Concatenation( name, Name( P ) );
@@ -84,6 +89,7 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
         
     end );
     
+    ## the following is independent of the representatives of the single differences when the given bicartesian proset is (co)distributive
     ## (A - A') ≤_D (B - B') ⟺  ( A ≤_C ( A' ∨ B ) ) and ( ( A ∧ B' ) ≤_C A' )
     AddIsHomSetInhabited( D,
       function( D, A, B )
