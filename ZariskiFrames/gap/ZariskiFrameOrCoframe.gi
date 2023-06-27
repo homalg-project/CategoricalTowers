@@ -1061,13 +1061,13 @@ InstallMethod( CanonicalObject,
   LocallyClosedPart );
 
 ##
-InstallMethod( StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra,
+InstallMethod( StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid,
         "for an object in a meet-semilattice of formal single differences",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     
-    A := NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( A );
+    A := NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid( A );
     
     List( A, StandardizeObject );
     

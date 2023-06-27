@@ -273,7 +273,7 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
             
             D := T - d.J;
             
-            NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( D );
+            NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid( D );
             
             if HasNormalizedDistinguishedSubtrahend( d ) then
                 SetNormalizedDistinguishedSubtrahend( D, NormalizedDistinguishedSubtrahend( d ) );
@@ -304,7 +304,7 @@ InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfDifferences,
     
     A := ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A );
     
-    List( A, StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra );
+    List( A, StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid );
     
     return A;
     
