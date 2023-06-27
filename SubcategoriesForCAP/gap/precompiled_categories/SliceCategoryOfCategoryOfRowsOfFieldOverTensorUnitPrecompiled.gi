@@ -351,11 +351,23 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := UnderlyingCell( arg2_1 );
-    deduped_2_1 := UnderlyingMorphism( Range( arg2_1 ) );
-    deduped_1_1 := UnderlyingMorphism( Source( arg2_1 ) );
-    return RankOfObject( Source( deduped_1_1 ) ) = RankOfObject( Source( deduped_3_1 ) ) and RankOfObject( Source( deduped_2_1 ) ) = RankOfObject( Range( deduped_3_1 ) ) and UnderlyingMatrix( deduped_1_1 ) = UnderlyingMatrix( deduped_3_1 ) * UnderlyingMatrix( deduped_2_1 );
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
+    deduped_6_1 := UnderlyingCell( arg2_1 );
+    deduped_5_1 := UnderlyingMatrix( deduped_6_1 );
+    deduped_4_1 := UnderlyingMorphism( Range( arg2_1 ) );
+    deduped_3_1 := UnderlyingMorphism( Source( arg2_1 ) );
+    deduped_2_1 := RankOfObject( Range( deduped_6_1 ) );
+    deduped_1_1 := RankOfObject( Source( deduped_6_1 ) );
+    return RankOfObject( Source( deduped_3_1 ) ) = deduped_1_1 and RankOfObject( Source( deduped_4_1 ) ) = deduped_2_1 and IdFunc( function (  )
+                  if NumberRows( deduped_5_1 ) <> deduped_1_1 then
+                      return false;
+                  elif NumberColumns( deduped_5_1 ) <> deduped_2_1 then
+                      return false;
+                  else
+                      return true;
+                  fi;
+                  return;
+              end )(  ) and UnderlyingMatrix( deduped_3_1 ) = deduped_5_1 * UnderlyingMatrix( deduped_4_1 );
 end
 ########
         
@@ -582,7 +594,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     morphism_attr_1_1 := UnionOfRows( UnderlyingRing( deduped_3_1 ), RankOfObject( deduped_2_1 ), List( tau_1, function ( logic_new_func_x_2 )
               return UnderlyingMatrix( UnderlyingCell( logic_new_func_x_2 ) );
           end ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_3_1, CreateCapCategoryObjectWithAttributes( deduped_3_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_3_1, CreateCapCategoryObjectWithAttributes( deduped_3_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 ) );
 end
 ########
         

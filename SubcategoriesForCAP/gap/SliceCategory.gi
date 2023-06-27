@@ -253,6 +253,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
         return IsEqualForObjects( C, Source( mS ), Source( phi_underlying ) ) and
                IsEqualForObjects( C, Source( mT ), Range( phi_underlying ) ) and
+               IsWellDefinedForMorphisms( C, phi_underlying ) and
                IsCongruentForMorphisms( C, mS, PreCompose( C, phi_underlying, mT ) );
         
     end );
@@ -410,13 +411,13 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
           function( cat, L, T, tau, I )
             
             return MorphismConstructor( cat,
-                           T,
+                           I,
                            UniversalMorphismFromCoproductWithGivenCoproduct( AmbientCategory( cat ),
                                    List( L, Li -> Source( UnderlyingMorphism( Li ) ) ),
                                    Source( UnderlyingMorphism( T ) ),
                                    List( tau, UnderlyingCell ),
                                    Source( UnderlyingMorphism( I ) ) ),
-                           I );
+                           T );
             
         end );
         
