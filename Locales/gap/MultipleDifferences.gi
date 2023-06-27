@@ -450,8 +450,8 @@ InstallMethod( IsClosedSubobject,
     
     H := UnderlyingCategory( CapCategory( A ) );
     
-    if ( HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) ) or
-       ( HasIsCartesianClosedCategory( H ) and IsCartesianClosedCategory( H ) ) then
+    if ( HasIsCoHeytingAlgebroid( H ) and IsCoHeytingAlgebroid( H ) ) or
+       ( HasIsHeytingAlgebroid( H ) and IsHeytingAlgebroid( H ) ) then
         return ForAll( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A ), IsClosedSubobject );
     fi;
     
@@ -469,7 +469,7 @@ InstallMethod( Closure,
     
     H := UnderlyingCategory( CapCategory( A ) );
     
-    if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
+    if HasIsCoHeytingAlgebroid( H ) and IsCoHeytingAlgebroid( H ) then
         return ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A )[1].I;
     fi;
     

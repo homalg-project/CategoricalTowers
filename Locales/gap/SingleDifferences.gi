@@ -417,9 +417,9 @@ InstallMethod( IsClosedSubobject,
     
     H := UnderlyingCategory( CapCategory( A ) );
     
-    if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
+    if HasIsCoHeytingAlgebroid( H ) and IsCoHeytingAlgebroid( H ) then
         return IsInitial( H, NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid( A )[2] );
-    elif HasIsCartesianClosedCategory( H ) and IsCartesianClosedCategory( H ) then
+    elif HasIsHeytingAlgebroid( H ) and IsHeytingAlgebroid( H ) then
         return IsTerminal( H, NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid( A )[1] );
     fi;
     
@@ -437,7 +437,7 @@ InstallMethod( Closure,
     
     H := UnderlyingCategory( CapCategory( A ) );
     
-    if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
+    if HasIsCoHeytingAlgebroid( H ) and IsCoHeytingAlgebroid( H ) then
         return NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid( A )[1];
     fi;
     
