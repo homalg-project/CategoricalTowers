@@ -52,9 +52,9 @@
   
   [33X[1;0Y[29X[2XSomeDiagramOfRepresentables[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-5 CoYonedaLemmaCoequalizerDataOfPreSheaf[101X
+  [1X2.1-5 CoequalizerDataOfPreSheafUsingCoYonedaLemma[101X
   
-  [33X[1;0Y[29X[2XCoYonedaLemmaCoequalizerDataOfPreSheaf[102X( [3XF[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCoequalizerDataOfPreSheafUsingCoYonedaLemma[102X( [3XF[103X ) [32X attribute[133X
   
   [1X2.1-6 MorphismFromRepresentable[101X
   
@@ -68,17 +68,17 @@
   
   [33X[1;0Y[29X[2XCoveringListOfRepresentables[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-9 SectionFromProjectiveCoverObjectIntoSomeProjectiveObject[101X
+  [1X2.1-9 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[101X
   
-  [33X[1;0Y[29X[2XSectionFromProjectiveCoverObjectIntoSomeProjectiveObject[102X( [3XF[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XSectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-10 EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject[101X
+  [1X2.1-10 EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[101X
   
-  [33X[1;0Y[29X[2XEpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject[102X( [3XF[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XEpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-11 CoequalizerDataOfPreSheaf[101X
+  [1X2.1-11 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[101X
   
-  [33X[1;0Y[29X[2XCoequalizerDataOfPreSheaf[102X( [3XF[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[102X( [3XF[103X ) [32X attribute[133X
   
   [1X2.1-12 ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion[101X
   

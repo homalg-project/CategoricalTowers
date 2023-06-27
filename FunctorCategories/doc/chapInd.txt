@@ -32,7 +32,8 @@
   [2XCategoryOfInternalCategories[102X, for IsCapCategory 2.1-14 
   [2XCategoryOfQuiversEnrichedOver[102X, for IsCapCategory 5.1-1 
   [2XCategoryOfReflexiveQuiversEnrichedOver[102X, for IsCapCategory 7.1-1 
-  [2XCoequalizerDataOfPreSheaf[102X, for IsObjectInPreSheafCategory 2.1-11 
+  [2XCoequalizerDataOfPreSheafUsingCoYonedaLemma[102X, for IsObjectInPreSheafCategory 2.1-5 
+  [2XCoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[102X, for IsObjectInPreSheafCategory 2.1-11 
   [2XCoPreSheaves[102X, for IsCapCategory 12.4-1 
       for IsCapCategory, IsCapCategory 12.4-1 
       for IsCapCategory, IsHomalgRing 12.4-1 
@@ -40,7 +41,6 @@
   [2XCoYonedaEmbedding[102X, for IsCapCategory 12.2-9 
   [2XCoYonedaEmbeddingOfSourceCategory[102X, for IsCoPreSheafCategory 12.2-10 
   [2XCoYonedaEmbeddingOfUnderlyingCategory[102X, for IsFiniteCompletion 9.2-2 
-  [2XCoYonedaLemmaCoequalizerDataOfPreSheaf[102X, for IsObjectInPreSheafCategory 2.1-5 
   [2XCreateBouquet[102X, for IsCategoryOfBouquets, IsInt, IsList 4.1-2 
       for IsInt, IsList 4.1-3 
   [2XCreateBouquetMorphism[102X, for IsObjectInCategoryOfBouquets, IsList, IsList, IsObjectInCategoryOfBouquets 4.1-4 
@@ -75,7 +75,7 @@
       for IsCellInCategoryOfDecoratedQuivers 8.2-7 
       for IsCellInCategoryOfQuivers 5.2-5 
       for IsCellInCategoryOfReflexiveQuivers 7.2-6 
-  [2XEpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject[102X, for IsObjectInPreSheafCategory 2.1-10 
+  [2XEpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[102X, for IsObjectInPreSheafCategory 2.1-10 
   [2XEquivalenceFromFullSubcategoryOfProjectivesObjectsIntoAdditiveClosureOfSource[102X, for IsPreSheafCategory 11.2-9 
   [2XFinBouquets[102X 4.4-2 
   [2XFiniteCocompletion[102X, for IsCapCategory 3.1-1 
@@ -156,7 +156,7 @@
       for IsFunctorCategory 1.2-2 
       for IsObjectInCoPreSheafCategory 12.2-4 
       for IsObjectInFunctorCategory 1.2-4 
-  [2XSectionFromProjectiveCoverObjectIntoSomeProjectiveObject[102X, for IsObjectInPreSheafCategory 2.1-9 
+  [2XSectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[102X, for IsObjectInPreSheafCategory 2.1-9 
   [2XSievesOfPathsToTruth[102X, for IsMorphismInPreSheafCategory 2.2-8 
   [2XSimpleObjects[102X, for IsPreSheafCategory 2.2-6 
   [2XSomeDiagramOfRepresentables[102X, for IsObjectInPreSheafCategory 2.1-4 
