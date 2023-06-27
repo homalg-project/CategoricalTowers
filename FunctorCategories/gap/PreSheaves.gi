@@ -2816,7 +2816,7 @@ InstallMethod( SomeDiagramOfRepresentables,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerDataOfPreSheaf,
+InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingCoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
@@ -2842,12 +2842,12 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerDataOfPreSheaf,
 end );
 
 ##
-InstallMethod( CoYonedaLemmaCoequalizerDataOfPreSheaf,
+InstallMethod( CoequalizerDataOfPreSheafUsingCoYonedaLemma,
         [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( F )
     
-    return CoYonedaLemmaCoequalizerDataOfPreSheaf( CapCategory( F ), F );
+    return CoequalizerDataOfPreSheafUsingCoYonedaLemma( CapCategory( F ), F );
     
 end );
 
@@ -3005,7 +3005,7 @@ InstallMethod( CoveringListOfRepresentables,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( SectionFromProjectiveCoverObjectIntoSomeProjectiveObject,
+InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, F )
@@ -3057,17 +3057,17 @@ InstallOtherMethodForCompilerForCAP( SectionFromProjectiveCoverObjectIntoSomePro
 end );
 
 ##
-InstallMethod( SectionFromProjectiveCoverObjectIntoSomeProjectiveObject,
+InstallMethod( SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject,
         [ IsObjectInPreSheafCategory ],
         
   function ( F )
     
-    return SectionFromProjectiveCoverObjectIntoSomeProjectiveObject( CapCategory( F ), F );
+    return SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( CapCategory( F ), F );
     
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject,
+InstallOtherMethodForCompilerForCAP( EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, F )
@@ -3147,17 +3147,17 @@ InstallOtherMethodForCompilerForCAP( EpimorphismFromSomeProjectiveObjectOntoProj
 end );
 
 ##
-InstallMethod( EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject,
+InstallMethod( EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
         [ IsObjectInPreSheafCategory ],
         
   function ( F )
     
-    return EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject( CapCategory( F ), F );
+    return EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( CapCategory( F ), F );
     
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheaf,
+InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
@@ -3167,9 +3167,9 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheaf,
     
     UB := UnderlyingCategory( ModelingCategory( Bhat ) );
     
-    F_data := CoYonedaLemmaCoequalizerDataOfPreSheaf( PSh, F );
+    F_data := CoequalizerDataOfPreSheafUsingCoYonedaLemma( PSh, F );
     
-    epi := EpimorphismFromSomeProjectiveObjectOntoProjectiveCoverObject( PSh, F );
+    epi := EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( PSh, F );
     
     return Pair( Range( epi ),
                  List( F_data[2], mor -> PreCompose( UB, mor, epi ) ) );
@@ -3177,12 +3177,12 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheaf,
 end );
 
 ##
-InstallMethod( CoequalizerDataOfPreSheaf,
+InstallMethod( CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma,
         [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( F )
     
-    return CoequalizerDataOfPreSheaf( CapCategory( F ), F );
+    return CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma( CapCategory( F ), F );
     
 end );
 
