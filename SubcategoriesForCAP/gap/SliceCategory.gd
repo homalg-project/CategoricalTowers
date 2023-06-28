@@ -116,9 +116,16 @@ CapJitAddTypeSignature( "UnderlyingMorphism", [ IsObjectInASliceCategory ], func
 end );
 
 #! @Description
-#!  The cell in the ambient category underlying <A>cell</A>.
-#! @Arguments cell
-#! @Returns a &CAP; cell
+#!  The source of the morphism in the ambient category underlying the slice category object <A>obj</A>.
+#! @Arguments obj
+#! @Returns a &CAP; object
+DeclareAttribute( "SourceOfUnderlyingMorphism",
+        IsObjectInASliceCategory );
+
+#! @Description
+#!  The cell in the ambient category underlying the slice category morphism <A>mor</A>.
+#! @Arguments mor
+#! @Returns a &CAP; mor
 DeclareAttribute( "UnderlyingCell",
         IsCellInASliceCategory );
 

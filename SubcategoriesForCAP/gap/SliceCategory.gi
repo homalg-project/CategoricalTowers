@@ -53,13 +53,24 @@ InstallMethod( BaseObject,
 end );
 
 ##
-InstallMethod( UnderlyingCell,
+InstallOtherMethodForCompilerForCAP( SourceOfUnderlyingMorphism,
+        "for a slice category object",
+        [ IsSliceCategory, IsObjectInASliceCategory ],
+        
+  function( slice_category, object )
+    
+    return Source( UnderlyingMorphism( object ) );
+    
+end );
+
+##
+InstallMethod( SourceOfUnderlyingMorphism,
         "for a slice category object",
         [ IsObjectInASliceCategory ],
         
   function( object )
     
-    return Source( UnderlyingMorphism( object ) );
+    return SourceOfUnderlyingMorphism( CapCategory( object ), object );
     
 end );
 
@@ -173,15 +184,15 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         #% CAP_JIT_DROP_NEXT_STATEMENT
         CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), [ "the morphism datum given to the morphism constructor of <cat>" ] );
         
-        if IsEqualForObjects( AmbientCategory( cat ), Source( underlying_morphism ), UnderlyingCell( source ) ) = false then
+        if IsEqualForObjects( AmbientCategory( cat ), Source( underlying_morphism ), SourceOfUnderlyingMorphism( source ) ) = false then
             
-            Error( "the source of the morphism datum must be equal to <UnderlyingCell( source )>" );
+            Error( "the source of the morphism datum must be equal to <SourceOfUnderlyingMorphism( source )>" );
             
         fi;
         
-        if IsEqualForObjects( AmbientCategory( cat ), Range( underlying_morphism ), UnderlyingCell( range ) ) = false then
+        if IsEqualForObjects( AmbientCategory( cat ), Range( underlying_morphism ), SourceOfUnderlyingMorphism( range ) ) = false then
             
-            Error( "the range of the morphism datum must be equal to <UnderlyingCell( range )>" );
+            Error( "the range of the morphism datum must be equal to <SourceOfUnderlyingMorphism( range )>" );
             
         fi;
         
@@ -215,7 +226,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                    create_func_morphism_or_fail := "default",
                    underlying_category_getter_string := "AmbientCategory",
                    # UnderlyingMorphism is an attribute in the eager case but a proper operation in the lazy case
-                   underlying_object_getter_string := "({ cat, obj } -> Source( UnderlyingMorphism( obj ) ))",
+                   underlying_object_getter_string := "SourceOfUnderlyingMorphism",
                    underlying_morphism_getter_string := "MorphismDatum",
                    top_object_getter_string := "ObjectConstructor",
                    top_morphism_getter_string := "MorphismConstructor",
@@ -368,7 +379,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                            ProjectionInFactorOfFiberProductWithGivenFiberProduct( AmbientCategory( cat ),
                                    List( L, UnderlyingMorphism ),
                                    k,
-                                   Source( UnderlyingMorphism( P ) ) ),
+                                   SourceOfUnderlyingMorphism( cat, P ) ),
                            L[k] );
             
         end );
@@ -381,9 +392,9 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                            T,
                            UniversalMorphismIntoFiberProductWithGivenFiberProduct( AmbientCategory( cat ),
                                    List( L, UnderlyingMorphism ),
-                                   Source( UnderlyingMorphism( T ) ),
+                                   SourceOfUnderlyingMorphism( cat, T ),
                                    List( tau, UnderlyingCell ),
-                                   Source( UnderlyingMorphism( P ) ) ),
+                                   SourceOfUnderlyingMorphism( cat, P ) ),
                            P );
             
         end );
@@ -402,9 +413,9 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             return MorphismConstructor( cat,
                            L[k],
                            InjectionOfCofactorOfCoproductWithGivenCoproduct( AmbientCategory( cat ),
-                                   List( L, Li -> Source( UnderlyingMorphism( Li ) ) ),
+                                   List( L, Li -> SourceOfUnderlyingMorphism( cat, Li ) ),
                                    k,
-                                   Source( UnderlyingMorphism( I ) ) ),
+                                   SourceOfUnderlyingMorphism( cat, I ) ),
                            I );
             
         end );
@@ -416,10 +427,10 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             return MorphismConstructor( cat,
                            I,
                            UniversalMorphismFromCoproductWithGivenCoproduct( AmbientCategory( cat ),
-                                   List( L, Li -> Source( UnderlyingMorphism( Li ) ) ),
-                                   Source( UnderlyingMorphism( T ) ),
+                                   List( L, Li -> SourceOfUnderlyingMorphism( cat, Li ) ),
+                                   SourceOfUnderlyingMorphism( cat, T ),
                                    List( tau, UnderlyingCell ),
-                                   Source( UnderlyingMorphism( I ) ) ),
+                                   SourceOfUnderlyingMorphism( cat, I ) ),
                            T );
             
         end );
@@ -464,11 +475,11 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             return MorphismConstructor( cat,
                            T,
                            UniversalMorphismIntoEqualizerWithGivenEqualizer( AmbientCategory( cat ),
-                                   Source( UnderlyingMorphism( A ) ),
+                                   SourceOfUnderlyingMorphism( cat, A ),
                                    List( L, UnderlyingCell ),
-                                   Source( UnderlyingMorphism( T ) ),
+                                   SourceOfUnderlyingMorphism( cat, T ),
                                    UnderlyingCell( tau ),
-                                   Source( UnderlyingMorphism( E ) ) ),
+                                   SourceOfUnderlyingMorphism( cat, E ) ),
                            E );
             
         end );
@@ -513,11 +524,11 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             return MorphismConstructor( cat,
                            E,
                            UniversalMorphismFromCoequalizerWithGivenCoequalizer( AmbientCategory( cat ),
-                                   Source( UnderlyingMorphism( A ) ),
+                                   SourceOfUnderlyingMorphism( cat, A ),
                                    List( L, UnderlyingCell ),
-                                   Source( UnderlyingMorphism( T ) ),
+                                   SourceOfUnderlyingMorphism( cat, T ),
                                    UnderlyingCell( tau ),
-                                   Source( UnderlyingMorphism( E ) ) ),
+                                   SourceOfUnderlyingMorphism( cat, E ) ),
                            T );
             
         end );
@@ -637,7 +648,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                                    [ BaseObject( cat ), Omega_C ],
                                    Range( mono_C ),
                                    [ UnderlyingMorphism( Range( mono ) ), chi_C ],
-                                   Source( UnderlyingMorphism( Omega ) ) ),
+                                   SourceOfUnderlyingMorphism( cat, Omega ) ),
                            Omega );
             
         end );
@@ -817,7 +828,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             range := I;
             
-            return MorphismConstructor( cat, source, LeftUnitor( C, Source( UnderlyingMorphism( I ) ) ), range );
+            return MorphismConstructor( cat, source, LeftUnitor( C, SourceOfUnderlyingMorphism( cat, I ) ), range );
             
         end );
         
@@ -840,7 +851,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             range := I;
             
-            return MorphismConstructor( cat, source, RightUnitor( C, Source( UnderlyingMorphism( I ) ) ), range );
+            return MorphismConstructor( cat, source, RightUnitor( C, SourceOfUnderlyingMorphism( cat, I ) ), range );
             
         end );
         
@@ -862,7 +873,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             range := TensorProductOnObjectsInSliceOverTensorUnit( cat, TensorProductOnObjectsInSliceOverTensorUnit( cat, I, J ), K );
             
             return MorphismConstructor( cat, source,
-                                             AssociatorRightToLeft( C, Source( UnderlyingMorphism( I ) ), Source( UnderlyingMorphism( J ) ), Source( UnderlyingMorphism( K ) ) ),
+                                             AssociatorRightToLeft( C, SourceOfUnderlyingMorphism( cat, I ), SourceOfUnderlyingMorphism( cat, J ), SourceOfUnderlyingMorphism( cat, K ) ),
                                              range );
             
         end );
@@ -885,7 +896,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             range := TensorProductOnObjectsInSliceOverTensorUnit( cat, I, TensorProductOnObjectsInSliceOverTensorUnit( cat, J, K ) );
             
             return MorphismConstructor( cat, source,
-                                             AssociatorRightToLeft( C, Source( UnderlyingMorphism( I ) ), Source( UnderlyingMorphism( J ) ), Source( UnderlyingMorphism( K ) ) ),
+                                             AssociatorRightToLeft( C, SourceOfUnderlyingMorphism( cat, I ), SourceOfUnderlyingMorphism( cat, J ), SourceOfUnderlyingMorphism( cat, K ) ),
                                              range );
             
         end );
@@ -909,7 +920,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                 
                 range := TensorProductOnObjectsInSliceOverTensorUnit( cat, J, I );
                 
-                return MorphismConstructor( cat, source, Braiding( C, Source( UnderlyingMorphism( I ) ), Source( UnderlyingMorphism( J ) ) ), range );
+                return MorphismConstructor( cat, source, Braiding( C, SourceOfUnderlyingMorphism( cat, I ), SourceOfUnderlyingMorphism( cat, J ) ), range );
                 
             end );
             
