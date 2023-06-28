@@ -43,7 +43,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
 
 ##
 InstallMethod( BaseObject,
-        "for a CAP slice category object",
+        "for a slice category object",
         [ IsCellInASliceCategory ],
         
   function( object )
@@ -54,7 +54,7 @@ end );
 
 ##
 InstallMethod( UnderlyingCell,
-        "for a CAP slice category object",
+        "for a slice category object",
         [ IsObjectInASliceCategory ],
         
   function( object )
