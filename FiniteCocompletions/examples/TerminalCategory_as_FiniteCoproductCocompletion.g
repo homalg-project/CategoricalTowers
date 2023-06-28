@@ -8,29 +8,33 @@ T := FiniteStrictCoproductCocompletion( InitialCategory( ) );
 Display( T );
 #! A CAP category with name FiniteStrictCoproductCocompletion( InitialCategory( ) ):
 #! 
-#! 93 primitive operations were used to derive 534 operations for this category
+#! 92 primitive operations were used to derive 547 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
-#! * IsBicartesianCoclosedCategory
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
+#! * IsClosedMonoidalLattice
+#! * IsCoclosedMonoidalLattice
+#! * IsBooleanAlgebra
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
 #! * IsElementaryTopos
 #! and furthermore mathematically
+#! * IsDiscreteCategory
 #! * IsFinitelyPresentedCategory
 #! * IsFinitelyPresentedLinearCategory
 #! * IsLinearClosureOfACategory
 #! * IsLocallyOfFiniteInjectiveDimension
 #! * IsLocallyOfFiniteProjectiveDimension
-#! * IsSkeletalCategory
+#! * IsStableProset
 #! * IsStrictCartesianCategory
 #! * IsStrictCocartesianCategory
 #! * IsStrictMonoidalCategory
 #! * IsTerminalCategory
+#! * IsTotalOrderCategory
 i := InitialObject( T );
 #! <A zero object in FiniteStrictCoproductCocompletion( InitialCategory( ) )>
 t := TerminalObject( T );
