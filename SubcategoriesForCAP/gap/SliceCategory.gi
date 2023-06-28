@@ -125,7 +125,7 @@ end );
 ##################################
 
 BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
-  function( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter )
+  function( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter, object_constructor, object_datum )
     local C, list_of_operations_to_install, skip, func, pos, properties, morphism_constructor, morphism_datum,
           Slice_over_B, TensorProductOnObjectsInSliceOverTensorUnit;
     
@@ -205,6 +205,8 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                    category_object_filter := category_object_filter,
                    category_morphism_filter := category_morphism_filter,
                    properties := properties,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
                    morphism_constructor := morphism_constructor,
                    morphism_datum := morphism_datum,
                    list_of_operations_to_install := list_of_operations_to_install,

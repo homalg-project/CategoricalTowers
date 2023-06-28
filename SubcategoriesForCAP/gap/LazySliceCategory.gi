@@ -112,8 +112,9 @@ InstallMethod( LazySliceCategory,
         [ IsCapCategoryObject ],
         
   function( B )
-    local C, over_tensor_unit, name, category_filter,
-          category_object_filter, category_morphism_filter, S;
+    local C, over_tensor_unit,
+          name, category_filter, category_object_filter, category_morphism_filter,
+          object_constructor, object_datum, S;
     
     C := CapCategory( B );
     
@@ -135,13 +136,12 @@ InstallMethod( LazySliceCategory,
         category_morphism_filter := IsMorphismInALazySliceCategory;
     fi;
     
-    S := CAP_INTERNAL_SLICE_CATEGORY( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter );
-    
     # MorphismConstructor and MorphismDatum are set in CAP_INTERNAL_SLICE_CATEGORY
     # ObjectConstructor and ObjectDatum have to take the lazy/eager structure into account
     
     ##
-    AddObjectConstructor( S, function( cat, underlying_morphism_list )
+    object_constructor :=
+      function( cat, underlying_morphism_list )
         
         if IsCapCategoryMorphism( underlying_morphism_list ) then
             
@@ -163,14 +163,24 @@ InstallMethod( LazySliceCategory,
         return CreateCapCategoryObjectWithAttributes( S,
                        UnderlyingMorphismList, underlying_morphism_list );
         
-    end );
+    end;
     
     ##
-    AddObjectDatum( S, function( cat, object )
+    object_datum :=
+      function( cat, object )
         
         return UnderlyingMorphismList( object );
         
-    end );
+    end;
+    
+    S := CAP_INTERNAL_SLICE_CATEGORY( B,
+                 over_tensor_unit,
+                 name,
+                 category_filter,
+                 category_object_filter,
+                 category_morphism_filter,
+                 object_constructor,
+                 object_datum );
     
     if CanCompute( C, "IsSplitEpimorphism" ) then
         
