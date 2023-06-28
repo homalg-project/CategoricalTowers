@@ -198,25 +198,26 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     end;
     
-    Slice_over_B := CategoryConstructor( rec(
-                     name := name,
-                     category_filter := category_filter,
-                     category_object_filter := category_object_filter,
-                     category_morphism_filter := category_morphism_filter,
-                     properties := properties,
-                     morphism_constructor := morphism_constructor,
-                     morphism_datum := morphism_datum,
-                     list_of_operations_to_install := list_of_operations_to_install,
-                     create_func_bool := "default",
-                     create_func_morphism := "default",
-                     create_func_morphism_or_fail := "default",
-                     underlying_category_getter_string := "AmbientCategory",
-                     # UnderlyingMorphism is an attribute in the eager case but a proper operation in the lazy case
-                     underlying_object_getter_string := "({ cat, obj } -> Source( UnderlyingMorphism( obj ) ))",
-                     underlying_morphism_getter_string := "MorphismDatum",
-                     top_object_getter_string := "ObjectConstructor",
-                     top_morphism_getter_string := "MorphismConstructor",
-                     ) );
+    Slice_over_B :=
+      CategoryConstructor(
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
+                   properties := properties,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
+                   list_of_operations_to_install := list_of_operations_to_install,
+                   create_func_bool := "default",
+                   create_func_morphism := "default",
+                   create_func_morphism_or_fail := "default",
+                   underlying_category_getter_string := "AmbientCategory",
+                   # UnderlyingMorphism is an attribute in the eager case but a proper operation in the lazy case
+                   underlying_object_getter_string := "({ cat, obj } -> Source( UnderlyingMorphism( obj ) ))",
+                   underlying_morphism_getter_string := "MorphismDatum",
+                   top_object_getter_string := "ObjectConstructor",
+                   top_morphism_getter_string := "MorphismConstructor",
+                   ) );
     
     Slice_over_B!.compiler_hints.category_attribute_names := [
         "AmbientCategory",
