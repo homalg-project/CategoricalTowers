@@ -31,6 +31,11 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
   function( P )
     local name, D;
     
+    if not ( HasIsDistributiveBicartesianProset( P ) and IsDistributiveBicartesianProset( P ) ) then
+        Error( "the input category `P` must be a distributive (bicartesian) proset (e.g. a distributive lattice) ",
+               "for the meet-semilattice of multiple differences to be well-defined\n" );
+    fi;
+    
     name := "The meet-semilattice of multiple differences of ";
     
     name := Concatenation( name, Name( P ) );
