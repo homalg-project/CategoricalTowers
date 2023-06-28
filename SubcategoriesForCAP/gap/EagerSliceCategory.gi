@@ -7,7 +7,7 @@
 ##
 InstallMethod( AsSliceCategoryCell,
         "for a CAP morphism and a CAP eager slice category",
-        [ IsCapCategoryMorphism, IsCapEagerSliceCategory ],
+        [ IsCapCategoryMorphism, IsEagerSliceCategory ],
         
   function( morphism, S )
     
@@ -32,7 +32,7 @@ end );
 ##
 InstallMethod( AsSliceCategoryCell,
         "for two CAP objects in an eager slice category and a CAP morphism",
-        [ IsCapCategoryObjectInAnEagerSliceCategory, IsCapCategoryMorphism, IsCapCategoryObjectInAnEagerSliceCategory ],
+        [ IsObjectInAnEagerSliceCategory, IsCapCategoryMorphism, IsObjectInAnEagerSliceCategory ],
         
   function( source, morphism, range )
     local S, m;
@@ -45,7 +45,7 @@ end );
 
 ##
 InstallMethod( InclusionFunctor,
-        [ IsCapEagerSliceCategory ],
+        [ IsEagerSliceCategory ],
         
   function( S )
     local C, name, F;
@@ -94,13 +94,13 @@ InstallMethod( SliceCategory,
     fi;
     
     if IsIdenticalObj( over_tensor_unit, true ) then
-        category_filter := IsCapEagerSliceCategoryOverTensorUnit;
-        category_object_filter := IsCapCategoryObjectInAnEagerSliceCategoryOverTensorUnit;
-        category_morphism_filter := IsCapCategoryMorphismInAnEagerSliceCategoryOverTensorUnit;
+        category_filter := IsEagerSliceCategoryOverTensorUnit;
+        category_object_filter := IsObjectInAnEagerSliceCategoryOverTensorUnit;
+        category_morphism_filter := IsMorphismInAnEagerSliceCategoryOverTensorUnit;
     else
-        category_filter := IsCapEagerSliceCategory;
-        category_object_filter := IsCapCategoryObjectInAnEagerSliceCategory;
-        category_morphism_filter := IsCapCategoryMorphismInAnEagerSliceCategory;
+        category_filter := IsEagerSliceCategory;
+        category_object_filter := IsObjectInAnEagerSliceCategory;
+        category_morphism_filter := IsMorphismInAnEagerSliceCategory;
     fi;
     
     S := CAP_INTERNAL_SLICE_CATEGORY( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter );

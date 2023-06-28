@@ -23,7 +23,7 @@ end );
 ##
 InstallMethod( AsSliceCategoryCell,
         "for a CAP morphism and a CAP lazy slice category",
-        [ IsCapCategoryMorphism, IsCapLazySliceCategory ],
+        [ IsCapCategoryMorphism, IsLazySliceCategory ],
         
   function( m, S )
     
@@ -34,14 +34,14 @@ end );
 ##
 InstallOtherMethod( \/,
         "for a CAP morphism and a CAP lazy slice category",
-        [ IsCapCategoryMorphism, IsCapLazySliceCategory ],
+        [ IsCapCategoryMorphism, IsLazySliceCategory ],
         
   AsSliceCategoryCell );
 
 ##
 InstallMethod( AsSliceCategoryCell,
         "for two CAP objects in a lazy slice category and a CAP morphism",
-        [ IsCapCategoryObjectInALazySliceCategory, IsCapCategoryMorphism, IsCapCategoryObjectInALazySliceCategory ],
+        [ IsObjectInALazySliceCategory, IsCapCategoryMorphism, IsObjectInALazySliceCategory ],
         
   function( source, morphism, range )
     local S, m;
@@ -55,7 +55,7 @@ end );
 ##
 InstallMethod( UnderlyingMorphism,
         "for a CAP object in a lazy slice category",
-        [ IsCapCategoryObjectInALazySliceCategory ],
+        [ IsObjectInALazySliceCategory ],
         
   function( a )
     local L, morphism_from_biased_weak_fiber_product_to_sink;
@@ -77,7 +77,7 @@ end );
     
 ##
 InstallMethod( InclusionFunctor,
-        [ IsCapLazySliceCategory ],
+        [ IsLazySliceCategory ],
         
   function( S )
     local C, name, F;
@@ -126,13 +126,13 @@ InstallMethod( LazySliceCategory,
     fi;
     
     if IsIdenticalObj( over_tensor_unit, true ) then
-        category_filter := IsCapLazySliceCategoryOverTensorUnit;
-        category_object_filter := IsCapCategoryObjectInALazySliceCategoryOverTensorUnit;
-        category_morphism_filter := IsCapCategoryMorphismInALazySliceCategoryOverTensorUnit;
+        category_filter := IsLazySliceCategoryOverTensorUnit;
+        category_object_filter := IsObjectInALazySliceCategoryOverTensorUnit;
+        category_morphism_filter := IsMorphismInALazySliceCategoryOverTensorUnit;
     else
-        category_filter := IsCapLazySliceCategory;
-        category_object_filter := IsCapCategoryObjectInALazySliceCategory;
-        category_morphism_filter := IsCapCategoryMorphismInALazySliceCategory;
+        category_filter := IsLazySliceCategory;
+        category_object_filter := IsObjectInALazySliceCategory;
+        category_morphism_filter := IsMorphismInALazySliceCategory;
     fi;
     
     S := CAP_INTERNAL_SLICE_CATEGORY( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter );
@@ -304,7 +304,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsCapCategoryObjectInALazySliceCategory ],
+    [ IsObjectInALazySliceCategory ],
   function( a )
     
     Print( "An object in the lazy slice category given by: " );
@@ -315,7 +315,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsCapCategoryMorphismInALazySliceCategory ],
+    [ IsMorphismInALazySliceCategory ],
   function( phi )
     
     Print( "A morphism in the lazy slice category given by: " );
@@ -326,7 +326,7 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsCapCategoryObjectInALazySliceCategory ],
+    [ IsObjectInALazySliceCategory ],
   function( a )
     
     Display( UnderlyingMorphism( a ) );
@@ -337,7 +337,7 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsCapCategoryMorphismInALazySliceCategory ],
+    [ IsMorphismInALazySliceCategory ],
   function( phi )
     
     Display( UnderlyingCell( phi ) );

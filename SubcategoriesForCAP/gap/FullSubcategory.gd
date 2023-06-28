@@ -29,18 +29,18 @@ DeclareCategory( "IsCapFullSubcategoryDefinedByObjectMembershipFunction",
 
 #! @Description
 #!  The &GAP; category of cells in a full subcategory.
-DeclareCategory( "IsCapCategoryCellInAFullSubcategory",
-        IsCapCategoryCellInASubcategory );
+DeclareCategory( "IsCellInAFullSubcategory",
+        IsCellInASubcategory );
 
 #! @Description
 #!  The &GAP; category of objects in a full subcategory.
-DeclareCategory( "IsCapCategoryObjectInAFullSubcategory",
-        IsCapCategoryCellInAFullSubcategory and IsCapCategoryObjectInASubcategory );
+DeclareCategory( "IsObjectInAFullSubcategory",
+        IsCellInAFullSubcategory and IsObjectInASubcategory );
 
 #! @Description
 #!  The &GAP; category of morphisms in a full subcategory.
-DeclareCategory( "IsCapCategoryMorphismInAFullSubcategory",
-        IsCapCategoryCellInAFullSubcategory and IsCapCategoryMorphismInASubcategory );
+DeclareCategory( "IsMorphismInAFullSubcategory",
+        IsCellInAFullSubcategory and IsMorphismInASubcategory );
 
 ####################################
 #

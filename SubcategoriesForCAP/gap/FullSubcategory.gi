@@ -338,7 +338,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsCapCategoryObjectInAFullSubcategory ],
+    [ IsObjectInAFullSubcategory ],
   function( a )
     
     Print( "An object in full subcategory given by: " );
@@ -349,7 +349,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsCapCategoryMorphismInAFullSubcategory ],
+    [ IsMorphismInAFullSubcategory ],
   function( phi )
     
     Print( "A morphism in full subcategory given by: " );
@@ -360,7 +360,7 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsCapCategoryObjectInAFullSubcategory ],
+    [ IsObjectInAFullSubcategory ],
   function( a )
     
     Print( "An object in full subcategory given by: " );
@@ -371,7 +371,7 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsCapCategoryMorphismInAFullSubcategory ],
+    [ IsMorphismInAFullSubcategory ],
   function( phi )
     
     Print( "A morphism in full subcategory given by: " );

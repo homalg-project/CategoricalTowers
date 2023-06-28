@@ -44,7 +44,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
 ##
 InstallMethod( BaseObject,
         "for a CAP slice category object",
-        [ IsCapCategoryCellInASliceCategory ],
+        [ IsCellInASliceCategory ],
         
   function( object )
     
@@ -55,7 +55,7 @@ end );
 ##
 InstallMethod( UnderlyingCell,
         "for a CAP slice category object",
-        [ IsCapCategoryObjectInASliceCategory ],
+        [ IsObjectInASliceCategory ],
         
   function( object )
     
@@ -97,7 +97,7 @@ end );
 ##
 InstallMethod( MorphismFromCovariantArgumentOfInternalHom,
         "for two objects in a slice category over a tensor unit",
-        [ IsCapCategoryObjectInASliceCategoryOverTensorUnit, IsCapCategoryObjectInASliceCategoryOverTensorUnit ],
+        [ IsObjectInSliceCategoryOverTensorUnit, IsObjectInSliceCategoryOverTensorUnit ],
         
   function( J, I )
     local source, target;
@@ -1045,7 +1045,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsCapCategoryObjectInASliceCategory ],
+    [ IsObjectInASliceCategory ],
   function( a )
     
     Print( "An object in the slice category given by: " );
@@ -1056,7 +1056,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsCapCategoryMorphismInASliceCategory ],
+    [ IsMorphismInASliceCategory ],
   function( phi )
     
     Print( "A morphism in the slice category given by: " );
@@ -1067,7 +1067,7 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsCapCategoryObjectInASliceCategory ],
+    [ IsObjectInASliceCategory ],
   function( a )
     
     Display( UnderlyingMorphism( a ) );
@@ -1078,7 +1078,7 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsCapCategoryMorphismInASliceCategory ],
+    [ IsMorphismInASliceCategory ],
   function( phi )
     
     Display( UnderlyingCell( phi ) );

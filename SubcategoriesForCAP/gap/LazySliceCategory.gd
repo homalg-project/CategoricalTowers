@@ -14,43 +14,43 @@
 
 #! @Description
 #!  The &GAP; category of an eager slice category.
-DeclareCategory( "IsCapLazySliceCategory",
-        IsCapSliceCategory );
+DeclareCategory( "IsLazySliceCategory",
+        IsSliceCategory );
 
 #! @Description
 #!  The &GAP; category of cells in an eager slice category.
-DeclareCategory( "IsCapCategoryCellInALazySliceCategory",
-        IsCapCategoryCellInASliceCategory );
+DeclareCategory( "IsCellInALazySliceCategory",
+        IsCellInASliceCategory );
 
 #! @Description
 #!  The &GAP; category of objects in an eager slice category.
-DeclareCategory( "IsCapCategoryObjectInALazySliceCategory",
-        IsCapCategoryObjectInASliceCategory and IsCapCategoryCellInALazySliceCategory );
+DeclareCategory( "IsObjectInALazySliceCategory",
+        IsObjectInASliceCategory and IsCellInALazySliceCategory );
 
 #! @Description
 #!  The &GAP; category of morphisms in an eager slice category.
-DeclareCategory( "IsCapCategoryMorphismInALazySliceCategory",
-        IsCapCategoryMorphismInASliceCategory and IsCapCategoryCellInALazySliceCategory );
+DeclareCategory( "IsMorphismInALazySliceCategory",
+        IsMorphismInASliceCategory and IsCellInALazySliceCategory );
 
 #! @Description
 #!  The &GAP; category of an eager slice category over the tensor unit.
-DeclareCategory( "IsCapLazySliceCategoryOverTensorUnit",
-        IsCapSliceCategoryOverTensorUnit and IsCapLazySliceCategory );
+DeclareCategory( "IsLazySliceCategoryOverTensorUnit",
+        IsSliceCategoryOverTensorUnit and IsLazySliceCategory );
 
 #! @Description
 #!  The &GAP; category of cells in an eager slice category over the tensor unit.
-DeclareCategory( "IsCapCategoryCellInALazySliceCategoryOverTensorUnit",
-        IsCapCategoryCellInASliceCategoryOverTensorUnit and IsCapCategoryCellInALazySliceCategory );
+DeclareCategory( "IsCellInALazySliceCategoryOverTensorUnit",
+        IsCellInSliceCategoryOverTensorUnit and IsCellInALazySliceCategory );
 
 #! @Description
 #!  The &GAP; category of objects in an eager slice category over the tensor unit.
-DeclareCategory( "IsCapCategoryObjectInALazySliceCategoryOverTensorUnit",
-        IsCapCategoryObjectInASliceCategoryOverTensorUnit and IsCapCategoryObjectInALazySliceCategory );
+DeclareCategory( "IsObjectInALazySliceCategoryOverTensorUnit",
+        IsObjectInSliceCategoryOverTensorUnit and IsObjectInALazySliceCategory );
 
 #! @Description
 #!  The &GAP; category of morphisms in an eager slice category over the tensor unit.
-DeclareCategory( "IsCapCategoryMorphismInALazySliceCategoryOverTensorUnit",
-        IsCapCategoryMorphismInASliceCategoryOverTensorUnit and IsCapCategoryMorphismInALazySliceCategory );
+DeclareCategory( "IsMorphismInALazySliceCategoryOverTensorUnit",
+        IsMorphismInSliceCategoryOverTensorUnit and IsMorphismInALazySliceCategory );
 
 ####################################
 #
@@ -63,7 +63,7 @@ DeclareCategory( "IsCapCategoryMorphismInALazySliceCategoryOverTensorUnit",
 #! @Arguments object
 #! @Returns a list
 DeclareAttribute( "UnderlyingMorphismList",
-        IsCapCategoryObjectInALazySliceCategory );
+        IsObjectInALazySliceCategory );
 
 ####################################
 #
