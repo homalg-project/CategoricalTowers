@@ -377,9 +377,8 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     morphism_datum := { cat, morphism } -> UnderlyingCell( morphism );
     
-    P := CategoryConstructor( :
+    P := CategoryConstructor( rec(
                  name := name,
-                 category_as_first_argument := true,
                  category_filter := category_filter,
                  category_object_filter := category_object_filter,
                  category_morphism_filter := category_morphism_filter,
@@ -392,11 +391,13 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  underlying_category_getter_string := "AmbientCategory",
                  underlying_object_getter_string := "ObjectDatum",
                  underlying_morphism_getter_string := "MorphismDatum",
+                 top_object_getter_string := "ObjectConstructor",
+                 top_morphism_getter_string := "MorphismConstructor",
                  create_func_bool := "default",
                  create_func_object := "default",
                  create_func_morphism := create_func_morphism,
                  create_func_morphism_or_fail := "default"
-                 );
+                 ) );
     
     if ( HasIsFinite and IsFinite )( C ) then
         SetIsFinite( P, true );
