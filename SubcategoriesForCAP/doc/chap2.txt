@@ -27,23 +27,23 @@
   [33X[0;0YThe  [5XGAP[105X  category  of  a  full  subcategory defined by an object-membership
   function.[133X
   
-  [1X2.1-4 IsCapCategoryCellInAFullSubcategory[101X
+  [1X2.1-4 IsCellInAFullSubcategory[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryCellInAFullSubcategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInAFullSubcategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in a full subcategory.[133X
   
-  [1X2.1-5 IsCapCategoryObjectInAFullSubcategory[101X
+  [1X2.1-5 IsObjectInAFullSubcategory[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryObjectInAFullSubcategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInAFullSubcategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a full subcategory.[133X
   
-  [1X2.1-6 IsCapCategoryMorphismInAFullSubcategory[101X
+  [1X2.1-6 IsMorphismInAFullSubcategory[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryMorphismInAFullSubcategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInAFullSubcategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in a full subcategory.[133X

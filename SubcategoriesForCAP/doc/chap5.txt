@@ -4,58 +4,58 @@
   
   [1X5.1 [33X[0;0YGAP categories[133X[101X
   
-  [1X5.1-1 IsCapLazySliceCategory[101X
+  [1X5.1-1 IsLazySliceCategory[101X
   
-  [33X[1;0Y[29X[2XIsCapLazySliceCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsLazySliceCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of an eager slice category.[133X
   
-  [1X5.1-2 IsCapCategoryCellInALazySliceCategory[101X
+  [1X5.1-2 IsCellInALazySliceCategory[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryCellInALazySliceCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInALazySliceCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in an eager slice category.[133X
   
-  [1X5.1-3 IsCapCategoryObjectInALazySliceCategory[101X
+  [1X5.1-3 IsObjectInALazySliceCategory[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryObjectInALazySliceCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInALazySliceCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in an eager slice category.[133X
   
-  [1X5.1-4 IsCapCategoryMorphismInALazySliceCategory[101X
+  [1X5.1-4 IsMorphismInALazySliceCategory[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryMorphismInALazySliceCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInALazySliceCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in an eager slice category.[133X
   
-  [1X5.1-5 IsCapLazySliceCategoryOverTensorUnit[101X
+  [1X5.1-5 IsLazySliceCategoryOverTensorUnit[101X
   
-  [33X[1;0Y[29X[2XIsCapLazySliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsLazySliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of an eager slice category over the tensor unit.[133X
   
-  [1X5.1-6 IsCapCategoryCellInALazySliceCategoryOverTensorUnit[101X
+  [1X5.1-6 IsCellInALazySliceCategoryOverTensorUnit[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryCellInALazySliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInALazySliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in an eager slice category over the tensor unit.[133X
   
-  [1X5.1-7 IsCapCategoryObjectInALazySliceCategoryOverTensorUnit[101X
+  [1X5.1-7 IsObjectInALazySliceCategoryOverTensorUnit[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryObjectInALazySliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInALazySliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in an eager slice category over the tensor unit.[133X
   
-  [1X5.1-8 IsCapCategoryMorphismInALazySliceCategoryOverTensorUnit[101X
+  [1X5.1-8 IsMorphismInALazySliceCategoryOverTensorUnit[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryMorphismInALazySliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInALazySliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  [5XGAP[105X  category  of  morphisms in an eager slice category over the tensor

@@ -4,58 +4,58 @@
   
   [1X4.1 [33X[0;0YGAP categories[133X[101X
   
-  [1X4.1-1 IsCapEagerSliceCategory[101X
+  [1X4.1-1 IsEagerSliceCategory[101X
   
-  [33X[1;0Y[29X[2XIsCapEagerSliceCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsEagerSliceCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of an eager slice category.[133X
   
-  [1X4.1-2 IsCapCategoryCellInAnEagerSliceCategory[101X
+  [1X4.1-2 IsCellInAnEagerSliceCategory[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryCellInAnEagerSliceCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInAnEagerSliceCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in an eager slice category.[133X
   
-  [1X4.1-3 IsCapCategoryObjectInAnEagerSliceCategory[101X
+  [1X4.1-3 IsObjectInAnEagerSliceCategory[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryObjectInAnEagerSliceCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInAnEagerSliceCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in an eager slice category.[133X
   
-  [1X4.1-4 IsCapCategoryMorphismInAnEagerSliceCategory[101X
+  [1X4.1-4 IsMorphismInAnEagerSliceCategory[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryMorphismInAnEagerSliceCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInAnEagerSliceCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in an eager slice category.[133X
   
-  [1X4.1-5 IsCapEagerSliceCategoryOverTensorUnit[101X
+  [1X4.1-5 IsEagerSliceCategoryOverTensorUnit[101X
   
-  [33X[1;0Y[29X[2XIsCapEagerSliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsEagerSliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of an eager slice category over the tensor unit.[133X
   
-  [1X4.1-6 IsCapCategoryCellInAnEagerSliceCategoryOverTensorUnit[101X
+  [1X4.1-6 IsCellInAnEagerSliceCategoryOverTensorUnit[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryCellInAnEagerSliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInAnEagerSliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in an eager slice category over the tensor unit.[133X
   
-  [1X4.1-7 IsCapCategoryObjectInAnEagerSliceCategoryOverTensorUnit[101X
+  [1X4.1-7 IsObjectInAnEagerSliceCategoryOverTensorUnit[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryObjectInAnEagerSliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInAnEagerSliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in an eager slice category over the tensor unit.[133X
   
-  [1X4.1-8 IsCapCategoryMorphismInAnEagerSliceCategoryOverTensorUnit[101X
+  [1X4.1-8 IsMorphismInAnEagerSliceCategoryOverTensorUnit[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryMorphismInAnEagerSliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInAnEagerSliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  [5XGAP[105X  category  of  morphisms in an eager slice category over the tensor

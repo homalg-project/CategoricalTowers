@@ -6,10 +6,10 @@
         [1X Subcategory and other related constructors for CAP categories [101X
   
   
-                                   2023.06-08
+                                   2023.06-10
   
   
-                                  28 June 2023
+                                  29 June 2023
   
   
                                 Mohamed Barakat
@@ -54,9 +54,9 @@
     1.1 [33X[0;0YGAP categories[133X
       1.1-1 IsCapSubcategory
       1.1-2 IsCapSubcategoryGeneratedByFiniteNumberOfMorphisms
-      1.1-3 IsCapCategoryCellInASubcategory
-      1.1-4 IsCapCategoryObjectInASubcategory
-      1.1-5 IsCapCategoryMorphismInASubcategory
+      1.1-3 IsCellInASubcategory
+      1.1-4 IsObjectInASubcategory
+      1.1-5 IsMorphismInASubcategory
     1.2 [33X[0;0YGlobal variables[133X
       1.2-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY
     1.3 [33X[0;0YAttributes[133X
@@ -74,9 +74,9 @@
       2.1-1 IsCapFullSubcategory
       2.1-2 IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects
       2.1-3 IsCapFullSubcategoryDefinedByObjectMembershipFunction
-      2.1-4 IsCapCategoryCellInAFullSubcategory
-      2.1-5 IsCapCategoryObjectInAFullSubcategory
-      2.1-6 IsCapCategoryMorphismInAFullSubcategory
+      2.1-4 IsCellInAFullSubcategory
+      2.1-5 IsObjectInAFullSubcategory
+      2.1-6 IsMorphismInAFullSubcategory
     2.2 [33X[0;0YGlobal variables[133X
       2.2-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY
       2.2-2 CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEGORY
@@ -95,14 +95,14 @@
       2.4-4 RestrictFunctorToFullSubcategories
   3 [33X[0;0YSlice categories[133X
     3.1 [33X[0;0YGAP categories[133X
-      3.1-1 IsCapSliceCategory
-      3.1-2 IsCapCategoryCellInASliceCategory
-      3.1-3 IsCapCategoryObjectInASliceCategory
-      3.1-4 IsCapCategoryMorphismInASliceCategory
-      3.1-5 IsCapSliceCategoryOverTensorUnit
-      3.1-6 IsCapCategoryCellInASliceCategoryOverTensorUnit
-      3.1-7 IsCapCategoryObjectInASliceCategoryOverTensorUnit
-      3.1-8 IsCapCategoryMorphismInASliceCategoryOverTensorUnit
+      3.1-1 IsSliceCategory
+      3.1-2 IsCellInASliceCategory
+      3.1-3 IsObjectInASliceCategory
+      3.1-4 IsMorphismInASliceCategory
+      3.1-5 IsSliceCategoryOverTensorUnit
+      3.1-6 IsCellInSliceCategoryOverTensorUnit
+      3.1-7 IsObjectInSliceCategoryOverTensorUnit
+      3.1-8 IsMorphismInSliceCategoryOverTensorUnit
     3.2 [33X[0;0YGlobal variables[133X
       3.2-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY
     3.3 [33X[0;0YAttributes[133X
@@ -110,9 +110,10 @@
       3.3-2 BaseObject
       3.3-3 BaseObject
       3.3-4 UnderlyingMorphism
-      3.3-5 UnderlyingCell
-      3.3-6 InclusionFunctor
-      3.3-7 DualOverTensorUnit
+      3.3-5 SourceOfUnderlyingMorphism
+      3.3-6 UnderlyingCell
+      3.3-7 InclusionFunctor
+      3.3-8 DualOverTensorUnit
     3.4 [33X[0;0YConstructors[133X
       3.4-1 AsSliceCategoryCell
       3.4-2 /
@@ -121,14 +122,14 @@
       3.5-1 MorphismFromCovariantArgumentOfInternalHom
   4 [33X[0;0YSlice categories (eager data structure)[133X
     4.1 [33X[0;0YGAP categories[133X
-      4.1-1 IsCapEagerSliceCategory
-      4.1-2 IsCapCategoryCellInAnEagerSliceCategory
-      4.1-3 IsCapCategoryObjectInAnEagerSliceCategory
-      4.1-4 IsCapCategoryMorphismInAnEagerSliceCategory
-      4.1-5 IsCapEagerSliceCategoryOverTensorUnit
-      4.1-6 IsCapCategoryCellInAnEagerSliceCategoryOverTensorUnit
-      4.1-7 IsCapCategoryObjectInAnEagerSliceCategoryOverTensorUnit
-      4.1-8 IsCapCategoryMorphismInAnEagerSliceCategoryOverTensorUnit
+      4.1-1 IsEagerSliceCategory
+      4.1-2 IsCellInAnEagerSliceCategory
+      4.1-3 IsObjectInAnEagerSliceCategory
+      4.1-4 IsMorphismInAnEagerSliceCategory
+      4.1-5 IsEagerSliceCategoryOverTensorUnit
+      4.1-6 IsCellInAnEagerSliceCategoryOverTensorUnit
+      4.1-7 IsObjectInAnEagerSliceCategoryOverTensorUnit
+      4.1-8 IsMorphismInAnEagerSliceCategoryOverTensorUnit
     4.2 [33X[0;0YConstructors[133X
       4.2-1 SliceCategory
       4.2-2 SliceCategoryOverTensorUnit
@@ -141,14 +142,14 @@
       4.3-5 [33X[0;0YPrecompilation[133X
   5 [33X[0;0YSlice categories (lazy data structure)[133X
     5.1 [33X[0;0YGAP categories[133X
-      5.1-1 IsCapLazySliceCategory
-      5.1-2 IsCapCategoryCellInALazySliceCategory
-      5.1-3 IsCapCategoryObjectInALazySliceCategory
-      5.1-4 IsCapCategoryMorphismInALazySliceCategory
-      5.1-5 IsCapLazySliceCategoryOverTensorUnit
-      5.1-6 IsCapCategoryCellInALazySliceCategoryOverTensorUnit
-      5.1-7 IsCapCategoryObjectInALazySliceCategoryOverTensorUnit
-      5.1-8 IsCapCategoryMorphismInALazySliceCategoryOverTensorUnit
+      5.1-1 IsLazySliceCategory
+      5.1-2 IsCellInALazySliceCategory
+      5.1-3 IsObjectInALazySliceCategory
+      5.1-4 IsMorphismInALazySliceCategory
+      5.1-5 IsLazySliceCategoryOverTensorUnit
+      5.1-6 IsCellInALazySliceCategoryOverTensorUnit
+      5.1-7 IsObjectInALazySliceCategoryOverTensorUnit
+      5.1-8 IsMorphismInALazySliceCategoryOverTensorUnit
     5.2 [33X[0;0YAttributes[133X
       5.2-1 UnderlyingMorphismList
     5.3 [33X[0;0YConstructors[133X

@@ -25,14 +25,14 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7D03633A7D98026B">3.1 <span class="Heading">GAP categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8648AD2C8464F896">3.1-1 IsCapSliceCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7FC37F9E8075779D">3.1-2 IsCapCategoryCellInASliceCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7FEB7D597FD411AD">3.1-3 IsCapCategoryObjectInASliceCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X784E326E7BF2E893">3.1-4 IsCapCategoryMorphismInASliceCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7EE962687FA1A3DE">3.1-5 IsCapSliceCategoryOverTensorUnit</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X86297D047E51B817">3.1-6 IsCapCategoryCellInASliceCategoryOverTensorUnit</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82D539E67C2DF16B">3.1-7 IsCapCategoryObjectInASliceCategoryOverTensorUnit</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X781C15FC83376BD6">3.1-8 IsCapCategoryMorphismInASliceCategoryOverTensorUnit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8624A403802FDB49">3.1-1 IsSliceCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82F450737D961304">3.1-2 IsCellInASliceCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D8D86A380731C43">3.1-3 IsObjectInASliceCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83F929018537DD4C">3.1-4 IsMorphismInASliceCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D59E37586B2EEB0">3.1-5 IsSliceCategoryOverTensorUnit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C9125D87D86C3AA">3.1-6 IsCellInSliceCategoryOverTensorUnit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7CD2B3B57CF3F92F">3.1-7 IsObjectInSliceCategoryOverTensorUnit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7AFA615480FC9802">3.1-8 IsMorphismInSliceCategoryOverTensorUnit</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7D9044767BEB1523">3.2 <span class="Heading">Global variables</span></a>
 </span>
@@ -42,25 +42,26 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7C701DBF7BAE649A">3.3 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87DB6D7A7C252320">3.3-1 AmbientCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D65319C7AAEC84C">3.3-2 BaseObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A17D31882CE4EE7">3.3-3 BaseObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82EFEF467C7BB134">3.3-4 UnderlyingMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X80F531C77F293375">3.3-5 UnderlyingCell</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X869AA36081C4BD16">3.3-6 InclusionFunctor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C8918638236B93E">3.3-7 DualOverTensorUnit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BA55CC478BCD4A8">3.3-1 AmbientCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X78CF10AC82D9054B">3.3-2 BaseObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8291BFCA78521355">3.3-3 BaseObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B620AE8872CE95B">3.3-4 UnderlyingMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81C812107D467D72">3.3-5 SourceOfUnderlyingMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7CCE5F9D8572D424">3.3-6 UnderlyingCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84D83FBC86105D0A">3.3-7 InclusionFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C8918638236B93E">3.3-8 DualOverTensorUnit</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X86EC0F0A78ECBC10">3.4 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X86703FBA83596A90">3.4-1 AsSliceCategoryCell</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87B294557D39C103">3.4-2 /</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7922951C8370AC63">3.4-3 AsSliceCategoryCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X80B9651E7DA61673">3.4-1 AsSliceCategoryCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84693C3D83FD387A">3.4-2 /</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D919F0F84E35BCA">3.4-3 AsSliceCategoryCell</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7DE8E16C7C2D387B">3.5 <span class="Heading">Operations</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X862262807A391F12">3.5-1 MorphismFromCovariantArgumentOfInternalHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8308FE117DC6F301">3.5-1 MorphismFromCovariantArgumentOfInternalHom</a></span>
 </div></div>
 </div>
 
@@ -70,74 +71,74 @@
 
 <h4>3.1 <span class="Heading">GAP categories</span></h4>
 
-<p><a id="X8648AD2C8464F896" name="X8648AD2C8464F896"></a></p>
+<p><a id="X8624A403802FDB49" name="X8624A403802FDB49"></a></p>
 
-<h5>3.1-1 IsCapSliceCategory</h5>
+<h5>3.1-1 IsSliceCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapSliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of a slice category.</p>
 
-<p><a id="X7FC37F9E8075779D" name="X7FC37F9E8075779D"></a></p>
+<p><a id="X82F450737D961304" name="X82F450737D961304"></a></p>
 
-<h5>3.1-2 IsCapCategoryCellInASliceCategory</h5>
+<h5>3.1-2 IsCellInASliceCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryCellInASliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInASliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of cells in a slice category.</p>
 
-<p><a id="X7FEB7D597FD411AD" name="X7FEB7D597FD411AD"></a></p>
+<p><a id="X7D8D86A380731C43" name="X7D8D86A380731C43"></a></p>
 
-<h5>3.1-3 IsCapCategoryObjectInASliceCategory</h5>
+<h5>3.1-3 IsObjectInASliceCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryObjectInASliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInASliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of objects in a slice category.</p>
 
-<p><a id="X784E326E7BF2E893" name="X784E326E7BF2E893"></a></p>
+<p><a id="X83F929018537DD4C" name="X83F929018537DD4C"></a></p>
 
-<h5>3.1-4 IsCapCategoryMorphismInASliceCategory</h5>
+<h5>3.1-4 IsMorphismInASliceCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryMorphismInASliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInASliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of morphisms in a slice category.</p>
 
-<p><a id="X7EE962687FA1A3DE" name="X7EE962687FA1A3DE"></a></p>
+<p><a id="X7D59E37586B2EEB0" name="X7D59E37586B2EEB0"></a></p>
 
-<h5>3.1-5 IsCapSliceCategoryOverTensorUnit</h5>
+<h5>3.1-5 IsSliceCategoryOverTensorUnit</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapSliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of a slice category over the tensor unit.</p>
 
-<p><a id="X86297D047E51B817" name="X86297D047E51B817"></a></p>
+<p><a id="X7C9125D87D86C3AA" name="X7C9125D87D86C3AA"></a></p>
 
-<h5>3.1-6 IsCapCategoryCellInASliceCategoryOverTensorUnit</h5>
+<h5>3.1-6 IsCellInSliceCategoryOverTensorUnit</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryCellInASliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInSliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of cells in a slice category over the tensor unit.</p>
 
-<p><a id="X82D539E67C2DF16B" name="X82D539E67C2DF16B"></a></p>
+<p><a id="X7CD2B3B57CF3F92F" name="X7CD2B3B57CF3F92F"></a></p>
 
-<h5>3.1-7 IsCapCategoryObjectInASliceCategoryOverTensorUnit</h5>
+<h5>3.1-7 IsObjectInSliceCategoryOverTensorUnit</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryObjectInASliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInSliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of objects in a slice category over the tensor unit.</p>
 
-<p><a id="X781C15FC83376BD6" name="X781C15FC83376BD6"></a></p>
+<p><a id="X7AFA615480FC9802" name="X7AFA615480FC9802"></a></p>
 
-<h5>3.1-8 IsCapCategoryMorphismInASliceCategoryOverTensorUnit</h5>
+<h5>3.1-8 IsMorphismInSliceCategoryOverTensorUnit</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryMorphismInASliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInSliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of morphisms in a slice category over the tensor unit.</p>
@@ -155,7 +156,7 @@
 
 <h4>3.3 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X87DB6D7A7C252320" name="X87DB6D7A7C252320"></a></p>
+<p><a id="X7BA55CC478BCD4A8" name="X7BA55CC478BCD4A8"></a></p>
 
 <h5>3.3-1 AmbientCategory</h5>
 
@@ -164,7 +165,7 @@
 
 <p>The ambient category of the slice category <var class="Arg">S</var>.</p>
 
-<p><a id="X7D65319C7AAEC84C" name="X7D65319C7AAEC84C"></a></p>
+<p><a id="X78CF10AC82D9054B" name="X78CF10AC82D9054B"></a></p>
 
 <h5>3.3-2 BaseObject</h5>
 
@@ -173,7 +174,7 @@
 
 <p>The base object of the slice category <var class="Arg">S</var>.</p>
 
-<p><a id="X7A17D31882CE4EE7" name="X7A17D31882CE4EE7"></a></p>
+<p><a id="X8291BFCA78521355" name="X8291BFCA78521355"></a></p>
 
 <h5>3.3-3 BaseObject</h5>
 
@@ -182,27 +183,36 @@
 
 <p>The base object underlying <var class="Arg">cell</var>.</p>
 
-<p><a id="X82EFEF467C7BB134" name="X82EFEF467C7BB134"></a></p>
+<p><a id="X7B620AE8872CE95B" name="X7B620AE8872CE95B"></a></p>
 
 <h5>3.3-4 UnderlyingMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingMorphism</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingMorphism</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
 
-<p>The morphism in the ambient category underlying <var class="Arg">object</var>.</p>
+<p>The morphism in the ambient category underlying the slice category object <var class="Arg">obj</var>.</p>
 
-<p><a id="X80F531C77F293375" name="X80F531C77F293375"></a></p>
+<p><a id="X81C812107D467D72" name="X81C812107D467D72"></a></p>
 
-<h5>3.3-5 UnderlyingCell</h5>
+<h5>3.3-5 SourceOfUnderlyingMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCell</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> cell</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SourceOfUnderlyingMorphism</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> object</p>
 
-<p>The cell in the ambient category underlying <var class="Arg">cell</var>.</p>
+<p>The source of the morphism in the ambient category underlying the slice category object <var class="Arg">obj</var>.</p>
 
-<p><a id="X869AA36081C4BD16" name="X869AA36081C4BD16"></a></p>
+<p><a id="X7CCE5F9D8572D424" name="X7CCE5F9D8572D424"></a></p>
 
-<h5>3.3-6 InclusionFunctor</h5>
+<h5>3.3-6 UnderlyingCell</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCell</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> mor</p>
+
+<p>The cell in the ambient category underlying the slice category morphism <var class="Arg">mor</var>.</p>
+
+<p><a id="X84D83FBC86105D0A" name="X84D83FBC86105D0A"></a></p>
+
+<h5>3.3-7 InclusionFunctor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InclusionFunctor</code>( <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a functor</p>
@@ -211,7 +221,7 @@
 
 <p><a id="X7C8918638236B93E" name="X7C8918638236B93E"></a></p>
 
-<h5>3.3-7 DualOverTensorUnit</h5>
+<h5>3.3-8 DualOverTensorUnit</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualOverTensorUnit</code>( <var class="Arg">J</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
@@ -222,17 +232,17 @@
 
 <h4>3.4 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X86703FBA83596A90" name="X86703FBA83596A90"></a></p>
+<p><a id="X80B9651E7DA61673" name="X80B9651E7DA61673"></a></p>
 
 <h5>3.4-1 AsSliceCategoryCell</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsSliceCategoryCell</code>( <var class="Arg">mor</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X87B294557D39C103" name="X87B294557D39C103"></a></p>
+<p><a id="X84693C3D83FD387A" name="X84693C3D83FD387A"></a></p>
 
 <h5>3.4-2 /</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; /</code>( <var class="Arg">mor</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X7922951C8370AC63" name="X7922951C8370AC63"></a></p>
+<p><a id="X7D919F0F84E35BCA" name="X7D919F0F84E35BCA"></a></p>
 
 <h5>3.4-3 AsSliceCategoryCell</h5>
 
@@ -241,7 +251,7 @@
 
 <h4>3.5 <span class="Heading">Operations</span></h4>
 
-<p><a id="X862262807A391F12" name="X862262807A391F12"></a></p>
+<p><a id="X8308FE117DC6F301" name="X8308FE117DC6F301"></a></p>
 
 <h5>3.5-1 MorphismFromCovariantArgumentOfInternalHom</h5>
 
