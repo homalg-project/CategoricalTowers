@@ -45,10 +45,10 @@ DeclareAttribute( "NormalizedDistinguishedSubtrahend",
 DeclareAttribute( "PreMinuendAndSubtrahendInUnderlyingLattice",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
 
-DeclareAttribute( "NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra",
+DeclareAttribute( "NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
 
-DeclareAttribute( "StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra",
+DeclareAttribute( "StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
 
 #! @Section Operations
