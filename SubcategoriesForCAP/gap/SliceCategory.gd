@@ -101,8 +101,8 @@ DeclareAttribute( "BaseObject",
         IsCellInASliceCategory );
 
 #! @Description
-#!  The morphism in the ambient category underlying <A>object</A>.
-#! @Arguments object
+#!  The morphism in the ambient category underlying the slice category object <A>obj</A>.
+#! @Arguments obj
 #! @Returns a &CAP; morphism
 DeclareAttribute( "UnderlyingMorphism",
         IsObjectInASliceCategory );
