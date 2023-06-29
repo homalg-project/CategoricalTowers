@@ -14,43 +14,43 @@
 
 #! @Description
 #!  The &GAP; category of a slice category.
-DeclareCategory( "IsCapSliceCategory",
+DeclareCategory( "IsSliceCategory",
         IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of cells in a slice category.
-DeclareCategory( "IsCapCategoryCellInASliceCategory",
+DeclareCategory( "IsCellInASliceCategory",
         IsCapCategoryCell );
 
 #! @Description
 #!  The &GAP; category of objects in a slice category.
-DeclareCategory( "IsCapCategoryObjectInASliceCategory",
-        IsCapCategoryCellInASliceCategory and IsCapCategoryObject );
+DeclareCategory( "IsObjectInASliceCategory",
+        IsCellInASliceCategory and IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a slice category.
-DeclareCategory( "IsCapCategoryMorphismInASliceCategory",
-        IsCapCategoryCellInASliceCategory and IsCapCategoryMorphism );
+DeclareCategory( "IsMorphismInASliceCategory",
+        IsCellInASliceCategory and IsCapCategoryMorphism );
 
 #! @Description
 #!  The &GAP; category of a slice category over the tensor unit.
-DeclareCategory( "IsCapSliceCategoryOverTensorUnit",
-        IsCapSliceCategory );
+DeclareCategory( "IsSliceCategoryOverTensorUnit",
+        IsSliceCategory );
 
 #! @Description
 #!  The &GAP; category of cells in a slice category over the tensor unit.
-DeclareCategory( "IsCapCategoryCellInASliceCategoryOverTensorUnit",
-        IsCapCategoryCellInASliceCategory );
+DeclareCategory( "IsCellInSliceCategoryOverTensorUnit",
+        IsCellInASliceCategory );
 
 #! @Description
 #!  The &GAP; category of objects in a slice category over the tensor unit.
-DeclareCategory( "IsCapCategoryObjectInASliceCategoryOverTensorUnit",
-        IsCapCategoryCellInASliceCategoryOverTensorUnit and IsCapCategoryObjectInASliceCategory );
+DeclareCategory( "IsObjectInSliceCategoryOverTensorUnit",
+        IsCellInSliceCategoryOverTensorUnit and IsObjectInASliceCategory );
 
 #! @Description
 #!  The &GAP; category of morphisms in a slice category over the tensor unit.
-DeclareCategory( "IsCapCategoryMorphismInASliceCategoryOverTensorUnit",
-        IsCapCategoryCellInASliceCategoryOverTensorUnit and IsCapCategoryMorphismInASliceCategory );
+DeclareCategory( "IsMorphismInSliceCategoryOverTensorUnit",
+        IsCellInSliceCategoryOverTensorUnit and IsMorphismInASliceCategory );
 
 ####################################
 #
@@ -72,9 +72,9 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY" );
 #! @Arguments S
 #! @Returns a list
 DeclareAttribute( "AmbientCategory",
-        IsCapSliceCategory );
+        IsSliceCategory );
 
-CapJitAddTypeSignature( "AmbientCategory", [ IsCapSliceCategory ], function ( input_types )
+CapJitAddTypeSignature( "AmbientCategory", [ IsSliceCategory ], function ( input_types )
     
     return CapJitDataTypeOfCategory( AmbientCategory( input_types[1].category ) );
     
@@ -85,9 +85,9 @@ end );
 #! @Arguments S
 #! @Returns a &CAP; object
 DeclareAttribute( "BaseObject",
-        IsCapSliceCategory );
+        IsSliceCategory );
 
-CapJitAddTypeSignature( "BaseObject", [ IsCapSliceCategory ], function ( input_types )
+CapJitAddTypeSignature( "BaseObject", [ IsSliceCategory ], function ( input_types )
     
     return CapJitDataTypeOfObjectOfCategory( AmbientCategory( input_types[1].category ) );
     
@@ -98,33 +98,40 @@ end );
 #! @Arguments cell
 #! @Returns a &CAP; object
 DeclareAttribute( "BaseObject",
-        IsCapCategoryCellInASliceCategory );
+        IsCellInASliceCategory );
 
 #! @Description
-#!  The morphism in the ambient category underlying <A>object</A>.
-#! @Arguments object
+#!  The morphism in the ambient category underlying the slice category object <A>obj</A>.
+#! @Arguments obj
 #! @Returns a &CAP; morphism
 DeclareAttribute( "UnderlyingMorphism",
-        IsCapCategoryObjectInASliceCategory );
+        IsObjectInASliceCategory );
 
-CapJitAddTypeSignature( "UnderlyingMorphism", [ IsCapCategoryObjectInASliceCategory ], function ( input_types )
+CapJitAddTypeSignature( "UnderlyingMorphism", [ IsObjectInASliceCategory ], function ( input_types )
     
-    Assert( 0, IsCapSliceCategory( input_types[1].category ) );
+    Assert( 0, IsSliceCategory( input_types[1].category ) );
     
     return CapJitDataTypeOfMorphismOfCategory( AmbientCategory( input_types[1].category ) );
     
 end );
 
 #! @Description
-#!  The cell in the ambient category underlying <A>cell</A>.
-#! @Arguments cell
-#! @Returns a &CAP; cell
-DeclareAttribute( "UnderlyingCell",
-        IsCapCategoryCellInASliceCategory );
+#!  The source of the morphism in the ambient category underlying the slice category object <A>obj</A>.
+#! @Arguments obj
+#! @Returns a &CAP; object
+DeclareAttribute( "SourceOfUnderlyingMorphism",
+        IsObjectInASliceCategory );
 
-CapJitAddTypeSignature( "UnderlyingCell", [ IsCapCategoryMorphismInASliceCategory ], function ( input_types )
+#! @Description
+#!  The cell in the ambient category underlying the slice category morphism <A>mor</A>.
+#! @Arguments mor
+#! @Returns a &CAP; mor
+DeclareAttribute( "UnderlyingCell",
+        IsCellInASliceCategory );
+
+CapJitAddTypeSignature( "UnderlyingCell", [ IsMorphismInASliceCategory ], function ( input_types )
     
-    Assert( 0, IsCapSliceCategory( input_types[1].category ) );
+    Assert( 0, IsSliceCategory( input_types[1].category ) );
     
     return CapJitDataTypeOfMorphismOfCategory( AmbientCategory( input_types[1].category ) );
     
@@ -135,7 +142,7 @@ end );
 #! @Arguments S
 #! @Returns a functor
 DeclareAttribute( "InclusionFunctor",
-        IsCapSliceCategory );
+        IsSliceCategory );
 
 #! @Description
 #!  The argument is an object $J \colon j \rightarrow 1$ in the slice category <A>S</A> over the tensor unit.
@@ -163,7 +170,7 @@ end );
 #! @Arguments J, I
 #! @Returns a morphism
 DeclareOperation( "MorphismFromCovariantArgumentOfInternalHom",
-        [ IsCapCategoryObjectInASliceCategoryOverTensorUnit, IsCapCategoryObjectInASliceCategoryOverTensorUnit ] );
+        [ IsObjectInSliceCategoryOverTensorUnit, IsObjectInSliceCategoryOverTensorUnit ] );
 
 ####################################
 #
@@ -173,12 +180,12 @@ DeclareOperation( "MorphismFromCovariantArgumentOfInternalHom",
 
 #! @Arguments mor, S
 DeclareOperation( "AsSliceCategoryCell",
-        [ IsCapCategoryMorphism, IsCapSliceCategory ] );
+        [ IsCapCategoryMorphism, IsSliceCategory ] );
 
 #! @Arguments mor, S
 DeclareOperation( "/",
-        [ IsCapCategoryMorphism, IsCapSliceCategory ] );
+        [ IsCapCategoryMorphism, IsSliceCategory ] );
 
 #! @Arguments A, mor, B
 DeclareOperation( "AsSliceCategoryCell",
-        [ IsCapCategoryObjectInASliceCategory, IsCapCategoryMorphism, IsCapCategoryObjectInASliceCategory ] );
+        [ IsObjectInASliceCategory, IsCapCategoryMorphism, IsObjectInASliceCategory ] );

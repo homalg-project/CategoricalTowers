@@ -49,7 +49,7 @@ end );
 ##
 InstallMethod( AsSubcategoryCell,
         "for two CAP objects in a subcategory and a CAP morphism",
-        [ IsCapCategoryObjectInASubcategory, IsCapCategoryMorphism, IsCapCategoryObjectInASubcategory ],
+        [ IsObjectInASubcategory, IsCapCategoryMorphism, IsObjectInASubcategory ],
         
   function( source, morphism, range )
     local D, m;
@@ -157,16 +157,16 @@ InstallMethod( Subcategory,
     ## filters and properties
     if is_full then
         category_constructor_options.category_filter := IsCapFullSubcategory;
-        category_constructor_options.category_object_filter := IsCapCategoryObjectInAFullSubcategory;
-        category_constructor_options.category_morphism_filter := IsCapCategoryMorphismInAFullSubcategory;
+        category_constructor_options.category_object_filter := IsObjectInAFullSubcategory;
+        category_constructor_options.category_morphism_filter := IsMorphismInAFullSubcategory;
         properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
                         "IsAbCategory",
                         "IsLinearCategoryOverCommutativeRing"
                         ];
     else
         category_constructor_options.category_filter := IsCapSubcategory;
-        category_constructor_options.category_object_filter := IsCapCategoryObjectInASubcategory;
-        category_constructor_options.category_morphism_filter := IsCapCategoryMorphismInASubcategory;
+        category_constructor_options.category_object_filter := IsObjectInASubcategory;
+        category_constructor_options.category_morphism_filter := IsMorphismInASubcategory;
         properties := [ #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
                         #"IsAbCategory", cannot be inherited
                         #"IsLinearCategoryOverCommutativeRing", cannot be inherited
@@ -266,7 +266,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsCapCategoryObjectInASubcategory ],
+    [ IsObjectInASubcategory ],
   function( a )
     
     Print( "An object in subcategory given by: " );
@@ -277,7 +277,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsCapCategoryMorphismInASubcategory ],
+    [ IsMorphismInASubcategory ],
   function( phi )
     
     Print( "A morphism in subcategory given by: " );
@@ -288,7 +288,7 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsCapCategoryObjectInASubcategory ],
+    [ IsObjectInASubcategory ],
   function( a )
     
     Print( "An object in subcategory given by: " );
@@ -299,7 +299,7 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsCapCategoryMorphismInASubcategory ],
+    [ IsMorphismInASubcategory ],
   function( phi )
     
     Print( "A morphism in subcategory given by: " );

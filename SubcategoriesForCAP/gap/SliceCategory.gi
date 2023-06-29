@@ -43,8 +43,8 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
 
 ##
 InstallMethod( BaseObject,
-        "for a CAP slice category object",
-        [ IsCapCategoryCellInASliceCategory ],
+        "for a slice category object",
+        [ IsCellInASliceCategory ],
         
   function( object )
     
@@ -53,13 +53,24 @@ InstallMethod( BaseObject,
 end );
 
 ##
-InstallMethod( UnderlyingCell,
-        "for a CAP slice category object",
-        [ IsCapCategoryObjectInASliceCategory ],
+InstallOtherMethodForCompilerForCAP( SourceOfUnderlyingMorphism,
+        "for a slice category object",
+        [ IsSliceCategory, IsObjectInASliceCategory ],
+        
+  function( slice_category, object )
+    
+    return Source( UnderlyingMorphism( object ) );
+    
+end );
+
+##
+InstallMethod( SourceOfUnderlyingMorphism,
+        "for a slice category object",
+        [ IsObjectInASliceCategory ],
         
   function( object )
     
-    return Source( UnderlyingMorphism( object ) );
+    return SourceOfUnderlyingMorphism( CapCategory( object ), object );
     
 end );
 
@@ -97,7 +108,7 @@ end );
 ##
 InstallMethod( MorphismFromCovariantArgumentOfInternalHom,
         "for two objects in a slice category over a tensor unit",
-        [ IsCapCategoryObjectInASliceCategoryOverTensorUnit, IsCapCategoryObjectInASliceCategoryOverTensorUnit ],
+        [ IsObjectInSliceCategoryOverTensorUnit, IsObjectInSliceCategoryOverTensorUnit ],
         
   function( J, I )
     local source, target;
@@ -125,7 +136,7 @@ end );
 ##################################
 
 BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
-  function( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter )
+  function( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter, object_constructor, object_datum )
     local C, list_of_operations_to_install, skip, func, pos, properties, morphism_constructor, morphism_datum,
           Slice_over_B, TensorProductOnObjectsInSliceOverTensorUnit;
     
@@ -173,15 +184,15 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         #% CAP_JIT_DROP_NEXT_STATEMENT
         CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), [ "the morphism datum given to the morphism constructor of <cat>" ] );
         
-        if IsEqualForObjects( AmbientCategory( cat ), Source( underlying_morphism ), UnderlyingCell( source ) ) = false then
+        if IsEqualForObjects( AmbientCategory( cat ), Source( underlying_morphism ), SourceOfUnderlyingMorphism( source ) ) = false then
             
-            Error( "the source of the morphism datum must be equal to <UnderlyingCell( source )>" );
+            Error( "the source of the morphism datum must be equal to <SourceOfUnderlyingMorphism( source )>" );
             
         fi;
         
-        if IsEqualForObjects( AmbientCategory( cat ), Range( underlying_morphism ), UnderlyingCell( range ) ) = false then
+        if IsEqualForObjects( AmbientCategory( cat ), Range( underlying_morphism ), SourceOfUnderlyingMorphism( range ) ) = false then
             
-            Error( "the range of the morphism datum must be equal to <UnderlyingCell( range )>" );
+            Error( "the range of the morphism datum must be equal to <SourceOfUnderlyingMorphism( range )>" );
             
         fi;
         
@@ -198,25 +209,28 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     end;
     
-    Slice_over_B := CategoryConstructor( rec(
-                     name := name,
-                     category_filter := category_filter,
-                     category_object_filter := category_object_filter,
-                     category_morphism_filter := category_morphism_filter,
-                     properties := properties,
-                     morphism_constructor := morphism_constructor,
-                     morphism_datum := morphism_datum,
-                     list_of_operations_to_install := list_of_operations_to_install,
-                     create_func_bool := "default",
-                     create_func_morphism := "default",
-                     create_func_morphism_or_fail := "default",
-                     underlying_category_getter_string := "AmbientCategory",
-                     # UnderlyingMorphism is an attribute in the eager case but a proper operation in the lazy case
-                     underlying_object_getter_string := "({ cat, obj } -> Source( UnderlyingMorphism( obj ) ))",
-                     underlying_morphism_getter_string := "MorphismDatum",
-                     top_object_getter_string := "ObjectConstructor",
-                     top_morphism_getter_string := "MorphismConstructor",
-                     ) );
+    Slice_over_B :=
+      CategoryConstructor(
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
+                   properties := properties,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
+                   list_of_operations_to_install := list_of_operations_to_install,
+                   create_func_bool := "default",
+                   create_func_morphism := "default",
+                   create_func_morphism_or_fail := "default",
+                   underlying_category_getter_string := "AmbientCategory",
+                   # UnderlyingMorphism is an attribute in the eager case but a proper operation in the lazy case
+                   underlying_object_getter_string := "SourceOfUnderlyingMorphism",
+                   underlying_morphism_getter_string := "MorphismDatum",
+                   top_object_getter_string := "ObjectConstructor",
+                   top_morphism_getter_string := "MorphismConstructor",
+                   ) );
     
     Slice_over_B!.compiler_hints.category_attribute_names := [
         "AmbientCategory",
@@ -365,7 +379,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                            ProjectionInFactorOfFiberProductWithGivenFiberProduct( AmbientCategory( cat ),
                                    List( L, UnderlyingMorphism ),
                                    k,
-                                   Source( UnderlyingMorphism( P ) ) ),
+                                   SourceOfUnderlyingMorphism( cat, P ) ),
                            L[k] );
             
         end );
@@ -378,9 +392,9 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                            T,
                            UniversalMorphismIntoFiberProductWithGivenFiberProduct( AmbientCategory( cat ),
                                    List( L, UnderlyingMorphism ),
-                                   Source( UnderlyingMorphism( T ) ),
+                                   SourceOfUnderlyingMorphism( cat, T ),
                                    List( tau, UnderlyingCell ),
-                                   Source( UnderlyingMorphism( P ) ) ),
+                                   SourceOfUnderlyingMorphism( cat, P ) ),
                            P );
             
         end );
@@ -399,9 +413,9 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             return MorphismConstructor( cat,
                            L[k],
                            InjectionOfCofactorOfCoproductWithGivenCoproduct( AmbientCategory( cat ),
-                                   List( L, Li -> Source( UnderlyingMorphism( Li ) ) ),
+                                   List( L, Li -> SourceOfUnderlyingMorphism( cat, Li ) ),
                                    k,
-                                   Source( UnderlyingMorphism( I ) ) ),
+                                   SourceOfUnderlyingMorphism( cat, I ) ),
                            I );
             
         end );
@@ -413,10 +427,10 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             return MorphismConstructor( cat,
                            I,
                            UniversalMorphismFromCoproductWithGivenCoproduct( AmbientCategory( cat ),
-                                   List( L, Li -> Source( UnderlyingMorphism( Li ) ) ),
-                                   Source( UnderlyingMorphism( T ) ),
+                                   List( L, Li -> SourceOfUnderlyingMorphism( cat, Li ) ),
+                                   SourceOfUnderlyingMorphism( cat, T ),
                                    List( tau, UnderlyingCell ),
-                                   Source( UnderlyingMorphism( I ) ) ),
+                                   SourceOfUnderlyingMorphism( cat, I ) ),
                            T );
             
         end );
@@ -461,11 +475,11 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             return MorphismConstructor( cat,
                            T,
                            UniversalMorphismIntoEqualizerWithGivenEqualizer( AmbientCategory( cat ),
-                                   Source( UnderlyingMorphism( A ) ),
+                                   SourceOfUnderlyingMorphism( cat, A ),
                                    List( L, UnderlyingCell ),
-                                   Source( UnderlyingMorphism( T ) ),
+                                   SourceOfUnderlyingMorphism( cat, T ),
                                    UnderlyingCell( tau ),
-                                   Source( UnderlyingMorphism( E ) ) ),
+                                   SourceOfUnderlyingMorphism( cat, E ) ),
                            E );
             
         end );
@@ -510,11 +524,11 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             return MorphismConstructor( cat,
                            E,
                            UniversalMorphismFromCoequalizerWithGivenCoequalizer( AmbientCategory( cat ),
-                                   Source( UnderlyingMorphism( A ) ),
+                                   SourceOfUnderlyingMorphism( cat, A ),
                                    List( L, UnderlyingCell ),
-                                   Source( UnderlyingMorphism( T ) ),
+                                   SourceOfUnderlyingMorphism( cat, T ),
                                    UnderlyingCell( tau ),
-                                   Source( UnderlyingMorphism( E ) ) ),
+                                   SourceOfUnderlyingMorphism( cat, E ) ),
                            T );
             
         end );
@@ -634,7 +648,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                                    [ BaseObject( cat ), Omega_C ],
                                    Range( mono_C ),
                                    [ UnderlyingMorphism( Range( mono ) ), chi_C ],
-                                   Source( UnderlyingMorphism( Omega ) ) ),
+                                   SourceOfUnderlyingMorphism( cat, Omega ) ),
                            Omega );
             
         end );
@@ -814,7 +828,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             range := I;
             
-            return MorphismConstructor( cat, source, LeftUnitor( C, Source( UnderlyingMorphism( I ) ) ), range );
+            return MorphismConstructor( cat, source, LeftUnitor( C, SourceOfUnderlyingMorphism( cat, I ) ), range );
             
         end );
         
@@ -837,7 +851,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             range := I;
             
-            return MorphismConstructor( cat, source, RightUnitor( C, Source( UnderlyingMorphism( I ) ) ), range );
+            return MorphismConstructor( cat, source, RightUnitor( C, SourceOfUnderlyingMorphism( cat, I ) ), range );
             
         end );
         
@@ -859,7 +873,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             range := TensorProductOnObjectsInSliceOverTensorUnit( cat, TensorProductOnObjectsInSliceOverTensorUnit( cat, I, J ), K );
             
             return MorphismConstructor( cat, source,
-                                             AssociatorRightToLeft( C, Source( UnderlyingMorphism( I ) ), Source( UnderlyingMorphism( J ) ), Source( UnderlyingMorphism( K ) ) ),
+                                             AssociatorRightToLeft( C, SourceOfUnderlyingMorphism( cat, I ), SourceOfUnderlyingMorphism( cat, J ), SourceOfUnderlyingMorphism( cat, K ) ),
                                              range );
             
         end );
@@ -882,7 +896,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             range := TensorProductOnObjectsInSliceOverTensorUnit( cat, I, TensorProductOnObjectsInSliceOverTensorUnit( cat, J, K ) );
             
             return MorphismConstructor( cat, source,
-                                             AssociatorRightToLeft( C, Source( UnderlyingMorphism( I ) ), Source( UnderlyingMorphism( J ) ), Source( UnderlyingMorphism( K ) ) ),
+                                             AssociatorRightToLeft( C, SourceOfUnderlyingMorphism( cat, I ), SourceOfUnderlyingMorphism( cat, J ), SourceOfUnderlyingMorphism( cat, K ) ),
                                              range );
             
         end );
@@ -906,7 +920,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                 
                 range := TensorProductOnObjectsInSliceOverTensorUnit( cat, J, I );
                 
-                return MorphismConstructor( cat, source, Braiding( C, Source( UnderlyingMorphism( I ) ), Source( UnderlyingMorphism( J ) ) ), range );
+                return MorphismConstructor( cat, source, Braiding( C, SourceOfUnderlyingMorphism( cat, I ), SourceOfUnderlyingMorphism( cat, J ) ), range );
                 
             end );
             
@@ -1044,7 +1058,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsCapCategoryObjectInASliceCategory ],
+    [ IsObjectInASliceCategory ],
   function( a )
     
     Print( "An object in the slice category given by: " );
@@ -1055,7 +1069,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsCapCategoryMorphismInASliceCategory ],
+    [ IsMorphismInASliceCategory ],
   function( phi )
     
     Print( "A morphism in the slice category given by: " );
@@ -1066,7 +1080,7 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsCapCategoryObjectInASliceCategory ],
+    [ IsObjectInASliceCategory ],
   function( a )
     
     Display( UnderlyingMorphism( a ) );
@@ -1077,7 +1091,7 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsCapCategoryMorphismInASliceCategory ],
+    [ IsMorphismInASliceCategory ],
   function( phi )
     
     Display( UnderlyingCell( phi ) );

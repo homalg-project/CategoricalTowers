@@ -25,18 +25,18 @@ DeclareCategory( "IsCapSubcategoryGeneratedByFiniteNumberOfMorphisms",
 
 #! @Description
 #!  The &GAP; category of cells in a subcategory.
-DeclareCategory( "IsCapCategoryCellInASubcategory",
+DeclareCategory( "IsCellInASubcategory",
         IsCapCategoryCell );
 
 #! @Description
 #!  The &GAP; category of objects in a subcategory.
-DeclareCategory( "IsCapCategoryObjectInASubcategory",
-        IsCapCategoryCellInASubcategory and IsCapCategoryObject );
+DeclareCategory( "IsObjectInASubcategory",
+        IsCellInASubcategory and IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a subcategory.
-DeclareCategory( "IsCapCategoryMorphismInASubcategory",
-        IsCapCategoryCellInASubcategory and IsCapCategoryMorphism );
+DeclareCategory( "IsMorphismInASubcategory",
+        IsCellInASubcategory and IsCapCategoryMorphism );
 
 ####################################
 #
@@ -58,7 +58,7 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY" );
 #! @Arguments cell
 #! @Returns a &CAP; cell
 DeclareAttribute( "UnderlyingCell",
-        IsCapCategoryCellInASubcategory );
+        IsCellInASubcategory );
 
 #! @Description
 #!  The set of known objects of the subcategory <A>A</A>.
@@ -90,7 +90,7 @@ DeclareOperation( "AsSubcategoryCell",
 
 #! @Arguments source, mor, range
 DeclareOperation( "AsSubcategoryCell",
-                  [ IsCapCategoryObjectInASubcategory, IsCapCategoryMorphism, IsCapCategoryObjectInASubcategory ] );
+                  [ IsObjectInASubcategory, IsCapCategoryMorphism, IsObjectInASubcategory ] );
 
 #! @Arguments c, D
 DeclareOperation( "\/",

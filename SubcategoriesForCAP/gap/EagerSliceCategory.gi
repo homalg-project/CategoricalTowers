@@ -7,7 +7,7 @@
 ##
 InstallMethod( AsSliceCategoryCell,
         "for a CAP morphism and a CAP eager slice category",
-        [ IsCapCategoryMorphism, IsCapEagerSliceCategory ],
+        [ IsCapCategoryMorphism, IsEagerSliceCategory ],
         
   function( morphism, S )
     
@@ -32,7 +32,7 @@ end );
 ##
 InstallMethod( AsSliceCategoryCell,
         "for two CAP objects in an eager slice category and a CAP morphism",
-        [ IsCapCategoryObjectInAnEagerSliceCategory, IsCapCategoryMorphism, IsCapCategoryObjectInAnEagerSliceCategory ],
+        [ IsObjectInAnEagerSliceCategory, IsCapCategoryMorphism, IsObjectInAnEagerSliceCategory ],
         
   function( source, morphism, range )
     local S, m;
@@ -45,7 +45,7 @@ end );
 
 ##
 InstallMethod( InclusionFunctor,
-        [ IsCapEagerSliceCategory ],
+        [ IsEagerSliceCategory ],
         
   function( S )
     local C, name, F;
@@ -80,8 +80,9 @@ InstallMethod( SliceCategory,
         [ IsCapCategoryObject ],
         
   function( B )
-    local C, over_tensor_unit, name, category_filter,
-          category_object_filter, category_morphism_filter, S;
+    local C, over_tensor_unit,
+          name, category_filter, category_object_filter, category_morphism_filter,
+          object_constructor, object_datum, S;
     
     C := CapCategory( B );
     
@@ -94,22 +95,21 @@ InstallMethod( SliceCategory,
     fi;
     
     if IsIdenticalObj( over_tensor_unit, true ) then
-        category_filter := IsCapEagerSliceCategoryOverTensorUnit;
-        category_object_filter := IsCapCategoryObjectInAnEagerSliceCategoryOverTensorUnit;
-        category_morphism_filter := IsCapCategoryMorphismInAnEagerSliceCategoryOverTensorUnit;
+        category_filter := IsEagerSliceCategoryOverTensorUnit;
+        category_object_filter := IsObjectInAnEagerSliceCategoryOverTensorUnit;
+        category_morphism_filter := IsMorphismInAnEagerSliceCategoryOverTensorUnit;
     else
-        category_filter := IsCapEagerSliceCategory;
-        category_object_filter := IsCapCategoryObjectInAnEagerSliceCategory;
-        category_morphism_filter := IsCapCategoryMorphismInAnEagerSliceCategory;
+        category_filter := IsEagerSliceCategory;
+        category_object_filter := IsObjectInAnEagerSliceCategory;
+        category_morphism_filter := IsMorphismInAnEagerSliceCategory;
     fi;
-    
-    S := CAP_INTERNAL_SLICE_CATEGORY( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter );
     
     # MorphismConstructor and MorphismDatum are set in CAP_INTERNAL_SLICE_CATEGORY
     # ObjectConstructor and ObjectDatum have to take the lazy/eager structure into account
     
     ##
-    AddObjectConstructor( S, function( cat, underlying_morphism )
+    object_constructor :=
+      function( cat, underlying_morphism )
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), [ "the object datum given to the object constructor of <cat>" ] );
@@ -123,14 +123,24 @@ InstallMethod( SliceCategory,
         return CreateCapCategoryObjectWithAttributes( cat,
                        UnderlyingMorphism, underlying_morphism );
         
-    end );
+    end;
     
     ##
-    AddObjectDatum( S, function( cat, object )
+    object_datum :=
+      function( cat, object )
         
         return UnderlyingMorphism( object );
         
-    end );
+    end;
+    
+    S := CAP_INTERNAL_SLICE_CATEGORY( B,
+                 over_tensor_unit,
+                 name,
+                 category_filter,
+                 category_object_filter,
+                 category_morphism_filter,
+                 object_constructor,
+                 object_datum );
     
     if CanCompute( C, "IsSplitEpimorphism" ) then
         
