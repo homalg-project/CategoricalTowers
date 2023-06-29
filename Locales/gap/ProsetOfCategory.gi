@@ -379,23 +379,23 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     P := CategoryConstructor( :
                  name := name,
+                 category_as_first_argument := true,
                  category_filter := category_filter,
                  category_object_filter := category_object_filter,
                  category_morphism_filter := category_morphism_filter,
                  properties := properties,
-                 list_of_operations_to_install := list_of_operations_to_install,
-                 create_func_bool := "default",
-                 create_func_object := "default",
-                 create_func_morphism := create_func_morphism,
-                 create_func_morphism_or_fail := "default",
                  object_constructor := object_constructor,
                  object_datum := object_datum,
                  morphism_constructor := morphism_constructor,
                  morphism_datum := morphism_datum,
+                 list_of_operations_to_install := list_of_operations_to_install,
                  underlying_category_getter_string := "AmbientCategory",
                  underlying_object_getter_string := "ObjectDatum",
                  underlying_morphism_getter_string := "MorphismDatum",
-                 category_as_first_argument := true
+                 create_func_bool := "default",
+                 create_func_object := "default",
+                 create_func_morphism := create_func_morphism,
+                 create_func_morphism_or_fail := "default"
                  );
     
     if ( HasIsFinite and IsFinite )( C ) then
