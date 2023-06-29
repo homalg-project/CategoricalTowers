@@ -3,10 +3,10 @@
 #! @Example
 LoadPackage( "Locales" );
 #! true
-D := DiscreteSkeletalCategory( "IsInt" );
-#! DiscreteSkeletalCategory( "IsInt" )
+D := DiscreteSkeletalCategory( "IsPosInt" );
+#! DiscreteSkeletalCategory( "IsPosInt" )
 Display( D );
-#! A CAP category with name DiscreteSkeletalCategory( "IsInt" ):
+#! A CAP category with name DiscreteSkeletalCategory( "IsPosInt" ):
 #! 
 #! 11 primitive operations were used to derive 74 operations for this category
 #! which algorithmically
@@ -16,19 +16,19 @@ Display( D );
 #! * IsDiscreteCategory
 #! * IsSkeletalCategory
 one := 1 / D;
-#! <An object in DiscreteSkeletalCategory( "IsInt" )>
+#! <An object in DiscreteSkeletalCategory( "IsPosInt" )>
 Display( one );
 #! 1
 #!
-#! An object in DiscreteSkeletalCategory( "IsInt" ) given by the above data
+#! An object in DiscreteSkeletalCategory( "IsPosInt" ) given by the above data
 IsWellDefined( one );
 #! true
 IsWellDefined( "1" / D );
 #! false
 two := 2 / D;
-#! <An object in DiscreteSkeletalCategory( "IsInt" )>
+#! <An object in DiscreteSkeletalCategory( "IsPosInt" )>
 id_one := IdentityMorphism( one );
-#! <An identity morphism in DiscreteSkeletalCategory( "IsInt" )>
+#! <An identity morphism in DiscreteSkeletalCategory( "IsPosInt" )>
 MorphismDatum( id_one );
 #! fail
 IsOne( PreCompose( id_one, id_one ) );
