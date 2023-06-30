@@ -48,15 +48,15 @@ IsWellDefined( dq1 );
 omega := SubobjectClassifier( DecoratedFinQuivers );
 #! <An object in CategoryOfDecoratedQuivers( decorating_quiver )>
 Display( omega );
-#! ( { 0 := "magenta", 1 := "cyan", 2 := "magenta", 3 := "cyan" },
-#!   { 0 := [ 0, 0, "red" ], 1 := [ 1, 0, "brown" ], 2 := [ 0, 1, "orange" ],
-#!     3 := [ 1, 1, "blue" ], 4 := [ 1, 1, "green" ], 5 := [ 2, 0, "red" ],
-#!     6 := [ 3, 0, "brown" ], 7 := [ 2, 1, "orange" ], 8 := [ 3, 1, "blue" ],
-#!     9 := [ 3, 1, "green" ], 10 := [ 0, 2, "red" ], 11 := [ 1, 2, "brown" ],
-#!     12 := [ 0, 3, "orange" ], 13 := [ 1, 3, "blue" ], 14 := [ 1, 3, "green" ],
-#!     15 := [ 2, 2, "red" ], 16 := [ 3, 2, "brown" ], 17 := [ 2, 3, "orange" ],
-#!     18 := [ 3, 3, "blue" ], 19 := [ 3, 3, "green" ], 20 := [ 2, 2, "red" ],
-#!     21 := [ 3, 2, "brown" ], 22 := [ 2, 3, "orange" ], 23 := [ 3, 3, "blue" ],
+#! ( { 0 := "magenta", 1 := "magenta", 2 := "cyan", 3 := "cyan" },
+#!   { 0 := [ 0, 0, "red" ], 1 := [ 1, 0, "red" ], 2 := [ 0, 1, "red" ],
+#!     3 := [ 1, 1, "red" ], 4 := [ 1, 1, "red" ], 5 := [ 2, 0, "brown" ],
+#!     6 := [ 3, 0, "brown" ], 7 := [ 2, 1, "brown" ], 8 := [ 3, 1, "brown" ],
+#!     9 := [ 3, 1, "brown" ], 10 := [ 0, 2, "orange" ], 11 := [ 1, 2, "orange" ],
+#!     12 := [ 0, 3, "orange" ], 13 := [ 1, 3, "orange" ], 14 := [ 1, 3, "orange" ],
+#!     15 := [ 2, 2, "blue" ], 16 := [ 3, 2, "blue" ], 17 := [ 2, 3, "blue" ],
+#!     18 := [ 3, 3, "blue" ], 19 := [ 3, 3, "blue" ], 20 := [ 2, 2, "green" ],
+#!     21 := [ 3, 2, "green" ], 22 := [ 2, 3, "green" ], 23 := [ 3, 3, "green" ],
 #!     24 := [ 3, 3, "green" ] } )
 #! @EndExample
 #! @EndChunk
