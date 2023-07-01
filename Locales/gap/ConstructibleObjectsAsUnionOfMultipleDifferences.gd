@@ -27,16 +27,16 @@ DeclareCategory( "IsMorphismBetweenConstructibleObjectsAsUnionOfMultipleDifferen
 
 #! @Section Attributes
 
-DeclareAttribute( "ListOfPreObjectsInMeetSemilatticeOfDifferences",
+DeclareAttribute( "ListOfPreObjectsInMeetSemilatticeOfMultipleDifferences",
         IsConstructibleObjectAsUnionOfMultipleDifferences );
 
-DeclareAttribute( "ListOfNormalizedObjectsInMeetSemilatticeOfDifferences",
+DeclareAttribute( "ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences",
         IsConstructibleObjectAsUnionOfMultipleDifferences );
 
-DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfDifferences",
+DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences",
         IsConstructibleObjectAsUnionOfMultipleDifferences );
 
-DeclareAttribute( "UnderlyingMeetSemilatticeOfDifferences",
+DeclareAttribute( "UnderlyingMeetSemilatticeOfMultipleDifferences",
         IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences );
 
 #! @Section Operations
@@ -45,7 +45,7 @@ DeclareAttribute( "UnderlyingMeetSemilatticeOfDifferences",
 #!  A list of morphisms in the underlying lattice representing the formal multiple difference <A>A</A>.
 #! @Arguments A
 #! @Returns a list of &CAP; morphism
-DeclareOperation( "ListOfObjectsInMeetSemilatticeOfDifferences",
+DeclareOperation( "ListOfObjectsInMeetSemilatticeOfMultipleDifferences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ] );
 
 DeclareOperation( "ListOp",
