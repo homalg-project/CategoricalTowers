@@ -48,7 +48,7 @@ InstallMethod( CategoryOfColimitQuivers,
   function ( C )
     local object_constructor, object_datum,
           morphism_constructor, morphism_datum,
-          F, UC, Coeq,
+          UC, Coeq,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           ColimitQuivers;
@@ -66,10 +66,6 @@ InstallMethod( CategoryOfColimitQuivers,
     morphism_datum := { ColimitQuivers, m } -> DefiningPairOfColimitQuiverMorphism( m );
     
     ## building the categorical tower:
-    F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := SkeletalFinSets, FinalizeCategory := true );
-    
-    F := CategoryFromDataTables( F : FinalizeCategory := true );
-    
     UC := FiniteStrictCoproductCocompletion( C : FinalizeCategory := true );
     
     Coeq := PairOfParallelArrowsCategory( UC : FinalizeCategory := true );
