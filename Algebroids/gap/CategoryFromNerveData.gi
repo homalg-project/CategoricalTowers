@@ -10,7 +10,7 @@ InstallMethod( CategoryFromNerveData,
         [ IsRecord ],
         
   function( input_record )
-    local known_keys_with_filters, key, filter, C, prop, nerve_data, C0, V, s, t;
+    local known_keys_with_filters, key, filter, nerve_data, C0, C, prop, V, s, t;
     
     ## check the keys of the given input record
     known_keys_with_filters :=
@@ -44,11 +44,20 @@ InstallMethod( CategoryFromNerveData,
         
     od;
     
-    C := CreateCapCategory( input_record.name,
+    nerve_data := input_record.nerve_data;
+    
+    C0 := nerve_data[1][1];
+    
+    V := CapCategory( C0 );
+    
+    C := CreateCapCategoryWithDataTypes( input_record.name,
                  IsCategoryFromNerveData,
                  IsObjectInCategoryFromNerveData,
                  IsMorphismInCategoryFromNerveData,
-                 IsCapCategoryTwoCell );
+                 IsCapCategoryTwoCell,
+                 CapJitDataTypeOfMorphismOfCategory( V ),
+                 CapJitDataTypeOfMorphismOfCategory( V ),
+                 fail );
     
     C!.category_as_first_argument := true;
     
@@ -65,12 +74,6 @@ InstallMethod( CategoryFromNerveData,
     SetRelationsAmongGeneratingMorphisms( C, input_record.relations );
     
     C!.labels := input_record.labels;
-    
-    nerve_data := input_record.nerve_data;
-    
-    C0 := nerve_data[1][1];
-    
-    V := CapCategory( C0 );
     
     SetIsEquippedWithHomomorphismStructure( C, true );
     SetRangeCategoryOfHomomorphismStructure( C, V );
