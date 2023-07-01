@@ -10,11 +10,14 @@ InstallGlobalFunction( "CreateIntervalCategory",
     local I, IntervalCategory;
     
     IntervalCategory :=
-      CreateCapCategory( "IntervalCategory",
+      CreateCapCategoryWithDataTypes( "IntervalCategory",
               IsIntervalCategory,
               IsObjectInIntervalCategory,
               IsMorphismInIntervalCategory,
-              IsCapCategoryTwoCell );
+              IsCapCategoryTwoCell,
+              IsBool,
+              fail,
+              fail );
     
     IntervalCategory!.category_as_first_argument := true;
     IntervalCategory!.supports_empty_limits := true;

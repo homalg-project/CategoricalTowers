@@ -562,11 +562,14 @@ InstallMethod( AlgebroidFromDataTables,
         
     fi;
     
-    cat := CreateCapCategory( name,
-                IsAlgebroidFromDataTables,
-                IsObjectInAlgebroidFromDataTables,
-                IsMorphismInAlgebroidFromDataTables,
-                IsCapCategoryTwoCell );
+    cat := CreateCapCategoryWithDataTypes( name,
+                   IsAlgebroidFromDataTables,
+                   IsObjectInAlgebroidFromDataTables,
+                   IsMorphismInAlgebroidFromDataTables,
+                   IsCapCategoryTwoCell,
+                   IsInt,
+                   CapJitDataTypeOfListOf( IsHomalgRingElement ),
+                   fail );
     
     # Similar to Algebroids
     DeactivateCachingOfCategory( cat );

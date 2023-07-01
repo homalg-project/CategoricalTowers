@@ -781,7 +781,14 @@ InstallMethodWithCache( Category,
         
     fi;
     
-    C := CreateCapCategory( C, IsFpCategory, IsObjectInFpCategory, IsMorphismInFpCategory, IsCapCategoryTwoCell );
+    C := CreateCapCategoryWithDataTypes( C,
+                 IsFpCategory,
+                 IsObjectInFpCategory,
+                 IsMorphismInFpCategory,
+                 IsCapCategoryTwoCell,
+                 IsQuiverVertex,
+                 IsQuiverAlgebraElement,
+                 fail );
     
     C!.category_as_first_argument := true;
     

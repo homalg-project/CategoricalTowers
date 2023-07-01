@@ -1145,7 +1145,14 @@ InstallMethod( Algebroid,
         A := Concatenation( A, " / relations" );
     fi;
     
-    A := CreateCapCategory( A, IsAlgebroid, IsObjectInAlgebroid, IsMorphismInAlgebroid, IsCapCategoryTwoCell );
+    A := CreateCapCategoryWithDataTypes( A,
+                 IsAlgebroid,
+                 IsObjectInAlgebroid,
+                 IsMorphismInAlgebroid,
+                 IsCapCategoryTwoCell,
+                 IsQuiverVertex,
+                 IsQuiverAlgebraElement,
+                 fail );
     
     A!.category_as_first_argument := true;
     

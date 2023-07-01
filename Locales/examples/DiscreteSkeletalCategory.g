@@ -23,8 +23,6 @@ Display( one );
 #! An object in DiscreteSkeletalCategory( "IsPosInt" ) given by the above data
 IsWellDefined( one );
 #! true
-IsWellDefined( "1" / D );
-#! false
 two := 2 / D;
 #! <An object in DiscreteSkeletalCategory( "IsPosInt" )>
 id_one := IdentityMorphism( one );

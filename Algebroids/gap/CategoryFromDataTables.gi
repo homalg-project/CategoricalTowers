@@ -45,11 +45,14 @@ InstallMethod( CategoryFromDataTables,
         
     od;
     
-    C := CreateCapCategory( input_record.name,
+    C := CreateCapCategoryWithDataTypes( input_record.name,
                  IsCategoryFromDataTables,
                  IsObjectInCategoryFromDataTables,
                  IsMorphismInCategoryFromDataTables,
-                 IsCapCategoryTwoCell );
+                 IsCapCategoryTwoCell,
+                 IsBigInt,
+                 IsBigInt,
+                 fail );
     
     C!.category_as_first_argument := true;
     

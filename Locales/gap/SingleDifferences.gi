@@ -45,11 +45,17 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
     
     name := Concatenation( name, Name( P ) );
     
-    D := CreateCapCategory( name,
+    D := CreateCapCategoryWithDataTypes( name,
                  IsMeetSemilatticeOfSingleDifferences,
                  IsObjectInMeetSemilatticeOfSingleDifferences,
                  IsMorphismInMeetSemilatticeOfSingleDifferences,
-                 IsCapCategoryTwoCell );
+                 IsCapCategoryTwoCell,
+                 rec( filter := IsNTuple,
+                      element_types :=
+                      [ CapJitDataTypeOfObjectOfCategory( P ),
+                        CapJitDataTypeOfObjectOfCategory( P ) ] ),
+                 fail,
+                 fail );
     
     D!.category_as_first_argument := true;
     
