@@ -49,26 +49,29 @@ DeclareAttribute( "NerveData",
 
 CapJitAddTypeSignature( "NerveData", [ IsCapCategory ],
   function ( input_types )
-    local V;
+    local V, obj, mor;
     
     Assert( 0, IsFinite( input_types[1].category ) );
     
     V := RangeCategoryOfHomomorphismStructure( input_types[1].category );
     
+    obj := CapJitDataTypeOfObjectOfCategory( V );
+    mor := CapJitDataTypeOfMorphismOfCategory( V );
+    
     return CapJitDataTypeOfNTupleOf( 2,
                    CapJitDataTypeOfNTupleOf( 3,
-                           CapJitDataTypeOfObjectOfCategory( V ),       # C0
-                           CapJitDataTypeOfObjectOfCategory( V ),       # C1
-                           CapJitDataTypeOfObjectOfCategory( V ) ),     # C2
+                           obj,     # C₀
+                           obj,     # C₁
+                           obj ),   # C₂
                    CapJitDataTypeOfNTupleOf( 8,
-                           CapJitDataTypeOfMorphismOfCategory( V ),     # id
-                           CapJitDataTypeOfMorphismOfCategory( V ),     # s
-                           CapJitDataTypeOfMorphismOfCategory( V ),     # t
-                           CapJitDataTypeOfMorphismOfCategory( V ),     # is
-                           CapJitDataTypeOfMorphismOfCategory( V ),     # it
-                           CapJitDataTypeOfMorphismOfCategory( V ),     # ps
-                           CapJitDataTypeOfMorphismOfCategory( V ),     # pt
-                           CapJitDataTypeOfMorphismOfCategory( V ) ) ); # mu
+                           mor,     # id: C₀ → C₁
+                           mor,     # s: C₁ → C₀
+                           mor,     # t: C₁ → C₀
+                           mor,     # ιₛ: C₁ → C₂
+                           mor,     # ιₜ: C₁ → C₂
+                           mor,     # pₛ: C₂ → C₁
+                           mor,     # pₜ: C₂ → C₁
+                           mor ) ); # μ: C₂ → C₁
     
 end );
 
