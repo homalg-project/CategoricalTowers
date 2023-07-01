@@ -1480,9 +1480,9 @@ end );
 
 ##
 InstallOtherMethodForCompilerForCAP( MorphismInAlgebroid,
-                                     "for an algebroid, two objects in this algebroid and an element of the quiver algebra",
-                                     [ IsAlgebroid, IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ],
-                                     
+        "for an algebroid, two objects in this algebroid and an element of the quiver algebra",
+        [ IsAlgebroid, IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ],
+        
   function( A, S, path, T )
     local l;
     
