@@ -7,7 +7,7 @@
                                     quivers [101X
   
   
-                                   2023.07-01
+                                   2023.07-04
   
   
                                   1 July 2023
@@ -268,10 +268,10 @@
     6.4 [33X[0;0YConstructors[133X
       6.4-1 AlgebroidFromDataTables
     6.5 [33X[0;0YGAP categories[133X
-      6.5-1 IsAlgebroidFromDataTablesObject
+      6.5-1 IsAlgebroidFromDataTables
       6.5-2 IsCellInAlgebroidFromDataTables
-      6.5-3 IsAlgebroidFromDataTables
-      6.5-4 IsAlgebroidFromDataTablesMorphism
+      6.5-3 IsObjectInAlgebroidFromDataTables
+      6.5-4 IsMorphismInAlgebroidFromDataTables
   7 [33X[0;0YCategory of algebroids[133X
     7.1 [33X[0;0YProperties[133X
       7.1-1 IsCommutative

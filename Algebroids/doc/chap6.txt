@@ -578,12 +578,12 @@
   
   [1X6.5 [33X[0;0YGAP categories[133X[101X
   
-  [1X6.5-1 IsAlgebroidFromDataTablesObject[101X
+  [1X6.5-1 IsAlgebroidFromDataTables[101X
   
-  [33X[1;0Y[29X[2XIsAlgebroidFromDataTablesObject[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of algebroids from data tables.[133X
+  [33X[0;0YThe [5XGAP[105X category of objects in an algebroid from data tables.[133X
   
   [1X6.5-2 IsCellInAlgebroidFromDataTables[101X
   
@@ -592,16 +592,16 @@
   
   [33X[0;0YThe [5XGAP[105X category of cells in an algebroid from data tables.[133X
   
-  [1X6.5-3 IsAlgebroidFromDataTables[101X
+  [1X6.5-3 IsObjectInAlgebroidFromDataTables[101X
   
-  [33X[1;0Y[29X[2XIsAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of objects in an algebroid from data tables.[133X
+  [33X[0;0YThe [5XGAP[105X category of algebroids from data tables.[133X
   
-  [1X6.5-4 IsAlgebroidFromDataTablesMorphism[101X
+  [1X6.5-4 IsMorphismInAlgebroidFromDataTables[101X
   
-  [33X[1;0Y[29X[2XIsAlgebroidFromDataTablesMorphism[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in an algebroid from data tables.[133X
