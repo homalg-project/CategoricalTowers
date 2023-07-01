@@ -138,8 +138,6 @@ and furthermore mathematically
 An object in DiscreteSkeletalCategory( "IsPosInt" ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( one );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( "1" / D );</span>
-false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">two := 2 / D;</span>
 &lt;An object in DiscreteSkeletalCategory( "IsPosInt" )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_one := IdentityMorphism( one );</span>
@@ -201,8 +199,8 @@ and furthermore mathematically
 An object in TotalOrderAsCategory( "IsInt" ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( one );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( "1" / D );</span>
-false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( -1 / D );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">two := 2 / D;</span>
 &lt;An object in TotalOrderAsCategory( "IsInt" )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_one := IdentityMorphism( one );</span>
