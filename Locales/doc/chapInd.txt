@@ -145,8 +145,8 @@
   [2XIsTotalOrderCategory[102X, for IsCapCategory 2.1-2 
   [2XIterator[102X, for IsConstructibleObject 12.4-5 
   [2XLength[102X, for IsConstructibleObject 12.4-3 
-  [2XListOfObjectsInMeetSemilatticeOfDifferences[102X, for IsConstructibleObjectAsUnionOfMultipleDifferences 12.4-8 
-      for IsConstructibleObjectAsUnionOfSingleDifferences 12.4-9 
+  [2XListOfObjectsInMeetSemilatticeOfDifferences[102X, for IsConstructibleObjectAsUnionOfSingleDifferences 12.4-9 
+  [2XListOfObjectsInMeetSemilatticeOfMultipleDifferences[102X, for IsConstructibleObjectAsUnionOfMultipleDifferences 12.4-8 
   [2XListOfSingleDifferences[102X, for IsObjectInMeetSemilatticeOfMultipleDifferences 11.3-1 
   [2XLocallyClosedPart[102X, for IsConstructibleObject 12.3-2 
       for IsObjectInMeetSemilatticeOfDifferences 9.2-2 

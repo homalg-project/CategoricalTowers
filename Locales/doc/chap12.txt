@@ -135,9 +135,9 @@
   
   [33X[1;0Y[29X[2XForAnyOp[102X( [3XA[103X, [3Xf[103X ) [32X operation[133X
   
-  [1X12.4-8 ListOfObjectsInMeetSemilatticeOfDifferences[101X
+  [1X12.4-8 ListOfObjectsInMeetSemilatticeOfMultipleDifferences[101X
   
-  [33X[1;0Y[29X[2XListOfObjectsInMeetSemilatticeOfDifferences[102X( [3XA[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XListOfObjectsInMeetSemilatticeOfMultipleDifferences[102X( [3XA[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X morphism[133X
   
   [33X[0;0YA  list  of  morphisms  in  the  underlying  lattice representing the formal

@@ -54,10 +54,10 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Locales" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XD := DiscreteSkeletalCategory( "IsInt" );[127X[104X
-    [4X[28XDiscreteSkeletalCategory( "IsInt" )[128X[104X
+    [4X[25Xgap>[125X [27XD := DiscreteSkeletalCategory( "IsPosInt" );[127X[104X
+    [4X[28XDiscreteSkeletalCategory( "IsPosInt" )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( D );[127X[104X
-    [4X[28XA CAP category with name DiscreteSkeletalCategory( "IsInt" ):[128X[104X
+    [4X[28XA CAP category with name DiscreteSkeletalCategory( "IsPosInt" ):[128X[104X
     [4X[28X[128X[104X
     [4X[28X11 primitive operations were used to derive 74 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
@@ -67,19 +67,19 @@
     [4X[28X* IsDiscreteCategory[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
     [4X[25Xgap>[125X [27Xone := 1 / D;[127X[104X
-    [4X[28X<An object in DiscreteSkeletalCategory( "IsInt" )>[128X[104X
+    [4X[28X<An object in DiscreteSkeletalCategory( "IsPosInt" )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( one );[127X[104X
     [4X[28X1[128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in DiscreteSkeletalCategory( "IsInt" ) given by the above data[128X[104X
+    [4X[28XAn object in DiscreteSkeletalCategory( "IsPosInt" ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( one );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( "1" / D );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xtwo := 2 / D;[127X[104X
-    [4X[28X<An object in DiscreteSkeletalCategory( "IsInt" )>[128X[104X
+    [4X[28X<An object in DiscreteSkeletalCategory( "IsPosInt" )>[128X[104X
     [4X[25Xgap>[125X [27Xid_one := IdentityMorphism( one );[127X[104X
-    [4X[28X<An identity morphism in DiscreteSkeletalCategory( "IsInt" )>[128X[104X
+    [4X[28X<An identity morphism in DiscreteSkeletalCategory( "IsPosInt" )>[128X[104X
     [4X[25Xgap>[125X [27XMorphismDatum( id_one );[127X[104X
     [4X[28Xfail[128X[104X
     [4X[25Xgap>[125X [27XIsOne( PreCompose( id_one, id_one ) );[127X[104X

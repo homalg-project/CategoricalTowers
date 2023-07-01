@@ -7,10 +7,10 @@
                   and Boolean algebras of constructible sets [101X
   
   
-                                   2023.06-17
+                                   2023.06-18
   
   
-                                  29 June 2023
+                                  1 July 2023
   
   
                                 Mohamed Barakat
@@ -272,7 +272,7 @@
       12.4-5 Iterator
       12.4-6 ForAllOp
       12.4-7 ForAnyOp
-      12.4-8 ListOfObjectsInMeetSemilatticeOfDifferences
+      12.4-8 ListOfObjectsInMeetSemilatticeOfMultipleDifferences
       12.4-9 ListOfObjectsInMeetSemilatticeOfDifferences
     12.5 [33X[0;0YGAP categories[133X
       12.5-1 IsBooleanAlgebraOfConstructibleObjects
