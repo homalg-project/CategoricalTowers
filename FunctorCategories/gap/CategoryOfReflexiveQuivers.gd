@@ -73,16 +73,14 @@ CapJitAddTypeSignature( "DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalF
     
     Assert( 0, IsCategoryOfReflexiveQuivers( input_types[1].category ) );
     
-    return rec( filter := IsNTuple,
-                element_types := [
-                        rec( filter := IsInt ),
-                        rec( filter := IsInt ),
-                        rec( filter := IsList,
-                             element_type := rec( filter := IsInt ) ),
-                        rec( filter := IsList,
-                             element_type := rec(
-                                     filter := IsNTuple,
-                                     element_types := [ rec( filter := IsInt ), rec( filter := IsInt ) ] ) ) ] );
+    return CapJitDataTypeOfNTupleOf( 4,
+                   rec( filter := IsInt ),
+                   rec( filter := IsInt ),
+                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+                   CapJitDataTypeOfListOf(
+                           CapJitDataTypeOfNTupleOf( 2,
+                                   rec( filter := IsInt ),
+                                   rec( filter := IsInt ) ) ) );
     
 end );
 
@@ -93,10 +91,9 @@ CapJitAddTypeSignature( "DefiningPairOfReflexiveQuiverMorphismEnrichedOverSkelet
     
     Assert( 0, IsCategoryOfReflexiveQuivers( input_types[1].category ) );
     
-    return rec( filter := IsNTuple,
-                element_types := [
-                        rec( filter := IsList, element_type := rec( filter := IsInt ) ),
-                        rec( filter := IsList, element_type := rec( filter := IsInt ) ) ] );
+    return CapJitDataTypeOfNTupleOf( 2,
+                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
     
 end );
 

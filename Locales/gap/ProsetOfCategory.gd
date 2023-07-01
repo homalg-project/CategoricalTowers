@@ -135,8 +135,8 @@ DeclareAttribute( "SetOfObjects",
 CapJitAddTypeSignature( "SetOfObjects", [ IsProsetOrPosetOfCapCategory ],
   function ( input_types )
     
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+    return CapJitDataTypeOfListOf(
+                CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
     
 end );
 
@@ -147,8 +147,8 @@ DeclareAttribute( "SetOfGeneratingMorphisms",
 CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsProsetOrPosetOfCapCategory ],
   function ( input_types )
     
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
+    return CapJitDataTypeOfListOf(
+                   CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
     
 end );
 

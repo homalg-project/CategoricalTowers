@@ -53,17 +53,13 @@ CapJitAddTypeSignature( "DefiningPairOfColimitQuiver", [ IsObjectInCategoryOfCol
     
     Assert( 0, IsCategoryOfColimitQuivers( input_types[1].category ) );
     
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsList,
-                       element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ),
-                  rec( filter := IsList,
-                       element_type :=
-                       rec( filter := IsNTuple,
-                            element_types :=
-                            [ rec( filter := IsInt ),
-                              CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ),
-                              rec( filter := IsInt ) ] ) ) ] );
+    return CapJitDataTypeOfNTupleOf( 2,
+                   CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ),
+                   CapJitDataTypeOfListOf(
+                           CapJitDataTypeOfNTupleOf( 3,
+                                   rec( filter := IsInt ),
+                                   CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ),
+                                   rec( filter := IsInt ) ) ) );
     
 end );
 
@@ -76,16 +72,11 @@ CapJitAddTypeSignature( "DefiningPairOfColimitQuiverMorphism", [ IsMorphismInCat
     
     Assert( 0, IsCategoryOfColimitQuivers( input_types[1].category ) );
     
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsNTuple,
-                       element_types :=
-                       [ rec( filter := IsList,
-                              element_type := rec( filter := IsInt ) ),
-                         rec( filter := IsList,
-                              element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ] ),
-                  rec( filter := IsList,
-                       element_type := rec( filter := IsInt ) ) ] );
+    return CapJitDataTypeOfNTupleOf( 2,
+                   CapJitDataTypeOfNTupleOf( 2,
+                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+                           CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ),
+                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
     
 end );
 

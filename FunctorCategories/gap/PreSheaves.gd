@@ -53,10 +53,9 @@ CapJitAddTypeSignature( "ValuesOfPreSheaf", [ IsObjectInPreSheafCategory ],
     
     Assert( 0, IsPreSheafCategory( input_types[1].category ) );
     
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ),
-                  rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ) ] );
+    return CapJitDataTypeOfNTupleOf( 2,
+                   CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ),
+                   CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ) );
     
 end );
 
@@ -72,8 +71,7 @@ CapJitAddTypeSignature( "ValuesOnAllObjects", [ IsMorphismInPreSheafCategory ],
     
     Assert( 0, IsPreSheafCategory( input_types[1].category ) );
     
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) );
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) );
     
 end );
 

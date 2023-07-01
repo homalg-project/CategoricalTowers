@@ -68,11 +68,9 @@ CapJitAddTypeSignature( "PairOfIntAndList", [ IsObjectInFiniteStrictCoproductCoc
 
     Assert( 0, IsFiniteStrictCoproductCocompletion( input_types[1].category ) );
     
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsInt ),
-                  rec( filter := IsList,
-                       element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ] );
+    return CapJitDataTypeOfNTupleOf( 2,
+                   rec( filter := IsInt ),
+                   CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ) );
     
 end );
 
@@ -85,12 +83,9 @@ CapJitAddTypeSignature( "PairOfLists", [ IsMorphismInFiniteStrictCoproductCocomp
 
     Assert( 0, IsFiniteStrictCoproductCocompletion( input_types[1].category ) );
     
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsList,
-                       element_type := rec( filter := IsInt ) ),
-                  rec( filter := IsList,
-                       element_type := CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ] );
+    return CapJitDataTypeOfNTupleOf( 2,
+                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+                   CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) );
     
 end );
 

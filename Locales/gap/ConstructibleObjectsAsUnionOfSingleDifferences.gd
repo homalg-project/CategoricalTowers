@@ -56,8 +56,8 @@ CapJitAddTypeSignature( "ListOfObjectsInMeetSemilatticeOfDifferences", [ IsConst
     
     Assert( 0, IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences( input_types[1].category ) );
     
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingMeetSemilatticeOfDifferences( input_types[1].category ) ) );
+    return CapJitDataTypeOfListOf(
+                   CapJitDataTypeOfObjectOfCategory( UnderlyingMeetSemilatticeOfDifferences( input_types[1].category ) ) );
     
 end );
 
@@ -83,7 +83,7 @@ CapJitAddTypeSignature( "List", [ IsConstructibleObjectAsUnionOfSingleDifference
         
     fi;
     
-    return rec( args := args, output_type := rec( filter := IsList, element_type := args.2.data_type.signature[2] ) );
+    return rec( args := args, output_type := CapJitDataTypeOfListOf( args.2.data_type.signature[2] ) );
     
 end );
 

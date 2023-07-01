@@ -26,16 +26,13 @@ DeclareAttribute( "DefiningTripleOfUnderlyingQuiver",
 CapJitAddTypeSignature( "DefiningTripleOfUnderlyingQuiver", [ IsCapCategory ],
   function ( input_types )
     
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsInt ),
-                  rec( filter := IsInt ),
-                  rec( filter := IsList,
-                       element_type :=
-                       rec( filter := IsNTuple,
-                            element_types :=
-                            [ rec( filter := IsInt ),
-                              rec( filter := IsInt ) ] ) ) ] );
+    return CapJitDataTypeOfNTupleOf( 3,
+                   rec( filter := IsInt ),
+                   rec( filter := IsInt ),
+                   CapJitDataTypeOfListOf(
+                           CapJitDataTypeOfNTupleOf( 2,
+                                   rec( filter := IsInt ),
+                                   rec( filter := IsInt ) ) ) );
     
 end );
 
