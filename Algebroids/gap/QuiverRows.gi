@@ -102,15 +102,17 @@ InstallMethod( QuiverRows,
     
     underlying_quiver := QuiverOfAlgebra( underlying_quiver_algebra );
     
-    category := CreateCapCategory( category_name );
+    category := CreateCapCategory( category_name,
+                        IsQuiverRowsCategory,
+                        IsQuiverRowsObject,
+                        IsQuiverRowsMorphism and HasMorphismMatrix,
+                        IsCapCategoryTwoCell );
     
     category!.category_as_first_argument := false;
     
     DeactivateCachingOfCategory( category );
     
     CapCategorySwitchLogicOff( category );
-    
-    SetFilterObj( category, IsQuiverRowsCategory );
     
     SetIsAdditiveCategory( category, true );
     
@@ -121,10 +123,6 @@ InstallMethod( QuiverRows,
     SetUnderlyingQuiverAlgebra( category, underlying_quiver_algebra );
     
     SetUnderlyingQuiver( category, underlying_quiver );
-    
-    AddObjectRepresentation( category, IsQuiverRowsObject );
-    
-    AddMorphismRepresentation( category, IsQuiverRowsMorphism and HasMorphismMatrix );
     
     INSTALL_FUNCTIONS_FOR_QUIVER_ROWS( category, over_Z );
     

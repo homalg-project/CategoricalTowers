@@ -18,7 +18,7 @@ ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 
 # only valid for the construction above
 # FIXME: IsInt should be IsRat, but specializations of types are not yet supported by CompilerForCAP
-CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], rec( filter := IsList, element_type := rec( filter := IsInt ) ) );
+CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
 
 # mixes QPA and MatricesForHomalg and thus cannot be installed using CapJitAddTypeSignatureDeferred
 CapJitAddTypeSignature( "*", [ IsHomalgRingElement, IsQuiverAlgebraElement ], IsQuiverAlgebraElement );

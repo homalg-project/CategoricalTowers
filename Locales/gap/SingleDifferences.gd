@@ -64,10 +64,9 @@ CapJitAddTypeSignature( "MinuendAndSubtrahendInUnderlyingLattice", [ IsObjectInM
     
     Assert( 0, IsMeetSemilatticeOfSingleDifferences( input_types[1].category ) );
     
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ),
-                  CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ] );
+    return CapJitDataTypeOfNTupleOf( 2,
+                   CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ),
+                   CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) );
     
 end );
 

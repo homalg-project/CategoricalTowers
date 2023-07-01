@@ -49,58 +49,31 @@ DeclareAttribute( "DataTables",
 
 CapJitAddTypeSignature( "DataTables", [ IsCapCategory ],
   function ( input_types )
+    local integer, list_of_integers, list_list_of_integers, list_list_list_of_integers;
     
     Assert( 0, IsFinite( input_types[1].category ) );
     
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsNTuple,
-                       element_types :=
-                       [ # C0
-                         rec( filter := IsInt ),
-                         # C1
-                         rec( filter := IsInt ) ] ),
-                  rec( filter := IsNTuple,
-                       element_types :=
-                       [ # identity
-                         rec( filter := IsList,
-                              element_type := rec( filter := IsInt ) ),
-                         # s
-                         rec( filter := IsList,
-                              element_type := rec( filter := IsInt ) ),
-                         # t
-                         rec( filter := IsList,
-                              element_type := rec( filter := IsInt ) ),
-                         # precompose
-                         rec( filter := IsList,
-                              element_type :=
-                              rec( filter := IsList,
-                                   element_type := rec( filter := IsInt ) ) ),
-                         # hom_on_objs
-                         rec( filter := IsList,
-                              element_type :=
-                              rec( filter := IsList,
-                                   element_type := rec( filter := IsInt ) ) ),
-                         # hom_on_mors
-                         rec( filter := IsList,
-                              element_type :=
-                              rec( filter := IsList,
-                                   element_type :=
-                                   rec( filter := IsList,
-                                        element_type := rec( filter := IsInt ) ) ) ),
-                         # introduction
-                         rec( filter := IsList,
-                              element_type :=
-                              rec( filter := IsList,
-                                   element_type := rec( filter := IsInt ) ) ),
-                         # elimination
-                         rec( filter := IsList,
-                              element_type :=
-                              rec( filter := IsList,
-                                   element_type :=
-                                   rec( filter := IsList,
-                                        element_type := rec( filter := IsInt ) ) ) ) ] )
-                  ] );
+    integer := rec( filter := IsInt );
+    
+    list_of_integers := CapJitDataTypeOfListOf( integer );
+    
+    list_list_of_integers := CapJitDataTypeOfListOf( list_of_integers );
+    
+    list_list_list_of_integers := CapJitDataTypeOfListOf( list_list_of_integers );
+    
+    return CapJitDataTypeOfNTupleOf( 2,
+                   CapJitDataTypeOfNTupleOf( 2,
+                           integer,   # C0
+                           integer ), # C1
+                   CapJitDataTypeOfNTupleOf( 8,
+                           list_of_integers,               # identities
+                           list_of_integers,               # sources
+                           list_of_integers,               # targets
+                           list_list_of_integers,          # precompose
+                           list_list_of_integers,          # hom_on_objs
+                           list_list_list_of_integers,     # hom_on_mors
+                           list_list_of_integers,          # introduction
+                           list_list_list_of_integers ) ); # elimination
     
 end );
 
@@ -134,29 +107,23 @@ DeclareAttribute( "DecompositionOfAllMorphisms",
 #CapJitAddTypeSignature( "DecompositionOfAllMorphisms", [ IsCategoryFromDataTables ],
 #  function ( input_types )
 #    
-#    return rec( filter := IsList,
-#                element_type :=
-#                rec( filter := IsList,
-#                     element_type := rec( filter := IsInt ) ) );
+#    return CapJitDataTypeOfListOf(
+#                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
 #    
 #end );
 
 DeclareAttribute( "RelationsAmongGeneratingMorphisms",
         IsCategoryFromDataTables );
 
-#CapJitAddTypeSignature( "RelationsAmongGeneratingMorphisms", [ IsCategoryFromDataTables ],
-#  function ( input_types )
-#    
-#    return rec( filter := IsList,
-#                element_type :=
-#                rec( filter := IsNTuple,
-#                     element_types :=
-#                     [ rec( filter := IsList,
-#                            element_type := rec( filter := IsInt ) ),
-#                       rec( filter := IsList,
-#                            element_type := rec( filter := IsInt ) ) ] ) );
-#    
-#end );
+CapJitAddTypeSignature( "RelationsAmongGeneratingMorphisms", [ IsCategoryFromDataTables ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf(
+                   CapJitDataTypeOfNTupleOf( 2,
+                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ) );
+    
+end );
 
 #! @Description
 #!  The finite set of morphisms generating the category <A>C</A> created from data tables.

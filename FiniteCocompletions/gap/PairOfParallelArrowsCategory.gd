@@ -59,10 +59,9 @@ CapJitAddTypeSignature( "DefiningParallelPair", [ IsObjectInPairOfParallelArrows
     
     Assert( 0, IsPairOfParallelArrowsCategory( input_types[1].category ) );
     
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ),
-                  CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ] );
+    return CapJitDataTypeOfNTupleOf( 2,
+                   CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ),
+                   CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) );
     
 end );
 
@@ -75,10 +74,9 @@ CapJitAddTypeSignature( "DefiningPairOfMorphismBetweenParallelPairs", [ IsMorphi
     
     Assert( 0, IsPairOfParallelArrowsCategory( input_types[1].category ) );
     
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ),
-                  CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ] );
+    return CapJitDataTypeOfNTupleOf( 2,
+                   CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ),
+                   CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) );
     
 end );
 

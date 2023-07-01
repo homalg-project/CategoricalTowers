@@ -22,8 +22,8 @@ Display( one );
 #! An object in TotalOrderAsCategory( "IsInt" ) given by the above data
 IsWellDefined( one );
 #! true
-IsWellDefined( "1" / D );
-#! false
+IsWellDefined( -1 / D );
+#! true
 two := 2 / D;
 #! <An object in TotalOrderAsCategory( "IsInt" )>
 id_one := IdentityMorphism( one );

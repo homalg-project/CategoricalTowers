@@ -56,7 +56,7 @@ CapJitAddTypeSignature( "Length", [ IsObjectInSkeletalFinSets ], IsInt );
 DeclareAttribute( "AsList",
         IsObjectInSkeletalFinSets );
 
-CapJitAddTypeSignature( "AsList", [ IsObjectInSkeletalFinSets ], rec( filter := IsList, element_type := rec( filter := IsInt ) ) );
+CapJitAddTypeSignature( "AsList", [ IsObjectInSkeletalFinSets ], CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
 
 #! @Description
 #!  The lazy array of images between skeletal finite sets.
@@ -65,7 +65,7 @@ CapJitAddTypeSignature( "AsList", [ IsObjectInSkeletalFinSets ], rec( filter := 
 DeclareAttribute( "AsList",
         IsMorphismInSkeletalFinSets );
 
-CapJitAddTypeSignature( "AsList", [ IsMorphismInSkeletalFinSets ], rec( filter := IsList, element_type := rec( filter := IsInt ) ) );
+CapJitAddTypeSignature( "AsList", [ IsMorphismInSkeletalFinSets ], CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
 
 ####################################
 #

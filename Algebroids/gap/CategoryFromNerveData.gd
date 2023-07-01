@@ -55,24 +55,20 @@ CapJitAddTypeSignature( "NerveData", [ IsCapCategory ],
     
     V := RangeCategoryOfHomomorphismStructure( input_types[1].category );
     
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsNTuple,
-                       element_types :=
-                       [ CapJitDataTypeOfObjectOfCategory( V ),      # C0
-                         CapJitDataTypeOfObjectOfCategory( V ),      # C1
-                         CapJitDataTypeOfObjectOfCategory( V ) ] ),  # C2
-                  rec( filter := IsNTuple,
-                       element_types :=
-                       [ CapJitDataTypeOfMorphismOfCategory( V ),    # id
-                         CapJitDataTypeOfMorphismOfCategory( V ),    # s
-                         CapJitDataTypeOfMorphismOfCategory( V ),    # t
-                         CapJitDataTypeOfMorphismOfCategory( V ),    # is
-                         CapJitDataTypeOfMorphismOfCategory( V ),    # it
-                         CapJitDataTypeOfMorphismOfCategory( V ),    # ps
-                         CapJitDataTypeOfMorphismOfCategory( V ),    # pt
-                         CapJitDataTypeOfMorphismOfCategory( V ) ] ) # mu
-                  ] );
+    return CapJitDataTypeOfNTupleOf( 2,
+                   CapJitDataTypeOfNTupleOf( 3,
+                           CapJitDataTypeOfObjectOfCategory( V ),       # C0
+                           CapJitDataTypeOfObjectOfCategory( V ),       # C1
+                           CapJitDataTypeOfObjectOfCategory( V ) ),     # C2
+                   CapJitDataTypeOfNTupleOf( 8,
+                           CapJitDataTypeOfMorphismOfCategory( V ),     # id
+                           CapJitDataTypeOfMorphismOfCategory( V ),     # s
+                           CapJitDataTypeOfMorphismOfCategory( V ),     # t
+                           CapJitDataTypeOfMorphismOfCategory( V ),     # is
+                           CapJitDataTypeOfMorphismOfCategory( V ),     # it
+                           CapJitDataTypeOfMorphismOfCategory( V ),     # ps
+                           CapJitDataTypeOfMorphismOfCategory( V ),     # pt
+                           CapJitDataTypeOfMorphismOfCategory( V ) ) ); # mu
     
 end );
 
@@ -86,8 +82,7 @@ DeclareAttribute( "SetOfObjects",
 #CapJitAddTypeSignature( "SetOfObjects", [ IsCategoryFromNerveData ],
 #  function ( input_types )
 #    
-#    return rec( filter := IsList,
-#                element_type := CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+#    return CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
 #    
 #end );
 
@@ -104,8 +99,7 @@ DeclareAttribute( "IndicesOfGeneratingMorphisms",
 #CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromNerveData ],
 #  function ( input_types )
 #    
-#    return rec( filter := IsList,
-#                element_type := rec( filter := IsInt ) );
+#    return CapJitDataTypeOfListOf( rec( filter := IsInt ) );
 #    
 #end );
 
@@ -115,10 +109,8 @@ DeclareAttribute( "DecompositionOfAllMorphisms",
 #CapJitAddTypeSignature( "DecompositionOfAllMorphisms", [ IsCategoryFromNerveData ],
 #  function ( input_types )
 #    
-#    return rec( filter := IsList,
-#                element_type :=
-#                rec( filter := IsList,
-#                     element_type := rec( filter := IsInt ) ) );
+#    return CapJitDataTypeOfListOf(
+#                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
 #    
 #end );
 
@@ -128,14 +120,10 @@ DeclareAttribute( "RelationsAmongGeneratingMorphisms",
 #CapJitAddTypeSignature( "RelationsAmongGeneratingMorphisms", [ IsCategoryFromNerveData ],
 #  function ( input_types )
 #    
-#    return rec( filter := IsList,
-#                element_type :=
-#                rec( filter := IsNTuple,
-#                     element_types :=
-#                     [ rec( filter := IsList,
-#                            element_type := rec( filter := IsInt ) ),
-#                       rec( filter := IsList,
-#                            element_type := rec( filter := IsInt ) ) ] ) );
+#    return CapJitDataTypeOfListOf(
+#                   CapJitDataTypeOfNTupleOf( 2,
+#                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+#                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ) );
 #    
 #end );
 
@@ -149,8 +137,7 @@ DeclareAttribute( "SetOfGeneratingMorphisms",
 #CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsCategoryFromNerveData ],
 #  function ( input_types )
 #    
-#    return rec( filter := IsList,
-#                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
+#    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
 #    
 #end );
 

@@ -82,8 +82,8 @@ CapJitAddTypeSignature( "ListOfSingleDifferences", [ IsObjectInMeetSemilatticeOf
     
     Assert( 0, IsMeetSemilatticeOfMultipleDifferences( input_types[1].category ) );
     
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategoryOfSingleDifferences( input_types[1].category ) ) );
+    return CapJitDataTypeOfListOf(
+                   CapJitDataTypeOfObjectOfCategory( UnderlyingCategoryOfSingleDifferences( input_types[1].category ) ) );
     
 end );
 

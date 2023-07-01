@@ -144,7 +144,9 @@ DeclareAttribute( "BasisPathsByVertexIndex",
 
 CapJitAddTypeSignature( "BasisPathsByVertexIndex", [ IsAlgebroid ], function ( input_types )
     
-    return rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsPath ) ) ) );
+    return CapJitDataTypeOfListOf(
+                   CapJitDataTypeOfListOf(
+                           CapJitDataTypeOfListOf( rec( filter := IsPath ) ) ) );
     
 end );
 
@@ -158,12 +160,9 @@ DeclareAttribute( "BasisMorphismsByVertexIndex",
 
 CapJitAddTypeSignature( "BasisMorphismsByVertexIndex", [ IsAlgebroid ], function ( input_types )
     
-    return rec( filter := IsList,
-                element_type := rec(
-                        filter := IsList,
-                        element_type := rec(
-                                filter := IsList,
-                                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) ) ) );
+    return CapJitDataTypeOfListOf(
+                   CapJitDataTypeOfListOf(
+                           CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) ) ) );
     
 end );
 
@@ -178,7 +177,14 @@ DeclareAttribute( "HomStructureOnBasisPaths",
 
 CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsAlgebroid ], function ( input_types )
     
-    return rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsInt ) ) ) ) ) ) ) ) );
+    return CapJitDataTypeOfListOf(
+                   CapJitDataTypeOfListOf(
+                           CapJitDataTypeOfListOf(
+                                   CapJitDataTypeOfListOf(
+                                           CapJitDataTypeOfListOf(
+                                                   CapJitDataTypeOfListOf(
+                                                           CapJitDataTypeOfListOf(
+                                                                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ) ) ) ) ) ) );
     
 end );
 
@@ -192,8 +198,7 @@ DeclareAttribute( "SetOfObjects",
 CapJitAddTypeSignature( "SetOfObjects", [ IsAlgebroid ],
   function ( input_types )
     
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
     
 end );
 
@@ -215,8 +220,7 @@ DeclareAttribute( "SetOfGeneratingMorphisms",
 CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsAlgebroid ],
   function ( input_types )
     
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
     
 end );
 

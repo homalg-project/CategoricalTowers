@@ -172,7 +172,18 @@ InstallMethod( CategoryOfRelations,
     fi;
     
     ##
-    Rel := CreateCapCategory( Concatenation( "CategoryOfRelations( ", Name( C ), " )" ), IsCategoryOfRelations, IsObjectInCategoryOfRelations, IsMorphismInCategoryOfRelations, IsCapCategoryTwoCell );
+    Rel := CreateCapCategoryWithDataTypes( Concatenation( "CategoryOfRelations( ", Name( C ), " )" ),
+                   IsCategoryOfRelations,
+                   IsObjectInCategoryOfRelations,
+                   IsMorphismInCategoryOfRelations,
+                   IsCapCategoryTwoCell,
+                   CapJitDataTypeOfObjectOfCategory( C ),
+                   CapJitDataTypeOfNTupleOf( 2,
+                           CapJitDataTypeOfObjectOfCategory( C ),
+                           CapJitDataTypeOfNTupleOf( 2,
+                                   CapJitDataTypeOfMorphismOfCategory( C ),
+                                   CapJitDataTypeOfMorphismOfCategory( C ) ) ),
+                   fail );
     
     ## In order to have composition in Rel we need C to have fiber products
     ## In order to replace the span with a single morphism in C we need C to have products

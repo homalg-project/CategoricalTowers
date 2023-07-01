@@ -16,6 +16,7 @@ InstallMethodWithCache( ProsetAsCategory,
     known_keys_with_filters :=
       rec( name := IsString,
            object_datum_filter_string := IsString,
+           object_datum_type := IsObject,
            object_datum_membership_func := IsFunction,
            object_datum_equality_func := IsFunction,
            object_datum_preorder_func := IsFunction,
@@ -71,11 +72,18 @@ InstallMethodWithCache( ProsetAsCategory,
         input_record.properties := [ ];
     fi;
     
-    P := CreateCapCategory( input_record.name,
+    if not IsBound( input_record.object_datum_type ) then
+        input_record.object_datum_type := rec( filter := ValueGlobal( input_record.object_datum_filter_string ) );
+    fi;
+    
+    P := CreateCapCategoryWithDataTypes( input_record.name,
                  IsProsetAsCategory,
                  IsObjectInThinCategory,
                  IsMorphismInThinCategory,
-                 IsCapCategoryTwoCell );
+                 IsCapCategoryTwoCell,
+                 input_record.object_datum_type,
+                 fail,
+                 fail );
     
     P!.category_as_first_argument := true;
     P!.supports_empty_limits := false;

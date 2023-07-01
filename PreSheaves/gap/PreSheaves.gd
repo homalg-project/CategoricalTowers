@@ -135,18 +135,17 @@ CapJitAddTypeSignature( "PairOfFunctionsOfPreSheaf", [ IsObjectInPreSheafCategor
     
     Assert( 0, IsPreSheafCategory( input_types[1].category ) );
     
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsFunction,
-                       signature :=
-                       [ [ CapJitDataTypeOfObjectOfCategory( Source( input_types[1].category ) ) ],
-                         CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ] ),
-                  rec( filter := IsFunction,
-                       signature :=
-                       [ [ CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ),
-                           CapJitDataTypeOfMorphismOfCategory( Source( input_types[1].category ) ),
-                           CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ],
-                         CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ] ) ] );
+    return CapJitDataTypeOfNTupleOf( 2,
+                   rec( filter := IsFunction,
+                        signature :=
+                        [ [ CapJitDataTypeOfObjectOfCategory( Source( input_types[1].category ) ) ],
+                          CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ] ),
+                   rec( filter := IsFunction,
+                        signature :=
+                        [ [ CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ),
+                            CapJitDataTypeOfMorphismOfCategory( Source( input_types[1].category ) ),
+                            CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ],
+                          CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ] ) );
     
 end );
 
