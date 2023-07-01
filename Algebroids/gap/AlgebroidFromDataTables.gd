@@ -13,10 +13,9 @@
 ####################################
 
 #! @Description
-#!  The &GAP; category of algebroids from data tables.
-DeclareCategory( "IsAlgebroidFromDataTablesObject",
-                 IsCapCategoryObject );
-
+#!  The &GAP; category of objects in an algebroid from data tables.
+DeclareCategory( "IsAlgebroidFromDataTables",
+        IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of cells in an algebroid from data tables.
@@ -24,14 +23,16 @@ DeclareCategory( "IsCellInAlgebroidFromDataTables",
         IsCapCategoryCell );
 
 #! @Description
-#!  The &GAP; category of objects in an algebroid from data tables.
-DeclareCategory( "IsAlgebroidFromDataTables",
-                 IsCapCategory );
+#!  The &GAP; category of algebroids from data tables.
+DeclareCategory( "IsAlgebroidFromDataTablesObject",
+        IsCellInAlgebroidFromDataTables and
+        IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in an algebroid from data tables.
 DeclareCategory( "IsAlgebroidFromDataTablesMorphism",
-                 IsCapCategoryMorphism );
+        IsCellInAlgebroidFromDataTables and
+        IsCapCategoryMorphism );
 
 ####################################
 #
