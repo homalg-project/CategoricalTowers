@@ -1461,20 +1461,18 @@ InstallMethod( ObjectInAlgebroid,
         [ IsAlgebroid, IsQuiverVertex ],
         
   function( A, v )
-    local o, name;
-    
-    o := rec( );
+    local name, obj;
     
     name := String( v );
     
-    ObjectifyObjectForCAPWithAttributes(
-            o, A,
-            UnderlyingVertex, v,
-            Label, name );
+    obj := CreateCapCategoryObjectWithAttributes( A,
+                   UnderlyingVertex, v,
+                   Label, name );
     
-    A!.Vertices.(name) := o;
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    A!.Vertices.(name) := obj;
     
-    return o;
+    return obj;
     
 end );
 
@@ -1516,11 +1514,10 @@ InstallOtherMethodForCompilerForCAP( MorphismInAlgebroid,
     #% CAP_JIT_DROP_NEXT_STATEMENT
     CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( T, A, [ "the range given to MorphismInAlgebroid" ] );
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-        rec( ), A,
-        S, T,
-        UnderlyingQuiverAlgebraElement, path
-    );
+    return CreateCapCategoryMorphismWithAttributes( A,
+                   S,
+                   T,
+                   UnderlyingQuiverAlgebraElement, path );
     
 end );
 
