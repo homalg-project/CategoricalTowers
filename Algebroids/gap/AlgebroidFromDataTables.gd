@@ -24,13 +24,13 @@ DeclareCategory( "IsCellInAlgebroidFromDataTables",
 
 #! @Description
 #!  The &GAP; category of algebroids from data tables.
-DeclareCategory( "IsAlgebroidFromDataTablesObject",
+DeclareCategory( "IsObjectInAlgebroidFromDataTables",
         IsCellInAlgebroidFromDataTables and
         IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in an algebroid from data tables.
-DeclareCategory( "IsAlgebroidFromDataTablesMorphism",
+DeclareCategory( "IsMorphismInAlgebroidFromDataTables",
         IsCellInAlgebroidFromDataTables and
         IsCapCategoryMorphism );
 
@@ -326,9 +326,9 @@ DeclareOperation( "CreateObject",
 #!  The output is the index of <A>v</A> in <C>SetOfObjects</C>(<A>B</A>).
 #! @Arguments v
 #! @Returns an integer
-DeclareAttribute( "ObjectIndex", IsAlgebroidFromDataTablesObject );
+DeclareAttribute( "ObjectIndex", IsObjectInAlgebroidFromDataTables );
 
-CapJitAddTypeSignature( "ObjectIndex", [ IsAlgebroidFromDataTablesObject ], IsInt );
+CapJitAddTypeSignature( "ObjectIndex", [ IsObjectInAlgebroidFromDataTables ], IsInt );
 
 #! @Description
 #!  The arguments are an algebroid <A>B</A> (over a commutative ring $k$), two objects <A>u,v</A> in <A>B</A> and list <A>coeffs</A> of elements in
@@ -337,16 +337,16 @@ CapJitAddTypeSignature( "ObjectIndex", [ IsAlgebroidFromDataTablesObject ], IsIn
 #! @Arguments B, u, coeffs, v
 #! @Returns a &CAP; category morphism
 DeclareOperation( "CreateMorphism",
-            [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTablesObject, IsDenseList, IsAlgebroidFromDataTablesObject ] );
+            [ IsAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables, IsDenseList, IsObjectInAlgebroidFromDataTables ] );
 
 #! @Description
 #!  The argument is a morphism <A>alpha</A> in an algebroid <A>B</A>.
 #!  The output is the list of coefficients of <A>alpha</A> with respect to the basis of external hom $\mathrm{Hom}_B(u,v)$ where $u$ and $v$ are source resp. range of <A>alpha</A>.
 #! @Arguments alpha
 #! @Returns a &CAP; category morphism
-DeclareAttribute( "MorphismCoefficients", IsAlgebroidFromDataTablesMorphism );
+DeclareAttribute( "MorphismCoefficients", IsMorphismInAlgebroidFromDataTables );
 
-CapJitAddTypeSignature( "MorphismCoefficients", [ IsAlgebroidFromDataTablesMorphism ], function ( input_types )
+CapJitAddTypeSignature( "MorphismCoefficients", [ IsMorphismInAlgebroidFromDataTables ], function ( input_types )
     
     return rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) );
     
@@ -357,9 +357,9 @@ end );
 #!  The output is the list of indices of the nonzero entries of <C>MorphismCoefficients</C>(<A>alpha</A>).
 #! @Arguments alpha
 #! @Returns a &CAP; category morphism
-DeclareAttribute( "MorphismSupport", IsAlgebroidFromDataTablesMorphism );
+DeclareAttribute( "MorphismSupport", IsMorphismInAlgebroidFromDataTables );
 
-CapJitAddTypeSignature( "MorphismSupport", [ IsAlgebroidFromDataTablesMorphism ], function ( input_types )
+CapJitAddTypeSignature( "MorphismSupport", [ IsMorphismInAlgebroidFromDataTables ], function ( input_types )
     
     return rec( filter := IsList, element_type := rec( filter := IsInt ) );
     
@@ -373,7 +373,7 @@ end );
 #! @Arguments alpha
 #! @Returns a list of pairs
 DeclareAttribute( "DecompositionOfMorphismInAlgebroid",
-        IsAlgebroidFromDataTablesMorphism );
+        IsMorphismInAlgebroidFromDataTables );
 
 #! @Description
 #!  The argument is an algebroid <A>B</A>.
@@ -404,7 +404,7 @@ DeclareOperation( "\*",
 #! @Arguments a, b, T
 #! @Returns a &CAP; category object
 DeclareOperation( "ElementaryTensor",
-            [ IsAlgebroidFromDataTablesObject, IsAlgebroidFromDataTablesObject, IsAlgebroidFromDataTables ] );
+            [ IsObjectInAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables, IsAlgebroidFromDataTables ] );
 
 #! @Description
 #!  The arguments are two morphisms <A>f</A>, <A>g</A> and a tensor product algebroid <A>T</A>$=A\otimes B$ where <A>f</A> and <A>g</A> belong to $A$ resp. $B$.
@@ -412,7 +412,7 @@ DeclareOperation( "ElementaryTensor",
 #! @Arguments f, g, T
 #! @Returns a &CAP; category morphism
 DeclareOperation( "ElementaryTensor",
-            [ IsAlgebroidFromDataTablesMorphism, IsAlgebroidFromDataTablesMorphism, IsAlgebroidFromDataTables ] );
+            [ IsMorphismInAlgebroidFromDataTables, IsMorphismInAlgebroidFromDataTables, IsAlgebroidFromDataTables ] );
 
 #! @Description
 #!  The argument is an algebroid $B$ over a commutative ring $k$.
@@ -432,7 +432,7 @@ DeclareAttribute( "AlgebroidAsObjectInPreSheavesCategoryData", IsAlgebroidFromDa
 #!  $\mathrm{Hom}_{B}(t,u) = F_{B}(u^{\mathrm{op}}\otimes t) \simeq \mathrm{Hom}_{\mathrm{PSh}(B^{\mathrm{op}}\otimes B)}(P_{u^{\mathrm{op}}\otimes t},F_{B})$.
 #! @Arguments alpha
 #! @Returns a &CAP; category morphism
-DeclareAttribute( "AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory", IsAlgebroidFromDataTablesMorphism );
+DeclareAttribute( "AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory", IsMorphismInAlgebroidFromDataTables );
 
 DeclareAttribute( "SetOfBasesOfExternalHomsLazyHList", IsAlgebroidFromDataTables );
 

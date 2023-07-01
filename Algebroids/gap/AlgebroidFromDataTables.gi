@@ -564,8 +564,8 @@ InstallMethod( AlgebroidFromDataTables,
     
     cat := CreateCapCategory( name,
                 IsAlgebroidFromDataTables,
-                IsAlgebroidFromDataTablesObject,
-                IsAlgebroidFromDataTablesMorphism,
+                IsObjectInAlgebroidFromDataTables,
+                IsMorphismInAlgebroidFromDataTables,
                 IsCapCategoryTwoCell );
     
     # Similar to Algebroids
@@ -980,21 +980,21 @@ InstallOtherMethod( \[\],
 
 ##
 InstallMethod( CreateMorphism,
-          [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTablesObject, IsDenseList, IsAlgebroidFromDataTablesObject ],
+          [ IsAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables, IsDenseList, IsObjectInAlgebroidFromDataTables ],
   
   MorphismConstructor
 );
 
 ##
 InstallOtherMethod( CreateMorphism,
-          [ IsAlgebroidFromDataTablesObject, IsDenseList, IsAlgebroidFromDataTablesObject ],
+          [ IsObjectInAlgebroidFromDataTables, IsDenseList, IsObjectInAlgebroidFromDataTables ],
   
   MorphismConstructor
 );
 
 ##
 InstallOtherMethod( CreateMorphism,
-          [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTablesObject, IsDenseList, IsDenseList, IsAlgebroidFromDataTablesObject ],
+          [ IsAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables, IsDenseList, IsDenseList, IsObjectInAlgebroidFromDataTables ],
   
   { cat, S, coeffs, support, R } -> CreateCapCategoryMorphismWithAttributes( cat,
                                         S, R,
@@ -1004,14 +1004,14 @@ InstallOtherMethod( CreateMorphism,
 
 ##
 InstallMethod( MorphismSupport,
-          [ IsAlgebroidFromDataTablesMorphism ],
+          [ IsMorphismInAlgebroidFromDataTables ],
   
   alpha -> PositionsProperty( MorphismCoefficients( alpha ), c -> not IsZero( c ) )
 );
 
 ##
 InstallMethod( DecompositionOfMorphismInAlgebroid,
-          [ IsAlgebroidFromDataTablesMorphism ],
+          [ IsMorphismInAlgebroidFromDataTables ],
   
   function ( mor )
     local B, indices_objs, indices_gmors, source, range, supp, coeffs, precomps;
@@ -1334,14 +1334,14 @@ end );
 
 ##
 InstallMethod( ElementaryTensor,
-        [ IsAlgebroidFromDataTablesObject, IsAlgebroidFromDataTablesObject, IsAlgebroidFromDataTables ],
+        [ IsObjectInAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables, IsAlgebroidFromDataTables ],
   
   { obj_1, obj_2, B1_x_B2 } -> SetOfObjects( B1_x_B2 )[( ObjectIndex( obj_1 ) - 1 ) * Length( SetOfObjects( CapCategory( obj_2 ) ) ) + ObjectIndex( obj_2 )]
 );
 
 ##
 InstallMethod( ElementaryTensor,
-        [ IsAlgebroidFromDataTablesMorphism, IsAlgebroidFromDataTablesMorphism, IsAlgebroidFromDataTables ],
+        [ IsMorphismInAlgebroidFromDataTables, IsMorphismInAlgebroidFromDataTables, IsAlgebroidFromDataTables ],
   
   { mor_1, mor_2, B1_x_B2 } -> CreateMorphism( B1_x_B2,
                                     ElementaryTensor( Source( mor_1 ), Source( mor_2 ), B1_x_B2 ),
@@ -1352,28 +1352,28 @@ InstallMethod( ElementaryTensor,
 
 ##
 InstallOtherMethod( ElementaryTensor,
-        [ IsAlgebroidFromDataTablesObject, IsAlgebroidFromDataTablesObject ],
+        [ IsObjectInAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables ],
   
   { obj_1, obj_2 } -> ElementaryTensor( obj_1, obj_2, TensorProductOfAlgebroids( CapCategory( obj_1 ), CapCategory( obj_2 ) ) )
 );
 
 ##
 InstallOtherMethod( ElementaryTensor,
-        [ IsAlgebroidFromDataTablesMorphism, IsAlgebroidFromDataTablesMorphism ],
+        [ IsMorphismInAlgebroidFromDataTables, IsMorphismInAlgebroidFromDataTables ],
   
   { mor_1, mor_2 } -> ElementaryTensor( mor_1, mor_2, TensorProductOfAlgebroids( CapCategory( mor_1 ), CapCategory( mor_2 ) ) )
 );
 
 ##
 InstallOtherMethod( ElementaryTensor,
-        [ IsAlgebroidFromDataTablesObject, IsAlgebroidFromDataTablesMorphism ],
+        [ IsObjectInAlgebroidFromDataTables, IsMorphismInAlgebroidFromDataTables ],
   
   { obj_1, mor_2 } -> ElementaryTensor( IdentityMorphism( obj_1 ), mor_2 )
 );
 
 ##
 InstallOtherMethod( ElementaryTensor,
-        [ IsAlgebroidFromDataTablesMorphism, IsAlgebroidFromDataTablesObject ],
+        [ IsMorphismInAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables ],
   
   { mor_1, obj_2 } -> ElementaryTensor( mor_1, IdentityMorphism( obj_2 ) )
 );
@@ -1661,7 +1661,7 @@ end );
 # For two objects obj ∈ B and F ∈ PSh we have Hom_{k-rows}(1,F(obj)) ≃ F(obj) ≃ Hom_PSh(Y(obj), F).
 #
 InstallOtherMethod( MorphismFromRepresentableFunctor,
-          [ IsPreSheafCategory, IsAlgebroidFromDataTablesObject, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory, IsCategoryOfRowsMorphism ],
+          [ IsPreSheafCategory, IsObjectInAlgebroidFromDataTables, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory, IsCategoryOfRowsMorphism ],
   
   function ( PSh, obj, Y_obj, F, ell )
     local B, C, func_of_presheaf_morphism;
@@ -1802,7 +1802,7 @@ end );
 
 ##
 InstallMethod( AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory,
-          [ IsAlgebroidFromDataTablesMorphism ],
+          [ IsMorphismInAlgebroidFromDataTables ],
   
   function ( m )
     local B, B_op, B_op_x_B, F, PSh, obj, Y_obj;
@@ -2116,7 +2116,7 @@ InstallOtherMethod( \/,
 
 ##
 InstallMethod( ViewString,
-          [ IsAlgebroidFromDataTablesObject ],
+          [ IsObjectInAlgebroidFromDataTables ],
   
   function ( obj )
     
@@ -2126,14 +2126,14 @@ end );
 
 ##
 InstallMethod( DisplayString,
-          [ IsAlgebroidFromDataTablesObject ],
+          [ IsObjectInAlgebroidFromDataTables ],
   
   o -> Concatenation( ViewString( o ), "\n" ) );
 
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsAlgebroidFromDataTablesObject ],
+          [ IsObjectInAlgebroidFromDataTables ],
   
   function ( obj )
     
@@ -2143,7 +2143,7 @@ end );
 
 ##
 InstallMethod( ViewString,
-          [ IsAlgebroidFromDataTablesMorphism ],
+          [ IsMorphismInAlgebroidFromDataTables ],
   
   function ( alpha )
     local B, i, j, coeffs, support, colors, datum_string, labels;
@@ -2196,13 +2196,13 @@ end );
 
 ##
 InstallMethod( DisplayString,
-          [ IsAlgebroidFromDataTablesMorphism ],
+          [ IsMorphismInAlgebroidFromDataTables ],
   
   m -> Concatenation( ViewString( m ), "\n" ) );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsAlgebroidFromDataTablesMorphism ],
+          [ IsMorphismInAlgebroidFromDataTables ],
   
   function ( alpha )
     local B, i, j, coeffs, support, string;
