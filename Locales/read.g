@@ -48,6 +48,6 @@ if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
     ReadPackage( "Locales", "gap/ToolsUsingDigraphs.gi");
 fi;
 
-if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
-    ReadPackage( "Locales", "gap/Julia.gi");
+if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) and IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
+    ReadPackage( "Locales", "gap/JuliaWithDigraphs.gi");
 fi;
