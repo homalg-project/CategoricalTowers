@@ -10,7 +10,7 @@ InstallMethodWithCache( ProsetAsCategory,
         [ IsRecord ],
         
   function ( input_record )
-    local known_keys_with_filters, key, filter, P, V, prop;
+    local known_keys_with_filters, key, filter, P, prop;
     
     ## check the keys of the given input record
     known_keys_with_filters :=
@@ -88,11 +88,6 @@ InstallMethodWithCache( ProsetAsCategory,
     P!.category_as_first_argument := true;
     P!.supports_empty_limits := false;
     
-    V := CreateIntervalCategory( );
-    
-    SetRangeCategoryOfHomomorphismStructure( P, V );
-    SetIsEquippedWithHomomorphismStructure( P, true );
-    
     SetUnderlyingObjectFilter( P, ValueGlobal( input_record.object_datum_filter_string ) );
     SetUnderlyingObjectMembershipFunction( P, input_record.object_datum_membership_func );
     SetUnderlyingObjectEqualityFunction( P, input_record.object_datum_equality_func );
@@ -110,6 +105,9 @@ InstallMethodWithCache( ProsetAsCategory,
         Setter( prop )( P, true );
     od;
     
+    ## the following call to ADD_COMMON_METHODS_FOR_PREORDERED_SETS includes:
+    ## * SetRangeCategoryOfHomomorphismStructure( P, IntervalCategory );
+    ## * SetIsEquippedWithHomomorphismStructure( P, true );
     ADD_COMMON_METHODS_FOR_PREORDERED_SETS( P );
     
     AddObjectConstructor( P,
