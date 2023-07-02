@@ -244,8 +244,14 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_ENRICHMENT_OVER_INTERVAL_CATEGORY,
     
     V := ValueOption( "range_of_HomStructure" );
     
-    if not IsIntervalCategory( V ) then
+    if V = fail then
         V := IntervalCategory;
+    elif not IsIntervalCategory( V ) then
+        Error( "the value `V` of the option key `range_of_HomStructure` is not an interval category\n" );
+    fi;
+    
+    if HasRangeCategoryOfHomomorphismStructure( preordered_set ) then
+        Print( "WARNING: the range category of the homomorphism structure is already set for `preordered_set`\n" );
     fi;
     
     SetRangeCategoryOfHomomorphismStructure( preordered_set, V );
