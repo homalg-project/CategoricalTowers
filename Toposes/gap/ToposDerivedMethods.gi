@@ -5,27 +5,6 @@
 #
 
 ##
-AddDerivationToCAP( IsHomSetInhabited,
-        "",
-        [ [ HomomorphismStructureOnObjects, 1 ],
-          [ IsInitial, 1, RangeCategoryOfHomomorphismStructure ] ],
-        
-  function( cat, a, b )
-    local range_cat;
-    
-    range_cat := RangeCategoryOfHomomorphismStructure( cat );
-    
-    return not IsInitial( range_cat,
-                   HomomorphismStructureOnObjects( cat, a, b ) );
-    
-end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-CategoryFilter := function( cat )
-    return HasRangeCategoryOfHomomorphismStructure( cat ) and
-           IsBoundGlobal( "IsCategoryOfSkeletalFinSets" ) and
-           ValueGlobal( "IsCategoryOfSkeletalFinSets" )( RangeCategoryOfHomomorphismStructure( cat ) );
-end );
-
-##
 AddDerivationToCAP( NonliftableMorphismFromDistinguishedObject,
         "",
         [ [ ExactCoverWithGlobalElements, 1 ],
