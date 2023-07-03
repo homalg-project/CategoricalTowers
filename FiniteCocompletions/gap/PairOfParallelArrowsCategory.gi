@@ -607,21 +607,22 @@ InstallMethod( PairOfParallelArrowsCategory,
     ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
-    ParallelPairs := ReinterpretationOfCategory( PSh,
-                                rec( name := Concatenation( "PairOfParallelArrowsCategory( ", Name( C ), " )" ),
-                                     category_filter := IsPairOfParallelArrowsCategory,
-                                     category_object_filter := IsObjectInPairOfParallelArrowsCategory,
-                                     category_morphism_filter := IsMorphismInPairOfParallelArrowsCategory,
-                                     object_constructor := object_constructor,
-                                     object_datum := object_datum,
-                                     morphism_datum := morphism_datum,
-                                     morphism_constructor := morphism_constructor,
-                                     modeling_tower_object_constructor := modeling_tower_object_constructor,
-                                     modeling_tower_object_datum := modeling_tower_object_datum,
-                                     modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
-                                     modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                                     only_primitive_operations := true )
-                                : FinalizeCategory := false );
+    ParallelPairs :=
+      ReinterpretationOfCategory( PSh,
+              rec( name := Concatenation( "PairOfParallelArrowsCategory( ", Name( C ), " )" ),
+                   category_filter := IsPairOfParallelArrowsCategory,
+                   category_object_filter := IsObjectInPairOfParallelArrowsCategory,
+                   category_morphism_filter := IsMorphismInPairOfParallelArrowsCategory,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
+                   modeling_tower_object_constructor := modeling_tower_object_constructor,
+                   modeling_tower_object_datum := modeling_tower_object_datum,
+                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+                   only_primitive_operations := true )
+              : FinalizeCategory := false );
     
     SetUnderlyingCategory( ParallelPairs, C );
     

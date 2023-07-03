@@ -562,21 +562,22 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
     ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
-    Bouquets := ReinterpretationOfCategory( F_hat,
-                       rec( name := Concatenation( "CategoryOfBouquetsEnrichedOver( ", Name( category_of_skeletal_finsets ), " )" ),
-                            category_filter := IsCategoryOfBouquets,
-                            category_object_filter := IsObjectInCategoryOfBouquets,
-                            category_morphism_filter := IsMorphismInCategoryOfBouquets,
-                            object_constructor := object_constructor,
-                            object_datum := object_datum,
-                            morphism_datum := morphism_datum,
-                            morphism_constructor := morphism_constructor,
-                            modeling_tower_object_constructor := modeling_tower_object_constructor,
-                            modeling_tower_object_datum := modeling_tower_object_datum,
-                            modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
-                            modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                            only_primitive_operations := true )
-                       : FinalizeCategory := false );
+    Bouquets :=
+      ReinterpretationOfCategory( F_hat,
+              rec( name := Concatenation( "CategoryOfBouquetsEnrichedOver( ", Name( category_of_skeletal_finsets ), " )" ),
+                   category_filter := IsCategoryOfBouquets,
+                   category_object_filter := IsObjectInCategoryOfBouquets,
+                   category_morphism_filter := IsMorphismInCategoryOfBouquets,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
+                   modeling_tower_object_constructor := modeling_tower_object_constructor,
+                   modeling_tower_object_datum := modeling_tower_object_datum,
+                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+                   only_primitive_operations := true )
+              : FinalizeCategory := false );
     
     SetUnderlyingCategory( Bouquets, F );
     

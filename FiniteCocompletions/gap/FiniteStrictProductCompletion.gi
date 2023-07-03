@@ -153,21 +153,22 @@ InstallMethod( FiniteStrictProductCompletion,
     end;
     
     ##
-    PC := ReinterpretationOfCategory( opUopC,
-                  rec( name := Concatenation( "FiniteStrictProductCompletion( ", Name( C ), " )" ),
-                       object_constructor := object_constructor,
-                       object_datum := object_datum,
-                       morphism_constructor := morphism_constructor,
-                       morphism_datum := morphism_datum,
-                       modeling_tower_object_constructor := modeling_tower_object_constructor,
-                       modeling_tower_object_datum := modeling_tower_object_datum,
-                       modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
-                       modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                       category_filter := IsFiniteStrictProductCompletion,
-                       category_object_filter := IsObjectInFiniteStrictProductCompletion,
-                       category_morphism_filter := IsMorphismInFiniteStrictProductCompletion,
-                       only_primitive_operations := true )
-                  : FinalizeCategory := false );
+    PC :=
+      ReinterpretationOfCategory( opUopC,
+              rec( name := Concatenation( "FiniteStrictProductCompletion( ", Name( C ), " )" ),
+                   category_filter := IsFiniteStrictProductCompletion,
+                   category_object_filter := IsObjectInFiniteStrictProductCompletion,
+                   category_morphism_filter := IsMorphismInFiniteStrictProductCompletion,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
+                   modeling_tower_object_constructor := modeling_tower_object_constructor,
+                   modeling_tower_object_datum := modeling_tower_object_datum,
+                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+                   only_primitive_operations := true )
+              : FinalizeCategory := false );
     
     SetUnderlyingCategory( PC, C );
     

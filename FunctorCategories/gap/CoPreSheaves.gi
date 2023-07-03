@@ -532,13 +532,14 @@ InstallMethodWithCache( CoPreSheaves,
                    category_morphism_filter := IsMorphismInCoPreSheafCategory,
                    object_constructor := object_constructor,
                    object_datum := object_datum,
-                   morphism_datum := morphism_datum,
                    morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
                    modeling_tower_object_constructor := modeling_tower_object_constructor,
                    modeling_tower_object_datum := modeling_tower_object_datum,
                    modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                    modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                   only_primitive_operations := true ) : FinalizeCategory := false );
+                   only_primitive_operations := true )
+              : FinalizeCategory := false );
     
     SetSource( coPSh, B );
     SetRange( coPSh, C );

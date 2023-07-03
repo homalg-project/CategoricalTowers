@@ -153,21 +153,22 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
     ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
-    DecoratedQuivers := ReinterpretationOfCategory( Slice,
-                       rec( name := "CategoryOfDecoratedQuivers( decorating_quiver )",
-                            category_filter := IsCategoryOfDecoratedQuivers,
-                            category_object_filter := IsObjectInCategoryOfDecoratedQuivers,
-                            category_morphism_filter := IsMorphismInCategoryOfDecoratedQuivers,
-                            object_constructor := object_constructor,
-                            object_datum := object_datum,
-                            morphism_datum := morphism_datum,
-                            morphism_constructor := morphism_constructor,
-                            modeling_tower_object_constructor := modeling_tower_object_constructor,
-                            modeling_tower_object_datum := modeling_tower_object_datum,
-                            modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
-                            modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                            only_primitive_operations := true )
-                       : FinalizeCategory := false );
+    DecoratedQuivers :=
+      ReinterpretationOfCategory( Slice,
+              rec( name := "CategoryOfDecoratedQuivers( decorating_quiver )",
+                   category_filter := IsCategoryOfDecoratedQuivers,
+                   category_object_filter := IsObjectInCategoryOfDecoratedQuivers,
+                   category_morphism_filter := IsMorphismInCategoryOfDecoratedQuivers,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
+                   modeling_tower_object_constructor := modeling_tower_object_constructor,
+                   modeling_tower_object_datum := modeling_tower_object_datum,
+                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+                   only_primitive_operations := true )
+              : FinalizeCategory := false );
     
     SetDecorationOfVertices( DecoratedQuivers, decoration_of_vertices );
     SetDecorationOfArrows( DecoratedQuivers, decoration_of_arrows );

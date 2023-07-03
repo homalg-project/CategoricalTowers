@@ -97,20 +97,22 @@ InstallGlobalFunction( CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocomplet
     modeling_tower_morphism_datum := { sFinSets, mor } -> MorphismDatum( ModelingCategory( sFinSets ), mor )[1];
     
     ##
-    sFinSets := ReinterpretationOfCategory( UT,
-                        rec( name := "SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory",
-                             object_constructor := object_constructor,
-                             object_datum := object_datum,
-                             morphism_constructor := morphism_constructor,
-                             morphism_datum := morphism_datum,
-                             modeling_tower_object_constructor := modeling_tower_object_constructor,
-                             modeling_tower_object_datum := modeling_tower_object_datum,
-                             modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
-                             modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                             category_filter := IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory,
-                             category_object_filter := IsObjectInSkeletalFinSets,
-                             category_morphism_filter := IsMorphismInSkeletalFinSets,
-                             only_primitive_operations := true ) : FinalizeCategory := false );
+    sFinSets :=
+      ReinterpretationOfCategory( UT,
+              rec( name := "SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory",
+                   category_filter := IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory,
+                   category_object_filter := IsObjectInSkeletalFinSets,
+                   category_morphism_filter := IsMorphismInSkeletalFinSets,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
+                   modeling_tower_object_constructor := modeling_tower_object_constructor,
+                   modeling_tower_object_datum := modeling_tower_object_datum,
+                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+                   only_primitive_operations := true )
+              : FinalizeCategory := false );
     
     # this is a workhorse category -> no logic and caching only via IsIdenticalObj
     CapCategorySwitchLogicOff( sFinSets );

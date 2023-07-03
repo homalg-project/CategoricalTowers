@@ -1326,21 +1326,22 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
     ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
-    Quivers := ReinterpretationOfCategory( F_hat,
-                       rec( name := Concatenation( "CategoryOfReflexiveQuiversEnrichedOver( ", Name( category_of_skeletal_finsets ), " )" ),
-                            category_filter := IsCategoryOfReflexiveQuivers,
-                            category_object_filter := IsObjectInCategoryOfReflexiveQuivers,
-                            category_morphism_filter := IsMorphismInCategoryOfReflexiveQuivers,
-                            object_constructor := object_constructor,
-                            object_datum := object_datum,
-                            morphism_datum := morphism_datum,
-                            morphism_constructor := morphism_constructor,
-                            modeling_tower_object_constructor := modeling_tower_object_constructor,
-                            modeling_tower_object_datum := modeling_tower_object_datum,
-                            modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
-                            modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                            only_primitive_operations := true )
-                       : FinalizeCategory := false );
+    Quivers :=
+      ReinterpretationOfCategory( F_hat,
+              rec( name := Concatenation( "CategoryOfReflexiveQuiversEnrichedOver( ", Name( category_of_skeletal_finsets ), " )" ),
+                   category_filter := IsCategoryOfReflexiveQuivers,
+                   category_object_filter := IsObjectInCategoryOfReflexiveQuivers,
+                   category_morphism_filter := IsMorphismInCategoryOfReflexiveQuivers,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
+                   modeling_tower_object_constructor := modeling_tower_object_constructor,
+                   modeling_tower_object_datum := modeling_tower_object_datum,
+                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+                   only_primitive_operations := true )
+              : FinalizeCategory := false );
     
     SetUnderlyingCategory( Quivers, F );
     
