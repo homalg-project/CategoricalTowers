@@ -1194,18 +1194,35 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
         [ IsCategoryOfSkeletalFinSets ],
         
   function ( category_of_skeletal_finsets )
-    local object_constructor, object_datum,
-          morphism_constructor, morphism_datum,
+    local object_datum_type, object_constructor, object_datum,
+          morphism_datum_type, morphism_constructor, morphism_datum,
           F, F_hat,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           Quivers;
     
     ##
+    object_datum_type :=
+      CapJitDataTypeOfNTupleOf( 4,
+              rec( filter := IsInt ),
+              rec( filter := IsInt ),
+              CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+              CapJitDataTypeOfListOf(
+                      CapJitDataTypeOfNTupleOf( 2,
+                              rec( filter := IsInt ),
+                              rec( filter := IsInt ) ) ) );
+    
+    ##
     object_constructor := CreateReflexiveQuiver;
     
     ##
     object_datum := { Quivers, o } -> DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( o );
+    
+    ##
+    morphism_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+              CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
     
     ##
     morphism_constructor := CreateReflexiveQuiverMorphism;
@@ -1332,6 +1349,8 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
                    category_filter := IsCategoryOfReflexiveQuivers,
                    category_object_filter := IsObjectInCategoryOfReflexiveQuivers,
                    category_morphism_filter := IsMorphismInCategoryOfReflexiveQuivers,
+                   object_datum_type := object_datum_type,
+                   morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,
                    object_datum := object_datum,
                    morphism_constructor := morphism_constructor,

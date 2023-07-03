@@ -18,12 +18,15 @@ end );
 ##
 InstallGlobalFunction( CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory,
   function( )
-    local object_constructor, object_datum,
-          morphism_constructor, morphism_datum,
+    local object_datum_type, object_constructor, object_datum,
+          morphism_datum_type, morphism_constructor, morphism_datum,
           I, T, UT,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           sFinSets;
+    
+    ##
+    object_datum_type := IsInt;
     
     ##
     object_constructor := { sFinSets, cardinality } ->
@@ -32,6 +35,9 @@ InstallGlobalFunction( CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocomplet
     
     ##
     object_datum := { sFinSets, M } -> Length( M );
+    
+    ##
+    morphism_datum_type := CapJitDataTypeOfListOf( rec( filter := IsInt ) );
     
     ##
     morphism_constructor :=
@@ -103,6 +109,8 @@ InstallGlobalFunction( CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocomplet
                    category_filter := IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory,
                    category_object_filter := IsObjectInSkeletalFinSets,
                    category_morphism_filter := IsMorphismInSkeletalFinSets,
+                   object_datum_type := object_datum_type,
+                   morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,
                    object_datum := object_datum,
                    morphism_constructor := morphism_constructor,

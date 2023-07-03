@@ -420,18 +420,28 @@ InstallMethodWithCache( CoPreSheaves,
         [ IsCapCategory, IsCapCategory ],
         
   function( B, C )
-    local object_constructor, object_datum,
-          morphism_constructor, morphism_datum,
+    local object_datum_type, object_constructor, object_datum,
+          morphism_datum_type, morphism_constructor, morphism_datum,
           Hom, O,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           coPSh, properties, name;
     
     ##
+    object_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( C ) ),
+              CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) );
+    
+    ##
     object_constructor := CreateCoPreSheafByValues;
     
     ##
     object_datum := { coPSh, o } -> ValuesOfCoPreSheaf( o );
+    
+    ##
+    morphism_datum_type :=
+      CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) );
     
     ##
     morphism_constructor := CreateCoPreSheafMorphismByValues;
@@ -530,6 +540,8 @@ InstallMethodWithCache( CoPreSheaves,
                    category_filter := IsCoPreSheafCategory,
                    category_object_filter := IsObjectInCoPreSheafCategory,
                    category_morphism_filter := IsMorphismInCoPreSheafCategory,
+                   object_datum_type := object_datum_type,
+                   morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,
                    object_datum := object_datum,
                    morphism_constructor := morphism_constructor,

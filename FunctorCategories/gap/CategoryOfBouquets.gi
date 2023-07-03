@@ -435,18 +435,31 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
         [ IsCategoryOfSkeletalFinSets ],
         
   function ( category_of_skeletal_finsets )
-    local object_constructor, object_datum,
-          morphism_constructor, morphism_datum,
+    local object_datum_type, object_constructor, object_datum,
+          morphism_datum_type, morphism_constructor, morphism_datum,
           F, F_hat,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           Bouquets;
     
     ##
+    object_datum_type :=
+      CapJitDataTypeOfNTupleOf( 3,
+              rec( filter := IsInt ),
+              rec( filter := IsInt ),
+              CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
+    
+    ##
     object_constructor := CreateBouquet;
     
     ##
     object_datum := { Bouquets, o } -> DefiningTripleOfBouquetEnrichedOverSkeletalFinSets( o );
+    
+    ##
+    morphism_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+              CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
     
     ##
     morphism_constructor := CreateBouquetMorphism;
@@ -568,6 +581,8 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
                    category_filter := IsCategoryOfBouquets,
                    category_object_filter := IsObjectInCategoryOfBouquets,
                    category_morphism_filter := IsMorphismInCategoryOfBouquets,
+                   object_datum_type := object_datum_type,
+                   morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,
                    object_datum := object_datum,
                    morphism_constructor := morphism_constructor,
