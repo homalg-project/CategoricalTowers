@@ -904,130 +904,130 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                    PreCompose( C, eta( Range( m ) ), G( m ) ) );
                      end );
             
-          end );
-          
-          if IsFpCategory( B ) then
-              
-              AddIsWellDefinedForObjects( PSh,
-                function ( PSh, F )
-                  local C;
-                  
-                  C := Range( PSh );
-                  
-                  if not ForAll( objects, o -> IsWellDefinedForObjects( C, F( o ) ) ) then
-                      return false;
-                  elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( C, F( m ) ) ) then
-                      return false;
-                  elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Range( m ) ), Source( F( m ) ) ) ) then
-                      return false;
-                  elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Source( m ) ), Range( F( m ) ) ) ) then
-                      return false;
-                  fi;
-                  
-                  F := UnderlyingCapTwoCategoryCell( F );
-                  
-                  return ForAll( relations, m -> IsCongruentForMorphisms( C, ApplyToQuiverAlgebraElement( F, m[1] ), ApplyToQuiverAlgebraElement( F, m[2] ) ) );
-                  
-              end );
-              
-          elif IsAlgebroid( B ) then
-              
-              AddIsWellDefinedForObjects( PSh,
-                function ( PSh, F )
-                  local C;
-                  
-                  C := Range( PSh );
-                  
-                  if not ForAll( objects, o -> IsWellDefinedForObjects( C, F( o ) ) ) then
-                      return false;
-                  elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( C, F( m ) ) ) then
-                      return false;
-                  elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Range( m ) ), Source( F( m ) ) ) ) then
-                      return false;
-                  elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Source( m ) ), Range( F( m ) ) ) ) then
-                      return false;
-                  fi;
-                  
-                  F := UnderlyingCapTwoCategoryCell( F );
-                  
-                  return ForAll( relations, m -> IsZeroForMorphisms( C, ApplyToQuiverAlgebraElement( F, m ) ) );
-                  
-              end );
-              
-          elif IsAlgebroidFromDataTables( B ) then
+        end );
+        
+        if IsFpCategory( B ) then
+            
+            AddIsWellDefinedForObjects( PSh,
+              function ( PSh, F )
+                local C;
+                
+                C := Range( PSh );
+                
+                if not ForAll( objects, o -> IsWellDefinedForObjects( C, F( o ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( C, F( m ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Range( m ) ), Source( F( m ) ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Source( m ) ), Range( F( m ) ) ) ) then
+                    return false;
+                fi;
+                
+                F := UnderlyingCapTwoCategoryCell( F );
+                
+                return ForAll( relations, m -> IsCongruentForMorphisms( C, ApplyToQuiverAlgebraElement( F, m[1] ), ApplyToQuiverAlgebraElement( F, m[2] ) ) );
+                
+            end );
+            
+        elif IsAlgebroid( B ) then
+            
+            AddIsWellDefinedForObjects( PSh,
+              function ( PSh, F )
+                local C;
+                
+                C := Range( PSh );
+                
+                if not ForAll( objects, o -> IsWellDefinedForObjects( C, F( o ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( C, F( m ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Range( m ) ), Source( F( m ) ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Source( m ) ), Range( F( m ) ) ) ) then
+                    return false;
+                fi;
+                
+                F := UnderlyingCapTwoCategoryCell( F );
+                
+                return ForAll( relations, m -> IsZeroForMorphisms( C, ApplyToQuiverAlgebraElement( F, m ) ) );
+                
+            end );
+            
+        elif IsAlgebroidFromDataTables( B ) then
 
-              AddIsWellDefinedForObjects( PSh,
-                function ( PSh, F )
-                  local B, C, pairs;
+            AddIsWellDefinedForObjects( PSh,
+              function ( PSh, F )
+                local B, C, pairs;
 
-                  B := Source( PSh );
-                  C := Range( PSh );
+                B := Source( PSh );
+                C := Range( PSh );
 
-                  if not ForAll( objects, o -> IsWellDefinedForObjects( C, F( o ) ) ) then
-                      return false;
-                  elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( C, F( m ) ) ) then
-                      return false;
-                  elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Range( m ) ), Source( F( m ) ) ) ) then
-                      return false;
-                  elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Source( m ) ), Range( F( m ) ) ) ) then
-                      return false;
-                  fi;
+                if not ForAll( objects, o -> IsWellDefinedForObjects( C, F( o ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( C, F( m ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Range( m ) ), Source( F( m ) ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Source( m ) ), Range( F( m ) ) ) ) then
+                    return false;
+                fi;
 
-                  pairs := Concatenation( ListOfValues( EnhancedDataTables( B )[21] ) );
+                pairs := Concatenation( ListOfValues( EnhancedDataTables( B )[21] ) );
 
-                  return ForAll( pairs, p -> IsCongruentForMorphisms( C,
-                                                      F( PreCompose( B, generating_morphisms[p[1]], generating_morphisms[p[2]] ) ),
-                                                      PostCompose( C, F( generating_morphisms[p[1]] ), F( generating_morphisms[p[2]] ) ) ) );
+                return ForAll( pairs, p -> IsCongruentForMorphisms( C,
+                                                    F( PreCompose( B, generating_morphisms[p[1]], generating_morphisms[p[2]] ) ),
+                                                    PostCompose( C, F( generating_morphisms[p[1]] ), F( generating_morphisms[p[2]] ) ) ) );
 
-              end );
-              
-          elif IsCategoryFromNerveData( B ) or
-            IsCategoryFromDataTables( B ) then
-              
-              AddIsWellDefinedForObjects( PSh,
-                function ( PSh, F )
-                  local V, objects, generating_morphisms, relations, on_mors, is_equal;
-                  
-                  V := Range( PSh );
-                  
-                  objects := SetOfObjects( B );
-                  generating_morphisms := SetOfGeneratingMorphisms( B );
-                  
-                  if not ForAll( objects, o -> IsWellDefinedForObjects( V, F( o ) ) ) then
-                      return false;
-                  elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( V, F( m ) ) ) then
-                      return false;
-                  elif not ForAll( generating_morphisms, m -> IsEqualForObjects( V, F( Range( m ) ), Source( F( m ) ) ) ) then
-                      return false;
-                  elif not ForAll( generating_morphisms, m -> IsEqualForObjects( V, F( Source( m ) ), Range( F( m ) ) ) ) then
-                      return false;
-                  fi;
-                  
-                  relations := RelationsAmongGeneratingMorphisms( B );
-                  
-                  on_mors := ValuesOfPreSheaf( F )[2];
-                  
-                  is_equal :=
-                    function( pair )
-                      
-                      if IsEmpty( pair[1] ) and IsEmpty( pair[2] ) then
-                          Error( "both lists in the relation are empty\n" );
-                      elif IsEmpty( pair[2] ) then
-                          return IsOne( PreComposeList( V, List( Reversed( pair[1] ), i -> on_mors[1 + i] ) ) );
-                      elif IsEmpty( pair[1] ) then
-                          return IsOne( PreComposeList( V, List( Reversed( pair[2] ), i -> on_mors[1 + i] ) ) );
-                      fi;
-                      
-                      return IsCongruentForMorphisms( V,
-                                     PreComposeList( V, List( Reversed( pair[1] ), i -> on_mors[1 + i] ) ),
-                                     PreComposeList( V, List( Reversed( pair[2] ), i -> on_mors[1 + i] ) ) );
-                      
-                  end;
-                  
-                  return ForAll( relations, is_equal );
-                  
-              end );
-              
+            end );
+            
+        elif IsCategoryFromNerveData( B ) or
+          IsCategoryFromDataTables( B ) then
+            
+            AddIsWellDefinedForObjects( PSh,
+              function ( PSh, F )
+                local V, objects, generating_morphisms, relations, on_mors, is_equal;
+                
+                V := Range( PSh );
+                
+                objects := SetOfObjects( B );
+                generating_morphisms := SetOfGeneratingMorphisms( B );
+                
+                if not ForAll( objects, o -> IsWellDefinedForObjects( V, F( o ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( V, F( m ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( V, F( Range( m ) ), Source( F( m ) ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( V, F( Source( m ) ), Range( F( m ) ) ) ) then
+                    return false;
+                fi;
+                
+                relations := RelationsAmongGeneratingMorphisms( B );
+                
+                on_mors := ValuesOfPreSheaf( F )[2];
+                
+                is_equal :=
+                  function( pair )
+                    
+                    if IsEmpty( pair[1] ) and IsEmpty( pair[2] ) then
+                        Error( "both lists in the relation are empty\n" );
+                    elif IsEmpty( pair[2] ) then
+                        return IsOne( PreComposeList( V, List( Reversed( pair[1] ), i -> on_mors[1 + i] ) ) );
+                    elif IsEmpty( pair[1] ) then
+                        return IsOne( PreComposeList( V, List( Reversed( pair[2] ), i -> on_mors[1 + i] ) ) );
+                    fi;
+                    
+                    return IsCongruentForMorphisms( V,
+                                   PreComposeList( V, List( Reversed( pair[1] ), i -> on_mors[1 + i] ) ),
+                                   PreComposeList( V, List( Reversed( pair[2] ), i -> on_mors[1 + i] ) ) );
+                    
+                end;
+                
+                return ForAll( relations, is_equal );
+                
+            end );
+            
         fi;
         
         AddIsEqualForObjects( PSh,
@@ -1039,7 +1039,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             return ForAll( objects, o -> IsEqualForObjects( C, F( o ), G( o ) ) ) and
                    ForAll( generating_morphisms, m -> IsEqualForMorphisms( C, F( m ), G( m ) ) );
             
-          end );
+        end );
         
         AddIsEqualForMorphisms( PSh,
           function ( PSh, eta, epsilon )
@@ -1049,7 +1049,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             return ForAll( objects, o -> IsEqualForMorphisms( C, eta( o ), epsilon( o ) ) );
             
-          end );
+        end );
         
         AddIsCongruentForMorphisms( PSh,
           function ( PSh, eta, epsilon )
@@ -1059,7 +1059,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             return ForAll( objects, o -> IsCongruentForMorphisms( C, eta( o ), epsilon( o ) ) );
             
-          end );
+        end );
           
     fi;
     
