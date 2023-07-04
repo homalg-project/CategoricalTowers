@@ -46,18 +46,36 @@ InstallMethod( CategoryOfColimitQuivers,
         [ IsCapCategory ],
         
   function ( C )
-    local object_constructor, object_datum,
-          morphism_constructor, morphism_datum,
+    local object_datum_type, object_constructor, object_datum,
+          morphism_datum_type, morphism_constructor, morphism_datum,
           UC, Coeq,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           ColimitQuivers;
     
     ##
+    object_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( C ) ),
+              CapJitDataTypeOfListOf(
+                      CapJitDataTypeOfNTupleOf( 3,
+                              rec( filter := IsInt ),
+                              CapJitDataTypeOfMorphismOfCategory( C ),
+                              rec( filter := IsInt ) ) ) );
+    
+    ##
     object_constructor := CreateColimitQuiver;
     
     ##
     object_datum := { ColimitQuivers, o } -> DefiningPairOfColimitQuiver( o );
+    
+    ##
+    morphism_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              CapJitDataTypeOfNTupleOf( 2,
+                      CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+                      CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) ),
+              CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
     
     ##
     morphism_constructor := CreateMorphismOfColimitQuivers;
@@ -205,21 +223,24 @@ InstallMethod( CategoryOfColimitQuivers,
     ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
-    ColimitQuivers := ReinterpretationOfCategory( Coeq,
-                              rec( name := Concatenation( "CategoryOfColimitQuivers( ", Name( C ), " )" ),
-                                   category_filter := IsCategoryOfColimitQuivers,
-                                   category_object_filter := IsObjectInCategoryOfColimitQuivers,
-                                   category_morphism_filter := IsMorphismInCategoryOfColimitQuivers,
-                                   object_constructor := object_constructor,
-                                   object_datum := object_datum,
-                                   morphism_datum := morphism_datum,
-                                   morphism_constructor := morphism_constructor,
-                                   modeling_tower_object_constructor := modeling_tower_object_constructor,
-                                   modeling_tower_object_datum := modeling_tower_object_datum,
-                                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
-                                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                                   only_primitive_operations := true )
-                              : FinalizeCategory := false );
+    ColimitQuivers :=
+      ReinterpretationOfCategory( Coeq,
+              rec( name := Concatenation( "CategoryOfColimitQuivers( ", Name( C ), " )" ),
+                   category_filter := IsCategoryOfColimitQuivers,
+                   category_object_filter := IsObjectInCategoryOfColimitQuivers,
+                   category_morphism_filter := IsMorphismInCategoryOfColimitQuivers,
+                   object_datum_type := object_datum_type,
+                   morphism_datum_type := morphism_datum_type,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
+                   modeling_tower_object_constructor := modeling_tower_object_constructor,
+                   modeling_tower_object_datum := modeling_tower_object_datum,
+                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+                   only_primitive_operations := true )
+              : FinalizeCategory := false );
     
     SetUnderlyingCategory( ColimitQuivers, C );
     

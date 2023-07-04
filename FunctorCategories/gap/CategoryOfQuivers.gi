@@ -70,18 +70,34 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
         [ IsCategoryOfSkeletalFinSets ],
         
   function ( category_of_skeletal_finsets )
-    local object_constructor, object_datum,
-          morphism_constructor, morphism_datum,
+    local object_datum_type, object_constructor, object_datum,
+          morphism_datum_type, morphism_constructor, morphism_datum,
           F, F_hat,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           Quivers;
     
     ##
+    object_datum_type :=
+      CapJitDataTypeOfNTupleOf( 3,
+              rec( filter := IsInt ),
+              rec( filter := IsInt ),
+              CapJitDataTypeOfListOf(
+                      CapJitDataTypeOfNTupleOf( 2,
+                              rec( filter := IsInt ),
+                              rec( filter := IsInt ) ) ) );
+    
+    ##
     object_constructor := CreateQuiver;
     
     ##
     object_datum := { Quivers, o } -> DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( o );
+    
+    ##
+    morphism_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+              CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
     
     ##
     morphism_constructor := CreateQuiverMorphism;
@@ -199,21 +215,24 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
     ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
-    Quivers := ReinterpretationOfCategory( F_hat,
-                       rec( name := Concatenation( "CategoryOfQuiversEnrichedOver( ", Name( category_of_skeletal_finsets ), " )" ),
-                            category_filter := IsCategoryOfQuivers,
-                            category_object_filter := IsObjectInCategoryOfQuivers,
-                            category_morphism_filter := IsMorphismInCategoryOfQuivers,
-                            object_constructor := object_constructor,
-                            object_datum := object_datum,
-                            morphism_datum := morphism_datum,
-                            morphism_constructor := morphism_constructor,
-                            modeling_tower_object_constructor := modeling_tower_object_constructor,
-                            modeling_tower_object_datum := modeling_tower_object_datum,
-                            modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
-                            modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                            only_primitive_operations := true )
-                       : FinalizeCategory := false );
+    Quivers :=
+      ReinterpretationOfCategory( F_hat,
+              rec( name := Concatenation( "CategoryOfQuiversEnrichedOver( ", Name( category_of_skeletal_finsets ), " )" ),
+                   category_filter := IsCategoryOfQuivers,
+                   category_object_filter := IsObjectInCategoryOfQuivers,
+                   category_morphism_filter := IsMorphismInCategoryOfQuivers,
+                   object_datum_type := object_datum_type,
+                   morphism_datum_type := morphism_datum_type,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
+                   modeling_tower_object_constructor := modeling_tower_object_constructor,
+                   modeling_tower_object_datum := modeling_tower_object_datum,
+                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+                   only_primitive_operations := true )
+              : FinalizeCategory := false );
     
     SetUnderlyingCategory( Quivers, F );
     

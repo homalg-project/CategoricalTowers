@@ -420,18 +420,28 @@ InstallMethodWithCache( FunctorCategory,
         [ IsCapCategory, IsCapCategory ],
         
   function( B, C )
-    local object_constructor, object_datum,
-          morphism_constructor, morphism_datum,
+    local object_datum_type, object_constructor, object_datum,
+          morphism_datum_type, morphism_constructor, morphism_datum,
           B_op, defining_triple, PSh,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           Hom, properties, doctrines, name;
     
     ##
+    object_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( C ) ),
+              CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) );
+    
+    ##
     object_constructor := AsObjectInFunctorCategoryByValues;
     
     ##
     object_datum := { Hom, o } -> ValuesOfFunctor( o );
+    
+    ##
+    morphism_datum_type :=
+      CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) );
     
     ##
     morphism_constructor := AsMorphismInFunctorCategoryByValues;
@@ -510,10 +520,12 @@ InstallMethodWithCache( FunctorCategory,
                    category_filter := IsFunctorCategory,
                    category_object_filter := IsObjectInFunctorCategory,
                    category_morphism_filter := IsMorphismInFunctorCategory,
+                   object_datum_type := object_datum_type,
+                   morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,
                    object_datum := object_datum,
-                   morphism_datum := morphism_datum,
                    morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
                    modeling_tower_object_constructor := modeling_tower_object_constructor,
                    modeling_tower_object_datum := modeling_tower_object_datum,
                    modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,

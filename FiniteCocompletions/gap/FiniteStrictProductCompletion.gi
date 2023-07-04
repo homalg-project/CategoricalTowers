@@ -10,12 +10,18 @@ InstallMethod( FiniteStrictProductCompletion,
         [ IsCapCategory ],
         
   function( C )
-    local object_constructor, object_datum,
-          morphism_constructor, morphism_datum,
+    local object_datum_type, object_constructor, object_datum,
+          morphism_datum_type, morphism_constructor, morphism_datum,
           opC, UopC, opUopC,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           PC;
+    
+    ##
+    object_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              rec( filter := IsInt ),
+              CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( C ) ) );
     
     ##
     object_constructor :=
@@ -28,6 +34,12 @@ InstallMethod( FiniteStrictProductCompletion,
     
     ##
     object_datum := { PC, P } -> PairOfIntAndList( P );
+    
+    ##
+    morphism_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+              CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) );
     
     ##
     morphism_constructor :=
@@ -153,21 +165,24 @@ InstallMethod( FiniteStrictProductCompletion,
     end;
     
     ##
-    PC := ReinterpretationOfCategory( opUopC,
-                  rec( name := Concatenation( "FiniteStrictProductCompletion( ", Name( C ), " )" ),
-                       object_constructor := object_constructor,
-                       object_datum := object_datum,
-                       morphism_constructor := morphism_constructor,
-                       morphism_datum := morphism_datum,
-                       modeling_tower_object_constructor := modeling_tower_object_constructor,
-                       modeling_tower_object_datum := modeling_tower_object_datum,
-                       modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
-                       modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                       category_filter := IsFiniteStrictProductCompletion,
-                       category_object_filter := IsObjectInFiniteStrictProductCompletion,
-                       category_morphism_filter := IsMorphismInFiniteStrictProductCompletion,
-                       only_primitive_operations := true )
-                  : FinalizeCategory := false );
+    PC :=
+      ReinterpretationOfCategory( opUopC,
+              rec( name := Concatenation( "FiniteStrictProductCompletion( ", Name( C ), " )" ),
+                   category_filter := IsFiniteStrictProductCompletion,
+                   category_object_filter := IsObjectInFiniteStrictProductCompletion,
+                   category_morphism_filter := IsMorphismInFiniteStrictProductCompletion,
+                   object_datum_type := object_datum_type,
+                   morphism_datum_type := morphism_datum_type,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
+                   modeling_tower_object_constructor := modeling_tower_object_constructor,
+                   modeling_tower_object_datum := modeling_tower_object_datum,
+                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+                   only_primitive_operations := true )
+              : FinalizeCategory := false );
     
     SetUnderlyingCategory( PC, C );
     
