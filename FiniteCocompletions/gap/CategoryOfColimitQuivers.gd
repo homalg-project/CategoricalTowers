@@ -75,7 +75,7 @@ CapJitAddTypeSignature( "DefiningPairOfColimitQuiverMorphism", [ IsMorphismInCat
     return CapJitDataTypeOfNTupleOf( 2,
                    CapJitDataTypeOfNTupleOf( 2,
                            CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
-                           CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ),
+                           CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ),
                    CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
     
 end );
