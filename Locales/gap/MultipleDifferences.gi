@@ -29,7 +29,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         [ IsCapCategory and IsThinCategory ],
         
   function( P )
-    local name, D;
+    local name, D, SD;
     
     if not ( HasIsDistributiveBicartesianProset( P ) and IsDistributiveBicartesianProset( P ) ) then
         Error( "the input category `P` must be a distributive (bicartesian) proset (e.g. a distributive lattice) ",
@@ -52,7 +52,9 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     
     SetUnderlyingCategory( D, P );
     
-    SetUnderlyingCategoryOfSingleDifferences( D, MeetSemilatticeOfSingleDifferences( P ) );
+    SD := MeetSemilatticeOfSingleDifferences( P : FinalizeCategory := true );
+    
+    SetUnderlyingCategoryOfSingleDifferences( D, SD );
     
     D!.compiler_hints :=
       rec(

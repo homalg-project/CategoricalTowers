@@ -54,7 +54,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         [ IsCapCategory and IsThinCategory ],
         
   function( P )
-    local name, C, BinaryDirectProduct;
+    local name, C, D, BinaryDirectProduct;
     
     name := "The Boolean algebra of constructible objects as unions of formal single differences of ";
     
@@ -72,7 +72,10 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     SetIsBooleanAlgebra( C, true );
     
     SetUnderlyingCategory( C, P );
-    SetUnderlyingMeetSemilatticeOfDifferences( C, MeetSemilatticeOfSingleDifferences( P ) );
+    
+    D := MeetSemilatticeOfSingleDifferences( P : FinalizeCategory := true );
+    
+    SetUnderlyingMeetSemilatticeOfDifferences( C, D );
     
     C!.compiler_hints := rec(
         category_attribute_names := [
