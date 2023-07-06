@@ -57,7 +57,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         [ IsCapCategory and IsThinCategory ],
         
   function( P )
-    local name, C, BinaryDirectProduct;
+    local name, C, D, BinaryDirectProduct;
     
     name := "The Boolean algebra of constructible objects as unions of formal multiple differences of ";
     
@@ -75,7 +75,10 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     SetIsBooleanAlgebra( C, true );
     
     SetUnderlyingCategory( C, P );
-    SetUnderlyingMeetSemilatticeOfMultipleDifferences( C, MeetSemilatticeOfMultipleDifferences( P ) );
+    
+    D := MeetSemilatticeOfMultipleDifferences( P : FinalizeCategory := true );
+    
+    SetUnderlyingMeetSemilatticeOfMultipleDifferences( C, D );
     
     C!.compiler_hints := rec(
         category_attribute_names := [

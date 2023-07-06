@@ -38,7 +38,7 @@ DeclareAttribute( "ListOfNormalizedObjectsInMeetSemilatticeOfDifferences",
 DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfDifferences",
         IsConstructibleObjectAsUnionOfSingleDifferences );
 
-DeclareAttribute( "UnderlyingMeetSemilatticeOfDifferences",
+DeclareAttribute( "UnderlyingMeetSemilatticeOfSingleDifferences",
         IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences );
 
 CapJitAddTypeSignature( "Length", [ IsConstructibleObjectAsUnionOfSingleDifferences ], IsInt );
@@ -57,7 +57,7 @@ CapJitAddTypeSignature( "ListOfObjectsInMeetSemilatticeOfDifferences", [ IsConst
     Assert( 0, IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences( input_types[1].category ) );
     
     return CapJitDataTypeOfListOf(
-                   CapJitDataTypeOfObjectOfCategory( UnderlyingMeetSemilatticeOfDifferences( input_types[1].category ) ) );
+                   CapJitDataTypeOfObjectOfCategory( UnderlyingMeetSemilatticeOfSingleDifferences( input_types[1].category ) ) );
     
 end );
 
@@ -73,7 +73,7 @@ CapJitAddTypeSignature( "List", [ IsConstructibleObjectAsUnionOfSingleDifference
     
     args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES(
                       args.2,
-                      [ CapJitDataTypeOfObjectOfCategory( UnderlyingMeetSemilatticeOfDifferences( args.1.data_type.category ) ) ],
+                      [ CapJitDataTypeOfObjectOfCategory( UnderlyingMeetSemilatticeOfSingleDifferences( args.1.data_type.category ) ) ],
                       func_stack );
     
     if args.2 = fail then

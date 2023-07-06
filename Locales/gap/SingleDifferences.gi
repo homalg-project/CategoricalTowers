@@ -50,10 +50,9 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
                  IsObjectInMeetSemilatticeOfSingleDifferences,
                  IsMorphismInMeetSemilatticeOfSingleDifferences,
                  IsCapCategoryTwoCell,
-                 rec( filter := IsNTuple,
-                      element_types :=
-                      [ CapJitDataTypeOfObjectOfCategory( P ),
-                        CapJitDataTypeOfObjectOfCategory( P ) ] ),
+                 CapJitDataTypeOfNTupleOf( 2,
+                         CapJitDataTypeOfObjectOfCategory( P ),
+                         CapJitDataTypeOfObjectOfCategory( P ) ),
                  fail,
                  fail );
     

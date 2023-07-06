@@ -54,7 +54,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         [ IsCapCategory and IsThinCategory ],
         
   function( P )
-    local name, C, BinaryDirectProduct;
+    local name, C, D, BinaryDirectProduct;
     
     name := "The Boolean algebra of constructible objects as unions of formal single differences of ";
     
@@ -72,12 +72,15 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     SetIsBooleanAlgebra( C, true );
     
     SetUnderlyingCategory( C, P );
-    SetUnderlyingMeetSemilatticeOfDifferences( C, MeetSemilatticeOfSingleDifferences( P ) );
+    
+    D := MeetSemilatticeOfSingleDifferences( P : FinalizeCategory := true );
+    
+    SetUnderlyingMeetSemilatticeOfSingleDifferences( C, D );
     
     C!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingCategory",
-            "UnderlyingMeetSemilatticeOfDifferences",
+            "UnderlyingMeetSemilatticeOfSingleDifferences",
         ],
     );
     
@@ -88,7 +91,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
       function( cat, A )
         local D;
         
-        D := UnderlyingMeetSemilatticeOfDifferences( cat );
+        D := UnderlyingMeetSemilatticeOfSingleDifferences( cat );
         
         return ForAll( ListOfObjectsInMeetSemilatticeOfDifferences( A ), M -> IsWellDefinedForObjects( D, M ) );
         
@@ -99,7 +102,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
       function( cat, A, B )
         local D;
         
-        D := UnderlyingMeetSemilatticeOfDifferences( cat );
+        D := UnderlyingMeetSemilatticeOfSingleDifferences( cat );
         
         return ForAll( ListOfObjectsInMeetSemilatticeOfDifferences( A ), M -> IsHomSetInhabitedWithTypeCast( D, M, B ) );
         
@@ -110,7 +113,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
       function( cat )
         local T;
         
-        T := TerminalObject( UnderlyingMeetSemilatticeOfDifferences( cat ) );
+        T := TerminalObject( UnderlyingMeetSemilatticeOfSingleDifferences( cat ) );
         
         return UnionOfListOfDifferences( cat, [ T ] );
         
@@ -129,7 +132,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
       function( cat, A )
         local D;
         
-        D := UnderlyingMeetSemilatticeOfDifferences( cat );
+        D := UnderlyingMeetSemilatticeOfSingleDifferences( cat );
         
         return ForAll( ListOfObjectsInMeetSemilatticeOfDifferences( A ), d -> IsInitial( D, d ) );
         
@@ -140,7 +143,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
 
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        D := UnderlyingMeetSemilatticeOfDifferences( cat );
+        D := UnderlyingMeetSemilatticeOfSingleDifferences( cat );
         
         L := [ ListOfObjectsInMeetSemilatticeOfDifferences( A ),
                ListOfObjectsInMeetSemilatticeOfDifferences( B ) ];
@@ -170,7 +173,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
       function( cat, L )
         local D, differences;
         
-        D := UnderlyingMeetSemilatticeOfDifferences( cat );
+        D := UnderlyingMeetSemilatticeOfSingleDifferences( cat );
         
         differences := Concatenation( List( L, ListOfObjectsInMeetSemilatticeOfDifferences ) );
         
@@ -184,7 +187,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
       function( cat, A, B )
         local D, DB;
         
-        D := UnderlyingMeetSemilatticeOfDifferences( cat );
+        D := UnderlyingMeetSemilatticeOfSingleDifferences( cat );
         
         DB := ListOfPreObjectsInMeetSemilatticeOfDifferences( B );
         
