@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "CatReps",
 Subtitle := "Representations and cohomology of finite categories",
-Version := "2023.06-02",
+Version := "2023.07-01",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
@@ -109,7 +109,7 @@ Dependencies := rec(
                    [ "MatricesForHomalg", ">= 2020.02.02" ],
                    [ "Toposes", ">= 2022.05-07" ],
                    [ "Algebroids", ">= 2022.05-05" ],
-                   [ "FunctorCategories", ">= 2022.11-28" ],
+                   [ "FunctorCategories", ">= 2023.07-05" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
