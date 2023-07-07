@@ -15,8 +15,6 @@ gap> LoadPackage( "FunctorCategories", false );
 true
 gap> LoadPackage( "LazyCategories", false );
 true
-gap> LoadPackage( "Locales", false );
-true
 gap> LoadPackage( "FiniteCocompletions", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
@@ -27,8 +25,6 @@ true
 gap> LoadPackage( "FunctorCategories" );
 true
 gap> LoadPackage( "LazyCategories" );
-true
-gap> LoadPackage( "Locales" );
 true
 gap> LoadPackage( "FiniteCocompletions" );
 true

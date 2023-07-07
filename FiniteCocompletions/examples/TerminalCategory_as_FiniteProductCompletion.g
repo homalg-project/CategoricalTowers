@@ -8,31 +8,29 @@ T := FiniteStrictProductCompletion( InitialCategory( ) );
 Display( T );
 #! A CAP category with name FiniteStrictProductCompletion( InitialCategory( ) ):
 #! 
-#! 90 primitive operations were used to derive 499 operations for this category
+#! 91 primitive operations were used to derive 486 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
+#! * IsBicartesianClosedCategory
+#! * IsBicartesianCoclosedCategory
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
-#! * IsClosedMonoidalLattice
-#! * IsCoclosedMonoidalLattice
-#! * IsBooleanAlgebra
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
 #! and furthermore mathematically
-#! * IsDiscreteCategory
 #! * IsFinitelyPresentedCategory
 #! * IsFinitelyPresentedLinearCategory
 #! * IsLinearClosureOfACategory
 #! * IsLocallyOfFiniteInjectiveDimension
 #! * IsLocallyOfFiniteProjectiveDimension
+#! * IsSkeletalCategory
 #! * IsStrictCartesianCategory
 #! * IsStrictCocartesianCategory
 #! * IsStrictMonoidalCategory
 #! * IsTerminalCategory
-#! * IsTotalOrderCategory
 i := InitialObject( T );
 #! <An object in FiniteStrictProductCompletion( InitialCategory( ) )>
 t := TerminalObject( T );
