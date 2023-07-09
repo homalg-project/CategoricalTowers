@@ -29,7 +29,7 @@ Display( PSh );
 #! RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),
 #! IntervalCategory ):
 #! 
-#! 60 primitive operations were used to derive 204 operations for this category
+#! 58 primitive operations were used to derive 202 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsCodistributiveCategory

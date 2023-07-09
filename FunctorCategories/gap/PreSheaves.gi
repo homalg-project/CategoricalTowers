@@ -780,11 +780,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         "OppositeOfSource",
         ];
     
-    ## setting the cache comparison to IsIdenticalObj
-    ## boosts the performance considerably
-    AddIsEqualForCacheForObjects( PSh, { PSh, F, G } -> IsIdenticalObj( F, G ) );
-    AddIsEqualForCacheForMorphisms( PSh, { PSh, eta, epsilon } -> IsIdenticalObj( eta, epsilon ) );
-    
     if CanCompute( C, "IsLiftableAlongMonomorphism" ) then
         
         ##
