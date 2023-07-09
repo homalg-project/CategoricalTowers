@@ -597,7 +597,7 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
     SetUnderlyingCategory( Bouquets, F );
     
     Bouquets!.compiler_hints.category_attribute_names :=
-           [ "ModelingCategory",
+           [ "UnderlyingCategory",
             ];
     
     if ValueOption( "no_precompiled_code" ) <> true then
