@@ -47,23 +47,18 @@ InstallMethod( CategoryOfAlgebroidsMorphism,
                [ IsCategoryOfAlgebroidsObject, IsAlgebroidMorphism, IsCategoryOfAlgebroidsObject ],
                
   function( s , morphism, r )
-    local category, source, range, category_of_algebroids_morphism;
+    local category, source, range;
     
     Assert( 0, IsIdenticalObj( CapCategory( s ), CapCategory( r ) ) );
     Assert( 0, IsIdenticalObj( CapCategory( r ), CapCategory( CategoryOfAlgebroidsObject( AsCapCategory( Range( morphism ) ) ) ) ) );
     Assert( 0, IsIdenticalObj( CapCategory( s ), CapCategory( CategoryOfAlgebroidsObject( AsCapCategory( Source( morphism ) ) ) ) ) );
-
-    category := CapCategory(s);
-
-    category_of_algebroids_morphism := rec( );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( category_of_algebroids_morphism, category,
-                                           s,
-                                           r,
-                                           AsCapFunctor, morphism
-    );
-
-    return category_of_algebroids_morphism;
+    category := CapCategory(s);
+    
+    return CreateCapCategoryMorphismWithAttributes( category,
+                                                    s,
+                                                    r,
+                                                    AsCapFunctor, morphism );
     
 end );
 

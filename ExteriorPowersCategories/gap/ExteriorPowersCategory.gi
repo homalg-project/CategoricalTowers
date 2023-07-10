@@ -192,17 +192,13 @@ InstallMethod( MorphismInExteriorPowersCategory,
         [ IsObjectInExteriorPowersCategory, IsList, IsObjectInExteriorPowersCategory ],
         
   function ( S, L, T )
-    local phi;
     
-    phi := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( phi, CapCategory( S ),
-            S,
-            T,
-            DegreeOfMorphism, DegreeOfObject( T ) - DegreeOfObject( S ),
-            UnderlyingCell, L );
-    
-    return phi;
+    return CreateCapCategoryMorphismWithAttributes(
+                   CapCategory( S ),
+                   S,
+                   T,
+                   DegreeOfMorphism, DegreeOfObject( T ) - DegreeOfObject( S ),
+                   UnderlyingCell, L );
     
 end );
 

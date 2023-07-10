@@ -202,12 +202,11 @@ InstallMethod( QuiverRowsMorphism,
     
     category := CapCategory( source );
 
-    quiver_rows_morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-                             rec( ), category,
-                             source,
-                             range,
-                             MorphismMatrix, matrix
-    );
+    quiver_rows_morphism := CreateCapCategoryMorphismWithAttributes(
+                                category,
+                                source,
+                                range,
+                                MorphismMatrix, matrix );
 
     Add( category, quiver_rows_morphism );
     
