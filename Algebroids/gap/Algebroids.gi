@@ -462,7 +462,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
         v := UnderlyingVertex( o );
         
-        return IsQuiverVertex( v ) and IsIdenticalObj( QuiverOfPath( v ), UnderlyingQuiver( category ) );
+        return IsQuiverVertex( v ) and QuiverOfPath( v ) = UnderlyingQuiver( category );
         
     end );
     
@@ -473,7 +473,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
         m := UnderlyingQuiverAlgebraElement( alpha );
         
-        if not IsIdenticalObj( AlgebraOfElement( m ), UnderlyingQuiverAlgebra( category ) ) then
+        if not AlgebraOfElement( m ) = UnderlyingQuiverAlgebra( category ) then
             
             return false;
             

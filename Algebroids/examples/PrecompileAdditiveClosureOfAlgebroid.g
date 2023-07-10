@@ -1,20 +1,20 @@
-# # @BeginChunk PrecompileAdditiveClosureOfAlgebroid
+#! @BeginChunk PrecompileAdditiveClosureOfAlgebroid
 
-# # @Example
+#! @Example
 
-# # #@if ValueOption( "no_precompiled_code" ) <> true
+#! #@if ValueOption( "no_precompiled_code" ) <> true
 
 LoadPackage( "Algebroids", false );
-# # true
+#! true
 LoadPackage( "CompilerForCAP", false );
-# # true
+#! true
 
 QQ := HomalgFieldOfRationals( );;
 snake_quiver := RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" );;
 A := PathAlgebra( QQ, snake_quiver );;
 
 ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
-# # true
+#! true
 
 # only valid for the construction above
 # FIXME: IsInt should be IsRat, but specializations of types are not yet supported by CompilerForCAP
@@ -46,17 +46,17 @@ precompile_AdditiveClosureOfAlgebroid( A, false, "Field" );
 precompile_AdditiveClosureOfAlgebroid( A, true, "Z" );
 
 AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled( A );
-# # Additive closure( Algebroid( Q, FreeCategory( RightQuiver(
-# # "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) )
+#! Additive closure( Algebroid( Q, FreeCategory( RightQuiver(
+#! "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) )
 
 AdditiveClosure( Algebroid( A, false ) )!.precompiled_functions_added;
-# # true
+#! true
 
 AdditiveClosure( Algebroid( A, true ) )!.precompiled_functions_added;
-# # true
+#! true
 
-# # #@fi
+#! #@fi
 
-# # @EndExample
+#! @EndExample
 
-# # @EndChunk
+#! @EndChunk
