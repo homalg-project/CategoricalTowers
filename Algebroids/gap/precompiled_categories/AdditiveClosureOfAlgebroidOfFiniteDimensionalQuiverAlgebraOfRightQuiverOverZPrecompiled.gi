@@ -600,7 +600,7 @@ function ( cat_1, arg2_1 )
                          hoisted_2_3 := hoisted_7_2[j_3];
                          hoisted_1_3 := hoisted_6_2[j_3];
                          return (hoisted_1_2[j_3] and IS_IDENTICAL_OBJ( deduped_19_1, hoisted_2_2[j_3] ) and IdFunc( function (  )
-                                     if not IS_IDENTICAL_OBJ( hoisted_3_2[j_3], hoisted_5_1 ) then
+                                     if not hoisted_3_2[j_3] = hoisted_5_1 then
                                          return false;
                                      elif hoisted_4_2[j_3] then
                                          return true;
@@ -650,7 +650,7 @@ function ( cat_1, arg2_1 )
     if not ForAll( ObjectList( arg2_1 ), function ( obj_2 )
                  local deduped_1_2;
                  deduped_1_2 := UnderlyingVertex( obj_2 );
-                 return (IS_IDENTICAL_OBJ( deduped_3_1, CapCategory( obj_2 ) ) and (IsQuiverVertex( deduped_1_2 ) and IS_IDENTICAL_OBJ( QuiverOfPath( deduped_1_2 ), hoisted_2_1 )));
+                 return (IS_IDENTICAL_OBJ( deduped_3_1, CapCategory( obj_2 ) ) and (IsQuiverVertex( deduped_1_2 ) and QuiverOfPath( deduped_1_2 ) = hoisted_2_1));
              end ) then
         return false;
     else
