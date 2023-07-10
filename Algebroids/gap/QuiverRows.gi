@@ -183,10 +183,9 @@ InstallMethod( QuiverRowsObject,
         
     fi;
     
-    quiver_rows_object := ObjectifyObjectForCAPWithAttributes(
-        rec( ), category,
-        ListOfQuiverVertices, L
-    );
+    quiver_rows_object := CreateCapCategoryObjectWithAttributes(
+                              category,
+                              ListOfQuiverVertices, L );
 
     Add( category, quiver_rows_object );
     

@@ -29,7 +29,6 @@ InstallMethod( AsSubcategoryCell,
         [ IsCapSubcategory, IsCapCategoryObject ],
         
   function( D, object )
-    local o;
     
     if not IsIdenticalObj( CapCategory( object ), AmbientCategory( D ) ) then
         
@@ -37,12 +36,8 @@ InstallMethod( AsSubcategoryCell,
         
     fi;
     
-    o := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( o, D,
-            UnderlyingCell, object );
-    
-    return o;
+    return CreateCapCategoryObjectWithAttributes( D,
+                                                  UnderlyingCell, object );
     
 end );
 

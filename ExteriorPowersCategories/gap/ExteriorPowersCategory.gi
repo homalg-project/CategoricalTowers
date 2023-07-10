@@ -160,15 +160,10 @@ InstallMethod( ObjectInExteriorPowersCategory,
         [ IsCapCategoryObject, IsInt, IsExteriorPowersCategory ],
         
   function ( M, degree_of_socle, EC )
-    local EP;
     
-    EP := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( EP, EC,
-            DegreeOfObject, degree_of_socle,
-            UnderlyingCell, M );
-    
-    return EP;
+    return CreateCapCategoryObjectWithAttributes( EC,
+                                                  DegreeOfObject, degree_of_socle,
+                                                  UnderlyingCell, M );
     
 end );
 

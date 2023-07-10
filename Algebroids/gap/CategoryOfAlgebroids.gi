@@ -32,18 +32,13 @@ InstallMethod( CategoryOfAlgebroidsObject,
                         [ IsAlgebroid ],
                
   function( A )
-    local category, category_of_algebroids_object;
+    local category;
 
     category := CategoryOfAlgebroids( CommutativeRingOfLinearCategory( A ), Parity( A ) );
     
-    category_of_algebroids_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( category_of_algebroids_object,
-                                         category,
-                                         AsCapCategory, A
-    );
+    return CreateCapCategoryObjectWithAttributes( category,
+                                                  AsCapCategory, A );
 
-    return category_of_algebroids_object;
     
 end );
 
