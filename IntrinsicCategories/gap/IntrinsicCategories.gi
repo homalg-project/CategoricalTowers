@@ -710,28 +710,6 @@ InstallMethod( Intrinsify,
 
 ##
 InstallMethod( Intrinsify,
-        [ IsCapCategory, IsCapCategoryMorphism ],
-        
-  function( C, mor )
-    local S, T;
-    
-    S := Source( mor );
-    T := Range( mor );
-    
-    if IsEqualForObjects( S, T ) then
-        S := Intrinsify( C, S );
-        T := S;
-    else        
-        S := Intrinsify( C, S );
-        T := Intrinsify( C, T );
-    fi;
-    
-    return Intrinsify( mor, S, 1, T, 1 );
-    
-end );
-
-##
-InstallMethod( Intrinsify,
         [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryIntrinsicObject, IsInt ],
         
   function( m, S, posS, T, posT )
@@ -773,6 +751,28 @@ InstallMethod( Intrinsify,
     INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS( m, mor );
     
     return mor;
+    
+end );
+
+##
+InstallMethod( Intrinsify,
+        [ IsCapCategory, IsCapCategoryMorphism ],
+        
+  function( C, mor )
+    local S, T;
+    
+    S := Source( mor );
+    T := Range( mor );
+    
+    if IsEqualForObjects( S, T ) then
+        S := Intrinsify( C, S );
+        T := S;
+    else        
+        S := Intrinsify( C, S );
+        T := Intrinsify( C, T );
+    fi;
+    
+    return Intrinsify( mor, S, 1, T, 1 );
     
 end );
 
