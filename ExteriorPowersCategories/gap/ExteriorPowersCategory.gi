@@ -245,20 +245,22 @@ InstallMethod( ExteriorPowersCategory,
     
     name := Concatenation( "ExteriorPowersCategory( ", String( l ), ", ", Name( C ), " )" );
     
-    EC := CreateCapCategory( name );
+    EC := CreateCapCategoryWithDataTypes( name,
+                                          IsExteriorPowersCategory,
+                                          IsObjectInExteriorPowersCategory,
+                                          IsMorphismInExteriorPowersCategory,
+                                          IsCellInExteriorPowersCategory,
+                                          fail,
+                                          fail,
+                                          fail );
 
     EC!.category_as_first_argument := true;
-    
-    SetFilterObj( EC, IsExteriorPowersCategory );
     
     EC!.UnderlyingCategory := C;
     
     EC!.power := l;
     
     C!.ExteriorPowersCategories.(String( l )) := EC;
-    
-    AddObjectRepresentation( EC, IsObjectInExteriorPowersCategory );
-    AddMorphismRepresentation( EC, IsMorphismInExteriorPowersCategory );
     
     SetCachingOfCategoryCrisp( EC );
     
