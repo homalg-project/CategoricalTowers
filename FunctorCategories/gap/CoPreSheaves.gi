@@ -560,8 +560,7 @@ InstallMethodWithCache( CoPreSheaves,
     SetSetOfGeneratingMorphisms( coPSh, SetOfGeneratingMorphisms( B ) );
     
     coPSh!.compiler_hints.category_attribute_names :=
-      [ "ModelingCategory",
-        "Source",
+      [ "Source",
         "Range",
         "SetOfObjects",
         "SetOfGeneratingMorphisms",

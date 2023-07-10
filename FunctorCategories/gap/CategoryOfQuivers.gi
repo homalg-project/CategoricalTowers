@@ -237,7 +237,7 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
     SetUnderlyingCategory( Quivers, F );
     
     Quivers!.compiler_hints.category_attribute_names :=
-           [ "ModelingCategory",
+           [ "UnderlyingCategory",
             ];
     
     if ValueOption( "no_precompiled_code" ) <> true then

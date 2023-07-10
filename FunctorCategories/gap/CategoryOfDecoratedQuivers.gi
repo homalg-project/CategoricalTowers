@@ -196,8 +196,7 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
     SetDecorationOfArrows( DecoratedQuivers, decoration_of_arrows );
     
     DecoratedQuivers!.compiler_hints.category_attribute_names :=
-      [ "ModelingCategory",
-        "DecorationOfVertices",
+      [ "DecorationOfVertices",
         "DecorationOfArrows",
         ];
     
