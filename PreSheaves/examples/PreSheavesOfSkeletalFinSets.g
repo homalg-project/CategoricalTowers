@@ -10,17 +10,18 @@ PSh := PreSheaves( SkeletalFinSets, SkeletalFinSets );
 Display( PSh );
 #! A CAP category with name PreSheaves( SkeletalFinSets, SkeletalFinSets ):
 #! 
-#! 45 primitive operations were used to derive 152 operations for this category
-#! which algorithmically
-#! * IsFiniteCocompleteCategory
-#! * IsFiniteCompleteCategory
-#! * IsDistributiveCategory
+#! 45 primitive operations were used to derive 149 operations for this category
+#! which mathematically
+#! * IsDistributiveCategory (but not yet algorithmically)
+#! * IsFiniteCocompleteCategory (but not yet algorithmically)
+#! * IsFiniteCompleteCategory (but not yet algorithmically)
 CheckConstructivenessOfCategory( PSh, "IsElementaryTopos" );
 #! [ "CartesianCoevaluationMorphismWithGivenRange",
 #!   "CartesianEvaluationMorphismWithGivenSource",
 #!   "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
 #!   "ExponentialOnMorphismsWithGivenExponentials", "ExponentialOnObjects",
-#!   "SubobjectClassifier", "SubobjectOfClassifyingMorphism" ]
+#!   "IsCongruentForMorphisms", "SubobjectClassifier",
+#!   "SubobjectOfClassifyingMorphism" ]
 Y := YonedaEmbeddingOfSourceCategory( PSh );
 #! Yoneda embedding functor
 omega := SubobjectClassifier( SourceOfFunctor( Y ) );
