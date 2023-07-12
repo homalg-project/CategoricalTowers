@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "IntrinsicModules",
 Subtitle := "Finitely presented modules over computable rings allowing multiple presentations and the notion of elements",
 
-Version := "2023.06-01",
+Version := "2023.07-01",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
@@ -92,7 +92,7 @@ Dependencies := rec(
                    [ "FreydCategoriesForCAP", ">= 2021.03-01" ],
                    [ "ModulePresentationsForCAP", ">= 2020.10-01" ],
                    [ "CategoryConstructor", ">= 2021.10-04" ],
-                   [ "IntrinsicCategories", ">= 2021.10-02" ],
+                   [ "IntrinsicCategories", ">= 2023.07-01" ],
                    [ "CategoriesWithAmbientObjects", ">= 2021.03-07" ],
                    ],
   SuggestedOtherPackages := [ ],

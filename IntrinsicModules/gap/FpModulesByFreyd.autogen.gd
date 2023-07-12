@@ -69,6 +69,8 @@
 #! * <Ref BookName="CAP" Func="EmbeddingOfEqualizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="EmbeddingOfEqualizerWithGivenEqualizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="EpimorphismFromSomeProjectiveObject" Label="for Is" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="EpimorphismFromSomeProjectiveObjectForKernelObject" Label="for Is" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="Equalizer" Label="" />
 #! * <Ref BookName="CAP" Func="EqualizerFunctorial" Label="for Is" />
@@ -243,7 +245,6 @@
 #! * <Ref BookName="CAP" Func="PushoutFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="PushoutFunctorialWithGivenPushouts" Label="for Is" />
 #! * <Ref BookName="CAP" Func="RandomMorphismWithFixedSourceAndRangeByInteger" Label="for Is" />
-#! * <Ref BookName="CAP" Func="RandomMorphismWithFixedSourceAndRangeByList" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightDistributivityExpanding" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightDistributivityExpandingWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightDistributivityFactoring" Label="for Is" />
@@ -254,6 +255,7 @@
 #! * <Ref BookName="MonoidalCategories" Func="RightUnitorWithGivenTensorProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategory" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SomeProjectiveObject" Label="for Is" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="SomeProjectiveObjectForKernelObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SubtractionForMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SumOfMorphisms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductDualityCompatibilityMorphism" Label="for Is" />
