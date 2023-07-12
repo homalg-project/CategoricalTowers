@@ -96,6 +96,15 @@ DeclareOperation( "Intrinsify",
 #! @Arguments m, s, i, t, j
 #! @Returns a morphism in a CAP-category
 #! @Group Intrinsify_mor
+DeclareOperation( "IntrinsifyMorphism",
+        [ IsCapCategoryIntrinsicObject, IsCapCategoryMorphism, IsCapCategoryIntrinsicObject ] );
+
+#! @Description
+#!  Create out of the morphism <A>m</A> an intrinsic morphism with source <C>CertainCell</C>(<A>s</A>,<A>i</A>) and
+#!  target <C>CertainCell</C>(<A>t</A>,<A>j</A>).
+#! @Arguments m, s, i, t, j
+#! @Returns a morphism in a CAP-category
+#! @Group Intrinsify_mor
 DeclareOperation( "Intrinsify",
         [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryIntrinsicObject, IsInt ] );
 

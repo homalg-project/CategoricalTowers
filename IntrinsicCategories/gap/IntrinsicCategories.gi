@@ -367,24 +367,38 @@ InstallMethod( SetPositionOfActiveCell,
 end );
 
 ##
+InstallOtherMethod( ActiveCell,
+        "for an intrinsic category and an intrinsic object",
+        [ IsIntrinsicCategory, IsCapCategoryIntrinsicObject ],
+        
+  { IC, obj } -> CertainCell( obj, PositionOfActiveCell( obj ) ) );
+
+##
 InstallMethod( ActiveCell,
         "for an intrinsic object",
         [ IsCapCategoryIntrinsicObject ],
         
-  obj -> CertainCell( obj, PositionOfActiveCell( obj ) ) );
+  obj -> ActiveCell( CapCategory( obj ), obj ) );
 
 ##
-InstallMethod( ActiveCell,
-        "for an intrinsic morphism",
-        [ IsCapCategoryIntrinsicMorphism ],
+InstallOtherMethod( ActiveCell,
+        "for an intrinsic category and an intrinsic morphism",
+        [ IsIntrinsicCategory, IsCapCategoryIntrinsicMorphism ],
         
-  function( mor )
+  function( IC, mor )
     
     return CertainCell( mor,
                    PositionOfActiveCell( Source( mor ) ),
                    PositionOfActiveCell( Range( mor ) ) );
     
 end );
+
+##
+InstallMethod( ActiveCell,
+        "for an intrinsic morphism",
+        [ IsCapCategoryIntrinsicMorphism ],
+        
+  mor -> ActiveCell( CapCategory( mor ), mor ) );
 
 ##
 InstallMethod( ActiveCell,
@@ -754,6 +768,36 @@ InstallMethod( Intrinsify,
 end );
 
 ##
+InstallOtherMethod( Intrinsify,
+        [ IsCapCategory, IsCapCategoryIntrinsicObject, IsCapCategoryMorphism, IsCapCategoryIntrinsicObject ],
+        
+  function( C, S, mor, T )
+    
+    return Intrinsify( mor, S, PositionOfActiveCell( S ), T, PositionOfActiveCell( T ) );
+    
+end );
+
+##
+InstallOtherMethod( Intrinsify,
+        [ IsIntrinsicCategory, IsCapCategoryIntrinsicObject, IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt ],
+        
+  function( IC, S, mor, T, t )
+    
+    return Intrinsify( mor, S, PositionOfActiveCell( S ), T, t );
+    
+end );
+
+##
+InstallOtherMethod( Intrinsify,
+        [ IsIntrinsicCategory, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryMorphism, IsCapCategoryIntrinsicObject ],
+        
+  function( IC, S, s, mor, T )
+    
+    return Intrinsify( mor, S, s, T, PositionOfActiveCell( T ) );
+    
+end );
+
+##
 InstallMethod( Intrinsify,
         [ IsCapCategory, IsCapCategoryMorphism ],
         
@@ -1070,16 +1114,13 @@ InstallMethod( IntrinsicCategory,
         
   function( C )
     local name, filter_obj, filter_mor,
-          create_func_bool, create_func_object, todo_func,
-          create_func_morphism, create_func_universal_morphism,
-          list_of_operations_to_install, func, pos, skip, commutative_ring,
-          properties, IC, strict, filter_end,
+          list_of_operations_to_install, func, pos, skip, supports_empty_limits,
+          properties, create_func_morphism, create_func_morphism_or_fail,
+          category_constructor_options, IC, todo_func, strict, filter_end,
           hom_filter_obj, hom_filter_mor,  hom_filter_end, hom_todo_func, H;
     
     if not IsFinalized( C ) then
-        
         Error( "the underlying category must be finalized" );
-        
     fi;
     
     if HasName( C ) then
@@ -1100,171 +1141,8 @@ InstallMethod( IntrinsicCategory,
         filter_mor := IsCapCategoryIntrinsicMorphism;
     fi;
     
-    create_func_bool :=
-      function( name, IC )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( IC, arg... )
-            local eval_arg;
-            
-            eval_arg := List( arg, ActiveCell );
-            
-            eval_arg := Concatenation( [ UnderlyingCategory( IC ) ], eval_arg );
-            
-            return CallFuncList( oper, eval_arg );
-            
-          end;
-          
-        end;
-    
-    ## e.g., DirectSum
-    create_func_object :=
-      function( name, IC )
-        local oper, context;
-        
-        oper := ValueGlobal( name );
-        
-        context := Concatenation( name, "_Context" );
-        
-        return ## a constructor for universal objects
-          function( IC, arg... )
-            local active_pos, eval_arg, result;
-            
-            active_pos := List( arg, PositionOfActiveCell );
-            
-            eval_arg := List( arg, ActiveCell );
-            
-            eval_arg := Concatenation( [ UnderlyingCategory( IC ) ], eval_arg );
-            
-            result := CallFuncList( oper, eval_arg );
-            
-            result := Intrinsify( IC, result );
-            
-            result!.(context) := [ arg, active_pos ];
-            
-            return result;
-            
-          end;
-          
-      end;
-    
-    todo_func := ValueOption( "todo_func" );
-    
-    if todo_func = fail or not IsFunction( todo_func ) then
-        todo_func := ReturnNothing;
-    fi;
-    
-    ## e.g., IdentityMorphism, PreCompose
-    create_func_morphism :=
-      function( name, IC )
-        local oper, type;
-        
-        oper := ValueGlobal( name );
-        
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
-        return
-          function( IC, arg... )
-            local src_trg, S, s, T, t, eval_arg, result;
-            
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            S := src_trg[1];
-            s := PositionOfActiveCell( S );
-            T := src_trg[2];
-            t := PositionOfActiveCell( T );
-            
-            eval_arg := List( arg, ActiveCell );
-            
-            eval_arg := Concatenation( [ UnderlyingCategory( IC ) ], eval_arg );
-            
-            result := CallFuncList( oper, eval_arg );
-            
-            result := Intrinsify( result, S, s, T, t );
-            
-            todo_func( arg, result );
-            
-            return result;
-            
-          end;
-          
-      end;
-    
-    ## e.g., CokernelColift[WithGivenCokernelObject]
-    create_func_universal_morphism :=
-      function( name, IC )
-        local info, oper, type, context;
-        
-        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-        
-        if not IsList( info.with_given_without_given_name_pair ) then
-            Error( "unable to extract the name of the operation computing the universal object\n" );
-        fi;
-        
-        oper := ValueGlobal( name );
-        
-        type := info.io_type;
-        
-        context := Concatenation( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name, "_Context" );
-        
-        return
-          function( IC, arg... )
-            local l, with_given_object, active_pos, context_of_constructor,
-                  active_positions, src_trg, S, s, T, t, eval_arg, result;
-            
-            l := Length( arg );
-            
-            with_given_object := arg[l];
-            
-            active_pos := PositionOfActiveCell( with_given_object );
-            
-            if not active_pos = 1 then
-                SetPositionOfActiveCell( with_given_object, 1 );
-            fi;
-            
-            context_of_constructor := with_given_object!.(context);
-            
-            active_positions := List( context_of_constructor[1], PositionOfActiveCell );
-            
-            if not active_positions = context_of_constructor[2] then
-                CallFuncList( SetPositionOfActiveCell, context_of_constructor );
-            fi;
-            
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            S := src_trg[1];
-            s := PositionOfActiveCell( S );
-            T := src_trg[2];
-            t := PositionOfActiveCell( T );
-            
-            eval_arg := List( arg, ActiveCell );
-            
-            eval_arg := Concatenation( [ UnderlyingCategory( IC ) ], eval_arg );
-            
-            result := CallFuncList( oper, eval_arg );
-            
-            result := Intrinsify( result, S, s, T, t );
-            
-            ## the order of the following two SetPositionOfActiveCell is important
-            if not active_positions = context_of_constructor[2] then
-                SetPositionOfActiveCell( context_of_constructor[1], active_positions );
-            fi;
-            
-            if not active_pos = 1 then
-                SetPositionOfActiveCell( with_given_object, active_pos );
-            fi;
-            
-            todo_func( arg, result );
-            
-            return result;
-            
-          end;
-          
-      end;
-    
     ## TODO: remove `Primitively' for performance?
-    list_of_operations_to_install := SortedList( ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( C ) ) );
+    list_of_operations_to_install := SortedList( ListPrimitivelyInstalledOperationsOfCategory( C ) );
     
     for func in [
             "IsEqualForObjects",
@@ -1281,10 +1159,10 @@ InstallMethod( IntrinsicCategory,
         
     od;
     
-    if HasCommutativeRingOfLinearCategory( C ) then
-        commutative_ring := CommutativeRingOfLinearCategory( C );
+    if IsBound( C!.supports_empty_limits ) then
+        supports_empty_limits := C!.supports_empty_limits;
     else
-        commutative_ring := fail;
+        supports_empty_limits := false;
     fi;
     
     properties := Set( Filtered( Concatenation( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST ), x -> x <> fail ) );
@@ -1299,20 +1177,88 @@ InstallMethod( IntrinsicCategory,
     
     properties := Filtered( properties, p -> ValueGlobal( p )( C ) );
     
-    IC := CategoryConstructor( :
-                  name := name,
-                  category_filter := IsIntrinsicCategory,
-                  category_object_filter := IsCapCategoryIntrinsicObject and filter_obj,
-                  category_morphism_filter := IsCapCategoryIntrinsicMorphism and filter_mor,
-                  commutative_ring := commutative_ring,
-                  properties := properties,
-                  list_of_operations_to_install := list_of_operations_to_install,
-                  create_func_bool := create_func_bool,
-                  create_func_object := create_func_object,
-                  create_func_morphism := create_func_morphism,
-                  create_func_universal_morphism := create_func_universal_morphism,
-                  category_as_first_argument := true
-                  );
+    create_func_morphism :=
+      function( name, IC )
+        
+        return """
+          function( input_arguments... )
+            local underlying_result, result;
+            
+            underlying_result := operation_name( underlying_arguments... );
+            
+            result := top_morphism_getter( cat, top_source, underlying_result, top_range );
+            
+            cat!.todo_func( [ input_arguments... ], result );
+            
+            return result;
+            
+        end""";
+        
+    end;
+    
+    create_func_morphism_or_fail :=
+      function( name, IC )
+        
+        return """
+          function( input_arguments... )
+            local underlying_result, result;
+            
+            underlying_result := operation_name( underlying_arguments... );
+            
+            if underlying_result = fail then
+                
+                return fail;
+                
+            else
+                
+                result := top_morphism_getter( cat, top_source, underlying_result, top_range );
+            
+                cat!.todo_func( [ input_arguments... ], result );
+                
+                return result;
+                
+            fi;
+            
+        end""";
+        
+    end;
+    
+    category_constructor_options :=
+      rec( name := name,
+           category_filter := IsIntrinsicCategory,
+           category_object_filter := IsCapCategoryIntrinsicObject and filter_obj,
+           category_morphism_filter := IsCapCategoryIntrinsicMorphism and filter_mor,
+           properties := properties,
+           list_of_operations_to_install := list_of_operations_to_install,
+           supports_empty_limits := supports_empty_limits,
+           underlying_category_getter_string := "UnderlyingCategory",
+           underlying_object_getter_string := "ActiveCell",
+           underlying_morphism_getter_string := "ActiveCell",
+           top_object_getter_string := "Intrinsify",
+           top_morphism_getter_string := "Intrinsify",
+           generic_output_source_getter_string := "Intrinsify( cat, Source( underlying_result ) ), 1",
+           generic_output_range_getter_string := "Intrinsify( cat, Range( underlying_result ) ), 1",
+           create_func_bool := "default",
+           create_func_object := "default",
+           create_func_object_or_fail := "default",
+           create_func_morphism := create_func_morphism,
+           create_func_morphism_or_fail := create_func_morphism_or_fail,
+           create_func_list_of_objects := "default"
+           );
+    
+    if HasCommutativeRingOfLinearCategory( C ) then
+        category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( C );
+    fi;
+    
+    IC := CategoryConstructor( category_constructor_options );
+    
+    todo_func := ValueOption( "todo_func" );
+    
+    if todo_func = fail or not IsFunction( todo_func ) then
+        todo_func := ReturnNothing;
+    fi;
+    
+    IC!.todo_func := todo_func;
     
     SetUnderlyingCategory( IC, C );
     
@@ -1385,6 +1331,7 @@ InstallMethod( IntrinsicCategory,
         fi;
         
         SetRangeCategoryOfHomomorphismStructure( IC, H );
+        SetIsEquippedWithHomomorphismStructure( IC, true );
         
         AddDistinguishedObjectOfHomomorphismStructure( IC,
           function( IC )
@@ -1459,8 +1406,6 @@ InstallMethod( IntrinsicCategory,
                       range, t );
             
         end );
-        
-        SetIsEquippedWithHomomorphismStructure( IC, true );
         
     fi;
     

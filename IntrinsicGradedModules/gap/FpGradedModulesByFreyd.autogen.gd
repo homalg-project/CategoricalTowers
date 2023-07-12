@@ -47,6 +47,7 @@
 #! * <Ref BookName="CAP" Func="CokernelProjectionWithGivenCokernelObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="Colift" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ColiftAlongEpimorphism" Label="for Is" />
+#! * <Ref BookName="CAP" Func="ColiftOrFail" Label="for Is" />
 #! * <Ref BookName="CategoryConstructor" Func="Colimit" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ComponentOfMorphismFromCoproduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ComponentOfMorphismFromDirectSum" Label="for Is" />
@@ -69,6 +70,8 @@
 #! * <Ref BookName="CAP" Func="EmbeddingOfEqualizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="EmbeddingOfEqualizerWithGivenEqualizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="EpimorphismFromSomeProjectiveObject" Label="for Is" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="EpimorphismFromSomeProjectiveObjectForKernelObject" Label="for Is" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="Equalizer" Label="" />
 #! * <Ref BookName="CAP" Func="EqualizerFunctorial" Label="for Is" />
@@ -188,6 +191,7 @@
 #! * <Ref BookName="MonoidalCategories" Func="LeftUnitorWithGivenTensorProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="Lift" Label="for Is" />
 #! * <Ref BookName="CAP" Func="LiftAlongMonomorphism" Label="for Is" />
+#! * <Ref BookName="CAP" Func="LiftOrFail" Label="for Is" />
 #! * <Ref BookName="CategoryConstructor" Func="Limit" Label="for Is" />
 #! * <Ref BookName="CategoryConstructor" Func="MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MonoidalPostComposeMorphism" Label="for Is" />
@@ -248,7 +252,9 @@
 #! * <Ref BookName="MonoidalCategories" Func="RightUnitorInverseWithGivenTensorProduct" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightUnitorWithGivenTensorProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategory" Label="for Is" />
+#! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategoryOrFail" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SomeProjectiveObject" Label="for Is" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="SomeProjectiveObjectForKernelObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SubtractionForMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SumOfMorphisms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductDualityCompatibilityMorphism" Label="for Is" />
