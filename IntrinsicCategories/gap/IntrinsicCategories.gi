@@ -713,11 +713,11 @@ InstallMethod( Intrinsify,
         [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryIntrinsicObject, IsInt ],
         
   function( m, S, posS, T, posT )
-    local C, mor;
+    local IC, mor;
     
-    C := CapCategory( S );
+    IC := CapCategory( S );
     
-    if not IsIdenticalObj( C, CapCategory( T ) ) then
+    if not IsIdenticalObj( IC, CapCategory( T ) ) then
         Error( "source and target lie in different categories\n" );
     elif not IsEqualForObjects( Source( m ), CertainCell( S, posS ) ) then
         Error( "the source of the morphism is not equal to the specified cell in the given intrinsic source\n" );
@@ -730,19 +730,18 @@ InstallMethod( Intrinsify,
                morphisms := rec( (String( [ posS, posT ] )) := [ 1, [ m ] ] )
                );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( mor, C,
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( mor, IC,
             S,
-            T
-            );
+            T );
     
     if IsEqualForObjects( S, T ) then
-        SetFilterObj( mor, C!.IsCapCategoryIntrinsicEndomorphism );
+        SetFilterObj( mor, IC!.IsCapCategoryIntrinsicEndomorphism );
     fi;
     
     SetIsSafeForSideEffects( mor, true );
     
-    if IsBound( C!.CanonicalizeMorphismsIfZero ) and
-       C!.CanonicalizeMorphismsIfZero = true then
+    if IsBound( IC!.CanonicalizeMorphismsIfZero ) and
+       IC!.CanonicalizeMorphismsIfZero = true then
         
         SetFilterObj( mor, CanonicalizeIfZero );
         
