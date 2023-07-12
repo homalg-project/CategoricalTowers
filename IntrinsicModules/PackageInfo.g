@@ -11,9 +11,9 @@ SetPackageInfo( rec(
 PackageName := "IntrinsicModules",
 Subtitle := "Finitely presented modules over computable rings allowing multiple presentations and the notion of elements",
 
-Version := "2023.06-01",
-Date := "2023-06-18",
-Date := "2023-06-18",
+Version := "2023.07-01",
+Date := "2023-07-12",
+Date := "2023-07-12",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -92,7 +92,7 @@ Dependencies := rec(
                    [ "FreydCategoriesForCAP", ">= 2021.03-01" ],
                    [ "ModulePresentationsForCAP", ">= 2020.10-01" ],
                    [ "CategoryConstructor", ">= 2021.10-04" ],
-                   [ "IntrinsicCategories", ">= 2021.10-02" ],
+                   [ "IntrinsicCategories", ">= 2023.07-01" ],
                    [ "CategoriesWithAmbientObjects", ">= 2021.03-07" ],
                    ],
   SuggestedOtherPackages := [ ],
