@@ -222,7 +222,7 @@
     [4X[28XIntrinsicCategory( CategoryWithAmbientObjects([128X[104X
     [4X[28XFreyd( GradedRows( Q[x,y,z] (with weights [ 1, 1, 1 ]) ) ) ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X118 primitive operations were used to derive 309 operations for this category[128X[104X
+    [4X[28X150 primitive operations were used to derive 315 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
@@ -408,6 +408,9 @@
   [30X    [33X[0;6Y[2XColiftAlongEpimorphism[102X      ([14XCAP:      ColiftAlongEpimorphism      for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
+  [30X    [33X[0;6Y[2XColiftOrFail[102X    ([14XCAP:    ColiftOrFail    for    IsCapCategoryMorphism,
+        IsCapCategoryMorphism[114X)[133X
+  
   [30X    [33X[0;6Y[2XColimit[102X ([14XCategoryConstructor: Colimit for IsList, IsList[114X)[133X
   
   [30X    [33X[0;6Y[2XComponentOfMorphismFromCoproduct[102X                                 ([14XCAP:
@@ -479,6 +482,16 @@
   
   [30X    [33X[0;6Y[2XEpimorphismFromSomeProjectiveObject[102X                              ([14XCAP:
         EpimorphismFromSomeProjectiveObject for IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XEpimorphismFromSomeProjectiveObjectForKernelObject[102X
+        ([14XFreydCategoriesForCAP:
+        EpimorphismFromSomeProjectiveObjectForKernelObject                 for
+        IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject[102X
+        ([14XFreydCategoriesForCAP:
+        EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject
+        for IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[102X ([14XCAP:
         EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject   for
@@ -878,6 +891,9 @@
   [30X    [33X[0;6Y[2XLiftAlongMonomorphism[102X       ([14XCAP:       LiftAlongMonomorphism      for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
+  [30X    [33X[0;6Y[2XLiftOrFail[102X     ([14XCAP:     LiftOrFail     for     IsCapCategoryMorphism,
+        IsCapCategoryMorphism[114X)[133X
+  
   [30X    [33X[0;6Y[2XLimit[102X ([14XCategoryConstructor: Limit for IsList, IsList[114X)[133X
   
   [30X    [33X[0;6Y[2XMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[102X
@@ -1092,8 +1108,14 @@
   [30X    [33X[0;6Y[2XSolveLinearSystemInAbCategory[102X  ([14XCAP: SolveLinearSystemInAbCategory for
         IsList, IsList, IsList[114X)[133X
   
+  [30X    [33X[0;6Y[2XSolveLinearSystemInAbCategoryOrFail[102X                              ([14XCAP:
+        SolveLinearSystemInAbCategoryOrFail for IsList, IsList, IsList[114X)[133X
+  
   [30X    [33X[0;6Y[2XSomeProjectiveObject[102X        ([14XCAP:       SomeProjectiveObject       for
         IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XSomeProjectiveObjectForKernelObject[102X            ([14XFreydCategoriesForCAP:
+        SomeProjectiveObjectForKernelObject for IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XSubtractionForMorphisms[102X      ([14XCAP:     SubtractionForMorphisms     for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
