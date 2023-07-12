@@ -268,7 +268,7 @@ InstallMethodWithCache( PreSheaves,
     local B_op, name, list_of_operations,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
-          list_of_operations_to_install, skip, func,
+          is_computable, list_of_operations_to_install, skip, func,
           supports_empty_limits, properties, category_constructor_options,
           PSh;
     
@@ -281,6 +281,8 @@ InstallMethodWithCache( PreSheaves,
     else
         name := Concatenation( name, "..., ... )" );
     fi;
+    
+    is_computable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_computable", false );
     
     list_of_operations := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations", ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY ) );
     
@@ -714,6 +716,7 @@ InstallMethodWithCache( PreSheaves,
            category_morphism_filter := IsMorphismInPreSheafCategory,
            supports_empty_limits := supports_empty_limits,
            list_of_operations_to_install := list_of_operations_to_install,
+           is_computable := is_computable,
            properties := properties,
            object_constructor := object_constructor,
            object_datum := object_datum,

@@ -3,6 +3,8 @@
 #! @Example
 LoadPackage( "FiniteCocompletions" );
 #! true
+LoadPackage( "Toposes", ">= ", false );
+#! true
 T := FiniteStrictCoproductCocompletion( InitialCategory( ) );
 #! FiniteStrictCoproductCocompletion( InitialCategory( ) )
 Display( T );
@@ -17,9 +19,9 @@ Display( T );
 #! * IsBicartesianCoclosedCategory
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
+#! * IsElementaryTopos
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
-#! * IsElementaryTopos
 #! and furthermore mathematically
 #! * IsFinitelyPresentedCategory
 #! * IsFinitelyPresentedLinearCategory

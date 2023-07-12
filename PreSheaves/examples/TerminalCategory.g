@@ -3,6 +3,8 @@
 #! @Example
 LoadPackage( "PreSheaves" );
 #! true
+LoadPackage( "Toposes", ">= 2023.07-04", fail );
+#! true
 T := PreSheaves( InitialCategory( ) );
 #! PreSheaves( InitialCategory( ), InitialCategory( ) )
 IsTerminalCategory( T );
@@ -19,9 +21,9 @@ Display( T );
 #! * IsBicartesianCoclosedCategory
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
+#! * IsElementaryTopos
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
-#! * IsElementaryTopos
 #! and furthermore mathematically
 #! * IsLocallyOfFiniteInjectiveDimension
 #! * IsLocallyOfFiniteProjectiveDimension

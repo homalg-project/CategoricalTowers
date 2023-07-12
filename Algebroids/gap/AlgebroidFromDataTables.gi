@@ -1591,6 +1591,8 @@ InstallMethod( PreSheaves,
               
           end );
           
+          PSh!.is_computable := true;
+          
           AddIsCongruentForMorphisms( PSh,
             function ( PSh, eta1, eta2 )
               local B, C;
