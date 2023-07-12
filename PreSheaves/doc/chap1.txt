@@ -132,6 +132,8 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "PreSheaves" );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2023.07-04", fail );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XT := PreSheaves( InitialCategory( ) );[127X[104X
     [4X[28XPreSheaves( InitialCategory( ), InitialCategory( ) )[128X[104X
     [4X[25Xgap>[125X [27XIsTerminalCategory( T );[127X[104X
@@ -148,9 +150,9 @@
     [4X[28X* IsBicartesianCoclosedCategory[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughInjectives[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
+    [4X[28X* IsElementaryTopos[128X[104X
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
-    [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
     [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
@@ -207,17 +209,18 @@
     [4X[25Xgap>[125X [27XDisplay( PSh );[127X[104X
     [4X[28XA CAP category with name PreSheaves( SkeletalFinSets, SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X45 primitive operations were used to derive 152 operations for this category[128X[104X
-    [4X[28Xwhich algorithmically[128X[104X
-    [4X[28X* IsFiniteCocompleteCategory[128X[104X
-    [4X[28X* IsFiniteCompleteCategory[128X[104X
-    [4X[28X* IsDistributiveCategory[128X[104X
+    [4X[28X45 primitive operations were used to derive 149 operations for this category[128X[104X
+    [4X[28Xwhich mathematically[128X[104X
+    [4X[28X* IsDistributiveCategory (but not yet algorithmically)[128X[104X
+    [4X[28X* IsFiniteCocompleteCategory (but not yet algorithmically)[128X[104X
+    [4X[28X* IsFiniteCompleteCategory (but not yet algorithmically)[128X[104X
     [4X[25Xgap>[125X [27XCheckConstructivenessOfCategory( PSh, "IsElementaryTopos" );[127X[104X
     [4X[28X[ "CartesianCoevaluationMorphismWithGivenRange",[128X[104X
     [4X[28X  "CartesianEvaluationMorphismWithGivenSource",[128X[104X
     [4X[28X  "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",[128X[104X
     [4X[28X  "ExponentialOnMorphismsWithGivenExponentials", "ExponentialOnObjects",[128X[104X
-    [4X[28X  "SubobjectClassifier", "SubobjectOfClassifyingMorphism" ][128X[104X
+    [4X[28X  "IsCongruentForMorphisms", "SubobjectClassifier",[128X[104X
+    [4X[28X  "SubobjectOfClassifyingMorphism" ][128X[104X
     [4X[25Xgap>[125X [27XY := YonedaEmbeddingOfSourceCategory( PSh );[127X[104X
     [4X[28XYoneda embedding functor[128X[104X
     [4X[25Xgap>[125X [27Xomega := SubobjectClassifier( SourceOfFunctor( Y ) );[127X[104X

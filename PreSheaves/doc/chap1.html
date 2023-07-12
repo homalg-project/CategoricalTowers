@@ -229,6 +229,8 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "PreSheaves" );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Toposes", "&gt;= 2023.07-04", fail );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := PreSheaves( InitialCategory( ) );</span>
 PreSheaves( InitialCategory( ), InitialCategory( ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminalCategory( T );</span>
@@ -245,9 +247,9 @@ which algorithmically
 * IsBicartesianCoclosedCategory
 * IsAbelianCategoryWithEnoughInjectives
 * IsAbelianCategoryWithEnoughProjectives
+* IsElementaryTopos
 * IsRigidSymmetricClosedMonoidalCategory
 * IsRigidSymmetricCoclosedMonoidalCategory
-* IsElementaryTopos
 and furthermore mathematically
 * IsLocallyOfFiniteInjectiveDimension
 * IsLocallyOfFiniteProjectiveDimension
@@ -306,17 +308,18 @@ PreSheaves( SkeletalFinSets, SkeletalFinSets )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( PSh );</span>
 A CAP category with name PreSheaves( SkeletalFinSets, SkeletalFinSets ):
 
-45 primitive operations were used to derive 152 operations for this category
-which algorithmically
-* IsFiniteCocompleteCategory
-* IsFiniteCompleteCategory
-* IsDistributiveCategory
+45 primitive operations were used to derive 149 operations for this category
+which mathematically
+* IsDistributiveCategory (but not yet algorithmically)
+* IsFiniteCocompleteCategory (but not yet algorithmically)
+* IsFiniteCompleteCategory (but not yet algorithmically)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CheckConstructivenessOfCategory( PSh, "IsElementaryTopos" );</span>
 [ "CartesianCoevaluationMorphismWithGivenRange",
   "CartesianEvaluationMorphismWithGivenSource",
   "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
   "ExponentialOnMorphismsWithGivenExponentials", "ExponentialOnObjects",
-  "SubobjectClassifier", "SubobjectOfClassifyingMorphism" ]
+  "IsCongruentForMorphisms", "SubobjectClassifier",
+  "SubobjectOfClassifyingMorphism" ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := YonedaEmbeddingOfSourceCategory( PSh );</span>
 Yoneda embedding functor
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">omega := SubobjectClassifier( SourceOfFunctor( Y ) );</span>
