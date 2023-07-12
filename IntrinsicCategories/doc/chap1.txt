@@ -67,16 +67,18 @@
   [33X[0;0YThe  default  method  is  [10XIntrinsifyObject[110X.  This  is the method to overload
   depending on the context.[133X
   
-  [1X1.3-3 Intrinsify[101X
+  [1X1.3-3 IntrinsifyMorphism[101X
   
+  [33X[1;0Y[29X[2XIntrinsifyMorphism[102X( [3Xm[103X, [3Xs[103X, [3Xi[103X, [3Xt[103X, [3Xj[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XIntrinsify[102X( [3Xm[103X, [3Xs[103X, [3Xi[103X, [3Xt[103X, [3Xj[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XIntrinsify[102X( [3XC[103X, [3Xm[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in a CAP-category[133X
   
   [33X[0;0YCreate   out   of   the   morphism  [3Xm[103X  an  intrinsic  morphism  with  source
-  [10XCertainCell[110X([3Xs[103X,[3Xi[103X)  and  target  [10XCertainCell[110X([3Xt[103X,[3Xj[103X). In the two argument version
-  create  an  intrinsic morphism out of the morphism [3Xm[103X after intrinsifying its
-  source and target.[133X
+  [10XCertainCell[110X([3Xs[103X,[3Xi[103X)  and  target [10XCertainCell[110X([3Xt[103X,[3Xj[103X). Create out of the morphism [3Xm[103X
+  an    intrinsic   morphism   with   source   [10XCertainCell[110X([3Xs[103X,[3Xi[103X)   and   target
+  [10XCertainCell[110X([3Xt[103X,[3Xj[103X).  In  the two argument version create an intrinsic morphism
+  out of the morphism [3Xm[103X after intrinsifying its source and target.[133X
   
   [1X1.3-4 Intrinsify[101X
   
