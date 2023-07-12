@@ -119,6 +119,8 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= ", false );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XT := FiniteStrictCoproductCocompletion( InitialCategory( ) );[127X[104X
     [4X[28XFiniteStrictCoproductCocompletion( InitialCategory( ) )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
@@ -133,9 +135,9 @@
     [4X[28X* IsBicartesianCoclosedCategory[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughInjectives[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
+    [4X[28X* IsElementaryTopos[128X[104X
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
-    [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsFinitelyPresentedCategory[128X[104X
     [4X[28X* IsFinitelyPresentedLinearCategory[128X[104X
