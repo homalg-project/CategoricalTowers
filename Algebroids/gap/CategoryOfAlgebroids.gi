@@ -246,20 +246,21 @@ InstallMethodWithCache( CategoryOfAlgebroids,
   function( homalg_ring, parity )
     local category;
     
-    category := CreateCapCategory( Concatenation( "(", parity, ") Algebroids( ", RingName( homalg_ring )," )" ) );
+    category := CreateCapCategoryWithDataTypes( Concatenation( "(", parity, ") Algebroids( ", RingName( homalg_ring )," )" ),
+                                                IsCategoryOfAlgebroids,
+                                                IsCategoryOfAlgebroidsObject,
+                                                IsCategoryOfAlgebroidsMorphism,
+                                                IsCapCategoryTwoCell,
+                                                fail,
+                                                fail,
+                                                fail );
     
     category!.category_as_first_argument := false;
-    
-    SetFilterObj( category, IsCategoryOfAlgebroids );
     
     SetUnderlyingRing( category, homalg_ring );
     
     SetParity( category, parity );
     
-    AddObjectRepresentation( category, IsCategoryOfAlgebroidsObject );
-    
-    AddMorphismRepresentation( category, IsCategoryOfAlgebroidsMorphism );
-
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS( category );
     
     Finalize( category );
