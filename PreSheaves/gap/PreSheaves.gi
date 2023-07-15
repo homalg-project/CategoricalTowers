@@ -743,11 +743,6 @@ InstallMethodWithCache( PreSheaves,
         "OppositeOfSource",
         ];
     
-    ## setting the cache comparison to IsIdenticalObj
-    ## boosts the performance considerably
-    AddIsEqualForCacheForObjects( PSh, { PSh, F, G } -> IsIdenticalObj( F, G ) );
-    AddIsEqualForCacheForMorphisms( PSh, { PSh, eta, epsilon } -> IsIdenticalObj( eta, epsilon ) );
-    
     ## this code should become obsolete with following feature request:
     ## https://github.com/homalg-project/CAP_project/issues/801
     if CanCompute( C, "MorphismBetweenDirectSumsWithGivenDirectSums" ) then

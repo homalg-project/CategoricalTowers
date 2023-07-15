@@ -10,7 +10,7 @@ PSh := PreSheaves( SkeletalFinSets, SkeletalFinSets );
 Display( PSh );
 #! A CAP category with name PreSheaves( SkeletalFinSets, SkeletalFinSets ):
 #! 
-#! 45 primitive operations were used to derive 144 operations for this category
+#! 43 primitive operations were used to derive 142 operations for this category
 #! which mathematically
 #! * IsDistributiveCategory (but not yet algorithmically)
 #! * IsFiniteCocompleteCategory (but not yet algorithmically)
