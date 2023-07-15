@@ -209,7 +209,7 @@
     [4X[25Xgap>[125X [27XDisplay( PSh );[127X[104X
     [4X[28XA CAP category with name PreSheaves( SkeletalFinSets, SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X45 primitive operations were used to derive 149 operations for this category[128X[104X
+    [4X[28X43 primitive operations were used to derive 142 operations for this category[128X[104X
     [4X[28Xwhich mathematically[128X[104X
     [4X[28X* IsDistributiveCategory (but not yet algorithmically)[128X[104X
     [4X[28X* IsFiniteCocompleteCategory (but not yet algorithmically)[128X[104X
@@ -219,8 +219,8 @@
     [4X[28X  "CartesianEvaluationMorphismWithGivenSource",[128X[104X
     [4X[28X  "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",[128X[104X
     [4X[28X  "ExponentialOnMorphismsWithGivenExponentials", "ExponentialOnObjects",[128X[104X
-    [4X[28X  "IsCongruentForMorphisms", "SubobjectClassifier",[128X[104X
-    [4X[28X  "SubobjectOfClassifyingMorphism" ][128X[104X
+    [4X[28X  "IsCongruentForMorphisms", "IsEqualForMorphisms", "IsEqualForObjects",[128X[104X
+    [4X[28X  "SubobjectClassifier", "SubobjectOfClassifyingMorphism" ][128X[104X
     [4X[25Xgap>[125X [27XY := YonedaEmbeddingOfSourceCategory( PSh );[127X[104X
     [4X[28XYoneda embedding functor[128X[104X
     [4X[25Xgap>[125X [27Xomega := SubobjectClassifier( SourceOfFunctor( Y ) );[127X[104X

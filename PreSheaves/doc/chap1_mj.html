@@ -311,7 +311,7 @@ PreSheaves( SkeletalFinSets, SkeletalFinSets )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( PSh );</span>
 A CAP category with name PreSheaves( SkeletalFinSets, SkeletalFinSets ):
 
-45 primitive operations were used to derive 149 operations for this category
+43 primitive operations were used to derive 142 operations for this category
 which mathematically
 * IsDistributiveCategory (but not yet algorithmically)
 * IsFiniteCocompleteCategory (but not yet algorithmically)
@@ -321,8 +321,8 @@ which mathematically
   "CartesianEvaluationMorphismWithGivenSource",
   "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
   "ExponentialOnMorphismsWithGivenExponentials", "ExponentialOnObjects",
-  "IsCongruentForMorphisms", "SubobjectClassifier",
-  "SubobjectOfClassifyingMorphism" ]
+  "IsCongruentForMorphisms", "IsEqualForMorphisms", "IsEqualForObjects",
+  "SubobjectClassifier", "SubobjectOfClassifyingMorphism" ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := YonedaEmbeddingOfSourceCategory( PSh );</span>
 Yoneda embedding functor
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">omega := SubobjectClassifier( SourceOfFunctor( Y ) );</span>
