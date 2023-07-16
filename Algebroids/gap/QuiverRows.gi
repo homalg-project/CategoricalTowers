@@ -183,10 +183,9 @@ InstallMethod( QuiverRowsObject,
         
     fi;
     
-    quiver_rows_object := ObjectifyObjectForCAPWithAttributes(
-        rec( ), category,
-        ListOfQuiverVertices, L
-    );
+    quiver_rows_object := CreateCapCategoryObjectWithAttributes(
+                              category,
+                              ListOfQuiverVertices, L );
 
     Add( category, quiver_rows_object );
     
@@ -203,12 +202,11 @@ InstallMethod( QuiverRowsMorphism,
     
     category := CapCategory( source );
 
-    quiver_rows_morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-                             rec( ), category,
-                             source,
-                             range,
-                             MorphismMatrix, matrix
-    );
+    quiver_rows_morphism := CreateCapCategoryMorphismWithAttributes(
+                                category,
+                                source,
+                                range,
+                                MorphismMatrix, matrix );
 
     Add( category, quiver_rows_morphism );
     

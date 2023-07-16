@@ -29,7 +29,6 @@ InstallMethod( AsSubcategoryCell,
         [ IsCapSubcategory, IsCapCategoryObject ],
         
   function( D, object )
-    local o;
     
     if not IsIdenticalObj( CapCategory( object ), AmbientCategory( D ) ) then
         
@@ -37,12 +36,8 @@ InstallMethod( AsSubcategoryCell,
         
     fi;
     
-    o := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( o, D,
-            UnderlyingCell, object );
-    
-    return o;
+    return CreateCapCategoryObjectWithAttributes( D,
+                                                  UnderlyingCell, object );
     
 end );
 
@@ -52,7 +47,7 @@ InstallMethod( AsSubcategoryCell,
         [ IsObjectInASubcategory, IsCapCategoryMorphism, IsObjectInASubcategory ],
         
   function( source, morphism, range )
-    local D, m;
+    local D;
     
     D := CapCategory( source );
     
@@ -62,14 +57,10 @@ InstallMethod( AsSubcategoryCell,
         
     fi;
     
-    m := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, D,
-            source,
-            range,
-            UnderlyingCell, morphism );
-    
-    return m;
+    return CreateCapCategoryMorphismWithAttributes( D,
+                                                    source,
+                                                    range,
+                                                    UnderlyingCell, morphism );
     
 end );
 

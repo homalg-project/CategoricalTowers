@@ -32,18 +32,13 @@ InstallMethod( CategoryOfAlgebroidsObject,
                         [ IsAlgebroid ],
                
   function( A )
-    local category, category_of_algebroids_object;
+    local category;
 
     category := CategoryOfAlgebroids( CommutativeRingOfLinearCategory( A ), Parity( A ) );
     
-    category_of_algebroids_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( category_of_algebroids_object,
-                                         category,
-                                         AsCapCategory, A
-    );
+    return CreateCapCategoryObjectWithAttributes( category,
+                                                  AsCapCategory, A );
 
-    return category_of_algebroids_object;
     
 end );
 
@@ -52,23 +47,18 @@ InstallMethod( CategoryOfAlgebroidsMorphism,
                [ IsCategoryOfAlgebroidsObject, IsAlgebroidMorphism, IsCategoryOfAlgebroidsObject ],
                
   function( s , morphism, r )
-    local category, source, range, category_of_algebroids_morphism;
+    local category, source, range;
     
     Assert( 0, IsIdenticalObj( CapCategory( s ), CapCategory( r ) ) );
     Assert( 0, IsIdenticalObj( CapCategory( r ), CapCategory( CategoryOfAlgebroidsObject( AsCapCategory( Range( morphism ) ) ) ) ) );
     Assert( 0, IsIdenticalObj( CapCategory( s ), CapCategory( CategoryOfAlgebroidsObject( AsCapCategory( Source( morphism ) ) ) ) ) );
-
-    category := CapCategory(s);
-
-    category_of_algebroids_morphism := rec( );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( category_of_algebroids_morphism, category,
-                                           s,
-                                           r,
-                                           AsCapFunctor, morphism
-    );
-
-    return category_of_algebroids_morphism;
+    category := CapCategory(s);
+    
+    return CreateCapCategoryMorphismWithAttributes( category,
+                                                    s,
+                                                    r,
+                                                    AsCapFunctor, morphism );
     
 end );
 
