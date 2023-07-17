@@ -2573,12 +2573,12 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
   function ( PSh, F, morB )
     local B;
 
-    if IsEqualToIdentityMorphism( Source( PSh ), morB ) then
+    B := Source( PSh );
+    
+    if IsEqualToIdentityMorphism( B, morB ) then
         return IdentityMorphism( Range( PSh ),
                        ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
     fi;
-    
-    B := Source( PSh );
     
     return ValuesOfPreSheaf( F )[2][SafeUniquePositionProperty( SetOfGeneratingMorphisms( B ), mor -> IsEqualForMorphismsOnMor( B, mor, morB ) )];
     
