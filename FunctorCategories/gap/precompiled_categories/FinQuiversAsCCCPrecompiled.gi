@@ -396,9 +396,17 @@ function ( cat_1, a_1, b_1 )
         end );
     deduped_28_1 := [ [ 0 .. deduped_85_1 - 1 ], [ 0 .. deduped_86_1 - 1 ] ];
     hoisted_29_1 := Concatenation( List( deduped_74_1, function ( objB_2 )
-              return deduped_28_1[SafePosition( deduped_1_1, objB_2 )];
+              local hoisted_1_2;
+              hoisted_1_2 := IndexOfObject( objB_2 );
+              return deduped_28_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
+                       return IndexOfObject( obj_3 ) = hoisted_1_2;
+                   end )];
           end ), List( deduped_75_1, function ( objB_2 )
-              return deduped_28_1[SafePosition( deduped_1_1, objB_2 )];
+              local hoisted_1_2;
+              hoisted_1_2 := IndexOfObject( objB_2 );
+              return deduped_28_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
+                       return IndexOfObject( obj_3 ) = hoisted_1_2;
+                   end )];
           end ) );
     hoisted_32_1 := List( [ 1 .. deduped_81_1 ], function ( i_2 )
             local hoisted_1_2, hoisted_2_2, hoisted_3_2;
