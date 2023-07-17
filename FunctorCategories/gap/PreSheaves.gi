@@ -2590,9 +2590,11 @@ InstallMethodForCompilerForCAP( ApplyMorphismInPreSheafCategoryOfFpEnrichedCateg
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject ],
         
   function ( PSh, eta, objB )
-    local pos;
+    local B, pos;
     
-    pos := SafePosition( SetOfObjects( Source( PSh ) ), objB );
+    B := Source( PSh );
+    
+    pos := SafeUniquePositionProperty( SetOfObjects( B ), obj -> IsEqualForObjects( B, obj, objB ) );
     
     return ValuesOnAllObjects( eta )[pos];
     
@@ -2915,7 +2917,7 @@ InstallMethodForCompilerForCAP( MorphismFromCoproductOfRepresentables,
         
         objB := objB_list[1];
         
-        elFV := ExactCoverWithGlobalElements( C, ValuesOfPreSheaf( F )[1][SafePosition( objs, objB )] );
+        elFV := ExactCoverWithGlobalElements( C, ValuesOfPreSheaf( F )[1][SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( B, obj, objB ) )] );
         
         return MorphismFromRepresentable( PSh,
                        objB,
@@ -3045,8 +3047,8 @@ InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjec
     
     section := MorphismConstructor( UB,
                        source,
-                       Pair( List( [ 1 .. s ], i -> cover[i][2][1] + offsets[SafePosition( objs, cover[i][1] )] ),
-                             List( list, obj -> id[SafePosition( objs, obj )] ) ),
+                       Pair( List( [ 1 .. s ], i -> cover[i][2][1] + offsets[SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( B, obj, cover[i][1] ) )] ),
+                             List( list, o -> id[SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( B, obj, o ) )] ) ),
                        range );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
@@ -3112,7 +3114,7 @@ InstallOtherMethodForCompilerForCAP( EpimorphismFromCoYonedaProjectiveObjectOnto
       function( i )
         local objB_pos, val, pos, objB, pos_mor, mor, map, r;
         
-        objB_pos := SafePosition( objs, source_list[i] );
+        objB_pos := SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( B, obj, source_list[i] ) );
         
         val := i - 1 - offsets[objB_pos];
         
