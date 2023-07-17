@@ -3,6 +3,7 @@
 #
 # Implementations
 #
+# THIS FILE WAS AUTOMATICALLY GENERATED
 
 ##
 BindGlobal( "ENHANCED_SYNTAX_TREE_DefiningTripleOfUnderlyingQuiverOfCategoryOfReflexiveQuivers",
