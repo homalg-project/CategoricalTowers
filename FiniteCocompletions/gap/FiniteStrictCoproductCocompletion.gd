@@ -47,11 +47,7 @@ DeclareAttribute( "FiniteStrictCoproductCocompletion",
 #! @InsertChunk LeftCartesianDistributivityExpanding
 #! @InsertChunk TerminalCategory_as_FiniteStrictCoproductCocompletion
 
-CapJitAddTypeSignature( "FiniteStrictCoproductCocompletion", [ IsCapCategory ], function ( input_types )
-    
-    return CapJitDataTypeOfCategory( FiniteStrictCoproductCocompletion( input_types[1].category ) );
-    
-end );
+CapJitAddTypeSignature( "FiniteStrictCoproductCocompletion", [ IsCapCategory ], IsFiniteStrictCoproductCocompletion );
 
 ####################################
 #
