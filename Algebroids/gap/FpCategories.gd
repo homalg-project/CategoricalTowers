@@ -249,7 +249,12 @@ DeclareAttribute( "RelationsAmongGeneratingMorphisms",
 DeclareAttribute( "OppositeFpCategory",
         IsFpCategory );
 
-CapJitAddTypeSignature( "OppositeFpCategory", [ IsFpCategory ], IsFpCategory );
+CapJitAddTypeSignature( "OppositeFpCategory", [ IsFpCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( OppositeFpCategory( input_types[1].category ) );
+    
+end );
 
 DeclareAttribute( "Multiplication",
         IsMonoidAsCategory );
