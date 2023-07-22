@@ -36,23 +36,23 @@ c := DC.c;
 DirectProduct( DirectProduct( a, b ), c ) =
   DirectProduct( a, DirectProduct( b, c ) );
 #! true
-a_u_bxc := DirectProduct( a, Coproduct( b, c ) );
+a_x_buc := DirectProduct( a, Coproduct( b, c ) );
 #! <An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
 #!  FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>
 axb_u_axc := Coproduct( DirectProduct( a, b ), DirectProduct( a, c ) );
 #! <An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
 #!  FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>
-a_u_bxc = axb_u_axc;
+a_x_buc = axb_u_axc;
 #! true
-HomStructure( a_u_bxc, axb_u_axc );
+HomStructure( a_x_buc, axb_u_axc );
 #! |1|
-hom := MorphismsOfExternalHom( a_u_bxc, axb_u_axc );
+hom := MorphismsOfExternalHom( a_x_buc, axb_u_axc );
 #! [ <A morphism in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
 #!    FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )> ]
 delta := hom[1];
 #! <A morphism in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
 #!  FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>
-Source( delta ) = a_u_bxc;
+Source( delta ) = a_x_buc;
 #! true
 Range( delta ) = axb_u_axc;
 #! true
