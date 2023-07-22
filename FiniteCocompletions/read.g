@@ -14,6 +14,9 @@ ReadPackage( "FiniteCocompletions", "gap/FiniteStrictCoproductCocompletion.gi");
 ReadPackage( "FiniteCocompletions", "gap/FiniteStrictProductCompletion.gi");
 
 ##
+ReadPackage( "FiniteCocompletions", "gap/FreeDistributiveCategoryWithStrictProductAndCoproducts.gi");
+
+##
 ReadPackage( "FiniteCocompletions", "gap/SkeletalFinSets.gi");
 
 ##
