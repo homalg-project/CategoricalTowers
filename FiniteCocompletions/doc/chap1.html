@@ -15,7 +15,7 @@
 <body class="chap1"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
 
@@ -121,69 +121,6 @@
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FiniteStrictCoproductCocompletion</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Return the finite coproduct cocompletion of the category <var class="Arg">cat</var> in which the cocartesian associators are given by identities.</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(a,b,c)[]" );</span>
-Q(a,b,c)[]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := FreeCategory( Q );</span>
-FreeCategory( RightQuiver( "Q(a,b,c)[]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DC := FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion( C ) );</span>
-FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
-FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( DC );</span>
-A CAP category with name
-FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
-FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) ):
-
-27 primitive operations were used to derive 131 operations for this category
-which algorithmically
-* IsEquippedWithHomomorphismStructure
-* IsDistributiveCategory
-and furthermore mathematically
-* IsStrictCartesianCategory
-* IsStrictCocartesianCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := DC.a;</span>
-&lt;An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
- FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := DC.b;</span>
-&lt;An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
- FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := DC.c;</span>
-&lt;An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
- FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProduct( DirectProduct( a, b ), c ) =</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  DirectProduct( a, DirectProduct( b, c ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a_u_bxc := DirectProduct( a, Coproduct( b, c ) );</span>
-&lt;An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
- FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">axb_u_axc := Coproduct( DirectProduct( a, b ), DirectProduct( a, c ) );</span>
-&lt;An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
- FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a_u_bxc = axb_u_axc;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( a_u_bxc, axb_u_axc );</span>
-|1|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom := MorphismsOfExternalHom( a_u_bxc, axb_u_axc );</span>
-[ &lt;A morphism in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
-   FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := hom[1];</span>
-&lt;A morphism in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
- FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( delta ) = a_u_bxc;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( delta ) = axb_u_axc;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( delta );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta = LeftCartesianDistributivityExpanding( a, [ b, c ] );</span>
-true
-</pre></div>
 
 
 <div class="example"><pre>
@@ -1005,7 +942,7 @@ true
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
