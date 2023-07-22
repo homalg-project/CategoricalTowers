@@ -44,7 +44,6 @@ DeclareCategory( "IsMorphismInFiniteStrictCoproductCocompletion",
 #! @Arguments cat
 DeclareAttribute( "FiniteStrictCoproductCocompletion",
         IsCapCategory );
-#! @InsertChunk LeftCartesianDistributivityExpanding
 #! @InsertChunk TerminalCategory_as_FiniteStrictCoproductCocompletion
 
 CapJitAddTypeSignature( "FiniteStrictCoproductCocompletion", [ IsCapCategory ], function ( input_types )

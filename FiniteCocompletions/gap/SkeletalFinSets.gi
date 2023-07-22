@@ -58,49 +58,83 @@ InstallGlobalFunction( CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocomplet
     ## the initial category in the doctrine of categories
     I := InitialCategory( : FinalizeCategory := true );
     
-    ## the terminal category in the doctrine of categories
-    T := FiniteStrictProductCompletion( I : FinalizeCategory := true );
-    
     ##
-    UT := FiniteStrictCoproductCocompletion( T : FinalizeCategory := true );
+    UT := FreeDistributiveCategoryWithStrictProductAndCoproducts( I : FinalizeCategory := true );
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
       function( sFinSets, cardinality )
-        local UT;
+        local DI, UT, T;
         
-        UT := ModelingCategory( sFinSets );
+        DI := ModelingCategory( sFinSets );
         
-        return ObjectConstructor( UT,
-                       Pair( cardinality,
-                             ListWithIdenticalEntries( cardinality,
-                                     TerminalObject( UnderlyingCategory( UT ) ) ) ) );
+        UT := ModelingCategory( DI );
+        
+        T := UnderlyingCategory( UT );
+        
+        return ObjectConstructor( DI,
+                       ObjectConstructor( UT,
+                               Pair( cardinality,
+                                     ListWithIdenticalEntries( cardinality,
+                                             TerminalObject( T ) ) ) ) );
         
     end;
     
     ## from the object in the modeling category to the raw object data
-    modeling_tower_object_datum := { sFinSets, U } -> ObjectDatum( ModelingCategory( sFinSets ), U )[1];
+    modeling_tower_object_datum :=
+      function( sFinSets, U )
+        local DI, UT;
+        
+        DI := ModelingCategory( sFinSets );
+        
+        UT := ModelingCategory( DI );
+        
+        return ObjectDatum( UT,
+                       ObjectDatum( DI,
+                               U ) )[1];
+        
+    end;
     
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
       function( sFinSets, source, map, range )
-        local UT, T;
+        local DI, UT, T, source_UT, range_UT;
         
-        UT := ModelingCategory( sFinSets );
+        DI := ModelingCategory( sFinSets );
+        
+        UT := ModelingCategory( DI );
         
         T := UnderlyingCategory( UT );
         
-        return MorphismConstructor( UT,
+        source_UT := ObjectDatum( DI, source );
+        range_UT := ObjectDatum( DI, range );
+        
+        return MorphismConstructor( DI,
                        source,
-                       Pair( map,
-                             ListWithIdenticalEntries( ObjectDatum( UT, source )[1],
-                                     IdentityMorphism( T, TerminalObject( T ) ) ) ),
+                       MorphismConstructor( UT,
+                               source_UT,
+                               Pair( map,
+                                     ListWithIdenticalEntries( ObjectDatum( UT, source_UT )[1],
+                                             IdentityMorphism( T, TerminalObject( T ) ) ) ),
+                               range_UT ),
                        range );
         
     end;
     
     ## from the raw morphism data to the morphism in the modeling category
-    modeling_tower_morphism_datum := { sFinSets, mor } -> MorphismDatum( ModelingCategory( sFinSets ), mor )[1];
+    modeling_tower_morphism_datum :=
+      function( sFinSets, mor )
+        local DI, UT;
+        
+        DI := ModelingCategory( sFinSets );
+        
+        UT := ModelingCategory( DI );
+        
+        return MorphismDatum( UT,
+                       MorphismDatum( DI,
+                               mor ) )[1];
+        
+    end;
     
     ##
     sFinSets :=

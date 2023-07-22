@@ -20,6 +20,25 @@
 @Subsection Reflexive pair
 @InsertChunk ReflexivePair
 
+@Chapter Finite strict product completion
+
+@Section Attributes
+@Section Constructors
+@Section GAP categories
+@Section Examples
+
+@Subsection Cartesian braiding
+@InsertChunk CartesianBraiding
+
+@Subsection Cartesian diagonal
+@InsertChunk CartesianDiagonal
+
+@Chapter Free distributive closure category with strict products and coproducts
+
+@Section Attributes
+@Section Constructors
+@Section GAP categories
+
 @Chapter SkeletalFinSets
 
 @Section Attributes
@@ -44,19 +63,6 @@
 
 @Subsection Skeletal homomorphism structre
 @InsertChunk SkeletalHomStructure
-
-@Chapter Finite strict product completion
-
-@Section Attributes
-@Section Constructors
-@Section GAP categories
-@Section Examples
-
-@Subsection Cartesian braiding
-@InsertChunk CartesianBraiding
-
-@Subsection Cartesian diagonal
-@InsertChunk CartesianDiagonal
 
 @Chapter The pair of parallel arrows category of a category
 

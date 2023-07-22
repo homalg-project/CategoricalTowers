@@ -19,18 +19,18 @@ DeclareCategory( "IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletion
 
 #! @Description
 #!  The &GAP; category of cells in the category of skeletal finsets.
-DeclareCategory( "IsCellSkeletalFinSets",
+DeclareCategory( "IsCellInSkeletalFinSets",
         IsCapCategoryCell );
 
 #! @Description
 #!  The &GAP; category of objects in the category of skeletal finsets.
 DeclareCategory( "IsObjectInSkeletalFinSets",
-        IsCellSkeletalFinSets and IsCapCategoryObject  );
+        IsCellInSkeletalFinSets and IsCapCategoryObject  );
 
 #! @Description
 #!  The &GAP; category of morphisms in the category of skeletal finsets.
 DeclareCategory( "IsMorphismInSkeletalFinSets",
-        IsCellSkeletalFinSets and IsCapCategoryMorphism );
+        IsCellInSkeletalFinSets and IsCapCategoryMorphism );
 
 ####################################
 #
