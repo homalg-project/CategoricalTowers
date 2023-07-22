@@ -618,8 +618,8 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             return ObjectConstructor( cat,
                            ProjectionInFactorOfDirectProduct( C,
-                                   [ BaseObject( cat ), SubobjectClassifier( C ) ],
-                                   1 ) );
+                                   [ SubobjectClassifier( C ), BaseObject( cat ) ],
+                                   2 ) );
             
         end );
         
@@ -645,9 +645,9 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             return MorphismConstructor( cat,
                            Range( mono ),
                            UniversalMorphismIntoDirectProductWithGivenDirectProduct( C,
-                                   [ BaseObject( cat ), Omega_C ],
+                                   [ Omega_C, BaseObject( cat ) ],
                                    Range( mono_C ),
-                                   [ UnderlyingMorphism( Range( mono ) ), chi_C ],
+                                   [ chi_C, UnderlyingMorphism( Range( mono ) ) ],
                                    SourceOfUnderlyingMorphism( cat, Omega ) ),
                            Omega );
             
