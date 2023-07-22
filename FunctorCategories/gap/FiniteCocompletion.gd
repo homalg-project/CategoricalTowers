@@ -50,7 +50,7 @@ DeclareAttribute( "UnderlyingCategory",
 
 #! @Arguments finite_cocompletion
 #! @Returns a &CAP; functor
-DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
+DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsFiniteCocompletion );
 
 ####################################

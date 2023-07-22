@@ -102,7 +102,7 @@ CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteStrictProductCompletion 
 
 end );
 
-DeclareAttribute( "CoYonedaEmbeddingOfUnderlyingCategoryData",
+DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
         IsFiniteStrictProductCompletion );
 
 #! @Description
@@ -110,7 +110,7 @@ DeclareAttribute( "CoYonedaEmbeddingOfUnderlyingCategoryData",
 #!  the finite product completion <A>PC</A> into <A>PC</A>.
 #! @Arguments PC
 #! @Returns a &CAP; functor
-DeclareAttribute( "CoYonedaEmbeddingOfUnderlyingCategory",
+DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsFiniteStrictProductCompletion );
 
 DeclareOperation( "ExtendFunctorToFiniteStrictProductCompletionData",

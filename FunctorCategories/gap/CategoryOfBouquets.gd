@@ -63,7 +63,7 @@ DeclareAttribute( "UnderlyingCategory",
         IsCategoryOfBouquets );
 
 #! @Arguments fin_bouquets
-DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
+DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsCategoryOfBouquets );
 
 DeclareAttribute( "DefiningTripleOfBouquetEnrichedOverSkeletalFinSets",

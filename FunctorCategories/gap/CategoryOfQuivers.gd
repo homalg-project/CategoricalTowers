@@ -60,7 +60,7 @@ DeclareAttribute( "UnderlyingCategory",
         IsCategoryOfQuivers );
 
 #! @Arguments fin_quivers
-DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
+DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsCategoryOfQuivers );
 
 DeclareAttribute( "DefiningTripleOfQuiverEnrichedOverSkeletalFinSets",

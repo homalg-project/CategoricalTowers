@@ -43,7 +43,7 @@ InstallMethod( AbelianClosure,
 end );
 
 ##
-InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
+InstallMethod( EmbeddingOfUnderlyingCategory,
         "for an Abelian closure category",
         [ IsAbelianClosure ],
         
@@ -52,7 +52,7 @@ InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
     
     Freyd := ModelingCategory( abelian_closure );
     
-    Y := CoYonedaEmbeddingOfUnderlyingCategory( UnderlyingCategory( Freyd ) );
+    Y := EmbeddingOfUnderlyingCategory( UnderlyingCategory( Freyd ) );
     
     return PreCompose(
                    PreCompose( Y, EmbeddingFunctorIntoFreydCategory( UnderlyingCategory( Freyd ) ) ),
@@ -72,7 +72,7 @@ InstallMethod( \.,
     
     F := UnderlyingCategory( abelian_closure );
     
-    Y := YonedaEmbeddingOfUnderlyingCategory( abelian_closure );
+    Y := EmbeddingOfUnderlyingCategory( abelian_closure );
     
     Yc := Y( F.(name) );
     

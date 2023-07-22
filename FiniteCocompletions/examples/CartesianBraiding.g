@@ -78,11 +78,13 @@ Display( Emb );
 #!   V
 #! LazyCategory(
 #! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
-F := PreCompose( CoYonedaEmbeddingOfUnderlyingCategory( PC ), Emb );
-#! Precomposition of CoYoneda embedding functor and
+F := PreCompose( EmbeddingOfUnderlyingCategory( PC ), Emb );
+#! Precomposition of
+#! Embedding functor into a finite strict product completion category and
 #! Embedding functor into lazy category
 Display( F );
-#! Precomposition of CoYoneda embedding functor and
+#! Precomposition of
+#! Embedding functor into a finite strict product completion category and
 #! Embedding functor into lazy category:
 #! 
 #! FreeCategory( RightQuiver( "Q(a,b)[]" ) )
@@ -91,12 +93,12 @@ Display( F );
 #! LazyCategory(
 #! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
 G := ExtendFunctorToFiniteStrictProductCompletion( F );
-#! Extension to FiniteStrictProductCompletion( Source(
-#! Precomposition of CoYoneda embedding functor and
+#! Extension to FiniteStrictProductCompletion( Source( Precomposition of
+#! Embedding functor into a finite strict product completion category and
 #! Embedding functor into lazy category ) )
 Display( G );
-#! Extension to FiniteStrictProductCompletion( Source(
-#! Precomposition of CoYoneda embedding functor and
+#! Extension to FiniteStrictProductCompletion( Source( Precomposition of
+#! Embedding functor into a finite strict product completion category and
 #! Embedding functor into lazy category ) ):
 #! 
 #! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )

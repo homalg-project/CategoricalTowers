@@ -50,7 +50,7 @@ DeclareAttribute( "UnderlyingCategory",
 
 #! @Arguments abelian_closure
 #! @Returns a &CAP; functor
-DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
+DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsAbelianClosure );
 
 ####################################
