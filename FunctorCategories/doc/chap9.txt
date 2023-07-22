@@ -19,9 +19,9 @@
   
   [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3Xfinite_completion[103X ) [32X attribute[133X
   
-  [1X9.2-2 CoYonedaEmbeddingOfUnderlyingCategory[101X
+  [1X9.2-2 EmbeddingOfUnderlyingCategory[101X
   
-  [33X[1;0Y[29X[2XCoYonedaEmbeddingOfUnderlyingCategory[102X( [3Xfinite_completion[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XEmbeddingOfUnderlyingCategory[102X( [3Xfinite_completion[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
   
   

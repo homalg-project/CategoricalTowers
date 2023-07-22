@@ -40,7 +40,6 @@
   [2XCoveringListOfRepresentables[102X, for IsObjectInPreSheafCategory 2.1-8 
   [2XCoYonedaEmbedding[102X, for IsCapCategory 12.2-9 
   [2XCoYonedaEmbeddingOfSourceCategory[102X, for IsCoPreSheafCategory 12.2-10 
-  [2XCoYonedaEmbeddingOfUnderlyingCategory[102X, for IsFiniteCompletion 9.2-2 
   [2XCreateBouquet[102X, for IsCategoryOfBouquets, IsInt, IsList 4.1-2 
       for IsInt, IsList 4.1-3 
   [2XCreateBouquetMorphism[102X, for IsObjectInCategoryOfBouquets, IsList, IsList, IsObjectInCategoryOfBouquets 4.1-4 
@@ -75,6 +74,13 @@
       for IsCellInCategoryOfDecoratedQuivers 8.2-7 
       for IsCellInCategoryOfQuivers 5.2-5 
       for IsCellInCategoryOfReflexiveQuivers 7.2-6 
+  [2XEmbeddingOfUnderlyingCategory[102X, for IsAbelianClosure 10.2-2 
+      for IsCategoryOfBouquets 4.2-2 
+      for IsCategoryOfDecoratedQuivers 8.2-4 
+      for IsCategoryOfQuivers 5.2-2 
+      for IsCategoryOfReflexiveQuivers 7.2-2 
+      for IsFiniteCocompletion 3.2-2 
+      for IsFiniteCompletion 9.2-2 
   [2XEpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[102X, for IsObjectInPreSheafCategory 2.1-10 
   [2XEquivalenceFromFullSubcategoryOfProjectivesObjectsIntoAdditiveClosureOfSource[102X, for IsPreSheafCategory 11.2-9 
   [2XFinBouquets[102X 4.4-2 
@@ -198,12 +204,6 @@
   [2XYonedaEmbeddingInFunctorCategory[102X, for IsCapCategory 1.2-9 
   [2XYonedaEmbeddingOfOppositeOfSourceCategory[102X, for IsFunctorCategory 1.2-10 
   [2XYonedaEmbeddingOfSourceCategory[102X, for IsPreSheafCategory 2.2-4 
-  [2XYonedaEmbeddingOfUnderlyingCategory[102X, for IsAbelianClosure 10.2-2 
-      for IsCategoryOfBouquets 4.2-2 
-      for IsCategoryOfDecoratedQuivers 8.2-4 
-      for IsCategoryOfQuivers 5.2-2 
-      for IsCategoryOfReflexiveQuivers 7.2-2 
-      for IsFiniteCocompletion 3.2-2 
   [2XYonedaFibration[102X, for IsCapCategory 1.2-11 
   [2XYonedaProjection[102X, for IsCapCategory 1.2-12 
   

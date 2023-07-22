@@ -44,9 +44,9 @@
   
   [33X[1;0Y[29X[2XDecorationOfArrows[102X( [3Xdecorated_fin_quivers[103X ) [32X attribute[133X
   
-  [1X8.2-4 YonedaEmbeddingOfUnderlyingCategory[101X
+  [1X8.2-4 EmbeddingOfUnderlyingCategory[101X
   
-  [33X[1;0Y[29X[2XYonedaEmbeddingOfUnderlyingCategory[102X( [3Xdecorated_fin_quivers[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XEmbeddingOfUnderlyingCategory[102X( [3Xdecorated_fin_quivers[103X ) [32X attribute[133X
   
   [1X8.2-5 Arrows[101X
   

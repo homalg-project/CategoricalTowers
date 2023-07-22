@@ -38,9 +38,9 @@
   
   [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3Xfin_quivers[103X ) [32X attribute[133X
   
-  [1X5.2-2 YonedaEmbeddingOfUnderlyingCategory[101X
+  [1X5.2-2 EmbeddingOfUnderlyingCategory[101X
   
-  [33X[1;0Y[29X[2XYonedaEmbeddingOfUnderlyingCategory[102X( [3Xfin_quivers[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XEmbeddingOfUnderlyingCategory[102X( [3Xfin_quivers[103X ) [32X attribute[133X
   
   [1X5.2-3 Arrows[101X
   

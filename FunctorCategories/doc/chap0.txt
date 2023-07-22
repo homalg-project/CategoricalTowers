@@ -6,7 +6,7 @@
                             [1X Categories of functors [101X
   
   
-                                   2023.07-11
+                                   2023.07-12
   
   
                                   22 July 2023
@@ -121,7 +121,7 @@
       3.1-1 FiniteCocompletion
     3.2 [33X[0;0YAttributes[133X
       3.2-1 UnderlyingCategory
-      3.2-2 YonedaEmbeddingOfUnderlyingCategory
+      3.2-2 EmbeddingOfUnderlyingCategory
     3.3 [33X[0;0Y[5XGAP[105X Categories[133X
       3.3-1 IsFiniteCocompletion
       3.3-2 IsCellInFiniteCocompletion
@@ -137,7 +137,7 @@
       4.1-6 Subobject
     4.2 [33X[0;0YAttributes[133X
       4.2-1 UnderlyingCategory
-      4.2-2 YonedaEmbeddingOfUnderlyingCategory
+      4.2-2 EmbeddingOfUnderlyingCategory
       4.2-3 Loops
       4.2-4 SvgString
       4.2-5 DotVertexLabelledDigraph
@@ -161,7 +161,7 @@
       5.1-6 Subobject
     5.2 [33X[0;0YAttributes[133X
       5.2-1 UnderlyingCategory
-      5.2-2 YonedaEmbeddingOfUnderlyingCategory
+      5.2-2 EmbeddingOfUnderlyingCategory
       5.2-3 Arrows
       5.2-4 SvgString
       5.2-5 DotVertexLabelledDigraph
@@ -186,7 +186,7 @@
       7.1-6 Subobject
     7.2 [33X[0;0YAttributes[133X
       7.2-1 UnderlyingCategory
-      7.2-2 YonedaEmbeddingOfUnderlyingCategory
+      7.2-2 EmbeddingOfUnderlyingCategory
       7.2-3 Loops
       7.2-4 Arrows
       7.2-5 SvgString
@@ -212,7 +212,7 @@
       8.2-1 UnderlyingCategory
       8.2-2 DecorationOfVertices
       8.2-3 DecorationOfArrows
-      8.2-4 YonedaEmbeddingOfUnderlyingCategory
+      8.2-4 EmbeddingOfUnderlyingCategory
       8.2-5 Arrows
       8.2-6 SvgString
       8.2-7 DotVertexLabelledDigraph
@@ -229,7 +229,7 @@
       9.1-1 FiniteCompletion
     9.2 [33X[0;0YAttributes[133X
       9.2-1 UnderlyingCategory
-      9.2-2 CoYonedaEmbeddingOfUnderlyingCategory
+      9.2-2 EmbeddingOfUnderlyingCategory
     9.3 [33X[0;0Y[5XGAP[105X Categories[133X
       9.3-1 IsFiniteCompletion
       9.3-2 IsCellInFiniteCompletion
@@ -243,7 +243,7 @@
       10.1-1 AbelianClosure
     10.2 [33X[0;0YAttributes[133X
       10.2-1 UnderlyingCategory
-      10.2-2 YonedaEmbeddingOfUnderlyingCategory
+      10.2-2 EmbeddingOfUnderlyingCategory
     10.3 [33X[0;0Y[5XGAP[105X Categories[133X
       10.3-1 IsAbelianClosure
       10.3-2 IsCellInAbelianClosure
