@@ -468,3 +468,9 @@ DeclareOperation( "UniversalMorphismFromColimit",
 #! @Arguments objects, decorated_morphisms, T, tau, P
 DeclareOperation( "UniversalMorphismFromColimitWithGivenColimit",
                   [ IsList, IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+
+DeclareOperation( "PreComposeFunctorsByData",
+        [ IsCapCategory, IsList, IsList ] );
+
+DeclareOperation( "PreComposeWithWrappingFunctorData",
+        [ IsWrapperCapCategory, IsList ] );

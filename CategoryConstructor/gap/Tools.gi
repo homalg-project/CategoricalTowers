@@ -458,3 +458,79 @@ InstallOtherMethod( Colimit,
     return Colimit( CapCategory( pair[1][1] ), pair );
     
 end );
+
+##
+InstallMethodForCompilerForCAP( PreComposeFunctorsByData,
+        [ IsCapCategory, IsList, IsList ],
+        
+  function( C, pre_functor_data, post_functor_data )
+    local A, B, composed_functor_on_objects, composed_functor_on_morphisms;
+    
+    A := pre_functor_data[1];
+    B := pre_functor_data[3];
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( B, post_functor_data[1] ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( C, post_functor_data[3] ) );
+    
+    composed_functor_on_objects :=
+      function( objA )
+        
+        return post_functor_data[2][1]( pre_functor_data[2][1]( objA ) );
+        
+    end;
+    
+    composed_functor_on_morphisms :=
+      function( sourceC, morA, rangeC )
+        local sourceB, rangeB;
+        
+        sourceB := pre_functor_data[2][1]( Source( morA ) );
+        rangeB := pre_functor_data[2][1]( Range( morA ) );
+        
+        return post_functor_data[2][2](
+                       sourceC,
+                       pre_functor_data[2][2](
+                               sourceB,
+                               morA,
+                               rangeB ),
+                       rangeC );
+        
+    end;
+    
+    return
+      Triple( A,
+              Pair( composed_functor_on_objects, composed_functor_on_morphisms ),
+              C );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( PreComposeWithWrappingFunctorData,
+        [ IsWrapperCapCategory, IsList ],
+        
+  function( C, functor_data )
+    local A, B, wrapping_functor_on_objects, wrapping_functor_on_morphisms, wrapping_functor_data;
+    
+    A := functor_data[1];
+    B := functor_data[3];
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( B, ModelingCategory( C ) ) );
+    
+    wrapping_functor_on_objects := objB -> AsObjectInWrapperCategory( C, objB );
+    
+    wrapping_functor_on_morphisms := { sourceC, morB, rangeB } -> AsMorphismInWrapperCategory( C, sourceC, morB, rangeB );
+    
+    wrapping_functor_data :=
+      Triple( B,
+              Pair( wrapping_functor_on_objects, wrapping_functor_on_morphisms ),
+              C );
+    
+    return
+      PreComposeFunctorsByData( C,
+              functor_data,
+              wrapping_functor_data );
+    
+end );
