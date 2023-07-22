@@ -1,4 +1,4 @@
-#! @Chunk LeftCartesianDistributivityExpanding
+#! @Chunk LeftCartesianDistributivityFactoring
 
 #! @Example
 LoadPackage( "FiniteCocompletions" );
@@ -36,28 +36,30 @@ c := DC.c;
 DirectProduct( DirectProduct( a, b ), c ) =
   DirectProduct( a, DirectProduct( b, c ) );
 #! true
-a_x_buc := DirectProduct( a, Coproduct( b, c ) );
-#! <An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
-#!  FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>
 axb_u_axc := Coproduct( DirectProduct( a, b ), DirectProduct( a, c ) );
 #! <An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
 #!  FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>
-a_x_buc = axb_u_axc;
+a_x_buc := DirectProduct( a, Coproduct( b, c ) );
+#! <An object in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
+#!  FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>
+axb_u_axc = a_x_buc;
 #! true
-HomStructure( a_x_buc, axb_u_axc );
+HomStructure( axb_u_axc, a_x_buc );
 #! |1|
 hom := MorphismsOfExternalHom( a_x_buc, axb_u_axc );
 #! [ <A morphism in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
 #!    FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )> ]
-delta := hom[1];
+phi := hom[1];
 #! <A morphism in FiniteStrictCoproductCocompletion( FiniteStrictProductCompletion(
 #!  FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>
-Source( delta ) = a_x_buc;
+IsOne( phi );
 #! true
-Range( delta ) = axb_u_axc;
+Source( phi ) = axb_u_axc;
 #! true
-IsOne( delta );
+Range( phi ) = a_x_buc;
 #! true
-delta = LeftCartesianDistributivityExpanding( a, [ b, c ] );
+IsOne( phi );
+#! true
+phi = LeftCartesianDistributivityFactoring( a, [ b, c ] );
 #! true
 #! @EndExample
