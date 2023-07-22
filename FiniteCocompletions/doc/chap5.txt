@@ -356,9 +356,9 @@
   [33X[0;0YReturn   the   category   [23XC[123X  underlying  the  category  of  colimit  quivers
   [3XColimitQuivers[103X[10X := CategoryOfColimitQuivers([110X [23XC[123X [10X)[110X).[133X
   
-  [1X5.2-6 YonedaEmbeddingOfUnderlyingCategory[101X
+  [1X5.2-6 EmbeddingOfUnderlyingCategory[101X
   
-  [33X[1;0Y[29X[2XYonedaEmbeddingOfUnderlyingCategory[102X( [3XColimitQuivers[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XEmbeddingOfUnderlyingCategory[102X( [3XColimitQuivers[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
   
   [33X[0;0YThe  full  embedding  functor from the category [23XC[123X underlying the category of

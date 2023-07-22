@@ -7,16 +7,18 @@
   [2XAssociatedCategoryOfColimitQuiversOfSourceCategory[102X, for IsPreSheafCategory 5.2-4 
   [2XCategoryOfColimitQuivers[102X, for IsCapCategory 5.2-1 
   [2XCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[102X 2.2-1 
-  [2XCoYonedaEmbeddingOfUnderlyingCategory[102X, for IsFiniteStrictProductCompletion 3.1-4 
   [2XCreateColimitQuiver[102X, for IsCategoryOfColimitQuivers, IsList 5.2-2 
   [2XCreateMorphismOfColimitQuivers[102X, for IsObjectInCategoryOfColimitQuivers, IsList 5.2-3 
   [2XDefiningPairOfColimitQuiver[102X, for IsObjectInCategoryOfColimitQuivers 5.1-1 
   [2XDefiningPairOfColimitQuiverMorphism[102X, for IsMorphismInCategoryOfColimitQuivers 5.1-2 
   [2XDefiningPairOfMorphismBetweenParallelPairs[102X, for IsMorphismInPairOfParallelArrowsCategory 4.2-2 
   [2XDefiningParallelPair[102X, for IsObjectInPairOfParallelArrowsCategory 4.2-1 
+  [2XEmbeddingOfUnderlyingCategory[102X, for IsCategoryOfColimitQuivers 5.2-6 
+      for IsFiniteStrictCoproductCocompletion 1.1-4 
+      for IsFiniteStrictProductCompletion 3.1-4 
+  [2XExtendEmbeddingToFiniteStrictCoproductCocompletion[102X, for IsCapCategory 1.1-6 
   [2XExtendFunctorToFiniteStrictCoproductCocompletion[102X, for IsCapFunctor 1.1-5 
   [2XExtendFunctorToFiniteStrictProductCompletion[102X, for IsCapFunctor 3.1-5 
-  [2XExtendYonedaEmbeddingToFiniteStrictCoproductCocompletion[102X, for IsCapCategory 1.1-6 
   [2XFiniteStrictCoproductCocompletion[102X, for IsCapCategory 1.2-1 
   [2XFiniteStrictProductCompletion[102X, for IsCapCategory 3.2-1 
   [2XIsCategoryOfColimitQuivers[102X, for IsCapCategory 5.3-1 
@@ -51,8 +53,6 @@
       for IsFiniteStrictCoproductCocompletion 1.1-3 
       for IsFiniteStrictProductCompletion 3.1-3 
       for IsPairOfParallelArrowsCategory 4.2-3 
-  [2XYonedaEmbeddingOfUnderlyingCategory[102X, for IsCategoryOfColimitQuivers 5.2-6 
-      for IsFiniteStrictCoproductCocompletion 1.1-4 
   
   
   -------------------------------------------------------

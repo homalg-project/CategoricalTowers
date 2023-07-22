@@ -31,7 +31,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8701742881CE0C4D">3.1-1 PairOfIntAndList</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FAE718A7DB3B29A">3.1-2 PairOfLists</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7D07FCA482AD18F1">3.1-3 UnderlyingCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8079AC6185A1F859">3.1-4 CoYonedaEmbeddingOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X863DD64B78748D3F">3.1-4 EmbeddingOfUnderlyingCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X874A12677A2C5833">3.1-5 ExtendFunctorToFiniteStrictProductCompletion</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X86EC0F0A78ECBC10">3.2 <span class="Heading">Constructors</span></a>
@@ -80,11 +80,11 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Return the category <span class="SimpleMath">\(C\)</span> underlying the finite product completion category <var class="Arg">UC</var><code class="code"> := FiniteStrictProductCompletion(</code> <span class="SimpleMath">\(C\)</span> <code class="code">)</code>).</p>
 
-<p><a id="X8079AC6185A1F859" name="X8079AC6185A1F859"></a></p>
+<p><a id="X863DD64B78748D3F" name="X863DD64B78748D3F"></a></p>
 
-<h5>3.1-4 CoYonedaEmbeddingOfUnderlyingCategory</h5>
+<h5>3.1-4 EmbeddingOfUnderlyingCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoYonedaEmbeddingOfUnderlyingCategory</code>( <var class="Arg">PC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnderlyingCategory</code>( <var class="Arg">PC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> functor</p>
 
 <p>The full embedding functor from the category <span class="SimpleMath">\(C\)</span> underlying the finite product completion <var class="Arg">PC</var> into <var class="Arg">PC</var>.</p>
@@ -312,11 +312,13 @@ FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
   V
 LazyCategory(
 FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PreCompose( CoYonedaEmbeddingOfUnderlyingCategory( PC ), Emb );</span>
-Precomposition of CoYoneda embedding functor and
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PreCompose( EmbeddingOfUnderlyingCategory( PC ), Emb );</span>
+Precomposition of
+Embedding functor into a finite strict product completion category and
 Embedding functor into lazy category
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F );</span>
-Precomposition of CoYoneda embedding functor and
+Precomposition of
+Embedding functor into a finite strict product completion category and
 Embedding functor into lazy category:
 
 FreeCategory( RightQuiver( "Q(a,b)[]" ) )
@@ -325,12 +327,12 @@ FreeCategory( RightQuiver( "Q(a,b)[]" ) )
 LazyCategory(
 FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := ExtendFunctorToFiniteStrictProductCompletion( F );</span>
-Extension to FiniteStrictProductCompletion( Source(
-Precomposition of CoYoneda embedding functor and
+Extension to FiniteStrictProductCompletion( Source( Precomposition of
+Embedding functor into a finite strict product completion category and
 Embedding functor into lazy category ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( G );</span>
-Extension to FiniteStrictProductCompletion( Source(
-Precomposition of CoYoneda embedding functor and
+Extension to FiniteStrictProductCompletion( Source( Precomposition of
+Embedding functor into a finite strict product completion category and
 Embedding functor into lazy category ) ):
 
 FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
@@ -435,11 +437,13 @@ FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
   V
 LazyCategory(
 FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PreCompose( CoYonedaEmbeddingOfUnderlyingCategory( PC ), Emb );</span>
-Precomposition of CoYoneda embedding functor and
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PreCompose( EmbeddingOfUnderlyingCategory( PC ), Emb );</span>
+Precomposition of
+Embedding functor into a finite strict product completion category and
 Embedding functor into lazy category
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F );</span>
-Precomposition of CoYoneda embedding functor and
+Precomposition of
+Embedding functor into a finite strict product completion category and
 Embedding functor into lazy category:
 
 FreeCategory( RightQuiver( "Q(a)[]" ) )
@@ -448,12 +452,12 @@ FreeCategory( RightQuiver( "Q(a)[]" ) )
 LazyCategory(
 FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := ExtendFunctorToFiniteStrictProductCompletion( F );</span>
-Extension to FiniteStrictProductCompletion( Source(
-Precomposition of CoYoneda embedding functor and
+Extension to FiniteStrictProductCompletion( Source( Precomposition of
+Embedding functor into a finite strict product completion category and
 Embedding functor into lazy category ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( G );</span>
-Extension to FiniteStrictProductCompletion( Source(
-Precomposition of CoYoneda embedding functor and
+Extension to FiniteStrictProductCompletion( Source( Precomposition of
+Embedding functor into a finite strict product completion category and
 Embedding functor into lazy category ) ):
 
 FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
