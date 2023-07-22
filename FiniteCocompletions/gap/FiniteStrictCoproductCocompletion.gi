@@ -1115,36 +1115,36 @@ InstallMethod( FiniteStrictCoproductCocompletion,
 end );
 
 ##
-InstallMethodForCompilerForCAP( YonedaEmbeddingOfUnderlyingCategoryData,
+InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
         "for a finite coproduct cocompletion category",
         [ IsFiniteStrictCoproductCocompletion ],
         
   function( UC )
-    local yoneda_embedding_on_objects, yoneda_embedding_on_morphisms;
+    local embedding_on_objects, embedding_on_morphisms;
     
-    yoneda_embedding_on_objects :=
+    embedding_on_objects :=
       objC -> ObjectConstructor( UC, Pair( 1, [ objC ] ) );
     
-    yoneda_embedding_on_morphisms :=
+    embedding_on_morphisms :=
       { source, morC, range } -> MorphismConstructor( UC, source, Pair( [ 0 ], [ morC ] ), range );
     
     return Triple( UnderlyingCategory( UC ),
-                   Pair( yoneda_embedding_on_objects, yoneda_embedding_on_morphisms ),
+                   Pair( embedding_on_objects, embedding_on_morphisms ),
                    UC );
     
 end );
 
 ##
-InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
+InstallMethod( EmbeddingOfUnderlyingCategory,
         "for a finite coproduct cocompletion category",
         [ IsFiniteStrictCoproductCocompletion ],
         
   function( UC )
     local data, Y;
     
-    data := YonedaEmbeddingOfUnderlyingCategoryData( UC );
+    data := EmbeddingOfUnderlyingCategoryData( UC );
     
-    Y := CapFunctor( "Yoneda embedding functor", data[1], UC );
+    Y := CapFunctor( "Embedding functor into a finite strict coproduct cocompletion category", data[1], UC );
     
     AddObjectFunction( Y, data[2][1] );
     
@@ -1166,7 +1166,7 @@ InstallMethod( \.,
     
     C := UnderlyingCategory( UC );
     
-    Y := YonedaEmbeddingOfUnderlyingCategory( UC );
+    Y := EmbeddingOfUnderlyingCategory( UC );
     
     Yc := Y( C.(name) );
     
@@ -1312,13 +1312,13 @@ InstallMethod( ExtendFunctorToFiniteStrictCoproductCocompletion,
 end );
 
 ##
-InstallMethod( ExtendYonedaEmbeddingToFiniteStrictCoproductCocompletion,
+InstallMethod( ExtendEmbeddingToFiniteStrictCoproductCocompletion,
         "for a CAP category",
         [ IsCapCategory ],
         
   function( C )
     
-    return ExtendFunctorToFiniteStrictCoproductCocompletion( YonedaEmbedding( C ) );
+    return ExtendFunctorToFiniteStrictCoproductCocompletion( Embedding( C ) );
     
 end );
 

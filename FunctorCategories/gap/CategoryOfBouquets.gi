@@ -309,7 +309,7 @@ InstallMethod( Subobject,
 end );
 
 ##
-InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
+InstallMethod( EmbeddingOfUnderlyingCategory,
         "for a category of bouquets",
         [ IsCategoryOfBouquets ],
         
@@ -342,7 +342,7 @@ InstallMethod( \.,
     
     F := UnderlyingCategory( category_of_bouquets );
     
-    Y := YonedaEmbeddingOfUnderlyingCategory( category_of_bouquets );
+    Y := EmbeddingOfUnderlyingCategory( category_of_bouquets );
     
     Yc := Y( F.(name) );
     

@@ -144,5 +144,5 @@ end );
 #!  <A>ColimitQuivers</A> into <A>ColimitQuivers</A>.
 #! @Arguments ColimitQuivers
 #! @Returns a &CAP; functor
-DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
+DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsCategoryOfColimitQuivers );

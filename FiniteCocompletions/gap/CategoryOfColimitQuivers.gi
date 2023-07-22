@@ -269,14 +269,14 @@ InstallMethod( AssociatedCategoryOfColimitQuiversOfSourceCategory,
 end );
 
 ##
-InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
+InstallMethod( EmbeddingOfUnderlyingCategory,
         "for the category of colimit quivers in a category",
         [ IsCategoryOfColimitQuivers ],
         
   function( ColimitQuivers )
     local Y;
     
-    Y := CapFunctor( "Yoneda embedding functor", UnderlyingCategory( ColimitQuivers ), ColimitQuivers );
+    Y := CapFunctor( "Embedding functor", UnderlyingCategory( ColimitQuivers ), ColimitQuivers );
     
     AddObjectFunction( Y, objC -> ObjectConstructor( ColimitQuivers, Pair( [ objC ], [ ] ) ) );
     
@@ -298,7 +298,7 @@ InstallMethod( \.,
     
     C := UnderlyingCategory( ColimitQuivers );
     
-    Y := YonedaEmbeddingOfUnderlyingCategory( ColimitQuivers );
+    Y := EmbeddingOfUnderlyingCategory( ColimitQuivers );
     
     Yc := Y( C.(name) );
     

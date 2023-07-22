@@ -73,11 +73,13 @@ Display( Emb );
 #!   V
 #! LazyCategory(
 #! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
-F := PreCompose( YonedaEmbeddingOfUnderlyingCategory( UC ), Emb );
-#! Precomposition of Yoneda embedding functor and
+F := PreCompose( EmbeddingOfUnderlyingCategory( UC ), Emb );
+#! Precomposition of
+#! Embedding functor into a finite strict coproduct cocompletion category and
 #! Embedding functor into lazy category
 Display( F );
-#! Precomposition of Yoneda embedding functor and
+#! Precomposition of
+#! Embedding functor into a finite strict coproduct cocompletion category and
 #! Embedding functor into lazy category:
 #! 
 #! FreeCategory( RightQuiver( "Q(a,b)[]" ) )
@@ -86,12 +88,12 @@ Display( F );
 #! LazyCategory(
 #! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
 G := ExtendFunctorToFiniteStrictCoproductCocompletion( F );
-#! Extension to FiniteStrictCoproductCocompletion( Source(
-#! Precomposition of Yoneda embedding functor and
+#! Extension to FiniteStrictCoproductCocompletion( Source( Precomposition of
+#! Embedding functor into a finite strict coproduct cocompletion category and
 #! Embedding functor into lazy category ) )
 Display( G );
-#! Extension to FiniteStrictCoproductCocompletion( Source(
-#! Precomposition of Yoneda embedding functor and
+#! Extension to FiniteStrictCoproductCocompletion( Source( Precomposition of
+#! Embedding functor into a finite strict coproduct cocompletion category and
 #! Embedding functor into lazy category ) ):
 #! 
 #! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )

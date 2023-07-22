@@ -63,7 +63,7 @@ DeclareAttribute( "UnderlyingCategory",
         IsCategoryOfReflexiveQuivers );
 
 #! @Arguments fin_reflexive_quivers
-DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
+DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsCategoryOfReflexiveQuivers );
 
 DeclareAttribute( "DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets",

@@ -57,7 +57,7 @@ DeclareAttribute( "DecorationOfArrows",
         IsCategoryOfDecoratedQuivers );
 
 #! @Arguments decorated_fin_quivers
-DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
+DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsCategoryOfDecoratedQuivers );
 
 DeclareAttribute( "DefiningPairOfDecoratedQuiver",

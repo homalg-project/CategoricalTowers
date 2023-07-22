@@ -305,7 +305,7 @@ InstallMethod( Subobject,
 end );
 
 ##
-InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
+InstallMethod( EmbeddingOfUnderlyingCategory,
         "for a category of decorated quivers",
         [ IsCategoryOfDecoratedQuivers ],
         
@@ -338,7 +338,7 @@ InstallMethod( \.,
     
     F := UnderlyingCategory( category_of_quivers );
     
-    Y := YonedaEmbeddingOfUnderlyingCategory( category_of_quivers );
+    Y := EmbeddingOfUnderlyingCategory( category_of_quivers );
     
     Yc := Y( F.(name) );
     
