@@ -127,3 +127,57 @@ InstallMethod( \.,
     return Yc;
     
 end );
+
+##
+InstallMethodForCompilerForCAP( ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproductsData,
+        "for a two categories and a pair of functions",
+        [ IsFreeDistributiveCategoryWithStrictProductAndCoproducts, IsList, IsDistributiveCategory ], ## IsStrict(Co)cartesianCategory would exclude the lazy category
+        
+  function( DC, pair_of_funcs, distributive_category_with_strict_products_and_coproducts )
+    local UPC, PC;
+    
+    UPC := ModelingCategory( DC );
+    PC := UnderlyingCategory( UPC );
+    
+    return ExtendFunctorToWrapperCategoryData(
+                   DC,
+                   ExtendFunctorToFiniteStrictCoproductCocompletionData(
+                           UPC,
+                           ExtendFunctorToFiniteStrictProductCompletionData(
+                                   PC,
+                                   pair_of_funcs,
+                                   distributive_category_with_strict_products_and_coproducts )[2],
+                           distributive_category_with_strict_products_and_coproducts )[2],
+                   distributive_category_with_strict_products_and_coproducts );
+    
+end );
+
+##
+InstallMethod( ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts,
+        "for a functor",
+        [ IsCapFunctor ],
+        
+  function( F )
+    local C, D, DC, data, DF;
+    
+    C := SourceOfFunctor( F );
+    D := RangeOfFunctor( F );
+    
+    DC := FreeDistributiveCategoryWithStrictProductAndCoproducts( C );
+    
+    data := ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproductsData(
+                    DC,
+                    Pair( FunctorObjectOperation( F ), FunctorMorphismOperation( F ) ),
+                    D );
+    
+    DF := CapFunctor( Concatenation( "Extension to FreeDistributiveCategoryWithStrictProductAndCoproducts( Source( ", Name( F ), " ) )" ), DC, D );
+    
+    AddObjectFunction( DF,
+            data[2][1] );
+    
+    AddMorphismFunction( DF,
+            data[2][2] );
+    
+    return DF;
+    
+end );

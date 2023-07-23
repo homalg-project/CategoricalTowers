@@ -76,3 +76,14 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
 #! @Returns a &CAP; functor
 DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsFreeDistributiveCategoryWithStrictProductAndCoproducts );
+
+DeclareOperation( "ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproductsData",
+        [ IsCapCategory, IsList, IsCapCategory ] );
+
+#! @Description
+#!  The full embedding functor from the category $C$ underlying
+#!  the free distributive closure category <A>DC</A> with strict products and coproducts into <A>DC</A>.
+#! @Arguments DC
+#! @Returns a &CAP; functor
+DeclareAttribute( "ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts",
+        IsCapFunctor );
