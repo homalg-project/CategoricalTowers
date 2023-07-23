@@ -50,11 +50,10 @@ InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
     
     PC := UnderlyingCategory( UPC );
     
-    return
-      PreComposeWithWrappingFunctorData( DC,
-              PreComposeFunctorsByData( UPC,
-                      EmbeddingOfUnderlyingCategoryData( PC ),
-                      EmbeddingOfUnderlyingCategoryData( UPC ) ) );
+    return PreComposeWithWrappingFunctorData( DC,
+                   PreComposeFunctorsByData( UPC,
+                           EmbeddingOfUnderlyingCategoryData( PC ),
+                           EmbeddingOfUnderlyingCategoryData( UPC ) ) );
     
 end );
 
