@@ -1208,7 +1208,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletionData,
         "for a two categories and a pair of functions",
-        [ IsCapCategory, IsList, IsCapCategory ],
+        [ IsFiniteStrictCoproductCocompletion, IsList, IsCocartesianCategory ], ## IsStrictCocartesianCategory would exclude the lazy category
         
   function( UC, pair_of_funcs, category_with_strict_coproducts )
     local functor_on_objects, functor_on_morphisms,

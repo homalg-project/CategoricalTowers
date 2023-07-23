@@ -301,7 +301,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData,
         "for a two categories and a pair of functions",
-        [ IsCapCategory, IsList, IsCapCategory ],
+        [ IsFiniteStrictProductCompletion, IsList, IsCartesianCategory ], ## IsStrictCartesianCategory would exclude the lazy category
         
   function( PC, pair_of_funcs, category_with_strict_products )
     local functor_on_objects, functor_on_morphisms,
