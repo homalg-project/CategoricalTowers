@@ -62,4 +62,11 @@ IsOne( phi );
 #! true
 phi = LeftCartesianDistributivityFactoring( a, [ b, c ] );
 #! true
+Id := ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts(
+              EmbeddingOfUnderlyingCategory( DC ) );
+#! Extension to FreeDistributiveCategoryWithStrictProductAndCoproducts(
+#! Source( Embedding functor into a free distributive closure category
+#!         with strict products and coproducts ) )
+Id( phi ) = phi;
+#! true
 #! @EndExample

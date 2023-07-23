@@ -301,9 +301,9 @@ end );
 ##
 InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData,
         "for a two categories and a pair of functions",
-        [ IsCapCategory, IsList, IsCapCategory ],
+        [ IsFiniteStrictProductCompletion, IsList, IsCartesianCategory ], ## IsStrictCartesianCategory would exclude the lazy category
         
-  function( PC, pair_of_funcs, D )
+  function( PC, pair_of_funcs, category_with_strict_products )
     local functor_on_objects, functor_on_morphisms,
           extended_functor_on_objects, extended_functor_on_morphisms;
     
@@ -318,7 +318,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData
         
         L := ObjectDatum( PC, objPC )[2];
         
-        return DirectProduct( D, List( L, objC -> functor_on_objects( objC ) ) );
+        return DirectProduct( category_with_strict_products, List( L, objC -> functor_on_objects( objC ) ) );
         
     end;
     
@@ -344,7 +344,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData
         mor := pair_of_lists[2];
         
         prj := List( [ 0 .. t - 1 ], i ->
-                     ProjectionInFactorOfDirectProductWithGivenDirectProduct( D,
+                     ProjectionInFactorOfDirectProductWithGivenDirectProduct( category_with_strict_products,
                              FLS,
                              1 + map[1 + i],
                              source ) );
@@ -356,11 +356,11 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData
                               FLS[1 + map[1 + i]] ) );
         
         cmp := List( [ 0 .. t - 1 ], i ->
-                     PreCompose( D,
+                     PreCompose( category_with_strict_products,
                              prj[1 + i],
                              Fmor[1 + i] ) );
         
-        return UniversalMorphismIntoDirectProductWithGivenDirectProduct( D,
+        return UniversalMorphismIntoDirectProductWithGivenDirectProduct( category_with_strict_products,
                        FLT,
                        source,
                        cmp,
@@ -370,7 +370,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData
     
     return Triple( PC,
                    Pair( extended_functor_on_objects, extended_functor_on_morphisms ),
-                   D );
+                   category_with_strict_products );
     
 end );
 

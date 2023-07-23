@@ -1208,9 +1208,9 @@ end );
 ##
 InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletionData,
         "for a two categories and a pair of functions",
-        [ IsCapCategory, IsList, IsCapCategory ],
+        [ IsFiniteStrictCoproductCocompletion, IsList, IsCocartesianCategory ], ## IsStrictCocartesianCategory would exclude the lazy category
         
-  function( UC, pair_of_funcs, D )
+  function( UC, pair_of_funcs, category_with_strict_coproducts )
     local functor_on_objects, functor_on_morphisms,
           extended_functor_on_objects, extended_functor_on_morphisms;
     
@@ -1225,7 +1225,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletion
         
         L := ObjectDatum( UC, objUC )[2];
         
-        return Coproduct( D, List( L, objC -> functor_on_objects( objC ) ) );
+        return Coproduct( category_with_strict_coproducts, List( L, objC -> functor_on_objects( objC ) ) );
         
     end;
 
@@ -1251,7 +1251,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletion
         mor := pair_of_lists[2];
         
         inj := List( [ 0 .. s - 1 ], i ->
-                     InjectionOfCofactorOfCoproductWithGivenCoproduct( D,
+                     InjectionOfCofactorOfCoproductWithGivenCoproduct( category_with_strict_coproducts,
                              FLT,
                              1 + map[1 + i],
                              range ) );
@@ -1263,11 +1263,11 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletion
                               FLT[1 + map[1 + i]] ) );
         
         cmp := List( [ 0 .. s - 1 ], i ->
-                     PreCompose( D,
+                     PreCompose( category_with_strict_coproducts,
                              Fmor[1 + i],
                              inj[1 + i] ) );
         
-        return UniversalMorphismFromCoproductWithGivenCoproduct( D,
+        return UniversalMorphismFromCoproductWithGivenCoproduct( category_with_strict_coproducts,
                        FLS,
                        range,
                        cmp,
@@ -1277,7 +1277,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletion
     
     return Triple( UC,
                    Pair( extended_functor_on_objects, extended_functor_on_morphisms ),
-                   D );
+                   category_with_strict_coproducts );
     
 end );
 
@@ -1318,7 +1318,7 @@ InstallMethod( ExtendEmbeddingToFiniteStrictCoproductCocompletion,
         
   function( C )
     
-    return ExtendFunctorToFiniteStrictCoproductCocompletion( Embedding( C ) );
+    return ExtendFunctorToFiniteStrictCoproductCocompletion( YonedaEmbedding( C ) );
     
 end );
 

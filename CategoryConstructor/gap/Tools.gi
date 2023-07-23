@@ -534,3 +534,38 @@ InstallMethodForCompilerForCAP( PreComposeWithWrappingFunctorData,
               wrapping_functor_data );
     
 end );
+
+##
+InstallMethodForCompilerForCAP( ExtendFunctorToWrapperCategoryData,
+        "for a two categories and a pair of functions",
+        [ IsWrapperCapCategory, IsList, IsCapCategory ],
+        
+  function( W, pair_of_funcs, range_category )
+    local functor_on_objects, functor_on_morphisms,
+          extended_functor_on_objects, extended_functor_on_morphisms;
+    
+    functor_on_objects := pair_of_funcs[1];
+    functor_on_morphisms := pair_of_funcs[2];
+    
+    extended_functor_on_objects :=
+      function( objW )
+        
+        return functor_on_objects( ObjectDatum( W, objW ) );
+        
+    end;
+    
+    extended_functor_on_morphisms :=
+      function( source, morW, range )
+        
+        return functor_on_morphisms(
+                       source,
+                       MorphismDatum( W, morW ),
+                       range );
+        
+    end;
+    
+    return Triple( W,
+                   Pair( extended_functor_on_objects, extended_functor_on_morphisms ),
+                   range_category );
+    
+end );
