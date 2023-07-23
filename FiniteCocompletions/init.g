@@ -24,3 +24,9 @@ ReadPackage( "FiniteCocompletions", "gap/CategoryOfColimitQuivers.gd");
 
 ##
 ReadPackage( "FiniteCocompletions", "gap/AdditiveClosure.gd");
+
+##
+ReadPackage( "FiniteCocompletions", "gap/FreydCategory.gd");
+
+##
+ReadPackage( "FiniteCocompletions", "gap/CoFreydCategory.gd");
