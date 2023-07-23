@@ -62,8 +62,8 @@ end );
 #!  Construct the free distributive closure category with strict products and coproducts of a category <A>C</A>.
 #! @Arguments C
 #! @Returns a &CAP; category
-DeclareOperation( "FreeDistributiveCategoryWithStrictProductAndCoproducts",
-        [ IsCapCategory ] );
+DeclareAttribute( "FreeDistributiveCategoryWithStrictProductAndCoproducts",
+        IsCapCategory );
 #! @InsertChunk LeftCartesianDistributivityFactoring
 
 DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
