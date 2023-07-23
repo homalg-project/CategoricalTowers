@@ -114,7 +114,7 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsFiniteStrictProductCompletion );
 
 DeclareOperation( "ExtendFunctorToFiniteStrictProductCompletionData",
-        [ IsCapCategory, IsList, IsCapCategory ] );
+        [ IsFiniteStrictProductCompletion, IsList, IsCartesianCategory ] );
 
 #! @Description
 #!  The full embedding functor from the category $C$ underlying
