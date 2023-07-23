@@ -34,3 +34,6 @@ ReadPackage( "FiniteCocompletions", "gap/FreydCategory.gi");
 
 ##
 ReadPackage( "FiniteCocompletions", "gap/CoFreydCategory.gi");
+
+##
+ReadPackage( "FiniteCocompletions", "gap/AbelianClosure.gi");
