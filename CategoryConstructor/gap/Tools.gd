@@ -474,3 +474,6 @@ DeclareOperation( "PreComposeFunctorsByData",
 
 DeclareOperation( "PreComposeWithWrappingFunctorData",
         [ IsWrapperCapCategory, IsList ] );
+
+DeclareOperation( "ExtendFunctorToWrapperCategoryData",
+        [ IsWrapperCapCategory, IsList, IsCapCategory ] );
