@@ -32,6 +32,7 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7981F83E83CA16FA">3.2-1 FreeDistributiveCategoryWithStrictProductAndCoproducts</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81B4C0DA7A6A685C">3.2-2 EmbeddingOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D733F4B82C012A5">3.2-3 ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7D03633A7D98026B">3.3 <span class="Heading">GAP categories</span></a>
 </span>
@@ -64,7 +65,7 @@
 
 <h5>3.2-1 FreeDistributiveCategoryWithStrictProductAndCoproducts</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FreeDistributiveCategoryWithStrictProductAndCoproducts</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FreeDistributiveCategoryWithStrictProductAndCoproducts</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
 <p>Construct the free distributive closure category with strict products and coproducts of a category <var class="Arg">C</var>.</p>
@@ -132,6 +133,13 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi = LeftCartesianDistributivityFactoring( a, [ b, c ] );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Id := ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              EmbeddingOfUnderlyingCategory( DC ) );</span>
+Extension to FreeDistributiveCategoryWithStrictProductAndCoproducts(
+Source( Embedding functor into a free distributive closure category
+        with strict products and coproducts ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Id( phi ) = phi;</span>
+true
 </pre></div>
 
 <p><a id="X81B4C0DA7A6A685C" name="X81B4C0DA7A6A685C"></a></p>
@@ -139,6 +147,15 @@ true
 <h5>3.2-2 EmbeddingOfUnderlyingCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnderlyingCategory</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>The full embedding functor from the category <span class="Math">C</span> underlying the free distributive closure category <var class="Arg">DC</var> with strict products and coproducts into <var class="Arg">DC</var>.</p>
+
+<p><a id="X7D733F4B82C012A5" name="X7D733F4B82C012A5"></a></p>
+
+<h5>3.2-3 ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts</code>( <var class="Arg">DC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> functor</p>
 
 <p>The full embedding functor from the category <span class="Math">C</span> underlying the free distributive closure category <var class="Arg">DC</var> with strict products and coproducts into <var class="Arg">DC</var>.</p>

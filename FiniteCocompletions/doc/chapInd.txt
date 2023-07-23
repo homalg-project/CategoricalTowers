@@ -20,6 +20,7 @@
   [2XExtendEmbeddingToFiniteStrictCoproductCocompletion[102X, for IsCapCategory 1.1-6 
   [2XExtendFunctorToFiniteStrictCoproductCocompletion[102X, for IsCapFunctor 1.1-5 
   [2XExtendFunctorToFiniteStrictProductCompletion[102X, for IsCapFunctor 2.1-5 
+  [2XExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts[102X, for IsCapFunctor 3.2-3 
   [2XFiniteStrictCoproductCocompletion[102X, for IsCapCategory 1.2-1 
   [2XFiniteStrictProductCompletion[102X, for IsCapCategory 2.2-1 
   [2XFreeDistributiveCategoryWithStrictProductAndCoproducts[102X, for IsCapCategory 3.2-1 

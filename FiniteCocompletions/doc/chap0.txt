@@ -6,7 +6,7 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2023.07-09
+                                   2023.07-13
   
   
                                   23 July 2023
@@ -74,6 +74,7 @@
     3.2 [33X[0;0YConstructors[133X
       3.2-1 FreeDistributiveCategoryWithStrictProductAndCoproducts
       3.2-2 EmbeddingOfUnderlyingCategory
+      3.2-3 ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts
     3.3 [33X[0;0YGAP categories[133X
       3.3-1 IsFreeDistributiveCategoryWithStrictProductAndCoproducts
       3.3-2 IsCellInFreeDistributiveCategoryWithStrictProductAndCoproducts
