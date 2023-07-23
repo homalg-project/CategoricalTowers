@@ -25,3 +25,6 @@ ReadPackage( "FiniteCocompletions", "gap/PairOfParallelArrowsCategory.gi");
 
 ##
 ReadPackage( "FiniteCocompletions", "gap/CategoryOfColimitQuivers.gi");
+
+##
+ReadPackage( "FiniteCocompletions", "gap/AdditiveClosure.gi");
