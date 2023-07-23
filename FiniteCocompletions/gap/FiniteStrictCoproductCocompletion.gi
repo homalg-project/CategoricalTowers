@@ -1318,7 +1318,7 @@ InstallMethod( ExtendEmbeddingToFiniteStrictCoproductCocompletion,
         
   function( C )
     
-    return ExtendFunctorToFiniteStrictCoproductCocompletion( Embedding( C ) );
+    return ExtendFunctorToFiniteStrictCoproductCocompletion( YonedaEmbedding( C ) );
     
 end );
 
