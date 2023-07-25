@@ -180,18 +180,18 @@ InstallMethod( FpGradedLeftModules,
     
     ##
     AddRelativeLift( P,
-      function( beta, alpha, nu )
+      function( P, beta, alpha, nu )
         local chi;
         
         chi := RightDivide( UnderlyingHomalgMatrix( beta ), UnderlyingHomalgMatrix( alpha ), UnderlyingHomalgMatrix( nu ) );
         
-        return GradedRowOrColumnMorphism( Source( beta ), chi, Source( alpha ) );
+        return GradedRowOrColumnMorphism( P, Source( beta ), chi, Source( alpha ) );
         
     end );
     
     ##
     AddProjectionOfBiasedRelativeWeakFiberProduct( P,
-      function( morphism, range, source )
+      function( P, morphism, range, source )
         local kernel, embedding, source_matrix, biased_relative_weak_fiber_product;
         
         embedding := ReducedSyzygiesOfRows( UnderlyingHomalgMatrix( morphism ), UnderlyingHomalgMatrix( range ) );
@@ -220,12 +220,12 @@ InstallMethod( FpGradedLeftModules,
             
             ##
             AddMultiplyWithElementOfCommutativeRingForMorphisms( P,
-              function( r, alpha )
+              function( P, r, alpha )
                 local mat;
                 
                 mat := UnderlyingHomalgMatrix( alpha );
                 
-                return GradedRowOrColumnMorphism( Source( alpha ), ( r / HomalgRing( mat ) ) * mat, Range( alpha ) );
+                return GradedRowOrColumnMorphism( P, Source( alpha ), ( r / HomalgRing( mat ) ) * mat, Range( alpha ) );
                 
             end );
             
@@ -278,18 +278,18 @@ InstallMethod( FpGradedRightModules,
     
     ##
     AddRelativeLift( P,
-      function( beta, alpha, nu )
+      function( P, beta, alpha, nu )
         local chi;
         
         chi := LeftDivide( UnderlyingHomalgMatrix( alpha ), UnderlyingHomalgMatrix( beta ), UnderlyingHomalgMatrix( nu ) );
         
-        return GradedRowOrColumnMorphism( Source( beta ), chi, Source( alpha ) );
+        return GradedRowOrColumnMorphism( P, Source( beta ), chi, Source( alpha ) );
         
     end );
     
     ##
     AddProjectionOfBiasedRelativeWeakFiberProduct( P,
-      function( morphism, range, source )
+      function( P, morphism, range, source )
         local kernel, embedding, source_matrix, biased_relative_weak_fiber_product;
         
         embedding := ReducedSyzygiesOfColumns( UnderlyingHomalgMatrix( morphism ), UnderlyingHomalgMatrix( range ) );
@@ -306,12 +306,12 @@ InstallMethod( FpGradedRightModules,
     
     ##
     AddMultiplyWithElementOfCommutativeRingForMorphisms( P,
-      function( r, alpha )
+      function( P, r, alpha )
         local mat;
         
         mat := UnderlyingHomalgMatrix( alpha );
         
-        return GradedRowOrColumnMorphism( Source( alpha ), ( r / HomalgRing( mat ) ) * mat, Range( alpha ) );
+        return GradedRowOrColumnMorphism( P, Source( alpha ), ( r / HomalgRing( mat ) ) * mat, Range( alpha ) );
         
     end );
     
