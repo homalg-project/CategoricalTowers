@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (FiniteCocompletions) - Chapter 10: Abelian closure with strict direct sums</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap10"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap9.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap11.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap10_mj.html">[MathJax on]</a></p>
+<p><a id="X808ED60C7CA1FEB1" name="X808ED60C7CA1FEB1"></a></p>
+<div class="ChapSects"><a href="chap10.html#X808ED60C7CA1FEB1">10 <span class="Heading">Abelian closure with strict direct sums</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X7C701DBF7BAE649A">10.1 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X8089BE5D7EDB6CBA">10.1-1 UnderlyingCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X86EC0F0A78ECBC10">10.2 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X82DB37677860913B">10.2-1 AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7BF35172807F3A8E">10.2-2 EmbeddingOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7B8474067AF29535">10.2-3 ExtendFunctorToAbelianClosureWithStrictDirectSums</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X7D03633A7D98026B">10.3 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7812FC527D79F866">10.3-1 IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X80038D7683EC30C3">10.3-2 IsCellInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X79C4C0C581E973B0">10.3-3 IsObjectInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X78AEB77B816D27A5">10.3-4 IsMorphismInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</a></span>
+</div></div>
+</div>
+
+<h3>10 <span class="Heading">Abelian closure with strict direct sums</span></h3>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>10.1 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X8089BE5D7EDB6CBA" name="X8089BE5D7EDB6CBA"></a></p>
+
+<h5>10.1-1 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">DC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Return the category <span class="Math">C</span> underlying the abelian closure with strict direct sums category <var class="Arg">DC</var> := <code class="code">AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</code>( <span class="Math">C</span> ).</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>10.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X82DB37677860913B" name="X82DB37677860913B"></a></p>
+
+<h5>10.2-1 AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Construct the free distributive closure category with strict products and coproducts of a category <var class="Arg">C</var>.</p>
+
+
+<div class="example"><pre>
+#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" );</span>
+q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fq := FreeCategory( q );</span>
+FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qq := Q[Fq];</span>
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := Qq / [ Qq.abc ];</span>
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+/ relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure( L );</span>
+AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+/ relations )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := A.a;</span>
+&lt;A morphism in
+AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+/ relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := A.b;</span>
+&lt;A morphism in
+AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+/ relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := A.c;</span>
+&lt;A morphism in
+AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+/ relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( PreCompose( [ a, b, c ] ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := CokernelProjection( a );</span>
+&lt;An epimorphism in
+AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+/ relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := CokernelColift( a, PreCompose( b, c ) );</span>
+&lt;A morphism in
+AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+/ relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := KernelEmbedding( e );</span>
+&lt;A monomorphism in
+AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+/ relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := KernelEmbedding( c );</span>
+&lt;A monomorphism in
+AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+/ relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := KernelLift( c, PreCompose( a, b ) );</span>
+&lt;A morphism in
+AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+/ relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := CokernelProjection( h );</span>
+&lt;An epimorphism in
+AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+/ relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ker := Source( f );</span>
+&lt;An object in
+AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+/ relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coker := Range( i );</span>
+&lt;An object in
+AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+/ relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( ker, coker );</span>
+&lt;A row module over Q of rank 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_ker_coker := BasisOfExternalHom( ker, coker );</span>
+[ &lt;A morphism in
+   AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+   Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+   / relations )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := hom_ker_coker[1];</span>
+&lt;A morphism in
+ AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+ / relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">j := KernelObjectFunctorial( b, d, e );</span>
+&lt;A morphism in
+ AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+ / relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := CokernelObjectFunctorial( h, g, b );</span>
+&lt;A morphism in
+ AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+ / relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HK := HomologyObject( j, s );</span>
+&lt;An object in
+ AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+ / relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( HK );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HC := HomologyObject( s, k );</span>
+&lt;An object in
+ AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+ / relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( HC );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ff := AsGeneralizedMorphism( f );</span>
+&lt;A morphism in Generalized morphism category of
+ AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+ / relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dd := AsGeneralizedMorphism( d );</span>
+&lt;A morphism in Generalized morphism category of
+ AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+ / relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bb := AsGeneralizedMorphism( b );</span>
+&lt;A morphism in Generalized morphism category of
+ AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+ / relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gg := AsGeneralizedMorphism( g );</span>
+&lt;A morphism in Generalized morphism category of
+ AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+ / relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ii := AsGeneralizedMorphism( i );</span>
+&lt;A morphism in Generalized morphism category of
+ AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+ / relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ss := PreCompose( [ ff, PseudoInverse( dd ), bb, PseudoInverse( gg ), ii ] );</span>
+&lt;A morphism in Generalized morphism category of
+ AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+ / relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHonest( ss );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s = HonestRepresentative( ss );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Id := ExtendFunctorToAbelianClosureWithStrictDirectSums(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              EmbeddingOfUnderlyingCategory( A ) );</span>
+Extension to
+AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+Source( Embedding functor into an abelian closure category
+        with strict direct sums ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Id( s );</span>
+&lt;A morphism in
+ AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
+ / relations )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Id( s ) );</span>
+true
+#@fi
+</pre></div>
+
+<p><a id="X7BF35172807F3A8E" name="X7BF35172807F3A8E"></a></p>
+
+<h5>10.2-2 EmbeddingOfUnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnderlyingCategory</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>The full embedding functor from the category <span class="Math">C</span> underlying the free distributive closure category <var class="Arg">DC</var> with strict products and coproducts into <var class="Arg">DC</var>.</p>
+
+<p><a id="X7B8474067AF29535" name="X7B8474067AF29535"></a></p>
+
+<h5>10.2-3 ExtendFunctorToAbelianClosureWithStrictDirectSums</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToAbelianClosureWithStrictDirectSums</code>( <var class="Arg">DC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>The full embedding functor from the category <span class="Math">C</span> underlying the free distributive closure category <var class="Arg">DC</var> with strict products and coproducts into <var class="Arg">DC</var>.</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>10.3 <span class="Heading">GAP categories</span></h4>
+
+<p><a id="X7812FC527D79F866" name="X7812FC527D79F866"></a></p>
+
+<h5>10.3-1 IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of free distributive closure categories with strict products and coproducts of a category.</p>
+
+<p><a id="X80038D7683EC30C3" name="X80038D7683EC30C3"></a></p>
+
+<h5>10.3-2 IsCellInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in the free distributive closure category with strict products and coproducts of a category.</p>
+
+<p><a id="X79C4C0C581E973B0" name="X79C4C0C581E973B0"></a></p>
+
+<h5>10.3-3 IsObjectInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in the free distributive closure category with strict products and coproducts of a category.</p>
+
+<p><a id="X78AEB77B816D27A5" name="X78AEB77B816D27A5"></a></p>
+
+<h5>10.3-4 IsMorphismInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in the free distributive closure category with strict products and coproducts of a category.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap9.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap11.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

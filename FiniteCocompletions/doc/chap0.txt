@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2023.07-13
+                                   2023.07-15
   
   
-                                  23 July 2023
+                                  26 July 2023
   
   
                                 Mohamed Barakat
@@ -125,13 +125,38 @@
       6.2-4 AssociatedCategoryOfColimitQuiversOfSourceCategory
       6.2-5 UnderlyingCategory
       6.2-6 EmbeddingOfUnderlyingCategory
-    6.3 [33X[0;0YGAP Categories[133X
-      6.3-1 IsCategoryOfColimitQuivers
-      6.3-2 IsCellInCategoryOfColimitQuivers
-      6.3-3 IsObjectInCategoryOfColimitQuivers
-      6.3-4 IsMorphismInCategoryOfColimitQuivers
-  7 [33X[0;0YPrecompilation[133X
-    7.1 [33X[0;0YPrecompiling SkeletalFinSets[133X
+    6.3 [33X[0;0YExamples[133X
+    6.4 [33X[0;0YGAP Categories[133X
+      6.4-1 IsCategoryOfColimitQuivers
+      6.4-2 IsCellInCategoryOfColimitQuivers
+      6.4-3 IsObjectInCategoryOfColimitQuivers
+      6.4-4 IsMorphismInCategoryOfColimitQuivers
+  7 [33X[0;0YStrict additive closure[133X
+    7.1 [33X[0;0YConstructors[133X
+      7.1-1 EmbeddingOfUnderlyingCategory
+      7.1-2 ExtendFunctorToStrictAdditiveClosure
+  8 [33X[0;0YCokernel closure[133X
+    8.1 [33X[0;0YConstructors[133X
+      8.1-1 EmbeddingOfUnderlyingCategory
+      8.1-2 ExtendFunctorToFreydCategory
+  9 [33X[0;0YKernel closure[133X
+    9.1 [33X[0;0YConstructors[133X
+      9.1-1 EmbeddingOfUnderlyingCategory
+      9.1-2 ExtendFunctorToCoFreydCategory
+  10 [33X[0;0YAbelian closure with strict direct sums[133X
+    10.1 [33X[0;0YAttributes[133X
+      10.1-1 UnderlyingCategory
+    10.2 [33X[0;0YConstructors[133X
+      10.2-1 AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure
+      10.2-2 EmbeddingOfUnderlyingCategory
+      10.2-3 ExtendFunctorToAbelianClosureWithStrictDirectSums
+    10.3 [33X[0;0YGAP categories[133X
+      10.3-1 IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure
+      10.3-2 IsCellInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure
+      10.3-3 IsObjectInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure
+      10.3-4 IsMorphismInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure
+  11 [33X[0;0YPrecompilation[133X
+    11.1 [33X[0;0YPrecompiling SkeletalFinSets[133X
   
   
   [32X
