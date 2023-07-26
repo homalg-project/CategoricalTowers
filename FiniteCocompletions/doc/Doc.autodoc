@@ -77,3 +77,21 @@
 @Section Constructors
 @Section GAP categories
 @Section Examples
+
+@Chapter Strict additive closure
+
+@Section Constructors
+
+@Chapter Cokernel closure
+
+@Section Constructors
+
+@Chapter Kernel closure
+
+@Section Constructors
+
+@Chapter Abelian closure with strict direct sums
+
+@Section Attributes
+@Section Constructors
+@Section GAP categories
