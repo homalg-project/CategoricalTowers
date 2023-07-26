@@ -642,14 +642,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
     end;
     
-    ##
-    AddIsEqualForCacheForObjects( category,
-      IsIdenticalObj );
-    
-    ##
-    AddIsEqualForCacheForMorphisms( category,
-      IsIdenticalObj );
-    
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,

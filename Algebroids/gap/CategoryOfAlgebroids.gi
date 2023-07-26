@@ -85,14 +85,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS,
     ring := UnderlyingRing( category );
     parity := Parity( category );
 
-    ##
-    AddIsEqualForCacheForObjects( category,
-      IsIdenticalObj );
-    
-    ##
-    AddIsEqualForCacheForMorphisms( category,
-      IsIdenticalObj );
-    
     ## Equality basic operations for objects and morphisms
     ##
     AddIsEqualForObjects( category,
