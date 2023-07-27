@@ -2,7 +2,7 @@ gap> LoadPackage( "FiniteCocompletions", false );
 true
 gap> LoadPackage( "FinSetsForCAP", false );
 true
-gap> LoadPackage( "LazyCategories", false );
+gap> LoadPackage( "LazyCategories", ">= 2023.07-02", false );
 true
 
 #
@@ -32,7 +32,7 @@ gap> o12 := DirectProduct( o1, o2 );
 <An object in FiniteStrictCoproductCocompletion( LazyCategory( SkeletalFinSets ) )>
 
 #
-gap> Display( List( ObjectDatum( o12 )[2], d -> List( GenesisOfCellArguments( d ), a -> List( EvaluatedCell( a ), Length ) )[1] ) );
+gap> Display( List( ObjectDatum( o12 )[2], d -> List( GenesisOfCellArguments( d ){[ 2 ]}, a -> List( EvaluatedCell( a ), Length ) )[1] ) );
 [ [  0,  0 ],
   [  1,  0 ],
   [  2,  0 ],

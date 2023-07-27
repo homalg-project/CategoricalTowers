@@ -8,6 +8,15 @@
 SetInfoLevel( InfoLazyCategory, 1 );
 
 ##
+InstallGlobalFunction( _EvaluationOfCell,
+  function( c )
+    
+    return CallFuncList( ValueGlobal( GenesisOfCellOperation( c ) ),
+                   List( GenesisOfCellArguments( c ), EvaluatedCell ) );
+    
+end );
+
+##
 InstallMethod( EvaluatedCell,
         "for a cell in a lazy category",
         [ IsCellInLazyCategory ],
@@ -29,10 +38,7 @@ InstallMethod( EvaluatedCell,
         Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", C!.shortname, ": ", GenesisOfCellOperation( c ) );
     fi;
     
-    result := CallFuncList( ValueGlobal( GenesisOfCellOperation( c ) ),
-                      Concatenation(
-                              [ UnderlyingCategory( C ) ],
-                              List( GenesisOfCellArguments( c ), EvaluatedCell ) ) );
+    result := _EvaluationOfCell( c );
     
     if show then
         Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", C!.shortname, ": ", GenesisOfCellOperation( c ), "\n" );
@@ -41,6 +47,28 @@ InstallMethod( EvaluatedCell,
     fi;
     
     return result;
+    
+end );
+
+##
+InstallOtherMethod( EvaluatedCell,
+        "for a lazy category and a cell therein",
+        [ IsLazyCategory, IsCellInLazyCategory ],
+        
+  function( C, c )
+    
+    return EvaluatedCell( c );
+    
+end );
+
+##
+InstallOtherMethod( EvaluatedCell,
+        "for a lazy category",
+        [ IsLazyCategory ],
+
+  function( L )
+    
+    return UnderlyingCategory( L );
     
 end );
 
@@ -182,6 +210,13 @@ end );
 
 ##
 InstallMethod( IsEqualForCells,
+        "for two lazy categories",
+        [ IsLazyCategory, IsLazyCategory ],
+
+  IsIdenticalObj );
+
+##
+InstallMethod( IsEqualForCells,
         "for two CAP objects",
         [ IsCapCategoryObject, IsCapCategoryObject ],
 
@@ -303,16 +338,31 @@ InstallMethod( AsMorphismInLazyCategory,
 end );
 
 ##
+InstallOtherMethod( AsMorphismInLazyCategory,
+        "for two CAP objects in a lazy category, a string, and a list",
+        [ IsLazyCategory, IsObjectInLazyCategory, IsString and IsStringRep, IsList, IsObjectInLazyCategory ],
+        
+  function( D, source, name_of_operation, L, range )
+    
+    return CreateCapCategoryMorphismWithAttributes( D,
+                   source,
+                   range,
+                   GenesisOfCellOperation, name_of_operation,
+                   GenesisOfCellArguments, L );
+    
+end );
+
+##
 InstallMethod( LazyCategory,
         "for a CAP category",
         [ IsCapCategory ],
         
   function( C )
-    local name, create_func_bool,
-          create_func_object, create_func_morphism, create_func_universal_morphism,
-          primitive_operations, list_of_operations_to_install, skip, func, pos,
-          commutative_ring, properties, ignore, D, optimize,
-          show_evaluation, cache, print, list, lazify_range_of_hom_structure, HC;
+    local name, create_func_bool, create_func_object, create_func_object_or_fail,
+          create_func_morphism, create_func_universal_morphism, create_func_morphism_or_fail,
+          create_func_list_of_objects, primitive_operations, list_of_operations_to_install, skip, func, pos,
+          commutative_ring, properties, ignore, supports_empty_limits, category_constructor_options,
+          D, optimize, show_evaluation, cache, print, list, lazify_range_of_hom_structure, HC;
     
     if HasName( C ) then
         name := Concatenation( "LazyCategory( ", Name( C ), " )" );
@@ -323,21 +373,13 @@ InstallMethod( LazyCategory,
     ## e.g., IsSplitEpimorphism
     create_func_bool :=
       function( name, D )
-        local oper;
         
-        oper := ValueGlobal( name );
-        
-        return
-          function( D, arg... )
-            local eval_arg;
+        return """
+          function( input_arguments... )
             
-            eval_arg := List( arg, EvaluatedCell );
+            return operation_name( underlying_arguments... );
             
-            eval_arg := Concatenation( [ UnderlyingCategory( D ) ], eval_arg );
-            
-            return CallFuncList( oper, eval_arg );
-            
-        end;
+        end""";
         
     end;
     
@@ -345,75 +387,93 @@ InstallMethod( LazyCategory,
     create_func_object :=
       function( name, D )
         
-        return ## a constructor for universal objects
-          function( D, arg... )
+        return """
+          function( input_arguments... )
             
-            if Length( arg ) = 0 then
-                return AsObjectInLazyCategory( D, ValueGlobal( name )( UnderlyingCategory( D ) ) );
+            return top_object_getter( cat, "operation_name", [ input_arguments... ] );
+            
+        end""";
+        
+    end;
+    
+    create_func_object_or_fail :=
+      function( name, D )
+        
+        return """
+          function( input_arguments... )
+            local underlying_result;
+            
+            underlying_result := operation_name( underlying_arguments... );
+            
+            if underlying_result = fail then
+                
+                return fail;
+                
+            else
+                
+                return top_object_getter( cat, "IdFunc", [ underlying_result ] );
+                
             fi;
             
-            return AsObjectInLazyCategory( D, name, arg );
-            
-          end;
-          
-      end;
+        end""";
+        
+    end;
     
     ## e.g., ZeroObjectFunctorial, IdentityMorphism, PreCompose
     create_func_morphism :=
       function( name, D )
-        local type;
         
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
-        return
-          function( D, arg... )
-            local src_trg, S, T;
+        return """
+          function( input_arguments... )
             
-            if Length( arg ) = 0 then
-                return AsMorphismInLazyCategory( D, ValueGlobal( name )( UnderlyingCategory( D ) ) );
+            return top_morphism_getter( cat, top_source, "operation_name", [ input_arguments... ], top_range );
+            
+        end""";
+        
+    end;
+    
+    create_func_morphism_or_fail :=
+      function( name, D )
+        
+        return """
+          function( input_arguments... )
+            local underlying_result;
+            
+            underlying_result := operation_name( underlying_arguments... );
+            
+            if underlying_result = fail then
+                
+                return fail;
+                
+            else
+                
+                return top_morphism_getter( cat, top_source, underlying_result, top_range );
+                
             fi;
             
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            S := src_trg[1];
-            T := src_trg[2];
-            
-            return AsMorphismInLazyCategory( S, name, arg, T );
-            
-          end;
-          
-      end;
-    
-    ## e.g., ProjectionInFactorOfDirectSumWithGivenDirectSum
-    create_func_universal_morphism :=
+        end""";
+        
+    end;
+
+    create_func_list_of_objects :=
       function( name, D )
-        local info, type;
         
-        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-        
-        if not info.with_given_without_given_name_pair[2] = name then
-            Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
-        fi;
-        
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
-        return
-          function( D, arg... )
-            local src_trg, S, T;
+        return """
+          function( input_arguments... )
+            local underlying_result;
             
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            S := src_trg[1];
-            T := src_trg[2];
+            underlying_result := operation_name( underlying_arguments... );
             
-            return AsMorphismInLazyCategory( S, name, arg, T );
+            return List( underlying_result, object -> top_object_getter( cat, object ) );
             
-          end;
+        end""";
         
     end;
     
     primitive_operations := IsIdenticalObj( ValueOption( "primitive_operations" ), true );
     
     if primitive_operations then
-        list_of_operations_to_install := ListPrimitivelyInstalledOperationsOfCategory( C );
+        list_of_operations_to_install := ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperationsAreReplacedWithCorrespondingObjectAndWithGivenOperations( C );
     else
         list_of_operations_to_install := ListInstalledOperationsOfCategory( C );
     fi;
@@ -423,9 +483,11 @@ InstallMethod( LazyCategory,
     skip := [ "IsEqualForObjects",
               "IsEqualForMorphisms",
               "IsCongruentForMorphisms",
+              "IsEqualForMorphismsOnMor",
+              "IsEqualToIdentityMorphism",
+              "IsEqualToZeroMorphism",
               "IsEqualForCacheForObjects",
               "IsEqualForCacheForMorphisms",
-              "IsEqualForMorphismsOnMor",
               "MultiplyWithElementOfCommutativeRingForMorphisms",
               "FiberProductEmbeddingInDirectSum", ## TODO: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
               ];
@@ -438,12 +500,6 @@ InstallMethod( LazyCategory,
         fi;
         
     od;
-    
-    if HasCommutativeRingOfLinearCategory( C ) then
-        commutative_ring := CommutativeRingOfLinearCategory( C );
-    else
-        commutative_ring := fail;
-    fi;
     
     properties := ListKnownCategoricalProperties( C );
     
@@ -474,20 +530,50 @@ InstallMethod( LazyCategory,
     
     properties := Filtered( properties, p -> ValueGlobal( p )( C ) );
     
-    D := CategoryConstructor( :
-                 name := name,
-                 category_as_first_argument := true,
-                 category_filter := IsLazyCategory,
-                 category_object_filter := IsObjectInLazyCategory,
-                 category_morphism_filter := IsMorphismInLazyCategory,
-                 commutative_ring := commutative_ring,
-                 properties := properties,
-                 list_of_operations_to_install := list_of_operations_to_install,
-                 create_func_bool := create_func_bool,
-                 create_func_object := create_func_object,
-                 create_func_morphism := create_func_morphism,
-                 create_func_universal_morphism := create_func_universal_morphism
-                 );
+    if IsBound( C!.supports_empty_limits ) then
+        supports_empty_limits := C!.supports_empty_limits;
+    else
+        supports_empty_limits := false;
+    fi;
+    
+    category_constructor_options :=
+      rec( name := name,
+           category_filter := IsLazyCategory,
+           category_object_filter := IsObjectInLazyCategory,
+           category_morphism_filter := IsMorphismInLazyCategory,
+           properties := properties,
+           list_of_operations_to_install := list_of_operations_to_install,
+           supports_empty_limits := supports_empty_limits,
+           underlying_category_getter_string := "UnderlyingCategory",
+           underlying_object_getter_string := "EvaluatedCell",
+           underlying_morphism_getter_string := "EvaluatedCell",
+           top_object_getter_string := "AsObjectInLazyCategory",
+           top_morphism_getter_string := "AsMorphismInLazyCategory",
+           ## these two operations make no sense for LazyCategory as we do not descend to the underlying category in the CAP operations, but rather in EvaluatedCell
+           #generic_output_source_getter_string :=,
+           #generic_output_range_getter_string :=,
+           create_func_bool := "default",
+           create_func_object := create_func_object,
+           create_func_object_or_fail := create_func_object_or_fail,
+           create_func_morphism := create_func_morphism,
+           create_func_morphism_or_fail := create_func_morphism_or_fail,
+           create_func_list_of_objects := create_func_list_of_objects,
+           );
+    
+    if HasCommutativeRingOfLinearCategory( C ) then
+        category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( C );
+    fi;
+    
+    D := CategoryConstructor( category_constructor_options );
+    
+    SetUnderlyingCategory( D, C );
+    
+    ##
+    D!.compiler_hints :=
+      rec( category_attribute_names :=
+           [ "UnderlyingCategory",
+             ],
+           );
     
     optimize := ValueOption( "optimize" );
     
@@ -530,13 +616,14 @@ InstallMethod( LazyCategory,
         if CanCompute( C, "DirectSum" ) then
             
             AddDirectSum( D,
-              function( D, arg... )
+              function( D, diagram )
                 
-                if Length( arg[1] ) = 1 and IsCapCategoryObject( arg[1][1] ) then
-                    return arg[1][1];
+                ## Logic
+                if Length( diagram ) = 1 and IsCapCategoryObject( diagram[1] ) then
+                    return diagram[1];
                 fi;
                 
-                return AsObjectInLazyCategory( D, "DirectSum", arg );
+                return AsObjectInLazyCategory( D, "DirectSum", [ D, diagram ] );
                 
             end );
             
@@ -648,8 +735,6 @@ InstallMethod( LazyCategory,
         
     fi;
     
-    SetUnderlyingCategory( D, C );
-    
     show_evaluation := IsIdenticalObj( ValueOption( "show_evaluation" ), true );
     
     D!.show_evaluation := show_evaluation;
@@ -678,6 +763,10 @@ InstallMethod( LazyCategory,
             else
                 return IsEqualForObjects( C, EvaluatedCell( a ), EvaluatedCell( b ) );
             fi;
+        elif HasGenesisOfCellArguments( a ) and Length( GenesisOfCellArguments( a ) ) = 1 and IsIdenticalObj( GenesisOfCellArguments( a )[1], D ) then
+            return IsEqualForObjects( C, _EvaluationOfCell( a ), EvaluatedCell( b ) );
+        elif HasGenesisOfCellArguments( b ) and Length( GenesisOfCellArguments( b ) ) = 1 and IsIdenticalObj( GenesisOfCellArguments( b )[1], D ) then
+            return IsEqualForObjects( C, EvaluatedCell( a ), _EvaluationOfCell( b ) );
         fi;
         
         return false;
@@ -1154,10 +1243,17 @@ InstallMethod( Display,
         [ IsCellInLazyCategory and HasGenesisOfCellOperation and HasGenesisOfCellArguments ],
         
   function( c )
+    local cell_arguments;
+    
+    cell_arguments := GenesisOfCellArguments( c );
+    
+    if Length( cell_arguments ) > 1 and IsLazyCategory( cell_arguments[1] ) then
+        cell_arguments := cell_arguments{[ 2 .. Length( cell_arguments ) ]};
+    fi;
     
     Print( Concatenation( Concatenation(
             [ GenesisOfCellOperation( c ), "( " ],
-            [ JoinStringsWithSeparator( List( GenesisOfCellArguments( c ), StringView ), ", " ) ],
+            [ JoinStringsWithSeparator( List( cell_arguments, StringView ), ", " ) ],
             [ " )\n" ]
             ) ) );
     
