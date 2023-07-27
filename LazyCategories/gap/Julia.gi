@@ -7,7 +7,7 @@
 ##
 InstallOtherMethod( SetLabel,
         "for a lazy category cell and a julia object",
-        [ IsLazyCapCategoryCell, IsJuliaObject ],
+        [ IsCellInLazyCategory, IsJuliaObject ],
 
   function( c, str )
     
@@ -17,8 +17,8 @@ end );
 
 ##
 InstallOtherMethod( Visualize,
-        "for a cell in a lazy CAP category",
-        [ IsLazyCapCategoryCell ],
+        "for a cell in a lazy category",
+        [ IsCellInLazyCategory ],
         
   function( c )
     

@@ -21,24 +21,24 @@ DeclareInfoClass( "InfoLazyCategory" );
 ####################################
 
 #! @Description
-#!  The &GAP; category of a lazy CAP category.
-DeclareCategory( "IsLazyCapCategory",
+#!  The &GAP; category of a lazy category.
+DeclareCategory( "IsLazyCategory",
         IsCapCategory );
 
 #! @Description
-#!  The &GAP; category of cells in a lazy CAP category.
-DeclareCategory( "IsLazyCapCategoryCell",
+#!  The &GAP; category of cells in a lazy category.
+DeclareCategory( "IsCellInLazyCategory",
         IsCapCategoryCell );
 
 #! @Description
-#!  The &GAP; category of objects in a lazy CAP category.
-DeclareCategory( "IsLazyCapCategoryObject",
-        IsLazyCapCategoryCell and IsCapCategoryObject );
+#!  The &GAP; category of objects in a lazy category.
+DeclareCategory( "IsObjectInLazyCategory",
+        IsCellInLazyCategory and IsCapCategoryObject );
 
 #! @Description
-#!  The &GAP; category of morphisms in a lazy CAP category.
-DeclareCategory( "IsLazyCapCategoryMorphism",
-        IsLazyCapCategoryCell and IsCapCategoryMorphism );
+#!  The &GAP; category of morphisms in a lazy category.
+DeclareCategory( "IsMorphismInLazyCategory",
+        IsCellInLazyCategory and IsCapCategoryMorphism );
 
 ####################################
 #
@@ -57,25 +57,25 @@ DeclareGlobalVariable( "RECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS" );
 
 #!
 DeclareAttribute( "UnderlyingCategory",
-        IsLazyCapCategory );
+        IsLazyCategory );
 
 #!
 DeclareAttribute( "GenesisOfCellOperation",
-        IsLazyCapCategoryCell );
+        IsCellInLazyCategory );
 #!
 DeclareAttribute( "GenesisOfCellArguments",
-        IsLazyCapCategoryCell );
+        IsCellInLazyCategory );
 #!
 DeclareAttribute( "ListOfEvaluationNodes",
-        IsLazyCapCategoryCell );
+        IsCellInLazyCategory );
 
 #!
 DeclareAttribute( "DigraphOfEvaluation",
-        IsLazyCapCategoryCell );
+        IsCellInLazyCategory );
 
 #!
 DeclareAttribute( "EvaluatedCell",
-        IsLazyCapCategoryCell );
+        IsCellInLazyCategory );
 
 ####################################
 #
@@ -84,23 +84,23 @@ DeclareAttribute( "EvaluatedCell",
 ####################################
 
 DeclareOperation( "AsObjectInLazyCategory",
-                  [ IsLazyCapCategory, IsCapCategoryObject ] );
+                  [ IsLazyCategory, IsCapCategoryObject ] );
 
 DeclareOperation( "AsObjectInLazyCategory",
-                  [ IsLazyCapCategory, IsString, IsList ] );
+                  [ IsLazyCategory, IsString, IsList ] );
 
 DeclareOperation( "AsMorphismInLazyCategory",
-                  [ IsLazyCapCategory, IsCapCategoryMorphism ] );
+                  [ IsLazyCategory, IsCapCategoryMorphism ] );
 
 DeclareOperation( "AsMorphismInLazyCategory",
-                  [ IsLazyCapCategoryObject, IsCapCategoryMorphism, IsLazyCapCategoryObject ] );
+                  [ IsObjectInLazyCategory, IsCapCategoryMorphism, IsObjectInLazyCategory ] );
 
 DeclareOperation( "AsMorphismInLazyCategory",
-                  [ IsLazyCapCategoryObject, IsString, IsList, IsLazyCapCategoryObject ] );
+                  [ IsObjectInLazyCategory, IsString, IsList, IsObjectInLazyCategory ] );
 
 #!
 DeclareOperation( "\/",
-                [ IsCapCategoryCell, IsLazyCapCategory ] );
+                [ IsCapCategoryCell, IsLazyCategory ] );
 
 #!
 DeclareOperation( "LazyCategory",
@@ -118,7 +118,7 @@ DeclareOperation( "EmbeddingFunctorOfUnderlyingCategory",
 
 #!
 DeclareOperation( "SetLabel",
-                [ IsLazyCapCategoryCell, IsString ] );
+                [ IsCellInLazyCategory, IsString ] );
 
 #!
 DeclareOperation( "GetLabel",
@@ -130,7 +130,7 @@ DeclareOperation( "IsEqualForCells",
 
 #!
 DeclareOperation( "Visualize",
-                  [ IsLazyCapCategoryCell ] );
+                  [ IsCellInLazyCategory ] );
 
 ####################################
 #
