@@ -6,8 +6,8 @@
 
 ##
 InstallMethod( ListOfEvaluationNodes,
-        "for a cell in a lazy CAP category",
-        [ IsLazyCapCategoryCell ],
+        "for a cell in a lazy category",
+        [ IsCellInLazyCategory ],
 
   function( c )
     local nodes, queue, add_to_nodes, add_to_queue, children, D;
@@ -42,7 +42,7 @@ InstallMethod( ListOfEvaluationNodes,
             
             children := Flat( children );
             
-            children := Filtered( children, IsLazyCapCategoryCell );
+            children := Filtered( children, IsCellInLazyCategory );
             
             Perform( children, add_to_queue );
             
@@ -62,8 +62,8 @@ end );
 
 ##
 InstallMethod( DigraphOfEvaluation,
-        "for a cell in a lazy CAP category",
-        [ IsLazyCapCategoryCell ],
+        "for a cell in a lazy category",
+        [ IsCellInLazyCategory ],
 
   function( c )
     local nodes, D;
@@ -118,8 +118,8 @@ end );
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
-        "for a cell in a lazy CAP category",
-        [ IsLazyCapCategoryCell ],
+        "for a cell in a lazy category",
+        [ IsCellInLazyCategory ],
         
   function( c )
     local D, str, i, j, list_of_children, children, l;
@@ -163,8 +163,8 @@ end );
 
 ##
 InstallMethod( Visualize,
-        "for a cell in a lazy CAP category",
-        [ IsLazyCapCategoryCell ],
+        "for a cell in a lazy category",
+        [ IsCellInLazyCategory ],
         
   function( c )
     

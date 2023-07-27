@@ -1114,8 +1114,8 @@ InstallMethod( IntrinsicCategory,
         
   function( C )
     local name, filter_obj, filter_mor,
-          list_of_operations_to_install, func, pos, skip, supports_empty_limits,
-          properties, create_func_morphism, create_func_morphism_or_fail,
+          list_of_operations_to_install, func, pos, skip, properties, supports_empty_limits,
+          create_func_morphism, create_func_morphism_or_fail,
           category_constructor_options, IC, todo_func, strict, filter_end,
           hom_filter_obj, hom_filter_mor,  hom_filter_end, hom_todo_func, H;
     
@@ -1159,12 +1159,6 @@ InstallMethod( IntrinsicCategory,
         
     od;
     
-    if IsBound( C!.supports_empty_limits ) then
-        supports_empty_limits := C!.supports_empty_limits;
-    else
-        supports_empty_limits := false;
-    fi;
-    
     properties := Set( Filtered( Concatenation( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST ), x -> x <> fail ) );
     
     ## we cannot guarantee skeletality
@@ -1176,6 +1170,12 @@ InstallMethod( IntrinsicCategory,
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
     properties := Filtered( properties, p -> ValueGlobal( p )( C ) );
+    
+    if IsBound( C!.supports_empty_limits ) then
+        supports_empty_limits := C!.supports_empty_limits;
+    else
+        supports_empty_limits := false;
+    fi;
     
     create_func_morphism :=
       function( name, IC )

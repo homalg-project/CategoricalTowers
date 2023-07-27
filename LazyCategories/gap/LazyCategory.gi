@@ -9,8 +9,8 @@ SetInfoLevel( InfoLazyCategory, 1 );
 
 ##
 InstallMethod( EvaluatedCell,
-        "for a cell in a lazy CAP category",
-        [ IsLazyCapCategoryCell ],
+        "for a cell in a lazy category",
+        [ IsCellInLazyCategory ],
 
   function( c )
     local C, show, count, result;
@@ -65,7 +65,7 @@ InstallOtherMethod( EvaluatedCell,
 ##
 InstallMethod( SetLabel,
         "for a lazy category cell and a string",
-        [ IsLazyCapCategoryCell, IsString ],
+        [ IsCellInLazyCategory, IsString ],
 
   function( c, str )
     
@@ -161,7 +161,7 @@ end );
 ##
 InstallMethod( GetLabel,
         "for a CAP category object",
-        [ IsLazyCapCategoryCell ],
+        [ IsCellInLazyCategory ],
         
   function( c )
     local label;
@@ -218,8 +218,8 @@ InstallMethod( IsEqualForCells,
 
 ##
 InstallMethodWithCache( AsObjectInLazyCategory,
-        "for a lazy CAP category and a CAP object",
-        [ IsLazyCapCategory, IsCapCategoryObject ],
+        "for a lazy category and a CAP object",
+        [ IsLazyCategory, IsCapCategoryObject ],
         
   function( D, object )
     
@@ -236,8 +236,8 @@ end );
 
 ##
 InstallMethod( AsObjectInLazyCategory,
-        "for a lazy CAP category, a string, and a list",
-        [ IsLazyCapCategory, IsString and IsStringRep, IsList ],
+        "for a lazy category, a string, and a list",
+        [ IsLazyCategory, IsString and IsStringRep, IsList ],
         
   function( D, name_of_operation, L )
     
@@ -250,7 +250,7 @@ end );
 ##
 InstallMethod( AsMorphismInLazyCategory,
         "for two CAP objects in a lazy category and a CAP morphism",
-        [ IsLazyCapCategoryObject, IsCapCategoryMorphism, IsLazyCapCategoryObject ],
+        [ IsObjectInLazyCategory, IsCapCategoryMorphism, IsObjectInLazyCategory ],
         
   function( source, morphism, range )
     local D;
@@ -272,8 +272,8 @@ end );
 
 ##
 InstallMethodWithCache( AsMorphismInLazyCategory,
-        "for a lazy CAP category and a CAP morphism",
-        [ IsLazyCapCategory, IsCapCategoryMorphism ],
+        "for a lazy category and a CAP morphism",
+        [ IsLazyCategory, IsCapCategoryMorphism ],
         
   function( D, morphism )
     
@@ -287,7 +287,7 @@ end );
 ##
 InstallMethod( AsMorphismInLazyCategory,
         "for two CAP objects in a lazy category, a string, and a list",
-        [ IsLazyCapCategoryObject, IsString and IsStringRep, IsList, IsLazyCapCategoryObject ],
+        [ IsObjectInLazyCategory, IsString and IsStringRep, IsList, IsObjectInLazyCategory ],
         
   function( source, name_of_operation, L, range )
     local D;
@@ -477,9 +477,9 @@ InstallMethod( LazyCategory,
     D := CategoryConstructor( :
                  name := name,
                  category_as_first_argument := true,
-                 category_filter := IsLazyCapCategory,
-                 category_object_filter := IsLazyCapCategoryObject,
-                 category_morphism_filter := IsLazyCapCategoryMorphism,
+                 category_filter := IsLazyCategory,
+                 category_object_filter := IsObjectInLazyCategory,
+                 category_morphism_filter := IsMorphismInLazyCategory,
                  commutative_ring := commutative_ring,
                  properties := properties,
                  list_of_operations_to_install := list_of_operations_to_install,
@@ -830,7 +830,7 @@ InstallMethod( LazyCategory,
             DeactivateCachingOfCategory( HC );
         fi;
         
-        if lazify_range_of_hom_structure and not IsLazyCapCategory( HC ) then
+        if lazify_range_of_hom_structure and not IsLazyCategory( HC ) then
             
             HC := LazyCategory( HC : lazify_range_of_hom_structure := false );
             
@@ -942,8 +942,8 @@ end );
 
 ##
 InstallOtherMethod( \/,
-        "for an object and a lazy CAP category",
-        [ IsObject, IsLazyCapCategory ],
+        "for an object and a lazy category",
+        [ IsObject, IsLazyCategory ],
         
   function( data, C )
     
@@ -953,8 +953,8 @@ end );
 
 ##
 InstallOtherMethod( \/,
-        "for a CAP category object and a lazy CAP category",
-         [ IsCapCategoryObject, IsLazyCapCategory ],
+        "for a CAP category object and a lazy category",
+         [ IsCapCategoryObject, IsLazyCategory ],
         
   function( object, cat )
     
@@ -968,8 +968,8 @@ end );
 
 ##
 InstallOtherMethod( \/,
-        "for a CAP category morphism and a lazy CAP category",
-        [ IsCapCategoryMorphism, IsLazyCapCategory ],
+        "for a CAP category morphism and a lazy category",
+        [ IsCapCategoryMorphism, IsLazyCategory ],
         
   function( morphism, cat )
     
@@ -984,7 +984,7 @@ end );
 ##
 InstallMethod( \.,
         "for a lazy category and a positive integer",
-        [ IsLazyCapCategory, IsPosInt ],
+        [ IsLazyCategory, IsPosInt ],
         
   function( lazy_cat, string_as_int )
     local name, C;
@@ -1000,7 +1000,7 @@ end );
 ##
 InstallMethod( EmbeddingFunctorOfUnderlyingCategory,
         "for a lazy category",
-        [ IsLazyCapCategory ],
+        [ IsLazyCategory ],
         
   function( lazy_cat )
     local E;
@@ -1136,7 +1136,7 @@ InstallGlobalFunction( PositionsOfChildrenOfALazyCell,
     
     children := Flat( children );
     
-    children := Filtered( children, IsLazyCapCategoryCell );
+    children := Filtered( children, IsCellInLazyCategory );
     
     return List( children, child -> PositionProperty( nodes, a -> AreEqualForLazyCells( child, a ) ) );
     
@@ -1150,8 +1150,8 @@ end );
 
 ##
 InstallMethod( Display,
-        "for a cell in a lazy CAP category",
-        [ IsLazyCapCategoryCell and HasGenesisOfCellOperation and HasGenesisOfCellArguments ],
+        "for a cell in a lazy category",
+        [ IsCellInLazyCategory and HasGenesisOfCellOperation and HasGenesisOfCellArguments ],
         
   function( c )
     
@@ -1165,8 +1165,8 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        "for an object in a lazy CAP category",
-        [ IsLazyCapCategoryObject and HasEvaluatedCell ],
+        "for an object in a lazy category",
+        [ IsObjectInLazyCategory and HasEvaluatedCell ],
         
   function( a )
     
@@ -1176,8 +1176,8 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        "for a morphism in a lazy CAP category",
-        [ IsLazyCapCategoryMorphism and HasEvaluatedCell ],
+        "for a morphism in a lazy category",
+        [ IsMorphismInLazyCategory and HasEvaluatedCell ],
         
   function( phi )
     
@@ -1187,8 +1187,8 @@ end );
 
 ##
 InstallMethod( Display,
-        "for an object in a lazy CAP category",
-        [ IsLazyCapCategoryObject and HasEvaluatedCell ],
+        "for an object in a lazy category",
+        [ IsObjectInLazyCategory and HasEvaluatedCell ],
         
   function( a )
     
@@ -1200,8 +1200,8 @@ end );
 
 ##
 InstallMethod( Display,
-        "for a morphism in a lazy CAP category",
-        [ IsLazyCapCategoryMorphism and HasEvaluatedCell ],
+        "for a morphism in a lazy category",
+        [ IsMorphismInLazyCategory and HasEvaluatedCell ],
         
   function( phi )
     
