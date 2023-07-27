@@ -148,3 +148,97 @@ InstallMethod( ExtendFunctorToStrictAdditiveClosure,
     return UF;
     
 end );
+
+##
+InstallOtherMethodForCompilerForCAP( TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure,
+        "for a category of rows, an additive closure category, an object in the additive category, and an object in the category of rows",
+        [ IsCategoryOfRows,
+          IsAdditiveClosureCategory and HasRangeCategoryOfHomomorphismStructure,
+          IsCapCategoryObject, IsCategoryOfRowsObject ],
+        
+  function( H, UL, a, h )
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( a ), UnderlyingCategory( UL ) ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( h ), H ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( UL ), H ) );
+    
+    return ObjectConstructor( UL, ListWithIdenticalEntries( ObjectDatum( H, h ), a ) );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure,
+        "for a category of rows, an additive closure category, three objects in the additive category, and a morphism in the category of rows",
+        [ IsCategoryOfRows,
+          IsAdditiveClosureCategory and HasRangeCategoryOfHomomorphismStructure,
+          IsCapCategoryObject, IsCapCategoryObject, IsCategoryOfRowsMorphism, IsCapCategoryObject ],
+        
+  function( H, UL, source, a, nu, range )
+    local L, id_a, s, t, nu_matrix;
+    
+    L := UnderlyingCategory( UL );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( a ), L ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( nu ), H ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( UL ), H ) );
+    
+    id_a := IdentityMorphism( L, a );
+    
+    s := ObjectDatum( H, Source( nu ) );
+    t := ObjectDatum( H, Range( nu ) );
+    
+    nu_matrix := MorphismDatum( H, nu );
+    
+    return MorphismConstructor( UL,
+                   source,
+                   List( [ 1 .. s ], i ->
+                         List( [ 1 .. t ], j ->
+                               MultiplyWithElementOfCommutativeRingForMorphisms( L, nu_matrix[i, j], id_a ) ) ),
+                   range );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure,
+        "for a category of rows, an additive closure category, two objects and a morphism in the additive category, and an object in the category of rows",
+        [ IsCategoryOfRows,
+          IsAdditiveClosureCategory and HasRangeCategoryOfHomomorphismStructure,
+          IsCapCategoryObject, IsCapCategoryMorphism, IsCategoryOfRowsObject, IsCapCategoryObject ],
+        
+  function( H, UL, source, phi, h, range )
+    local l, Uphi;
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( phi ), UnderlyingCategory( UL ) ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( h ), H ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( UL ), H ) );
+    
+    l := ObjectDatum( H, h );
+    
+    Uphi := MorphismConstructor( UL,
+                   ObjectConstructor( UL, [ Source( phi ) ] ),
+                   [ [ phi ] ],
+                   ObjectConstructor( UL, [ Range( phi ) ] ) );
+    
+    return DirectSumFunctorialWithGivenDirectSums( UL,
+                   source,
+                   ListWithIdenticalEntries( l, Source( Uphi ) ),
+                   ListWithIdenticalEntries( l, Uphi ),
+                   ListWithIdenticalEntries( l, Range( Uphi ) ),
+                   range );
+    
+end );
