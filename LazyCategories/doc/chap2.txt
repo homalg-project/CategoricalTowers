@@ -4,33 +4,33 @@
   
   [1X2.1 [33X[0;0YGAP categories[133X[101X
   
-  [1X2.1-1 IsLazyCapCategory[101X
+  [1X2.1-1 IsLazyCategory[101X
   
-  [33X[1;0Y[29X[2XIsLazyCapCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsLazyCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of a lazy CAP category.[133X
+  [33X[0;0YThe [5XGAP[105X category of a lazy category.[133X
   
-  [1X2.1-2 IsLazyCapCategoryCell[101X
+  [1X2.1-2 IsCellInLazyCategory[101X
   
-  [33X[1;0Y[29X[2XIsLazyCapCategoryCell[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInLazyCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of cells in a lazy CAP category.[133X
+  [33X[0;0YThe [5XGAP[105X category of cells in a lazy category.[133X
   
-  [1X2.1-3 IsLazyCapCategoryObject[101X
+  [1X2.1-3 IsObjectInLazyCategory[101X
   
-  [33X[1;0Y[29X[2XIsLazyCapCategoryObject[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInLazyCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of objects in a lazy CAP category.[133X
+  [33X[0;0YThe [5XGAP[105X category of objects in a lazy category.[133X
   
-  [1X2.1-4 IsLazyCapCategoryMorphism[101X
+  [1X2.1-4 IsMorphismInLazyCategory[101X
   
-  [33X[1;0Y[29X[2XIsLazyCapCategoryMorphism[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInLazyCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of morphisms in a lazy CAP category.[133X
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a lazy category.[133X
   
   
   [1X2.2 [33X[0;0YGlobal variables[133X[101X
