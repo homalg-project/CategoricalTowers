@@ -77,6 +77,7 @@ InstallOtherMethodForCompilerForCAP( EmbeddingOfRelativePowerObject,
     
 end );
 
+##
 InstallMethod( EmbeddingOfRelativePowerObject,
         "for a morphism",
         [ IsCapCategoryMorphism ],
