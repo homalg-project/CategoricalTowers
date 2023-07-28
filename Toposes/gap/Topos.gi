@@ -9,17 +9,16 @@ InstallTrueMethod( IsFiniteCocompleteCategory, IsElementaryTopos );
 InstallTrueMethod( IsBicartesianClosedCategory, IsElementaryTopos );
 
 ## MacLane-Moerdijk, Proof of Thm IV.7.1, page 192, diagram (5)
-InstallOtherMethodForCompilerForCAP( EmbeddingOfRelativePowerObject,
-        "for a category and a morphism",
-        [ IsCapCategory, IsCapCategoryMorphism ],
+InstallOtherMethodForCompilerForCAP( IntersectWithPreimagesWithGivenObjects,
+        "for a category, two objects, and a morphism",
+        [ IsCapCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ],
         
- function( C, f )
-    local A, B, PA, PB, f_, PA_PA, PAxPA, PA_B, PAxB, n, pi_1, e;
+ function( C, PAxB, f, PA )
+    local A, B, PB, f_, PA_PA, PAxPA, PA_B, n, pi_1, e;
     
     A := Source( f );
     B := Range( f );
     
-    PA := PowerObject( C, A );
     PB := PowerObject( C, B );
     
     ## the preimage of singletons:
@@ -34,29 +33,63 @@ InstallOtherMethodForCompilerForCAP( EmbeddingOfRelativePowerObject,
     PAxPA := DirectProduct( C, PA_PA );
     
     PA_B := [ PA, B ];
+    
+    ## n: PA × B → PA, (T, b) ↦ T ∩ f⁻¹(b)
+    return PreCompose( C,
+                   ## 1_PA × ({⋅}_B Pf): PA × B → PA × PA, (T, b) ↦ (T, f⁻¹(b))
+                   DirectProductFunctorialWithGivenDirectProducts( C,
+                           ## PA × B
+                           PAxB,
+                            ## [ PA, B ]
+                           PA_B,
+                           [ ## 1_PA
+                             IdentityMorphism( C, PA ),
+                             ## {⋅}_B Pf: B → PA
+                             f_ ],
+                           ## [ PA, PA ]
+                           PA_PA,
+                           ## PA × PA
+                           PAxPA ),
+                   ## ∧: PA × PA → PA, (T, T') ↦ T ∩ T'
+                   RelativeTruthMorphismOfAndWithGivenObjects( C,
+                           PAxPA,
+                           A,
+                           PA ) );
+    
+end );
+
+##
+InstallMethod( IntersectWithPreimagesWithGivenObjects,
+        "for two objects and a morphism",
+        [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ],
+        
+ function( PAxB, f, PA )
+    
+    return IntersectWithPreimagesWithGivenObjects( CapCategory( f ), PAxB, f, PA );
+    
+end );
+
+## MacLane-Moerdijk, Proof of Thm IV.7.1, page 192, diagram (5)
+InstallOtherMethodForCompilerForCAP( EmbeddingOfRelativePowerObject,
+        "for a category and a morphism",
+        [ IsCapCategory, IsCapCategoryMorphism ],
+        
+ function( C, f )
+    local A, B, PA, PA_B, PAxB, n, pi_1, e;
+    
+    A := Source( f );
+    B := Range( f );
+    
+    PA := PowerObject( C, A );
+    
+    PA_B := [ PA, B ];
     PAxB := DirectProduct( C, PA_B );
     
     ## n: PA × B → PA, (T, b) ↦ T ∩ f⁻¹(b)
-    n := PreCompose( C,
-                 ## 1_PA × ({⋅}_B Pf): PA × B → PA × PA, (T, b) ↦ (T, f⁻¹(b))
-                 DirectProductFunctorialWithGivenDirectProducts( C,
-                         ## PA × B
-                         PAxB,
-                         ## [ PA, B ]
-                         PA_B,
-                         [ ## 1_PA
-                           IdentityMorphism( C, PA ),
-                           ## {⋅}_B Pf: B → PA
-                           f_ ],
-                         ## [ PA, PA ]
-                         PA_PA,
-                         ## PA × PA
-                         PAxPA ),
-                 ## ∧: PA × PA → PA, (T, T') ↦ T ∩ T'
-                 RelativeTruthMorphismOfAndWithGivenObjects( C,
-                         PAxPA,
-                         A,
-                         PA ) );
+    n := IntersectWithPreimagesWithGivenObjects( C,
+                 PAxB,
+                 f,
+                 PA );
     
     ## π₁: PA × B → PA, (T, b) ↦ T
     pi_1 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( C,

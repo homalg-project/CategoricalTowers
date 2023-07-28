@@ -377,6 +377,15 @@ DeclareOperation( "IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects",
         [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
+#!  The input is the direct product <A>PAxB</A> = <A>PA</A> $\times B$, a morphism <A>f</A>: $A \to B$,
+#!  and the power object <A>PA</A> = <C>PowerObject</C>($A$).
+#!  The output is the morphism <A>PAxB</A> $\rightarrow$ <A>PA</A>, $(T, b) \mapsto T \cap f^{-1}(b)$.
+#! @Arguments PAxB, f, PA
+#! @Returns a morphism $\mathrm{Hom}( PAxB, PA )$
+DeclareOperation( "IntersectWithPreimagesWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
 #!  The input is a morphism <A>f</A>: $a \to b$.
 #!  The output is the embedding of the relative power object $P_f \hookrightarrow Pa \times b$,
 #!  where $Pa$ = <C>PowerObject</C>($a$).
