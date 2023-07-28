@@ -664,23 +664,23 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         ##
         AddPowerObject( Slice_over_B,
           function( cat, M )
-            local C, B, f, S, e, pi_2;
+            local C, B, f, A, e, pi_2;
             
             C := AmbientCategory( cat );
             
             B := BaseObject( cat );
             
-            ## f: S → B
+            ## f: A → B
             f := UnderlyingMorphism( M );
             
-            S := Source( f );
+            A := Source( f );
             
-            ## e: P_f ↪ PS × B
+            ## e: P_f ↪ PA × B
             e := EmbeddingOfRelativePowerObject( C, f );
             
-            ## π₂: PS × B → PS
+            ## π₂: PA × B → PA
             pi_2 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( C,
-                            [ PowerObject( S ), B ],
+                            [ PowerObject( A ), B ],
                             2,
                             Range( e ) );
             
