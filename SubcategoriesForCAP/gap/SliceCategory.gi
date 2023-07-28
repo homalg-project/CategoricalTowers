@@ -745,6 +745,61 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
         end );
         
+        ##
+        AddSingletonMorphismWithGivenPowerObject( Slice_over_B,
+          function( cat, M, PM )
+            local C, B, f, A, PA, PA_B, PAxB, P_Bf, e, n, pi_1, sing_f;
+            
+            C := AmbientCategory( cat );
+            
+            B := BaseObject( cat );
+            
+            ## f: A → B
+            f := UnderlyingMorphism( M );
+            
+            A := Source( f );
+            PA := PowerObject( C, A );
+            
+            PA_B := [ PA, B ];
+            
+            PAxB := DirectProduct( C, PA_B );
+            P_Bf := Source( UnderlyingMorphism( PM ) );
+            
+            ## e: P_f ↪ PA × B
+            e := EmbeddingOfRelativePowerObject( C, f );
+            
+            ## n: PA × B → PA, (T, b) ↦ T ∩ f⁻¹(b)
+            n := IntersectWithPreimagesWithGivenObjects( C,
+                         PAxB,
+                         f,
+                         PA );
+            
+            ## π₁: PA × B → PA, (T, b) ↦ T
+            pi_1 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( C,
+                            PA_B,
+                            1,
+                            PAxB );
+            
+            sing_f := UniversalMorphismIntoEqualizerWithGivenEqualizer( C,
+                              PAxB,
+                              [ n, pi_1 ],
+                              A,
+                              UniversalMorphismIntoDirectProductWithGivenDirectProduct( C,
+                                      PA_B,
+                                      A,
+                                      [ SingletonMorphismWithGivenPowerObject( A, PA ),
+                                        f ],
+                                      PAxB ),
+                              P_Bf );
+            
+            ## A → P_B(f)
+            return MorphismConstructor( cat,
+                           M,
+                           sing_f,
+                           PM );
+            
+        end );
+        
     fi;
     
     if IsIdenticalObj( over_tensor_unit, true ) then
