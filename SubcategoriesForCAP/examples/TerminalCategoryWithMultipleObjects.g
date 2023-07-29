@@ -1,24 +1,37 @@
 #! @Chunk TerminalCategoryWithMultipleObjects
 
-# the following packages introduce more CAP operations
+# the following packages introduce and use more CAP operations
 # which are not used below; still they make the example file
 # useful for further testing
-LoadPackage( "Locales" );
-LoadPackage( "SubcategoriesForCAP" );
 
 #! @Example
+LoadPackage( "Locales", false );
+#! true
+LoadPackage( "SubcategoriesForCAP", false );
+#! true
 T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects( )
 InfoOfInstalledOperationsOfCategory( T );
-#! 116 primitive operations were used to derive 471 operations for this category
-#! which constructively
+#! 92 primitive operations were used to derive 546 operations for this category
+#! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
-#! * IsCodistributiveCocartesianCategory
-#! * IsBicartesianCoclosedCategory
+#! * IsClosedMonoidalProset
+#! * IsCoclosedMonoidalProset
+#! * IsAbelianCategoryWithEnoughInjectives
+#! * IsAbelianCategoryWithEnoughProjectives
+#! * IsBooleanAlgebroid
+#! * IsElementaryTopos
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
-#! * IsElementaryTopos
+#! and furthermore mathematically
+#! * IsDiscreteCategory
+#! * IsLocallyOfFiniteInjectiveDimension
+#! * IsLocallyOfFiniteProjectiveDimension
+#! * IsStableProset
+#! * IsTerminalCategory
 a := "a" / T;
 #! <An object in TerminalCategoryWithMultipleObjects( )>
 Display( a );
