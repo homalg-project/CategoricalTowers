@@ -3,7 +3,10 @@
 #! We type-check DualOverTensorUnit via LazyCategories.
 
 #! @Example
-LoadPackage( "LazyCategories", false );;
+LoadPackage( "SubcategoriesForCAP", false );
+#! true
+LoadPackage( "LazyCategories", false );
+#! true
 T := TerminalCategoryWithMultipleObjects();
 #! TerminalCategoryWithMultipleObjects( )
 L := LazyCategory( T : primitive_operations := true, optimize := 0 );
