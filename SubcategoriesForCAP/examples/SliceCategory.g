@@ -1,8 +1,10 @@
 #! @Chunk SliceCategory
 
-LoadPackage( "SubcategoriesForCAP" );
 
 #! @Example
+#! #@if ValueOption( "no_precompiled_code" ) <> true
+LoadPackage( "SubcategoriesForCAP" );
+#! true
 LoadPackage( "FinSetsForCAP", ">= 2022.05-01" );
 #! true
 B := SubobjectClassifier( SkeletalFinSets );
@@ -112,6 +114,14 @@ Display( Po1 );
 #! { 0,..., 5 } ⱶ[ 0, 0, 0, 0, 1, 1 ]→ { 0, 1 }
 #! 
 #! An object in the slice category given by the above data
+sing_o1 :=  SingletonMorphism( o1 );
+#! A morphism in the slice category given by: |3| → |6|
+Display( sing_o1 );
+#! { 0, 1, 2 } ⱶ[ 1, 5, 2 ]→ { 0,..., 5 }
+#! 
+#! A morphism in the slice category given by the above data
+IsWellDefined( sing_o1 );
+#! true
 Display( o2 );
 #! { 0,..., 3 } ⱶ[ 1, 0, 1, 0 ]→ { 0, 1 }
 #! 
@@ -122,6 +132,14 @@ Display( Po2 );
 #! { 0,..., 7 } ⱶ[ 0, 0, 0, 0, 1, 1, 1, 1 ]→ { 0, 1 }
 #! 
 #! An object in the slice category given by the above data
+sing_o2 :=  SingletonMorphism( o2 );
+#! A morphism in the slice category given by: |4| → |8|
+Display( sing_o2 );
+#! { 0,..., 3 } ⱶ[ 5, 1, 6, 2 ]→ { 0,..., 7 }
+#! 
+#! A morphism in the slice category given by the above data
+IsWellDefined( sing_o2 );
+#! true
 Display( m1 );
 #! { 0, 1, 2 } ⱶ[ 1, 0, 3 ]→ { 0,..., 3 }
 #! 
@@ -146,4 +164,5 @@ Display( Pm2 );
 #! A morphism in the slice category given by the above data
 IsWellDefined( Pm2 );
 #! true
+#! #@fi
 #! @EndExample
