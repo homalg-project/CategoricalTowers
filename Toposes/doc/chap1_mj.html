@@ -77,7 +77,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X826931087E3B0D70">1.5-9 SingletonMorphismWithGivenPowerObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DDD48897DA3DE59">1.5-10 IsomorphismOntoCartesianSquareOfPowerObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7980A7177ECF3D96">1.5-11 IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X839A6DC58037CF41">1.5-12 EmbeddingOfRelativePowerObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X828298987A737065">1.5-12 IntersectWithPreimagesWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X839A6DC58037CF41">1.5-13 EmbeddingOfRelativePowerObject</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X842A71D97DF9B275">1.6 <span class="Heading">Relative truth morphisms</span></a>
 </span>
@@ -582,9 +583,18 @@ true
 
 <p>The arguments are an object the exponential <var class="Arg">Exp_a_Omega2</var> = <code class="code">Exponential</code>( <var class="Arg">a</var>, <code class="code">CartesianSquareOfSubobjectClassifier</code> ), an object <var class="Arg">a</var> in a category <span class="SimpleMath">\(C\)</span>, and the cartesian squre <var class="Arg">PaxPa</var> of the power object <code class="code">PowerObject</code>( <var class="Arg">a</var> ). The output is the isomorphism <span class="SimpleMath">\(Exp\_a\_Omega2 \stackrel{\sim}{\rightarrow} PaxPa\)</span></p>
 
+<p><a id="X828298987A737065" name="X828298987A737065"></a></p>
+
+<h5>1.5-12 IntersectWithPreimagesWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectWithPreimagesWithGivenObjects</code>( <var class="Arg">PAxB</var>, <var class="Arg">f</var>, <var class="Arg">PA</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism <span class="SimpleMath">\(\mathrm{Hom}( PAxB, PA )\)</span></p>
+
+<p>The input is the direct product <var class="Arg">PAxB</var> = <var class="Arg">PA</var> <span class="SimpleMath">\(\times B\)</span>, a morphism <var class="Arg">f</var>: <span class="SimpleMath">\(A \to B\)</span>, and the power object <var class="Arg">PA</var> = <code class="code">PowerObject</code>(<span class="SimpleMath">\(A\)</span>). The output is the morphism <var class="Arg">PAxB</var> <span class="SimpleMath">\(\rightarrow\)</span> <var class="Arg">PA</var>, <span class="SimpleMath">\((T, b) \mapsto T \cap f^{-1}(b)\)</span>.</p>
+
 <p><a id="X839A6DC58037CF41" name="X839A6DC58037CF41"></a></p>
 
-<h5>1.5-12 EmbeddingOfRelativePowerObject</h5>
+<h5>1.5-13 EmbeddingOfRelativePowerObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfRelativePowerObject</code>( <var class="Arg">f</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a monomorphism <span class="SimpleMath">\(\mathrm{Hom}( P_f, Pa \times b )\)</span></p>

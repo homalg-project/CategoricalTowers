@@ -6,10 +6,10 @@
                               [1X Elementary toposes [101X
   
   
-                                   2023.07-04
+                                   2023.07-05
   
   
-                                  12 July 2023
+                                  29 July 2023
   
   
                                 Mohamed Barakat
@@ -99,7 +99,8 @@
       1.5-9 SingletonMorphismWithGivenPowerObject
       1.5-10 IsomorphismOntoCartesianSquareOfPowerObject
       1.5-11 IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects
-      1.5-12 EmbeddingOfRelativePowerObject
+      1.5-12 IntersectWithPreimagesWithGivenObjects
+      1.5-13 EmbeddingOfRelativePowerObject
     1.6 [33X[0;0YRelative truth morphisms[133X
       1.6-1 RelativeTruthMorphismOfTrue
       1.6-2 RelativeTruthMorphismOfTrueWithGivenObjects
