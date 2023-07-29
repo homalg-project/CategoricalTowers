@@ -164,6 +164,9 @@
 
 
 <div class="example"><pre>
+#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP", "&gt;= 2022.05-01" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := SubobjectClassifier( SkeletalFinSets );</span>
@@ -273,6 +276,14 @@ An object in the slice category given by: |6| → |2|
 { 0,..., 5 } ⱶ[ 0, 0, 0, 0, 1, 1 ]→ { 0, 1 }
 
 An object in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sing_o1 :=  SingletonMorphism( o1 );</span>
+A morphism in the slice category given by: |3| → |6|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( sing_o1 );</span>
+{ 0, 1, 2 } ⱶ[ 1, 5, 2 ]→ { 0,..., 5 }
+
+A morphism in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( sing_o1 );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( o2 );</span>
 { 0,..., 3 } ⱶ[ 1, 0, 1, 0 ]→ { 0, 1 }
 
@@ -283,6 +294,14 @@ An object in the slice category given by: |8| → |2|
 { 0,..., 7 } ⱶ[ 0, 0, 0, 0, 1, 1, 1, 1 ]→ { 0, 1 }
 
 An object in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sing_o2 :=  SingletonMorphism( o2 );</span>
+A morphism in the slice category given by: |4| → |8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( sing_o2 );</span>
+{ 0,..., 3 } ⱶ[ 5, 1, 6, 2 ]→ { 0,..., 7 }
+
+A morphism in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( sing_o2 );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( m1 );</span>
 { 0, 1, 2 } ⱶ[ 1, 0, 3 ]→ { 0,..., 3 }
 
@@ -307,6 +326,7 @@ A morphism in the slice category given by: |6| → |8|
 A morphism in the slice category given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Pm2 );</span>
 true
+#@fi
 </pre></div>
 
 <p><a id="X857B7420790B6DEA" name="X857B7420790B6DEA"></a></p>

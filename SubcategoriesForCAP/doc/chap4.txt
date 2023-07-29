@@ -83,6 +83,9 @@
   [1X4.3-1 [33X[0;0YSliceCategory[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2022.05-01" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XB := SubobjectClassifier( SkeletalFinSets );[127X[104X
@@ -192,6 +195,14 @@
     [4X[28X{ 0,..., 5 } ⱶ[ 0, 0, 0, 0, 1, 1 ]→ { 0, 1 }[128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in the slice category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xsing_o1 :=  SingletonMorphism( o1 );[127X[104X
+    [4X[28XA morphism in the slice category given by: |3| → |6|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( sing_o1 );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 1, 5, 2 ]→ { 0,..., 5 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in the slice category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( sing_o1 );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDisplay( o2 );[127X[104X
     [4X[28X{ 0,..., 3 } ⱶ[ 1, 0, 1, 0 ]→ { 0, 1 }[128X[104X
     [4X[28X[128X[104X
@@ -202,6 +213,14 @@
     [4X[28X{ 0,..., 7 } ⱶ[ 0, 0, 0, 0, 1, 1, 1, 1 ]→ { 0, 1 }[128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in the slice category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xsing_o2 :=  SingletonMorphism( o2 );[127X[104X
+    [4X[28XA morphism in the slice category given by: |4| → |8|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( sing_o2 );[127X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 5, 1, 6, 2 ]→ { 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in the slice category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( sing_o2 );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDisplay( m1 );[127X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 1, 0, 3 ]→ { 0,..., 3 }[128X[104X
     [4X[28X[128X[104X
@@ -226,6 +245,7 @@
     [4X[28XA morphism in the slice category given by the above data[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( Pm2 );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
