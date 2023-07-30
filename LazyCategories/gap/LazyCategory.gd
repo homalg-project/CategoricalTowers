@@ -60,19 +60,21 @@ DeclareAttribute( "UnderlyingCategory",
         IsLazyCategory );
 
 #!
-DeclareAttribute( "GenesisOfObject",
-        IsObjectInLazyCategory );
-
-#!
-DeclareAttribute( "GenesisOfMorphism",
-        IsMorphismInLazyCategory );
-
-#!
-DeclareAttribute( "GenesisOfCellOperation",
+DeclareAttribute( "GenesisOfCell",
         IsCellInLazyCategory );
+
+# Do not turn GenesisOfCellOperation into an attribute
+# for InfoOfObject to stay readable
 #!
-DeclareAttribute( "GenesisOfCellArguments",
-        IsCellInLazyCategory );
+DeclareOperation( "GenesisOfCellOperation",
+        [ IsCellInLazyCategory ] );
+
+# Do not turn GenesisOfCellArguments into an attribute
+# for InfoOfObject to stay readable
+#!
+DeclareOperation( "GenesisOfCellArguments",
+        [ IsCellInLazyCategory ] );
+
 #!
 DeclareAttribute( "ListOfEvaluationNodes",
         IsCellInLazyCategory );

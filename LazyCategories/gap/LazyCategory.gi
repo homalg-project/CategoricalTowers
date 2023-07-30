@@ -274,11 +274,9 @@ InstallMethod( AsObjectInLazyCategory,
         "for a lazy category, a string, and a list",
         [ IsLazyCategory, IsString and IsStringRep, IsList ],
         
-  function( D, name_of_operation, L )
+  function( D, name_of_operation, list_of_arguments )
     
-    return CreateCapCategoryObjectWithAttributes( D,
-                   GenesisOfCellOperation, name_of_operation,
-                   GenesisOfCellArguments, L );
+    return ObjectConstructor( D, Pair( name_of_operation, list_of_arguments ) );
     
 end );
 
@@ -321,16 +319,15 @@ end );
 
 ##
 InstallOtherMethod( AsMorphismInLazyCategory,
-        "for a lazy category, two CAP objects in a lazy category, a string, and a list",
+        "for two CAP objects in a lazy category, a string, and a list",
         [ IsLazyCategory, IsObjectInLazyCategory, IsString and IsStringRep, IsList, IsObjectInLazyCategory ],
         
-  function( D, source, name_of_operation, L, range )
+  function( D, source, name_of_operation, list_of_arguments, range )
     
-    return CreateCapCategoryMorphismWithAttributes( D,
+    return MorphismConstructor( D,
                    source,
-                   range,
-                   GenesisOfCellOperation, name_of_operation,
-                   GenesisOfCellArguments, L );
+                   Pair( name_of_operation, list_of_arguments ),
+                   range );
     
 end );
 
@@ -339,9 +336,34 @@ InstallMethod( AsMorphismInLazyCategory,
         "for two CAP objects in a lazy category, a string, and a list",
         [ IsObjectInLazyCategory, IsString and IsStringRep, IsList, IsObjectInLazyCategory ],
         
-  function( source, name_of_operation, L, range )
+  function( source, name_of_operation, list_of_arguments, range )
     
-    return AsMorphismInLazyCategory( CapCategory( source ), source, name_of_operation, L, range );
+    return AsMorphismInLazyCategory( CapCategory( source ),
+                   source,
+                   name_of_operation, list_of_arguments,
+                   range );
+    
+end );
+
+##
+InstallMethod( GenesisOfCellOperation,
+        "for a cell in a lazy category",
+        [ IsCellInLazyCategory ],
+        
+  function( c )
+    
+    return GenesisOfCell( c )[1];
+    
+end );
+
+##
+InstallMethod( GenesisOfCellArguments,
+        "for a cell in a lazy category",
+        [ IsCellInLazyCategory ],
+        
+  function( c )
+    
+    return GenesisOfCell( c )[2];
     
 end );
 
@@ -351,7 +373,8 @@ InstallMethod( LazyCategory,
         [ IsCapCategory ],
         
   function( C )
-    local name, create_func_bool, create_func_object, create_func_object_or_fail,
+    local name, object_constructor, object_datum, morphism_constructor, morphism_datum,
+          create_func_bool, create_func_object, create_func_object_or_fail,
           create_func_morphism, create_func_universal_morphism, create_func_morphism_or_fail,
           create_func_list_of_objects, primitive_operations, list_of_operations_to_install, skip, func, pos,
           commutative_ring, properties, ignore, supports_empty_limits, category_constructor_options,
@@ -362,6 +385,29 @@ InstallMethod( LazyCategory,
     else
         name := "lazy category";
     fi;
+
+    ##
+    object_constructor :=
+      function( D, object_operation_and_arguments_genesis_pair )
+        
+        return CreateCapCategoryObjectWithAttributes( D,
+                       GenesisOfCell, object_operation_and_arguments_genesis_pair );
+        
+    end;
+    
+    object_datum := { D, obj } -> GenesisOfCell( obj );
+    
+    morphism_constructor :=
+      function( D, source, morphism_operation_and_arguments_genesis_pair, range )
+        
+        return CreateCapCategoryMorphismWithAttributes( D,
+                       source,
+                       range,
+                       GenesisOfCell, morphism_operation_and_arguments_genesis_pair );
+        
+    end;
+    
+    morphism_datum := { D, mor } -> GenesisOfCell( mor );
     
     ## e.g., IsSplitEpimorphism
     create_func_bool :=
@@ -383,7 +429,7 @@ InstallMethod( LazyCategory,
         return """
           function( input_arguments... )
             
-            return top_object_getter( cat, "operation_name", [ input_arguments... ] );
+            return top_object_getter( cat, Pair( "operation_name", [ input_arguments... ] ) );
             
         end""";
         
@@ -404,7 +450,7 @@ InstallMethod( LazyCategory,
                 
             else
                 
-                return top_object_getter( cat, "IdFunc", [ underlying_result ] );
+                return top_object_getter( cat, Pair( "IdFunc", [ underlying_result ] ) );
                 
             fi;
             
@@ -419,7 +465,7 @@ InstallMethod( LazyCategory,
         return """
           function( input_arguments... )
             
-            return top_morphism_getter( cat, top_source, "operation_name", [ input_arguments... ], top_range );
+            return top_morphism_getter( cat, top_source, Pair( "operation_name", [ input_arguments... ] ), top_range );
             
         end""";
         
@@ -535,13 +581,17 @@ InstallMethod( LazyCategory,
            category_object_filter := IsObjectInLazyCategory,
            category_morphism_filter := IsMorphismInLazyCategory,
            properties := properties,
+           object_constructor := object_constructor,
+           object_datum := object_datum,
+           morphism_constructor := morphism_constructor,
+           morphism_datum := morphism_datum,
            list_of_operations_to_install := list_of_operations_to_install,
            supports_empty_limits := supports_empty_limits,
            underlying_category_getter_string := "UnderlyingCategory",
            underlying_object_getter_string := "EvaluatedCell",
            underlying_morphism_getter_string := "EvaluatedCell",
-           top_object_getter_string := "AsObjectInLazyCategory",
-           top_morphism_getter_string := "AsMorphismInLazyCategory",
+           top_object_getter_string := "ObjectConstructor",
+           top_morphism_getter_string := "MorphismConstructor",
            ## these two operations make no sense for LazyCategory as we do not descend to the underlying category in the CAP operations, but rather in EvaluatedCell
            #generic_output_source_getter_string :=,
            #generic_output_range_getter_string :=,
@@ -602,7 +652,7 @@ InstallMethod( LazyCategory,
                 
             fi;
             
-            return AsMorphismInLazyCategory( D, Source( phi ), "PreCompose", [ phi, psi ], Range( psi ) );
+            return MorphismConstructor( D, Source( phi ), Pair( "PreCompose", [ phi, psi ] ), Range( psi ) );
             
         end );
         
@@ -616,7 +666,7 @@ InstallMethod( LazyCategory,
                     return diagram[1];
                 fi;
                 
-                return AsObjectInLazyCategory( D, "DirectSum", [ D, diagram ] );
+                return ObjectConstructor( D, Pair( "DirectSum", [ D, diagram ] ) );
                 
             end );
             
@@ -638,7 +688,7 @@ InstallMethod( LazyCategory,
                     return Source( ess[1] );
                 fi;
                 
-                return AsObjectInLazyCategory( D, "FiberProduct", [ diagram ] );
+                return ObjectConstructor( D, Pair( "FiberProduct", [ diagram ] ) );
                 
             end );
             
@@ -668,7 +718,7 @@ InstallMethod( LazyCategory,
                     
                 fi;
                 
-                return AsMorphismInLazyCategory( D, P, "ProjectionInFactorOfFiberProductWithGivenFiberProduct", [ diagram, k, P ], Source( diagram[k] ) );
+                return MorphismConstructor( D, P, Pair( "ProjectionInFactorOfFiberProductWithGivenFiberProduct", [ diagram, k, P ] ), Source( diagram[k] ) );
                 
             end );
             
@@ -690,7 +740,7 @@ InstallMethod( LazyCategory,
                     return Range( ess[1] );
                 fi;
                 
-                return AsObjectInLazyCategory( D, "Pushout", [ diagram ] );
+                return ObjectConstructor( D, Pair( "Pushout", [ diagram ] ) );
                 
             end );
             
@@ -720,7 +770,7 @@ InstallMethod( LazyCategory,
                     
                 fi;
                 
-                return AsMorphismInLazyCategory( D, Range( diagram[k] ), "InjectionOfCofactorOfPushoutWithGivenPushout", [ diagram, k, I ], I );
+                return MorphismConstructor( D, Range( diagram[k] ), Pair( "InjectionOfCofactorOfPushoutWithGivenPushout", [ diagram, k, I ] ), I );
                 
             end );
             
@@ -749,16 +799,16 @@ InstallMethod( LazyCategory,
     AddIsEqualForObjects( D,
       function( D, a, b )
         
-        if HasGenesisOfCellOperation( a ) = HasGenesisOfCellOperation( b ) then
-            if HasGenesisOfCellOperation( a ) then
+        if HasGenesisOfCell( a ) = HasGenesisOfCell( b ) then
+            if HasGenesisOfCell( a ) then
                 return GenesisOfCellOperation( a ) = GenesisOfCellOperation( b ) and
                        IsEqualForCells( GenesisOfCellArguments( a ), GenesisOfCellArguments( b ) );
             else
                 return IsEqualForObjects( C, EvaluatedCell( a ), EvaluatedCell( b ) );
             fi;
-        elif HasGenesisOfCellArguments( a ) and Length( GenesisOfCellArguments( a ) ) = 1 and IsIdenticalObj( GenesisOfCellArguments( a )[1], D ) then
+        elif HasGenesisOfCell( a ) and Length( GenesisOfCellArguments( a ) ) = 1 and IsIdenticalObj( GenesisOfCellArguments( a )[1], D ) then
             return IsEqualForObjects( C, _EvaluationOfCell( a ), EvaluatedCell( b ) );
-        elif HasGenesisOfCellArguments( b ) and Length( GenesisOfCellArguments( b ) ) = 1 and IsIdenticalObj( GenesisOfCellArguments( b )[1], D ) then
+        elif HasGenesisOfCell( b ) and Length( GenesisOfCellArguments( b ) ) = 1 and IsIdenticalObj( GenesisOfCellArguments( b )[1], D ) then
             return IsEqualForObjects( C, EvaluatedCell( a ), _EvaluationOfCell( b ) );
         fi;
         
@@ -769,8 +819,8 @@ InstallMethod( LazyCategory,
     AddIsEqualForMorphisms( D,
       function( D, phi, psi )
         
-        if HasGenesisOfCellOperation( phi ) = HasGenesisOfCellOperation( psi ) then
-            if HasGenesisOfCellOperation( phi ) then
+        if HasGenesisOfCell( phi ) = HasGenesisOfCell( psi ) then
+            if HasGenesisOfCell( phi ) then
                 return GenesisOfCellOperation( phi ) = GenesisOfCellOperation( psi ) and
                        IsEqualForCells( GenesisOfCellArguments( phi ), GenesisOfCellArguments( psi ) );
             else
@@ -814,7 +864,7 @@ InstallMethod( LazyCategory,
         AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
           function( D, r, phi )
             
-            return AsMorphismInLazyCategory( D, Source( phi ), "MultiplyWithElementOfCommutativeRingForMorphisms", [ r, phi ], Range( phi ) );
+            return MorphismConstructor( D, Source( phi ), Pair( "MultiplyWithElementOfCommutativeRingForMorphisms", [ r, phi ] ), Range( phi ) );
             
         end );
         
@@ -921,7 +971,7 @@ InstallMethod( LazyCategory,
                 AddDistinguishedObjectOfHomomorphismStructure( D,
                   function( D )
                     
-                    return AsObjectInLazyCategory( HC, "DistinguishedObjectOfHomomorphismStructure", [ D ] );
+                    return ObjectConstructor( HC, Pair( "DistinguishedObjectOfHomomorphismStructure", [ D ] ) );
                     
                 end );
             fi;
@@ -930,7 +980,7 @@ InstallMethod( LazyCategory,
                 AddHomomorphismStructureOnObjects( D,
                   function( D, a, b )
                     
-                    return AsObjectInLazyCategory( HC, "HomomorphismStructureOnObjects", [ D, a, b ] );
+                    return ObjectConstructor( HC, Pair( "HomomorphismStructureOnObjects", [ D, a, b ] ) );
                     
                 end );
             fi;
@@ -939,7 +989,7 @@ InstallMethod( LazyCategory,
                 AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
                   function( D, s, alpha, beta, r )
                     
-                    return AsMorphismInLazyCategory( HC, s, "HomomorphismStructureOnMorphismsWithGivenObjects", [ D, s, alpha, beta, r ], r );
+                    return MorphismConstructor( HC, s, Pair( "HomomorphismStructureOnMorphismsWithGivenObjects", [ D, s, alpha, beta, r ] ), r );
                     
                 end );
             fi;
@@ -948,7 +998,7 @@ InstallMethod( LazyCategory,
                 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( D,
                   function( D, distinguished_object, alpha, range )
                     
-                    return AsMorphismInLazyCategory( HC, distinguished_object, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects", [ D, distinguished_object, alpha, range ], range );
+                    return MorphismConstructor( HC, distinguished_object, Pair( "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects", [ D, distinguished_object, alpha, range ] ), range );
                     
                 end );
             fi;
@@ -957,7 +1007,7 @@ InstallMethod( LazyCategory,
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
                   function( D, a, b, iota )
                     
-                    return AsMorphismInLazyCategory( D, a, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism", [ D, a, b, iota ], b );
+                    return MorphismConstructor( D, a, Pair( "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism", [ D, a, b, iota ] ), b );
                     
                 end );
             fi;
@@ -1209,7 +1259,7 @@ InstallGlobalFunction( PositionsOfChildrenOfALazyCell,
   function( node, nodes )
     local children;
     
-    if not HasGenesisOfCellArguments( node ) then
+    if not HasGenesisOfCell( node ) then
         return [ ];
     fi;
     
@@ -1232,7 +1282,7 @@ end );
 ##
 InstallMethod( Display,
         "for a cell in a lazy category",
-        [ IsCellInLazyCategory and HasGenesisOfCellOperation and HasGenesisOfCellArguments ],
+        [ IsCellInLazyCategory and HasGenesisOfCell and HasGenesisOfCell ],
         
   function( c )
     local cell_arguments;
