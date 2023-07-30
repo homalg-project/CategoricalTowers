@@ -921,7 +921,7 @@ InstallMethod( LazyCategory,
                 AddDistinguishedObjectOfHomomorphismStructure( D,
                   function( D )
                     
-                    return AsObjectInLazyCategory( HC, DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( D ) ) );
+                    return AsObjectInLazyCategory( HC, "DistinguishedObjectOfHomomorphismStructure", [ D ] );
                     
                 end );
             fi;
