@@ -602,7 +602,7 @@ InstallMethod( LazyCategory,
                 
             fi;
             
-            return AsMorphismInLazyCategory( Source( phi ), "PreCompose", [ phi, psi ], Range( psi ) );
+            return AsMorphismInLazyCategory( D, Source( phi ), "PreCompose", [ phi, psi ], Range( psi ) );
             
         end );
         
@@ -668,7 +668,7 @@ InstallMethod( LazyCategory,
                     
                 fi;
                 
-                return AsMorphismInLazyCategory( P, "ProjectionInFactorOfFiberProductWithGivenFiberProduct", [ diagram, k, P ], Source( diagram[k] ) );
+                return AsMorphismInLazyCategory( D, P, "ProjectionInFactorOfFiberProductWithGivenFiberProduct", [ diagram, k, P ], Source( diagram[k] ) );
                 
             end );
             
@@ -720,7 +720,7 @@ InstallMethod( LazyCategory,
                     
                 fi;
                 
-                return AsMorphismInLazyCategory( Range( diagram[k] ), "InjectionOfCofactorOfPushoutWithGivenPushout", [ diagram, k, I ], I );
+                return AsMorphismInLazyCategory( D, Range( diagram[k] ), "InjectionOfCofactorOfPushoutWithGivenPushout", [ diagram, k, I ], I );
                 
             end );
             
@@ -814,7 +814,7 @@ InstallMethod( LazyCategory,
         AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
           function( D, r, phi )
             
-            return AsMorphismInLazyCategory( Source( phi ), "MultiplyWithElementOfCommutativeRingForMorphisms", [ r, phi ], Range( phi ) );
+            return AsMorphismInLazyCategory( D, Source( phi ), "MultiplyWithElementOfCommutativeRingForMorphisms", [ r, phi ], Range( phi ) );
             
         end );
         
@@ -858,7 +858,7 @@ InstallMethod( LazyCategory,
                 fi;
                 
                 result := List( BasisOfExternalHom( UnderlyingCategory( D ), EvaluatedCell( a ), EvaluatedCell( b ) ),
-                                mor -> AsMorphismInLazyCategory( a, mor, b ) );
+                                mor -> AsMorphismInLazyCategory( D, a, mor, b ) );
                 
                 if show then
                     Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", D!.shortname, ": ", "BasisOfExternalHom", "\n" );
@@ -930,7 +930,7 @@ InstallMethod( LazyCategory,
                 AddHomomorphismStructureOnObjects( D,
                   function( D, a, b )
                     
-                    return AsObjectInLazyCategory( HC, "HomomorphismStructureOnObjects", [ a, b ] );
+                    return AsObjectInLazyCategory( HC, "HomomorphismStructureOnObjects", [ D, a, b ] );
                     
                 end );
             fi;
@@ -939,7 +939,7 @@ InstallMethod( LazyCategory,
                 AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
                   function( D, s, alpha, beta, r )
                     
-                    return AsMorphismInLazyCategory( s, "HomomorphismStructureOnMorphismsWithGivenObjects", [ s, alpha, beta, r ], r );
+                    return AsMorphismInLazyCategory( HC, s, "HomomorphismStructureOnMorphismsWithGivenObjects", [ D, s, alpha, beta, r ], r );
                     
                 end );
             fi;
@@ -948,7 +948,7 @@ InstallMethod( LazyCategory,
                 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
                   function( D, alpha )
                     
-                    return AsMorphismInLazyCategory( DistinguishedObjectOfHomomorphismStructure( D ), "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure", [ alpha ], HomomorphismStructureOnObjects( D, Source( alpha ), Range( alpha ) ) );
+                    return AsMorphismInLazyCategory( HC, DistinguishedObjectOfHomomorphismStructure( D ), "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure", [ D, alpha ], HomomorphismStructureOnObjects( D, Source( alpha ), Range( alpha ) ) );
                     
                 end );
             fi;
@@ -957,7 +957,7 @@ InstallMethod( LazyCategory,
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
                   function( D, a, b, iota )
                     
-                    return AsMorphismInLazyCategory( a, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism", [ a, b, iota ], b );
+                    return AsMorphismInLazyCategory( D, a, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism", [ D, a, b, iota ], b );
                     
                 end );
             fi;
