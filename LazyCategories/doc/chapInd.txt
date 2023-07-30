@@ -3,11 +3,14 @@
   [1XIndex[101X
   
   [2X\/[102X, for IsCapCategoryCell, IsLazyCategory 2.4-1 
-  [2XDigraphOfEvaluation[102X, for IsCellInLazyCategory 2.3-5 
+  [2X_EvaluationOfCell[102X 2.3-8 
+  [2XDigraphOfEvaluation[102X, for IsCellInLazyCategory 2.3-7 
   [2XEmbeddingFunctorOfUnderlyingCategory[102X, for IsCapCategory 2.4-3 
-  [2XEvaluatedCell[102X, for IsCellInLazyCategory 2.3-6 
-  [2XGenesisOfCellArguments[102X, for IsCellInLazyCategory 2.3-3 
-  [2XGenesisOfCellOperation[102X, for IsCellInLazyCategory 2.3-2 
+  [2XEvaluatedCell[102X, for IsCellInLazyCategory 2.3-9 
+  [2XGenesisOfCellArguments[102X, for IsCellInLazyCategory 2.3-5 
+  [2XGenesisOfCellOperation[102X, for IsCellInLazyCategory 2.3-4 
+  [2XGenesisOfMorphism[102X, for IsMorphismInLazyCategory 2.3-3 
+  [2XGenesisOfObject[102X, for IsObjectInLazyCategory 2.3-2 
   [2XGetLabel[102X, for IsCapCategoryCell 2.5-2 
   [2XIsCellInLazyCategory[102X, for IsCapCategoryCell 2.1-2 
   [2XIsEqualForCells[102X, for IsObject, IsObject 2.5-3 
@@ -15,7 +18,7 @@
   [2XIsMorphismInLazyCategory[102X, for IsCellInLazyCategory and IsCapCategoryMorphism 2.1-4 
   [2XIsObjectInLazyCategory[102X, for IsCellInLazyCategory and IsCapCategoryObject 2.1-3 
   [2XLazyCategory[102X, for IsCapCategory 2.4-2 
-  [2XListOfEvaluationNodes[102X, for IsCellInLazyCategory 2.3-4 
+  [2XListOfEvaluationNodes[102X, for IsCellInLazyCategory 2.3-6 
   [2XRECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS[102X 2.2-1 
   [2XSetLabel[102X, for IsCellInLazyCategory, IsString 2.5-1 
   [2XUnderlyingCategory[102X, for IsLazyCategory 2.3-1 

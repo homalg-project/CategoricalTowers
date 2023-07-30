@@ -6,10 +6,10 @@
          [1X Construct an equivalent lazy category out of a CAP category [101X
   
   
-                                   2023.07-01
+                                   2023.07-02
   
   
-                                  28 July 2023
+                                  30 July 2023
   
   
                                 Mohamed Barakat
@@ -52,11 +52,14 @@
       2.2-1 RECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS
     2.3 [33X[0;0YAttributes[133X
       2.3-1 UnderlyingCategory
-      2.3-2 GenesisOfCellOperation
-      2.3-3 GenesisOfCellArguments
-      2.3-4 ListOfEvaluationNodes
-      2.3-5 DigraphOfEvaluation
-      2.3-6 EvaluatedCell
+      2.3-2 GenesisOfObject
+      2.3-3 GenesisOfMorphism
+      2.3-4 GenesisOfCellOperation
+      2.3-5 GenesisOfCellArguments
+      2.3-6 ListOfEvaluationNodes
+      2.3-7 DigraphOfEvaluation
+      2.3-8 _EvaluationOfCell
+      2.3-9 EvaluatedCell
     2.4 [33X[0;0YConstructors[133X
       2.4-1 \/
       2.4-2 LazyCategory
