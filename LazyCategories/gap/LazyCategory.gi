@@ -828,7 +828,7 @@ InstallMethod( LazyCategory,
                       "DistinguishedObjectOfHomomorphismStructure",
                       "HomomorphismStructureOnObjects",
                       "HomomorphismStructureOnMorphismsWithGivenObjects",
-                      "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+                      "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
                       "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
                       ];
             
@@ -944,11 +944,11 @@ InstallMethod( LazyCategory,
                 end );
             fi;
             
-            if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ) then
-                AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
-                  function( D, alpha )
+            if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" ) then
+                AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( D,
+                  function( D, distinguished_object, alpha, range )
                     
-                    return AsMorphismInLazyCategory( HC, DistinguishedObjectOfHomomorphismStructure( D ), "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure", [ D, alpha ], HomomorphismStructureOnObjects( D, Source( alpha ), Range( alpha ) ) );
+                    return AsMorphismInLazyCategory( HC, distinguished_object, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects", [ D, distinguished_object, alpha, range ], range );
                     
                 end );
             fi;
@@ -993,11 +993,11 @@ InstallMethod( LazyCategory,
                 end );
             fi;
             
-            if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ) then
-                AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
-                  function( D, alpha )
+            if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" ) then
+                AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( D,
+                  function( D, distinguished_object, alpha, range )
                     
-                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCategory( D ), EvaluatedCell( alpha ) );
+                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( UnderlyingCategory( D ), distinguished_object, EvaluatedCell( alpha ), range );
                     
                 end );
             fi;
