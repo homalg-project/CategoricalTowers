@@ -21,8 +21,9 @@ LoadPackage( "FreydCategoriesForCAP" );
 A_add := AdditiveClosure( A );
 #! Additive closure( Algebroid( Z, FreeCategory(
 #! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations )
-Lazy := LazyCategory( A_add :
-                show_evaluation := true, primitive_operations := true );
+Lazy := LazyCategory( A_add : show_evaluation := true,
+                lazify_range_of_hom_structure := true,
+                primitive_operations := true );
 #! LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
 #! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) )
 a := A.a / A_add / Lazy; SetLabel( a, "a" );

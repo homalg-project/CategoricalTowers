@@ -903,7 +903,7 @@ InstallMethod( LazyCategory,
             end );
         fi;
         
-        lazify_range_of_hom_structure := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "lazify_range_of_hom_structure", true ), true );
+        lazify_range_of_hom_structure := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "lazify_range_of_hom_structure", false ), true );
         
         HC := RangeCategoryOfHomomorphismStructure( C );
         
