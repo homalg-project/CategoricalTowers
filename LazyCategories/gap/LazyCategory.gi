@@ -823,15 +823,14 @@ InstallMethod( LazyCategory,
     if HasRangeCategoryOfHomomorphismStructure( C ) then
         
         if print then
-            list := [
-                     "BasisOfExternalHom",
-                     "CoefficientsOfMorphism",
-                     "DistinguishedObjectOfHomomorphismStructure",
-                     "HomomorphismStructureOnObjects",
-                     "HomomorphismStructureOnMorphismsWithGivenObjects",
-                     "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
-                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
-                     ];
+            list := [ "BasisOfExternalHom",
+                      "CoefficientsOfMorphism",
+                      "DistinguishedObjectOfHomomorphismStructure",
+                      "HomomorphismStructureOnObjects",
+                      "HomomorphismStructureOnMorphismsWithGivenObjects",
+                      "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+                      "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
+                      ];
             
             for func in list do
                 if CanCompute( C, func ) then
