@@ -133,10 +133,10 @@ GenesisOfCellOperation( sA[2] )
 GenesisOfCellArguments( sA[2] )
 
 # ╔═╡ 8f277ff5-1996-40b7-8276-76c86145e899
-HasGenesisOfCellOperation( a )
+HasGenesisOfCell( a )
 
 # ╔═╡ 37c8e6e3-1c8b-43c1-a6bf-beca50d2ef7a
-HasGenesisOfCellArguments( a )
+HasGenesisOfCell( a )
 
 # ╔═╡ 7c5a66a9-fc94-4795-93ff-22d33313d06b
 j = KernelObjectFunctorial( b, d, e )

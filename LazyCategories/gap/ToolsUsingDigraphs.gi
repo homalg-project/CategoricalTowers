@@ -36,7 +36,7 @@ InstallMethod( ListOfEvaluationNodes,
         
         add_to_nodes( c );
         
-        if HasGenesisOfCellArguments( c ) then
+        if HasGenesisOfCell( c ) then
             
             children := GenesisOfCellArguments( c );
             
@@ -84,7 +84,7 @@ InstallMethod( DigraphOfEvaluation,
               
               node := nodes[i];
               
-              if HasGenesisOfCellOperation( node ) then
+              if HasGenesisOfCell( node ) then
                   l := GenesisOfCellOperation( node );
                   l := CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION( l );
                   ints := Filtered( GenesisOfCellArguments( node ), IsInt );
