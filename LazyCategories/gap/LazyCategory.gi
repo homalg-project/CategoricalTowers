@@ -903,7 +903,7 @@ InstallMethod( LazyCategory,
             end );
         fi;
         
-        lazify_range_of_hom_structure := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "lazify_range_of_hom_structure", true ), true );
+        lazify_range_of_hom_structure := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "lazify_range_of_hom_structure", false ), true );
         
         HC := RangeCategoryOfHomomorphismStructure( C );
         
@@ -1006,7 +1006,7 @@ InstallMethod( LazyCategory,
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
                   function( D, a, b, iota )
                     
-                    return AsMorphismInLazyCategory( D, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCategory( D ), EvaluatedCell( a ), EvaluatedCell( b ), iota ) );
+                    return AsMorphismInLazyCategory( a, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCategory( D ), EvaluatedCell( a ), EvaluatedCell( b ), iota ), b );
                     
                 end );
             fi;
