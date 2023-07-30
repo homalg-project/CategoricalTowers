@@ -320,14 +320,11 @@ InstallMethodWithCache( AsMorphismInLazyCategory,
 end );
 
 ##
-InstallMethod( AsMorphismInLazyCategory,
-        "for two CAP objects in a lazy category, a string, and a list",
-        [ IsObjectInLazyCategory, IsString and IsStringRep, IsList, IsObjectInLazyCategory ],
+InstallOtherMethod( AsMorphismInLazyCategory,
+        "for a lazy category, two CAP objects in a lazy category, a string, and a list",
+        [ IsLazyCategory, IsObjectInLazyCategory, IsString and IsStringRep, IsList, IsObjectInLazyCategory ],
         
-  function( source, name_of_operation, L, range )
-    local D;
-    
-    D := CapCategory( source );
+  function( D, source, name_of_operation, L, range )
     
     return CreateCapCategoryMorphismWithAttributes( D,
                    source,
@@ -338,17 +335,13 @@ InstallMethod( AsMorphismInLazyCategory,
 end );
 
 ##
-InstallOtherMethod( AsMorphismInLazyCategory,
+InstallMethod( AsMorphismInLazyCategory,
         "for two CAP objects in a lazy category, a string, and a list",
-        [ IsLazyCategory, IsObjectInLazyCategory, IsString and IsStringRep, IsList, IsObjectInLazyCategory ],
+        [ IsObjectInLazyCategory, IsString and IsStringRep, IsList, IsObjectInLazyCategory ],
         
-  function( D, source, name_of_operation, L, range )
+  function( source, name_of_operation, L, range )
     
-    return CreateCapCategoryMorphismWithAttributes( D,
-                   source,
-                   range,
-                   GenesisOfCellOperation, name_of_operation,
-                   GenesisOfCellArguments, L );
+    return AsMorphismInLazyCategory( CapCategory( source ), source, name_of_operation, L, range );
     
 end );
 
