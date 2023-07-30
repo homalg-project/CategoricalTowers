@@ -60,6 +60,14 @@ DeclareAttribute( "UnderlyingCategory",
         IsLazyCategory );
 
 #!
+DeclareAttribute( "GenesisOfObject",
+        IsObjectInLazyCategory );
+
+#!
+DeclareAttribute( "GenesisOfMorphism",
+        IsMorphismInLazyCategory );
+
+#!
 DeclareAttribute( "GenesisOfCellOperation",
         IsCellInLazyCategory );
 #!
@@ -72,6 +80,9 @@ DeclareAttribute( "ListOfEvaluationNodes",
 #!
 DeclareAttribute( "DigraphOfEvaluation",
         IsCellInLazyCategory );
+
+#!
+DeclareGlobalFunction( "_EvaluationOfCell" );
 
 #!
 DeclareAttribute( "EvaluatedCell",

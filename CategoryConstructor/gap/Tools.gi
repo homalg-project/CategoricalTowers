@@ -569,3 +569,62 @@ InstallMethodForCompilerForCAP( ExtendFunctorToWrapperCategoryData,
                    range_category );
     
 end );
+
+##
+InstallOtherMethod( ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperationsAreReplacedWithCorrespondingObjectAndWithGivenOperations,
+        "for two lists",
+        [ IsList, IsList ],
+        
+  function( list_of_primitively_installed_operations, list_of_installed_operations )
+    local list_of_replaced_primitively_installed_operations, name, info, with_given_object_name;
+    
+    list_of_replaced_primitively_installed_operations := [ ];
+    
+    for name in list_of_primitively_installed_operations do
+        
+        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+        
+        if IsList( info.with_given_without_given_name_pair ) and name = info.with_given_without_given_name_pair[1] and
+           IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name ) then
+            
+            ## do not install this operation for morphisms but its
+            ## with-given-object counterpart and the object
+            
+            with_given_object_name := CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name;
+            
+            if with_given_object_name in list_of_installed_operations then
+                Add( list_of_replaced_primitively_installed_operations, with_given_object_name );
+            else
+                Error( "unable to find \"", with_given_object_name, "\" in `list_of_installed_operations`\n" );
+            fi;
+            
+            if info.with_given_without_given_name_pair[2] in list_of_installed_operations then
+                Add( list_of_replaced_primitively_installed_operations, info.with_given_without_given_name_pair[2] );
+            else
+                Error( "unable to find \"", info.with_given_without_given_name_pair[2], "\" in `list_of_installed_operations`\n" );
+            fi;
+        else
+            Add( list_of_replaced_primitively_installed_operations, name );
+        fi;
+    od;
+    
+    return SortedList( list_of_replaced_primitively_installed_operations );
+    
+end );
+
+##
+InstallMethod( ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperationsAreReplacedWithCorrespondingObjectAndWithGivenOperations,
+        "for a CAP category",
+        [ IsCapCategory ],
+        
+  function( C )
+    
+    if not IsFinalized( C ) then
+        Error( "the input category `C` is not finalized\n" );
+    fi;
+    
+    return ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperationsAreReplacedWithCorrespondingObjectAndWithGivenOperations(
+                   ListPrimitivelyInstalledOperationsOfCategory( C ),
+                   ListInstalledOperationsOfCategory( C ) );
+    
+end );

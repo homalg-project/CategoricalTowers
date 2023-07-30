@@ -477,3 +477,6 @@ DeclareOperation( "PreComposeWithWrappingFunctorData",
 
 DeclareOperation( "ExtendFunctorToWrapperCategoryData",
         [ IsWrapperCapCategory, IsList, IsCapCategory ] );
+
+DeclareOperation( "ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperationsAreReplacedWithCorrespondingObjectAndWithGivenOperations",
+        [ IsCapCategory ] );

@@ -4,7 +4,6 @@
 # Reading the implementation part of the package.
 #
 
-ReadPackage( "CategoryConstructor", "gap/CategoryConstructor.gi");
 ReadPackage( "CategoryConstructor", "gap/Tools.gi");
 ReadPackage( "CategoryConstructor", "gap/ToolsMethodRecord.gi");
 ReadPackage( "CategoryConstructor", "gap/ToolsDerivedMethods.gi");

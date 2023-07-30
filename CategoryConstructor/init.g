@@ -4,7 +4,6 @@
 # Reading the declaration part of the package.
 #
 
-ReadPackage( "CategoryConstructor", "gap/CategoryConstructor.gd");
 ReadPackage( "CategoryConstructor", "gap/Tools.gd");
 ReadPackage( "CategoryConstructor", "gap/Tools.autogen.gd");
 
