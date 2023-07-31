@@ -586,15 +586,13 @@ InstallMethod( AlgebroidFromDataTables,
     
     range_category_of_hom_structure := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", CategoryOfRows( data[1] : overhead := false, FinalizeCategory := true ) );
     
+    # The following line will never be compiled as it is an attribute to the algebroid.
+    # Whenever needed, one can replace <CreateMorphism> by <MorphismConstructor> after dropping the <index> argument.
     SetSetOfBasesOfExternalHomsLazyHList( cat,
                     LazyHList( [ 1 .. data[2] ],
                         i -> LazyHList( [ 1 .. data[2] ],
                           j -> ListN( [ 1 .. data[19][i][j] ], IdentityMat( data[19][i][j], data[1] ),
                             { index, coeff } -> CreateMorphism( cat, SetOfObjects( cat )[j], coeff, [ index ], SetOfObjects( cat )[i] ) ) ) ) );
-    
-    if eager then
-        List( ListOfValues( SetOfBasesOfExternalHomsLazyHList( cat ) ), ListOfValues );
-    fi;
     
     cat!.compiler_hints :=
       rec( category_attribute_names :=
@@ -941,6 +939,10 @@ InstallMethod( AlgebroidFromDataTables,
         
     end );
     
+    if eager then
+        List( ListOfValues( SetOfBasesOfExternalHomsLazyHList( cat ) ), ListOfValues );
+    fi;
+    
     Finalize( cat );
     
     return cat;
@@ -1061,11 +1063,16 @@ InstallOtherMethod( CreateMorphism,
 InstallOtherMethod( CreateMorphism,
           [ IsAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables, IsDenseList, IsDenseList, IsObjectInAlgebroidFromDataTables ],
   
-  { cat, S, coeffs, support, R } -> CreateCapCategoryMorphismWithAttributes( cat,
-                                        S, R,
-                                        MorphismCoefficients, coeffs,
-                                        MorphismSupport, support )
-);
+  function ( cat, S, coeffs, support, R )
+    local mor;
+    
+    mor := MorphismConstructor( cat, S, coeffs, R );
+    
+    SetMorphismSupport( mor, support );
+    
+    return mor;
+    
+end );
 
 ##
 InstallMethod( MorphismSupport,
