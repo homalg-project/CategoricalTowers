@@ -1,5 +1,5 @@
 name: LazyCategories
-version: "2023.07-06"
+version: "2023.07-07"
 license: "GPL-2.0-or-later"
 date: 2023-07-31
 description: |
@@ -46,11 +46,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/LazyCategories/P
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2023.07-06/LazyCategories-2023.07-06.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2023.07-07/LazyCategories-2023.07-07.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2023.07-06/LazyCategories-2023.07-06.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2023.07-07/LazyCategories-2023.07-07.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2023.07-06/LazyCategories-2023.07-06-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2023.07-07/LazyCategories-2023.07-07-manual.pdf
 
 abstract: |
 
@@ -61,7 +61,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Bar31</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>LazyCategories, Construct an equivalent lazy category out of a CAP category,
-             Version 2023.07-06</i>
+             Version 2023.07-07</i>
      (<span class='BibYear'>7-31</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/LazyCategories">https://homalg-project.github.io/pkg/LazyCategories</a></span>.
@@ -69,10 +69,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ LazyCategories2023.07-06,
+    @misc{ LazyCategories2023.07-07,
       author =           {Barakat, M.},
       title =            {{LazyCategories},   Construct   an   equivalent   lazy
-                          category out of a CAP category, {V}ersion 2023.07-06},
+                          category out of a CAP category, {V}ersion 2023.07-07},
       month =            {3-},
       year =             {7-31},
       note =             {GAP package},

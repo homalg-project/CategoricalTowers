@@ -6,7 +6,7 @@
          [1X Construct an equivalent lazy category out of a CAP category [101X
   
   
-                                   2023.07-06
+                                   2023.07-07
   
   
                                   31 July 2023
