@@ -24,7 +24,11 @@ ConegationOnMorphisms := rec(
 
 ConegationOnMorphismsWithGivenConegations := rec(
   filter_list := [ "category", "object", "morphism", "object" ],
-  io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
+  input_arguments_names := [ "cat", "s", "alpha", "r" ],
+  output_source_getter_string := "s",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "r",
+  output_range_getter_preconditions := [ ],
   return_type := "morphism",
   dual_operation := "NegationOnMorphismsWithGivenNegations",
   dual_arguments_reversed := true ),
@@ -41,7 +45,11 @@ MorphismFromDoubleConegation := rec(
 
 MorphismFromDoubleConegationWithGivenDoubleConegation := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "a", "s" ], [ "s", "a" ] ],
+  input_arguments_names := [ "cat", "a", "s" ],
+  output_source_getter_string := "s",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "a",
+  output_range_getter_preconditions := [ ],
   return_type := "morphism",
   dual_operation := "MorphismToDoubleNegationWithGivenDoubleNegation",
   dual_arguments_reversed := false ),
