@@ -121,16 +121,16 @@ sO = GenesisOfCellOperation( s )
 sA = GenesisOfCellArguments( s )
 
 # ╔═╡ 874d20fc-e822-4397-90b0-7a80c30a02fb
-GenesisOfCellOperation( sA[1] )
-
-# ╔═╡ 32496876-8226-4f16-a3b0-db9a9c36f606
-GenesisOfCellArguments( sA[1] )
-
-# ╔═╡ c681614e-ab71-419c-804b-8e7b17552784
 GenesisOfCellOperation( sA[2] )
 
-# ╔═╡ 88139f7f-486c-4875-877b-d2e38fe13fe8
+# ╔═╡ 32496876-8226-4f16-a3b0-db9a9c36f606
 GenesisOfCellArguments( sA[2] )
+
+# ╔═╡ c681614e-ab71-419c-804b-8e7b17552784
+GenesisOfCellOperation( sA[3] )
+
+# ╔═╡ 88139f7f-486c-4875-877b-d2e38fe13fe8
+GenesisOfCellArguments( sA[3] )
 
 # ╔═╡ 8f277ff5-1996-40b7-8276-76c86145e899
 HasGenesisOfCell( a )

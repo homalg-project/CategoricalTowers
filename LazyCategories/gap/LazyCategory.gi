@@ -651,7 +651,7 @@ InstallMethod( LazyCategory,
                 
             fi;
             
-            return MorphismConstructor( D, Source( phi ), Pair( "PreCompose", [ phi, psi ] ), Range( psi ) );
+            return MorphismConstructor( D, Source( phi ), Pair( "PreCompose", [ D, phi, psi ] ), Range( psi ) );
             
         end );
         
