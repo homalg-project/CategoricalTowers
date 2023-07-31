@@ -614,58 +614,85 @@ InstallMethod( AlgebroidFromDataTables,
     ##
     AddObjectConstructor( cat,
       
-      { cat, index } -> SetOfObjects( cat )[index]
-    );
+      function ( cat, index )
+        
+        return SetOfObjects( cat )[index];
+        
+    end );
     
     ##
     AddObjectDatum( cat,
       
-      { cat, obj } -> ObjectIndex( obj )
-    );
+      function ( cat, obj )
+        
+        return ObjectIndex( obj );
+        
+    end );
     
     ##
     AddMorphismConstructor( cat,
       
-      { cat, obj_1, datum, obj_2 } -> CreateCapCategoryMorphismWithAttributes( cat,
+      function ( cat, obj_1, datum, obj_2 )
+        
+        return CreateCapCategoryMorphismWithAttributes( cat,
                                             obj_1, obj_2,
-                                            MorphismCoefficients, datum )
-    );
+                                            MorphismCoefficients, datum );
+        
+    end );
     
     ##
     AddMorphismDatum( cat,
       
-      { cat, alpha } -> MorphismCoefficients( alpha )
-    );
+      function ( cat, alpha )
+        
+        return MorphismCoefficients( alpha );
+        
+    end );
     
     ##
     AddIsWellDefinedForObjects( cat,
       
-      { cat, obj } -> 0 < ObjectIndex( obj ) and ObjectIndex( obj ) <= EnhancedDataTables( cat )[2]
-    );
+      function ( cat, obj )
+        
+        return 0 < ObjectIndex( obj ) and ObjectIndex( obj ) <= EnhancedDataTables( cat )[2];
+        
+    end );
     
     ##
     AddIsEqualForObjects( cat,
       
-      { cat, obj_1, obj_2 } -> ObjectIndex( obj_1 ) = ObjectIndex( obj_2 )
-    );
+      function ( cat, obj_1, obj_2 )
+        
+        return ObjectIndex( obj_1 ) = ObjectIndex( obj_2 );
+        
+    end );
     
     ##
     AddIsWellDefinedForMorphisms( cat,
       
-      { cat, mor } -> EnhancedDataTables( cat )[19][ObjectIndex( Range( mor ) )][ObjectIndex( Source( mor ) )] = Length( MorphismCoefficients( mor ) )
-    );
+      function ( cat, mor )
+        
+        return EnhancedDataTables( cat )[19][ObjectIndex( Range( mor ) )][ObjectIndex( Source( mor ) )] = Length( MorphismCoefficients( mor ) );
+        
+    end );
 
     ##
     AddIsEqualForMorphisms( cat,
       
-      { cat, mor_1, mor_2 } -> MorphismCoefficients( mor_1 ) = MorphismCoefficients( mor_2 )
-    );
+      function ( cat, mor_1, mor_2 )
+        
+        return MorphismCoefficients( mor_1 ) = MorphismCoefficients( mor_2 );
+        
+    end );
     
     ##
     AddIsCongruentForMorphisms( cat,
       
-      { cat, mor_1, mor_2 } -> MorphismCoefficients( mor_1 ) = MorphismCoefficients( mor_2 )
-    );
+      function ( cat, mor_1, mor_2 )
+        
+        return MorphismCoefficients( mor_1 ) = MorphismCoefficients( mor_2 );
+        
+    end );
     
     ##
     AddIdentityMorphism( cat,
@@ -682,43 +709,61 @@ InstallMethod( AlgebroidFromDataTables,
     ##
     AddZeroMorphism( cat,
       
-      { cat, obj_1, obj_2 } -> MorphismConstructor( cat,
-                                    obj_1,
-                                    ListWithIdenticalEntries(
-                                        EnhancedDataTables( cat )[19][ObjectIndex( obj_2 )][ObjectIndex( obj_1 )],
-                                        ZeroImmutable( CommutativeRingOfLinearCategory( cat ) ) ),
-                                    obj_2 )
-    );
+      function ( cat, obj_1, obj_2 )
+        
+        return MorphismConstructor( cat,
+                    obj_1,
+                    ListWithIdenticalEntries(
+                      EnhancedDataTables( cat )[19][ObjectIndex( obj_2 )][ObjectIndex( obj_1 )],
+                      ZeroImmutable( CommutativeRingOfLinearCategory( cat ) ) ),
+                    obj_2 );
+        
+    end );
     
     ##
     AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
       
-      { cat, r, alpha } -> MorphismConstructor( cat, Source( alpha ), List( MorphismCoefficients( alpha ), c -> r * c ), Range( alpha ) )
-    );
+      function ( cat, r, alpha )
+        
+        return MorphismConstructor( cat, Source( alpha ), List( MorphismCoefficients( alpha ), c -> r * c ), Range( alpha ) );
+        
+    end );
     
     ##
     AddAdditionForMorphisms( cat,
       
-      { cat, alpha_1, alpha_2 } -> MorphismConstructor( cat, Source( alpha_1 ), Sum( List( [ alpha_1, alpha_2 ], MorphismCoefficients ) ), Range( alpha_1 ) )
-    );
+      function ( cat, alpha_1, alpha_2 )
+        
+        return MorphismConstructor( cat, Source( alpha_1 ), Sum( List( [ alpha_1, alpha_2 ], MorphismCoefficients ) ), Range( alpha_1 ) );
+        
+    end );
     
     ##
     AddAdditiveInverseForMorphisms( cat,
       
-      { cat, alpha } -> MorphismConstructor( cat, Source( alpha ), List( MorphismCoefficients( alpha ), c -> -c ), Range( alpha ) )
-    );
+      function ( cat, alpha )
+        
+        return  MorphismConstructor( cat, Source( alpha ), List( MorphismCoefficients( alpha ), c -> -c ), Range( alpha ) );
+        
+    end );
     
     #
     AddBasisOfExternalHom( cat,
       
-      { cat, obj_1, obj_2 } -> SetOfBasesOfExternalHomsLazyHList( cat )[ObjectIndex( obj_2 )][ObjectIndex( obj_1 )]
-    );
+      function ( cat, obj_1, obj_2 )
+        
+        return SetOfBasesOfExternalHomsLazyHList( cat )[ObjectIndex( obj_2 )][ObjectIndex( obj_1 )];
+        
+    end );
     
     #
     AddCoefficientsOfMorphism( cat,
       
-      { cat, alpha } -> MorphismCoefficients( alpha )
-    );
+      function ( cat, alpha )
+        
+        return MorphismCoefficients( alpha );
+        
+    end );
     
     ## Hom-Structure
     
@@ -729,15 +774,20 @@ InstallMethod( AlgebroidFromDataTables,
     ##
     AddDistinguishedObjectOfHomomorphismStructure( cat,
       
-      cat -> ObjectConstructor( RangeCategoryOfHomomorphismStructure( cat ), 1 )
-    );
+      function ( cat )
+        
+        return ObjectConstructor( RangeCategoryOfHomomorphismStructure( cat ), 1 );
+        
+    end );
     
     ##
     AddHomomorphismStructureOnObjects( cat,
       
-      { cat, obj_1, obj_2 } -> ObjectConstructor( RangeCategoryOfHomomorphismStructure( cat ),
-                                      EnhancedDataTables( cat )[19][ObjectIndex( obj_2 )][ObjectIndex( obj_1 )] )
-    );
+      function ( cat, obj_1, obj_2 )
+        
+        return ObjectConstructor( RangeCategoryOfHomomorphismStructure( cat ), EnhancedDataTables( cat )[19][ObjectIndex( obj_2 )][ObjectIndex( obj_1 )] );
+        
+    end );
     
     ##  H(α:i->j, γ:p->q) = H( α•id_j, γ•id_q ) = H(id_j, γ)•H(α, id_q)
     ##
@@ -794,36 +844,48 @@ InstallMethod( AlgebroidFromDataTables,
     #
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
       
-      { cat, distinguished_object, alpha, r } -> MorphismConstructor( RangeCategoryOfHomomorphismStructure( cat ),
-                                                            distinguished_object,
-                                                            HomalgMatrixListList( [ MorphismCoefficients( alpha ) ], 1, RankOfObject( r ), CommutativeRingOfLinearCategory( cat ) ),
-                                                            r )
-    );
+      function ( cat, distinguished_object, alpha, r )
+        
+        return MorphismConstructor( RangeCategoryOfHomomorphismStructure( cat ),
+                          distinguished_object,
+                          HomalgMatrixListList( [ MorphismCoefficients( alpha ) ], 1, RankOfObject( r ), CommutativeRingOfLinearCategory( cat ) ),
+                          r );
+        
+    end );
     
     #
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
       
-      { cat, obj_1, obj_2, eta } -> MorphismConstructor( cat, obj_1, EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( eta ) )[1], obj_2 )
-    );
+      function ( cat, obj_1, obj_2, eta )
+        
+        return MorphismConstructor( cat, obj_1, EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( eta ) )[1], obj_2 );
+        
+    end );
     
     ## α:i->j, β:j->k
     ## α•β = ν⁻¹(ν(α•β)) = ν⁻¹(ν(α•id_j•β)) = ν⁻¹(ν(id_j)•H(α,β))
     ##
     AddPreCompose( cat,
       
-      { cat, alpha, beta } -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Source( alpha ), Range( beta ),
+      function ( cat, alpha, beta )
+        
+        return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Source( alpha ), Range( beta ),
                                   PreCompose( RangeCategoryOfHomomorphismStructure( cat ),
-                                      InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, IdentityMorphism( cat, Range( alpha ) ) ),
-                                      HomomorphismStructureOnMorphisms( cat, alpha, beta ) ) )
-    );
+                                    InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, IdentityMorphism( cat, Range( alpha ) ) ),
+                                    HomomorphismStructureOnMorphisms( cat, alpha, beta ) ) );
+        
+    end );
     
     ## Random Methods
     
     ##
     AddRandomObjectByInteger( cat,
       
-      { cat, i } -> Random( SetOfObjects( cat ) )
-    );
+      function ( cat, i )
+        
+        return Random( SetOfObjects( cat ) );
+        
+    end );
     
     ##
     AddRandomMorphismWithFixedSourceByInteger( cat,
