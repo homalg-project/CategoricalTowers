@@ -424,7 +424,8 @@
     [4X[25Xgap>[125X [27XA_add := AdditiveClosure( A );[127X[104X
     [4X[28XAdditive closure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations )[128X[104X
-    [4X[25Xgap>[125X [27XLazy := LazyCategory( A_add : show_evaluation := true );[127X[104X
+    [4X[25Xgap>[125X [27XLazy := LazyCategory( A_add : show_evaluation := true,[127X[104X
+    [4X[25X>[125X [27X                lazify_range_of_hom_structure := true );[127X[104X
     [4X[28XLazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) )[128X[104X
     [4X[25Xgap>[125X [27Xa := A.a / A_add / Lazy; SetLabel( a, "a" );[127X[104X
@@ -547,8 +548,9 @@
     [4X[25Xgap>[125X [27XA_add := AdditiveClosure( A );[127X[104X
     [4X[28XAdditive closure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations )[128X[104X
-    [4X[25Xgap>[125X [27XLazy := LazyCategory( A_add :[127X[104X
-    [4X[25X>[125X [27X                show_evaluation := true, primitive_operations := true );[127X[104X
+    [4X[25Xgap>[125X [27XLazy := LazyCategory( A_add : show_evaluation := true,[127X[104X
+    [4X[25X>[125X [27X                lazify_range_of_hom_structure := true,[127X[104X
+    [4X[25X>[125X [27X                primitive_operations := true );[127X[104X
     [4X[28XLazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) )[128X[104X
     [4X[25Xgap>[125X [27Xa := A.a / A_add / Lazy; SetLabel( a, "a" );[127X[104X
