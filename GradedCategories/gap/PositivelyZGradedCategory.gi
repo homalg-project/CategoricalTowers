@@ -898,7 +898,7 @@ InstallMethod( PositivelyZGradedCategory,
         [ IsCapCategory ],
         
   function ( C )
-    local name, ZC, properties, create_func_object, create_func_morphism, create_func_universal_morphism,
+    local name, ZC, properties, create_func_object, create_func_morphism,
           recnames, skip, func, pos, info, with_given_object_name, add, required_operations;
     
     if IsPositivelyZGradedCategory( C ) then
@@ -1008,51 +1008,20 @@ InstallMethod( PositivelyZGradedCategory,
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
       function ( name )
-        local oper, type;
+        local oper, output_source_getter, output_range_getter;
         
         oper := ValueGlobal( name );
         
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
+        output_source_getter := CAP_INTERNAL_METHOD_NAME_RECORD.(name).output_source_getter;
+        output_range_getter := CAP_INTERNAL_METHOD_NAME_RECORD.(name).output_range_getter;
         
         return
           function ( arg )
-            local src_trg, S, T;
+            local S, T;
             
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            S := src_trg[1];
-            T := src_trg[2];
+            S := CallFuncList( output_source_getter, Concatenation( [ ZC ], arg ) );
             
-            return MorphismInPositivelyZGradedCategory(
-                           S,
-                           AsZFunction( i -> CallFuncList( oper, List( arg, a -> CertainDegreePart( a, i ) ) ) ),
-                           T );
-            
-          end;
-          
-      end;
-    
-    ## e.g., CokernelColiftWithGivenCokernelObject
-    create_func_universal_morphism :=
-      function ( name )
-        local info, oper, type;
-        
-        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-        
-        if not info.with_given_without_given_name_pair[2] = name then
-            Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
-        fi;
-        
-        oper := ValueGlobal( name );
-        
-        type := info.io_type;
-        
-        return
-          function ( arg )
-            local src_trg, S, T;
-            
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            S := src_trg[1];
-            T := src_trg[2];
+            T := CallFuncList( output_range_getter, Concatenation( [ ZC ], arg ) );
             
             return MorphismInPositivelyZGradedCategory(
                            S,
@@ -1071,30 +1040,6 @@ InstallMethod( PositivelyZGradedCategory,
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
               "Lift",
               "Colift",
-              ## TODO: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS cannot deal with these yet:
-              "FiberProductEmbeddingInDirectSum",
-              "DirectSumDiagonalDifference",
-              "DirectSumCodiagonalDifference",
-              "DirectSumProjectionInPushout",
-              "IsomorphismFromCoimageToCokernelOfKernel",
-              "IsomorphismFromCokernelOfDiagonalDifferenceToPushout",
-              "IsomorphismFromCokernelOfKernelToCoimage",
-              "IsomorphismFromCoproductToDirectSum",
-              "IsomorphismFromDirectProductToDirectSum",
-              "IsomorphismFromDirectSumToCoproduct",
-              "IsomorphismFromDirectSumToDirectProduct",
-              "IsomorphismFromFiberProductToKernelOfDiagonalDifference",
-              "IsomorphismFromImageObjectToKernelOfCokernel",
-              "IsomorphismFromKernelOfCokernelToImageObject",
-              "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
-              "IsomorphismFromPushoutToCokernelOfDiagonalDifference",
-              "CanonicalIdentificationFromCoimageToImageObject",
-              "CanonicalIdentificationFromImageObjectToCoimage",
-              "IsomorphismFromCoequalizerOfCoproductDiagramToPushout",
-              "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
-              "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
-              "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
-              ## END TODO
               ];
     
     for func in skip do
@@ -1120,8 +1065,8 @@ InstallMethod( PositivelyZGradedCategory,
         elif info.return_type = "morphism" and info.filter_list = [ "category" ] then
             continue;
         elif info.return_type = "morphism" or info.return_type = "morphism_or_fail" then
-            if not IsBound( info.io_type ) then
-                ## if there is no io_type we cannot do anything
+            if not (IsBound( info.output_source_getter ) and IsBound( info.output_range_getter )) then
+                ## if there are no getters for source and range we cannot do anything
                 continue;
             elif IsList( info.with_given_without_given_name_pair ) and
               name = info.with_given_without_given_name_pair[1] then
@@ -1138,12 +1083,7 @@ InstallMethod( PositivelyZGradedCategory,
                 fi;
                 continue;
             fi;
-            
-            if IsList( info.with_given_without_given_name_pair ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name ) then
-                func := create_func_universal_morphism( name );
-            else
-                func := create_func_morphism( name );
-            fi;
+            func := create_func_morphism( name );
         elif info.return_type = "twocell" then
             continue;
         else
