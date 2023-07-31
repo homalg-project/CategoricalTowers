@@ -44,7 +44,12 @@ TruthMorphismOfTrue := rec(
 TruthMorphismOfTrueWithGivenObjects := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "morphism",
-  io_type := [ [ "T", "Omega" ], [ "T", "Omega" ] ] ),
+  input_arguments_names := [ "cat", "T", "Omega" ],
+  output_source_getter_string := "T",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Omega",
+  output_range_getter_preconditions := [ ],
+),
 
 TruthMorphismOfFalse := rec(
   filter_list := [ "category" ],
@@ -58,7 +63,12 @@ TruthMorphismOfFalse := rec(
 TruthMorphismOfFalseWithGivenObjects := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "morphism",
-  io_type := [ [ "T", "Omega" ], [ "T", "Omega" ] ] ),
+  input_arguments_names := [ "cat", "T", "Omega" ],
+  output_source_getter_string := "T",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Omega",
+  output_range_getter_preconditions := [ ],
+),
 
 TruthMorphismOfNot := rec(
   filter_list := [ "category" ],
@@ -72,7 +82,12 @@ TruthMorphismOfNot := rec(
 TruthMorphismOfNotWithGivenObjects := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "morphism",
-  io_type := [ [ "Omega", "Omega1" ], [ "Omega", "Omega1" ] ] ),
+  input_arguments_names := [ "cat", "Omega", "Omega1" ],
+  output_source_getter_string := "Omega",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Omega1",
+  output_range_getter_preconditions := [ ],
+),
 
 TruthMorphismOfAnd := rec(
   filter_list := [ "category" ],
@@ -86,7 +101,12 @@ TruthMorphismOfAnd := rec(
 TruthMorphismOfAndWithGivenObjects := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "morphism",
-  io_type := [ [ "Omega2", "Omega" ], [ "Omega2", "Omega" ] ] ),
+  input_arguments_names := [ "cat", "Omega2", "Omega" ],
+  output_source_getter_string := "Omega2",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Omega",
+  output_range_getter_preconditions := [ ],
+),
 
 TruthMorphismOfOr := rec(
   filter_list := [ "category" ],
@@ -100,7 +120,12 @@ TruthMorphismOfOr := rec(
 TruthMorphismOfOrWithGivenObjects := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "morphism",
-  io_type := [ [ "Omega2", "Omega" ], [ "Omega2", "Omega" ] ] ),
+  input_arguments_names := [ "cat", "Omega2", "Omega" ],
+  output_source_getter_string := "Omega2",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Omega",
+  output_range_getter_preconditions := [ ],
+),
 
 TruthMorphismOfImplies := rec(
   filter_list := [ "category" ],
@@ -114,7 +139,12 @@ TruthMorphismOfImplies := rec(
 TruthMorphismOfImpliesWithGivenObjects := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "morphism",
-  io_type := [ [ "Omega2", "Omega" ], [ "Omega2", "Omega" ] ] ),
+  input_arguments_names := [ "cat", "Omega2", "Omega" ],
+  output_source_getter_string := "Omega2",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Omega",
+  output_range_getter_preconditions := [ ],
+),
 
 ClassifyingMorphismOfSubobject := rec(
   filter_list := [ "category", "morphism" ],
@@ -127,12 +157,20 @@ ClassifyingMorphismOfSubobject := rec(
 ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier := rec(
   filter_list := [ "category", "morphism", "object" ],
   return_type := "morphism",
-  io_type := [ [ "alpha", "Omega" ], [ "alpha_range", "Omega" ] ] ),
+  input_arguments_names := [ "cat", "alpha", "Omega" ],
+  output_source_getter_string := "Range( alpha )",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Omega",
+  output_range_getter_preconditions := [ ],
+),
 
 SubobjectOfClassifyingMorphism := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "morphism",
-  io_type := [ [ "alpha" ], [ "subobject", "alpha_source" ] ] ),
+  input_arguments_names := [ "cat", "alpha" ],
+  output_range_getter_string := "Source( alpha )",
+  output_range_getter_preconditions := [ ],
+),
 
 PowerObject := rec(
   filter_list := [ "category", "object" ],
@@ -152,7 +190,12 @@ PowerObjectFunctorial := rec(
 PowerObjectFunctorialWithGivenPowerObjects := rec(
   filter_list := [ "category", "object", "morphism", "object" ],
   return_type := "morphism",
-  io_type := [ [ "Pb", "f", "Pa" ], [ "Pb", "Pa" ] ] ),
+  input_arguments_names := [ "cat", "Pb", "f", "Pa" ],
+  output_source_getter_string := "Pb",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Pa",
+  output_range_getter_preconditions := [ ],
+),
 
 UpperSegmentOfRelation := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
@@ -167,7 +210,12 @@ UpperSegmentOfRelation := rec(
 UpperSegmentOfRelationWithGivenRange := rec(
   filter_list := [ "category", "object", "object", "morphism", "object" ],
   return_type := "morphism",
-  io_type := [ [ "a", "b", "mu", "Pb" ], [ "a", "Pb" ] ] ),
+  input_arguments_names := [ "cat", "a", "b", "mu", "Pb" ],
+  output_source_getter_string := "a",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Pb",
+  output_range_getter_preconditions := [ ],
+),
 
 LowerSegmentOfRelation := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
@@ -182,7 +230,12 @@ LowerSegmentOfRelation := rec(
 LowerSegmentOfRelationWithGivenRange := rec(
   filter_list := [ "category", "object", "object", "morphism", "object" ],
   return_type := "morphism",
-  io_type := [ [ "a", "b", "mu", "Pa" ], [ "b", "Pa" ] ] ),
+  input_arguments_names := [ "cat", "a", "b", "mu", "Pa" ],
+  output_source_getter_string := "b",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Pa",
+  output_range_getter_preconditions := [ ],
+),
 
 SingletonMorphism := rec(
   filter_list := [ "category", "object" ],
@@ -197,7 +250,12 @@ SingletonMorphism := rec(
 SingletonMorphismWithGivenPowerObject := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "morphism",
-  io_type := [ [ "a", "Pa" ], [ "a", "Pa" ] ] ),
+  input_arguments_names := [ "cat", "a", "Pa" ],
+  output_source_getter_string := "a",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Pa",
+  output_range_getter_preconditions := [ ],
+),
 
 IsomorphismOntoCartesianSquareOfPowerObject := rec(
   filter_list := [ "category", "object" ],
@@ -212,7 +270,12 @@ IsomorphismOntoCartesianSquareOfPowerObject := rec(
 IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "object" ],
   return_type := "morphism",
-  io_type := [ [ "ExpaOmega2", "a", "PaxPa" ], [ "ExpaOmega2", "PaxPa" ] ] ),
+  input_arguments_names := [ "cat", "ExpaOmega2", "a", "PaxPa" ],
+  output_source_getter_string := "ExpaOmega2",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "PaxPa",
+  output_range_getter_preconditions := [ ],
+),
 
 RelativeTruthMorphismOfTrue := rec(
   filter_list := [ "category", "object" ],
@@ -227,7 +290,12 @@ RelativeTruthMorphismOfTrue := rec(
 RelativeTruthMorphismOfTrueWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "object" ],
   return_type := "morphism",
-  io_type := [ [ "T", "a", "Pa" ], [ "T", "Pa" ] ] ),
+  input_arguments_names := [ "cat", "T", "a", "Pa" ],
+  output_source_getter_string := "T",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Pa",
+  output_range_getter_preconditions := [ ],
+),
 
 RelativeTruthMorphismOfFalse := rec(
   filter_list := [ "category", "object" ],
@@ -242,7 +310,12 @@ RelativeTruthMorphismOfFalse := rec(
 RelativeTruthMorphismOfFalseWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "object" ],
   return_type := "morphism",
-  io_type := [ [ "T", "a", "Pa" ], [ "T", "Pa" ] ] ),
+  input_arguments_names := [ "cat", "T", "a", "Pa" ],
+  output_source_getter_string := "T",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Pa",
+  output_range_getter_preconditions := [ ],
+),
 
 RelativeTruthMorphismOfNot := rec(
   filter_list := [ "category", "object" ],
@@ -257,7 +330,12 @@ RelativeTruthMorphismOfNot := rec(
 RelativeTruthMorphismOfNotWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "object" ],
   return_type := "morphism",
-  io_type := [ [ "Pa", "a", "Pa1" ], [ "Pa", "Pa1" ] ] ),
+  input_arguments_names := [ "cat", "Pa", "a", "Pa1" ],
+  output_source_getter_string := "Pa",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Pa1",
+  output_range_getter_preconditions := [ ],
+),
 
 RelativeTruthMorphismOfAnd := rec(
   filter_list := [ "category", "object" ],
@@ -272,7 +350,12 @@ RelativeTruthMorphismOfAnd := rec(
 RelativeTruthMorphismOfAndWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "object" ],
   return_type := "morphism",
-  io_type := [ [ "PaxPa", "a", "Pa" ], [ "PaxPa", "Pa" ] ] ),
+  input_arguments_names := [ "cat", "PaxPa", "a", "Pa" ],
+  output_source_getter_string := "PaxPa",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Pa",
+  output_range_getter_preconditions := [ ],
+),
 
 RelativeTruthMorphismOfOr := rec(
   filter_list := [ "category", "object" ],
@@ -287,7 +370,12 @@ RelativeTruthMorphismOfOr := rec(
 RelativeTruthMorphismOfOrWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "object" ],
   return_type := "morphism",
-  io_type := [ [ "PaxPa", "a", "Pa" ], [ "PaxPa", "Pa" ] ] ),
+  input_arguments_names := [ "cat", "PaxPa", "a", "Pa" ],
+  output_source_getter_string := "PaxPa",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Pa",
+  output_range_getter_preconditions := [ ],
+),
 
 RelativeTruthMorphismOfImplies := rec(
   filter_list := [ "category", "object" ],
@@ -302,7 +390,12 @@ RelativeTruthMorphismOfImplies := rec(
 RelativeTruthMorphismOfImpliesWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "object" ],
   return_type := "morphism",
-  io_type := [ [ "PaxPa", "a", "Pa" ], [ "PaxPa", "Pa" ] ] ),
+  input_arguments_names := [ "cat", "PaxPa", "a", "Pa" ],
+  output_source_getter_string := "PaxPa",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Pa",
+  output_range_getter_preconditions := [ ],
+),
 
 ListOfSubobjects := rec(
   filter_list := [ "category", "object" ],
@@ -325,7 +418,12 @@ EmbeddingOfPseudoComplementSubobject := rec(
 EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement := rec(
   filter_list := [ "category", "morphism", "object" ],
   return_type := "morphism",
-  io_type := [ [ "iota", "complement" ], [ "complement", "iota_range" ] ] ),
+  input_arguments_names := [ "cat", "iota", "complement" ],
+  output_source_getter_string := "complement",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Range( iota )",
+  output_range_getter_preconditions := [ ],
+),
 
 IntersectionSubobject := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -344,7 +442,12 @@ EmbeddingOfIntersectionSubobject := rec(
 EmbeddingOfIntersectionSubobjectWithGivenIntersection := rec(
   filter_list := [ "category", "morphism", "morphism", "object" ],
   return_type := "morphism",
-  io_type := [ [ "iota1", "iota2", "intersection" ], [ "intersection", "iota1_range" ] ] ),
+  input_arguments_names := [ "cat", "iota1", "iota2", "intersection" ],
+  output_source_getter_string := "intersection",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Range( iota1 )",
+  output_range_getter_preconditions := [ ],
+),
 
 UnionSubobject := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -363,7 +466,12 @@ EmbeddingOfUnionSubobject := rec(
 EmbeddingOfUnionSubobjectWithGivenUnion := rec(
   filter_list := [ "category", "morphism", "morphism", "object" ],
   return_type := "morphism",
-  io_type := [ [ "iota1", "iota2", "union" ], [ "union", "iota1_range" ] ] ),
+  input_arguments_names := [ "cat", "iota1", "iota2", "union" ],
+  output_source_getter_string := "union",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Range( iota1 )",
+  output_range_getter_preconditions := [ ],
+),
 
 RelativePseudoComplementSubobject := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -382,7 +490,12 @@ EmbeddingOfRelativePseudoComplementSubobject := rec(
 EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication := rec(
   filter_list := [ "category", "morphism", "morphism", "object" ],
   return_type := "morphism",
-  io_type := [ [ "iota1", "iota2", "implication" ], [ "implication", "iota1_range" ] ] ),
+  input_arguments_names := [ "cat", "iota1", "iota2", "implication" ],
+  output_source_getter_string := "implication",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Range( iota1 )",
+  output_range_getter_preconditions := [ ],
+),
 
 HasPushoutComplement := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -409,7 +522,9 @@ HasPushoutComplement := rec(
 PushoutComplement := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   return_type := "morphism",
-  io_type := [ [ "l", "m" ], [ "D", "m_range" ] ],
+  input_arguments_names := [ "cat", "l", "m" ],
+  output_range_getter_string := "Range( m )",
+  output_range_getter_preconditions := [ ],
   pre_function := function( cat, l, m )
     local value;
     

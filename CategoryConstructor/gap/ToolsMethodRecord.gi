@@ -20,7 +20,11 @@ IsWeakInitial := rec(
 
 RelativeLift := rec(
   filter_list := [ "category", "morphism", "morphism", "morphism" ],
-  io_type := [ [ "beta", "alpha", "nu" ], [ "beta_source", "alpha_source" ] ],
+  input_arguments_names := [ "cat", "beta", "alpha", "nu" ],
+  output_source_getter_string := "Source( beta )",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Source( alpha )",
+  output_range_getter_preconditions := [ ],
   pre_function := function( category, beta, alpha, nu )
     local value;
     
@@ -66,7 +70,9 @@ BiasedRelativeWeakFiberProduct := rec(
 
 ProjectionOfBiasedRelativeWeakFiberProduct := rec(
   filter_list := [ "category", "morphism", "morphism", "morphism" ],
-  io_type := [ [ "a", "b", "c" ], [ "P", "a_source" ] ],
+  input_arguments_names := [ "cat", "a", "b", "c" ],
+  output_range_getter_string := "Source( a )",
+  output_range_getter_preconditions := [ ],
   with_given_object_position := "Source",
   #dual_operation := "InjectionOfBiasedRelativeWeakPushout",
   pre_function := RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
@@ -75,7 +81,11 @@ ProjectionOfBiasedRelativeWeakFiberProduct := rec(
 
 ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct := rec(
   filter_list := [ "category", "morphism", "morphism", "morphism", "object" ],
-  io_type := [ [ "a", "b", "c", "P" ], [ "P", "a_source" ] ],
+  input_arguments_names := [ "cat", "a", "b", "c", "P" ],
+  output_source_getter_string := "P",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Source( a )",
+  output_range_getter_preconditions := [ ],
   #dual_operation := "InjectionOfBiasedRelativeWeakPushoutWithGivenBiasedRelativeWeakPushout",
   pre_function := RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
   return_type := "morphism",
@@ -83,7 +93,9 @@ ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduc
 
 UniversalMorphismIntoBiasedRelativeWeakFiberProduct := rec(
   filter_list := [ "category", "morphism", "morphism", "morphism", "morphism" ],
-  io_type := [ [ "a", "b", "c", "t" ], [ "t_source", "P" ] ],
+  input_arguments_names := [ "cat", "a", "b", "c", "t" ],
+  output_source_getter_string := "Source( t )",
+  output_source_getter_preconditions := [ ],
   with_given_object_position := "Range",
   #dual_operation := "UniversalMorphismFromBiasedRelativeWeakPushout",
   pre_function := UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUCT_PREFUNCTION,
@@ -92,7 +104,11 @@ UniversalMorphismIntoBiasedRelativeWeakFiberProduct := rec(
 
 UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct := rec(
   filter_list := [ "category", "morphism", "morphism", "morphism", "morphism", "object" ],
-  io_type := [ [ "a", "b", "c", "t", "P", ], [ "t_source", "P" ] ],
+  input_arguments_names := [ "cat", "a", "b", "c", "t", "P" ],
+  output_source_getter_string := "Source( t )",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "P",
+  output_range_getter_preconditions := [ ],
   #dual_operation := "UniversalMorphismFromBiasedRelativeWeakPushoutWithGivenBiasedRelativeWeakPushout",
   pre_function := UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUCT_PREFUNCTION,
   return_type := "morphism",
@@ -100,14 +116,18 @@ UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFi
 
 MorphismOntoSumOfImagesOfAllMorphisms := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "a", "b" ], [ "d", "b" ] ],
+  input_arguments_names := [ "cat", "a", "b" ],
+  output_range_getter_string := "b",
+  output_range_getter_preconditions := [ ],
   return_type := "morphism",
   is_merely_set_theoretic := true
 ),
 
 EmbeddingOfSumOfImagesOfAllMorphisms := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "a", "b" ], [ "s", "b" ] ],
+  input_arguments_names := [ "cat", "a", "b" ],
+  output_range_getter_string := "b",
+  output_range_getter_preconditions := [ ],
   return_type := "morphism",
   is_merely_set_theoretic := true
 ),
@@ -195,7 +215,9 @@ Limit := rec(
 
 ProjectionInFactorOfLimit := rec(
   filter_list := [ "category", "list_of_objects", "arbitrary_list", "integer" ],
-  io_type := [ [ "objects", "decorated_morphisms", "k" ], [ "P", "objects_k" ] ],
+  input_arguments_names := [ "cat", "objects", "decorated_morphisms", "k" ],
+  output_range_getter_string := "objects[k]",
+  output_range_getter_preconditions := [ ],
   with_given_object_position := "Source",
   return_type := "morphism",
   
@@ -212,7 +234,11 @@ ProjectionInFactorOfLimit := rec(
 
 ProjectionInFactorOfLimitWithGivenLimit := rec(
   filter_list := [ "category", "list_of_objects", "arbitrary_list", "integer", "object" ],
-  io_type := [ [ "objects", "decorated_morphisms", "k", "P" ], [ "P", "objects_k" ] ],
+  input_arguments_names := [ "cat", "objects", "decorated_morphisms", "k", "P" ],
+  output_source_getter_string := "P",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "objects[k]",
+  output_range_getter_preconditions := [ ],
   return_type := "morphism",
   
   #pre_function := function( cat, objects, decorated_morphisms, projection_number, limit )
@@ -228,7 +254,9 @@ ProjectionInFactorOfLimitWithGivenLimit := rec(
 
 UniversalMorphismIntoLimit := rec(
   filter_list := [ "category", "list_of_objects", "arbitrary_list", "object", "list_of_morphisms" ],
-  io_type := [ [ "objects", "decorated_morphisms", "T", "tau" ], [ "T", "P" ] ],
+  input_arguments_names := [ "cat", "objects", "decorated_morphisms", "T", "tau" ],
+  output_source_getter_string := "T",
+  output_source_getter_preconditions := [ ],
   with_given_object_position := "Range",
   return_type := "morphism",
   
@@ -251,7 +279,11 @@ UniversalMorphismIntoLimit := rec(
 
 UniversalMorphismIntoLimitWithGivenLimit := rec(
   filter_list := [ "category", "list_of_objects", "arbitrary_list", "object", "list_of_morphisms", "object" ],
-  io_type := [ [ "objects", "decorated_morphisms", "T", "tau", "P" ], [ "T", "P" ] ],
+  input_arguments_names := [ "cat", "objects", "decorated_morphisms", "T", "tau", "P" ],
+  output_source_getter_string := "T",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "P",
+  output_range_getter_preconditions := [ ],
   return_type := "morphism",
   
   #pre_function := function( cat, objects, decorated_morphisms, test_object, source, limit )
@@ -291,7 +323,9 @@ Colimit := rec(
 
 InjectionOfCofactorOfColimit := rec(
   filter_list := [ "category", "list_of_objects", "arbitrary_list", "integer" ],
-  io_type := [ [ "objects", "decorated_morphisms", "k" ], [ "objects_k", "P" ] ],
+  input_arguments_names := [ "cat", "objects", "decorated_morphisms", "k" ],
+  output_source_getter_string := "objects[k]",
+  output_source_getter_preconditions := [ ],
   with_given_object_position := "Range",
   return_type := "morphism",
   
@@ -308,7 +342,11 @@ InjectionOfCofactorOfColimit := rec(
 
 InjectionOfCofactorOfColimitWithGivenColimit := rec(
   filter_list := [ "category", "list_of_objects", "arbitrary_list", "integer", "object" ],
-  io_type := [ [ "objects", "decorated_morphisms", "k", "P" ], [ "objects_k", "P" ] ],
+  input_arguments_names := [ "cat", "objects", "decorated_morphisms", "k", "P" ],
+  output_source_getter_string := "objects[k]",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "P",
+  output_range_getter_preconditions := [ ],
   return_type := "morphism",
   
   #pre_function := function( cat, objects, decorated_morphisms, injection_number, limit )
@@ -324,7 +362,9 @@ InjectionOfCofactorOfColimitWithGivenColimit := rec(
 
 UniversalMorphismFromColimit := rec(
   filter_list := [ "category", "list_of_objects", "arbitrary_list", "object", "list_of_morphisms" ],
-  io_type := [ [ "objects", "decorated_morphisms", "T", "tau" ], [ "P", "T" ] ],
+  input_arguments_names := [ "cat", "objects", "decorated_morphisms", "T", "tau" ],
+  output_range_getter_string := "T",
+  output_range_getter_preconditions := [ ],
   with_given_object_position := "Source",
   return_type := "morphism",
   
@@ -347,7 +387,11 @@ UniversalMorphismFromColimit := rec(
 
 UniversalMorphismFromColimitWithGivenColimit := rec(
   filter_list := [ "category", "list_of_objects", "arbitrary_list", "object", "list_of_morphisms", "object" ],
-  io_type := [ [ "objects", "decorated_morphisms", "T", "tau", "P" ], [ "P", "T" ] ],
+  input_arguments_names := [ "cat", "objects", "decorated_morphisms", "T", "tau", "P" ],
+  output_source_getter_string := "P",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "T",
+  output_range_getter_preconditions := [ ],
   return_type := "morphism",
   
   #pre_function := function( cat, objects, decorated_morphisms, test_object, source, limit )
