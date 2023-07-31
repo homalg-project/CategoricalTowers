@@ -528,7 +528,6 @@ InstallMethod( LazyCategory,
               "IsEqualForCacheForObjects",
               "IsEqualForCacheForMorphisms",
               "MultiplyWithElementOfCommutativeRingForMorphisms",
-              "FiberProductEmbeddingInDirectSum", ## TODO: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
               ];
     
     for func in skip do
