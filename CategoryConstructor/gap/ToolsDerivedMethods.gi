@@ -11,6 +11,166 @@
 ####################################
 
 ##
+AddDerivationToCAP( MorphismBetweenCoproductsWithGivenCoproducts,
+        "MorphismBetweenCoproductsWithGivenCoproducts using universal morphisms of coproducts  (with support for empty coproducts)",
+        [ [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ],
+          [ PreCompose, 2 ],
+          [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ] ],
+        
+  function( cat, source, diagram_source, F, diagram_range, range )
+    local s, map, mor, inj, cmp;
+    
+    ## the code below is the morphism-part of the doctrine-specific ur-algorithm for strict cocartesian (monoidal) categories
+    
+    s := Length( diagram_source );
+    
+    map := F[1];
+    mor := F[2];
+    
+    inj := List( [ 0 .. s - 1 ], i ->
+                 InjectionOfCofactorOfCoproductWithGivenCoproduct( cat,
+                         diagram_range,
+                         1 + map[1 + i],
+                         range ) );
+    
+    cmp := List( [ 0 .. s - 1 ], i ->
+                 PreCompose( cat,
+                         mor[1 + i],
+                         inj[1 + i] ) );
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat,
+                   diagram_source,
+                   range,
+                   cmp,
+                   source );
+    
+end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true );
+
+##
+AddDerivationToCAP( MorphismBetweenCoproductsWithGivenCoproducts,
+        "MorphismBetweenCoproductsWithGivenCoproducts using universal morphisms of coproducts (without support for empty coproducts)",
+        [ [ UniversalMorphismFromInitialObjectWithGivenInitialObject, 1 ],
+          [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ],
+          [ PreCompose, 2 ],
+          [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ] ],
+        
+  function( cat, source, diagram_source, F, diagram_range, range )
+    local s, map, mor, inj, cmp;
+    
+    ## the code below is the morphism-part of the doctrine-specific ur-algorithm for strict cocartesian (monoidal) categories
+    
+    s := Length( diagram_source );
+    
+    ## the empty case
+    if s = 0 then
+        
+        return UniversalMorphismFromInitialObjectWithGivenInitialObject( cat, range, source );
+        
+    fi;
+    
+    map := F[1];
+    mor := F[2];
+    
+    inj := List( [ 0 .. s - 1 ], i ->
+                 InjectionOfCofactorOfCoproductWithGivenCoproduct( cat,
+                         diagram_range,
+                         1 + map[1 + i],
+                         range ) );
+    
+    cmp := List( [ 0 .. s - 1 ], i ->
+                 PreCompose( cat,
+                         mor[1 + i],
+                         inj[1 + i] ) );
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat,
+                   diagram_source,
+                   range,
+                   cmp,
+                   source );
+    
+end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
+
+##
+AddDerivationToCAP( MorphismBetweenDirectProductsWithGivenDirectProducts,
+        "MorphismBetweenDirectProductsWithGivenDirectProducts using universal morphisms of direct products  (with support for empty direct products)",
+        [ [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ],
+          [ PreCompose, 2 ],
+          [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ] ],
+        
+  function( cat, source, diagram_source, F, diagram_range, range )
+    local t, map, mor, prj, cmp;
+    
+    ## the code below is the morphism-part of the doctrine-specific ur-algorithm for strict cartesian (monoidal) categories
+    
+    t := Length( diagram_range );
+    
+    map := F[1];
+    mor := F[2];
+    
+    prj := List( [ 0 .. t - 1 ], j ->
+                 ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
+                         diagram_source,
+                         1 + map[1 + j],
+                         source ) );
+    
+    cmp := List( [ 0 .. t - 1 ], j ->
+                 PreCompose( cat,
+                         prj[1 + j],
+                         mor[1 + j] ) );
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
+                   diagram_range,
+                   source,
+                   cmp,
+                   range );
+    
+end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true );
+
+##
+AddDerivationToCAP( MorphismBetweenDirectProductsWithGivenDirectProducts,
+        "MorphismBetweenDirectProductsWithGivenDirectProducts using universal morphisms of direct products (without support for empty direct products)",
+        [ [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1 ],
+          [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ],
+          [ PreCompose, 2 ],
+          [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ] ],
+        
+  function( cat, source, diagram_source, F, diagram_range, range )
+    local t, map, mor, prj, cmp;
+    
+    ## the code below is the morphism-part of the doctrine-specific ur-algorithm for strict cartesian (monoidal) categories
+    
+    t := Length( diagram_range );
+    
+    ## the empty case
+    if t = 0 then
+        
+        return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, source, range );
+        
+    fi;
+    
+    map := F[1];
+    mor := F[2];
+    
+    prj := List( [ 0 .. t - 1 ], j ->
+                 ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
+                         diagram_source,
+                         1 + map[1 + j],
+                         source ) );
+    
+    cmp := List( [ 0 .. t - 1 ], j ->
+                 PreCompose( cat,
+                         prj[1 + j],
+                         mor[1 + j] ) );
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
+                   diagram_range,
+                   source,
+                   cmp,
+                   range );
+    
+end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
+
+##
 AddDerivationToCAP( BiasedRelativeWeakFiberProduct,
                     "BiasedRelativeWeakFiberProduct as the source of ProjectionOfBiasedRelativeWeakFiberProduct",
                     [ [ ProjectionOfBiasedRelativeWeakFiberProduct, 1 ] ],

@@ -6,6 +6,180 @@
 
 InstallValue( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD, rec(
 
+MorphismBetweenCoproducts := rec(
+  filter_list := [ "category", "list_of_objects", "arbitrary_list", "list_of_objects" ],
+  input_arguments_names := [ "cat", "source_diagram", "pair", "range_diagram" ],
+  return_type := "morphism",
+  output_source_getter_string := "Coproduct( cat, source_diagram )",
+  output_source_getter_preconditions := [ [ "Coproduct", 1 ] ],
+  output_range_getter_string := "Coproduct( cat, range_diagram )",
+  output_range_getter_preconditions := [ [ "Coproduct", 1 ] ],
+  with_given_object_position := "both",
+  pre_function := function( cat, source_diagram, pair, range_diagram )
+    local i, j;
+    
+    if Length( pair[1] ) <> Length( pair[2] ) then
+        
+        return [ false, "the length of the list of indices does not match the length of the morphisms" ];
+        
+    fi;
+    
+    if Length( pair[1] ) <> Length( source_diagram ) then
+        
+        return [ false, "the length of the list of indices does not match the length of the source diagram" ];
+        
+    fi;
+    
+    for i in [ 0 .. Length( pair[1] ) - 1 ] do
+        
+        if not IsInt( pair[1][1 + i] ) then
+            
+            return [ false, Concatenation( "the ", String(i), "-th index is not an integer" ) ];
+            
+        fi;
+        
+        if pair[1][1 + i] < 0 then
+            
+            return [ false, Concatenation( "the ", String(i), "-th index is negative" ) ];
+            
+        fi;
+        
+        if pair[1][1 + i] >= Length( range_diagram ) then
+            
+            return [ false, Concatenation( "the ", String(i), "-th index is larger or equal to the length as the range diagram" ) ];
+            
+        fi;
+        
+        if not IsEqualForObjects( cat, source_diagram[1 + i], Source( pair[2][1 + i] ) ) then
+            
+            return [ false, Concatenation( "the source of the morphism with index ", String(i), " must be equal to the object with index ", String(i), " in the source diagram" ) ];
+            
+        fi;
+        
+        j := pair[1][1 + i];
+        
+        if not IsEqualForObjects( cat, range_diagram[1 + j], Range( pair[2][1 + i] ) ) then
+            
+            return [ false, Concatenation( "the range of the morphism with index ", String(i), " must be equal to the object with index ", String(j), " in the range diagram" ) ];
+            
+        fi;
+        
+    od;
+    
+    return [ true ];
+    
+  end,
+  dual_operation := "MorphismBetweenDirectProducts",
+  dual_preprocessor_func := function( arg )
+      local list;
+      list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
+      return NTuple( 4, list[1], list[4], list[3], list[2] );
+  end
+),
+
+MorphismBetweenCoproductsWithGivenCoproducts := rec(
+  filter_list := [ "category", "object", "list_of_objects", "arbitrary_list", "list_of_objects", "object" ],
+  input_arguments_names := [ "cat", "S", "source_diagram", "pair", "range_diagram", "T" ],
+  output_source_getter_string := "S",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "T",
+  output_range_getter_preconditions := [ ],
+  return_type := "morphism",
+  dual_operation := "MorphismBetweenDirectProductsWithGivenDirectProducts",
+  dual_preprocessor_func := function( arg )
+      local list;
+      list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
+      return NTuple( 6, list[1], list[6], list[5], list[4], list[3], list[2] );
+  end
+),
+
+MorphismBetweenDirectProducts := rec(
+  filter_list := [ "category", "list_of_objects", "arbitrary_list", "list_of_objects" ],
+  input_arguments_names := [ "cat", "source_diagram", "pair", "range_diagram" ],
+  return_type := "morphism",
+  output_source_getter_string := "DirectProduct( cat, source_diagram )",
+  output_source_getter_preconditions := [ [ "DirectProduct", 1 ] ],
+  output_range_getter_string := "DirectProduct( cat, range_diagram )",
+  output_range_getter_preconditions := [ [ "DirectProduct", 1 ] ],
+  with_given_object_position := "both",
+  pre_function := function( cat, source_diagram, pair, range_diagram )
+    local j, i;
+    
+    if Length( pair[1] ) <> Length( pair[2] ) then
+        
+        return [ false, "the length of the list of indices does not match the length of the morphisms" ];
+        
+    fi;
+    
+    if Length( pair[1] ) <> Length( range_diagram ) then
+        
+        return [ false, "the length of the list of indices does not match the length of the range diagram" ];
+        
+    fi;
+    
+    for j in [ 0 .. Length( pair[1] ) - 1 ] do
+        
+        if not IsInt( pair[1][1 + j] ) then
+            
+            return [ false, Concatenation( "the ", String(j), "-th index is not an integer" ) ];
+            
+        fi;
+        
+        if pair[1][1 + j] < 0 then
+            
+            return [ false, Concatenation( "the ", String(j), "-th index is negative" ) ];
+            
+        fi;
+        
+        if pair[1][1 + j] >= Length( source_diagram ) then
+            
+            return [ false, Concatenation( "the ", String(j), "-th index is larger or equal to the length as the source diagram" ) ];
+            
+        fi;
+        
+        if not IsEqualForObjects( cat, range_diagram[1 + j], Source( pair[2][1 + j] ) ) then
+            
+            return [ false, Concatenation( "the source of the morphism with index ", String(j), " must be equal to the object with index ", String(j), " in the range diagram" ) ];
+            
+        fi;
+        
+        i := pair[1][1 + j];
+        
+        if not IsEqualForObjects( cat, source_diagram[1 + i], Range( pair[2][1 + j] ) ) then
+            
+            return [ false, Concatenation( "the range of the morphism with index ", String(j), " must be equal to the object with index ", String(i), " in the source diagram" ) ];
+            
+        fi;
+        
+    od;
+    
+    return [ true ];
+    
+  end,
+  dual_operation := "MorphismBetweenCoproducts",
+  dual_preprocessor_func := function( arg )
+      local list;
+      list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
+      return NTuple( 4, list[1], list[4], list[3], list[2] );
+  end
+),
+
+MorphismBetweenDirectProductsWithGivenDirectProducts := rec(
+  filter_list := [ "category", "object", "list_of_objects", "arbitrary_list", "list_of_objects", "object" ],
+  input_arguments_names := [ "cat", "S", "source_diagram", "pair", "range_diagram", "T" ],
+  output_source_getter_string := "S",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "T",
+  output_range_getter_preconditions := [ ],
+  return_type := "morphism",
+  dual_operation := "MorphismBetweenCoproductsWithGivenCoproducts",
+  dual_preprocessor_func := function( arg )
+      local list;
+      list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
+      return NTuple( 6, list[1], list[6], list[5], list[4], list[3], list[2] );
+  end
+),
+
 IsWeakTerminal := rec(
   filter_list := [ "category", "object" ],
   return_type := "bool",

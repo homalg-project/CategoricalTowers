@@ -198,6 +198,10 @@
 #! * <Ref BookName="MonoidalCategories" Func="MonoidalPostComposeMorphismWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MonoidalPreComposeMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MonoidalPreComposeMorphismWithGivenObjects" Label="for Is" />
+#! * <Ref BookName="CategoryConstructor" Func="MorphismBetweenCoproducts" Label="for Is" />
+#! * <Ref BookName="CategoryConstructor" Func="MorphismBetweenCoproductsWithGivenCoproducts" Label="for Is" />
+#! * <Ref BookName="CategoryConstructor" Func="MorphismBetweenDirectProducts" Label="for Is" />
+#! * <Ref BookName="CategoryConstructor" Func="MorphismBetweenDirectProductsWithGivenDirectProducts" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismBetweenDirectSums" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismBetweenDirectSumsWithGivenDirectSums" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromCoimageToImageWithGivenObjects" Label="for Is" />

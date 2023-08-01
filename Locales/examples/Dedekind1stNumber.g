@@ -14,7 +14,7 @@ IntervalCategory;
 Display( IntervalCategory );
 #! A CAP category with name IntervalCategory:
 #! 
-#! 19 primitive operations were used to derive 295 operations for this category which algorithmically
+#! 19 primitive operations were used to derive 299 operations for this category which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsBooleanAlgebra
 #! and furthermore mathematically
@@ -30,7 +30,7 @@ PSh := PreSheaves( IntervalCategory );
 Display( PSh );
 #! A CAP category with name PreSheaves( IntervalCategory, IntervalCategory ):
 #! 
-#! 58 primitive operations were used to derive 202 operations for this category
+#! 58 primitive operations were used to derive 206 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsCodistributiveCategory
