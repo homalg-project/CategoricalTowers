@@ -10,7 +10,7 @@ IsReflexive := rec(
   filter_list := [ "category", "object" ],
   return_type := "bool",
   dual_operation := "IsReflexive",
-  property_of := "object" ),
+),
 
 ) );
 

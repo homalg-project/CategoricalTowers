@@ -10,13 +10,13 @@ IsWeakTerminal := rec(
   filter_list := [ "category", "object" ],
   return_type := "bool",
   dual_operation := "IsWeakInitial",
-  property_of := "object" ),
+),
 
 IsWeakInitial := rec(
   filter_list := [ "category", "object" ],
   return_type := "bool",
   dual_operation := "IsWeakTerminal",
-  property_of := "object" ),
+),
 
 RelativeLift := rec(
   filter_list := [ "category", "morphism", "morphism", "morphism" ],
