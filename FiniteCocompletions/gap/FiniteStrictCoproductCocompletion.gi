@@ -1231,7 +1231,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletion
 
     extended_functor_on_morphisms :=
       function( source, morUC, range )
-        local pairS, pairT, s, t, S, T, FLS, FLT, pair_of_lists, map, mor, inj, Fmor, cmp;
+        local pairS, pairT, s, t, S, T, FLS, FLT, pair_of_lists, map, mor, Fmor;
         
         pairS := ObjectDatum( UC, Source( morUC ) );
         pairT := ObjectDatum( UC, Range( morUC ) );
@@ -1250,28 +1250,18 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletion
         map := pair_of_lists[1];
         mor := pair_of_lists[2];
         
-        inj := List( [ 0 .. s - 1 ], i ->
-                     InjectionOfCofactorOfCoproductWithGivenCoproduct( category_with_strict_coproducts,
-                             FLT,
-                             1 + map[1 + i],
-                             range ) );
-        
         Fmor := List( [ 0 .. s - 1 ], i ->
                       functor_on_morphisms(
                               FLS[1 + i],
                               mor[1 + i],
                               FLT[1 + map[1 + i]] ) );
         
-        cmp := List( [ 0 .. s - 1 ], i ->
-                     PreCompose( category_with_strict_coproducts,
-                             Fmor[1 + i],
-                             inj[1 + i] ) );
-        
-        return UniversalMorphismFromCoproductWithGivenCoproduct( category_with_strict_coproducts,
+        return MorphismBetweenCoproductsWithGivenCoproducts( category_with_strict_coproducts,
+                       source,
                        FLS,
-                       range,
-                       cmp,
-                       source );
+                       Pair( map, Fmor ),
+                       FLT,
+                       range );
         
     end;
     

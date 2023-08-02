@@ -51,6 +51,76 @@ DeclareAttribute( "GlobalSectionFunctor",
 
 ###################################
 ##
+#! @Section MorphismBetweenCoproducts and MorphismBetweenDirectProducts
+##
+###################################
+
+#! @Description
+#! The arguments are given as follows:
+#! * <A>diagram_S</A> is a list of objects $(A_i)_{i = 0 \dots m - 1}$,
+#! * <A>diagram_T</A> is a list of objects $(B_j)_{j = 0 \dots n - 1}$,
+#! * <A>F</A> is a pair consisting of a list $f = (f_i)_{i = 0 \dots m - 1}$
+#!   of length $m$ of integers between $0, \ldots, n - 1$
+#!   and a list of morphisms $( A_i \rightarrow B_{f_i} )_{i = 0 \dots m - 1}$.
+#! The output is the morphism
+#! $\sqcup_{i=0}^{m-1} A_i \rightarrow \sqcup_{j=0}^{n-1} B_j$
+#! defined by the pair <A>F</A>.
+#! @Returns a morphism in $\mathrm{Hom}(\sqcup_{i=0}^{m-1}A_i, \sqcup_{j=0}^{n-1} B_j)$
+#! @Arguments diagram_S, F, diagram_T
+DeclareOperation( "MorphismBetweenCoproducts",
+                  [ IsList, IsList, IsList ] );
+
+#! @Description
+#! The arguments are given as follows:
+#! * <A>diagram_S</A> is a list of objects $(A_i)_{i = 0 \dots m - 1}$,
+#! * <A>diagram_T</A> is a list of objects $(B_j)_{j = 0 \dots n - 1}$,
+#! * <A>S</A> is the coproduct $\sqcup_{i=0}^{m-1} A_i$,
+#! * <A>T</A> is the coproduct $\sqcup_{j=0}^{n-1} B_j$,
+#! * <A>F</A> is a pair consisting of a list $f = (f_i)_{i = 0 \dots m - 1}$
+#!   of length $m$ of integers between $0, \ldots, n - 1$
+#!   and a list of morphisms $( A_i \rightarrow B_{f_i} )_{i = 0 \dots m - 1}$.
+#! The output is the morphism
+#! $\sqcup_{i=0}^{m-1} A_i \rightarrow \sqcup_{j=0}^{n-1} B_j$
+#! defined by the pair <A>F</A>.
+#! @Returns a morphism in $\mathrm{Hom}(\sqcup_{i=0}^{m-1}A_i, \sqcup_{j=0}^{n-1} B_j)$
+#! @Arguments S, diagram_S, F, diagram_T, T
+DeclareOperation( "MorphismBetweenCoproductsWithGivenCoproducts",
+                  [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are given as follows:
+#! * <A>diagram_S</A> is a list of objects $(A_i)_{i = 0 \dots m - 1}$,
+#! * <A>diagram_T</A> is a list of objects $(B_j)_{j = 0 \dots n - 1}$,
+#! * <A>F</A> is a pair consisting of a list $f = (f_j)_{j = 0 \dots n - 1}$
+#!   of length $m$ of integers between $0, \ldots, m - 1$
+#!   and a list of morphisms $( B_j \rightarrow A_{f_j} )_{j = 0 \dots n - 1}$.
+#! The output is the morphism
+#! $\times_{i=0}^{m-1} A_i \rightarrow \times_{j=0}^{n-1} B_j$
+#! defined by the pair <A>F</A>.
+#! @Returns a morphism in $\mathrm{Hom}(\times_{i=0}^{m-1}A_i, \times_{j=0}^{n-1} B_j)$
+#! @Arguments diagram_S, F, diagram_T
+DeclareOperation( "MorphismBetweenDirectProducts",
+                  [ IsList, IsList, IsList ] );
+
+#! @Description
+#! The arguments are given as follows:
+#! * <A>diagram_S</A> is a list of objects $(A_i)_{i = 0 \dots m - 1}$,
+#! * <A>diagram_T</A> is a list of objects $(B_j)_{j = 0 \dots n - 1}$,
+#! * <A>S</A> is the product $\times_{i=0}^{m-1} A_i$,
+#! * <A>T</A> is the product $\times_{j=0}^{n-1} B_j$,
+#! * <A>F</A> is a pair consisting of a list $f = (f_j)_{j = 0 \dots n - 1}$
+#!   of length $m$ of integers between $0, \ldots, m - 1$
+#!   and a list of morphisms $( B_j \rightarrow A_{f_j} )_{j = 0 \dots n - 1}$.
+#! The output is the morphism
+#! $\times_{i=0}^{m-1} A_i \rightarrow \times_{j=0}^{n-1} B_j$
+#! defined by the pair <A>F</A>.
+#! @Returns a morphism in $\mathrm{Hom}(\times_{i=0}^{m-1}A_i, \times_{j=0}^{n-1} B_j)$
+#! @Arguments S, diagram_S, F, diagram_T, T
+DeclareOperation( "MorphismBetweenDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
+
+###################################
+##
 #! @Section IsWeakTerminal and IsWeakInitial
 ##
 ###################################

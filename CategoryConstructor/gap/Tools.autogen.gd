@@ -240,6 +240,82 @@ DeclareOperation( "AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `MorphismBetweenCoproducts`.
+#! $F: ( source_diagram, pair, range_diagram ) \mapsto \mathtt{MorphismBetweenCoproducts}(source_diagram, pair, range_diagram)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismBetweenCoproducts",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismBetweenCoproducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenCoproducts",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenCoproducts",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `MorphismBetweenCoproductsWithGivenCoproducts`.
+#! $F: ( S, source_diagram, pair, range_diagram, T ) \mapsto \mathtt{MorphismBetweenCoproductsWithGivenCoproducts}(S, source_diagram, pair, range_diagram, T)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismBetweenCoproductsWithGivenCoproducts",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismBetweenCoproductsWithGivenCoproducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenCoproductsWithGivenCoproducts",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenCoproductsWithGivenCoproducts",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `MorphismBetweenDirectProducts`.
+#! $F: ( source_diagram, pair, range_diagram ) \mapsto \mathtt{MorphismBetweenDirectProducts}(source_diagram, pair, range_diagram)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismBetweenDirectProducts",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismBetweenDirectProducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenDirectProducts",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenDirectProducts",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `MorphismBetweenDirectProductsWithGivenDirectProducts`.
+#! $F: ( S, source_diagram, pair, range_diagram, T ) \mapsto \mathtt{MorphismBetweenDirectProductsWithGivenDirectProducts}(S, source_diagram, pair, range_diagram, T)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismBetweenDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismBetweenDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenDirectProductsWithGivenDirectProducts",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismOntoSumOfImagesOfAllMorphisms`.
 #! $F: ( a, b ) \mapsto \mathtt{MorphismOntoSumOfImagesOfAllMorphisms}(a, b)$.
 #! @Returns nothing
