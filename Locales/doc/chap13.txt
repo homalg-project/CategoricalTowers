@@ -31,7 +31,7 @@
     [4X[25Xgap>[125X [27XDisplay( IntervalCategory );[127X[104X
     [4X[28XA CAP category with name IntervalCategory:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X19 primitive operations were used to derive 295 operations for this category which algorithmically[128X[104X
+    [4X[28X19 primitive operations were used to derive 299 operations for this category which algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsBooleanAlgebra[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
@@ -47,7 +47,7 @@
     [4X[25Xgap>[125X [27XDisplay( PSh );[127X[104X
     [4X[28XA CAP category with name PreSheaves( IntervalCategory, IntervalCategory ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X58 primitive operations were used to derive 202 operations for this category[128X[104X
+    [4X[28X58 primitive operations were used to derive 206 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsCodistributiveCategory[128X[104X
