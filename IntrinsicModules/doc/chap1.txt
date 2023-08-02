@@ -667,6 +667,21 @@
         IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XMorphismBetweenCoproducts[102X                        ([14XCategoryConstructor:
+        MorphismBetweenCoproducts for IsList, IsList, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismBetweenCoproductsWithGivenCoproducts[102X     ([14XCategoryConstructor:
+        MorphismBetweenCoproductsWithGivenCoproducts  for IsCapCategoryObject,
+        IsList, IsList, IsList, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismBetweenDirectProducts[102X                    ([14XCategoryConstructor:
+        MorphismBetweenDirectProducts for IsList, IsList, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismBetweenDirectProductsWithGivenDirectProducts[102X
+        ([14XCategoryConstructor:
+        MorphismBetweenDirectProductsWithGivenDirectProducts               for
+        IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XMorphismBetweenDirectSums[102X  ([14XCAP: MorphismBetweenDirectSums for IsList,
         IsList, IsList[114X)[133X
   
