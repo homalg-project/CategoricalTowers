@@ -519,7 +519,9 @@ InstallMethod( LazyCategory,
     
     list_of_operations_to_install := ShallowCopy( list_of_operations_to_install );
     
-    skip := [ "IsEqualForObjects",
+    skip := [ "IsWellDefinedForObjects",
+              "IsEqualForObjects",
+              "IsWellDefinedForMorphisms",
               "IsEqualForMorphisms",
               "IsCongruentForMorphisms",
               "IsEqualForMorphismsOnMor",
@@ -795,6 +797,57 @@ InstallMethod( LazyCategory,
     
     print := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false ), true );
     
+    AddIsWellDefinedForObjects( D,
+      function( D, a )
+        local genesis, operation_name, arguments;
+        
+        # object must have a genesis or an evaluated cell
+        if not (HasGenesisOfCell( a ) or HasEvaluatedCell( a )) then
+            
+            return false;
+            
+        fi;
+        
+        if HasGenesisOfCell( a ) then
+            
+            genesis := GenesisOfCell( a );
+            
+            # genesis must be a pair
+            if not (IsList( genesis ) and Length( genesis ) = 2) then
+                
+                return false;
+                
+            fi;
+            
+            operation_name := genesis[1];
+            arguments := genesis[2];
+            
+            # operation_name must be the name of a CAP operation which returns an object
+            if not (IsString( operation_name ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).return_type = "object") then
+                
+                return false;
+                
+            fi;
+            
+            # arguments must be a list of arguments of the CAP operation
+            if not (IsList( arguments ) and Length( arguments ) = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list )) then
+                
+                return false;
+                
+            fi;
+            
+        fi;
+        
+        if not IsWellDefinedForObjects( C, EvaluatedCell( a ) ) then
+            
+            return false;
+            
+        fi;
+        
+        return true;
+        
+    end );
+    
     AddIsEqualForObjects( D,
       function( D, a, b )
         
@@ -812,6 +865,69 @@ InstallMethod( LazyCategory,
         fi;
         
         return false;
+        
+    end );
+    
+    AddIsWellDefinedForMorphisms( D,
+      function( D, phi )
+        local genesis, operation_name, arguments;
+        
+        # morphism must have a genesis or an evaluated cell
+        if not (HasGenesisOfCell( phi ) or HasEvaluatedCell( phi )) then
+            
+            return false;
+            
+        fi;
+        
+        if HasGenesisOfCell( phi ) then
+            
+            genesis := GenesisOfCell( phi );
+            
+            # genesis must be a pair
+            if not (IsList( genesis ) and Length( genesis ) = 2) then
+                
+                return false;
+                
+            fi;
+            
+            operation_name := genesis[1];
+            arguments := genesis[2];
+            
+            # operation_name must be the name of a CAP operation which returns a morphism
+            if not (IsString( operation_name ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).return_type = "morphism") then
+                
+                return false;
+                
+            fi;
+            
+            # arguments must be a list of arguments of the CAP operation
+            if not (IsList( arguments ) and Length( arguments ) = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list )) then
+                
+                return false;
+                
+            fi;
+            
+        fi;
+        
+        if not IsEqualForObjects( C, EvaluatedCell( Source( phi ) ), Source( EvaluatedCell( phi ) ) ) then
+            
+            return false;
+            
+        fi;
+        
+        if not IsEqualForObjects( C, EvaluatedCell( Range( phi ) ), Range( EvaluatedCell( phi ) ) ) then
+            
+            return false;
+            
+        fi;
+        
+        if not IsWellDefinedForMorphisms( C, EvaluatedCell( phi ) ) then
+            
+            return false;
+            
+        fi;
+        
+        return true;
         
     end );
     
