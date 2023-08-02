@@ -666,6 +666,10 @@
     [4X[28XAn evaluated object given by the above data[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( a );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( DirectSum( a, a ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( IdentityMorphism( DirectSum( a, a ) ) );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xaa := ObjectConstructor( T, "a" ) / L;[127X[104X
     [4X[28X<An evaluated object in LazyCategory( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( aa );[127X[104X

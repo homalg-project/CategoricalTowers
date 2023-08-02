@@ -721,6 +721,10 @@ a
 An evaluated object given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( a );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( DirectSum( a, a ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( IdentityMorphism( DirectSum( a, a ) ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">aa := ObjectConstructor( T, "a" ) / L;</span>
 &lt;An evaluated object in LazyCategory( TerminalCategoryWithMultipleObjects( ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( aa );</span>
