@@ -350,7 +350,7 @@
     [4X[28XA CAP category with name The representation category[128X[104X
     [4X[28Xof SymmetricGroup( [ 1 .. 4 ] ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X44 primitive operations were used to derive 275 operations for this category[128X[104X
+    [4X[28X44 primitive operations were used to derive 290 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
