@@ -2706,51 +2706,114 @@ end );
 
 ##
 InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
-        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        [ IsPreSheafCategoryOfFpEnrichedCategory and HasRangeCategoryOfHomomorphismStructure, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
-    local B, defining_triple, nr_objs, nr_mors, objs, mors, F_vals, objects, offsets, decorated_morphisms, triples;
+    local C, H, defining_triple, nr_objs, nr_mors, arrows, map_of_sources_C, map_of_targets_C, objs, mors,
+          UC, F_vals, V_list_of_objects_in_UC, A_list_of_objects_in_UC,
+          s_list_of_morphisms_in_UC, t_list_of_morphisms_in_UC, s, t, V, A, CoequalizerPairs_UC;
     
-    B := Source( PSh );
+    C := Source( PSh );
+    H := Range( PSh );
     
-    defining_triple := DefiningTripleOfUnderlyingQuiver( B );
+    if not IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( C ) ) then
+        Error( "the range category of the presheaf category must coincide with its range category of homomorphism structure of the source category\n" );
+    fi;
+    
+    defining_triple := DefiningTripleOfUnderlyingQuiver( C );
     nr_objs := defining_triple[1];
     nr_mors := defining_triple[2];
+    arrows := defining_triple[3];
     
-    objs := SetOfObjects( B );
-    mors := SetOfGeneratingMorphisms( B );
+    map_of_sources_C := List( [ 0 .. nr_mors - 1 ], m -> arrows[1 + m][1] );
+    map_of_targets_C := List( [ 0 .. nr_mors - 1 ], m -> arrows[1 + m][2] );
+    
+    objs := SetOfObjects( C );
+    mors := SetOfGeneratingMorphisms( C );
+    
+    UC := AssociatedFiniteStrictCoproductCocompletionOfSourceCategory( PSh );
     
     F_vals := ValuesOfPreSheaf( F );
     
-    objects := Concatenation( List( [ 0 .. nr_objs - 1 ], i -> ListWithIdenticalEntries( Length( F_vals[1][1 + i] ), objs[1 + i] ) ) );
+    V_list_of_objects_in_UC :=
+      List( [ 0 .. nr_objs - 1 ], o ->
+            ## o ⊗ F( o )
+            TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC,
+                    objs[1 + o],          ## o
+                    F_vals[1][1 + o] ) ); ## F( o )
     
-    offsets := List( [ 0 .. nr_objs - 1 ], i -> Sum( List( [ 1 .. i ], j -> Length( F_vals[1][j] ) ) ) );
+    A_list_of_objects_in_UC :=
+      List( [ 0 .. nr_mors - 1 ],
+        function( m )
+          local s_m, t_m;
+          
+          s_m := map_of_sources_C[1 + m];
+          t_m := map_of_targets_C[1 + m];
+          
+          ## s( m ) ⊗ F( t( m ) ) = s( m ) ⊗ s( F( m ) )
+          return TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC,
+                         objs[1 + s_m],        ## s( m )
+                         F_vals[1][1 + t_m] ); ## F( t( m ) )
+          
+      end );
     
-    triples :=
-      function( j )
-        local m, Fmor, imgs, triple;
-        m := defining_triple[3][1 + j];
-        Fmor := F_vals[2][1 + j];
-        imgs := AsList( Fmor );
-        triple :=
-          function( i )
-            local s, t;
-            s := imgs[1 + i] + offsets[1 + m[1]];
-            t := i + offsets[1 + m[2]];
-            #% CAP_JIT_DROP_NEXT_STATEMENT
-            Assert( 0, Source( mors[1 + j] ) = objects[1 + s] );
-            #% CAP_JIT_DROP_NEXT_STATEMENT
-            Assert( 0, Range( mors[1 + j] ) = objects[1 + t] );
-            return Triple( s, mors[1 + j], t );
-        end;
-        return List( Source( Fmor ), triple );
-    end;
+      s_list_of_morphisms_in_UC :=
+      List( [ 0 .. nr_mors - 1 ],
+        function( m )
+          local s_m;
+          
+          s_m := map_of_sources_C[1 + m];
+          
+          ## s( m ) ⊗ F( m ): s( m ) ⊗ F( t( m ) ) → s( m ) ⊗ F( s( m ) )
+          return TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure( H, UC,
+                         A_list_of_objects_in_UC[1 + m],     ## s( m ) ⊗ F( t( m ) )
+                         objs[1 + s_m],                      ## s( m )
+                         F_vals[2][1 + m],                   ## F( m )
+                         V_list_of_objects_in_UC[1 + s_m] ); ## s( m ) ⊗ F( s( m ) )
+          
+      end );
     
-    decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], triples ) );
+    t_list_of_morphisms_in_UC :=
+      List( [ 0 .. nr_mors - 1 ],
+        function( m )
+          local t_m;
+          
+          t_m := map_of_targets_C[1 + m];
+          
+          ## m ⊗ F( t( m ) ): s( m ) ⊗ F( t( m ) ) → t( m ) ⊗ F( t( m ) )
+          return TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure( H, UC,
+                         A_list_of_objects_in_UC[1 + m],     ## s( m ) ⊗ F( t( m ) )
+                         mors[1 + m],                        ## m
+                         F_vals[1][1 + t_m],                 ## F( t( m ) )
+                         V_list_of_objects_in_UC[1 + t_m] ); ## t( m ) ⊗ F( t( m ) )
+          
+      end );
     
-    return CreateColimitQuiver( AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh ),
-                   Pair( objects,
-                         decorated_morphisms ) );
+    ## ∐ₒ [o ⊗ F( o )]
+    V := Coproduct( UC, V_list_of_objects_in_UC );
+    ## ∐ₘ [s( m ) ⊗ F( t( m ) )]
+    A := Coproduct( UC, A_list_of_objects_in_UC );
+    
+    ## s: ∐ₘ [s( m ) ⊗ F( t( m ) )] → ∐ₒ [o ⊗ F( o )]
+    s := MorphismBetweenCoproductsWithGivenCoproducts( UC,
+                 A,
+                 A_list_of_objects_in_UC,
+                 Pair( map_of_sources_C, s_list_of_morphisms_in_UC ),
+                 V_list_of_objects_in_UC,
+                 V );
+    
+    ## t: ∐ₘ [s( m ) ⊗ F( t( m ) )] → ∐ₒ [o ⊗ F( o )]
+    t := MorphismBetweenCoproductsWithGivenCoproducts( UC,
+                 A,
+                 A_list_of_objects_in_UC,
+                 Pair( map_of_targets_C, t_list_of_morphisms_in_UC ),
+                 V_list_of_objects_in_UC,
+                 V );
+    
+    CoequalizerPairs_UC := AssociatedCategoryOfCoequalizerPairsOfSourceCategory( PSh );
+    
+    return ObjectConstructor( CoequalizerPairs_UC,
+                   Pair( Pair( V, A ), Pair( s, t ) ) );
     
 end );
 
@@ -2767,48 +2830,143 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
         [ IsPreSheafCategoryOfFpEnrichedCategory,
-          IsObjectInCategoryOfColimitQuivers,
+          IsObjectInPairOfParallelArrowsCategory,
           IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
-          IsObjectInCategoryOfColimitQuivers ],
+          IsObjectInPairOfParallelArrowsCategory ],
         
   function ( PSh, source, phi, range )
-    local B, C, defining_triple, nr_objs, nr_mors, Bhat, source_datum, phi_vals, map_of_objects,
-          range_vals, range_offsets, imgs, map_of_decorated_morphisms;
+    local C, H, defining_triple, nr_objs, nr_mors, arrows, map_of_sources_C, map_of_targets_C, objs, mors,
+          F, G, F_vals, G_vals, UC, CoequalizerPairs_UC,
+          coYo_F_VA, coYo_G_VA, coYo_F_V, coYo_F_A, coYo_G_V, coYo_G_A,
+          F_V_list_of_objects_in_UC, F_A_list_of_objects_in_UC, G_V_list_of_objects_in_UC, G_A_list_of_objects_in_UC,
+          phi_vals, eta_V_list_of_morphisms_in_UC, eta_A_list_of_morphisms_in_UC, eta_V, eta_A;
     
-    B := Source( PSh );
-    C := Range( PSh );
+    C := Source( PSh );
+    H := Range( PSh );
     
-    defining_triple := DefiningTripleOfUnderlyingQuiver( B );
+    if not IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( C ) ) then
+        Error( "the range category of the presheaf category must coincide with its range category of homomorphism structure of the source category\n" );
+    fi;
+    
+    defining_triple := DefiningTripleOfUnderlyingQuiver( C );
     nr_objs := defining_triple[1];
     nr_mors := defining_triple[2];
+    arrows := defining_triple[3];
     
-    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
+    map_of_sources_C := List( [ 0 .. nr_mors - 1 ], m -> arrows[1 + m][1] );
+    map_of_targets_C := List( [ 0 .. nr_mors - 1 ], m -> arrows[1 + m][2] );
     
-    source_datum := ObjectDatum( Bhat, source );
+    objs := SetOfObjects( C );
+    mors := SetOfGeneratingMorphisms( C );
+    
+    F := Source( phi );
+    G := Range( phi );
+    
+    ## φ: F → G
+    F_vals := ValuesOfPreSheaf( F );
+    G_vals := ValuesOfPreSheaf( G );
+    
+    UC := AssociatedFiniteStrictCoproductCocompletionOfSourceCategory( PSh );
+    
+    CoequalizerPairs_UC := AssociatedCategoryOfCoequalizerPairsOfSourceCategory( PSh );
+    
+    coYo_F_VA := ObjectDatum( CoequalizerPairs_UC, source )[1];
+    coYo_G_VA := ObjectDatum( CoequalizerPairs_UC, range )[1];
+    
+    coYo_F_V := coYo_F_VA[1];
+    coYo_F_A := coYo_F_VA[2];
+    
+    coYo_G_V := coYo_G_VA[1];
+    coYo_G_A := coYo_G_VA[2];
+    
+    F_V_list_of_objects_in_UC :=
+      List( [ 0 .. nr_objs - 1 ], o ->
+            ## o ⊗ F( o )
+            TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC,
+                    objs[1 + o],          ## o
+                    F_vals[1][1 + o] ) ); ## F( o )
+    
+    F_A_list_of_objects_in_UC :=
+      List( [ 0 .. nr_mors - 1 ],
+        function( m )
+          local s_m, t_m;
+          
+          s_m := map_of_sources_C[1 + m];
+          t_m := map_of_targets_C[1 + m];
+          
+          ## s( m ) ⊗ F( t( m ) ) = s( m ) ⊗ s( F( m ) )
+          return TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC,
+                         objs[1 + s_m],        ## s( m )
+                         F_vals[1][1 + t_m] ); ## F( t( m ) )
+          
+      end );
+    
+    G_V_list_of_objects_in_UC :=
+      List( [ 0 .. nr_objs - 1 ], o ->
+            ## o ⊗ G( o )
+            TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC,
+                    objs[1 + o],          ## o
+                    G_vals[1][1 + o] ) ); ## G( o )
+    
+    G_A_list_of_objects_in_UC :=
+      List( [ 0 .. nr_mors - 1 ],
+        function( m )
+          local s_m, t_m;
+          
+          s_m := map_of_sources_C[1 + m];
+          t_m := map_of_targets_C[1 + m];
+          
+          ## s( m ) ⊗ G( t( m ) ) = s( m ) ⊗ s( G( m ) )
+          return TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC,
+                         objs[1 + s_m],        ## s( m )
+                         G_vals[1][1 + t_m] ); ## G( t( m ) )
+          
+      end );
     
     phi_vals := ListOfValues( ValuesOnAllObjects( phi ) );
     
-    map_of_objects := Pair( AsList( CoproductFunctorial( C, phi_vals ) ),
-                            List( source_datum[1], objB -> IdentityMorphism( B, objB ) ) );
+    eta_V_list_of_morphisms_in_UC :=
+      List( [ 0 .. nr_objs - 1 ], o ->
+            TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure( H, UC,
+                    F_V_list_of_objects_in_UC[1 + o],     ## o ⊗ F( o )
+                    objs[1 + o],                          ## o
+                    phi_vals[1 + o],                      ## φ_o
+                    G_V_list_of_objects_in_UC[1 + o] ) ); ## o ⊗ G( o )
     
-    range_vals := ValuesOfPreSheaf( Source( phi ) );
+    eta_A_list_of_morphisms_in_UC :=
+      List( [ 0 .. nr_mors - 1 ],
+        function( m )
+          local s_m, t_m;
+          
+          s_m := map_of_sources_C[1 + m];
+          t_m := map_of_targets_C[1 + m];
+            
+          ## s( m ) ⊗ φ_{t( m )}: s( m ) ⊗ F( t( m ) ) → s( m ) ⊗ G( t( m ) )
+          return TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure( H, UC,
+                         F_A_list_of_objects_in_UC[1 + m],   ## s( m ) ⊗ F( t( m ) )
+                         objs[1 + s_m],                      ## s( m )
+                         phi_vals[1 + t_m],                  ## φ_{t( m )}
+                         G_A_list_of_objects_in_UC[1 + m] ); ## s( m ) ⊗ G( t( m ) )
+          
+      end );
     
-    range_offsets := List( [ 0 .. nr_objs - 1 ], i -> Sum( [ 1 .. i ], j -> Length( range_vals[1][j] ) ) );
+    eta_V := CoproductFunctorialWithGivenCoproducts( UC,
+                     coYo_F_V,
+                     F_V_list_of_objects_in_UC,
+                     eta_V_list_of_morphisms_in_UC,
+                     G_V_list_of_objects_in_UC,
+                     coYo_G_V );
     
-    imgs :=
-      function( j )
-        local m, offset;
-        m := defining_triple[3][1 + j];
-        offset := range_offsets[1 + m[1]];
-        return List( AsList( phi_vals[1 + m[2]] ), v -> offset + v );
-    end;
+    eta_A := CoproductFunctorialWithGivenCoproducts( UC,
+                     coYo_F_A,
+                     F_A_list_of_objects_in_UC,
+                     eta_A_list_of_morphisms_in_UC,
+                     G_A_list_of_objects_in_UC,
+                     coYo_G_A );
     
-    map_of_decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], imgs ) );
-    
-    return CreateMorphismOfColimitQuivers( Bhat,
+    return MorphismConstructor( CoequalizerPairs_UC,
                    source,
-                   Pair( map_of_objects,
-                         map_of_decorated_morphisms ),
+                   Pair( eta_V, eta_A ),
                    range );
     
 end );
@@ -2827,66 +2985,15 @@ InstallMethod( CoYonedaLemmaOnMorphisms,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( SomeDiagramOfRepresentables,
-        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
-        
-  function ( PSh, F )
-    local Bhat, diagram, Yoneda, triple;
-    
-    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
-    
-    diagram := ObjectDatum( Bhat,
-                       CoYonedaLemmaOnObjects( PSh, F ) );
-    
-    Yoneda := YonedaEmbeddingData( PSh );
-    
-    triple :=
-      function( m )
-        
-        return [ m[1],
-                 Yoneda[2]( Yoneda[1]( Source( m[2] ) ), m[2], Yoneda[1]( Range( m[2] ) ) ),
-                 m[3] ];
-        
-    end;
-    
-    return Pair( List( diagram[1], Yoneda[1] ),
-                 List( diagram[2], triple ) );
-    
-end );
-
-##
-InstallMethod( SomeDiagramOfRepresentables,
-        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
-        
-  function ( F )
-    
-    return SomeDiagramOfRepresentables( CapCategory( F ), F );
-    
-end );
-
-##
 InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingCoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
-    local Bhat, CoequalizerPairs, PSh_CoequalizerPairs_UB,
-          F_colimit_quiver, F_coequalizer_pair, F_coequalizer_pair_as_presheaf, F_data;
+    local F_VAst;
     
-    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
+    F_VAst := ObjectDatum( AssociatedCategoryOfCoequalizerPairsOfSourceCategory( PSh ), CoYonedaLemmaOnObjects( PSh, F ) );
     
-    CoequalizerPairs := AssociatedCategoryOfCoequalizerPairsOfSourceCategory( PSh );
-    
-    PSh_CoequalizerPairs_UB := ModelingCategory( CoequalizerPairs );
-    
-    F_colimit_quiver := CoYonedaLemmaOnObjects( PSh, F );
-    
-    F_coequalizer_pair := ModelingObject( Bhat, F_colimit_quiver );
-    
-    F_coequalizer_pair_as_presheaf := ModelingObject( CoequalizerPairs, F_coequalizer_pair );
-    
-    F_data := ObjectDatum( PSh_CoequalizerPairs_UB, F_coequalizer_pair_as_presheaf );
-    
-    return Pair( F_data[1][1], F_data[2] );
+    return Pair( F_VAst[1][1], F_VAst[2] );
     
 end );
 
@@ -2910,6 +3017,41 @@ InstallMethodForCompilerForCAP( EmbeddingFunctorOfFiniteStrictCoproductCocomplet
     UC := AssociatedFiniteStrictCoproductCocompletionOfSourceCategory( PSh );
     
     return ExtendFunctorToFiniteStrictCoproductCocompletionData( UC, YonedaEmbeddingData( PSh ), PSh );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerPair,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh, F )
+    local F_VAst, V, A, s, t, Yoneda, Y_V, Y_A;
+    
+    F_VAst := ObjectDatum( AssociatedCategoryOfCoequalizerPairsOfSourceCategory( PSh ), CoYonedaLemmaOnObjects( PSh, F ) );
+    
+    V := F_VAst[1][1];
+    A := F_VAst[1][2];
+    s := F_VAst[2][1];
+    t := F_VAst[2][2];
+    
+    Yoneda := EmbeddingFunctorOfFiniteStrictCoproductCocompletionIntoPreSheavesData( PSh )[2];
+    
+    Y_V := Yoneda[1]( V );
+    Y_A := Yoneda[1]( A );
+    
+    return Pair( Y_V,
+                 Pair( Yoneda[2]( Y_A, s, Y_V ),
+                       Yoneda[2]( Y_A, t, Y_V ) ) );
+    
+end );
+
+##
+InstallMethod( CoYonedaLemmaCoequalizerPair,
+        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( F )
+    
+    return CoYonedaLemmaCoequalizerPair( CapCategory( F ), F );
     
 end );
 
@@ -3065,7 +3207,7 @@ InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjec
         
   function ( PSh, F )
     local B, defining_triple, nr_objs, objs, id, F_vals, offsets, coYoneda, cover,
-          Bhat, CoequalizerPairs, range, list, s, UB, source, section;
+          CoequalizerPairs, range, list, s, UB, source, section;
     
     B := Source( PSh );
     
@@ -3084,11 +3226,9 @@ InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjec
     
     cover := CoveringListOfRepresentables( PSh, F );
     
-    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
-    
     CoequalizerPairs := AssociatedCategoryOfCoequalizerPairsOfSourceCategory( PSh );
     
-    range := ObjectDatum( CoequalizerPairs, ModelingObject( Bhat, coYoneda ) )[1][1];
+    range := ObjectDatum( CoequalizerPairs, coYoneda )[1][1];
     
     list := List( cover, a -> a[1] );
     
@@ -3127,7 +3267,7 @@ InstallOtherMethodForCompilerForCAP( EpimorphismFromCoYonedaProjectiveObjectOnto
         
   function ( PSh, F )
     local B, defining_triple, nr_objs, objs, mors, id, F_vals, offsets, coYoneda, cover,
-          Bhat, CoequalizerPairs, source, s, source_list, list, UB, range, f, map_mor, epi;
+          CoequalizerPairs, source, s, source_list, list, UB, range, f, map_mor, epi;
     
     B := Source( PSh );
     
@@ -3147,11 +3287,9 @@ InstallOtherMethodForCompilerForCAP( EpimorphismFromCoYonedaProjectiveObjectOnto
     
     cover := CoveringListOfRepresentables( PSh, F );
     
-    Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
-    
     CoequalizerPairs := AssociatedCategoryOfCoequalizerPairsOfSourceCategory( PSh );
     
-    source := ObjectDatum( CoequalizerPairs, ModelingObject( Bhat, coYoneda ) )[1][1];
+    source := ObjectDatum( CoequalizerPairs, coYoneda )[1][1];
     
     s := ObjectDatum( source )[1];
     

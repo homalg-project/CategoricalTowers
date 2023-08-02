@@ -92,8 +92,7 @@ end );
 #! @Arguments C
 DeclareAttribute( "CategoryOfColimitQuivers",
         IsCapCategory );
-#! @InsertChunk FinBouquetsAsFiniteColimitCocompletion
-#! @InsertChunk FinReflexiveQuiversAsFiniteColimitCocompletion
+#! @InsertChunk CategoryOfColimitQuivers
 
 CapJitAddTypeSignature( "CategoryOfColimitQuivers", [ IsCapCategory ], function ( input_types )
     
