@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "FiniteCocompletions",
 Subtitle := "Finite (co)product/(co)limit (co)completions",
-Version := "2023.07-16",
-Date := "2023-07-30",
-Date := "2023-07-30",
+Version := "2023.08-01",
+Date := "2023-08-02",
+Date := "2023-08-02",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -75,7 +75,7 @@ Dependencies := rec(
                    [ "CartesianCategories", ">= 2023.06-01" ],
                    [ "MonoidalCategories", ">= 2023.02-04" ],
                    [ "Toposes", ">= 2023.06-04" ],
-                   [ "CategoryConstructor", ">= 2023.07-02" ],
+                   [ "CategoryConstructor", ">= 2023.08-01" ],
                    [ "Algebroids", ">= 2023.03-03" ],
                    [ "PreSheaves", ">= 2023.02-05" ],
                    ],
