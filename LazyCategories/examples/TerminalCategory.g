@@ -21,6 +21,10 @@ Display( a );
 #! An evaluated object given by the above data
 IsWellDefined( a );
 #! true
+IsWellDefined( DirectSum( a, a ) );
+#! true
+IsWellDefined( IdentityMorphism( DirectSum( a, a ) ) );
+#! true
 aa := ObjectConstructor( T, "a" ) / L;
 #! <An evaluated object in LazyCategory( TerminalCategoryWithMultipleObjects( ) )>
 Display( aa );
