@@ -3035,7 +3035,7 @@ InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjec
     
     pair_category := ModelingCategory( Bhat );
     
-    range := Range( ObjectDatum( pair_category, ModelingObject( Bhat, coYoneda ) )[1] );
+    range := ObjectDatum( pair_category, ModelingObject( Bhat, coYoneda ) )[1][1];
     
     list := List( cover, a -> a[1] );
     
@@ -3098,7 +3098,7 @@ InstallOtherMethodForCompilerForCAP( EpimorphismFromCoYonedaProjectiveObjectOnto
     
     pair_category := ModelingCategory( Bhat );
     
-    source := Range( ObjectDatum( pair_category, ModelingObject( Bhat, coYoneda ) )[1] );
+    source := ObjectDatum( pair_category, ModelingObject( Bhat, coYoneda ) )[1][1];
     
     s := ObjectDatum( source )[1];
     

@@ -24,20 +24,24 @@ InstallMethod( PairOfParallelArrowsCategory,
     ##
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              CapJitDataTypeOfMorphismOfCategory( C ),
-              CapJitDataTypeOfMorphismOfCategory( C ) );
+              CapJitDataTypeOfNTupleOf( 2,
+                      CapJitDataTypeOfObjectOfCategory( C ),
+                      CapJitDataTypeOfObjectOfCategory( C ) ),
+              CapJitDataTypeOfNTupleOf( 2,
+                      CapJitDataTypeOfMorphismOfCategory( C ),
+                      CapJitDataTypeOfMorphismOfCategory( C ) ) );
     
     ##
     object_constructor :=
-      function( ParallelPairs, parallel_pair )
+      function( ParallelPairs, pair_of_pairs )
         
         return CreateCapCategoryObjectWithAttributes( ParallelPairs,
-                       DefiningParallelPair, parallel_pair );
+                       PairOfObjectsAndPairOfParallelMorphisms, pair_of_pairs );
         
     end;
     
     ##
-    object_datum := { ParallelPairs, o } -> DefiningParallelPair( o );
+    object_datum := { ParallelPairs, o } -> PairOfObjectsAndPairOfParallelMorphisms( o );
     
     ##
     morphism_datum_type :=
@@ -47,12 +51,12 @@ InstallMethod( PairOfParallelArrowsCategory,
     
     ##
     morphism_constructor :=
-      function( ParallelPairs, source, pair, range )
+      function( ParallelPairs, source, pair_of_morphisms, range )
         
         return CreateCapCategoryMorphismWithAttributes( ParallelPairs,
                        source,
                        range,
-                       DefiningPairOfMorphismBetweenParallelPairs, pair );
+                       DefiningPairOfMorphismBetweenParallelPairs, pair_of_morphisms );
         
     end;
     
@@ -78,15 +82,15 @@ InstallMethod( PairOfParallelArrowsCategory,
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
       function( ParallelPairs, pair )
-        local PSh, s, t, A, V;
+        local PSh, A, V, s, t;
         
         PSh := ModelingCategory( ParallelPairs );
         
-        s := pair[1];
-        t := pair[2];
+        V := pair[1][1];
+        A := pair[1][2];
         
-        A := Source( s );
-        V := Range( s );
+        s := pair[2][1];
+        t := pair[2][2];
         
         return ObjectConstructor( PSh, Pair( [ V, A ], [ s, t ] ) );
         
@@ -95,13 +99,18 @@ InstallMethod( PairOfParallelArrowsCategory,
     ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
       function( ParallelPairs, obj )
-        local PSh, st;
+        local PSh, VAst, VA, st;
         
         PSh := ModelingCategory( ParallelPairs );
         
-        st := ObjectDatum( PSh, obj )[2];
+        ## Pair( [ V, A ], [ s, t ] )
+        VAst := ObjectDatum( PSh, obj );
         
-        return Pair( st[1], st[2] );
+        VA := VAst[1];
+        st := VAst[2];
+        
+        ## Pair( Pair( V, A ), Pair( s, t ) )
+        return Pair( Pair( VA[1], VA[2] ), Pair( st[1], st[2] ) );
         
     end;
     
@@ -187,13 +196,13 @@ InstallMethod( \.,
     name := NameRNam( string_as_int );
     
     if name = "V" then
-        return Range( pair[1] );
+        return pair[1][1];
     elif name = "A" then
-        return Source( pair[1] );
+        return pair[1][2];
     elif name = "s" then
-        return pair[1];
+        return pair[2][1];
     elif name = "t" then
-        return pair[2];
+        return pair[2][2];
     fi;
     
     Error( "obj has no component with the name \"", name, "\"\n" );

@@ -129,14 +129,14 @@ InstallMethod( CategoryOfColimitQuivers,
                      Pair( map_t, mor_t ),
                      V );
         
-        return ObjectConstructor( Coeq, Pair( s, t ) );
+        return ObjectConstructor( Coeq, Pair( Pair( V, A ), Pair( s, t ) ) );
         
     end;
     
     ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
       function( ColimitQuivers, obj )
-        local Coeq, PSh, UC, pair, s, t, V, objects, s_datum, t_datum, decorated_morphisms;
+        local Coeq, PSh, UC, pair, V, s, t, objects, s_datum, t_datum, decorated_morphisms;
         
         Coeq := ModelingCategory( ColimitQuivers );
         
@@ -144,12 +144,13 @@ InstallMethod( CategoryOfColimitQuivers,
         
         UC := Range( PSh );
         
+        ## Pair( Pair( V, A ), Pair( s, t ) )
         pair := ObjectDatum( Coeq, obj );
         
-        s := pair[1];
-        t := pair[2];
+        V := pair[1][1];
         
-        V := Range( s );
+        s := pair[2][1];
+        t := pair[2][2];
         
         objects := ObjectDatum( UC, V )[2];
         
@@ -180,17 +181,17 @@ InstallMethod( CategoryOfColimitQuivers,
         range_datum := ObjectDatum( Coeq, range );
         
         V := MorphismConstructor( UC,
-                     Range( source_datum[1] ),
+                     source_datum[1][1],
                      images[1],
-                     Range( range_datum[1] ) );
+                     range_datum[1][1] );
         
-        source_s_datum := MorphismDatum( UC, source_datum[1] );
+        source_s_datum := MorphismDatum( UC, source_datum[2][1] );
         
         A := MorphismConstructor( UC,
-                     Source( source_datum[1] ),
+                     source_datum[1][2],
                      Pair( images[2],
                            source_s_datum[2] ),
-                     Source( range_datum[1] ) );
+                     range_datum[1][2] );
         
         return MorphismConstructor( Coeq,
                        source,
