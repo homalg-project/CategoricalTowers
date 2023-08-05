@@ -2270,6 +2270,16 @@ InstallMethod( PreSheaves,
 end );
 
 ##
+InstallMethod( AssociatedCategoryOfColimitQuiversOfSourceCategory,
+        [ IsPreSheafCategory ],
+        
+  function( PSh )
+    
+    return CategoryOfColimitQuivers( Source( PSh ) );
+    
+end );
+
+##
 InstallMethod( CategoryOfInternalCategories,
         "for a CAP category",
         [ IsCapCategory ],
