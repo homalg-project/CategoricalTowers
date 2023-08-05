@@ -1114,6 +1114,21 @@ InstallMethod( FiniteStrictCoproductCocompletion,
 end );
 
 ##
+InstallMethod( EnrichmentSpecificFiniteStrictCoproductCocompletion,
+        "for a category and its range category of homomorphism structure",
+        [ IsCapCategory, IsCategoryOfSkeletalFinSets ],
+        
+  function( C, H )
+    
+    if not IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( C ) ) then
+        Error( "the second category `H` must coincide with the range category of homomorphism structure of the first category `C`\n" );
+    fi;
+    
+    return FiniteStrictCoproductCocompletion( C );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
         "for a finite coproduct cocompletion category",
         [ IsFiniteStrictCoproductCocompletion ],

@@ -33,3 +33,6 @@ ReadPackage( "FiniteCocompletions", "gap/CoFreydCategory.gd");
 
 ##
 ReadPackage( "FiniteCocompletions", "gap/AbelianClosure.gd");
+
+##
+ReadPackage( "FiniteCocompletions", "gap/Tools.gd");

@@ -5,6 +5,21 @@
 #
 
 ##
+InstallMethod( EnrichmentSpecificFiniteStrictCoproductCocompletion,
+        "for a category and its range category of homomorphism structure",
+        [ IsCapCategory, IsCategoryOfRows ],
+        
+  function( C, H )
+    
+    if not IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( C ) ) then
+        Error( "the second category `H` must coincide with the range category of homomorphism structure of the first category `C`\n" );
+    fi;
+    
+    return AdditiveClosure( C );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
         "for a strict strict additive closure",
         [ IsAdditiveClosureCategory ],
