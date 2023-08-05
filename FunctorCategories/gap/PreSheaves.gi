@@ -3769,4 +3769,3 @@ InstallMethod( LaTeXOutput,
     fi;
     
 end );
-
