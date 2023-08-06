@@ -137,6 +137,21 @@ DeclareAttribute( "SievesOfPathsToTruth", IsMorphismInPreSheafCategory );
 
 #! @Description
 #!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
+#!  the "sub"category <C>EnrichmentSpecificFiniteStrictCoproductCocompletion</C>( $C$ ).
+#! @Arguments PSh
+#! @Returns a &CAP; category
+DeclareAttribute( "AssociatedFiniteStrictCoproductCocompletionOfSourceCategory",
+        IsPreSheafCategory );
+
+CapJitAddTypeSignature( "AssociatedFiniteStrictCoproductCocompletionOfSourceCategory", [ IsPreSheafCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( EnrichmentSpecificFiniteStrictCoproductCocompletion( Source( input_types[1].category ) ) );
+    
+end );
+
+#! @Description
+#!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
 #!  the equivalent category <C>CategoryOfColimitQuivers</C>( $C$ ).
 #! @Arguments PSh
 #! @Returns a &CAP; category
