@@ -12,6 +12,25 @@ PSh := PreSheaves( Delta1 );
 #! PreSheaves( FreeCategory( RightQuiver(
 #!   "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],
 #! SkeletalFinSets )
+Display( PSh.C1 );
+#! Image of <(C0)>:
+#! { 0, 1 }
+#! 
+#! Image of <(C1)>:
+#! { 0, 1, 2 }
+#! 
+#! Image of (C1)-[(id)]->(C0):
+#! { 0, 1 } ⱶ[ 1, 2 ]→ { 0, 1, 2 }
+#! 
+#! Image of (C0)-[(s)]->(C1):
+#! { 0, 1, 2 } ⱶ[ 0, 0, 1 ]→ { 0, 1 }
+#! 
+#! Image of (C0)-[(t)]->(C1):
+#! { 0, 1, 2 } ⱶ[ 1, 0, 1 ]→ { 0, 1 }
+#! 
+#! An object in PreSheaves( FreeCategory( RightQuiver(
+#! "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],
+#! SkeletalFinSets ) given by the above data
 quiver := CoYonedaLemmaOnObjects( PSh.C1 );
 #! <An object in CategoryOfColimitQuivers(
 #!  FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
@@ -58,5 +77,19 @@ colimit2 := Coequalizer( ColimitPair( PSh, q[1], q[2] )[2] );
 #! SkeletalFinSets )>
 colimit2 = colimit;
 #! true
+iso := Filtered( MorphismsOfExternalHom( PSh.C1, colimit ), IsIsomorphism )[1];
+#! <An isomorphism in PreSheaves( FreeCategory( RightQuiver(
+#!  "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],
+#!  SkeletalFinSets )>
+Display( iso );
+#! Image of <(C0)>:
+#! { 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
+#! 
+#! Image of <(C1)>:
+#! { 0, 1, 2 } ⱶ[ 2, 0, 1 ]→ { 0, 1, 2 }
+#! 
+#! A morphism in PreSheaves( FreeCategory( RightQuiver(
+#! "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],
+#! SkeletalFinSets ) given by the above data
 #! @EndExample
 #! @EndChunk
