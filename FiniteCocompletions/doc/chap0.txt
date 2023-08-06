@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2023.08-01
+                                   2023.08-02
   
   
-                                 2 August 2023
+                                 6 August 2023
   
   
                                 Mohamed Barakat
@@ -104,7 +104,7 @@
     5.1 [33X[0;0YGlobal variables[133X
       5.1-1 QuiverOfCategoryOfQuivers
     5.2 [33X[0;0YAttributes[133X
-      5.2-1 DefiningParallelPair
+      5.2-1 PairOfObjectsAndPairOfParallelMorphisms
       5.2-2 DefiningPairOfMorphismBetweenParallelPairs
       5.2-3 UnderlyingCategory
     5.3 [33X[0;0YConstructors[133X

@@ -13,9 +13,9 @@
   
   [1X5.2 [33X[0;0YAttributes[133X[101X
   
-  [1X5.2-1 DefiningParallelPair[101X
+  [1X5.2-1 PairOfObjectsAndPairOfParallelMorphisms[101X
   
-  [33X[1;0Y[29X[2XDefiningParallelPair[102X( [3Xquiver[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XPairOfObjectsAndPairOfParallelMorphisms[102X( [3Xquiver[103X ) [32X attribute[133X
   
   [1X5.2-2 DefiningPairOfMorphismBetweenParallelPairs[101X
   

@@ -13,7 +13,6 @@
   [2XDefiningPairOfColimitQuiver[102X, for IsObjectInCategoryOfColimitQuivers 6.1-1 
   [2XDefiningPairOfColimitQuiverMorphism[102X, for IsMorphismInCategoryOfColimitQuivers 6.1-2 
   [2XDefiningPairOfMorphismBetweenParallelPairs[102X, for IsMorphismInPairOfParallelArrowsCategory 5.2-2 
-  [2XDefiningParallelPair[102X, for IsObjectInPairOfParallelArrowsCategory 5.2-1 
   [2XEmbeddingOfUnderlyingCategory[102X, for IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure 10.2-2 
       for IsAdditiveClosureCategory 7.1-1 
       for IsCategoryOfColimitQuivers 6.2-6 
@@ -66,6 +65,7 @@
       for IsObjectInFiniteStrictProductCompletion 2.1-1 
   [2XPairOfLists[102X, for IsMorphismInFiniteStrictCoproductCocompletion 1.1-2 
       for IsMorphismInFiniteStrictProductCompletion 2.1-2 
+  [2XPairOfObjectsAndPairOfParallelMorphisms[102X, for IsObjectInPairOfParallelArrowsCategory 5.2-1 
   [2XPairOfParallelArrowsCategory[102X, for IsCapCategory 5.3-1 
   [2XQuiverOfCategoryOfQuivers[102X 5.1-1 
   [2XSkeletalFinSetsAsFreeElementaryToposOfInitialCategory[102X 4.2-2 
