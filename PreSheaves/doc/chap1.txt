@@ -50,32 +50,11 @@
   [33X[1;0Y[29X[2XYonedaEmbeddingOfSourceCategory[102X( [3XPSh[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
   
-  [1X1.1-8 ApplyObjectInPreSheafCategoryToObject[101X
-  
-  [33X[1;0Y[29X[2XApplyObjectInPreSheafCategoryToObject[102X( [3XF[103X, [3Xobj[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
-  
-  [33X[0;0YApply the presheaf [3XF[103X to the object [3Xobj[103X. The shorthand is [3XF[103X([3Xobj[103X).[133X
-  
-  [1X1.1-9 ApplyObjectInPreSheafCategoryToMorphism[101X
-  
-  [33X[1;0Y[29X[2XApplyObjectInPreSheafCategoryToMorphism[102X( [3XF[103X, [3Xmor[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
-  
-  [33X[0;0YApply the presheaf [3XF[103X to the morphism [3Xmor[103X. The shorthand is [3XF[103X([3Xmor[103X).[133X
-  
-  [1X1.1-10 ApplyMorphismInPreSheafCategoryToObject[101X
-  
-  [33X[1;0Y[29X[2XApplyMorphismInPreSheafCategoryToObject[102X( [3Xeta[103X, [3Xobj[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
-  
-  [33X[0;0YApply the presheaf morphism [3Xeta[103X to the object [3Xobj[103X. The shorthand is [3Xeta[103X([3Xo[103X).[133X
-  
-  [1X1.1-11 CoYonedaLemmaOnObjects[101X
+  [1X1.1-8 CoYonedaLemmaOnObjects[101X
   
   [33X[1;0Y[29X[2XCoYonedaLemmaOnObjects[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X1.1-12 CoYonedaLemmaOnMorphisms[101X
+  [1X1.1-9 CoYonedaLemmaOnMorphisms[101X
   
   [33X[1;0Y[29X[2XCoYonedaLemmaOnMorphisms[102X( [3Xphi[103X ) [32X attribute[133X
   
@@ -93,30 +72,54 @@
   transformations as morphisms.[133X
   
   
-  [1X1.3 [33X[0;0YGAP categories[133X[101X
+  [1X1.3 [33X[0;0YOperations[133X[101X
   
-  [1X1.3-1 IsPreSheafCategory[101X
+  [1X1.3-1 ApplyObjectInPreSheafCategoryToObject[101X
+  
+  [33X[1;0Y[29X[2XApplyObjectInPreSheafCategoryToObject[102X( [3XF[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YApply the presheaf [3XF[103X to the object [3Xobj[103X. The shorthand is [3XF[103X([3Xobj[103X).[133X
+  
+  [1X1.3-2 ApplyObjectInPreSheafCategoryToMorphism[101X
+  
+  [33X[1;0Y[29X[2XApplyObjectInPreSheafCategoryToMorphism[102X( [3XF[103X, [3Xmor[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YApply the presheaf [3XF[103X to the morphism [3Xmor[103X. The shorthand is [3XF[103X([3Xmor[103X).[133X
+  
+  [1X1.3-3 ApplyMorphismInPreSheafCategoryToObject[101X
+  
+  [33X[1;0Y[29X[2XApplyMorphismInPreSheafCategoryToObject[102X( [3Xeta[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YApply the presheaf morphism [3Xeta[103X to the object [3Xobj[103X. The shorthand is [3Xeta[103X([3Xo[103X).[133X
+  
+  
+  [1X1.4 [33X[0;0YGAP categories[133X[101X
+  
+  [1X1.4-1 IsPreSheafCategory[101X
   
   [33X[1;0Y[29X[2XIsPreSheafCategory[102X( [3Xcategory[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of a presheaf category.[133X
   
-  [1X1.3-2 IsCellInPreSheafCategory[101X
+  [1X1.4-2 IsCellInPreSheafCategory[101X
   
   [33X[1;0Y[29X[2XIsCellInPreSheafCategory[102X( [3Xcell[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in a presheaf category.[133X
   
-  [1X1.3-3 IsObjectInPreSheafCategory[101X
+  [1X1.4-3 IsObjectInPreSheafCategory[101X
   
   [33X[1;0Y[29X[2XIsObjectInPreSheafCategory[102X( [3Xobj[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a presheaf category.[133X
   
-  [1X1.3-4 IsMorphismInPreSheafCategory[101X
+  [1X1.4-4 IsMorphismInPreSheafCategory[101X
   
   [33X[1;0Y[29X[2XIsMorphismInPreSheafCategory[102X( [3Xmor[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
@@ -124,10 +127,10 @@
   [33X[0;0YThe [5XGAP[105X category of morphisms in a presheaf category.[133X
   
   
-  [1X1.4 [33X[0;0YExamples[133X[101X
+  [1X1.5 [33X[0;0YExamples[133X[101X
   
   
-  [1X1.4-1 [33X[0;0YThe terminal category[133X[101X
+  [1X1.5-1 [33X[0;0YThe terminal category[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "PreSheaves" );[127X[104X
@@ -197,7 +200,7 @@
   [4X[32X[104X
   
   
-  [1X1.4-2 [33X[0;0YThe category of presheaves of [10XSkeletalFinSets[110X[101X[1X[133X[101X
+  [1X1.5-2 [33X[0;0YThe category of presheaves of [10XSkeletalFinSets[110X[101X[1X[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "PreSheaves" );[127X[104X
