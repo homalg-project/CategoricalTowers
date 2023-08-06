@@ -152,6 +152,21 @@ end );
 
 #! @Description
 #!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
+#!  the ambient category <C>PairOfParallelArrowsCategory</C>( <C>AssociatedFiniteStrictCoproductCocompletionOfSourceCategory</C>( <A>PSh</A> ) ).
+#! @Arguments PSh
+#! @Returns a &CAP; category
+DeclareAttribute( "AssociatedCategoryOfCoequalizerPairsOfSourceCategory",
+        IsPreSheafCategory );
+
+CapJitAddTypeSignature( "AssociatedCategoryOfCoequalizerPairsOfSourceCategory", [ IsPreSheafCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( PairOfParallelArrowsCategory( AssociatedFiniteStrictCoproductCocompletionOfSourceCategory( input_types[1].category ) ) );
+    
+end );
+
+#! @Description
+#!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
 #!  the equivalent category <C>CategoryOfColimitQuivers</C>( $C$ ).
 #! @Arguments PSh
 #! @Returns a &CAP; category

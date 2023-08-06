@@ -1237,6 +1237,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             Append( PSh!.compiler_hints.category_attribute_names,
                     [ "AssociatedFiniteStrictCoproductCocompletionOfSourceCategory",
+                      "AssociatedCategoryOfCoequalizerPairsOfSourceCategory",
                       ] );
             
             if not (HasIsAbCategory and IsAbCategory)( B ) then
@@ -2287,6 +2288,16 @@ InstallMethod( AssociatedFiniteStrictCoproductCocompletionOfSourceCategory,
 end );
 
 ##
+InstallMethod( AssociatedCategoryOfCoequalizerPairsOfSourceCategory,
+        [ IsPreSheafCategory ],
+        
+  function( PSh )
+    
+    return PairOfParallelArrowsCategory( AssociatedFiniteStrictCoproductCocompletionOfSourceCategory( PSh ) );
+    
+end );
+
+##
 InstallMethod( AssociatedCategoryOfColimitQuiversOfSourceCategory,
         [ IsPreSheafCategory ],
         
@@ -2863,7 +2874,7 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingCoYonedaLemma
     
     Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
     
-    CoequalizerPairs := ModelingCategory( Bhat );
+    CoequalizerPairs := AssociatedCategoryOfCoequalizerPairsOfSourceCategory( PSh );
     
     PSh_CoequalizerPairs_UB := ModelingCategory( CoequalizerPairs );
     
@@ -3042,7 +3053,7 @@ InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjec
         
   function ( PSh, F )
     local B, defining_triple, nr_objs, objs, id, F_vals, offsets, coYoneda, cover,
-          Bhat, pair_category, range, list, s, UB, source, section;
+          Bhat, CoequalizerPairs, range, list, s, UB, source, section;
     
     B := Source( PSh );
     
@@ -3063,9 +3074,9 @@ InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjec
     
     Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
     
-    pair_category := ModelingCategory( Bhat );
+    CoequalizerPairs := AssociatedCategoryOfCoequalizerPairsOfSourceCategory( PSh );
     
-    range := ObjectDatum( pair_category, ModelingObject( Bhat, coYoneda ) )[1][1];
+    range := ObjectDatum( CoequalizerPairs, ModelingObject( Bhat, coYoneda ) )[1][1];
     
     list := List( cover, a -> a[1] );
     
@@ -3104,7 +3115,7 @@ InstallOtherMethodForCompilerForCAP( EpimorphismFromCoYonedaProjectiveObjectOnto
         
   function ( PSh, F )
     local B, defining_triple, nr_objs, objs, mors, id, F_vals, offsets, coYoneda, cover,
-          Bhat, pair_category, source, s, source_list, list, UB, range, f, map_mor, epi;
+          Bhat, CoequalizerPairs, source, s, source_list, list, UB, range, f, map_mor, epi;
     
     B := Source( PSh );
     
@@ -3126,9 +3137,9 @@ InstallOtherMethodForCompilerForCAP( EpimorphismFromCoYonedaProjectiveObjectOnto
     
     Bhat := AssociatedCategoryOfColimitQuiversOfSourceCategory( PSh );
     
-    pair_category := ModelingCategory( Bhat );
+    CoequalizerPairs := AssociatedCategoryOfCoequalizerPairsOfSourceCategory( PSh );
     
-    source := ObjectDatum( pair_category, ModelingObject( Bhat, coYoneda ) )[1][1];
+    source := ObjectDatum( CoequalizerPairs, ModelingObject( Bhat, coYoneda ) )[1][1];
     
     s := ObjectDatum( source )[1];
     
