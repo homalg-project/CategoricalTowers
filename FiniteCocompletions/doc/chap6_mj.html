@@ -37,9 +37,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X785C21C17F786A08">6.2-1 CategoryOfColimitQuivers</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7FFD17158275C768">6.2-2 CreateColimitQuiver</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7ACAD98D7CD12AEF">6.2-3 CreateMorphismOfColimitQuivers</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X79F910F5820B44B1">6.2-4 AssociatedCategoryOfColimitQuiversOfSourceCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7E7C3F167FBBC4FA">6.2-5 UnderlyingCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X8767AE0182F5279E">6.2-6 EmbeddingOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7E7C3F167FBBC4FA">6.2-4 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X8767AE0182F5279E">6.2-5 EmbeddingOfUnderlyingCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X7A489A5D79DA9E5C">6.3 <span class="Heading">Examples</span></a>
 </span>
@@ -406,25 +405,16 @@ true
 <h5>6.2-3 CreateMorphismOfColimitQuivers</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateMorphismOfColimitQuivers</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X79F910F5820B44B1" name="X79F910F5820B44B1"></a></p>
-
-<h5>6.2-4 AssociatedCategoryOfColimitQuiversOfSourceCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedCategoryOfColimitQuiversOfSourceCategory</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
-
-<p>Given the presheaf category <var class="Arg">PSh</var>=<code class="code">PSh</code>(<span class="SimpleMath">\(C,V\)</span>) return the equivalent category <code class="code">CategoryOfColimitQuivers</code>( <span class="SimpleMath">\(C\)</span> ).</p>
-
 <p><a id="X7E7C3F167FBBC4FA" name="X7E7C3F167FBBC4FA"></a></p>
 
-<h5>6.2-5 UnderlyingCategory</h5>
+<h5>6.2-4 UnderlyingCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">ColimitQuivers</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Return the category <span class="SimpleMath">\(C\)</span> underlying the category of colimit quivers <var class="Arg">ColimitQuivers</var><code class="code"> := CategoryOfColimitQuivers(</code> <span class="SimpleMath">\(C\)</span> <code class="code">)</code>).</p>
 
 <p><a id="X8767AE0182F5279E" name="X8767AE0182F5279E"></a></p>
 
-<h5>6.2-6 EmbeddingOfUnderlyingCategory</h5>
+<h5>6.2-5 EmbeddingOfUnderlyingCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnderlyingCategory</code>( <var class="Arg">ColimitQuivers</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> functor</p>
