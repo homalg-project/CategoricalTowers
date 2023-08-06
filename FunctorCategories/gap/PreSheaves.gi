@@ -2901,6 +2901,18 @@ InstallMethod( CoequalizerDataOfPreSheafUsingCoYonedaLemma,
 end );
 
 ##
+InstallMethodForCompilerForCAP( EmbeddingFunctorOfFiniteStrictCoproductCocompletionIntoPreSheavesData,
+        [ IsPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh )
+    local UC;
+    
+    UC := AssociatedFiniteStrictCoproductCocompletionOfSourceCategory( PSh );
+    
+    return ExtendFunctorToFiniteStrictCoproductCocompletionData( UC, YonedaEmbeddingData( PSh ), PSh );
+    
+end );
+
 ## a special case of InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
 InstallMethodForCompilerForCAP( MorphismFromRepresentable,
         [ IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory ],
