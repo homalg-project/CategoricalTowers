@@ -181,30 +181,6 @@ DeclareAttribute( "YonedaEmbedding",
 DeclareAttribute( "YonedaEmbeddingOfSourceCategory",
         IsPreSheafCategory );
 
-#! @Description
-#!  Apply the presheaf <A>F</A> to the object <A>obj</A>.
-#!  The shorthand is <A>F</A>(<A>obj</A>).
-#! @Arguments F, obj
-#! @Returns a &CAP; object
-DeclareOperation( "ApplyObjectInPreSheafCategoryToObject",
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryObject ] );
-
-#! @Description
-#!  Apply the presheaf <A>F</A> to the morphism <A>mor</A>.
-#!  The shorthand is <A>F</A>(<A>mor</A>).
-#! @Arguments F, mor
-#! @Returns a &CAP; morphism
-DeclareOperation( "ApplyObjectInPreSheafCategoryToMorphism",
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ] );
-
-#! @Description
-#!  Apply the presheaf morphism <A>eta</A> to the object <A>obj</A>.
-#!  The shorthand is <A>eta</A>(<A>o</A>).
-#! @Arguments eta, obj
-#! @Returns a &CAP; morphism
-DeclareOperation( "ApplyMorphismInPreSheafCategoryToObject",
-        [ IsPreSheafCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ] );
-
 #! @Arguments F
 DeclareAttribute( "CoYonedaLemmaOnObjects",
         IsObjectInPreSheafCategory );
@@ -212,9 +188,6 @@ DeclareAttribute( "CoYonedaLemmaOnObjects",
 #! @Arguments phi
 DeclareAttribute( "CoYonedaLemmaOnMorphisms",
         IsMorphismInPreSheafCategory );
-
-DeclareOperation( "MorphismFromRepresentableFunctor",
-        [ IsPreSheafCategory, IsCapCategoryObject, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ] );
 
 ####################################
 #
@@ -245,4 +218,37 @@ DeclareOperationWithCache( "PreSheavesOfEnrichedCategory",
         [ IsCapCategory, IsCapCategory ] );
 
 CapJitAddTypeSignature( "PreSheavesOfEnrichedCategory", [ IsCapCategory, IsCapCategory ], IsPreSheafCategory );
+
+####################################
+#
+#! @Section Operations
+#
+####################################
+
+#! @Description
+#!  Apply the presheaf <A>F</A> to the object <A>obj</A>.
+#!  The shorthand is <A>F</A>(<A>obj</A>).
+#! @Arguments F, obj
+#! @Returns a &CAP; object
+DeclareOperation( "ApplyObjectInPreSheafCategoryToObject",
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryObject ] );
+
+#! @Description
+#!  Apply the presheaf <A>F</A> to the morphism <A>mor</A>.
+#!  The shorthand is <A>F</A>(<A>mor</A>).
+#! @Arguments F, mor
+#! @Returns a &CAP; morphism
+DeclareOperation( "ApplyObjectInPreSheafCategoryToMorphism",
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ] );
+
+#! @Description
+#!  Apply the presheaf morphism <A>eta</A> to the object <A>obj</A>.
+#!  The shorthand is <A>eta</A>(<A>o</A>).
+#! @Arguments eta, obj
+#! @Returns a &CAP; morphism
+DeclareOperation( "ApplyMorphismInPreSheafCategoryToObject",
+        [ IsPreSheafCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ] );
+
+DeclareOperation( "MorphismFromRepresentableFunctor",
+        [ IsPreSheafCategory, IsCapCategoryObject, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ] );
 

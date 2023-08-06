@@ -135,6 +135,21 @@ DeclareAttribute( "NerveTruncatedInDegree2", IsCapCategory );
 #! @Arguments iota
 DeclareAttribute( "SievesOfPathsToTruth", IsMorphismInPreSheafCategory );
 
+#! @Description
+#!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
+#!  the equivalent category <C>CategoryOfColimitQuivers</C>( $C$ ).
+#! @Arguments PSh
+#! @Returns a &CAP; category
+DeclareAttribute( "AssociatedCategoryOfColimitQuiversOfSourceCategory",
+        IsPreSheafCategory );
+
+CapJitAddTypeSignature( "AssociatedCategoryOfColimitQuiversOfSourceCategory", [ IsPreSheafCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( CategoryOfColimitQuivers( Source( input_types[1].category ) ) );
+    
+end );
+
 ####################################
 #
 #! @Section Operations

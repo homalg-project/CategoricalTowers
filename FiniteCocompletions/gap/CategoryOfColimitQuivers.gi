@@ -260,16 +260,6 @@ InstallMethod( CategoryOfColimitQuivers,
 end );
 
 ##
-InstallMethod( AssociatedCategoryOfColimitQuiversOfSourceCategory,
-        [ IsPreSheafCategory ],
-        
-  function( PSh )
-    
-    return CategoryOfColimitQuivers( Source( PSh ) );
-    
-end );
-
-##
 InstallMethod( EmbeddingOfUnderlyingCategory,
         "for the category of colimit quivers in a category",
         [ IsCategoryOfColimitQuivers ],
