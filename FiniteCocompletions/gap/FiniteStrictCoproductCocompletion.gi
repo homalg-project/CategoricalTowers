@@ -164,7 +164,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     ##
     UC!.category_as_first_argument := true;
     
-    ## UC support empty limits, regardless of C
+    ## UC supports empty limits, regardless of C
     UC!.supports_empty_limits := true;
     
     ##
