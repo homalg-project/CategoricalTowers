@@ -51,17 +51,24 @@ fi;
 ####################################
 
 #! @Arguments quiver
-DeclareAttribute( "DefiningParallelPair",
+DeclareAttribute( "PairOfObjectsAndPairOfParallelMorphisms",
         IsObjectInPairOfParallelArrowsCategory );
 
-CapJitAddTypeSignature( "DefiningParallelPair", [ IsObjectInPairOfParallelArrowsCategory ],
+CapJitAddTypeSignature( "PairOfObjectsAndPairOfParallelMorphisms", [ IsObjectInPairOfParallelArrowsCategory ],
  function ( input_types )
+    local C;
     
     Assert( 0, IsPairOfParallelArrowsCategory( input_types[1].category ) );
     
+    C := UnderlyingCategory( input_types[1].category );
+    
     return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ),
-                   CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) );
+                   CapJitDataTypeOfNTupleOf( 2,
+                           CapJitDataTypeOfObjectOfCategory( C ),
+                           CapJitDataTypeOfObjectOfCategory( C ) ),
+                   CapJitDataTypeOfNTupleOf( 2,
+                           CapJitDataTypeOfMorphismOfCategory( C ),
+                           CapJitDataTypeOfMorphismOfCategory( C ) ) );
     
 end );
 
@@ -71,12 +78,15 @@ DeclareAttribute( "DefiningPairOfMorphismBetweenParallelPairs",
 
 CapJitAddTypeSignature( "DefiningPairOfMorphismBetweenParallelPairs", [ IsMorphismInPairOfParallelArrowsCategory ],
  function ( input_types )
+    local C;
     
     Assert( 0, IsPairOfParallelArrowsCategory( input_types[1].category ) );
     
+    C := UnderlyingCategory( input_types[1].category );
+    
     return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ),
-                   CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) );
+                   CapJitDataTypeOfMorphismOfCategory( C ),
+                   CapJitDataTypeOfMorphismOfCategory( C ) );
     
 end );
 
