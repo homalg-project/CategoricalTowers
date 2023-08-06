@@ -153,7 +153,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToAbelianClosureWithStrictDirectSum
                            FKSC,
                            ExtendFunctorToCoFreydCategoryData(
                                    KSC,
-                                   ExtendFunctorToStrictAdditiveClosureData(
+                                   ExtendFunctorToFiniteStrictCoproductCocompletionData(
                                            SC,
                                            pair_of_funcs,
                                            abelian_category_with_strict_direct_sums )[2],

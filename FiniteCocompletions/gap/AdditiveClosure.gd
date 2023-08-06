@@ -23,7 +23,7 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
 DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsAdditiveClosureCategory );
 
-DeclareOperation( "ExtendFunctorToStrictAdditiveClosureData",
+DeclareOperation( "ExtendFunctorToFiniteStrictCoproductCocompletionData",
         [ IsAdditiveClosureCategory, IsList, IsAdditiveCategory ] );
 
 #! @Description
