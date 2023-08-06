@@ -45,7 +45,7 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ExtendFunctorToStrictAdditiveClosureData,
+InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletionData,
         "for a two categories and a pair of functions",
         [ IsAdditiveClosureCategory, IsList, IsAdditiveCategory ],
         
@@ -117,7 +117,7 @@ InstallMethod( ExtendFunctorToStrictAdditiveClosure,
     
     SC := AdditiveClosure( C );
     
-    data := ExtendFunctorToStrictAdditiveClosureData(
+    data := ExtendFunctorToFiniteStrictCoproductCocompletionData(
                     SC,
                     Pair( FunctorObjectOperation( F ), FunctorMorphismOperation( F ) ),
                     D );
