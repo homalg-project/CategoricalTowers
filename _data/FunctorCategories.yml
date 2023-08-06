@@ -1,5 +1,5 @@
 name: FunctorCategories
-version: "2023.08-03"
+version: "2023.08-04"
 license: "GPL-2.0-or-later"
 date: 2023-08-06
 description: |
@@ -39,7 +39,7 @@ needed-pkgs:
       version: ">= 2023.06-08"
       url: "https://homalg-project.github.io/pkg/Algebroids"
     - name: "FiniteCocompletions"
-      version: ">= 2023.08-02"
+      version: ">= 2023.08-03"
       url: "https://homalg-project.github.io/pkg/FiniteCocompletions"
     - name: "PreSheaves"
       version: ">= 2023.03-03"
@@ -75,11 +75,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FunctorCategorie
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.08-03/FunctorCategories-2023.08-03.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.08-04/FunctorCategories-2023.08-04.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.08-03/FunctorCategories-2023.08-03.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.08-04/FunctorCategories-2023.08-04.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.08-03/FunctorCategories-2023.08-03-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.08-04/FunctorCategories-2023.08-04-manual.pdf
 
 abstract: |
 
@@ -92,7 +92,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BS06</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FunctorCategories, Categories of functors,
-             Version 2023.08-03</i>
+             Version 2023.08-04</i>
      (<span class='BibYear'>8-06</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FunctorCategories">https://homalg-project.github.io/pkg/FunctorCategories</a></span>.
@@ -100,10 +100,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ FunctorCategories2023.08-03,
+    @misc{ FunctorCategories2023.08-04,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FunctorCategories}, Categories of functors, {V}ersion
-                          2023.08-03},
+                          2023.08-04},
       month =            {3-},
       year =             {8-06},
       note =             {GAP package},
