@@ -2883,11 +2883,15 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentable,
     
     f :=
       function( source, srcB_index, range )
-        local HomB_srcB_objB, F_HomB_srcB_objB, taus;
+        local HomC_d_HomB_src_objB, HomB_srcB_objB, F_HomB_srcB_objB, taus;
         
-        HomB_srcB_objB := MorphismsOfExternalHom( B,
-                                  objs[srcB_index],
-                                  objB );
+        HomC_d_HomB_src_objB := ExactCoverWithGlobalElements( C,
+                                        HomomorphismStructureOnObjects( B,
+                                                objs[srcB_index],
+                                                objB ) );
+        
+        HomB_srcB_objB := List( HomC_d_HomB_src_objB, m ->
+                                InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B, objs[srcB_index], objB, m ) );
         
         ## F applied to all morphisms from srcB to objB
         F_HomB_srcB_objB := List( HomB_srcB_objB, F );
@@ -2923,15 +2927,10 @@ InstallMethodForCompilerForCAP( MorphismFromCoproductOfRepresentables,
     
     cover_objB :=
       function( objB_list )
-        local objB, elFV;
-        
-        objB := objB_list[1];
-        
-        elFV := ExactCoverWithGlobalElements( C, ValuesOfPreSheaf( F )[1][SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( B, obj, objB ) )] );
         
         return MorphismFromRepresentable( PSh,
-                       objB,
-                       elFV[1 + objB_list[2]],
+                       objB_list[1],
+                       objB_list[2],
                        F );
     end;
     
@@ -2946,20 +2945,18 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, F )
-    local B, C, objs, homs, F_o_vals, predicate, func, initial, cover;
+    local B, C, objs, homs, predicate, func, initial, cover;
     
     B := Source( PSh );
     C := Range( PSh );
     
     objs := SetOfObjects( B );
     
-    ## compute all Hom(-, objB) to order them by their lengths below
+    ## compute all Hom(-, objB) to order them by their lengths/dimension below
     homs := List( objs, objB ->
                   ObjectDatum( C,
                           Coproduct( C,
                                   List( objs, srcB -> HomomorphismStructureOnObjects( B, srcB, objB ) ) ) ) );
-    
-    F_o_vals := List( ListOfValues( ValuesOfPreSheaf( F )[1] ), F_o -> [ 0 .. ObjectDatum( C, F_o ) - 1 ] );
     
     predicate :=
       function( pi_data, pi_data_new )
@@ -2973,19 +2970,16 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
     
     func :=
       function( pi_data )
-        local pi, im, im_vals, diff_vals, pos_nontrivial, homs_relevant, max, pos;
+        local pi, im_emb, pos_nontrivial, homs_relevant, max, pos;
         
         pi := MorphismFromCoproductOfRepresentables( PSh,
                       pi_data,
                       F );
         
-        im := ImageEmbedding( pi );
+        im_emb := ListOfValues( ValuesOnAllObjects( ImageEmbedding( pi ) ) );
         
-        im_vals := List( ListOfValues( ValuesOnAllObjects( im ) ), im_o -> MorphismDatum( C, im_o ) );
-        
-        diff_vals := ListN( F_o_vals, im_vals, { a, b } -> Difference( a, b ) );
-        
-        pos_nontrivial := PositionsProperty( diff_vals, a -> Length( a ) > 0 );
+        ## the positions of the components im_emb_o of the natural transformation im_emb which are not epis:
+        pos_nontrivial := PositionsProperty( im_emb, im_emb_o -> not IsEpimorphism( C, im_emb_o ) );
         
         homs_relevant := homs{pos_nontrivial};
         
@@ -2993,7 +2987,7 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
         
         pos := pos_nontrivial[SafePosition( homs_relevant, max )];
         
-        return Concatenation( pi_data, [ Pair( objs[pos], diff_vals[pos][1] ) ] );
+        return Concatenation( pi_data, [ Pair( objs[pos], NonliftableMorphismFromDistinguishedObject( C, im_emb[pos] ) ) ] );
         
     end;
     
@@ -3128,7 +3122,7 @@ InstallOtherMethodForCompilerForCAP( EpimorphismFromCoYonedaProjectiveObjectOnto
         
         val := i - 1 - offsets[objB_pos];
         
-        pos := PositionProperty( cover, a -> IsEqualForObjects( B, a[1], source_list[i] ) and a[2] = val );
+        pos := PositionProperty( cover, a -> IsEqualForObjects( B, a[1], source_list[i] ) and AsList( a[2] )[1 + 0] = val );
         
         if IsInt( pos ) then
             return [ -1 + pos, id[objB_pos] ];
@@ -3138,7 +3132,7 @@ InstallOtherMethodForCompilerForCAP( EpimorphismFromCoYonedaProjectiveObjectOnto
             mor := mors[pos_mor];
             map := -1 + SafePosition( AsList( F_vals[2][pos_mor] ), val );
             r := Range( mor );
-            return [ -1 + SafePositionProperty( cover, a -> IsEqualForObjects( B, r, a[1] ) and a[2] = map ), mor ];
+            return [ -1 + SafePositionProperty( cover, a -> IsEqualForObjects( B, r, a[1] ) and AsList( a[2] )[1 + 0] = map ), mor ];
         fi;
         
     end;
