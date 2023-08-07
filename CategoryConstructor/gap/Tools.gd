@@ -69,6 +69,7 @@ DeclareAttribute( "GlobalSectionFunctor",
 #! @Arguments diagram_S, F, diagram_T
 DeclareOperation( "MorphismBetweenCoproducts",
                   [ IsList, IsList, IsList ] );
+#! @InsertChunk MorphismBetweenCoproducts
 
 #! @Description
 #! The arguments are given as follows:
@@ -101,6 +102,7 @@ DeclareOperation( "MorphismBetweenCoproductsWithGivenCoproducts",
 #! @Arguments diagram_S, F, diagram_T
 DeclareOperation( "MorphismBetweenDirectProducts",
                   [ IsList, IsList, IsList ] );
+#! @InsertChunk MorphismBetweenDirectProducts
 
 #! @Description
 #! The arguments are given as follows:

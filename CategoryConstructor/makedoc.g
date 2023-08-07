@@ -24,6 +24,7 @@ AutoDoc( rec(
                 \usepackage{tikz}
                 \usetikzlibrary{arrows}
                 \pgfarrowsdeclarecombine{twohead}{twohead}{latex}{latex}{latex}{latex}
+                \DeclareUnicodeCharacter{2C76}{\ensuremath{\vdash}\!\!}
             """,
         ),
     ),
