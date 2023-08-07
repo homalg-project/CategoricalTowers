@@ -559,12 +559,12 @@ InstallMethodWithCache( CoPreSheaves,
     SetSetOfObjects( coPSh, SetOfObjects( B ) );
     SetSetOfGeneratingMorphisms( coPSh, SetOfGeneratingMorphisms( B ) );
     
-    coPSh!.compiler_hints.category_attribute_names :=
-      [ "Source",
-        "Range",
-        "SetOfObjects",
-        "SetOfGeneratingMorphisms",
-        ];
+    Append( coPSh!.compiler_hints.category_attribute_names,
+            [ "Source",
+              "Range",
+              "SetOfObjects",
+              "SetOfGeneratingMorphisms",
+              ] );
     
     if not HasRangeCategoryOfHomomorphismStructure( coPSh ) and
        (HasIsInitialCategory and IsInitialCategory)( B ) then

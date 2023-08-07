@@ -195,10 +195,10 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
     SetDecorationOfVertices( DecoratedQuivers, decoration_of_vertices );
     SetDecorationOfArrows( DecoratedQuivers, decoration_of_arrows );
     
-    DecoratedQuivers!.compiler_hints.category_attribute_names :=
-      [ "DecorationOfVertices",
-        "DecorationOfArrows",
-        ];
+    Append( DecoratedQuivers!.compiler_hints.category_attribute_names,
+            [ "DecorationOfVertices",
+              "DecorationOfArrows",
+              ] );
     
     Finalize( DecoratedQuivers );
     

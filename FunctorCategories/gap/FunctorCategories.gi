@@ -673,13 +673,13 @@ InstallMethodWithCache( FunctorCategory,
     
     SetOppositeOfSource( Hom, B_op );
     
-    Hom!.compiler_hints.category_attribute_names :=
-      [ "Source",
-        "Range",
-        "SetOfObjects",
-        "SetOfGeneratingMorphisms",
-        "OppositeOfSource",
-        ];
+    Append( Hom!.compiler_hints.category_attribute_names,
+            [ "Source",
+              "Range",
+              "SetOfObjects",
+              "SetOfGeneratingMorphisms",
+              "OppositeOfSource",
+              ] );
     
     if not HasRangeCategoryOfHomomorphismStructure( Hom ) and
        (HasIsInitialCategory and IsInitialCategory)( B ) then

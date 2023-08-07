@@ -227,9 +227,9 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
     
     SetUnderlyingCategory( Bouquets, F );
     
-    Bouquets!.compiler_hints.category_attribute_names :=
-           [ "UnderlyingCategory",
-            ];
+    Append( Bouquets!.compiler_hints.category_attribute_names,
+            [ "UnderlyingCategory",
+              ] );
     
     if ValueOption( "no_precompiled_code" ) <> true then
         ADD_FUNCTIONS_FOR_FinBouquetsPrecompiled( Bouquets );

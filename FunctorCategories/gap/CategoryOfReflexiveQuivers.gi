@@ -249,9 +249,9 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
     
     SetUnderlyingCategory( Quivers, F );
     
-    Quivers!.compiler_hints.category_attribute_names :=
-           [ "UnderlyingCategory",
-            ];
+    Append( Quivers!.compiler_hints.category_attribute_names,
+            [ "UnderlyingCategory",
+              ] );
     
     if ValueOption( "no_precompiled_code" ) <> true then
         ADD_FUNCTIONS_FOR_FinReflexiveQuiversPrecompiled( Quivers );
