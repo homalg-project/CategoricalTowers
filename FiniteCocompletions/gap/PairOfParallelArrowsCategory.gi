@@ -169,9 +169,9 @@ InstallMethod( PairOfParallelArrowsCategory,
     
     SetUnderlyingCategory( ParallelPairs, C );
     
-    ParallelPairs!.compiler_hints.category_attribute_names :=
-      [ "UnderlyingCategory",
-        ];
+    Append( ParallelPairs!.compiler_hints.category_attribute_names,
+            [ "UnderlyingCategory",
+              ] );
     
     if ValueOption( "no_precompiled_code" ) <> true then
         

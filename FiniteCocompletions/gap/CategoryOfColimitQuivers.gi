@@ -245,9 +245,9 @@ InstallMethod( CategoryOfColimitQuivers,
     
     SetUnderlyingCategory( ColimitQuivers, C );
     
-    ColimitQuivers!.compiler_hints.category_attribute_names :=
-      [ "UnderlyingCategory",
-        ];
+    Append( ColimitQuivers!.compiler_hints.category_attribute_names,
+            [ "UnderlyingCategory",
+              ] );
     
     if ValueOption( "no_precompiled_code" ) <> true then
         
