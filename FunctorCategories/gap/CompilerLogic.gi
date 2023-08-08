@@ -142,6 +142,14 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
+        variable_names := [ "a" ],
+        src_template := "QUO_INT( a, 1 )",
+        dst_template := "a",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
         variable_names := [ "entry1", "entry2", "func" ],
         src_template := "ForAll( [ entry1, entry2 ], func )",
         dst_template := "func( entry1 ) and func( entry2 )",
