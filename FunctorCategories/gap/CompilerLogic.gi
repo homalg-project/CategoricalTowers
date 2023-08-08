@@ -373,3 +373,11 @@ CapJitAddLogicTemplate(
         dst_template := "n"
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list" ],
+        src_template := "Concatenation( list, [ ] )",
+        dst_template := "list"
+    )
+);
