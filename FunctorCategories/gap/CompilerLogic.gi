@@ -373,6 +373,17 @@ CapJitAddLogicTemplate(
     )
 );
 
+## this logic template is potentially dangerous:
+## if number = 0 then func is not applied to entry in the src_template,
+## while func( entry ) is always computed in the dst_template
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number", "entry", "func" ],
+        src_template := "List( ListWithIdenticalEntries( number, entry ), func )",
+        dst_template := "ListWithIdenticalEntries( number, func( entry ) )",
+    )
+);
+
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "matrix", "dimension", "ring" ],
@@ -420,5 +431,21 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsList, IsFunction, IsBigInt ],
         src_template := "SafeUniquePositionProperty( list, x -> func( x ) = entry )",
         dst_template := "SafeUniquePosition( List( list, func ), entry )"
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [  ],
+        src_template := "SafeUniquePosition( [ 0, 1 ], 0 )",
+        dst_template := "1"
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [  ],
+        src_template := "SafeUniquePosition( [ 0, 1 ], 1 )",
+        dst_template := "2"
     )
 );
