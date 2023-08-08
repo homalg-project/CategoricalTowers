@@ -335,6 +335,14 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
+        variable_names := [ "entry" ],
+        src_template := "ListWithIdenticalEntries( 0, entry )",
+        dst_template := "[ ]",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
         variable_names := [ "matrix", "dimension", "ring" ],
         src_template := "matrix * HomalgIdentityMatrix( dimension, ring )",
         dst_template := "matrix",
