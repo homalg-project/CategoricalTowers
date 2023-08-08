@@ -413,3 +413,12 @@ CapJitAddLogicTemplate(
         dst_template := "condition"
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "func", "entry" ],
+        variable_filters := [ IsList, IsFunction, IsBigInt ],
+        src_template := "SafeUniquePositionProperty( list, x -> func( x ) = entry )",
+        dst_template := "SafeUniquePosition( List( list, func ), entry )"
+    )
+);

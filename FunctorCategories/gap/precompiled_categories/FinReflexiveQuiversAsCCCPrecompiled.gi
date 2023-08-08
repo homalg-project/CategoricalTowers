@@ -46,69 +46,53 @@ function ( cat_1, a_1, b_1 )
     deduped_94_1 := [ 0 .. Sum( [ deduped_116_1, deduped_118_1, deduped_118_1 ] ) - 1 ];
     deduped_93_1 := Length( deduped_100_1 );
     deduped_92_1 := Length( deduped_99_1 );
-    deduped_91_1 := [ 0 .. Sum( [ deduped_110_1, deduped_111_1, deduped_111_1 ] ) - 1 ];
-    deduped_90_1 := [ 0 .. deduped_97_1 + deduped_98_1 - 1 ];
     deduped_2_1 := [ deduped_120_1, deduped_121_1 ];
-    deduped_1_1 := [ deduped_117_1, deduped_119_1 ];
-    deduped_87_1 := Concatenation( List( deduped_102_1, function ( objB_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := IndexOfObject( objB_2 );
-              return deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                       return IndexOfObject( obj_3 ) = hoisted_1_2;
-                   end )];
+    deduped_1_1 := [ 0, 1 ];
+    deduped_91_1 := Concatenation( List( deduped_102_1, function ( objB_2 )
+              return deduped_2_1[SafeUniquePosition( deduped_1_1, IndexOfObject( objB_2 ) )];
           end ), List( deduped_103_1, function ( objB_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := IndexOfObject( objB_2 );
-              return deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                       return IndexOfObject( obj_3 ) = hoisted_1_2;
-                   end )];
+              return deduped_2_1[SafeUniquePosition( deduped_1_1, IndexOfObject( objB_2 ) )];
           end ) );
-    deduped_85_1 := Product( deduped_87_1 );
-    deduped_81_1 := [ 0 .. deduped_85_1 - 1 ];
-    deduped_89_1 := List( deduped_100_1, function ( i_2 )
+    deduped_90_1 := Concatenation( List( deduped_108_1, function ( objB_2 )
+              return deduped_2_1[SafeUniquePosition( deduped_1_1, IndexOfObject( objB_2 ) )];
+          end ), List( deduped_109_1, function ( objB_2 )
+              return deduped_2_1[SafeUniquePosition( deduped_1_1, IndexOfObject( objB_2 ) )];
+          end ) );
+    deduped_89_1 := [ 0 .. Sum( [ deduped_110_1, deduped_111_1, deduped_111_1 ] ) - 1 ];
+    deduped_88_1 := [ 0 .. deduped_97_1 + deduped_98_1 - 1 ];
+    deduped_87_1 := Product( deduped_91_1 );
+    deduped_86_1 := Product( deduped_90_1 );
+    deduped_81_1 := [ 0 .. deduped_87_1 - 1 ];
+    deduped_85_1 := List( deduped_100_1, function ( i_2 )
             local hoisted_1_2, hoisted_2_2, deduped_3_2;
             deduped_3_2 := 1 + (i_2 + deduped_110_1);
-            hoisted_2_2 := deduped_87_1[deduped_3_2];
-            hoisted_1_2 := Product( deduped_87_1{[ 1 .. deduped_3_2 - 1 ]} );
+            hoisted_2_2 := deduped_91_1[deduped_3_2];
+            hoisted_1_2 := Product( deduped_91_1{[ 1 .. deduped_3_2 - 1 ]} );
             return List( deduped_81_1, function ( i_3 )
                     return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                 end );
         end );
-    deduped_86_1 := Concatenation( List( deduped_108_1, function ( objB_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := IndexOfObject( objB_2 );
-              return deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                       return IndexOfObject( obj_3 ) = hoisted_1_2;
-                   end )];
-          end ), List( deduped_109_1, function ( objB_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := IndexOfObject( objB_2 );
-              return deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                       return IndexOfObject( obj_3 ) = hoisted_1_2;
-                   end )];
-          end ) );
-    deduped_84_1 := Product( deduped_86_1 );
-    deduped_80_1 := [ 0 .. deduped_84_1 - 1 ];
-    deduped_88_1 := List( deduped_107_1, function ( i_2 )
+    deduped_80_1 := [ 0 .. deduped_86_1 - 1 ];
+    deduped_84_1 := List( deduped_107_1, function ( i_2 )
             local hoisted_1_2, hoisted_2_2, deduped_3_2;
             deduped_3_2 := 1 + (i_2 + deduped_116_1);
-            hoisted_2_2 := deduped_86_1[deduped_3_2];
-            hoisted_1_2 := Product( deduped_86_1{[ 1 .. deduped_3_2 - 1 ]} );
+            hoisted_2_2 := deduped_90_1[deduped_3_2];
+            hoisted_1_2 := Product( deduped_90_1{[ 1 .. deduped_3_2 - 1 ]} );
             return List( deduped_80_1, function ( i_3 )
                     return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                 end );
         end );
-    deduped_83_1 := ListWithIdenticalEntries( deduped_93_1, deduped_85_1 );
-    deduped_82_1 := ListWithIdenticalEntries( deduped_98_1, deduped_84_1 );
+    deduped_83_1 := ListWithIdenticalEntries( deduped_93_1, deduped_87_1 );
+    deduped_82_1 := ListWithIdenticalEntries( deduped_98_1, deduped_86_1 );
     hoisted_48_1 := Concatenation( List( deduped_99_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := 1 + i_2;
-              hoisted_2_2 := deduped_87_1[deduped_3_2];
-              hoisted_1_2 := Product( deduped_87_1{[ 1 .. deduped_3_2 - 1 ]} );
+              hoisted_2_2 := deduped_91_1[deduped_3_2];
+              hoisted_1_2 := Product( deduped_91_1{[ 1 .. deduped_3_2 - 1 ]} );
               return List( deduped_81_1, function ( i_3 )
                       return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                   end );
-          end ), deduped_89_1, deduped_89_1 );
+          end ), deduped_85_1, deduped_85_1 );
     deduped_13_1 := [ deduped_126_1[3], List( deduped_122_1, function ( a_2 )
                 return a_2[1];
             end ), List( deduped_122_1, function ( a_2 )
@@ -133,9 +117,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -161,9 +143,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -189,9 +169,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -204,8 +182,8 @@ function ( cat_1, a_1, b_1 )
               fi;
               return;
           end ) );
-    deduped_30_1 := Concatenation( ListWithIdenticalEntries( deduped_92_1, deduped_85_1 ), deduped_83_1, deduped_83_1 );
-    hoisted_49_1 := List( deduped_91_1, function ( i_2 )
+    deduped_30_1 := Concatenation( ListWithIdenticalEntries( deduped_92_1, deduped_87_1 ), deduped_83_1, deduped_83_1 );
+    hoisted_49_1 := List( deduped_89_1, function ( i_2 )
             local hoisted_1_2, hoisted_2_2, deduped_3_2;
             deduped_3_2 := 1 + i_2;
             hoisted_2_2 := hoisted_47_1[deduped_3_2];
@@ -241,48 +219,36 @@ function ( cat_1, a_1, b_1 )
             return CAP_JIT_INCOMPLETE_LOGIC( hoisted_31_1[1 + REM_INT( deduped_1_2, 2 )] ) + CAP_JIT_INCOMPLETE_LOGIC( deduped_5_1[(1 + REM_INT( QUO_INT( deduped_1_2, 2 ), deduped_116_1 ))] ) * 3;
         end );
     hoisted_44_1 := Concatenation( List( deduped_99_1, function ( i_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := deduped_34_1[1 + (deduped_32_1[1 + i_2] + deduped_110_1)];
-              return deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                       return IndexOfObject( obj_3 ) = hoisted_1_2;
-                   end )];
+              return deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_34_1[1 + (deduped_32_1[1 + i_2] + deduped_110_1)] )];
           end ), List( deduped_100_1, function ( i_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := deduped_34_1[1 + deduped_36_1[(1 + i_2)]];
-              return deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                       return IndexOfObject( obj_3 ) = hoisted_1_2;
-                   end )];
+              return deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_34_1[1 + deduped_36_1[(1 + i_2)]] )];
           end ), List( deduped_100_1, function ( i_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := deduped_34_1[1 + deduped_38_1[(1 + i_2)]];
-              return deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                       return IndexOfObject( obj_3 ) = hoisted_1_2;
-                   end )];
+              return deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_34_1[1 + deduped_38_1[(1 + i_2)]] )];
           end ) );
-    deduped_45_1 := List( deduped_91_1, function ( j_2 )
+    deduped_45_1 := List( deduped_89_1, function ( j_2 )
             return Product( hoisted_44_1{[ 1 .. j_2 ]} );
         end );
     hoisted_42_1 := Concatenation( List( deduped_99_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := 1 + (deduped_32_1[1 + i_2] + deduped_110_1);
-              hoisted_2_2 := deduped_87_1[deduped_3_2];
-              hoisted_1_2 := Product( deduped_87_1{[ 1 .. deduped_3_2 - 1 ]} );
+              hoisted_2_2 := deduped_91_1[deduped_3_2];
+              hoisted_1_2 := Product( deduped_91_1{[ 1 .. deduped_3_2 - 1 ]} );
               return List( deduped_81_1, function ( i_3 )
                       return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                   end );
           end ), List( deduped_100_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := 1 + deduped_36_1[(1 + i_2)];
-              hoisted_2_2 := deduped_87_1[deduped_3_2];
-              hoisted_1_2 := Product( deduped_87_1{[ 1 .. deduped_3_2 - 1 ]} );
+              hoisted_2_2 := deduped_91_1[deduped_3_2];
+              hoisted_1_2 := Product( deduped_91_1{[ 1 .. deduped_3_2 - 1 ]} );
               return List( deduped_81_1, function ( i_3 )
                       return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                   end );
           end ), List( deduped_100_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := 1 + deduped_38_1[(1 + i_2)];
-              hoisted_2_2 := deduped_87_1[deduped_3_2];
-              hoisted_1_2 := Product( deduped_87_1{[ 1 .. deduped_3_2 - 1 ]} );
+              hoisted_2_2 := deduped_91_1[deduped_3_2];
+              hoisted_1_2 := Product( deduped_91_1{[ 1 .. deduped_3_2 - 1 ]} );
               return List( deduped_81_1, function ( i_3 )
                       return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                   end );
@@ -302,9 +268,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -331,9 +295,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -360,9 +322,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -375,7 +335,7 @@ function ( cat_1, a_1, b_1 )
               fi;
               return;
           end ) );
-    hoisted_43_1 := List( deduped_91_1, function ( i_2 )
+    hoisted_43_1 := List( deduped_89_1, function ( i_2 )
             local hoisted_1_2, hoisted_2_2, deduped_3_2;
             deduped_3_2 := 1 + i_2;
             hoisted_2_2 := hoisted_39_1[deduped_3_2];
@@ -387,11 +347,11 @@ function ( cat_1, a_1, b_1 )
     deduped_79_1 := Filtered( deduped_81_1, function ( x_2 )
             local deduped_1_2;
             deduped_1_2 := 1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 );
-            return CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_91_1, function ( j_3 )
+            return CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_89_1, function ( j_3 )
                         local deduped_1_3;
                         deduped_1_3 := 1 + j_3;
                         return hoisted_43_1[deduped_1_3][deduped_1_2] * deduped_45_1[deduped_1_3];
-                    end ) ) = CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_91_1, function ( j_3 )
+                    end ) ) = CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_89_1, function ( j_3 )
                         local deduped_1_3;
                         deduped_1_3 := 1 + j_3;
                         return hoisted_49_1[deduped_1_3][deduped_1_2] * deduped_45_1[deduped_1_3];
@@ -400,12 +360,12 @@ function ( cat_1, a_1, b_1 )
     hoisted_28_1 := Concatenation( List( deduped_106_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := 1 + i_2;
-              hoisted_2_2 := deduped_86_1[deduped_3_2];
-              hoisted_1_2 := Product( deduped_86_1{[ 1 .. deduped_3_2 - 1 ]} );
+              hoisted_2_2 := deduped_90_1[deduped_3_2];
+              hoisted_1_2 := Product( deduped_90_1{[ 1 .. deduped_3_2 - 1 ]} );
               return List( deduped_80_1, function ( i_3 )
                       return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                   end );
-          end ), deduped_88_1, deduped_88_1 );
+          end ), deduped_84_1, deduped_84_1 );
     hoisted_27_1 := Concatenation( List( ListWithIdenticalEntries( deduped_116_1, deduped_112_1 ), function ( morB_2 )
               local deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2;
               deduped_7_2 := IndexOfMorphism( morB_2 );
@@ -420,9 +380,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -448,9 +406,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -476,9 +432,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -491,7 +445,7 @@ function ( cat_1, a_1, b_1 )
               fi;
               return;
           end ) );
-    deduped_3_1 := Concatenation( ListWithIdenticalEntries( deduped_97_1, deduped_84_1 ), deduped_82_1, deduped_82_1 );
+    deduped_3_1 := Concatenation( ListWithIdenticalEntries( deduped_97_1, deduped_86_1 ), deduped_82_1, deduped_82_1 );
     hoisted_29_1 := List( deduped_94_1, function ( i_2 )
             local hoisted_1_2, hoisted_2_2, deduped_3_2;
             deduped_3_2 := 1 + i_2;
@@ -512,23 +466,11 @@ function ( cat_1, a_1, b_1 )
             return deduped_5_1[1 + REM_INT( i_2, deduped_116_1 )];
         end );
     hoisted_24_1 := Concatenation( List( deduped_106_1, function ( i_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := deduped_7_1[1 + (deduped_6_1[1 + i_2] + deduped_116_1)];
-              return deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                       return IndexOfObject( obj_3 ) = hoisted_1_2;
-                   end )];
+              return deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_7_1[1 + (deduped_6_1[1 + i_2] + deduped_116_1)] )];
           end ), List( deduped_107_1, function ( i_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := deduped_7_1[1 + deduped_16_1[(1 + i_2)]];
-              return deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                       return IndexOfObject( obj_3 ) = hoisted_1_2;
-                   end )];
+              return deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_7_1[1 + deduped_16_1[(1 + i_2)]] )];
           end ), List( deduped_107_1, function ( i_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := deduped_7_1[1 + deduped_18_1[(1 + i_2)]];
-              return deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                       return IndexOfObject( obj_3 ) = hoisted_1_2;
-                   end )];
+              return deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_7_1[1 + deduped_18_1[(1 + i_2)]] )];
           end ) );
     deduped_25_1 := List( deduped_94_1, function ( j_2 )
             return Product( hoisted_24_1{[ 1 .. j_2 ]} );
@@ -536,24 +478,24 @@ function ( cat_1, a_1, b_1 )
     hoisted_22_1 := Concatenation( List( deduped_106_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := 1 + (deduped_6_1[1 + i_2] + deduped_116_1);
-              hoisted_2_2 := deduped_86_1[deduped_3_2];
-              hoisted_1_2 := Product( deduped_86_1{[ 1 .. deduped_3_2 - 1 ]} );
+              hoisted_2_2 := deduped_90_1[deduped_3_2];
+              hoisted_1_2 := Product( deduped_90_1{[ 1 .. deduped_3_2 - 1 ]} );
               return List( deduped_80_1, function ( i_3 )
                       return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                   end );
           end ), List( deduped_107_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := 1 + deduped_16_1[(1 + i_2)];
-              hoisted_2_2 := deduped_86_1[deduped_3_2];
-              hoisted_1_2 := Product( deduped_86_1{[ 1 .. deduped_3_2 - 1 ]} );
+              hoisted_2_2 := deduped_90_1[deduped_3_2];
+              hoisted_1_2 := Product( deduped_90_1{[ 1 .. deduped_3_2 - 1 ]} );
               return List( deduped_80_1, function ( i_3 )
                       return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                   end );
           end ), List( deduped_107_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := 1 + deduped_18_1[(1 + i_2)];
-              hoisted_2_2 := deduped_86_1[deduped_3_2];
-              hoisted_1_2 := Product( deduped_86_1{[ 1 .. deduped_3_2 - 1 ]} );
+              hoisted_2_2 := deduped_90_1[deduped_3_2];
+              hoisted_1_2 := Product( deduped_90_1{[ 1 .. deduped_3_2 - 1 ]} );
               return List( deduped_80_1, function ( i_3 )
                       return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                   end );
@@ -573,9 +515,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -602,9 +542,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -631,9 +569,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -674,16 +610,16 @@ function ( cat_1, a_1, b_1 )
     hoisted_74_1 := Concatenation( List( deduped_106_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := 1 + CAP_JIT_INCOMPLETE_LOGIC( (1 + CAP_JIT_INCOMPLETE_LOGIC( i_2 ) * 2) );
-              hoisted_2_2 := deduped_87_1[deduped_3_2];
-              hoisted_1_2 := Product( deduped_87_1{[ 1 .. deduped_3_2 - 1 ]} );
+              hoisted_2_2 := deduped_91_1[deduped_3_2];
+              hoisted_1_2 := Product( deduped_91_1{[ 1 .. deduped_3_2 - 1 ]} );
               return List( deduped_81_1, function ( i_3 )
                       return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                   end );
           end ), List( deduped_107_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := 1 + deduped_70_1[(1 + CAP_JIT_INCOMPLETE_LOGIC( (2 + CAP_JIT_INCOMPLETE_LOGIC( i_2 ) * 3) ))];
-              hoisted_2_2 := deduped_87_1[deduped_3_2];
-              hoisted_1_2 := Product( deduped_87_1{[ 1 .. deduped_3_2 - 1 ]} );
+              hoisted_2_2 := deduped_91_1[deduped_3_2];
+              hoisted_1_2 := Product( deduped_91_1{[ 1 .. deduped_3_2 - 1 ]} );
               return List( deduped_81_1, function ( i_3 )
                       return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                   end );
@@ -703,9 +639,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -732,9 +666,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -747,8 +679,8 @@ function ( cat_1, a_1, b_1 )
               fi;
               return;
           end ) );
-    deduped_68_1 := Concatenation( ListWithIdenticalEntries( deduped_97_1, deduped_85_1 ), ListWithIdenticalEntries( deduped_98_1, deduped_85_1 ) );
-    hoisted_75_1 := List( deduped_90_1, function ( i_2 )
+    deduped_68_1 := Concatenation( ListWithIdenticalEntries( deduped_97_1, deduped_87_1 ), ListWithIdenticalEntries( deduped_98_1, deduped_87_1 ) );
+    hoisted_75_1 := List( deduped_88_1, function ( i_2 )
             local hoisted_1_2, hoisted_2_2, deduped_3_2;
             deduped_3_2 := 1 + i_2;
             hoisted_2_2 := deduped_69_1[deduped_3_2];
@@ -758,27 +690,19 @@ function ( cat_1, a_1, b_1 )
                 end );
         end );
     deduped_66_1 := List( deduped_101_1, function ( j_2 )
-            return Product( deduped_86_1{[ 1 .. j_2 ]} );
+            return Product( deduped_90_1{[ 1 .. j_2 ]} );
         end );
     deduped_50_1 := [ [ 0 .. deduped_120_1 - 1 ], [ 0 .. deduped_121_1 - 1 ] ];
     hoisted_64_1 := Concatenation( List( deduped_108_1, function ( objB_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := IndexOfObject( objB_2 );
-              return deduped_50_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                       return IndexOfObject( obj_3 ) = hoisted_1_2;
-                   end )];
+              return deduped_50_1[SafeUniquePosition( deduped_1_1, IndexOfObject( objB_2 ) )];
           end ), List( deduped_109_1, function ( objB_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := IndexOfObject( objB_2 );
-              return deduped_50_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                       return IndexOfObject( obj_3 ) = hoisted_1_2;
-                   end )];
+              return deduped_50_1[SafeUniquePosition( deduped_1_1, IndexOfObject( objB_2 ) )];
           end ) );
     hoisted_65_1 := List( [ 1 .. deduped_115_1 ], function ( i_2 )
             local hoisted_1_2, hoisted_2_2, hoisted_3_2;
             hoisted_3_2 := hoisted_64_1[i_2];
-            hoisted_2_2 := deduped_86_1[i_2];
-            hoisted_1_2 := Product( deduped_86_1{[ 1 .. i_2 - 1 ]} );
+            hoisted_2_2 := deduped_90_1[i_2];
+            hoisted_1_2 := Product( deduped_90_1{[ 1 .. i_2 - 1 ]} );
             return List( deduped_80_1, function ( i_3 )
                     return hoisted_3_2[1 + REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 )];
                 end );
@@ -795,21 +719,21 @@ function ( cat_1, a_1, b_1 )
     hoisted_71_1 := Concatenation( List( deduped_106_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := 1 + CAP_JIT_INCOMPLETE_LOGIC( CAP_JIT_INCOMPLETE_LOGIC( i_2 ) * 2 );
-              hoisted_2_2 := deduped_87_1[deduped_3_2];
-              hoisted_1_2 := Product( deduped_87_1{[ 1 .. deduped_3_2 - 1 ]} );
+              hoisted_2_2 := deduped_91_1[deduped_3_2];
+              hoisted_1_2 := Product( deduped_91_1{[ 1 .. deduped_3_2 - 1 ]} );
               return List( deduped_81_1, function ( i_3 )
                       return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                   end );
           end ), List( deduped_107_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := 1 + deduped_70_1[(1 + CAP_JIT_INCOMPLETE_LOGIC( (1 + CAP_JIT_INCOMPLETE_LOGIC( i_2 ) * 3) ))];
-              hoisted_2_2 := deduped_87_1[deduped_3_2];
-              hoisted_1_2 := Product( deduped_87_1{[ 1 .. deduped_3_2 - 1 ]} );
+              hoisted_2_2 := deduped_91_1[deduped_3_2];
+              hoisted_1_2 := Product( deduped_91_1{[ 1 .. deduped_3_2 - 1 ]} );
               return List( deduped_81_1, function ( i_3 )
                       return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                   end );
           end ) );
-    hoisted_72_1 := List( deduped_90_1, function ( i_2 )
+    hoisted_72_1 := List( deduped_88_1, function ( i_2 )
             local hoisted_1_2, hoisted_2_2, deduped_3_2;
             deduped_3_2 := 1 + i_2;
             hoisted_2_2 := deduped_69_1[deduped_3_2];
@@ -819,26 +743,18 @@ function ( cat_1, a_1, b_1 )
                 end );
         end );
     deduped_53_1 := List( deduped_95_1, function ( j_2 )
-            return Product( deduped_87_1{[ 1 .. j_2 ]} );
+            return Product( deduped_91_1{[ 1 .. j_2 ]} );
         end );
     hoisted_51_1 := Concatenation( List( deduped_102_1, function ( objB_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := IndexOfObject( objB_2 );
-              return deduped_50_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                       return IndexOfObject( obj_3 ) = hoisted_1_2;
-                   end )];
+              return deduped_50_1[SafeUniquePosition( deduped_1_1, IndexOfObject( objB_2 ) )];
           end ), List( deduped_103_1, function ( objB_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := IndexOfObject( objB_2 );
-              return deduped_50_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                       return IndexOfObject( obj_3 ) = hoisted_1_2;
-                   end )];
+              return deduped_50_1[SafeUniquePosition( deduped_1_1, IndexOfObject( objB_2 ) )];
           end ) );
     hoisted_52_1 := List( [ 1 .. deduped_104_1 ], function ( i_2 )
             local hoisted_1_2, hoisted_2_2, hoisted_3_2;
             hoisted_3_2 := hoisted_51_1[i_2];
-            hoisted_2_2 := deduped_87_1[i_2];
-            hoisted_1_2 := Product( deduped_87_1{[ 1 .. i_2 - 1 ]} );
+            hoisted_2_2 := deduped_91_1[i_2];
+            hoisted_1_2 := Product( deduped_91_1{[ 1 .. i_2 - 1 ]} );
             return List( deduped_81_1, function ( i_3 )
                     return hoisted_3_2[1 + REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 )];
                 end );
@@ -857,8 +773,8 @@ function ( cat_1, a_1, b_1 )
     hoisted_59_1 := Concatenation( List( deduped_99_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := 1 + CAP_JIT_INCOMPLETE_LOGIC( REM_INT( QUO_INT( CAP_JIT_INCOMPLETE_LOGIC( i_2 ), 2 ), deduped_116_1 ) );
-              hoisted_2_2 := deduped_86_1[deduped_3_2];
-              hoisted_1_2 := Product( deduped_86_1{[ 1 .. deduped_3_2 - 1 ]} );
+              hoisted_2_2 := deduped_90_1[deduped_3_2];
+              hoisted_1_2 := Product( deduped_90_1{[ 1 .. deduped_3_2 - 1 ]} );
               return List( deduped_80_1, function ( i_3 )
                       return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                   end );
@@ -866,8 +782,8 @@ function ( cat_1, a_1, b_1 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2;
               deduped_4_2 := CAP_JIT_INCOMPLETE_LOGIC( i_2 );
               deduped_3_2 := 1 + hoisted_58_1[(1 + CAP_JIT_INCOMPLETE_LOGIC( (CAP_JIT_INCOMPLETE_LOGIC( hoisted_57_1[1 + REM_INT( deduped_4_2, 3 )] ) + CAP_JIT_INCOMPLETE_LOGIC( REM_INT( QUO_INT( deduped_4_2, 3 ), deduped_118_1 ) )) ))];
-              hoisted_2_2 := deduped_86_1[deduped_3_2];
-              hoisted_1_2 := Product( deduped_86_1{[ 1 .. deduped_3_2 - 1 ]} );
+              hoisted_2_2 := deduped_90_1[deduped_3_2];
+              hoisted_1_2 := Product( deduped_90_1{[ 1 .. deduped_3_2 - 1 ]} );
               return List( deduped_80_1, function ( i_3 )
                       return REM_INT( QUO_INT( i_3, hoisted_1_2 ), hoisted_2_2 );
                   end );
@@ -887,9 +803,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -916,9 +830,7 @@ function ( cat_1, a_1, b_1 )
                           fi;
                           return;
                       end )(  ) then
-                  return [ 0 .. deduped_2_1[SafeUniquePositionProperty( deduped_1_1, function ( obj_3 )
-                                 return (IndexOfObject( obj_3 ) = deduped_5_2);
-                             end )] - 1 ];
+                  return [ 0 .. deduped_2_1[SafeUniquePosition( deduped_1_1, deduped_5_2 )] - 1 ];
               else
                   return deduped_13_1[SafeUniquePositionProperty( deduped_12_1, function ( mor_3 )
                            if IndexOfObject( Source( mor_3 ) ) = deduped_5_2 and IndexOfObject( Range( mor_3 ) ) = deduped_6_2 then
@@ -931,7 +843,7 @@ function ( cat_1, a_1, b_1 )
               fi;
               return;
           end ) );
-    hoisted_55_1 := Concatenation( ListWithIdenticalEntries( deduped_92_1, deduped_84_1 ), ListWithIdenticalEntries( deduped_93_1, deduped_84_1 ) );
+    hoisted_55_1 := Concatenation( ListWithIdenticalEntries( deduped_92_1, deduped_86_1 ), ListWithIdenticalEntries( deduped_93_1, deduped_86_1 ) );
     hoisted_60_1 := List( [ 0 .. deduped_92_1 + deduped_93_1 - 1 ], function ( i_2 )
             local hoisted_1_2, hoisted_2_2, deduped_3_2;
             deduped_3_2 := 1 + i_2;
