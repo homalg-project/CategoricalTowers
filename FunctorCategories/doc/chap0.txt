@@ -6,7 +6,7 @@
                             [1X Categories of functors [101X
   
   
-                                   2023.08-10
+                                   2023.08-12
   
   
                                  8 August 2023
@@ -303,6 +303,8 @@
     with values in a category of rows[133X
     15.4 [33X[0;0YPrecompiling the presheaf category of an algebroid with values in a
     category of rows[133X
+    15.5 [33X[0;0YPrecompiling the category of presheaves with values in
+    SkeletalFinSets[133X
   
   
   [32X
