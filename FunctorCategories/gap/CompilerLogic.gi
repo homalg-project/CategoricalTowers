@@ -44,6 +44,30 @@ CapJitAddLogicFunction( function ( tree )
     
 end );
 
+# ListOfValues( [ a, b, ... ] ) => [ a, b, ... ]
+CapJitAddLogicFunction( function ( tree )
+  local pre_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for ListOfValues applied to a literal list." );
+    
+    pre_func :=
+      function ( tree, additional_arguments )
+        
+        if CapJitIsCallToGlobalFunction( tree, "ListOfValues" ) and tree.args.length = 1 and tree.args.1.type = "EXPR_LIST" then
+            
+            return tree.args.1;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ ],
