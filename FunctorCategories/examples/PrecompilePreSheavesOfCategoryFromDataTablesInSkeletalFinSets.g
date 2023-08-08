@@ -1,10 +1,10 @@
-# @Chapter Precompilation
+#! @Chapter Precompilation
 
-# @Section Precompiling the category of presheaves with values in SkeletalFinSets
+#! @Section Precompiling the category of presheaves with values in SkeletalFinSets
 
-# @Example
+#! @Example
 
-# #@if ValueOption( "no_precompiled_code" ) <> true
+#! #@if ValueOption( "no_precompiled_code" ) <> true
 
 LoadPackage( "FunctorCategories", false );
 #! true
@@ -13,6 +13,9 @@ LoadPackage( "CompilerForCAP", ">= 2022.09-02", false );
 #! true
 
 ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );
+#! true
+
+ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 #! true
 
 ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );
@@ -56,6 +59,6 @@ cat := PreSheaves( free_category_of_quiver( given_arguments[1], SkeletalFinSets 
 cat!.precompiled_functions_added;
 #! true
 
-# #@fi
+#! #@fi
 
-# @EndExample
+#! @EndExample

@@ -163,12 +163,13 @@ DeclareAttribute( "HomStructureOnBasisPaths",
 DeclareAttribute( "SetOfObjects",
         IsFpCategory );
 
-#CapJitAddTypeSignature( "SetOfObjects", [ IsFpCategory ],
-#  function ( input_types )
-#    
-#    return CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
-#    
-#end );
+CapJitAddTypeSignature( "SetOfObjects", [ IsFpCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf(
+                   CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+    
+end );
 
 #! @Description
 #!  Assigns the objects of the finitely presented category <A>C</A> to global variables.
@@ -192,12 +193,13 @@ DeclareAttribute( "SetOfMorphisms",
 DeclareAttribute( "SetOfGeneratingMorphisms",
         IsFpCategory );
 
-#CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsFpCategory ],
-#  function ( input_types )
-#    
-#    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
-#    
-#end );
+CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsFpCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf(
+                   CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
+    
+end );
 
 #! @Description
 #!  The subset of the generating morphisms that start at <A>obj_1</A> and ends at <A>obj_2</A>.

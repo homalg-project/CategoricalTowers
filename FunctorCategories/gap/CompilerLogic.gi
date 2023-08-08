@@ -405,3 +405,11 @@ CapJitAddLogicTemplate(
         dst_template := "list"
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "condition" ],
+        src_template := "true and condition",
+        dst_template := "condition"
+    )
+);
