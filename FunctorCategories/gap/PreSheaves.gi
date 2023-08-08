@@ -2582,7 +2582,7 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
         
   function ( PSh, F, morB )
     local B;
-
+    
     B := Source( PSh );
     
     if IsEqualToIdentityMorphism( B, morB ) then

@@ -44,6 +44,30 @@ CapJitAddLogicFunction( function ( tree )
     
 end );
 
+# ListOfValues( [ a, b, ... ] ) => [ a, b, ... ]
+CapJitAddLogicFunction( function ( tree )
+  local pre_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for ListOfValues applied to a literal list." );
+    
+    pre_func :=
+      function ( tree, additional_arguments )
+        
+        if CapJitIsCallToGlobalFunction( tree, "ListOfValues" ) and tree.args.length = 1 and tree.args.1.type = "EXPR_LIST" then
+            
+            return tree.args.1;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ ],
@@ -137,6 +161,14 @@ CapJitAddLogicTemplate(
         variable_names := [ "a" ],
         src_template := "REM_INT( a, 1 )",
         dst_template := "0",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "a" ],
+        src_template := "QUO_INT( a, 1 )",
+        dst_template := "a",
     )
 );
 
@@ -335,6 +367,14 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
+        variable_names := [ "entry" ],
+        src_template := "ListWithIdenticalEntries( 0, entry )",
+        dst_template := "[ ]",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
         variable_names := [ "matrix", "dimension", "ring" ],
         src_template := "matrix * HomalgIdentityMatrix( dimension, ring )",
         dst_template := "matrix",
@@ -355,5 +395,13 @@ CapJitAddLogicTemplate(
         variable_names := [ "n" ],
         src_template := "Length( [ 1 .. n ] )",
         dst_template := "n"
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list" ],
+        src_template := "Concatenation( list, [ ] )",
+        dst_template := "list"
     )
 );
