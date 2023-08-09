@@ -5,15 +5,43 @@
 #
 
 ##
+AddDerivationToCAP( IndexOfNonliftableMorphismFromDistinguishedObject,
+        "IndexOfNonliftableMorphismFromDistinguishedObject as the index of the first nonliftable morphism in ExactCoverWithGlobalElements",
+        [ [ ExactCoverWithGlobalElements, 1 ],
+          [ IsLiftableAlongMonomorphism, 1 ],
+          [ ObjectDatum, 1 ] ],
+        
+  function( cat, iota )
+    local target, global_morphisms;
+    
+    target := Range( iota );
+    
+    global_morphisms := ExactCoverWithGlobalElements( cat, target );
+    
+    ## start interval at 0 to unify ranges for the compiler
+    return 1 + SafeFirst( [ 0 .. ObjectDatum( target ) - 1 ],
+                   i -> not IsLiftableAlongMonomorphism( cat, iota, global_morphisms[1 + i] ) );
+    
+end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
+CategoryFilter := function( cat )
+    return HasRangeCategoryOfHomomorphismStructure( cat ) and
+           IsIdenticalObj( cat, RangeCategoryOfHomomorphismStructure( cat ) );
+end );
+
+##
 AddDerivationToCAP( NonliftableMorphismFromDistinguishedObject,
         "",
         [ [ ExactCoverWithGlobalElements, 1 ],
-          [ IsLiftableAlongMonomorphism, 1 ] ],
+          [ IndexOfNonliftableMorphismFromDistinguishedObject, 1 ] ],
         
   function( cat, iota )
+    local global_morphisms, index;
     
-    return SafeFirst( ExactCoverWithGlobalElements( cat, Range( iota ) ),
-                   mor -> not IsLiftableAlongMonomorphism( cat, iota, mor ) );
+    global_morphisms := ExactCoverWithGlobalElements( cat, Range( iota ) );
+    
+    index := IndexOfNonliftableMorphismFromDistinguishedObject( cat, iota );
+    
+    return global_morphisms[index];
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
 CategoryFilter := function( cat )

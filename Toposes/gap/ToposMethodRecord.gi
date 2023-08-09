@@ -17,6 +17,11 @@ ExactCoverWithGlobalElements := rec(
   filter_list := [ "category", "object" ],
   return_type := "list_of_morphisms" ),
 
+IndexOfNonliftableMorphismFromDistinguishedObject := rec(
+  filter_list := [ "category", "morphism" ],
+  return_type := "nonneg_integer_or_infinity",
+  input_arguments_names := [ "cat", "iota" ] ),
+
 NonliftableMorphismFromDistinguishedObject := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "morphism",

@@ -259,6 +259,25 @@ DeclareOperation( "AddHasPushoutComplement",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `IndexOfNonliftableMorphismFromDistinguishedObject`.
+#! $F: ( iota ) \mapsto \mathtt{IndexOfNonliftableMorphismFromDistinguishedObject}(iota)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIndexOfNonliftableMorphismFromDistinguishedObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIndexOfNonliftableMorphismFromDistinguishedObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIndexOfNonliftableMorphismFromDistinguishedObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIndexOfNonliftableMorphismFromDistinguishedObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `IntersectionSubobject`.
 #! $F: ( arg2, arg3 ) \mapsto \mathtt{IntersectionSubobject}(arg2, arg3)$.
 #! @Returns nothing
