@@ -46,6 +46,20 @@ DeclareAttribute( "ExactCoverWithGlobalElements",
 #!  The argument is a <E>nonepimorphic</E> <E>monomorphism</E> <A>iota</A> of a category $\mathbf{C}$
 #!  which is enriched over itself, i.e.,
 #!  $\mathbf{C}$ = <C>RangeCategoryOfHomomorphismStructure</C>( $\mathbf{C}$ ).
+#!  The output is a positive integer, namely the position of a morphism $\tau$
+#!  in the list <C>ExactCoverWithGlobalElements</C>( <C>Range</C>( <A>iota</A> ) )
+#!  of morphisms from the distinguished object
+#!  $t :=$<C>DistinguishedObjectOfHomomorphismStructure</C>( $\mathbf{C}$ ) to <C>Range</C>( <A>iota</A> ),
+#!  such that <C>IsLiftableAlongMonomorphism</C>( <A>iota</A>, $\tau$ ) = <C>false</C>.
+#! @Returns a morphism in $\mathrm{Hom}( t, \mathrm{Range}( \iota ) )$
+#! @Arguments iota
+DeclareAttribute( "IndexOfNonliftableMorphismFromDistinguishedObject",
+        IsCapCategoryMorphism );
+
+#! @Description
+#!  The argument is a <E>nonepimorphic</E> <E>monomorphism</E> <A>iota</A> of a category $\mathbf{C}$
+#!  which is enriched over itself, i.e.,
+#!  $\mathbf{C}$ = <C>RangeCategoryOfHomomorphismStructure</C>( $\mathbf{C}$ ).
 #!  The output is a morphism $\tau$ from the distinguished object
 #!  $t :=$<C>DistinguishedObjectOfHomomorphismStructure</C>( $\mathbf{C}$ ) to <C>Range</C>( <A>iota</A> ),
 #!  such that <C>IsLiftableAlongMonomorphism</C>( <A>iota</A>, $\tau$ ) = <C>false</C>.
