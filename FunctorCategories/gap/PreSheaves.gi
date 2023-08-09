@@ -1379,6 +1379,23 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
+    if IsSkeletalCategoryOfFiniteSets( D ) or
+       IsCategoryOfRows( D ) or
+       IsCategoryOfColumns( D ) or
+       IsMatrixCategory( D ) then
+        
+        ##
+        AddEpimorphismFromSomeProjectiveObject( PSh,
+          function( PSh, F )
+            
+            return MorphismFromCoproductOfRepresentables( PSh,
+                           DoctrineSpecificCoveringListOfRepresentables( D, PSh, F ),
+                           F );
+            
+        end );
+        
+    fi;
+    
     if CheckConstructivenessOfCategory( D, "IsElementaryTopos" ) = [ ] and
        HasRangeCategoryOfHomomorphismStructure( PSh ) and
        ## in the following we require (1) that the range category D of the presheaf category
@@ -1460,20 +1477,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             return CreatePreSheafMorphismByFunction( PSh, source, presheaf_morphism_on_objects, range );
             
         end );
-        
-        if IsSkeletalCategoryOfFiniteSets( D ) then
-            
-            ##
-            AddEpimorphismFromSomeProjectiveObject( PSh,
-              function( PSh, F )
-                
-                return MorphismFromCoproductOfRepresentables( PSh,
-                               CoveringListOfRepresentables( PSh, F ),
-                               F );
-                
-            end );
-            
-        fi;
         
         ## the following code requires (2) that the range category D of the presheaf category coincides with the category SkeletalFinSets:
         if IsSkeletalCategoryOfFiniteSets( D ) and
@@ -3130,25 +3133,10 @@ InstallMethodForCompilerForCAP( MorphismFromCoproductOfRepresentables,
         [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ],
         
   function ( PSh, L, F )
-    local B, D, objs, cover_objB;
-    
-    B := Source( PSh );
-    D := Target( PSh );
-    
-    objs := SetOfObjects( B );
-    
-    cover_objB :=
-      function( objB_list )
-        
-        return MorphismFromRepresentable( PSh,
-                       objB_list[1],
-                       objB_list[2],
-                       F );
-    end;
     
     return UniversalMorphismFromCoproduct( PSh,
                    F,
-                   List( L, cover_objB ) );
+                   List( L, datum -> datum[5] ) );
     
 end );
 
@@ -3157,18 +3145,25 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, F )
-    local B, D, objs, homs, predicate, func, initial, cover;
+    local C, H, defining_triple, nr_objs, objs, homs, predicate, func, initial, cover, F_on_objs, embs, add_img_size, L;
     
-    B := Source( PSh );
-    D := Target( PSh );
+    if IsInitial( PSh, F ) then
+        return [ ];
+    fi;
     
-    objs := SetOfObjects( B );
+    C := Source( PSh );
+    H := Target( PSh );
     
-    ## compute all Hom(-, objB) to order them by their lengths/dimension below
-    homs := List( objs, objB ->
-                  ObjectDatum( D,
-                          Coproduct( D,
-                                  List( objs, srcB -> HomomorphismStructureOnObjects( B, srcB, objB ) ) ) ) );
+    defining_triple := DefiningTripleOfUnderlyingQuiver( C );
+    nr_objs := defining_triple[1];
+    
+    objs := SetOfObjects( C );
+
+    ## compute all Hom(-, objC) to order them by their cardinalities/dimension below
+    homs := List( objs, objC ->
+                  ObjectDatum( H,
+                          Coproduct( H,
+                                  List( objs, srcC -> HomomorphismStructureOnObjects( C, srcC, objC ) ) ) ) );
     
     predicate :=
       function( pi_data, pi_data_new )
@@ -3182,7 +3177,7 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
     
     func :=
       function( pi_data )
-        local pi, im_emb, pos_nontrivial, homs_relevant, max, pos;
+        local pi, im_emb, pos_nontrivial, homs_relevant, max, pos, obj, nonliftable, mor_from_rep, values_of_mor_from_rep, pi_datum_new, pi_data_new;
         
         pi := MorphismFromCoproductOfRepresentables( PSh,
                       pi_data,
@@ -3191,7 +3186,7 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
         im_emb := ListOfValues( ValuesOnAllObjects( ImageEmbedding( pi ) ) );
         
         ## the positions of the components im_emb_o of the natural transformation im_emb which are not epis:
-        pos_nontrivial := PositionsProperty( im_emb, im_emb_o -> not IsEpimorphism( D, im_emb_o ) );
+        pos_nontrivial := PositionsProperty( im_emb, im_emb_o -> not IsEpimorphism( H, im_emb_o ) );
         
         homs_relevant := homs{pos_nontrivial};
         
@@ -3199,7 +3194,29 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
         
         pos := pos_nontrivial[SafePosition( homs_relevant, max )];
         
-        return Concatenation( pi_data, [ Pair( objs[pos], NonliftableMorphismFromDistinguishedObject( D, im_emb[pos] ) ) ] );
+        obj := objs[pos];
+        
+        nonliftable := NonliftableMorphismFromDistinguishedObject( H, im_emb[pos] );
+        
+        mor_from_rep := MorphismFromRepresentable( PSh,
+                                        obj,
+                                        nonliftable,
+                                        F );
+        
+        values_of_mor_from_rep := ValuesOnAllObjects( mor_from_rep );
+        
+        pi_datum_new := NTuple( 6,
+                                obj,
+                                nonliftable,
+                                -1 + pos,
+                                -1 + IndexOfNonliftableMorphismFromDistinguishedObject( H, im_emb[pos] ),
+                                mor_from_rep,
+                                values_of_mor_from_rep );
+        
+        pi_data_new := Filtered( pi_data, datum -> ForAny( [ 1 .. nr_objs ], o -> not IsLiftable( H, datum[6][o], values_of_mor_from_rep[o] ) ) );
+        
+        return Concatenation( pi_data_new,
+                       [ pi_datum_new ] );
         
     end;
     
@@ -3207,8 +3224,29 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
     
     cover := CapFixpoint( predicate, func, initial );
     
-    ## sort according to objs
-    return Concatenation( List( objs, objB -> Filtered( cover, e -> IsIdenticalObj( e[1], objB ) ) ) );
+    add_img_size :=
+      function( pi_datum )
+        
+        return NTuple( 7,
+                       pi_datum[1],
+                       pi_datum[2],
+                       pi_datum[3],
+                       pi_datum[4],
+                       pi_datum[5],
+                       pi_datum[6],
+                       Sum( List( pi_datum[6], mor -> ObjectDatum( H, ImageObject( H, mor ) ) ) ) );
+        
+    end;
+    
+    ## collect according to objs
+    L := List( objs, objB -> Filtered( cover, e -> IsIdenticalObj( e[1], objB ) ) );
+    
+    L := List( L, L_o -> List( L_o, add_img_size ) );
+    
+    ## sort by sizes of images per object
+    L := List( L, L_o -> SortedList( L_o, {a,b} -> a[7] > b[7] ) );
+    
+    return Concatenation( L );
     
 end );
 
@@ -3223,47 +3261,160 @@ InstallMethod( CoveringListOfRepresentables,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentables,
+        [ IsElementaryTopos, IsPreSheafCategory, IsObjectInPreSheafCategory ],
+        
+  function ( H, PSh, F )
+    
+    return CoveringListOfRepresentables( PSh, F );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentables,
+        [ IsAbelianCategory, IsPreSheafCategory, IsObjectInPreSheafCategory ],
+        
+  function ( H, PSh, F )
+    local G, pi, cover, c, obj, nonliftable, mor_from_rep, values_of_mor_from_rep, c_new;
+    
+    G := F;
+    
+    pi := IdentityMorphism( PSh, G );
+    
+    cover := [ ];
+    
+    while not IsZero( G ) do
+        
+        c := CoveringListOfRepresentables( PSh, G )[1];
+        
+        obj := c[1];
+        
+        nonliftable := Lift( H, c[2], ValuesOnAllObjects( pi )[1 + c[3]] );
+        
+        mor_from_rep := MorphismFromRepresentable( PSh,
+                                obj,
+                                nonliftable,
+                                F );
+        
+        values_of_mor_from_rep := ValuesOnAllObjects( mor_from_rep );
+        
+        c_new := NTuple( 7,
+                         obj,
+                         nonliftable,
+                         c[3],
+                         c[4],
+                         mor_from_rep,
+                         values_of_mor_from_rep,
+                         c[7] );
+        
+        cover := Concatenation( cover, [ c_new ] );
+        
+        pi := CokernelProjection( PSh,
+                      MorphismFromCoproductOfRepresentables( PSh,
+                              cover,
+                              F ) );
+        
+        #Assert( 0, IsSplitEpimorphism( pi ) );
+        
+        G := Target( pi );
+        
+    od;
+    
+    return cover;
+    
+end );
+
+##
+InstallMethod( DoctrineSpecificCoveringListOfRepresentables,
+        [ IsObjectInPreSheafCategory ],
+        
+  function ( F )
+    local PSh;
+    
+    PSh := CapCategory( F );
+    
+    return DoctrineSpecificCoveringListOfRepresentables( Target( PSh ), PSh, F );
+    
+end );
+
+##
 InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, F )
-    local B, defining_triple, nr_objs, objs, id, F_vals, offsets, coYoneda, cover,
-          CoequalizerPairs, range, list, s, UC, source, section;
+    local C, H, defining_triple, nr_objs, objs, UC, iota, objsUC,
+          cover, F_on_objs, embs, source_diagrams, target_diagrams, sources, targets, sections, section;
     
-    B := Source( PSh );
+    C := Source( PSh );
+    H := Target( PSh );
     
-    defining_triple := DefiningTripleOfUnderlyingQuiver( B );
+    defining_triple := DefiningTripleOfUnderlyingQuiver( C );
     nr_objs := defining_triple[1];
     
-    objs := SetOfObjects( B );
-    
-    id := List( objs, obj -> IdentityMorphism( B, obj ) );
-    
-    F_vals := ValuesOfPreSheaf( F );
-    
-    offsets := List( [ 0 .. nr_objs - 1 ], i -> Sum( List( [ 1 .. i ], j -> Length( F_vals[1][j] ) ) ) );
-    
-    coYoneda := CoYonedaLemmaOnObjects( PSh, F );
-    
-    cover := CoveringListOfRepresentables( PSh, F );
-    
-    CoequalizerPairs := AssociatedColimitCompletionOfSourceCategory( PSh );
-    
-    range := ObjectDatum( CoequalizerPairs, coYoneda )[1][1];
-    
-    list := List( cover, a -> a[1] );
-    
-    s := Length( list );
+    objs := SetOfObjects( C );
     
     UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
-    source := ObjectConstructor( UC, Pair( s, list ) );
+    iota := EmbeddingOfUnderlyingCategoryData( UC );
     
-    section := MorphismConstructor( UC,
-                       source,
-                       Pair( List( [ 1 .. s ], i -> cover[i][2]( 0 ) + offsets[SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( B, obj, cover[i][1] ) )] ),
-                             List( list, o -> id[SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( B, obj, o ) )] ) ),
-                       range );
+    objsUC := List( [ 0 .. nr_objs - 1 ], o -> iota[2][1]( objs[1 + o] ) );
+    
+    cover := DoctrineSpecificCoveringListOfRepresentables( H, PSh, F );
+    
+    F_on_objs := ObjectDatum( PSh, F )[1];
+    
+    embs :=
+      function( o )
+        local cover_o, c_o, F_o, standard_global_morphisms_o;
+        
+        cover_o := Filtered( cover, e -> e[3] = o );
+        
+        c_o := Length( cover_o );
+        
+        F_o := ObjectDatum( H, F_on_objs[1 + o] );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, IsInt( F_o ) );
+        
+        standard_global_morphisms_o := List( cover_o, a -> a[2] );
+        
+        return NTuple( 4,
+                       o,
+                       c_o,
+                       F_o,
+                       standard_global_morphisms_o );
+        
+    end;
+    
+    ## sort according to objs
+    cover := List( [ 0 .. nr_objs - 1 ], embs );
+    
+    source_diagrams := List( [ 0 .. nr_objs - 1 ], o -> ListWithIdenticalEntries( cover[1 + o][2], objsUC[1 + o] ) );
+    
+    target_diagrams := List( [ 0 .. nr_objs - 1 ], o -> ListWithIdenticalEntries( cover[1 + o][3], objsUC[1 + o] ) );
+    
+    sources := List( [ 0 .. nr_objs - 1 ], o -> Coproduct( UC, source_diagrams[1 + o] ) );
+    
+    targets := List( [ 0 .. nr_objs - 1 ], o -> Coproduct( UC, target_diagrams[1 + o] ) );
+    
+    sections := List( [ 0 .. nr_objs - 1 ], o ->
+                      UniversalMorphismFromCoproductWithGivenCoproduct( UC,
+                              source_diagrams[1 + o],
+                              targets[1 + o],
+                              List( cover[1 + o][4], map ->
+                                    TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure( H, UC,
+                                            objsUC[1 + o],
+                                            objs[1 + o],
+                                            map,
+                                            targets[1 + o] ) ),
+                              sources[1 + o] ) );
+    
+    section := CoproductFunctorialWithGivenCoproducts( UC,
+                       Coproduct( UC, sources ),
+                       sources,
+                       sections,
+                       targets,
+                       Coproduct( UC, targets ) );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsSplitMonomorphism( section, true );
@@ -3284,9 +3435,9 @@ end );
 
 ##
 InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
+        [ IsSkeletalCategoryOfFiniteSets, IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
-  function ( PSh, F )
+  function ( H, PSh, F )
     local C, defining_triple, nr_objs, objs, mors, id, F_vals, offsets, coYoneda, cover,
           CoequalizerPairs, source, s, source_list, list, UC, range, f, map_mor, retraction;
     
@@ -3306,7 +3457,7 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
     
     coYoneda := CoYonedaLemmaOnObjects( PSh, F );
     
-    cover := CoveringListOfRepresentables( PSh, F );
+    cover := DoctrineSpecificCoveringListOfRepresentables( H, PSh, F );
     
     CoequalizerPairs := AssociatedColimitCompletionOfSourceCategory( PSh );
     
@@ -3361,12 +3512,50 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
+        [ IsAbelianCategory, IsPreSheafCategory, IsObjectInPreSheafCategory ],
+        
+  function ( H, PSh, F )
+    local CoequalizerPairs, UC, coYoneda, F_VAst, V, s, t, id_V, sec, V_opt, id_V_opt, alpha, beta, gamma;
+    
+    CoequalizerPairs := AssociatedColimitCompletionOfSourceCategory( PSh );
+    
+    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    
+    coYoneda := CoYonedaLemmaOnObjects( PSh, F );
+    
+    F_VAst := ObjectDatum( CoequalizerPairs, coYoneda );
+    
+    V := F_VAst[1][1];
+    s := F_VAst[2][1];
+    t := F_VAst[2][2];
+    
+    id_V := IdentityMorphism( UC, V );
+    
+    sec := SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( PSh, F );
+    
+    V_opt := Source( sec );
+    
+    id_V_opt := IdentityMorphism( UC, V_opt );
+    
+    alpha := [ [ sec, ZeroMorphism( UC, V_opt, V ) ], [ id_V, id_V ] ];
+    beta := [ [ id_V_opt, ZeroMorphism( UC, V, V_opt ) ], [ sec, s - t ] ];
+    gamma := [ id_V_opt, id_V ];
+    
+    return SolveLinearSystemInAbCategory( alpha, beta, gamma )[1];
+    
+end );
+
+##
 InstallMethod( RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
         [ IsObjectInPreSheafCategory ],
         
   function ( F )
+    local PSh;
     
-    return RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( CapCategory( F ), F );
+    PSh := CapCategory( F );
+    
+    return RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( Target( PSh ), PSh, F );
     
 end );
 
@@ -3375,7 +3564,7 @@ InstallOtherMethodForCompilerForCAP( OptimizedCoYonedaLemmaOnObjects,
          [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
    function ( PSh, F )
-    local ColimitCompletionC, UC, F_VAst, retraction;
+    local ColimitCompletionC, UC, F_VAst, H, retraction;
     
     ColimitCompletionC := AssociatedColimitCompletionOfSourceCategory( PSh );
     
@@ -3383,12 +3572,14 @@ InstallOtherMethodForCompilerForCAP( OptimizedCoYonedaLemmaOnObjects,
     
     F_VAst := ObjectDatum( ColimitCompletionC, CoYonedaLemmaOnObjects( PSh, F ) );
     
-    retraction := RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( PSh, F );
+    H :=  Target( PSh );
+    
+    retraction := RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( H, PSh, F );
     
     return ObjectConstructor( ColimitCompletionC,
                    Pair( Pair( Target( retraction ), F_VAst[1][2] ),
-                         Pair( PreCompose( UC,  F_VAst[2][1], retraction ),
-                               PreCompose( UC,  F_VAst[2][2], retraction ) ) ) );
+                         Pair( PreCompose( UC, F_VAst[2][1], retraction ),
+                               PreCompose( UC, F_VAst[2][2], retraction ) ) ) );
     
 end );
 
@@ -3423,6 +3614,41 @@ InstallMethod( CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma,
   function ( F )
     
     return CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma( CapCategory( F ), F );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( OptimizedCoYonedaLemmaCoequalizerPair,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh, F )
+    local F_VAst, V, A, s, t, Yoneda, Y_V, Y_A;
+    
+    F_VAst := ObjectDatum( AssociatedColimitCompletionOfSourceCategory( PSh ), OptimizedCoYonedaLemmaOnObjects( PSh, F ) );
+    
+    V := F_VAst[1][1];
+    A := F_VAst[1][2];
+    s := F_VAst[2][1];
+    t := F_VAst[2][2];
+    
+    Yoneda := EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheavesData( PSh )[2];
+    
+    Y_V := Yoneda[1]( V );
+    Y_A := Yoneda[1]( A );
+    
+    return Pair( Y_V,
+                 Pair( Yoneda[2]( Y_A, s, Y_V ),
+                       Yoneda[2]( Y_A, t, Y_V ) ) );
+    
+end );
+
+##
+InstallMethod( OptimizedCoYonedaLemmaCoequalizerPair,
+        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( F )
+    
+    return OptimizedCoYonedaLemmaCoequalizerPair( CapCategory( F ), F );
     
 end );
 

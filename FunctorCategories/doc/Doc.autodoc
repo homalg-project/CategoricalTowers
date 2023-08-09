@@ -44,6 +44,16 @@
 
 @InsertChunk PreSheavesOfSkeletalFinSets
 
+@Subsection The colimit completion of a cyclic monoid
+
+@InsertChunk StreamVortexSystem
+
+@InsertChunk StreamVortexSystemBig
+
+@Subsection The Weierstrass normal form
+
+@InsertChunk Weierstrass
+
 @Chapter Finite cocompletion of a finitely presented (linear) category
 
 @Section Constructors

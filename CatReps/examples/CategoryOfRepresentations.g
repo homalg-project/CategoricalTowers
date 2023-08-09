@@ -38,7 +38,7 @@ Display( CatReps );
 #! RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,
 #! Category of matrices over GF(3) ):
 #! 
-#! 106 primitive operations were used to derive 358 operations for this category
+#! 107 primitive operations were used to derive 362 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
