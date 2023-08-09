@@ -2590,6 +2590,15 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
                        ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
     fi;
     
+    ## Excerpt from [CompilerForCAP, Section Requirements]:
+    ## For performance optimizations, the compiler might move expressions out of if/else statements, e.g. if they occur inside a (potentially
+    ## expensive) `List` call. Thus, code inside if/else statements must execute without error even if moved outside of the if/else statement.
+    
+    ## CAUTION:
+    ## Since the code below will run into errors without the above if statement,
+    ## there should be enough logic templates in place to avoid the execution
+    ## of the compilation of the code below on identity morphisms.
+    
     return ValuesOfPreSheaf( F )[2][SafeUniquePositionProperty( SetOfGeneratingMorphisms( B ), mor -> IsEqualForMorphismsOnMor( B, mor, morB ) )];
     
 end );
