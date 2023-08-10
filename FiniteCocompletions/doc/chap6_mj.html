@@ -347,6 +347,25 @@ FreeCategory( RightQuiver(
 PreSheaves( FreeCategory( RightQuiver(
   "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) ) / [ s*id = C0, t*id = C0 ],
 SkeletalFinSets )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( PSh.C1 );</span>
+Image of &lt;(C0)&gt;:
+{ 0, 1 }
+
+Image of &lt;(C1)&gt;:
+{ 0, 1, 2 }
+
+Image of (C1)-[(id)]-&gt;(C0):
+{ 0, 1 } ⱶ[ 1, 2 ]→ { 0, 1, 2 }
+
+Image of (C0)-[(s)]-&gt;(C1):
+{ 0, 1, 2 } ⱶ[ 0, 0, 1 ]→ { 0, 1 }
+
+Image of (C0)-[(t)]-&gt;(C1):
+{ 0, 1, 2 } ⱶ[ 1, 0, 1 ]→ { 0, 1 }
+
+An object in PreSheaves( FreeCategory( RightQuiver(
+"Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) ) / [ s*id = C0, t*id = C0 ],
+SkeletalFinSets ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := CoYonedaLemmaOnObjects( PSh.C1 );</span>
 &lt;An object in CategoryOfColimitQuivers(
  FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) )
@@ -393,6 +412,20 @@ SkeletalFinSets ) given by the above data
 SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">colimit2 = colimit;</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iso := Filtered( MorphismsOfExternalHom( PSh.C1, colimit ), IsIsomorphism )[1];</span>
+&lt;An isomorphism in PreSheaves( FreeCategory( RightQuiver(
+ "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) ) / [ s*id = C0, t*id = C0 ],
+ SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iso );</span>
+Image of &lt;(C0)&gt;:
+{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
+
+Image of &lt;(C1)&gt;:
+{ 0, 1, 2 } ⱶ[ 2, 0, 1 ]→ { 0, 1, 2 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver(
+"Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) ) / [ s*id = C0, t*id = C0 ],
+SkeletalFinSets ) given by the above data
 </pre></div>
 
 <p><a id="X7FFD17158275C768" name="X7FFD17158275C768"></a></p>

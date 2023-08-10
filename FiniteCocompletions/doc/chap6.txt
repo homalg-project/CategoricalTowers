@@ -285,6 +285,25 @@
     [4X[28XPreSheaves( FreeCategory( RightQuiver([128X[104X
     [4X[28X  "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],[128X[104X
     [4X[28XSkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( PSh.C1 );[127X[104X
+    [4X[28XImage of <(C0)>:[128X[104X
+    [4X[28X{ 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(C1)>:[128X[104X
+    [4X[28X{ 0, 1, 2 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (C1)-[(id)]->(C0):[128X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 1, 2 ]→ { 0, 1, 2 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (C0)-[(s)]->(C1):[128X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 0, 0, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (C0)-[(t)]->(C1):[128X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 1, 0, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver([128X[104X
+    [4X[28X"Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],[128X[104X
+    [4X[28XSkeletalFinSets ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27Xquiver := CoYonedaLemmaOnObjects( PSh.C1 );[127X[104X
     [4X[28X<An object in CategoryOfColimitQuivers([128X[104X
     [4X[28X FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )[128X[104X
@@ -331,6 +350,20 @@
     [4X[28XSkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27Xcolimit2 = colimit;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xiso := Filtered( MorphismsOfExternalHom( PSh.C1, colimit ), IsIsomorphism )[1];[127X[104X
+    [4X[28X<An isomorphism in PreSheaves( FreeCategory( RightQuiver([128X[104X
+    [4X[28X "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],[128X[104X
+    [4X[28X SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iso );[127X[104X
+    [4X[28XImage of <(C0)>:[128X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(C1)>:[128X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 2, 0, 1 ]→ { 0, 1, 2 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver([128X[104X
+    [4X[28X"Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],[128X[104X
+    [4X[28XSkeletalFinSets ) given by the above data[128X[104X
   [4X[32X[104X
   
   [1X6.2-2 CreateColimitQuiver[101X
