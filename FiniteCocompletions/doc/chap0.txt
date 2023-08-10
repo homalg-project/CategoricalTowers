@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2023.08-06
+                                   2023.08-07
   
   
-                                 8 August 2023
+                                 10 August 2023
   
   
                                 Mohamed Barakat
@@ -154,8 +154,9 @@
       10.3-2 IsCellInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure
       10.3-3 IsObjectInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure
       10.3-4 IsMorphismInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure
-  11 [33X[0;0YPrecompilation[133X
-    11.1 [33X[0;0YPrecompiling SkeletalFinSets[133X
+  11 [33X[0;0YTools[133X
+  12 [33X[0;0YPrecompilation[133X
+    12.1 [33X[0;0YPrecompiling SkeletalFinSets[133X
   
   
   [32X
