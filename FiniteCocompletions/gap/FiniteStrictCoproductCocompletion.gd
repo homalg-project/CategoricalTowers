@@ -52,6 +52,16 @@ CapJitAddTypeSignature( "FiniteStrictCoproductCocompletion", [ IsCapCategory ], 
     
 end );
 
+DeclareAttribute( "EnrichmentSpecificFiniteStrictCoproductCocompletion",
+        IsCapCategory );
+
+CapJitAddTypeSignature( "EnrichmentSpecificFiniteStrictCoproductCocompletion", [ IsCapCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( EnrichmentSpecificFiniteStrictCoproductCocompletion( input_types[1].category ) );
+    
+end );
+
 ####################################
 #
 #! @Section Attributes
