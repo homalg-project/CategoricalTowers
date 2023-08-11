@@ -7,7 +7,7 @@
 InstallValue( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD, rec(
 
 MorphismBetweenCoproducts := rec(
-  filter_list := [ "category", "list_of_objects", "arbitrary_list", "list_of_objects" ],
+  filter_list := [ "category", "list_of_objects", "list_of_integers_and_list_of_morphisms", "list_of_objects" ],
   input_arguments_names := [ "cat", "source_diagram", "pair", "range_diagram" ],
   return_type := "morphism",
   output_source_getter_string := "Coproduct( cat, source_diagram )",
@@ -78,7 +78,7 @@ MorphismBetweenCoproducts := rec(
 ),
 
 MorphismBetweenCoproductsWithGivenCoproducts := rec(
-  filter_list := [ "category", "object", "list_of_objects", "arbitrary_list", "list_of_objects", "object" ],
+  filter_list := [ "category", "object", "list_of_objects", "list_of_integers_and_list_of_morphisms", "list_of_objects", "object" ],
   input_arguments_names := [ "cat", "S", "source_diagram", "pair", "range_diagram", "T" ],
   output_source_getter_string := "S",
   output_source_getter_preconditions := [ ],
@@ -94,7 +94,7 @@ MorphismBetweenCoproductsWithGivenCoproducts := rec(
 ),
 
 MorphismBetweenDirectProducts := rec(
-  filter_list := [ "category", "list_of_objects", "arbitrary_list", "list_of_objects" ],
+  filter_list := [ "category", "list_of_objects", "list_of_integers_and_list_of_morphisms", "list_of_objects" ],
   input_arguments_names := [ "cat", "source_diagram", "pair", "range_diagram" ],
   return_type := "morphism",
   output_source_getter_string := "DirectProduct( cat, source_diagram )",
@@ -165,7 +165,7 @@ MorphismBetweenDirectProducts := rec(
 ),
 
 MorphismBetweenDirectProductsWithGivenDirectProducts := rec(
-  filter_list := [ "category", "object", "list_of_objects", "arbitrary_list", "list_of_objects", "object" ],
+  filter_list := [ "category", "object", "list_of_objects", "list_of_integers_and_list_of_morphisms", "list_of_objects", "object" ],
   input_arguments_names := [ "cat", "S", "source_diagram", "pair", "range_diagram", "T" ],
   output_source_getter_string := "S",
   output_source_getter_preconditions := [ ],

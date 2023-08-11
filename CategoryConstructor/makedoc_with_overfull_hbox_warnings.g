@@ -22,6 +22,7 @@ AutoDoc( rec(
                 \usepackage{tikz}
                 \usetikzlibrary{arrows}
                 \pgfarrowsdeclarecombine{twohead}{twohead}{latex}{latex}{latex}{latex}
+                \DeclareUnicodeCharacter{2C76}{\ensuremath{\vdash}\!\!}
                 % Many thanks to https://tex.stackexchange.com/questions/22466/how-to-convince-fancyvrb-to-give-overfull-warnings/534486#534486
                 \makeatletter
                 \def\FV@ListProcessLine#1{%
