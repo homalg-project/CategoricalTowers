@@ -2,12 +2,289 @@
   [1X1 [33X[0;0YFuther CAP operations[133X[101X
   
   
-  [1X1.1 [33X[0;0YProjective covers and injective envelopes[133X[101X
+  [1X1.1 [33X[0;0YMorphismBetweenCoproducts and MorphismBetweenDirectProducts[133X[101X
+  
+  [1X1.1-1 MorphismBetweenCoproducts[101X
+  
+  [33X[1;0Y[29X[2XMorphismBetweenCoproducts[102X( [3Xdiagram_S[103X, [3XF[103X, [3Xdiagram_T[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya       morphism       in      [23X\mathrm{Hom}(\sqcup_{i=0}^{m-1}A_i,
+            \sqcup_{j=0}^{n-1} B_j)[123X[133X
+  
+  [33X[0;0YThe arguments are given as follows:[133X
+  
+  [30X    [33X[0;6Y[3Xdiagram_S[103X is a list of objects [23X(A_i)_{i = 0 \dots m - 1}[123X,[133X
+  
+  [30X    [33X[0;6Y[3Xdiagram_T[103X is a list of objects [23X(B_j)_{j = 0 \dots n - 1}[123X,[133X
+  
+  [30X    [33X[0;6Y[3XF[103X  is  a  pair  consisting  of a list [23Xf = (f_i)_{i = 0 \dots m - 1}[123X of
+        length  [23Xm[123X of integers between [23X0, \ldots, n - 1[123X and a list of morphisms
+        [23X( A_i \rightarrow B_{f_i} )_{i = 0 \dots m - 1}[123X.[133X
+  
+  [33X[0;0YThe    output   is   the   morphism   [23X\sqcup_{i=0}^{m-1}   A_i   \rightarrow
+  \sqcup_{j=0}^{n-1} B_j[123X defined by the pair [3XF[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CategoryConstructor" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XsFinSets := CategoryOfSkeletalFinSets( );[127X[104X
+    [4X[28XSkeletalFinSets[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
+    [4X[28XA CAP category with name SkeletalFinSets:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X59 primitive operations were used to derive 313 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsElementaryTopos[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xa := FinSet( sFinSets, 2 );[127X[104X
+    [4X[28X|2|[128X[104X
+    [4X[25Xgap>[125X [27Xb := FinSet( sFinSets, 3 );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27Xbeta := CocartesianBraiding( a, b );[127X[104X
+    [4X[28X|5| → |5|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( beta );[127X[104X
+    [4X[28X{ 0,..., 4 } ⱶ[ 3, 4, 0, 1, 2 ]→ { 0,..., 4 }[128X[104X
+    [4X[25Xgap>[125X [27Xid_a := IdentityMorphism( a );[127X[104X
+    [4X[28X|2| → |2|[128X[104X
+    [4X[25Xgap>[125X [27Xid_b := IdentityMorphism( b );[127X[104X
+    [4X[28X|3| → |3|[128X[104X
+    [4X[25Xgap>[125X [27Xf := Pair( [ 1, 0 ], [ id_a, id_b ] );[127X[104X
+    [4X[28X[ [ 1, 0 ], [ |2| → |2|, |3| → |3| ] ][128X[104X
+    [4X[25Xgap>[125X [27Xbeta2 := MorphismBetweenCoproducts( [ a, b ], f, [ b, a ] );[127X[104X
+    [4X[28X|5| → |5|[128X[104X
+    [4X[25Xgap>[125X [27Xbeta2 = beta;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XW := WrapperCategory( sFinSets,[127X[104X
+    [4X[25X>[125X [27X             rec( only_primitive_operations := false ) );[127X[104X
+    [4X[28XWrapperCategory( SkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
+    [4X[28XA CAP category with name WrapperCategory( SkeletalFinSets ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X296 primitive operations were used to derive 306 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsElementaryTopos[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[25Xgap>[125X [27XW_a := a / W;[127X[104X
+    [4X[28X<An object in WrapperCategory( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XW_b := b / W;[127X[104X
+    [4X[28X<An object in WrapperCategory( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XW_beta := CocartesianBraiding( W_a, W_b );[127X[104X
+    [4X[28X<A morphism in WrapperCategory( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XMorphismDatum( W_beta ) = beta;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XW_id_a := IdentityMorphism( W_a );[127X[104X
+    [4X[28X<An identity morphism in WrapperCategory( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XW_id_b := IdentityMorphism( W_b );[127X[104X
+    [4X[28X<An identity morphism in WrapperCategory( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XW_f := Pair( [ 1, 0 ], [ W_id_a, W_id_b ] );;[127X[104X
+    [4X[25Xgap>[125X [27XW_beta2 := MorphismBetweenCoproducts( [ W_a, W_b ], W_f, [ W_b, W_a ] );[127X[104X
+    [4X[28X<A morphism in WrapperCategory( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XW_beta2 = W_beta;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XO := Opposite( sFinSets );[127X[104X
+    [4X[28XOpposite( SkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( O );[127X[104X
+    [4X[28XA CAP category with name Opposite( SkeletalFinSets ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X240 primitive operations were used to derive 258 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsFiniteCocompleteCategory[128X[104X
+    [4X[28X* IsFiniteCompleteCategory[128X[104X
+    [4X[28X* IsBicartesianCoclosedCategory[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[25Xgap>[125X [27XO_a := a / O;[127X[104X
+    [4X[28X<An object in Opposite( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XO_b := b / O;[127X[104X
+    [4X[28X<An object in Opposite( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XO_beta := CartesianBraiding( O_b, O_a );[127X[104X
+    [4X[28X<A morphism in Opposite( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XMorphismDatum( O_beta ) = beta;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XO_id_a := IdentityMorphism( O_a );[127X[104X
+    [4X[28X<An identity morphism in Opposite( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XO_id_b := IdentityMorphism( O_b );[127X[104X
+    [4X[28X<An identity morphism in Opposite( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XO_f := Pair( [ 1, 0 ], [ O_id_a, O_id_b ] );;[127X[104X
+    [4X[25Xgap>[125X [27XO_beta2 := MorphismBetweenDirectProducts( [ O_b, O_a ], O_f, [ O_a, O_b ] );[127X[104X
+    [4X[28X<A morphism in Opposite( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XO_beta2 = O_beta;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X1.1-2 MorphismBetweenCoproductsWithGivenCoproducts[101X
+  
+  [33X[1;0Y[29X[2XMorphismBetweenCoproductsWithGivenCoproducts[102X( [3XS[103X, [3Xdiagram_S[103X, [3XF[103X, [3Xdiagram_T[103X, [3XT[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya       morphism       in      [23X\mathrm{Hom}(\sqcup_{i=0}^{m-1}A_i,
+            \sqcup_{j=0}^{n-1} B_j)[123X[133X
+  
+  [33X[0;0YThe arguments are given as follows:[133X
+  
+  [30X    [33X[0;6Y[3Xdiagram_S[103X is a list of objects [23X(A_i)_{i = 0 \dots m - 1}[123X,[133X
+  
+  [30X    [33X[0;6Y[3Xdiagram_T[103X is a list of objects [23X(B_j)_{j = 0 \dots n - 1}[123X,[133X
+  
+  [30X    [33X[0;6Y[3XS[103X is the coproduct [23X\sqcup_{i=0}^{m-1} A_i[123X,[133X
+  
+  [30X    [33X[0;6Y[3XT[103X is the coproduct [23X\sqcup_{j=0}^{n-1} B_j[123X,[133X
+  
+  [30X    [33X[0;6Y[3XF[103X  is  a  pair  consisting  of a list [23Xf = (f_i)_{i = 0 \dots m - 1}[123X of
+        length  [23Xm[123X of integers between [23X0, \ldots, n - 1[123X and a list of morphisms
+        [23X( A_i \rightarrow B_{f_i} )_{i = 0 \dots m - 1}[123X.[133X
+  
+  [33X[0;0YThe    output   is   the   morphism   [23X\sqcup_{i=0}^{m-1}   A_i   \rightarrow
+  \sqcup_{j=0}^{n-1} B_j[123X defined by the pair [3XF[103X.[133X
+  
+  [1X1.1-3 MorphismBetweenDirectProducts[101X
+  
+  [33X[1;0Y[29X[2XMorphismBetweenDirectProducts[102X( [3Xdiagram_S[103X, [3XF[103X, [3Xdiagram_T[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya       morphism       in      [23X\mathrm{Hom}(\times_{i=0}^{m-1}A_i,
+            \times_{j=0}^{n-1} B_j)[123X[133X
+  
+  [33X[0;0YThe arguments are given as follows:[133X
+  
+  [30X    [33X[0;6Y[3Xdiagram_S[103X is a list of objects [23X(A_i)_{i = 0 \dots m - 1}[123X,[133X
+  
+  [30X    [33X[0;6Y[3Xdiagram_T[103X is a list of objects [23X(B_j)_{j = 0 \dots n - 1}[123X,[133X
+  
+  [30X    [33X[0;6Y[3XF[103X  is  a  pair  consisting  of a list [23Xf = (f_j)_{j = 0 \dots n - 1}[123X of
+        length  [23Xm[123X of integers between [23X0, \ldots, m - 1[123X and a list of morphisms
+        [23X( B_j \rightarrow A_{f_j} )_{j = 0 \dots n - 1}[123X.[133X
+  
+  [33X[0;0YThe    output   is   the   morphism   [23X\times_{i=0}^{m-1}   A_i   \rightarrow
+  \times_{j=0}^{n-1} B_j[123X defined by the pair [3XF[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CategoryConstructor" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XsFinSets := CategoryOfSkeletalFinSets( );[127X[104X
+    [4X[28XSkeletalFinSets[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
+    [4X[28XA CAP category with name SkeletalFinSets:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X59 primitive operations were used to derive 313 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsElementaryTopos[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xa := FinSet( sFinSets, 2 );[127X[104X
+    [4X[28X|2|[128X[104X
+    [4X[25Xgap>[125X [27Xb := FinSet( sFinSets, 3 );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27Xbeta := CartesianBraiding( a, b );[127X[104X
+    [4X[28X|6| → |6|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( beta );[127X[104X
+    [4X[28X{ 0,..., 5 } ⱶ[ 0, 3, 1, 4, 2, 5 ]→ { 0,..., 5 }[128X[104X
+    [4X[25Xgap>[125X [27Xid_a := IdentityMorphism( a );[127X[104X
+    [4X[28X|2| → |2|[128X[104X
+    [4X[25Xgap>[125X [27Xid_b := IdentityMorphism( b );[127X[104X
+    [4X[28X|3| → |3|[128X[104X
+    [4X[25Xgap>[125X [27Xf := Pair( [ 1, 0 ], [ id_b, id_a ] );[127X[104X
+    [4X[28X[ [ 1, 0 ], [ |3| → |3|, |2| → |2| ] ][128X[104X
+    [4X[25Xgap>[125X [27Xbeta2 := MorphismBetweenDirectProducts( [ a, b ], f, [ b, a ] );[127X[104X
+    [4X[28X|6| → |6|[128X[104X
+    [4X[25Xgap>[125X [27Xbeta2 = beta;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XW := WrapperCategory( sFinSets,[127X[104X
+    [4X[25X>[125X [27X             rec( only_primitive_operations := false ) );[127X[104X
+    [4X[28XWrapperCategory( SkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
+    [4X[28XA CAP category with name WrapperCategory( SkeletalFinSets ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X296 primitive operations were used to derive 306 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsElementaryTopos[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[25Xgap>[125X [27XW_a := a / W;[127X[104X
+    [4X[28X<An object in WrapperCategory( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XW_b := b / W;[127X[104X
+    [4X[28X<An object in WrapperCategory( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XW_beta := CartesianBraiding( W_a, W_b );[127X[104X
+    [4X[28X<A morphism in WrapperCategory( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XMorphismDatum( W_beta ) = beta;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XW_id_a := IdentityMorphism( W_a );[127X[104X
+    [4X[28X<An identity morphism in WrapperCategory( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XW_id_b := IdentityMorphism( W_b );[127X[104X
+    [4X[28X<An identity morphism in WrapperCategory( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XW_f := Pair( [ 1, 0 ], [ W_id_b, W_id_a ] );;[127X[104X
+    [4X[25Xgap>[125X [27XW_beta2 := MorphismBetweenDirectProducts( [ W_a, W_b ], W_f, [ W_b, W_a ] );[127X[104X
+    [4X[28X<A morphism in WrapperCategory( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XW_beta2 = W_beta;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XO := Opposite( sFinSets );[127X[104X
+    [4X[28XOpposite( SkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( O );[127X[104X
+    [4X[28XA CAP category with name Opposite( SkeletalFinSets ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X240 primitive operations were used to derive 258 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsFiniteCocompleteCategory[128X[104X
+    [4X[28X* IsFiniteCompleteCategory[128X[104X
+    [4X[28X* IsBicartesianCoclosedCategory[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[25Xgap>[125X [27XO_a := a / O;[127X[104X
+    [4X[28X<An object in Opposite( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XO_b := b / O;[127X[104X
+    [4X[28X<An object in Opposite( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XO_beta := CocartesianBraiding( O_b, O_a );[127X[104X
+    [4X[28X<A morphism in Opposite( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XMorphismDatum( O_beta ) = beta;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XO_id_a := IdentityMorphism( O_a );[127X[104X
+    [4X[28X<An identity morphism in Opposite( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XO_id_b := IdentityMorphism( O_b );[127X[104X
+    [4X[28X<An identity morphism in Opposite( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XO_f := Pair( [ 1, 0 ], [ O_id_b, O_id_a ] );;[127X[104X
+    [4X[25Xgap>[125X [27XO_beta2 := MorphismBetweenCoproducts( [ O_b, O_a ], O_f, [ O_a, O_b ] );[127X[104X
+    [4X[28X<A morphism in Opposite( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XO_beta2 = O_beta;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X1.1-4 MorphismBetweenDirectProductsWithGivenDirectProducts[101X
+  
+  [33X[1;0Y[29X[2XMorphismBetweenDirectProductsWithGivenDirectProducts[102X( [3XS[103X, [3Xdiagram_S[103X, [3XF[103X, [3Xdiagram_T[103X, [3XT[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya       morphism       in      [23X\mathrm{Hom}(\times_{i=0}^{m-1}A_i,
+            \times_{j=0}^{n-1} B_j)[123X[133X
+  
+  [33X[0;0YThe arguments are given as follows:[133X
+  
+  [30X    [33X[0;6Y[3Xdiagram_S[103X is a list of objects [23X(A_i)_{i = 0 \dots m - 1}[123X,[133X
+  
+  [30X    [33X[0;6Y[3Xdiagram_T[103X is a list of objects [23X(B_j)_{j = 0 \dots n - 1}[123X,[133X
+  
+  [30X    [33X[0;6Y[3XS[103X is the product [23X\times_{i=0}^{m-1} A_i[123X,[133X
+  
+  [30X    [33X[0;6Y[3XT[103X is the product [23X\times_{j=0}^{n-1} B_j[123X,[133X
+  
+  [30X    [33X[0;6Y[3XF[103X  is  a  pair  consisting  of a list [23Xf = (f_j)_{j = 0 \dots n - 1}[123X of
+        length  [23Xm[123X of integers between [23X0, \ldots, m - 1[123X and a list of morphisms
+        [23X( B_j \rightarrow A_{f_j} )_{j = 0 \dots n - 1}[123X.[133X
+  
+  [33X[0;0YThe    output   is   the   morphism   [23X\times_{i=0}^{m-1}   A_i   \rightarrow
+  \times_{j=0}^{n-1} B_j[123X defined by the pair [3XF[103X.[133X
   
   
-  [1X1.2 [33X[0;0YIsWeakTerminal and IsWeakInitial[133X[101X
+  [1X1.2 [33X[0;0YProjective covers and injective envelopes[133X[101X
   
-  [1X1.2-1 IsWeakTerminal[101X
+  
+  [1X1.3 [33X[0;0YIsWeakTerminal and IsWeakInitial[133X[101X
+  
+  [1X1.3-1 IsWeakTerminal[101X
   
   [33X[1;0Y[29X[2XIsWeakTerminal[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -15,7 +292,7 @@
   [33X[0;0YThe  argument is an object [23Xa[123X of a category [23X\mathbf{C}[123X. The output is [10Xtrue[110X if
   [23Xa[123X is weak terminal [23X\mathbf{C}[123X, otherwise the output is [10Xfalse[110X.[133X
   
-  [1X1.2-2 IsWeakInitial[101X
+  [1X1.3-2 IsWeakInitial[101X
   
   [33X[1;0Y[29X[2XIsWeakInitial[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -24,9 +301,9 @@
   [23Xa[123X is weak initial in [23X\mathbf{C}[123X, otherwise the output is [10Xfalse[110X.[133X
   
   
-  [1X1.3 [33X[0;0YRelativeLift/RelativeColift[133X[101X
+  [1X1.4 [33X[0;0YRelativeLift/RelativeColift[133X[101X
   
-  [1X1.3-1 RelativeLift[101X
+  [1X1.4-1 RelativeLift[101X
   
   [33X[1;0Y[29X[2XRelativeLift[102X( [3Xbeta[103X, [3Xalpha[103X, [3Xnu[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(b,a) + \{ \mathtt{fail} \}[123X[133X
@@ -40,7 +317,7 @@
   \nu[123X, for some morphism [23X\chi: b \rightarrow d[123X.[133X
   
   
-  [1X1.4 [33X[0;0YBiased relative weak fiber product[133X[101X
+  [1X1.5 [33X[0;0YBiased relative weak fiber product[133X[101X
   
   [33X[0;0YFor  a  given  pair  of  morphisms  [23X(\alpha: A \rightarrow B, \beta \colon C
   \rightarrow  B)[123X,  a  biased  relative  weak fiber product of [23X(\alpha, \beta)[123X
@@ -63,7 +340,7 @@
   morphism [23Xu(\tau)[123X is induced by the [13Xuniversal property of the biased relative
   weak fiber product[113X.[133X
   
-  [1X1.4-1 BiasedRelativeWeakFiberProduct[101X
+  [1X1.5-1 BiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XBiasedRelativeWeakFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xsigma[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -72,7 +349,7 @@
   \rightarrow  B[123X.  The  output  is the biased relative weak fiber product [23XP[123X of
   [23X\alpha[123X and [23X\beta[123X.[133X
   
-  [1X1.4-2 ProjectionOfBiasedRelativeWeakFiberProduct[101X
+  [1X1.5-2 ProjectionOfBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XProjectionOfBiasedRelativeWeakFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xsigma[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, A )[123X[133X
@@ -81,7 +358,7 @@
   \rightarrow  B[123X,  [23X\sigma:  D \rightarrow A[123X. The output is the biased relative
   weak fiber product projection [23X\pi: P \rightarrow A[123X.[133X
   
-  [1X1.4-3 ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
+  [1X1.5-3 ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xsigma[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, A )[123X[133X
@@ -91,7 +368,7 @@
   \mathrm{BiasedRelativeWeakFiberProduct}(  \alpha, \beta )[123X. The output is the
   biased relative weak fiber product projection [23X\pi: P \rightarrow A[123X.[133X
   
-  [1X1.4-4 UniversalMorphismIntoBiasedRelativeWeakFiberProduct[101X
+  [1X1.5-4 UniversalMorphismIntoBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoBiasedRelativeWeakFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xsigma[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, P )[123X[133X
@@ -101,7 +378,7 @@
   the  morphism  [23Xu(  \tau  )[123X  induced  by the universal property of the biased
   relative weak fiber product [23XP[123X of [23X\alpha[123X and [23X\beta[123X.[133X
   
-  [1X1.4-5 UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
+  [1X1.5-5 UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xsigma[103X, [3Xtau[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, P )[123X[133X
@@ -113,23 +390,23 @@
   weak fiber product [23XP[123X of [23X\alpha[123X and [23X\beta[123X.[133X
   
   
-  [1X1.5 [33X[0;0YEmbeddingOfSumOfImagesOfAllMorphisms[133X[101X
+  [1X1.6 [33X[0;0YEmbeddingOfSumOfImagesOfAllMorphisms[133X[101X
   
-  [1X1.5-1 MorphismOntoSumOfImagesOfAllMorphisms[101X
+  [1X1.6-1 MorphismOntoSumOfImagesOfAllMorphisms[101X
   
   [33X[1;0Y[29X[2XMorphismOntoSumOfImagesOfAllMorphisms[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism[133X
   
   [33X[0;0YReturn a morphism onto the sum of images of all morphisms between [3Xa[103X and [3Xb[103X.[133X
   
-  [1X1.5-2 EmbeddingOfSumOfImagesOfAllMorphisms[101X
+  [1X1.6-2 EmbeddingOfSumOfImagesOfAllMorphisms[101X
   
   [33X[1;0Y[29X[2XEmbeddingOfSumOfImagesOfAllMorphisms[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism[133X
   
   [33X[0;0YReturn the embedding of the sum of images of all morphisms between [3Xa[103X and [3Xb[103X.[133X
   
-  [1X1.5-3 SumOfImagesOfAllMorphisms[101X
+  [1X1.6-3 SumOfImagesOfAllMorphisms[101X
   
   [33X[1;0Y[29X[2XSumOfImagesOfAllMorphisms[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism[133X
@@ -137,9 +414,9 @@
   [33X[0;0YReturn the sum of images of all morphisms between [3Xa[103X and [3Xb[103X.[133X
   
   
-  [1X1.6 [33X[0;0YSystems of homogeneous linear equations in linear categories[133X[101X
+  [1X1.7 [33X[0;0YSystems of homogeneous linear equations in linear categories[133X[101X
   
-  [1X1.6-1 MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[101X
+  [1X1.7-1 MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[101X
   
   [33X[1;0Y[29X[2XMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[102X( [3Xleft_coeffs[103X, [3Xright_coeffs[103X, [3Xright_side[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -147,7 +424,7 @@
   [33X[0;0YLike  [10XSolveLinearSystemInAbCategory[110X,  but  the  output  is  simply [10Xtrue[110X if a
   unique solution exists, and [10Xfalse[110X otherwise.[133X
   
-  [1X1.6-2 MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[101X
+  [1X1.7-2 MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[101X
   
   [33X[1;0Y[29X[2XMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[102X( [3Xleft_coeffs[103X, [3Xright_coeffs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -156,7 +433,7 @@
   output  is [10Xtrue[110X if the homogeneous system has only the trivial solution, and
   [10Xfalse[110X otherwise.[133X
   
-  [1X1.6-3 BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[101X
+  [1X1.7-3 BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[101X
   
   [33X[1;0Y[29X[2XBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of lists of morphisms [23X[X^1, \dots, X^t][123X[133X
@@ -172,7 +449,7 @@
   \beta_{ij}  =  0,  ~i  =  1,  \dots, m[123X. Particularly, each [23XX^k[123X is a list (of
   length [23Xn[123X) of morphisms [23XX^k_j:B_j \to C_j, j=1,\dots,n[123X.[133X
   
-  [1X1.6-4 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[101X
+  [1X1.7-4 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[101X
   
   [33X[1;0Y[29X[2XBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of lists of morphisms [23X[X^1, \dots, X^t][123X[133X
@@ -189,7 +466,7 @@
   = \sum_{j = 1}^n \gamma_{ij}\cdot X^{k}_{j} \cdot \delta_{ij}[123X for all [23Xi = 1,
   \dots, m[123X and all [23Xk = 1, \dots, t[123X.[133X
   
-  [1X1.6-5 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[101X
+  [1X1.7-5 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[101X
   
   [33X[1;0Y[29X[2XBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[102X( [3Xalpha[103X, [3Xdelta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of lists of morphisms [23X[X^1, \dots, X^t][123X[133X
@@ -310,9 +587,9 @@
   [4X[32X[104X
   
   
-  [1X1.7 [33X[0;0YLimit[133X[101X
+  [1X1.8 [33X[0;0YLimit[133X[101X
   
-  [1X1.7-1 LimitPair[101X
+  [1X1.8-1 LimitPair[101X
   
   [33X[1;0Y[29X[2XLimitPair[102X( [3Xcat[103X, [3Xobjs[103X, [3Xdecorated_mors[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya pair of morphisms[133X
@@ -332,7 +609,7 @@
   morphisms  having  this  object as source, such that the binary equalizer of
   the two morphisms is the limit of the diagram.[133X
   
-  [1X1.7-2 Limit[101X
+  [1X1.8-2 Limit[101X
   
   [33X[1;0Y[29X[2XLimit[102X( [3Xobjs[103X, [3Xdecorated_mors[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -347,7 +624,7 @@
   
   [33X[0;0YThe output is the limit object [23X\mathrm{Limit}[123X([3XD[103X) of the diagram [3XD[103X.[133X
   
-  [1X1.7-3 ProjectionInFactorOfLimit[101X
+  [1X1.8-3 ProjectionInFactorOfLimit[101X
   
   [33X[1;0Y[29X[2XProjectionInFactorOfLimit[102X( [3Xobjects[103X, [3Xdecorated_morphisms[103X, [3Xk[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, P_k )[123X[133X
@@ -366,7 +643,7 @@
   [33X[0;0YThe  output  is the projection of the limit object [23XP := \mathrm{Limit}[123X([3XD[103X) of
   the diagram [3XD[103X into the [3Xk[103X-th objects [23XP_k =[123X[3Xobjs[103X[[3Xk[103X].[133X
   
-  [1X1.7-4 ProjectionInFactorOfLimitWithGivenLimit[101X
+  [1X1.8-4 ProjectionInFactorOfLimitWithGivenLimit[101X
   
   [33X[1;0Y[29X[2XProjectionInFactorOfLimitWithGivenLimit[102X( [3Xobjects[103X, [3Xdecorated_morphisms[103X, [3Xk[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, P_k )[123X[133X
@@ -387,7 +664,7 @@
   [33X[0;0YThe  output is the projection of the limit object [3XP[103X [23X:=\mathrm{Limit}(D)[123X into
   [23XP_k =[123X[3Xobjs[103X[[3Xk[103X].[133X
   
-  [1X1.7-5 UniversalMorphismIntoLimit[101X
+  [1X1.8-5 UniversalMorphismIntoLimit[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoLimit[102X( [3Xobjects[103X, [3Xdecorated_morphisms[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, \mathrm{Limit}(D) )[123X[133X
@@ -409,7 +686,7 @@
   [33X[0;0YThe  output is the morphism [23Xu( \tau ): T \rightarrow \mathrm{Limit}(D)[123X given
   by the universal property of the limit.[133X
   
-  [1X1.7-6 UniversalMorphismIntoLimitWithGivenLimit[101X
+  [1X1.8-6 UniversalMorphismIntoLimitWithGivenLimit[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoLimitWithGivenLimit[102X( [3Xobjects[103X, [3Xdecorated_morphisms[103X, [3XT[103X, [3Xtau[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, P )[123X[133X
@@ -434,9 +711,9 @@
   given by the universal property of the limit.[133X
   
   
-  [1X1.8 [33X[0;0YColimit[133X[101X
+  [1X1.9 [33X[0;0YColimit[133X[101X
   
-  [1X1.8-1 ColimitPair[101X
+  [1X1.9-1 ColimitPair[101X
   
   [33X[1;0Y[29X[2XColimitPair[102X( [3Xcat[103X, [3Xobjs[103X, [3Xdecorated_mors[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya pair of morphisms[133X
@@ -456,7 +733,7 @@
   morphisms  having  this object as range, such that the binary coequalizer of
   the two morphisms is the colimit of the diagram.[133X
   
-  [1X1.8-2 Colimit[101X
+  [1X1.9-2 Colimit[101X
   
   [33X[1;0Y[29X[2XColimit[102X( [3Xobjs[103X, [3Xdecorated_mors[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -471,7 +748,7 @@
   
   [33X[0;0YThe output is the colimit object [23X\mathrm{Colimit}[123X([3XD[103X) of the diagram [3XD[103X.[133X
   
-  [1X1.8-3 InjectionOfCofactorOfColimit[101X
+  [1X1.9-3 InjectionOfCofactorOfColimit[101X
   
   [33X[1;0Y[29X[2XInjectionOfCofactorOfColimit[102X( [3Xobjects[103X, [3Xdecorated_morphisms[103X, [3Xk[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P_k, P )[123X[133X
@@ -490,7 +767,7 @@
   [33X[0;0YThe  output  is  the  injection  of  the  [3Xk[103X-th objects [23XP_k =[123X[3Xobjs[103X[[3Xk[103X] into the
   colimit object [23XP := \mathrm{Colimit}[123X([3XD[103X) of the diagram [3XD[103X.[133X
   
-  [1X1.8-4 InjectionOfCofactorOfColimitWithGivenColimit[101X
+  [1X1.9-4 InjectionOfCofactorOfColimitWithGivenColimit[101X
   
   [33X[1;0Y[29X[2XInjectionOfCofactorOfColimitWithGivenColimit[102X( [3Xobjects[103X, [3Xdecorated_morphisms[103X, [3Xk[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P_k, P )[123X[133X
@@ -511,7 +788,7 @@
   [33X[0;0YThe  output  is  the  projection  of  [23XP_k =[123X[3Xobjs[103X[[3Xk[103X] into the colimit object [3XP[103X
   [23X:=\mathrm{Colimit}(D)[123X.[133X
   
-  [1X1.8-5 UniversalMorphismFromColimit[101X
+  [1X1.9-5 UniversalMorphismFromColimit[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismFromColimit[102X( [3Xobjects[103X, [3Xdecorated_morphisms[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Colimit}(D), T )[123X[133X
@@ -533,7 +810,7 @@
   [33X[0;0YThe  output  is  the  morphism  [23Xu( \tau ): \mathrm{Colimit}(D) \rightarrow T[123X
   given by the universal property of the colimit.[133X
   
-  [1X1.8-6 UniversalMorphismFromColimitWithGivenColimit[101X
+  [1X1.9-6 UniversalMorphismFromColimitWithGivenColimit[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismFromColimitWithGivenColimit[102X( [3Xobjects[103X, [3Xdecorated_morphisms[103X, [3XT[103X, [3Xtau[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, T )[123X[133X
@@ -558,15 +835,15 @@
   given by the universal property of the colimit.[133X
   
   
-  [1X1.9 [33X[0;0YImageObjectFunctorial[133X[101X
+  [1X1.10 [33X[0;0YImageObjectFunctorial[133X[101X
   
   
-  [1X1.10 [33X[0;0YCoimageObjectFunctorial[133X[101X
+  [1X1.11 [33X[0;0YCoimageObjectFunctorial[133X[101X
   
   
-  [1X1.11 [33X[0;0YAdd-methods[133X[101X
+  [1X1.12 [33X[0;0YAdd-methods[133X[101X
   
-  [1X1.11-1 AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[101X
+  [1X1.12-1 AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[101X
   
   [33X[1;0Y[29X[2XAddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -578,7 +855,7 @@
   \mathtt{BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory}(arg2,
   arg3, arg4, arg5)[123X.[133X
   
-  [1X1.11-2 AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[101X
+  [1X1.12-2 AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[101X
   
   [33X[1;0Y[29X[2XAddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -590,7 +867,7 @@
   \mathtt{BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory}(arg2,
   arg3)[123X.[133X
   
-  [1X1.11-3 AddBiasedRelativeWeakFiberProduct[101X
+  [1X1.12-3 AddBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -600,7 +877,7 @@
   [10XBiasedRelativeWeakFiberProduct[110X.   [23XF:   (   arg2,   arg3,   arg4   )  \mapsto
   \mathtt{BiasedRelativeWeakFiberProduct}(arg2, arg3, arg4)[123X.[133X
   
-  [1X1.11-4 AddColimit[101X
+  [1X1.12-4 AddColimit[101X
   
   [33X[1;0Y[29X[2XAddColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -610,7 +887,7 @@
   objects,    decorated_morphisms    )    \mapsto    \mathtt{Colimit}(objects,
   decorated_morphisms)[123X.[133X
   
-  [1X1.11-5 AddEmbeddingOfSumOfImagesOfAllMorphisms[101X
+  [1X1.12-5 AddEmbeddingOfSumOfImagesOfAllMorphisms[101X
   
   [33X[1;0Y[29X[2XAddEmbeddingOfSumOfImagesOfAllMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -620,7 +897,7 @@
   [10XEmbeddingOfSumOfImagesOfAllMorphisms[110X.     [23XF:    (    a,    b    )    \mapsto
   \mathtt{EmbeddingOfSumOfImagesOfAllMorphisms}(a, b)[123X.[133X
   
-  [1X1.11-6 AddInjectionOfCofactorOfColimit[101X
+  [1X1.12-6 AddInjectionOfCofactorOfColimit[101X
   
   [33X[1;0Y[29X[2XAddInjectionOfCofactorOfColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -630,7 +907,7 @@
   [10XInjectionOfCofactorOfColimit[110X. [23XF: ( objects, decorated_morphisms, k ) \mapsto
   \mathtt{InjectionOfCofactorOfColimit}(objects, decorated_morphisms, k)[123X.[133X
   
-  [1X1.11-7 AddInjectionOfCofactorOfColimitWithGivenColimit[101X
+  [1X1.12-7 AddInjectionOfCofactorOfColimitWithGivenColimit[101X
   
   [33X[1;0Y[29X[2XAddInjectionOfCofactorOfColimitWithGivenColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -642,7 +919,7 @@
   \mathtt{InjectionOfCofactorOfColimitWithGivenColimit}(objects,
   decorated_morphisms, k, P)[123X.[133X
   
-  [1X1.11-8 AddIsWeakInitial[101X
+  [1X1.12-8 AddIsWeakInitial[101X
   
   [33X[1;0Y[29X[2XAddIsWeakInitial[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -651,7 +928,7 @@
   given function [23XF[123X to the category for the basic operation [10XIsWeakInitial[110X. [23XF: (
   arg2 ) \mapsto \mathtt{IsWeakInitial}(arg2)[123X.[133X
   
-  [1X1.11-9 AddIsWeakTerminal[101X
+  [1X1.12-9 AddIsWeakTerminal[101X
   
   [33X[1;0Y[29X[2XAddIsWeakTerminal[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -660,7 +937,7 @@
   given  function [23XF[123X to the category for the basic operation [10XIsWeakTerminal[110X. [23XF:
   ( arg2 ) \mapsto \mathtt{IsWeakTerminal}(arg2)[123X.[133X
   
-  [1X1.11-10 AddLimit[101X
+  [1X1.12-10 AddLimit[101X
   
   [33X[1;0Y[29X[2XAddLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -670,7 +947,7 @@
   objects,     decorated_morphisms     )    \mapsto    \mathtt{Limit}(objects,
   decorated_morphisms)[123X.[133X
   
-  [1X1.11-11 AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[101X
+  [1X1.12-11 AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[101X
   
   [33X[1;0Y[29X[2XAddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -682,7 +959,7 @@
   \mathtt{MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory}(arg2,
   arg3)[123X.[133X
   
-  [1X1.11-12 AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[101X
+  [1X1.12-12 AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[101X
   
   [33X[1;0Y[29X[2XAddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -694,7 +971,53 @@
   \mathtt{MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory}(arg2, arg3,
   arg4)[123X.[133X
   
-  [1X1.11-13 AddMorphismOntoSumOfImagesOfAllMorphisms[101X
+  [1X1.12-13 AddMorphismBetweenCoproducts[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismBetweenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismBetweenCoproducts[110X.   [23XF:  (  source_diagram,  pair,  range_diagram  )
+  \mapsto       \mathtt{MorphismBetweenCoproducts}(source_diagram,       pair,
+  range_diagram)[123X.[133X
+  
+  [1X1.12-14 AddMorphismBetweenCoproductsWithGivenCoproducts[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismBetweenCoproductsWithGivenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismBetweenCoproductsWithGivenCoproducts[110X.  [23XF: ( S, source_diagram, pair,
+  range_diagram,                  T                  )                 \mapsto
+  \mathtt{MorphismBetweenCoproductsWithGivenCoproducts}(S,     source_diagram,
+  pair, range_diagram, T)[123X.[133X
+  
+  [1X1.12-15 AddMorphismBetweenDirectProducts[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismBetweenDirectProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismBetweenDirectProducts[110X.  [23XF:  (  source_diagram, pair, range_diagram )
+  \mapsto     \mathtt{MorphismBetweenDirectProducts}(source_diagram,     pair,
+  range_diagram)[123X.[133X
+  
+  [1X1.12-16 AddMorphismBetweenDirectProductsWithGivenDirectProducts[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismBetweenDirectProductsWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismBetweenDirectProductsWithGivenDirectProducts[110X.      [23XF:      (      S,
+  source_diagram,       pair,       range_diagram,       T      )      \mapsto
+  \mathtt{MorphismBetweenDirectProductsWithGivenDirectProducts}(S,
+  source_diagram, pair, range_diagram, T)[123X.[133X
+  
+  [1X1.12-17 AddMorphismOntoSumOfImagesOfAllMorphisms[101X
   
   [33X[1;0Y[29X[2XAddMorphismOntoSumOfImagesOfAllMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -704,7 +1027,7 @@
   [10XMorphismOntoSumOfImagesOfAllMorphisms[110X.    [23XF:    (    a,    b    )    \mapsto
   \mathtt{MorphismOntoSumOfImagesOfAllMorphisms}(a, b)[123X.[133X
   
-  [1X1.11-14 AddProjectionInFactorOfLimit[101X
+  [1X1.12-18 AddProjectionInFactorOfLimit[101X
   
   [33X[1;0Y[29X[2XAddProjectionInFactorOfLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -714,7 +1037,7 @@
   [10XProjectionInFactorOfLimit[110X.  [23XF:  (  objects, decorated_morphisms, k ) \mapsto
   \mathtt{ProjectionInFactorOfLimit}(objects, decorated_morphisms, k)[123X.[133X
   
-  [1X1.11-15 AddProjectionInFactorOfLimitWithGivenLimit[101X
+  [1X1.12-19 AddProjectionInFactorOfLimitWithGivenLimit[101X
   
   [33X[1;0Y[29X[2XAddProjectionInFactorOfLimitWithGivenLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -725,7 +1048,7 @@
   k,  P  )  \mapsto  \mathtt{ProjectionInFactorOfLimitWithGivenLimit}(objects,
   decorated_morphisms, k, P)[123X.[133X
   
-  [1X1.11-16 AddProjectionOfBiasedRelativeWeakFiberProduct[101X
+  [1X1.12-20 AddProjectionOfBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddProjectionOfBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -735,7 +1058,7 @@
   [10XProjectionOfBiasedRelativeWeakFiberProduct[110X.   [23XF:   (   a,  b,  c  )  \mapsto
   \mathtt{ProjectionOfBiasedRelativeWeakFiberProduct}(a, b, c)[123X.[133X
   
-  [1X1.11-17 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
+  [1X1.12-21 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -747,7 +1070,7 @@
   \mathtt{ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct}(a,
   b, c, P)[123X.[133X
   
-  [1X1.11-18 AddRelativeLift[101X
+  [1X1.12-22 AddRelativeLift[101X
   
   [33X[1;0Y[29X[2XAddRelativeLift[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -756,7 +1079,7 @@
   given  function [23XF[123X to the category for the basic operation [10XRelativeLift[110X. [23XF: (
   beta, alpha, nu ) \mapsto \mathtt{RelativeLift}(beta, alpha, nu)[123X.[133X
   
-  [1X1.11-19 AddSumOfImagesOfAllMorphisms[101X
+  [1X1.12-23 AddSumOfImagesOfAllMorphisms[101X
   
   [33X[1;0Y[29X[2XAddSumOfImagesOfAllMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -766,7 +1089,7 @@
   [10XSumOfImagesOfAllMorphisms[110X.     [23XF:     (     arg2,     arg3     )     \mapsto
   \mathtt{SumOfImagesOfAllMorphisms}(arg2, arg3)[123X.[133X
   
-  [1X1.11-20 AddUniversalMorphismFromColimit[101X
+  [1X1.12-24 AddUniversalMorphismFromColimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -777,7 +1100,7 @@
   \mapsto  \mathtt{UniversalMorphismFromColimit}(objects, decorated_morphisms,
   T, tau)[123X.[133X
   
-  [1X1.11-21 AddUniversalMorphismFromColimitWithGivenColimit[101X
+  [1X1.12-25 AddUniversalMorphismFromColimitWithGivenColimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromColimitWithGivenColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -789,7 +1112,7 @@
   \mathtt{UniversalMorphismFromColimitWithGivenColimit}(objects,
   decorated_morphisms, T, tau, P)[123X.[133X
   
-  [1X1.11-22 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct[101X
+  [1X1.12-26 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -800,7 +1123,7 @@
   \mapsto  \mathtt{UniversalMorphismIntoBiasedRelativeWeakFiberProduct}(a,  b,
   c, t)[123X.[133X
   
-  [1X1.11-23 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
+  [1X1.12-27 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -812,7 +1135,7 @@
   \mathtt{UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct}(a,
   b, c, t, P)[123X.[133X
   
-  [1X1.11-24 AddUniversalMorphismIntoLimit[101X
+  [1X1.12-28 AddUniversalMorphismIntoLimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -823,7 +1146,7 @@
   \mapsto \mathtt{UniversalMorphismIntoLimit}(objects, decorated_morphisms, T,
   tau)[123X.[133X
   
-  [1X1.11-25 AddUniversalMorphismIntoLimitWithGivenLimit[101X
+  [1X1.12-29 AddUniversalMorphismIntoLimitWithGivenLimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoLimitWithGivenLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
