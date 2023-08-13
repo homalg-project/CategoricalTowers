@@ -73,9 +73,9 @@
   [33X[0;0YThe category of reflexive quivers as a category of presheaves with values in
   [10XSkeletalFinSets[110X.[133X
   
-  [1X7.4-2 FinQuivers[101X
+  [1X7.4-2 FinReflexiveQuivers[101X
   
-  [33X[1;0Y[29X[2XFinQuivers[102X [32X global variable[133X
+  [33X[1;0Y[29X[2XFinReflexiveQuivers[102X [32X global variable[133X
   
   
   [1X7.5 [33X[0;0Y[5XGAP[105X[101X[1X Categories[133X[101X

@@ -48,47 +48,51 @@
   [33X[0;0YAnother  alternative  input  is  the triple ([3XU[103X, [3Xe[103X, [3XV[103X), where [3Xe[103X is a defining
   list of [3Xeta[103X.[133X
   
-  [1X2.1-4 SomeDiagramOfRepresentables[101X
-  
-  [33X[1;0Y[29X[2XSomeDiagramOfRepresentables[102X( [3XF[103X ) [32X attribute[133X
-  
-  [1X2.1-5 CoequalizerDataOfPreSheafUsingCoYonedaLemma[101X
+  [1X2.1-4 CoequalizerDataOfPreSheafUsingCoYonedaLemma[101X
   
   [33X[1;0Y[29X[2XCoequalizerDataOfPreSheafUsingCoYonedaLemma[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-6 MorphismFromRepresentable[101X
+  [1X2.1-5 CoYonedaLemmaCoequalizerPair[101X
+  
+  [33X[1;0Y[29X[2XCoYonedaLemmaCoequalizerPair[102X( [3XF[103X ) [32X attribute[133X
+  
+  [1X2.1-6 EmbeddingFunctorOfFiniteStrictCoproductCocompletionIntoPreSheavesData[101X
+  
+  [33X[1;0Y[29X[2XEmbeddingFunctorOfFiniteStrictCoproductCocompletionIntoPreSheavesData[102X( [3XPSh[103X ) [32X attribute[133X
+  
+  [1X2.1-7 MorphismFromRepresentable[101X
   
   [33X[1;0Y[29X[2XMorphismFromRepresentable[102X( [3XPSh[103X, [3XobjB[103X, [3XmorC[103X, [3XF[103X ) [32X operation[133X
   
-  [1X2.1-7 MorphismFromCoproductOfRepresentables[101X
+  [1X2.1-8 MorphismFromCoproductOfRepresentables[101X
   
   [33X[1;0Y[29X[2XMorphismFromCoproductOfRepresentables[102X( [3XPSh[103X, [3Xlist[103X, [3XF[103X ) [32X operation[133X
   
-  [1X2.1-8 CoveringListOfRepresentables[101X
+  [1X2.1-9 CoveringListOfRepresentables[101X
   
   [33X[1;0Y[29X[2XCoveringListOfRepresentables[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-9 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[101X
+  [1X2.1-10 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[101X
   
   [33X[1;0Y[29X[2XSectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-10 EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[101X
+  [1X2.1-11 EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[101X
   
   [33X[1;0Y[29X[2XEpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-11 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[101X
+  [1X2.1-12 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[101X
   
   [33X[1;0Y[29X[2XCoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-12 ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion[101X
+  [1X2.1-13 ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion[101X
   
   [33X[1;0Y[29X[2XApplyPreSheafToObjectInFiniteStrictCoproductCocompletion[102X( [3XPSh[103X, [3Xpresheaf[103X, [3Xobj[103X ) [32X operation[133X
   
-  [1X2.1-13 ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion[101X
+  [1X2.1-14 ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion[101X
   
   [33X[1;0Y[29X[2XApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion[102X( [3XPSh[103X, [3Xpresheaf[103X, [3Xmor[103X ) [32X operation[133X
   
-  [1X2.1-14 CategoryOfInternalCategories[101X
+  [1X2.1-15 CategoryOfInternalCategories[101X
   
   [33X[1;0Y[29X[2XCategoryOfInternalCategories[102X( [3XC[103X ) [32X attribute[133X
   
@@ -557,8 +561,8 @@
   [33X[1;0Y[29X[2XAssociatedCategoryOfColimitQuiversOfSourceCategory[102X( [3XPSh[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YGiven  the  presheaf  category  [3XPSh[103X=[10XPSh[110X([23XC,V[123X)  return the equivalent category
-  [10XCategoryOfColimitQuivers[110X( [23XC[123X ).[133X
+  [33X[0;0YGiven  the  presheaf  category  [3XPSh[103X=[10XPSh[110X([23XC,V[123X)  return  the  ambient  category
+  [10XCategoryOfColimitQuivers[110X( [23XC[123X ), provided [23XC[123X is enriched over [10XSkeletalFinSets[110X.[133X
   
   
   [1X2.3 [33X[0;0YOperations[133X[101X
