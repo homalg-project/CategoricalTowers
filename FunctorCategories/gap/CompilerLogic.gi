@@ -70,6 +70,22 @@ end );
 
 CapJitAddLogicTemplate(
     rec(
+        variable_names := [ "number" ],
+        src_template := "number + 1 - 1",
+        dst_template := "number",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        src_template := "1 + number - 1",
+        dst_template := "number",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
         variable_names := [ ],
         src_template := "[ 0 .. BigInt( -1 ) ]",
         dst_template := "[ ]",
@@ -86,9 +102,9 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ ],
-        src_template := "[ 2 .. 2 ]",
-        dst_template := "[ 2 ]",
+        variable_names := [ "number" ],
+        src_template := "[ number .. number ]",
+        dst_template := "[ number ]",
     )
 );
 
@@ -254,6 +270,14 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
+        variable_names := [ "number" ],
+        src_template := "Length( [ 0 .. number - 1 ] )",
+        dst_template := "number",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
         variable_names := [ "number1", "number2" ],
         src_template := "Sum( ListWithIdenticalEntries( number1, number2 ) )",
         dst_template := "number1 * number2",
@@ -386,6 +410,14 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
+        variable_names := [ "number", "entry" ],
+        src_template := "Concatenation( ListWithIdenticalEntries( number, [ entry ] ) )",
+        dst_template := "ListWithIdenticalEntries( number, entry )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
         variable_names := [ "matrix", "dimension", "ring" ],
         src_template := "matrix * HomalgIdentityMatrix( dimension, ring )",
         dst_template := "matrix",
@@ -447,5 +479,21 @@ CapJitAddLogicTemplate(
         variable_names := [  ],
         src_template := "SafeUniquePosition( [ 0, 1 ], 1 )",
         dst_template := "2"
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "length", "index" ],
+        src_template := "SafeUniquePosition( [ 0 .. length - 1 ], index )",
+        dst_template := "1 + index"
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "length", "number", "index" ],
+        src_template := "Sum( ListWithIdenticalEntries( length, number ){[ 1 .. index ]} )",
+        dst_template := "number * index"
     )
 );

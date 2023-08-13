@@ -167,7 +167,8 @@ end );
 
 #! @Description
 #!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
-#!  the equivalent category <C>CategoryOfColimitQuivers</C>( $C$ ).
+#!  the ambient category <C>CategoryOfColimitQuivers</C>( $C$ ), provided
+#!  $C$ is enriched over <C>SkeletalFinSets</C>.
 #! @Arguments PSh
 #! @Returns a &CAP; category
 DeclareAttribute( "AssociatedCategoryOfColimitQuiversOfSourceCategory",
@@ -312,12 +313,16 @@ DeclareOperation( "CreatePreSheafMorphismByFunction",
         [ IsObjectInPreSheafCategory, IsFunction, IsObjectInPreSheafCategory ] );
 
 #! @Arguments F
-DeclareAttribute( "SomeDiagramOfRepresentables",
+DeclareAttribute( "CoequalizerDataOfPreSheafUsingCoYonedaLemma",
         IsObjectInPreSheafCategory );
 
 #! @Arguments F
-DeclareAttribute( "CoequalizerDataOfPreSheafUsingCoYonedaLemma",
+DeclareAttribute( "CoYonedaLemmaCoequalizerPair",
         IsObjectInPreSheafCategory );
+
+#! @Arguments PSh
+DeclareAttribute( "EmbeddingFunctorOfFiniteStrictCoproductCocompletionIntoPreSheavesData",
+        IsPreSheafCategory );
 
 #! @Arguments PSh, objB, morC, F
 DeclareOperation( "MorphismFromRepresentable",
