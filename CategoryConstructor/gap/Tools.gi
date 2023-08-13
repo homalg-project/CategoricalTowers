@@ -521,7 +521,7 @@ InstallMethodForCompilerForCAP( PreComposeWithWrappingFunctorData,
     
     wrapping_functor_on_objects := objB -> AsObjectInWrapperCategory( C, objB );
     
-    wrapping_functor_on_morphisms := { sourceC, morB, rangeB } -> AsMorphismInWrapperCategory( C, sourceC, morB, rangeB );
+    wrapping_functor_on_morphisms := { sourceC, morB, rangeC } -> AsMorphismInWrapperCategory( C, sourceC, morB, rangeC );
     
     wrapping_functor_data :=
       Triple( B,
