@@ -1,3 +1,169 @@
   
   [1X11 [33X[0;0YTools[133X[101X
   
+  
+  [1X11.1 [33X[0;0YOperations[133X[101X
+  
+  [1X11.1-1 TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure[101X
+  
+  [33X[1;0Y[29X[2XTensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure[102X( [3XobjC[103X, [3XobjH[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YThe  arguments are an ojbect [3XobjC[103X in a category [23XC[123X and an object [3XobjH[103X in [23XH :=[123X
+  [10XRangeCategoryOfHomomorphismStructure[110X(  [23XC[123X  ).  The  output  is  an  object in
+  [10XEnrichmentSpecificFiniteStrictCoproductCocompletion[110X(  [23XC[123X ), namely the tensor
+  product  [3XobjC[103X  [23X\otimes[123X [3XobjH[103X, i.e., the formal coproduct of [23Xl[123X copies of [3XobjC[103X,
+  where [23Xl :=[123X [10XObjectDatum[110X( [3XobjH[103X ) is a nonnegative integer.[133X
+  
+  [1X11.1-2 TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure[101X
+  
+  [33X[1;0Y[29X[2XTensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure[102X( [3XobjC[103X, [3XmorH[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YThe  arguments are an ojbect [3XobjC[103X in a cocartesian category [23XC[123X and a morphism
+  [3XmorH[103X  in  [23XH  :=[123X  [10XRangeCategoryOfHomomorphismStructure[110X(  [23XC[123X ). The output is a
+  morphism in [10XEnrichmentSpecificFiniteStrictCoproductCocompletion[110X( [23XC[123X ), namely
+  the  tensor  product  [3XobjC[103X  [23X\otimes[123X [3XmorH[103X, i.e., the morphism induced by [3XmorH[103X
+  from  the  formal coproduct of [23Xt[123X copies of [3XobjC[103X to the formal coproduct of [23Xt[123X
+  copies  of  [3XobjC[103X,  where  [23Xs  :=[123X  [10XObjectDatum[110X(  [10XSource[110X(  [3XmorH[103X  )  )  and [23Xt :=[123X
+  [10XObjectDatum[110X( [10XRange[110X( [3XmorH[103X ) ).[133X
+  
+  [1X11.1-3 TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure[101X
+  
+  [33X[1;0Y[29X[2XTensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure[102X( [3XmorC[103X, [3XobjH[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YThe  arguments are a morphism [3XmorC[103X in a cocartesian category [23XC[123X and an object
+  [3XobjH[103X  in  [23XH  :=[123X  [10XRangeCategoryOfHomomorphismStructure[110X(  [23XC[123X ). The output is a
+  morphism in [10XEnrichmentSpecificFiniteStrictCoproductCocompletion[110X( [23XC[123X ), namely
+  the  tensor product [3XmorC[103X [23X\otimes[123X [3XobjH[103X, i.e., the morphism induced by [3XmorC[103X of
+  the  formal  coproduct of [23Xl[123X copies of [10XSource[110X( [3XmorC[103X ) to the formal coproduct
+  of [23Xl[123X copies of [10XRange[110X( [3XmorC[103X ), where [23Xl :=[123X [10XObjectDatum[110X( [3XobjH[103X ).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(o)[x:o->o]" );[127X[104X
+    [4X[28Xq(o)[x:o->o][128X[104X
+    [4X[25Xgap>[125X [27XF := FreeCategory( q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQF := Q[F];[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XA := QF / [ QF.xxx ];[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27Xo := A.o;[127X[104X
+    [4X[28X<(o)>[128X[104X
+    [4X[25Xgap>[125X [27Xx := A.x;[127X[104X
+    [4X[28X(o)-[{ 1*(x) }]->(o)[128X[104X
+    [4X[25Xgap>[125X [27XQmat := RangeCategoryOfHomomorphismStructure( A );[127X[104X
+    [4X[28XRows( Q )[128X[104X
+    [4X[25Xgap>[125X [27XU := 3 / Qmat;[127X[104X
+    [4X[28X<A row module over Q of rank 3>[128X[104X
+    [4X[25Xgap>[125X [27Xphi := HomalgMatrix( [ 0,1,0, 0,0,1, 0,0,0 ], 3, 3, Q ) / Qmat;[127X[104X
+    [4X[28X<A morphism in Rows( Q )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( phi );[127X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  0,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  1 ],[128X[104X
+    [4X[28X  [  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[25Xgap>[125X [27XPSh := PreSheaves( A );[127X[104X
+    [4X[28XPreSheaves( Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) )[128X[104X
+    [4X[28X/ relations, Rows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27XMphi := CreatePreSheafByValues( PSh, Pair( [ U ], [ phi ] ) );[127X[104X
+    [4X[28X<(o)->3; (x)->3x3>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Mphi );[127X[104X
+    [4X[28XImage of <(o)>:[128X[104X
+    [4X[28XA row module over Q of rank 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (o)-[{ 1*(x) }]->(o):[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  0,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  1 ],[128X[104X
+    [4X[28X  [  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves([128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations,[128X[104X
+    [4X[28XRows( Q ) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XMphi_as_coequqlizer_pair := CoYonedaLemmaOnObjects( Mphi );[127X[104X
+    [4X[28X<An object in PairOfParallelArrowsCategory( Additive closure([128X[104X
+    [4X[28X Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Mphi_as_coequqlizer_pair );[127X[104X
+    [4X[28XImage of <(V)>:[128X[104X
+    [4X[28XA formal direct sum consisting of 3 objects.[128X[104X
+    [4X[28X<(o)>[128X[104X
+    [4X[28X<(o)>[128X[104X
+    [4X[28X<(o)>[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(A)>:[128X[104X
+    [4X[28XA formal direct sum consisting of 3 objects.[128X[104X
+    [4X[28X<(o)>[128X[104X
+    [4X[28X<(o)>[128X[104X
+    [4X[28X<(o)>[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (V)-[(s)]->(A):[128X[104X
+    [4X[28XA 3 x 3 matrix with entries in[128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[1,1]: (o)-[{ 0 }]->(o)[128X[104X
+    [4X[28X[1,2]: (o)-[{ 1*(o) }]->(o)[128X[104X
+    [4X[28X[1,3]: (o)-[{ 0 }]->(o)[128X[104X
+    [4X[28X[2,1]: (o)-[{ 0 }]->(o)[128X[104X
+    [4X[28X[2,2]: (o)-[{ 0 }]->(o)[128X[104X
+    [4X[28X[2,3]: (o)-[{ 1*(o) }]->(o)[128X[104X
+    [4X[28X[3,1]: (o)-[{ 0 }]->(o)[128X[104X
+    [4X[28X[3,2]: (o)-[{ 0 }]->(o)[128X[104X
+    [4X[28X[3,3]: (o)-[{ 0 }]->(o)[128X[104X
+    [4X[28XImage of (V)-[(t)]->(A):[128X[104X
+    [4X[28XA 3 x 3 matrix with entries in[128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[1,1]: (o)-[{ 1*(x) }]->(o)[128X[104X
+    [4X[28X[1,2]: (o)-[{ 0 }]->(o)[128X[104X
+    [4X[28X[1,3]: (o)-[{ 0 }]->(o)[128X[104X
+    [4X[28X[2,1]: (o)-[{ 0 }]->(o)[128X[104X
+    [4X[28X[2,2]: (o)-[{ 1*(x) }]->(o)[128X[104X
+    [4X[28X[2,3]: (o)-[{ 0 }]->(o)[128X[104X
+    [4X[28X[3,1]: (o)-[{ 0 }]->(o)[128X[104X
+    [4X[28X[3,2]: (o)-[{ 0 }]->(o)[128X[104X
+    [4X[28X[3,3]: (o)-[{ 1*(x) }]->(o)[128X[104X
+    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),[128X[104X
+    [4X[28XAdditive closure( Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) /[128X[104X
+    [4X[28Xrelations ) ) given by the above data[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PairOfParallelArrowsCategory( Additive closure([128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xphi_in_additive_closure :=[127X[104X
+    [4X[25X>[125X [27X  TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure( o, phi );[127X[104X
+    [4X[28X<A morphism in Additive closure([128X[104X
+    [4X[28X Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations )[128X[104X
+    [4X[28X defined by a 3 x 3 matrix of underlying morphisms>[128X[104X
+    [4X[25Xgap>[125X [27Xx_in_additive_closure :=[127X[104X
+    [4X[25X>[125X [27X  TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure( x, U );[127X[104X
+    [4X[28X<A morphism in Additive closure([128X[104X
+    [4X[28X Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations )[128X[104X
+    [4X[28X defined by a 3 x 3 matrix of underlying morphisms>[128X[104X
+    [4X[25Xgap>[125X [27XMphi_as_coequqlizer_pair.s = phi_in_additive_closure;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMphi_as_coequqlizer_pair.t = x_in_additive_closure;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  

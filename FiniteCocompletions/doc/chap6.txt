@@ -27,13 +27,13 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XFinBouquets;[127X[104X
     [4X[28XFinBouquets[128X[104X
-    [4X[25Xgap>[125X [27XCbar := ModelingCategory( FinBouquets );[127X[104X
+    [4X[25Xgap>[125X [27XChat := ModelingCategory( FinBouquets );[127X[104X
     [4X[28XFiniteCocompletion( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XCbar2 := CategoryOfColimitQuivers([127X[104X
+    [4X[25Xgap>[125X [27XCcqv := CategoryOfColimitQuivers([127X[104X
     [4X[25X>[125X [27X                 UnderlyingCategory( FinBouquets ) );[127X[104X
     [4X[28XCategoryOfColimitQuivers([128X[104X
     [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XP := Cbar2.P;[127X[104X
+    [4X[25Xgap>[125X [27XP := Ccqv.P;[127X[104X
     [4X[28X<A projective object in CategoryOfColimitQuivers([128X[104X
     [4X[28X FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
@@ -41,7 +41,7 @@
     [4X[28X[128X[104X
     [4X[28XAn object in CategoryOfColimitQuivers([128X[104X
     [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XL := Cbar2.L;[127X[104X
+    [4X[25Xgap>[125X [27XL := Ccqv.L;[127X[104X
     [4X[28X<A projective object in CategoryOfColimitQuivers([128X[104X
     [4X[28X FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( L );[127X[104X
@@ -49,7 +49,7 @@
     [4X[28X[128X[104X
     [4X[28XAn object in CategoryOfColimitQuivers([128X[104X
     [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27Xb := Cbar2.b;[127X[104X
+    [4X[25Xgap>[125X [27Xb := Ccqv.b;[127X[104X
     [4X[28X<A morphism in CategoryOfColimitQuivers([128X[104X
     [4X[28X FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( b );[127X[104X
@@ -67,303 +67,61 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in CategoryOfColimitQuivers([128X[104X
     [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27Xsource_bouquet := CreateBouquet( 3, [ 0, 0, 1 ] );[127X[104X
+    [4X[25Xgap>[125X [27XF := CreateBouquet( 3, [ 0, 0, 0, 2 ] );[127X[104X
     [4X[28X<An object in FinBouquets>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( source_bouquet );[127X[104X
-    [4X[28X( { 0, 1, 2 }, { 0 ↦ 0, 1 ↦ 0, 2 ↦ 1 } )[128X[104X
-    [4X[25Xgap>[125X [27Xsource_presheaf := ModelingObject( Cbar,[127X[104X
-    [4X[25X>[125X [27X                           ModelingObject( FinBouquets, source_bouquet ) );[127X[104X
-    [4X[28X<An object in[128X[104X
-    [4X[28X PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>[128X[104X
-    [4X[25Xgap>[125X [27Xsource_colimit_quiver := CoYonedaLemmaOnObjects( source_presheaf );[127X[104X
-    [4X[28X<An object in CategoryOfColimitQuivers([128X[104X
-    [4X[28X FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( source_colimit_quiver );[127X[104X
-    [4X[28X[ [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)> ],[128X[104X
-    [4X[28X  [ [ 0, (P)-[(b)]->(L), 3 ], [ 0, (P)-[(b)]->(L), 4 ],[128X[104X
-    [4X[28X    [ 1, (P)-[(b)]->(L), 5 ] ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in CategoryOfColimitQuivers([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( source_colimit_quiver );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xsource_coeq_pair :=[127X[104X
-    [4X[25X>[125X [27X  ModelingObject( CapCategory( source_colimit_quiver ), source_colimit_quiver );[127X[104X
-    [4X[28X<An object in PairOfParallelArrowsCategory([128X[104X
-    [4X[28X FiniteStrictCoproductCocompletion([128X[104X
-    [4X[28X FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( source_coeq_pair );[127X[104X
-    [4X[28XImage of <(V)>:[128X[104X
-    [4X[28X[ 6, [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)> ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in FiniteStrictCoproductCocompletion( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of <(A)>:[128X[104X
-    [4X[28X[ 3, [ <(P)>, <(P)>, <(P)> ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in FiniteStrictCoproductCocompletion( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of (V)-[(s)]->(A):[128X[104X
-    [4X[28X{ 0, 1, 2 } ⱶ[ 0, 0, 1 ]→ { 0,..., 5 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X[ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P) ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in FiniteStrictCoproductCocompletion( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of (V)-[(t)]->(A):[128X[104X
-    [4X[28X{ 0, 1, 2 } ⱶ[ 3, 4, 5 ]→ { 0,..., 5 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X[ (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L) ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in FiniteStrictCoproductCocompletion( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),[128X[104X
-    [4X[28XFiniteStrictCoproductCocompletion([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in PairOfParallelArrowsCategory([128X[104X
-    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XReinterpretationOfObject( CapCategory( source_colimit_quiver ),[127X[104X
-    [4X[25X>[125X [27X        source_coeq_pair ) = source_colimit_quiver;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xtarget_bouquet := CreateBouquet( 2, [ 0, 0, 0, 0, 1 ] );[127X[104X
-    [4X[28X<An object in FinBouquets>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( target_bouquet );[127X[104X
-    [4X[28X( { 0, 1 }, { 0 ↦ 0, 1 ↦ 0, 2 ↦ 0, 3 ↦ 0, 4 ↦ 1 } )[128X[104X
-    [4X[25Xgap>[125X [27Xtarget_presheaf := ModelingObject( Cbar,[127X[104X
-    [4X[25X>[125X [27X                           ModelingObject( FinBouquets, target_bouquet ) );[127X[104X
-    [4X[28X<An object in[128X[104X
-    [4X[28X PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>[128X[104X
-    [4X[25Xgap>[125X [27Xtarget_colimit_quiver := CoYonedaLemmaOnObjects( target_presheaf );[127X[104X
-    [4X[28X<An object in CategoryOfColimitQuivers([128X[104X
-    [4X[28X FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( target_colimit_quiver );[127X[104X
-    [4X[28X[ [ <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)>, <(L)> ],[128X[104X
-    [4X[28X  [ [ 0, (P)-[(b)]->(L), 2 ], [ 0, (P)-[(b)]->(L), 3 ],[128X[104X
-    [4X[28X    [ 0, (P)-[(b)]->(L), 4 ], [ 0, (P)-[(b)]->(L), 5 ],[128X[104X
-    [4X[28X    [ 1, (P)-[(b)]->(L), 6 ] ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in CategoryOfColimitQuivers([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )[128X[104X
-    [4X[28Xgiven by the above data[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( target_colimit_quiver );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xtarget_coeq_pair :=[127X[104X
-    [4X[25X>[125X [27X  ModelingObject( CapCategory( target_colimit_quiver ), target_colimit_quiver );[127X[104X
-    [4X[28X<An object in PairOfParallelArrowsCategory([128X[104X
-    [4X[28X FiniteStrictCoproductCocompletion([128X[104X
-    [4X[28X FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( target_coeq_pair );[127X[104X
-    [4X[28XImage of <(V)>:[128X[104X
-    [4X[28X[ 7, [ <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)>, <(L)> ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in FiniteStrictCoproductCocompletion( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of <(A)>:[128X[104X
-    [4X[28X[ 5, [ <(P)>, <(P)>, <(P)>, <(P)>, <(P)> ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in FiniteStrictCoproductCocompletion( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of (V)-[(s)]->(A):[128X[104X
-    [4X[28X{ 0,..., 4 } ⱶ[ 0, 0, 0, 0, 1 ]→ { 0,..., 6 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X[ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P) ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in FiniteStrictCoproductCocompletion( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of (V)-[(t)]->(A):[128X[104X
-    [4X[28X{ 0,..., 4 } ⱶ[ 2, 3, 4, 5, 6 ]→ { 0,..., 6 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X[ (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L) ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in FiniteStrictCoproductCocompletion( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),[128X[104X
-    [4X[28XFiniteStrictCoproductCocompletion([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in PairOfParallelArrowsCategory([128X[104X
-    [4X[28XFiniteStrictCoproductCocompletion( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XReinterpretationOfObject( CapCategory( target_colimit_quiver ),[127X[104X
-    [4X[25X>[125X [27X        target_coeq_pair ) = target_colimit_quiver;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xbouquet_morphism := CreateBouquetMorphism([127X[104X
-    [4X[25X>[125X [27X                            source_bouquet,[127X[104X
-    [4X[25X>[125X [27X                            [ 0, 1, 1 ], [ 1, 3, 4 ],[127X[104X
-    [4X[25X>[125X [27X                            target_bouquet );[127X[104X
-    [4X[28X<A morphism in FinBouquets>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( bouquet_morphism );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xpresheaf_morphism := ModelingMorphism( Cbar,[127X[104X
-    [4X[25X>[125X [27X                             ModelingMorphism( FinBouquets, bouquet_morphism ) );[127X[104X
-    [4X[28X<A morphism in[128X[104X
-    [4X[28X PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>[128X[104X
-    [4X[25Xgap>[125X [27Xcolimit_quiver_morphism := CoYonedaLemmaOnMorphisms( presheaf_morphism );[127X[104X
-    [4X[28X<A morphism in CategoryOfColimitQuivers([128X[104X
-    [4X[28X FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( colimit_quiver_morphism );[127X[104X
-    [4X[28XSource: [ [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)> ],[128X[104X
-    [4X[28X        [ [ 0, (P)-[(b)]->(L), 3 ], [ 0, (P)-[(b)]->(L), 4 ],[128X[104X
-    [4X[28X          [ 1, (P)-[(b)]->(L), 5 ] ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in CategoryOfColimitQuivers([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XDatum:  [ [ [ 0, 1, 1, 3, 5, 6 ],[128X[104X
-    [4X[28X            [ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P),[128X[104X
-    [4X[28X              (L)-[(L)]->(L), (L)-[(L)]->(L), (L)-[(L)]->(L) ] ],[128X[104X
-    [4X[28X          [ 1, 3, 4 ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XRange:  [ [ <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)>, <(L)> ],[128X[104X
-    [4X[28X          [ [ 0, (P)-[(b)]->(L), 2 ], [ 0, (P)-[(b)]->(L), 3 ],[128X[104X
-    [4X[28X            [ 0, (P)-[(b)]->(L), 4 ], [ 0, (P)-[(b)]->(L), 5 ],[128X[104X
-    [4X[28X            [ 1, (P)-[(b)]->(L), 6 ] ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in CategoryOfColimitQuivers([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfColimitQuivers([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( colimit_quiver_morphism );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcoeq_pair_morphism :=[127X[104X
-    [4X[25X>[125X [27X  ModelingMorphism( CapCategory( colimit_quiver_morphism ), colimit_quiver_morphism );[127X[104X
-    [4X[28X<A morphism in PairOfParallelArrowsCategory([128X[104X
-    [4X[28X FiniteStrictCoproductCocompletion([128X[104X
-    [4X[28X FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( coeq_pair_morphism );[127X[104X
-    [4X[28XImage of <(V)>:[128X[104X
-    [4X[28X{ 0,..., 5 } ⱶ[ 0, 1, 1, 3, 5, 6 ]→ { 0,..., 6 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X[ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P),[128X[104X
-    [4X[28X  (L)-[(L)]->(L), (L)-[(L)]->(L), (L)-[(L)]->(L) ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in FiniteStrictCoproductCocompletion( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of <(A)>:[128X[104X
-    [4X[28X{ 0, 1, 2 } ⱶ[ 1, 3, 4 ]→ { 0,..., 4 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X[ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P) ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in FiniteStrictCoproductCocompletion( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),[128X[104X
-    [4X[28XFiniteStrictCoproductCocompletion([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in PairOfParallelArrowsCategory([128X[104X
-    [4X[28XFiniteStrictCoproductCocompletion([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XReinterpretationOfMorphism( CapCategory( colimit_quiver_morphism ),[127X[104X
-    [4X[25X>[125X [27X        source_colimit_quiver,[127X[104X
-    [4X[25X>[125X [27X        coeq_pair_morphism,[127X[104X
-    [4X[25X>[125X [27X        target_colimit_quiver ) = colimit_quiver_morphism;[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDelta1 := SimplicialCategoryTruncatedInDegree( 1 );[127X[104X
-    [4X[28XFreeCategory( RightQuiver([128X[104X
-    [4X[28X"Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ][128X[104X
-    [4X[25Xgap>[125X [27XSize( Delta1 );[127X[104X
-    [4X[28X7[128X[104X
-    [4X[25Xgap>[125X [27XPSh := PreSheaves( Delta1 );[127X[104X
-    [4X[28XPreSheaves( FreeCategory( RightQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],[128X[104X
-    [4X[28XSkeletalFinSets )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( PSh.C1 );[127X[104X
-    [4X[28XImage of <(C0)>:[128X[104X
-    [4X[28X{ 0, 1 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of <(C1)>:[128X[104X
-    [4X[28X{ 0, 1, 2 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of (C1)-[(id)]->(C0):[128X[104X
-    [4X[28X{ 0, 1 } ⱶ[ 1, 2 ]→ { 0, 1, 2 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of (C0)-[(s)]->(C1):[128X[104X
-    [4X[28X{ 0, 1, 2 } ⱶ[ 0, 0, 1 ]→ { 0, 1 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of (C0)-[(t)]->(C1):[128X[104X
-    [4X[28X{ 0, 1, 2 } ⱶ[ 1, 0, 1 ]→ { 0, 1 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver([128X[104X
-    [4X[28X"Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],[128X[104X
-    [4X[28XSkeletalFinSets ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27Xquiver := CoYonedaLemmaOnObjects( PSh.C1 );[127X[104X
-    [4X[28X<An object in CategoryOfColimitQuivers([128X[104X
-    [4X[28X FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )[128X[104X
-    [4X[28X / [ s*id = C0, t*id = C0 ] )>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( quiver );[127X[104X
-    [4X[28X[ [ <(C0)>, <(C0)>, <(C1)>, <(C1)>, <(C1)> ],[128X[104X
-    [4X[28X  [ [ 3, (C1)-[(id)]->(C0), 0 ], [ 4, (C1)-[(id)]->(C0), 1 ],[128X[104X
-    [4X[28X    [ 0, (C0)-[(s)]->(C1), 2 ], [ 0, (C0)-[(s)]->(C1), 3 ],[128X[104X
-    [4X[28X    [ 1, (C0)-[(s)]->(C1), 4 ], [ 1, (C0)-[(t)]->(C1), 2 ],[128X[104X
-    [4X[28X    [ 0, (C0)-[(t)]->(C1), 3 ], [ 1, (C0)-[(t)]->(C1), 4 ] ] ][128X[104X
-    [4X[28XAn object in CategoryOfColimitQuivers([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )[128X[104X
-    [4X[28X/ [ s*id = C0, t*id = C0 ] )[128X[104X
-    [4X[28Xgiven by the above data[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( quiver );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xq := SomeDiagramOfRepresentables( PSh.C1 );;[127X[104X
-    [4X[25Xgap>[125X [27Xcolimit := Colimit( q );[127X[104X
-    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver([128X[104X
-    [4X[28X "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],[128X[104X
-    [4X[28XSkeletalFinSets )>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( colimit );[127X[104X
-    [4X[28XImage of <(C0)>:[128X[104X
-    [4X[28X{ 0, 1 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of <(C1)>:[128X[104X
-    [4X[28X{ 0, 1, 2 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of (C1)-[(id)]->(C0):[128X[104X
-    [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1, 2 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of (C0)-[(s)]->(C1):[128X[104X
-    [4X[28X{ 0, 1, 2 } ⱶ[ 0, 1, 0 ]→ { 0, 1 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XImage of (C0)-[(t)]->(C1):[128X[104X
-    [4X[28X{ 0, 1, 2 } ⱶ[ 0, 1, 1 ]→ { 0, 1 }[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver([128X[104X
-    [4X[28X"Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],[128X[104X
-    [4X[28XSkeletalFinSets ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27Xcolimit2 := Coequalizer( ColimitPair( PSh, q[1], q[2] )[2] );[127X[104X
-    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver([128X[104X
-    [4X[28X "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],[128X[104X
-    [4X[28XSkeletalFinSets )>[128X[104X
-    [4X[25Xgap>[125X [27Xcolimit2 = colimit;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xiso := Filtered( MorphismsOfExternalHom( PSh.C1, colimit ), IsIsomorphism )[1];[127X[104X
-    [4X[28X<An isomorphism in PreSheaves( FreeCategory( RightQuiver([128X[104X
-    [4X[28X "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( F );[127X[104X
+    [4X[28X( { 0, 1, 2 }, { 0 ↦ 0, 1 ↦ 0, 2 ↦ 0, 3 ↦ 2 } )[128X[104X
+    [4X[25Xgap>[125X [27XF_as_presheaf := ModelingObject( Chat, ModelingObject( FinBouquets, F ) );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ),[128X[104X
     [4X[28X SkeletalFinSets )>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( iso );[127X[104X
-    [4X[28XImage of <(C0)>:[128X[104X
-    [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
+    [4X[25Xgap>[125X [27XF_as_coequalizer_pair := CoYonedaLemmaOnObjects( F_as_presheaf );[127X[104X
+    [4X[28X<An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( F_as_coequalizer_pair );[127X[104X
+    [4X[28XImage of <(V)>:[128X[104X
+    [4X[28X[ 7, [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)> ] ][128X[104X
     [4X[28X[128X[104X
-    [4X[28XImage of <(C1)>:[128X[104X
-    [4X[28X{ 0, 1, 2 } ⱶ[ 2, 0, 1 ]→ { 0, 1, 2 }[128X[104X
+    [4X[28XAn object in FiniteStrictCoproductCocompletion( FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver([128X[104X
-    [4X[28X"Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],[128X[104X
-    [4X[28XSkeletalFinSets ) given by the above data[128X[104X
+    [4X[28XImage of <(A)>:[128X[104X
+    [4X[28X[ 4, [ <(P)>, <(P)>, <(P)>, <(P)> ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FiniteStrictCoproductCocompletion( FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (V)-[(s)]->(A):[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 0, 0, 0, 2 ]→ { 0,..., 6 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P) ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in FiniteStrictCoproductCocompletion( FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (V)-[(t)]->(A):[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 3, 4, 5, 6 ]→ { 0,..., 6 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[ (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L) ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in FiniteStrictCoproductCocompletion( FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),[128X[104X
+    [4X[28XFiniteStrictCoproductCocompletion([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PairOfParallelArrowsCategory( FiniteStrictCoproductCocompletion([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XF_as_colimit_quiver := ReinterpretationOfObject( Ccqv, F_as_coequalizer_pair );[127X[104X
+    [4X[28X<An object in CategoryOfColimitQuivers([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( F_as_colimit_quiver );[127X[104X
+    [4X[28X[ [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)> ],[128X[104X
+    [4X[28X  [ [ 0, (P)-[(b)]->(L), 3 ], [ 0, (P)-[(b)]->(L), 4 ],[128X[104X
+    [4X[28X    [ 0, (P)-[(b)]->(L), 5 ], [ 2, (P)-[(b)]->(L), 6 ] ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in CategoryOfColimitQuivers([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
   [4X[32X[104X
   
   [1X6.2-2 CreateColimitQuiver[101X
