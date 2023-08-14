@@ -193,6 +193,7 @@
 #! * <Ref BookName="CAP" Func="Lift" Label="for Is" />
 #! * <Ref BookName="CAP" Func="LiftAlongMonomorphism" Label="for Is" />
 #! * <Ref BookName="CategoryConstructor" Func="Limit" Label="for Is" />
+#! * <Ref BookName="CAP" Func="LinearCombinationOfMorphisms" Label="for Is" />
 #! * <Ref BookName="CategoryConstructor" Func="MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MonoidalPostComposeMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MonoidalPostComposeMorphismWithGivenObjects" Label="for Is" />
