@@ -5,18 +5,18 @@
 gap> LoadPackage( "FinSetsForCAP", "2022.11-06", false );
 true
 gap> Length( ListInstalledOperationsOfCategory( SkeletalFinSets ) );
-313
+315
 gap> BooleanAlgebras := Opposite( SkeletalFinSets );
 Opposite( SkeletalFinSets )
 gap> Length( ListPrimitivelyInstalledOperationsOfCategory( BooleanAlgebras ) );
-240
+242
 gap> Length( ListInstalledOperationsOfCategory( BooleanAlgebras ) );
-258
+260
 gap> Opposite( BooleanAlgebras );
 SkeletalFinSets
 gap> FS := Opposite( WrapperCategory( BooleanAlgebras, rec( ) ) );
 Opposite( WrapperCategory( Opposite( SkeletalFinSets ) ) )
 gap> Length( ListPrimitivelyInstalledOperationsOfCategory( FS ) );
-242
+244
 gap> Length( ListInstalledOperationsOfCategory( FS ) );
-258
+260
