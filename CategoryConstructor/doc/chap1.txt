@@ -33,7 +33,7 @@
     [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
     [4X[28XA CAP category with name SkeletalFinSets:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X59 primitive operations were used to derive 313 operations for this category[128X[104X
+    [4X[28X59 primitive operations were used to derive 315 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
@@ -63,7 +63,7 @@
     [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
     [4X[28XA CAP category with name WrapperCategory( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X296 primitive operations were used to derive 306 operations for this category[128X[104X
+    [4X[28X298 primitive operations were used to derive 308 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
@@ -91,7 +91,7 @@
     [4X[25Xgap>[125X [27XDisplay( O );[127X[104X
     [4X[28XA CAP category with name Opposite( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X240 primitive operations were used to derive 258 operations for this category[128X[104X
+    [4X[28X242 primitive operations were used to derive 260 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsFiniteCocompleteCategory[128X[104X
@@ -170,7 +170,7 @@
     [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
     [4X[28XA CAP category with name SkeletalFinSets:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X59 primitive operations were used to derive 313 operations for this category[128X[104X
+    [4X[28X59 primitive operations were used to derive 315 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
@@ -200,7 +200,7 @@
     [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
     [4X[28XA CAP category with name WrapperCategory( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X296 primitive operations were used to derive 306 operations for this category[128X[104X
+    [4X[28X298 primitive operations were used to derive 308 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
@@ -228,7 +228,7 @@
     [4X[25Xgap>[125X [27XDisplay( O );[127X[104X
     [4X[28XA CAP category with name Opposite( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X240 primitive operations were used to derive 258 operations for this category[128X[104X
+    [4X[28X242 primitive operations were used to derive 260 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsFiniteCocompleteCategory[128X[104X
