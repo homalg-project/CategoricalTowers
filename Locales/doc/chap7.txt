@@ -65,7 +65,6 @@
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsDiscreteCategory[128X[104X
-    [4X[28X* IsSkeletalCategory[128X[104X
     [4X[25Xgap>[125X [27Xone := 1 / D;[127X[104X
     [4X[28X<An object in DiscreteSkeletalCategory( "IsPosInt" )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( one );[127X[104X

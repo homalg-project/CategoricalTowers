@@ -83,10 +83,6 @@ A CAP category with name IntervalCategory:
 19 primitive operations were used to derive 302 operations for this category which algorithmically
 * IsEquippedWithHomomorphismStructure
 * IsBooleanAlgebra
-and furthermore mathematically
-* IsSkeletalCategory
-* IsStrictCartesianCategory
-* IsStrictCocartesianCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjects( IntervalCategory );</span>
 [ &lt;(⊥)&gt;, &lt;(⊤)&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( IntervalCategory );</span>
@@ -101,9 +97,9 @@ which algorithmically
 * IsEquippedWithHomomorphismStructure
 * IsCodistributiveCategory
 * IsDistributiveCategory
-and furthermore mathematically
-* IsBicartesianClosedCategory (but not yet algorithmically)
-* IsBicartesianCoclosedCategory (but not yet algorithmically)
+and not yet algorithmically
+* IsBicartesianClosedCategory
+* IsBicartesianCoclosedCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := YonedaEmbeddingOfSourceCategory( PSh );</span>
 Yoneda embedding functor
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := Y( TerminalObject( IntervalCategory ) );</span>
