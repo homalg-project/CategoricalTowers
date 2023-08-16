@@ -1596,6 +1596,7 @@ InstallOtherMethod( CapFunctor,
                   s,
                   List( DecompositionOfMorphismInAlgebroid( mor ),
                             p -> p[1] * PreComposeList( C,
+                                            s,
                                             List( p[2],
                                               function ( w )
                                                 if IsEqualToIdentityMorphism( w ) then
@@ -1603,7 +1604,8 @@ InstallOtherMethod( CapFunctor,
                                                 else
                                                       return images_of_generating_morphisms[Position( SetOfGeneratingMorphisms( B ), w )];
                                                 fi;
-                                              end ) ) ),
+                                              end ),
+                                            r ) ),
                   r );
         
     end );

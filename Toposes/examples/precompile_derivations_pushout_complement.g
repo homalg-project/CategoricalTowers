@@ -26,9 +26,9 @@ has_pushout_complement := function( cat, f, x )
     
     rpc := EmbeddingOfRelativePseudoComplementSubobject( cat, ## this is the only line in which we need relativ pseudo-complements
                       EmbeddingOfRelationInDirectProduct( Rel, x_i_Omega_A ),
-                      EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, [ x_i, f_i, Omega_X ] ) ) );
+                      EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, Range( xx ), [ x_i, f_i, Omega_X ], Range( Omega_X ) ) ) );
     
-    Omega_D := MaximalRelationIntoTerminalObject( Rel, ObjectConstructor( Rel, Range( x ) ) );
+    Omega_D := MaximalRelationIntoTerminalObject( Rel, Range( xx ) );
     
     PC1 :=
       IsEqualAsSubobjects( cat,
@@ -44,7 +44,7 @@ has_pushout_complement := function( cat, f, x )
                    EmbeddingOfRelationInDirectProduct( Rel, PreCompose( Rel, xx, x_i ) ),
                    EmbeddingOfUnionSubobject( cat, ## already exists in categories with coproducts
                            EmbeddingOfRelationInDirectProduct( Rel, AsMorphismInCategoryOfRelations( Rel, IdentityMorphism( cat, A ) ) ),
-                           EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, [ f_i, Omega_X, PseudoInverse( Rel, Omega_X ), ff ] ) ) ) );
+                           EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, Range( ff ), [ f_i, Omega_X, PseudoInverse( Rel, Omega_X ), ff ], Range( ff ) ) ) ) );
     
     return PC2;
     
@@ -75,7 +75,7 @@ pushout_complement := function( cat, f, x )
     
     rpc := EmbeddingOfRelativePseudoComplementSubobject( cat, ## this is the only line in which we need relative pseudo-complements
                    EmbeddingOfRelationInDirectProduct( Rel, x_i_Omega_A ),
-                   EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, [ x_i, f_i, Omega_X ] ) ) );
+                   EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, Range( xx ), [ x_i, f_i, Omega_X ], Range( Omega_X ) ) ) );
     
     i := PreCompose( cat,
                  rpc,
