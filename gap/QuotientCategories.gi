@@ -216,6 +216,8 @@ InstallMethod( QuotientCategory,
                          return Concatenation( "UnderlyingCell( i_arg[", String( j ), "] )" );
                      elif type in [ "list_of_objects", "list_of_morphisms" ] then
                          return Concatenation( "List( i_arg[", String( j ), "], UnderlyingCell )" );
+                     elif type = "list_of_lists_of_morphisms" then
+                         return Concatenation( "List( i_arg[", String( j ), "], x -> List( x, y -> UnderlyingCell( y ) ) )" );
                      else
                          Error( "can only deal with \"integer\", \"object\", \"morphism\", \"list_of_objects\", \"list_of_morphisms\"" );
                      fi;
