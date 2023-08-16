@@ -200,9 +200,9 @@
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsCodistributiveCategory[128X[104X
     [4X[28X* IsDistributiveCategory[128X[104X
-    [4X[28Xand furthermore mathematically[128X[104X
-    [4X[28X* IsBicartesianClosedCategory (but not yet algorithmically)[128X[104X
-    [4X[28X* IsBicartesianCoclosedCategory (but not yet algorithmically)[128X[104X
+    [4X[28Xand not yet algorithmically[128X[104X
+    [4X[28X* IsBicartesianClosedCategory[128X[104X
+    [4X[28X* IsBicartesianCoclosedCategory[128X[104X
     [4X[25Xgap>[125X [27Xf := PSh.f;[127X[104X
     [4X[28X<A projective object in PreSheaves( PosetOfCategory( FreeCategory([128X[104X
     [4X[28X RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),[128X[104X
