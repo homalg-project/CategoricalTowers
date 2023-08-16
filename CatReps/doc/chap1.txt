@@ -45,7 +45,7 @@
     [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
     [4X[28XCategory of matrices over GF(3) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X102 primitive operations were used to derive 356 operations for this category[128X[104X
+    [4X[28X103 primitive operations were used to derive 356 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
