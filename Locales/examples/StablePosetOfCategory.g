@@ -24,11 +24,6 @@ Display( P );
 #! * IsEquippedWithHomomorphismStructure
 #! * IsClosedMonoidalLattice
 #! * IsSymmetricClosedMonoidalCategory
-#! and furthermore mathematically
-#! * IsSkeletalCategory
-#! * IsStrictCartesianCategory
-#! * IsStrictCocartesianCategory
-#! * IsStrictMonoidalCategory
 L := StablePosetOfCategory( P );
 #! StablePosetOfCategory( PosetOfCategory(
 #! SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )
@@ -44,11 +39,7 @@ Display( L );
 #! * IsClosedMonoidalLattice
 #! * IsSymmetricClosedMonoidalCategory
 #! and furthermore mathematically
-#! * IsSkeletalCategory
 #! * IsStableProset
-#! * IsStrictCartesianCategory
-#! * IsStrictCocartesianCategory
-#! * IsStrictMonoidalCategory
 I := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P / L;
 #! An object in the stable poset given by:
 #! An object in the poset given by:

@@ -11,10 +11,10 @@ Display( PSh );
 #! A CAP category with name PreSheaves( SkeletalFinSets, SkeletalFinSets ):
 #! 
 #! 43 primitive operations were used to derive 142 operations for this category
-#! which mathematically
-#! * IsDistributiveCategory (but not yet algorithmically)
-#! * IsFiniteCocompleteCategory (but not yet algorithmically)
-#! * IsFiniteCompleteCategory (but not yet algorithmically)
+#! which not yet algorithmically
+#! * IsFiniteCocompleteCategory
+#! * IsFiniteCompleteCategory
+#! * IsDistributiveCategory
 CheckConstructivenessOfCategory( PSh, "IsElementaryTopos" );
 #! [ "CartesianCoevaluationMorphismWithGivenRange",
 #!   "CartesianEvaluationMorphismWithGivenSource",
