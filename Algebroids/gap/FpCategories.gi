@@ -1618,8 +1618,8 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
         [ IsCapCategory and IsFinite ],
         
   function ( B )
-    local A, sFinSets, B0, N0, D00, N0N0, p21, p22, B1, N1, d, id, pi2, s, t,
-          D000, N0N0N0, p31, p32, p33, B2, N2, T, ds, is, dt, it,
+    local A, sFinSets, B0, N0, D00, N0N0, p21, p22, B1, N1, N1_elements, d, id, pi2, s, t,
+          D000, N0N0N0, p31, p32, p33, B2, N2, N2_elements, T, ds, is, dt, it,
           p312, p323, p313, pi3, pi312, pi323, pi313, ps, pt, mus, mus1, mus2, mus3, mu;
     
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
@@ -1635,8 +1635,8 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     N0N0 := DirectProduct( sFinSets, D00 );
     
     ## N0 × N0 -> N0
-    p21 := ProjectionInFactorOfDirectProduct( sFinSets, D00, 1 );
-    p22 := ProjectionInFactorOfDirectProduct( sFinSets, D00, 2 );
+    p21 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( sFinSets, D00, 1, N0N0 );
+    p22 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( sFinSets, D00, 2, N0N0 );
     
     B1 := List( N0N0, i ->
                 HomomorphismStructureOnObjects( B,
@@ -1645,10 +1645,13 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     
     N1 := Coproduct( sFinSets, B1 );
     
+    N1_elements := ExactCoverWithGlobalElements( N1 );
+    
     ## N0 -> N0 × N0
-    d := EmbeddingOfEqualizer( sFinSets,
+    d := EmbeddingOfEqualizerWithGivenEqualizer( sFinSets,
                  N0N0,
-                 [ p21, p22 ] );
+                 [ p21, p22 ],
+                 N0 );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, d = UniversalMorphismIntoDirectProduct( sFinSets, D00, N0, [ IdentityMorphism( sFinSets, N0 ), IdentityMorphism( sFinSets, N0 ) ] ) );
@@ -1662,9 +1665,10 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
                                                IdentityMorphism( B,
                                                        B0[1 + i] ) ),
-                                       InjectionOfCofactorOfCoproduct( sFinSets,
+                                       InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                B1,
-                                               1 + AsList( d )[1 + i] ) ) )[1 + 0] ),
+                                               1 + AsList( d )[1 + i],
+                                               N1 ) ) )[1 + 0] ),
                   N1 );
     
     ## N1 -> N0 × N0
@@ -1687,9 +1691,9 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     N0N0N0 := DirectProduct( sFinSets, D000 );
     
     ## N0 × N0 × N0 -> N0
-    p31 := ProjectionInFactorOfDirectProduct( sFinSets, D000, 1 );
-    p32 := ProjectionInFactorOfDirectProduct( sFinSets, D000, 2 );
-    p33 := ProjectionInFactorOfDirectProduct( sFinSets, D000, 3 );
+    p31 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( sFinSets, D000, 1, N0N0N0 );
+    p32 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( sFinSets, D000, 2, N0N0N0 );
+    p33 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( sFinSets, D000, 3, N0N0N0 );
     
     B2 := List( N0N0N0, i ->
                 DirectProduct( sFinSets,
@@ -1702,15 +1706,18 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     
     N2 := Coproduct( sFinSets, B2 );
     
+    N2_elements := ExactCoverWithGlobalElements( N2 );
+    
     T := TerminalObject( sFinSets );
     
     ## N1 -> N0 × N0 -> N0 × N0 × N0
     ## this is elegant but needs a justification:
     ds := PreCompose( sFinSets,
                   pi2,
-                  EmbeddingOfEqualizer( sFinSets,
+                  EmbeddingOfEqualizerWithGivenEqualizer( sFinSets,
                           N0N0N0,
-                          [ p32, p33 ] ) );
+                          [ p32, p33 ],
+                          N0N0 ) );
     
     ## N1 -> N2
     is := MorphismConstructor( sFinSets,
@@ -1720,28 +1727,28 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                PreCompose( sFinSets,
                                        DirectProductFunctorial( sFinSets,
                                                [ LiftAlongMonomorphism( sFinSets,
-                                                       InjectionOfCofactorOfCoproduct( sFinSets,
+                                                       InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                                B1,
-                                                               1 + AsList( pi2 )[1 + i] ),
-                                                       MorphismConstructor( sFinSets,
-                                                               T,
-                                                               [ i ],
-                                                               N1 ) ),
+                                                               1 + AsList( pi2 )[1 + i],
+                                                               N1 ),
+                                                       N1_elements[1 + i] ),
                                                  InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
                                                          IdentityMorphism( B,
                                                                  B0[1 + AsList( t )[1 + i]] ) ) ] ),
-                                       InjectionOfCofactorOfCoproduct( sFinSets,
+                                       InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                B2,
-                                               1 + AsList( ds )[1 + i] ) ) )[1 + 0] ),
+                                               1 + AsList( ds )[1 + i],
+                                               N2 ) ) )[1 + 0] ),
                   N2 );
     
     ## N1 -> N0 × N0 -> N0 × N0 × N0
     ## this is elegant but needs a justification:
     dt := PreCompose( sFinSets,
                   pi2,
-                  EmbeddingOfEqualizer( sFinSets,
+                  EmbeddingOfEqualizerWithGivenEqualizer( sFinSets,
                           N0N0N0,
-                          [ p31, p32 ] ) );
+                          [ p31, p32 ],
+                          N0N0 ) );
     
     ## N1 -> N2
     it := MorphismConstructor( sFinSets,
@@ -1754,16 +1761,15 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                        IdentityMorphism( B,
                                                                B0[1 + AsList( s )[1 + i]] ) ),
                                                  LiftAlongMonomorphism( sFinSets,
-                                                         InjectionOfCofactorOfCoproduct( sFinSets,
+                                                         InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                                  B1,
-                                                                 1 + AsList( pi2 )[1 + i] ),
-                                                         MorphismConstructor( sFinSets,
-                                                                 T,
-                                                                 [ i ],
-                                                                 N1 ) ) ] ),
-                                       InjectionOfCofactorOfCoproduct( sFinSets,
+                                                                 1 + AsList( pi2 )[1 + i],
+                                                                 N1 ),
+                                                         N1_elements[1 + i] ) ] ),
+                                       InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                B2,
-                                               1 + AsList( dt )[1 + i] ) ) )[1 + 0] ),
+                                               1 + AsList( dt )[1 + i],
+                                               N2 ) ) )[1 + 0] ),
                   N2 );
     
     ## N0 × N0 × N0 -> N0 × N0
@@ -1798,19 +1804,19 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                         AsList(
                                PreComposeList( sFinSets,
                                        [ LiftAlongMonomorphism( sFinSets,
-                                               InjectionOfCofactorOfCoproduct( sFinSets,
-                                                       B2, 1 + AsList( pi3 )[1 + i] ),
-                                               MorphismConstructor( sFinSets,
-                                                       T,
-                                                       [ i ],
-                                                       N2 ) ),
+                                               InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
+                                                       B2,
+                                                       1 + AsList( pi3 )[1 + i],
+                                                       N2 ),
+                                               N2_elements[1 + i] ),
                                          ProjectionInFactorOfDirectProduct( sFinSets,
                                                  [ B1[1 + AsList( pi312 )[1 + i]],
                                                    B1[1 + AsList( pi323 )[1 + i]] ],
                                                  1 ),
-                                         InjectionOfCofactorOfCoproduct( sFinSets,
+                                         InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                  B1,
-                                                 1 + AsList( pi312 )[1 + i] ) ] ) )[1 + 0] ),
+                                                 1 + AsList( pi312 )[1 + i],
+                                                 N1 ) ] ) )[1 + 0] ),
                   N1 );
     
     ## N2 -> N1
@@ -1820,20 +1826,19 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                         AsList(
                                PreComposeList( sFinSets,
                                        [ LiftAlongMonomorphism( sFinSets,
-                                               InjectionOfCofactorOfCoproduct( sFinSets,
+                                               InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                        B2,
-                                                       1 + AsList( pi3 )[ 1 + i] ),
-                                               MorphismConstructor( sFinSets,
-                                                       T,
-                                                       [ i ],
-                                                       N2 ) ),
+                                                       1 + AsList( pi3 )[ 1 + i],
+                                                       N2 ),
+                                               N2_elements[1 + i] ),
                                          ProjectionInFactorOfDirectProduct( sFinSets,
                                                  [ B1[1 + AsList( pi312 )[1 + i]],
                                                    B1[1 + AsList( pi323 )[1 + i]] ],
                                                  2 ),
-                                         InjectionOfCofactorOfCoproduct( sFinSets,
+                                         InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                  B1,
-                                                 1 + AsList( pi323 )[1 + i] ) ] ) )[1 + 0] ),
+                                                 1 + AsList( pi323 )[1 + i],
+                                                 N1 ) ] ) )[1 + 0] ),
                   N1 );
     
     mus := List( N0N0N0, i ->
@@ -1895,17 +1900,16 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                         AsList(
                                PreComposeList( sFinSets,
                                        [ LiftAlongMonomorphism( sFinSets,
-                                               InjectionOfCofactorOfCoproduct( sFinSets,
+                                               InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                        B2,
-                                                       1 + AsList( pi3 )[1 + i] ),
-                                               MorphismConstructor( sFinSets,
-                                                       T,
-                                                       [ i ],
-                                                       N2 ) ),
+                                                       1 + AsList( pi3 )[1 + i],
+                                                       N2 ),
+                                               N2_elements[1 + i] ),
                                          mus3[1 + AsList( pi3 )[1 + i]],
-                                         InjectionOfCofactorOfCoproduct( sFinSets,
+                                         InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                  B1,
-                                                 1 + AsList( pi313 )[1 + i] ) ] ) )[1 + 0] ),
+                                                 1 + AsList( pi313 )[1 + i],
+                                                 N1 ) ] ) )[1 + 0] ),
                   N1 );
     
     return Pair( Triple( N0, N1, N2 ),
