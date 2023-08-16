@@ -24,8 +24,6 @@ gap> LoadPackage( "Toposes" );
 true
 gap> LoadPackage( "Locales" );
 true
-gap> LoadPackage( "ComplexesCategories" );
-true
 gap> LoadPackage( "FunctorCategories" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;

@@ -137,18 +137,7 @@ Display( P );
 #! An object in PreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1->1,
 #! a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) ) / relations, Rows( Q ) ) given by
 #! the above data
-CP := CreateComplex( ComplexesCategoryByCochains( PSh ), P, 0 );
-#! <An object in Complexes category by cochains( PreSheaves( Algebroid( Q,
-#! FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) )
-#! / relations, Rows( Q ) ) ) supported on the interval [ 0 ]>
-I_CP := InjectiveResolution( CP, true );
-#! <An object in Complexes category by cochains( PreSheaves( Algebroid( Q,
-#! FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) )
-#! / relations, Rows( Q ) ) ) supported on the interval [ 0 .. 1 ]>
-IsWellDefined( I_CP ) and CohomologySupport( I_CP ) = [ 0 ];
-#! true
-q := QuasiIsomorphismFromProjectiveResolution( CP, true );;
-IsWellDefined( q ) and IsQuasiIsomorphism( q );
+IsWellDefined( MonomorphismIntoSomeInjectiveObject( P ) );
 #! true
 #! @EndExample
 #! @EndChunk
