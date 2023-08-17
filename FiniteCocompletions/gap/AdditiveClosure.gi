@@ -75,19 +75,19 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletion
     
     extended_functor_on_objects :=
       function( objSC )
-        local L, Fobj;
+        local L, functor_on_obj;
         
         L := ObjectDatum( SC, objSC );
         
-        Fobj := List( [ 1 .. Length( L ) ], i -> functor_on_objects( L[i] ) );
+        functor_on_obj := List( [ 1 .. Length( L ) ], i -> functor_on_objects( L[i] ) );
         
-        return DirectSum( strict_additive_category, Fobj );
+        return DirectSum( strict_additive_category, functor_on_obj );
         
     end;
 
     extended_functor_on_morphisms :=
       function( source, morSC, range )
-        local S, T, s, t, source_diagram, range_diagram, listlist, Fmor;
+        local S, T, s, t, source_diagram, range_diagram, listlist, functor_on_mor;
         
         S := ObjectDatum( SC, Source( morSC ) );
         T := ObjectDatum( SC, Range( morSC ) );
@@ -98,16 +98,25 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletion
         source_diagram := List( [ 1 .. s ], i -> functor_on_objects( S[i] ) );
         range_diagram := List( [ 1 .. t ], j -> functor_on_objects( T[j] ) );
         
+        if not IsEqualForObjects( strict_additive_category, source, DirectSum( strict_additive_category, source_diagram ) ) then
+            Error( "source and DirectSum( source_diagram ) do not coincide\n" );
+        fi;
+        
+        if not IsEqualForObjects( strict_additive_category, range, DirectSum( strict_additive_category, range_diagram ) ) then
+            Error( "range and DirectSum( range_diagram ) do not coincide\n" );
+        fi;
+        
         listlist := MorphismDatum( SC, morSC );
         
-        Fmor := List( [ 1 .. s ], i ->
-                      List( [ 1 .. t ], j ->
-                            functor_on_morphisms( source_diagram[i], listlist[i,j], range_diagram[j] ) ) );
+        functor_on_mor :=
+          List( [ 1 .. s ], i ->
+                List( [ 1 .. t ], j ->
+                      functor_on_morphisms( source_diagram[i], listlist[i][j], range_diagram[j] ) ) );
         
         return MorphismBetweenDirectSumsWithGivenDirectSums( strict_additive_category,
                        source,
                        source_diagram,
-                       Fmor,
+                       functor_on_mor,
                        range_diagram,
                        range );
         
