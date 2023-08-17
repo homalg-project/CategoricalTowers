@@ -558,9 +558,9 @@ InstallMethodForCompilerForCAP( ExtendFunctorToWrapperCategoryData,
       function( source, morW, range )
         
         return functor_on_morphisms(
-                       functor_on_objects( ObjectDatum( W, source ) ),
+                       source,
                        MorphismDatum( W, morW ),
-                       functor_on_objects( ObjectDatum( W, range ) ) );
+                       range );
         
     end;
     
