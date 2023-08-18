@@ -216,7 +216,7 @@ InstallMethod( CategoryWithAmbientObjects,
     
     category_with_ambient_objects := CreateCapCategory( Concatenation( "CategoryWithAmbientObjects( ", Name( abelian_category ), " )" ) );
     
-    category_with_ambient_objects!.category_as_first_argument := false;
+    category_with_ambient_objects!.category_as_first_argument := true;
     
     SetFilterObj( category_with_ambient_objects, IsCapCategoryWithAmbientObjects );
     
@@ -547,7 +547,7 @@ InstallMethod( CategoryWithAmbientObjects,
         if CanCompute( abelian_category, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
             
             AddMultiplyWithElementOfCommutativeRingForMorphisms( category_with_ambient_objects,
-              function( r, morphism )
+              function( cat, r, morphism )
                 
                 return MorphismWithAmbientObject(
                                Source( morphism ),
@@ -563,7 +563,7 @@ InstallMethod( CategoryWithAmbientObjects,
     if CanCompute( abelian_category, "EpimorphismFromSomeProjectiveObject" ) then
         
         AddEpimorphismFromSomeProjectiveObject( category_with_ambient_objects,
-          function( object )
+          function( cat, object )
             local pi;
             
             pi := EpimorphismFromSomeProjectiveObject( UnderlyingCell( object ) );
@@ -580,7 +580,7 @@ InstallMethod( CategoryWithAmbientObjects,
     if CanCompute( abelian_category, "EpimorphismFromSomeProjectiveObjectForKernelObject" ) then
         
         AddEpimorphismFromSomeProjectiveObjectForKernelObject( category_with_ambient_objects,
-          function( morphism )
+          function( cat, morphism )
             local pi;
             
             pi := EpimorphismFromSomeProjectiveObjectForKernelObject( UnderlyingCell( morphism ) );
@@ -607,7 +607,7 @@ InstallMethod( CategoryWithAmbientObjects,
         SetRangeCategoryOfHomomorphismStructure( category_with_ambient_objects, H );
         
         AddDistinguishedObjectOfHomomorphismStructure( category_with_ambient_objects,
-          function( )
+          function( cat )
             local D;
             
             D := DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( category_with_ambient_objects ) );
@@ -617,7 +617,7 @@ InstallMethod( CategoryWithAmbientObjects,
         end );
         
         AddHomomorphismStructureOnObjects( category_with_ambient_objects,
-          function( object1, object2 )
+          function( cat, object1, object2 )
             local hom;
             
             hom := HomomorphismStructureOnObjects( UnderlyingCell( object1 ), UnderlyingCell( object2 ) );
@@ -627,7 +627,7 @@ InstallMethod( CategoryWithAmbientObjects,
         end );
         
         AddHomomorphismStructureOnMorphismsWithGivenObjects( category_with_ambient_objects,
-          function( source, alpha, beta, range )
+          function( cat, source, alpha, beta, range )
             local hom;
             
             hom := HomomorphismStructureOnMorphismsWithGivenObjects( UnderlyingCell( source ), UnderlyingCell( alpha ), UnderlyingCell( beta ), UnderlyingCell( range ) );
@@ -637,7 +637,7 @@ InstallMethod( CategoryWithAmbientObjects,
         end );
         
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category_with_ambient_objects,
-          function( morphism )
+          function( cat, morphism )
             local mor;
             
             mor := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCell( morphism ) );
@@ -650,7 +650,7 @@ InstallMethod( CategoryWithAmbientObjects,
         end );
         
         AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category_with_ambient_objects,
-          function( source, range, morphism )
+          function( cat, source, range, morphism )
             
             return
               MorphismWithAmbientObject(
@@ -686,7 +686,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_CATEGORY_WITH_AMBIENT_OBJECTS,
     
     ##
     AddIsWellDefinedForObjects( category,
-      function( object )
+      function( cat, object )
         
         return IsWellDefinedForMorphisms( GeneralizedEmbeddingInAmbientObject( object ) );
         
@@ -694,7 +694,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_CATEGORY_WITH_AMBIENT_OBJECTS,
     
     ##
     AddIsWellDefinedForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         
         return IsWellDefinedForMorphisms( UnderlyingCell( morphism ) );
         
@@ -702,7 +702,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_CATEGORY_WITH_AMBIENT_OBJECTS,
     
     ##
     AddIsEqualForObjects( category,
-      function( object_with_ambient_object_1, object_with_ambient_object_2 )
+      function( cat, object_with_ambient_object_1, object_with_ambient_object_2 )
         
         return IsEqualForMorphismsOnMor(
                        GeneralizedEmbeddingInAmbientObject( object_with_ambient_object_1 ),
@@ -712,7 +712,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_CATEGORY_WITH_AMBIENT_OBJECTS,
     
     ##
     AddIsEqualForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return IsEqualForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
         
@@ -720,7 +720,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_CATEGORY_WITH_AMBIENT_OBJECTS,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return IsCongruentForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
         
