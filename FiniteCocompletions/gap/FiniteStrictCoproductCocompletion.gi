@@ -1245,7 +1245,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletion
 
     extended_functor_on_morphisms :=
       function( source, morUC, range )
-        local pairS, pairT, s, t, S, T, FLS, FLT, pair_of_lists, map, mor, Fmor;
+        local pairS, pairT, s, t, S, T, source_diagram, range_diagram, pair_of_lists, map, mor, functor_on_mor;
         
         pairS := ObjectDatum( UC, Source( morUC ) );
         pairT := ObjectDatum( UC, Range( morUC ) );
@@ -1256,25 +1256,34 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletion
         S := pairS[2];
         T := pairT[2];
         
-        FLS := List( [ 0 .. s - 1 ], i -> functor_on_objects( S[1 + i] ) );
-        FLT := List( [ 0 .. t - 1 ], i -> functor_on_objects( T[1 + i] ) );
+        source_diagram := List( [ 0 .. s - 1 ], i -> functor_on_objects( S[1 + i] ) );
+        range_diagram := List( [ 0 .. t - 1 ], i -> functor_on_objects( T[1 + i] ) );
+        
+        if not IsEqualForObjects( category_with_strict_coproducts, source, Coproduct( category_with_strict_coproducts, source_diagram ) ) then
+            Error( "source and Coproduct( source_diagram ) do not coincide\n" );
+        fi;
+        
+        if not IsEqualForObjects( category_with_strict_coproducts, range, Coproduct( category_with_strict_coproducts, range_diagram ) ) then
+            Error( "range and Coproduct( range_diagram ) do not coincide\n" );
+        fi;
         
         pair_of_lists := MorphismDatum( UC, morUC );
         
         map := pair_of_lists[1];
         mor := pair_of_lists[2];
         
-        Fmor := List( [ 0 .. s - 1 ], i ->
-                      functor_on_morphisms(
-                              FLS[1 + i],
-                              mor[1 + i],
-                              FLT[1 + map[1 + i]] ) );
+        functor_on_mor :=
+          List( [ 0 .. s - 1 ], i ->
+                functor_on_morphisms(
+                        source_diagram[1 + i],
+                        mor[1 + i],
+                        range_diagram[1 + map[1 + i]] ) );
         
         return MorphismBetweenCoproductsWithGivenCoproducts( category_with_strict_coproducts,
                        source,
-                       FLS,
-                       Pair( map, Fmor ),
-                       FLT,
+                       source_diagram,
+                       Pair( map, functor_on_mor ),
+                       range_diagram,
                        range );
         
     end;

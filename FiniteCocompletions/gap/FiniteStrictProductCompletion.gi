@@ -324,7 +324,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData
     
     extended_functor_on_morphisms :=
       function( source, morPC, range )
-        local pairS, pairT, s, t, S, T, FLS, FLT, pair_of_lists, map, mor, Fmor;
+        local pairS, pairT, s, t, S, T, source_diagram, range_diagram, pair_of_lists, map, mor, functor_on_mor;
         
         pairS := ObjectDatum( PC, Source( morPC ) );
         pairT := ObjectDatum( PC, Range( morPC ) );
@@ -335,25 +335,33 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData
         S := pairS[2];
         T := pairT[2];
         
-        FLS := List( [ 0 .. s - 1 ], i -> functor_on_objects( S[1 + i] ) );
-        FLT := List( [ 0 .. t - 1 ], i -> functor_on_objects( T[1 + i] ) );
+        source_diagram := List( [ 0 .. s - 1 ], i -> functor_on_objects( S[1 + i] ) );
+        range_diagram := List( [ 0 .. t - 1 ], i -> functor_on_objects( T[1 + i] ) );
+        
+        if not IsEqualForObjects( category_with_strict_products, source, DirectProduct( category_with_strict_products, source_diagram ) ) then
+            Error( "source and DirectProduct( source_diagram ) do not coincide\n" );
+        fi;
+        
+        if not IsEqualForObjects( category_with_strict_products, range, DirectProduct( category_with_strict_products, range_diagram ) ) then
+            Error( "range and DirectProduct( range_diagram ) do not coincide\n" );
+        fi;
         
         pair_of_lists := MorphismDatum( PC, morPC );
         
         map := pair_of_lists[1];
         mor := pair_of_lists[2];
         
-        Fmor := List( [ 0 .. t - 1 ], i ->
+        functor_on_mor := List( [ 0 .. t - 1 ], i ->
                       functor_on_morphisms(
-                              FLT[1 + i],
+                              range_diagram[1 + i],
                               mor[1 + i],
-                              FLS[1 + map[1 + i]] ) );
+                              source_diagram[1 + map[1 + i]] ) );
         
         return MorphismBetweenDirectProductsWithGivenDirectProducts( category_with_strict_products,
                        source,
-                       FLS,
-                       Pair( map, Fmor ),
-                       FLT,
+                       source_diagram,
+                       Pair( map, functor_on_mor ),
+                       range_diagram,
                        range );
         
     end;

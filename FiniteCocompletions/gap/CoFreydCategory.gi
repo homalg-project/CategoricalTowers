@@ -62,36 +62,44 @@ InstallMethodForCompilerForCAP( ExtendFunctorToCoFreydCategoryData,
     
     extended_functor_on_objects :=
       function( objKC )
-        local rel, Frel;
+        local corel, functor_on_corel;
         
-        rel := ObjectDatum( KC, objKC );
+        corel := ObjectDatum( KC, objKC );
         
-        Frel := functor_on_morphisms( functor_on_objects( Source( rel ) ), rel, functor_on_objects( Range( rel ) ) );
+        functor_on_corel := functor_on_morphisms( functor_on_objects( Source( corel ) ), corel, functor_on_objects( Range( corel ) ) );
         
-        return KernelObject( additive_category_with_kernels, Frel );
+        return KernelObject( additive_category_with_kernels, functor_on_corel );
         
     end;
 
     extended_functor_on_morphisms :=
       function( source, morKC, range )
-        local Srel, Trel, FsourceSrel, FsourceTrel, FSrel, FTrel, Fmor;
+        local S_corel, T_corel, functor_on_source_of_S_corel, functor_on_source_of_T_corel, source_diagram, range_diagram, functor_on_mor;
         
-        Srel := ObjectDatum( KC, Source( morKC ) );
-        Trel := ObjectDatum( KC, Range( morKC ) );
+        S_corel := ObjectDatum( KC, Source( morKC ) );
+        T_corel := ObjectDatum( KC, Range( morKC ) );
         
-        FsourceSrel := functor_on_objects( Source( Srel ) );
-        FsourceTrel := functor_on_objects( Source( Trel ) );
+        functor_on_source_of_S_corel := functor_on_objects( Source( S_corel ) );
+        functor_on_source_of_T_corel := functor_on_objects( Source( T_corel ) );
         
-        FSrel := functor_on_morphisms( FsourceSrel, Srel, functor_on_objects( Range( Srel ) ) );
-        FTrel := functor_on_morphisms( FsourceTrel, Trel, functor_on_objects( Range( Trel ) ) );
+        source_diagram := functor_on_morphisms( functor_on_source_of_S_corel, S_corel, functor_on_objects( Range( S_corel ) ) );
+        range_diagram := functor_on_morphisms( functor_on_source_of_T_corel, T_corel, functor_on_objects( Range( T_corel ) ) );
         
-        Fmor := functor_on_morphisms( FsourceSrel, MorphismDatum( KC, morKC ), FsourceTrel );
+        if not IsEqualForObjects( additive_category_with_kernels, source, KernelObject( additive_category_with_kernels, source_diagram ) ) then
+            Error( "source and KernelObject( source_diagram ) do not coincide\n" );
+        fi;
+        
+        if not IsEqualForObjects( additive_category_with_kernels, range, KernelObject( additive_category_with_kernels, range_diagram ) ) then
+            Error( "range and KernelObject( range_diagram ) do not coincide\n" );
+        fi;
+        
+        functor_on_mor := functor_on_morphisms( functor_on_source_of_S_corel, MorphismDatum( KC, morKC ), functor_on_source_of_T_corel );
         
         return KernelObjectFunctorialWithGivenKernelObjects( additive_category_with_kernels,
                        source,
-                       FSrel,
-                       Fmor,
-                       FTrel,
+                       source_diagram,
+                       functor_on_mor,
+                       range_diagram,
                        range );
         
     end;
