@@ -589,6 +589,52 @@ InstallMethod( OppositeMorphismInOppositeCategoryFromDataTables,
     
 end );
 
+##
+InstallMethodForCompilerForCAP( ExtendFunctorToFpCategoryData,
+        "for a two categories and a pair of functions",
+        [ IsCategoryFromDataTables, IsList, IsCapCategory ],
+        
+  function( FQ, pair_of_funcs, category )
+    local functor_on_objects, functor_on_morphisms,
+          extended_functor_on_objects, extended_functor_on_morphisms;
+    
+    functor_on_objects := pair_of_funcs[1];
+    functor_on_morphisms := pair_of_funcs[2];
+    
+    ## the code below is the doctrine-specific ur-algorithm for categories
+    
+    extended_functor_on_objects :=
+      function( objFQ )
+        local objQ;
+        
+        objQ := ObjectDatum( FQ, objFQ );
+        
+        return functor_on_objects( 1 + objQ );
+        
+    end;
+    
+    extended_functor_on_morphisms :=
+      function( source, morFQ, range )
+        local s, t, arrows;
+        
+        s := ObjectDatum( FQ, Source( morFQ ) );
+        t := ObjectDatum( FQ, Range( morFQ ) );
+        
+        arrows := DecompositionIndicesOfAllMorphisms( FQ )[1 + s][1 + t][1 + DataTables( FQ )[2][7][1 + MorphismDatum( FQ, morFQ )][1]];
+        
+        return PreComposeList( category,
+                       source,
+                       List( arrows, morQ -> functor_on_morphisms( 1 + morQ ) ),
+                       range );
+        
+    end;
+    
+    return Triple( FQ,
+                   Pair( extended_functor_on_objects, extended_functor_on_morphisms ),
+                   category );
+    
+end );
+
 ####################################
 #
 # View, Print, and Display methods:

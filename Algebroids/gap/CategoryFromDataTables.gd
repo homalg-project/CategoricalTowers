@@ -217,3 +217,6 @@ DeclareOperation( "CreateMorphism",
 #! @Group CreateMorphism
 DeclareOperation( "CreateMorphism",
         [ IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables ] );
+
+DeclareOperation( "ExtendFunctorToFpCategoryData",
+        [ IsCategoryFromDataTables, IsList, IsCapCategory ] );
