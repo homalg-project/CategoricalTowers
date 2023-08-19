@@ -47,3 +47,15 @@ DeclareAttribute( "DataTablesOfCategory",
 #! @Returns a &CAP; category
 DeclareAttribute( "OppositeFiniteCategory",
         IsCapCategory );
+
+DeclareGlobalFunction( "DefiningTripleOfUnderlyingQuiverAsString" );
+
+DeclareGlobalFunction( "DefiningTripleOfUnderlyingQuiverAsENHANCED_SYNTAX_TREE" );
+
+DeclareGlobalFunction( "IndicesOfGeneratingMorphismsAsENHANCED_SYNTAX_TREE" );
+
+DeclareGlobalFunction( "DecompositionOfAllMorphismsAsENHANCED_SYNTAX_TREE" );
+
+DeclareGlobalFunction( "DataTablesAsString" );
+
+DeclareGlobalFunction( "DataTablesAsENHANCED_SYNTAX_TREE" );

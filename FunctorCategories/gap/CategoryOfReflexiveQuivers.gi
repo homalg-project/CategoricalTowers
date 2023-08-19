@@ -118,18 +118,11 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
     ## building the categorical tower:
     F := SimplicialCategoryTruncatedInDegree( 1 : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );
     
-    F := CategoryFromDataTables( F : FinalizeCategory := true );
+    F := CategoryFromDataTables( F : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
     
     F_hat := FiniteCocompletion( F : FinalizeCategory := true );
     
     Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( F ), category_of_skeletal_finsets ) );
-    
-    ## specify the attributes the compiler should fully resolve during compilation
-    F!.compiler_hints.category_attribute_resolving_functions :=
-      rec( DefiningTripleOfUnderlyingQuiver := { } -> ENHANCED_SYNTAX_TREE_DefiningTripleOfUnderlyingQuiverOfCategoryOfReflexiveQuivers,
-           DataTables := { } -> ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfReflexiveQuivers,
-           IndicesOfGeneratingMorphisms := { } -> ENHANCED_SYNTAX_TREE_IndicesOfGeneratingMorphismsOfCategoryOfReflexiveQuivers,
-           );
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=

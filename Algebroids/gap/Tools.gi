@@ -95,3 +95,64 @@ InstallMethod( OppositeFiniteCategory,
     return C_op;
     
 end );
+
+##
+InstallGlobalFunction( DefiningTripleOfUnderlyingQuiverAsString,
+  function( defining_triple_of_underlying_quiver )
+    
+    return Concatenation( Concatenation(
+                   [ "Triple( ", String( defining_triple_of_underlying_quiver[1] ), ", ", String( defining_triple_of_underlying_quiver[2] ), ", " ],
+                   [ "[ ", JoinStringsWithSeparator( List( defining_triple_of_underlying_quiver[3], pair ->
+                           Concatenation( "Pair( ", String( pair[1] ), ", ", String( pair[2] ), " )" ) ), ", " ) ], [ " ] )" ] ) );
+    
+end );
+
+##
+InstallGlobalFunction( DefiningTripleOfUnderlyingQuiverAsENHANCED_SYNTAX_TREE,
+  function( defining_triple_of_underlying_quiver )
+    
+    return ReplacedStringViaRecord(
+                   "ENHANCED_SYNTAX_TREE( x -> defining_triple_of_underlying_quiver ).bindings.BINDING_RETURN_VALUE",
+                   rec( defining_triple_of_underlying_quiver := DefiningTripleOfUnderlyingQuiverAsString( defining_triple_of_underlying_quiver ) ) );
+    
+end );
+
+##
+InstallGlobalFunction( IndicesOfGeneratingMorphismsAsENHANCED_SYNTAX_TREE,
+  function( indices_of_generating_morphisms )
+    
+    return ReplacedStringViaRecord(
+                   "ENHANCED_SYNTAX_TREE( x -> indices_of_generating_morphisms ).bindings.BINDING_RETURN_VALUE",
+                   rec( indices_of_generating_morphisms := String( indices_of_generating_morphisms ) ) );
+    
+end );
+
+##
+InstallGlobalFunction( DecompositionOfAllMorphismsAsENHANCED_SYNTAX_TREE,
+  function( decomposition_of_all_morphisms )
+    
+    return ReplacedStringViaRecord(
+                   "ENHANCED_SYNTAX_TREE( x -> decomposition_of_all_morphisms ).bindings.BINDING_RETURN_VALUE",
+                   rec( decomposition_of_all_morphisms := String( decomposition_of_all_morphisms ) ) );
+    
+end );
+
+##
+InstallGlobalFunction( DataTablesAsString,
+  function( data_tables )
+    
+    return Concatenation( Concatenation(
+                   [ "Pair( Pair( ", String( data_tables[1][1] ), ", ", String( data_tables[1][2] ), " ), ", ],
+                   [ "NTuple( 8, ", JoinStringsWithSeparator( List( data_tables[2], String ), ", " ) ], [ " ) )" ] ) );
+    
+end );
+
+##
+InstallGlobalFunction( DataTablesAsENHANCED_SYNTAX_TREE,
+  function( data_tables )
+    
+    return ReplacedStringViaRecord(
+                   "ENHANCED_SYNTAX_TREE( x -> data_tables ).bindings.BINDING_RETURN_VALUE",
+                   rec( data_tables := DataTablesAsString( data_tables ) ) );
+    
+end );

@@ -104,13 +104,14 @@ end );
 DeclareAttribute( "DecompositionOfAllMorphisms",
         IsCategoryFromDataTables );
 
-#CapJitAddTypeSignature( "DecompositionOfAllMorphisms", [ IsCategoryFromDataTables ],
-#  function ( input_types )
-#    
-#    return CapJitDataTypeOfListOf(
-#                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
-#    
-#end );
+CapJitAddTypeSignature( "DecompositionOfAllMorphisms", [ IsCategoryFromDataTables ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf(
+                   CapJitDataTypeOfListOf(
+                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ) );
+    
+end );
 
 DeclareAttribute( "RelationsAmongGeneratingMorphisms",
         IsCategoryFromDataTables );
