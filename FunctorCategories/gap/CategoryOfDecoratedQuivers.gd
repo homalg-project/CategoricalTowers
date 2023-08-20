@@ -69,15 +69,15 @@ CapJitAddTypeSignature( "DefiningPairOfDecoratedQuiver", [ IsObjectInCategoryOfD
     
     return CapJitDataTypeOfNTupleOf( 2,
                    CapJitDataTypeOfNTupleOf( 3,
-                           rec( filter := IsInt ),
-                           rec( filter := IsInt ),
+                           IsInt,
+                           IsInt,
                            CapJitDataTypeOfListOf(
                                    CapJitDataTypeOfNTupleOf( 2,
-                                           rec( filter := IsInt ),
-                                           rec( filter := IsInt ) ) ) ),
+                                           IsInt,
+                                           IsInt ) ) ),
                    CapJitDataTypeOfNTupleOf( 2,
-                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
-                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ) );
+                           CapJitDataTypeOfListOf( IsInt ),
+                           CapJitDataTypeOfListOf( IsInt ) ) );
     
 end );
 
@@ -89,8 +89,8 @@ CapJitAddTypeSignature( "DefiningPairOfDecoratedQuiverMorphism", [ IsMorphismInC
     Assert( 0, IsCategoryOfDecoratedQuivers( input_types[1].category ) );
     
     return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
-                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
+                   CapJitDataTypeOfListOf( IsInt ),
+                   CapJitDataTypeOfListOf( IsInt ) );
     
 end );
 

@@ -154,10 +154,10 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                   IsMorphismInFiniteStrictCoproductCocompletion,
                   IsCapCategoryTwoCell,
                   CapJitDataTypeOfNTupleOf( 2,
-                          rec( filter := IsInt ),
+                          IsInt,
                           CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( C ) ) ),
                   CapJitDataTypeOfNTupleOf( 2,
-                          CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+                          CapJitDataTypeOfListOf( IsInt ),
                           CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) ),
                   fail );
     

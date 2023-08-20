@@ -59,9 +59,9 @@ InstallMethod( CategoryOfColimitQuivers,
               CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( C ) ),
               CapJitDataTypeOfListOf(
                       CapJitDataTypeOfNTupleOf( 3,
-                              rec( filter := IsInt ),
+                              IsInt,
                               CapJitDataTypeOfMorphismOfCategory( C ),
-                              rec( filter := IsInt ) ) ) );
+                              IsInt ) ) );
     
     ##
     object_constructor := CreateColimitQuiver;
@@ -73,9 +73,9 @@ InstallMethod( CategoryOfColimitQuivers,
     morphism_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
               CapJitDataTypeOfNTupleOf( 2,
-                      CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+                      CapJitDataTypeOfListOf( IsInt ),
                       CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) ),
-              CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
+              CapJitDataTypeOfListOf( IsInt ) );
     
     ##
     morphism_constructor := CreateMorphismOfColimitQuivers;
