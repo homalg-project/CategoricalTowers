@@ -89,17 +89,29 @@ InstallMethod( CategoryFromDataTables,
     
     SetDefiningTripleOfUnderlyingQuiver( C,
             Triple( C0,
-                    Length( input_record.indices_of_generating_morphisms ),
-                    List( input_record.indices_of_generating_morphisms, i -> Pair( s[1 + i], t[1 + i] ) ) ) );
+                    Length( IndicesOfGeneratingMorphisms( C ) ),
+                    List( IndicesOfGeneratingMorphisms( C ), i -> Pair( s[1 + i], t[1 + i] ) ) ) );
     
     C!.compiler_hints :=
       rec( category_attribute_names :=
-           [ "DataTables",
+           [ "DefiningTripleOfUnderlyingQuiver",
              "IndicesOfGeneratingMorphisms",
              "DecompositionOfAllMorphisms",
              "RelationsAmongGeneratingMorphisms",
-             "DefiningTripleOfUnderlyingQuiver",
+             "DataTables",
              ] );
+    
+    if IsIdenticalObj( ValueOption( "set_category_attribute_resolving_functions" ), true ) then
+       
+       ## specify the attributes the compiler should fully resolve during compilation
+       C!.compiler_hints.category_attribute_resolving_functions :=
+       rec( DefiningTripleOfUnderlyingQuiver := { } -> EvalString( DefiningTripleOfUnderlyingQuiverAsENHANCED_SYNTAX_TREE( DefiningTripleOfUnderlyingQuiver( C ) ) ),
+            IndicesOfGeneratingMorphisms := { } -> EvalString( IndicesOfGeneratingMorphismsAsENHANCED_SYNTAX_TREE( IndicesOfGeneratingMorphisms( C ) ) ),
+            DecompositionOfAllMorphisms := { } -> EvalString( DecompositionOfAllMorphismsAsENHANCED_SYNTAX_TREE( DecompositionOfAllMorphisms( C ) ) ),
+            DataTables := { } -> EvalString( DataTablesAsENHANCED_SYNTAX_TREE( DataTables( C ) ) ),
+            );
+        
+    fi;
     
     ##
     AddObjectConstructor( C,

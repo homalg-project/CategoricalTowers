@@ -20,7 +20,6 @@ ReadPackage( "FiniteCocompletions", "gap/FreeDistributiveCategoryWithStrictProdu
 ReadPackage( "FiniteCocompletions", "gap/SkeletalFinSets.gi");
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/ENHANCED_SYNTAX_TREEs_for_CategoryOfQuivers.gi");
 ReadPackage( "FiniteCocompletions", "gap/PairOfParallelArrowsCategory.gi");
 
 ##

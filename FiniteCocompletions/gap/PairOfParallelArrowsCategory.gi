@@ -66,18 +66,11 @@ InstallMethod( PairOfParallelArrowsCategory,
     ## building the categorical tower:
     F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := SkeletalFinSets, FinalizeCategory := true );
     
-    F := CategoryFromDataTables( F : FinalizeCategory := true );
+    F := CategoryFromDataTables( F : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
     
     PSh := PreSheaves( F, C : FinalizeCategory := false );
 
     Finalize( PSh : FinalizeCategory := true );
-    
-    ## specify the attributes the compiler should fully resolve during compilation
-    F!.compiler_hints.category_attribute_resolving_functions :=
-      rec( DefiningTripleOfUnderlyingQuiver := { } -> ENHANCED_SYNTAX_TREE_DefiningTripleOfUnderlyingQuiverOfCategoryOfQuivers,
-           DataTables := { } -> ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfQuivers,
-           IndicesOfGeneratingMorphisms := { } -> ENHANCED_SYNTAX_TREE_IndicesOfGeneratingMorphismsOfCategoryOfQuivers,
-           );
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
