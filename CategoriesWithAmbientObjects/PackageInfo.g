@@ -11,9 +11,9 @@ SetPackageInfo( rec(
 
 PackageName := "CategoriesWithAmbientObjects",
 Subtitle := "Categories with objects having ambient objects",
-Version := "2023.02-02",
-Date := "2023-02-28",
-Date := "2023-02-28",
+Version := "2023.08-01",
+Date := "2023-08-20",
+Date := "2023-08-20",
 License := "GPL-2.0-or-later",
 
 
@@ -88,7 +88,7 @@ Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "AutoDoc", ">= 2013.12.04" ],
-                   [ "AttributeCategoryForCAP", ">= 2016.09.14" ],
+                   [ "AttributeCategoryForCAP", ">= 2023.08-01" ],
                    [ "GeneralizedMorphismsForCAP", ">= 2017.04.01" ],
                    [ "FreydCategoriesForCAP", ">= 2022.06-03" ],
                    [ "ToolsForHomalg", ">= 2015.09.23" ],
