@@ -158,13 +158,13 @@ end );
 DeclareAttribute( "BasisMorphismsByVertexIndex",
         IsAlgebroid );
 
-CapJitAddTypeSignature( "BasisMorphismsByVertexIndex", [ IsAlgebroid ], function ( input_types )
-    
-    return CapJitDataTypeOfListOf(
-                   CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) ) ) );
-    
-end );
+#CapJitAddTypeSignature( "BasisMorphismsByVertexIndex", [ IsAlgebroid ], function ( input_types )
+#    
+#    return CapJitDataTypeOfListOf(
+#                   CapJitDataTypeOfListOf(
+#                           CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) ) ) );
+#    
+#end );
 
 #! @Description
 #!  The hom structure on basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>:
@@ -175,18 +175,18 @@ end );
 DeclareAttribute( "HomStructureOnBasisPaths",
         IsAlgebroid );
 
-CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsAlgebroid ], function ( input_types )
-    
-    return CapJitDataTypeOfListOf(
-                   CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf(
-                                   CapJitDataTypeOfListOf(
-                                           CapJitDataTypeOfListOf(
-                                                   CapJitDataTypeOfListOf(
-                                                           CapJitDataTypeOfListOf(
-                                                                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ) ) ) ) ) ) );
-    
-end );
+#CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsAlgebroid ], function ( input_types )
+#    
+#    return CapJitDataTypeOfListOf(
+#                   CapJitDataTypeOfListOf(
+#                           CapJitDataTypeOfListOf(
+#                                   CapJitDataTypeOfListOf(
+#                                           CapJitDataTypeOfListOf(
+#                                                   CapJitDataTypeOfListOf(
+#                                                           CapJitDataTypeOfListOf(
+#                                                                   CapJitDataTypeOfListOf( IsInt ) ) ) ) ) ) ) );
+#    
+#end );
 
 #! @Description
 #!  The finite set of objects of the finitely presented algebroid <A>A</A>.
@@ -544,11 +544,11 @@ DeclareOperation( "\/", [ IsQuiverVertex, IsAlgebroid ] );
 DeclareOperation( "MorphismInAlgebroid",
         [ IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ] );
 
-CapJitAddTypeSignature( "MorphismInAlgebroid", [ IsAlgebroid, IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ], function ( input_types )
-    
-    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
-    
-end );
+#CapJitAddTypeSignature( "MorphismInAlgebroid", [ IsAlgebroid, IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ], function ( input_types )
+#    
+#    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+#    
+#end );
 
 #! @Arguments A, path
 #! @Group MorphismInAlgebroid
