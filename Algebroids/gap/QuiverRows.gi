@@ -108,7 +108,7 @@ InstallMethod( QuiverRows,
                         IsQuiverRowsMorphism and HasMorphismMatrix,
                         IsCapCategoryTwoCell );
     
-    category!.category_as_first_argument := false;
+    category!.category_as_first_argument := true;
     
     DeactivateCachingOfCategory( category );
     
@@ -645,7 +645,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,
-      function( object )
+      function( cat, object )
         local list;
         
         list := ListOfQuiverVertices( object );
@@ -681,7 +681,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddIsWellDefinedForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         local matrix, nr_rows, nr_cols, source, range, i, j, m, v, w;
         
         matrix := MorphismMatrix( morphism );
@@ -774,7 +774,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     ## Equality Basic Operations for Objects and Morphisms
     ##
     AddIsEqualForObjects( category,
-      function( A, B )
+      function( cat, A, B )
         
         return ListOfQuiverVertices( A ) = ListOfQuiverVertices( B );
       
@@ -782,7 +782,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         
         return MorphismMatrix( alpha ) = MorphismMatrix( beta );
         
@@ -790,7 +790,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddAdditiveGenerators( category,
-      function( )
+      function( cat )
         
         return List( Vertices( UnderlyingQuiver( category ) ), v -> AsQuiverRowsObject( v, category ) );
         
@@ -801,7 +801,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     ##
     AddIdentityMorphism( category,
       
-      function( object )
+      function( cat, object )
         
         return QuiverRowsMorphism( object, IDENTITY_MATRIX_QUIVER_ROWS( object ), object );
         
@@ -809,7 +809,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddZeroMorphism( category,
-      function( source, range )
+      function( cat, source, range )
         
         return QuiverRowsMorphism( source, ZERO_MATRIX_QUIVER_ROWS( NrSummands( source ), NrSummands( range ) ), range );
         
@@ -817,7 +817,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddPreCompose( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         local A, B, C, mat;
         
         A := Source( alpha );
@@ -840,7 +840,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     #
     AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
-      function( r, morphism )
+      function( cat, r, morphism )
         
         return QuiverRowsMorphism( Source( morphism ), r * MorphismMatrix( morphism ), Range( morphism ) );
         
@@ -849,7 +849,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     ## Basic Operations for an Additive Category
     ##
     AddIsZeroForMorphisms( category,
-      function( alpha )
+      function( cat, alpha )
         local matrix, r, c;
         
         matrix := MorphismMatrix( alpha );
@@ -880,7 +880,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddAdditionForMorphisms( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         
         return QuiverRowsMorphism( Source( alpha ),
                                    MorphismMatrix( alpha ) + MorphismMatrix( beta ),
@@ -890,7 +890,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddAdditiveInverseForMorphisms( category,
-      function( alpha )
+      function( cat, alpha )
         
         return QuiverRowsMorphism( Source( alpha ),
                                    -MorphismMatrix( alpha ),
@@ -900,7 +900,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddZeroObject( category,
-      function( )
+      function( cat )
         
         return QuiverRowsObject( [ ], category );
         
@@ -908,7 +908,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
-      function( sink, zero_object )
+      function( cat, sink, zero_object )
         
         return QuiverRowsMorphism( sink, [ ], zero_object );
         
@@ -916,7 +916,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
-      function( source, zero_object )
+      function( cat, source, zero_object )
         
         return QuiverRowsMorphism( zero_object, [ ], source );
         
@@ -924,7 +924,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddDirectSum( category,
-      function( list )
+      function( cat, list )
         
         return QuiverRowsObject( Concatenation( List( list, ListOfQuiverVertices ) ), category );
         
@@ -932,7 +932,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
-      function( list, projection_number, direct_sum_object )
+      function( cat, list, projection_number, direct_sum_object )
         local range, nr_cols, pre_matrix, id_matrix, post_matrix;
         
         range := list[projection_number];
@@ -967,7 +967,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
-      function( list, injection_number, direct_sum_object )
+      function( cat, list, injection_number, direct_sum_object )
         local source, nr_cols, pre_matrix, id_matrix, post_matrix;
         
         source := list[injection_number];
@@ -1002,7 +1002,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     # ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, test_object, source, direct_sum )
+      function( cat, diagram, test_object, source, direct_sum )
         local mat, nr_rows;
         
         nr_rows := NrSummands( test_object );
@@ -1021,7 +1021,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, test_object, sink, direct_sum )
+      function( cat, diagram, test_object, sink, direct_sum )
         local mat;
         
         if NrSummands( direct_sum ) = 0 or NrSummands( test_object ) = 0 then
@@ -1038,7 +1038,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddHomomorphismStructureOnObjects( category,
-      function( A, B )
+      function( cat, A, B )
         local listA, listB, rank, a, b;
         
         listA := ListOfQuiverVertices( A );
@@ -1159,7 +1159,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-      function( hom_source, alpha, beta, hom_range )
+      function( cat, hom_source, alpha, beta, hom_range )
         local listj, listk, listi, listl, listjk, listil, mat, j, k, row, i, l, row_counts, col_counts, alpham, betam, entry;
         
         listi := ListOfQuiverVertices( Source( alpha ) );
@@ -1256,7 +1256,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddDistinguishedObjectOfHomomorphismStructure( category,
-      function( )
+      function( cat )
         
         return ObjectConstructor( hom_structure_range_category, 1 );
         
@@ -1264,7 +1264,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( category,
-      function( source, alpha, range )
+      function( cat, source, alpha, range )
         local listlist, lists, listr, row, i, j, submat, basis, c, a;
         
         listlist := AsListListOfMatrices( alpha );
@@ -1311,7 +1311,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-      function( A, B, morphism )
+      function( cat, A, B, morphism )
         local coeffs, lists, listr, mat, pos, i, row, j, submat, basis, c, submatrow, a,
               entry, row_counts, col_counts;
         

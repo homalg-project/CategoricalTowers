@@ -88,7 +88,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS,
     ## Equality basic operations for objects and morphisms
     ##
     AddIsEqualForObjects( category,
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
       
         return UnderlyingQuiverAlgebra( AsCapCategory ( object_1 ) )
                = UnderlyingQuiverAlgebra( AsCapCategory ( object_2 ) );
@@ -97,7 +97,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local source1, morphism_1_underlying_functor, morphism_2_underlying_functor, objects_in_source1, morphisms_in_source1, o, m;
         
         source1 := AsCapCategory( Source( morphism_1 ) );
@@ -131,14 +131,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS,
     ##
     AddIdentityMorphism( category,
       
-      function( object )
+      function( cat, object )
         
         return CategoryOfAlgebroidsMorphism( object, IdentityFunctor( AsCapCategory( object ) ), object );
         
     end );
     
     AddPreCompose( category,
-        function( morphism_1, morphism_2 )
+        function( cat, morphism_1, morphism_2 )
             local composition;
             
             composition := PreCompose( AsCapFunctor(morphism_1), AsCapFunctor(morphism_2) );
@@ -151,49 +151,49 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS,
     );
     
     AddTensorProductOnObjects( category,
-        function( object_1, object_2 )
+        function( cat, object_1, object_2 )
             return CategoryOfAlgebroidsObject( TensorProductOnObjects( AsCapCategory( object_1 ), AsCapCategory( object_2 ) ) );
         end
     );
 
     AddTensorProductOnMorphismsWithGivenTensorProducts( category,
-        function( source_1_x_source_2, morphism_1, morphism_2, range_1_x_range_2 )
+        function( cat, source_1_x_source_2, morphism_1, morphism_2, range_1_x_range_2 )
             return CategoryOfAlgebroidsMorphism( source_1_x_source_2, TensorProductOnMorphisms(AsCapFunctor( morphism_1 ), AsCapFunctor( morphism_2 ) ), range_1_x_range_2 );
         end
     );
     
     AddTensorUnit( category,
-        function( )
+        function( cat )
             return CategoryOfAlgebroidsObject( TrivialAlgebroid( ring, parity ) );
         end
     );
 
     AddLeftUnitorWithGivenTensorProduct( category,
-        function( a, 1_otimes_a )
+        function( cat, a, 1_otimes_a )
             return CategoryOfAlgebroidsMorphism( LeftUnitorAsFunctor( AsCapCategory( a ) ) );
         end
     );
 
     AddLeftUnitorInverseWithGivenTensorProduct( category,
-        function( a, 1_otimes_a )
+        function( cat, a, 1_otimes_a )
             return CategoryOfAlgebroidsMorphism( LeftUnitorInverseAsFunctor( AsCapCategory( a ) ) );
         end
     );
     
     AddRightUnitorWithGivenTensorProduct( category,
-        function( a, a_otimes_1 )
+        function( cat, a, a_otimes_1 )
             return CategoryOfAlgebroidsMorphism( RightUnitorAsFunctor( AsCapCategory( a ) ) );
         end
     );
     
     AddRightUnitorInverseWithGivenTensorProduct( category,
-        function( a, a_otimes_1 )
+        function( cat, a, a_otimes_1 )
             return CategoryOfAlgebroidsMorphism( RightUnitorInverseAsFunctor( AsCapCategory( a ) ) );
         end
     );
 
     AddAssociatorLeftToRightWithGivenTensorProducts( category,
-        function( AxB_C, A, B, C, A_BxC )
+        function( cat, AxB_C, A, B, C, A_BxC )
             local AxB_C_as_category, A_as_category, B_as_category, C_as_category, A_BxC_as_category;
             
             AxB_C_as_category := AsCapCategory( AxB_C );
@@ -207,7 +207,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS,
     );
 
     AddAssociatorRightToLeftWithGivenTensorProducts( category,
-        function( A_BxC, A, B, C, AxB_C )
+        function( cat, A_BxC, A, B, C, AxB_C )
             local AxB_C_as_category, A_as_category, B_as_category, C_as_category, A_BxC_as_category;
             A_BxC_as_category := AsCapCategory( A_BxC );
             A_as_category := AsCapCategory( A );
@@ -237,7 +237,7 @@ InstallMethodWithCache( CategoryOfAlgebroids,
                                                 fail,
                                                 fail );
     
-    category!.category_as_first_argument := false;
+    category!.category_as_first_argument := true;
     
     SetUnderlyingRing( category, homalg_ring );
     
