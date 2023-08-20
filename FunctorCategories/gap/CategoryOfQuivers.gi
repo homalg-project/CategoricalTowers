@@ -80,12 +80,12 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
     ##
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 3,
-              rec( filter := IsInt ),
-              rec( filter := IsInt ),
+              IsInt,
+              IsInt,
               CapJitDataTypeOfListOf(
                       CapJitDataTypeOfNTupleOf( 2,
-                              rec( filter := IsInt ),
-                              rec( filter := IsInt ) ) ) );
+                              IsInt,
+                              IsInt ) ) );
     
     ##
     object_constructor := CreateQuiver;
@@ -96,8 +96,8 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
     ##
     morphism_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
-              CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
+              CapJitDataTypeOfListOf( IsInt ),
+              CapJitDataTypeOfListOf( IsInt ) );
     
     ##
     morphism_constructor := CreateQuiverMorphism;

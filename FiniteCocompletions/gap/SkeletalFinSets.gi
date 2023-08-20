@@ -37,7 +37,7 @@ InstallGlobalFunction( CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocomplet
     object_datum := { sFinSets, M } -> Length( M );
     
     ##
-    morphism_datum_type := CapJitDataTypeOfListOf( rec( filter := IsInt ) );
+    morphism_datum_type := CapJitDataTypeOfListOf( IsInt );
     
     ##
     morphism_constructor :=

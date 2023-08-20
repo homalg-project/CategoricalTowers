@@ -69,15 +69,15 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
               CapJitDataTypeOfNTupleOf( 3,
-                      rec( filter := IsInt ),
-                      rec( filter := IsInt ),
+                      IsInt,
+                      IsInt,
                       CapJitDataTypeOfListOf(
                               CapJitDataTypeOfNTupleOf( 2,
-                                      rec( filter := IsInt ),
-                                      rec( filter := IsInt ) ) ) ),
+                                      IsInt,
+                                      IsInt ) ) ),
               CapJitDataTypeOfNTupleOf( 2,
-                      CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
-                      CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ) );
+                      CapJitDataTypeOfListOf( IsInt ),
+                      CapJitDataTypeOfListOf( IsInt ) ) );
     
     ##
     object_constructor := CreateDecoratedQuiver;
@@ -88,8 +88,8 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
     ##
     morphism_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
-              CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
+              CapJitDataTypeOfListOf( IsInt ),
+              CapJitDataTypeOfListOf( IsInt ) );
     
     ##
     morphism_constructor := CreateDecoratedQuiverMorphism;

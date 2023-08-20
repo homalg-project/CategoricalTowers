@@ -53,7 +53,7 @@ CapJitAddTypeSignature( "DataTables", [ IsCapCategory ],
     
     Assert( 0, IsFinite( input_types[1].category ) );
     
-    integer := rec( filter := IsInt );
+    integer := IsInt;
     
     list_of_integers := CapJitDataTypeOfListOf( integer );
     
@@ -109,7 +109,7 @@ CapJitAddTypeSignature( "DecompositionOfAllMorphisms", [ IsCategoryFromDataTable
     
     return CapJitDataTypeOfListOf(
                    CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ) );
+                           CapJitDataTypeOfListOf( IsInt ) ) );
     
 end );
 
@@ -121,8 +121,8 @@ CapJitAddTypeSignature( "RelationsAmongGeneratingMorphisms", [ IsCategoryFromDat
     
     return CapJitDataTypeOfListOf(
                    CapJitDataTypeOfNTupleOf( 2,
-                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
-                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ) );
+                           CapJitDataTypeOfListOf( IsInt ),
+                           CapJitDataTypeOfListOf( IsInt ) ) );
     
 end );
 

@@ -120,71 +120,71 @@ CapJitAddTypeSignature( "EnhancedDataTables", [ IsAlgebroidFromDataTables ],
 
     return CapJitDataTypeOfNTupleOf( 22,
                    # (1) ring
-                   rec( filter := IsHomalgRing ),
+                   IsHomalgRing,
                    
                    # (2) nr_objs
-                   rec( filter := IsInt ),
+                   IsInt,
                    
                    # (3) labels_objs
-                   CapJitDataTypeOfListOf( rec( filter := IsString ) ),
+                   CapJitDataTypeOfListOf( IsStringRep ),
                    
                    # (4) latex_strings_objs
-                   CapJitDataTypeOfListOf( rec( filter := IsString ) ),
+                   CapJitDataTypeOfListOf( IsStringRep ),
                    
                    # (5) indices_objs
-                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+                   CapJitDataTypeOfListOf( IsInt ),
                    
                    # (6) nr_gmors
-                   rec( filter := IsInt ),
+                   IsInt,
                    
                    # (7) labels_gmors
-                   CapJitDataTypeOfListOf( rec( filter := IsString ) ),
+                   CapJitDataTypeOfListOf( IsStringRep ),
                    
                    # (8) latex_strings_gmors
-                   CapJitDataTypeOfListOf( rec( filter := IsString ) ),
+                   CapJitDataTypeOfListOf( IsStringRep ),
                    
                    # (9) indices_gmors
-                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+                   CapJitDataTypeOfListOf( IsInt ),
                    
                    # (10) sources_gmors
-                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+                   CapJitDataTypeOfListOf( IsInt ),
                    
                    # (11) ranges_gmors
-                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+                   CapJitDataTypeOfListOf( IsInt ),
                    
                    # (12) nr_bases_elms
-                   rec( filter := IsInt ),
+                   IsInt,
                    
                    # (13) bases_elms_comps
                    CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ),
+                           CapJitDataTypeOfListOf( IsInt ) ),
                    
                    # (14) labels_of_bases_elms
-                   CapJitDataTypeOfListOf( rec( filter := IsString ) ),
+                   CapJitDataTypeOfListOf( IsStringRep ),
                    
                    # (15) latex_strings_of_bases_elms
-                   CapJitDataTypeOfListOf( rec( filter := IsString ) ),
+                   CapJitDataTypeOfListOf( IsStringRep ),
                    
                    # (16) indices_of_bases_elms
                    CapJitDataTypeOfListOf(
                            CapJitDataTypeOfListOf(
-                                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ) ),
+                                   CapJitDataTypeOfListOf( IsInt ) ) ),
                    
                    # (17) hom_structure_objs_gmors
                    CapJitDataTypeOfListOf(
                            CapJitDataTypeOfListOf(
                                    CapJitDataTypeOfListOf(
-                                           CapJitDataTypeOfListOf( rec( filter := IsHomalgRingElement ) ) ) ) ),
+                                           CapJitDataTypeOfListOf( IsHomalgRingElement ) ) ) ),
                    
                    # (18) hom_structure_gmors_objs
                    CapJitDataTypeOfListOf(
                            CapJitDataTypeOfListOf(
                                    CapJitDataTypeOfListOf(
-                                           CapJitDataTypeOfListOf( rec( filter := IsHomalgRingElement ) ) ) ) ),
+                                           CapJitDataTypeOfListOf( IsHomalgRingElement ) ) ) ),
                    
                    # (19) hom_structure_ranks
                    CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ),
+                           CapJitDataTypeOfListOf( IsInt ) ),
                    
                    # (20) hom_structure_on_bases_elms
                    CapJitDataTypeOfListOf(
@@ -194,15 +194,15 @@ CapJitAddTypeSignature( "EnhancedDataTables", [ IsAlgebroidFromDataTables ],
                                                    CapJitDataTypeOfListOf(
                                                            CapJitDataTypeOfListOf(
                                                                    CapJitDataTypeOfListOf(
-                                                                           CapJitDataTypeOfListOf( rec( filter := IsHomalgRingElement ) ) ) ) ) ) ) ) ),
+                                                                           CapJitDataTypeOfListOf( IsHomalgRingElement ) ) ) ) ) ) ) ),
                    
                    # (21) indices_composable_gmors
                    CapJitDataTypeOfListOf(
                            CapJitDataTypeOfListOf(
-                                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ) ),
+                                   CapJitDataTypeOfListOf( IsInt ) ) ),
                    
                    # (22) colors
-                   rec( filter := IsRecord ) );
+                   IsRecord );
     
 end );
 

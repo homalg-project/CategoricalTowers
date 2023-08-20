@@ -74,9 +74,9 @@ CapJitAddTypeSignature( "DefiningTripleOfBouquetEnrichedOverSkeletalFinSets", [ 
     Assert( 0, IsCategoryOfBouquets( input_types[1].category ) );
     
     return CapJitDataTypeOfNTupleOf( 3,
-                   rec( filter := IsInt ),
-                   rec( filter := IsInt ),
-                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
+                   IsInt,
+                   IsInt,
+                   CapJitDataTypeOfListOf( IsInt ) );
     
 end );
 
@@ -88,8 +88,8 @@ CapJitAddTypeSignature( "DefiningPairOfBouquetMorphismEnrichedOverSkeletalFinSet
     Assert( 0, IsCategoryOfBouquets( input_types[1].category ) );
     
     return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
-                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
+                   CapJitDataTypeOfListOf( IsInt ),
+                   CapJitDataTypeOfListOf( IsInt ) );
     
 end );
 

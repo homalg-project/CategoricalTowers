@@ -102,7 +102,7 @@ DeclareAttribute( "IndicesOfGeneratingMorphisms",
 #CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromNerveData ],
 #  function ( input_types )
 #    
-#    return CapJitDataTypeOfListOf( rec( filter := IsInt ) );
+#    return CapJitDataTypeOfListOf( IsInt );
 #    
 #end );
 
@@ -113,7 +113,7 @@ DeclareAttribute( "DecompositionOfAllMorphisms",
 #  function ( input_types )
 #    
 #    return CapJitDataTypeOfListOf(
-#                   CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
+#                   CapJitDataTypeOfListOf( IsInt ) );
 #    
 #end );
 
@@ -125,8 +125,8 @@ DeclareAttribute( "RelationsAmongGeneratingMorphisms",
 #    
 #    return CapJitDataTypeOfListOf(
 #                   CapJitDataTypeOfNTupleOf( 2,
-#                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
-#                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ) );
+#                           CapJitDataTypeOfListOf( IsInt ),
+#                           CapJitDataTypeOfListOf( IsInt ) ) );
 #    
 #end );
 

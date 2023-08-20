@@ -12,7 +12,7 @@ LoadPackage( "CompilerForCAP", false );
 ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 #! true
 
-CapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], rec( filter := IsHomalgRingElement ) );;
+CapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], IsHomalgRingElement );;
 
 category_constructor :=
   data_tables -> AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables.coefficients_ring : FinalizeCategory := true ), FinalizeCategory := true ) );;

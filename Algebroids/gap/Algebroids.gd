@@ -146,7 +146,7 @@ CapJitAddTypeSignature( "BasisPathsByVertexIndex", [ IsAlgebroid ], function ( i
     
     return CapJitDataTypeOfListOf(
                    CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf( rec( filter := IsPath ) ) ) );
+                           CapJitDataTypeOfListOf( IsPath ) ) );
     
 end );
 

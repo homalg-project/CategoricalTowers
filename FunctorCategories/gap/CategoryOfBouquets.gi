@@ -76,9 +76,9 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
     ##
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 3,
-              rec( filter := IsInt ),
-              rec( filter := IsInt ),
-              CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
+              IsInt,
+              IsInt,
+              CapJitDataTypeOfListOf( IsInt ) );
     
     ##
     object_constructor := CreateBouquet;
@@ -89,8 +89,8 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
     ##
     morphism_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
-              CapJitDataTypeOfListOf( rec( filter := IsInt ) ) );
+              CapJitDataTypeOfListOf( IsInt ),
+              CapJitDataTypeOfListOf( IsInt ) );
     
     ##
     morphism_constructor := CreateBouquetMorphism;

@@ -115,7 +115,7 @@ DeclareAttribute( "BasisPathsByVertexIndex",
 #    
 #    return CapJitDataTypeOfListOf(
 #                   CapJitDataTypeOfListOf(
-#                           CapJitDataTypeOfListOf( rec( filter := IsPath ) ) ) );
+#                           CapJitDataTypeOfListOf( IsPath ) ) );
 #    
 #end );
 
@@ -152,7 +152,7 @@ DeclareAttribute( "HomStructureOnBasisPaths",
 #                                   CapJitDataTypeOfListOf(
 #                                           CapJitDataTypeOfListOf(
 #                                                   CapJitDataTypeOfListOf(
-#                                                           CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ) ) ) ) ) );
+#                                                           CapJitDataTypeOfListOf( IsInt ) ) ) ) ) ) );
 #    
 #end );
 
