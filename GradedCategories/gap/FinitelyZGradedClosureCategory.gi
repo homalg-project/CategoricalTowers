@@ -5,16 +5,16 @@
 #
 
 ##
-InstallMethod( PositivelyZGradedClosureCategory,
+InstallMethod( FinitelyZGradedClosureCategory,
         "for a CAP category",
         [ IsCapCategory ],
         
   function ( C )
     local ZC;
     
-    ZC := ZGradedClosureCategoryWithBounds( C, "lower" );
+    ZC := ZGradedClosureCategoryWithBounds( C, "both" );
     
-    Assert( 0, not CanCompute( ZC, "IsCongruentForMorphisms" ) );
+    Assert( 0, CanCompute( ZC, "IsCongruentForMorphisms" ) );
     
     return ZC;
     

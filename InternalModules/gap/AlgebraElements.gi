@@ -16,20 +16,20 @@ InstallMethod( InternalElement,
         [ IsCapCategoryMorphism ],
         
   function ( iota )
-    local source, SV;
+    local source, A;
     
     source := Source( iota );
     
-    SV := Range( iota );
+    A := Range( iota );
     
-    if not IsInternalAlgebra( SV ) then
+    if not IsInternalAlgebra( A ) then
         
         Error( "IsInternalAlgebra( Range( iota ) ) returned false\n" );
         
     fi;
     
     return ObjectifyWithAttributes( rec( ), TheTypeInternalAlgebraElement,
-                Range, SV,
+                Range, A,
                 UnderlyingEmbedding, iota );
     
 end );
@@ -37,13 +37,13 @@ end );
 ##
 # graded version
 InstallMethod( InternalElement,
-        "for an internal algebra in a positively Z-graded category, an object, and two integers",
-        [ IsInternalAlgebra and IsObjectInPositivelyZGradedClosureCategory, IsObject, IsInt, IsInt ],
+        "for an internal algebra in a Z-graded category with bounds, an object, and two integers",
+        [ IsInternalAlgebra and IsObjectInZGradedClosureCategoryWithBounds, IsObject, IsInt, IsInt ],
         
-  function ( SV, chi, degree, i )
+  function ( A, chi, degree, i )
     local iota;
     
-    iota := ComponentInclusionMorphism( SV, chi, degree, i );
+    iota := ComponentInclusionMorphism( A, chi, degree, i );
     
     return InternalElement( iota );
     
@@ -52,10 +52,10 @@ end );
 ##
 # graded version
 InstallMethod( InternalElement,
-        "for an internal algebra in a positively Z-graded category, a CAP category object, and two integers",
-        [ IsInternalAlgebra and IsObjectInPositivelyZGradedClosureCategory, IsSemisimpleCategoryObject, IsInt, IsInt ],
+        "for an internal algebra in a Z-graded category with bounds, a CAP category object, and two integers",
+        [ IsInternalAlgebra and IsObjectInZGradedClosureCategoryWithBounds, IsSemisimpleCategoryObject, IsInt, IsInt ],
         
-  function ( SV, obj, degree, i )
+  function ( A, obj, degree, i )
     local decomposition, chi;
     
     decomposition := SemisimpleCategoryObjectList( obj );
@@ -68,20 +68,20 @@ InstallMethod( InternalElement,
     
     chi := decomposition[1][2];
     
-    return InternalElement( SV, chi, degree, i );
+    return InternalElement( A, chi, degree, i );
     
 end );
 
 ##
 # graded version
 InstallMethod( InternalElement,
-        "for an internal algebra in a positively Z-graded category, an object, and an integer",
-        [ IsInternalAlgebra and IsObjectInPositivelyZGradedClosureCategory, IsObject, IsInt ],
+        "for an internal algebra in a Z-graded category with bounds, an object, and an integer",
+        [ IsInternalAlgebra and IsObjectInZGradedClosureCategoryWithBounds, IsObject, IsInt ],
         
-  function ( SV, chi, i )
+  function ( A, chi, i )
     local iota;
     
-    iota := ComponentInclusionMorphism( SV, chi, i );
+    iota := ComponentInclusionMorphism( A, chi, i );
     
     return InternalElement( iota );
     

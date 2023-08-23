@@ -16,9 +16,9 @@ chi := RepresentationCategoryObject( irr[2], RepG, "chi" );;
 
 v := chi;;
 ZRepG := PositivelyZGradedClosureCategory( RepG );
-#! The positively graded category of The representation category of
-#! SymmetricGroup( [ 1 .. 4 ] )
-V := ObjectInPositivelyZGradedClosureCategory( v, 1 );;
+#! PositivelyZGradedClosureCategory( The representation category of
+#! SymmetricGroup( [ 1 .. 4 ] ) )
+V := ObjectInZGradedClosureCategoryWithBounds( ZRepG, v, 1 );;
 SVMod := CategoryOfLeftSModules( v );
 #! Abelian category of left modules over the internal symmetric algebra of
 #! 1*(chi)
@@ -26,8 +26,8 @@ SVMod := CategoryOfLeftSModules( v );
 #! uncomputable lifts and colifts
 ModSV := CategoryOfRightSModules( v );;
 SV := UnderlyingActingObject( SVMod );
-#! <An object in The positively graded category of
-#!  The representation category of SymmetricGroup( [ 1 .. 4 ] )>
+#! <An object in PositivelyZGradedClosureCategory( The representation category of
+#!  SymmetricGroup( [ 1 .. 4 ] ) )>
 S := SymmetricAlgebraAsLeftModule( v );
 #! <An object in Abelian category of
 #!  left modules over the internal symmetric algebra of 1*(chi)
@@ -35,7 +35,7 @@ S := SymmetricAlgebraAsLeftModule( v );
 #!  uncomputable lifts and colifts>
 
 u := chi;;
-U := ObjectInPositivelyZGradedClosureCategory( u, 3 );;
+U := ObjectInZGradedClosureCategoryWithBounds( ZRepG, u, 3 );;
 F := FreeInternalModule( U, SVMod );
 #! <An object in Abelian category of
 #!  left modules over the internal symmetric algebra of 1*(chi)

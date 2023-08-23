@@ -9,7 +9,7 @@ Display( srepG );
 #! A CAP category with name The representation category
 #! of SymmetricGroup( [ 1 .. 4 ] ):
 #! 
-#! 44 primitive operations were used to derive 291 operations for this category
+#! 44 primitive operations were used to derive 345 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
@@ -83,8 +83,8 @@ W := chi;
 LoadPackage( "GradedCategories" );
 #! true
 ZsrepG := PositivelyZGradedClosureCategory( srepG );
-#! The positively graded category of The representation category of
-#! SymmetricGroup( [ 1 .. 4 ] )
+#! PositivelyZGradedClosureCategory( The representation category of
+#! SymmetricGroup( [ 1 .. 4 ] ) )
 LoadPackage( "InternalModules" );
 #! true
 SWMod := CategoryOfLeftSModules( W );
@@ -92,8 +92,8 @@ SWMod := CategoryOfLeftSModules( W );
 #! with undecidable (mathematical) equality of morphisms
 #! and uncomputable lifts and colifts
 SW := UnderlyingActingObject( SWMod );
-#! <An object in The positively graded category of The representation category
-#!  of SymmetricGroup( [ 1 .. 4 ] )>
+#! <An object in PositivelyZGradedClosureCategory( The representation category of
+#! SymmetricGroup( [ 1 .. 4 ] ) )>
 SW[0];
 #! 1*(𝟙)
 SW[1];

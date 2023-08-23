@@ -52,9 +52,6 @@ InstallMethod( SymmetricAlgebraAsZFunction,
     
     sym := AsZFunction( sym );
     
-    sym!.LowerBound := 0;
-    sym!.UpperBound := infinity;
-    
     return sym;
     
 end );
@@ -84,7 +81,7 @@ InstallMethod( SymmetricAlgebra,
     
     SV := SymmetricAlgebraAsZFunction( V );
     
-    SV := ObjectInPositivelyZGradedClosureCategory( PositivelyZGradedClosureCategory( CapCategory( V ) ), SV );
+    SV := ObjectInZGradedClosureCategoryWithBounds( PositivelyZGradedClosureCategory( CapCategory( V ) ), SV, 0, infinity );
     
     SetFilterObj( SV, IsInternalAlgebra );
     
@@ -126,7 +123,7 @@ InstallMethod( SymmetricAlgebraMultiplicationMorphism,
     
     mul := AsZFunction( mul );
     
-    return MorphismInPositivelyZGradedClosureCategory( SVoSV, mul, SV );
+    return MorphismInZGradedClosureCategoryWithBounds( SVoSV, mul, SV );
     
 end );
 
