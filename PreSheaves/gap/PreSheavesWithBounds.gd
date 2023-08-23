@@ -4,7 +4,10 @@
 # Declarations
 #
 
-#! @Chapter Category of presheaves of a (linear) category
+#! @Chapter Category of presheaves (with bounds) of a (linear) category
+
+#! Here we assume that the object set of the source category carries a discrete total order.
+#! This code is temporary and should at some point in the future be replaced by something like "presheaves with bounded support".
 
 ####################################
 #
@@ -15,40 +18,28 @@
 #! @Description
 #!  The &GAP; category of a presheaf category.
 #! @Arguments category
-DeclareCategory( "IsPreSheafCategory",
+DeclareCategory( "IsPreSheafWithBoundsCategory",
         IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of cells in a presheaf category.
 #! @Arguments cell
-DeclareCategory( "IsCellInPreSheafCategory",
+DeclareCategory( "IsCellInPreSheafWithBoundsCategory",
         IsCapCategoryCell );
 
 #! @Description
 #!  The &GAP; category of objects in a presheaf category.
 #! @Arguments obj
-DeclareCategory( "IsObjectInPreSheafCategory",
-        IsCellInPreSheafCategory and
+DeclareCategory( "IsObjectInPreSheafWithBoundsCategory",
+        IsCellInPreSheafWithBoundsCategory and
         IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a presheaf category.
 #! @Arguments mor
-DeclareCategory( "IsMorphismInPreSheafCategory",
-        IsCellInPreSheafCategory and
+DeclareCategory( "IsMorphismInPreSheafWithBoundsCategory",
+        IsCellInPreSheafWithBoundsCategory and
         IsCapCategoryMorphism );
-
-####################################
-#
-#! @Section Global variables
-#
-####################################
-
-DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY" );
-
-DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY" );
-
-DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY_WITH_DUALS" );
 
 ####################################
 #
@@ -56,14 +47,24 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATE
 #
 ####################################
 
+DeclareAttribute( "AmbientCategory",
+        IsPreSheafWithBoundsCategory );
+
+CapJitAddTypeSignature( "AmbientCategory", [ IsPreSheafWithBoundsCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( AmbientCategory( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #!  The source category $C$ of the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$).
 #! @Arguments PSh
 #! @Returns a &CAP; category
 DeclareAttribute( "Source",
-        IsPreSheafCategory );
+        IsPreSheafWithBoundsCategory );
 
-CapJitAddTypeSignature( "Source", [ IsPreSheafCategory ],
+CapJitAddTypeSignature( "Source", [ IsPreSheafWithBoundsCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( Source( input_types[1].category ) );
@@ -75,9 +76,9 @@ end );
 #! @Arguments PSh
 #! @Returns a &CAP; category
 DeclareAttribute( "Range",
-        IsPreSheafCategory );
+        IsPreSheafWithBoundsCategory );
 
-CapJitAddTypeSignature( "Range", [ IsPreSheafCategory ],
+CapJitAddTypeSignature( "Range", [ IsPreSheafWithBoundsCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( Range( input_types[1].category ) );
@@ -89,9 +90,9 @@ end );
 #! @Arguments Hom
 #! @Returns a &CAP; category
 DeclareAttribute( "OppositeOfSource",
-        IsPreSheafCategory );
+        IsPreSheafWithBoundsCategory );
 
-#CapJitAddTypeSignature( "OppositeOfSource", [ IsPreSheafCategory ],
+#CapJitAddTypeSignature( "OppositeOfSource", [ IsPreSheafWithBoundsCategory ],
 #  function ( input_types )
 #    
 #    return CapJitDataTypeOfCategory( Opposite( Source( input_types[1].category ) ) );
@@ -103,9 +104,9 @@ DeclareAttribute( "OppositeOfSource",
 #! @Arguments F
 #! @Returns a &CAP; category
 DeclareAttribute( "Source",
-        IsObjectInPreSheafCategory );
+        IsObjectInPreSheafWithBoundsCategory );
 
-#CapJitAddTypeSignature( "Source", [ IsObjectInPreSheafCategory ],
+#CapJitAddTypeSignature( "Source", [ IsObjectInPreSheafWithBoundsCategory ],
 #  function ( input_types )
 #    
 #    return CapJitDataTypeOfCategory( Source( input_types[1].category ) );
@@ -117,9 +118,9 @@ DeclareAttribute( "Source",
 #! @Arguments F
 #! @Returns a &CAP; category
 DeclareAttribute( "Range",
-        IsObjectInPreSheafCategory );
+        IsObjectInPreSheafWithBoundsCategory );
 
-#CapJitAddTypeSignature( "Range", [ IsObjectInPreSheafCategory ],
+#CapJitAddTypeSignature( "Range", [ IsObjectInPreSheafWithBoundsCategory ],
 #  function ( input_types )
 #    
 #    return CapJitDataTypeOfCategory( Range( input_types[1].category ) );
@@ -128,35 +129,27 @@ DeclareAttribute( "Range",
 
 ##
 DeclareAttribute( "PairOfFunctionsOfPreSheaf",
-        IsObjectInPreSheafCategory );
+        IsObjectInPreSheafWithBoundsCategory );
 
-#CapJitAddTypeSignature( "PairOfFunctionsOfPreSheaf", [ IsObjectInPreSheafCategory ],
+#CapJitAddTypeSignature( "PairOfFunctionsOfPreSheaf", [ IsObjectInPreSheafWithBoundsCategory ],
 #  function ( input_types )
 #    
-#    Assert( 0, IsPreSheafCategory( input_types[1].category ) );
+#    Assert( 0, IsPreSheafWithBoundsCategory( input_types[1].category ) );
 #    
 #    return CapJitDataTypeOfNTupleOf( 2,
-#                   rec( filter := IsFunction,
-#                        signature :=
-#                        [ [ CapJitDataTypeOfObjectOfCategory( Source( input_types[1].category ) ) ],
-#                          CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ] ),
-#                   rec( filter := IsFunction,
-#                        signature :=
-#                        [ [ CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ),
-#                            CapJitDataTypeOfMorphismOfCategory( Source( input_types[1].category ) ),
-#                            CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ],
-#                          CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ] ) );
+#              CapJitDataTypeOfObjectOfCategory( AmbientCategory( input_types[1].category ) ),
+#              CapJitDataTypeOfNTupleOf( 2, IsInt, IsInt ) );
 #    
 #end );
 
 ##
 DeclareAttribute( "FunctionOfPreSheafMorphism",
-        IsMorphismInPreSheafCategory );
+        IsMorphismInPreSheafWithBoundsCategory );
 
-#CapJitAddTypeSignature( "FunctionOfPreSheafMorphism", [ IsMorphismInPreSheafCategory ],
+#CapJitAddTypeSignature( "FunctionOfPreSheafMorphism", [ IsMorphismInPreSheafWithBoundsCategory ],
 #  function ( input_types )
 #    
-#    Assert( 0, IsPreSheafCategory( input_types[1].category ) );
+#    Assert( 0, IsPreSheafWithBoundsCategory( input_types[1].category ) );
 #    
 #    return rec( filter := IsFunction,
 #                signature :=
@@ -169,20 +162,25 @@ DeclareAttribute( "FunctionOfPreSheafMorphism",
 
 ##
 DeclareAttribute( "YonedaEmbeddingFunctionalData",
-        IsPreSheafCategory );
+        IsPreSheafWithBoundsCategory );
+
+#! @Arguments B
+#! @Returns a &CAP; functor
+DeclareAttribute( "YonedaEmbedding",
+        IsCapCategory );
 
 #! @Arguments PSh
 #! @Returns a &CAP; functor
 DeclareAttribute( "YonedaEmbeddingOfSourceCategory",
-        IsPreSheafCategory );
+        IsPreSheafWithBoundsCategory );
 
 #! @Arguments F
 DeclareAttribute( "CoYonedaLemmaOnObjects",
-        IsObjectInPreSheafCategory );
+        IsObjectInPreSheafWithBoundsCategory );
 
 #! @Arguments phi
 DeclareAttribute( "CoYonedaLemmaOnMorphisms",
-        IsMorphismInPreSheafCategory );
+        IsMorphismInPreSheafWithBoundsCategory );
 
 ####################################
 #
@@ -196,23 +194,18 @@ DeclareAttribute( "CoYonedaLemmaOnMorphisms",
 #!  and their natural transformations as morphisms.
 #! @Arguments B, C
 #! @Returns a &CAP; category
-#! @Group PreSheaves
-DeclareOperationWithCache( "PreSheaves",
-        [ IsCapCategory, IsCapCategory ] );
+#! @Group PreSheavesWithBounds
+DeclareOperationWithCache( "PreSheavesWithBounds",
+        [ IsCapCategory, IsCapCategory, IsStringRep ] );
 
-CapJitAddTypeSignature( "PreSheaves", [ IsCapCategory, IsCapCategory ], IsPreSheafCategory );
+CapJitAddTypeSignature( "PreSheavesWithBounds", [ IsCapCategory, IsCapCategory ], IsPreSheafWithBoundsCategory );
 
 #! @Arguments B
-#! @Group PreSheaves
-DeclareOperationWithCache( "PreSheaves",
+#! @Group PreSheavesWithBounds
+DeclareOperationWithCache( "PreSheavesWithBounds",
         [ IsCapCategory ] );
 
-CapJitAddTypeSignature( "PreSheaves", [ IsCapCategory ], IsPreSheafCategory );
-
-DeclareOperationWithCache( "PreSheavesOfEnrichedCategory",
-        [ IsCapCategory, IsCapCategory ] );
-
-CapJitAddTypeSignature( "PreSheavesOfEnrichedCategory", [ IsCapCategory, IsCapCategory ], IsPreSheafCategory );
+CapJitAddTypeSignature( "PreSheavesWithBounds", [ IsCapCategory ], IsPreSheafWithBoundsCategory );
 
 ####################################
 #
@@ -226,7 +219,7 @@ CapJitAddTypeSignature( "PreSheavesOfEnrichedCategory", [ IsCapCategory, IsCapCa
 #! @Arguments F, obj
 #! @Returns a &CAP; object
 DeclareOperation( "ApplyObjectInPreSheafCategoryToObject",
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryObject ] );
+        [ IsPreSheafWithBoundsCategory, IsObjectInPreSheafWithBoundsCategory, IsCapCategoryObject ] );
 
 #! @Description
 #!  Apply the presheaf <A>F</A> to the morphism <A>mor</A>.
@@ -234,7 +227,7 @@ DeclareOperation( "ApplyObjectInPreSheafCategoryToObject",
 #! @Arguments F, mor
 #! @Returns a &CAP; morphism
 DeclareOperation( "ApplyObjectInPreSheafCategoryToMorphism",
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ] );
+        [ IsPreSheafWithBoundsCategory, IsObjectInPreSheafWithBoundsCategory, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  Apply the presheaf morphism <A>eta</A> to the object <A>obj</A>.
@@ -242,7 +235,7 @@ DeclareOperation( "ApplyObjectInPreSheafCategoryToMorphism",
 #! @Arguments eta, obj
 #! @Returns a &CAP; morphism
 DeclareOperation( "ApplyMorphismInPreSheafCategoryToObject",
-        [ IsPreSheafCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ] );
+        [ IsPreSheafWithBoundsCategory, IsMorphismInPreSheafWithBoundsCategory, IsCapCategoryObject ] );
 
 DeclareOperation( "MorphismFromRepresentableFunctor",
-        [ IsPreSheafCategory, IsCapCategoryObject, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ] );
+        [ IsPreSheafWithBoundsCategory, IsCapCategoryObject, IsObjectInPreSheafWithBoundsCategory, IsObjectInPreSheafWithBoundsCategory, IsCapCategoryMorphism ] );
