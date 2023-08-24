@@ -687,9 +687,9 @@ end );
 
 ##
 InstallMethod( IntrinsifyObject,
-        [ IsCapCategory, IsCapCategoryObject ],
+        [ IsIntrinsicCategory, IsCapCategoryObject ],
         
-  function( C, o )
+  function( IC, o )
     local obj;
     
     obj := rec(
@@ -699,14 +699,15 @@ InstallMethod( IntrinsifyObject,
                1 := o
                );
     
-    ObjectifyObjectForCAPWithAttributes( obj, C );
+    ObjectifyWithAttributes( obj, IC!.object_type,
+            CapCategory, IC );
     
     INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( o, obj );
     
     SetIsSafeForSideEffects( obj, true );
     
-    if IsBound( C!.CanonicalizeObjectsIfZero ) and
-       C!.CanonicalizeObjectsIfZero = true then
+    if IsBound( IC!.CanonicalizeObjectsIfZero ) and
+       IC!.CanonicalizeObjectsIfZero = true then
         
         SetFilterObj( obj, CanonicalizeIfZero );
         
@@ -744,9 +745,15 @@ InstallMethod( Intrinsify,
                morphisms := rec( (String( [ posS, posT ] )) := [ 1, [ m ] ] )
                );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( mor, IC,
-            S,
-            T );
+    ObjectifyWithAttributes( mor, IC!.morphism_type,
+            CapCategory, IC,
+            Source, S,
+            Range, T );
+    
+    if IC!.predicate_logic then
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ mor ], S, IC );
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ mor ], T, IC );
+    fi;
     
     if IsEqualForObjects( S, T ) then
         SetFilterObj( mor, IC!.IsCapCategoryIntrinsicEndomorphism );
