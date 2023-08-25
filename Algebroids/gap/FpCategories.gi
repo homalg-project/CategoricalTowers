@@ -1803,6 +1803,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                   List( N2, i ->
                         AsList(
                                PreComposeList( sFinSets,
+                                       T,
                                        [ LiftAlongMonomorphism( sFinSets,
                                                InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                        B2,
@@ -1816,7 +1817,8 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                          InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                  B1,
                                                  1 + AsList( pi312 )[1 + i],
-                                                 N1 ) ] ) )[1 + 0] ),
+                                                 N1 ) ],
+                                       N1 ) )[1 + 0] ),
                   N1 );
     
     ## N2 -> N1
@@ -1825,6 +1827,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                   List( N2, i ->
                         AsList(
                                PreComposeList( sFinSets,
+                                       T,
                                        [ LiftAlongMonomorphism( sFinSets,
                                                InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                        B2,
@@ -1838,7 +1841,8 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                          InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                  B1,
                                                  1 + AsList( pi323 )[1 + i],
-                                                 N1 ) ] ) )[1 + 0] ),
+                                                 N1 ) ],
+                                       N1 ) )[1 + 0] ),
                   N1 );
     
     mus := List( N0N0N0, i ->
@@ -1899,6 +1903,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                   List( N2, i ->
                         AsList(
                                PreComposeList( sFinSets,
+                                       T,
                                        [ LiftAlongMonomorphism( sFinSets,
                                                InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                        B2,
@@ -1909,7 +1914,8 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                          InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                  B1,
                                                  1 + AsList( pi313 )[1 + i],
-                                                 N1 ) ] ) )[1 + 0] ),
+                                                 N1 ) ],
+                                       N1 ) )[1 + 0] ),
                   N1 );
     
     return Pair( Triple( N0, N1, N2 ),

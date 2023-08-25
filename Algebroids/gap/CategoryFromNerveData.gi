@@ -711,7 +711,7 @@ InstallMethod( OppositeNerveData,
         [ IsList ],
         
   function( nerve_data )
-    local objs, mors, C2, V,
+    local objs, mors, C1, C2, V,
           id, s, t, is, it, ps, pt, mu,
           DC1_sxt_C1, C1_sxt_C1, pi_s, pi_t, C2_C1_sxt_C1,
           DC1_txs_C1, C1_txs_C1, C2_C1_txs_C1,
@@ -720,6 +720,7 @@ InstallMethod( OppositeNerveData,
     objs := nerve_data[1];
     mors := nerve_data[2];
     
+    C1 := objs[2];
     C2 := objs[3];
     
     V := CapCategory( C2 );
@@ -784,10 +785,12 @@ InstallMethod( OppositeNerveData,
     
     ## C₂ → C₁ ×ₛₜ C₁ → C₁ ×ₜₛ C₁ → C₂ → C₁
     mu_op := PreComposeList( V,
+                     C2,
                      [ C2_C1_sxt_C1,
                        C1_sxt_C1_C1_txs_C1,
                        C1_txs_C1_C2,
-                       mu ] );
+                       mu ],
+                     C1 );
     
     return Pair( objs,
                  NTuple( 8,

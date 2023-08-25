@@ -996,23 +996,28 @@ AddDerivationToCAP( HomomorphismStructureOnMorphismsWithGivenObjects,
           [ UniversalMorphismFromCoproductWithGivenCoproduct, 1, RangeCategoryOfHomomorphismStructure ] ],
         
   function( cat, source, alpha, gamma, range )
-    local range_cat, distinguished_object, Ls, tau;
+    local range_cat, distinguished_object, Ls, source_alpha, range_gamma, tau;
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
     distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
     
     Ls := ExactCoverWithGlobalElements( range_cat, source );
     
+    source_alpha := Source( alpha );
+    range_gamma := Range( gamma );
+    
     tau := List( Ls, mor ->
                  InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
                          distinguished_object,
                          PreComposeList( cat,
+                                 source_alpha,
                                  [ alpha,
                                    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
                                            Range( alpha ),
                                            Source( gamma ),
                                            mor ),
-                                   gamma ] ),
+                                   gamma ],
+                                 range_gamma ),
                          range ) );
     
     return UniversalMorphismFromCoproductWithGivenCoproduct( range_cat,
@@ -1110,16 +1115,19 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
     [ PreComposeList, 2 ],
     [ MorphismConstructor, 1 ] ],
   function( cat, s, alpha, gamma, r )
-    local H, s_mors, r_mors, images;
+    local H, source_alpha, range_gamma, s_mors, r_mors, images;
     
     H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    source_alpha := Source( alpha );
+    range_gamma := Range( gamma );
     
     # r_mor = alpha s_mor gamma = Source( alpha ) --alpha-> Range( alpha ) --s_mor-> Source( gamma ) --gamma-> Range( gamma )
     
     s_mors := MorphismsOfExternalHom( cat, Range( alpha ), Source( gamma ) );
     r_mors := MorphismsOfExternalHom( cat, Source( alpha ), Range( gamma ) );
     
-    images := List( s_mors, s_mor -> -1 + SafePosition( r_mors, PreComposeList( cat, [ alpha, s_mor, gamma ] ) ) );
+    images := List( s_mors, s_mor -> -1 + SafePosition( r_mors, PreComposeList( cat, source_alpha, [ alpha, s_mor, gamma ], range_gamma ) ) );
     
     return MorphismConstructor( H,
                    s,
