@@ -91,12 +91,12 @@ end );
 DeclareAttribute( "OppositeOfSource",
         IsPreSheafCategory );
 
-CapJitAddTypeSignature( "OppositeOfSource", [ IsPreSheafCategory ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( Opposite( Source( input_types[1].category ) ) );
-    
-end );
+#CapJitAddTypeSignature( "OppositeOfSource", [ IsPreSheafCategory ],
+#  function ( input_types )
+#    
+#    return CapJitDataTypeOfCategory( Opposite( Source( input_types[1].category ) ) );
+#    
+#end );
 
 #! @Description
 #!  The source of the presheaf <A>F</A>.
@@ -105,12 +105,12 @@ end );
 DeclareAttribute( "Source",
         IsObjectInPreSheafCategory );
 
-CapJitAddTypeSignature( "Source", [ IsObjectInPreSheafCategory ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( Source( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "Source", [ IsObjectInPreSheafCategory ],
+#  function ( input_types )
+#    
+#    return CapJitDataTypeOfCategory( Source( input_types[1].category ) );
+#    
+#end );
 
 #! @Description
 #!  The target of the presheaf <A>F</A>.
@@ -119,53 +119,53 @@ end );
 DeclareAttribute( "Range",
         IsObjectInPreSheafCategory );
 
-CapJitAddTypeSignature( "Range", [ IsObjectInPreSheafCategory ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( Range( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "Range", [ IsObjectInPreSheafCategory ],
+#  function ( input_types )
+#    
+#    return CapJitDataTypeOfCategory( Range( input_types[1].category ) );
+#    
+#end );
 
 ##
 DeclareAttribute( "PairOfFunctionsOfPreSheaf",
         IsObjectInPreSheafCategory );
 
-CapJitAddTypeSignature( "PairOfFunctionsOfPreSheaf", [ IsObjectInPreSheafCategory ],
-  function ( input_types )
-    
-    Assert( 0, IsPreSheafCategory( input_types[1].category ) );
-    
-    return CapJitDataTypeOfNTupleOf( 2,
-                   rec( filter := IsFunction,
-                        signature :=
-                        [ [ CapJitDataTypeOfObjectOfCategory( Source( input_types[1].category ) ) ],
-                          CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ] ),
-                   rec( filter := IsFunction,
-                        signature :=
-                        [ [ CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ),
-                            CapJitDataTypeOfMorphismOfCategory( Source( input_types[1].category ) ),
-                            CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ],
-                          CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ] ) );
-    
-end );
+#CapJitAddTypeSignature( "PairOfFunctionsOfPreSheaf", [ IsObjectInPreSheafCategory ],
+#  function ( input_types )
+#    
+#    Assert( 0, IsPreSheafCategory( input_types[1].category ) );
+#    
+#    return CapJitDataTypeOfNTupleOf( 2,
+#                   rec( filter := IsFunction,
+#                        signature :=
+#                        [ [ CapJitDataTypeOfObjectOfCategory( Source( input_types[1].category ) ) ],
+#                          CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ] ),
+#                   rec( filter := IsFunction,
+#                        signature :=
+#                        [ [ CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ),
+#                            CapJitDataTypeOfMorphismOfCategory( Source( input_types[1].category ) ),
+#                            CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ],
+#                          CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ] ) );
+#    
+#end );
 
 ##
 DeclareAttribute( "FunctionOfPreSheafMorphism",
         IsMorphismInPreSheafCategory );
 
-CapJitAddTypeSignature( "FunctionOfPreSheafMorphism", [ IsMorphismInPreSheafCategory ],
-  function ( input_types )
-    
-    Assert( 0, IsPreSheafCategory( input_types[1].category ) );
-    
-    return rec( filter := IsFunction,
-                signature :=
-                [ [ CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ),
-                    CapJitDataTypeOfObjectOfCategory( Source( input_types[1].category ) ),
-                    CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ],
-                  CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ] );
-    
-end );
+#CapJitAddTypeSignature( "FunctionOfPreSheafMorphism", [ IsMorphismInPreSheafCategory ],
+#  function ( input_types )
+#    
+#    Assert( 0, IsPreSheafCategory( input_types[1].category ) );
+#    
+#    return rec( filter := IsFunction,
+#                signature :=
+#                [ [ CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ),
+#                    CapJitDataTypeOfObjectOfCategory( Source( input_types[1].category ) ),
+#                    CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ],
+#                  CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ] );
+#    
+#end );
 
 ##
 DeclareAttribute( "YonedaEmbeddingFunctionalData",
@@ -251,4 +251,3 @@ DeclareOperation( "ApplyMorphismInPreSheafCategoryToObject",
 
 DeclareOperation( "MorphismFromRepresentableFunctor",
         [ IsPreSheafCategory, IsCapCategoryObject, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ] );
-
