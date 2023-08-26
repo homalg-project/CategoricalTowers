@@ -84,7 +84,7 @@ InstallMethod( SymmetricAlgebra,
     
     SV := SymmetricAlgebraAsZFunction( V );
     
-    SV := ObjectInPositivelyZGradedCategory( PositivelyZGradedCategory( CapCategory( V ) ), SV );
+    SV := ObjectInPositivelyZGradedClosureCategory( PositivelyZGradedClosureCategory( CapCategory( V ) ), SV );
     
     SetFilterObj( SV, IsInternalAlgebra );
     
@@ -126,7 +126,7 @@ InstallMethod( SymmetricAlgebraMultiplicationMorphism,
     
     mul := AsZFunction( mul );
     
-    return MorphismInPositivelyZGradedCategory( SVoSV, mul, SV );
+    return MorphismInPositivelyZGradedClosureCategory( SVoSV, mul, SV );
     
 end );
 

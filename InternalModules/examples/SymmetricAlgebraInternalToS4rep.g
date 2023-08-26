@@ -82,7 +82,7 @@ W := chi;
 #! 1*(χ)
 LoadPackage( "GradedCategories" );
 #! true
-ZsrepG := PositivelyZGradedCategory( srepG );
+ZsrepG := PositivelyZGradedClosureCategory( srepG );
 #! The positively graded category of The representation category of
 #! SymmetricGroup( [ 1 .. 4 ] )
 LoadPackage( "InternalModules" );

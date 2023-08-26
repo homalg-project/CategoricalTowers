@@ -10,10 +10,10 @@ RepG := RepresentationCategoryZGraded( G );;
 irr := Irr( G );;
 
 v := RepresentationCategoryZGradedObject( 1, irr[2], RepG );;
-ZRepG := PositivelyZGradedCategory( RepG );
+ZRepG := PositivelyZGradedClosureCategory( RepG );
 #! The positively graded category of The skeletal Z-graded representation category
 #! of SymmetricGroup( [ 1 .. 4 ] )
-V := ObjectInPositivelyZGradedCategory( v );;
+V := ObjectInPositivelyZGradedClosureCategory( v );;
 SVMod := CategoryOfLeftSModules( v );
 #! Abelian category of left modules over the internal symmetric algebra of
 #! 1*(x_[1, 2])
@@ -30,7 +30,7 @@ S := SymmetricAlgebraAsLeftModule( v );
 #!  uncomputable lifts and colifts>
 
 u := RepresentationCategoryZGradedObject( 3, irr[2], RepG );;
-U := ObjectInPositivelyZGradedCategory( u );;
+U := ObjectInPositivelyZGradedClosureCategory( u );;
 F := FreeInternalModule( U, SVMod );
 #! <An object in Abelian category
 #!  of left modules over the internal symmetric algebra of 1*(x_[1, 2])

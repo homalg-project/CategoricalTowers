@@ -29,7 +29,7 @@ Braiding( ρ, ρ )
 
 LoadPackage( "GradedCategories" )
 
-ZsrepG = PositivelyZGradedCategory( srepG )
+ZsrepG = PositivelyZGradedClosureCategory( srepG )
 
 LoadPackage( "InternalModules" )
 

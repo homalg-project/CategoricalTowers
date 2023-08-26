@@ -38,7 +38,7 @@ end );
 # graded version
 InstallMethod( InternalElement,
         "for an internal algebra in a positively Z-graded category, an object, and two integers",
-        [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsObject, IsInt, IsInt ],
+        [ IsInternalAlgebra and IsObjectInPositivelyZGradedClosureCategory, IsObject, IsInt, IsInt ],
         
   function ( SV, chi, degree, i )
     local iota;
@@ -53,7 +53,7 @@ end );
 # graded version
 InstallMethod( InternalElement,
         "for an internal algebra in a positively Z-graded category, a CAP category object, and two integers",
-        [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsSemisimpleCategoryObject, IsInt, IsInt ],
+        [ IsInternalAlgebra and IsObjectInPositivelyZGradedClosureCategory, IsSemisimpleCategoryObject, IsInt, IsInt ],
         
   function ( SV, obj, degree, i )
     local decomposition, chi;
@@ -76,7 +76,7 @@ end );
 # graded version
 InstallMethod( InternalElement,
         "for an internal algebra in a positively Z-graded category, an object, and an integer",
-        [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsObject, IsInt ],
+        [ IsInternalAlgebra and IsObjectInPositivelyZGradedClosureCategory, IsObject, IsInt ],
         
   function ( SV, chi, i )
     local iota;

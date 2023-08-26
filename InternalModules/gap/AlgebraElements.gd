@@ -50,13 +50,13 @@ DeclareOperation( "InternalElement",
 #! @Arguments SV, chi, degree, i
 #! @Group InternalElement
 DeclareOperation( "InternalElement",
-        [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsObject, IsInt, IsInt ] );
+        [ IsInternalAlgebra and IsObjectInPositivelyZGradedClosureCategory, IsObject, IsInt, IsInt ] );
 
 # graded version
 #! @Arguments SV, chi, i
 #! @Group InternalElement
 DeclareOperation( "InternalElement",
-        [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsObject, IsInt ] );
+        [ IsInternalAlgebra and IsObjectInPositivelyZGradedClosureCategory, IsObject, IsInt ] );
 
 ####################################
 ##
@@ -65,7 +65,7 @@ DeclareOperation( "InternalElement",
 ####################################
 
 #! @Arguments p
-#! @Returns a CAP; category morphism in the filter <C>IsMorphismInPositivelyZGradedCategory</C>
+#! @Returns a &CAP; category morphism (<C>IsMorphismInPositivelyZGradedClosureCategory</C>)
 DeclareAttribute( "UnderlyingEmbedding", IsElementInInternalAlgebraOrModule );
 
 #! @Arguments e

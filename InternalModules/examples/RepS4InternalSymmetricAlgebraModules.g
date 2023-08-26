@@ -15,10 +15,10 @@ nu := RepresentationCategoryObject( irr[4], RepG, "nu" );;
 chi := RepresentationCategoryObject( irr[2], RepG, "chi" );;
 
 v := chi;;
-ZRepG := PositivelyZGradedCategory( RepG );
+ZRepG := PositivelyZGradedClosureCategory( RepG );
 #! The positively graded category of The representation category of
 #! SymmetricGroup( [ 1 .. 4 ] )
-V := ObjectInPositivelyZGradedCategory( v, 1 );;
+V := ObjectInPositivelyZGradedClosureCategory( v, 1 );;
 SVMod := CategoryOfLeftSModules( v );
 #! Abelian category of left modules over the internal symmetric algebra of
 #! 1*(chi)
@@ -35,7 +35,7 @@ S := SymmetricAlgebraAsLeftModule( v );
 #!  uncomputable lifts and colifts>
 
 u := chi;;
-U := ObjectInPositivelyZGradedCategory( u, 3 );;
+U := ObjectInPositivelyZGradedClosureCategory( u, 3 );;
 F := FreeInternalModule( U, SVMod );
 #! <An object in Abelian category of
 #!  left modules over the internal symmetric algebra of 1*(chi)

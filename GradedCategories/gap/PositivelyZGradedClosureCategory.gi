@@ -149,9 +149,9 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY,
           ] );
 
 ##
-InstallMethodForCompilerForCAP( ObjectInPositivelyZGradedCategory,
+InstallMethodForCompilerForCAP( ObjectInPositivelyZGradedClosureCategory,
         "for a positively Z-graded category and an infinite list",
-        [ IsPositivelyZGradedCategory, IsZFunction ],
+        [ IsPositivelyZGradedClosureCategory, IsZFunction ],
         
   function ( ZC, L )
     local M;
@@ -174,9 +174,9 @@ InstallMethodForCompilerForCAP( ObjectInPositivelyZGradedCategory,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ObjectInPositivelyZGradedCategory,
+InstallMethodForCompilerForCAP( ObjectInPositivelyZGradedClosureCategory,
         "for a positively Z-graded category, a unary function, an integer, an integer or infinity",
-        [ IsPositivelyZGradedCategory, IsFunction, IsInt, IsAdditiveElement ],
+        [ IsPositivelyZGradedClosureCategory, IsFunction, IsInt, IsAdditiveElement ],
         
   function ( ZC, f, lower_bound, upper_bound )
     local L, M;
@@ -186,12 +186,12 @@ InstallMethodForCompilerForCAP( ObjectInPositivelyZGradedCategory,
     L!.LowerBound := lower_bound;
     L!.UpperBound := upper_bound;
     
-    return ObjectInPositivelyZGradedCategory( ZC, L );
+    return ObjectInPositivelyZGradedClosureCategory( ZC, L );
     
 end );
 
 ##
-InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
+InstallMethodWithCrispCache( ObjectInPositivelyZGradedClosureCategory,
         "for CAP category object and an integer",
         [ IsCapCategoryObject, IsInt ],
         
@@ -213,15 +213,15 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
         
     end;
     
-    ZC := PositivelyZGradedCategory( C );
+    ZC := PositivelyZGradedClosureCategory( C );
     
     ## do not overwrite M since it used in the above function f
-    return ObjectInPositivelyZGradedCategory( ZC, f, degree, degree );
+    return ObjectInPositivelyZGradedClosureCategory( ZC, f, degree, degree );
     
 end );
 
 ##
-InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
+InstallMethodWithCrispCache( ObjectInPositivelyZGradedClosureCategory,
         "for an object in a Z-graded semisimple representation category",
         [ IsSemisimpleCategoryObject and IsRepresentationCategoryZGradedObject ],
         
@@ -250,15 +250,15 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
         
     end;
     
-    ZC := PositivelyZGradedCategory( C );
+    ZC := PositivelyZGradedClosureCategory( C );
     
     ## do not overwrite M since it used in the above function f
-    return ObjectInPositivelyZGradedCategory( ZC, f, Minimum( degrees ), Maximum( degrees ) );
+    return ObjectInPositivelyZGradedClosureCategory( ZC, f, Minimum( degrees ), Maximum( degrees ) );
     
 end );
 
 ##
-InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
+InstallMethodWithCrispCache( ObjectInPositivelyZGradedClosureCategory,
         "for an object in a semisimple CAP category and and integer",
         [ IsSemisimpleCategoryObject and HasDegreeDecomposition, IsInt ],
         
@@ -271,12 +271,12 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
         Error( "the internal degrees of M is not equal to the given degree\n" );
     fi;
     
-    return ObjectInPositivelyZGradedCategory( M );
+    return ObjectInPositivelyZGradedClosureCategory( M );
     
 end );
 
 ##
-InstallMethod( ObjectInPositivelyZGradedCategory,
+InstallMethod( ObjectInPositivelyZGradedClosureCategory,
         "for a list of pairs",
         [ IsList ],
         
@@ -306,9 +306,9 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
         
     end;
     
-    ZC := PositivelyZGradedCategory( CapCategory( zero ) );
+    ZC := PositivelyZGradedClosureCategory( CapCategory( zero ) );
     
-    M := ObjectInPositivelyZGradedCategory( ZC, f, Minimum( degrees ), Maximum( degrees ) );
+    M := ObjectInPositivelyZGradedClosureCategory( ZC, f, Minimum( degrees ), Maximum( degrees ) );
     
     ## do not overwrite degrees as it is used in the function f as a multi-list
     SetNonZeroDegreesHull( M, Set( degrees ) );
@@ -320,7 +320,7 @@ end );
 ##
 InstallMethod( ActiveLowerBound,
         "for an object in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory ],
+        [ IsObjectInPositivelyZGradedClosureCategory ],
         
   function ( M )
     
@@ -331,7 +331,7 @@ end );
 ##
 InstallMethod( SetActiveLowerBound,
         "for an object in a positively Z-graded category and an integer or infinity",
-        [ IsObjectInPositivelyZGradedCategory, IsAdditiveElement ],
+        [ IsObjectInPositivelyZGradedClosureCategory, IsAdditiveElement ],
         
   function ( M, l )
     local L;
@@ -349,7 +349,7 @@ end );
 ##
 InstallMethod( ActiveUpperBound,
         "for an object in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory ],
+        [ IsObjectInPositivelyZGradedClosureCategory ],
         
   function ( M )
     
@@ -360,7 +360,7 @@ end );
 ##
 InstallMethod( SetActiveUpperBound,
         "for an object in a positively Z-graded category and an integer or infinity",
-        [ IsObjectInPositivelyZGradedCategory, IsAdditiveElement ],
+        [ IsObjectInPositivelyZGradedClosureCategory, IsAdditiveElement ],
         
   function ( M, u )
     local L;
@@ -378,7 +378,7 @@ end );
 ##
 InstallMethod( NonZeroDegrees,
         "for an object in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory and HasNonZeroDegreesHull ],
+        [ IsObjectInPositivelyZGradedClosureCategory and HasNonZeroDegreesHull ],
         
   function ( M )
     local degrees;
@@ -394,7 +394,7 @@ end );
 ##
 InstallMethod( NonZeroParts,
         "for an object in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory ],
+        [ IsObjectInPositivelyZGradedClosureCategory ],
         
   function ( M )
     
@@ -405,7 +405,7 @@ end );
 ##
 InstallMethod( NonZeroPartsWithDegrees,
         "for an object in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory ],
+        [ IsObjectInPositivelyZGradedClosureCategory ],
         
   function ( M )
     
@@ -416,7 +416,7 @@ end );
 ##
 InstallMethod( SupportWithDegreesWithGivenDegrees,
         "for an object in a positively Z-graded category and a list",
-        [ IsObjectInPositivelyZGradedCategory, IsList ],
+        [ IsObjectInPositivelyZGradedClosureCategory, IsList ],
         
   function ( M, degrees )
     
@@ -429,7 +429,7 @@ end );
 ##
 InstallMethod( SupportWithDegrees,
         "for an object in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory ],
+        [ IsObjectInPositivelyZGradedClosureCategory ],
         
   function ( M )
     
@@ -438,9 +438,9 @@ InstallMethod( SupportWithDegrees,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( MorphismInPositivelyZGradedCategory,
+InstallOtherMethodForCompilerForCAP( MorphismInPositivelyZGradedClosureCategory,
         "for a positively Z-graded category, an object in a positively Z-graded category, an infinite list, and an object in a positively Z-graded category",
-        [ IsPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory, IsZFunction, IsObjectInPositivelyZGradedCategory ],
+        [ IsPositivelyZGradedClosureCategory, IsObjectInPositivelyZGradedClosureCategory, IsZFunction, IsObjectInPositivelyZGradedClosureCategory ],
         
   function ( ZC, S, L, T )
     local phi;
@@ -464,13 +464,13 @@ InstallOtherMethodForCompilerForCAP( MorphismInPositivelyZGradedCategory,
 end );
 
 ##
-InstallMethod( MorphismInPositivelyZGradedCategory,
+InstallMethod( MorphismInPositivelyZGradedClosureCategory,
         "for an object in a positively Z-graded category, an infinite list, and an object in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory, IsZFunction, IsObjectInPositivelyZGradedCategory ],
+        [ IsObjectInPositivelyZGradedClosureCategory, IsZFunction, IsObjectInPositivelyZGradedClosureCategory ],
         
   function ( S, L, T )
     
-    return MorphismInPositivelyZGradedCategory( CapCategory( S ),
+    return MorphismInPositivelyZGradedClosureCategory( CapCategory( S ),
                    S,
                    L,
                    T );
@@ -478,13 +478,13 @@ InstallMethod( MorphismInPositivelyZGradedCategory,
 end );
 
 ##
-InstallMethod( MorphismInPositivelyZGradedCategory,
+InstallMethod( MorphismInPositivelyZGradedClosureCategory,
         "for an object in a positively Z-graded category, a function, and an object in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory, IsFunction, IsObjectInPositivelyZGradedCategory ],
+        [ IsObjectInPositivelyZGradedClosureCategory, IsFunction, IsObjectInPositivelyZGradedClosureCategory ],
         
   function ( S, f, T )
     
-    return MorphismInPositivelyZGradedCategory(
+    return MorphismInPositivelyZGradedClosureCategory(
                    S,
                    AsZFunction( f ),
                    T );
@@ -492,9 +492,9 @@ InstallMethod( MorphismInPositivelyZGradedCategory,
 end );
 
 ##
-InstallMethodWithCrispCache( MorphismInPositivelyZGradedCategory,
+InstallMethodWithCrispCache( MorphismInPositivelyZGradedClosureCategory,
         "for an object in a positively Z-graded category, a CAP category morphism, an integer, and an object in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory, IsCapCategoryMorphism, IsInt, IsObjectInPositivelyZGradedCategory ],
+        [ IsObjectInPositivelyZGradedClosureCategory, IsCapCategoryMorphism, IsInt, IsObjectInPositivelyZGradedClosureCategory ],
         
   function ( S, phi, degree, T )
     local f;
@@ -529,7 +529,7 @@ InstallMethodWithCrispCache( MorphismInPositivelyZGradedCategory,
         
     end;
     
-    return MorphismInPositivelyZGradedCategory(
+    return MorphismInPositivelyZGradedClosureCategory(
                    S,
                    f,
                    T );
@@ -539,7 +539,7 @@ end );
 ##
 InstallMethod( ComponentInclusionMorphism,
         "for an object in a positively Z-graded category, an object, and an integer",
-        [ IsObjectInPositivelyZGradedCategory, IsObject, IsInt, IsInt ],
+        [ IsObjectInPositivelyZGradedClosureCategory, IsObject, IsInt, IsInt ],
         
   function ( M, chi, degree, i )
     local Md, multiplicity, support, l, iota, underlying_category, V, f, summands, iota_d;
@@ -601,8 +601,8 @@ InstallMethod( ComponentInclusionMorphism,
         
     end;
     
-    iota := MorphismInPositivelyZGradedCategory(
-                    ObjectInPositivelyZGradedCategory( V, degree ),
+    iota := MorphismInPositivelyZGradedClosureCategory(
+                    ObjectInPositivelyZGradedClosureCategory( V, degree ),
                     AsZFunction( f ),
                     M );
     
@@ -615,7 +615,7 @@ end );
 ##
 InstallMethod( ComponentInclusionMorphism,
         "for an object in a positively Z-graded category, an object, and an integer",
-        [ IsObjectInPositivelyZGradedCategory, IsObject and HasUnderlyingDegree, IsInt ],
+        [ IsObjectInPositivelyZGradedClosureCategory, IsObject and HasUnderlyingDegree, IsInt ],
         
   function ( M, chi, i )
     
@@ -626,7 +626,7 @@ end );
 ##
 InstallMethod( ComponentInclusionMorphism,
         "for an object in a positively Z-graded category and an integer",
-        [ IsObjectInPositivelyZGradedCategory, IsInt ],
+        [ IsObjectInPositivelyZGradedClosureCategory, IsInt ],
         
   function ( M, degree )
     local Md, f, iota;
@@ -654,8 +654,8 @@ InstallMethod( ComponentInclusionMorphism,
         
     end;
     
-    iota := MorphismInPositivelyZGradedCategory(
-                    ObjectInPositivelyZGradedCategory( Md, degree ),
+    iota := MorphismInPositivelyZGradedClosureCategory(
+                    ObjectInPositivelyZGradedClosureCategory( Md, degree ),
                     AsZFunction( f ),
                     M );
     
@@ -668,7 +668,7 @@ end );
 ##
 InstallMethod( DiagonalEmbeddingWithGivenDegrees,
         "for an object in a positively Z-graded category and a list",
-        [ IsObjectInPositivelyZGradedCategory, IsList ],
+        [ IsObjectInPositivelyZGradedClosureCategory, IsList ],
         
   function ( M, degrees )
     local support_with_degrees, support, S, f;
@@ -681,7 +681,7 @@ InstallMethod( DiagonalEmbeddingWithGivenDegrees,
     
     support_with_degrees := SupportWithDegreesWithGivenDegrees( M, degrees );
     
-    S := ObjectInPositivelyZGradedCategory( support_with_degrees );
+    S := ObjectInPositivelyZGradedClosureCategory( support_with_degrees );
     
     degrees := List( support_with_degrees, a -> a[1] );
     support := List( support_with_degrees, a -> a[2] );
@@ -721,7 +721,7 @@ InstallMethod( DiagonalEmbeddingWithGivenDegrees,
         
     end;
     
-    return MorphismInPositivelyZGradedCategory(
+    return MorphismInPositivelyZGradedClosureCategory(
                    S,
                    AsZFunction( f ),
                    M );
@@ -731,7 +731,7 @@ end );
 ## this method is used for the addition method of internal module elements
 InstallMethod( DiagonalEmbedding,
         "for a finite object in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory ],
+        [ IsObjectInPositivelyZGradedClosureCategory ],
         
   function ( M )
     
@@ -748,8 +748,8 @@ end );
 ## this method was previously used for the addition method of internal module elements
 InstallMethod( DiagonalEmbedding,
         "for two objects in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory and HasSupportWithDegrees,
-          IsObjectInPositivelyZGradedCategory ],
+        [ IsObjectInPositivelyZGradedClosureCategory and HasSupportWithDegrees,
+          IsObjectInPositivelyZGradedClosureCategory ],
         
   function ( S, M )
     local support, degrees, f, iota;
@@ -791,7 +791,7 @@ InstallMethod( DiagonalEmbedding,
         
     end;
     
-    return MorphismInPositivelyZGradedCategory(
+    return MorphismInPositivelyZGradedClosureCategory(
                    S,
                    AsZFunction( f ),
                    M );
@@ -801,7 +801,7 @@ end );
 ##
 InstallMethod( ActiveLowerBound,
         "for a morphism in a positively Z-graded category",
-        [ IsMorphismInPositivelyZGradedCategory ],
+        [ IsMorphismInPositivelyZGradedClosureCategory ],
         
   function ( phi )
     local l;
@@ -817,7 +817,7 @@ end );
 ##
 InstallMethod( SetActiveLowerBound,
         "for a morphism in a positively Z-graded category and an integer or infinity",
-        [ IsMorphismInPositivelyZGradedCategory, IsAdditiveElement ],
+        [ IsMorphismInPositivelyZGradedClosureCategory, IsAdditiveElement ],
         
   function ( phi, l )
     
@@ -832,7 +832,7 @@ end );
 ##
 InstallMethod( ActiveUpperBound,
         "for a morphism in a positively Z-graded category",
-        [ IsMorphismInPositivelyZGradedCategory ],
+        [ IsMorphismInPositivelyZGradedClosureCategory ],
         
   function ( phi )
     local u;
@@ -848,7 +848,7 @@ end );
 ##
 InstallMethod( SetActiveUpperBound,
         "for a morphism in a positively Z-graded category and an integer or infinity",
-        [ IsMorphismInPositivelyZGradedCategory, IsAdditiveElement ],
+        [ IsMorphismInPositivelyZGradedClosureCategory, IsAdditiveElement ],
         
   function ( phi, u )
     
@@ -863,7 +863,7 @@ end );
 ##
 InstallMethod( TensorProductIndices,
         "for two objects in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory ],
+        [ IsObjectInPositivelyZGradedClosureCategory, IsObjectInPositivelyZGradedClosureCategory ],
         
   function ( A, B )
     
@@ -875,7 +875,7 @@ end );
 ##
 InstallMethod( TensorProductIndices,
         "for thre objects in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory ],
+        [ IsObjectInPositivelyZGradedClosureCategory, IsObjectInPositivelyZGradedClosureCategory, IsObjectInPositivelyZGradedClosureCategory ],
         
   function ( A, B, C )
     local tensor_product_indices_A_BC, tensor_product_indices_BC,
@@ -893,7 +893,7 @@ InstallMethod( TensorProductIndices,
 end );
 
 ##
-InstallMethod( PositivelyZGradedCategory,
+InstallMethod( PositivelyZGradedClosureCategory,
         "for a CAP category",
         [ IsCapCategory ],
         
@@ -901,7 +901,7 @@ InstallMethod( PositivelyZGradedCategory,
     local name, ZC, properties, create_func_object, create_func_morphism,
           recnames, skip, func, pos, info, with_given_object_name, add, required_operations;
     
-    if IsPositivelyZGradedCategory( C ) then
+    if IsPositivelyZGradedClosureCategory( C ) then
         Error( "trying to iterate the construction\n" );
     fi;
     
@@ -918,9 +918,9 @@ InstallMethod( PositivelyZGradedCategory,
     name := Concatenation( name, Name( C ) );
     
     ZC := CreateCapCategory( name,
-                  IsPositivelyZGradedCategory,
-                  IsObjectInPositivelyZGradedCategory,
-                  IsMorphismInPositivelyZGradedCategory,
+                  IsPositivelyZGradedClosureCategory,
+                  IsObjectInPositivelyZGradedClosureCategory,
+                  IsMorphismInPositivelyZGradedClosureCategory,
                   IsCapCategoryTwoCell
                   : is_computable := false );
     
@@ -965,7 +965,7 @@ InstallMethod( PositivelyZGradedCategory,
         zero!.LowerBound := infinity;
         zero!.UpperBound := - infinity;
         
-        return ObjectInPositivelyZGradedCategory( ZC, zero );
+        return ObjectInPositivelyZGradedClosureCategory( ZC, zero );
         
     end );
     
@@ -989,7 +989,7 @@ InstallMethod( PositivelyZGradedCategory,
             L!.LowerBound := Minimum( List( arg, ActiveLowerBound ) );
             L!.UpperBound := Maximum( List( arg, ActiveUpperBound ) );
             
-            object := ObjectInPositivelyZGradedCategory( ZC, L );
+            object := ObjectInPositivelyZGradedClosureCategory( ZC, L );
             
             if ForAll( arg, x -> HasNonZeroDegreesHull( x ) or HasNonZeroDegrees ( x ) ) then
                 
@@ -1023,7 +1023,7 @@ InstallMethod( PositivelyZGradedCategory,
             
             T := CallFuncList( output_range_getter, Concatenation( [ ZC ], arg ) );
             
-            return MorphismInPositivelyZGradedCategory(
+            return MorphismInPositivelyZGradedClosureCategory(
                            S,
                            AsZFunction( i -> CallFuncList( oper, List( arg, a -> CertainDegreePart( a, i ) ) ) ),
                            T );
@@ -1102,7 +1102,7 @@ InstallMethod( PositivelyZGradedCategory,
         AddMultiplyWithElementOfCommutativeRingForMorphisms( ZC,
           function ( r, phi )
             
-            return MorphismInPositivelyZGradedCategory(
+            return MorphismInPositivelyZGradedClosureCategory(
                            Source( phi ),
                            AsZFunction( i -> MultiplyWithElementOfCommutativeRingForMorphisms( r, phi[i] ) ),
                            Range( phi ) );
@@ -1153,7 +1153,7 @@ InstallMethod( PositivelyZGradedCategory,
             L!.LowerBound := 0;
             L!.UpperBound := 0;
             
-            return ObjectInPositivelyZGradedCategory( ZC, L );
+            return ObjectInPositivelyZGradedClosureCategory( ZC, L );
             
         end );
         
@@ -1185,7 +1185,7 @@ InstallMethod( PositivelyZGradedCategory,
             L!.LowerBound := ActiveLowerBound( A ) + ActiveLowerBound( B );
             L!.UpperBound := ActiveUpperBound( A ) + ActiveUpperBound( B );
             
-            tensor_product := ObjectInPositivelyZGradedCategory( ZC, L );
+            tensor_product := ObjectInPositivelyZGradedClosureCategory( ZC, L );
             
             if ForAll( [ A, B ], x -> HasNonZeroDegreesHull( x ) or HasNonZeroDegrees ( x ) ) then
                 
@@ -1225,7 +1225,7 @@ InstallMethod( PositivelyZGradedCategory,
                 
             end;
             
-            return MorphismInPositivelyZGradedCategory(
+            return MorphismInPositivelyZGradedClosureCategory(
                            S,
                            AsZFunction( f ),
                            T );
@@ -1244,7 +1244,7 @@ InstallMethod( PositivelyZGradedCategory,
                 
             end;
             
-            return MorphismInPositivelyZGradedCategory(
+            return MorphismInPositivelyZGradedClosureCategory(
                            1oA,
                            AsZFunction( f ),
                            A );
@@ -1263,7 +1263,7 @@ InstallMethod( PositivelyZGradedCategory,
                 
             end;
             
-            return MorphismInPositivelyZGradedCategory(
+            return MorphismInPositivelyZGradedClosureCategory(
                            A,
                            AsZFunction( f ),
                            1oA );
@@ -1282,7 +1282,7 @@ InstallMethod( PositivelyZGradedCategory,
                 
             end;
             
-            return MorphismInPositivelyZGradedCategory(
+            return MorphismInPositivelyZGradedClosureCategory(
                            Ao1,
                            AsZFunction( f ),
                            A );
@@ -1301,7 +1301,7 @@ InstallMethod( PositivelyZGradedCategory,
                 
             end;
             
-            return MorphismInPositivelyZGradedCategory(
+            return MorphismInPositivelyZGradedClosureCategory(
                            A,
                            AsZFunction( f ),
                            Ao1 );
@@ -1376,7 +1376,7 @@ InstallMethod( PositivelyZGradedCategory,
                 
             end;
             
-            return MorphismInPositivelyZGradedCategory(
+            return MorphismInPositivelyZGradedClosureCategory(
                            AoBC,
                            AsZFunction( f ),
                            ABoC );
@@ -1451,7 +1451,7 @@ InstallMethod( PositivelyZGradedCategory,
                 
             end;
             
-            return MorphismInPositivelyZGradedCategory(
+            return MorphismInPositivelyZGradedClosureCategory(
                            ABoC,
                            AsZFunction( f ),
                            AoBC );
@@ -1484,7 +1484,7 @@ InstallMethod( PositivelyZGradedCategory,
                     
                 end;
                 
-                return MorphismInPositivelyZGradedCategory(
+                return MorphismInPositivelyZGradedClosureCategory(
                                AoB,
                                AsZFunction( f ),
                                BoA );
@@ -1519,7 +1519,7 @@ InstallMethod( PositivelyZGradedCategory,
                     
                 end;
                 
-                return MorphismInPositivelyZGradedCategory(
+                return MorphismInPositivelyZGradedClosureCategory(
                                BoA,
                                AsZFunction( f ),
                                AoB );
@@ -1541,7 +1541,7 @@ end );
 ##
 InstallMethod( CertainDegreePart,
         "for a cell in a positively Z-graded category and an integer",
-        [ IsCellInPositivelyZGradedCategory, IsInt ],
+        [ IsCellInPositivelyZGradedClosureCategory, IsInt ],
         
   function ( c, n )
     
@@ -1574,7 +1574,7 @@ end );
 ##
 InstallMethod( \[\],
         "for a cell in a positively Z-graded category and an integer",
-        [ IsCellInPositivelyZGradedCategory, IsInt ],
+        [ IsCellInPositivelyZGradedClosureCategory, IsInt ],
         
   function ( c, n )
     
@@ -1585,7 +1585,7 @@ end );
 ##
 InstallMethod( Sublist,
         "for a cell in a positively Z-graded category and a list",
-        [ IsCellInPositivelyZGradedCategory, IsList ],
+        [ IsCellInPositivelyZGradedClosureCategory, IsList ],
         
   function ( c, L )
     

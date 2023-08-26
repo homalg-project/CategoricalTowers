@@ -15,27 +15,27 @@
 #! @Description
 #!  The &GAP; category of positively Z-graded categories.
 #! @Arguments object
-DeclareCategory( "IsPositivelyZGradedCategory",
+DeclareCategory( "IsPositivelyZGradedClosureCategory",
         IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of cells in a positively Z-graded category.
 #! @Arguments object
-DeclareCategory( "IsCellInPositivelyZGradedCategory",
+DeclareCategory( "IsCellInPositivelyZGradedClosureCategory",
         IsCapCategoryCell );
 
 #! @Description
 #!  The &GAP; category of objects in a positively Z-graded category.
 #! @Arguments object
-DeclareCategory( "IsObjectInPositivelyZGradedCategory",
-        IsCellInPositivelyZGradedCategory and
+DeclareCategory( "IsObjectInPositivelyZGradedClosureCategory",
+        IsCellInPositivelyZGradedClosureCategory and
         IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a positively Z-graded category.
 #! @Arguments morphism
-DeclareCategory( "IsMorphismInPositivelyZGradedCategory",
-        IsCellInPositivelyZGradedCategory and
+DeclareCategory( "IsMorphismInPositivelyZGradedClosureCategory",
+        IsCellInPositivelyZGradedClosureCategory and
         IsCapCategoryMorphism );
 
 ####################################
@@ -55,12 +55,12 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY" );
 
 #! @Description
 #!  Return the category $C$ underlying the positively Z-graded category
-#!  category <A>ZC</A><C> := PositivelyZGradedCategory(</C> $C$ <C>)</C>).
+#!  category <A>ZC</A><C> := PositivelyZGradedClosureCategory(</C> $C$ <C>)</C>).
 #! @Arguments UC
 DeclareAttribute( "UnderlyingCategory",
-        IsPositivelyZGradedCategory );
+        IsPositivelyZGradedClosureCategory );
 
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsPositivelyZGradedCategory ],
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsPositivelyZGradedClosureCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
@@ -72,45 +72,45 @@ end );
 #! @Arguments c
 #! @Returns a Z-function
 DeclareAttribute( "UnderlyingZFunction",
-        IsCellInPositivelyZGradedCategory );
+        IsCellInPositivelyZGradedClosureCategory );
 
 #! @Description
 #!  The support of the object <A>c</A>.
 #! @Arguments object
 #! @Returns a list
 DeclareAttribute( "NonZeroParts",
-        IsObjectInPositivelyZGradedCategory );
+        IsObjectInPositivelyZGradedClosureCategory );
 
 #! @Description
 #!  The list of degrees of the support of the object <A>c</A>.
 #! @Arguments object
 #! @Returns a list
 DeclareAttribute( "NonZeroDegrees",
-        IsObjectInPositivelyZGradedCategory );
+        IsObjectInPositivelyZGradedClosureCategory );
 
 #! @Description
 #!  A list of integers containing the list of degrees of the support of the object <A>c</A>.
 #! @Arguments object
 #! @Returns a list
 DeclareAttribute( "NonZeroDegreesHull",
-        IsObjectInPositivelyZGradedCategory, "mutable" );
+        IsObjectInPositivelyZGradedClosureCategory, "mutable" );
 
 #! @Arguments object
 #! @Returns a list
 DeclareAttribute( "NonZeroPartsWithDegrees",
-        IsObjectInPositivelyZGradedCategory );
+        IsObjectInPositivelyZGradedClosureCategory );
 
 #! @Arguments object
 #! @Returns a list
 DeclareAttribute( "SupportWithDegrees",
-        IsObjectInPositivelyZGradedCategory );
+        IsObjectInPositivelyZGradedClosureCategory );
 
 #! @Description
 #!  Like SupportWithDegrees
 #!  but only considers the degrees in the given list <A>L</A>.
 #! @Arguments object, L
 DeclareOperation( "SupportWithDegreesWithGivenDegrees",
-        [ IsObjectInPositivelyZGradedCategory, IsList ] );
+        [ IsObjectInPositivelyZGradedClosureCategory, IsList ] );
 
 ####################################
 #
@@ -122,84 +122,84 @@ DeclareOperation( "SupportWithDegreesWithGivenDegrees",
 #!  Construct the positively $Z$-graded closure of the category <A>C</A>.
 #! @Arguments C
 #! @Returns a &CAP; category
-DeclareAttribute( "PositivelyZGradedCategory",
+DeclareAttribute( "PositivelyZGradedClosureCategory",
         IsCapCategory );
 
 #! @Description
 #!  Construct an object in the positively $\mathbb{Z}$-graded category <A>ZC</A> using the Z-function <A>L</A>.
 #! @Arguments ZC, L
 #! @Returns a &CAP; object
-#! @Group ObjectInPositivelyZGradedCategory
-DeclareOperation( "ObjectInPositivelyZGradedCategory",
-        [ IsPositivelyZGradedCategory, IsZFunction ] );
+#! @Group ObjectInPositivelyZGradedClosureCategory
+DeclareOperation( "ObjectInPositivelyZGradedClosureCategory",
+        [ IsPositivelyZGradedClosureCategory, IsZFunction ] );
 
 #! @Arguments f, lower_bound, upper_bound, C
-#! @Group ObjectInPositivelyZGradedCategory
-DeclareOperation( "ObjectInPositivelyZGradedCategory",
-        [ IsPositivelyZGradedCategory, IsFunction, IsInt, IsAdditiveElement ] );
+#! @Group ObjectInPositivelyZGradedClosureCategory
+DeclareOperation( "ObjectInPositivelyZGradedClosureCategory",
+        [ IsPositivelyZGradedClosureCategory, IsFunction, IsInt, IsAdditiveElement ] );
 
 #! @Arguments M, degree
-#! @Group ObjectInPositivelyZGradedCategory
-DeclareOperation( "ObjectInPositivelyZGradedCategory",
+#! @Group ObjectInPositivelyZGradedClosureCategory
+DeclareOperation( "ObjectInPositivelyZGradedClosureCategory",
         [ IsCapCategoryObject, IsInt ] );
 
 #! @Arguments M
-#! @Group ObjectInPositivelyZGradedCategory
-DeclareAttribute( "ObjectInPositivelyZGradedCategory",
+#! @Group ObjectInPositivelyZGradedClosureCategory
+DeclareAttribute( "ObjectInPositivelyZGradedClosureCategory",
         IsSemisimpleCategoryObject );
 
 #! @Arguments L
-#! @Group ObjectInPositivelyZGradedCategory
-DeclareAttribute( "ObjectInPositivelyZGradedCategory",
+#! @Group ObjectInPositivelyZGradedClosureCategory
+DeclareAttribute( "ObjectInPositivelyZGradedClosureCategory",
         IsList );
 
 #! @Description
 #!  Construct a morphism in a positively $Z$-graded category.
 #! @Arguments S, L, T
 #! @Returns a &CAP; morphism
-#! @Group MorphismInPositivelyZGradedCategory
-DeclareOperation( "MorphismInPositivelyZGradedCategory",
-        [ IsObjectInPositivelyZGradedCategory, IsZFunction, IsObjectInPositivelyZGradedCategory ] );
+#! @Group MorphismInPositivelyZGradedClosureCategory
+DeclareOperation( "MorphismInPositivelyZGradedClosureCategory",
+        [ IsObjectInPositivelyZGradedClosureCategory, IsZFunction, IsObjectInPositivelyZGradedClosureCategory ] );
 
 #! @Arguments S, f, T
-#! @Group MorphismInPositivelyZGradedCategory
-DeclareOperation( "MorphismInPositivelyZGradedCategory",
-        [ IsObjectInPositivelyZGradedCategory, IsFunction, IsObjectInPositivelyZGradedCategory ] );
+#! @Group MorphismInPositivelyZGradedClosureCategory
+DeclareOperation( "MorphismInPositivelyZGradedClosureCategory",
+        [ IsObjectInPositivelyZGradedClosureCategory, IsFunction, IsObjectInPositivelyZGradedClosureCategory ] );
 
 #! @Arguments S, phi, degree, T
-#! @Group MorphismInPositivelyZGradedCategory
-DeclareOperation( "MorphismInPositivelyZGradedCategory",
-        [ IsObjectInPositivelyZGradedCategory, IsCapCategoryMorphism, IsInt, IsObjectInPositivelyZGradedCategory ] );
+#! @Group MorphismInPositivelyZGradedClosureCategory
+DeclareOperation( "MorphismInPositivelyZGradedClosureCategory",
+        [ IsObjectInPositivelyZGradedClosureCategory, IsCapCategoryMorphism, IsInt, IsObjectInPositivelyZGradedClosureCategory ] );
 
 #! @Arguments M, chi, degree, i
 #! @Returns a &CAP; morphism
 #! @Group ComponentInclusionMorphism
 DeclareOperation( "ComponentInclusionMorphism",
-        [ IsObjectInPositivelyZGradedCategory, IsObject, IsInt, IsInt ] );
+        [ IsObjectInPositivelyZGradedClosureCategory, IsObject, IsInt, IsInt ] );
 
 #! @Arguments M, chi, i
 #! @Group ComponentInclusionMorphism
 DeclareOperation( "ComponentInclusionMorphism",
-        [ IsObjectInPositivelyZGradedCategory, IsObject, IsInt ] );
+        [ IsObjectInPositivelyZGradedClosureCategory, IsObject, IsInt ] );
 
 #! @Arguments M, degree
 #! @Group ComponentInclusionMorphism
 DeclareOperation( "ComponentInclusionMorphism",
-        [ IsObjectInPositivelyZGradedCategory, IsInt ] );
+        [ IsObjectInPositivelyZGradedClosureCategory, IsInt ] );
 
 #! @Arguments M, degrees
 DeclareOperation( "DiagonalEmbeddingWithGivenDegrees",
-        [ IsObjectInPositivelyZGradedCategory, IsList ] );
+        [ IsObjectInPositivelyZGradedClosureCategory, IsList ] );
 
 #! @Arguments M
 #! @Group DiagonalEmbedding
 DeclareOperation( "DiagonalEmbedding",
-        [ IsObjectInPositivelyZGradedCategory ] );
+        [ IsObjectInPositivelyZGradedClosureCategory ] );
 
 #! @Arguments S, M
 #! @Group DiagonalEmbedding
 DeclareOperation( "DiagonalEmbedding",
-        [ IsObjectInPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory ] );
+        [ IsObjectInPositivelyZGradedClosureCategory, IsObjectInPositivelyZGradedClosureCategory ] );
 
 ####################################
 #
@@ -212,7 +212,7 @@ DeclareOperation( "DiagonalEmbedding",
 #! @Arguments c
 #! @Returns an integer or infinity
 DeclareOperation( "ActiveLowerBound",
-        [ IsCellInPositivelyZGradedCategory ] );
+        [ IsCellInPositivelyZGradedClosureCategory ] );
 
 #! @Description
 #!  Set the active lower bound of the cell (=object or morphism) <A>c</A>
@@ -221,14 +221,14 @@ DeclareOperation( "ActiveLowerBound",
 #! @Arguments c, lower_bound
 #! @Returns an integer or infinity
 DeclareOperation( "SetActiveLowerBound",
-        [ IsCellInPositivelyZGradedCategory, IsAdditiveElement ] );
+        [ IsCellInPositivelyZGradedClosureCategory, IsAdditiveElement ] );
 
 #! @Description
 #!  The active upper bound of the cell (=object or morphism) <A>c</A>.
 #! @Arguments c
 #! @Returns an integer or infinity
 DeclareOperation( "ActiveUpperBound",
-        [ IsCellInPositivelyZGradedCategory ] );
+        [ IsCellInPositivelyZGradedClosureCategory ] );
 
 #! @Description
 #!  Set the active upper bound of the cell (=object or morphism) <A>c</A>
@@ -237,7 +237,7 @@ DeclareOperation( "ActiveUpperBound",
 #! @Arguments c, upper_bound
 #! @Returns an integer or infinity
 DeclareOperation( "SetActiveUpperBound",
-        [ IsCellInPositivelyZGradedCategory, IsAdditiveElement ] );
+        [ IsCellInPositivelyZGradedClosureCategory, IsAdditiveElement ] );
 
 #! @Description
 #!  Returns the function f: n |-> [ <C>ActiveLowerBound</C>( A ) .. n - <C>ActiveLowerBound</C>( B ) ]
@@ -246,7 +246,7 @@ DeclareOperation( "SetActiveUpperBound",
 #! @Arguments A, B
 #! @Returns a function
 DeclareOperation( "TensorProductIndices",
-        [ IsObjectInPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory ] );
+        [ IsObjectInPositivelyZGradedClosureCategory, IsObjectInPositivelyZGradedClosureCategory ] );
 
 #! @Description
 #!  Returns two functions over which to run the tensor product summation
@@ -255,14 +255,14 @@ DeclareOperation( "TensorProductIndices",
 #! @Arguments A, B
 #! @Returns a pair of functions
 DeclareOperation( "TensorProductIndices",
-        [ IsObjectInPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory ] );
+        [ IsObjectInPositivelyZGradedClosureCategory, IsObjectInPositivelyZGradedClosureCategory, IsObjectInPositivelyZGradedClosureCategory ] );
 
 #! @Description
 #!  The <A>i</A>-th object of the infinite list underlying the cell (=object or morphism) <A>c</A>.
 #! @Arguments c, n
 #! @Returns a &CAP; category
 DeclareOperation( "[]",
-        [ IsCellInPositivelyZGradedCategory, IsInt ] );
+        [ IsCellInPositivelyZGradedClosureCategory, IsInt ] );
 
 #! @Description
 #!  The <A>i</A>-th object of the infinite list(s) underlying the cell resp. list  <A>c</A>.
@@ -276,4 +276,4 @@ DeclareOperation( "CertainDegreePart",
 #! @Arguments c, L
 #! @Returns a &CAP; category
 DeclareOperation( "Sublist",
-        [ IsCellInPositivelyZGradedCategory, IsList ] );
+        [ IsCellInPositivelyZGradedClosureCategory, IsList ] );
