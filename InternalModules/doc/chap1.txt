@@ -15,9 +15,9 @@
     [4X[25Xgap>[125X [27XF2 := HomalgRingOfIntegers( 2 );;[127X[104X
     [4X[25Xgap>[125X [27XF2vec := MatrixCategory( F2 );;[127X[104X
     [4X[25Xgap>[125X [27Xv := VectorSpaceObject( 3, F2 );;[127X[104X
-    [4X[25Xgap>[125X [27XZF2vec := PositivelyZGradedCategory( F2vec );[127X[104X
-    [4X[28XThe positively graded category of Category of matrices over GF(2)[128X[104X
-    [4X[25Xgap>[125X [27XV := ObjectInPositivelyZGradedCategory( v, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27XZF2vec := PositivelyZGradedClosureCategory( F2vec );[127X[104X
+    [4X[28XPositivelyZGradedClosureCategory( Category of matrices over GF(2) )[128X[104X
+    [4X[25Xgap>[125X [27XV := ObjectInZGradedClosureCategoryWithBounds( ZF2vec, v, 1 );;[127X[104X
     [4X[25Xgap>[125X [27XSVMod := CategoryOfLeftSModules( v );[127X[104X
     [4X[28XAbelian category of left modules over the internal symmetric algebra of[128X[104X
     [4X[28XA vector space object over GF(2) of dimension 3[128X[104X
@@ -25,7 +25,8 @@
     [4X[28Xuncomputable lifts and colifts[128X[104X
     [4X[25Xgap>[125X [27XModSV := CategoryOfRightSModules( v );;[127X[104X
     [4X[25Xgap>[125X [27XSV := UnderlyingActingObject( SVMod );[127X[104X
-    [4X[28X<An object in The positively graded category of Category of matrices over GF(2)>[128X[104X
+    [4X[28X<An object in PositivelyZGradedClosureCategory([128X[104X
+    [4X[28X Category of matrices over GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XS := SymmetricAlgebraAsLeftModule( v );[127X[104X
     [4X[28X<An object in Abelian category of[128X[104X
     [4X[28X left modules over the internal symmetric algebra of[128X[104X
@@ -33,7 +34,7 @@
     [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
     [4X[28X uncomputable lifts and colifts>[128X[104X
     [4X[25Xgap>[125X [27Xu := VectorSpaceObject( 3, F2 );;[127X[104X
-    [4X[25Xgap>[125X [27XU := ObjectInPositivelyZGradedCategory( u, 3 );;[127X[104X
+    [4X[25Xgap>[125X [27XU := ObjectInZGradedClosureCategoryWithBounds( ZF2vec, u, 3 );;[127X[104X
     [4X[25Xgap>[125X [27XF := FreeInternalModule( U, SVMod );[127X[104X
     [4X[28X<An object in Abelian category of[128X[104X
     [4X[28X left modules over the internal symmetric algebra of[128X[104X
@@ -41,8 +42,8 @@
     [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
     [4X[28X uncomputable lifts and colifts>[128X[104X
     [4X[25Xgap>[125X [27XH := FreeInternalModule( U, ModSV );;[127X[104X
-    [4X[25Xgap>[125X [27Xe1 := MorphismInPositivelyZGradedCategory([127X[104X
-    [4X[25X>[125X [27X              ObjectInPositivelyZGradedCategory( SV[0], 3 ),[127X[104X
+    [4X[25Xgap>[125X [27Xe1 := MorphismInZGradedClosureCategoryWithBounds([127X[104X
+    [4X[25X>[125X [27X              ObjectInZGradedClosureCategoryWithBounds( ZF2vec, SV[0], 3 ),[127X[104X
     [4X[25X>[125X [27X              VectorSpaceMorphism([127X[104X
     [4X[25X>[125X [27X                  SV[0],[127X[104X
     [4X[25X>[125X [27X                  CertainRows( HomalgIdentityMatrix( 10, F2 ), [ 1 ] ),[127X[104X
@@ -65,9 +66,9 @@
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );;[127X[104X
     [4X[25Xgap>[125X [27XQvec := MatrixCategory( Q );;[127X[104X
     [4X[25Xgap>[125X [27Xv := VectorSpaceObject( 3, Q );;[127X[104X
-    [4X[25Xgap>[125X [27XZQvec := PositivelyZGradedCategory( Qvec );[127X[104X
-    [4X[28XThe positively graded category of Category of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27XV := ObjectInPositivelyZGradedCategory( v, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27XZQvec := PositivelyZGradedClosureCategory( Qvec );[127X[104X
+    [4X[28XPositivelyZGradedClosureCategory( Category of matrices over Q )[128X[104X
+    [4X[25Xgap>[125X [27XV := ObjectInZGradedClosureCategoryWithBounds( ZQvec, v, 1 );;[127X[104X
     [4X[25Xgap>[125X [27XSVMod := CategoryOfLeftSModules( v );[127X[104X
     [4X[28XAbelian category of left modules over the internal symmetric algebra of[128X[104X
     [4X[28XA vector space object over Q of dimension 3[128X[104X
@@ -75,7 +76,7 @@
     [4X[28Xuncomputable lifts and colifts[128X[104X
     [4X[25Xgap>[125X [27XModSV := CategoryOfRightSModules( v );;[127X[104X
     [4X[25Xgap>[125X [27XSV := UnderlyingActingObject( SVMod );[127X[104X
-    [4X[28X<An object in The positively graded category of Category of matrices over Q>[128X[104X
+    [4X[28X<An object in PositivelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
     [4X[25Xgap>[125X [27XS := SymmetricAlgebraAsLeftModule( v );[127X[104X
     [4X[28X<An object in Abelian category of[128X[104X
     [4X[28X left modules over the internal symmetric algebra of[128X[104X
@@ -83,7 +84,7 @@
     [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
     [4X[28X uncomputable lifts and colifts>[128X[104X
     [4X[25Xgap>[125X [27Xu := VectorSpaceObject( 3, Q );;[127X[104X
-    [4X[25Xgap>[125X [27XU := ObjectInPositivelyZGradedCategory( u, 3 );;[127X[104X
+    [4X[25Xgap>[125X [27XU := ObjectInZGradedClosureCategoryWithBounds( ZQvec, u, 3 );;[127X[104X
     [4X[25Xgap>[125X [27XF := FreeInternalModule( U, SVMod );[127X[104X
     [4X[28X<An object in Abelian category of[128X[104X
     [4X[28X left modules over the internal symmetric algebra of[128X[104X
@@ -91,8 +92,8 @@
     [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
     [4X[28X uncomputable lifts and colifts>[128X[104X
     [4X[25Xgap>[125X [27XH := FreeInternalModule( U, ModSV );;[127X[104X
-    [4X[25Xgap>[125X [27Xe1 := MorphismInPositivelyZGradedCategory([127X[104X
-    [4X[25X>[125X [27X              ObjectInPositivelyZGradedCategory( SV[0], 3 ),[127X[104X
+    [4X[25Xgap>[125X [27Xe1 := MorphismInZGradedClosureCategoryWithBounds([127X[104X
+    [4X[25X>[125X [27X              ObjectInZGradedClosureCategoryWithBounds( ZQvec, SV[0], 3 ),[127X[104X
     [4X[25X>[125X [27X              VectorSpaceMorphism([127X[104X
     [4X[25X>[125X [27X                  SV[0],[127X[104X
     [4X[25X>[125X [27X                  CertainRows( HomalgIdentityMatrix( 10, Q ), [ 1 ] ),[127X[104X
@@ -122,10 +123,10 @@
     [4X[25Xgap>[125X [27Xnu := RepresentationCategoryObject( irr[4], RepG, "nu" );;[127X[104X
     [4X[25Xgap>[125X [27Xchi := RepresentationCategoryObject( irr[2], RepG, "chi" );;[127X[104X
     [4X[25Xgap>[125X [27Xv := chi;;[127X[104X
-    [4X[25Xgap>[125X [27XZRepG := PositivelyZGradedCategory( RepG );[127X[104X
-    [4X[28XThe positively graded category of The representation category of[128X[104X
-    [4X[28XSymmetricGroup( [ 1 .. 4 ] )[128X[104X
-    [4X[25Xgap>[125X [27XV := ObjectInPositivelyZGradedCategory( v, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27XZRepG := PositivelyZGradedClosureCategory( RepG );[127X[104X
+    [4X[28XPositivelyZGradedClosureCategory( The representation category of[128X[104X
+    [4X[28XSymmetricGroup( [ 1 .. 4 ] ) )[128X[104X
+    [4X[25Xgap>[125X [27XV := ObjectInZGradedClosureCategoryWithBounds( ZRepG, v, 1 );;[127X[104X
     [4X[25Xgap>[125X [27XSVMod := CategoryOfLeftSModules( v );[127X[104X
     [4X[28XAbelian category of left modules over the internal symmetric algebra of[128X[104X
     [4X[28X1*(chi)[128X[104X
@@ -133,15 +134,15 @@
     [4X[28Xuncomputable lifts and colifts[128X[104X
     [4X[25Xgap>[125X [27XModSV := CategoryOfRightSModules( v );;[127X[104X
     [4X[25Xgap>[125X [27XSV := UnderlyingActingObject( SVMod );[127X[104X
-    [4X[28X<An object in The positively graded category of[128X[104X
-    [4X[28X The representation category of SymmetricGroup( [ 1 .. 4 ] )>[128X[104X
+    [4X[28X<An object in PositivelyZGradedClosureCategory( The representation category of[128X[104X
+    [4X[28X SymmetricGroup( [ 1 .. 4 ] ) )>[128X[104X
     [4X[25Xgap>[125X [27XS := SymmetricAlgebraAsLeftModule( v );[127X[104X
     [4X[28X<An object in Abelian category of[128X[104X
     [4X[28X left modules over the internal symmetric algebra of 1*(chi)[128X[104X
     [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
     [4X[28X uncomputable lifts and colifts>[128X[104X
     [4X[25Xgap>[125X [27Xu := chi;;[127X[104X
-    [4X[25Xgap>[125X [27XU := ObjectInPositivelyZGradedCategory( u, 3 );;[127X[104X
+    [4X[25Xgap>[125X [27XU := ObjectInZGradedClosureCategoryWithBounds( ZRepG, u, 3 );;[127X[104X
     [4X[25Xgap>[125X [27XF := FreeInternalModule( U, SVMod );[127X[104X
     [4X[28X<An object in Abelian category of[128X[104X
     [4X[28X left modules over the internal symmetric algebra of 1*(chi)[128X[104X
@@ -228,10 +229,10 @@
     [4X[25Xgap>[125X [27XRepG := RepresentationCategoryZGraded( G );;[127X[104X
     [4X[25Xgap>[125X [27Xirr := Irr( G );;[127X[104X
     [4X[25Xgap>[125X [27Xv := RepresentationCategoryZGradedObject( 1, irr[2], RepG );;[127X[104X
-    [4X[25Xgap>[125X [27XZRepG := PositivelyZGradedCategory( RepG );[127X[104X
-    [4X[28XThe positively graded category of The skeletal Z-graded representation category[128X[104X
-    [4X[28Xof SymmetricGroup( [ 1 .. 4 ] )[128X[104X
-    [4X[25Xgap>[125X [27XV := ObjectInPositivelyZGradedCategory( v );;[127X[104X
+    [4X[25Xgap>[125X [27XZRepG := PositivelyZGradedClosureCategory( RepG );[127X[104X
+    [4X[28XPositivelyZGradedClosureCategory( The skeletal Z-graded[128X[104X
+    [4X[28Xrepresentation category of SymmetricGroup( [ 1 .. 4 ] ) )[128X[104X
+    [4X[25Xgap>[125X [27XV := ObjectInZGradedClosureCategoryWithBounds( ZRepG, v );;[127X[104X
     [4X[25Xgap>[125X [27XSVMod := CategoryOfLeftSModules( v );[127X[104X
     [4X[28XAbelian category of left modules over the internal symmetric algebra of[128X[104X
     [4X[28X1*(x_[1, 2])[128X[104X
@@ -239,15 +240,15 @@
     [4X[28Xuncomputable lifts and colifts[128X[104X
     [4X[25Xgap>[125X [27XModSV := CategoryOfRightSModules( v );;[127X[104X
     [4X[25Xgap>[125X [27XSV := UnderlyingActingObject( SVMod );[127X[104X
-    [4X[28X<An object in The positively graded category of[128X[104X
-    [4X[28X The skeletal Z-graded representation category of SymmetricGroup( [ 1 .. 4 ] )>[128X[104X
+    [4X[28X<An object in PositivelyZGradedClosureCategory( The skeletal Z-graded[128X[104X
+    [4X[28X representation category of SymmetricGroup( [ 1 .. 4 ] ) )>[128X[104X
     [4X[25Xgap>[125X [27XS := SymmetricAlgebraAsLeftModule( v );[127X[104X
     [4X[28X<An object in Abelian category of[128X[104X
     [4X[28X left modules over the internal symmetric algebra of 1*(x_[1, 2])[128X[104X
     [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
     [4X[28X uncomputable lifts and colifts>[128X[104X
     [4X[25Xgap>[125X [27Xu := RepresentationCategoryZGradedObject( 3, irr[2], RepG );;[127X[104X
-    [4X[25Xgap>[125X [27XU := ObjectInPositivelyZGradedCategory( u );;[127X[104X
+    [4X[25Xgap>[125X [27XU := ObjectInZGradedClosureCategoryWithBounds( ZRepG, u );;[127X[104X
     [4X[25Xgap>[125X [27XF := FreeInternalModule( U, SVMod );[127X[104X
     [4X[28X<An object in Abelian category[128X[104X
     [4X[28X of left modules over the internal symmetric algebra of 1*(x_[1, 2])[128X[104X
@@ -350,7 +351,7 @@
     [4X[28XA CAP category with name The representation category[128X[104X
     [4X[28Xof SymmetricGroup( [ 1 .. 4 ] ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X44 primitive operations were used to derive 291 operations for this category[128X[104X
+    [4X[28X44 primitive operations were used to derive 345 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
@@ -423,9 +424,9 @@
     [4X[28X1*(χ)[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "GradedCategories" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XZsrepG := PositivelyZGradedCategory( srepG );[127X[104X
-    [4X[28XThe positively graded category of The representation category of[128X[104X
-    [4X[28XSymmetricGroup( [ 1 .. 4 ] )[128X[104X
+    [4X[25Xgap>[125X [27XZsrepG := PositivelyZGradedClosureCategory( srepG );[127X[104X
+    [4X[28XPositivelyZGradedClosureCategory( The representation category of[128X[104X
+    [4X[28XSymmetricGroup( [ 1 .. 4 ] ) )[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "InternalModules" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XSWMod := CategoryOfLeftSModules( W );[127X[104X
@@ -433,8 +434,8 @@
     [4X[28Xwith undecidable (mathematical) equality of morphisms[128X[104X
     [4X[28Xand uncomputable lifts and colifts[128X[104X
     [4X[25Xgap>[125X [27XSW := UnderlyingActingObject( SWMod );[127X[104X
-    [4X[28X<An object in The positively graded category of The representation category[128X[104X
-    [4X[28X of SymmetricGroup( [ 1 .. 4 ] )>[128X[104X
+    [4X[28X<An object in PositivelyZGradedClosureCategory( The representation category of[128X[104X
+    [4X[28XSymmetricGroup( [ 1 .. 4 ] ) )>[128X[104X
     [4X[25Xgap>[125X [27XSW[0];[127X[104X
     [4X[28X1*(𝟙)[128X[104X
     [4X[25Xgap>[125X [27XSW[1];[127X[104X

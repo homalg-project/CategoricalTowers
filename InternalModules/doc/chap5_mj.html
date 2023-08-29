@@ -25,97 +25,97 @@
 <p id="mathjaxlink" class="pcenter"><a href="chap5.html">[MathJax off]</a></p>
 <p><a id="X7BCD70048786B21D" name="X7BCD70048786B21D"></a></p>
 <div class="ChapSects"><a href="chap5_mj.html#X7BCD70048786B21D">5 <span class="Heading">Internal symmetric algebra</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7D03633A7D98026B">5.1 <span class="Heading">GAP Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7C701DBF7BAE649A">5.1 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7BAFC99E8007BBBB">5.1-1 IsInternalSymmetricAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7A04B43578B92B3F">5.1-1 SymmetricAlgebraAsZFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X80E88F267AD2F43F">5.1-2 SymmetricAlgebraMultiplicationListList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X81B500A97C5F5D74">5.1-3 SymmetricAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X8654CD45849BDCF8">5.1-4 SymmetricAlgebraMultiplicationMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7A5067117F682D70">5.1-5 SymmetricAlgebraAsLeftModule</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7F9BE42A7BF03946">5.1-6 SymmetricAlgebraAsRightModule</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7C701DBF7BAE649A">5.2 <span class="Heading">Attributes</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7DE8E16C7C2D387B">5.2 <span class="Heading">Operations</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7A04B43578B92B3F">5.2-1 SymmetricAlgebraAsZFunction</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X80E88F267AD2F43F">5.2-2 SymmetricAlgebraMultiplicationListList</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X81B500A97C5F5D74">5.2-3 SymmetricAlgebra</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X8654CD45849BDCF8">5.2-4 SymmetricAlgebraMultiplicationMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7A5067117F682D70">5.2-5 SymmetricAlgebraAsLeftModule</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7F9BE42A7BF03946">5.2-6 SymmetricAlgebraAsRightModule</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X8377ADCA7C159EF8">5.2-1 SymmetricAlgebraMultiplication</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7DE8E16C7C2D387B">5.3 <span class="Heading">Operations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7D03633A7D98026B">5.3 <span class="Heading">GAP Categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X8377ADCA7C159EF8">5.3-1 SymmetricAlgebraMultiplication</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X80986E3E82AD787C">5.3-1 IsInternalSymmetricAlgebra</a></span>
 </div></div>
 </div>
 
 <h3>5 <span class="Heading">Internal symmetric algebra</span></h3>
 
-<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
-
-<h4>5.1 <span class="Heading">GAP Categories</span></h4>
-
-<p><a id="X7BAFC99E8007BBBB" name="X7BAFC99E8007BBBB"></a></p>
-
-<h5>5.1-1 IsInternalSymmetricAlgebra</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsInternalSymmetricAlgebra</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
-<h4>5.2 <span class="Heading">Attributes</span></h4>
+<h4>5.1 <span class="Heading">Attributes</span></h4>
 
 <p><a id="X7A04B43578B92B3F" name="X7A04B43578B92B3F"></a></p>
 
-<h5>5.2-1 SymmetricAlgebraAsZFunction</h5>
+<h5>5.1-1 SymmetricAlgebraAsZFunction</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SymmetricAlgebraAsZFunction</code>( <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: an infinite list</p>
 
 <p><a id="X80E88F267AD2F43F" name="X80E88F267AD2F43F"></a></p>
 
-<h5>5.2-2 SymmetricAlgebraMultiplicationListList</h5>
+<h5>5.1-2 SymmetricAlgebraMultiplicationListList</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SymmetricAlgebraMultiplicationListList</code>( <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list of lists of morphisms</p>
 
 <p><a id="X81B500A97C5F5D74" name="X81B500A97C5F5D74"></a></p>
 
-<h5>5.2-3 SymmetricAlgebra</h5>
+<h5>5.1-3 SymmetricAlgebra</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SymmetricAlgebra</code>( <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP; category object in the filter <code class="code">IsObjectInPositivelyZGradedCategory</code></p>
+<p>Returns: a <strong class="pkg">CAP</strong> category object (<code class="code">IsObjectInPositivelyZGradedClosureCategory</code>)</p>
 
 <p><a id="X8654CD45849BDCF8" name="X8654CD45849BDCF8"></a></p>
 
-<h5>5.2-4 SymmetricAlgebraMultiplicationMorphism</h5>
+<h5>5.1-4 SymmetricAlgebraMultiplicationMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SymmetricAlgebraMultiplicationMorphism</code>( <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP; category morphism in the filter <code class="code">IsMorphismInPositivelyZGradedCategory</code></p>
+<p>Returns: a <strong class="pkg">CAP</strong> category morphism (<code class="code">IsMorphismInPositivelyZGradedClosureCategory</code>)</p>
 
 <p><a id="X7A5067117F682D70" name="X7A5067117F682D70"></a></p>
 
-<h5>5.2-5 SymmetricAlgebraAsLeftModule</h5>
+<h5>5.1-5 SymmetricAlgebraAsLeftModule</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SymmetricAlgebraAsLeftModule</code>( <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP; object morphism in the filter <code class="code">IsCategoryOfLeftSModules</code></p>
+<p>Returns: a <strong class="pkg">CAP</strong> object morphism in the filter <code class="code">IsCategoryOfLeftSModules</code></p>
 
 <p><a id="X7F9BE42A7BF03946" name="X7F9BE42A7BF03946"></a></p>
 
-<h5>5.2-6 SymmetricAlgebraAsRightModule</h5>
+<h5>5.1-6 SymmetricAlgebraAsRightModule</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SymmetricAlgebraAsRightModule</code>( <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP; object morphism in the filter <code class="code">IsCategoryOfRightSModules</code></p>
+<p>Returns: a <strong class="pkg">CAP</strong> object morphism in the filter <code class="code">IsCategoryOfRightSModules</code></p>
 
 <p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
 
-<h4>5.3 <span class="Heading">Operations</span></h4>
+<h4>5.2 <span class="Heading">Operations</span></h4>
 
 <p><a id="X8377ADCA7C159EF8" name="X8377ADCA7C159EF8"></a></p>
 
-<h5>5.3-1 SymmetricAlgebraMultiplication</h5>
+<h5>5.2-1 SymmetricAlgebraMultiplication</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SymmetricAlgebraMultiplication</code>( <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>5.3 <span class="Heading">GAP Categories</span></h4>
+
+<p><a id="X80986E3E82AD787C" name="X80986E3E82AD787C"></a></p>
+
+<h5>5.3-1 IsInternalSymmetricAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsInternalSymmetricAlgebra</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap6_mj.html">[Next Chapter]</a>&nbsp;  </div>

@@ -58,9 +58,9 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F2 := HomalgRingOfIntegers( 2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F2vec := MatrixCategory( F2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := VectorSpaceObject( 3, F2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZF2vec := PositivelyZGradedCategory( F2vec );</span>
-The positively graded category of Category of matrices over GF(2)
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInPositivelyZGradedCategory( v, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZF2vec := PositivelyZGradedClosureCategory( F2vec );</span>
+PositivelyZGradedClosureCategory( Category of matrices over GF(2) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInZGradedClosureCategoryWithBounds( ZF2vec, v, 1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SVMod := CategoryOfLeftSModules( v );</span>
 Abelian category of left modules over the internal symmetric algebra of
 A vector space object over GF(2) of dimension 3
@@ -68,7 +68,8 @@ with undecidable (mathematical) equality of morphisms and
 uncomputable lifts and colifts
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModSV := CategoryOfRightSModules( v );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SV := UnderlyingActingObject( SVMod );</span>
-&lt;An object in The positively graded category of Category of matrices over GF(2)&gt;
+&lt;An object in PositivelyZGradedClosureCategory(
+ Category of matrices over GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SymmetricAlgebraAsLeftModule( v );</span>
 &lt;An object in Abelian category of
  left modules over the internal symmetric algebra of
@@ -76,7 +77,7 @@ uncomputable lifts and colifts
  with undecidable (mathematical) equality of morphisms and
  uncomputable lifts and colifts&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := VectorSpaceObject( 3, F2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInPositivelyZGradedCategory( u, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInZGradedClosureCategoryWithBounds( ZF2vec, u, 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeInternalModule( U, SVMod );</span>
 &lt;An object in Abelian category of
  left modules over the internal symmetric algebra of
@@ -84,8 +85,8 @@ uncomputable lifts and colifts
  with undecidable (mathematical) equality of morphisms and
  uncomputable lifts and colifts&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := FreeInternalModule( U, ModSV );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e1 := MorphismInPositivelyZGradedCategory(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">              ObjectInPositivelyZGradedCategory( SV[0], 3 ),</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e1 := MorphismInZGradedClosureCategoryWithBounds(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              ObjectInZGradedClosureCategoryWithBounds( ZF2vec, SV[0], 3 ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">              VectorSpaceMorphism(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                  SV[0],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                  CertainRows( HomalgIdentityMatrix( 10, F2 ), [ 1 ] ),</span>
@@ -110,9 +111,9 @@ A morphism in Category of matrices over GF(2)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qvec := MatrixCategory( Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := VectorSpaceObject( 3, Q );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZQvec := PositivelyZGradedCategory( Qvec );</span>
-The positively graded category of Category of matrices over Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInPositivelyZGradedCategory( v, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZQvec := PositivelyZGradedClosureCategory( Qvec );</span>
+PositivelyZGradedClosureCategory( Category of matrices over Q )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInZGradedClosureCategoryWithBounds( ZQvec, v, 1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SVMod := CategoryOfLeftSModules( v );</span>
 Abelian category of left modules over the internal symmetric algebra of
 A vector space object over Q of dimension 3
@@ -120,7 +121,7 @@ with undecidable (mathematical) equality of morphisms and
 uncomputable lifts and colifts
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModSV := CategoryOfRightSModules( v );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SV := UnderlyingActingObject( SVMod );</span>
-&lt;An object in The positively graded category of Category of matrices over Q&gt;
+&lt;An object in PositivelyZGradedClosureCategory( Category of matrices over Q )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SymmetricAlgebraAsLeftModule( v );</span>
 &lt;An object in Abelian category of
  left modules over the internal symmetric algebra of
@@ -128,7 +129,7 @@ uncomputable lifts and colifts
  with undecidable (mathematical) equality of morphisms and
  uncomputable lifts and colifts&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := VectorSpaceObject( 3, Q );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInPositivelyZGradedCategory( u, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInZGradedClosureCategoryWithBounds( ZQvec, u, 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeInternalModule( U, SVMod );</span>
 &lt;An object in Abelian category of
  left modules over the internal symmetric algebra of
@@ -136,8 +137,8 @@ uncomputable lifts and colifts
  with undecidable (mathematical) equality of morphisms and
  uncomputable lifts and colifts&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := FreeInternalModule( U, ModSV );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e1 := MorphismInPositivelyZGradedCategory(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">              ObjectInPositivelyZGradedCategory( SV[0], 3 ),</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e1 := MorphismInZGradedClosureCategoryWithBounds(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              ObjectInZGradedClosureCategoryWithBounds( ZQvec, SV[0], 3 ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">              VectorSpaceMorphism(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                  SV[0],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                  CertainRows( HomalgIdentityMatrix( 10, Q ), [ 1 ] ),</span>
@@ -168,10 +169,10 @@ A morphism in Category of matrices over Q
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">nu := RepresentationCategoryObject( irr[4], RepG, "nu" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi := RepresentationCategoryObject( irr[2], RepG, "chi" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := chi;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZRepG := PositivelyZGradedCategory( RepG );</span>
-The positively graded category of The representation category of
-SymmetricGroup( [ 1 .. 4 ] )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInPositivelyZGradedCategory( v, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZRepG := PositivelyZGradedClosureCategory( RepG );</span>
+PositivelyZGradedClosureCategory( The representation category of
+SymmetricGroup( [ 1 .. 4 ] ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInZGradedClosureCategoryWithBounds( ZRepG, v, 1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SVMod := CategoryOfLeftSModules( v );</span>
 Abelian category of left modules over the internal symmetric algebra of
 1*(chi)
@@ -179,15 +180,15 @@ with undecidable (mathematical) equality of morphisms and
 uncomputable lifts and colifts
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModSV := CategoryOfRightSModules( v );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SV := UnderlyingActingObject( SVMod );</span>
-&lt;An object in The positively graded category of
- The representation category of SymmetricGroup( [ 1 .. 4 ] )&gt;
+&lt;An object in PositivelyZGradedClosureCategory( The representation category of
+ SymmetricGroup( [ 1 .. 4 ] ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SymmetricAlgebraAsLeftModule( v );</span>
 &lt;An object in Abelian category of
  left modules over the internal symmetric algebra of 1*(chi)
  with undecidable (mathematical) equality of morphisms and
  uncomputable lifts and colifts&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := chi;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInPositivelyZGradedCategory( u, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInZGradedClosureCategoryWithBounds( ZRepG, u, 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeInternalModule( U, SVMod );</span>
 &lt;An object in Abelian category of
  left modules over the internal symmetric algebra of 1*(chi)
@@ -275,10 +276,10 @@ A morphism in Category of matrices over Q
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RepG := RepresentationCategoryZGraded( G );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">irr := Irr( G );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := RepresentationCategoryZGradedObject( 1, irr[2], RepG );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZRepG := PositivelyZGradedCategory( RepG );</span>
-The positively graded category of The skeletal Z-graded representation category
-of SymmetricGroup( [ 1 .. 4 ] )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInPositivelyZGradedCategory( v );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZRepG := PositivelyZGradedClosureCategory( RepG );</span>
+PositivelyZGradedClosureCategory( The skeletal Z-graded
+representation category of SymmetricGroup( [ 1 .. 4 ] ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInZGradedClosureCategoryWithBounds( ZRepG, v );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SVMod := CategoryOfLeftSModules( v );</span>
 Abelian category of left modules over the internal symmetric algebra of
 1*(x_[1, 2])
@@ -286,15 +287,15 @@ with undecidable (mathematical) equality of morphisms and
 uncomputable lifts and colifts
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModSV := CategoryOfRightSModules( v );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SV := UnderlyingActingObject( SVMod );</span>
-&lt;An object in The positively graded category of
- The skeletal Z-graded representation category of SymmetricGroup( [ 1 .. 4 ] )&gt;
+&lt;An object in PositivelyZGradedClosureCategory( The skeletal Z-graded
+ representation category of SymmetricGroup( [ 1 .. 4 ] ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SymmetricAlgebraAsLeftModule( v );</span>
 &lt;An object in Abelian category of
  left modules over the internal symmetric algebra of 1*(x_[1, 2])
  with undecidable (mathematical) equality of morphisms and
  uncomputable lifts and colifts&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RepresentationCategoryZGradedObject( 3, irr[2], RepG );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInPositivelyZGradedCategory( u );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInZGradedClosureCategoryWithBounds( ZRepG, u );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeInternalModule( U, SVMod );</span>
 &lt;An object in Abelian category
  of left modules over the internal symmetric algebra of 1*(x_[1, 2])
@@ -396,7 +397,7 @@ The representation category of SymmetricGroup( [ 1 .. 4 ] )
 A CAP category with name The representation category
 of SymmetricGroup( [ 1 .. 4 ] ):
 
-44 primitive operations were used to derive 291 operations for this category
+44 primitive operations were used to derive 345 operations for this category
 which algorithmically
 * IsEquippedWithHomomorphismStructure
 * IsLinearCategoryOverCommutativeRing
@@ -469,9 +470,9 @@ A morphism in Category of matrices over Q
 1*(χ)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "GradedCategories" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZsrepG := PositivelyZGradedCategory( srepG );</span>
-The positively graded category of The representation category of
-SymmetricGroup( [ 1 .. 4 ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZsrepG := PositivelyZGradedClosureCategory( srepG );</span>
+PositivelyZGradedClosureCategory( The representation category of
+SymmetricGroup( [ 1 .. 4 ] ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "InternalModules" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SWMod := CategoryOfLeftSModules( W );</span>
@@ -479,8 +480,8 @@ Abelian category of left modules over the internal symmetric algebra of 1*(χ)
 with undecidable (mathematical) equality of morphisms
 and uncomputable lifts and colifts
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SW := UnderlyingActingObject( SWMod );</span>
-&lt;An object in The positively graded category of The representation category
- of SymmetricGroup( [ 1 .. 4 ] )&gt;
+&lt;An object in PositivelyZGradedClosureCategory( The representation category of
+SymmetricGroup( [ 1 .. 4 ] ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SW[0];</span>
 1*(𝟙)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SW[1];</span>

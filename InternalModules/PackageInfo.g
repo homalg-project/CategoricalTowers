@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "InternalModules",
 Subtitle := "Modules over internal algebras",
-Version := "2023.08-02",
+Version := "2023.08-04",
 
-Date := "2023-08-15",
+Date := "2023-08-29",
 License := "GPL-2.0-or-later",
 
 
@@ -88,7 +88,7 @@ Dependencies := rec(
                            [ "CAP", ">= 2023.08-07" ],
                            [ "MonoidalCategories", ">= 2023.02-03" ],
                            [ "CategoryConstructor", ">= 2023.08-01" ],
-                           [ "GradedCategories", ">= 2023.02-03" ],
+                           [ "GradedCategories", ">= 2023.08-02" ],
                            [ "AttributeCategoryForCAP", ">= 2023.02-03" ],
                            [ "ActionsForCAP", ">= 2020.04.27" ],
                            [ "RingsForHomalg", ">= 2020.09.02" ],
