@@ -6,7 +6,7 @@
                         [1X Modules over internal algebras [101X
   
   
-                                   2023.08-04
+                                   2023.08-05
   
   
                                  29 August 2023
@@ -41,7 +41,7 @@
   [1XContents (InternalModules)[101X
   
   1 [33X[0;0YIntroduction[133X
-    1.1 [33X[0;0YExamples[133X
+    1.1 [33X[0;0YExamples for the internal symmetric algebra[133X
       1.1-1 [33X[0;0YThe tensor category of finite dimensional GF(2)-vector spaces[133X
       1.1-2 [33X[0;0YThe tensor category of finite dimensional Q-vector spaces[133X
       1.1-3 [33X[0;0YThe tensor category of finite dimensional Q-representations of the
@@ -49,6 +49,8 @@
       1.1-4 [33X[0;0YThe tensor category of finite dimensional Z-graded
       Q-representations of the symmetric group Sym(4).[133X
       1.1-5 [33X[0;0YFuther computations in the symmetric algebra[133X
+    1.2 [33X[0;0YExamples for the internal exterior algebra[133X
+      1.2-1 [33X[0;0YThe tensor category of finite dimensional Q-vector spaces[133X
   2 [33X[0;0YInternal algebra elements[133X
     2.1 [33X[0;0YConstructors[133X
       2.1-1 InternalElement
@@ -101,33 +103,59 @@
       4.2-1 IsElementInInternalModule
       4.2-2 IsElementInInternalLeftModule
       4.2-3 IsElementInInternalRightModule
-  5 [33X[0;0YInternal symmetric algebra[133X
-    5.1 [33X[0;0YAttributes[133X
-      5.1-1 SymmetricAlgebraAsZFunction
-      5.1-2 SymmetricAlgebraMultiplicationListList
-      5.1-3 SymmetricAlgebra
-      5.1-4 SymmetricAlgebraMultiplicationMorphism
-      5.1-5 SymmetricAlgebraAsLeftModule
-      5.1-6 SymmetricAlgebraAsRightModule
-    5.2 [33X[0;0YOperations[133X
-      5.2-1 SymmetricAlgebraMultiplication
-    5.3 [33X[0;0YGAP Categories[133X
-      5.3-1 IsInternalSymmetricAlgebra
-  6 [33X[0;0YModules over the internal symmetric algebra[133X
-    6.1 [33X[0;0YConstructors[133X
-      6.1-1 CategoryOfLeftSModules
-      6.1-2 CategoryOfRightSModules
+  5 [33X[0;0YInternal exterior or symmetric algebra[133X
+    5.1 [33X[0;0YOperations[133X
+      5.1-1 ExteriorOrSymmetricAlgebraMultiplication
+  6 [33X[0;0YInternal symmetric algebra[133X
+    6.1 [33X[0;0YAttributes[133X
+      6.1-1 SymmetricAlgebraAsZFunction
+      6.1-2 SymmetricAlgebraMultiplicationListList
+      6.1-3 SymmetricAlgebra
+      6.1-4 SymmetricAlgebraMultiplicationMorphism
+      6.1-5 SymmetricAlgebraAsLeftModule
+      6.1-6 SymmetricAlgebraAsRightModule
     6.2 [33X[0;0YGAP Categories[133X
-      6.2-1 IsCategoryOfSModules
-      6.2-2 IsCategoryOfLeftSModules
-      6.2-3 IsCategoryOfRightSModules
-      6.2-4 IsSModuleCell
-      6.2-5 IsSModule
-      6.2-6 IsLeftSModule
-      6.2-7 IsRightSModule
-      6.2-8 IsSModuleMorphism
-      6.2-9 IsLeftSModuleMorphism
-      6.2-10 IsRightSModuleMorphism
+      6.2-1 IsInternalSymmetricAlgebra
+  7 [33X[0;0YInternal exterior algebra[133X
+    7.1 [33X[0;0YAttributes[133X
+      7.1-1 ExteriorAlgebraAsZFunction
+      7.1-2 ExteriorAlgebraMultiplicationListList
+      7.1-3 ExteriorAlgebra
+      7.1-4 ExteriorAlgebraMultiplicationMorphism
+      7.1-5 ExteriorAlgebraAsLeftModule
+      7.1-6 ExteriorAlgebraAsRightModule
+    7.2 [33X[0;0YGAP Categories[133X
+      7.2-1 IsInternalExteriorAlgebra
+  8 [33X[0;0YModules over the internal symmetric algebra[133X
+    8.1 [33X[0;0YConstructors[133X
+      8.1-1 CategoryOfLeftSModules
+      8.1-2 CategoryOfRightSModules
+    8.2 [33X[0;0YGAP Categories[133X
+      8.2-1 IsCategoryOfSModules
+      8.2-2 IsCategoryOfLeftSModules
+      8.2-3 IsCategoryOfRightSModules
+      8.2-4 IsSModuleCell
+      8.2-5 IsSModule
+      8.2-6 IsLeftSModule
+      8.2-7 IsRightSModule
+      8.2-8 IsSModuleMorphism
+      8.2-9 IsLeftSModuleMorphism
+      8.2-10 IsRightSModuleMorphism
+  9 [33X[0;0YModules over the internal exterior algebra[133X
+    9.1 [33X[0;0YGAP Categories[133X
+      9.1-1 IsCategoryOfEModules
+      9.1-2 IsCategoryOfLeftEModules
+      9.1-3 IsCategoryOfRightEModules
+      9.1-4 IsEModuleCell
+      9.1-5 IsEModule
+      9.1-6 IsLeftEModule
+      9.1-7 IsRightEModule
+      9.1-8 IsEModuleMorphism
+      9.1-9 IsLeftEModuleMorphism
+      9.1-10 IsRightEModuleMorphism
+    9.2 [33X[0;0YConstructors[133X
+      9.2-1 CategoryOfLeftEModules
+      9.2-2 CategoryOfRightEModules
   
   
   [32X

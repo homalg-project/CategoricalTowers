@@ -9,10 +9,19 @@
       for IsInternalModuleCell, IsInt 3.2-3 
   [2XAdditiveInverse[102X, for IsElementInInternalAlgebraOrModule 2.2-6 
   [2XBraidedMultiplication[102X, for IsElementInInternalAlgebra, IsElementInInternalAlgebra 2.3-6 
-  [2XCategoryOfLeftSModules[102X, for IsCapCategoryObject 6.1-1 
-  [2XCategoryOfRightSModules[102X, for IsCapCategoryObject 6.1-2 
+  [2XCategoryOfLeftEModules[102X, for IsCapCategoryObject 9.2-1 
+  [2XCategoryOfLeftSModules[102X, for IsCapCategoryObject 8.1-1 
+  [2XCategoryOfRightEModules[102X, for IsCapCategoryObject 9.2-2 
+  [2XCategoryOfRightSModules[102X, for IsCapCategoryObject 8.1-2 
   [2XCoefficientsVector[102X, for IsElementInInternalAlgebraOrModule 4.1-1 
       for IsList 4.1-1 
+  [2XExteriorAlgebra[102X, for IsCapCategoryObject 7.1-3 
+  [2XExteriorAlgebraAsLeftModule[102X, for IsCapCategoryObject 7.1-5 
+  [2XExteriorAlgebraAsRightModule[102X, for IsCapCategoryObject 7.1-6 
+  [2XExteriorAlgebraAsZFunction[102X, for IsCapCategoryObject 7.1-1 
+  [2XExteriorAlgebraMultiplicationListList[102X, for IsCapCategoryObject 7.1-2 
+  [2XExteriorAlgebraMultiplicationMorphism[102X, for IsCapCategoryObject 7.1-4 
+  [2XExteriorOrSymmetricAlgebraMultiplication[102X, for IsCapCategory, IsCapCategoryObject, IsInt, IsInt, IsStringRep 5.1-1 
   [2XFreeInternalModule[102X, for IsCapCategoryObject, IsCategoryOfInternalModules 3.1-2 
       for IsCapCategoryObject, IsInt, IsCategoryOfInternalModules 3.1-2 
   [2XFreeInternalModuleActionMorphism[102X, for IsCapCategoryObject, IsCategoryOfInternalModules 3.2-1 
@@ -27,18 +36,25 @@
   [2XInternalModuleMorphism[102X, for IsInternalModule, IsCapCategoryMorphism, IsInternalModule 3.1-3 
   [2XInternalPreAddition[102X, for IsElementInInternalAlgebraOrModule, IsElementInInternalAlgebraOrModule 2.3-1 
   [2XInternalPreMultiplication[102X, for IsRingElement, IsElementInInternalAlgebraOrModule 2.3-4 
+  [2XIsCategoryOfEModules[102X, for IsCategoryOfInternalModules 9.1-1 
   [2XIsCategoryOfInternalLeftModules[102X, for IsCategoryOfInternalModules 3.3-2 
   [2XIsCategoryOfInternalModules[102X, for IsCapCategory 3.3-1 
   [2XIsCategoryOfInternalRightModules[102X, for IsCategoryOfInternalModules 3.3-3 
-  [2XIsCategoryOfLeftSModules[102X, for IsCategoryOfSModules and IsCategoryOfInternalLeftModules 6.2-2 
-  [2XIsCategoryOfRightSModules[102X, for IsCategoryOfSModules and IsCategoryOfInternalRightModules 6.2-3 
-  [2XIsCategoryOfSModules[102X, for IsCategoryOfInternalModules 6.2-1 
+  [2XIsCategoryOfLeftEModules[102X, for IsCategoryOfEModules and IsCategoryOfInternalLeftModules 9.1-2 
+  [2XIsCategoryOfLeftSModules[102X, for IsCategoryOfSModules and IsCategoryOfInternalLeftModules 8.2-2 
+  [2XIsCategoryOfRightEModules[102X, for IsCategoryOfEModules and IsCategoryOfInternalRightModules 9.1-3 
+  [2XIsCategoryOfRightSModules[102X, for IsCategoryOfSModules and IsCategoryOfInternalRightModules 8.2-3 
+  [2XIsCategoryOfSModules[102X, for IsCategoryOfInternalModules 8.2-1 
   [2XIsElementInInternalAlgebra[102X, for IsElementInInternalAlgebraOrModule and IsRingElement 2.4-3 
   [2XIsElementInInternalAlgebraOrModule[102X, for IsAttributeStoringRep andIsAdditivelyCommutativeElement andIsAdditiveElementWithZero andIsAdditiveElementWithInverse 2.4-2 
   [2XIsElementInInternalLeftModule[102X, for IsElementInInternalModule 4.2-2 
   [2XIsElementInInternalModule[102X, for IsElementInInternalAlgebraOrModule 4.2-1 
   [2XIsElementInInternalRightModule[102X, for IsElementInInternalModule 4.2-3 
+  [2XIsEModule[102X, for IsEModuleCell and IsInternalModule 9.1-5 
+  [2XIsEModuleCell[102X, for IsInternalModuleCell 9.1-4 
+  [2XIsEModuleMorphism[102X, for IsEModuleCell and IsInternalModuleMorphism 9.1-8 
   [2XIsInternalAlgebra[102X, for IsCapCategoryObject 2.4-1 
+  [2XIsInternalExteriorAlgebra[102X, for IsInternalAlgebra and IsObjectInFinitelyZGradedClosureCategory 7.2-1 
   [2XIsInternalLeftModule[102X, for IsInternalModule and IsLeftActionObject 3.3-6 
   [2XIsInternalLeftModuleMorphism[102X, for IsInternalModuleMorphism and IsLeftActionMorphism 3.3-9 
   [2XIsInternalModule[102X, for IsInternalModuleCell and IsCapCategoryObject 3.3-5 
@@ -46,14 +62,18 @@
   [2XIsInternalModuleMorphism[102X, for IsInternalModuleCell and IsCapCategoryMorphism 3.3-8 
   [2XIsInternalRightModule[102X, for IsInternalModule and IsRightActionObject 3.3-7 
   [2XIsInternalRightModuleMorphism[102X, for IsInternalModuleMorphism and IsRightActionMorphism 3.3-10 
-  [2XIsInternalSymmetricAlgebra[102X, for IsInternalAlgebra and IsObjectInPositivelyZGradedClosureCategory 5.3-1 
-  [2XIsLeftSModule[102X, for IsSModule and IsInternalLeftModule 6.2-6 
-  [2XIsLeftSModuleMorphism[102X, for IsSModuleMorphism and IsInternalLeftModuleMorphism 6.2-9 
-  [2XIsRightSModule[102X, for IsSModule and IsInternalRightModule 6.2-7 
-  [2XIsRightSModuleMorphism[102X, for IsSModuleMorphism and IsInternalRightModuleMorphism 6.2-10 
-  [2XIsSModule[102X, for IsSModuleCell and IsInternalModule 6.2-5 
-  [2XIsSModuleCell[102X, for IsInternalModuleCell 6.2-4 
-  [2XIsSModuleMorphism[102X, for IsSModuleCell and IsInternalModuleMorphism 6.2-8 
+  [2XIsInternalSymmetricAlgebra[102X, for IsInternalAlgebra and IsObjectInPositivelyZGradedClosureCategory 6.2-1 
+  [2XIsLeftEModule[102X, for IsEModule and IsInternalLeftModule 9.1-6 
+  [2XIsLeftEModuleMorphism[102X, for IsEModuleMorphism and IsInternalLeftModuleMorphism 9.1-9 
+  [2XIsLeftSModule[102X, for IsSModule and IsInternalLeftModule 8.2-6 
+  [2XIsLeftSModuleMorphism[102X, for IsSModuleMorphism and IsInternalLeftModuleMorphism 8.2-9 
+  [2XIsRightEModule[102X, for IsEModule and IsInternalRightModule 9.1-7 
+  [2XIsRightEModuleMorphism[102X, for IsEModuleMorphism and IsInternalRightModuleMorphism 9.1-10 
+  [2XIsRightSModule[102X, for IsSModule and IsInternalRightModule 8.2-7 
+  [2XIsRightSModuleMorphism[102X, for IsSModuleMorphism and IsInternalRightModuleMorphism 8.2-10 
+  [2XIsSModule[102X, for IsSModuleCell and IsInternalModule 8.2-5 
+  [2XIsSModuleCell[102X, for IsInternalModuleCell 8.2-4 
+  [2XIsSModuleMorphism[102X, for IsSModuleCell and IsInternalModuleMorphism 8.2-8 
   [2XIsWellDefined[102X, for IsInternalModuleCell, IsInt 3.2-5 
       for IsInternalModuleCell, IsList 3.2-5 
   [2XNonZeroDegrees[102X, for IsElementInInternalAlgebraOrModule 2.2-2 
@@ -61,13 +81,12 @@
   [2XNonZeroPartsWithDegrees[102X, for IsElementInInternalAlgebraOrModule 2.2-4 
   [2XSublist[102X, for IsInternalModuleCell, IsList 3.2-4 
   [2XSupportWithDegrees[102X, for IsElementInInternalAlgebraOrModule 2.2-5 
-  [2XSymmetricAlgebra[102X, for IsCapCategoryObject 5.1-3 
-  [2XSymmetricAlgebraAsLeftModule[102X, for IsCapCategoryObject 5.1-5 
-  [2XSymmetricAlgebraAsRightModule[102X, for IsCapCategoryObject 5.1-6 
-  [2XSymmetricAlgebraAsZFunction[102X, for IsCapCategoryObject 5.1-1 
-  [2XSymmetricAlgebraMultiplication[102X, for IsCapCategoryObject, IsInt, IsInt 5.2-1 
-  [2XSymmetricAlgebraMultiplicationListList[102X, for IsCapCategoryObject 5.1-2 
-  [2XSymmetricAlgebraMultiplicationMorphism[102X, for IsCapCategoryObject 5.1-4 
+  [2XSymmetricAlgebra[102X, for IsCapCategoryObject 6.1-3 
+  [2XSymmetricAlgebraAsLeftModule[102X, for IsCapCategoryObject 6.1-5 
+  [2XSymmetricAlgebraAsRightModule[102X, for IsCapCategoryObject 6.1-6 
+  [2XSymmetricAlgebraAsZFunction[102X, for IsCapCategoryObject 6.1-1 
+  [2XSymmetricAlgebraMultiplicationListList[102X, for IsCapCategoryObject 6.1-2 
+  [2XSymmetricAlgebraMultiplicationMorphism[102X, for IsCapCategoryObject 6.1-4 
   [2XUnderlyingEmbedding[102X, for IsElementInInternalAlgebraOrModule 2.2-1 
   [2XUniversalMorphismFromFreeModule[102X, for IsCapCategoryMorphism, IsInternalModule 3.2-2 
       for IsElementInInternalAlgebraOrModule 2.2-7 

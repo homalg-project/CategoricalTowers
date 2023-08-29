@@ -2,7 +2,7 @@
   [1X1 [33X[0;0YIntroduction[133X[101X
   
   
-  [1X1.1 [33X[0;0YExamples[133X[101X
+  [1X1.1 [33X[0;0YExamples for the internal symmetric algebra[133X[101X
   
   [33X[0;0YThe  following  examples  demonstrate  the  internalization of the symmetric
   algera  and  its  modules in the positively graded closure of various tensor
@@ -810,5 +810,56 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xchi1 * (chi1 * (chi1 * chi1)) <> ((chi1 * chi1) * chi1) * chi1;[127X[104X
     [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.2 [33X[0;0YExamples for the internal exterior algebra[133X[101X
+  
+  [33X[0;0YThe  following  examples  demonstrate  the  internalization  of the exterior
+  algera  and  its  modules  in  the finitely graded closure of various tensor
+  categories.[133X
+  
+  
+  [1X1.2-1 [33X[0;0YThe tensor category of finite dimensional Q-vector spaces[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27XQvec := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xv := VectorSpaceObject( 3, Q );;[127X[104X
+    [4X[25Xgap>[125X [27XZQvec := FinitelyZGradedClosureCategory( Qvec );[127X[104X
+    [4X[28XFinitelyZGradedClosureCategory( Category of matrices over Q )[128X[104X
+    [4X[25Xgap>[125X [27XV := ObjectInZGradedClosureCategoryWithBounds( ZQvec, v, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27XExtVMod := CategoryOfLeftEModules( v );[127X[104X
+    [4X[28XAbelian category of left modules over the internal exterior algebra of[128X[104X
+    [4X[28XA vector space object over Q of dimension 3[128X[104X
+    [4X[25Xgap>[125X [27XModExtV := CategoryOfRightEModules( v );;[127X[104X
+    [4X[25Xgap>[125X [27XExtV := UnderlyingActingObject( ExtVMod );[127X[104X
+    [4X[28X<An object in FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xext := ExteriorAlgebraAsLeftModule( v );[127X[104X
+    [4X[28X<An object in Abelian category of[128X[104X
+    [4X[28X left modules over the internal exterior algebra of[128X[104X
+    [4X[28X A vector space object over Q of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27Xu := VectorSpaceObject( 3, Q );;[127X[104X
+    [4X[25Xgap>[125X [27XU := ObjectInZGradedClosureCategoryWithBounds( ZQvec, u, 3 );;[127X[104X
+    [4X[25Xgap>[125X [27XF := FreeInternalModule( U, ExtVMod );[127X[104X
+    [4X[28X<An object in Abelian category of[128X[104X
+    [4X[28X left modules over the internal exterior algebra of[128X[104X
+    [4X[28X A vector space object over Q of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27XH := FreeInternalModule( U, ModExtV );;[127X[104X
+    [4X[25Xgap>[125X [27Xe1 := MorphismInZGradedClosureCategoryWithBounds([127X[104X
+    [4X[25X>[125X [27X              ObjectInZGradedClosureCategoryWithBounds( ZQvec, ExtV[0], 3 ),[127X[104X
+    [4X[25X>[125X [27X              VectorSpaceMorphism([127X[104X
+    [4X[25X>[125X [27X                  ExtV[0],[127X[104X
+    [4X[25X>[125X [27X                  HomalgIdentityMatrix( 1, Q ),[127X[104X
+    [4X[25X>[125X [27X                  ExtV[3][127X[104X
+    [4X[25X>[125X [27X              ),[127X[104X
+    [4X[25X>[125X [27X              3,[127X[104X
+    [4X[25X>[125X [27X              ExtV );;[127X[104X
+    [4X[25Xgap>[125X [27Xe1 := InternalElement( e1 );[127X[104X
+    [4X[28Xdegree: 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[ [  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
   [4X[32X[104X
   
