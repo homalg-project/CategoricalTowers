@@ -13,8 +13,6 @@ gap> LoadPackage( "Toposes", false );
 true
 gap> LoadPackage( "Locales", false );
 true
-gap> LoadPackage( "ComplexesCategories", false );
-true
 gap> LoadPackage( "FunctorCategories", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
