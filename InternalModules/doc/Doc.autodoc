@@ -1,6 +1,6 @@
 @Chapter Introduction
 
-@Section Examples
+@Section Examples for the internal symmetric algebra
 
 The following examples demonstrate the internalization of the symmetric algera and its modules in the positively graded closure of various tensor categories.
 
@@ -26,6 +26,13 @@ where $G := S_4$ is the symmetric group on four points and $k =
 
 @InsertChunk SymmetricAlgebraInternalToS4rep
 
+@Section Examples for the internal exterior algebra
+
+The following examples demonstrate the internalization of the exterior algera and its modules in the finitely graded closure of various tensor categories.
+
+@Subsection The tensor category of finite dimensional Q-vector spaces
+@InsertChunk QvecInternalExteriorAlgebraModules
+
 @Chapter Internal algebra elements
 
 @Section Constructors
@@ -44,7 +51,17 @@ where $G := S_4$ is the symmetric group on four points and $k =
 @Section Attributes
 @Section GAP Categories
 
+@Chapter Internal exterior or symmetric algebra
+
+@Section Operations
+
 @Chapter Internal symmetric algebra
+
+@Section Attributes
+@Section Operations
+@Section GAP Categories
+
+@Chapter Internal exterior algebra
 
 @Section Attributes
 @Section Operations
