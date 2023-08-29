@@ -161,9 +161,6 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                           CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) ),
                   fail );
     
-    ##
-    UC!.category_as_first_argument := true;
-    
     ## UC supports empty limits, regardless of C
     UC!.supports_empty_limits := true;
     

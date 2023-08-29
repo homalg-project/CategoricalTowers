@@ -237,8 +237,6 @@ InstallMethodWithCache( CategoryOfAlgebroids,
                                                 fail,
                                                 fail );
     
-    category!.category_as_first_argument := true;
-    
     SetUnderlyingRing( category, homalg_ring );
     
     SetParity( category, parity );

@@ -790,8 +790,6 @@ InstallMethodWithCache( Category,
                  IsQuiverAlgebraElement,
                  fail );
     
-    C!.category_as_first_argument := true;
-    
     C!.relations := relations;
     
     SetDefiningTripleOfUnderlyingQuiver( C, DefiningTripleOfAQuiver( quiver ) );

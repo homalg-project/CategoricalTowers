@@ -85,7 +85,6 @@ InstallMethodWithCache( ProsetAsCategory,
                  fail,
                  fail );
     
-    P!.category_as_first_argument := true;
     P!.supports_empty_limits := false;
     
     SetUnderlyingObjectFilter( P, ValueGlobal( input_record.object_datum_filter_string ) );

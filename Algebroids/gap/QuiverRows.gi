@@ -108,8 +108,6 @@ InstallMethod( QuiverRows,
                         IsQuiverRowsMorphism and HasMorphismMatrix,
                         IsCapCategoryTwoCell );
     
-    category!.category_as_first_argument := true;
-    
     DeactivateCachingOfCategory( category );
     
     CapCategorySwitchLogicOff( category );

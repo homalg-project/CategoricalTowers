@@ -578,8 +578,6 @@ InstallMethod( AlgebroidFromDataTables,
     
     SetEnhancedDataTables( cat, data );
     
-    cat!.category_as_first_argument := true;
-    
     SetIsAbCategory( cat, true );
     SetIsLinearCategoryOverCommutativeRing( cat, true );
     SetCommutativeRingOfLinearCategory( cat, input_data.coefficients_ring );

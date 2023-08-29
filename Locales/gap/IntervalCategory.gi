@@ -19,7 +19,6 @@ InstallGlobalFunction( "CreateIntervalCategory",
               fail,
               fail );
     
-    IntervalCategory!.category_as_first_argument := true;
     IntervalCategory!.supports_empty_limits := true;
     
     SetDefiningTripleOfUnderlyingQuiver( IntervalCategory,

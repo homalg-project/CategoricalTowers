@@ -1154,8 +1154,6 @@ InstallMethod( Algebroid,
                  IsQuiverAlgebraElement,
                  fail );
     
-    A!.category_as_first_argument := true;
-    
     SetDefiningTripleOfUnderlyingQuiver( A, DefiningTripleOfAQuiver( quiver ) );
     
     A!.compiler_hints :=

@@ -236,8 +236,6 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
                               IsMorphismInZariskiCoframeOfAnAffineVariety,
                               IsCapCategoryTwoCell );
     
-    ZariskiCoframe!.category_as_first_argument := true;
-    
     SetIsCoHeytingAlgebra( ZariskiCoframe, true );
     
     ZariskiCoframe!.Constructor := ClosedSubsetOfSpec;
