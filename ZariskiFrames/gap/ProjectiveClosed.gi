@@ -135,8 +135,6 @@ InstallMethod( ZariskiCoframeOfProj,
                               IsMorphismInZariskiCoframeOfAProjectiveVariety,
                               IsCapCategoryTwoCell );
     
-    ZariskiCoframe!.category_as_first_argument := true;
-    
     SetIsCoHeytingAlgebra( ZariskiCoframe, true );
     
     ZariskiCoframe!.Constructor := ClosedSubsetOfProj;

@@ -236,8 +236,6 @@ InstallMethod( ZariskiFrameOfAffineSpectrum,
                             IsMorphismInZariskiFrameOfAnAffineVariety,
                             IsCapCategoryTwoCell );
     
-    ZariskiFrame!.category_as_first_argument := true;
-    
     SetIsHeytingAlgebra( ZariskiFrame, true );
     
     ZariskiFrame!.Constructor := OpenSubsetOfSpec;

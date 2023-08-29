@@ -193,9 +193,6 @@ InstallMethod( CategoryOfRelations,
     SetUnderlyingCategory( Rel, C );
     
     ##
-    Rel!.category_as_first_argument := true;
-    
-    ##
     Rel!.compiler_hints :=
       rec( category_attribute_names :=
            [ "UnderlyingCategory",

@@ -66,7 +66,6 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
                  IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences,
                  IsCapCategoryTwoCell );
     
-    C!.category_as_first_argument := true;
     C!.supports_empty_limits := true;
     
     SetIsBooleanAlgebra( C, true );

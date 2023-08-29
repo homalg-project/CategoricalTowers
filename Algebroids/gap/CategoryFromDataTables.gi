@@ -54,8 +54,6 @@ InstallMethod( CategoryFromDataTables,
                  IsBigInt,
                  fail );
     
-    C!.category_as_first_argument := true;
-    
     SetIsFinite( C, true );
     
     for prop in input_record.properties do

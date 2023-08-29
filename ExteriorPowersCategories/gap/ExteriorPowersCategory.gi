@@ -245,8 +245,6 @@ InstallMethod( ExteriorPowersCategory,
                                           fail,
                                           fail );
 
-    EC!.category_as_first_argument := true;
-    
     EC!.UnderlyingCategory := C;
     
     EC!.power := l;

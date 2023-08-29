@@ -46,8 +46,6 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
                  IsMorphismInMeetSemilatticeOfMultipleDifferences,
                  IsCapCategoryTwoCell );
     
-    D!.category_as_first_argument := true;
-    
     SetIsMeetSemiLattice( D, true );
     
     SetUnderlyingCategory( D, P );
