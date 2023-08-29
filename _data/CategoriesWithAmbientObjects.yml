@@ -1,7 +1,7 @@
 name: CategoriesWithAmbientObjects
-version: "2023.08-01"
+version: "2023.08-02"
 license: "GPL-2.0-or-later"
-date: 2023-08-20
+date: 2023-08-29
 description: |
     Categories with objects having ambient objects
 
@@ -23,6 +23,9 @@ needed-pkgs:
     - name: "AutoDoc"
       version: ">= 2013.12.04"
       url: "https://gap-packages.github.io/AutoDoc"
+    - name: "CAP"
+      version: ">= 2023.08-18"
+      url: "https://homalg-project.github.io/pkg/CAP"
     - name: "AttributeCategoryForCAP"
       version: ">= 2023.08-01"
       url: "https://homalg-project.github.io/pkg/AttributeCategoryForCAP"
@@ -45,11 +48,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/CategoriesWithAm
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.08-01/CategoriesWithAmbientObjects-2023.08-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.08-02/CategoriesWithAmbientObjects-2023.08-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.08-01/CategoriesWithAmbientObjects-2023.08-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.08-02/CategoriesWithAmbientObjects-2023.08-02.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.08-01/CategoriesWithAmbientObjects-2023.08-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.08-02/CategoriesWithAmbientObjects-2023.08-02-manual.pdf
 
 abstract: |
 
@@ -60,22 +63,22 @@ keywords: |
     categories, ambient objects.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BS20</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+    [<span class='BibKey'>BS29</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>CategoriesWithAmbientObjects, Categories with objects having ambient objects,
-             Version 2023.08-01</i>
-     (<span class='BibYear'>8-20</span>)<br />
+             Version 2023.08-02</i>
+     (<span class='BibYear'>8-29</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CategoriesWithAmbientObjects">https://homalg-project.github.io/pkg/CategoriesWithAmbientObjects</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ CategoriesWithAmbientObjects2023.08-01,
+    @misc{ CategoriesWithAmbientObjects2023.08-02,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{CategoriesWithAmbientObjects},     Categories    with
-                          objects having ambient objects, {V}ersion 2023.08-01},
+                          objects having ambient objects, {V}ersion 2023.08-02},
       month =            {3-},
-      year =             {8-20},
+      year =             {8-29},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/CategoriesWithAmbientObjects}
@@ -83,6 +86,6 @@ bibtex: |
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{CategoriesWithAmbientObjects}}},
       keywords =         {categories; ambient objects},
-      printedkey =       {BS20}
+      printedkey =       {BS29}
     }
 
