@@ -2322,4 +2322,3 @@ InstallMethod( LaTeXOutput,
     fi;
     
 end );
-
