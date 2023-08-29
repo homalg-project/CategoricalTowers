@@ -46,15 +46,3 @@ DeclareAttribute( "SymmetricAlgebraAsLeftModule", IsCapCategoryObject );
 #! @Arguments V
 #! @Returns a &CAP; object morphism in the filter <C>IsCategoryOfRightSModules</C>
 DeclareAttribute( "SymmetricAlgebraAsRightModule", IsCapCategoryObject );
-
-####################################
-##
-#! @Section Operations
-##
-####################################
-
-#! @Arguments V
-#! @Returns a &CAP; category morphism
-DeclareOperation( "SymmetricAlgebraMultiplication",
-        [ IsCapCategoryObject, IsInt, IsInt ] );
-
