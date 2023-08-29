@@ -6,10 +6,10 @@
                         [1X Graded closures of categories [101X
   
   
-                                   2023.07-01
+                                   2023.08-02
   
   
-                                  31 July 2023
+                                 29 August 2023
   
   
                                 Mohamed Barakat
@@ -40,40 +40,63 @@
   
   [1XContents (GradedCategories)[101X
   
-  1 [33X[0;0YThe positively Z-graded closure of a category[133X
-    1.1 [33X[0;0YGAP Categories[133X
-      1.1-1 IsPositivelyZGradedCategory
-      1.1-2 IsCellInPositivelyZGradedCategory
-      1.1-3 IsObjectInPositivelyZGradedCategory
-      1.1-4 IsMorphismInPositivelyZGradedCategory
-    1.2 [33X[0;0YGlobal variables[133X
-      1.2-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY
-    1.3 [33X[0;0YAttributes[133X
-      1.3-1 UnderlyingCategory
-      1.3-2 UnderlyingZFunction
-      1.3-3 NonZeroParts
-      1.3-4 NonZeroDegrees
-      1.3-5 NonZeroDegreesHull
-      1.3-6 NonZeroPartsWithDegrees
-      1.3-7 SupportWithDegrees
-      1.3-8 SupportWithDegreesWithGivenDegrees
-    1.4 [33X[0;0YConstructors[133X
-      1.4-1 PositivelyZGradedCategory
-      1.4-2 ObjectInPositivelyZGradedCategory
-      1.4-3 MorphismInPositivelyZGradedCategory
-      1.4-4 ComponentInclusionMorphism
-      1.4-5 DiagonalEmbeddingWithGivenDegrees
-      1.4-6 DiagonalEmbedding
-    1.5 [33X[0;0YOperations[133X
-      1.5-1 ActiveLowerBound
-      1.5-2 SetActiveLowerBound
-      1.5-3 ActiveUpperBound
-      1.5-4 SetActiveUpperBound
-      1.5-5 TensorProductIndices
-      1.5-6 TensorProductIndices
-      1.5-7 []
-      1.5-8 CertainDegreePart
-      1.5-9 Sublist
+  1 [33X[0;0YThe bounded Z-graded closure of a category[133X
+    1.1 [33X[0;0YConstructors[133X
+      1.1-1 ZGradedClosureCategoryWithBounds
+      1.1-2 ObjectInZGradedClosureCategoryWithBounds
+      1.1-3 MorphismInZGradedClosureCategoryWithBounds
+      1.1-4 ComponentInclusionMorphism
+      1.1-5 DiagonalEmbeddingWithGivenDegrees
+      1.1-6 DiagonalEmbedding
+    1.2 [33X[0;0YOperations[133X
+      1.2-1 ActiveLowerBound
+      1.2-2 SetActiveLowerBound
+      1.2-3 ActiveUpperBound
+      1.2-4 SetActiveUpperBound
+      1.2-5 TensorProductIndices
+      1.2-6 TensorProductIndices
+      1.2-7 []
+      1.2-8 CertainDegreePart
+      1.2-9 Sublist
+    1.3 [33X[0;0YGAP Categories[133X
+      1.3-1 IsZGradedClosureCategoryWithBounds
+      1.3-2 IsCellInZGradedClosureCategoryWithBounds
+      1.3-3 IsObjectInZGradedClosureCategoryWithBounds
+      1.3-4 IsMorphismInZGradedClosureCategoryWithBounds
+    1.4 [33X[0;0YAttributes[133X
+      1.4-1 UnderlyingCategory
+      1.4-2 UnderlyingZFunctionAndBounds
+      1.4-3 UnderlyingZFunction
+      1.4-4 NonZeroParts
+      1.4-5 NonZeroDegrees
+      1.4-6 NonZeroDegreesHull
+      1.4-7 NonZeroPartsWithDegrees
+      1.4-8 SupportWithDegrees
+      1.4-9 SupportWithDegreesWithGivenDegrees
+  2 [33X[0;0YThe positively Z-graded closure of a category[133X
+    2.1 [33X[0;0YConstructors[133X
+      2.1-1 PositivelyZGradedClosureCategory
+    2.2 [33X[0;0YGAP Categories[133X
+      2.2-1 IsPositivelyZGradedClosureCategory
+      2.2-2 IsCellInPositivelyZGradedClosureCategory
+      2.2-3 IsObjectInPositivelyZGradedClosureCategory
+      2.2-4 IsMorphismInPositivelyZGradedClosureCategory
+  3 [33X[0;0YThe negatively Z-graded closure of a category[133X
+    3.1 [33X[0;0YConstructors[133X
+      3.1-1 NegativelyZGradedClosureCategory
+    3.2 [33X[0;0YGAP Categories[133X
+      3.2-1 IsNegativelyZGradedClosureCategory
+      3.2-2 IsCellInNegativelyZGradedClosureCategory
+      3.2-3 IsObjectInNegativelyZGradedClosureCategory
+      3.2-4 IsMorphismInNegativelyZGradedClosureCategory
+  4 [33X[0;0YThe finitely Z-graded closure of a category[133X
+    4.1 [33X[0;0YConstructors[133X
+      4.1-1 FinitelyZGradedClosureCategory
+    4.2 [33X[0;0YGAP Categories[133X
+      4.2-1 IsFinitelyZGradedClosureCategory
+      4.2-2 IsCellInFinitelyZGradedClosureCategory
+      4.2-3 IsObjectInFinitelyZGradedClosureCategory
+      4.2-4 IsMorphismInFinitelyZGradedClosureCategory
   
   
   [32X

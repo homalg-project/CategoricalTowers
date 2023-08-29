@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (GradedCategories) - Chapter 1: The positively Z-graded closure of a category</title>
+<title>GAP (GradedCategories) - Chapter 1: The bounded Z-graded closure of a category</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -18,300 +18,193 @@
 <body class="chap1"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
-<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap1.html">[MathJax off]</a></p>
-<p><a id="X8715AD7981E24EBF" name="X8715AD7981E24EBF"></a></p>
-<div class="ChapSects"><a href="chap1_mj.html#X8715AD7981E24EBF">1 <span class="Heading">The positively Z-graded closure of a category</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7D03633A7D98026B">1.1 <span class="Heading">GAP Categories</span></a>
+<p><a id="X7CD6704283AD8CB2" name="X7CD6704283AD8CB2"></a></p>
+<div class="ChapSects"><a href="chap1_mj.html#X7CD6704283AD8CB2">1 <span class="Heading">The bounded Z-graded closure of a category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X86EC0F0A78ECBC10">1.1 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7BE12ACD85313E2B">1.1-1 IsPositivelyZGradedCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X82770DFF780E4332">1.1-2 IsCellInPositivelyZGradedCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85B587377B9FEC1C">1.1-3 IsObjectInPositivelyZGradedCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X82D5794F7C39D1C7">1.1-4 IsMorphismInPositivelyZGradedCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80D1103B7FFC88E4">1.1-1 ZGradedClosureCategoryWithBounds</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DAA13EB84902F75">1.1-2 ObjectInZGradedClosureCategoryWithBounds</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X81A3F93779D10344">1.1-3 MorphismInZGradedClosureCategoryWithBounds</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X84834B907F619D5A">1.1-4 ComponentInclusionMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8656FF367FC17F50">1.1-5 DiagonalEmbeddingWithGivenDegrees</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X856018A779E5BE80">1.1-6 DiagonalEmbedding</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7D9044767BEB1523">1.2 <span class="Heading">Global variables</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7DE8E16C7C2D387B">1.2 <span class="Heading">Operations</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X843AEDAB8774CBE2">1.2-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E6345868566AF8B">1.2-1 ActiveLowerBound</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X831D33997E2B0A1E">1.2-2 SetActiveLowerBound</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F286D32865D66FE">1.2-3 ActiveUpperBound</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86E7F5DD8709DD24">1.2-4 SetActiveUpperBound</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X856267D37CB7D49A">1.2-5 TensorProductIndices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X865731D8795E7BCB">1.2-6 TensorProductIndices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8042B41681CF6E3B">1.2-7 []</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C912493830569BF">1.2-8 CertainDegreePart</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X849A6CE27CBF6CE1">1.2-9 Sublist</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7C701DBF7BAE649A">1.3 <span class="Heading">Attributes</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7D03633A7D98026B">1.3 <span class="Heading">GAP Categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X82D8D2A478FC0756">1.3-1 UnderlyingCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87FA087C79901C94">1.3-2 UnderlyingZFunction</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86826EF082510A4B">1.3-3 NonZeroParts</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DCA582C8386AD6F">1.3-4 NonZeroDegrees</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78C3E21D87F1CB54">1.3-5 NonZeroDegreesHull</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8612DF37873262F7">1.3-6 NonZeroPartsWithDegrees</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X852565D47F600A1C">1.3-7 SupportWithDegrees</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8752099E7F41B07F">1.3-8 SupportWithDegreesWithGivenDegrees</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X808A42C87FFD9DF7">1.3-1 IsZGradedClosureCategoryWithBounds</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X783A08B17B16284A">1.3-2 IsCellInZGradedClosureCategoryWithBounds</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X873297B987787396">1.3-3 IsObjectInZGradedClosureCategoryWithBounds</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85FE30B37AC4AA63">1.3-4 IsMorphismInZGradedClosureCategoryWithBounds</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X86EC0F0A78ECBC10">1.4 <span class="Heading">Constructors</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7C701DBF7BAE649A">1.4 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X79948F8C87B65E39">1.4-1 PositivelyZGradedCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7940C8587855ED30">1.4-2 ObjectInPositivelyZGradedCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X817F5B7784A6E7D4">1.4-3 MorphismInPositivelyZGradedCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X82D9043D85114642">1.4-4 ComponentInclusionMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X82D6B3F987D6B69B">1.4-5 DiagonalEmbeddingWithGivenDegrees</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X813AB0EB80B5E507">1.4-6 DiagonalEmbedding</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7DE8E16C7C2D387B">1.5 <span class="Heading">Operations</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C90B87F79EB1B50">1.5-1 ActiveLowerBound</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X84B18DEE7AA08B8E">1.5-2 SetActiveLowerBound</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X812A4C6B7AD0D225">1.5-3 ActiveUpperBound</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F56328783825CB4">1.5-4 SetActiveUpperBound</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X815954A87F615B47">1.5-5 TensorProductIndices</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E8F89C37FBCDADF">1.5-6 TensorProductIndices</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87979C087C56F42B">1.5-7 []</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C912493830569BF">1.5-8 CertainDegreePart</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X83DFC5C87C625FC1">1.5-9 Sublist</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85640A907CB15B11">1.4-1 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X861FD85E7A662BFC">1.4-2 UnderlyingZFunctionAndBounds</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CF0790480E00A2B">1.4-3 UnderlyingZFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X83DF46B778F3DAE7">1.4-4 NonZeroParts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X787A2F047F0B19B4">1.4-5 NonZeroDegrees</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X821C05807C834ECC">1.4-6 NonZeroDegreesHull</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7FD682887AEBF8A3">1.4-7 NonZeroPartsWithDegrees</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87B561A184128F84">1.4-8 SupportWithDegrees</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X865DFCB58364D84C">1.4-9 SupportWithDegreesWithGivenDegrees</a></span>
 </div></div>
 </div>
 
-<h3>1 <span class="Heading">The positively Z-graded closure of a category</span></h3>
-
-<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
-
-<h4>1.1 <span class="Heading">GAP Categories</span></h4>
-
-<p><a id="X7BE12ACD85313E2B" name="X7BE12ACD85313E2B"></a></p>
-
-<h5>1.1-1 IsPositivelyZGradedCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPositivelyZGradedCategory</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of positively Z-graded categories.</p>
-
-<p><a id="X82770DFF780E4332" name="X82770DFF780E4332"></a></p>
-
-<h5>1.1-2 IsCellInPositivelyZGradedCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInPositivelyZGradedCategory</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of cells in a positively Z-graded category.</p>
-
-<p><a id="X85B587377B9FEC1C" name="X85B587377B9FEC1C"></a></p>
-
-<h5>1.1-3 IsObjectInPositivelyZGradedCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInPositivelyZGradedCategory</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of objects in a positively Z-graded category.</p>
-
-<p><a id="X82D5794F7C39D1C7" name="X82D5794F7C39D1C7"></a></p>
-
-<h5>1.1-4 IsMorphismInPositivelyZGradedCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInPositivelyZGradedCategory</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of morphisms in a positively Z-graded category.</p>
-
-<p><a id="X7D9044767BEB1523" name="X7D9044767BEB1523"></a></p>
-
-<h4>1.2 <span class="Heading">Global variables</span></h4>
-
-<p><a id="X843AEDAB8774CBE2" name="X843AEDAB8774CBE2"></a></p>
-
-<h5>1.2-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
-<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
-
-<h4>1.3 <span class="Heading">Attributes</span></h4>
-
-<p><a id="X82D8D2A478FC0756" name="X82D8D2A478FC0756"></a></p>
-
-<h5>1.3-1 UnderlyingCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Return the category <span class="SimpleMath">\(C\)</span> underlying the positively Z-graded category category <var class="Arg">ZC</var><code class="code"> := PositivelyZGradedCategory(</code> <span class="SimpleMath">\(C\)</span> <code class="code">)</code>).</p>
-
-<p><a id="X87FA087C79901C94" name="X87FA087C79901C94"></a></p>
-
-<h5>1.3-2 UnderlyingZFunction</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingZFunction</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a Z-function</p>
-
-<p>The <span class="SimpleMath">\(\mathbb{Z}\)</span>-function underlying the cell (=object or morphism) <var class="Arg">c</var>.</p>
-
-<p><a id="X86826EF082510A4B" name="X86826EF082510A4B"></a></p>
-
-<h5>1.3-3 NonZeroParts</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NonZeroParts</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
-
-<p>The support of the object <var class="Arg">c</var>.</p>
-
-<p><a id="X7DCA582C8386AD6F" name="X7DCA582C8386AD6F"></a></p>
-
-<h5>1.3-4 NonZeroDegrees</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NonZeroDegrees</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
-
-<p>The list of degrees of the support of the object <var class="Arg">c</var>.</p>
-
-<p><a id="X78C3E21D87F1CB54" name="X78C3E21D87F1CB54"></a></p>
-
-<h5>1.3-5 NonZeroDegreesHull</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NonZeroDegreesHull</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
-
-<p>A list of integers containing the list of degrees of the support of the object <var class="Arg">c</var>.</p>
-
-<p><a id="X8612DF37873262F7" name="X8612DF37873262F7"></a></p>
-
-<h5>1.3-6 NonZeroPartsWithDegrees</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NonZeroPartsWithDegrees</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
-
-<p><a id="X852565D47F600A1C" name="X852565D47F600A1C"></a></p>
-
-<h5>1.3-7 SupportWithDegrees</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SupportWithDegrees</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
-
-<p><a id="X8752099E7F41B07F" name="X8752099E7F41B07F"></a></p>
-
-<h5>1.3-8 SupportWithDegreesWithGivenDegrees</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SupportWithDegreesWithGivenDegrees</code>( <var class="Arg">object</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Like SupportWithDegrees but only considers the degrees in the given list <var class="Arg">L</var>.</p>
+<h3>1 <span class="Heading">The bounded Z-graded closure of a category</span></h3>
 
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
-<h4>1.4 <span class="Heading">Constructors</span></h4>
+<h4>1.1 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X79948F8C87B65E39" name="X79948F8C87B65E39"></a></p>
+<p><a id="X80D1103B7FFC88E4" name="X80D1103B7FFC88E4"></a></p>
 
-<h5>1.4-1 PositivelyZGradedCategory</h5>
+<h5>1.1-1 ZGradedClosureCategoryWithBounds</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PositivelyZGradedCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ZGradedClosureCategoryWithBounds</code>( <var class="Arg">C</var>, <var class="Arg">str</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<p>Construct the positively <span class="SimpleMath">\(Z\)</span>-graded closure of the category <var class="Arg">C</var>.</p>
+<p>Construct the <span class="SimpleMath">\(\mathbb{Z}\)</span>-graded closure of the category <var class="Arg">C</var> with bounds. The string <var class="Arg">str</var> can be either "lower", "upper", or "both", implementing the three constructors:</p>
 
-<p><a id="X7940C8587855ED30" name="X7940C8587855ED30"></a></p>
 
-<h5>1.4-2 ObjectInPositivelyZGradedCategory</h5>
+<ul>
+<li><p><code class="code">PositivelyZGradedClosureCategory</code>,</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectInPositivelyZGradedCategory</code>( <var class="Arg">ZC</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectInPositivelyZGradedCategory</code>( <var class="Arg">f</var>, <var class="Arg">lower_bound</var>, <var class="Arg">upper_bound</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectInPositivelyZGradedCategory</code>( <var class="Arg">M</var>, <var class="Arg">degree</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectInPositivelyZGradedCategory</code>( <var class="Arg">M</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectInPositivelyZGradedCategory</code>( <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+</li>
+<li><p><code class="code">NegativelyZGradedClosureCategory</code>,</p>
+
+</li>
+<li><p><code class="code">FinitelyZGradedClosureCategory</code>,</p>
+
+</li>
+</ul>
+<p>respectively.</p>
+
+<p><a id="X7DAA13EB84902F75" name="X7DAA13EB84902F75"></a></p>
+
+<h5>1.1-2 ObjectInZGradedClosureCategoryWithBounds</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectInZGradedClosureCategoryWithBounds</code>( <var class="Arg">ZC</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectInZGradedClosureCategoryWithBounds</code>( <var class="Arg">ZC</var>, <var class="Arg">f</var>, <var class="Arg">lower_bound</var>, <var class="Arg">upper_bound</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectInZGradedClosureCategoryWithBounds</code>( <var class="Arg">ZC</var>, <var class="Arg">M</var>, <var class="Arg">degree</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectInZGradedClosureCategoryWithBounds</code>( <var class="Arg">ZC</var>, <var class="Arg">M</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectInZGradedClosureCategoryWithBounds</code>( <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> object</p>
 
-<p>Construct an object in the positively <span class="SimpleMath">\(\mathbb{Z}\)</span>-graded category <var class="Arg">ZC</var> using the Z-function <var class="Arg">L</var>.</p>
+<p>Construct an object in the bounded <span class="SimpleMath">\(\mathbb{Z}\)</span>-graded category <var class="Arg">ZC</var> using the Z-function <var class="Arg">L</var>.</p>
 
-<p><a id="X817F5B7784A6E7D4" name="X817F5B7784A6E7D4"></a></p>
+<p><a id="X81A3F93779D10344" name="X81A3F93779D10344"></a></p>
 
-<h5>1.4-3 MorphismInPositivelyZGradedCategory</h5>
+<h5>1.1-3 MorphismInZGradedClosureCategoryWithBounds</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismInPositivelyZGradedCategory</code>( <var class="Arg">S</var>, <var class="Arg">L</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismInPositivelyZGradedCategory</code>( <var class="Arg">S</var>, <var class="Arg">f</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismInPositivelyZGradedCategory</code>( <var class="Arg">S</var>, <var class="Arg">phi</var>, <var class="Arg">degree</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismInZGradedClosureCategoryWithBounds</code>( <var class="Arg">S</var>, <var class="Arg">L</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismInZGradedClosureCategoryWithBounds</code>( <var class="Arg">S</var>, <var class="Arg">f</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismInZGradedClosureCategoryWithBounds</code>( <var class="Arg">S</var>, <var class="Arg">phi</var>, <var class="Arg">degree</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
 
-<p>Construct a morphism in a positively <span class="SimpleMath">\(Z\)</span>-graded category.</p>
+<p>Construct a morphism in a bounded <span class="SimpleMath">\(\mathbb{Z}\)</span>-graded category.</p>
 
-<p><a id="X82D9043D85114642" name="X82D9043D85114642"></a></p>
+<p><a id="X84834B907F619D5A" name="X84834B907F619D5A"></a></p>
 
-<h5>1.4-4 ComponentInclusionMorphism</h5>
+<h5>1.1-4 ComponentInclusionMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ComponentInclusionMorphism</code>( <var class="Arg">M</var>, <var class="Arg">chi</var>, <var class="Arg">degree</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ComponentInclusionMorphism</code>( <var class="Arg">M</var>, <var class="Arg">chi</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ComponentInclusionMorphism</code>( <var class="Arg">M</var>, <var class="Arg">degree</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
 
-<p><a id="X82D6B3F987D6B69B" name="X82D6B3F987D6B69B"></a></p>
+<p><a id="X8656FF367FC17F50" name="X8656FF367FC17F50"></a></p>
 
-<h5>1.4-5 DiagonalEmbeddingWithGivenDegrees</h5>
+<h5>1.1-5 DiagonalEmbeddingWithGivenDegrees</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DiagonalEmbeddingWithGivenDegrees</code>( <var class="Arg">M</var>, <var class="Arg">degrees</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X813AB0EB80B5E507" name="X813AB0EB80B5E507"></a></p>
+<p><a id="X856018A779E5BE80" name="X856018A779E5BE80"></a></p>
 
-<h5>1.4-6 DiagonalEmbedding</h5>
+<h5>1.1-6 DiagonalEmbedding</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DiagonalEmbedding</code>( <var class="Arg">M</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DiagonalEmbedding</code>( <var class="Arg">S</var>, <var class="Arg">M</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
 
-<h4>1.5 <span class="Heading">Operations</span></h4>
+<h4>1.2 <span class="Heading">Operations</span></h4>
 
-<p><a id="X7C90B87F79EB1B50" name="X7C90B87F79EB1B50"></a></p>
+<p><a id="X7E6345868566AF8B" name="X7E6345868566AF8B"></a></p>
 
-<h5>1.5-1 ActiveLowerBound</h5>
+<h5>1.2-1 ActiveLowerBound</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ActiveLowerBound</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an integer or infinity</p>
 
 <p>The active lower bound of the cell (=object or morphism) <var class="Arg">c</var>.</p>
 
-<p><a id="X84B18DEE7AA08B8E" name="X84B18DEE7AA08B8E"></a></p>
+<p><a id="X831D33997E2B0A1E" name="X831D33997E2B0A1E"></a></p>
 
-<h5>1.5-2 SetActiveLowerBound</h5>
+<h5>1.2-2 SetActiveLowerBound</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetActiveLowerBound</code>( <var class="Arg">c</var>, <var class="Arg">lower_bound</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an integer or infinity</p>
 
 <p>Set the active lower bound of the cell (=object or morphism) <var class="Arg">c</var> to <var class="Arg">lower_bound</var> if it is greater than the active lower bound, and return it.</p>
 
-<p><a id="X812A4C6B7AD0D225" name="X812A4C6B7AD0D225"></a></p>
+<p><a id="X7F286D32865D66FE" name="X7F286D32865D66FE"></a></p>
 
-<h5>1.5-3 ActiveUpperBound</h5>
+<h5>1.2-3 ActiveUpperBound</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ActiveUpperBound</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an integer or infinity</p>
 
 <p>The active upper bound of the cell (=object or morphism) <var class="Arg">c</var>.</p>
 
-<p><a id="X7F56328783825CB4" name="X7F56328783825CB4"></a></p>
+<p><a id="X86E7F5DD8709DD24" name="X86E7F5DD8709DD24"></a></p>
 
-<h5>1.5-4 SetActiveUpperBound</h5>
+<h5>1.2-4 SetActiveUpperBound</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetActiveUpperBound</code>( <var class="Arg">c</var>, <var class="Arg">upper_bound</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an integer or infinity</p>
 
 <p>Set the active upper bound of the cell (=object or morphism) <var class="Arg">c</var> to <var class="Arg">upper_bound</var> if it is less than the active upper bound, and return it.</p>
 
-<p><a id="X815954A87F615B47" name="X815954A87F615B47"></a></p>
+<p><a id="X856267D37CB7D49A" name="X856267D37CB7D49A"></a></p>
 
-<h5>1.5-5 TensorProductIndices</h5>
+<h5>1.2-5 TensorProductIndices</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductIndices</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a function</p>
 
 <p>Returns the function f: n |-&gt; [ <code class="code">ActiveLowerBound</code>( A ) .. n - <code class="code">ActiveLowerBound</code>( B ) ] over which to run the tensor product summation <var class="Arg">A</var>[i] <span class="SimpleMath">\(\otimes\)</span> <var class="Arg">B</var>[n - i] (<span class="SimpleMath">\(i \in f(n)\)</span>) for (<var class="Arg">A</var> <span class="SimpleMath">\(\otimes\)</span> <var class="Arg">B</var>)[n].</p>
 
-<p><a id="X7E8F89C37FBCDADF" name="X7E8F89C37FBCDADF"></a></p>
+<p><a id="X865731D8795E7BCB" name="X865731D8795E7BCB"></a></p>
 
-<h5>1.5-6 TensorProductIndices</h5>
+<h5>1.2-6 TensorProductIndices</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductIndices</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a pair of functions</p>
 
 <p>Returns two functions over which to run the tensor product summation for (<var class="Arg">A</var> <span class="SimpleMath">\(\otimes\)</span> (<var class="Arg">B</var> <span class="SimpleMath">\(\otimes\)</span> <var class="Arg">C</var>))[n] resp. for ((<var class="Arg">A</var> <span class="SimpleMath">\(\otimes\)</span> <var class="Arg">B</var>) <span class="SimpleMath">\(\otimes\)</span> <var class="Arg">C</var>)[n].</p>
 
-<p><a id="X87979C087C56F42B" name="X87979C087C56F42B"></a></p>
+<p><a id="X8042B41681CF6E3B" name="X8042B41681CF6E3B"></a></p>
 
-<h5>1.5-7 []</h5>
+<h5>1.2-7 []</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; []</code>( <var class="Arg">c</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
@@ -320,27 +213,144 @@
 
 <p><a id="X7C912493830569BF" name="X7C912493830569BF"></a></p>
 
-<h5>1.5-8 CertainDegreePart</h5>
+<h5>1.2-8 CertainDegreePart</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CertainDegreePart</code>( <var class="Arg">c</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
 <p>The <var class="Arg">i</var>-th object of the infinite list(s) underlying the cell resp. list <var class="Arg">c</var>.</p>
 
-<p><a id="X83DFC5C87C625FC1" name="X83DFC5C87C625FC1"></a></p>
+<p><a id="X849A6CE27CBF6CE1" name="X849A6CE27CBF6CE1"></a></p>
 
-<h5>1.5-9 Sublist</h5>
+<h5>1.2-9 Sublist</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Sublist</code>( <var class="Arg">c</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
 <p>The <var class="Arg">L</var>-th sublist of the infinite list underlying the cell (=object or morphism) <var class="Arg">c</var>.</p>
 
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
-<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
+<h4>1.3 <span class="Heading">GAP Categories</span></h4>
+
+<p><a id="X808A42C87FFD9DF7" name="X808A42C87FFD9DF7"></a></p>
+
+<h5>1.3-1 IsZGradedClosureCategoryWithBounds</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsZGradedClosureCategoryWithBounds</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of Z-graded categories with bounds.</p>
+
+<p><a id="X783A08B17B16284A" name="X783A08B17B16284A"></a></p>
+
+<h5>1.3-2 IsCellInZGradedClosureCategoryWithBounds</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInZGradedClosureCategoryWithBounds</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in a Z-graded category with bounds.</p>
+
+<p><a id="X873297B987787396" name="X873297B987787396"></a></p>
+
+<h5>1.3-3 IsObjectInZGradedClosureCategoryWithBounds</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInZGradedClosureCategoryWithBounds</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in a Z-graded category with bounds.</p>
+
+<p><a id="X85FE30B37AC4AA63" name="X85FE30B37AC4AA63"></a></p>
+
+<h5>1.3-4 IsMorphismInZGradedClosureCategoryWithBounds</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInZGradedClosureCategoryWithBounds</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a Z-graded category with bounds.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>1.4 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X85640A907CB15B11" name="X85640A907CB15B11"></a></p>
+
+<h5>1.4-1 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Return the category <span class="SimpleMath">\(C\)</span> underlying the Z-graded category with bounds category <var class="Arg">ZC</var><code class="code"> := BoundedZGradedCategory(</code> <span class="SimpleMath">\(C\)</span> <code class="code">)</code>).</p>
+
+<p><a id="X861FD85E7A662BFC" name="X861FD85E7A662BFC"></a></p>
+
+<h5>1.4-2 UnderlyingZFunctionAndBounds</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingZFunctionAndBounds</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a pair including a Z-function and a pair of integers</p>
+
+<p>The <span class="SimpleMath">\(\mathbb{Z}\)</span>-function underlying the object <var class="Arg">obj</var>.</p>
+
+<p><a id="X7CF0790480E00A2B" name="X7CF0790480E00A2B"></a></p>
+
+<h5>1.4-3 UnderlyingZFunction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingZFunction</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a Z-function</p>
+
+<p>The <span class="SimpleMath">\(\mathbb{Z}\)</span>-function underlying the morphism <var class="Arg">mor</var>.</p>
+
+<p><a id="X83DF46B778F3DAE7" name="X83DF46B778F3DAE7"></a></p>
+
+<h5>1.4-4 NonZeroParts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NonZeroParts</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The support of the object <var class="Arg">c</var>.</p>
+
+<p><a id="X787A2F047F0B19B4" name="X787A2F047F0B19B4"></a></p>
+
+<h5>1.4-5 NonZeroDegrees</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NonZeroDegrees</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The list of degrees of the support of the object <var class="Arg">c</var>.</p>
+
+<p><a id="X821C05807C834ECC" name="X821C05807C834ECC"></a></p>
+
+<h5>1.4-6 NonZeroDegreesHull</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NonZeroDegreesHull</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>A list of integers containing the list of degrees of the support of the object <var class="Arg">c</var>.</p>
+
+<p><a id="X7FD682887AEBF8A3" name="X7FD682887AEBF8A3"></a></p>
+
+<h5>1.4-7 NonZeroPartsWithDegrees</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NonZeroPartsWithDegrees</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p><a id="X87B561A184128F84" name="X87B561A184128F84"></a></p>
+
+<h5>1.4-8 SupportWithDegrees</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SupportWithDegrees</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p><a id="X865DFCB58364D84C" name="X865DFCB58364D84C"></a></p>
+
+<h5>1.4-9 SupportWithDegreesWithGivenDegrees</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SupportWithDegreesWithGivenDegrees</code>( <var class="Arg">object</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Like SupportWithDegrees but only considers the degrees in the given list <var class="Arg">L</var>.</p>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

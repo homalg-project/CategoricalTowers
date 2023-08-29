@@ -1,0 +1,222 @@
+  
+  [1X4 [33X[0;0YThe finitely Z-graded closure of a category[133X[101X
+  
+  
+  [1X4.1 [33X[0;0YConstructors[133X[101X
+  
+  [1X4.1-1 FinitelyZGradedClosureCategory[101X
+  
+  [33X[1;0Y[29X[2XFinitelyZGradedClosureCategory[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YConstruct the negatively [23XZ[123X-graded closure of the category [3XC[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "GradedCategories" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQmat := MatrixCategory( Q );[127X[104X
+    [4X[28XCategory of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XZQmat := FinitelyZGradedClosureCategory( Qmat );[127X[104X
+    [4X[28XFinitelyZGradedClosureCategory( Category of matrices over Q )[128X[104X
+    [4X[25Xgap>[125X [27Xz := ZeroObject( ZQmat );[127X[104X
+    [4X[28X<A zero object in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27XSublist( z, [ -1 .. 2 ] );[127X[104X
+    [4X[28X[ <A vector space object over Q of dimension 0>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 0>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 0>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 0> ][128X[104X
+    [4X[25Xgap>[125X [27Xo0 := ZQmat[0];[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27XSublist( o0, [ -1 .. 2 ] );[127X[104X
+    [4X[28X[ <A vector space object over Q of dimension 0>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 1>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 0>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 0> ][128X[104X
+    [4X[25Xgap>[125X [27XIsZero( o0 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xo1 := ZQmat[1];[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27XSublist( o1, [ -1 .. 2 ] );[127X[104X
+    [4X[28X[ <A vector space object over Q of dimension 0>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 0>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 1>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 0> ][128X[104X
+    [4X[25Xgap>[125X [27Xo00 := DirectSum( o0, o0 );[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27XSublist( o00, [ -1 .. 2 ] );[127X[104X
+    [4X[28X[ <A vector space object over Q of dimension 0>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 2>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 0>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 0> ][128X[104X
+    [4X[25Xgap>[125X [27Xo0 = TensorUnit( ZQmat );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XTensorProduct( o1, ZQmat[-1] ) = o0;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xo11 := TensorProduct( o00, o1 );[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27XSublist( o11, [ -1 .. 2 ] );[127X[104X
+    [4X[28X[ <A vector space object over Q of dimension 0>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 0>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 2>,[128X[104X
+    [4X[28X  <A vector space object over Q of dimension 0> ][128X[104X
+    [4X[25Xgap>[125X [27XIsZero( TensorProduct( z, o11 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlu := LeftUnitor( o00 );[127X[104X
+    [4X[28X<A morphism in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( lu );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlu;[127X[104X
+    [4X[28X<An isomorphism in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xslu := Sublist( lu, [ -1 .. 2 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XList( slu, IsIsomorphism );[127X[104X
+    [4X[28X[ true, true, true, true ][128X[104X
+    [4X[25Xgap>[125X [27XList( slu, IsZero );[127X[104X
+    [4X[28X[ true, false, true, true ][128X[104X
+    [4X[25Xgap>[125X [27Xslu;[127X[104X
+    [4X[28X[ <A zero, isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <An isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <A zero, isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <A zero, isomorphism in Category of matrices over Q> ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( lu[0] );[127X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn isomorphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27Xru := RightUnitor( o00 );[127X[104X
+    [4X[28X<A morphism in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( ru );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xru;[127X[104X
+    [4X[28X<An isomorphism in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xsru := Sublist( ru, [ -1 .. 2 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XList( sru, IsIsomorphism );[127X[104X
+    [4X[28X[ true, true, true, true ][128X[104X
+    [4X[25Xgap>[125X [27XList( sru, IsZero );[127X[104X
+    [4X[28X[ true, false, true, true ][128X[104X
+    [4X[25Xgap>[125X [27Xsru;[127X[104X
+    [4X[28X[ <A zero, isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <An isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <A zero, isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <A zero, isomorphism in Category of matrices over Q> ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( ru[0] );[127X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn isomorphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27Xlr := AssociatorLeftToRight( o0, o1, o00 );[127X[104X
+    [4X[28X<A morphism in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( lr );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlr;[127X[104X
+    [4X[28X<An isomorphism in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xslr := Sublist( lr, [ -1 .. 2 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XList( slr, IsIsomorphism );[127X[104X
+    [4X[28X[ true, true, true, true ][128X[104X
+    [4X[25Xgap>[125X [27XList( slr, IsZero );[127X[104X
+    [4X[28X[ true, true, false, true ][128X[104X
+    [4X[25Xgap>[125X [27Xslr;[127X[104X
+    [4X[28X[ <A zero, isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <A zero, isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <An isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <A zero, isomorphism in Category of matrices over Q> ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( lr[1] );[127X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn isomorphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27Xrl := AssociatorRightToLeft( o0, o1, o00 );[127X[104X
+    [4X[28X<A morphism in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( rl );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xrl;[127X[104X
+    [4X[28X<An isomorphism in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xsrl := Sublist( rl, [ -1 .. 2 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XList( srl, IsIsomorphism );[127X[104X
+    [4X[28X[ true, true, true, true ][128X[104X
+    [4X[25Xgap>[125X [27XList( srl, IsZero );[127X[104X
+    [4X[28X[ true, true, false, true ][128X[104X
+    [4X[25Xgap>[125X [27Xsrl;[127X[104X
+    [4X[28X[ <A zero, isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <A zero, isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <An isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <A zero, isomorphism in Category of matrices over Q> ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( rl[1] );[127X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn isomorphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27Xb := Braiding( o11, o00 );[127X[104X
+    [4X[28X<A morphism in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( b );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xb;[127X[104X
+    [4X[28X<An isomorphism in[128X[104X
+    [4X[28X FinitelyZGradedClosureCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xsb := Sublist( b, [ -1 .. 2 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XList( sb, IsIsomorphism );[127X[104X
+    [4X[28X[ true, true, true, true ][128X[104X
+    [4X[25Xgap>[125X [27XList( sb, IsZero );[127X[104X
+    [4X[28X[ true, true, false, true ][128X[104X
+    [4X[25Xgap>[125X [27Xsb;[127X[104X
+    [4X[28X[ <A zero, isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <A zero, isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <An isomorphism in Category of matrices over Q>,[128X[104X
+    [4X[28X  <A zero, isomorphism in Category of matrices over Q> ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( b[1] );[127X[104X
+    [4X[28X[ [  1,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn isomorphism in Category of matrices over Q[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.2 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X4.2-1 IsFinitelyZGradedClosureCategory[101X
+  
+  [33X[1;0Y[29X[2XIsFinitelyZGradedClosureCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of finitely Z-graded categories.[133X
+  
+  [1X4.2-2 IsCellInFinitelyZGradedClosureCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCellInFinitelyZGradedClosureCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of cells in a finitely Z-graded category.[133X
+  
+  [1X4.2-3 IsObjectInFinitelyZGradedClosureCategory[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInFinitelyZGradedClosureCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a finitely Z-graded category.[133X
+  
+  [1X4.2-4 IsMorphismInFinitelyZGradedClosureCategory[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInFinitelyZGradedClosureCategory[102X( [3Xmorphism[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a finitely Z-graded category.[133X
+  
