@@ -6,10 +6,10 @@
                          [1X Categories of (co)presheaves [101X
   
   
-                                   2023.08-05
+                                   2023.08-06
   
   
-                                 26 August 2023
+                                 29 August 2023
   
   
                                 Mohamed Barakat
@@ -37,10 +37,9 @@
       1.1-3 OppositeOfSource
       1.1-4 Source
       1.1-5 Range
-      1.1-6 YonedaEmbedding
-      1.1-7 YonedaEmbeddingOfSourceCategory
-      1.1-8 CoYonedaLemmaOnObjects
-      1.1-9 CoYonedaLemmaOnMorphisms
+      1.1-6 YonedaEmbeddingOfSourceCategory
+      1.1-7 CoYonedaLemmaOnObjects
+      1.1-8 CoYonedaLemmaOnMorphisms
     1.2 [33X[0;0YConstructors[133X
       1.2-1 PreSheaves
     1.3 [33X[0;0YOperations[133X
@@ -55,6 +54,28 @@
     1.5 [33X[0;0YExamples[133X
       1.5-1 [33X[0;0YThe terminal category[133X
       1.5-2 [33X[0;0YThe category of presheaves of [10XSkeletalFinSets[110X[133X
+  2 [33X[0;0YCategory of presheaves (with bounds) of a (linear) category[133X
+    2.1 [33X[0;0Y[5XGAP[105X categories[133X
+      2.1-1 IsPreSheafWithBoundsCategory
+      2.1-2 IsCellInPreSheafWithBoundsCategory
+      2.1-3 IsObjectInPreSheafWithBoundsCategory
+      2.1-4 IsMorphismInPreSheafWithBoundsCategory
+    2.2 [33X[0;0YAttributes[133X
+      2.2-1 Source
+      2.2-2 Range
+      2.2-3 OppositeOfSource
+      2.2-4 Source
+      2.2-5 Range
+      2.2-6 YonedaEmbedding
+      2.2-7 YonedaEmbeddingOfSourceCategory
+      2.2-8 CoYonedaLemmaOnObjects
+      2.2-9 CoYonedaLemmaOnMorphisms
+    2.3 [33X[0;0YConstructors[133X
+      2.3-1 PreSheavesWithBounds
+    2.4 [33X[0;0YOperations[133X
+      2.4-1 ApplyObjectInPreSheafCategoryToObject
+      2.4-2 ApplyObjectInPreSheafCategoryToMorphism
+      2.4-3 ApplyMorphismInPreSheafCategoryToObject
   
   
   [32X
