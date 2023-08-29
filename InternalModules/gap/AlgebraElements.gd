@@ -40,23 +40,23 @@ BindGlobal( "TheTypeInternalAlgebraElement",
 ##
 ####################################
 
-#! @Arguments M, phi
+#! @Arguments iota
 #! @Returns a &CAP; morphism
 #! @Group InternalElement
 DeclareOperation( "InternalElement",
         [ IsCapCategoryMorphism ] );
 
 # graded version
-#! @Arguments SV, chi, degree, i
+#! @Arguments A, chi, degree, i
 #! @Group InternalElement
 DeclareOperation( "InternalElement",
-        [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsObject, IsInt, IsInt ] );
+        [ IsInternalAlgebra and IsObjectInZGradedClosureCategoryWithBounds, IsObject, IsInt, IsInt ] );
 
 # graded version
-#! @Arguments SV, chi, i
+#! @Arguments A, chi, i
 #! @Group InternalElement
 DeclareOperation( "InternalElement",
-        [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsObject, IsInt ] );
+        [ IsInternalAlgebra and IsObjectInZGradedClosureCategoryWithBounds, IsObject, IsInt ] );
 
 ####################################
 ##
@@ -65,7 +65,7 @@ DeclareOperation( "InternalElement",
 ####################################
 
 #! @Arguments p
-#! @Returns a CAP; category morphism in the filter <C>IsMorphismInPositivelyZGradedCategory</C>
+#! @Returns a &CAP; category morphism (<C>IsMorphismInZGradedClosureCategoryWithBounds</C>)
 DeclareAttribute( "UnderlyingEmbedding", IsElementInInternalAlgebraOrModule );
 
 #! @Arguments e

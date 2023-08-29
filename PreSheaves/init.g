@@ -6,3 +6,6 @@
 
 ##
 ReadPackage( "PreSheaves", "gap/PreSheaves.gd");
+
+##
+ReadPackage( "PreSheaves", "gap/PreSheavesWithBounds.gd");

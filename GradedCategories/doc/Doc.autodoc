@@ -1,1 +1,21 @@
+@Chapter The bounded Z-graded closure of a category
+
+@Section Constructors
+@Section Attribute
+@Section Operations
+@Section GAP Categories
+
 @Chapter The positively Z-graded closure of a category
+
+@Section Constructors
+@Section GAP Categories
+
+@Chapter The negatively Z-graded closure of a category
+
+@Section Constructors
+@Section GAP Categories
+
+@Chapter The finitely Z-graded closure of a category
+
+@Section Constructors
+@Section GAP Categories

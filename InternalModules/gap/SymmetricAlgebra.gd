@@ -15,7 +15,7 @@
 ## categories
 
 #!
-DeclareCategory( "IsInternalSymmetricAlgebra", IsInternalAlgebra and IsObjectInPositivelyZGradedCategory );
+DeclareCategory( "IsInternalSymmetricAlgebra", IsInternalAlgebra and IsObjectInPositivelyZGradedClosureCategory );
 
 ####################################
 ##
@@ -32,19 +32,19 @@ DeclareAttribute( "SymmetricAlgebraAsZFunction", IsCapCategoryObject, "mutable" 
 DeclareAttribute( "SymmetricAlgebraMultiplicationListList", IsCapCategoryObject, "mutable" );
 
 #! @Arguments V
-#! @Returns a CAP; category object in the filter <C>IsObjectInPositivelyZGradedCategory</C>
+#! @Returns a &CAP; category object (<C>IsObjectInPositivelyZGradedClosureCategory</C>)
 DeclareAttribute( "SymmetricAlgebra", IsCapCategoryObject );
 
 #! @Arguments V
-#! @Returns a CAP; category morphism in the filter <C>IsMorphismInPositivelyZGradedCategory</C>
+#! @Returns a &CAP; category morphism (<C>IsMorphismInPositivelyZGradedClosureCategory</C>)
 DeclareAttribute( "SymmetricAlgebraMultiplicationMorphism", IsCapCategoryObject );
 
 #! @Arguments V
-#! @Returns a CAP; object morphism in the filter <C>IsCategoryOfLeftSModules</C>
+#! @Returns a &CAP; object morphism in the filter <C>IsCategoryOfLeftSModules</C>
 DeclareAttribute( "SymmetricAlgebraAsLeftModule", IsCapCategoryObject );
 
 #! @Arguments V
-#! @Returns a CAP; object morphism in the filter <C>IsCategoryOfRightSModules</C>
+#! @Returns a &CAP; object morphism in the filter <C>IsCategoryOfRightSModules</C>
 DeclareAttribute( "SymmetricAlgebraAsRightModule", IsCapCategoryObject );
 
 ####################################

@@ -28,12 +28,31 @@ where $G := S_4$ is the symmetric group on four points and $k =
 
 @Chapter Internal algebra elements
 
+@Section Constructors
+@Section Attributes
+@Section Operations
+@Section GAP Categories
+
 @Chapter Modules over internal algebras
+
+@Section Constructors
+@Section Operations
+@Section GAP Categories
 
 @Chapter Internal module elements
 
+@Section Attributes
+@Section GAP Categories
+
 @Chapter Internal symmetric algebra
 
+@Section Attributes
+@Section Operations
+@Section GAP Categories
+
 @Chapter Modules over the internal symmetric algebra
+
+@Section Constructors
+@Section GAP Categories
 
 @Chapter Tools

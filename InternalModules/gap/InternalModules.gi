@@ -167,7 +167,7 @@ InstallMethod( FreeInternalModuleActionMorphism,
         
   function ( U, degree, AMod )
     
-    U := ObjectInPositivelyZGradedCategory( U, degree );
+    U := ObjectInZGradedClosureCategoryWithBounds( CapCategory( UnderlyingActingObject( AMod ) ), U, degree );
     
     return FreeInternalModuleActionMorphism( U, AMod );
     
