@@ -1,5 +1,5 @@
 name: Locales
-version: "2023.08-05"
+version: "2023.08-06"
 license: "GPL-2.0-or-later"
 date: 2023-08-29
 description: |
@@ -29,7 +29,7 @@ needed-pkgs:
       version: ">= 2021.12-02"
       url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
     - name: "CAP"
-      version: ">= 2023.08-08"
+      version: ">= 2023.08-18"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "CompilerForCAP"
       version: ">= 2022.08-10"
@@ -58,11 +58,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/Locales/PackageI
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.08-05/Locales-2023.08-05.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.08-06/Locales-2023.08-06.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.08-05/Locales-2023.08-05.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.08-06/Locales-2023.08-06.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.08-05/Locales-2023.08-05-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.08-06/Locales-2023.08-06-manual.pdf
 
 abstract: |
 
@@ -75,7 +75,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BLK29</span>]   <b class='BibAuthor'>Barakat, M., Lange-Hegermann, M. and Kuhmichel, T.</b>,
      <i class='BibTitle'>Locales, Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets,
-             Version 2023.08-05</i>
+             Version 2023.08-06</i>
      (<span class='BibYear'>8-29</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/Locales">https://homalg-project.github.io/pkg/Locales</a></span>.
@@ -83,11 +83,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ Locales2023.08-05,
+    @misc{ Locales2023.08-06,
       author =           {Barakat, M. and Lange-Hegermann, M. and Kuhmichel, T.},
       title =            {{Locales},    Locales,    frames,    coframes,    meet
                           semi-lattices  of  locally closed subsets, and Boolean
-                          algebras of constructible sets, {V}ersion 2023.08-05},
+                          algebras of constructible sets, {V}ersion 2023.08-06},
       month =            {3-},
       year =             {8-29},
       note =             {GAP package},
