@@ -68,9 +68,7 @@ InstallMethod( PairOfParallelArrowsCategory,
     
     F := CategoryFromDataTables( F : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
     
-    PSh := PreSheaves( F, C : FinalizeCategory := false );
-
-    Finalize( PSh : FinalizeCategory := true );
+    PSh := PreSheaves( F, C : FinalizeCategory := true );
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
