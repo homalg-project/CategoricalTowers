@@ -2297,7 +2297,7 @@ InstallMethod( AssociatedColimitCompletionOfSourceCategory,
         
   function( PSh )
     
-    return PairOfParallelArrowsCategory( AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh ) );
+    return CoequalizerCompletion( AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh ) );
     
 end );
 
@@ -2834,9 +2834,9 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
         [ IsPreSheafCategoryOfFpEnrichedCategory,
-          IsObjectInPairOfParallelArrowsCategory,
+          IsObjectInCoequalizerCompletion,
           IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
-          IsObjectInPairOfParallelArrowsCategory ],
+          IsObjectInCoequalizerCompletion ],
         
   function ( PSh, source, phi, range )
     local C, H, defining_triple, nr_objs, nr_mors, arrows, map_of_sources_C, map_of_targets_C, objs, mors,

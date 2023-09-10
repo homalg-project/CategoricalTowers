@@ -1,7 +1,7 @@
-#! @BeginChunk Jordan
+#! @BeginChunk CharacteristicMatrix
 
 #! @Example
-LoadPackage( "FunctorCategories" );
+LoadPackage( "FunctorCategories", ">= 2023.10-04" );
 #! true
 q := RightQuiver( "q(o)[x:o->o]" );
 #! q(o)[x:o->o]
@@ -63,7 +63,7 @@ Display( Mphi );
 #! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations,
 #! Rows( Q ) ) given by the above data
 Mphi_as_coequqlizer_pair := CoYonedaLemmaOnObjects( Mphi );
-#! <An object in PairOfParallelArrowsCategory( Additive closure(
+#! <An object in CoequalizerCompletion( Additive closure(
 #!  Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) )>
 Display( Mphi_as_coequqlizer_pair );
 #! Image of <(V)>:
@@ -109,6 +109,14 @@ Display( Mphi_as_coequqlizer_pair );
 #! relations ) ) given by the above data
 #! 
 #! An object in PairOfParallelArrowsCategory( Additive closure(
+#! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) )
+#! given by the above data
+#! 
+#! An object in QuotientCategory( PairOfParallelArrowsCategory( Additive closure(
+#! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) ) )
+#! defined by the congruence function unknown given by the above data
+#! 
+#! An object in CoequalizerCompletion( Additive closure(
 #! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) )
 #! given by the above data
 phi_in_additive_closure :=

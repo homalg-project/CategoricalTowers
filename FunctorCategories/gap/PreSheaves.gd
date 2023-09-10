@@ -152,7 +152,7 @@ end );
 
 #! @Description
 #!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
-#!  the ambient category <C>PairOfParallelArrowsCategory</C>( <C>AssociatedFiniteStrictCoproductCompletionOfSourceCategory</C>( <A>PSh</A> ) ).
+#!  the ambient category <C>CoequalizerCompletion</C>( <C>AssociatedFiniteStrictCoproductCompletionOfSourceCategory</C>( <A>PSh</A> ) ).
 #! @Arguments PSh
 #! @Returns a &CAP; category
 DeclareAttribute( "AssociatedColimitCompletionOfSourceCategory",
@@ -161,7 +161,7 @@ DeclareAttribute( "AssociatedColimitCompletionOfSourceCategory",
 CapJitAddTypeSignature( "AssociatedColimitCompletionOfSourceCategory", [ IsPreSheafCategory ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( PairOfParallelArrowsCategory( AssociatedFiniteStrictCoproductCompletionOfSourceCategory( input_types[1].category ) ) );
+    return CapJitDataTypeOfCategory( CoequalizerCompletion( AssociatedFiniteStrictCoproductCompletionOfSourceCategory( input_types[1].category ) ) );
     
 end );
 

@@ -53,4 +53,4 @@ DeclareOperation( "TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStruc
 #! @Returns a &CAP; morphism
 DeclareOperation( "TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure",
         [ IsCapCategoryMorphism, IsCapCategoryObject ] );
-#! @InsertChunk Jordan
+#! @InsertChunk CharacteristicMatrix

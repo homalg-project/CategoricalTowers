@@ -1,17 +1,17 @@
 #! @BeginChunk CategoryOfColimitQuivers
 
 #! @Example
-LoadPackage( "FunctorCategories" );
+LoadPackage( "FunctorCategories", ">= 2023.10-04" );
 #! true
 FinBouquets;
 #! FinBouquets
 Chat := ModelingCategory( FinBouquets );
 #! FiniteCocompletion( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )
-Ccqv := CategoryOfColimitQuivers(
+ColimitQuiversC := CategoryOfColimitQuivers(
                  UnderlyingCategory( FinBouquets ) );
 #! CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )
-P := Ccqv.P;
+P := ColimitQuiversC.P;
 #! <A projective object in CategoryOfColimitQuivers(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
 Display( P );
@@ -19,7 +19,7 @@ Display( P );
 #! 
 #! An object in CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
-L := Ccqv.L;
+L := ColimitQuiversC.L;
 #! <A projective object in CategoryOfColimitQuivers(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
 Display( L );
@@ -27,7 +27,7 @@ Display( L );
 #! 
 #! An object in CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
-b := Ccqv.b;
+b := ColimitQuiversC.b;
 #! <A morphism in CategoryOfColimitQuivers(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
 Display( b );
@@ -53,8 +53,20 @@ F_as_presheaf := ModelingObject( Chat, ModelingObject( FinBouquets, F ) );
 #! <An object in PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ),
 #!  SkeletalFinSets )>
 F_as_coequalizer_pair := CoYonedaLemmaOnObjects( F_as_presheaf );
-#! <An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
+#! <An object in CoequalizerCompletion( FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
+ColimitCompletionC := CapCategory( F_as_coequalizer_pair );
+#! CoequalizerCompletion( FiniteStrictCoproductCompletion(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )
+Display( ColimitCompletionC );
+#! A CAP category with name
+#! CoequalizerCompletion( FiniteStrictCoproductCompletion(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ):
+#! 
+#! 21 primitive operations were used to derive 62 operations for this category which algorithmically
+#! * IsCocartesianCategory
+#! and not yet algorithmically
+#! * IsFiniteCocompleteCategory
 Display( F_as_coequalizer_pair );
 #! Image of <(V)>:
 #! [ 7, [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)> ] ]
@@ -90,7 +102,18 @@ Display( F_as_coequalizer_pair );
 #! 
 #! An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
-F_as_colimit_quiver := ReinterpretationOfObject( Ccqv, F_as_coequalizer_pair );
+#! 
+#! An object in QuotientCategory(
+#! PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) )
+#! defined by the congruence function unknown given by the above data
+#! 
+#! An object in CoequalizerCompletion( FiniteStrictCoproductCompletion(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
+F_as_colimit_quiver :=
+  ReinterpretationOfObject( ColimitQuiversC,
+          ObjectDatum( ModelingObject( ColimitCompletionC,
+                  F_as_coequalizer_pair ) ) );
 #! <An object in CategoryOfColimitQuivers(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
 Display( F_as_colimit_quiver );
