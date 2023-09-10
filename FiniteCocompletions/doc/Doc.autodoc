@@ -74,6 +74,16 @@
 @Section Constructors
 @Section GAP categories
 
+@Chapter The coequalizer closure of a category
+
+@Section Attributes
+@Section Constructors
+@Section GAP categories
+@Section Examples
+
+@Subsection Free elementary topos on one object
+@InsertChunk FreeElementaryToposOnOneObject
+
 @Chapter The category of colimit quivers in a category
 
 @Section Attributes
