@@ -39,6 +39,46 @@ end
     , 100 );
     
     ##
+    AddEmbeddingOfEqualizerWithGivenEqualizer( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1, P_1 )
+    local deduped_1_1, hoisted_2_1;
+    hoisted_2_1 := [ 1 .. Length( morphisms_1 ) - 1 ];
+    deduped_1_1 := List( morphisms_1, AsList );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Y_1, AsList, Filtered( [ 0 .. Length( Y_1 ) - 1 ], function ( x_2 )
+              local deduped_1_2;
+              deduped_1_2 := 1 + x_2;
+              return ForAll( hoisted_2_1, function ( j_3 )
+                      return deduped_1_1[j_3][deduped_1_2] = deduped_1_1[j_3 + 1][deduped_1_2];
+                  end );
+          end ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddEqualizer( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1 )
+    local deduped_1_1, hoisted_2_1;
+    hoisted_2_1 := [ 1 .. Length( morphisms_1 ) - 1 ];
+    deduped_1_1 := List( morphisms_1, AsList );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Length, Length( Filtered( [ 0 .. Length( Y_1 ) - 1 ], function ( x_2 )
+                local deduped_1_2;
+                deduped_1_2 := 1 + x_2;
+                return ForAll( hoisted_2_1, function ( j_3 )
+                        return deduped_1_1[j_3][deduped_1_2] = deduped_1_1[j_3 + 1][deduped_1_2];
+                    end );
+            end ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
         
 ########
@@ -391,6 +431,30 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
                       deduped_1_3 := 1 + j_3;
                       return hoisted_1_1[deduped_1_3][hoisted_1_2] * hoisted_3_1[deduped_1_3];
                   end );
+          end ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddUniversalMorphismIntoEqualizerWithGivenEqualizer( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1, T_1, tau_1, P_1 )
+    local deduped_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1;
+    hoisted_2_1 := [ 1 .. Length( morphisms_1 ) - 1 ];
+    deduped_1_1 := List( morphisms_1, AsList );
+    hoisted_4_1 := Filtered( [ 0 .. Length( Y_1 ) - 1 ], function ( x_2 )
+            local deduped_1_2;
+            deduped_1_2 := 1 + x_2;
+            return ForAll( hoisted_2_1, function ( j_3 )
+                    return deduped_1_1[j_3][deduped_1_2] = deduped_1_1[j_3 + 1][deduped_1_2];
+                end );
+        end );
+    hoisted_3_1 := AsList( tau_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, AsList, List( [ 0 .. Length( T_1 ) - 1 ], function ( x_2 )
+              return -1 + SafePosition( hoisted_4_1, hoisted_3_1[(1 + x_2)] );
           end ) );
 end
 ########
