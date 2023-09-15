@@ -237,7 +237,7 @@ InstallMethod( QuotientCategory,
                              category_filter := category_filter,
                              category_object_filter := category_object_filter,
                              category_morphism_filter := category_morphism_filter,
-                             commutative_ring_of_linear_category := commutative_ring,
+                             #commutative_ring_of_linear_category := commutative_ring,
                              properties := properties,
                              object_constructor := object_constructor,
                              object_datum := object_datum,
@@ -252,6 +252,10 @@ InstallMethod( QuotientCategory,
     
     SetUnderlyingCategory( quotient_cat, cat );
     SetQuotientCategoryCongruenceFunction( quotient_cat, record.congruence_function );
+    
+    if commutative_ring <> fail then
+          SetCommutativeRingOfLinearCategory( quotient_cat, commutative_ring );
+    fi;
     
     AddIsCongruentForMorphisms( quotient_cat,
       function( quotient_cat, phi, psi )

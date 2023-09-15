@@ -7,16 +7,16 @@
 #! true
 #! gap> LoadPackage( "QuotientCategories" );
 #! true
-#! gap> ZZ := HomalgRingOfIntegers( );
+#! gap> zz := HomalgRingOfIntegers( );
 #! Z
-#! gap> cat := LeftPresentations( ZZ );
+#! gap> cat := LeftPresentations( zz );
 #! Category of left presentations of Z
 #! gap> epi := EpimorphismFromSomeProjectiveObject;;
 #! gap> congruence_func := { alpha, beta } -> IsLiftable( alpha - beta, epi( Range( alpha ) ) );;
 #! gap> quotient_cat := QuotientCategory( cat, congruence_func );
 #! Quotient category( Category of left presentations of Z ) by congruence_func
 #! gap> F := ProjectionFunctor( quotient_cat );;
-#! gap> a := FreeLeftPresentation( 3, ZZ );
+#! gap> a := FreeLeftPresentation( 3, zz );
 #! <A projective object in Category of left presentations of Z>
 #! gap> quotient_a := ApplyFunctor( F, a );
 #! <An object in Quotient category( Category of left presentations of Z ) by congruence_func>
