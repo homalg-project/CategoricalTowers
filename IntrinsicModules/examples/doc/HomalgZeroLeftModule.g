@@ -3,10 +3,10 @@
 LoadPackage( "IntrinsicModules" );
 
 #! @Example
-ZZ := HomalgRingOfIntegers( );
+zz := HomalgRingOfIntegers( );
 #! Z
-F := HomalgZeroLeftModule( ZZ );
+F := HomalgZeroLeftModule( zz );
 #! <A zero left module>
-0 * ZZ;
+0 * zz;
 #! <The zero left module>
 #! @EndExample

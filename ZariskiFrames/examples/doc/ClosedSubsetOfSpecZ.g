@@ -3,19 +3,19 @@
 LoadPackage( "ZariskiFrames" );
 
 #! @Example
-ZZ := HomalgRingOfIntegers( );
+zz := HomalgRingOfIntegers( );
 #! Z
-ZC := ZariskiCoframeOfAffineSpectrum( ZZ );
+ZC := ZariskiCoframeOfAffineSpectrum( zz );
 #! The coframe of Zariski closed subsets of the affine spectrum of Z
-A := ClosedSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, ZZ ) );
+A := ClosedSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, zz ) );
 #! V_{Z}( <...> )
 Display( A );
 #! V( <4> )
-B := ClosedSubsetOfSpec( "[ 12, 20 ]", ZZ );
+B := ClosedSubsetOfSpec( "[ 12, 20 ]", zz );
 #! V_{Z}( <...> )
-C := ClosedSubsetOfSpecByRadicalColumn( "[ 3 ]", ZZ );
+C := ClosedSubsetOfSpecByRadicalColumn( "[ 3 ]", zz );
 #! V_{Z}( <...> )
-D := ClosedSubsetOfSpec( "[ 12 ]", ZZ );
+D := ClosedSubsetOfSpec( "[ 12 ]", zz );
 #! V_{Z}( <...> )
 A = B;
 #! true
@@ -65,7 +65,7 @@ I := InitialObject( ZC );
 #! V_{Z}( <...> )
 Display( I );
 #! ∅
-A := ClosedSubsetOfSpec( "[ 4 ]", ZZ );
+A := ClosedSubsetOfSpec( "[ 4 ]", zz );
 #! V_{Z}( <...> )
 Display( A );
 #! V( <4> )

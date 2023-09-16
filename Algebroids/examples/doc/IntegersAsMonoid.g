@@ -20,33 +20,33 @@ L := [ [ m * i, o ], [ i * m, o ] ];
 #! Create a monoid from $q$ and the list $L$ of relations.
 
 #! @Example
-ZZ := Category( q, L );
+zz := Category( q, L );
 #! FreeCategory( RightQuiver( "q(o)[m:o->o,i:o->o]" ) ) / [ m*i = o, i*m = o ]
-IsCommutative( ZZ );
+IsCommutative( zz );
 #! true
-ZZ.o;
+zz.o;
 #! <(o)>
-IsWellDefined( ZZ.o );
+IsWellDefined( zz.o );
 #! true
-m := ZZ.m;
+m := zz.m;
 #! (o)-[(m)]->(o)
-i := ZZ.i;
+i := zz.i;
 #! (o)-[(i)]->(o)
-SetOfObjects( ZZ );
+SetOfObjects( zz );
 #! [ <(o)> ]
-SetOfGeneratingMorphisms( ZZ );
+SetOfGeneratingMorphisms( zz );
 #! [ (o)-[(m)]->(o), (o)-[(i)]->(o) ]
-SetOfGeneratingMorphisms( ZZ, ZZ.o, ZZ.o );
+SetOfGeneratingMorphisms( zz, zz.o, zz.o );
 #! [ (o)-[(m)]->(o), (o)-[(i)]->(o) ]
-ObjectInFpCategory( ZZ, o ) = ZZ.o;
+ObjectInFpCategory( zz, o ) = zz.o;
 #! true
-ZZ.o = o / ZZ;
+zz.o = o / zz;
 #! true
-IdentityMorphism( ZZ.o );
+IdentityMorphism( zz.o );
 #! (o)-[(o)]->(o)
-MorphismInFpCategory( ZZ, q.m ) = ZZ.m;
+MorphismInFpCategory( zz, q.m ) = zz.m;
 #! true
-ZZ.m = q.m / ZZ;
+zz.m = q.m / zz;
 #! true
 #! @EndExample
 
@@ -58,10 +58,10 @@ m2 := PreCompose( [ m, i, m, m, i, m, i, m ] );
 #! (o)-[(m*m)]->(o)
 IsWellDefined( m2 );
 #! true
-unit := Unit( ZZ );
+unit := Unit( zz );
 #! Functor from FreeCategory( RightQuiver( "*(1)[]" ) ) ->
 #! FreeCategory( RightQuiver( "q(o)[m:o->o,i:o->o]" ) ) / [ m*i = o, i*m = o ]
-mul := Multiplication( ZZ );
+mul := Multiplication( zz );
 #! Functor from
 #! FreeCategory( RightQuiver(
 #!   "qxq(oo)[om:oo->oo,oi:oo->oo,mo:oo->oo,io:oo->oo]" ) ) / relations ->

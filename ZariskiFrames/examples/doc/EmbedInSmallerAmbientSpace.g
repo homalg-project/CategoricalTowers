@@ -3,9 +3,9 @@
 LoadPackage( "ZariskiFrames" );
 
 #! @Example
-ZZ := HomalgRingOfIntegers( );
+zz := HomalgRingOfIntegers( );
 #! Z
-A := ClosedSubsetOfSpec( "[ 10, 15 ]", ZZ );
+A := ClosedSubsetOfSpec( "[ 10, 15 ]", zz );
 #! V_{Z}( <...> )
 Display( A );
 #! V( <10,15> )
@@ -17,7 +17,7 @@ Ae := EmbedInSmallerAmbientSpace( A );
 #! V_{GF(5)}( <...> )
 Display( Ae );
 #! V( <> )
-I := ClosedSubsetOfSpec( "[ 1 ]", ZZ );
+I := ClosedSubsetOfSpec( "[ 1 ]", zz );
 #! V_{Z}( <...> )
 Display( I );
 #! V( <1> )

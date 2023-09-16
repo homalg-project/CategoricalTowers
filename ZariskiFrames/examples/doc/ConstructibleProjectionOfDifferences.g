@@ -93,9 +93,9 @@ Display( W6 );
 #! ( V( <a^2-1> )
 #! 
 #! \ ∅ )
-ZZ := HomalgRingOfIntegersInSingular( );
+zz := HomalgRingOfIntegersInSingular( );
 #! Z
-S := ZZ * "a";
+S := zz * "a";
 #! Z[a]
 V7 := ClosedSubsetOfSpec( "2*a^2-2*a+1", S )
       - ClosedSubsetOfSpec( "3*a-1", S ) - ClosedSubsetOfSpec( "a+1", S );

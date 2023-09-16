@@ -9,9 +9,9 @@ q := RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" );
 #! q(4)[a:1->2,b:2->3,c:3->4]
 Fq := FreeCategory( q );
 #! FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) )
-ZZ := HomalgRingOfIntegers( );
+zz := HomalgRingOfIntegers( );
 #! Z
-Zq := ZZ[Fq];
+Zq := zz[Fq];
 #! Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )
 A := Zq / [ Zq.abc ];
 #! Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )

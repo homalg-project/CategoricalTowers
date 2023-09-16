@@ -6,7 +6,7 @@
 
 # func( ..., EXPR_CASE, ... ) => EXPR_CASE
 # This should become part of `CompilerForCAP`, but in a more general way because it otherwise causes
-# regressions when compiling StablePosetOfCategory( PosetOfCategory( SliceCategoryOverTensorUnit( CategoryOfRows( ZZ ) ) ) ).
+# regressions when compiling StablePosetOfCategory( PosetOfCategory( SliceCategoryOverTensorUnit( CategoryOfRows( zz ) ) ) ).
 # Putting this before cancelling attributes and using pre_func instead of result_func significantly
 # improves the performance for PrecompileAdelmanCategoryOfAdditiveClosureOfAlgebroid.g
 Add( CAP_JIT_LOGIC_FUNCTIONS, function ( tree )

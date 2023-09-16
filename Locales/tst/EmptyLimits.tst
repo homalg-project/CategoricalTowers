@@ -2,9 +2,9 @@ gap> START_TEST("NormalizeObject.tst");
 
 gap> LoadPackage( "ZariskiFrames", false );
 true
-gap> ZZ := HomalgRingOfIntegers( );
+gap> zz := HomalgRingOfIntegers( );
 Z
-gap> ZC := ZariskiCoframeOfAffineSpectrum( ZZ );
+gap> ZC := ZariskiCoframeOfAffineSpectrum( zz );
 The coframe of Zariski closed subsets of the affine spectrum of Z
 gap> BS := BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences( ZC );
 The Boolean algebra of constructible objects as unions of formal single differences of The coframe of Zariski closed subsets of the affine spectrum of Z

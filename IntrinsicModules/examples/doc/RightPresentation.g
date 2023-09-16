@@ -3,12 +3,12 @@
 LoadPackage( "IntrinsicModules" );
 
 #! @Example
-ZZ := HomalgRingOfIntegers( );
+zz := HomalgRingOfIntegers( );
 #! Z
 M := HomalgMatrix( "[ \
 2, 3, 4, \
 5, 6, 7  \
-]", 2, 3, ZZ );
+]", 2, 3, zz );
 #! <A 2 x 3 matrix over an internal ring>
 M := RightPresentation( M );
 #! <A right module on 2 generators satisfying 3 relations>

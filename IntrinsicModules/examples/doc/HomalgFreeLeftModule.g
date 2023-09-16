@@ -3,14 +3,14 @@
 LoadPackage( "IntrinsicModules" );
 
 #! @Example
-ZZ := HomalgRingOfIntegers( );
+zz := HomalgRingOfIntegers( );
 #! Z
-F := HomalgFreeLeftModule( 1, ZZ );
+F := HomalgFreeLeftModule( 1, zz );
 #! <A free left module of rank 1 on a free generator>
-1 * ZZ;
+1 * zz;
 #! <The free left module of rank 1 on a free generator>
-F := HomalgFreeLeftModule( 2, ZZ );
+F := HomalgFreeLeftModule( 2, zz );
 #! <A free left module of rank 2 on free generators>
-2 * ZZ;
+2 * zz;
 #! <A free left module of rank 2 on free generators>
 #! @EndExample
