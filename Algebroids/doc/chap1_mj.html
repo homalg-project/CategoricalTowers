@@ -156,33 +156,33 @@ q(o)[m:o-&gt;o,i:o-&gt;o]
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := Category( q, L );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz := Category( q, L );</span>
 FreeCategory( RightQuiver( "q(o)[m:o-&gt;o,i:o-&gt;o]" ) ) / [ m*i = o, i*m = o ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCommutative( ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCommutative( zz );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ.o;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz.o;</span>
 &lt;(o)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( ZZ.o );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( zz.o );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ZZ.m;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := zz.m;</span>
 (o)-[(m)]-&gt;(o)
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := ZZ.i;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := zz.i;</span>
 (o)-[(i)]-&gt;(o)
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjects( ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjects( zz );</span>
 [ &lt;(o)&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( zz );</span>
 [ (o)-[(m)]-&gt;(o), (o)-[(i)]-&gt;(o) ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( ZZ, ZZ.o, ZZ.o );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( zz, zz.o, zz.o );</span>
 [ (o)-[(m)]-&gt;(o), (o)-[(i)]-&gt;(o) ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectInFpCategory( ZZ, o ) = ZZ.o;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectInFpCategory( zz, o ) = zz.o;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ.o = o / ZZ;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz.o = o / zz;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IdentityMorphism( ZZ.o );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IdentityMorphism( zz.o );</span>
 (o)-[(o)]-&gt;(o)
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismInFpCategory( ZZ, q.m ) = ZZ.m;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismInFpCategory( zz, q.m ) = zz.m;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ.m = q.m / ZZ;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz.m = q.m / zz;</span>
 true
 </pre></div>
 
@@ -194,10 +194,10 @@ true
 (o)-[(m*m)]-&gt;(o)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( m2 );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">unit := Unit( ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">unit := Unit( zz );</span>
 Functor from FreeCategory( RightQuiver( "*(1)[]" ) ) -&gt;
 FreeCategory( RightQuiver( "q(o)[m:o-&gt;o,i:o-&gt;o]" ) ) / [ m*i = o, i*m = o ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mul := Multiplication( ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mul := Multiplication( zz );</span>
 Functor from
 FreeCategory( RightQuiver(
   "qxq(oo)[om:oo-&gt;oo,oi:oo-&gt;oo,mo:oo-&gt;oo,io:oo-&gt;oo]" ) ) / relations -&gt;

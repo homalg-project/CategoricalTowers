@@ -79,33 +79,33 @@
   [33X[0;0YCreate a monoid from [23Xq[123X and the list [23XL[123X of relations.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XZZ := Category( q, L );[127X[104X
+    [4X[25Xgap>[125X [27Xzz := Category( q, L );[127X[104X
     [4X[28XFreeCategory( RightQuiver( "q(o)[m:o->o,i:o->o]" ) ) / [ m*i = o, i*m = o ][128X[104X
-    [4X[25Xgap>[125X [27XIsCommutative( ZZ );[127X[104X
+    [4X[25Xgap>[125X [27XIsCommutative( zz );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XZZ.o;[127X[104X
+    [4X[25Xgap>[125X [27Xzz.o;[127X[104X
     [4X[28X<(o)>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( ZZ.o );[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( zz.o );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xm := ZZ.m;[127X[104X
+    [4X[25Xgap>[125X [27Xm := zz.m;[127X[104X
     [4X[28X(o)-[(m)]->(o)[128X[104X
-    [4X[25Xgap>[125X [27Xi := ZZ.i;[127X[104X
+    [4X[25Xgap>[125X [27Xi := zz.i;[127X[104X
     [4X[28X(o)-[(i)]->(o)[128X[104X
-    [4X[25Xgap>[125X [27XSetOfObjects( ZZ );[127X[104X
+    [4X[25Xgap>[125X [27XSetOfObjects( zz );[127X[104X
     [4X[28X[ <(o)> ][128X[104X
-    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( ZZ );[127X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( zz );[127X[104X
     [4X[28X[ (o)-[(m)]->(o), (o)-[(i)]->(o) ][128X[104X
-    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( ZZ, ZZ.o, ZZ.o );[127X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( zz, zz.o, zz.o );[127X[104X
     [4X[28X[ (o)-[(m)]->(o), (o)-[(i)]->(o) ][128X[104X
-    [4X[25Xgap>[125X [27XObjectInFpCategory( ZZ, o ) = ZZ.o;[127X[104X
+    [4X[25Xgap>[125X [27XObjectInFpCategory( zz, o ) = zz.o;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XZZ.o = o / ZZ;[127X[104X
+    [4X[25Xgap>[125X [27Xzz.o = o / zz;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIdentityMorphism( ZZ.o );[127X[104X
+    [4X[25Xgap>[125X [27XIdentityMorphism( zz.o );[127X[104X
     [4X[28X(o)-[(o)]->(o)[128X[104X
-    [4X[25Xgap>[125X [27XMorphismInFpCategory( ZZ, q.m ) = ZZ.m;[127X[104X
+    [4X[25Xgap>[125X [27XMorphismInFpCategory( zz, q.m ) = zz.m;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XZZ.m = q.m / ZZ;[127X[104X
+    [4X[25Xgap>[125X [27Xzz.m = q.m / zz;[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
@@ -116,10 +116,10 @@
     [4X[28X(o)-[(m*m)]->(o)[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( m2 );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xunit := Unit( ZZ );[127X[104X
+    [4X[25Xgap>[125X [27Xunit := Unit( zz );[127X[104X
     [4X[28XFunctor from FreeCategory( RightQuiver( "*(1)[]" ) ) ->[128X[104X
     [4X[28XFreeCategory( RightQuiver( "q(o)[m:o->o,i:o->o]" ) ) / [ m*i = o, i*m = o ][128X[104X
-    [4X[25Xgap>[125X [27Xmul := Multiplication( ZZ );[127X[104X
+    [4X[25Xgap>[125X [27Xmul := Multiplication( zz );[127X[104X
     [4X[28XFunctor from[128X[104X
     [4X[28XFreeCategory( RightQuiver([128X[104X
     [4X[28X  "qxq(oo)[om:oo->oo,oi:oo->oo,mo:oo->oo,io:oo->oo]" ) ) / relations ->[128X[104X
