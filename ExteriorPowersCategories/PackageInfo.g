@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ExteriorPowersCategories",
 Subtitle := "The graded category of exterior powers of objects of a given Ab-category",
-Version := "2023.08-01",
-Date := "2023-08-29",
+Version := "2023.09-01",
+Date := "2023-09-16",
 License := "GPL-2.0-or-later",
 
 
