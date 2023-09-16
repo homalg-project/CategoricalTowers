@@ -105,19 +105,19 @@
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegers( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz := HomalgRingOfIntegers( );</span>
 Z
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZC := ZariskiCoframeOfAffineSpectrum( ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZC := ZariskiCoframeOfAffineSpectrum( zz );</span>
 The coframe of Zariski closed subsets of the affine spectrum of Z
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := ClosedSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, ZZ ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := ClosedSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, zz ) );</span>
 V_{Z}( &lt;...&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
 V( &lt;4&gt; )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := ClosedSubsetOfSpec( "[ 12, 20 ]", ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := ClosedSubsetOfSpec( "[ 12, 20 ]", zz );</span>
 V_{Z}( &lt;...&gt; )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := ClosedSubsetOfSpecByRadicalColumn( "[ 3 ]", ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := ClosedSubsetOfSpecByRadicalColumn( "[ 3 ]", zz );</span>
 V_{Z}( &lt;...&gt; )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := ClosedSubsetOfSpec( "[ 12 ]", ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := ClosedSubsetOfSpec( "[ 12 ]", zz );</span>
 V_{Z}( &lt;...&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A = B;</span>
 true
@@ -167,7 +167,7 @@ V( &lt;&gt; )
 V_{Z}( &lt;...&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( I );</span>
 ∅
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := ClosedSubsetOfSpec( "[ 4 ]", ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := ClosedSubsetOfSpec( "[ 4 ]", zz );</span>
 V_{Z}( &lt;...&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
 V( &lt;4&gt; )

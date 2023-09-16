@@ -102,19 +102,19 @@
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegersInSingular( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz := HomalgRingOfIntegersInSingular( );</span>
 Z
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZF := ZariskiFrameOfAffineSpectrum( ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZF := ZariskiFrameOfAffineSpectrum( zz );</span>
 The frame of Zariski open subsets of the affine spectrum of Z
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := OpenSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, ZZ ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := OpenSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, zz ) );</span>
 D_{Z}( &lt;...&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
 D( &lt;4&gt; )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := OpenSubsetOfSpec( "[ 12,20 ]", ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := OpenSubsetOfSpec( "[ 12,20 ]", zz );</span>
 D_{Z}( &lt;...&gt; )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := OpenSubsetOfSpecByRadicalColumn( "[ 3 ]", ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := OpenSubsetOfSpecByRadicalColumn( "[ 3 ]", zz );</span>
 D_{Z}( &lt;...&gt; )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := OpenSubsetOfSpec( "[ 12 ]", ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := OpenSubsetOfSpec( "[ 12 ]", zz );</span>
 D_{Z}( &lt;...&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A = B;</span>
 true
@@ -162,7 +162,7 @@ D( &lt;1&gt; )
 D_{Z}( &lt;...&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( I );</span>
 ∅
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := OpenSubsetOfSpec( "[ 4 ]", ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := OpenSubsetOfSpec( "[ 4 ]", zz );</span>
 D_{Z}( &lt;...&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
 D( &lt;4&gt; )
@@ -262,19 +262,19 @@ false
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegersInSingular( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz := HomalgRingOfIntegersInSingular( );</span>
 Z
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZF := ZariskiFrameOfAffineSpectrum( ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZF := ZariskiFrameOfAffineSpectrum( zz );</span>
 The frame of Zariski open subsets of the affine spectrum of Z
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := OpenSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, ZZ ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := OpenSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, zz ) );</span>
 D_{Z}( &lt;...&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
 D( &lt;4&gt; )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := OpenSubsetOfSpec( "[ 12,20 ]", ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := OpenSubsetOfSpec( "[ 12,20 ]", zz );</span>
 D_{Z}( &lt;...&gt; )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := OpenSubsetOfSpecByRadicalColumn( "[ 3 ]", ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := OpenSubsetOfSpecByRadicalColumn( "[ 3 ]", zz );</span>
 D_{Z}( &lt;...&gt; )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := OpenSubsetOfSpec( "[ 12 ]", ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := OpenSubsetOfSpec( "[ 12 ]", zz );</span>
 D_{Z}( &lt;...&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A = B;</span>
 true
@@ -322,7 +322,7 @@ D( &lt;1&gt; )
 D_{Z}( &lt;...&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( I );</span>
 ∅
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := OpenSubsetOfSpec( "[ 4 ]", ZZ );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := OpenSubsetOfSpec( "[ 4 ]", zz );</span>
 D_{Z}( &lt;...&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
 D( &lt;4&gt; )

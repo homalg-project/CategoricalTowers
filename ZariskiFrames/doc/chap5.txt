@@ -51,19 +51,19 @@
   is the complement of the vanishing locus of the annihilator of [22XM[122X.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegersInSingular( );[127X[104X
+    [4X[25Xgap>[125X [27Xzz := HomalgRingOfIntegersInSingular( );[127X[104X
     [4X[28XZ[128X[104X
-    [4X[25Xgap>[125X [27XZF := ZariskiFrameOfAffineSpectrum( ZZ );[127X[104X
+    [4X[25Xgap>[125X [27XZF := ZariskiFrameOfAffineSpectrum( zz );[127X[104X
     [4X[28XThe frame of Zariski open subsets of the affine spectrum of Z[128X[104X
-    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, ZZ ) );[127X[104X
+    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, zz ) );[127X[104X
     [4X[28XD_{Z}( <...> )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
     [4X[28XD( <4> )[128X[104X
-    [4X[25Xgap>[125X [27XB := OpenSubsetOfSpec( "[ 12,20 ]", ZZ );[127X[104X
+    [4X[25Xgap>[125X [27XB := OpenSubsetOfSpec( "[ 12,20 ]", zz );[127X[104X
     [4X[28XD_{Z}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XC := OpenSubsetOfSpecByRadicalColumn( "[ 3 ]", ZZ );[127X[104X
+    [4X[25Xgap>[125X [27XC := OpenSubsetOfSpecByRadicalColumn( "[ 3 ]", zz );[127X[104X
     [4X[28XD_{Z}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XD := OpenSubsetOfSpec( "[ 12 ]", ZZ );[127X[104X
+    [4X[25Xgap>[125X [27XD := OpenSubsetOfSpec( "[ 12 ]", zz );[127X[104X
     [4X[28XD_{Z}( <...> )[128X[104X
     [4X[25Xgap>[125X [27XA = B;[127X[104X
     [4X[28Xtrue[128X[104X
@@ -111,7 +111,7 @@
     [4X[28XD_{Z}( <...> )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( I );[127X[104X
     [4X[28X∅[128X[104X
-    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpec( "[ 4 ]", ZZ );[127X[104X
+    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpec( "[ 4 ]", zz );[127X[104X
     [4X[28XD_{Z}( <...> )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
     [4X[28XD( <4> )[128X[104X
@@ -210,19 +210,19 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegersInSingular( );[127X[104X
+    [4X[25Xgap>[125X [27Xzz := HomalgRingOfIntegersInSingular( );[127X[104X
     [4X[28XZ[128X[104X
-    [4X[25Xgap>[125X [27XZF := ZariskiFrameOfAffineSpectrum( ZZ );[127X[104X
+    [4X[25Xgap>[125X [27XZF := ZariskiFrameOfAffineSpectrum( zz );[127X[104X
     [4X[28XThe frame of Zariski open subsets of the affine spectrum of Z[128X[104X
-    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, ZZ ) );[127X[104X
+    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, zz ) );[127X[104X
     [4X[28XD_{Z}( <...> )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
     [4X[28XD( <4> )[128X[104X
-    [4X[25Xgap>[125X [27XB := OpenSubsetOfSpec( "[ 12,20 ]", ZZ );[127X[104X
+    [4X[25Xgap>[125X [27XB := OpenSubsetOfSpec( "[ 12,20 ]", zz );[127X[104X
     [4X[28XD_{Z}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XC := OpenSubsetOfSpecByRadicalColumn( "[ 3 ]", ZZ );[127X[104X
+    [4X[25Xgap>[125X [27XC := OpenSubsetOfSpecByRadicalColumn( "[ 3 ]", zz );[127X[104X
     [4X[28XD_{Z}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XD := OpenSubsetOfSpec( "[ 12 ]", ZZ );[127X[104X
+    [4X[25Xgap>[125X [27XD := OpenSubsetOfSpec( "[ 12 ]", zz );[127X[104X
     [4X[28XD_{Z}( <...> )[128X[104X
     [4X[25Xgap>[125X [27XA = B;[127X[104X
     [4X[28Xtrue[128X[104X
@@ -270,7 +270,7 @@
     [4X[28XD_{Z}( <...> )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( I );[127X[104X
     [4X[28X∅[128X[104X
-    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpec( "[ 4 ]", ZZ );[127X[104X
+    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpec( "[ 4 ]", zz );[127X[104X
     [4X[28XD_{Z}( <...> )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
     [4X[28XD( <4> )[128X[104X

@@ -147,9 +147,9 @@ false
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegersInSingular( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz := HomalgRingOfIntegersInSingular( );</span>
 Z
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := ZZ * "x";</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := zz * "x";</span>
 Z[x]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := ClosedSubsetOfSpecByRadicalColumn( "[2*x+1]", R );</span>
 V_{Z[x]}( &lt;...&gt; )
@@ -267,9 +267,9 @@ V_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )
 ( V( &lt;a^2-1&gt; )
 
 \ ∅ )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegersInSingular( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz := HomalgRingOfIntegersInSingular( );</span>
 Z
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := ZZ * "a";</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := zz * "a";</span>
 Z[a]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V7 := ClosedSubsetOfSpec( "2*a^2-2*a+1", S )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">      - ClosedSubsetOfSpec( "3*a-1", S ) - ClosedSubsetOfSpec( "a+1", S );</span>
