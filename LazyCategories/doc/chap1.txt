@@ -172,9 +172,9 @@
     [4X[28Xq(4)[a:1->2,b:2->3,c:3->4][128X[104X
     [4X[25Xgap>[125X [27XFq := FreeCategory( q );[127X[104X
     [4X[28XFreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) )[128X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[25Xgap>[125X [27Xzz := HomalgRingOfIntegers( );[127X[104X
     [4X[28XZ[128X[104X
-    [4X[25Xgap>[125X [27XZq := ZZ[Fq];[127X[104X
+    [4X[25Xgap>[125X [27XZq := zz[Fq];[127X[104X
     [4X[28XAlgebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XA := Zq / [ Zq.abc ];[127X[104X
     [4X[28XAlgebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
@@ -292,9 +292,9 @@
     [4X[28Xq(4)[a:1->2,b:2->3,c:3->4][128X[104X
     [4X[25Xgap>[125X [27XFq := FreeCategory( q );[127X[104X
     [4X[28XFreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) )[128X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[25Xgap>[125X [27Xzz := HomalgRingOfIntegers( );[127X[104X
     [4X[28XZ[128X[104X
-    [4X[25Xgap>[125X [27XZq := ZZ[Fq];[127X[104X
+    [4X[25Xgap>[125X [27XZq := zz[Fq];[127X[104X
     [4X[28XAlgebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XA := Zq / [ Zq.abc ];[127X[104X
     [4X[28XAlgebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
@@ -412,9 +412,9 @@
     [4X[28Xq(4)[a:1->2,b:2->3,c:3->4][128X[104X
     [4X[25Xgap>[125X [27XFq := FreeCategory( q );[127X[104X
     [4X[28XFreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) )[128X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[25Xgap>[125X [27Xzz := HomalgRingOfIntegers( );[127X[104X
     [4X[28XZ[128X[104X
-    [4X[25Xgap>[125X [27XZq := ZZ[Fq];[127X[104X
+    [4X[25Xgap>[125X [27XZq := zz[Fq];[127X[104X
     [4X[28XAlgebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XA := Zq / [ Zq.abc ];[127X[104X
     [4X[28XAlgebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
@@ -536,9 +536,9 @@
     [4X[28Xq(4)[a:1->2,b:2->3,c:3->4][128X[104X
     [4X[25Xgap>[125X [27XFq := FreeCategory( q );[127X[104X
     [4X[28XFreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) )[128X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[25Xgap>[125X [27Xzz := HomalgRingOfIntegers( );[127X[104X
     [4X[28XZ[128X[104X
-    [4X[25Xgap>[125X [27XZq := ZZ[Fq];[127X[104X
+    [4X[25Xgap>[125X [27XZq := zz[Fq];[127X[104X
     [4X[28XAlgebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XA := Zq / [ Zq.abc ];[127X[104X
     [4X[28XAlgebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
