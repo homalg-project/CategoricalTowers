@@ -3,9 +3,9 @@
 LoadPackage( "ZariskiFrames" );
 
 #! @Example
-ZZ := HomalgRingOfIntegersInSingular( );
+zz := HomalgRingOfIntegersInSingular( );
 #! Z
-R := ZZ * "x";
+R := zz * "x";
 #! Z[x]
 gamma := ClosedSubsetOfSpecByRadicalColumn( "[2*x+1]", R );
 #! V_{Z[x]}( <...> )

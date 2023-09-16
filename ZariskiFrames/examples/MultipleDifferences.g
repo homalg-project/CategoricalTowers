@@ -1,8 +1,8 @@
 LoadPackage( "ZariskiFrames" );
 
-ZZ := HomalgRingOfIntegersInSingular( );
+zz := HomalgRingOfIntegersInSingular( );
 
-R := ZZ * "a2,a4,a5,a8,a10";
+R := zz * "a2,a4,a5,a8,a10";
 
 A := AsMultipleDifference( ClosedSubsetOfSpec( "a8*a10-a8+a10,a2*a10-a10+1,a2*a8+1,a4*a5+a4*a10-a5*a10-a4+a5", R ) -
 ClosedSubsetOfSpec( "a10+1", R ) );

@@ -3,15 +3,15 @@
 LoadPackage( "IntrinsicModules" );
 
 #! @Example
-ZZ := HomalgRingOfIntegers( );
+zz := HomalgRingOfIntegers( );
 #! Z
-Display( ZZ );
+Display( zz );
 #! <An internal ring>
-Z4 := ZZ / 4;
+Z4 := zz / 4;
 #! Z/( 4 )
 Display( Z4 );
 #! <A residue class ring>
-M := HomalgDiagonalMatrix( [ 2 .. 4 ], ZZ );
+M := HomalgDiagonalMatrix( [ 2 .. 4 ], zz );
 #! <An unevaluated diagonal 3 x 3 matrix over an internal ring>
 M := LeftPresentation( M );
 #! <A torsion left module presented by 3 relations for 3 generators>

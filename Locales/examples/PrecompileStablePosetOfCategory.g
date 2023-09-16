@@ -9,7 +9,7 @@ LoadPackage( "SubcategoriesForCAP", false );
 LoadPackage( "FreydCategoriesForCAP", ">= 2021.10-03", false );
 #! true
 
-ZZ := HomalgRingOfIntegers( );;
+zz := HomalgRingOfIntegers( );;
 
 # HomalgIdentityMatrix( size, ring ) * matrix -> matrix
 CapJitAddLogicTemplate(
@@ -75,7 +75,7 @@ category_constructor := EvalString( ReplacedString( """function( R )
     
 end""", "@", ";" ) );;
 
-given_arguments := [ ZZ ];;
+given_arguments := [ zz ];;
 compiled_category_name := "StablePosetOfCategoryOfPosetOfCategoryOfSliceCategoryOverTensorUnitOfCategoryOfRowsOfCommutativeRingPrecompiled";;
 package_name := "Locales";;
 

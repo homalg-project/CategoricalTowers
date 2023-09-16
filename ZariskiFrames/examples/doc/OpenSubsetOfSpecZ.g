@@ -3,19 +3,19 @@
 LoadPackage( "ZariskiFrames" );
 
 #! @Example
-ZZ := HomalgRingOfIntegersInSingular( );
+zz := HomalgRingOfIntegersInSingular( );
 #! Z
-ZF := ZariskiFrameOfAffineSpectrum( ZZ );
+ZF := ZariskiFrameOfAffineSpectrum( zz );
 #! The frame of Zariski open subsets of the affine spectrum of Z
-A := OpenSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, ZZ ) );
+A := OpenSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, zz ) );
 #! D_{Z}( <...> )
 Display( A );
 #! D( <4> )
-B := OpenSubsetOfSpec( "[ 12,20 ]", ZZ );
+B := OpenSubsetOfSpec( "[ 12,20 ]", zz );
 #! D_{Z}( <...> )
-C := OpenSubsetOfSpecByRadicalColumn( "[ 3 ]", ZZ );
+C := OpenSubsetOfSpecByRadicalColumn( "[ 3 ]", zz );
 #! D_{Z}( <...> )
-D := OpenSubsetOfSpec( "[ 12 ]", ZZ );
+D := OpenSubsetOfSpec( "[ 12 ]", zz );
 #! D_{Z}( <...> )
 A = B;
 #! true
@@ -63,7 +63,7 @@ I := InitialObject( ZF );
 #! D_{Z}( <...> )
 Display( I );
 #! ∅
-A := OpenSubsetOfSpec( "[ 4 ]", ZZ );
+A := OpenSubsetOfSpec( "[ 4 ]", zz );
 #! D_{Z}( <...> )
 Display( A );
 #! D( <4> )
