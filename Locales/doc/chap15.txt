@@ -14,7 +14,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", ">= 2021.10-03", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );;[127X[104X
+    [4X[25Xgap>[125X [27Xzz := HomalgRingOfIntegers( );;[127X[104X
     [4X[25Xgap>[125X [27X# HomalgIdentityMatrix( size, ring ) * matrix -> matrix[127X[104X
     [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
     [4X[25X>[125X [27X    rec([127X[104X
@@ -73,7 +73,7 @@
     [4X[25X>[125X [27X    return L@[127X[104X
     [4X[25X>[125X [27X    [127X[104X
     [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xgiven_arguments := [ ZZ ];;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ zz ];;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name := "StablePosetOfCategoryOfPosetOfCategoryOfSliceCategoryOverTensorUnitOfCategoryOfRowsOfCommutativeRingPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "Locales";;[127X[104X
     [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
