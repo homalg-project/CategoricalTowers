@@ -92,9 +92,10 @@
     [4X[28XA CAP category with name[128X[104X
     [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X28 primitive operations were used to derive 106 operations for this category[128X[104X
+    [4X[28X31 primitive operations were used to derive 126 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsFiniteCompleteCategory[128X[104X
     [4X[28X* IsBicartesianCategory[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
     [4X[28X* IsDistributiveCategory[128X[104X
@@ -310,7 +311,53 @@
   [4X[32X[104X
   
   
-  [1X4.4-6 [33X[0;0YSkeletal homomorphism structre[133X[101X
+  [1X4.4-6 [33X[0;0YSkeletal Equalizer[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
+    [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;[127X[104X
+    [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27XS := ObjectConstructor( sFinSets, 5 );[127X[104X
+    [4X[28X|5|[128X[104X
+    [4X[25Xgap>[125X [27XT := ObjectConstructor( sFinSets, 3 );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27Xf1 := MorphismConstructor( S, [ 2, 2, 0, 1, 1 ], T );[127X[104X
+    [4X[28X|5| → |3|[128X[104X
+    [4X[25Xgap>[125X [27Xf2 := MorphismConstructor( S, [ 2, 1, 2, 0, 1 ], T );[127X[104X
+    [4X[28X|5| → |3|[128X[104X
+    [4X[25Xgap>[125X [27Xf3 := MorphismConstructor( S, [ 2, 0, 1, 0, 1 ], T );[127X[104X
+    [4X[28X|5| → |3|[128X[104X
+    [4X[25Xgap>[125X [27XD := [ f1, f2, f3 ];;[127X[104X
+    [4X[25Xgap>[125X [27XEq := Equalizer( D );[127X[104X
+    [4X[28X|2|[128X[104X
+    [4X[25Xgap>[125X [27Xiota := EmbeddingOfEqualizer( D );[127X[104X
+    [4X[28X|2| → |5|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iota );[127X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 0, 4 ]→ { 0,..., 4 }[128X[104X
+    [4X[25Xgap>[125X [27Xphi := MorphismConstructor( ObjectConstructor( sFinSets, 2 ), [ 4, 0 ], S );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( phi );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xpsi := UniversalMorphismIntoEqualizer( D, phi );[127X[104X
+    [4X[28X|2| → |2|[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( psi );[127X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 1, 0 ]→ { 0, 1 }[128X[104X
+    [4X[25Xgap>[125X [27XPreCompose( psi, iota ) = phi;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XD := [ f2, f3 ];;[127X[104X
+    [4X[25Xgap>[125X [27XEq := Equalizer( D );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27Xpsi := EmbeddingOfEqualizer( D );[127X[104X
+    [4X[28X|3| → |5|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( psi );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 0, 3, 4 ]→ { 0,..., 4 }[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.4-7 [33X[0;0YSkeletal homomorphism structre[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
