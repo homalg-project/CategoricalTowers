@@ -68,22 +68,20 @@ InstallMethod( PairOfParallelArrowsCategory,
     
     F := CategoryFromDataTables( F : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
     
-    PSh := PreSheaves( F, C : FinalizeCategory := false );
-
-    Finalize( PSh : FinalizeCategory := true );
+    PSh := PreSheaves( F, C : FinalizeCategory := true );
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
-      function( ParallelPairs, pair )
+      function( ParallelPairs, pair_of_pairs )
         local PSh, A, V, s, t;
         
         PSh := ModelingCategory( ParallelPairs );
         
-        V := pair[1][1];
-        A := pair[1][2];
+        V := pair_of_pairs[1][1];
+        A := pair_of_pairs[1][2];
         
-        s := pair[2][1];
-        t := pair[2][2];
+        s := pair_of_pairs[2][1];
+        t := pair_of_pairs[2][2];
         
         return ObjectConstructor( PSh, Pair( [ V, A ], [ s, t ] ) );
         

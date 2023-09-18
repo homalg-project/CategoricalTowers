@@ -48,7 +48,7 @@ InstallMethod( CategoryOfColimitQuivers,
   function ( C )
     local object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
-          UC, Coeq,
+          UC, ParallelPairsUC,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           ColimitQuivers;
@@ -86,16 +86,16 @@ InstallMethod( CategoryOfColimitQuivers,
     ## building the categorical tower:
     UC := FiniteStrictCoproductCocompletion( C : FinalizeCategory := true );
     
-    Coeq := PairOfParallelArrowsCategory( UC : FinalizeCategory := true );
+    ParallelPairsUC := PairOfParallelArrowsCategory( UC : FinalizeCategory := true );
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
       function( ColimitQuivers, pair )
-        local Coeq, PSh, UC, C, objects, decorated_morphisms, V, A, map_s, mor_s, s, map_t, mor_t, t;
+        local ParallelPairsUC, PSh, UC, C, objects, decorated_morphisms, V, A, map_s, mor_s, s, map_t, mor_t, t;
         
-        Coeq := ModelingCategory( ColimitQuivers );
+        ParallelPairsUC := ModelingCategory( ColimitQuivers );
         
-        PSh := ModelingCategory( Coeq );
+        PSh := ModelingCategory( ParallelPairsUC );
         
         UC := Range( PSh );
         
@@ -129,23 +129,23 @@ InstallMethod( CategoryOfColimitQuivers,
                      Pair( map_t, mor_t ),
                      V );
         
-        return ObjectConstructor( Coeq, Pair( Pair( V, A ), Pair( s, t ) ) );
+        return ObjectConstructor( ParallelPairsUC, Pair( Pair( V, A ), Pair( s, t ) ) );
         
     end;
     
     ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
       function( ColimitQuivers, obj )
-        local Coeq, PSh, UC, pair, V, s, t, objects, s_datum, t_datum, decorated_morphisms;
+        local ParallelPairsUC, PSh, UC, pair, V, s, t, objects, s_datum, t_datum, decorated_morphisms;
         
-        Coeq := ModelingCategory( ColimitQuivers );
+        ParallelPairsUC := ModelingCategory( ColimitQuivers );
         
-        PSh := ModelingCategory( Coeq );
+        PSh := ModelingCategory( ParallelPairsUC );
         
         UC := Range( PSh );
         
         ## Pair( Pair( V, A ), Pair( s, t ) )
-        pair := ObjectDatum( Coeq, obj );
+        pair := ObjectDatum( ParallelPairsUC, obj );
         
         V := pair[1][1];
         
@@ -169,16 +169,16 @@ InstallMethod( CategoryOfColimitQuivers,
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
       function( ColimitQuivers, source, images, range )
-        local Coeq, PSh, UC, source_datum, range_datum, V, source_s_datum, A;
+        local ParallelPairsUC, PSh, UC, source_datum, range_datum, V, source_s_datum, A;
         
-        Coeq := ModelingCategory( ColimitQuivers );
+        ParallelPairsUC := ModelingCategory( ColimitQuivers );
         
-        PSh := ModelingCategory( Coeq );
+        PSh := ModelingCategory( ParallelPairsUC );
         
         UC := Range( PSh );
         
-        source_datum := ObjectDatum( Coeq, source );
-        range_datum := ObjectDatum( Coeq, range );
+        source_datum := ObjectDatum( ParallelPairsUC, source );
+        range_datum := ObjectDatum( ParallelPairsUC, range );
         
         V := MorphismConstructor( UC,
                      source_datum[1][1],
@@ -193,7 +193,7 @@ InstallMethod( CategoryOfColimitQuivers,
                            source_s_datum[2] ),
                      range_datum[1][2] );
         
-        return MorphismConstructor( Coeq,
+        return MorphismConstructor( ParallelPairsUC,
                        source,
                        Pair( V, A ),
                        range );
@@ -203,15 +203,15 @@ InstallMethod( CategoryOfColimitQuivers,
     ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
       function( ColimitQuivers, mor )
-        local Coeq, PSh, UC, mor_datum, V_datum, A_datum;
+        local ParallelPairsUC, PSh, UC, mor_datum, V_datum, A_datum;
         
-        Coeq := ModelingCategory( ColimitQuivers );
+        ParallelPairsUC := ModelingCategory( ColimitQuivers );
         
-        PSh := ModelingCategory( Coeq );
+        PSh := ModelingCategory( ParallelPairsUC );
         
         UC := Range( PSh );
         
-        mor_datum := MorphismDatum( Coeq, mor );
+        mor_datum := MorphismDatum( ParallelPairsUC, mor );
         
         V_datum := MorphismDatum( UC, mor_datum[1] );
         A_datum := MorphismDatum( UC, mor_datum[2] );
@@ -225,7 +225,7 @@ InstallMethod( CategoryOfColimitQuivers,
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
     ColimitQuivers :=
-      ReinterpretationOfCategory( Coeq,
+      ReinterpretationOfCategory( ParallelPairsUC,
               rec( name := Concatenation( "CategoryOfColimitQuivers( ", Name( C ), " )" ),
                    category_filter := IsCategoryOfColimitQuivers,
                    category_object_filter := IsObjectInCategoryOfColimitQuivers,

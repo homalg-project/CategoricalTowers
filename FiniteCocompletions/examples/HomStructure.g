@@ -11,9 +11,10 @@ Display( sFinSets );
 #! A CAP category with name
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) ):
 #! 
-#! 28 primitive operations were used to derive 102 operations for this category
+#! 31 primitive operations were used to derive 122 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
+#! * IsFiniteCompleteCategory
 #! * IsBicartesianCategory
 #! and not yet algorithmically
 #! * IsDistributiveCategory

@@ -177,12 +177,18 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     SetIsCocartesianCategory( UC, true );
     
     SetIsStrictCocartesianCategory( UC, true );
-    
+
     if ( HasIsCartesianCategory and IsCartesianCategory )( C ) then
         if ( HasIsStrictCartesianCategory and IsStrictCartesianCategory )( C ) then
             SetIsStrictCartesianCategory( UC, true );
         fi;
         SetIsDistributiveCategory( UC, true );
+    fi;
+    
+    if ( HasIsFiniteCompleteCategory and IsFiniteCompleteCategory )( C ) then
+        
+        SetIsFiniteCompleteCategory( UC, true );
+        
     fi;
     
     ##
@@ -688,6 +694,161 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                                  LP[1 + map[1 + i]] ) );
             
             return MorphismConstructor( UC, T, Pair( map, mor ), P );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "Equalizer" ) then
+        
+        AddEqualizer( UC,
+          function( UC, common_source, list_of_parallel_morphisms )
+            local S, s, cofactors, n, data, maps, emb, eq, C, mors, lists_of_parallel_morphisms_in_C, Eq;
+            
+            S := ObjectDatum( UC, common_source );
+            
+            s := S[1];
+            
+            cofactors := S[2];
+            
+            n := Length( list_of_parallel_morphisms );
+            
+            data := List( list_of_parallel_morphisms, mor -> MorphismDatum( UC, mor ) );
+            
+            ## SkeletalFinSets code:
+            
+            maps := List( data, datum -> datum[1] );
+            
+            emb := Filtered( [ 0 .. s - 1 ], x -> ForAll( [ 1 .. n - 1 ], j -> maps[j][1 + x] = maps[j + 1][1 + x] ) );
+            
+            eq := Length( emb );
+            
+            ## FiniteStrictCoproductCocompletion code:
+            C := UnderlyingCategory( UC );
+            
+            mors := List( data, datum -> datum[2] );
+            
+            lists_of_parallel_morphisms_in_C := List( [ 0 .. eq - 1 ], i -> List( [ 1 .. n ], j -> mors[j][1 + emb[1 + i]] ) );
+            
+            Eq := List( [ 0 .. eq - 1 ], i ->
+                        Equalizer( C,
+                                cofactors[1 + emb[1 + i]],
+                                lists_of_parallel_morphisms_in_C[1 + i] ) );
+            
+            return ObjectConstructor( UC, Pair( eq, Eq ) );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "EmbeddingOfEqualizerWithGivenEqualizer" ) then
+        
+        AddEmbeddingOfEqualizerWithGivenEqualizer( UC,
+          function( UC, common_source, list_of_parallel_morphisms, equalizer )
+            local S, s, cofactors, n, data, eq_data, eq, Eq, maps, emb, C, mors, lists_of_parallel_morphisms_in_C, mor;
+            
+            S := ObjectDatum( UC, common_source );
+            
+            s := S[1];
+            
+            cofactors := S[2];
+            
+            n := Length( list_of_parallel_morphisms );
+            
+            data := List( list_of_parallel_morphisms, mor -> MorphismDatum( UC, mor ) );
+            
+            eq_data := ObjectDatum( UC, equalizer );
+            
+            eq := eq_data[1];
+            Eq := eq_data[2];
+            
+            ## SkeletalFinSets code:
+            
+            maps := List( data, datum -> datum[1] );
+            
+            emb := Filtered( [ 0 .. s - 1 ], x -> ForAll( [ 1 .. n - 1 ], j -> maps[j][1 + x] = maps[j + 1][1 + x] ) );
+            
+            #% CAP_JIT_DROP_NEXT_STATEMENT
+            Assert( 0, eq = Length( emb ) );
+            
+            ## FiniteStrictCoproductCocompletion code:
+            C := UnderlyingCategory( UC );
+            
+            mors := List( data, datum -> datum[2] );
+            
+            lists_of_parallel_morphisms_in_C := List( [ 0 .. eq - 1 ], i -> List( [ 1 .. n ], j -> mors[j][1 + emb[1 + i]] ) );
+            
+            mor := List( [ 0 .. eq - 1 ], i ->
+                         EmbeddingOfEqualizerWithGivenEqualizer( C,
+                                 cofactors[1 + emb[1 + i]],
+                                 lists_of_parallel_morphisms_in_C[1 + i],
+                                 Eq[1 + i] ) );
+            
+            return MorphismConstructor( UC, equalizer, Pair( emb, mor ), common_source );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "UniversalMorphismIntoEqualizerWithGivenEqualizer" ) then
+        
+        AddUniversalMorphismIntoEqualizerWithGivenEqualizer( UC,
+          function( UC, common_source, list_of_parallel_morphisms, test_object, test_morphism, equalizer )
+            local S, s, cofactors, n, data, test_object_datum, t, t_objs, test_morphism_datum, test_map, test_mor, eq_data, eq, Eq,
+                  maps, emb, map, C, mors, lists_of_parallel_morphisms_in_C, mor;
+            
+            S := ObjectDatum( UC, common_source );
+            
+            s := S[1];
+            
+            cofactors := S[2];
+            
+            n := Length( list_of_parallel_morphisms );
+            
+            data := List( list_of_parallel_morphisms, mor -> MorphismDatum( UC, mor ) );
+            
+            test_object_datum := ObjectDatum( UC, test_object );
+            
+            t := test_object_datum[1];
+            t_objs := test_object_datum[2];
+            
+            test_morphism_datum := MorphismDatum( UC, test_morphism );
+            
+            test_map := test_morphism_datum[1];
+            test_mor := test_morphism_datum[2];
+            
+            eq_data := ObjectDatum( UC, equalizer );
+            
+            eq := eq_data[1];
+            Eq := eq_data[2];
+            
+            ## SkeletalFinSets code:
+            
+            maps := List( data, datum -> datum[1] );
+            
+            emb := Filtered( [ 0 .. s - 1 ], x -> ForAll( [ 1 .. n - 1 ], j -> maps[j][1 + x] = maps[j + 1][1 + x] ) );
+            
+            map := List( [ 0 .. t - 1 ], x -> -1 + SafePosition( emb, test_map[1 + x] ) );
+            
+            #% CAP_JIT_DROP_NEXT_STATEMENT
+            Assert( 0, eq = Length( emb ) );
+            
+            ## FiniteStrictCoproductCocompletion code:
+            C := UnderlyingCategory( UC );
+            
+            mors := List( data, datum -> datum[2] );
+            
+            lists_of_parallel_morphisms_in_C := List( [ 0 .. eq - 1 ], i -> List( [ 1 .. n ], j -> mors[j][1 + emb[1 + i]] ) );
+            
+            mor := List( [ 0 .. t - 1 ], k ->
+                         UniversalMorphismIntoEqualizerWithGivenEqualizer( C,
+                                 cofactors[1 + emb[1 + map[1 + k]]],
+                                 lists_of_parallel_morphisms_in_C[1 + map[1 + k]],
+                                 t_objs[1 + k],
+                                 test_mor[1 + k],
+                                 Eq[1 + map[1 + k]] ) );
+            
+            return MorphismConstructor( UC, test_object, Pair( map, mor ), equalizer );
             
         end );
         
