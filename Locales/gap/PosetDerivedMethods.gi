@@ -42,7 +42,7 @@ end : CategoryFilter := IsPosetCategory );
 ##
 AddDerivationToCAP( DirectProduct,
         "",
-        [ [ IsHomSetInhabited, 1 ] ],
+        [ [ IsHomSetInhabited, 2 ] ],
         
   function( cat, L )
     
@@ -53,7 +53,7 @@ end : CategoryFilter := cat -> HasIsTotalOrderCategory( cat ) and IsTotalOrderCa
 ##
 AddDerivationToCAP( Coproduct,
         "",
-        [ [ IsHomSetInhabited, 1 ] ],
+        [ [ IsHomSetInhabited, 2 ] ],
         
   function( cat, L )
     
