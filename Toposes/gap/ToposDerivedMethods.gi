@@ -8,7 +8,7 @@
 AddDerivationToCAP( IndexOfNonliftableMorphismFromDistinguishedObject,
         "IndexOfNonliftableMorphismFromDistinguishedObject as the index of the first nonliftable morphism in ExactCoverWithGlobalElements",
         [ [ ExactCoverWithGlobalElements, 1 ],
-          [ IsLiftableAlongMonomorphism, 1 ],
+          [ IsLiftableAlongMonomorphism, 2 ],
           [ ObjectDatum, 1 ] ],
         
   function( cat, iota )
@@ -918,10 +918,10 @@ end );
 ##
 AddDerivationToCAP( LawvereTierneyLocalModalityOperators,
         "",
-        [ [ DirectProductFunctorial, 1 ],
-          [ IsEqualForMorphisms, 3 ],
+        [ [ DirectProductFunctorial, 2 ],
+          [ IsEqualForMorphisms, 6 ],
           [ MorphismsOfExternalHom, 1 ],
-          [ PreCompose, 4 ],
+          [ PreCompose, 8 ],
           [ SubobjectClassifier, 1 ],
           [ TruthMorphismOfAnd, 1 ],
           [ TruthMorphismOfTrue, 1 ] ],
