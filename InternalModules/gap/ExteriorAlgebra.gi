@@ -76,7 +76,7 @@ end );
 ##
 InstallMethod( ExteriorAlgebra,
         "for a CAP category object",
-        [ IsCapCategoryObject and HasDimension ],
+        [ IsCapCategoryObject ],
         
   function ( V )
     local EV;

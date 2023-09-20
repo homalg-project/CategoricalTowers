@@ -6,34 +6,26 @@ LoadPackage( "InternalModules" );
 
 Q := HomalgFieldOfRationals( );;
 Qvec := MatrixCategory( Q );;
-v := VectorSpaceObject( 3, Q );;
+v := VectorSpaceObject( 6, Q );;
 ZQvec := FinitelyZGradedClosureCategory( Qvec );
 #! FinitelyZGradedClosureCategory( Category of matrices over Q )
 V := ObjectInZGradedClosureCategoryWithBounds( ZQvec, v, 1 );;
 ExtVMod := CategoryOfLeftEModules( v );
 #! Abelian category of left modules over the internal exterior algebra of
-#! A vector space object over Q of dimension 3
+#! A vector space object over Q of dimension 6
 ModExtV := CategoryOfRightEModules( v );;
 ExtV := UnderlyingActingObject( ExtVMod );
 #! <An object in FinitelyZGradedClosureCategory( Category of matrices over Q )>
 ext := ExteriorAlgebraAsLeftModule( v );
 #! <An object in Abelian category of
 #!  left modules over the internal exterior algebra of
-#!  A vector space object over Q of dimension 3>
-
-u := VectorSpaceObject( 3, Q );;
-U := ObjectInZGradedClosureCategoryWithBounds( ZQvec, u, 3 );;
-F := FreeInternalModule( U, ExtVMod );
-#! <An object in Abelian category of
-#!  left modules over the internal exterior algebra of
-#!  A vector space object over Q of dimension 3>
-H := FreeInternalModule( U, ModExtV );;
+#!  A vector space object over Q of dimension 6>
 
 e1 := MorphismInZGradedClosureCategoryWithBounds(
               ObjectInZGradedClosureCategoryWithBounds( ZQvec, ExtV[0], 3 ),
               VectorSpaceMorphism(
                   ExtV[0],
-                  HomalgIdentityMatrix( 1, Q ),
+                  CertainRows( HomalgIdentityMatrix( 20, Q ), [ 6 ] ),
                   ExtV[3]
               ),
               3,
@@ -41,8 +33,16 @@ e1 := MorphismInZGradedClosureCategoryWithBounds(
 e1 := InternalElement( e1 );
 #! degree: 3
 #! 
-#! [ [  1 ] ]
+#! [ [  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ] ]
 #! 
 #! A morphism in Category of matrices over Q
+
+u := VectorSpaceObject( 3, Q );;
+U := ObjectInZGradedClosureCategoryWithBounds( ZQvec, u, 3 );;
+F := FreeInternalModule( U, ExtVMod );
+#! <An object in Abelian category of
+#!  left modules over the internal exterior algebra of
+#!  A vector space object over Q of dimension 6>
+H := FreeInternalModule( U, ModExtV );;
 
 #! @EndExample
