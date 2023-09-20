@@ -501,6 +501,14 @@
     [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
     [4X[25X>[125X [27X    )[127X[104X
     [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27X# Iterated: function always choosing first value[127X[104X
+    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "list" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "Iterated( list, { x, y } -> x )",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "list[1]",[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
     [4X[25Xgap>[125X [27X# Length( [ 1 .. n ] ) -> n[127X[104X
     [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
     [4X[25X>[125X [27X    rec([127X[104X

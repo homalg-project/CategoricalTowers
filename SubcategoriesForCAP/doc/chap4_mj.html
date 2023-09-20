@@ -591,6 +591,14 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "matrix",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># Iterated: function always choosing first value</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "list" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "Iterated( list, { x, y } -&gt; x )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "list[1]",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># Length( [ 1 .. n ] ) -&gt; n</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
