@@ -35,6 +35,15 @@ CapJitAddLogicTemplate(
     )
 );
 
+# Iterated: function always choosing first value
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list" ],
+        src_template := "Iterated( list, { x, y } -> x )",
+        dst_template := "list[1]",
+    )
+);
+
 # Length( [ 1 .. n ] ) -> n
 CapJitAddLogicTemplate(
     rec(

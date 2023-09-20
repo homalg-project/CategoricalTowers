@@ -41,14 +41,14 @@ end
         
 ########
 function ( cat_1, objects_1 )
-    local morphism_attr_1_1, deduped_2_1;
+    local deduped_1_1, deduped_2_1;
     deduped_2_1 := AmbientCategory( cat_1 );
-    morphism_attr_1_1 := Iterated( List( objects_1, function ( logic_new_func_x_2 )
+    deduped_1_1 := Iterated( List( objects_1, function ( logic_new_func_x_2 )
               return UnderlyingMatrix( UnderlyingMorphism( logic_new_func_x_2 ) );
           end ), function ( I_2, J_2 )
             return ReducedSyzygiesOfRows( I_2, J_2 ) * I_2;
         end );
-    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_2_1, CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_2_1, CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, NumberRows( deduped_1_1 ) ), CAP_JIT_INCOMPLETE_LOGIC( Range( UnderlyingMorphism( CAP_JIT_INCOMPLETE_LOGIC( objects_1[1] ) ) ) ), UnderlyingMatrix, deduped_1_1 ) );
 end
 ########
         
