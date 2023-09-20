@@ -878,32 +878,25 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qvec := MatrixCategory( Q );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := VectorSpaceObject( 3, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := VectorSpaceObject( 6, Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZQvec := FinitelyZGradedClosureCategory( Qvec );</span>
 FinitelyZGradedClosureCategory( Category of matrices over Q )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInZGradedClosureCategoryWithBounds( ZQvec, v, 1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ExtVMod := CategoryOfLeftEModules( v );</span>
 Abelian category of left modules over the internal exterior algebra of
-A vector space object over Q of dimension 3
+A vector space object over Q of dimension 6
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModExtV := CategoryOfRightEModules( v );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ExtV := UnderlyingActingObject( ExtVMod );</span>
 &lt;An object in FinitelyZGradedClosureCategory( Category of matrices over Q )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ext := ExteriorAlgebraAsLeftModule( v );</span>
 &lt;An object in Abelian category of
  left modules over the internal exterior algebra of
- A vector space object over Q of dimension 3&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := VectorSpaceObject( 3, Q );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInZGradedClosureCategoryWithBounds( ZQvec, u, 3 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeInternalModule( U, ExtVMod );</span>
-&lt;An object in Abelian category of
- left modules over the internal exterior algebra of
- A vector space object over Q of dimension 3&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := FreeInternalModule( U, ModExtV );;</span>
+ A vector space object over Q of dimension 6&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e1 := MorphismInZGradedClosureCategoryWithBounds(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">              ObjectInZGradedClosureCategoryWithBounds( ZQvec, ExtV[0], 3 ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">              VectorSpaceMorphism(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                  ExtV[0],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  HomalgIdentityMatrix( 1, Q ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  CertainRows( HomalgIdentityMatrix( 20, Q ), [ 6 ] ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                  ExtV[3]</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">              ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">              3,</span>
@@ -911,9 +904,16 @@ A vector space object over Q of dimension 3
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e1 := InternalElement( e1 );</span>
 degree: 3
 
-[ [  1 ] ]
+[ [  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ] ]
 
 A morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := VectorSpaceObject( 3, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInZGradedClosureCategoryWithBounds( ZQvec, u, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeInternalModule( U, ExtVMod );</span>
+&lt;An object in Abelian category of
+ left modules over the internal exterior algebra of
+ A vector space object over Q of dimension 6&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := FreeInternalModule( U, ModExtV );;</span>
 </pre></div>
 
 
