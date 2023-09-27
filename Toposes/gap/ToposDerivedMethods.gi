@@ -1071,11 +1071,12 @@ AddFinalDerivationBundle( "CanonicalIdentificationFromImageObjectToCoimage as th
 
 ##
 AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfExternalHom",
-        [ [ TerminalObject, 1 ],
+        [ [ TerminalObject, 1, RangeCategoryOfHomomorphismStructure ],
           [ MorphismsOfExternalHom, 2 ],
-          [ ObjectConstructor, 1 ],
+          [ MorphismsOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
+          [ ObjectConstructor, 1, RangeCategoryOfHomomorphismStructure ],
           [ PreComposeList, 2 ],
-          [ MorphismConstructor, 1 ],
+          [ MorphismConstructor, 1, RangeCategoryOfHomomorphismStructure ],
           ],
         [ DistinguishedObjectOfHomomorphismStructure,
           HomomorphismStructureOnObjects,
@@ -1088,16 +1089,19 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
         
 [
   DistinguishedObjectOfHomomorphismStructure,
-  [ [ TerminalObject, 1 ] ],
+  [ [ TerminalObject, 1, RangeCategoryOfHomomorphismStructure ] ],
   function( cat )
+    local H;
     
-    return TerminalObject( RangeCategoryOfHomomorphismStructure( cat ) );
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    return TerminalObject( H );
     
   end
 ],
 [
   HomomorphismStructureOnObjects,
-  [ [ ObjectConstructor, 1 ],
+  [ [ ObjectConstructor, 1, RangeCategoryOfHomomorphismStructure ],
     [ MorphismsOfExternalHom, 1 ] ],
   function( cat, a, b )
     local H;
@@ -1113,7 +1117,7 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
   HomomorphismStructureOnMorphismsWithGivenObjects,
   [ [ MorphismsOfExternalHom, 2 ],
     [ PreComposeList, 2 ],
-    [ MorphismConstructor, 1 ] ],
+    [ MorphismConstructor, 1, RangeCategoryOfHomomorphismStructure ] ],
   function( cat, s, alpha, gamma, r )
     local H, source_alpha, range_gamma, s_mors, r_mors, images;
     
@@ -1139,7 +1143,7 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
 [
   InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects,
   [ [ MorphismsOfExternalHom, 1 ],
-    [ MorphismConstructor, 1 ] ],
+    [ MorphismConstructor, 1, RangeCategoryOfHomomorphismStructure ] ],
   function( cat, t, alpha, r )
     local H, mors;
     
@@ -1156,7 +1160,8 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
 ],
 [
   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
-  [ [ MorphismsOfExternalHom, 2 ] ],
+  [ [ MorphismsOfExternalHom, 1 ],
+    [ MorphismsOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ] ],
   function( cat, a, b, iota )
     local H, mors_H, pos;
     
@@ -1170,7 +1175,8 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
     return MorphismsOfExternalHom( cat, a, b )[pos];
     
   end
-] : CategoryFilter := function( cat )
+] : CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ),
+    CategoryFilter := function( cat )
       return HasRangeCategoryOfHomomorphismStructure( cat ) and
              IsBoundGlobal( "IsCategoryOfSkeletalFinSets" ) and
              ValueGlobal( "IsCategoryOfSkeletalFinSets" )( RangeCategoryOfHomomorphismStructure( cat ) );
