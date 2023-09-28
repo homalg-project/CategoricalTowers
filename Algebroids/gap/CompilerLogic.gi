@@ -210,16 +210,6 @@ CapJitAddLogicTemplate(
     )
 );
 
-# List( L, x -> x ) => L
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "list" ],
-        variable_filters := [ IsList ], # does not apply if `list` is `Is(Skeletal)FinSet`
-        src_template := "List( list, x -> x )",
-        dst_template := "list",
-    )
-);
-
 # UnionOfRowsListList
 CapJitAddLogicTemplate(
     rec(

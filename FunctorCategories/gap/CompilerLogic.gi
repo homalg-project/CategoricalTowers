@@ -263,14 +263,6 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "number" ],
-        src_template := "Length( [ 1 .. number ] )",
-        dst_template := "number",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "number" ],
         src_template := "Length( [ 0 .. number - 1 ] )",
         dst_template := "number",
     )
@@ -429,15 +421,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "matrix", "dimension", "ring" ],
         src_template := "HomalgIdentityMatrix( dimension, ring ) * matrix",
         dst_template := "matrix",
-    )
-);
-
-# Length( [ 1 .. n ] ) -> n
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "n" ],
-        src_template := "Length( [ 1 .. n ] )",
-        dst_template := "n"
     )
 );
 
