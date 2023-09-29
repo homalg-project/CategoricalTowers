@@ -27,6 +27,7 @@
 | [LazyCategories](LazyCategories#readme) | Construct an equivalent lazy category out of a CAP category | [![HTML stable documentation][html-LazyCategories-img]][html-LazyCategories-url] [![PDF stable documentation][pdf-LazyCategories-img]][pdf-LazyCategories-url] |
 | [Locales](Locales#readme) | Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets | [![HTML stable documentation][html-Locales-img]][html-Locales-url] [![PDF stable documentation][pdf-Locales-img]][pdf-Locales-url] |
 | [PreSheaves](PreSheaves#readme) | Categories of (co)presheaves | [![HTML stable documentation][html-PreSheaves-img]][html-PreSheaves-url] [![PDF stable documentation][pdf-PreSheaves-img]][pdf-PreSheaves-url] |
+| [QuotientCategories](QuotientCategories#readme) | Quotient categories of CAP categories by two-sided ideals | [![HTML stable documentation][html-QuotientCategories-img]][html-QuotientCategories-url] [![PDF stable documentation][pdf-QuotientCategories-img]][pdf-QuotientCategories-url] |
 | [SubcategoriesForCAP](SubcategoriesForCAP#readme) | Subcategory and other related constructors for CAP categories | [![HTML stable documentation][html-SubcategoriesForCAP-img]][html-SubcategoriesForCAP-url] [![PDF stable documentation][pdf-SubcategoriesForCAP-img]][pdf-SubcategoriesForCAP-url] |
 | [Toposes](Toposes#readme) | Elementary toposes | [![HTML stable documentation][html-Toposes-img]][html-Toposes-url] [![PDF stable documentation][pdf-Toposes-img]][pdf-Toposes-url] |
 | [ZariskiFrames](ZariskiFrames#readme) | (Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties | [![HTML stable documentation][html-ZariskiFrames-img]][html-ZariskiFrames-url] [![PDF stable documentation][pdf-ZariskiFrames-img]][pdf-ZariskiFrames-url] |
@@ -134,6 +135,13 @@
 
 [pdf-PreSheaves-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-PreSheaves-url]: https://homalg-project.github.io/CategoricalTowers/PreSheaves/download_pdf.html
+
+
+[html-QuotientCategories-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-QuotientCategories-url]: https://homalg-project.github.io/CategoricalTowers/QuotientCategories/doc/chap0_mj.html
+
+[pdf-QuotientCategories-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-QuotientCategories-url]: https://homalg-project.github.io/CategoricalTowers/QuotientCategories/download_pdf.html
 
 
 [html-SubcategoriesForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg

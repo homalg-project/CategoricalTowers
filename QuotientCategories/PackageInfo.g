@@ -36,13 +36,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/HigherHomologicalAlgebra",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/QuotientCategories",
-PackageInfoURL  := "https://homalg-project.github.io/HigherHomologicalAlgebra/QuotientCategories/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/HigherHomologicalAlgebra/QuotientCategories/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/HigherHomologicalAlgebra/releases/download/QuotientCategories-", ~.Version, "/QuotientCategories-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/QuotientCategories/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/QuotientCategories/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-", ~.Version, "/QuotientCategories-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",

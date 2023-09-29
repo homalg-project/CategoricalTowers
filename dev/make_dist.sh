@@ -107,6 +107,13 @@ git subtree split --prefix=PreSheaves -b PreSheaves-split
 git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/PreSheaves PreSheaves-split:master
 echo ""
 
+# QuotientCategories
+echo "Release QuotientCategories"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/QuotientCategories" --webdir "$PWD/gh-pages/QuotientCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
+git subtree split --prefix=QuotientCategories -b QuotientCategories-split
+git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/QuotientCategories QuotientCategories-split:master
+echo ""
+
 # SubcategoriesForCAP
 echo "Release SubcategoriesForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/SubcategoriesForCAP" --webdir "$PWD/gh-pages/SubcategoriesForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
