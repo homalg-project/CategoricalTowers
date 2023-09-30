@@ -1,7 +1,7 @@
 <!-- BEGIN HEADER -->
 # QuotientCategories&ensp;<sup><sup>[![View code][code-img]][code-url]</sup></sup>
 
-### Quotient categories of CAP categories by two-sided ideals
+### Quotient categories
 
 | Documentation | Latest Release | Build Status of [CategoricalTowers](/../../) | Code Coverage |
 | ------------- | -------------- | ------------ | ------------- |

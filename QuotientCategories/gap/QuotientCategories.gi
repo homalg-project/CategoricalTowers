@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# QuotientCategories: Quotient categories of CAP categories by two-sided ideals
+# QuotientCategories: Quotient categories
 #
 # Implementations
 #
@@ -26,6 +26,20 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY,
    "SubtractionForMorphisms",
    "ZeroMorphism",
    #"MultiplyWithElementOfCommutativeRingForMorphisms",
+   
+   # IsCartesianCategory
+   "DirectProduct",
+   "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
+   "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
+   "TerminalObject",
+   "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+   
+   # IsCocartesianCategory
+   "Coproduct",
+   "InjectionOfCofactorOfCoproductWithGivenCoproduct",
+   "UniversalMorphismFromCoproductWithGivenCoproduct",
+   "InitialObject",
+   "UniversalMorphismFromInitialObjectWithGivenInitialObject",
    
    # IsAdditiveCategory
    "ComponentOfMorphismFromDirectSum",
@@ -131,7 +145,9 @@ InstallMethod( QuotientCategory,
         commutative_ring := fail;
     fi;
     
-    properties := [ "IsAbCategory",
+    properties := [ "IsCocartesianCategory",
+                    "IsCartesianCategory",
+                    "IsAbCategory",
                     "IsLinearCategoryOverCommutativeRing",
                     "IsAdditiveCategory",
                     ];
