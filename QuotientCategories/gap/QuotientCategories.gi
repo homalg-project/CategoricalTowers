@@ -419,6 +419,36 @@ InstallOtherMethod( \/,
   { alpha, quotient_cat } -> MorphismConstructor( quotient_cat, Source( alpha ) / quotient_cat, alpha, Range( alpha ) / quotient_cat )
 );
 
+##################################
+##
+## View & Display
+##
+##################################
+
+##
+InstallMethod( Display,
+        [ IsQuotientCapCategoryObject ],
+        
+  function ( a )
+    
+    Display( ObjectDatum( a ) );
+    
+    Print( "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
+    
+end );
+
+##
+InstallMethod( Display,
+        [ IsQuotientCapCategoryMorphism ],
+        
+  function ( phi )
+    
+    Display( MorphismDatum( phi ) );
+    
+    Print( "\nA morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
+    
+end );
+
 ##
 InstallOtherMethod( LaTeXOutput,
             [ IsQuotientCapCategoryObject ],
