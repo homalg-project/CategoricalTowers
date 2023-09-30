@@ -1,0 +1,72 @@
+name: QuotientCategories
+version: "2023.09-01"
+license: "GPL-2.0-or-later"
+date: 2023-09-30
+description: |
+    Quotient categories of CAP categories by two-sided ideals
+
+authors:
+    - name: Kamal Saleh
+      url: https://github.com/kamalsaleh
+
+maintainers:
+    - name: Kamal Saleh
+      url: https://github.com/kamalsaleh
+
+GAP: ">= 4.12.1"
+
+needed-pkgs:
+    - name: "AutoDoc"
+      version: ">=2018.02.14"
+      url: "https://gap-packages.github.io/AutoDoc"
+    - name: "CAP"
+      version: ">= 2022.08-09"
+      url: "https://homalg-project.github.io/pkg/CAP"
+    - name: "CategoryConstructor"
+      version: ">= 2022.11-10"
+      url: "https://homalg-project.github.io/pkg/CategoryConstructor"
+
+www: https://homalg-project.github.io/pkg/QuotientCategories
+readme: README.md
+packageinfo: https://homalg-project.github.io/CategoricalTowers/QuotientCategories/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2023.09-01/QuotientCategories-2023.09-01.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2023.09-01/QuotientCategories-2023.09-01.zip
+
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2023.09-01/QuotientCategories-2023.09-01-manual.pdf
+
+abstract: |
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>Sal30</span>]   <b class='BibAuthor'>Saleh, K.</b>,
+     <i class='BibTitle'>QuotientCategories, Quotient categories of CAP categories by two-sided ideals,
+             Version 2023.09-01</i>
+     (<span class='BibYear'>9-30</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/QuotientCategories">https://homalg-project.github.io/pkg/QuotientCategories</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ QuotientCategories2023.09-01,
+      author =           {Saleh, K.},
+      title =            {{QuotientCategories},   Quotient   categories  of  CAP
+                          categories by two-sided ideals, {V}ersion 2023.09-01},
+      month =            {3-},
+      year =             {9-30},
+      note =             {GAP package},
+      howpublished =     {\href
+                          {https://homalg-project.github.io/pkg/QuotientCategories}
+                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
+                          {}{}{}\texttt{QuotientCategories}}},
+      printedkey =       {Sal30}
+    }
+
