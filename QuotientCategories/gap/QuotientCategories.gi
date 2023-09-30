@@ -91,7 +91,7 @@ InstallMethod( QuotientCategory,
     if IsBound( record.name ) then
       name := record.name;
     else
-      name := Concatenation( "Quotient category( ", Name( cat ), " ) defined by the congruence function ", NameFunction( record.congruence_function ) );
+      name := Concatenation( "QuotientCategory( ", Name( cat ), " ) defined by the congruence function ", NameFunction( record.congruence_function ) );
     fi;
     
     if IsBound( record.category_filter ) then
