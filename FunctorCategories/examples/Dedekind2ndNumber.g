@@ -32,6 +32,8 @@ Display( PSh );
 #! 58 primitive operations were used to derive 206 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
+#! * IsFiniteCocompleteCategory
+#! * IsFiniteCompleteCategory
 #! * IsCodistributiveCategory
 #! * IsDistributiveCategory
 #! and not yet algorithmically
