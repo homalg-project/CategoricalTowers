@@ -6,9 +6,7 @@
 
 ##
 InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY,
-  [
-   "AdditionForMorphisms",
-   "AdditiveInverseForMorphisms",
+  [# IsCapCategory
    "IdentityMorphism",
    "IsEndomorphism",
    "IsEqualForMorphisms",
@@ -17,16 +15,19 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY,
    "IsEqualForCacheForObjects",
    "IsEqualToIdentityMorphism",
    "IsEqualToZeroMorphism",
-   #"MultiplyWithElementOfCommutativeRingForMorphisms",
    "PostCompose",
    "PreCompose",
-   "SubtractionForMorphisms",
-   "ZeroMorphism",
    "IsWellDefinedForObjects",
    "IsWellDefinedForMorphisms",
    
-   # Additive operations
+   # IsAbCategory
+   "AdditionForMorphisms",
+   "AdditiveInverseForMorphisms",
+   "SubtractionForMorphisms",
+   "ZeroMorphism",
+   #"MultiplyWithElementOfCommutativeRingForMorphisms",
    
+   # IsAdditiveCategory
    "ComponentOfMorphismFromDirectSum",
    "ComponentOfMorphismIntoDirectSum",
    "DirectSum",
