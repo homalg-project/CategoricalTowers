@@ -138,6 +138,10 @@ InstallMethod( QuotientCategory,
     
     properties := Intersection( ListKnownCategoricalProperties( cat ), properties );
     
+    if IsBound( record.extra_properties ) then
+        properties := SortedList( Concatenation( properties, record.extra_properties ) );
+    fi;
+    
     create_func_bool :=
           function ( name, quotient_cat )
             return
