@@ -75,6 +75,8 @@ InstallMethod( QuotientCategory,
         Error( "the record passed to the category constructor 'QuotientCategory' is missing a component 'nr_arguments_of_congruence_function'!\n" );
     fi;
     
+    record := ShallowCopy( record );
+    
     if record.nr_arguments_of_congruence_function = 1 then
       
       record.nr_arguments_of_congruence_function := 2;
