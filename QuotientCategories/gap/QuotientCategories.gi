@@ -57,8 +57,8 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY,
 
 ##
 InstallMethod( QuotientCategory,
-          [ IsRecord ],
-  
+        [ IsRecord ],
+        
   function( record )
     local congruence_function, cat, name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
@@ -67,11 +67,11 @@ InstallMethod( QuotientCategory,
           properties, supports_empty_limits, quotient_cat;
     
     if not IsBound( record.congruence_function ) then
-      Error( "the record passed to the category constructor 'QuotientCategory' is missing a component 'congruence_function'!\n" );
+        Error( "the record passed to the category constructor 'QuotientCategory' is missing a component 'congruence_function'!\n" );
     fi;
     
     if not IsBound( record.nr_arguments_of_congruence_function ) then
-       Error( "the record passed to the category constructor 'QuotientCategory' is missing a component 'nr_arguments_of_congruence_function'!\n" );
+        Error( "the record passed to the category constructor 'QuotientCategory' is missing a component 'nr_arguments_of_congruence_function'!\n" );
     fi;
     
     if record.nr_arguments_of_congruence_function = 1 then
