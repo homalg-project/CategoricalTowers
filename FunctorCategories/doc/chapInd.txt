@@ -14,8 +14,8 @@
   [2XApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity[102X, for IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism 2.3-3 
   [2XApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism[102X, for IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism 2.3-2 
   [2XApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject[102X, for IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject 2.3-1 
-  [2XApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion[102X, for IsCapCategory, IsObjectInPreSheafCategory, IsMorphismInFiniteStrictCoproductCocompletion 2.1-14 
-  [2XApplyPreSheafToObjectInFiniteStrictCoproductCocompletion[102X, for IsCapCategory, IsObjectInPreSheafCategory, IsObjectInFiniteStrictCoproductCocompletion 2.1-13 
+  [2XApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[102X, for IsCapCategory, IsObjectInPreSheafCategory, IsMorphismInFiniteStrictCoproductCompletion 2.1-14 
+  [2XApplyPreSheafToObjectInFiniteStrictCoproductCompletion[102X, for IsCapCategory, IsObjectInPreSheafCategory, IsObjectInFiniteStrictCoproductCompletion 2.1-13 
   [2XArrows[102X, for IsObjectInCategoryOfDecoratedQuivers 8.2-5 
       for IsObjectInCategoryOfQuivers 5.2-3 
       for IsObjectInCategoryOfReflexiveQuivers 7.2-4 
@@ -29,7 +29,7 @@
       for IsCapFunctor 1.1-2 
   [2XAssociatedCategoryOfCoequalizerPairsOfSourceCategory[102X, for IsPreSheafCategory 2.2-10 
   [2XAssociatedCategoryOfColimitQuiversOfSourceCategory[102X, for IsPreSheafCategory 2.2-11 
-  [2XAssociatedFiniteStrictCoproductCocompletionOfSourceCategory[102X, for IsPreSheafCategory 2.2-9 
+  [2XAssociatedFiniteStrictCoproductCompletionOfSourceCategory[102X, for IsPreSheafCategory 2.2-9 
   [2XCategoryOfBouquetsEnrichedOver[102X, for IsCapCategory 4.1-1 
   [2XCategoryOfDecoratedQuivers[102X, for IsObjectInCategoryOfQuivers, IsList, IsList 8.1-1 
   [2XCategoryOfInternalCategories[102X, for IsCapCategory 2.1-15 
@@ -78,7 +78,7 @@
       for IsCellInCategoryOfDecoratedQuivers 8.2-7 
       for IsCellInCategoryOfQuivers 5.2-5 
       for IsCellInCategoryOfReflexiveQuivers 7.2-6 
-  [2XEmbeddingFunctorOfFiniteStrictCoproductCocompletionIntoPreSheavesData[102X, for IsPreSheafCategory 2.1-6 
+  [2XEmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheavesData[102X, for IsPreSheafCategory 2.1-6 
   [2XEmbeddingOfUnderlyingCategory[102X, for IsAbelianClosure 10.2-2 
       for IsCategoryOfBouquets 4.2-2 
       for IsCategoryOfDecoratedQuivers 8.2-4 
