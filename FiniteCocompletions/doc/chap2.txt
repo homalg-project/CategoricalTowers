@@ -172,7 +172,7 @@
     [4X[25Xgap>[125X [27XPC := FiniteStrictProductCompletion( C );[127X[104X
     [4X[28XFiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XModelingCategory( PC );[127X[104X
-    [4X[28XOpposite( FiniteStrictCoproductCocompletion( Opposite([128X[104X
+    [4X[28XOpposite( FiniteStrictCoproductCompletion( Opposite([128X[104X
     [4X[28XFreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) ) )[128X[104X
     [4X[25Xgap>[125X [27Xa := PC.a;[127X[104X
     [4X[28X<An object in[128X[104X
@@ -288,7 +288,7 @@
     [4X[25Xgap>[125X [27XPC := FiniteStrictProductCompletion( C );[127X[104X
     [4X[28XFiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XModelingCategory( PC );[127X[104X
-    [4X[28XOpposite( FiniteStrictCoproductCocompletion( Opposite([128X[104X
+    [4X[28XOpposite( FiniteStrictCoproductCompletion( Opposite([128X[104X
     [4X[28XFreeCategory( RightQuiver( "Q(a)[]" ) ) ) ) )[128X[104X
     [4X[25Xgap>[125X [27Xa := PC.a;[127X[104X
     [4X[28X<An object in[128X[104X

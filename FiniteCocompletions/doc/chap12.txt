@@ -13,10 +13,10 @@
     [4X[25Xgap>[125X [27XReadPackage( "FiniteCocompletions", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
-    [4X[25X>[125X [27X  {} -> CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );;[127X[104X
+    [4X[25X>[125X [27X  {} -> CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( );;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments := [ ];;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name :=[127X[104X
-    [4X[25X>[125X [27X  "CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled";;[127X[104X
+    [4X[25X>[125X [27X  "CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategoryPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "FiniteCocompletions";;[127X[104X
     [4X[25Xgap>[125X [27Xprimitive_operations :=[127X[104X
     [4X[25X>[125X [27X  ListPrimitivelyInstalledOperationsOfCategory( category_constructor() );;[127X[104X
@@ -36,10 +36,10 @@
     [4X[25X>[125X [27X        number_of_objectified_objects_in_data_structure_of_morphism := 2,[127X[104X
     [4X[25X>[125X [27X        number_of_objectified_morphisms_in_data_structure_of_morphism := 1[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27XCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled( );[127X[104X
-    [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[128X[104X
-    [4X[25Xgap>[125X [27Xcat := CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );[127X[104X
-    [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27XCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategoryPrecompiled( );[127X[104X
+    [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xcat := CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( );[127X[104X
+    [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[128X[104X
     [4X[25Xgap>[125X [27Xcat!.precompiled_functions_added;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[28X#@fi[128X[104X
