@@ -6,13 +6,15 @@
                          [1X Categories of (co)presheaves [101X
   
   
-                                   2023.08-06
+                                   2023.09-01
   
   
-                                 29 August 2023
+                                 1 October 2023
   
   
                                 Mohamed Barakat
+  
+                                  Kamal Saleh
   
   
   
@@ -20,6 +22,16 @@
       Email:    [7Xmailto:mohamed.barakat@uni-siegen.de[107X
       Homepage: [7Xhttps://mohamed-barakat.github.io[107X
       Address:  [33X[0;14YWalter-Flex-Str. 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  Kamal Saleh
+      Email:    [7Xmailto:kamal.saleh@uni-siegen.de[107X
+      Homepage: [7Xhttps://github.com/kamalsaleh[107X
+      Address:  [33X[0;14YDepartment Mathematik[133X
+                [33X[0;14YUniversität Siegen[133X
+                [33X[0;14YWalter-Flex-Straße 3[133X
                 [33X[0;14Y57068 Siegen[133X
                 [33X[0;14YGermany[133X
   
