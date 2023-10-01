@@ -198,6 +198,8 @@
     [4X[28X58 primitive operations were used to derive 206 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsFiniteCocompleteCategory[128X[104X
+    [4X[28X* IsFiniteCompleteCategory[128X[104X
     [4X[28X* IsCodistributiveCategory[128X[104X
     [4X[28X* IsDistributiveCategory[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
