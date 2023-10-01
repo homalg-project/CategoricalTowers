@@ -74,9 +74,9 @@
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", "&gt;= 2023.09-02" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IntervalCategory;</span>
 IntervalCategory
@@ -98,6 +98,8 @@ A CAP category with name PreSheaves( IntervalCategory, IntervalCategory ):
 58 primitive operations were used to derive 206 operations for this category
 which algorithmically
 * IsEquippedWithHomomorphismStructure
+* IsFiniteCocompleteCategory
+* IsFiniteCompleteCategory
 * IsCodistributiveCategory
 * IsDistributiveCategory
 and not yet algorithmically
