@@ -156,3 +156,52 @@ InstallGlobalFunction( DataTablesAsENHANCED_SYNTAX_TREE,
                    rec( data_tables := DataTablesAsString( data_tables ) ) );
     
 end );
+
+##
+InstallMethod( \.,
+        "for an additive closure category and a positive integer",
+        [ IsAdditiveClosureCategory, IsPosInt ],
+        
+  function( UC, string_as_int )
+    local name, C, Yc;
+    
+    name := NameRNam( string_as_int );
+    
+    C := UnderlyingCategory( UC );
+    
+    Yc := C.(name) / UC;
+    
+    if IsAdditiveClosureObject( Yc ) then
+
+        #TODO: is this true?
+        #SetIsProjective( Yc, true );
+        
+    elif IsAdditiveClosureMorphism( Yc ) then
+        
+        if CanCompute( UC, "IsMonomorphism" ) then
+            IsMonomorphism( Yc );
+        fi;
+        
+        if CanCompute( UC, "IsSplitMonomorphism" ) then
+            IsSplitMonomorphism( Yc );
+        fi;
+        
+        if CanCompute( UC, "IsEpimorphism" ) then
+            IsEpimorphism( Yc );
+        fi;
+        
+        if CanCompute( UC, "IsSplitEpimorphism" ) then
+            IsSplitEpimorphism( Yc );
+        fi;
+        
+        ## IsIsomorphism = IsSplitMonomorphism and IsSplitEpimorphism
+        ## we add this here in case the logic is deactivated
+        if CanCompute( UC, "IsIsomorphism" ) then
+            IsIsomorphism( Yc );
+        fi;
+        
+    fi;
+    
+    return Yc;
+    
+end );
