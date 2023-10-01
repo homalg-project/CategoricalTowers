@@ -16,10 +16,10 @@ ReadPackage( "FiniteCocompletions", "gap/CompilerLogic.gi" );
 #! true
 
 category_constructor :=
-  {} -> CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );;
+  {} -> CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( );;
 given_arguments := [ ];;
 compiled_category_name :=
-  "CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled";;
+  "CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategoryPrecompiled";;
 package_name := "FiniteCocompletions";;
 primitive_operations :=
   ListPrimitivelyInstalledOperationsOfCategory( category_constructor() );;
@@ -41,11 +41,11 @@ CapJitPrecompileCategoryAndCompareResult(
         number_of_objectified_morphisms_in_data_structure_of_morphism := 1
 );;
 
-CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled( );
-#! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
+CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategoryPrecompiled( );
+#! SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
 
-cat := CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );
-#! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
+cat := CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( );
+#! SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
 
 cat!.precompiled_functions_added;
 #! true

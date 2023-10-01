@@ -14,23 +14,23 @@
 
 #! @Description
 #!  The &GAP; category of finite coproduct cocompletion categories.
-DeclareCategory( "IsFiniteStrictCoproductCocompletion",
+DeclareCategory( "IsFiniteStrictCoproductCompletion",
         IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of cells in a finite coproduct cocompletion category.
-DeclareCategory( "IsCellInFiniteStrictCoproductCocompletion",
+DeclareCategory( "IsCellInFiniteStrictCoproductCompletion",
         IsCapCategoryCell );
 
 #! @Description
 #!  The &GAP; category of objects in a finite coproduct cocompletion category.
-DeclareCategory( "IsObjectInFiniteStrictCoproductCocompletion",
-        IsCellInFiniteStrictCoproductCocompletion and IsCapCategoryObject  );
+DeclareCategory( "IsObjectInFiniteStrictCoproductCompletion",
+        IsCellInFiniteStrictCoproductCompletion and IsCapCategoryObject  );
 
 #! @Description
 #!  The &GAP; category of morphisms in a finite coproduct cocompletion category.
-DeclareCategory( "IsMorphismInFiniteStrictCoproductCocompletion",
-        IsCellInFiniteStrictCoproductCocompletion and IsCapCategoryMorphism );
+DeclareCategory( "IsMorphismInFiniteStrictCoproductCompletion",
+        IsCellInFiniteStrictCoproductCompletion and IsCapCategoryMorphism );
 
 ####################################
 #
@@ -42,23 +42,23 @@ DeclareCategory( "IsMorphismInFiniteStrictCoproductCocompletion",
 #!  Return the finite coproduct cocompletion of the category <A>cat</A>
 #!  in which the cocartesian associators are given by identities.
 #! @Arguments cat
-DeclareAttribute( "FiniteStrictCoproductCocompletion",
+DeclareAttribute( "FiniteStrictCoproductCompletion",
         IsCapCategory );
-#! @InsertChunk TerminalCategory_as_FiniteStrictCoproductCocompletion
+#! @InsertChunk TerminalCategory_as_FiniteStrictCoproductCompletion
 
-CapJitAddTypeSignature( "FiniteStrictCoproductCocompletion", [ IsCapCategory ], function ( input_types )
+CapJitAddTypeSignature( "FiniteStrictCoproductCompletion", [ IsCapCategory ], function ( input_types )
     
-    return CapJitDataTypeOfCategory( FiniteStrictCoproductCocompletion( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( FiniteStrictCoproductCompletion( input_types[1].category ) );
     
 end );
 
-DeclareAttribute( "EnrichmentSpecificFiniteStrictCoproductCocompletion",
+DeclareAttribute( "EnrichmentSpecificFiniteStrictCoproductCompletion",
         IsCapCategory );
 
-CapJitAddTypeSignature( "EnrichmentSpecificFiniteStrictCoproductCocompletion", [ IsCapCategory ],
+CapJitAddTypeSignature( "EnrichmentSpecificFiniteStrictCoproductCompletion", [ IsCapCategory ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( EnrichmentSpecificFiniteStrictCoproductCocompletion( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( EnrichmentSpecificFiniteStrictCoproductCompletion( input_types[1].category ) );
     
 end );
 
@@ -70,12 +70,12 @@ end );
 
 #!
 DeclareAttribute( "PairOfIntAndList",
-        IsObjectInFiniteStrictCoproductCocompletion );
+        IsObjectInFiniteStrictCoproductCompletion );
 
-CapJitAddTypeSignature( "PairOfIntAndList", [ IsObjectInFiniteStrictCoproductCocompletion ],
+CapJitAddTypeSignature( "PairOfIntAndList", [ IsObjectInFiniteStrictCoproductCompletion ],
  function ( input_types )
 
-    Assert( 0, IsFiniteStrictCoproductCocompletion( input_types[1].category ) );
+    Assert( 0, IsFiniteStrictCoproductCompletion( input_types[1].category ) );
     
     return CapJitDataTypeOfNTupleOf( 2,
                    IsInt,
@@ -85,12 +85,12 @@ end );
 
 #!
 DeclareAttribute( "PairOfLists",
-        IsMorphismInFiniteStrictCoproductCocompletion );
+        IsMorphismInFiniteStrictCoproductCompletion );
 
-CapJitAddTypeSignature( "PairOfLists", [ IsMorphismInFiniteStrictCoproductCocompletion ],
+CapJitAddTypeSignature( "PairOfLists", [ IsMorphismInFiniteStrictCoproductCompletion ],
  function ( input_types )
 
-    Assert( 0, IsFiniteStrictCoproductCocompletion( input_types[1].category ) );
+    Assert( 0, IsFiniteStrictCoproductCompletion( input_types[1].category ) );
     
     return CapJitDataTypeOfNTupleOf( 2,
                    CapJitDataTypeOfListOf( IsInt ),
@@ -100,12 +100,12 @@ end );
 
 #! @Description
 #!  Return the category $C$ underlying the finite coproduct cocompletion
-#!  category <A>UC</A> := <C>FiniteStrictCoproductCocompletion</C>( $C$ ).
+#!  category <A>UC</A> := <C>FiniteStrictCoproductCompletion</C>( $C$ ).
 #! @Arguments UC
 DeclareAttribute( "UnderlyingCategory",
-        IsFiniteStrictCoproductCocompletion );
+        IsFiniteStrictCoproductCompletion );
 
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteStrictCoproductCocompletion ],
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteStrictCoproductCompletion ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
@@ -113,7 +113,7 @@ CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteStrictCoproductCocomplet
 end );
 
 DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
-        IsFiniteStrictCoproductCocompletion );
+        IsFiniteStrictCoproductCompletion );
 
 #! @Description
 #!  The full embedding functor from the category $C$ underlying
@@ -121,23 +121,23 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
 #! @Arguments UC
 #! @Returns a &CAP; functor
 DeclareAttribute( "EmbeddingOfUnderlyingCategory",
-        IsFiniteStrictCoproductCocompletion );
+        IsFiniteStrictCoproductCompletion );
 
-DeclareOperation( "ExtendFunctorToFiniteStrictCoproductCocompletionData",
-        [ IsFiniteStrictCoproductCocompletion, IsList, IsCocartesianCategory ] );
+DeclareOperation( "ExtendFunctorToFiniteStrictCoproductCompletionData",
+        [ IsFiniteStrictCoproductCompletion, IsList, IsCocartesianCategory ] );
 
 #! @Description
 #!  The full embedding functor from the category $C$ underlying
 #!  the finite coproduct cocompletion <A>UC</A> into <A>UC</A>.
 #! @Arguments UC
 #! @Returns a &CAP; functor
-DeclareAttribute( "ExtendFunctorToFiniteStrictCoproductCocompletion",
+DeclareAttribute( "ExtendFunctorToFiniteStrictCoproductCompletion",
         IsCapFunctor );
 
 #! @Description
 #!  Extend (i.e., lift) the (full) embedding the category <A>C</A> into <C>PreSheaves</C>( <A>C</A> ) to
-#!  the full embedding of <C>FiniteStrictCoproductCocompletion</C>( <A>C</A> ) into <C>PreSheaves</C>( <A>C</A> ).
+#!  the full embedding of <C>FiniteStrictCoproductCompletion</C>( <A>C</A> ) into <C>PreSheaves</C>( <A>C</A> ).
 #! @Arguments C
 #! @Returns a &CAP; functor
-DeclareAttribute( "ExtendEmbeddingToFiniteStrictCoproductCocompletion",
+DeclareAttribute( "ExtendEmbeddingToFiniteStrictCoproductCompletion",
         IsCapCategory );

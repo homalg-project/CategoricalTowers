@@ -4,8 +4,8 @@
 LoadPackage( "FiniteCocompletions" );
 #! true
 sFinSets :=
-  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;
-#! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
+  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;
+#! SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
 m := ObjectConstructor( sFinSets, 8 );
 #! |8|
 IsInitial( m );

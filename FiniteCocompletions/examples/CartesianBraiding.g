@@ -15,7 +15,7 @@ SetName( C.a, "C.a" ); SetName( C.b, "C.b" );
 PC := FiniteStrictProductCompletion( C );
 #! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
 ModelingCategory( PC );
-#! Opposite( FiniteStrictCoproductCocompletion( Opposite(
+#! Opposite( FiniteStrictCoproductCompletion( Opposite(
 #! FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) ) )
 a := PC.a;
 #! <An object in

@@ -5,7 +5,7 @@
 #
 
 ##
-InstallMethod( FiniteStrictCoproductCocompletion,
+InstallMethod( FiniteStrictCoproductCompletion,
         "for a CAP category",
         [ IsCapCategory and IsInitialCategory ],
         
@@ -15,13 +15,13 @@ InstallMethod( FiniteStrictCoproductCocompletion,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           properties, UI;
     
-    name := Concatenation( "FiniteStrictCoproductCocompletion( ", Name( I ), " )" );
+    name := Concatenation( "FiniteStrictCoproductCompletion( ", Name( I ), " )" );
     
-    category_filter := IsFiniteStrictCoproductCocompletion;
+    category_filter := IsFiniteStrictCoproductCompletion;
     
-    category_object_filter := IsObjectInFiniteStrictCoproductCocompletion and HasIsZeroForObjects and IsZeroForObjects;
+    category_object_filter := IsObjectInFiniteStrictCoproductCompletion and HasIsZeroForObjects and IsZeroForObjects;
     
-    category_morphism_filter := IsMorphismInFiniteStrictCoproductCocompletion and HasIsZeroForMorphisms and IsZeroForMorphisms;
+    category_morphism_filter := IsMorphismInFiniteStrictCoproductCompletion and HasIsZeroForMorphisms and IsZeroForMorphisms;
     
     ## e.g., ZeroObject, DirectSum
     create_func_object :=
@@ -138,7 +138,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
 end );
 
 ##
-InstallMethod( FiniteStrictCoproductCocompletion,
+InstallMethod( FiniteStrictCoproductCompletion,
         "for a CAP category",
         [ IsCapCategory ],
         
@@ -148,10 +148,10 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     
     ##
     UC := CreateCapCategoryWithDataTypes(
-                  Concatenation( "FiniteStrictCoproductCocompletion( ", Name( C ), " )" ),
-                  IsFiniteStrictCoproductCocompletion,
-                  IsObjectInFiniteStrictCoproductCocompletion,
-                  IsMorphismInFiniteStrictCoproductCocompletion,
+                  Concatenation( "FiniteStrictCoproductCompletion( ", Name( C ), " )" ),
+                  IsFiniteStrictCoproductCompletion,
+                  IsObjectInFiniteStrictCoproductCompletion,
+                  IsMorphismInFiniteStrictCoproductCompletion,
                   IsCapCategoryTwoCell,
                   CapJitDataTypeOfNTupleOf( 2,
                           IsInt,
@@ -272,7 +272,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         
         map := pair_of_lists[1];
         
-        ## FiniteStrictCoproductCocompletion code:
+        ## FiniteStrictCoproductCompletion code:
         C := UnderlyingCategory( UC );
         
         S := pairS[2];
@@ -313,7 +313,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             return false;
         fi;
         
-        ## FiniteStrictCoproductCocompletion code:
+        ## FiniteStrictCoproductCompletion code:
         C := UnderlyingCategory( UC );
         
         L1 := pair1[2];
@@ -336,7 +336,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             return false;
         fi;
         
-        ## FiniteStrictCoproductCocompletion code:
+        ## FiniteStrictCoproductCompletion code:
         C := UnderlyingCategory( UC );
         
         m1 := pair_of_lists1[2];
@@ -359,7 +359,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             return false;
         fi;
         
-        ## FiniteStrictCoproductCocompletion code:
+        ## FiniteStrictCoproductCompletion code:
         C := UnderlyingCategory( UC );
         
         m1 := pair_of_lists1[2];
@@ -379,7 +379,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         ## SkeletalFinSets code:
         map := [ 0 .. pair[1] - 1 ];
         
-        ## FiniteStrictCoproductCocompletion code:
+        ## FiniteStrictCoproductCompletion code:
         C := UnderlyingCategory( UC );
         
         mor := List( pair[2], objC -> IdentityMorphism( C, objC ) );
@@ -410,7 +410,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         maps_cmp := List( s, i ->
                           maps_post[1 + maps_pre[1 + i]] );
         
-        ## FiniteStrictCoproductCocompletion code:
+        ## FiniteStrictCoproductCompletion code:
         C := UnderlyingCategory( UC );
         
         mors_pre := pair_of_lists_pre[2];
@@ -441,7 +441,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         return ObjectConstructor( UC,
                        Pair( ## SkeletalFinSets code:
                              0,
-                             ## FiniteStrictCoproductCocompletion code:
+                             ## FiniteStrictCoproductCompletion code:
                              [ ] ) );
         
     end );
@@ -464,7 +464,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             pair := ObjectDatum( UC, object );
             
             return pair[1] = 1 and ## SkeletalFinSets code
-                   IsTerminal( UnderlyingCategory( UC ), pair[2][1] ); ## FiniteStrictCoproductCocompletion code
+                   IsTerminal( UnderlyingCategory( UC ), pair[2][1] ); ## FiniteStrictCoproductCompletion code
             
         end );
         
@@ -479,7 +479,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             return ObjectConstructor( UC,
                            Pair( ## SkeletalFinSets code
                                  1,
-                                 ## FiniteStrictCoproductCocompletion code
+                                 ## FiniteStrictCoproductCompletion code
                                  [ TerminalObject( UnderlyingCategory( UC ) ) ] ) );
             
         end );
@@ -498,7 +498,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             ## SkeletalFinSets code:
             map := ListWithIdenticalEntries( pair[1], 0 );
             
-            ## FiniteStrictCoproductCocompletion code:
+            ## FiniteStrictCoproductCompletion code:
             C := UnderlyingCategory( UC );
             
             t := TerminalObject( C );
@@ -522,7 +522,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         return ObjectConstructor( UC,
                        Pair( ## SkeletalFinSets code:
                              Sum( List( data, datum -> datum[1] ) ),
-                             ## FiniteStrictCoproductCocompletion code:
+                             ## FiniteStrictCoproductCompletion code:
                              Concatenation( List( data, datum -> datum[2] ) ) ) );
         
     end );
@@ -543,7 +543,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         
         map := [ sum .. sum + lk - 1 ];
         
-        ## FiniteStrictCoproductCocompletion code:
+        ## FiniteStrictCoproductCompletion code:
         C := UnderlyingCategory( UC );
         
         mor := List( data[k][2], objC -> IdentityMorphism( C, objC ) );
@@ -560,7 +560,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         ## SkeletalFinSets code:
         map := Concatenation( List( tau, t -> MorphismDatum( UC, t )[1] ) );
         
-        ## FiniteStrictCoproductCocompletion code:
+        ## FiniteStrictCoproductCompletion code:
         mor := Concatenation( List( tau, t -> MorphismDatum( UC, t )[2] ) );
         
         return MorphismConstructor( UC, S, Pair( map, mor ), test_object );
@@ -606,7 +606,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             
             return ObjectConstructor( UC,
                            Pair( Product( List( data, datum -> datum[1] ) ), ## SkeletalFinSets code
-                                 List( cartesian, L -> DirectProduct( C, L ) ) ) ); ## FiniteStrictCoproductCocompletion code
+                                 List( cartesian, L -> DirectProduct( C, L ) ) ) ); ## FiniteStrictCoproductCompletion code
             
         end );
         
@@ -634,7 +634,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             
             map := List( [ 0 .. p - 1 ], i -> RemInt( QuoInt( i, pk ), dk ) );
             
-            ## FiniteStrictCoproductCocompletion code:
+            ## FiniteStrictCoproductCompletion code:
             C := UnderlyingCategory( UC );
             
             LP := pair[2];
@@ -675,7 +675,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             
             map := List( m, i -> Sum( [ 0 .. l - 1 ], j -> tau_maps[1 + j][1 + i] * dd[1 + j] ) );
             
-            ## FiniteStrictCoproductCocompletion code:
+            ## FiniteStrictCoproductCompletion code:
             C := UnderlyingCategory( UC );
             
             cartesian := List( Cartesian( List( Reversed( data ), datum -> datum[2] ) ), Reversed );
@@ -723,7 +723,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             
             eq := Length( emb );
             
-            ## FiniteStrictCoproductCocompletion code:
+            ## FiniteStrictCoproductCompletion code:
             C := UnderlyingCategory( UC );
             
             mors := List( data, datum -> datum[2] );
@@ -771,7 +771,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             #% CAP_JIT_DROP_NEXT_STATEMENT
             Assert( 0, eq = Length( emb ) );
             
-            ## FiniteStrictCoproductCocompletion code:
+            ## FiniteStrictCoproductCompletion code:
             C := UnderlyingCategory( UC );
             
             mors := List( data, datum -> datum[2] );
@@ -833,7 +833,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             #% CAP_JIT_DROP_NEXT_STATEMENT
             Assert( 0, eq = Length( emb ) );
             
-            ## FiniteStrictCoproductCocompletion code:
+            ## FiniteStrictCoproductCompletion code:
             C := UnderlyingCategory( UC );
             
             mors := List( data, datum -> datum[2] );
@@ -877,7 +877,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                 
             else
                 
-                V := FiniteStrictCoproductCocompletion( V );
+                V := FiniteStrictCoproductCompletion( V );
                 
             fi;
             
@@ -1201,7 +1201,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             end );
             
         elif ( IsBound( IsCategoryOfSkeletalFinSets ) and ValueGlobal( "IsCategoryOfSkeletalFinSets" )( V ) ) or
-          IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( V ) then
+          IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( V ) then
             
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UC,
@@ -1272,7 +1272,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
 end );
 
 ##
-InstallMethod( EnrichmentSpecificFiniteStrictCoproductCocompletion,
+InstallMethod( EnrichmentSpecificFiniteStrictCoproductCompletion,
         "for a category and its range category of homomorphism structure",
         [ IsCapCategory, IsCategoryOfSkeletalFinSets ],
         
@@ -1282,14 +1282,14 @@ InstallMethod( EnrichmentSpecificFiniteStrictCoproductCocompletion,
         Error( "the second category `H` must coincide with the range category of homomorphism structure of the first category `C`\n" );
     fi;
     
-    return FiniteStrictCoproductCocompletion( C );
+    return FiniteStrictCoproductCompletion( C );
     
 end );
 
 ##
 InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
         "for a finite coproduct cocompletion category",
-        [ IsFiniteStrictCoproductCocompletion ],
+        [ IsFiniteStrictCoproductCompletion ],
         
   function( UC )
     local embedding_on_objects, embedding_on_morphisms;
@@ -1309,7 +1309,7 @@ end );
 ##
 InstallMethod( EmbeddingOfUnderlyingCategory,
         "for a finite coproduct cocompletion category",
-        [ IsFiniteStrictCoproductCocompletion ],
+        [ IsFiniteStrictCoproductCompletion ],
         
   function( UC )
     local data, Y;
@@ -1329,7 +1329,7 @@ end );
 ##
 InstallMethod( \.,
         "for a finite coproduct cocompletion category and a positive integer",
-        [ IsFiniteStrictCoproductCocompletion, IsPosInt ],
+        [ IsFiniteStrictCoproductCompletion, IsPosInt ],
         
   function( UC, string_as_int )
     local name, C, Y, Yc;
@@ -1342,12 +1342,12 @@ InstallMethod( \.,
     
     Yc := Y( C.(name) );
     
-    if IsObjectInFiniteStrictCoproductCocompletion( Yc ) then
+    if IsObjectInFiniteStrictCoproductCompletion( Yc ) then
 
         #TODO: is this true?
         #SetIsProjective( Yc, true );
         
-    elif IsMorphismInFiniteStrictCoproductCocompletion( Yc ) then
+    elif IsMorphismInFiniteStrictCoproductCompletion( Yc ) then
         
         if CanCompute( UC, "IsMonomorphism" ) then
             IsMonomorphism( Yc );
@@ -1378,9 +1378,9 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletionData,
+InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionData,
         "for a two categories and a pair of functions",
-        [ IsFiniteStrictCoproductCocompletion, IsList, IsCocartesianCategory ], ## IsStrictCocartesianCategory would exclude the lazy category
+        [ IsFiniteStrictCoproductCompletion, IsList, IsCocartesianCategory ], ## IsStrictCocartesianCategory would exclude the lazy category
         
   function( UC, pair_of_funcs, category_with_strict_coproducts )
     local functor_on_objects, functor_on_morphisms,
@@ -1453,7 +1453,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletion
 end );
 
 ##
-InstallMethod( ExtendFunctorToFiniteStrictCoproductCocompletion,
+InstallMethod( ExtendFunctorToFiniteStrictCoproductCompletion,
         "for a functor",
         [ IsCapFunctor ],
         
@@ -1463,14 +1463,14 @@ InstallMethod( ExtendFunctorToFiniteStrictCoproductCocompletion,
     C := SourceOfFunctor( F );
     D := RangeOfFunctor( F );
     
-    UC := FiniteStrictCoproductCocompletion( C );
+    UC := FiniteStrictCoproductCompletion( C );
     
-    data := ExtendFunctorToFiniteStrictCoproductCocompletionData(
+    data := ExtendFunctorToFiniteStrictCoproductCompletionData(
                     UC,
                     Pair( FunctorObjectOperation( F ), FunctorMorphismOperation( F ) ),
                     D );
     
-    UF := CapFunctor( Concatenation( "Extension to FiniteStrictCoproductCocompletion( Source( ", Name( F ), " ) )" ), UC, D );
+    UF := CapFunctor( Concatenation( "Extension to FiniteStrictCoproductCompletion( Source( ", Name( F ), " ) )" ), UC, D );
     
     AddObjectFunction( UF,
             data[2][1] );
@@ -1483,13 +1483,13 @@ InstallMethod( ExtendFunctorToFiniteStrictCoproductCocompletion,
 end );
 
 ##
-InstallMethod( ExtendEmbeddingToFiniteStrictCoproductCocompletion,
+InstallMethod( ExtendEmbeddingToFiniteStrictCoproductCompletion,
         "for a CAP category",
         [ IsCapCategory ],
         
   function( C )
     
-    return ExtendFunctorToFiniteStrictCoproductCocompletion( YonedaEmbedding( C ) );
+    return ExtendFunctorToFiniteStrictCoproductCompletion( YonedaEmbedding( C ) );
     
 end );
 
@@ -1497,7 +1497,7 @@ end );
 InstallOtherMethodForCompilerForCAP( TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure,
         "for a skeletal category of finite sets, a finite strict coproduct cocompletion, an object in the cocartesian category, and an object in the skeletal category of finite sets",
         [ IsCategoryOfSkeletalFinSets,
-          IsFiniteStrictCoproductCocompletion and HasRangeCategoryOfHomomorphismStructure,
+          IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
           IsCapCategoryObject, IsSkeletalFiniteSet ],
         
   function( H, UC, c, h )
@@ -1522,7 +1522,7 @@ end );
 InstallOtherMethodForCompilerForCAP( TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure,
         "for a skeletal category of finite sets, a finite strict coproduct cocompletion, three objects in the cocartesian category, and a morphism in the skeletal category of finite sets",
         [ IsCategoryOfSkeletalFinSets,
-          IsFiniteStrictCoproductCocompletion and HasRangeCategoryOfHomomorphismStructure,
+          IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
           IsCapCategoryObject, IsCapCategoryObject, IsSkeletalFiniteSetMap, IsCapCategoryObject ],
         
   function( H, UC, source, c, nu, range )
@@ -1556,7 +1556,7 @@ end );
 InstallOtherMethodForCompilerForCAP( TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure,
         "for a skeletal category of finite sets, a finite strict coproduct cocompletion, two objects and a morphism in the cocartesian category, and an object in the skeletal category of finite sets",
         [ IsCategoryOfSkeletalFinSets,
-          IsFiniteStrictCoproductCocompletion and HasRangeCategoryOfHomomorphismStructure,
+          IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
           IsCapCategoryObject, IsCapCategoryMorphism, IsSkeletalFiniteSet, IsCapCategoryObject ],
         
   function( H, UC, source, phi, h, range )
@@ -1588,7 +1588,7 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsObjectInFiniteStrictCoproductCocompletion ],
+        [ IsObjectInFiniteStrictCoproductCompletion ],
         
   function ( a )
     
@@ -1600,12 +1600,12 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsMorphismInFiniteStrictCoproductCocompletion ],
+        [ IsMorphismInFiniteStrictCoproductCompletion ],
         
   function ( phi )
     local sFinSets;
     
-    sFinSets := ValueGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory" );
+    sFinSets := ValueGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory" );
     
     Print( ObjectConstructor( sFinSets, ObjectDatum( Source( phi ) )[1] ) );
     Print( " ⱶ", MorphismDatum( phi )[1], "→ " );

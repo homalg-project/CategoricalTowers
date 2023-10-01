@@ -17,7 +17,7 @@ InstallMethod( FreeDistributiveCategoryWithStrictProductAndCoproducts,
     PC := FiniteStrictProductCompletion( C : FinalizeCategory := true );
     
     ## the finite strict coproduct completion of the finite strict product completion of the category C:
-    UPC := FiniteStrictCoproductCocompletion( PC : FinalizeCategory := true );
+    UPC := FiniteStrictCoproductCompletion( PC : FinalizeCategory := true );
     
     ## UPC is a model for the free distributive closure category with strict products and coproducts of the category C:
     DC :=
@@ -93,12 +93,12 @@ InstallMethod( \.,
     
     Yc := Y( C.(name) );
     
-    if IsObjectInFiniteStrictCoproductCocompletion( Yc ) then
+    if IsObjectInFiniteStrictCoproductCompletion( Yc ) then
 
         #TODO: is this true?
         #SetIsProjective( Yc, true );
         
-    elif IsMorphismInFiniteStrictCoproductCocompletion( Yc ) then
+    elif IsMorphismInFiniteStrictCoproductCompletion( Yc ) then
         
         if CanCompute( DC, "IsMonomorphism" ) then
             IsMonomorphism( Yc );
@@ -141,7 +141,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFreeDistributiveCategoryWithStric
     
     return ExtendFunctorToWrapperCategoryData(
                    DC,
-                   ExtendFunctorToFiniteStrictCoproductCocompletionData(
+                   ExtendFunctorToFiniteStrictCoproductCompletionData(
                            UPC,
                            ExtendFunctorToFiniteStrictProductCompletionData(
                                    PC,

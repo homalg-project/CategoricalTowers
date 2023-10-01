@@ -14,7 +14,7 @@
 
 #! @Description
 #!  The &GAP; category of a finite coproduct cocompletion category.
-DeclareCategory( "IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory",
+DeclareCategory( "IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory",
         IsCapCategory );
 
 #! @Description
@@ -77,11 +77,11 @@ CapJitAddTypeSignature( "AsList", [ IsMorphismInSkeletalFinSets ], CapJitDataTyp
 #!  Construct a category of skeletal finite sets
 #!  as the finite coproduct cocompletion of the terminal category.
 #! @Returns a &CAP; category
-DeclareGlobalFunction( "CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory" );
+DeclareGlobalFunction( "CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory" );
 
 #! @Description
 #!  The default instance of the category of skeletal finite sets.
 #!  It is automatically created while loading this package.
 # DeclareGlobalVariable( "SkeletalFinSetsAsFreeElementaryToposOfInitialCategory" );
 
-#KeyDependentOperation( "FinSet", IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory, IsInt, ReturnTrue );
+#KeyDependentOperation( "FinSet", IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory, IsInt, ReturnTrue );

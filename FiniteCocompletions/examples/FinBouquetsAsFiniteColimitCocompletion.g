@@ -16,7 +16,7 @@ source_presheaf := ModelingObject( Chat,
 #! <An object in
 #!  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>
 source_coeq_pair := CoYonedaLemmaOnObjects( source_presheaf );
-#! <An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCocompletion(
+#! <An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
 IsWellDefined( source_coeq_pair );
 #! true
@@ -24,13 +24,13 @@ Display( source_coeq_pair );
 #! Image of <(V)>:
 #! [ 6, [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)> ] ]
 #! 
-#! An object in FiniteStrictCoproductCocompletion( FreeCategory(
+#! An object in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Image of <(A)>:
 #! [ 3, [ <(P)>, <(P)>, <(P)> ] ]
 #! 
-#! An object in FiniteStrictCoproductCocompletion( FreeCategory(
+#! An object in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Image of (V)-[(s)]->(A):
@@ -38,7 +38,7 @@ Display( source_coeq_pair );
 #! 
 #! [ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P) ]
 #! 
-#! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
+#! A morphism in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Image of (V)-[(t)]->(A):
@@ -46,14 +46,14 @@ Display( source_coeq_pair );
 #! 
 #! [ (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L) ]
 #! 
-#! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
+#! A morphism in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
-#! FiniteStrictCoproductCocompletion(
+#! FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 #! 
-#! An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCocompletion(
+#! An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 target_bouquet := CreateBouquet( 2, [ 0, 0, 0, 0, 1 ] );
 #! <An object in FinBouquets>
@@ -64,19 +64,19 @@ target_presheaf := ModelingObject( Chat,
 #! <An object in
 #!  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>
 target_coeq_pair := CoYonedaLemmaOnObjects( target_presheaf );
-#! <An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCocompletion(
+#! <An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
 Display( target_coeq_pair );
 #! Image of <(V)>:
 #! [ 7, [ <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)>, <(L)> ] ]
 #! 
-#! An object in FiniteStrictCoproductCocompletion( FreeCategory(
+#! An object in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Image of <(A)>:
 #! [ 5, [ <(P)>, <(P)>, <(P)>, <(P)>, <(P)> ] ]
 #! 
-#! An object in FiniteStrictCoproductCocompletion( FreeCategory(
+#! An object in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Image of (V)-[(s)]->(A):
@@ -84,7 +84,7 @@ Display( target_coeq_pair );
 #! 
 #! [ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P) ]
 #! 
-#! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
+#! A morphism in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Image of (V)-[(t)]->(A):
@@ -92,14 +92,14 @@ Display( target_coeq_pair );
 #! 
 #! [ (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L) ]
 #! 
-#! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
+#! A morphism in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
-#! FiniteStrictCoproductCocompletion(
+#! FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 #! 
-#! An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCocompletion(
+#! An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 bouquet_morphism := CreateBouquetMorphism(
                             source_bouquet,
@@ -113,7 +113,7 @@ presheaf_morphism := ModelingMorphism( Chat,
 #! <A morphism in
 #!  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>
 coeq_pair_morphism := CoYonedaLemmaOnMorphisms( presheaf_morphism );
-#! <A morphism in PairOfParallelArrowsCategory( FiniteStrictCoproductCocompletion(
+#! <A morphism in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
 IsWellDefined( coeq_pair_morphism );
 #! true
@@ -124,7 +124,7 @@ Display( coeq_pair_morphism );
 #! [ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P),
 #!   (L)-[(L)]->(L), (L)-[(L)]->(L), (L)-[(L)]->(L) ]
 #! 
-#! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
+#! A morphism in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Image of <(A)>:
@@ -132,14 +132,14 @@ Display( coeq_pair_morphism );
 #! 
 #! [ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P) ]
 #! 
-#! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
+#! A morphism in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
-#! FiniteStrictCoproductCocompletion(
+#! FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 #! 
-#! A morphism in PairOfParallelArrowsCategory( FiniteStrictCoproductCocompletion(
+#! A morphism in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 #! @EndExample
 #! @EndChunk

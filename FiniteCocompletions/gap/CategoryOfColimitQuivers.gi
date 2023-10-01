@@ -84,7 +84,7 @@ InstallMethod( CategoryOfColimitQuivers,
     morphism_datum := { ColimitQuivers, m } -> DefiningPairOfColimitQuiverMorphism( m );
     
     ## building the categorical tower:
-    UC := FiniteStrictCoproductCocompletion( C : FinalizeCategory := true );
+    UC := FiniteStrictCoproductCompletion( C : FinalizeCategory := true );
     
     ParallelPairsUC := PairOfParallelArrowsCategory( UC : FinalizeCategory := true );
     
