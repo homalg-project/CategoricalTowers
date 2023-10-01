@@ -1,4 +1,4 @@
-#! @BeginChunk FinReflexiveQuiversAsFiniteColimitCocompletion
+#! @BeginChunk FinReflexiveQuiversAsFiniteColimitCompletion
 
 #! @Example
 LoadPackage( "FunctorCategories", ">= 2023.08-20" );

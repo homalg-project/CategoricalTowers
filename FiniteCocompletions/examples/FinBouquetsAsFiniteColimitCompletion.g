@@ -1,4 +1,4 @@
-#! @BeginChunk FinBouquetsAsFiniteColimitCocompletion
+#! @BeginChunk FinBouquetsAsFiniteColimitCompletion
 
 #! @Example
 LoadPackage( "FunctorCategories", ">= 2023.08-20" );
