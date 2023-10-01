@@ -5,7 +5,7 @@
 #
 
 ##
-InstallMethod( EnrichmentSpecificFiniteStrictCoproductCocompletion,
+InstallMethod( EnrichmentSpecificFiniteStrictCoproductCompletion,
         "for a category",
         [ IsCapCategory ],
         
@@ -15,7 +15,7 @@ InstallMethod( EnrichmentSpecificFiniteStrictCoproductCocompletion,
         Error( "the category `C` has no RangeCategoryOfHomomorphismStructure\n" );
     fi;
     
-    return EnrichmentSpecificFiniteStrictCoproductCocompletion( C, RangeCategoryOfHomomorphismStructure( C ) );
+    return EnrichmentSpecificFiniteStrictCoproductCompletion( C, RangeCategoryOfHomomorphismStructure( C ) );
     
 end );
 
@@ -27,7 +27,7 @@ InstallMethod( TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure,
   function( c, h )
     local UC;
     
-    UC := EnrichmentSpecificFiniteStrictCoproductCocompletion( CapCategory( c ) );
+    UC := EnrichmentSpecificFiniteStrictCoproductCompletion( CapCategory( c ) );
     
     return TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( RangeCategoryOfHomomorphismStructure( UC ), UC, c, h );
     
@@ -41,7 +41,7 @@ InstallMethod( TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure
   function( c, nu )
     local UC, H;
     
-    UC := EnrichmentSpecificFiniteStrictCoproductCocompletion( CapCategory( c ) );
+    UC := EnrichmentSpecificFiniteStrictCoproductCompletion( CapCategory( c ) );
     H := RangeCategoryOfHomomorphismStructure( UC );
     
     return TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure( H, UC,
@@ -60,7 +60,7 @@ InstallMethod( TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure
   function( phi, h )
     local UC, H;
     
-    UC := EnrichmentSpecificFiniteStrictCoproductCocompletion( CapCategory( phi ) );
+    UC := EnrichmentSpecificFiniteStrictCoproductCompletion( CapCategory( phi ) );
     H := RangeCategoryOfHomomorphismStructure( UC );
     
     return TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure( H, UC,

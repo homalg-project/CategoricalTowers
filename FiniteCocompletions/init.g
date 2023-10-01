@@ -5,7 +5,7 @@
 #
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/FiniteStrictCoproductCocompletion.gd");
+ReadPackage( "FiniteCocompletions", "gap/FiniteStrictCoproductCompletion.gd");
 
 ##
 ReadPackage( "FiniteCocompletions", "gap/FiniteStrictProductCompletion.gd");

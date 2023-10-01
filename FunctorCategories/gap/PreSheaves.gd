@@ -137,22 +137,22 @@ DeclareAttribute( "SievesOfPathsToTruth", IsMorphismInPreSheafCategory );
 
 #! @Description
 #!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
-#!  the "sub"category <C>EnrichmentSpecificFiniteStrictCoproductCocompletion</C>( $C$ ).
+#!  the "sub"category <C>EnrichmentSpecificFiniteStrictCoproductCompletion</C>( $C$ ).
 #! @Arguments PSh
 #! @Returns a &CAP; category
-DeclareAttribute( "AssociatedFiniteStrictCoproductCocompletionOfSourceCategory",
+DeclareAttribute( "AssociatedFiniteStrictCoproductCompletionOfSourceCategory",
         IsPreSheafCategory );
 
-CapJitAddTypeSignature( "AssociatedFiniteStrictCoproductCocompletionOfSourceCategory", [ IsPreSheafCategory ],
+CapJitAddTypeSignature( "AssociatedFiniteStrictCoproductCompletionOfSourceCategory", [ IsPreSheafCategory ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( EnrichmentSpecificFiniteStrictCoproductCocompletion( Source( input_types[1].category ) ) );
+    return CapJitDataTypeOfCategory( EnrichmentSpecificFiniteStrictCoproductCompletion( Source( input_types[1].category ) ) );
     
 end );
 
 #! @Description
 #!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
-#!  the ambient category <C>PairOfParallelArrowsCategory</C>( <C>AssociatedFiniteStrictCoproductCocompletionOfSourceCategory</C>( <A>PSh</A> ) ).
+#!  the ambient category <C>PairOfParallelArrowsCategory</C>( <C>AssociatedFiniteStrictCoproductCompletionOfSourceCategory</C>( <A>PSh</A> ) ).
 #! @Arguments PSh
 #! @Returns a &CAP; category
 DeclareAttribute( "AssociatedCategoryOfCoequalizerPairsOfSourceCategory",
@@ -161,7 +161,7 @@ DeclareAttribute( "AssociatedCategoryOfCoequalizerPairsOfSourceCategory",
 CapJitAddTypeSignature( "AssociatedCategoryOfCoequalizerPairsOfSourceCategory", [ IsPreSheafCategory ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( PairOfParallelArrowsCategory( AssociatedFiniteStrictCoproductCocompletionOfSourceCategory( input_types[1].category ) ) );
+    return CapJitDataTypeOfCategory( PairOfParallelArrowsCategory( AssociatedFiniteStrictCoproductCompletionOfSourceCategory( input_types[1].category ) ) );
     
 end );
 
@@ -321,7 +321,7 @@ DeclareAttribute( "CoYonedaLemmaCoequalizerPair",
         IsObjectInPreSheafCategory );
 
 #! @Arguments PSh
-DeclareAttribute( "EmbeddingFunctorOfFiniteStrictCoproductCocompletionIntoPreSheavesData",
+DeclareAttribute( "EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheavesData",
         IsPreSheafCategory );
 
 #! @Arguments PSh, objB, morC, F
@@ -349,12 +349,12 @@ DeclareAttribute( "CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma",
         IsObjectInPreSheafCategory );
 
 #! @Arguments PSh, presheaf, obj
-DeclareOperation( "ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion",
-        [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInFiniteStrictCoproductCocompletion ] );
+DeclareOperation( "ApplyPreSheafToObjectInFiniteStrictCoproductCompletion",
+        [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInFiniteStrictCoproductCompletion ] );
 
 #! @Arguments PSh, presheaf, mor
-DeclareOperation( "ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion",
-        [ IsCapCategory, IsObjectInPreSheafCategory, IsMorphismInFiniteStrictCoproductCocompletion ] );
+DeclareOperation( "ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion",
+        [ IsCapCategory, IsObjectInPreSheafCategory, IsMorphismInFiniteStrictCoproductCompletion ] );
 
 #! @Description
 #!  Construct the category of categories internal to the monoidal or cartesian category <A>C</A>.

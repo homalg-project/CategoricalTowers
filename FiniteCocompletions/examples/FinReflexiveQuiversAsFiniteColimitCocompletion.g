@@ -32,21 +32,21 @@ Display( PSh.C1 );
 #! "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],
 #! SkeletalFinSets ) given by the above data
 coeq_pair := CoYonedaLemmaOnObjects( PSh.C1 );
-#! <An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCocompletion(
+#! <An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
 #!  FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #!  / [ s*id = C0, t*id = C0 ] ) )>
 Display( coeq_pair );
 #! Image of <(V)>:
 #! [ 5, [ <(C0)>, <(C0)>, <(C1)>, <(C1)>, <(C1)> ] ]
 #! 
-#! An object in FiniteStrictCoproductCocompletion( FreeCategory(
+#! An object in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ] ) given by the above data
 #! 
 #! Image of <(A)>:
 #! [ 8, [ <(C1)>, <(C1)>, <(C0)>, <(C0)>, <(C0)>, <(C0)>, <(C0)>, <(C0)> ] ]
 #! 
-#! An object in FiniteStrictCoproductCocompletion( FreeCategory(
+#! An object in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ] ) given by the above data
 #! 
@@ -56,7 +56,7 @@ Display( coeq_pair );
 #! [ (C1)-[(C1)]->(C1), (C1)-[(C1)]->(C1), (C0)-[(C0)]->(C0), (C0)-[(C0)]->(C0),
 #!   (C0)-[(C0)]->(C0), (C0)-[(C0)]->(C0), (C0)-[(C0)]->(C0), (C0)-[(C0)]->(C0) ]
 #! 
-#! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
+#! A morphism in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ] ) given by the above data
 #! 
@@ -66,16 +66,16 @@ Display( coeq_pair );
 #! [ (C1)-[(id)]->(C0), (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(s)]->(C1),
 #!   (C0)-[(s)]->(C1), (C0)-[(t)]->(C1), (C0)-[(t)]->(C1), (C0)-[(t)]->(C1) ]
 #! 
-#! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
+#! A morphism in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ] ) given by the above data
 #! 
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
-#! FiniteStrictCoproductCocompletion( FreeCategory(
+#! FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ] ) ) given by the above data
 #! 
-#! An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCocompletion(
+#! An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ] ) ) given by the above data
 IsWellDefined( coeq_pair );

@@ -15,10 +15,10 @@ InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerDataUsingOptimizedC
     
     D := Range( PSh );
     
-    V := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, F_data[1] );
+    V := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, F_data[1] );
     
-    s := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, G, F_data[2][1] );
-    t := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, G, F_data[2][2] );
+    s := ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion( PSh, G, F_data[2][1] );
+    t := ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion( PSh, G, F_data[2][2] );
     
     return Pair( V, [ s, t ] );
     
@@ -35,10 +35,10 @@ InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerDataUsingCoYonedaLe
     
     D := Range( PSh );
     
-    V := ApplyPreSheafToObjectInFiniteStrictCoproductCocompletion( PSh, G, F_data[1] );
+    V := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, F_data[1] );
     
-    s := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, G, F_data[2][1] );
-    t := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, G, F_data[2][2] );
+    s := ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion( PSh, G, F_data[2][1] );
+    t := ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion( PSh, G, F_data[2][2] );
     
     return Pair( V, [ s, t ] );
     
@@ -73,7 +73,7 @@ InstallMethodForCompilerForCAP( ExternalHomOnMorphismsEqualizerFunctorialDataUsi
     
     S := Source( rho );
     
-    eta_V_S := ApplyPreSheafToMorphismInFiniteStrictCoproductCocompletion( PSh, S, eta_coequalizer_pair_as_presheaf_morphism_datum );
+    eta_V_S := ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion( PSh, S, eta_coequalizer_pair_as_presheaf_morphism_datum );
     
     F_data := CoequalizerDataOfPreSheafUsingCoYonedaLemma( PSh, F );
     

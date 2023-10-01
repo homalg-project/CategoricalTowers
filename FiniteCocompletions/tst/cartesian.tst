@@ -12,8 +12,8 @@ gap> C := SkeletalFinSets;
 SkeletalFinSets
 gap> L := LazyCategory( C );
 LazyCategory( SkeletalFinSets )
-gap> UL := FiniteStrictCoproductCocompletion( L );
-FiniteStrictCoproductCocompletion( LazyCategory( SkeletalFinSets ) )
+gap> UL := FiniteStrictCoproductCompletion( L );
+FiniteStrictCoproductCompletion( LazyCategory( SkeletalFinSets ) )
 
 #
 gap> m := 3;
@@ -23,13 +23,13 @@ gap> n := 4;
 
 #
 gap> o1 := Pair( m, List( [ 0 .. m - 1 ], i -> i / C / L ) ) / UL;
-<An object in FiniteStrictCoproductCocompletion( LazyCategory( SkeletalFinSets ) )>
+<An object in FiniteStrictCoproductCompletion( LazyCategory( SkeletalFinSets ) )>
 gap> o2 := Pair( n, List( [ 0 .. n - 1 ], i -> i / C / L ) ) / UL;
-<An object in FiniteStrictCoproductCocompletion( LazyCategory( SkeletalFinSets ) )>
+<An object in FiniteStrictCoproductCompletion( LazyCategory( SkeletalFinSets ) )>
 
 #
 gap> o12 := DirectProduct( o1, o2 );
-<An object in FiniteStrictCoproductCocompletion( LazyCategory( SkeletalFinSets ) )>
+<An object in FiniteStrictCoproductCompletion( LazyCategory( SkeletalFinSets ) )>
 
 #
 gap> Display( List( ObjectDatum( o12 )[2], d -> List( GenesisOfCellArguments( d ){[ 2 ]}, a -> List( EvaluatedCell( a ), Length ) )[1] ) );

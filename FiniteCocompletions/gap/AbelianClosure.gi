@@ -100,12 +100,12 @@ InstallMethod( \.,
     
     Yc := Y( C.(name) );
     
-    if IsObjectInFiniteStrictCoproductCocompletion( Yc ) then
+    if IsObjectInFiniteStrictCoproductCompletion( Yc ) then
 
         #TODO: is this true?
         #SetIsProjective( Yc, true );
         
-    elif IsMorphismInFiniteStrictCoproductCocompletion( Yc ) then
+    elif IsMorphismInFiniteStrictCoproductCompletion( Yc ) then
         
         if CanCompute( AC, "IsMonomorphism" ) then
             IsMonomorphism( Yc );
@@ -153,7 +153,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToAbelianClosureWithStrictDirectSum
                            FKSC,
                            ExtendFunctorToCoFreydCategoryData(
                                    KSC,
-                                   ExtendFunctorToFiniteStrictCoproductCocompletionData(
+                                   ExtendFunctorToFiniteStrictCoproductCompletionData(
                                            SC,
                                            pair_of_funcs,
                                            abelian_category_with_strict_direct_sums )[2],

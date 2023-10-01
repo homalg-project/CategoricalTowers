@@ -53,19 +53,19 @@ F_as_presheaf := ModelingObject( Chat, ModelingObject( FinBouquets, F ) );
 #! <An object in PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ),
 #!  SkeletalFinSets )>
 F_as_coequalizer_pair := CoYonedaLemmaOnObjects( F_as_presheaf );
-#! <An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCocompletion(
+#! <An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
 Display( F_as_coequalizer_pair );
 #! Image of <(V)>:
 #! [ 7, [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)> ] ]
 #! 
-#! An object in FiniteStrictCoproductCocompletion( FreeCategory(
+#! An object in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Image of <(A)>:
 #! [ 4, [ <(P)>, <(P)>, <(P)>, <(P)> ] ]
 #! 
-#! An object in FiniteStrictCoproductCocompletion( FreeCategory(
+#! An object in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Image of (V)-[(s)]->(A):
@@ -73,7 +73,7 @@ Display( F_as_coequalizer_pair );
 #! 
 #! [ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P) ]
 #! 
-#! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
+#! A morphism in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Image of (V)-[(t)]->(A):
@@ -81,14 +81,14 @@ Display( F_as_coequalizer_pair );
 #! 
 #! [ (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L) ]
 #! 
-#! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
+#! A morphism in FiniteStrictCoproductCompletion( FreeCategory(
 #! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
-#! FiniteStrictCoproductCocompletion(
+#! FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 #! 
-#! An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCocompletion(
+#! An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 F_as_colimit_quiver := ReinterpretationOfObject( Ccqv, F_as_coequalizer_pair );
 #! <An object in CategoryOfColimitQuivers(

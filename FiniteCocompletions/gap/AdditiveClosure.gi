@@ -5,7 +5,7 @@
 #
 
 ##
-InstallMethod( EnrichmentSpecificFiniteStrictCoproductCocompletion,
+InstallMethod( EnrichmentSpecificFiniteStrictCoproductCompletion,
         "for a category and its range category of homomorphism structure",
         [ IsCapCategory, IsCategoryOfRows ],
         
@@ -60,7 +60,7 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCocompletionData,
+InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionData,
         "for a two categories and a pair of functions",
         [ IsAdditiveClosureCategory, IsList, IsAdditiveCategory ],
         
@@ -141,7 +141,7 @@ InstallMethod( ExtendFunctorToStrictAdditiveClosure,
     
     SC := AdditiveClosure( C );
     
-    data := ExtendFunctorToFiniteStrictCoproductCocompletionData(
+    data := ExtendFunctorToFiniteStrictCoproductCompletionData(
                     SC,
                     Pair( FunctorObjectOperation( F ), FunctorMorphismOperation( F ) ),
                     D );

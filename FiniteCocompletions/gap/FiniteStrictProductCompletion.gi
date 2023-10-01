@@ -65,7 +65,7 @@ InstallMethod( FiniteStrictProductCompletion,
     
     opC := Opposite( C : only_primitive_operations := true, FinalizeCategory := true );
     
-    UopC := FiniteStrictCoproductCocompletion( opC : FinalizeCategory := true );
+    UopC := FiniteStrictCoproductCompletion( opC : FinalizeCategory := true );
     
     opUopC := Opposite( UopC : only_primitive_operations := true, FinalizeCategory := false );
     
@@ -427,7 +427,7 @@ InstallMethod( Display,
   function ( phi )
     local sFinSets;
     
-    sFinSets := ValueGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory" );
+    sFinSets := ValueGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory" );
     
     Print( ObjectConstructor( sFinSets, ObjectDatum( Range( phi ) )[1] ) );
     Print( " ⱶ", MorphismDatum( phi )[1], "→ " );

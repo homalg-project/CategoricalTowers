@@ -1,14 +1,14 @@
-#! @Chunk TerminalCategory_as_FiniteStrictCoproductCocompletion
+#! @Chunk TerminalCategory_as_FiniteStrictCoproductCompletion
 
 #! @Example
 LoadPackage( "FiniteCocompletions" );
 #! true
 LoadPackage( "Toposes", ">= ", false );
 #! true
-T := FiniteStrictCoproductCocompletion( InitialCategory( ) );
-#! FiniteStrictCoproductCocompletion( InitialCategory( ) )
+T := FiniteStrictCoproductCompletion( InitialCategory( ) );
+#! FiniteStrictCoproductCompletion( InitialCategory( ) )
 Display( T );
-#! A CAP category with name FiniteStrictCoproductCocompletion( InitialCategory( ) ):
+#! A CAP category with name FiniteStrictCoproductCompletion( InitialCategory( ) ):
 #! 
 #! 93 primitive operations were used to derive 541 operations for this category
 #! which algorithmically
@@ -34,25 +34,25 @@ Display( T );
 #! * IsStrictMonoidalCategory
 #! * IsTerminalCategory
 i := InitialObject( T );
-#! <A zero object in FiniteStrictCoproductCocompletion( InitialCategory( ) )>
+#! <A zero object in FiniteStrictCoproductCompletion( InitialCategory( ) )>
 t := TerminalObject( T );
-#! <A zero object in FiniteStrictCoproductCocompletion( InitialCategory( ) )>
+#! <A zero object in FiniteStrictCoproductCompletion( InitialCategory( ) )>
 z := ZeroObject( T );
-#! <A zero object in FiniteStrictCoproductCocompletion( InitialCategory( ) )>
+#! <A zero object in FiniteStrictCoproductCompletion( InitialCategory( ) )>
 Display( i );
 #! [ 0, [  ] ]
 #! 
-#! An object in FiniteStrictCoproductCocompletion( InitialCategory( ) )
+#! An object in FiniteStrictCoproductCompletion( InitialCategory( ) )
 #! given by the above data
 Display( t );
 #! [ 0, [  ] ]
 #! 
-#! An object in FiniteStrictCoproductCocompletion( InitialCategory( ) )
+#! An object in FiniteStrictCoproductCompletion( InitialCategory( ) )
 #! given by the above data
 Display( z );
 #! [ 0, [  ] ]
 #! 
-#! An object in FiniteStrictCoproductCocompletion( InitialCategory( ) )
+#! An object in FiniteStrictCoproductCompletion( InitialCategory( ) )
 #! given by the above data
 IsEqualForObjects( i, z );
 #! true
@@ -66,9 +66,9 @@ IsWellDefined( z );
 #! true
 id_z := IdentityMorphism( z );
 #! <A zero, identity morphism in
-#!  FiniteStrictCoproductCocompletion( InitialCategory( ) )>
+#!  FiniteStrictCoproductCompletion( InitialCategory( ) )>
 fn_z := ZeroObjectFunctorial( T );
-#! <A zero, isomorphism in FiniteStrictCoproductCocompletion( InitialCategory( ) )>
+#! <A zero, isomorphism in FiniteStrictCoproductCompletion( InitialCategory( ) )>
 IsWellDefined( fn_z );
 #! true
 IsEqualForMorphisms( id_z, fn_z );

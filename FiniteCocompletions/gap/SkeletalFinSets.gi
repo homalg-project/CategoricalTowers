@@ -16,7 +16,7 @@ InstallMethod( AsList,
 end );
 
 ##
-InstallGlobalFunction( CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory,
+InstallGlobalFunction( CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory,
   function( )
     local object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
@@ -139,8 +139,8 @@ InstallGlobalFunction( CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocomplet
     ##
     sFinSets :=
       ReinterpretationOfCategory( UT,
-              rec( name := "SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory",
-                   category_filter := IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory,
+              rec( name := "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory",
+                   category_filter := IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory,
                    category_object_filter := IsObjectInSkeletalFinSets,
                    category_morphism_filter := IsMorphismInSkeletalFinSets,
                    object_datum_type := object_datum_type,
@@ -165,7 +165,7 @@ InstallGlobalFunction( CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocomplet
     
     if ValueOption( "no_precompiled_code" ) <> true then
         
-        ADD_FUNCTIONS_FOR_CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled( sFinSets );
+        ADD_FUNCTIONS_FOR_CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategoryPrecompiled( sFinSets );
         
     fi;
     
@@ -269,5 +269,5 @@ InstallMethod( Display,
 end );
 
 ##
-BindGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory",
-        CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( ) );
+BindGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory",
+        CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( ) );

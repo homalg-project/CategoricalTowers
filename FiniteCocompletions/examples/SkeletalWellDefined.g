@@ -4,11 +4,11 @@
 LoadPackage( "FiniteCocompletions" );
 #! true
 sFinSets :=
-  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;
-#! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
+  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;
+#! SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
 Display( sFinSets );
 #! A CAP category with name
-#! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory:
+#! SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory:
 #! 
 #! 31 primitive operations were used to derive 126 operations for this category
 #! which algorithmically
