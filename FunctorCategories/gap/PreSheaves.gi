@@ -712,6 +712,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     "IsCocartesianCategory",
                     "IsCartesianClosedCategory",
                     "IsCocartesianCoclosedCategory",
+                    "IsDistributiveCategory",
+                    "IsCodistributiveCategory",
+                    "IsFiniteCompleteCategory",
+                    "IsFiniteCocompleteCategory",
                     "IsElementaryTopos",
                     ];
     
