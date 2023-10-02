@@ -74,7 +74,7 @@ DeclareAttribute( "PairOfIntAndList",
 
 CapJitAddTypeSignature( "PairOfIntAndList", [ IsObjectInFiniteStrictCoproductCompletion ],
  function ( input_types )
-
+    
     Assert( 0, IsFiniteStrictCoproductCompletion( input_types[1].category ) );
     
     return CapJitDataTypeOfNTupleOf( 2,
@@ -89,7 +89,7 @@ DeclareAttribute( "PairOfLists",
 
 CapJitAddTypeSignature( "PairOfLists", [ IsMorphismInFiniteStrictCoproductCompletion ],
  function ( input_types )
-
+    
     Assert( 0, IsFiniteStrictCoproductCompletion( input_types[1].category ) );
     
     return CapJitDataTypeOfNTupleOf( 2,
