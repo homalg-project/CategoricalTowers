@@ -239,23 +239,24 @@ InstallMethod( QuotientCategory,
         supports_empty_limits := false;
     fi;
     
-    quotient_cat := CategoryConstructor(
-                        rec( name := name,
-                             category_filter := category_filter,
-                             category_object_filter := category_object_filter,
-                             category_morphism_filter := category_morphism_filter,
-                             #commutative_ring_of_linear_category := commutative_ring,
-                             properties := properties,
-                             object_constructor := object_constructor,
-                             object_datum := object_datum,
-                             morphism_constructor := morphism_constructor,
-                             morphism_datum := morphism_datum,
-                             underlying_category_getter_string := "UnderlyingCategory",
-                             list_of_operations_to_install := list_of_operations_to_install,
-                             supports_empty_limits := supports_empty_limits,
-                             create_func_bool := create_func_bool,
-                             create_func_object := create_func_object,
-                             create_func_morphism := create_func_morphism ) );
+    quotient_cat :=
+      CategoryConstructor(
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
+                   #commutative_ring_of_linear_category := commutative_ring,
+                   properties := properties,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
+                   underlying_category_getter_string := "UnderlyingCategory",
+                   list_of_operations_to_install := list_of_operations_to_install,
+                   supports_empty_limits := supports_empty_limits,
+                   create_func_bool := create_func_bool,
+                   create_func_object := create_func_object,
+                   create_func_morphism := create_func_morphism ) );
     
     SetUnderlyingCategory( quotient_cat, cat );
     SetQuotientCategoryCongruenceFunction( quotient_cat, record.congruence_function );
