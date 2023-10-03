@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# QuotientCategories: Quotient categories of CAP categories by two-sided ideals
+# QuotientCategories: Quotient categories
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -9,8 +9,8 @@
 SetPackageInfo( rec(
 
 PackageName := "QuotientCategories",
-Subtitle := "Quotient categories of CAP categories by two-sided ideals",
-Version := "2023.09-01",
+Subtitle := "Quotient categories",
+Version := "2023.09-02",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -65,7 +65,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Quotient categories of CAP categories by two-sided ideals",
+  LongTitle := "Quotient categories",
 ),
 
 Dependencies := rec(

@@ -1,14 +1,12 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# QuotientCategories: Quotient categories of CAP categories by two-sided ideals
+# QuotientCategories: Quotient categories
 #
 # Implementations
 #
 
 ##
 InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY,
-  [
-   "AdditionForMorphisms",
-   "AdditiveInverseForMorphisms",
+  [# IsCapCategory
    "IdentityMorphism",
    "IsEndomorphism",
    "IsEqualForMorphisms",
@@ -17,16 +15,33 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY,
    "IsEqualForCacheForObjects",
    "IsEqualToIdentityMorphism",
    "IsEqualToZeroMorphism",
-   #"MultiplyWithElementOfCommutativeRingForMorphisms",
    "PostCompose",
    "PreCompose",
-   "SubtractionForMorphisms",
-   "ZeroMorphism",
    "IsWellDefinedForObjects",
    "IsWellDefinedForMorphisms",
    
-   # Additive operations
+   # IsAbCategory
+   "AdditionForMorphisms",
+   "AdditiveInverseForMorphisms",
+   "SubtractionForMorphisms",
+   "ZeroMorphism",
+   #"MultiplyWithElementOfCommutativeRingForMorphisms",
    
+   # IsCartesianCategory
+   "DirectProduct",
+   "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
+   "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
+   "TerminalObject",
+   "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+   
+   # IsCocartesianCategory
+   "Coproduct",
+   "InjectionOfCofactorOfCoproductWithGivenCoproduct",
+   "UniversalMorphismFromCoproductWithGivenCoproduct",
+   "InitialObject",
+   "UniversalMorphismFromInitialObjectWithGivenInitialObject",
+   
+   # IsAdditiveCategory
    "ComponentOfMorphismFromDirectSum",
    "ComponentOfMorphismIntoDirectSum",
    "DirectSum",
@@ -57,8 +72,8 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY,
 
 ##
 InstallMethod( QuotientCategory,
-          [ IsRecord ],
-  
+        [ IsRecord ],
+        
   function( record )
     local congruence_function, cat, name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
@@ -67,12 +82,14 @@ InstallMethod( QuotientCategory,
           properties, supports_empty_limits, quotient_cat;
     
     if not IsBound( record.congruence_function ) then
-      Error( "the record passed to the category constructor 'QuotientCategory' is missing a component 'congruence_function'!\n" );
+        Error( "the record passed to the category constructor 'QuotientCategory' is missing a component 'congruence_function'!\n" );
     fi;
     
     if not IsBound( record.nr_arguments_of_congruence_function ) then
-       Error( "the record passed to the category constructor 'QuotientCategory' is missing a component 'nr_arguments_of_congruence_function'!\n" );
+        Error( "the record passed to the category constructor 'QuotientCategory' is missing a component 'nr_arguments_of_congruence_function'!\n" );
     fi;
+    
+    record := ShallowCopy( record );
     
     if record.nr_arguments_of_congruence_function = 1 then
       
@@ -91,7 +108,7 @@ InstallMethod( QuotientCategory,
     if IsBound( record.name ) then
       name := record.name;
     else
-      name := Concatenation( "Quotient category( ", Name( cat ), " ) defined by the congruence function ", NameFunction( record.congruence_function ) );
+      name := Concatenation( "QuotientCategory( ", Name( cat ), " ) defined by the congruence function ", NameFunction( record.congruence_function ) );
     fi;
     
     if IsBound( record.category_filter ) then
@@ -128,12 +145,18 @@ InstallMethod( QuotientCategory,
         commutative_ring := fail;
     fi;
     
-    properties := [ "IsAbCategory",
+    properties := [ "IsCocartesianCategory",
+                    "IsCartesianCategory",
+                    "IsAbCategory",
                     "IsLinearCategoryOverCommutativeRing",
                     "IsAdditiveCategory",
                     ];
     
     properties := Intersection( ListKnownCategoricalProperties( cat ), properties );
+    
+    if IsBound( record.extra_properties ) then
+        properties := SortedList( Concatenation( properties, record.extra_properties ) );
+    fi;
     
     create_func_bool :=
           function ( name, quotient_cat )
@@ -232,23 +255,24 @@ InstallMethod( QuotientCategory,
         supports_empty_limits := false;
     fi;
     
-    quotient_cat := CategoryConstructor(
-                        rec( name := name,
-                             category_filter := category_filter,
-                             category_object_filter := category_object_filter,
-                             category_morphism_filter := category_morphism_filter,
-                             #commutative_ring_of_linear_category := commutative_ring,
-                             properties := properties,
-                             object_constructor := object_constructor,
-                             object_datum := object_datum,
-                             morphism_constructor := morphism_constructor,
-                             morphism_datum := morphism_datum,
-                             underlying_category_getter_string := "UnderlyingCategory",
-                             list_of_operations_to_install := list_of_operations_to_install,
-                             supports_empty_limits := supports_empty_limits,
-                             create_func_bool := create_func_bool,
-                             create_func_object := create_func_object,
-                             create_func_morphism := create_func_morphism ) );
+    quotient_cat :=
+      CategoryConstructor(
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
+                   #commutative_ring_of_linear_category := commutative_ring,
+                   properties := properties,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
+                   underlying_category_getter_string := "UnderlyingCategory",
+                   list_of_operations_to_install := list_of_operations_to_install,
+                   supports_empty_limits := supports_empty_limits,
+                   create_func_bool := create_func_bool,
+                   create_func_object := create_func_object,
+                   create_func_morphism := create_func_morphism ) );
     
     SetUnderlyingCategory( quotient_cat, cat );
     SetQuotientCategoryCongruenceFunction( quotient_cat, record.congruence_function );
@@ -418,6 +442,36 @@ InstallOtherMethod( \/,
   
   { alpha, quotient_cat } -> MorphismConstructor( quotient_cat, Source( alpha ) / quotient_cat, alpha, Range( alpha ) / quotient_cat )
 );
+
+##################################
+##
+## View & Display
+##
+##################################
+
+##
+InstallMethod( Display,
+        [ IsQuotientCapCategoryObject ],
+        
+  function ( a )
+    
+    Display( ObjectDatum( a ) );
+    
+    Print( "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
+    
+end );
+
+##
+InstallMethod( Display,
+        [ IsQuotientCapCategoryMorphism ],
+        
+  function ( phi )
+    
+    Display( MorphismDatum( phi ) );
+    
+    Print( "\nA morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
+    
+end );
 
 ##
 InstallOtherMethod( LaTeXOutput,
