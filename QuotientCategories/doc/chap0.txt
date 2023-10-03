@@ -3,13 +3,13 @@
                               [1X QuotientCategories [101X
   
   
-          [1X Quotient categories of CAP categories by two-sided ideals [101X
+                             [1X Quotient categories [101X
   
   
-                                   2023.09-01
+                                   2023.09-02
   
   
-                               30 September 2023
+                                 3 October 2023
   
   
                                   Kamal Saleh
