@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (FiniteCocompletions) - Chapter 6: The category of colimit quivers in a category</title>
+<title>GAP (FiniteCocompletions) - Chapter 6: The coequalizer closure of a category</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -15,248 +15,371 @@
 <body class="chap6"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap6_mj.html">[MathJax on]</a></p>
-<p><a id="X82089D217FEBB785" name="X82089D217FEBB785"></a></p>
-<div class="ChapSects"><a href="chap6.html#X82089D217FEBB785">6 <span class="Heading">The category of colimit quivers in a category</span></a>
+<p><a id="X852145128254C765" name="X852145128254C765"></a></p>
+<div class="ChapSects"><a href="chap6.html#X852145128254C765">6 <span class="Heading">The coequalizer closure of a category</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7C701DBF7BAE649A">6.1 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E77BDC07B01344C">6.1-1 DefiningPairOfColimitQuiver</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8143F3937F43AB3F">6.1-2 DefiningPairOfColimitQuiverMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8476EF5885777E97">6.1-1 PairOfObjectsAndPairOfParallelMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C9027BF814B9C25">6.1-2 DefiningPairOfMorphismBetweenCoequalizerPairs</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8348D25E7B6248E7">6.1-3 UnderlyingCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X86EC0F0A78ECBC10">6.2 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X785C21C17F786A08">6.2-1 CategoryOfColimitQuivers</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7FFD17158275C768">6.2-2 CreateColimitQuiver</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7ACAD98D7CD12AEF">6.2-3 CreateMorphismOfColimitQuivers</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E7C3F167FBBC4FA">6.2-4 UnderlyingCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8767AE0182F5279E">6.2-5 EmbeddingOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B1774CA8005421A">6.2-1 CoequalizerCompletion</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7A489A5D79DA9E5C">6.3 <span class="Heading">Examples</span></a>
-</span>
-</div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7D03633A7D98026B">6.4 <span class="Heading">GAP Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7D03633A7D98026B">6.3 <span class="Heading">GAP categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DDD7A86843AA126">6.4-1 IsCategoryOfColimitQuivers</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X791E877178F81CA7">6.4-2 IsCellInCategoryOfColimitQuivers</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7892ABD57DB5ED05">6.4-3 IsObjectInCategoryOfColimitQuivers</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7FAF68D778CCC546">6.4-4 IsMorphismInCategoryOfColimitQuivers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84091B377B67E9A2">6.3-1 IsCoequalizerCompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84D30C1383B94EF5">6.3-2 IsCellInCoequalizerCompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7EFC1AC179FF1BC9">6.3-3 IsObjectInCoequalizerCompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E7830D57E1665E4">6.3-4 IsMorphismInCoequalizerCompletion</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7A489A5D79DA9E5C">6.4 <span class="Heading">Examples</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86972636863490A2">6.4-1 <span class="Heading">Free elementary topos on one object</span></a>
+</span>
 </div></div>
 </div>
 
-<h3>6 <span class="Heading">The category of colimit quivers in a category</span></h3>
+<h3>6 <span class="Heading">The coequalizer closure of a category</span></h3>
 
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
 <h4>6.1 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X7E77BDC07B01344C" name="X7E77BDC07B01344C"></a></p>
+<p><a id="X8476EF5885777E97" name="X8476EF5885777E97"></a></p>
 
-<h5>6.1-1 DefiningPairOfColimitQuiver</h5>
+<h5>6.1-1 PairOfObjectsAndPairOfParallelMorphisms</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningPairOfColimitQuiver</code>( <var class="Arg">colimit_quiver</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X8143F3937F43AB3F" name="X8143F3937F43AB3F"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PairOfObjectsAndPairOfParallelMorphisms</code>( <var class="Arg">quiver</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7C9027BF814B9C25" name="X7C9027BF814B9C25"></a></p>
 
-<h5>6.1-2 DefiningPairOfColimitQuiverMorphism</h5>
+<h5>6.1-2 DefiningPairOfMorphismBetweenCoequalizerPairs</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningPairOfColimitQuiverMorphism</code>( <var class="Arg">colimit_quiver_morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningPairOfMorphismBetweenCoequalizerPairs</code>( <var class="Arg">quiver_morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X8348D25E7B6248E7" name="X8348D25E7B6248E7"></a></p>
+
+<h5>6.1-3 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">CoeqC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Return the category <span class="Math">C</span> underlying the category <var class="Arg">CoeqC</var> := <code class="code">CoequalizerCompletion</code>( <span class="Math">C</span> ).</p>
+
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
 <h4>6.2 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X785C21C17F786A08" name="X785C21C17F786A08"></a></p>
+<p><a id="X7B1774CA8005421A" name="X7B1774CA8005421A"></a></p>
 
-<h5>6.2-1 CategoryOfColimitQuivers</h5>
+<h5>6.2-1 CoequalizerCompletion</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfColimitQuivers</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
-
-<p>Construct the category colimit quivers in the category <var class="Arg">C</var>.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoequalizerCompletion</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Return the finite coequalizer closure of the coartesian category <var class="Arg">cat</var>.</p>
 
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FinBouquets;</span>
-FinBouquets
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Chat := ModelingCategory( FinBouquets );</span>
-FiniteCocompletion( FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ccqv := CategoryOfColimitQuivers(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 UnderlyingCategory( FinBouquets ) );</span>
-CategoryOfColimitQuivers(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := Ccqv.P;</span>
-&lt;A projective object in CategoryOfColimitQuivers(
- FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
-[ [ &lt;(P)&gt; ], [  ] ]
-
-An object in CategoryOfColimitQuivers(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := Ccqv.L;</span>
-&lt;A projective object in CategoryOfColimitQuivers(
- FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( L );</span>
-[ [ &lt;(L)&gt; ], [  ] ]
-
-An object in CategoryOfColimitQuivers(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := Ccqv.b;</span>
-&lt;A morphism in CategoryOfColimitQuivers(
- FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( b );</span>
-Source: [ [ &lt;(P)&gt; ], [  ] ]
-
-An object in CategoryOfColimitQuivers(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
-
-Datum:  [ [ [ 0 ], [ (P)-[(b)]-&gt;(L) ] ], [  ] ]
-
-Range:  [ [ &lt;(L)&gt; ], [  ] ]
-
-An object in CategoryOfColimitQuivers(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
-
-A morphism in CategoryOfColimitQuivers(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := CreateBouquet( 3, [ 0, 0, 0, 2 ] );</span>
-&lt;An object in FinBouquets&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F );</span>
-( { 0, 1, 2 }, { 0 ↦ 0, 1 ↦ 0, 2 ↦ 0, 3 ↦ 2 } )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_presheaf := ModelingObject( Chat, ModelingObject( FinBouquets, F ) );</span>
-&lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ),
- SkeletalFinSets )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_coequalizer_pair := CoYonedaLemmaOnObjects( F_as_presheaf );</span>
-&lt;An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F_as_coequalizer_pair );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := "q(VS,AS,VT,AT)[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,\</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( q );</span>
+q(VS,AS,VT,AT)[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+               m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeCategory( q );</span>
+FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rel := [ [ F.sS * F.m1, F.w1 * F.sT ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         [ F.sS * F.m2, F.w2 * F.sT ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         [ F.sS * F.m3, F.w3 * F.sT ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         [ F.tS * F.m1, F.w1 * F.tT ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         [ F.tS * F.m2, F.w2 * F.tT ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         [ F.tS * F.m3, F.w3 * F.tT ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := F / rel;</span>
+FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) )
+/ relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := Q[C];</span>
+Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
+/ relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UC := AdditiveClosure( L );</span>
+Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
+/ relations )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := CoequalizerCompletion( UC );</span>
+CoequalizerCompletion( Additive closure( Algebroid( Q, FreeCategory(
+RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
+/ relations ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.sS * A.m1 = A.w1 * A.sT;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.sS * A.m2 = A.w2 * A.sT;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.sS * A.m3 = A.w3 * A.sT;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.tS * A.m1 = A.w1 * A.tT;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.tS * A.m2 = A.w2 * A.tT;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.tS * A.m3 = A.w3 * A.tT;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := ObjectConstructor( A, Pair( Pair( UC.VS, UC.AS ), Pair( UC.sS, UC.tS ) ) );</span>
+&lt;An object in CoequalizerCompletion( Additive closure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+ [sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,m1:VS-&gt;VT,w1:AS-&gt;AT,
+  m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) ) / relations ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := ObjectConstructor( A, Pair( Pair( UC.VT, UC.AT ), Pair( UC.sT, UC.tT ) ) );</span>
+&lt;An object in CoequalizerCompletion( Additive closure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+ [sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,m1:VS-&gt;VT,w1:AS-&gt;AT,
+  m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) ) / relations ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor1 := MorphismConstructor( A, S, Pair( UC.m1, UC.w1 ), T );</span>
+&lt;A morphism in CoequalizerCompletion( Additive closure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+ [sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+  m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
+ / relations ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor2 := MorphismConstructor( A, S, Pair( UC.m2, UC.w2 ), T );</span>
+&lt;A morphism in CoequalizerCompletion( Additive closure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+ [sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+  m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
+ / relations ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor3 := MorphismConstructor( A, S, Pair( UC.m3, UC.w3 ), T );</span>
+&lt;A morphism in CoequalizerCompletion( Additive closure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+ [sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+  m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
+ / relations ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( mor1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( mor2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( mor3 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coeq := Coequalizer( [ mor1, mor2, mor3 ] );</span>
+&lt;An object in CoequalizerCompletion( Additive closure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+ [sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,m1:VS-&gt;VT,w1:AS-&gt;AT,
+  m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) ) / relations ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( coeq );</span>
 Image of &lt;(V)&gt;:
-[ 7, [ &lt;(P)&gt;, &lt;(P)&gt;, &lt;(P)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt; ] ]
-
-An object in FiniteStrictCoproductCompletion( FreeCategory(
-RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+A formal direct sum consisting of 2 objects.
+&lt;(VT)&gt;
+&lt;(VS)&gt;
 
 Image of &lt;(A)&gt;:
-[ 4, [ &lt;(P)&gt;, &lt;(P)&gt;, &lt;(P)&gt;, &lt;(P)&gt; ] ]
-
-An object in FiniteStrictCoproductCompletion( FreeCategory(
-RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+A formal direct sum consisting of 4 objects.
+&lt;(AT)&gt;
+&lt;(VS)&gt;
+&lt;(VS)&gt;
+&lt;(VS)&gt;
 
 Image of (V)-[(s)]-&gt;(A):
-{ 0,..., 3 } ⱶ[ 0, 0, 0, 2 ]→ { 0,..., 6 }
+A 4 x 2 matrix with entries in
+Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) ) / relations
 
-[ (P)-[(P)]-&gt;(P), (P)-[(P)]-&gt;(P), (P)-[(P)]-&gt;(P), (P)-[(P)]-&gt;(P) ]
-
-A morphism in FiniteStrictCoproductCompletion( FreeCategory(
-RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
-
+[1,1]: (AT)-[{ 1*(sT) }]-&gt;(VT)
+[1,2]: (AT)-[{ 0 }]-&gt;(VS)
+[2,1]: (VS)-[{ 0 }]-&gt;(VT)
+[2,2]: (VS)-[{ 1*(VS) }]-&gt;(VS)
+[3,1]: (VS)-[{ 0 }]-&gt;(VT)
+[3,2]: (VS)-[{ 1*(VS) }]-&gt;(VS)
+[4,1]: (VS)-[{ 0 }]-&gt;(VT)
+[4,2]: (VS)-[{ 1*(VS) }]-&gt;(VS)
 Image of (V)-[(t)]-&gt;(A):
-{ 0,..., 3 } ⱶ[ 3, 4, 5, 6 ]→ { 0,..., 6 }
+A 4 x 2 matrix with entries in
+Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) ) / relations
 
-[ (P)-[(b)]-&gt;(L), (P)-[(b)]-&gt;(L), (P)-[(b)]-&gt;(L), (P)-[(b)]-&gt;(L) ]
-
-A morphism in FiniteStrictCoproductCompletion( FreeCategory(
-RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
-
+[1,1]: (AT)-[{ 1*(tT) }]-&gt;(VT)
+[1,2]: (AT)-[{ 0 }]-&gt;(VS)
+[2,1]: (VS)-[{ 1*(m1) }]-&gt;(VT)
+[2,2]: (VS)-[{ 0 }]-&gt;(VS)
+[3,1]: (VS)-[{ 1*(m2) }]-&gt;(VT)
+[3,2]: (VS)-[{ 0 }]-&gt;(VS)
+[4,1]: (VS)-[{ 1*(m3) }]-&gt;(VT)
+[4,2]: (VS)-[{ 0 }]-&gt;(VS)
 An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V-&gt;A,t:V-&gt;A]" ) ),
-FiniteStrictCoproductCompletion(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) given by the above data
+Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) ) / relations ) )
+ given by the above data
 
-An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_colimit_quiver := ReinterpretationOfObject( Ccqv, F_as_coequalizer_pair );</span>
-&lt;An object in CategoryOfColimitQuivers(
- FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F_as_colimit_quiver );</span>
-[ [ &lt;(P)&gt;, &lt;(P)&gt;, &lt;(P)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt; ],
-  [ [ 0, (P)-[(b)]-&gt;(L), 3 ], [ 0, (P)-[(b)]-&gt;(L), 4 ],
-    [ 0, (P)-[(b)]-&gt;(L), 5 ], [ 2, (P)-[(b)]-&gt;(L), 6 ] ] ]
+An object in PairOfParallelArrowsCategory(
+Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
+/ relations ) ) given by the above data
 
-An object in CategoryOfColimitQuivers(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+An object in QuotientCategory( PairOfParallelArrowsCategory(
+Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
+/ relations ) ) ) defined by the congruence function unknown
+given by the above data
+
+An object in CoequalizerCompletion(
+Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
+/ relations ) ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">proj := ProjectionOntoCoequalizer( [ mor1, mor2, mor3 ] );</span>
+&lt;An epimorphism in CoequalizerCompletion( Additive closure(
+ Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+ [sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+  m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
+ / relations ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( proj );</span>
+Image of &lt;(V)&gt;:
+A 1 x 2 matrix with entries in
+Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) ) / relations
+
+[1,1]: (VT)-[{ 1*(VT) }]-&gt;(VT)
+[1,2]: (VT)-[{ 0 }]-&gt;(VS)
+Image of &lt;(A)&gt;:
+A 1 x 4 matrix with entries in
+Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) ) / relations
+
+[1,1]: (AT)-[{ 1*(AT) }]-&gt;(AT)
+[1,2]: (AT)-[{ 0 }]-&gt;(VS)
+[1,3]: (AT)-[{ 0 }]-&gt;(VS)
+[1,4]: (AT)-[{ 0 }]-&gt;(VS)
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V-&gt;A,t:V-&gt;A]" ) ),
+Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
+/ relations ) ) given by the above data
+
+A morphism in PairOfParallelArrowsCategory(
+Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
+/ relations ) ) given by the above data
+
+A morphism in QuotientCategory( PairOfParallelArrowsCategory(
+Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
+/ relations ) ) ) defined by the congruence function unknown
+given by the above data
+
+A morphism in CoequalizerCompletion(
+Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+[sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
+ m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
+/ relations ) ) given by the above data
 </pre></div>
-
-<p><a id="X7FFD17158275C768" name="X7FFD17158275C768"></a></p>
-
-<h5>6.2-2 CreateColimitQuiver</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateColimitQuiver</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X7ACAD98D7CD12AEF" name="X7ACAD98D7CD12AEF"></a></p>
-
-<h5>6.2-3 CreateMorphismOfColimitQuivers</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateMorphismOfColimitQuivers</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X7E7C3F167FBBC4FA" name="X7E7C3F167FBBC4FA"></a></p>
-
-<h5>6.2-4 UnderlyingCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">ColimitQuivers</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Return the category <span class="Math">C</span> underlying the category of colimit quivers <var class="Arg">ColimitQuivers</var><code class="code"> := CategoryOfColimitQuivers(</code> <span class="Math">C</span> <code class="code">)</code>).</p>
-
-<p><a id="X8767AE0182F5279E" name="X8767AE0182F5279E"></a></p>
-
-<h5>6.2-5 EmbeddingOfUnderlyingCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnderlyingCategory</code>( <var class="Arg">ColimitQuivers</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
-
-<p>The full embedding functor from the category <span class="Math">C</span> underlying the category of colimit quivers <var class="Arg">ColimitQuivers</var> into <var class="Arg">ColimitQuivers</var>.</p>
-
-<p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
-
-<h4>6.3 <span class="Heading">Examples</span></h4>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
-<h4>6.4 <span class="Heading">GAP Categories</span></h4>
+<h4>6.3 <span class="Heading">GAP categories</span></h4>
 
-<p><a id="X7DDD7A86843AA126" name="X7DDD7A86843AA126"></a></p>
+<p><a id="X84091B377B67E9A2" name="X84091B377B67E9A2"></a></p>
 
-<h5>6.4-1 IsCategoryOfColimitQuivers</h5>
+<h5>6.3-1 IsCoequalizerCompletion</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryOfColimitQuivers</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCoequalizerCompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of categories of colimit quivers in a category.</p>
+<p>The <strong class="pkg">GAP</strong> category of categories of coequalizer pairs.</p>
 
-<p><a id="X791E877178F81CA7" name="X791E877178F81CA7"></a></p>
+<p><a id="X84D30C1383B94EF5" name="X84D30C1383B94EF5"></a></p>
 
-<h5>6.4-2 IsCellInCategoryOfColimitQuivers</h5>
+<h5>6.3-2 IsCellInCoequalizerCompletion</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInCategoryOfColimitQuivers</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInCoequalizerCompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of cells in the category of colimit quivers in a category.</p>
+<p>The <strong class="pkg">GAP</strong> category of cells in the coequalizer closure of a category.</p>
 
-<p><a id="X7892ABD57DB5ED05" name="X7892ABD57DB5ED05"></a></p>
+<p><a id="X7EFC1AC179FF1BC9" name="X7EFC1AC179FF1BC9"></a></p>
 
-<h5>6.4-3 IsObjectInCategoryOfColimitQuivers</h5>
+<h5>6.3-3 IsObjectInCoequalizerCompletion</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInCategoryOfColimitQuivers</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInCoequalizerCompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of objects in the category of colimit quivers in a category.</p>
+<p>The <strong class="pkg">GAP</strong> category of objects in the coequalizer closure of a category.</p>
 
-<p><a id="X7FAF68D778CCC546" name="X7FAF68D778CCC546"></a></p>
+<p><a id="X7E7830D57E1665E4" name="X7E7830D57E1665E4"></a></p>
 
-<h5>6.4-4 IsMorphismInCategoryOfColimitQuivers</h5>
+<h5>6.3-4 IsMorphismInCoequalizerCompletion</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInCategoryOfColimitQuivers</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInCoequalizerCompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of morphisms in the category of colimit quivers in a category.</p>
+<p>The <strong class="pkg">GAP</strong> category of morphisms in the coequalizer closure of a category.</p>
+
+<p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
+
+<h4>6.4 <span class="Heading">Examples</span></h4>
+
+<p><a id="X86972636863490A2" name="X86972636863490A2"></a></p>
+
+<h5>6.4-1 <span class="Heading">Free elementary topos on one object</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SkeletalFinBool := Opposite( SkeletalFinSets );</span>
+Opposite( SkeletalFinSets )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Poly := FiniteStrictCoproductCompletion( SkeletalFinBool );</span>
+FiniteStrictCoproductCompletion( Opposite( SkeletalFinSets ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Poly );</span>
+A CAP category with name
+FiniteStrictCoproductCompletion( Opposite( SkeletalFinSets ) ):
+
+30 primitive operations were used to derive 169 operations for this category
+which algorithmically
+* IsEquippedWithHomomorphismStructure
+* IsFiniteCompleteCategory
+* IsDistributiveCategory
+and furthermore mathematically
+* IsStrictCocartesianCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FreeTopos1 := CoequalizerCompletion( Poly );</span>
+CoequalizerCompletion( FiniteStrictCoproductCompletion(
+Opposite( SkeletalFinSets ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( FreeTopos1 );</span>
+A CAP category with name
+CoequalizerCompletion( FiniteStrictCoproductCompletion(
+Opposite( SkeletalFinSets ) ) ):
+
+26 primitive operations were used to derive 101 operations for this category
+which algorithmically
+* IsBicartesianCategory
+and not yet algorithmically
+* IsFiniteCocompleteCategory
+</pre></div>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
