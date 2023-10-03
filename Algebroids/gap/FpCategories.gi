@@ -1021,7 +1021,7 @@ InstallMethod( Unit,
 end );
 
 ##
-InstallMethod( ObjectInFpCategory,
+InstallMethodForCompilerForCAP( ObjectInFpCategory,
          "for a f.p. category and a vertex of a quiver",
         [ IsFpCategory, IsQuiverVertex ],
         
@@ -1031,16 +1031,21 @@ InstallMethod( ObjectInFpCategory,
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, IsIdenticalObj( UnderlyingQuiver( C ), QuiverOfPath( v ) ) );
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     name := String( v );
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     if IsBound( C!.Vertices.(name) ) then
         return C!.Vertices.(name);
     fi;
     
     o := CreateCapCategoryObjectWithAttributes( C,
-                 UnderlyingVertex, v,
-                 Label, name );
+                 UnderlyingVertex, v );
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetLabel( o, name );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     C!.Vertices.(name) := o;
     
     return o;
