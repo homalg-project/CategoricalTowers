@@ -1030,14 +1030,37 @@ end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
   CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ) );
 
+##
+AddDerivationToCAP( CoimageProjectionWithGivenCoimageObject,
+        "CoimageProjection as the coastriction to image",
+        [ [ ImageObject, 1 ],
+          [ CoastrictionToImageWithGivenImageObject, 1 ],
+          [ InverseMorphismFromCoimageToImageWithGivenObjects, 1 ],
+          [ PreCompose, 1 ] ],
+        
+  function( cat, mor, coimage )
+    local image, coast, iso;
+    
+    image := ImageObject( cat, mor );
+    
+    coast := CoastrictionToImageWithGivenImageObject( cat, mor, image );
+    
+    iso := InverseMorphismFromCoimageToImageWithGivenObjects( cat, coimage, mor, image );
+    
+    return PreCompose( cat, coast, iso );
+    
+end );
+
+
 ## Final derivations
 
 ##
-AddFinalDerivationBundle( "CanonicalIdentificationFromImageObjectToCoimage as the identity on the image object",
+AddFinalDerivationBundle( "MorphismFromCoimageToImageWithGivenObjects as the identity on the image object",
         [ [ ImageObject, 1 ],
           [ IdentityMorphism, 1 ] ],
-        [ CanonicalIdentificationFromCoimageToImageObject,
-          CanonicalIdentificationFromImageObjectToCoimage,
+        [ CoimageObject,
+          MorphismFromCoimageToImageWithGivenObjects,
+          InverseMorphismFromCoimageToImageWithGivenObjects,
           CoimageObject,
           CoimageProjection,
           CoimageProjectionWithGivenCoimageObject,
@@ -1049,22 +1072,29 @@ AddFinalDerivationBundle( "CanonicalIdentificationFromImageObjectToCoimage as th
           IsomorphismFromCokernelOfKernelToCoimage ],
         
 [
-  CanonicalIdentificationFromImageObjectToCoimage,
-  [ [ ImageObject, 1 ],
-    [ IdentityMorphism, 1 ] ],
+  CoimageObject,
+  [ [ ImageObject, 1 ] ],
   function( cat, mor )
     
-    return IdentityMorphism( cat, ImageObject( cat, mor ) );
+    return ImageObject( cat, mor );
     
   end
 ],
 [
-  CanonicalIdentificationFromCoimageToImageObject,
-  [ [ ImageObject, 1 ],
-    [ IdentityMorphism, 1 ] ],
-  function( cat, mor )
+  MorphismFromCoimageToImageWithGivenObjects,
+  [ [ IdentityMorphism, 1 ] ],
+  function( cat, coimage, mor, image )
     
-    return IdentityMorphism( cat, ImageObject( cat, mor ) );
+    return IdentityMorphism( cat, image );
+    
+  end
+],
+[
+  InverseMorphismFromCoimageToImageWithGivenObjects,
+  [ [ IdentityMorphism, 1 ] ],
+  function( cat, image, mor, coimage )
+    
+    return IdentityMorphism( cat, image );
     
   end
 ] : CategoryFilter := IsElementaryTopos );
