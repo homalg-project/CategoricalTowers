@@ -341,7 +341,7 @@ DeclareAttribute( "SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProje
     IsObjectInPreSheafCategory );
 
 #! @Arguments F
-DeclareAttribute( "EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject",
+DeclareAttribute( "RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject",
     IsObjectInPreSheafCategory );
 
 #! @Arguments F

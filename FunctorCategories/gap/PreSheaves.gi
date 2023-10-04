@@ -3266,7 +3266,7 @@ InstallMethod( SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiv
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
+InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, F )
@@ -3344,12 +3344,12 @@ InstallOtherMethodForCompilerForCAP( EpimorphismFromCoYonedaProjectiveObjectOnto
 end );
 
 ##
-InstallMethod( EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
+InstallMethod( RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
         [ IsObjectInPreSheafCategory ],
         
   function ( F )
     
-    return EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( CapCategory( F ), F );
+    return RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( CapCategory( F ), F );
     
 end );
 
@@ -3364,7 +3364,7 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingOptimizedCoYo
     
     F_data := CoequalizerDataOfPreSheafUsingCoYonedaLemma( PSh, F );
     
-    epi := EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( PSh, F );
+    epi := RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( PSh, F );
     
     return Pair( Range( epi ),
                  List( F_data[2], mor -> PreCompose( UC, mor, epi ) ) );
