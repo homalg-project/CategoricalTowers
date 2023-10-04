@@ -86,7 +86,6 @@
       for IsCategoryOfReflexiveQuivers 7.2-2 
       for IsFiniteCocompletion 3.2-2 
       for IsFiniteCompletion 9.2-2 
-  [2XEpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[102X, for IsObjectInPreSheafCategory 2.1-11 
   [2XEquivalenceFromFullSubcategoryOfProjectivesObjectsIntoAdditiveClosureOfSource[102X, for IsPreSheafCategory 11.2-9 
   [2XFinBouquets[102X 4.4-2 
   [2XFiniteCocompletion[102X, for IsCapCategory 3.1-1 
@@ -168,6 +167,7 @@
       for IsFunctorCategory 1.2-2 
       for IsObjectInCoPreSheafCategory 12.2-4 
       for IsObjectInFunctorCategory 1.2-4 
+  [2XRetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[102X, for IsObjectInPreSheafCategory 2.1-11 
   [2XSectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[102X, for IsObjectInPreSheafCategory 2.1-10 
   [2XSievesOfPathsToTruth[102X, for IsMorphismInPreSheafCategory 2.2-8 
   [2XSimpleObjects[102X, for IsPreSheafCategory 2.2-6 

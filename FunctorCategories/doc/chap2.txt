@@ -76,9 +76,9 @@
   
   [33X[1;0Y[29X[2XSectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-11 EpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[101X
+  [1X2.1-11 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[101X
   
-  [33X[1;0Y[29X[2XEpimorphismFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[102X( [3XF[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XRetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[102X( [3XF[103X ) [32X attribute[133X
   
   [1X2.1-12 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[101X
   
