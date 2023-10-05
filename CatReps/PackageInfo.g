@@ -100,7 +100,7 @@ Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2023.08-09" ],
+                   [ "CAP", ">= 2023.10-04" ],
                    [ "MonoidalCategories", ">= 2021.08-01" ],
                    [ "LinearAlgebraForCAP", ">= 2021.07-01" ],
                    [ "FinSetsForCAP", ">= 2022.05-07" ],

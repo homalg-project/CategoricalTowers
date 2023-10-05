@@ -10,7 +10,7 @@ T := FiniteStrictCoproductCompletion( InitialCategory( ) );
 Display( T );
 #! A CAP category with name FiniteStrictCoproductCompletion( InitialCategory( ) ):
 #! 
-#! 93 primitive operations were used to derive 541 operations for this category
+#! 93 primitive operations were used to derive 543 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts

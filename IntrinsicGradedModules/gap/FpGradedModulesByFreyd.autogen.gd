@@ -120,6 +120,7 @@
 #! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InverseForMorphisms" Label="for Is" />
+#! * <Ref BookName="CAP" Func="InverseOfMorphismFromCoimageToImage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InverseOfMorphismFromCoimageToImageWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsAutomorphism" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsCodominating" Label="for Is" />
@@ -204,6 +205,7 @@
 #! * <Ref BookName="CategoryConstructor" Func="MorphismBetweenDirectProductsWithGivenDirectProducts" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismBetweenDirectSums" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismBetweenDirectSumsWithGivenDirectSums" Label="for Is" />
+#! * <Ref BookName="CAP" Func="MorphismFromCoimageToImage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromCoimageToImageWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromEqualizerToSink" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromEqualizerToSinkWithGivenEqualizer" Label="for Is" />
