@@ -47,6 +47,28 @@ end
     , 100 );
     
     ##
+    AddAstrictionToCoimageWithGivenCoimageObject( cat,
+        
+########
+function ( cat_1, alpha_1, C_1 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1;
+    deduped_6_1 := ValuesOnAllObjects( alpha_1 );
+    hoisted_5_1 := Range( cat_1 );
+    hoisted_4_1 := List( deduped_6_1, UnderlyingMatrix );
+    hoisted_3_1 := List( deduped_6_1, function ( logic_new_func_x_2 )
+            return BasisOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) );
+        end );
+    hoisted_2_1 := List( deduped_6_1, Range );
+    hoisted_1_1 := ValuesOfPreSheaf( C_1 )[1];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, C_1, Range( alpha_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+              return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, UniqueLeftDivide( hoisted_3_1[o_2], hoisted_4_1[o_2] ) );
+          end ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddBasisOfExternalHom( cat,
         
 ########
@@ -300,6 +322,58 @@ function ( cat_1, P_1, morphisms_1, mu_1, morphismsp_1, Pp_1 )
                   end );
               deduped_1_2 := UniqueLeftDivide( SyzygiesOfColumns( UnionOfRows( deduped_3_1, deduped_4_2, deduped_2_2{hoisted_2_1} ) + (- UnionOfRows( deduped_3_1, deduped_4_2, deduped_2_2{hoisted_4_1} )) ), hoisted_5_1[o_2] * SyzygiesOfColumns( (UnionOfRows( deduped_3_1, deduped_5_2, deduped_3_2{hoisted_7_1} ) + (- UnionOfRows( deduped_3_1, deduped_5_2, deduped_3_2{hoisted_8_1} ))) ) );
               return CreateCapCategoryMorphismWithAttributes( deduped_12_1, CreateCapCategoryObjectWithAttributes( deduped_12_1, RankOfObject, NumberRows( deduped_1_2 ) ), CreateCapCategoryObjectWithAttributes( deduped_12_1, RankOfObject, NumberColumns( deduped_1_2 ) ), UnderlyingMatrix, deduped_1_2 );
+          end ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoimageObject( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    local hoisted_1_1, hoisted_3_1, deduped_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
+    deduped_9_1 := ValuesOnAllObjects( arg2_1 );
+    deduped_8_1 := Range( cat_1 );
+    deduped_7_1 := Source( cat_1 );
+    deduped_6_1 := DefiningTripleOfUnderlyingQuiver( deduped_7_1 );
+    hoisted_5_1 := List( ValuesOfPreSheaf( Source( arg2_1 ) )[2], UnderlyingMatrix );
+    deduped_4_1 := List( deduped_9_1, function ( logic_new_func_x_2 )
+            return BasisOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) );
+        end );
+    hoisted_3_1 := deduped_6_1[3];
+    hoisted_1_1 := List( deduped_9_1, function ( logic_new_func_x_2 )
+            return ColumnRankOfMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
+        end );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Range, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
+                return CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, hoisted_1_1[o_2] );
+            end ), LazyHList( [ 1 .. deduped_6_1[2] ], function ( m_2 )
+                local morphism_attr_1_2, deduped_2_2;
+                deduped_2_2 := hoisted_3_1[m_2];
+                morphism_attr_1_2 := UniqueLeftDivide( deduped_4_1[1 + deduped_2_2[2]], hoisted_5_1[m_2] * deduped_4_1[(1 + deduped_2_2[1])] );
+                return CreateCapCategoryMorphismWithAttributes( deduped_8_1, CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberRows( morphism_attr_1_2 ) ), CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberColumns( morphism_attr_1_2 ) ), UnderlyingMatrix, morphism_attr_1_2 );
+            end ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoimageProjectionWithGivenCoimageObject( cat,
+        
+########
+function ( cat_1, alpha_1, C_1 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
+    deduped_5_1 := ValuesOnAllObjects( alpha_1 );
+    hoisted_4_1 := Range( cat_1 );
+    hoisted_3_1 := List( deduped_5_1, function ( logic_new_func_x_2 )
+            return BasisOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) );
+        end );
+    hoisted_2_1 := ValuesOfPreSheaf( C_1 )[1];
+    hoisted_1_1 := List( deduped_5_1, Source );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), C_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+              return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, hoisted_3_1[o_2] );
           end ) );
 end
 ########

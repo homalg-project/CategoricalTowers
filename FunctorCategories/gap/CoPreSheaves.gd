@@ -231,7 +231,7 @@ DeclareOperation( "CreateCoPreSheafByValues", [ IsCoPreSheafCategory, IsList, Is
 DeclareOperation( "CreateCoPreSheafByFunctions", [ IsCoPreSheafCategory, IsFunction, IsFunction ] );
 
 #! @Description
-#!  Turn the functor <C><A>F</A>:<A>B</A></C> $\to$ <C>C</C> into an object in the category of functors <C><A>coPSh</A> := CoPreSheaves( <A>B</A>, C )</C>.
+#!  Turn the functor <C><A>F</A>:<A>B</A></C> $\to$ <C>D</C> into an object in the category of functors <C><A>coPSh</A> := CoPreSheaves( <A>B</A>, D )</C>.
 #! @Arguments coPSh, values_of_all_objects, values_of_all_generating_morphisms
 #! @Returns an object in a &CAP; category
 #! @Group CreateCoPreSheaf

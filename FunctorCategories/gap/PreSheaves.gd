@@ -287,7 +287,7 @@ DeclareOperation( "CreatePreSheafMorphismByValues",
 #! @Description
 #!  Turn the natrual transformation <A>eta</A>:$F \to G$ into a morphism
 #!  <C><A>U</A> := AsObjectInFunctorCategory( F )</C> $\to$ <C><A>V</A> := AsObjectInFunctorCategory( G )</C>
-#!  in the category of functors <C><A>Hom</A> := Hom( B, C )</C>, where
+#!  in the category of functors <C><A>Hom</A> := Hom( B, D )</C>, where
 #!  <C>B := Source( F ) = Source( G )</C> and <C>C := Range( F ) = Range( G )</C>.
 #! @Arguments eta
 #! @Group CreatePreSheafMorphism
