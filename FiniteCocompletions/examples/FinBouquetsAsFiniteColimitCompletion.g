@@ -1,7 +1,7 @@
 #! @BeginChunk FinBouquetsAsFiniteColimitCompletion
 
 #! @Example
-LoadPackage( "FunctorCategories", ">= 2023.08-20" );
+LoadPackage( "FunctorCategories", ">= 2023.10-04" );
 #! true
 FinBouquets;
 #! FinBouquets
@@ -16,7 +16,7 @@ source_presheaf := ModelingObject( Chat,
 #! <An object in
 #!  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>
 source_coeq_pair := CoYonedaLemmaOnObjects( source_presheaf );
-#! <An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
+#! <An object in CoequalizerCompletion( FiniteStrictCoproductCompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
 IsWellDefined( source_coeq_pair );
 #! true
@@ -55,6 +55,14 @@ Display( source_coeq_pair );
 #! 
 #! An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
+#! 
+#! An object in QuotientCategory(
+#! PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) )
+#! defined by the congruence function unknown given by the above data
+#! 
+#! An object in CoequalizerCompletion( FiniteStrictCoproductCompletion(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 target_bouquet := CreateBouquet( 2, [ 0, 0, 0, 0, 1 ] );
 #! <An object in FinBouquets>
 Display( target_bouquet );
@@ -64,7 +72,7 @@ target_presheaf := ModelingObject( Chat,
 #! <An object in
 #!  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>
 target_coeq_pair := CoYonedaLemmaOnObjects( target_presheaf );
-#! <An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
+#! <An object in CoequalizerCompletion( FiniteStrictCoproductCompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
 Display( target_coeq_pair );
 #! Image of <(V)>:
@@ -101,6 +109,14 @@ Display( target_coeq_pair );
 #! 
 #! An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
+#! 
+#! An object in QuotientCategory(
+#! PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) )
+#! defined by the congruence function unknown given by the above data
+#! 
+#! An object in CoequalizerCompletion( FiniteStrictCoproductCompletion(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 bouquet_morphism := CreateBouquetMorphism(
                             source_bouquet,
                             [ 0, 1, 1 ], [ 1, 3, 4 ],
@@ -113,7 +129,7 @@ presheaf_morphism := ModelingMorphism( Chat,
 #! <A morphism in
 #!  PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ), SkeletalFinSets )>
 coeq_pair_morphism := CoYonedaLemmaOnMorphisms( presheaf_morphism );
-#! <A morphism in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
+#! <A morphism in CoequalizerCompletion( FiniteStrictCoproductCompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
 IsWellDefined( coeq_pair_morphism );
 #! true
@@ -140,6 +156,14 @@ Display( coeq_pair_morphism );
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 #! 
 #! A morphism in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
+#! 
+#! A morphism in QuotientCategory(
+#! PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) )
+#! defined by the congruence function unknown given by the above data
+#! 
+#! A morphism in CoequalizerCompletion( FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 #! @EndExample
 #! @EndChunk

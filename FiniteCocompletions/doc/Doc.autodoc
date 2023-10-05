@@ -81,6 +81,12 @@
 @Section GAP categories
 @Section Examples
 
+@Subsection FinBouquets as finite colimit completion
+@InsertChunk FinBouquetsAsFiniteColimitCompletion
+
+@Subsection FinReflexiveQuivers as finite colimit completion
+@InsertChunk FinReflexiveQuiversAsFiniteColimitCompletion
+
 @Subsection Free elementary topos on one object
 @InsertChunk FreeElementaryToposOnOneObject
 

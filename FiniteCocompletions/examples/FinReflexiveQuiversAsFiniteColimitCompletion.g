@@ -1,7 +1,7 @@
 #! @BeginChunk FinReflexiveQuiversAsFiniteColimitCompletion
 
 #! @Example
-LoadPackage( "FunctorCategories", ">= 2023.08-20" );
+LoadPackage( "FunctorCategories", ">= 2023.10-04" );
 #! true
 Delta1 := SimplicialCategoryTruncatedInDegree( 1 );
 #! FreeCategory( RightQuiver(
@@ -32,7 +32,7 @@ Display( PSh.C1 );
 #! "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],
 #! SkeletalFinSets ) given by the above data
 coeq_pair := CoYonedaLemmaOnObjects( PSh.C1 );
-#! <An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
+#! <An object in CoequalizerCompletion( FiniteStrictCoproductCompletion(
 #!  FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #!  / [ s*id = C0, t*id = C0 ] ) )>
 Display( coeq_pair );
@@ -76,6 +76,16 @@ Display( coeq_pair );
 #! / [ s*id = C0, t*id = C0 ] ) ) given by the above data
 #! 
 #! An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
+#! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
+#! / [ s*id = C0, t*id = C0 ] ) ) given by the above data
+#! 
+#! An object in QuotientCategory(
+#! PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
+#! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
+#! / [ s*id = C0, t*id = C0 ] ) ) )
+#! defined by the congruence function unknown given by the above data
+#! 
+#! An object in CoequalizerCompletion( FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ] ) ) given by the above data
 IsWellDefined( coeq_pair );

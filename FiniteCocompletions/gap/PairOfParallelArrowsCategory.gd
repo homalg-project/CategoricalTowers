@@ -115,5 +115,3 @@ end );
 #! @Arguments cat
 DeclareAttribute( "PairOfParallelArrowsCategory",
         IsCapCategory );
-#! @InsertChunk FinBouquetsAsFiniteColimitCompletion
-#! @InsertChunk FinReflexiveQuiversAsFiniteColimitCompletion
