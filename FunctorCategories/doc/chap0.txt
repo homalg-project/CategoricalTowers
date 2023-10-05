@@ -6,10 +6,10 @@
                             [1X Categories of functors [101X
   
   
-                                   2023.10-02
+                                   2023.10-04
   
   
-                                 4 October 2023
+                                 5 October 2023
   
   
                                 Mohamed Barakat
@@ -104,7 +104,7 @@
       2.2-7 NerveTruncatedInDegree2
       2.2-8 SievesOfPathsToTruth
       2.2-9 AssociatedFiniteStrictCoproductCompletionOfSourceCategory
-      2.2-10 AssociatedCategoryOfCoequalizerPairsOfSourceCategory
+      2.2-10 AssociatedColimitCompletionOfSourceCategory
       2.2-11 AssociatedCategoryOfColimitQuiversOfSourceCategory
     2.3 [33X[0;0YOperations[133X
       2.3-1 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject

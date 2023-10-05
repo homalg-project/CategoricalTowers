@@ -27,8 +27,8 @@
   [2XAsObjectInFunctorCategory[102X, for IsCapCategory, IsList, IsList 1.1-2 
       for IsCapCategory, IsRecord, IsRecord 1.1-2 
       for IsCapFunctor 1.1-2 
-  [2XAssociatedCategoryOfCoequalizerPairsOfSourceCategory[102X, for IsPreSheafCategory 2.2-10 
   [2XAssociatedCategoryOfColimitQuiversOfSourceCategory[102X, for IsPreSheafCategory 2.2-11 
+  [2XAssociatedColimitCompletionOfSourceCategory[102X, for IsPreSheafCategory 2.2-10 
   [2XAssociatedFiniteStrictCoproductCompletionOfSourceCategory[102X, for IsPreSheafCategory 2.2-9 
   [2XCategoryOfBouquetsEnrichedOver[102X, for IsCapCategory 4.1-1 
   [2XCategoryOfDecoratedQuivers[102X, for IsObjectInCategoryOfQuivers, IsList, IsList 8.1-1 
