@@ -1035,7 +1035,7 @@ AddDerivationToCAP( CoimageProjectionWithGivenCoimageObject,
         "CoimageProjection as the coastriction to image",
         [ [ ImageObject, 1 ],
           [ CoastrictionToImageWithGivenImageObject, 1 ],
-          [ InverseMorphismFromCoimageToImageWithGivenObjects, 1 ],
+          [ InverseOfMorphismFromCoimageToImageWithGivenObjects, 1 ],
           [ PreCompose, 1 ] ],
         
   function( cat, mor, coimage )
@@ -1045,7 +1045,7 @@ AddDerivationToCAP( CoimageProjectionWithGivenCoimageObject,
     
     coast := CoastrictionToImageWithGivenImageObject( cat, mor, image );
     
-    iso := InverseMorphismFromCoimageToImageWithGivenObjects( cat, coimage, mor, image );
+    iso := InverseOfMorphismFromCoimageToImageWithGivenObjects( cat, image, mor, coimage );
     
     return PreCompose( cat, coast, iso );
     
@@ -1067,12 +1067,12 @@ AddDerivationToCAP( MorphismFromCoimageToImageWithGivenObjects,
 end : CategoryFilter := IsElementaryTopos );
 
 ##
-AddDerivationToCAP( InverseMorphismFromCoimageToImageWithGivenObjects,
-                    "InverseMorphismFromCoimageToImageWithGivenObjects as the inverse of MorphismFromCoimageToImage",
+AddDerivationToCAP( InverseOfMorphismFromCoimageToImageWithGivenObjects,
+                    "InverseOfMorphismFromCoimageToImageWithGivenObjects as the inverse of MorphismFromCoimageToImage",
                     [ [ InverseForMorphisms, 1 ],
                       [ MorphismFromCoimageToImageWithGivenObjects, 1 ] ],
                     
-  function( cat, coimage, morphism, image )
+  function( cat, image, morphism, coimage )
     
     return InverseForMorphisms( cat, MorphismFromCoimageToImageWithGivenObjects( cat, coimage, morphism, image ) );
     
@@ -1086,7 +1086,7 @@ AddFinalDerivationBundle( "MorphismFromCoimageToImageWithGivenObjects as the ide
           [ IdentityMorphism, 1 ] ],
         [ CoimageObject,
           MorphismFromCoimageToImageWithGivenObjects,
-          InverseMorphismFromCoimageToImageWithGivenObjects,
+          InverseOfMorphismFromCoimageToImageWithGivenObjects,
           CoimageObject,
           CoimageProjection,
           CoimageProjectionWithGivenCoimageObject,
@@ -1116,7 +1116,7 @@ AddFinalDerivationBundle( "MorphismFromCoimageToImageWithGivenObjects as the ide
   end
 ],
 [
-  InverseMorphismFromCoimageToImageWithGivenObjects,
+  InverseOfMorphismFromCoimageToImageWithGivenObjects,
   [ [ IdentityMorphism, 1 ] ],
   function( cat, image, mor, coimage )
     
