@@ -57,7 +57,7 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATE
 ####################################
 
 #! @Description
-#!  The source category $C$ of the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$).
+#!  The source category $C$ of the presheaf category <A>PSh</A>=<C>PSh</C>($C, D$).
 #! @Arguments PSh
 #! @Returns a &CAP; category
 DeclareAttribute( "Source",
@@ -71,7 +71,7 @@ CapJitAddTypeSignature( "Source", [ IsPreSheafCategory ],
 end );
 
 #! @Description
-#!  The range category $V$ of the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$).
+#!  The range category $D$ of the presheaf category <A>PSh</A>=<C>PSh</C>($C, D$).
 #! @Arguments PSh
 #! @Returns a &CAP; category
 DeclareAttribute( "Range",
@@ -85,7 +85,7 @@ CapJitAddTypeSignature( "Range", [ IsPreSheafCategory ],
 end );
 
 #! @Description
-#!  The opposite $C^\mathrm{op}$ of the source category $C$ of the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$).
+#!  The opposite $C^\mathrm{op}$ of the source category $C$ of the presheaf category <A>PSh</A>=<C>PSh</C>($C, D$).
 #! @Arguments Hom
 #! @Returns a &CAP; category
 DeclareAttribute( "OppositeOfSource",
@@ -191,10 +191,10 @@ DeclareAttribute( "CoYonedaLemmaOnMorphisms",
 ####################################
 
 #! @Description
-#!  Construct the category <C>Hom( <A>B</A>^op, <A>C</A> )</C> of
-#!  functors from the opposite of the small category <A>B</A> to the category <A>C</A> as objects
+#!  Construct the category <C>Hom( <A>B</A>^op, <A>D</A> )</C> of
+#!  functors from the opposite of the small category <A>B</A> to the category <A>D</A> as objects
 #!  and their natural transformations as morphisms.
-#! @Arguments B, C
+#! @Arguments B, D
 #! @Returns a &CAP; category
 #! @Group PreSheaves
 DeclareOperationWithCache( "PreSheaves",

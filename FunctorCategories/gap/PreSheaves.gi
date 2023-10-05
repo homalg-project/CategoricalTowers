@@ -305,7 +305,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         "for two CAP categories",
         [ IsCapCategory, IsCapCategory ],
         
-  function ( B, C )
+  function ( B, D )
     local B_op, kq, A, relations, name, list_of_operations,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
@@ -341,15 +341,15 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     name := "PreSheaves( ";
     
-    if HasName( B ) and HasName( C ) then
-        name := Concatenation( name, Name( B ), ", ", Name( C ), " )" );
+    if HasName( B ) and HasName( D ) then
+        name := Concatenation( name, Name( B ), ", ", Name( D ), " )" );
     else
         name := Concatenation( name, "..., ... )" );
     fi;
     
     list_of_operations := ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY );
     
-    if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) then
+    if HasIsMonoidalCategory( D ) and IsMonoidalCategory( D ) then
         
         if HasCounit( B_op ) and HasComultiplication( B_op ) then
             
@@ -436,17 +436,17 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, objC, morC, presheaf_on_objects, presheaf_on_morphisms;
+                local D, objD, morD, presheaf_on_objects, presheaf_on_morphisms;
                 
-                C := Range( cat );
+                D := Range( cat );
                 
-                objC := operation_name( C );
+                objD := operation_name( D );
                 
-                presheaf_on_objects := objB_index -> objC;
+                presheaf_on_objects := objB_index -> objD;
                 
-                morC := functorial( C );
+                morD := functorial( D );
                 
-                presheaf_on_morphisms := { new_source, morB_index, new_range } -> morC;
+                presheaf_on_morphisms := { new_source, morB_index, new_range } -> morD;
                 
                 return CreatePreSheafByFunctions( cat, presheaf_on_objects, presheaf_on_morphisms );
                 
@@ -460,15 +460,15 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, i_arg, etas, presheaf_on_objects, mors, presheaf_on_morphisms;
+                local D, i_arg, etas, presheaf_on_objects, mors, presheaf_on_morphisms;
                 
-                C := Range( cat );
+                D := Range( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
                 etas := i_arg[2];
                 
-                presheaf_on_objects := objB_index -> operation_name( C, List( etas, eta -> ValuesOnAllObjects( eta )[objB_index] ) );
+                presheaf_on_objects := objB_index -> operation_name( D, List( etas, eta -> ValuesOnAllObjects( eta )[objB_index] ) );
                 
                 mors := DefiningTripleOfUnderlyingQuiver( Source( cat ) )[3];
                 
@@ -491,7 +491,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
                     
-                    return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
+                    return functorial_helper( D, new_source, L[1], L[2], L[3], L[4], new_range );
                     
                 end;
                 
@@ -507,16 +507,16 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, i_arg, object, etas, presheaf_on_objects, mors, presheaf_on_morphisms;
+                local D, i_arg, object, etas, presheaf_on_objects, mors, presheaf_on_morphisms;
                 
-                C := Range( cat );
+                D := Range( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
                 object := i_arg[2];
                 etas := i_arg[3];
                 
-                presheaf_on_objects := objB_index -> operation_name( C, ValuesOfPreSheaf( object )[1][objB_index], List( etas, eta -> ValuesOnAllObjects( eta )[objB_index] ) );
+                presheaf_on_objects := objB_index -> operation_name( D, ValuesOfPreSheaf( object )[1][objB_index], List( etas, eta -> ValuesOnAllObjects( eta )[objB_index] ) );
                 
                 mors := DefiningTripleOfUnderlyingQuiver( Source( cat ) )[3];
                 
@@ -539,7 +539,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
                     
-                    return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
+                    return functorial_helper( D, new_source, L[1], L[2], L[3], L[4], new_range );
                     
                 end;
                 
@@ -555,19 +555,19 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, i_arg, Fs, presheaf_on_objects, presheaf_on_morphisms;
+                local D, i_arg, Fs, presheaf_on_objects, presheaf_on_morphisms;
                 
-                C := Range( cat );
+                D := Range( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
                 Fs := i_arg[2];
                 
                 presheaf_on_objects := objB_index ->
-                                       operation_name( C, List( Fs, F -> ValuesOfPreSheaf( F )[1][objB_index] ) );
+                                       operation_name( D, List( Fs, F -> ValuesOfPreSheaf( F )[1][objB_index] ) );
                 
                 presheaf_on_morphisms := { new_source, morB_index, new_range } ->
-                                         functorial( C,
+                                         functorial( D,
                                                  new_source,
                                                  List( Fs, F -> ValuesOfPreSheaf( F )[2][morB_index] ),
                                                  new_range );
@@ -584,15 +584,15 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, i_arg, eta, presheaf_on_objects, mors, presheaf_on_morphisms;
+                local D, i_arg, eta, presheaf_on_objects, mors, presheaf_on_morphisms;
                 
-                C := Range( cat );
+                D := Range( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
                 eta := i_arg[2];
                 
-                presheaf_on_objects := objB_index -> operation_name( C, ValuesOnAllObjects( eta )[objB_index] );
+                presheaf_on_objects := objB_index -> operation_name( D, ValuesOnAllObjects( eta )[objB_index] );
                 
                 mors := DefiningTripleOfUnderlyingQuiver( Source( cat ) )[3];
                 
@@ -612,7 +612,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                            ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Source( morB ) )
                            ];
                     
-                    return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
+                    return functorial_helper( D, new_source, L[1], L[2], L[3], L[4], new_range );
                     
                 end;
                 
@@ -641,16 +641,16 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           ReplacedStringViaRecord(
           """
           function ( input_arguments... )
-            local C, i_arg, natural_transformation_on_objects;
+            local D, i_arg, natural_transformation_on_objects;
             
-            C := Range( cat );
+            D := Range( cat );
             
             i_arg := NTuple( number_of_arguments, input_arguments... );
             
             natural_transformation_on_objects :=
               function ( source, objB_index, range )
                 
-                return operation_name( C, sequence_of_arguments_objB... );
+                return operation_name( D, sequence_of_arguments_objB... );
                 
             end;
             
@@ -686,7 +686,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     end;
     
     ## we cannot use ListPrimitivelyInstalledOperationsOfCategory since the unique lifts/colifts might be missing
-    list_of_operations_to_install := ShallowCopy( ListInstalledOperationsOfCategory( C ) );
+    list_of_operations_to_install := ShallowCopy( ListInstalledOperationsOfCategory( D ) );
     list_of_operations_to_install := Intersection( list_of_operations_to_install, list_of_operations );
     
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
@@ -694,8 +694,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     list_of_operations_to_install := Difference( list_of_operations_to_install, skip );
     
-    if HasCommutativeRingOfLinearCategory( C ) then
-        commutative_ring := CommutativeRingOfLinearCategory( C );
+    if HasCommutativeRingOfLinearCategory( D ) then
+        commutative_ring := CommutativeRingOfLinearCategory( D );
     else
         commutative_ring := fail;
     fi;
@@ -719,7 +719,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     "IsElementaryTopos",
                     ];
     
-    if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
+    if HasIsMonoidalCategory( D ) and IsMonoidalCategory( D ) and
        HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
         
         Append( properties,
@@ -733,12 +733,12 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    properties := Intersection( ListKnownCategoricalProperties( C ), properties );
+    properties := Intersection( ListKnownCategoricalProperties( D ), properties );
     
-    properties := Filtered( properties, p -> ValueGlobal( p )( C ) );
+    properties := Filtered( properties, p -> ValueGlobal( p )( D ) );
     
-    if IsBound( C!.supports_empty_limits ) then
-        supports_empty_limits := C!.supports_empty_limits;
+    if IsBound( D!.supports_empty_limits ) then
+        supports_empty_limits := D!.supports_empty_limits;
     else
         supports_empty_limits := false;
     fi;
@@ -773,7 +773,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     SetSetOfGeneratingMorphisms( PSh, generating_morphisms );
     
     SetSource( PSh, B );
-    SetRange( PSh, C );
+    SetRange( PSh, D );
     SetOppositeOfSource( PSh, B_op );
     
     PSh!.compiler_hints.category_attribute_names :=
@@ -784,31 +784,31 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         "OppositeOfSource",
         ];
     
-    if CanCompute( C, "IsLiftableAlongMonomorphism" ) then
+    if CanCompute( D, "IsLiftableAlongMonomorphism" ) then
         
         ##
         AddIsLiftableAlongMonomorphism( PSh,
           function ( PSh, eta, rho )
-            local C;
+            local D;
             
-            C := Range( PSh );
+            D := Range( PSh );
             
-            return ForAll( SetOfObjects( Source( PSh ) ), object -> IsLiftableAlongMonomorphism( C, eta( object ), rho( object ) ) );
+            return ForAll( SetOfObjects( Source( PSh ) ), object -> IsLiftableAlongMonomorphism( D, eta( object ), rho( object ) ) );
             
         end );
         
     fi;
     
-    if CanCompute( C, "IsColiftableAlongEpimorphism" ) then
+    if CanCompute( D, "IsColiftableAlongEpimorphism" ) then
         
         ##
         AddIsColiftableAlongEpimorphism( PSh,
           function ( PSh, eta, rho )
-            local C;
+            local D;
             
-            C := Range( PSh );
+            D := Range( PSh );
             
-            return ForAll( SetOfObjects( Source( PSh ) ), object -> IsColiftableAlongEpimorphism( C, eta( object ), rho( object ) ) );
+            return ForAll( SetOfObjects( Source( PSh ) ), object -> IsColiftableAlongEpimorphism( D, eta( object ), rho( object ) ) );
             
         end );
         
@@ -816,7 +816,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     ## this code should become obsolete with following feature request:
     ## https://github.com/homalg-project/CAP_project/issues/801
-    if CanCompute( C, "MorphismBetweenDirectSumsWithGivenDirectSums" ) then
+    if CanCompute( D, "MorphismBetweenDirectSumsWithGivenDirectSums" ) then
         
         ##
         AddMorphismBetweenDirectSumsWithGivenDirectSums( PSh,
@@ -830,7 +830,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               function ( source, objB_index, range )
                 
                 return MorphismBetweenDirectSumsWithGivenDirectSums(
-                               C,
+                               D,
                                S_o_vals[objB_index],
                                List( diagram_S, Si -> ValuesOfPreSheaf( Si )[1][objB_index] ),
                                List( M, row -> List( row, m -> ValuesOnAllObjects( m )[objB_index] ) ),
@@ -845,22 +845,22 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
+    if CanCompute( D, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
         
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( PSh,
           function ( PSh, r, eta )
-            local B, C, eta_o_vals, natural_transformation_on_objects;
+            local B, D, eta_o_vals, natural_transformation_on_objects;
             
             B := Source( PSh );
-            C := Range( PSh );
+            D := Range( PSh );
             
             eta_o_vals := ValuesOnAllObjects( eta );
             
             natural_transformation_on_objects :=
               function ( source, objB_index, range )
                 
-                return MultiplyWithElementOfCommutativeRingForMorphisms( C, r, eta_o_vals[objB_index] );
+                return MultiplyWithElementOfCommutativeRingForMorphisms( D, r, eta_o_vals[objB_index] );
                 
             end;
             
@@ -879,15 +879,15 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
         AddIsWellDefinedForMorphisms( PSh,
           function ( PSh, eta )
-            local C, F, G;
+            local D, F, G;
             
-            C := Range( PSh );
+            D := Range( PSh );
             
             F := Source( eta );
             G := Range( eta );
             
             return
-              ForAll( objects, o -> IsWellDefinedForMorphisms( C, eta( o ) ) ) and
+              ForAll( objects, o -> IsWellDefinedForMorphisms( D, eta( o ) ) ) and
               #          F(t(m)) --F(m)-> F(s(m))
               #             |                |
               #  eta_{t(m)} |                | eta_{s(m)}
@@ -896,11 +896,11 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               ForAll( generating_morphisms,
                       function ( m )
                          return
-                           IsEqualForObjects( C, Range( F( m ) ), Source( eta( Source( m ) ) ) ) and
-                           IsEqualForObjects( C, Range( eta( Range( m ) ) ), Source( G( m ) ) ) and
-                           IsEqualForMorphisms( C,
-                                   PreCompose( C, F( m ), eta( Source( m ) ) ),
-                                   PreCompose( C, eta( Range( m ) ), G( m ) ) );
+                           IsEqualForObjects( D, Range( F( m ) ), Source( eta( Source( m ) ) ) ) and
+                           IsEqualForObjects( D, Range( eta( Range( m ) ) ), Source( G( m ) ) ) and
+                           IsEqualForMorphisms( D,
+                                   PreCompose( D, F( m ), eta( Source( m ) ) ),
+                                   PreCompose( D, eta( Range( m ) ), G( m ) ) );
                      end );
             
         end );
@@ -909,23 +909,23 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             AddIsWellDefinedForObjects( PSh,
               function ( PSh, F )
-                local C;
+                local D;
                 
-                C := Range( PSh );
+                D := Range( PSh );
                 
-                if not ForAll( objects, o -> IsWellDefinedForObjects( C, F( o ) ) ) then
+                if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( C, F( m ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Range( m ) ), Source( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Range( m ) ), Source( F( m ) ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Source( m ) ), Range( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Range( F( m ) ) ) ) then
                     return false;
                 fi;
                 
                 F := UnderlyingCapTwoCategoryCell( F );
                 
-                return ForAll( relations, m -> IsCongruentForMorphisms( C, ApplyToQuiverAlgebraElement( F, m[1] ), ApplyToQuiverAlgebraElement( F, m[2] ) ) );
+                return ForAll( relations, m -> IsCongruentForMorphisms( D, ApplyToQuiverAlgebraElement( F, m[1] ), ApplyToQuiverAlgebraElement( F, m[2] ) ) );
                 
             end );
             
@@ -933,23 +933,23 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             AddIsWellDefinedForObjects( PSh,
               function ( PSh, F )
-                local C;
+                local D;
                 
-                C := Range( PSh );
+                D := Range( PSh );
                 
-                if not ForAll( objects, o -> IsWellDefinedForObjects( C, F( o ) ) ) then
+                if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( C, F( m ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Range( m ) ), Source( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Range( m ) ), Source( F( m ) ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Source( m ) ), Range( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Range( F( m ) ) ) ) then
                     return false;
                 fi;
                 
                 F := UnderlyingCapTwoCategoryCell( F );
                 
-                return ForAll( relations, m -> IsZeroForMorphisms( C, ApplyToQuiverAlgebraElement( F, m ) ) );
+                return ForAll( relations, m -> IsZeroForMorphisms( D, ApplyToQuiverAlgebraElement( F, m ) ) );
                 
             end );
             
@@ -957,26 +957,26 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
 
             AddIsWellDefinedForObjects( PSh,
               function ( PSh, F )
-                local B, C, pairs;
+                local B, D, pairs;
 
                 B := Source( PSh );
-                C := Range( PSh );
+                D := Range( PSh );
 
-                if not ForAll( objects, o -> IsWellDefinedForObjects( C, F( o ) ) ) then
+                if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( C, F( m ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Range( m ) ), Source( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Range( m ) ), Source( F( m ) ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( C, F( Source( m ) ), Range( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Range( F( m ) ) ) ) then
                     return false;
                 fi;
 
                 pairs := Concatenation( ListOfValues( EnhancedDataTables( B )[21] ) );
 
-                return ForAll( pairs, p -> IsCongruentForMorphisms( C,
+                return ForAll( pairs, p -> IsCongruentForMorphisms( D,
                                                     F( PreCompose( B, generating_morphisms[p[1]], generating_morphisms[p[2]] ) ),
-                                                    PostCompose( C, F( generating_morphisms[p[1]] ), F( generating_morphisms[p[2]] ) ) ) );
+                                                    PostCompose( D, F( generating_morphisms[p[1]] ), F( generating_morphisms[p[2]] ) ) ) );
 
             end );
             
@@ -1031,46 +1031,46 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
         AddIsEqualForObjects( PSh,
           function ( PSh, F, G )
-            local C;
+            local D;
             
-            C := Range( PSh );
+            D := Range( PSh );
             
-            return ForAll( objects, o -> IsEqualForObjects( C, F( o ), G( o ) ) ) and
-                   ForAll( generating_morphisms, m -> IsEqualForMorphisms( C, F( m ), G( m ) ) );
+            return ForAll( objects, o -> IsEqualForObjects( D, F( o ), G( o ) ) ) and
+                   ForAll( generating_morphisms, m -> IsEqualForMorphisms( D, F( m ), G( m ) ) );
             
         end );
         
         AddIsEqualForMorphisms( PSh,
           function ( PSh, eta, epsilon )
-            local C;
+            local D;
             
-            C := Range( PSh );
+            D := Range( PSh );
             
-            return ForAll( objects, o -> IsEqualForMorphisms( C, eta( o ), epsilon( o ) ) );
+            return ForAll( objects, o -> IsEqualForMorphisms( D, eta( o ), epsilon( o ) ) );
             
         end );
         
         AddIsCongruentForMorphisms( PSh,
           function ( PSh, eta, epsilon )
-            local C;
+            local D;
             
-            C := Range( PSh );
+            D := Range( PSh );
             
-            return ForAll( objects, o -> IsCongruentForMorphisms( C, eta( o ), epsilon( o ) ) );
+            return ForAll( objects, o -> IsCongruentForMorphisms( D, eta( o ), epsilon( o ) ) );
             
         end );
           
     fi;
     
-    if HasRangeCategoryOfHomomorphismStructure( C ) and
-       CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] then
+    if HasRangeCategoryOfHomomorphismStructure( D ) and
+       CheckConstructivenessOfCategory( D, "IsEquippedWithHomomorphismStructure" ) = [ ] then
         
-        H := RangeCategoryOfHomomorphismStructure( C );
+        H := RangeCategoryOfHomomorphismStructure( D );
         
         if CheckConstructivenessOfCategory( H, "IsFiniteCompleteCategory" ) = [ ] then
             
             ## Set the range category of the homomorphism structure of the functor category to be
-            ## the range category of the homomorphism structure of the range category C of the functor category:
+            ## the range category of the homomorphism structure of the range category D of the functor category:
             SetRangeCategoryOfHomomorphismStructure( PSh, H );
             SetIsEquippedWithHomomorphismStructure( PSh, true );
             
@@ -1097,10 +1097,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             ##
             AddHomomorphismStructureOnMorphismsWithGivenObjects( PSh,
               function ( PSh, s, eta, rho, r )
-                local C, H, nr_objs, hom_diagram_source, hom_source, prjs_source, emb_source,
+                local D, H, nr_objs, hom_diagram_source, hom_source, prjs_source, emb_source,
                       hom_diagram_range, hom_range, prjs_range, emb_range, mors, mor, eta_vals, rho_vals;
                 
-                C := Range( PSh );
+                D := Range( PSh );
                 
                 H := RangeCategoryOfHomomorphismStructure( PSh );
                 
@@ -1144,7 +1144,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 rho_vals := ValuesOnAllObjects( rho );
                 
                 mors := List( [ 1 .. nr_objs ],
-                              i -> HomomorphismStructureOnMorphisms( C,
+                              i -> HomomorphismStructureOnMorphisms( D,
                                       eta_vals[i],
                                       rho_vals[i] ) );
                 
@@ -1164,14 +1164,14 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             ##
             AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( PSh,
               function ( PSh, eta )
-                local C, H, mors, mor, hom_diagram, hom, nr_objs, prjs, emb;
+                local D, H, mors, mor, hom_diagram, hom, nr_objs, prjs, emb;
                 
-                C := Range( PSh );
+                D := Range( PSh );
                 
                 H := RangeCategoryOfHomomorphismStructure( PSh );
                 
                 mors := List( ListOfValues( ValuesOnAllObjects( eta ) ),
-                              m -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, m ) );
+                              m -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D, m ) );
                 
                 mor := UniversalMorphismIntoDirectProduct( H,
                                List( mors, Range ),
@@ -1206,9 +1206,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh,
               function ( PSh, F, G, iota )
-                local C, H, F_o_vals, G_o_vals, hom_diagram, nr_objs, etas;
+                local D, H, F_o_vals, G_o_vals, hom_diagram, nr_objs, etas;
                 
-                C := Range( PSh );
+                D := Range( PSh );
                 
                 H := RangeCategoryOfHomomorphismStructure( PSh );
                 
@@ -1231,7 +1231,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 return CreatePreSheafMorphismByValues( PSh,
                                F,
                                List( [ 1 .. nr_objs ],
-                                     i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
+                                     i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
                                              F_o_vals[i],
                                              G_o_vals[i],
                                              etas[i] ) ),
@@ -1250,7 +1250,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                       ] );
             fi;
             
-            if IsCategoryOfSkeletalFinSets( C ) and IsCategoryOfSkeletalFinSets( H ) then
+            if IsCategoryOfSkeletalFinSets( D ) and IsCategoryOfSkeletalFinSets( H ) then
                 
                 ##
                 AddHomomorphismStructureOnObjects( PSh,
@@ -1283,14 +1283,14 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 ##
                 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( PSh,
                   function ( PSh, eta )
-                    local C, H, mors, distinguished_object, mor, hom_equalizer_diagram;
+                    local D, H, mors, distinguished_object, mor, hom_equalizer_diagram;
                     
-                    C := Range( PSh );
+                    D := Range( PSh );
                     
                     H := RangeCategoryOfHomomorphismStructure( PSh );
                     
                     mors := List( ListOfValues( ValuesOnAllObjects( eta ) ),
-                                  m -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, m ) );
+                                  m -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D, m ) );
                     
                     distinguished_object := DistinguishedObjectOfHomomorphismStructure( PSh );
                     
@@ -1312,10 +1312,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 ##
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh,
                   function ( PSh, F, G, iota )
-                    local C, H, hom_equalizer_diagram, hom_F_V_G, emb, mor,
+                    local D, H, hom_equalizer_diagram, hom_F_V_G, emb, mor,
                           F_vals, F_lengths, nr_objs, hom_F_V_G_diagrams, hom_F_V_G_diagram_collected, hom_F_V_G_diagram, prjs, G_vals, etas;
                     
-                    C := Range( PSh );
+                    D := Range( PSh );
                     
                     H := RangeCategoryOfHomomorphismStructure( PSh );
                     
@@ -1329,7 +1329,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                    hom_F_V_G,
                                    hom_equalizer_diagram[2] );
                     
-                    mor := PreCompose( C,
+                    mor := PreCompose( D,
                                    iota,
                                    emb );
                     
@@ -1379,11 +1379,11 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    if CheckConstructivenessOfCategory( C, "IsElementaryTopos" ) = [ ] and
+    if CheckConstructivenessOfCategory( D, "IsElementaryTopos" ) = [ ] and
        HasRangeCategoryOfHomomorphismStructure( PSh ) and
-       ## in the following we require (1) that the range category C of the presheaf category
+       ## in the following we require (1) that the range category D of the presheaf category
        ## is itself the range category of the homomorphism structure of the presheaf category:
-       IsIdenticalObj( C, RangeCategoryOfHomomorphismStructure( PSh ) ) then
+       IsIdenticalObj( D, RangeCategoryOfHomomorphismStructure( PSh ) ) then
         
         ##
         AddExponentialOnObjects ( PSh,
@@ -1401,7 +1401,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               function ( objB_index )
                 
                 ## the output lives by construction in the range category of the homomorphism structure of the presheaf category,
-                ## but should live in the range category C of the presheaf category (necessitating requirement (1) above):
+                ## but should live in the range category D of the presheaf category (necessitating requirement (1) above):
                 return HomomorphismStructureOnObjects( PSh,
                                DirectProduct( PSh,
                                        [ Yoneda[1]( objs[objB_index] ),
@@ -1461,7 +1461,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
         end );
         
-        if IsCategoryOfSkeletalFinSets( C ) then
+        if IsCategoryOfSkeletalFinSets( D ) then
             
             ##
             AddEpimorphismFromSomeProjectiveObject( PSh,
@@ -1475,11 +1475,11 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
         fi;
         
-        ## the following code requires (2) that the range category C of the presheaf category coincides with the category SkeletalFinSets:
-        if IsCategoryOfSkeletalFinSets( C ) and
-           ## and requires (3) that the range category C of the presheaf category must coincide with
+        ## the following code requires (2) that the range category D of the presheaf category coincides with the category SkeletalFinSets:
+        if IsCategoryOfSkeletalFinSets( D ) and
+           ## and requires (3) that the range category D of the presheaf category must coincide with
            ## the range category of the homomorphism structure of the source category B of the presheaf category
-           IsIdenticalObj( C, RangeCategoryOfHomomorphismStructure( B ) ) then
+           IsIdenticalObj( D, RangeCategoryOfHomomorphismStructure( B ) ) then
             
             ## G^F × F → G
             AddCartesianEvaluationMorphismWithGivenSource( PSh,
@@ -1705,8 +1705,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     fi;
     
     if HasRangeCategoryOfHomomorphismStructure( B ) and
-       IsIdenticalObj( RangeCategoryOfHomomorphismStructure( B ), C ) and
-       CanCompute( C, "SubobjectClassifier" ) then
+       IsIdenticalObj( RangeCategoryOfHomomorphismStructure( B ), D ) and
+       CanCompute( D, "SubobjectClassifier" ) then
         
         AddSubobjectClassifier( PSh,
           function ( PSh )
@@ -1742,20 +1742,20 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
+    if HasIsMonoidalCategory( D ) and IsMonoidalCategory( D ) and
        HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
         
         AddTensorUnit( PSh,
           function ( PSh )
-            local C, I, presheaf_on_objects, id_I, presheaf_on_morphisms;
+            local D, I, presheaf_on_objects, id_I, presheaf_on_morphisms;
             
-            C := Range( PSh );
+            D := Range( PSh );
             
-            I := TensorUnit( C );
+            I := TensorUnit( D );
             
             presheaf_on_objects := objB_index -> I;
             
-            id_I := IdentityMorphism( C, TensorUnit( C ) );
+            id_I := IdentityMorphism( D, TensorUnit( D ) );
             
             presheaf_on_morphisms := { new_source, morB_index, new_range } -> id_I;
             
@@ -1765,19 +1765,19 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
         AddTensorProductOnObjects( PSh,
           function ( PSh, F, G )
-            local C, F_o_vals, G_o_vals, presheaf_on_objects, F_m_vals, G_m_vals, presheaf_on_morphisms;
+            local D, F_o_vals, G_o_vals, presheaf_on_objects, F_m_vals, G_m_vals, presheaf_on_morphisms;
             
-            C := Range( PSh );
+            D := Range( PSh );
             
             F_o_vals := ValuesOfPreSheaf( F )[1];
             G_o_vals := ValuesOfPreSheaf( G )[1];
             
-            presheaf_on_objects := objB_index -> TensorProductOnObjects( C, F_o_vals[objB_index], G_o_vals[objB_index] );
+            presheaf_on_objects := objB_index -> TensorProductOnObjects( D, F_o_vals[objB_index], G_o_vals[objB_index] );
             
             F_m_vals := ValuesOfPreSheaf( F )[2];
             G_m_vals := ValuesOfPreSheaf( G )[2];
             
-            presheaf_on_morphisms := { new_source, morB_index, new_range } -> TensorProductOnMorphisms( C, F_m_vals[morB_index], G_m_vals[morB_index] );
+            presheaf_on_morphisms := { new_source, morB_index, new_range } -> TensorProductOnMorphisms( D, F_m_vals[morB_index], G_m_vals[morB_index] );
             
             return CreatePreSheafByFunctions( PSh, presheaf_on_objects, presheaf_on_morphisms );
             
@@ -1800,7 +1800,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    if ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( C ) ) and
+    if ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( D ) ) and
           ( ( HasUnderlyingQuiverAlgebra( B ) and IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) ) or
             ( HasIsAdmissibleAlgebroid( B ) and IsAdmissibleAlgebroid( B ) ) ) then
       
@@ -1810,25 +1810,25 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
       
       AddEpimorphismFromProjectiveCoverObject( PSh,
         function( PSh, F )
-          local C, dec, objs, D, epi;
+          local D, dec, objs, sum, epi;
           
           #% CAP_JIT_DROP_NEXT_STATEMENT
           if HasEpimorphismFromProjectiveCoverObject( F ) then
               return EpimorphismFromProjectiveCoverObject( F );
           fi;
           
-          C := Range( PSh );
+          D := Range( PSh );
           
           dec := ProjectiveCoverObjectDataOfPreSheaf( PSh, F );
           
           objs := List( dec, Source );
           
-          D := DirectSum( PSh, objs );
+          sum := DirectSum( PSh, objs );
           
-          epi := UniversalMorphismFromDirectSumWithGivenDirectSum( PSh, objs, F, dec, D );
+          epi := UniversalMorphismFromDirectSumWithGivenDirectSum( PSh, objs, F, dec, sum );
           
           #% CAP_JIT_DROP_NEXT_STATEMENT
-          SetProjectiveCoverObjectDataOfPreSheaf( D, List( [ 1 .. Length( objs ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( PSh, objs, i, D ) ) );
+          SetProjectiveCoverObjectDataOfPreSheaf( D, List( [ 1 .. Length( objs ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( PSh, objs, i, sum ) ) );
           
           #% CAP_JIT_DROP_NEXT_STATEMENT
           SetEpimorphismFromProjectiveCoverObject( F, epi );
@@ -1893,10 +1893,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
       
       AddProjectiveLift( PSh,
         function ( PSh, eta, epi )
-          local A, C, vals_eta, vals_epi, N, P, G, tP, vals_tP, gens, ells, vals_P, vals_G, mu, nu, delta;
+          local A, D, vals_eta, vals_epi, N, P, G, tP, vals_tP, gens, ells, vals_P, vals_G, mu, nu, delta;
           
           A := Source( PSh );
-          C := Range( PSh );
+          D := Range( PSh );
           
           vals_eta := ValuesOnAllObjects( eta );
           vals_epi := ValuesOnAllObjects( epi );
@@ -1909,8 +1909,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           tP := CokernelProjection( PSh, RadicalInclusionOfPreSheaf( PSh, P ) );
           vals_tP := ValuesOnAllObjects( tP );
           
-          gens := List( vals_tP, m -> PreInverseForMorphisms( C, m ) );
-          ells := ListN( gens, vals_eta, vals_epi, { p, q, r } -> PreComposeList( C, [ p, q, PreInverseForMorphisms( C, r ) ] ) );
+          gens := List( vals_tP, m -> PreInverseForMorphisms( D, m ) );
+          ells := ListN( gens, vals_eta, vals_epi, { p, q, r } -> PreComposeList( D, [ p, q, PreInverseForMorphisms( D, r ) ] ) );
           
           vals_P := ValuesOfPreSheaf( P );
           vals_G := ValuesOfPreSheaf( G );
@@ -1918,17 +1918,17 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           mu := List( [ 1 .. N ], i -> Concatenation(
                   List( [ 1 .. N ], j ->
                     List( [ 1 .. Length( auxiliary_indices[i,j] ) ], s ->
-                      PostComposeList( C, Concatenation( List( auxiliary_indices[i,j][s], index -> vals_P[2][index] ), [ gens[j] ] ) ) ) ) ) );
+                      PostComposeList( D, Concatenation( List( auxiliary_indices[i,j][s], index -> vals_P[2][index] ), [ gens[j] ] ) ) ) ) ) );
           
           nu := List( [ 1 .. N ], i -> Concatenation(
                   List( [ 1 .. N ], j ->
                     List( [ 1 .. Length( auxiliary_indices[i,j] ) ], s ->
-                      PostComposeList( C, Concatenation( List( auxiliary_indices[i,j][s], index -> vals_G[2][index] ), [ ells[j] ] ) ) ) ) ) );
+                      PostComposeList( D, Concatenation( List( auxiliary_indices[i,j][s], index -> vals_G[2][index] ), [ ells[j] ] ) ) ) ) ) );
           
           delta := List( [ 1 .. N ], i -> Concatenation( List( [ 1 .. N ], j -> ListWithIdenticalEntries( Length( auxiliary_indices[i][j] ), Range( vals_tP[j] ) ) ) ) );
           
-          ells := ListN( [ 1 .. N ], delta, mu, nu, { i, D, m, n } ->
-                    PreCompose( C, PreInverseForMorphisms( C, UniversalMorphismFromDirectSum( C, D, vals_P[1][i], m ) ), UniversalMorphismFromDirectSum( C, D, vals_G[1][i], n ) ) );
+          ells := ListN( [ 1 .. N ], delta, mu, nu, { i, diagram, m, n } ->
+                    PreCompose( D, PreInverseForMorphisms( D, UniversalMorphismFromDirectSum( D, diagram, vals_P[1][i], m ) ), UniversalMorphismFromDirectSum( D, diagram, vals_G[1][i], n ) ) );
           
           return CreatePreSheafMorphismByValues( PSh, P, ells, G );
           
@@ -1996,18 +1996,18 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
       
     fi;
     
-    AddToToDoList( ToDoListEntry( [ [ PSh, "IsFinalized", true ] ], function ( ) IdentityFunctor( PSh )!.UnderlyingFunctor := IdentityFunctor( C ); end ) );
+    AddToToDoList( ToDoListEntry( [ [ PSh, "IsFinalized", true ] ], function ( ) IdentityFunctor( PSh )!.UnderlyingFunctor := IdentityFunctor( D ); end ) );
     
     #if false then
     if ValueOption( "no_precompiled_code" ) <> true then
         
-        if IsFpCategory( B ) and IsCategoryOfSkeletalFinSets( C ) then
+        if IsFpCategory( B ) and IsCategoryOfSkeletalFinSets( D ) then
             
             ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled( PSh );
             
             ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsSubobjectClassifierPrecompiled( PSh );
             
-        elif IsCategoryFromDataTables( B ) and IsCategoryOfSkeletalFinSets( C ) then
+        elif IsCategoryFromDataTables( B ) and IsCategoryOfSkeletalFinSets( D ) then
             
             ADD_FUNCTIONS_FOR_PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled( PSh );
             
@@ -2015,10 +2015,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
         elif IsAlgebroid( B ) then
             
-            if IsCategoryOfRows( C ) then
+            if IsCategoryOfRows( D ) then
                 
                 if IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( B ) ) or
-                   ( HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
+                   ( HasIsMonoidalCategory( D ) and IsMonoidalCategory( D ) and
                      HasCounit( B ) and HasComultiplication( B ) ) then
                     
                     ADD_FUNCTIONS_FOR_PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled( PSh );
@@ -2046,9 +2046,9 @@ InstallMethodWithCache( PreSheaves,
         "for a f.p. category and a category",
         [ IsFpCategory, IsCapCategory ],
         
-  function ( B, C )
+  function ( B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, C );
+    return PreSheavesOfFpEnrichedCategory( B, D );
     
 end );
 
@@ -2057,9 +2057,9 @@ InstallMethodWithCache( PreSheaves,
         "for an algebroid and a category",
         [ IsAlgebroid, IsCapCategory ],
         
-  function ( B, C )
+  function ( B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, C );
+    return PreSheavesOfFpEnrichedCategory( B, D );
     
 end );
 
@@ -2068,9 +2068,9 @@ InstallMethodWithCache( PreSheaves,
         "for a category form nerve data and a category",
         [ IsCategoryFromNerveData, IsCapCategory ],
         
-  function ( B, C )
+  function ( B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, C );
+    return PreSheavesOfFpEnrichedCategory( B, D );
     
 end );
 
@@ -2079,9 +2079,9 @@ InstallMethodWithCache( PreSheaves,
         "for a category form data tables and a category",
         [ IsCategoryFromDataTables, IsCapCategory ],
         
-  function ( B, C )
+  function ( B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, C );
+    return PreSheavesOfFpEnrichedCategory( B, D );
     
 end );
 
@@ -2090,9 +2090,9 @@ InstallMethodWithCache( PreSheaves,
         "for a finite category and a category",
         [ IsCapCategory and IsFinite, IsCapCategory ],
         
-  function ( B, C )
+  function ( B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, C );
+    return PreSheavesOfFpEnrichedCategory( B, D );
     
 end );
 
@@ -2131,9 +2131,9 @@ InstallMethodWithCache( PreSheaves,
         "for an algebroid from data tables and a category",
         [ IsAlgebroidFromDataTables, IsCapCategory ],
         
-  function ( B, C )
+  function ( B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, C );
+    return PreSheavesOfFpEnrichedCategory( B, D );
     
 end );
 
@@ -2142,7 +2142,7 @@ InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
         [ IsCapCategory and IsInitialCategory, IsCapCategory ],
         
-  function ( B, C )
+  function ( B, D )
     local name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_object, create_func_morphism,
@@ -2150,8 +2150,8 @@ InstallMethodWithCache( PreSheaves,
     
     name := "PreSheaves( ";
     
-    if HasName( B ) and HasName( C ) then
-        name := Concatenation( name, Name( B ), ", ", Name( C ), " )" );
+    if HasName( B ) and HasName( D ) then
+        name := Concatenation( name, Name( B ), ", ", Name( D ), " )" );
     else
         name := Concatenation( name, "..., ... )" );
     fi;
@@ -2222,7 +2222,7 @@ InstallMethodWithCache( PreSheaves,
                  ) );
     
     SetSource( T, B );
-    SetRange( T, C );
+    SetRange( T, D );
     
     ##
     AddIsWellDefinedForObjects( T,
@@ -3064,13 +3064,13 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentable,
         [ IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory ],
         
   function ( PSh, objB, mor, F )
-    local B, C, Y, objs, f;
+    local B, D, Y, objs, f;
     
     B := Source( PSh );
-    C := Range( PSh );
+    D := Range( PSh );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( PSh ), C ) );
+    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( PSh ), D ) );
     
     Y := YonedaEmbeddingData( PSh )[1];
     
@@ -3080,7 +3080,7 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentable,
       function( source, srcB_index, range )
         local HomC_d_HomB_src_objB, HomB_srcB_objB, F_HomB_srcB_objB, taus;
         
-        HomC_d_HomB_src_objB := ExactCoverWithGlobalElements( C,
+        HomC_d_HomB_src_objB := ExactCoverWithGlobalElements( D,
                                         HomomorphismStructureOnObjects( B,
                                                 objs[srcB_index],
                                                 objB ) );
@@ -3092,11 +3092,11 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentable,
         F_HomB_srcB_objB := List( HomB_srcB_objB, F );
         
         taus := List( F_HomB_srcB_objB, m ->
-                      PreCompose( C,
+                      PreCompose( D,
                               mor,
                               m ) );
         
-        return UniversalMorphismFromCoproductWithGivenCoproduct( C,
+        return UniversalMorphismFromCoproductWithGivenCoproduct( D,
                        List( taus, Source ),
                        range,
                        taus,
@@ -3113,10 +3113,10 @@ InstallMethodForCompilerForCAP( MorphismFromCoproductOfRepresentables,
         [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ],
         
   function ( PSh, L, F )
-    local B, C, objs, cover_objB;
+    local B, D, objs, cover_objB;
     
     B := Source( PSh );
-    C := Range( PSh );
+    D := Range( PSh );
     
     objs := SetOfObjects( B );
     
@@ -3140,17 +3140,17 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, F )
-    local B, C, objs, homs, predicate, func, initial, cover;
+    local B, D, objs, homs, predicate, func, initial, cover;
     
     B := Source( PSh );
-    C := Range( PSh );
+    D := Range( PSh );
     
     objs := SetOfObjects( B );
     
     ## compute all Hom(-, objB) to order them by their lengths/dimension below
     homs := List( objs, objB ->
-                  ObjectDatum( C,
-                          Coproduct( C,
+                  ObjectDatum( D,
+                          Coproduct( D,
                                   List( objs, srcB -> HomomorphismStructureOnObjects( B, srcB, objB ) ) ) ) );
     
     predicate :=
@@ -3174,7 +3174,7 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
         im_emb := ListOfValues( ValuesOnAllObjects( ImageEmbedding( pi ) ) );
         
         ## the positions of the components im_emb_o of the natural transformation im_emb which are not epis:
-        pos_nontrivial := PositionsProperty( im_emb, im_emb_o -> not IsEpimorphism( C, im_emb_o ) );
+        pos_nontrivial := PositionsProperty( im_emb, im_emb_o -> not IsEpimorphism( D, im_emb_o ) );
         
         homs_relevant := homs{pos_nontrivial};
         
@@ -3182,7 +3182,7 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
         
         pos := pos_nontrivial[SafePosition( homs_relevant, max )];
         
-        return Concatenation( pi_data, [ Pair( objs[pos], NonliftableMorphismFromDistinguishedObject( C, im_emb[pos] ) ) ] );
+        return Concatenation( pi_data, [ Pair( objs[pos], NonliftableMorphismFromDistinguishedObject( D, im_emb[pos] ) ) ] );
         
     end;
     
@@ -3616,9 +3616,9 @@ end );
 InstallMethod( SimpleObjects,
         [ IsPreSheafCategory ],
   function ( PSh )
-    local C, defining_triple, obj_vals, mor_vals, simple_objs, i;
+    local D, defining_triple, obj_vals, mor_vals, simple_objs, i;
     
-    C := Range( PSh );
+    D := Range( PSh );
     
     defining_triple := DefiningTripleOfUnderlyingQuiver( Source( PSh ) );
     
@@ -3626,11 +3626,11 @@ InstallMethod( SimpleObjects,
     
     for i in [ 1 .. defining_triple[1] ] do
       
-      obj_vals := ListWithIdenticalEntries( defining_triple[1], ZeroObject( C ) );
+      obj_vals := ListWithIdenticalEntries( defining_triple[1], ZeroObject( D ) );
       
-      obj_vals[i] := TensorUnit( C );
+      obj_vals[i] := TensorUnit( D );
       
-      mor_vals := List( defining_triple[3], r -> ZeroMorphism( C, obj_vals[r[2]], obj_vals[r[1]] ) );
+      mor_vals := List( defining_triple[3], r -> ZeroMorphism( D, obj_vals[r[2]], obj_vals[r[1]] ) );
       
       simple_objs[i] := CreatePreSheafByValues( PSh, obj_vals, mor_vals );
       

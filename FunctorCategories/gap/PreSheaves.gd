@@ -246,7 +246,7 @@ DeclareOperation( "CreatePreSheafByValues", [ IsPreSheafCategory, IsList, IsList
 DeclareOperation( "CreatePreSheafByFunctions", [ IsPreSheafCategory, IsFunction, IsFunction ] );
 
 #! @Description
-#!  Turn the functor <C><A>F</A>:<A>B</A>^op</C> $\to$ <C>C</C> into an object in the category of functors <C><A>PSh</A> := PreSheaves( <A>B</A>, C )</C>.
+#!  Turn the functor <C><A>F</A>:<A>B</A>^op</C> $\to$ <C>D</C> into an object in the category of functors <C><A>PSh</A> := PreSheaves( <A>B</A>, D )</C>.
 #! @Arguments PSh, values_of_all_objects, values_of_all_generating_morphisms
 #! @Returns a presheaf
 #! @Group CreatePreSheaf

@@ -202,12 +202,12 @@ DeclareOperation( "ApplyMorphismInCoPreSheafCategoryToObject",
 ####################################
 
 #! @Description
-#!  Construct the category <C>CoPreSheaves(</C> <A>B</A>, <A>C</A> <C>)</C>=
-#!  <C>FunctorCategory(</C> <A>B</A>, <A>C</A> <C>)^op</C> of copresheaves
-#!  from the small category <A>B</A> to the category <A>C</A> as objects
+#!  Construct the category <C>CoPreSheaves(</C> <A>B</A>, <A>D</A> <C>)</C>=
+#!  <C>FunctorCategory(</C> <A>B</A>, <A>D</A> <C>)^op</C> of copresheaves
+#!  from the small category <A>B</A> to the category <A>D</A> as objects
 #!  and their natural transformations as morphisms.
 #! @Returns a &CAP; category
-#! @Arguments B, C
+#! @Arguments B, D
 #! @Group CoPreSheaves
 DeclareOperationWithCache( "CoPreSheaves",
         [ IsCapCategory, IsCapCategory ] );
