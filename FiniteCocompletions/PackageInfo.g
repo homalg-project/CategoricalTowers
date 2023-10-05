@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "FiniteCocompletions",
 Subtitle := "Finite (co)product/(co)limit (co)completions",
-Version := "2023.10-01",
-Date := "2023-10-04",
-Date := "2023-10-04",
+Version := "2023.10-02",
+Date := "2023-10-05",
+Date := "2023-10-05",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -71,12 +71,12 @@ Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2023.08-18" ],
+                   [ "CAP", ">= 2023.09-02" ],
                    [ "CartesianCategories", ">= 2023.06-01" ],
                    [ "MonoidalCategories", ">= 2023.02-04" ],
                    [ "Toposes", ">= 2023.06-04" ],
                    [ "CategoryConstructor", ">= 2023.08-01" ],
-                   [ "QuotientCategories", ">= 2023.09-02" ],
+                   [ "QuotientCategories", ">= 2023.10-01" ],
                    [ "Algebroids", ">= 2023.09-04" ],
                    [ "PreSheaves", ">= 2023.02-05" ],
                    ],

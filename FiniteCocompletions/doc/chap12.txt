@@ -41,7 +41,7 @@
   of [23Xl[123X copies of [10XRange[110X( [3XmorC[103X ), where [23Xl :=[123X [10XObjectDatum[110X( [3XobjH[103X ).[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", ">= 2023.10-04" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xq := RightQuiver( "q(o)[x:o->o]" );[127X[104X
     [4X[28Xq(o)[x:o->o][128X[104X
@@ -103,7 +103,7 @@
     [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations,[128X[104X
     [4X[28XRows( Q ) ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27XMphi_as_coequqlizer_pair := CoYonedaLemmaOnObjects( Mphi );[127X[104X
-    [4X[28X<An object in PairOfParallelArrowsCategory( Additive closure([128X[104X
+    [4X[28X<An object in CoequalizerCompletion( Additive closure([128X[104X
     [4X[28X Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( Mphi_as_coequqlizer_pair );[127X[104X
     [4X[28XImage of <(V)>:[128X[104X
@@ -149,6 +149,14 @@
     [4X[28Xrelations ) ) given by the above data[128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in PairOfParallelArrowsCategory( Additive closure([128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in QuotientCategory( PairOfParallelArrowsCategory( Additive closure([128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) ) )[128X[104X
+    [4X[28Xdefined by the congruence function unknown given by the above data[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in CoequalizerCompletion( Additive closure([128X[104X
     [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xphi_in_additive_closure :=[127X[104X

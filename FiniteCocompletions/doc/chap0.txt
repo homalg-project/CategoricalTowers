@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2023.10-01
+                                   2023.10-02
   
   
-                                 4 October 2023
+                                 5 October 2023
   
   
                                 Mohamed Barakat
@@ -128,7 +128,9 @@
       6.3-3 IsObjectInCoequalizerCompletion
       6.3-4 IsMorphismInCoequalizerCompletion
     6.4 [33X[0;0YExamples[133X
-      6.4-1 [33X[0;0YFree elementary topos on one object[133X
+      6.4-1 [33X[0;0YFinBouquets as finite colimit completion[133X
+      6.4-2 [33X[0;0YFinReflexiveQuivers as finite colimit completion[133X
+      6.4-3 [33X[0;0YFree elementary topos on one object[133X
   7 [33X[0;0YThe category of colimit quivers in a category[133X
     7.1 [33X[0;0YAttributes[133X
       7.1-1 DefiningPairOfColimitQuiver
