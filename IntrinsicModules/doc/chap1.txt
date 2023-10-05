@@ -406,8 +406,8 @@
   [30X    [33X[0;6Y[2XInverseForMorphisms[102X        ([14XCAP:        InverseForMorphisms        for
         IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XInverseMorphismFromCoimageToImageWithGivenObjects[102X                ([14XCAP:
-        InverseMorphismFromCoimageToImageWithGivenObjects                  for
+  [30X    [33X[0;6Y[2XInverseOfMorphismFromCoimageToImageWithGivenObjects[102X              ([14XCAP:
+        InverseOfMorphismFromCoimageToImageWithGivenObjects                for
         IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XIsAutomorphism[102X ([14XCAP: IsAutomorphism for IsCapCategoryMorphism[114X)[133X
