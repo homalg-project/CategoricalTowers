@@ -120,7 +120,7 @@
 #! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InverseForMorphisms" Label="for Is" />
-#! * <Ref BookName="CAP" Func="InverseMorphismFromCoimageToImageWithGivenObjects" Label="for Is" />
+#! * <Ref BookName="CAP" Func="InverseOfMorphismFromCoimageToImageWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsAutomorphism" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsCodominating" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsCongruentForMorphisms" Label="for Is" />
