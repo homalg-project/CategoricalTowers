@@ -9,7 +9,7 @@ Display( srepG );
 #! A CAP category with name The representation category
 #! of SymmetricGroup( [ 1 .. 4 ] ):
 #! 
-#! 44 primitive operations were used to derive 345 operations for this category
+#! 44 primitive operations were used to derive 347 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing

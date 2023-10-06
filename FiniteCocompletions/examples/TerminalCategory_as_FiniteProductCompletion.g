@@ -8,7 +8,7 @@ T := FiniteStrictProductCompletion( InitialCategory( ) );
 Display( T );
 #! A CAP category with name FiniteStrictProductCompletion( InitialCategory( ) ):
 #! 
-#! 91 primitive operations were used to derive 493 operations for this category
+#! 91 primitive operations were used to derive 495 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
