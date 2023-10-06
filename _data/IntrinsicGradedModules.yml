@@ -1,7 +1,7 @@
 name: IntrinsicGradedModules
-version: "2023.10-03"
+version: "2023.10-04"
 license: "GPL-2.0-or-later"
-date: 2023-10-05
+date: 2023-10-06
 description: |
     Finitely presented graded modules over computable graded rings allowing multiple presentations and the notion of elements
 
@@ -36,7 +36,7 @@ needed-pkgs:
       version: ">= 2021.04-03"
       url: "https://homalg-project.github.io/pkg/GradedModules"
     - name: "CAP"
-      version: ">= 2023.10-03"
+      version: ">= 2023.10-04"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
       version: ">= 2023.02-04"
@@ -69,11 +69,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/IntrinsicGradedM
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.10-03/IntrinsicGradedModules-2023.10-03.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.10-04/IntrinsicGradedModules-2023.10-04.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.10-03/IntrinsicGradedModules-2023.10-03.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.10-04/IntrinsicGradedModules-2023.10-04.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.10-03/IntrinsicGradedModules-2023.10-03-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.10-04/IntrinsicGradedModules-2023.10-04-manual.pdf
 
 abstract: |
 
@@ -84,24 +84,24 @@ keywords: |
     module, finite presentation, computable ring.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BS05</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+    [<span class='BibKey'>BS06</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>IntrinsicGradedModules, Finitely presented graded modules over computable graded rings allowing multiple presentations and the notion of elements,
-             Version 2023.10-03</i>
-     (<span class='BibYear'>0-05</span>)<br />
+             Version 2023.10-04</i>
+     (<span class='BibYear'>0-06</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/IntrinsicGradedModules">https://homalg-project.github.io/pkg/IntrinsicGradedModules</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ IntrinsicGradedModules2023.10-03,
+    @misc{ IntrinsicGradedModules2023.10-04,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{IntrinsicGradedModules},  Finitely  presented  graded
                           modules over computable graded rings allowing multiple
                           presentations  and  the  notion of elements, {V}ersion
-                          2023.10-03},
+                          2023.10-04},
       month =            {3-},
-      year =             {0-05},
+      year =             {0-06},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/IntrinsicGradedModules}
@@ -109,6 +109,6 @@ bibtex: |
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{IntrinsicGradedModules}}},
       keywords =         {module; finite presentation; computable ring},
-      printedkey =       {BS05}
+      printedkey =       {BS06}
     }
 
