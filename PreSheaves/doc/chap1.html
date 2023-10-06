@@ -77,7 +77,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Source</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<p>The source category <span class="Math">C</span> of the presheaf category <var class="Arg">PSh</var>=<code class="code">PSh</code>(<span class="Math">C,V</span>).</p>
+<p>The source category <span class="Math">C</span> of the presheaf category <var class="Arg">PSh</var>=<code class="code">PSh</code>(<span class="Math">C, D</span>).</p>
 
 <p><a id="X838E862B7AC83916" name="X838E862B7AC83916"></a></p>
 
@@ -86,7 +86,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Range</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<p>The range category <span class="Math">V</span> of the presheaf category <var class="Arg">PSh</var>=<code class="code">PSh</code>(<span class="Math">C,V</span>).</p>
+<p>The range category <span class="Math">D</span> of the presheaf category <var class="Arg">PSh</var>=<code class="code">PSh</code>(<span class="Math">C, D</span>).</p>
 
 <p><a id="X79A122997F8C0837" name="X79A122997F8C0837"></a></p>
 
@@ -95,7 +95,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OppositeOfSource</code>( <var class="Arg">Hom</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<p>The opposite <span class="Math">C^\mathrm{op}</span> of the source category <span class="Math">C</span> of the presheaf category <var class="Arg">PSh</var>=<code class="code">PSh</code>(<span class="Math">C,V</span>).</p>
+<p>The opposite <span class="Math">C^\mathrm{op}</span> of the source category <span class="Math">C</span> of the presheaf category <var class="Arg">PSh</var>=<code class="code">PSh</code>(<span class="Math">C, D</span>).</p>
 
 <p><a id="X87E3230F7D81CE6D" name="X87E3230F7D81CE6D"></a></p>
 
@@ -140,11 +140,11 @@
 
 <h5>1.2-1 PreSheaves</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreSheaves</code>( <var class="Arg">B</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreSheaves</code>( <var class="Arg">B</var>, <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreSheaves</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<p>Construct the category <code class="code">Hom( <var class="Arg">B</var>^op, <var class="Arg">C</var> )</code> of functors from the opposite of the small category <var class="Arg">B</var> to the category <var class="Arg">C</var> as objects and their natural transformations as morphisms.</p>
+<p>Construct the category <code class="code">Hom( <var class="Arg">B</var>^op, <var class="Arg">D</var> )</code> of functors from the opposite of the small category <var class="Arg">B</var> to the category <var class="Arg">D</var> as objects and their natural transformations as morphisms.</p>
 
 <p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
 
@@ -308,7 +308,7 @@ PreSheaves( SkeletalFinSets, SkeletalFinSets )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( PSh );</span>
 A CAP category with name PreSheaves( SkeletalFinSets, SkeletalFinSets ):
 
-43 primitive operations were used to derive 156 operations for this category
+46 primitive operations were used to derive 165 operations for this category
 which not yet algorithmically
 * IsFiniteCocompleteCategory
 * IsFiniteCompleteCategory
