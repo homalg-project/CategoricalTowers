@@ -134,13 +134,13 @@
   
   [1X12.4-1 CoPreSheaves[101X
   
-  [33X[1;0Y[29X[2XCoPreSheaves[102X( [3XB[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoPreSheaves[102X( [3XB[103X, [3XD[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XCoPreSheaves[102X( [3XB[103X, [3Xk[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XCoPreSheaves[102X( [3XB[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YConstruct  the  category [10XCoPreSheaves([110X [3XB[103X, [3XC[103X [10X)[110X= [10XFunctorCategory([110X [3XB[103X, [3XC[103X [10X)^op[110X of
-  copresheaves  from  the  small  category  [3XB[103X to the category [3XC[103X as objects and
+  [33X[0;0YConstruct  the  category [10XCoPreSheaves([110X [3XB[103X, [3XD[103X [10X)[110X= [10XFunctorCategory([110X [3XB[103X, [3XD[103X [10X)^op[110X of
+  copresheaves  from  the  small  category  [3XB[103X to the category [3XD[103X as objects and
   their natural transformations as morphisms.[133X
   
   [1X12.4-2 CreateCoPreSheaf[101X
@@ -150,8 +150,8 @@
   [33X[1;0Y[29X[2XCreateCoPreSheaf[102X( [3XB[103X, [3Ximages_of_objects[103X, [3Ximages_of_morphisms[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object in a [5XCAP[105X category[133X
   
-  [33X[0;0YTurn  the functor [10X[3XF[103X[10X:[3XB[103X[10X[110X [23X\to[123X [10XC[110X into an object in the category of functors [10X[3XcoPSh[103X[10X
-  :=  CoPreSheaves(  [3XB[103X[10X, C )[110X. An alternative input is the source category [3XB[103X and
+  [33X[0;0YTurn  the functor [10X[3XF[103X[10X:[3XB[103X[10X[110X [23X\to[123X [10XD[110X into an object in the category of functors [10X[3XcoPSh[103X[10X
+  :=  CoPreSheaves(  [3XB[103X[10X, D )[110X. An alternative input is the source category [3XB[103X and
   two defining records [3Xrec_images_of_objects[103X and [3Xrec_images_of_morphisms[103X of [3XF[103X.
   Another  alternative  input  is the source category [3XB[103X and two defining lists
   [3Ximages_of_objects[103X  and  [3Ximages_of_morphisms[103X of [3XF[103X. The order of their entries
