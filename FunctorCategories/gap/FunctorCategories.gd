@@ -245,12 +245,12 @@ DeclareOperation( "ApplyMorphismInFunctorCategoryToObject",
 ####################################
 
 #! @Description
-#!  Construct the category <C>FunctorCategory(</C> <A>B</A>, <A>C</A> <C>)</C>=
-#!  <C>Hom(</C> <A>B</A>, <A>C</A> <C>)</C> of functors from the small category
-#!  <A>B</A> to the category <A>C</A> as objects
+#!  Construct the category <C>FunctorCategory(</C> <A>B</A>, <A>D</A> <C>)</C>=
+#!  <C>Hom(</C> <A>B</A>, <A>D</A> <C>)</C> of functors from the small category
+#!  <A>B</A> to the category <A>D</A> as objects
 #!  and their natural transformations as morphisms.
 #! @Returns a &CAP; category
-#! @Arguments B, C
+#! @Arguments B, D
 #! @Group FunctorCategory
 DeclareOperationWithCache( "FunctorCategory",
         [ IsCapCategory, IsCapCategory ] );
@@ -265,7 +265,7 @@ DeclareOperationWithCache( "FunctorCategory",
 DeclareOperationWithCache( "FunctorCategory",
         [ IsCapCategory ] );
 
-#! @Arguments B, C
+#! @Arguments B, D
 #! @Group FunctorCategory
 DeclareOperation( "Hom",
         [ IsCapCategory, IsCapCategory ] );
@@ -280,7 +280,7 @@ DeclareOperation( "AsObjectInFunctorCategoryByValues", [ IsFunctorCategory, IsLi
 DeclareOperation( "AsObjectInFunctorCategoryByFunctions", [ IsFunctorCategory, IsFunction, IsFunction ] );
 
 #! @Description
-#!  Turn the functor <C><A>F</A>:<A>B</A></C> $\to$ <C>C</C> into an object in the category of functors <C><A>Hom</A> := Hom( <A>B</A>, C )</C>.
+#!  Turn the functor <C><A>F</A>:<A>B</A></C> $\to$ <C>D</C> into an object in the category of functors <C><A>Hom</A> := Hom( <A>B</A>, D )</C>.
 #! @Arguments Hom, values_of_all_objects, values_of_all_generating_morphisms
 #! @Returns an object in a &CAP; category
 #! @Group AsObjectInFunctorCategory
@@ -321,7 +321,7 @@ DeclareOperation( "AsMorphismInFunctorCategoryByValues",
 #! @Description
 #!  Turn the natrual transformation <A>eta</A>:$F \to G$ into a morphism
 #!  <C><A>U</A> := AsObjectInFunctorCategory( F )</C> $\to$ <C><A>V</A> := AsObjectInFunctorCategory( G )</C>
-#!  in the category of functors <C><A>Hom</A> := Hom( B, C )</C>, where
+#!  in the category of functors <C><A>Hom</A> := Hom( B, D )</C>, where
 #!  <C>B := Source( F ) = Source( G )</C> and <C>C := Range( F ) = Range( G )</C>.
 #! @Arguments eta
 #! @Group AsMorphismInFunctorCategory

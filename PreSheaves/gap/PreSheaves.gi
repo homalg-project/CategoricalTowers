@@ -15,6 +15,8 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY,
         [ 
           "AdditionForMorphisms",
           "AdditiveInverseForMorphisms",
+          "AstrictionToCoimage",
+          "AstrictionToCoimageWithGivenCoimageObject",
           "CoastrictionToImage",
           "CoastrictionToImageWithGivenImageObject",
           "Coequalizer",
@@ -26,6 +28,9 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY,
           "CokernelProjection",
           "CokernelProjectionWithGivenCokernelObject",
           "ColiftAlongEpimorphism",
+          "CoimageObject",
+          "CoimageProjection",
+          "CoimageProjectionWithGivenCoimageObject",
           "ComponentOfMorphismFromDirectSum",
           "ComponentOfMorphismIntoDirectSum",
           "Coproduct",
@@ -264,7 +269,7 @@ InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
         [ IsCapCategory, IsCapCategory ],
         
-  function ( B, C )
+  function ( B, D )
     local B_op, name, list_of_operations,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
@@ -276,8 +281,8 @@ InstallMethodWithCache( PreSheaves,
     
     name := "PreSheaves( ";
     
-    if HasName( B ) and HasName( C ) then
-        name := Concatenation( name, Name( B ), ", ", Name( C ), " )" );
+    if HasName( B ) and HasName( D ) then
+        name := Concatenation( name, Name( B ), ", ", Name( D ), " )" );
     else
         name := Concatenation( name, "..., ... )" );
     fi;
@@ -330,15 +335,15 @@ InstallMethodWithCache( PreSheaves,
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, objC, presheaf_on_objects, presheaf_on_morphisms;
+                local D, objD, presheaf_on_objects, presheaf_on_morphisms;
                 
-                C := Range( cat );
+                D := Range( cat );
                 
-                objC := operation_name( C );
+                objD := operation_name( D );
                 
-                presheaf_on_objects := objB -> objC;
+                presheaf_on_objects := objB -> objD;
                 
-                presheaf_on_morphisms := { new_source, morB, new_range } -> functorial_with_given_objects( C, new_source, new_range );
+                presheaf_on_morphisms := { new_source, morB, new_range } -> functorial_with_given_objects( D, new_source, new_range );
                 
                 return ObjectConstructor( cat, Pair( presheaf_on_objects, presheaf_on_morphisms ) );
                 
@@ -352,9 +357,9 @@ InstallMethodWithCache( PreSheaves,
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, i_arg, etas, presheaf_on_objects, presheaf_on_morphisms;
+                local D, i_arg, etas, presheaf_on_objects, presheaf_on_morphisms;
                 
-                C := Range( cat );
+                D := Range( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
@@ -374,7 +379,7 @@ InstallMethodWithCache( PreSheaves,
                         
                     end;
                     
-                    return operation_name( C, List( etas, func_obj ) );
+                    return operation_name( D, List( etas, func_obj ) );
                     
                 end;
                 
@@ -414,7 +419,7 @@ InstallMethodWithCache( PreSheaves,
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
                     
-                    return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
+                    return functorial_helper( D, new_source, L[1], L[2], L[3], L[4], new_range );
                     
                 end;
                 
@@ -430,9 +435,9 @@ InstallMethodWithCache( PreSheaves,
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, i_arg, object, etas, presheaf_on_objects, presheaf_on_morphisms;
+                local D, i_arg, object, etas, presheaf_on_objects, presheaf_on_morphisms;
                 
-                C := Range( cat );
+                D := Range( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
@@ -453,7 +458,7 @@ InstallMethodWithCache( PreSheaves,
                         
                     end;
                     
-                    return operation_name( C,
+                    return operation_name( D,
                                    PairOfFunctionsOfPreSheaf( object )[1]( objB ),
                                    List( etas, func_obj ) );
                     
@@ -495,7 +500,7 @@ InstallMethodWithCache( PreSheaves,
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
                     
-                    return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
+                    return functorial_helper( D, new_source, L[1], L[2], L[3], L[4], new_range );
                     
                 end;
                 
@@ -511,19 +516,19 @@ InstallMethodWithCache( PreSheaves,
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, i_arg, Fs, presheaf_on_objects, presheaf_on_morphisms;
+                local D, i_arg, Fs, presheaf_on_objects, presheaf_on_morphisms;
                 
-                C := Range( cat );
+                D := Range( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
                 Fs := i_arg[2];
                 
                 presheaf_on_objects := objB ->
-                                       operation_name( C, List( Fs, F -> PairOfFunctionsOfPreSheaf( F )[1]( objB ) ) );
+                                       operation_name( D, List( Fs, F -> PairOfFunctionsOfPreSheaf( F )[1]( objB ) ) );
                 
                 presheaf_on_morphisms := { new_source, morB, new_range } ->
-                                         functorial( C,
+                                         functorial( D,
                                                  new_source,
                                                  List( Fs, F ->
                                                        PairOfFunctionsOfPreSheaf( F )[2](
@@ -544,9 +549,9 @@ InstallMethodWithCache( PreSheaves,
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, i_arg, eta, presheaf_on_objects, presheaf_on_morphisms;
+                local D, i_arg, eta, presheaf_on_objects, presheaf_on_morphisms;
                 
-                C := Range( cat );
+                D := Range( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
@@ -555,7 +560,7 @@ InstallMethodWithCache( PreSheaves,
                 presheaf_on_objects :=
                   function( objB )
                     
-                    return operation_name( C,
+                    return operation_name( D,
                                    FunctionOfPreSheafMorphism( eta )(
                                            PairOfFunctionsOfPreSheaf( Source( eta ) )[1]( objB ),
                                            objB,
@@ -588,7 +593,7 @@ InstallMethodWithCache( PreSheaves,
                            eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
                            ];
                     
-                    return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
+                    return functorial_helper( D, new_source, L[1], L[2], L[3], L[4], new_range );
                     
                 end;
                 
@@ -617,16 +622,16 @@ InstallMethodWithCache( PreSheaves,
           ReplacedStringViaRecord(
           """
           function ( input_arguments... )
-            local C, i_arg, natural_transformation_on_objects;
+            local D, i_arg, natural_transformation_on_objects;
             
-            C := Range( cat );
+            D := Range( cat );
             
             i_arg := NTuple( number_of_arguments, input_arguments... );
             
             natural_transformation_on_objects :=
               function ( source, objB, range )
                 
-                return operation_name( C, sequence_of_arguments_objB... );
+                return operation_name( D, sequence_of_arguments_objB... );
                 
             end;
             
@@ -662,7 +667,7 @@ InstallMethodWithCache( PreSheaves,
     end;
     
     ## we cannot use ListPrimitivelyInstalledOperationsOfCategory since the unique lifts/colifts might be missing
-    list_of_operations_to_install := ShallowCopy( ListInstalledOperationsOfCategory( C ) );
+    list_of_operations_to_install := ShallowCopy( ListInstalledOperationsOfCategory( D ) );
     list_of_operations_to_install := Intersection( list_of_operations_to_install, list_of_operations );
     
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
@@ -678,8 +683,8 @@ InstallMethodWithCache( PreSheaves,
     
     list_of_operations_to_install := Difference( list_of_operations_to_install, skip );
     
-    if IsBound( C!.supports_empty_limits ) then
-        supports_empty_limits := C!.supports_empty_limits;
+    if IsBound( D!.supports_empty_limits ) then
+        supports_empty_limits := D!.supports_empty_limits;
     else
         supports_empty_limits := false;
     fi;
@@ -705,9 +710,9 @@ InstallMethodWithCache( PreSheaves,
     
     Append( properties, CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "properties", [ ] ) );
     
-    properties := Intersection( ListKnownCategoricalProperties( C ), properties );
+    properties := Intersection( ListKnownCategoricalProperties( D ), properties );
     
-    properties := Filtered( properties, p -> ValueGlobal( p )( C ) );
+    properties := Filtered( properties, p -> ValueGlobal( p )( D ) );
     
     category_constructor_options :=
       rec( name := name,
@@ -727,14 +732,14 @@ InstallMethodWithCache( PreSheaves,
            create_func_morphism := create_func_morphism,
            );
     
-    if HasCommutativeRingOfLinearCategory( C ) then
-        category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( C );
+    if HasCommutativeRingOfLinearCategory( D ) then
+        category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( D );
     fi;
     
     PSh := CategoryConstructor( category_constructor_options );
     
     SetSource( PSh, B );
-    SetRange( PSh, C );
+    SetRange( PSh, D );
     SetOppositeOfSource( PSh, B_op );
     
     PSh!.compiler_hints.category_attribute_names :=
@@ -745,14 +750,14 @@ InstallMethodWithCache( PreSheaves,
     
     ## this code should become obsolete with following feature request:
     ## https://github.com/homalg-project/CAP_project/issues/801
-    if CanCompute( C, "MorphismBetweenDirectSumsWithGivenDirectSums" ) then
+    if CanCompute( D, "MorphismBetweenDirectSumsWithGivenDirectSums" ) then
         
         ##
         AddMorphismBetweenDirectSumsWithGivenDirectSums( PSh,
           function ( PSh, S, diagram_S, M, diagram_T, T )
-            local C, S_o, T_o, natural_transformation_on_objects;
+            local D, S_o, T_o, natural_transformation_on_objects;
             
-            C := Range( PSh );
+            D := Range( PSh );
             
             S_o := PairOfFunctionsOfPreSheaf( S )[1];
             T_o := PairOfFunctionsOfPreSheaf( T )[1];
@@ -765,7 +770,7 @@ InstallMethodWithCache( PreSheaves,
                 T_list := List( diagram_T, Ti -> PairOfFunctionsOfPreSheaf( Ti )[1]( objB ) );
                 
                 return MorphismBetweenDirectSumsWithGivenDirectSums(
-                               C,
+                               D,
                                S_o( objB ),
                                S_list,
                                List( [ 1 .. Length( S_list ) ], i->
@@ -785,20 +790,20 @@ InstallMethodWithCache( PreSheaves,
         
     fi;
     
-    if HasCommutativeRingOfLinearCategory( C ) then
+    if HasCommutativeRingOfLinearCategory( D ) then
         
-        SetCommutativeRingOfLinearCategory( PSh, CommutativeRingOfLinearCategory( C ) );
+        SetCommutativeRingOfLinearCategory( PSh, CommutativeRingOfLinearCategory( D ) );
         
     fi;
     
-    if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
+    if CanCompute( D, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
         
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( PSh,
           function ( PSh, r, eta )
-            local C, source_eta, range_eta, eta_func, natural_transformation_on_objects;
+            local D, source_eta, range_eta, eta_func, natural_transformation_on_objects;
             
-            C := Range( PSh );
+            D := Range( PSh );
             
             source_eta := PairOfFunctionsOfPreSheaf( Source( eta ) )[1];
             range_eta := PairOfFunctionsOfPreSheaf( Range( eta ) )[1];
@@ -807,7 +812,7 @@ InstallMethodWithCache( PreSheaves,
             natural_transformation_on_objects :=
               function ( source, objB, range )
                 
-                return MultiplyWithElementOfCommutativeRingForMorphisms( C, r,
+                return MultiplyWithElementOfCommutativeRingForMorphisms( D, r,
                                eta_func(
                                        source_eta( objB ),
                                        objB,
@@ -821,7 +826,7 @@ InstallMethodWithCache( PreSheaves,
         
     fi;
     
-    AddToToDoList( ToDoListEntry( [ [ PSh, "IsFinalized", true ] ], function ( ) IdentityFunctor( PSh )!.UnderlyingFunctor := IdentityFunctor( C ); end ) );
+    AddToToDoList( ToDoListEntry( [ [ PSh, "IsFinalized", true ] ], function ( ) IdentityFunctor( PSh )!.UnderlyingFunctor := IdentityFunctor( D ); end ) );
     
     Finalize( PSh );
     
@@ -834,7 +839,7 @@ InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
         [ IsCapCategory and IsInitialCategory, IsCapCategory ],
         
-  function ( B, C )
+  function ( B, D )
     local name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_object, create_func_morphism,
@@ -842,8 +847,8 @@ InstallMethodWithCache( PreSheaves,
     
     name := "PreSheaves( ";
     
-    if HasName( B ) and HasName( C ) then
-        name := Concatenation( name, Name( B ), ", ", Name( C ), " )" );
+    if HasName( B ) and HasName( D ) then
+        name := Concatenation( name, Name( B ), ", ", Name( D ), " )" );
     else
         name := Concatenation( name, "..., ... )" );
     fi;
@@ -920,7 +925,7 @@ InstallMethodWithCache( PreSheaves,
                  ) );
     
     SetSource( T, B );
-    SetRange( T, C );
+    SetRange( T, D );
     
     ##
     AddIsWellDefinedForObjects( T,

@@ -246,7 +246,7 @@ DeclareOperation( "CreatePreSheafByValues", [ IsPreSheafCategory, IsList, IsList
 DeclareOperation( "CreatePreSheafByFunctions", [ IsPreSheafCategory, IsFunction, IsFunction ] );
 
 #! @Description
-#!  Turn the functor <C><A>F</A>:<A>B</A>^op</C> $\to$ <C>C</C> into an object in the category of functors <C><A>PSh</A> := PreSheaves( <A>B</A>, C )</C>.
+#!  Turn the functor <C><A>F</A>:<A>B</A>^op</C> $\to$ <C>D</C> into an object in the category of functors <C><A>PSh</A> := PreSheaves( <A>B</A>, D )</C>.
 #! @Arguments PSh, values_of_all_objects, values_of_all_generating_morphisms
 #! @Returns a presheaf
 #! @Group CreatePreSheaf
@@ -287,7 +287,7 @@ DeclareOperation( "CreatePreSheafMorphismByValues",
 #! @Description
 #!  Turn the natrual transformation <A>eta</A>:$F \to G$ into a morphism
 #!  <C><A>U</A> := AsObjectInFunctorCategory( F )</C> $\to$ <C><A>V</A> := AsObjectInFunctorCategory( G )</C>
-#!  in the category of functors <C><A>Hom</A> := Hom( B, C )</C>, where
+#!  in the category of functors <C><A>Hom</A> := Hom( B, D )</C>, where
 #!  <C>B := Source( F ) = Source( G )</C> and <C>C := Range( F ) = Range( G )</C>.
 #! @Arguments eta
 #! @Group CreatePreSheafMorphism

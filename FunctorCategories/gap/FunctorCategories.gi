@@ -419,7 +419,7 @@ InstallMethodWithCache( FunctorCategory,
         "for a CAP category",
         [ IsCapCategory, IsCapCategory ],
         
-  function( B, C )
+  function( B, D )
     local object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           B_op, defining_triple, PSh,
@@ -430,8 +430,8 @@ InstallMethodWithCache( FunctorCategory,
     ##
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( C ) ),
-              CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) );
+              CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( D ) ),
+              CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) ) );
     
     ##
     object_constructor := AsObjectInFunctorCategoryByValues;
@@ -441,7 +441,7 @@ InstallMethodWithCache( FunctorCategory,
     
     ##
     morphism_datum_type :=
-      CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) );
+      CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) );
     
     ##
     morphism_constructor := AsMorphismInFunctorCategoryByValues;
@@ -467,7 +467,7 @@ InstallMethodWithCache( FunctorCategory,
         Error( "the first argument must be in { IsFpCategory, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsInitialCategory, IsAlgebroid }\n" );
     fi;
     
-    PSh := PreSheaves( B_op, C : FinalizeCategory := true );
+    PSh := PreSheaves( B_op, D : FinalizeCategory := true );
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
@@ -516,7 +516,7 @@ InstallMethodWithCache( FunctorCategory,
     ##
     Hom :=
       ReinterpretationOfCategory( PSh,
-              rec( name := Concatenation( "FunctorCategory( ", Name( B ), ", ", Name( C ), " )" ),
+              rec( name := Concatenation( "FunctorCategory( ", Name( B ), ", ", Name( D ), " )" ),
                    category_filter := IsFunctorCategory,
                    category_object_filter := IsObjectInFunctorCategory,
                    category_morphism_filter := IsMorphismInFunctorCategory,
@@ -533,7 +533,7 @@ InstallMethodWithCache( FunctorCategory,
                    only_primitive_operations := true )
               : FinalizeCategory := false );
     
-    if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
+    if HasIsMonoidalCategory( D ) and IsMonoidalCategory( D ) and
        HasCounit( B ) and HasComultiplication( B ) then
         
         properties := [ "IsMonoidalCategory",
@@ -552,27 +552,27 @@ InstallMethodWithCache( FunctorCategory,
         
         Append( properties, doctrines );
         
-        for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
+        for name in Intersection( ListKnownCategoricalProperties( D ), properties ) do
             name := ValueGlobal( name );
             
-            Setter( name )( Hom, name( C ) );
+            Setter( name )( Hom, name( D ) );
             
         od;
         
         AddTensorUnit( Hom,
           function ( Hom )
-            local B, C, I_C, functor_on_objects, counit, id, mors, functor_on_morphisms;
+            local B, D, I_D, functor_on_objects, counit, id, mors, functor_on_morphisms;
             
             B := Source( Hom );
-            C := Range( Hom );
+            D := Range( Hom );
             
-            I_C := TensorUnit( C );
+            I_D := TensorUnit( D );
             
-            functor_on_objects := objB_index -> I_C;
+            functor_on_objects := objB_index -> I_D;
             
             counit := Counit( B );
             
-            id := IdentityMorphism( C, I_C );
+            id := IdentityMorphism( D, I_D );
             
             mors := SetOfGeneratingMorphisms( B );
             
@@ -600,15 +600,15 @@ InstallMethodWithCache( FunctorCategory,
         
         AddTensorProductOnObjects( Hom,
           function ( Hom, F, G )
-            local B, C, F_o_vals, G_o_vals, functor_on_objects, comult, mors, functor_on_morphisms;
+            local B, D, F_o_vals, G_o_vals, functor_on_objects, comult, mors, functor_on_morphisms;
             
             B := Source( Hom );
-            C := Range( Hom );
+            D := Range( Hom );
             
             F_o_vals := ValuesOfFunctor( F )[1];
             G_o_vals := ValuesOfFunctor( G )[1];
             
-            functor_on_objects := objB_index -> TensorProductOnObjects( C, F_o_vals[objB_index], G_o_vals[objB_index] );
+            functor_on_objects := objB_index -> TensorProductOnObjects( D, F_o_vals[objB_index], G_o_vals[objB_index] );
             
             comult := Comultiplication( B );
             
@@ -623,8 +623,8 @@ InstallMethodWithCache( FunctorCategory,
                 Delta := DecompositionOfMorphismInSquareOfAlgebroid( Delta );
                 
                 return Sum( List( Delta,
-                               s -> s[1] * PreComposeList( C, List( s[2],
-                                       t -> TensorProductOnMorphisms( C, F( t[1] ), G( t[2] ) ) ) ) ) );
+                               s -> s[1] * PreComposeList( D, List( s[2],
+                                       t -> TensorProductOnMorphisms( D, F( t[1] ), G( t[2] ) ) ) ) ) );
                 
             end;
             
@@ -634,14 +634,14 @@ InstallMethodWithCache( FunctorCategory,
         
         AddDualOnObjects( Hom,
           function ( Hom, F )
-            local B, C, F_o_vals, functor_on_objects, antipode, mors, functor_on_morphisms;
+            local B, D, F_o_vals, functor_on_objects, antipode, mors, functor_on_morphisms;
             
             B := Source( Hom );
-            C := Range( Hom );
+            D := Range( Hom );
             
             F_o_vals := ValuesOfFunctor( F )[1];
             
-            functor_on_objects := objB_index -> DualOnObjects( C, F_o_vals[objB_index] );
+            functor_on_objects := objB_index -> DualOnObjects( D, F_o_vals[objB_index] );
             
             antipode := Antipode( B );
             
@@ -654,8 +654,8 @@ InstallMethodWithCache( FunctorCategory,
                 S := DecompositionOfMorphismInAlgebroid( ApplyFunctor( antipode, mors[morB_index] ) );
                 
                 return Sum( List( S,
-                               s -> s[1] * PreComposeList( C, List( s[2],
-                                       t -> DualOnMorphisms( C, F( t ) ) ) ) ) );
+                               s -> s[1] * PreComposeList( D, List( s[2],
+                                       t -> DualOnMorphisms( D, F( t ) ) ) ) ) );
                 
             end;
             
@@ -666,7 +666,7 @@ InstallMethodWithCache( FunctorCategory,
     fi;
     
     SetSource( Hom, B );
-    SetRange( Hom, C );
+    SetRange( Hom, D );
     
     SetSetOfObjects( Hom, SetOfObjects( B ) );
     SetSetOfGeneratingMorphisms( Hom, SetOfGeneratingMorphisms( B ) );

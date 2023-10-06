@@ -202,12 +202,12 @@ DeclareOperation( "ApplyMorphismInCoPreSheafCategoryToObject",
 ####################################
 
 #! @Description
-#!  Construct the category <C>CoPreSheaves(</C> <A>B</A>, <A>C</A> <C>)</C>=
-#!  <C>FunctorCategory(</C> <A>B</A>, <A>C</A> <C>)^op</C> of copresheaves
-#!  from the small category <A>B</A> to the category <A>C</A> as objects
+#!  Construct the category <C>CoPreSheaves(</C> <A>B</A>, <A>D</A> <C>)</C>=
+#!  <C>FunctorCategory(</C> <A>B</A>, <A>D</A> <C>)^op</C> of copresheaves
+#!  from the small category <A>B</A> to the category <A>D</A> as objects
 #!  and their natural transformations as morphisms.
 #! @Returns a &CAP; category
-#! @Arguments B, C
+#! @Arguments B, D
 #! @Group CoPreSheaves
 DeclareOperationWithCache( "CoPreSheaves",
         [ IsCapCategory, IsCapCategory ] );
@@ -231,7 +231,7 @@ DeclareOperation( "CreateCoPreSheafByValues", [ IsCoPreSheafCategory, IsList, Is
 DeclareOperation( "CreateCoPreSheafByFunctions", [ IsCoPreSheafCategory, IsFunction, IsFunction ] );
 
 #! @Description
-#!  Turn the functor <C><A>F</A>:<A>B</A></C> $\to$ <C>C</C> into an object in the category of functors <C><A>coPSh</A> := CoPreSheaves( <A>B</A>, C )</C>.
+#!  Turn the functor <C><A>F</A>:<A>B</A></C> $\to$ <C>D</C> into an object in the category of functors <C><A>coPSh</A> := CoPreSheaves( <A>B</A>, D )</C>.
 #! @Arguments coPSh, values_of_all_objects, values_of_all_generating_morphisms
 #! @Returns an object in a &CAP; category
 #! @Group CreateCoPreSheaf

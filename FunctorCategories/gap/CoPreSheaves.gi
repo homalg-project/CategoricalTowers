@@ -419,7 +419,7 @@ InstallMethodWithCache( CoPreSheaves,
         "for a CAP category",
         [ IsCapCategory, IsCapCategory ],
         
-  function( B, C )
+  function( B, D )
     local object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           Hom, O,
@@ -430,8 +430,8 @@ InstallMethodWithCache( CoPreSheaves,
     ##
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( C ) ),
-              CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) );
+              CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( D ) ),
+              CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) ) );
     
     ##
     object_constructor := CreateCoPreSheafByValues;
@@ -441,7 +441,7 @@ InstallMethodWithCache( CoPreSheaves,
     
     ##
     morphism_datum_type :=
-      CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) );
+      CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) );
     
     ##
     morphism_constructor := CreateCoPreSheafMorphismByValues;
@@ -451,7 +451,7 @@ InstallMethodWithCache( CoPreSheaves,
     
     ## building the categorical tower
     
-    Hom := FunctorCategory( B, C : FinalizeCategory := true );
+    Hom := FunctorCategory( B, D : FinalizeCategory := true );
     
     O := Opposite( Hom : FinalizeCategory := false, only_primitive_operations := true );
     
@@ -536,7 +536,7 @@ InstallMethodWithCache( CoPreSheaves,
     ##
     coPSh :=
       ReinterpretationOfCategory( O,
-              rec( name := Concatenation( "CoPreSheaves( ", Name( B ), ", ", Name( C ), " )" ),
+              rec( name := Concatenation( "CoPreSheaves( ", Name( B ), ", ", Name( D ), " )" ),
                    category_filter := IsCoPreSheafCategory,
                    category_object_filter := IsObjectInCoPreSheafCategory,
                    category_morphism_filter := IsMorphismInCoPreSheafCategory,
@@ -554,7 +554,7 @@ InstallMethodWithCache( CoPreSheaves,
               : FinalizeCategory := false );
     
     SetSource( coPSh, B );
-    SetRange( coPSh, C );
+    SetRange( coPSh, D );
     
     SetSetOfObjects( coPSh, SetOfObjects( B ) );
     SetSetOfGeneratingMorphisms( coPSh, SetOfGeneratingMorphisms( B ) );
