@@ -10,10 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "CatReps",
 Subtitle := "Representations and cohomology of finite categories",
-Version := "2023.10-02",
+Version := "2023.10-03",
 
-Date := "2023-10-06",
-Date := "2023-10-06",
+Date := "2023-10-07",
+Date := "2023-10-07",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -100,7 +100,7 @@ Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2023.08-09" ],
+                   [ "CAP", ">= 2023.10-04" ],
                    [ "MonoidalCategories", ">= 2021.08-01" ],
                    [ "LinearAlgebraForCAP", ">= 2021.07-01" ],
                    [ "FinSetsForCAP", ">= 2022.05-07" ],
