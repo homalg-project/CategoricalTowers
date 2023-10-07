@@ -41,6 +41,8 @@ PSh := PreSheaves( A );
 #! / relations, Rows( Q ) )
 Mphi := CreatePreSheafByValues( PSh, Pair( [ U ], [ phi ] ) );
 #! <(o)->3; (x)->3x3>
+IsWellDefined( Mphi );
+#! true
 Display( Mphi );
 #! Image of <(o)>:
 #! A row module over Q of rank 3
