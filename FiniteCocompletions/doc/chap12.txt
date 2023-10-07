@@ -81,6 +81,8 @@
     [4X[28X/ relations, Rows( Q ) )[128X[104X
     [4X[25Xgap>[125X [27XMphi := CreatePreSheafByValues( PSh, Pair( [ U ], [ phi ] ) );[127X[104X
     [4X[28X<(o)->3; (x)->3x3>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Mphi );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDisplay( Mphi );[127X[104X
     [4X[28XImage of <(o)>:[128X[104X
     [4X[28XA row module over Q of rank 3[128X[104X

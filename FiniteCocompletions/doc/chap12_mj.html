@@ -109,6 +109,8 @@ PreSheaves( Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) ) )
 / relations, Rows( Q ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Mphi := CreatePreSheafByValues( PSh, Pair( [ U ], [ phi ] ) );</span>
 &lt;(o)-&gt;3; (x)-&gt;3x3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Mphi );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Mphi );</span>
 Image of &lt;(o)&gt;:
 A row module over Q of rank 3
