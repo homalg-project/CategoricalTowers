@@ -2997,7 +2997,8 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingCoYonedaLemma
     
     F_VAst := ObjectDatum( AssociatedColimitCompletionOfSourceCategory( PSh ), CoYonedaLemmaOnObjects( PSh, F ) );
     
-    return Pair( F_VAst[1][1], F_VAst[2] );
+    return Pair( F_VAst[1][1],
+                 [ F_VAst[2][1], F_VAst[2][2] ] ); ## turn the pair F_VAst[2] into a list
     
 end );
 
@@ -3211,7 +3212,7 @@ InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjec
         
   function ( PSh, F )
     local B, defining_triple, nr_objs, objs, id, F_vals, offsets, coYoneda, cover,
-          CoequalizerPairs, range, list, s, UB, source, section;
+          CoequalizerPairs, range, list, s, UC, source, section;
     
     B := Source( PSh );
     
@@ -3238,13 +3239,13 @@ InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjec
     
     s := Length( list );
     
-    UB := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
-    source := ObjectConstructor( UB, Pair( s, list ) );
+    source := ObjectConstructor( UC, Pair( s, list ) );
     
-    section := MorphismConstructor( UB,
+    section := MorphismConstructor( UC,
                        source,
-                       Pair( List( [ 1 .. s ], i -> cover[i][2][1] + offsets[SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( B, obj, cover[i][1] ) )] ),
+                       Pair( List( [ 1 .. s ], i -> cover[i][2]( 0 ) + offsets[SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( B, obj, cover[i][1] ) )] ),
                              List( list, o -> id[SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( B, obj, o ) )] ) ),
                        range );
     
@@ -3270,18 +3271,18 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, F )
-    local B, defining_triple, nr_objs, objs, mors, id, F_vals, offsets, coYoneda, cover,
-          CoequalizerPairs, source, s, source_list, list, UB, range, f, map_mor, epi;
+    local C, defining_triple, nr_objs, objs, mors, id, F_vals, offsets, coYoneda, cover,
+          CoequalizerPairs, source, s, source_list, list, UC, range, f, map_mor, retraction;
     
-    B := Source( PSh );
+    C := Source( PSh );
     
-    defining_triple := DefiningTripleOfUnderlyingQuiver( B );
+    defining_triple := DefiningTripleOfUnderlyingQuiver( C );
     nr_objs := defining_triple[1];
     
-    objs := SetOfObjects( B );
-    mors := SetOfGeneratingMorphisms( B );
+    objs := SetOfObjects( C );
+    mors := SetOfGeneratingMorphisms( C );
     
-    id := List( objs, obj -> IdentityMorphism( B, obj ) );
+    id := List( objs, obj -> IdentityMorphism( C, obj ) );
     
     F_vals := ValuesOfPreSheaf( F );
     
@@ -3301,45 +3302,45 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
     
     list := List( cover, a -> a[1] );
     
-    UB := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
-    range := ObjectConstructor( UB, Pair( Length( list ), list ) );
+    range := ObjectConstructor( UC, Pair( Length( list ), list ) );
     
     f :=
       function( i )
-        local objB_pos, val, pos, objB, pos_mor, mor, map, r;
+        local objC_pos, val, pos, objC, pos_mor, mor, map, r;
         
-        objB_pos := SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( B, obj, source_list[i] ) );
+        objC_pos := SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( C, obj, source_list[i] ) );
         
-        val := i - 1 - offsets[objB_pos];
+        val := i - 1 - offsets[objC_pos];
         
-        pos := PositionProperty( cover, a -> IsEqualForObjects( B, a[1], source_list[i] ) and AsList( a[2] )[1 + 0] = val );
+        pos := PositionProperty( cover, a -> IsEqualForObjects( C, a[1], source_list[i] ) and AsList( a[2] )[1 + 0] = val );
         
         if IsInt( pos ) then
-            return [ -1 + pos, id[objB_pos] ];
+            return [ -1 + pos, id[objC_pos] ];
         else
-            objB := objs[objB_pos];
-            pos_mor := SafePositionProperty( mors, a -> IsEqualForObjects( B, Source( a ), objB ) );
+            objC := objs[objC_pos];
+            pos_mor := SafePositionProperty( mors, a -> IsEqualForObjects( C, Source( a ), objC ) );
             mor := mors[pos_mor];
             map := -1 + SafePosition( AsList( F_vals[2][pos_mor] ), val );
             r := Range( mor );
-            return [ -1 + SafePositionProperty( cover, a -> IsEqualForObjects( B, r, a[1] ) and AsList( a[2] )[1 + 0] = map ), mor ];
+            return [ -1 + SafePositionProperty( cover, a -> IsEqualForObjects( C, r, a[1] ) and AsList( a[2] )[1 + 0] = map ), mor ];
         fi;
         
     end;
     
     map_mor := List( [ 1 .. s ], f );
     
-    epi := MorphismConstructor( UB,
+    retraction := MorphismConstructor( UC,
                    source,
                    Pair( List( map_mor, a -> a[1] ),
                          List( map_mor, a -> a[2] ) ),
                    range );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    SetIsSplitEpimorphism( epi, true );
+    SetIsSplitEpimorphism( retraction, true );
     
-    return epi;
+    return retraction;
     
 end );
 
@@ -3354,20 +3355,48 @@ InstallMethod( RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjec
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( OptimizedCoYonedaLemmaOnObjects,
+         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+   function ( PSh, F )
+    local ColimitCompletionC, UC, F_VAst, retraction;
+    
+    ColimitCompletionC := AssociatedColimitCompletionOfSourceCategory( PSh );
+    
+    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    
+    F_VAst := ObjectDatum( ColimitCompletionC, CoYonedaLemmaOnObjects( PSh, F ) );
+    
+    retraction := RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( PSh, F );
+    
+    return ObjectConstructor( ColimitCompletionC,
+                   Pair( Pair( Range( retraction ), F_VAst[1][2] ),
+                         Pair( PreCompose( UC,  F_VAst[2][1], retraction ),
+                               PreCompose( UC,  F_VAst[2][2], retraction ) ) ) );
+    
+end );
+
+##
+InstallMethod( OptimizedCoYonedaLemmaOnObjects,
+        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( F )
+    
+    return OptimizedCoYonedaLemmaOnObjects( CapCategory( F ), F );
+    
+end );
+
+##
 InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
-    local UC, F_data, epi;
+    local F_VAst;
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    F_VAst := ObjectDatum( AssociatedColimitCompletionOfSourceCategory( PSh ), OptimizedCoYonedaLemmaOnObjects( PSh, F ) );
     
-    F_data := CoequalizerDataOfPreSheafUsingCoYonedaLemma( PSh, F );
-    
-    epi := RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( PSh, F );
-    
-    return Pair( Range( epi ),
-                 List( F_data[2], mor -> PreCompose( UC, mor, epi ) ) );
+    return Pair( F_VAst[1][1],
+                 [ F_VAst[2][1], F_VAst[2][2] ] ); ## turn the pair F_VAst[2] into a list for Coequalizer
     
 end );
 
@@ -3396,7 +3425,7 @@ InstallMethodForCompilerForCAP( ApplyPreSheafToObjectInFiniteStrictCoproductComp
     
     object_data := ObjectDatum( UC, object );
     
-    return List( object_data[2], objB -> ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, G, objB ) );
+    return List( object_data[2], objC -> ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, G, objC ) );
     
 end );
 
@@ -3427,7 +3456,7 @@ InstallMethodForCompilerForCAP( ApplyPreSheafToMorphismInFiniteStrictCoproductCo
     map := morphism_data[1];
     mor := morphism_data[2];
     
-    G_mor := List( mor, morB -> ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity( PSh, G, morB ) );
+    G_mor := List( mor, morC -> ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity( PSh, G, morC ) );
     
     prj := List( map, i ->
                  ProjectionInFactorOfDirectProductWithGivenDirectProduct( D,

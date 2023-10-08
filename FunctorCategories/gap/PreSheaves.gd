@@ -313,6 +313,14 @@ DeclareOperation( "CreatePreSheafMorphismByFunction",
         [ IsObjectInPreSheafCategory, IsFunction, IsObjectInPreSheafCategory ] );
 
 #! @Arguments F
+DeclareAttribute( "CoYonedaLemmaOnObjects",
+        IsObjectInPreSheafCategory );
+
+#! @Arguments phi
+DeclareAttribute( "CoYonedaLemmaOnMorphisms",
+        IsMorphismInPreSheafCategory );
+
+#! @Arguments F
 DeclareAttribute( "CoequalizerDataOfPreSheafUsingCoYonedaLemma",
         IsObjectInPreSheafCategory );
 
@@ -343,6 +351,14 @@ DeclareAttribute( "SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProje
 #! @Arguments F
 DeclareAttribute( "RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject",
     IsObjectInPreSheafCategory );
+
+#! @Arguments F
+DeclareAttribute( "OptimizedCoYonedaLemmaOnObjects",
+        IsObjectInPreSheafCategory );
+
+#! @Arguments phi
+DeclareAttribute( "OptimizedCoYonedaLemmaOnMorphisms",
+        IsMorphismInPreSheafCategory );
 
 #! @Arguments F
 DeclareAttribute( "CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma",

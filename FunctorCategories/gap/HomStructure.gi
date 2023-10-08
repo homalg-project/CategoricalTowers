@@ -9,18 +9,17 @@ InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerDataUsingOptimizedC
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F, G )
-    local F_data, D, V, s, t;
+    local F_Vst, D, V, st;
     
-    F_data := CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma( PSh, F );
+    F_Vst := CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma( PSh, F );
     
     D := Range( PSh );
     
-    V := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, F_data[1] );
+    V := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, F_Vst[1] );
     
-    s := ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion( PSh, G, F_data[2][1] );
-    t := ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion( PSh, G, F_data[2][2] );
+    st := List( F_Vst[2], mor -> ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion( PSh, G, mor ) );
     
-    return Pair( V, [ s, t ] );
+    return Pair( V, st );
     
 end );
 
@@ -29,18 +28,17 @@ InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerDataUsingCoYonedaLe
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F, G )
-    local F_data, D, V, s, t;
+    local F_Vst, D, V, st;
     
-    F_data := CoequalizerDataOfPreSheafUsingCoYonedaLemma( PSh, F );
+    F_Vst := CoequalizerDataOfPreSheafUsingCoYonedaLemma( PSh, F );
     
     D := Range( PSh );
     
-    V := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, F_data[1] );
+    V := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, F_Vst[1] );
     
-    s := ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion( PSh, G, F_data[2][1] );
-    t := ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion( PSh, G, F_data[2][2] );
+    st := List( F_Vst[2], mor -> ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion( PSh, G, mor ) );
     
-    return Pair( V, [ s, t ] );
+    return Pair( V, st );
     
 end );
 
