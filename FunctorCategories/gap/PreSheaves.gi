@@ -3244,7 +3244,7 @@ InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjec
     
     section := MorphismConstructor( UB,
                        source,
-                       Pair( List( [ 1 .. s ], i -> cover[i][2][1] + offsets[SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( B, obj, cover[i][1] ) )] ),
+                       Pair( List( [ 1 .. s ], i -> cover[i][2]( 0 ) + offsets[SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( B, obj, cover[i][1] ) )] ),
                              List( list, o -> id[SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( B, obj, o ) )] ) ),
                        range );
     
