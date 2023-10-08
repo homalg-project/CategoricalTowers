@@ -2997,7 +2997,8 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingCoYonedaLemma
     
     F_VAst := ObjectDatum( AssociatedColimitCompletionOfSourceCategory( PSh ), CoYonedaLemmaOnObjects( PSh, F ) );
     
-    return Pair( F_VAst[1][1], F_VAst[2] );
+    return Pair( F_VAst[1][1],
+                 [ F_VAst[2][1], F_VAst[2][2] ] ); ## turn the pair F_VAst[2] into a list
     
 end );
 
