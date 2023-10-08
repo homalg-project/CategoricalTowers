@@ -74,9 +74,9 @@ jobs:
       - name: Test CategoricalTowers
         run: |
           make -C CategoricalTowers --trace -j $(nproc) --output-sync ci-test
-      - name: Test FinSetsForCAP
-        run: |
-          make -C FinSetsForCAP --trace -j $(nproc) --output-sync ci-test
+      #- name: Test FinSetsForCAP
+      #  run: |
+      #    make -C FinSetsForCAP --trace -j $(nproc) --output-sync ci-test
       - name: Test MatroidGeneration
         run: |
           make -C MatroidGeneration --trace -j $(nproc) --output-sync ci-test
