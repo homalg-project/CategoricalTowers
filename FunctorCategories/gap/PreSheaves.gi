@@ -3355,20 +3355,48 @@ InstallMethod( RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjec
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( OptimizedCoYonedaLemmaOnObjects,
+         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+   function ( PSh, F )
+    local ColimitCompletionC, UC, F_VAst, retraction;
+    
+    ColimitCompletionC := AssociatedColimitCompletionOfSourceCategory( PSh );
+    
+    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    
+    F_VAst := ObjectDatum( ColimitCompletionC, CoYonedaLemmaOnObjects( PSh, F ) );
+    
+    retraction := RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( PSh, F );
+    
+    return ObjectConstructor( ColimitCompletionC,
+                   Pair( Pair( Range( retraction ), F_VAst[1][2] ),
+                         Pair( PreCompose( UC,  F_VAst[2][1], retraction ),
+                               PreCompose( UC,  F_VAst[2][2], retraction ) ) ) );
+    
+end );
+
+##
+InstallMethod( OptimizedCoYonedaLemmaOnObjects,
+        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( F )
+    
+    return OptimizedCoYonedaLemmaOnObjects( CapCategory( F ), F );
+    
+end );
+
+##
 InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
-    local UC, F_data, epi;
+    local F_VAst;
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    F_VAst := ObjectDatum( AssociatedColimitCompletionOfSourceCategory( PSh ), OptimizedCoYonedaLemmaOnObjects( PSh, F ) );
     
-    F_data := CoequalizerDataOfPreSheafUsingCoYonedaLemma( PSh, F );
-    
-    epi := RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( PSh, F );
-    
-    return Pair( Range( epi ),
-                 List( F_data[2], mor -> PreCompose( UC, mor, epi ) ) );
+    return Pair( F_VAst[1][1],
+                 [ F_VAst[2][1], F_VAst[2][2] ] ); ## turn the pair F_VAst[2] into a list for Coequalizer
     
 end );
 

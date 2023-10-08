@@ -353,6 +353,14 @@ DeclareAttribute( "RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaPr
     IsObjectInPreSheafCategory );
 
 #! @Arguments F
+DeclareAttribute( "OptimizedCoYonedaLemmaOnObjects",
+        IsObjectInPreSheafCategory );
+
+#! @Arguments phi
+DeclareAttribute( "OptimizedCoYonedaLemmaOnMorphisms",
+        IsMorphismInPreSheafCategory );
+
+#! @Arguments F
 DeclareAttribute( "CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma",
         IsObjectInPreSheafCategory );
 
