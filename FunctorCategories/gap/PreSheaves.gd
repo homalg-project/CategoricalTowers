@@ -313,6 +313,14 @@ DeclareOperation( "CreatePreSheafMorphismByFunction",
         [ IsObjectInPreSheafCategory, IsFunction, IsObjectInPreSheafCategory ] );
 
 #! @Arguments F
+DeclareAttribute( "CoYonedaLemmaOnObjects",
+        IsObjectInPreSheafCategory );
+
+#! @Arguments phi
+DeclareAttribute( "CoYonedaLemmaOnMorphisms",
+        IsMorphismInPreSheafCategory );
+
+#! @Arguments F
 DeclareAttribute( "CoequalizerDataOfPreSheafUsingCoYonedaLemma",
         IsObjectInPreSheafCategory );
 

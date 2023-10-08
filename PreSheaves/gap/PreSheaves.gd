@@ -176,14 +176,6 @@ DeclareAttribute( "YonedaEmbeddingFunctionalData",
 DeclareAttribute( "YonedaEmbeddingOfSourceCategory",
         IsPreSheafCategory );
 
-#! @Arguments F
-DeclareAttribute( "CoYonedaLemmaOnObjects",
-        IsObjectInPreSheafCategory );
-
-#! @Arguments phi
-DeclareAttribute( "CoYonedaLemmaOnMorphisms",
-        IsMorphismInPreSheafCategory );
-
 ####################################
 #
 #! @Section Constructors
