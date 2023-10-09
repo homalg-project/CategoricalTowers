@@ -65,7 +65,7 @@ Display( Mphi );
 #! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations,
 #! Rows( Q ) ) given by the above data
 Mphi_as_coequqlizer_pair := CoYonedaLemmaOnObjects( Mphi );
-#! <An object in CoequalizerCompletion( Additive closure(
+#! <An object in CoequalizerCompletion( AdditiveClosure(
 #!  Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) )>
 Display( Mphi_as_coequqlizer_pair );
 #! Image of <(V)>:
@@ -107,28 +107,28 @@ Display( Mphi_as_coequqlizer_pair );
 #! [3,2]: (o)-[{ 0 }]->(o)
 #! [3,3]: (o)-[{ 1*(x) }]->(o)
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
-#! Additive closure( Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) /
+#! AdditiveClosure( Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) /
 #! relations ) ) given by the above data
 #! 
-#! An object in PairOfParallelArrowsCategory( Additive closure(
+#! An object in PairOfParallelArrowsCategory( AdditiveClosure(
 #! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) )
 #! given by the above data
 #! 
-#! An object in QuotientCategory( PairOfParallelArrowsCategory( Additive closure(
+#! An object in QuotientCategory( PairOfParallelArrowsCategory( AdditiveClosure(
 #! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) ) )
 #! defined by the congruence function unknown given by the above data
 #! 
-#! An object in CoequalizerCompletion( Additive closure(
+#! An object in CoequalizerCompletion( AdditiveClosure(
 #! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) )
 #! given by the above data
 phi_in_additive_closure :=
   TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure( o, phi );
-#! <A morphism in Additive closure(
+#! <A morphism in AdditiveClosure(
 #!  Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations )
 #!  defined by a 3 x 3 matrix of underlying morphisms>
 x_in_additive_closure :=
   TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure( x, U );
-#! <A morphism in Additive closure(
+#! <A morphism in AdditiveClosure(
 #!  Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations )
 #!  defined by a 3 x 3 matrix of underlying morphisms>
 Mphi_as_coequqlizer_pair.s = phi_in_additive_closure;

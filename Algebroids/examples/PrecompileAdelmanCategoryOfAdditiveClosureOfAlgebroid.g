@@ -50,11 +50,11 @@ precompile_AdelmanCategoryOfAdditiveClosureOfAlgebroid( A, false, "Field" );
 precompile_AdelmanCategoryOfAdditiveClosureOfAlgebroid( A, true, "Z" );
 
 AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled( A );
-#! Adelman category( Additive closure( Algebroid( Q, FreeCategory(
+#! Adelman category( AdditiveClosure( Algebroid( Q, FreeCategory(
 #! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) ) )
 
 AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverZPrecompiled( A );
-#! Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+#! Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
 #! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) ) )
 
 AdelmanCategory( AdditiveClosure( Algebroid( A, false ) ) )!.precompiled_functions_added;
