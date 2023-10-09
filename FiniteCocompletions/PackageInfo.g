@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FiniteCocompletions",
 Subtitle := "Finite (co)product/(co)limit (co)completions",
-Version := "2023.10-05",
+Version := "2023.10-06",
 Date := "2023-10-09",
 Date := "2023-10-09",
 License := "GPL-2.0-or-later",
