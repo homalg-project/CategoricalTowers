@@ -182,26 +182,26 @@
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA_add := AdditiveClosure( A );[127X[104X
-    [4X[28XAdditive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28XAdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations )[128X[104X
     [4X[25Xgap>[125X [27XA_abel := AdelmanCategory( A_add );[127X[104X
-    [4X[28XAdelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28XAdelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) )[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLazy := LazyCategory( A_abel : show_evaluation := true );[127X[104X
-    [4X[28XLazyCategory( Adelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28XLazyCategory( Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) )[128X[104X
     [4X[25Xgap>[125X [27Xa := A.a / A_add / A_abel / Lazy;[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<An evaluated morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xb := A.b / A_add / A_abel / Lazy;[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<An evaluated morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xc := A.c / A_add / A_abel / Lazy;[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<An evaluated morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XSetLabel( a, "a" );[127X[104X
@@ -212,71 +212,71 @@
     [4X[25Xgap>[125X [27XSetLabel( Range( b ), "3" );[127X[104X
     [4X[25Xgap>[125X [27XSetLabel( Range( c ), "4" );[127X[104X
     [4X[25Xgap>[125X [27Xd := CokernelProjection( a );[127X[104X
-    [4X[28X<An epimorphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<An epimorphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xe := CokernelColift( a, PreCompose( b, c ) );[127X[104X
-    [4X[28X<A morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<A morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xf := KernelEmbedding( e );[127X[104X
-    [4X[28X<A monomorphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<A monomorphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xg := KernelEmbedding( c );[127X[104X
-    [4X[28X<A monomorphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<A monomorphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xh := KernelLift( c, PreCompose( a, b ) );[127X[104X
-    [4X[28X<A morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<A morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xi := CokernelProjection( h );[127X[104X
-    [4X[28X<An epimorphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<An epimorphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xff := AsGeneralizedMorphism( f );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of LazyCategory([128X[104X
-    [4X[28X Adelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xdd := AsGeneralizedMorphism( d );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of LazyCategory([128X[104X
-    [4X[28X Adelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xbb := AsGeneralizedMorphism( b );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of LazyCategory([128X[104X
-    [4X[28X Adelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xgg := AsGeneralizedMorphism( g );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of LazyCategory([128X[104X
-    [4X[28X Adelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xii := AsGeneralizedMorphism( i );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of LazyCategory([128X[104X
-    [4X[28X Adelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xss := PreCompose( [ ff, PseudoInverse( dd ), bb, PseudoInverse( gg ), ii ] );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of LazyCategory([128X[104X
-    [4X[28X Adelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xs := HonestRepresentative( ss );[127X[104X
-    [4X[28X<A morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<A morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xj := KernelObjectFunctorial( b, d, e );[127X[104X
-    [4X[28X<A morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<A morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xk := CokernelObjectFunctorial( h, g, b );[127X[104X
-    [4X[28X<A morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<A morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XHK := HomologyObject( j, s );[127X[104X
-    [4X[28X<An object in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<An object in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XHC := HomologyObject( s, k );[127X[104X
-    [4X[28X<An object in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<An object in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
   [4X[32X[104X
@@ -302,27 +302,27 @@
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA_add := AdditiveClosure( A );[127X[104X
-    [4X[28XAdditive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28XAdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations )[128X[104X
     [4X[25Xgap>[125X [27XA_abel := AdelmanCategory( A_add );[127X[104X
-    [4X[28XAdelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28XAdelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) )[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLazy := LazyCategory( A_abel :[127X[104X
     [4X[25X>[125X [27X                show_evaluation := true, primitive_operations := true );[127X[104X
-    [4X[28XLazyCategory( Adelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28XLazyCategory( Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) )[128X[104X
     [4X[25Xgap>[125X [27Xa := A.a / A_add / A_abel / Lazy;[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<An evaluated morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xb := A.b / A_add / A_abel / Lazy;[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<An evaluated morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xc := A.c / A_add / A_abel / Lazy;[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<An evaluated morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XSetLabel( a, "a" );[127X[104X
@@ -333,71 +333,71 @@
     [4X[25Xgap>[125X [27XSetLabel( Range( b ), "3" );[127X[104X
     [4X[25Xgap>[125X [27XSetLabel( Range( c ), "4" );[127X[104X
     [4X[25Xgap>[125X [27Xd := CokernelProjection( a );[127X[104X
-    [4X[28X<An epimorphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<An epimorphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xe := CokernelColift( a, PreCompose( b, c ) );[127X[104X
-    [4X[28X<A morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<A morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xf := KernelEmbedding( e );[127X[104X
-    [4X[28X<A monomorphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<A monomorphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xg := KernelEmbedding( c );[127X[104X
-    [4X[28X<A monomorphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<A monomorphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xh := KernelLift( c, PreCompose( a, b ) );[127X[104X
-    [4X[28X<A morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<A morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xi := CokernelProjection( h );[127X[104X
-    [4X[28X<An epimorphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<An epimorphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xff := AsGeneralizedMorphism( f );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of LazyCategory([128X[104X
-    [4X[28X Adelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xdd := AsGeneralizedMorphism( d );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of LazyCategory([128X[104X
-    [4X[28X Adelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xbb := AsGeneralizedMorphism( b );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of LazyCategory([128X[104X
-    [4X[28X Adelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xgg := AsGeneralizedMorphism( g );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of LazyCategory([128X[104X
-    [4X[28X Adelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xii := AsGeneralizedMorphism( i );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of LazyCategory([128X[104X
-    [4X[28X Adelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xss := PreCompose( [ ff, PseudoInverse( dd ), bb, PseudoInverse( gg ), ii ] );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of LazyCategory([128X[104X
-    [4X[28X Adelman category( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xs := HonestRepresentative( ss );[127X[104X
-    [4X[28X<A morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<A morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xj := KernelObjectFunctorial( b, d, e );[127X[104X
-    [4X[28X<A morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<A morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xk := CokernelObjectFunctorial( h, g, b );[127X[104X
-    [4X[28X<A morphism in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<A morphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XHK := HomologyObject( j, s );[127X[104X
-    [4X[28X<An object in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<An object in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XHC := HomologyObject( s, k );[127X[104X
-    [4X[28X<An object in LazyCategory( Adelman category( Additive closure([128X[104X
+    [4X[28X<An object in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
   [4X[32X[104X
@@ -422,105 +422,105 @@
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA_add := AdditiveClosure( A );[127X[104X
-    [4X[28XAdditive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28XAdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations )[128X[104X
     [4X[25Xgap>[125X [27XLazy := LazyCategory( A_add : show_evaluation := true,[127X[104X
     [4X[25X>[125X [27X                lazify_range_of_hom_structure := true );[127X[104X
-    [4X[28XLazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28XLazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) )[128X[104X
     [4X[25Xgap>[125X [27Xa := A.a / A_add / Lazy; SetLabel( a, "a" );[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Additive closure([128X[104X
+    [4X[28X<An evaluated morphism in LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) )>[128X[104X
     [4X[25Xgap>[125X [27Xb := A.b / A_add / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "3" );[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Additive closure([128X[104X
+    [4X[28X<An evaluated morphism in LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) )>[128X[104X
     [4X[25Xgap>[125X [27Xc := A.c / A_add / Lazy; SetLabel( c, "c" );[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Additive closure([128X[104X
+    [4X[28X<An evaluated morphism in LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) )>[128X[104X
     [4X[25Xgap>[125X [27XAdelman := AdelmanCategory( Lazy );[127X[104X
-    [4X[28XAdelman category( LazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28XAdelman category( LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) )[128X[104X
     [4X[25Xgap>[125X [27Xa := a / Adelman;[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xb := b / Adelman;[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xc := c / Adelman;[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xd := CokernelProjection( a );[127X[104X
-    [4X[28X<An epimorphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<An epimorphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xe := CokernelColift( a, PreCompose( b, c ) );[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xf := KernelEmbedding( e );[127X[104X
-    [4X[28X<A monomorphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A monomorphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xg := KernelEmbedding( c );[127X[104X
-    [4X[28X<A monomorphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A monomorphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xh := KernelLift( c, PreCompose( a, b ) );[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xi := CokernelProjection( h );[127X[104X
-    [4X[28X<An epimorphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<An epimorphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xff := AsGeneralizedMorphism( f );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Adelman category([128X[104X
-    [4X[28X LazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xdd := AsGeneralizedMorphism( d );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Adelman category([128X[104X
-    [4X[28X LazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xbb := AsGeneralizedMorphism( b );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Adelman category([128X[104X
-    [4X[28X LazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xgg := AsGeneralizedMorphism( g );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Adelman category([128X[104X
-    [4X[28X LazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xii := AsGeneralizedMorphism( i );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Adelman category([128X[104X
-    [4X[28X LazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xss := PreCompose( [ ff, PseudoInverse( dd ), bb, PseudoInverse( gg ), ii ] );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Adelman category([128X[104X
-    [4X[28X LazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xs := HonestRepresentative( ss );[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xj := KernelObjectFunctorial( b, d, e );[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xk := CokernelObjectFunctorial( h, g, b );[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XHK := HomologyObject( j, s );[127X[104X
-    [4X[28X<An object in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<An object in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XHC := HomologyObject( s, k );[127X[104X
-    [4X[28X<An object in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<An object in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
   [4X[32X[104X
@@ -546,106 +546,106 @@
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA_add := AdditiveClosure( A );[127X[104X
-    [4X[28XAdditive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28XAdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations )[128X[104X
     [4X[25Xgap>[125X [27XLazy := LazyCategory( A_add : show_evaluation := true,[127X[104X
     [4X[25X>[125X [27X                lazify_range_of_hom_structure := true,[127X[104X
     [4X[25X>[125X [27X                primitive_operations := true );[127X[104X
-    [4X[28XLazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28XLazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) )[128X[104X
     [4X[25Xgap>[125X [27Xa := A.a / A_add / Lazy; SetLabel( a, "a" );[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Additive closure([128X[104X
+    [4X[28X<An evaluated morphism in LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) )>[128X[104X
     [4X[25Xgap>[125X [27Xb := A.b / A_add / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "3" );[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Additive closure([128X[104X
+    [4X[28X<An evaluated morphism in LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) )>[128X[104X
     [4X[25Xgap>[125X [27Xc := A.c / A_add / Lazy; SetLabel( c, "c" );[127X[104X
-    [4X[28X<An evaluated morphism in LazyCategory( Additive closure([128X[104X
+    [4X[28X<An evaluated morphism in LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) )>[128X[104X
     [4X[25Xgap>[125X [27XAdelman := AdelmanCategory( Lazy );[127X[104X
-    [4X[28XAdelman category( LazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28XAdelman category( LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) )[128X[104X
     [4X[25Xgap>[125X [27Xa := a / Adelman;[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xb := b / Adelman;[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xc := c / Adelman;[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xd := CokernelProjection( a );[127X[104X
-    [4X[28X<An epimorphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<An epimorphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xe := CokernelColift( a, PreCompose( b, c ) );[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xf := KernelEmbedding( e );[127X[104X
-    [4X[28X<A monomorphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A monomorphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xg := KernelEmbedding( c );[127X[104X
-    [4X[28X<A monomorphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A monomorphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xh := KernelLift( c, PreCompose( a, b ) );[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xi := CokernelProjection( h );[127X[104X
-    [4X[28X<An epimorphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<An epimorphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xff := AsGeneralizedMorphism( f );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Adelman category([128X[104X
-    [4X[28X LazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xdd := AsGeneralizedMorphism( d );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Adelman category([128X[104X
-    [4X[28X LazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xbb := AsGeneralizedMorphism( b );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Adelman category([128X[104X
-    [4X[28X LazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xgg := AsGeneralizedMorphism( g );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Adelman category([128X[104X
-    [4X[28X LazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xii := AsGeneralizedMorphism( i );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Adelman category([128X[104X
-    [4X[28X LazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xss := PreCompose( [ ff, PseudoInverse( dd ), bb, PseudoInverse( gg ), ii ] );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Adelman category([128X[104X
-    [4X[28X LazyCategory( Additive closure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28X LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) ) by cospan>[128X[104X
     [4X[25Xgap>[125X [27Xs := HonestRepresentative( ss );[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xj := KernelObjectFunctorial( b, d, e );[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xk := CokernelObjectFunctorial( h, g, b );[127X[104X
-    [4X[28X<A morphism in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<A morphism in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XHK := HomologyObject( j, s );[127X[104X
-    [4X[28X<An object in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<An object in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XHC := HomologyObject( s, k );[127X[104X
-    [4X[28X<An object in Adelman category( LazyCategory( Additive closure([128X[104X
+    [4X[28X<An object in Adelman category( LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) ) )>[128X[104X
   [4X[32X[104X

@@ -231,26 +231,26 @@ Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_add := AdditiveClosure( A );</span>
-Additive closure( Algebroid( Z, FreeCategory(
+AdditiveClosure( Algebroid( Z, FreeCategory(
 RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_abel := AdelmanCategory( A_add );</span>
-Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
 RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lazy := LazyCategory( A_abel : show_evaluation := true );</span>
-LazyCategory( Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+LazyCategory( Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
 RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := A.a / A_add / A_abel / Lazy;</span>
-&lt;An evaluated morphism in LazyCategory( Adelman category( Additive closure(
+&lt;An evaluated morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := A.b / A_add / A_abel / Lazy;</span>
-&lt;An evaluated morphism in LazyCategory( Adelman category( Additive closure(
+&lt;An evaluated morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := A.c / A_add / A_abel / Lazy;</span>
-&lt;An evaluated morphism in LazyCategory( Adelman category( Additive closure(
+&lt;An evaluated morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( a, "a" );</span>
@@ -261,71 +261,71 @@ RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Range( b ), "3" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Range( c ), "4" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := CokernelProjection( a );</span>
-&lt;An epimorphism in LazyCategory( Adelman category( Additive closure(
+&lt;An epimorphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := CokernelColift( a, PreCompose( b, c ) );</span>
-&lt;A morphism in LazyCategory( Adelman category( Additive closure(
+&lt;A morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := KernelEmbedding( e );</span>
-&lt;A monomorphism in LazyCategory( Adelman category( Additive closure(
+&lt;A monomorphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := KernelEmbedding( c );</span>
-&lt;A monomorphism in LazyCategory( Adelman category( Additive closure(
+&lt;A monomorphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := KernelLift( c, PreCompose( a, b ) );</span>
-&lt;A morphism in LazyCategory( Adelman category( Additive closure(
+&lt;A morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := CokernelProjection( h );</span>
-&lt;An epimorphism in LazyCategory( Adelman category( Additive closure(
+&lt;An epimorphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ff := AsGeneralizedMorphism( f );</span>
 &lt;A morphism in Generalized morphism category of LazyCategory(
- Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+ Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dd := AsGeneralizedMorphism( d );</span>
 &lt;A morphism in Generalized morphism category of LazyCategory(
- Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+ Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bb := AsGeneralizedMorphism( b );</span>
 &lt;A morphism in Generalized morphism category of LazyCategory(
- Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+ Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gg := AsGeneralizedMorphism( g );</span>
 &lt;A morphism in Generalized morphism category of LazyCategory(
- Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+ Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ii := AsGeneralizedMorphism( i );</span>
 &lt;A morphism in Generalized morphism category of LazyCategory(
- Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+ Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ss := PreCompose( [ ff, PseudoInverse( dd ), bb, PseudoInverse( gg ), ii ] );</span>
 &lt;A morphism in Generalized morphism category of LazyCategory(
- Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+ Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := HonestRepresentative( ss );</span>
-&lt;A morphism in LazyCategory( Adelman category( Additive closure(
+&lt;A morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">j := KernelObjectFunctorial( b, d, e );</span>
-&lt;A morphism in LazyCategory( Adelman category( Additive closure(
+&lt;A morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := CokernelObjectFunctorial( h, g, b );</span>
-&lt;A morphism in LazyCategory( Adelman category( Additive closure(
+&lt;A morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HK := HomologyObject( j, s );</span>
-&lt;An object in LazyCategory( Adelman category( Additive closure(
+&lt;An object in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HC := HomologyObject( s, k );</span>
-&lt;An object in LazyCategory( Adelman category( Additive closure(
+&lt;An object in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 </pre></div>
@@ -352,27 +352,27 @@ Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_add := AdditiveClosure( A );</span>
-Additive closure( Algebroid( Z, FreeCategory(
+AdditiveClosure( Algebroid( Z, FreeCategory(
 RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_abel := AdelmanCategory( A_add );</span>
-Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
 RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lazy := LazyCategory( A_abel :</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                show_evaluation := true, primitive_operations := true );</span>
-LazyCategory( Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+LazyCategory( Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
 RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := A.a / A_add / A_abel / Lazy;</span>
-&lt;An evaluated morphism in LazyCategory( Adelman category( Additive closure(
+&lt;An evaluated morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := A.b / A_add / A_abel / Lazy;</span>
-&lt;An evaluated morphism in LazyCategory( Adelman category( Additive closure(
+&lt;An evaluated morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := A.c / A_add / A_abel / Lazy;</span>
-&lt;An evaluated morphism in LazyCategory( Adelman category( Additive closure(
+&lt;An evaluated morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( a, "a" );</span>
@@ -383,71 +383,71 @@ RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Range( b ), "3" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Range( c ), "4" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := CokernelProjection( a );</span>
-&lt;An epimorphism in LazyCategory( Adelman category( Additive closure(
+&lt;An epimorphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := CokernelColift( a, PreCompose( b, c ) );</span>
-&lt;A morphism in LazyCategory( Adelman category( Additive closure(
+&lt;A morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := KernelEmbedding( e );</span>
-&lt;A monomorphism in LazyCategory( Adelman category( Additive closure(
+&lt;A monomorphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := KernelEmbedding( c );</span>
-&lt;A monomorphism in LazyCategory( Adelman category( Additive closure(
+&lt;A monomorphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := KernelLift( c, PreCompose( a, b ) );</span>
-&lt;A morphism in LazyCategory( Adelman category( Additive closure(
+&lt;A morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := CokernelProjection( h );</span>
-&lt;An epimorphism in LazyCategory( Adelman category( Additive closure(
+&lt;An epimorphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ff := AsGeneralizedMorphism( f );</span>
 &lt;A morphism in Generalized morphism category of LazyCategory(
- Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+ Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dd := AsGeneralizedMorphism( d );</span>
 &lt;A morphism in Generalized morphism category of LazyCategory(
- Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+ Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bb := AsGeneralizedMorphism( b );</span>
 &lt;A morphism in Generalized morphism category of LazyCategory(
- Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+ Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gg := AsGeneralizedMorphism( g );</span>
 &lt;A morphism in Generalized morphism category of LazyCategory(
- Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+ Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ii := AsGeneralizedMorphism( i );</span>
 &lt;A morphism in Generalized morphism category of LazyCategory(
- Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+ Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ss := PreCompose( [ ff, PseudoInverse( dd ), bb, PseudoInverse( gg ), ii ] );</span>
 &lt;A morphism in Generalized morphism category of LazyCategory(
- Adelman category( Additive closure( Algebroid( Z, FreeCategory(
+ Adelman category( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := HonestRepresentative( ss );</span>
-&lt;A morphism in LazyCategory( Adelman category( Additive closure(
+&lt;A morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">j := KernelObjectFunctorial( b, d, e );</span>
-&lt;A morphism in LazyCategory( Adelman category( Additive closure(
+&lt;A morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := CokernelObjectFunctorial( h, g, b );</span>
-&lt;A morphism in LazyCategory( Adelman category( Additive closure(
+&lt;A morphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HK := HomologyObject( j, s );</span>
-&lt;An object in LazyCategory( Adelman category( Additive closure(
+&lt;An object in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HC := HomologyObject( s, k );</span>
-&lt;An object in LazyCategory( Adelman category( Additive closure(
+&lt;An object in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 </pre></div>
@@ -474,105 +474,105 @@ Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_add := AdditiveClosure( A );</span>
-Additive closure( Algebroid( Z, FreeCategory(
+AdditiveClosure( Algebroid( Z, FreeCategory(
 RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lazy := LazyCategory( A_add : show_evaluation := true,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                lazify_range_of_hom_structure := true );</span>
-LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
 RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := A.a / A_add / Lazy; SetLabel( a, "a" );</span>
-&lt;An evaluated morphism in LazyCategory( Additive closure(
+&lt;An evaluated morphism in LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := A.b / A_add / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "3" );</span>
-&lt;An evaluated morphism in LazyCategory( Additive closure(
+&lt;An evaluated morphism in LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := A.c / A_add / Lazy; SetLabel( c, "c" );</span>
-&lt;An evaluated morphism in LazyCategory( Additive closure(
+&lt;An evaluated morphism in LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Adelman := AdelmanCategory( Lazy );</span>
-Adelman category( LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+Adelman category( LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
 RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := a / Adelman;</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := b / Adelman;</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := c / Adelman;</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := CokernelProjection( a );</span>
-&lt;An epimorphism in Adelman category( LazyCategory( Additive closure(
+&lt;An epimorphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := CokernelColift( a, PreCompose( b, c ) );</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := KernelEmbedding( e );</span>
-&lt;A monomorphism in Adelman category( LazyCategory( Additive closure(
+&lt;A monomorphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := KernelEmbedding( c );</span>
-&lt;A monomorphism in Adelman category( LazyCategory( Additive closure(
+&lt;A monomorphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := KernelLift( c, PreCompose( a, b ) );</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := CokernelProjection( h );</span>
-&lt;An epimorphism in Adelman category( LazyCategory( Additive closure(
+&lt;An epimorphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ff := AsGeneralizedMorphism( f );</span>
 &lt;A morphism in Generalized morphism category of Adelman category(
- LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+ LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dd := AsGeneralizedMorphism( d );</span>
 &lt;A morphism in Generalized morphism category of Adelman category(
- LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+ LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bb := AsGeneralizedMorphism( b );</span>
 &lt;A morphism in Generalized morphism category of Adelman category(
- LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+ LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gg := AsGeneralizedMorphism( g );</span>
 &lt;A morphism in Generalized morphism category of Adelman category(
- LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+ LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ii := AsGeneralizedMorphism( i );</span>
 &lt;A morphism in Generalized morphism category of Adelman category(
- LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+ LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ss := PreCompose( [ ff, PseudoInverse( dd ), bb, PseudoInverse( gg ), ii ] );</span>
 &lt;A morphism in Generalized morphism category of Adelman category(
- LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+ LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := HonestRepresentative( ss );</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">j := KernelObjectFunctorial( b, d, e );</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := CokernelObjectFunctorial( h, g, b );</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HK := HomologyObject( j, s );</span>
-&lt;An object in Adelman category( LazyCategory( Additive closure(
+&lt;An object in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HC := HomologyObject( s, k );</span>
-&lt;An object in Adelman category( LazyCategory( Additive closure(
+&lt;An object in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 </pre></div>
@@ -599,106 +599,106 @@ Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_add := AdditiveClosure( A );</span>
-Additive closure( Algebroid( Z, FreeCategory(
+AdditiveClosure( Algebroid( Z, FreeCategory(
 RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lazy := LazyCategory( A_add : show_evaluation := true,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                lazify_range_of_hom_structure := true,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                primitive_operations := true );</span>
-LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
 RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := A.a / A_add / Lazy; SetLabel( a, "a" );</span>
-&lt;An evaluated morphism in LazyCategory( Additive closure(
+&lt;An evaluated morphism in LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := A.b / A_add / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "3" );</span>
-&lt;An evaluated morphism in LazyCategory( Additive closure(
+&lt;An evaluated morphism in LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := A.c / A_add / Lazy; SetLabel( c, "c" );</span>
-&lt;An evaluated morphism in LazyCategory( Additive closure(
+&lt;An evaluated morphism in LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Adelman := AdelmanCategory( Lazy );</span>
-Adelman category( LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+Adelman category( LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
 RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := a / Adelman;</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := b / Adelman;</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := c / Adelman;</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := CokernelProjection( a );</span>
-&lt;An epimorphism in Adelman category( LazyCategory( Additive closure(
+&lt;An epimorphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := CokernelColift( a, PreCompose( b, c ) );</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := KernelEmbedding( e );</span>
-&lt;A monomorphism in Adelman category( LazyCategory( Additive closure(
+&lt;A monomorphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := KernelEmbedding( c );</span>
-&lt;A monomorphism in Adelman category( LazyCategory( Additive closure(
+&lt;A monomorphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := KernelLift( c, PreCompose( a, b ) );</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := CokernelProjection( h );</span>
-&lt;An epimorphism in Adelman category( LazyCategory( Additive closure(
+&lt;An epimorphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ff := AsGeneralizedMorphism( f );</span>
 &lt;A morphism in Generalized morphism category of Adelman category(
- LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+ LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dd := AsGeneralizedMorphism( d );</span>
 &lt;A morphism in Generalized morphism category of Adelman category(
- LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+ LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bb := AsGeneralizedMorphism( b );</span>
 &lt;A morphism in Generalized morphism category of Adelman category(
- LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+ LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gg := AsGeneralizedMorphism( g );</span>
 &lt;A morphism in Generalized morphism category of Adelman category(
- LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+ LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ii := AsGeneralizedMorphism( i );</span>
 &lt;A morphism in Generalized morphism category of Adelman category(
- LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+ LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ss := PreCompose( [ ff, PseudoInverse( dd ), bb, PseudoInverse( gg ), ii ] );</span>
 &lt;A morphism in Generalized morphism category of Adelman category(
- LazyCategory( Additive closure( Algebroid( Z, FreeCategory(
+ LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
  RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) ) by cospan&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := HonestRepresentative( ss );</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">j := KernelObjectFunctorial( b, d, e );</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := CokernelObjectFunctorial( h, g, b );</span>
-&lt;A morphism in Adelman category( LazyCategory( Additive closure(
+&lt;A morphism in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HK := HomologyObject( j, s );</span>
-&lt;An object in Adelman category( LazyCategory( Additive closure(
+&lt;An object in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HC := HomologyObject( s, k );</span>
-&lt;An object in Adelman category( LazyCategory( Additive closure(
+&lt;An object in Adelman category( LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) ) )&gt;
 </pre></div>
