@@ -46,7 +46,7 @@ precompile_AdditiveClosureOfAlgebroid( A, false, "Field" );
 precompile_AdditiveClosureOfAlgebroid( A, true, "Z" );
 
 AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled( A );
-#! Additive closure( Algebroid( Q, FreeCategory( RightQuiver(
+#! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver(
 #! "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) )
 
 AdditiveClosure( Algebroid( A, false ) )!.precompiled_functions_added;

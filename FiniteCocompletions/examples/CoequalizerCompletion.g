@@ -31,12 +31,12 @@ L := Q[C];
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #! / relations
 UC := AdditiveClosure( L );
-#! Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+#! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #! / relations )
 A := CoequalizerCompletion( UC );
-#! CoequalizerCompletion( Additive closure( Algebroid( Q, FreeCategory(
+#! CoequalizerCompletion( AdditiveClosure( Algebroid( Q, FreeCategory(
 #! RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
@@ -54,29 +54,29 @@ A.tS * A.m2 = A.w2 * A.tT;
 A.tS * A.m3 = A.w3 * A.tT;
 #! true
 S := ObjectConstructor( A, Pair( Pair( UC.VS, UC.AS ), Pair( UC.sS, UC.tS ) ) );
-#! <An object in CoequalizerCompletion( Additive closure(
+#! <An object in CoequalizerCompletion( AdditiveClosure(
 #!  Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #!  [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,m1:VS->VT,w1:AS->AT,
 #!   m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) ) / relations ) )>
 T := ObjectConstructor( A, Pair( Pair( UC.VT, UC.AT ), Pair( UC.sT, UC.tT ) ) );
-#! <An object in CoequalizerCompletion( Additive closure(
+#! <An object in CoequalizerCompletion( AdditiveClosure(
 #!  Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #!  [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,m1:VS->VT,w1:AS->AT,
 #!   m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) ) / relations ) )>
 mor1 := MorphismConstructor( A, S, Pair( UC.m1, UC.w1 ), T );
-#! <A morphism in CoequalizerCompletion( Additive closure(
+#! <A morphism in CoequalizerCompletion( AdditiveClosure(
 #!  Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #!  [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!   m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #!  / relations ) )>
 mor2 := MorphismConstructor( A, S, Pair( UC.m2, UC.w2 ), T );
-#! <A morphism in CoequalizerCompletion( Additive closure(
+#! <A morphism in CoequalizerCompletion( AdditiveClosure(
 #!  Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #!  [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!   m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #!  / relations ) )>
 mor3 := MorphismConstructor( A, S, Pair( UC.m3, UC.w3 ), T );
-#! <A morphism in CoequalizerCompletion( Additive closure(
+#! <A morphism in CoequalizerCompletion( AdditiveClosure(
 #!  Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #!  [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!   m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
@@ -88,7 +88,7 @@ IsWellDefined( mor2 );
 IsWellDefined( mor3 );
 #! true
 coeq := Coequalizer( [ mor1, mor2, mor3 ] );
-#! <An object in CoequalizerCompletion( Additive closure(
+#! <An object in CoequalizerCompletion( AdditiveClosure(
 #!  Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #!  [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,m1:VS->VT,w1:AS->AT,
 #!   m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) ) / relations ) )>
@@ -134,31 +134,31 @@ Display( coeq );
 #! [4,1]: (VS)-[{ 1*(m3) }]->(VT)
 #! [4,2]: (VS)-[{ 0 }]->(VS)
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
-#! Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+#! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) ) / relations ) )
 #!  given by the above data
 #! 
 #! An object in PairOfParallelArrowsCategory(
-#! Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+#! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #! / relations ) ) given by the above data
 #! 
 #! An object in QuotientCategory( PairOfParallelArrowsCategory(
-#! Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+#! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #! / relations ) ) ) defined by the congruence function unknown
 #! given by the above data
 #! 
 #! An object in CoequalizerCompletion(
-#! Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+#! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #! / relations ) ) given by the above data
 proj := ProjectionOntoCoequalizer( [ mor1, mor2, mor3 ] );
-#! <An epimorphism in CoequalizerCompletion( Additive closure(
+#! <An epimorphism in CoequalizerCompletion( AdditiveClosure(
 #!  Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #!  [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!   m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
@@ -183,26 +183,26 @@ Display( proj );
 #! [1,3]: (AT)-[{ 0 }]->(VS)
 #! [1,4]: (AT)-[{ 0 }]->(VS)
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
-#! Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+#! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #! / relations ) ) given by the above data
 #! 
 #! A morphism in PairOfParallelArrowsCategory(
-#! Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+#! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #! / relations ) ) given by the above data
 #! 
 #! A morphism in QuotientCategory( PairOfParallelArrowsCategory(
-#! Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+#! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #! / relations ) ) ) defined by the congruence function unknown
 #! given by the above data
 #! 
 #! A morphism in CoequalizerCompletion(
-#! Additive closure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
+#! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #! / relations ) ) given by the above data
