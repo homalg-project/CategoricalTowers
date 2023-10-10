@@ -632,44 +632,17 @@ InstallMethodForCompilerForCAP( CoYonedaEmbeddingDataOfSourceCategory,
         [ IsCoPreSheafCategory ],
         
   function ( coPSh )
-    local B, defining_triple, nr_objs, nr_mors, arrows, objs, mors, coYoneda_on_objs, coYoneda_on_mors;
+    local B, coyoneda_data, coYoneda_on_objs, coYoneda_on_mors;
     
     B := Source( coPSh );
     
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    if not HasRangeCategoryOfHomomorphismStructure( B ) then
-        TryNextMethod( );
-    fi;
-    
-    defining_triple := DefiningTripleOfUnderlyingQuiver( B );
-    
-    nr_objs := defining_triple[1];
-    nr_mors := defining_triple[2];
-    arrows := defining_triple[3];
-    
-    objs := SetOfObjects( B );
-    
-    mors := SetOfGeneratingMorphisms( B );
+    coyoneda_data := CoYonedaEmbeddingData( B );
     
     coYoneda_on_objs :=
       function ( obj )
-        local Yobj_on_objs, id_obj, Yobj_on_mors, Yobj;
+        local Yobj;
         
-        Yobj_on_objs := List( [ 0 .. nr_objs - 1 ], o ->
-                              HomomorphismStructureOnObjects( B,
-                                      obj,
-                                      objs[1 + o] ) );
-        
-        id_obj := IdentityMorphism( B, obj );
-        
-        Yobj_on_mors := List( [ 0 .. nr_mors - 1 ], m ->
-                              HomomorphismStructureOnMorphismsWithGivenObjects( B,
-                                      Yobj_on_objs[1 + arrows[1 + m][1]],
-                                      id_obj,
-                                      mors[1 + m],
-                                      Yobj_on_objs[1 + arrows[1 + m][2]] ) );
-        
-        Yobj := CreateCoPreSheafByValues( coPSh, Yobj_on_objs, Yobj_on_mors );
+        Yobj := CreateCoPreSheafByValues( coPSh, coyoneda_data[1]( obj ) );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         SetIsInjective( Yobj, true );
@@ -687,12 +660,7 @@ InstallMethodForCompilerForCAP( CoYonedaEmbeddingDataOfSourceCategory,
         
         return CreateCoPreSheafMorphismByValues( coPSh,
                        source,
-                       List( [ 0 .. nr_objs - 1 ], o ->
-                             HomomorphismStructureOnMorphismsWithGivenObjects( B,
-                                     target_on_objs[1 + o],
-                                     mor,
-                                     IdentityMorphism( B, objs[1 + o] ),
-                                     source_on_objs[1 + o] ) ),
+                       coyoneda_data[2]( source_on_objs, mor, target_on_objs ),
                        target );
         
     end;
