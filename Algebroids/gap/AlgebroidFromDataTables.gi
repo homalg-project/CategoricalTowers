@@ -576,6 +576,12 @@ InstallMethod( AlgebroidFromDataTables,
     CapCategorySwitchLogicOff( cat );
     DisableSanityChecks( cat );
     
+    SetDefiningTripleOfUnderlyingQuiver( cat,
+            NTuple( 3,
+                    data[2],
+                    data[6],
+                    List( [ 1 .. data[6] ], i -> Pair( -1 + data[10][i], -1 + data[11][i] ) ) ) );
+    
     SetEnhancedDataTables( cat, data );
     
     SetIsAbCategory( cat, true );
@@ -1610,22 +1616,6 @@ InstallOtherMethod( CapFunctor,
     
     return F;
     
-end );
-
-##
-InstallOtherMethod( DefiningTripleOfUnderlyingQuiver,
-        [ IsAlgebroidFromDataTables ],
-
-  function ( B )
-    local nr_objs, nr_gmors, sources, ranges;
-
-    nr_objs := EnhancedDataTables( B )[2];
-    nr_gmors := EnhancedDataTables( B )[6];
-    sources := EnhancedDataTables( B )[10];
-    ranges := EnhancedDataTables( B )[11];
-
-    return NTuple( 3, nr_objs, nr_gmors, List( [ 1 .. nr_gmors ], i -> Pair( sources[i]-1, ranges[i]-1 ) ) );
-
 end );
 
 ########################################
