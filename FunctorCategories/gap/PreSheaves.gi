@@ -1395,7 +1395,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             objs := SetOfObjects( B );
             
             ## the Yoneda embedding: B ↪ PSh( B )
-            Yoneda := YonedaEmbeddingData( PSh );
+            Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh );
             
             presheaf_on_objects :=
               function ( objB_index )
@@ -1442,7 +1442,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             objs := SetOfObjects( B );
             
             ## the Yoneda embedding: B ↪ PSh( B )
-            Yoneda := YonedaEmbeddingData( PSh );
+            Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh );
             
             presheaf_morphism_on_objects :=
               function ( source, objB_index, range )
@@ -1496,7 +1496,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 T := DistinguishedObjectOfHomomorphismStructure( B );
                 
                 ## the Yoneda embedding: B ↪ PSh( B )
-                Yoneda := YonedaEmbeddingData( PSh );
+                Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh );
                 
                 presheaf_morphism_on_objects :=
                   function ( source, objB_index, range )
@@ -1622,7 +1622,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 T := DistinguishedObjectOfHomomorphismStructure( B );
                 
                 ## the Yoneda embedding: B ↪ PSh( B )
-                Yoneda := YonedaEmbeddingData( PSh );
+                Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh );
                 
                 presheaf_morphism_on_objects :=
                   function ( source, objB_index, range )
@@ -1978,7 +1978,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           
           B := Source( PSh );
           
-          return List( SetOfObjects( B ), YonedaEmbeddingData( PSh )[1] );
+          return List( SetOfObjects( B ), YonedaEmbeddingDataOfSourceCategory( PSh )[1] );
           
       end );
       
@@ -2379,7 +2379,7 @@ end );
 ####################################
 
 ##
-InstallMethodForCompilerForCAP( YonedaEmbeddingData,
+InstallMethodForCompilerForCAP( YonedaEmbeddingDataOfSourceCategory,
         [ IsPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh )
@@ -2437,7 +2437,7 @@ InstallMethod( YonedaEmbeddingOfSourceCategory,
     
     Yoneda := CapFunctor( "Yoneda embedding functor", B, PSh );
     
-    Yoneda_data := YonedaEmbeddingData( PSh );
+    Yoneda_data := YonedaEmbeddingDataOfSourceCategory( PSh );
     
     AddObjectFunction( Yoneda, Yoneda_data[1] );
     
@@ -2468,7 +2468,7 @@ InstallMethod( ImageOfYonedaEmbeddingOfSource,
     
     name := Concatenation( "ImageOfYonedaEmbeddingOfSource( ", Name( PSh ), " )" );
     
-    Yoneda_data := YonedaEmbeddingData( PSh );
+    Yoneda_data := YonedaEmbeddingDataOfSourceCategory( PSh );
     
     return FullSubcategoryGeneratedByListOfObjects( List( SetOfObjects( B ),  Yoneda_data[1] ) : name_of_full_subcategory := name );
     
@@ -3021,7 +3021,7 @@ InstallMethodForCompilerForCAP( EmbeddingFunctorOfFiniteStrictCoproductCompletio
     
     UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
-    return ExtendFunctorToFiniteStrictCoproductCompletionData( UC, YonedaEmbeddingData( PSh ), PSh );
+    return ExtendFunctorToFiniteStrictCoproductCompletionData( UC, YonedaEmbeddingDataOfSourceCategory( PSh ), PSh );
     
 end );
 
@@ -3073,7 +3073,7 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentable,
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( PSh ), D ) );
     
-    Y := YonedaEmbeddingData( PSh )[1];
+    Y := YonedaEmbeddingDataOfSourceCategory( PSh )[1];
     
     objs := SetOfObjects( B );
     

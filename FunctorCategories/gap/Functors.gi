@@ -180,7 +180,7 @@ InstallMethodForCompilerForCAP( IsbellLeftAdjointData,
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, IsIdenticalObj( B, Source( coPSh ) ) );
     
-    Yoneda := YonedaEmbeddingData( PSh );
+    Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh );
     Yoneda_on_obj := Yoneda[1];
     Yoneda_on_mor := Yoneda[2];
     
@@ -265,7 +265,7 @@ InstallMethodForCompilerForCAP( IsbellRightAdjointData,
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, IsIdenticalObj( B, Source( PSh ) ) );
     
-    coYoneda := CoYonedaEmbeddingData( coPSh );
+    coYoneda := CoYonedaEmbeddingDataOfSourceCategory( coPSh );
     coYoneda_on_obj := coYoneda[1];
     coYoneda_on_mor := coYoneda[2];
     
@@ -396,8 +396,8 @@ InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
     
     O := IsbellLeftAdjointData( PSh, coPSh )[1];
     
-    Yoneda := YonedaEmbeddingData( PSh )[1];
-    coYoneda := CoYonedaEmbeddingData( coPSh )[1];
+    Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh )[1];
+    coYoneda := CoYonedaEmbeddingDataOfSourceCategory( coPSh )[1];
     
     return
       function( IdPShF, F, Fvv )
@@ -541,7 +541,7 @@ BindGlobal( "SET_ISOMORPHISMS_BETWEEN_SOURCE_AND_IMAGE_OF_YONEDA_EMBEDDING_OF_SO
     
     T := ImageOfYonedaEmbeddingOfSource( PSh );
     
-    Yoneda_data := YonedaEmbeddingData( PSh );
+    Yoneda_data := YonedaEmbeddingDataOfSourceCategory( PSh );
     
     obj_func := o -> AsSubcategoryCell( T, Yoneda_data[1](o) );
     

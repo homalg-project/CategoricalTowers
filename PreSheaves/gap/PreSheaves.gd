@@ -168,7 +168,7 @@ DeclareAttribute( "FunctionOfPreSheafMorphism",
 #end );
 
 ##
-DeclareAttribute( "YonedaEmbeddingFunctionalData",
+DeclareAttribute( "YonedaEmbeddingFunctionalDataOfSourceCategory",
         IsPreSheafCategory );
 
 #! @Arguments PSh

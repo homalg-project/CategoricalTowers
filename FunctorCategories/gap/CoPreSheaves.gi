@@ -628,7 +628,7 @@ end );
 ####################################
 
 ##
-InstallMethodForCompilerForCAP( CoYonedaEmbeddingData,
+InstallMethodForCompilerForCAP( CoYonedaEmbeddingDataOfSourceCategory,
         [ IsCoPreSheafCategory ],
         
   function ( coPSh )
@@ -686,7 +686,7 @@ InstallMethod( CoYonedaEmbeddingOfSourceCategory,
     
     coYoneda := CapFunctor( "co-Yoneda embedding functor", B, coPSh );
     
-    coYoneda_data := CoYonedaEmbeddingData( coPSh );
+    coYoneda_data := CoYonedaEmbeddingDataOfSourceCategory( coPSh );
     
     AddObjectFunction( coYoneda, coYoneda_data[1] );
     

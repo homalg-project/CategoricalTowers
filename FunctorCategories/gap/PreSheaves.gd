@@ -82,7 +82,7 @@ DeclareAttribute( "UnderlyingCapTwoCategoryCell",
         IsCellInPreSheafCategory );
 
 ##
-DeclareAttribute( "YonedaEmbeddingData",
+DeclareAttribute( "YonedaEmbeddingDataOfSourceCategory",
         IsPreSheafCategoryOfFpEnrichedCategory );
 
 #! @Arguments B
