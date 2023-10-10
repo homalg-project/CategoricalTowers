@@ -24,7 +24,7 @@ Display( C );
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ]:
 #! 
-#! 16 primitive operations were used to derive 51 operations for this category
+#! 16 primitive operations were used to derive 53 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! and furthermore mathematically
@@ -51,20 +51,38 @@ s := CreateMorphism( C, 2 );
 #! (C0)-[(s)]->(C1)
 t := CreateMorphism( C, 3 );
 #! (C0)-[(t)]->(C1)
+IsSplitMonomorphism( s );
+#! true
+IsSplitMonomorphism( t );
+#! true
+IsEpimorphism( s );
+#! false
+IsEpimorphism( t );
+#! false
+IsSplitEpimorphism( id );
+#! true
+IsMonomorphism( id );
+#! false
 idC1 := CreateMorphism( C, 4 );
 #! (C1)-[(C1)]->(C1)
 IsOne( idC1 );
 #! true
 sigma := CreateMorphism( C, 5 );
 #! (C1)-[(id*s)]->(C1)
-IsEndomorphism( sigma );
-#! true
-IsOne( sigma );
-#! false
 tau := CreateMorphism( C, 6 );
 #! (C1)-[(id*t)]->(C1)
+IsEndomorphism( sigma );
+#! true
+IsMonomorphism( sigma );
+#! false
+IsEpimorphism( sigma );
+#! false
 IsEndomorphism( tau );
 #! true
+IsMonomorphism( tau );
+#! false
+IsEpimorphism( tau );
+#! false
 IsOne( tau );
 #! false
 IsWellDefined( CreateMorphism( C1, 7, C1 ) );
