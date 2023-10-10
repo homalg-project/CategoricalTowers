@@ -292,7 +292,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         a_underlying := UnderlyingMorphism( a );
         b_underlying := UnderlyingMorphism( b );
         
-        return IsEqualForObjects( AmbientCategory( cat ), Source( a_underlying ), Source( b_underlying ) ) and IsCongruentForMorphisms( C, a_underlying, b_underlying );
+        return IsEqualForObjects( AmbientCategory( cat ), Source( a_underlying ), Source( b_underlying ) ) and IsEqualForMorphisms( C, a_underlying, b_underlying );
         
     end );
     
