@@ -152,7 +152,7 @@ DeclareAttribute( "UnderlyingCapTwoCategoryCell",
         IsCellInCoPreSheafCategory );
 
 ##
-DeclareAttribute( "CoYonedaEmbeddingData",
+DeclareAttribute( "CoYonedaEmbeddingDataOfSourceCategory",
         IsCoPreSheafCategory );
 
 #! @Arguments B

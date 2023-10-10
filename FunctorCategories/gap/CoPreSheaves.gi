@@ -628,11 +628,11 @@ end );
 ####################################
 
 ##
-InstallMethodForCompilerForCAP( CoYonedaEmbeddingData,
+InstallMethodForCompilerForCAP( CoYonedaEmbeddingDataOfSourceCategory,
         [ IsCoPreSheafCategory ],
         
   function ( coPSh )
-    local B, objs, mors, coYoneda_on_objs, coYoneda_on_mors;
+    local B, defining_triple, nr_objs, nr_mors, arrows, objs, mors, coYoneda_on_objs, coYoneda_on_mors;
     
     B := Source( coPSh );
     
@@ -641,17 +641,35 @@ InstallMethodForCompilerForCAP( CoYonedaEmbeddingData,
         TryNextMethod( );
     fi;
     
+    defining_triple := DefiningTripleOfUnderlyingQuiver( B );
+    
+    nr_objs := defining_triple[1];
+    nr_mors := defining_triple[2];
+    arrows := defining_triple[3];
+    
     objs := SetOfObjects( B );
     
     mors := SetOfGeneratingMorphisms( B );
     
     coYoneda_on_objs :=
       function ( obj )
-        local Yobj;
+        local Yobj_on_objs, id_obj, Yobj_on_mors, Yobj;
         
-        Yobj := CreateCoPreSheafByValues( coPSh,
-                        Pair( List( objs, o -> HomomorphismStructureOnObjects( B, obj, o ) ),
-                              List( mors, m -> HomomorphismStructureOnMorphisms( B, IdentityMorphism( B, obj ), m ) ) ) );
+        Yobj_on_objs := List( [ 0 .. nr_objs - 1 ], o ->
+                              HomomorphismStructureOnObjects( B,
+                                      obj,
+                                      objs[1 + o] ) );
+        
+        id_obj := IdentityMorphism( B, obj );
+        
+        Yobj_on_mors := List( [ 0 .. nr_mors - 1 ], m ->
+                              HomomorphismStructureOnMorphismsWithGivenObjects( B,
+                                      Yobj_on_objs[1 + arrows[1 + m][1]],
+                                      id_obj,
+                                      mors[1 + m],
+                                      Yobj_on_objs[1 + arrows[1 + m][2]] ) );
+        
+        Yobj := CreateCoPreSheafByValues( coPSh, Yobj_on_objs, Yobj_on_mors );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         SetIsInjective( Yobj, true );
@@ -661,12 +679,21 @@ InstallMethodForCompilerForCAP( CoYonedaEmbeddingData,
     end;
     
     coYoneda_on_mors :=
-      function ( s, mor, r )
+      function ( source, mor, target )
+        local source_on_objs, target_on_objs;
+        
+        source_on_objs := ObjectDatum( coPSh, source )[1];
+        target_on_objs := ObjectDatum( coPSh, target )[1];
         
         return CreateCoPreSheafMorphismByValues( coPSh,
-                       s,
-                       List( objs, o -> HomomorphismStructureOnMorphisms( B, mor, IdentityMorphism( B, o ) ) ),
-                       r );
+                       source,
+                       List( [ 0 .. nr_objs - 1 ], o ->
+                             HomomorphismStructureOnMorphismsWithGivenObjects( B,
+                                     target_on_objs[1 + o],
+                                     mor,
+                                     IdentityMorphism( B, objs[1 + o] ),
+                                     source_on_objs[1 + o] ) ),
+                       target );
         
     end;
     
@@ -686,7 +713,7 @@ InstallMethod( CoYonedaEmbeddingOfSourceCategory,
     
     coYoneda := CapFunctor( "co-Yoneda embedding functor", B, coPSh );
     
-    coYoneda_data := CoYonedaEmbeddingData( coPSh );
+    coYoneda_data := CoYonedaEmbeddingDataOfSourceCategory( coPSh );
     
     AddObjectFunction( coYoneda, coYoneda_data[1] );
     

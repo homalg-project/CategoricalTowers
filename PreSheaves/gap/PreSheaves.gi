@@ -991,7 +991,7 @@ end );
 ####################################
 
 ##
-InstallMethodForCompilerForCAP( YonedaEmbeddingFunctionalData,
+InstallMethodForCompilerForCAP( YonedaEmbeddingFunctionalDataOfSourceCategory,
         [ IsPreSheafCategory ],
         
   function ( PSh )
@@ -1045,7 +1045,7 @@ InstallMethod( YonedaEmbeddingOfSourceCategory,
     
     Yoneda := CapFunctor( "Yoneda embedding functor", B, PSh );
     
-    Yoneda_data := YonedaEmbeddingFunctionalData( PSh );
+    Yoneda_data := YonedaEmbeddingFunctionalDataOfSourceCategory( PSh );
     
     AddObjectFunction( Yoneda, Yoneda_data[1] );
     

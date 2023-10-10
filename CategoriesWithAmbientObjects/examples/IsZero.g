@@ -2,18 +2,16 @@
 
 #! @Section IsZero
 
-LoadPackage( "ModulePresentationsForCAP" );
-LoadPackage( "IntrinsicCategories" );
-LoadPackage( "CategoriesWithAmbientObjects" );
-LoadPackage( "HomologicalAlgebraForCAP" );
-LoadPackage( "RingsForHomalg" );
-
 #! @Example
+LoadPackage( "CategoriesWithAmbientObjects", false );
+#! true
+LoadPackage( "ModulePresentationsForCAP", ">= 2023.10-01", false );
+#! true
 QQ := HomalgFieldOfRationalsInSingular( );;
 R := QQ * "x,y";
 #! Q[x,y]
-M := AsLeftOrRightPresentation(
-  HomalgMatrix( "[ 1, x, 0, 1 ]", 2, 2, R ), true );
+M := AsLeftPresentation(
+  HomalgMatrix( "[ 1, x, 0, 1 ]", 2, 2, R ) );
 #! <An object in Category of left presentations of Q[x,y]>
 Ag := CategoryWithAmbientObjects( CapCategory( M ) );
 #! CategoryWithAmbientObjects( Category of left presentations of Q[x,y] )
