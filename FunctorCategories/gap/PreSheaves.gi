@@ -2383,7 +2383,7 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingDataOfSourceCategory,
         [ IsPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh )
-    local B, objs, mors, Yoneda_on_objs, Yoneda_on_mors;
+    local B, defining_triple, nr_objs, nr_mors, arrows, objs, mors, Yoneda_on_objs, Yoneda_on_mors;
     
     B := Source( PSh );
     
@@ -2392,17 +2392,35 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingDataOfSourceCategory,
         TryNextMethod( );
     fi;
     
+    defining_triple := DefiningTripleOfUnderlyingQuiver( B );
+    
+    nr_objs := defining_triple[1];
+    nr_mors := defining_triple[2];
+    arrows := defining_triple[3];
+    
     objs := SetOfObjects( B );
     
     mors := SetOfGeneratingMorphisms( B );
     
     Yoneda_on_objs :=
       function ( obj )
-        local Yobj;
+        local Yobj_on_objs, id_obj, Yobj_on_mors, Yobj;
         
-        Yobj := CreatePreSheafByValues( PSh,
-                        List( objs, o -> HomomorphismStructureOnObjects( B, o, obj ) ),
-                        List( mors, m -> HomomorphismStructureOnMorphisms( B, m, IdentityMorphism( B, obj ) ) ) );
+        Yobj_on_objs := List( [ 0 .. nr_objs - 1 ], o ->
+                              HomomorphismStructureOnObjects( B,
+                                      objs[1 + o],
+                                      obj ) );
+        
+        id_obj := IdentityMorphism( B, obj );
+        
+        Yobj_on_mors := List( [ 0 .. nr_mors - 1 ], m ->
+                              HomomorphismStructureOnMorphismsWithGivenObjects( B,
+                                      Yobj_on_objs[1 + arrows[1 + m][2]],
+                                      mors[1 + m],
+                                      id_obj,
+                                      Yobj_on_objs[1 + arrows[1 + m][1]] ) );
+        
+        Yobj := CreatePreSheafByValues( PSh, Yobj_on_objs, Yobj_on_mors );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         SetIsProjective( Yobj, true );
@@ -2412,12 +2430,21 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingDataOfSourceCategory,
     end;
     
     Yoneda_on_mors :=
-      function ( s, mor, r )
+      function ( source, mor, target )
+        local source_on_objs, target_on_objs;
+        
+        source_on_objs := ObjectDatum( PSh, source )[1];
+        target_on_objs := ObjectDatum( PSh, target )[1];
         
         return CreatePreSheafMorphismByValues( PSh,
-                       s,
-                       List( objs, o -> HomomorphismStructureOnMorphisms( B, IdentityMorphism( B, o ), mor ) ),
-                       r );
+                       source,
+                       List( [ 0 .. nr_objs - 1 ], o ->
+                             HomomorphismStructureOnMorphismsWithGivenObjects( B,
+                                     source_on_objs[1 + o],
+                                     IdentityMorphism( B, objs[1 + o] ),
+                                     mor,
+                                     target_on_objs[1 + o] ) ),
+                       target );
         
     end;
     
