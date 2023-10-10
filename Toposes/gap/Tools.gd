@@ -12,32 +12,6 @@
 
 ####################################
 ##
-#! @Section General methods
-##
-####################################
-
-#! @Description
-#!  The defining triple of the quiver underlying the finitely presented category <A>C</A>.
-#! @Arguments C
-#! @Returns a pair
-DeclareAttribute( "DefiningTripleOfUnderlyingQuiver",
-        IsCapCategory );
-
-CapJitAddTypeSignature( "DefiningTripleOfUnderlyingQuiver", [ IsCapCategory ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfNTupleOf( 3,
-                   IsInt,
-                   IsInt,
-                   CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfNTupleOf( 2,
-                                   IsInt,
-                                   IsInt ) ) );
-    
-end );
-
-####################################
-##
 #! @Section Visualizing posets of subobjects
 ##
 ####################################
