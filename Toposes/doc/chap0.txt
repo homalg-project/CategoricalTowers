@@ -6,10 +6,10 @@
                               [1X Elementary toposes [101X
   
   
-                                   2023.10-04
+                                   2023.10-05
   
   
-                                 6 October 2023
+                                11 October 2023
   
   
                                 Mohamed Barakat
@@ -227,10 +227,8 @@
     2.4 [33X[0;0YProperties[133X
       2.4-1 IsHonest
   3 [33X[0;0YTools[133X
-    3.1 [33X[0;0YGeneral methods[133X
-      3.1-1 DefiningTripleOfUnderlyingQuiver
-    3.2 [33X[0;0YVisualizing posets of subobjects[133X
-      3.2-1 DigraphOfSubobjects
+    3.1 [33X[0;0YVisualizing posets of subobjects[133X
+      3.1-1 DigraphOfSubobjects
   4 [33X[0;0YExamples and Tests[133X
     4.1 [33X[0;0YOpposite category[133X
   
