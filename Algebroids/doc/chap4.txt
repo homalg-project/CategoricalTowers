@@ -95,7 +95,7 @@
     [4X[28XFreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )[128X[104X
     [4X[28X/ [ s*id = C0, t*id = C0 ]:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X16 primitive operations were used to derive 51 operations for this category[128X[104X
+    [4X[28X16 primitive operations were used to derive 53 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
@@ -122,20 +122,38 @@
     [4X[28X(C0)-[(s)]->(C1)[128X[104X
     [4X[25Xgap>[125X [27Xt := CreateMorphism( C, 3 );[127X[104X
     [4X[28X(C0)-[(t)]->(C1)[128X[104X
+    [4X[25Xgap>[125X [27XIsSplitMonomorphism( s );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsSplitMonomorphism( t );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( s );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( t );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsSplitEpimorphism( id );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( id );[127X[104X
+    [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XidC1 := CreateMorphism( C, 4 );[127X[104X
     [4X[28X(C1)-[(C1)]->(C1)[128X[104X
     [4X[25Xgap>[125X [27XIsOne( idC1 );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xsigma := CreateMorphism( C, 5 );[127X[104X
     [4X[28X(C1)-[(id*s)]->(C1)[128X[104X
-    [4X[25Xgap>[125X [27XIsEndomorphism( sigma );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( sigma );[127X[104X
-    [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xtau := CreateMorphism( C, 6 );[127X[104X
     [4X[28X(C1)-[(id*t)]->(C1)[128X[104X
+    [4X[25Xgap>[125X [27XIsEndomorphism( sigma );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( sigma );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( sigma );[127X[104X
+    [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsEndomorphism( tau );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( tau );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( tau );[127X[104X
+    [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsOne( tau );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( CreateMorphism( C1, 7, C1 ) );[127X[104X

@@ -170,7 +170,7 @@ A CAP category with name
 FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) )
 / [ s*id = C0, t*id = C0 ]:
 
-16 primitive operations were used to derive 51 operations for this category
+16 primitive operations were used to derive 53 operations for this category
 which algorithmically
 * IsEquippedWithHomomorphismStructure
 and furthermore mathematically
@@ -197,20 +197,38 @@ true
 (C0)-[(s)]-&gt;(C1)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := CreateMorphism( C, 3 );</span>
 (C0)-[(t)]-&gt;(C1)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSplitMonomorphism( s );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSplitMonomorphism( t );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( s );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( t );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSplitEpimorphism( id );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( id );</span>
+false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">idC1 := CreateMorphism( C, 4 );</span>
 (C1)-[(C1)]-&gt;(C1)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( idC1 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sigma := CreateMorphism( C, 5 );</span>
 (C1)-[(id*s)]-&gt;(C1)
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEndomorphism( sigma );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( sigma );</span>
-false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tau := CreateMorphism( C, 6 );</span>
 (C1)-[(id*t)]-&gt;(C1)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEndomorphism( sigma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( sigma );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( sigma );</span>
+false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEndomorphism( tau );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( tau );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( tau );</span>
+false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( tau );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( CreateMorphism( C1, 7, C1 ) );</span>
