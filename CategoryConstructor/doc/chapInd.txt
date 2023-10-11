@@ -37,9 +37,10 @@
   [2XBiasedRelativeWeakFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-1 
   [2XColimit[102X, for IsList, IsList 1.9-2 
   [2XColimitPair[102X, for IsCapCategory, IsList, IsList 1.9-1 
-  [2XCovariantHomFunctor[102X, for IsCapCategoryObject 2.1-1 
+  [2XCovariantHomFunctor[102X, for IsCapCategoryObject 2.2-1 
+  [2XDefiningTripleOfUnderlyingQuiver[102X, for IsCapCategory 2.1-1 
   [2XEmbeddingOfSumOfImagesOfAllMorphisms[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-2 
-  [2XGlobalSectionFunctor[102X, for IsCapCategory 2.1-2 
+  [2XGlobalSectionFunctor[102X, for IsCapCategory 2.2-2 
   [2XInjectionOfCofactorOfColimit[102X, for IsList, IsList, IsInt 1.9-3 
   [2XInjectionOfCofactorOfColimitWithGivenColimit[102X, for IsList, IsList, IsInt, IsCapCategoryObject 1.9-4 
   [2XIsWeakInitial[102X, for IsCapCategoryObject 1.3-2 
