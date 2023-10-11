@@ -11,7 +11,18 @@ InstallOtherMethod( PreCompose,
         
   function( L )
     
-    return PreCompose( ConvertJuliaToGAP( L ) );
+    return PreComposeList( ConvertJuliaToGAP( L ) );
+    
+end );
+
+##
+InstallOtherMethod( PreComposeList,
+        "for a julia object",
+        [ IsJuliaObject ],
+        
+  function( L )
+    
+    return PreComposeList( ConvertJuliaToGAP( L ) );
     
 end );
 
