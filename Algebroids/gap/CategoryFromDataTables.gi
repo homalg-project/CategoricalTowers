@@ -507,6 +507,26 @@ InstallMethod( OppositeCategoryFromDataTables,
     
 end );
 
+##
+InstallOtherMethod( DecompositionOfMorphismInCategoryInIndices,
+        "for a category from data tables and a morphism therein",
+        [ IsCategoryFromDataTables, IsMorphismInCategoryFromDataTables ],
+        
+  function( C, mor )
+    local s, t;
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if not IsIdenticalObj( C, CapCategory( mor ) ) then
+        Error( "`mor` is not a morphism in the category `C`\n" );
+    fi;
+    
+    s := IndexOfObject( Source( mor ) );
+    t := IndexOfObject( Target( mor ) );
+    
+    return DecompositionOfAllMorphisms( C )[1 + t, 1 + s][1 + HomStructure( mor )(0)];
+    
+end );
+
 ####################################
 #
 # View, Print, and Display methods:
@@ -551,7 +571,7 @@ InstallMethod( ViewString,
             pos := labels[1][pos];
         else
             pos := JoinStringsWithSeparator(
-                           List( DecompositionOfAllMorphisms( C )[1+t, 1+s][1 + HomStructure( mor )(0)], i -> labels[2][1 + i] ),
+                           List( DecompositionOfMorphismInCategoryInIndices( C, mor ), i -> labels[2][1 + i] ),
                            "*" );
         fi;
     fi;
