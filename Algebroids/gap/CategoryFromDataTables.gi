@@ -527,6 +527,26 @@ InstallOtherMethod( DecompositionOfMorphismInCategoryInIndices,
     
 end );
 
+##
+InstallMethod( DecompositionOfMorphismInCategory,
+        "for a morphism in a category from data tables",
+        [ IsMorphismInCategoryFromDataTables ],
+        
+  function( mor )
+    local C, dec;
+    
+    C := CapCategory( mor );
+    
+    dec := SetOfGeneratingMorphisms( C ){1 + DecompositionOfMorphismInCategoryInIndices( C, mor )};
+    
+    if ForAny( dec, IsEndomorphism and IsIdentityMorphism ) then
+        Error( "one of the generating morphisms is an identity morphism\n" );
+    fi;
+    
+    return dec;
+    
+end );
+
 ####################################
 #
 # View, Print, and Display methods:

@@ -104,6 +104,9 @@ end );
 DeclareAttribute( "DecompositionOfMorphismInCategoryInIndices",
         IsMorphismInCategoryFromDataTables );
 
+DeclareAttribute( "DecompositionOfMorphismInCategory",
+        IsMorphismInCategoryFromDataTables );
+
 DeclareAttribute( "DecompositionOfAllMorphisms",
         IsCategoryFromDataTables );
 

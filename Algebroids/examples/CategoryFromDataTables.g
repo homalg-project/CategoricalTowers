@@ -131,6 +131,13 @@ Display( HomStructure( tau, idC1 ) );
 #! { 0, 1, 2 } ⱶ[ 2, 1, 2 ]→ { 0, 1, 2 }
 Display( HomStructure( idC1, idC1 ) );
 #! { 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }
+mors := SetOfMorphisms( C );
+#! [ (C0)-[(C0)]->(C0), (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1),
+#!   (C1)-[(C1)]->(C1), (C1)-[(id*s)]->(C1), (C1)-[(id*t)]->(C1) ]
+List( mors, DecompositionOfMorphismInCategory );
+#! [ [  ], [ (C1)-[(id)]->(C0) ], [ (C0)-[(s)]->(C1) ], [ (C0)-[(t)]->(C1) ],
+#!   [  ], [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1) ],
+#!   [ (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ] ]
 C_op := OppositeCategoryFromDataTables( C );
 #! Opposite(
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
@@ -141,5 +148,12 @@ IndicesOfGeneratingMorphisms( C_op );
 #! [ 3, 1, 2 ]
 SetOfGeneratingMorphisms( C_op );
 #! [ (C0)-[(id)]->(C1), (C1)-[(s)]->(C0), (C1)-[(t)]->(C0) ]
+mors_op := SetOfMorphisms( C_op );
+#! [ (C0)-[(C0)]->(C0), (C1)-[(s)]->(C0), (C1)-[(t)]->(C0), (C0)-[(id)]->(C1),
+#!   (C1)-[(C1)]->(C1), (C1)-[(s*id)]->(C1), (C1)-[(t*id)]->(C1) ]
+List( mors_op, DecompositionOfMorphismInCategory );
+#! [ [  ], [ (C1)-[(s)]->(C0) ], [ (C1)-[(t)]->(C0) ], [ (C0)-[(id)]->(C1) ],
+#!   [  ], [ (C1)-[(s)]->(C0), (C0)-[(id)]->(C1) ],
+#!   [ (C1)-[(t)]->(C0), (C0)-[(id)]->(C1) ] ]
 #! @EndExample
 #! @EndChunk
