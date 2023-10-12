@@ -547,6 +547,48 @@ InstallMethod( DecompositionOfMorphismInCategory,
     
 end );
 
+##
+InstallOtherMethod( OppositeMorphismInOppositeCategoryFromDataTables,
+        "for a category from data tables and a morphism therein",
+        [ IsCategoryFromDataTables, IsCategoryFromDataTables, IsMorphismInCategoryFromDataTables ],
+        
+  function( C_op, C, mor )
+    local s, t;
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if not IsIdenticalObj( C, CapCategory( mor ) ) then
+        Error( "`mor` is not a morphism in the category `C`\n" );
+    fi;
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if not IsIdenticalObj( C_op, OppositeCategoryFromDataTables( C ) ) then
+        Error( "the opposite category of `C` is not the category `C_op`\n" );
+    fi;
+    
+    s := IndexOfObject( Source( mor ) );
+    t := IndexOfObject( Target( mor ) );
+    
+    return PreComposeList( C_op,
+                   SetOfObjects( C_op )[1 + t],
+                   SetOfGeneratingMorphisms( C_op ){1 + Reversed( DecompositionOfMorphismInCategoryInIndices( C, mor ) )},
+                   SetOfObjects( C_op )[1 + s] );
+    
+end );
+
+##
+InstallMethod( OppositeMorphismInOppositeCategoryFromDataTables,
+        "for a morphism in a category from data tables",
+        [ IsMorphismInCategoryFromDataTables ],
+        
+  function( mor )
+    local C;
+    
+    C := CapCategory( mor );
+    
+    return OppositeMorphismInOppositeCategoryFromDataTables( OppositeCategoryFromDataTables( C ), C, mor );
+    
+end );
+
 ####################################
 #
 # View, Print, and Display methods:

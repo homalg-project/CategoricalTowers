@@ -134,6 +134,12 @@ Display( HomStructure( idC1, idC1 ) );
 mors := SetOfMorphisms( C );
 #! [ (C0)-[(C0)]->(C0), (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1),
 #!   (C1)-[(C1)]->(C1), (C1)-[(id*s)]->(C1), (C1)-[(id*t)]->(C1) ]
+List( mors, OppositeMorphismInOppositeCategoryFromDataTables );
+#! [ (C0)-[(C0)]->(C0), (C0)-[(id)]->(C1), (C1)-[(s)]->(C0), (C1)-[(t)]->(C0),
+#! (C1)-[(C1)]->(C1), (C1)-[(s*id)]->(C1), (C1)-[(t*id)]->(C1) ]
+mors;
+#! [ (C0)-[(C0)]->(C0), (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1),
+#!   (C1)-[(C1)]->(C1), (C1)-[(id*s)]->(C1), (C1)-[(id*t)]->(C1) ]
 List( mors, DecompositionOfMorphismInCategory );
 #! [ [  ], [ (C1)-[(id)]->(C0) ], [ (C0)-[(s)]->(C1) ], [ (C0)-[(t)]->(C1) ],
 #!   [  ], [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1) ],
