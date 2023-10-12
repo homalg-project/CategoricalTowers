@@ -2582,16 +2582,16 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
     if IsAlgebroidFromDataTables( B_op ) then
         
         morB_op := MorphismConstructor( B_op,
-                        SetOfObjects( B_op )[ObjectIndex(  Range( morB ) )],
-                        MorphismCoefficients( morB ),
-                        SetOfObjects( B_op )[ObjectIndex( Source( morB ) )] );
+                           SetOfObjects( B_op )[ObjectIndex( Range( morB ) )],
+                           MorphismCoefficients( morB ),
+                           SetOfObjects( B_op )[ObjectIndex( Source( morB ) )] );
         
     else
         
         morB_op := MorphismConstructor( B_op,
-                       SetOfObjects( B_op )[VertexIndex( UnderlyingVertex(  Range( morB ) ) )],
-                       OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( morB ) ),
-                       SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Source( morB ) ) )] );
+                           SetOfObjects( B_op )[VertexIndex( UnderlyingVertex(  Range( morB ) ) )],
+                           OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( morB ) ),
+                           SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Source( morB ) ) )] );
         
     fi;
     
