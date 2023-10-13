@@ -2588,7 +2588,7 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
         
         return PreComposeList( D,
                        F_datum[1][1 + IndexOfObject( Target( morB ) )],
-                       F_datum[2]{1 + Reversed( DecompositionOfMorphismInCategoryInIndices( B, morB ) )},
+                       F_datum[2]{1 + Reversed( DecompositionIndicesOfMorphism( B, morB ) )},
                        F_datum[1][1 + IndexOfObject( Source( morB ) )] );
         
     elif IsAlgebroidFromDataTables( B_op ) then

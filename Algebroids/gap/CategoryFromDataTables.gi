@@ -508,7 +508,7 @@ InstallMethod( OppositeCategoryFromDataTables,
 end );
 
 ##
-InstallOtherMethod( DecompositionOfMorphismInCategoryInIndices,
+InstallOtherMethod( DecompositionIndicesOfMorphism,
         "for a category from data tables and a morphism therein",
         [ IsCategoryFromDataTables, IsMorphismInCategoryFromDataTables ],
         
@@ -537,7 +537,7 @@ InstallMethod( DecompositionOfMorphismInCategory,
     
     C := CapCategory( mor );
     
-    dec := SetOfGeneratingMorphisms( C ){1 + DecompositionOfMorphismInCategoryInIndices( C, mor )};
+    dec := SetOfGeneratingMorphisms( C ){1 + DecompositionIndicesOfMorphism( C, mor )};
     
     if ForAny( dec, IsEndomorphism and IsIdentityMorphism ) then
         Error( "one of the generating morphisms is an identity morphism\n" );
@@ -570,7 +570,7 @@ InstallOtherMethod( OppositeMorphismInOppositeCategoryFromDataTables,
     
     return PreComposeList( C_op,
                    SetOfObjects( C_op )[1 + t],
-                   SetOfGeneratingMorphisms( C_op ){1 + Reversed( DecompositionOfMorphismInCategoryInIndices( C, mor ) )},
+                   SetOfGeneratingMorphisms( C_op ){1 + Reversed( DecompositionIndicesOfMorphism( C, mor ) )},
                    SetOfObjects( C_op )[1 + s] );
     
 end );
@@ -633,7 +633,7 @@ InstallMethod( ViewString,
             pos := labels[1][pos];
         else
             pos := JoinStringsWithSeparator(
-                           List( DecompositionOfMorphismInCategoryInIndices( C, mor ), i -> labels[2][1 + i] ),
+                           List( DecompositionIndicesOfMorphism( C, mor ), i -> labels[2][1 + i] ),
                            "*" );
         fi;
     fi;
