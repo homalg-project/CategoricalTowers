@@ -30,9 +30,9 @@
   
   [1X4.2 [33X[0;0YConstructors[133X[101X
   
-  [1X4.2-1 CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[101X
+  [1X4.2-1 SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[101X
   
-  [33X[1;0Y[29X[2XCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[102X( [3Xarg[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[102X( [3Xarg[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
   [33X[0;0YConstruct  a  category  of  skeletal  finite  sets  as  the finite coproduct
@@ -48,9 +48,9 @@
   
   [1X4.3 [33X[0;0YGAP categories[133X[101X
   
-  [1X4.3-1 IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[101X
+  [1X4.3-1 IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of a finite coproduct cocompletion category.[133X
