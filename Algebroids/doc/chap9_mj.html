@@ -185,7 +185,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( quiver )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true ); return CategoryFromNerveData( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ); return CategoryFromNerveData( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ RightQuiver( "q(a,b)[m:a-&gt;b]" ) ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "CategoryFromNerveDataPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "Algebroids";;</span>
@@ -214,7 +214,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( quiver )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true ); return CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ); return CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ RightQuiver( "q(a,b)[m:a-&gt;b]" ) ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "CategoryFromDataTablesPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "Algebroids";;</span>
