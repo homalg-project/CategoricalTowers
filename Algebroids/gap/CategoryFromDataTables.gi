@@ -539,7 +539,7 @@ InstallMethod( DecompositionOfMorphismInCategory,
     
     dec := SetOfGeneratingMorphisms( C ){1 + DecompositionIndicesOfMorphism( C, mor )};
     
-    if ForAny( dec, IsEndomorphism and IsIdentityMorphism ) then
+    if ForAny( dec, IsEqualToIdentityMorphism ) then
         Error( "one of the generating morphisms is an identity morphism\n" );
     fi;
     
