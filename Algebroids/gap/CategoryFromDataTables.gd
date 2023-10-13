@@ -110,10 +110,10 @@ DeclareAttribute( "DecompositionOfMorphismInCategory",
 DeclareAttribute( "OppositeMorphismInOppositeCategoryFromDataTables",
         IsMorphismInCategoryFromDataTables );
 
-DeclareAttribute( "DecompositionOfAllMorphisms",
+DeclareAttribute( "DecompositionIndicesOfAllMorphisms",
         IsCategoryFromDataTables );
 
-CapJitAddTypeSignature( "DecompositionOfAllMorphisms", [ IsCategoryFromDataTables ],
+CapJitAddTypeSignature( "DecompositionIndicesOfAllMorphisms", [ IsCategoryFromDataTables ],
   function ( input_types )
     
     return CapJitDataTypeOfListOf(

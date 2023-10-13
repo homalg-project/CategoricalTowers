@@ -68,7 +68,7 @@ InstallMethod( CategoryFromNerveData,
     od;
     
     SetIndicesOfGeneratingMorphisms( C, input_record.indices_of_generating_morphisms );
-    SetDecompositionOfAllMorphisms( C, input_record.decomposition_of_all_morphisms );
+    SetDecompositionIndicesOfAllMorphisms( C, input_record.decomposition_of_all_morphisms );
     SetRelationsAmongGeneratingMorphisms( C, input_record.relations );
     
     C!.labels := input_record.labels;
@@ -92,7 +92,7 @@ InstallMethod( CategoryFromNerveData,
       rec( category_attribute_names :=
            [ "NerveData",
              "IndicesOfGeneratingMorphisms",
-             "DecompositionOfAllMorphisms",
+             "DecompositionIndicesOfAllMorphisms",
              "RelationsAmongGeneratingMorphisms",
              "DefiningTripleOfUnderlyingQuiver",
              ] );
@@ -532,7 +532,7 @@ InstallMethod( CategoryFromNerveData,
                    rec( name := Name( C ),
                         nerve_data := NerveTruncatedInDegree2Data( C ),
                         indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
-                        decomposition_of_all_morphisms := DecompositionOfAllMorphismsFromHomStructure( C ),
+                        decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphismsFromHomStructure( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := [ List( SetOfObjects( C ), Label ), List( SetOfGeneratingMorphisms( C ), Label ) ],
                         properties := ListKnownCategoricalProperties( C ) ) );
@@ -550,7 +550,7 @@ InstallOtherMethod( CategoryFromNerveData,
                    rec( name := Name( C ),
                         nerve_data := NerveTruncatedInDegree2Data( C ),
                         indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
-                        decomposition_of_all_morphisms := DecompositionOfAllMorphisms( C ),
+                        decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphisms( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := C!.labels,
                         properties := ListKnownCategoricalProperties( C ) ) );
@@ -816,7 +816,7 @@ InstallMethod( OppositeCategoryFromNerveData,
                         ## the following nerve data is not "normalized", as it is not the result of the method NerveTruncatedInDegree2Data:
                         nerve_data := OppositeNerveData( NerveData( C ) ),
                         indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
-                        decomposition_of_all_morphisms := TransposedMat( List( DecompositionOfAllMorphisms( C ), s -> List( s, t -> List( t, Reversed ) ) ) ),
+                        decomposition_of_all_morphisms := TransposedMat( List( DecompositionIndicesOfAllMorphisms( C ), s -> List( s, t -> List( t, Reversed ) ) ) ),
                         relations := List( RelationsAmongGeneratingMorphisms( C ), pair -> Pair( Reversed( pair[1] ), Reversed( pair[2] ) ) ),
                         labels := C!.labels,
                         properties := ListKnownCategoricalProperties( Opposite( C ) ) ) );
@@ -829,7 +829,7 @@ InstallMethod( OppositeCategoryFromNerveData,
                          ## now the "normalized" data tables
                          nerve_data := NerveTruncatedInDegree2Data( Cop ),
                          indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( Cop ),
-                         decomposition_of_all_morphisms := DecompositionOfAllMorphisms( Cop ),
+                         decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphisms( Cop ),
                          relations := RelationsAmongGeneratingMorphisms( Cop ),
                          labels := Cop!.labels,
                          properties := ListKnownCategoricalProperties( Cop ) ) );
@@ -1013,7 +1013,7 @@ InstallMethod( ViewString,
             pos := labels[1][pos];
         else
             pos := JoinStringsWithSeparator(
-                           List( DecompositionOfAllMorphisms( C )[1+t, 1+s][1 + HomStructure( mor )(0)], i -> labels[2][1 + i] ),
+                           List( DecompositionIndicesOfAllMorphisms( C )[1+t, 1+s][1 + HomStructure( mor )(0)], i -> labels[2][1 + i] ),
                            "*" );
         fi;
     fi;

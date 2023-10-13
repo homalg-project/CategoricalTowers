@@ -320,10 +320,10 @@ DeclareOperation( "POW",
 DeclareAttribute( "DecompositionOfMorphismInCategory",
         IsMorphismInFpCategory );
 
-DeclareAttribute( "DecompositionOfAllMorphismsFromHomStructure",
+DeclareAttribute( "DecompositionIndicesOfAllMorphismsFromHomStructure",
         IsFpCategory );
 
-DeclareAttribute( "DecompositionOfAllMorphisms",
+DeclareAttribute( "DecompositionIndicesOfAllMorphisms",
         IsFpCategory );
 
 #! @Description

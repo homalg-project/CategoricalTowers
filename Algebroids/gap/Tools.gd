@@ -54,7 +54,7 @@ DeclareGlobalFunction( "DefiningTripleOfUnderlyingQuiverAsENHANCED_SYNTAX_TREE" 
 
 DeclareGlobalFunction( "IndicesOfGeneratingMorphismsAsENHANCED_SYNTAX_TREE" );
 
-DeclareGlobalFunction( "DecompositionOfAllMorphismsAsENHANCED_SYNTAX_TREE" );
+DeclareGlobalFunction( "DecompositionIndicesOfAllMorphismsAsENHANCED_SYNTAX_TREE" );
 
 DeclareGlobalFunction( "DataTablesAsString" );
 

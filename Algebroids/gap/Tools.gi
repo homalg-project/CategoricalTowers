@@ -128,7 +128,7 @@ InstallGlobalFunction( IndicesOfGeneratingMorphismsAsENHANCED_SYNTAX_TREE,
 end );
 
 ##
-InstallGlobalFunction( DecompositionOfAllMorphismsAsENHANCED_SYNTAX_TREE,
+InstallGlobalFunction( DecompositionIndicesOfAllMorphismsAsENHANCED_SYNTAX_TREE,
   function( decomposition_of_all_morphisms )
     
     return ReplacedStringViaRecord(

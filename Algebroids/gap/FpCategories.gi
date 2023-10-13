@@ -276,7 +276,7 @@ InstallMethod( DecompositionOfMorphismInCategory,
 end );
 
 ##
-InstallMethod( DecompositionOfAllMorphismsFromHomStructure,
+InstallMethod( DecompositionIndicesOfAllMorphismsFromHomStructure,
         "for a f.p. category",
         [ IsFpCategory and IsFinite ],
         
@@ -292,11 +292,11 @@ InstallMethod( DecompositionOfAllMorphismsFromHomStructure,
 end );
 
 ##
-InstallMethod( DecompositionOfAllMorphisms,
+InstallMethod( DecompositionIndicesOfAllMorphisms,
         "for a f.p. category",
         [ IsFpCategory and IsFinite ],
         
-  DecompositionOfAllMorphismsFromHomStructure  );
+  DecompositionIndicesOfAllMorphismsFromHomStructure  );
 
 ##
 InstallMethod( DataTablesOfCategory,
