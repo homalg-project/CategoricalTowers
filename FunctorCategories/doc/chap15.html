@@ -58,7 +58,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := { } -&gt; CategoryOfBouquetsEnrichedOver( CategoryOfSkeletalFinSets( : FinalizeCategory := true ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := { } -&gt; CategoryOfBouquetsEnrichedOver( SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "FinBouquetsPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FunctorCategories";;</span>
@@ -102,7 +102,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := { } -&gt; CategoryOfQuiversEnrichedOver( CategoryOfSkeletalFinSets( : FinalizeCategory := true ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := { } -&gt; CategoryOfQuiversEnrichedOver( SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "FinQuiversPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FunctorCategories";;</span>
@@ -150,7 +150,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := { } -&gt; CategoryOfReflexiveQuiversEnrichedOver( CategoryOfSkeletalFinSets( : FinalizeCategory := true ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := { } -&gt; CategoryOfReflexiveQuiversEnrichedOver( SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "FinReflexiveQuiversPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FunctorCategories";;</span>
@@ -327,7 +327,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">free_category_of_quiver := { quiver, sFinSets } -&gt; CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( quiver )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true ), sFinSets ); end;;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true ), sFinSets ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ RightQuiver( "q(2)[m:1-&gt;2]" ) ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FunctorCategories";;</span>
@@ -374,7 +374,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">free_category_of_quiver := { quiver, sFinSets } -&gt; FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( quiver )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ), sFinSets ); end;;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ), sFinSets ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ RightQuiver( "q(2)[m:1-&gt;2]" ) ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FunctorCategories";;</span>

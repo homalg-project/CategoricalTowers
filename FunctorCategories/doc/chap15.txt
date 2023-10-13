@@ -16,7 +16,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcategory_constructor := { } -> CategoryOfBouquetsEnrichedOver( CategoryOfSkeletalFinSets( : FinalizeCategory := true ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := { } -> CategoryOfBouquetsEnrichedOver( SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ) );;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments := [ ];;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name := "FinBouquetsPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "FunctorCategories";;[127X[104X
@@ -59,7 +59,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcategory_constructor := { } -> CategoryOfQuiversEnrichedOver( CategoryOfSkeletalFinSets( : FinalizeCategory := true ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := { } -> CategoryOfQuiversEnrichedOver( SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ) );;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments := [ ];;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name := "FinQuiversPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "FunctorCategories";;[127X[104X
@@ -105,7 +105,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcategory_constructor := { } -> CategoryOfReflexiveQuiversEnrichedOver( CategoryOfSkeletalFinSets( : FinalizeCategory := true ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := { } -> CategoryOfReflexiveQuiversEnrichedOver( SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ) );;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments := [ ];;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name := "FinReflexiveQuiversPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "FunctorCategories";;[127X[104X
@@ -278,7 +278,7 @@
     [4X[25Xgap>[125X [27Xfree_category_of_quiver := { quiver, sFinSets } -> CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true );;[127X[104X
     [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
     [4X[25X>[125X [27X  function( quiver )[127X[104X
-    [4X[25X>[125X [27X    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true ), sFinSets ); end;;[127X[104X
+    [4X[25X>[125X [27X    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true ), sFinSets ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments := [ RightQuiver( "q(2)[m:1->2]" ) ];;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name := "PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "FunctorCategories";;[127X[104X
@@ -324,7 +324,7 @@
     [4X[25Xgap>[125X [27Xfree_category_of_quiver := { quiver, sFinSets } -> FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true );;[127X[104X
     [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
     [4X[25X>[125X [27X  function( quiver )[127X[104X
-    [4X[25X>[125X [27X    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ), sFinSets ); end;;[127X[104X
+    [4X[25X>[125X [27X    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ), sFinSets ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments := [ RightQuiver( "q(2)[m:1->2]" ) ];;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name := "PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "FunctorCategories";;[127X[104X
