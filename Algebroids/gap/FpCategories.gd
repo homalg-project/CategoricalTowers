@@ -317,6 +317,9 @@ DeclareAttribute( "Parity",
 DeclareOperation( "POW",
         [ IsFpCategory, IsInt ] );
 
+DeclareAttribute( "DecompositionIndicesOfMorphism",
+        IsMorphismInFpCategory );
+
 DeclareAttribute( "DecompositionOfMorphismInCategory",
         IsMorphismInFpCategory );
 

@@ -242,18 +242,21 @@ InstallMethod( IndicesOfGeneratingMorphisms,
   IndicesOfGeneratingMorphismsFromHomStructure );
 
 ##
-InstallMethod( DecompositionOfMorphismInCategory,
-        "for a morphism in a f.p. category",
-        [ IsMorphismInFpCategory ],
+InstallOtherMethod( DecompositionIndicesOfMorphism,
+        "for a f.p. category and a morphism therein",
+        [ IsFpCategory, IsMorphismInFpCategory ],
         
-  function( mor )
-    local C, gmors;
+  function( C, mor )
+    local gmors;
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if not IsIdenticalObj( C, CapCategory( mor ) ) then
+        Error( "`mor` is not a morphism in the category `C`\n" );
+    fi;
     
     if IsEqualToIdentityMorphism( mor ) then
         return [ ];
     fi;
-    
-    C := CapCategory( mor );
     
     mor := UnderlyingQuiverAlgebraElement( mor );
     
@@ -276,6 +279,20 @@ InstallMethod( DecompositionOfMorphismInCategory,
 end );
 
 ##
+InstallMethod( DecompositionOfMorphismInCategory,
+        "for a morphism in a f.p. category",
+        [ IsMorphismInFpCategory ],
+        
+  function( mor )
+    local C;
+
+    C := CapCategory( mor );
+    
+    return SetOfGeneratingMorphisms( C ){1 + DecompositionIndicesOfMorphism( C, mor )};
+    
+end );
+
+##
 InstallMethod( DecompositionIndicesOfAllMorphismsFromHomStructure,
         "for a f.p. category",
         [ IsFpCategory and IsFinite ],
@@ -287,7 +304,7 @@ InstallMethod( DecompositionIndicesOfAllMorphismsFromHomStructure,
     
     return List( objs, t ->
                  List( objs, s ->
-                       List( MorphismsOfExternalHom( C, s, t ), DecompositionOfMorphismInCategory ) ) );
+                       List( MorphismsOfExternalHom( C, s, t ), mor -> DecompositionIndicesOfMorphism( C, mor ) ) ) );
     
 end );
 
