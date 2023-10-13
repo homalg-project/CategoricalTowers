@@ -2566,9 +2566,12 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ],
         
   function ( PSh, F, morB )
-    local pos, B_op, morB_op;
+    local B, D, pos, B_op, F_datum, morB_op;
     
-    pos := Position( SetOfGeneratingMorphisms( Source( PSh ) ), morB );
+    B := Source( PSh );
+    D := Range( PSh );
+    
+    pos := Position( SetOfGeneratingMorphisms( B ), morB );
     
     if IsInt( pos ) then
         return ValuesOfPreSheaf( F )[2][pos];
@@ -2579,19 +2582,28 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
     
     B_op := OppositeOfSource( PSh );
     
-    if IsAlgebroidFromDataTables( B_op ) then
+    if IsCategoryFromDataTables( B_op ) then
+        
+        F_datum := ObjectDatum( PSh, F );
+        
+        return PreComposeList( D,
+                       F_datum[1][1 + IndexOfObject( Target( morB ) )],
+                       F_datum[2]{1 + Reversed( DecompositionOfMorphismInCategoryInIndices( B, morB ) )},
+                       F_datum[1][1 + IndexOfObject( Source( morB ) )] );
+        
+    elif IsAlgebroidFromDataTables( B_op ) then
         
         morB_op := MorphismConstructor( B_op,
-                        SetOfObjects( B_op )[ObjectIndex(  Range( morB ) )],
-                        MorphismCoefficients( morB ),
-                        SetOfObjects( B_op )[ObjectIndex( Source( morB ) )] );
+                           SetOfObjects( B_op )[ObjectIndex( Range( morB ) )],
+                           MorphismCoefficients( morB ),
+                           SetOfObjects( B_op )[ObjectIndex( Source( morB ) )] );
         
     else
         
         morB_op := MorphismConstructor( B_op,
-                       SetOfObjects( B_op )[VertexIndex( UnderlyingVertex(  Range( morB ) ) )],
-                       OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( morB ) ),
-                       SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Source( morB ) ) )] );
+                           SetOfObjects( B_op )[VertexIndex( UnderlyingVertex(  Range( morB ) ) )],
+                           OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( morB ) ),
+                           SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Source( morB ) ) )] );
         
     fi;
     

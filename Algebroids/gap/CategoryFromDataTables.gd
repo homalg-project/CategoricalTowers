@@ -101,6 +101,15 @@ CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromDataTabl
     
 end );
 
+DeclareAttribute( "DecompositionOfMorphismInCategoryInIndices",
+        IsMorphismInCategoryFromDataTables );
+
+DeclareAttribute( "DecompositionOfMorphismInCategory",
+        IsMorphismInCategoryFromDataTables );
+
+DeclareAttribute( "OppositeMorphismInOppositeCategoryFromDataTables",
+        IsMorphismInCategoryFromDataTables );
+
 DeclareAttribute( "DecompositionOfAllMorphisms",
         IsCategoryFromDataTables );
 

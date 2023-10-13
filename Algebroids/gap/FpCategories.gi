@@ -265,7 +265,7 @@ InstallMethod( DecompositionOfMorphismInCategory,
     
     mor := mor[2][1];
     
-    if ForAny( mor, IsCapCategoryObject) then
+    if ForAny( mor, IsCapCategoryObject ) then
         Error( "one of the generating morphisms is an identity morphism\n" );
     fi;
     
