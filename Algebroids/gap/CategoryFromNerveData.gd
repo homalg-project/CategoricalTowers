@@ -106,10 +106,10 @@ DeclareAttribute( "IndicesOfGeneratingMorphisms",
 #    
 #end );
 
-DeclareAttribute( "DecompositionOfAllMorphisms",
+DeclareAttribute( "DecompositionIndicesOfAllMorphisms",
         IsCategoryFromNerveData );
 
-#CapJitAddTypeSignature( "DecompositionOfAllMorphisms", [ IsCategoryFromNerveData ],
+#CapJitAddTypeSignature( "DecompositionIndicesOfAllMorphisms", [ IsCategoryFromNerveData ],
 #  function ( input_types )
 #    
 #    return CapJitDataTypeOfListOf(

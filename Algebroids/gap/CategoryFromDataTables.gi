@@ -63,7 +63,7 @@ InstallMethod( CategoryFromDataTables,
     od;
     
     SetIndicesOfGeneratingMorphisms( C, input_record.indices_of_generating_morphisms );
-    SetDecompositionOfAllMorphisms( C, input_record.decomposition_of_all_morphisms );
+    SetDecompositionIndicesOfAllMorphisms( C, input_record.decomposition_of_all_morphisms );
     SetRelationsAmongGeneratingMorphisms( C, input_record.relations );
     
     C!.labels := input_record.labels;
@@ -94,7 +94,7 @@ InstallMethod( CategoryFromDataTables,
       rec( category_attribute_names :=
            [ "DefiningTripleOfUnderlyingQuiver",
              "IndicesOfGeneratingMorphisms",
-             "DecompositionOfAllMorphisms",
+             "DecompositionIndicesOfAllMorphisms",
              "RelationsAmongGeneratingMorphisms",
              "DataTables",
              ] );
@@ -105,7 +105,7 @@ InstallMethod( CategoryFromDataTables,
        C!.compiler_hints.category_attribute_resolving_functions :=
        rec( DefiningTripleOfUnderlyingQuiver := { } -> EvalString( DefiningTripleOfUnderlyingQuiverAsENHANCED_SYNTAX_TREE( DefiningTripleOfUnderlyingQuiver( C ) ) ),
             IndicesOfGeneratingMorphisms := { } -> EvalString( IndicesOfGeneratingMorphismsAsENHANCED_SYNTAX_TREE( IndicesOfGeneratingMorphisms( C ) ) ),
-            DecompositionOfAllMorphisms := { } -> EvalString( DecompositionOfAllMorphismsAsENHANCED_SYNTAX_TREE( DecompositionOfAllMorphisms( C ) ) ),
+            DecompositionIndicesOfAllMorphisms := { } -> EvalString( DecompositionIndicesOfAllMorphismsAsENHANCED_SYNTAX_TREE( DecompositionIndicesOfAllMorphisms( C ) ) ),
             DataTables := { } -> EvalString( DataTablesAsENHANCED_SYNTAX_TREE( DataTables( C ) ) ),
             );
         
@@ -317,7 +317,7 @@ InstallMethod( CategoryFromDataTables,
                         range_of_HomStructure := RangeCategoryOfHomomorphismStructure( C ),
                         data_tables := DataTablesOfCategory( C ),
                         indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
-                        decomposition_of_all_morphisms := DecompositionOfAllMorphismsFromHomStructure( C ),
+                        decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphismsFromHomStructure( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := [ List( SetOfObjects( C ), Label ), List( SetOfGeneratingMorphisms( C ), Label ) ],
                         properties := ListKnownCategoricalProperties( C ) ) );
@@ -336,7 +336,7 @@ InstallMethod( CategoryFromDataTables,
                         range_of_HomStructure := RangeCategoryOfHomomorphismStructure( C ),
                         data_tables := DataTablesOfCategory( C ),
                         indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
-                        decomposition_of_all_morphisms := DecompositionOfAllMorphisms( C ),
+                        decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphisms( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := C!.labels,
                         properties := ListKnownCategoricalProperties( C ) ) );
@@ -508,7 +508,7 @@ InstallMethod( OppositeCategoryFromDataTables,
 end );
 
 ##
-InstallOtherMethod( DecompositionOfMorphismInCategoryInIndices,
+InstallOtherMethod( DecompositionIndicesOfMorphism,
         "for a category from data tables and a morphism therein",
         [ IsCategoryFromDataTables, IsMorphismInCategoryFromDataTables ],
         
@@ -523,7 +523,7 @@ InstallOtherMethod( DecompositionOfMorphismInCategoryInIndices,
     s := IndexOfObject( Source( mor ) );
     t := IndexOfObject( Target( mor ) );
     
-    return DecompositionOfAllMorphisms( C )[1 + t, 1 + s][1 + HomStructure( mor )(0)];
+    return DecompositionIndicesOfAllMorphisms( C )[1 + t, 1 + s][1 + HomStructure( mor )(0)];
     
 end );
 
@@ -537,9 +537,9 @@ InstallMethod( DecompositionOfMorphismInCategory,
     
     C := CapCategory( mor );
     
-    dec := SetOfGeneratingMorphisms( C ){1 + DecompositionOfMorphismInCategoryInIndices( C, mor )};
+    dec := SetOfGeneratingMorphisms( C ){1 + DecompositionIndicesOfMorphism( C, mor )};
     
-    if ForAny( dec, IsEndomorphism and IsIdentityMorphism ) then
+    if ForAny( dec, IsEqualToIdentityMorphism ) then
         Error( "one of the generating morphisms is an identity morphism\n" );
     fi;
     
@@ -570,7 +570,7 @@ InstallOtherMethod( OppositeMorphismInOppositeCategoryFromDataTables,
     
     return PreComposeList( C_op,
                    SetOfObjects( C_op )[1 + t],
-                   SetOfGeneratingMorphisms( C_op ){1 + Reversed( DecompositionOfMorphismInCategoryInIndices( C, mor ) )},
+                   SetOfGeneratingMorphisms( C_op ){1 + Reversed( DecompositionIndicesOfMorphism( C, mor ) )},
                    SetOfObjects( C_op )[1 + s] );
     
 end );
@@ -633,7 +633,7 @@ InstallMethod( ViewString,
             pos := labels[1][pos];
         else
             pos := JoinStringsWithSeparator(
-                           List( DecompositionOfMorphismInCategoryInIndices( C, mor ), i -> labels[2][1 + i] ),
+                           List( DecompositionIndicesOfMorphism( C, mor ), i -> labels[2][1 + i] ),
                            "*" );
         fi;
     fi;
