@@ -5,7 +5,7 @@
 #
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/precompiled_categories/CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategoryPrecompiled.gi");
+ReadPackage( "FiniteCocompletions", "gap/precompiled_categories/SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategoryPrecompiled.gi");
 
 ##
 ReadPackage( "FiniteCocompletions", "gap/FiniteStrictCoproductCompletion.gi");

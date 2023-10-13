@@ -22,7 +22,7 @@ free_category_of_quiver := { quiver, sFinSets } -> FreeCategory( quiver : range_
 
 category_constructor :=
   function( quiver )
-    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true ); return PreSheaves( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ), sFinSets ); end;;
+    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ); return PreSheaves( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ), sFinSets ); end;;
 
 given_arguments := [ RightQuiver( "q(2)[m:1->2]" ) ];;
 compiled_category_name := "PreSheavesOfFpCategoryInSkeletalFinSetsSubobjectClassifierPrecompiled";;

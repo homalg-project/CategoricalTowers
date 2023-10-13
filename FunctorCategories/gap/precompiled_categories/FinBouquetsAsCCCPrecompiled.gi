@@ -124,7 +124,7 @@ BindGlobal( "FinBouquetsAsCCCPrecompiled", function (  )
         
         
         function (  )
-    return CategoryOfBouquetsEnrichedOver( CategoryOfSkeletalFinSets(  : FinalizeCategory := true ) );
+    return CategoryOfBouquetsEnrichedOver( SkeletalCategoryOfFiniteSets(  : FinalizeCategory := true ) );
 end;
         
         

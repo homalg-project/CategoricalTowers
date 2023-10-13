@@ -1250,7 +1250,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                       ] );
             fi;
             
-            if IsCategoryOfSkeletalFinSets( D ) and IsCategoryOfSkeletalFinSets( H ) then
+            if IsSkeletalCategoryOfFiniteSets( D ) and IsSkeletalCategoryOfFiniteSets( H ) then
                 
                 ##
                 AddHomomorphismStructureOnObjects( PSh,
@@ -1461,7 +1461,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
         end );
         
-        if IsCategoryOfSkeletalFinSets( D ) then
+        if IsSkeletalCategoryOfFiniteSets( D ) then
             
             ##
             AddEpimorphismFromSomeProjectiveObject( PSh,
@@ -1476,7 +1476,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         fi;
         
         ## the following code requires (2) that the range category D of the presheaf category coincides with the category SkeletalFinSets:
-        if IsCategoryOfSkeletalFinSets( D ) and
+        if IsSkeletalCategoryOfFiniteSets( D ) and
            ## and requires (3) that the range category D of the presheaf category must coincide with
            ## the range category of the homomorphism structure of the source category B of the presheaf category
            IsIdenticalObj( D, RangeCategoryOfHomomorphismStructure( B ) ) then
@@ -2001,13 +2001,13 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     #if false then
     if ValueOption( "no_precompiled_code" ) <> true then
         
-        if IsFpCategory( B ) and IsCategoryOfSkeletalFinSets( D ) then
+        if IsFpCategory( B ) and IsSkeletalCategoryOfFiniteSets( D ) then
             
             ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled( PSh );
             
             ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsSubobjectClassifierPrecompiled( PSh );
             
-        elif IsCategoryFromDataTables( B ) and IsCategoryOfSkeletalFinSets( D ) then
+        elif IsCategoryFromDataTables( B ) and IsSkeletalCategoryOfFiniteSets( D ) then
             
             ADD_FUNCTIONS_FOR_PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled( PSh );
             
@@ -3531,7 +3531,7 @@ InstallOtherMethodForCompilerForCAP( SievesOfPathsToTruth,
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
-    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
+    Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     D := DistinguishedObjectOfHomomorphismStructure( B );
     

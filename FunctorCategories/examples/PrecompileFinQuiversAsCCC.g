@@ -19,7 +19,7 @@ ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );
 #! true
 
-category_constructor := { } -> CategoryOfQuiversEnrichedOver( CategoryOfSkeletalFinSets( : FinalizeCategory := true ) );;
+category_constructor := { } -> CategoryOfQuiversEnrichedOver( SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ) );;
 
 given_arguments := [ ];;
 compiled_category_name := "FinQuiversAsCCCPrecompiled";;

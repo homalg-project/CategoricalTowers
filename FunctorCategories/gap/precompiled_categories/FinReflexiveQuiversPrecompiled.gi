@@ -557,7 +557,7 @@ BindGlobal( "FinReflexiveQuiversPrecompiled", function (  )
         
         
         function (  )
-    return CategoryOfReflexiveQuiversEnrichedOver( CategoryOfSkeletalFinSets(  : FinalizeCategory := true ) );
+    return CategoryOfReflexiveQuiversEnrichedOver( SkeletalCategoryOfFiniteSets(  : FinalizeCategory := true ) );
 end;
         
         

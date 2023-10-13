@@ -21,7 +21,7 @@ ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );
 #! true
 
-category_constructor := { } -> CategoryOfBouquetsEnrichedOver( CategoryOfSkeletalFinSets( : FinalizeCategory := true ) );;
+category_constructor := { } -> CategoryOfBouquetsEnrichedOver( SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ) );;
 
 given_arguments := [ ];;
 compiled_category_name := "FinBouquetsPrecompiled";;

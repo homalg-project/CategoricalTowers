@@ -13,7 +13,7 @@ ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 
 category_constructor :=
   function( quiver )
-    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true ); return CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;
+    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ); return CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;
 
 given_arguments := [ RightQuiver( "q(a,b)[m:a->b]" ) ];;
 compiled_category_name := "CategoryFromDataTablesPrecompiled";;

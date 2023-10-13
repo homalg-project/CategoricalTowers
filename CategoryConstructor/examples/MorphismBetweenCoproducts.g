@@ -3,9 +3,9 @@
 #! @Example
 LoadPackage( "CategoryConstructor" );
 #! true
-LoadPackage( "FinSetsForCAP" );
+LoadPackage( "FinSetsForCAP", ">= 2023.07-03", fail );
 #! true
-sFinSets := CategoryOfSkeletalFinSets( );
+sFinSets := SkeletalCategoryOfFiniteSets( );
 #! SkeletalFinSets
 Display( sFinSets );
 #! A CAP category with name SkeletalFinSets:
