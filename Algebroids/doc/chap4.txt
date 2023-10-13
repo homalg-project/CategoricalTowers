@@ -202,6 +202,19 @@
     [4X[28X{ 0, 1, 2 } ⱶ[ 2, 1, 2 ]→ { 0, 1, 2 }[128X[104X
     [4X[25Xgap>[125X [27XDisplay( HomStructure( idC1, idC1 ) );[127X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }[128X[104X
+    [4X[25Xgap>[125X [27Xmors := SetOfMorphisms( C );[127X[104X
+    [4X[28X[ (C0)-[(C0)]->(C0), (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1),[128X[104X
+    [4X[28X  (C1)-[(C1)]->(C1), (C1)-[(id*s)]->(C1), (C1)-[(id*t)]->(C1) ][128X[104X
+    [4X[25Xgap>[125X [27XList( mors, OppositeMorphismInOppositeCategoryFromDataTables );[127X[104X
+    [4X[28X[ (C0)-[(C0)]->(C0), (C0)-[(id)]->(C1), (C1)-[(s)]->(C0), (C1)-[(t)]->(C0),[128X[104X
+    [4X[28X(C1)-[(C1)]->(C1), (C1)-[(s*id)]->(C1), (C1)-[(t*id)]->(C1) ][128X[104X
+    [4X[25Xgap>[125X [27Xmors;[127X[104X
+    [4X[28X[ (C0)-[(C0)]->(C0), (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1),[128X[104X
+    [4X[28X  (C1)-[(C1)]->(C1), (C1)-[(id*s)]->(C1), (C1)-[(id*t)]->(C1) ][128X[104X
+    [4X[25Xgap>[125X [27XList( mors, DecompositionOfMorphismInCategory );[127X[104X
+    [4X[28X[ [  ], [ (C1)-[(id)]->(C0) ], [ (C0)-[(s)]->(C1) ], [ (C0)-[(t)]->(C1) ],[128X[104X
+    [4X[28X  [  ], [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1) ],[128X[104X
+    [4X[28X  [ (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ] ][128X[104X
     [4X[25Xgap>[125X [27XC_op := OppositeCategoryFromDataTables( C );[127X[104X
     [4X[28XOpposite([128X[104X
     [4X[28XFreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )[128X[104X
@@ -212,6 +225,13 @@
     [4X[28X[ 3, 1, 2 ][128X[104X
     [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( C_op );[127X[104X
     [4X[28X[ (C0)-[(id)]->(C1), (C1)-[(s)]->(C0), (C1)-[(t)]->(C0) ][128X[104X
+    [4X[25Xgap>[125X [27Xmors_op := SetOfMorphisms( C_op );[127X[104X
+    [4X[28X[ (C0)-[(C0)]->(C0), (C1)-[(s)]->(C0), (C1)-[(t)]->(C0), (C0)-[(id)]->(C1),[128X[104X
+    [4X[28X  (C1)-[(C1)]->(C1), (C1)-[(s*id)]->(C1), (C1)-[(t*id)]->(C1) ][128X[104X
+    [4X[25Xgap>[125X [27XList( mors_op, DecompositionOfMorphismInCategory );[127X[104X
+    [4X[28X[ [  ], [ (C1)-[(s)]->(C0) ], [ (C1)-[(t)]->(C0) ], [ (C0)-[(id)]->(C1) ],[128X[104X
+    [4X[28X  [  ], [ (C1)-[(s)]->(C0), (C0)-[(id)]->(C1) ],[128X[104X
+    [4X[28X  [ (C1)-[(t)]->(C0), (C0)-[(id)]->(C1) ] ][128X[104X
   [4X[32X[104X
   
   [1X4.2-2 CategoryFromDataTables[101X
