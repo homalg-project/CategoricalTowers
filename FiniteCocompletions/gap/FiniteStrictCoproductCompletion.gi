@@ -1200,8 +1200,8 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
             end );
             
-        elif ( IsBound( IsCategoryOfSkeletalFinSets ) and ValueGlobal( "IsCategoryOfSkeletalFinSets" )( V ) ) or
-          IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( V ) then
+        elif ( IsBound( IsSkeletalCategoryOfFiniteSets ) and ValueGlobal( "IsSkeletalCategoryOfFiniteSets" )( V ) ) or
+          IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( V ) then
             
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UC,
@@ -1274,7 +1274,7 @@ end );
 ##
 InstallMethod( EnrichmentSpecificFiniteStrictCoproductCompletion,
         "for a category and its range category of homomorphism structure",
-        [ IsCapCategory, IsCategoryOfSkeletalFinSets ],
+        [ IsCapCategory, IsSkeletalCategoryOfFiniteSets ],
         
   function( C, H )
     
@@ -1496,7 +1496,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure,
         "for a skeletal category of finite sets, a finite strict coproduct cocompletion, an object in the cocartesian category, and an object in the skeletal category of finite sets",
-        [ IsCategoryOfSkeletalFinSets,
+        [ IsSkeletalCategoryOfFiniteSets,
           IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
           IsCapCategoryObject, IsSkeletalFiniteSet ],
         
@@ -1521,7 +1521,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure,
         "for a skeletal category of finite sets, a finite strict coproduct cocompletion, three objects in the cocartesian category, and a morphism in the skeletal category of finite sets",
-        [ IsCategoryOfSkeletalFinSets,
+        [ IsSkeletalCategoryOfFiniteSets,
           IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
           IsCapCategoryObject, IsCapCategoryObject, IsSkeletalFiniteSetMap, IsCapCategoryObject ],
         
@@ -1555,7 +1555,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure,
         "for a skeletal category of finite sets, a finite strict coproduct cocompletion, two objects and a morphism in the cocartesian category, and an object in the skeletal category of finite sets",
-        [ IsCategoryOfSkeletalFinSets,
+        [ IsSkeletalCategoryOfFiniteSets,
           IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
           IsCapCategoryObject, IsCapCategoryMorphism, IsSkeletalFiniteSet, IsCapCategoryObject ],
         

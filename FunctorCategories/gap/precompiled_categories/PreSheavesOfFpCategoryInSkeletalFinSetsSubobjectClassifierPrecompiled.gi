@@ -407,7 +407,7 @@ BindGlobal( "PreSheavesOfFpCategoryInSkeletalFinSetsSubobjectClassifierPrecompil
         
         function ( quiver )
     local sFinSets;
-    sFinSets := CategoryOfSkeletalFinSets(  : FinalizeCategory := true );
+    sFinSets := SkeletalCategoryOfFiniteSets(  : FinalizeCategory := true );
     return PreSheaves( FreeCategory( quiver : range_of_HomStructure := sFinSets,
           FinalizeCategory := true ), sFinSets );
 end;

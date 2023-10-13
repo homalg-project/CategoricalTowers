@@ -67,7 +67,7 @@ end );
 ##
 InstallMethod( CategoryOfQuiversEnrichedOver,
         "for a category of sekelal finite sets",
-        [ IsCategoryOfSkeletalFinSets ],
+        [ IsSkeletalCategoryOfFiniteSets ],
         
   function ( category_of_skeletal_finsets )
     local object_datum_type, object_constructor, object_datum,

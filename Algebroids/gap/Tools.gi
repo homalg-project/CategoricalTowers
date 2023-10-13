@@ -33,7 +33,7 @@ InstallMethod( IndicesOfGeneratingMorphismsFromHomStructure,
     sFinSets := RangeCategoryOfHomomorphismStructure( C );
     
     ## sFinSets must be the category skeletal finite sets
-    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
+    Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     C0 := SetOfObjects( C );
     N0 := ObjectConstructor( sFinSets, Length( C0 ) );

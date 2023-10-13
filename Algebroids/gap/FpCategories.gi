@@ -644,7 +644,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
     
     Assert( 0, IsIdenticalObj( hom_structure_on_basis_paths, HomStructureOnBasisPaths( fpcategory ) ) );
     
-    if IsCategoryOfSkeletalFinSets( RangeCategoryOfHomomorphismStructure( fpcategory ) ) then
+    if IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( fpcategory ) ) then
         
         ##
         AddHomomorphismStructureOnObjects( fpcategory,
@@ -1645,7 +1645,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
-    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
+    Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     B0 := SetOfObjects( B );
     N0 := ObjectConstructor( sFinSets, Length( B0 ) );
@@ -1988,7 +1988,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
-    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
+    Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     objs := SetOfObjects( B );
     mors := SetOfGeneratingMorphisms( B );
@@ -2180,7 +2180,7 @@ InstallMethod( YonedaProjectionAsNaturalEpimorphism,
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
-    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
+    Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     ## The Yoneda functor B → sFinSets, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
     ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
@@ -2218,7 +2218,7 @@ InstallMethod( YonedaCompositionAsNaturalEpimorphism,
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
-    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
+    Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     ## The Yoneda functor B → sFinSets, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
     ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
@@ -2256,7 +2256,7 @@ InstallMethod( YonedaFibrationAsNaturalTransformation,
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
-    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
+    Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     ## The constant functor of 0-cells B → sFinSets, c ↦ B_0, ψ ↦ id_{B_0}
     N0 := CapFunctor( B, Yepis[1][1], Yepis[1][2], sFinSets );
@@ -2288,7 +2288,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
-    Assert( 0, IsCategoryOfSkeletalFinSets( sFinSets ) );
+    Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     D := DistinguishedObjectOfHomomorphismStructure( B );
     
@@ -2412,7 +2412,7 @@ InstallMethod( SieveFunctor,
   function ( B )
     local Sieves, Bop, sFinSets;
     
-    # asserts that IsCategoryOfSkeletalFinSets( RangeCategoryOfHomomorphismStructure( B ) )
+    # asserts that IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( B ) )
     Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
     Bop := OppositeFpCategory( B );
@@ -2430,7 +2430,7 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctor,
   function ( B )
     local Sieves, Bop, sFinSets, Constant_functor, Sieves_maximal, Sieves_functor;
     
-    # asserts that IsCategoryOfSkeletalFinSets( RangeCategoryOfHomomorphismStructure( B ) )
+    # asserts that IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( B ) )
     Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
     Bop := OppositeFpCategory( B );
@@ -2456,7 +2456,7 @@ InstallMethod( EmbeddingOfSieveFunctor,
   function ( B )
     local Sieves, Bop, sFinSets, Sieves_functor, Sieves_emb, HomHomOmega_functor;
     
-    # asserts that IsCategoryOfSkeletalFinSets( RangeCategoryOfHomomorphismStructure( B ) )
+    # asserts that IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( B ) )
     Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
     Bop := OppositeFpCategory( B );

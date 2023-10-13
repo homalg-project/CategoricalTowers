@@ -1234,7 +1234,7 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
 ] : CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ),
     CategoryFilter := function( cat )
       return HasRangeCategoryOfHomomorphismStructure( cat ) and
-             IsBoundGlobal( "IsCategoryOfSkeletalFinSets" ) and
-             ValueGlobal( "IsCategoryOfSkeletalFinSets" )( RangeCategoryOfHomomorphismStructure( cat ) );
+             IsBoundGlobal( "IsSkeletalCategoryOfFiniteSets" ) and
+             ValueGlobal( "IsSkeletalCategoryOfFiniteSets" )( RangeCategoryOfHomomorphismStructure( cat ) );
     end
 );

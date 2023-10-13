@@ -1585,7 +1585,7 @@ BindGlobal( "PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled", fu
         
         function ( quiver )
     local sFinSets;
-    sFinSets := CategoryOfSkeletalFinSets(  : FinalizeCategory := true,
+    sFinSets := SkeletalCategoryOfFiniteSets(  : FinalizeCategory := true,
         overhead := true );
     return PreSheaves( CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets,
             FinalizeCategory := true ) : FinalizeCategory := true ), sFinSets );
