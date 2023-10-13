@@ -72,18 +72,32 @@
   [30X    [33X[0;6Yproperties[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDelta1 := SimplicialCategoryTruncatedInDegree( 1 );[127X[104X
     [4X[28XFreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )[128X[104X
     [4X[28X/ [ s*id = C0, t*id = C0 ][128X[104X
     [4X[25Xgap>[125X [27XSize( Delta1 );[127X[104X
     [4X[28X7[128X[104X
+    [4X[25Xgap>[125X [27Xmors := SetOfMorphisms( Delta1 );[127X[104X
+    [4X[28X[ (C0)-[(C0)]->(C0), (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1),[128X[104X
+    [4X[28X  (C1)-[(C1)]->(C1), (C1)-[(id*s)]->(C1), (C1)-[(id*t)]->(C1) ][128X[104X
+    [4X[25Xgap>[125X [27XList( mors, DecompositionOfMorphismInCategory );[127X[104X
+    [4X[28X[ [  ], [ (C1)-[(id)]->(C0) ], [ (C0)-[(s)]->(C1) ], [ (C0)-[(t)]->(C1) ],[128X[104X
+    [4X[28X  [  ], [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1) ],[128X[104X
+    [4X[28X  [ (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ] ][128X[104X
     [4X[25Xgap>[125X [27XC := CategoryFromDataTables( Delta1 );[127X[104X
     [4X[28XFreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )[128X[104X
     [4X[28X/ [ s*id = C0, t*id = C0 ][128X[104X
     [4X[25Xgap>[125X [27XSize( C );[127X[104X
     [4X[28X7[128X[104X
+    [4X[25Xgap>[125X [27XmorsC := SetOfMorphisms( C );[127X[104X
+    [4X[28X[ (C0)-[(C0)]->(C0), (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1),[128X[104X
+    [4X[28X  (C1)-[(C1)]->(C1), (C1)-[(id*s)]->(C1), (C1)-[(id*t)]->(C1) ][128X[104X
+    [4X[25Xgap>[125X [27XList( morsC, DecompositionOfMorphismInCategory );[127X[104X
+    [4X[28X[ [  ], [ (C1)-[(id)]->(C0) ], [ (C0)-[(s)]->(C1) ], [ (C0)-[(t)]->(C1) ],[128X[104X
+    [4X[28X  [  ], [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1) ],[128X[104X
+    [4X[28X  [ (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ] ][128X[104X
     [4X[25Xgap>[125X [27XNerveTruncatedInDegree2Data( C ) = NerveTruncatedInDegree2Data( Delta1 );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIndicesOfGeneratingMorphisms( C );[127X[104X

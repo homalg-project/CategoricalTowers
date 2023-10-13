@@ -147,18 +147,32 @@
 </ul>
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta1 := SimplicialCategoryTruncatedInDegree( 1 );</span>
 FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) )
 / [ s*id = C0, t*id = C0 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( Delta1 );</span>
 7
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mors := SetOfMorphisms( Delta1 );</span>
+[ (C0)-[(C0)]-&gt;(C0), (C1)-[(id)]-&gt;(C0), (C0)-[(s)]-&gt;(C1), (C0)-[(t)]-&gt;(C1),
+  (C1)-[(C1)]-&gt;(C1), (C1)-[(id*s)]-&gt;(C1), (C1)-[(id*t)]-&gt;(C1) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( mors, DecompositionOfMorphismInCategory );</span>
+[ [  ], [ (C1)-[(id)]-&gt;(C0) ], [ (C0)-[(s)]-&gt;(C1) ], [ (C0)-[(t)]-&gt;(C1) ],
+  [  ], [ (C1)-[(id)]-&gt;(C0), (C0)-[(s)]-&gt;(C1) ],
+  [ (C1)-[(id)]-&gt;(C0), (C0)-[(t)]-&gt;(C1) ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := CategoryFromDataTables( Delta1 );</span>
 FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) )
 / [ s*id = C0, t*id = C0 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( C );</span>
 7
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morsC := SetOfMorphisms( C );</span>
+[ (C0)-[(C0)]-&gt;(C0), (C1)-[(id)]-&gt;(C0), (C0)-[(s)]-&gt;(C1), (C0)-[(t)]-&gt;(C1),
+  (C1)-[(C1)]-&gt;(C1), (C1)-[(id*s)]-&gt;(C1), (C1)-[(id*t)]-&gt;(C1) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( morsC, DecompositionOfMorphismInCategory );</span>
+[ [  ], [ (C1)-[(id)]-&gt;(C0) ], [ (C0)-[(s)]-&gt;(C1) ], [ (C0)-[(t)]-&gt;(C1) ],
+  [  ], [ (C1)-[(id)]-&gt;(C0), (C0)-[(s)]-&gt;(C1) ],
+  [ (C1)-[(id)]-&gt;(C0), (C0)-[(t)]-&gt;(C1) ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NerveTruncatedInDegree2Data( C ) = NerveTruncatedInDegree2Data( Delta1 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IndicesOfGeneratingMorphisms( C );</span>
