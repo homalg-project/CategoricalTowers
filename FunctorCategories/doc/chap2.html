@@ -626,6 +626,68 @@ true
 { 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }
 </pre></div>
 
+<p>We compute the nerve of the full subcategory of the simplicial category <span class="Math">\Delta</span> on the objects <span class="Math">[0], [1]</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta1 := UnderlyingCategory( FinReflexiveQuivers );</span>
+FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) )
+/ [ s*id = C0, t*id = C0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := NerveTruncatedInDegree2( Delta1 );</span>
+&lt;An object in PreSheaves( FreeCategory( RightQuiver(
+  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
+                   is:C2-&gt;C1,it:C2-&gt;C1,
+                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations,
+ SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( N );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N.C0;</span>
+|2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.C0 );</span>
+{ 0, 1 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N.C1;</span>
+|7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.C1 );</span>
+{ 0,..., 6 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N.C2;</span>
+|26|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.C2 );</span>
+{ 0,..., 25 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N.id;</span>
+|2| → |7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.id );</span>
+{ 0, 1 } ⱶ[ 0, 4 ]→ { 0,..., 6 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.is );</span>
+{ 0,..., 6 } ⱶ[ 0, 1, 11, 12, 17, 18, 19 ]→ { 0,..., 25 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.it );</span>
+{ 0,..., 6 } ⱶ[ 0, 4, 7, 8, 17, 20, 23 ]→ { 0,..., 25 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2 := Source( N );</span>
+FreeCategory( RightQuiver(
+  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
+                   is:C2-&gt;C1,it:C2-&gt;C1,
+                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N( Delta2.it ) = N.it;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := [ Delta2.it, Delta2.id, Delta2.t ];</span>
+[ (C2)-[(it)]-&gt;(C1), (C1)-[(id)]-&gt;(C0), (C0)-[(t)]-&gt;(C1) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := PreComposeList( L );</span>
+(C2)-[(is*id*t)]-&gt;(C1)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecompositionOfMorphismInCategory( mor );</span>
+[ (C2)-[(is)]-&gt;(C1), (C1)-[(id)]-&gt;(C0), (C0)-[(t)]-&gt;(C1) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NL := N( mor );</span>
+|7| → |26|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( NL );</span>
+{ 0,..., 6 } ⱶ[ 0, 0, 17, 17, 17, 17, 17 ]→ { 0,..., 25 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LN := PostComposeList( List( L, N ) );</span>
+|7| → |26|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( LN );</span>
+{ 0,..., 6 } ⱶ[ 0, 0, 17, 17, 17, 17, 17 ]→ { 0,..., 25 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NL = LN;</span>
+true
+</pre></div>
+
 <p><a id="X87B457D77A0B8836" name="X87B457D77A0B8836"></a></p>
 
 <h5>2.2-8 SievesOfPathsToTruth</h5>
