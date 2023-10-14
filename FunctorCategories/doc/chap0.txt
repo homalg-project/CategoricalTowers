@@ -6,10 +6,10 @@
                             [1X Categories of functors [101X
   
   
-                                   2023.10-20
+                                   2023.10-21
   
   
-                                14 October 2023
+                                15 October 2023
   
   
                                 Mohamed Barakat
@@ -90,14 +90,16 @@
       2.1-9 MorphismFromRepresentable
       2.1-10 MorphismFromCoproductOfRepresentables
       2.1-11 CoveringListOfRepresentables
-      2.1-12 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject
-      2.1-13 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject
-      2.1-14 OptimizedCoYonedaLemmaOnObjects
-      2.1-15 OptimizedCoYonedaLemmaOnMorphisms
-      2.1-16 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma
-      2.1-17 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion
-      2.1-18 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion
-      2.1-19 CategoryOfInternalCategories
+      2.1-12 DoctrineSpecificCoveringListOfRepresentables
+      2.1-13 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject
+      2.1-14 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject
+      2.1-15 OptimizedCoYonedaLemmaOnObjects
+      2.1-16 OptimizedCoYonedaLemmaOnMorphisms
+      2.1-17 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma
+      2.1-18 OptimizedCoYonedaLemmaCoequalizerPair
+      2.1-19 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion
+      2.1-20 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion
+      2.1-21 CategoryOfInternalCategories
     2.2 [33X[0;0YAttributes[133X
       2.2-1 ValuesOnAllObjects
       2.2-2 UnderlyingCapTwoCategoryCell
@@ -124,6 +126,8 @@
     2.6 [33X[0;0YExamples[133X
       2.6-1 [33X[0;0YThe subobject classifier[133X
       2.6-2 [33X[0;0YPreSheaves of non-f.p. categories (experimental)[133X
+      2.6-3 [33X[0;0YThe colimit completion of a cyclic monoid[133X
+      2.6-4 [33X[0;0YThe Weierstrass normal form[133X
   3 [33X[0;0YFinite cocompletion of a finitely presented (linear) category[133X
     3.1 [33X[0;0YConstructors[133X
       3.1-1 FiniteCocompletion
