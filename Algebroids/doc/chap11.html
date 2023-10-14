@@ -136,7 +136,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := SetOfObjects( Aoid );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := SetOfGeneratingMorphisms( Aoid );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">interpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( -m[3] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( m[3] ), Range( m[3] ), interpretation );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( m[3] ), Target( m[3] ), interpretation );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## additive closure</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">add := AdditiveClosure( Aoid );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := AdditiveClosureObject( [ s[1], s[2] ], add );;</span>
@@ -152,7 +152,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnMorphisms( DirectSumFunctorial( [ ids1, ids2 ] ), ids1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">interpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), interpretation ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Target( mor ), interpretation ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  mor );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := AsAdditiveClosureMorphism( m[1] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := AsAdditiveClosureMorphism( m[2] );;</span>
@@ -312,8 +312,8 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := AsAdelmanCategoryMorphism( b );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := AsAdelmanCategoryMorphism( c );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := Source( a );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := Range( a );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := Range( c );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := Target( a );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := Target( c );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnObjects( A, C );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnMorphisms( IdentityMorphism( A ), c );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( a );;</span>
@@ -492,7 +492,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( pre );</span>
 false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ze := ZeroMorphism( Source( pre ), Range( pre ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ze := ZeroMorphism( Source( pre ), Target( pre ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( pre + ze, pre );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( pre + pre, pre );</span>

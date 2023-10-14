@@ -834,9 +834,9 @@
     [4X[25Xgap>[125X [27Xru := RightUnitorAsFunctor(B);;[127X[104X
     [4X[25Xgap>[125X [27Xlui := LeftUnitorInverseAsFunctor(B);;[127X[104X
     [4X[25Xgap>[125X [27Xrui := RightUnitorInverseAsFunctor(B);;[127X[104X
-    [4X[25Xgap>[125X [27XAsCapCategory(Range(lu)) = B;[127X[104X
+    [4X[25Xgap>[125X [27XAsCapCategory(Target(lu)) = B;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XAsCapCategory(Range(ru)) = B;[127X[104X
+    [4X[25Xgap>[125X [27XAsCapCategory(Target(ru)) = B;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XAsCapCategory(Source(lu)) = TensorProductOnObjects( B0, B );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -846,9 +846,9 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XAsCapCategory(Source(rui)) = B;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XAsCapCategory(Range(lui)) = TensorProductOnObjects( B0, B );[127X[104X
+    [4X[25Xgap>[125X [27XAsCapCategory(Target(lui)) = TensorProductOnObjects( B0, B );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XAsCapCategory(Range(rui)) = TensorProductOnObjects( B, B0 );[127X[104X
+    [4X[25Xgap>[125X [27XAsCapCategory(Target(rui)) = TensorProductOnObjects( B, B0 );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xl := Concatenation( [[127X[104X
     [4X[25X>[125X [27X             List( SetOfObjects(B),[127X[104X
@@ -903,9 +903,9 @@
     [4X[25X>[125X [27X                   (B*B)*B, B, B, B, B*(B*B) );;[127X[104X
     [4X[25Xgap>[125X [27Xass_rtl := AssociatorRightToLeftWithGivenTensorProductsAsFunctor([127X[104X
     [4X[25X>[125X [27X                   B*(B*B), B, B, B, (B*B)*B );;[127X[104X
-    [4X[25Xgap>[125X [27XSource(ass_ltr) = Range(ass_rtl);[127X[104X
+    [4X[25Xgap>[125X [27XSource(ass_ltr) = Target(ass_rtl);[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XRange(ass_ltr) = Source(ass_rtl);[127X[104X
+    [4X[25Xgap>[125X [27XTarget(ass_ltr) = Source(ass_rtl);[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X# Consider B as an object in the category of algebroids over Q[127X[104X
     [4X[25X>[125X [27XBB := CategoryOfAlgebroidsObject(B);;[127X[104X

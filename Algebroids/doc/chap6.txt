@@ -526,7 +526,7 @@
     [4X[25Xgap>[125X [27XIsZero( qB.("cde") );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xf := RandomMorphism( qB, 20 );;[127X[104X
-    [4X[25Xgap>[125X [27X1/2 * HomStructure( Source( f ), Range( f ), 2*HomStructure( f ) ) = f;[127X[104X
+    [4X[25Xgap>[125X [27X1/2 * HomStructure( Source( f ), Target( f ), 2*HomStructure( f ) ) = f;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xideal := List( [ B.0, B.1, B.2 ], IdentityMorphism );[127X[104X
     [4X[28X[ <1*id(0):(0) -≻ (0)>, <1*id(1):(1) -≻ (1)>, <1*id(2):(2) -≻ (2)> ][128X[104X

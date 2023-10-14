@@ -68,7 +68,7 @@
     [4X[25Xgap>[125X [27Xs := SetOfObjects( Aoid );;[127X[104X
     [4X[25Xgap>[125X [27Xm := SetOfGeneratingMorphisms( Aoid );;[127X[104X
     [4X[25Xgap>[125X [27Xinterpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( -m[3] );;[127X[104X
-    [4X[25Xgap>[125X [27XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( m[3] ), Range( m[3] ), interpretation );;[127X[104X
+    [4X[25Xgap>[125X [27XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( m[3] ), Target( m[3] ), interpretation );;[127X[104X
     [4X[25Xgap>[125X [27X## additive closure[127X[104X
     [4X[25X>[125X [27Xadd := AdditiveClosure( Aoid );;[127X[104X
     [4X[25Xgap>[125X [27Xobj1 := AdditiveClosureObject( [ s[1], s[2] ], add );;[127X[104X
@@ -84,7 +84,7 @@
     [4X[25Xgap>[125X [27XHomomorphismStructureOnMorphisms( DirectSumFunctorial( [ ids1, ids2 ] ), ids1 );;[127X[104X
     [4X[25Xgap>[125X [27Xinterpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor );;[127X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
-    [4X[25X>[125X [27X  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), interpretation ),[127X[104X
+    [4X[25X>[125X [27X  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Target( mor ), interpretation ),[127X[104X
     [4X[25X>[125X [27X  mor );;[127X[104X
     [4X[25Xgap>[125X [27Xa := AsAdditiveClosureMorphism( m[1] );;[127X[104X
     [4X[25Xgap>[125X [27Xb := AsAdditiveClosureMorphism( m[2] );;[127X[104X
@@ -239,8 +239,8 @@
     [4X[25Xgap>[125X [27Xb := AsAdelmanCategoryMorphism( b );;[127X[104X
     [4X[25Xgap>[125X [27Xc := AsAdelmanCategoryMorphism( c );;[127X[104X
     [4X[25Xgap>[125X [27XA := Source( a );;[127X[104X
-    [4X[25Xgap>[125X [27XB := Range( a );;[127X[104X
-    [4X[25Xgap>[125X [27XC := Range( c );;[127X[104X
+    [4X[25Xgap>[125X [27XB := Target( a );;[127X[104X
+    [4X[25Xgap>[125X [27XC := Target( c );;[127X[104X
     [4X[25Xgap>[125X [27XHomomorphismStructureOnObjects( A, C );;[127X[104X
     [4X[25Xgap>[125X [27XHomomorphismStructureOnMorphisms( IdentityMorphism( A ), c );;[127X[104X
     [4X[25Xgap>[125X [27Xmor := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( a );;[127X[104X
@@ -412,7 +412,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsZeroForMorphisms( pre );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27Xze := ZeroMorphism( Source( pre ), Range( pre ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xze := ZeroMorphism( Source( pre ), Target( pre ) );;[127X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( pre + ze, pre );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( pre + pre, pre );[127X[104X

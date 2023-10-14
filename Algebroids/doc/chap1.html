@@ -944,9 +944,9 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ru := RightUnitorAsFunctor(B);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lui := LeftUnitorInverseAsFunctor(B);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rui := RightUnitorInverseAsFunctor(B);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsCapCategory(Range(lu)) = B;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsCapCategory(Target(lu)) = B;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsCapCategory(Range(ru)) = B;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsCapCategory(Target(ru)) = B;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsCapCategory(Source(lu)) = TensorProductOnObjects( B0, B );</span>
 true
@@ -956,9 +956,9 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsCapCategory(Source(rui)) = B;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsCapCategory(Range(lui)) = TensorProductOnObjects( B0, B );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsCapCategory(Target(lui)) = TensorProductOnObjects( B0, B );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsCapCategory(Range(rui)) = TensorProductOnObjects( B, B0 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsCapCategory(Target(rui)) = TensorProductOnObjects( B, B0 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">l := Concatenation( [</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">             List( SetOfObjects(B),</span>
@@ -1015,9 +1015,9 @@ Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) )
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                   (B*B)*B, B, B, B, B*(B*B) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ass_rtl := AssociatorRightToLeftWithGivenTensorProductsAsFunctor(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                   B*(B*B), B, B, B, (B*B)*B );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source(ass_ltr) = Range(ass_rtl);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source(ass_ltr) = Target(ass_rtl);</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range(ass_ltr) = Source(ass_rtl);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Target(ass_ltr) = Source(ass_rtl);</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># Consider B as an object in the category of algebroids over Q</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">BB := CategoryOfAlgebroidsObject(B);;</span>
