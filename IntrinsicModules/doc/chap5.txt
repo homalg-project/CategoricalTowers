@@ -104,7 +104,7 @@
     [4X[28X<A homomorphism of left modules>[128X[104X
     [4X[25Xgap>[125X [27XSource( chi );[127X[104X
     [4X[28X<A free left module of rank 3 on free generators>[128X[104X
-    [4X[25Xgap>[125X [27XRange( chi );[127X[104X
+    [4X[25Xgap>[125X [27XTarget( chi );[127X[104X
     [4X[28X<A free left module of rank 4 on free generators>[128X[104X
   [4X[32X[104X
   
@@ -115,7 +115,7 @@
     [4X[28X<A homomorphism of right modules>[128X[104X
     [4X[25Xgap>[125X [27XSource( kappa );[127X[104X
     [4X[28X<A free right module of rank 4 on free generators>[128X[104X
-    [4X[25Xgap>[125X [27XRange( kappa );[127X[104X
+    [4X[25Xgap>[125X [27XTarget( kappa );[127X[104X
     [4X[28X<A free right module of rank 3 on free generators>[128X[104X
   [4X[32X[104X
   
