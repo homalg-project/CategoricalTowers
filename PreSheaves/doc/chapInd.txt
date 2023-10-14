@@ -26,12 +26,12 @@
       for IsCapCategory, IsCapCategory, IsStringRep 2.3-1 
   [2XRange[102X, for IsObjectInPreSheafCategory 1.1-5 
       for IsObjectInPreSheafWithBoundsCategory 2.2-5 
-      for IsPreSheafCategory 1.1-2 
       for IsPreSheafWithBoundsCategory 2.2-2 
   [2XSource[102X, for IsObjectInPreSheafCategory 1.1-4 
       for IsObjectInPreSheafWithBoundsCategory 2.2-4 
       for IsPreSheafCategory 1.1-1 
       for IsPreSheafWithBoundsCategory 2.2-1 
+  [2XTarget[102X, for IsPreSheafCategory 1.1-2 
   [2XYonedaEmbedding[102X, for IsCapCategory 2.2-6 
   [2XYonedaEmbeddingOfSourceCategory[102X, for IsPreSheafCategory 1.1-6 
       for IsPreSheafWithBoundsCategory 2.2-7 
