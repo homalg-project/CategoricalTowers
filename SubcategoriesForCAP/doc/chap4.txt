@@ -126,7 +126,7 @@
     [4X[28X{ 0,..., 3 } ⱶ[ 1, 0, 1, 0 ]→ { 0, 1 }[128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in the slice category given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XIsTerminal( Range( tau ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsTerminal( Target( tau ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xn := MapOfFinSets( FinSet( 3 ), [ 2, 0, 3 ], FinSet( 4 ) );[127X[104X
     [4X[28X|3| → |4|[128X[104X
@@ -403,7 +403,7 @@
     [4X[28XA morphism in Rows( Q[x,y] )[128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in the slice category given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XSource( iota ) = Range( iota );[127X[104X
+    [4X[25Xgap>[125X [27XSource( iota ) = Target( iota );[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
@@ -463,7 +463,7 @@
     [4X[28X{ 0,..., 6 } ⱶ[ 0, 1, 4, 5, 6, 7, 8 ]→ { 0,..., 8 }[128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in the slice category given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( Range( dpo[1] ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( Target( dpo[1] ) );[127X[104X
     [4X[28X{ 0,..., 8 } ⱶ[ 1, 0, 1, 1, 0, 1, 1, 0, 0 ]→ { 0, 1 }[128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in the slice category given by the above data[128X[104X
