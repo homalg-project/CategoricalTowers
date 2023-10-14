@@ -2582,13 +2582,13 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
     
     B_op := OppositeOfSource( PSh );
     
-    if IsCategoryFromDataTables( B_op ) then
+    if IsCategoryFromDataTables( B ) then
         
         F_datum := ObjectDatum( PSh, F );
         
-        return PreComposeList( D,
+        return PostComposeList( D,
                        F_datum[1][1 + IndexOfObject( Target( morB ) )],
-                       F_datum[2]{1 + Reversed( DecompositionIndicesOfMorphism( B, morB ) )},
+                       F_datum[2]{1 + DecompositionIndicesOfMorphism( B, morB )},
                        F_datum[1][1 + IndexOfObject( Source( morB ) )] );
         
     elif IsAlgebroidFromDataTables( B_op ) then
