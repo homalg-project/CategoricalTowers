@@ -38,11 +38,15 @@
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CategoriesWithAmbientObjects", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "ModulePresentationsForCAP", "&gt;= 2023.10-01", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := QQ * "x,y";</span>
 Q[x,y]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := AsLeftOrRightPresentation(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  HomalgMatrix( "[ 1, x, 0, 1 ]", 2, 2, R ), true );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := AsLeftPresentation(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  HomalgMatrix( "[ 1, x, 0, 1 ]", 2, 2, R ) );</span>
 &lt;An object in Category of left presentations of Q[x,y]&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ag := CategoryWithAmbientObjects( CapCategory( M ) );</span>
 CategoryWithAmbientObjects( Category of left presentations of Q[x,y] )
