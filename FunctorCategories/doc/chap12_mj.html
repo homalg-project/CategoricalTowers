@@ -265,7 +265,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCoPreSheafMorphism</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in a <strong class="pkg">CAP</strong> category</p>
 
-<p>Turn the natrual transformation <var class="Arg">eta</var>:<span class="SimpleMath">\(F \to G\)</span> into a morphism <code class="code"><var class="Arg">U</var> := CreateCoPreSheaf( F )</code> <span class="SimpleMath">\(\to\)</span> <code class="code"><var class="Arg">V</var> := CreateCoPreSheaf( G )</code> in the category of functors <code class="code"><var class="Arg">coPSh</var> := CoPreSheaves( B, C )</code>, where <code class="code">B := Source( F ) = Source( G )</code> and <code class="code">C := Range( F ) = Range( G )</code>.</p>
+<p>Turn the natrual transformation <var class="Arg">eta</var>:<span class="SimpleMath">\(F \to G\)</span> into a morphism <code class="code"><var class="Arg">U</var> := CreateCoPreSheaf( F )</code> <span class="SimpleMath">\(\to\)</span> <code class="code"><var class="Arg">V</var> := CreateCoPreSheaf( G )</code> in the category of functors <code class="code"><var class="Arg">coPSh</var> := CoPreSheaves( B, C )</code>, where <code class="code">B := Source( F ) = Source( G )</code> and <code class="code">C := Target( F ) = Target( G )</code>.</p>
 
 <p>An alternative input is the triple (<var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var>), where <var class="Arg">e</var> is a defining record of <var class="Arg">eta</var>.</p>
 

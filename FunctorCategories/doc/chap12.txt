@@ -175,7 +175,7 @@
   [33X[0;0YTurn   the  natrual  transformation  [3Xeta[103X:[23XF  \to  G[123X  into  a  morphism  [10X[3XU[103X[10X  :=
   CreateCoPreSheaf(  F  )[110X  [23X\to[123X  [10X[3XV[103X[10X  := CreateCoPreSheaf( G )[110X in the category of
   functors [10X[3XcoPSh[103X[10X := CoPreSheaves( B, C )[110X, where [10XB := Source( F ) = Source( G )[110X
-  and [10XC := Range( F ) = Range( G )[110X.[133X
+  and [10XC := Target( F ) = Target( G )[110X.[133X
   
   [33X[0;0YAn  alternative  input is the triple ([3XU[103X, [3Xe[103X, [3XV[103X), where [3Xe[103X is a defining record
   of [3Xeta[103X.[133X

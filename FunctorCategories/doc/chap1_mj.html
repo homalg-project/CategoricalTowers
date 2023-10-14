@@ -121,7 +121,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsMorphismInFunctorCategory</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in a <strong class="pkg">CAP</strong> category</p>
 
-<p>Turn the natrual transformation <var class="Arg">eta</var>:<span class="SimpleMath">\(F \to G\)</span> into a morphism <code class="code"><var class="Arg">U</var> := AsObjectInFunctorCategory( F )</code> <span class="SimpleMath">\(\to\)</span> <code class="code"><var class="Arg">V</var> := AsObjectInFunctorCategory( G )</code> in the category of functors <code class="code"><var class="Arg">Hom</var> := Hom( B, D )</code>, where <code class="code">B := Source( F ) = Source( G )</code> and <code class="code">C := Range( F ) = Range( G )</code>.</p>
+<p>Turn the natrual transformation <var class="Arg">eta</var>:<span class="SimpleMath">\(F \to G\)</span> into a morphism <code class="code"><var class="Arg">U</var> := AsObjectInFunctorCategory( F )</code> <span class="SimpleMath">\(\to\)</span> <code class="code"><var class="Arg">V</var> := AsObjectInFunctorCategory( G )</code> in the category of functors <code class="code"><var class="Arg">Hom</var> := Hom( B, D )</code>, where <code class="code">B := Source( F ) = Source( G )</code> and <code class="code">C := Target( F ) = Target( G )</code>.</p>
 
 <p>An alternative input is the triple (<var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var>), where <var class="Arg">e</var> is a defining record of <var class="Arg">eta</var>.</p>
 
@@ -877,7 +877,7 @@ A morphism in Category of matrices over Q
 &lt;(1)-&gt;2x2&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( epsilon ) = U;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( epsilon ) = U;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Target( epsilon ) = U;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EndU := InternalHom( U, U );</span>
 &lt;(1)-&gt;4; (t)-&gt;4x4&gt;
@@ -893,7 +893,7 @@ false
 &lt;(1)-&gt;4x4&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( beta ) = UsU;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( beta ) = UUs;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Target( beta ) = UUs;</span>
 true
 </pre></div>
 
@@ -1277,7 +1277,7 @@ true
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( epsilon ) = V;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Target( epsilon ) = V;</span>
 true
 </pre></div>
 
@@ -1323,7 +1323,7 @@ false
 &lt;(1)-&gt;9x9&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( beta ) = VsV;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( beta ) = VVs;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Target( beta ) = VVs;</span>
 true
 </pre></div>
 

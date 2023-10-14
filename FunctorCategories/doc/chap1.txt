@@ -49,7 +49,7 @@
   [33X[0;0YTurn   the  natrual  transformation  [3Xeta[103X:[23XF  \to  G[123X  into  a  morphism  [10X[3XU[103X[10X  :=
   AsObjectInFunctorCategory(  F  )[110X  [23X\to[123X [10X[3XV[103X[10X := AsObjectInFunctorCategory( G )[110X in
   the  category  of  functors  [10X[3XHom[103X[10X  :=  Hom(  B, D )[110X, where [10XB := Source( F ) =
-  Source( G )[110X and [10XC := Range( F ) = Range( G )[110X.[133X
+  Source( G )[110X and [10XC := Target( F ) = Target( G )[110X.[133X
   
   [33X[0;0YAn  alternative  input is the triple ([3XU[103X, [3Xe[103X, [3XV[103X), where [3Xe[103X is a defining record
   of [3Xeta[103X.[133X
@@ -781,7 +781,7 @@
     [4X[28X<(1)->2x2>[128X[104X
     [4X[25Xgap>[125X [27XSource( epsilon ) = U;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XRange( epsilon ) = U;[127X[104X
+    [4X[25Xgap>[125X [27XTarget( epsilon ) = U;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XEndU := InternalHom( U, U );[127X[104X
     [4X[28X<(1)->4; (t)->4x4>[128X[104X
@@ -797,7 +797,7 @@
     [4X[28X<(1)->4x4>[128X[104X
     [4X[25Xgap>[125X [27XSource( beta ) = UsU;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XRange( beta ) = UUs;[127X[104X
+    [4X[25Xgap>[125X [27XTarget( beta ) = UUs;[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
@@ -1161,7 +1161,7 @@
   [33X[0;0YBut its range is also isomorphic to [23XV[123X.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XRange( epsilon ) = V;[127X[104X
+    [4X[25Xgap>[125X [27XTarget( epsilon ) = V;[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
@@ -1203,7 +1203,7 @@
     [4X[28X<(1)->9x9>[128X[104X
     [4X[25Xgap>[125X [27XSource( beta ) = VsV;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XRange( beta ) = VVs;[127X[104X
+    [4X[25Xgap>[125X [27XTarget( beta ) = VVs;[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
