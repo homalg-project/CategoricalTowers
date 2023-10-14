@@ -13,7 +13,7 @@ InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerDataUsingOptimizedC
     
     F_Vst := CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma( PSh, F );
     
-    D := Range( PSh );
+    D := Target( PSh );
     
     V := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, F_Vst[1] );
     
@@ -32,7 +32,7 @@ InstallMethodForCompilerForCAP( ExternalHomOnObjectsEqualizerDataUsingCoYonedaLe
     
     F_Vst := CoequalizerDataOfPreSheafUsingCoYonedaLemma( PSh, F );
     
-    D := Range( PSh );
+    D := Target( PSh );
     
     V := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, F_Vst[1] );
     
@@ -58,7 +58,7 @@ InstallMethodForCompilerForCAP( ExternalHomOnMorphismsEqualizerFunctorialDataUsi
     UC := UnderlyingCategory( coequalizer_completion_UC );
     
     F := Source( eta );
-    G := Range( eta );
+    G := Target( eta );
     
     eta_coequalizer_pair_morphism := CoYonedaLemmaOnMorphisms( PSh,
                                              CoYonedaLemmaOnObjects( PSh, F ),
@@ -84,11 +84,11 @@ InstallMethodForCompilerForCAP( ExternalHomOnMorphismsEqualizerFunctorialDataUsi
     
     diagram_F_V_S := List( F_V_data, objB -> ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, S, objB ) );
     
-    T := Range( rho );
+    T := Target( rho );
     
     diagram_F_V_T := List( F_V_data, objB -> ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, T, objB ) );
     
-    D := Range( PSh );
+    D := Target( PSh );
     
     F_V_rho := DirectProductFunctorialWithGivenDirectProducts( D,
                        DirectProduct( D, diagram_F_V_S ),
@@ -120,7 +120,7 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
     F_o := ValuesOfPreSheaf( F )[1];
     G_o := ValuesOfPreSheaf( G )[1];
     
-    D := Range( PSh );
+    D := Target( PSh );
     
     sources := List( [ 1 .. nr_o ],
                      i -> HomomorphismStructureOnObjects( D,
@@ -142,7 +142,7 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
         return [ Triple( mors[i][1],
                          HomomorphismStructureOnMorphisms( D, ## Hom( F(s(m)), G(s(m)) ) -> Hom( F(t(m)), G(s(m)) )
                                  F_m[i],
-                                 IdentityMorphism( D, Range( G_m[i] ) ) ),
+                                 IdentityMorphism( D, Target( G_m[i] ) ) ),
                          nr_o - 1 + i ),
                  Triple( mors[i][2],
                          HomomorphismStructureOnMorphisms( D, ## Hom( F(t(m)), G(t(m)) ) -> Hom( F(t(m)), G(s(m)) )
@@ -154,7 +154,7 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
     
     morphisms := List( [ 1 .. nr_m ], mor_pair );
     
-    objects := Concatenation( [ sources, List( morphisms, m -> Range( m[1][2] ) ) ] );
+    objects := Concatenation( [ sources, List( morphisms, m -> Target( m[1][2] ) ) ] );
     
     return Pair( objects, Concatenation( morphisms ) );
     
@@ -170,7 +170,7 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
     
     B := Source( PSh );
     
-    D := Range( PSh );
+    D := Target( PSh );
     
     objs := SetOfObjects( B );
     nr_o := Length( objs );
@@ -192,14 +192,14 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
     range_summands := List( [ 1 .. nr_m ], i ->
                             HomomorphismStructureOnObjects( D,
                                     Source( S_m_vals[i] ),
-                                    Range( R_m_vals[i] ) ) );
+                                    Target( R_m_vals[i] ) ) );
     
     H := RangeCategoryOfHomomorphismStructure( D );
     
     map :=
       function( i, j )
         
-        if objs[i] = Source( mors[j] ) and objs[i] = Range( mors[j] ) then
+        if objs[i] = Source( mors[j] ) and objs[i] = Target( mors[j] ) then
             
             return SubtractionForMorphisms( H,
                            HomomorphismStructureOnMorphismsWithGivenObjects( D,
@@ -213,7 +213,7 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
                                    R_m_vals[j],
                                    range_summands[j] ) );
             
-        elif not objs[i] = Source( mors[j] ) and objs[i] = Range( mors[j] ) then
+        elif not objs[i] = Source( mors[j] ) and objs[i] = Target( mors[j] ) then
             
             return AdditiveInverseForMorphisms( H,
                            HomomorphismStructureOnMorphismsWithGivenObjects( D,
@@ -222,7 +222,7 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
                                    R_m_vals[j],
                                    range_summands[j] ) );
             
-        elif objs[i] = Source( mors[j] ) and not objs[i] = Range( mors[j] ) then
+        elif objs[i] = Source( mors[j] ) and not objs[i] = Target( mors[j] ) then
             
             return HomomorphismStructureOnMorphismsWithGivenObjects( D,
                            source_summands[i],
@@ -255,7 +255,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATE
   function ( PSh )
     local D, H;
     
-    D := Range( PSh );
+    D := Target( PSh );
     
     if not HasRangeCategoryOfHomomorphismStructure( D ) then
       
@@ -280,7 +280,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATE
     
     ##
     AddDistinguishedObjectOfHomomorphismStructure( PSh,
-            { PSh } -> DistinguishedObjectOfHomomorphismStructure( Range( PSh ) ) );
+            { PSh } -> DistinguishedObjectOfHomomorphismStructure( Target( PSh ) ) );
     
     ##
     AddHomomorphismStructureOnObjects( PSh,
@@ -296,7 +296,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATE
       function ( PSh, eta )
         local D, H, distinguished_object, tau, diagram;
         
-        D := Range( PSh );
+        D := Target( PSh );
         
         H := RangeCategoryOfHomomorphismStructure( PSh );
         
@@ -310,7 +310,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATE
         return KernelLift( H,
                        AuxiliaryMorphism( PSh,
                                Source( eta ),
-                               Range( eta ) ),
+                               Target( eta ) ),
                        distinguished_object,
                        UniversalMorphismIntoDirectSum( H,
                                diagram,
@@ -324,7 +324,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATE
       function ( PSh, S, R, iota )
         local D, H, S_o_vals, R_o_vals, map, cmp, o, summands, cmps;
         
-        D := Range( PSh );
+        D := Target( PSh );
         
         H := RangeCategoryOfHomomorphismStructure( PSh );
         
@@ -370,7 +370,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATE
       function ( PSh, s, eta, mu, r )
         local D, H, eta_vals, mu_vals, o, m;
         
-        D := Range( PSh );
+        D := Target( PSh );
         
         H := RangeCategoryOfHomomorphismStructure( PSh );
         
@@ -386,9 +386,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATE
         
         return KernelObjectFunctorialWithGivenKernelObjects( H,
                        s,
-                       AuxiliaryMorphism( PSh, Range( eta ), Source( mu ) ),
+                       AuxiliaryMorphism( PSh, Target( eta ), Source( mu ) ),
                        DirectSumFunctorial( H, m ),
-                       AuxiliaryMorphism( PSh, Source( eta ), Range( mu ) ),
+                       AuxiliaryMorphism( PSh, Source( eta ), Target( mu ) ),
                        r );
         
     end );
@@ -400,7 +400,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATE
         function ( PSh, S, R )
           local D, H, iota, distinguished_object, S_o_vals, R_o_vals, nr_o, summands, direct_sum, prjs, cmps, iotas, basis;
           
-          D := Range( PSh );
+          D := Target( PSh );
           
           H := RangeCategoryOfHomomorphismStructure( PSh );
           
@@ -420,7 +420,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATE
                                     S_o_vals[i],
                                     R_o_vals[i] ) );
           
-          direct_sum := Range( iota ); # is equal to DirectSum( summands )
+          direct_sum := Target( iota ); # is equal to DirectSum( summands )
           
           prjs := List( [ 1 .. Length( S_o_vals ) ],
                         i -> ProjectionInFactorOfDirectSumWithGivenDirectSum( H,

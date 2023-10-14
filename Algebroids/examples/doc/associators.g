@@ -18,9 +18,9 @@ ass_ltr := AssociatorLeftToRightWithGivenTensorProductsAsFunctor(
 ass_rtl := AssociatorRightToLeftWithGivenTensorProductsAsFunctor(
                    B*(B*B), B, B, B, (B*B)*B );;
 
-Source(ass_ltr) = Range(ass_rtl);
+Source(ass_ltr) = Target(ass_rtl);
 #! true
-Range(ass_ltr) = Source(ass_rtl);
+Target(ass_ltr) = Source(ass_rtl);
 #! true
 
 # Consider B as an object in the category of algebroids over Q

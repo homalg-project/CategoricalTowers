@@ -164,7 +164,7 @@ InstallMethod( RepresentationMapOfKoszulId,
     vars := MorphismInExteriorPowersCategory(
                     ObjectInExteriorPowersCategory( Source( vars[1] ), d , EC ),
                     vars,
-                    ObjectInExteriorPowersCategory( Range( vars[1] ), d + 1, EC ) );
+                    ObjectInExteriorPowersCategory( Target( vars[1] ), d + 1, EC ) );
     
     return vars;
     

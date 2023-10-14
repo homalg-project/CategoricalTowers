@@ -54,8 +54,8 @@ CapJitAddTypeSignature( "ValuesOfPreSheaf", [ IsObjectInPreSheafCategory ],
     Assert( 0, IsPreSheafCategory( input_types[1].category ) );
     
     return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ),
-                   CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ) );
+                   CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( Target( input_types[1].category ) ) ),
+                   CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( Target( input_types[1].category ) ) ) );
     
 end );
 
@@ -71,7 +71,7 @@ CapJitAddTypeSignature( "ValuesOnAllObjects", [ IsMorphismInPreSheafCategory ],
     
     Assert( 0, IsPreSheafCategory( input_types[1].category ) );
     
-    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) );
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( Target( input_types[1].category ) ) );
     
 end );
 
@@ -289,7 +289,7 @@ DeclareOperation( "CreatePreSheafMorphismByValues",
 #!  Turn the natrual transformation <A>eta</A>:$F \to G$ into a morphism
 #!  <C><A>U</A> := AsObjectInFunctorCategory( F )</C> $\to$ <C><A>V</A> := AsObjectInFunctorCategory( G )</C>
 #!  in the category of functors <C><A>Hom</A> := Hom( B, D )</C>, where
-#!  <C>B := Source( F ) = Source( G )</C> and <C>C := Range( F ) = Range( G )</C>.
+#!  <C>B := Source( F ) = Source( G )</C> and <C>C := Target( F ) = Target( G )</C>.
 #! @Arguments eta
 #! @Group CreatePreSheafMorphism
 DeclareAttribute( "CreatePreSheafMorphism",

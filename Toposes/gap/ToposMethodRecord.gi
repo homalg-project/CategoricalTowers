@@ -28,7 +28,7 @@ NonliftableMorphismFromDistinguishedObject := rec(
   input_arguments_names := [ "cat", "iota" ],
   output_source_getter_string := "DistinguishedObjectOfHomomorphismStructure( cat )",
   output_source_getter_preconditions := [ [ "DistinguishedObjectOfHomomorphismStructure", 1 ] ],
-  output_range_getter_string := "Range( iota )",
+  output_range_getter_string := "Target( iota )",
   output_range_getter_preconditions := [ ] ),
 
 SubobjectClassifier := rec(
@@ -165,7 +165,7 @@ ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier := rec(
   filter_list := [ "category", "morphism", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "alpha", "Omega" ],
-  output_source_getter_string := "Range( alpha )",
+  output_source_getter_string := "Target( alpha )",
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "Omega",
   output_range_getter_preconditions := [ ],
@@ -188,7 +188,7 @@ PowerObjectFunctorial := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "f" ],
-  output_source_getter_string := "PowerObject( cat, Range( f ) )",
+  output_source_getter_string := "PowerObject( cat, Target( f ) )",
   output_source_getter_preconditions := [ [ "PowerObject", 1 ] ],
   output_range_getter_string := "PowerObject( cat, Source( f ) )",
   output_range_getter_preconditions := [ [ "PowerObject", 1 ] ],
@@ -418,7 +418,7 @@ EmbeddingOfPseudoComplementSubobject := rec(
   input_arguments_names := [ "cat", "iota" ],
   output_source_getter_string := "PseudoComplementSubobject( iota )",
   output_source_getter_preconditions := [ [ "PseudoComplementSubobject", 1 ] ],
-  output_range_getter_string := "Range( iota )",
+  output_range_getter_string := "Target( iota )",
   output_range_getter_preconditions := [ ],
   with_given_object_position := "Source" ),
 
@@ -428,7 +428,7 @@ EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement := rec(
   input_arguments_names := [ "cat", "iota", "complement" ],
   output_source_getter_string := "complement",
   output_source_getter_preconditions := [ ],
-  output_range_getter_string := "Range( iota )",
+  output_range_getter_string := "Target( iota )",
   output_range_getter_preconditions := [ ],
 ),
 
@@ -442,7 +442,7 @@ EmbeddingOfIntersectionSubobject := rec(
   input_arguments_names := [ "cat", "iota1", "iota2" ],
   output_source_getter_string := "IntersectionSubobject( iota1, iota2 )",
   output_source_getter_preconditions := [ [ "IntersectionSubobject", 1 ] ],
-  output_range_getter_string := "Range( iota1 )",
+  output_range_getter_string := "Target( iota1 )",
   output_range_getter_preconditions := [ ],
   with_given_object_position := "Source" ),
 
@@ -452,7 +452,7 @@ EmbeddingOfIntersectionSubobjectWithGivenIntersection := rec(
   input_arguments_names := [ "cat", "iota1", "iota2", "intersection" ],
   output_source_getter_string := "intersection",
   output_source_getter_preconditions := [ ],
-  output_range_getter_string := "Range( iota1 )",
+  output_range_getter_string := "Target( iota1 )",
   output_range_getter_preconditions := [ ],
 ),
 
@@ -466,7 +466,7 @@ EmbeddingOfUnionSubobject := rec(
   input_arguments_names := [ "cat", "iota1", "iota2" ],
   output_source_getter_string := "UnionSubobject( iota1, iota2 )",
   output_source_getter_preconditions := [ [ "UnionSubobject", 1 ] ],
-  output_range_getter_string := "Range( iota1 )",
+  output_range_getter_string := "Target( iota1 )",
   output_range_getter_preconditions := [ ],
   with_given_object_position := "Source" ),
 
@@ -476,7 +476,7 @@ EmbeddingOfUnionSubobjectWithGivenUnion := rec(
   input_arguments_names := [ "cat", "iota1", "iota2", "union" ],
   output_source_getter_string := "union",
   output_source_getter_preconditions := [ ],
-  output_range_getter_string := "Range( iota1 )",
+  output_range_getter_string := "Target( iota1 )",
   output_range_getter_preconditions := [ ],
 ),
 
@@ -490,7 +490,7 @@ EmbeddingOfRelativePseudoComplementSubobject := rec(
   input_arguments_names := [ "cat", "iota1", "iota2" ],
   output_source_getter_string := "RelativePseudoComplementSubobject( iota1, iota2 )",
   output_source_getter_preconditions := [ [ "RelativePseudoComplementSubobject", 1 ] ],
-  output_range_getter_string := "Range( iota1 )",
+  output_range_getter_string := "Target( iota1 )",
   output_range_getter_preconditions := [ ],
   with_given_object_position := "Source" ),
 
@@ -500,7 +500,7 @@ EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication := rec(
   input_arguments_names := [ "cat", "iota1", "iota2", "implication" ],
   output_source_getter_string := "implication",
   output_source_getter_preconditions := [ ],
-  output_range_getter_string := "Range( iota1 )",
+  output_range_getter_string := "Target( iota1 )",
   output_range_getter_preconditions := [ ],
 ),
 
@@ -510,7 +510,7 @@ HasPushoutComplement := rec(
   pre_function := function( cat, l, m )
     local value;
     
-    value := IsEqualForObjects( Range( l ), Source( m ) );
+    value := IsEqualForObjects( Target( l ), Source( m ) );
     
     if value = fail then
         
@@ -530,12 +530,12 @@ PushoutComplement := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "l", "m" ],
-  output_range_getter_string := "Range( m )",
+  output_range_getter_string := "Target( m )",
   output_range_getter_preconditions := [ ],
   pre_function := function( cat, l, m )
     local value;
     
-    value := IsEqualForObjects( Range( l ), Source( m ) );
+    value := IsEqualForObjects( Target( l ), Source( m ) );
     
     if value = fail then
         

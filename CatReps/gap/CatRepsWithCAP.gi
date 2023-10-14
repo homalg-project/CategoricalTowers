@@ -99,7 +99,7 @@ InstallMethod( RightQuiverFromConcreteCategory,
                      PositionProperty( objects,
                              o -> IsEqualForObjects( Source( mor ), o ) ),
                      PositionProperty( objects,
-                             o -> IsEqualForObjects( Range( mor ), o ) )
+                             o -> IsEqualForObjects( Target( mor ), o ) )
                      ];
         i := i+1;
     od;
@@ -280,7 +280,7 @@ InstallMethod( EmbeddingOfSubRepresentation,
                       SetOfGeneratingMorphisms( kq ),
                       m ->
                       LiftAlongMonomorphism(
-                              eta[VertexIndex( UnderlyingVertex( Range( m ) ) )],
+                              eta[VertexIndex( UnderlyingVertex( Target( m ) ) )],
                               PreCompose( eta[VertexIndex( UnderlyingVertex( Source( m ) ) )],
                                       F( m ) ) ) );
     

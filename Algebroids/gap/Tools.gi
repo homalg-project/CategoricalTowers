@@ -18,7 +18,7 @@ InstallMethod( DefiningTripleOfAQuiver,
     return Immutable(
                    Triple( Length( vertices ),
                            Length( arrows ),
-                           List( arrows, m -> Pair( -1 + SafePosition( vertices, Source( m ) ), -1 + SafePosition( vertices, Range( m ) ) ) ) ) );
+                           List( arrows, m -> Pair( -1 + SafePosition( vertices, Source( m ) ), -1 + SafePosition( vertices, Target( m ) ) ) ) ) );
     
 end );
 

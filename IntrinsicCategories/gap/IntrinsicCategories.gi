@@ -130,7 +130,7 @@ InstallImmediateMethod( CanonicalizedToZero,
     fi;
     
     S := Source( mor );
-    T := Range( mor );
+    T := Target( mor );
     
     ## this will be taken care of by the CanonicalizedToZero for objects;
     ## this is crucial for performance
@@ -214,7 +214,7 @@ InstallMethod( CertainCell,
                 morphism :=
                   PreCompose(
                           [ mor!.morphisms.(String( l[pos]{[ 1 .. 2 ]}) )[2][l[pos][3]],
-                            TransitionIsomorphism( Range( mor ), l[pos][2], pos_t ) ]
+                            TransitionIsomorphism( Target( mor ), l[pos][2], pos_t ) ]
                           );
             fi;
         else
@@ -229,7 +229,7 @@ InstallMethod( CertainCell,
                   PreCompose(
                           [ TransitionIsomorphism( Source( mor ), pos_s, l[pos][1] ),
                             mor!.morphisms.(String( l[pos]{[ 1 .. 2 ]}) )[2][l[pos][3]],
-                            TransitionIsomorphism( Range( mor ), l[pos][2], pos_t ) ]
+                            TransitionIsomorphism( Target( mor ), l[pos][2], pos_t ) ]
                           );
             fi;
         fi;
@@ -283,7 +283,7 @@ InstallMethod( PositionOfActiveCell,
     local s, t, st, morphisms, k;
     
     s := PositionOfActiveCell( Source( mor ) );
-    t := PositionOfActiveCell( Range( mor ) );
+    t := PositionOfActiveCell( Target( mor ) );
     
     st := String( [ s, t ] );
     
@@ -338,7 +338,7 @@ InstallMethod( SetPositionOfActiveCell,
     t := p[2];
     
     SetPositionOfActiveCell( Source( mor ), s );
-    SetPositionOfActiveCell( Range( mor ), t );
+    SetPositionOfActiveCell( Target( mor ), t );
     
     mor!.morphisms.(String( [ s, t ] ))[1] := p[3];
     
@@ -389,7 +389,7 @@ InstallOtherMethod( ActiveCell,
     
     return CertainCell( mor,
                    PositionOfActiveCell( Source( mor ) ),
-                   PositionOfActiveCell( Range( mor ) ) );
+                   PositionOfActiveCell( Target( mor ) ) );
     
 end );
 
@@ -458,12 +458,12 @@ InstallMethod( AddTransitionIsomorphism,
     fi;
     
     obj!.TransitionIsomorphisms.(st) := eta;
-    obj!.(n) := Range( eta );
+    obj!.(n) := Target( eta );
     obj!.PositionOfLastStoredCell := n;
     
     SetPositionOfActiveCell( obj, n );
     
-    INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( Range( eta ), obj );
+    INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( Target( eta ), obj );
     
 end );
 
@@ -496,7 +496,7 @@ InstallMethod( AddTransitionIsomorphism,
         Error( "we do not add automorphisms\n" );
     fi;
     
-    T := Range( eta );
+    T := Target( eta );
     
     if not IsEqualForObjects( T, CertainCell( obj, t ) ) then
         Error( "the target of the isomorphism and the cell at position ", t, " are not equal\n" );
@@ -550,7 +550,7 @@ InstallMethod( AddTransitionIsomorphism,
     fi;
     
     S := Source( eta );
-    T := Range( eta );
+    T := Target( eta );
     
     if not IsEqualForObjects( S, CertainCell( obj, s ) ) then
         Error( "the source of the isomorphism and the cell at position ", s, " are not equal\n" );
@@ -653,13 +653,13 @@ InstallMethod( AddToIntrinsicMorphism,
     C := CapCategory( mor );
     
     S := Source( mor );
-    T := Range( mor );
+    T := Target( mor );
     
     if not IsIdenticalObj( UnderlyingCategory( C ), CapCategory( m ) ) then
         Error( "the category of the second morphism is not the category underlying the intrinsic category of the first\n" );
     elif not IsEqualForObjects( Source( m ), CertainCell( S, s ) ) then
         Error( "the source of the second morphism is not equal to the specified cell in the given intrinsic source\n" );
-    elif not IsEqualForObjects( Range( m ), CertainCell( T, t ) ) then
+    elif not IsEqualForObjects( Target( m ), CertainCell( T, t ) ) then
         Error( "the target of the second morphism is not equal to the specified cell in the given intrinsic target\n" );
     fi;
     
@@ -736,7 +736,7 @@ InstallMethod( Intrinsify,
         Error( "source and target lie in different categories\n" );
     elif not IsEqualForObjects( Source( m ), CertainCell( S, posS ) ) then
         Error( "the source of the morphism is not equal to the specified cell in the given intrinsic source\n" );
-    elif not IsEqualForObjects( Range( m ), CertainCell( T, posT ) ) then
+    elif not IsEqualForObjects( Target( m ), CertainCell( T, posT ) ) then
         Error( "the target of the morphism is not equal to the specified cell in the given intrinsic target\n" );
     fi;
     
@@ -812,7 +812,7 @@ InstallMethod( Intrinsify,
     local S, T;
     
     S := Source( mor );
-    T := Range( mor );
+    T := Target( mor );
     
     if IsEqualForObjects( S, T ) then
         S := Intrinsify( C, S );
@@ -835,7 +835,7 @@ InstallMethod( Intrinsify,
     
     if not IsIdenticalObj( AsCapCategory( Source( F ) ), UnderlyingCategory( A ) ) then
         Error( "the source of the functor and the category underlying the intrinsic source do not coincide\n" );
-    elif not IsIdenticalObj( AsCapCategory( Range( F ) ), UnderlyingCategory( B ) ) then
+    elif not IsIdenticalObj( AsCapCategory( Target( F ) ), UnderlyingCategory( B ) ) then
         Error( "the target of the functor and the category underlying the intrinsic target do not coincide\n" );
     fi;
     
@@ -877,7 +877,7 @@ InstallMethod( Intrinsify,
         
   function( F, name, A )
     
-    if not IsIdenticalObj( Source( F ), Range( F ) ) then
+    if not IsIdenticalObj( Source( F ), Target( F ) ) then
         Error( "the functor is not an endofunctor\n" );
     fi;
     
@@ -908,7 +908,7 @@ InstallMethod( Intrinsify,
     
     if not IsIdenticalObj( Source( eta ), F!.UnderlyingFunctor ) then
         Error( "the source of the natural transformation and the functor underlying the intrinsic source do not coincide\n" );
-    elif not IsIdenticalObj( Range( eta ), G!.UnderlyingFunctor ) then
+    elif not IsIdenticalObj( Target( eta ), G!.UnderlyingFunctor ) then
         Error( "the target of the natural transformation and the functor underlying the intrinsic target do not coincide\n" );
     fi;
     
@@ -918,7 +918,7 @@ InstallMethod( Intrinsify,
             inteta,
             function( source, obj, range )
               
-              return Intrinsify( AsCapCategory( Range( F ) ), ApplyNaturalTransformation( eta, ActiveCell( obj ) ) );
+              return Intrinsify( AsCapCategory( Target( F ) ), ApplyNaturalTransformation( eta, ActiveCell( obj ) ) );
               
             end );
     
@@ -962,7 +962,7 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
         Error( "the source of the natural isomorphism is not the identity functor of the intrinsic category\n" );
     fi;
     
-    intF := Range( eta );
+    intF := Target( eta );
     
     e := eta!.UnderlyingNaturalTransformation;
     
@@ -1005,7 +1005,7 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               ## which might lead to a change of its active cell
               eta_a := ApplyNaturalTransformation( e, a );
               
-              if IsEqualForObjects( Range( eta_a ), a ) and
+              if IsEqualForObjects( Target( eta_a ), a ) and
                  IsCongruentForMorphisms( eta_a, IdentityMorphism( a ) ) then
                   
                   Add( obj!.(name), [ pos, PositionOfActiveCell( obj ) ] );
@@ -1082,7 +1082,7 @@ InstallMethod( CanonicalizeZeroObjectsAsIdentityFunctor,
     ## using IC instead of C causes error, recursion depth trap (5000)
     iso := NaturalIsomorphismFromIdentityToCanonicalizeZeroObjects( C );
     
-    F := Intrinsify( Range( iso ), IC );
+    F := Intrinsify( Target( iso ), IC );
     
     iso := Intrinsify( iso, Id, F );
     
@@ -1107,7 +1107,7 @@ InstallMethod( CanonicalizeZeroMorphismsAsIdentityFunctor,
     
     iso := NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms( C );
     
-    F := Intrinsify( Range( iso ), IC );
+    F := Intrinsify( Target( iso ), IC );
     
     iso := Intrinsify( iso, Id, F );
     
@@ -1244,7 +1244,7 @@ InstallMethod( IntrinsicCategory,
            top_object_getter_string := "Intrinsify",
            top_morphism_getter_string := "Intrinsify",
            generic_output_source_getter_string := "Intrinsify( cat, Source( underlying_result ) ), 1",
-           generic_output_range_getter_string := "Intrinsify( cat, Range( underlying_result ) ), 1",
+           generic_output_range_getter_string := "Intrinsify( cat, Target( underlying_result ) ), 1",
            create_func_bool := "default",
            create_func_object := "default",
            create_func_object_or_fail := "default",
@@ -1368,8 +1368,8 @@ InstallMethod( IntrinsicCategory,
             t := PositionOfActiveCell( range );
             
             ## FIXME: take care of the connecton between the positions of active cells in
-            ## source = Hom( Range( alpha ), Source( beta ) ) and range = Hom( Source( alpha ), Range( beta ) )
-            ## and the positions of active cells in Range( alpha ), Source( beta ), Source( alpha ), Range( beta ).
+            ## source = Hom( Target( alpha ), Source( beta ) ) and range = Hom( Source( alpha ), Target( beta ) )
+            ## and the positions of active cells in Target( alpha ), Source( beta ), Source( alpha ), Target( beta ).
             
             hom := HomomorphismStructureOnMorphismsWithGivenObjects(
                            UnderlyingCategory( IC ), CertainCell( source, s ), ActiveCell( alpha ), ActiveCell( beta ), CertainCell( range, t ) );
@@ -1386,7 +1386,7 @@ InstallMethod( IntrinsicCategory,
             
             D := DistinguishedObjectOfHomomorphismStructure( IC );
             
-            hom := HomomorphismStructureOnMorphismsWithGivenObjects( IC, Source( morphism ), Range( morphism ) );
+            hom := HomomorphismStructureOnMorphismsWithGivenObjects( IC, Source( morphism ), Target( morphism ) );
             
             return Intrinsify(
                            mor,

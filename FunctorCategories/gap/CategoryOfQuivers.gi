@@ -123,7 +123,7 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
         
         PSh := ModelingCategory( F_hat );
         
-        sFinSets := Range( PSh );
+        sFinSets := Target( PSh );
         
         V := ObjectConstructor( sFinSets, triple[1] );
         
@@ -168,7 +168,7 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
         
         PSh := ModelingCategory( F_hat );
         
-        sFinSets := Range( PSh );
+        sFinSets := Target( PSh );
         
         S := ObjectDatum( F_hat, source );
         T := ObjectDatum( F_hat, range );
@@ -427,9 +427,9 @@ InstallMethod( \.,
     name := NameRNam( string_as_int );
     
     if name = "V" then
-        return MapOfFinSets( Source( mor ).V, datum[1], Range( mor ).V );
+        return MapOfFinSets( Source( mor ).V, datum[1], Target( mor ).V );
     elif name = "A" then
-        return MapOfFinSets( Source( mor ).A, datum[2], Range( mor ).A );
+        return MapOfFinSets( Source( mor ).A, datum[2], Target( mor ).A );
     fi;
     
     Error( "the quiver morphism has no component with the name \"", name, "\"\n" );
@@ -491,7 +491,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
   function ( monomorphism )
     local quiver, vertices, arrows, str, arrows_as_pairs, i;
     
-    quiver := Range( monomorphism );
+    quiver := Target( monomorphism );
     
     vertices := AsList( monomorphism.V );
     arrows := AsList( monomorphism.A );

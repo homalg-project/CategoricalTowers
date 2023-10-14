@@ -11,7 +11,7 @@ AddDerivationToCAP( IsWellDefinedForMorphisms,
         
   function( cat, u )
     
-    return IsHomSetInhabited( cat, Source( u ), Range( u ) );
+    return IsHomSetInhabited( cat, Source( u ), Target( u ) );
         
 end : CategoryFilter := IsThinCategory );
 
@@ -66,7 +66,7 @@ AddDerivationToCAP( PreCompose,
         
   function( cat, u1, u2 )
     
-    return UniqueMorphism( cat, Source( u1 ), Range( u2 ) );
+    return UniqueMorphism( cat, Source( u1 ), Target( u2 ) );
     
 end : CategoryFilter := IsThinCategory );
 
@@ -77,7 +77,7 @@ AddDerivationToCAP( PostCompose,
         
   function( cat, u1, u2 )
     
-    return UniqueMorphism( cat, Source( u2 ), Range( u1 ) );
+    return UniqueMorphism( cat, Source( u2 ), Target( u1 ) );
     
 end : CategoryFilter := IsThinCategory );
 
@@ -147,7 +147,7 @@ AddDerivationToCAP( IsCodominating,
         
   function( cat, u1, u2 )
     
-    return IsHomSetInhabited( cat, Range( u2 ), Range( u1 ) );
+    return IsHomSetInhabited( cat, Target( u2 ), Target( u1 ) );
     
 end : CategoryFilter := IsThinCategory );
 
@@ -273,7 +273,7 @@ AddDerivationToCAP( IsColiftableAlongEpimorphism,
         
   function( cat, u1, u2 )
     
-    return IsHomSetInhabited( cat, Range( u1 ), Range( u2 ) );
+    return IsHomSetInhabited( cat, Target( u1 ), Target( u2 ) );
     
 end : CategoryFilter := IsThinCategory );
 
@@ -285,7 +285,7 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
   function( cat, u1, u2 )
     
     ## the behavior of ColiftAlongEpimorphism is unspecified on input violating the specification
-    return UniqueMorphism( cat, Range( u1 ), Range( u2 ) );
+    return UniqueMorphism( cat, Target( u1 ), Target( u2 ) );
     
 end : CategoryFilter := IsThinCategory );
 
@@ -342,7 +342,7 @@ AddDerivationToCAP( IsIsomorphism,
         
   function( cat, u )
     
-    return IsHomSetInhabited( cat, Range( u ), Source( u ) );
+    return IsHomSetInhabited( cat, Target( u ), Source( u ) );
     
 end : CategoryFilter := IsThinCategory );
 
@@ -353,7 +353,7 @@ AddDerivationToCAP( InverseForMorphisms,
         
   function( cat, u )
     
-    return UniqueMorphism( cat, Range( u ), Source( u ) );
+    return UniqueMorphism( cat, Target( u ), Source( u ) );
     
 end : CategoryFilter := IsThinCategory );
 
@@ -376,7 +376,7 @@ AddDerivationToCAP( InternalHomOnMorphisms,
         
   function( cat, alpha, beta )
         
-    return UniqueMorphism( cat, InternalHomOnObjects( cat, Range( alpha ), Source( beta ) ), InternalHomOnObjects( cat, Source( alpha ), Range( beta ) ) );
+    return UniqueMorphism( cat, InternalHomOnObjects( cat, Target( alpha ), Source( beta ) ), InternalHomOnObjects( cat, Source( alpha ), Target( beta ) ) );
     
 end : CategoryFilter := IsThinCategory );
 
@@ -388,7 +388,7 @@ AddDerivationToCAP( InternalCoHomOnMorphisms,
         
   function( cat, alpha, beta )
         
-    return UniqueMorphism( cat, InternalCoHomOnObjects( cat, Source( alpha ), Range( beta ) ), InternalCoHomOnObjects( cat, Range( alpha ), Source( beta ) ) );
+    return UniqueMorphism( cat, InternalCoHomOnObjects( cat, Source( alpha ), Target( beta ) ), InternalCoHomOnObjects( cat, Target( alpha ), Source( beta ) ) );
     
 end : CategoryFilter := IsThinCategory );
 

@@ -34,7 +34,7 @@ InstallOtherMethod( UnderlyingCapTwoCategoryCell,
     
     values := ValuesOfCoPreSheaf( F );
     
-    return CapFunctor( Source( coPSh ), values[1], values[2], Range( coPSh ) );
+    return CapFunctor( Source( coPSh ), values[1], values[2], Target( coPSh ) );
     
 end );
 
@@ -68,7 +68,7 @@ InstallMethod( ApplyObjectInCoPreSheafCategoryToMorphism,
     return FunctorMorphismOperation( UnderlyingCapTwoCategoryCell( coPSh, F ) )(
                    ApplyObjectInCoPreSheafCategoryToObject( coPSh, F, Source( morB ) ),
                    morB,
-                   ApplyObjectInCoPreSheafCategoryToObject( coPSh, F, Range( morB ) ) );
+                   ApplyObjectInCoPreSheafCategoryToObject( coPSh, F, Target( morB ) ) );
     
 end );
 
@@ -158,7 +158,7 @@ InstallOtherMethodForCompilerForCAP( CreateCoPreSheafByValues,
     
     return CreateCapCategoryObjectWithAttributes( coPSh,
                    Source, Source( coPSh ),
-                   Range, Range( coPSh ),
+                   Range, Target( coPSh ),
                    ValuesOfCoPreSheaf, values_of_copresheaf );
     
 end );
@@ -290,7 +290,7 @@ InstallMethod( CreateCoPreSheaf,
         local source, target;
         
         source := VertexIndex( UnderlyingVertex( Source( morphisms[m] ) ) );
-        target := VertexIndex( UnderlyingVertex( Range( morphisms[m] ) ) );
+        target := VertexIndex( UnderlyingVertex( Target( morphisms[m] ) ) );
         
         if IsHomalgMatrix( matrices[m] ) then
             m := matrices[m];
@@ -357,7 +357,7 @@ InstallOtherMethodForCompilerForCAP( CreateCoPreSheafMorphism,
     return CreateCoPreSheafMorphism( coPSh,
                    CreateCoPreSheaf( Source( eta ) ),
                    { source, objB_index, range } -> NaturalTransformationOperation( eta )( source, objs[objB_index], range ),
-                   CreateCoPreSheaf( Range( eta ) ) );
+                   CreateCoPreSheaf( Target( eta ) ) );
     
 end );
 
@@ -404,7 +404,7 @@ InstallMethod( CreateCoPreSheafMorphism,
     
     if not IsEmpty( e ) and IsHomalgMatrix( e[1] ) then
         
-        kmat := Range( U );
+        kmat := Target( U );
         
         e := List( e, mat -> mat / kmat );
         
@@ -554,7 +554,7 @@ InstallMethodWithCache( CoPreSheaves,
               : FinalizeCategory := false );
     
     SetSource( coPSh, B );
-    SetRange( coPSh, D );
+    SetTarget( coPSh, D );
     
     SetSetOfObjects( coPSh, SetOfObjects( B ) );
     SetSetOfGeneratingMorphisms( coPSh, SetOfGeneratingMorphisms( B ) );
@@ -764,7 +764,7 @@ InstallMethod( ViewString,
   function ( F )
     local algebroid, vertices, arrows, v_dim, v_string, a_dim, a_string, string;
     
-    if not (IsMatrixCategory( Range( CapCategory( F ) ) ) or IsCategoryOfRows( Range( CapCategory( F ) ) )) then
+    if not (IsMatrixCategory( Target( CapCategory( F ) ) ) or IsCategoryOfRows( Target( CapCategory( F ) ) )) then
         TryNextMethod();
     fi;
     
@@ -790,7 +790,7 @@ InstallMethod( ViewString,
       
     fi;
     
-    a_dim := List( ValuesOfCoPreSheaf( F )[2], m -> [ ObjectDatum( Source( m ) ), ObjectDatum( Range( m ) ) ] );
+    a_dim := List( ValuesOfCoPreSheaf( F )[2], m -> [ ObjectDatum( Source( m ) ), ObjectDatum( Target( m ) ) ] );
     
     a_string := ListN( arrows, a_dim,
                   { arrow, dim } -> Concatenation(
@@ -852,7 +852,7 @@ InstallMethod( ViewString,
   function ( eta )
     local vertices, s_dim, r_dim, string;
     
-    if not (IsMatrixCategory( Range( CapCategory( eta ) ) ) or IsCategoryOfRows( Range( CapCategory( eta ) ) )) then
+    if not (IsMatrixCategory( Target( CapCategory( eta ) ) ) or IsCategoryOfRows( Target( CapCategory( eta ) ) )) then
         TryNextMethod();
     fi;
     
@@ -860,7 +860,7 @@ InstallMethod( ViewString,
      
     s_dim := List( ValuesOfCoPreSheaf( Source( eta ) )[1], ObjectDatum );
     
-    r_dim := List( ValuesOfCoPreSheaf( Range( eta ) )[1], ObjectDatum );
+    r_dim := List( ValuesOfCoPreSheaf( Target( eta ) )[1], ObjectDatum );
    
     string := ListN( vertices, s_dim, r_dim,
                 { vertex, s, r } ->
@@ -984,7 +984,7 @@ InstallMethod( LaTeXOutput,
                 "\\xrightarrow{",
                 datum,
                 "}",
-                LaTeXOutput( Range( eta ) )
+                LaTeXOutput( Target( eta ) )
               );
     
     fi;

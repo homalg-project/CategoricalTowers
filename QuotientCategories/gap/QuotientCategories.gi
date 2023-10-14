@@ -294,7 +294,7 @@ InstallMethod( QuotientCategory,
         AddMultiplyWithElementOfCommutativeRingForMorphisms( quotient_cat,
           function( quotient_cat, r, phi )
             
-            return MorphismConstructor( quotient_cat, Source( phi ), MultiplyWithElementOfCommutativeRingForMorphisms( UnderlyingCategory( quotient_cat ), r, UnderlyingCell( phi ) ), Range( phi ) );
+            return MorphismConstructor( quotient_cat, Source( phi ), MultiplyWithElementOfCommutativeRingForMorphisms( UnderlyingCategory( quotient_cat ), r, UnderlyingCell( phi ) ), Target( phi ) );
             
         end );
     
@@ -330,7 +330,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
             function( quotient_cat, S, R, i )
                 local alpha;
                 alpha := RandomMorphismWithFixedSourceAndRangeByInteger( UnderlyingCategory( quotient_cat ), UnderlyingCell( S ), UnderlyingCell( R ), i );
-                return MorphismConstructor( quotient_cat,  ObjectConstructor( quotient_cat, Source( alpha ) ), alpha, ObjectConstructor( quotient_cat, Range( alpha ) ) );
+                return MorphismConstructor( quotient_cat,  ObjectConstructor( quotient_cat, Source( alpha ) ), alpha, ObjectConstructor( quotient_cat, Target( alpha ) ) );
         end );
         
     fi;
@@ -341,7 +341,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
             function( quotient_cat, S, i )
                 local alpha;
                 alpha := RandomMorphismWithFixedSourceByInteger( UnderlyingCategory( quotient_cat ), UnderlyingCell( S ), i );
-                return MorphismConstructor( quotient_cat,  S, alpha, ObjectConstructor( quotient_cat, Range( alpha ) ) );
+                return MorphismConstructor( quotient_cat,  S, alpha, ObjectConstructor( quotient_cat, Target( alpha ) ) );
         end );
         
     fi;
@@ -363,7 +363,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
             function( quotient_cat, i )
                 local alpha;
                 alpha := RandomMorphismByInteger( UnderlyingCategory( quotient_cat ), i );
-                return MorphismConstructor( quotient_cat,  ObjectConstructor( quotient_cat, Source( alpha ) ), alpha, ObjectConstructor( quotient_cat, Range( alpha ) ) );
+                return MorphismConstructor( quotient_cat,  ObjectConstructor( quotient_cat, Source( alpha ) ), alpha, ObjectConstructor( quotient_cat, Target( alpha ) ) );
         end );
     fi;
     
@@ -382,7 +382,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
             function( quotient_cat, S, R, L )
                 local alpha;
                 alpha := RandomMorphismWithFixedSourceAndRangeByList( UnderlyingCategory( quotient_cat ), UnderlyingCell( S ), UnderlyingCell( R ), L );
-                return MorphismConstructor( quotient_cat,  ObjectConstructor( quotient_cat, Source( alpha ) ), alpha, ObjectConstructor( quotient_cat, Range( alpha ) ) );
+                return MorphismConstructor( quotient_cat,  ObjectConstructor( quotient_cat, Source( alpha ) ), alpha, ObjectConstructor( quotient_cat, Target( alpha ) ) );
         end );
         
     fi;
@@ -393,7 +393,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
             function( quotient_cat, S, L )
                 local alpha;
                 alpha := RandomMorphismWithFixedSourceByList( UnderlyingCategory( quotient_cat ), UnderlyingCell( S ), L );
-                return MorphismConstructor( quotient_cat,  S, alpha, ObjectConstructor( quotient_cat, Range( alpha ) ) );
+                return MorphismConstructor( quotient_cat,  S, alpha, ObjectConstructor( quotient_cat, Target( alpha ) ) );
         end );
         
     fi;
@@ -415,7 +415,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
             function( quotient_cat, L )
                 local alpha;
                 alpha := RandomMorphismByList( UnderlyingCategory( quotient_cat ), L );
-                return MorphismConstructor( quotient_cat,  ObjectConstructor( quotient_cat, Source( alpha ) ), alpha, ObjectConstructor( quotient_cat, Range( alpha ) ) );
+                return MorphismConstructor( quotient_cat,  ObjectConstructor( quotient_cat, Source( alpha ) ), alpha, ObjectConstructor( quotient_cat, Target( alpha ) ) );
         end );
         
     fi;
@@ -440,7 +440,7 @@ InstallOtherMethod( \/,
 InstallOtherMethod( \/,
             [ IsCapCategoryMorphism, IsQuotientCapCategory ],
   
-  { alpha, quotient_cat } -> MorphismConstructor( quotient_cat, Source( alpha ) / quotient_cat, alpha, Range( alpha ) / quotient_cat )
+  { alpha, quotient_cat } -> MorphismConstructor( quotient_cat, Source( alpha ) / quotient_cat, alpha, Target( alpha ) / quotient_cat )
 );
 
 ##################################

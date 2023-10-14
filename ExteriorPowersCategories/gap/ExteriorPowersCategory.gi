@@ -28,7 +28,7 @@ InstallMethod( NumberOfDirectSummands,
         
   function ( phi )
     
-    return NumberOfDirectSummands( Source( phi ), Range( phi ) );
+    return NumberOfDirectSummands( Source( phi ), Target( phi ) );
     
 end );
 
@@ -54,7 +54,7 @@ InstallMethod( RewriteMorphism,
     n := Combinations( [ 1 .. l ], n );
     
     S := UnderlyingCell( Source( phi ) );
-    T := UnderlyingCell( Range( phi ) );
+    T := UnderlyingCell( Target( phi ) );
     
     zero := ZeroMorphism( S, T );
     
@@ -212,7 +212,7 @@ InstallMethod( \*,
     return MorphismInExteriorPowersCategory(
                    R * Source( phi ),
                    List( UnderlyingCell( phi ), a -> R * a ),
-                   R * Range( phi ) );
+                   R * Target( phi ) );
     
 end );
 
@@ -286,12 +286,12 @@ InstallMethod( ExteriorPowersCategory,
         local s, t, L;
         
         s := UnderlyingCell( Source( phi ) );
-        t := UnderlyingCell( Range( phi ) );
+        t := UnderlyingCell( Target( phi ) );
         
         L := UnderlyingCell( phi );
         
         return Length( L ) = NumberOfDirectSummands( phi ) and
-               ForAll( L, mor -> IsEqualForObjects( Source( mor ), s ) and IsEqualForObjects( Range( mor ), t ) ) and
+               ForAll( L, mor -> IsEqualForObjects( Source( mor ), s ) and IsEqualForObjects( Target( mor ), t ) ) and
                ForAll( L, IsWellDefinedForMorphisms );
         
     end );
@@ -349,7 +349,7 @@ InstallMethod( ExteriorPowersCategory,
         
         L := [ UnderlyingCell( phi ) ] * rewritten_psi[3];     ## block matrix multiplication in GAP
         
-        return MorphismInExteriorPowersCategory( Source( phi ), L[1], Range( psi ) );
+        return MorphismInExteriorPowersCategory( Source( phi ), L[1], Target( psi ) );
         
     end );
     
@@ -422,7 +422,7 @@ InstallMethod( ViewObj,
     Print( "<A degree ", DegreeOfMorphism( mor ),
            " morphism of relatively free graded modules over the exterior algebra of rank 2^",
            CapCategory( mor )!.power, " with socles degrees ", DegreeOfObject( Source( mor ) ),
-           " and ", DegreeOfObject( Range( mor ) ), ">" );
+           " and ", DegreeOfObject( Target( mor ) ), ">" );
     
 end );
 
@@ -442,6 +442,6 @@ InstallMethod( Display,
     Print( "A dgree ", DegreeOfMorphism( mor ),
            " morphism relatively free graded modules over the exterior algebra of rank 2^",
            CapCategory( mor )!.power, " with socles degrees ", DegreeOfObject( Source( mor ) ),
-           " and ", DegreeOfObject( Range( mor ) ) );
+           " and ", DegreeOfObject( Target( mor ) ) );
     
 end );

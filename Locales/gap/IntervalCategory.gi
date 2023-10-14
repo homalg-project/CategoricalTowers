@@ -83,7 +83,7 @@ InstallGlobalFunction( "CreateIntervalCategory",
     AddIsWellDefinedForMorphisms( IntervalCategory,
       function( cat, mor )
         
-        return not ( IsTerminal( cat, Source( mor ) ) and IsInitial( cat, Range( mor ) ) );
+        return not ( IsTerminal( cat, Source( mor ) ) and IsInitial( cat, Target( mor ) ) );
         
     end );
     
@@ -427,7 +427,7 @@ InstallMethod( PrintString,
         else
             Error( "ObjectDatum( obj ) is not in [ false, true ]\n" );
         fi;
-    elif IsInitial( Source( mor ) ) and IsTerminal( Range( mor ) ) then
+    elif IsInitial( Source( mor ) ) and IsTerminal( Target( mor ) ) then
         return "(⊥)-[(⇒)]->(⊤)";
     else
         Error( "the morphism <mor> of the interval category is not well-defined\n" );

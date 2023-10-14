@@ -25,7 +25,7 @@ P := LazyCategory( P : show_evaluation := false );
 #! LazyCategory( Rows( Q[x,y] ) )
 I := I / P; SetLabel( I, "I" ); SetLabel( Source( I ), "R^i" );
 #! <An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>
-R := Range( I ); SetLabel( R, "R" );
+R := Target( I ); SetLabel( R, "R" );
 #! <An evaluated object in LazyCategory( Rows( Q[x,y] ) )>
 J := J / P; SetLabel( J, "J" ); SetLabel( Source( J ), "R^j" );
 #! <An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>

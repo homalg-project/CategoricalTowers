@@ -58,7 +58,7 @@ MorphismBetweenCoproducts := rec(
         
         j := pair[1][1 + i];
         
-        if not IsEqualForObjects( cat, range_diagram[1 + j], Range( pair[2][1 + i] ) ) then
+        if not IsEqualForObjects( cat, range_diagram[1 + j], Target( pair[2][1 + i] ) ) then
             
             return [ false, Concatenation( "the range of the morphism with index ", String(i), " must be equal to the object with index ", String(j), " in the range diagram" ) ];
             
@@ -145,7 +145,7 @@ MorphismBetweenDirectProducts := rec(
         
         i := pair[1][1 + j];
         
-        if not IsEqualForObjects( cat, source_diagram[1 + i], Range( pair[2][1 + j] ) ) then
+        if not IsEqualForObjects( cat, source_diagram[1 + i], Target( pair[2][1 + j] ) ) then
             
             return [ false, Concatenation( "the range of the morphism with index ", String(j), " must be equal to the object with index ", String(i), " in the source diagram" ) ];
             
@@ -202,7 +202,7 @@ RelativeLift := rec(
   pre_function := function( category, beta, alpha, nu )
     local value;
     
-    value := IsEqualForObjects( Range( beta ), Range( alpha ) );
+    value := IsEqualForObjects( Target( beta ), Target( alpha ) );
     
     if value = fail then
         
@@ -214,7 +214,7 @@ RelativeLift := rec(
         
     fi;
     
-    value := IsEqualForObjects( Range( beta ), Range( nu ) );
+    value := IsEqualForObjects( Target( beta ), Target( nu ) );
     
     if value = fail then
         
@@ -349,7 +349,7 @@ BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory := rec(
 
     nr_columns_left := Length( left_coeffs[1] );
 
-    if not ForAll( [ 1 .. nr_columns_left ], j -> ForAll( left_coeffs, x -> IsEqualForObjects( cat, Range( x[j] ), Range( left_coeffs[1][j] ) ) <> false ) ) then
+    if not ForAll( [ 1 .. nr_columns_left ], j -> ForAll( left_coeffs, x -> IsEqualForObjects( cat, Target( x[j] ), Target( left_coeffs[1][j] ) ) <> false ) ) then
         return [ false, "all ranges in a column of the left coefficients must be equal" ];
     fi;
 

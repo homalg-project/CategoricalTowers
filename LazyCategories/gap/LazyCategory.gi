@@ -313,7 +313,7 @@ InstallMethodWithCache( AsMorphismInLazyCategory,
     return AsMorphismInLazyCategory(
                    AsObjectInLazyCategory( D, Source( morphism ) ),
                    morphism,
-                   AsObjectInLazyCategory( D, Range( morphism ) ) );
+                   AsObjectInLazyCategory( D, Target( morphism ) ) );
     
 end );
 
@@ -647,13 +647,13 @@ InstallMethod( LazyCategory,
                 
                 if IsEqualToZeroMorphism( D, phi ) or IsEqualToZeroMorphism( D, psi ) then
                     
-                    return ZeroMorphism( D, Source( phi ), Range( psi ) );
+                    return ZeroMorphism( D, Source( phi ), Target( psi ) );
                     
                 fi;
                 
             fi;
             
-            return MorphismConstructor( D, Source( phi ), Pair( "PreCompose", [ D, phi, psi ] ), Range( psi ) );
+            return MorphismConstructor( D, Source( phi ), Pair( "PreCompose", [ D, phi, psi ] ), Target( psi ) );
             
         end );
         
@@ -738,7 +738,7 @@ InstallMethod( LazyCategory,
                 fi;
                 
                 if Length( ess ) = 1 then
-                    return Range( ess[1] );
+                    return Target( ess[1] );
                 fi;
                 
                 return ObjectConstructor( D, Pair( "Pushout", [ diagram ] ) );
@@ -764,14 +764,14 @@ InstallMethod( LazyCategory,
                     mor := diagram[pos[1]];
                     
                     if k = pos[1] then
-                        return IdentityMorphism( D, Range( mor ) );
+                        return IdentityMorphism( D, Target( mor ) );
                     fi;
                     
                     return mor;
                     
                 fi;
                 
-                return MorphismConstructor( D, Range( diagram[k] ), Pair( "InjectionOfCofactorOfPushoutWithGivenPushout", [ diagram, k, I ] ), I );
+                return MorphismConstructor( D, Target( diagram[k] ), Pair( "InjectionOfCofactorOfPushoutWithGivenPushout", [ diagram, k, I ] ), I );
                 
             end );
             
@@ -915,7 +915,7 @@ InstallMethod( LazyCategory,
             
         fi;
         
-        if not IsEqualForObjects( C, EvaluatedCell( Range( phi ) ), Range( EvaluatedCell( phi ) ) ) then
+        if not IsEqualForObjects( C, EvaluatedCell( Target( phi ) ), Target( EvaluatedCell( phi ) ) ) then
             
             return false;
             
@@ -979,7 +979,7 @@ InstallMethod( LazyCategory,
         AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
           function( D, r, phi )
             
-            return MorphismConstructor( D, Source( phi ), Pair( "MultiplyWithElementOfCommutativeRingForMorphisms", [ r, phi ] ), Range( phi ) );
+            return MorphismConstructor( D, Source( phi ), Pair( "MultiplyWithElementOfCommutativeRingForMorphisms", [ r, phi ] ), Target( phi ) );
             
         end );
         

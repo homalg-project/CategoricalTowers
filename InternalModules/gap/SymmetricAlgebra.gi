@@ -40,7 +40,7 @@ InstallMethod( SymmetricAlgebraAsZFunction,
     sym :=
       function ( n )
         if n > 1 then
-            return Range( ExteriorOrSymmetricAlgebraMultiplication( C, V, n - 1, 1, "symmetric" ) );
+            return Target( ExteriorOrSymmetricAlgebraMultiplication( C, V, n - 1, 1, "symmetric" ) );
         elif n = 1 then
             return V;
         elif n = 0 then

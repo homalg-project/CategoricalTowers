@@ -29,7 +29,7 @@ IsWellDefined( PreCompose( alpha, beta ) );
 #! true
 IsZeroForMorphisms( pre );
 #! false
-ze := ZeroMorphism( Source( pre ), Range( pre ) );;
+ze := ZeroMorphism( Source( pre ), Target( pre ) );;
 IsCongruentForMorphisms( pre + ze, pre );
 #! true
 IsCongruentForMorphisms( pre + pre, pre );

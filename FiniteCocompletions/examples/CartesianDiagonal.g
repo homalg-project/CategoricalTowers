@@ -52,7 +52,7 @@ delta := hom_a_aa[1];
 #!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
 Source( delta ) = a;
 #! true
-Range( delta ) = aa;
+Target( delta ) = aa;
 #! true
 IsOne( ComponentOfMorphismIntoDirectProduct( delta, [ a, a ], 1 ) );
 #! true

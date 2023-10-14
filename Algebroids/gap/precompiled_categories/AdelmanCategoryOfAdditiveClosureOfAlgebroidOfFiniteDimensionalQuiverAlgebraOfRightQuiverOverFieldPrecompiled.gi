@@ -91,7 +91,7 @@ function ( cat_1, arg2_1 )
         end );
     hoisted_39_1 := List( deduped_65_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
-                    return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                    return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                 end );
         end );
     hoisted_38_1 := List( deduped_65_1, function ( logic_new_func_list_2 )
@@ -136,7 +136,7 @@ function ( cat_1, arg2_1 )
         end );
     deduped_25_1 := List( deduped_64_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
-                    return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                    return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                 end );
         end );
     deduped_24_1 := List( deduped_64_1, function ( logic_new_func_list_2 )
@@ -229,7 +229,7 @@ function ( cat_1, arg2_1 )
         end );
     hoisted_3_1 := List( deduped_68_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
-                    return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                    return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                 end );
         end );
     hoisted_1_1 := List( deduped_68_1, function ( logic_new_func_list_2 )
@@ -625,7 +625,7 @@ function ( cat_1, arg2_1, arg3_1 )
         end );
     hoisted_45_1 := List( deduped_82_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
-                    return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                    return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                 end );
         end );
     hoisted_44_1 := List( deduped_82_1, function ( logic_new_func_list_2 )
@@ -674,17 +674,17 @@ function ( cat_1, arg2_1, arg3_1 )
                     end ) ] ) ] );
     deduped_32_1 := UnionOfRowsListList( deduped_57_1, [ UnionOfColumnsListList( deduped_66_1, [ List( deduped_80_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
-                                return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                                return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                             end );
                     end ), ListWithIdenticalEntries( deduped_66_1, List( [ 1 .. deduped_62_1 ], function ( j_2 )
                           return deduped_63_1[j_2];
                       end ) ) ] ), UnionOfColumnsListList( deduped_67_1, [ List( deduped_88_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
-                                return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                                return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                             end );
                     end ), List( deduped_81_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
-                                return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                                return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                             end );
                     end ) ] ) ] );
     deduped_30_1 := UnionOfRowsListList( deduped_57_1, [ UnionOfColumnsListList( deduped_66_1, [ List( deduped_80_1, function ( logic_new_func_new_row_2 )
@@ -1079,7 +1079,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_111_1 := Sum( [ deduped_134_1, deduped_122_1 ] );
     deduped_110_1 := List( deduped_161_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
-                    return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                    return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                 end );
         end );
     deduped_109_1 := List( deduped_161_1, function ( logic_new_func_list_2 )
@@ -1089,7 +1089,7 @@ function ( cat_1, arg2_1, arg3_1 )
         end );
     deduped_108_1 := List( deduped_159_1, function ( logic_new_func_new_row_2 )
             return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
-                    return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                    return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                 end );
         end );
     deduped_107_1 := List( deduped_159_1, function ( logic_new_func_new_row_2 )
@@ -1196,13 +1196,13 @@ function ( cat_1, arg2_1, arg3_1 )
                     end ), ListWithIdenticalEntries( deduped_137_1, deduped_115_1 ) ] ), UnionOfColumnsListList( deduped_133_1, [ deduped_156_1, deduped_150_1 ] ) ] );
     deduped_80_1 := UnionOfRowsListList( deduped_111_1, [ UnionOfColumnsListList( deduped_137_1, [ List( deduped_162_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
-                                return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                                return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                             end );
                     end ), ListWithIdenticalEntries( deduped_137_1, List( deduped_116_1, function ( j_2 )
                           return deduped_131_1[j_2];
                       end ) ) ] ), UnionOfColumnsListList( deduped_133_1, [ List( deduped_168_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
-                                return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                                return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                             end );
                     end ), deduped_110_1 ] ) ] );
     deduped_79_1 := UnionOfRowsListList( deduped_111_1, [ UnionOfColumnsListList( deduped_137_1, [ List( deduped_162_1, function ( logic_new_func_new_row_2 )
@@ -1384,13 +1384,13 @@ function ( cat_1, arg2_1, arg3_1 )
                     end ), ListWithIdenticalEntries( deduped_129_1, deduped_112_1 ) ] ), UnionOfColumnsListList( deduped_130_1, [ deduped_160_1, deduped_148_1 ] ) ] );
     deduped_32_1 := UnionOfRowsListList( deduped_106_1, [ UnionOfColumnsListList( deduped_129_1, [ List( deduped_158_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
-                                return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                                return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                             end );
                     end ), ListWithIdenticalEntries( deduped_129_1, List( deduped_117_1, function ( j_2 )
                           return deduped_125_1[j_2];
                       end ) ) ] ), UnionOfColumnsListList( deduped_130_1, [ List( deduped_169_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
-                                return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                                return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                             end );
                     end ), deduped_108_1 ] ) ] );
     deduped_30_1 := UnionOfRowsListList( deduped_106_1, [ UnionOfColumnsListList( deduped_129_1, [ List( deduped_158_1, function ( logic_new_func_new_row_2 )

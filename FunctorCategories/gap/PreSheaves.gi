@@ -19,7 +19,7 @@ InstallOtherMethodForCompilerForCAP( CreatePreSheafByValues,
     
     return CreateCapCategoryObjectWithAttributes( PSh,
                    Source, Source( PSh ),
-                   Range, Range( PSh ),
+                   Range, Target( PSh ),
                    ValuesOfPreSheaf, values_of_presheaf );
     
 end );
@@ -166,7 +166,7 @@ InstallMethod( CreatePreSheaf,
         local source, target;
         
         source := VertexIndex( UnderlyingVertex( Source( morphisms[m] ) ) );
-        target := VertexIndex( UnderlyingVertex( Range( morphisms[m] ) ) );
+        target := VertexIndex( UnderlyingVertex( Target( morphisms[m] ) ) );
         
         if IsHomalgMatrix( matrices[m] ) then
             m := matrices[m];
@@ -233,7 +233,7 @@ InstallOtherMethodForCompilerForCAP( CreatePreSheafMorphism,
     return CreatePreSheafMorphismByFunction( PSh,
                    CreatePreSheaf( Source( eta ) ),
                    { source, obj_index, range } -> NaturalTransformationOperation( eta )( source, objsB[obj_index], range ),
-                   CreatePreSheaf( Range( eta ) ) );
+                   CreatePreSheaf( Target( eta ) ) );
     
 end );
 
@@ -290,7 +290,7 @@ InstallMethod( CreatePreSheafMorphism,
     
     if not IsEmpty( e ) and IsHomalgMatrix( e[1] ) then
         
-        kmat := Range( U );
+        kmat := Target( U );
         
         e := List( e, mat -> mat / kmat );
         
@@ -399,7 +399,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 L := NTuple( number_of_arguments, input_arguments... );
                 
                 ## due to issue https://github.com/homalg-project/CAP_project/issues/802
-                ## the result is not saved if operation_name is called with Range( cat ) as first argument
+                ## the result is not saved if operation_name is called with Target( cat ) as first argument
                 
                 if IsObjectInPreSheafCategory( L[2] ) then
                     return ForAll( ValuesOfPreSheaf( L[2] )[1], object -> operation_name( object ) );
@@ -438,7 +438,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               function ( input_arguments... )
                 local D, objD, morD, presheaf_on_objects, presheaf_on_morphisms;
                 
-                D := Range( cat );
+                D := Target( cat );
                 
                 objD := operation_name( D );
                 
@@ -462,7 +462,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               function ( input_arguments... )
                 local D, i_arg, etas, presheaf_on_objects, mors, presheaf_on_morphisms;
                 
-                D := Range( cat );
+                D := Target( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
@@ -483,9 +483,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     #          R(t(m)) --R(m)-> R(s(m))
                     
                     l := List( etas, eta ->
-                               [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Range( morB ) )
+                               [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Target( morB ) )
                                  ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Source( eta ), morB )
-                                 ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Range( eta ), morB )
+                                 ValuesOfPreSheaf( Target( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Target( eta ), morB )
                                  ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Source( morB ) )
                                  ] );
                     
@@ -509,7 +509,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               function ( input_arguments... )
                 local D, i_arg, object, etas, presheaf_on_objects, mors, presheaf_on_morphisms;
                 
-                D := Range( cat );
+                D := Target( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
@@ -531,9 +531,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     #          R(t(m)) --R(m)-> R(s(m))
                     
                     l := List( etas, eta ->
-                               [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Range( morB ) )
+                               [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Target( morB ) )
                                  ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Source( eta ), morB )
-                                 ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Range( eta ), morB )
+                                 ValuesOfPreSheaf( Target( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Target( eta ), morB )
                                  ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Source( morB ) )
                                  ] );
                     
@@ -557,7 +557,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               function ( input_arguments... )
                 local D, i_arg, Fs, presheaf_on_objects, presheaf_on_morphisms;
                 
-                D := Range( cat );
+                D := Target( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
@@ -586,7 +586,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               function ( input_arguments... )
                 local D, i_arg, eta, presheaf_on_objects, mors, presheaf_on_morphisms;
                 
-                D := Range( cat );
+                D := Target( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
@@ -606,9 +606,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     #             v                v
                     #          R(t(m)) --R(m)-> R(s(m))
                     
-                    L := [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Range( morB ) )
+                    L := [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Target( morB ) )
                            ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Source( eta ), morB )
-                           ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Range( eta ), morB )
+                           ValuesOfPreSheaf( Target( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, Target( eta ), morB )
                            ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, eta, Source( morB ) )
                            ];
                     
@@ -643,7 +643,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           function ( input_arguments... )
             local D, i_arg, natural_transformation_on_objects;
             
-            D := Range( cat );
+            D := Target( cat );
             
             i_arg := NTuple( number_of_arguments, input_arguments... );
             
@@ -773,12 +773,12 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     SetSetOfGeneratingMorphisms( PSh, generating_morphisms );
     
     SetSource( PSh, B );
-    SetRange( PSh, D );
+    SetTarget( PSh, D );
     SetOppositeOfSource( PSh, B_op );
     
     PSh!.compiler_hints.category_attribute_names :=
       [ "Source",
-        "Range",
+        "Target",
         "SetOfObjects",
         "SetOfGeneratingMorphisms",
         "OppositeOfSource",
@@ -791,7 +791,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           function ( PSh, eta, rho )
             local D;
             
-            D := Range( PSh );
+            D := Target( PSh );
             
             return ForAll( SetOfObjects( Source( PSh ) ), object -> IsLiftableAlongMonomorphism( D, eta( object ), rho( object ) ) );
             
@@ -806,7 +806,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           function ( PSh, eta, rho )
             local D;
             
-            D := Range( PSh );
+            D := Target( PSh );
             
             return ForAll( SetOfObjects( Source( PSh ) ), object -> IsColiftableAlongEpimorphism( D, eta( object ), rho( object ) ) );
             
@@ -853,7 +853,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             local B, D, eta_o_vals, natural_transformation_on_objects;
             
             B := Source( PSh );
-            D := Range( PSh );
+            D := Target( PSh );
             
             eta_o_vals := ValuesOnAllObjects( eta );
             
@@ -864,7 +864,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 
             end;
             
-            return CreatePreSheafMorphismByFunction( PSh, Source( eta ), natural_transformation_on_objects, Range( eta ) );
+            return CreatePreSheafMorphismByFunction( PSh, Source( eta ), natural_transformation_on_objects, Target( eta ) );
             
         end );
         
@@ -881,10 +881,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           function ( PSh, eta )
             local D, F, G;
             
-            D := Range( PSh );
+            D := Target( PSh );
             
             F := Source( eta );
-            G := Range( eta );
+            G := Target( eta );
             
             return
               ForAll( objects, o -> IsWellDefinedForMorphisms( D, eta( o ) ) ) and
@@ -896,11 +896,11 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               ForAll( generating_morphisms,
                       function ( m )
                          return
-                           IsEqualForObjects( D, Range( F( m ) ), Source( eta( Source( m ) ) ) ) and
-                           IsEqualForObjects( D, Range( eta( Range( m ) ) ), Source( G( m ) ) ) and
+                           IsEqualForObjects( D, Target( F( m ) ), Source( eta( Source( m ) ) ) ) and
+                           IsEqualForObjects( D, Target( eta( Target( m ) ) ), Source( G( m ) ) ) and
                            IsEqualForMorphisms( D,
                                    PreCompose( D, F( m ), eta( Source( m ) ) ),
-                                   PreCompose( D, eta( Range( m ) ), G( m ) ) );
+                                   PreCompose( D, eta( Target( m ) ), G( m ) ) );
                      end );
             
         end );
@@ -911,15 +911,15 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               function ( PSh, F )
                 local D;
                 
-                D := Range( PSh );
+                D := Target( PSh );
                 
                 if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
                     return false;
                 elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Range( m ) ), Source( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Range( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
                     return false;
                 fi;
                 
@@ -935,15 +935,15 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               function ( PSh, F )
                 local D;
                 
-                D := Range( PSh );
+                D := Target( PSh );
                 
                 if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
                     return false;
                 elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Range( m ) ), Source( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Range( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
                     return false;
                 fi;
                 
@@ -960,15 +960,15 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 local B, D, pairs;
 
                 B := Source( PSh );
-                D := Range( PSh );
+                D := Target( PSh );
 
                 if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
                     return false;
                 elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Range( m ) ), Source( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Range( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
                     return false;
                 fi;
 
@@ -987,7 +987,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               function ( PSh, F )
                 local V, objects, generating_morphisms, relations, on_mors, is_equal;
                 
-                V := Range( PSh );
+                V := Target( PSh );
                 
                 objects := SetOfObjects( B );
                 generating_morphisms := SetOfGeneratingMorphisms( B );
@@ -996,9 +996,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     return false;
                 elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( V, F( m ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( V, F( Range( m ) ), Source( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( V, F( Target( m ) ), Source( F( m ) ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( V, F( Source( m ) ), Range( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( V, F( Source( m ) ), Target( F( m ) ) ) ) then
                     return false;
                 fi;
                 
@@ -1033,7 +1033,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           function ( PSh, F, G )
             local D;
             
-            D := Range( PSh );
+            D := Target( PSh );
             
             return ForAll( objects, o -> IsEqualForObjects( D, F( o ), G( o ) ) ) and
                    ForAll( generating_morphisms, m -> IsEqualForMorphisms( D, F( m ), G( m ) ) );
@@ -1044,7 +1044,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           function ( PSh, eta, epsilon )
             local D;
             
-            D := Range( PSh );
+            D := Target( PSh );
             
             return ForAll( objects, o -> IsEqualForMorphisms( D, eta( o ), epsilon( o ) ) );
             
@@ -1054,7 +1054,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           function ( PSh, eta, epsilon )
             local D;
             
-            D := Range( PSh );
+            D := Target( PSh );
             
             return ForAll( objects, o -> IsCongruentForMorphisms( D, eta( o ), epsilon( o ) ) );
             
@@ -1079,7 +1079,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             ##
             AddDistinguishedObjectOfHomomorphismStructure( PSh,
-                    { PSh } -> DistinguishedObjectOfHomomorphismStructure( Range( PSh ) ) );
+                    { PSh } -> DistinguishedObjectOfHomomorphismStructure( Target( PSh ) ) );
             
             ##
             AddHomomorphismStructureOnObjects( PSh,
@@ -1100,13 +1100,13 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 local D, H, nr_objs, hom_diagram_source, hom_source, prjs_source, emb_source,
                       hom_diagram_range, hom_range, prjs_range, emb_range, mors, mor, eta_vals, rho_vals;
                 
-                D := Range( PSh );
+                D := Target( PSh );
                 
                 H := RangeCategoryOfHomomorphismStructure( PSh );
                 
                 nr_objs := DefiningTripleOfUnderlyingQuiver( Source( PSh ) )[1];
                 
-                hom_diagram_source := ExternalHomDiagram( PSh, Range( eta ), Source( rho ) );
+                hom_diagram_source := ExternalHomDiagram( PSh, Target( eta ), Source( rho ) );
                 
                 hom_source := Limit( H,
                                      hom_diagram_source[1],
@@ -1123,7 +1123,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                       hom_source,
                                       prjs_source );
                 
-                hom_diagram_range := ExternalHomDiagram( PSh, Source( eta ), Range( rho ) );
+                hom_diagram_range := ExternalHomDiagram( PSh, Source( eta ), Target( rho ) );
                 
                 hom_range := Limit( H,
                                     hom_diagram_range[1],
@@ -1166,7 +1166,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               function ( PSh, eta )
                 local D, H, mors, mor, hom_diagram, hom, nr_objs, prjs, emb;
                 
-                D := Range( PSh );
+                D := Target( PSh );
                 
                 H := RangeCategoryOfHomomorphismStructure( PSh );
                 
@@ -1178,7 +1178,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                DistinguishedObjectOfHomomorphismStructure( PSh ),
                                mors );
                 
-                hom_diagram := ExternalHomDiagram( PSh, Source( eta ), Range( eta ) );
+                hom_diagram := ExternalHomDiagram( PSh, Source( eta ), Target( eta ) );
                 
                 hom := Limit( H,
                               hom_diagram[1],
@@ -1208,7 +1208,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               function ( PSh, F, G, iota )
                 local D, H, F_o_vals, G_o_vals, hom_diagram, nr_objs, etas;
                 
-                D := Range( PSh );
+                D := Target( PSh );
                 
                 H := RangeCategoryOfHomomorphismStructure( PSh );
                 
@@ -1273,9 +1273,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     
                     return EqualizerFunctorialWithGivenEqualizers( RangeCategoryOfHomomorphismStructure( PSh ),
                                    s,
-                                   ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma( PSh, Range( eta ), Source( rho ) )[2],
+                                   ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma( PSh, Target( eta ), Source( rho ) )[2],
                                    ExternalHomOnMorphismsEqualizerFunctorialDataUsingCoYonedaLemma( PSh, eta, rho ),
-                                   ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma( PSh, Source( eta ), Range( rho ) )[2],
+                                   ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma( PSh, Source( eta ), Target( rho ) )[2],
                                    r );
                     
                 end );
@@ -1285,7 +1285,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                   function ( PSh, eta )
                     local D, H, mors, distinguished_object, mor, hom_equalizer_diagram;
                     
-                    D := Range( PSh );
+                    D := Target( PSh );
                     
                     H := RangeCategoryOfHomomorphismStructure( PSh );
                     
@@ -1299,7 +1299,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                    distinguished_object,
                                    mors );
                     
-                    hom_equalizer_diagram := ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma( PSh, Source( eta ), Range( eta ) );
+                    hom_equalizer_diagram := ExternalHomOnObjectsEqualizerDataUsingCoYonedaLemma( PSh, Source( eta ), Target( eta ) );
                     
                     return UniversalMorphismIntoEqualizer( H,
                                    DirectProduct( H, hom_equalizer_diagram[1] ),
@@ -1315,7 +1315,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     local D, H, hom_equalizer_diagram, hom_F_V_G, emb, mor,
                           F_vals, F_lengths, nr_objs, hom_F_V_G_diagrams, hom_F_V_G_diagram_collected, hom_F_V_G_diagram, prjs, G_vals, etas;
                     
-                    D := Range( PSh );
+                    D := Target( PSh );
                     
                     H := RangeCategoryOfHomomorphismStructure( PSh );
                     
@@ -1421,7 +1421,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 return HomomorphismStructureOnMorphismsWithGivenObjects( PSh,
                                new_source,
                                DirectProductFunctorial( PSh,
-                                       [ Yoneda[2]( Yoneda[1]( Source( mor ) ), mor, Yoneda[1]( Range( mor ) ) ),
+                                       [ Yoneda[2]( Yoneda[1]( Source( mor ) ), mor, Yoneda[1]( Target( mor ) ) ),
                                          IdentityMorphism( PSh, F ) ] ),
                                IdentityMorphism( PSh, G ),
                                new_range );
@@ -1487,7 +1487,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 local B, sFinSets, objs, T, Yoneda, presheaf_morphism_on_objects;
                 
                 B := Source( PSh );
-                sFinSets := Range( PSh );
+                sFinSets := Target( PSh );
                 
                 objs := SetOfObjects( B );
                 
@@ -1613,7 +1613,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 local B, sFinSets, objs, T, Yoneda, presheaf_morphism_on_objects;
                 
                 B := Source( PSh );
-                sFinSets := Range( PSh );
+                sFinSets := Target( PSh );
                 
                 objs := SetOfObjects( B );
                 
@@ -1749,7 +1749,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           function ( PSh )
             local D, I, presheaf_on_objects, id_I, presheaf_on_morphisms;
             
-            D := Range( PSh );
+            D := Target( PSh );
             
             I := TensorUnit( D );
             
@@ -1767,7 +1767,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           function ( PSh, F, G )
             local D, F_o_vals, G_o_vals, presheaf_on_objects, F_m_vals, G_m_vals, presheaf_on_morphisms;
             
-            D := Range( PSh );
+            D := Target( PSh );
             
             F_o_vals := ValuesOfPreSheaf( F )[1];
             G_o_vals := ValuesOfPreSheaf( G )[1];
@@ -1817,7 +1817,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               return EpimorphismFromProjectiveCoverObject( F );
           fi;
           
-          D := Range( PSh );
+          D := Target( PSh );
           
           dec := ProjectiveCoverObjectDataOfPreSheaf( PSh, F );
           
@@ -1848,7 +1848,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           
           B := Source( PSh );
           
-          coPSh := CoPreSheaves( B, Range( PSh ) );
+          coPSh := CoPreSheaves( B, Target( PSh ) );
           
           NL := NakayamaLeftAdjointData( coPSh )[1];
           
@@ -1860,7 +1860,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           
           mono_coPSh := MonomorphismIntoInjectiveEnvelopeObject( coPSh, NL( F ) );
           
-          mono := NR_on_mors( NR_on_objs( Source( mono_coPSh ) ), mono_coPSh, NR_on_objs( Range( mono_coPSh ) ) );
+          mono := NR_on_mors( NR_on_objs( Source( mono_coPSh ) ), mono_coPSh, NR_on_objs( Target( mono_coPSh ) ) );
           
           #% CAP_JIT_DROP_NEXT_STATEMENT
           SetMonomorphismIntoInjectiveEnvelopeObject( F, mono );
@@ -1896,7 +1896,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           local A, D, vals_eta, vals_epi, N, P, G, tP, vals_tP, gens, ells, vals_P, vals_G, mu, nu, delta;
           
           A := Source( PSh );
-          D := Range( PSh );
+          D := Target( PSh );
           
           vals_eta := ValuesOnAllObjects( eta );
           vals_epi := ValuesOnAllObjects( epi );
@@ -1925,7 +1925,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     List( [ 1 .. Length( auxiliary_indices[i,j] ) ], s ->
                       PostComposeList( D, Concatenation( List( auxiliary_indices[i,j][s], index -> vals_G[2][index] ), [ ells[j] ] ) ) ) ) ) );
           
-          delta := List( [ 1 .. N ], i -> Concatenation( List( [ 1 .. N ], j -> ListWithIdenticalEntries( Length( auxiliary_indices[i][j] ), Range( vals_tP[j] ) ) ) ) );
+          delta := List( [ 1 .. N ], i -> Concatenation( List( [ 1 .. N ], j -> ListWithIdenticalEntries( Length( auxiliary_indices[i][j] ), Target( vals_tP[j] ) ) ) ) );
           
           ells := ListN( [ 1 .. N ], delta, mu, nu, { i, diagram, m, n } ->
                     PreCompose( D, PreInverseForMorphisms( D, UniversalMorphismFromDirectSum( D, diagram, vals_P[1][i], m ) ), UniversalMorphismFromDirectSum( D, diagram, vals_G[1][i], n ) ) );
@@ -1948,7 +1948,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           
           B := Source( PSh );
           
-          coPSh := CoPreSheaves( B, Range( PSh ) );
+          coPSh := CoPreSheaves( B, Target( PSh ) );
           
           NL := NakayamaLeftAdjointData( coPSh );
           
@@ -1962,13 +1962,13 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           
           NR_on_mors := NR[2];
           
-          mono_coPSh := NL_on_mors( NL_on_objs( Source( mono ) ), mono, NL_on_objs( Range( mono ) ) );
+          mono_coPSh := NL_on_mors( NL_on_objs( Source( mono ) ), mono, NL_on_objs( Target( mono ) ) );
           
-          eta_coPSh := NL_on_mors( NL_on_objs( Source( eta ) ), eta, NL_on_objs( Range( eta ) ) );
+          eta_coPSh := NL_on_mors( NL_on_objs( Source( eta ) ), eta, NL_on_objs( Target( eta ) ) );
           
           colift_coPSh := InjectiveColift( coPSh, mono_coPSh, eta_coPSh );
           
-          return  NR_on_mors( NR_on_objs( Source( colift_coPSh ) ), colift_coPSh, NR_on_objs( Range( colift_coPSh ) ) );
+          return  NR_on_mors( NR_on_objs( Source( colift_coPSh ) ), colift_coPSh, NR_on_objs( Target( colift_coPSh ) ) );
           
       end );
       
@@ -1988,7 +1988,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           
           B := Source( PSh );
           
-          coPSh := CoPreSheaves( B, Range( PSh ) );
+          coPSh := CoPreSheaves( B, Target( PSh ) );
           
           return List( IndecomposableInjectiveObjects( coPSh ), NakayamaRightAdjointData( PSh )[1] );
           
@@ -2222,7 +2222,7 @@ InstallMethodWithCache( PreSheaves,
                  ) );
     
     SetSource( T, B );
-    SetRange( T, D );
+    SetTarget( T, D );
     
     ##
     AddIsWellDefinedForObjects( T,
@@ -2545,7 +2545,7 @@ InstallOtherMethod( UnderlyingCapTwoCategoryCell,
     
     values := ValuesOfPreSheaf( F );
     
-    return CapFunctor( OppositeOfSource( PSh ), values[1], values[2], Range( PSh ) );
+    return CapFunctor( OppositeOfSource( PSh ), values[1], values[2], Target( PSh ) );
     
 end );
 
@@ -2569,14 +2569,14 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
     local B, D, pos, B_op, F_datum, morB_op;
     
     B := Source( PSh );
-    D := Range( PSh );
+    D := Target( PSh );
     
     pos := Position( SetOfGeneratingMorphisms( B ), morB );
     
     if IsInt( pos ) then
         return ValuesOfPreSheaf( F )[2][pos];
     elif IsEqualToIdentityMorphism( Source( PSh ), morB ) then
-        return IdentityMorphism( Range( PSh ),
+        return IdentityMorphism( Target( PSh ),
                        ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
     fi;
     
@@ -2594,21 +2594,21 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
     elif IsAlgebroidFromDataTables( B_op ) then
         
         morB_op := MorphismConstructor( B_op,
-                           SetOfObjects( B_op )[ObjectIndex( Range( morB ) )],
+                           SetOfObjects( B_op )[ObjectIndex( Target( morB ) )],
                            MorphismCoefficients( morB ),
                            SetOfObjects( B_op )[ObjectIndex( Source( morB ) )] );
         
     else
         
         morB_op := MorphismConstructor( B_op,
-                           SetOfObjects( B_op )[VertexIndex( UnderlyingVertex(  Range( morB ) ) )],
+                           SetOfObjects( B_op )[VertexIndex( UnderlyingVertex(  Target( morB ) ) )],
                            OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( morB ) ),
                            SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Source( morB ) ) )] );
         
     fi;
     
     return FunctorMorphismOperation( UnderlyingCapTwoCategoryCell( PSh, F ) )(
-                   ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Range( morB ) ),
+                   ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Target( morB ) ),
                    morB_op,
                    ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
     
@@ -2625,7 +2625,7 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
     B := Source( PSh );
     
     if IsEqualToIdentityMorphism( B, morB ) then
-        return IdentityMorphism( Range( PSh ),
+        return IdentityMorphism( Target( PSh ),
                        ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
     fi;
     
@@ -2725,7 +2725,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
           s_list_of_morphisms_in_UC, t_list_of_morphisms_in_UC, s, t, V, A, CoequalizerPairs_UC;
     
     C := Source( PSh );
-    H := Range( PSh );
+    H := Target( PSh );
     
     if not IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( C ) ) then
         Error( "the range category of the presheaf category must coincide with its range category of homomorphism structure of the source category\n" );
@@ -2853,7 +2853,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
           phi_vals, eta_V_list_of_morphisms_in_UC, eta_A_list_of_morphisms_in_UC, eta_V, eta_A;
     
     C := Source( PSh );
-    H := Range( PSh );
+    H := Target( PSh );
     
     if not IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( C ) ) then
         Error( "the range category of the presheaf category must coincide with its range category of homomorphism structure of the source category\n" );
@@ -2871,7 +2871,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
     mors := SetOfGeneratingMorphisms( C );
     
     F := Source( phi );
-    G := Range( phi );
+    G := Target( phi );
     
     ## φ: F → G
     F_vals := ValuesOfPreSheaf( F );
@@ -2991,7 +2991,7 @@ InstallMethod( CoYonedaLemmaOnMorphisms,
     return CoYonedaLemmaOnMorphisms( CapCategory( phi ),
                    CoYonedaLemmaOnObjects( Source( phi ) ),
                    phi,
-                   CoYonedaLemmaOnObjects( Range( phi ) ) );
+                   CoYonedaLemmaOnObjects( Target( phi ) ) );
     
 end );
 
@@ -3075,7 +3075,7 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentable,
     local B, D, Y, objs, f;
     
     B := Source( PSh );
-    D := Range( PSh );
+    D := Target( PSh );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( PSh ), D ) );
@@ -3124,7 +3124,7 @@ InstallMethodForCompilerForCAP( MorphismFromCoproductOfRepresentables,
     local B, D, objs, cover_objB;
     
     B := Source( PSh );
-    D := Range( PSh );
+    D := Target( PSh );
     
     objs := SetOfObjects( B );
     
@@ -3151,7 +3151,7 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
     local B, D, objs, homs, predicate, func, initial, cover;
     
     B := Source( PSh );
-    D := Range( PSh );
+    D := Target( PSh );
     
     objs := SetOfObjects( B );
     
@@ -3330,7 +3330,7 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
             pos_mor := SafePositionProperty( mors, a -> IsEqualForObjects( C, Source( a ), objC ) );
             mor := mors[pos_mor];
             map := -1 + SafePosition( AsList( F_vals[2][pos_mor] ), val );
-            r := Range( mor );
+            r := Target( mor );
             return [ -1 + SafePositionProperty( cover, a -> IsEqualForObjects( C, r, a[1] ) and AsList( a[2] )[1 + 0] = map ), mor ];
         fi;
         
@@ -3377,7 +3377,7 @@ InstallOtherMethodForCompilerForCAP( OptimizedCoYonedaLemmaOnObjects,
     retraction := RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( PSh, F );
     
     return ObjectConstructor( ColimitCompletionC,
-                   Pair( Pair( Range( retraction ), F_VAst[1][2] ),
+                   Pair( Pair( Target( retraction ), F_VAst[1][2] ),
                          Pair( PreCompose( UC,  F_VAst[2][1], retraction ),
                                PreCompose( UC,  F_VAst[2][2], retraction ) ) ) );
     
@@ -3451,9 +3451,9 @@ InstallMethodForCompilerForCAP( ApplyPreSheafToMorphismInFiniteStrictCoproductCo
     UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     G_on_source_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, Source( morphism ) );
-    G_on_range_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, Range( morphism ) );
+    G_on_range_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, Target( morphism ) );
     
-    D := Range( PSh );
+    D := Target( PSh );
     
     G_on_source := DirectProduct( D, G_on_source_diagram );
     G_on_range := DirectProduct( D, G_on_range_diagram );
@@ -3523,7 +3523,7 @@ InstallOtherMethodForCompilerForCAP( SievesOfPathsToTruth,
           truth_values, into_Omega_sFinSets, paths_to_truth;
     
     Q := Source( iota );
-    P := Range( iota );
+    P := Target( iota );
     
     B := Source( PSh );
     B_0 := SetOfObjects( B );
@@ -3654,7 +3654,7 @@ InstallMethod( SimpleObjects,
   function ( PSh )
     local D, defining_triple, obj_vals, mor_vals, simple_objs, i;
     
-    D := Range( PSh );
+    D := Target( PSh );
     
     defining_triple := DefiningTripleOfUnderlyingQuiver( Source( PSh ) );
     
@@ -3691,7 +3691,7 @@ InstallMethod( ViewString,
     
     PSh := CapCategory( F );
      
-    if not ( IsAlgebroidFromDataTables( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Range( PSh ) ) ) ) then
+    if not ( IsAlgebroidFromDataTables( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
         TryNextMethod();
     fi;
     
@@ -3707,7 +3707,7 @@ InstallMethod( ViewString,
     
     arrows := EnhancedDataTables( B )[7];
     
-    a_dim := List( ValuesOfPreSheaf( F )[2], m -> [ ObjectDatum( Source( m ) ), ObjectDatum( Range( m ) ) ] );
+    a_dim := List( ValuesOfPreSheaf( F )[2], m -> [ ObjectDatum( Source( m ) ), ObjectDatum( Target( m ) ) ] );
     
     a_string := ListN( arrows, a_dim,
                   { arrow, dim } -> Concatenation(
@@ -3731,7 +3731,7 @@ InstallMethod( ViewString,
     
     PSh := CapCategory( F );
      
-    if not ( IsAlgebroid( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Range( PSh ) ) ) ) then
+    if not ( IsAlgebroid( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
         TryNextMethod();
     fi;
     
@@ -3757,7 +3757,7 @@ InstallMethod( ViewString,
       
     fi;
     
-    a_dim := List( ValuesOfPreSheaf( F )[2], m -> [ ObjectDatum( Source( m ) ), ObjectDatum( Range( m ) ) ] );
+    a_dim := List( ValuesOfPreSheaf( F )[2], m -> [ ObjectDatum( Source( m ) ), ObjectDatum( Target( m ) ) ] );
     
     a_string := ListN( arrows, a_dim,
                   { arrow, dim } -> Concatenation(
@@ -3821,7 +3821,7 @@ InstallMethod( ViewString,
     
     PSh := CapCategory( eta );
     
-    if not ( IsAlgebroidFromDataTables( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Range( PSh ) ) ) ) then
+    if not ( IsAlgebroidFromDataTables( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
         TryNextMethod();
     fi;
     
@@ -3831,7 +3831,7 @@ InstallMethod( ViewString,
     
     s_dim := List( ValuesOfPreSheaf( Source( eta ) )[1], ObjectDatum );
     
-    r_dim := List( ValuesOfPreSheaf( Range( eta ) )[1], ObjectDatum );
+    r_dim := List( ValuesOfPreSheaf( Target( eta ) )[1], ObjectDatum );
     
     string := ListN( vertices, s_dim, r_dim,
                 { vertex, s, r } ->
@@ -3852,7 +3852,7 @@ InstallMethod( ViewString,
     
     PSh := CapCategory( eta );
     
-    if not ( IsAlgebroid( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Range( PSh ) ) ) ) then
+    if not ( IsAlgebroid( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
         TryNextMethod();
     fi;
     
@@ -3860,7 +3860,7 @@ InstallMethod( ViewString,
     
     s_dim := List( ValuesOfPreSheaf( Source( eta ) )[1], ObjectDatum );
     
-    r_dim := List( ValuesOfPreSheaf( Range( eta ) )[1], ObjectDatum );
+    r_dim := List( ValuesOfPreSheaf( Target( eta ) )[1], ObjectDatum );
     
     string := ListN( vertices, s_dim, r_dim,
                 { vertex, s, r } ->
@@ -3984,7 +3984,7 @@ InstallMethod( LaTeXOutput,
                 "\\xrightarrow{",
                 datum,
                 "}",
-                LaTeXOutput( Range( eta ) )
+                LaTeXOutput( Target( eta ) )
               );
     
     fi;

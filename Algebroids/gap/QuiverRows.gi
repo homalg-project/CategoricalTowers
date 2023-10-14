@@ -275,7 +275,7 @@ InstallMethod( NrCols,
                
   function( morphism )
     
-    return NrSummands( Range( morphism ) );
+    return NrSummands( Target( morphism ) );
     
 end );
 
@@ -371,7 +371,7 @@ InstallMethod( AsListListOfMatrices,
         
     fi;
     
-    list_range := ListOfQuiverVertices( Range( alpha ) );
+    list_range := ListOfQuiverVertices( Target( alpha ) );
     
     if IsEmpty( list_range ) then
         
@@ -708,7 +708,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
         source := Source( morphism );
         
-        range := Range( morphism );
+        range := Target( morphism );
         
         for i in [ 1 .. nr_rows ] do
             
@@ -820,9 +820,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
         A := Source( alpha );
         
-        B := Range( alpha );
+        B := Target( alpha );
         
-        C := Range( beta );
+        C := Target( beta );
         
         if NrSummands( A ) = 0 or NrSummands( B ) = 0 or NrSummands( C ) = 0 then
             
@@ -840,7 +840,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
       function( cat, r, morphism )
         
-        return QuiverRowsMorphism( Source( morphism ), r * MorphismMatrix( morphism ), Range( morphism ) );
+        return QuiverRowsMorphism( Source( morphism ), r * MorphismMatrix( morphism ), Target( morphism ) );
         
     end );
     
@@ -882,7 +882,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
         return QuiverRowsMorphism( Source( alpha ),
                                    MorphismMatrix( alpha ) + MorphismMatrix( beta ),
-                                   Range( beta ) );
+                                   Target( beta ) );
         
     end );
     
@@ -892,7 +892,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
         return QuiverRowsMorphism( Source( alpha ),
                                    -MorphismMatrix( alpha ),
-                                   Range( alpha ) );
+                                   Target( alpha ) );
         
     end );
     
@@ -1162,11 +1162,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
         listi := ListOfQuiverVertices( Source( alpha ) );
         
-        listj := ListOfQuiverVertices( Range( alpha ) );
+        listj := ListOfQuiverVertices( Target( alpha ) );
         
         listk := ListOfQuiverVertices( Source( beta ) );
         
-        listl := ListOfQuiverVertices( Range( beta ) );
+        listl := ListOfQuiverVertices( Target( beta ) );
         
         ##
         row_counts := [];
@@ -1269,7 +1269,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
         lists := ListOfQuiverVertices( Source( alpha ) );
         
-        listr := ListOfQuiverVertices( Range( alpha ) );
+        listr := ListOfQuiverVertices( Target( alpha ) );
         
         row := [];
         
@@ -1480,7 +1480,7 @@ InstallMethod( Display,
     Print( "  |\n");
     Print( "  v\n");
     Print( "Range : ");
-    Display( Range( morphism ) );
+    Display( Target( morphism ) );
     
 end );
 
@@ -1560,7 +1560,7 @@ InstallMethod( LaTeXOutput,
     
     source := LaTeXOutput( Source( morphism ) );
     
-    range := LaTeXOutput( Range( morphism ) );
+    range := LaTeXOutput( Target( morphism ) );
     
     return Concatenation( source, "\\xrightarrow{", matrix, "}", range );
     

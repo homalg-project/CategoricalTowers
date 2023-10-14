@@ -90,7 +90,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionDa
         local S, T, s, t, source_diagram, range_diagram, listlist, functor_on_mor;
         
         S := ObjectDatum( SC, Source( morSC ) );
-        T := ObjectDatum( SC, Range( morSC ) );
+        T := ObjectDatum( SC, Target( morSC ) );
         
         s := Length( S );
         t := Length( T );
@@ -204,7 +204,7 @@ InstallOtherMethodForCompilerForCAP( TensorizeObjectWithMorphismInRangeCategoryO
     id_a := IdentityMorphism( L, a );
     
     s := ObjectDatum( H, Source( nu ) );
-    t := ObjectDatum( H, Range( nu ) );
+    t := ObjectDatum( H, Target( nu ) );
     
     nu_matrix := MorphismDatum( H, nu );
     
@@ -241,13 +241,13 @@ InstallOtherMethodForCompilerForCAP( TensorizeMorphismWithObjectInRangeCategoryO
     Uphi := MorphismConstructor( UL,
                    ObjectConstructor( UL, [ Source( phi ) ] ),
                    [ [ phi ] ],
-                   ObjectConstructor( UL, [ Range( phi ) ] ) );
+                   ObjectConstructor( UL, [ Target( phi ) ] ) );
     
     return DirectSumFunctorialWithGivenDirectSums( UL,
                    source,
                    ListWithIdenticalEntries( l, Source( Uphi ) ),
                    ListWithIdenticalEntries( l, Uphi ),
-                   ListWithIdenticalEntries( l, Range( Uphi ) ),
+                   ListWithIdenticalEntries( l, Target( Uphi ) ),
                    range );
     
 end );

@@ -479,7 +479,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     
     decoration_of_arrows := DecorationOfArrows( DecoratedQuivers );
     
-    decorated_quiver := Range( monomorphism );
+    decorated_quiver := Target( monomorphism );
     
     vertices := AsList( monomorphism.V );
     arrows := AsList( monomorphism.A );

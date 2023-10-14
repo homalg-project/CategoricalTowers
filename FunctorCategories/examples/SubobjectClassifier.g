@@ -131,10 +131,10 @@ Display( iota );
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
 #! given by the above data
-Range( iota );
+Target( iota );
 #! <An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #!  / [ a*a*a = a*a ], SkeletalFinSets )>
-Display( Range( iota ) );
+Display( Target( iota ) );
 #! Image of <(1)>:
 #! { 0,..., 7 }
 #! 

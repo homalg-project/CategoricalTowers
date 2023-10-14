@@ -11,7 +11,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_PreSheavesOfCategoryFromDataTablesInSkeletalFinSe
 ########
 function ( cat_1 )
     local deduped_1_1, deduped_3_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_12_1, deduped_13_1, deduped_14_1, deduped_15_1, hoisted_16_1, hoisted_17_1, deduped_18_1, hoisted_20_1, hoisted_22_1, deduped_23_1, hoisted_24_1, deduped_25_1, deduped_26_1, hoisted_27_1, deduped_28_1, hoisted_29_1, hoisted_30_1, hoisted_31_1, hoisted_32_1, hoisted_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1, deduped_38_1, deduped_39_1, deduped_40_1, deduped_41_1, deduped_42_1, deduped_43_1, deduped_44_1, deduped_45_1, deduped_46_1;
-    deduped_46_1 := Range( cat_1 );
+    deduped_46_1 := Target( cat_1 );
     deduped_45_1 := Source( cat_1 );
     deduped_44_1 := IndicesOfGeneratingMorphisms( deduped_45_1 );
     deduped_43_1 := DataTables( deduped_45_1 );

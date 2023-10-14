@@ -44,7 +44,7 @@ InstallMethodWithCache( RestrictFunctorToFullSubcategoryOfSource,
       
       name := "Restriction of a functor to a full subcategory of source";
       
-      R := CapFunctor( name, full, AsCapCategory( Range( F ) ) );
+      R := CapFunctor( name, full, AsCapCategory( Target( F ) ) );
       
       AddObjectFunction( R, a -> ApplyFunctor( F, UnderlyingCell( a ) ) );
       
@@ -72,7 +72,7 @@ InstallMethodWithCache( RestrictFunctorToFullSubcategoryOfRange,
   function( F, full )
     local name, R;
     
-    if IsIdenticalObj( AsCapCategory( Range( F ) ), AmbientCategory( full ) ) then
+    if IsIdenticalObj( AsCapCategory( Target( F ) ), AmbientCategory( full ) ) then
       
       name := "Restriction of a functor to a full subcategory of range";
       

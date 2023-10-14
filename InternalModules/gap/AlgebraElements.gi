@@ -20,16 +20,16 @@ InstallMethod( InternalElement,
     
     source := Source( iota );
     
-    A := Range( iota );
+    A := Target( iota );
     
     if not IsInternalAlgebra( A ) then
         
-        Error( "IsInternalAlgebra( Range( iota ) ) returned false\n" );
+        Error( "IsInternalAlgebra( Target( iota ) ) returned false\n" );
         
     fi;
     
     return ObjectifyWithAttributes( rec( ), TheTypeInternalAlgebraElement,
-                Range, A,
+                Target, A,
                 UnderlyingEmbedding, iota );
     
 end );
@@ -170,7 +170,7 @@ InstallMethod( UniversalMorphismFromFreeModule,
     
     return UniversalMorphismFromFreeModule(
                    UnderlyingEmbedding( a ),
-                   SymmetricAlgebraAsLeftModule( Range( a ) ) );
+                   SymmetricAlgebraAsLeftModule( Target( a ) ) );
     
 end );
 
@@ -228,7 +228,7 @@ InstallMethod( \+,
         return InternalElement( e );
     fi;
     
-    return InternalElement( e, Range( e1 ) );
+    return InternalElement( e, Target( e1 ) );
     
 end );
 
@@ -251,7 +251,7 @@ InstallMethod( \*,
   function ( r, m )
     local iota;
     
-    r := r / CommutativeRingOfLinearCategory( CapCategory( Range( m ) ) );
+    r := r / CommutativeRingOfLinearCategory( CapCategory( Target( m ) ) );
     
     iota := r * UnderlyingEmbedding( m );
     
@@ -259,7 +259,7 @@ InstallMethod( \*,
         return InternalElement( iota );
     fi;
     
-    return InternalElement( iota, Range( m ) );
+    return InternalElement( iota, Target( m ) );
     
 end );
 
@@ -276,7 +276,7 @@ InstallMethod( InternalPreMultiplication,
     
     source := TensorProduct( Source( iota_a ), Source( iota_m ) );
     
-    structure_morphism := StructureMorphism( Range( m ) );
+    structure_morphism := StructureMorphism( Target( m ) );
     
     AoM := Source( structure_morphism );
     
@@ -309,7 +309,7 @@ InstallMethod( \*,
         return InternalElement( am );
     fi;
     
-    return InternalElement( am, Range( m ) );
+    return InternalElement( am, Target( m ) );
     
 end );
 

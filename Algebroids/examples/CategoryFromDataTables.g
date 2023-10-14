@@ -121,9 +121,9 @@ Display( HomStructure( s ) );
 #! { 0 } ⱶ[ 0 ]→ { 0, 1 }
 Display( HomStructure( t ) );
 #! { 0 } ⱶ[ 1 ]→ { 0, 1 }
-HomStructure( Source( s ), Range( s ), HomStructure( s ) ) = s;
+HomStructure( Source( s ), Target( s ), HomStructure( s ) ) = s;
 #! true
-HomStructure( Source( t ), Range( t ), HomStructure( t ) ) = t;
+HomStructure( Source( t ), Target( t ), HomStructure( t ) ) = t;
 #! true
 Display( HomStructure( s, t ) );
 #! { 0 } ⱶ[ 1 ]→ { 0, 1 }

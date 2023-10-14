@@ -36,7 +36,7 @@ InstallMethod( DataTablesOfCategory,
       latex_strings_gmors := List( gmors, m -> LaTeXOutput( m : OnlyDatum := true ) ),
       indices_gmors := List( gmors, m -> Position( bases_elms, m ) ),
       sources_gmors := List( gmors, m -> Position( objs, Source( m ) ) ),
-      ranges_gmors := List( gmors, m -> Position( objs, Range( m ) ) ),
+      ranges_gmors := List( gmors, m -> Position( objs, Target( m ) ) ),
       
       bases_elms_comps := Concatenation( List( objs,
                             i -> Concatenation( List( objs,
@@ -154,7 +154,7 @@ InstallOtherMethod( DataTablesOfCategory,
       labels_gmors := (EnhancedDataTables( B )[7]){support_gmors},
       indices_gmors := List( gmors, m -> Position( bases_elms, m ) ),
       sources_gmors := List( gmors, m -> Position( objs, Source( m ) ) ),
-      ranges_gmors := List( gmors, m -> Position( objs, Range( m ) ) ),
+      ranges_gmors := List( gmors, m -> Position( objs, Target( m ) ) ),
       
       bases_elms_comps := Concatenation( List( objs,
                               u -> Concatenation( List( objs,
@@ -674,7 +674,7 @@ InstallMethod( AlgebroidFromDataTables,
       
       function ( cat, mor )
         
-        return EnhancedDataTables( cat )[19][ObjectIndex( Range( mor ) )][ObjectIndex( Source( mor ) )] = Length( MorphismCoefficients( mor ) );
+        return EnhancedDataTables( cat )[19][ObjectIndex( Target( mor ) )][ObjectIndex( Source( mor ) )] = Length( MorphismCoefficients( mor ) );
         
     end );
 
@@ -727,7 +727,7 @@ InstallMethod( AlgebroidFromDataTables,
       
       function ( cat, r, alpha )
         
-        return MorphismConstructor( cat, Source( alpha ), List( MorphismCoefficients( alpha ), c -> r * c ), Range( alpha ) );
+        return MorphismConstructor( cat, Source( alpha ), List( MorphismCoefficients( alpha ), c -> r * c ), Target( alpha ) );
         
     end );
     
@@ -736,7 +736,7 @@ InstallMethod( AlgebroidFromDataTables,
       
       function ( cat, alpha_1, alpha_2 )
         
-        return MorphismConstructor( cat, Source( alpha_1 ), Sum( List( [ alpha_1, alpha_2 ], MorphismCoefficients ) ), Range( alpha_1 ) );
+        return MorphismConstructor( cat, Source( alpha_1 ), Sum( List( [ alpha_1, alpha_2 ], MorphismCoefficients ) ), Target( alpha_1 ) );
         
     end );
     
@@ -745,7 +745,7 @@ InstallMethod( AlgebroidFromDataTables,
       
       function ( cat, alpha )
         
-        return  MorphismConstructor( cat, Source( alpha ), List( MorphismCoefficients( alpha ), c -> -c ), Range( alpha ) );
+        return  MorphismConstructor( cat, Source( alpha ), List( MorphismCoefficients( alpha ), c -> -c ), Target( alpha ) );
         
     end );
     
@@ -808,10 +808,10 @@ InstallMethod( AlgebroidFromDataTables,
             s_gamma := MorphismSupport( gamma );
 
             i := ObjectIndex( Source( alpha ) );
-            j := ObjectIndex( Range( alpha ) );
+            j := ObjectIndex( Target( alpha ) );
 
             p := ObjectIndex( Source( gamma ) );
-            q := ObjectIndex( Range( gamma ) );
+            q := ObjectIndex( Target( gamma ) );
 
             hom_ijpq := EnhancedDataTables( cat )[20][i][j][p][q];
 
@@ -835,7 +835,7 @@ InstallMethod( AlgebroidFromDataTables,
       function ( cat, alpha )
         local dim;
         
-        dim := EnhancedDataTables( cat )[19][ObjectIndex( Range( alpha ) )][ObjectIndex( Source( alpha ) )];
+        dim := EnhancedDataTables( cat )[19][ObjectIndex( Target( alpha ) )][ObjectIndex( Source( alpha ) )];
         
         return MorphismConstructor( RangeCategoryOfHomomorphismStructure( cat ),
                             DistinguishedObjectOfHomomorphismStructure( cat ),
@@ -871,9 +871,9 @@ InstallMethod( AlgebroidFromDataTables,
       
       function ( cat, alpha, beta )
         
-        return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Source( alpha ), Range( beta ),
+        return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Source( alpha ), Target( beta ),
                                   PreCompose( RangeCategoryOfHomomorphismStructure( cat ),
-                                    InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, IdentityMorphism( cat, Range( alpha ) ) ),
+                                    InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, IdentityMorphism( cat, Target( alpha ) ) ),
                                     HomomorphismStructureOnMorphisms( cat, alpha, beta ) ) );
         
     end );
@@ -984,7 +984,7 @@ InstallMethod( PowerOfArrowIdealOp,
         return Filtered( List( SetOfObjects( B ), o -> IdentityMorphism( B, o ) ), h -> not IsZero( h ) );
     else
         return Filtered( Concatenation( List( PowerOfArrowIdeal( B, n - 1 ),
-                f -> List( Filtered( SetOfGeneratingMorphisms( B ), g -> ObjectIndex( Range( f ) ) = ObjectIndex( Source( g ) ) ),
+                f -> List( Filtered( SetOfGeneratingMorphisms( B ), g -> ObjectIndex( Target( f ) ) = ObjectIndex( Source( g ) ) ),
                   g -> PreCompose( B, f, g ) ) ) ),
                     h -> not IsZeroForMorphisms( B, h ) );
     fi;
@@ -1097,7 +1097,7 @@ InstallMethod( DecompositionOfMorphismInAlgebroid,
     indices_gmors := EnhancedDataTables( B )[9];
     
     source := ObjectIndex( Source( mor ) );
-    range := ObjectIndex( Range( mor ) );
+    range := ObjectIndex( Target( mor ) );
     
     supp := MorphismSupport( mor );
     coeffs := MorphismCoefficients( mor ){ supp };
@@ -1221,7 +1221,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidFromDataTable
           
           S := DirectSum( cat, D );
           
-          return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, D, Range( alpha ), tau, S );
+          return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, D, Target( alpha ), tau, S );
           
       end );
       
@@ -1423,7 +1423,7 @@ InstallMethod( ElementaryTensor,
                                     ElementaryTensor( Source( mor_1 ), Source( mor_2 ), B1_x_B2 ),
                                     Concatenation( List( MorphismCoefficients( mor_1 ), c_1 -> List( MorphismCoefficients( mor_2 ), c_2 -> c_1 * c_2 ) ) ),
                                     Concatenation( List( MorphismSupport( mor_1 ), l -> List( MorphismSupport( mor_2 ), r -> (l-1) * Length( MorphismCoefficients( mor_2 ) ) + r ) ) ),
-                                    ElementaryTensor( Range( mor_1 ), Range( mor_2 ), B1_x_B2 ) )
+                                    ElementaryTensor( Target( mor_1 ), Target( mor_2 ), B1_x_B2 ) )
 );
 
 ##
@@ -1644,7 +1644,7 @@ InstallMethod( PreSheaves,
               local B, C;
               
               B := Source( PSh );
-              C := Range( PSh );
+              C := Target( PSh );
               
               return ForAll( SetOfObjects( B ), o -> IsEqualForMorphisms( C, eta1( o ), eta2( o ) ) );
               
@@ -1657,7 +1657,7 @@ InstallMethod( PreSheaves,
               local B, C;
               
               B := Source( PSh );
-              C := Range( PSh );
+              C := Target( PSh );
               
               return ForAll( SetOfObjects( B ), o -> IsCongruentForMorphisms( C, eta1( o ), eta2( o ) ) );
               
@@ -1668,7 +1668,7 @@ InstallMethod( PreSheaves,
               local B, C;
               
               B := Source( PSh );
-              C := Range( PSh );
+              C := Target( PSh );
               
               return ForAll( SetOfObjects( B ), o -> IsEqualForObjects( C, obj1( o ), obj2( o ) ) )
                         and ForAll( SetOfGeneratingMorphisms( B ), m -> IsEqualForMorphisms( C, obj1( m ), obj2( m ) ) );
@@ -1680,7 +1680,7 @@ InstallMethod( PreSheaves,
               local B, C, gmors, pairs;
               
               B := Source( PSh );
-              C := Range( PSh );
+              C := Target( PSh );
               
               gmors := SetOfGeneratingMorphisms( B );
               pairs := Concatenation( ListOfValues( EnhancedDataTables( B )[21] ) );
@@ -1694,13 +1694,13 @@ InstallMethod( PreSheaves,
               local B, C, gmors;
               
               B := Source( PSh );
-              C := Range( PSh );
+              C := Target( PSh );
               
               gmors := SetOfGeneratingMorphisms( B );
               
               return IsWellDefinedForObjects( PSh, Source( mor ) )
-                    and IsWellDefinedForObjects( PSh, Range( mor ) )
-                    and ForAll( gmors, g -> IsCongruentForMorphisms( C, PreCompose( C,  Source( mor )( g ), mor( Source( g ) ) ), PreCompose( C, mor( Range( g ) ), Range( mor )( g ) ) ) );
+                    and IsWellDefinedForObjects( PSh, Target( mor ) )
+                    and ForAll( gmors, g -> IsCongruentForMorphisms( C, PreCompose( C,  Source( mor )( g ), mor( Source( g ) ) ), PreCompose( C, mor( Target( g ) ), Target( mor )( g ) ) ) );
               
           end );
           
@@ -1731,7 +1731,7 @@ InstallOtherMethod( MorphismFromRepresentableFunctor,
     local B, C, func_of_presheaf_morphism;
     
     B := Source( PSh );
-    C := Range( PSh );
+    C := Target( PSh );
     
     if not IsIdenticalObj( B, CapCategory( obj ) ) then
         Error( "the argument <obj> passed to 'MorphismFromRepresentableFunctor' must be an object in ", Name( B ) );
@@ -1826,7 +1826,7 @@ InstallMethod( AlgebroidAsObjectInPreSheavesCategory,
     PSh := PreSheaves( B_op_x_B );
     range_cat := RangeCategoryOfHomomorphismStructure( B );
     
-    Assert( 0, IsIdenticalObj( range_cat, Range( PSh ) ) );
+    Assert( 0, IsIdenticalObj( range_cat, Target( PSh ) ) );
     
     presheaf_on_objs := obj -> AlgebroidAsObjectInPreSheavesCategoryData( B )[1][ObjectIndex( obj )];
     
@@ -1878,7 +1878,7 @@ InstallMethod( AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory,
     F := AlgebroidAsObjectInPreSheavesCategory( B );
     PSh := CapCategory( F );
     
-    obj := ElementaryTensor( SetOfObjects( B_op )[ObjectIndex( Range( m ) )], Source( m ), B_op_x_B );
+    obj := ElementaryTensor( SetOfObjects( B_op )[ObjectIndex( Target( m ) )], Source( m ), B_op_x_B );
     
     Y_obj := YonedaEmbeddingOfSourceCategory( PSh )( obj );
     
@@ -1910,7 +1910,7 @@ InstallOtherMethod( QuotientCategory,
     F := AlgebroidAsObjectInPreSheavesCategory( B );
     
     PSh := CapCategory( F );
-    C := Range( PSh );
+    C := Target( PSh );
     
     tau := UniversalMorphismFromDirectSum( PSh, F, List( ideal, AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory ) );
     
@@ -1922,7 +1922,7 @@ InstallOtherMethod( QuotientCategory,
           function ( m )
             local obj;
             
-            obj := ElementaryTensor( SetOfObjects( B_op )[ObjectIndex( Range( m ) )], Source( m ), B_op_x_B );
+            obj := ElementaryTensor( SetOfObjects( B_op )[ObjectIndex( Target( m ) )], Source( m ), B_op_x_B );
             
             return IsZeroForMorphisms( C, PreCompose( C, AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory( m )( obj ), pi( obj ) ) );
             
@@ -1934,7 +1934,7 @@ InstallOtherMethod( QuotientCategory,
           function ( m )
             local obj;
             
-            obj := ElementaryTensor( SetOfObjects( B_op )[ObjectIndex( Range( m ) )], Source( m ), B_op_x_B );
+            obj := ElementaryTensor( SetOfObjects( B_op )[ObjectIndex( Target( m ) )], Source( m ), B_op_x_B );
             
             return IsLiftable( C, AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory( m )( obj ), tau( obj ) );
             
@@ -1985,7 +1985,7 @@ InstallOtherMethod( QuotientCategory,
             
             obj2_op := SetOfObjects( B_op )[ObjectIndex( obj2 )];
             
-            return Range( pi )( ElementaryTensor( obj2_op, obj1, B_op_x_B ) );
+            return Target( pi )( ElementaryTensor( obj2_op, obj1, B_op_x_B ) );
             
         end );
         
@@ -1997,7 +1997,7 @@ InstallOtherMethod( QuotientCategory,
             
             g_op := CreateMorphism(
                       B_op,
-                      SetOfObjects( B_op )[ObjectIndex( UnderlyingCell( Range( g ) ) )],
+                      SetOfObjects( B_op )[ObjectIndex( UnderlyingCell( Target( g ) ) )],
                       CoefficientsOfMorphism( UnderlyingCell( g ) ),
                       MorphismSupport( UnderlyingCell( g ) ),
                       SetOfObjects( B_op )[ObjectIndex( UnderlyingCell( Source( g ) ) )] );
@@ -2006,7 +2006,7 @@ InstallOtherMethod( QuotientCategory,
             
             return CokernelObjectFunctorialWithGivenCokernelObjects( range_of_HomStructure,
                         s,
-                        tau( Range( g_op_x_f ) ),
+                        tau( Target( g_op_x_f ) ),
                         F( g_op_x_f ),
                         tau( Source( g_op_x_f ) ),
                         r );
@@ -2022,7 +2022,7 @@ InstallOtherMethod( QuotientCategory,
             mor := UnderlyingCell( mor );
             
             obj1 := Source( mor );
-            obj2 := Range( mor );
+            obj2 := Target( mor );
             
             obj2_op := SetOfObjects( B_op )[ObjectIndex( obj2 )];
             
@@ -2087,7 +2087,7 @@ InstallOtherMethod( QuotientCategory,
             
             g_op := CreateMorphism(
                       B_op,
-                      SetOfObjects( B_op )[ObjectIndex( UnderlyingCell( Range( g ) ) )],
+                      SetOfObjects( B_op )[ObjectIndex( UnderlyingCell( Target( g ) ) )],
                       CoefficientsOfMorphism( UnderlyingCell( g ) ),
                       MorphismSupport( UnderlyingCell( g ) ),
                       SetOfObjects( B_op )[ObjectIndex( UnderlyingCell( Source( g ) ) )] );
@@ -2107,9 +2107,9 @@ InstallOtherMethod( QuotientCategory,
             return FreydCategoryMorphism( range_of_HomStructure,
                       distinguished_object,
                       InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( B,
-                                        Range( RelationMorphism( distinguished_object ) ),
+                                        Target( RelationMorphism( distinguished_object ) ),
                                         UnderlyingCell( mor ),
-                                        Range( RelationMorphism( r ) ) ),
+                                        Target( RelationMorphism( r ) ) ),
                       r );
             
         end );
@@ -2215,7 +2215,7 @@ InstallMethod( ViewString,
     B := CapCategory( alpha );
     
     i := ObjectIndex( Source( alpha ) );
-    j := ObjectIndex( Range( alpha ) );
+    j := ObjectIndex( Target( alpha ) );
     
     coeffs := MorphismCoefficients( alpha );
     support := MorphismSupport( alpha );
@@ -2274,7 +2274,7 @@ InstallMethod( LaTeXOutput,
     B := CapCategory( alpha );
     
     i := ObjectIndex( Source( alpha ) );
-    j := ObjectIndex( Range( alpha ) );
+    j := ObjectIndex( Target( alpha ) );
     
     coeffs := MorphismCoefficients( alpha );
     support := MorphismSupport( alpha );
@@ -2305,7 +2305,7 @@ InstallMethod( LaTeXOutput,
       return Concatenation(
                 "{", LaTeXOutput( Source( alpha ) ), "}-\\left(",
                 "{", string, "}\\right)\\rightarrow",
-                "{", LaTeXOutput( Range( alpha ) ), "}" );
+                "{", LaTeXOutput( Target( alpha ) ), "}" );
     
     fi;
     

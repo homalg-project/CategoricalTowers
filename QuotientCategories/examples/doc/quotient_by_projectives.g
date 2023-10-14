@@ -12,7 +12,7 @@
 #! gap> cat := LeftPresentations( zz );
 #! Category of left presentations of Z
 #! gap> epi := EpimorphismFromSomeProjectiveObject;;
-#! gap> congruence_func := { alpha, beta } -> IsLiftable( alpha - beta, epi( Range( alpha ) ) );;
+#! gap> congruence_func := { alpha, beta } -> IsLiftable( alpha - beta, epi( Target( alpha ) ) );;
 #! gap> quotient_cat := QuotientCategory( cat, congruence_func );
 #! Quotient category( Category of left presentations of Z ) by congruence_func
 #! gap> F := ProjectionFunctor( quotient_cat );;

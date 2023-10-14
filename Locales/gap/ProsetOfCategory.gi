@@ -92,7 +92,7 @@ InstallMethod( AsCellOfProset,
         P,
         ObjectConstructor( P, Source( morphism ) ),
         morphism,
-        ObjectConstructor( P, Range( morphism ) )
+        ObjectConstructor( P, Target( morphism ) )
     );
     
 end );
@@ -111,7 +111,7 @@ InstallMethod( AsCellOfStableProset,
         P,
         ObjectConstructor( P, Source( morphism ) ),
         morphism,
-        ObjectConstructor( P, Range( morphism ) )
+        ObjectConstructor( P, Target( morphism ) )
     );
     
 end );
@@ -158,7 +158,7 @@ InstallMethod( AsCellOfPoset,
         P,
         ObjectConstructor( P, Source( morphism ) ),
         morphism,
-        ObjectConstructor( P, Range( morphism ) )
+        ObjectConstructor( P, Target( morphism ) )
     );
     
 end );
@@ -177,7 +177,7 @@ InstallMethod( AsCellOfStablePoset,
         P,
         ObjectConstructor( P, Source( morphism ) ),
         morphism,
-        ObjectConstructor( P, Range( morphism ) )
+        ObjectConstructor( P, Target( morphism ) )
     );
     
 end );
@@ -193,7 +193,7 @@ InstallOtherMethod( \/,
         P,
         ObjectConstructor( P, Source( morphism ) ),
         morphism,
-        ObjectConstructor( P, Range( morphism ) )
+        ObjectConstructor( P, Target( morphism ) )
     );
     
 end );
@@ -365,7 +365,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             
         fi;
         
-        if IsEqualForObjects( AmbientCategory( cat ), Range( underlying_morphism ), UnderlyingCell( range ) ) = false then
+        if IsEqualForObjects( AmbientCategory( cat ), Target( underlying_morphism ), UnderlyingCell( range ) ) = false then
             
             Error( "the range of the morphism datum must be equal to <UnderlyingCell( range )>" );
             
@@ -555,7 +555,7 @@ InstallMethod( \.,
         return MorphismConstructor( P,
                        ObjectConstructor( P, Source( cell ) ),
                        cell,
-                       ObjectConstructor( P, Range( cell ) ) );
+                       ObjectConstructor( P, Target( cell ) ) );
         
     fi;
     
@@ -585,7 +585,7 @@ InstallMethod( SetOfGeneratingMorphisms,
                  MorphismConstructor( P,
                          ObjectConstructor( P, Source( m ) ),
                          m,
-                         ObjectConstructor( P, Range( m ) ) ) );
+                         ObjectConstructor( P, Target( m ) ) ) );
     
 end );
 

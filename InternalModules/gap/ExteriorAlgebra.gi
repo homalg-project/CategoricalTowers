@@ -40,7 +40,7 @@ InstallMethod( ExteriorAlgebraAsZFunction,
     ext :=
       function ( n )
         if n > 1 and n <= Dimension( V ) then
-            return Range( ExteriorOrSymmetricAlgebraMultiplication( C, V, n - 1, 1, "exterior" ) );
+            return Target( ExteriorOrSymmetricAlgebraMultiplication( C, V, n - 1, 1, "exterior" ) );
         elif n = 1 then
             return V;
         elif n = 0 then

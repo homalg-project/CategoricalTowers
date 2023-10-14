@@ -463,7 +463,7 @@ epsilon := MorphismToBidual( U );
 #! <(1)->2x2>
 Source( epsilon ) = U;
 #! true
-Range( epsilon ) = U;
+Target( epsilon ) = U;
 #! true
 EndU := InternalHom( U, U );
 #! <(1)->4; (t)->4x4>
@@ -479,6 +479,6 @@ beta := Braiding( Us, U );
 #! <(1)->4x4>
 Source( beta ) = UsU;
 #! true
-Range( beta ) = UUs;
+Target( beta ) = UUs;
 #! true
 #! @EndExample

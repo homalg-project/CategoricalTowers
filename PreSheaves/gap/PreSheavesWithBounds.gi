@@ -157,11 +157,11 @@ InstallMethod( PreSheavesWithBounds,
                   elif types[2] = "object" then # e.g., (Co)Equalizer, ...
                       return "ObjectDatum( cat, i_arg[2] )[2]";
                   elif types[2] = "morphism" then # e.g., (Co)KernelObject, (Co)ImageObject, ...
-                      return Concatenation( String( union_of_supports ), "( List( [ Source( i_arg[2] ), Range( i_arg[2] ) ], c -> ObjectDatum( cat, c )[2] ) )" );
+                      return Concatenation( String( union_of_supports ), "( List( [ Source( i_arg[2] ), Target( i_arg[2] ) ], c -> ObjectDatum( cat, c )[2] ) )" );
                   elif types[2] = "list_of_objects" then # e.g., Coproduct, DirectProduct, DirectSum, ...
                       return Concatenation( String( union_of_supports ), "( List( i_arg[2], c -> ObjectDatum( cat, c )[2] ) )" );
                   elif types[2] = "list_of_morphisms" then # Pushout, FiberProduct, ...
-                      return Concatenation( String( union_of_supports ), "( List( Concatenation( List( i_arg[2], m -> Source( m ) ), List( i_arg[2], m -> Range( m ) ) ), c -> ObjectDatum( cat, c )[2] ) )" );
+                      return Concatenation( String( union_of_supports ), "( List( Concatenation( List( i_arg[2], m -> Source( m ) ), List( i_arg[2], m -> Target( m ) ) ), c -> ObjectDatum( cat, c )[2] ) )" );
                   else
                       Error( "can only deal with \"object\", \"morphism\", \"list_of_objects\", \"list_of_morphisms\"" );
                   fi;
@@ -251,7 +251,7 @@ InstallMethod( PreSheavesWithBounds,
               : FinalizeCategory := false );
     
     SetSource( xPSh, C );
-    SetRange( xPSh, D );
+    SetTarget( xPSh, D );
     SetAmbientCategory( xPSh, PSh );
     
     if is_computable then
@@ -260,7 +260,7 @@ InstallMethod( PreSheavesWithBounds,
           function( xPSh, F, G )
             local D, PSh, F_datum, G_datum, F_func, G_func, func;
             
-            D := Range( xPSh );
+            D := Target( xPSh );
             
             PSh := AmbientCategory( xPSh );
             
@@ -291,12 +291,12 @@ InstallMethod( PreSheavesWithBounds,
             local D, PSh, F, G, F_datum, G_datum, F_func, G_func,
                   phi_datum, psi_datum, phi_func, psi_func, func;
             
-            D := Range( xPSh );
+            D := Target( xPSh );
             
             PSh := AmbientCategory( xPSh );
             
             F := Source( phi );
-            G := Range( phi );
+            G := Target( phi );
             
             F_datum := ObjectDatum( xPSh, F );
             G_datum := ObjectDatum( xPSh, G );
@@ -331,12 +331,12 @@ InstallMethod( PreSheavesWithBounds,
             local D, PSh, F, G, F_datum, G_datum, F_func, G_func,
                   phi_datum, psi_datum, phi_func, psi_func, func;
             
-            D := Range( xPSh );
+            D := Target( xPSh );
             
             PSh := AmbientCategory( xPSh );
             
             F := Source( phi );
-            G := Range( phi );
+            G := Target( phi );
             
             F_datum := ObjectDatum( xPSh, F );
             G_datum := ObjectDatum( xPSh, G );

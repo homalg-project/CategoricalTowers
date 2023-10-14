@@ -22,7 +22,7 @@ InstallMethodForCompilerForCAP( NakayamaLeftAdjointData,
         TryNextMethod( );
     fi;
     
-    H := Range( coPSh );
+    H := Target( coPSh );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     if not CanCompute( H, "DualOnMorphisms" ) then
@@ -102,7 +102,7 @@ InstallMethodForCompilerForCAP( NakayamaRightAdjointData,
         TryNextMethod( );
     fi;
     
-    H := Range( PSh );
+    H := Target( PSh );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     if not CanCompute( H, "DualOnMorphisms" ) then
@@ -199,7 +199,7 @@ InstallMethodForCompilerForCAP( IsbellLeftAdjointData,
                        List( mors, m ->
                              HomomorphismStructureOnMorphisms( PSh, # PSh( F, B( -, m ) )
                                      IdentityMorphism( PSh, F ),
-                                     Yoneda_on_mor( Yoneda_on_obj( Source( m ) ), m, Yoneda_on_obj( Range( m ) ) ) ) ) );
+                                     Yoneda_on_mor( Yoneda_on_obj( Source( m ) ), m, Yoneda_on_obj( Target( m ) ) ) ) ) );
         
     end;
     
@@ -283,7 +283,7 @@ InstallMethodForCompilerForCAP( IsbellRightAdjointData,
                                      G ) ),
                        List( mors, m ->
                              HomomorphismStructureOnMorphisms( coPSh, # coPSh( B( m, - ), G )
-                                     coYoneda_on_mor( coYoneda_on_obj( Source( m ) ), m, coYoneda_on_obj( Range( m ) ) ),
+                                     coYoneda_on_mor( coYoneda_on_obj( Source( m ) ), m, coYoneda_on_obj( Target( m ) ) ),
                                      IdentityMorphism( coPSh, G ) ) ) );
         
     end;
@@ -389,7 +389,7 @@ InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
         TryNextMethod( );
     fi;
     
-    H := Range( PSh );
+    H := Target( PSh );
     
     objs := SetOfObjects( B );
     nr_objs := DefiningTripleOfUnderlyingQuiver( B )[1];
@@ -472,7 +472,7 @@ InstallMethod( UnitOfIsbellAdjunction,
     
     B := Source( PSh );
     
-    H := Range( PSh );
+    H := Target( PSh );
     
     coPSh := CoPreSheaves( B, H );
     
@@ -507,7 +507,7 @@ InstallMethod( EquivalenceFromFullSubcategoryOfProjectivesObjectsIntoAdditiveClo
         local F, G, injections, eta, summands, projections, mat;
         
         F := UnderlyingCell( Source( phi ) );
-        G := UnderlyingCell( Range( phi ) );
+        G := UnderlyingCell( Target( phi ) );
         
         injections := ProjectiveCoverObjectDataOfPreSheaf( F );
         
@@ -515,7 +515,7 @@ InstallMethod( EquivalenceFromFullSubcategoryOfProjectivesObjectsIntoAdditiveClo
         
         summands := List( ProjectiveCoverObjectDataOfPreSheaf( G ), Source );
         
-        projections := List( [ 1 .. Length( summands ) ], k -> ProjectionInFactorOfDirectSumWithGivenDirectSum( PSh, summands, k, Range( eta ) ) );
+        projections := List( [ 1 .. Length( summands ) ], k -> ProjectionInFactorOfDirectSumWithGivenDirectSum( PSh, summands, k, Target( eta ) ) );
         
         mat := List( injections, i -> List( projections, p -> ApplyFunctor( J, AsSubcategoryCell( y_image, PreComposeList( PSh, [ i, eta, p ] ) ) ) ) );
         
@@ -533,7 +533,7 @@ BindGlobal( "SET_ISOMORPHISMS_BETWEEN_SOURCE_AND_IMAGE_OF_YONEDA_EMBEDDING_OF_SO
   function ( PSh )
     local B, T, Yoneda_data, obj_func, mor_func, data, Y, U;
     
-    if not IsCategoryOfRows( Range( PSh ) ) then
+    if not IsCategoryOfRows( Target( PSh ) ) then
       Error( "the range of presheaves category must be a category of rows" );
     fi;
     

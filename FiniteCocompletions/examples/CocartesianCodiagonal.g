@@ -49,7 +49,7 @@ delta := hom_aa_a[1];
 #!  FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
 Source( delta ) = aa;
 #! true
-Range( delta ) = a;
+Target( delta ) = a;
 #! true
 IsOne( ComponentOfMorphismFromCoproduct( delta, [ a, a ], 1 ) );
 #! true

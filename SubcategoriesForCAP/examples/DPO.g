@@ -53,7 +53,7 @@ Display( dpo[2] );
 #! { 0,..., 6 } ⱶ[ 0, 1, 4, 5, 6, 7, 8 ]→ { 0,..., 8 }
 #! 
 #! A morphism in the slice category given by the above data
-Display( Range( dpo[1] ) );
+Display( Target( dpo[1] ) );
 #! { 0,..., 8 } ⱶ[ 1, 0, 1, 1, 0, 1, 1, 0, 0 ]→ { 0, 1 }
 #! 
 #! An object in the slice category given by the above data

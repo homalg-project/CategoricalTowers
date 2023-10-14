@@ -81,7 +81,7 @@ InstallMethod( ExteriorOrSymmetricAlgebraMultiplication,
         
         m_ij := CokernelProjection( C,
                         PreCompose( C,
-                                subtraction_or_addition( C, IdentityMorphism( C, Range( tau ) ), tau ),
+                                subtraction_or_addition( C, IdentityMorphism( C, Target( tau ) ), tau ),
                                 m_i_minus_1_1_V ) );
         
     else ## j > 1: A^i V \otimes A^j V \to A^{i+j} V

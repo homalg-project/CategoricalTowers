@@ -31,7 +31,7 @@ BindGlobal( "INSTALL_FUNCTOR_GRADED_STANDARD_MODULE_METHODS",
             
             matrix := basis_of_module( UnderlyingMatrix( object ) );
             
-            return as_presentation( matrix, DegreeList( Range( RelationMorphism( object ) ) ), HomalgRing( matrix ) );
+            return as_presentation( matrix, DegreeList( Target( RelationMorphism( object ) ) ), HomalgRing( matrix ) );
             
         end );
         
@@ -122,7 +122,7 @@ BindGlobal( "INSTALL_FUNCTOR_GET_RID_OF_ZERO_HOMOGENEOUS_GENERATORS_METHODS",
                 
                 source_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Source( morphism ) ) );
                 
-                range_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Range( morphism ) ) );
+                range_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Target( morphism ) ) );
                 
                 new_morphism_matrix := UnderlyingMatrix( morphism );
                 
@@ -141,7 +141,7 @@ BindGlobal( "INSTALL_FUNCTOR_GET_RID_OF_ZERO_HOMOGENEOUS_GENERATORS_METHODS",
                 
                 source_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Source( morphism ) ) );
                 
-                range_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Range( morphism ) ) );
+                range_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Target( morphism ) ) );
                 
                 new_morphism_matrix := UnderlyingMatrix( morphism );
                 
@@ -207,7 +207,7 @@ InstallMethod( FunctorLessHomogeneousGeneratorsLeft,
         
         new_object := triple[1];
         
-        degrees := DegreeList( Range( DeduceSomeMapFromMatrixAndSourceForGradedRows( triple[2], Range( RelationMorphism( object ) ) ) ) );
+        degrees := DegreeList( Target( DeduceSomeMapFromMatrixAndSourceForGradedRows( triple[2], Target( RelationMorphism( object ) ) ) ) );
         
         return FpGradedLeftModuleByFreyd( new_object, degrees, HomalgRing( new_object ) );
         
@@ -220,7 +220,7 @@ InstallMethod( FunctorLessHomogeneousGeneratorsLeft,
         
         source_transformation_triple := LessGeneratorsTransformationTripleLeft( UnderlyingMatrix( Source( morphism ) ) );
         
-        range_transformation_triple := LessGeneratorsTransformationTripleLeft( UnderlyingMatrix( Range( morphism ) ) );
+        range_transformation_triple := LessGeneratorsTransformationTripleLeft( UnderlyingMatrix( Target( morphism ) ) );
         
         new_morphism_matrix := UnderlyingMatrix( morphism );
         
@@ -254,7 +254,7 @@ InstallMethod( FunctorLessHomogeneousGeneratorsRight,
         
         new_object := triple[1];
         
-        degrees := DegreeList( Range( DeduceSomeMapFromMatrixAndSourceForGradedCols( triple[2], Range( RelationMorphism( object ) ) ) ) );
+        degrees := DegreeList( Target( DeduceSomeMapFromMatrixAndSourceForGradedCols( triple[2], Target( RelationMorphism( object ) ) ) ) );
         
         return FpGradedRightModuleByFreyd( new_object, degrees, HomalgRing( new_object ) );
         
@@ -267,7 +267,7 @@ InstallMethod( FunctorLessHomogeneousGeneratorsRight,
         
         source_transformation_triple := LessGeneratorsTransformationTripleRight( UnderlyingMatrix( Source( morphism ) ) );
         
-        range_transformation_triple := LessGeneratorsTransformationTripleRight( UnderlyingMatrix( Range( morphism ) ) );
+        range_transformation_triple := LessGeneratorsTransformationTripleRight( UnderlyingMatrix( Target( morphism ) ) );
         
         new_morphism_matrix := UnderlyingMatrix( morphism );
         
@@ -323,7 +323,7 @@ InstallMethod( FunctorDualLeft,
            mor2 := GradedPresentationMorphismByFreyd( FreeLeftPresentation( NrColumns( matrix_of_morphism ), ring )
                                          , Involution( matrix_of_morphism ), FreeLeftPresentation( NrRows( matrix_of_morphism ), ring ) );
            
-           matrix_of_the_range := UnderlyingMatrix( Range( morphism ) );
+           matrix_of_the_range := UnderlyingMatrix( Target( morphism ) );
            
            mor1 := KernelEmbedding( GradedPresentationMorphismByFreyd( FreeLeftPresentation( NrColumns( matrix_of_the_range ), ring )
                                          , Involution( matrix_of_the_range ), FreeLeftPresentation( NrRows( matrix_of_the_range ), ring ) ) );
@@ -384,7 +384,7 @@ InstallMethod( FunctorDualRight,
            mor2 := GradedPresentationMorphismByFreyd( FreeRightPresentation( NrRows( matrix_of_morphism ), ring )
                                          , Involution( matrix_of_morphism ), FreeRightPresentation( NrColumns( matrix_of_morphism ), ring ) );
            
-           matrix_of_the_range := UnderlyingMatrix( Range( morphism ) );
+           matrix_of_the_range := UnderlyingMatrix( Target( morphism ) );
            
            mor1 := KernelEmbedding( GradedPresentationMorphismByFreyd( FreeRightPresentation( NrRows( matrix_of_the_range ), ring )
                                          , Involution( matrix_of_the_range ), FreeRightPresentation( NrColumns( matrix_of_the_range ), ring ) ) );

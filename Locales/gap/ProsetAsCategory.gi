@@ -174,7 +174,7 @@ InstallMethodWithCache( ProsetAsCategory,
         return MorphismConstructor( cat,
                        Source( mor_pre ),
                        fail,
-                       Range( mor_post ) );
+                       Target( mor_post ) );
         
     end );
     

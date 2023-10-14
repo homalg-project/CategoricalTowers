@@ -23,7 +23,7 @@ InstallMethod( AsSliceCategoryCell,
   function( morphism )
     local S;
     
-    S := SliceCategory( Range( morphism ) );
+    S := SliceCategory( Target( morphism ) );
     
     return AsSliceCategoryCell( morphism, S );
     
@@ -114,7 +114,7 @@ InstallMethod( SliceCategory,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), [ "the object datum given to the object constructor of <cat>" ] );
         
-        if not IsEqualForObjects( Range( underlying_morphism ), BaseObject( cat ) ) then
+        if not IsEqualForObjects( Target( underlying_morphism ), BaseObject( cat ) ) then
             
             Error( "the target of morphism and the base object of the slice category S are not equal\n" );
             

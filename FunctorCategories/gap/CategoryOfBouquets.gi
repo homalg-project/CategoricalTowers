@@ -116,7 +116,7 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
         
         PSh := ModelingCategory( F_hat );
         
-        sFinSets := Range( PSh );
+        sFinSets := Target( PSh );
         
         V := ObjectConstructor( sFinSets, triple[1] );
         
@@ -159,7 +159,7 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
         
         PSh := ModelingCategory( F_hat );
         
-        sFinSets := Range( PSh );
+        sFinSets := Target( PSh );
         
         S := ObjectDatum( F_hat, source );
         T := ObjectDatum( F_hat, range );
@@ -416,9 +416,9 @@ InstallMethod( \.,
     name := NameRNam( string_as_int );
     
     if name = "P" then
-        return MapOfFinSets( Source( mor ).P, datum[1], Range( mor ).P );
+        return MapOfFinSets( Source( mor ).P, datum[1], Target( mor ).P );
     elif name = "L" then
-        return MapOfFinSets( Source( mor ).L, datum[2], Range( mor ).L );
+        return MapOfFinSets( Source( mor ).L, datum[2], Target( mor ).L );
     fi;
     
     Error( "the bouquet morphism has no component with the name \"", name, "\"\n" );
@@ -480,7 +480,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
   function ( monomorphism )
     local bouquet, vertices, loops, str, vertices_of_loops, i;
     
-    bouquet := Range( monomorphism );
+    bouquet := Target( monomorphism );
     
     vertices := AsList( monomorphism.P );
     loops := AsList( monomorphism.L );

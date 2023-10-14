@@ -12,7 +12,7 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctorForHomalg,
   function( natiso, cat_intrinsic )
     local F, cat_with_amb_objects, Id;
     
-    F := Range( natiso );
+    F := Target( natiso );
     
     ## CategoryWithAmbientObjects
     
@@ -60,7 +60,7 @@ InstallGlobalFunction( INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS,
               ]
             ) );
     
-    AddToToDoList( ToDoListEntry( [ [ output, "IsMonomorphism" ], [ Range( output ), "RankOfObject", 0 ] ],
+    AddToToDoList( ToDoListEntry( [ [ output, "IsMonomorphism" ], [ Target( output ), "RankOfObject", 0 ] ],
             [ [ "if the rank of a module is zero the rank of any of its submodules is zero",
                 [ Source( output ), "RankOfObject", 0 ] ],
               ]
@@ -68,7 +68,7 @@ InstallGlobalFunction( INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS,
     
     AddToToDoList( ToDoListEntry( [ [ output, "IsEpimorphism" ], [ Source( output ), "RankOfObject", 0 ] ],
             [ [ "if the rank of a module is zero the rank of any of its factor modules is zero",
-                [ Range( output ), "RankOfObject", 0 ] ],
+                [ Target( output ), "RankOfObject", 0 ] ],
               ]
             ) );
     
@@ -104,7 +104,7 @@ BindGlobal( "INSTALL_ImageEmbeddingForFpModules",
         
         mat := UnderlyingMatrix( morphism );
         
-        T := Range( morphism );
+        T := Target( morphism );
         
         B := UnderlyingMatrix( T );
         

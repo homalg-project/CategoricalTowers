@@ -58,7 +58,7 @@ InstallMethod( Display,
 
   function( u )
     
-    Display( Range( u ) );
+    Display( Target( u ) );
     Print( " ^\n |\n |\n" );
     Display( Source( u ) );
     

@@ -120,7 +120,7 @@ InstallOtherMethod( NrGenerators,
         
   function( M )
     
-    return RankOfObject( Range( RelationMorphism( M ) ) );
+    return RankOfObject( Target( RelationMorphism( M ) ) );
     
 end );
 
@@ -208,7 +208,7 @@ InstallOtherMethod( DegreesOfGenerators,
 
   function( M )
     
-    return -UnzipDegreeList( Range( RelationMorphism( M ) ) );
+    return -UnzipDegreeList( Target( RelationMorphism( M ) ) );
     
 end );
 
@@ -509,7 +509,7 @@ InstallMethod( PresentationMorphism,
     
     pres := RelationMorphism( RelationsOfModule( M ) );
     
-    range := Range( pres );
+    range := Target( pres );
     
     rel := UnderlyingHomalgMatrix( pres );
     
@@ -532,13 +532,13 @@ InstallMethod( PresentationMorphism,
     
     pres := AsFreydCategoryMorphism( pres );
     
-    pres := GradedMap( pres, HomalgGradedModule( Source( pres ) ), HomalgGradedModule( Range( pres ) ) );
+    pres := GradedMap( pres, HomalgGradedModule( Source( pres ) ), HomalgGradedModule( Target( pres ) ) );
     
     if not HasCokernelEpi( pres ) then
         ## the zero'th component of the quasi-isomorphism,
         ## which in this case is simply the natural epimorphism onto the module
         epi := HomalgIdentityMatrix( RankOfObject( range ), S );
-        epi := GradedMap( epi, Range( pres ), M );
+        epi := GradedMap( epi, Target( pres ), M );
         
         SetIsEpimorphism( epi, true );
         SetCokernelEpi( pres, epi );

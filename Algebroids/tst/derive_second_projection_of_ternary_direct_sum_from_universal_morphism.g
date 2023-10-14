@@ -120,7 +120,7 @@ func := function ( dummy, a_dummy, b_dummy, c_dummy, abc_dummy )
         
         coeffs := CoefficientsList( mor );
         support := SupportMorphisms( mor );
-        support_range := List( support, s -> morphism_function_F( object_function_F( Source( s ) ), s, object_function_F( Range( s ) ) ) );
+        support_range := List( support, s -> morphism_function_F( object_function_F( Source( s ) ), s, object_function_F( Target( s ) ) ) );
         
         return LinearCombinationOfMorphisms( dummy, source, coeffs, support_range, range );
         
@@ -142,7 +142,7 @@ func := function ( dummy, a_dummy, b_dummy, c_dummy, abc_dummy )
         local source_diagram, range_diagram, listlist;
         
         source_diagram := List( ObjectList( Source( alpha ) ), obj -> object_function_L( obj ) );
-        range_diagram := List( ObjectList( Range( alpha ) ), obj -> object_function_L( obj ) );
+        range_diagram := List( ObjectList( Target( alpha ) ), obj -> object_function_L( obj ) );
         
         listlist := List( [ 1 .. NrRows( alpha ) ], i -> List( [ 1 .. NrCols( alpha ) ], j -> morphism_function_L( source_diagram[i], alpha[i,j], range_diagram[j] ) ) );
         

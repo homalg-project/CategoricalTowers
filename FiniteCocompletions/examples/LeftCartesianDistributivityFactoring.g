@@ -56,7 +56,7 @@ IsOne( phi );
 #! true
 Source( phi ) = axb_u_axc;
 #! true
-Range( phi ) = a_x_buc;
+Target( phi ) = a_x_buc;
 #! true
 IsOne( phi );
 #! true

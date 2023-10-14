@@ -201,7 +201,7 @@ InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
         function( cat, phi )
           
           return IsWellDefinedForObjects( cat, Source( phi ) ) and
-                 IsWellDefinedForObjects( cat, Range( phi ) ) and
+                 IsWellDefinedForObjects( cat, Target( phi ) ) and
                  IsWellDefinedForMorphisms( AmbientCategory( cat ), UnderlyingCell( phi ) );
                     
       end );
@@ -293,7 +293,7 @@ InstallGlobalFunction( FullSubcategoryByObjectMembershipFunction,
         
         return IsWellDefinedForMorphisms( AmbientCategory( cat ), UnderlyingCell( alpha ) ) and
                IsWellDefinedForObjects( cat, Source( alpha ) ) and
-               IsWellDefinedForObjects( cat, Range( alpha ) );
+               IsWellDefinedForObjects( cat, Target( alpha ) );
 
         
     end );

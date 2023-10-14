@@ -55,7 +55,7 @@ h := p[1];
 #! <A monomorphism in FinSets>
 p := p[2];
 #! <A monomorphism in FinSets>
-H := Range( p );;
+H := Target( p );;
 Length( H );
 #! 7
 Display( H );

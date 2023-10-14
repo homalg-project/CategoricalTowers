@@ -333,9 +333,9 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
     
     distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
     
-    H_B_C := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
+    H_B_C := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Target( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
     
-    H_A_D := List( [ 1 .. m ], i -> HomomorphismStructureOnObjects( cat, Source( left_coefficients[i][1] ), Range( right_coefficients[i][1] ) ) );
+    H_A_D := List( [ 1 .. m ], i -> HomomorphismStructureOnObjects( cat, Source( left_coefficients[i][1] ), Target( right_coefficients[i][1] ) ) );
     
     list :=
       List( [ 1 .. n ],
@@ -352,7 +352,7 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
       List( basis, m ->
         List( [ 1 .. n ], j ->
           InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
-            Range( left_coefficients[1][j] ),
+            Target( left_coefficients[1][j] ),
             Source( right_coefficients[1][j] ),
             PreCompose( range_cat, m, ProjectionInFactorOfDirectSum( range_cat, H_B_C, j ) ) ) ) );
     
@@ -386,9 +386,9 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCateg
     
     distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
     
-    H_B_C := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Range( alpha[1][j] ), Source( beta[1][j] ) ) );
+    H_B_C := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Target( alpha[1][j] ), Source( beta[1][j] ) ) );
     
-    H_A_D := List( [ 1 .. m ], i -> HomomorphismStructureOnObjects( cat, Source( alpha[i][1] ), Range( beta[i][1] ) ) );
+    H_A_D := List( [ 1 .. m ], i -> HomomorphismStructureOnObjects( cat, Source( alpha[i][1] ), Target( beta[i][1] ) ) );
     
     list_1 :=
       List( [ 1 .. n ],
@@ -414,7 +414,7 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCateg
       List( B, m ->
         List( [ 1 .. n ], j ->
           InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
-            Range( alpha[1][j] ),
+            Target( alpha[1][j] ),
             Source( beta[1][j] ),
             PreCompose( range_cat, m, ProjectionInFactorOfDirectSum( range_cat, H_B_C, j ) )
           )
@@ -453,7 +453,7 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
     interpretations := List( [ 1 .. m ], i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, right_side[i] ) );
     
     nu := UniversalMorphismIntoDirectSum( range_cat,
-        List( interpretations, mor -> Range( mor ) ),
+        List( interpretations, mor -> Target( mor ) ),
         distinguished_object,
         interpretations
     );
@@ -461,9 +461,9 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
     # left_coefficients[i][j] : A_i -> B_j
     # right_coefficients[i][j] : C_j -> D_i
     
-    H_B_C := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
+    H_B_C := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Target( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
     
-    H_A_D := List( [ 1 .. m ], i -> HomomorphismStructureOnObjects( cat, Source( left_coefficients[i][1] ), Range( right_coefficients[i][1] ) ) );
+    H_A_D := List( [ 1 .. m ], i -> HomomorphismStructureOnObjects( cat, Source( left_coefficients[i][1] ), Target( right_coefficients[i][1] ) ) );
     
     list :=
       List( [ 1 .. n ],
@@ -501,9 +501,9 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCa
     
     distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
     
-    H_B_C := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
+    H_B_C := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Target( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
     
-    H_A_D := List( [ 1 .. m ], i -> HomomorphismStructureOnObjects( cat, Source( left_coefficients[i][1] ), Range( right_coefficients[i][1] ) ) );
+    H_A_D := List( [ 1 .. m ], i -> HomomorphismStructureOnObjects( cat, Source( left_coefficients[i][1] ), Target( right_coefficients[i][1] ) ) );
     
     list :=
       List( [ 1 .. n ],

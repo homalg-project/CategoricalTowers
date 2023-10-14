@@ -137,7 +137,7 @@ InstallMethod( FiniteStrictProductCompletion,
                                Pair( pair_of_lists[1],
                                      List( pair_of_lists[2], morC ->
                                            MorphismConstructor( opC,
-                                                   ObjectConstructor( opC, Range( morC ) ),
+                                                   ObjectConstructor( opC, Target( morC ) ),
                                                    morC,
                                                    ObjectConstructor( opC, Source( morC ) ) ) ) ),
                                ObjectDatum( opUopC, source ) ),
@@ -327,7 +327,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData
         local pairS, pairT, s, t, S, T, source_diagram, range_diagram, pair_of_lists, map, mor, functor_on_mor;
         
         pairS := ObjectDatum( PC, Source( morPC ) );
-        pairT := ObjectDatum( PC, Range( morPC ) );
+        pairT := ObjectDatum( PC, Target( morPC ) );
         
         s := pairS[1];
         t := pairT[1];
@@ -429,7 +429,7 @@ InstallMethod( Display,
     
     sFinSets := ValueGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory" );
     
-    Print( ObjectConstructor( sFinSets, ObjectDatum( Range( phi ) )[1] ) );
+    Print( ObjectConstructor( sFinSets, ObjectDatum( Target( phi ) )[1] ) );
     Print( " ⱶ", MorphismDatum( phi )[1], "→ " );
     Print( ObjectConstructor( sFinSets, ObjectDatum( Source( phi ) )[1] ), "\n\n" );
     

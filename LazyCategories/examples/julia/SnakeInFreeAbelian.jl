@@ -61,10 +61,10 @@ SetLabel( Source( a ), "1" )
 SetLabel( Source( b ), "2" )
 
 # ╔═╡ 0f4e9c22-e033-45c9-9ae3-d9222c9800d4
-SetLabel( Range( b ), "3" )
+SetLabel( Target( b ), "3" )
 
 # ╔═╡ aba60cef-9a33-4db4-8bb3-2e712d380abc
-SetLabel( Range( c ), "4" )
+SetLabel( Target( c ), "4" )
 
 # ╔═╡ ef196ca0-5298-4d30-b58f-a66b68cbb1ef
 d = CokernelProjection( a )

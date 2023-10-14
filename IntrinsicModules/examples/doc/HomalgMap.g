@@ -78,7 +78,7 @@ chi := HomalgMap( mat ); ## or chi := HomalgMap( mat, "l" );
 #! <A homomorphism of left modules>
 Source( chi );
 #! <A free left module of rank 3 on free generators>
-Range( chi );
+Target( chi );
 #! <A free left module of rank 4 on free generators>
 #! @EndExample
 #! To construct a map between not yet specified free right modules
@@ -87,6 +87,6 @@ kappa := HomalgMap( mat, "r" );
 #! <A homomorphism of right modules>
 Source( kappa );
 #! <A free right module of rank 4 on free generators>
-Range( kappa );
+Target( kappa );
 #! <A free right module of rank 3 on free generators>
 #! @EndExample

@@ -85,6 +85,6 @@ Display( Source( iota ) );
 #! A morphism in Rows( Q[x,y] )
 #! 
 #! An object in the slice category given by the above data
-Source( iota ) = Range( iota );
+Source( iota ) = Target( iota );
 #! true
 #! @EndExample

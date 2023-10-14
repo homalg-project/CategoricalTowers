@@ -34,7 +34,7 @@ InstallOtherMethod( UnderlyingCapTwoCategoryCell,
     
     values := ValuesOfFunctor( F );
     
-    return CapFunctor( Source( Hom ), values[1], values[2], Range( Hom ) );
+    return CapFunctor( Source( Hom ), values[1], values[2], Target( Hom ) );
     
 end );
 
@@ -68,7 +68,7 @@ InstallMethod( ApplyObjectInFunctorCategoryToMorphism,
     return FunctorMorphismOperation( UnderlyingCapTwoCategoryCell( Hom, F ) )(
                    ApplyObjectInFunctorCategoryToObject( Hom, F, Source( morB ) ),
                    morB,
-                   ApplyObjectInFunctorCategoryToObject( Hom, F, Range( morB ) ) );
+                   ApplyObjectInFunctorCategoryToObject( Hom, F, Target( morB ) ) );
     
 end );
 
@@ -158,7 +158,7 @@ InstallOtherMethodForCompilerForCAP( AsObjectInFunctorCategoryByValues,
     
     return CreateCapCategoryObjectWithAttributes( Hom,
                    Source, Source( Hom ),
-                   Range, Range( Hom ),
+                   Range, Target( Hom ),
                    ValuesOfFunctor, values_of_functor );
     
 end );
@@ -290,7 +290,7 @@ InstallMethod( AsObjectInFunctorCategory,
         local source, target;
         
         source := VertexIndex( UnderlyingVertex( Source( morphisms[m] ) ) );
-        target := VertexIndex( UnderlyingVertex( Range( morphisms[m] ) ) );
+        target := VertexIndex( UnderlyingVertex( Target( morphisms[m] ) ) );
         
         if IsHomalgMatrix( matrices[m] ) then
             m := matrices[m];
@@ -357,7 +357,7 @@ InstallOtherMethodForCompilerForCAP( AsMorphismInFunctorCategory,
     return AsMorphismInFunctorCategory( Hom,
                    AsObjectInFunctorCategory( Source( eta ) ),
                    { source, objB_index, range } -> NaturalTransformationOperation( eta )( source, objs[objB_index], range ),
-                   AsObjectInFunctorCategory( Range( eta ) ) );
+                   AsObjectInFunctorCategory( Target( eta ) ) );
     
 end );
 
@@ -404,7 +404,7 @@ InstallMethod( AsMorphismInFunctorCategory,
     
     if not IsEmpty( e ) and IsHomalgMatrix( e[1] ) then
         
-        kmat := Range( U );
+        kmat := Target( U );
         
         e := List( e, mat -> mat / kmat );
         
@@ -564,7 +564,7 @@ InstallMethodWithCache( FunctorCategory,
             local B, D, I_D, functor_on_objects, counit, id, mors, functor_on_morphisms;
             
             B := Source( Hom );
-            D := Range( Hom );
+            D := Target( Hom );
             
             I_D := TensorUnit( D );
             
@@ -603,7 +603,7 @@ InstallMethodWithCache( FunctorCategory,
             local B, D, F_o_vals, G_o_vals, functor_on_objects, comult, mors, functor_on_morphisms;
             
             B := Source( Hom );
-            D := Range( Hom );
+            D := Target( Hom );
             
             F_o_vals := ValuesOfFunctor( F )[1];
             G_o_vals := ValuesOfFunctor( G )[1];
@@ -637,7 +637,7 @@ InstallMethodWithCache( FunctorCategory,
             local B, D, F_o_vals, functor_on_objects, antipode, mors, functor_on_morphisms;
             
             B := Source( Hom );
-            D := Range( Hom );
+            D := Target( Hom );
             
             F_o_vals := ValuesOfFunctor( F )[1];
             
@@ -666,7 +666,7 @@ InstallMethodWithCache( FunctorCategory,
     fi;
     
     SetSource( Hom, B );
-    SetRange( Hom, D );
+    SetTarget( Hom, D );
     
     SetSetOfObjects( Hom, SetOfObjects( B ) );
     SetSetOfGeneratingMorphisms( Hom, SetOfGeneratingMorphisms( B ) );
@@ -1007,7 +1007,7 @@ InstallMethod( ViewString,
   function ( F )
     local algebroid, vertices, arrows, v_dim, v_string, a_dim, a_string, string;
     
-    if not (IsMatrixCategory( Range( CapCategory( F ) ) ) or IsCategoryOfRows( Range( CapCategory( F ) ) )) then
+    if not (IsMatrixCategory( Target( CapCategory( F ) ) ) or IsCategoryOfRows( Target( CapCategory( F ) ) )) then
         TryNextMethod();
     fi;
     
@@ -1033,7 +1033,7 @@ InstallMethod( ViewString,
       
     fi;
     
-    a_dim := List( ValuesOfFunctor( F )[2], m -> [ ObjectDatum( Source( m ) ), ObjectDatum( Range( m ) ) ] );
+    a_dim := List( ValuesOfFunctor( F )[2], m -> [ ObjectDatum( Source( m ) ), ObjectDatum( Target( m ) ) ] );
     
     a_string := ListN( arrows, a_dim,
                   { arrow, dim } -> Concatenation(
@@ -1095,7 +1095,7 @@ InstallMethod( ViewString,
   function ( eta )
     local vertices, s_dim, r_dim, string;
     
-    if not (IsMatrixCategory( Range( CapCategory( eta ) ) ) or IsCategoryOfRows( Range( CapCategory( eta ) ) )) then
+    if not (IsMatrixCategory( Target( CapCategory( eta ) ) ) or IsCategoryOfRows( Target( CapCategory( eta ) ) )) then
         TryNextMethod();
     fi;
     
@@ -1103,7 +1103,7 @@ InstallMethod( ViewString,
      
     s_dim := List( ValuesOfFunctor( Source( eta ) )[1], ObjectDatum );
     
-    r_dim := List( ValuesOfFunctor( Range( eta ) )[1], ObjectDatum );
+    r_dim := List( ValuesOfFunctor( Target( eta ) )[1], ObjectDatum );
    
     string := ListN( vertices, s_dim, r_dim,
                 { vertex, s, r } ->
@@ -1227,7 +1227,7 @@ InstallMethod( LaTeXOutput,
                 "\\xrightarrow{",
                 datum,
                 "}",
-                LaTeXOutput( Range( eta ) )
+                LaTeXOutput( Target( eta ) )
               );
     
     fi;

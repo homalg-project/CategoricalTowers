@@ -203,7 +203,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
         fi;
         
-        if IsEqualForObjects( AmbientCategory( cat ), Range( underlying_morphism ), SourceOfUnderlyingMorphism( range ) ) = false then
+        if IsEqualForObjects( AmbientCategory( cat ), Target( underlying_morphism ), SourceOfUnderlyingMorphism( range ) ) = false then
             
             Error( "the range of the morphism datum must be equal to <SourceOfUnderlyingMorphism( range )>" );
             
@@ -262,7 +262,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
         m := UnderlyingMorphism( a );
         
-        return IsEqualForObjects( C, Range( m ), BaseObject( cat ) ) and
+        return IsEqualForObjects( C, Target( m ), BaseObject( cat ) ) and
                IsWellDefinedForMorphisms( C, m );
         
     end );
@@ -274,12 +274,12 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         C := AmbientCategory( cat );
         
         mS := UnderlyingMorphism( Source( phi ) );
-        mT := UnderlyingMorphism( Range( phi ) );
+        mT := UnderlyingMorphism( Target( phi ) );
         
         phi_underlying := UnderlyingCell( phi );
         
         return IsEqualForObjects( C, Source( mS ), Source( phi_underlying ) ) and
-               IsEqualForObjects( C, Source( mT ), Range( phi_underlying ) ) and
+               IsEqualForObjects( C, Source( mT ), Target( phi_underlying ) ) and
                IsWellDefinedForMorphisms( C, phi_underlying ) and
                IsCongruentForMorphisms( C, mS, PreCompose( C, phi_underlying, mT ) );
         
@@ -560,7 +560,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             emb := ImageEmbedding( C,
                            UnderlyingCell( phi ) );
             
-            range := Range( phi );
+            range := Target( phi );
             
             im := ObjectConstructor( cat,
                           PreCompose( C,
@@ -656,11 +656,11 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             chi_C := ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( mono_C, Omega_C );
             
             return MorphismConstructor( cat,
-                           Range( mono ),
+                           Target( mono ),
                            UniversalMorphismIntoDirectProductWithGivenDirectProduct( C,
                                    [ Omega_C, BaseObject( cat ) ],
-                                   Range( mono_C ),
-                                   [ chi_C, UnderlyingMorphism( Range( mono ) ) ],
+                                   Target( mono_C ),
+                                   [ chi_C, UnderlyingMorphism( Target( mono ) ) ],
                                    SourceOfUnderlyingMorphism( cat, Omega ) ),
                            Omega );
             
@@ -695,7 +695,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             pi_2 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( C,
                             [ PowerObject( A ), B ],
                             2,
-                            Range( e ) );
+                            Target( e ) );
             
             ## P_f → B as an object of the slice category
             return ObjectConstructor( cat,
@@ -717,7 +717,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             ## s: S → B
             s := UnderlyingMorphism( Source( g ) );
             ## t: T → B
-            t := UnderlyingMorphism( Range( g ) );
+            t := UnderlyingMorphism( Target( g ) );
             
             S := Source( s );
             T := Source( t );
@@ -733,7 +733,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             ## PT × B → PS × B
             Pg_CxB := DirectProductFunctorialWithGivenDirectProducts( C,
                               ## PT × B
-                              Range( P_t ),
+                              Target( P_t ),
                               [ PT, B ],
                               [ ## PT → PS
                                 PowerObjectFunctorialWithGivenPowerObjects( C, PT, UnderlyingCell( g ), PS ),
@@ -741,7 +741,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                                 IdentityMorphism( C, B ) ],
                               [ PS, B ],
                               ## PS × B
-                              Range( P_s ) );
+                              Target( P_s ) );
             
             ## P_B(S) → P_B(T)
             return MorphismConstructor( cat,
@@ -863,8 +863,8 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             I := Source( phi );
             J := Source( psi );
             
-            IP := Range( phi );
-            JP := Range( psi );
+            IP := Target( phi );
+            JP := Target( psi );
             
             # I ⊗ J: i ⊗ j -> 1
             source := TensorProductOnObjectsInSliceOverTensorUnit( cat, I, J);
@@ -1027,9 +1027,9 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                 C := AmbientCategory( cat );
                 
                 J := UnderlyingMorphism( Source( phi ) ); ## R^j -> R
-                Jp := UnderlyingMorphism( Range( phi ) ); ## R^j' -> R
+                Jp := UnderlyingMorphism( Target( phi ) ); ## R^j' -> R
                 I := UnderlyingMorphism( Source( psi ) ); ## R^i -> R
-                Ip := UnderlyingMorphism( Range( psi ) ); ## R^i' -> R
+                Ip := UnderlyingMorphism( Target( psi ) ); ## R^i' -> R
                 
                 tau1 := UnderlyingMorphism( source ); ## R^(i:j') -> R, where i:j' = nr_gen( I:J' )
 
@@ -1060,7 +1060,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                 
                 C := AmbientCategory( cat );
                 
-                I := Range( f );
+                I := Target( f );
                 
                 source := K;
                 target := InternalHomOnObjects( cat, J, I );

@@ -12,7 +12,7 @@ InstallMethod( AsSliceCategoryCell,
   function( L )
     local B, S, o;
     
-    B := Range( L[1] );
+    B := Target( L[1] );
     
     S := LazySliceCategory( B );
     
@@ -154,7 +154,7 @@ InstallMethod( LazySliceCategory,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Perform( underlying_morphism_list, function ( mor ) CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( mor, AmbientCategory( cat ), [ "some entry of the object datum given to the object constructor of <cat>" ] ); end );
         
-        if not ForAll( underlying_morphism_list, morphism -> IsEqualForObjects( Range( morphism ), BaseObject( cat ) ) ) then
+        if not ForAll( underlying_morphism_list, morphism -> IsEqualForObjects( Target( morphism ), BaseObject( cat ) ) ) then
             
             Error( "the targets of the morphisms and the base object of the slice category S are not equal\n" );
             

@@ -22,7 +22,7 @@ InstallMethod( CategoryOfLeftEModules,
     
     structure_morphism := ExteriorAlgebraMultiplicationMorphism( V );
     
-    EV := Range( structure_morphism );
+    EV := Target( structure_morphism );
     
     name := Concatenation( "Abelian category of left modules over the internal exterior algebra of ", String( EV[1] ) );
     
@@ -57,7 +57,7 @@ InstallMethod( CategoryOfRightEModules,
     
     structure_morphism := ExteriorAlgebraMultiplicationMorphism( V );
     
-    EV := Range( structure_morphism );
+    EV := Target( structure_morphism );
     
     name := Concatenation( "Abelian category of right modules over the internal exterior algebra of ", String( EV[1] ) );
     

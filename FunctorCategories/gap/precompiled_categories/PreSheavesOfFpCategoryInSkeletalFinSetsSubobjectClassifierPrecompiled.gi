@@ -11,7 +11,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsSubobjectC
 ########
 function ( cat_1 )
     local deduped_1_1, deduped_3_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_12_1, deduped_13_1, deduped_15_1, deduped_16_1, deduped_17_1, hoisted_19_1, hoisted_21_1, deduped_22_1, hoisted_23_1, hoisted_24_1, hoisted_25_1, hoisted_26_1, hoisted_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1;
-    deduped_37_1 := Range( cat_1 );
+    deduped_37_1 := Target( cat_1 );
     deduped_36_1 := Source( cat_1 );
     deduped_35_1 := SetOfGeneratingMorphisms( deduped_36_1 );
     deduped_34_1 := SetOfObjects( deduped_36_1 );

@@ -296,7 +296,7 @@ InstallMethodWithCache( PreSheaves,
         
         return CreateCapCategoryObjectWithAttributes( cat,
                        Source, Source( cat ),
-                       Range, Range( cat ),
+                       Range, Target( cat ),
                        PairOfFunctionsOfPreSheaf, pair_of_functions_of_presheaf );
         
     end;
@@ -337,7 +337,7 @@ InstallMethodWithCache( PreSheaves,
               function ( input_arguments... )
                 local D, objD, presheaf_on_objects, presheaf_on_morphisms;
                 
-                D := Range( cat );
+                D := Target( cat );
                 
                 objD := operation_name( D );
                 
@@ -359,7 +359,7 @@ InstallMethodWithCache( PreSheaves,
               function ( input_arguments... )
                 local D, i_arg, etas, presheaf_on_objects, presheaf_on_morphisms;
                 
-                D := Range( cat );
+                D := Target( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
@@ -375,7 +375,7 @@ InstallMethodWithCache( PreSheaves,
                         return FunctionOfPreSheafMorphism( eta )(
                                        PairOfFunctionsOfPreSheaf( Source( eta ) )[1]( objB ),
                                        objB,
-                                       PairOfFunctionsOfPreSheaf( Range( eta ) )[1]( objB ) );
+                                       PairOfFunctionsOfPreSheaf( Target( eta ) )[1]( objB ) );
                         
                     end;
                     
@@ -398,18 +398,18 @@ InstallMethodWithCache( PreSheaves,
                         local source_eta, range_eta, eta_func, Stm, Rtm, Ssm, Rsm;
                         
                         source_eta := PairOfFunctionsOfPreSheaf( Source( eta ) );
-                        range_eta := PairOfFunctionsOfPreSheaf( Range( eta ) );
+                        range_eta := PairOfFunctionsOfPreSheaf( Target( eta ) );
                         eta_func := FunctionOfPreSheafMorphism( eta );
                         
-                        Stm := source_eta[1]( Range( morB ) );
-                        Rtm := range_eta[1]( Range( morB ) );
+                        Stm := source_eta[1]( Target( morB ) );
+                        Rtm := range_eta[1]( Target( morB ) );
                         Ssm := source_eta[1]( Source( morB ) );
                         Rsm := range_eta[1]( Source( morB ) );
                         
                         return
-                          [ eta_func( Stm, Range( morB ), Rtm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
+                          [ eta_func( Stm, Target( morB ), Rtm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Target( morB ) )
                             source_eta[2]( Stm, morB, Ssm ),         ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                            range_eta[2]( Rtm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
+                            range_eta[2]( Rtm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Target( eta ), morB )
                             eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
                             ];
                         
@@ -437,7 +437,7 @@ InstallMethodWithCache( PreSheaves,
               function ( input_arguments... )
                 local D, i_arg, object, etas, presheaf_on_objects, presheaf_on_morphisms;
                 
-                D := Range( cat );
+                D := Target( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
@@ -454,7 +454,7 @@ InstallMethodWithCache( PreSheaves,
                         return FunctionOfPreSheafMorphism( eta )(
                                        PairOfFunctionsOfPreSheaf( Source( eta ) )[1]( objB ),
                                        objB,
-                                       PairOfFunctionsOfPreSheaf( Range( eta ) )[1]( objB ) );
+                                       PairOfFunctionsOfPreSheaf( Target( eta ) )[1]( objB ) );
                         
                     end;
                     
@@ -479,18 +479,18 @@ InstallMethodWithCache( PreSheaves,
                         local source_eta, range_eta, eta_func, Stm, Rtm, Ssm, Rsm;
                         
                         source_eta := PairOfFunctionsOfPreSheaf( Source( eta ) );
-                        range_eta := PairOfFunctionsOfPreSheaf( Range( eta ) );
+                        range_eta := PairOfFunctionsOfPreSheaf( Target( eta ) );
                         eta_func := FunctionOfPreSheafMorphism( eta );
                         
-                        Stm := source_eta[1]( Range( morB ) );
-                        Rtm := range_eta[1]( Range( morB ) );
+                        Stm := source_eta[1]( Target( morB ) );
+                        Rtm := range_eta[1]( Target( morB ) );
                         Ssm := source_eta[1]( Source( morB ) );
                         Rsm := range_eta[1]( Source( morB ) );
                         
                         return
-                          [ eta_func( Stm, Range( morB ), Rtm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
+                          [ eta_func( Stm, Target( morB ), Rtm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Target( morB ) )
                             source_eta[2]( Stm, morB, Ssm ),         ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                            range_eta[2]( Rtm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
+                            range_eta[2]( Rtm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Target( eta ), morB )
                             eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
                             ];
                         
@@ -518,7 +518,7 @@ InstallMethodWithCache( PreSheaves,
               function ( input_arguments... )
                 local D, i_arg, Fs, presheaf_on_objects, presheaf_on_morphisms;
                 
-                D := Range( cat );
+                D := Target( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
@@ -532,7 +532,7 @@ InstallMethodWithCache( PreSheaves,
                                                  new_source,
                                                  List( Fs, F ->
                                                        PairOfFunctionsOfPreSheaf( F )[2](
-                                                               PairOfFunctionsOfPreSheaf( F )[1]( Range( morB ) ),
+                                                               PairOfFunctionsOfPreSheaf( F )[1]( Target( morB ) ),
                                                                morB,
                                                                PairOfFunctionsOfPreSheaf( F )[1]( Source( morB ) ) ) ),
                                                  new_range );
@@ -551,7 +551,7 @@ InstallMethodWithCache( PreSheaves,
               function ( input_arguments... )
                 local D, i_arg, eta, presheaf_on_objects, presheaf_on_morphisms;
                 
-                D := Range( cat );
+                D := Target( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
@@ -564,7 +564,7 @@ InstallMethodWithCache( PreSheaves,
                                    FunctionOfPreSheafMorphism( eta )(
                                            PairOfFunctionsOfPreSheaf( Source( eta ) )[1]( objB ),
                                            objB,
-                                           PairOfFunctionsOfPreSheaf( Range( eta ) )[1]( objB ) ) );
+                                           PairOfFunctionsOfPreSheaf( Target( eta ) )[1]( objB ) ) );
                     
                 end;
                 
@@ -579,17 +579,17 @@ InstallMethodWithCache( PreSheaves,
                     #          R(t(m)) --R(m)-> R(s(m))
                     
                     source_eta := PairOfFunctionsOfPreSheaf( Source( eta ) );
-                    range_eta := PairOfFunctionsOfPreSheaf( Range( eta ) );
+                    range_eta := PairOfFunctionsOfPreSheaf( Target( eta ) );
                     eta_func := FunctionOfPreSheafMorphism( eta );
                     
-                    Stm := source_eta[1]( Range( morB ) );
-                    Rtm := range_eta[1]( Range( morB ) );
+                    Stm := source_eta[1]( Target( morB ) );
+                    Rtm := range_eta[1]( Target( morB ) );
                     Ssm := source_eta[1]( Source( morB ) );
                     Rsm := range_eta[1]( Source( morB ) );
                     
-                    L := [ eta_func( Stm, Range( morB ), Rtm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
+                    L := [ eta_func( Stm, Target( morB ), Rtm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Target( morB ) )
                            source_eta[2]( Stm, morB, Ssm ),         ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                           range_eta[2]( Rtm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
+                           range_eta[2]( Rtm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Target( eta ), morB )
                            eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
                            ];
                     
@@ -624,7 +624,7 @@ InstallMethodWithCache( PreSheaves,
           function ( input_arguments... )
             local D, i_arg, natural_transformation_on_objects;
             
-            D := Range( cat );
+            D := Target( cat );
             
             i_arg := NTuple( number_of_arguments, input_arguments... );
             
@@ -651,13 +651,13 @@ InstallMethodWithCache( PreSheaves,
                      elif type = "object" then
                          return Concatenation( "PairOfFunctionsOfPreSheaf( i_arg[", String( i ), "] )[1]( objB )" );
                      elif type = "morphism" then
-                         return Concatenation( "FunctionOfPreSheafMorphism( i_arg[", String( i ), "] )( PairOfFunctionsOfPreSheaf( Source( i_arg[", String( i ), "] ) )[1]( objB ), objB, PairOfFunctionsOfPreSheaf( Range( i_arg[", String( i ), "] ) )[1]( objB ) )" );
+                         return Concatenation( "FunctionOfPreSheafMorphism( i_arg[", String( i ), "] )( PairOfFunctionsOfPreSheaf( Source( i_arg[", String( i ), "] ) )[1]( objB ), objB, PairOfFunctionsOfPreSheaf( Target( i_arg[", String( i ), "] ) )[1]( objB ) )" );
                      elif type = "list_of_objects" then
                          return Concatenation( "List( i_arg[", String( i ), "], F -> PairOfFunctionsOfPreSheaf( F )[1]( objB ) )" );
                      elif type = "list_of_morphisms" then
-                         return Concatenation( "List( i_arg[", String( i ), "], eta -> FunctionOfPreSheafMorphism( eta )( PairOfFunctionsOfPreSheaf( Source( eta ) )[1]( objB ), objB, PairOfFunctionsOfPreSheaf( Range( eta ) )[1]( objB ) ) )" );
+                         return Concatenation( "List( i_arg[", String( i ), "], eta -> FunctionOfPreSheafMorphism( eta )( PairOfFunctionsOfPreSheaf( Source( eta ) )[1]( objB ), objB, PairOfFunctionsOfPreSheaf( Target( eta ) )[1]( objB ) ) )" );
                      elif type = "pair_of_morphisms" then
-                         return Concatenation( "Pair( FunctionOfPreSheafMorphism( i_arg[", String( i ), "][1] )( PairOfFunctionsOfPreSheaf( Source( i_arg[", String( i ), "][1] ) )[1]( objB ), objB, PairOfFunctionsOfPreSheaf( Range( i_arg[", String( i ), "][1] ) )[1]( objB ) ), FunctionOfPreSheafMorphism( i_arg[", String( i ), "][2] )( PairOfFunctionsOfPreSheaf( Source( i_arg[", String( i ), "][2] ) )[1]( objB ), objB, PairOfFunctionsOfPreSheaf( Range( i_arg[", String( i ), "][2] ) )[1]( objB ) ) )" );
+                         return Concatenation( "Pair( FunctionOfPreSheafMorphism( i_arg[", String( i ), "][1] )( PairOfFunctionsOfPreSheaf( Source( i_arg[", String( i ), "][1] ) )[1]( objB ), objB, PairOfFunctionsOfPreSheaf( Target( i_arg[", String( i ), "][1] ) )[1]( objB ) ), FunctionOfPreSheafMorphism( i_arg[", String( i ), "][2] )( PairOfFunctionsOfPreSheaf( Source( i_arg[", String( i ), "][2] ) )[1]( objB ), objB, PairOfFunctionsOfPreSheaf( Target( i_arg[", String( i ), "][2] ) )[1]( objB ) ) )" );
                      else
                          Error( "cannot deal with ", type );
                      fi;
@@ -739,12 +739,12 @@ InstallMethodWithCache( PreSheaves,
     PSh := CategoryConstructor( category_constructor_options );
     
     SetSource( PSh, B );
-    SetRange( PSh, D );
+    SetTarget( PSh, D );
     SetOppositeOfSource( PSh, B_op );
     
     PSh!.compiler_hints.category_attribute_names :=
       [ "Source",
-        "Range",
+        "Target",
         "OppositeOfSource",
         ];
     
@@ -757,7 +757,7 @@ InstallMethodWithCache( PreSheaves,
           function ( PSh, S, diagram_S, M, diagram_T, T )
             local D, S_o, T_o, natural_transformation_on_objects;
             
-            D := Range( PSh );
+            D := Target( PSh );
             
             S_o := PairOfFunctionsOfPreSheaf( S )[1];
             T_o := PairOfFunctionsOfPreSheaf( T )[1];
@@ -803,10 +803,10 @@ InstallMethodWithCache( PreSheaves,
           function ( PSh, r, eta )
             local D, source_eta, range_eta, eta_func, natural_transformation_on_objects;
             
-            D := Range( PSh );
+            D := Target( PSh );
             
             source_eta := PairOfFunctionsOfPreSheaf( Source( eta ) )[1];
-            range_eta := PairOfFunctionsOfPreSheaf( Range( eta ) )[1];
+            range_eta := PairOfFunctionsOfPreSheaf( Target( eta ) )[1];
             eta_func := FunctionOfPreSheafMorphism( eta );
             
             natural_transformation_on_objects :=
@@ -820,7 +820,7 @@ InstallMethodWithCache( PreSheaves,
                 
             end;
             
-            return MorphismConstructor( PSh, Source( eta ), natural_transformation_on_objects, Range( eta ) );
+            return MorphismConstructor( PSh, Source( eta ), natural_transformation_on_objects, Target( eta ) );
             
         end );
         
@@ -864,7 +864,7 @@ InstallMethodWithCache( PreSheaves,
         
         return CreateCapCategoryObjectWithAttributes( cat,
                        Source, Source( cat ),
-                       Range, Range( cat ),
+                       Range, Target( cat ),
                        PairOfFunctionsOfPreSheaf, pair_of_functions_of_presheaf );
         
     end;
@@ -925,7 +925,7 @@ InstallMethodWithCache( PreSheaves,
                  ) );
     
     SetSource( T, B );
-    SetRange( T, D );
+    SetTarget( T, D );
     
     ##
     AddIsWellDefinedForObjects( T,
@@ -1085,7 +1085,7 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToMorphism,
     pair_of_functions_of_presheaf := PairOfFunctionsOfPreSheaf( F );
     
     return pair_of_functions_of_presheaf[2](
-                   pair_of_functions_of_presheaf[1]( Range( morB ) ),
+                   pair_of_functions_of_presheaf[1]( Target( morB ) ),
                    morB,
                    pair_of_functions_of_presheaf[1]( Source( morB ) ) );
     
@@ -1098,7 +1098,7 @@ InstallMethodForCompilerForCAP( ApplyMorphismInPreSheafCategoryToObject,
         
   function ( PSh, eta, objB )
     
-    return FunctionOfPreSheafMorphism( eta )( Source( eta )( objB ), objB, Range( eta )( objB ) );
+    return FunctionOfPreSheafMorphism( eta )( Source( eta )( objB ), objB, Target( eta )( objB ) );
     
 end );
 

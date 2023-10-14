@@ -59,7 +59,7 @@ IsIsomorphism( iotaC );
 #! true
 Source( iotaC ) = C;
 #! true
-Range( iotaC ) = P;
+Target( iotaC ) = P;
 #! true
 L3 := Coproduct( L, L, L );
 #! <An object in PreSheaves( FreeCategory(

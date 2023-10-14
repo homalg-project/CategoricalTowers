@@ -143,7 +143,7 @@ InstallMethodWithCache( SetOfGeneratingMorphisms,
         "for a f.p. category and two objects",
         [ IsFpCategory and HasUnderlyingQuiver, IsObjectInFpCategory, IsObjectInFpCategory ],
         
-  { A, obj_1, obj_2 } -> Filtered( SetOfGeneratingMorphisms( A ), m -> IsEqualForObjects( obj_1, Source( m ) ) and IsEqualForObjects( obj_2, Range( m ) ) )
+  { A, obj_1, obj_2 } -> Filtered( SetOfGeneratingMorphisms( A ), m -> IsEqualForObjects( obj_1, Source( m ) ) and IsEqualForObjects( obj_2, Target( m ) ) )
 );
 
 ##
@@ -421,7 +421,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         
         w := Target( LeadingPath( m ) );
         
-        if not ( UnderlyingVertex( Range( alpha ) ) = w ) then
+        if not ( UnderlyingVertex( Target( alpha ) ) = w ) then
             
             return false;
             
@@ -483,7 +483,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
             return MorphismInFpCategory( category,
                            Source( morphism_1 ),
                            UnderlyingQuiverAlgebraElement( morphism_1 ) * UnderlyingQuiverAlgebraElement( morphism_2 ),
-                           Range( morphism_2 ) );
+                           Target( morphism_2 ) );
         end );
         
     else
@@ -495,7 +495,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
             return MorphismInFpCategory( category,
                            Source( morphism_1 ),
                            UnderlyingQuiverAlgebraElement( morphism_2 ) * UnderlyingQuiverAlgebraElement( morphism_1 ),
-                           Range( morphism_2 ) );
+                           Target( morphism_2 ) );
             
         end );
         
@@ -671,13 +671,13 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
             
             elem_beta := UnderlyingQuiverAlgebraElement( beta );
             
-            a := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
+            a := VertexIndex( UnderlyingVertex( Target( alpha ) ) );
             
             b := VertexIndex( UnderlyingVertex( Source( beta ) ) );
             
             ap := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
             
-            bp := VertexIndex( UnderlyingVertex( Range( beta ) ) );
+            bp := VertexIndex( UnderlyingVertex( Target( beta ) ) );
             
             basis_paths_by_vertex_index := BasisPathsByVertexIndex( fpcategory );
             
@@ -715,13 +715,13 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
             local source, range, element, a, b, basis_elements;
             
             source := DistinguishedObjectOfHomomorphismStructure( fpcategory );
-            range := HomomorphismStructureOnObjects( fpcategory, Source( alpha ), Range( alpha ) );
+            range := HomomorphismStructureOnObjects( fpcategory, Source( alpha ), Target( alpha ) );
             
             element := UnderlyingQuiverAlgebraElement( alpha );
             
             a := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
             
-            b := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
+            b := VertexIndex( UnderlyingVertex( Target( alpha ) ) );
             
             basis_elements := BasisPathsByVertexIndex( fpcategory )[a][b];
             
@@ -1338,7 +1338,7 @@ InstallMethod( ElementaryTensor,
           object_underlying_vertex, object_string, mors, o;
     
     source := ElementaryTensor( object, Source( morphism ), T );
-    range := ElementaryTensor( object, Range( morphism ), T );
+    range := ElementaryTensor( object, Target( morphism ), T );
     
     morphism_as_quiver_algebra_element := UnderlyingQuiverAlgebraElement( morphism );
     
@@ -1360,7 +1360,7 @@ InstallMethod( ElementaryTensor,
         
         o := ObjectInFpCategory( CapCategory( morphism ), path );
         
-        Assert( 3, o = Source( morphism ) and o = Range( morphism ) );
+        Assert( 3, o = Source( morphism ) and o = Target( morphism ) );
         
         return IdentityMorphism( ElementaryTensor( object, o, T ) );
         
@@ -1380,7 +1380,7 @@ InstallMethod( ElementaryTensor,
           object_underlying_vertex, object_string, mors, o;
     
     source := ElementaryTensor( Source( morphism ), object, T );
-    range := ElementaryTensor( Range( morphism ), object, T );
+    range := ElementaryTensor( Target( morphism ), object, T );
     
     morphism_as_quiver_algebra_element := UnderlyingQuiverAlgebraElement( morphism );
     
@@ -1402,7 +1402,7 @@ InstallMethod( ElementaryTensor,
         
         o := ObjectInFpCategory( CapCategory( morphism ), path );
         
-        Assert( 3, o = Source( morphism ) and o = Range( morphism ) );
+        Assert( 3, o = Source( morphism ) and o = Target( morphism ) );
         
         return IdentityMorphism( ElementaryTensor( o, object, T ) );
         
@@ -2310,7 +2310,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         mu_c := Ymu[c];
         
         ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c)
-        hom_c := Range( mu_c );
+        hom_c := Target( mu_c );
         
         ## Hom(Hom(-, c), Ω) := Hom(⊔_{a ∈ B} Hom(a, c), Ω)
         power := HomomorphismStructureOnObjects( sFinSets, hom_c, Omega );
@@ -2372,7 +2372,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
     
     id := IdentityMorphism( sFinSets, Omega );
     
-    N1 := Yepis[2]; # Range( Ypt );
+    N1 := Yepis[2]; # Target( Ypt );
     
     Sieves := List( [ 1 .. lobjs ], o -> sieves( o ) );
     Sieves_emb := List( Sieves, s -> s[1] );
@@ -2390,7 +2390,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
                               LiftAlongMonomorphism( sFinSets,
                                       Sieves_emb[1 + arrows[m][1]], # Source( m )
                                       PreCompose( sFinSets,
-                                              Sieves_emb[1 + arrows[m][2]], # Range( m )
+                                              Sieves_emb[1 + arrows[m][2]], # Target( m )
                                               HomHomOmega_morphisms[m] ) ) );
     
     return NTuple( 5,
@@ -2532,9 +2532,9 @@ InstallMethod( ViewObj,
         Print( "-[" );
         ViewObj( BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( m ) ) );
         Print( "]->" );
-        ViewObj( UnderlyingVertex( Range( m ) ) );
+        ViewObj( UnderlyingVertex( Target( m ) ) );
     else
-        ViewObj( UnderlyingVertex( Range( m ) ) );
+        ViewObj( UnderlyingVertex( Target( m ) ) );
         Print( "<-[" );
         ViewObj( BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( m ) ) );
         Print( "]-" );
@@ -2614,7 +2614,7 @@ InstallMethod( LaTeXOutput,
       return Concatenation(
                 "{", LaTeXOutput( Source( m ) ), "}-\\left(",
                 "{", s, "}\\right)\\rightarrow",
-                "{", LaTeXOutput( Range( m ) ), "}"
+                "{", LaTeXOutput( Target( m ) ), "}"
               );
               
     fi;

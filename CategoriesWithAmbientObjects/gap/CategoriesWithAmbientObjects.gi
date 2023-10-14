@@ -349,7 +349,7 @@ InstallMethod( CategoryWithAmbientObjects,
             embedding_of_source := LazyGeneralizedEmbeddingInAmbientObject( source );
             
             return [ CreateLazyGeneralizedEmbeddingInAmbientObject(
-                           Range( epi ),
+                           Target( epi ),
                            PreCompose,
                            [ [ a -> PseudoInverse( AsGeneralizedMorphismByCospan( a ) ), epi ],
                              [ EvaluatedGeneralizedEmbeddingInAmbientObject, embedding_of_source ] ] ) ];
@@ -550,7 +550,7 @@ InstallMethod( CategoryWithAmbientObjects,
                 return MorphismWithAmbientObject(
                                Source( morphism ),
                                MultiplyWithElementOfCommutativeRingForMorphisms( r, UnderlyingCell( morphism ) ),
-                               Range( morphism ) );
+                               Target( morphism ) );
                 
             end );
             
@@ -643,7 +643,7 @@ InstallMethod( CategoryWithAmbientObjects,
             return MorphismWithAmbientObject(
                            DistinguishedObjectOfHomomorphismStructure( CapCategory( morphism ) ),
                            mor,
-                           HomomorphismStructureOnMorphismsWithGivenObjects( Source( morphism ), Range( morphism ) ) );
+                           HomomorphismStructureOnMorphismsWithGivenObjects( Source( morphism ), Target( morphism ) ) );
             
         end );
         
@@ -735,7 +735,7 @@ InstallMethod( WithAmbientObject,
     
     if not IsIdenticalObj( AsCapCategory( Source( F ) ), UnderlyingCategory( A ) ) then
         Error( "the source of the functor and the category underlying the source category with ambient object do not coincide\n" );
-    elif not IsIdenticalObj( AsCapCategory( Range( F ) ), UnderlyingCategory( B ) ) then
+    elif not IsIdenticalObj( AsCapCategory( Target( F ) ), UnderlyingCategory( B ) ) then
         Error( "the target of the functor and the category underlying the target category with ambient object do not coincide\n" );
     fi;
     
@@ -795,7 +795,7 @@ InstallMethod( WithAmbientObject,
         
   function( F, name, A )
     
-    if not IsIdenticalObj( Source( F ), Range( F ) ) then
+    if not IsIdenticalObj( Source( F ), Target( F ) ) then
         Error( "the functor is not an endofunctor\n" );
     fi;
     
@@ -826,7 +826,7 @@ InstallMethod( WithAmbientObject,
     
     if not IsIdenticalObj( Source( eta ), F!.UnderlyingFunctor ) then
         Error( "the source of the natural transformation and the functor underlying the source functor with ambient object do not coincide\n" );
-    elif not IsIdenticalObj( Range( eta ), G!.UnderlyingFunctor ) then
+    elif not IsIdenticalObj( Target( eta ), G!.UnderlyingFunctor ) then
         Error( "the target of the natural transformation and the functor underlying the target functor with ambient object do not coincide\n" );
     fi;
     

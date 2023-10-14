@@ -47,8 +47,8 @@ SetLabel( b, "b" );
 SetLabel( c, "c" );
 SetLabel( Source( a ), "1" );
 SetLabel( Source( b ), "2" );
-SetLabel( Range( b ), "3" );
-SetLabel( Range( c ), "4" );
+SetLabel( Target( b ), "3" );
+SetLabel( Target( c ), "4" );
 d := CokernelProjection( a );
 #! <An epimorphism in LazyCategory( Adelman category( AdditiveClosure(
 #!  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )
