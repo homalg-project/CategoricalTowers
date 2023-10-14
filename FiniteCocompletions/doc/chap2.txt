@@ -208,7 +208,7 @@
     [4X[28X FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XSource( gamma ) = ab;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XRange( gamma ) = ba;[127X[104X
+    [4X[25Xgap>[125X [27XTarget( gamma ) = ba;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( gamma );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -325,7 +325,7 @@
     [4X[28X FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XSource( delta ) = a;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XRange( delta ) = aa;[127X[104X
+    [4X[25Xgap>[125X [27XTarget( delta ) = aa;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismIntoDirectProduct( delta, [ a, a ], 1 ) );[127X[104X
     [4X[28Xtrue[128X[104X

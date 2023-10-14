@@ -202,7 +202,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xpi := UniversalMorphismIntoTerminalObject( m );[127X[104X
     [4X[28X|8| → |1|[128X[104X
-    [4X[25Xgap>[125X [27XIsIdenticalObj( Range( pi ), t );[127X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( Target( pi ), t );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xpi_t := UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( m, t );[127X[104X
     [4X[28X|8| → |1|[128X[104X
