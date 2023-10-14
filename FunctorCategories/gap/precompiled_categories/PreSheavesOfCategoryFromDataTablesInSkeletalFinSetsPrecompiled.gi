@@ -11,7 +11,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_PreSheavesOfCategoryFromDataTablesInSkeletalFinSe
 ########
 function ( cat_1 )
     local hoisted_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := Range( cat_1 );
+    deduped_6_1 := Target( cat_1 );
     deduped_5_1 := Source( cat_1 );
     deduped_4_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, Length, BigInt( 0 ) );
     deduped_3_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
@@ -32,7 +32,7 @@ end
 ########
 function ( cat_1, objects_1 )
     local hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := Range( cat_1 );
+    deduped_6_1 := Target( cat_1 );
     deduped_5_1 := Source( cat_1 );
     deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
     hoisted_3_1 := [ 1 .. Length( objects_1 ) ];
@@ -76,7 +76,7 @@ end
 function ( cat_1, objects_1, k_1, P_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := objects_1[k_1];
-    hoisted_4_1 := Range( cat_1 );
+    hoisted_4_1 := Target( cat_1 );
     hoisted_3_1 := [ 1 .. k_1 - 1 ];
     hoisted_2_1 := ValuesOfPreSheaf( P_1 )[1];
     hoisted_1_1 := ValuesOfPreSheaf( CAP_JIT_INCOMPLETE_LOGIC( deduped_5_1 ) )[1];
@@ -99,7 +99,7 @@ end
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1;
-    hoisted_3_1 := Range( cat_1 );
+    hoisted_3_1 := Target( cat_1 );
     hoisted_2_1 := ValuesOfPreSheaf( T_1 )[1];
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -358,7 +358,7 @@ function ( cat_1, arg2_1, arg3_1 )
                     return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
                 end );
         end );
-    return CreateCapCategoryObjectWithAttributes( Range( cat_1 ), Length, Length( Filtered( deduped_40_1, function ( x_2 )
+    return CreateCapCategoryObjectWithAttributes( Target( cat_1 ), Length, Length( Filtered( deduped_40_1, function ( x_2 )
                 local deduped_1_2;
                 deduped_1_2 := 1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 );
                 return CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_39_1, function ( j_3 )
@@ -385,10 +385,10 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_114_1 := Source( cat_1 );
     deduped_113_1 := ListOfValues( ValuesOnAllObjects( alpha_1 ) );
     deduped_112_1 := ValuesOfPreSheaf( Source( beta_1 ) );
-    deduped_111_1 := ValuesOfPreSheaf( Range( alpha_1 ) );
+    deduped_111_1 := ValuesOfPreSheaf( Target( alpha_1 ) );
     deduped_110_1 := DataTables( deduped_114_1 );
     deduped_109_1 := DefiningTripleOfUnderlyingQuiver( deduped_114_1 );
-    deduped_108_1 := ValuesOfPreSheaf( Range( beta_1 ) );
+    deduped_108_1 := ValuesOfPreSheaf( Target( beta_1 ) );
     deduped_107_1 := ValuesOfPreSheaf( Source( alpha_1 ) );
     deduped_106_1 := deduped_111_1[2];
     deduped_105_1 := deduped_107_1[2];
@@ -980,7 +980,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                         return hoisted_79_1[deduped_1_3][deduped_1_2] * deduped_73_1[deduped_1_3];
                     end ) );
         end );
-    return CreateCapCategoryMorphismWithAttributes( Range( cat_1 ), source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( x_2 )
+    return CreateCapCategoryMorphismWithAttributes( Target( cat_1 ), source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( x_2 )
               return -1 + BigInt( SafePosition( hoisted_82_1, CAP_JIT_INCOMPLETE_LOGIC( hoisted_81_1[(1 + hoisted_80_1[(1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 ))])] ) ) );
           end ) );
 end
@@ -1041,7 +1041,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_45_1 := [ 0 .. Sum( List( deduped_51_1, function ( m_2 )
                     return deduped_4_1[1 + deduped_6_1[(1 + m_2)][2]];
                 end ) ) - 1 ];
-    hoisted_44_1 := Range( cat_1 );
+    hoisted_44_1 := Target( cat_1 );
     deduped_23_1 := List( deduped_52_1, function ( o_2 )
             local deduped_1_2, deduped_2_2;
             deduped_2_2 := 1 + o_2;
@@ -1536,7 +1536,7 @@ function ( cat_1, arg2_1, arg3_1 )
                     end ) );
         end );
     deduped_48_1 := Length( deduped_49_1 );
-    hoisted_46_1 := Range( cat_1 );
+    hoisted_46_1 := Target( cat_1 );
     deduped_41_1 := List( deduped_62_1, Length );
     deduped_42_1 := List( deduped_58_1, function ( i_2 )
             return Product( deduped_54_1{[ 1 + Sum( deduped_41_1{[ 1 .. (i_2 - 1) ]} ) .. Sum( deduped_41_1{[ 1 .. i_2 ]} ) ]} );

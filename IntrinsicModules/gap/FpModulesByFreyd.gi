@@ -93,7 +93,7 @@ BindGlobal( "INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_CATEGORY_OF_ROWS",
     AddMultiplyWithElementOfCommutativeRingForMorphisms( P,
       function( category, r, alpha )
         
-        return CategoryOfRowsMorphism( Source( alpha ), r * UnderlyingMatrix( alpha ), Range( alpha ) );
+        return CategoryOfRowsMorphism( Source( alpha ), r * UnderlyingMatrix( alpha ), Target( alpha ) );
         
     end );
     
@@ -166,7 +166,7 @@ BindGlobal( "INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS",
     AddMultiplyWithElementOfCommutativeRingForMorphisms( P,
       function( category, r, alpha )
         
-        return CategoryOfColumnsMorphism( Source( alpha ), r * UnderlyingMatrix( alpha ), Range( alpha ) );
+        return CategoryOfColumnsMorphism( Source( alpha ), r * UnderlyingMatrix( alpha ), Target( alpha ) );
         
     end );
 
@@ -276,8 +276,8 @@ InstallMethod( FpModuleMorphism,
   function( source, mat, range )
     local s, r;
     
-    s := Range( RelationMorphism( source ) );
-    r := Range( RelationMorphism( range ) );
+    s := Target( RelationMorphism( source ) );
+    r := Target( RelationMorphism( range ) );
     
     if IsCategoryOfRowsObject( s ) then
         mat := CategoryOfRowsMorphism( s, mat, r );

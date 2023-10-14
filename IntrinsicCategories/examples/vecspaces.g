@@ -17,7 +17,7 @@ intC := IntrinsicCategory( C );
 
 inta := Intrinsify( intC, alpha );
 intV := Source( inta );
-intW := Range( inta );
+intW := Target( inta );
 
 inta2 := Intrinsify( alpha, intV, 1, intW, 1 );
 

@@ -262,7 +262,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         local pairS, pairT, pair_of_lists, s, t, map, S, T, mors, C;
         
         pairS := ObjectDatum( UC, Source( morphism ) );
-        pairT := ObjectDatum( UC, Range( morphism ) );
+        pairT := ObjectDatum( UC, Target( morphism ) );
         
         pair_of_lists := MorphismDatum( UC, morphism );
         
@@ -294,7 +294,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                            IsCapCategoryMorphism( mors[i] ) and
                            IsIdenticalObj( CapCategory( mors[i] ), C ) and
                            IsEqualForObjects( C, Source( mors[i] ), S[i] ) and
-                           IsEqualForObjects( C, Range( mors[i] ), T[1 + map[i]] ) and
+                           IsEqualForObjects( C, Target( mors[i] ), T[1 + map[i]] ) and
                            IsWellDefinedForMorphisms( C, mors[i] ) );
         fi;
         
@@ -396,7 +396,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
               C, mors_pre, mors_post, mors_cmp;
         
         S := Source( pre_morphism );
-        T := Range( post_morphism );
+        T := Target( post_morphism );
         
         pair_of_lists_pre := MorphismDatum( UC, pre_morphism );
         pair_of_lists_post := MorphismDatum( UC, post_morphism );
@@ -929,7 +929,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 Assert( 0, IsEqualForObjects( source, Source( pair_of_lists[2][1] ) ) );
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
-                Assert( 0, IsEqualForObjects( range, Range( pair_of_lists[2][1] ) ) );
+                Assert( 0, IsEqualForObjects( range, Target( pair_of_lists[2][1] ) ) );
                 
                 return pair_of_lists[2][1];
                 
@@ -999,7 +999,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             V := RangeCategoryOfHomomorphismStructure( UC );
             
             pairS := ObjectDatum( UC, Source( phi ) );
-            pairT := ObjectDatum( UC, Range( phi ) );
+            pairT := ObjectDatum( UC, Target( phi ) );
             
             s := pairS[1];
             t := pairT[1];
@@ -1060,10 +1060,10 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 V := UnderlyingCategory( UV );
                 
                 source_alpha := ObjectDatum( UC, Source( alpha ) );
-                range_alpha := ObjectDatum( UC, Range( alpha ) );
+                range_alpha := ObjectDatum( UC, Target( alpha ) );
                 
                 source_gamma := ObjectDatum( UC, Source( gamma ) );
-                range_gamma := ObjectDatum( UC, Range( gamma ) );
+                range_gamma := ObjectDatum( UC, Target( gamma ) );
                 
                 source_alpha_length := source_alpha[1];
                 range_alpha_length := range_alpha[1];
@@ -1406,7 +1406,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionDa
         local pairS, pairT, s, t, S, T, source_diagram, range_diagram, pair_of_lists, map, mor, functor_on_mor;
         
         pairS := ObjectDatum( UC, Source( morUC ) );
-        pairT := ObjectDatum( UC, Range( morUC ) );
+        pairT := ObjectDatum( UC, Target( morUC ) );
         
         s := pairS[1];
         t := pairT[1];
@@ -1609,7 +1609,7 @@ InstallMethod( Display,
     
     Print( ObjectConstructor( sFinSets, ObjectDatum( Source( phi ) )[1] ) );
     Print( " ⱶ", MorphismDatum( phi )[1], "→ " );
-    Print( ObjectConstructor( sFinSets, ObjectDatum( Range( phi ) )[1] ), "\n\n" );
+    Print( ObjectConstructor( sFinSets, ObjectDatum( Target( phi ) )[1] ), "\n\n" );
     
     Print( MorphismDatum( phi )[2], "\n\n" );
     

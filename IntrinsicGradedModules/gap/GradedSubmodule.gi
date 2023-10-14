@@ -109,7 +109,7 @@ InstallMethod( ImageSubobject,
   function( phi )
     local T, S, ideal, N, entry;
     
-    T := Range( phi );
+    T := Target( phi );
     
     S := HomalgRing( T );
     
@@ -126,14 +126,14 @@ InstallMethod( ImageSubobject,
         ## Objectify:
         ObjectifyWithAttributes(
                 N, TheTypeHomalgLeftGradedSubmodule,
-                SuperObject, Range( phi ),
+                SuperObject, Target( phi ),
                 ConstructedAsAnIdeal, ideal,
                 LeftActingDomain, S );
     else
         ## Objectify:
         ObjectifyWithAttributes(
                 N, TheTypeHomalgRightGradedSubmodule,
-                SuperObject, Range( phi ),
+                SuperObject, Target( phi ),
                 ConstructedAsAnIdeal, ideal,
                 RightActingDomain, S );
     fi;

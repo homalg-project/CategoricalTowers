@@ -12,7 +12,7 @@ InstallMethod( PushPresentationByIsomorphism,
   function( phi )
     local M;
     
-    M := Range( phi );
+    M := Target( phi );
     
     AddTransitionIsomorphism( M, ActiveCell( phi ), PositionOfActiveCell( M ) );
     

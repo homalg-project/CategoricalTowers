@@ -619,7 +619,7 @@ InstallMethod( ViewString,
     labels := C!.labels;
     
     s := IndexOfObject( Source( mor ) );
-    t := IndexOfObject( Range( mor ) );
+    t := IndexOfObject( Target( mor ) );
     
     i := IndexOfMorphism( mor );
     
@@ -719,6 +719,6 @@ InstallMethod( LaTeXOutput,
     return Concatenation(
                    "{", LaTeXOutput( Source( mor ) ), "}",
                    "-\\left[{", s, "}\\right]\\rightarrow",
-                   "{", LaTeXOutput( Range( mor ) ), "}" );
+                   "{", LaTeXOutput( Target( mor ) ), "}" );
     
 end );

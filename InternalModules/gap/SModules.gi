@@ -22,7 +22,7 @@ InstallMethod( CategoryOfLeftSModules,
     
     structure_morphism := SymmetricAlgebraMultiplicationMorphism( V );
     
-    SV := Range( structure_morphism );
+    SV := Target( structure_morphism );
     
     name := Concatenation( "Abelian category of left modules over the internal symmetric algebra of ", String( SV[1] ), " with undecidable (mathematical) equality of morphisms and uncomputable lifts and colifts" );
     
@@ -57,7 +57,7 @@ InstallMethod( CategoryOfRightSModules,
     
     structure_morphism := SymmetricAlgebraMultiplicationMorphism( V );
     
-    SV := Range( structure_morphism );
+    SV := Target( structure_morphism );
     
     name := Concatenation( "Abelian category of right modules over the internal symmetric algebra of ", String( SV[1] ), " with undecidable (mathematical) equality of morphisms and uncomputable lifts and colifts" );
     

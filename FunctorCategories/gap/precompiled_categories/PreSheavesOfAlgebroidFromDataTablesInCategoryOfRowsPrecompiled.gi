@@ -12,7 +12,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_PreSheavesOfAlgebroidFromDataTablesInCategoryOfRo
 function ( cat_1, alpha_1, beta_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1;
     deduped_6_1 := ValuesOnAllObjects( alpha_1 );
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := List( ValuesOnAllObjects( beta_1 ), UnderlyingMatrix );
     hoisted_3_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_2_1 := List( deduped_6_1, Range );
@@ -32,7 +32,7 @@ end
 function ( cat_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := ValuesOnAllObjects( alpha_1 );
-    hoisted_4_1 := Range( cat_1 );
+    hoisted_4_1 := Target( cat_1 );
     hoisted_3_1 := List( deduped_5_1, function ( logic_new_func_x_2 )
             return - UnderlyingMatrix( logic_new_func_x_2 );
         end );
@@ -53,7 +53,7 @@ end
 function ( cat_1, alpha_1, C_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1;
     deduped_6_1 := ValuesOnAllObjects( alpha_1 );
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_3_1 := List( deduped_6_1, function ( logic_new_func_x_2 )
             return BasisOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) );
@@ -88,7 +88,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_29_1 := [ 1 .. deduped_30_1 ];
     deduped_28_1 := [ 1 .. Length( deduped_32_1 ) ];
     hoisted_2_1 := List( deduped_35_1, function ( logic_new_func_x_2 )
-            return RankOfObject( Range( logic_new_func_x_2 ) );
+            return RankOfObject( Target( logic_new_func_x_2 ) );
         end );
     hoisted_1_1 := List( deduped_34_1, function ( logic_new_func_x_2 )
             return RankOfObject( Source( logic_new_func_x_2 ) );
@@ -105,7 +105,7 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_8_1 := List( deduped_34_1, function ( logic_new_func_x_2 )
             return TransposedMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    hoisted_7_1 := List( deduped_32_1, Range );
+    hoisted_7_1 := List( deduped_32_1, Target );
     hoisted_6_1 := List( deduped_32_1, Source );
     deduped_26_1 := SyzygiesOfRows( UnionOfRows( deduped_31_1, Sum( deduped_27_1 ), List( deduped_29_1, function ( i_2 )
                 local deduped_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2, deduped_6_2;
@@ -135,7 +135,7 @@ function ( cat_1, arg2_1, arg3_1 )
             end ) ) );
     deduped_25_1 := NumberRows( deduped_26_1 );
     deduped_24_1 := [ 1 .. deduped_25_1 ];
-    hoisted_22_1 := Range( cat_1 );
+    hoisted_22_1 := Target( cat_1 );
     hoisted_16_1 := HomalgIdentityMatrix( deduped_25_1, deduped_31_1 );
     hoisted_21_1 := List( [ 1 .. Length( deduped_36_1 ) ], function ( i_2 )
             local hoisted_1_2, deduped_2_2;
@@ -162,7 +162,7 @@ end
 function ( cat_1, alpha_1, I_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1;
     deduped_6_1 := ValuesOnAllObjects( alpha_1 );
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := List( deduped_6_1, function ( logic_new_func_x_2 )
             return BasisOfRows( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
@@ -184,7 +184,7 @@ end
 function ( cat_1, arg2_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_10_1, deduped_13_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1, deduped_19_1, deduped_20_1, deduped_21_1, deduped_22_1;
     deduped_22_1 := Source( cat_1 );
-    deduped_21_1 := ValuesOfPreSheaf( Range( arg2_1 ) );
+    deduped_21_1 := ValuesOfPreSheaf( Target( arg2_1 ) );
     deduped_20_1 := ValuesOfPreSheaf( Source( arg2_1 ) );
     deduped_19_1 := SetOfObjects( deduped_22_1 );
     deduped_18_1 := SetOfGeneratingMorphisms( deduped_22_1 );
@@ -193,7 +193,7 @@ function ( cat_1, arg2_1 )
     deduped_15_1 := deduped_20_1[2];
     deduped_14_1 := [ 1 .. Length( deduped_18_1 ) ];
     hoisted_2_1 := List( deduped_16_1, function ( logic_new_func_x_2 )
-            return RankOfObject( Range( logic_new_func_x_2 ) );
+            return RankOfObject( Target( logic_new_func_x_2 ) );
         end );
     hoisted_1_1 := List( deduped_15_1, function ( logic_new_func_x_2 )
             return RankOfObject( Source( logic_new_func_x_2 ) );
@@ -205,7 +205,7 @@ function ( cat_1, arg2_1 )
     hoisted_8_1 := List( deduped_15_1, function ( logic_new_func_x_2 )
             return TransposedMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    hoisted_7_1 := List( deduped_18_1, Range );
+    hoisted_7_1 := List( deduped_18_1, Target );
     hoisted_6_1 := List( deduped_18_1, Source );
     deduped_4_1 := List( deduped_21_1[1], RankOfObject );
     deduped_3_1 := List( deduped_20_1[1], RankOfObject );
@@ -250,11 +250,11 @@ end
 function ( cat_1, Y_1, morphisms_1 )
     local hoisted_1_1, deduped_2_1, deduped_3_1, deduped_4_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
     deduped_11_1 := Length( morphisms_1 );
-    deduped_10_1 := Range( cat_1 );
+    deduped_10_1 := Target( cat_1 );
     deduped_9_1 := Source( cat_1 );
     deduped_8_1 := DefiningTripleOfUnderlyingQuiver( deduped_9_1 );
     hoisted_7_1 := deduped_8_1[3];
-    hoisted_6_1 := ValuesOfPreSheaf( Range( CAP_JIT_INCOMPLETE_LOGIC( morphisms_1[1] ) ) )[2];
+    hoisted_6_1 := ValuesOfPreSheaf( Target( CAP_JIT_INCOMPLETE_LOGIC( morphisms_1[1] ) ) )[2];
     deduped_4_1 := [ 2 .. deduped_11_1 ];
     deduped_3_1 := CommutativeRingOfLinearCategory( deduped_9_1 );
     deduped_2_1 := [ 1 .. deduped_11_1 - 1 ];
@@ -298,7 +298,7 @@ function ( cat_1, P_1, morphisms_1, mu_1, morphismsp_1, Pp_1 )
     deduped_12_1 := Length( morphisms_1 );
     deduped_11_1 := ValuesOnAllObjects( mu_1 );
     deduped_10_1 := Source( cat_1 );
-    deduped_9_1 := Range( cat_1 );
+    deduped_9_1 := Target( cat_1 );
     hoisted_8_1 := [ 2 .. deduped_13_1 ];
     hoisted_7_1 := [ 1 .. deduped_13_1 - 1 ];
     hoisted_6_1 := List( deduped_11_1, function ( logic_new_func_x_2 )
@@ -336,7 +336,7 @@ end
 function ( cat_1, arg2_1 )
     local hoisted_1_1, hoisted_3_1, deduped_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
     deduped_9_1 := ValuesOnAllObjects( arg2_1 );
-    deduped_8_1 := Range( cat_1 );
+    deduped_8_1 := Target( cat_1 );
     deduped_7_1 := Source( cat_1 );
     deduped_6_1 := DefiningTripleOfUnderlyingQuiver( deduped_7_1 );
     hoisted_5_1 := List( ValuesOfPreSheaf( Source( arg2_1 ) )[2], UnderlyingMatrix );
@@ -367,7 +367,7 @@ end
 function ( cat_1, alpha_1, C_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := ValuesOnAllObjects( alpha_1 );
-    hoisted_4_1 := Range( cat_1 );
+    hoisted_4_1 := Target( cat_1 );
     hoisted_3_1 := List( deduped_5_1, function ( logic_new_func_x_2 )
             return BasisOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
@@ -389,7 +389,7 @@ function ( cat_1, alpha_1, T_1, tau_1, P_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := ValuesOnAllObjects( tau_1 );
     hoisted_4_1 := List( deduped_5_1, Range );
-    deduped_3_1 := Range( cat_1 );
+    deduped_3_1 := Target( cat_1 );
     hoisted_2_1 := List( deduped_5_1, UnderlyingMatrix );
     hoisted_1_1 := List( ValuesOnAllObjects( alpha_1 ), function ( logic_new_func_x_2 )
             return SyzygiesOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) );
@@ -411,10 +411,10 @@ end
 function ( cat_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_4_1, deduped_5_1, hoisted_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
     deduped_10_1 := ValuesOnAllObjects( alpha_1 );
-    deduped_9_1 := Range( cat_1 );
+    deduped_9_1 := Target( cat_1 );
     deduped_8_1 := Source( cat_1 );
     deduped_7_1 := DefiningTripleOfUnderlyingQuiver( deduped_8_1 );
-    hoisted_6_1 := List( ValuesOfPreSheaf( Range( alpha_1 ) )[2], UnderlyingMatrix );
+    hoisted_6_1 := List( ValuesOfPreSheaf( Target( alpha_1 ) )[2], UnderlyingMatrix );
     deduped_5_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
             return SyzygiesOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
@@ -444,7 +444,7 @@ end
 ########
 function ( cat_1, P_1, alpha_1, mu_1, alphap_1, Pp_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1;
-    deduped_4_1 := Range( cat_1 );
+    deduped_4_1 := Target( cat_1 );
     hoisted_3_1 := List( ValuesOnAllObjects( alphap_1 ), function ( logic_new_func_x_2 )
             return SyzygiesOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
@@ -469,7 +469,7 @@ end
 function ( cat_1, alpha_1, P_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1;
     deduped_4_1 := ValuesOnAllObjects( alpha_1 );
-    deduped_3_1 := Range( cat_1 );
+    deduped_3_1 := Target( cat_1 );
     hoisted_2_1 := List( deduped_4_1, function ( logic_new_func_x_2 )
             return SyzygiesOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
@@ -492,7 +492,7 @@ function ( cat_1, epsilon_1, tau_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := ValuesOnAllObjects( tau_1 );
     deduped_6_1 := ValuesOnAllObjects( epsilon_1 );
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := List( deduped_7_1, UnderlyingMatrix );
     hoisted_3_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_2_1 := List( deduped_7_1, Range );
@@ -513,7 +513,7 @@ function ( cat_1, alpha_1, S_1, i_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := ValuesOnAllObjects( alpha_1 );
     deduped_6_1 := S_1[i_1];
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := [ 1 .. i_1 - 1 ];
     hoisted_3_1 := List( deduped_7_1, UnderlyingMatrix );
     hoisted_2_1 := List( deduped_7_1, Range );
@@ -539,7 +539,7 @@ function ( cat_1, alpha_1, S_1, i_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := ValuesOnAllObjects( alpha_1 );
     deduped_6_1 := S_1[i_1];
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := [ 1 .. i_1 - 1 ];
     hoisted_3_1 := List( deduped_7_1, UnderlyingMatrix );
     hoisted_2_1 := ValuesOfPreSheaf( CAP_JIT_INCOMPLETE_LOGIC( deduped_6_1 ) )[1];
@@ -564,7 +564,7 @@ end
 function ( cat_1, objects_1 )
     local hoisted_2_1, deduped_3_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
     deduped_9_1 := Length( objects_1 );
-    deduped_8_1 := Range( cat_1 );
+    deduped_8_1 := Target( cat_1 );
     deduped_7_1 := Source( cat_1 );
     deduped_6_1 := DefiningTripleOfUnderlyingQuiver( deduped_7_1 );
     hoisted_5_1 := [ 1 .. deduped_9_1 ];
@@ -602,7 +602,7 @@ function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
     local hoisted_1_1, deduped_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_7_1, deduped_8_1;
     deduped_8_1 := Source( cat_1 );
     deduped_7_1 := ValuesOfPreSheaf( Pp_1 )[1];
-    deduped_5_1 := Range( cat_1 );
+    deduped_5_1 := Target( cat_1 );
     hoisted_4_1 := [ 1 .. Length( L_1 ) ];
     hoisted_3_1 := Length( objectsp_1 );
     deduped_2_1 := CommutativeRingOfLinearCategory( deduped_8_1 );
@@ -631,7 +631,7 @@ end
 function ( cat_1, objects_1 )
     local hoisted_2_1, deduped_3_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
     deduped_9_1 := Length( objects_1 );
-    deduped_8_1 := Range( cat_1 );
+    deduped_8_1 := Target( cat_1 );
     deduped_7_1 := Source( cat_1 );
     deduped_6_1 := DefiningTripleOfUnderlyingQuiver( deduped_7_1 );
     hoisted_5_1 := [ 1 .. deduped_9_1 ];
@@ -669,7 +669,7 @@ function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
     local hoisted_2_1, deduped_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
     deduped_8_1 := Source( cat_1 );
     deduped_7_1 := ValuesOfPreSheaf( P_1 )[1];
-    deduped_6_1 := Range( cat_1 );
+    deduped_6_1 := Target( cat_1 );
     hoisted_5_1 := [ 1 .. Length( L_1 ) ];
     hoisted_4_1 := Length( objects_1 );
     deduped_3_1 := CommutativeRingOfLinearCategory( deduped_8_1 );
@@ -697,7 +697,7 @@ end
 ########
 function ( cat_1, objects_1 )
     local hoisted_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
-    deduped_5_1 := Range( cat_1 );
+    deduped_5_1 := Target( cat_1 );
     deduped_4_1 := Source( cat_1 );
     deduped_3_1 := DefiningTripleOfUnderlyingQuiver( deduped_4_1 );
     hoisted_2_1 := CommutativeRingOfLinearCategory( deduped_4_1 );
@@ -724,7 +724,7 @@ end
 function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := Source( cat_1 );
-    hoisted_4_1 := Range( cat_1 );
+    hoisted_4_1 := Target( cat_1 );
     hoisted_3_1 := CommutativeRingOfLinearCategory( deduped_5_1 );
     hoisted_2_1 := ValuesOfPreSheaf( Pp_1 )[1];
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
@@ -743,7 +743,7 @@ end
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( Range( cat_1 ), RankOfObject, 1 );
+    return CreateCapCategoryObjectWithAttributes( Target( cat_1 ), RankOfObject, 1 );
 end
 ########
         
@@ -758,7 +758,7 @@ function ( cat_1, Y_1, morphisms_1, P_1 )
     deduped_9_1 := Length( morphisms_1 );
     deduped_8_1 := Source( cat_1 );
     deduped_7_1 := ValuesOfPreSheaf( Y_1 )[1];
-    deduped_5_1 := Range( cat_1 );
+    deduped_5_1 := Target( cat_1 );
     hoisted_4_1 := [ 2 .. deduped_9_1 ];
     deduped_3_1 := CommutativeRingOfLinearCategory( deduped_8_1 );
     hoisted_2_1 := [ 1 .. deduped_9_1 - 1 ];
@@ -784,7 +784,7 @@ end
 function ( cat_1, Y_1, morphisms_1 )
     local hoisted_1_1, deduped_2_1, deduped_3_1, deduped_4_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
     deduped_11_1 := Length( morphisms_1 );
-    deduped_10_1 := Range( cat_1 );
+    deduped_10_1 := Target( cat_1 );
     deduped_9_1 := Source( cat_1 );
     deduped_8_1 := DefiningTripleOfUnderlyingQuiver( deduped_9_1 );
     hoisted_7_1 := deduped_8_1[3];
@@ -832,7 +832,7 @@ function ( cat_1, P_1, morphisms_1, mu_1, morphismsp_1, Pp_1 )
     deduped_12_1 := Length( morphisms_1 );
     deduped_11_1 := ValuesOnAllObjects( mu_1 );
     deduped_10_1 := Source( cat_1 );
-    deduped_9_1 := Range( cat_1 );
+    deduped_9_1 := Target( cat_1 );
     hoisted_8_1 := [ 2 .. deduped_13_1 ];
     hoisted_7_1 := [ 1 .. deduped_13_1 - 1 ];
     hoisted_6_1 := List( deduped_11_1, function ( logic_new_func_x_2 )
@@ -870,7 +870,7 @@ end
 function ( cat_1, morphisms_1 )
     local deduped_1_1, deduped_3_1, deduped_4_1, deduped_5_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
     deduped_11_1 := Length( morphisms_1 );
-    deduped_10_1 := Range( cat_1 );
+    deduped_10_1 := Target( cat_1 );
     deduped_9_1 := Source( cat_1 );
     deduped_8_1 := DefiningTripleOfUnderlyingQuiver( deduped_9_1 );
     hoisted_7_1 := deduped_8_1[3];
@@ -937,7 +937,7 @@ function ( cat_1, P_1, morphisms_1, L_1, morphismsp_1, Pp_1 )
     deduped_16_1 := Length( morphisms_1 );
     deduped_15_1 := Source( cat_1 );
     deduped_14_1 := ValuesOfPreSheaf( P_1 )[1];
-    deduped_13_1 := Range( cat_1 );
+    deduped_13_1 := Target( cat_1 );
     hoisted_12_1 := [ 2 .. deduped_17_1 ];
     hoisted_11_1 := [ 1 .. deduped_17_1 - 1 ];
     hoisted_10_1 := [ 1 .. deduped_17_1 ];
@@ -987,11 +987,11 @@ end
 function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, deduped_6_1, deduped_7_1, hoisted_8_1, hoisted_10_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, deduped_17_1, deduped_18_1, hoisted_19_1, hoisted_20_1, deduped_22_1, deduped_23_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1, deduped_38_1, deduped_39_1;
     deduped_39_1 := Source( cat_1 );
-    deduped_38_1 := Range( cat_1 );
-    deduped_37_1 := ValuesOfPreSheaf( Range( beta_1 ) );
+    deduped_38_1 := Target( cat_1 );
+    deduped_37_1 := ValuesOfPreSheaf( Target( beta_1 ) );
     deduped_36_1 := ValuesOfPreSheaf( Source( alpha_1 ) );
     deduped_35_1 := ValuesOfPreSheaf( Source( beta_1 ) );
-    deduped_34_1 := ValuesOfPreSheaf( Range( alpha_1 ) );
+    deduped_34_1 := ValuesOfPreSheaf( Target( alpha_1 ) );
     deduped_33_1 := SetOfObjects( deduped_39_1 );
     deduped_32_1 := SetOfGeneratingMorphisms( deduped_39_1 );
     deduped_31_1 := CommutativeRingOfLinearCategory( deduped_39_1 );
@@ -1002,7 +1002,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_26_1 := [ 1 .. Length( deduped_33_1 ) ];
     deduped_25_1 := [ 1 .. Length( deduped_32_1 ) ];
     hoisted_16_1 := List( deduped_30_1, function ( logic_new_func_x_2 )
-            return RankOfObject( Range( logic_new_func_x_2 ) );
+            return RankOfObject( Target( logic_new_func_x_2 ) );
         end );
     hoisted_15_1 := List( deduped_29_1, function ( logic_new_func_x_2 )
             return RankOfObject( Source( logic_new_func_x_2 ) );
@@ -1011,7 +1011,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
             return hoisted_15_1[i_2] * hoisted_16_1[i_2];
         end );
     hoisted_2_1 := List( deduped_28_1, function ( logic_new_func_x_2 )
-            return RankOfObject( Range( logic_new_func_x_2 ) );
+            return RankOfObject( Target( logic_new_func_x_2 ) );
         end );
     hoisted_1_1 := List( deduped_27_1, function ( logic_new_func_x_2 )
             return RankOfObject( Source( logic_new_func_x_2 ) );
@@ -1033,7 +1033,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     hoisted_8_1 := List( deduped_27_1, function ( logic_new_func_x_2 )
             return TransposedMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    deduped_7_1 := List( deduped_32_1, Range );
+    deduped_7_1 := List( deduped_32_1, Target );
     deduped_6_1 := List( deduped_32_1, Source );
     deduped_4_1 := List( deduped_35_1[1], RankOfObject );
     deduped_3_1 := List( deduped_34_1[1], RankOfObject );
@@ -1115,7 +1115,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_17_1 := [ 1 .. Length( deduped_20_1 ) ];
     deduped_16_1 := [ 1 .. Length( deduped_18_1 ) ];
     hoisted_4_1 := List( deduped_22_1, function ( logic_new_func_x_2 )
-            return RankOfObject( Range( logic_new_func_x_2 ) );
+            return RankOfObject( Target( logic_new_func_x_2 ) );
         end );
     hoisted_3_1 := List( deduped_21_1, function ( logic_new_func_x_2 )
             return RankOfObject( Source( logic_new_func_x_2 ) );
@@ -1132,9 +1132,9 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_8_1 := List( deduped_21_1, function ( logic_new_func_x_2 )
             return TransposedMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    hoisted_7_1 := List( deduped_20_1, Range );
+    hoisted_7_1 := List( deduped_20_1, Target );
     hoisted_6_1 := List( deduped_20_1, Source );
-    return CreateCapCategoryObjectWithAttributes( Range( cat_1 ), RankOfObject, Sum( deduped_14_1 ) - RowRankOfMatrix( UnionOfRows( deduped_19_1, Sum( deduped_15_1 ), List( deduped_16_1, function ( i_2 )
+    return CreateCapCategoryObjectWithAttributes( Target( cat_1 ), RankOfObject, Sum( deduped_14_1 ) - RowRankOfMatrix( UnionOfRows( deduped_19_1, Sum( deduped_15_1 ), List( deduped_16_1, function ( i_2 )
                     local deduped_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2, deduped_6_2;
                     deduped_6_2 := deduped_2_1[i_2];
                     deduped_5_2 := deduped_1_1[i_2];
@@ -1173,7 +1173,7 @@ function ( cat_1, a_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1;
     deduped_6_1 := Source( cat_1 );
     deduped_5_1 := ValuesOfPreSheaf( a_1 )[1];
-    hoisted_4_1 := Range( cat_1 );
+    hoisted_4_1 := Target( cat_1 );
     hoisted_3_1 := CommutativeRingOfLinearCategory( deduped_6_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( deduped_6_1 )[1] ], function ( o_2 )
@@ -1193,7 +1193,7 @@ end
 function ( cat_1, alpha_1, I_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := ValuesOnAllObjects( alpha_1 );
-    hoisted_4_1 := Range( cat_1 );
+    hoisted_4_1 := Target( cat_1 );
     hoisted_3_1 := List( deduped_5_1, function ( logic_new_func_x_2 )
             return BasisOfRows( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
@@ -1214,10 +1214,10 @@ end
 function ( cat_1, arg2_1 )
     local hoisted_1_1, hoisted_3_1, deduped_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
     deduped_9_1 := ValuesOnAllObjects( arg2_1 );
-    deduped_8_1 := Range( cat_1 );
+    deduped_8_1 := Target( cat_1 );
     deduped_7_1 := Source( cat_1 );
     deduped_6_1 := DefiningTripleOfUnderlyingQuiver( deduped_7_1 );
-    hoisted_5_1 := List( ValuesOfPreSheaf( Range( arg2_1 ) )[2], UnderlyingMatrix );
+    hoisted_5_1 := List( ValuesOfPreSheaf( Target( arg2_1 ) )[2], UnderlyingMatrix );
     deduped_4_1 := List( deduped_9_1, function ( logic_new_func_x_2 )
             return BasisOfRows( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
@@ -1244,7 +1244,7 @@ end
 ########
 function ( cat_1 )
     local deduped_1_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := Range( cat_1 );
+    deduped_6_1 := Target( cat_1 );
     deduped_5_1 := Source( cat_1 );
     deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
     hoisted_3_1 := HomalgIdentityMatrix( 0, CommutativeRingOfLinearCategory( deduped_5_1 ) );
@@ -1269,7 +1269,7 @@ function ( cat_1, objects_1, k_1, P_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := Source( cat_1 );
     deduped_6_1 := objects_1[k_1];
-    deduped_5_1 := Range( cat_1 );
+    deduped_5_1 := Target( cat_1 );
     hoisted_4_1 := [ k_1 + 1 .. Length( objects_1 ) ];
     deduped_3_1 := CommutativeRingOfLinearCategory( deduped_7_1 );
     hoisted_2_1 := [ 1 .. k_1 - 1 ];
@@ -1296,7 +1296,7 @@ function ( cat_1, objects_1, k_1, P_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, hoisted_5_1, hoisted_6_1, deduped_7_1, deduped_8_1;
     deduped_8_1 := Source( cat_1 );
     deduped_7_1 := objects_1[k_1];
-    hoisted_6_1 := Range( cat_1 );
+    hoisted_6_1 := Target( cat_1 );
     hoisted_5_1 := [ k_1 + 1 .. Length( objects_1 ) ];
     deduped_4_1 := CommutativeRingOfLinearCategory( deduped_8_1 );
     hoisted_3_1 := [ 1 .. k_1 - 1 ];
@@ -1324,7 +1324,7 @@ function ( cat_1, morphisms_1, k_1, P_1 )
     deduped_11_1 := Length( morphisms_1 );
     deduped_10_1 := Source( cat_1 );
     deduped_9_1 := CAP_JIT_INCOMPLETE_LOGIC( morphisms_1[k_1] );
-    deduped_8_1 := Range( cat_1 );
+    deduped_8_1 := Target( cat_1 );
     hoisted_7_1 := [ 1 .. k_1 - 1 ];
     hoisted_6_1 := [ 2 .. deduped_11_1 ];
     hoisted_5_1 := [ 1 .. deduped_11_1 - 1 ];
@@ -1358,8 +1358,8 @@ end
 function ( cat_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_10_1, deduped_13_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1, deduped_19_1, deduped_20_1, deduped_21_1, deduped_22_1, deduped_23_1, deduped_24_1;
     deduped_24_1 := Source( cat_1 );
-    deduped_23_1 := Range( cat_1 );
-    deduped_22_1 := ValuesOfPreSheaf( Range( alpha_1 ) );
+    deduped_23_1 := Target( cat_1 );
+    deduped_22_1 := ValuesOfPreSheaf( Target( alpha_1 ) );
     deduped_21_1 := ValuesOfPreSheaf( Source( alpha_1 ) );
     deduped_20_1 := SetOfObjects( deduped_24_1 );
     deduped_19_1 := SetOfGeneratingMorphisms( deduped_24_1 );
@@ -1368,7 +1368,7 @@ function ( cat_1, alpha_1 )
     deduped_16_1 := deduped_21_1[2];
     deduped_15_1 := [ 1 .. Length( deduped_19_1 ) ];
     hoisted_2_1 := List( deduped_17_1, function ( logic_new_func_x_2 )
-            return RankOfObject( Range( logic_new_func_x_2 ) );
+            return RankOfObject( Target( logic_new_func_x_2 ) );
         end );
     hoisted_1_1 := List( deduped_16_1, function ( logic_new_func_x_2 )
             return RankOfObject( Source( logic_new_func_x_2 ) );
@@ -1380,7 +1380,7 @@ function ( cat_1, alpha_1 )
     hoisted_8_1 := List( deduped_16_1, function ( logic_new_func_x_2 )
             return TransposedMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    hoisted_7_1 := List( deduped_19_1, Range );
+    hoisted_7_1 := List( deduped_19_1, Target );
     hoisted_6_1 := List( deduped_19_1, Source );
     deduped_4_1 := List( deduped_22_1[1], RankOfObject );
     deduped_3_1 := List( deduped_21_1[1], RankOfObject );
@@ -1439,7 +1439,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_22_1 := [ 1 .. Length( deduped_29_1 ) ];
     deduped_21_1 := [ 1 .. deduped_23_1 ];
     hoisted_4_1 := List( deduped_28_1, function ( logic_new_func_x_2 )
-            return RankOfObject( Range( logic_new_func_x_2 ) );
+            return RankOfObject( Target( logic_new_func_x_2 ) );
         end );
     hoisted_3_1 := List( deduped_27_1, function ( logic_new_func_x_2 )
             return RankOfObject( Source( logic_new_func_x_2 ) );
@@ -1447,7 +1447,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_20_1 := List( deduped_22_1, function ( i_2 )
             return hoisted_3_1[i_2] * hoisted_4_1[i_2];
         end );
-    hoisted_19_1 := Range( cat_1 );
+    hoisted_19_1 := Target( cat_1 );
     deduped_6_1 := List( deduped_26_1, RankOfObject );
     deduped_5_1 := List( deduped_25_1, RankOfObject );
     deduped_13_1 := List( deduped_21_1, function ( i_2 )
@@ -1457,7 +1457,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     hoisted_10_1 := List( deduped_27_1, function ( logic_new_func_x_2 )
             return TransposedMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    hoisted_9_1 := List( deduped_29_1, Range );
+    hoisted_9_1 := List( deduped_29_1, Target );
     hoisted_8_1 := List( deduped_29_1, Source );
     hoisted_17_1 := UnderlyingMatrix( alpha_1 ) * SyzygiesOfRows( UnionOfRows( deduped_30_1, Sum( deduped_20_1 ), List( deduped_21_1, function ( i_2 )
                   local deduped_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2, deduped_6_2;
@@ -1506,7 +1506,7 @@ function ( cat_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, deduped_7_1, deduped_8_1;
     deduped_8_1 := ValuesOnAllObjects( alpha_1 );
     deduped_7_1 := Source( cat_1 );
-    hoisted_6_1 := Range( cat_1 );
+    hoisted_6_1 := Target( cat_1 );
     hoisted_5_1 := List( deduped_8_1, UnderlyingMatrix );
     hoisted_4_1 := CommutativeRingOfLinearCategory( deduped_7_1 );
     hoisted_3_1 := List( deduped_8_1, function ( logic_new_func_x_2 )
@@ -1582,7 +1582,7 @@ end
 ########
 function ( cat_1, arg2_1 )
     local hoisted_1_1, hoisted_2_1;
-    hoisted_2_1 := Range( arg2_1 );
+    hoisted_2_1 := Target( arg2_1 );
     hoisted_1_1 := Source( arg2_1 );
     return ForAll( SetOfObjects( cat_1 ), function ( o_2 )
               local deduped_1_2, deduped_2_2;
@@ -1600,9 +1600,9 @@ function ( cat_1, arg2_1 )
               local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2;
               deduped_4_2 := hoisted_2_1( m_2 );
               deduped_3_2 := hoisted_1_1( m_2 );
-              deduped_2_2 := arg2_1( Range( m_2 ) );
+              deduped_2_2 := arg2_1( Target( m_2 ) );
               deduped_1_2 := arg2_1( Source( m_2 ) );
-              return (RankOfObject( Range( deduped_3_2 ) ) = RankOfObject( Source( deduped_1_2 ) ) and RankOfObject( Range( deduped_2_2 ) ) = RankOfObject( Source( deduped_4_2 ) ) and UnderlyingMatrix( deduped_3_2 ) * UnderlyingMatrix( deduped_1_2 ) = UnderlyingMatrix( deduped_2_2 ) * UnderlyingMatrix( deduped_4_2 ));
+              return (RankOfObject( Target( deduped_3_2 ) ) = RankOfObject( Source( deduped_1_2 ) ) and RankOfObject( Target( deduped_2_2 ) ) = RankOfObject( Source( deduped_4_2 ) ) and UnderlyingMatrix( deduped_3_2 ) * UnderlyingMatrix( deduped_1_2 ) = UnderlyingMatrix( deduped_2_2 ) * UnderlyingMatrix( deduped_4_2 ));
           end );
 end
 ########
@@ -1617,7 +1617,7 @@ function ( cat_1, alpha_1, P_1 )
     local hoisted_1_1, deduped_2_1, hoisted_3_1, deduped_4_1;
     deduped_4_1 := ValuesOnAllObjects( alpha_1 );
     hoisted_3_1 := List( deduped_4_1, Source );
-    deduped_2_1 := Range( cat_1 );
+    deduped_2_1 := Target( cat_1 );
     hoisted_1_1 := List( deduped_4_1, function ( logic_new_func_x_2 )
             return SyzygiesOfRows( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
@@ -1638,7 +1638,7 @@ end
 function ( cat_1, alpha_1, T_1, tau_1, P_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1;
     deduped_5_1 := ValuesOnAllObjects( tau_1 );
-    deduped_4_1 := Range( cat_1 );
+    deduped_4_1 := Target( cat_1 );
     hoisted_3_1 := List( ValuesOnAllObjects( alpha_1 ), function ( logic_new_func_x_2 )
             return SyzygiesOfRows( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
@@ -1661,7 +1661,7 @@ end
 function ( cat_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_4_1, deduped_5_1, hoisted_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
     deduped_10_1 := ValuesOnAllObjects( alpha_1 );
-    deduped_9_1 := Range( cat_1 );
+    deduped_9_1 := Target( cat_1 );
     deduped_8_1 := Source( cat_1 );
     deduped_7_1 := DefiningTripleOfUnderlyingQuiver( deduped_8_1 );
     hoisted_6_1 := List( ValuesOfPreSheaf( Source( alpha_1 ) )[2], UnderlyingMatrix );
@@ -1694,7 +1694,7 @@ end
 ########
 function ( cat_1, P_1, alpha_1, mu_1, alphap_1, Pp_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1;
-    deduped_4_1 := Range( cat_1 );
+    deduped_4_1 := Target( cat_1 );
     hoisted_3_1 := List( ValuesOnAllObjects( alphap_1 ), function ( logic_new_func_x_2 )
             return SyzygiesOfRows( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
@@ -1720,7 +1720,7 @@ function ( cat_1, iota_1, tau_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := ValuesOnAllObjects( iota_1 );
     deduped_6_1 := ValuesOnAllObjects( tau_1 );
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := List( deduped_7_1, UnderlyingMatrix );
     hoisted_3_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_2_1 := List( deduped_7_1, Source );
@@ -1741,7 +1741,7 @@ function ( cat_1, S_1, source_diagram_1, mat_1, range_diagram_1, T_1 )
     local hoisted_1_1, hoisted_3_1, deduped_4_1, hoisted_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := Source( cat_1 );
     deduped_6_1 := ValuesOfPreSheaf( T_1 )[1];
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     deduped_4_1 := CommutativeRingOfLinearCategory( deduped_7_1 );
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_1_1 := ValuesOfPreSheaf( S_1 )[1];
@@ -1792,7 +1792,7 @@ function ( cat_1, morphisms_1, P_1 )
     deduped_10_1 := Length( morphisms_1 );
     deduped_9_1 := Source( cat_1 );
     deduped_8_1 := CAP_JIT_INCOMPLETE_LOGIC( morphisms_1[1] );
-    deduped_7_1 := Range( cat_1 );
+    deduped_7_1 := Target( cat_1 );
     hoisted_6_1 := [ 2 .. deduped_10_1 ];
     hoisted_5_1 := [ 1 .. deduped_10_1 - 1 ];
     hoisted_4_1 := [ 1 .. deduped_10_1 ];
@@ -1827,11 +1827,11 @@ end
 function ( cat_1, r_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := ValuesOnAllObjects( alpha_1 );
-    hoisted_4_1 := Range( cat_1 );
+    hoisted_4_1 := Target( cat_1 );
     hoisted_3_1 := List( deduped_5_1, UnderlyingMatrix );
     hoisted_2_1 := List( deduped_5_1, Range );
     hoisted_1_1 := List( deduped_5_1, Source );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( alpha_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Target( alpha_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, r_1 * hoisted_3_1[o_2] );
           end ) );
 end
@@ -1844,7 +1844,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, Source( cat_1 ), Range, Range( cat_1 ), ValuesOfPreSheaf, arg2_1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, Source( cat_1 ), Range, Target( cat_1 ), ValuesOfPreSheaf, arg2_1 );
 end
 ########
         
@@ -1869,7 +1869,7 @@ function ( cat_1, beta_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := ValuesOnAllObjects( beta_1 );
     deduped_6_1 := ValuesOnAllObjects( alpha_1 );
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := List( deduped_7_1, UnderlyingMatrix );
     hoisted_3_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_2_1 := List( deduped_7_1, Range );
@@ -1890,7 +1890,7 @@ function ( cat_1, alpha_1, beta_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := ValuesOnAllObjects( beta_1 );
     deduped_6_1 := ValuesOnAllObjects( alpha_1 );
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := List( deduped_7_1, UnderlyingMatrix );
     hoisted_3_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_2_1 := List( deduped_7_1, Range );
@@ -1912,7 +1912,7 @@ function ( cat_1, objects_1, k_1, P_1 )
     deduped_7_1 := Source( cat_1 );
     deduped_6_1 := objects_1[k_1];
     hoisted_5_1 := ValuesOfPreSheaf( CAP_JIT_INCOMPLETE_LOGIC( deduped_6_1 ) )[1];
-    deduped_4_1 := Range( cat_1 );
+    deduped_4_1 := Target( cat_1 );
     hoisted_3_1 := [ k_1 + 1 .. Length( objects_1 ) ];
     deduped_2_1 := CommutativeRingOfLinearCategory( deduped_7_1 );
     hoisted_1_1 := [ 1 .. k_1 - 1 ];
@@ -1938,7 +1938,7 @@ function ( cat_1, objects_1, k_1, P_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, hoisted_5_1, hoisted_6_1, deduped_7_1, deduped_8_1;
     deduped_8_1 := Source( cat_1 );
     deduped_7_1 := objects_1[k_1];
-    hoisted_6_1 := Range( cat_1 );
+    hoisted_6_1 := Target( cat_1 );
     hoisted_5_1 := [ k_1 + 1 .. Length( objects_1 ) ];
     deduped_4_1 := CommutativeRingOfLinearCategory( deduped_8_1 );
     hoisted_3_1 := [ 1 .. k_1 - 1 ];
@@ -1967,7 +1967,7 @@ function ( cat_1, morphisms_1, k_1, P_1 )
     deduped_10_1 := Source( cat_1 );
     deduped_9_1 := CAP_JIT_INCOMPLETE_LOGIC( morphisms_1[k_1] );
     hoisted_8_1 := ValuesOnAllObjects( deduped_9_1 );
-    deduped_7_1 := Range( cat_1 );
+    deduped_7_1 := Target( cat_1 );
     hoisted_6_1 := [ 1 .. k_1 - 1 ];
     hoisted_5_1 := [ 2 .. deduped_11_1 ];
     hoisted_4_1 := [ 1 .. deduped_11_1 - 1 ];
@@ -2002,7 +2002,7 @@ function ( cat_1, Y_1, morphisms_1, P_1 )
     deduped_9_1 := Length( morphisms_1 );
     deduped_8_1 := Source( cat_1 );
     deduped_7_1 := ValuesOfPreSheaf( Y_1 )[1];
-    deduped_6_1 := Range( cat_1 );
+    deduped_6_1 := Target( cat_1 );
     hoisted_5_1 := [ 2 .. deduped_9_1 ];
     deduped_4_1 := CommutativeRingOfLinearCategory( deduped_8_1 );
     hoisted_3_1 := [ 1 .. deduped_9_1 - 1 ];
@@ -2028,7 +2028,7 @@ end
 function ( cat_1, morphisms_1 )
     local deduped_1_1, deduped_3_1, deduped_4_1, deduped_5_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
     deduped_11_1 := Length( morphisms_1 );
-    deduped_10_1 := Range( cat_1 );
+    deduped_10_1 := Target( cat_1 );
     deduped_9_1 := Source( cat_1 );
     deduped_8_1 := DefiningTripleOfUnderlyingQuiver( deduped_9_1 );
     hoisted_7_1 := deduped_8_1[3];
@@ -2076,7 +2076,7 @@ function ( cat_1, morphisms_1 )
                 deduped_6_2 := UniqueLeftDivide( SyzygiesOfColumns( UnionOfRows( deduped_1_1, deduped_10_2, deduped_8_2{deduped_4_1} ) + (- UnionOfRows( deduped_1_1, deduped_10_2, deduped_8_2{deduped_5_1} )) ), UnionOfRows( deduped_1_1, deduped_11_2 - RowRankOfMatrix( deduped_7_2 ), List( deduped_3_1, function ( i_3 )
                             local deduped_1_3;
                             deduped_1_3 := Sum( deduped_13_2{[ 1 .. i_3 - 1 ]} );
-                            return CAP_JIT_INCOMPLETE_LOGIC( UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( Range( CAP_JIT_INCOMPLETE_LOGIC( morphisms_1[i_3] ) ) )[2][m_2] ) ) ) * CertainRows( hoisted_5_2, [ (deduped_1_3 + 1) .. (deduped_1_3 + deduped_13_2[i_3]) ] );
+                            return CAP_JIT_INCOMPLETE_LOGIC( UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( Target( CAP_JIT_INCOMPLETE_LOGIC( morphisms_1[i_3] ) ) )[2][m_2] ) ) ) * CertainRows( hoisted_5_2, [ (deduped_1_3 + 1) .. (deduped_1_3 + deduped_13_2[i_3]) ] );
                         end ) ) );
                 return CreateCapCategoryMorphismWithAttributes( deduped_10_1, CreateCapCategoryObjectWithAttributes( deduped_10_1, RankOfObject, NumberRows( deduped_6_2 ) ), CreateCapCategoryObjectWithAttributes( deduped_10_1, RankOfObject, NumberColumns( deduped_6_2 ) ), UnderlyingMatrix, deduped_6_2 );
             end ) ) );
@@ -2095,7 +2095,7 @@ function ( cat_1, P_1, morphisms_1, L_1, morphismsp_1, Pp_1 )
     deduped_16_1 := Length( morphisms_1 );
     deduped_15_1 := Source( cat_1 );
     deduped_14_1 := ValuesOfPreSheaf( Pp_1 )[1];
-    deduped_12_1 := Range( cat_1 );
+    deduped_12_1 := Target( cat_1 );
     hoisted_11_1 := [ 1 .. Length( L_1 ) ];
     hoisted_10_1 := [ 2 .. deduped_17_1 ];
     hoisted_9_1 := [ 1 .. deduped_17_1 - 1 ];
@@ -2145,7 +2145,7 @@ end
 function ( cat_1, alpha_1, beta_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1;
     deduped_6_1 := ValuesOnAllObjects( alpha_1 );
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := List( ValuesOnAllObjects( beta_1 ), function ( logic_new_func_x_2 )
             return - UnderlyingMatrix( logic_new_func_x_2 );
         end );
@@ -2166,7 +2166,7 @@ end
 ########
 function ( cat_1 )
     local deduped_1_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := Range( cat_1 );
+    deduped_6_1 := Target( cat_1 );
     deduped_5_1 := Source( cat_1 );
     deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
     hoisted_3_1 := HomalgIdentityMatrix( 0, CommutativeRingOfLinearCategory( deduped_5_1 ) );
@@ -2193,7 +2193,7 @@ function ( cat_1, Y_1, morphisms_1, T_1, tau_1, P_1 )
     deduped_9_1 := Length( morphisms_1 );
     deduped_8_1 := Source( cat_1 );
     hoisted_7_1 := List( deduped_10_1, Range );
-    deduped_6_1 := Range( cat_1 );
+    deduped_6_1 := Target( cat_1 );
     hoisted_5_1 := List( deduped_10_1, UnderlyingMatrix );
     hoisted_4_1 := [ 2 .. deduped_9_1 ];
     deduped_3_1 := CommutativeRingOfLinearCategory( deduped_8_1 );
@@ -2221,7 +2221,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_5_1, deduped_6_1;
     deduped_6_1 := Source( cat_1 );
     deduped_5_1 := ValuesOfPreSheaf( T_1 )[1];
-    deduped_3_1 := Range( cat_1 );
+    deduped_3_1 := Target( cat_1 );
     hoisted_2_1 := CommutativeRingOfLinearCategory( deduped_6_1 );
     hoisted_1_1 := List( deduped_5_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( deduped_6_1 )[1] ], function ( o_2 )
@@ -2244,7 +2244,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local hoisted_1_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := Source( cat_1 );
     deduped_6_1 := ValuesOfPreSheaf( T_1 )[1];
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := CommutativeRingOfLinearCategory( deduped_7_1 );
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
@@ -2265,7 +2265,7 @@ end
 function ( cat_1, alpha_1, tau_1, I_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1;
     deduped_6_1 := ValuesOnAllObjects( tau_1[2] );
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_3_1 := List( ValuesOnAllObjects( alpha_1 ), function ( logic_new_func_x_2 )
             return BasisOfRows( UnderlyingMatrix( logic_new_func_x_2 ) );
@@ -2289,7 +2289,7 @@ function ( cat_1, T_1, P_1 )
     deduped_9_1 := Source( cat_1 );
     deduped_8_1 := ValuesOfPreSheaf( T_1 )[1];
     deduped_7_1 := ValuesOfPreSheaf( P_1 )[1];
-    hoisted_6_1 := Range( cat_1 );
+    hoisted_6_1 := Target( cat_1 );
     hoisted_5_1 := CommutativeRingOfLinearCategory( deduped_9_1 );
     hoisted_4_1 := List( deduped_8_1, RankOfObject );
     hoisted_3_1 := List( deduped_7_1, RankOfObject );
@@ -2310,7 +2310,7 @@ function ( cat_1, morphisms_1, T_1, tau_1, P_1 )
     deduped_11_1 := Length( morphisms_1 );
     deduped_10_1 := Source( cat_1 );
     deduped_9_1 := ValuesOfPreSheaf( T_1 )[1];
-    deduped_7_1 := Range( cat_1 );
+    deduped_7_1 := Target( cat_1 );
     hoisted_6_1 := List( deduped_9_1, RankOfObject );
     hoisted_5_1 := [ 2 .. deduped_11_1 ];
     hoisted_4_1 := [ 1 .. deduped_11_1 - 1 ];
@@ -2345,7 +2345,7 @@ function ( cat_1, T_1, P_1 )
     local hoisted_1_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := Source( cat_1 );
     deduped_6_1 := ValuesOfPreSheaf( T_1 )[1];
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := CommutativeRingOfLinearCategory( deduped_7_1 );
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
@@ -2365,7 +2365,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
     deduped_6_1 := Source( cat_1 );
     deduped_5_1 := ValuesOfPreSheaf( T_1 )[1];
-    deduped_4_1 := Range( cat_1 );
+    deduped_4_1 := Target( cat_1 );
     hoisted_3_1 := CommutativeRingOfLinearCategory( deduped_6_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( deduped_6_1 )[1] ], function ( o_2 )
@@ -2388,7 +2388,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := Source( cat_1 );
     deduped_6_1 := ValuesOfPreSheaf( T_1 )[1];
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := CommutativeRingOfLinearCategory( deduped_7_1 );
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_2_1 := ValuesOfPreSheaf( P_1 )[1];
@@ -2411,7 +2411,7 @@ function ( cat_1, Y_1, morphisms_1, T_1, tau_1, P_1 )
     deduped_10_1 := Length( morphisms_1 );
     deduped_9_1 := ValuesOnAllObjects( tau_1 );
     deduped_8_1 := Source( cat_1 );
-    deduped_7_1 := Range( cat_1 );
+    deduped_7_1 := Target( cat_1 );
     hoisted_6_1 := [ 2 .. deduped_10_1 ];
     deduped_5_1 := CommutativeRingOfLinearCategory( deduped_8_1 );
     hoisted_4_1 := [ 1 .. deduped_10_1 - 1 ];
@@ -2441,7 +2441,7 @@ function ( cat_1, morphisms_1, T_1, tau_1, P_1 )
     deduped_11_1 := Length( morphisms_1 );
     deduped_10_1 := Source( cat_1 );
     deduped_9_1 := ValuesOfPreSheaf( T_1 )[1];
-    deduped_8_1 := Range( cat_1 );
+    deduped_8_1 := Target( cat_1 );
     hoisted_7_1 := [ 2 .. deduped_11_1 ];
     hoisted_6_1 := [ 1 .. deduped_11_1 - 1 ];
     hoisted_5_1 := [ 1 .. deduped_11_1 ];
@@ -2477,7 +2477,7 @@ function ( cat_1, T_1, P_1 )
     deduped_9_1 := Source( cat_1 );
     deduped_8_1 := ValuesOfPreSheaf( P_1 )[1];
     deduped_7_1 := ValuesOfPreSheaf( T_1 )[1];
-    hoisted_6_1 := Range( cat_1 );
+    hoisted_6_1 := Target( cat_1 );
     hoisted_5_1 := CommutativeRingOfLinearCategory( deduped_9_1 );
     hoisted_4_1 := List( deduped_8_1, RankOfObject );
     hoisted_3_1 := List( deduped_7_1, RankOfObject );
@@ -2497,7 +2497,7 @@ function ( cat_1, T_1, P_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := Source( cat_1 );
     deduped_6_1 := ValuesOfPreSheaf( T_1 )[1];
-    hoisted_5_1 := Range( cat_1 );
+    hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := CommutativeRingOfLinearCategory( deduped_7_1 );
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_2_1 := ValuesOfPreSheaf( P_1 )[1];
@@ -2518,7 +2518,7 @@ function ( cat_1, a_1, b_1 )
     deduped_9_1 := Source( cat_1 );
     deduped_8_1 := ValuesOfPreSheaf( b_1 )[1];
     deduped_7_1 := ValuesOfPreSheaf( a_1 )[1];
-    hoisted_6_1 := Range( cat_1 );
+    hoisted_6_1 := Target( cat_1 );
     hoisted_5_1 := CommutativeRingOfLinearCategory( deduped_9_1 );
     hoisted_4_1 := List( deduped_8_1, RankOfObject );
     hoisted_3_1 := List( deduped_7_1, RankOfObject );
@@ -2536,7 +2536,7 @@ end
 ########
 function ( cat_1 )
     local deduped_1_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := Range( cat_1 );
+    deduped_6_1 := Target( cat_1 );
     deduped_5_1 := Source( cat_1 );
     deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
     hoisted_3_1 := HomalgZeroMatrix( 0, 0, CommutativeRingOfLinearCategory( deduped_5_1 ) );

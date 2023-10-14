@@ -16,7 +16,7 @@ InstallOtherMethodForCompilerForCAP( RadicalInclusionOfPreSheaf,
         return RadicalInclusionOfPreSheaf( F );
     fi;
     
-    C := Range( PSh );
+    C := Target( PSh );
     
     vals_F := ValuesOfPreSheaf( F );
     
@@ -67,7 +67,7 @@ InstallMethod( CoverElementByIndecomposableProjectivePreSheaf,
     PSh := CapCategory( F );
     
     B := Source( PSh );
-    C := Range( PSh );
+    C := Target( PSh );
     
     obj := SetOfObjects( B )[j];
     
@@ -104,7 +104,7 @@ InstallOtherMethodForCompilerForCAP( ProjectiveCoverObjectDataOfPreSheaf,
         return ProjectiveCoverObjectDataOfPreSheaf( F );
     fi;
     
-    C := Range( PSh );
+    C := Target( PSh );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     if ( IsAlgebroid( Source( PSh ) ) and not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( Source( PSh ) ) ) ) or
@@ -112,7 +112,7 @@ InstallOtherMethodForCompilerForCAP( ProjectiveCoverObjectDataOfPreSheaf,
         TryNextMethod( );
     fi;
     
-    k := TensorUnit( Range( PSh ) );
+    k := TensorUnit( Target( PSh ) );
     
     rF := RadicalInclusionOfPreSheaf( PSh, F );
     

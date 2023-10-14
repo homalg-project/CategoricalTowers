@@ -30,7 +30,7 @@ a := A.a / A_add / Lazy; SetLabel( a, "a" );
 #! <An evaluated morphism in LazyCategory( AdditiveClosure(
 #!  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )
 #!  / relations ) )>
-b := A.b / A_add / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "3" );
+b := A.b / A_add / Lazy; SetLabel( b, "b" ); SetLabel( Target( b ), "3" );
 #! <An evaluated morphism in LazyCategory( AdditiveClosure(
 #!  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )
 #!  / relations ) )>

@@ -48,7 +48,7 @@ InstallMethod( TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure
                    TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC, c, Source( nu ) ),
                    c,
                    nu,
-                   TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC, c, Range( nu ) ) );
+                   TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC, c, Target( nu ) ) );
     
 end );
 
@@ -67,6 +67,6 @@ InstallMethod( TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure
                    TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC, Source( phi ), h ),
                    phi,
                    h,
-                   TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC, Range( phi ), h ) );
+                   TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC, Target( phi ), h ) );
     
 end );

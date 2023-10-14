@@ -23,7 +23,7 @@ function ( cat_1, alpha_1, beta_1 )
             return List( logic_new_func_list_2, MorphismCoefficients );
         end );
     hoisted_4_1 := List( deduped_11_1, function ( logic_new_func_list_2 )
-            return List( logic_new_func_list_2, Range );
+            return List( logic_new_func_list_2, Target );
         end );
     hoisted_3_1 := List( deduped_11_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, Source );
@@ -60,7 +60,7 @@ function ( cat_1, alpha_1 )
                 end );
         end );
     hoisted_2_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
-            return List( logic_new_func_list_2, Range );
+            return List( logic_new_func_list_2, Target );
         end );
     hoisted_1_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, Source );
@@ -166,7 +166,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
         end );
     hoisted_16_1 := List( deduped_31_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
-                    return ObjectIndex( Range( logic_new_func_x_3 ) );
+                    return ObjectIndex( Target( logic_new_func_x_3 ) );
                 end );
         end );
     hoisted_15_1 := List( deduped_31_1, function ( logic_new_func_list_2 )
@@ -176,7 +176,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
         end );
     hoisted_14_1 := List( deduped_30_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
-                    return ObjectIndex( Range( logic_new_func_x_3 ) );
+                    return ObjectIndex( Target( logic_new_func_x_3 ) );
                 end );
         end );
     hoisted_13_1 := deduped_25_1[20];
@@ -524,7 +524,7 @@ function ( cat_1, arg2_1 )
     hoisted_5_1 := EnhancedDataTables( deduped_17_1 )[19];
     deduped_4_1 := List( deduped_16_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
-                    return ObjectIndex( Range( logic_new_func_x_3 ) );
+                    return ObjectIndex( Target( logic_new_func_x_3 ) );
                 end );
         end );
     hoisted_2_1 := List( deduped_16_1, function ( logic_new_func_list_2 )
@@ -668,7 +668,7 @@ function ( cat_1, r_1, alpha_1 )
                 end );
         end );
     hoisted_2_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
-            return List( logic_new_func_list_2, Range );
+            return List( logic_new_func_list_2, Target );
         end );
     hoisted_1_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, Source );
@@ -753,7 +753,7 @@ function ( cat_1, alpha_1, beta_1 )
     hoisted_16_1 := List( deduped_33_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_list_3 )
                     return List( logic_new_func_list_3, function ( logic_new_func_x_4 )
-                            return ObjectIndex( Range( logic_new_func_x_4 ) );
+                            return ObjectIndex( Target( logic_new_func_x_4 ) );
                         end );
                 end );
         end );

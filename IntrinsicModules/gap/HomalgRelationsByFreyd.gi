@@ -142,7 +142,7 @@ InstallOtherMethod( NrGeneratorsForRelations,
         
   function( rels )
     
-    return RankOfObject( Range( RelationMorphism( rels ) ) );
+    return RankOfObject( Target( RelationMorphism( rels ) ) );
     
 end );
 

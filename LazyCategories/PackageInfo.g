@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "LazyCategories",
 Subtitle := "Construct an equivalent lazy category out of a CAP category",
-Version := "2023.10-04",
+Version := "2023.10-05",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
@@ -72,7 +72,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "ToolsForHomalg", ">= 2021.12-02" ],
-                   [ "CAP", ">= 2022.11-06" ],
+                   [ "CAP", ">= 2023.08-04" ],
                    [ "MonoidalCategories", ">= 2022.06-03" ],
                    [ "CategoryConstructor", ">= 2023.07-03" ],
                    [ "Toposes", ">= 2022.04-19" ],

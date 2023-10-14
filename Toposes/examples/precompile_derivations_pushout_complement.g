@@ -26,9 +26,9 @@ has_pushout_complement := function( cat, f, x )
     
     rpc := EmbeddingOfRelativePseudoComplementSubobject( cat, ## this is the only line in which we need relativ pseudo-complements
                       EmbeddingOfRelationInDirectProduct( Rel, x_i_Omega_A ),
-                      EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, Range( xx ), [ x_i, f_i, Omega_X ], Range( Omega_X ) ) ) );
+                      EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, Target( xx ), [ x_i, f_i, Omega_X ], Target( Omega_X ) ) ) );
     
-    Omega_D := MaximalRelationIntoTerminalObject( Rel, Range( xx ) );
+    Omega_D := MaximalRelationIntoTerminalObject( Rel, Target( xx ) );
     
     PC1 :=
       IsEqualAsSubobjects( cat,
@@ -44,7 +44,7 @@ has_pushout_complement := function( cat, f, x )
                    EmbeddingOfRelationInDirectProduct( Rel, PreCompose( Rel, xx, x_i ) ),
                    EmbeddingOfUnionSubobject( cat, ## already exists in categories with coproducts
                            EmbeddingOfRelationInDirectProduct( Rel, AsMorphismInCategoryOfRelations( Rel, IdentityMorphism( cat, A ) ) ),
-                           EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, Range( ff ), [ f_i, Omega_X, PseudoInverse( Rel, Omega_X ), ff ], Range( ff ) ) ) ) );
+                           EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, Target( ff ), [ f_i, Omega_X, PseudoInverse( Rel, Omega_X ), ff ], Target( ff ) ) ) ) );
     
     return PC2;
     
@@ -75,14 +75,14 @@ pushout_complement := function( cat, f, x )
     
     rpc := EmbeddingOfRelativePseudoComplementSubobject( cat, ## this is the only line in which we need relative pseudo-complements
                    EmbeddingOfRelationInDirectProduct( Rel, x_i_Omega_A ),
-                   EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, Range( xx ), [ x_i, f_i, Omega_X ], Range( Omega_X ) ) ) );
+                   EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, Target( xx ), [ x_i, f_i, Omega_X ], Target( Omega_X ) ) ) );
     
     i := PreCompose( cat,
                  rpc,
                  ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
-                         [ Range( x ), TerminalObject( cat ) ],
+                         [ Target( x ), TerminalObject( cat ) ],
                          1,
-                         Range( rpc ) ) );
+                         Target( rpc ) ) );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, IsMonomorphism( cat, i ) );

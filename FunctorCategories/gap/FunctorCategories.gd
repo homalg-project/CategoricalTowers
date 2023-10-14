@@ -68,7 +68,7 @@ DeclareAttribute( "Range",
 CapJitAddTypeSignature( "Range", [ IsFunctorCategory ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( Range( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( Target( input_types[1].category ) );
     
 end );
 
@@ -96,7 +96,7 @@ DeclareAttribute( "Range",
 CapJitAddTypeSignature( "Range", [ IsObjectInFunctorCategory ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( Range( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( Target( input_types[1].category ) );
     
 end );
 
@@ -123,8 +123,8 @@ CapJitAddTypeSignature( "ValuesOfFunctor", [ IsObjectInFunctorCategory ],
     Assert( 0, IsFunctorCategory( input_types[1].category ) );
     
     return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ),
-                   CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ) );
+                   CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( Target( input_types[1].category ) ) ),
+                   CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( Target( input_types[1].category ) ) ) );
     
 end );
 
@@ -141,7 +141,7 @@ CapJitAddTypeSignature( "ValuesOnAllObjects", [ IsMorphismInFunctorCategory ],
     
     Assert( 0, IsFunctorCategory( input_types[1].category ) );
     
-    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) );
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( Target( input_types[1].category ) ) );
     
 end );
 
@@ -322,7 +322,7 @@ DeclareOperation( "AsMorphismInFunctorCategoryByValues",
 #!  Turn the natrual transformation <A>eta</A>:$F \to G$ into a morphism
 #!  <C><A>U</A> := AsObjectInFunctorCategory( F )</C> $\to$ <C><A>V</A> := AsObjectInFunctorCategory( G )</C>
 #!  in the category of functors <C><A>Hom</A> := Hom( B, D )</C>, where
-#!  <C>B := Source( F ) = Source( G )</C> and <C>C := Range( F ) = Range( G )</C>.
+#!  <C>B := Source( F ) = Source( G )</C> and <C>C := Target( F ) = Target( G )</C>.
 #! @Arguments eta
 #! @Group AsMorphismInFunctorCategory
 DeclareAttribute( "AsMorphismInFunctorCategory",

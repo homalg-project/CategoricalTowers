@@ -81,7 +81,7 @@ DeclareAttribute( "Range",
 CapJitAddTypeSignature( "Range", [ IsPreSheafWithBoundsCategory ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( Range( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( Target( input_types[1].category ) );
     
 end );
 
@@ -123,7 +123,7 @@ DeclareAttribute( "Range",
 #CapJitAddTypeSignature( "Range", [ IsObjectInPreSheafWithBoundsCategory ],
 #  function ( input_types )
 #    
-#    return CapJitDataTypeOfCategory( Range( input_types[1].category ) );
+#    return CapJitDataTypeOfCategory( Target( input_types[1].category ) );
 #    
 #end );
 
@@ -153,10 +153,10 @@ DeclareAttribute( "FunctionOfPreSheafMorphism",
 #    
 #    return rec( filter := IsFunction,
 #                signature :=
-#                [ [ CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ),
+#                [ [ CapJitDataTypeOfObjectOfCategory( Target( input_types[1].category ) ),
 #                    CapJitDataTypeOfObjectOfCategory( Source( input_types[1].category ) ),
-#                    CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ],
-#                  CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ] );
+#                    CapJitDataTypeOfObjectOfCategory( Target( input_types[1].category ) ) ],
+#                  CapJitDataTypeOfMorphismOfCategory( Target( input_types[1].category ) ) ] );
 #    
 #end );
 

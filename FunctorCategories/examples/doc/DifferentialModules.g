@@ -349,7 +349,7 @@ Source( epsilon ) = V;
 #! But its range is also isomorphic to $V$.
 
 #! @Example
-Range( epsilon ) = V;
+Target( epsilon ) = V;
 #! true
 #! @EndExample
 
@@ -390,6 +390,6 @@ beta := Braiding( Vs, V );
 #! <(1)->9x9>
 Source( beta ) = VsV;
 #! true
-Range( beta ) = VVs;
+Target( beta ) = VVs;
 #! true
 #! @EndExample

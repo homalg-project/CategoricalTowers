@@ -192,7 +192,7 @@ InstallMethod( ViewObj,
         [ IsMorphismInSkeletalFinSets ],
         
   function ( phi )
-    Print( "|", Length( Source( phi ) ), "| → |", Length( Range( phi ) ), "|" );
+    Print( "|", Length( Source( phi ) ), "| → |", Length( Target( phi ) ), "|" );
 end );
 
 ##
@@ -201,7 +201,7 @@ InstallMethod( ViewObj,
         [ IsMorphismInSkeletalFinSets and IsMonomorphism ],
         
   function ( phi )
-    Print( "|", Length( Source( phi ) ), "| ↪ |", Length( Range( phi ) ), "|" );
+    Print( "|", Length( Source( phi ) ), "| ↪ |", Length( Target( phi ) ), "|" );
 end );
 
 ##
@@ -210,7 +210,7 @@ InstallMethod( ViewObj,
         [ IsMorphismInSkeletalFinSets and IsEpimorphism ],
         
   function ( phi )
-    Print( "|", Length( Source( phi ) ), "| ↠ |", Length( Range( phi ) ), "|" );
+    Print( "|", Length( Source( phi ) ), "| ↠ |", Length( Target( phi ) ), "|" );
 end );
 
 ##
@@ -219,7 +219,7 @@ InstallMethod( ViewObj,
         [ IsMorphismInSkeletalFinSets and IsIsomorphism ],
         
   function ( phi )
-    Print( "|", Length( Source( phi ) ), "| ⭇ |", Length( Range( phi ) ), "|" );
+    Print( "|", Length( Source( phi ) ), "| ⭇ |", Length( Target( phi ) ), "|" );
 end );
 
 ##
@@ -264,7 +264,7 @@ InstallMethod( Display,
     
     Print( PrintString( Source( phi ) ) );
     Print( " ⱶ", AsList( phi ), "→ " );
-    Print( PrintString( Range( phi ) ), "\n" );
+    Print( PrintString( Target( phi ) ), "\n" );
     
 end );
 

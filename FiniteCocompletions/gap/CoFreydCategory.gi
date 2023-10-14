@@ -66,7 +66,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToCoFreydCategoryData,
         
         corel := ObjectDatum( KC, objKC );
         
-        functor_on_corel := functor_on_morphisms( functor_on_objects( Source( corel ) ), corel, functor_on_objects( Range( corel ) ) );
+        functor_on_corel := functor_on_morphisms( functor_on_objects( Source( corel ) ), corel, functor_on_objects( Target( corel ) ) );
         
         return KernelObject( additive_category_with_kernels, functor_on_corel );
         
@@ -77,13 +77,13 @@ InstallMethodForCompilerForCAP( ExtendFunctorToCoFreydCategoryData,
         local S_corel, T_corel, functor_on_source_of_S_corel, functor_on_source_of_T_corel, source_diagram, range_diagram, functor_on_mor;
         
         S_corel := ObjectDatum( KC, Source( morKC ) );
-        T_corel := ObjectDatum( KC, Range( morKC ) );
+        T_corel := ObjectDatum( KC, Target( morKC ) );
         
         functor_on_source_of_S_corel := functor_on_objects( Source( S_corel ) );
         functor_on_source_of_T_corel := functor_on_objects( Source( T_corel ) );
         
-        source_diagram := functor_on_morphisms( functor_on_source_of_S_corel, S_corel, functor_on_objects( Range( S_corel ) ) );
-        range_diagram := functor_on_morphisms( functor_on_source_of_T_corel, T_corel, functor_on_objects( Range( T_corel ) ) );
+        source_diagram := functor_on_morphisms( functor_on_source_of_S_corel, S_corel, functor_on_objects( Target( S_corel ) ) );
+        range_diagram := functor_on_morphisms( functor_on_source_of_T_corel, T_corel, functor_on_objects( Target( T_corel ) ) );
         
         if not IsEqualForObjects( additive_category_with_kernels, source, KernelObject( additive_category_with_kernels, source_diagram ) ) then
             Error( "source and KernelObject( source_diagram ) do not coincide\n" );

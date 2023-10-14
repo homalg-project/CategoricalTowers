@@ -181,9 +181,9 @@ InstallMethod( UniversalMorphismFromFreeModule,
   function ( iota, M )
     local AMod, A, id_A, N, FN, structure_morphism, AoN, AoM, Aiota, NoA, MoA, morphism;
     
-    if not IsEqualForObjects( UnderlyingCell( M ), Range( iota ) ) then
+    if not IsEqualForObjects( UnderlyingCell( M ), Target( iota ) ) then
         
-        Error( "the object underlying M is not equal to Range( iota )\n" );
+        Error( "the object underlying M is not equal to Target( iota )\n" );
         
     fi;
     
@@ -307,7 +307,7 @@ InstallMethod( IsWellDefined,
     
     mu := CapCategory( M )!.AlgebraMultiplicationMorphism;
     
-    A := Range( mu );
+    A := Target( mu );
     
     id_A := IdentityMorphism( A );
     
@@ -376,7 +376,7 @@ InstallMethod( IsWellDefined,
         
     fi;
     
-    bool := [ Source( mor1 ) = Source( mor2 ), Range( mor1 ) = Range( mor2 ) ];
+    bool := [ Source( mor1 ) = Source( mor2 ), Target( mor1 ) = Target( mor2 ) ];
     
     if not Set( bool ) = [ true ] then
         return [ [ "sources equal", bool[1] ], [ "ranges equal", bool[2] ] ];
@@ -403,12 +403,12 @@ InstallMethod( IsWellDefined,
     m := UnderlyingCell( phi );
     
     s := StructureMorphism( Source( phi ) );
-    t := StructureMorphism( Range( phi ) );
+    t := StructureMorphism( Target( phi ) );
     
-    bool := [ Source( m ) = Range( s ), Range( m ) = Range( t ) ];
+    bool := [ Source( m ) = Target( s ), Target( m ) = Target( t ) ];
     
     if not Set( bool ) = [ true ] then
-        return [ [ "Range( action_source ) = source", bool[1] ], [ "Range( action_target ) = target", bool[2] ] ];
+        return [ [ "Target( action_source ) = source", bool[1] ], [ "Target( action_target ) = target", bool[2] ] ];
     fi;
     
     A := UnderlyingActingObject( CapCategory( phi ) );
@@ -420,7 +420,7 @@ InstallMethod( IsWellDefined,
     mor1 := PreCompose( s, m );
     mor2 := PreCompose( Am, t );
     
-    bool := [ Source( mor1 ) = Source( mor2 ), Range( mor1 ) = Range( mor2 ) ];
+    bool := [ Source( mor1 ) = Source( mor2 ), Target( mor1 ) = Target( mor2 ) ];
     
     if not Set( bool ) = [ true ] then
         return [ [ "sources equal", bool[1] ], [ "ranges equal", bool[2] ] ];
@@ -467,7 +467,7 @@ InstallMethod( Display,
         
   function ( object )
     
-    Display( Range( StructureMorphism( object ) ) );
+    Display( Target( StructureMorphism( object ) ) );
     
 end );
 

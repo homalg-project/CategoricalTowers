@@ -23,7 +23,7 @@ function ( cat_1, alpha_1, beta_1 )
             return List( logic_new_func_list_2, UnderlyingQuiverAlgebraElement );
         end );
     hoisted_4_1 := List( deduped_11_1, function ( logic_new_func_list_2 )
-            return List( logic_new_func_list_2, Range );
+            return List( logic_new_func_list_2, Target );
         end );
     hoisted_3_1 := List( deduped_11_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, Source );
@@ -60,7 +60,7 @@ function ( cat_1, alpha_1 )
                 end );
         end );
     hoisted_2_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
-            return List( logic_new_func_list_2, Range );
+            return List( logic_new_func_list_2, Target );
         end );
     hoisted_1_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, Source );
@@ -160,7 +160,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
         end );
     deduped_15_1 := List( deduped_33_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
-                    return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                    return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                 end );
         end );
     deduped_14_1 := List( deduped_33_1, function ( logic_new_func_list_2 )
@@ -183,7 +183,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
         end );
     hoisted_13_1 := List( deduped_32_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
-                    return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                    return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                 end );
         end );
     hoisted_12_1 := List( deduped_32_1, function ( logic_new_func_list_2 )
@@ -361,7 +361,7 @@ function ( cat_1, source_1, alpha_1, range_1 )
         end );
     hoisted_3_1 := List( deduped_11_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
-                    return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                    return VertexIndex( UnderlyingVertex( Target( logic_new_func_x_3 ) ) );
                 end );
         end );
     hoisted_2_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
@@ -553,7 +553,7 @@ function ( cat_1, arg2_1 )
     deduped_10_1 := [ 1 .. deduped_15_1 ];
     deduped_9_1 := List( deduped_18_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
-                    return UnderlyingVertex( Range( logic_new_func_x_3 ) );
+                    return UnderlyingVertex( Target( logic_new_func_x_3 ) );
                 end );
         end );
     deduped_8_1 := List( deduped_18_1, function ( logic_new_func_list_2 )
@@ -723,7 +723,7 @@ function ( cat_1, r_1, alpha_1 )
             return List( logic_new_func_list_2, UnderlyingQuiverAlgebraElement );
         end );
     hoisted_2_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
-            return List( logic_new_func_list_2, Range );
+            return List( logic_new_func_list_2, Target );
         end );
     hoisted_1_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, Source );

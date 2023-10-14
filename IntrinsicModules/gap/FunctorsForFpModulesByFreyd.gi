@@ -114,7 +114,7 @@ BindGlobal( "INSTALL_FUNCTOR_GET_RID_OF_ZERO_GENERATORS_OF_FP_MODULE_METHODS",
                 
                 source_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Source( morphism ) ) );
                 
-                range_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Range( morphism ) ) );
+                range_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Target( morphism ) ) );
                 
                 new_morphism_matrix := UnderlyingMatrix( morphism );
                 
@@ -132,7 +132,7 @@ BindGlobal( "INSTALL_FUNCTOR_GET_RID_OF_ZERO_GENERATORS_OF_FP_MODULE_METHODS",
                 
                 source_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Source( morphism ) ) );
                 
-                range_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Range( morphism ) ) );
+                range_transformation_triple := get_rid_of_zero_generators_transformation_triple( UnderlyingMatrix( Target( morphism ) ) );
                 
                 new_morphism_matrix := UnderlyingMatrix( morphism );
                 
@@ -207,7 +207,7 @@ InstallMethod( FunctorLessGeneratorsOfLeftFpModule,
         
         source_transformation_triple := LessGeneratorsTransformationTripleLeft( UnderlyingMatrix( Source( morphism ) ) );
         
-        range_transformation_triple := LessGeneratorsTransformationTripleLeft( UnderlyingMatrix( Range( morphism ) ) );
+        range_transformation_triple := LessGeneratorsTransformationTripleLeft( UnderlyingMatrix( Target( morphism ) ) );
         
         new_morphism_matrix := UnderlyingMatrix( morphism );
         
@@ -250,7 +250,7 @@ InstallMethod( FunctorLessGeneratorsOfRightFpModule,
         
         source_transformation_triple := LessGeneratorsTransformationTripleRight( UnderlyingMatrix( Source( morphism ) ) );
         
-        range_transformation_triple := LessGeneratorsTransformationTripleRight( UnderlyingMatrix( Range( morphism ) ) );
+        range_transformation_triple := LessGeneratorsTransformationTripleRight( UnderlyingMatrix( Target( morphism ) ) );
         
         new_morphism_matrix := UnderlyingMatrix( morphism );
         

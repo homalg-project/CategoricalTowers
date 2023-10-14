@@ -41,7 +41,7 @@ Display( tau );
 #! { 0,..., 3 } ⱶ[ 1, 0, 1, 0 ]→ { 0, 1 }
 #! 
 #! A morphism in the lazy slice category given by the above data
-IsTerminal( Range( tau ) );
+IsTerminal( Target( tau ) );
 #! true
 n := MapOfFinSets( FinSet( 3 ), [ 2, 0, 3 ], FinSet( 4 ) );
 #! |3| → |4|

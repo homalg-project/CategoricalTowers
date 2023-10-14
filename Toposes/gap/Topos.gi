@@ -17,7 +17,7 @@ InstallOtherMethodForCompilerForCAP( IntersectWithPreimagesWithGivenObjects,
     local A, B, PB, f_, PA_PA, PAxPA, PA_B, n, pi_1, e;
     
     A := Source( f );
-    B := Range( f );
+    B := Target( f );
     
     PB := PowerObject( C, B );
     
@@ -78,7 +78,7 @@ InstallOtherMethodForCompilerForCAP( EmbeddingOfRelativePowerObject,
     local A, B, PA, PA_B, PAxB, n, pi_1, e;
     
     A := Source( f );
-    B := Range( f );
+    B := Target( f );
     
     PA := PowerObject( C, A );
     

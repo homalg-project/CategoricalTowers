@@ -12,9 +12,9 @@ ru := RightUnitorAsFunctor(B);;
 lui := LeftUnitorInverseAsFunctor(B);;
 rui := RightUnitorInverseAsFunctor(B);;
 
-AsCapCategory(Range(lu)) = B;
+AsCapCategory(Target(lu)) = B;
 #! true
-AsCapCategory(Range(ru)) = B;
+AsCapCategory(Target(ru)) = B;
 #! true
 AsCapCategory(Source(lu)) = TensorProductOnObjects( B0, B );
 #! true
@@ -24,9 +24,9 @@ AsCapCategory(Source(lui)) = B;
 #! true
 AsCapCategory(Source(rui)) = B;
 #! true
-AsCapCategory(Range(lui)) = TensorProductOnObjects( B0, B );
+AsCapCategory(Target(lui)) = TensorProductOnObjects( B0, B );
 #! true
-AsCapCategory(Range(rui)) = TensorProductOnObjects( B, B0 );
+AsCapCategory(Target(rui)) = TensorProductOnObjects( B, B0 );
 #! true
 l := Concatenation( [
              List( SetOfObjects(B),

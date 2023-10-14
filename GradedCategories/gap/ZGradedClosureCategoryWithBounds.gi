@@ -226,7 +226,7 @@ InstallMethod( ZGradedClosureCategoryWithBounds,
         
         source_presheaf_on_obj := ObjectDatum( PSh, ObjectDatum( PSh_b, Source( mor ) )[1] )[1];
         presheaf_morphism_on_obj := MorphismDatum( PSh, presheaf_morphism );
-        range_presheaf_on_obj := ObjectDatum( PSh, ObjectDatum( PSh_b, Range( mor ) )[1] )[1];
+        range_presheaf_on_obj := ObjectDatum( PSh, ObjectDatum( PSh_b, Target( mor ) )[1] )[1];
         
         func :=
           function ( n )
@@ -495,7 +495,7 @@ InstallMethodWithCrispCache( MorphismInZGradedClosureCategoryWithBounds,
         Error( "the source of phi be equal to S[degree]" );
     fi;
     
-    if not IsEqualForObjects( Range( phi ), T[degree] ) then
+    if not IsEqualForObjects( Target( phi ), T[degree] ) then
         Error( "the range of phi be equal to T[degree]" );
     fi;
     

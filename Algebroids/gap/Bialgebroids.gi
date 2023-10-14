@@ -42,7 +42,7 @@ InstallMethod( AddBialgebroidStructure,
    
     counit_functor := CapFunctor( B, counit_record_objects, counit_record_morphisms );
     
-    if not IsIdenticalObj( B0, AsCapCategory( Range( counit_functor ) ) ) then
+    if not IsIdenticalObj( B0, AsCapCategory( Target( counit_functor ) ) ) then
         Error( "counit_functor has a the wrong target category\n" );
     fi;
     
@@ -62,7 +62,7 @@ InstallMethod( AddBialgebroidStructure,
     
     comult_functor := CapFunctor( B, comult_record_objects, comult_record_morphisms );
     
-    if not IsIdenticalObj( B2, AsCapCategory( Range( comult_functor ) ) ) then
+    if not IsIdenticalObj( B2, AsCapCategory( Target( comult_functor ) ) ) then
         Error( "comult_functor has a the wrong target category\n" );
     fi;
     
@@ -99,7 +99,7 @@ InstallMethod( AddAntipode,
     
     S_functor!.Name := Concatenation( "Contravariant f", S_functor!.Name{[ 2 .. Length( S_functor!.Name ) ]} );
     
-    if not IsIdenticalObj( B, AsCapCategory( Range( S_functor ) ) ) then
+    if not IsIdenticalObj( B, AsCapCategory( Target( S_functor ) ) ) then
         Error( "S_functor has a the wrong target category\n" );
     fi;
     

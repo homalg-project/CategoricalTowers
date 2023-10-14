@@ -27,7 +27,7 @@ I = I / P
 
 SetLabel( I, "I" ); SetLabel( Source( I ), "R^i" )
 
-R = Range( I )
+R = Target( I )
 
 SetLabel( R, "R" )
 

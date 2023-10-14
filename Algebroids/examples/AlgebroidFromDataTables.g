@@ -226,7 +226,7 @@ RangeCategoryOfHomomorphismStructure( qB );
 IsZero( qB.("cde") );
 #! true
 f := RandomMorphism( qB, 20 );;
-1/2 * HomStructure( Source( f ), Range( f ), 2*HomStructure( f ) ) = f;
+1/2 * HomStructure( Source( f ), Target( f ), 2*HomStructure( f ) ) = f;
 #! true
 ideal := List( [ B.0, B.1, B.2 ], IdentityMorphism );
 #! [ <1*id(0):(0) -≻ (0)>, <1*id(1):(1) -≻ (1)>, <1*id(2):(2) -≻ (2)> ]

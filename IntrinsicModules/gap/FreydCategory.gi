@@ -14,7 +14,7 @@ InstallGlobalFunction( INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( category, morphism )
         local range, relation_morphism, test_morphisms, diagram, cokernel_object, cokernel_projection;
         
-        range := Range( morphism );
+        range := Target( morphism );
         
         relation_morphism := RelationMorphism( range );
         
@@ -34,7 +34,7 @@ InstallGlobalFunction( INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         return FreydCategoryMorphism( category,
                        range,
-                       IdentityMorphism( Range( relation_morphism ) ),
+                       IdentityMorphism( Target( relation_morphism ) ),
                        cokernel_object );
         
     end );
@@ -48,7 +48,7 @@ InstallGlobalFunction( INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         alpha := MorphismDatum( morphism );
         
-        rho_B := RelationMorphism( Range( morphism ) );
+        rho_B := RelationMorphism( Target( morphism ) );
             
         rho_A := RelationMorphism( Source( morphism ) );
         
@@ -85,9 +85,9 @@ InstallGlobalFunction( INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY,
     #    
     #    sigma := WitnessForBeingCongruentToZero( PreCompose( test_morphism, CokernelProjection( alpha ) ) );
     #    
-    #    R_B := Source( RelationMorphism( Range( alpha ) ) );
+    #    R_B := Source( RelationMorphism( Target( alpha ) ) );
     #    
-    #    A := Range( RelationMorphism( Source( alpha ) ) );
+    #    A := Target( RelationMorphism( Source( alpha ) ) );
     #    
     #    ## the order in the list below depends on the order of list test_morphisms
     #    ## in the body of the function passed to AddCokernelProjection above
@@ -107,7 +107,7 @@ InstallGlobalFunction( INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         alpha := MorphismDatum( monomorphism );
         
-        N := RelationMorphism( Range( monomorphism ) );
+        N := RelationMorphism( Target( monomorphism ) );
         
         chi := RelativeLift( beta, alpha, N );
         
@@ -122,15 +122,15 @@ InstallGlobalFunction( INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY,
     #    
     #    witness := WitnessForBeingCongruentToZero( CokernelProjection( category, alpha ) );
     #    
-    #    R_B := Source( RelationMorphism( Range( alpha ) ) );
+    #    R_B := Source( RelationMorphism( Target( alpha ) ) );
     #    
-    #    A := Range( RelationMorphism( Source( alpha ) ) );
+    #    A := Target( RelationMorphism( Source( alpha ) ) );
     #    
     #    ## the order in the list below depends on the order of list test_morphisms
     #    ## in the body of the function passed to AddCokernelProjection above
     #    sigma_A := PreCompose( witness, ProjectionInFactorOfDirectSum( [ A, R_B ], 1 ) );
     #    
-    #    return FreydCategoryMorphism( category, Range( alpha ), PreCompose( sigma_A, MorphismDatum( test_morphism ) ), Range( test_morphism ) );
+    #    return FreydCategoryMorphism( category, Target( alpha ), PreCompose( sigma_A, MorphismDatum( test_morphism ) ), Target( test_morphism ) );
     #    
     #end );
     
@@ -140,15 +140,15 @@ InstallGlobalFunction( INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY,
         local beta, alpha, N, chi;
         
         ## the notation below is borrowed from arXiv:1003.1943 Section 3.1.2
-        beta := MorphismDatum( IdentityMorphism( Range( epimorphism ) ) );
+        beta := MorphismDatum( IdentityMorphism( Target( epimorphism ) ) );
         
         alpha := MorphismDatum( epimorphism );
         
-        N := RelationMorphism( Range( epimorphism ) );
+        N := RelationMorphism( Target( epimorphism ) );
         
         chi := RelativeLift( beta, alpha, N );
         
-        return FreydCategoryMorphism( category, Range( epimorphism ), PreCompose( chi, MorphismDatum( test_morphism ) ), Range( test_morphism ) );
+        return FreydCategoryMorphism( category, Target( epimorphism ), PreCompose( chi, MorphismDatum( test_morphism ) ), Target( test_morphism ) );
         
     end );
 

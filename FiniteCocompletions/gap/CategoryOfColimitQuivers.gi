@@ -97,7 +97,7 @@ InstallMethod( CategoryOfColimitQuivers,
         
         PSh := ModelingCategory( ParallelPairsUC );
         
-        UC := Range( PSh );
+        UC := Target( PSh );
         
         C := UnderlyingCategory( UC );
         
@@ -142,7 +142,7 @@ InstallMethod( CategoryOfColimitQuivers,
         
         PSh := ModelingCategory( ParallelPairsUC );
         
-        UC := Range( PSh );
+        UC := Target( PSh );
         
         ## Pair( Pair( V, A ), Pair( s, t ) )
         pair := ObjectDatum( ParallelPairsUC, obj );
@@ -175,7 +175,7 @@ InstallMethod( CategoryOfColimitQuivers,
         
         PSh := ModelingCategory( ParallelPairsUC );
         
-        UC := Range( PSh );
+        UC := Target( PSh );
         
         source_datum := ObjectDatum( ParallelPairsUC, source );
         range_datum := ObjectDatum( ParallelPairsUC, range );
@@ -209,7 +209,7 @@ InstallMethod( CategoryOfColimitQuivers,
         
         PSh := ModelingCategory( ParallelPairsUC );
         
-        UC := Range( PSh );
+        UC := Target( PSh );
         
         mor_datum := MorphismDatum( ParallelPairsUC, mor );
         
@@ -358,7 +358,7 @@ InstallMethod( Display,
     Print( "\nDatum:  " );
     Display( MorphismDatum( quiver_morphism ) );
     Print( "\nRange:  " );
-    Display( Range( quiver_morphism ) );
+    Display( Target( quiver_morphism ) );
     
     Print( "\nA morphism in ", Name( CapCategory( quiver_morphism ) ), " given by the above data\n" );
     

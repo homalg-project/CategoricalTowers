@@ -17,7 +17,7 @@ Aoid := Algebroid( kQ, [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ] );;
 s := SetOfObjects( Aoid );;
 m := SetOfGeneratingMorphisms( Aoid );;
 interpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( -m[3] );;
-InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( m[3] ), Range( m[3] ), interpretation );;
+InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( m[3] ), Target( m[3] ), interpretation );;
 
 ## additive closure
 add := AdditiveClosure( Aoid );;
@@ -35,7 +35,7 @@ HomomorphismStructureOnMorphisms( DirectSumFunctorial( [ ids1, ids2 ] ), ids1 );
 
 interpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor );;
 IsCongruentForMorphisms(
-  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), interpretation ),
+  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Target( mor ), interpretation ),
   mor );;
 
 a := AsAdditiveClosureMorphism( m[1] );;

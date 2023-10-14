@@ -42,7 +42,7 @@ IsTerminal( t );
 #! true
 pi := UniversalMorphismIntoTerminalObject( m );
 #! |8| → |1|
-IsIdenticalObj( Range( pi ), t );
+IsIdenticalObj( Target( pi ), t );
 #! true
 pi_t := UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( m, t );
 #! |8| → |1|

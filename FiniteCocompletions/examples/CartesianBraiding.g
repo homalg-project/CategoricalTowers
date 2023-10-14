@@ -51,7 +51,7 @@ gamma := hom[1];
 #!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
 Source( gamma ) = ab;
 #! true
-Range( gamma ) = ba;
+Target( gamma ) = ba;
 #! true
 IsWellDefined( gamma );
 #! true

@@ -63,7 +63,7 @@ InstallMethod( MatrixOfMap,
     fi;
     
     if _pos_t < 1 then
-        pos_t := PositionOfTheDefaultPresentation( Range( phi ) );
+        pos_t := PositionOfTheDefaultPresentation( Target( phi ) );
     else
         pos_t := _pos_t;
     fi;
@@ -203,7 +203,7 @@ InstallMethod( ImageObjectEmb,
   function( phi )
     local T;
     
-    T := Range( phi );
+    T := Target( phi );
     
     return ZeroMorphism( ZeroObject( CapCategory( T ) ), T );
     
@@ -261,7 +261,7 @@ InstallMethod( Cokernel,
     
     epi := CokernelEpi( phi );
     
-    coker := Range( epi );
+    coker := Target( epi );
     
     coker!.NaturalGeneralizedEmbedding := InverseOfGeneralizedMorphismWithFullDomain( epi );
     
@@ -305,7 +305,7 @@ InstallMethod( CokernelEpi,
         
   function( phi )
     
-    return IdentityMorphism( Range( phi ) );
+    return IdentityMorphism( Target( phi ) );
     
 end );
 

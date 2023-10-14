@@ -40,7 +40,7 @@ InstallMethod( PairOfPositionsOfTheDefaultPresentations,
   function( phi )
     
     return [ PositionOfTheDefaultPresentation( Source( phi ) ),
-             PositionOfTheDefaultPresentation( Range( phi ) ) ];
+             PositionOfTheDefaultPresentation( Target( phi ) ) ];
     
 end );
 
@@ -60,9 +60,9 @@ InstallMethod( GradedPresentationMorphismByFreyd,
     return FreydCategoryMorphism(
                    M,
                    GradedRowOrColumnMorphism(
-                           Range( RelationMorphism( M ) ),
+                           Target( RelationMorphism( M ) ),
                            matrix,
-                           Range( RelationMorphism( N ) ) ),
+                           Target( RelationMorphism( N ) ) ),
                    N );
     
 end );
@@ -311,7 +311,7 @@ InstallMethod( Display,
     
     Print( "\nthe graded map is currently represented by the above ", NrRows( mat ), " x ", NrColumns( mat ), " matrix\n" );
     
-    target := Range( o );
+    target := Target( o );
     
     if NrGenerators( target ) = 1 then
         Print( "\n(degree of generator of target: " );

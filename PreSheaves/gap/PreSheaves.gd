@@ -71,16 +71,16 @@ CapJitAddTypeSignature( "Source", [ IsPreSheafCategory ],
 end );
 
 #! @Description
-#!  The range category $D$ of the presheaf category <A>PSh</A>=<C>PSh</C>($C, D$).
+#!  The target category $D$ of the presheaf category <A>PSh</A>=<C>PSh</C>($C, D$).
 #! @Arguments PSh
 #! @Returns a &CAP; category
-DeclareAttribute( "Range",
+DeclareAttribute( "Target",
         IsPreSheafCategory );
 
-CapJitAddTypeSignature( "Range", [ IsPreSheafCategory ],
+CapJitAddTypeSignature( "Target", [ IsPreSheafCategory ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( Range( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( Target( input_types[1].category ) );
     
 end );
 
@@ -122,7 +122,7 @@ DeclareAttribute( "Range",
 #CapJitAddTypeSignature( "Range", [ IsObjectInPreSheafCategory ],
 #  function ( input_types )
 #    
-#    return CapJitDataTypeOfCategory( Range( input_types[1].category ) );
+#    return CapJitDataTypeOfCategory( Target( input_types[1].category ) );
 #    
 #end );
 
@@ -139,13 +139,13 @@ DeclareAttribute( "PairOfFunctionsOfPreSheaf",
 #                   rec( filter := IsFunction,
 #                        signature :=
 #                        [ [ CapJitDataTypeOfObjectOfCategory( Source( input_types[1].category ) ) ],
-#                          CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ] ),
+#                          CapJitDataTypeOfObjectOfCategory( Target( input_types[1].category ) ) ] ),
 #                   rec( filter := IsFunction,
 #                        signature :=
-#                        [ [ CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ),
+#                        [ [ CapJitDataTypeOfObjectOfCategory( Target( input_types[1].category ) ),
 #                            CapJitDataTypeOfMorphismOfCategory( Source( input_types[1].category ) ),
-#                            CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ],
-#                          CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ] ) );
+#                            CapJitDataTypeOfObjectOfCategory( Target( input_types[1].category ) ) ],
+#                          CapJitDataTypeOfMorphismOfCategory( Target( input_types[1].category ) ) ] ) );
 #    
 #end );
 
@@ -160,10 +160,10 @@ DeclareAttribute( "FunctionOfPreSheafMorphism",
 #    
 #    return rec( filter := IsFunction,
 #                signature :=
-#                [ [ CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ),
+#                [ [ CapJitDataTypeOfObjectOfCategory( Target( input_types[1].category ) ),
 #                    CapJitDataTypeOfObjectOfCategory( Source( input_types[1].category ) ),
-#                    CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ],
-#                  CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ] );
+#                    CapJitDataTypeOfObjectOfCategory( Target( input_types[1].category ) ) ],
+#                  CapJitDataTypeOfMorphismOfCategory( Target( input_types[1].category ) ) ] );
 #    
 #end );
 

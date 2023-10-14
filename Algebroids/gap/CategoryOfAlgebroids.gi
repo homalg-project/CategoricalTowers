@@ -50,7 +50,7 @@ InstallMethod( CategoryOfAlgebroidsMorphism,
     local category, source, range;
     
     Assert( 0, IsIdenticalObj( CapCategory( s ), CapCategory( r ) ) );
-    Assert( 0, IsIdenticalObj( CapCategory( r ), CapCategory( CategoryOfAlgebroidsObject( AsCapCategory( Range( morphism ) ) ) ) ) );
+    Assert( 0, IsIdenticalObj( CapCategory( r ), CapCategory( CategoryOfAlgebroidsObject( AsCapCategory( Target( morphism ) ) ) ) ) );
     Assert( 0, IsIdenticalObj( CapCategory( s ), CapCategory( CategoryOfAlgebroidsObject( AsCapCategory( Source( morphism ) ) ) ) ) );
     
     category := CapCategory(s);
@@ -71,7 +71,7 @@ InstallMethod( CategoryOfAlgebroidsMorphism,
     
     return CategoryOfAlgebroidsMorphism( CategoryOfAlgebroidsObject(AsCapCategory(Source(morphism))),
                                          morphism,
-                                         CategoryOfAlgebroidsObject(AsCapCategory(Range(morphism)))
+                                         CategoryOfAlgebroidsObject(AsCapCategory(Target(morphism)))
                                          );
     
 end );
@@ -145,7 +145,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS,
 
             SetFilterObj( composition, IsAlgebroidMorphism );
             
-            return CategoryOfAlgebroidsMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
+            return CategoryOfAlgebroidsMorphism( Source( morphism_1 ), composition, Target( morphism_2 ) );
             
            end
     );
@@ -277,8 +277,8 @@ InstallMethod( TensorProductOnMorphisms,
     SF := AsCapCategory( Source( F ) );
     SG := AsCapCategory( Source( G ) );
 
-    TF := AsCapCategory( Range( F ) );
-    TG := AsCapCategory( Range( G ) );
+    TF := AsCapCategory( Target( F ) );
+    TG := AsCapCategory( Target( G ) );
 
     SF_objects := SetOfObjects( SF );
     SG_objects := SetOfObjects( SG );

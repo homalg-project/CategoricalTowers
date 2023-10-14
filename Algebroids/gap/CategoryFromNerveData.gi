@@ -146,7 +146,7 @@ InstallMethod( CategoryFromNerveData,
         
         return IsWellDefinedForMorphisms( V, obj_map ) and
                IsTerminal( V, Source( obj_map ) ) and
-               IsEqualForObjects( V, C0, Range( obj_map ) );
+               IsEqualForObjects( V, C0, Target( obj_map ) );
         
     end );
     
@@ -163,7 +163,7 @@ InstallMethod( CategoryFromNerveData,
         
         return IsWellDefinedForMorphisms( V, mor_map ) and
                IsTerminal( V, Source( mor_map ) ) and
-               IsEqualForObjects( V, C1, Range( mor_map ) );
+               IsEqualForObjects( V, C1, Target( mor_map ) );
         
     end );
     
@@ -276,7 +276,7 @@ InstallMethod( CategoryFromNerveData,
         return MorphismConstructor( C,
                        Source( mor_1 ),
                        PreCompose( V, mor_12, mu ),
-                       Range( mor_2 ) );
+                       Target( mor_2 ) );
         
     end );
     
@@ -406,7 +406,7 @@ InstallMethod( CategoryFromNerveData,
         ## Hom(r₁,s₂) ↪ C₁
         Hom_r1_s2 := MorphismFromFiberProductToSinkWithGivenFiberProduct( V,
                              [ ProjectionInFactorOfFiberProduct( V,
-                                     [ s, ObjectDatum( C, Range( phi_1 ) ) ],
+                                     [ s, ObjectDatum( C, Target( phi_1 ) ) ],
                                      1 ),
                                ProjectionInFactorOfFiberProduct( V,
                                      [ t, ObjectDatum( C, Source( phi_2 ) ) ],
@@ -419,7 +419,7 @@ InstallMethod( CategoryFromNerveData,
                                      [ s, ObjectDatum( C, Source( phi_1 ) ) ],
                                      1 ),
                                ProjectionInFactorOfFiberProduct( V,
-                                     [ t, ObjectDatum( C, Range( phi_2 ) ) ],
+                                     [ t, ObjectDatum( C, Target( phi_2 ) ) ],
                                      1 ) ],
                              range );
         
@@ -463,7 +463,7 @@ InstallMethod( CategoryFromNerveData,
                             1 );
         
         Hom_C_o2 := ProjectionInFactorOfFiberProduct( V,
-                            [ t, ObjectDatum( C, Range( mor ) ) ],
+                            [ t, ObjectDatum( C, Target( mor ) ) ],
                             1 );
         
         Hom_o1_o2 :=  MorphismFromFiberProductToSink( V,
@@ -999,7 +999,7 @@ InstallMethod( ViewString,
     labels := C!.labels;
     
     s := MapOfObject( Source( mor ) )( 0 );
-    t := MapOfObject( Range( mor ) )( 0 );
+    t := MapOfObject( Target( mor ) )( 0 );
     
     i := MapOfMorphism( mor )( 0 );
     
@@ -1101,6 +1101,6 @@ InstallMethod( LaTeXOutput,
     return Concatenation(
                    "{", LaTeXOutput( Source( mor ) ), "}",
                    "-\\left[{", s, "}\\right]\\rightarrow",
-                   "{", LaTeXOutput( Range( mor ) ), "}" );
+                   "{", LaTeXOutput( Target( mor ) ), "}" );
     
 end );

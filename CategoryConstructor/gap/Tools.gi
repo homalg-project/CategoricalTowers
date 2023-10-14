@@ -242,7 +242,7 @@ InstallGlobalFunction( RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
   function( cat, morphism_1, morphism_2, morphism_3, arg... )
     local current_value;
     
-    current_value := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
+    current_value := IsEqualForObjects( Target( morphism_1 ), Target( morphism_2 ) );
     
     if current_value = fail then
         return [ false, "cannot decide whether morphism_1 and morphism_2 have equal ranges" ];
@@ -250,7 +250,7 @@ InstallGlobalFunction( RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
         return [ false, "morphism_1 and morphism_2 must have equal ranges" ];
     fi;
     
-    current_value := IsEqualForObjects( Range( morphism_3 ), Source( morphism_1 ) );
+    current_value := IsEqualForObjects( Target( morphism_3 ), Source( morphism_1 ) );
     
     if current_value = fail then
         return [ false, "cannot decide whether the range of morphism_3 and the source of morphism_1 are equal" ];
@@ -268,7 +268,7 @@ InstallGlobalFunction( UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUC
   function( cat, morphism_1, morphism_2, morphism_3, test_morphism, arg... )
     local current_value;
     
-    current_value := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
+    current_value := IsEqualForObjects( Target( morphism_1 ), Target( morphism_2 ) );
     
     if current_value = fail then
         return [ false, "cannot decide whether morphism_1 and morphism_2 have equal ranges" ];
@@ -276,7 +276,7 @@ InstallGlobalFunction( UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUC
         return [ false, "morphism_1 and morphism_2 must have equal ranges" ];
     fi;
     
-    current_value := IsEqualForObjects( Range( morphism_3 ), Source( morphism_1 ) );
+    current_value := IsEqualForObjects( Target( morphism_3 ), Source( morphism_1 ) );
     
     if current_value = fail then
         return [ false, "cannot decide whether the range of morphism_3 and the source of morphism_1 are equal" ];
@@ -284,7 +284,7 @@ InstallGlobalFunction( UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUC
         return [ false, "the range of morphism_3 and the source of morphism_1 must be equal" ];
     fi;
     
-    current_value := IsEqualForObjects( Source( morphism_1 ), Range( test_morphism ) );
+    current_value := IsEqualForObjects( Source( morphism_1 ), Target( test_morphism ) );
     
     if current_value = fail then
         return [ false, "cannot decide whether the range of the test morphism is equal to the source of the first morphism " ];
@@ -408,7 +408,7 @@ InstallMethod( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
                         if IsEndomorphism( cat, delta_ij ) and not IsEqualToZeroMorphism( cat, alpha_ij ) then
                             return IdentityMorphism( cat, Source( delta_ij ) );
                         else
-                            return ZeroMorphism( cat, Source( delta_ij ), Range( delta_ij ) );
+                            return ZeroMorphism( cat, Source( delta_ij ), Target( delta_ij ) );
                         fi;
 
                       end ) );
@@ -424,7 +424,7 @@ InstallMethod( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
                         if IsEndomorphism( cat, alpha_ij ) and not IsEqualToZeroMorphism( cat, delta_ij ) then
                             return IdentityMorphism( cat, Source( alpha_ij ) );
                         else
-                            return ZeroMorphism( cat, Source( alpha_ij ), Range( alpha_ij ) );
+                            return ZeroMorphism( cat, Source( alpha_ij ), Target( alpha_ij ) );
                         fi;
 
                       end ) );
@@ -617,7 +617,7 @@ InstallMethodForCompilerForCAP( PreComposeFunctorsByData,
         local sourceB, rangeB;
         
         sourceB := pre_functor_data[2][1]( Source( morA ) );
-        rangeB := pre_functor_data[2][1]( Range( morA ) );
+        rangeB := pre_functor_data[2][1]( Target( morA ) );
         
         return post_functor_data[2][2](
                        sourceC,

@@ -74,7 +74,7 @@ InstallMethod( AsSubcategoryCell,
     return AsSubcategoryCell(
                    AsSubcategoryCell( D, Source( morphism ) ),
                    morphism,
-                   AsSubcategoryCell( D, Range( morphism ) )
+                   AsSubcategoryCell( D, Target( morphism ) )
                    );
     
 end );
@@ -234,7 +234,7 @@ InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
           function( cat, phi )
             
             return IsWellDefinedForObjects( cat, Source( phi ) ) and
-                   IsWellDefinedForObjects( cat, Range( phi ) ) and
+                   IsWellDefinedForObjects( cat, Target( phi ) ) and
                    IsWellDefinedForMorphisms( AmbientCategory( cat ), UnderlyingCell( phi ) );
             
         end );

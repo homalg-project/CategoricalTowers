@@ -105,13 +105,13 @@ CapJitAddLogicTemplate(
     )
 );
 
-# NumberColumns( additive_closure_morphism ) => Length( ObjectList( Range( additive_closure_morphism ) ) )
+# NumberColumns( additive_closure_morphism ) => Length( ObjectList( Target( additive_closure_morphism ) ) )
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "additive_closure_morphism" ],
         variable_filters := [ IsAdditiveClosureMorphism ],
         src_template := "NumberColumns( additive_closure_morphism )",
-        dst_template := "Length( ObjectList( Range( additive_closure_morphism ) ) )",
+        dst_template := "Length( ObjectList( Target( additive_closure_morphism ) ) )",
     )
 );
 

@@ -20,22 +20,22 @@ InstallMethod( InternalElement,
     
     source := Source( iota );
     
-    if not Range( iota ) = ActionDomain( M ) then
+    if not Target( iota ) = ActionDomain( M ) then
         
-        Error( "Range( iota ) = ActionDomain( M ) returned false\n" );
+        Error( "Target( iota ) = ActionDomain( M ) returned false\n" );
         
     fi;
     
     if IsInternalLeftModule( M ) then
         
         return ObjectifyWithAttributes( rec( ), TheTypeInternalLeftModuleElement,
-                Range, M,
+                Target, M,
                 UnderlyingEmbedding, iota );
         
     else
         
         return ObjectifyWithAttributes( rec( ), TheTypeInternalRightModuleElement,
-                Range, M,
+                Target, M,
                 UnderlyingEmbedding, iota );
         
     fi;
@@ -108,7 +108,7 @@ InstallMethod( AdditiveInverse,
         
   function ( e )
     
-    return InternalElement( - UnderlyingEmbedding( e ), Range( e ) );
+    return InternalElement( - UnderlyingEmbedding( e ), Target( e ) );
     
 end );
 
@@ -119,7 +119,7 @@ InstallMethod( UniversalMorphismFromFreeModule,
         
   function ( e )
     
-    return UniversalMorphismFromFreeModule( UnderlyingEmbedding( e ), Range( e ) );
+    return UniversalMorphismFromFreeModule( UnderlyingEmbedding( e ), Target( e ) );
     
 end );
 
@@ -137,9 +137,9 @@ InstallMethod( CoefficientsVector,
     
     L := List( L, a -> a[1] );
     
-    I := TensorUnit( CapCategory( Range( L[1] ) ) );
+    I := TensorUnit( CapCategory( Target( L[1] ) ) );
     
-    L := List( L, function ( a ) if not IsZero( a ) then return a; fi; return ZeroMorphism( I, Range( a ) ); end );
+    L := List( L, function ( a ) if not IsZero( a ) then return a; fi; return ZeroMorphism( I, Target( a ) ); end );
     
     vec := UniversalMorphismIntoDirectSum( L );
     

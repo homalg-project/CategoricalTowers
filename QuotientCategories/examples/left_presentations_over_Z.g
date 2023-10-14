@@ -10,11 +10,11 @@ is_equivalent_morphisms :=
       local epi;
       
       if not IsEqualForObjects( Source( alpha ), Source( beta ) ) or
-           not IsEqualForObjects( Range( alpha ), Range( beta ) ) then
+           not IsEqualForObjects( Target( alpha ), Target( beta ) ) then
              Error( "Wrong input for the test function!" );
       fi;
          
-      epi := EpimorphismFromSomeProjectiveObject( Range( alpha ) );
+      epi := EpimorphismFromSomeProjectiveObject( Target( alpha ) );
 
       return Lift( alpha - beta, epi ) <> fail;
          

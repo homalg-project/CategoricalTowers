@@ -364,7 +364,7 @@ InstallMethod( AsCoequalizerCompletionMorphism,
     return MorphismConstructor( Coeq,
                    AsCoequalizerCompletionObject( Coeq, Source( morphism ) ),
                    Pair( morphism, id ),
-                   AsCoequalizerCompletionObject( Coeq, Range( morphism ) ) );
+                   AsCoequalizerCompletionObject( Coeq, Target( morphism ) ) );
     
 end );
 

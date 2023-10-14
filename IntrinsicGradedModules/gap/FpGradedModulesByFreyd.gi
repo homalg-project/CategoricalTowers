@@ -225,7 +225,7 @@ InstallMethod( FpGradedLeftModules,
                 
                 mat := UnderlyingHomalgMatrix( alpha );
                 
-                return GradedRowOrColumnMorphism( P, Source( alpha ), ( r / HomalgRing( mat ) ) * mat, Range( alpha ) );
+                return GradedRowOrColumnMorphism( P, Source( alpha ), ( r / HomalgRing( mat ) ) * mat, Target( alpha ) );
                 
             end );
             
@@ -311,7 +311,7 @@ InstallMethod( FpGradedRightModules,
         
         mat := UnderlyingHomalgMatrix( alpha );
         
-        return GradedRowOrColumnMorphism( P, Source( alpha ), ( r / HomalgRing( mat ) ) * mat, Range( alpha ) );
+        return GradedRowOrColumnMorphism( P, Source( alpha ), ( r / HomalgRing( mat ) ) * mat, Target( alpha ) );
         
     end );
     

@@ -68,7 +68,7 @@ DeclareAttribute( "Range",
 CapJitAddTypeSignature( "Range", [ IsCoPreSheafCategory ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( Range( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( Target( input_types[1].category ) );
     
 end );
 
@@ -96,7 +96,7 @@ DeclareAttribute( "Range",
 CapJitAddTypeSignature( "Range", [ IsObjectInCoPreSheafCategory ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( Range( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( Target( input_types[1].category ) );
     
 end );
 
@@ -123,8 +123,8 @@ CapJitAddTypeSignature( "ValuesOfCoPreSheaf", [ IsObjectInCoPreSheafCategory ],
     Assert( 0, IsCoPreSheafCategory( input_types[1].category ) );
     
     return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ),
-                   CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ) );
+                   CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( Target( input_types[1].category ) ) ),
+                   CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( Target( input_types[1].category ) ) ) );
     
 end );
 
@@ -141,7 +141,7 @@ CapJitAddTypeSignature( "ValuesOnAllObjects", [ IsMorphismInCoPreSheafCategory ]
     
     Assert( 0, IsCoPreSheafCategory( input_types[1].category ) );
     
-    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) );
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( Target( input_types[1].category ) ) );
     
 end );
 
@@ -273,7 +273,7 @@ DeclareOperation( "CreateCoPreSheafMorphismByValues",
 #!  Turn the natrual transformation <A>eta</A>:$F \to G$ into a morphism
 #!  <C><A>U</A> := CreateCoPreSheaf( F )</C> $\to$ <C><A>V</A> := CreateCoPreSheaf( G )</C>
 #!  in the category of functors <C><A>coPSh</A> := CoPreSheaves( B, C )</C>, where
-#!  <C>B := Source( F ) = Source( G )</C> and <C>C := Range( F ) = Range( G )</C>.
+#!  <C>B := Source( F ) = Source( G )</C> and <C>C := Target( F ) = Target( G )</C>.
 #! @Arguments eta
 #! @Group CreateCoPreSheafMorphism
 DeclareAttribute( "CreateCoPreSheafMorphism",

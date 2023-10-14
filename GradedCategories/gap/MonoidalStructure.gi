@@ -120,7 +120,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_MONOIDAL_STRUCTURE_OF_GRADED_CATEGORY,
             C := UnderlyingCategory( ZC );
             
             tensor_product_indices_sources := TensorProductIndices( Source( phi ), Source( psi ) );
-            tensor_product_indices_targets := TensorProductIndices( Range( phi ), Range( psi ) );
+            tensor_product_indices_targets := TensorProductIndices( Target( phi ), Target( psi ) );
             
             f :=
               function ( n )

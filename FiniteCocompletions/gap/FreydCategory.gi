@@ -66,7 +66,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFreydCategoryData,
         
         rel := ObjectDatum( FC, objFC );
         
-        functor_on_rel := functor_on_morphisms( functor_on_objects( Source( rel ) ), rel, functor_on_objects( Range( rel ) ) );
+        functor_on_rel := functor_on_morphisms( functor_on_objects( Source( rel ) ), rel, functor_on_objects( Target( rel ) ) );
         
         return CokernelObject( additive_category_with_cokernels, functor_on_rel );
         
@@ -77,10 +77,10 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFreydCategoryData,
         local S_rel, T_rel, functor_on_range_of_S_rel, functor_on_range_of_T_rel, source_diagram, range_diagram, functor_on_mor;
         
         S_rel := ObjectDatum( FC, Source( morFC ) );
-        T_rel := ObjectDatum( FC, Range( morFC ) );
+        T_rel := ObjectDatum( FC, Target( morFC ) );
         
-        functor_on_range_of_S_rel := functor_on_objects( Range( S_rel ) );
-        functor_on_range_of_T_rel := functor_on_objects( Range( T_rel ) );
+        functor_on_range_of_S_rel := functor_on_objects( Target( S_rel ) );
+        functor_on_range_of_T_rel := functor_on_objects( Target( T_rel ) );
         
         source_diagram := functor_on_morphisms( functor_on_objects( Source( S_rel ) ), S_rel, functor_on_range_of_S_rel );
         range_diagram := functor_on_morphisms( functor_on_objects( Source( T_rel ) ), T_rel, functor_on_range_of_T_rel );

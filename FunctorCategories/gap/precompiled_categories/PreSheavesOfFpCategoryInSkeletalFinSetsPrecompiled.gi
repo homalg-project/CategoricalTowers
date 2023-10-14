@@ -11,7 +11,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsPrecompile
 ########
 function ( cat_1 )
     local hoisted_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := Range( cat_1 );
+    deduped_6_1 := Target( cat_1 );
     deduped_5_1 := Source( cat_1 );
     deduped_4_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, Length, BigInt( 0 ) );
     deduped_3_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
@@ -32,7 +32,7 @@ end
 ########
 function ( cat_1, objects_1 )
     local hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := Range( cat_1 );
+    deduped_6_1 := Target( cat_1 );
     deduped_5_1 := Source( cat_1 );
     deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
     hoisted_3_1 := [ 1 .. Length( objects_1 ) ];
@@ -76,7 +76,7 @@ end
 function ( cat_1, objects_1, k_1, P_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := objects_1[k_1];
-    hoisted_4_1 := Range( cat_1 );
+    hoisted_4_1 := Target( cat_1 );
     hoisted_3_1 := [ 1 .. k_1 - 1 ];
     hoisted_2_1 := ValuesOfPreSheaf( P_1 )[1];
     hoisted_1_1 := ValuesOfPreSheaf( CAP_JIT_INCOMPLETE_LOGIC( deduped_5_1 ) )[1];
@@ -99,7 +99,7 @@ end
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1;
-    hoisted_3_1 := Range( cat_1 );
+    hoisted_3_1 := Target( cat_1 );
     hoisted_2_1 := ValuesOfPreSheaf( T_1 )[1];
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -215,7 +215,7 @@ function ( cat_1, arg2_1, arg3_1 )
                       return UnderlyingVertex( Source( logic_new_func_x_3 ) );
                   end );
               hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
-                      return UnderlyingVertex( Range( logic_new_func_x_3 ) );
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
                   end );
               hoisted_1_2 := deduped_9_2[1];
               return List( [ 0 .. deduped_8_1[deduped_10_2][1] - 1 ], function ( i_3 )
@@ -325,7 +325,7 @@ function ( cat_1, arg2_1, arg3_1 )
                       return UnderlyingVertex( Source( logic_new_func_x_3 ) );
                   end );
               hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
-                      return UnderlyingVertex( Range( logic_new_func_x_3 ) );
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
                   end );
               hoisted_1_2 := deduped_9_2[1];
               return List( [ 0 .. deduped_8_1[deduped_10_2][1] - 1 ], function ( i_3 )
@@ -368,7 +368,7 @@ function ( cat_1, arg2_1, arg3_1 )
                     return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
                 end );
         end );
-    return CreateCapCategoryObjectWithAttributes( Range( cat_1 ), Length, Length( Filtered( deduped_35_1, function ( x_2 )
+    return CreateCapCategoryObjectWithAttributes( Target( cat_1 ), Length, Length( Filtered( deduped_35_1, function ( x_2 )
                 local deduped_1_2;
                 deduped_1_2 := 1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 );
                 return CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_37_1, function ( j_3 )
@@ -395,9 +395,9 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_107_1 := Source( cat_1 );
     deduped_106_1 := ListOfValues( ValuesOnAllObjects( alpha_1 ) );
     deduped_105_1 := ValuesOfPreSheaf( Source( beta_1 ) );
-    deduped_104_1 := ValuesOfPreSheaf( Range( alpha_1 ) );
+    deduped_104_1 := ValuesOfPreSheaf( Target( alpha_1 ) );
     deduped_103_1 := DefiningTripleOfUnderlyingQuiver( deduped_107_1 );
-    deduped_102_1 := ValuesOfPreSheaf( Range( beta_1 ) );
+    deduped_102_1 := ValuesOfPreSheaf( Target( beta_1 ) );
     deduped_101_1 := SetOfObjects( deduped_107_1 );
     deduped_100_1 := ValuesOfPreSheaf( Source( alpha_1 ) );
     deduped_99_1 := deduped_104_1[2];
@@ -530,7 +530,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       return UnderlyingVertex( Source( logic_new_func_x_3 ) );
                   end );
               hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
-                      return UnderlyingVertex( Range( logic_new_func_x_3 ) );
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
                   end );
               hoisted_1_2 := deduped_9_2[1];
               return List( [ 0 .. deduped_8_1[deduped_10_2][1] - 1 ], function ( i_3 )
@@ -640,7 +640,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       return UnderlyingVertex( Source( logic_new_func_x_3 ) );
                   end );
               hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
-                      return UnderlyingVertex( Range( logic_new_func_x_3 ) );
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
                   end );
               hoisted_1_2 := deduped_9_2[1];
               return List( [ 0 .. deduped_8_1[deduped_10_2][1] - 1 ], function ( i_3 )
@@ -880,7 +880,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       return UnderlyingVertex( Source( logic_new_func_x_3 ) );
                   end );
               hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
-                      return UnderlyingVertex( Range( logic_new_func_x_3 ) );
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
                   end );
               hoisted_1_2 := deduped_9_2[1];
               return List( [ 0 .. deduped_59_1[deduped_10_2][1] - 1 ], function ( i_3 )
@@ -987,7 +987,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       return UnderlyingVertex( Source( logic_new_func_x_3 ) );
                   end );
               hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
-                      return UnderlyingVertex( Range( logic_new_func_x_3 ) );
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
                   end );
               hoisted_1_2 := deduped_9_2[1];
               return List( [ 0 .. deduped_59_1[deduped_10_2][1] - 1 ], function ( i_3 )
@@ -1043,7 +1043,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                         return hoisted_75_1[deduped_1_3][deduped_1_2] * deduped_69_1[deduped_1_3];
                     end ) );
         end );
-    return CreateCapCategoryMorphismWithAttributes( Range( cat_1 ), source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( x_2 )
+    return CreateCapCategoryMorphismWithAttributes( Target( cat_1 ), source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( x_2 )
               return -1 + BigInt( SafePosition( hoisted_78_1, CAP_JIT_INCOMPLETE_LOGIC( hoisted_77_1[(1 + hoisted_76_1[(1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 ))])] ) ) );
           end ) );
 end
@@ -1102,7 +1102,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
                 end ) ) - 1 ];
     deduped_42_1 := Product( deduped_44_1 );
     deduped_41_1 := [ 0 .. deduped_42_1 - 1 ];
-    hoisted_40_1 := Range( cat_1 );
+    hoisted_40_1 := Target( cat_1 );
     deduped_23_1 := SetOfGeneratingMorphisms( deduped_56_1 );
     deduped_34_1 := List( deduped_46_1, function ( m_2 )
             local deduped_1_2, deduped_2_2;
@@ -1160,7 +1160,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
                       return UnderlyingVertex( Source( logic_new_func_x_3 ) );
                   end );
               hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
-                      return UnderlyingVertex( Range( logic_new_func_x_3 ) );
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
                   end );
               hoisted_1_2 := deduped_9_2[1];
               return List( [ 0 .. deduped_11_1[deduped_10_2][1] - 1 ], function ( i_3 )
@@ -1270,7 +1270,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
                       return UnderlyingVertex( Source( logic_new_func_x_3 ) );
                   end );
               hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
-                      return UnderlyingVertex( Range( logic_new_func_x_3 ) );
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
                   end );
               hoisted_1_2 := deduped_9_2[1];
               return List( [ 0 .. deduped_11_1[deduped_10_2][1] - 1 ], function ( i_3 )
@@ -1452,7 +1452,7 @@ function ( cat_1, arg2_1, arg3_1 )
                       return UnderlyingVertex( Source( logic_new_func_x_3 ) );
                   end );
               hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
-                      return UnderlyingVertex( Range( logic_new_func_x_3 ) );
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
                   end );
               hoisted_1_2 := deduped_9_2[1];
               return List( [ 0 .. deduped_8_1[deduped_10_2][1] - 1 ], function ( i_3 )
@@ -1562,7 +1562,7 @@ function ( cat_1, arg2_1, arg3_1 )
                       return UnderlyingVertex( Source( logic_new_func_x_3 ) );
                   end );
               hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
-                      return UnderlyingVertex( Range( logic_new_func_x_3 ) );
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
                   end );
               hoisted_1_2 := deduped_9_2[1];
               return List( [ 0 .. deduped_8_1[deduped_10_2][1] - 1 ], function ( i_3 )
@@ -1619,7 +1619,7 @@ function ( cat_1, arg2_1, arg3_1 )
                     end ) );
         end );
     deduped_44_1 := Length( deduped_45_1 );
-    hoisted_42_1 := Range( cat_1 );
+    hoisted_42_1 := Target( cat_1 );
     deduped_37_1 := List( deduped_55_1, Length );
     deduped_38_1 := List( deduped_53_1, function ( i_2 )
             return Product( deduped_49_1{[ 1 + Sum( deduped_37_1{[ 1 .. (i_2 - 1) ]} ) .. Sum( deduped_37_1{[ 1 .. i_2 ]} ) ]} );

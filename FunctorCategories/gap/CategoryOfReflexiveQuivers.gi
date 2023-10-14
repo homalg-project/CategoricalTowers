@@ -133,7 +133,7 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
         
         PSh := ModelingCategory( F_hat );
         
-        sFinSets := Range( PSh );
+        sFinSets := Target( PSh );
         
         V := ObjectConstructor( sFinSets, quadruple[1] );
         
@@ -181,7 +181,7 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
         
         PSh := ModelingCategory( F_hat );
         
-        sFinSets := Range( PSh );
+        sFinSets := Target( PSh );
         
         S := ObjectDatum( F_hat, source );
         T := ObjectDatum( F_hat, range );
@@ -463,9 +463,9 @@ InstallMethod( \.,
     name := NameRNam( string_as_int );
     
     if name = "V" or name = "C0" then
-        return MapOfFinSets( Source( mor ).V, datum[1], Range( mor ).V );
+        return MapOfFinSets( Source( mor ).V, datum[1], Target( mor ).V );
     elif name = "A" or name = "C1" then
-        return MapOfFinSets( Source( mor ).A, datum[2], Range( mor ).A );
+        return MapOfFinSets( Source( mor ).A, datum[2], Target( mor ).A );
     fi;
     
     Error( "the reflexive quiver morphism has no component with the name \"", name, "\"\n" );
@@ -537,7 +537,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
   function ( monomorphism )
     local reflexive_quiver, vertices, loops, arrows, str, arrows_as_pairs, i, arrowhead;
     
-    reflexive_quiver := Range( monomorphism );
+    reflexive_quiver := Target( monomorphism );
     
     vertices := AsList( monomorphism.V );
     arrows := AsList( monomorphism.A );

@@ -103,7 +103,7 @@ InstallMethodWithCache( SetOfGeneratingMorphisms,
         "for an algebroid and two objects",
         [ IsAlgebroid and HasUnderlyingQuiver, IsObjectInAlgebroid, IsObjectInAlgebroid ],
         
-  { A, obj_1, obj_2 } -> Filtered( SetOfGeneratingMorphisms( A ), m -> IsEqualForObjects( obj_1, Source( m ) ) and IsEqualForObjects( obj_2, Range( m ) ) )
+  { A, obj_1, obj_2 } -> Filtered( SetOfGeneratingMorphisms( A ), m -> IsEqualForObjects( obj_1, Source( m ) ) and IsEqualForObjects( obj_2, Target( m ) ) )
 );
 
 ##
@@ -405,10 +405,10 @@ InstallMethod( ApplyToQuiverAlgebraElement,
     func := b -> ApplyFunctor( functor, algebroid.(String( b )) );
     
     if IsBound( functor!.IsContravariant ) and functor!.IsContravariant then
-        return ApplyToQuiverAlgebraElement( func, func, AsCapCategory(Range(functor)), p, false );
+        return ApplyToQuiverAlgebraElement( func, func, AsCapCategory(Target(functor)), p, false );
     fi;
     
-    return ApplyToQuiverAlgebraElement( func, func, AsCapCategory(Range(functor)), p, true );
+    return ApplyToQuiverAlgebraElement( func, func, AsCapCategory(Target(functor)), p, true );
     
 end );
 
@@ -485,7 +485,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
             
             return false;
             
-        elif not ForAll( Paths( m ), p -> UnderlyingVertex( Range( alpha ) ) = Target( p ) ) then
+        elif not ForAll( Paths( m ), p -> UnderlyingVertex( Target( alpha ) ) = Target( p ) ) then
             
             return false;
             
@@ -545,7 +545,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
             return MorphismInAlgebroid( category,
                            Source( morphism_1 ),
                            UnderlyingQuiverAlgebraElement( morphism_1 ) * UnderlyingQuiverAlgebraElement( morphism_2 ),
-                           Range( morphism_2 ) );
+                           Target( morphism_2 ) );
             
         end );
         
@@ -558,7 +558,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
             return MorphismInAlgebroid( category,
                            Source( morphism_1 ),
                            UnderlyingQuiverAlgebraElement( morphism_2 ) * UnderlyingQuiverAlgebraElement( morphism_1 ),
-                           Range( morphism_2 ) );
+                           Target( morphism_2 ) );
             
         end );
         
@@ -571,7 +571,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         return MorphismInAlgebroid( category,
                        Source( morphism_1 ),
                        UnderlyingQuiverAlgebraElement( morphism_1 ) + UnderlyingQuiverAlgebraElement( morphism_2 ),
-                       Range( morphism_1 ) );
+                       Target( morphism_1 ) );
         
     end );
     
@@ -582,7 +582,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         return MorphismInAlgebroid( category,
                        Source( morphism ),
                        -UnderlyingQuiverAlgebraElement( morphism ),
-                       Range( morphism ) );
+                       Target( morphism ) );
         
     end );
     
@@ -593,7 +593,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         return MorphismInAlgebroid( category,
                        Source( morphism ),
                        r * UnderlyingQuiverAlgebraElement( morphism ),
-                       Range( morphism ) );
+                       Target( morphism ) );
         
     end );
     
@@ -793,13 +793,13 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         elem_beta := UnderlyingQuiverAlgebraElement( beta );
         
-        a := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
+        a := VertexIndex( UnderlyingVertex( Target( alpha ) ) );
         
         b := VertexIndex( UnderlyingVertex( Source( beta ) ) );
         
         ap := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
         
-        bp := VertexIndex( UnderlyingVertex( Range( beta ) ) );
+        bp := VertexIndex( UnderlyingVertex( Target( beta ) ) );
         
         basis_paths_by_vertex_index := BasisPathsByVertexIndex( algebroid );
         
@@ -854,14 +854,14 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         a := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
         
-        b := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
+        b := VertexIndex( UnderlyingVertex( Target( alpha ) ) );
         
         basis_elements := BasisPathsByVertexIndex( algebroid )[a][b];
         
         size_basis := Length( basis_elements );
         
         source := DistinguishedObjectOfHomomorphismStructure( algebroid );
-        range := HomomorphismStructureOnObjects( algebroid, Source( alpha ), Range( alpha ) );
+        range := HomomorphismStructureOnObjects( algebroid, Source( alpha ), Target( alpha ) );
         
         if size_basis = 0 then
             
@@ -916,7 +916,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         a := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
         
-        b := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
+        b := VertexIndex( UnderlyingVertex( Target( alpha ) ) );
         
         element := UnderlyingQuiverAlgebraElement( alpha );
         
@@ -1741,7 +1741,7 @@ InstallMethod( ElementaryTensor,
           mors, o, product_of_arrows_as_morphism;
     
     source := ElementaryTensor( object, Source( morphism ), T );
-    range := ElementaryTensor( object, Range( morphism ), T );
+    range := ElementaryTensor( object, Target( morphism ), T );
     
     morphism_as_quiver_algebra_element := UnderlyingQuiverAlgebraElement( morphism );
     
@@ -1782,7 +1782,7 @@ InstallMethod( ElementaryTensor,
             
             o := ObjectInAlgebroid( CapCategory( morphism ), paths[i] );
             
-            Assert( 3, o = Source( morphism ) and o = Range( morphism ) );
+            Assert( 3, o = Source( morphism ) and o = Target( morphism ) );
                 
             product_of_arrows_as_morphism := IdentityMorphism( ElementaryTensor( object, o, T ) );
             
@@ -1811,7 +1811,7 @@ InstallMethod( ElementaryTensor,
           mors, o, product_of_arrows_as_morphism;
     
     source := ElementaryTensor( Source( morphism ), object, T );
-    range := ElementaryTensor( Range( morphism ), object, T );
+    range := ElementaryTensor( Target( morphism ), object, T );
     
     morphism_as_quiver_algebra_element := UnderlyingQuiverAlgebraElement( morphism );
     
@@ -1852,7 +1852,7 @@ InstallMethod( ElementaryTensor,
             
             o := ObjectInAlgebroid( CapCategory( morphism ), paths[i] );
             
-            Assert( 3, o = Source( morphism ) and o = Range( morphism ) );
+            Assert( 3, o = Source( morphism ) and o = Target( morphism ) );
             
             product_of_arrows_as_morphism := IdentityMorphism( ElementaryTensor( o, object, T ) );
             
@@ -2230,9 +2230,9 @@ InstallMethod( ViewObj,
         Print( "-[" );
         ViewObj( UnderlyingQuiverAlgebraElement( o ) );
         Print( "]->" );
-        ViewObj( UnderlyingVertex( Range( o ) ) );
+        ViewObj( UnderlyingVertex( Target( o ) ) );
     else
-        ViewObj( UnderlyingVertex( Range( o ) ) );
+        ViewObj( UnderlyingVertex( Target( o ) ) );
         Print( "<-[" );
         ViewObj( UnderlyingQuiverAlgebraElement( o ) );
         Print( "]-" );
@@ -2266,7 +2266,7 @@ InstallMethod( LaTeXOutput,
       return Concatenation(
                 "{", LaTeXOutput( Source( m ) ), "}-\\left(",
                 "{", s, "}\\right)\\rightarrow",
-                "{", LaTeXOutput( Range( m ) ), "}"
+                "{", LaTeXOutput( Target( m ) ), "}"
               );
               
     fi;
