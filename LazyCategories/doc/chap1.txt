@@ -116,7 +116,7 @@
     [4X[28XLazyCategory( Category of matrices over Q )[128X[104X
     [4X[25Xgap>[125X [27Xa := a / Lazy; SetLabel( a, "a" );[127X[104X
     [4X[28X<An evaluated morphism in LazyCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27Xb := b / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "C" );[127X[104X
+    [4X[25Xgap>[125X [27Xb := b / Lazy; SetLabel( b, "b" ); SetLabel( Target( b ), "C" );[127X[104X
     [4X[28X<An evaluated morphism in LazyCategory( Category of matrices over Q )>[128X[104X
     [4X[25Xgap>[125X [27Xc := c / Lazy; SetLabel( c, "c" );[127X[104X
     [4X[28X<An evaluated morphism in LazyCategory( Category of matrices over Q )>[128X[104X
@@ -209,8 +209,8 @@
     [4X[25Xgap>[125X [27XSetLabel( c, "c" );[127X[104X
     [4X[25Xgap>[125X [27XSetLabel( Source( a ), "1" );[127X[104X
     [4X[25Xgap>[125X [27XSetLabel( Source( b ), "2" );[127X[104X
-    [4X[25Xgap>[125X [27XSetLabel( Range( b ), "3" );[127X[104X
-    [4X[25Xgap>[125X [27XSetLabel( Range( c ), "4" );[127X[104X
+    [4X[25Xgap>[125X [27XSetLabel( Target( b ), "3" );[127X[104X
+    [4X[25Xgap>[125X [27XSetLabel( Target( c ), "4" );[127X[104X
     [4X[25Xgap>[125X [27Xd := CokernelProjection( a );[127X[104X
     [4X[28X<An epimorphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
@@ -330,8 +330,8 @@
     [4X[25Xgap>[125X [27XSetLabel( c, "c" );[127X[104X
     [4X[25Xgap>[125X [27XSetLabel( Source( a ), "1" );[127X[104X
     [4X[25Xgap>[125X [27XSetLabel( Source( b ), "2" );[127X[104X
-    [4X[25Xgap>[125X [27XSetLabel( Range( b ), "3" );[127X[104X
-    [4X[25Xgap>[125X [27XSetLabel( Range( c ), "4" );[127X[104X
+    [4X[25Xgap>[125X [27XSetLabel( Target( b ), "3" );[127X[104X
+    [4X[25Xgap>[125X [27XSetLabel( Target( c ), "4" );[127X[104X
     [4X[25Xgap>[125X [27Xd := CokernelProjection( a );[127X[104X
     [4X[28X<An epimorphism in LazyCategory( Adelman category( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
@@ -432,7 +432,7 @@
     [4X[28X<An evaluated morphism in LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) )>[128X[104X
-    [4X[25Xgap>[125X [27Xb := A.b / A_add / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "3" );[127X[104X
+    [4X[25Xgap>[125X [27Xb := A.b / A_add / Lazy; SetLabel( b, "b" ); SetLabel( Target( b ), "3" );[127X[104X
     [4X[28X<An evaluated morphism in LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) )>[128X[104X
@@ -557,7 +557,7 @@
     [4X[28X<An evaluated morphism in LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) )>[128X[104X
-    [4X[25Xgap>[125X [27Xb := A.b / A_add / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "3" );[127X[104X
+    [4X[25Xgap>[125X [27Xb := A.b / A_add / Lazy; SetLabel( b, "b" ); SetLabel( Target( b ), "3" );[127X[104X
     [4X[28X<An evaluated morphism in LazyCategory( AdditiveClosure([128X[104X
     [4X[28X Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations ) )>[128X[104X

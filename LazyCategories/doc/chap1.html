@@ -163,7 +163,7 @@ Category of matrices over Q
 LazyCategory( Category of matrices over Q )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := a / Lazy; SetLabel( a, "a" );</span>
 &lt;An evaluated morphism in LazyCategory( Category of matrices over Q )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := b / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "C" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := b / Lazy; SetLabel( b, "b" ); SetLabel( Target( b ), "C" );</span>
 &lt;An evaluated morphism in LazyCategory( Category of matrices over Q )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := c / Lazy; SetLabel( c, "c" );</span>
 &lt;An evaluated morphism in LazyCategory( Category of matrices over Q )&gt;
@@ -258,8 +258,8 @@ RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( c, "c" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Source( a ), "1" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Source( b ), "2" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Range( b ), "3" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Range( c ), "4" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Target( b ), "3" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Target( c ), "4" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := CokernelProjection( a );</span>
 &lt;An epimorphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
@@ -380,8 +380,8 @@ RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( c, "c" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Source( a ), "1" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Source( b ), "2" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Range( b ), "3" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Range( c ), "4" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Target( b ), "3" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetLabel( Target( c ), "4" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := CokernelProjection( a );</span>
 &lt;An epimorphism in LazyCategory( Adelman category( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
@@ -484,7 +484,7 @@ RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) )
 &lt;An evaluated morphism in LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := A.b / A_add / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "3" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := A.b / A_add / Lazy; SetLabel( b, "b" ); SetLabel( Target( b ), "3" );</span>
 &lt;An evaluated morphism in LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) )&gt;
@@ -610,7 +610,7 @@ RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) )
 &lt;An evaluated morphism in LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := A.b / A_add / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "3" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := A.b / A_add / Lazy; SetLabel( b, "b" ); SetLabel( Target( b ), "3" );</span>
 &lt;An evaluated morphism in LazyCategory( AdditiveClosure(
  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) )
  / relations ) )&gt;
