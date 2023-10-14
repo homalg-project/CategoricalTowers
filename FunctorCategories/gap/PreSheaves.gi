@@ -2601,7 +2601,7 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
     else
         
         morB_op := MorphismConstructor( B_op,
-                           SetOfObjects( B_op )[VertexIndex( UnderlyingVertex(  Target( morB ) ) )],
+                           SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Target( morB ) ) )],
                            OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( morB ) ),
                            SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Source( morB ) ) )] );
         
