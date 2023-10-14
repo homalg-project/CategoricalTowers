@@ -346,6 +346,10 @@ DeclareAttribute( "CoveringListOfRepresentables",
         IsObjectInPreSheafCategory );
 
 #! @Arguments F
+DeclareAttribute( "DoctrineSpecificCoveringListOfRepresentables",
+        IsObjectInPreSheafCategory );
+
+#! @Arguments F
 DeclareAttribute( "SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject",
     IsObjectInPreSheafCategory );
 
@@ -363,6 +367,10 @@ DeclareAttribute( "OptimizedCoYonedaLemmaOnMorphisms",
 
 #! @Arguments F
 DeclareAttribute( "CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma",
+        IsObjectInPreSheafCategory );
+
+#! @Arguments F
+DeclareAttribute( "OptimizedCoYonedaLemmaCoequalizerPair",
         IsObjectInPreSheafCategory );
 
 #! @Arguments PSh, presheaf, obj
