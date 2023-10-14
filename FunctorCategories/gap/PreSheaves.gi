@@ -2591,6 +2591,15 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
                        F_datum[2]{1 + DecompositionIndicesOfMorphism( B, morB )},
                        F_datum[1][1 + IndexOfObject( Source( morB ) )] );
         
+    elif IsFpCategory( B ) then
+        
+        F_datum := ObjectDatum( PSh, F );
+        
+        return PostComposeList( D,
+                       F_datum[1][VertexIndex( UnderlyingVertex( Target( morB ) ) )],
+                       ListOfValues( F_datum[2] ){1 + DecompositionIndicesOfMorphism( B, morB )},
+                       F_datum[1][VertexIndex( UnderlyingVertex( Source( morB ) ) )] );
+        
     elif IsAlgebroidFromDataTables( B_op ) then
         
         morB_op := MorphismConstructor( B_op,
