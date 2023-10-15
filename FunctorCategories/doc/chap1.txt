@@ -67,12 +67,12 @@
   
   [33X[0;0YThe source category of the functor category [3Xcat[103X.[133X
   
-  [1X1.2-2 Range[101X
+  [1X1.2-2 Target[101X
   
-  [33X[1;0Y[29X[2XRange[102X( [3XHom[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XTarget[102X( [3XHom[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YThe range category of the functor category [3Xcat[103X.[133X
+  [33X[0;0YThe target category of the functor category [3Xcat[103X.[133X
   
   [1X1.2-3 Source[101X
   
@@ -81,9 +81,9 @@
   
   [33X[0;0YThe source of the functor underlying functor object [3XF[103X.[133X
   
-  [1X1.2-4 Range[101X
+  [1X1.2-4 Target[101X
   
-  [33X[1;0Y[29X[2XRange[102X( [3XF[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XTarget[102X( [3XF[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
   [33X[0;0YThe target of the functor underlying the functor object [3XF[103X.[133X

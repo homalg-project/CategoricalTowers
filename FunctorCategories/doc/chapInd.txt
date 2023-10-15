@@ -169,10 +169,6 @@
   [2XPreSheaves[102X, for IsCapCategory, IsHomalgRing 2.1-1 
   [2XQuiverOfCategoryOfBouquets[102X 4.4-1 
   [2XQuiverOfCategoryOfReflexiveQuivers[102X 7.4-1 
-  [2XRange[102X, for IsCoPreSheafCategory 12.2-2 
-      for IsFunctorCategory 1.2-2 
-      for IsObjectInCoPreSheafCategory 12.2-4 
-      for IsObjectInFunctorCategory 1.2-4 
   [2XRetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[102X, for IsObjectInPreSheafCategory 2.1-14 
   [2XSectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[102X, for IsObjectInPreSheafCategory 2.1-13 
   [2XSievesOfPathsToTruth[102X, for IsMorphismInPreSheafCategory 2.2-8 
@@ -193,6 +189,10 @@
       for IsCellInCategoryOfDecoratedQuivers 8.2-6 
       for IsCellInCategoryOfQuivers 5.2-4 
       for IsCellInCategoryOfReflexiveQuivers 7.2-5 
+  [2XTarget[102X, for IsCoPreSheafCategory 12.2-2 
+      for IsFunctorCategory 1.2-2 
+      for IsObjectInCoPreSheafCategory 12.2-4 
+      for IsObjectInFunctorCategory 1.2-4 
   [2XUnderlyingCapTwoCategoryCell[102X, for IsCellInCoPreSheafCategory 12.2-8 
       for IsCellInFunctorCategory 1.2-8 
       for IsCellInPreSheafCategory 2.2-2 
