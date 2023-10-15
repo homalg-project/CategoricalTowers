@@ -296,7 +296,7 @@ InstallMethodWithCache( PreSheaves,
         
         return CreateCapCategoryObjectWithAttributes( cat,
                        Source, Source( cat ),
-                       Range, Target( cat ),
+                       Target, Target( cat ),
                        PairOfFunctionsOfPreSheaf, pair_of_functions_of_presheaf );
         
     end;
@@ -864,7 +864,7 @@ InstallMethodWithCache( PreSheaves,
         
         return CreateCapCategoryObjectWithAttributes( cat,
                        Source, Source( cat ),
-                       Range, Target( cat ),
+                       Target, Target( cat ),
                        PairOfFunctionsOfPreSheaf, pair_of_functions_of_presheaf );
         
     end;

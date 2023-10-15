@@ -59,13 +59,13 @@ CapJitAddTypeSignature( "Source", [ IsCoPreSheafCategory ],
 end );
 
 #! @Description
-#!  The range category of the copresheaf category <A>cat</A>.
+#!  The target category of the copresheaf category <A>cat</A>.
 #! @Arguments cat
 #! @Returns a &CAP; category
-DeclareAttribute( "Range",
+DeclareAttribute( "Target",
         IsCoPreSheafCategory );
 
-CapJitAddTypeSignature( "Range", [ IsCoPreSheafCategory ],
+CapJitAddTypeSignature( "Target", [ IsCoPreSheafCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( Target( input_types[1].category ) );
@@ -90,10 +90,10 @@ end );
 #!  The target of the functor underlying the functor object <A>F</A>.
 #! @Arguments F
 #! @Returns a &CAP; category
-DeclareAttribute( "Range",
+DeclareAttribute( "Target",
         IsObjectInCoPreSheafCategory );
 
-CapJitAddTypeSignature( "Range", [ IsObjectInCoPreSheafCategory ],
+CapJitAddTypeSignature( "Target", [ IsObjectInCoPreSheafCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( Target( input_types[1].category ) );

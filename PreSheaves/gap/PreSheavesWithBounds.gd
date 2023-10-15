@@ -72,13 +72,13 @@ CapJitAddTypeSignature( "Source", [ IsPreSheafWithBoundsCategory ],
 end );
 
 #! @Description
-#!  The range category $V$ of the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$).
+#!  The target category $V$ of the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$).
 #! @Arguments PSh
 #! @Returns a &CAP; category
-DeclareAttribute( "Range",
+DeclareAttribute( "Target",
         IsPreSheafWithBoundsCategory );
 
-CapJitAddTypeSignature( "Range", [ IsPreSheafWithBoundsCategory ],
+CapJitAddTypeSignature( "Target", [ IsPreSheafWithBoundsCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( Target( input_types[1].category ) );
@@ -117,10 +117,10 @@ DeclareAttribute( "Source",
 #!  The target of the presheaf <A>F</A>.
 #! @Arguments F
 #! @Returns a &CAP; category
-DeclareAttribute( "Range",
+DeclareAttribute( "Target",
         IsObjectInPreSheafWithBoundsCategory );
 
-#CapJitAddTypeSignature( "Range", [ IsObjectInPreSheafWithBoundsCategory ],
+#CapJitAddTypeSignature( "Target", [ IsObjectInPreSheafWithBoundsCategory ],
 #  function ( input_types )
 #    
 #    return CapJitDataTypeOfCategory( Target( input_types[1].category ) );

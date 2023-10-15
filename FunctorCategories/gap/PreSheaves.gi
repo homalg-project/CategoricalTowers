@@ -19,7 +19,7 @@ InstallOtherMethodForCompilerForCAP( CreatePreSheafByValues,
     
     return CreateCapCategoryObjectWithAttributes( PSh,
                    Source, Source( PSh ),
-                   Range, Target( PSh ),
+                   Target, Target( PSh ),
                    ValuesOfPreSheaf, values_of_presheaf );
     
 end );
@@ -757,7 +757,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                           create_func_bool := create_func_bool,
                           create_func_object := create_func_object,
                           create_func_morphism := create_func_morphism,
-                          underlying_category_getter_string := "Range"
+                          underlying_category_getter_string := "Target"
                           );
     
     if not commutative_ring = fail then

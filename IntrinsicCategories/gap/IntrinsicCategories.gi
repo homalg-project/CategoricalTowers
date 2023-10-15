@@ -752,7 +752,7 @@ InstallMethod( Intrinsify,
     
     if IC!.predicate_logic then
         INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ mor ], S, IC );
-        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ mor ], T, IC );
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Target", [ mor ], T, IC );
     fi;
     
     if IsEqualForObjects( S, T ) then
@@ -1290,7 +1290,7 @@ InstallMethod( IntrinsicCategory,
     AddIsEqualForObjects( IC, { IC, a, b } -> IsIdenticalObj( a, b ) );
     AddIsEqualForMorphisms( IC,
             function( IC, m, n )
-              ## CAP checks IsEqualForObjects for Source and Range automatically
+              ## CAP checks IsEqualForObjects for Source and Target automatically
               return IsCongruentForMorphisms( UnderlyingCategory( IC ), ActiveCell( m ), ActiveCell( n ) );
             end );
     AddIsCongruentForMorphisms( IC, IsEqualForMorphisms );

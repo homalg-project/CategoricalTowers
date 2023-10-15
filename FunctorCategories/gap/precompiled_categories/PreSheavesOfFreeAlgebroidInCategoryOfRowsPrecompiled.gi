@@ -357,7 +357,7 @@ function ( cat_1, Y_1, morphisms_1 )
     deduped_3_1 := UnderlyingRing( deduped_10_1 );
     deduped_2_1 := [ 1 .. deduped_11_1 - 1 ];
     hoisted_1_1 := List( ValuesOfPreSheaf( Y_1 )[1], RankOfObject );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Range, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Target, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
                 local deduped_1_2, deduped_2_2;
                 deduped_2_2 := hoisted_1_1[o_2];
                 deduped_1_2 := List( morphisms_1, function ( eta_3 )
@@ -444,7 +444,7 @@ function ( cat_1, arg2_1 )
     hoisted_1_1 := List( deduped_9_1, function ( logic_new_func_x_2 )
             return ColumnRankOfMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Range, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Target, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, hoisted_1_1[o_2] );
             end ), LazyHList( [ 1 .. deduped_6_1[2] ], function ( m_2 )
                 local morphism_attr_1_2, deduped_2_2;
@@ -522,7 +522,7 @@ function ( cat_1, alpha_1 )
     hoisted_1_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
             return RankOfObject( Range( logic_new_func_x_2 ) );
         end );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_8_1, Range, deduped_9_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_7_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_8_1, Target, deduped_9_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_7_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( deduped_9_1, RankOfObject, hoisted_1_1[o_2] - hoisted_2_1[o_2] );
             end ), LazyHList( [ 1 .. deduped_7_1[2] ], function ( m_2 )
                 local morphism_attr_1_2, deduped_2_2;
@@ -667,7 +667,7 @@ function ( cat_1, objects_1 )
     hoisted_5_1 := [ 1 .. deduped_9_1 ];
     deduped_3_1 := UnderlyingRing( deduped_8_1 );
     hoisted_2_1 := deduped_6_1[3];
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Range, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Target, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, Sum( List( objects_1, function ( F_3 )
                             return CAP_JIT_INCOMPLETE_LOGIC( RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[1][o_2] ) ) );
                         end ) ) );
@@ -733,7 +733,7 @@ function ( cat_1, objects_1 )
     hoisted_5_1 := [ 1 .. deduped_9_1 ];
     deduped_3_1 := UnderlyingRing( deduped_8_1 );
     hoisted_2_1 := deduped_6_1[3];
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Range, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Target, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, Sum( List( objects_1, function ( F_3 )
                             return CAP_JIT_INCOMPLETE_LOGIC( RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[1][o_2] ) ) );
                         end ) ) );
@@ -796,7 +796,7 @@ function ( cat_1, objects_1 )
     deduped_4_1 := Source( cat_1 );
     deduped_3_1 := DefiningTripleOfUnderlyingQuiver( deduped_4_1 );
     hoisted_2_1 := UnderlyingRing( deduped_5_1 );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_4_1, Range, deduped_5_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_3_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_4_1, Target, deduped_5_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_3_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( deduped_5_1, RankOfObject, Sum( List( objects_1, function ( F_3 )
                             return CAP_JIT_INCOMPLETE_LOGIC( RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[1][o_2] ) ) );
                         end ) ) );
@@ -886,7 +886,7 @@ function ( cat_1, Y_1, morphisms_1 )
     deduped_3_1 := UnderlyingRing( deduped_10_1 );
     deduped_2_1 := [ 1 .. deduped_11_1 - 1 ];
     hoisted_1_1 := List( ValuesOfPreSheaf( Y_1 )[1], RankOfObject );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Range, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Target, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
                 local deduped_1_2, deduped_2_2;
                 deduped_2_2 := hoisted_1_1[o_2];
                 deduped_1_2 := List( morphisms_1, function ( eta_3 )
@@ -970,7 +970,7 @@ function ( cat_1, morphisms_1 )
     deduped_4_1 := [ 1 .. deduped_11_1 - 1 ];
     deduped_3_1 := [ 1 .. deduped_11_1 ];
     deduped_1_1 := UnderlyingRing( deduped_10_1 );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Range, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Target, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
                 local deduped_2_2, deduped_3_2, deduped_4_2;
                 deduped_4_2 := List( morphisms_1, function ( eta_3 )
                         return CAP_JIT_INCOMPLETE_LOGIC( RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( eta_3 )[o_2] ) ) ) );
@@ -1316,7 +1316,7 @@ function ( cat_1, arg2_1 )
     hoisted_1_1 := List( deduped_9_1, function ( logic_new_func_x_2 )
             return RowRankOfMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Range, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Target, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, hoisted_1_1[o_2] );
             end ), LazyHList( [ 1 .. deduped_6_1[2] ], function ( m_2 )
                 local morphism_attr_1_2, deduped_2_2;
@@ -1340,7 +1340,7 @@ function ( cat_1 )
     deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
     hoisted_3_1 := HomalgIdentityMatrix( 0, UnderlyingRing( deduped_6_1 ) );
     deduped_1_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, RankOfObject, 0 );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Range, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Target, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
                 return deduped_1_1;
             end ), LazyHList( [ 1 .. deduped_4_1[2] ], function ( m_2 )
                 local morphism_attr_1_2;
@@ -1762,7 +1762,7 @@ function ( cat_1, alpha_1 )
     hoisted_1_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
             return RankOfObject( Source( logic_new_func_x_2 ) );
         end );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_8_1, Range, deduped_9_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_7_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_8_1, Target, deduped_9_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_7_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( deduped_9_1, RankOfObject, hoisted_1_1[o_2] - hoisted_2_1[o_2] );
             end ), LazyHList( [ 1 .. deduped_7_1[2] ], function ( m_2 )
                 local morphism_attr_1_2, deduped_2_2;
@@ -2031,7 +2031,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, Source( cat_1 ), Range, Target( cat_1 ), ValuesOfPreSheaf, arg2_1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, Source( cat_1 ), Target, Target( cat_1 ), ValuesOfPreSheaf, arg2_1 );
 end
 ########
         
@@ -2219,7 +2219,7 @@ function ( cat_1, morphisms_1 )
     deduped_4_1 := [ 1 .. deduped_11_1 - 1 ];
     deduped_3_1 := [ 1 .. deduped_11_1 ];
     deduped_1_1 := UnderlyingRing( deduped_10_1 );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Range, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Target, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
                 local deduped_2_2, deduped_3_2, deduped_4_2;
                 deduped_4_2 := List( morphisms_1, function ( eta_3 )
                         return CAP_JIT_INCOMPLETE_LOGIC( RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( eta_3 )[o_2] ) ) ) );
@@ -2478,7 +2478,7 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_4_1 := List( deduped_9_1[2], UnderlyingMatrix );
     hoisted_2_1 := List( deduped_10_1[1], RankOfObject );
     hoisted_1_1 := List( deduped_9_1[1], RankOfObject );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Range, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Target, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, hoisted_1_1[o_2] * hoisted_2_1[o_2] );
             end ), LazyHList( [ 1 .. deduped_6_1[2] ], function ( m_2 )
                 local morphism_attr_1_2;
@@ -2501,7 +2501,7 @@ function ( cat_1 )
     deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
     hoisted_3_1 := HomalgIdentityMatrix( 1, UnderlyingRing( deduped_6_1 ) );
     deduped_1_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, RankOfObject, 1 );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Range, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Target, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
                 return deduped_1_1;
             end ), LazyHList( [ 1 .. deduped_4_1[2] ], function ( m_2 )
                 local morphism_attr_1_2;
@@ -2524,7 +2524,7 @@ function ( cat_1 )
     deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
     hoisted_3_1 := HomalgIdentityMatrix( 0, UnderlyingRing( deduped_6_1 ) );
     deduped_1_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, RankOfObject, 0 );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Range, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Target, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
                 return deduped_1_1;
             end ), LazyHList( [ 1 .. deduped_4_1[2] ], function ( m_2 )
                 local morphism_attr_1_2;
@@ -2881,7 +2881,7 @@ function ( cat_1 )
     deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
     hoisted_3_1 := HomalgZeroMatrix( 0, 0, UnderlyingRing( deduped_6_1 ) );
     deduped_1_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, RankOfObject, 0 );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Range, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Target, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
                 return deduped_1_1;
             end ), LazyHList( [ 1 .. deduped_4_1[2] ], function ( m_2 )
                 local morphism_attr_1_2;

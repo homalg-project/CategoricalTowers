@@ -116,10 +116,10 @@ DeclareAttribute( "Source",
 #!  The target of the presheaf <A>F</A>.
 #! @Arguments F
 #! @Returns a &CAP; category
-DeclareAttribute( "Range",
+DeclareAttribute( "Target",
         IsObjectInPreSheafCategory );
 
-#CapJitAddTypeSignature( "Range", [ IsObjectInPreSheafCategory ],
+#CapJitAddTypeSignature( "Target", [ IsObjectInPreSheafCategory ],
 #  function ( input_types )
 #    
 #    return CapJitDataTypeOfCategory( Target( input_types[1].category ) );
