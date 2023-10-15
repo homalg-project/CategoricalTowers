@@ -3045,6 +3045,25 @@ InstallMethodForCompilerForCAP( EmbeddingFunctorOfFiniteStrictCoproductCompletio
 end );
 
 ##
+InstallMethod( EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheaves,
+        [ IsPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh )
+    local Y_data, Y;
+    
+    Y_data := EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheavesData( PSh );
+    
+    Y := CapFunctor( "The embedding functor of the finite coproduct completion into f.p. presheaves", Y_data[1], PSh );
+    
+    AddObjectFunction( Y, Y_data[2][1] );
+    
+    AddMorphismFunction( Y, Y_data[2][2] );
+    
+    return Y;
+    
+end );
+
+##
 InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerPair,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
