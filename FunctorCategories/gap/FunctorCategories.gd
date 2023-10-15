@@ -59,13 +59,13 @@ CapJitAddTypeSignature( "Source", [ IsFunctorCategory ],
 end );
 
 #! @Description
-#!  The range category of the functor category <A>cat</A>.
+#!  The target category of the functor category <A>cat</A>.
 #! @Arguments Hom
 #! @Returns a &CAP; category
-DeclareAttribute( "Range",
+DeclareAttribute( "Target",
         IsFunctorCategory );
 
-CapJitAddTypeSignature( "Range", [ IsFunctorCategory ],
+CapJitAddTypeSignature( "Target", [ IsFunctorCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( Target( input_types[1].category ) );
@@ -90,10 +90,10 @@ end );
 #!  The target of the functor underlying the functor object <A>F</A>.
 #! @Arguments F
 #! @Returns a &CAP; category
-DeclareAttribute( "Range",
+DeclareAttribute( "Target",
         IsObjectInFunctorCategory );
 
-CapJitAddTypeSignature( "Range", [ IsObjectInFunctorCategory ],
+CapJitAddTypeSignature( "Target", [ IsObjectInFunctorCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( Target( input_types[1].category ) );

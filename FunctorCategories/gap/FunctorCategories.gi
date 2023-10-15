@@ -158,7 +158,7 @@ InstallOtherMethodForCompilerForCAP( AsObjectInFunctorCategoryByValues,
     
     return CreateCapCategoryObjectWithAttributes( Hom,
                    Source, Source( Hom ),
-                   Range, Target( Hom ),
+                   Target, Target( Hom ),
                    ValuesOfFunctor, values_of_functor );
     
 end );
@@ -675,7 +675,7 @@ InstallMethodWithCache( FunctorCategory,
     
     Append( Hom!.compiler_hints.category_attribute_names,
             [ "Source",
-              "Range",
+              "Target",
               "SetOfObjects",
               "SetOfGeneratingMorphisms",
               "OppositeOfSource",

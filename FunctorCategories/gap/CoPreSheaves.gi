@@ -158,7 +158,7 @@ InstallOtherMethodForCompilerForCAP( CreateCoPreSheafByValues,
     
     return CreateCapCategoryObjectWithAttributes( coPSh,
                    Source, Source( coPSh ),
-                   Range, Target( coPSh ),
+                   Target, Target( coPSh ),
                    ValuesOfCoPreSheaf, values_of_copresheaf );
     
 end );
@@ -561,7 +561,7 @@ InstallMethodWithCache( CoPreSheaves,
     
     Append( coPSh!.compiler_hints.category_attribute_names,
             [ "Source",
-              "Range",
+              "Target",
               "SetOfObjects",
               "SetOfGeneratingMorphisms",
               ] );
