@@ -333,6 +333,10 @@ DeclareAttribute( "CoYonedaLemmaCoequalizerPair",
 DeclareAttribute( "EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheavesData",
         IsPreSheafCategory );
 
+#! @Arguments PSh
+DeclareAttribute( "EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheaves",
+        IsPreSheafCategory );
+
 #! @Arguments PSh, objB, morC, F
 DeclareOperation( "MorphismFromRepresentable",
     [ IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory ] );
