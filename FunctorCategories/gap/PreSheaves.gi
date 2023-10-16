@@ -3102,7 +3102,7 @@ end );
 InstallMethodForCompilerForCAP( MorphismFromRepresentable,
         [ IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory ],
         
-  function ( PSh, objB, mor, F )
+  function ( PSh, objB, phi, F )
     local B, H, Y, objs, f;
     
     B := Source( PSh );
@@ -3132,7 +3132,7 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentable,
         
         taus := List( F_HomB_srcB_objB, m ->
                       PreCompose( H,
-                              mor,
+                              phi,
                               m ) );
         
         return UniversalMorphismFromCoproductWithGivenCoproduct( H,
