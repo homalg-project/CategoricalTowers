@@ -3487,6 +3487,84 @@ InstallMethod( DoctrineSpecificCoveringListOfRepresentables,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentablesUsingSplits,
+        [ IsAbelianCategory, IsPreSheafCategory, IsObjectInPreSheafCategory ],
+        
+  function ( H, PSh, F )
+    local G, pi, cover, c, obj, nonliftable, mor_from_rep, values_of_mor_from_rep, c_new;
+    
+    G := F;
+    
+    pi := IdentityMorphism( PSh, G );
+    
+    cover := [ ];
+    
+    while not IsInitial( G ) do
+        
+        c := MaximalMorphismFromRepresentable( PSh, G );
+        
+        obj := c[1];
+        
+        ## checking for and computing the splitting below needs the Hom-structure on PSh,
+        ## in particular, this operation cannot be used to compute the Hom-structure on PSh
+        
+        if IsSplitEpimorphism( PSh, pi ) then
+            ## precompose the nonliftable morphism with the o-th component of a section of pi
+            nonliftable := PreCompose( H,
+                                   c[2],
+                                   ValuesOnAllObjects( PreInverseForMorphisms( PSh, pi ) )[1 + c[3]] );
+        else
+            ## lift the nonliftable morphism along the o-th component pi
+            nonliftable := Lift( H,
+                                 c[2],
+                                 ValuesOnAllObjects( pi )[1 + c[3]] );
+        fi;
+        
+        mor_from_rep := MorphismFromRepresentableByYonedaLemma( PSh,
+                                obj,
+                                nonliftable,
+                                F );
+        
+        values_of_mor_from_rep := ValuesOnAllObjects( mor_from_rep );
+        
+        c_new := NTuple( 7,
+                         obj,
+                         nonliftable,
+                         c[3],
+                         c[4],
+                         mor_from_rep,
+                         values_of_mor_from_rep,
+                         c[7] );
+        
+        cover := Concatenation( cover, [ c_new ] );
+        
+        pi := CokernelProjection( PSh,
+                      MorphismFromCoproductOfRepresentables( PSh,
+                              cover,
+                              F ) );
+        
+        G := Target( pi );
+        
+    od;
+    
+    return cover;
+    
+end );
+
+##
+InstallMethod( CoveringListOfRepresentablesUsingSplits,
+        [ IsObjectInPreSheafCategory ],
+        
+  function ( F )
+    local PSh;
+    
+    PSh := CapCategory( F );
+    
+    return CoveringListOfRepresentablesUsingSplits( Target( PSh ), PSh, F );
+    
+end );
+
+##
 InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
