@@ -3117,14 +3117,14 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentable,
     
     f :=
       function( source, srcB_index, range )
-        local HomC_d_HomB_src_objB, HomB_srcB_objB, F_HomB_srcB_objB, taus;
+        local HomC_d_HomB_srcB_objB, HomB_srcB_objB, F_HomB_srcB_objB, taus;
         
-        HomC_d_HomB_src_objB := ExactCoverWithGlobalElements( D,
+        HomC_d_HomB_srcB_objB := ExactCoverWithGlobalElements( D,
                                         HomomorphismStructureOnObjects( B,
                                                 objs[srcB_index],
                                                 objB ) );
         
-        HomB_srcB_objB := List( HomC_d_HomB_src_objB, m ->
+        HomB_srcB_objB := List( HomC_d_HomB_srcB_objB, m ->
                                 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B, objs[srcB_index], objB, m ) );
         
         ## F applied to all morphisms from srcB to objB
