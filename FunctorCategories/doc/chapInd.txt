@@ -157,7 +157,7 @@
       for IsObjectInCategoryOfReflexiveQuivers 7.2-3 
   [2XMaximalMorphismFromRepresentable[102X, for IsObjectInPreSheafCategory 2.1-12 
   [2XMorphismFromCoproductOfRepresentables[102X, for IsPreSheafCategory, IsList, IsObjectInPreSheafCategory 2.1-11 
-  [2XMorphismFromRepresentable[102X, for IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory 2.1-10 
+  [2XMorphismFromRepresentableByYonedaLemma[102X, for IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory 2.1-10 
   [2XNakayamaLeftAdjoint[102X, for IsAlgebroid 11.2-1 
       for IsPreSheafCategory, IsCoPreSheafCategory 11.2-1 
   [2XNakayamaRightAdjoint[102X, for IsAlgebroid 11.2-2 
