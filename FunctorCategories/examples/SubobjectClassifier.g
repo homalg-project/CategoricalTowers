@@ -1,13 +1,13 @@
 #! @BeginChunk SubobjectClassifier
 
-LoadPackage( "FunctorCategories" );
-
 #! The subobject classifier of the <C>PreSheaves</C>$(C, H)$,
 #! where $H$:=<C>RangeCategoryOfHomomorphismStructure</C>($C$) is the
 #! functor of sieves, mapping each object $c \in C^\mathrm{op}$ to the
 #! set of subobjects of the representable functor $\mathrm{Hom}_C(-,c)$.
 
 #! @Example
+LoadPackage( "FunctorCategories", false );
+#! true
 q := RightQuiver( "q(1)[a:1->1]" );
 #! q(1)[a:1->1]
 Fq := FreeCategory( q );
