@@ -6,7 +6,7 @@
                             [1X Categories of functors [101X
   
   
-                                   2023.10-23
+                                   2023.10-24
   
   
                                 16 October 2023
@@ -90,17 +90,18 @@
       2.1-9 EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheaves
       2.1-10 MorphismFromRepresentable
       2.1-11 MorphismFromCoproductOfRepresentables
-      2.1-12 CoveringListOfRepresentables
-      2.1-13 DoctrineSpecificCoveringListOfRepresentables
-      2.1-14 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject
-      2.1-15 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject
-      2.1-16 OptimizedCoYonedaLemmaOnObjects
-      2.1-17 OptimizedCoYonedaLemmaOnMorphisms
-      2.1-18 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma
-      2.1-19 OptimizedCoYonedaLemmaCoequalizerPair
-      2.1-20 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion
-      2.1-21 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion
-      2.1-22 CategoryOfInternalCategories
+      2.1-12 MaximalMorphismFromRepresentable
+      2.1-13 CoveringListOfRepresentables
+      2.1-14 DoctrineSpecificCoveringListOfRepresentables
+      2.1-15 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject
+      2.1-16 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject
+      2.1-17 OptimizedCoYonedaLemmaOnObjects
+      2.1-18 OptimizedCoYonedaLemmaOnMorphisms
+      2.1-19 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma
+      2.1-20 OptimizedCoYonedaLemmaCoequalizerPair
+      2.1-21 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion
+      2.1-22 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion
+      2.1-23 CategoryOfInternalCategories
     2.2 [33X[0;0YAttributes[133X
       2.2-1 ValuesOnAllObjects
       2.2-2 UnderlyingCapTwoCategoryCell
