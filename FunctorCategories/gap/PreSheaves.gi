@@ -3302,7 +3302,7 @@ InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentable
     
     cover := [ ];
     
-    while not IsZero( G ) do
+    while not IsInitial( G ) do
         
         c := CoveringListOfRepresentables( PSh, G )[1];
         
