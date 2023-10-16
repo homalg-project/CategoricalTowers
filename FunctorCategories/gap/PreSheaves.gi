@@ -3103,13 +3103,13 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentable,
         [ IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory ],
         
   function ( PSh, objB, mor, F )
-    local B, D, Y, objs, f;
+    local B, H, Y, objs, f;
     
     B := Source( PSh );
-    D := Target( PSh );
+    H := Target( PSh );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( PSh ), D ) );
+    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( PSh ), H ) );
     
     Y := YonedaEmbeddingDataOfSourceCategory( PSh )[1];
     
@@ -3119,7 +3119,7 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentable,
       function( source, srcB_index, range )
         local HomC_d_HomB_srcB_objB, HomB_srcB_objB, F_HomB_srcB_objB, taus;
         
-        HomC_d_HomB_srcB_objB := ExactCoverWithGlobalElements( D,
+        HomC_d_HomB_srcB_objB := ExactCoverWithGlobalElements( H,
                                         HomomorphismStructureOnObjects( B,
                                                 objs[srcB_index],
                                                 objB ) );
@@ -3131,11 +3131,11 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentable,
         F_HomB_srcB_objB := List( HomB_srcB_objB, F );
         
         taus := List( F_HomB_srcB_objB, m ->
-                      PreCompose( D,
+                      PreCompose( H,
                               mor,
                               m ) );
         
-        return UniversalMorphismFromCoproductWithGivenCoproduct( D,
+        return UniversalMorphismFromCoproductWithGivenCoproduct( H,
                        List( taus, Source ),
                        range,
                        taus,
