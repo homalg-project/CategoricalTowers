@@ -338,7 +338,7 @@ DeclareAttribute( "EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheav
         IsPreSheafCategory );
 
 #! @Arguments PSh, objB, morC, F
-DeclareOperation( "MorphismFromRepresentable",
+DeclareOperation( "MorphismFromRepresentableByYonedaLemma",
     [ IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory ] );
 
 #! @Arguments PSh, list, F

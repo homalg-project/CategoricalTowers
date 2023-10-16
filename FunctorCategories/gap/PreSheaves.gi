@@ -3098,8 +3098,8 @@ InstallMethod( CoYonedaLemmaCoequalizerPair,
     
 end );
 
-## a special case of InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
-InstallMethodForCompilerForCAP( MorphismFromRepresentable,
+## φ ∈ Hom_H( 𝟙, F(o) ) ≅ Hom_H( 𝟙, Hom_PSh( Y(o), F ) ) ≅ Hom_PSh( Y(o), F )
+InstallMethodForCompilerForCAP( MorphismFromRepresentableByYonedaLemma,
         [ IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory ],
         
   function ( PSh, objB, phi, F )
@@ -3217,7 +3217,7 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
         
         nonliftable := NonliftableMorphismFromDistinguishedObject( H, im_emb[pos] );
         
-        mor_from_rep := MorphismFromRepresentable( PSh,
+        mor_from_rep := MorphismFromRepresentableByYonedaLemma( PSh,
                                         obj,
                                         nonliftable,
                                         F );
@@ -3355,7 +3355,7 @@ InstallOtherMethodForCompilerForCAP( MaximalMorphismFromRepresentable,
         
         nonliftable := NonliftableMorphismFromDistinguishedObject( H, im_emb[pos] );
         
-        mor_from_rep := MorphismFromRepresentable( PSh,
+        mor_from_rep := MorphismFromRepresentableByYonedaLemma( PSh,
                                         obj,
                                         nonliftable,
                                         F );
@@ -3429,7 +3429,7 @@ InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentable
         
         nonliftable := Lift( H, c[2], ValuesOnAllObjects( pi )[1 + c[3]] );
         
-        mor_from_rep := MorphismFromRepresentable( PSh,
+        mor_from_rep := MorphismFromRepresentableByYonedaLemma( PSh,
                                 obj,
                                 nonliftable,
                                 F );
