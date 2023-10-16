@@ -6,7 +6,7 @@
                             [1X Categories of functors [101X
   
   
-                                   2023.10-22
+                                   2023.10-23
   
   
                                 16 October 2023
@@ -87,19 +87,20 @@
       2.1-6 CoequalizerDataOfPreSheafUsingCoYonedaLemma
       2.1-7 CoYonedaLemmaCoequalizerPair
       2.1-8 EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheavesData
-      2.1-9 MorphismFromRepresentable
-      2.1-10 MorphismFromCoproductOfRepresentables
-      2.1-11 CoveringListOfRepresentables
-      2.1-12 DoctrineSpecificCoveringListOfRepresentables
-      2.1-13 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject
-      2.1-14 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject
-      2.1-15 OptimizedCoYonedaLemmaOnObjects
-      2.1-16 OptimizedCoYonedaLemmaOnMorphisms
-      2.1-17 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma
-      2.1-18 OptimizedCoYonedaLemmaCoequalizerPair
-      2.1-19 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion
-      2.1-20 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion
-      2.1-21 CategoryOfInternalCategories
+      2.1-9 EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheaves
+      2.1-10 MorphismFromRepresentable
+      2.1-11 MorphismFromCoproductOfRepresentables
+      2.1-12 CoveringListOfRepresentables
+      2.1-13 DoctrineSpecificCoveringListOfRepresentables
+      2.1-14 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject
+      2.1-15 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject
+      2.1-16 OptimizedCoYonedaLemmaOnObjects
+      2.1-17 OptimizedCoYonedaLemmaOnMorphisms
+      2.1-18 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma
+      2.1-19 OptimizedCoYonedaLemmaCoequalizerPair
+      2.1-20 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion
+      2.1-21 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion
+      2.1-22 CategoryOfInternalCategories
     2.2 [33X[0;0YAttributes[133X
       2.2-1 ValuesOnAllObjects
       2.2-2 UnderlyingCapTwoCategoryCell
