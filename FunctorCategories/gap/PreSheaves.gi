@@ -3333,8 +3333,6 @@ InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentable
                               cover,
                               F ) );
         
-        #Assert( 0, IsSplitEpimorphism( pi ) );
-        
         G := Target( pi );
         
     od;
