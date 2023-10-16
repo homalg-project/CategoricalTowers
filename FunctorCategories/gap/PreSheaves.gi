@@ -3102,48 +3102,61 @@ end );
 InstallMethodForCompilerForCAP( MorphismFromRepresentableByYonedaLemma,
         [ IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory ],
         
-  function ( PSh, objB, phi, F )
-    local B, H, Y, objs, f;
+  function ( PSh, objC, phi, F )
+    local C, H, d, Y, objs, f;
     
-    B := Source( PSh );
+    C := Source( PSh );
     H := Target( PSh );
+    
+    ## 𝟙 ∈ H
+    d := DistinguishedObjectOfHomomorphismStructure( C );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( PSh ), H ) );
     
     Y := YonedaEmbeddingDataOfSourceCategory( PSh )[1];
     
-    objs := SetOfObjects( B );
+    objs := SetOfObjects( C );
     
     f :=
-      function( source, srcB_index, range )
-        local HomC_d_HomB_srcB_objB, HomB_srcB_objB, F_HomB_srcB_objB, taus;
+      function( source, srcC_index, range )
+        local HomH_d_HomC_srcC_objC, hom, HomC_srcC_objC, taus;
         
-        HomC_d_HomB_srcB_objB := ExactCoverWithGlobalElements( H,
-                                        HomomorphismStructureOnObjects( B,
-                                                objs[srcB_index],
-                                                objB ) );
+        ## Hom_C(o', o)
+        HomC_srcC_objC := HomomorphismStructureOnObjects( C,
+                                  objs[srcC_index],
+                                  objC );
         
-        HomB_srcB_objB := List( HomC_d_HomB_srcB_objB, m ->
-                                InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B, objs[srcB_index], objB, m ) );
+        hom := ObjectDatum( H, HomC_srcC_objC );
         
-        ## F applied to all morphisms from srcB to objB
-        F_HomB_srcB_objB := List( HomB_srcB_objB, F );
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, IsInt( hom ) );
         
-        taus := List( F_HomB_srcB_objB, m ->
+        ## Hom_H(𝟙, Hom_C(o', o))
+        HomH_d_HomC_srcC_objC := ExactCoverWithGlobalElements( H,
+                                         HomC_srcC_objC );
+        
+        ## generators of Hom_C(o', o)
+        HomC_srcC_objC := List( HomH_d_HomC_srcC_objC, m ->
+                                InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C, objs[srcC_index], objC, m ) );
+        
+        ## (φ: 𝟙 → F(o)) induces the natural transformation
+        ## Hom_C(-, o) → F with components
+        ## η_o': Hom_C(o', o) → F(o'), (ψ: o' → o) ↦ ( φ⋅F(ψ): 𝟙 → F(o) → F(o') )
+        taus := List( HomC_srcC_objC, psi ->
                       PreCompose( H,
-                              phi,
-                              m ) );
+                              phi,          ##    φ: 𝟙 → F(o)
+                              F( psi ) ) ); ## F(ψ): F(o) → F(o')
         
         return UniversalMorphismFromCoproductWithGivenCoproduct( H,
-                       List( taus, Source ),
+                       ListWithIdenticalEntries( hom, d ),
                        range,
                        taus,
                        source );
         
     end;
     
-    return CreatePreSheafMorphismByFunction( PSh, Y( objB ), f, F );
+    return CreatePreSheafMorphismByFunction( PSh, Y( objC ), f, F );
     
 end );
 
