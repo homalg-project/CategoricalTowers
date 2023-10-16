@@ -35,16 +35,16 @@ inv := HomalgMatrix( RandomUnimodularMat( n ), n, n, Q );
 mat := LeftInverse( inv ) * cmat * inv;
 #! <An unevaluated 10 x 10 matrix over an internal ring>
 mat :=
-  [ [   -57,    -8,    12,   130,  -240,     4,    12,    71,     7,    -9 ],
-    [    15,    -2,    -2,   -22,    55,     1,    -2,    10,     3,     0 ],
-    [     1,     5,     0,    -6,    10,    -2,    -1,    -8,    -4,     2 ],
-    [     0,     0,     0,     2,     0,     0,     0,     1,     0,     0 ],
-    [    15,     2,    -3,   -31,    62,    -1,    -3,   -13,    -1,     2 ],
-    [    43,    -4,    -6,   -60,   156,     2,    -5,    35,    11,    -1 ],
-    [   -31,    -6,     6,    68,  -134,     3,     7,    36,     6,    -6 ],
-    [     0,     0,     0,    -1,     0,     0,     0,    -1,     0,     0 ],
-    [     5,     0,    -1,   -12,    18,     0,    -1,    -1,     0,     0 ],
-    [   -45,    -8,     9,    90,  -194,     4,     9,    46,     5,    -8 ] ];;
+  [ [     0,     0,     3,     0,    -1,     3,    -8,     6,     0,    -3 ],
+    [    39,    15,   -25,     2,     0,    -9,    10,   -15,     2,     1 ],
+    [    21,     5,    -5,     3,    -1,     2,   -16,     5,     0,    -7 ],
+    [    30,    10,    -4,     3,    -5,    10,   -44,    22,    -2,   -18 ],
+    [    40,     0,   -66,     9,    27,   -70,   170,  -140,     9,    62 ],
+    [  -204,     0,    82,   -57,   -36,    50,    29,   100,     5,    13 ],
+    [   -52,   -15,    18,    -6,     2,    -1,    30,    -5,     0,    14 ],
+    [   105,     0,   -51,    29,    22,   -36,    14,   -72,    -1,     4 ],
+    [     6,     1,   -11,     1,     3,    -9,    19,   -18,     0,     7 ],
+    [   152,    45,   -52,    17,    -7,     5,   -93,    19,     0,   -43 ] ];;
 mat := HomalgMatrix( mat, 10, 10 , Q );
 #! <A 10 x 10 matrix over an internal ring>
 q := RightQuiver( "q(o)[x:o->o]" );
@@ -87,16 +87,16 @@ Display( G );
 #! A row module over Q of rank 10
 #! 
 #! Matrix:
-#! [ [   -57,    -8,    12,   130,  -240,     4,    12,    71,     7,    -9 ],
-#!   [    15,    -2,    -2,   -22,    55,     1,    -2,    10,     3,     0 ],
-#!   [     1,     5,     0,    -6,    10,    -2,    -1,    -8,    -4,     2 ],
-#!   [     0,     0,     0,     2,     0,     0,     0,     1,     0,     0 ],
-#!   [    15,     2,    -3,   -31,    62,    -1,    -3,   -13,    -1,     2 ],
-#!   [    43,    -4,    -6,   -60,   156,     2,    -5,    35,    11,    -1 ],
-#!   [   -31,    -6,     6,    68,  -134,     3,     7,    36,     6,    -6 ],
-#!   [     0,     0,     0,    -1,     0,     0,     0,    -1,     0,     0 ],
-#!   [     5,     0,    -1,   -12,    18,     0,    -1,    -1,     0,     0 ],
-#!   [   -45,    -8,     9,    90,  -194,     4,     9,    46,     5,    -8 ] ]
+#! [ [     0,     0,     3,     0,    -1,     3,    -8,     6,     0,    -3 ],
+#!   [    39,    15,   -25,     2,     0,    -9,    10,   -15,     2,     1 ],
+#!   [    21,     5,    -5,     3,    -1,     2,   -16,     5,     0,    -7 ],
+#!   [    30,    10,    -4,     3,    -5,    10,   -44,    22,    -2,   -18 ],
+#!   [    40,     0,   -66,     9,    27,   -70,   170,  -140,     9,    62 ],
+#!   [  -204,     0,    82,   -57,   -36,    50,    29,   100,     5,    13 ],
+#!   [   -52,   -15,    18,    -6,     2,    -1,    30,    -5,     0,    14 ],
+#!   [   105,     0,   -51,    29,    22,   -36,    14,   -72,    -1,     4 ],
+#!   [     6,     1,   -11,     1,     3,    -9,    19,   -18,     0,     7 ],
+#!   [   152,    45,   -52,    17,    -7,     5,   -93,    19,     0,   -43 ] ]
 #! 
 #! Range:
 #! A row module over Q of rank 10
@@ -106,6 +106,8 @@ Display( G );
 #! An object in PreSheaves(
 #! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations,
 #! Rows( Q ) ) given by the above data
+cy := ProjectionOntoCoequalizer( CoYonedaLemmaCoequalizerPair( G )[2] );
+#! <(o)->60x10>
 pi := EpimorphismFromSomeProjectiveObject( G );
 #! <(o)->18x10>
 pmat := UnderlyingMatrix( CoimageObject( pi ).x );
@@ -139,6 +141,8 @@ Display( pmat1_2 );
 #!   [  1,  1 ] ]
 pmat1_2 = TransposedMatrix( cmat1 );
 #! true
+CoimageObject( cy ) = CoimageObject( pi );
+#! false
 sec := SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( G );
 #! <A morphism in AdditiveClosure(
 #!  Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations )
@@ -164,13 +168,13 @@ IsWellDefined( ret );
 #! true
 IsOne( PreCompose( sec, ret ) );
 #! true
-c := ProjectionOntoCoequalizer( OptimizedCoYonedaLemmaCoequalizerPair( G )[2] );
+co := ProjectionOntoCoequalizer( OptimizedCoYonedaLemmaCoequalizerPair( G )[2] );
 #! <(o)->18x10>
-IsEqualAsFactorobjects( pi, c );
+IsEqualAsFactorobjects( pi, co );
 #! true
-pi = c;
+pi = co;
 #! false
-CoimageObject( pi ) = CoimageObject( c );
+CoimageObject( pi ) = CoimageObject( co );
 #! true
 #! @EndExample
 #! @EndChunk
