@@ -3177,7 +3177,7 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
     nr_objs := defining_triple[1];
     
     objs := SetOfObjects( C );
-
+    
     ## compute all Hom(-, objC) to order them by their cardinalities/dimension below
     homs := List( objs, objC ->
                   ObjectDatum( H,
@@ -3280,6 +3280,125 @@ InstallMethod( CoveringListOfRepresentables,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( MaximalMorphismFromRepresentable,
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
+        
+  function ( PSh, F )
+    local C, H, defining_triple, nr_objs, objs, homs, max_hom, f, predicate, func, initial, L;
+    
+    if IsInitial( PSh, F ) then
+        Error( "the presheaf `F` is initial\n" );
+    fi;
+    
+    C := Source( PSh );
+    H := Target( PSh );
+    
+    defining_triple := DefiningTripleOfUnderlyingQuiver( C );
+    nr_objs := defining_triple[1];
+    
+    objs := SetOfObjects( C );
+    
+    ## compute all Hom(-, objC) to order them by their cardinalities/dimension below
+    homs := List( objs, objC ->
+                  ObjectDatum( H,
+                          Coproduct( H,
+                                  List( objs, srcC -> HomomorphismStructureOnObjects( C, srcC, objC ) ) ) ) );
+    
+    max_hom := Maximum( homs );
+    
+    f := Sum( List( ObjectDatum( F )[1], o -> ObjectDatum( H, o ) ) );
+    
+    predicate :=
+      function( pi_data, pi_data_new )
+        local L, max, pos, sum;
+        
+        L := List( pi_data_new, e -> e[7] );
+        
+        max := Maximum( L );
+        
+        pos := SafePositionProperty( L, d -> d = max );
+        
+        if max = max_hom then
+            return true;
+        else
+            sum := Sum( L );
+            
+            if max >= f - sum then
+                return true;
+            fi;
+            
+            return false;
+        fi;
+        
+    end;
+    
+    func :=
+      function( pi_data )
+        local pi, im_emb, pos_nontrivial, homs_relevant, max, pos, obj, nonliftable, mor_from_rep, values_of_mor_from_rep, pi_datum_new, pi_data_new;
+        
+        pi := MorphismFromCoproductOfRepresentables( PSh,
+                      pi_data,
+                      F );
+        
+        im_emb := ListOfValues( ValuesOnAllObjects( ImageEmbedding( pi ) ) );
+        
+        ## the positions of the components im_emb_o of the natural transformation im_emb which are not epis:
+        pos_nontrivial := PositionsProperty( im_emb, im_emb_o -> not IsEpimorphism( H, im_emb_o ) );
+        
+        homs_relevant := homs{pos_nontrivial};
+        
+        max := Maximum( homs_relevant );
+        
+        pos := pos_nontrivial[SafePosition( homs_relevant, max )];
+        
+        obj := objs[pos];
+        
+        nonliftable := NonliftableMorphismFromDistinguishedObject( H, im_emb[pos] );
+        
+        mor_from_rep := MorphismFromRepresentable( PSh,
+                                        obj,
+                                        nonliftable,
+                                        F );
+        
+        values_of_mor_from_rep := ValuesOnAllObjects( mor_from_rep );
+        
+        pi_datum_new := NTuple( 7,
+                                obj,
+                                nonliftable,
+                                -1 + pos,
+                                -1 + IndexOfNonliftableMorphismFromDistinguishedObject( H, im_emb[pos] ),
+                                mor_from_rep,
+                                values_of_mor_from_rep,
+                                Sum( List( values_of_mor_from_rep, mor -> ObjectDatum( H, ImageObject( H, mor ) ) ) ) );
+        
+        pi_data_new := Filtered( pi_data, datum -> ForAny( [ 1 .. nr_objs ], o -> not IsLiftable( H, datum[6][o], values_of_mor_from_rep[o] ) ) );
+        
+        return Concatenation( pi_data_new, [ pi_datum_new ] );
+        
+    end;
+    
+    initial := [ ];
+    
+    L := CapFixpoint( predicate, func, initial );
+    
+    ## sort by sizes of images per object
+    L := SortedList( L, {a,b} -> a[7] > b[7] );
+    
+    return L[1];
+    
+end );
+
+##
+InstallMethod( MaximalMorphismFromRepresentable,
+        [ IsObjectInPreSheafCategory ],
+        
+  function ( F )
+    
+    return MaximalMorphismFromRepresentable( CapCategory( F ), F );
+    
+end );
+
+##
 InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentables,
         [ IsElementaryTopos, IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
@@ -3302,9 +3421,9 @@ InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentable
     
     cover := [ ];
     
-    while not IsZero( G ) do
+    while not IsInitial( G ) do
         
-        c := CoveringListOfRepresentables( PSh, G )[1];
+        c := MaximalMorphismFromRepresentable( PSh, G );
         
         obj := c[1];
         
@@ -3332,8 +3451,6 @@ InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentable
                       MorphismFromCoproductOfRepresentables( PSh,
                               cover,
                               F ) );
-        
-        #Assert( 0, IsSplitEpimorphism( pi ) );
         
         G := Target( pi );
         
