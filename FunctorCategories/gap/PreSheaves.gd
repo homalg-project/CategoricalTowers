@@ -346,6 +346,10 @@ DeclareOperation( "MorphismFromCoproductOfRepresentables",
     [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ] );
 
 #! @Arguments F
+DeclareAttribute( "MaximalMorphismFromRepresentable",
+        IsObjectInPreSheafCategory );
+
+#! @Arguments F
 DeclareAttribute( "CoveringListOfRepresentables",
         IsObjectInPreSheafCategory );
 
