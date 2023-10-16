@@ -3177,7 +3177,7 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
     nr_objs := defining_triple[1];
     
     objs := SetOfObjects( C );
-
+    
     ## compute all Hom(-, objC) to order them by their cardinalities/dimension below
     homs := List( objs, objC ->
                   ObjectDatum( H,
