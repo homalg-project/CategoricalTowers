@@ -3098,18 +3098,18 @@ InstallMethod( CoYonedaLemmaCoequalizerPair,
     
 end );
 
-## a special case of InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
-InstallMethodForCompilerForCAP( MorphismFromRepresentable,
+## φ ∈ Hom_H( 𝟙, F(o) ) ≅ Hom_H( 𝟙, Hom_PSh( Y(o), F ) ) ≅ Hom_PSh( Y(o), F )
+InstallMethodForCompilerForCAP( MorphismFromRepresentableByYonedaLemma,
         [ IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory ],
         
-  function ( PSh, objB, mor, F )
-    local B, D, Y, objs, f;
+  function ( PSh, objB, phi, F )
+    local B, H, Y, objs, f;
     
     B := Source( PSh );
-    D := Target( PSh );
+    H := Target( PSh );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( PSh ), D ) );
+    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( PSh ), H ) );
     
     Y := YonedaEmbeddingDataOfSourceCategory( PSh )[1];
     
@@ -3117,25 +3117,25 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentable,
     
     f :=
       function( source, srcB_index, range )
-        local HomC_d_HomB_src_objB, HomB_srcB_objB, F_HomB_srcB_objB, taus;
+        local HomC_d_HomB_srcB_objB, HomB_srcB_objB, F_HomB_srcB_objB, taus;
         
-        HomC_d_HomB_src_objB := ExactCoverWithGlobalElements( D,
+        HomC_d_HomB_srcB_objB := ExactCoverWithGlobalElements( H,
                                         HomomorphismStructureOnObjects( B,
                                                 objs[srcB_index],
                                                 objB ) );
         
-        HomB_srcB_objB := List( HomC_d_HomB_src_objB, m ->
+        HomB_srcB_objB := List( HomC_d_HomB_srcB_objB, m ->
                                 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B, objs[srcB_index], objB, m ) );
         
         ## F applied to all morphisms from srcB to objB
         F_HomB_srcB_objB := List( HomB_srcB_objB, F );
         
         taus := List( F_HomB_srcB_objB, m ->
-                      PreCompose( D,
-                              mor,
+                      PreCompose( H,
+                              phi,
                               m ) );
         
-        return UniversalMorphismFromCoproductWithGivenCoproduct( D,
+        return UniversalMorphismFromCoproductWithGivenCoproduct( H,
                        List( taus, Source ),
                        range,
                        taus,
@@ -3217,7 +3217,7 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
         
         nonliftable := NonliftableMorphismFromDistinguishedObject( H, im_emb[pos] );
         
-        mor_from_rep := MorphismFromRepresentable( PSh,
+        mor_from_rep := MorphismFromRepresentableByYonedaLemma( PSh,
                                         obj,
                                         nonliftable,
                                         F );
@@ -3355,7 +3355,7 @@ InstallOtherMethodForCompilerForCAP( MaximalMorphismFromRepresentable,
         
         nonliftable := NonliftableMorphismFromDistinguishedObject( H, im_emb[pos] );
         
-        mor_from_rep := MorphismFromRepresentable( PSh,
+        mor_from_rep := MorphismFromRepresentableByYonedaLemma( PSh,
                                         obj,
                                         nonliftable,
                                         F );
@@ -3429,7 +3429,7 @@ InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentable
         
         nonliftable := Lift( H, c[2], ValuesOnAllObjects( pi )[1 + c[3]] );
         
-        mor_from_rep := MorphismFromRepresentable( PSh,
+        mor_from_rep := MorphismFromRepresentableByYonedaLemma( PSh,
                                 obj,
                                 nonliftable,
                                 F );
