@@ -117,4 +117,20 @@ Display( sec );
 #! A morphism in FiniteStrictCoproductCompletion(
 #! FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
 #! / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ] ) given by the above data
+pi := EpimorphismFromSomeProjectiveObject( G );
+#! <A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
+#!  / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>
+ast := AstrictionToCoimage( pi );
+#! <A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
+#!  / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>
+IsWellDefined( ast );
+#! true
+Display( ast );
+#! Image of <(o)>:
+#! { 0,..., 17 } ⱶ[ 17, 16, 9, 6, 0, 5, 4, 3, 2,
+#!                  1, 15, 10, 11, 7, 12, 13, 8, 14 ]→ { 0,..., 17 }
+#! 
+#! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
+#! / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )
+#! given by the above data
 #! @EndExample
