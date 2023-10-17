@@ -3691,7 +3691,10 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
     beta := [ [ id_V_opt, ZeroMorphism( UC, V, V_opt ) ], [ sec, s - t ] ];
     gamma := [ id_V_opt, id_V ];
     
-    return SolveLinearSystemInAbCategory( alpha, beta, gamma )[1];
+    return SolveLinearSystemInAbCategory( UC,
+                   alpha,
+                   beta,
+                   gamma )[1];
     
 end );
 
