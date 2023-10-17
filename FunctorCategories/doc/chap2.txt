@@ -92,39 +92,47 @@
   
   [33X[1;0Y[29X[2XDoctrineSpecificCoveringListOfRepresentables[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-15 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[101X
+  [1X2.1-15 CoveringListOfRepresentablesUsingSplits[101X
+  
+  [33X[1;0Y[29X[2XCoveringListOfRepresentablesUsingSplits[102X( [3XF[103X ) [32X attribute[133X
+  
+  [1X2.1-16 EpimorphismFromSomeProjectiveObjectUsingSplits[101X
+  
+  [33X[1;0Y[29X[2XEpimorphismFromSomeProjectiveObjectUsingSplits[102X( [3XF[103X ) [32X attribute[133X
+  
+  [1X2.1-17 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[101X
   
   [33X[1;0Y[29X[2XSectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-16 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[101X
+  [1X2.1-18 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[101X
   
   [33X[1;0Y[29X[2XRetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-17 OptimizedCoYonedaLemmaOnObjects[101X
+  [1X2.1-19 OptimizedCoYonedaLemmaOnObjects[101X
   
   [33X[1;0Y[29X[2XOptimizedCoYonedaLemmaOnObjects[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-18 OptimizedCoYonedaLemmaOnMorphisms[101X
+  [1X2.1-20 OptimizedCoYonedaLemmaOnMorphisms[101X
   
   [33X[1;0Y[29X[2XOptimizedCoYonedaLemmaOnMorphisms[102X( [3Xphi[103X ) [32X attribute[133X
   
-  [1X2.1-19 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[101X
+  [1X2.1-21 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[101X
   
   [33X[1;0Y[29X[2XCoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-20 OptimizedCoYonedaLemmaCoequalizerPair[101X
+  [1X2.1-22 OptimizedCoYonedaLemmaCoequalizerPair[101X
   
   [33X[1;0Y[29X[2XOptimizedCoYonedaLemmaCoequalizerPair[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-21 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion[101X
+  [1X2.1-23 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion[101X
   
   [33X[1;0Y[29X[2XApplyPreSheafToObjectInFiniteStrictCoproductCompletion[102X( [3XPSh[103X, [3Xpresheaf[103X, [3Xobj[103X ) [32X operation[133X
   
-  [1X2.1-22 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[101X
+  [1X2.1-24 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[101X
   
   [33X[1;0Y[29X[2XApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[102X( [3XPSh[103X, [3Xpresheaf[103X, [3Xmor[103X ) [32X operation[133X
   
-  [1X2.1-23 CategoryOfInternalCategories[101X
+  [1X2.1-25 CategoryOfInternalCategories[101X
   
   [33X[1;0Y[29X[2XCategoryOfInternalCategories[102X( [3XC[103X ) [32X attribute[133X
   
@@ -1199,6 +1207,40 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XCoimageObject( cy ) = CoimageObject( pi );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xps := EpimorphismFromSomeProjectiveObjectUsingSplits( G );[127X[104X
+    [4X[28X<(o)->18x10>[128X[104X
+    [4X[25Xgap>[125X [27Xnf := CoimageObject( ps );[127X[104X
+    [4X[28X<(o)->10; (x)->10x10>[128X[104X
+    [4X[25Xgap>[125X [27Xnf = CoimageObject( cy );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( nf );[127X[104X
+    [4X[28XImage of <(o)>:[128X[104X
+    [4X[28XA row module over Q of rank 10[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (o)-[{ 1*(x) }]->(o):[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 10[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [   0,   1,   0,   0,   0,   0,   0,   0,   0,   0 ],[128X[104X
+    [4X[28X  [   0,   0,   1,   0,   0,   0,   0,   0,   0,   0 ],[128X[104X
+    [4X[28X  [   0,   0,   0,   1,   0,   0,   0,   0,   0,   0 ],[128X[104X
+    [4X[28X  [   0,   0,   0,   0,   1,   0,   0,   0,   0,   0 ],[128X[104X
+    [4X[28X  [   0,   0,   0,   0,   0,   1,   0,   0,   0,   0 ],[128X[104X
+    [4X[28X  [   1,   3,   0,  -5,   0,   3,   0,   0,   0,   0 ],[128X[104X
+    [4X[28X  [   0,   0,   0,   0,   0,   0,   0,   1,   0,   0 ],[128X[104X
+    [4X[28X  [   0,   0,   0,   0,   0,   0,   1,   1,   0,   0 ],[128X[104X
+    [4X[28X  [   0,   0,   0,   0,   0,   0,   0,   0,   0,   1 ],[128X[104X
+    [4X[28X  [   0,   0,   0,   0,   0,   0,   0,   0,   1,   1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 10[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves([128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations,[128X[104X
+    [4X[28XRows( Q ) ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27Xsec := SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( G );[127X[104X
     [4X[28X<A morphism in AdditiveClosure([128X[104X
     [4X[28X Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations )[128X[104X
