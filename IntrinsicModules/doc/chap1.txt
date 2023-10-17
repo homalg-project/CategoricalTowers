@@ -86,11 +86,153 @@
         BraidingWithGivenTensorProducts        for        IsCapCategoryObject,
         IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XCartesianAssociatorLeftToRight[102X                   ([14XCartesianCategories:
+        CartesianAssociatorLeftToRight         for        IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianAssociatorLeftToRightWithGivenDirectProducts[102X
+        ([14XCartesianCategories:
+        CartesianAssociatorLeftToRightWithGivenDirectProducts              for
+        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianAssociatorRightToLeft[102X                   ([14XCartesianCategories:
+        CartesianAssociatorRightToLeft         for        IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianAssociatorRightToLeftWithGivenDirectProducts[102X
+        ([14XCartesianCategories:
+        CartesianAssociatorRightToLeftWithGivenDirectProducts              for
+        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianBraiding[102X    ([14XCartesianCategories:    CartesianBraiding    for
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianBraidingInverse[102X                         ([14XCartesianCategories:
+        CartesianBraidingInverse for IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianBraidingInverseWithGivenDirectProducts[102X  ([14XCartesianCategories:
+        CartesianBraidingInverseWithGivenDirectProducts                    for
+        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianBraidingWithGivenDirectProducts[102X         ([14XCartesianCategories:
+        CartesianBraidingWithGivenDirectProducts    for   IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianDiagonal[102X    ([14XCartesianCategories:    CartesianDiagonal    for
+        IsCapCategoryObject, IsInt[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianDiagonalWithGivenCartesianPower[102X         ([14XCartesianCategories:
+        CartesianDiagonalWithGivenCartesianPower    for   IsCapCategoryObject,
+        IsInt, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianLeftUnitor[102X   ([14XCartesianCategories:   CartesianLeftUnitor  for
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianLeftUnitorInverse[102X                       ([14XCartesianCategories:
+        CartesianLeftUnitorInverse for IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianLeftUnitorInverseWithGivenDirectProduct[102X ([14XCartesianCategories:
+        CartesianLeftUnitorInverseWithGivenDirectProduct                   for
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianLeftUnitorWithGivenDirectProduct[102X        ([14XCartesianCategories:
+        CartesianLeftUnitorWithGivenDirectProduct   for   IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianRightUnitor[102X  ([14XCartesianCategories:  CartesianRightUnitor  for
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianRightUnitorInverse[102X                      ([14XCartesianCategories:
+        CartesianRightUnitorInverse for IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianRightUnitorInverseWithGivenDirectProduct[102X
+        ([14XCartesianCategories:
+        CartesianRightUnitorInverseWithGivenDirectProduct                  for
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCartesianRightUnitorWithGivenDirectProduct[102X       ([14XCartesianCategories:
+        CartesianRightUnitorWithGivenDirectProduct   for  IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XCoastrictionToImage[102X        ([14XCAP:        CoastrictionToImage        for
         IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XCoastrictionToImageWithGivenImageObject[102X                          ([14XCAP:
         CoastrictionToImageWithGivenImageObject   for   IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianAssociatorLeftToRight[102X                 ([14XCartesianCategories:
+        CocartesianAssociatorLeftToRight        for       IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianAssociatorLeftToRightWithGivenCoproducts[102X
+        ([14XCartesianCategories:
+        CocartesianAssociatorLeftToRightWithGivenCoproducts                for
+        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianAssociatorRightToLeft[102X                 ([14XCartesianCategories:
+        CocartesianAssociatorRightToLeft        for       IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianAssociatorRightToLeftWithGivenCoproducts[102X
+        ([14XCartesianCategories:
+        CocartesianAssociatorRightToLeftWithGivenCoproducts                for
+        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianBraiding[102X   ([14XCartesianCategories:   CocartesianBraiding  for
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianBraidingInverse[102X                       ([14XCartesianCategories:
+        CocartesianBraidingInverse           for          IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianBraidingInverseWithGivenCoproducts[102X    ([14XCartesianCategories:
+        CocartesianBraidingInverseWithGivenCoproducts for IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianBraidingWithGivenCoproducts[102X           ([14XCartesianCategories:
+        CocartesianBraidingWithGivenCoproducts     for    IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianCodiagonal[102X  ([14XCartesianCategories: CocartesianCodiagonal for
+        IsCapCategoryObject, IsInt[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianCodiagonalWithGivenCocartesianMultiple[102X
+        ([14XCartesianCategories:
+        CocartesianCodiagonalWithGivenCocartesianMultiple                  for
+        IsCapCategoryObject, IsInt, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianLeftUnitor[102X  ([14XCartesianCategories: CocartesianLeftUnitor for
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianLeftUnitorInverse[102X                     ([14XCartesianCategories:
+        CocartesianLeftUnitorInverse for IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianLeftUnitorInverseWithGivenCoproduct[102X   ([14XCartesianCategories:
+        CocartesianLeftUnitorInverseWithGivenCoproduct                     for
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianLeftUnitorWithGivenCoproduct[102X          ([14XCartesianCategories:
+        CocartesianLeftUnitorWithGivenCoproduct    for    IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianRightUnitor[102X   ([14XCartesianCategories:  CocartesianRightUnitor
+        for IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianRightUnitorInverse[102X                    ([14XCartesianCategories:
+        CocartesianRightUnitorInverse for IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianRightUnitorInverseWithGivenCoproduct[102X  ([14XCartesianCategories:
+        CocartesianRightUnitorInverseWithGivenCoproduct                    for
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCocartesianRightUnitorWithGivenCoproduct[102X         ([14XCartesianCategories:
+        CocartesianRightUnitorWithGivenCoproduct    for   IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XCoequalizer[102X ([14XCAP: Coequalizer[114X)[133X
@@ -179,6 +321,13 @@
         CoproductFunctorialWithGivenCoproducts     for    IsCapCategoryObject,
         IsList, IsList, IsList, IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XCoproductOnMorphisms[102X  ([14XCartesianCategories:  CoproductOnMorphisms  for
+        IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoproductOnMorphismsWithGivenCoproducts[102X          ([14XCartesianCategories:
+        CoproductOnMorphismsWithGivenCoproducts    for    IsCapCategoryObject,
+        IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XDirectProduct[102X ([14XCAP: DirectProduct[114X)[133X
   
   [30X    [33X[0;6Y[2XDirectProductFunctorial[102X   ([14XCAP:  DirectProductFunctorial  for  IsList,
@@ -187,6 +336,15 @@
   [30X    [33X[0;6Y[2XDirectProductFunctorialWithGivenDirectProducts[102X                   ([14XCAP:
         DirectProductFunctorialWithGivenDirectProducts                     for
         IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XDirectProductOnMorphisms[102X                         ([14XCartesianCategories:
+        DirectProductOnMorphisms           for          IsCapCategoryMorphism,
+        IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XDirectProductOnMorphismsWithGivenDirectProducts[102X  ([14XCartesianCategories:
+        DirectProductOnMorphismsWithGivenDirectProducts                    for
+        IsCapCategoryObject,   IsCapCategoryMorphism,   IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XDirectSum[102X ([14XCAP: DirectSum[114X)[133X
   
@@ -387,6 +545,12 @@
   [30X    [33X[0;6Y[2XInternalHomToTensorProductAdjunctionMap[102X           ([14XMonoidalCategories:
         InternalHomToTensorProductAdjunctionMap    for    IsCapCategoryObject,
         IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X
+        ([14XMonoidalCategories:
+        InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct      for
+        IsCapCategoryObject,    IsCapCategoryObject,    IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[102X
         ([14XCAP:
@@ -612,6 +776,23 @@
   
   [30X    [33X[0;6Y[2XLambdaIntroduction[102X    ([14XMonoidalCategories:    LambdaIntroduction   for
         IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XLeftCartesianDistributivityFactoring[102X             ([14XCartesianCategories:
+        LeftCartesianDistributivityFactoring for IsCapCategoryObject, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XLeftCartesianDistributivityFactoringWithGivenObjects[102X
+        ([14XCartesianCategories:
+        LeftCartesianDistributivityFactoringWithGivenObjects               for
+        IsCapCategoryObject, IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XLeftCocartesianCodistributivityExpanding[102X         ([14XCartesianCategories:
+        LeftCocartesianCodistributivityExpanding    for   IsCapCategoryObject,
+        IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XLeftCocartesianCodistributivityExpandingWithGivenObjects[102X
+        ([14XCartesianCategories:
+        LeftCocartesianCodistributivityExpandingWithGivenObjects           for
+        IsCapCategoryObject, IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XLeftDistributivityExpanding[102X                       ([14XMonoidalCategories:
         LeftDistributivityExpanding for IsCapCategoryObject, IsList[114X)[133X
@@ -859,6 +1040,23 @@
   [30X    [33X[0;6Y[2XRandomMorphismWithFixedSourceAndRangeByInteger[102X                   ([14XCAP:
         RandomMorphismWithFixedSourceAndRangeByInteger                     for
         IsCapCategoryObject, IsCapCategoryObject, IsInt[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRightCartesianDistributivityFactoring[102X            ([14XCartesianCategories:
+        RightCartesianDistributivityFactoring for IsList, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRightCartesianDistributivityFactoringWithGivenObjects[102X
+        ([14XCartesianCategories:
+        RightCartesianDistributivityFactoringWithGivenObjects              for
+        IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRightCocartesianCodistributivityExpanding[102X        ([14XCartesianCategories:
+        RightCocartesianCodistributivityExpanding          for         IsList,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRightCocartesianCodistributivityExpandingWithGivenObjects[102X
+        ([14XCartesianCategories:
+        RightCocartesianCodistributivityExpandingWithGivenObjects          for
+        IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XRightDistributivityExpanding[102X                      ([14XMonoidalCategories:
         RightDistributivityExpanding for IsList, IsCapCategoryObject[114X)[133X
