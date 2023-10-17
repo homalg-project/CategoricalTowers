@@ -143,6 +143,40 @@ pmat1_2 = TransposedMatrix( cmat1 );
 #! true
 CoimageObject( cy ) = CoimageObject( pi );
 #! false
+ps := EpimorphismFromSomeProjectiveObjectUsingSplits( G );
+#! <(o)->18x10>
+nf := CoimageObject( ps );
+#! <(o)->10; (x)->10x10>
+nf = CoimageObject( cy );
+#! false
+Display( nf );
+#! Image of <(o)>:
+#! A row module over Q of rank 10
+#! 
+#! Image of (o)-[{ 1*(x) }]->(o):
+#! Source:
+#! A row module over Q of rank 10
+#! 
+#! Matrix:
+#! [ [   0,   1,   0,   0,   0,   0,   0,   0,   0,   0 ],
+#!   [   0,   0,   1,   0,   0,   0,   0,   0,   0,   0 ],
+#!   [   0,   0,   0,   1,   0,   0,   0,   0,   0,   0 ],
+#!   [   0,   0,   0,   0,   1,   0,   0,   0,   0,   0 ],
+#!   [   0,   0,   0,   0,   0,   1,   0,   0,   0,   0 ],
+#!   [   1,   3,   0,  -5,   0,   3,   0,   0,   0,   0 ],
+#!   [   0,   0,   0,   0,   0,   0,   0,   1,   0,   0 ],
+#!   [   0,   0,   0,   0,   0,   0,   1,   1,   0,   0 ],
+#!   [   0,   0,   0,   0,   0,   0,   0,   0,   0,   1 ],
+#!   [   0,   0,   0,   0,   0,   0,   0,   0,   1,   1 ] ]
+#! 
+#! Range:
+#! A row module over Q of rank 10
+#! 
+#! A morphism in Rows( Q )
+#! 
+#! An object in PreSheaves(
+#! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations,
+#! Rows( Q ) ) given by the above data
 sec := SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( G );
 #! <A morphism in AdditiveClosure(
 #!  Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations )

@@ -3565,6 +3565,31 @@ InstallMethod( CoveringListOfRepresentablesUsingSplits,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( EpimorphismFromSomeProjectiveObjectUsingSplits,
+        [ IsAbelianCategory, IsPreSheafCategory, IsObjectInPreSheafCategory ],
+        
+  function ( H, PSh, F )
+    
+    return MorphismFromCoproductOfRepresentables( PSh,
+                   CoveringListOfRepresentablesUsingSplits( H, PSh, F ),
+                   F );
+    
+end );
+
+##
+InstallMethod( EpimorphismFromSomeProjectiveObjectUsingSplits,
+        [ IsObjectInPreSheafCategory ],
+        
+  function ( F )
+    local PSh;
+    
+    PSh := CapCategory( F );
+    
+    return EpimorphismFromSomeProjectiveObjectUsingSplits( Target( PSh ), PSh, F );
+    
+end );
+
+##
 InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         

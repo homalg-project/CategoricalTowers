@@ -362,6 +362,10 @@ DeclareAttribute( "CoveringListOfRepresentablesUsingSplits",
         IsObjectInPreSheafCategory );
 
 #! @Arguments F
+DeclareAttribute( "EpimorphismFromSomeProjectiveObjectUsingSplits",
+        IsObjectInPreSheafCategory );
+
+#! @Arguments F
 DeclareAttribute( "SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject",
     IsObjectInPreSheafCategory );
 
