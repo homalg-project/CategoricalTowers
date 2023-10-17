@@ -1,7 +1,7 @@
 name: CategoryConstructor
-version: "2023.10-07"
+version: "2023.10-08"
 license: "GPL-2.0-or-later"
-date: 2023-10-14
+date: 2023-10-17
 description: |
     Construct categories out of given ones
 
@@ -20,8 +20,11 @@ needed-pkgs:
       version: ">= 2023.10-04"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
-      version: ">= 2022.06-03"
+      version: ">= 2023.10-01"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
+    - name: "CartesianCategories"
+      version: ">= 2023.10-01"
+      url: "https://homalg-project.github.io/pkg/CartesianCategories"
     - name: "ToolsForHomalg"
       version: ">= 2021.11-01"
       url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
@@ -32,11 +35,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/CategoryConstruc
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.10-07/CategoryConstructor-2023.10-07.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.10-08/CategoryConstructor-2023.10-08.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.10-07/CategoryConstructor-2023.10-07.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.10-08/CategoryConstructor-2023.10-08.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.10-07/CategoryConstructor-2023.10-07-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.10-08/CategoryConstructor-2023.10-08-manual.pdf
 
 abstract: |
 
@@ -47,22 +50,22 @@ keywords: |
     Category constructor.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Bar14</span>]   <b class='BibAuthor'>Barakat, M.</b>,
+    [<span class='BibKey'>Bar17</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>CategoryConstructor, Construct categories out of given ones,
-             Version 2023.10-07</i>
-     (<span class='BibYear'>0-14</span>)<br />
+             Version 2023.10-08</i>
+     (<span class='BibYear'>0-17</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CategoryConstructor">https://homalg-project.github.io/pkg/CategoryConstructor</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ CategoryConstructor2023.10-07,
+    @misc{ CategoryConstructor2023.10-08,
       author =           {Barakat, M.},
       title =            {{CategoryConstructor},  Construct  categories  out  of
-                          given ones, {V}ersion 2023.10-07},
+                          given ones, {V}ersion 2023.10-08},
       month =            {3-},
-      year =             {0-14},
+      year =             {0-17},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/CategoryConstructor}
@@ -70,6 +73,6 @@ bibtex: |
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{CategoryConstructor}}},
       keywords =         {Category constructor},
-      printedkey =       {Bar14}
+      printedkey =       {Bar17}
     }
 
