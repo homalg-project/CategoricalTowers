@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "CategoryConstructor",
 Subtitle := "Construct categories out of given ones",
-Version := "2023.10-07",
+Version := "2023.10-08",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
@@ -72,7 +72,8 @@ Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "CAP", ">= 2023.10-04" ],
-                   [ "MonoidalCategories", ">= 2022.06-03" ],
+                   [ "MonoidalCategories", ">= 2023.10-01" ],
+                   [ "CartesianCategories", ">= 2023.10-01" ],
                    [ "ToolsForHomalg", ">= 2021.11-01" ],
                    ],
   SuggestedOtherPackages := [ ],

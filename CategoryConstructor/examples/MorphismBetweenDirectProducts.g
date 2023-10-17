@@ -10,7 +10,7 @@ sFinSets := SkeletalCategoryOfFiniteSets( );
 Display( sFinSets );
 #! A CAP category with name SkeletalFinSets:
 #! 
-#! 59 primitive operations were used to derive 317 operations for this category
+#! 59 primitive operations were used to derive 318 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsElementaryTopos
@@ -40,7 +40,7 @@ W := WrapperCategory( sFinSets,
 Display( W );
 #! A CAP category with name WrapperCategory( SkeletalFinSets ):
 #! 
-#! 300 primitive operations were used to derive 310 operations for this category
+#! 301 primitive operations were used to derive 311 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsElementaryTopos
@@ -68,7 +68,7 @@ O := Opposite( sFinSets );
 Display( O );
 #! A CAP category with name Opposite( SkeletalFinSets ):
 #! 
-#! 244 primitive operations were used to derive 262 operations for this category
+#! 245 primitive operations were used to derive 263 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsFiniteCocompleteCategory
