@@ -11,9 +11,9 @@ SetPackageInfo( rec(
 PackageName := "IntrinsicGradedModules",
 Subtitle := "Finitely presented graded modules over computable graded rings allowing multiple presentations and the notion of elements",
 
-Version := "2023.10-05",
-Date := "2023-10-14",
-Date := "2023-10-14",
+Version := "2023.10-06",
+Date := "2023-10-17",
+Date := "2023-10-17",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -90,11 +90,12 @@ Dependencies := rec(
                    [ "GradedRingForHomalg", ">= 2021.03-02" ],
                    [ "GradedModules", ">= 2021.04-03" ],
                    [ "CAP", ">= 2023.10-04" ],
-                   [ "MonoidalCategories", ">= 2023.02-04" ],
+                   [ "MonoidalCategories", ">= 2023.10-01" ],
+                   [ "CartesianCategories", ">= 2023.10-01" ],
                    [ "GeneralizedMorphismsForCAP", ">= 2017.03.15" ],
                    [ "FreydCategoriesForCAP", ">= 2021.12-04" ],
                    [ "CategoriesWithAmbientObjects", ">= 2021.03-07" ],
-                   [ "CategoryConstructor", ">= 2023.08-02" ],
+                   [ "CategoryConstructor", ">= 2023.10-08" ],
                    [ "IntrinsicCategories", ">= 2023.07-01" ],
                    [ "IntrinsicModules", ">= 2023.07-01" ],
                    [ "ExteriorPowersCategories", ">= 2021.04-01" ],
