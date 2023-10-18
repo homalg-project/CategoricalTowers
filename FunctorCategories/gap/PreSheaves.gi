@@ -3442,9 +3442,16 @@ InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentable
         
         obj := c[1];
         
+        ## solve X A = b:
         nonliftable := Lift( H,
                              c[2], ## the nonliftable morphism
                              ValuesOnAllObjects( pi )[1 + c[3]] );
+        
+        ## alternatively:
+        ## solve Y A = id and then set X := b Y; this implies X A = (b Y) A = b id = b
+        #nonliftable := PreCompose( H,
+        #                       c[2], ## the nonliftable morphism
+        #                       PreInverseForMorphisms( H, ValuesOnAllObjects( pi )[1 + c[3]] ) );
         
         mor_from_rep := MorphismFromRepresentableByYonedaLemma( PSh,
                                 obj,
@@ -3518,10 +3525,21 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentablesUsingSplits,
                                    c[2], ## the nonliftable morphism
                                    ValuesOnAllObjects( PreInverseForMorphisms( PSh, pi ) )[1 + c[3]] );
         else
-            ## lift the nonliftable morphism along the o-th component pi
+            
+            ## lift the nonliftable morphism along the o-th component pi:
+            
+            ## solve X A = b:
             nonliftable := Lift( H,
                                  c[2], ## the nonliftable morphism
                                  ValuesOnAllObjects( pi )[1 + c[3]] );
+            
+            ## alternatively:
+            ## solve Y A = id and then set X := b Y; this implies X A = (b Y) A = b id = b
+            
+            #nonliftable := PreCompose( H,
+            #                       c[2], ## the nonliftable morphism
+            #                       PreInverseForMorphisms( H, ValuesOnAllObjects( pi )[1 + c[3]] ) );
+            
         fi;
         
         mor_from_rep := MorphismFromRepresentableByYonedaLemma( PSh,
