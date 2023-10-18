@@ -3321,28 +3321,21 @@ InstallOtherMethodForCompilerForCAP( MaximalMorphismFromRepresentable,
     
     max_hom := Maximum( homs );
     
-    f := Sum( List( ObjectDatum( F )[1], o -> ObjectDatum( H, o ) ) );
-    
     predicate :=
       function( pi_data, pi_data_new )
-        local L, max, pos, sum;
+        local L, max;
         
         L := List( pi_data_new, e -> e[7] );
         
         max := Maximum( L );
         
-        pos := SafePositionProperty( L, d -> d = max );
-        
         if max = max_hom then
             return true;
         else
-            sum := Sum( L );
-            
-            if max >= f - sum then
-                return true;
-            fi;
-            
-            return false;
+            return IsEpimorphism( PSh,
+                           MorphismFromCoproductOfRepresentables( PSh,
+                                   pi_data_new,
+                                   F ) );
         fi;
         
     end;
