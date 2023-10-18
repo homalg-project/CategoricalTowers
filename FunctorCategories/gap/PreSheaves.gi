@@ -3099,6 +3099,8 @@ InstallMethod( CoYonedaLemmaCoequalizerPair,
 end );
 
 ## φ ∈ Hom_H( 𝟙, F(o) ) ≅ Hom_H( 𝟙, Hom_PSh( Y(o), F ) ) ≅ Hom_PSh( Y(o), F )
+## the first isomorphism being the Yoneda lemma F(o) ≅ Hom_PSh( Y(o), F ) and
+## the second from the definition of the Hom-structure
 InstallMethodForCompilerForCAP( MorphismFromRepresentableByYonedaLemma,
         [ IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory ],
         
