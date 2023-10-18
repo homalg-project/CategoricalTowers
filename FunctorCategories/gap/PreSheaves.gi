@@ -3099,6 +3099,8 @@ InstallMethod( CoYonedaLemmaCoequalizerPair,
 end );
 
 ## φ ∈ Hom_H( 𝟙, F(o) ) ≅ Hom_H( 𝟙, Hom_PSh( Y(o), F ) ) ≅ Hom_PSh( Y(o), F )
+## the first isomorphism being the Yoneda lemma F(o) ≅ Hom_PSh( Y(o), F ) and
+## the second from the definition of the Hom-structure
 InstallMethodForCompilerForCAP( MorphismFromRepresentableByYonedaLemma,
         [ IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory ],
         
@@ -3319,28 +3321,21 @@ InstallOtherMethodForCompilerForCAP( MaximalMorphismFromRepresentable,
     
     max_hom := Maximum( homs );
     
-    f := Sum( List( ObjectDatum( F )[1], o -> ObjectDatum( H, o ) ) );
-    
     predicate :=
       function( pi_data, pi_data_new )
-        local L, max, pos, sum;
+        local L, max;
         
         L := List( pi_data_new, e -> e[7] );
         
         max := Maximum( L );
         
-        pos := SafePositionProperty( L, d -> d = max );
-        
         if max = max_hom then
             return true;
         else
-            sum := Sum( L );
-            
-            if max >= f - sum then
-                return true;
-            fi;
-            
-            return false;
+            return IsEpimorphism( PSh,
+                           MorphismFromCoproductOfRepresentables( PSh,
+                                   pi_data_new,
+                                   F ) );
         fi;
         
     end;
@@ -3440,7 +3435,16 @@ InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentable
         
         obj := c[1];
         
-        nonliftable := Lift( H, c[2], ValuesOnAllObjects( pi )[1 + c[3]] );
+        ## solve X A = b:
+        nonliftable := Lift( H,
+                             c[2], ## the nonliftable morphism
+                             ValuesOnAllObjects( pi )[1 + c[3]] );
+        
+        ## alternatively:
+        ## solve Y A = id and then set X := b Y; this implies X A = (b Y) A = b id = b
+        #nonliftable := PreCompose( H,
+        #                       c[2], ## the nonliftable morphism
+        #                       PreInverseForMorphisms( H, ValuesOnAllObjects( pi )[1 + c[3]] ) );
         
         mor_from_rep := MorphismFromRepresentableByYonedaLemma( PSh,
                                 obj,
@@ -3491,7 +3495,7 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentablesUsingSplits,
         [ IsAbelianCategory, IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( H, PSh, F )
-    local G, pi, cover, c, obj, nonliftable, mor_from_rep, values_of_mor_from_rep, c_new;
+    local G, pi, cover, c, obj, section, nonliftable, mor_from_rep, values_of_mor_from_rep, c_new;
     
     G := F;
     
@@ -3508,16 +3512,31 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentablesUsingSplits,
         ## checking for and computing the splitting below needs the Hom-structure on PSh,
         ## in particular, this operation cannot be used to compute the Hom-structure on PSh
         
-        if IsSplitEpimorphism( PSh, pi ) then
+        section := LiftOrFail( PSh, IdentityMorphism( PSh, Target( pi ) ), pi );
+        
+        if not ( section = fail ) then  ## pi is a split epimorphism
+            
             ## precompose the nonliftable morphism with the o-th component of a section of pi
             nonliftable := PreCompose( H,
-                                   c[2],
-                                   ValuesOnAllObjects( PreInverseForMorphisms( PSh, pi ) )[1 + c[3]] );
+                                   c[2], ## the nonliftable morphism
+                                   ValuesOnAllObjects( section )[1 + c[3]] );
+            
         else
-            ## lift the nonliftable morphism along the o-th component pi
+            
+            ## lift the nonliftable morphism along the o-th component pi:
+            
+            ## solve X A = b:
             nonliftable := Lift( H,
-                                 c[2],
+                                 c[2], ## the nonliftable morphism
                                  ValuesOnAllObjects( pi )[1 + c[3]] );
+            
+            ## alternatively:
+            ## solve Y A = id and then set X := b Y; this implies X A = (b Y) A = b id = b
+            
+            #nonliftable := PreCompose( H,
+            #                       c[2], ## the nonliftable morphism
+            #                       PreInverseForMorphisms( H, ValuesOnAllObjects( pi )[1 + c[3]] ) );
+            
         fi;
         
         mor_from_rep := MorphismFromRepresentableByYonedaLemma( PSh,

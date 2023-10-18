@@ -26,7 +26,7 @@ Display( cmat3 );
 #!   [   0,   0,   1,   0,   0,  -5 ],
 #!   [   0,   0,   0,   1,   0,   0 ],
 #!   [   0,   0,   0,   0,   1,   3 ] ]
-cmat := Q * DiagMat( [ cmat3, cmat1, cmat1 ] );
+cmat := Q * DiagMat( [ cmat1, cmat1, cmat3 ] );
 #! <An unevaluated 10 x 10 matrix over an internal ring>
 n := NrRows( cmat );
 #! 10
