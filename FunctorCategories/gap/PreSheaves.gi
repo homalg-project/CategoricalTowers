@@ -3502,7 +3502,7 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentablesUsingSplits,
         [ IsAbelianCategory, IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( H, PSh, F )
-    local G, pi, cover, c, obj, nonliftable, mor_from_rep, values_of_mor_from_rep, c_new;
+    local G, pi, cover, c, obj, section, nonliftable, mor_from_rep, values_of_mor_from_rep, c_new;
     
     G := F;
     
@@ -3519,11 +3519,15 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentablesUsingSplits,
         ## checking for and computing the splitting below needs the Hom-structure on PSh,
         ## in particular, this operation cannot be used to compute the Hom-structure on PSh
         
-        if IsSplitEpimorphism( PSh, pi ) then
+        section := LiftOrFail( PSh, IdentityMorphism( PSh, Target( pi ) ), pi );
+        
+        if not ( section = fail ) then  ## pi is a split epimorphism
+            
             ## precompose the nonliftable morphism with the o-th component of a section of pi
             nonliftable := PreCompose( H,
                                    c[2], ## the nonliftable morphism
-                                   ValuesOnAllObjects( PreInverseForMorphisms( PSh, pi ) )[1 + c[3]] );
+                                   ValuesOnAllObjects( section )[1 + c[3]] );
+            
         else
             
             ## lift the nonliftable morphism along the o-th component pi:
