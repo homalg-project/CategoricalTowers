@@ -3609,12 +3609,12 @@ InstallMethod( EpimorphismFromSomeProjectiveObjectUsingSplits,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject,
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
+InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
+        [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ],
         
-  function ( PSh, F )
+  function ( PSh, covering_list, F )
     local C, H, defining_triple, nr_objs, objs, UC, iota, objsUC,
-          cover, F_on_objs, embs, source_diagrams, target_diagrams, sources, targets, sections, section;
+          F_on_objs, embs, cover, source_diagrams, target_diagrams, sources, targets, sections, section;
     
     C := Source( PSh );
     H := Target( PSh );
@@ -3630,15 +3630,13 @@ InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjec
     
     objsUC := List( [ 0 .. nr_objs - 1 ], o -> iota[2][1]( objs[1 + o] ) );
     
-    cover := DoctrineSpecificCoveringListOfRepresentables( H, PSh, F );
-    
     F_on_objs := ObjectDatum( PSh, F )[1];
     
     embs :=
       function( o )
         local cover_o, c_o, F_o, standard_global_morphisms_o;
         
-        cover_o := Filtered( cover, e -> e[3] = o );
+        cover_o := Filtered( covering_list, e -> e[3] = o );
         
         c_o := Length( cover_o );
         
@@ -3691,6 +3689,18 @@ InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjec
     SetIsSplitMonomorphism( section, true );
     
     return section;
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject,
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
+        
+  function ( PSh, F )
+    
+    return SectionByCoveringListOfRepresentables( PSh,
+                   DoctrineSpecificCoveringListOfRepresentables( Target( PSh ), PSh, F ),
+                   F );
     
 end );
 
