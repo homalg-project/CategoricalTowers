@@ -367,11 +367,11 @@ DeclareAttribute( "EpimorphismFromSomeProjectiveObjectUsingSplits",
 
 #! @Arguments F
 DeclareAttribute( "SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject",
-    IsObjectInPreSheafCategory );
+        IsObjectInPreSheafCategory );
 
 #! @Arguments F
 DeclareAttribute( "RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject",
-    IsObjectInPreSheafCategory );
+        IsObjectInPreSheafCategory );
 
 #! @Arguments F
 DeclareAttribute( "OptimizedCoYonedaLemmaOnObjects",
