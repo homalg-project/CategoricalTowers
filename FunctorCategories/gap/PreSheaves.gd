@@ -366,12 +366,16 @@ DeclareAttribute( "EpimorphismFromSomeProjectiveObjectUsingSplits",
         IsObjectInPreSheafCategory );
 
 #! @Arguments F
+DeclareOperation( "SectionByCoveringListOfRepresentables",
+        [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ] );
+
+#! @Arguments F
 DeclareAttribute( "SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject",
-    IsObjectInPreSheafCategory );
+        IsObjectInPreSheafCategory );
 
 #! @Arguments F
 DeclareAttribute( "RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject",
-    IsObjectInPreSheafCategory );
+        IsObjectInPreSheafCategory );
 
 #! @Arguments F
 DeclareAttribute( "OptimizedCoYonedaLemmaOnObjects",
