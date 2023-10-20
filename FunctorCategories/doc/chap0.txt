@@ -6,10 +6,10 @@
                             [1X Categories of functors [101X
   
   
-                                   2023.10-29
+                                   2023.10-30
   
   
-                                19 October 2023
+                                20 October 2023
   
   
                                 Mohamed Barakat
@@ -95,15 +95,16 @@
       2.1-14 DoctrineSpecificCoveringListOfRepresentables
       2.1-15 CoveringListOfRepresentablesUsingSplits
       2.1-16 EpimorphismFromSomeProjectiveObjectUsingSplits
-      2.1-17 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject
-      2.1-18 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject
-      2.1-19 OptimizedCoYonedaLemmaOnObjects
-      2.1-20 OptimizedCoYonedaLemmaOnMorphisms
-      2.1-21 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma
-      2.1-22 OptimizedCoYonedaLemmaCoequalizerPair
-      2.1-23 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion
-      2.1-24 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion
-      2.1-25 CategoryOfInternalCategories
+      2.1-17 SectionByCoveringListOfRepresentables
+      2.1-18 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject
+      2.1-19 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject
+      2.1-20 OptimizedCoYonedaLemmaOnObjects
+      2.1-21 OptimizedCoYonedaLemmaOnMorphisms
+      2.1-22 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma
+      2.1-23 OptimizedCoYonedaLemmaCoequalizerPair
+      2.1-24 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion
+      2.1-25 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion
+      2.1-26 CategoryOfInternalCategories
     2.2 [33X[0;0YAttributes[133X
       2.2-1 ValuesOnAllObjects
       2.2-2 UnderlyingCapTwoCategoryCell

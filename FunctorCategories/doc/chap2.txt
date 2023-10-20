@@ -100,39 +100,43 @@
   
   [33X[1;0Y[29X[2XEpimorphismFromSomeProjectiveObjectUsingSplits[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-17 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[101X
+  [1X2.1-17 SectionByCoveringListOfRepresentables[101X
+  
+  [33X[1;0Y[29X[2XSectionByCoveringListOfRepresentables[102X( [3XF[103X ) [32X operation[133X
+  
+  [1X2.1-18 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[101X
   
   [33X[1;0Y[29X[2XSectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-18 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[101X
+  [1X2.1-19 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[101X
   
   [33X[1;0Y[29X[2XRetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-19 OptimizedCoYonedaLemmaOnObjects[101X
+  [1X2.1-20 OptimizedCoYonedaLemmaOnObjects[101X
   
   [33X[1;0Y[29X[2XOptimizedCoYonedaLemmaOnObjects[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-20 OptimizedCoYonedaLemmaOnMorphisms[101X
+  [1X2.1-21 OptimizedCoYonedaLemmaOnMorphisms[101X
   
   [33X[1;0Y[29X[2XOptimizedCoYonedaLemmaOnMorphisms[102X( [3Xphi[103X ) [32X attribute[133X
   
-  [1X2.1-21 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[101X
+  [1X2.1-22 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[101X
   
   [33X[1;0Y[29X[2XCoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-22 OptimizedCoYonedaLemmaCoequalizerPair[101X
+  [1X2.1-23 OptimizedCoYonedaLemmaCoequalizerPair[101X
   
   [33X[1;0Y[29X[2XOptimizedCoYonedaLemmaCoequalizerPair[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-23 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion[101X
+  [1X2.1-24 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion[101X
   
   [33X[1;0Y[29X[2XApplyPreSheafToObjectInFiniteStrictCoproductCompletion[102X( [3XPSh[103X, [3Xpresheaf[103X, [3Xobj[103X ) [32X operation[133X
   
-  [1X2.1-24 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[101X
+  [1X2.1-25 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[101X
   
   [33X[1;0Y[29X[2XApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[102X( [3XPSh[103X, [3Xpresheaf[103X, [3Xmor[103X ) [32X operation[133X
   
-  [1X2.1-25 CategoryOfInternalCategories[101X
+  [1X2.1-26 CategoryOfInternalCategories[101X
   
   [33X[1;0Y[29X[2XCategoryOfInternalCategories[102X( [3XC[103X ) [32X attribute[133X
   
