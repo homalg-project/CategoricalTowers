@@ -468,6 +468,15 @@ DeclareOperation( "IntersectWithPreimagesWithGivenObjects",
 DeclareAttribute( "EmbeddingOfRelativePowerObject",
         IsCapCategoryMorphism );
 
+#! @Description
+#!  The input is a morphism <A>f</A>: $a \to b$.
+#!  The output is the fibration morphism $P_f: P_fA \rightarrow \times b$,
+#!  where is $P_fA$ the relative power object of <A>f</A>.
+#! @Arguments f
+#! @Returns a monomorphism $\mathrm{Hom}( P_fA, b )$
+DeclareAttribute( "RelativePowerObjectFibrationMorphism",
+        IsCapCategoryMorphism );
+
 ####################################
 ##
 #! @Section Relative truth morphisms

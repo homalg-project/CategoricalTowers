@@ -120,3 +120,41 @@ InstallMethod( EmbeddingOfRelativePowerObject,
     return EmbeddingOfRelativePowerObject( CapCategory( f ), f );
     
 end );
+
+##
+InstallOtherMethodForCompilerForCAP( RelativePowerObjectFibrationMorphism,
+        "for a category and a morphism",
+        [ IsCapCategory, IsCapCategoryMorphism ],
+        
+ function( C, f )
+    local A, B, e, pi_2;
+    
+    A := Source( f );
+    B := Target( f );
+    
+    ## e: P_fA ↪ PA × B
+    e := EmbeddingOfRelativePowerObject( C, f );
+    
+    ## π₂: PA × B → B
+    pi_2 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( C,
+                    [ PowerObject( A ), B ],
+                    2,
+                    Target( e ) );
+    
+    ## P_f: P_fA → B
+    return PreCompose( C,
+                   e,
+                   pi_2 );
+    
+end );
+
+##
+InstallMethod( RelativePowerObjectFibrationMorphism,
+        "for a morphism",
+        [ IsCapCategoryMorphism ],
+        
+ function( f )
+    
+    return RelativePowerObjectFibrationMorphism( CapCategory( f ), f );
+    
+end );

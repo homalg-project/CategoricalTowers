@@ -678,31 +678,16 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         ##
         AddPowerObject( Slice_over_B,
           function( cat, M )
-            local C, B, f, A, e, pi_2;
+            local C, f;
             
             C := AmbientCategory( cat );
-            
-            B := BaseObject( cat );
             
             ## f: A → B
             f := UnderlyingMorphism( M );
             
-            A := Source( f );
-            
-            ## e: P_f ↪ PA × B
-            e := EmbeddingOfRelativePowerObject( C, f );
-            
-            ## π₂: PA × B → PA
-            pi_2 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( C,
-                            [ PowerObject( A ), B ],
-                            2,
-                            Target( e ) );
-            
             ## P_f → B as an object of the slice category
             return ObjectConstructor( cat,
-                           PreCompose( C,
-                                   e,
-                                   pi_2 ) );
+                           RelativePowerObjectFibrationMorphism( C, f ) );
             
         end );
         
