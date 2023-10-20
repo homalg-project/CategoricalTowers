@@ -114,6 +114,14 @@ Display( Po1 );
 #! { 0,..., 5 } ⱶ[ 0, 0, 0, 0, 1, 1 ]→ { 0, 1 }
 #! 
 #! An object in the slice category given by the above data
+e_o1 := PowerObjectEvaluationMorphism( o1 );
+#! A morphism in the slice category given by: |10| → |4|
+IsWellDefined( e_o1 );
+#! true
+Display( e_o1 );
+#! { 0,..., 9 } ⱶ[ 0, 1, 0, 1, 2, 3, 0, 0, 1, 1 ]→ { 0,..., 3 }
+#! 
+#! A morphism in the slice category given by the above data
 sing_o1 :=  SingletonMorphism( o1 );
 #! A morphism in the slice category given by: |3| → |6|
 Display( sing_o1 );
@@ -132,6 +140,14 @@ Display( Po2 );
 #! { 0,..., 7 } ⱶ[ 0, 0, 0, 0, 1, 1, 1, 1 ]→ { 0, 1 }
 #! 
 #! An object in the slice category given by the above data
+e_o2 := PowerObjectEvaluationMorphism( o2 );
+#! A morphism in the slice category given by: |16| → |4|
+IsWellDefined( e_o2 );
+#! true
+Display( e_o2 );
+#! { 0,..., 15 } ⱶ[ 2, 3, 2, 3, 0, 1, 0, 1, 2, 2, 3, 3, 0, 0, 1, 1 ]→ { 0,..., 3 }
+#! 
+#! A morphism in the slice category given by the above data
 sing_o2 :=  SingletonMorphism( o2 );
 #! A morphism in the slice category given by: |4| → |8|
 Display( sing_o2 );

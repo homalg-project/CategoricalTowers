@@ -158,3 +158,139 @@ InstallMethod( RelativePowerObjectFibrationMorphism,
     return RelativePowerObjectFibrationMorphism( CapCategory( f ), f );
     
 end );
+
+##
+InstallOtherMethodForCompilerForCAP( RelativePowerObjectEvaluationMorphism,
+        "for a category and a morphism",
+        [ IsCapCategory, IsCapCategoryMorphism ],
+        
+ function( C, f ) # f: A → B
+    local A, PA, PAxA, B, BxA, AxB, beta, PAxB, P_f, emb, P_fA, P_fA_A, PAxB_A, PAxB_xA, e, eA, PA_BxA, PAx_BxA, alpha,
+          PA_AxB, PAx_AxB, PAx_beta, PAxA_B, PAxA_xB, gamma, Omega, epsilon, Omega_B, Omega_xB, epsilon_xB;
+    
+    A := Source( f );
+    
+    PA := PowerObject( C, A );
+    
+    PAxA := DirectProduct( C, [ PA, A ] );
+    
+    B := Target( f );
+    
+    BxA := DirectProduct( C, [ B, A ] );
+    
+    AxB := DirectProduct( C, [ A, B ] );
+    
+    ## β: B × A → A × B
+    beta := CartesianBraidingWithGivenDirectProducts( C,
+                    BxA,
+                    B,
+                    A,
+                    AxB );
+    
+    ## PA × B
+    PAxB := DirectProduct( C, [ PA, B ] );
+    
+    ## P_f: P_fA → B
+    P_f := RelativePowerObjectFibrationMorphism( C, f );
+    
+    ## P_fA (P_f_x_f) A ↪ P_fA x A
+    emb := FiberProductEmbeddingInDirectProduct( C,
+                   [ P_f, f ] );
+    
+    P_fA := Source( P_f );
+    
+    P_fA_A := [ P_fA, A ];
+    PAxB_A := [ PAxB, A ];
+    
+    PAxB_xA := DirectProduct( PAxB_A );
+    
+    ## P_fA ↪ PA × B
+    e := EmbeddingOfRelativePowerObject( C, f );
+    
+    ## e × 1_A: P_fA × A → (PA × B) × A
+    eA := DirectProductFunctorialWithGivenDirectProducts( C,
+                  DirectProduct( P_fA_A ),
+                  P_fA_A,
+                  [ e, IdentityMorphism( C, A ) ],
+                  PAxB_A,
+                  PAxB_xA );
+    
+    PA_BxA := [ PA, BxA ];
+    
+    PAx_BxA := DirectProduct( C, PA_BxA );
+    
+    ## α: (PA × B) × A → PA × (B × A)
+    alpha := CartesianAssociatorLeftToRightWithGivenDirectProducts( C,
+                     PAxB_xA,
+                     PA,
+                     B,
+                     A,
+                     PAx_BxA );
+    
+    PA_AxB := [ PA, AxB ];
+    
+    PAx_AxB := DirectProduct( C, PA_AxB );
+    
+    ## 1_PA × β: PA × (B × A) → PA × (A × B)
+    PAx_beta := DirectProductFunctorialWithGivenDirectProducts( C,
+                        PAx_BxA,
+                        PA_BxA,
+                        [ IdentityMorphism( C, PA ), beta ],
+                        PA_AxB,
+                        PAx_AxB );
+    
+    PAxA_B := [ PAxA, B ];
+    
+    PAxA_xB := DirectProduct( C, PAxA_B );
+    
+    ## γ: PA × (A × B) → (PA × A) × B
+    gamma := CartesianAssociatorRightToLeftWithGivenDirectProducts( C,
+                       PAx_AxB,
+                       PA,
+                       B,
+                       A,
+                       PAxA_xB );
+    
+    ## Ω
+    Omega := SubobjectClassifier( C );
+    
+    ## ϵ_A : PA × A → Ω
+    epsilon := CartesianEvaluationMorphismWithGivenSource( C,
+                       A,
+                       Omega,
+                       PAxA );
+    
+    Omega_B := [ Omega, B ];
+    
+    Omega_xB := DirectProduct( C, Omega_B );
+    
+    ## ϵ_A × 1_B: (PA × A) × B → Ω × B
+    epsilon_xB := DirectProductFunctorialWithGivenDirectProducts( C,
+                          PAxA_xB,
+                          PAxA_B,
+                          [ epsilon, IdentityMorphism( C, B ) ],
+                          Omega_B,
+                          Omega_xB );
+    
+    return PreComposeList( C,
+                   Source( emb ),
+                   [ emb,
+                     eA,
+                     alpha,
+                     PAx_beta,
+                     gamma,
+                     epsilon_xB ],
+                   Omega_xB );
+    
+end );
+
+##
+InstallMethod( RelativePowerObjectEvaluationMorphism,
+        "for a morphism",
+        [ IsCapCategoryMorphism ],
+        
+ function( f )
+    
+    return RelativePowerObjectEvaluationMorphism( CapCategory( f ), f );
+    
+end );

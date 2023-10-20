@@ -496,6 +496,15 @@ DeclareAttribute( "EmbeddingOfRelativePowerObject",
 DeclareAttribute( "RelativePowerObjectFibrationMorphism",
         IsCapCategoryMorphism );
 
+#! @Description
+#!  The input is a morphism <A>f</A>: $a \to b$.
+#!  The output is the evaluation morphism $P_fA \times a \rightarrow \Omega \times b$,
+#!  where $Pa$ = <C>PowerObject</C>($a$) and $P_fA$ is the relative power object of <A>f</A>.
+#! @Arguments f
+#! @Returns a monomorphism $\mathrm{Hom}( P_fA \times a, \Omega \times b )$
+DeclareAttribute( "RelativePowerObjectEvaluationMorphism",
+        IsCapCategoryMorphism );
+
 ####################################
 ##
 #! @Section Relative truth morphisms
