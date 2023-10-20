@@ -98,7 +98,7 @@ InstallOtherMethodForCompilerForCAP( EmbeddingOfRelativePowerObject,
                     PAxB );
     
     ## the powers objects of fibers of f: A → B:
-    ## e: P_f = { (T, b) |  T ⊆ f⁻¹(b) } ↪ PA × B, (T, b) ↦ (T, b)
+    ## e: P_fA = { (T, b) |  T ⊆ f⁻¹(b) } ↪ PA × B, (T, b) ↦ (T, b)
     e := EmbeddingOfEqualizer( C,
                  PAxB,
                  [ n, pi_1 ] );

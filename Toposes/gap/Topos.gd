@@ -461,10 +461,10 @@ DeclareOperation( "IntersectWithPreimagesWithGivenObjects",
 
 #! @Description
 #!  The input is a morphism <A>f</A>: $a \to b$.
-#!  The output is the embedding of the relative power object $P_f \hookrightarrow Pa \times b$,
+#!  The output is the embedding of the relative power object $P_fA \hookrightarrow Pa \times b$,
 #!  where $Pa$ = <C>PowerObject</C>($a$).
 #! @Arguments f
-#! @Returns a monomorphism $\mathrm{Hom}( P_f, Pa \times b )$
+#! @Returns a monomorphism $\mathrm{Hom}( P_fA, Pa \times b )$
 DeclareAttribute( "EmbeddingOfRelativePowerObject",
         IsCapCategoryMorphism );
 
