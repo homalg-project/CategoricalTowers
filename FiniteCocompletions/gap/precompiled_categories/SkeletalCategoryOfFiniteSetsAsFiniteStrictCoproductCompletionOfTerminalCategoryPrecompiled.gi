@@ -243,6 +243,22 @@ end
     , 100 );
     
     ##
+    AddIsLiftable( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    local hoisted_1_1, hoisted_2_1;
+    hoisted_2_1 := AsList( arg3_1 );
+    hoisted_1_1 := AsList( arg2_1 );
+    return ForAll( [ 0 .. Length( Source( arg2_1 ) ) - 1 ], function ( b_2 )
+            return hoisted_1_1[1 + b_2] in hoisted_2_1;
+        end );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddIsTerminal( cat,
         
 ########
@@ -292,6 +308,23 @@ function ( cat_1, arg2_1 )
     local deduped_1_1;
     deduped_1_1 := Length( arg2_1 );
     return IsBigInt( deduped_1_1 ) and deduped_1_1 >= 0;
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddLift( cat,
+        
+########
+function ( cat_1, alpha_1, beta_1 )
+    local hoisted_1_1, hoisted_2_1, deduped_3_1;
+    deduped_3_1 := Source( alpha_1 );
+    hoisted_2_1 := AsList( beta_1 );
+    hoisted_1_1 := AsList( alpha_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_3_1, Source( beta_1 ), AsList, List( [ 0 .. Length( deduped_3_1 ) - 1 ], function ( b_2 )
+              return -1 + BigInt( SafePosition( hoisted_2_1, hoisted_1_1[(1 + b_2)] ) );
+          end ) );
 end
 ########
         
