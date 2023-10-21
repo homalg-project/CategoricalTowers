@@ -30,7 +30,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             return """
                 function( input_arguments... )
                     
-                    return ObjectConstructor( cat, Pair( 0, [ ] ) );
+                    return ObjectConstructor( cat, Pair( BigInt( 0 ), [ ] ) );
                     
                 end
             """;
@@ -154,10 +154,10 @@ InstallMethod( FiniteStrictCoproductCompletion,
                   IsMorphismInFiniteStrictCoproductCompletion,
                   IsCapCategoryTwoCell,
                   CapJitDataTypeOfNTupleOf( 2,
-                          IsInt,
+                          IsBigInt,
                           CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( C ) ) ),
                   CapJitDataTypeOfNTupleOf( 2,
-                          CapJitDataTypeOfListOf( IsInt ),
+                          CapJitDataTypeOfListOf( IsBigInt ),
                           CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) ),
                   fail );
     
@@ -244,7 +244,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
         return #IsList( pair ) and
                #Length( pair ) = 2 and
-               IsInt( pair[1] ) and
+               IsBigInt( pair[1] ) and
                pair[1] >= 0 and
                #IsList( pair[2] ) and
                Length( pair[2] ) = pair[1] and
@@ -280,7 +280,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
         mors := pair_of_lists[2];
         
-        if not ForAll( map, a -> IsInt( a ) and a >= 0 ) then
+        if not ForAll( map, a -> IsBigInt( a ) and a >= 0 ) then
             return false;
         elif not s = Length( map ) then
             return false;
@@ -440,7 +440,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
         return ObjectConstructor( UC,
                        Pair( ## SkeletalFinSets code:
-                             0,
+                             BigInt( 0 ),
                              ## FiniteStrictCoproductCompletion code:
                              [ ] ) );
         
@@ -463,7 +463,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             pair := ObjectDatum( UC, object );
             
-            return pair[1] = 1 and ## SkeletalFinSets code
+            return pair[1] = BigInt( 1 ) and ## SkeletalFinSets code
                    IsTerminal( UnderlyingCategory( UC ), pair[2][1] ); ## FiniteStrictCoproductCompletion code
             
         end );
@@ -478,7 +478,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             return ObjectConstructor( UC,
                            Pair( ## SkeletalFinSets code
-                                 1,
+                                 BigInt( 1 ),
                                  ## FiniteStrictCoproductCompletion code
                                  [ TerminalObject( UnderlyingCategory( UC ) ) ] ) );
             
@@ -496,7 +496,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             pair := ObjectDatum( UC, object );
             
             ## SkeletalFinSets code:
-            map := ListWithIdenticalEntries( pair[1], 0 );
+            map := ListWithIdenticalEntries( pair[1], BigInt( 0 ) );
             
             ## FiniteStrictCoproductCompletion code:
             C := UnderlyingCategory( UC );
@@ -828,7 +828,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             emb := Filtered( [ 0 .. s - 1 ], x -> ForAll( [ 1 .. n - 1 ], j -> maps[j][1 + x] = maps[j + 1][1 + x] ) );
             
-            map := List( [ 0 .. t - 1 ], x -> -1 + SafePosition( emb, test_map[1 + x] ) );
+            map := List( [ 0 .. t - 1 ], x -> -1 + BigInt( SafePosition( emb, test_map[1 + x] ) ) );
             
             #% CAP_JIT_DROP_NEXT_STATEMENT
             Assert( 0, eq = Length( emb ) );
@@ -885,7 +885,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             object_func := function ( C, V, object )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
-                return ObjectConstructor( V, Pair( 1, [ object ] ) );
+                return ObjectConstructor( V, Pair( BigInt( 1 ), [ object ] ) );
                 
             end;
             
@@ -894,7 +894,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
                 return MorphismConstructor( V,
                     source,
-                    Pair( [ 0 ], [ morphism ] ),
+                    Pair( [ BigInt( 0 ) ], [ morphism ] ),
                     target );
                 
             end;
@@ -906,7 +906,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 datum := ObjectDatum( UC, object );
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
-                Assert( 0, Length( datum ) = 2 and IsInt( datum[1] ) and Length( datum[2] ) = datum[1] );
+                Assert( 0, Length( datum ) = 2 and IsBigInt( datum[1] ) and Length( datum[2] ) = datum[1] );
                 
                 return datum[2][1];
                 
@@ -917,7 +917,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
-                Assert( 0, pair_of_lists[1] = [ 0 ] and Length( pair_of_lists[2] ) = 1 );
+                Assert( 0, pair_of_lists[1] = [ BigInt( 0 ) ] and Length( pair_of_lists[2] ) = BigInt( 1 ) );
                 
                 morphism := pair_of_lists[2][1];
                 
@@ -1230,7 +1230,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
                 value := MorphismDatum( V, morphism )[1];
                 
-                number := SafeFirst( [ 0 .. t ^ s - 1 ], i -> Sum( List( homs{[ 1 .. 1 + i ]}, Length ) ) > value );
+                number := BigInt( SafeFirst( [ 0 .. t ^ s - 1 ], i -> Sum( List( homs{[ 1 .. 1 + i ]}, Length ) ) > value ) );
                 
                 ## number -> map
                 map := List( [ 0 .. s - 1 ], i -> RemInt( QuoInt( number, t^i ), t ) );
@@ -1294,10 +1294,10 @@ InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
     local embedding_on_objects, embedding_on_morphisms;
     
     embedding_on_objects :=
-      objC -> ObjectConstructor( UC, Pair( 1, [ objC ] ) );
+      objC -> ObjectConstructor( UC, Pair( BigInt( 1 ), [ objC ] ) );
     
     embedding_on_morphisms :=
-      { source, morC, target } -> MorphismConstructor( UC, source, Pair( [ 0 ], [ morC ] ), target );
+      { source, morC, target } -> MorphismConstructor( UC, source, Pair( [ BigInt( 0 ) ], [ morC ] ), target );
     
     return Triple( UnderlyingCategory( UC ),
                    Pair( embedding_on_objects, embedding_on_morphisms ),

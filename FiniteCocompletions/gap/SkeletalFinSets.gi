@@ -26,7 +26,7 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
           sFinSets;
     
     ##
-    object_datum_type := IsInt;
+    object_datum_type := IsBigInt;
     
     ##
     object_constructor := { sFinSets, cardinality } ->
@@ -37,7 +37,7 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
     object_datum := { sFinSets, M } -> Length( M );
     
     ##
-    morphism_datum_type := CapJitDataTypeOfListOf( IsInt );
+    morphism_datum_type := CapJitDataTypeOfListOf( IsBigInt );
     
     ##
     morphism_constructor :=

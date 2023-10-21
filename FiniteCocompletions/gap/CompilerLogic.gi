@@ -6,6 +6,14 @@
 
 CapJitAddLogicTemplate(
     rec(
+        variable_names := [ "number" ],
+        src_template := "BigInt( 0 ) * number",
+        dst_template := "BigInt( 0 )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
         variable_names := [ "statement" ],
         src_template := "statement and true",
         dst_template := "statement",
@@ -15,8 +23,24 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "length", "entry" ],
+        src_template := "List( [ 0 .. length - 1 ], x -> entry )",
+        dst_template := "ListWithIdenticalEntries( length, entry )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "length", "entry" ],
         src_template := "Length( ListWithIdenticalEntries( length, entry ) )",
         dst_template := "length",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "length", "entry", "func" ],
+        src_template := "List( ListWithIdenticalEntries( length, entry ), func )",
+        dst_template := "ListWithIdenticalEntries( length, func( entry ) )",
     )
 );
 
@@ -46,17 +70,9 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "x", "cat", "obj", "list" ],
-        src_template := "List( ListWithIdenticalEntries( x, CreateCapCategoryMorphismWithAttributes( cat, obj, obj, PairOfLists, list ) ), CapCategory )",
-        dst_template := "ListWithIdenticalEntries( x, cat )",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "x", "cat", "obj", "list" ],
-        src_template := "List( ListWithIdenticalEntries( x, CreateCapCategoryMorphismWithAttributes( cat, obj, obj, PairOfLists, list ) ), IsCapCategoryMorphism )",
-        dst_template := "ListWithIdenticalEntries( x, true )",
+        variable_names := [ "cat", "obj", "list" ],
+        src_template := "IsCapCategoryMorphism( CreateCapCategoryMorphismWithAttributes( cat, obj, obj, PairOfLists, list ) )",
+        dst_template := "true",
     )
 );
 
@@ -78,17 +94,25 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "number" ],
-        src_template := "Product( List( [ 0 .. number - 1 ], x -> 1 ) )",
-        dst_template := "1",
+        variable_names := [ "length" ],
+        src_template := "Product( ListWithIdenticalEntries( length, BigInt( 1 ) ) )",
+        dst_template := "BigInt( 1 )",
     )
 );
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "list" ],
-        src_template := "Sum( List( list, x -> 1 ) )",
-        dst_template := "Length( list )",
+        variable_names := [ "length" ],
+        src_template := "Sum( ListWithIdenticalEntries( length, BigInt( 1 ) ) )",
+        dst_template := "length",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "length" ],
+        src_template := "Sum( ListWithIdenticalEntries( length, BigInt( 0 ) ) )",
+        dst_template := "BigInt( 0 )",
     )
 );
 
@@ -103,8 +127,8 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "number1", "number2" ],
-        src_template := "List( Tuples( [ 0 .. number1 - 1 ], number2 ), x -> 1 )",
-        dst_template := "ListWithIdenticalEntries( number1 ^ number2, 1 )",
+        src_template := "List( Tuples( [ 0 .. number1 - 1 ], number2 ), x -> BigInt( 1 ) )",
+        dst_template := "ListWithIdenticalEntries( number1 ^ number2, BigInt( 1 ) )",
     )
 );
 
@@ -119,7 +143,7 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "number" ],
-        src_template := "number + 1 - 1",
+        src_template := "number + BigInt( 1 ) - 1",
         dst_template := "number",
     )
 );
@@ -143,7 +167,7 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "number1", "number2" ],
-        src_template := "Sum( ListWithIdenticalEntries( number1, 1 ){[ 1 .. number2 ]} )",
+        src_template := "Sum( ListWithIdenticalEntries( number1, BigInt( 1 ) ){[ 1 .. number2 ]} )",
         dst_template := "number2",
     )
 );

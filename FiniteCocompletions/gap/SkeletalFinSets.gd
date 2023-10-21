@@ -46,7 +46,7 @@ DeclareCategory( "IsMorphismInSkeletalFinSets",
 DeclareAttribute( "Length",
         IsObjectInSkeletalFinSets );
 
-CapJitAddTypeSignature( "Length", [ IsObjectInSkeletalFinSets ], IsInt );
+CapJitAddTypeSignature( "Length", [ IsObjectInSkeletalFinSets ], IsBigInt );
 
 #! @Description
 #!  The list associated to a skeletal finite set, i.e.,
@@ -56,7 +56,7 @@ CapJitAddTypeSignature( "Length", [ IsObjectInSkeletalFinSets ], IsInt );
 DeclareAttribute( "AsList",
         IsObjectInSkeletalFinSets );
 
-CapJitAddTypeSignature( "AsList", [ IsObjectInSkeletalFinSets ], CapJitDataTypeOfListOf( IsInt ) );
+CapJitAddTypeSignature( "AsList", [ IsObjectInSkeletalFinSets ], CapJitDataTypeOfListOf( IsBigInt ) );
 
 #! @Description
 #!  The lazy array of images between skeletal finite sets.
@@ -65,7 +65,7 @@ CapJitAddTypeSignature( "AsList", [ IsObjectInSkeletalFinSets ], CapJitDataTypeO
 DeclareAttribute( "AsList",
         IsMorphismInSkeletalFinSets );
 
-CapJitAddTypeSignature( "AsList", [ IsMorphismInSkeletalFinSets ], CapJitDataTypeOfListOf( IsInt ) );
+CapJitAddTypeSignature( "AsList", [ IsMorphismInSkeletalFinSets ], CapJitDataTypeOfListOf( IsBigInt ) );
 
 ####################################
 #

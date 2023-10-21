@@ -68,7 +68,7 @@ CapJitAddTypeSignature( "PairOfIntAndList", [ IsObjectInFiniteStrictProductCompl
     Assert( 0, IsFiniteStrictProductCompletion( input_types[1].category ) );
     
     return CapJitDataTypeOfNTupleOf( 2,
-                   IsInt,
+                   IsBigInt,
                    CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ) );
     
 end );
@@ -83,7 +83,7 @@ CapJitAddTypeSignature( "PairOfLists", [ IsMorphismInFiniteStrictProductCompleti
     Assert( 0, IsFiniteStrictProductCompletion( input_types[1].category ) );
     
     return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfListOf( IsInt ),
+                   CapJitDataTypeOfListOf( IsBigInt ),
                    CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) );
     
 end );

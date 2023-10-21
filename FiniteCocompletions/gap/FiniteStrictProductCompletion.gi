@@ -20,7 +20,7 @@ InstallMethod( FiniteStrictProductCompletion,
     ##
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              IsInt,
+              IsBigInt,
               CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( C ) ) );
     
     ##
@@ -38,7 +38,7 @@ InstallMethod( FiniteStrictProductCompletion,
     ##
     morphism_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              CapJitDataTypeOfListOf( IsInt ),
+              CapJitDataTypeOfListOf( IsBigInt ),
               CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) );
     
     ##
