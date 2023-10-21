@@ -14,16 +14,16 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "x", "entry" ],
-        src_template := "Length( ListWithIdenticalEntries( x, entry ) )",
-        dst_template := "x",
+        variable_names := [ "length", "entry" ],
+        src_template := "Length( ListWithIdenticalEntries( length, entry ) )",
+        dst_template := "length",
     )
 );
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "x", "entry", "func" ],
-        src_template := "ForAll( ListWithIdenticalEntries( x, entry ), func )",
+        variable_names := [ "length", "entry", "func" ],
+        src_template := "ForAll( ListWithIdenticalEntries( length, entry ), func )",
         dst_template := "func( entry )",
     )
 );
@@ -62,16 +62,16 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "x", "entry", "y" ],
-        src_template := "ListWithIdenticalEntries( x, entry )[y]",
+        variable_names := [ "length", "entry", "y" ],
+        src_template := "ListWithIdenticalEntries( length, entry )[y]",
         dst_template := "entry",
     )
 );
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "x" ],
-        src_template := "ForAll( [ 1 .. x ], i -> true )",
+        variable_names := [ "length" ],
+        src_template := "ForAll( [ 1 .. length ], i -> true )",
         dst_template := "true",
     )
 );
