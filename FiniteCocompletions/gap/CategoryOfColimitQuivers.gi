@@ -31,11 +31,11 @@ InstallOtherMethodForCompilerForCAP( CreateMorphismOfColimitQuivers,
         "for a category of quivers, two objects in a category of quivers, and a pair",
         [ IsCategoryOfColimitQuivers, IsObjectInCategoryOfColimitQuivers, IsList, IsObjectInCategoryOfColimitQuivers ],
         
-  function ( ColimitQuivers, source, images, range )
+  function ( ColimitQuivers, source, images, target )
     
     return CreateCapCategoryMorphismWithAttributes( ColimitQuivers,
                    source,
-                   range,
+                   target,
                    DefiningPairOfColimitQuiverMorphism, images );
     
 end );
@@ -168,7 +168,7 @@ InstallMethod( CategoryOfColimitQuivers,
     
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
-      function( ColimitQuivers, source, images, range )
+      function( ColimitQuivers, source, images, target )
         local ParallelPairsUC, PSh, UC, source_datum, range_datum, V, source_s_datum, A;
         
         ParallelPairsUC := ModelingCategory( ColimitQuivers );
@@ -178,7 +178,7 @@ InstallMethod( CategoryOfColimitQuivers,
         UC := Target( PSh );
         
         source_datum := ObjectDatum( ParallelPairsUC, source );
-        range_datum := ObjectDatum( ParallelPairsUC, range );
+        range_datum := ObjectDatum( ParallelPairsUC, target );
         
         V := MorphismConstructor( UC,
                      source_datum[1][1],
@@ -196,7 +196,7 @@ InstallMethod( CategoryOfColimitQuivers,
         return MorphismConstructor( ParallelPairsUC,
                        source,
                        Pair( V, A ),
-                       range );
+                       target );
         
     end;
     
@@ -271,7 +271,7 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
     
     AddObjectFunction( Y, objC -> ObjectConstructor( ColimitQuivers, Pair( [ objC ], [ ] ) ) );
     
-    AddMorphismFunction( Y, { source, morC, range } -> MorphismConstructor( ColimitQuivers, source, Pair( [ [ 0 ], [ morC ] ], [ ] ), range ) );
+    AddMorphismFunction( Y, { source, morC, target } -> MorphismConstructor( ColimitQuivers, source, Pair( [ [ 0 ], [ morC ] ], [ ] ), target ) );
     
     return Y;
     

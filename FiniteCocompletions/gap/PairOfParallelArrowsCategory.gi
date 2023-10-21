@@ -51,11 +51,11 @@ InstallMethod( PairOfParallelArrowsCategory,
     
     ##
     morphism_constructor :=
-      function( ParallelPairs, source, pair_of_morphisms, range )
+      function( ParallelPairs, source, pair_of_morphisms, target )
         
         return CreateCapCategoryMorphismWithAttributes( ParallelPairs,
                        source,
-                       range,
+                       target,
                        DefiningPairOfMorphismBetweenParallelPairs, pair_of_morphisms );
         
     end;
@@ -107,7 +107,7 @@ InstallMethod( PairOfParallelArrowsCategory,
     
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
-      function( ParallelPairs, source, pair, range )
+      function( ParallelPairs, source, pair, target )
         local PSh, V, A;
         
         PSh := ModelingCategory( ParallelPairs );
@@ -118,7 +118,7 @@ InstallMethod( PairOfParallelArrowsCategory,
         return MorphismConstructor( PSh,
                        source,
                        [ V, A ], ## convert from pair to list for CompilerForCAP
-                       range );
+                       target );
         
     end;
     

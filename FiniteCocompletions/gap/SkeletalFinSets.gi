@@ -41,11 +41,11 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
     
     ##
     morphism_constructor :=
-      function( sFinSets, source, images, range )
+      function( sFinSets, source, images, target )
         
         return CreateCapCategoryMorphismWithAttributes( sFinSets,
                    source,
-                   range,
+                   target,
                    AsList, images );
         
     end;
@@ -97,8 +97,8 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
     
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
-      function( sFinSets, source, map, range )
-        local DI, UT, T, source_UT, range_UT;
+      function( sFinSets, source, map, target )
+        local DI, UT, T, source_UT, target_UT;
         
         DI := ModelingCategory( sFinSets );
         
@@ -107,7 +107,7 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
         T := UnderlyingCategory( UT );
         
         source_UT := ObjectDatum( DI, source );
-        range_UT := ObjectDatum( DI, range );
+        target_UT := ObjectDatum( DI, target );
         
         return MorphismConstructor( DI,
                        source,
@@ -116,8 +116,8 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
                                Pair( map,
                                      ListWithIdenticalEntries( ObjectDatum( UT, source_UT )[1],
                                              IdentityMorphism( T, TerminalObject( T ) ) ) ),
-                               range_UT ),
-                       range );
+                               target_UT ),
+                       target );
         
     end;
     

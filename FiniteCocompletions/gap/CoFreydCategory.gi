@@ -18,7 +18,7 @@ InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
       objC -> ObjectConstructor( KC, UniversalMorphismIntoZeroObject( C, objC ) );
     
     embedding_on_morphisms :=
-      { source, morC, range } -> MorphismConstructor( KC, source, morC, range );
+      { source, morC, target } -> MorphismConstructor( KC, source, morC, target );
     
     return Triple( C,
                    Pair( embedding_on_objects, embedding_on_morphisms ),
@@ -73,8 +73,8 @@ InstallMethodForCompilerForCAP( ExtendFunctorToCoFreydCategoryData,
     end;
 
     extended_functor_on_morphisms :=
-      function( source, morKC, range )
-        local S_corel, T_corel, functor_on_source_of_S_corel, functor_on_source_of_T_corel, source_diagram, range_diagram, functor_on_mor;
+      function( source, morKC, target )
+        local S_corel, T_corel, functor_on_source_of_S_corel, functor_on_source_of_T_corel, source_diagram, target_diagram, functor_on_mor;
         
         S_corel := ObjectDatum( KC, Source( morKC ) );
         T_corel := ObjectDatum( KC, Target( morKC ) );
@@ -83,14 +83,14 @@ InstallMethodForCompilerForCAP( ExtendFunctorToCoFreydCategoryData,
         functor_on_source_of_T_corel := functor_on_objects( Source( T_corel ) );
         
         source_diagram := functor_on_morphisms( functor_on_source_of_S_corel, S_corel, functor_on_objects( Target( S_corel ) ) );
-        range_diagram := functor_on_morphisms( functor_on_source_of_T_corel, T_corel, functor_on_objects( Target( T_corel ) ) );
+        target_diagram := functor_on_morphisms( functor_on_source_of_T_corel, T_corel, functor_on_objects( Target( T_corel ) ) );
         
         if not IsEqualForObjects( additive_category_with_kernels, source, KernelObject( additive_category_with_kernels, source_diagram ) ) then
             Error( "source and KernelObject( source_diagram ) do not coincide\n" );
         fi;
         
-        if not IsEqualForObjects( additive_category_with_kernels, range, KernelObject( additive_category_with_kernels, range_diagram ) ) then
-            Error( "range and KernelObject( range_diagram ) do not coincide\n" );
+        if not IsEqualForObjects( additive_category_with_kernels, target, KernelObject( additive_category_with_kernels, target_diagram ) ) then
+            Error( "target and KernelObject( target_diagram ) do not coincide\n" );
         fi;
         
         functor_on_mor := functor_on_morphisms( functor_on_source_of_S_corel, MorphismDatum( KC, morKC ), functor_on_source_of_T_corel );
@@ -99,8 +99,8 @@ InstallMethodForCompilerForCAP( ExtendFunctorToCoFreydCategoryData,
                        source,
                        source_diagram,
                        functor_on_mor,
-                       range_diagram,
-                       range );
+                       target_diagram,
+                       target );
         
     end;
     

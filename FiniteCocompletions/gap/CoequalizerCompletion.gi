@@ -51,11 +51,11 @@ InstallMethod( CoequalizerCompletion,
     
     ##
     morphism_constructor :=
-      function( CoequalizerCompletion, source, pair_of_morphisms, range )
+      function( CoequalizerCompletion, source, pair_of_morphisms, target )
         
         return CreateCapCategoryMorphismWithAttributes( CoequalizerCompletion,
                        source,
-                       range,
+                       target,
                        DefiningPairOfMorphismBetweenCoequalizerPairs, pair_of_morphisms );
         
     end;
@@ -86,27 +86,27 @@ InstallMethod( CoequalizerCompletion,
               : FinalizeCategory := false );
     
     AddCoequalizer( CoequalizerPairs,
-      function( cat, range, parallel_morphisms )
-        local n, ParallelPairs, C, range_VAst, range_V, range_A, range_s, range_t,
+      function( cat, target, parallel_morphisms )
+        local n, ParallelPairs, C, target_VAst, target_V, target_A, target_s, target_t,
               parallel_morphisms_V, diagram_nS, nS, S, id_S,
               diagram_V, diagram_A, V, A, ones, mors, s, t;
         
         n := Length( parallel_morphisms );
         
         if n = 0 then
-            return range;
+            return target;
         fi;
         
         ParallelPairs := UnderlyingCategory( cat );
         
         C := UnderlyingCategory( ParallelPairs );
         
-        range_VAst := ObjectDatum( ParallelPairs, ObjectDatum( cat, range ) );
+        target_VAst := ObjectDatum( ParallelPairs, ObjectDatum( cat, target ) );
         
-        range_V := range_VAst[1][1];
-        range_A := range_VAst[1][2];
-        range_s := range_VAst[2][1];
-        range_t := range_VAst[2][2];
+        target_V := target_VAst[1][1];
+        target_A := target_VAst[1][2];
+        target_s := target_VAst[2][1];
+        target_t := target_VAst[2][2];
         
         parallel_morphisms_V := List( parallel_morphisms, mor ->
                                       MorphismDatum( ParallelPairs,
@@ -118,8 +118,8 @@ InstallMethod( CoequalizerCompletion,
         S := diagram_nS[1];
         id_S := IdentityMorphism( C, S );
         
-        diagram_V := [ range_V, S ];
-        diagram_A := [ range_A, nS ];
+        diagram_V := [ target_V, S ];
+        diagram_A := [ target_A, nS ];
         
         V := Coproduct( C, diagram_V );
         A := Coproduct( C, diagram_A );
@@ -132,22 +132,22 @@ InstallMethod( CoequalizerCompletion,
         
         mors := UniversalMorphismFromCoproductWithGivenCoproduct( C,
                         diagram_nS,
-                        range_V,
+                        target_V,
                         parallel_morphisms_V,
                         nS );
         
         s := CoproductFunctorialWithGivenCoproducts( C,
                      A,
                      diagram_A,
-                     [ range_s, ones ],
+                     [ target_s, ones ],
                      diagram_V,
                      V );
         
         t := PreCompose( C,
                      UniversalMorphismFromCoproductWithGivenCoproduct( C,
                              diagram_A,
-                             range_V,
-                             [ range_t, mors ],
+                             target_V,
+                             [ target_t, mors ],
                              A ),
                      InjectionOfCofactorOfCoproductWithGivenCoproduct( C,
                              diagram_V,
@@ -161,24 +161,24 @@ InstallMethod( CoequalizerCompletion,
     end );
     
     AddProjectionOntoCoequalizerWithGivenCoequalizer( CoequalizerPairs,
-      function( cat, range, parallel_morphisms, coequalizer )
-        local n, ParallelPairs, C, range_VAst, range_V, range_A, parallel_morphisms_V, diagram_nS, nS, S,
+      function( cat, target, parallel_morphisms, coequalizer )
+        local n, ParallelPairs, C, target_VAst, target_V, target_A, parallel_morphisms_V, diagram_nS, nS, S,
               diagram_V, diagram_A, coequalizer_VAst, coequalizer_V, coequalizer_A, V, A;
         
         n := Length( parallel_morphisms );
         
         if n = 0 then
-            return IdentityMorphism( cat, range );
+            return IdentityMorphism( cat, target );
         fi;
         
         ParallelPairs := UnderlyingCategory( cat );
         
         C := UnderlyingCategory( ParallelPairs );
         
-        range_VAst := ObjectDatum( ParallelPairs, ObjectDatum( cat, range ) );
+        target_VAst := ObjectDatum( ParallelPairs, ObjectDatum( cat, target ) );
         
-        range_V := range_VAst[1][1];
-        range_A := range_VAst[1][2];
+        target_V := target_VAst[1][1];
+        target_A := target_VAst[1][2];
         
         parallel_morphisms_V := List( parallel_morphisms, mor ->
                                       MorphismDatum( ParallelPairs,
@@ -189,8 +189,8 @@ InstallMethod( CoequalizerCompletion,
         
         S := diagram_nS[1];
         
-        diagram_V := [ range_V, S ];
-        diagram_A := [ range_A, nS ];
+        diagram_V := [ target_V, S ];
+        diagram_A := [ target_A, nS ];
         
         coequalizer_VAst := ObjectDatum( ParallelPairs, ObjectDatum( cat, coequalizer ) );
         
@@ -208,9 +208,9 @@ InstallMethod( CoequalizerCompletion,
                      coequalizer_A );
         
         return MorphismConstructor( cat,
-                       range,
+                       target,
                        MorphismConstructor( ParallelPairs,
-                               ObjectDatum( cat, range ),
+                               ObjectDatum( cat, target ),
                                Pair( V, A ),
                                ObjectDatum( cat, coequalizer ) ),
                        coequalizer );
@@ -251,7 +251,7 @@ InstallMethod( CoequalizerCompletion,
     
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
-      function( CoequalizerCompletion, source, pair, range )
+      function( CoequalizerCompletion, source, pair, target )
         local CoequalizerPairs, ParallelPairs;
         
         CoequalizerPairs := ModelingCategory( CoequalizerCompletion );
@@ -263,8 +263,8 @@ InstallMethod( CoequalizerCompletion,
                        MorphismConstructor( ParallelPairs,
                                ObjectDatum( CoequalizerPairs, source ),
                                pair,
-                               ObjectDatum( CoequalizerPairs, range ) ),
-                       range );
+                               ObjectDatum( CoequalizerPairs, target ) ),
+                       target );
         
     end;
     

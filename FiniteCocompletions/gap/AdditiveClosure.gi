@@ -31,7 +31,7 @@ InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
       objC -> ObjectConstructor( SC, [ objC ] );
     
     embedding_on_morphisms :=
-      { source, morC, range } -> MorphismConstructor( SC, source, [ [ morC ] ], range );
+      { source, morC, target } -> MorphismConstructor( SC, source, [ [ morC ] ], target );
     
     return Triple( UnderlyingCategory( SC ),
                    Pair( embedding_on_objects, embedding_on_morphisms ),
@@ -86,8 +86,8 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionDa
     end;
 
     extended_functor_on_morphisms :=
-      function( source, morSC, range )
-        local S, T, s, t, source_diagram, range_diagram, listlist, functor_on_mor;
+      function( source, morSC, target )
+        local S, T, s, t, source_diagram, target_diagram, listlist, functor_on_mor;
         
         S := ObjectDatum( SC, Source( morSC ) );
         T := ObjectDatum( SC, Target( morSC ) );
@@ -96,14 +96,14 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionDa
         t := Length( T );
         
         source_diagram := List( [ 1 .. s ], i -> functor_on_objects( S[i] ) );
-        range_diagram := List( [ 1 .. t ], j -> functor_on_objects( T[j] ) );
+        target_diagram := List( [ 1 .. t ], j -> functor_on_objects( T[j] ) );
         
         if not IsEqualForObjects( strict_additive_category, source, DirectSum( strict_additive_category, source_diagram ) ) then
             Error( "source and DirectSum( source_diagram ) do not coincide\n" );
         fi;
         
-        if not IsEqualForObjects( strict_additive_category, range, DirectSum( strict_additive_category, range_diagram ) ) then
-            Error( "range and DirectSum( range_diagram ) do not coincide\n" );
+        if not IsEqualForObjects( strict_additive_category, target, DirectSum( strict_additive_category, target_diagram ) ) then
+            Error( "target and DirectSum( target_diagram ) do not coincide\n" );
         fi;
         
         listlist := MorphismDatum( SC, morSC );
@@ -111,14 +111,14 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionDa
         functor_on_mor :=
           List( [ 1 .. s ], i ->
                 List( [ 1 .. t ], j ->
-                      functor_on_morphisms( source_diagram[i], listlist[i][j], range_diagram[j] ) ) );
+                      functor_on_morphisms( source_diagram[i], listlist[i][j], target_diagram[j] ) ) );
         
         return MorphismBetweenDirectSumsWithGivenDirectSums( strict_additive_category,
                        source,
                        source_diagram,
                        functor_on_mor,
-                       range_diagram,
-                       range );
+                       target_diagram,
+                       target );
         
     end;
     
@@ -187,7 +187,7 @@ InstallOtherMethodForCompilerForCAP( TensorizeObjectWithMorphismInRangeCategoryO
           IsAdditiveClosureCategory and HasRangeCategoryOfHomomorphismStructure,
           IsCapCategoryObject, IsCapCategoryObject, IsCategoryOfRowsMorphism, IsCapCategoryObject ],
         
-  function( H, UL, source, a, nu, range )
+  function( H, UL, source, a, nu, target )
     local L, id_a, s, t, nu_matrix;
     
     L := UnderlyingCategory( UL );
@@ -213,7 +213,7 @@ InstallOtherMethodForCompilerForCAP( TensorizeObjectWithMorphismInRangeCategoryO
                    List( [ 1 .. s ], i ->
                          List( [ 1 .. t ], j ->
                                MultiplyWithElementOfCommutativeRingForMorphisms( L, nu_matrix[i, j], id_a ) ) ),
-                   range );
+                   target );
     
 end );
 
@@ -224,7 +224,7 @@ InstallOtherMethodForCompilerForCAP( TensorizeMorphismWithObjectInRangeCategoryO
           IsAdditiveClosureCategory and HasRangeCategoryOfHomomorphismStructure,
           IsCapCategoryObject, IsCapCategoryMorphism, IsCategoryOfRowsObject, IsCapCategoryObject ],
         
-  function( H, UL, source, phi, h, range )
+  function( H, UL, source, phi, h, target )
     local l, Uphi;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
@@ -248,6 +248,6 @@ InstallOtherMethodForCompilerForCAP( TensorizeMorphismWithObjectInRangeCategoryO
                    ListWithIdenticalEntries( l, Source( Uphi ) ),
                    ListWithIdenticalEntries( l, Uphi ),
                    ListWithIdenticalEntries( l, Target( Uphi ) ),
-                   range );
+                   target );
     
 end );
