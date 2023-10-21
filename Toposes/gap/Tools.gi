@@ -4,6 +4,28 @@
 # Implementations
 #
 
+##
+InstallGlobalFunction( AddMorphismsOfExternalHomForReinterpretationOfCategory,
+  function( reinterpretation_of_category )
+    
+    AddMorphismsOfExternalHom( reinterpretation_of_category,
+      function( reinterpretation_category, source, target )
+        local morphisms;
+        
+        morphisms := MorphismsOfExternalHom( ModelingCategory( reinterpretation_category ),
+                             ModelingObject( reinterpretation_category, source ),
+                             ModelingObject( reinterpretation_category, target ) );
+        
+        return List( morphisms, mor ->
+                     ReinterpretationOfMorphism( reinterpretation_category,
+                             source,
+                             mor,
+                             target ) );
+        
+    end );
+    
+end );
+
 if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
 
 ##

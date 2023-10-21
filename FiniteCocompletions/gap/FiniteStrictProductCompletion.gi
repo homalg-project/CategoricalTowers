@@ -184,6 +184,12 @@ InstallMethod( FiniteStrictProductCompletion,
                    only_primitive_operations := true )
               : FinalizeCategory := false );
     
+    if CanCompute( opUopC, "MorphismsOfExternalHom" ) then
+        
+        AddMorphismsOfExternalHomForReinterpretationOfCategory( PC );
+        
+    fi;
+    
     SetUnderlyingCategory( PC, C );
     
     Append( PC!.compiler_hints.category_attribute_names,
