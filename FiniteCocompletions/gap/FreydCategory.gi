@@ -18,7 +18,7 @@ InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
       objC -> ObjectConstructor( FC, UniversalMorphismFromZeroObject( C, objC ) );
     
     embedding_on_morphisms :=
-      { source, morC, range } -> MorphismConstructor( FC, source, morC, range );
+      { source, morC, target } -> MorphismConstructor( FC, source, morC, target );
     
     return Triple( C,
                    Pair( embedding_on_objects, embedding_on_morphisms ),
@@ -73,34 +73,34 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFreydCategoryData,
     end;
 
     extended_functor_on_morphisms :=
-      function( source, morFC, range )
-        local S_rel, T_rel, functor_on_range_of_S_rel, functor_on_range_of_T_rel, source_diagram, range_diagram, functor_on_mor;
+      function( source, morFC, target )
+        local S_rel, T_rel, functor_on_target_of_S_rel, functor_on_target_of_T_rel, source_diagram, target_diagram, functor_on_mor;
         
         S_rel := ObjectDatum( FC, Source( morFC ) );
         T_rel := ObjectDatum( FC, Target( morFC ) );
         
-        functor_on_range_of_S_rel := functor_on_objects( Target( S_rel ) );
-        functor_on_range_of_T_rel := functor_on_objects( Target( T_rel ) );
+        functor_on_target_of_S_rel := functor_on_objects( Target( S_rel ) );
+        functor_on_target_of_T_rel := functor_on_objects( Target( T_rel ) );
         
-        source_diagram := functor_on_morphisms( functor_on_objects( Source( S_rel ) ), S_rel, functor_on_range_of_S_rel );
-        range_diagram := functor_on_morphisms( functor_on_objects( Source( T_rel ) ), T_rel, functor_on_range_of_T_rel );
+        source_diagram := functor_on_morphisms( functor_on_objects( Source( S_rel ) ), S_rel, functor_on_target_of_S_rel );
+        target_diagram := functor_on_morphisms( functor_on_objects( Source( T_rel ) ), T_rel, functor_on_target_of_T_rel );
         
         if not IsEqualForObjects( additive_category_with_cokernels, source, CokernelObject( additive_category_with_cokernels, source_diagram ) ) then
             Error( "source and CokernelObject( source_diagram ) do not coincide\n" );
         fi;
         
-        if not IsEqualForObjects( additive_category_with_cokernels, range, CokernelObject( additive_category_with_cokernels, range_diagram ) ) then
-            Error( "range and CokernelObject( range_diagram ) do not coincide\n" );
+        if not IsEqualForObjects( additive_category_with_cokernels, target, CokernelObject( additive_category_with_cokernels, target_diagram ) ) then
+            Error( "target and CokernelObject( target_diagram ) do not coincide\n" );
         fi;
         
-        functor_on_mor := functor_on_morphisms( functor_on_range_of_S_rel, MorphismDatum( FC, morFC ), functor_on_range_of_T_rel );
+        functor_on_mor := functor_on_morphisms( functor_on_target_of_S_rel, MorphismDatum( FC, morFC ), functor_on_target_of_T_rel );
         
         return CokernelObjectFunctorialWithGivenCokernelObjects( additive_category_with_cokernels,
                        source,
                        source_diagram,
                        functor_on_mor,
-                       range_diagram,
-                       range );
+                       target_diagram,
+                       target );
         
     end;
     

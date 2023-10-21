@@ -16,7 +16,7 @@ AddDerivationToCAP( IsHomSetInhabited,
                     
   function( cat, S, T )
     
-    return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, DirectProduct( cat, S, T ), S );
+    return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, DirectProduct( cat, [ S, T ] ), S );
     
 end : CategoryFilter := IsCartesianProset );
 

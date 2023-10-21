@@ -27,12 +27,20 @@ InstallMethod( FreeDistributiveCategoryWithStrictProductAndCoproducts,
                    category_object_filter := IsObjectInFreeDistributiveCategoryWithStrictProductAndCoproducts and IsWrapperCapCategoryObject,
                    category_morphism_filter := IsMorphismInFreeDistributiveCategoryWithStrictProductAndCoproducts and IsWrapperCapCategoryMorphism,
                    only_primitive_operations := true )
-              : FinalizeCategory := true );
+              : FinalizeCategory := false );
+    
+    if CanCompute( UPC, "MorphismsOfExternalHom" ) then
+        
+        AddMorphismsOfExternalHomForReinterpretationOfCategory( DC );
+        
+    fi;
     
     SetUnderlyingCategory( DC, C );
     
     Append( DC!.compiler_hints.category_attribute_names,
             [ "UnderlyingCategory" ] );
+    
+    Finalize( DC );
     
     return DC;
     

@@ -30,7 +30,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             return """
                 function( input_arguments... )
                     
-                    return ObjectConstructor( cat, Pair( 0, [ ] ) );
+                    return ObjectConstructor( cat, Pair( BigInt( 0 ), [ ] ) );
                     
                 end
             """;
@@ -129,6 +129,14 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     end );
     
+    ##
+    AddMorphismsOfExternalHom( UI,
+      function( UI, object1, object2 )
+        
+        return [ IdentityMorphism( UI, object1 ) ];
+        
+    end );
+    
     Finalize( UI );
     
     Assert( 0, [ ] = CheckConstructivenessOfCategory( UI, "IsEquippedWithHomomorphismStructure" ) );
@@ -154,10 +162,10 @@ InstallMethod( FiniteStrictCoproductCompletion,
                   IsMorphismInFiniteStrictCoproductCompletion,
                   IsCapCategoryTwoCell,
                   CapJitDataTypeOfNTupleOf( 2,
-                          IsInt,
+                          IsBigInt,
                           CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( C ) ) ),
                   CapJitDataTypeOfNTupleOf( 2,
-                          CapJitDataTypeOfListOf( IsInt ),
+                          CapJitDataTypeOfListOf( IsBigInt ),
                           CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) ),
                   fail );
     
@@ -244,7 +252,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
         return #IsList( pair ) and
                #Length( pair ) = 2 and
-               IsInt( pair[1] ) and
+               IsBigInt( pair[1] ) and
                pair[1] >= 0 and
                #IsList( pair[2] ) and
                Length( pair[2] ) = pair[1] and
@@ -280,7 +288,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
         mors := pair_of_lists[2];
         
-        if not ForAll( map, a -> IsInt( a ) and a >= 0 ) then
+        if not ForAll( map, a -> IsBigInt( a ) and a >= 0 ) then
             return false;
         elif not s = Length( map ) then
             return false;
@@ -440,7 +448,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
         return ObjectConstructor( UC,
                        Pair( ## SkeletalFinSets code:
-                             0,
+                             BigInt( 0 ),
                              ## FiniteStrictCoproductCompletion code:
                              [ ] ) );
         
@@ -463,7 +471,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             pair := ObjectDatum( UC, object );
             
-            return pair[1] = 1 and ## SkeletalFinSets code
+            return pair[1] = BigInt( 1 ) and ## SkeletalFinSets code
                    IsTerminal( UnderlyingCategory( UC ), pair[2][1] ); ## FiniteStrictCoproductCompletion code
             
         end );
@@ -478,7 +486,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             return ObjectConstructor( UC,
                            Pair( ## SkeletalFinSets code
-                                 1,
+                                 BigInt( 1 ),
                                  ## FiniteStrictCoproductCompletion code
                                  [ TerminalObject( UnderlyingCategory( UC ) ) ] ) );
             
@@ -496,7 +504,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             pair := ObjectDatum( UC, object );
             
             ## SkeletalFinSets code:
-            map := ListWithIdenticalEntries( pair[1], 0 );
+            map := ListWithIdenticalEntries( pair[1], BigInt( 0 ) );
             
             ## FiniteStrictCoproductCompletion code:
             C := UnderlyingCategory( UC );
@@ -828,7 +836,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             emb := Filtered( [ 0 .. s - 1 ], x -> ForAll( [ 1 .. n - 1 ], j -> maps[j][1 + x] = maps[j + 1][1 + x] ) );
             
-            map := List( [ 0 .. t - 1 ], x -> -1 + SafePosition( emb, test_map[1 + x] ) );
+            map := List( [ 0 .. t - 1 ], x -> -1 + BigInt( SafePosition( emb, test_map[1 + x] ) ) );
             
             #% CAP_JIT_DROP_NEXT_STATEMENT
             Assert( 0, eq = Length( emb ) );
@@ -885,18 +893,17 @@ InstallMethod( FiniteStrictCoproductCompletion,
             object_func := function ( C, V, object )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
-                return ObjectConstructor( V, Pair( 1, [ object ] ) );
+                return ObjectConstructor( V, Pair( BigInt( 1 ), [ object ] ) );
                 
             end;
             
-            morphism_func := function ( C, V, source, morphism, range )
+            morphism_func := function ( C, V, source, morphism, target )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
                 return MorphismConstructor( V,
                     source,
-                    Pair( [ 0 ], [ morphism ] ),
-                    range
-                );
+                    Pair( [ BigInt( 0 ) ], [ morphism ] ),
+                    target );
                 
             end;
             
@@ -907,18 +914,18 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 datum := ObjectDatum( UC, object );
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
-                Assert( 0, Length( datum ) = 2 and IsInt( datum[1] ) and Length( datum[2] ) = datum[1] );
+                Assert( 0, Length( datum ) = 2 and IsBigInt( datum[1] ) and Length( datum[2] ) = datum[1] );
                 
                 return datum[2][1];
                 
             end;
             
-            morphism_func_inverse := function ( C, V, source, pair_of_lists, range )
+            morphism_func_inverse := function ( C, V, source, pair_of_lists, target )
                 local morphism;
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
-                Assert( 0, pair_of_lists[1] = [ 0 ] and Length( pair_of_lists[2] ) = 1 );
+                Assert( 0, pair_of_lists[1] = [ BigInt( 0 ) ] and Length( pair_of_lists[2] ) = BigInt( 1 ) );
                 
                 morphism := pair_of_lists[2][1];
                 
@@ -929,7 +936,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 Assert( 0, IsEqualForObjects( source, Source( pair_of_lists[2][1] ) ) );
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
-                Assert( 0, IsEqualForObjects( range, Target( pair_of_lists[2][1] ) ) );
+                Assert( 0, IsEqualForObjects( target, Target( pair_of_lists[2][1] ) ) );
                 
                 return pair_of_lists[2][1];
                 
@@ -979,7 +986,9 @@ InstallMethod( FiniteStrictCoproductCompletion,
             LS := pairS[2];
             LT := pairT[2];
             
-            maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
+            maps := List( [ 0 .. t ^ s - 1 ], m ->
+                          List( [ 0 .. s - 1 ], i ->
+                                RemInt( QuoInt( m, t ^ i ), t ) ) );
             
             return Coproduct( V,
                            List( maps, map ->
@@ -992,7 +1001,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
         ##
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( UC,
-          function( UC, distinguished_object, phi, range )
+          function( UC, distinguished_object, phi, target )
             local C, V, pairS, pairT, s, t, maps, LS, LT, Homs, homs, pair_of_lists, map, mor, number, intros, intro;
             
             C := UnderlyingCategory( UC );
@@ -1004,7 +1013,9 @@ InstallMethod( FiniteStrictCoproductCompletion,
             s := pairS[1];
             t := pairT[1];
             
-            maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
+            maps := List( [ 0 .. t ^ s - 1 ], m ->
+                          List( [ 0 .. s - 1 ], i ->
+                                RemInt( QuoInt( m, t ^ i ), t ) ) );
             
             LS := pairS[2];
             LT := pairT[2];
@@ -1041,7 +1052,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                            InjectionOfCofactorOfCoproductWithGivenCoproduct( V,
                                    homs,
                                    1 + number,
-                                   range ) );
+                                   target ) );
             
         end );
         
@@ -1049,10 +1060,10 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             ##
             AddHomomorphismStructureOnMorphismsWithGivenObjects( UC,
-              function ( UC, s, alpha, gamma, r )
-                local C, UV, V, source_alpha, range_alpha, source_gamma, range_gamma,
-                      source_alpha_length, range_alpha_length, source_gamma_length, range_gamma_length,
-                      Hom_range_alpha_source_gamma, Hom_source_alpha_range_gamma,
+              function ( UC, source, alpha, gamma, target )
+                local C, UV, V, source_alpha, target_alpha, source_gamma, target_gamma,
+                      source_alpha_length, target_alpha_length, source_gamma_length, target_gamma_length,
+                      Hom_target_alpha_source_gamma, Hom_source_alpha_target_gamma,
                       alpha_datum, gamma_datum, f, h, alpha_mor, gamma_mor, cmp_maps_and_mors, map_and_mor;
                 
                 C := UnderlyingCategory( UC );
@@ -1060,19 +1071,19 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 V := UnderlyingCategory( UV );
                 
                 source_alpha := ObjectDatum( UC, Source( alpha ) );
-                range_alpha := ObjectDatum( UC, Target( alpha ) );
+                target_alpha := ObjectDatum( UC, Target( alpha ) );
                 
                 source_gamma := ObjectDatum( UC, Source( gamma ) );
-                range_gamma := ObjectDatum( UC, Target( gamma ) );
+                target_gamma := ObjectDatum( UC, Target( gamma ) );
                 
                 source_alpha_length := source_alpha[1];
-                range_alpha_length := range_alpha[1];
+                target_alpha_length := target_alpha[1];
                 
                 source_gamma_length := source_gamma[1];
-                range_gamma_length := range_gamma[1];
+                target_gamma_length := target_gamma[1];
                 
-                Hom_range_alpha_source_gamma := ObjectDatum( UV, s );
-                Hom_source_alpha_range_gamma := ObjectDatum( UV, r );
+                Hom_target_alpha_source_gamma := ObjectDatum( UV, source );
+                Hom_source_alpha_target_gamma := ObjectDatum( UV, target );
                 
                 alpha_datum := MorphismDatum( UC, alpha );
                 gamma_datum := MorphismDatum( UC, gamma );
@@ -1086,57 +1097,57 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 cmp_maps_and_mors :=
                   function( gg )
                     local g, cmp_f_g_h, map_value,
-                          Hom_range_alpha_source_gamma_g, Hom_source_alpha_range_gamma_fgh,
-                          Hom_range_alpha_source_gamma_g_factors, Hom_source_alpha_range_gamma_fgh_factors,
+                          Hom_target_alpha_source_gamma_g, Hom_source_alpha_target_gamma_fgh,
+                          Hom_target_alpha_source_gamma_g_factors, Hom_source_alpha_target_gamma_fgh_factors,
                           mor_value;
                     
-                    g := List( [ 0 .. range_alpha_length - 1 ], i -> RemInt( QuoInt( gg, source_gamma_length ^ i ), source_gamma_length ) );
+                    g := List( [ 0 .. target_alpha_length - 1 ], i -> RemInt( QuoInt( gg, source_gamma_length ^ i ), source_gamma_length ) );
                     
                     cmp_f_g_h := List( [ 0 .. source_alpha_length - 1 ], j -> h[1 + g[1 + f[1 + j]]] );
                     
-                    map_value := Sum( [ 0 .. source_alpha_length - 1 ], i -> cmp_f_g_h[1 + i] * range_gamma_length ^ i );
+                    map_value := Sum( [ 0 .. source_alpha_length - 1 ], i -> cmp_f_g_h[1 + i] * target_gamma_length ^ i );
                     
-                    Hom_range_alpha_source_gamma_g := Hom_range_alpha_source_gamma[2][1 + gg];
+                    Hom_target_alpha_source_gamma_g := Hom_target_alpha_source_gamma[2][1 + gg];
 
-                    Hom_source_alpha_range_gamma_fgh := Hom_source_alpha_range_gamma[2][1 + map_value];
+                    Hom_source_alpha_target_gamma_fgh := Hom_source_alpha_target_gamma[2][1 + map_value];
                     
-                    Hom_range_alpha_source_gamma_g_factors := List( [ 0 .. range_alpha_length - 1 ], j ->
+                    Hom_target_alpha_source_gamma_g_factors := List( [ 0 .. target_alpha_length - 1 ], j ->
                                                                     HomomorphismStructureOnObjects( C,
-                                                                            range_alpha[2][1 + j],
+                                                                            target_alpha[2][1 + j],
                                                                             source_gamma[2][1 + g[1 + j]] ) );
                     
-                    Hom_source_alpha_range_gamma_fgh_factors := List( [ 0 .. source_alpha_length - 1 ], i ->
+                    Hom_source_alpha_target_gamma_fgh_factors := List( [ 0 .. source_alpha_length - 1 ], i ->
                                                                       HomomorphismStructureOnObjects( C,
                                                                               source_alpha[2][1 + i],
-                                                                              range_gamma[2][1 + cmp_f_g_h[1 + i]] ) );
+                                                                              target_gamma[2][1 + cmp_f_g_h[1 + i]] ) );
                     
                     mor_value := UniversalMorphismIntoDirectProductWithGivenDirectProduct( V,
-                                         Hom_source_alpha_range_gamma_fgh_factors,
-                                         Hom_range_alpha_source_gamma_g,
+                                         Hom_source_alpha_target_gamma_fgh_factors,
+                                         Hom_target_alpha_source_gamma_g,
                                          List( [ 0 .. source_alpha_length - 1 ], i ->
                                                PreCompose( V,
                                                        ProjectionInFactorOfDirectProductWithGivenDirectProduct( V,
-                                                               Hom_range_alpha_source_gamma_g_factors,
+                                                               Hom_target_alpha_source_gamma_g_factors,
                                                                1 + f[1 + i],
-                                                               Hom_range_alpha_source_gamma_g ),
+                                                               Hom_target_alpha_source_gamma_g ),
                                                        HomomorphismStructureOnMorphismsWithGivenObjects( C,
-                                                               Hom_range_alpha_source_gamma_g_factors[1 + f[1 + i]],
+                                                               Hom_target_alpha_source_gamma_g_factors[1 + f[1 + i]],
                                                                alpha_mor[1 + i],
                                                                gamma_mor[1 + g[1 + f[1 + i]]],
-                                                               Hom_source_alpha_range_gamma_fgh_factors[1 + i] ) ) ),
-                                         Hom_source_alpha_range_gamma_fgh );
+                                                               Hom_source_alpha_target_gamma_fgh_factors[1 + i] ) ) ),
+                                         Hom_source_alpha_target_gamma_fgh );
                     
                     return Pair( map_value, mor_value );
                     
                 end;
                 
-                map_and_mor := List( [ 0 .. Hom_range_alpha_source_gamma[1] - 1 ], cmp_maps_and_mors );
+                map_and_mor := List( [ 0 .. Hom_target_alpha_source_gamma[1] - 1 ], cmp_maps_and_mors );
                 
                 return MorphismConstructor( UV,
-                               s,
+                               source,
                                Pair( List( map_and_mor, a -> a[1] ),
                                      List( map_and_mor, a -> a[2] ) ),
-                               r );
+                               target );
                 
             end );
             
@@ -1154,8 +1165,10 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
                 s := pairS[1];
                 t := pairT[1];
-
-                maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
+                
+                maps := List( [ 0 .. t ^ s - 1 ], m ->
+                              List( [ 0 .. s - 1 ], i ->
+                                    RemInt( QuoInt( m, t ^ i ), t ) ) );
                 
                 LS := pairS[2];
                 LT := pairT[2];
@@ -1200,6 +1213,51 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
             end );
             
+            if CanCompute( C, "MorphismsOfExternalHom" ) then
+                
+                ##
+                AddMorphismsOfExternalHom( UC,
+                  function ( UC, source, target )
+                    local C, source_datum, target_datum, s, t, source_objects, target_objects, maps, mors, L;
+                    
+                    C := UnderlyingCategory( UC );
+                    
+                    source_datum := ObjectDatum( UC, source );
+                    target_datum := ObjectDatum( UC, target );
+                    
+                    ## SkeletalFinSets code:
+                    
+                    s := source_datum[1];
+                    t := target_datum[1];
+                    
+                    maps := List( [ 0 .. t ^ s - 1 ], m ->
+                                  List( [ 0 .. s - 1 ], i ->
+                                        RemInt( QuoInt( m, t ^ i ), t ) ) );
+                    ## FiniteStrictCoproductCompletion code:
+                    
+                    source_objects := source_datum[2];
+                    target_objects := target_datum[2];
+                    
+                    mors := List( maps, map ->
+                                  List( Cartesian( Reversed(
+                                          List( [ 0 .. s - 1 ], i ->
+                                                MorphismsOfExternalHom( C, source_objects[1 + i], target_objects[1 + map[1 + i]] ) ) ) ), Reversed ) );
+                    
+                    L := List( [ 0 .. t ^ s - 1 ], m ->
+                               List( mors[1 + m], mor -> Pair( maps[1 + m], mor ) ) );
+                    
+                    L := Concatenation( L );
+                    
+                    return List( L, map_mor ->
+                                 MorphismConstructor( UC,
+                                         source,
+                                         map_mor,
+                                         target ) );
+                    
+                end );
+                
+            fi;
+            
         elif ( IsBound( IsSkeletalCategoryOfFiniteSets ) and ValueGlobal( "IsSkeletalCategoryOfFiniteSets" )( V ) ) or
           IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( V ) then
             
@@ -1216,8 +1274,10 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
                 s := pairS[1];
                 t := pairT[1];
-
-                maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
+                
+                maps := List( [ 0 .. t ^ s - 1 ], m ->
+                              List( [ 0 .. s - 1 ], i ->
+                                    RemInt( QuoInt( m, t ^ i ), t ) ) );
                 
                 LS := pairS[2];
                 LT := pairT[2];
@@ -1231,7 +1291,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
                 value := MorphismDatum( V, morphism )[1];
                 
-                number := SafeFirst( [ 0 .. t ^ s - 1 ], i -> Sum( List( homs{[ 1 .. 1 + i ]}, Length ) ) > value );
+                number := BigInt( SafeFirst( [ 0 .. t ^ s - 1 ], i -> Sum( List( homs{[ 1 .. 1 + i ]}, Length ) ) > value ) );
                 
                 ## number -> map
                 map := List( [ 0 .. s - 1 ], i -> RemInt( QuoInt( number, t^i ), t ) );
@@ -1295,10 +1355,10 @@ InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
     local embedding_on_objects, embedding_on_morphisms;
     
     embedding_on_objects :=
-      objC -> ObjectConstructor( UC, Pair( 1, [ objC ] ) );
+      objC -> ObjectConstructor( UC, Pair( BigInt( 1 ), [ objC ] ) );
     
     embedding_on_morphisms :=
-      { source, morC, range } -> MorphismConstructor( UC, source, Pair( [ 0 ], [ morC ] ), range );
+      { source, morC, target } -> MorphismConstructor( UC, source, Pair( [ BigInt( 0 ) ], [ morC ] ), target );
     
     return Triple( UnderlyingCategory( UC ),
                    Pair( embedding_on_objects, embedding_on_morphisms ),
@@ -1402,8 +1462,8 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionDa
     end;
 
     extended_functor_on_morphisms :=
-      function( source, morUC, range )
-        local pairS, pairT, s, t, S, T, source_diagram, range_diagram, pair_of_lists, map, mor, functor_on_mor;
+      function( source, morUC, target )
+        local pairS, pairT, s, t, S, T, source_diagram, target_diagram, pair_of_lists, map, mor, functor_on_mor;
         
         pairS := ObjectDatum( UC, Source( morUC ) );
         pairT := ObjectDatum( UC, Target( morUC ) );
@@ -1415,14 +1475,14 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionDa
         T := pairT[2];
         
         source_diagram := List( [ 0 .. s - 1 ], i -> functor_on_objects( S[1 + i] ) );
-        range_diagram := List( [ 0 .. t - 1 ], i -> functor_on_objects( T[1 + i] ) );
+        target_diagram := List( [ 0 .. t - 1 ], i -> functor_on_objects( T[1 + i] ) );
         
         if not IsEqualForObjects( category_with_strict_coproducts, source, Coproduct( category_with_strict_coproducts, source_diagram ) ) then
             Error( "source and Coproduct( source_diagram ) do not coincide\n" );
         fi;
         
-        if not IsEqualForObjects( category_with_strict_coproducts, range, Coproduct( category_with_strict_coproducts, range_diagram ) ) then
-            Error( "range and Coproduct( range_diagram ) do not coincide\n" );
+        if not IsEqualForObjects( category_with_strict_coproducts, target, Coproduct( category_with_strict_coproducts, target_diagram ) ) then
+            Error( "target and Coproduct( target_diagram ) do not coincide\n" );
         fi;
         
         pair_of_lists := MorphismDatum( UC, morUC );
@@ -1435,14 +1495,14 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionDa
                 functor_on_morphisms(
                         source_diagram[1 + i],
                         mor[1 + i],
-                        range_diagram[1 + map[1 + i]] ) );
+                        target_diagram[1 + map[1 + i]] ) );
         
         return MorphismBetweenCoproductsWithGivenCoproducts( category_with_strict_coproducts,
                        source,
                        source_diagram,
                        Pair( map, functor_on_mor ),
-                       range_diagram,
-                       range );
+                       target_diagram,
+                       target );
         
     end;
     
@@ -1525,7 +1585,7 @@ InstallOtherMethodForCompilerForCAP( TensorizeObjectWithMorphismInRangeCategoryO
           IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
           IsCapCategoryObject, IsCapCategoryObject, IsSkeletalFiniteSetMap, IsCapCategoryObject ],
         
-  function( H, UC, source, c, nu, range )
+  function( H, UC, source, c, nu, target )
     local C, id_d, s, nu_list;
     
     C := UnderlyingCategory( UC );
@@ -1548,7 +1608,7 @@ InstallOtherMethodForCompilerForCAP( TensorizeObjectWithMorphismInRangeCategoryO
     return MorphismConstructor( UC,
                    source,
                    Pair( nu_list, ListWithIdenticalEntries( s, id_d ) ),
-                   range );
+                   target );
     
 end );
 
@@ -1559,7 +1619,7 @@ InstallOtherMethodForCompilerForCAP( TensorizeMorphismWithObjectInRangeCategoryO
           IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
           IsCapCategoryObject, IsCapCategoryMorphism, IsSkeletalFiniteSet, IsCapCategoryObject ],
         
-  function( H, UC, source, phi, h, range )
+  function( H, UC, source, phi, h, target )
     local l;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
@@ -1576,7 +1636,7 @@ InstallOtherMethodForCompilerForCAP( TensorizeMorphismWithObjectInRangeCategoryO
     return MorphismConstructor( UC,
                    source,
                    Pair( [ 0 .. l - 1 ], ListWithIdenticalEntries( l, phi ) ),
-                   range );
+                   target );
     
 end );
 

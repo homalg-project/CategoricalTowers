@@ -19,18 +19,18 @@ DeclareCategory( "IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletio
 
 #! @Description
 #!  The &GAP; category of cells in the category of skeletal finsets.
-DeclareCategory( "IsCellInSkeletalFinSets",
+DeclareCategory( "IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory",
         IsCapCategoryCell );
 
 #! @Description
 #!  The &GAP; category of objects in the category of skeletal finsets.
-DeclareCategory( "IsObjectInSkeletalFinSets",
-        IsCellInSkeletalFinSets and IsCapCategoryObject  );
+DeclareCategory( "IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory",
+        IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsCapCategoryObject  );
 
 #! @Description
 #!  The &GAP; category of morphisms in the category of skeletal finsets.
-DeclareCategory( "IsMorphismInSkeletalFinSets",
-        IsCellInSkeletalFinSets and IsCapCategoryMorphism );
+DeclareCategory( "IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory",
+        IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsCapCategoryMorphism );
 
 ####################################
 #
@@ -44,9 +44,9 @@ DeclareCategory( "IsMorphismInSkeletalFinSets",
 #! @Arguments M
 #! @Returns an integer
 DeclareAttribute( "Length",
-        IsObjectInSkeletalFinSets );
+        IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory );
 
-CapJitAddTypeSignature( "Length", [ IsObjectInSkeletalFinSets ], IsInt );
+CapJitAddTypeSignature( "Length", [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ], IsBigInt );
 
 #! @Description
 #!  The list associated to a skeletal finite set, i.e.,
@@ -54,18 +54,18 @@ CapJitAddTypeSignature( "Length", [ IsObjectInSkeletalFinSets ], IsInt );
 #! @Arguments M
 #! @Returns a list
 DeclareAttribute( "AsList",
-        IsObjectInSkeletalFinSets );
+        IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory );
 
-CapJitAddTypeSignature( "AsList", [ IsObjectInSkeletalFinSets ], CapJitDataTypeOfListOf( IsInt ) );
+CapJitAddTypeSignature( "AsList", [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ], CapJitDataTypeOfListOf( IsBigInt ) );
 
 #! @Description
 #!  The lazy array of images between skeletal finite sets.
 #! @Arguments phi
 #! @Returns a lazy array
 DeclareAttribute( "AsList",
-        IsMorphismInSkeletalFinSets );
+        IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory );
 
-CapJitAddTypeSignature( "AsList", [ IsMorphismInSkeletalFinSets ], CapJitDataTypeOfListOf( IsInt ) );
+CapJitAddTypeSignature( "AsList", [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ], CapJitDataTypeOfListOf( IsBigInt ) );
 
 ####################################
 #

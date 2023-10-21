@@ -32,7 +32,7 @@ end
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Length, 1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Length, BigInt( 1 ) );
 end
 ########
         
@@ -131,7 +131,7 @@ end
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Length, 0 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Length, BigInt( 0 ) );
 end
 ########
         
@@ -156,15 +156,12 @@ end
         
 ########
 function ( cat_1, source_1, alpha_1, range_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1;
+    local hoisted_1_1, hoisted_2_1;
     hoisted_2_1 := Length( Range( alpha_1 ) );
     hoisted_1_1 := AsList( alpha_1 );
-    hoisted_3_1 := Sum( [ 0 .. Length( Source( alpha_1 ) ) - 1 ], function ( i_2 )
-            return hoisted_1_1[(1 + i_2)] * hoisted_2_1 ^ i_2;
-        end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( i_2 )
-              return hoisted_3_1;
-          end ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, ListWithIdenticalEntries( Length( source_1 ), Sum( [ 0 .. Length( Source( alpha_1 ) ) - 1 ], function ( i_2 )
+                return hoisted_1_1[(1 + i_2)] * hoisted_2_1 ^ i_2;
+            end ) ) );
 end
 ########
         
@@ -250,7 +247,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return Length( arg2_1 ) = 1;
+    return Length( arg2_1 ) = BigInt( 1 );
 end
 ########
         
@@ -267,7 +264,7 @@ function ( cat_1, arg2_1 )
     deduped_2_1 := Length( Source( arg2_1 ) );
     hoisted_1_1 := Length( Range( arg2_1 ) );
     if not ForAll( deduped_4_1, function ( a_2 )
-                 return (IsInt( a_2 ) and a_2 >= 0);
+                 return (IsBigInt( a_2 ) and a_2 >= 0);
              end ) then
         return false;
     elif not deduped_2_1 = deduped_3_1 then
@@ -294,7 +291,7 @@ end
 function ( cat_1, arg2_1 )
     local deduped_1_1;
     deduped_1_1 := Length( arg2_1 );
-    return IsInt( deduped_1_1 ) and deduped_1_1 >= 0;
+    return IsBigInt( deduped_1_1 ) and deduped_1_1 >= 0;
 end
 ########
         
@@ -317,6 +314,27 @@ end
 ########
 function ( cat_1, arg2_1 )
     return AsList( arg2_1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddMorphismsOfExternalHom( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    local hoisted_2_1, deduped_3_1, deduped_4_1;
+    deduped_4_1 := Length( arg2_1 );
+    deduped_3_1 := Length( arg3_1 );
+    hoisted_2_1 := [ 0 .. deduped_4_1 - 1 ];
+    return Concatenation( List( [ 0 .. deduped_3_1 ^ deduped_4_1 - 1 ], function ( m_2 )
+              local hoisted_1_2;
+              hoisted_1_2 := CAP_JIT_INCOMPLETE_LOGIC( m_2 );
+              return [ CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, AsList, CAP_JIT_INCOMPLETE_LOGIC( List( hoisted_2_1, function ( i_3 )
+                              return REM_INT( QUO_INT( hoisted_1_2, deduped_3_1 ^ i_3 ), deduped_3_1 );
+                          end ) ) ) ];
+          end ) );
 end
 ########
         
@@ -383,7 +401,7 @@ end
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Length, 1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Length, BigInt( 1 ) );
 end
 ########
         
@@ -454,7 +472,7 @@ function ( cat_1, Y_1, morphisms_1, T_1, tau_1, P_1 )
         end );
     hoisted_3_1 := AsList( tau_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, AsList, List( [ 0 .. Length( T_1 ) - 1 ], function ( x_2 )
-              return -1 + SafePosition( hoisted_4_1, hoisted_3_1[(1 + x_2)] );
+              return -1 + BigInt( SafePosition( hoisted_4_1, hoisted_3_1[(1 + x_2)] ) );
           end ) );
 end
 ########
@@ -466,7 +484,7 @@ end
         
 ########
 function ( cat_1, T_1, P_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, AsList, ListWithIdenticalEntries( Length( T_1 ), 0 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, AsList, ListWithIdenticalEntries( Length( T_1 ), BigInt( 0 ) ) );
 end
 ########
         

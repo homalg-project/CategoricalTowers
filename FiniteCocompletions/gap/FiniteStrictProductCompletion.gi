@@ -20,7 +20,7 @@ InstallMethod( FiniteStrictProductCompletion,
     ##
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              IsInt,
+              IsBigInt,
               CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( C ) ) );
     
     ##
@@ -38,7 +38,7 @@ InstallMethod( FiniteStrictProductCompletion,
     ##
     morphism_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              CapJitDataTypeOfListOf( IsInt ),
+              CapJitDataTypeOfListOf( IsBigInt ),
               CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) );
     
     ##
@@ -121,7 +121,7 @@ InstallMethod( FiniteStrictProductCompletion,
     
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
-      function( PC, source, pair_of_lists, range )
+      function( PC, source, pair_of_lists, target )
         local opUopC, UopC, opC;
         
         opUopC := ModelingCategory( PC );
@@ -133,7 +133,7 @@ InstallMethod( FiniteStrictProductCompletion,
         return MorphismConstructor( opUopC,
                        source,
                        MorphismConstructor( UopC,
-                               ObjectDatum( opUopC, range ),
+                               ObjectDatum( opUopC, target ),
                                Pair( pair_of_lists[1],
                                      List( pair_of_lists[2], morC ->
                                            MorphismConstructor( opC,
@@ -141,7 +141,7 @@ InstallMethod( FiniteStrictProductCompletion,
                                                    morC,
                                                    ObjectConstructor( opC, Source( morC ) ) ) ) ),
                                ObjectDatum( opUopC, source ) ),
-                       range );
+                       target );
     end;
     
     ## from the morphism in the modeling category to the raw morphism data
@@ -184,6 +184,12 @@ InstallMethod( FiniteStrictProductCompletion,
                    only_primitive_operations := true )
               : FinalizeCategory := false );
     
+    if CanCompute( opUopC, "MorphismsOfExternalHom" ) then
+        
+        AddMorphismsOfExternalHomForReinterpretationOfCategory( PC );
+        
+    fi;
+    
     SetUnderlyingCategory( PC, C );
     
     Append( PC!.compiler_hints.category_attribute_names,
@@ -219,7 +225,7 @@ InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
       objC -> ObjectConstructor( PC, Pair( 1, [ objC ] ) );
     
     embedding_on_morphisms :=
-      { source, morC, range } -> MorphismConstructor( PC, source, Pair( [ 0 ], [ morC ] ), range );
+      { source, morC, target } -> MorphismConstructor( PC, source, Pair( [ 0 ], [ morC ] ), target );
     
     return Triple( UnderlyingCategory( PC ),
                    Pair( embedding_on_objects, embedding_on_morphisms ),
@@ -323,8 +329,8 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData
     end;
     
     extended_functor_on_morphisms :=
-      function( source, morPC, range )
-        local pairS, pairT, s, t, S, T, source_diagram, range_diagram, pair_of_lists, map, mor, functor_on_mor;
+      function( source, morPC, target )
+        local pairS, pairT, s, t, S, T, source_diagram, target_diagram, pair_of_lists, map, mor, functor_on_mor;
         
         pairS := ObjectDatum( PC, Source( morPC ) );
         pairT := ObjectDatum( PC, Target( morPC ) );
@@ -336,14 +342,14 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData
         T := pairT[2];
         
         source_diagram := List( [ 0 .. s - 1 ], i -> functor_on_objects( S[1 + i] ) );
-        range_diagram := List( [ 0 .. t - 1 ], i -> functor_on_objects( T[1 + i] ) );
+        target_diagram := List( [ 0 .. t - 1 ], i -> functor_on_objects( T[1 + i] ) );
         
         if not IsEqualForObjects( category_with_strict_products, source, DirectProduct( category_with_strict_products, source_diagram ) ) then
             Error( "source and DirectProduct( source_diagram ) do not coincide\n" );
         fi;
         
-        if not IsEqualForObjects( category_with_strict_products, range, DirectProduct( category_with_strict_products, range_diagram ) ) then
-            Error( "range and DirectProduct( range_diagram ) do not coincide\n" );
+        if not IsEqualForObjects( category_with_strict_products, target, DirectProduct( category_with_strict_products, target_diagram ) ) then
+            Error( "target and DirectProduct( target_diagram ) do not coincide\n" );
         fi;
         
         pair_of_lists := MorphismDatum( PC, morPC );
@@ -353,7 +359,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData
         
         functor_on_mor := List( [ 0 .. t - 1 ], i ->
                       functor_on_morphisms(
-                              range_diagram[1 + i],
+                              target_diagram[1 + i],
                               mor[1 + i],
                               source_diagram[1 + map[1 + i]] ) );
         
@@ -361,8 +367,8 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData
                        source,
                        source_diagram,
                        Pair( map, functor_on_mor ),
-                       range_diagram,
-                       range );
+                       target_diagram,
+                       target );
         
     end;
     

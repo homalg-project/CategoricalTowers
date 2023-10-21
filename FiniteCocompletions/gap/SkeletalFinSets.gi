@@ -7,7 +7,7 @@
 ##
 InstallMethod( AsList,
         "for a skeletal finite set",
-        [ IsObjectInSkeletalFinSets ],
+        [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( s )
     
@@ -26,7 +26,7 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
           sFinSets;
     
     ##
-    object_datum_type := IsInt;
+    object_datum_type := IsBigInt;
     
     ##
     object_constructor := { sFinSets, cardinality } ->
@@ -37,15 +37,15 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
     object_datum := { sFinSets, M } -> Length( M );
     
     ##
-    morphism_datum_type := CapJitDataTypeOfListOf( IsInt );
+    morphism_datum_type := CapJitDataTypeOfListOf( IsBigInt );
     
     ##
     morphism_constructor :=
-      function( sFinSets, source, images, range )
+      function( sFinSets, source, images, target )
         
         return CreateCapCategoryMorphismWithAttributes( sFinSets,
                    source,
-                   range,
+                   target,
                    AsList, images );
         
     end;
@@ -97,8 +97,8 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
     
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
-      function( sFinSets, source, map, range )
-        local DI, UT, T, source_UT, range_UT;
+      function( sFinSets, source, map, target )
+        local DI, UT, T, source_UT, target_UT;
         
         DI := ModelingCategory( sFinSets );
         
@@ -107,7 +107,7 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
         T := UnderlyingCategory( UT );
         
         source_UT := ObjectDatum( DI, source );
-        range_UT := ObjectDatum( DI, range );
+        target_UT := ObjectDatum( DI, target );
         
         return MorphismConstructor( DI,
                        source,
@@ -116,8 +116,8 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
                                Pair( map,
                                      ListWithIdenticalEntries( ObjectDatum( UT, source_UT )[1],
                                              IdentityMorphism( T, TerminalObject( T ) ) ) ),
-                               range_UT ),
-                       range );
+                               target_UT ),
+                       target );
         
     end;
     
@@ -141,8 +141,8 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
       ReinterpretationOfCategory( UT,
               rec( name := "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory",
                    category_filter := IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory,
-                   category_object_filter := IsObjectInSkeletalFinSets,
-                   category_morphism_filter := IsMorphismInSkeletalFinSets,
+                   category_object_filter := IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory,
+                   category_morphism_filter := IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory,
                    object_datum_type := object_datum_type,
                    morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,
@@ -155,6 +155,12 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
                    modeling_tower_morphism_datum := modeling_tower_morphism_datum,
                    only_primitive_operations := true )
               : FinalizeCategory := false );
+    
+    if CanCompute( UT, "MorphismsOfExternalHom" ) then
+        
+        AddMorphismsOfExternalHomForReinterpretationOfCategory( sFinSets );
+        
+    fi;
     
     # this is a workhorse category -> no logic and caching only via IsIdenticalObj
     CapCategorySwitchLogicOff( sFinSets );
@@ -180,7 +186,7 @@ end );
 ##
 InstallMethod( ViewObj,
         "for a skeletal finite set",
-        [ IsObjectInSkeletalFinSets ],
+        [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( s )
     Print( "|", Length( s ), "|" );
@@ -189,7 +195,7 @@ end );
 ##
 InstallMethod( ViewObj,
     "for a map of skeletal finite sets",
-        [ IsMorphismInSkeletalFinSets ],
+        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( phi )
     Print( "|", Length( Source( phi ) ), "| → |", Length( Target( phi ) ), "|" );
@@ -198,7 +204,7 @@ end );
 ##
 InstallMethod( ViewObj,
     "for a map of skeletal finite sets",
-        [ IsMorphismInSkeletalFinSets and IsMonomorphism ],
+        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsMonomorphism ],
         
   function ( phi )
     Print( "|", Length( Source( phi ) ), "| ↪ |", Length( Target( phi ) ), "|" );
@@ -207,7 +213,7 @@ end );
 ##
 InstallMethod( ViewObj,
     "for a map of skeletal finite sets",
-        [ IsMorphismInSkeletalFinSets and IsEpimorphism ],
+        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsEpimorphism ],
         
   function ( phi )
     Print( "|", Length( Source( phi ) ), "| ↠ |", Length( Target( phi ) ), "|" );
@@ -216,16 +222,20 @@ end );
 ##
 InstallMethod( ViewObj,
         "for a map of skeletal finite sets",
-        [ IsMorphismInSkeletalFinSets and IsIsomorphism ],
+        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsIsomorphism ],
         
   function ( phi )
     Print( "|", Length( Source( phi ) ), "| ⭇ |", Length( Target( phi ) ), "|" );
 end );
 
+# We want lists of skeletal finite sets and maps to be displayed in a "fancy" way.
+# Since `Display` of list redirects to `Print`, we have to make `PrintString` "fancy",
+# even if the documentation of `PrintString` suggests that it should not be "fancy".
+
 ##
 InstallMethod( PrintString,
         "for a skeletal finite set",
-        [ IsObjectInSkeletalFinSets ],
+        [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( s )
     local l, string;
@@ -247,24 +257,38 @@ InstallMethod( PrintString,
 end );
 
 ##
-InstallMethod( Display,
-        "for a skeletal finite set",
-        [ IsObjectInSkeletalFinSets ],
-        
-  function ( s )
-    Print( PrintString( s ), "\n" );
-end );
-
-##
-InstallMethod( Display,
-    "for a map of skeletal finite sets",
-        [ IsMorphismInSkeletalFinSets ],
+InstallMethod( PrintString,
+        "for a map of skeletal finite sets",
+        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( phi )
     
-    Print( PrintString( Source( phi ) ) );
-    Print( " ⱶ", AsList( phi ), "→ " );
-    Print( PrintString( Target( phi ) ), "\n" );
+    return Concatenation(
+                   PrintString( Source( phi ) ),
+                   " ⱶ", PrintString( AsList( phi ) ), "→ ",
+                   PrintString( Range( phi ) ) );
+    
+end );
+
+##
+InstallMethod( DisplayString,
+        "for a skeletal finite set",
+        [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
+        
+  function ( s )
+    
+    return Concatenation( PrintString( s ), "\n" );
+    
+end );
+
+##
+InstallMethod( DisplayString,
+        "for a map of skeletal finite sets",
+        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
+        
+  function ( phi )
+    
+    return Concatenation( PrintString( phi ), "\n" );
     
 end );
 

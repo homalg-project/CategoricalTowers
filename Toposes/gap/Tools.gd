@@ -10,6 +10,8 @@
 ##
 ####################################
 
+DeclareGlobalFunction( "AddMorphismsOfExternalHomForReinterpretationOfCategory" );
+
 ####################################
 ##
 #! @Section Visualizing posets of subobjects
