@@ -7,7 +7,7 @@
 ##
 InstallMethod( AsList,
         "for a skeletal finite set",
-        [ IsObjectInSkeletalFinSets ],
+        [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( s )
     
@@ -141,8 +141,8 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
       ReinterpretationOfCategory( UT,
               rec( name := "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory",
                    category_filter := IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory,
-                   category_object_filter := IsObjectInSkeletalFinSets,
-                   category_morphism_filter := IsMorphismInSkeletalFinSets,
+                   category_object_filter := IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory,
+                   category_morphism_filter := IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory,
                    object_datum_type := object_datum_type,
                    morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,
@@ -186,7 +186,7 @@ end );
 ##
 InstallMethod( ViewObj,
         "for a skeletal finite set",
-        [ IsObjectInSkeletalFinSets ],
+        [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( s )
     Print( "|", Length( s ), "|" );
@@ -195,7 +195,7 @@ end );
 ##
 InstallMethod( ViewObj,
     "for a map of skeletal finite sets",
-        [ IsMorphismInSkeletalFinSets ],
+        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( phi )
     Print( "|", Length( Source( phi ) ), "| → |", Length( Target( phi ) ), "|" );
@@ -204,7 +204,7 @@ end );
 ##
 InstallMethod( ViewObj,
     "for a map of skeletal finite sets",
-        [ IsMorphismInSkeletalFinSets and IsMonomorphism ],
+        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsMonomorphism ],
         
   function ( phi )
     Print( "|", Length( Source( phi ) ), "| ↪ |", Length( Target( phi ) ), "|" );
@@ -213,7 +213,7 @@ end );
 ##
 InstallMethod( ViewObj,
     "for a map of skeletal finite sets",
-        [ IsMorphismInSkeletalFinSets and IsEpimorphism ],
+        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsEpimorphism ],
         
   function ( phi )
     Print( "|", Length( Source( phi ) ), "| ↠ |", Length( Target( phi ) ), "|" );
@@ -222,7 +222,7 @@ end );
 ##
 InstallMethod( ViewObj,
         "for a map of skeletal finite sets",
-        [ IsMorphismInSkeletalFinSets and IsIsomorphism ],
+        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsIsomorphism ],
         
   function ( phi )
     Print( "|", Length( Source( phi ) ), "| ⭇ |", Length( Target( phi ) ), "|" );
@@ -231,7 +231,7 @@ end );
 ##
 InstallMethod( PrintString,
         "for a skeletal finite set",
-        [ IsObjectInSkeletalFinSets ],
+        [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( s )
     local l, string;
@@ -255,7 +255,7 @@ end );
 ##
 InstallMethod( Display,
         "for a skeletal finite set",
-        [ IsObjectInSkeletalFinSets ],
+        [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( s )
     Print( PrintString( s ), "\n" );
@@ -264,7 +264,7 @@ end );
 ##
 InstallMethod( Display,
     "for a map of skeletal finite sets",
-        [ IsMorphismInSkeletalFinSets ],
+        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( phi )
     
