@@ -118,22 +118,6 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "number1", "number2" ],
-        src_template := "Length( Tuples( [ 0 .. number1 - 1 ], number2 ) )",
-        dst_template := "number1 ^ number2",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "number1", "number2" ],
-        src_template := "List( Tuples( [ 0 .. number1 - 1 ], number2 ), x -> BigInt( 1 ) )",
-        dst_template := "ListWithIdenticalEntries( number1 ^ number2, BigInt( 1 ) )",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
         variable_names := [ "number", "index" ],
         src_template := "[ number ][index]",
         dst_template := "number",

@@ -978,7 +978,9 @@ InstallMethod( FiniteStrictCoproductCompletion,
             LS := pairS[2];
             LT := pairT[2];
             
-            maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
+            maps := List( [ 0 .. t ^ s - 1 ], m ->
+                          List( [ 0 .. s - 1 ], i ->
+                                RemInt( QuoInt( m, t ^ i ), t ) ) );
             
             return Coproduct( V,
                            List( maps, map ->
@@ -1003,7 +1005,9 @@ InstallMethod( FiniteStrictCoproductCompletion,
             s := pairS[1];
             t := pairT[1];
             
-            maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
+            maps := List( [ 0 .. t ^ s - 1 ], m ->
+                          List( [ 0 .. s - 1 ], i ->
+                                RemInt( QuoInt( m, t ^ i ), t ) ) );
             
             LS := pairS[2];
             LT := pairT[2];
@@ -1153,8 +1157,10 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
                 s := pairS[1];
                 t := pairT[1];
-
-                maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
+                
+                maps := List( [ 0 .. t ^ s - 1 ], m ->
+                              List( [ 0 .. s - 1 ], i ->
+                                    RemInt( QuoInt( m, t ^ i ), t ) ) );
                 
                 LS := pairS[2];
                 LT := pairT[2];
@@ -1215,8 +1221,10 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
                 s := pairS[1];
                 t := pairT[1];
-
-                maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
+                
+                maps := List( [ 0 .. t ^ s - 1 ], m ->
+                              List( [ 0 .. s - 1 ], i ->
+                                    RemInt( QuoInt( m, t ^ i ), t ) ) );
                 
                 LS := pairS[2];
                 LT := pairT[2];
