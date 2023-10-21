@@ -55,23 +55,23 @@
   
   [33X[0;0YThe [5XGAP[105X category of a finite coproduct cocompletion category.[133X
   
-  [1X4.3-2 IsCellInSkeletalFinSets[101X
+  [1X4.3-2 IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[101X
   
-  [33X[1;0Y[29X[2XIsCellInSkeletalFinSets[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in the category of skeletal finsets.[133X
   
-  [1X4.3-3 IsObjectInSkeletalFinSets[101X
+  [1X4.3-3 IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[101X
   
-  [33X[1;0Y[29X[2XIsObjectInSkeletalFinSets[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in the category of skeletal finsets.[133X
   
-  [1X4.3-4 IsMorphismInSkeletalFinSets[101X
+  [1X4.3-4 IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInSkeletalFinSets[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in the category of skeletal finsets.[133X
@@ -92,7 +92,7 @@
     [4X[28XA CAP category with name[128X[104X
     [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X31 primitive operations were used to derive 126 operations for this category[128X[104X
+    [4X[28X32 primitive operations were used to derive 127 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsFiniteCompleteCategory[128X[104X
@@ -158,7 +158,36 @@
   [4X[32X[104X
   
   
-  [1X4.4-3 [33X[0;0YSkeletal Initial and Terminal Objects[133X[101X
+  [1X4.4-3 [33X[0;0YMorphisms of external Hom[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
+    [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;[127X[104X
+    [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27XL := ObjectConstructor( sFinSets, 0 );[127X[104X
+    [4X[28X|0|[128X[104X
+    [4X[25Xgap>[125X [27XM := ObjectConstructor( sFinSets, 2 );[127X[104X
+    [4X[28X|2|[128X[104X
+    [4X[25Xgap>[125X [27XN := ObjectConstructor( sFinSets, 3 );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( MorphismsOfExternalHom( L, L ) );[127X[104X
+    [4X[28X[ ∅ ⱶ[ ]→ ∅ ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( MorphismsOfExternalHom( M, L ) );[127X[104X
+    [4X[28X[  ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( MorphismsOfExternalHom( L, M ) );[127X[104X
+    [4X[28X[ ∅ ⱶ[ ]→ { 0, 1 } ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( MorphismsOfExternalHom( M, N ) );[127X[104X
+    [4X[28X[ { 0, 1 } ⱶ[ 0, 0 ]→ { 0, 1, 2 }, { 0, 1 } ⱶ[ 1, 0 ]→ { 0, 1, 2 },\[128X[104X
+    [4X[28X { 0, 1 } ⱶ[ 2, 0 ]→ { 0, 1, 2 }, { 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1, 2 },\[128X[104X
+    [4X[28X { 0, 1 } ⱶ[ 1, 1 ]→ { 0, 1, 2 }, { 0, 1 } ⱶ[ 2, 1 ]→ { 0, 1, 2 },\[128X[104X
+    [4X[28X { 0, 1 } ⱶ[ 0, 2 ]→ { 0, 1, 2 }, { 0, 1 } ⱶ[ 1, 2 ]→ { 0, 1, 2 },\[128X[104X
+    [4X[28X { 0, 1 } ⱶ[ 2, 2 ]→ { 0, 1, 2 } ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.4-4 [33X[0;0YSkeletal Initial and Terminal Objects[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
@@ -213,7 +242,7 @@
   [4X[32X[104X
   
   
-  [1X4.4-4 [33X[0;0YSkeletal direct product[133X[101X
+  [1X4.4-5 [33X[0;0YSkeletal direct product[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
@@ -265,7 +294,7 @@
   [4X[32X[104X
   
   
-  [1X4.4-5 [33X[0;0YSkeletal Coproduct[133X[101X
+  [1X4.4-6 [33X[0;0YSkeletal Coproduct[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
@@ -311,7 +340,7 @@
   [4X[32X[104X
   
   
-  [1X4.4-6 [33X[0;0YSkeletal Equalizer[133X[101X
+  [1X4.4-7 [33X[0;0YSkeletal Equalizer[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
@@ -357,7 +386,7 @@
   [4X[32X[104X
   
   
-  [1X4.4-7 [33X[0;0YSkeletal homomorphism structre[133X[101X
+  [1X4.4-8 [33X[0;0YSkeletal homomorphism structre[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
