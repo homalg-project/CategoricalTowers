@@ -228,6 +228,10 @@ InstallMethod( ViewObj,
     Print( "|", Length( Source( phi ) ), "| ⭇ |", Length( Target( phi ) ), "|" );
 end );
 
+# We want lists of skeletal finite sets and maps to be displayed in a "fancy" way.
+# Since `Display` of list redirects to `Print`, we have to make `PrintString` "fancy",
+# even if the documentation of `PrintString` suggests that it should not be "fancy".
+
 ##
 InstallMethod( PrintString,
         "for a skeletal finite set",
@@ -253,24 +257,38 @@ InstallMethod( PrintString,
 end );
 
 ##
-InstallMethod( Display,
-        "for a skeletal finite set",
-        [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
-        
-  function ( s )
-    Print( PrintString( s ), "\n" );
-end );
-
-##
-InstallMethod( Display,
-    "for a map of skeletal finite sets",
+InstallMethod( PrintString,
+        "for a map of skeletal finite sets",
         [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( phi )
     
-    Print( PrintString( Source( phi ) ) );
-    Print( " ⱶ", AsList( phi ), "→ " );
-    Print( PrintString( Target( phi ) ), "\n" );
+    return Concatenation(
+                   PrintString( Source( phi ) ),
+                   " ⱶ", PrintString( AsList( phi ) ), "→ ",
+                   PrintString( Range( phi ) ) );
+    
+end );
+
+##
+InstallMethod( DisplayString,
+        "for a skeletal finite set",
+        [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
+        
+  function ( s )
+    
+    return Concatenation( PrintString( s ), "\n" );
+    
+end );
+
+##
+InstallMethod( DisplayString,
+        "for a map of skeletal finite sets",
+        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
+        
+  function ( phi )
+    
+    return Concatenation( PrintString( phi ), "\n" );
     
 end );
 
