@@ -52,6 +52,9 @@
 @Subsection Skeletal PreCompose
 @InsertChunk SkeletalPreCompose
 
+@Subsection Morphisms of external Hom
+@InsertChunk SkeletalMorphismsOfExternalHom
+
 @Subsection Skeletal Initial and Terminal Objects
 @InsertChunk SkeletalInitialTerminal
 

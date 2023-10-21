@@ -129,6 +129,14 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     end );
     
+    ##
+    AddMorphismsOfExternalHom( UI,
+      function( UI, object1, object2 )
+        
+        return [ IdentityMorphism( UI, object1 ) ];
+        
+    end );
+    
     Finalize( UI );
     
     Assert( 0, [ ] = CheckConstructivenessOfCategory( UI, "IsEquippedWithHomomorphismStructure" ) );
@@ -1204,6 +1212,51 @@ InstallMethod( FiniteStrictCoproductCompletion,
                                T );
                 
             end );
+            
+            if CanCompute( C, "MorphismsOfExternalHom" ) then
+                
+                ##
+                AddMorphismsOfExternalHom( UC,
+                  function ( UC, source, target )
+                    local C, source_datum, target_datum, s, t, source_objects, target_objects, maps, mors, L;
+                    
+                    C := UnderlyingCategory( UC );
+                    
+                    source_datum := ObjectDatum( UC, source );
+                    target_datum := ObjectDatum( UC, target );
+                    
+                    ## SkeletalFinSets code:
+                    
+                    s := source_datum[1];
+                    t := target_datum[1];
+                    
+                    maps := List( [ 0 .. t ^ s - 1 ], m ->
+                                  List( [ 0 .. s - 1 ], i ->
+                                        RemInt( QuoInt( m, t ^ i ), t ) ) );
+                    ## FiniteStrictCoproductCompletion code:
+                    
+                    source_objects := source_datum[2];
+                    target_objects := target_datum[2];
+                    
+                    mors := List( maps, map ->
+                                  List( Cartesian( Reversed(
+                                          List( [ 0 .. s - 1 ], i ->
+                                                MorphismsOfExternalHom( C, source_objects[1 + i], target_objects[1 + map[1 + i]] ) ) ) ), Reversed ) );
+                    
+                    L := List( [ 0 .. t ^ s - 1 ], m ->
+                               List( mors[1 + m], mor -> Pair( maps[1 + m], mor ) ) );
+                    
+                    L := Concatenation( L );
+                    
+                    return List( L, map_mor ->
+                                 MorphismConstructor( UC,
+                                         source,
+                                         map_mor,
+                                         target ) );
+                    
+                end );
+                
+            fi;
             
         elif ( IsBound( IsSkeletalCategoryOfFiniteSets ) and ValueGlobal( "IsSkeletalCategoryOfFiniteSets" )( V ) ) or
           IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( V ) then

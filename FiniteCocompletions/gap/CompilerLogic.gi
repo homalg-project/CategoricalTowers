@@ -155,3 +155,19 @@ CapJitAddLogicTemplate(
         dst_template := "number2",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "l", "entry" ],
+        src_template := "Cartesian( Reversed( List( [ 0 .. l - 1 ], i -> [ entry ] ) ) )",
+        dst_template := "[ ListWithIdenticalEntries( l, entry ) ]",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "l", "entry" ],
+        src_template := "Reversed( ListWithIdenticalEntries( l, entry ) )",
+        dst_template := "ListWithIdenticalEntries( l, entry )",
+    )
+);
