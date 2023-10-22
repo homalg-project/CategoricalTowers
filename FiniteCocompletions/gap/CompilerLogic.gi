@@ -54,6 +54,40 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
+        variable_names := [ "list" ],
+        src_template := "ForAny( list, x -> true )",
+        dst_template := "( not IsEmpty( list ) )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "entry" ],
+        src_template := "not IsEmpty( Positions( list, entry ) )",
+        dst_template := "( entry in list )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list" ],
+        src_template := "SafeFirst( list, x -> true )",
+        dst_template := "list[1]",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        
+        variable_names := [ "list", "entry" ],
+        variable_filters := [ IsList, IsBigInt ],
+        src_template := "Positions( list, entry )[1]",
+        dst_template := "SafePosition( list, entry )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
         variable_names := [ "cat", "list" ],
         src_template := "IsCapCategoryObject( CreateCapCategoryObjectWithAttributes( cat, PairOfIntAndList, list ) )",
         dst_template := "true",

@@ -52,6 +52,9 @@
 @Subsection Skeletal PreCompose
 @InsertChunk SkeletalPreCompose
 
+@Subsection Skeletal Lift
+@InsertChunk SkeletalLift
+
 @Subsection Morphisms of external Hom
 @InsertChunk SkeletalMorphismsOfExternalHom
 
