@@ -152,6 +152,20 @@ end
     , 100 );
     
     ##
+    AddInjectionOfCoproductComplement( cat,
+        
+########
+function ( cat_1, iota_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := Range( iota_1 );
+    deduped_1_1 := Length( deduped_2_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Length, deduped_1_1 - Length( Source( iota_1 ) ) ), deduped_2_1, AsList, Difference( [ 0 .. deduped_1_1 - 1 ], AsList( iota_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
         
 ########

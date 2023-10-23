@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FiniteCocompletions",
 Subtitle := "Finite (co)product/(co)limit (co)completions",
-Version := "2023.10-18",
+Version := "2023.10-19",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
@@ -75,7 +75,7 @@ Dependencies := rec(
                    [ "MonoidalCategories", ">= 2023.10-01" ],
                    [ "CartesianCategories", ">= 2023.10-01" ],
                    [ "Toposes", ">= 2023.10-09" ],
-                   [ "CategoryConstructor", ">= 2023.08-01" ],
+                   [ "CategoryConstructor", ">= 2023.10-09" ],
                    [ "QuotientCategories", ">= 2023.10-01" ],
                    [ "Algebroids", ">= 2023.09-04" ],
                    [ "PreSheaves", ">= 2023.02-05" ],
