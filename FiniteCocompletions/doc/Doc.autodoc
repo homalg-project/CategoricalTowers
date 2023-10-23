@@ -61,7 +61,7 @@
 @Subsection Skeletal Initial and Terminal Objects
 @InsertChunk SkeletalInitialTerminal
 
-@Subsection Skeletal direct product
+@Subsection Skeletal Direct Product
 @InsertChunk SkeletalDirectProduct
 
 @Subsection Skeletal Coproduct
