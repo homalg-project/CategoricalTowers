@@ -171,6 +171,28 @@ AddDerivationToCAP( MorphismBetweenDirectProductsWithGivenDirectProducts,
 end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
 
 ##
+AddDerivationToCAP( CoproductComplement,
+        "CoproductComplement as the source of InjectionOfCoproductComplement",
+        [ [ InjectionOfCoproductComplement, 1 ] ],
+        
+  function( cat, mor )
+    
+    return Source( InjectionOfCoproductComplement( cat, mor ) );
+    
+end );
+
+##
+AddDerivationToCAP( DirectProductComplement,
+        "DirectProductComplement as the target of ProjectionInDirectProductComplement",
+        [ [ ProjectionInDirectProductComplement, 1 ] ],
+        
+  function( cat, mor )
+    
+    return Target( ProjectionInDirectProductComplement( cat, mor ) );
+    
+end );
+
+##
 AddDerivationToCAP( IsMonomorphism,
         "IsMonomorphism using the Yoneda embedding",
         [ [ HomomorphismStructureOnObjects, 2 ],

@@ -668,6 +668,49 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     end );
     
+    ## the complements are disjoint since UC is extensive by
+    ## [Prop. 2.4., Introduction to extensive and distributive categories, Carboni, Lack, Walters 1993]
+    AddInjectionOfCoproductComplement( UC,
+      function ( UC, iota )
+        local S, T, T_datum, s, t, T_objs, iota_datum, idT, idT_mors, complement_map, complement_source, complement_mor;
+        
+        S := Source( iota );
+        T := Target( iota );
+        
+        T_datum := ObjectDatum( UC, T );
+        
+        s := ObjectDatum( UC, S )[1];
+        
+        t := T_datum[1];
+        T_objs := T_datum[2];
+        
+        iota_datum := MorphismDatum( UC, iota );
+        
+        idT := IdentityMorphism( UC, T );
+        
+        idT_mors := MorphismDatum( UC, idT )[2];
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, iota_datum[1] = DuplicateFreeList( iota_datum[1] ) );
+        
+        ## SkeletalFinSets code:
+        complement_map := Difference( [ 0 .. t - 1 ], iota_datum[1] );
+        
+        ## FiniteStrictCoproductCompletion code:
+        complement_source := ObjectConstructor( UC,
+                                     Pair( t - s,
+                                           List( complement_map, i -> T_objs[1 + i] ) ) );
+        
+        complement_mor := List( complement_map, i -> idT_mors[1 + i] );
+        
+        return MorphismConstructor( UC,
+                       complement_source,
+                       Pair( complement_map,
+                             complement_mor ),
+                       T );
+        
+    end );
+    
     if CanCompute( C, "DirectProduct" ) then
         
         ##

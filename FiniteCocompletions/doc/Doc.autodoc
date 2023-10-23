@@ -67,6 +67,9 @@
 @Subsection Skeletal Coproduct
 @InsertChunk SkeletalCoproduct
 
+@Subsection Skeletal coproduct complement
+@InsertChunk SkeletalCoproductComplement
+
 @Subsection Skeletal Equalizer
 @InsertChunk SkeletalEqualizer
 
