@@ -51,7 +51,7 @@ DeclareAttribute( "ExactCoverWithGlobalElements",
 #!  of morphisms from the distinguished object
 #!  $t :=$<C>DistinguishedObjectOfHomomorphismStructure</C>( $\mathbf{C}$ ) to <C>Range</C>( <A>iota</A> ),
 #!  such that <C>IsLiftableAlongMonomorphism</C>( <A>iota</A>, $\tau$ ) = <C>false</C>.
-#! @Returns a morphism in $\mathrm{Hom}( t, \mathrm{Range}( \iota ) )$
+#! @Returns a morphism in $\mathrm{Hom}( t, \mathrm{Target}( \iota ) )$
 #! @Arguments iota
 DeclareAttribute( "IndexOfNonliftableMorphismFromDistinguishedObject",
         IsCapCategoryMorphism );
@@ -63,7 +63,7 @@ DeclareAttribute( "IndexOfNonliftableMorphismFromDistinguishedObject",
 #!  The output is a morphism $\tau$ from the distinguished object
 #!  $t :=$<C>DistinguishedObjectOfHomomorphismStructure</C>( $\mathbf{C}$ ) to <C>Range</C>( <A>iota</A> ),
 #!  such that <C>IsLiftableAlongMonomorphism</C>( <A>iota</A>, $\tau$ ) = <C>false</C>.
-#! @Returns a morphism in $\mathrm{Hom}( t, \mathrm{Range}( \iota ) )$
+#! @Returns a morphism in $\mathrm{Hom}( t, \mathrm{Target}( \iota ) )$
 #! @Arguments iota
 DeclareAttribute( "NonliftableMorphismFromDistinguishedObject",
         IsCapCategoryMorphism );
@@ -126,7 +126,7 @@ DeclareAttribute( "CartesianSquareOfSubobjectClassifier",
 #! The argument is a monomorphism $m : A \rightarrow S$.
 #! The output is its classifying morphism
 #! $\chi_m : S \rightarrow \mathrm{SubobjectClassifier}$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Range}(m), \mathrm{SubobjectClassifier} )$
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Target}(m), \mathrm{SubobjectClassifier} )$
 #! @Arguments m
 DeclareAttribute( "ClassifyingMorphismOfSubobject",
         IsCapCategoryMorphism );
@@ -135,7 +135,7 @@ DeclareAttribute( "ClassifyingMorphismOfSubobject",
 #! The arguments are a monomorphism $m : A \rightarrow S$ and
 #! the subobject classifier $\Omega$. The output is the classifying morphism
 #! of the monomorphism $\chi_m : S \rightarrow \mathrm{SubobjectClassifier}$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Range}(m), \mathrm{SubobjectClassifier} )$
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Target}(m), \mathrm{SubobjectClassifier} )$
 #! @Arguments m, omega
 DeclareOperation( "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
         [ IsCapCategoryMorphism, IsCapCategoryObject ] );
