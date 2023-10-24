@@ -59,13 +59,15 @@
 </span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8671AA4181FFF519">4.4-5 <span class="Heading">Skeletal Initial and Terminal Objects</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7F312766810A2F89">4.4-6 <span class="Heading">Skeletal direct product</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7F312766810A2F89">4.4-6 <span class="Heading">Skeletal Direct Product</span></a>
 </span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7ADD1E46831BEED2">4.4-7 <span class="Heading">Skeletal Coproduct</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8612F06E7F683F4C">4.4-8 <span class="Heading">Skeletal Equalizer</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7CB41F747E51F31D">4.4-8 <span class="Heading">Skeletal coproduct complement</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7FAC0A93866676CE">4.4-9 <span class="Heading">Skeletal homomorphism structre</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8612F06E7F683F4C">4.4-9 <span class="Heading">Skeletal Equalizer</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7FAC0A93866676CE">4.4-10 <span class="Heading">Skeletal homomorphism structre</span></a>
 </span>
 </div></div>
 </div>
@@ -182,7 +184,7 @@ SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
 A CAP category with name
 SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory:
 
-34 primitive operations were used to derive 168 operations for this category
+35 primitive operations were used to derive 171 operations for this category
 which algorithmically
 * IsCategoryWithDecidableLifts
 * IsEquippedWithHomomorphismStructure
@@ -379,7 +381,7 @@ true
 
 <p><a id="X7F312766810A2F89" name="X7F312766810A2F89"></a></p>
 
-<h5>4.4-6 <span class="Heading">Skeletal direct product</span></h5>
+<h5>4.4-6 <span class="Heading">Skeletal Direct Product</span></h5>
 
 
 <div class="example"><pre>
@@ -479,9 +481,44 @@ true
 true
 </pre></div>
 
+<p><a id="X7CB41F747E51F31D" name="X7CB41F747E51F31D"></a></p>
+
+<h5>4.4-8 <span class="Heading">Skeletal coproduct complement</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;</span>
+SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := ObjectConstructor( sFinSets, 5 );</span>
+|5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota:= MorphismConstructor( m, [ 1, 4, 2 ], n );</span>
+|3| → |5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota );</span>
+{ 0, 1, 2 } ⱶ[ 1, 4, 2 ]→ { 0,..., 4 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kappa := InjectionOfCoproductComplement( iota );</span>
+|2| → |5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( kappa );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( kappa );</span>
+{ 0, 1 } ⱶ[ 0, 3 ]→ { 0,..., 4 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iso := UniversalMorphismFromCoproduct( [ iota, kappa ] );</span>
+|5| → |5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iso );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iso );</span>
+{ 0,..., 4 } ⱶ[ 1, 4, 2, 0, 3 ]→ { 0,..., 4 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( iso );</span>
+true
+</pre></div>
+
 <p><a id="X8612F06E7F683F4C" name="X8612F06E7F683F4C"></a></p>
 
-<h5>4.4-8 <span class="Heading">Skeletal Equalizer</span></h5>
+<h5>4.4-9 <span class="Heading">Skeletal Equalizer</span></h5>
 
 
 <div class="example"><pre>
@@ -529,7 +566,7 @@ true
 
 <p><a id="X7FAC0A93866676CE" name="X7FAC0A93866676CE"></a></p>
 
-<h5>4.4-9 <span class="Heading">Skeletal homomorphism structre</span></h5>
+<h5>4.4-10 <span class="Heading">Skeletal homomorphism structre</span></h5>
 
 
 <div class="example"><pre>

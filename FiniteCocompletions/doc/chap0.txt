@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2023.10-18
+                                   2023.10-19
   
   
-                                22 October 2023
+                                24 October 2023
   
   
                                 Mohamed Barakat
@@ -99,10 +99,11 @@
       4.4-3 [33X[0;0YSkeletal Lift[133X
       4.4-4 [33X[0;0YMorphisms of external Hom[133X
       4.4-5 [33X[0;0YSkeletal Initial and Terminal Objects[133X
-      4.4-6 [33X[0;0YSkeletal direct product[133X
+      4.4-6 [33X[0;0YSkeletal Direct Product[133X
       4.4-7 [33X[0;0YSkeletal Coproduct[133X
-      4.4-8 [33X[0;0YSkeletal Equalizer[133X
-      4.4-9 [33X[0;0YSkeletal homomorphism structre[133X
+      4.4-8 [33X[0;0YSkeletal coproduct complement[133X
+      4.4-9 [33X[0;0YSkeletal Equalizer[133X
+      4.4-10 [33X[0;0YSkeletal homomorphism structre[133X
   5 [33X[0;0YThe pair of parallel arrows category of a category[133X
     5.1 [33X[0;0YGlobal variables[133X
       5.1-1 QuiverOfCategoryOfQuivers

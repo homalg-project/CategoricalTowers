@@ -92,7 +92,7 @@
     [4X[28XA CAP category with name[128X[104X
     [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X34 primitive operations were used to derive 168 operations for this category[128X[104X
+    [4X[28X35 primitive operations were used to derive 171 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
@@ -280,7 +280,7 @@
   [4X[32X[104X
   
   
-  [1X4.4-6 [33X[0;0YSkeletal direct product[133X[101X
+  [1X4.4-6 [33X[0;0YSkeletal Direct Product[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
@@ -378,7 +378,40 @@
   [4X[32X[104X
   
   
-  [1X4.4-8 [33X[0;0YSkeletal Equalizer[133X[101X
+  [1X4.4-8 [33X[0;0YSkeletal coproduct complement[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
+    [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;[127X[104X
+    [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xm := ObjectConstructor( sFinSets, 3 );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27Xn := ObjectConstructor( sFinSets, 5 );[127X[104X
+    [4X[28X|5|[128X[104X
+    [4X[25Xgap>[125X [27Xiota:= MorphismConstructor( m, [ 1, 4, 2 ], n );[127X[104X
+    [4X[28X|3| → |5|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iota );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 1, 4, 2 ]→ { 0,..., 4 }[128X[104X
+    [4X[25Xgap>[125X [27Xkappa := InjectionOfCoproductComplement( iota );[127X[104X
+    [4X[28X|2| → |5|[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( kappa );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( kappa );[127X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 0, 3 ]→ { 0,..., 4 }[128X[104X
+    [4X[25Xgap>[125X [27Xiso := UniversalMorphismFromCoproduct( [ iota, kappa ] );[127X[104X
+    [4X[28X|5| → |5|[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( iso );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iso );[127X[104X
+    [4X[28X{ 0,..., 4 } ⱶ[ 1, 4, 2, 0, 3 ]→ { 0,..., 4 }[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( iso );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.4-9 [33X[0;0YSkeletal Equalizer[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
@@ -424,7 +457,7 @@
   [4X[32X[104X
   
   
-  [1X4.4-9 [33X[0;0YSkeletal homomorphism structre[133X[101X
+  [1X4.4-10 [33X[0;0YSkeletal homomorphism structre[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X

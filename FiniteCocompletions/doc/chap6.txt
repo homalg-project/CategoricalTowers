@@ -587,7 +587,7 @@
     [4X[28XA CAP category with name[128X[104X
     [4X[28XFiniteStrictCoproductCompletion( Opposite( SkeletalFinSets ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X32 primitive operations were used to derive 169 operations for this category[128X[104X
+    [4X[28X33 primitive operations were used to derive 172 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
