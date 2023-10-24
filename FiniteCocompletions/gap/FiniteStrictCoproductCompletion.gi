@@ -151,7 +151,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         [ IsCapCategory ],
         
   function ( C )
-    local UC, install_hom_structure, V,
+    local UC, install_hom_structure, H,
           object_func, morphism_func, object_func_inverse, morphism_func_inverse, extended;
     
     ##
@@ -1001,49 +1001,49 @@ InstallMethod( FiniteStrictCoproductCompletion,
     install_hom_structure := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "install_hom_structure", true );
     
     if HasRangeCategoryOfHomomorphismStructure( C ) then
-        V := RangeCategoryOfHomomorphismStructure( C );
+        H := RangeCategoryOfHomomorphismStructure( C );
     fi;
     
     if install_hom_structure and
        ( HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure )( C ) and
        CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
-       IsBound( V ) and
-       ( HasIsCartesianCategory and IsCartesianCategory )( V ) and
-       CheckConstructivenessOfCategory( V, "IsCartesianCategory" ) = [ ] then
+       IsBound( H ) and
+       ( HasIsCartesianCategory and IsCartesianCategory )( H ) and
+       CheckConstructivenessOfCategory( H, "IsCartesianCategory" ) = [ ] then
         
-        if ( HasIsTerminalCategory and IsTerminalCategory )( V ) or
-           not ( HasIsCocartesianCategory and IsCocartesianCategory )( V ) then
+        if ( HasIsTerminalCategory and IsTerminalCategory )( H ) or
+           not ( HasIsCocartesianCategory and IsCocartesianCategory )( H ) then
             
-            if IsIdenticalObj( C, V ) then
+            if IsIdenticalObj( C, H ) then
                 
                 # prevent infinite recursion
-                V := UC;
+                H := UC;
                 
             else
                 
-                V := FiniteStrictCoproductCompletion( V );
+                H := FiniteStrictCoproductCompletion( H );
                 
             fi;
             
             # prepare for ExtendRangeOfHomomorphismStructureByFullEmbedding
-            object_func := function ( C, V, object )
+            object_func := function ( C, H, object )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
-                return ObjectConstructor( V, Pair( BigInt( 1 ), [ object ] ) );
+                return ObjectConstructor( H, Pair( BigInt( 1 ), [ object ] ) );
                 
             end;
             
-            morphism_func := function ( C, V, source, morphism, target )
+            morphism_func := function ( C, H, source, morphism, target )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
-                return MorphismConstructor( V,
+                return MorphismConstructor( H,
                     source,
                     Pair( [ BigInt( 0 ) ], [ morphism ] ),
                     target );
                 
             end;
             
-            object_func_inverse := function ( C, V, object )
+            object_func_inverse := function ( C, H, object )
                 local datum;
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
@@ -1056,7 +1056,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
             end;
             
-            morphism_func_inverse := function ( C, V, source, pair_of_lists, target )
+            morphism_func_inverse := function ( C, H, source, pair_of_lists, target )
                 local morphism;
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
@@ -1080,7 +1080,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             extended := true;
             
-            ExtendRangeOfHomomorphismStructureByFullEmbedding( C, V, object_func, morphism_func, object_func_inverse, morphism_func_inverse );
+            ExtendRangeOfHomomorphismStructureByFullEmbedding( C, H, object_func, morphism_func, object_func_inverse, morphism_func_inverse );
             
         else
             
@@ -1090,28 +1090,28 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
         fi;
         
-        SetRangeCategoryOfHomomorphismStructure( UC, V );
+        SetRangeCategoryOfHomomorphismStructure( UC, H );
         
         SetIsEquippedWithHomomorphismStructure( UC, true );
         
         ##
         AddDistinguishedObjectOfHomomorphismStructure( UC,
           function( UC )
-            local V;
+            local H;
             
-            V := RangeCategoryOfHomomorphismStructure( UC );
+            H := RangeCategoryOfHomomorphismStructure( UC );
             
-            return DistinguishedObjectOfHomomorphismStructureExtendedByFullEmbedding( UnderlyingCategory( UC ), V );
+            return DistinguishedObjectOfHomomorphismStructureExtendedByFullEmbedding( UnderlyingCategory( UC ), H );
             
         end );
         
         ##
         AddHomomorphismStructureOnObjects( UC,
           function( UC, S, T )
-            local C, V, pairS, pairT, LS, LT, s, t, maps;
+            local C, H, pairS, pairT, LS, LT, s, t, maps;
             
             C := UnderlyingCategory( UC );
-            V := RangeCategoryOfHomomorphismStructure( UC );
+            H := RangeCategoryOfHomomorphismStructure( UC );
             
             pairS := ObjectDatum( UC, S );
             pairT := ObjectDatum( UC, T );
@@ -1126,11 +1126,11 @@ InstallMethod( FiniteStrictCoproductCompletion,
                           List( [ 0 .. s - 1 ], i ->
                                 RemInt( QuoInt( m, t ^ i ), t ) ) );
             
-            return Coproduct( V,
+            return Coproduct( H,
                            List( maps, map ->
-                                 DirectProduct( V,
+                                 DirectProduct( H,
                                          List( [ 0 .. s - 1 ], i ->
-                                               HomomorphismStructureOnObjectsExtendedByFullEmbedding( C, V,
+                                               HomomorphismStructureOnObjectsExtendedByFullEmbedding( C, H,
                                                        LS[1 + i], LT[1 + map[1 + i]] ) ) ) ) );
             
         end );
@@ -1138,10 +1138,10 @@ InstallMethod( FiniteStrictCoproductCompletion,
         ##
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( UC,
           function( UC, distinguished_object, phi, target )
-            local C, V, pairS, pairT, s, t, maps, LS, LT, Homs, homs, pair_of_lists, map, mor, number, intros, intro;
+            local C, H, pairS, pairT, s, t, maps, LS, LT, Homs, homs, pair_of_lists, map, mor, number, intros, intro;
             
             C := UnderlyingCategory( UC );
-            V := RangeCategoryOfHomomorphismStructure( UC );
+            H := RangeCategoryOfHomomorphismStructure( UC );
             
             pairS := ObjectDatum( UC, Source( phi ) );
             pairT := ObjectDatum( UC, Target( phi ) );
@@ -1158,10 +1158,10 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             Homs := List( maps, map ->
                           List( [ 0 .. s - 1 ], i ->
-                                HomomorphismStructureOnObjectsExtendedByFullEmbedding( C, V,
+                                HomomorphismStructureOnObjectsExtendedByFullEmbedding( C, H,
                                         LS[1 + i], LT[1 + map[1 + i]] ) ) );
             
-            homs := List( Homs, L -> DirectProduct( V, L ) );
+            homs := List( Homs, L -> DirectProduct( H, L ) );
             
             pair_of_lists := MorphismDatum( UC, phi );
             
@@ -1172,20 +1172,20 @@ InstallMethod( FiniteStrictCoproductCompletion,
             number := Sum( [ 0 .. s - 1 ], i -> map[1 + i] * t^i );
             
             intros := List( [ 0 .. s - 1 ], i ->
-                            InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding( C, V,
+                            InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding( C, H,
                                     distinguished_object,
                                     mor[1 + i], ## ∈ C₀
                                     Homs[1 + number][1 + i] ) );
             
-            intro := UniversalMorphismIntoDirectProductWithGivenDirectProduct( V,
+            intro := UniversalMorphismIntoDirectProductWithGivenDirectProduct( H,
                              Homs[1 + number],
                              distinguished_object,
                              intros,
                              homs[1 + number] );
             
-            return PreCompose( V,
+            return PreCompose( H,
                            intro,
-                           InjectionOfCofactorOfCoproductWithGivenCoproduct( V,
+                           InjectionOfCofactorOfCoproductWithGivenCoproduct( H,
                                    homs,
                                    1 + number,
                                    target ) );
@@ -1197,14 +1197,14 @@ InstallMethod( FiniteStrictCoproductCompletion,
             ##
             AddHomomorphismStructureOnMorphismsWithGivenObjects( UC,
               function ( UC, source, alpha, gamma, target )
-                local C, UV, V, source_alpha, target_alpha, source_gamma, target_gamma,
+                local C, UV, H, source_alpha, target_alpha, source_gamma, target_gamma,
                       source_alpha_length, target_alpha_length, source_gamma_length, target_gamma_length,
                       Hom_target_alpha_source_gamma, Hom_source_alpha_target_gamma,
                       alpha_datum, gamma_datum, f, h, alpha_mor, gamma_mor, cmp_maps_and_mors, map_and_mor;
                 
                 C := UnderlyingCategory( UC );
                 UV := RangeCategoryOfHomomorphismStructure( UC );
-                V := UnderlyingCategory( UV );
+                H := UnderlyingCategory( UV );
                 
                 source_alpha := ObjectDatum( UC, Source( alpha ) );
                 target_alpha := ObjectDatum( UC, Target( alpha ) );
@@ -1257,12 +1257,12 @@ InstallMethod( FiniteStrictCoproductCompletion,
                                                                               source_alpha[2][1 + i],
                                                                               target_gamma[2][1 + cmp_f_g_h[1 + i]] ) );
                     
-                    mor_value := UniversalMorphismIntoDirectProductWithGivenDirectProduct( V,
+                    mor_value := UniversalMorphismIntoDirectProductWithGivenDirectProduct( H,
                                          Hom_source_alpha_target_gamma_fgh_factors,
                                          Hom_target_alpha_source_gamma_g,
                                          List( [ 0 .. source_alpha_length - 1 ], i ->
-                                               PreCompose( V,
-                                                       ProjectionInFactorOfDirectProductWithGivenDirectProduct( V,
+                                               PreCompose( H,
+                                                       ProjectionInFactorOfDirectProductWithGivenDirectProduct( H,
                                                                Hom_target_alpha_source_gamma_g_factors,
                                                                1 + f[1 + i],
                                                                Hom_target_alpha_source_gamma_g ),
@@ -1290,11 +1290,11 @@ InstallMethod( FiniteStrictCoproductCompletion,
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UC,
               function( UC, S, T, morphism )
-                local C, UV, V, pairS, pairT, s, t, maps, LS, LT, Homs, homs, pair_of_lists, number, map, m, mor;
+                local C, UV, H, pairS, pairT, s, t, maps, LS, LT, Homs, homs, pair_of_lists, number, map, m, mor;
                 
                 C := UnderlyingCategory( UC );
                 UV := RangeCategoryOfHomomorphismStructure( UC );
-                V := UnderlyingCategory( UV );
+                H := UnderlyingCategory( UV );
                 
                 pairS := ObjectDatum( UC, S );
                 pairT := ObjectDatum( UC, T );
@@ -1314,7 +1314,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                                     HomomorphismStructureOnObjects( C,
                                             LS[1 + i], LT[1 + map[1 + i]] ) ) );
                 
-                homs := List( Homs, L -> DirectProduct( V, L ) );
+                homs := List( Homs, L -> DirectProduct( H, L ) );
                 
                 pair_of_lists := MorphismDatum( UV, morphism );
                 
@@ -1335,9 +1335,9 @@ InstallMethod( FiniteStrictCoproductCompletion,
                              InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
                                      LS[1 + i],
                                      LT[1 + map[1 + i]],
-                                     PreCompose( V,
+                                     PreCompose( H,
                                              m,
-                                             ProjectionInFactorOfDirectProductWithGivenDirectProduct( V,
+                                             ProjectionInFactorOfDirectProductWithGivenDirectProduct( H,
                                                      Homs[1 + number],
                                                      1 + i,
                                                      homs[1 + number] ) ) ) );
@@ -1394,16 +1394,16 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
             fi;
             
-        elif ( IsBound( IsSkeletalCategoryOfFiniteSets ) and ValueGlobal( "IsSkeletalCategoryOfFiniteSets" )( V ) ) or
-          IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( V ) then
+        elif ( IsBound( IsSkeletalCategoryOfFiniteSets ) and ValueGlobal( "IsSkeletalCategoryOfFiniteSets" )( H ) ) or
+          IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( H ) then
             
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UC,
               function( UC, S, T, morphism )
-                local C, UV, V, pairS, pairT, s, t, maps, LS, LT, Homs, homs, value, number, map, m, mor;
+                local C, UV, H, pairS, pairT, s, t, maps, LS, LT, Homs, homs, value, number, map, m, mor;
                 
                 C := UnderlyingCategory( UC );
-                V := RangeCategoryOfHomomorphismStructure( UC );
+                H := RangeCategoryOfHomomorphismStructure( UC );
                 
                 pairS := ObjectDatum( UC, S );
                 pairT := ObjectDatum( UC, T );
@@ -1423,9 +1423,9 @@ InstallMethod( FiniteStrictCoproductCompletion,
                                     HomomorphismStructureOnObjects( C,
                                             LS[1 + i], LT[1 + map[1 + i]] ) ) );
                 
-                homs := List( Homs, L -> DirectProduct( V, L ) );
+                homs := List( Homs, L -> DirectProduct( H, L ) );
                 
-                value := MorphismDatum( V, morphism )[1];
+                value := MorphismDatum( H, morphism )[1];
                 
                 number := BigInt( SafeFirst( [ 0 .. t ^ s - 1 ], i -> Sum( List( homs{[ 1 .. 1 + i ]}, Length ) ) > value ) );
                 
@@ -1439,13 +1439,13 @@ InstallMethod( FiniteStrictCoproductCompletion,
                              InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
                                      LS[1 + i],
                                      LT[1 + map[1 + i]],
-                                     PreCompose( V,
-                                             Lift( V,
+                                     PreCompose( H,
+                                             Lift( H,
                                                    morphism,
-                                                   InjectionOfCofactorOfCoproduct( V,
+                                                   InjectionOfCofactorOfCoproduct( H,
                                                            homs,
                                                            1 + number ) ),
-                                             ProjectionInFactorOfDirectProductWithGivenDirectProduct( V,
+                                             ProjectionInFactorOfDirectProductWithGivenDirectProduct( H,
                                                      Homs[1 + number],
                                                      1 + i,
                                                      homs[1 + number] ) ) ) );
