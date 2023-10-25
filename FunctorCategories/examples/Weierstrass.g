@@ -185,8 +185,7 @@ IsWellDefined( sec );
 #! true
 Emb := EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheaves( PSh );
 #! The embedding functor of the finite coproduct completion into f.p. presheaves
-ip := PreCompose( Emb( sec ),
-              ProjectionOntoCoequalizer( CoYonedaLemmaCoequalizerPair( G )[2] ) );
+ip := PreCompose( Emb( sec ), cy );
 #! <(o)->18x10>
 IsEqualAsFactorobjects( pi, ip );
 #! true
