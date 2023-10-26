@@ -3752,69 +3752,85 @@ InstallOtherMethodForCompilerForCAP( RetractionByCoveringListOfRepresentables,
         [ IsSkeletalCategoryOfFiniteSets, IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ],
         
   function ( H, PSh, covering_list, F )
-    local C, defining_triple, nr_objs, objs, mors, id, F_vals, offsets, coYoneda,
-          CoequalizerPairs, source, s, source_list, list, UC, range, f, map_mor, retraction;
-    
-    C := Source( PSh );
-    
-    defining_triple := DefiningTripleOfUnderlyingQuiver( C );
-    nr_objs := defining_triple[1];
-    
-    objs := SetOfObjects( C );
-    mors := SetOfGeneratingMorphisms( C );
-    
-    id := List( objs, obj -> IdentityMorphism( C, obj ) );
-    
-    F_vals := ValuesOfPreSheaf( F );
-    
-    offsets := List( [ 0 .. nr_objs - 1 ], i -> Sum( List( [ 1 .. i ], j -> Length( F_vals[1][j] ) ) ) );
-    
-    coYoneda := CoYonedaLemmaOnObjects( PSh, F );
+    local CoequalizerPairs, UC, coYoF, F_VAst, V, A, s, t, idV, A_V, AuV, s_idV, t_idV,
+          section_complement, section, complement, summands, iso, inv,
+          lift_on_O, lift_on_complement, lift, map, mor, lift_t_idV, retraction;
     
     CoequalizerPairs := AssociatedColimitCompletionOfSourceCategory( PSh );
     
-    source := ObjectDatum( CoequalizerPairs, coYoneda )[1][1];
-    
-    s := ObjectDatum( source )[1];
-    
-    source_list := ObjectDatum( source )[2];
-    
-    list := List( covering_list, a -> a[1] );
-    
     UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
-    range := ObjectConstructor( UC, Pair( Length( list ), list ) );
+    coYoF := CoYonedaLemmaOnObjects( PSh, F );
     
-    f :=
-      function( i )
-        local objC_pos, val, pos, objC, pos_mor, mor, map, r;
-        
-        objC_pos := SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( C, obj, source_list[i] ) );
-        
-        val := i - 1 - offsets[objC_pos];
-        
-        pos := PositionProperty( covering_list, a -> IsEqualForObjects( C, a[1], source_list[i] ) and AsList( a[2] )[1 + 0] = val );
-        
-        if IsInt( pos ) then
-            return [ -1 + pos, id[objC_pos] ];
-        else
-            objC := objs[objC_pos];
-            pos_mor := SafePositionProperty( mors, a -> IsEqualForObjects( C, Source( a ), objC ) );
-            mor := mors[pos_mor];
-            map := -1 + SafePosition( AsList( F_vals[2][pos_mor] ), val );
-            r := Target( mor );
-            return [ -1 + SafePositionProperty( covering_list, a -> IsEqualForObjects( C, r, a[1] ) and AsList( a[2] )[1 + 0] = map ), mor ];
-        fi;
-        
-    end;
+    F_VAst := ObjectDatum( CoequalizerPairs, coYoF );
     
-    map_mor := List( [ 1 .. s ], f );
+    V := F_VAst[1][1];
+    A := F_VAst[1][2];
+    s := F_VAst[2][1];
+    t := F_VAst[2][2];
     
-    retraction := MorphismConstructor( UC,
-                   source,
-                   Pair( List( map_mor, a -> a[1] ),
-                         List( map_mor, a -> a[2] ) ),
-                   range );
+    idV := IdentityMorphism( UC, V );
+    
+    A_V := [ A, V ];
+    AuV := Coproduct( UC, A_V );
+    
+    ## s ⊔ id_V: A ⊔ V → V
+    s_idV := UniversalMorphismFromCoproductWithGivenCoproduct( UC,
+                     A_V,
+                     V,
+                     [ s, idV ],
+                     AuV );
+    
+    ## t ⊔ id_V: A ⊔ V → V
+    t_idV := UniversalMorphismFromCoproductWithGivenCoproduct( UC,
+                     A_V,
+                     V,
+                     [ t, idV ],
+                     AuV );
+    
+    section_complement := SectionAndComplementByCoveringListOfRepresentables( PSh, covering_list, F );
+    
+    section := section_complement[1];
+    complement := section_complement[2];
+    
+    summands := [ Source( section ), Source( complement ) ];
+    
+    iso := UniversalMorphismFromCoproduct( UC,
+                   summands,
+                   V,
+                   [ section, complement ] );
+    
+    inv := PreInverseForMorphisms( UC, iso );
+    
+    ## constructing the lift:
+    
+    ## λ_O: O → A ⊔ V
+    lift_on_O := PreCompose( UC,
+                         ## O → V
+                         section,
+                         ## V → A ⊔ V
+                         InjectionOfCofactorOfCoproductWithGivenCoproduct( UC,
+                                 A_V,
+                                 2,
+                                 AuV ) );
+    
+    ## λ_K: K → A ⊔ V
+    lift_on_complement := Lift( UC, complement, s_idV );
+    
+    
+    ## λ: V → O ⊔ K → A ⊔ V
+    lift := PreCompose( UC,
+                    inv,
+                    UniversalMorphismFromCoproduct( UC,
+                            summands,
+                            AuV,
+                            [ lift_on_O, lift_on_complement ] ) );
+    
+    ## λ (t ⊔ id_V): V → V
+    lift_t_idV := PreCompose( UC, lift, t_idV );
+    
+    ## r: V → O
+    retraction := Lift( UC, lift_t_idV, section );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsSplitEpimorphism( retraction, true );
