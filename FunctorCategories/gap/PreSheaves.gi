@@ -3752,7 +3752,7 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
         [ IsSkeletalCategoryOfFiniteSets, IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( H, PSh, F )
-    local C, defining_triple, nr_objs, objs, mors, id, F_vals, offsets, coYoneda, cover,
+    local C, defining_triple, nr_objs, objs, mors, id, F_vals, offsets, coYoneda, covering_list,
           CoequalizerPairs, source, s, source_list, list, UC, range, f, map_mor, retraction;
     
     C := Source( PSh );
@@ -3771,7 +3771,7 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
     
     coYoneda := CoYonedaLemmaOnObjects( PSh, F );
     
-    cover := DoctrineSpecificCoveringListOfRepresentables( H, PSh, F );
+    covering_list := DoctrineSpecificCoveringListOfRepresentables( H, PSh, F );
     
     CoequalizerPairs := AssociatedColimitCompletionOfSourceCategory( PSh );
     
@@ -3781,7 +3781,7 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
     
     source_list := ObjectDatum( source )[2];
     
-    list := List( cover, a -> a[1] );
+    list := List( covering_list, a -> a[1] );
     
     UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
@@ -3795,7 +3795,7 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
         
         val := i - 1 - offsets[objC_pos];
         
-        pos := PositionProperty( cover, a -> IsEqualForObjects( C, a[1], source_list[i] ) and AsList( a[2] )[1 + 0] = val );
+        pos := PositionProperty( covering_list, a -> IsEqualForObjects( C, a[1], source_list[i] ) and AsList( a[2] )[1 + 0] = val );
         
         if IsInt( pos ) then
             return [ -1 + pos, id[objC_pos] ];
@@ -3805,7 +3805,7 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
             mor := mors[pos_mor];
             map := -1 + SafePosition( AsList( F_vals[2][pos_mor] ), val );
             r := Target( mor );
-            return [ -1 + SafePositionProperty( cover, a -> IsEqualForObjects( C, r, a[1] ) and AsList( a[2] )[1 + 0] = map ), mor ];
+            return [ -1 + SafePositionProperty( covering_list, a -> IsEqualForObjects( C, r, a[1] ) and AsList( a[2] )[1 + 0] = map ), mor ];
         fi;
         
     end;
