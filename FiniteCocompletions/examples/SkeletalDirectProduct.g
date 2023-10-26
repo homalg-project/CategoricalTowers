@@ -1,7 +1,7 @@
 #! @Chunk SkeletalDirectProduct
 
 #! @Example
-LoadPackage( "FiniteCocompletions" );
+LoadPackage( "FiniteCocompletions", false );
 #! true
 sFinSets :=
   SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;
