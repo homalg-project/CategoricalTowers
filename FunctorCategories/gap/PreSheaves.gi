@@ -3636,7 +3636,7 @@ InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
     
     embs :=
       function( o )
-        local cover_o, c_o, F_o, source_diagram_o, source_o, target_o, standard_global_morphism_o;
+        local cover_o, c_o, F_o, source_diagram_o, source_o, target_o, section_o;
         
         cover_o := Filtered( covering_list, e -> e[3] = o );
         
@@ -3653,7 +3653,7 @@ InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
         
         target_o := Coproduct( H, ListWithIdenticalEntries( F_o, d ) );
         
-        standard_global_morphism_o := UniversalMorphismFromCoproductWithGivenCoproduct( H,
+        section_o := UniversalMorphismFromCoproductWithGivenCoproduct( H,
                                               source_diagram_o,
                                               target_o,
                                               List( cover_o, a -> a[2] ),
@@ -3663,7 +3663,7 @@ InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
                        o,
                        source_o,
                        target_o,
-                       standard_global_morphism_o );
+                       section_o );
         
     end;
     
