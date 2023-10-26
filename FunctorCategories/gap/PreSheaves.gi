@@ -3614,7 +3614,7 @@ InstallOtherMethodForCompilerForCAP( SectionAndComplementByCoveringListOfReprese
         
   function ( PSh, covering_list, F )
     local C, H, d, defining_triple, nr_objs, objs, UC,
-          F_on_objs, embs, cover, sources, targets, target,
+          F_on_objs, embs, cover, sources, source, targets, target,
           sections, section, complement_sources, complements, complement;
     
     C := Source( PSh );
@@ -3675,6 +3675,8 @@ InstallOtherMethodForCompilerForCAP( SectionAndComplementByCoveringListOfReprese
                              objs[1 + o],
                              cover[1 + o][2] ) );
     
+    source := Coproduct( UC, sources );
+    
     targets := List( [ 0 .. nr_objs - 1 ], o ->
                      TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC,
                              objs[1 + o],
@@ -3690,7 +3692,7 @@ InstallOtherMethodForCompilerForCAP( SectionAndComplementByCoveringListOfReprese
                               targets[1 + o] ) );
     
     section := CoproductFunctorialWithGivenCoproducts( UC,
-                       Coproduct( UC, sources ),
+                       source,
                        sources,
                        sections,
                        targets,
