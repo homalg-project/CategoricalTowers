@@ -49,6 +49,28 @@ CategoryFilter := function( cat )
            IsIdenticalObj( cat, RangeCategoryOfHomomorphismStructure( cat ) );
 end );
 
+##
+AddDerivationToCAP( CoproductComplement,
+        "CoproductComplement as the source of InjectionOfCoproductComplement",
+        [ [ InjectionOfCoproductComplement, 1 ] ],
+        
+  function( cat, mor )
+    
+    return Source( InjectionOfCoproductComplement( cat, mor ) );
+    
+end );
+
+##
+AddDerivationToCAP( DirectProductComplement,
+        "DirectProductComplement as the target of ProjectionInDirectProductComplement",
+        [ [ ProjectionInDirectProductComplement, 1 ] ],
+        
+  function( cat, mor )
+    
+    return Target( ProjectionInDirectProductComplement( cat, mor ) );
+    
+end );
+
 ## Page 20 in Peter Freyd, Aspect of topoi, Bull. Austral. Math. Soc, 7 (1972)
 AddDerivationToCAP( ImageEmbedding,
         "the (regular) image as the equalizer of the cokernel-pair",

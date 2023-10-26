@@ -70,6 +70,66 @@ DeclareAttribute( "NonliftableMorphismFromDistinguishedObject",
 
 ####################################
 ##
+#! @Section Coproduct and direct product complements
+##
+####################################
+
+#! @Description
+#!  The argument is a morphism <A>iota</A>$: S \to T$ which is a coproduct injection of some binary coproduct.
+#!  The output is an object $C$ such that $S \sqcup C \cong T$.
+#! @Returns an object
+#! @Arguments iota
+DeclareAttribute( "CoproductComplement",
+        IsCapCategoryMorphism );
+
+#! @Description
+#!  The argument is a morphism <A>iota</A>$: S \to T$ which is a coproduct injection of some binary coproduct.
+#!  The output is a coproduct injection $\iota_2: C \to T$ such that
+#!  <C>UniversalMorphismFromCoproduct</C>( <A>iota</A>, $\iota_2$ )$: S \sqcup C \to T$ is an isomorphism.
+#! @Returns a morphism in $\mathrm{Hom}( C, \mathrm{Target}( \iota ) )$
+#! @Arguments iota
+DeclareAttribute( "InjectionOfCoproductComplement",
+        IsCapCategoryMorphism );
+
+#! @Description
+#!  The argument is a morphism <A>iota</A>$: S \to T$ which is a coproduct injection of some binary coproduct
+#!  and a coproduct complement <A>C</A>.
+#!  The output is a coproduct injection $\iota_2:$ <A>C</A> $\to T$ such that
+#!  <C>UniversalMorphismFromCoproduct</C>( <A>iota</A>, $\iota_2$ )$: S \sqcup C \to T$ is an isomorphism.
+#! @Returns a morphism in $\mathrm{Hom}( C, \mathrm{Target}( \iota ) )$
+#! @Arguments iota, C
+DeclareOperation( "InjectionOfCoproductComplementWithGivenCoproductComplement",
+        [ IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#!  The argument is a morphism <A>pi</A>$: S \to T$ which is a product projection of some binary direct product.
+#!  The output is an object $C$ such that $S \times C \cong T$.
+#! @Returns an object
+#! @Arguments pi
+DeclareAttribute( "DirectProductComplement",
+        IsCapCategoryMorphism );
+
+#! @Description
+#!  The argument is a morphism <A>pi</A>$: S \to T$ which is a direct product projection of some binary direct product.
+#!  The output is a direct product projection $\pi_2: C \to T$ such that
+#!  <C>UniversalMorphismIntoDirectProduct</C>( <A>pi</A>, $\pi_2$ )$: T \to S \times C$ is an isomorphism.
+#! @Returns a morphism in $\mathrm{Hom}( C, \mathrm{Target}( \pi ) )$
+#! @Arguments pi
+DeclareAttribute( "ProjectionInDirectProductComplement",
+        IsCapCategoryMorphism );
+
+#! @Description
+#!  The argument is a morphism <A>pi</A>$: S \to T$ which is a direct product projection of some binary direct product
+#!  and a coproduct complement <A>C</A>.
+#!  The output is a direct product projection $\pi_2:$ <A>C</A> $\to T$ such that
+#!  <C>UniversalMorphismIntoDirectProduct</C>( <A>pi</A>, $\pi_2$ )$: T \to S \times C$ is an isomorphism.
+#! @Returns a morphism in $\mathrm{Hom}( C, \mathrm{Target}( \pi ) )$
+#! @Arguments pi, C
+DeclareOperation( "ProjectionInDirectProductComplementWithGivenDirectProductComplement",
+        [ IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+####################################
+##
 #! @Section Subobject classifier
 ##
 ####################################
