@@ -3748,11 +3748,11 @@ InstallMethod( SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiv
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
-        [ IsSkeletalCategoryOfFiniteSets, IsPreSheafCategory, IsObjectInPreSheafCategory ],
+InstallOtherMethodForCompilerForCAP( RetractionByCoveringListOfRepresentables,
+        [ IsSkeletalCategoryOfFiniteSets, IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ],
         
-  function ( H, PSh, F )
-    local C, defining_triple, nr_objs, objs, mors, id, F_vals, offsets, coYoneda, covering_list,
+  function ( H, PSh, covering_list, F )
+    local C, defining_triple, nr_objs, objs, mors, id, F_vals, offsets, coYoneda,
           CoequalizerPairs, source, s, source_list, list, UC, range, f, map_mor, retraction;
     
     C := Source( PSh );
@@ -3770,8 +3770,6 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
     offsets := List( [ 0 .. nr_objs - 1 ], i -> Sum( List( [ 1 .. i ], j -> Length( F_vals[1][j] ) ) ) );
     
     coYoneda := CoYonedaLemmaOnObjects( PSh, F );
-    
-    covering_list := DoctrineSpecificCoveringListOfRepresentables( H, PSh, F );
     
     CoequalizerPairs := AssociatedColimitCompletionOfSourceCategory( PSh );
     
@@ -3826,11 +3824,12 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
-        [ IsAbelianCategory, IsPreSheafCategory, IsObjectInPreSheafCategory ],
+InstallOtherMethodForCompilerForCAP( RetractionByCoveringListOfRepresentables,
+        [ IsAbelianCategory, IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ],
         
-  function ( H, PSh, F )
-    local CoequalizerPairs, UC, coYoneda, F_VAst, V, s, t, id_V, section, V_opt, id_V_opt, alpha, beta, gamma;
+  function ( H, PSh, covering_list, F )
+    local CoequalizerPairs, UC, coYoneda, F_VAst, V, s, t, id_V,
+          section_complement, section, V_opt, id_V_opt, alpha, beta, gamma;
     
     CoequalizerPairs := AssociatedColimitCompletionOfSourceCategory( PSh );
     
@@ -3846,7 +3845,9 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
     
     id_V := IdentityMorphism( UC, V );
     
-    section := SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( PSh, F );
+    section_complement := SectionAndComplementByCoveringListOfRepresentables( PSh, covering_list, F );
+    
+    section := section_complement[1];
     
     V_opt := Source( section );
     
@@ -3864,6 +3865,18 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
+        
+  function ( PSh, F )
+    
+    return RetractionByCoveringListOfRepresentables( Target( PSh ), PSh,
+                   DoctrineSpecificCoveringListOfRepresentables( Target( PSh ), PSh, F ),
+                   F );
+    
+end );
+
+##
 InstallMethod( RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
         [ IsObjectInPreSheafCategory ],
         
@@ -3872,7 +3885,7 @@ InstallMethod( RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjec
     
     PSh := CapCategory( F );
     
-    return RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( Target( PSh ), PSh, F );
+    return RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( PSh, F );
     
 end );
 
@@ -3891,7 +3904,7 @@ InstallOtherMethodForCompilerForCAP( OptimizedCoYonedaLemmaOnObjects,
     
     H :=  Target( PSh );
     
-    retraction := RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( H, PSh, F );
+    retraction := RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( PSh, F );
     
     return ObjectConstructor( ColimitCompletionC,
                    Pair( Pair( Target( retraction ), F_VAst[1][2] ),

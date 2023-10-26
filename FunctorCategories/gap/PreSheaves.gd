@@ -374,6 +374,10 @@ DeclareAttribute( "SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProje
         IsObjectInPreSheafCategory );
 
 #! @Arguments F
+DeclareOperation( "RetractionByCoveringListOfRepresentables",
+        [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ] );
+
+#! @Arguments F
 DeclareAttribute( "RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject",
         IsObjectInPreSheafCategory );
 
