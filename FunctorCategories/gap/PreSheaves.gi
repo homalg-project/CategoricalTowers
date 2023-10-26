@@ -3830,7 +3830,7 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
         [ IsAbelianCategory, IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( H, PSh, F )
-    local CoequalizerPairs, UC, coYoneda, F_VAst, V, s, t, id_V, sec, V_opt, id_V_opt, alpha, beta, gamma;
+    local CoequalizerPairs, UC, coYoneda, F_VAst, V, s, t, id_V, section, V_opt, id_V_opt, alpha, beta, gamma;
     
     CoequalizerPairs := AssociatedColimitCompletionOfSourceCategory( PSh );
     
@@ -3846,14 +3846,14 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
     
     id_V := IdentityMorphism( UC, V );
     
-    sec := SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( PSh, F );
+    section := SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( PSh, F );
     
-    V_opt := Source( sec );
+    V_opt := Source( section );
     
     id_V_opt := IdentityMorphism( UC, V_opt );
     
-    alpha := [ [ sec, ZeroMorphism( UC, V_opt, V ) ], [ id_V, id_V ] ];
-    beta := [ [ id_V_opt, ZeroMorphism( UC, V, V_opt ) ], [ sec, s - t ] ];
+    alpha := [ [ section, ZeroMorphism( UC, V_opt, V ) ], [ id_V, id_V ] ];
+    beta := [ [ id_V_opt, ZeroMorphism( UC, V, V_opt ) ], [ section, s - t ] ];
     gamma := [ id_V_opt, id_V ];
     
     return SolveLinearSystemInAbCategory( UC,
