@@ -3613,7 +3613,7 @@ InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
         [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ],
         
   function ( PSh, covering_list, F )
-    local C, H, d, defining_triple, nr_objs, objs, UC, iota, objsUC,
+    local C, H, d, defining_triple, nr_objs, objs, UC,
           F_on_objs, embs, cover, sources, targets, sections, section;
     
     C := Source( PSh );
@@ -3627,10 +3627,6 @@ InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
     objs := SetOfObjects( C );
     
     UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
-    
-    iota := EmbeddingOfUnderlyingCategoryData( UC );
-    
-    objsUC := List( [ 0 .. nr_objs - 1 ], o -> iota[2][1]( objs[1 + o] ) );
     
     F_on_objs := ObjectDatum( PSh, F )[1];
     
