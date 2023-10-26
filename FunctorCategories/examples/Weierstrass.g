@@ -177,15 +177,15 @@ Display( nf );
 #! An object in PreSheaves(
 #! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations,
 #! Rows( Q ) ) given by the above data
-sec := SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( G );
+section := SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( G );
 #! <A morphism in AdditiveClosure(
 #!  Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations )
 #!  defined by a 3 x 10 matrix of underlying morphisms>
-IsWellDefined( sec );
+IsWellDefined( section );
 #! true
 Emb := EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheaves( PSh );
 #! The embedding functor of the finite coproduct completion into f.p. presheaves
-ip := PreCompose( Emb( sec ), cy );
+ip := PreCompose( Emb( section ), cy );
 #! <(o)->18x10>
 IsEqualAsFactorobjects( pi, ip );
 #! true
@@ -193,13 +193,13 @@ pi = ip;
 #! false
 CoimageObject( ip ) = CoimageObject( pi );
 #! true
-ret := RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( G );
+retraction := RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( G );
 #! <A morphism in AdditiveClosure(
 #!  Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations )
 #!  defined by a 10 x 3 matrix of underlying morphisms>
-IsWellDefined( ret );
+IsWellDefined( retraction );
 #! true
-IsOne( PreCompose( sec, ret ) );
+IsOne( PreCompose( section, retraction ) );
 #! true
 co := ProjectionOntoCoequalizer( OptimizedCoYonedaLemmaCoequalizerPair( G )[2] );
 #! <(o)->18x10>
