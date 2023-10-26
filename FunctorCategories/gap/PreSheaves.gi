@@ -3654,10 +3654,10 @@ InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
         target_o := Coproduct( H, ListWithIdenticalEntries( F_o, d ) );
         
         section_o := UniversalMorphismFromCoproductWithGivenCoproduct( H,
-                                              source_diagram_o,
-                                              target_o,
-                                              List( cover_o, a -> a[2] ),
-                                              source_o );
+                             source_diagram_o,
+                             target_o,
+                             List( cover_o, a -> a[2] ),
+                             source_o );
         
         return NTuple( 4,
                        o,
