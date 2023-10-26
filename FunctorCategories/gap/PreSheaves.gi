@@ -3613,11 +3613,13 @@ InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
         [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ],
         
   function ( PSh, covering_list, F )
-    local C, H, defining_triple, nr_objs, objs, UC, iota, objsUC,
-          F_on_objs, embs, cover, source_diagrams, target_diagrams, sources, targets, sections, section;
+    local C, H, d, defining_triple, nr_objs, objs, UC, iota, objsUC,
+          F_on_objs, embs, cover, sources, targets, sections, section;
     
     C := Source( PSh );
-    H := Target( PSh );
+    H := RangeCategoryOfHomomorphismStructure( PSh );
+    
+    d := DistinguishedObjectOfHomomorphismStructure( PSh );
     
     defining_triple := DefiningTripleOfUnderlyingQuiver( C );
     nr_objs := defining_triple[1];
@@ -3634,7 +3636,7 @@ InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
     
     embs :=
       function( o )
-        local cover_o, c_o, F_o, standard_global_morphisms_o;
+        local cover_o, c_o, F_o, source_diagram_o, source_o, target_o, standard_global_morphism_o;
         
         cover_o := Filtered( covering_list, e -> e[3] = o );
         
@@ -3645,38 +3647,45 @@ InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0, IsInt( F_o ) );
         
-        standard_global_morphisms_o := List( cover_o, a -> a[2] );
+        source_diagram_o := ListWithIdenticalEntries( c_o, d );
+        
+        source_o := Coproduct( H, source_diagram_o );
+        
+        target_o := Coproduct( H, ListWithIdenticalEntries( F_o, d ) );
+        
+        standard_global_morphism_o := UniversalMorphismFromCoproductWithGivenCoproduct( H,
+                                              source_diagram_o,
+                                              target_o,
+                                              List( cover_o, a -> a[2] ),
+                                              source_o );
         
         return NTuple( 4,
                        o,
-                       c_o,
-                       F_o,
-                       standard_global_morphisms_o );
+                       source_o,
+                       target_o,
+                       standard_global_morphism_o );
         
     end;
     
     ## sort according to objs
     cover := List( [ 0 .. nr_objs - 1 ], embs );
     
-    source_diagrams := List( [ 0 .. nr_objs - 1 ], o -> ListWithIdenticalEntries( cover[1 + o][2], objsUC[1 + o] ) );
+    sources := List( [ 0 .. nr_objs - 1 ], o ->
+                     TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC,
+                             objs[1 + o],
+                             cover[1 + o][2] ) );
     
-    target_diagrams := List( [ 0 .. nr_objs - 1 ], o -> ListWithIdenticalEntries( cover[1 + o][3], objsUC[1 + o] ) );
-    
-    sources := List( [ 0 .. nr_objs - 1 ], o -> Coproduct( UC, source_diagrams[1 + o] ) );
-    
-    targets := List( [ 0 .. nr_objs - 1 ], o -> Coproduct( UC, target_diagrams[1 + o] ) );
+    targets := List( [ 0 .. nr_objs - 1 ], o ->
+                     TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC,
+                             objs[1 + o],
+                             cover[1 + o][3] ) );
     
     sections := List( [ 0 .. nr_objs - 1 ], o ->
-                      UniversalMorphismFromCoproductWithGivenCoproduct( UC,
-                              source_diagrams[1 + o],
-                              targets[1 + o],
-                              List( cover[1 + o][4], map ->
-                                    TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure( H, UC,
-                                            objsUC[1 + o],
-                                            objs[1 + o],
-                                            map,
-                                            targets[1 + o] ) ),
-                              sources[1 + o] ) );
+                      TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure( H, UC,
+                              sources[1 + o],
+                              objs[1 + o],
+                              cover[1 + o][4],
+                              targets[1 + o] ) );
     
     section := CoproductFunctorialWithGivenCoproducts( UC,
                        Coproduct( UC, sources ),
