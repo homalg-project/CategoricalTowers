@@ -1,7 +1,7 @@
 name: FunctorCategories
-version: "2023.10-30"
+version: "2023.10-31"
 license: "GPL-2.0-or-later"
-date: 2023-10-20
+date: 2023-10-26
 description: |
     Categories of functors
 
@@ -75,11 +75,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FunctorCategorie
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.10-30/FunctorCategories-2023.10-30.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.10-31/FunctorCategories-2023.10-31.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.10-30/FunctorCategories-2023.10-30.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.10-31/FunctorCategories-2023.10-31.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.10-30/FunctorCategories-2023.10-30-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.10-31/FunctorCategories-2023.10-31-manual.pdf
 
 abstract: |
 
@@ -90,22 +90,22 @@ keywords: |
     functors, natural transformations, finitely presented categories, functors into categories, functors into pre-additive categories, functors into additive categories, functors into pre-abelian categories, functors into abelian categories.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BS20</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+    [<span class='BibKey'>BS26</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FunctorCategories, Categories of functors,
-             Version 2023.10-30</i>
-     (<span class='BibYear'>0-20</span>)<br />
+             Version 2023.10-31</i>
+     (<span class='BibYear'>0-26</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FunctorCategories">https://homalg-project.github.io/pkg/FunctorCategories</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ FunctorCategories2023.10-30,
+    @misc{ FunctorCategories2023.10-31,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FunctorCategories}, Categories of functors, {V}ersion
-                          2023.10-30},
+                          2023.10-31},
       month =            {3-},
-      year =             {0-20},
+      year =             {0-26},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/FunctorCategories}
@@ -117,6 +117,6 @@ bibtex: |
                           pre-additive   categories;   functors   into  additive
                           categories;   functors  into  pre-abelian  categories;
                           functors into abelian categories},
-      printedkey =       {BS20}
+      printedkey =       {BS26}
     }
 
