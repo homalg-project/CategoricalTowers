@@ -50,6 +50,10 @@
 
 @InsertChunk StreamVortexSystemBig
 
+@Subsection The linearization of the colimit completion of a cyclic monoid
+
+@InsertChunk StreamVortexSystemLinear
+
 @Subsection The Weierstrass normal form
 
 @InsertChunk Weierstrass

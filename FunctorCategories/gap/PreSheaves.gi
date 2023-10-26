@@ -3846,8 +3846,8 @@ InstallOtherMethodForCompilerForCAP( RetractionByCoveringListOfRepresentables,
         [ IsAbelianCategory, IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ],
         
   function ( H, PSh, covering_list, F )
-    local CoequalizerPairs, UC, coYoneda, F_VAst, V, s, t, id_V,
-          section_complement, section, V_opt, id_V_opt, alpha, beta, gamma;
+    local CoequalizerPairs, UC, coYoneda, F_VAst, V, A, s, t,
+          section_complement, section, complement, summands, iso, inv, O, O_A, alpha, lift, retraction;
     
     CoequalizerPairs := AssociatedColimitCompletionOfSourceCategory( PSh );
     
@@ -3858,27 +3858,48 @@ InstallOtherMethodForCompilerForCAP( RetractionByCoveringListOfRepresentables,
     F_VAst := ObjectDatum( CoequalizerPairs, coYoneda );
     
     V := F_VAst[1][1];
+    A := F_VAst[1][2];
     s := F_VAst[2][1];
     t := F_VAst[2][2];
-    
-    id_V := IdentityMorphism( UC, V );
     
     section_complement := SectionAndComplementByCoveringListOfRepresentables( PSh, covering_list, F );
     
     section := section_complement[1];
+    complement := section_complement[2];
     
-    V_opt := Source( section );
+    summands := [ Source( section ), Source( complement ) ];
     
-    id_V_opt := IdentityMorphism( UC, V_opt );
+    iso := UniversalMorphismFromCoproduct( UC,
+                   summands,
+                   V,
+                   [ section, complement ] );
     
-    alpha := [ [ section, ZeroMorphism( UC, V_opt, V ) ], [ id_V, id_V ] ];
-    beta := [ [ id_V_opt, ZeroMorphism( UC, V, V_opt ) ], [ section, s - t ] ];
-    gamma := [ id_V_opt, id_V ];
+    inv := PreInverseForMorphisms( UC, iso );
     
-    return SolveLinearSystemInAbCategory( UC,
-                   alpha,
-                   beta,
-                   gamma )[1];
+    O := Source( section );
+    
+    O_A := [ O, A ];
+    
+    alpha := UniversalMorphismFromCoproduct( UC,
+                     O_A,
+                     V,
+                     [ section, s - t ] );
+    
+    lift := Lift( UC, complement, alpha );
+    
+    retraction := PreCompose( UC,
+                          lift,
+                          ProjectionInFactorOfDirectProduct( UC,
+                                  O_A,
+                                  1 ) );
+    
+    return PreCompose( UC,
+                   inv,
+                   UniversalMorphismFromCoproductWithGivenCoproduct( UC,
+                           [ O, Source( complement ) ],
+                           O,
+                           [ IdentityMorphism( UC, O ), retraction ],
+                           V ) );
     
 end );
 
