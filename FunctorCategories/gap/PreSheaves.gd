@@ -366,7 +366,7 @@ DeclareAttribute( "EpimorphismFromSomeProjectiveObjectUsingSplits",
         IsObjectInPreSheafCategory );
 
 #! @Arguments F
-DeclareOperation( "SectionByCoveringListOfRepresentables",
+DeclareOperation( "SectionAndComplementByCoveringListOfRepresentables",
         [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ] );
 
 #! @Arguments F
