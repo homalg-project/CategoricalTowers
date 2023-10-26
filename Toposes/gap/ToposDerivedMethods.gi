@@ -19,7 +19,7 @@ AddDerivationToCAP( IndexOfNonliftableMorphismFromDistinguishedObject,
     global_morphisms := ExactCoverWithGlobalElements( cat, target );
     
     ## start interval at 0 to unify ranges for the compiler
-    return 1 + SafeFirst( [ 0 .. ObjectDatum( target ) - 1 ],
+    return 1 + SafeFirst( [ 0 .. ObjectDatum( cat, target ) - 1 ],
                    i -> not IsLiftableAlongMonomorphism( cat, iota, global_morphisms[1 + i] ) );
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
