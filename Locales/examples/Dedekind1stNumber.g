@@ -14,7 +14,7 @@ IntervalCategory;
 Display( IntervalCategory );
 #! A CAP category with name IntervalCategory:
 #! 
-#! 19 primitive operations were used to derive 302 operations for this category which algorithmically
+#! 19 primitive operations were used to derive 305 operations for this category which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsBooleanAlgebra
 SetOfObjects( IntervalCategory );

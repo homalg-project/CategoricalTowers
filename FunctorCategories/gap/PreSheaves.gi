@@ -3609,12 +3609,13 @@ InstallMethod( EpimorphismFromSomeProjectiveObjectUsingSplits,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
+InstallOtherMethodForCompilerForCAP( SectionAndComplementByCoveringListOfRepresentables,
         [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ],
         
   function ( PSh, covering_list, F )
-    local C, H, d, defining_triple, nr_objs, objs, UC, iota, objsUC,
-          F_on_objs, embs, cover, sources, targets, sections, section;
+    local C, H, d, defining_triple, nr_objs, objs, UC,
+          F_on_objs, embs, cover, sources, targets, target,
+          sections, section, complement_sources, complements, complement;
     
     C := Source( PSh );
     H := RangeCategoryOfHomomorphismStructure( PSh );
@@ -3628,15 +3629,11 @@ InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
     
     UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
-    iota := EmbeddingOfUnderlyingCategoryData( UC );
-    
-    objsUC := List( [ 0 .. nr_objs - 1 ], o -> iota[2][1]( objs[1 + o] ) );
-    
     F_on_objs := ObjectDatum( PSh, F )[1];
     
     embs :=
       function( o )
-        local cover_o, c_o, F_o, source_diagram_o, source_o, target_o, standard_global_morphism_o;
+        local cover_o, c_o, F_o, source_diagram_o, source_o, target_o, section_o, complement_o;
         
         cover_o := Filtered( covering_list, e -> e[3] = o );
         
@@ -3653,17 +3650,20 @@ InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
         
         target_o := Coproduct( H, ListWithIdenticalEntries( F_o, d ) );
         
-        standard_global_morphism_o := UniversalMorphismFromCoproductWithGivenCoproduct( H,
-                                              source_diagram_o,
-                                              target_o,
-                                              List( cover_o, a -> a[2] ),
-                                              source_o );
+        section_o := UniversalMorphismFromCoproductWithGivenCoproduct( H,
+                             source_diagram_o,
+                             target_o,
+                             List( cover_o, a -> a[2] ),
+                             source_o );
         
-        return NTuple( 4,
+        complement_o := InjectionOfCoproductComplement( H, section_o );
+        
+        return NTuple( 5,
                        o,
                        source_o,
                        target_o,
-                       standard_global_morphism_o );
+                       section_o,
+                       complement_o );
         
     end;
     
@@ -3680,6 +3680,8 @@ InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
                              objs[1 + o],
                              cover[1 + o][3] ) );
     
+    target := Coproduct( UC, targets );
+    
     sections := List( [ 0 .. nr_objs - 1 ], o ->
                       TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure( H, UC,
                               sources[1 + o],
@@ -3692,12 +3694,34 @@ InstallOtherMethodForCompilerForCAP( SectionByCoveringListOfRepresentables,
                        sources,
                        sections,
                        targets,
-                       Coproduct( UC, targets ) );
+                       target );
+    
+    complement_sources := List( [ 0 .. nr_objs - 1 ], o ->
+                                TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC,
+                                        objs[1 + o],
+                                        Source( cover[1 + o][5] ) ) );
+    
+    complements := List( [ 0 .. nr_objs - 1 ], o ->
+                         TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure( H, UC,
+                                 complement_sources[1 + o],
+                                 objs[1 + o],
+                                 cover[1 + o][5],
+                                 targets[1 + o] ) );
+    
+    complement := CoproductFunctorialWithGivenCoproducts( UC,
+                          Coproduct( UC, complement_sources ),
+                          complement_sources,
+                          complements,
+                          targets,
+                          target );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsSplitMonomorphism( section, true );
     
-    return section;
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetIsSplitMonomorphism( complement, true );
+    
+    return Pair( section, complement );
     
 end );
 
@@ -3707,9 +3731,9 @@ InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjec
         
   function ( PSh, F )
     
-    return SectionByCoveringListOfRepresentables( PSh,
+    return SectionAndComplementByCoveringListOfRepresentables( PSh,
                    DoctrineSpecificCoveringListOfRepresentables( Target( PSh ), PSh, F ),
-                   F );
+                   F )[1];
     
 end );
 

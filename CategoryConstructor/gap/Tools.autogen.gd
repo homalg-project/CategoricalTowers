@@ -88,44 +88,6 @@ DeclareOperation( "AddColimit",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `CoproductComplement`.
-#! $F: ( iota ) \mapsto \mathtt{CoproductComplement}(iota)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoproductComplement",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoproductComplement",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoproductComplement",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoproductComplement",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `DirectProductComplement`.
-#! $F: ( pi ) \mapsto \mathtt{DirectProductComplement}(pi)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddDirectProductComplement",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddDirectProductComplement",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddDirectProductComplement",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddDirectProductComplement",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
 #! to the category for the basic operation `EmbeddingOfSumOfImagesOfAllMorphisms`.
 #! $F: ( a, b ) \mapsto \mathtt{EmbeddingOfSumOfImagesOfAllMorphisms}(a, b)$.
 #! @Returns nothing
@@ -178,44 +140,6 @@ DeclareOperation( "AddInjectionOfCofactorOfColimitWithGivenColimit",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddInjectionOfCofactorOfColimitWithGivenColimit",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `InjectionOfCoproductComplement`.
-#! $F: ( iota ) \mapsto \mathtt{InjectionOfCoproductComplement}(iota)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInjectionOfCoproductComplement",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInjectionOfCoproductComplement",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCoproductComplement",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCoproductComplement",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `InjectionOfCoproductComplementWithGivenCoproductComplement`.
-#! $F: ( iota, complement ) \mapsto \mathtt{InjectionOfCoproductComplementWithGivenCoproductComplement}(iota, complement)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInjectionOfCoproductComplementWithGivenCoproductComplement",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInjectionOfCoproductComplementWithGivenCoproductComplement",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCoproductComplementWithGivenCoproductComplement",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCoproductComplementWithGivenCoproductComplement",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -406,44 +330,6 @@ DeclareOperation( "AddMorphismOntoSumOfImagesOfAllMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddMorphismOntoSumOfImagesOfAllMorphisms",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `ProjectionInDirectProductComplement`.
-#! $F: ( pi ) \mapsto \mathtt{ProjectionInDirectProductComplement}(pi)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddProjectionInDirectProductComplement",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddProjectionInDirectProductComplement",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddProjectionInDirectProductComplement",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddProjectionInDirectProductComplement",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `ProjectionInDirectProductComplementWithGivenDirectProductComplement`.
-#! $F: ( pi, complement ) \mapsto \mathtt{ProjectionInDirectProductComplementWithGivenDirectProductComplement}(pi, complement)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddProjectionInDirectProductComplementWithGivenDirectProductComplement",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddProjectionInDirectProductComplementWithGivenDirectProductComplement",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddProjectionInDirectProductComplementWithGivenDirectProductComplement",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddProjectionInDirectProductComplementWithGivenDirectProductComplement",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

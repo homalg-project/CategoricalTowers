@@ -31,6 +31,68 @@ NonliftableMorphismFromDistinguishedObject := rec(
   output_range_getter_string := "Target( iota )",
   output_range_getter_preconditions := [ ] ),
 
+CoproductComplement := rec(
+  filter_list := [ "category", "morphism" ],
+  input_arguments_names := [ "cat", "iota" ],
+  return_type := "object",
+  dual_operation := "DirectProductComplement",
+  compatible_with_congruence_of_morphisms := false,
+),
+
+InjectionOfCoproductComplement := rec(
+  filter_list := [ "category", "morphism" ],
+  input_arguments_names := [ "cat", "iota" ],
+  output_range_getter_string := "Target( iota )",
+  output_range_getter_preconditions := [ ],
+  with_given_object_position := "Source",
+  return_type := "morphism",
+  dual_operation := "ProjectionInDirectProductComplement",
+  compatible_with_congruence_of_morphisms := false,
+),
+
+InjectionOfCoproductComplementWithGivenCoproductComplement := rec(
+  filter_list := [ "category", "morphism", "object" ],
+  input_arguments_names := [ "cat", "iota", "complement" ],
+  output_source_getter_string := "complement",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Target( iota )",
+  output_range_getter_preconditions := [ ],
+  return_type := "morphism",
+  dual_operation := "ProjectionInDirectProductComplementWithGivenDirectProductComplement",
+  compatible_with_congruence_of_morphisms := false,
+),
+
+DirectProductComplement := rec(
+  filter_list := [ "category", "morphism" ],
+  input_arguments_names := [ "cat", "pi" ],
+  return_type := "object",
+  dual_operation := "CoproductComplement",
+  compatible_with_congruence_of_morphisms := false,
+),
+
+ProjectionInDirectProductComplement := rec(
+  filter_list := [ "category", "morphism" ],
+  input_arguments_names := [ "cat", "pi" ],
+  output_source_getter_string := "Source( pi )",
+  output_source_getter_preconditions := [ ],
+  with_given_object_position := "Range",
+  return_type := "morphism",
+  dual_operation := "InjectionOfCoproductComplement",
+  compatible_with_congruence_of_morphisms := false,
+),
+
+ProjectionInDirectProductComplementWithGivenDirectProductComplement := rec(
+  filter_list := [ "category", "morphism", "object" ],
+  input_arguments_names := [ "cat", "pi", "complement" ],
+  output_source_getter_string := "Source( pi )",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "complement",
+  output_range_getter_preconditions := [ ],
+  return_type := "morphism",
+  dual_operation := "InjectionOfCoproductComplementWithGivenCoproductComplement",
+  compatible_with_congruence_of_morphisms := false,
+),
+
 SubobjectClassifier := rec(
   filter_list := [ "category" ],
   return_type := "object" ),
