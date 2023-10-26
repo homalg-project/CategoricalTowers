@@ -50,6 +50,80 @@ CategoryFilter := function( cat )
 end );
 
 ##
+AddDerivationToCAP( InjectionOfCoproductComplement,
+        "InjectionOfCoproductComplement by iteratively calling NonliftableMorphismFromDistinguishedObject",
+        [ [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+          [ ObjectDatum, 2 ],
+          [ NonliftableMorphismFromDistinguishedObject, 2 ],
+          [ UniversalMorphismFromCoproduct, 4 ],
+          [ UniversalMorphismFromInitialObject, 1 ] ],
+        
+  function( cat, iota )
+    local source, target, s, t, initial_complement, distinguished_object, predicate, func, initial;
+    
+    source := Source( iota );
+    
+    target := Target( iota );
+    
+    s := ObjectDatum( cat, source );
+    
+    t := ObjectDatum( cat, target );
+    
+    initial_complement := UniversalMorphismFromInitialObject( cat, target );
+    
+    if s = t then
+        return initial_complement;
+    fi;
+    
+    distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
+    
+    predicate :=
+      function( data_old, data_new )
+        
+        return data_new[3] = 0;
+        
+    end;
+    
+    func :=
+      function( complement_coproduct_index )
+        local complement, coproduct, index, nonliftable, coproduct_new, complement_new;
+        
+        complement := complement_coproduct_index[1];
+        coproduct := complement_coproduct_index[2];
+        index := complement_coproduct_index[3];
+        
+        nonliftable := NonliftableMorphismFromDistinguishedObject( cat,
+                               coproduct );
+        
+        coproduct_new := UniversalMorphismFromCoproduct( cat,
+                                 [ Source( coproduct ), distinguished_object ],
+                                 target,
+                                 [ coproduct, nonliftable ] );
+        
+        complement_new := UniversalMorphismFromCoproduct( cat,
+                                  [ Source( complement ), distinguished_object ],
+                                  target,
+                                  [ complement, nonliftable ] );
+        
+        return Triple( complement_new,
+                       coproduct_new,
+                       index - 1 );
+        
+    end;
+    
+    initial := Triple( initial_complement,
+                       iota,
+                       t - s );
+    
+    return CapFixpoint( predicate, func, initial )[1];
+    
+end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
+CategoryFilter := function( cat )
+    return HasRangeCategoryOfHomomorphismStructure( cat ) and
+           IsIdenticalObj( cat, RangeCategoryOfHomomorphismStructure( cat ) );
+end );
+
+##
 AddDerivationToCAP( CoproductComplement,
         "CoproductComplement as the source of InjectionOfCoproductComplement",
         [ [ InjectionOfCoproductComplement, 1 ] ],
