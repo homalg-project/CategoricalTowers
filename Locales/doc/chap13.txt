@@ -31,7 +31,7 @@
     [4X[25Xgap>[125X [27XDisplay( IntervalCategory );[127X[104X
     [4X[28XA CAP category with name IntervalCategory:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X19 primitive operations were used to derive 302 operations for this category which algorithmically[128X[104X
+    [4X[28X19 primitive operations were used to derive 305 operations for this category which algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsBooleanAlgebra[128X[104X
     [4X[25Xgap>[125X [27XSetOfObjects( IntervalCategory );[127X[104X
