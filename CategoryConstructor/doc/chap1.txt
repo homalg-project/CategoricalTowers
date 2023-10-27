@@ -33,7 +33,7 @@
     [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
     [4X[28XA CAP category with name SkeletalFinSets:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X59 primitive operations were used to derive 318 operations for this category[128X[104X
+    [4X[28X59 primitive operations were used to derive 321 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
@@ -63,7 +63,7 @@
     [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
     [4X[28XA CAP category with name WrapperCategory( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X301 primitive operations were used to derive 311 operations for this category[128X[104X
+    [4X[28X304 primitive operations were used to derive 314 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
@@ -91,7 +91,7 @@
     [4X[25Xgap>[125X [27XDisplay( O );[127X[104X
     [4X[28XA CAP category with name Opposite( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X245 primitive operations were used to derive 263 operations for this category[128X[104X
+    [4X[28X248 primitive operations were used to derive 266 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsFiniteCocompleteCategory[128X[104X
@@ -170,7 +170,7 @@
     [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
     [4X[28XA CAP category with name SkeletalFinSets:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X59 primitive operations were used to derive 318 operations for this category[128X[104X
+    [4X[28X59 primitive operations were used to derive 321 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
@@ -200,7 +200,7 @@
     [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
     [4X[28XA CAP category with name WrapperCategory( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X301 primitive operations were used to derive 311 operations for this category[128X[104X
+    [4X[28X304 primitive operations were used to derive 314 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
@@ -228,7 +228,7 @@
     [4X[25Xgap>[125X [27XDisplay( O );[127X[104X
     [4X[28XA CAP category with name Opposite( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X245 primitive operations were used to derive 263 operations for this category[128X[104X
+    [4X[28X248 primitive operations were used to derive 266 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsFiniteCocompleteCategory[128X[104X
@@ -887,26 +887,7 @@
   objects,    decorated_morphisms    )    \mapsto    \mathtt{Colimit}(objects,
   decorated_morphisms)[123X.[133X
   
-  [1X1.12-5 AddCoproductComplement[101X
-  
-  [33X[1;0Y[29X[2XAddCoproductComplement[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoproductComplement[110X. [23XF: ( iota ) \mapsto \mathtt{CoproductComplement}(iota)[123X.[133X
-  
-  [1X1.12-6 AddDirectProductComplement[101X
-  
-  [33X[1;0Y[29X[2XAddDirectProductComplement[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductComplement[110X.        [23XF:        (        pi        )       \mapsto
-  \mathtt{DirectProductComplement}(pi)[123X.[133X
-  
-  [1X1.12-7 AddEmbeddingOfSumOfImagesOfAllMorphisms[101X
+  [1X1.12-5 AddEmbeddingOfSumOfImagesOfAllMorphisms[101X
   
   [33X[1;0Y[29X[2XAddEmbeddingOfSumOfImagesOfAllMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -916,7 +897,7 @@
   [10XEmbeddingOfSumOfImagesOfAllMorphisms[110X.     [23XF:    (    a,    b    )    \mapsto
   \mathtt{EmbeddingOfSumOfImagesOfAllMorphisms}(a, b)[123X.[133X
   
-  [1X1.12-8 AddInjectionOfCofactorOfColimit[101X
+  [1X1.12-6 AddInjectionOfCofactorOfColimit[101X
   
   [33X[1;0Y[29X[2XAddInjectionOfCofactorOfColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -926,7 +907,7 @@
   [10XInjectionOfCofactorOfColimit[110X. [23XF: ( objects, decorated_morphisms, k ) \mapsto
   \mathtt{InjectionOfCofactorOfColimit}(objects, decorated_morphisms, k)[123X.[133X
   
-  [1X1.12-9 AddInjectionOfCofactorOfColimitWithGivenColimit[101X
+  [1X1.12-7 AddInjectionOfCofactorOfColimitWithGivenColimit[101X
   
   [33X[1;0Y[29X[2XAddInjectionOfCofactorOfColimitWithGivenColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -938,29 +919,7 @@
   \mathtt{InjectionOfCofactorOfColimitWithGivenColimit}(objects,
   decorated_morphisms, k, P)[123X.[133X
   
-  [1X1.12-10 AddInjectionOfCoproductComplement[101X
-  
-  [33X[1;0Y[29X[2XAddInjectionOfCoproductComplement[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XInjectionOfCoproductComplement[110X.      [23XF:      (      iota      )      \mapsto
-  \mathtt{InjectionOfCoproductComplement}(iota)[123X.[133X
-  
-  [1X1.12-11 AddInjectionOfCoproductComplementWithGivenCoproductComplement[101X
-  
-  [33X[1;0Y[29X[2XAddInjectionOfCoproductComplementWithGivenCoproductComplement[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XInjectionOfCoproductComplementWithGivenCoproductComplement[110X.   [23XF:   (   iota,
-  complement                             )                             \mapsto
-  \mathtt{InjectionOfCoproductComplementWithGivenCoproductComplement}(iota,
-  complement)[123X.[133X
-  
-  [1X1.12-12 AddIsWeakInitial[101X
+  [1X1.12-8 AddIsWeakInitial[101X
   
   [33X[1;0Y[29X[2XAddIsWeakInitial[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -969,7 +928,7 @@
   given function [23XF[123X to the category for the basic operation [10XIsWeakInitial[110X. [23XF: (
   arg2 ) \mapsto \mathtt{IsWeakInitial}(arg2)[123X.[133X
   
-  [1X1.12-13 AddIsWeakTerminal[101X
+  [1X1.12-9 AddIsWeakTerminal[101X
   
   [33X[1;0Y[29X[2XAddIsWeakTerminal[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -978,7 +937,7 @@
   given  function [23XF[123X to the category for the basic operation [10XIsWeakTerminal[110X. [23XF:
   ( arg2 ) \mapsto \mathtt{IsWeakTerminal}(arg2)[123X.[133X
   
-  [1X1.12-14 AddLimit[101X
+  [1X1.12-10 AddLimit[101X
   
   [33X[1;0Y[29X[2XAddLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -988,7 +947,7 @@
   objects,     decorated_morphisms     )    \mapsto    \mathtt{Limit}(objects,
   decorated_morphisms)[123X.[133X
   
-  [1X1.12-15 AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[101X
+  [1X1.12-11 AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[101X
   
   [33X[1;0Y[29X[2XAddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1000,7 +959,7 @@
   \mathtt{MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory}(arg2,
   arg3)[123X.[133X
   
-  [1X1.12-16 AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[101X
+  [1X1.12-12 AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[101X
   
   [33X[1;0Y[29X[2XAddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1012,7 +971,7 @@
   \mathtt{MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory}(arg2, arg3,
   arg4)[123X.[133X
   
-  [1X1.12-17 AddMorphismBetweenCoproducts[101X
+  [1X1.12-13 AddMorphismBetweenCoproducts[101X
   
   [33X[1;0Y[29X[2XAddMorphismBetweenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1023,7 +982,7 @@
   \mapsto       \mathtt{MorphismBetweenCoproducts}(source_diagram,       pair,
   range_diagram)[123X.[133X
   
-  [1X1.12-18 AddMorphismBetweenCoproductsWithGivenCoproducts[101X
+  [1X1.12-14 AddMorphismBetweenCoproductsWithGivenCoproducts[101X
   
   [33X[1;0Y[29X[2XAddMorphismBetweenCoproductsWithGivenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1035,7 +994,7 @@
   \mathtt{MorphismBetweenCoproductsWithGivenCoproducts}(S,     source_diagram,
   pair, range_diagram, T)[123X.[133X
   
-  [1X1.12-19 AddMorphismBetweenDirectProducts[101X
+  [1X1.12-15 AddMorphismBetweenDirectProducts[101X
   
   [33X[1;0Y[29X[2XAddMorphismBetweenDirectProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1046,7 +1005,7 @@
   \mapsto     \mathtt{MorphismBetweenDirectProducts}(source_diagram,     pair,
   range_diagram)[123X.[133X
   
-  [1X1.12-20 AddMorphismBetweenDirectProductsWithGivenDirectProducts[101X
+  [1X1.12-16 AddMorphismBetweenDirectProductsWithGivenDirectProducts[101X
   
   [33X[1;0Y[29X[2XAddMorphismBetweenDirectProductsWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1058,7 +1017,7 @@
   \mathtt{MorphismBetweenDirectProductsWithGivenDirectProducts}(S,
   source_diagram, pair, range_diagram, T)[123X.[133X
   
-  [1X1.12-21 AddMorphismOntoSumOfImagesOfAllMorphisms[101X
+  [1X1.12-17 AddMorphismOntoSumOfImagesOfAllMorphisms[101X
   
   [33X[1;0Y[29X[2XAddMorphismOntoSumOfImagesOfAllMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1068,29 +1027,7 @@
   [10XMorphismOntoSumOfImagesOfAllMorphisms[110X.    [23XF:    (    a,    b    )    \mapsto
   \mathtt{MorphismOntoSumOfImagesOfAllMorphisms}(a, b)[123X.[133X
   
-  [1X1.12-22 AddProjectionInDirectProductComplement[101X
-  
-  [33X[1;0Y[29X[2XAddProjectionInDirectProductComplement[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XProjectionInDirectProductComplement[110X.      [23XF:      (     pi     )     \mapsto
-  \mathtt{ProjectionInDirectProductComplement}(pi)[123X.[133X
-  
-  [1X1.12-23 AddProjectionInDirectProductComplementWithGivenDirectProductComplement[101X
-  
-  [33X[1;0Y[29X[2XAddProjectionInDirectProductComplementWithGivenDirectProductComplement[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XProjectionInDirectProductComplementWithGivenDirectProductComplement[110X.   [23XF:  (
-  pi,                   complement                  )                  \mapsto
-  \mathtt{ProjectionInDirectProductComplementWithGivenDirectProductComplement}(pi,
-  complement)[123X.[133X
-  
-  [1X1.12-24 AddProjectionInFactorOfLimit[101X
+  [1X1.12-18 AddProjectionInFactorOfLimit[101X
   
   [33X[1;0Y[29X[2XAddProjectionInFactorOfLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1100,7 +1037,7 @@
   [10XProjectionInFactorOfLimit[110X.  [23XF:  (  objects, decorated_morphisms, k ) \mapsto
   \mathtt{ProjectionInFactorOfLimit}(objects, decorated_morphisms, k)[123X.[133X
   
-  [1X1.12-25 AddProjectionInFactorOfLimitWithGivenLimit[101X
+  [1X1.12-19 AddProjectionInFactorOfLimitWithGivenLimit[101X
   
   [33X[1;0Y[29X[2XAddProjectionInFactorOfLimitWithGivenLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1111,7 +1048,7 @@
   k,  P  )  \mapsto  \mathtt{ProjectionInFactorOfLimitWithGivenLimit}(objects,
   decorated_morphisms, k, P)[123X.[133X
   
-  [1X1.12-26 AddProjectionOfBiasedRelativeWeakFiberProduct[101X
+  [1X1.12-20 AddProjectionOfBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddProjectionOfBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1121,7 +1058,7 @@
   [10XProjectionOfBiasedRelativeWeakFiberProduct[110X.   [23XF:   (   a,  b,  c  )  \mapsto
   \mathtt{ProjectionOfBiasedRelativeWeakFiberProduct}(a, b, c)[123X.[133X
   
-  [1X1.12-27 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
+  [1X1.12-21 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1133,7 +1070,7 @@
   \mathtt{ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct}(a,
   b, c, P)[123X.[133X
   
-  [1X1.12-28 AddRelativeLift[101X
+  [1X1.12-22 AddRelativeLift[101X
   
   [33X[1;0Y[29X[2XAddRelativeLift[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1142,7 +1079,7 @@
   given  function [23XF[123X to the category for the basic operation [10XRelativeLift[110X. [23XF: (
   beta, alpha, nu ) \mapsto \mathtt{RelativeLift}(beta, alpha, nu)[123X.[133X
   
-  [1X1.12-29 AddSumOfImagesOfAllMorphisms[101X
+  [1X1.12-23 AddSumOfImagesOfAllMorphisms[101X
   
   [33X[1;0Y[29X[2XAddSumOfImagesOfAllMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1152,7 +1089,7 @@
   [10XSumOfImagesOfAllMorphisms[110X.     [23XF:     (     arg2,     arg3     )     \mapsto
   \mathtt{SumOfImagesOfAllMorphisms}(arg2, arg3)[123X.[133X
   
-  [1X1.12-30 AddUniversalMorphismFromColimit[101X
+  [1X1.12-24 AddUniversalMorphismFromColimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1163,7 +1100,7 @@
   \mapsto  \mathtt{UniversalMorphismFromColimit}(objects, decorated_morphisms,
   T, tau)[123X.[133X
   
-  [1X1.12-31 AddUniversalMorphismFromColimitWithGivenColimit[101X
+  [1X1.12-25 AddUniversalMorphismFromColimitWithGivenColimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromColimitWithGivenColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1175,7 +1112,7 @@
   \mathtt{UniversalMorphismFromColimitWithGivenColimit}(objects,
   decorated_morphisms, T, tau, P)[123X.[133X
   
-  [1X1.12-32 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct[101X
+  [1X1.12-26 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1186,7 +1123,7 @@
   \mapsto  \mathtt{UniversalMorphismIntoBiasedRelativeWeakFiberProduct}(a,  b,
   c, t)[123X.[133X
   
-  [1X1.12-33 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
+  [1X1.12-27 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1198,7 +1135,7 @@
   \mathtt{UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct}(a,
   b, c, t, P)[123X.[133X
   
-  [1X1.12-34 AddUniversalMorphismIntoLimit[101X
+  [1X1.12-28 AddUniversalMorphismIntoLimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1209,7 +1146,7 @@
   \mapsto \mathtt{UniversalMorphismIntoLimit}(objects, decorated_morphisms, T,
   tau)[123X.[133X
   
-  [1X1.12-35 AddUniversalMorphismIntoLimitWithGivenLimit[101X
+  [1X1.12-29 AddUniversalMorphismIntoLimitWithGivenLimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoLimitWithGivenLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1220,67 +1157,4 @@
   T,                tau,               P               )               \mapsto
   \mathtt{UniversalMorphismIntoLimitWithGivenLimit}(objects,
   decorated_morphisms, T, tau, P)[123X.[133X
-  
-  
-  [1X1.13 [33X[0;0YCoproduct and direct product complements[133X[101X
-  
-  [1X1.13-1 CoproductComplement[101X
-  
-  [33X[1;0Y[29X[2XCoproductComplement[102X( [3Xiota[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Yan object[133X
-  
-  [33X[0;0YThe  argument  is a morphism [3Xiota[103X[23X: S \to T[123X which is a coproduct injection of
-  some  binary coproduct. The output is an object [23XC[123X such that [23XS \sqcup C \cong
-  T[123X.[133X
-  
-  [1X1.13-2 InjectionOfCoproductComplement[101X
-  
-  [33X[1;0Y[29X[2XInjectionOfCoproductComplement[102X( [3Xiota[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( C, \mathrm{Target}( \iota ) )[123X[133X
-  
-  [33X[0;0YThe  argument  is a morphism [3Xiota[103X[23X: S \to T[123X which is a coproduct injection of
-  some  binary coproduct. The output is a coproduct injection [23X\iota_2: C \to T[123X
-  such  that [10XUniversalMorphismFromCoproduct[110X( [3Xiota[103X, [23X\iota_2[123X )[23X: S \sqcup C \to T[123X
-  is an isomorphism.[133X
-  
-  [1X1.13-3 InjectionOfCoproductComplementWithGivenCoproductComplement[101X
-  
-  [33X[1;0Y[29X[2XInjectionOfCoproductComplementWithGivenCoproductComplement[102X( [3Xiota[103X, [3XC[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( C, \mathrm{Target}( \iota ) )[123X[133X
-  
-  [33X[0;0YThe  argument  is a morphism [3Xiota[103X[23X: S \to T[123X which is a coproduct injection of
-  some  binary  coproduct  and  a  coproduct  complement  [3XC[103X.  The  output is a
-  coproduct      injection      [23X\iota_2:[123X     [3XC[103X     [23X\to     T[123X     such     that
-  [10XUniversalMorphismFromCoproduct[110X(  [3Xiota[103X,  [23X\iota_2[123X  )[23X:  S  \sqcup C \to T[123X is an
-  isomorphism.[133X
-  
-  [1X1.13-4 DirectProductComplement[101X
-  
-  [33X[1;0Y[29X[2XDirectProductComplement[102X( [3Xpi[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Yan object[133X
-  
-  [33X[0;0YThe argument is a morphism [3Xpi[103X[23X: S \to T[123X which is a product projection of some
-  binary  direct product. The output is an object [23XC[123X such that [23XS \times C \cong
-  T[123X.[133X
-  
-  [1X1.13-5 ProjectionInDirectProductComplement[101X
-  
-  [33X[1;0Y[29X[2XProjectionInDirectProductComplement[102X( [3Xpi[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( C, \mathrm{Target}( \pi ) )[123X[133X
-  
-  [33X[0;0YThe  argument is a morphism [3Xpi[103X[23X: S \to T[123X which is a direct product projection
-  of  some  binary  direct  product. The output is a direct product projection
-  [23X\pi_2:  C \to T[123X such that [10XUniversalMorphismIntoDirectProduct[110X( [3Xpi[103X, [23X\pi_2[123X )[23X: T
-  \to S \times C[123X is an isomorphism.[133X
-  
-  [1X1.13-6 ProjectionInDirectProductComplementWithGivenDirectProductComplement[101X
-  
-  [33X[1;0Y[29X[2XProjectionInDirectProductComplementWithGivenDirectProductComplement[102X( [3Xpi[103X, [3XC[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( C, \mathrm{Target}( \pi ) )[123X[133X
-  
-  [33X[0;0YThe  argument is a morphism [3Xpi[103X[23X: S \to T[123X which is a direct product projection
-  of  some binary direct product and a coproduct complement [3XC[103X. The output is a
-  direct     product     projection    [23X\pi_2:[123X    [3XC[103X    [23X\to    T[123X    such    that
-  [10XUniversalMorphismIntoDirectProduct[110X(  [3Xpi[103X,  [23X\pi_2[123X  )[23X:  T  \to S \times C[123X is an
-  isomorphism.[133X
   

@@ -6,10 +6,10 @@
                     [1X Construct categories out of given ones [101X
   
   
-                                   2023.10-09
+                                   2023.10-11
   
   
-                                24 October 2023
+                                27 October 2023
   
   
                                 Mohamed Barakat
@@ -79,44 +79,31 @@
       1.12-2 AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory
       1.12-3 AddBiasedRelativeWeakFiberProduct
       1.12-4 AddColimit
-      1.12-5 AddCoproductComplement
-      1.12-6 AddDirectProductComplement
-      1.12-7 AddEmbeddingOfSumOfImagesOfAllMorphisms
-      1.12-8 AddInjectionOfCofactorOfColimit
-      1.12-9 AddInjectionOfCofactorOfColimitWithGivenColimit
-      1.12-10 AddInjectionOfCoproductComplement
-      1.12-11 AddInjectionOfCoproductComplementWithGivenCoproductComplement
-      1.12-12 AddIsWeakInitial
-      1.12-13 AddIsWeakTerminal
-      1.12-14 AddLimit
-      1.12-15 AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory
-      1.12-16 AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory
-      1.12-17 AddMorphismBetweenCoproducts
-      1.12-18 AddMorphismBetweenCoproductsWithGivenCoproducts
-      1.12-19 AddMorphismBetweenDirectProducts
-      1.12-20 AddMorphismBetweenDirectProductsWithGivenDirectProducts
-      1.12-21 AddMorphismOntoSumOfImagesOfAllMorphisms
-      1.12-22 AddProjectionInDirectProductComplement
-      1.12-23 AddProjectionInDirectProductComplementWithGivenDirectProductComplement
-      1.12-24 AddProjectionInFactorOfLimit
-      1.12-25 AddProjectionInFactorOfLimitWithGivenLimit
-      1.12-26 AddProjectionOfBiasedRelativeWeakFiberProduct
-      1.12-27 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
-      1.12-28 AddRelativeLift
-      1.12-29 AddSumOfImagesOfAllMorphisms
-      1.12-30 AddUniversalMorphismFromColimit
-      1.12-31 AddUniversalMorphismFromColimitWithGivenColimit
-      1.12-32 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct
-      1.12-33 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
-      1.12-34 AddUniversalMorphismIntoLimit
-      1.12-35 AddUniversalMorphismIntoLimitWithGivenLimit
-    1.13 [33X[0;0YCoproduct and direct product complements[133X
-      1.13-1 CoproductComplement
-      1.13-2 InjectionOfCoproductComplement
-      1.13-3 InjectionOfCoproductComplementWithGivenCoproductComplement
-      1.13-4 DirectProductComplement
-      1.13-5 ProjectionInDirectProductComplement
-      1.13-6 ProjectionInDirectProductComplementWithGivenDirectProductComplement
+      1.12-5 AddEmbeddingOfSumOfImagesOfAllMorphisms
+      1.12-6 AddInjectionOfCofactorOfColimit
+      1.12-7 AddInjectionOfCofactorOfColimitWithGivenColimit
+      1.12-8 AddIsWeakInitial
+      1.12-9 AddIsWeakTerminal
+      1.12-10 AddLimit
+      1.12-11 AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory
+      1.12-12 AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory
+      1.12-13 AddMorphismBetweenCoproducts
+      1.12-14 AddMorphismBetweenCoproductsWithGivenCoproducts
+      1.12-15 AddMorphismBetweenDirectProducts
+      1.12-16 AddMorphismBetweenDirectProductsWithGivenDirectProducts
+      1.12-17 AddMorphismOntoSumOfImagesOfAllMorphisms
+      1.12-18 AddProjectionInFactorOfLimit
+      1.12-19 AddProjectionInFactorOfLimitWithGivenLimit
+      1.12-20 AddProjectionOfBiasedRelativeWeakFiberProduct
+      1.12-21 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
+      1.12-22 AddRelativeLift
+      1.12-23 AddSumOfImagesOfAllMorphisms
+      1.12-24 AddUniversalMorphismFromColimit
+      1.12-25 AddUniversalMorphismFromColimitWithGivenColimit
+      1.12-26 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct
+      1.12-27 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
+      1.12-28 AddUniversalMorphismIntoLimit
+      1.12-29 AddUniversalMorphismIntoLimitWithGivenLimit
   2 [33X[0;0YTools[133X
     2.1 [33X[0;0YAttributes[133X
       2.1-1 DefiningTripleOfUnderlyingQuiver
