@@ -83,7 +83,7 @@
   [1X4.4-1 [33X[0;0YSkeletal WellDefined[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
     [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;[127X[104X
@@ -135,7 +135,7 @@
   [1X4.4-2 [33X[0;0YSkeletal PreCompose[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
     [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;[127X[104X
@@ -160,7 +160,7 @@
   [1X4.4-3 [33X[0;0YSkeletal Lift[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
     [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;[127X[104X
@@ -199,7 +199,7 @@
   [1X4.4-4 [33X[0;0YMorphisms of external Hom[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
     [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;[127X[104X
@@ -228,7 +228,7 @@
   [1X4.4-5 [33X[0;0YSkeletal Initial and Terminal Objects[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
     [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;[127X[104X
@@ -283,7 +283,7 @@
   [1X4.4-6 [33X[0;0YSkeletal Direct Product[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
     [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;[127X[104X
@@ -335,7 +335,7 @@
   [1X4.4-7 [33X[0;0YSkeletal Coproduct[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
     [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;[127X[104X
@@ -381,7 +381,7 @@
   [1X4.4-8 [33X[0;0YSkeletal coproduct complement[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
     [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;[127X[104X
@@ -414,7 +414,7 @@
   [1X4.4-9 [33X[0;0YSkeletal Equalizer[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
     [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;[127X[104X
@@ -460,7 +460,7 @@
   [1X4.4-10 [33X[0;0YSkeletal homomorphism structre[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
     [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;[127X[104X
