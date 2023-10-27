@@ -163,6 +163,62 @@ AddDerivationToCAP( ImageEmbedding,
 end );
 
 ##
+AddDerivationToCAP( ImageEmbedding,
+        "ImageEmbedding as the colift along the coastriction to image",
+        [ [ CoastrictionToImage, 1 ],
+          [ ColiftAlongEpimorphism, 1 ] ],
+        
+  function( cat, mor )
+    
+    return ColiftAlongEpimorphism( cat,
+                   CoastrictionToImage( cat, mor ),
+                   mor );
+    
+end : CategoryFilter := IsElementaryTopos );
+
+##
+AddDerivationToCAP( ImageEmbeddingWithGivenImageObject,
+        "ImageEmbeddingWithGivenImageObject as the colift along the coastriction to image",
+        [ [ CoastrictionToImageWithGivenImageObject, 1 ],
+          [ ColiftAlongEpimorphism, 1 ] ],
+        
+  function( cat, mor, image_object )
+    
+    return ColiftAlongEpimorphism( cat,
+                   CoastrictionToImageWithGivenImageObject( cat, mor, image_object ),
+                   mor );
+    
+end : CategoryFilter := IsElementaryTopos );
+
+##
+AddDerivationToCAP( CoimageProjection,
+        "CoimageProjection as the lift along the astriction to coimage",
+        [ [ AstrictionToCoimage, 1 ],
+          [ LiftAlongMonomorphism, 1 ] ],
+        
+  function ( cat, mor )
+    
+    return LiftAlongMonomorphism( cat,
+                   AstrictionToCoimage( cat, mor ),
+                   mor );
+    
+end : CategoryFilter := IsElementaryTopos );
+
+##
+AddDerivationToCAP( CoimageProjectionWithGivenCoimageObject,
+        "CoimageProjectionWithGivenCoimageObject as the lift along the astriction to coimage",
+        [ [ AstrictionToCoimageWithGivenCoimageObject, 1 ],
+          [ LiftAlongMonomorphism, 1 ] ],
+        
+  function ( cat, mor, coimage_object )
+    
+    return LiftAlongMonomorphism( cat,
+                   AstrictionToCoimageWithGivenCoimageObject( cat, mor, coimage_object ),
+                   mor );
+    
+end : CategoryFilter := IsElementaryTopos );
+
+##
 AddDerivationToCAP( SubobjectOfClassifyingMorphism,
         "SubobjectOfClassifyingMorphism using the fiber product along the true morphism",
         [ [ TruthMorphismOfTrueWithGivenObjects, 1 ],
