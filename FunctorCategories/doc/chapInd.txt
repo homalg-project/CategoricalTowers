@@ -174,7 +174,7 @@
   [2XQuiverOfCategoryOfBouquets[102X 4.4-1 
   [2XQuiverOfCategoryOfReflexiveQuivers[102X 7.4-1 
   [2XRetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[102X, for IsObjectInPreSheafCategory 2.1-19 
-  [2XSectionByCoveringListOfRepresentables[102X, for IsPreSheafCategory, IsList, IsObjectInPreSheafCategory 2.1-17 
+  [2XSectionAndComplementByCoveringListOfRepresentables[102X, for IsPreSheafCategory, IsList, IsObjectInPreSheafCategory 2.1-17 
   [2XSectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[102X, for IsObjectInPreSheafCategory 2.1-18 
   [2XSievesOfPathsToTruth[102X, for IsMorphismInPreSheafCategory 2.2-8 
   [2XSimpleObjects[102X, for IsPreSheafCategory 2.2-6 

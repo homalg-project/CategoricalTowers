@@ -100,9 +100,9 @@
   
   [33X[1;0Y[29X[2XEpimorphismFromSomeProjectiveObjectUsingSplits[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-17 SectionByCoveringListOfRepresentables[101X
+  [1X2.1-17 SectionAndComplementByCoveringListOfRepresentables[101X
   
-  [33X[1;0Y[29X[2XSectionByCoveringListOfRepresentables[102X( [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XSectionAndComplementByCoveringListOfRepresentables[102X( [3XF[103X ) [32X operation[133X
   
   [1X2.1-18 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[101X
   
