@@ -9,6 +9,7 @@ ReadPackage( "Toposes", "gap/ToposMethodRecord.gi" );
 ReadPackage( "Toposes", "gap/Topos.gi" );
 
 ReadPackage( "Toposes", "gap/ToposDerivedMethods.gi" );
+ReadPackage( "Toposes", "gap/ToposDerivedMethods.semiautogen.gi" );
 
 ## Category of relations
 ReadPackage( "Toposes", "gap/CategoryOfRelations.gi" );
