@@ -16,6 +16,11 @@ ReadPackage( "Algebroids", "gap/CategoryOfAlgebroids.gd");
 ReadPackage( "Algebroids", "gap/Bialgebroids.gd");
 ReadPackage( "Algebroids", "gap/SimplicialCategory.gd");
 ReadPackage( "Algebroids", "gap/Tools.gd");
+ReadPackage( "Algebroids", "gap/Quivers.gd");
+ReadPackage( "Algebroids", "gap/PathCategories.gd");
+ReadPackage( "Algebroids", "gap/GroebnerBasesForPathCategories.gd");
+ReadPackage( "Algebroids", "gap/QuotientsOfPathCategories.gd");
+ReadPackage( "Algebroids", "gap/LinearClosuresOfPathCategoriesAndTheirQuotients.gd" );
 
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "Algebroids", "gap/Julia.gd" );
