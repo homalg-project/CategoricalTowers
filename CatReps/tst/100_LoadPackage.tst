@@ -7,16 +7,20 @@
 gap> PushOptions( rec( OnlyNeeded := true ) );
 gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
-gap> LoadPackage( "FreydCategoriesForCAP", false );
+gap> LoadPackage( "CategoryConstructor", false );
 true
-gap> LoadPackage( "Toposes", false );
+gap> LoadPackage( "FinSetsForCAP", false );
+true
+gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
 gap> LoadPackage( "CatReps", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
-gap> LoadPackage( "FreydCategoriesForCAP" );
+gap> LoadPackage( "CategoryConstructor" );
 true
-gap> LoadPackage( "Toposes" );
+gap> LoadPackage( "FinSetsForCAP" );
+true
+gap> LoadPackage( "FreydCategoriesForCAP" );
 true
 gap> LoadPackage( "CatReps" );
 true
