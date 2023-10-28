@@ -270,16 +270,9 @@ end );
 
 ##
 InstallOtherMethod( AlgebroidFromDataTables,
-          [ IsAlgebroid ],
+          [ IsCapCategory ],
   
   B -> AlgebroidFromDataTables( DataTablesOfCategory( B ) )
-);
-
-##
-InstallOtherMethod( AlgebroidFromDataTables,
-          [ IsQuotientCapCategory ],
-  
-  qB -> AlgebroidFromDataTables( DataTablesOfCategory( qB ) )
 );
 
 ##
