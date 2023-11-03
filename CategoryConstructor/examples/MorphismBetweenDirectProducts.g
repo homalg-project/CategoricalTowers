@@ -3,7 +3,7 @@
 #! @Example
 LoadPackage( "CategoryConstructor" );
 #! true
-LoadPackage( "Toposes", ">= 2023.10-15", fail );
+LoadPackage( "Toposes", ">= 2023.11-02", fail );
 #! true
 LoadPackage( "FinSetsForCAP", ">= 2023.07-03", fail );
 #! true
@@ -12,7 +12,7 @@ sFinSets := SkeletalCategoryOfFiniteSets( );
 Display( sFinSets );
 #! A CAP category with name SkeletalFinSets:
 #! 
-#! 59 primitive operations were used to derive 323 operations for this category
+#! 59 primitive operations were used to derive 325 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsElementaryTopos
@@ -42,7 +42,7 @@ W := WrapperCategory( sFinSets,
 Display( W );
 #! A CAP category with name WrapperCategory( SkeletalFinSets ):
 #! 
-#! 306 primitive operations were used to derive 316 operations for this category
+#! 308 primitive operations were used to derive 318 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsElementaryTopos

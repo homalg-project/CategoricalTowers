@@ -563,6 +563,44 @@ DeclareOperation( "AddNonliftableMorphismFromDistinguishedObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `PTransposeMorphism`.
+#! $F: ( a, b, f ) \mapsto \mathtt{PTransposeMorphism}(a, b, f)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPTransposeMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPTransposeMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPTransposeMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPTransposeMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `PTransposeMorphismWithGivenRange`.
+#! $F: ( a, b, f, Pb ) \mapsto \mathtt{PTransposeMorphismWithGivenRange}(a, b, f, Pb)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPTransposeMorphismWithGivenRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPTransposeMorphismWithGivenRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPTransposeMorphismWithGivenRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPTransposeMorphismWithGivenRange",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `PowerObject`.
 #! $F: ( arg2 ) \mapsto \mathtt{PowerObject}(arg2)$.
 #! @Returns nothing

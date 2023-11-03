@@ -388,6 +388,28 @@ DeclareOperation( "PowerObjectEvaluationMorphismWithGivenObjects",
         [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
+#!  The arguments are two objects <A>a</A>, <A>b</A>,
+#!  a morphism <A>f</A>: <A>a</A> $\times$ <A>b</A> $\to \Omega$,
+#!  where $\Omega$ is the subobject classifier of <C>CapCategory</C>(<A>f</A>).
+#!  The output is the $P$-transpose morphism <A>a</A> $\to P(b)$,
+#!  where $P(b) =$ <C>PowerObject</C>( <A>b</A> ).
+#! @Arguments a, b, f
+#! @Returns a morphism in $\mathrm{Hom}( a, P(b) )$
+DeclareOperation( "PTransposeMorphism",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+#! @Description
+#!  The arguments are two objects <A>a</A>, <A>b</A>,
+#!  a morphism <A>f</A>: <A>a</A> $\times$ <A>b</A> $\to \Omega$, and an object <A>Pb</A>,
+#!  where $\Omega$ is the subobject classifier of <C>CapCategory</C>(<A>f</A>)
+#!  and <A>Pb</A> = <C>PowerObject</C>( <A>b</A> ).
+#!  The output is the $P$-transpose morphism <A>a</A> $\to$ <A>Pb</A>.
+#! @Arguments a, b, f, Pb
+#! @Returns a morphism in $\mathrm{Hom}( a, Pb )$
+DeclareOperation( "PTransposeMorphismWithGivenRange",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
 #!  The arguments are two objects <A>a</A>, <A>b</A> in a category $C$
 #!  and a monomorphism <A>mu</A>$: r \hookrightarrow a \times b$ defining a relation
 #!  on $a \times b$.
