@@ -160,7 +160,9 @@ InstallMethod( SliceCategory,
         ##
         AddDirectProduct( S, # WeakDirectProduct
            function( cat, L )
-            local C, L2, biased_weak_fiber_product;
+            local B, C, L2, biased_weak_fiber_product;
+            
+            B := BaseObject( cat );
             
             C := AmbientCategory( cat );
             
@@ -170,7 +172,7 @@ InstallMethod( SliceCategory,
                 return PreCompose( C, ProjectionOfBiasedWeakFiberProduct( C, I, J ), I );
             end;
             
-            return ObjectConstructor( cat, Iterated( L2, biased_weak_fiber_product ) );
+            return ObjectConstructor( cat, Iterated( L2, biased_weak_fiber_product, IdentityMorphism( C, B ) ) );
             
         end );
         
