@@ -369,6 +369,25 @@ DeclareOperation( "PowerObjectFunctorialWithGivenPowerObjects",
         [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
+#!  The argument is an object <A>a</A>.
+#!  The output is the power object evaluation morphism of $\epsilon_a: P(a) \times a \to \Omega$,
+#!  where $\Omega$ is the subobject classifier of <C>CapCategory</C>(<A>a</A>).
+#! @Arguments a
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{PowerObject}(a) \times a, \Omega )$
+DeclareAttribute( "PowerObjectEvaluationMorphism",
+        IsCapCategoryObject );
+
+#! @Description
+#!  The arguments are three objects <A>Pa_xa</A>, <A>a</A>, and <A>Omega</A>,
+#!  such that <A>Pa_xa</A>$= P(a) \times a$ and
+#!  <A>Omega</A> the subobject classifier of <C>CapCategory</C>(<A>a</A>).
+#!  The output is the power object evaluation morphism of $\epsilon_a:$ <A>Pa_xa</A> $\to$ <A>Omega</A>.
+#! @Arguments Pa_xa, a, Omega
+#! @Returns a morphism in $\mathrm{Hom}( Pa_xa, Omega )$
+DeclareOperation( "PowerObjectEvaluationMorphismWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
 #!  The arguments are two objects <A>a</A>, <A>b</A> in a category $C$
 #!  and a monomorphism <A>mu</A>$: r \hookrightarrow a \times b$ defining a relation
 #!  on $a \times b$.
@@ -461,11 +480,29 @@ DeclareOperation( "IntersectWithPreimagesWithGivenObjects",
 
 #! @Description
 #!  The input is a morphism <A>f</A>: $a \to b$.
-#!  The output is the embedding of the relative power object $P_f \hookrightarrow Pa \times b$,
+#!  The output is the embedding of the relative power object $P_fA \hookrightarrow Pa \times b$,
 #!  where $Pa$ = <C>PowerObject</C>($a$).
 #! @Arguments f
-#! @Returns a monomorphism $\mathrm{Hom}( P_f, Pa \times b )$
+#! @Returns a monomorphism $\mathrm{Hom}( P_fA, Pa \times b )$
 DeclareAttribute( "EmbeddingOfRelativePowerObject",
+        IsCapCategoryMorphism );
+
+#! @Description
+#!  The input is a morphism <A>f</A>: $a \to b$.
+#!  The output is the fibration morphism $P_f: P_fA \rightarrow \times b$,
+#!  where is $P_fA$ the relative power object of <A>f</A>.
+#! @Arguments f
+#! @Returns a monomorphism $\mathrm{Hom}( P_fA, b )$
+DeclareAttribute( "RelativePowerObjectFibrationMorphism",
+        IsCapCategoryMorphism );
+
+#! @Description
+#!  The input is a morphism <A>f</A>: $a \to b$.
+#!  The output is the evaluation morphism $P_fA \times a \rightarrow \Omega \times b$,
+#!  where $Pa$ = <C>PowerObject</C>($a$) and $P_fA$ is the relative power object of <A>f</A>.
+#! @Arguments f
+#! @Returns a monomorphism $\mathrm{Hom}( P_fA \times a, \Omega \times b )$
+DeclareAttribute( "RelativePowerObjectEvaluationMorphism",
         IsCapCategoryMorphism );
 
 ####################################

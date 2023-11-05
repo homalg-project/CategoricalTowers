@@ -32,7 +32,7 @@ Display( L );
 #! StablePosetOfCategory( PosetOfCategory(
 #! SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):
 #! 
-#! 15 primitive operations were used to derive 310 operations for this category
+#! 15 primitive operations were used to derive 311 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsHeytingAlgebra

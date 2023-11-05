@@ -433,6 +433,20 @@ AddDerivationToCAP( PowerObjectFunctorialWithGivenPowerObjects,
     
 end );
 
+## P(a) × a → Ω
+AddDerivationToCAP( PowerObjectEvaluationMorphismWithGivenObjects,
+        "PowerObjectEvaluationMorphismWithGivenObjects as a special case of the cartesian evaluation",
+        [ [ CartesianEvaluationMorphismWithGivenSource, 1 ] ],
+        
+  function( cat, Pa_xa, a, Omega )
+    
+    return CartesianEvaluationMorphismWithGivenSource( cat,
+                   a,
+                   Omega,
+                   Pa_xa );
+    
+end );
+
 ## Rewrite a relation μ:R ↪ a × b as a morphism a → P(b)
 AddDerivationToCAP( UpperSegmentOfRelationWithGivenRange,
         "",

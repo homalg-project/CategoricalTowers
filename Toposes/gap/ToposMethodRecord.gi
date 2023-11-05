@@ -266,6 +266,26 @@ PowerObjectFunctorialWithGivenPowerObjects := rec(
   output_range_getter_preconditions := [ ],
 ),
 
+PowerObjectEvaluationMorphism := rec(
+  filter_list := [ "category", "object" ],
+  return_type := "morphism",
+  input_arguments_names := [ "cat", "a" ],
+  output_source_getter_string := "DirectProduct( cat, [ PowerObject( cat, a ), a ] )",
+  output_source_getter_preconditions := [ [ "PowerObject", 1 ], [ "DirectProduct", 1 ] ],
+  output_range_getter_string := "SubobjectClassifier( cat )",
+  output_range_getter_preconditions := [ [ "SubobjectClassifier", 1 ] ],
+  with_given_object_position := "both" ),
+
+PowerObjectEvaluationMorphismWithGivenObjects := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  return_type := "morphism",
+  input_arguments_names := [ "cat", "Pa_xa", "a", "Omega" ],
+  output_source_getter_string := "Pa_xa",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Omega",
+  output_range_getter_preconditions := [ ],
+),
+
 UpperSegmentOfRelation := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   return_type := "morphism",

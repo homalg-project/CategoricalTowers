@@ -3,7 +3,7 @@
 #! @Example
 LoadPackage( "PreSheaves" );
 #! true
-LoadPackage( "Toposes", ">= 2023.07-04", fail );
+LoadPackage( "Toposes", ">= 2023.10-15", fail );
 #! true
 T := PreSheaves( InitialCategory( ) );
 #! PreSheaves( InitialCategory( ), InitialCategory( ) )
@@ -12,7 +12,7 @@ IsTerminalCategory( T );
 Display( T );
 #! A CAP category with name PreSheaves( InitialCategory( ), InitialCategory( ) ):
 #! 
-#! 93 primitive operations were used to derive 511 operations for this category
+#! 93 primitive operations were used to derive 513 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
