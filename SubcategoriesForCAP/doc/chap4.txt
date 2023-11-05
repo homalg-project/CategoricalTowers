@@ -261,6 +261,27 @@
     [4X[28XA morphism in the slice category given by the above data[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( Pm2 );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xomega := SubobjectClassifier( S );[127X[104X
+    [4X[28XAn object in the slice category given by: |4| → |2|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( omega );[127X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 0, 0, 1, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the slice category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xo12 := DirectProduct( o1, o2 );[127X[104X
+    [4X[28XAn object in the slice category given by: |6| → |2|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( o12 );[127X[104X
+    [4X[28X{ 0,..., 5 } ⱶ[ 1, 0, 0, 1, 0, 0 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the slice category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xff := MapOfFinSets( SourceOfUnderlyingMorphism( o12 ),[127X[104X
+    [4X[25X>[125X [27X             [ 3, 1, 1, 2, 1, 0 ],[127X[104X
+    [4X[25X>[125X [27X             SourceOfUnderlyingMorphism( omega ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xf := MorphismConstructor( o12, ff, omega );[127X[104X
+    [4X[28XA morphism in the slice category given by: |6| → |4|[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( f );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xg := PTransposeMorphism( o1, o2, f );[127X[104X
+    [4X[28XA morphism in the slice category given by: |3| → |8|[128X[104X
     [4X[28X#@fi[128X[104X
   [4X[32X[104X
   

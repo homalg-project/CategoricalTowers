@@ -345,6 +345,27 @@ A morphism in the slice category given by: |6| → |8|
 A morphism in the slice category given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Pm2 );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">omega := SubobjectClassifier( S );</span>
+An object in the slice category given by: |4| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( omega );</span>
+{ 0,..., 3 } ⱶ[ 0, 0, 1, 1 ]→ { 0, 1 }
+
+An object in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o12 := DirectProduct( o1, o2 );</span>
+An object in the slice category given by: |6| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( o12 );</span>
+{ 0,..., 5 } ⱶ[ 1, 0, 0, 1, 0, 0 ]→ { 0, 1 }
+
+An object in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ff := MapOfFinSets( SourceOfUnderlyingMorphism( o12 ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">             [ 3, 1, 1, 2, 1, 0 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">             SourceOfUnderlyingMorphism( omega ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := MorphismConstructor( o12, ff, omega );</span>
+A morphism in the slice category given by: |6| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( f );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := PTransposeMorphism( o1, o2, f );</span>
+A morphism in the slice category given by: |3| → |8|
 #@fi
 </pre></div>
 
