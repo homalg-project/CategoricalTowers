@@ -378,7 +378,8 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     fi;
     
-    if CanCompute( C, "ProjectionInFactorOfFiberProductWithGivenFiberProduct" ) and
+    if CanCompute( C, "MorphismFromFiberProductToSink" ) and ## MorphismFromFiberProductToSink was used to install DirectProduct
+       CanCompute( C, "ProjectionInFactorOfFiberProductWithGivenFiberProduct" ) and
        CanCompute( C, "UniversalMorphismIntoFiberProductWithGivenFiberProduct" ) then
         
         SetIsCartesianCategory( Slice_over_B, true );

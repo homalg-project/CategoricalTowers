@@ -1,4 +1,4 @@
-#! @Chunk SliceCategoryOfCategoryOfRowsOfFieldOverTensorUnitPrecompiled
+#! @Chunk SliceCategoryOfCategoryOfRowsOfIntegersOverTensorUnitPrecompiled
 
 #! @Example
 
@@ -7,7 +7,7 @@ LoadPackage( "SubcategoriesForCAP" );
 LoadPackage( "FreydCategoriesForCAP" );
 #! true
 
-QQ := HomalgFieldOfRationals( );;
+ZZZ := HomalgRingOfIntegers( );;
 
 # HomalgIdentityMatrix( size, ring ) * matrix -> matrix
 CapJitAddLogicTemplate(
@@ -27,34 +27,17 @@ CapJitAddLogicTemplate(
     )
 );
 
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "matrix", "dimension", "ring" ],
-        src_template := "HomalgIdentityMatrix( dimension, ring ) * matrix",
-        dst_template := "matrix",
-    )
-);
-
-# Iterated: function always choosing first value
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "list" ],
-        src_template := "Iterated( list, { x, y } -> x )",
-        dst_template := "list[1]",
-    )
-);
-
 # we do not use SliceCategoryOverTensorUnit because that installs more operations
 # which we are not interested in for this simple test
-category_constructor := field ->
+category_constructor := ring ->
     SliceCategory(
         TensorUnit(
-            CategoryOfRows( field : FinalizeCategory := true )
+            CategoryOfRows( ring : FinalizeCategory := true )
         )
     );;
 
-given_arguments := [ QQ ];;
-compiled_category_name := "SliceCategoryOfCategoryOfRowsOfFieldOverTensorUnitPrecompiled";;
+given_arguments := [ ZZZ ];;
+compiled_category_name := "SliceCategoryOfCategoryOfRowsOfRingOfIntegersOverTensorUnitPrecompiled";;
 package_name := "SubcategoriesForCAP";;
 
 CapJitPrecompileCategoryAndCompareResult(

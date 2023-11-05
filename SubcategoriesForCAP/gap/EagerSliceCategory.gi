@@ -153,7 +153,21 @@ InstallMethod( SliceCategory,
         
     fi;
     
-    if CanCompute( C, "ProjectionOfBiasedWeakFiberProduct" ) then
+    if CanCompute( C, "MorphismFromFiberProductToSink" ) then
+        
+        SetIsCartesianCategory( S, true );
+        
+        ##
+        AddDirectProduct( S,
+          function( cat, L )
+            
+            return ObjectConstructor( cat,
+                           MorphismFromFiberProductToSink( AmbientCategory( cat ),
+                                   List( L, UnderlyingMorphism ) ) );
+            
+        end );
+        
+    elif CanCompute( C, "ProjectionOfBiasedWeakFiberProduct" ) then
         
         SetIsCartesianCategory( S, true );
         
@@ -173,20 +187,6 @@ InstallMethod( SliceCategory,
             end;
             
             return ObjectConstructor( cat, Iterated( L2, biased_weak_fiber_product, IdentityMorphism( C, B ) ) );
-            
-        end );
-        
-    elif CanCompute( C, "MorphismFromFiberProductToSink" ) then
-        
-        SetIsCartesianCategory( S, true );
-        
-        ##
-        AddDirectProduct( S,
-          function( cat, L )
-            
-            return ObjectConstructor( cat,
-                           MorphismFromFiberProductToSink( AmbientCategory( cat ),
-                                   List( L, UnderlyingMorphism ) ) );
             
         end );
         
