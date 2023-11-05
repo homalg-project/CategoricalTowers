@@ -673,7 +673,8 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
        CanCompute( C, "PowerObjectFunctorialWithGivenPowerObjects" ) and
        CanCompute( C, "SingletonMorphism" ) and
        CanCompute( C, "RelativeTruthMorphismOfAndWithGivenObjects" ) and
-       CanCompute( C, "DirectProductFunctorialWithGivenDirectProducts" ) then
+       CanCompute( C, "DirectProductFunctorialWithGivenDirectProducts" ) and
+       CanCompute( C, "PTransposeMorphismWithGivenRange" ) then
         
         ##
         AddPowerObject( Slice_over_B,
@@ -758,6 +759,87 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                            PM_xM,
                            RelativePowerObjectEvaluationMorphism( C, f ),
                            Omega );
+            
+        end );
+        
+        ##
+        AddPTransposeMorphismWithGivenRange( Slice_over_B,
+          function( cat, M, N, f, PN )
+            local C, Omega, B, m, n, ff, pr1, chi, iota, emb, cmp, h, A, D, PD, k, km, e, g;
+            
+            C := AmbientCategory( cat );
+            
+            Omega := SubobjectClassifier( C );
+            
+            B := BaseObject( cat );
+            
+            ## m: A → B
+            m := UnderlyingMorphism( M );
+            
+            ## n: D → B
+            n := UnderlyingMorphism( N );
+            
+            ## A m_×_n D → Ω × B
+            ff := UnderlyingCell( f );
+            
+            ## Ω × B → Ω
+            pr1 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( C,
+                           [ Omega, B ],
+                           1,
+                           Range( ff ) );
+            
+            ## χ: A m_×_n D → Ω
+            chi := PreCompose( C,
+                           ff,
+                           pr1 );
+            
+            ## ι: S ↪ A m_×_n D
+            iota := SubobjectOfClassifyingMorphism( C, chi );
+            
+            ## A m_×_n D ↪ A × D
+            emb := FiberProductEmbeddingInDirectProduct( C, [ m, n ] );
+            
+            ## S ↪ A × D
+            cmp := PreCompose( C, iota, emb );
+            
+            ## A × D → Ω
+            h := ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( C,
+                         cmp,
+                         Omega );
+            
+            A := Source( m );
+            
+            D := Source( n );
+            
+            PD := PowerObject( C, D );
+            
+            ## k: A → P(D)
+            k := PTransposeMorphismWithGivenRange( C,
+                         A,
+                         D,
+                         h,
+                         PD );
+            
+            ## e: P_nD ↪ PD × B
+            e := EmbeddingOfRelativePowerObject( C, n );
+            
+            ## ⟨k,m⟩: A → PD × B
+            km := UniversalMorphismIntoDirectProductWithGivenDirectProduct( C,
+                          [ PD, B ],
+                          A,
+                          [ k, m ],
+                          Range( e ) );
+            
+            ## g: A → P_nD
+            g := LiftAlongMonomorphism( C,
+                         e,
+                         km );
+            
+            ## M → PN
+            return MorphismConstructor( cat,
+                           M,
+                           g,
+                           PN );
             
         end );
         

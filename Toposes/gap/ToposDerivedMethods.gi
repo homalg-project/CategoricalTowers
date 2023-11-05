@@ -447,6 +447,21 @@ AddDerivationToCAP( PowerObjectEvaluationMorphismWithGivenObjects,
     
 end );
 
+## (f:a × b → Ω) ↦ (a → P(b))
+AddDerivationToCAP( PTransposeMorphismWithGivenRange,
+        "PTransposeMorphismWithGivenRange as a special case of the cartesian adjunction",
+        [ [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
+        
+  function( cat, a, b, f, Pb )
+    
+    return DirectProductToExponentialAdjunctionMapWithGivenExponential( cat,
+                   a,
+                   b,
+                   f,
+                   Pb );
+    
+end );
+
 ## Rewrite a relation μ:R ↪ a × b as a morphism a → P(b)
 AddDerivationToCAP( UpperSegmentOfRelationWithGivenRange,
         "",

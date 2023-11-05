@@ -180,5 +180,26 @@ Display( Pm2 );
 #! A morphism in the slice category given by the above data
 IsWellDefined( Pm2 );
 #! true
+omega := SubobjectClassifier( S );
+#! An object in the slice category given by: |4| → |2|
+Display( omega );
+#! { 0,..., 3 } ⱶ[ 0, 0, 1, 1 ]→ { 0, 1 }
+#! 
+#! An object in the slice category given by the above data
+o12 := DirectProduct( o1, o2 );
+#! An object in the slice category given by: |6| → |2|
+Display( o12 );
+#! { 0,..., 5 } ⱶ[ 1, 0, 0, 1, 0, 0 ]→ { 0, 1 }
+#! 
+#! An object in the slice category given by the above data
+ff := MapOfFinSets( SourceOfUnderlyingMorphism( o12 ),
+             [ 3, 1, 1, 2, 1, 0 ],
+             SourceOfUnderlyingMorphism( omega ) );;
+f := MorphismConstructor( o12, ff, omega );
+#! A morphism in the slice category given by: |6| → |4|
+IsWellDefined( f );
+#! true
+g := PTransposeMorphism( o1, o2, f );
+#! A morphism in the slice category given by: |3| → |8|
 #! #@fi
 #! @EndExample
