@@ -6,7 +6,7 @@
                               [1X Elementary toposes [101X
   
   
-                                   2023.11-01
+                                   2023.11-02
   
   
                                 5 November 2023
@@ -94,18 +94,20 @@
       1.5-3 PowerObjectFunctorialWithGivenPowerObjects
       1.5-4 PowerObjectEvaluationMorphism
       1.5-5 PowerObjectEvaluationMorphismWithGivenObjects
-      1.5-6 UpperSegmentOfRelation
-      1.5-7 UpperSegmentOfRelationWithGivenRange
-      1.5-8 LowerSegmentOfRelation
-      1.5-9 LowerSegmentOfRelationWithGivenRange
-      1.5-10 SingletonMorphism
-      1.5-11 SingletonMorphismWithGivenPowerObject
-      1.5-12 IsomorphismOntoCartesianSquareOfPowerObject
-      1.5-13 IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects
-      1.5-14 IntersectWithPreimagesWithGivenObjects
-      1.5-15 EmbeddingOfRelativePowerObject
-      1.5-16 RelativePowerObjectFibrationMorphism
-      1.5-17 RelativePowerObjectEvaluationMorphism
+      1.5-6 PTransposeMorphism
+      1.5-7 PTransposeMorphismWithGivenRange
+      1.5-8 UpperSegmentOfRelation
+      1.5-9 UpperSegmentOfRelationWithGivenRange
+      1.5-10 LowerSegmentOfRelation
+      1.5-11 LowerSegmentOfRelationWithGivenRange
+      1.5-12 SingletonMorphism
+      1.5-13 SingletonMorphismWithGivenPowerObject
+      1.5-14 IsomorphismOntoCartesianSquareOfPowerObject
+      1.5-15 IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects
+      1.5-16 IntersectWithPreimagesWithGivenObjects
+      1.5-17 EmbeddingOfRelativePowerObject
+      1.5-18 RelativePowerObjectFibrationMorphism
+      1.5-19 RelativePowerObjectEvaluationMorphism
     1.6 [33X[0;0YRelative truth morphisms[133X
       1.6-1 RelativeTruthMorphismOfTrue
       1.6-2 RelativeTruthMorphismOfTrueWithGivenObjects
@@ -173,47 +175,49 @@
       1.11-27 AddLowerSegmentOfRelationWithGivenRange
       1.11-28 AddMorphismsOfExternalHom
       1.11-29 AddNonliftableMorphismFromDistinguishedObject
-      1.11-30 AddPowerObject
-      1.11-31 AddPowerObjectEvaluationMorphism
-      1.11-32 AddPowerObjectEvaluationMorphismWithGivenObjects
-      1.11-33 AddPowerObjectFunctorial
-      1.11-34 AddPowerObjectFunctorialWithGivenPowerObjects
-      1.11-35 AddProjectionInDirectProductComplement
-      1.11-36 AddProjectionInDirectProductComplementWithGivenDirectProductComplement
-      1.11-37 AddPseudoComplementSubobject
-      1.11-38 AddPushoutComplement
-      1.11-39 AddRelativePseudoComplementSubobject
-      1.11-40 AddRelativeTruthMorphismOfAnd
-      1.11-41 AddRelativeTruthMorphismOfAndWithGivenObjects
-      1.11-42 AddRelativeTruthMorphismOfFalse
-      1.11-43 AddRelativeTruthMorphismOfFalseWithGivenObjects
-      1.11-44 AddRelativeTruthMorphismOfImplies
-      1.11-45 AddRelativeTruthMorphismOfImpliesWithGivenObjects
-      1.11-46 AddRelativeTruthMorphismOfNot
-      1.11-47 AddRelativeTruthMorphismOfNotWithGivenObjects
-      1.11-48 AddRelativeTruthMorphismOfOr
-      1.11-49 AddRelativeTruthMorphismOfOrWithGivenObjects
-      1.11-50 AddRelativeTruthMorphismOfTrue
-      1.11-51 AddRelativeTruthMorphismOfTrueWithGivenObjects
-      1.11-52 AddSingletonMorphism
-      1.11-53 AddSingletonMorphismWithGivenPowerObject
-      1.11-54 AddSubobjectClassifier
-      1.11-55 AddSubobjectOfClassifyingMorphism
-      1.11-56 AddTruthMorphismOfAnd
-      1.11-57 AddTruthMorphismOfAndWithGivenObjects
-      1.11-58 AddTruthMorphismOfFalse
-      1.11-59 AddTruthMorphismOfFalseWithGivenObjects
-      1.11-60 AddTruthMorphismOfImplies
-      1.11-61 AddTruthMorphismOfImpliesWithGivenObjects
-      1.11-62 AddTruthMorphismOfNot
-      1.11-63 AddTruthMorphismOfNotWithGivenObjects
-      1.11-64 AddTruthMorphismOfOr
-      1.11-65 AddTruthMorphismOfOrWithGivenObjects
-      1.11-66 AddTruthMorphismOfTrue
-      1.11-67 AddTruthMorphismOfTrueWithGivenObjects
-      1.11-68 AddUnionSubobject
-      1.11-69 AddUpperSegmentOfRelation
-      1.11-70 AddUpperSegmentOfRelationWithGivenRange
+      1.11-30 AddPTransposeMorphism
+      1.11-31 AddPTransposeMorphismWithGivenRange
+      1.11-32 AddPowerObject
+      1.11-33 AddPowerObjectEvaluationMorphism
+      1.11-34 AddPowerObjectEvaluationMorphismWithGivenObjects
+      1.11-35 AddPowerObjectFunctorial
+      1.11-36 AddPowerObjectFunctorialWithGivenPowerObjects
+      1.11-37 AddProjectionInDirectProductComplement
+      1.11-38 AddProjectionInDirectProductComplementWithGivenDirectProductComplement
+      1.11-39 AddPseudoComplementSubobject
+      1.11-40 AddPushoutComplement
+      1.11-41 AddRelativePseudoComplementSubobject
+      1.11-42 AddRelativeTruthMorphismOfAnd
+      1.11-43 AddRelativeTruthMorphismOfAndWithGivenObjects
+      1.11-44 AddRelativeTruthMorphismOfFalse
+      1.11-45 AddRelativeTruthMorphismOfFalseWithGivenObjects
+      1.11-46 AddRelativeTruthMorphismOfImplies
+      1.11-47 AddRelativeTruthMorphismOfImpliesWithGivenObjects
+      1.11-48 AddRelativeTruthMorphismOfNot
+      1.11-49 AddRelativeTruthMorphismOfNotWithGivenObjects
+      1.11-50 AddRelativeTruthMorphismOfOr
+      1.11-51 AddRelativeTruthMorphismOfOrWithGivenObjects
+      1.11-52 AddRelativeTruthMorphismOfTrue
+      1.11-53 AddRelativeTruthMorphismOfTrueWithGivenObjects
+      1.11-54 AddSingletonMorphism
+      1.11-55 AddSingletonMorphismWithGivenPowerObject
+      1.11-56 AddSubobjectClassifier
+      1.11-57 AddSubobjectOfClassifyingMorphism
+      1.11-58 AddTruthMorphismOfAnd
+      1.11-59 AddTruthMorphismOfAndWithGivenObjects
+      1.11-60 AddTruthMorphismOfFalse
+      1.11-61 AddTruthMorphismOfFalseWithGivenObjects
+      1.11-62 AddTruthMorphismOfImplies
+      1.11-63 AddTruthMorphismOfImpliesWithGivenObjects
+      1.11-64 AddTruthMorphismOfNot
+      1.11-65 AddTruthMorphismOfNotWithGivenObjects
+      1.11-66 AddTruthMorphismOfOr
+      1.11-67 AddTruthMorphismOfOrWithGivenObjects
+      1.11-68 AddTruthMorphismOfTrue
+      1.11-69 AddTruthMorphismOfTrueWithGivenObjects
+      1.11-70 AddUnionSubobject
+      1.11-71 AddUpperSegmentOfRelation
+      1.11-72 AddUpperSegmentOfRelationWithGivenRange
     1.12 [33X[0;0YCoproduct and direct product complements[133X
       1.12-1 CoproductComplement
       1.12-2 InjectionOfCoproductComplement
