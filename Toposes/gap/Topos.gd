@@ -408,7 +408,7 @@ DeclareOperation( "UpperSegmentOfRelation",
 #! @Arguments a, b, mu, Pb
 #! @Returns a morphism in $\mathrm{Hom}( a, Pb )$
 DeclareOperation( "UpperSegmentOfRelationWithGivenRange",
-        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsObject ] );
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #!  The arguments are two objects <A>a</A>, <A>b</A> in a category $C$
