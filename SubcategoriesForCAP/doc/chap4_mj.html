@@ -279,6 +279,14 @@ An object in the slice category given by: |6| → |2|
 { 0,..., 5 } ⱶ[ 0, 0, 0, 0, 1, 1 ]→ { 0, 1 }
 
 An object in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e_o1 := PowerObjectEvaluationMorphism( o1 );</span>
+A morphism in the slice category given by: |10| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( e_o1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( e_o1 );</span>
+{ 0,..., 9 } ⱶ[ 0, 1, 0, 1, 2, 3, 0, 0, 1, 1 ]→ { 0,..., 3 }
+
+A morphism in the slice category given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sing_o1 :=  SingletonMorphism( o1 );</span>
 A morphism in the slice category given by: |3| → |6|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( sing_o1 );</span>
@@ -297,6 +305,14 @@ An object in the slice category given by: |8| → |2|
 { 0,..., 7 } ⱶ[ 0, 0, 0, 0, 1, 1, 1, 1 ]→ { 0, 1 }
 
 An object in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e_o2 := PowerObjectEvaluationMorphism( o2 );</span>
+A morphism in the slice category given by: |16| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( e_o2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( e_o2 );</span>
+{ 0,..., 15 } ⱶ[ 2, 3, 2, 3, 0, 1, 0, 1, 2, 2, 3, 3, 0, 0, 1, 1 ]→ { 0,..., 3 }
+
+A morphism in the slice category given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sing_o2 :=  SingletonMorphism( o2 );</span>
 A morphism in the slice category given by: |4| → |8|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( sing_o2 );</span>
@@ -560,68 +576,6 @@ An object in the slice category given by the above data
 <p><a id="X7D7026828261C26B" name="X7D7026828261C26B"></a></p>
 
 <h5>4.3-5 <span class="Heading">Precompilation</span></h5>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># HomalgIdentityMatrix( size, ring ) * matrix -&gt; matrix</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "size", "ring", "matrix" ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "HomalgIdentityMatrix( size, ring ) * matrix",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "matrix",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        needed_packages := [ [ "MatricesForHomalg", "&gt;= 2020.05.19" ] ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "matrix", "dimension", "ring" ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "matrix * HomalgIdentityMatrix( dimension, ring )",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "matrix",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "matrix", "dimension", "ring" ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "HomalgIdentityMatrix( dimension, ring ) * matrix",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "matrix",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># Iterated: function always choosing first value</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "list" ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "Iterated( list, { x, y } -&gt; x )",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "list[1]",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># we do not use SliceCategoryOverTensorUnit because that installs more operations</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># which we are not interested in for this simple test</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := field -&gt;</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SliceCategory(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        TensorUnit(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            CategoryOfRows( field : FinalizeCategory := true )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "SliceCategoryOfCategoryOfRowsOfFieldOverTensorUnitPrecompiled";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "SubcategoriesForCAP";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    : operations := "primitive",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_object := 3,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_object := 1,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_morphism := 6,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_morphism := 4</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
-</pre></div>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Next Chapter]</a>&nbsp;  </div>
