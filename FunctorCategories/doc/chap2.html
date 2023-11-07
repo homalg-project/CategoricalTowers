@@ -1127,12 +1127,76 @@ PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fx := [ 5, 0, 3, 1, 1, 4, 3, 2 ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fx := MapOfFinSets( Fo, Fx, Fo );</span>
 |8| → |8|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Fx );</span>
-{ 0,..., 7 } ⱶ[ 5, 0, 3, 1, 1, 4, 3, 2 ]→ { 0,..., 7 }
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G :=  CreatePreSheafByValues( PSh, Pair( [ Fo ], [ Fx ] ) );</span>
 &lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
  / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( G );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( G );</span>
+Image of &lt;(o)&gt;:
+{ 0,..., 7 }
+
+Image of (o)-[(x)]-&gt;(o):
+{ 0,..., 7 } ⱶ[ 5, 0, 3, 1, 1, 4, 3, 2 ]→ { 0,..., 7 }
+
+An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi := EpimorphismFromSomeProjectiveObject( G );</span>
+&lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+ / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">im := ImageObject( pi );</span>
+&lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+ / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( im );</span>
+Image of &lt;(o)&gt;:
+{ 0,..., 7 }
+
+Image of (o)-[(x)]-&gt;(o):
+{ 0,..., 7 } ⱶ[ 5, 0, 3, 1, 1, 4, 3, 2 ]→ { 0,..., 7 }
+
+An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">im = G;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coim := CoimageObject( pi );</span>
+&lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+ / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( coim );</span>
+Image of &lt;(o)&gt;:
+{ 0,..., 7 }
+
+Image of (o)-[(x)]-&gt;(o):
+{ 0,..., 7 } ⱶ[ 1, 2, 3, 4, 5, 6, 3, 2 ]→ { 0,..., 7 }
+
+An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coim = im;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iso := MorphismFromCoimageToImage( pi );</span>
+&lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+ / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iso );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( iso );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iso );</span>
+Image of &lt;(o)&gt;:
+{ 0,..., 7 } ⱶ[ 7, 2, 3, 1, 0, 5, 4, 6 ]→ { 0,..., 7 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inv := InverseOfMorphismFromCoimageToImage( pi );</span>
+&lt;An isomorphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+ / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( inv );</span>
+Image of &lt;(o)&gt;:
+{ 0,..., 7 } ⱶ[ 4, 3, 1, 2, 6, 5, 7, 0 ]→ { 0,..., 7 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( iso, inv ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( inv, iso ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coYoG := CoYonedaLemmaOnObjects( G );</span>
 &lt;An object in CoequalizerCompletion( FiniteStrictCoproductCompletion(
@@ -1183,14 +1247,75 @@ PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fx := [ 5, 0, 1, 2, 3, 4, 0, 2, 5, 6, 6, 7, 7, 8, 8, 9, 9, 16 ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fx := MapOfFinSets( Fo, Fx, Fo );</span>
 |18| → |18|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Fx );</span>
-{ 0,..., 17 }
-ⱶ[ 5, 0, 1, 2, 3, 4, 0, 2, 5,
-   6, 6, 7, 7, 8, 8, 9, 9, 16 ]→ { 0,..., 17 }
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G :=  CreatePreSheafByValues( PSh, Pair( [ Fo ], [ Fx ] ) );</span>
 &lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
  / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( G );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( G );</span>
+Image of &lt;(o)&gt;:
+{ 0,..., 17 }
+
+Image of (o)-[(x)]-&gt;(o):
+{ 0,..., 17 } ⱶ[ 5, 0, 1, 2, 3, 4, 0, 2, 5,
+                 6, 6, 7, 7, 8, 8, 9, 9, 16 ]→ { 0,..., 17 }
+
+An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+/ [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi := EpimorphismFromSomeProjectiveObject( G );</span>
+&lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+ / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">im := ImageObject( pi );</span>
+&lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+ / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">im = G;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coim := CoimageObject( pi );</span>
+&lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+ / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( coim );</span>
+Image of &lt;(o)&gt;:
+{ 0,..., 17 }
+
+Image of (o)-[(x)]-&gt;(o):
+{ 0,..., 17 } ⱶ[ 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                 4, 2, 3, 13, 8, 13, 16, 5, 16 ]→ { 0,..., 17 }
+
+An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+/ [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coim = im;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iso := MorphismFromCoimageToImage( pi );</span>
+&lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+ / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iso );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( iso );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iso );</span>
+Image of &lt;(o)&gt;:
+{ 0,..., 17 } ⱶ[ 17, 16, 9, 6, 0, 5, 4, 3, 2,
+                 1, 15, 10, 11, 7, 12, 13, 8, 14 ]→ { 0,..., 17 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+/ [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inv := InverseOfMorphismFromCoimageToImage( pi );</span>
+&lt;An isomorphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+ / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( inv );</span>
+Image of &lt;(o)&gt;:
+{ 0,..., 17 } ⱶ[ 4, 9, 8, 7, 6, 5, 3, 13, 16,
+                 2, 11, 12, 14, 15, 17, 10, 1, 0 ]→ { 0,..., 17 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+/ [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( iso, inv ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( inv, iso ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coYoG := CoYonedaLemmaOnObjects( G );</span>
 &lt;An object in CoequalizerCompletion( FiniteStrictCoproductCompletion(

@@ -984,12 +984,76 @@
     [4X[25Xgap>[125X [27XFx := [ 5, 0, 3, 1, 1, 4, 3, 2 ];;[127X[104X
     [4X[25Xgap>[125X [27XFx := MapOfFinSets( Fo, Fx, Fo );[127X[104X
     [4X[28X|8| → |8|[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( Fx );[127X[104X
-    [4X[28X{ 0,..., 7 } ⱶ[ 5, 0, 3, 1, 1, 4, 3, 2 ]→ { 0,..., 7 }[128X[104X
     [4X[25Xgap>[125X [27XG :=  CreatePreSheafByValues( PSh, Pair( [ Fo ], [ Fx ] ) );[127X[104X
     [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
     [4X[28X / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( G );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( G );[127X[104X
+    [4X[28XImage of <(o)>:[128X[104X
+    [4X[28X{ 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (o)-[(x)]->(o):[128X[104X
+    [4X[28X{ 0,..., 7 } ⱶ[ 5, 0, 3, 1, 1, 4, 3, 2 ]→ { 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xpi := EpimorphismFromSomeProjectiveObject( G );[127X[104X
+    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27Xim := ImageObject( pi );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( im );[127X[104X
+    [4X[28XImage of <(o)>:[128X[104X
+    [4X[28X{ 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (o)-[(x)]->(o):[128X[104X
+    [4X[28X{ 0,..., 7 } ⱶ[ 5, 0, 3, 1, 1, 4, 3, 2 ]→ { 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xim = G;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcoim := CoimageObject( pi );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( coim );[127X[104X
+    [4X[28XImage of <(o)>:[128X[104X
+    [4X[28X{ 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (o)-[(x)]->(o):[128X[104X
+    [4X[28X{ 0,..., 7 } ⱶ[ 1, 2, 3, 4, 5, 6, 3, 2 ]→ { 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xcoim = im;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xiso := MorphismFromCoimageToImage( pi );[127X[104X
+    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( iso );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( iso );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iso );[127X[104X
+    [4X[28XImage of <(o)>:[128X[104X
+    [4X[28X{ 0,..., 7 } ⱶ[ 7, 2, 3, 1, 0, 5, 4, 6 ]→ { 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xinv := InverseOfMorphismFromCoimageToImage( pi );[127X[104X
+    [4X[28X<An isomorphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( inv );[127X[104X
+    [4X[28XImage of <(o)>:[128X[104X
+    [4X[28X{ 0,..., 7 } ⱶ[ 4, 3, 1, 2, 6, 5, 7, 0 ]→ { 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( PreCompose( iso, inv ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( PreCompose( inv, iso ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XcoYoG := CoYonedaLemmaOnObjects( G );[127X[104X
     [4X[28X<An object in CoequalizerCompletion( FiniteStrictCoproductCompletion([128X[104X
@@ -1039,14 +1103,75 @@
     [4X[25Xgap>[125X [27XFx := [ 5, 0, 1, 2, 3, 4, 0, 2, 5, 6, 6, 7, 7, 8, 8, 9, 9, 16 ];;[127X[104X
     [4X[25Xgap>[125X [27XFx := MapOfFinSets( Fo, Fx, Fo );[127X[104X
     [4X[28X|18| → |18|[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( Fx );[127X[104X
-    [4X[28X{ 0,..., 17 }[128X[104X
-    [4X[28Xⱶ[ 5, 0, 1, 2, 3, 4, 0, 2, 5,[128X[104X
-    [4X[28X   6, 6, 7, 7, 8, 8, 9, 9, 16 ]→ { 0,..., 17 }[128X[104X
     [4X[25Xgap>[125X [27XG :=  CreatePreSheafByValues( PSh, Pair( [ Fo ], [ Fx ] ) );[127X[104X
     [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
     [4X[28X / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( G );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( G );[127X[104X
+    [4X[28XImage of <(o)>:[128X[104X
+    [4X[28X{ 0,..., 17 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (o)-[(x)]->(o):[128X[104X
+    [4X[28X{ 0,..., 17 } ⱶ[ 5, 0, 1, 2, 3, 4, 0, 2, 5,[128X[104X
+    [4X[28X                 6, 6, 7, 7, 8, 8, 9, 9, 16 ]→ { 0,..., 17 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X/ [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xpi := EpimorphismFromSomeProjectiveObject( G );[127X[104X
+    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27Xim := ImageObject( pi );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27Xim = G;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcoim := CoimageObject( pi );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( coim );[127X[104X
+    [4X[28XImage of <(o)>:[128X[104X
+    [4X[28X{ 0,..., 17 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (o)-[(x)]->(o):[128X[104X
+    [4X[28X{ 0,..., 17 } ⱶ[ 1, 2, 3, 4, 5, 6, 7, 8, 9,[128X[104X
+    [4X[28X                 4, 2, 3, 13, 8, 13, 16, 5, 16 ]→ { 0,..., 17 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X/ [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xcoim = im;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xiso := MorphismFromCoimageToImage( pi );[127X[104X
+    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( iso );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( iso );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iso );[127X[104X
+    [4X[28XImage of <(o)>:[128X[104X
+    [4X[28X{ 0,..., 17 } ⱶ[ 17, 16, 9, 6, 0, 5, 4, 3, 2,[128X[104X
+    [4X[28X                 1, 15, 10, 11, 7, 12, 13, 8, 14 ]→ { 0,..., 17 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X/ [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xinv := InverseOfMorphismFromCoimageToImage( pi );[127X[104X
+    [4X[28X<An isomorphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( inv );[127X[104X
+    [4X[28XImage of <(o)>:[128X[104X
+    [4X[28X{ 0,..., 17 } ⱶ[ 4, 9, 8, 7, 6, 5, 3, 13, 16,[128X[104X
+    [4X[28X                 2, 11, 12, 14, 15, 17, 10, 1, 0 ]→ { 0,..., 17 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X/ [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( PreCompose( iso, inv ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( PreCompose( inv, iso ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XcoYoG := CoYonedaLemmaOnObjects( G );[127X[104X
     [4X[28X<An object in CoequalizerCompletion( FiniteStrictCoproductCompletion([128X[104X
