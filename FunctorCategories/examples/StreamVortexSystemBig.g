@@ -28,14 +28,75 @@ Display( Fo );
 Fx := [ 5, 0, 1, 2, 3, 4, 0, 2, 5, 6, 6, 7, 7, 8, 8, 9, 9, 16 ];;
 Fx := MapOfFinSets( Fo, Fx, Fo );
 #! |18| → |18|
-Display( Fx );
-#! { 0,..., 17 }
-#! ⱶ[ 5, 0, 1, 2, 3, 4, 0, 2, 5,
-#!    6, 6, 7, 7, 8, 8, 9, 9, 16 ]→ { 0,..., 17 }
 G :=  CreatePreSheafByValues( PSh, Pair( [ Fo ], [ Fx ] ) );
 #! <An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
 #!  / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>
 IsWellDefined( G );
+#! true
+Display( G );
+#! Image of <(o)>:
+#! { 0,..., 17 }
+#! 
+#! Image of (o)-[(x)]->(o):
+#! { 0,..., 17 } ⱶ[ 5, 0, 1, 2, 3, 4, 0, 2, 5,
+#!                  6, 6, 7, 7, 8, 8, 9, 9, 16 ]→ { 0,..., 17 }
+#! 
+#! An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
+#! / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )
+#! given by the above data
+pi := EpimorphismFromSomeProjectiveObject( G );
+#! <A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
+#!  / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>
+im := ImageObject( pi );
+#! <An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
+#!  / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>
+im = G;
+#! true
+coim := CoimageObject( pi );
+#! <An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
+#!  / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>
+Display( coim );
+#! Image of <(o)>:
+#! { 0,..., 17 }
+#! 
+#! Image of (o)-[(x)]->(o):
+#! { 0,..., 17 } ⱶ[ 1, 2, 3, 4, 5, 6, 7, 8, 9,
+#!                  4, 2, 3, 13, 8, 13, 16, 5, 16 ]→ { 0,..., 17 }
+#! 
+#! An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
+#! / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )
+#! given by the above data
+coim = im;
+#! false
+iso := MorphismFromCoimageToImage( pi );
+#! <A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
+#!  / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>
+IsWellDefined( iso );
+#! true
+IsIsomorphism( iso );
+#! true
+Display( iso );
+#! Image of <(o)>:
+#! { 0,..., 17 } ⱶ[ 17, 16, 9, 6, 0, 5, 4, 3, 2,
+#!                  1, 15, 10, 11, 7, 12, 13, 8, 14 ]→ { 0,..., 17 }
+#! 
+#! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
+#! / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )
+#! given by the above data
+inv := InverseOfMorphismFromCoimageToImage( pi );
+#! <An isomorphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
+#!  / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>
+Display( inv );
+#! Image of <(o)>:
+#! { 0,..., 17 } ⱶ[ 4, 9, 8, 7, 6, 5, 3, 13, 16,
+#!                  2, 11, 12, 14, 15, 17, 10, 1, 0 ]→ { 0,..., 17 }
+#! 
+#! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
+#! / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )
+#! given by the above data
+IsOne( PreCompose( iso, inv ) );
+#! true
+IsOne( PreCompose( inv, iso ) );
 #! true
 coYoG := CoYonedaLemmaOnObjects( G );
 #! <An object in CoequalizerCompletion( FiniteStrictCoproductCompletion(

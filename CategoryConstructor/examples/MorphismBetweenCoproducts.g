@@ -5,14 +5,14 @@ LoadPackage( "CategoryConstructor" );
 #! true
 LoadPackage( "Toposes", ">= 2023.11-02", fail );
 #! true
-LoadPackage( "FinSetsForCAP", ">= 2023.07-03", fail );
+LoadPackage( "FinSetsForCAP", ">= 2023.10-03", fail );
 #! true
 sFinSets := SkeletalCategoryOfFiniteSets( );
 #! SkeletalFinSets
 Display( sFinSets );
 #! A CAP category with name SkeletalFinSets:
 #! 
-#! 59 primitive operations were used to derive 325 operations for this category
+#! 58 primitive operations were used to derive 325 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsElementaryTopos
