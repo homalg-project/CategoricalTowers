@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (Algebroids) - Chapter 7: Category of algebroids</title>
+<title>GAP (Algebroids) - Chapter 7: Path Categories</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -18,158 +18,506 @@
 <body class="chap7"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap7.html">[MathJax off]</a></p>
-<p><a id="X8085365E7FF1E142" name="X8085365E7FF1E142"></a></p>
-<div class="ChapSects"><a href="chap7_mj.html#X8085365E7FF1E142">7 <span class="Heading">Category of algebroids</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X871597447BB998A1">7.1 <span class="Heading">Properties</span></a>
+<p><a id="X82D877B0842A7FBF" name="X82D877B0842A7FBF"></a></p>
+<div class="ChapSects"><a href="chap7_mj.html#X82D877B0842A7FBF">7 <span class="Heading">Path Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7D03633A7D98026B">7.1 <span class="Heading">GAP categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7B9C681978B806DE">7.1-1 IsCommutative</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X867EF69B79A3282A">7.1-2 IsCounitary</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7A21B2E1873822DB">7.1-3 IsCoassociative</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X823C86D97D393496">7.1-1 IsPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X80B964A67D7B0258">7.1-2 IsPathCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X868CDB69878E33DF">7.1-3 IsPathCategoryMorphism</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7C701DBF7BAE649A">7.2 <span class="Heading">Attributes</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X86EC0F0A78ECBC10">7.2 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7C10B41E800149D8">7.2-1 AsCapCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X81BCDD9D82092FFF">7.2-2 AsCapFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7F1F84357F9856BD">7.2-1 PathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7A42A11387605922">7.2-2 ObjectConstructor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X87555C197D78B9E7">7.2-3 MorphismConstructor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X85737767821A3E20">7.2-4 AssignSetOfObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X78A5BF90854D4C28">7.2-5 AssignSetOfGeneratingMorphisms</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7DE8E16C7C2D387B">7.3 <span class="Heading">Operations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7C701DBF7BAE649A">7.3 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X80699FD67E9427FF">7.3-1 Twist</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X85DBD5EF7D41ED98">7.3-1 SetOfObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7B9E9BD97CB47DC5">7.3-2 SetOfGeneratingMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8049ED287A2D4DC7">7.3-3 ObjectIndex</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X810BDB25844F92FB">7.3-4 ObjectLabel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X869552CB79E09561">7.3-5 MorphismLength</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7DE9D25B82560A7C">7.3-6 MorphismSupport</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7E15290B84E9A555">7.3-7 MorphismIndices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X809D06597F5157F9">7.3-8 MorphismLabel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7E847F2C7B48FA03">7.3-9 IsFinitePathCategory</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X86EC0F0A78ECBC10">7.4 <span class="Heading">Constructors</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7DE8E16C7C2D387B">7.4 <span class="Heading">Operations</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7E0D64C87E1ED52D">7.4-1 CategoryOfAlgebroids</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X81E5D7777C5EC696">7.4-2 CategoryOfAlgebroidsObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7A641BFC7E08717D">7.4-3 CategoryOfAlgebroidsMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7FD855927FCD8181">7.4-4 CategoryOfAlgebroidsMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8186021987FF2CF8">7.4-1 GroebnerBasis</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X79EAA63A7AA9324D">7.4-2 ReducedGroebnerBasisWithGivenGroebnerBasis</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7A4E5D1B7D1A3965">7.4-3 ReducedGroebnerBasis</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7BF78C8B7EDF3AB4">7.4-4 HasFiniteNumberOfNonMultiples</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7C5C880D845D14DF">7.4-5 IsDescendingForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8180CB357F1F95B7">7.4-6 IsAscendingForMorphisms</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7D03633A7D98026B">7.5 <span class="Heading">GAP categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X786F11538561B9C9">7.5 <span class="Heading">Quotients of path categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7D39198678F850B2">7.5-1 IsCategoryOfAlgebroidsObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X879EA8BB858262F4">7.5-2 IsCategoryOfAlgebroidsMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7D93B47780620915">7.5-1 IsQuotientOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X84D60DEB7E0B5ADA">7.5-2 IsQuotientOfPathCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X800337A47BA7943D">7.5-3 IsQuotientOfPathCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X87ECF0AD865F62FA">7.5-4 QuotientCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X818251BD876184F3">7.5-5 DefiningRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7FC5350E7DD950BE">7.5-6 GroebnerBasisOfDefiningRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X798FBB89830917DD">7.5-7 ObjectIndex</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7BA50C6A78DC188E">7.5-8 CanonicalRepresentative</a></span>
 </div></div>
 </div>
 
-<h3>7 <span class="Heading">Category of algebroids</span></h3>
+<h3>7 <span class="Heading">Path Categories</span></h3>
 
-<p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
-<h4>7.1 <span class="Heading">Properties</span></h4>
+<h4>7.1 <span class="Heading">GAP categories</span></h4>
 
-<p><a id="X7B9C681978B806DE" name="X7B9C681978B806DE"></a></p>
+<p><a id="X823C86D97D393496" name="X823C86D97D393496"></a></p>
 
-<h5>7.1-1 IsCommutative</h5>
+<h5>7.1-1 IsPathCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCommutative</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPathCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>Check whether the algebroid <var class="Arg">A</var> is commutative.</p>
+<p>The <strong class="pkg">GAP</strong> category of path categories.</p>
 
-<p><a id="X867EF69B79A3282A" name="X867EF69B79A3282A"></a></p>
+<p><a id="X80B964A67D7B0258" name="X80B964A67D7B0258"></a></p>
 
-<h5>7.1-2 IsCounitary</h5>
+<h5>7.1-2 IsPathCategoryObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCounitary</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPathCategoryObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>Check whether <var class="Arg">B</var> is counitary.</p>
+<p>The <strong class="pkg">GAP</strong> category of objects in path categories.</p>
 
-<p><a id="X7A21B2E1873822DB" name="X7A21B2E1873822DB"></a></p>
+<p><a id="X868CDB69878E33DF" name="X868CDB69878E33DF"></a></p>
 
-<h5>7.1-3 IsCoassociative</h5>
+<h5>7.1-3 IsPathCategoryMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCoassociative</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPathCategoryMorphism</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>Check whether <var class="Arg">B</var> is coassociative.</p>
-
-<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
-
-<h4>7.2 <span class="Heading">Attributes</span></h4>
-
-<p><a id="X7C10B41E800149D8" name="X7C10B41E800149D8"></a></p>
-
-<h5>7.2-1 AsCapCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCapCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X81BCDD9D82092FFF" name="X81BCDD9D82092FFF"></a></p>
-
-<h5>7.2-2 AsCapFunctor</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCapFunctor</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
-
-<h4>7.3 <span class="Heading">Operations</span></h4>
-
-<p><a id="X80699FD67E9427FF" name="X80699FD67E9427FF"></a></p>
-
-<h5>7.3-1 Twist</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Twist</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
-
-<p>Construct the canonical twist from <var class="Arg">A</var> <span class="SimpleMath">\(\otimes\)</span> <var class="Arg">B</var> to <var class="Arg">B</var> <span class="SimpleMath">\(\otimes\)</span> <var class="Arg">A</var></p>
+<p>The <strong class="pkg">GAP</strong> category of morphisms in path categories.</p>
 
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
-<h4>7.4 <span class="Heading">Constructors</span></h4>
+<h4>7.2 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X7E0D64C87E1ED52D" name="X7E0D64C87E1ED52D"></a></p>
+<p><a id="X7F1F84357F9856BD" name="X7F1F84357F9856BD"></a></p>
 
-<h5>7.4-1 CategoryOfAlgebroids</h5>
+<h5>7.2-1 PathCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfAlgebroids</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X81E5D7777C5EC696" name="X81E5D7777C5EC696"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PathCategory</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<h5>7.4-2 CategoryOfAlgebroidsObject</h5>
+<p>The input is a <strong class="pkg">CAP</strong> quiver <var class="Arg">q</var>. The output is the path category of <var class="Arg">q</var>, i.e., the category whose objects are the objects of <var class="Arg">q</var> and whose morphisms are lists of morphisms in <var class="Arg">q</var>, in which the target of any morphism is equal to the source of the next morphism.</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfAlgebroidsObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7A641BFC7E08717D" name="X7A641BFC7E08717D"></a></p>
+<p><a id="X7A42A11387605922" name="X7A42A11387605922"></a></p>
 
-<h5>7.4-3 CategoryOfAlgebroidsMorphism</h5>
+<h5>7.2-2 ObjectConstructor</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfAlgebroidsMorphism</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X7FD855927FCD8181" name="X7FD855927FCD8181"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectConstructor</code>( <var class="Arg">C</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category object</p>
 
-<h5>7.4-4 CategoryOfAlgebroidsMorphism</h5>
+<p>The input is a path category <var class="Arg">C</var> of <strong class="pkg">CAP</strong> quiver <span class="SimpleMath">\(q\)</span> and a positive integer <var class="Arg">i</var>. The output is the <var class="Arg">i</var>'th object in <var class="Arg">C</var>.</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfAlgebroidsMorphism</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+<p><a id="X87555C197D78B9E7" name="X87555C197D78B9E7"></a></p>
 
-<h4>7.5 <span class="Heading">GAP categories</span></h4>
+<h5>7.2-3 MorphismConstructor</h5>
 
-<p><a id="X7D39198678F850B2" name="X7D39198678F850B2"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismConstructor</code>( <var class="Arg">C</var>, <var class="Arg">s</var>, <var class="Arg">datum</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category object</p>
 
-<h5>7.5-1 IsCategoryOfAlgebroidsObject</h5>
+<p>The input is a path category <var class="Arg">C</var> of <strong class="pkg">CAP</strong> quiver <span class="SimpleMath">\(q\)</span>, two objects <var class="Arg">s</var>, <var class="Arg">t</var> and a list <var class="Arg">datum</var> consisting of two entries: <var class="Arg">datum</var>[1] is a positive integer and <var class="Arg">datum</var>[2] is a list of length <var class="Arg">datum</var>[1] consisting of morphisms in <span class="SimpleMath">\(q\)</span> where the target of each morphism is equal to the source of the next morphism. The output is the morphism in <var class="Arg">C</var> whose length is <var class="Arg">datum</var>[1] and whose support is <var class="Arg">datum</var>[2].</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryOfAlgebroidsObject</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p><a id="X85737767821A3E20" name="X85737767821A3E20"></a></p>
+
+<h5>7.2-4 AssignSetOfObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssignSetOfObjects</code>( <var class="Arg">C</var>[, <var class="Arg">str</var>] )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>Assigns the objects of <var class="Arg">C</var> to global variables. Names of the variables are the concatenation of <var class="Arg">str</var> with the labels of the objects. The default value of <var class="Arg">str</var> is the empty string.</p>
+
+<p><a id="X78A5BF90854D4C28" name="X78A5BF90854D4C28"></a></p>
+
+<h5>7.2-5 AssignSetOfGeneratingMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssignSetOfGeneratingMorphisms</code>( <var class="Arg">C</var>[, <var class="Arg">str</var>] )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>Assigns the generating morphisms of <var class="Arg">C</var> to global variables. Names of the variables are the concatenation of <var class="Arg">str</var> with the labels of the generating morphisms. The default value of <var class="Arg">str</var> is the empty string.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>7.3 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X85DBD5EF7D41ED98" name="X85DBD5EF7D41ED98"></a></p>
+
+<h5>7.3-1 SetOfObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetOfObjects</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of <strong class="pkg">CAP</strong> category objects</p>
+
+<p>Returns the set of objects of <var class="Arg">C</var>.</p>
+
+<p><a id="X7B9E9BD97CB47DC5" name="X7B9E9BD97CB47DC5"></a></p>
+
+<h5>7.3-2 SetOfGeneratingMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetOfGeneratingMorphisms</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of <strong class="pkg">CAP</strong> category morphisms</p>
+
+<p>Returns the set of generating morphisms of <var class="Arg">C</var>.</p>
+
+<p><a id="X8049ED287A2D4DC7" name="X8049ED287A2D4DC7"></a></p>
+
+<h5>7.3-3 ObjectIndex</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectIndex</code>( <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a positive integer</p>
+
+<p>Returns the index of the object <var class="Arg">v</var>.</p>
+
+<p><a id="X810BDB25844F92FB" name="X810BDB25844F92FB"></a></p>
+
+<h5>7.3-4 ObjectLabel</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectLabel</code>( <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a string</p>
+
+<p>Returns the label of the object <var class="Arg">v</var>.</p>
+
+<p><a id="X869552CB79E09561" name="X869552CB79E09561"></a></p>
+
+<h5>7.3-5 MorphismLength</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismLength</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a positive integer</p>
+
+<p>Returns the length of <var class="Arg">alpha</var>.</p>
+
+<p><a id="X7DE9D25B82560A7C" name="X7DE9D25B82560A7C"></a></p>
+
+<h5>7.3-6 MorphismSupport</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismSupport</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a dense-list of <strong class="pkg">CAP</strong> quiver morphisms</p>
+
+<p>Returns the list of morphisms in the underlying quiver which defines <var class="Arg">alpha</var>.</p>
+
+<p><a id="X7E15290B84E9A555" name="X7E15290B84E9A555"></a></p>
+
+<h5>7.3-7 MorphismIndices</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismIndices</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a dense-list of positive integers</p>
+
+<p>Returns the indices of the morphisms in <code class="code">MorphismSupport</code>(<var class="Arg">alpha</var>).</p>
+
+<p><a id="X809D06597F5157F9" name="X809D06597F5157F9"></a></p>
+
+<h5>7.3-8 MorphismLabel</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismLabel</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a positive integer</p>
+
+<p>Returns the label of the morphism <var class="Arg">alpha</var>.</p>
+
+<p><a id="X7E847F2C7B48FA03" name="X7E847F2C7B48FA03"></a></p>
+
+<h5>7.3-9 IsFinitePathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFinitePathCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>Returns whether <var class="Arg">C</var> can be enriched over the category of finite sets.</p>
+
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>7.4 <span class="Heading">Operations</span></h4>
+
+<p><a id="X8186021987FF2CF8" name="X8186021987FF2CF8"></a></p>
+
+<h5>7.4-1 GroebnerBasis</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GroebnerBasis</code>( <var class="Arg">C</var>, <var class="Arg">rels</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a dense list</p>
+
+<p>The input is a path category <var class="Arg">C</var> and a list <var class="Arg">rels</var> consisting of pairs of parallel morphisms in <var class="Arg">C</var>. The output is the Groebner basis of <var class="Arg">rels</var>.</p>
+
+<p><a id="X79EAA63A7AA9324D" name="X79EAA63A7AA9324D"></a></p>
+
+<h5>7.4-2 ReducedGroebnerBasisWithGivenGroebnerBasis</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReducedGroebnerBasisWithGivenGroebnerBasis</code>( <var class="Arg">C</var>, <var class="Arg">groebner_basis</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a dense list</p>
+
+<p>The input is a path category <var class="Arg">C</var> and a Groebner basis <var class="Arg">groebner_basis</var> consisting of pairs of parallel morphisms in <var class="Arg">C</var>. The output is the reduced Groebner basis of <var class="Arg">groebner_basis</var>.</p>
+
+<p><a id="X7A4E5D1B7D1A3965" name="X7A4E5D1B7D1A3965"></a></p>
+
+<h5>7.4-3 ReducedGroebnerBasis</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReducedGroebnerBasis</code>( <var class="Arg">C</var>, <var class="Arg">rels</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a dense list</p>
+
+<p>The input is a path category <var class="Arg">C</var> and a list <var class="Arg">rels</var> consisting of pairs of parallel morphisms in <var class="Arg">C</var>. The output is the reduced Groebner basis of <var class="Arg">rels</var>.</p>
+
+<p><a id="X7BF78C8B7EDF3AB4" name="X7BF78C8B7EDF3AB4"></a></p>
+
+<h5>7.4-4 HasFiniteNumberOfNonMultiples</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HasFiniteNumberOfNonMultiples</code>( <var class="Arg">C</var>, <var class="Arg">monomials</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The input is a path category <var class="Arg">C</var> and a list of morphisms <var class="Arg">monomials</var> in <var class="Arg">C</var> (<var class="Arg">monomials</var> is usually the leading terms of a Groebner basis). The output is whether almost all morphisms of <var class="Arg">C</var> are multiples of elements in <var class="Arg">monomials</var>. In other words, whether the number of morphisms that are not multiples of elements in <var class="Arg">monomials</var> is finite.</p>
+
+<p><a id="X7C5C880D845D14DF" name="X7C5C880D845D14DF"></a></p>
+
+<h5>7.4-5 IsDescendingForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDescendingForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">f</var>, <var class="Arg">g</var>, <var class="Arg">admissible_order</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The input is a path category <var class="Arg">C</var>, two parallel morphisms <var class="Arg">f</var>, <var class="Arg">g</var> and a string <var class="Arg">admissible_order</var> which takes one of the following two values <code class="code">"Dp"</code> or <code class="code">"dp"</code>. The output is whether <var class="Arg">f</var> <span class="SimpleMath">\(\succ\)</span> <var class="Arg">g</var> with respect to the specified admissible order. <code class="code">"Dp"</code> stands for the left-length-lexicographic order under which <var class="Arg">f</var> <span class="SimpleMath">\(\succ_{\mathtt{Dp}}\)</span> <var class="Arg">g</var> if <code class="code">MorphismLength</code>(<var class="Arg">f</var>) <span class="SimpleMath">\(\succ\)</span> <code class="code">MorphismLength</code>(<var class="Arg">g</var>); or <code class="code">MorphismLength</code>(<var class="Arg">f</var>)<span class="SimpleMath">\(=\)</span><code class="code">MorphismLength</code>(<var class="Arg">g</var>) and the first nonzero entry in <code class="code">MorphismIndices</code>(<var class="Arg">f</var>)<span class="SimpleMath">\(-\)</span><code class="code">MorphismIndices</code>(<var class="Arg">g</var>) is negative. <code class="code">"dp"</code> stands for the right-length-lexicographic order under which <var class="Arg">f</var> <span class="SimpleMath">\(\succ_{\mathtt{dp}}\)</span> <var class="Arg">g</var> if <code class="code">MorphismLength</code>(<var class="Arg">f</var>) <span class="SimpleMath">\(\succ\)</span> <code class="code">MorphismLength</code>(<var class="Arg">g</var>); or <code class="code">MorphismLength</code>(<var class="Arg">f</var>)<span class="SimpleMath">\(=\)</span><code class="code">MorphismLength</code>(<var class="Arg">g</var>) and the last nonzero entry in <code class="code">MorphismIndices</code>(<var class="Arg">f</var>)<span class="SimpleMath">\(-\)</span><code class="code">MorphismIndices</code>(<var class="Arg">g</var>) is negative. For example, if the quiver of <var class="Arg">C</var> is defined by the string <code class="code">"(*)[x:*-&gt;*,y:*-&gt;*]"</code>, then</p>
+
+
+<ul>
+<li><p><span class="SimpleMath">\(x^2 \succ_{\mathtt{Dp}} xy \succ_{\mathtt{Dp}} yx \succ_{\mathtt{Dp}} y^2 \succ_{\mathtt{Dp}} x \succ_{\mathtt{Dp}} y \succ_{\mathtt{Dp}} \mathtt{id(*)}\)</span></p>
+
+</li>
+<li><p><span class="SimpleMath">\(x^2 \succ_{\mathtt{dp}} yx \succ_{\mathtt{dp}} xy \succ_{\mathtt{dp}} y^2 \succ_{\mathtt{dp}} x \succ_{\mathtt{dp}} y \succ_{\mathtt{dp}} \mathtt{id(*)}\)</span></p>
+
+</li>
+</ul>
+<p><a id="X8180CB357F1F95B7" name="X8180CB357F1F95B7"></a></p>
+
+<h5>7.4-6 IsAscendingForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAscendingForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">f</var>, <var class="Arg">g</var>, <var class="Arg">admissible_order</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The input is a path category <var class="Arg">C</var>, two parallel morphisms <var class="Arg">f</var>, <var class="Arg">g</var> and a string <var class="Arg">admissible_order</var> which takes one of the following two values <code class="code">"Dp"</code> or <code class="code">"dp"</code>. The output is whether <var class="Arg">f</var> <span class="SimpleMath">\(\prec\)</span> <var class="Arg">g</var> with respect to the specified admissible order.</p>
+
+<p><a id="X786F11538561B9C9" name="X786F11538561B9C9"></a></p>
+
+<h4>7.5 <span class="Heading">Quotients of path categories</span></h4>
+
+<p><a id="X7D93B47780620915" name="X7D93B47780620915"></a></p>
+
+<h5>7.5-1 IsQuotientOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsQuotientOfPathCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The GAP category of objects in the category of algebroids over a ring <span class="SimpleMath">\(R\)</span>.</p>
+<p>The <strong class="pkg">GAP</strong> category of quotients of path categories.</p>
 
-<p><a id="X879EA8BB858262F4" name="X879EA8BB858262F4"></a></p>
+<p><a id="X84D60DEB7E0B5ADA" name="X84D60DEB7E0B5ADA"></a></p>
 
-<h5>7.5-2 IsCategoryOfAlgebroidsMorphism</h5>
+<h5>7.5-2 IsQuotientOfPathCategoryObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryOfAlgebroidsMorphism</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsQuotientOfPathCategoryObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The GAP category of morphisms in the category of algebroids over a ring <span class="SimpleMath">\(R\)</span>.</p>
+<p>The <strong class="pkg">GAP</strong> category of objects in quotients path categories.</p>
+
+<p><a id="X800337A47BA7943D" name="X800337A47BA7943D"></a></p>
+
+<h5>7.5-3 IsQuotientOfPathCategoryMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsQuotientOfPathCategoryMorphism</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in quotients of path categories.</p>
+
+<p><a id="X87ECF0AD865F62FA" name="X87ECF0AD865F62FA"></a></p>
+
+<h5>7.5-4 QuotientCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; QuotientCategory</code>( <var class="Arg">C</var>, <var class="Arg">rels</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Returns the quotient category of <var class="Arg">C</var> by the two-sided ideal of morphisms generated by <var class="Arg">rels</var>.</p>
+
+<p><a id="X818251BD876184F3" name="X818251BD876184F3"></a></p>
+
+<h5>7.5-5 DefiningRelations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningRelations</code>( <var class="Arg">qC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a dense list</p>
+
+<p>Returns the generators of the underlying two-sided ideal of morphisms.</p>
+
+<p><a id="X7FC5350E7DD950BE" name="X7FC5350E7DD950BE"></a></p>
+
+<h5>7.5-6 GroebnerBasisOfDefiningRelations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GroebnerBasisOfDefiningRelations</code>( <var class="Arg">qC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a dense list</p>
+
+<p>Returns the reduced Groebner basis of the underlying two-sided ideal of morphisms.</p>
+
+<p><a id="X798FBB89830917DD" name="X798FBB89830917DD"></a></p>
+
+<h5>7.5-7 ObjectIndex</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectIndex</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>Returns the index of the object.</p>
+
+<p><a id="X7BA50C6A78DC188E" name="X7BA50C6A78DC188E"></a></p>
+
+<h5>7.5-8 CanonicalRepresentative</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanonicalRepresentative</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p>The input is a morphism <var class="Arg">alpha</var> in the quotient category <var class="Arg">qC</var> of a path category <code class="code">C</code>. The output is a canonical representative of <var class="Arg">alpha</var> in <code class="code">C</code>. Equal morphisms in <var class="Arg">qC</var> have the same canonical representative.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">str := "q(0,1,2,3,4,5)[x:0-&gt;0,s:0-&gt;1,a:1-&gt;2,c:1-&gt;3,e:1-&gt;4,b:2-&gt;4,d:3-&gt;4,t:4-&gt;5,y:5-&gt;5]";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := CreateCapQuiver( str );</span>
+Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,
+t:4-≻5,y:5-≻5]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := PathCategory( q );</span>
+PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,
+b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( C );</span>
+A CAP category with name PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,
+a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ):
+
+15 primitive operations were used to derive 29 operations for this category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjects( C );</span>
+[ (0), (1), (2), (3), (4), (5) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( C );</span>
+[ x:(0) -≻ (0), s:(0) -≻ (1), a:(1) -≻ (2), c:(1) -≻ (3), e:(1) -≻ (4),
+  b:(2) -≻ (4), d:(3) -≻ (4), t:(4) -≻ (5), y:(5) -≻ (5) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C.5;</span>
+(5)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectIndex( C.5 );</span>
+6
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C.id_5;</span>
+id(5):(5) -≻ (5)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C.("id(5)");</span>
+id(5):(5) -≻ (5)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := C.("x^2*s*a*b*t*y^2");</span>
+x^2•s•a•b•t•y^2:(0) -≻ (5)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := C.("x^2sabty^2");</span>
+x^2•s•a•b•t•y^2:(0) -≻ (5)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( m );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismLength( m );</span>
+8
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismIndices( m );</span>
+[ 1, 1, 2, 3, 6, 8, 9, 9 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismSupport( m );</span>
+[ x:(0) -≻ (0), x:(0) -≻ (0), s:(0) -≻ (1), a:(1) -≻ (2), b:(2) -≻ (4),
+t:(4) -≻ (5), y:(5) -≻ (5), y:(5) -≻ (5) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">relations := [ [ C.x^5, C.x ], [ C.y^5, C.y^2 ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qC := QuotientCategory( C, relations );</span>
+PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,
+b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( qC );</span>
+A CAP category with name PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,
+a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ]:
+
+25 primitive operations were used to derive 61 operations for this category
+which algorithmically
+* IsEquippedWithHomomorphismStructure
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qC.0;</span>
+(0)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectIndex( qC.0 );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qC.x^7;</span>
+[x^3]:(0) -≻ (0)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CanonicalRepresentative( qC.x^7 );</span>
+x^3:(0) -≻ (0)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnObjects( qC.0, qC.5 );</span>
+|75|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals();</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kC := k[C]; # or LinearClosure( k, C );</span>
+Q-LinearClosure( PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,
+c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kC.x + kC.x^2;</span>
+1*x^2 + 1*x:(0) -≻ (0)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kqC := k[qC];</span>
+Q-LinearClosure( PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,
+c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnObjects( kqC.0, kqC.5 );</span>
+&lt;A row module over Q of rank 75&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kqC.x + kqC.x^2;</span>
+1*[x^2] + 1*[x]:(0) -≻ (0)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( kqC );</span>
+Q-algebroid( {0,1,2,3,4,5}[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,
+t:4-≻5,y:5-≻5] ) defined by 6 objects and 9 generating morphisms
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnObjects( A.0, A.5 );</span>
+&lt;A row module over Q of rank 75&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.x + A.x^2;</span>
+&lt;1*x^2 + 1*x:(0) -≻ (0)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qA := A / [ A.bt ]; # Groeber basis using linear algebra</span>
+QuotientCategory( Q-algebroid( {0,1,2,3,4,5}[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,
+e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5] ) defined by 6 objects and 9 generating
+morphisms, 2-sided ideal generated by 1 morphism )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( qA.bty );</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">str := "q(0,1,2,3,4,5)[s:0-&gt;1,a:1-&gt;2,c:1-&gt;3,e:1-&gt;4,b:2-&gt;4,d:3-&gt;4,t:4-&gt;5]";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := CreateCapQuiver( str );</span>
+Quiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PathCategory( quiver );</span>
+PathCategory( Quiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,
+d:3-≻4,t:4-≻5]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
+A CAP category with name PathCategory( Quiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,
+c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" ) ):
+
+16 primitive operations were used to derive 61 operations for this category
+which algorithmically
+* IsEquippedWithHomomorphismStructure
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( P.0, P.5 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kP := k[P];</span>
+Q-LinearClosure( PathCategory( Quiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,
+e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( kP.0, kP.5 );</span>
+&lt;A row module over Q of rank 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := AlgebroidFromDataTables( kP );</span>
+Q-algebroid( {0,1,2,3,4,5}[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5] )
+defined by 6 objects and 7 generating morphisms
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( T.0, T.5 );</span>
+&lt;A row module over Q of rank 3&gt;
+</pre></div>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

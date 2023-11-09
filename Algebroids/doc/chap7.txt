@@ -1,84 +1,404 @@
   
-  [1X7 [33X[0;0YCategory of algebroids[133X[101X
+  [1X7 [33X[0;0YPath Categories[133X[101X
   
   
-  [1X7.1 [33X[0;0YProperties[133X[101X
+  [1X7.1 [33X[0;0YGAP categories[133X[101X
   
-  [1X7.1-1 IsCommutative[101X
+  [1X7.1-1 IsPathCategory[101X
   
-  [33X[1;0Y[29X[2XIsCommutative[102X( [3XA[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
-  
-  [33X[0;0YCheck whether the algebroid [3XA[103X is commutative.[133X
-  
-  [1X7.1-2 IsCounitary[101X
-  
-  [33X[1;0Y[29X[2XIsCounitary[102X( [3XB[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
-  
-  [33X[0;0YCheck whether [3XB[103X is counitary.[133X
-  
-  [1X7.1-3 IsCoassociative[101X
-  
-  [33X[1;0Y[29X[2XIsCoassociative[102X( [3XB[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
-  
-  [33X[0;0YCheck whether [3XB[103X is coassociative.[133X
-  
-  
-  [1X7.2 [33X[0;0YAttributes[133X[101X
-  
-  [1X7.2-1 AsCapCategory[101X
-  
-  [33X[1;0Y[29X[2XAsCapCategory[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X7.2-2 AsCapFunctor[101X
-  
-  [33X[1;0Y[29X[2XAsCapFunctor[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  
-  [1X7.3 [33X[0;0YOperations[133X[101X
-  
-  [1X7.3-1 Twist[101X
-  
-  [33X[1;0Y[29X[2XTwist[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
-  
-  [33X[0;0YConstruct the canonical twist from [3XA[103X [23X\otimes[123X [3XB[103X to [3XB[103X [23X\otimes[123X [3XA[103X[133X
-  
-  
-  [1X7.4 [33X[0;0YConstructors[133X[101X
-  
-  [1X7.4-1 CategoryOfAlgebroids[101X
-  
-  [33X[1;0Y[29X[2XCategoryOfAlgebroids[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
-  
-  [1X7.4-2 CategoryOfAlgebroidsObject[101X
-  
-  [33X[1;0Y[29X[2XCategoryOfAlgebroidsObject[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X7.4-3 CategoryOfAlgebroidsMorphism[101X
-  
-  [33X[1;0Y[29X[2XCategoryOfAlgebroidsMorphism[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
-  
-  [1X7.4-4 CategoryOfAlgebroidsMorphism[101X
-  
-  [33X[1;0Y[29X[2XCategoryOfAlgebroidsMorphism[102X( [3Xarg[103X ) [32X operation[133X
-  
-  
-  [1X7.5 [33X[0;0YGAP categories[133X[101X
-  
-  [1X7.5-1 IsCategoryOfAlgebroidsObject[101X
-  
-  [33X[1;0Y[29X[2XIsCategoryOfAlgebroidsObject[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsPathCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe GAP category of objects in the category of algebroids over a ring [23XR[123X.[133X
+  [33X[0;0YThe [5XGAP[105X category of path categories.[133X
   
-  [1X7.5-2 IsCategoryOfAlgebroidsMorphism[101X
+  [1X7.1-2 IsPathCategoryObject[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfAlgebroidsMorphism[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsPathCategoryObject[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe GAP category of morphisms in the category of algebroids over a ring [23XR[123X.[133X
+  [33X[0;0YThe [5XGAP[105X category of objects in path categories.[133X
+  
+  [1X7.1-3 IsPathCategoryMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsPathCategoryMorphism[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in path categories.[133X
+  
+  
+  [1X7.2 [33X[0;0YConstructors[133X[101X
+  
+  [1X7.2-1 PathCategory[101X
+  
+  [33X[1;0Y[29X[2XPathCategory[102X( [3Xq[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThe input is a [5XCAP[105X quiver [3Xq[103X. The output is the path category of [3Xq[103X, i.e., the
+  category whose objects are the objects of [3Xq[103X and whose morphisms are lists of
+  morphisms  in  [3Xq[103X, in which the target of any morphism is equal to the source
+  of the next morphism.[133X
+  
+  [1X7.2-2 ObjectConstructor[101X
+  
+  [33X[1;0Y[29X[2XObjectConstructor[102X( [3XC[103X, [3Xi[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category object[133X
+  
+  [33X[0;0YThe input is a path category [3XC[103X of [5XCAP[105X quiver [23Xq[123X and a positive integer [3Xi[103X. The
+  output is the [3Xi[103X'th object in [3XC[103X.[133X
+  
+  [1X7.2-3 MorphismConstructor[101X
+  
+  [33X[1;0Y[29X[2XMorphismConstructor[102X( [3XC[103X, [3Xs[103X, [3Xdatum[103X, [3Xt[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category object[133X
+  
+  [33X[0;0YThe  input is a path category [3XC[103X of [5XCAP[105X quiver [23Xq[123X, two objects [3Xs[103X, [3Xt[103X and a list
+  [3Xdatum[103X consisting of two entries: [3Xdatum[103X[1] is a positive integer and [3Xdatum[103X[2]
+  is  a  list of length [3Xdatum[103X[1] consisting of morphisms in [23Xq[123X where the target
+  of  each morphism is equal to the source of the next morphism. The output is
+  the morphism in [3XC[103X whose length is [3Xdatum[103X[1] and whose support is [3Xdatum[103X[2].[133X
+  
+  [1X7.2-4 AssignSetOfObjects[101X
+  
+  [33X[1;0Y[29X[2XAssignSetOfObjects[102X( [3XC[103X[, [3Xstr[103X] ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YAssigns the objects of [3XC[103X to global variables. Names of the variables are the
+  concatenation  of  [3Xstr[103X  with the labels of the objects. The default value of
+  [3Xstr[103X is the empty string.[133X
+  
+  [1X7.2-5 AssignSetOfGeneratingMorphisms[101X
+  
+  [33X[1;0Y[29X[2XAssignSetOfGeneratingMorphisms[102X( [3XC[103X[, [3Xstr[103X] ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YAssigns  the  generating  morphisms  of  [3XC[103X to global variables. Names of the
+  variables  are  the  concatenation  of [3Xstr[103X with the labels of the generating
+  morphisms. The default value of [3Xstr[103X is the empty string.[133X
+  
+  
+  [1X7.3 [33X[0;0YAttributes[133X[101X
+  
+  [1X7.3-1 SetOfObjects[101X
+  
+  [33X[1;0Y[29X[2XSetOfObjects[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X category objects[133X
+  
+  [33X[0;0YReturns the set of objects of [3XC[103X.[133X
+  
+  [1X7.3-2 SetOfGeneratingMorphisms[101X
+  
+  [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X category morphisms[133X
+  
+  [33X[0;0YReturns the set of generating morphisms of [3XC[103X.[133X
+  
+  [1X7.3-3 ObjectIndex[101X
+  
+  [33X[1;0Y[29X[2XObjectIndex[102X( [3Xv[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya positive integer[133X
+  
+  [33X[0;0YReturns the index of the object [3Xv[103X.[133X
+  
+  [1X7.3-4 ObjectLabel[101X
+  
+  [33X[1;0Y[29X[2XObjectLabel[102X( [3Xv[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya string[133X
+  
+  [33X[0;0YReturns the label of the object [3Xv[103X.[133X
+  
+  [1X7.3-5 MorphismLength[101X
+  
+  [33X[1;0Y[29X[2XMorphismLength[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya positive integer[133X
+  
+  [33X[0;0YReturns the length of [3Xalpha[103X.[133X
+  
+  [1X7.3-6 MorphismSupport[101X
+  
+  [33X[1;0Y[29X[2XMorphismSupport[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya dense-list of [5XCAP[105X quiver morphisms[133X
+  
+  [33X[0;0YReturns the list of morphisms in the underlying quiver which defines [3Xalpha[103X.[133X
+  
+  [1X7.3-7 MorphismIndices[101X
+  
+  [33X[1;0Y[29X[2XMorphismIndices[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya dense-list of positive integers[133X
+  
+  [33X[0;0YReturns the indices of the morphisms in [10XMorphismSupport[110X([3Xalpha[103X).[133X
+  
+  [1X7.3-8 MorphismLabel[101X
+  
+  [33X[1;0Y[29X[2XMorphismLabel[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya positive integer[133X
+  
+  [33X[0;0YReturns the label of the morphism [3Xalpha[103X.[133X
+  
+  [1X7.3-9 IsFinitePathCategory[101X
+  
+  [33X[1;0Y[29X[2XIsFinitePathCategory[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YReturns whether [3XC[103X can be enriched over the category of finite sets.[133X
+  
+  
+  [1X7.4 [33X[0;0YOperations[133X[101X
+  
+  [1X7.4-1 GroebnerBasis[101X
+  
+  [33X[1;0Y[29X[2XGroebnerBasis[102X( [3XC[103X, [3Xrels[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya dense list[133X
+  
+  [33X[0;0YThe  input  is  a  path  category  [3XC[103X  and a list [3Xrels[103X consisting of pairs of
+  parallel morphisms in [3XC[103X. The output is the Groebner basis of [3Xrels[103X.[133X
+  
+  [1X7.4-2 ReducedGroebnerBasisWithGivenGroebnerBasis[101X
+  
+  [33X[1;0Y[29X[2XReducedGroebnerBasisWithGivenGroebnerBasis[102X( [3XC[103X, [3Xgroebner_basis[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya dense list[133X
+  
+  [33X[0;0YThe  input  is  a  path  category  [3XC[103X  and  a  Groebner  basis [3Xgroebner_basis[103X
+  consisting  of  pairs  of parallel morphisms in [3XC[103X. The output is the reduced
+  Groebner basis of [3Xgroebner_basis[103X.[133X
+  
+  [1X7.4-3 ReducedGroebnerBasis[101X
+  
+  [33X[1;0Y[29X[2XReducedGroebnerBasis[102X( [3XC[103X, [3Xrels[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya dense list[133X
+  
+  [33X[0;0YThe  input  is  a  path  category  [3XC[103X  and a list [3Xrels[103X consisting of pairs of
+  parallel morphisms in [3XC[103X. The output is the reduced Groebner basis of [3Xrels[103X.[133X
+  
+  [1X7.4-4 HasFiniteNumberOfNonMultiples[101X
+  
+  [33X[1;0Y[29X[2XHasFiniteNumberOfNonMultiples[102X( [3XC[103X, [3Xmonomials[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  input  is  a  path  category  [3XC[103X  and a list of morphisms [3Xmonomials[103X in [3XC[103X
+  ([3Xmonomials[103X  is usually the leading terms of a Groebner basis). The output is
+  whether almost all morphisms of [3XC[103X are multiples of elements in [3Xmonomials[103X. In
+  other  words,  whether  the  number  of  morphisms that are not multiples of
+  elements in [3Xmonomials[103X is finite.[133X
+  
+  [1X7.4-5 IsDescendingForMorphisms[101X
+  
+  [33X[1;0Y[29X[2XIsDescendingForMorphisms[102X( [3XC[103X, [3Xf[103X, [3Xg[103X, [3Xadmissible_order[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  input  is  a  path category [3XC[103X, two parallel morphisms [3Xf[103X, [3Xg[103X and a string
+  [3Xadmissible_order[103X  which  takes one of the following two values [10X"Dp"[110X or [10X"dp"[110X.
+  The  output  is  whether  [3Xf[103X [23X\succ[123X [3Xg[103X with respect to the specified admissible
+  order.  [10X"Dp"[110X  stands  for  the left-length-lexicographic order under which [3Xf[103X
+  [23X\succ_{\mathtt{Dp}}[123X  [3Xg[103X  if  [10XMorphismLength[110X([3Xf[103X)  [23X\succ[123X  [10XMorphismLength[110X([3Xg[103X);  or
+  [10XMorphismLength[110X([3Xf[103X)[23X=[123X[10XMorphismLength[110X([3Xg[103X)   and   the   first   nonzero  entry  in
+  [10XMorphismIndices[110X([3Xf[103X)[23X-[123X[10XMorphismIndices[110X([3Xg[103X)  is  negative.  [10X"dp"[110X  stands  for  the
+  right-length-lexicographic  order  under  which  [3Xf[103X  [23X\succ_{\mathtt{dp}}[123X [3Xg[103X if
+  [10XMorphismLength[110X([3Xf[103X)            [23X\succ[123X           [10XMorphismLength[110X([3Xg[103X);           or
+  [10XMorphismLength[110X([3Xf[103X)[23X=[123X[10XMorphismLength[110X([3Xg[103X)   and   the   last   nonzero   entry  in
+  [10XMorphismIndices[110X([3Xf[103X)[23X-[123X[10XMorphismIndices[110X([3Xg[103X)  is  negative.  For  example,  if  the
+  quiver of [3XC[103X is defined by the string [10X"(*)[x:*->*,y:*->*]"[110X, then[133X
+  
+  [30X    [33X[0;6Y[23Xx^2  \succ_{\mathtt{Dp}} xy \succ_{\mathtt{Dp}} yx \succ_{\mathtt{Dp}}
+        y^2  \succ_{\mathtt{Dp}}  x  \succ_{\mathtt{Dp}} y \succ_{\mathtt{Dp}}
+        \mathtt{id(*)}[123X[133X
+  
+  [30X    [33X[0;6Y[23Xx^2  \succ_{\mathtt{dp}} yx \succ_{\mathtt{dp}} xy \succ_{\mathtt{dp}}
+        y^2  \succ_{\mathtt{dp}}  x  \succ_{\mathtt{dp}} y \succ_{\mathtt{dp}}
+        \mathtt{id(*)}[123X[133X
+  
+  [1X7.4-6 IsAscendingForMorphisms[101X
+  
+  [33X[1;0Y[29X[2XIsAscendingForMorphisms[102X( [3XC[103X, [3Xf[103X, [3Xg[103X, [3Xadmissible_order[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  input  is  a  path category [3XC[103X, two parallel morphisms [3Xf[103X, [3Xg[103X and a string
+  [3Xadmissible_order[103X  which  takes one of the following two values [10X"Dp"[110X or [10X"dp"[110X.
+  The  output  is  whether  [3Xf[103X [23X\prec[123X [3Xg[103X with respect to the specified admissible
+  order.[133X
+  
+  
+  [1X7.5 [33X[0;0YQuotients of path categories[133X[101X
+  
+  [1X7.5-1 IsQuotientOfPathCategory[101X
+  
+  [33X[1;0Y[29X[2XIsQuotientOfPathCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of quotients of path categories.[133X
+  
+  [1X7.5-2 IsQuotientOfPathCategoryObject[101X
+  
+  [33X[1;0Y[29X[2XIsQuotientOfPathCategoryObject[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in quotients path categories.[133X
+  
+  [1X7.5-3 IsQuotientOfPathCategoryMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsQuotientOfPathCategoryMorphism[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in quotients of path categories.[133X
+  
+  [1X7.5-4 QuotientCategory[101X
+  
+  [33X[1;0Y[29X[2XQuotientCategory[102X( [3XC[103X, [3Xrels[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YReturns  the  quotient  category  of  [3XC[103X  by the two-sided ideal of morphisms
+  generated by [3Xrels[103X.[133X
+  
+  [1X7.5-5 DefiningRelations[101X
+  
+  [33X[1;0Y[29X[2XDefiningRelations[102X( [3XqC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya dense list[133X
+  
+  [33X[0;0YReturns the generators of the underlying two-sided ideal of morphisms.[133X
+  
+  [1X7.5-6 GroebnerBasisOfDefiningRelations[101X
+  
+  [33X[1;0Y[29X[2XGroebnerBasisOfDefiningRelations[102X( [3XqC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya dense list[133X
+  
+  [33X[0;0YReturns  the  reduced  Groebner  basis  of the underlying two-sided ideal of
+  morphisms.[133X
+  
+  [1X7.5-7 ObjectIndex[101X
+  
+  [33X[1;0Y[29X[2XObjectIndex[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YReturns the index of the object.[133X
+  
+  [1X7.5-8 CanonicalRepresentative[101X
+  
+  [33X[1;0Y[29X[2XCanonicalRepresentative[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YThe input is a morphism [3Xalpha[103X in the quotient category [3XqC[103X of a path category
+  [10XC[110X.  The  output is a canonical representative of [3Xalpha[103X in [10XC[110X. Equal morphisms
+  in [3XqC[103X have the same canonical representative.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xstr := "q(0,1,2,3,4,5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;[127X[104X
+    [4X[25Xgap>[125X [27Xq := CreateCapQuiver( str );[127X[104X
+    [4X[28XQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,[128X[104X
+    [4X[28Xt:4-≻5,y:5-≻5]" )[128X[104X
+    [4X[25Xgap>[125X [27XC := PathCategory( q );[127X[104X
+    [4X[28XPathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,[128X[104X
+    [4X[28Xb:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( C );[127X[104X
+    [4X[28XA CAP category with name PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,[128X[104X
+    [4X[28Xa:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X15 primitive operations were used to derive 29 operations for this category[128X[104X
+    [4X[25Xgap>[125X [27XSetOfObjects( C );[127X[104X
+    [4X[28X[ (0), (1), (2), (3), (4), (5) ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( C );[127X[104X
+    [4X[28X[ x:(0) -≻ (0), s:(0) -≻ (1), a:(1) -≻ (2), c:(1) -≻ (3), e:(1) -≻ (4),[128X[104X
+    [4X[28X  b:(2) -≻ (4), d:(3) -≻ (4), t:(4) -≻ (5), y:(5) -≻ (5) ][128X[104X
+    [4X[25Xgap>[125X [27XC.5;[127X[104X
+    [4X[28X(5)[128X[104X
+    [4X[25Xgap>[125X [27XObjectIndex( C.5 );[127X[104X
+    [4X[28X6[128X[104X
+    [4X[25Xgap>[125X [27XC.id_5;[127X[104X
+    [4X[28Xid(5):(5) -≻ (5)[128X[104X
+    [4X[25Xgap>[125X [27XC.("id(5)");[127X[104X
+    [4X[28Xid(5):(5) -≻ (5)[128X[104X
+    [4X[25Xgap>[125X [27Xm := C.("x^2*s*a*b*t*y^2");[127X[104X
+    [4X[28Xx^2•s•a•b•t•y^2:(0) -≻ (5)[128X[104X
+    [4X[25Xgap>[125X [27Xm := C.("x^2sabty^2");[127X[104X
+    [4X[28Xx^2•s•a•b•t•y^2:(0) -≻ (5)[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( m );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMorphismLength( m );[127X[104X
+    [4X[28X8[128X[104X
+    [4X[25Xgap>[125X [27XMorphismIndices( m );[127X[104X
+    [4X[28X[ 1, 1, 2, 3, 6, 8, 9, 9 ][128X[104X
+    [4X[25Xgap>[125X [27XMorphismSupport( m );[127X[104X
+    [4X[28X[ x:(0) -≻ (0), x:(0) -≻ (0), s:(0) -≻ (1), a:(1) -≻ (2), b:(2) -≻ (4),[128X[104X
+    [4X[28Xt:(4) -≻ (5), y:(5) -≻ (5), y:(5) -≻ (5) ][128X[104X
+    [4X[25Xgap>[125X [27Xrelations := [ [ C.x^5, C.x ], [ C.y^5, C.y^2 ] ];;[127X[104X
+    [4X[25Xgap>[125X [27XqC := QuotientCategory( C, relations );[127X[104X
+    [4X[28XPathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,[128X[104X
+    [4X[28Xb:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( qC );[127X[104X
+    [4X[28XA CAP category with name PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,[128X[104X
+    [4X[28Xa:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ]:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X25 primitive operations were used to derive 61 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[25Xgap>[125X [27XqC.0;[127X[104X
+    [4X[28X(0)[128X[104X
+    [4X[25Xgap>[125X [27XObjectIndex( qC.0 );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XqC.x^7;[127X[104X
+    [4X[28X[x^3]:(0) -≻ (0)[128X[104X
+    [4X[25Xgap>[125X [27XCanonicalRepresentative( qC.x^7 );[127X[104X
+    [4X[28Xx^3:(0) -≻ (0)[128X[104X
+    [4X[25Xgap>[125X [27XHomomorphismStructureOnObjects( qC.0, qC.5 );[127X[104X
+    [4X[28X|75|[128X[104X
+    [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals();[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XkC := k[C]; # or LinearClosure( k, C );[127X[104X
+    [4X[28XQ-LinearClosure( PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,[128X[104X
+    [4X[28Xc:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XkC.x + kC.x^2;[127X[104X
+    [4X[28X1*x^2 + 1*x:(0) -≻ (0)[128X[104X
+    [4X[25Xgap>[125X [27XkqC := k[qC];[127X[104X
+    [4X[28XQ-LinearClosure( PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,[128X[104X
+    [4X[28Xc:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ] )[128X[104X
+    [4X[25Xgap>[125X [27XHomomorphismStructureOnObjects( kqC.0, kqC.5 );[127X[104X
+    [4X[28X<A row module over Q of rank 75>[128X[104X
+    [4X[25Xgap>[125X [27XkqC.x + kqC.x^2;[127X[104X
+    [4X[28X1*[x^2] + 1*[x]:(0) -≻ (0)[128X[104X
+    [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( kqC );[127X[104X
+    [4X[28XQ-algebroid( {0,1,2,3,4,5}[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,[128X[104X
+    [4X[28Xt:4-≻5,y:5-≻5] ) defined by 6 objects and 9 generating morphisms[128X[104X
+    [4X[25Xgap>[125X [27XHomomorphismStructureOnObjects( A.0, A.5 );[127X[104X
+    [4X[28X<A row module over Q of rank 75>[128X[104X
+    [4X[25Xgap>[125X [27XA.x + A.x^2;[127X[104X
+    [4X[28X<1*x^2 + 1*x:(0) -≻ (0)>[128X[104X
+    [4X[25Xgap>[125X [27XqA := A / [ A.bt ]; # Groeber basis using linear algebra[127X[104X
+    [4X[28XQuotientCategory( Q-algebroid( {0,1,2,3,4,5}[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,[128X[104X
+    [4X[28Xe:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5] ) defined by 6 objects and 9 generating[128X[104X
+    [4X[28Xmorphisms, 2-sided ideal generated by 1 morphism )[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( qA.bty );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xstr := "q(0,1,2,3,4,5)[s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5]";;[127X[104X
+    [4X[25Xgap>[125X [27Xquiver := CreateCapQuiver( str );[127X[104X
+    [4X[28XQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" )[128X[104X
+    [4X[25Xgap>[125X [27XP := PathCategory( quiver );[127X[104X
+    [4X[28XPathCategory( Quiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,[128X[104X
+    [4X[28Xd:3-≻4,t:4-≻5]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
+    [4X[28XA CAP category with name PathCategory( Quiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,[128X[104X
+    [4X[28Xc:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" ) ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X16 primitive operations were used to derive 61 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( P.0, P.5 );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XkP := k[P];[127X[104X
+    [4X[28XQ-LinearClosure( PathCategory( Quiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,[128X[104X
+    [4X[28Xe:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( kP.0, kP.5 );[127X[104X
+    [4X[28X<A row module over Q of rank 3>[128X[104X
+    [4X[25Xgap>[125X [27XT := AlgebroidFromDataTables( kP );[127X[104X
+    [4X[28XQ-algebroid( {0,1,2,3,4,5}[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5] )[128X[104X
+    [4X[28Xdefined by 6 objects and 7 generating morphisms[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( T.0, T.5 );[127X[104X
+    [4X[28X<A row module over Q of rank 3>[128X[104X
+  [4X[32X[104X
   
