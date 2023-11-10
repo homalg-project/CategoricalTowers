@@ -2,7 +2,7 @@
   [1X13 [33X[0;0YPrecompilation[133X[101X
   
   
-  [1X13.1 [33X[0;0YPrecompiling SkeletalFinSets[133X[101X
+  [1X13.1 [33X[0;0YPrecompiling the finite strict coproduct completion[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
@@ -10,7 +10,52 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "FiniteCocompletions", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xfree_category_of_quiver := { quiver, sFinSets } -> CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
+    [4X[25X>[125X [27X  function( quiver )[127X[104X
+    [4X[25X>[125X [27X    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true, overhead := true ); return FiniteStrictCoproductCompletion( CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ RightQuiver( "q(2)[m:1->2]" ) ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "FiniteStrictCoproductCompletionOfCategoryFromDataTablesPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "FiniteCocompletions";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name[127X[104X
+    [4X[25X>[125X [27X   : operations := [ #"CoproductOnMorphismsWithGivenCoproducts", # <- derived and leads to an error[127X[104X
+    [4X[25X>[125X [27X                     #"CoproductFunctorialWithGivenCoproducts", # <- derived[127X[104X
+    [4X[25X>[125X [27X                     "HomomorphismStructureOnObjects",[127X[104X
+    [4X[25X>[125X [27X                     "HomomorphismStructureOnMorphismsWithGivenObjects",[127X[104X
+    [4X[25X>[125X [27X                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",[127X[104X
+    [4X[25X>[125X [27X                     "MorphismsOfExternalHom",[127X[104X
+    [4X[25X>[125X [27X                     #"ExponentialOnObjects",[127X[104X
+    [4X[25X>[125X [27X                     ][127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XFiniteStrictCoproductCompletionOfCategoryFromDataTablesPrecompiled( given_arguments[1] );[127X[104X
+    [4X[28XFiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "q(2)[m:1->2]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xcat := FiniteStrictCoproductCompletion( free_category_of_quiver( given_arguments[1], SkeletalFinSets ) );[127X[104X
+    [4X[28XFiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "q(2)[m:1->2]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xcat!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X13.2 [33X[0;0YPrecompiling SkeletalFinSets[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FiniteCocompletions", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
     [4X[25X>[125X [27X  {} -> SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( );;[127X[104X
