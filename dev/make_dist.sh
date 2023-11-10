@@ -44,6 +44,13 @@ git subtree split --prefix=FiniteCocompletions -b FiniteCocompletions-split
 git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/FiniteCocompletions FiniteCocompletions-split:master
 echo ""
 
+# FpCategories
+echo "Release FpCategories"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/FpCategories" --webdir "$PWD/gh-pages/FpCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
+git subtree split --prefix=FpCategories -b FpCategories-split
+git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/FpCategories FpCategories-split:master
+echo ""
+
 # FunctorCategories
 echo "Release FunctorCategories"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/FunctorCategories" --webdir "$PWD/gh-pages/FunctorCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"

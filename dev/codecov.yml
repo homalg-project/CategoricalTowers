@@ -2,7 +2,7 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 19
+  after_n_builds: 20
 flags:
   Algebroids:
     paths:
@@ -22,6 +22,9 @@ flags:
   FiniteCocompletions:
     paths:
       - "FiniteCocompletions/"
+  FpCategories:
+    paths:
+      - "FpCategories/"
   FunctorCategories:
     paths:
       - "FunctorCategories/"

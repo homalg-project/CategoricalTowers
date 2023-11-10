@@ -35,13 +35,6 @@ DeclareAttribute( "IndicesOfGeneratingMorphismsFromHomStructure",
         IsCapCategory );
 
 #! @Description
-#!  The data tables of the category <A>C</A>.
-#! @Arguments C
-#! @Returns a pair of lists
-DeclareAttribute( "DataTablesOfCategory",
-        IsCapCategory );
-
-#! @Description
 #!  The opposite category of a finite category <A>C</A>.
 #! @Arguments C
 #! @Returns a &CAP; category
