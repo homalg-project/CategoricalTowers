@@ -12,7 +12,7 @@ LoadPackage( "FiniteCocompletions", false );
 LoadPackage( "CompilerForCAP", false );
 #! true
 
-ReadPackage( "FiniteCocompletions", "gap/CompilerLogic.gi" );
+ReadPackageOnce( "FiniteCocompletions", "gap/CompilerLogic.gi" );
 #! true
 
 category_constructor :=

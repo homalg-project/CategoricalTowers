@@ -5,6 +5,9 @@
 #
 
 ##
+ReadPackage( "FiniteCocompletions", "gap/precompiled_categories/FiniteStrictCoproductCompletionOfCategoryFromDataTablesPrecompiled.gi");
+
+##
 ReadPackage( "FiniteCocompletions", "gap/precompiled_categories/SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategoryPrecompiled.gi");
 
 ##
