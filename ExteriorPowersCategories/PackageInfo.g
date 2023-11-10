@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ExteriorPowersCategories",
 Subtitle := "The graded category of exterior powers of objects of a given Ab-category",
-Version := "2023.10-01",
-Date := "2023-10-14",
+Version := "2023.11-01",
+Date := "2023-11-10",
 License := "GPL-2.0-or-later",
 
 
@@ -74,7 +74,7 @@ Dependencies := rec(
                    [ "CAP", ">= 2023.08-18" ],
                    [ "MatricesForHomalg", ">= 2022.06-01" ],
                    [ "IO_ForHomalg", ">= 2022.03-01" ],
-                   [ "CategoryConstructor", ">= 2021.04-01" ],
+                   [ "ToolsForCategoricalTowers", ">= 2023.11-03" ],
                    ],
   ExternalConditions := [ ],
 ),
