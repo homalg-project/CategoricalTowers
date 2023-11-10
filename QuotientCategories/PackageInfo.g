@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "QuotientCategories",
 Subtitle := "Quotient categories",
-Version := "2023.10-02",
-Date := "2023-10-14",
+Version := "2023.11-01",
+Date := "2023-11-10",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -73,7 +73,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                 [ "AutoDoc", ">=2018.02.14" ],
                 [ "CAP", ">= 2023.08-04" ],
-                [ "CategoryConstructor", ">= 2022.11-10" ]
+                [ "ToolsForCategoricalTowers", ">= 2023.11-03" ]
                 ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
