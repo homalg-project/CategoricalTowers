@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# CategoryConstructor: Construct categories out of given ones
+# ToolsForCategoricalTowers: Tools for CategoricalTowers
 #
 # Implementations
 #
@@ -591,12 +591,12 @@ CAP_INTERNAL_ENHANCE_NAME_RECORD( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD );
 
 CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
     CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD,
-    "CategoryConstructor",
+    "ToolsForCategoricalTowers",
     "Tools.autogen.gd",
     "Futher CAP operations",
     "Add-methods"
 );
 
-CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD, "CategoryConstructor" );
+CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD, "ToolsForCategoricalTowers" );
 
 CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD );

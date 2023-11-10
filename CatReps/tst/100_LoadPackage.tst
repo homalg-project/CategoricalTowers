@@ -7,7 +7,7 @@
 gap> PushOptions( rec( OnlyNeeded := true ) );
 gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
-gap> LoadPackage( "CategoryConstructor", false );
+gap> LoadPackage( "ToolsForCategoricalTowers", false );
 true
 gap> LoadPackage( "FinSetsForCAP", false );
 true
@@ -16,7 +16,7 @@ true
 gap> LoadPackage( "CatReps", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
-gap> LoadPackage( "CategoryConstructor" );
+gap> LoadPackage( "ToolsForCategoricalTowers" );
 true
 gap> LoadPackage( "FinSetsForCAP" );
 true

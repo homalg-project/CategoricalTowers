@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# CategoryConstructor: Construct categories out of given ones
+# ToolsForCategoricalTowers: Tools for CategoricalTowers
 #
 # This file tests if the package can be loaded without errors or warnings.
 #
@@ -15,7 +15,7 @@ gap> LoadPackage( "SubcategoriesForCAP", false );
 true
 gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
-gap> LoadPackage( "CategoryConstructor", false );
+gap> LoadPackage( "ToolsForCategoricalTowers", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
 gap> LoadPackage( "Locales" );
@@ -26,6 +26,6 @@ gap> LoadPackage( "SubcategoriesForCAP" );
 true
 gap> LoadPackage( "FreydCategoriesForCAP" );
 true
-gap> LoadPackage( "CategoryConstructor" );
+gap> LoadPackage( "ToolsForCategoricalTowers" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;

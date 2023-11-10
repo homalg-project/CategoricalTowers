@@ -16,11 +16,11 @@ git subtree split --prefix=CategoriesWithAmbientObjects -b CategoriesWithAmbient
 git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/CategoriesWithAmbientObjects CategoriesWithAmbientObjects-split:master
 echo ""
 
-# CategoryConstructor
-echo "Release CategoryConstructor"
-GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/CategoryConstructor" --webdir "$PWD/gh-pages/CategoryConstructor" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
-git subtree split --prefix=CategoryConstructor -b CategoryConstructor-split
-git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/CategoryConstructor CategoryConstructor-split:master
+# ToolsForCategoricalTowers
+echo "Release ToolsForCategoricalTowers"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/ToolsForCategoricalTowers" --webdir "$PWD/gh-pages/ToolsForCategoricalTowers" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
+git subtree split --prefix=ToolsForCategoricalTowers -b ToolsForCategoricalTowers-split
+git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/ToolsForCategoricalTowers ToolsForCategoricalTowers-split:master
 echo ""
 
 # CatReps

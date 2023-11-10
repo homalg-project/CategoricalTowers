@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "PreSheaves",
 Subtitle := "Categories of (co)presheaves",
-Version := "2023.11-01",
+Version := "2023.11-02",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
@@ -90,7 +90,7 @@ Dependencies := rec(
                    [ "CAP", ">= 2023.10-04" ],
                    [ "CartesianCategories", ">= 2023.02-03" ],
                    [ "MonoidalCategories", ">= 2023.02-03" ],
-                   [ "CategoryConstructor", ">= 2023.07-03" ],
+                   [ "ToolsForCategoricalTowers", ">= 2023.11-03" ],
                    ],
   SuggestedOtherPackages := [
                    ],
