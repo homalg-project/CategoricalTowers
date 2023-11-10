@@ -294,7 +294,7 @@
   [30X    [33X[0;6Y[2XColiftAlongEpimorphism[102X      ([14XCAP:      ColiftAlongEpimorphism      for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XColimit[102X ([14XCategoryConstructor: Colimit for IsList, IsList[114X)[133X
+  [30X    [33X[0;6Y[2XColimit[102X ([14XToolsForCategoricalTowers: Colimit for IsList, IsList[114X)[133X
   
   [30X    [33X[0;6Y[2XComponentOfMorphismFromCoproduct[102X                                 ([14XCAP:
         ComponentOfMorphismFromCoproduct  for  IsCapCategoryMorphism,  IsList,
@@ -483,10 +483,11 @@
         InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout             for
         IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfCofactorOfColimit[102X                     ([14XCategoryConstructor:
+  [30X    [33X[0;6Y[2XInjectionOfCofactorOfColimit[102X               ([14XToolsForCategoricalTowers:
         InjectionOfCofactorOfColimit for IsList, IsList, IsInt[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfCofactorOfColimitWithGivenColimit[102X     ([14XCategoryConstructor:
+  [30X    [33X[0;6Y[2XInjectionOfCofactorOfColimitWithGivenColimit[102X
+        ([14XToolsForCategoricalTowers:
         InjectionOfCofactorOfColimitWithGivenColimit   for   IsList,   IsList,
         IsInt, IsCapCategoryObject[114X)[133X
   
@@ -826,13 +827,13 @@
   [30X    [33X[0;6Y[2XLiftAlongMonomorphism[102X       ([14XCAP:       LiftAlongMonomorphism      for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XLimit[102X ([14XCategoryConstructor: Limit for IsList, IsList[114X)[133X
+  [30X    [33X[0;6Y[2XLimit[102X ([14XToolsForCategoricalTowers: Limit for IsList, IsList[114X)[133X
   
   [30X    [33X[0;6Y[2XLinearCombinationOfMorphisms[102X  ([14XCAP:  LinearCombinationOfMorphisms  for
         IsCapCategoryObject, IsList, IsList, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[102X
-        ([14XCategoryConstructor:
+        ([14XToolsForCategoricalTowers:
         MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory for
         IsList, IsList[114X)[133X
   
@@ -854,18 +855,19 @@
         IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismBetweenCoproducts[102X                        ([14XCategoryConstructor:
+  [30X    [33X[0;6Y[2XMorphismBetweenCoproducts[102X                  ([14XToolsForCategoricalTowers:
         MorphismBetweenCoproducts for IsList, IsList, IsList[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismBetweenCoproductsWithGivenCoproducts[102X     ([14XCategoryConstructor:
+  [30X    [33X[0;6Y[2XMorphismBetweenCoproductsWithGivenCoproducts[102X
+        ([14XToolsForCategoricalTowers:
         MorphismBetweenCoproductsWithGivenCoproducts  for IsCapCategoryObject,
         IsList, IsList, IsList, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismBetweenDirectProducts[102X                    ([14XCategoryConstructor:
+  [30X    [33X[0;6Y[2XMorphismBetweenDirectProducts[102X              ([14XToolsForCategoricalTowers:
         MorphismBetweenDirectProducts for IsList, IsList, IsList[114X)[133X
   
   [30X    [33X[0;6Y[2XMorphismBetweenDirectProductsWithGivenDirectProducts[102X
-        ([14XCategoryConstructor:
+        ([14XToolsForCategoricalTowers:
         MorphismBetweenDirectProductsWithGivenDirectProducts               for
         IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject[114X)[133X
   
@@ -985,10 +987,10 @@
         ProjectionInFactorOfFiberProductWithGivenFiberProduct    for   IsList,
         IsInt, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionInFactorOfLimit[102X                        ([14XCategoryConstructor:
+  [30X    [33X[0;6Y[2XProjectionInFactorOfLimit[102X                  ([14XToolsForCategoricalTowers:
         ProjectionInFactorOfLimit for IsList, IsList, IsInt[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionInFactorOfLimitWithGivenLimit[102X          ([14XCategoryConstructor:
+  [30X    [33X[0;6Y[2XProjectionInFactorOfLimitWithGivenLimit[102X    ([14XToolsForCategoricalTowers:
         ProjectionInFactorOfLimitWithGivenLimit  for  IsList,  IsList,  IsInt,
         IsCapCategoryObject[114X)[133X
   
@@ -1169,11 +1171,12 @@
         IsCapCategoryObject,            IsList,           IsCapCategoryObject,
         IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromColimit[102X                     ([14XCategoryConstructor:
+  [30X    [33X[0;6Y[2XUniversalMorphismFromColimit[102X               ([14XToolsForCategoricalTowers:
         UniversalMorphismFromColimit  for IsList, IsList, IsCapCategoryObject,
         IsList[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromColimitWithGivenColimit[102X     ([14XCategoryConstructor:
+  [30X    [33X[0;6Y[2XUniversalMorphismFromColimitWithGivenColimit[102X
+        ([14XToolsForCategoricalTowers:
         UniversalMorphismFromColimitWithGivenColimit   for   IsList,   IsList,
         IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
   
@@ -1278,11 +1281,11 @@
         UniversalMorphismIntoFiberProductWithGivenFiberProduct   for   IsList,
         IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoLimit[102X                       ([14XCategoryConstructor:
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoLimit[102X                 ([14XToolsForCategoricalTowers:
         UniversalMorphismIntoLimit  for  IsList,  IsList, IsCapCategoryObject,
         IsList[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoLimitWithGivenLimit[102X         ([14XCategoryConstructor:
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoLimitWithGivenLimit[102X   ([14XToolsForCategoricalTowers:
         UniversalMorphismIntoLimitWithGivenLimit     for    IsList,    IsList,
         IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
   
