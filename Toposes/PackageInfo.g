@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "Toposes",
 Subtitle := "Elementary toposes",
-Version := "2023.11-02",
-Date := "2023-11-05",
-Date := "2023-11-05",
+Version := "2023.11-03",
+Date := "2023-11-10",
+Date := "2023-11-10",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -117,7 +117,7 @@ Dependencies := rec(
                    [ "CartesianCategories", ">= 2023.10-01" ],
                    ],
   SuggestedOtherPackages := [
-                   [ "CategoryConstructor", ">= 2023.10-10" ],
+                   [ "ToolsForCategoricalTowers", ">= 2023.11-03" ],
                    [ "Digraphs", ">= 1.3.1" ], ## needed for DigraphOfSubobjects in Tools.gi
                    ],
   ExternalConditions := [ ],

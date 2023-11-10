@@ -1,7 +1,7 @@
 name: Toposes
-version: "2023.11-02"
+version: "2023.11-03"
 license: "GPL-2.0-or-later"
-date: 2023-11-05
+date: 2023-11-10
 description: |
     Elementary toposes
 
@@ -39,9 +39,9 @@ needed-pkgs:
       url: "https://homalg-project.github.io/pkg/CartesianCategories"
 
 suggested-pkgs:
-    - name: "CategoryConstructor"
-      version: ">= 2023.10-10"
-      url: "https://homalg-project.github.io/pkg/CategoryConstructor"
+    - name: "ToolsForCategoricalTowers"
+      version: ">= 2023.11-03"
+      url: "https://homalg-project.github.io/pkg/ToolsForCategoricalTowers"
     - name: "Digraphs"
       version: ">= 1.3.1"
       url: "https://digraphs.github.io/Digraphs"
@@ -52,11 +52,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/Toposes/PackageI
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Toposes-2023.11-02/Toposes-2023.11-02.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Toposes-2023.11-03/Toposes-2023.11-03.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Toposes-2023.11-02/Toposes-2023.11-02.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Toposes-2023.11-03/Toposes-2023.11-03.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Toposes-2023.11-02/Toposes-2023.11-02-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Toposes-2023.11-03/Toposes-2023.11-03-manual.pdf
 
 abstract: |
 
@@ -67,28 +67,28 @@ keywords: |
     elementary toposes.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BZRK05</span>]   <b class='BibAuthor'>Barakat, M., Zickgraf, F., Román, M. and Kuhmichel, T.</b>,
+    [<span class='BibKey'>BZRK10</span>]   <b class='BibAuthor'>Barakat, M., Zickgraf, F., Román, M. and Kuhmichel, T.</b>,
      <i class='BibTitle'>Toposes, Elementary toposes,
-             Version 2023.11-02</i>
-     (<span class='BibYear'>1-05</span>)<br />
+             Version 2023.11-03</i>
+     (<span class='BibYear'>1-10</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/Toposes">https://homalg-project.github.io/pkg/Toposes</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ Toposes2023.11-02,
+    @misc{ Toposes2023.11-03,
       author =           {Barakat,  M.  and  Zickgraf, F. and Rom{\a'a}n, M. and
                           Kuhmichel, T.},
-      title =            {{Toposes}, Elementary toposes, {V}ersion 2023.11-02},
+      title =            {{Toposes}, Elementary toposes, {V}ersion 2023.11-03},
       month =            {3-},
-      year =             {1-05},
+      year =             {1-10},
       note =             {GAP package},
       howpublished =     {\href   {https://homalg-project.github.io/pkg/Toposes}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{Toposes}}},
       keywords =         {elementary toposes},
-      printedkey =       {BZRK05}
+      printedkey =       {BZRK10}
     }
 
