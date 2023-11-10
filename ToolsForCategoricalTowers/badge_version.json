@@ -3,5 +3,5 @@
 {
   "schemaVersion": 1,
   "label": "to be overridden by url",
-  "message": "{{ site.data.CategoryConstructor.version }}"
+  "message": "{{ site.data.ToolsForCategoricalTowers.version }}"
 }
