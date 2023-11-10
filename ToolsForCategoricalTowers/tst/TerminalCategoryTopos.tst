@@ -5,7 +5,7 @@
 
 gap> START_TEST("TerminalCategoryTopos.tst");
 
-gap> LoadPackage("CategoryConstructor", false);
+gap> LoadPackage("ToolsForCategoricalTowers", false);
 true
 gap> LoadPackage("Toposes", ">= 2022.04-29", false);
 true

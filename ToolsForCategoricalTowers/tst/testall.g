@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# CategoryConstructor: Construct categories out of given ones
+# ToolsForCategoricalTowers: Tools for CategoricalTowers
 #
 # This file runs package tests. It is also referenced in the package
 # metadata in PackageInfo.g.
@@ -30,6 +30,6 @@ else
     
 fi;
 
-TestDirectory( DirectoriesPackageLibrary( "CategoryConstructor", "tst" ), options );
+TestDirectory( DirectoriesPackageLibrary( "ToolsForCategoricalTowers", "tst" ), options );
 
 FORCE_QUIT_GAP( 1 ); # if we ever get here, there was an error

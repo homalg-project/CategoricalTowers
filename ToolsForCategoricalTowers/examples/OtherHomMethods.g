@@ -2,7 +2,7 @@
 
 
 #! @Example
-LoadPackage( "CategoryConstructor" );
+LoadPackage( "ToolsForCategoricalTowers" );
 #! true
 LoadPackage( "FreydCategoriesForCAP" );
 #! true

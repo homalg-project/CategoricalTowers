@@ -37,7 +37,7 @@ test-spacing:
 	grep -RE '[^ ] +$$' gap/*; test $$? -eq 1 || (echo "Trailing whitespace found" && exit 1)
 	for filename in gap/*; do \
 		echo $$filename; \
-		gap --quitonbreak --norepl --banner -c "LoadPackage(\"CategoryConstructor\"); SizeScreen([4096]); func := ReadAsFunction(\"$$filename\"); FileString(\"gap_spacing\", DisplayString(func));"; \
+		gap --quitonbreak --norepl --banner -c "LoadPackage(\"ToolsForCategoricalTowers\"); SizeScreen([4096]); func := ReadAsFunction(\"$$filename\"); FileString(\"gap_spacing\", DisplayString(func));"; \
 		# In a perfect world, the DisplayString of a function would exactly match our code. However, our line breaks and indentation might differ from the GAP ones, \
 		# so we remove all indentation, line breaks, and empty lines, and afterwards insert line breaks at semicolons again for better readability. \
 		cat "gap_spacing" | tail -n +2 | head -n -2 | sed 's/\[  \]/[ ]/g' | sed 's/(  )/( )/g' | sed 's/(  :/( :/g' | sed 's/ *$$//' | sed 's/^ *//' | grep -v "^$$" | tr "\n" " " | sed 's/;/;\n/g' > modified_gap_spacing; \

@@ -31,7 +31,7 @@ while ! ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F CategoryConstructor; do
+while ! ./codecov -Z -v -s ../ -F ToolsForCategoricalTowers; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done

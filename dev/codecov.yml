@@ -10,9 +10,9 @@ flags:
   CategoriesWithAmbientObjects:
     paths:
       - "CategoriesWithAmbientObjects/"
-  CategoryConstructor:
+  ToolsForCategoricalTowers:
     paths:
-      - "CategoryConstructor/"
+      - "ToolsForCategoricalTowers/"
   CatReps:
     paths:
       - "CatReps/"

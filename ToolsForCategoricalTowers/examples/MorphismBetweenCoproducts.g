@@ -1,7 +1,7 @@
 #! @Chunk MorphismBetweenCoproducts
 
 #! @Example
-LoadPackage( "CategoryConstructor" );
+LoadPackage( "ToolsForCategoricalTowers" );
 #! true
 LoadPackage( "Toposes", ">= 2023.11-02", fail );
 #! true
