@@ -83,6 +83,12 @@
 @Section Constructors
 @Section GAP categories
 
+@Chapter The category of colimit quivers in a category
+
+@Section Attributes
+@Section Constructors
+@Section GAP categories
+
 @Chapter The coequalizer completion of a category
 
 @Section Attributes
@@ -98,12 +104,6 @@
 
 @Subsection Free elementary topos on one object
 @InsertChunk FreeElementaryToposOnOneObject
-
-@Chapter The category of colimit quivers in a category
-
-@Section Attributes
-@Section Constructors
-@Section GAP categories
 
 @Chapter Strict additive closure
 
