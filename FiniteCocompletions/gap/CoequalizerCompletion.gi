@@ -388,14 +388,14 @@ InstallMethod( \.,
     
     Yc := C.(name);
     
-    if IsAdditiveClosureObject( Yc ) then
+    if IsCapCategoryObject( Yc ) then
         
         Yc := AsCoequalizerCompletionObject( Coeq, Yc );
         
         #TODO: is this true?
         #SetIsProjective( Yc, true );
         
-    elif IsAdditiveClosureMorphism( Yc ) then
+    elif IsCapCategoryMorphism( Yc ) then
         
         Yc := AsCoequalizerCompletionMorphism( Coeq, Yc );
         
