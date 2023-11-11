@@ -12,7 +12,7 @@ InstallMethod( CoequalizerCompletion,
   function ( C )
     local object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
-          F, ParallelPairs, CoequalizerPairs, congruence_function,
+          ParallelPairs, CoequalizerPairs, congruence_function,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           CoequalizerCompletion;
