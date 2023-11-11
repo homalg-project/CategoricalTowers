@@ -1022,7 +1022,7 @@ end );
 
 ## [MacLane-Moerdijk, p.168]
 AddDerivationToCAP( ExponentialOnObjects,
-        "ExponentialOnObjects from the power object and the power object evaluation morphism",
+        "ExponentialOnObjects from the power object, the power object evaluation morphism, and the P-transpose",
         [ [ PowerObject, 4 ],
           [ DirectProduct, 4 ],
           [ SubobjectClassifier, 1 ],
@@ -1114,6 +1114,7 @@ AddDerivationToCAP( ExponentialOnObjects,
                  v_sigma,
                  PowerObject( cat, B ) );
     
+    ## 𝟙 ↪ PB
     true_B := RelativeTruthMorphismOfTrueWithGivenObjects( cat,
                       TerminalObject( cat ),
                       B,
