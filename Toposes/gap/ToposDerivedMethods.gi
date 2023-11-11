@@ -1020,6 +1020,109 @@ AddDerivationToCAP( RelativePseudoComplementSubobject,
     
 end );
 
+## [MacLane-Moerdijk, p.168]
+AddDerivationToCAP( ExponentialOnObjects,
+        "ExponentialOnObjects from the power object and the power object evaluation morphism",
+        [ [ PowerObject, 4 ],
+          [ DirectProduct, 4 ],
+          [ SubobjectClassifier, 1 ],
+          [ PowerObjectEvaluationMorphismWithGivenObjects, 1 ],
+          [ CartesianAssociatorRightToLeftWithGivenDirectProducts, 1 ],
+          [ PreCompose, 2 ],
+          [ PTransposeMorphismWithGivenRange, 2 ],
+          [ SingletonMorphismWithGivenPowerObject, 1 ],
+          [ ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier, 1 ],
+          [ TerminalObject, 1 ],
+          [ RelativeTruthMorphismOfTrueWithGivenObjects, 1 ],
+          [ FiberProduct, 1 ] ],
+        
+  function( cat, B, C )
+    local PB, PC, B_C, BxC, PBxC, PBxC_BxC, PBxC_xBxC, Omega, epsilon, PBxC_xB, PBxC_xB_xC, alpha, epsilon_, v, sing, sigma, v_sigma, u, true_B;
+    
+    PB := PowerObject( B );
+    PC := PowerObject( C );
+    
+    B_C := [ B, C ];
+    
+    ## B × C
+    BxC := DirectProduct( cat, B_C );
+    
+    ## P(B × C)
+    PBxC := PowerObject( cat, BxC );
+    
+    PBxC_BxC := [ PBxC, BxC ];
+    
+    ## P(B × C) × (B × C)
+    PBxC_xBxC := DirectProduct( cat, PBxC_BxC );
+    
+    ## Ω
+    Omega := SubobjectClassifier( cat );
+    
+    ## ϵ_{B × C} : P(B × C) × (B × C) → Ω
+    epsilon := PowerObjectEvaluationMorphismWithGivenObjects( cat,
+                       PBxC_xBxC,
+                       BxC,
+                       Omega );
+    ## P(B × C) × B
+    PBxC_xB := DirectProduct( cat,
+                       [ PBxC, B ] );
+    
+    ## (P(B × C) × B) × C
+    PBxC_xB_xC := DirectProduct( cat,
+                          [ PBxC_xB, C ] );
+    
+    ## P(B × C) × (B × C) → (P(B × C) × B) × C
+    alpha := CartesianAssociatorRightToLeftWithGivenDirectProducts( cat,
+                     PBxC_xBxC,
+                     PBxC,
+                     B,
+                     C,
+                     PBxC_xB_xC );
+    
+    ## ϵ_{B × C} : (P(B × C) × B) × C → Ω
+    epsilon_ := PreCompose( cat,
+                        alpha,
+                        epsilon );
+    
+    ## v: P(B × C) × B → PC
+    v := PTransposeMorphismWithGivenRange( cat,
+                 PBxC_xB,
+                 C,
+                 epsilon_,
+                 PC );
+
+    ## {}_C: C → PC
+    sing := SingletonMorphismWithGivenPowerObject( cat,
+                    C,
+                    PC );
+    
+    ## σ_C: PC → Ω
+    sigma := ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( cat,
+                     sing,
+                     Omega );
+
+    ## v σ_C: P(B × C) × B → Ω
+    v_sigma := PreCompose( cat,
+                       v,
+                       sigma );
+    
+    ## u: P(B × C) → PB
+    u := PTransposeMorphismWithGivenRange( cat,
+                 PBxC,
+                 B,
+                 v_sigma,
+                 PowerObject( cat, B ) );
+    
+    true_B := RelativeTruthMorphismOfTrueWithGivenObjects( cat,
+                      TerminalObject( cat ),
+                      B,
+                      PB );
+    
+    return FiberProduct( cat,
+                   [ u, true_B ] );
+    
+end );
+
 ##
 AddDerivationToCAP( MorphismsOfExternalHom,
         "MorphismsOfExternalHom using MorphismsOfExternalHom in RangeCategoryOfHomomorphismStructure",

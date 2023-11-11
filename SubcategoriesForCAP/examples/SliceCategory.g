@@ -5,6 +5,8 @@
 #! #@if ValueOption( "no_precompiled_code" ) <> true
 LoadPackage( "SubcategoriesForCAP" );
 #! true
+LoadPackage( "Toposes", ">= 2022.11-05" );
+#! true
 LoadPackage( "FinSetsForCAP", ">= 2022.05-01" );
 #! true
 B := SubobjectClassifier( SkeletalFinSets );
@@ -201,5 +203,11 @@ IsWellDefined( f );
 #! true
 g := PTransposeMorphism( o1, o2, f );
 #! A morphism in the slice category given by: |3| → |8|
+expo1o1 := Exponential( o1, o1 );
+#! An object in the slice category given by: |5| → |2|
+Display( expo1o1 );
+#! { 0,..., 4 } ⱶ[ 0, 0, 0, 0, 1 ]→ { 0, 1 }
+#! 
+#! An object in the slice category given by the above data
 #! #@fi
 #! @EndExample
