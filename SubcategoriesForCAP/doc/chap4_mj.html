@@ -170,6 +170,8 @@
 #@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP" );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Toposes", "&gt;= 2022.11-05" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP", "&gt;= 2022.05-01" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := SubobjectClassifier( SkeletalFinSets );</span>
@@ -366,6 +368,12 @@ A morphism in the slice category given by: |6| → |4|
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := PTransposeMorphism( o1, o2, f );</span>
 A morphism in the slice category given by: |3| → |8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">expo1o1 := Exponential( o1, o1 );</span>
+An object in the slice category given by: |5| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( expo1o1 );</span>
+{ 0,..., 4 } ⱶ[ 0, 0, 0, 0, 1 ]→ { 0, 1 }
+
+An object in the slice category given by the above data
 #@fi
 </pre></div>
 

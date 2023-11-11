@@ -86,6 +86,8 @@
     [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2022.11-05" );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2022.05-01" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XB := SubobjectClassifier( SkeletalFinSets );[127X[104X
@@ -282,6 +284,12 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xg := PTransposeMorphism( o1, o2, f );[127X[104X
     [4X[28XA morphism in the slice category given by: |3| → |8|[128X[104X
+    [4X[25Xgap>[125X [27Xexpo1o1 := Exponential( o1, o1 );[127X[104X
+    [4X[28XAn object in the slice category given by: |5| → |2|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( expo1o1 );[127X[104X
+    [4X[28X{ 0,..., 4 } ⱶ[ 0, 0, 0, 0, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the slice category given by the above data[128X[104X
     [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
