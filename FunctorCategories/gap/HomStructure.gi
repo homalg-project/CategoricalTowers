@@ -47,13 +47,13 @@ InstallMethodForCompilerForCAP( ExternalHomOnMorphismsEqualizerFunctorialDataUsi
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, eta, rho )
-    local coequalizer_completion_UC, UC, F, G,
+    local colimit_completion_C, UC, F, G,
           eta_coequalizer_pair_morphism, eta_coequalizer_pair_as_presheaf_morphism_datum,
           S, eta_V_S, F_data, F_V, F_V_data, diagram_F_V_S, T, diagram_F_V_T, D, F_V_rho;
     
-    coequalizer_completion_UC := AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
+    colimit_completion_C := AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    UC := UnderlyingCategory( coequalizer_completion_UC );
+    UC := FiniteStrictCoproductCompletionOfUnderlyingCategory( colimit_completion_C );
     
     F := Source( eta );
     G := Target( eta );
@@ -63,7 +63,7 @@ InstallMethodForCompilerForCAP( ExternalHomOnMorphismsEqualizerFunctorialDataUsi
                                              eta,
                                              CoYonedaLemmaOnObjects( PSh, G ) );
     
-    eta_coequalizer_pair_as_presheaf_morphism_datum := MorphismDatum( coequalizer_completion_UC, eta_coequalizer_pair_morphism );
+    eta_coequalizer_pair_as_presheaf_morphism_datum := MorphismDatum( colimit_completion_C, eta_coequalizer_pair_morphism );
     
     S := Source( rho );
     
