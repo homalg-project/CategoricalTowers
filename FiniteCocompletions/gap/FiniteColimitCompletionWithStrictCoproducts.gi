@@ -18,7 +18,7 @@ InstallMethod( FiniteColimitCompletionWithStrictCoproducts,
           ColimitCompletion;
     
     ## building the categorical tower:
-    UC := FiniteStrictCoproductCompletion( C : FinalizeCategory := true );
+    UC := EnrichmentSpecificFiniteStrictCoproductCompletion( C : FinalizeCategory := true );
     
     CoequalizerPairs := CoequalizerCompletion( UC : FinalizeCategory := true );
     
