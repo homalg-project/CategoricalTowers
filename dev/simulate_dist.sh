@@ -44,6 +44,13 @@ GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/FiniteC
 #git subtree split --prefix=FiniteCocompletions -b FiniteCocompletions-split
 echo ""
 
+# FpCategories
+echo "Simulate release of FpCategories"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/FpCategories" --webdir "$PWD/gh-pages/FpCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
+# creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
+#git subtree split --prefix=FpCategories -b FpCategories-split
+echo ""
+
 # FunctorCategories
 echo "Simulate release of FunctorCategories"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/FunctorCategories" --webdir "$PWD/gh-pages/FunctorCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
