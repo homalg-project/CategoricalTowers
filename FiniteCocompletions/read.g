@@ -32,6 +32,7 @@ ReadPackage( "FiniteCocompletions", "gap/CategoryOfColimitQuivers.gi");
 ReadPackage( "FiniteCocompletions", "gap/CoequalizerCompletion.gi");
 
 ##
+ReadPackage( "FiniteCocompletions", "gap/FiniteColimitCompletionWithStrictCoproducts.gi");
 
 ##
 ReadPackage( "FiniteCocompletions", "gap/AdditiveClosure.gi");

@@ -102,6 +102,13 @@
 @Subsection FinReflexiveQuivers as finite colimit completion
 @InsertChunk FinReflexiveQuiversAsFiniteColimitCompletion
 
+@Chapter The finite colimit completion of a category
+
+@Section Attributes
+@Section Constructors
+@Section GAP categories
+@Section Examples
+
 @Subsection Free elementary topos on one object
 @InsertChunk FreeElementaryToposOnOneObject
 

@@ -5,7 +5,20 @@ LoadPackage( "FunctorCategories" );
 #! true
 SkeletalFinBool := Opposite( SkeletalFinSets );
 #! Opposite( SkeletalFinSets )
-Poly := FiniteStrictCoproductCompletion( SkeletalFinBool );
+FreeTopos1 := FiniteColimitCompletionWithStrictCoproducts( SkeletalFinBool );
+#! FiniteColimitCompletionWithStrictCoproducts( Opposite( SkeletalFinSets ) )
+Display( FreeTopos1 );
+#! A CAP category with name
+#! FiniteColimitCompletionWithStrictCoproducts( Opposite( SkeletalFinSets ) ):
+#! 
+#! 26 primitive operations were used to derive 101 operations for this category
+#! which algorithmically
+#! * IsBicartesianCategory
+#! and not yet algorithmically
+#! * IsFiniteCocompleteCategory
+CheckConstructivenessOfCategory( FreeTopos1, "IsFiniteCocompleteCategory" );
+#! [ "UniversalMorphismFromCoequalizerWithGivenCoequalizer" ]
+Poly := FiniteCoproductCompletionOfUnderlyingCategory( FreeTopos1 );
 #! FiniteStrictCoproductCompletion( Opposite( SkeletalFinSets ) )
 Display( Poly );
 #! A CAP category with name
@@ -19,18 +32,5 @@ Display( Poly );
 #! * IsDistributiveCategory
 #! and furthermore mathematically
 #! * IsStrictCocartesianCategory
-FreeTopos1 := CoequalizerCompletion( Poly );
-#! CoequalizerCompletion( FiniteStrictCoproductCompletion(
-#! Opposite( SkeletalFinSets ) ) )
-Display( FreeTopos1 );
-#! A CAP category with name
-#! CoequalizerCompletion( FiniteStrictCoproductCompletion(
-#! Opposite( SkeletalFinSets ) ) ):
-#! 
-#! 26 primitive operations were used to derive 101 operations for this category
-#! which algorithmically
-#! * IsBicartesianCategory
-#! and not yet algorithmically
-#! * IsFiniteCocompleteCategory
 #! @EndExample
 #! @EndChunk
