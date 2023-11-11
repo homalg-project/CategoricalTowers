@@ -84,7 +84,7 @@
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", "&gt;= 2023.10-04" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", "&gt;= 2023.11-07", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FinBouquets;</span>
 FinBouquets
@@ -136,15 +136,15 @@ FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
 &lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ),
  SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_coequalizer_pair := CoYonedaLemmaOnObjects( F_as_presheaf );</span>
-&lt;An object in CoequalizerCompletion( FiniteStrictCoproductCompletion(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) )&gt;
+&lt;An object in FiniteColimitCompletionWithStrictCoproducts(
+FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ColimitCompletionC := CapCategory( F_as_coequalizer_pair );</span>
-CoequalizerCompletion( FiniteStrictCoproductCompletion(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) )
+FiniteColimitCompletionWithStrictCoproducts(
+FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ColimitCompletionC );</span>
 A CAP category with name
-CoequalizerCompletion( FiniteStrictCoproductCompletion(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ):
+FiniteColimitCompletionWithStrictCoproducts(
+FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ):
 
 21 primitive operations were used to derive 62 operations for this category which algorithmically
 * IsCocartesianCategory
@@ -183,20 +183,13 @@ An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V-&gt;A,t:V-&gt;A]
 FiniteStrictCoproductCompletion(
 FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) given by the above data
 
-An object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) given by the above data
-
-An object in QuotientCategory(
-PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) )
-defined by the congruence function unknown given by the above data
-
-An object in CoequalizerCompletion( FiniteStrictCoproductCompletion(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) given by the above data
+An object in FiniteColimitCompletionWithStrictCoproducts(
+FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_colimit_quiver :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  ReinterpretationOfObject( ColimitQuiversC,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">          ObjectDatum( ModelingObject( ColimitCompletionC,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  F_as_coequalizer_pair ) ) );</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          ObjectDatum( ModelingObject( ModelingCategory( ColimitCompletionC ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  ModelingObject( ColimitCompletionC,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                          F_as_coequalizer_pair ) ) ) );</span>
 &lt;An object in CategoryOfColimitQuivers(
  FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F_as_colimit_quiver );</span>

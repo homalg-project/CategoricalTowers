@@ -23,7 +23,7 @@
   [33X[0;0YConstruct the category colimit quivers in the category [3XC[103X.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", ">= 2023.10-04" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", ">= 2023.11-07", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XFinBouquets;[127X[104X
     [4X[28XFinBouquets[128X[104X
@@ -75,15 +75,15 @@
     [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ),[128X[104X
     [4X[28X SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XF_as_coequalizer_pair := CoYonedaLemmaOnObjects( F_as_presheaf );[127X[104X
-    [4X[28X<An object in CoequalizerCompletion( FiniteStrictCoproductCompletion([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>[128X[104X
+    [4X[28X<An object in FiniteColimitCompletionWithStrictCoproducts([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XColimitCompletionC := CapCategory( F_as_coequalizer_pair );[127X[104X
-    [4X[28XCoequalizerCompletion( FiniteStrictCoproductCompletion([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )[128X[104X
+    [4X[28XFiniteColimitCompletionWithStrictCoproducts([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( ColimitCompletionC );[127X[104X
     [4X[28XA CAP category with name[128X[104X
-    [4X[28XCoequalizerCompletion( FiniteStrictCoproductCompletion([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ):[128X[104X
+    [4X[28XFiniteColimitCompletionWithStrictCoproducts([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ):[128X[104X
     [4X[28X[128X[104X
     [4X[28X21 primitive operations were used to derive 62 operations for this category which algorithmically[128X[104X
     [4X[28X* IsCocartesianCategory[128X[104X
@@ -122,20 +122,13 @@
     [4X[28XFiniteStrictCoproductCompletion([128X[104X
     [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data[128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in PairOfParallelArrowsCategory( FiniteStrictCoproductCompletion([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in QuotientCategory([128X[104X
-    [4X[28XPairOfParallelArrowsCategory( FiniteStrictCoproductCompletion([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) )[128X[104X
-    [4X[28Xdefined by the congruence function unknown given by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in CoequalizerCompletion( FiniteStrictCoproductCompletion([128X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data[128X[104X
+    [4X[28XAn object in FiniteColimitCompletionWithStrictCoproducts([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27XF_as_colimit_quiver :=[127X[104X
     [4X[25X>[125X [27X  ReinterpretationOfObject( ColimitQuiversC,[127X[104X
-    [4X[25X>[125X [27X          ObjectDatum( ModelingObject( ColimitCompletionC,[127X[104X
-    [4X[25X>[125X [27X                  F_as_coequalizer_pair ) ) );[127X[104X
+    [4X[25X>[125X [27X          ObjectDatum( ModelingObject( ModelingCategory( ColimitCompletionC ),[127X[104X
+    [4X[25X>[125X [27X                  ModelingObject( ColimitCompletionC,[127X[104X
+    [4X[25X>[125X [27X                          F_as_coequalizer_pair ) ) ) );[127X[104X
     [4X[28X<An object in CategoryOfColimitQuivers([128X[104X
     [4X[28X FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( F_as_colimit_quiver );[127X[104X

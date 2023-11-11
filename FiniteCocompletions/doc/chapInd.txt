@@ -31,8 +31,8 @@
   [2XExtendFunctorToFreydCategory[102X, for IsCapFunctor 10.1-2 
   [2XExtendFunctorToStrictAdditiveClosure[102X, for IsCapFunctor 9.1-2 
   [2XFiniteColimitCompletionWithStrictCoproducts[102X, for IsCapCategory 8.2-1 
-  [2XFiniteCoproductCompletionOfUnderlyingCategory[102X, for IsFiniteColimitCompletionWithStrictCoproducts 8.1-2 
   [2XFiniteStrictCoproductCompletion[102X, for IsCapCategory 1.2-1 
+  [2XFiniteStrictCoproductCompletionOfUnderlyingCategory[102X, for IsFiniteColimitCompletionWithStrictCoproducts 8.1-2 
   [2XFiniteStrictProductCompletion[102X, for IsCapCategory 2.2-1 
   [2XFreeDistributiveCategoryWithStrictProductAndCoproducts[102X, for IsCapCategory 3.2-1 
   [2XIsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure[102X, for IsCapCategory 12.3-1 
