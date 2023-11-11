@@ -545,7 +545,7 @@ AddDerivationToCAP( IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects,
     diagram := [ Omega, Omega ];
     
     Omega2 := CartesianSquareOfSubobjectClassifier( cat );
-
+    
     Pa := PowerObject( cat, a );
     
     ## [ Exp(a, π₁): Exp(a, Ω²) ↠ Exp(a, Ω), Exp(a, π₂): Exp(a, Ω²) ↠ Exp(a, Ω) ]
@@ -672,7 +672,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfTrueWithGivenObjects,
           [ TruthMorphismOfTrue, 1 ] ],
         
   function( cat, T, a, Pa )
-
+    
     return ExponentialOnMorphismsWithGivenExponentials( cat,
                    T,
                    IdentityMorphism( cat, a ),
@@ -733,7 +733,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfAndWithGivenObjects,
     Omega2 := CartesianSquareOfSubobjectClassifier( cat );
     
     Exp_a_Omega2 := ExponentialOnObjects( cat, a, Omega2 );
-
+    
     ## Exp(a, ∧): Exp(a, Ω²) → Exp(a, Ω)
     Exp_a_mor := ExponentialOnMorphismsWithGivenExponentials( cat,
                          Exp_a_Omega2,
@@ -772,7 +772,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfOrWithGivenObjects,
     Omega2 := CartesianSquareOfSubobjectClassifier( cat );
     
     Exp_a_Omega2 := ExponentialOnObjects( cat, a, Omega2 );
-
+    
     ## Exp(a, ∨): Exp(a, Ω²) → Exp(a, Ω)
     Exp_a_mor := ExponentialOnMorphismsWithGivenExponentials( cat,
                          Exp_a_Omega2,
@@ -811,7 +811,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfImpliesWithGivenObjects,
     Omega2 := CartesianSquareOfSubobjectClassifier( cat );
     
     Exp_a_Omega2 := ExponentialOnObjects( cat, a, Omega2 );
-
+    
     ## Exp(a, ⇒): Exp(a, Ω²) → Exp(a, Ω)
     Exp_a_mor := ExponentialOnMorphismsWithGivenExponentials( cat,
                          Exp_a_Omega2,
@@ -1063,6 +1063,7 @@ AddDerivationToCAP( ExponentialOnObjects,
                        PBxC_xBxC,
                        BxC,
                        Omega );
+    
     ## P(B × C) × B
     PBxC_xB := DirectProduct( cat,
                        [ PBxC, B ] );
@@ -1090,7 +1091,7 @@ AddDerivationToCAP( ExponentialOnObjects,
                  C,
                  epsilon_,
                  PC );
-
+    
     ## {}_C: C → PC
     sing := SingletonMorphismWithGivenPowerObject( cat,
                     C,
@@ -1100,7 +1101,7 @@ AddDerivationToCAP( ExponentialOnObjects,
     sigma := ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( cat,
                      sing,
                      Omega );
-
+    
     ## v σ_C: P(B × C) × B → Ω
     v_sigma := PreCompose( cat,
                        v,
