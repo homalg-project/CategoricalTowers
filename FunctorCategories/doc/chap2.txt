@@ -635,9 +635,9 @@
   [33X[0;0YGiven   the   presheaf   category   [3XPSh[103X=[10XPSh[110X([23XC,V[123X)  return  the  "sub"category
   [10XEnrichmentSpecificFiniteStrictCoproductCompletion[110X( [23XC[123X ).[133X
   
-  [1X2.2-10 AssociatedColimitCompletionOfSourceCategory[101X
+  [1X2.2-10 AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory[101X
   
-  [33X[1;0Y[29X[2XAssociatedColimitCompletionOfSourceCategory[102X( [3XPSh[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XAssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory[102X( [3XPSh[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
   [33X[0;0YGiven  the  presheaf  category  [3XPSh[103X=[10XPSh[110X([23XC,V[123X)  return  the  ambient  category
@@ -1056,9 +1056,9 @@
     [4X[25Xgap>[125X [27XIsOne( PreCompose( inv, iso ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XcoYoG := CoYonedaLemmaOnObjects( G );[127X[104X
-    [4X[28X<An object in CoequalizerCompletion( FiniteStrictCoproductCompletion([128X[104X
+    [4X[28X<An object in FiniteColimitCompletionWithStrictCoproducts([128X[104X
     [4X[28X FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
-    [4X[28X / [ x*x*x*x*x*x*x = x*x*x ] ) )>[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x = x*x*x ] )>[128X[104X
     [4X[25Xgap>[125X [27Xsec := SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( G );[127X[104X
     [4X[28X<A split monomorphism in FiniteStrictCoproductCompletion([128X[104X
     [4X[28X FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
@@ -1174,9 +1174,9 @@
     [4X[25Xgap>[125X [27XIsOne( PreCompose( inv, iso ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XcoYoG := CoYonedaLemmaOnObjects( G );[127X[104X
-    [4X[28X<An object in CoequalizerCompletion( FiniteStrictCoproductCompletion([128X[104X
+    [4X[28X<An object in FiniteColimitCompletionWithStrictCoproducts([128X[104X
     [4X[28X FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
-    [4X[28X / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ] ) )>[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ] )>[128X[104X
     [4X[25Xgap>[125X [27Xsec := SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( G );[127X[104X
     [4X[28X<A split monomorphism in FiniteStrictCoproductCompletion([128X[104X
     [4X[28X FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
