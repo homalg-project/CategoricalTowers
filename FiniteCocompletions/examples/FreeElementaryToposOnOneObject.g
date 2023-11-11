@@ -18,7 +18,7 @@ Display( FreeTopos1 );
 #! * IsFiniteCocompleteCategory
 CheckConstructivenessOfCategory( FreeTopos1, "IsFiniteCocompleteCategory" );
 #! [ "UniversalMorphismFromCoequalizerWithGivenCoequalizer" ]
-Poly := FiniteCoproductCompletionOfUnderlyingCategory( FreeTopos1 );
+Poly := FiniteStrictCoproductCompletionOfUnderlyingCategory( FreeTopos1 );
 #! FiniteStrictCoproductCompletion( Opposite( SkeletalFinSets ) )
 Display( Poly );
 #! A CAP category with name

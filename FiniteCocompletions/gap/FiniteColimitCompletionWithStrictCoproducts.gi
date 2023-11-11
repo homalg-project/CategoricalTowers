@@ -18,7 +18,7 @@ InstallMethod( FiniteColimitCompletionWithStrictCoproducts,
           ColimitCompletion;
     
     ## building the categorical tower:
-    UC := FiniteStrictCoproductCompletion( C : FinalizeCategory := true );
+    UC := EnrichmentSpecificFiniteStrictCoproductCompletion( C : FinalizeCategory := true );
     
     CoequalizerPairs := CoequalizerCompletion( UC : FinalizeCategory := true );
     
@@ -144,11 +144,11 @@ InstallMethod( FiniteColimitCompletionWithStrictCoproducts,
     fi;
     
     SetUnderlyingCategory( ColimitCompletion, C );
-    SetFiniteCoproductCompletionOfUnderlyingCategory( ColimitCompletion, UC );
+    SetFiniteStrictCoproductCompletionOfUnderlyingCategory( ColimitCompletion, UC );
     
     Append( ColimitCompletion!.compiler_hints.category_attribute_names,
             [ "UnderlyingCategory",
-              "FiniteCoproductCompletionOfUnderlyingCategory",
+              "FiniteStrictCoproductCompletionOfUnderlyingCategory",
               ] );
     
     if ValueOption( "no_precompiled_code" ) <> true then
@@ -175,7 +175,7 @@ InstallMethod( AsColimitCompletionObject,
         Error( "the 2nd argument `object` does not lie in the category UnderlyingCategory( C_hat )\n" );
     fi;
     
-    UC := FiniteCoproductCompletionOfUnderlyingCategory( C_hat );
+    UC := FiniteStrictCoproductCompletionOfUnderlyingCategory( C_hat );
     
     I := InitialObject( UC );
     
@@ -205,7 +205,7 @@ InstallMethod( AsColimitCompletionMorphism,
         Error( "the 2nd argument `morphism` does not lie in the category UnderlyingCategory( C_hat )\n" );
     fi;
     
-    UC := FiniteCoproductCompletionOfUnderlyingCategory( C_hat );
+    UC := FiniteStrictCoproductCompletionOfUnderlyingCategory( C_hat );
     
     id := IdentityMorphism( UC, InitialObject( UC ) );
     

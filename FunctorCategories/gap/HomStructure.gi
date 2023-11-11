@@ -47,15 +47,13 @@ InstallMethodForCompilerForCAP( ExternalHomOnMorphismsEqualizerFunctorialDataUsi
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, eta, rho )
-    local coequalizer_completion_UC, quotient_coequalizer_pairs_UC, UC, F, G,
-          eta_coequalizer_pair_morphism, eta_coequalizer_pair_as_presheaf_morphism, eta_coequalizer_pair_as_presheaf_morphism_datum,
+    local colimit_completion_C, UC, F, G,
+          eta_coequalizer_pair_morphism, eta_coequalizer_pair_as_presheaf_morphism_datum,
           S, eta_V_S, F_data, F_V, F_V_data, diagram_F_V_S, T, diagram_F_V_T, D, F_V_rho;
     
-    coequalizer_completion_UC := AssociatedColimitCompletionOfSourceCategory( PSh );
+    colimit_completion_C := AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    quotient_coequalizer_pairs_UC := ModelingCategory( coequalizer_completion_UC );
-    
-    UC := UnderlyingCategory( coequalizer_completion_UC );
+    UC := FiniteStrictCoproductCompletionOfUnderlyingCategory( colimit_completion_C );
     
     F := Source( eta );
     G := Target( eta );
@@ -65,16 +63,11 @@ InstallMethodForCompilerForCAP( ExternalHomOnMorphismsEqualizerFunctorialDataUsi
                                              eta,
                                              CoYonedaLemmaOnObjects( PSh, G ) );
     
-    eta_coequalizer_pair_as_presheaf_morphism :=
-      ModelingMorphism( coequalizer_completion_UC, eta_coequalizer_pair_morphism );
-    
-    eta_coequalizer_pair_as_presheaf_morphism_datum :=
-      MorphismDatum( UnderlyingCategory( quotient_coequalizer_pairs_UC ),
-              MorphismDatum( quotient_coequalizer_pairs_UC, eta_coequalizer_pair_as_presheaf_morphism ) )[1];
+    eta_coequalizer_pair_as_presheaf_morphism_datum := MorphismDatum( colimit_completion_C, eta_coequalizer_pair_morphism );
     
     S := Source( rho );
     
-    eta_V_S := ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion( PSh, S, eta_coequalizer_pair_as_presheaf_morphism_datum );
+    eta_V_S := ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion( PSh, S, eta_coequalizer_pair_as_presheaf_morphism_datum[1] );
     
     F_data := CoequalizerDataOfPreSheafUsingCoYonedaLemma( PSh, F );
     

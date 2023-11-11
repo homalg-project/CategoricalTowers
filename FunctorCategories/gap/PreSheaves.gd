@@ -156,10 +156,10 @@ end );
 #!  the ambient category <C>CoequalizerCompletion</C>( <C>AssociatedFiniteStrictCoproductCompletionOfSourceCategory</C>( <A>PSh</A> ) ).
 #! @Arguments PSh
 #! @Returns a &CAP; category
-DeclareAttribute( "AssociatedColimitCompletionOfSourceCategory",
+DeclareAttribute( "AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory",
         IsPreSheafCategory );
 
-CapJitAddTypeSignature( "AssociatedColimitCompletionOfSourceCategory", [ IsPreSheafCategory ],
+CapJitAddTypeSignature( "AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory", [ IsPreSheafCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( CoequalizerCompletion( AssociatedFiniteStrictCoproductCompletionOfSourceCategory( input_types[1].category ) ) );

@@ -99,9 +99,9 @@ IsOne( PreCompose( iso, inv ) );
 IsOne( PreCompose( inv, iso ) );
 #! true
 coYoG := CoYonedaLemmaOnObjects( G );
-#! <An object in CoequalizerCompletion( FiniteStrictCoproductCompletion(
+#! <An object in FiniteColimitCompletionWithStrictCoproducts(
 #!  FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
-#!  / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ] ) )>
+#!  / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ] )>
 sec := SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( G );
 #! <A split monomorphism in FiniteStrictCoproductCompletion(
 #!  FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )

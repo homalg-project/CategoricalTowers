@@ -1,7 +1,7 @@
 #! @BeginChunk CharacteristicMatrix
 
 #! @Example
-LoadPackage( "FunctorCategories", ">= 2023.10-04" );
+LoadPackage( "FunctorCategories", ">= 2023.11-07", false );
 #! true
 q := RightQuiver( "q(o)[x:o->o]" );
 #! q(o)[x:o->o]
@@ -65,8 +65,8 @@ Display( Mphi );
 #! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations,
 #! Rows( Q ) ) given by the above data
 Mphi_as_coequqlizer_pair := CoYonedaLemmaOnObjects( Mphi );
-#! <An object in CoequalizerCompletion( AdditiveClosure(
-#!  Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) )>
+#! <An object in FiniteColimitCompletionWithStrictCoproducts(
+#!  Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations )>
 Display( Mphi_as_coequqlizer_pair );
 #! Image of <(V)>:
 #! A formal direct sum consisting of 3 objects.
@@ -110,16 +110,8 @@ Display( Mphi_as_coequqlizer_pair );
 #! AdditiveClosure( Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) /
 #! relations ) ) given by the above data
 #! 
-#! An object in PairOfParallelArrowsCategory( AdditiveClosure(
-#! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) )
-#! given by the above data
-#! 
-#! An object in QuotientCategory( PairOfParallelArrowsCategory( AdditiveClosure(
-#! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) ) )
-#! defined by the congruence function unknown given by the above data
-#! 
-#! An object in CoequalizerCompletion( AdditiveClosure(
-#! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations ) )
+#! An object in FiniteColimitCompletionWithStrictCoproducts(
+#! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations )
 #! given by the above data
 phi_in_additive_closure :=
   TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure( o, phi );
