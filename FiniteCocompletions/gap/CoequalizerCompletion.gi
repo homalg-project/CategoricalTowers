@@ -330,7 +330,7 @@ end );
 
 ##
 InstallMethod( AsCoequalizerCompletionObject,
-        "for a coequalizer closure category and a category object",
+        "for a coequalizer completion category and a category object",
         [ IsCoequalizerCompletion, IsCapCategoryObject ],
         
   function( Coeq, object )
@@ -353,7 +353,7 @@ end );
 
 ##
 InstallMethod( AsCoequalizerCompletionMorphism,
-        "for a coequalizer closure category and a category morphism",
+        "for a coequalizer completion category and a category morphism",
         [ IsCoequalizerCompletion, IsCapCategoryMorphism ],
         
   function( Coeq, morphism )
@@ -376,7 +376,7 @@ end );
 
 ##
 InstallMethod( \.,
-        "for a coequalizer closure category and a positive integer",
+        "for a coequalizer completion category and a positive integer",
         [ IsCoequalizerCompletion, IsPosInt ],
         
   function( Coeq, string_as_int )

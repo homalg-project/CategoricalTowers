@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter The coequalizer closure of a category
+#! @Chapter The coequalizer completion of a category
 
 ####################################
 #
@@ -13,22 +13,22 @@
 ####################################
 
 #! @Description
-#!  The &GAP; category of categories of coequalizer pairs.
+#!  The &GAP; category of coequalizer completions of categories.
 DeclareCategory( "IsCoequalizerCompletion",
         IsCapCategory );
 
 #! @Description
-#!  The &GAP; category of cells in the coequalizer closure of a category.
+#!  The &GAP; category of cells in the coequalizer completion of a category.
 DeclareCategory( "IsCellInCoequalizerCompletion",
         IsCapCategoryCell );
 
 #! @Description
-#!  The &GAP; category of objects in the coequalizer closure of a category.
+#!  The &GAP; category of objects in the coequalizer completion of a category.
 DeclareCategory( "IsObjectInCoequalizerCompletion",
         IsCellInCoequalizerCompletion and IsCapCategoryObject  );
 
 #! @Description
-#!  The &GAP; category of morphisms in the coequalizer closure of a category.
+#!  The &GAP; category of morphisms in the coequalizer completion of a category.
 DeclareCategory( "IsMorphismInCoequalizerCompletion",
         IsCellInCoequalizerCompletion and IsCapCategoryMorphism );
 
@@ -99,7 +99,7 @@ end );
 ####################################
 
 #! @Description
-#!  Return the finite coequalizer closure of the coartesian category <A>cat</A>.
+#!  Return the finite coequalizer completion of the coartesian category <A>cat</A>.
 #! @Arguments cat
 DeclareAttribute( "CoequalizerCompletion",
         IsCapCategory );
