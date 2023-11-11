@@ -585,6 +585,88 @@ end );
 ## ⊤_a: 𝟙 ↪ Pa
 AddDerivationToCAP( RelativeTruthMorphismOfTrueWithGivenObjects,
         "",
+        [ [ PreCompose, 2 ],
+          [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1 ],
+          [ TruthMorphismOfTrue, 1 ],
+          [ DirectProduct, 1 ],
+          [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 1 ],
+          [ PTransposeMorphismWithGivenRange, 1 ] ],
+        
+  function( cat, T, a, Pa )
+    local true_a, T_a, Txa;
+    
+    ## true_a: a → 𝟙 → Ω
+    true_a := PreCompose( cat,
+                      ## a → 𝟙
+                      UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat,
+                              a,
+                              T ),
+                      ## 𝟙 → Ω
+                      TruthMorphismOfTrue( cat ) );
+    
+    T_a := [ T, a ];
+    
+    ## 𝟙 × a
+    Txa := DirectProduct( cat, T_a );
+    
+    ## PTranspose( 𝟙 × a → a → 𝟙 → Ω ) = 𝟙 ↪ Pa
+    return PTransposeMorphismWithGivenRange( cat,
+                   T,
+                   a,
+                   PreCompose( cat,
+                           ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
+                                   T_a,
+                                   2,
+                                   Txa ),
+                   true_a ),
+                   Pa );
+    
+end );
+
+## ⊥_a: 𝟙 ↪ Pa
+AddDerivationToCAP( RelativeTruthMorphismOfFalseWithGivenObjects,
+        "",
+        [ [ PreCompose, 2 ],
+          [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1 ],
+          [ TruthMorphismOfFalse, 1 ],
+          [ DirectProduct, 1 ],
+          [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 1 ],
+          [ PTransposeMorphismWithGivenRange, 1 ] ],
+        
+  function( cat, T, a, Pa )
+    local false_a, T_a, Txa;
+    
+    ## false_a: a → 𝟙 → Ω
+    false_a := PreCompose( cat,
+                      ## a → 𝟙
+                      UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat,
+                              a,
+                              T ),
+                      ## 𝟙 → Ω
+                      TruthMorphismOfFalse( cat ) );
+    
+    T_a := [ T, a ];
+    
+    ## 𝟙 × a
+    Txa := DirectProduct( cat, T_a );
+    
+    ## PTranspose( 𝟙 × a → a → 𝟙 → Ω ) = 𝟙 ↪ Pa
+    return PTransposeMorphismWithGivenRange( cat,
+                   T,
+                   a,
+                   PreCompose( cat,
+                           ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
+                                   T_a,
+                                   2,
+                                   Txa ),
+                   false_a ),
+                   Pa );
+    
+end );
+
+## ⊤_a: 𝟙 ↪ Pa
+AddDerivationToCAP( RelativeTruthMorphismOfTrueWithGivenObjects,
+        "",
         [ [ ExponentialOnMorphismsWithGivenExponentials, 1 ],
           [ IdentityMorphism, 1 ],
           [ TruthMorphismOfTrue, 1 ] ],
