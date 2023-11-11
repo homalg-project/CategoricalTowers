@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (Algebroids) - Chapter 10: Bialgebroids as algebroids with more structure</title>
+<title>GAP (Algebroids) - Chapter 10: Tools</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -15,124 +15,88 @@
 <body class="chap10"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap9.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap11.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap10_mj.html">[MathJax on]</a></p>
-<p><a id="X7EC59A467F298100" name="X7EC59A467F298100"></a></p>
-<div class="ChapSects"><a href="chap10.html#X7EC59A467F298100">10 <span class="Heading">Bialgebroids as algebroids with more structure</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X871597447BB998A1">10.1 <span class="Heading">Properties</span></a>
+<p><a id="X8508AEF8845565A1" name="X8508AEF8845565A1"></a></p>
+<div class="ChapSects"><a href="chap10.html#X8508AEF8845565A1">10 <span class="Heading">Tools</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X839DC59F790B90DE">10.1 <span class="Heading">Tools for quivers</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X87F26A8682A421A4">10.1-1 IsCocommutative</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7FF98195838EFECB">10.1-2 IsHopfAlgebroid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7ECD9D7C7A4B626E">10.1-1 DefiningTripleOfAQuiver</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X7C701DBF7BAE649A">10.2 <span class="Heading">Attributes</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X7C0B9C8F798E9D99">10.2 <span class="Heading">Tools for categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X793334367C093D74">10.2-1 Counit</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X831A0AF77DD45837">10.2-2 Comultiplication</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X86EC0F0A78ECBC10">10.3 <span class="Heading">Constructors</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X8322D940826EDE3A">10.3-1 AddBialgebroidStructure</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X8586BB507BE0A1B2">10.3-2 AddAntipode</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X7D03633A7D98026B">10.4 <span class="Heading">GAP categories</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7CE3803D8364294F">10.4-1 IsBialgebroid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X8425B40781737758">10.2-1 NerveTruncatedInDegree2Data</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X83BB7A397CA3C0D8">10.2-2 IndicesOfGeneratingMorphismsFromHomStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7D5912F38287ADBA">10.2-3 OppositeFiniteCategory</a></span>
 </div></div>
 </div>
 
-<h3>10 <span class="Heading">Bialgebroids as algebroids with more structure</span></h3>
+<h3>10 <span class="Heading">Tools</span></h3>
 
-<p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
+<p><a id="X839DC59F790B90DE" name="X839DC59F790B90DE"></a></p>
 
-<h4>10.1 <span class="Heading">Properties</span></h4>
+<h4>10.1 <span class="Heading">Tools for quivers</span></h4>
 
-<p><a id="X87F26A8682A421A4" name="X87F26A8682A421A4"></a></p>
+<p><a id="X7ECD9D7C7A4B626E" name="X7ECD9D7C7A4B626E"></a></p>
 
-<h5>10.1-1 IsCocommutative</h5>
+<h5>10.1-1 DefiningTripleOfAQuiver</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCocommutative</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningTripleOfAQuiver</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a triple</p>
 
-<p>Check whether the bialgebroid <var class="Arg">B</var> is cocommutative.</p>
+<p>Return a triple consisting of the number of vertices of the quiver <var class="Arg">q</var>, the number of arrows of the quiver <var class="Arg">q</var>, and a list of pairs of integers encoding the arrows of <var class="Arg">q</var>.</p>
 
-<p><a id="X7FF98195838EFECB" name="X7FF98195838EFECB"></a></p>
 
-<h5>10.1-2 IsHopfAlgebroid</h5>
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(0..4)[a:0-&gt;0,s:0-&gt;1,t:0-&gt;1,m:3-&gt;0]" );</span>
+q(0,1,2,3,4)[a:0-&gt;0,s:0-&gt;1,t:0-&gt;1,m:3-&gt;0]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DefiningTripleOfAQuiver( q );</span>
+[ 5, 4, [ [ 0, 0 ], [ 0, 1 ], [ 0, 1 ], [ 3, 0 ] ] ]
+</pre></div>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsHopfAlgebroid</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
+<p><a id="X7C0B9C8F798E9D99" name="X7C0B9C8F798E9D99"></a></p>
 
-<p>Check whether the antipode of <var class="Arg">B</var> is actually an antipode.</p>
+<h4>10.2 <span class="Heading">Tools for categories</span></h4>
 
-<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+<p><a id="X8425B40781737758" name="X8425B40781737758"></a></p>
 
-<h4>10.2 <span class="Heading">Attributes</span></h4>
+<h5>10.2-1 NerveTruncatedInDegree2Data</h5>
 
-<p><a id="X793334367C093D74" name="X793334367C093D74"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NerveTruncatedInDegree2Data</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a pair consisting of a triple and an 8-tuple</p>
 
-<h5>10.2-1 Counit</h5>
+<p>The nerve data of the category <var class="Arg">C</var>.</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Counit</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+<p><a id="X83BB7A397CA3C0D8" name="X83BB7A397CA3C0D8"></a></p>
 
-<p>The counit of the bialgebroid <var class="Arg">B</var>.</p>
+<h5>10.2-2 IndicesOfGeneratingMorphismsFromHomStructure</h5>
 
-<p><a id="X831A0AF77DD45837" name="X831A0AF77DD45837"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IndicesOfGeneratingMorphismsFromHomStructure</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of integers</p>
 
-<h5>10.2-2 Comultiplication</h5>
+<p>The normalized indices of the generating morphisms of the finite category <var class="Arg">C</var>.</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Comultiplication</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+<p><a id="X7D5912F38287ADBA" name="X7D5912F38287ADBA"></a></p>
 
-<p>The comultiplication of the bialgebroid <var class="Arg">B</var>.</p>
+<h5>10.2-3 OppositeFiniteCategory</h5>
 
-<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
-
-<h4>10.3 <span class="Heading">Constructors</span></h4>
-
-<p><a id="X8322D940826EDE3A" name="X8322D940826EDE3A"></a></p>
-
-<h5>10.3-1 AddBialgebroidStructure</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddBialgebroidStructure</code>( <var class="Arg">A</var>, <var class="Arg">counit</var>, <var class="Arg">comult</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OppositeFiniteCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<p>Add to the algebroid <var class="Arg">A</var> a counit and a comultiplication using the defining records <var class="Arg">counit</var> and <var class="Arg">comult</var>, respectively.</p>
-
-<p><a id="X8586BB507BE0A1B2" name="X8586BB507BE0A1B2"></a></p>
-
-<h5>10.3-2 AddAntipode</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAntipode</code>( <var class="Arg">B</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
-
-<p>Add to the bialgebroid <var class="Arg">B</var> an antipode <var class="Arg">S</var>.</p>
-
-<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
-
-<h4>10.4 <span class="Heading">GAP categories</span></h4>
-
-<p><a id="X7CE3803D8364294F" name="X7CE3803D8364294F"></a></p>
-
-<h5>10.4-1 IsBialgebroid</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsBialgebroid</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of bialgebroids.</p>
+<p>The opposite category of a finite category <var class="Arg">C</var>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap9.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap11.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

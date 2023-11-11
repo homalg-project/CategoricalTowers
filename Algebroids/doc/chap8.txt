@@ -1,608 +1,65 @@
   
-  [1X8 [33X[0;0YAlgebroids from data tables[133X[101X
+  [1X8 [33X[0;0YBialgebroids as algebroids with more structure[133X[101X
   
   
   [1X8.1 [33X[0;0YProperties[133X[101X
   
-  [1X8.1-1 IsAdmissibleAlgebroid[101X
+  [1X8.1-1 IsCocommutative[101X
   
-  [33X[1;0Y[29X[2XIsAdmissibleAlgebroid[102X( [3XB[103X, [3Xi[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
+  [33X[1;0Y[29X[2XIsCocommutative[102X( [3XB[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
   
-  [33X[0;0YThe  arguments are an algebroid [3XB[103X linear over a field [23Xk[123X. This output is [10Xtrue[110X
-  iff  the  following  two  conditions  hold:  (1)  the  union of all identity
-  morphisms  and  all  generating  morphism  remain  linear independent in the
-  quotient   category   [23XC/\mathfrak{m}^2[123X;   (2)   [23X\mathfrak{m}^i=0[123X   for  some
-  [23Xi\in\mathbb{N}[123X, where [23X\mathfrak{m}^i=[123X[10XPowerOfArrowIdeal[110X([3XB[103X,[23Xi[123X).[133X
+  [33X[0;0YCheck whether the bialgebroid [3XB[103X is cocommutative.[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(0,1,2)[x:0->1,y:1->2,z:0->2]" );[127X[104X
-    [4X[28Xq(0,1,2)[x:0->1,y:1->2,z:0->2][128X[104X
-    [4X[25Xgap>[125X [27XF := FreeCategory( q );[127X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(0,1,2)[x:0->1,y:1->2,z:0->2]" ) )[128X[104X
-    [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals( );[127X[104X
-    [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XkF := k[F];[127X[104X
-    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(0,1,2)[x:0->1,y:1->2,z:0->2]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XA := kF / [ kF.xy - kF.z ];[127X[104X
-    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(0,1,2)[x:0->1,y:1->2,z:0->2]" ) ) )[128X[104X
-    [4X[28X/ relations[128X[104X
-    [4X[25Xgap>[125X [27XB := AlgebroidFromDataTables( A );[127X[104X
-    [4X[28XQ-algebroid( {0,1,2}[x:0-≻1,y:1-≻2,z:0-≻2] ) defined by 3 objects[128X[104X
-    [4X[28Xand 3 generating morphisms[128X[104X
-    [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( B );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(*)[x:*->*,y:*->*]" );[127X[104X
-    [4X[28Xq(*)[x:*->*,y:*->*][128X[104X
-    [4X[25Xgap>[125X [27XF := FreeCategory( q );[127X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(*)[x:*->*,y:*->*]" ) )[128X[104X
-    [4X[25Xgap>[125X [27XkF := k[F];[127X[104X
-    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(*)[x:*->*,y:*->*]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XA := kF / [ kF.xy - kF.yx, kF.x^3, kF.y^3 ];[127X[104X
-    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(*)[x:*->*,y:*->*]" ) ) ) / relations[128X[104X
-    [4X[25Xgap>[125X [27XB := AlgebroidFromDataTables( A );[127X[104X
-    [4X[28XQ-algebroid( {*}[x:*-≻*,y:*-≻*] ) defined by 1 object and 2 generating morphisms[128X[104X
-    [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( B );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XA := kF / [ kF.xy - kF.yx, kF.x^3 - kF.x, kF.y^3 ];[127X[104X
-    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(*)[x:*->*,y:*->*]" ) ) ) / relations[128X[104X
-    [4X[25Xgap>[125X [27XB := AlgebroidFromDataTables( A );[127X[104X
-    [4X[28XQ-algebroid( {*}[x:*-≻*,y:*-≻*] ) defined by 1 object and 2 generating morphisms[128X[104X
-    [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( B );[127X[104X
-    [4X[28Xfalse[128X[104X
-  [4X[32X[104X
+  [1X8.1-2 IsHopfAlgebroid[101X
+  
+  [33X[1;0Y[29X[2XIsHopfAlgebroid[102X( [3XB[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YCheck whether the antipode of [3XB[103X is actually an antipode.[133X
   
   
   [1X8.2 [33X[0;0YAttributes[133X[101X
   
-  [1X8.2-1 DataTablesOfCategory[101X
+  [1X8.2-1 Counit[101X
   
-  [33X[1;0Y[29X[2XDataTablesOfCategory[102X( [3XA[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCounit[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
   
-  [33X[0;0YThe   argument   is   a  [23Xk[123X-algebroid  [3XA[103X  defined  by  a  finite  dimensional
-  quiver-algebra.  This  operation  extracts a data-tables record from [3XA[103X which
-  can be used to construct an algebroid [23XB[123X, that is isomorphic to [3XA[103X.[133X
+  [33X[0;0YThe counit of the bialgebroid [3XB[103X.[133X
   
-  [1X8.2-2 IsomorphismOntoAlgebroidFromDataTables[101X
+  [1X8.2-2 Comultiplication[101X
   
-  [33X[1;0Y[29X[2XIsomorphismOntoAlgebroidFromDataTables[102X( [3XA[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XComultiplication[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
   
-  [33X[0;0YThe   arguments   is  a  [23Xk[123X-algebroid  [23XA[123X  defined  by  a  finite  dimensional
-  quiver-algebra.  The  output  is  an  isomorphism  functor  from  [3XA[103X onto the
-  isomorphic [23Xk[123X-algebroid [23XB:=[123X[10XAlgebroidFromDataTables[110X([10XDataTablesOfCategory[110X([3XA[103X)).[133X
-  
-  [1X8.2-3 IsomorphismFromAlgebroidFromDataTables[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromAlgebroidFromDataTables[102X( [3XA[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
-  
-  [33X[0;0YThe   arguments   is  a  [23Xk[123X-algebroid  [23XA[123X  defined  by  a  finite  dimensional
-  quiver-algebra.  The  output  is  an  isomorphism  functor  Onto  [3XA[103X from the
-  isomorphic [23Xk[123X-algebroid [23XB:=[123X[10XAlgebroidFromDataTables[110X([10XDataTablesOfCategory[110X([3XA[103X)).[133X
-  
-  [1X8.2-4 QuotientCategory[101X
-  
-  [33X[1;0Y[29X[2XQuotientCategory[102X( [3XB[103X, [3XI[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya record[133X
-  
-  [33X[0;0YThe  arguments are an algebroid [23XB[123X and a list [3XI[103X of morphisms in [23XB[123X. The output
-  is  the  quotient  category [23XB/I[123X of [23XB[123X modulo the two-sided ideal of morphisms
-  generated by [3XI[103X.[133X
-  
-  [1X8.2-5 EnhancedDataTables[101X
-  
-  [33X[1;0Y[29X[2XEnhancedDataTables[102X( [3XB[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya record[133X
-  
-  [33X[0;0YThe data tables used to define [23XB[123X enhanced with further key values.[133X
-  
-  [1X8.2-6 SetOfObjects[101X
-  
-  [33X[1;0Y[29X[2XSetOfObjects[102X( [3XB[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X category objects[133X
-  
-  [33X[0;0YThe  argument  is an algebroid [3XB[103X. The output is the finite set of objects of
-  [3XB[103X.[133X
-  
-  [1X8.2-7 SetOfGeneratingMorphisms[101X
-  
-  [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XB[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of a [5XCAP[105X category morphisms[133X
-  
-  [33X[0;0YThe  argument  is an algebroid [3XB[103X. The output is the finite set of generating
-  morphisms of [3XB[103X.[133X
-  
-  [1X8.2-8 SetOfBasesOfExternalHoms[101X
-  
-  [33X[1;0Y[29X[2XSetOfBasesOfExternalHoms[102X( [3XB[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of lists[133X
-  
-  [33X[0;0YThe  argument  is  an  algebroid  [3XB[103X.  The  output is a list of lists [23XL[123X where
-  [23XL[i][j][123X  is  the basis of the external hom [23X\mathrm{Hom}_B(u,v)[123X where [23Xu[123X and [23Xv[123X
-  are [23Xi[123X'th resp. [23Xj[123X'th objects in [23XB[123X.[133X
-  
-  [1X8.2-9 PowerOfArrowIdeal[101X
-  
-  [33X[1;0Y[29X[2XPowerOfArrowIdeal[102X( [3XB[103X, [3Xi[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YThe arguments are an algebroid [3XB[103X and a non-negative integer [3Xi[103X. The output is
-  a  generating  set  for  [23X\mathfrak{m}^i[123X  where  [23X\mathfrak{m}[123X  is  the  ideal
-  generated by all generating morphisms in [3XB[103X.[133X
+  [33X[0;0YThe comultiplication of the bialgebroid [3XB[103X.[133X
   
   
-  [1X8.3 [33X[0;0YOperations[133X[101X
+  [1X8.3 [33X[0;0YConstructors[133X[101X
   
-  [1X8.3-1 AssignSetOfObjects[101X
+  [1X8.3-1 AddBialgebroidStructure[101X
   
-  [33X[1;0Y[29X[2XAssignSetOfObjects[102X( [3XB[103X[, [3Xoptional_string[103X] ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  an  algebroid  [3XB[103X  and  a  string  [3Xoptional_string[103X. This
-  operation  assigns  the  objects  of  [3XB[103X  to  global  variables. Names of the
-  variables  are  the  concatenation  of  the  labels of the objects of [3XB[103X with
-  [3Xoptional_string[103X. The default value of [3Xoptional_string[103X is the empty string.[133X
-  
-  [1X8.3-2 AssignSetOfGeneratingMorphisms[101X
-  
-  [33X[1;0Y[29X[2XAssignSetOfGeneratingMorphisms[102X( [3XB[103X[, [3Xoptional_string[103X] ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  an  algebroid  [3XB[103X  and  a  string  [3Xoptional_string[103X. This
-  operation  assigns  the generating morphisms of [3XB[103X to global variables. Names
-  of  the  variables  are  the  concatenation  of the labels of the generating
-  morphisms of [3XB[103X with [3Xoptional_string[103X. The default value of [3Xoptional_string[103X is
-  the empty string.[133X
-  
-  [1X8.3-3 CreateObject[101X
-  
-  [33X[1;0Y[29X[2XCreateObject[102X( [3XB[103X, [3Xi[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category object[133X
-  
-  [33X[0;0YThe  arguments  are  an algebroid [3XB[103X and an integer [3Xi[103X. The output is the [3Xi[103X'th
-  object in [10XSetOfObjects[110X([3XB[103X).[133X
-  
-  [1X8.3-4 ObjectIndex[101X
-  
-  [33X[1;0Y[29X[2XObjectIndex[102X( [3Xv[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Yan integer[133X
-  
-  [33X[0;0YThe  argument is an object [3Xv[103X in an algebroid [3XB[103X. The output is the index of [3Xv[103X
-  in [10XSetOfObjects[110X([3XB[103X).[133X
-  
-  [1X8.3-5 CreateMorphism[101X
-  
-  [33X[1;0Y[29X[2XCreateMorphism[102X( [3XB[103X, [3Xu[103X, [3Xcoeffs[103X, [3Xv[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category morphism[133X
-  
-  [33X[0;0YThe  arguments  are  an algebroid [3XB[103X (over a commutative ring [23Xk[123X), two objects
-  [3Xu,v[103X    in    [3XB[103X    and   list   [3Xcoeffs[103X   of   elements   in   [23Xk[123X   of   length
-  [23X\mathrm{dim}_k~\mathrm{Hom}_{B}(u,v)[123X. The output is the [23Xk[123X-linear combination
-  of  the  basis  elements  of  [23X\mathrm{Hom}_B(u,v)[123X with the coefficients-list
-  [3Xcoeffs[103X.[133X
-  
-  [1X8.3-6 MorphismCoefficients[101X
-  
-  [33X[1;0Y[29X[2XMorphismCoefficients[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category morphism[133X
-  
-  [33X[0;0YThe  argument  is a morphism [3Xalpha[103X in an algebroid [3XB[103X. The output is the list
-  of  coefficients  of  [3Xalpha[103X  with  respect  to  the  basis  of  external hom
-  [23X\mathrm{Hom}_B(u,v)[123X where [23Xu[123X and [23Xv[123X are source resp. range of [3Xalpha[103X.[133X
-  
-  [1X8.3-7 MorphismSupport[101X
-  
-  [33X[1;0Y[29X[2XMorphismSupport[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category morphism[133X
-  
-  [33X[0;0YThe  argument  is a morphism [3Xalpha[103X in an algebroid [3XB[103X. The output is the list
-  of indices of the nonzero entries of [10XMorphismCoefficients[110X([3Xalpha[103X).[133X
-  
-  [1X8.3-8 DecompositionOfMorphismInAlgebroid[101X
-  
-  [33X[1;0Y[29X[2XDecompositionOfMorphismInAlgebroid[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of pairs[133X
-  
-  [33X[0;0YThe  argument is a morphism [3Xalpha[103X in an algebroid [23XB[123X (over a commutative ring
-  [23Xk[123X).  The output is a list of pairs [23XL=[[c_1,l_1],..,[c_n,l_n]][123X where for each
-  [23Xi=1,\dots,n[123X,  [23Xc_i[123X  is  a  non-zero  element  in  [23Xk[123X  and [23Xl_i[123X is either a list
-  containing  an  identity  morphism  or  a list of (precomposable) generating
-  morphisms              such             that             [3Xalpha[103X             =
-  [23Xc_1\cdot\mathrm{PreCompose}(l_1)+..+c_n\cdot\mathrm{PreCompose}(l_n)[123X.[133X
-  
-  [1X8.3-9 OppositeAlgebroid[101X
-  
-  [33X[1;0Y[29X[2XOppositeAlgebroid[102X( [3XB[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XAddBialgebroidStructure[102X( [3XA[103X, [3Xcounit[103X, [3Xcomult[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YThe  argument  is  an  algebroid  [3XB[103X.  The  ouput  is  the opposite algebroid
-  [23XB^{\mathrm{op}}[123X constructed as an algebroid from data tables.[133X
+  [33X[0;0YAdd  to  the  algebroid [3XA[103X a counit and a comultiplication using the defining
+  records [3Xcounit[103X and [3Xcomult[103X, respectively.[133X
   
-  [1X8.3-10 TensorProductOfAlgebroids[101X
+  [1X8.3-2 AddAntipode[101X
   
-  [33X[1;0Y[29X[2XTensorProductOfAlgebroids[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddAntipode[102X( [3XB[103X, [3XS[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YThe  arguments  are two algebroids [3XA[103X and [3XB[103X. The output is the tensor product
-  algebroid [3XA[103X[23X\otimes[123X[3XB[103X.[133X
-  
-  [1X8.3-11 \*[101X
-  
-  [33X[1;0Y[29X[2X\*[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
-  
-  [33X[0;0YDelegates to [10XTensorProductOfAlgebroids[110X([3XA[103X,[3XB[103X).[133X
-  
-  [1X8.3-12 ElementaryTensor[101X
-  
-  [33X[1;0Y[29X[2XElementaryTensor[102X( [3Xa[103X, [3Xb[103X, [3XT[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category object[133X
-  
-  [33X[0;0YThe arguments are two objects [3Xa[103X, [3Xb[103X and a tensor product algebroid [3XT[103X[23X=A\otimes
-  B[123X  where [3Xa[103X and [3Xb[103X belong to [23XA[123X resp. [23XB[123X. The output is the object [23Xa\otimes b[123X in
-  [3XT[103X.[133X
-  
-  [1X8.3-13 ElementaryTensor[101X
-  
-  [33X[1;0Y[29X[2XElementaryTensor[102X( [3Xf[103X, [3Xg[103X, [3XT[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category morphism[133X
-  
-  [33X[0;0YThe  arguments  are  two  morphisms  [3Xf[103X,  [3Xg[103X  and  a  tensor product algebroid
-  [3XT[103X[23X=A\otimes  B[123X  where [3Xf[103X and [3Xg[103X belong to [23XA[123X resp. [23XB[123X. The output is the morphism
-  [23Xf\otimes g[123X in [3XT[103X.[133X
-  
-  [1X8.3-14 AlgebroidAsObjectInPreSheavesCategory[101X
-  
-  [33X[1;0Y[29X[2XAlgebroidAsObjectInPreSheavesCategory[102X( [3XB[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category morphism[133X
-  
-  [33X[0;0YThe  argument is an algebroid [23XB[123X over a commutative ring [23Xk[123X. The output is the
-  presheaf  object  [23XF_{B}\in \mathrm{PSh}(B^{\mathrm{op}}\otimes B)[123X which maps
-  an   object   [23Xu^{\mathrm{op}}\otimes   t  \in  B^{\mathrm{op}}\otimes  B[123X  to
-  [23X\mathrm{Hom}_B(t,u)   \in   k\mbox{-}\mathrm{rows}[123X   and   maps  a  morphism
-  [23Xg^{\mathrm{op}}\otimes      f     :     v^{\mathrm{op}}\otimes     s     \to
-  u^{\mathrm{op}}\otimes  t \in B^{\mathrm{op}}\otimes B[123X to [23Xf\bullet(-)\bullet
-  g  =\mathrm{Hom}_B(f,g):  \mathrm{Hom}_B(t,u)  \to  \mathrm{Hom}_B(s,v)  \in
-  k\mbox{-}\mathrm{rows}[123X.[133X
-  
-  [1X8.3-15 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[101X
-  
-  [33X[1;0Y[29X[2XAssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category morphism[133X
-  
-  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  t  \to  u[123X  in an algebroid [23XB[123X over a
-  commutative      ring      [23Xk[123X.     The     output     is     the     morphism
-  [23X\lambda_{\alpha}:P_{u^{\mathrm{op}}\otimes     t}     \to     F_{B}[123X    where
-  [23XP_{u^{\mathrm{op}}\otimes  t}[123X is the image of [23Xu^{\mathrm{op}}\otimes t[123X under
-  the     Yoneda    embdding    [23XB^{\mathrm{op}}\otimes    B    \hookrightarrow
-  \mathrm{PSh}(B^{\mathrm{op}}\otimes  B)[123X;  and  [23X\lambda_{\alpha}[123X the image of
-  [23X\alpha[123X    under    the    natural    isomorphism   [23X\mathrm{Hom}_{B}(t,u)   =
-  F_{B}(u^{\mathrm{op}}\otimes                    t)                    \simeq
-  \mathrm{Hom}_{\mathrm{PSh}(B^{\mathrm{op}}\otimes
-  B)}(P_{u^{\mathrm{op}}\otimes t},F_{B})[123X.[133X
+  [33X[0;0YAdd to the bialgebroid [3XB[103X an antipode [3XS[103X.[133X
   
   
-  [1X8.4 [33X[0;0YConstructors[133X[101X
+  [1X8.4 [33X[0;0YGAP categories[133X[101X
   
-  [1X8.4-1 AlgebroidFromDataTables[101X
+  [1X8.4-1 IsBialgebroid[101X
   
-  [33X[1;0Y[29X[2XAlgebroidFromDataTables[102X( [3Xdata_tables[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
-  
-  [33X[0;0YConstruct  an  enrichted  algebroid  [23XB[123X  out of the [3Xdata_tables[103X consisting of
-  values to the keys:[133X
-  
-  [30X    [33X[0;6Y[3Xcoefficients_ring[103X: the commutative ring [23Xk[123X over which [23XB[123X is linear.[133X
-  
-  [30X    [33X[0;6Y[3Xnr_objs[103X: the number of objects of [23XB[123X.[133X
-  
-  [30X    [33X[0;6Y[3Xlabels_objs[103X:  list of strings representing the names of the objects of
-        [23XB[123X.[133X
-  
-  [30X    [33X[0;6Y[3Xnr_gmors[103X: the number of generating morphisms of [23XB[123X.[133X
-  
-  [30X    [33X[0;6Y[3Xlabels_gmors[103X: list of strings representing the names of the generating
-        morphisms of [23XB[123X.[133X
-  
-  [30X    [33X[0;6Y[3Xnr_bases_elms[103X:  the  sum  of  dimensions of all hom-spaces in [23XB[123X, i.e.,
-        [23X\Sigma_{u,v\in    B}~\mathrm{dim}_{k}~\mathrm{Hom}(u,v)[123X,   i.e.,   the
-        dimension over [23Xk[123X of the endomorphism algebra of [23XB[123X.[133X
-  
-  [30X    [33X[0;6Y[3Xindices_objs[103X:   the   indices   of   the  identity  morphisms  in  the
-        list-of-all-bases-elements in [23XB[123X.[133X
-  
-  [30X    [33X[0;6Y[3Xindices_gmors[103X:   the  indices  of  the  generating  morphisms  in  the
-        list-of-all-bases-elements in [23XB[123X.[133X
-  
-  [30X    [33X[0;6Y[3Xsources_gmors[103X:  the  indices of sources of the generating morphisms in
-        the list of objects of [23XB[123X.[133X
-  
-  [30X    [33X[0;6Y[3Xranges_gmors[103X: the indices of ranges of the generating morphisms in the
-        list of objects of [23XB[123X.[133X
-  
-  [30X    [33X[0;6Y[3Xbases_elms_comps[103X:  a list of length [3Xnr_bases_elms[103X of lists of elements
-        in [3X[-1,-2,..,-nr_objs][103X or [3X[1,2,..,nr_gmors][103X. The [23Xi[123X'th entry identifies
-        the [23Xi[123X'th element of list-of-all-bases-elements as an identity morphism
-        or as a precomposition of generating morphisms.[133X
-  
-  [30X    [33X[0;6Y[3Xindices_of_bases_elms[103X:  a  list  [23XL[123X  of length [3Xnr_objs[103X of lists each of
-        length  [3Xnr_objs[103X  where the entry [23XL[i][j][123X is the list of indices of the
-        basis     elements     of     [23X\mathrm{Hom}_{B}(u_j,u_i)[123X     in     the
-        list-of-all-bases-elements  in  [23XB[123X where [23Xu_i[123X and [23Xu_j[123X are the [23Xi[123X'th resp.
-        [23Xj[123X'th objects.[133X
-  
-  [30X    [33X[0;6Y[3Xhom_structure_gmors_objs[103X:  a  list  [23XL[123X  of  length  [3Xnr_objs[103X of lists of
-        length  [3Xnr_gmors[103X where the entry [23XL[i][j][123X is the list of entries of the
-        matrix of the [23Xk[123X-linear map [23X\mathrm{Hom}_{B}(m_j,u_i)[123X where [23Xu_i[123X and [23Xm_j[123X
-        are the [23Xi[123X'th object and the [23Xj[123X'th generating morphism.[133X
-  
-  [30X    [33X[0;6Y[3Xhom_structure_objs_gmors[103X:  a  list  [23XL[123X  of  length  [3Xnr_objs[103X of lists of
-        length  [3Xnr_gmors[103X where the entry [23XL[i][j][123X is the list of entries of the
-        matrix of the [23Xk[123X-linear map [23X\mathrm{Hom}_{B}(u_i,m_j)[123X where [23Xu_i[123X and [23Xm_j[123X
-        are the [23Xi[123X'th object and the [23Xj[123X'th generating morphism.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(0,1,2,3)[a:0->1,b:1->3,c:0->2,d:2->3,e:3->3]" );[127X[104X
-    [4X[28Xq(0,1,2,3)[a:0->1,b:1->3,c:0->2,d:2->3,e:3->3][128X[104X
-    [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals();[127X[104X
-    [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XF := FreeCategory( q );[127X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(0,1,2,3)[a:0->1,b:1->3,c:0->2,d:2->3,e:3->3]" ) )[128X[104X
-    [4X[25Xgap>[125X [27XkF := k[F];[127X[104X
-    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(0,1,2,3)[a:0->1,b:1->3,c:0->2,d:2->3,[128X[104X
-    [4X[28Xe:3->3]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XA := kF / [ kF.e^3 ];[127X[104X
-    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(0,1,2,3)[a:0->1,b:1->3,c:0->2,d:2->3,[128X[104X
-    [4X[28Xe:3->3]" ) ) ) / relations[128X[104X
-    [4X[25Xgap>[125X [27Xdata_tables := DataTablesOfCategory( A );;[127X[104X
-    [4X[25Xgap>[125X [27XB := AlgebroidFromDataTables( data_tables );; # alternatively,[127X[104X
-    [4X[25Xgap>[125X [27XB := AlgebroidFromDataTables( A );[127X[104X
-    [4X[28XQ-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] ) defined by[128X[104X
-    [4X[28X4 objects and 5 generating morphisms[128X[104X
-    [4X[25Xgap>[125X [27XAssignSetOfObjects( B, "V_" );[127X[104X
-    [4X[28X#I  MakeReadWriteGlobal: V_0 already read-write[128X[104X
-    [4X[28X#I  MakeReadWriteGlobal: V_1 already read-write[128X[104X
-    [4X[28X#I  MakeReadWriteGlobal: V_2 already read-write[128X[104X
-    [4X[28X#I  MakeReadWriteGlobal: V_3 already read-write[128X[104X
-    [4X[25Xgap>[125X [27XAssignSetOfGeneratingMorphisms( B );[127X[104X
-    [4X[28X#I  MakeReadWriteGlobal: a already read-write[128X[104X
-    [4X[28X#I  MakeReadWriteGlobal: b already read-write[128X[104X
-    [4X[28X#I  MakeReadWriteGlobal: c already read-write[128X[104X
-    [4X[28X#I  MakeReadWriteGlobal: d already read-write[128X[104X
-    [4X[28X#I  MakeReadWriteGlobal: e already read-write[128X[104X
-    [4X[25Xgap>[125X [27XSetOfObjects( B );[127X[104X
-    [4X[28X[ <(0)>, <(1)>, <(2)>, <(3)> ][128X[104X
-    [4X[25Xgap>[125X [27XB.("0");[127X[104X
-    [4X[28X<(0)>[128X[104X
-    [4X[25Xgap>[125X [27XV_0;[127X[104X
-    [4X[28X<(0)>[128X[104X
-    [4X[25Xgap>[125X [27XIsEqualForObjects( B.("0"), V_0 );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCreateObject( B, 1 ) = B.("0");[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( B );[127X[104X
-    [4X[28X[ <1*a:(0) -≻ (1)>, <1*b:(1) -≻ (3)>,[128X[104X
-    [4X[28X  <1*c:(0) -≻ (2)>, <1*d:(2) -≻ (3)>,[128X[104X
-    [4X[28X  <1*e:(3) -≻ (3)> ][128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( B.("a"), a );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XPerform( [ "V_0", "V_1", "V_2", "V_3" ], MakeReadWriteGlobal );[127X[104X
-    [4X[25Xgap>[125X [27XPerform( [ "a", "b", "c", "d", "e" ], MakeReadWriteGlobal );[127X[104X
-    [4X[25Xgap>[125X [27XHomStructure( B.("0"), B.("3") );[127X[104X
-    [4X[28X<A row module over Q of rank 6>[128X[104X
-    [4X[25Xgap>[125X [27Xhom_03 := BasisOfExternalHom( B.("0"), B.("3") );[127X[104X
-    [4X[28X[ <1*a•b:(0) -≻ (3)>, <1*c•d:(0) -≻ (3)>,[128X[104X
-    [4X[28X  <1*a•b•e:(0) -≻ (3)>, <1*c•d•e:(0) -≻ (3)>,[128X[104X
-    [4X[28X  <1*a•b•e^2:(0) -≻ (3)>, <1*c•d•e^2:(0) -≻ (3)> ][128X[104X
-    [4X[25Xgap>[125X [27Xalpha := 2*hom_03[1] + 3*hom_03[6];[127X[104X
-    [4X[28X<2*a•b + 3*c•d•e^2:(0) -≻ (3)>[128X[104X
-    [4X[25Xgap>[125X [27XLaTeXOutput( alpha );[127X[104X
-    [4X[28X"{0}-\\left({2\\cdot {a}{b} + 3\\cdot {c}{d}{e}^{2}}\\right)\\rightarrow{3}"[128X[104X
-    [4X[25Xgap>[125X [27Xalpha = CreateMorphism( B, B.("0"), [2, 0, 0, 0, 0, 3 ], B.("3") );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDecompositionOfMorphismInAlgebroid( alpha );[127X[104X
-    [4X[28X[ [ 2, [ <1*a:(0) -≻ (1)>, <1*b:(1) -≻ (3)> ] ],[128X[104X
-    [4X[28X  [ 3, [ <1*c:(0) -≻ (2)>, <1*d:(2) -≻ (3)>,[128X[104X
-    [4X[28X         <1*e:(3) -≻ (3)>, <1*e:(3) -≻ (3)> ] ] ][128X[104X
-    [4X[25Xgap>[125X [27XB.("a•b•e");[127X[104X
-    [4X[28X<1*a•b•e:(0) -≻ (3)>[128X[104X
-    [4X[25Xgap>[125X [27XB.("abe");[127X[104X
-    [4X[28X<1*a•b•e:(0) -≻ (3)>[128X[104X
-    [4X[25Xgap>[125X [27XPreCompose( B.("a"), B.("b") ) = B.("ab");[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XU := IsomorphismOntoAlgebroidFromDataTables( A );[127X[104X
-    [4X[28XIsomorphism functor onto algebroid from data tables[128X[104X
-    [4X[25Xgap>[125X [27XV := IsomorphismFromAlgebroidFromDataTables( A );[127X[104X
-    [4X[28XIsomorphism functor from algebroid from data tables[128X[104X
-    [4X[25Xgap>[125X [27XApplyFunctor( PreCompose( V, U ), alpha ) = alpha;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
-    [4X[25Xgap>[125X [27XV := ExtendFunctorToAdditiveClosures( V );[127X[104X
-    [4X[28XExtension of Isomorphism functor from algebroid from data tables to[128X[104X
-    [4X[28Xadditive closures[128X[104X
-    [4X[25Xgap>[125X [27Xadd_B := SourceOfFunctor( V );[127X[104X
-    [4X[28XAdditiveClosure( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )[128X[104X
-    [4X[28Xdefined by 4 objects and 5 generating morphisms )[128X[104X
-    [4X[25Xgap>[125X [27Xadd_B!.precompiled_functions_added;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xadd_A := RangeOfFunctor( V );[127X[104X
-    [4X[28XAdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(0,1,2,3)[a:0->1,[128X[104X
-    [4X[28Xb:1->3,c:0->2,d:2->3,e:3->3]" ) ) ) / relations )[128X[104X
-    [4X[25Xgap>[125X [27Xadd_A!.precompiled_functions_added;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xo1 :=  RandomObject( add_B, [ [ 20 ], [ 1 ] ] );;[127X[104X
-    [4X[25Xgap>[125X [27Xo2 :=  RandomObject( add_B, [ [ 20 ], [ 1 ] ] );;[127X[104X
-    [4X[25Xgap>[125X [27XV_o1 := V( o1 );;[127X[104X
-    [4X[25Xgap>[125X [27XV_o2 := V( o2 );;[127X[104X
-    [4X[25Xgap>[125X [27Xs1 := Sum( BasisOfExternalHom( o1, o2 ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xs2 := Sum( BasisOfExternalHom( V_o1, V_o2 ) );;[127X[104X
-    [4X[25Xgap>[125X [27XV( s1 ) = s2;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xf := RandomMorphism( o1, o2, 20 );;[127X[104X
-    [4X[25Xgap>[125X [27Xg := RandomMorphism( o1, o2, 20 );;[127X[104X
-    [4X[25Xgap>[125X [27XV_f := V( f );;[127X[104X
-    [4X[25Xgap>[125X [27XV_g := V( g );;[127X[104X
-    [4X[25Xgap>[125X [27Xm1 := UnderlyingMatrix( HomStructure( f, g ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xm2 := UnderlyingMatrix( HomStructure( V_f, V_g ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xm1 = m2;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( PreCompose( f, WeakCokernelProjection( f ) ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( PreCompose( WeakKernelEmbedding( f ), f ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xfreyd_B := FreydCategory( add_B );[127X[104X
-    [4X[28XFreyd( AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,[128X[104X
-    [4X[28Xe:3-≻3] ) defined by 4 objects and 5 generating morphisms ) )[128X[104X
-    [4X[25Xgap>[125X [27XIsAbelianCategory( freyd_B );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
-    [4X[25Xgap>[125X [27XPSh := PreSheaves( B );[127X[104X
-    [4X[28XPreSheaves( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )[128X[104X
-    [4X[28Xdefined by 4 objects and 5 generating morphisms, Rows( Q ) )[128X[104X
-    [4X[25Xgap>[125X [27XY := YonedaEmbeddingOfSourceCategory( PSh );[127X[104X
-    [4X[28XYoneda embedding functor[128X[104X
-    [4X[25Xgap>[125X [27XIsEqualForObjects( Y(B.("3")), PSh.("3") );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsEqualForMorphisms( Y(alpha), 2 * PSh.("a•b") + 3 * PSh.("c•d•e^2") );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( Y(alpha), 2 * PSh.("a•b") + 3 * PSh.("c•d•e^2") );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xt := AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory( B.("e") );;[127X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( t );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XB_op := OppositeAlgebroid( B );[127X[104X
-    [4X[28XQ-algebroid( {0,1,2,3}[a:1-≻0,b:3-≻1,c:2-≻0,d:3-≻2,e:3-≻3] ) defined by[128X[104X
-    [4X[28X4 objects and 5 generating morphisms[128X[104X
-    [4X[25Xgap>[125X [27XB_op.("ba");[127X[104X
-    [4X[28X<1*b•a:(3) -≻ (0)>[128X[104X
-    [4X[25Xgap>[125X [27Xadd_B := AdditiveClosure( B );[127X[104X
-    [4X[28XAdditiveClosure( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )[128X[104X
-    [4X[28Xdefined by 4 objects and 5 generating morphisms )[128X[104X
-    [4X[25Xgap>[125X [27XT := DirectSum( List( SetOfObjects( B ), o -> o / add_B ) );[127X[104X
-    [4X[28X<An object in AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,[128X[104X
-    [4X[28Xd:2-≻3,e:3-≻3] ) defined by 4 objects and 5 generating morphisms ) defined[128X[104X
-    [4X[28Xby 4 underlying objects>[128X[104X
-    [4X[25Xgap>[125X [27Xu := RandomMorphism( T, T, 5 );;[127X[104X
-    [4X[25Xgap>[125X [27Xv := RandomMorphism( T, T, 5 );;[127X[104X
-    [4X[25Xgap>[125X [27Xw := RandomMorphism( T, T, 5 );;[127X[104X
-    [4X[25Xgap>[125X [27XHomStructure( PreCompose( [ u, v, w ] ) )[127X[104X
-    [4X[25X>[125X [27X      = PreCompose( HomStructure( v ), HomStructure( u, w ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XBB := TensorProductOfAlgebroids( B, B );[127X[104X
-    [4X[28XQ-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[id(0)⊗a:0⊗0-≻0⊗1,id(0)⊗b:0⊗1-≻0⊗3[128X[104X
-    [4X[28X,id(0)⊗c:0⊗0-≻0⊗2,..,e⊗id(1):3⊗1-≻3⊗1,e⊗id(2):3⊗2-≻3⊗2,e⊗id(3):3⊗3-≻3⊗3] )[128X[104X
-    [4X[28Xdefined by 16 objects and 40 generating morphisms[128X[104X
-    [4X[25Xgap>[125X [27XElementaryTensor( B.0, B.1 );[127X[104X
-    [4X[28X<(0⊗1)>[128X[104X
-    [4X[25Xgap>[125X [27XElementaryTensor( B.a, B.b );[127X[104X
-    [4X[28X<1*a⊗b:(0⊗1) -≻ (1⊗3)>[128X[104X
-    [4X[25Xgap>[125X [27XElementaryTensor( B.0, B.b );[127X[104X
-    [4X[28X<1*id(0)⊗b:(0⊗1) -≻ (0⊗3)>[128X[104X
-    [4X[25Xgap>[125X [27XElementaryTensor( B.a, B.1 );[127X[104X
-    [4X[28X<1*a⊗id(1):(0⊗1) -≻ (1⊗1)>[128X[104X
-    [4X[25Xgap>[125X [27X3x3 := BB.("3⊗3");[127X[104X
-    [4X[28X<(3⊗3)>[128X[104X
-    [4X[25Xgap>[125X [27Xu := RandomMorphism( 3x3, 3x3, 15 );;[127X[104X
-    [4X[25Xgap>[125X [27Xv := RandomMorphism( 3x3, 3x3, 15 );;[127X[104X
-    [4X[25Xgap>[125X [27Xw := RandomMorphism( 3x3, 3x3, 15 );;[127X[104X
-    [4X[25Xgap>[125X [27XHomStructure( PreCompose( [ u, v, w ] ) )[127X[104X
-    [4X[25X>[125X [27X      = PreCompose( HomStructure( v ), HomStructure( u, w ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xideal := [ B.("ab") - B.("cd"), 2*B.("be") ];;[127X[104X
-    [4X[25Xgap>[125X [27XqB := B / ideal;[127X[104X
-    [4X[28XQuotientCategory( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )[128X[104X
-    [4X[28Xdefined by 4 objects and 5 generating morphisms, 2-sided ideal generated[128X[104X
-    [4X[28Xby 2 morphisms )[128X[104X
-    [4X[25Xgap>[125X [27XqB.0;[127X[104X
-    [4X[28X<(0)>[128X[104X
-    [4X[25Xgap>[125X [27XRangeCategoryOfHomomorphismStructure( qB );[127X[104X
-    [4X[28XRows( Q )[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( qB.("cde") );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xf := RandomMorphism( qB, 20 );;[127X[104X
-    [4X[25Xgap>[125X [27X1/2 * HomStructure( Source( f ), Target( f ), 2*HomStructure( f ) ) = f;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xideal := List( [ B.0, B.1, B.2 ], IdentityMorphism );[127X[104X
-    [4X[28X[ <1*id(0):(0) -≻ (0)>, <1*id(1):(1) -≻ (1)>, <1*id(2):(2) -≻ (2)> ][128X[104X
-    [4X[25Xgap>[125X [27XqB := B / ideal;[127X[104X
-    [4X[28XQuotientCategory( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )[128X[104X
-    [4X[28Xdefined by 4 objects and 5 generating morphisms, 2-sided ideal generated[128X[104X
-    [4X[28Xby 3 morphisms )[128X[104X
-    [4X[25Xgap>[125X [27XForAll( [ qB.("0"), qB.("1"), qB.("2") ], IsZeroForObjects );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( qB.("3") );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27Xdata_tables_2 := DataTablesOfCategory( qB );;[127X[104X
-    [4X[25Xgap>[125X [27XD := AlgebroidFromDataTables( data_tables_2 );; # or alternatively[127X[104X
-    [4X[25Xgap>[125X [27XD := AlgebroidFromDataTables( qB );[127X[104X
-    [4X[28XQ-algebroid( {3}[e:3-≻3] ) defined by 1 object and 1 generating morphism[128X[104X
-    [4X[25Xgap>[125X [27XBasisOfExternalHom( D.3, D.3 );[127X[104X
-    [4X[28X[ <1*id(3):(3) -≻ (3)>, <1*e:(3) -≻ (3)>, <1*e^2:(3) -≻ (3)> ][128X[104X
-    [4X[25Xgap>[125X [27Xdata_tables_Z := ShallowCopy( data_tables );;[127X[104X
-    [4X[25Xgap>[125X [27Xdata_tables_Z!.coefficients_ring := HomalgRingOfIntegers();;[127X[104X
-    [4X[25Xgap>[125X [27XC := AlgebroidFromDataTables( data_tables_Z );;[127X[104X
-    [4X[25Xgap>[125X [27XRangeCategoryOfHomomorphismStructure( C );[127X[104X
-    [4X[28XRows( Z )[128X[104X
-    [4X[25Xgap>[125X [27Xideal := [ C.("ab") - C.("cd"), 2*C.("be") ];;[127X[104X
-    [4X[25Xgap>[125X [27XqC := C / ideal;[127X[104X
-    [4X[28XQuotientCategory( Z-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )[128X[104X
-    [4X[28Xdefined by 4 objects and 5 generating morphisms, 2-sided ideal generated by[128X[104X
-    [4X[28X2 morphisms )[128X[104X
-    [4X[25Xgap>[125X [27XRangeCategoryOfHomomorphismStructure( qC );[127X[104X
-    [4X[28XFreyd( Rows( Z ) )[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( qC.("cde") );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( 2*qC.("cde") );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xadd_qC := AdditiveClosure( qC );[127X[104X
-    [4X[28XAdditiveClosure( QuotientCategory( Z-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,[128X[104X
-    [4X[28Xc:0-≻2,d:2-≻3,e:3-≻3] ) defined by 4 objects and 5 generating morphisms,[128X[104X
-    [4X[28X2-sided ideal generated by 2 morphisms ) )[128X[104X
-    [4X[25Xgap>[125X [27XT := RandomObject( add_qC, [[10],[1]] );;[127X[104X
-    [4X[25Xgap>[125X [27Xu := RandomMorphism( T, T, 5 );;[127X[104X
-    [4X[25Xgap>[125X [27Xv := RandomMorphism( T, T, 5 );;[127X[104X
-    [4X[25Xgap>[125X [27Xw := RandomMorphism( T, T, 5 );;[127X[104X
-    [4X[25Xgap>[125X [27XHomStructure( PreCompose( [ u, v, w ] ) )[127X[104X
-    [4X[25X>[125X [27X      = PreCompose( HomStructure( v ), HomStructure( u, w ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XHomStructure( T, T, 2 * HomStructure( u ) ) = 2 * u;[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X8.5 [33X[0;0YGAP categories[133X[101X
-  
-  [1X8.5-1 IsAlgebroidFromDataTables[101X
-  
-  [33X[1;0Y[29X[2XIsAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsBialgebroid[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of objects in an algebroid from data tables.[133X
-  
-  [1X8.5-2 IsCellInAlgebroidFromDataTables[101X
-  
-  [33X[1;0Y[29X[2XIsCellInAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of cells in an algebroid from data tables.[133X
-  
-  [1X8.5-3 IsObjectInAlgebroidFromDataTables[101X
-  
-  [33X[1;0Y[29X[2XIsObjectInAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of algebroids from data tables.[133X
-  
-  [1X8.5-4 IsMorphismInAlgebroidFromDataTables[101X
-  
-  [33X[1;0Y[29X[2XIsMorphismInAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of morphisms in an algebroid from data tables.[133X
+  [33X[0;0YThe [5XGAP[105X category of bialgebroids.[133X
   
