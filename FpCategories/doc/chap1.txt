@@ -1,0 +1,266 @@
+  
+  [1X1 [33X[0;0YQuivers[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YGAP categories[133X[101X
+  
+  [1X1.1-1 IsCapQuiver[101X
+  
+  [33X[1;0Y[29X[2XIsCapQuiver[102X( [3Xq[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of quivers.[133X
+  
+  [1X1.1-2 IsCapQuiverObject[101X
+  
+  [33X[1;0Y[29X[2XIsCapQuiverObject[102X( [3Xv[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a quiver.[133X
+  
+  [1X1.1-3 IsCapQuiverMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsCapQuiverMorphism[102X( [3Xalpha[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a quiver.[133X
+  
+  
+  [1X1.2 [33X[0;0YConstructors[133X[101X
+  
+  [1X1.2-1 CreateCapQuiver[101X
+  
+  [33X[1;0Y[29X[2XCreateCapQuiver[102X( [3Xq_datum[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X quiver[133X
+  
+  [33X[0;0YConstruct a CAP quiver out of the [3Xq_datum[103X which is specified as follows:[133X
+  
+  [30X    [33X[0;6Y[3Xq_datum[103X[1] is a string representing the name of the quiver.[133X
+  
+  [30X    [33X[0;6Y[3Xq_datum[103X[2]  is a list consisting of two entries: the number of objects
+        and  the  list of labels for these objects. This list might contain an
+        optional third entry for the list of latex-strings for the objects.[133X
+  
+  [30X    [33X[0;6Y[3Xq_datum[103X[3]  is  a  list  consisting  of  four  entries:  the number of
+        morphisms,  the  list of source-indices, the list of range-indices and
+        the  list  of  labels  for these morphisms. This list might contain an
+        optional fifth entry for the list of latex-strings for the morphisms.[133X
+  
+  [1X1.2-2 ObjectConstructor[101X
+  
+  [33X[1;0Y[29X[2XObjectConstructor[102X( [3XC[103X, [3Xi[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category object[133X
+  
+  [33X[0;0YThe input is a [5XCAP[105X quiver [23Xq[123X and a positive integer [3Xi[103X. The output is the [3Xi[103X'th
+  object in [3Xq[103X.[133X
+  
+  [1X1.2-3 MorphismConstructor[101X
+  
+  [33X[1;0Y[29X[2XMorphismConstructor[102X( [3XC[103X, [3Xs[103X, [3Xi[103X, [3Xt[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category object[133X
+  
+  [33X[0;0YThe input is a [5XCAP[105X quiver [23Xq[123X, an object [3Xs[103X, a positive integer [3Xi[103X and an object
+  [3Xt[103X. The output is the [3Xi[103X'th morphism in [3Xq[103X (whose source is [3Xs[103X and target is [3Xt[103X).[133X
+  
+  [1X1.2-4 RandomCapQuiver[101X
+  
+  [33X[1;0Y[29X[2XRandomCapQuiver[102X( [3Xnr_objs[103X, [3Xnr_mors[103X, [3Xhas_loops[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP quiver[133X
+  
+  [33X[0;0YThe  outout  is  a  random  quiver consisting of [3Xnr_objs[103X objects and [3Xnr_mors[103X
+  morphisms and has loops only if [3Xhas_loops[103X = [10Xtrue[110X.[133X
+  
+  
+  [1X1.3 [33X[0;0YAttributes[133X[101X
+  
+  [1X1.3-1 QuiverDatum[101X
+  
+  [33X[1;0Y[29X[2XQuiverDatum[102X( [3Xq[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YReturns the quiver datum of the quiver [3Xq[103X.[133X
+  
+  [1X1.3-2 QuiverName[101X
+  
+  [33X[1;0Y[29X[2XQuiverName[102X( [3Xq[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YReturns the name of the quiver [3Xq[103X.[133X
+  
+  [1X1.3-3 NumberOfObjects[101X
+  
+  [33X[1;0Y[29X[2XNumberOfObjects[102X( [3Xq[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya positive integer[133X
+  
+  [33X[0;0YReturns the number of objects in the quiver [3Xq[103X.[133X
+  
+  [1X1.3-4 LabelsOfObjects[101X
+  
+  [33X[1;0Y[29X[2XLabelsOfObjects[102X( [3Xq[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YReturns the labels of objects in the quiver [3Xq[103X.[133X
+  
+  [1X1.3-5 NumberOfMorphisms[101X
+  
+  [33X[1;0Y[29X[2XNumberOfMorphisms[102X( [3Xq[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya positive integer[133X
+  
+  [33X[0;0YReturns the number of morphisms in the quiver [3Xq[103X.[133X
+  
+  [1X1.3-6 LabelsOfMorphisms[101X
+  
+  [33X[1;0Y[29X[2XLabelsOfMorphisms[102X( [3Xq[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YReturns the labels of morphisms in the quiver [3Xq[103X.[133X
+  
+  [1X1.3-7 IndicesOfSources[101X
+  
+  [33X[1;0Y[29X[2XIndicesOfSources[102X( [3Xq[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YReturns the indices of sources of all morphisms in the quiver [3Xq[103X.[133X
+  
+  [1X1.3-8 IndicesOfTargets[101X
+  
+  [33X[1;0Y[29X[2XIndicesOfTargets[102X( [3Xq[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YReturns the indices of targets of all morphisms in the quiver [3Xq[103X.[133X
+  
+  [1X1.3-9 SetOfObjects[101X
+  
+  [33X[1;0Y[29X[2XSetOfObjects[102X( [3Xq[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X quiver objects[133X
+  
+  [33X[0;0YReturns the set of objects of [3Xq[103X.[133X
+  
+  [1X1.3-10 SetOfMorphisms[101X
+  
+  [33X[1;0Y[29X[2XSetOfMorphisms[102X( [3Xq[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X quiver morphisms[133X
+  
+  [33X[0;0YReturns the set of morphisms of [3Xq[103X.[133X
+  
+  [1X1.3-11 ExternalHoms[101X
+  
+  [33X[1;0Y[29X[2XExternalHoms[102X( [3Xq[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X quiver morphisms[133X
+  
+  [33X[0;0YReturns a list of lists where the entry at [23X[i,j][123X is the set of morphism from
+  the [23Xi[123X'th object to the [23Xj[123X'th object in [3Xq[103X.[133X
+  
+  [1X1.3-12 OppositeQuiver[101X
+  
+  [33X[1;0Y[29X[2XOppositeQuiver[102X( [3Xq[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Y[5XCAP[105X quiver[133X
+  
+  [33X[0;0YReturns the opposite quiver of [3Xq[103X.[133X
+  
+  [1X1.3-13 ObjectIndex[101X
+  
+  [33X[1;0Y[29X[2XObjectIndex[102X( [3Xv[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya positive integer[133X
+  
+  [33X[0;0YReturns the index of the object [3Xv[103X.[133X
+  
+  [1X1.3-14 ObjectLabel[101X
+  
+  [33X[1;0Y[29X[2XObjectLabel[102X( [3Xv[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya string[133X
+  
+  [33X[0;0YReturns the label of the object [3Xv[103X.[133X
+  
+  [1X1.3-15 CapQuiver[101X
+  
+  [33X[1;0Y[29X[2XCapQuiver[102X( [3Xv[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X quiver[133X
+  
+  [33X[0;0YReturns the quiver containing the object [3Xv[103X.[133X
+  
+  [1X1.3-16 MorphismIndex[101X
+  
+  [33X[1;0Y[29X[2XMorphismIndex[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya positive integer[133X
+  
+  [33X[0;0YReturns the index of the morphism [3Xalpha[103X.[133X
+  
+  [1X1.3-17 MorphismLabel[101X
+  
+  [33X[1;0Y[29X[2XMorphismLabel[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya string[133X
+  
+  [33X[0;0YReturns the label of the morphism [3Xalpha[103X.[133X
+  
+  [1X1.3-18 CapQuiver[101X
+  
+  [33X[1;0Y[29X[2XCapQuiver[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X quiver[133X
+  
+  [33X[0;0YReturns the quiver containing the morphism [3Xalpha[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xstr := "q(0,1,2,3,4,5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;[127X[104X
+    [4X[25Xgap>[125X [27Xq := CreateCapQuiver( str );[127X[104X
+    [4X[28XQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,[128X[104X
+    [4X[28Xt:4-≻5,y:5-≻5]" )[128X[104X
+    [4X[25Xgap>[125X [27XQuiverName( q );[127X[104X
+    [4X[28X"q"[128X[104X
+    [4X[25Xgap>[125X [27XNumberOfObjects( q );[127X[104X
+    [4X[28X6[128X[104X
+    [4X[25Xgap>[125X [27XLabelsOfObjects( q );[127X[104X
+    [4X[28X[ "0", "1", "2", "3", "4", "5" ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfObjects( q );[127X[104X
+    [4X[28X[ (0), (1), (2), (3), (4), (5) ][128X[104X
+    [4X[25Xgap>[125X [27Xo := q.0;[127X[104X
+    [4X[28X(0)[128X[104X
+    [4X[25Xgap>[125X [27XObjectIndex( o );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( o, ObjectConstructor( q, 1 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XObjectLabel( o );[127X[104X
+    [4X[28X"0"[128X[104X
+    [4X[25Xgap>[125X [27XLaTeXOutput( o );[127X[104X
+    [4X[28X"0"[128X[104X
+    [4X[25Xgap>[125X [27XNumberOfMorphisms( q );[127X[104X
+    [4X[28X9[128X[104X
+    [4X[25Xgap>[125X [27XLabelsOfMorphisms( q );[127X[104X
+    [4X[28X[ "x", "s", "a", "c", "e", "b", "d", "t", "y" ][128X[104X
+    [4X[25Xgap>[125X [27XIndicesOfSources( q );[127X[104X
+    [4X[28X[ 1, 1, 2, 2, 2, 3, 4, 5, 6 ][128X[104X
+    [4X[25Xgap>[125X [27XIndicesOfTargets( q );[127X[104X
+    [4X[28X[ 1, 2, 3, 4, 5, 5, 5, 6, 6 ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfMorphisms( q );[127X[104X
+    [4X[28X[ x:(0) -≻ (0), s:(0) -≻ (1), a:(1) -≻ (2), c:(1) -≻ (3), e:(1) -≻ (4),[128X[104X
+    [4X[28X  b:(2) -≻ (4), d:(3) -≻ (4), t:(4) -≻ (5), y:(5) -≻ (5) ][128X[104X
+    [4X[25Xgap>[125X [27Xm := q.y;[127X[104X
+    [4X[28Xy:(5) -≻ (5)[128X[104X
+    [4X[25Xgap>[125X [27XMorphismIndex( m );[127X[104X
+    [4X[28X9[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( m, MorphismConstructor( q, q.("5"), 9, q.("5") ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMorphismLabel( m );[127X[104X
+    [4X[28X"y"[128X[104X
+    [4X[25Xgap>[125X [27XLaTeXOutput( m );[127X[104X
+    [4X[28X"{5}-\\left({y}\\right)\\rightarrow{5}"[128X[104X
+    [4X[25Xgap>[125X [27XMorphismsOfExternalHom( q.("0"), q.("0") );[127X[104X
+    [4X[28X[ x:(0) -≻ (0) ][128X[104X
+    [4X[25Xgap>[125X [27XMorphismsOfExternalHom( q.("0"), q.("1") );[127X[104X
+    [4X[28X[ s:(0) -≻ (1) ][128X[104X
+    [4X[25Xgap>[125X [27Xq_op := OppositeQuiver( q );[127X[104X
+    [4X[28XQuiver( "q_op(0,1,2,3,4,5)[x:0-≻0,s:1-≻0,a:2-≻1,c:3-≻1,e:4-≻1,b:4-≻2,[128X[104X
+    [4X[28Xd:4-≻3,t:5-≻4,y:5-≻5]" )[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq1 := RandomCapQuiver( 2, 4, false );; # without loops[127X[104X
+    [4X[25Xgap>[125X [27Xq2 := RandomCapQuiver( 2, 4, true );;  # with loops[127X[104X
+    [4X[25Xgap>[125X [27XAssert( 0, NumberOfObjects( q1 ) = 2 );[127X[104X
+    [4X[25Xgap>[125X [27XAssert( 0, NumberOfMorphisms( q1 ) = 4 );[127X[104X
+    [4X[25Xgap>[125X [27XAssert( 0, Length( Filtered( SetOfMorphisms( q1 ), IsEndomorphism ) ) = 0 );[127X[104X
+    [4X[25Xgap>[125X [27XAssert( 0, Length( Filtered( SetOfMorphisms( q2 ), IsEndomorphism ) ) > 0 );[127X[104X
+  [4X[32X[104X
+  

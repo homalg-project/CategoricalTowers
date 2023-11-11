@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (FpCategories) - Chapter 1: Quivers</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1.html">[MathJax off]</a></p>
+<p><a id="X7FA7E6B581D41A94" name="X7FA7E6B581D41A94"></a></p>
+<div class="ChapSects"><a href="chap1_mj.html#X7FA7E6B581D41A94">1 <span class="Heading">Quivers</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7D03633A7D98026B">1.1 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D8685ED86389F03">1.1-1 IsCapQuiver</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D8BB22F83CDEB30">1.1-2 IsCapQuiverObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87BB89327E1F8ED7">1.1-3 IsCapQuiverMorphism</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X86EC0F0A78ECBC10">1.2 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X864FBC2E7A8AC522">1.2-1 CreateCapQuiver</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7AA78E1178F1833F">1.2-2 ObjectConstructor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C2BDB2E836C4D9A">1.2-3 MorphismConstructor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X862DB5438631B086">1.2-4 RandomCapQuiver</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7C701DBF7BAE649A">1.3 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C3B993C7CFBA682">1.3-1 QuiverDatum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80261AF0875A2781">1.3-2 QuiverName</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87F0AA837EB4DB5E">1.3-3 NumberOfObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F00A9DA87B2ACDC">1.3-4 LabelsOfObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X786EFC7086A036A3">1.3-5 NumberOfMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A11D0637FA64121">1.3-6 LabelsOfMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D2926DF85FC8CC5">1.3-7 IndicesOfSources</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7911F955837890F7">1.3-8 IndicesOfTargets</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D823836780BB78A">1.3-9 SetOfObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7BBC597F80CF25A9">1.3-10 SetOfMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X82BF515C873CD4DE">1.3-11 ExternalHoms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F21F3E5792FDB9E">1.3-12 OppositeQuiver</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F281A787D96D58A">1.3-13 ObjectIndex</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X81A53CA683F40AB6">1.3-14 ObjectLabel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E4ADB1D7E04F582">1.3-15 CapQuiver</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80215E11788D1764">1.3-16 MorphismIndex</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X820297107AF466E8">1.3-17 MorphismLabel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E2864A28776C6CD">1.3-18 CapQuiver</a></span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">Quivers</span></h3>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>1.1 <span class="Heading">GAP categories</span></h4>
+
+<p><a id="X7D8685ED86389F03" name="X7D8685ED86389F03"></a></p>
+
+<h5>1.1-1 IsCapQuiver</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapQuiver</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of quivers.</p>
+
+<p><a id="X7D8BB22F83CDEB30" name="X7D8BB22F83CDEB30"></a></p>
+
+<h5>1.1-2 IsCapQuiverObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapQuiverObject</code>( <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in a quiver.</p>
+
+<p><a id="X87BB89327E1F8ED7" name="X87BB89327E1F8ED7"></a></p>
+
+<h5>1.1-3 IsCapQuiverMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapQuiverMorphism</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a quiver.</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>1.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X864FBC2E7A8AC522" name="X864FBC2E7A8AC522"></a></p>
+
+<h5>1.2-1 CreateCapQuiver</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCapQuiver</code>( <var class="Arg">q_datum</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> quiver</p>
+
+<p>Construct a CAP quiver out of the <var class="Arg">q_datum</var> which is specified as follows:</p>
+
+
+<ul>
+<li><p><var class="Arg">q_datum</var>[1] is a string representing the name of the quiver.</p>
+
+</li>
+<li><p><var class="Arg">q_datum</var>[2] is a list consisting of two entries: the number of objects and the list of labels for these objects. This list might contain an optional third entry for the list of latex-strings for the objects.</p>
+
+</li>
+<li><p><var class="Arg">q_datum</var>[3] is a list consisting of four entries: the number of morphisms, the list of source-indices, the list of range-indices and the list of labels for these morphisms. This list might contain an optional fifth entry for the list of latex-strings for the morphisms.</p>
+
+</li>
+</ul>
+<p><a id="X7AA78E1178F1833F" name="X7AA78E1178F1833F"></a></p>
+
+<h5>1.2-2 ObjectConstructor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectConstructor</code>( <var class="Arg">C</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category object</p>
+
+<p>The input is a <strong class="pkg">CAP</strong> quiver <span class="SimpleMath">\(q\)</span> and a positive integer <var class="Arg">i</var>. The output is the <var class="Arg">i</var>'th object in <var class="Arg">q</var>.</p>
+
+<p><a id="X7C2BDB2E836C4D9A" name="X7C2BDB2E836C4D9A"></a></p>
+
+<h5>1.2-3 MorphismConstructor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismConstructor</code>( <var class="Arg">C</var>, <var class="Arg">s</var>, <var class="Arg">i</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category object</p>
+
+<p>The input is a <strong class="pkg">CAP</strong> quiver <span class="SimpleMath">\(q\)</span>, an object <var class="Arg">s</var>, a positive integer <var class="Arg">i</var> and an object <var class="Arg">t</var>. The output is the <var class="Arg">i</var>'th morphism in <var class="Arg">q</var> (whose source is <var class="Arg">s</var> and target is <var class="Arg">t</var>).</p>
+
+<p><a id="X862DB5438631B086" name="X862DB5438631B086"></a></p>
+
+<h5>1.2-4 RandomCapQuiver</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomCapQuiver</code>( <var class="Arg">nr_objs</var>, <var class="Arg">nr_mors</var>, <var class="Arg">has_loops</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP quiver</p>
+
+<p>The outout is a random quiver consisting of <var class="Arg">nr_objs</var> objects and <var class="Arg">nr_mors</var> morphisms and has loops only if <var class="Arg">has_loops</var> = <code class="code">true</code>.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>1.3 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7C3B993C7CFBA682" name="X7C3B993C7CFBA682"></a></p>
+
+<h5>1.3-1 QuiverDatum</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; QuiverDatum</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Returns the quiver datum of the quiver <var class="Arg">q</var>.</p>
+
+<p><a id="X80261AF0875A2781" name="X80261AF0875A2781"></a></p>
+
+<h5>1.3-2 QuiverName</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; QuiverName</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Returns the name of the quiver <var class="Arg">q</var>.</p>
+
+<p><a id="X87F0AA837EB4DB5E" name="X87F0AA837EB4DB5E"></a></p>
+
+<h5>1.3-3 NumberOfObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberOfObjects</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a positive integer</p>
+
+<p>Returns the number of objects in the quiver <var class="Arg">q</var>.</p>
+
+<p><a id="X7F00A9DA87B2ACDC" name="X7F00A9DA87B2ACDC"></a></p>
+
+<h5>1.3-4 LabelsOfObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LabelsOfObjects</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Returns the labels of objects in the quiver <var class="Arg">q</var>.</p>
+
+<p><a id="X786EFC7086A036A3" name="X786EFC7086A036A3"></a></p>
+
+<h5>1.3-5 NumberOfMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberOfMorphisms</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a positive integer</p>
+
+<p>Returns the number of morphisms in the quiver <var class="Arg">q</var>.</p>
+
+<p><a id="X7A11D0637FA64121" name="X7A11D0637FA64121"></a></p>
+
+<h5>1.3-6 LabelsOfMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LabelsOfMorphisms</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Returns the labels of morphisms in the quiver <var class="Arg">q</var>.</p>
+
+<p><a id="X7D2926DF85FC8CC5" name="X7D2926DF85FC8CC5"></a></p>
+
+<h5>1.3-7 IndicesOfSources</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IndicesOfSources</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Returns the indices of sources of all morphisms in the quiver <var class="Arg">q</var>.</p>
+
+<p><a id="X7911F955837890F7" name="X7911F955837890F7"></a></p>
+
+<h5>1.3-8 IndicesOfTargets</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IndicesOfTargets</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Returns the indices of targets of all morphisms in the quiver <var class="Arg">q</var>.</p>
+
+<p><a id="X7D823836780BB78A" name="X7D823836780BB78A"></a></p>
+
+<h5>1.3-9 SetOfObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetOfObjects</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of <strong class="pkg">CAP</strong> quiver objects</p>
+
+<p>Returns the set of objects of <var class="Arg">q</var>.</p>
+
+<p><a id="X7BBC597F80CF25A9" name="X7BBC597F80CF25A9"></a></p>
+
+<h5>1.3-10 SetOfMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetOfMorphisms</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of <strong class="pkg">CAP</strong> quiver morphisms</p>
+
+<p>Returns the set of morphisms of <var class="Arg">q</var>.</p>
+
+<p><a id="X82BF515C873CD4DE" name="X82BF515C873CD4DE"></a></p>
+
+<h5>1.3-11 ExternalHoms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExternalHoms</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of <strong class="pkg">CAP</strong> quiver morphisms</p>
+
+<p>Returns a list of lists where the entry at <span class="SimpleMath">\([i,j]\)</span> is the set of morphism from the <span class="SimpleMath">\(i\)</span>'th object to the <span class="SimpleMath">\(j\)</span>'th object in <var class="Arg">q</var>.</p>
+
+<p><a id="X7F21F3E5792FDB9E" name="X7F21F3E5792FDB9E"></a></p>
+
+<h5>1.3-12 OppositeQuiver</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OppositeQuiver</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: <strong class="pkg">CAP</strong> quiver</p>
+
+<p>Returns the opposite quiver of <var class="Arg">q</var>.</p>
+
+<p><a id="X7F281A787D96D58A" name="X7F281A787D96D58A"></a></p>
+
+<h5>1.3-13 ObjectIndex</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectIndex</code>( <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a positive integer</p>
+
+<p>Returns the index of the object <var class="Arg">v</var>.</p>
+
+<p><a id="X81A53CA683F40AB6" name="X81A53CA683F40AB6"></a></p>
+
+<h5>1.3-14 ObjectLabel</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectLabel</code>( <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a string</p>
+
+<p>Returns the label of the object <var class="Arg">v</var>.</p>
+
+<p><a id="X7E4ADB1D7E04F582" name="X7E4ADB1D7E04F582"></a></p>
+
+<h5>1.3-15 CapQuiver</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapQuiver</code>( <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> quiver</p>
+
+<p>Returns the quiver containing the object <var class="Arg">v</var>.</p>
+
+<p><a id="X80215E11788D1764" name="X80215E11788D1764"></a></p>
+
+<h5>1.3-16 MorphismIndex</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismIndex</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a positive integer</p>
+
+<p>Returns the index of the morphism <var class="Arg">alpha</var>.</p>
+
+<p><a id="X820297107AF466E8" name="X820297107AF466E8"></a></p>
+
+<h5>1.3-17 MorphismLabel</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismLabel</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a string</p>
+
+<p>Returns the label of the morphism <var class="Arg">alpha</var>.</p>
+
+<p><a id="X7E2864A28776C6CD" name="X7E2864A28776C6CD"></a></p>
+
+<h5>1.3-18 CapQuiver</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapQuiver</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> quiver</p>
+
+<p>Returns the quiver containing the morphism <var class="Arg">alpha</var>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">str := "q(0,1,2,3,4,5)[x:0-&gt;0,s:0-&gt;1,a:1-&gt;2,c:1-&gt;3,e:1-&gt;4,b:2-&gt;4,d:3-&gt;4,t:4-&gt;5,y:5-&gt;5]";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := CreateCapQuiver( str );</span>
+Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,
+t:4-≻5,y:5-≻5]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QuiverName( q );</span>
+"q"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NumberOfObjects( q );</span>
+6
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LabelsOfObjects( q );</span>
+[ "0", "1", "2", "3", "4", "5" ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjects( q );</span>
+[ (0), (1), (2), (3), (4), (5) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o := q.0;</span>
+(0)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectIndex( o );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( o, ObjectConstructor( q, 1 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectLabel( o );</span>
+"0"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LaTeXOutput( o );</span>
+"0"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NumberOfMorphisms( q );</span>
+9
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LabelsOfMorphisms( q );</span>
+[ "x", "s", "a", "c", "e", "b", "d", "t", "y" ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IndicesOfSources( q );</span>
+[ 1, 1, 2, 2, 2, 3, 4, 5, 6 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IndicesOfTargets( q );</span>
+[ 1, 2, 3, 4, 5, 5, 5, 6, 6 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfMorphisms( q );</span>
+[ x:(0) -≻ (0), s:(0) -≻ (1), a:(1) -≻ (2), c:(1) -≻ (3), e:(1) -≻ (4),
+  b:(2) -≻ (4), d:(3) -≻ (4), t:(4) -≻ (5), y:(5) -≻ (5) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := q.y;</span>
+y:(5) -≻ (5)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismIndex( m );</span>
+9
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( m, MorphismConstructor( q, q.("5"), 9, q.("5") ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismLabel( m );</span>
+"y"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LaTeXOutput( m );</span>
+"{5}-\\left({y}\\right)\\rightarrow{5}"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismsOfExternalHom( q.("0"), q.("0") );</span>
+[ x:(0) -≻ (0) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismsOfExternalHom( q.("0"), q.("1") );</span>
+[ s:(0) -≻ (1) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q_op := OppositeQuiver( q );</span>
+Quiver( "q_op(0,1,2,3,4,5)[x:0-≻0,s:1-≻0,a:2-≻1,c:3-≻1,e:4-≻1,b:4-≻2,
+d:4-≻3,t:5-≻4,y:5-≻5]" )
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q1 := RandomCapQuiver( 2, 4, false );; # without loops</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q2 := RandomCapQuiver( 2, 4, true );;  # with loops</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Assert( 0, NumberOfObjects( q1 ) = 2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Assert( 0, NumberOfMorphisms( q1 ) = 4 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Assert( 0, Length( Filtered( SetOfMorphisms( q1 ), IsEndomorphism ) ) = 0 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Assert( 0, Length( Filtered( SetOfMorphisms( q2 ), IsEndomorphism ) ) &gt; 0 );</span>
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>
