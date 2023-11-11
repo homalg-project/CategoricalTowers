@@ -58,13 +58,13 @@ end );
 #!  <A>C_hat</A> := <C>FiniteColimitCompletionWithStrictCoproducts</C>( $C$ ) $\simeq$
 #!  <C>CoequalizerCompletion</C>( $UC$ ).
 #! @Arguments C_hat
-DeclareAttribute( "FiniteCoproductCompletionOfUnderlyingCategory",
+DeclareAttribute( "FiniteStrictCoproductCompletionOfUnderlyingCategory",
         IsFiniteColimitCompletionWithStrictCoproducts );
 
-CapJitAddTypeSignature( "FiniteCoproductCompletionOfUnderlyingCategory", [ IsFiniteColimitCompletionWithStrictCoproducts ],
+CapJitAddTypeSignature( "FiniteStrictCoproductCompletionOfUnderlyingCategory", [ IsFiniteColimitCompletionWithStrictCoproducts ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( FiniteCoproductCompletionOfUnderlyingCategory( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( FiniteStrictCoproductCompletionOfUnderlyingCategory( input_types[1].category ) );
     
 end );
 
@@ -78,7 +78,7 @@ CapJitAddTypeSignature( "PairOfObjectsAndPairOfParallelMorphisms", [ IsObjectInF
     
     Assert( 0, IsFiniteColimitCompletionWithStrictCoproducts( input_types[1].category ) );
     
-    UC := FiniteCoproductCompletionOfUnderlyingCategory( input_types[1].category );
+    UC := FiniteStrictCoproductCompletionOfUnderlyingCategory( input_types[1].category );
     
     return CapJitDataTypeOfNTupleOf( 2,
                    CapJitDataTypeOfNTupleOf( 2,
@@ -100,7 +100,7 @@ CapJitAddTypeSignature( "DefiningPairOfMorphismBetweenCoequalizerPairs", [ IsMor
     
     Assert( 0, IsFiniteColimitCompletionWithStrictCoproducts( input_types[1].category ) );
     
-    UC := FiniteCoproductCompletionOfUnderlyingCategory( input_types[1].category );
+    UC := FiniteStrictCoproductCompletionOfUnderlyingCategory( input_types[1].category );
     
     return CapJitDataTypeOfNTupleOf( 2,
                    CapJitDataTypeOfMorphismOfCategory( UC ),
