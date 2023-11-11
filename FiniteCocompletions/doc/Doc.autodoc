@@ -83,7 +83,13 @@
 @Section Constructors
 @Section GAP categories
 
-@Chapter The coequalizer closure of a category
+@Chapter The category of colimit quivers in a category
+
+@Section Attributes
+@Section Constructors
+@Section GAP categories
+
+@Chapter The coequalizer completion of a category
 
 @Section Attributes
 @Section Constructors
@@ -96,14 +102,15 @@
 @Subsection FinReflexiveQuivers as finite colimit completion
 @InsertChunk FinReflexiveQuiversAsFiniteColimitCompletion
 
-@Subsection Free elementary topos on one object
-@InsertChunk FreeElementaryToposOnOneObject
-
-@Chapter The category of colimit quivers in a category
+@Chapter The finite colimit completion of a category
 
 @Section Attributes
 @Section Constructors
 @Section GAP categories
+@Section Examples
+
+@Subsection Free elementary topos on one object
+@InsertChunk FreeElementaryToposOnOneObject
 
 @Chapter Strict additive closure
 

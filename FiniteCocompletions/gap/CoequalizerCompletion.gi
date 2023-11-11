@@ -12,7 +12,7 @@ InstallMethod( CoequalizerCompletion,
   function ( C )
     local object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
-          F, ParallelPairs, CoequalizerPairs, congruence_function,
+          ParallelPairs, CoequalizerPairs, congruence_function,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           CoequalizerCompletion;
@@ -330,7 +330,7 @@ end );
 
 ##
 InstallMethod( AsCoequalizerCompletionObject,
-        "for a coequalizer closure category and a category object",
+        "for a coequalizer completion category and a category object",
         [ IsCoequalizerCompletion, IsCapCategoryObject ],
         
   function( Coeq, object )
@@ -353,7 +353,7 @@ end );
 
 ##
 InstallMethod( AsCoequalizerCompletionMorphism,
-        "for a coequalizer closure category and a category morphism",
+        "for a coequalizer completion category and a category morphism",
         [ IsCoequalizerCompletion, IsCapCategoryMorphism ],
         
   function( Coeq, morphism )
@@ -376,7 +376,7 @@ end );
 
 ##
 InstallMethod( \.,
-        "for a coequalizer closure category and a positive integer",
+        "for a coequalizer completion category and a positive integer",
         [ IsCoequalizerCompletion, IsPosInt ],
         
   function( Coeq, string_as_int )
@@ -388,14 +388,14 @@ InstallMethod( \.,
     
     Yc := C.(name);
     
-    if IsAdditiveClosureObject( Yc ) then
+    if IsCapCategoryObject( Yc ) then
         
         Yc := AsCoequalizerCompletionObject( Coeq, Yc );
         
         #TODO: is this true?
         #SetIsProjective( Yc, true );
         
-    elif IsAdditiveClosureMorphism( Yc ) then
+    elif IsCapCategoryMorphism( Yc ) then
         
         Yc := AsCoequalizerCompletionMorphism( Coeq, Yc );
         
