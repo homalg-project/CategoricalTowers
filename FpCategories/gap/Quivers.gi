@@ -26,7 +26,12 @@ BindGlobal( "PARSE_CAP_QUIVER_DATUM_FROM_STRING",
     data := SplitString( data, "|" );
     
     objs := SplitString( data[1], "," );
-    mors := SplitString( data[2], "," );
+    
+    if Length( data ) > 1 then
+        mors := SplitString( data[2], "," );
+    else
+        mors := [ ];
+    fi;
     
     q_datum := [ ];
     
