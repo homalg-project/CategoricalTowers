@@ -149,3 +149,11 @@ KeyDependentOperation( "ExternalHomsWithGivenLengthData", IsPathCategory, IsInt,
 KeyDependentOperation( "ExternalHomsWithGivenLength", IsCapCategory, IsInt, ReturnTrue );
 DeclareAttribute( "ExternalHoms", IsPathCategory );
 
+####################################
+#
+#! @Section Operations
+#
+####################################
+
+DeclareOperation( "ExtendFunctorToFpCategoryData",
+        [ IsPathCategory, IsList, IsCapCategory ] );

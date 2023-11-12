@@ -1045,6 +1045,54 @@ InstallMethod( DatumOfCellAsEvaluatableString,
     
 end );
 
+##
+InstallMethodForCompilerForCAP( ExtendFunctorToFpCategoryData,
+        "for a path category, a pair of functions, and a category",
+        [ IsPathCategory, IsList, IsCapCategory ],
+        
+  function( PQ, pair_of_funcs, category )
+    local Q, functor_on_objects, functor_on_morphisms,
+          extended_functor_on_objects, extended_functor_on_morphisms;
+    
+    Q := UnderlyingQuiver( PQ );
+    
+    functor_on_objects := pair_of_funcs[1];
+    functor_on_morphisms := pair_of_funcs[2];
+    
+    ## the code below is the doctrine-specific ur-algorithm for categories
+    
+    extended_functor_on_objects :=
+      function( objPQ )
+        local objQ;
+        
+        objQ := ObjectDatum( PQ, objPQ );
+        
+        return functor_on_objects( objQ );
+        
+    end;
+    
+    extended_functor_on_morphisms :=
+      function( source, morPQ, range )
+        local s, t, morsQ;
+        
+        s := ObjectDatum( PQ, Source( morPQ ) );
+        t := ObjectDatum( PQ, Range( morPQ ) );
+        
+        morsQ := MorphismDatum( PQ, morPQ )[2];
+        
+        return PreComposeList( category,
+                       source,
+                       List( morsQ, morQ -> functor_on_morphisms( morQ ) ),
+                       range );
+        
+    end;
+    
+    return Triple( PQ,
+                   Pair( extended_functor_on_objects, extended_functor_on_morphisms ),
+                   category );
+    
+end );
+
 ###################
 #
 # View Methods
