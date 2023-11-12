@@ -55,6 +55,8 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
     
     kC!.colors := colors;
     
+    SetUnderlyingQuiver( kC, UnderlyingQuiver( C ) );
+    
     SetSetOfObjects( kC,
           List( SetOfObjects( C ),
                     o -> ObjectConstructor( kC, o ) ) );

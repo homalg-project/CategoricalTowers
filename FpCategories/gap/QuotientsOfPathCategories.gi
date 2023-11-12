@@ -9,7 +9,7 @@ InstallOtherMethod( QuotientCategory,
         [ IsPathCategory, IsDenseList ],
   
   function ( C, relations )
-    local reduced_gb, leading_monomials, congruence_function, name, quo_C, q, hom_quo_C;
+    local reduced_gb, congruence_function, name, quo_C, q, leading_monomials, hom_quo_C;
     
     reduced_gb := ReducedGroebnerBasis( C, relations );
     
@@ -36,6 +36,10 @@ InstallOtherMethod( QuotientCategory,
                      congruence_function := congruence_function,
                      underlying_category := C ) : FinalizeCategory := false, overhead := false );
     
+    q := UnderlyingQuiver( C );
+    
+    SetUnderlyingQuiver( quo_C, q );
+    
     SetDefiningRelations( quo_C, relations );
     
     SetGroebnerBasisOfDefiningRelations( quo_C, reduced_gb );
@@ -52,8 +56,6 @@ InstallOtherMethod( QuotientCategory,
     leading_monomials := List( reduced_gb, g -> g[1] );
     
     if HasFiniteNumberOfNonMultiples( C, leading_monomials ) then
-        
-        q := UnderlyingQuiver( C );
         
         hom_quo_C := ExternalHoms( C, leading_monomials );
         
