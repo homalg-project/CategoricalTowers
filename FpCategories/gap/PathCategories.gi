@@ -43,9 +43,15 @@ InstallMethod( PathCategory,
     
     SetUnderlyingQuiver( C, q );
     
+    SetDefiningTripleOfUnderlyingQuiver( C,
+            Triple( NumberOfObjects( q ),
+                    NumberOfMorphisms( q ),
+                    ListN( IndicesOfSources( q ), IndicesOfTargets( q ), { s, t } -> Pair( -1 + s, -1 + t ) ) ) );
+    
     C!.compiler_hints :=
       rec( category_attribute_names :=
            [ "UnderlyingQuiver",
+             "DefiningTripleOfUnderlyingQuiver",
              ],
            );
     

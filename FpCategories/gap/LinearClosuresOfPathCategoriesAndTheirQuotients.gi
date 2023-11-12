@@ -57,6 +57,8 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
     
     SetUnderlyingQuiver( kC, UnderlyingQuiver( C ) );
     
+    SetDefiningTripleOfUnderlyingQuiver( kC, DefiningTripleOfUnderlyingQuiver( C ) );
+    
     SetSetOfObjects( kC,
           List( SetOfObjects( C ),
                     o -> ObjectConstructor( kC, o ) ) );
@@ -122,6 +124,7 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
     
     Append( kC!.compiler_hints.category_attribute_names,
             [ "UnderlyingQuiver",
+              "DefiningTripleOfUnderlyingQuiver",
               ] );
     
     Finalize( kC );

@@ -40,6 +40,8 @@ InstallOtherMethod( QuotientCategory,
     
     SetUnderlyingQuiver( quo_C, q );
     
+    SetDefiningTripleOfUnderlyingQuiver( quo_C, DefiningTripleOfUnderlyingQuiver( C ) );
+    
     SetDefiningRelations( quo_C, relations );
     
     SetGroebnerBasisOfDefiningRelations( quo_C, reduced_gb );
@@ -88,6 +90,7 @@ InstallOtherMethod( QuotientCategory,
     
     quo_C!.compiler_hints.category_attribute_names :=
       [ "UnderlyingQuiver",
+        "DefiningTripleOfUnderlyingQuiver",
         ];
     
     Finalize( quo_C );
