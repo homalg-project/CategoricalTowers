@@ -120,6 +120,10 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
     
     INSTALL_VIEW_AND_DISPLAY_METHODS_IN_LINEAR_CLOSURES_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS( kC );
     
+    Append( kC!.compiler_hints.category_attribute_names,
+            [ "UnderlyingQuiver",
+              ] );
+    
     Finalize( kC );
     
     return kC;

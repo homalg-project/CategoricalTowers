@@ -86,6 +86,10 @@ InstallOtherMethod( QuotientCategory,
         
     fi;
     
+    quo_C!.compiler_hints.category_attribute_names :=
+      [ "UnderlyingQuiver",
+        ];
+    
     Finalize( quo_C );
     
     return quo_C;

@@ -43,6 +43,12 @@ InstallMethod( PathCategory,
     
     SetUnderlyingQuiver( C, q );
     
+    C!.compiler_hints :=
+      rec( category_attribute_names :=
+           [ "UnderlyingQuiver",
+             ],
+           );
+    
     ##
     AddObjectConstructor( C,
       function ( C, q_obj )
