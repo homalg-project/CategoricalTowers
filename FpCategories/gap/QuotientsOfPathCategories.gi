@@ -53,7 +53,7 @@ InstallOtherMethod( QuotientCategory,
     
     if HasFiniteNumberOfNonMultiples( C, leading_monomials ) then
         
-        q := CapQuiver( C );
+        q := UnderlyingQuiver( C );
         
         hom_quo_C := ExternalHoms( C, leading_monomials );
         
@@ -155,7 +155,7 @@ InstallMethod( ViewString,
   function ( mor )
     local colors, str;
     
-    colors := CapQuiver( UnderlyingCategory( CapCategory( mor ) ) )!.colors;
+    colors := UnderlyingQuiver( UnderlyingCategory( CapCategory( mor ) ) )!.colors;
     
     str := ViewString( CanonicalRepresentative( mor ) );
     

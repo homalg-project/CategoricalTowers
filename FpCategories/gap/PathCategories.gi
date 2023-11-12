@@ -41,7 +41,7 @@ InstallMethod( PathCategory,
     
     C!.admissible_order := admissible_order;
     
-    SetCapQuiver( C, q );
+    SetUnderlyingQuiver( C, q );
     
     ##
     AddObjectConstructor( C,
@@ -56,7 +56,7 @@ InstallMethod( PathCategory,
       
       function ( C, obj )
         
-        return SetOfObjects( CapQuiver( C ) )[ObjectIndex( obj )];
+        return SetOfObjects( UnderlyingQuiver( C ) )[ObjectIndex( obj )];
         
     end );
     
@@ -105,7 +105,7 @@ InstallMethod( PathCategory,
       function ( C, mor )
         local q, l, s;
         
-        q := CapQuiver( C );
+        q := UnderlyingQuiver( C );
         
         l := MorphismLength( mor );
         s := MorphismSupport( mor );
@@ -176,7 +176,7 @@ InstallMethod( PathCategory,
         local s, t, m;
         
         s := ObjectIndex( obj );
-        t := Random( [ 1 .. NumberOfObjects( CapQuiver( C ) ) ] );
+        t := Random( [ 1 .. NumberOfObjects( UnderlyingQuiver( C ) ) ] );
         
         m := ExternalHomsWithGivenLength( C, 0, n )[s][t];
         
@@ -194,7 +194,7 @@ InstallMethod( PathCategory,
       function ( C, obj, n )
         local s, t, m;
         
-        s := Random( [ 1 .. NumberOfObjects( CapQuiver( C ) ) ] );
+        s := Random( [ 1 .. NumberOfObjects( UnderlyingQuiver( C ) ) ] );
         t := ObjectIndex( obj );
         
         m := ExternalHomsWithGivenLength( C, 0, n )[s][t];
@@ -261,7 +261,7 @@ InstallMethod( ExternalHomsWithGivenLengthDataOp,
   function ( C, len )
     local q, nr_objs, nr_gmors, gmors, data, prev_data, r, j, s;
     
-    q := CapQuiver( C );
+    q := UnderlyingQuiver( C );
     
     nr_objs := NumberOfObjects( q );
     nr_gmors := NumberOfMorphisms( q );
@@ -313,7 +313,7 @@ InstallMethod( ExternalHomsWithGivenLengthOp,
   function ( C, len )
     local q, supports;
     
-    q := CapQuiver( C );
+    q := UnderlyingQuiver( C );
     
     supports := ExternalHomsWithGivenLengthData( C, len );
     
@@ -335,7 +335,7 @@ InstallOtherMethod( ExternalHomsWithGivenLength,
   function ( C, l, u )
     local nr_objs;
     
-    nr_objs := NumberOfObjects( CapQuiver( C ) );
+    nr_objs := NumberOfObjects( UnderlyingQuiver( C ) );
     
     return LazyHList( [ 1 .. nr_objs ],
               s -> LazyHList( [ 1 .. nr_objs ],
@@ -350,7 +350,7 @@ InstallMethod( SetOfObjects,
   
   function ( C )
     
-    return List( SetOfObjects( CapQuiver( C ) ),
+    return List( SetOfObjects( UnderlyingQuiver( C ) ),
               obj -> CreateCapCategoryObjectWithAttributes( C, ObjectIndex, ObjectIndex( obj ) ) );
     
 end );
@@ -361,7 +361,7 @@ InstallMethod( SetOfGeneratingMorphisms,
   
   function ( C )
     
-    return List( SetOfMorphisms( CapQuiver( C ) ),
+    return List( SetOfMorphisms( UnderlyingQuiver( C ) ),
               mor -> MorphismConstructor( C,
                         SetOfObjects( C )[ObjectIndex( Source( mor ) )],
                         Pair( 1, [ mor ] ),
@@ -436,7 +436,7 @@ InstallMethod( MorphismSupport,
   function ( alpha )
     local q;
     
-    q := CapQuiver( CapCategory( alpha ) );
+    q := UnderlyingQuiver( CapCategory( alpha ) );
     
     return SetOfMorphisms( q ){MorphismIndices( alpha )};
     
@@ -482,7 +482,7 @@ InstallMethod( LaTeXOutput,
       
     else
       
-      labels := CollectEntries( LabelsOfMorphisms( CapQuiver( C ) ){MorphismIndices( alpha )} );
+      labels := CollectEntries( LabelsOfMorphisms( UnderlyingQuiver( C ) ){MorphismIndices( alpha )} );
       
       string := JoinStringsWithSeparator(
                   ListN( labels,
@@ -520,7 +520,7 @@ InstallMethod( AssignSetOfObjects,
   function ( C, label )
     local names, func;
     
-    names := LabelsOfObjects( CapQuiver( C ) );
+    names := LabelsOfObjects( UnderlyingQuiver( C ) );
     
     if label = "" and ForAny( names, name -> Int( name ) <> fail ) then
         Error( "the <label> passed to 'AssignSetOfObjects' must be a non-empty string!\n" );
@@ -557,7 +557,7 @@ InstallMethod( AssignSetOfGeneratingMorphisms,
   function ( C, label )
     local names, morphisms, func;
     
-    names := LabelsOfMorphisms( CapQuiver( C ) );
+    names := LabelsOfMorphisms( UnderlyingQuiver( C ) );
     
     if label = "" and ForAny( names, name -> Int( name ) <> fail ) then
         Error( "the <label> passed to 'AssignSetOfGeneratingMorphisms' must be a non-empty string!\n" );
@@ -609,7 +609,7 @@ InstallMethod( \.,
     
     name := NameRNam( string_as_int );
     
-    q := CapQuiver( C );
+    q := UnderlyingQuiver( C );
     
     objs_labels := LabelsOfObjects( q );
     mors_labels := LabelsOfMorphisms( q );
@@ -788,7 +788,7 @@ InstallMethod( IsAscendingForMorphisms,
     # total lexicographic order
     if admissible_order = "t-lex" then
       
-      for j in [ 1 .. NumberOfMorphisms( CapQuiver( C ) ) ] do
+      for j in [ 1 .. NumberOfMorphisms( UnderlyingQuiver( C ) ) ] do
           
           p_1 := Length( Positions( m_1, j ) );
           p_2 := Length( Positions( m_2, j ) );
@@ -884,7 +884,7 @@ InstallMethod( ViewString,
   function ( alpha )
     local colors;
     
-    colors := CapQuiver( CapCategory( alpha ) )!.colors;
+    colors := UnderlyingQuiver( CapCategory( alpha ) )!.colors;
     
     return
       Concatenation(
@@ -933,7 +933,7 @@ InstallMethod( HasFiniteNumberOfNonMultiples,
   function ( C, monomials )
     local q, nr_objs, is_loop, loops, loops_datum, len, is_finite, mors_datum, s, mor;
     
-    q := CapQuiver( C );
+    q := UnderlyingQuiver( C );
     
     nr_objs := NumberOfObjects( q );
     
@@ -1004,7 +1004,7 @@ InstallOtherMethod( ExternalHoms,
   function ( C, monomials )
     local q, nr_objs, nr_mors, sources_mors, targets_mors, id_mons, non_id_mons, irr_objs, rel_objs, irr_mors, supports, len, homC_deg, hypothesis, homQ_len_st, homC_len_st, s, t, m;
     
-    q := CapQuiver( C );
+    q := UnderlyingQuiver( C );
     
     nr_objs := NumberOfObjects( q );
     nr_mors := NumberOfMorphisms( q );

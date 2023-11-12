@@ -198,7 +198,7 @@ InstallGlobalFunction( "INSTALL_VIEW_AND_DISPLAY_METHODS_IN_LINEAR_CLOSURES_OF_P
         
         kC := CapCategory( alpha );
         
-        Q := CapQuiver( C );
+        Q := UnderlyingQuiver( C );
         
         coeffs := List( CoefficientsList( alpha ), c -> Concatenation( kC!.colors.coeff, String( c ), kC!.colors.reset ) );
         
@@ -279,7 +279,7 @@ InstallMethod( DataTablesOfCategory,
         Error( "the linear closure category passed to 'DataTablesOfCategory' must be hom-finite!" );
     fi;
     
-    q := CapQuiver( C );
+    q := UnderlyingQuiver( C );
     
     objs := SetOfObjects( kC );
     
@@ -348,7 +348,7 @@ InstallMethod( DataTablesOfCategory,
         Error( "the linear closure category passed to 'DataTablesOfCategory' must be hom-finite!" );
     fi;
     
-    q := CapQuiver( UnderlyingCategory( C ) );
+    q := UnderlyingQuiver( UnderlyingCategory( C ) );
     
     objs := SetOfObjects( kC );
     

@@ -21,7 +21,7 @@ InstallOtherMethod( ReductionOfMorphism,
   function ( C, f, G )
     local Q, G_datum, predicate, func, initial_value;
     
-    Q := CapQuiver( C );
+    Q := UnderlyingQuiver( C );
     
     G_datum := List( G, g -> Pair( MorphismLength( g[1] ), MorphismIndices( g[1] ) ) );
     
@@ -70,7 +70,7 @@ InstallMethod( OverlappingCoefficients,
   function ( C, f, g )
     local Q, l_f, i_f, l_g, i_g, pos, overlaps_on_left_of_g, overlaps_on_right_of_g, inner_overlaps;
     
-    Q := CapQuiver( C );
+    Q := UnderlyingQuiver( C );
     
     l_f := MorphismLength( f );
     i_f := MorphismIndices( f );
