@@ -186,11 +186,15 @@ InstallGlobalFunction( CreateCapQuiver,
                     j -> Concatenation( q_datum[3][4][j], ":", q_datum[2][2][q_datum[3][2][j]],"-≻",q_datum[2][2][q_datum[3][3][j]] ) ), "," ),
                 "]\" )" );
     
-    q := CreateCapCategory( name,
-               IsCapQuiver,
-               IsCapQuiverObject,
-               IsCapQuiverMorphism,
-               IsCapCategoryTwoCell : overhead := false );
+    q := CreateCapCategoryWithDataTypes( name,
+                 IsCapQuiver,
+                 IsCapQuiverObject,
+                 IsCapQuiverMorphism,
+                 IsCapCategoryTwoCell,
+                 IsBigInt,
+                 IsBigInt,
+                 fail
+                 : overhead := false );
     
     q!.category_as_first_argument := true;
     

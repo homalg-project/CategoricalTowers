@@ -25,11 +25,17 @@ InstallMethod( PathCategory,
     
     name := Concatenation( "PathCategory( ", Name( q ), " )" );
     
-    C := CreateCapCategory( name,
-               IsPathCategory,
-               IsPathCategoryObject,
-               IsPathCategoryMorphism,
-               IsCapCategoryTwoCell : overhead := false );
+    C := CreateCapCategoryWithDataTypes( name,
+                 IsPathCategory,
+                 IsPathCategoryObject,
+                 IsPathCategoryMorphism,
+                 IsCapCategoryTwoCell,
+                 CapJitDataTypeOfObjectOfCategory( q ),
+                 CapJitDataTypeOfNTupleOf( 2,
+                         IsBigInt,
+                         CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( q ) ) ),
+                 fail
+                 : overhead := false );
     
     C!.category_as_first_argument := true;
     
