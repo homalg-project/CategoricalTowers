@@ -63,7 +63,13 @@ InstallMethod( FiniteStrictProductCompletion,
     
     ## building the categorical tower:
     
-    opC := Opposite( C : only_primitive_operations := true, FinalizeCategory := true );
+    opC := Opposite( C : only_primitive_operations := true, FinalizeCategory := false );
+
+    if HasRangeCategoryOfHomomorphismStructure( C ) and not HasRangeCategoryOfHomomorphismStructure( opC ) then
+        SetRangeCategoryOfHomomorphismStructure( opC, RangeCategoryOfHomomorphismStructure( C ) );
+    fi;
+    
+    Finalize( opC : FinalizeCategory := true );
     
     UopC := FiniteStrictCoproductCompletion( opC : FinalizeCategory := true );
     
