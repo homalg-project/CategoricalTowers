@@ -156,7 +156,7 @@ InstallMethod( PathCategory,
       
       function ( C, obj )
         
-        return MorphismConstructor( C, obj, Pair( 0, [ ] ), obj );
+        return MorphismConstructor( C, obj, Pair( BigInt( 0 ), [ ] ), obj );
         
     end );
     
@@ -376,7 +376,7 @@ InstallMethod( SetOfGeneratingMorphisms,
     return List( SetOfMorphisms( UnderlyingQuiver( C ) ),
               mor -> MorphismConstructor( C,
                         SetOfObjects( C )[ObjectIndex( Source( mor ) )],
-                        Pair( 1, [ mor ] ),
+                        Pair( BigInt( 1 ), [ mor ] ),
                         SetOfObjects( C )[ObjectIndex( Target( mor ) )] ) );
     
 end );
