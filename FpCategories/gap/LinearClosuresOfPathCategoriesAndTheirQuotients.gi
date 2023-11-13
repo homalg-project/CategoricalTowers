@@ -47,8 +47,8 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
         
     fi;
     
-    kC := LinearClosure( k, C, sorting_func : FinalizeCategory := false, overhead := false ); # every morphism starts by its maximum monomial
-    
+    kC := LinearClosure( k, C, sorting_func : FinalizeCategory := false ); # every morphism starts by its maximum monomial
+
     kC!.Name := Concatenation( RingName( k ), "-", kC!.Name );
     
     kC!.admissible_order := admissible_order;
@@ -146,7 +146,7 @@ InstallOtherMethod( \[\],
   
   function ( k, C )
     
-    return LinearClosure( k, C : overhead := false );
+    return LinearClosure( k, C );
     
 end );
 
@@ -163,7 +163,7 @@ InstallOtherMethod( \[\],
   
   function ( k, C )
     
-    return LinearClosure( k, C : overhead := false );
+    return LinearClosure( k, C );
     
 end );
 
