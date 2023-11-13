@@ -95,6 +95,10 @@ HomomorphismStructureOnObjects( kqC.0, kqC.5 );
 #! <A row module over Q of rank 75>
 kqC.x + kqC.x^2;
 #! 1*[x^2] + 1*[x]:(0) -≻ (0)
+List( SetOfGeneratingMorphisms( kqC ), IsMonomorphism );
+#! [ false, true, true, true, true, true, true, true, false ]
+List( SetOfGeneratingMorphisms( kqC ), IsEpimorphism );
+#! [ false, true, true, true, true, true, true, true, false ]
 A := AlgebroidFromDataTables( kqC );
 #! Q-algebroid( {0,1,2,3,4,5}[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,
 #! t:4-≻5,y:5-≻5] ) defined by 6 objects and 9 generating morphisms
