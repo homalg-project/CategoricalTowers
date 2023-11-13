@@ -47,8 +47,8 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
         
     fi;
     
-    kC := LinearClosure( k, C, sorting_func : FinalizeCategory := false, overhead := false ); # every morphism starts by its maximum monomial
-    
+    kC := LinearClosure( k, C, sorting_func : FinalizeCategory := false ); # every morphism starts by its maximum monomial
+
     kC!.Name := Concatenation( RingName( k ), "-", kC!.Name );
     
     kC!.admissible_order := admissible_order;
@@ -56,8 +56,6 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
     kC!.colors := colors;
     
     SetUnderlyingQuiver( kC, UnderlyingQuiver( C ) );
-    
-    SetDefiningTripleOfUnderlyingQuiver( kC, DefiningTripleOfUnderlyingQuiver( C ) );
     
     SetSetOfObjects( kC,
           List( SetOfObjects( C ),
@@ -69,6 +67,10 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
                               SetOfObjects( kC )[ObjectIndex( Source( m ) )],
                               Pair( [ One( UnderlyingRing( kC ) ) ], [ m ] ),
                               SetOfObjects( kC )[ObjectIndex( Target( m ) )] ) ) );
+    
+    SetDefiningTripleOfUnderlyingQuiver( kC, DefiningTripleOfUnderlyingQuiver( C ) );
+    ## this is a hotfix: delete as soon as we install all derivations at once in Finalize instead of the step-by-step addition of derivations in the Add-functions.
+    Reevaluate( kC!.derivations_weight_list );
     
     if CanCompute( C, "MorphismsOfExternalHom" ) then
         
@@ -146,7 +148,7 @@ InstallOtherMethod( \[\],
   
   function ( k, C )
     
-    return LinearClosure( k, C : overhead := false );
+    return LinearClosure( k, C );
     
 end );
 
@@ -163,7 +165,7 @@ InstallOtherMethod( \[\],
   
   function ( k, C )
     
-    return LinearClosure( k, C : overhead := false );
+    return LinearClosure( k, C );
     
 end );
 
