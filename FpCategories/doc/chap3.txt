@@ -4,7 +4,15 @@
   
   [1X3.1 [33X[0;0YOperations[133X[101X
   
-  [1X3.1-1 DataTablesOfCategory[101X
+  [1X3.1-1 DefiningTripleOfUnderlyingQuiver[101X
+  
+  [33X[1;0Y[29X[2XDefiningTripleOfUnderlyingQuiver[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya pair[133X
+  
+  [33X[0;0YThe defining triple of the quiver underlying the finitely presented category
+  [3XC[103X.[133X
+  
+  [1X3.1-2 DataTablesOfCategory[101X
   
   [33X[1;0Y[29X[2XDataTablesOfCategory[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya pair of lists[133X

@@ -6,10 +6,10 @@
       [1X Finitely presented categories by generating quivers and relations [101X
   
   
-                                   2023.11-01
+                                   2023.11-08
   
   
-                                11 November 2023
+                                13 November 2023
   
   
                                 Mohamed Barakat
@@ -71,15 +71,16 @@
       2.2-4 AssignSetOfObjects
       2.2-5 AssignSetOfGeneratingMorphisms
     2.3 [33X[0;0YAttributes[133X
-      2.3-1 SetOfObjects
-      2.3-2 SetOfGeneratingMorphisms
-      2.3-3 ObjectIndex
-      2.3-4 ObjectLabel
-      2.3-5 MorphismLength
-      2.3-6 MorphismSupport
-      2.3-7 MorphismIndices
-      2.3-8 MorphismLabel
-      2.3-9 IsFinitePathCategory
+      2.3-1 UnderlyingQuiver
+      2.3-2 SetOfObjects
+      2.3-3 SetOfGeneratingMorphisms
+      2.3-4 ObjectIndex
+      2.3-5 ObjectLabel
+      2.3-6 MorphismLength
+      2.3-7 MorphismSupport
+      2.3-8 MorphismIndices
+      2.3-9 MorphismLabel
+      2.3-10 IsFinitePathCategory
     2.4 [33X[0;0YOperations[133X
       2.4-1 GroebnerBasis
       2.4-2 ReducedGroebnerBasisWithGivenGroebnerBasis
@@ -98,7 +99,8 @@
       2.5-8 CanonicalRepresentative
   3 [33X[0;0YTools[133X
     3.1 [33X[0;0YOperations[133X
-      3.1-1 DataTablesOfCategory
+      3.1-1 DefiningTripleOfUnderlyingQuiver
+      3.1-2 DataTablesOfCategory
   
   
   [32X
