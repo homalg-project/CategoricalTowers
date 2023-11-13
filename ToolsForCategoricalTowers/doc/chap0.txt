@@ -6,10 +6,10 @@
                          [1X Tools for CategoricalTowers [101X
   
   
-                                   2023.11-03
+                                   2023.11-04
   
   
-                                10 November 2023
+                                13 November 2023
   
   
                                 Mohamed Barakat
@@ -105,11 +105,9 @@
       1.12-28 AddUniversalMorphismIntoLimit
       1.12-29 AddUniversalMorphismIntoLimitWithGivenLimit
   2 [33X[0;0YTools[133X
-    2.1 [33X[0;0YAttributes[133X
-      2.1-1 DefiningTripleOfUnderlyingQuiver
-    2.2 [33X[0;0YFunctors[133X
-      2.2-1 CovariantHomFunctor
-      2.2-2 GlobalSectionFunctor
+    2.1 [33X[0;0YFunctors[133X
+      2.1-1 CovariantHomFunctor
+      2.1-2 GlobalSectionFunctor
   
   
   [32X
