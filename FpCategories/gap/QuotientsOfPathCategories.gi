@@ -9,7 +9,7 @@ InstallOtherMethod( QuotientCategory,
         [ IsPathCategory, IsDenseList ],
   
   function ( C, relations )
-    local reduced_gb, leading_monomials, congruence_function, name, quo_C, q, hom_quo_C;
+    local reduced_gb, congruence_function, name, quo_C, q, leading_monomials, hom_quo_C;
     
     reduced_gb := ReducedGroebnerBasis( C, relations );
     
@@ -36,6 +36,12 @@ InstallOtherMethod( QuotientCategory,
                      congruence_function := congruence_function,
                      underlying_category := C ) : FinalizeCategory := false, overhead := false );
     
+    q := UnderlyingQuiver( C );
+    
+    SetUnderlyingQuiver( quo_C, q );
+    
+    SetDefiningTripleOfUnderlyingQuiver( quo_C, DefiningTripleOfUnderlyingQuiver( C ) );
+    
     SetDefiningRelations( quo_C, relations );
     
     SetGroebnerBasisOfDefiningRelations( quo_C, reduced_gb );
@@ -52,8 +58,6 @@ InstallOtherMethod( QuotientCategory,
     leading_monomials := List( reduced_gb, g -> g[1] );
     
     if HasFiniteNumberOfNonMultiples( C, leading_monomials ) then
-        
-        q := CapQuiver( C );
         
         hom_quo_C := ExternalHoms( C, leading_monomials );
         
@@ -83,6 +87,11 @@ InstallOtherMethod( QuotientCategory,
         end );
         
     fi;
+    
+    quo_C!.compiler_hints.category_attribute_names :=
+      [ "UnderlyingQuiver",
+        "DefiningTripleOfUnderlyingQuiver",
+        ];
     
     Finalize( quo_C );
     
@@ -155,7 +164,7 @@ InstallMethod( ViewString,
   function ( mor )
     local colors, str;
     
-    colors := CapQuiver( UnderlyingCategory( CapCategory( mor ) ) )!.colors;
+    colors := UnderlyingQuiver( UnderlyingCategory( CapCategory( mor ) ) )!.colors;
     
     str := ViewString( CanonicalRepresentative( mor ) );
     

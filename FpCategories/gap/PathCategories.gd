@@ -85,6 +85,12 @@ DeclareOperation( "AssignSetOfGeneratingMorphisms", [ IsPathCategory, IsString ]
 ####################################
 
 #! @Description
+#!  Returns the defining quiver of the path category <A>C</A>.
+#! @Arguments C
+#! @Returns a list of &CAP; category objects
+DeclareAttribute( "UnderlyingQuiver", IsPathCategory );
+
+#! @Description
 #!  Returns the set of objects of <A>C</A>.
 #! @Arguments C
 #! @Returns a list of &CAP; category objects

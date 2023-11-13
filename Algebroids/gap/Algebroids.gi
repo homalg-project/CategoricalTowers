@@ -46,13 +46,13 @@ end );
 ##
 InstallMethod( SetOfObjects,
         "for an algebroid",
-        [ IsAlgebroid and HasUnderlyingQuiver ],
+        [ IsAlgebroid ],
         
   A -> List( Vertices( UnderlyingQuiver( A ) ), o -> A.( String( o ) ) ) );
 
 ##
 InstallMethod( AssignSetOfObjects,
-        [ IsAlgebroid and HasUnderlyingQuiver, IsString ],
+        [ IsAlgebroid, IsString ],
         
   function( A, label )
     local names, objects, func;
@@ -94,7 +94,7 @@ end );
 ##
 InstallMethod( SetOfGeneratingMorphisms,
         "for an algebroid",
-        [ IsAlgebroid and HasUnderlyingQuiver ],
+        [ IsAlgebroid ],
         
   A -> List( Arrows( UnderlyingQuiver( A ) ), o -> A.(String( o ) ) ) );
 
@@ -124,7 +124,7 @@ InstallMethodWithCache( SetOfGeneratingMorphisms,
 
 ##
 InstallMethod( AssignSetOfGeneratingMorphisms,
-        [ IsAlgebroid and HasUnderlyingQuiver, IsString ],
+        [ IsAlgebroid, IsString ],
         
   function( A, label )
     local names, morphisms, func;

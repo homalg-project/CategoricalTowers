@@ -31,7 +31,7 @@ end );
 ##
 InstallMethod( SetOfObjects,
         "for a f.p. category",
-        [ IsFpCategory and HasUnderlyingQuiver ],
+        [ IsFpCategory ],
         
   A -> List( Vertices( UnderlyingQuiver( A ) ), o -> A.( String( o ) ) ) );
 
@@ -44,7 +44,7 @@ InstallOtherMethod( SetOfObjects,
 
 ##
 InstallMethod( AssignSetOfObjects,
-        [ IsFpCategory and HasUnderlyingQuiver, IsString ],
+        [ IsFpCategory, IsString ],
         
   function( A, label )
     local names, objects, func;
@@ -127,7 +127,7 @@ end );
 ##
 InstallMethod( SetOfGeneratingMorphisms,
         "for a f.p. category",
-        [ IsFpCategory and HasUnderlyingQuiver ],
+        [ IsFpCategory ],
         
   A -> List( Arrows( UnderlyingQuiver( A ) ), o -> A.(String( o ) ) ) );
 
@@ -164,7 +164,7 @@ InstallMethodWithCache( SetOfGeneratingMorphisms,
 
 ##
 InstallMethod( AssignSetOfGeneratingMorphisms,
-        [ IsFpCategory and HasUnderlyingQuiver, IsString ],
+        [ IsFpCategory, IsString ],
   function( A, label )
     local names, morphisms, func;
     
