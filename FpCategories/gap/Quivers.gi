@@ -339,7 +339,7 @@ InstallMethod( OppositeQuiver,
              IndicesOfTargets( q ),
              IndicesOfSources( q ),
              LabelsOfMorphisms( q ),
-             LaTeXStringsOfMorphisms( q ) ) ) );
+             LaTeXStringsOfMorphisms( q ) ) ) : colors := q!.colors );
     
     SetOppositeQuiver( q_op, q );
     
