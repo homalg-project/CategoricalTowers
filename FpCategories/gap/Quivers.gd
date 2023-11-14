@@ -69,6 +69,12 @@ fi;
 #! @Returns a CAP quiver
 DeclareGlobalFunction( "RandomCapQuiver" );
 
+#! @Description
+#!  Returns the tensor product of <A>q1</A> and <A>q2</A>.
+#! @Arguments q1, q2
+#! @Returns a &CAP; quiver
+DeclareOperation( "TensorProductOfCapQuivers", [ IsCapQuiver, IsCapQuiver ] );
+
 ####################################
 #
 #! @Section Attributes
@@ -134,6 +140,12 @@ DeclareAttribute( "IndicesOfSources", IsCapQuiver );
 #! @Arguments q
 #! @Returns a list
 DeclareAttribute( "IndicesOfTargets", IsCapQuiver );
+
+#! @Description
+#!  Returns the indices of all paris of morphisms where the target of the first morphism equals the source of the second morphism.
+#! @Arguments q
+#! @Returns a list
+DeclareAttribute( "IndicesPairsOfCompatibleMorphisms", IsCapQuiver );
 
 #! @Description
 #!  Returns the set of objects of <A>q</A>.

@@ -68,6 +68,13 @@ MorphismsOfExternalHom( q.("0"), q.("1") );
 q_op := OppositeQuiver( q );
 #! Quiver( "q_op(0,1,2,3,4,5)[x:0-≻0,s:1-≻0,a:2-≻1,c:3-≻1,e:4-≻1,b:4-≻2,
 #! d:4-≻3,t:5-≻4,y:5-≻5]" )
+MorphismsOfExternalHom( q_op.1, q_op.0 );
+#! [ s:(1) -≻ (0) ]
+q_op_x_q := TensorProductOfCapQuivers( q_op, q );;
+NumberOfObjects( q_op_x_q );
+#! 36
+NumberOfMorphisms( q_op_x_q );
+#! 108
 #! @EndExample
 
 #! @Example

@@ -345,6 +345,58 @@ InstallMethod( OppositeQuiver,
 end );
 
 ##
+InstallMethod( TensorProductOfCapQuivers,
+          [ IsCapQuiver, IsCapQuiver ],
+  
+  function ( q1, q2 )
+    local nr_objs, labels_objs, latex_strings_objs, nr_gmors, labels_gmors, latex_strings_gmors, sources_gmors, targets_gmors;
+    
+    nr_objs := NumberOfObjects( q1 ) * NumberOfObjects( q2 );
+    
+    labels_objs  := Concatenation( List( LabelsOfObjects( q1 ), l -> List( LabelsOfObjects( q2 ), r -> Concatenation( l, "⊗", r ) ) ) );
+    
+    latex_strings_objs := Concatenation( List( LaTeXStringsOfObjects( q1 ), l -> List( LaTeXStringsOfObjects( q2 ), r -> Concatenation( l, "\\otimes ", r ) ) ) );
+    
+    nr_gmors := NumberOfObjects( q1 ) * NumberOfMorphisms( q2 ) + NumberOfMorphisms( q1 ) * NumberOfObjects( q2 );
+    
+    labels_gmors :=
+        Concatenation(
+            [ Concatenation( List( LabelsOfObjects( q1 ), l -> List( LabelsOfMorphisms( q2 ), r -> Concatenation( l, "⊗", r ) ) ) ),
+              Concatenation( List( LabelsOfMorphisms( q1 ), l -> List( LabelsOfObjects( q2 ), r -> Concatenation( l, "⊗", r ) ) ) ) ] );
+    
+    latex_strings_gmors :=
+        Concatenation(
+            [ Concatenation( List( LaTeXStringsOfObjects( q1 ), l -> List( LaTeXStringsOfMorphisms( q2 ), r -> Concatenation( l, "\\otimes ", r ) ) ) ),
+              Concatenation( List( LaTeXStringsOfMorphisms( q1 ), l -> List( LaTeXStringsOfObjects( q2 ), r -> Concatenation( l, "\\otimes ", r ) ) ) ) ] );
+
+    sources_gmors :=
+        Concatenation(
+            [ Concatenation( List( [ 1 .. NumberOfObjects( q1 ) ], l -> List( IndicesOfSources( q2 ), r -> (l-1) * NumberOfObjects( q2 ) + r ) ) ),
+              Concatenation( List( IndicesOfSources( q1 ), l -> List( [ 1 .. NumberOfObjects( q2 ) ], r -> (l-1) * NumberOfObjects( q2 ) + r ) ) ) ] );
+    
+    targets_gmors :=
+        Concatenation(
+            [ Concatenation( List( [ 1 .. NumberOfObjects( q1 ) ], l -> List( IndicesOfTargets( q2 ), r -> (l-1) * NumberOfObjects( q2 ) + r ) ) ),
+              Concatenation( List( IndicesOfTargets( q1 ), l -> List( [ 1 .. NumberOfObjects( q2 ) ], r -> (l-1) * NumberOfObjects( q2 ) + r ) ) ) ] );
+    
+    return
+      CreateCapQuiver(
+         NTuple( 3,
+           Concatenation( QuiverName( q1 ), "⊗", QuiverName( q2 ) ),
+           NTuple( 3,
+             nr_objs,
+             labels_objs,
+             latex_strings_objs ),
+           NTuple( 5,
+             nr_gmors,
+             sources_gmors,
+             targets_gmors,
+             labels_gmors,
+             latex_strings_gmors ) ) : colors := q1!.colors );
+
+end );
+
+##
 InstallMethod( SetOfObjects,
           [ IsCapQuiver ],
   
@@ -367,6 +419,20 @@ InstallMethod( SetOfMorphisms,
                         ObjectConstructor( q, IndicesOfTargets( q )[j] ),
                         MorphismIndex, j,
                         CapQuiver, q ) );
+    
+end );
+
+##
+InstallMethod( IndicesPairsOfCompatibleMorphisms,
+          [ IsCapQuiver ],
+  
+  function ( q )
+    local sources, targets;
+    
+    sources := IndicesOfSources( q );
+    targets := IndicesOfTargets( q );
+    
+    return Concatenation( List( [ 1 .. NumberOfMorphisms( q ) ], i -> List( Filtered( [ 1 .. NumberOfMorphisms( q ) ], j -> targets[i] = sources[j] ), j -> [ i, j ] ) ) );
     
 end );
 
