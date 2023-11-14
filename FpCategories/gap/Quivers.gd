@@ -40,9 +40,9 @@ DeclareCategory( "IsCapQuiverMorphism",
 #!  Construct a CAP quiver out of the <A>q_datum</A> which is specified as follows:
 #!  * <A>q_datum</A>[1] is a string representing the name of the quiver.
 #!  * <A>q_datum</A>[2] is a list consisting of two entries: the number of objects and the list of labels for these objects.
-#!    This list might contain an optional third entry for the list of latex-strings for the objects.
+#!    This list might contain an optional third entry for the list of LaTeX-strings for the objects.
 #!  * <A>q_datum</A>[3] is a list consisting of four entries: the number of morphisms, the list of source-indices, the list of range-indices and the list of labels for these morphisms.
-#!    This list might contain an optional fifth entry for the list of latex-strings for the morphisms.
+#!    This list might contain an optional fifth entry for the list of LaTeX-strings for the morphisms.
 #! @Arguments q_datum
 #! @Returns a &CAP; quiver
 DeclareGlobalFunction( "CreateCapQuiver" );
@@ -94,11 +94,15 @@ DeclareAttribute( "QuiverName", IsCapQuiver );
 DeclareAttribute( "NumberOfObjects", IsCapQuiver );
 
 #! @Description
-#!  Returns the labels of objects in the quiver <A>q</A>.
+#!  Returns the labels of all objects in the quiver <A>q</A>.
 #! @Arguments q
 #! @Returns a list
 DeclareAttribute( "LabelsOfObjects", IsCapQuiver );
 
+#! @Description
+#!  Returns the LaTeX-strings of all objects in the quiver <A>q</A>.
+#! @Arguments q
+#! @Returns a list
 DeclareAttribute( "LaTeXStringsOfObjects", IsCapQuiver );
 
 #! @Description
@@ -108,11 +112,15 @@ DeclareAttribute( "LaTeXStringsOfObjects", IsCapQuiver );
 DeclareAttribute( "NumberOfMorphisms", IsCapQuiver );
 
 #! @Description
-#!  Returns the labels of morphisms in the quiver <A>q</A>.
+#!  Returns the labels of all morphisms in the quiver <A>q</A>.
 #! @Arguments q
 #! @Returns a list
 DeclareAttribute( "LabelsOfMorphisms", IsCapQuiver );
 
+#! @Description
+#!  Returns the LaTeX-strings of all morphisms in the quiver <A>q</A>.
+#! @Arguments q
+#! @Returns a list
 DeclareAttribute( "LaTeXStringsOfMorphisms", IsCapQuiver );
 
 #! @Description
