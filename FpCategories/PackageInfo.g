@@ -30,6 +30,20 @@ Persons := [
     Place := "Siegen",
     Institution := "University of Siegen",
   ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Kamal",
+    LastName := "Saleh",
+    WWWHome := "https://github.com/kamalsaleh",
+    Email := "kamal.saleh@uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Walter-Flex-Str. 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
+  ),
 ],
 
 # BEGIN URLS
