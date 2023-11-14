@@ -25,7 +25,14 @@ BindGlobal( "PARSE_CAP_QUIVER_DATUM_FROM_STRING",
     data := ReplacedString( data, ")[", "|" );
     data := SplitString( data, "|" );
     
-    objs := SplitString( data[1], "," );
+    if Int( data[1] ) <> fail then
+        objs := List( [ 1 .. Int( data[1] ) ], String );
+    elif PositionSublist( data[1], ".." ) <> fail then
+        p := PositionSublist( data[1], ".." );
+        objs := List( [ Int( data[1]{[ 1 .. p-1 ]} ) .. Int( data[1]{[ p+2 .. Length( data[1] ) ]} ) ], String );
+    else
+        objs := SplitString( data[1], "," );
+    fi;
     
     if Length( data ) > 1 then
         mors := SplitString( data[2], "," );
@@ -147,21 +154,11 @@ end );
 ##
 InstallGlobalFunction( CreateCapQuiver,
   
-  function ( data )
-    local q_datum, colors, name, q;
+  function ( q_datum )
+    local colors, name, q;
     
-    if IsString( data ) then
-        data := PARSE_CAP_QUIVER_DATUM_FROM_STRING( data );
-    fi;
-    
-    q_datum := ShallowCopy( data );
-    
-    if not IsBound( q_datum[2][3] ) then
-        Add( q_datum[2], q_datum[2][2] );
-    fi;
-    
-    if not IsBound( q_datum[3][5] ) then
-        Add( q_datum[3], q_datum[3][4] );
+    if IsString( q_datum ) then
+        q_datum := PARSE_CAP_QUIVER_DATUM_FROM_STRING( q_datum );
     fi;
     
     colors := ValueOption( "colors" );
@@ -205,13 +202,19 @@ InstallGlobalFunction( CreateCapQuiver,
     SetQuiverName( q, q_datum[1] );
     SetNumberOfObjects( q, q_datum[2][1] );
     SetLabelsOfObjects( q, q_datum[2][2] );
-    SetLaTeXStringsOfObjects( q, q_datum[2][3] );
+    
+    if IsBound( q_datum[2][3] ) then
+        SetLaTeXStringsOfObjects( q, q_datum[2][3] );
+    fi;
     
     SetNumberOfMorphisms( q, q_datum[3][1] );
     SetIndicesOfSources( q, q_datum[3][2] );
     SetIndicesOfTargets( q, q_datum[3][3] );
     SetLabelsOfMorphisms( q, q_datum[3][4] );
-    SetLaTeXStringsOfMorphisms( q, q_datum[3][5] );
+    
+    if IsBound( q_datum[3][5] ) then
+        SetLaTeXStringsOfMorphisms( q, q_datum[3][5] );
+    fi;
     
     ##
     AddObjectConstructor( q,
@@ -419,6 +422,24 @@ InstallMethod( SetOfMorphisms,
                         ObjectConstructor( q, IndicesOfTargets( q )[j] ),
                         MorphismIndex, j,
                         CapQuiver, q ) );
+    
+end );
+
+##
+InstallMethod( LaTeXStringsOfObjects,
+          [ IsCapQuiver ],
+  function ( q )
+    
+    return LabelsOfObjects( q );
+    
+end );
+
+##
+InstallMethod( LaTeXStringsOfMorphisms,
+          [ IsCapQuiver ],
+  function ( q )
+    
+    return LabelsOfMorphisms( q );
     
 end );
 

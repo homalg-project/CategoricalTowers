@@ -84,5 +84,9 @@ Assert( 0, NumberOfObjects( q1 ) = 2 );
 Assert( 0, NumberOfMorphisms( q1 ) = 4 );
 Assert( 0, Length( Filtered( SetOfMorphisms( q1 ), IsEndomorphism ) ) = 0 );
 Assert( 0, Length( Filtered( SetOfMorphisms( q2 ), IsEndomorphism ) ) > 0 );
+q3 := CreateCapQuiver( "q(3)[a:1->2,b:2->3]" );
+#! Quiver( "q(1,2,3)[a:1-≻2,b:2-≻3]" )
+q4 := CreateCapQuiver( "q(4..6)[a:4->5,b:5->6]" );
+#! Quiver( "q(4,5,6)[a:4-≻5,b:5-≻6]" )
 #! @EndExample
 
