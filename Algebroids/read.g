@@ -25,6 +25,7 @@ ReadPackage( "Algebroids", "gap/Functors.gi");
 ReadPackage( "Algebroids", "gap/CategoryFromNerveData.gi");
 ReadPackage( "Algebroids", "gap/CategoryFromDataTables.gi");
 ReadPackage( "Algebroids", "gap/AlgebroidFromDataTables.gi");
+ReadPackage( "Algebroids", "gap/FunctionalPreSheavesOfAlgebroidsFromDataTables.gi" );
 ReadPackage( "Algebroids", "gap/CategoryOfAlgebroids.gi");
 ReadPackage( "Algebroids", "gap/Bialgebroids.gi");
 ReadPackage( "Algebroids", "gap/SimplicialCategory.gi");
