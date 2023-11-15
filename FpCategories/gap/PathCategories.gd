@@ -89,11 +89,26 @@ DeclareOperation( "AssignSetOfGeneratingMorphisms", [ IsPathCategory, IsString ]
 #! @Returns a list of &CAP; category objects
 DeclareAttribute( "UnderlyingQuiver", IsPathCategory );
 
+CapJitAddTypeSignature( "UnderlyingQuiver", [ IsPathCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingQuiver( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #!  Returns the set of objects of <A>C</A>.
 #! @Arguments C
 #! @Returns a list of &CAP; category objects
 DeclareAttribute( "SetOfObjects", IsPathCategory );
+
+CapJitAddTypeSignature( "SetOfObjects", [ IsPathCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf(
+                   CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+    
+end );
 
 #! @Description
 #!  Returns the set of generating morphisms of <A>C</A>.
@@ -101,11 +116,21 @@ DeclareAttribute( "SetOfObjects", IsPathCategory );
 #! @Returns a list of &CAP; category morphisms
 DeclareAttribute( "SetOfGeneratingMorphisms", IsPathCategory );
 
+CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsPathCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf(
+                   CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #!  Returns the index of the object <A>v</A>.
 #! @Arguments v
 #! @Returns a positive integer
 DeclareAttribute( "ObjectIndex", IsPathCategoryObject );
+
+CapJitAddTypeSignature( "ObjectIndex", [ IsPathCategoryObject ], IsBigInt );
 
 DeclareAttribute( "UnderlyingQuiverObject", IsPathCategoryObject );
 
@@ -121,6 +146,8 @@ DeclareAttribute( "ObjectLabel", IsPathCategoryObject );
 #! @Returns a positive integer
 DeclareAttribute( "MorphismLength", IsPathCategoryMorphism );
 
+CapJitAddTypeSignature( "MorphismLength", [ IsPathCategoryMorphism ], IsBigInt );
+
 #! @Description
 #!  Returns the list of morphisms in the underlying quiver which defines <A>alpha</A>.
 #! @Arguments alpha
@@ -132,6 +159,8 @@ DeclareAttribute( "MorphismSupport", IsPathCategoryMorphism );
 #! @Arguments alpha
 #! @Returns a dense-list of positive integers
 DeclareAttribute( "MorphismIndices", IsPathCategoryMorphism );
+
+CapJitAddTypeSignature( "MorphismIndices", [ IsPathCategoryMorphism ], CapJitDataTypeOfListOf( IsBigInt ) );
 
 #! @Description
 #!  Returns the label of the morphism <A>alpha</A>.
