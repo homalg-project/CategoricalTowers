@@ -10,10 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2023.11-07",
+Version := "2023.11-08",
 
-Date := "2023-11-12",
-Date := "2023-11-12",
+Date := "2023-11-15",
+Date := "2023-11-15",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -92,7 +92,7 @@ Dependencies := rec(
                    [ "CAP", ">= 2023.10-04" ],
                    [ "MonoidalCategories", ">= 2023.10-01" ],
                    [ "CartesianCategories", ">= 2023.10-01" ],
-                   [ "Algebroids", ">= 2023.10-08" ],
+                   [ "Algebroids", ">= 2023.11-04" ],
                    [ "FiniteCocompletions", ">= 2023.11-07" ],
                    [ "PreSheaves", ">= 2023.10-03" ],
                    [ "RingsForHomalg", ">= 2020.02.04" ],
