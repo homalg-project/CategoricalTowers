@@ -52,14 +52,13 @@ if false then
 DeclareOperation( "ObjectConstructor", [ IsPathCategory, IsInt ] );
 
 #! @Description
-#!  The input is a path category <A>C</A> of &CAP; quiver $q$, two objects <A>s</A>, <A>t</A> and a list
-#!  <A>datum</A> consisting of two entries: <A>datum</A>[1] is a positive integer and
-#!  <A>datum</A>[2] is a list of length <A>datum</A>[1]
+#!  The input is a path category <A>C</A> of &CAP; quiver $q$, two objects <A>s</A>, <A>t</A>
+#!  a nonnegative integer <A>length</A> and a list <A>support</A> of length <A>l</A>
 #!  consisting of morphisms in $q$ where the target of each morphism is equal to the source of the next morphism.
-#!  The output is the morphism in <A>C</A> whose length is <A>datum</A>[1] and whose support is <A>datum</A>[2].
-#! @Arguments C, s, datum, t
+#!  The output is the morphism in <A>C</A> whose length is <A>l</A> and whose support is <A>support</A>.
+#! @Arguments C, s, l, support, t
 #! @Returns a &CAP; category object
-DeclareOperation( "MorphismConstructor", [ IsPathCategory, IsPathCategoryObject, IsDenseList, IsPathCategoryObject ] );
+DeclareOperation( "MorphismConstructor", [ IsPathCategory, IsPathCategoryObject, IsInt, IsDenseList, IsPathCategoryObject ] );
 fi;
 
 #! @Description
@@ -107,6 +106,8 @@ DeclareAttribute( "SetOfGeneratingMorphisms", IsPathCategory );
 #! @Arguments v
 #! @Returns a positive integer
 DeclareAttribute( "ObjectIndex", IsPathCategoryObject );
+
+DeclareAttribute( "UnderlyingQuiverObject", IsPathCategoryObject );
 
 #! @Description
 #!  Returns the label of the object <A>v</A>.

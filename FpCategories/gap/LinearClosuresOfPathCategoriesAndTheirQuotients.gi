@@ -230,10 +230,10 @@ InstallGlobalFunction( "INSTALL_VIEW_AND_DISPLAY_METHODS_IN_LINEAR_CLOSURES_OF_P
               datum_string,
               Q!.colors.other,
               ":",
-              ViewString( ObjectDatum( UnderlyingOriginalObject( Source( alpha ) ) ) ),
+              ViewString( UnderlyingOriginalObject( Source( alpha ) ) ),
               Q!.colors.other,
               " -≻ ",
-              ViewString( ObjectDatum( UnderlyingOriginalObject( Target( alpha ) ) ) ) );
+              ViewString( UnderlyingOriginalObject( Target( alpha ) ) ) );
           
     end );
     

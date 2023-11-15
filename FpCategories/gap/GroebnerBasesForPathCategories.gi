@@ -46,10 +46,10 @@ InstallOtherMethod( ReductionOfMorphism,
           j := PositionSublist( f_datum[2], g_datum[2] );
           
           return MorphismConstructor( C,
-                      Source( f ),
-                      f_datum[1] - g_datum[1] + MorphismLength( G[i][2] ),
-                      Concatenation( f_datum[2]{[ 1 .. j - 1 ]}, MorphismIndices( G[i][2] ), f_datum[2]{[ j + g_datum[1] .. f_datum[1] ]} ),
-                      Target( f ) );
+                         Source( f ),
+                         Pair( f_datum[1] - g_datum[1] + MorphismLength( G[i][2] ),
+                               Concatenation( f_datum[2]{[ 1 .. j - 1 ]}, MorphismIndices( G[i][2] ), f_datum[2]{[ j + g_datum[1] .. f_datum[1] ]} ) ),
+                         Target( f ) );
           
         fi;
         
@@ -85,11 +85,11 @@ InstallMethod( OverlappingCoefficients,
       List( pos,
         i ->  Pair(
                 Pair(
-                  MorphismConstructor( C, Source( g ), Pair( l_g - i, SetOfMorphisms( Q ){i_g{[ 1 .. l_g - i ]}} ), Source( f ) ),
+                  MorphismConstructor( C, Source( g ), Pair( l_g - i, i_g{[ 1 .. l_g - i ]} ), Source( f ) ),
                   IdentityMorphism( C, Target( f ) ) ),
                 Pair(
                   IdentityMorphism( C, Source( g ) ),
-                  MorphismConstructor( C, Target( g ), Pair( l_f - i, SetOfMorphisms( Q ){i_f{[ i + 1 .. l_f ]}} ), Target( f ) ) ) ) );
+                  MorphismConstructor( C, Target( g ), Pair( l_f - i, i_f{[ i + 1 .. l_f ]} ), Target( f ) ) ) ) );
     
     pos := PositionsProperty( [ 1 .. Minimum( l_f, l_g ) ],
               i ->  ( i <> l_f or i <> l_g )
@@ -100,9 +100,9 @@ InstallMethod( OverlappingCoefficients,
         i -> Pair(
                 Pair(
                   IdentityMorphism( C, Source( f ) ),
-                  MorphismConstructor( C, Target( f ), Pair( l_g - i, SetOfMorphisms( Q ){i_g{[ i + 1 .. l_g ]}} ), Target( g ) ) ),
+                  MorphismConstructor( C, Target( f ), Pair( l_g - i, i_g{[ i + 1 .. l_g ]} ), Target( g ) ) ),
                 Pair(
-                  MorphismConstructor( C, Source( f ), Pair( l_f - i, SetOfMorphisms( Q ){i_f{[ 1 .. l_f - i ]}} ), Source( g ) ),
+                  MorphismConstructor( C, Source( f ), Pair( l_f - i, i_f{[ 1 .. l_f - i ]} ), Source( g ) ),
                   IdentityMorphism( C, Target( g ) ) ) ) );
     
     if l_f >= l_g then
@@ -114,8 +114,8 @@ InstallMethod( OverlappingCoefficients,
                       IdentityMorphism( C, Source( f ) ),
                       IdentityMorphism( C, Target( f ) ) ),
                     Pair(
-                      MorphismConstructor( C, Source( f ), Pair( i - 1, SetOfMorphisms( Q ){i_f{[ 1 .. i - 1 ]}} ), Source( g ) ),
-                      MorphismConstructor( C, Target( g ), Pair( l_f - i - l_g + 1, SetOfMorphisms( Q ){i_f{[ i + l_g .. l_f ]}} ), Target( f ) ) ) ) );
+                      MorphismConstructor( C, Source( f ), Pair( i - 1, i_f{[ 1 .. i - 1 ]} ), Source( g ) ),
+                      MorphismConstructor( C, Target( g ), Pair( l_f - i - l_g + 1, i_f{[ i + l_g .. l_f ]} ), Target( f ) ) ) ) );
       
       return Concatenation( inner_overlaps, overlaps_on_left_of_g, overlaps_on_right_of_g );
       
@@ -125,8 +125,8 @@ InstallMethod( OverlappingCoefficients,
             List( PositionsSublist( i_g, i_f ),
               i -> Pair(
                     Pair(
-                      MorphismConstructor( C, Source( g ), Pair( i - 1, SetOfMorphisms( Q ){i_g{[ 1 .. i - 1 ]}} ), Source( f ) ),
-                      MorphismConstructor( C, Target( f ), Pair( l_g - i - l_f + 1, SetOfMorphisms( Q ){i_g{[ i + l_f .. l_g ]}} ), Target( g ) ) ),
+                      MorphismConstructor( C, Source( g ), Pair( i - 1, i_g{[ 1 .. i - 1 ]} ), Source( f ) ),
+                      MorphismConstructor( C, Target( f ), Pair( l_g - i - l_f + 1, i_g{[ i + l_f .. l_g ]} ), Target( g ) ) ),
                     Pair(
                       IdentityMorphism( C, Source( g ) ),
                       IdentityMorphism( C, Target( g ) ) ) ) );
