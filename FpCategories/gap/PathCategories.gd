@@ -142,7 +142,7 @@ DeclareAttribute( "MorphismLabel", IsPathCategoryMorphism );
 #!  Returns whether <A>C</A> can be enriched over the category of finite sets.
 #! @Arguments C
 #! @Returns a boolean
-DeclareAttribute( "IsFinitePathCategory", IsPathCategory );
+DeclareProperty( "IsFinitePathCategory", IsPathCategory );
 
 KeyDependentOperation( "ExternalHomsWithGivenLengthData", IsPathCategory, IsInt, ReturnTrue );
 KeyDependentOperation( "ExternalHomsWithGivenLength", IsCapCategory, IsInt, ReturnTrue );
