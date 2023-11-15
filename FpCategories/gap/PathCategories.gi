@@ -83,7 +83,6 @@ InstallMethod( PathCategory,
     
     ##
     AddIsEqualForObjects( C,
-      
       function ( C, obj_1, obj_2 )
         
         return IsIdenticalObj( obj_1, obj_2 );
@@ -104,7 +103,6 @@ InstallMethod( PathCategory,
      
     ##
     AddMorphismDatum( C,
-      
       function ( C, mor )
         
         return Pair( MorphismLength( mor ), MorphismSupport( mor ) );
@@ -113,7 +111,6 @@ InstallMethod( PathCategory,
     
     ##
     AddIsWellDefinedForMorphisms( C,
-      
       function ( C, mor )
         local q, l, s;
         
@@ -122,30 +119,27 @@ InstallMethod( PathCategory,
         l := MorphismLength( mor );
         s := MorphismSupport( mor );
         
-        return
-          l = Length( s )
-          and ( ( l = 0 and IsEndomorphism( C, mor ) ) or
-                ( IsEqualForObjects( q, ObjectDatum( Source( mor ) ), Source( First( s ) ) ) and
-                  IsEqualForObjects( q, ObjectDatum( Target( mor ) ), Target( Last ( s ) ) ) ) )
-          and ForAll( [ 1 .. l - 1 ], j -> IsEqualForObjects( q, Target( s[j] ), Source( s[j+1] ) ) );
+        return l = Length( s ) and
+               ( ( l = 0 and IsEndomorphism( C, mor ) ) or
+                 ( ObjectIndex( Source( mor ) ) = ObjectIndex( Source( First( s ) ) ) and
+                   ObjectIndex( Target( mor ) ) = ObjectIndex( Target( Last( s ) ) ) ) ) and
+               ForAll( [ 1 .. l - 1 ], j -> Target( s[j] ) = Source( s[j+1] ) );
         
     end );
     
     ##
     AddIsEqualForMorphisms( C,
-      
       function ( C, mor_1, mor_2 )
         
         return IsEqualForObjects( C, Source( mor_1 ), Source( mor_2 ) )
                 and IsEqualForObjects( C, Target( mor_1 ), Target( mor_2 ) )
                 and MorphismLength( mor_1 ) = MorphismLength( mor_2 )
-                and MorphismSupport( mor_1 ) = MorphismSupport( mor_2 );
+                and MorphismIndices( mor_1 ) = MorphismIndices( mor_2 );
         
     end );
     
     ##
     AddIsCongruentForMorphisms( C,
-      
       function ( C, mor_1, mor_2 )
         
         return IsEqualForMorphisms( C, mor_1, mor_2 );
@@ -153,7 +147,6 @@ InstallMethod( PathCategory,
     end );
     
     AddIdentityMorphism( C,
-      
       function ( C, obj )
         
         return MorphismConstructor( C, obj, Pair( BigInt( 0 ), [ ] ), obj );
@@ -161,20 +154,18 @@ InstallMethod( PathCategory,
     end );
     
     AddPreCompose( C,
-      
       function ( C, mor_1, mor_2 )
         
         return MorphismConstructor( C,
                       Source( mor_1 ),
                       Pair( MorphismLength( mor_1 ) + MorphismLength( mor_2 ),
-                            Concatenation( MorphismSupport( mor_1 ), MorphismSupport( mor_2 ) ) ),
+                            Concatenation( MorphismIndices( mor_1 ), MorphismIndices( mor_2 ) ) ),
                       Target( mor_2 ) );
         
     end );
     
     ##
     AddRandomObjectByInteger( C,
-      
       function ( C, n )
         
         return Random( SetOfObjects( C ) );
@@ -183,7 +174,6 @@ InstallMethod( PathCategory,
     
     ##
     AddRandomMorphismWithFixedSourceByInteger( C,
-      
       function ( C, obj, n )
         local s, t, m;
         
@@ -202,7 +192,6 @@ InstallMethod( PathCategory,
     
     ##
     AddRandomMorphismWithFixedRangeByInteger( C,
-      
       function ( C, obj, n )
         local s, t, m;
         
@@ -221,7 +210,6 @@ InstallMethod( PathCategory,
     
     ##
     AddRandomMorphismWithFixedSourceAndRangeByInteger( C,
-      
       function ( C, obj_1, obj_2, n )
         local s, t, p;
         
@@ -247,7 +235,6 @@ InstallMethod( PathCategory,
         SetRangeCategoryOfHomomorphismStructure( C, SkeletalFinSets );
         
         AddMorphismsOfExternalHom( C,
-          
           function ( C, obj_1, obj_2 )
             local s, t;
             
