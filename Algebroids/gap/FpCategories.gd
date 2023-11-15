@@ -50,8 +50,7 @@ DeclareCategory( "IsMorphismInFpCategory",
 DeclareProperty( "IsFinitelyPresentedCategory",
         IsCapCategory );
 
-AddCategoricalProperty(
-        [ "IsFinitelyPresentedCategory", "IsFinitelyPresentedCategory" ] );
+AddCategoricalProperty( [ "IsFinitelyPresentedCategory", "IsFinitelyPresentedCategory" ] );
 
 #! @Description
 #!  Check whether the finitely presented category <A>C</A> is commutative.

@@ -71,8 +71,7 @@ DeclareCategory( "IsAlgebroidMorphism",
 DeclareProperty( "IsFinitelyPresentedLinearCategory",
         IsCapCategory );
 
-AddCategoricalProperty(
-        [ "IsFinitelyPresentedLinearCategory", "IsFinitelyPresentedLinearCategory" ] );
+AddCategoricalProperty( [ "IsFinitelyPresentedLinearCategory", "IsFinitelyPresentedLinearCategory" ] );
 
 #! @Description
 #!  The property of <A>C</A> being a linear closure of a category.
