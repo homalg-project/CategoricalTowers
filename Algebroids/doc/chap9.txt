@@ -56,23 +56,21 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XCapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], IsHomalgRingElement );;[127X[104X
     [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
-    [4X[25X>[125X [27X  data_tables -> AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables.coefficients_ring : FinalizeCategory := true ), FinalizeCategory := true ) );;[127X[104X
+    [4X[25X>[125X [27X  data_tables -> AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables[1] : FinalizeCategory := true ), FinalizeCategory := true ) );;[127X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27Xq := CreateCapQuiver( "q(*)[x:*->*]" );;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments :=[127X[104X
-    [4X[25X>[125X [27X  [ rec( coefficients_ring := Q,[127X[104X
-    [4X[25X>[125X [27X         nr_objs := 1,[127X[104X
-    [4X[25X>[125X [27X         labels_objs := [ "*" ],[127X[104X
-    [4X[25X>[125X [27X         indices_objs := [ 1 ],[127X[104X
-    [4X[25X>[125X [27X         nr_gmors := 1,[127X[104X
-    [4X[25X>[125X [27X         labels_gmors := [ "x" ],[127X[104X
-    [4X[25X>[125X [27X         ranges_gmors := [ 1 ],[127X[104X
-    [4X[25X>[125X [27X         sources_gmors := [ 1 ],[127X[104X
-    [4X[25X>[125X [27X         indices_gmors := [ 2 ],[127X[104X
-    [4X[25X>[125X [27X         nr_bases_elms := 3,[127X[104X
-    [4X[25X>[125X [27X         bases_elms_comps := [ [ -1 ], [ 1 ], [ 1, 1 ] ],[127X[104X
-    [4X[25X>[125X [27X         indices_of_bases_elms := [ [ [ 1, 2, 3 ] ] ],[127X[104X
-    [4X[25X>[125X [27X         hom_structure_gmors_objs := [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ],[127X[104X
-    [4X[25X>[125X [27X         hom_structure_objs_gmors := [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ] ) ];;[127X[104X
+    [4X[25X>[125X [27X  [ NTuple( 5,[127X[104X
+    [4X[25X>[125X [27X      # coefficients_ring[127X[104X
+    [4X[25X>[125X [27X      Q,[127X[104X
+    [4X[25X>[125X [27X      # quiver[127X[104X
+    [4X[25X>[125X [27X      q,[127X[104X
+    [4X[25X>[125X [27X      # decomposition_indices_of_bases_elements[127X[104X
+    [4X[25X>[125X [27X      [ [ [ [ ], [ 1 ], [ 1, 1 ] ] ] ],[127X[104X
+    [4X[25X>[125X [27X      # hom_structure_gmors_objs[127X[104X
+    [4X[25X>[125X [27X      [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ],[127X[104X
+    [4X[25X>[125X [27X      # hom_structure_objs_gmors[127X[104X
+    [4X[25X>[125X [27X      [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ] ) ];;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name := "AdditiveClosureOfAlgebroidFromDataTablesPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "Algebroids";;[127X[104X
     [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X

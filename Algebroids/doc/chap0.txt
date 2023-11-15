@@ -7,10 +7,10 @@
                                     quivers [101X
   
   
-                                   2023.11-03
+                                   2023.11-04
   
   
-                                13 November 2023
+                                15 November 2023
   
   
                                 Mohamed Barakat
@@ -244,27 +244,31 @@
       6.2-2 IsomorphismOntoAlgebroidFromDataTables
       6.2-3 IsomorphismFromAlgebroidFromDataTables
       6.2-4 QuotientCategory
-      6.2-5 EnhancedDataTables
+      6.2-5 CategoryDatum
       6.2-6 SetOfObjects
       6.2-7 SetOfGeneratingMorphisms
-      6.2-8 SetOfBasesOfExternalHoms
-      6.2-9 PowerOfArrowIdeal
+      6.2-8 BasesElements
+      6.2-9 DecompositionIndicesOfBasesElements
+      6.2-10 LabelsOfBasesElements
+      6.2-11 LaTeXStringsOfBasesElements
+      6.2-12 PowerOfArrowIdeal
     6.3 [33X[0;0YOperations[133X
       6.3-1 AssignSetOfObjects
       6.3-2 AssignSetOfGeneratingMorphisms
-      6.3-3 CreateObject
-      6.3-4 ObjectIndex
-      6.3-5 CreateMorphism
-      6.3-6 MorphismCoefficients
-      6.3-7 MorphismSupport
+      6.3-3 ObjectIndex
+      6.3-4 CoefficientsList
+      6.3-5 IndicesOfSupportMorphisms
+      6.3-6 CoefficientsOfSupportMorphisms
+      6.3-7 SupportMorphisms
       6.3-8 DecompositionOfMorphismInAlgebroid
-      6.3-9 OppositeAlgebroid
-      6.3-10 TensorProductOfAlgebroids
-      6.3-11 \*
-      6.3-12 ElementaryTensor
+      6.3-9 DecompositionIndicesOfMorphismInAlgebroid
+      6.3-10 OppositeAlgebroid
+      6.3-11 TensorProductOfAlgebroids
+      6.3-12 \*
       6.3-13 ElementaryTensor
-      6.3-14 AlgebroidAsObjectInPreSheavesCategory
-      6.3-15 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory
+      6.3-14 ElementaryTensor
+      6.3-15 AlgebroidAsObjectInPreSheavesCategory
+      6.3-16 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory
     6.4 [33X[0;0YConstructors[133X
       6.4-1 AlgebroidFromDataTables
     6.5 [33X[0;0YGAP categories[133X

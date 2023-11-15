@@ -83,23 +83,21 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], IsHomalgRingElement );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  data_tables -&gt; AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables.coefficients_ring : FinalizeCategory := true ), FinalizeCategory := true ) );;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  data_tables -&gt; AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables[1] : FinalizeCategory := true ), FinalizeCategory := true ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := CreateCapQuiver( "q(*)[x:*-&gt;*]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [ rec( coefficients_ring := Q,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         nr_objs := 1,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         labels_objs := [ "*" ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         indices_objs := [ 1 ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         nr_gmors := 1,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         labels_gmors := [ "x" ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         ranges_gmors := [ 1 ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         sources_gmors := [ 1 ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         indices_gmors := [ 2 ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         nr_bases_elms := 3,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         bases_elms_comps := [ [ -1 ], [ 1 ], [ 1, 1 ] ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         indices_of_bases_elms := [ [ [ 1, 2, 3 ] ] ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         hom_structure_gmors_objs := [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">         hom_structure_objs_gmors := [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ] ) ];;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [ NTuple( 5,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      # coefficients_ring</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      Q,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      # quiver</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      q,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      # decomposition_indices_of_bases_elements</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      [ [ [ [ ], [ 1 ], [ 1, 1 ] ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      # hom_structure_gmors_objs</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      # hom_structure_objs_gmors</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ] ) ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "AdditiveClosureOfAlgebroidFromDataTablesPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "Algebroids";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>

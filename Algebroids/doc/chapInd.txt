@@ -6,7 +6,7 @@
       for IsFpCategory, IsList 2.4-1 
   [2X[][102X, for IsHomalgRing, IsFpCategory 5.4-1 
   [2X\*[102X, for IsAlgebroid, IsAlgebroid 5.3-4 
-      for IsAlgebroidFromDataTables, IsAlgebroidFromDataTables 6.3-11 
+      for IsAlgebroidFromDataTables, IsAlgebroidFromDataTables 6.3-12 
       for IsFpCategory, IsFpCategory 2.3-2 
   [2X\/[102X, for IsPath, IsFpCategory 2.4-4 
       for IsQuiverAlgebraElement, IsAlgebroid 5.4-8 
@@ -18,8 +18,8 @@
       for IsHomalgRing, IsQuiver 5.4-1 
       for IsQuiverAlgebra 5.4-1 
       for IsQuiverAlgebra, IsList 5.4-1 
-  [2XAlgebroidAsObjectInPreSheavesCategory[102X, for IsAlgebroidFromDataTables 6.3-14 
-  [2XAlgebroidFromDataTables[102X, for IsRecord 6.4-1 
+  [2XAlgebroidAsObjectInPreSheavesCategory[102X, for IsAlgebroidFromDataTables 6.3-15 
+  [2XAlgebroidFromDataTables[102X, for IsDenseList 6.4-1 
   [2XAntipode[102X, for IsAlgebroid 5.2-16 
       for IsFpCategory 2.2-17 
   [2XApplyToQuiverAlgebraElement[102X, for IsCapFunctor, IsQuiverAlgebraElement 5.3-2 
@@ -32,7 +32,8 @@
   [2XAssignSetOfObjects[102X, for IsAlgebroid, IsString 5.2-8 
       for IsAlgebroidFromDataTables, IsString 6.3-1 
       for IsFpCategory, IsString 2.2-8 
-  [2XAssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[102X, for IsMorphismInAlgebroidFromDataTables 6.3-15 
+  [2XAssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[102X, for IsMorphismInAlgebroidFromDataTables 6.3-16 
+  [2XBasesElements[102X, for IsAlgebroidFromDataTables 6.2-8 
   [2XBasisMorphismsByVertexIndex[102X, for IsAlgebroid 5.2-5 
       for IsFpCategory 2.2-5 
   [2XBasisPathsByVertexIndex[102X, for IsAlgebroid 5.2-4 
@@ -48,6 +49,7 @@
       for IsFpCategory, IsRecord, IsRecord 5.4-3 
       for IsFpCategory, IsRecord, IsRecord, IsBool 5.4-3 
   [2XCategory[102X, for IsQuiver, IsList 2.4-1 
+  [2XCategoryDatum[102X, for IsAlgebroidFromDataTables 6.2-5 
   [2XCategoryFromDataTables[102X, for IsCategoryFromNerveData 4.2-3 
       for IsFpCategory 4.2-2 
       for IsRecord 4.2-1 
@@ -58,36 +60,38 @@
   [2XCategoryOfAlgebroidsMorphism[102X, for IsAlgebroidMorphism 7.4-4 
       for IsCategoryOfAlgebroidsObject, IsAlgebroidMorphism, IsCategoryOfAlgebroidsObject 7.4-3 
   [2XCategoryOfAlgebroidsObject[102X, for IsAlgebroid 7.4-2 
+  [2XCoefficientsList[102X, for IsMorphismInAlgebroidFromDataTables 6.3-4 
+  [2XCoefficientsOfSupportMorphisms[102X, for IsMorphismInAlgebroidFromDataTables 6.3-6 
   [2XComultiplication[102X, for IsAlgebroid 8.2-2 
   [2XCounit[102X, for IsAlgebroid 8.2-1 
-  [2XCreateMorphism[102X, for IsAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables, IsDenseList, IsObjectInAlgebroidFromDataTables 6.3-5 
-      for IsCategoryFromDataTables, IsInt 4.2-5 
+  [2XCreateMorphism[102X, for IsCategoryFromDataTables, IsInt 4.2-5 
       for IsCategoryFromNerveData, IsInt 4.2-5 
       for IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables 4.2-5 
       for IsObjectInCategoryFromNerveData, IsInt, IsObjectInCategoryFromNerveData 4.2-5 
-  [2XCreateObject[102X, for IsAlgebroidFromDataTables, IsInt 6.3-3 
-      for IsCategoryFromDataTables, IsInt 4.2-4 
+  [2XCreateObject[102X, for IsCategoryFromDataTables, IsInt 4.2-4 
       for IsCategoryFromNerveData, IsInt 3.2-4 
   [2XDataTables[102X, for IsCapCategory 4.1-1 
   [2XDataTablesOfCategory[102X, for IsAlgebroid 6.2-1 
   [2XDecomposeQuiverAlgebraElement[102X, for IsQuiverAlgebraElement 5.3-1 
+  [2XDecompositionIndicesOfBasesElements[102X, for IsAlgebroidFromDataTables 6.2-9 
+  [2XDecompositionIndicesOfMorphismInAlgebroid[102X, for IsMorphismInAlgebroidFromDataTables 6.3-9 
   [2XDecompositionOfMorphismInAlgebroid[102X, for IsMorphismInAlgebroidFromDataTables 6.3-8 
   [2XDefiningTripleOfAQuiver[102X, for IsQuiver 10.1-1 
   [2XDescentToZDefinedByBasisPaths[102X, for IsAlgebroid 5.4-2 
   [2XDimension[102X, for IsAlgebroid 5.2-3 
   [2XElementaryTensor[102X, for IsMorphismInAlgebroid, IsObjectInAlgebroid, IsAlgebroid 5.3-7 
-      for IsMorphismInAlgebroidFromDataTables, IsMorphismInAlgebroidFromDataTables, IsAlgebroidFromDataTables 6.3-13 
+      for IsMorphismInAlgebroidFromDataTables, IsMorphismInAlgebroidFromDataTables, IsAlgebroidFromDataTables 6.3-14 
       for IsMorphismInFpCategory, IsObjectInFpCategory, IsFpCategory 2.3-5 
       for IsObjectInAlgebroid, IsMorphismInAlgebroid, IsAlgebroid 5.3-6 
       for IsObjectInAlgebroid, IsObjectInAlgebroid, IsAlgebroid 5.3-5 
-      for IsObjectInAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables, IsAlgebroidFromDataTables 6.3-12 
+      for IsObjectInAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables, IsAlgebroidFromDataTables 6.3-13 
       for IsObjectInFpCategory, IsMorphismInFpCategory, IsFpCategory 2.3-4 
       for IsObjectInFpCategory, IsObjectInFpCategory, IsFpCategory 2.3-3 
-  [2XEnhancedDataTables[102X, for IsAlgebroidFromDataTables 6.2-5 
   [2XFreeCategory[102X, for IsQuiver 2.4-1 
   [2XHomStructureOnBasisPaths[102X, for IsAlgebroid 5.2-6 
       for IsFpCategory 2.2-6 
   [2XIndicesOfGeneratingMorphismsFromHomStructure[102X, for IsCapCategory 10.2-2 
+  [2XIndicesOfSupportMorphisms[102X, for IsMorphismInAlgebroidFromDataTables 6.3-5 
   [2XIsAdmissibleAlgebroid[102X, for IsAlgebroidFromDataTables 6.1-1 
   [2XIsAlgebraAsCategory[102X, for IsAlgebroid 5.5-5 
   [2XIsAlgebroid[102X, for IsCapCategory 5.5-4 
@@ -129,24 +133,24 @@
   [2XIsObjectInCategoryFromDataTables[102X, for IsCellInCategoryFromDataTables and IsCapCategoryObject 4.3-3 
   [2XIsObjectInCategoryFromNerveData[102X, for IsCellInCategoryFromNerveData and IsCapCategoryObject 3.3-3 
   [2XIsObjectInFpCategory[102X, for IsCellInFpCategory and IsCapCategoryObject 2.6-4 
-  [2XIsomorphismFromAlgebroidFromDataTables[102X, for IsAlgebroid 6.2-3 
-  [2XIsomorphismOntoAlgebroidFromDataTables[102X, for IsAlgebroid 6.2-2 
-  [2XMorphismCoefficients[102X, for IsMorphismInAlgebroidFromDataTables 6.3-6 
+  [2XIsomorphismFromAlgebroidFromDataTables[102X, for IsAlgebroidFromDataTables, IsAlgebroid 6.2-3 
+  [2XIsomorphismOntoAlgebroidFromDataTables[102X, for IsAlgebroid, IsAlgebroidFromDataTables 6.2-2 
+  [2XLabelsOfBasesElements[102X, for IsAlgebroidFromDataTables 6.2-10 
+  [2XLaTeXStringsOfBasesElements[102X, for IsAlgebroidFromDataTables 6.2-11 
   [2XMorphismInAlgebroid[102X, for IsAlgebroid, IsQuiverAlgebraElement 5.4-7 
       for IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid 5.4-7 
   [2XMorphismInFpCategory[102X, for IsFpCategory, IsPath 2.4-3 
       for IsObjectInFpCategory, IsPath, IsObjectInFpCategory 2.4-3 
-  [2XMorphismSupport[102X, for IsMorphismInAlgebroidFromDataTables 6.3-7 
   [2XNaturalTransformation[102X, for IsCapFunctor, IsList, IsCapFunctor 5.4-4 
       for IsRecord, IsCapFunctor, IsCapFunctor 5.4-4 
   [2XNerveData[102X, for IsCategoryFromNerveData 3.1-1 
   [2XNerveTruncatedInDegree2AsFunctor[102X, for IsCapCategory 2.2-23 
   [2XNerveTruncatedInDegree2Data[102X, for IsCapCategory 10.2-1 
   [2XObjectInAlgebroid[102X, for IsAlgebroid, IsQuiverVertex 5.4-5 
-  [2XObjectIndex[102X, for IsObjectInAlgebroidFromDataTables 6.3-4 
+  [2XObjectIndex[102X, for IsObjectInAlgebroidFromDataTables 6.3-3 
   [2XObjectInFpCategory[102X, for IsFpCategory, IsQuiverVertex 2.4-2 
   [2XOppositeAlgebroid[102X, for IsAlgebroid 5.2-15 
-      for IsAlgebroidFromDataTables 6.3-9 
+      for IsAlgebroidFromDataTables 6.3-10 
   [2XOppositeCategoryFromDataTables[102X, for IsCategoryFromDataTables 4.1-6 
   [2XOppositeCategoryFromNerveData[102X, for IsCategoryFromNerveData 3.1-6 
   [2XOppositeFiniteCategory[102X, for IsCapCategory 10.2-3 
@@ -156,14 +160,13 @@
   [2XPOW[102X, for IsAlgebroid, IsInt 5.2-21 
       for IsCapCategoryMorphism, IsInt 5.4-9 
       for IsFpCategory, IsInt 2.2-22 
-  [2XPowerOfArrowIdeal[102X, for IsAlgebroidFromDataTables, IsInt 6.2-9 
+  [2XPowerOfArrowIdeal[102X, for IsAlgebroidFromDataTables, IsInt 6.2-12 
   [2XQuiverVertexAsIdentityPath[102X, for IsQuiverVertex 2.3-6 
   [2XQuotientCategory[102X, for IsAlgebroid, IsList 5.4-1 
       for IsAlgebroidFromDataTables, IsDenseList 6.2-4 
       for IsFpCategory, IsList 2.4-1 
   [2XRelationsOfAlgebroid[102X, for IsAlgebroid 5.2-14 
   [2XRelationsOfFpCategory[102X, for IsFpCategory 2.2-15 
-  [2XSetOfBasesOfExternalHoms[102X, for IsAlgebroidFromDataTables 6.2-8 
   [2XSetOfGeneratingMorphisms[102X, for IsAlgebroid 5.2-9 
       for IsAlgebroid, IsInt, IsInt 5.2-12 
       for IsAlgebroid, IsObjectInAlgebroid, IsObjectInAlgebroid 5.2-10 
@@ -188,7 +191,8 @@
   [2XSize[102X, for IsCategoryFromDataTables 4.1-5 
       for IsCategoryFromNerveData 3.1-5 
       for IsFpCategory 2.2-3 
-  [2XTensorProductOfAlgebroids[102X, for IsAlgebroidFromDataTables, IsAlgebroidFromDataTables 6.3-10 
+  [2XSupportMorphisms[102X, for IsMorphismInAlgebroidFromDataTables 6.3-7 
+  [2XTensorProductOfAlgebroids[102X, for IsAlgebroidFromDataTables, IsAlgebroidFromDataTables 6.3-11 
   [2XTrivialAlgebroid[102X, for IsHomalgRing, IsString 5.3-3 
   [2XTrivialCategory[102X, for IsString 2.3-1 
   [2XTruthMorphismOfTrueToSieveFunctor[102X, for IsFpCategory 2.2-27 
