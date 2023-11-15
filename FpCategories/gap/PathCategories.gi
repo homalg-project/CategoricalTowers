@@ -357,7 +357,7 @@ InstallOtherMethod( ExternalHomsWithGivenLength,
 end );
 
 ##
-InstallMethod( SetOfObjects,
+InstallMethodForCompilerForCAP( SetOfObjects,
           [ IsPathCategory ],
   
   function ( C )
@@ -368,7 +368,7 @@ InstallMethod( SetOfObjects,
 end );
 
 ##
-InstallMethod( SetOfGeneratingMorphisms,
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
           [ IsPathCategory ],
   
   function ( C )
