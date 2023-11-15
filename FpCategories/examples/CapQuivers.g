@@ -68,6 +68,13 @@ MorphismsOfExternalHom( q.("0"), q.("1") );
 q_op := OppositeQuiver( q );
 #! Quiver( "q_op(0,1,2,3,4,5)[x:0-≻0,s:1-≻0,a:2-≻1,c:3-≻1,e:4-≻1,b:4-≻2,
 #! d:4-≻3,t:5-≻4,y:5-≻5]" )
+MorphismsOfExternalHom( q_op.1, q_op.0 );
+#! [ s:(1) -≻ (0) ]
+q_op_x_q := TensorProductOfCapQuivers( q_op, q );;
+NumberOfObjects( q_op_x_q );
+#! 36
+NumberOfMorphisms( q_op_x_q );
+#! 108
 #! @EndExample
 
 #! @Example
@@ -77,5 +84,9 @@ Assert( 0, NumberOfObjects( q1 ) = 2 );
 Assert( 0, NumberOfMorphisms( q1 ) = 4 );
 Assert( 0, Length( Filtered( SetOfMorphisms( q1 ), IsEndomorphism ) ) = 0 );
 Assert( 0, Length( Filtered( SetOfMorphisms( q2 ), IsEndomorphism ) ) > 0 );
+q3 := CreateCapQuiver( "q(3)[a:1->2,b:2->3]" );
+#! Quiver( "q(1,2,3)[a:1-≻2,b:2-≻3]" )
+q4 := CreateCapQuiver( "q(4..6)[a:4->5,b:5->6]" );
+#! Quiver( "q(4,5,6)[a:4-≻5,b:5-≻6]" )
 #! @EndExample
 

@@ -278,135 +278,49 @@ InstallMethod( DataTablesOfCategory,
           [ IsLinearClosure ],
   
   function ( kC )
-    local C, q, objs, gmors, external_homs, bases_elms;
-    
-    C := UnderlyingCategory( kC );
-    
-    if not IsPathCategory( C ) then
-          TryNextMethod( );
-    fi;
+    local C, q, objs, gmors, external_homs;
     
     if not HasRangeCategoryOfHomomorphismStructure( kC ) then
         Error( "the linear closure category passed to 'DataTablesOfCategory' must be hom-finite!" );
+    fi;
+    
+    C := UnderlyingCategory( kC );
+    
+    if not (IsPathCategory( C ) or IsQuotientOfPathCategory( C ))  then
+        
+        TryNextMethod( );
+        
     fi;
     
     q := UnderlyingQuiver( C );
     
     objs := SetOfObjects( kC );
-    
     gmors := SetOfGeneratingMorphisms( kC );
     
-    external_homs :=  List( objs, s -> List( objs, t -> BasisOfExternalHom( t, s ) ) );
+    external_homs :=  List( objs, s -> List( objs, t -> BasisOfExternalHom( kC, s, t ) ) );
     
-    bases_elms := Concatenation( List( external_homs, Concatenation ) );
+    return
+      NTuple( 5,
+      
+      #coefficients_ring,
+      UnderlyingRing( kC ),
+      
+      #quiver
+      q,
+      
+      #decomposition_indices_of_bases_elements
+      List( external_homs,
+        s -> List( s, hom_st -> List( hom_st, m -> MorphismIndices( CanonicalRepresentative( SupportMorphisms( m )[1] ) ) ) ) ),
+      
+      # hom_structure_objs_gmors
+      List( objs,
+        o -> List( gmors,
+          gm -> EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( kC, IdentityMorphism( kC, o ), gm ) ) ) ) ),
+      
+      #hom_structure_gmors_objs
+      List( objs,
+        o -> List( gmors,
+          gm -> EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( kC, gm, IdentityMorphism( kC, o ) ) ) ) ) ) );
     
-    return rec(
-      coefficients_ring := UnderlyingRing( kC ),
-      nr_objs := NumberOfObjects( q ),
-      nr_bases_elms := Length( bases_elms ),
-      
-      labels_objs := LabelsOfObjects( q ),
-      latex_strings_objs := LaTeXStringsOfObjects( q ),
-      indices_objs := List( objs, o -> Position( bases_elms, IdentityMorphism( o ) ) ),
-      
-      nr_gmors := NumberOfMorphisms( q ),
-      labels_gmors := LabelsOfMorphisms( q ),
-      latex_strings_gmors := LaTeXStringsOfMorphisms( q ),
-      indices_gmors := List( gmors, m -> Position( bases_elms, m ) ),
-      sources_gmors := IndicesOfSources( q ),
-      ranges_gmors := IndicesOfTargets( q ),
-      
-      bases_elms_comps := Concatenation( List( [ 1 .. NumberOfObjects( q ) ],
-                            s -> Concatenation( List( [ 1 .. NumberOfObjects( q ) ],
-                              t -> List( external_homs[s][t],
-                                  function ( g )
-                                    if IsEqualToIdentityMorphism( g ) then
-                                            return [ -s ];
-                                    else
-                                            return MorphismIndices( SupportMorphisms( g )[1] );
-                                    fi;
-                                  end ) ) ) ) ),
-      
-      indices_of_bases_elms := List( [ 1 .. NumberOfObjects( q ) ],
-                                s -> List( [ 1 .. NumberOfObjects( q ) ],
-                                  t -> List( external_homs[s][t],
-                                    g -> Position( bases_elms, g ) ) ) ),
-      
-      hom_structure_objs_gmors := List( objs,
-                                    o -> List( gmors,
-                                      gm -> EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomStructure( o, gm ) ) ) ) ),
-      
-      hom_structure_gmors_objs := List( objs,
-                                    o -> List( gmors,
-                                      gm -> EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomStructure( gm, o ) ) ) ) ) );
-end );
-
-##
-InstallMethod( DataTablesOfCategory,
-            "for hom-finite k-linear closures of path categories",
-          [ IsLinearClosure ],
-  
-  function ( kC )
-    local C, q, objs, gmors, external_homs, bases_elms;
-    
-    C := UnderlyingCategory( kC );
-    
-    if not IsQuotientOfPathCategory( C ) then
-          TryNextMethod( );
-    fi;
-    
-    if not HasRangeCategoryOfHomomorphismStructure( kC ) then
-        Error( "the linear closure category passed to 'DataTablesOfCategory' must be hom-finite!" );
-    fi;
-    
-    q := UnderlyingQuiver( UnderlyingCategory( C ) );
-    
-    objs := SetOfObjects( kC );
-    
-    gmors := SetOfGeneratingMorphisms( kC );
-    
-    external_homs :=  List( objs, s -> List( objs, t -> BasisOfExternalHom( t, s ) ) );
-    
-    bases_elms := Concatenation( List( external_homs, Concatenation ) );
-    
-    return rec(
-      coefficients_ring := UnderlyingRing( kC ),
-      nr_objs := NumberOfObjects( q ),
-      nr_bases_elms := Length( bases_elms ),
-      
-      labels_objs := LabelsOfObjects( q ),
-      latex_strings_objs := LaTeXStringsOfObjects( q ),
-      indices_objs := List( objs, o -> Position( bases_elms, IdentityMorphism( o ) ) ),
-      
-      nr_gmors := NumberOfMorphisms( q ),
-      labels_gmors := LabelsOfMorphisms( q ),
-      latex_strings_gmors := LaTeXStringsOfMorphisms( q ),
-      indices_gmors := List( gmors, m -> Position( bases_elms, m ) ),
-      sources_gmors := IndicesOfSources( q ),
-      ranges_gmors := IndicesOfTargets( q ),
-      
-      bases_elms_comps := Concatenation( List( [ 1 .. NumberOfObjects( q ) ],
-                            s -> Concatenation( List( [ 1 .. NumberOfObjects( q ) ],
-                              t -> List( external_homs[s][t],
-                                  function ( g )
-                                    if IsEqualToIdentityMorphism( g ) then
-                                            return [ -s ];
-                                    else
-                                            return MorphismIndices( CanonicalRepresentative( SupportMorphisms( g )[1] ) );
-                                    fi;
-                                  end ) ) ) ) ),
-      
-      indices_of_bases_elms := List( [ 1 .. NumberOfObjects( q ) ],
-                                s -> List( [ 1 .. NumberOfObjects( q ) ],
-                                  t -> List( external_homs[s][t],
-                                    g -> Position( bases_elms, g ) ) ) ),
-      
-      hom_structure_objs_gmors := List( objs,
-                                    o -> List( gmors,
-                                      gm -> EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomStructure( o, gm ) ) ) ) ),
-      
-      hom_structure_gmors_objs := List( objs,
-                                    o -> List( gmors,
-                                      gm -> EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomStructure( gm, o ) ) ) ) ) );
 end );
 

@@ -41,29 +41,19 @@ DeclareCategory( "IsMorphismInAlgebroidFromDataTables",
 ####################################
 
 #! @Description
-#!  Construct an enrichted algebroid $B$ out of the <A>data_tables</A> consisting of values to the keys:
-#!  * <A>coefficients_ring</A>: the commutative ring $k$ over which $B$ is linear.
-#!  * <A>nr_objs</A>: the number of objects of $B$.
-#!  * <A>labels_objs</A>: list of strings representing the names of the objects of $B$.
-#!  * <A>nr_gmors</A>: the number of generating morphisms of $B$.
-#!  * <A>labels_gmors</A>: list of strings representing the names of the generating morphisms of $B$.
-#!  * <A>nr_bases_elms</A>: the sum of dimensions of all hom-spaces in $B$, i.e., $\Sigma_{u,v\in B}~\mathrm{dim}_{k}~\mathrm{Hom}(u,v)$, i.e., the dimension over $k$ of the endomorphism algebra of $B$.
-#!  * <A>indices_objs</A>: the indices of the identity morphisms in the list-of-all-bases-elements in $B$.
-#!  * <A>indices_gmors</A>: the indices of the generating morphisms in the list-of-all-bases-elements in $B$.
-#!  * <A>sources_gmors</A>: the indices of sources of the generating morphisms in the list of objects of $B$.
-#!  * <A>ranges_gmors</A>: the indices of ranges of the generating morphisms in the list of objects of $B$.
-#!  * <A>bases_elms_comps</A>: a list of length <A>nr_bases_elms</A> of lists of elements in <A>[-1,-2,..,-nr_objs]</A> or <A>[1,2,..,nr_gmors]</A>.
-#!     The $i$'th entry identifies the $i$'th element of list-of-all-bases-elements as an identity morphism or as a precomposition of generating morphisms.
-#!  * <A>indices_of_bases_elms</A>: a list $L$ of length <A>nr_objs</A> of lists each of length <A>nr_objs</A> where the entry $L[i][j]$ is the list of indices
-#!    of the basis elements of $\mathrm{Hom}_{B}(u_j,u_i)$ in the list-of-all-bases-elements in $B$ where $u_i$ and $u_j$ are the $i$'th resp. $j$'th objects.
-#!  * <A>hom_structure_gmors_objs</A>: a list $L$ of length <A>nr_objs</A> of lists of length <A>nr_gmors</A> where the entry $L[i][j]$
-#!    is the list of entries of the matrix of the $k$-linear map $\mathrm{Hom}_{B}(m_j,u_i)$ where $u_i$ and $m_j$ are the $i$'th object and the $j$'th generating morphism.
-#!  * <A>hom_structure_objs_gmors</A>: a list $L$ of length <A>nr_objs</A> of lists of length <A>nr_gmors</A> where the entry $L[i][j]$
-#!    is the list of entries of the matrix of the $k$-linear map $\mathrm{Hom}_{B}(u_i,m_j)$ where $u_i$ and $m_j$ are the $i$'th object and the $j$'th generating morphism.
+#!  Construct an enrichted algebroid $A$ out of the <A>data_tables</A> consisting of $7$ entries:
+#!  * <A>data_tables</A>[1] is the commutative ring $k$ over which $A$ is linear.
+#!  * <A>data_tables</A>[2] is the underlying quiver or a string that can be used to constructe a CAP quiver. Suppose the number of objects is <C>nr_objs</C> and
+#!    the number of morphisms is <C>nr_mors</C>.
+#!  * <A>data_tables</A>[3]: an array $L$ containing <C>nr_objs</C> rows and <C>nr_objs</C> columns.
+#!    The entry $L[i][j]$ is the list of the indices of the basis elements of $\mathrm{Hom}_{A}(v_i,v_j)$ where $v_i$ and $v_j$ are the $i$'th resp. $j$'th objects.
+#!  * <A>data_tables</A>[4]: an array $L$ containing <C>nr_objs</C> rows and <C>nr_mors</C> columns.
+#!    The entry $L[i][j]$ contains the matrices of the $k$-linear maps $\mathrm{Hom}_{A}(v_i,m_j)$ where $u_i$ and $m_j$ are the $i$'th object and the $j$'th generating morphism.
+#!  * <A>data_tables</A>[5]: an array $L$ containing <C>nr_objs</C> rows and <C>nr_mors</C> columns.
+#!    The entry $L[i][j]$ contains the matrices of the $k$-linear maps $\mathrm{Hom}_{A}(m_j,v_i)$ where $u_i$ and $m_j$ are the $i$'th object and the $j$'th generating morphism.
 #! @Arguments data_tables
 #! @Returns a &CAP; category
-DeclareAttribute( "AlgebroidFromDataTables",
-        IsRecord );
+DeclareOperation( "AlgebroidFromDataTables", [ IsDenseList ] );
 #! @InsertChunk AlgebroidFromDataTables
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidFromDataTables" );
@@ -77,7 +67,7 @@ DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidFromDataTabl
 if false then
 #! @Description
 #!  The argument is a $k$-algebroid <A>A</A> defined by a finite dimensional quiver-algebra.
-#!  This operation extracts a data-tables record from <A>A</A> which can be used to construct an algebroid $B$, that is isomorphic to <A>A</A>.
+#!  This operation extracts a data-tables record from <A>A</A> which can be used to construct an algebroid $A$, that is isomorphic to <A>A</A>.
 #! @Arguments A
 #! @Returns a &CAP; functor
 DeclareAttribute( "DataTablesOfCategory",
@@ -85,131 +75,38 @@ DeclareAttribute( "DataTablesOfCategory",
 fi;
 
 #! @Description
-#!  The arguments is a $k$-algebroid $A$ defined by a finite dimensional quiver-algebra.
-#!  The output is an isomorphism functor from <A>A</A> onto the isomorphic $k$-algebroid $B:=$<C>AlgebroidFromDataTables</C>(<C>DataTablesOfCategory</C>(<A>A</A>)).
-#! @Arguments A
+#!  ?
+#! @Arguments A, A
 #! @Returns a &CAP; functor
-DeclareAttribute( "IsomorphismOntoAlgebroidFromDataTables",
-        IsAlgebroid );
+DeclareOperation( "IsomorphismOntoAlgebroidFromDataTables",
+        [ IsAlgebroid, IsAlgebroidFromDataTables ] );
 
 #! @Description
-#!  The arguments is a $k$-algebroid $A$ defined by a finite dimensional quiver-algebra.
-#!  The output is an isomorphism functor Onto <A>A</A> from the isomorphic $k$-algebroid $B:=$<C>AlgebroidFromDataTables</C>(<C>DataTablesOfCategory</C>(<A>A</A>)).
-#! @Arguments A
+#!  ?
+#! @Arguments A, A
 #! @Returns a &CAP; functor
-DeclareAttribute( "IsomorphismFromAlgebroidFromDataTables",
-        IsAlgebroid );
+DeclareOperation( "IsomorphismFromAlgebroidFromDataTables",
+        [ IsAlgebroidFromDataTables, IsAlgebroid ] );
 
 #! @Description
-#!  The arguments are an algebroid $B$ and a list <A>I</A> of morphisms in $B$.
-#!  The output is the quotient category $B/I$ of $B$ modulo the two-sided ideal of morphisms generated by <A>I</A>.
-#! @Arguments B, I
+#!  The arguments are an algebroid $A$ and a list <A>I</A> of morphisms in $A$.
+#!  The output is the quotient category $A/I$ of $A$ modulo the two-sided ideal of morphisms generated by <A>I</A>.
+#! @Arguments A, I
 #! @Returns a record
 DeclareOperation( "QuotientCategory",
         [ IsAlgebroidFromDataTables, IsDenseList ] );
 
 #! @Description
-#!  The data tables used to define $B$ enhanced with further key values.
-#! @Arguments B
+#!  The data tables used to define $A$.
+#! @Arguments A
 #! @Returns a record
-DeclareAttribute( "EnhancedDataTables",
+DeclareAttribute( "CategoryDatum",
         IsAlgebroidFromDataTables );
 
-CapJitAddTypeSignature( "EnhancedDataTables", [ IsAlgebroidFromDataTables ],
-  function ( input_types )
-
-    return CapJitDataTypeOfNTupleOf( 22,
-                   # (1) ring
-                   IsHomalgRing,
-                   
-                   # (2) nr_objs
-                   IsInt,
-                   
-                   # (3) labels_objs
-                   CapJitDataTypeOfListOf( IsStringRep ),
-                   
-                   # (4) latex_strings_objs
-                   CapJitDataTypeOfListOf( IsStringRep ),
-                   
-                   # (5) indices_objs
-                   CapJitDataTypeOfListOf( IsInt ),
-                   
-                   # (6) nr_gmors
-                   IsInt,
-                   
-                   # (7) labels_gmors
-                   CapJitDataTypeOfListOf( IsStringRep ),
-                   
-                   # (8) latex_strings_gmors
-                   CapJitDataTypeOfListOf( IsStringRep ),
-                   
-                   # (9) indices_gmors
-                   CapJitDataTypeOfListOf( IsInt ),
-                   
-                   # (10) sources_gmors
-                   CapJitDataTypeOfListOf( IsInt ),
-                   
-                   # (11) ranges_gmors
-                   CapJitDataTypeOfListOf( IsInt ),
-                   
-                   # (12) nr_bases_elms
-                   IsInt,
-                   
-                   # (13) bases_elms_comps
-                   CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf( IsInt ) ),
-                   
-                   # (14) labels_of_bases_elms
-                   CapJitDataTypeOfListOf( IsStringRep ),
-                   
-                   # (15) latex_strings_of_bases_elms
-                   CapJitDataTypeOfListOf( IsStringRep ),
-                   
-                   # (16) indices_of_bases_elms
-                   CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf(
-                                   CapJitDataTypeOfListOf( IsInt ) ) ),
-                   
-                   # (17) hom_structure_objs_gmors
-                   CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf(
-                                   CapJitDataTypeOfListOf(
-                                           CapJitDataTypeOfListOf( IsHomalgRingElement ) ) ) ),
-                   
-                   # (18) hom_structure_gmors_objs
-                   CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf(
-                                   CapJitDataTypeOfListOf(
-                                           CapJitDataTypeOfListOf( IsHomalgRingElement ) ) ) ),
-                   
-                   # (19) hom_structure_ranks
-                   CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf( IsInt ) ),
-                   
-                   # (20) hom_structure_on_bases_elms
-                   CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf(
-                                   CapJitDataTypeOfListOf(
-                                           CapJitDataTypeOfListOf(
-                                                   CapJitDataTypeOfListOf(
-                                                           CapJitDataTypeOfListOf(
-                                                                   CapJitDataTypeOfListOf(
-                                                                           CapJitDataTypeOfListOf( IsHomalgRingElement ) ) ) ) ) ) ) ),
-                   
-                   # (21) indices_composable_gmors
-                   CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf(
-                                   CapJitDataTypeOfListOf( IsInt ) ) ),
-                   
-                   # (22) colors
-                   IsRecord );
-    
-end );
-
 #! @Description
-#!  The argument is an algebroid <A>B</A>.
-#!  The output is the finite set of objects of <A>B</A>.
-#! @Arguments B
+#!  The argument is an algebroid <A>A</A>.
+#!  The output is the finite set of objects of <A>A</A>.
+#! @Arguments A
 #! @Returns a list of &CAP; category objects
 DeclareAttribute( "SetOfObjects", IsAlgebroidFromDataTables );
 
@@ -221,9 +118,9 @@ CapJitAddTypeSignature( "SetOfObjects", [ IsAlgebroidFromDataTables ],
 end );
 
 #! @Description
-#!  The argument is an algebroid <A>B</A>.
-#!  The output is the finite set of generating morphisms of <A>B</A>.
-#! @Arguments B
+#!  The argument is an algebroid <A>A</A>.
+#!  The output is the finite set of generating morphisms of <A>A</A>.
+#! @Arguments A
 #! @Returns a list of a &CAP; category morphisms
 DeclareAttribute( "SetOfGeneratingMorphisms", IsAlgebroidFromDataTables );
 
@@ -235,17 +132,86 @@ CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsAlgebroidFromDataTables 
 end );
 
 #! @Description
-#!  The argument is an algebroid <A>B</A>.
-#!  The output is a list of lists $L$ where $L[i][j]$ is the basis of the external hom $\mathrm{Hom}_B(u,v)$ where $u$ and $v$ are $i$'th resp. $j$'th objects in $B$.
-#! @Arguments B
+#!  The argument is an algebroid <A>A</A>.
+#!  The output is a list of lists $L$ where $L[i][j]$ is the basis of the external hom $\mathrm{Hom}_B(u,v)$ where $u$ and $v$ are $i$'th resp. $j$'th objects in $A$.
+#! @Arguments A
 #! @Returns a list of lists
-DeclareAttribute( "SetOfBasesOfExternalHoms", IsAlgebroidFromDataTables );
+DeclareAttribute( "BasesElements", IsAlgebroidFromDataTables );
+
+CapJitAddTypeSignature( "BasesElements", [ IsAlgebroidFromDataTables ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf(
+              CapJitDataTypeOfListOf(
+                CapJitDataTypeOfListOf(
+                  CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) ) ) );
+    
+end );
 
 #! @Description
-#!  The arguments are an algebroid <A>B</A> and a non-negative integer <A>i</A>.
+#!  The argument is an algebroid <A>A</A>.
+#!  The output is a list of lists $L$ where $L[i][j]$ is the decomposition indices of the basis elements of $\mathrm{Hom}_B(u,v)$ where $u$ and $v$ are $i$'th resp. $j$'th objects in $A$.
+#!  In other words, it is the third entry in the underlying defining data tables.
+#! @Arguments A
+#! @Returns a list of lists
+DeclareAttribute( "DecompositionIndicesOfBasesElements", IsAlgebroidFromDataTables );
+
+CapJitAddTypeSignature( "DecompositionIndicesOfBasesElements", [ IsAlgebroidFromDataTables ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf(
+              CapJitDataTypeOfListOf(
+                CapJitDataTypeOfListOf(
+                  CapJitDataTypeOfListOf( IsInt ) ) ) );
+    
+end );
+
+#! @Description
+#!  The argument is an algebroid <A>A</A>.
+#!  The output is a list of lists $L$ where $L[i][j]$ is the labels of the basis elements of $\mathrm{Hom}_B(u,v)$ where $u$ and $v$ are $i$'th resp. $j$'th objects in $A$.
+#! @Arguments A
+#! @Returns a list of lists
+DeclareAttribute( "LabelsOfBasesElements", IsAlgebroidFromDataTables );
+
+#! @Description
+#!  The argument is an algebroid <A>A</A>.
+#!  The output is a list of lists $L$ where $L[i][j]$ is the latex strings of the basis elements of $\mathrm{Hom}_B(u,v)$ where $u$ and $v$ are $i$'th resp. $j$'th objects in $A$.
+#! @Arguments A
+#! @Returns a list of lists
+DeclareAttribute( "LaTeXStringsOfBasesElements", IsAlgebroidFromDataTables );
+
+DeclareAttribute( "HomomorphismStructureOnObjectsRanks", IsAlgebroidFromDataTables );
+
+CapJitAddTypeSignature( "HomomorphismStructureOnObjectsRanks", [ IsAlgebroidFromDataTables ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf(
+              CapJitDataTypeOfListOf( IsInt ) );
+    
+end );
+
+DeclareAttribute( "HomomorphismStructureOnMorphismsMatrices", IsAlgebroidFromDataTables );
+
+CapJitAddTypeSignature( "HomomorphismStructureOnMorphismsMatrices", [ IsAlgebroidFromDataTables ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf(
+              CapJitDataTypeOfListOf(
+                  CapJitDataTypeOfListOf(
+                      CapJitDataTypeOfListOf(
+                          CapJitDataTypeOfListOf(
+                              CapJitDataTypeOfListOf(
+                                  CapJitDataTypeOfListOf(
+                                      CapJitDataTypeOfListOf( IsInt ) ) ) ) ) ) ) );
+
+    
+end );
+
+#! @Description
+#!  The arguments are an algebroid <A>A</A> and a non-negative integer <A>i</A>.
 #!  The output is a generating set for $\mathfrak{m}^i$ where $\mathfrak{m}$ is
-#!  the ideal generated by all generating morphisms in <A>B</A>.
-#! @Arguments B, i
+#!  the ideal generated by all generating morphisms in <A>A</A>.
+#! @Arguments A, i
 #! @Returns a list
 KeyDependentOperation( "PowerOfArrowIdeal", IsAlgebroidFromDataTables, IsInt, ReturnTrue );
 
@@ -256,13 +222,13 @@ KeyDependentOperation( "PowerOfArrowIdeal", IsAlgebroidFromDataTables, IsInt, Re
 ####################################
 
 #! @Description
-#!  The arguments are an algebroid <A>B</A> linear over a field $k$.
+#!  The arguments are an algebroid <A>A</A> linear over a field $k$.
 #!  This output is <C>true</C> iff the following two conditions hold:
 #!  (1) the union of all identity morphisms and all generating morphism
 #!  remain linear independent in the quotient category $C/\mathfrak{m}^2$;
 #!  (2) $\mathfrak{m}^i=0$ for some $i\in\mathbb{N}$,
-#!  where $\mathfrak{m}^i=$<C>PowerOfArrowIdeal</C>(<A>B</A>,$i$).
-#! @Arguments B, i
+#!  where $\mathfrak{m}^i=$<C>PowerOfArrowIdeal</C>(<A>A</A>,$i$).
+#! @Arguments A, i
 #! @Returns a list
 DeclareProperty( "IsAdmissibleAlgebroid", IsAlgebroidFromDataTables );
 #! @InsertChunk AdmissibleAlgebroidFromDataTables
@@ -274,36 +240,28 @@ DeclareProperty( "IsAdmissibleAlgebroid", IsAlgebroidFromDataTables );
 ####################################
 
 #! @Description
-#!  The arguments are an algebroid <A>B</A> and a string <A>optional_string</A>.
-#!  This operation assigns the objects of <A>B</A> to global variables.
-#!  Names of the variables are the concatenation of the labels of the objects of <A>B</A> with <A>optional_string</A>.
+#!  The arguments are an algebroid <A>A</A> and a string <A>optional_string</A>.
+#!  This operation assigns the objects of <A>A</A> to global variables.
+#!  Names of the variables are the concatenation of the labels of the objects of <A>A</A> with <A>optional_string</A>.
 #!  The default value of <A>optional_string</A> is the empty string.
-#! @Arguments B [, optional_string]
+#! @Arguments A [, optional_string]
 #! @Returns nothing
 DeclareOperation( "AssignSetOfObjects",
         [ IsAlgebroidFromDataTables, IsString ] );
 
 #! @Description
-#!  The arguments are an algebroid <A>B</A> and a string <A>optional_string</A>.
-#!  This operation assigns the generating morphisms of <A>B</A> to global variables.
-#!  Names of the variables are the concatenation of the labels of the generating morphisms of <A>B</A> with <A>optional_string</A>.
+#!  The arguments are an algebroid <A>A</A> and a string <A>optional_string</A>.
+#!  This operation assigns the generating morphisms of <A>A</A> to global variables.
+#!  Names of the variables are the concatenation of the labels of the generating morphisms of <A>A</A> with <A>optional_string</A>.
 #!  The default value of <A>optional_string</A> is the empty string.
-#! @Arguments B [, optional_string]
+#! @Arguments A [, optional_string]
 #! @Returns nothing
 DeclareOperation( "AssignSetOfGeneratingMorphisms",
         [ IsAlgebroidFromDataTables, IsString ] );
 
 #! @Description
-#!  The arguments are an algebroid <A>B</A> and an integer <A>i</A>.
-#!  The output is the <A>i</A>'th object in <C>SetOfObjects</C>(<A>B</A>).
-#! @Arguments B, i
-#! @Returns a &CAP; category object
-DeclareOperation( "CreateObject",
-            [ IsAlgebroidFromDataTables, IsInt ] );
-
-#! @Description
-#!  The argument is an object <A>v</A> in an algebroid <A>B</A>.
-#!  The output is the index of <A>v</A> in <C>SetOfObjects</C>(<A>B</A>).
+#!  The argument is an object <A>v</A> in an algebroid <A>A</A>.
+#!  The output is the index of <A>v</A> in <C>SetOfObjects</C>(<A>A</A>).
 #! @Arguments v
 #! @Returns an integer
 DeclareAttribute( "ObjectIndex", IsObjectInAlgebroidFromDataTables );
@@ -311,42 +269,47 @@ DeclareAttribute( "ObjectIndex", IsObjectInAlgebroidFromDataTables );
 CapJitAddTypeSignature( "ObjectIndex", [ IsObjectInAlgebroidFromDataTables ], IsInt );
 
 #! @Description
-#!  The arguments are an algebroid <A>B</A> (over a commutative ring $k$), two objects <A>u,v</A> in <A>B</A> and list <A>coeffs</A> of elements in
-#!  $k$ of length $\mathrm{dim}_k~\mathrm{Hom}_{B}(u,v)$.
-#!  The output is the $k$-linear combination of the basis elements of $\mathrm{Hom}_B(u,v)$ with the coefficients-list <A>coeffs</A>.
-#! @Arguments B, u, coeffs, v
-#! @Returns a &CAP; category morphism
-DeclareOperation( "CreateMorphism",
-            [ IsAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables, IsDenseList, IsObjectInAlgebroidFromDataTables ] );
-
-#! @Description
-#!  The argument is a morphism <A>alpha</A> in an algebroid <A>B</A>.
-#!  The output is the list of coefficients of <A>alpha</A> with respect to the basis of external hom $\mathrm{Hom}_B(u,v)$ where $u$ and $v$ are source resp. range of <A>alpha</A>.
+#!  The argument is a morphism <A>alpha</A> in an algebroid <A>A</A>.
+#!  The output is the list of coefficients of <A>alpha</A> with respect to the basis of external hom $\mathrm{Hom}_B(u,v)$ where $u$ and $v$ are source resp. target of <A>alpha</A>.
 #! @Arguments alpha
 #! @Returns a &CAP; category morphism
-DeclareAttribute( "MorphismCoefficients", IsMorphismInAlgebroidFromDataTables );
+DeclareAttribute( "CoefficientsList", IsMorphismInAlgebroidFromDataTables );
 
-CapJitAddTypeSignature( "MorphismCoefficients", [ IsMorphismInAlgebroidFromDataTables ], function ( input_types )
+CapJitAddTypeSignature( "CoefficientsList", [ IsMorphismInAlgebroidFromDataTables ], function ( input_types )
     
     return CapJitDataTypeOfListOf( IsHomalgRingElement );
     
 end );
 
 #! @Description
-#!  The argument is a morphism <A>alpha</A> in an algebroid <A>B</A>.
-#!  The output is the list of indices of the nonzero entries of <C>MorphismCoefficients</C>(<A>alpha</A>).
+#!  The argument is a morphism <A>alpha</A> in an algebroid <A>A</A>.
+#!  The output is the indices of the non-zero entries of <C>CoefficientsList</C>(<A>alpha</A>).
 #! @Arguments alpha
 #! @Returns a &CAP; category morphism
-DeclareAttribute( "MorphismSupport", IsMorphismInAlgebroidFromDataTables );
+DeclareAttribute( "IndicesOfSupportMorphisms", IsMorphismInAlgebroidFromDataTables );
 
-CapJitAddTypeSignature( "MorphismSupport", [ IsMorphismInAlgebroidFromDataTables ], function ( input_types )
+CapJitAddTypeSignature( "IndicesOfSupportMorphisms", [ IsMorphismInAlgebroidFromDataTables ], function ( input_types )
     
     return CapJitDataTypeOfListOf( IsInt );
     
 end );
 
 #! @Description
-#!  The argument is a morphism <A>alpha</A> in an algebroid $B$ (over a commutative ring $k$).
+#!  The argument is a morphism <A>alpha</A> in an algebroid <A>A</A>.
+#!  The output is the list of elements in <C>CoefficientsList</C>(<A>alpha</A>) that correspond to <C>IndicesOfSupportMorphisms</C>(<A>alpha</A>).
+#! @Arguments alpha
+#! @Returns a &CAP; category morphism
+DeclareAttribute( "CoefficientsOfSupportMorphisms", IsMorphismInAlgebroidFromDataTables );
+
+#! @Description
+#!  The argument is a morphism <A>alpha</A> from <A>u</A> to <A>v</A> in an algebroid <A>A</A>.
+#!  The output is the list of elements in <C>BasisOfExternalHom</C>(<A>u,v</A>) that correspond to <C>IndicesOfSupportMorphisms</C>(<A>alpha</A>).
+#! @Arguments alpha
+#! @Returns a &CAP; category morphism
+DeclareAttribute( "SupportMorphisms", IsMorphismInAlgebroidFromDataTables );
+
+#! @Description
+#!  The argument is a morphism <A>alpha</A> in an algebroid $A$ (over a commutative ring $k$).
 #!  The output is a list of pairs $L=[[c_1,l_1],..,[c_n,l_n]]$ where for each $i=1,\dots,n$,
 #!  $c_i$ is a non-zero element in $k$ and $l_i$ is either a list containing an identity morphism or a list of (precomposable) generating morphisms such that
 #!  <A>alpha</A> = $c_1\cdot\mathrm{PreCompose}(l_1)+..+c_n\cdot\mathrm{PreCompose}(l_n)$.
@@ -356,9 +319,19 @@ DeclareAttribute( "DecompositionOfMorphismInAlgebroid",
         IsMorphismInAlgebroidFromDataTables );
 
 #! @Description
-#!  The argument is an algebroid <A>B</A>.
-#!  The ouput is the opposite algebroid $B^{\mathrm{op}}$ constructed as an algebroid from data tables.
-#! @Arguments B
+#!  The argument is a morphism <A>alpha</A> in an algebroid $A$ (over a commutative ring $k$).
+#!  The output is a list of pairs $L=[[c_1,l_1],..,[c_n,l_n]]$ where for each $i=1,\dots,n$,
+#!  $c_i$ is a non-zero element in $k$ and $l_i$ is either the empty-list or a list of **indices** of (precomposable) generating morphisms.
+#!  The output can be used to compute <C>DecompositionOfMorphismInAlgebroid</C>(<A>alpha</A>).
+#! @Arguments alpha
+#! @Returns a list of pairs
+DeclareAttribute( "DecompositionIndicesOfMorphismInAlgebroid",
+        IsMorphismInAlgebroidFromDataTables );
+
+#! @Description
+#!  The argument is an algebroid <A>A</A>.
+#!  The ouput is the opposite algebroid $A^{\mathrm{op}}$ constructed as an algebroid from data tables.
+#! @Arguments A
 #! @Returns a &CAP; category
 DeclareAttribute( "OppositeAlgebroid",
         IsAlgebroidFromDataTables );
@@ -395,32 +368,22 @@ DeclareOperation( "ElementaryTensor",
             [ IsMorphismInAlgebroidFromDataTables, IsMorphismInAlgebroidFromDataTables, IsAlgebroidFromDataTables ] );
 
 #! @Description
-#!  The argument is an algebroid $B$ over a commutative ring $k$.
-#!  The output is the presheaf object $F_{B}\in \mathrm{PSh}(B^{\mathrm{op}}\otimes B)$ which maps an object $u^{\mathrm{op}}\otimes t \in B^{\mathrm{op}}\otimes B$ to
-#!  $\mathrm{Hom}_B(t,u) \in k\mbox{-}\mathrm{rows}$ and maps a morphism $g^{\mathrm{op}}\otimes f : v^{\mathrm{op}}\otimes s \to u^{\mathrm{op}}\otimes t \in B^{\mathrm{op}}\otimes B$
+#!  The argument is an algebroid $A$ over a commutative ring $k$.
+#!  The output is the presheaf object $F_{A}\in \mathrm{PSh}(A^{\mathrm{op}}\otimes A)$ which maps an object $u^{\mathrm{op}}\otimes t \in A^{\mathrm{op}}\otimes A$ to
+#!  $\mathrm{Hom}_B(t,u) \in k\mbox{-}\mathrm{rows}$ and maps a morphism $g^{\mathrm{op}}\otimes f : v^{\mathrm{op}}\otimes s \to u^{\mathrm{op}}\otimes t \in A^{\mathrm{op}}\otimes A$
 #!  to $f\bullet(-)\bullet g =\mathrm{Hom}_B(f,g): \mathrm{Hom}_B(t,u) \to \mathrm{Hom}_B(s,v) \in k\mbox{-}\mathrm{rows}$.
-#! @Arguments B
+#! @Arguments A
 #! @Returns a &CAP; category morphism
 DeclareAttribute( "AlgebroidAsObjectInPreSheavesCategory", IsAlgebroidFromDataTables );
 
 DeclareAttribute( "AlgebroidAsObjectInPreSheavesCategoryData", IsAlgebroidFromDataTables );
 
 #! @Description
-#!  The argument is a morphism $\alpha: t \to u$ in an algebroid $B$ over a commutative ring $k$.
-#!  The output is the morphism $\lambda_{\alpha}:P_{u^{\mathrm{op}}\otimes t} \to F_{B}$ where $P_{u^{\mathrm{op}}\otimes t}$ is the image of $u^{\mathrm{op}}\otimes t$ under the Yoneda embdding
-#!  $B^{\mathrm{op}}\otimes B \hookrightarrow \mathrm{PSh}(B^{\mathrm{op}}\otimes B)$; and $\lambda_{\alpha}$ the image of $\alpha$ under the natural isomorphism
-#!  $\mathrm{Hom}_{B}(t,u) = F_{B}(u^{\mathrm{op}}\otimes t) \simeq \mathrm{Hom}_{\mathrm{PSh}(B^{\mathrm{op}}\otimes B)}(P_{u^{\mathrm{op}}\otimes t},F_{B})$.
+#!  The argument is a morphism $\alpha: t \to u$ in an algebroid $A$ over a commutative ring $k$.
+#!  The output is the morphism $\lambda_{\alpha}:P_{u^{\mathrm{op}}\otimes t} \to F_{A}$ where $P_{u^{\mathrm{op}}\otimes t}$ is the image of $u^{\mathrm{op}}\otimes t$ under the Yoneda embdding
+#!  $A^{\mathrm{op}}\otimes A \hookrightarrow \mathrm{PSh}(A^{\mathrm{op}}\otimes A)$; and $\lambda_{\alpha}$ the image of $\alpha$ under the natural isomorphism
+#!  $\mathrm{Hom}_{A}(t,u) = F_{A}(u^{\mathrm{op}}\otimes t) \simeq \mathrm{Hom}_{\mathrm{PSh}(A^{\mathrm{op}}\otimes A)}(P_{u^{\mathrm{op}}\otimes t},F_{A})$.
 #! @Arguments alpha
 #! @Returns a &CAP; category morphism
 DeclareAttribute( "AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory", IsMorphismInAlgebroidFromDataTables );
-
-DeclareAttribute( "SetOfBasesOfExternalHomsLazyHList", IsAlgebroidFromDataTables );
-
-CapJitAddTypeSignature( "SetOfBasesOfExternalHomsLazyHList", [ IsAlgebroidFromDataTables ], function ( input_types )
-    
-    return CapJitDataTypeOfListOf(
-                   CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) ) ) );
-    
-end );
 

@@ -958,10 +958,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             AddIsWellDefinedForObjects( PSh,
               function ( PSh, F )
                 local B, D, pairs;
-
+                
                 B := Source( PSh );
                 D := Target( PSh );
-
+                
                 if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
                     return false;
                 elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
@@ -971,13 +971,13 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
                     return false;
                 fi;
-
-                pairs := Concatenation( ListOfValues( EnhancedDataTables( B )[21] ) );
-
+                
+                pairs := IndicesPairsOfCompatibleMorphisms( UnderlyingQuiver( B ) );
+                
                 return ForAll( pairs, p -> IsCongruentForMorphisms( D,
                                                     F( PreCompose( B, generating_morphisms[p[1]], generating_morphisms[p[2]] ) ),
                                                     PostCompose( D, F( generating_morphisms[p[1]] ), F( generating_morphisms[p[2]] ) ) ) );
-
+                
             end );
             
         elif IsCategoryFromNerveData( B ) or
@@ -2607,7 +2607,7 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
         
         morB_op := MorphismConstructor( B_op,
                            SetOfObjects( B_op )[ObjectIndex( Target( morB ) )],
-                           MorphismCoefficients( morB ),
+                           CoefficientsList( morB ),
                            SetOfObjects( B_op )[ObjectIndex( Source( morB ) )] );
         
     else
@@ -4301,7 +4301,7 @@ InstallMethod( ViewString,
     
     B := Source( CapCategory( F ) );
     
-    vertices := EnhancedDataTables( B )[3];
+    vertices := LabelsOfObjects( UnderlyingQuiver( B ) );
     
     v_dim := List( ValuesOfPreSheaf( F )[1], ObjectDatum );
     
@@ -4309,7 +4309,7 @@ InstallMethod( ViewString,
     
     v_string := JoinStringsWithSeparator( v_string, ", " );
     
-    arrows := EnhancedDataTables( B )[7];
+    arrows := LabelsOfMorphisms( UnderlyingQuiver( B ) );
     
     a_dim := List( ValuesOfPreSheaf( F )[2], m -> [ ObjectDatum( Source( m ) ), ObjectDatum( Target( m ) ) ] );
     
@@ -4431,7 +4431,7 @@ InstallMethod( ViewString,
     
     B := Source( PSh );
     
-    vertices := EnhancedDataTables( B )[3];
+    vertices := LabelsOfObjects( UnderlyingQuiver( B ) );
     
     s_dim := List( ValuesOfPreSheaf( Source( eta ) )[1], ObjectDatum );
     
