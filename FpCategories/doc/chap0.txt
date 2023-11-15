@@ -6,19 +6,29 @@
       [1X Finitely presented categories by generating quivers and relations [101X
   
   
-                                   2023.11-10
+                                   2023.11-13
   
   
-                                13 November 2023
+                                15 November 2023
   
   
                                 Mohamed Barakat
+  
+                                  Kamal Saleh
   
   
   
   Mohamed Barakat
       Email:    [7Xmailto:mohamed.barakat@uni-siegen.de[107X
       Homepage: [7Xhttps://mohamed-barakat.github.io/[107X
+      Address:  [33X[0;14YWalter-Flex-Str. 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  Kamal Saleh
+      Email:    [7Xmailto:kamal.saleh@uni-siegen.de[107X
+      Homepage: [7Xhttps://github.com/kamalsaleh[107X
       Address:  [33X[0;14YWalter-Flex-Str. 3[133X
                 [33X[0;14Y57068 Siegen[133X
                 [33X[0;14YGermany[133X
@@ -40,25 +50,29 @@
       1.2-2 ObjectConstructor
       1.2-3 MorphismConstructor
       1.2-4 RandomCapQuiver
+      1.2-5 TensorProductOfCapQuivers
     1.3 [33X[0;0YAttributes[133X
       1.3-1 QuiverDatum
       1.3-2 QuiverName
       1.3-3 NumberOfObjects
       1.3-4 LabelsOfObjects
-      1.3-5 NumberOfMorphisms
-      1.3-6 LabelsOfMorphisms
-      1.3-7 IndicesOfSources
-      1.3-8 IndicesOfTargets
-      1.3-9 SetOfObjects
-      1.3-10 SetOfMorphisms
-      1.3-11 ExternalHoms
-      1.3-12 OppositeQuiver
-      1.3-13 ObjectIndex
-      1.3-14 ObjectLabel
-      1.3-15 CapQuiver
-      1.3-16 MorphismIndex
-      1.3-17 MorphismLabel
+      1.3-5 LaTeXStringsOfObjects
+      1.3-6 NumberOfMorphisms
+      1.3-7 LabelsOfMorphisms
+      1.3-8 LaTeXStringsOfMorphisms
+      1.3-9 IndicesOfSources
+      1.3-10 IndicesOfTargets
+      1.3-11 IndicesPairsOfCompatibleMorphisms
+      1.3-12 SetOfObjects
+      1.3-13 SetOfMorphisms
+      1.3-14 ExternalHoms
+      1.3-15 OppositeQuiver
+      1.3-16 ObjectIndex
+      1.3-17 ObjectLabel
       1.3-18 CapQuiver
+      1.3-19 MorphismIndex
+      1.3-20 MorphismLabel
+      1.3-21 CapQuiver
   2 [33X[0;0YPath Categories[133X
     2.1 [33X[0;0YGAP categories[133X
       2.1-1 IsPathCategory

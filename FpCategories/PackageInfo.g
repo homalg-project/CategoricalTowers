@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "FpCategories",
 Subtitle := "Finitely presented categories by generating quivers and relations",
-Version := "2023.11-10",
-Date := "2023-11-13",
+Version := "2023.11-13",
+Date := "2023-11-15",
 License := "GPL-2.0-or-later",
 
 
@@ -23,6 +23,20 @@ Persons := [
     LastName := "Barakat",
     WWWHome := "https://mohamed-barakat.github.io/",
     Email := "mohamed.barakat@uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Walter-Flex-Str. 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
+  ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Kamal",
+    LastName := "Saleh",
+    WWWHome := "https://github.com/kamalsaleh",
+    Email := "kamal.saleh@uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
                "57068 Siegen\n",
