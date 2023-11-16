@@ -35,7 +35,7 @@
   [2XLaTeXStringsOfMorphisms[102X, for IsCapQuiver 1.3-8 
   [2XLaTeXStringsOfObjects[102X, for IsCapQuiver 1.3-5 
   [2XMorphismConstructor[102X, for IsCapQuiver, IsCapQuiverObject, IsInt, IsCapQuiverObject 1.2-3 
-      for IsPathCategory, IsPathCategoryObject, IsDenseList, IsPathCategoryObject 2.2-3 
+      for IsPathCategory, IsPathCategoryObject, IsInt, IsDenseList, IsPathCategoryObject 2.2-3 
   [2XMorphismIndex[102X, for IsCapQuiverMorphism 1.3-19 
   [2XMorphismIndices[102X, for IsPathCategoryMorphism 2.3-8 
   [2XMorphismLabel[102X, for IsCapQuiverMorphism 1.3-20 

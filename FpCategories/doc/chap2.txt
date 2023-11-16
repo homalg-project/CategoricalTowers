@@ -48,14 +48,14 @@
   
   [1X2.2-3 MorphismConstructor[101X
   
-  [33X[1;0Y[29X[2XMorphismConstructor[102X( [3XC[103X, [3Xs[103X, [3Xdatum[103X, [3Xt[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMorphismConstructor[102X( [3XC[103X, [3Xs[103X, [3Xl[103X, [3Xsupport[103X, [3Xt[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category object[133X
   
-  [33X[0;0YThe  input is a path category [3XC[103X of [5XCAP[105X quiver [23Xq[123X, two objects [3Xs[103X, [3Xt[103X and a list
-  [3Xdatum[103X consisting of two entries: [3Xdatum[103X[1] is a positive integer and [3Xdatum[103X[2]
-  is  a  list of length [3Xdatum[103X[1] consisting of morphisms in [23Xq[123X where the target
-  of  each morphism is equal to the source of the next morphism. The output is
-  the morphism in [3XC[103X whose length is [3Xdatum[103X[1] and whose support is [3Xdatum[103X[2].[133X
+  [33X[0;0YThe  input  is  a  path  category  [3XC[103X  of  [5XCAP[105X  quiver  [23Xq[123X, two objects [3Xs[103X, [3Xt[103X a
+  nonnegative  integer  [3Xlength[103X  and  a  list [3Xsupport[103X of length [3Xl[103X consisting of
+  morphisms  in  [23Xq[123X where the target of each morphism is equal to the source of
+  the  next  morphism.  The  output is the morphism in [3XC[103X whose length is [3Xl[103X and
+  whose support is [3Xsupport[103X.[133X
   
   [1X2.2-4 AssignSetOfObjects[101X
   
@@ -143,7 +143,7 @@
   
   [1X2.3-10 IsFinitePathCategory[101X
   
-  [33X[1;0Y[29X[2XIsFinitePathCategory[102X( [3XC[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIsFinitePathCategory[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
   [33X[0;0YReturns whether [3XC[103X can be enriched over the category of finite sets.[133X
@@ -328,6 +328,9 @@
     [4X[28X[ x:(0) -≻ (0), x:(0) -≻ (0), s:(0) -≻ (1), a:(1) -≻ (2), b:(2) -≻ (4),[128X[104X
     [4X[28Xt:(4) -≻ (5), y:(5) -≻ (5), y:(5) -≻ (5) ][128X[104X
     [4X[25Xgap>[125X [27Xrelations := [ [ C.x^5, C.x ], [ C.y^5, C.y^2 ] ];;[127X[104X
+    [4X[25Xgap>[125X [27Xm = MorphismConstructor( C,[127X[104X
+    [4X[25X>[125X [27X        Source( m ), MorphismLength( m ), MorphismSupport( m ), Target( m ) );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XqC := QuotientCategory( C, relations );[127X[104X
     [4X[28XPathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,[128X[104X
     [4X[28Xb:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ][128X[104X
