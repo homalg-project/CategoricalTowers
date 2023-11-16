@@ -30,10 +30,10 @@ InstallMethod( PathCategory,
                  IsPathCategoryObject,
                  IsPathCategoryMorphism,
                  IsCapCategoryTwoCell,
-                 CapJitDataTypeOfObjectOfCategory( q ),
+                 IsBigInt,
                  CapJitDataTypeOfNTupleOf( 2,
                          IsBigInt,
-                         CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( q ) ) ),
+                         CapJitDataTypeOfListOf( IsBigInt ) ),
                  fail
                  : overhead := false );
     
@@ -57,24 +57,22 @@ InstallMethod( PathCategory,
     
     ##
     AddObjectConstructor( C,
-      function ( C, q_obj )
+      function ( C, obj_index )
         
-        return SetOfObjects( C )[ObjectIndex( q_obj )];
+        return SetOfObjects( C )[obj_index];
         
     end );
     
     ##
     AddObjectDatum( C,
-      
       function ( C, obj )
         
-        return SetOfObjects( UnderlyingQuiver( C ) )[ObjectIndex( obj )];
+        return ObjectIndex( obj );
         
     end );
     
     ##
     AddIsWellDefinedForObjects( C,
-      
       function ( C, obj )
         
         return true;
@@ -83,7 +81,6 @@ InstallMethod( PathCategory,
     
     ##
     AddIsEqualForObjects( C,
-      
       function ( C, obj_1, obj_2 )
         
         return IsIdenticalObj( obj_1, obj_2 );
@@ -92,28 +89,28 @@ InstallMethod( PathCategory,
     
     ##
     AddMorphismConstructor( C,
-      
-      function ( C, obj_1, datum, obj_2 )
+      function ( C, source, datum, target )
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, ForAll( datum[2], IsBigInt ) );
         
         return CreateCapCategoryMorphismWithAttributes( C,
-                             obj_1, obj_2,
-                             MorphismLength, datum[1],
-                             MorphismSupport, datum[2] );
+                       source, target,
+                       MorphismLength, datum[1],
+                       MorphismIndices, datum[2] );
         
     end );
      
     ##
     AddMorphismDatum( C,
-      
       function ( C, mor )
         
-        return Pair( MorphismLength( mor ), MorphismSupport( mor ) );
+        return Pair( MorphismLength( mor ), MorphismIndices( mor ) );
         
     end );
     
     ##
     AddIsWellDefinedForMorphisms( C,
-      
       function ( C, mor )
         local q, l, s;
         
@@ -122,30 +119,27 @@ InstallMethod( PathCategory,
         l := MorphismLength( mor );
         s := MorphismSupport( mor );
         
-        return
-          l = Length( s )
-          and ( ( l = 0 and IsEndomorphism( C, mor ) ) or
-                ( IsEqualForObjects( q, ObjectDatum( Source( mor ) ), Source( First( s ) ) ) and
-                  IsEqualForObjects( q, ObjectDatum( Target( mor ) ), Target( Last ( s ) ) ) ) )
-          and ForAll( [ 1 .. l - 1 ], j -> IsEqualForObjects( q, Target( s[j] ), Source( s[j+1] ) ) );
+        return l = Length( s ) and
+               ( ( l = 0 and IsEndomorphism( C, mor ) ) or
+                 ( ObjectIndex( Source( mor ) ) = ObjectIndex( Source( First( s ) ) ) and
+                   ObjectIndex( Target( mor ) ) = ObjectIndex( Target( Last( s ) ) ) ) ) and
+               ForAll( [ 1 .. l - 1 ], j -> Target( s[j] ) = Source( s[j+1] ) );
         
     end );
     
     ##
     AddIsEqualForMorphisms( C,
-      
       function ( C, mor_1, mor_2 )
         
         return IsEqualForObjects( C, Source( mor_1 ), Source( mor_2 ) )
                 and IsEqualForObjects( C, Target( mor_1 ), Target( mor_2 ) )
                 and MorphismLength( mor_1 ) = MorphismLength( mor_2 )
-                and MorphismSupport( mor_1 ) = MorphismSupport( mor_2 );
+                and MorphismIndices( mor_1 ) = MorphismIndices( mor_2 );
         
     end );
     
     ##
     AddIsCongruentForMorphisms( C,
-      
       function ( C, mor_1, mor_2 )
         
         return IsEqualForMorphisms( C, mor_1, mor_2 );
@@ -153,28 +147,25 @@ InstallMethod( PathCategory,
     end );
     
     AddIdentityMorphism( C,
-      
       function ( C, obj )
         
-        return MorphismConstructor( C, obj, Pair( 0, [ ] ), obj );
+        return MorphismConstructor( C, obj, Pair( BigInt( 0 ), [ ] ), obj );
         
     end );
     
     AddPreCompose( C,
-      
       function ( C, mor_1, mor_2 )
         
         return MorphismConstructor( C,
                       Source( mor_1 ),
                       Pair( MorphismLength( mor_1 ) + MorphismLength( mor_2 ),
-                            Concatenation( MorphismSupport( mor_1 ), MorphismSupport( mor_2 ) ) ),
+                            Concatenation( MorphismIndices( mor_1 ), MorphismIndices( mor_2 ) ) ),
                       Target( mor_2 ) );
         
     end );
     
     ##
     AddRandomObjectByInteger( C,
-      
       function ( C, n )
         
         return Random( SetOfObjects( C ) );
@@ -183,7 +174,6 @@ InstallMethod( PathCategory,
     
     ##
     AddRandomMorphismWithFixedSourceByInteger( C,
-      
       function ( C, obj, n )
         local s, t, m;
         
@@ -202,7 +192,6 @@ InstallMethod( PathCategory,
     
     ##
     AddRandomMorphismWithFixedRangeByInteger( C,
-      
       function ( C, obj, n )
         local s, t, m;
         
@@ -221,7 +210,6 @@ InstallMethod( PathCategory,
     
     ##
     AddRandomMorphismWithFixedSourceAndRangeByInteger( C,
-      
       function ( C, obj_1, obj_2, n )
         local s, t, p;
         
@@ -247,7 +235,6 @@ InstallMethod( PathCategory,
         SetRangeCategoryOfHomomorphismStructure( C, SkeletalFinSets );
         
         AddMorphismsOfExternalHom( C,
-          
           function ( C, obj_1, obj_2 )
             local s, t;
             
@@ -329,13 +316,13 @@ InstallMethod( ExternalHomsWithGivenLengthOp,
     
     supports := ExternalHomsWithGivenLengthData( C, len );
     
-    return List( [ 1 .. NumberOfObjects( q ) ],
-              s -> List( [ 1 .. NumberOfObjects( q ) ],
-                t -> List( supports[s][t],
-                  supp -> MorphismConstructor( C,
-                              SetOfObjects( C )[s],
-                              len, supp,
-                              SetOfObjects( C )[t] ) ) ) );
+    return List( [ 1 .. NumberOfObjects( q ) ], s ->
+                 List( [ 1 .. NumberOfObjects( q ) ], t ->
+                       List( supports[s][t], supp ->
+                             MorphismConstructor( C,
+                                     SetOfObjects( C )[s],
+                                     Pair( len, supp ),
+                                     SetOfObjects( C )[t] ) ) ) );
     
 end );
 
@@ -357,27 +344,46 @@ InstallOtherMethod( ExternalHomsWithGivenLength,
 end );
 
 ##
-InstallMethod( SetOfObjects,
+InstallMethodForCompilerForCAP( SetOfObjects,
           [ IsPathCategory ],
   
   function ( C )
     
-    return List( SetOfObjects( UnderlyingQuiver( C ) ),
-              obj -> CreateCapCategoryObjectWithAttributes( C, ObjectIndex, ObjectIndex( obj ) ) );
+    return List( [ 1 .. NumberOfObjects( UnderlyingQuiver( C ) ) ], obj_index ->
+                 CreateCapCategoryObjectWithAttributes( C, ObjectIndex, obj_index ) );
     
 end );
 
 ##
-InstallMethod( SetOfGeneratingMorphisms,
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
           [ IsPathCategory ],
   
   function ( C )
+    local q, s, t;
     
-    return List( SetOfMorphisms( UnderlyingQuiver( C ) ),
-              mor -> MorphismConstructor( C,
-                        SetOfObjects( C )[ObjectIndex( Source( mor ) )],
-                        Pair( 1, [ mor ] ),
-                        SetOfObjects( C )[ObjectIndex( Target( mor ) )] ) );
+    q := UnderlyingQuiver( C );
+    
+    s := IndicesOfSources( q );
+    t := IndicesOfTargets( q );
+    
+    return List( [ 1 .. NumberOfMorphisms( q ) ], mor ->
+                 MorphismConstructor( C,
+                         SetOfObjects( C )[s[mor]],
+                         Pair( BigInt( 1 ), [ mor ] ),
+                         SetOfObjects( C )[t[mor]] ) );
+    
+end );
+
+##
+InstallMethod( UnderlyingQuiverObject,
+          [ IsPathCategoryObject ],
+  
+  function ( obj )
+    local q;
+    
+    q := UnderlyingQuiver( CapCategory( obj ) );
+    
+    return SetOfObjects( q )[ObjectIndex( obj )];
     
 end );
 
@@ -387,7 +393,7 @@ InstallMethod( LaTeXOutput,
   
   function ( obj )
     
-    return LaTeXOutput( ObjectDatum( obj ) );
+    return LaTeXOutput( UnderlyingQuiverObject( obj ) );
     
 end );
 
@@ -397,7 +403,7 @@ InstallMethod( ObjectLabel,
   
   function ( obj )
     
-    return ObjectLabel( ObjectDatum( obj ) );
+    return ObjectLabel( UnderlyingQuiverObject( obj ) );
     
 end );
 
@@ -455,25 +461,18 @@ InstallMethod( MorphismSupport,
 end );
 
 ##
-InstallMethod( MorphismIndices,
-          [ IsPathCategoryMorphism ],
-  
-  function ( alpha )
-    
-    return List( MorphismSupport( alpha ), MorphismIndex );
-    
-end );
-
-##
 InstallOtherMethod( MorphismConstructor,
           [ IsPathCategory, IsPathCategoryObject, IsInt, IsDenseList, IsPathCategoryObject ],
   
-  function ( C, source, length, indices, target )
+  function ( C, source, length, support, target )
     
-    return CreateCapCategoryMorphismWithAttributes( C,
-                source, target,
-                MorphismLength, length,
-                MorphismIndices, indices );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, ForAll( support, MorphismFilter( UnderlyingQuiver( C ) ) ) );
+    
+    return MorphismConstructor( C,
+                   source,
+                   Pair( length, List( support, MorphismIndex ) ),
+                   target );
     
 end );
 
@@ -885,7 +884,7 @@ InstallMethod( ViewString,
   
   function ( obj )
     
-    return ViewString( ObjectDatum( obj ) );
+    return ViewString( UnderlyingQuiverObject( obj ) );
     
 end );
 
@@ -1074,13 +1073,13 @@ InstallOtherMethod( ExternalHoms,
         
     until hypothesis;
     
-    return LazyHList( [ 1 .. nr_objs ],
-              s -> LazyHList( [ 1 .. nr_objs ],
-                t -> List( supports[s][t],
-                  supp -> MorphismConstructor( C,
-                                SetOfObjects( C )[s],
-                                Length( supp ), supp,
-                                SetOfObjects( C )[t] ) ) ) );
+    return LazyHList( [ 1 .. nr_objs ], s ->
+                   LazyHList( [ 1 .. nr_objs ], t ->
+                           List( supports[s][t], supp ->
+                                 MorphismConstructor( C,
+                                         SetOfObjects( C )[s],
+                                         Pair( Length( supp ), supp ),
+                                         SetOfObjects( C )[t] ) ) ) );
     
 end );
 

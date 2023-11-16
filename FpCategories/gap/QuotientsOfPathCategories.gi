@@ -79,8 +79,8 @@ InstallOtherMethod( QuotientCategory,
           function ( quo_C, obj_1, obj_2 )
             local s, t;
             
-            s := ObjectIndex( ObjectDatum( obj_1 ) );
-            t := ObjectIndex( ObjectDatum( obj_2 ) );
+            s := ObjectIndex( ObjectDatum( quo_C, obj_1 ) );
+            t := ObjectIndex( ObjectDatum( quo_C, obj_2 ) );
             
             return ExternalHoms( quo_C )[s][t];
             
@@ -119,6 +119,7 @@ InstallMethod( CanonicalRepresentative,
     
 end );
 
+##
 InstallMethod( ObjectIndex,
           [ IsQuotientOfPathCategoryObject ],
   
