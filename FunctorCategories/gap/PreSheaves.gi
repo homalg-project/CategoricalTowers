@@ -3114,7 +3114,7 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentableByYonedaLemma,
     d := DistinguishedObjectOfHomomorphismStructure( C );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( PSh ), H ) );
+    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( C ), H ) );
     
     Y := YonedaEmbeddingDataOfSourceCategory( PSh )[1];
     
