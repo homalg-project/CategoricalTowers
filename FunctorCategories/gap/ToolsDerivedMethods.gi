@@ -16,8 +16,11 @@ AddDerivationToCAP( ExactCoverWithGlobalElements,
     
 end :
   CategoryFilter := cat ->
+                    HasRangeCategoryOfHomomorphismStructure( cat ) and
+                    IsIdenticalObj( cat, RangeCategoryOfHomomorphismStructure( cat ) ) and
                     IsMatrixCategory( cat ) or
                     ( IsCategoryOfRows( cat ) and
                       HasCommutativeRingOfLinearCategory( cat ) and
-                      HasIsFieldForHomalg( CommutativeRingOfLinearCategory( cat ) ) and
-                      IsFieldForHomalg( CommutativeRingOfLinearCategory( cat ) ) ) );
+                      ## a commutative ring has the invariant basis property iff it is not the zero ring:
+                      HasHasInvariantBasisProperty( CommutativeRingOfLinearCategory( cat ) ) and
+                      HasInvariantBasisProperty( CommutativeRingOfLinearCategory( cat ) ) ) );
