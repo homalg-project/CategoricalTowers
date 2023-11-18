@@ -406,7 +406,7 @@ InstallMethod( SetOfObjects,
   function ( q )
     
     return List( [ 1 .. NumberOfObjects( q ) ],
-              i -> CreateCapCategoryObjectWithAttributes( q, ObjectIndex, i, CapQuiver, q ) );
+              i -> CreateCapCategoryObjectWithAttributes( q, ObjectIndex, i, UnderlyingFinQuiver, q ) );
     
 end );
 
@@ -421,7 +421,7 @@ InstallMethod( SetOfMorphisms,
                         ObjectConstructor( q, IndicesOfSources( q )[j] ),
                         ObjectConstructor( q, IndicesOfTargets( q )[j] ),
                         MorphismIndex, j,
-                        CapQuiver, q ) );
+                        UnderlyingFinQuiver, q ) );
     
 end );
 
@@ -503,21 +503,21 @@ end );
 InstallMethod( ObjectLabel,
           [ IsCapQuiverObject ],
   
-  obj -> LabelsOfObjects( CapQuiver( obj ) )[ObjectIndex( obj )]
+  obj -> LabelsOfObjects( UnderlyingFinQuiver( obj ) )[ObjectIndex( obj )]
 );
 
 ##
 InstallMethod( LaTeXOutput,
           [ IsCapQuiverObject ],
   
-  obj -> LaTeXStringsOfObjects( CapQuiver( obj ) )[ObjectIndex( obj )]
+  obj -> LaTeXStringsOfObjects( UnderlyingFinQuiver( obj ) )[ObjectIndex( obj )]
 );
 
 ##
 InstallMethod( MorphismLabel,
           [ IsCapQuiverMorphism ],
   
-  mor -> LabelsOfMorphisms( CapQuiver( mor ) )[MorphismIndex( mor )]
+  mor -> LabelsOfMorphisms( UnderlyingFinQuiver( mor ) )[MorphismIndex( mor )]
 );
 
 ##
@@ -527,7 +527,7 @@ InstallMethod( LaTeXOutput,
   function ( mor )
     local str;
     
-    str := LaTeXStringsOfMorphisms( CapQuiver( mor ) )[MorphismIndex( mor )];
+    str := LaTeXStringsOfMorphisms( UnderlyingFinQuiver( mor ) )[MorphismIndex( mor )];
     
     if ValueOption( "OnlyDatum" ) = true then
       
@@ -557,7 +557,7 @@ InstallMethod( ViewString,
   function ( obj )
     local colors;
     
-    colors := CapQuiver( obj )!.colors;
+    colors := UnderlyingFinQuiver( obj )!.colors;
     
     return Concatenation( colors.obj, "(", ObjectLabel( obj ), ")", colors.reset );
     
@@ -577,7 +577,7 @@ InstallMethod( ViewString,
   function ( mor )
     local colors;
     
-    colors := CapQuiver( mor )!.colors;
+    colors := UnderlyingFinQuiver( mor )!.colors;
     
     return
       Concatenation(

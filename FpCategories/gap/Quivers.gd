@@ -187,7 +187,7 @@ DeclareAttribute( "ObjectLabel", IsCapQuiverObject );
 #!  Returns the quiver containing the object <A>v</A>.
 #! @Arguments v
 #! @Returns a &CAP; quiver
-DeclareAttribute( "CapQuiver", IsCapQuiverObject );
+DeclareAttribute( "UnderlyingFinQuiver", IsCapQuiverObject );
 
 #! @Description
 #!  Returns the index of the morphism <A>alpha</A>.
@@ -205,7 +205,7 @@ DeclareAttribute( "MorphismLabel", IsCapQuiverMorphism );
 #!  Returns the quiver containing the morphism <A>alpha</A>.
 #! @Arguments alpha
 #! @Returns a &CAP; quiver
-DeclareAttribute( "CapQuiver", IsCapQuiverMorphism );
+DeclareAttribute( "UnderlyingFinQuiver", IsCapQuiverMorphism );
 
 #! @InsertChunk CapQuivers
 
