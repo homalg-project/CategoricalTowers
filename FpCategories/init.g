@@ -8,5 +8,4 @@ ReadPackage( "FpCategories", "gap/Quivers.gd");
 ReadPackage( "FpCategories", "gap/PathCategories.gd");
 ReadPackage( "FpCategories", "gap/GroebnerBasesForPathCategories.gd");
 ReadPackage( "FpCategories", "gap/QuotientsOfPathCategories.gd");
-ReadPackage( "FpCategories", "gap/LinearClosuresOfPathCategoriesAndTheirQuotients.gd" );
 ReadPackage( "FpCategories", "gap/Tools.gd");

@@ -16,7 +16,7 @@
 
 
 #! @Example
-LoadPackage( "Algebroids", false );
+LoadPackage( "FpCategories", false );
 #! true
 str := "q(0,1,2,3,4,5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;
 q := CreateCapQuiver( str );
@@ -84,6 +84,8 @@ List( SetOfGeneratingMorphisms( qC ), IsMonomorphism );
 #! [ false, true, true, true, true, true, true, true, false ]
 List( SetOfGeneratingMorphisms( qC ), IsEpimorphism );
 #! [ false, true, true, true, true, true, true, true, false ]
+LoadPackage( "Algebroids", false );
+#! true
 k := HomalgFieldOfRationals();
 #! Q
 kC := k[C]; # or LinearClosure( k, C );
