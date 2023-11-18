@@ -358,6 +358,45 @@ end );
 
 ##
 InstallMethod( CategoryFromDataTables,
+        "for a path category",
+        [ IsPathCategory ],
+        
+  function( C )
+    
+    return CategoryFromDataTables(
+                   rec( name := Name( C ),
+                        range_of_HomStructure := RangeCategoryOfHomomorphismStructure( C ),
+                        data_tables := DataTablesOfCategory( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
+                        decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphismsFromHomStructure( C ),
+                        relations := RelationsAmongGeneratingMorphisms( C ),
+                        labels := [ List( SetOfObjects( C ), ObjectLabel ), List( SetOfGeneratingMorphisms( C ), MorphismLabel ) ],
+                        properties := ListKnownCategoricalProperties( C ) ) );
+    
+end );
+
+##
+InstallMethod( CategoryFromDataTables,
+        "for a quotient of a path category",
+        [ IsQuotientOfPathCategory ],
+        
+  function( C )
+    
+    return CategoryFromDataTables(
+                   rec( name := Name( C ),
+                        range_of_HomStructure := RangeCategoryOfHomomorphismStructure( C ),
+                        data_tables := DataTablesOfCategory( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
+                        decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphismsFromHomStructure( C ),
+                        relations := RelationsAmongGeneratingMorphisms( C ),
+                        labels := [ List( SetOfObjects( C ), o -> ObjectLabel( UnderlyingCell( o ) ) ),
+                                List( SetOfGeneratingMorphisms( C ), m -> MorphismLabel( CanonicalRepresentative( m ) ) ) ],
+                        properties := ListKnownCategoricalProperties( C ) ) );
+    
+end );
+
+##
+InstallMethod( CategoryFromDataTables,
         "for a category from nerve data",
         [ IsCategoryFromNerveData ],
         
@@ -496,6 +535,24 @@ InstallMethod( \.,
     fi;
     
     Error( "no object or morphism of name ", name, "\n" );
+    
+end );
+
+##
+InstallOtherMethod( CategoryFromNerveData,
+        "for a category from data tables",
+        [ IsCategoryFromDataTables ],
+        
+  function( C )
+    
+    return CategoryFromNerveData(
+                   rec( name := Name( C ),
+                        nerve_data := NerveTruncatedInDegree2Data( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
+                        decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphisms( C ),
+                        relations := RelationsAmongGeneratingMorphisms( C ),
+                        labels := C!.labels,
+                        properties := ListKnownCategoricalProperties( C ) ) );
     
 end );
 

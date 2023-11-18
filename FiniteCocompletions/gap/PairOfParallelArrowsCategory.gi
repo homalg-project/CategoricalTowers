@@ -6,7 +6,7 @@
 
 ##
 BindGlobal( "QuiverOfCategoryOfQuivers",
-        RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) );
+        FinQuiver( "q(V,A)[s:V->A,t:V->A]" ) );
 
 ##
 InstallMethod( PairOfParallelArrowsCategory,
@@ -64,7 +64,7 @@ InstallMethod( PairOfParallelArrowsCategory,
     morphism_datum := { ParallelPairs, m } -> DefiningPairOfMorphismBetweenParallelPairs( m );
     
     ## building the categorical tower:
-    F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := SkeletalFinSets, FinalizeCategory := true );
+    F := PathCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := SkeletalFinSets, FinalizeCategory := true );
     
     F := CategoryFromDataTables( F : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
     

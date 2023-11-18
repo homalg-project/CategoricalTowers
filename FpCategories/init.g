@@ -8,8 +8,10 @@ ReadPackage( "FpCategories", "gap/Quivers.gd");
 ReadPackage( "FpCategories", "gap/PathCategories.gd");
 ReadPackage( "FpCategories", "gap/GroebnerBasesForPathCategories.gd");
 ReadPackage( "FpCategories", "gap/QuotientsOfPathCategories.gd");
+ReadPackage( "FpCategories", "gap/CategoryFromNerveData.gd");
 ReadPackage( "FpCategories", "gap/Tools.gd");
 ReadPackage( "FpCategories", "gap/ToolsMethodRecordDeclarations.autogen.gd");
+ReadPackage( "FpCategories", "gap/SimplicialCategory.gd");
 
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "FpCategories", "gap/Julia.gi" );

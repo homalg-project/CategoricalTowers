@@ -453,6 +453,10 @@ InstallMethodWithCache( FunctorCategory,
     
     if IsFpCategory( B ) then
         B_op := OppositeFpCategory( B : FinalizeCategory := true );
+    elif IsPathCategory( B ) then
+        B_op := OppositePathCategory( B : FinalizeCategory := true );
+    elif IsQuotientOfPathCategory( B ) then
+        B_op := OppositeQuotientOfPathCategory( B : FinalizeCategory := true );
     elif IsCategoryFromNerveData( B ) then
         B_op := OppositeCategoryFromNerveData( B : FinalizeCategory := true );
     elif IsCategoryFromDataTables( B ) then
@@ -907,7 +911,7 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( YonedaProjection,
-        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory and IsFiniteCategory ],
         
   function ( B )
     local Hom, Yepis, N1, N2, pt;
@@ -942,7 +946,7 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( YonedaComposition,
-        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory and IsFiniteCategory ],
         
   function ( B )
     local Hom, Yepis, H, N1, N2, mu;

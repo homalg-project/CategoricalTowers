@@ -1,18 +1,20 @@
 @Chapter Quivers
 
-@Section GAP categories
 @Section Constructors
 @Section Attributes
-
-@Chapter Path Categories
-
 @Section GAP categories
+
+@Chapter Path categories
+
 @Section Constructors
 @Section Attributes
-@Section Operations
-@Section Quotients of path categories
+@Section GAP categories
 
 @Chapter Tools
 
 @Section Properties
+@Section Attributes
 @Section Operations
+
+@Chapter Precompilation
+@InsertChunk PrecompileCategoryFromNerveData

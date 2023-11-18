@@ -4,20 +4,20 @@
 LoadPackage( "Algebroids", false );
 #! true
 Delta1 := SimplicialCategoryTruncatedInDegree( 1 );
-#! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
-#! / [ s*id = C0, t*id = C0 ]
+#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+#! / [ s⋅id = id(C0), t⋅id = id(C0) ]
 Size( Delta1 );
 #! 7
 mors := SetOfMorphisms( Delta1 );
-#! [ (C0)-[(C0)]->(C0), (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1),
-#!   (C1)-[(C1)]->(C1), (C1)-[(id*s)]->(C1), (C1)-[(id*t)]->(C1) ]
+#! [ [id(C0)]:(C0) -≻ (C0), [id]:(C1) -≻ (C0), [s]:(C0) -≻ (C1), [t]:(C0) -≻ (C1),
+#!   [id(C1)]:(C1) -≻ (C1), [id⋅s]:(C1) -≻ (C1), [id⋅t]:(C1) -≻ (C1) ]
 List( mors, DecompositionOfMorphismInCategory );
-#! [ [  ], [ (C1)-[(id)]->(C0) ], [ (C0)-[(s)]->(C1) ], [ (C0)-[(t)]->(C1) ],
-#!   [  ], [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1) ],
-#!   [ (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ] ]
+#! [ [  ], [ [id]:(C1) -≻ (C0) ], [ [s]:(C0) -≻ (C1) ], [ [t]:(C0) -≻ (C1) ],
+#!   [  ], [ [id]:(C1) -≻ (C0), [s]:(C0) -≻ (C1) ],
+#!   [ [id]:(C1) -≻ (C0), [t]:(C0) -≻ (C1) ] ]
 C := CategoryFromDataTables( Delta1 );
-#! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
-#! / [ s*id = C0, t*id = C0 ]
+#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+#! / [ s⋅id = id(C0), t⋅id = id(C0) ]
 Size( C );
 #! 7
 morsC := SetOfMorphisms( C );
@@ -35,8 +35,8 @@ SetOfGeneratingMorphisms( C );
 #! [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1) ]
 Display( C );
 #! A CAP category with name
-#! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
-#! / [ s*id = C0, t*id = C0 ]:
+#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+#! / [ s⋅id = id(C0), t⋅id = id(C0) ]:
 #! 
 #! 19 primitive operations were used to derive 55 operations for this category
 #! which algorithmically
@@ -161,8 +161,8 @@ List( mors, DecompositionOfMorphismInCategory );
 #!   [ (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ] ]
 C_op := OppositeCategoryFromDataTables( C );
 #! Opposite(
-#! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
-#! / [ s*id = C0, t*id = C0 ] )
+#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+#! / [ s⋅id = id(C0), t⋅id = id(C0) ] )
 IsIdenticalObj( OppositeCategoryFromDataTables( C_op ), C );
 #! true
 IndicesOfGeneratingMorphisms( C_op );

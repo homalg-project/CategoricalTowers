@@ -276,60 +276,13 @@ DeclareAttribute( "DecompositionIndicesOfMorphism",
 DeclareAttribute( "DecompositionOfMorphismInCategory",
         IsMorphismInFpCategory );
 
-DeclareAttribute( "DecompositionIndicesOfAllMorphismsFromHomStructure",
-        IsFpCategory );
-
 DeclareAttribute( "DecompositionIndicesOfAllMorphisms",
         IsFpCategory );
 
-#! @Description
-#!  The input is a finitely presented category <A>C</A> equipped with a homomorphism structure
-#!  with values in the skeletal category <C>SkeletalFinSets</C> of finite sets.
-#!  The output is the nerve of <A>B</A> truncated in degree $2$,
-#!  as a presheaf on <C>SimplicialCategoryTruncatedInDegree</C>($2$)
-#!  with values in <C>SkeletalFinSets</C>.
 #! @Arguments C
-#! @Returns a &CAP; functor
-DeclareAttribute( "NerveTruncatedInDegree2AsFunctor",
-        IsCapCategory );
-#! @InsertChunk NerveTruncatedInDegree2AsFunctor
+DeclareAttribute( "CategoryFromNerveData",
+        IsFpCategory );
 
-DeclareAttribute( "YonedaNaturalEpimorphisms", IsCapCategory );
-
-#! @Description
-#!  The input is a finitely presented category <A>B</A>. The output is a natural morphism.
-#!  Its source is the functor $B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c),
-#!  \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)$.
-#!  Its targe is the constant functor of $0$-cells
-#!  $B \to H, c \mapsto B_0, \psi \mapsto \mathrm{id}_{B_0}$.
-#! @Arguments B
-#! @Returns a &CAP; natural transformation
-DeclareAttribute( "YonedaFibrationAsNaturalTransformation", IsCapCategory );
-
-#! @Description
-#!  The input is a finitely presented category <A>B</A>. The output is a natural epimorphism.
-#!  Its source is the functor
-#!  $B \to H, c \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(a,b) \times \mathrm{Hom}(b,c),
-#!  \psi \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(1_a,1_b) \times \mathrm{Hom}(b,\psi)$.
-#!  Its target is the functor $B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c),
-#!  \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)$.
-#! @Arguments B
-#! @Returns a &CAP; natural transformation
-DeclareAttribute( "YonedaProjectionAsNaturalEpimorphism", IsCapCategory );
-
-#! @Description
-#!  The input is a finitely presented category <A>B</A>. The output is a natural epimorphism.
-#!  Its source is the functor
-#!  $B \to H, c \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(a,b) \times \mathrm{Hom}(b,c),
-#!  \psi \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(1_a,1_b) \times \mathrm{Hom}(b,\psi)$.
-#!  Its target is the functor $B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c),
-#!  \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)$.
-#! @Arguments B
-#! @Returns a &CAP; natural transformation
-DeclareAttribute( "YonedaCompositionAsNaturalEpimorphism", IsCapCategory );
-#! @InsertChunk YonedaCompositionAsNaturalEpimorphism
-
-DeclareAttribute( "TruthMorphismOfTrueToSieveFunctorAndEmbedding", IsCapCategory );
 DeclareAttribute( "EmbeddingOfSieveFunctor", IsFpCategory );
 
 #! @Description

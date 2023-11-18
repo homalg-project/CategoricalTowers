@@ -32,7 +32,7 @@ Display( C );
 #!
 #! 17 primitive operations were used to derive 32 operations for this category
 #! which algorithmically
-#! * IsObjectFiniteCategory
+#! * IsFinitelyPresentedCategory
 SetOfObjects( C );
 #! [ (0), (1), (2), (3), (4), (5) ]
 SetOfGeneratingMorphisms( C );

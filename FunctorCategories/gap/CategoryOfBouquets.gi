@@ -6,7 +6,7 @@
 
 ##
 BindGlobal( "QuiverOfCategoryOfBouquets",
-        RightQuiver( "q(P,L)[b:P->L]" ) );
+        FinQuiver( "q(P,L)[b:P->L]" ) );
 
 ##
 InstallOtherMethodForCompilerForCAP( CreateBouquet,
@@ -99,7 +99,7 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
     morphism_datum := { Bouquets, m } -> DefiningPairOfBouquetMorphismEnrichedOverSkeletalFinSets( m );
     
     ## building the categorical tower:
-    F := FreeCategory( QuiverOfCategoryOfBouquets : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );
+    F := PathCategory( QuiverOfCategoryOfBouquets : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );
     
     F := CategoryFromDataTables( F : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
     

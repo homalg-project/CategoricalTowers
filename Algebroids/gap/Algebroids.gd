@@ -464,20 +464,6 @@ DeclareOperation( "CapFunctor",
         [ IsAlgebroid, IsCapCategoryObject ] );
 
 #! @Description
-#!  Construct, using the record (or list) of images <A>eta</A>, a natural transformation
-#!  from the functor <A>F</A> to the parallel functor <A>G</A>.
-#! @Arguments eta, F, G
-#! @Returns a &CAP; natural transformation
-#! @Group NaturalTransformation
-DeclareOperation( "NaturalTransformation",
-        [ IsRecord, IsCapFunctor, IsCapFunctor ] );
-
-#! @Arguments F, eta, G
-#! @Group NaturalTransformation
-DeclareOperation( "NaturalTransformation",
-        [ IsCapFunctor, IsList, IsCapFunctor ] );
-
-#! @Description
 #!  The constructor of objects in an algebroid <A>A</A> given a vertex <A>V</A>
 #!  in the underlying quiver.
 #! @Arguments A, V
