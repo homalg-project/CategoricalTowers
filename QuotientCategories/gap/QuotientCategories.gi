@@ -486,6 +486,46 @@ InstallOtherMethod( \/,
   { alpha, quotient_cat } -> MorphismConstructor( quotient_cat, Source( alpha ) / quotient_cat, alpha, Target( alpha ) / quotient_cat )
 );
 
+##
+InstallMethodForCompilerForCAP( ExtendFunctorToQuotientCategoryData,
+        "for a quotient category, a pair of functions, and a category",
+        [ IsQuotientCategory, IsList, IsCapCategory ],
+        
+  function( QC, pair_of_funcs, category )
+    local functor_on_objects, functor_on_morphisms,
+          extended_functor_on_objects, extended_functor_on_morphisms;
+    
+    functor_on_objects := pair_of_funcs[1];
+    functor_on_morphisms := pair_of_funcs[2];
+    
+    ## the code below is the doctrine-specific ur-algorithm for categories
+    
+    extended_functor_on_objects :=
+      function( objQC )
+        local objC;
+        
+        objC := ObjectDatum( QC, objQC );
+        
+        return functor_on_objects( objC );
+        
+    end;
+    
+    extended_functor_on_morphisms :=
+      function( source, morQC, target )
+        local morC;
+        
+        morC := MorphismDatum( QC, morQC );
+        
+        return functor_on_morphisms( source, morC, target );
+        
+    end;
+    
+    return Triple( QC,
+                   Pair( extended_functor_on_objects, extended_functor_on_morphisms ),
+                   category );
+    
+end );
+
 ##################################
 ##
 ## View & Display
