@@ -20,14 +20,14 @@ LoadPackage( "FpCategories", false );
 #! true
 str :=
   "q(0..5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;
-q := CreateFinQuiver( str );
-#! Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,
+q := FinQuiver( str );
+#! FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,
 #! t:4-≻5,y:5-≻5]" )
 C := PathCategory( q );
-#! PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,
+#! PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,
 #! b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) )
 Display( C );
-#! A CAP category with name PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,
+#! A CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,
 #! a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ):
 #!
 #! 15 primitive operations were used to derive 29 operations for this category
@@ -62,10 +62,10 @@ m = MorphismConstructor( C,
         Source( m ), MorphismLength( m ), MorphismSupport( m ), Target( m ) );
 #! true
 qC := QuotientCategory( C, relations );
-#! PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,
+#! PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,
 #! b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ]
 Display( qC );
-#! A CAP category with name PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,
+#! A CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,
 #! a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ]:
 #!
 #! 25 primitive operations were used to derive 63 operations for this category
@@ -90,12 +90,12 @@ LoadPackage( "Algebroids", false );
 k := HomalgFieldOfRationals();
 #! Q
 kC := k[C]; # or LinearClosure( k, C );
-#! Q-LinearClosure( PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,
+#! Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,
 #! c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) )
 kC.x + kC.x^2;
 #! 1*x^2 + 1*x:(0) -≻ (0)
 kqC := k[qC];
-#! Q-LinearClosure( PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,
+#! Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,
 #! c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ] )
 HomomorphismStructureOnObjects( kqC.0, kqC.5 );
 #! <A row module over Q of rank 75>
@@ -124,13 +124,13 @@ IsZero( qA.bty );
 LoadPackage( "Algebroids", false );
 #! true
 str := "q(0,1,2,3,4,5)[s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5]";;
-quiver := CreateFinQuiver( str );
-#! Quiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" )
+quiver := FinQuiver( str );
+#! FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" )
 P := PathCategory( quiver );
-#! PathCategory( Quiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,
+#! PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,
 #! d:3-≻4,t:4-≻5]" ) )
 Display( P );
-#! A CAP category with name PathCategory( Quiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,
+#! A CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,
 #! c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" ) ):
 #!
 #! 16 primitive operations were used to derive 63 operations for this category
@@ -141,7 +141,7 @@ HomStructure( P.0, P.5 );
 k := HomalgFieldOfRationals( );
 #! Q
 kP := k[P];
-#! Q-LinearClosure( PathCategory( Quiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,
+#! Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,
 #! e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" ) ) )
 HomStructure( kP.0, kP.5 );
 #! <A row module over Q of rank 3>

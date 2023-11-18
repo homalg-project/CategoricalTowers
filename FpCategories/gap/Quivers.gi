@@ -147,12 +147,12 @@ InstallGlobalFunction( RandomFinQuiver,
     Add( datum[3], labels );
     Add( datum[3], latex );
     
-    return CreateFinQuiver( datum );
+    return FinQuiver( datum );
     
 end );
 
 ##
-InstallGlobalFunction( CreateFinQuiver,
+InstallGlobalFunction( FinQuiver,
   
   function ( q_datum )
     local colors, name, q;
@@ -174,7 +174,7 @@ InstallGlobalFunction( CreateFinQuiver,
     fi;
     
     name := Concatenation(
-                "Quiver( \"",
+                "FinQuiver( \"",
                 q_datum[1],
                 "(",
                 JoinStringsWithSeparator( q_datum[2][2], "," ),
@@ -327,7 +327,7 @@ InstallMethod( OppositeQuiver,
     local q_op;
     
     q_op :=
-      CreateFinQuiver(
+      FinQuiver(
          NTuple( 3,
            Concatenation( QuiverName( q ), "_op" ),
            NTuple( 3,
@@ -383,7 +383,7 @@ InstallMethod( TensorProductOfFinQuivers,
               Concatenation( List( IndicesOfTargets( q1 ), l -> List( [ 1 .. NumberOfObjects( q2 ) ], r -> (l-1) * NumberOfObjects( q2 ) + r ) ) ) ] );
     
     return
-      CreateFinQuiver(
+      FinQuiver(
          NTuple( 3,
            Concatenation( QuiverName( q1 ), "⊗", QuiverName( q2 ) ),
            NTuple( 3,

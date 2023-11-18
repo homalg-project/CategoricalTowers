@@ -45,7 +45,8 @@ DeclareCategory( "IsFinQuiverMorphism",
 #!    This list might contain an optional fifth entry for the list of LaTeX-strings for the morphisms.
 #! @Arguments q_datum
 #! @Returns a &CAP; quiver
-DeclareGlobalFunction( "CreateFinQuiver" );
+DeclareGlobalFunction( "FinQuiver" );
+#! @InsertChunk FinQuiver
 
 if false then
 #! @Description
@@ -206,5 +207,3 @@ DeclareAttribute( "MorphismLabel", IsFinQuiverMorphism );
 #! @Arguments alpha
 #! @Returns a &CAP; quiver
 DeclareAttribute( "UnderlyingFinQuiver", IsFinQuiverMorphism );
-
-#! @InsertChunk FinQuiver

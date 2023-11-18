@@ -20,8 +20,8 @@ LoadPackage( "FpCategories", false );
 #! true
 str :=
   "q(0..5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;
-q := CreateFinQuiver( str );
-#! Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,
+q := FinQuiver( str );
+#! FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,
 #! t:4-≻5,y:5-≻5]" )
 QuiverName( q );
 #! "q"
@@ -67,7 +67,7 @@ MorphismsOfExternalHom( q.("0"), q.("0") );
 MorphismsOfExternalHom( q.("0"), q.("1") );
 #! [ s:(0) -≻ (1) ]
 q_op := OppositeQuiver( q );
-#! Quiver( "q_op(0,1,2,3,4,5)[x:0-≻0,s:1-≻0,a:2-≻1,c:3-≻1,e:4-≻1,b:4-≻2,
+#! FinQuiver( "q_op(0,1,2,3,4,5)[x:0-≻0,s:1-≻0,a:2-≻1,c:3-≻1,e:4-≻1,b:4-≻2,
 #! d:4-≻3,t:5-≻4,y:5-≻5]" )
 MorphismsOfExternalHom( q_op.1, q_op.0 );
 #! [ s:(1) -≻ (0) ]
@@ -85,9 +85,9 @@ Assert( 0, NumberOfObjects( q1 ) = 2 );
 Assert( 0, NumberOfMorphisms( q1 ) = 4 );
 Assert( 0, Length( Filtered( SetOfMorphisms( q1 ), IsEndomorphism ) ) = 0 );
 Assert( 0, Length( Filtered( SetOfMorphisms( q2 ), IsEndomorphism ) ) > 0 );
-q3 := CreateFinQuiver( "q(3)[a:1->2,b:2->3]" );
-#! Quiver( "q(1,2,3)[a:1-≻2,b:2-≻3]" )
-q4 := CreateFinQuiver( "q(4..6)[a:4->5,b:5->6]" );
-#! Quiver( "q(4,5,6)[a:4-≻5,b:5-≻6]" )
+q3 := FinQuiver( "q(3)[a:1->2,b:2->3]" );
+#! FinQuiver( "q(1,2,3)[a:1-≻2,b:2-≻3]" )
+q4 := FinQuiver( "q(4..6)[a:4->5,b:5->6]" );
+#! FinQuiver( "q(4,5,6)[a:4-≻5,b:5-≻6]" )
 #! @EndExample
 

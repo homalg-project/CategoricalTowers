@@ -74,7 +74,7 @@ InstallMethod( DataTablesOfCategory,
     
     if Length( support_objs ) <> NumberOfObjects( q ) or Length( support_gmors ) <> NumberOfMorphisms( q ) then
       
-      new_q := CreateFinQuiver(
+      new_q := FinQuiver(
                   NTuple( 3,
                     "q",
                     NTuple( 3,
@@ -263,7 +263,7 @@ InstallMethod( AlgebroidFromDataTables,
     
     if not IsFinQuiver( q ) then
       
-      q := CreateFinQuiver( q );
+      q := FinQuiver( q );
       
     fi;
     
