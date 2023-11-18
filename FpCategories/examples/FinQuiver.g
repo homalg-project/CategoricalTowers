@@ -1,4 +1,4 @@
-#! @BeginChunk CapQuivers
+#! @BeginChunk FinQuiver
 
 #    x
 #     ⭮
@@ -18,8 +18,9 @@
 #! @Example
 LoadPackage( "FpCategories", false );
 #! true
-str := "q(0,1,2,3,4,5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;
-q := CreateCapQuiver( str );
+str :=
+  "q(0..5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;
+q := CreateFinQuiver( str );
 #! Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,
 #! t:4-≻5,y:5-≻5]" )
 QuiverName( q );
@@ -70,7 +71,7 @@ q_op := OppositeQuiver( q );
 #! d:4-≻3,t:5-≻4,y:5-≻5]" )
 MorphismsOfExternalHom( q_op.1, q_op.0 );
 #! [ s:(1) -≻ (0) ]
-q_op_x_q := TensorProductOfCapQuivers( q_op, q );;
+q_op_x_q := TensorProductOfFinQuivers( q_op, q );;
 NumberOfObjects( q_op_x_q );
 #! 36
 NumberOfMorphisms( q_op_x_q );
@@ -78,15 +79,15 @@ NumberOfMorphisms( q_op_x_q );
 #! @EndExample
 
 #! @Example
-q1 := RandomCapQuiver( 2, 4, false );; # without loops
-q2 := RandomCapQuiver( 2, 4, true );;  # with loops
+q1 := RandomFinQuiver( 2, 4, false );; # without loops
+q2 := RandomFinQuiver( 2, 4, true );;  # with loops
 Assert( 0, NumberOfObjects( q1 ) = 2 );
 Assert( 0, NumberOfMorphisms( q1 ) = 4 );
 Assert( 0, Length( Filtered( SetOfMorphisms( q1 ), IsEndomorphism ) ) = 0 );
 Assert( 0, Length( Filtered( SetOfMorphisms( q2 ), IsEndomorphism ) ) > 0 );
-q3 := CreateCapQuiver( "q(3)[a:1->2,b:2->3]" );
+q3 := CreateFinQuiver( "q(3)[a:1->2,b:2->3]" );
 #! Quiver( "q(1,2,3)[a:1-≻2,b:2-≻3]" )
-q4 := CreateCapQuiver( "q(4..6)[a:4->5,b:5->6]" );
+q4 := CreateFinQuiver( "q(4..6)[a:4->5,b:5->6]" );
 #! Quiver( "q(4,5,6)[a:4-≻5,b:5-≻6]" )
 #! @EndExample
 

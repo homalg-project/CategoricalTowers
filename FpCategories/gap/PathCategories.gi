@@ -6,7 +6,7 @@
 
 ##
 InstallMethod( PathCategory,
-          [ IsCapQuiver ],
+          [ IsFinQuiver ],
   
   function ( q )
     local admissible_order, name, C;
@@ -602,7 +602,7 @@ end );
 
 ##
 InstallOtherMethod( \/,
-        [ IsCapQuiverMorphism, IsPathCategory ],
+        [ IsFinQuiverMorphism, IsPathCategory ],
   
   function ( mor, C )
     

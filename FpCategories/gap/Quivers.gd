@@ -15,19 +15,19 @@
 #! @Description
 #!  The &GAP; category of quivers.
 #! @Arguments q
-DeclareCategory( "IsCapQuiver",
+DeclareCategory( "IsFinQuiver",
         IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of objects in a quiver.
 #! @Arguments v
-DeclareCategory( "IsCapQuiverObject",
+DeclareCategory( "IsFinQuiverObject",
         IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a quiver.
 #! @Arguments alpha
-DeclareCategory( "IsCapQuiverMorphism",
+DeclareCategory( "IsFinQuiverMorphism",
         IsCapCategoryMorphism );
 
 ####################################
@@ -45,7 +45,7 @@ DeclareCategory( "IsCapQuiverMorphism",
 #!    This list might contain an optional fifth entry for the list of LaTeX-strings for the morphisms.
 #! @Arguments q_datum
 #! @Returns a &CAP; quiver
-DeclareGlobalFunction( "CreateCapQuiver" );
+DeclareGlobalFunction( "CreateFinQuiver" );
 
 if false then
 #! @Description
@@ -53,27 +53,27 @@ if false then
 #!  The output is the <A>i</A>'th object in <A>q</A>.
 #! @Arguments C, i
 #! @Returns a &CAP; category object
-DeclareOperation( "ObjectConstructor", [ IsCapQuiver, IsInt ] );
+DeclareOperation( "ObjectConstructor", [ IsFinQuiver, IsInt ] );
 
 #! @Description
 #!  The input is a &CAP; quiver $q$, an object <A>s</A>, a positive integer <A>i</A> and an object <A>t</A>.
 #!  The output is the <A>i</A>'th morphism in <A>q</A> (whose source is <A>s</A> and target is <A>t</A>).
 #! @Arguments C, s, i, t
 #! @Returns a &CAP; category object
-DeclareOperation( "MorphismConstructor", [ IsCapQuiver, IsCapQuiverObject, IsInt, IsCapQuiverObject ] );
+DeclareOperation( "MorphismConstructor", [ IsFinQuiver, IsFinQuiverObject, IsInt, IsFinQuiverObject ] );
 fi;
 
 #! @Description
 #!  The outout is a random quiver consisting of <A>nr_objs</A> objects and <A>nr_mors</A> morphisms and has loops only if <A>has_loops</A> = <C>true</C>.
 #! @Arguments nr_objs, nr_mors, has_loops
 #! @Returns a CAP quiver
-DeclareGlobalFunction( "RandomCapQuiver" );
+DeclareGlobalFunction( "RandomFinQuiver" );
 
 #! @Description
 #!  Returns the tensor product of <A>q1</A> and <A>q2</A>.
 #! @Arguments q1, q2
 #! @Returns a &CAP; quiver
-DeclareOperation( "TensorProductOfCapQuivers", [ IsCapQuiver, IsCapQuiver ] );
+DeclareOperation( "TensorProductOfFinQuivers", [ IsFinQuiver, IsFinQuiver ] );
 
 ####################################
 #
@@ -85,127 +85,126 @@ DeclareOperation( "TensorProductOfCapQuivers", [ IsCapQuiver, IsCapQuiver ] );
 #!  Returns the quiver datum of the quiver <A>q</A>.
 #! @Arguments q
 #! @Returns a list
-DeclareAttribute( "QuiverDatum", IsCapQuiver );
+DeclareAttribute( "QuiverDatum", IsFinQuiver );
 
 #! @Description
 #!  Returns the name of the quiver <A>q</A>.
 #! @Arguments q
 #! @Returns a list
-DeclareAttribute( "QuiverName", IsCapQuiver );
+DeclareAttribute( "QuiverName", IsFinQuiver );
 
 #! @Description
 #!  Returns the number of objects in the quiver <A>q</A>.
 #! @Arguments q
 #! @Returns a positive integer
-DeclareAttribute( "NumberOfObjects", IsCapQuiver );
+DeclareAttribute( "NumberOfObjects", IsFinQuiver );
 
 #! @Description
 #!  Returns the labels of all objects in the quiver <A>q</A>.
 #! @Arguments q
 #! @Returns a list
-DeclareAttribute( "LabelsOfObjects", IsCapQuiver );
+DeclareAttribute( "LabelsOfObjects", IsFinQuiver );
 
 #! @Description
 #!  Returns the LaTeX-strings of all objects in the quiver <A>q</A>.
 #! @Arguments q
 #! @Returns a list
-DeclareAttribute( "LaTeXStringsOfObjects", IsCapQuiver );
+DeclareAttribute( "LaTeXStringsOfObjects", IsFinQuiver );
 
 #! @Description
 #!  Returns the number of morphisms in the quiver <A>q</A>.
 #! @Arguments q
 #! @Returns a positive integer
-DeclareAttribute( "NumberOfMorphisms", IsCapQuiver );
+DeclareAttribute( "NumberOfMorphisms", IsFinQuiver );
 
 #! @Description
 #!  Returns the labels of all morphisms in the quiver <A>q</A>.
 #! @Arguments q
 #! @Returns a list
-DeclareAttribute( "LabelsOfMorphisms", IsCapQuiver );
+DeclareAttribute( "LabelsOfMorphisms", IsFinQuiver );
 
 #! @Description
 #!  Returns the LaTeX-strings of all morphisms in the quiver <A>q</A>.
 #! @Arguments q
 #! @Returns a list
-DeclareAttribute( "LaTeXStringsOfMorphisms", IsCapQuiver );
+DeclareAttribute( "LaTeXStringsOfMorphisms", IsFinQuiver );
 
 #! @Description
 #!  Returns the indices of sources of all morphisms in the quiver <A>q</A>.
 #! @Arguments q
 #! @Returns a list
-DeclareAttribute( "IndicesOfSources", IsCapQuiver );
+DeclareAttribute( "IndicesOfSources", IsFinQuiver );
 
 #! @Description
 #!  Returns the indices of targets of all morphisms in the quiver <A>q</A>.
 #! @Arguments q
 #! @Returns a list
-DeclareAttribute( "IndicesOfTargets", IsCapQuiver );
+DeclareAttribute( "IndicesOfTargets", IsFinQuiver );
 
 #! @Description
 #!  Returns the indices of all paris of morphisms where the target of the first morphism equals the source of the second morphism.
 #! @Arguments q
 #! @Returns a list
-DeclareAttribute( "IndicesPairsOfCompatibleMorphisms", IsCapQuiver );
+DeclareAttribute( "IndicesPairsOfCompatibleMorphisms", IsFinQuiver );
 
 #! @Description
 #!  Returns the set of objects of <A>q</A>.
 #! @Arguments q
 #! @Returns a list of &CAP; quiver objects
-DeclareAttribute( "SetOfObjects", IsCapQuiver );
+DeclareAttribute( "SetOfObjects", IsFinQuiver );
 
 #! @Description
 #!  Returns the set of morphisms of <A>q</A>.
 #! @Arguments q
 #! @Returns a list of &CAP; quiver morphisms
-DeclareAttribute( "SetOfMorphisms", IsCapQuiver );
+DeclareAttribute( "SetOfMorphisms", IsFinQuiver );
 
 #! @Description
 #!  Returns a list of lists where the entry at $[i,j]$ is the set of morphism from the $i$'th object to the $j$'th object in <A>q</A>.
 #! @Arguments q
 #! @Returns a list of &CAP; quiver morphisms
-DeclareAttribute( "ExternalHoms", IsCapQuiver );
+DeclareAttribute( "ExternalHoms", IsFinQuiver );
 
 #! @Description
 #!  Returns the opposite quiver of <A>q</A>.
 #! @Arguments q
 #! @Returns &CAP; quiver
-DeclareAttribute( "OppositeQuiver", IsCapQuiver );
+DeclareAttribute( "OppositeQuiver", IsFinQuiver );
 
 #! @Description
 #!  Returns the index of the object <A>v</A>.
 #! @Arguments v
 #! @Returns a positive integer
-DeclareAttribute( "ObjectIndex", IsCapQuiverObject );
+DeclareAttribute( "ObjectIndex", IsFinQuiverObject );
 
 #! @Description
 #!  Returns the label of the object <A>v</A>.
 #! @Arguments v
 #! @Returns a string
-DeclareAttribute( "ObjectLabel", IsCapQuiverObject );
+DeclareAttribute( "ObjectLabel", IsFinQuiverObject );
 
 #! @Description
 #!  Returns the quiver containing the object <A>v</A>.
 #! @Arguments v
 #! @Returns a &CAP; quiver
-DeclareAttribute( "UnderlyingFinQuiver", IsCapQuiverObject );
+DeclareAttribute( "UnderlyingFinQuiver", IsFinQuiverObject );
 
 #! @Description
 #!  Returns the index of the morphism <A>alpha</A>.
 #! @Arguments alpha
 #! @Returns a positive integer
-DeclareAttribute( "MorphismIndex", IsCapQuiverMorphism );
+DeclareAttribute( "MorphismIndex", IsFinQuiverMorphism );
 
 #! @Description
 #!  Returns the label of the morphism <A>alpha</A>.
 #! @Arguments alpha
 #! @Returns a string
-DeclareAttribute( "MorphismLabel", IsCapQuiverMorphism );
+DeclareAttribute( "MorphismLabel", IsFinQuiverMorphism );
 
 #! @Description
 #!  Returns the quiver containing the morphism <A>alpha</A>.
 #! @Arguments alpha
 #! @Returns a &CAP; quiver
-DeclareAttribute( "UnderlyingFinQuiver", IsCapQuiverMorphism );
+DeclareAttribute( "UnderlyingFinQuiver", IsFinQuiverMorphism );
 
-#! @InsertChunk CapQuivers
-
+#! @InsertChunk FinQuiver

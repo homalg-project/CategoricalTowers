@@ -74,7 +74,7 @@ InstallMethod( DataTablesOfCategory,
     
     if Length( support_objs ) <> NumberOfObjects( q ) or Length( support_gmors ) <> NumberOfMorphisms( q ) then
       
-      new_q := CreateCapQuiver(
+      new_q := CreateFinQuiver(
                   NTuple( 3,
                     "q",
                     NTuple( 3,
@@ -261,9 +261,9 @@ InstallMethod( AlgebroidFromDataTables,
     
     q := input_data[2];
     
-    if not IsCapQuiver( q ) then
+    if not IsFinQuiver( q ) then
       
-      q := CreateCapQuiver( q );
+      q := CreateFinQuiver( q );
       
     fi;
     
@@ -1428,7 +1428,7 @@ InstallMethodWithCache( TensorProductOfAlgebroids,
         ring,
         
         ## quiver
-        TensorProductOfCapQuivers( q1, q2 ),
+        TensorProductOfFinQuivers( q1, q2 ),
         
         ## decomposition_indices_of_bases_elements
         LazyHList( [ 1 .. NumberOfObjects( q1 ) * NumberOfObjects( q2 ) ],

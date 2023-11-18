@@ -40,7 +40,7 @@ DeclareCategory( "IsPathCategoryMorphism",
 #!  is equal to the source of the next morphism.
 #! @Arguments q
 #! @Returns a &CAP; category
-DeclareOperation( "PathCategory", [ IsCapQuiver ] );
+DeclareOperation( "PathCategory", [ IsFinQuiver ] );
 
 
 if false then

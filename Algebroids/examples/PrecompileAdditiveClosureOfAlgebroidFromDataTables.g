@@ -18,7 +18,7 @@ category_constructor :=
   data_tables -> AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables[1] : FinalizeCategory := true ), FinalizeCategory := true ) );;
 
 Q := HomalgFieldOfRationals();;
-q := CreateCapQuiver( "q(*)[x:*->*]" );;
+q := CreateFinQuiver( "q(*)[x:*->*]" );;
 
 given_arguments :=
   [ NTuple( 5,
