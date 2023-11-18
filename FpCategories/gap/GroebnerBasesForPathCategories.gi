@@ -166,7 +166,7 @@ InstallMethod( GroebnerBasis,
   function ( C, relations )
     local gb, indices, rels, i, g1, g2, new_rels;
     
-    gb := ShallowCopy( relations );
+    gb := List( [ 1 .. Length( relations ) ], i -> List( [ 1, 2 ], j -> relations[i][j] ) );
     
     for i in [ 1 .. Length( gb ) ] do
         Sort( gb[i], { g1, g2 } -> IsAscendingForMorphisms( C, g2, g1 ) );
