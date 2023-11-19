@@ -1049,6 +1049,12 @@ InstallMethod( ViewString,
 end );
 
 ##
+InstallMethod( String,
+          [ IsPathCategoryObject ],
+  
+  ViewString );
+
+##
 InstallMethod( DisplayString,
           [ IsPathCategoryObject ],
   
@@ -1080,6 +1086,12 @@ InstallMethod( ViewString,
           ViewString( Target( alpha ) ) );
 
 end );
+
+##
+InstallMethod( String,
+          [ IsPathCategoryMorphism ],
+  
+  ViewString );
 
 ##
 InstallMethod( DisplayString,
