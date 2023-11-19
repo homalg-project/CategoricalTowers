@@ -942,39 +942,37 @@ InstallMethod( HasFiniteNumberOfNonMultiples,
           [ IsPathCategory, IsDenseList ],
   
   function ( C, monomials )
-    local q, nr_objs, is_loop, loops, loops_datum, len, is_finite, mors_datum, s, mor;
+    local nr_objs, len, is_finite, current_mors, s, loop;
     
-    q := UnderlyingQuiver( C );
+    nr_objs := NumberOfObjects( UnderlyingQuiver( C ) );
     
-    nr_objs := NumberOfObjects( q );
+    monomials := List( monomials, m -> MorphismIndices( m ) );
     
-    is_loop := { i, m } -> ObjectIndex( Source( m ) ) = i and i = ObjectIndex( Target( m ) );
-    
-    loops := List( [ 1 .. nr_objs ], i -> Filtered( monomials, m -> is_loop( i, m ) ) );
-    
-    loops_datum := List( loops, loops_i -> List( loops_i, MorphismIndices ) );
-    
-    len :=  Maximum( Concatenation( [ 1 ], List( Concatenation( loops ), MorphismLength ) ) );
+    if IsEmpty( monomials ) then
+        len := 1;
+    else
+        len :=  Maximum( List( monomials, Length ) );
+    fi;
     
     repeat
       
       # Hypothesis: the category is finite & all loops of length 'len' are divisible by the set 'monomials'
       is_finite := true;
       
-      mors_datum := ExternalHomsWithGivenLengthData( C, len );
+      current_mors := ExternalHomsWithGivenLengthData( C, len );
       
       for s in [ 1 .. nr_objs ] do
         
-        for mor in mors_datum[s][s] do
+        for loop in current_mors[s][s] do
           
-          # if mor*mor is not divisible by 'monomials', then our hypothesis "the category is finite" is wrong!
-          if not ForAny( loops_datum[s], loop_datum -> PositionSublist( Concatenation( mor, mor ), loop_datum ) <> fail ) then
+          # if loop*loop is not divisible by any of the 'monomials', then our hypothesis "the category is finite" is wrong!
+          if not ForAny( monomials, mono -> PositionSublist( Concatenation( loop, loop ), mono ) <> fail ) then
               
               is_finite := false;
               
-          # elif mor is not divisible by 'monomials' then our hypothesis "all loops of length 'len' are divisible
-          # by any of the elements of 'monomials'" is wrong!
-          elif not ForAny( loops_datum[s], loop_datum -> PositionSublist( mor, loop_datum ) <> fail ) then
+          # elif loop is not divisible by 'monomials' then our hypothesis "all loops of length 'len' are divisible
+          # by one of the elements of 'monomials'" is wrong!
+          elif not ForAny( monomials, mono -> PositionSublist( loop, mono ) <> fail ) then
               
               is_finite := fail;
               
