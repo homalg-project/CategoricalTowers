@@ -1080,3 +1080,13 @@ InstallMethod( ViewString,
           ViewString( Target( alpha ) ) );
 
 end );
+
+##
+InstallMethod( DisplayString,
+          [ IsPathCategoryMorphism ],
+  
+  function ( m )
+    
+    return Concatenation( ViewString( m ), "\n" );
+    
+end );
