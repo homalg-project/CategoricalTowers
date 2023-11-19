@@ -6,10 +6,10 @@
                          [1X Tools for CategoricalTowers [101X
   
   
-                                   2023.11-04
+                                   2023.11-05
   
   
-                                13 November 2023
+                                19 November 2023
   
   
                                 Mohamed Barakat
@@ -30,84 +30,85 @@
   
   [1XContents (ToolsForCategoricalTowers)[101X
   
-  1 [33X[0;0YFuther CAP operations[133X
-    1.1 [33X[0;0YMorphismBetweenCoproducts and MorphismBetweenDirectProducts[133X
-      1.1-1 MorphismBetweenCoproducts
-      1.1-2 MorphismBetweenCoproductsWithGivenCoproducts
-      1.1-3 MorphismBetweenDirectProducts
-      1.1-4 MorphismBetweenDirectProductsWithGivenDirectProducts
-    1.2 [33X[0;0YProjective covers and injective envelopes[133X
-    1.3 [33X[0;0YIsWeakTerminal and IsWeakInitial[133X
-      1.3-1 IsWeakTerminal
-      1.3-2 IsWeakInitial
-    1.4 [33X[0;0YRelativeLift/RelativeColift[133X
-      1.4-1 RelativeLift
-    1.5 [33X[0;0YBiased relative weak fiber product[133X
-      1.5-1 BiasedRelativeWeakFiberProduct
-      1.5-2 ProjectionOfBiasedRelativeWeakFiberProduct
-      1.5-3 ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
-      1.5-4 UniversalMorphismIntoBiasedRelativeWeakFiberProduct
-      1.5-5 UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
-    1.6 [33X[0;0YEmbeddingOfSumOfImagesOfAllMorphisms[133X
-      1.6-1 MorphismOntoSumOfImagesOfAllMorphisms
-      1.6-2 EmbeddingOfSumOfImagesOfAllMorphisms
-      1.6-3 SumOfImagesOfAllMorphisms
-    1.7 [33X[0;0YSystems of homogeneous linear equations in linear categories[133X
-      1.7-1 MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory
-      1.7-2 MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory
-      1.7-3 BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory
-      1.7-4 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory
-      1.7-5 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory
-    1.8 [33X[0;0YLimit[133X
-      1.8-1 LimitPair
-      1.8-2 Limit
-      1.8-3 ProjectionInFactorOfLimit
-      1.8-4 ProjectionInFactorOfLimitWithGivenLimit
-      1.8-5 UniversalMorphismIntoLimit
-      1.8-6 UniversalMorphismIntoLimitWithGivenLimit
-    1.9 [33X[0;0YColimit[133X
-      1.9-1 ColimitPair
-      1.9-2 Colimit
-      1.9-3 InjectionOfCofactorOfColimit
-      1.9-4 InjectionOfCofactorOfColimitWithGivenColimit
-      1.9-5 UniversalMorphismFromColimit
-      1.9-6 UniversalMorphismFromColimitWithGivenColimit
-    1.10 [33X[0;0YImageObjectFunctorial[133X
-    1.11 [33X[0;0YCoimageObjectFunctorial[133X
-    1.12 [33X[0;0YAdd-methods[133X
-      1.12-1 AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory
-      1.12-2 AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory
-      1.12-3 AddBiasedRelativeWeakFiberProduct
-      1.12-4 AddColimit
-      1.12-5 AddEmbeddingOfSumOfImagesOfAllMorphisms
-      1.12-6 AddInjectionOfCofactorOfColimit
-      1.12-7 AddInjectionOfCofactorOfColimitWithGivenColimit
-      1.12-8 AddIsWeakInitial
-      1.12-9 AddIsWeakTerminal
-      1.12-10 AddLimit
-      1.12-11 AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory
-      1.12-12 AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory
-      1.12-13 AddMorphismBetweenCoproducts
-      1.12-14 AddMorphismBetweenCoproductsWithGivenCoproducts
-      1.12-15 AddMorphismBetweenDirectProducts
-      1.12-16 AddMorphismBetweenDirectProductsWithGivenDirectProducts
-      1.12-17 AddMorphismOntoSumOfImagesOfAllMorphisms
-      1.12-18 AddProjectionInFactorOfLimit
-      1.12-19 AddProjectionInFactorOfLimitWithGivenLimit
-      1.12-20 AddProjectionOfBiasedRelativeWeakFiberProduct
-      1.12-21 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
-      1.12-22 AddRelativeLift
-      1.12-23 AddSumOfImagesOfAllMorphisms
-      1.12-24 AddUniversalMorphismFromColimit
-      1.12-25 AddUniversalMorphismFromColimitWithGivenColimit
-      1.12-26 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct
-      1.12-27 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
-      1.12-28 AddUniversalMorphismIntoLimit
-      1.12-29 AddUniversalMorphismIntoLimitWithGivenLimit
-  2 [33X[0;0YTools[133X
-    2.1 [33X[0;0YFunctors[133X
-      2.1-1 CovariantHomFunctor
-      2.1-2 GlobalSectionFunctor
+  1 [33X[0;0YTools[133X
+    1.1 [33X[0;0YFunctors[133X
+      1.1-1 CovariantHomFunctor
+      1.1-2 GlobalSectionFunctor
+    1.2 [33X[0;0YCell as evaluatable string[133X
+      1.2-1 DatumOfCellAsEvaluatableString
+      1.2-2 CellAsEvaluatableString
+  2 [33X[0;0YFuther CAP operations[133X
+    2.1 [33X[0;0YMorphismBetweenCoproducts and MorphismBetweenDirectProducts[133X
+      2.1-1 MorphismBetweenCoproducts
+      2.1-2 MorphismBetweenCoproductsWithGivenCoproducts
+      2.1-3 MorphismBetweenDirectProducts
+      2.1-4 MorphismBetweenDirectProductsWithGivenDirectProducts
+    2.2 [33X[0;0YProjective covers and injective envelopes[133X
+    2.3 [33X[0;0YIsWeakTerminal and IsWeakInitial[133X
+      2.3-1 IsWeakTerminal
+      2.3-2 IsWeakInitial
+    2.4 [33X[0;0YRelativeLift/RelativeColift[133X
+      2.4-1 RelativeLift
+    2.5 [33X[0;0YBiased relative weak fiber product[133X
+      2.5-1 BiasedRelativeWeakFiberProduct
+      2.5-2 ProjectionOfBiasedRelativeWeakFiberProduct
+      2.5-3 ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
+      2.5-4 UniversalMorphismIntoBiasedRelativeWeakFiberProduct
+      2.5-5 UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
+    2.6 [33X[0;0YEmbeddingOfSumOfImagesOfAllMorphisms[133X
+      2.6-1 MorphismOntoSumOfImagesOfAllMorphisms
+      2.6-2 EmbeddingOfSumOfImagesOfAllMorphisms
+      2.6-3 SumOfImagesOfAllMorphisms
+    2.7 [33X[0;0YSystems of homogeneous linear equations in linear categories[133X
+      2.7-1 MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory
+      2.7-2 MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory
+      2.7-3 BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory
+      2.7-4 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory
+      2.7-5 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory
+    2.8 [33X[0;0YLimit[133X
+      2.8-1 LimitPair
+      2.8-2 Limit
+      2.8-3 ProjectionInFactorOfLimit
+      2.8-4 ProjectionInFactorOfLimitWithGivenLimit
+      2.8-5 UniversalMorphismIntoLimit
+      2.8-6 UniversalMorphismIntoLimitWithGivenLimit
+    2.9 [33X[0;0YColimit[133X
+      2.9-1 ColimitPair
+      2.9-2 Colimit
+      2.9-3 InjectionOfCofactorOfColimit
+      2.9-4 InjectionOfCofactorOfColimitWithGivenColimit
+      2.9-5 UniversalMorphismFromColimit
+      2.9-6 UniversalMorphismFromColimitWithGivenColimit
+    2.10 [33X[0;0YAdd-methods[133X
+      2.10-1 AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory
+      2.10-2 AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory
+      2.10-3 AddBiasedRelativeWeakFiberProduct
+      2.10-4 AddColimit
+      2.10-5 AddEmbeddingOfSumOfImagesOfAllMorphisms
+      2.10-6 AddInjectionOfCofactorOfColimit
+      2.10-7 AddInjectionOfCofactorOfColimitWithGivenColimit
+      2.10-8 AddIsWeakInitial
+      2.10-9 AddIsWeakTerminal
+      2.10-10 AddLimit
+      2.10-11 AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory
+      2.10-12 AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory
+      2.10-13 AddMorphismBetweenCoproducts
+      2.10-14 AddMorphismBetweenCoproductsWithGivenCoproducts
+      2.10-15 AddMorphismBetweenDirectProducts
+      2.10-16 AddMorphismBetweenDirectProductsWithGivenDirectProducts
+      2.10-17 AddMorphismOntoSumOfImagesOfAllMorphisms
+      2.10-18 AddProjectionInFactorOfLimit
+      2.10-19 AddProjectionInFactorOfLimitWithGivenLimit
+      2.10-20 AddProjectionOfBiasedRelativeWeakFiberProduct
+      2.10-21 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
+      2.10-22 AddRelativeLift
+      2.10-23 AddSumOfImagesOfAllMorphisms
+      2.10-24 AddUniversalMorphismFromColimit
+      2.10-25 AddUniversalMorphismFromColimitWithGivenColimit
+      2.10-26 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct
+      2.10-27 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
+      2.10-28 AddUniversalMorphismIntoLimit
+      2.10-29 AddUniversalMorphismIntoLimitWithGivenLimit
   
   
   [32X
