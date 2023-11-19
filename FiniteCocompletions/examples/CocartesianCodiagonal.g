@@ -7,24 +7,24 @@ LoadPackage( "Algebroids" );
 #! true
 LoadPackage( "LazyCategories", ">= 2023.01-02" );
 #! true
-Q := RightQuiver( "Q(a)[]" );
-#! Q(a)[]
-C := FreeCategory( Q );
-#! FreeCategory( RightQuiver( "Q(a)[]" ) )
+Q := FinQuiver( "Q(a)[]" );
+#! FinQuiver( "Q(a)[]" )
+C := PathCategory( Q );
+#! PathCategory( FinQuiver( "Q(a)[]" ) )
 SetName( C.a, "C.a" );
 UC := FiniteStrictCoproductCompletion( C );
-#! FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+#! FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )
 a := UC.a;
 #! <An object in
-#!  FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
+#!  FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )>
 aa := Coproduct( a, a );
 #! <An object in
-#!  FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
+#!  FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )>
 Display( aa );
 #! [ 2, [ C.a, C.a ] ]
 #! 
 #! An object in
-#! FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+#! FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )
 #! given by the above data
 a = aa;
 #! false
@@ -32,9 +32,9 @@ HomStructure( a, aa );
 #! |2|
 hom_a_aa := MorphismsOfExternalHom( a, aa );
 #! [ <A morphism in
-#!    FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>,
+#!    FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )>,
 #!   <A morphism in
-#!    FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )> ]
+#!    FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )> ]
 hom_a_aa[1] = InjectionOfCofactorOfCoproduct( [ a, a ], 1 );
 #! true
 hom_a_aa[2] = InjectionOfCofactorOfCoproduct( [ a, a ], 2 );
@@ -43,10 +43,10 @@ HomStructure( aa, a );
 #! |1|
 hom_aa_a := MorphismsOfExternalHom( aa, a );
 #! [ <A morphism in
-#!    FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )> ]
+#!    FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )> ]
 delta := hom_aa_a[1];
 #! <A morphism in
-#!  FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
+#!  FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )>
 Source( delta ) = aa;
 #! true
 Target( delta ) = a;
@@ -60,28 +60,39 @@ IsWellDefined( delta );
 Display( delta );
 #! { 0, 1 } ⱶ[ 0, 0 ]→ { 0 }
 #! 
-#! [ (a)-[(a)]->(a), (a)-[(a)]->(a) ]
+#! [ id(a):C.a -≻ C.a, id(a):C.a -≻ C.a ]
 #! 
 #! A morphism in
-#! FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+#! FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )
 #! given by the above data
 id_a := IdentityMorphism( C.a );
-#! (a)-[(a)]->(a)
+#! id(a):C.a -≻ C.a
 delta = CocartesianCodiagonal( a, 2 );
 #! true
+CellAsEvaluatableString( delta, [ "C", "UC" ] );
+#! "MorphismConstructor( UC,
+#!         ObjectConstructor( UC,
+#!                 Pair( 2,
+#!                       [ ObjectConstructor( C, 1 ),
+#!                         ObjectConstructor( C, 1 ) ] ) ),
+#!         Pair( [ 0, 0 ],
+#!               [ IdentityMorphism( C, ObjectConstructor( C, 1 ) ),
+#!                 IdentityMorphism( C, ObjectConstructor( C, 1 ) ) ] ),
+#!         ObjectConstructor( UC,
+#!                 Pair( 1, [ ObjectConstructor( C, 1 ) ] ) ) )"
 LUC := LazyCategory( UC );
 #! LazyCategory(
-#! FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+#! FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) ) )
 Emb := EmbeddingFunctorOfUnderlyingCategory( LUC );
 #! Embedding functor into lazy category
 Display( Emb );
 #! Embedding functor into lazy category:
 #! 
-#! FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+#! FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )
 #!   |
 #!   V
 #! LazyCategory(
-#! FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+#! FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) ) )
 F := PreCompose( EmbeddingOfUnderlyingCategory( UC ), Emb );
 #! Precomposition of
 #! Embedding functor into a finite strict coproduct cocompletion category and
@@ -91,11 +102,11 @@ Display( F );
 #! Embedding functor into a finite strict coproduct cocompletion category and
 #! Embedding functor into lazy category:
 #! 
-#! FreeCategory( RightQuiver( "Q(a)[]" ) )
+#! PathCategory( FinQuiver( "Q(a)[]" ) )
 #!   |
 #!   V
 #! LazyCategory(
-#! FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+#! FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) ) )
 G := ExtendFunctorToFiniteStrictCoproductCompletion( F );
 #! Extension to FiniteStrictCoproductCompletion( Source( Precomposition of
 #! Embedding functor into a finite strict coproduct cocompletion category and
@@ -105,14 +116,14 @@ Display( G );
 #! Embedding functor into a finite strict coproduct cocompletion category and
 #! Embedding functor into lazy category ) ):
 #! 
-#! FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+#! FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )
 #!   |
 #!   V
 #! LazyCategory(
-#! FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+#! FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) ) )
 Gdelta := G( delta );
 #! <A morphism in LazyCategory(
-#!  FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )>
+#!  FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) ) )>
 IsWellDefined( Gdelta );
 #! true
 #! @EndExample

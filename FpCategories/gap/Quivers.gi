@@ -566,9 +566,12 @@ end );
 ##
 InstallMethod( DisplayString,
           [ IsFinQuiverObject ],
-  
-  ViewString
-);
+        
+  function( obj )
+    
+    return Concatenation( ViewString( obj ), "\n" );
+    
+end );
 
 ##
 InstallMethod( ViewString,
@@ -597,6 +600,8 @@ end );
 InstallMethod( DisplayString,
           [ IsFinQuiverMorphism ],
   
-  ViewString
-);
-
+  function( mor )
+    
+    return Concatenation( ViewString( mor ), "\n" );
+    
+end );

@@ -105,6 +105,11 @@ List( SetOfGeneratingMorphisms( kqC ), IsMonomorphism );
 #! [ false, true, true, true, true, true, true, true, false ]
 List( SetOfGeneratingMorphisms( kqC ), IsEpimorphism );
 #! [ false, true, true, true, true, true, true, true, false ]
+homs := BasisOfExternalHom( kqC.0, kqC.5 );;
+mor := 2 * homs[1] - 3 * homs[4] + homs[75];
+#! 2*[x^4•s•a•b•t•y^4] - 3*[x^4•s•c•d•t•y^3] + 1*[s•e•t]:(0) -≻ (5)
+EvalString( CellAsEvaluatableString( mor, [ "kqC", "qC", "C" ] ) ) = mor;
+#! true
 A := AlgebroidFromDataTables( kqC );
 #! Q-algebroid( {0,1,2,3,4,5}[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,
 #! t:4-≻5,y:5-≻5] ) defined by 6 objects and 9 generating morphisms

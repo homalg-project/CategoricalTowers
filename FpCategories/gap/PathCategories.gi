@@ -872,55 +872,6 @@ InstallOtherMethod( IsDescendingForMorphisms,
     
 end );
 
-###################
-#
-# View Methods
-#
-###################
-
-##
-InstallMethod( ViewString,
-          [ IsPathCategoryObject ],
-  
-  function ( obj )
-    
-    return ViewString( UnderlyingQuiverObject( obj ) );
-    
-end );
-
-##
-InstallMethod( ViewString,
-          [ IsPathCategoryMorphism ],
-  
-  function ( alpha )
-    local colors;
-    
-    colors := UnderlyingQuiver( CapCategory( alpha ) )!.colors;
-    
-    return
-      Concatenation(
-          colors.mor,
-          MorphismLabel( alpha ),
-          colors.reset,
-          colors.other,
-          ":",
-          ViewString( Source( alpha ) ),
-          colors.other,
-          " -≻ ",
-          ViewString( Target( alpha ) ) );
-
-end );
-
-##
-InstallMethod( DisplayString,
-          [ IsPathCategoryObject ],
-  
-  function ( o )
-    
-    return Concatenation( ViewString( o ), "\n" );
-    
-end );
-
 #######################################################
 #
 # Hom-Structure in Path Categories and their Quotients
@@ -1081,3 +1032,86 @@ InstallOtherMethod( ExternalHoms,
     
 end );
 
+##
+InstallMethod( DatumOfCellAsEvaluatableString,
+        [ IsPathCategoryMorphism, IsList ],
+        
+  function( mor, list_of_evaluatable_strings )
+    local datum;
+    
+    datum := MorphismDatum( mor );
+    
+    return Concatenation( "Pair( ", String( datum[1] ), ", ", String( datum[2] ), " )" );
+    
+end );
+
+###################
+#
+# View Methods
+#
+###################
+
+##
+InstallMethod( ViewString,
+          [ IsPathCategoryObject ],
+  
+  function ( obj )
+    
+    return ViewString( UnderlyingQuiverObject( obj ) );
+    
+end );
+
+##
+InstallMethod( String,
+          [ IsPathCategoryObject ],
+  
+  ViewString );
+
+##
+InstallMethod( DisplayString,
+          [ IsPathCategoryObject ],
+  
+  function ( o )
+    
+    return Concatenation( ViewString( o ), "\n" );
+    
+end );
+
+##
+InstallMethod( ViewString,
+          [ IsPathCategoryMorphism ],
+  
+  function ( alpha )
+    local colors;
+    
+    colors := UnderlyingQuiver( CapCategory( alpha ) )!.colors;
+    
+    return
+      Concatenation(
+          colors.mor,
+          MorphismLabel( alpha ),
+          colors.reset,
+          colors.other,
+          ":",
+          ViewString( Source( alpha ) ),
+          colors.other,
+          " -≻ ",
+          ViewString( Target( alpha ) ) );
+
+end );
+
+##
+InstallMethod( String,
+          [ IsPathCategoryMorphism ],
+  
+  ViewString );
+
+##
+InstallMethod( DisplayString,
+          [ IsPathCategoryMorphism ],
+  
+  function ( m )
+    
+    return Concatenation( ViewString( m ), "\n" );
+    
+end );

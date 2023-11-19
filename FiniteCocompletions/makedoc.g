@@ -28,6 +28,8 @@ AutoDoc( rec(
                 \DeclareUnicodeCharacter{21A0}{\ensuremath{\!\!\twoheadrightarrow\!}}
                 \DeclareUnicodeCharacter{2B47}{\ensuremath{\!\!\xrightarrow{\sim}\!}}
                 \DeclareUnicodeCharacter{21A6}{\ensuremath{\mapsto}}
+                \DeclareUnicodeCharacter{227B}{\ensuremath{\succ}}
+                \DeclareUnicodeCharacter{2022}{\ensuremath{\bullet}}
             """,
         ),
     ),

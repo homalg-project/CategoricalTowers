@@ -324,3 +324,19 @@ InstallMethod( DataTablesOfCategory,
     
 end );
 
+##
+InstallMethod( DatumOfCellAsEvaluatableString,
+        [ IsLinearClosureMorphism, IsList ],
+        
+  function( mor, list_of_evaluatable_strings )
+    local datum;
+    
+    datum := MorphismDatum( mor );
+    
+    return Concatenation(
+                   "Pair( ", String( datum[1] ),
+                   ", [ ",
+                   JoinStringsWithSeparator( List( datum[2], e -> CellAsEvaluatableString( e, list_of_evaluatable_strings ) ), ", " ),
+                   " ] )" );
+    
+end );

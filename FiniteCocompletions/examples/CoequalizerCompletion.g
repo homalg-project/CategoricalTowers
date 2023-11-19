@@ -35,6 +35,13 @@ UC := AdditiveClosure( L );
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #! / relations )
+str := CellAsEvaluatableString( UC.sS, [ "L", "UC", "L.AS", "L.VS", "L.sS" ] );
+#! "MorphismConstructor( UC,
+#!         ObjectConstructor( UC, [ L.AS ] ),
+#!         [ [ L.sS ] ],
+#!         ObjectConstructor( UC, [ L.VS ] ) )"
+EvalString( str ) = UC.sS;
+#! true
 A := CoequalizerCompletion( UC );
 #! CoequalizerCompletion( AdditiveClosure( Algebroid( Q, FreeCategory(
 #! RightQuiver( "q(VS,AS,VT,AT)

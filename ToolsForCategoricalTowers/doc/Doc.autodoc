@@ -1,3 +1,5 @@
+@Chapter Tools
+
 @Chapter Futher CAP operations
 
 @Section MorphismBetweenCoproducts and MorphismBetweenDirectProducts
@@ -18,10 +20,4 @@
 
 @Section Colimit
 
-@Section ImageObjectFunctorial
-
-@Section CoimageObjectFunctorial
-
 @Section Add-methods
-
-@Chapter Tools
