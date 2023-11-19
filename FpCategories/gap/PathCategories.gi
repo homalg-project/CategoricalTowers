@@ -893,17 +893,15 @@ InstallMethod( HasFiniteNumberOfNonMultiples,
           [ IsPathCategory, IsDenseList ],
   
   function ( C, monomials )
-    local nr_objs, len, is_finite, current_mors, s, loop;
+    local q, nr_objs, len, is_finite, current_mors, s, loop;
     
-    nr_objs := NumberOfObjects( UnderlyingQuiver( C ) );
+    q := UnderlyingQuiver( C );
     
-    monomials := List( monomials, m -> MorphismIndices( m ) );
+    nr_objs := NumberOfObjects( q );
     
-    if IsEmpty( monomials ) then
-        len := 1;
-    else
-        len :=  Maximum( List( monomials, Length ) );
-    fi;
+    monomials := List( monomials, m -> [ ObjectIndex( Source( m ) ), MorphismIndices( m ), ObjectIndex( Target( m ) ) ] );
+    
+    len := Maximum( Concatenation( [ 1 ], List( monomials, mono -> Length( mono[2] ) ) ) );
     
     repeat
       
@@ -917,13 +915,15 @@ InstallMethod( HasFiniteNumberOfNonMultiples,
         for loop in current_mors[s][s] do
           
           # if loop*loop is not divisible by any of the 'monomials', then our hypothesis "the category is finite" is wrong!
-          if not ForAny( monomials, mono -> PositionSublist( Concatenation( loop, loop ), mono ) <> fail ) then
+          if not ForAny( monomials, mono ->
+                    ( IsEmpty( mono[2] ) and mono[1] in IndicesOfSources( q ){loop} ) or
+                    ( not IsEmpty( mono[2] ) and PositionSublist( Concatenation( loop, loop ), mono[2] ) <> fail ) ) then
               
               is_finite := false;
               
           # elif loop is not divisible by 'monomials' then our hypothesis "all loops of length 'len' are divisible
           # by one of the elements of 'monomials'" is wrong!
-          elif not ForAny( monomials, mono -> PositionSublist( loop, mono ) <> fail ) then
+          elif not ForAny( monomials, mono -> PositionSublist( loop, mono[2] ) <> fail ) then
               
               is_finite := fail;
               
@@ -941,7 +941,7 @@ InstallMethod( HasFiniteNumberOfNonMultiples,
       
       len := len + 1;
       
-    until is_finite <> fail;
+    until is_finite = false or ( is_finite = true and len > 2 * nr_objs );
     
     return is_finite;
     
