@@ -100,6 +100,8 @@ DeclareAttribute( "QuiverName", IsFinQuiver );
 #! @Returns a positive integer
 DeclareAttribute( "NumberOfObjects", IsFinQuiver );
 
+CapJitAddTypeSignature( "NumberOfObjects", [ IsFinQuiver ], IsBigInt );
+
 #! @Description
 #!  Returns the labels of all objects in the quiver <A>q</A>.
 #! @Arguments q
@@ -117,6 +119,8 @@ DeclareAttribute( "LaTeXStringsOfObjects", IsFinQuiver );
 #! @Arguments q
 #! @Returns a positive integer
 DeclareAttribute( "NumberOfMorphisms", IsFinQuiver );
+
+CapJitAddTypeSignature( "NumberOfMorphisms", [ IsFinQuiver ], IsBigInt );
 
 #! @Description
 #!  Returns the labels of all morphisms in the quiver <A>q</A>.
