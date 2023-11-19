@@ -486,4 +486,3 @@ InstallOtherMethod( LaTeXOutput,
   
   alpha -> LaTeXOutput( UnderlyingCell( alpha ) )
 );
-

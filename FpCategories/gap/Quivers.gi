@@ -73,7 +73,7 @@ BindGlobal( "PARSE_CAP_QUIVER_DATUM_FROM_STRING",
     
 end );
 
-InstallGlobalFunction( RandomCapQuiver,
+InstallGlobalFunction( RandomFinQuiver,
   
   function ( arg ) # nr_objs, nr_gmors, is_cyclic
     local nr_objs, nr_gmors, is_cyclic, datum, mors, labels, latex, s, t, p, j, triple;
@@ -147,12 +147,12 @@ InstallGlobalFunction( RandomCapQuiver,
     Add( datum[3], labels );
     Add( datum[3], latex );
     
-    return CreateCapQuiver( datum );
+    return FinQuiver( datum );
     
 end );
 
 ##
-InstallGlobalFunction( CreateCapQuiver,
+InstallGlobalFunction( FinQuiver,
   
   function ( q_datum )
     local colors, name, q;
@@ -174,7 +174,7 @@ InstallGlobalFunction( CreateCapQuiver,
     fi;
     
     name := Concatenation(
-                "Quiver( \"",
+                "FinQuiver( \"",
                 q_datum[1],
                 "(",
                 JoinStringsWithSeparator( q_datum[2][2], "," ),
@@ -184,9 +184,9 @@ InstallGlobalFunction( CreateCapQuiver,
                 "]\" )" );
     
     q := CreateCapCategoryWithDataTypes( name,
-                 IsCapQuiver,
-                 IsCapQuiverObject,
-                 IsCapQuiverMorphism,
+                 IsFinQuiver,
+                 IsFinQuiverObject,
+                 IsFinQuiverMorphism,
                  IsCapCategoryTwoCell,
                  IsBigInt,
                  IsBigInt,
@@ -321,13 +321,13 @@ InstallGlobalFunction( CreateCapQuiver,
 end );
 
 InstallMethod( OppositeQuiver,
-          [ IsCapQuiver ],
+          [ IsFinQuiver ],
   
   function ( q )
     local q_op;
     
     q_op :=
-      CreateCapQuiver(
+      FinQuiver(
          NTuple( 3,
            Concatenation( QuiverName( q ), "_op" ),
            NTuple( 3,
@@ -348,8 +348,8 @@ InstallMethod( OppositeQuiver,
 end );
 
 ##
-InstallMethod( TensorProductOfCapQuivers,
-          [ IsCapQuiver, IsCapQuiver ],
+InstallMethod( TensorProductOfFinQuivers,
+          [ IsFinQuiver, IsFinQuiver ],
   
   function ( q1, q2 )
     local nr_objs, labels_objs, latex_strings_objs, nr_gmors, labels_gmors, latex_strings_gmors, sources_gmors, targets_gmors;
@@ -383,7 +383,7 @@ InstallMethod( TensorProductOfCapQuivers,
               Concatenation( List( IndicesOfTargets( q1 ), l -> List( [ 1 .. NumberOfObjects( q2 ) ], r -> (l-1) * NumberOfObjects( q2 ) + r ) ) ) ] );
     
     return
-      CreateCapQuiver(
+      FinQuiver(
          NTuple( 3,
            Concatenation( QuiverName( q1 ), "⊗", QuiverName( q2 ) ),
            NTuple( 3,
@@ -401,18 +401,18 @@ end );
 
 ##
 InstallMethod( SetOfObjects,
-          [ IsCapQuiver ],
+          [ IsFinQuiver ],
   
   function ( q )
     
     return List( [ 1 .. NumberOfObjects( q ) ],
-              i -> CreateCapCategoryObjectWithAttributes( q, ObjectIndex, i, CapQuiver, q ) );
+              i -> CreateCapCategoryObjectWithAttributes( q, ObjectIndex, i, UnderlyingFinQuiver, q ) );
     
 end );
 
 ##
 InstallMethod( SetOfMorphisms,
-          [ IsCapQuiver ],
+          [ IsFinQuiver ],
   
   function ( q )
     
@@ -421,13 +421,13 @@ InstallMethod( SetOfMorphisms,
                         ObjectConstructor( q, IndicesOfSources( q )[j] ),
                         ObjectConstructor( q, IndicesOfTargets( q )[j] ),
                         MorphismIndex, j,
-                        CapQuiver, q ) );
+                        UnderlyingFinQuiver, q ) );
     
 end );
 
 ##
 InstallMethod( LaTeXStringsOfObjects,
-          [ IsCapQuiver ],
+          [ IsFinQuiver ],
   function ( q )
     
     return LabelsOfObjects( q );
@@ -436,7 +436,7 @@ end );
 
 ##
 InstallMethod( LaTeXStringsOfMorphisms,
-          [ IsCapQuiver ],
+          [ IsFinQuiver ],
   function ( q )
     
     return LabelsOfMorphisms( q );
@@ -445,7 +445,7 @@ end );
 
 ##
 InstallMethod( IndicesPairsOfCompatibleMorphisms,
-          [ IsCapQuiver ],
+          [ IsFinQuiver ],
   
   function ( q )
     local sources, targets;
@@ -459,7 +459,7 @@ end );
 
 ##
 InstallMethod( ExternalHoms,
-          [ IsCapQuiver ],
+          [ IsFinQuiver ],
   
   function ( q )
     local sources, targets;
@@ -476,7 +476,7 @@ end );
 ##
 InstallMethod( \.,
         "for a cap-quiver and a label of an object or morphism",
-        [ IsCapQuiver, IsPosInt ],
+        [ IsFinQuiver, IsPosInt ],
   
   function ( q, string_as_int )
     local name, i;
@@ -501,33 +501,33 @@ end );
 
 ##
 InstallMethod( ObjectLabel,
-          [ IsCapQuiverObject ],
+          [ IsFinQuiverObject ],
   
-  obj -> LabelsOfObjects( CapQuiver( obj ) )[ObjectIndex( obj )]
+  obj -> LabelsOfObjects( UnderlyingFinQuiver( obj ) )[ObjectIndex( obj )]
 );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsCapQuiverObject ],
+          [ IsFinQuiverObject ],
   
-  obj -> LaTeXStringsOfObjects( CapQuiver( obj ) )[ObjectIndex( obj )]
+  obj -> LaTeXStringsOfObjects( UnderlyingFinQuiver( obj ) )[ObjectIndex( obj )]
 );
 
 ##
 InstallMethod( MorphismLabel,
-          [ IsCapQuiverMorphism ],
+          [ IsFinQuiverMorphism ],
   
-  mor -> LabelsOfMorphisms( CapQuiver( mor ) )[MorphismIndex( mor )]
+  mor -> LabelsOfMorphisms( UnderlyingFinQuiver( mor ) )[MorphismIndex( mor )]
 );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsCapQuiverMorphism ],
+          [ IsFinQuiverMorphism ],
   
   function ( mor )
     local str;
     
-    str := LaTeXStringsOfMorphisms( CapQuiver( mor ) )[MorphismIndex( mor )];
+    str := LaTeXStringsOfMorphisms( UnderlyingFinQuiver( mor ) )[MorphismIndex( mor )];
     
     if ValueOption( "OnlyDatum" ) = true then
       
@@ -552,12 +552,12 @@ end );
 
 ##
 InstallMethod( ViewString,
-          [ IsCapQuiverObject ],
+          [ IsFinQuiverObject ],
   
   function ( obj )
     local colors;
     
-    colors := CapQuiver( obj )!.colors;
+    colors := UnderlyingFinQuiver( obj )!.colors;
     
     return Concatenation( colors.obj, "(", ObjectLabel( obj ), ")", colors.reset );
     
@@ -565,19 +565,19 @@ end );
 
 ##
 InstallMethod( DisplayString,
-          [ IsCapQuiverObject ],
+          [ IsFinQuiverObject ],
   
   ViewString
 );
 
 ##
 InstallMethod( ViewString,
-          [ IsCapQuiverMorphism ],
+          [ IsFinQuiverMorphism ],
   
   function ( mor )
     local colors;
     
-    colors := CapQuiver( mor )!.colors;
+    colors := UnderlyingFinQuiver( mor )!.colors;
     
     return
       Concatenation(
@@ -595,7 +595,7 @@ end );
 
 ##
 InstallMethod( DisplayString,
-          [ IsCapQuiverMorphism ],
+          [ IsFinQuiverMorphism ],
   
   ViewString
 );

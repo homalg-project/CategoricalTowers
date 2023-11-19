@@ -9,6 +9,8 @@ gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
 gap> LoadPackage( "IO_ForHomalg", false );
 true
+gap> LoadPackage( "FreydCategoriesForCAP", false );
+true
 gap> LoadPackage( "FinSetsForCAP", false );
 true
 gap> LoadPackage( "Locales", false );
@@ -17,6 +19,8 @@ gap> LoadPackage( "SubcategoriesForCAP", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
 gap> LoadPackage( "IO_ForHomalg" );
+true
+gap> LoadPackage( "FreydCategoriesForCAP" );
 true
 gap> LoadPackage( "FinSetsForCAP" );
 true

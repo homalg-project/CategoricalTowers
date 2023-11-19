@@ -13,4 +13,3 @@ gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
 gap> LoadPackage( "FpCategories" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;
-gap> HOMALG_IO.show_banners := false;;
