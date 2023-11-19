@@ -117,6 +117,13 @@ AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 [sS:AS-&gt;VS,tS:AS-&gt;VS,sT:AT-&gt;VT,tT:AT-&gt;VT,
  m1:VS-&gt;VT,w1:AS-&gt;AT,m2:VS-&gt;VT,w2:AS-&gt;AT,m3:VS-&gt;VT,w3:AS-&gt;AT]" ) ) )
 / relations )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">str := CellAsEvaluatableString( UC.sS, [ "L", "UC", "L.AS", "L.VS", "L.sS" ] );</span>
+"MorphismConstructor( UC,
+        ObjectConstructor( UC, [ L.AS ] ),
+        [ [ L.sS ] ],
+        ObjectConstructor( UC, [ L.VS ] ) )"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EvalString( str ) = UC.sS;</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := CoequalizerCompletion( UC );</span>
 CoequalizerCompletion( AdditiveClosure( Algebroid( Q, FreeCategory(
 RightQuiver( "q(VS,AS,VT,AT)

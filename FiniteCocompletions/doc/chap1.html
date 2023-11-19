@@ -537,24 +537,24 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories", "&gt;= 2023.01-02" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(a)[]" );</span>
-Q(a)[]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := FreeCategory( Q );</span>
-FreeCategory( RightQuiver( "Q(a)[]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := FinQuiver( "Q(a)[]" );</span>
+FinQuiver( "Q(a)[]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := PathCategory( Q );</span>
+PathCategory( FinQuiver( "Q(a)[]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetName( C.a, "C.a" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UC := FiniteStrictCoproductCompletion( C );</span>
-FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := UC.a;</span>
 &lt;An object in
- FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
+ FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">aa := Coproduct( a, a );</span>
 &lt;An object in
- FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
+ FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( aa );</span>
 [ 2, [ C.a, C.a ] ]
 
 An object in
-FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a = aa;</span>
 false
@@ -562,9 +562,9 @@ false
 |2|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_a_aa := MorphismsOfExternalHom( a, aa );</span>
 [ &lt;A morphism in
-   FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;,
+   FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )&gt;,
   &lt;A morphism in
-   FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt; ]
+   FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_a_aa[1] = InjectionOfCofactorOfCoproduct( [ a, a ], 1 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_a_aa[2] = InjectionOfCofactorOfCoproduct( [ a, a ], 2 );</span>
@@ -573,10 +573,10 @@ true
 |1|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_aa_a := MorphismsOfExternalHom( aa, a );</span>
 [ &lt;A morphism in
-   FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt; ]
+   FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := hom_aa_a[1];</span>
 &lt;A morphism in
- FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
+ FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( delta ) = aa;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Target( delta ) = a;</span>
@@ -590,28 +590,39 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( delta );</span>
 { 0, 1 } ⱶ[ 0, 0 ]→ { 0 }
 
-[ (a)-[(a)]-&gt;(a), (a)-[(a)]-&gt;(a) ]
+[ id(a):C.a -≻ C.a, id(a):C.a -≻ C.a ]
 
 A morphism in
-FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_a := IdentityMorphism( C.a );</span>
-(a)-[(a)]-&gt;(a)
+id(a):C.a -≻ C.a
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta = CocartesianCodiagonal( a, 2 );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CellAsEvaluatableString( delta, [ "C", "UC" ] );</span>
+"MorphismConstructor( UC,
+        ObjectConstructor( UC,
+                Pair( 2,
+                      [ ObjectConstructor( C, 1 ),
+                        ObjectConstructor( C, 1 ) ] ) ),
+        Pair( [ 0, 0 ],
+              [ IdentityMorphism( C, ObjectConstructor( C, 1 ) ),
+                IdentityMorphism( C, ObjectConstructor( C, 1 ) ) ] ),
+        ObjectConstructor( UC,
+                Pair( 1, [ ObjectConstructor( C, 1 ) ] ) ) )"
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LUC := LazyCategory( UC );</span>
 LazyCategory(
-FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Emb := EmbeddingFunctorOfUnderlyingCategory( LUC );</span>
 Embedding functor into lazy category
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Emb );</span>
 Embedding functor into lazy category:
 
-FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )
   |
   V
 LazyCategory(
-FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PreCompose( EmbeddingOfUnderlyingCategory( UC ), Emb );</span>
 Precomposition of
 Embedding functor into a finite strict coproduct cocompletion category and
@@ -621,11 +632,11 @@ Precomposition of
 Embedding functor into a finite strict coproduct cocompletion category and
 Embedding functor into lazy category:
 
-FreeCategory( RightQuiver( "Q(a)[]" ) )
+PathCategory( FinQuiver( "Q(a)[]" ) )
   |
   V
 LazyCategory(
-FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := ExtendFunctorToFiniteStrictCoproductCompletion( F );</span>
 Extension to FiniteStrictCoproductCompletion( Source( Precomposition of
 Embedding functor into a finite strict coproduct cocompletion category and
@@ -635,14 +646,14 @@ Extension to FiniteStrictCoproductCompletion( Source( Precomposition of
 Embedding functor into a finite strict coproduct cocompletion category and
 Embedding functor into lazy category ) ):
 
-FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )
   |
   V
 LazyCategory(
-FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Gdelta := G( delta );</span>
 &lt;A morphism in LazyCategory(
- FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )&gt;
+ FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Gdelta );</span>
 true
 </pre></div>

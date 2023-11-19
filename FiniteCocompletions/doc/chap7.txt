@@ -63,6 +63,13 @@
     [4X[28X[sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,[128X[104X
     [4X[28X m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )[128X[104X
     [4X[28X/ relations )[128X[104X
+    [4X[25Xgap>[125X [27Xstr := CellAsEvaluatableString( UC.sS, [ "L", "UC", "L.AS", "L.VS", "L.sS" ] );[127X[104X
+    [4X[28X"MorphismConstructor( UC,[128X[104X
+    [4X[28X        ObjectConstructor( UC, [ L.AS ] ),[128X[104X
+    [4X[28X        [ [ L.sS ] ],[128X[104X
+    [4X[28X        ObjectConstructor( UC, [ L.VS ] ) )"[128X[104X
+    [4X[25Xgap>[125X [27XEvalString( str ) = UC.sS;[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA := CoequalizerCompletion( UC );[127X[104X
     [4X[28XCoequalizerCompletion( AdditiveClosure( Algebroid( Q, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(VS,AS,VT,AT)[128X[104X

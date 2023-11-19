@@ -1,5 +1,5 @@
 name: FiniteCocompletions
-version: "2023.11-10"
+version: "2023.11-12"
 license: "GPL-2.0-or-later"
 date: 2023-11-19
 description: |
@@ -32,11 +32,14 @@ needed-pkgs:
       version: ">= 2023.11-02"
       url: "https://homalg-project.github.io/pkg/Toposes"
     - name: "ToolsForCategoricalTowers"
-      version: ">= 2023.11-03"
+      version: ">= 2023.11-05"
       url: "https://homalg-project.github.io/pkg/ToolsForCategoricalTowers"
     - name: "QuotientCategories"
       version: ">= 2023.10-01"
       url: "https://homalg-project.github.io/pkg/QuotientCategories"
+    - name: "FpCategories"
+      version: ">= 2023.11-23"
+      url: "https://homalg-project.github.io/pkg/FpCategories"
     - name: "Algebroids"
       version: ">= 2023.09-04"
       url: "https://homalg-project.github.io/pkg/Algebroids"
@@ -55,11 +58,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FiniteCocompleti
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2023.11-10/FiniteCocompletions-2023.11-10.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2023.11-12/FiniteCocompletions-2023.11-12.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2023.11-10/FiniteCocompletions-2023.11-10.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2023.11-12/FiniteCocompletions-2023.11-12.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2023.11-10/FiniteCocompletions-2023.11-10-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2023.11-12/FiniteCocompletions-2023.11-12-manual.pdf
 
 abstract: |
 
@@ -72,7 +75,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Bar19</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>FiniteCocompletions, Finite (co)product/(co)limit (co)completions,
-             Version 2023.11-10</i>
+             Version 2023.11-12</i>
      (<span class='BibYear'>1-19</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FiniteCocompletions">https://homalg-project.github.io/pkg/FiniteCocompletions</a></span>.
@@ -80,10 +83,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ FiniteCocompletions2023.11-10,
+    @misc{ FiniteCocompletions2023.11-12,
       author =           {Barakat, M.},
       title =            {{FiniteCocompletions},   Finite  (co)product/(co)limit
-                          (co)completions, {V}ersion 2023.11-10},
+                          (co)completions, {V}ersion 2023.11-12},
       month =            {3-},
       year =             {1-19},
       note =             {GAP package},
