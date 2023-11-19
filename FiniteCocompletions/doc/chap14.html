@@ -28,6 +28,12 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X865B461C7A0615EE">14.2 <span class="Heading">Precompiling SkeletalFinSets</span></a>
 </span>
 </div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X81F0F0C38035B45E">14.3 <span class="Heading">Extracting LeftCartesianDistributivityFactoring from ur-algorithms using CategoryFromDataTables</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X86A24DF484E1DA6E">14.4 <span class="Heading">Extracting LeftCartesianDistributivityFactoring from ur-algorithms using PathCategory</span></a>
+</span>
+</div>
 </div>
 
 <h3>14 <span class="Heading">Precompilation</span></h3>
@@ -122,6 +128,460 @@ SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
 SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat!.precompiled_functions_added;</span>
 true
+#@fi
+</pre></div>
+
+<p><a id="X81F0F0C38035B45E" name="X81F0F0C38035B45E"></a></p>
+
+<h4>14.3 <span class="Heading">Extracting LeftCartesianDistributivityFactoring from ur-algorithms using CategoryFromDataTables</span></h4>
+
+
+<div class="example"><pre>
+#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2022.09-02", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := CategoryOfSkeletalFinSets( : no_precompiled_code := true );</span>
+SkeletalFinSets
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "Q(a,b,c)[]" );</span>
+Q(a,b,c)[]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := FreeCategory( q : range_of_HomStructure := sFinSets );</span>
+FreeCategory( RightQuiver( "Q(a,b,c)[]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := CategoryFromDataTables( C :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">             set_category_attribute_resolving_functions := true,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">             no_precompiled_code := true );</span>
+FreeCategory( RightQuiver( "Q(a,b,c)[]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DC := FreeDistributiveCategoryWithStrictProductAndCoproducts( C );</span>
+FreeDistributiveCategoryWithStrictProductAndCoproducts(
+FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UPC := ModelingCategory( DC );</span>
+FiniteStrictCoproductCompletion( FiniteStrictProductCompletion(
+FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PC := UnderlyingCategory( UPC );</span>
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := DC.a;</span>
+&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := DC.b;</span>
+&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := DC.c;</span>
+&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">axb_u_axc := Coproduct( DirectProduct( a, b ), DirectProduct( a, c ) );</span>
+&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a_x_buc := DirectProduct( a, Coproduct( b, c ) );</span>
+&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">axb_u_axc = a_x_buc;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">implemented_func :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( T, source, a, b, c, range )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return LeftCartesianDistributivityFactoringWithGivenObjects( T,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                   source,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                   a,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                   [ b, c ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                   range ); end;</span>
+function( T, source, a, b, c, range ) ... end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lfactor_implemented := implemented_func( DC, axb_u_axc, a, b, c, a_x_buc );</span>
+&lt;A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StartTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopCompilationAtPrimitivelyInstalledOperationsOfCategory( DC );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FiniteCocompletions",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "examples/precompileLeftCartesianDistributivityFactoring_CompilerLogic.g" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_implemented_func :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  CapJitCompiledFunction( implemented_func,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          DC,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          [ "category", "object", "object", "object", "object", "object" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          "morphism" );</span>
+function( T_1, source_1, a_1, b_1, c_1, range_1 ) ... end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#DisplayTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_implemented_func( DC, axb_u_axc, a, b, c, a_x_buc ) =</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  lfactor_implemented;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_implemented_func );</span>
+function ( T_1, source_1, a_1, b_1, c_1, range_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1,
+          deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
+    deduped_8_1 := [ b_1, c_1 ];
+    deduped_7_1 := [ a_1, c_1 ];
+    deduped_6_1 := [ a_1, b_1 ];
+    deduped_5_1 := Coproduct( T_1, deduped_8_1 );
+    deduped_4_1 := DirectProduct( T_1, deduped_7_1 );
+    deduped_3_1 := DirectProduct( T_1, deduped_6_1 );
+    deduped_2_1 := [ a_1, deduped_5_1 ];
+    deduped_1_1 := DirectProduct( T_1, deduped_2_1 );
+    return
+      UniversalMorphismFromCoproductWithGivenCoproduct( T_1,
+        [ deduped_3_1, deduped_4_1 ],
+        range_1,
+        [ UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,
+            deduped_2_1,
+            deduped_3_1,
+            [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                    deduped_6_1, 1,
+                    deduped_3_1 ),
+              PreCompose( T_1,
+                  ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                          deduped_6_1,
+                          2,
+                          deduped_3_1 ),
+                  InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,
+                          deduped_8_1,
+                          1,
+                          deduped_5_1 ) ) ],
+            deduped_1_1 ),
+          UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,
+              deduped_2_1,
+              deduped_4_1,
+              [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                  deduped_7_1,
+                  1,
+                  deduped_4_1 ),
+                PreCompose( T_1,
+                    ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                            deduped_7_1,
+                            2,
+                            deduped_4_1 ),
+                    InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,
+                            deduped_8_1,
+                            2,
+                            deduped_5_1 ) ) ],
+              deduped_1_1 ) ],
+        source_1 );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory( DC );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory( C );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_axb_u_axc_a_x_buc := MorphismsOfExternalHom( axb_u_axc, a_x_buc );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( hom_axb_u_axc_a_x_buc ) = 1;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lfactor := hom_axb_u_axc_a_x_buc[1];</span>
+&lt;A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( lfactor );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lfactor_reconstructed :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  CellAsEvaluatableString( lfactor, [ "DC", "UPC", "PC", "C" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lfactor = EvalString( lfactor_reconstructed );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_a_x_buc_axb_u_axc := MorphismsOfExternalHom( a_x_buc, axb_u_axc );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( hom_a_x_buc_axb_u_axc ) = 1;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lexpand := hom_a_x_buc_axb_u_axc[1];</span>
+&lt;A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( lexpand );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Inverse( lfactor ) = lexpand;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lexpand_reconstructed :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  CellAsEvaluatableString( lexpand, [ "DC", "UPC", "PC", "C" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lexpand_reconstructed = lfactor_reconstructed;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lexpand = EvalString( lexpand_reconstructed );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "FiniteCocompletions",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "examples/precompileLeftCartesianDistributivityFactoring_func.g" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func( DC, a_x_buc, a, b, c, axb_u_axc ) = lfactor;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := DummyCategory( rec( name := "A placeholder distributive category",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">       properties := [ "IsDistributiveCategory" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">       list_of_operations_to_install :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">       Concatenation( [ "ObjectConstructor", "MorphismConstructor" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">       CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory ) ) );</span>
+A placeholder distributive category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StartTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopCompilationAtPrimitivelyInstalledOperationsOfCategory( T );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  CapJitCompiledFunction( func,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          T,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          [ "category", "object", "object", "object", "object", "object" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          "morphism" );</span>
+function( T_1, source_1, a_1, b_1, c_1, range_1 ) ... end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#DisplayTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func( DC, axb_u_axc, a, b, c, a_x_buc ) = lfactor;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function ( T_1, source_1, a_1, b_1, c_1, range_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := [ a_1, c_1 ];
+    deduped_4_1 := [ a_1, b_1 ];
+    deduped_3_1 := DirectProduct( T_1, deduped_5_1 );
+    deduped_2_1 := DirectProduct( T_1, deduped_4_1 );
+    deduped_1_1 := [ deduped_2_1, deduped_3_1 ];
+    return
+      UniversalMorphismFromCoproductWithGivenCoproduct( T_1,
+        deduped_1_1,
+        range_1,
+        [ PreCompose( T_1,
+            UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,
+                deduped_4_1,
+                deduped_2_1,
+                [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                        deduped_4_1,
+                        1,
+                        deduped_2_1 ),
+                  ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                          deduped_4_1,
+                          2, deduped_2_1 ) ],
+                deduped_2_1 ),
+            InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,
+                deduped_1_1,
+                1,
+                range_1 ) ),
+          PreCompose( T_1,
+              UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,
+                  deduped_5_1,
+                  deduped_3_1,
+                  [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                          deduped_5_1,
+                          1,
+                          deduped_3_1 ),
+                    ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                            deduped_5_1,
+                            2,
+                            deduped_3_1 ) ],
+                  deduped_3_1 ),
+              InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,
+                  deduped_1_1,
+                  2,
+                  range_1 ) ) ],
+        source_1 );
+end
+#@fi
+</pre></div>
+
+<p><a id="X86A24DF484E1DA6E" name="X86A24DF484E1DA6E"></a></p>
+
+<h4>14.4 <span class="Heading">Extracting LeftCartesianDistributivityFactoring from ur-algorithms using PathCategory</span></h4>
+
+
+<div class="example"><pre>
+#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2022.09-02", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := CategoryOfSkeletalFinSets( : no_precompiled_code := true );</span>
+SkeletalFinSets
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "Q(a,b,c)[]" );</span>
+FinQuiver( "Q(a,b,c)[]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := PathCategory( q : range_of_HomStructure := sFinSets );</span>
+PathCategory( FinQuiver( "Q(a,b,c)[]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DC := FreeDistributiveCategoryWithStrictProductAndCoproducts( C );</span>
+FreeDistributiveCategoryWithStrictProductAndCoproducts(
+PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UPC := ModelingCategory( DC );</span>
+FiniteStrictCoproductCompletion( FiniteStrictProductCompletion(
+PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PC := UnderlyingCategory( UPC );</span>
+FiniteStrictProductCompletion( PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := DC.a;</span>
+&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := DC.b;</span>
+&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := DC.c;</span>
+&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">axb_u_axc := Coproduct( DirectProduct( a, b ), DirectProduct( a, c ) );</span>
+&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a_x_buc := DirectProduct( a, Coproduct( b, c ) );</span>
+&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">axb_u_axc = a_x_buc;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">implemented_func :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( T, source, a, b, c, range )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return LeftCartesianDistributivityFactoringWithGivenObjects( T,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                   source,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                   a,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                   [ b, c ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                   range ); end;</span>
+function( T, source, a, b, c, range ) ... end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lfactor_implemented := implemented_func( DC, axb_u_axc, a, b, c, a_x_buc );</span>
+&lt;A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StartTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopCompilationAtPrimitivelyInstalledOperationsOfCategory( DC );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FiniteCocompletions",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "examples/precompileLeftCartesianDistributivityFactoring_CompilerLogic.g" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_implemented_func :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  CapJitCompiledFunction( implemented_func,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          DC,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          [ "category", "object", "object", "object", "object", "object" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          "morphism" );</span>
+function( T_1, source_1, a_1, b_1, c_1, range_1 ) ... end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#DisplayTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_implemented_func( DC, axb_u_axc, a, b, c, a_x_buc ) =</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  lfactor_implemented;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_implemented_func );</span>
+function ( T_1, source_1, a_1, b_1, c_1, range_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1,
+          deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
+    deduped_8_1 := [ b_1, c_1 ];
+    deduped_7_1 := [ a_1, c_1 ];
+    deduped_6_1 := [ a_1, b_1 ];
+    deduped_5_1 := Coproduct( T_1, deduped_8_1 );
+    deduped_4_1 := DirectProduct( T_1, deduped_7_1 );
+    deduped_3_1 := DirectProduct( T_1, deduped_6_1 );
+    deduped_2_1 := [ a_1, deduped_5_1 ];
+    deduped_1_1 := DirectProduct( T_1, deduped_2_1 );
+    return
+      UniversalMorphismFromCoproductWithGivenCoproduct( T_1,
+        [ deduped_3_1, deduped_4_1 ],
+        range_1,
+        [ UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,
+            deduped_2_1,
+            deduped_3_1,
+            [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                    deduped_6_1, 1,
+                    deduped_3_1 ),
+              PreCompose( T_1,
+                  ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                          deduped_6_1,
+                          2,
+                          deduped_3_1 ),
+                  InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,
+                          deduped_8_1,
+                          1,
+                          deduped_5_1 ) ) ],
+            deduped_1_1 ),
+          UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,
+              deduped_2_1,
+              deduped_4_1,
+              [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                  deduped_7_1,
+                  1,
+                  deduped_4_1 ),
+                PreCompose( T_1,
+                    ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                            deduped_7_1,
+                            2,
+                            deduped_4_1 ),
+                    InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,
+                            deduped_8_1,
+                            2,
+                            deduped_5_1 ) ) ],
+              deduped_1_1 ) ],
+        source_1 );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory( DC );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory( C );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_axb_u_axc_a_x_buc := MorphismsOfExternalHom( axb_u_axc, a_x_buc );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( hom_axb_u_axc_a_x_buc ) = 1;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lfactor := hom_axb_u_axc_a_x_buc[1];</span>
+&lt;A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( lfactor );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lfactor_reconstructed :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  CellAsEvaluatableString( lfactor, [ "DC", "UPC", "PC", "C" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lfactor = EvalString( lfactor_reconstructed );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_a_x_buc_axb_u_axc := MorphismsOfExternalHom( a_x_buc, axb_u_axc );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( hom_a_x_buc_axb_u_axc ) = 1;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lexpand := hom_a_x_buc_axb_u_axc[1];</span>
+&lt;A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts(
+ PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( lexpand );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Inverse( lfactor ) = lexpand;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lexpand_reconstructed :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  CellAsEvaluatableString( lexpand, [ "DC", "UPC", "PC", "C" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lexpand_reconstructed = lfactor_reconstructed;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lexpand = EvalString( lexpand_reconstructed );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "FiniteCocompletions",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "examples/precompileLeftCartesianDistributivityFactoring_func.g" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func( DC, a_x_buc, a, b, c, axb_u_axc ) = lfactor;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := DummyCategory( rec( name := "A placeholder distributive category",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">       properties := [ "IsDistributiveCategory" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">       list_of_operations_to_install :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">       Concatenation( [ "ObjectConstructor", "MorphismConstructor" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">       CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory ) ) );</span>
+A placeholder distributive category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StartTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopCompilationAtPrimitivelyInstalledOperationsOfCategory( T );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  CapJitCompiledFunction( func,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          T,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          [ "category", "object", "object", "object", "object", "object" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          "morphism" );</span>
+function( T_1, source_1, a_1, b_1, c_1, range_1 ) ... end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#DisplayTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func( DC, axb_u_axc, a, b, c, a_x_buc ) = lfactor;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function ( T_1, source_1, a_1, b_1, c_1, range_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := [ a_1, c_1 ];
+    deduped_4_1 := [ a_1, b_1 ];
+    deduped_3_1 := DirectProduct( T_1, deduped_5_1 );
+    deduped_2_1 := DirectProduct( T_1, deduped_4_1 );
+    deduped_1_1 := [ deduped_2_1, deduped_3_1 ];
+    return
+      UniversalMorphismFromCoproductWithGivenCoproduct( T_1,
+        deduped_1_1,
+        range_1,
+        [ PreCompose( T_1,
+            UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,
+                deduped_4_1,
+                deduped_2_1,
+                [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                        deduped_4_1,
+                        1,
+                        deduped_2_1 ),
+                  ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                          deduped_4_1,
+                          2, deduped_2_1 ) ],
+                deduped_2_1 ),
+            InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,
+                deduped_1_1,
+                1,
+                range_1 ) ),
+          PreCompose( T_1,
+              UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,
+                  deduped_5_1,
+                  deduped_3_1,
+                  [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                          deduped_5_1,
+                          1,
+                          deduped_3_1 ),
+                    ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,
+                            deduped_5_1,
+                            2,
+                            deduped_3_1 ) ],
+                  deduped_3_1 ),
+              InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,
+                  deduped_1_1,
+                  2,
+                  range_1 ) ) ],
+        source_1 );
+end
 #@fi
 </pre></div>
 

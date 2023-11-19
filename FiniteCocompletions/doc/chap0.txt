@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2023.11-12
+                                   2023.11-14
   
   
-                                19 November 2023
+                                20 November 2023
   
   
                                 Mohamed Barakat
@@ -129,11 +129,10 @@
       6.2-4 UnderlyingCategory
       6.2-5 EmbeddingOfUnderlyingCategory
     6.3 [33X[0;0YGAP categories[133X
-    6.4 [33X[0;0YGAP Categories[133X
-      6.4-1 IsCategoryOfColimitQuivers
-      6.4-2 IsCellInCategoryOfColimitQuivers
-      6.4-3 IsObjectInCategoryOfColimitQuivers
-      6.4-4 IsMorphismInCategoryOfColimitQuivers
+      6.3-1 IsCategoryOfColimitQuivers
+      6.3-2 IsCellInCategoryOfColimitQuivers
+      6.3-3 IsObjectInCategoryOfColimitQuivers
+      6.3-4 IsMorphismInCategoryOfColimitQuivers
   7 [33X[0;0YThe coequalizer completion of a category[133X
     7.1 [33X[0;0YAttributes[133X
       7.1-1 PairOfObjectsAndPairOfParallelMorphisms
@@ -195,6 +194,10 @@
   14 [33X[0;0YPrecompilation[133X
     14.1 [33X[0;0YPrecompiling the finite strict coproduct completion[133X
     14.2 [33X[0;0YPrecompiling SkeletalFinSets[133X
+    14.3 [33X[0;0YExtracting LeftCartesianDistributivityFactoring from ur-algorithms
+    using CategoryFromDataTables[133X
+    14.4 [33X[0;0YExtracting LeftCartesianDistributivityFactoring from ur-algorithms
+    using PathCategory[133X
   
   
   [32X

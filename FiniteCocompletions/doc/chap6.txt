@@ -166,24 +166,21 @@
   
   [1X6.3 [33X[0;0YGAP categories[133X[101X
   
-  
-  [1X6.4 [33X[0;0YGAP Categories[133X[101X
-  
-  [1X6.4-1 IsCategoryOfColimitQuivers[101X
+  [1X6.3-1 IsCategoryOfColimitQuivers[101X
   
   [33X[1;0Y[29X[2XIsCategoryOfColimitQuivers[102X( [3Xcategory[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of categories of colimit quivers in a category.[133X
   
-  [1X6.4-2 IsCellInCategoryOfColimitQuivers[101X
+  [1X6.3-2 IsCellInCategoryOfColimitQuivers[101X
   
   [33X[1;0Y[29X[2XIsCellInCategoryOfColimitQuivers[102X( [3Xcell[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in the category of colimit quivers in a category.[133X
   
-  [1X6.4-3 IsObjectInCategoryOfColimitQuivers[101X
+  [1X6.3-3 IsObjectInCategoryOfColimitQuivers[101X
   
   [33X[1;0Y[29X[2XIsObjectInCategoryOfColimitQuivers[102X( [3Xobj[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
@@ -191,7 +188,7 @@
   [33X[0;0YThe  [5XGAP[105X  category  of  objects  in  the  category  of  colimit quivers in a
   category.[133X
   
-  [1X6.4-4 IsMorphismInCategoryOfColimitQuivers[101X
+  [1X6.3-4 IsMorphismInCategoryOfColimitQuivers[101X
   
   [33X[1;0Y[29X[2XIsMorphismInCategoryOfColimitQuivers[102X( [3Xmor[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X

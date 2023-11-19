@@ -90,3 +90,455 @@
     [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
+  
+  [1X14.3   [33X[0;0YExtracting  LeftCartesianDistributivityFactoring  from  ur-algorithms[101X
+  [1Xusing CategoryFromDataTables[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2022.09-02", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XsFinSets := CategoryOfSkeletalFinSets( : no_precompiled_code := true );[127X[104X
+    [4X[28XSkeletalFinSets[128X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "Q(a,b,c)[]" );[127X[104X
+    [4X[28XQ(a,b,c)[][128X[104X
+    [4X[25Xgap>[125X [27XC := FreeCategory( q : range_of_HomStructure := sFinSets );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b,c)[]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XC := CategoryFromDataTables( C :[127X[104X
+    [4X[25X>[125X [27X             set_category_attribute_resolving_functions := true,[127X[104X
+    [4X[25X>[125X [27X             no_precompiled_code := true );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b,c)[]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XDC := FreeDistributiveCategoryWithStrictProductAndCoproducts( C );[127X[104X
+    [4X[28XFreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XUPC := ModelingCategory( DC );[127X[104X
+    [4X[28XFiniteStrictCoproductCompletion( FiniteStrictProductCompletion([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XPC := UnderlyingCategory( UPC );[127X[104X
+    [4X[28XFiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xa := DC.a;[127X[104X
+    [4X[28X<An object in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xb := DC.b;[127X[104X
+    [4X[28X<An object in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xc := DC.c;[127X[104X
+    [4X[28X<An object in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xaxb_u_axc := Coproduct( DirectProduct( a, b ), DirectProduct( a, c ) );[127X[104X
+    [4X[28X<An object in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xa_x_buc := DirectProduct( a, Coproduct( b, c ) );[127X[104X
+    [4X[28X<An object in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xaxb_u_axc = a_x_buc;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Ximplemented_func :=[127X[104X
+    [4X[25X>[125X [27X  function( T, source, a, b, c, range )[127X[104X
+    [4X[25X>[125X [27X    return LeftCartesianDistributivityFactoringWithGivenObjects( T,[127X[104X
+    [4X[25X>[125X [27X                   source,[127X[104X
+    [4X[25X>[125X [27X                   a,[127X[104X
+    [4X[25X>[125X [27X                   [ b, c ],[127X[104X
+    [4X[25X>[125X [27X                   range ); end;[127X[104X
+    [4X[28Xfunction( T, source, a, b, c, range ) ... end[128X[104X
+    [4X[25Xgap>[125X [27Xlfactor_implemented := implemented_func( DC, axb_u_axc, a, b, c, a_x_buc );[127X[104X
+    [4X[28X<A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XStartTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
+    [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( DC );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FiniteCocompletions",[127X[104X
+    [4X[25X>[125X [27X    "examples/precompileLeftCartesianDistributivityFactoring_CompilerLogic.g" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcompiled_implemented_func :=[127X[104X
+    [4X[25X>[125X [27X  CapJitCompiledFunction( implemented_func,[127X[104X
+    [4X[25X>[125X [27X          DC,[127X[104X
+    [4X[25X>[125X [27X          [ "category", "object", "object", "object", "object", "object" ],[127X[104X
+    [4X[25X>[125X [27X          "morphism" );[127X[104X
+    [4X[28Xfunction( T_1, source_1, a_1, b_1, c_1, range_1 ) ... end[128X[104X
+    [4X[25Xgap>[125X [27XStopTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
+    [4X[25Xgap>[125X [27X#DisplayTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_implemented_func( DC, axb_u_axc, a, b, c, a_x_buc ) =[127X[104X
+    [4X[25X>[125X [27X  lfactor_implemented;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_implemented_func );[127X[104X
+    [4X[28Xfunction ( T_1, source_1, a_1, b_1, c_1, range_1 )[128X[104X
+    [4X[28X    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1,[128X[104X
+    [4X[28X          deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;[128X[104X
+    [4X[28X    deduped_8_1 := [ b_1, c_1 ];[128X[104X
+    [4X[28X    deduped_7_1 := [ a_1, c_1 ];[128X[104X
+    [4X[28X    deduped_6_1 := [ a_1, b_1 ];[128X[104X
+    [4X[28X    deduped_5_1 := Coproduct( T_1, deduped_8_1 );[128X[104X
+    [4X[28X    deduped_4_1 := DirectProduct( T_1, deduped_7_1 );[128X[104X
+    [4X[28X    deduped_3_1 := DirectProduct( T_1, deduped_6_1 );[128X[104X
+    [4X[28X    deduped_2_1 := [ a_1, deduped_5_1 ];[128X[104X
+    [4X[28X    deduped_1_1 := DirectProduct( T_1, deduped_2_1 );[128X[104X
+    [4X[28X    return[128X[104X
+    [4X[28X      UniversalMorphismFromCoproductWithGivenCoproduct( T_1,[128X[104X
+    [4X[28X        [ deduped_3_1, deduped_4_1 ],[128X[104X
+    [4X[28X        range_1,[128X[104X
+    [4X[28X        [ UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X            deduped_2_1,[128X[104X
+    [4X[28X            deduped_3_1,[128X[104X
+    [4X[28X            [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                    deduped_6_1, 1,[128X[104X
+    [4X[28X                    deduped_3_1 ),[128X[104X
+    [4X[28X              PreCompose( T_1,[128X[104X
+    [4X[28X                  ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                          deduped_6_1,[128X[104X
+    [4X[28X                          2,[128X[104X
+    [4X[28X                          deduped_3_1 ),[128X[104X
+    [4X[28X                  InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,[128X[104X
+    [4X[28X                          deduped_8_1,[128X[104X
+    [4X[28X                          1,[128X[104X
+    [4X[28X                          deduped_5_1 ) ) ],[128X[104X
+    [4X[28X            deduped_1_1 ),[128X[104X
+    [4X[28X          UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X              deduped_2_1,[128X[104X
+    [4X[28X              deduped_4_1,[128X[104X
+    [4X[28X              [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                  deduped_7_1,[128X[104X
+    [4X[28X                  1,[128X[104X
+    [4X[28X                  deduped_4_1 ),[128X[104X
+    [4X[28X                PreCompose( T_1,[128X[104X
+    [4X[28X                    ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                            deduped_7_1,[128X[104X
+    [4X[28X                            2,[128X[104X
+    [4X[28X                            deduped_4_1 ),[128X[104X
+    [4X[28X                    InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,[128X[104X
+    [4X[28X                            deduped_8_1,[128X[104X
+    [4X[28X                            2,[128X[104X
+    [4X[28X                            deduped_5_1 ) ) ],[128X[104X
+    [4X[28X              deduped_1_1 ) ],[128X[104X
+    [4X[28X        source_1 );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XContinueCompilationAtPrimitivelyInstalledOperationsOfCategory( DC );[127X[104X
+    [4X[25Xgap>[125X [27XContinueCompilationAtPrimitivelyInstalledOperationsOfCategory( C );[127X[104X
+    [4X[25Xgap>[125X [27Xhom_axb_u_axc_a_x_buc := MorphismsOfExternalHom( axb_u_axc, a_x_buc );;[127X[104X
+    [4X[25Xgap>[125X [27XLength( hom_axb_u_axc_a_x_buc ) = 1;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlfactor := hom_axb_u_axc_a_x_buc[1];[127X[104X
+    [4X[28X<A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( lfactor );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlfactor_reconstructed :=[127X[104X
+    [4X[25X>[125X [27X  CellAsEvaluatableString( lfactor, [ "DC", "UPC", "PC", "C" ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xlfactor = EvalString( lfactor_reconstructed );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xhom_a_x_buc_axb_u_axc := MorphismsOfExternalHom( a_x_buc, axb_u_axc );;[127X[104X
+    [4X[25Xgap>[125X [27XLength( hom_a_x_buc_axb_u_axc ) = 1;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlexpand := hom_a_x_buc_axb_u_axc[1];[127X[104X
+    [4X[28X<A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( lexpand );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XInverse( lfactor ) = lexpand;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlexpand_reconstructed :=[127X[104X
+    [4X[25X>[125X [27X  CellAsEvaluatableString( lexpand, [ "DC", "UPC", "PC", "C" ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xlexpand_reconstructed = lfactor_reconstructed;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlexpand = EvalString( lexpand_reconstructed );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "FiniteCocompletions",[127X[104X
+    [4X[25X>[125X [27X        "examples/precompileLeftCartesianDistributivityFactoring_func.g" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xfunc( DC, a_x_buc, a, b, c, axb_u_axc ) = lfactor;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XT := DummyCategory( rec( name := "A placeholder distributive category",[127X[104X
+    [4X[25X>[125X [27X       properties := [ "IsDistributiveCategory" ],[127X[104X
+    [4X[25X>[125X [27X       list_of_operations_to_install :=[127X[104X
+    [4X[25X>[125X [27X       Concatenation( [ "ObjectConstructor", "MorphismConstructor" ],[127X[104X
+    [4X[25X>[125X [27X       CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory ) ) );[127X[104X
+    [4X[28XA placeholder distributive category[128X[104X
+    [4X[25Xgap>[125X [27XStartTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
+    [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( T );[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func :=[127X[104X
+    [4X[25X>[125X [27X  CapJitCompiledFunction( func,[127X[104X
+    [4X[25X>[125X [27X          T,[127X[104X
+    [4X[25X>[125X [27X          [ "category", "object", "object", "object", "object", "object" ],[127X[104X
+    [4X[25X>[125X [27X          "morphism" );[127X[104X
+    [4X[28Xfunction( T_1, source_1, a_1, b_1, c_1, range_1 ) ... end[128X[104X
+    [4X[25Xgap>[125X [27XStopTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
+    [4X[25Xgap>[125X [27X#DisplayTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func( DC, axb_u_axc, a, b, c, a_x_buc ) = lfactor;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( T_1, source_1, a_1, b_1, c_1, range_1 )[128X[104X
+    [4X[28X    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;[128X[104X
+    [4X[28X    deduped_5_1 := [ a_1, c_1 ];[128X[104X
+    [4X[28X    deduped_4_1 := [ a_1, b_1 ];[128X[104X
+    [4X[28X    deduped_3_1 := DirectProduct( T_1, deduped_5_1 );[128X[104X
+    [4X[28X    deduped_2_1 := DirectProduct( T_1, deduped_4_1 );[128X[104X
+    [4X[28X    deduped_1_1 := [ deduped_2_1, deduped_3_1 ];[128X[104X
+    [4X[28X    return[128X[104X
+    [4X[28X      UniversalMorphismFromCoproductWithGivenCoproduct( T_1,[128X[104X
+    [4X[28X        deduped_1_1,[128X[104X
+    [4X[28X        range_1,[128X[104X
+    [4X[28X        [ PreCompose( T_1,[128X[104X
+    [4X[28X            UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                deduped_4_1,[128X[104X
+    [4X[28X                deduped_2_1,[128X[104X
+    [4X[28X                [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                        deduped_4_1,[128X[104X
+    [4X[28X                        1,[128X[104X
+    [4X[28X                        deduped_2_1 ),[128X[104X
+    [4X[28X                  ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                          deduped_4_1,[128X[104X
+    [4X[28X                          2, deduped_2_1 ) ],[128X[104X
+    [4X[28X                deduped_2_1 ),[128X[104X
+    [4X[28X            InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,[128X[104X
+    [4X[28X                deduped_1_1,[128X[104X
+    [4X[28X                1,[128X[104X
+    [4X[28X                range_1 ) ),[128X[104X
+    [4X[28X          PreCompose( T_1,[128X[104X
+    [4X[28X              UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                  deduped_5_1,[128X[104X
+    [4X[28X                  deduped_3_1,[128X[104X
+    [4X[28X                  [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                          deduped_5_1,[128X[104X
+    [4X[28X                          1,[128X[104X
+    [4X[28X                          deduped_3_1 ),[128X[104X
+    [4X[28X                    ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                            deduped_5_1,[128X[104X
+    [4X[28X                            2,[128X[104X
+    [4X[28X                            deduped_3_1 ) ],[128X[104X
+    [4X[28X                  deduped_3_1 ),[128X[104X
+    [4X[28X              InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,[128X[104X
+    [4X[28X                  deduped_1_1,[128X[104X
+    [4X[28X                  2,[128X[104X
+    [4X[28X                  range_1 ) ) ],[128X[104X
+    [4X[28X        source_1 );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X14.4   [33X[0;0YExtracting  LeftCartesianDistributivityFactoring  from  ur-algorithms[101X
+  [1Xusing PathCategory[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2022.09-02", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XsFinSets := CategoryOfSkeletalFinSets( : no_precompiled_code := true );[127X[104X
+    [4X[28XSkeletalFinSets[128X[104X
+    [4X[25Xgap>[125X [27Xq := FinQuiver( "Q(a,b,c)[]" );[127X[104X
+    [4X[28XFinQuiver( "Q(a,b,c)[]" )[128X[104X
+    [4X[25Xgap>[125X [27XC := PathCategory( q : range_of_HomStructure := sFinSets );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "Q(a,b,c)[]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XDC := FreeDistributiveCategoryWithStrictProductAndCoproducts( C );[127X[104X
+    [4X[28XFreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28XPathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XUPC := ModelingCategory( DC );[127X[104X
+    [4X[28XFiniteStrictCoproductCompletion( FiniteStrictProductCompletion([128X[104X
+    [4X[28XPathCategory( FinQuiver( "Q(a,b,c)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XPC := UnderlyingCategory( UPC );[127X[104X
+    [4X[28XFiniteStrictProductCompletion( PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xa := DC.a;[127X[104X
+    [4X[28X<An object in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xb := DC.b;[127X[104X
+    [4X[28X<An object in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xc := DC.c;[127X[104X
+    [4X[28X<An object in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xaxb_u_axc := Coproduct( DirectProduct( a, b ), DirectProduct( a, c ) );[127X[104X
+    [4X[28X<An object in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xa_x_buc := DirectProduct( a, Coproduct( b, c ) );[127X[104X
+    [4X[28X<An object in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xaxb_u_axc = a_x_buc;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Ximplemented_func :=[127X[104X
+    [4X[25X>[125X [27X  function( T, source, a, b, c, range )[127X[104X
+    [4X[25X>[125X [27X    return LeftCartesianDistributivityFactoringWithGivenObjects( T,[127X[104X
+    [4X[25X>[125X [27X                   source,[127X[104X
+    [4X[25X>[125X [27X                   a,[127X[104X
+    [4X[25X>[125X [27X                   [ b, c ],[127X[104X
+    [4X[25X>[125X [27X                   range ); end;[127X[104X
+    [4X[28Xfunction( T, source, a, b, c, range ) ... end[128X[104X
+    [4X[25Xgap>[125X [27Xlfactor_implemented := implemented_func( DC, axb_u_axc, a, b, c, a_x_buc );[127X[104X
+    [4X[28X<A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XStartTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
+    [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( DC );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FiniteCocompletions",[127X[104X
+    [4X[25X>[125X [27X    "examples/precompileLeftCartesianDistributivityFactoring_CompilerLogic.g" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcompiled_implemented_func :=[127X[104X
+    [4X[25X>[125X [27X  CapJitCompiledFunction( implemented_func,[127X[104X
+    [4X[25X>[125X [27X          DC,[127X[104X
+    [4X[25X>[125X [27X          [ "category", "object", "object", "object", "object", "object" ],[127X[104X
+    [4X[25X>[125X [27X          "morphism" );[127X[104X
+    [4X[28Xfunction( T_1, source_1, a_1, b_1, c_1, range_1 ) ... end[128X[104X
+    [4X[25Xgap>[125X [27XStopTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
+    [4X[25Xgap>[125X [27X#DisplayTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_implemented_func( DC, axb_u_axc, a, b, c, a_x_buc ) =[127X[104X
+    [4X[25X>[125X [27X  lfactor_implemented;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_implemented_func );[127X[104X
+    [4X[28Xfunction ( T_1, source_1, a_1, b_1, c_1, range_1 )[128X[104X
+    [4X[28X    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1,[128X[104X
+    [4X[28X          deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;[128X[104X
+    [4X[28X    deduped_8_1 := [ b_1, c_1 ];[128X[104X
+    [4X[28X    deduped_7_1 := [ a_1, c_1 ];[128X[104X
+    [4X[28X    deduped_6_1 := [ a_1, b_1 ];[128X[104X
+    [4X[28X    deduped_5_1 := Coproduct( T_1, deduped_8_1 );[128X[104X
+    [4X[28X    deduped_4_1 := DirectProduct( T_1, deduped_7_1 );[128X[104X
+    [4X[28X    deduped_3_1 := DirectProduct( T_1, deduped_6_1 );[128X[104X
+    [4X[28X    deduped_2_1 := [ a_1, deduped_5_1 ];[128X[104X
+    [4X[28X    deduped_1_1 := DirectProduct( T_1, deduped_2_1 );[128X[104X
+    [4X[28X    return[128X[104X
+    [4X[28X      UniversalMorphismFromCoproductWithGivenCoproduct( T_1,[128X[104X
+    [4X[28X        [ deduped_3_1, deduped_4_1 ],[128X[104X
+    [4X[28X        range_1,[128X[104X
+    [4X[28X        [ UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X            deduped_2_1,[128X[104X
+    [4X[28X            deduped_3_1,[128X[104X
+    [4X[28X            [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                    deduped_6_1, 1,[128X[104X
+    [4X[28X                    deduped_3_1 ),[128X[104X
+    [4X[28X              PreCompose( T_1,[128X[104X
+    [4X[28X                  ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                          deduped_6_1,[128X[104X
+    [4X[28X                          2,[128X[104X
+    [4X[28X                          deduped_3_1 ),[128X[104X
+    [4X[28X                  InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,[128X[104X
+    [4X[28X                          deduped_8_1,[128X[104X
+    [4X[28X                          1,[128X[104X
+    [4X[28X                          deduped_5_1 ) ) ],[128X[104X
+    [4X[28X            deduped_1_1 ),[128X[104X
+    [4X[28X          UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X              deduped_2_1,[128X[104X
+    [4X[28X              deduped_4_1,[128X[104X
+    [4X[28X              [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                  deduped_7_1,[128X[104X
+    [4X[28X                  1,[128X[104X
+    [4X[28X                  deduped_4_1 ),[128X[104X
+    [4X[28X                PreCompose( T_1,[128X[104X
+    [4X[28X                    ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                            deduped_7_1,[128X[104X
+    [4X[28X                            2,[128X[104X
+    [4X[28X                            deduped_4_1 ),[128X[104X
+    [4X[28X                    InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,[128X[104X
+    [4X[28X                            deduped_8_1,[128X[104X
+    [4X[28X                            2,[128X[104X
+    [4X[28X                            deduped_5_1 ) ) ],[128X[104X
+    [4X[28X              deduped_1_1 ) ],[128X[104X
+    [4X[28X        source_1 );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XContinueCompilationAtPrimitivelyInstalledOperationsOfCategory( DC );[127X[104X
+    [4X[25Xgap>[125X [27XContinueCompilationAtPrimitivelyInstalledOperationsOfCategory( C );[127X[104X
+    [4X[25Xgap>[125X [27Xhom_axb_u_axc_a_x_buc := MorphismsOfExternalHom( axb_u_axc, a_x_buc );;[127X[104X
+    [4X[25Xgap>[125X [27XLength( hom_axb_u_axc_a_x_buc ) = 1;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlfactor := hom_axb_u_axc_a_x_buc[1];[127X[104X
+    [4X[28X<A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( lfactor );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlfactor_reconstructed :=[127X[104X
+    [4X[25X>[125X [27X  CellAsEvaluatableString( lfactor, [ "DC", "UPC", "PC", "C" ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xlfactor = EvalString( lfactor_reconstructed );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xhom_a_x_buc_axb_u_axc := MorphismsOfExternalHom( a_x_buc, axb_u_axc );;[127X[104X
+    [4X[25Xgap>[125X [27XLength( hom_a_x_buc_axb_u_axc ) = 1;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlexpand := hom_a_x_buc_axb_u_axc[1];[127X[104X
+    [4X[28X<A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
+    [4X[28X PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( lexpand );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XInverse( lfactor ) = lexpand;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlexpand_reconstructed :=[127X[104X
+    [4X[25X>[125X [27X  CellAsEvaluatableString( lexpand, [ "DC", "UPC", "PC", "C" ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xlexpand_reconstructed = lfactor_reconstructed;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlexpand = EvalString( lexpand_reconstructed );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "FiniteCocompletions",[127X[104X
+    [4X[25X>[125X [27X        "examples/precompileLeftCartesianDistributivityFactoring_func.g" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xfunc( DC, a_x_buc, a, b, c, axb_u_axc ) = lfactor;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XT := DummyCategory( rec( name := "A placeholder distributive category",[127X[104X
+    [4X[25X>[125X [27X       properties := [ "IsDistributiveCategory" ],[127X[104X
+    [4X[25X>[125X [27X       list_of_operations_to_install :=[127X[104X
+    [4X[25X>[125X [27X       Concatenation( [ "ObjectConstructor", "MorphismConstructor" ],[127X[104X
+    [4X[25X>[125X [27X       CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory ) ) );[127X[104X
+    [4X[28XA placeholder distributive category[128X[104X
+    [4X[25Xgap>[125X [27XStartTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
+    [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( T );[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func :=[127X[104X
+    [4X[25X>[125X [27X  CapJitCompiledFunction( func,[127X[104X
+    [4X[25X>[125X [27X          T,[127X[104X
+    [4X[25X>[125X [27X          [ "category", "object", "object", "object", "object", "object" ],[127X[104X
+    [4X[25X>[125X [27X          "morphism" );[127X[104X
+    [4X[28Xfunction( T_1, source_1, a_1, b_1, c_1, range_1 ) ... end[128X[104X
+    [4X[25Xgap>[125X [27XStopTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
+    [4X[25Xgap>[125X [27X#DisplayTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func( DC, axb_u_axc, a, b, c, a_x_buc ) = lfactor;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( T_1, source_1, a_1, b_1, c_1, range_1 )[128X[104X
+    [4X[28X    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;[128X[104X
+    [4X[28X    deduped_5_1 := [ a_1, c_1 ];[128X[104X
+    [4X[28X    deduped_4_1 := [ a_1, b_1 ];[128X[104X
+    [4X[28X    deduped_3_1 := DirectProduct( T_1, deduped_5_1 );[128X[104X
+    [4X[28X    deduped_2_1 := DirectProduct( T_1, deduped_4_1 );[128X[104X
+    [4X[28X    deduped_1_1 := [ deduped_2_1, deduped_3_1 ];[128X[104X
+    [4X[28X    return[128X[104X
+    [4X[28X      UniversalMorphismFromCoproductWithGivenCoproduct( T_1,[128X[104X
+    [4X[28X        deduped_1_1,[128X[104X
+    [4X[28X        range_1,[128X[104X
+    [4X[28X        [ PreCompose( T_1,[128X[104X
+    [4X[28X            UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                deduped_4_1,[128X[104X
+    [4X[28X                deduped_2_1,[128X[104X
+    [4X[28X                [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                        deduped_4_1,[128X[104X
+    [4X[28X                        1,[128X[104X
+    [4X[28X                        deduped_2_1 ),[128X[104X
+    [4X[28X                  ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                          deduped_4_1,[128X[104X
+    [4X[28X                          2, deduped_2_1 ) ],[128X[104X
+    [4X[28X                deduped_2_1 ),[128X[104X
+    [4X[28X            InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,[128X[104X
+    [4X[28X                deduped_1_1,[128X[104X
+    [4X[28X                1,[128X[104X
+    [4X[28X                range_1 ) ),[128X[104X
+    [4X[28X          PreCompose( T_1,[128X[104X
+    [4X[28X              UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                  deduped_5_1,[128X[104X
+    [4X[28X                  deduped_3_1,[128X[104X
+    [4X[28X                  [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                          deduped_5_1,[128X[104X
+    [4X[28X                          1,[128X[104X
+    [4X[28X                          deduped_3_1 ),[128X[104X
+    [4X[28X                    ProjectionInFactorOfDirectProductWithGivenDirectProduct( T_1,[128X[104X
+    [4X[28X                            deduped_5_1,[128X[104X
+    [4X[28X                            2,[128X[104X
+    [4X[28X                            deduped_3_1 ) ],[128X[104X
+    [4X[28X                  deduped_3_1 ),[128X[104X
+    [4X[28X              InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,[128X[104X
+    [4X[28X                  deduped_1_1,[128X[104X
+    [4X[28X                  2,[128X[104X
+    [4X[28X                  range_1 ) ) ],[128X[104X
+    [4X[28X        source_1 );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
