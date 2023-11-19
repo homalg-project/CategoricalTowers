@@ -58,7 +58,7 @@
     [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
     [4X[25X>[125X [27X  data_tables -> AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables[1] : FinalizeCategory := true ), FinalizeCategory := true ) );;[127X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27Xq := CreateCapQuiver( "q(*)[x:*->*]" );;[127X[104X
+    [4X[25Xgap>[125X [27Xq := FinQuiver( "q(*)[x:*->*]" );;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments :=[127X[104X
     [4X[25X>[125X [27X  [ NTuple( 5,[127X[104X
     [4X[25X>[125X [27X      # coefficients_ring[127X[104X

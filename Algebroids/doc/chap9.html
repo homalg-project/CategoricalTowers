@@ -85,7 +85,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  data_tables -&gt; AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables[1] : FinalizeCategory := true ), FinalizeCategory := true ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := CreateCapQuiver( "q(*)[x:*-&gt;*]" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "q(*)[x:*-&gt;*]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  [ NTuple( 5,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">      # coefficients_ring</span>
