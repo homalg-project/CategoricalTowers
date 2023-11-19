@@ -287,17 +287,18 @@
   in [3XqC[103X have the same canonical representative.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FpCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xstr := "q(0,1,2,3,4,5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;[127X[104X
-    [4X[25Xgap>[125X [27Xq := CreateCapQuiver( str );[127X[104X
-    [4X[28XQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,[128X[104X
+    [4X[25Xgap>[125X [27Xstr :=[127X[104X
+    [4X[25X>[125X [27X  "q(0..5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;[127X[104X
+    [4X[25Xgap>[125X [27Xq := FinQuiver( str );[127X[104X
+    [4X[28XFinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,[128X[104X
     [4X[28Xt:4-≻5,y:5-≻5]" )[128X[104X
     [4X[25Xgap>[125X [27XC := PathCategory( q );[127X[104X
-    [4X[28XPathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,[128X[104X
     [4X[28Xb:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( C );[127X[104X
-    [4X[28XA CAP category with name PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,[128X[104X
+    [4X[28XA CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,[128X[104X
     [4X[28Xa:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ):[128X[104X
     [4X[28X[128X[104X
     [4X[28X15 primitive operations were used to derive 29 operations for this category[128X[104X
@@ -332,10 +333,10 @@
     [4X[25X>[125X [27X        Source( m ), MorphismLength( m ), MorphismSupport( m ), Target( m ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XqC := QuotientCategory( C, relations );[127X[104X
-    [4X[28XPathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,[128X[104X
     [4X[28Xb:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ][128X[104X
     [4X[25Xgap>[125X [27XDisplay( qC );[127X[104X
-    [4X[28XA CAP category with name PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,[128X[104X
+    [4X[28XA CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,[128X[104X
     [4X[28Xa:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ]:[128X[104X
     [4X[28X[128X[104X
     [4X[28X25 primitive operations were used to derive 63 operations for this category[128X[104X
@@ -355,15 +356,17 @@
     [4X[28X[ false, true, true, true, true, true, true, true, false ][128X[104X
     [4X[25Xgap>[125X [27XList( SetOfGeneratingMorphisms( qC ), IsEpimorphism );[127X[104X
     [4X[28X[ false, true, true, true, true, true, true, true, false ][128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals();[127X[104X
     [4X[28XQ[128X[104X
     [4X[25Xgap>[125X [27XkC := k[C]; # or LinearClosure( k, C );[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,[128X[104X
     [4X[28Xc:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XkC.x + kC.x^2;[127X[104X
     [4X[28X1*x^2 + 1*x:(0) -≻ (0)[128X[104X
     [4X[25Xgap>[125X [27XkqC := k[qC];[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( Quiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,[128X[104X
     [4X[28Xc:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ] )[128X[104X
     [4X[25Xgap>[125X [27XHomomorphismStructureOnObjects( kqC.0, kqC.5 );[127X[104X
     [4X[28X<A row module over Q of rank 75>[128X[104X
@@ -392,13 +395,13 @@
     [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xstr := "q(0,1,2,3,4,5)[s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5]";;[127X[104X
-    [4X[25Xgap>[125X [27Xquiver := CreateCapQuiver( str );[127X[104X
-    [4X[28XQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" )[128X[104X
+    [4X[25Xgap>[125X [27Xquiver := FinQuiver( str );[127X[104X
+    [4X[28XFinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" )[128X[104X
     [4X[25Xgap>[125X [27XP := PathCategory( quiver );[127X[104X
-    [4X[28XPathCategory( Quiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,[128X[104X
     [4X[28Xd:3-≻4,t:4-≻5]" ) )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
-    [4X[28XA CAP category with name PathCategory( Quiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,[128X[104X
+    [4X[28XA CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,[128X[104X
     [4X[28Xc:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" ) ):[128X[104X
     [4X[28X[128X[104X
     [4X[28X16 primitive operations were used to derive 63 operations for this category[128X[104X
@@ -409,7 +412,7 @@
     [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals( );[127X[104X
     [4X[28XQ[128X[104X
     [4X[25Xgap>[125X [27XkP := k[P];[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( Quiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,[128X[104X
     [4X[28Xe:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( kP.0, kP.5 );[127X[104X
     [4X[28X<A row module over Q of rank 3>[128X[104X

@@ -4,23 +4,23 @@
   
   [1X1.1 [33X[0;0YGAP categories[133X[101X
   
-  [1X1.1-1 IsCapQuiver[101X
+  [1X1.1-1 IsFinQuiver[101X
   
-  [33X[1;0Y[29X[2XIsCapQuiver[102X( [3Xq[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsFinQuiver[102X( [3Xq[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of quivers.[133X
   
-  [1X1.1-2 IsCapQuiverObject[101X
+  [1X1.1-2 IsFinQuiverObject[101X
   
-  [33X[1;0Y[29X[2XIsCapQuiverObject[102X( [3Xv[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsFinQuiverObject[102X( [3Xv[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a quiver.[133X
   
-  [1X1.1-3 IsCapQuiverMorphism[101X
+  [1X1.1-3 IsFinQuiverMorphism[101X
   
-  [33X[1;0Y[29X[2XIsCapQuiverMorphism[102X( [3Xalpha[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsFinQuiverMorphism[102X( [3Xalpha[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in a quiver.[133X
@@ -28,9 +28,9 @@
   
   [1X1.2 [33X[0;0YConstructors[133X[101X
   
-  [1X1.2-1 CreateCapQuiver[101X
+  [1X1.2-1 FinQuiver[101X
   
-  [33X[1;0Y[29X[2XCreateCapQuiver[102X( [3Xq_datum[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XFinQuiver[102X( [3Xq_datum[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X quiver[133X
   
   [33X[0;0YConstruct a CAP quiver out of the [3Xq_datum[103X which is specified as follows:[133X
@@ -45,6 +45,82 @@
         morphisms,  the  list of source-indices, the list of range-indices and
         the  list  of  labels  for these morphisms. This list might contain an
         optional fifth entry for the list of LaTeX-strings for the morphisms.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FpCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xstr :=[127X[104X
+    [4X[25X>[125X [27X  "q(0..5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;[127X[104X
+    [4X[25Xgap>[125X [27Xq := FinQuiver( str );[127X[104X
+    [4X[28XFinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,[128X[104X
+    [4X[28Xt:4-≻5,y:5-≻5]" )[128X[104X
+    [4X[25Xgap>[125X [27XQuiverName( q );[127X[104X
+    [4X[28X"q"[128X[104X
+    [4X[25Xgap>[125X [27XNumberOfObjects( q );[127X[104X
+    [4X[28X6[128X[104X
+    [4X[25Xgap>[125X [27XLabelsOfObjects( q );[127X[104X
+    [4X[28X[ "0", "1", "2", "3", "4", "5" ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfObjects( q );[127X[104X
+    [4X[28X[ (0), (1), (2), (3), (4), (5) ][128X[104X
+    [4X[25Xgap>[125X [27Xo := q.0;[127X[104X
+    [4X[28X(0)[128X[104X
+    [4X[25Xgap>[125X [27XObjectIndex( o );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( o, ObjectConstructor( q, 1 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XObjectLabel( o );[127X[104X
+    [4X[28X"0"[128X[104X
+    [4X[25Xgap>[125X [27XLaTeXOutput( o );[127X[104X
+    [4X[28X"0"[128X[104X
+    [4X[25Xgap>[125X [27XNumberOfMorphisms( q );[127X[104X
+    [4X[28X9[128X[104X
+    [4X[25Xgap>[125X [27XLabelsOfMorphisms( q );[127X[104X
+    [4X[28X[ "x", "s", "a", "c", "e", "b", "d", "t", "y" ][128X[104X
+    [4X[25Xgap>[125X [27XIndicesOfSources( q );[127X[104X
+    [4X[28X[ 1, 1, 2, 2, 2, 3, 4, 5, 6 ][128X[104X
+    [4X[25Xgap>[125X [27XIndicesOfTargets( q );[127X[104X
+    [4X[28X[ 1, 2, 3, 4, 5, 5, 5, 6, 6 ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfMorphisms( q );[127X[104X
+    [4X[28X[ x:(0) -≻ (0), s:(0) -≻ (1), a:(1) -≻ (2), c:(1) -≻ (3), e:(1) -≻ (4),[128X[104X
+    [4X[28X  b:(2) -≻ (4), d:(3) -≻ (4), t:(4) -≻ (5), y:(5) -≻ (5) ][128X[104X
+    [4X[25Xgap>[125X [27Xm := q.y;[127X[104X
+    [4X[28Xy:(5) -≻ (5)[128X[104X
+    [4X[25Xgap>[125X [27XMorphismIndex( m );[127X[104X
+    [4X[28X9[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( m, MorphismConstructor( q, q.("5"), 9, q.("5") ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMorphismLabel( m );[127X[104X
+    [4X[28X"y"[128X[104X
+    [4X[25Xgap>[125X [27XLaTeXOutput( m );[127X[104X
+    [4X[28X"{5}-\\left({y}\\right)\\rightarrow{5}"[128X[104X
+    [4X[25Xgap>[125X [27XMorphismsOfExternalHom( q.("0"), q.("0") );[127X[104X
+    [4X[28X[ x:(0) -≻ (0) ][128X[104X
+    [4X[25Xgap>[125X [27XMorphismsOfExternalHom( q.("0"), q.("1") );[127X[104X
+    [4X[28X[ s:(0) -≻ (1) ][128X[104X
+    [4X[25Xgap>[125X [27Xq_op := OppositeQuiver( q );[127X[104X
+    [4X[28XFinQuiver( "q_op(0,1,2,3,4,5)[x:0-≻0,s:1-≻0,a:2-≻1,c:3-≻1,e:4-≻1,b:4-≻2,[128X[104X
+    [4X[28Xd:4-≻3,t:5-≻4,y:5-≻5]" )[128X[104X
+    [4X[25Xgap>[125X [27XMorphismsOfExternalHom( q_op.1, q_op.0 );[127X[104X
+    [4X[28X[ s:(1) -≻ (0) ][128X[104X
+    [4X[25Xgap>[125X [27Xq_op_x_q := TensorProductOfFinQuivers( q_op, q );;[127X[104X
+    [4X[25Xgap>[125X [27XNumberOfObjects( q_op_x_q );[127X[104X
+    [4X[28X36[128X[104X
+    [4X[25Xgap>[125X [27XNumberOfMorphisms( q_op_x_q );[127X[104X
+    [4X[28X108[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq1 := RandomFinQuiver( 2, 4, false );; # without loops[127X[104X
+    [4X[25Xgap>[125X [27Xq2 := RandomFinQuiver( 2, 4, true );;  # with loops[127X[104X
+    [4X[25Xgap>[125X [27XAssert( 0, NumberOfObjects( q1 ) = 2 );[127X[104X
+    [4X[25Xgap>[125X [27XAssert( 0, NumberOfMorphisms( q1 ) = 4 );[127X[104X
+    [4X[25Xgap>[125X [27XAssert( 0, Length( Filtered( SetOfMorphisms( q1 ), IsEndomorphism ) ) = 0 );[127X[104X
+    [4X[25Xgap>[125X [27XAssert( 0, Length( Filtered( SetOfMorphisms( q2 ), IsEndomorphism ) ) > 0 );[127X[104X
+    [4X[25Xgap>[125X [27Xq3 := FinQuiver( "q(3)[a:1->2,b:2->3]" );[127X[104X
+    [4X[28XFinQuiver( "q(1,2,3)[a:1-≻2,b:2-≻3]" )[128X[104X
+    [4X[25Xgap>[125X [27Xq4 := FinQuiver( "q(4..6)[a:4->5,b:5->6]" );[127X[104X
+    [4X[28XFinQuiver( "q(4,5,6)[a:4-≻5,b:5-≻6]" )[128X[104X
+  [4X[32X[104X
   
   [1X1.2-2 ObjectConstructor[101X
   
@@ -62,17 +138,17 @@
   [33X[0;0YThe input is a [5XCAP[105X quiver [23Xq[123X, an object [3Xs[103X, a positive integer [3Xi[103X and an object
   [3Xt[103X. The output is the [3Xi[103X'th morphism in [3Xq[103X (whose source is [3Xs[103X and target is [3Xt[103X).[133X
   
-  [1X1.2-4 RandomCapQuiver[101X
+  [1X1.2-4 RandomFinQuiver[101X
   
-  [33X[1;0Y[29X[2XRandomCapQuiver[102X( [3Xnr_objs[103X, [3Xnr_mors[103X, [3Xhas_loops[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XRandomFinQuiver[102X( [3Xnr_objs[103X, [3Xnr_mors[103X, [3Xhas_loops[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya CAP quiver[133X
   
   [33X[0;0YThe  outout  is  a  random  quiver consisting of [3Xnr_objs[103X objects and [3Xnr_mors[103X
   morphisms and has loops only if [3Xhas_loops[103X = [10Xtrue[110X.[133X
   
-  [1X1.2-5 TensorProductOfCapQuivers[101X
+  [1X1.2-5 TensorProductOfFinQuivers[101X
   
-  [33X[1;0Y[29X[2XTensorProductOfCapQuivers[102X( [3Xq1[103X, [3Xq2[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XTensorProductOfFinQuivers[102X( [3Xq1[103X, [3Xq2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X quiver[133X
   
   [33X[0;0YReturns the tensor product of [3Xq1[103X and [3Xq2[103X.[133X
@@ -201,9 +277,9 @@
   
   [33X[0;0YReturns the label of the object [3Xv[103X.[133X
   
-  [1X1.3-18 CapQuiver[101X
+  [1X1.3-18 UnderlyingFinQuiver[101X
   
-  [33X[1;0Y[29X[2XCapQuiver[102X( [3Xv[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XUnderlyingFinQuiver[102X( [3Xv[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X quiver[133X
   
   [33X[0;0YReturns the quiver containing the object [3Xv[103X.[133X
@@ -222,85 +298,10 @@
   
   [33X[0;0YReturns the label of the morphism [3Xalpha[103X.[133X
   
-  [1X1.3-21 CapQuiver[101X
+  [1X1.3-21 UnderlyingFinQuiver[101X
   
-  [33X[1;0Y[29X[2XCapQuiver[102X( [3Xalpha[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XUnderlyingFinQuiver[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X quiver[133X
   
   [33X[0;0YReturns the quiver containing the morphism [3Xalpha[103X.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xstr := "q(0,1,2,3,4,5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;[127X[104X
-    [4X[25Xgap>[125X [27Xq := CreateCapQuiver( str );[127X[104X
-    [4X[28XQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,[128X[104X
-    [4X[28Xt:4-≻5,y:5-≻5]" )[128X[104X
-    [4X[25Xgap>[125X [27XQuiverName( q );[127X[104X
-    [4X[28X"q"[128X[104X
-    [4X[25Xgap>[125X [27XNumberOfObjects( q );[127X[104X
-    [4X[28X6[128X[104X
-    [4X[25Xgap>[125X [27XLabelsOfObjects( q );[127X[104X
-    [4X[28X[ "0", "1", "2", "3", "4", "5" ][128X[104X
-    [4X[25Xgap>[125X [27XSetOfObjects( q );[127X[104X
-    [4X[28X[ (0), (1), (2), (3), (4), (5) ][128X[104X
-    [4X[25Xgap>[125X [27Xo := q.0;[127X[104X
-    [4X[28X(0)[128X[104X
-    [4X[25Xgap>[125X [27XObjectIndex( o );[127X[104X
-    [4X[28X1[128X[104X
-    [4X[25Xgap>[125X [27XIsIdenticalObj( o, ObjectConstructor( q, 1 ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XObjectLabel( o );[127X[104X
-    [4X[28X"0"[128X[104X
-    [4X[25Xgap>[125X [27XLaTeXOutput( o );[127X[104X
-    [4X[28X"0"[128X[104X
-    [4X[25Xgap>[125X [27XNumberOfMorphisms( q );[127X[104X
-    [4X[28X9[128X[104X
-    [4X[25Xgap>[125X [27XLabelsOfMorphisms( q );[127X[104X
-    [4X[28X[ "x", "s", "a", "c", "e", "b", "d", "t", "y" ][128X[104X
-    [4X[25Xgap>[125X [27XIndicesOfSources( q );[127X[104X
-    [4X[28X[ 1, 1, 2, 2, 2, 3, 4, 5, 6 ][128X[104X
-    [4X[25Xgap>[125X [27XIndicesOfTargets( q );[127X[104X
-    [4X[28X[ 1, 2, 3, 4, 5, 5, 5, 6, 6 ][128X[104X
-    [4X[25Xgap>[125X [27XSetOfMorphisms( q );[127X[104X
-    [4X[28X[ x:(0) -≻ (0), s:(0) -≻ (1), a:(1) -≻ (2), c:(1) -≻ (3), e:(1) -≻ (4),[128X[104X
-    [4X[28X  b:(2) -≻ (4), d:(3) -≻ (4), t:(4) -≻ (5), y:(5) -≻ (5) ][128X[104X
-    [4X[25Xgap>[125X [27Xm := q.y;[127X[104X
-    [4X[28Xy:(5) -≻ (5)[128X[104X
-    [4X[25Xgap>[125X [27XMorphismIndex( m );[127X[104X
-    [4X[28X9[128X[104X
-    [4X[25Xgap>[125X [27XIsIdenticalObj( m, MorphismConstructor( q, q.("5"), 9, q.("5") ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XMorphismLabel( m );[127X[104X
-    [4X[28X"y"[128X[104X
-    [4X[25Xgap>[125X [27XLaTeXOutput( m );[127X[104X
-    [4X[28X"{5}-\\left({y}\\right)\\rightarrow{5}"[128X[104X
-    [4X[25Xgap>[125X [27XMorphismsOfExternalHom( q.("0"), q.("0") );[127X[104X
-    [4X[28X[ x:(0) -≻ (0) ][128X[104X
-    [4X[25Xgap>[125X [27XMorphismsOfExternalHom( q.("0"), q.("1") );[127X[104X
-    [4X[28X[ s:(0) -≻ (1) ][128X[104X
-    [4X[25Xgap>[125X [27Xq_op := OppositeQuiver( q );[127X[104X
-    [4X[28XQuiver( "q_op(0,1,2,3,4,5)[x:0-≻0,s:1-≻0,a:2-≻1,c:3-≻1,e:4-≻1,b:4-≻2,[128X[104X
-    [4X[28Xd:4-≻3,t:5-≻4,y:5-≻5]" )[128X[104X
-    [4X[25Xgap>[125X [27XMorphismsOfExternalHom( q_op.1, q_op.0 );[127X[104X
-    [4X[28X[ s:(1) -≻ (0) ][128X[104X
-    [4X[25Xgap>[125X [27Xq_op_x_q := TensorProductOfCapQuivers( q_op, q );;[127X[104X
-    [4X[25Xgap>[125X [27XNumberOfObjects( q_op_x_q );[127X[104X
-    [4X[28X36[128X[104X
-    [4X[25Xgap>[125X [27XNumberOfMorphisms( q_op_x_q );[127X[104X
-    [4X[28X108[128X[104X
-  [4X[32X[104X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xq1 := RandomCapQuiver( 2, 4, false );; # without loops[127X[104X
-    [4X[25Xgap>[125X [27Xq2 := RandomCapQuiver( 2, 4, true );;  # with loops[127X[104X
-    [4X[25Xgap>[125X [27XAssert( 0, NumberOfObjects( q1 ) = 2 );[127X[104X
-    [4X[25Xgap>[125X [27XAssert( 0, NumberOfMorphisms( q1 ) = 4 );[127X[104X
-    [4X[25Xgap>[125X [27XAssert( 0, Length( Filtered( SetOfMorphisms( q1 ), IsEndomorphism ) ) = 0 );[127X[104X
-    [4X[25Xgap>[125X [27XAssert( 0, Length( Filtered( SetOfMorphisms( q2 ), IsEndomorphism ) ) > 0 );[127X[104X
-    [4X[25Xgap>[125X [27Xq3 := CreateCapQuiver( "q(3)[a:1->2,b:2->3]" );[127X[104X
-    [4X[28XQuiver( "q(1,2,3)[a:1-≻2,b:2-≻3]" )[128X[104X
-    [4X[25Xgap>[125X [27Xq4 := CreateCapQuiver( "q(4..6)[a:4->5,b:5->6]" );[127X[104X
-    [4X[28XQuiver( "q(4,5,6)[a:4-≻5,b:5-≻6]" )[128X[104X
-  [4X[32X[104X
   

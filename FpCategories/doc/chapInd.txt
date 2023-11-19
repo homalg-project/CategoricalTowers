@@ -5,65 +5,65 @@
   [2XAssignSetOfGeneratingMorphisms[102X, for IsPathCategory, IsString 2.2-5 
   [2XAssignSetOfObjects[102X, for IsPathCategory, IsString 2.2-4 
   [2XCanonicalRepresentative[102X, for IsQuotientOfPathCategoryMorphism 2.5-8 
-  [2XCapQuiver[102X, for IsCapQuiverMorphism 1.3-21 
-      for IsCapQuiverObject 1.3-18 
-  [2XCreateCapQuiver[102X 1.2-1 
   [2XDataTablesOfCategory[102X, for IsCapCategory 3.1-2 
   [2XDefiningRelations[102X, for IsQuotientOfPathCategory 2.5-5 
   [2XDefiningTripleOfUnderlyingQuiver[102X, for IsCapCategory 3.1-1 
-  [2XExternalHoms[102X, for IsCapQuiver 1.3-14 
+  [2XExternalHoms[102X, for IsFinQuiver 1.3-14 
+  [2XFinQuiver[102X 1.2-1 
   [2XGroebnerBasis[102X, for IsPathCategory, IsDenseList 2.4-1 
   [2XGroebnerBasisOfDefiningRelations[102X, for IsQuotientOfPathCategory 2.5-6 
   [2XHasFiniteNumberOfNonMultiples[102X, for IsPathCategory, IsDenseList 2.4-4 
-  [2XIndicesOfSources[102X, for IsCapQuiver 1.3-9 
-  [2XIndicesOfTargets[102X, for IsCapQuiver 1.3-10 
-  [2XIndicesPairsOfCompatibleMorphisms[102X, for IsCapQuiver 1.3-11 
+  [2XIndicesOfSources[102X, for IsFinQuiver 1.3-9 
+  [2XIndicesOfTargets[102X, for IsFinQuiver 1.3-10 
+  [2XIndicesPairsOfCompatibleMorphisms[102X, for IsFinQuiver 1.3-11 
   [2XIsAscendingForMorphisms[102X, for IsPathCategory, IsPathCategoryMorphism, IsPathCategoryMorphism, IsString 2.4-6 
-  [2XIsCapQuiver[102X, for IsCapCategory 1.1-1 
-  [2XIsCapQuiverMorphism[102X, for IsCapCategoryMorphism 1.1-3 
-  [2XIsCapQuiverObject[102X, for IsCapCategoryObject 1.1-2 
   [2XIsDescendingForMorphisms[102X, for IsPathCategory, IsPathCategoryMorphism, IsPathCategoryMorphism, IsString 2.4-5 
   [2XIsFinitePathCategory[102X, for IsPathCategory 2.3-10 
+  [2XIsFinQuiver[102X, for IsCapCategory 1.1-1 
+  [2XIsFinQuiverMorphism[102X, for IsCapCategoryMorphism 1.1-3 
+  [2XIsFinQuiverObject[102X, for IsCapCategoryObject 1.1-2 
   [2XIsPathCategory[102X, for IsCapCategory 2.1-1 
   [2XIsPathCategoryMorphism[102X, for IsCapCategoryMorphism 2.1-3 
   [2XIsPathCategoryObject[102X, for IsCapCategoryObject 2.1-2 
   [2XIsQuotientOfPathCategory[102X, for IsQuotientCapCategory 2.5-1 
   [2XIsQuotientOfPathCategoryMorphism[102X, for IsQuotientCapCategoryMorphism 2.5-3 
   [2XIsQuotientOfPathCategoryObject[102X, for IsQuotientCapCategoryObject 2.5-2 
-  [2XLabelsOfMorphisms[102X, for IsCapQuiver 1.3-7 
-  [2XLabelsOfObjects[102X, for IsCapQuiver 1.3-4 
-  [2XLaTeXStringsOfMorphisms[102X, for IsCapQuiver 1.3-8 
-  [2XLaTeXStringsOfObjects[102X, for IsCapQuiver 1.3-5 
-  [2XMorphismConstructor[102X, for IsCapQuiver, IsCapQuiverObject, IsInt, IsCapQuiverObject 1.2-3 
+  [2XLabelsOfMorphisms[102X, for IsFinQuiver 1.3-7 
+  [2XLabelsOfObjects[102X, for IsFinQuiver 1.3-4 
+  [2XLaTeXStringsOfMorphisms[102X, for IsFinQuiver 1.3-8 
+  [2XLaTeXStringsOfObjects[102X, for IsFinQuiver 1.3-5 
+  [2XMorphismConstructor[102X, for IsFinQuiver, IsFinQuiverObject, IsInt, IsFinQuiverObject 1.2-3 
       for IsPathCategory, IsPathCategoryObject, IsInt, IsDenseList, IsPathCategoryObject 2.2-3 
-  [2XMorphismIndex[102X, for IsCapQuiverMorphism 1.3-19 
+  [2XMorphismIndex[102X, for IsFinQuiverMorphism 1.3-19 
   [2XMorphismIndices[102X, for IsPathCategoryMorphism 2.3-8 
-  [2XMorphismLabel[102X, for IsCapQuiverMorphism 1.3-20 
+  [2XMorphismLabel[102X, for IsFinQuiverMorphism 1.3-20 
       for IsPathCategoryMorphism 2.3-9 
   [2XMorphismLength[102X, for IsPathCategoryMorphism 2.3-6 
   [2XMorphismSupport[102X, for IsPathCategoryMorphism 2.3-7 
-  [2XNumberOfMorphisms[102X, for IsCapQuiver 1.3-6 
-  [2XNumberOfObjects[102X, for IsCapQuiver 1.3-3 
-  [2XObjectConstructor[102X, for IsCapQuiver, IsInt 1.2-2 
+  [2XNumberOfMorphisms[102X, for IsFinQuiver 1.3-6 
+  [2XNumberOfObjects[102X, for IsFinQuiver 1.3-3 
+  [2XObjectConstructor[102X, for IsFinQuiver, IsInt 1.2-2 
       for IsPathCategory, IsInt 2.2-2 
-  [2XObjectIndex[102X, for IsCapQuiverObject 1.3-16 
+  [2XObjectIndex[102X, for IsFinQuiverObject 1.3-16 
       for IsPathCategoryObject 2.3-4 
       for IsQuotientOfPathCategoryObject 2.5-7 
-  [2XObjectLabel[102X, for IsCapQuiverObject 1.3-17 
+  [2XObjectLabel[102X, for IsFinQuiverObject 1.3-17 
       for IsPathCategoryObject 2.3-5 
-  [2XOppositeQuiver[102X, for IsCapQuiver 1.3-15 
-  [2XPathCategory[102X, for IsCapQuiver 2.2-1 
-  [2XQuiverDatum[102X, for IsCapQuiver 1.3-1 
-  [2XQuiverName[102X, for IsCapQuiver 1.3-2 
+  [2XOppositeQuiver[102X, for IsFinQuiver 1.3-15 
+  [2XPathCategory[102X, for IsFinQuiver 2.2-1 
+  [2XQuiverDatum[102X, for IsFinQuiver 1.3-1 
+  [2XQuiverName[102X, for IsFinQuiver 1.3-2 
   [2XQuotientCategory[102X, for IsPathCategory, IsDenseList 2.5-4 
-  [2XRandomCapQuiver[102X 1.2-4 
+  [2XRandomFinQuiver[102X 1.2-4 
   [2XReducedGroebnerBasis[102X, for IsPathCategory, IsDenseList 2.4-3 
   [2XReducedGroebnerBasisWithGivenGroebnerBasis[102X, for IsPathCategory, IsDenseList 2.4-2 
   [2XSetOfGeneratingMorphisms[102X, for IsPathCategory 2.3-3 
-  [2XSetOfMorphisms[102X, for IsCapQuiver 1.3-13 
-  [2XSetOfObjects[102X, for IsCapQuiver 1.3-12 
+  [2XSetOfMorphisms[102X, for IsFinQuiver 1.3-13 
+  [2XSetOfObjects[102X, for IsFinQuiver 1.3-12 
       for IsPathCategory 2.3-2 
-  [2XTensorProductOfCapQuivers[102X, for IsCapQuiver, IsCapQuiver 1.2-5 
+  [2XTensorProductOfFinQuivers[102X, for IsFinQuiver, IsFinQuiver 1.2-5 
+  [2XUnderlyingFinQuiver[102X, for IsFinQuiverMorphism 1.3-21 
+      for IsFinQuiverObject 1.3-18 
   [2XUnderlyingQuiver[102X, for IsPathCategory 2.3-1 
   
   
