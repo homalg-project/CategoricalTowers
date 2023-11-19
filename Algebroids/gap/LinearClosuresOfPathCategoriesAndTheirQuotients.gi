@@ -375,3 +375,51 @@ InstallMethod( DatumOfCellAsEvaluatableString,
                    " ] )" );
     
 end );
+
+##
+InstallMethodForCompilerForCAP( ExtendFunctorToAlgebroidData,
+        "for a two categories and a pair of functions",
+        [ IsLinearClosure, IsList, IsCapCategory ],
+        
+  function( LC, pair_of_funcs, category )
+    local functor_on_objects, functor_on_morphisms,
+          extended_functor_on_objects, extended_functor_on_morphisms;
+    
+    functor_on_objects := pair_of_funcs[1];
+    functor_on_morphisms := pair_of_funcs[2];
+    
+    ## the code below is the doctrine-specific ur-algorithm for categories
+    
+    extended_functor_on_objects :=
+      function( objLC )
+        local objC;
+        
+        objC := ObjectDatum( LC, objLC );
+        
+        return functor_on_objects( objC );
+        
+    end;
+    
+    extended_functor_on_morphisms :=
+      function( source, morLC, target )
+        local morC;
+        
+        morC := MorphismDatum( LC, morLC );
+        
+        return LinearCombinationOfMorphisms( category,
+                       source,
+                       morC[1], ## coeffs
+                       List( morC[2], mor ->
+                             functor_on_morphisms(
+                                     functor_on_objects( Source( mor ) ),
+                                     mor,
+                                     functor_on_objects( Target( mor ) ) ) ),
+                       target );
+        
+    end;
+    
+    return Triple( LC,
+                   Pair( extended_functor_on_objects, extended_functor_on_morphisms ),
+                   category );
+    
+end );
