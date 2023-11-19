@@ -872,55 +872,6 @@ InstallOtherMethod( IsDescendingForMorphisms,
     
 end );
 
-###################
-#
-# View Methods
-#
-###################
-
-##
-InstallMethod( ViewString,
-          [ IsPathCategoryObject ],
-  
-  function ( obj )
-    
-    return ViewString( UnderlyingQuiverObject( obj ) );
-    
-end );
-
-##
-InstallMethod( ViewString,
-          [ IsPathCategoryMorphism ],
-  
-  function ( alpha )
-    local colors;
-    
-    colors := UnderlyingQuiver( CapCategory( alpha ) )!.colors;
-    
-    return
-      Concatenation(
-          colors.mor,
-          MorphismLabel( alpha ),
-          colors.reset,
-          colors.other,
-          ":",
-          ViewString( Source( alpha ) ),
-          colors.other,
-          " -≻ ",
-          ViewString( Target( alpha ) ) );
-
-end );
-
-##
-InstallMethod( DisplayString,
-          [ IsPathCategoryObject ],
-  
-  function ( o )
-    
-    return Concatenation( ViewString( o ), "\n" );
-    
-end );
-
 #######################################################
 #
 # Hom-Structure in Path Categories and their Quotients
@@ -1081,3 +1032,51 @@ InstallOtherMethod( ExternalHoms,
     
 end );
 
+###################
+#
+# View Methods
+#
+###################
+
+##
+InstallMethod( ViewString,
+          [ IsPathCategoryObject ],
+  
+  function ( obj )
+    
+    return ViewString( UnderlyingQuiverObject( obj ) );
+    
+end );
+
+##
+InstallMethod( DisplayString,
+          [ IsPathCategoryObject ],
+  
+  function ( o )
+    
+    return Concatenation( ViewString( o ), "\n" );
+    
+end );
+
+##
+InstallMethod( ViewString,
+          [ IsPathCategoryMorphism ],
+  
+  function ( alpha )
+    local colors;
+    
+    colors := UnderlyingQuiver( CapCategory( alpha ) )!.colors;
+    
+    return
+      Concatenation(
+          colors.mor,
+          MorphismLabel( alpha ),
+          colors.reset,
+          colors.other,
+          ":",
+          ViewString( Source( alpha ) ),
+          colors.other,
+          " -≻ ",
+          ViewString( Target( alpha ) ) );
+
+end );
