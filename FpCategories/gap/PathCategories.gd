@@ -174,6 +174,23 @@ DeclareAttribute( "MorphismLabel", IsPathCategoryMorphism );
 #! @Returns a boolean
 DeclareProperty( "IsFinitePathCategory", IsPathCategory );
 
+#! @Description
+#!  The input is a path category <A>C</A> and a list of morphisms <A>mors</A> in <A>C</A>
+#!  (<A>mors</A> is usually the leading terms of a Groebner basis).
+#!  The output is whether almost all morphisms of <A>C</A> are multiples of elements in <A>mors</A>.
+#!  In other words, whether the number of morphisms that are not multiples of elements in <A>mors</A> (i.e., Macaulay monomials) is finite.
+#! @Arguments C, mors
+#! @Returns a boolean
+DeclareOperation( "HasFiniteNumberOfMacaulayMorphisms", [ IsPathCategory, IsDenseList ] );
+
+#! @Description
+#!  The input is a path category <A>C</A> and a list of morphisms <A>mors</A> in <A>C</A>
+#!  (<A>mors</A> is usually the leading terms of a Groebner basis).
+#!  The output is the Macaulay monomials with respect to <A>mors</A>.
+#! @Arguments C, mors
+#! @Returns a boolean
+DeclareOperation( "MacaulayMorphisms", [ IsPathCategory, IsDenseList ] );
+
 KeyDependentOperation( "ExternalHomsWithGivenLengthData", IsPathCategory, IsInt, ReturnTrue );
 KeyDependentOperation( "ExternalHomsWithGivenLength", IsCapCategory, IsInt, ReturnTrue );
 DeclareAttribute( "ExternalHoms", IsPathCategory );

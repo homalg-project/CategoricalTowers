@@ -884,12 +884,12 @@ InstallOtherMethod( IsFinitePathCategory,
   
   function ( C )
     
-    return HasFiniteNumberOfNonMultiples( C, [ ] );
+    return HasFiniteNumberOfMacaulayMorphisms( C, [ ] );
     
 end );
 
 ##
-InstallMethod( HasFiniteNumberOfNonMultiples,
+InstallMethod( HasFiniteNumberOfMacaulayMorphisms,
           [ IsPathCategory, IsDenseList ],
   
   function ( C, monomials )
@@ -948,17 +948,7 @@ InstallMethod( HasFiniteNumberOfNonMultiples,
 end );
 
 ##
-InstallOtherMethod( ExternalHoms,
-          [ IsPathCategory ],
-  
-  function ( C )
-    
-    return ExternalHoms( C, [ ] );
-    
-end );
-
-##
-InstallOtherMethod( ExternalHoms,
+InstallMethod( MacaulayMorphisms,
           [ IsPathCategory, IsDenseList ],
   
   function ( C, monomials )
@@ -1029,6 +1019,26 @@ InstallOtherMethod( ExternalHoms,
                                          SetOfObjects( C )[s],
                                          Pair( Length( supp ), supp ),
                                          SetOfObjects( C )[t] ) ) ) );
+    
+end );
+
+##
+InstallOtherMethod( MacaulayMorphisms,
+          [ IsPathCategory ],
+  
+  function ( C )
+    
+    return MacaulayMorphisms( C, [ ] );
+    
+end );
+
+##
+InstallOtherMethod( ExternalHoms,
+          [ IsPathCategory ],
+  
+  function ( C )
+    
+    return MacaulayMorphisms( C );
     
 end );
 

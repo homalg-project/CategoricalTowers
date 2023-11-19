@@ -34,15 +34,6 @@ DeclareOperation( "ReducedGroebnerBasisWithGivenGroebnerBasis", [ IsPathCategory
 DeclareOperation( "ReducedGroebnerBasis", [ IsPathCategory, IsDenseList ] );
 
 #! @Description
-#!  The input is a path category <A>C</A> and a list of morphisms <A>monomials</A> in <A>C</A>
-#!  (<A>monomials</A> is usually the leading terms of a Groebner basis).
-#!  The output is whether almost all morphisms of <A>C</A> are multiples of elements in <A>monomials</A>.
-#!  In other words, whether the number of morphisms that are not multiples of elements in <A>monomials</A> is finite.
-#! @Arguments C, monomials
-#! @Returns a boolean
-DeclareOperation( "HasFiniteNumberOfNonMultiples", [ IsPathCategory, IsDenseList ] );
-
-#! @Description
 #!  The input is a path category <A>C</A>, two parallel morphisms <A>f</A>, <A>g</A> and a string
 #!  <A>admissible_order</A> which takes one of the following two values <C>"Dp"</C> or <C>"dp"</C>.
 #!  The output is whether <A>f</A> $\succ$ <A>g</A> with respect to the specified admissible order.
