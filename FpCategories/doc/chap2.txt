@@ -376,6 +376,11 @@
     [4X[28X[ false, true, true, true, true, true, true, true, false ][128X[104X
     [4X[25Xgap>[125X [27XList( SetOfGeneratingMorphisms( kqC ), IsEpimorphism );[127X[104X
     [4X[28X[ false, true, true, true, true, true, true, true, false ][128X[104X
+    [4X[25Xgap>[125X [27Xhoms := BasisOfExternalHom( kqC.0, kqC.5 );;[127X[104X
+    [4X[25Xgap>[125X [27Xmor := 2 * homs[1] - 3 * homs[4] + homs[75];[127X[104X
+    [4X[28X2*[x^4•s•a•b•t•y^4] - 3*[x^4•s•c•d•t•y^3] + 1*[s•e•t]:(0) -≻ (5)[128X[104X
+    [4X[25Xgap>[125X [27XEvalString( CellAsEvaluatableString( mor, [ "kqC", "qC", "C" ] ) ) = mor;[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( kqC );[127X[104X
     [4X[28XQ-algebroid( {0,1,2,3,4,5}[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,[128X[104X
     [4X[28Xt:4-≻5,y:5-≻5] ) defined by 6 objects and 9 generating morphisms[128X[104X

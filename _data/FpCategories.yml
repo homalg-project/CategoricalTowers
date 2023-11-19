@@ -1,5 +1,5 @@
 name: FpCategories
-version: "2023.11-21"
+version: "2023.11-24"
 license: "GPL-2.0-or-later"
 date: 2023-11-19
 description: |
@@ -27,7 +27,7 @@ needed-pkgs:
       version: ">= 2023.08-18"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "ToolsForCategoricalTowers"
-      version: ">= 2023.11-03"
+      version: ">= 2023.11-05"
       url: "https://homalg-project.github.io/pkg/ToolsForCategoricalTowers"
     - name: "QuotientCategories"
       version: ">= 2023.11-01"
@@ -42,11 +42,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FpCategories/Pac
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2023.11-21/FpCategories-2023.11-21.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2023.11-24/FpCategories-2023.11-24.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2023.11-21/FpCategories-2023.11-21.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2023.11-24/FpCategories-2023.11-24.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2023.11-21/FpCategories-2023.11-21-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2023.11-24/FpCategories-2023.11-24-manual.pdf
 
 abstract: |
 
@@ -59,7 +59,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BS19</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FpCategories, Finitely presented categories by generating quivers and relations,
-             Version 2023.11-21</i>
+             Version 2023.11-24</i>
      (<span class='BibYear'>1-19</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FpCategories">https://homalg-project.github.io/pkg/FpCategories</a></span>.
@@ -67,10 +67,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ FpCategories2023.11-21,
+    @misc{ FpCategories2023.11-24,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FpCategories},   Finitely   presented  categories  by
-                          generating quivers and relations, {V}ersion 2023.11-21},
+                          generating quivers and relations, {V}ersion 2023.11-24},
       month =            {3-},
       year =             {1-19},
       note =             {GAP package},
