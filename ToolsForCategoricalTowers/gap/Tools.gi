@@ -107,6 +107,240 @@ InstallMethod( GlobalSectionFunctor,
     
 end );
 
+## fallback method
+InstallMethod( DatumOfCellAsEvaluatableString,
+        [ IsCapCategoryObject, IsList ],
+        
+  function( obj, list_of_evaluatable_strings )
+    local list_of_values, C, pos, datum, filter, filters;
+    
+    list_of_values := List( list_of_evaluatable_strings, EvalString );
+    
+    C := CapCategory( obj );
+    
+    pos := PositionsProperty( list_of_values, val ->
+                   IsCapCategoryObject( val ) and IsIdenticalObj( CapCategory( val ), C ) and IsEqualForObjects( val, obj ) );
+    
+    if Length( pos ) = 1 then
+        
+        return list_of_evaluatable_strings[pos[1]];
+        
+    elif Length( pos ) > 1 then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "the position of the object `obj` in `list_of_values` is not unique for obj = ", obj, "\n" );
+        
+    fi;
+    
+    datum := ObjectDatum( C, obj );
+    
+    if IsCapCategoryCell( datum ) then
+        
+        return CellAsEvaluatableString( datum, list_of_evaluatable_strings );
+        
+    elif IsInt( datum ) or IsBigInt( datum ) then
+        
+        return String( datum );
+        
+    else
+        
+        # COVERAGE_IGNORE_BLOCK_START
+        
+        filter := ObjectFilter( C );
+        
+        filters := ShallowCopy( ListImpliedFilters( filter ) );
+        
+        filters := Difference( filters, [ NamesFilter( filter )[1] ] );
+        
+        filters := MaximalObjects( filters, { a, b } -> a in ListImpliedFilters( ValueGlobal( b ) ) );
+        
+        if IsEmpty( filters ) then
+            filters := [ "(generic object-filter of obj)" ];
+        fi;
+        
+        Error( "ObjectDatum( C, obj ) does not lie in any of the filters { IsCapCategoryCell, IsInt, IsBigInt } and you need to either\n\n",
+               "add `obj` to `list_of_evaluatable_strings` or\n\n",
+               "InstallMethod( DatumOfCellAsEvaluatableString, [ ", filters[1], ", IsList ], function( obj, list_of_evaluatable_strings ) ... end );\n\n" );
+        
+        # COVERAGE_IGNORE_BLOCK_END
+        
+    fi;
+    
+end );
+
+## fallback method
+InstallMethod( DatumOfCellAsEvaluatableString,
+        [ IsCapCategoryMorphism, IsList ],
+        
+  function( mor, list_of_evaluatable_strings )
+    local list_of_values, C, pos, filter, filters;
+    
+    list_of_values := List( list_of_evaluatable_strings, EvalString );
+    
+    C := CapCategory( mor );
+    
+    pos := PositionsProperty( list_of_values, val ->
+                   IsCapCategoryMorphism( val ) and IsIdenticalObj( CapCategory( val ), C ) and IsEqualForMorphismsOnMor( C, val, mor ) );
+    
+    if Length( pos ) = 1 then
+        
+        return list_of_evaluatable_strings[pos[1]];
+        
+    elif Length( pos ) > 1 then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "the position of the morphism `mor` in `list_of_values` is not unique for mor = ", mor, "\n" );
+        
+    elif IsCapCategoryCell( MorphismDatum( C, mor ) ) then
+        
+        return CellAsEvaluatableString( MorphismDatum( C, mor ), list_of_evaluatable_strings );
+        
+    else
+        
+        # COVERAGE_IGNORE_BLOCK_START
+        
+        filter := MorphismFilter( C );
+        
+        filters := ShallowCopy( ListImpliedFilters( filter ) );
+        
+        filters := Difference( filters, [ NamesFilter( filter )[1] ] );
+        
+        filters := MaximalObjects( filters, { a, b } -> a in ListImpliedFilters( ValueGlobal( b ) ) );
+        
+        if IsEmpty( filters ) then
+            filters := [ "(generic morphism-filter of mor)" ];
+        fi;
+        
+        Error( "IsCapCategoryCell( MorphismDatum( C, mor ) ) = false and you need to either\n\n",
+               "add `mor` to `list_of_evaluatable_strings` or\n\n",
+               "InstallMethod( DatumOfCellAsEvaluatableString, [ ", filters[1], ", IsList ], function( mor, list_of_evaluatable_strings ) ... end );\n\n" );
+        
+        # COVERAGE_IGNORE_BLOCK_END
+        
+    fi;
+    
+end );
+
+##
+InstallMethod( CellAsEvaluatableString,
+        [ IsCapCategoryObject, IsList ],
+
+  function( obj, list_of_evaluatable_strings )
+    local list_of_values, C, pos, string;
+    
+    list_of_values := List( list_of_evaluatable_strings, EvalString );
+    
+    C := CapCategory( obj );
+    
+    pos := PositionsProperty( list_of_values, val ->
+                   IsCapCategoryObject( val ) and IsIdenticalObj( CapCategory( val ), C ) and IsEqualForObjects( val, obj ) );
+    
+    if Length( pos ) = 1 then
+        
+        return list_of_evaluatable_strings[pos[1]];
+        
+    elif Length( pos ) > 1 then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "the position of the object `obj` in `list_of_values` is not unique for obj = ", obj, "\n" );
+        
+    fi;
+    
+    pos := PositionsProperty( list_of_values, val -> IsIdenticalObj( val, C ) );
+    
+    if Length( pos ) = 0 then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "could not find CapCategory( obj ) in `list_of_values` for obj = ", obj, "\n" );
+        
+    elif Length( pos ) > 1 then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "the position of CapCategory( obj ) in `list_of_values` is not unique for obj = ", obj, "\n" );
+        
+    fi;
+    
+    string := Concatenation(
+                      "ObjectConstructor( ", list_of_evaluatable_strings[pos[1]], ", ",
+                      DatumOfCellAsEvaluatableString( obj, list_of_evaluatable_strings ), " )" );
+    
+    #Assert( 0, IsEqualForObjects( obj, EvalString( string ) ) );
+    
+    return string;
+    
+end );
+
+##
+InstallMethod( CellAsEvaluatableString,
+        [ IsCapCategoryMorphism, IsList ],
+
+  function( mor, list_of_evaluatable_strings )
+    local list_of_values, C, pos, cat, string;
+    
+    list_of_values := List( list_of_evaluatable_strings, EvalString );
+    
+    C := CapCategory( mor );
+    
+    pos := PositionsProperty( list_of_values, val ->
+                   IsCapCategoryMorphism( val ) and IsIdenticalObj( CapCategory( val ), C ) and IsEqualForMorphismsOnMor( C, val, mor ) );
+    
+    if Length( pos ) = 1 then
+        
+        return list_of_evaluatable_strings[pos[1]];
+        
+    elif Length( pos ) > 1 then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "the position of the morphism `mor` in `list_of_values` is not unique for mor = ", mor, "\n" );
+        
+    fi;
+    
+    pos := PositionsProperty( list_of_values, val -> IsIdenticalObj( val, C ) );
+    
+    if Length( pos ) = 0 then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "could not find CapCategory( mor ) in `list_of_values` for mor = ", mor, "\n" );
+        
+    elif Length( pos ) > 1 then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "the position of CapCategory( mor ) in `list_of_values` is not unique for mor = ", mor, "\n" );
+        
+    fi;
+    
+    cat := list_of_evaluatable_strings[pos[1]];
+    
+    if CanCompute( C, "IsEqualToIdentityMorphism" ) and IsEqualToIdentityMorphism( mor ) then
+        
+        string := Concatenation(
+                          "IdentityMorphism( ", cat, ", ",
+                          CellAsEvaluatableString( Source( mor ), list_of_evaluatable_strings ),
+                          " )" );
+        
+    elif CanCompute( C, "IsEqualToZeroMorphism" ) and IsEqualToZeroMorphism( mor ) then
+        
+        string := Concatenation(
+                          "ZeroMorphism( ", cat, ", ",
+                          CellAsEvaluatableString( Source( mor ), list_of_evaluatable_strings ), ", ",
+                          CellAsEvaluatableString( Target( mor ), list_of_evaluatable_strings ), " )" );
+        
+    else
+        
+        string := Concatenation(
+                          "MorphismConstructor( ", cat, ", ",
+                          CellAsEvaluatableString( Source( mor ), list_of_evaluatable_strings ), ", ",
+                          DatumOfCellAsEvaluatableString( mor, list_of_evaluatable_strings ), ", ",
+                          CellAsEvaluatableString( Target( mor ), list_of_evaluatable_strings ), " )" );
+        
+    fi;
+    
+    #Assert( 0, IsEqualForMorphismsOnMor( C, mor, EvalString( string ) ) );
+    
+    return string;
+    
+end );
+
 ##
 InstallGlobalFunction( RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
   function( cat, morphism_1, morphism_2, morphism_3, arg... )

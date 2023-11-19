@@ -251,3 +251,36 @@ InstallOtherMethodForCompilerForCAP( TensorizeMorphismWithObjectInRangeCategoryO
                    target );
     
 end );
+
+##
+InstallMethod( DatumOfCellAsEvaluatableString,
+        [ IsAdditiveClosureObject, IsList ],
+        
+  function( obj, list_of_evaluatable_strings )
+    local datum, data;
+    
+    datum := ObjectDatum( obj );
+    
+    data := List( datum, d -> CellAsEvaluatableString( d, list_of_evaluatable_strings ) );
+    
+    return Concatenation( "[ ", JoinStringsWithSeparator( data, ", " ), " ]" );
+    
+end );
+
+##
+InstallMethod( DatumOfCellAsEvaluatableString,
+        [ IsAdditiveClosureMorphism, IsList ],
+        
+  function( mor, list_of_evaluatable_strings )
+    local datum, data;
+    
+    datum := MorphismDatum( mor );
+    
+    data := List( datum, d -> List( d, e -> CellAsEvaluatableString( e, list_of_evaluatable_strings ) ) );
+    
+    return Concatenation(
+                   "[ ",
+                   JoinStringsWithSeparator( List( data, d -> Concatenation( "[ ", JoinStringsWithSeparator( d, ", " ), " ]" ) ), ", " ),
+                   " ]" );
+    
+end );

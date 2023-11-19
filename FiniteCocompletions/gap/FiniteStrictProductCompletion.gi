@@ -414,6 +414,36 @@ InstallMethod( ExtendFunctorToFiniteStrictProductCompletion,
     
 end );
 
+##
+InstallMethod( DatumOfCellAsEvaluatableString,
+        [ IsObjectInFiniteStrictProductCompletion, IsList ],
+        
+  function( obj, list_of_evaluatable_strings )
+    local datum, data;
+    
+    datum := ObjectDatum( CapCategory( obj ), obj );
+    
+    data := List( datum[2], d -> CellAsEvaluatableString( d, list_of_evaluatable_strings ) );
+    
+    return Concatenation( "Pair( ", String( datum[1] ), ", [ ", JoinStringsWithSeparator( data, ", " ), " ] )" );
+    
+end );
+
+##
+InstallMethod( DatumOfCellAsEvaluatableString,
+        [ IsMorphismInFiniteStrictProductCompletion, IsList ],
+        
+  function( mor, list_of_evaluatable_strings )
+    local datum, data;
+    
+    datum := MorphismDatum( CapCategory( mor ), mor );
+    
+    data := List( datum[2], d -> CellAsEvaluatableString( d, list_of_evaluatable_strings ) );
+    
+    return Concatenation( "Pair( [ ", JoinStringsWithSeparator( datum[1], ", " ), " ], [ ", JoinStringsWithSeparator( data, ", " ), " ] )" );
+    
+end );
+
 ##################################
 ##
 ## View & Display

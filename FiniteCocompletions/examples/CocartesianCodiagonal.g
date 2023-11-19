@@ -69,6 +69,17 @@ id_a := IdentityMorphism( C.a );
 #! id(a):C.a -≻ C.a
 delta = CocartesianCodiagonal( a, 2 );
 #! true
+CellAsEvaluatableString( delta, [ "C", "UC" ] );
+#! "MorphismConstructor( UC,
+#!         ObjectConstructor( UC,
+#!                 Pair( 2,
+#!                       [ ObjectConstructor( C, 1 ),
+#!                         ObjectConstructor( C, 1 ) ] ) ),
+#!         Pair( [ 0, 0 ],
+#!               [ IdentityMorphism( C, ObjectConstructor( C, 1 ) ),
+#!                 IdentityMorphism( C, ObjectConstructor( C, 1 ) ) ] ),
+#!         ObjectConstructor( UC,
+#!                 Pair( 1, [ ObjectConstructor( C, 1 ) ] ) ) )"
 LUC := LazyCategory( UC );
 #! LazyCategory(
 #! FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) ) )

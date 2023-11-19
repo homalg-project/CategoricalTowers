@@ -59,6 +59,42 @@ DeclareAttribute( "GlobalSectionFunctorData",
 DeclareAttribute( "GlobalSectionFunctor",
         IsCapCategory );
 
+###################################
+##
+#! @Section Cell as evaluatable string
+##
+###################################
+
+#! @Description
+#!  The arguments is a category cell <A>c</A> and a list <A>list_of_evaluatable_strings</A>
+#!  of string all which must be evalutable with <C>EvalString</C>.
+#!  The output is a string <C>str</C> such that
+#!  * <C>EvalString</C>( <C>str</C> ) = ObjectDatum( <A>c</A> ) if <A>c</A> is a category object, or
+#!  * <C>EvalString</C>( <C>str</C> ) = MorphismDatum( <A>c</A> ) if <A>c</A> is a category morphism.
+#!  
+#!  The output string must, apart from the brackets, only consist of
+#!  the substrings "<C>ObjectConstructor</C>", "<C>MorphismConstructor</C>"
+#!  and the string in <A>list_of_evaluatable_strings</A>.
+#! @Returns a string
+#! @Arguments c, list_of_evaluatable_strings
+DeclareOperation( "DatumOfCellAsEvaluatableString",
+        [ IsCapCategoryCell, IsList ] );
+
+#! @Description
+#!  The arguments is a category cell <A>c</A> and a list <A>list_of_evaluatable_strings</A>
+#!  of string all which must be evalutable with <C>EvalString</C>.
+#!  The output is a string <C>str</C> such that
+#!  * IsEqualForObjects( <C>EvalString</C>( <C>str</C> ), <A>c</A> ) if <A>c</A> is a category object, or
+#!  * IsEqualForMorphismsOnMor( <C>EvalString</C>( <C>str</C> ), <A>c</A> ) if <A>c</A> is a category morphism.
+#!  
+#!  The output string must, apart from the brackets, only consist of
+#!  the substrings "<C>ObjectConstructor</C>", "<C>MorphismConstructor</C>"
+#!  and the string in <A>list_of_evaluatable_strings</A>.
+#! @Returns a string
+#! @Arguments c, list_of_evaluatable_strings
+DeclareOperation( "CellAsEvaluatableString",
+        [ IsCapCategoryCell, IsList ] );
+
 #! @Chapter Futher CAP operations
 
 ###################################

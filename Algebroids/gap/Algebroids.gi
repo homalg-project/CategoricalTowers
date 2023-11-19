@@ -2201,6 +2201,114 @@ InstallMethod( POW,
     
 end );
 
+BindGlobal( "_MorphismInAlgebroid_CellAsEvaluatableString",
+  function( mor, list_of_evaluatable_strings )
+    local list_of_values, C, pos, cat, decomp, cmp;
+    
+    list_of_values := List( list_of_evaluatable_strings, EvalString );
+    
+    C := CapCategory( mor );
+    
+    pos := PositionsProperty( list_of_values, val ->
+                   IsCapCategoryMorphism( val ) and IsIdenticalObj( CapCategory( val ), C ) and IsEqualForMorphismsOnMor( C, val, mor ) );
+    
+    if Length( pos ) = 1 then
+        
+        return list_of_evaluatable_strings[pos[1]];
+        
+    elif Length( pos ) > 1 then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "the position of the morphism `mor` in `list_of_values` is not unique for mor = ", mor, "\n" );
+        
+    elif IsInt( PositionProperty( SetOfGeneratingMorphisms( C ), m -> IsEqualForMorphismsOnMor( C, m, mor ) ) ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "the morphism `mor` does not lie in `list_of_values`\n" );
+        
+    fi;
+    
+    pos := PositionsProperty( list_of_values, val -> IsIdenticalObj( val, C ) );
+    
+    if Length( pos ) = 0 then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "could not find CapCategory( mor ) in `list_of_values` for mor = ", mor, "\n" );
+        
+    elif Length( pos ) > 1 then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "the position of CapCategory( mor ) in `list_of_values` is not unique for mor = ", mor, "\n" );
+        
+    fi;
+    
+    cat := list_of_evaluatable_strings[pos[1]];
+    
+    if CanCompute( C, "IsEqualToIdentityMorphism" ) and IsEqualToIdentityMorphism( mor ) then
+        
+        return Concatenation(
+                       "IdentityMorphism( ", cat, ", ",
+                       CellAsEvaluatableString( Source( mor ), list_of_evaluatable_strings ),
+                       " )" );
+        
+    elif CanCompute( C, "IsEqualToZeroMorphism" ) and IsEqualToZeroMorphism( mor ) then
+        
+        return Concatenation(
+                       "ZeroMorphism( ", cat, ", ",
+                       CellAsEvaluatableString( Source( mor ), list_of_evaluatable_strings ), ", ",
+                       CellAsEvaluatableString( Target( mor ), list_of_evaluatable_strings ), " )" );
+        
+    fi;
+    
+    decomp := DecompositionOfMorphismInAlgebroid( mor );
+    
+    if Length( decomp ) = 1 then
+        
+        decomp := decomp[1];
+        
+        if Length( decomp[2] ) = 1 then
+            
+            cmp := CellAsEvaluatableString( decomp[2][1], list_of_evaluatable_strings );
+            
+        else
+            
+            cmp := Concatenation(
+                           "PreComposeList( ", cat, ", ",
+                           CellAsEvaluatableString( Source( mor ), list_of_evaluatable_strings ),
+                           ", [ ",
+                           JoinStringsWithSeparator( List( decomp[2], gen_mor ->
+                                   CellAsEvaluatableString( gen_mor, list_of_evaluatable_strings ) ), ", " ),
+                           " ], ",
+                           CellAsEvaluatableString( Target( mor ), list_of_evaluatable_strings ),
+                           " )" );
+            
+        fi;
+        
+        if IsOne( decomp[1] ) then
+            
+            return cmp;
+            
+        elif IsMinusOne( decomp[1] ) then
+            
+            return Concatenation( "AdditiveInverseForMorphisms( ", cat, ", ", cmp, " )" );
+            
+        fi;
+        
+        return Concatenation( "MultiplyWithElementOfCommutativeRingForMorphisms( ", cat, ", ", String( decomp[1] ), ", ", cmp, " )" );
+        
+    fi;
+    
+    # COVERAGE_IGNORE_NEXT_LINE
+    Error( "not implemented yet\n" );
+    
+end );
+
+##
+InstallMethod( CellAsEvaluatableString,
+        [ IsMorphismInAlgebroid, IsList ], ## not HasHasGenesisOfCell
+        
+  _MorphismInAlgebroid_CellAsEvaluatableString );
+
 ####################################
 #
 # View, Print, and Display methods:

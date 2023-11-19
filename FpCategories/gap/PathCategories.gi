@@ -1032,6 +1032,19 @@ InstallOtherMethod( ExternalHoms,
     
 end );
 
+##
+InstallMethod( DatumOfCellAsEvaluatableString,
+        [ IsPathCategoryMorphism, IsList ],
+        
+  function( mor, list_of_evaluatable_strings )
+    local datum;
+    
+    datum := MorphismDatum( mor );
+    
+    return Concatenation( "Pair( ", String( datum[1] ), ", ", String( datum[2] ), " )" );
+    
+end );
+
 ###################
 #
 # View Methods

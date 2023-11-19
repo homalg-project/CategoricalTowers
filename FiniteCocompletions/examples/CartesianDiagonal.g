@@ -72,6 +72,17 @@ id_a := IdentityMorphism( C.a );
 #! id(a):C.a -≻ C.a
 delta = CartesianDiagonal( a, 2 );
 #! true
+CellAsEvaluatableString( delta, [ "C", "PC" ] );
+#! "MorphismConstructor( PC,
+#!         ObjectConstructor( PC,
+#!                 Pair( 1, [ ObjectConstructor( C, 1 ) ] ) ),
+#!         Pair( [ 0, 0 ],
+#!               [ IdentityMorphism( C, ObjectConstructor( C, 1 ) ),
+#!                 IdentityMorphism( C, ObjectConstructor( C, 1 ) ) ] ),
+#!         ObjectConstructor( PC,
+#!                 Pair( 2,
+#!                       [ ObjectConstructor( C, 1 ),
+#!                         ObjectConstructor( C, 1 ) ] ) ) )"
 LPC := LazyCategory( PC );
 #! LazyCategory(
 #! FiniteStrictProductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) ) )
