@@ -61,13 +61,13 @@ a_x_buc := DirectProduct( a, Coproduct( b, c ) );
 axb_u_axc = a_x_buc;
 #! true
 implemented_func :=
-  function( T, source, a, b, c, range )
+  function( T, source, a, b, c, target )
     return LeftCartesianDistributivityFactoringWithGivenObjects( T,
                    source,
                    a,
                    [ b, c ],
-                   range ); end;
-#! function( T, source, a, b, c, range ) ... end
+                   target ); end;
+#! function( T, source, a, b, c, target ) ... end
 
 lfactor_implemented := implemented_func( DC, axb_u_axc, a, b, c, a_x_buc );
 #! <A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts(
