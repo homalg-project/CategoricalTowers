@@ -1,5 +1,5 @@
 name: FpCategories
-version: "2023.11-26"
+version: "2023.11-28"
 license: "GPL-2.0-or-later"
 date: 2023-11-20
 description: |
@@ -42,11 +42,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FpCategories/Pac
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2023.11-26/FpCategories-2023.11-26.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2023.11-28/FpCategories-2023.11-28.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2023.11-26/FpCategories-2023.11-26.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2023.11-28/FpCategories-2023.11-28.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2023.11-26/FpCategories-2023.11-26-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2023.11-28/FpCategories-2023.11-28-manual.pdf
 
 abstract: |
 
@@ -59,7 +59,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BS20</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FpCategories, Finitely presented categories by generating quivers and relations,
-             Version 2023.11-26</i>
+             Version 2023.11-28</i>
      (<span class='BibYear'>1-20</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FpCategories">https://homalg-project.github.io/pkg/FpCategories</a></span>.
@@ -67,10 +67,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ FpCategories2023.11-26,
+    @misc{ FpCategories2023.11-28,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FpCategories},   Finitely   presented  categories  by
-                          generating quivers and relations, {V}ersion 2023.11-26},
+                          generating quivers and relations, {V}ersion 2023.11-28},
       month =            {3-},
       year =             {1-20},
       note =             {GAP package},

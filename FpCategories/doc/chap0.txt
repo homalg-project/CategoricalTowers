@@ -6,7 +6,7 @@
       [1X Finitely presented categories by generating quivers and relations [101X
   
   
-                                   2023.11-26
+                                   2023.11-28
   
   
                                 20 November 2023
@@ -95,13 +95,14 @@
       2.3-8 MorphismIndices
       2.3-9 MorphismLabel
       2.3-10 IsFinitePathCategory
+      2.3-11 HasFiniteNumberOfMacaulayMorphisms
+      2.3-12 MacaulayMorphisms
     2.4 [33X[0;0YOperations[133X
       2.4-1 GroebnerBasis
       2.4-2 ReducedGroebnerBasisWithGivenGroebnerBasis
       2.4-3 ReducedGroebnerBasis
-      2.4-4 HasFiniteNumberOfNonMultiples
-      2.4-5 IsDescendingForMorphisms
-      2.4-6 IsAscendingForMorphisms
+      2.4-4 IsDescendingForMorphisms
+      2.4-5 IsAscendingForMorphisms
     2.5 [33X[0;0YQuotients of path categories[133X
       2.5-1 IsQuotientOfPathCategory
       2.5-2 IsQuotientOfPathCategoryObject

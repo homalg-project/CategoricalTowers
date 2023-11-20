@@ -148,6 +148,26 @@
   
   [33X[0;0YReturns whether [3XC[103X can be enriched over the category of finite sets.[133X
   
+  [1X2.3-11 HasFiniteNumberOfMacaulayMorphisms[101X
+  
+  [33X[1;0Y[29X[2XHasFiniteNumberOfMacaulayMorphisms[102X( [3XC[103X, [3Xmors[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  input  is  a path category [3XC[103X and a list of morphisms [3Xmors[103X in [3XC[103X ([3Xmors[103X is
+  usually the leading terms of a Groebner basis). The output is whether almost
+  all  morphisms  of  [3XC[103X  are  multiples  of  elements in [3Xmors[103X. In other words,
+  whether  the  number of morphisms that are not multiples of elements in [3Xmors[103X
+  (i.e., Macaulay monomials) is finite.[133X
+  
+  [1X2.3-12 MacaulayMorphisms[101X
+  
+  [33X[1;0Y[29X[2XMacaulayMorphisms[102X( [3XC[103X, [3Xmors[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  input  is  a path category [3XC[103X and a list of morphisms [3Xmors[103X in [3XC[103X ([3Xmors[103X is
+  usually  the  leading terms of a Groebner basis). The output is the Macaulay
+  monomials with respect to [3Xmors[103X.[133X
+  
   
   [1X2.4 [33X[0;0YOperations[133X[101X
   
@@ -176,18 +196,7 @@
   [33X[0;0YThe  input  is  a  path  category  [3XC[103X  and a list [3Xrels[103X consisting of pairs of
   parallel morphisms in [3XC[103X. The output is the reduced Groebner basis of [3Xrels[103X.[133X
   
-  [1X2.4-4 HasFiniteNumberOfNonMultiples[101X
-  
-  [33X[1;0Y[29X[2XHasFiniteNumberOfNonMultiples[102X( [3XC[103X, [3Xmonomials[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya boolean[133X
-  
-  [33X[0;0YThe  input  is  a  path  category  [3XC[103X  and a list of morphisms [3Xmonomials[103X in [3XC[103X
-  ([3Xmonomials[103X  is usually the leading terms of a Groebner basis). The output is
-  whether almost all morphisms of [3XC[103X are multiples of elements in [3Xmonomials[103X. In
-  other  words,  whether  the  number  of  morphisms that are not multiples of
-  elements in [3Xmonomials[103X is finite.[133X
-  
-  [1X2.4-5 IsDescendingForMorphisms[101X
+  [1X2.4-4 IsDescendingForMorphisms[101X
   
   [33X[1;0Y[29X[2XIsDescendingForMorphisms[102X( [3XC[103X, [3Xf[103X, [3Xg[103X, [3Xadmissible_order[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -213,7 +222,7 @@
         y^2  \succ_{\mathtt{dp}}  x  \succ_{\mathtt{dp}} y \succ_{\mathtt{dp}}
         \mathtt{id(*)}[123X[133X
   
-  [1X2.4-6 IsAscendingForMorphisms[101X
+  [1X2.4-5 IsAscendingForMorphisms[101X
   
   [33X[1;0Y[29X[2XIsAscendingForMorphisms[102X( [3XC[103X, [3Xf[103X, [3Xg[103X, [3Xadmissible_order[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X

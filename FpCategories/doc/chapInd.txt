@@ -12,12 +12,12 @@
   [2XFinQuiver[102X 1.2-1 
   [2XGroebnerBasis[102X, for IsPathCategory, IsDenseList 2.4-1 
   [2XGroebnerBasisOfDefiningRelations[102X, for IsQuotientOfPathCategory 2.5-6 
-  [2XHasFiniteNumberOfNonMultiples[102X, for IsPathCategory, IsDenseList 2.4-4 
+  [2XHasFiniteNumberOfMacaulayMorphisms[102X, for IsPathCategory, IsDenseList 2.3-11 
   [2XIndicesOfSources[102X, for IsFinQuiver 1.3-9 
   [2XIndicesOfTargets[102X, for IsFinQuiver 1.3-10 
   [2XIndicesPairsOfCompatibleMorphisms[102X, for IsFinQuiver 1.3-11 
-  [2XIsAscendingForMorphisms[102X, for IsPathCategory, IsPathCategoryMorphism, IsPathCategoryMorphism, IsString 2.4-6 
-  [2XIsDescendingForMorphisms[102X, for IsPathCategory, IsPathCategoryMorphism, IsPathCategoryMorphism, IsString 2.4-5 
+  [2XIsAscendingForMorphisms[102X, for IsPathCategory, IsPathCategoryMorphism, IsPathCategoryMorphism, IsString 2.4-5 
+  [2XIsDescendingForMorphisms[102X, for IsPathCategory, IsPathCategoryMorphism, IsPathCategoryMorphism, IsString 2.4-4 
   [2XIsFinitePathCategory[102X, for IsPathCategory 2.3-10 
   [2XIsFinQuiver[102X, for IsCapCategory 1.1-1 
   [2XIsFinQuiverMorphism[102X, for IsCapCategoryMorphism 1.1-3 
@@ -32,6 +32,7 @@
   [2XLabelsOfObjects[102X, for IsFinQuiver 1.3-4 
   [2XLaTeXStringsOfMorphisms[102X, for IsFinQuiver 1.3-8 
   [2XLaTeXStringsOfObjects[102X, for IsFinQuiver 1.3-5 
+  [2XMacaulayMorphisms[102X, for IsPathCategory, IsDenseList 2.3-12 
   [2XMorphismConstructor[102X, for IsFinQuiver, IsFinQuiverObject, IsInt, IsFinQuiverObject 1.2-3 
       for IsPathCategory, IsPathCategoryObject, IsInt, IsDenseList, IsPathCategoryObject 2.2-3 
   [2XMorphismIndex[102X, for IsFinQuiverMorphism 1.3-19 
