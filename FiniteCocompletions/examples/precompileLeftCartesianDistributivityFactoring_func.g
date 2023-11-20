@@ -1,5 +1,5 @@
 func := EvalString( ReplacedStringViaRecord( """
-  function( T, source, a, b, c, range )
+  function( T, source, a, b, c, target )
     local objects, generating_morphisms,
           embedding_on_objects, embedding_on_morphisms, extended_functorDC;
     
@@ -35,7 +35,7 @@ func := EvalString( ReplacedStringViaRecord( """
     return extended_functorDC[2][2](
                    source, #extended_functorDC[2][1]( source ),
                    lfactor_reconstructed,
-                   range ); #extended_functorDC[2][1]( range ) );
+                   target ); #extended_functorDC[2][1]( target ) );
     
 end
 """,

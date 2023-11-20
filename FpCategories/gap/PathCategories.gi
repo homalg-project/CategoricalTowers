@@ -1082,7 +1082,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFpCategoryData,
     end;
     
     extended_functor_on_morphisms :=
-      function( source, morPQ, range )
+      function( source, morPQ, target )
         local s, t, morsQ;
         
         s := ObjectDatum( PQ, Source( morPQ ) );
@@ -1093,7 +1093,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFpCategoryData,
         return PreComposeList( category,
                        source,
                        List( morsQ, morQ -> functor_on_morphisms( morQ ) ),
-                       range );
+                       target );
         
     end;
     
