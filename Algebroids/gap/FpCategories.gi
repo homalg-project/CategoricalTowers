@@ -242,39 +242,49 @@ InstallMethod( IndicesOfGeneratingMorphisms,
   IndicesOfGeneratingMorphismsFromHomStructure );
 
 ##
-InstallOtherMethod( DecompositionIndicesOfMorphism,
+InstallOtherMethodForCompilerForCAP( DecompositionIndicesOfMorphism,
         "for a f.p. category and a morphism therein",
         [ IsFpCategory, IsMorphismInFpCategory ],
         
   function( C, mor )
-    local gmors;
+    local cmp, gmors;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     if not IsIdenticalObj( C, CapCategory( mor ) ) then
         Error( "`mor` is not a morphism in the category `C`\n" );
     fi;
     
-    if IsEqualToIdentityMorphism( mor ) then
+    if IsEqualToIdentityMorphism( C, mor ) then
         return [ ];
     fi;
     
-    mor := UnderlyingQuiverAlgebraElement( mor );
+    cmp := DecomposeQuiverAlgebraElement( UnderlyingQuiverAlgebraElement( mor ) );
     
-    mor := DecomposeQuiverAlgebraElement( mor );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, ForAll( cmp[1], IsOne ) );
     
-    Assert( 0, ForAll( mor[1], IsOne ) );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, Length( cmp[2] ) = 1 );
     
-    Assert( 0, Length( mor[2] ) = 1 );
-    
-    mor := mor[2][1];
-    
-    if ForAny( mor, IsCapCategoryObject ) then
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if ForAny( cmp[2][1], IsCapCategoryObject ) then
         Error( "one of the generating morphisms is an identity morphism\n" );
     fi;
     
     gmors := List( SetOfGeneratingMorphisms( C ), p -> BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( p ) ) );
     
-    return List( mor, g -> -1 + SafePosition( gmors, g ) );
+    return List( cmp[2][1], g -> -1 + SafePosition( gmors, g ) );
+    
+end );
+
+##
+InstallMethod( DecompositionIndicesOfMorphism,
+        "for a morphism in a f.p. category",
+        [ IsMorphismInFpCategory ],
+        
+  function( mor )
+    
+    return DecompositionIndicesOfMorphism( CapCategory( mor ), mor );
     
 end );
 
@@ -285,10 +295,10 @@ InstallMethod( DecompositionOfMorphismInCategory,
         
   function( mor )
     local C;
-
+    
     C := CapCategory( mor );
     
-    return SetOfGeneratingMorphisms( C ){1 + DecompositionIndicesOfMorphism( C, mor )};
+    return SetOfGeneratingMorphisms( C ){1 + DecompositionIndicesOfMorphism( mor )};
     
 end );
 
