@@ -138,13 +138,13 @@
     [4X[25Xgap>[125X [27Xaxb_u_axc = a_x_buc;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Ximplemented_func :=[127X[104X
-    [4X[25X>[125X [27X  function( T, source, a, b, c, range )[127X[104X
+    [4X[25X>[125X [27X  function( T, source, a, b, c, target )[127X[104X
     [4X[25X>[125X [27X    return LeftCartesianDistributivityFactoringWithGivenObjects( T,[127X[104X
     [4X[25X>[125X [27X                   source,[127X[104X
     [4X[25X>[125X [27X                   a,[127X[104X
     [4X[25X>[125X [27X                   [ b, c ],[127X[104X
-    [4X[25X>[125X [27X                   range ); end;[127X[104X
-    [4X[28Xfunction( T, source, a, b, c, range ) ... end[128X[104X
+    [4X[25X>[125X [27X                   target ); end;[127X[104X
+    [4X[28Xfunction( T, source, a, b, c, target ) ... end[128X[104X
     [4X[25Xgap>[125X [27Xlfactor_implemented := implemented_func( DC, axb_u_axc, a, b, c, a_x_buc );[127X[104X
     [4X[28X<A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
     [4X[28X FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
@@ -158,14 +158,14 @@
     [4X[25X>[125X [27X          DC,[127X[104X
     [4X[25X>[125X [27X          [ "category", "object", "object", "object", "object", "object" ],[127X[104X
     [4X[25X>[125X [27X          "morphism" );[127X[104X
-    [4X[28Xfunction( T_1, source_1, a_1, b_1, c_1, range_1 ) ... end[128X[104X
+    [4X[28Xfunction( T_1, source_1, a_1, b_1, c_1, target_1 ) ... end[128X[104X
     [4X[25Xgap>[125X [27XStopTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
     [4X[25Xgap>[125X [27X#DisplayTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_implemented_func( DC, axb_u_axc, a, b, c, a_x_buc ) =[127X[104X
     [4X[25X>[125X [27X  lfactor_implemented;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDisplay( compiled_implemented_func );[127X[104X
-    [4X[28Xfunction ( T_1, source_1, a_1, b_1, c_1, range_1 )[128X[104X
+    [4X[28Xfunction ( T_1, source_1, a_1, b_1, c_1, target_1 )[128X[104X
     [4X[28X    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1,[128X[104X
     [4X[28X          deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;[128X[104X
     [4X[28X    deduped_8_1 := [ b_1, c_1 ];[128X[104X
@@ -179,7 +179,7 @@
     [4X[28X    return[128X[104X
     [4X[28X      UniversalMorphismFromCoproductWithGivenCoproduct( T_1,[128X[104X
     [4X[28X        [ deduped_3_1, deduped_4_1 ],[128X[104X
-    [4X[28X        range_1,[128X[104X
+    [4X[28X        target_1,[128X[104X
     [4X[28X        [ UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,[128X[104X
     [4X[28X            deduped_2_1,[128X[104X
     [4X[28X            deduped_3_1,[128X[104X
@@ -263,13 +263,13 @@
     [4X[25X>[125X [27X          T,[127X[104X
     [4X[25X>[125X [27X          [ "category", "object", "object", "object", "object", "object" ],[127X[104X
     [4X[25X>[125X [27X          "morphism" );[127X[104X
-    [4X[28Xfunction( T_1, source_1, a_1, b_1, c_1, range_1 ) ... end[128X[104X
+    [4X[28Xfunction( T_1, source_1, a_1, b_1, c_1, target_1 ) ... end[128X[104X
     [4X[25Xgap>[125X [27XStopTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
     [4X[25Xgap>[125X [27X#DisplayTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_func( DC, axb_u_axc, a, b, c, a_x_buc ) = lfactor;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
-    [4X[28Xfunction ( T_1, source_1, a_1, b_1, c_1, range_1 )[128X[104X
+    [4X[28Xfunction ( T_1, source_1, a_1, b_1, c_1, target_1 )[128X[104X
     [4X[28X    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;[128X[104X
     [4X[28X    deduped_5_1 := [ a_1, c_1 ];[128X[104X
     [4X[28X    deduped_4_1 := [ a_1, b_1 ];[128X[104X
@@ -279,7 +279,7 @@
     [4X[28X    return[128X[104X
     [4X[28X      UniversalMorphismFromCoproductWithGivenCoproduct( T_1,[128X[104X
     [4X[28X        deduped_1_1,[128X[104X
-    [4X[28X        range_1,[128X[104X
+    [4X[28X        target_1,[128X[104X
     [4X[28X        [ PreCompose( T_1,[128X[104X
     [4X[28X            UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,[128X[104X
     [4X[28X                deduped_4_1,[128X[104X
@@ -295,7 +295,7 @@
     [4X[28X            InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,[128X[104X
     [4X[28X                deduped_1_1,[128X[104X
     [4X[28X                1,[128X[104X
-    [4X[28X                range_1 ) ),[128X[104X
+    [4X[28X                target_1 ) ),[128X[104X
     [4X[28X          PreCompose( T_1,[128X[104X
     [4X[28X              UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,[128X[104X
     [4X[28X                  deduped_5_1,[128X[104X
@@ -312,7 +312,7 @@
     [4X[28X              InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,[128X[104X
     [4X[28X                  deduped_1_1,[128X[104X
     [4X[28X                  2,[128X[104X
-    [4X[28X                  range_1 ) ) ],[128X[104X
+    [4X[28X                  target_1 ) ) ],[128X[104X
     [4X[28X        source_1 );[128X[104X
     [4X[28Xend[128X[104X
     [4X[28X#@fi[128X[104X
@@ -362,13 +362,13 @@
     [4X[25Xgap>[125X [27Xaxb_u_axc = a_x_buc;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Ximplemented_func :=[127X[104X
-    [4X[25X>[125X [27X  function( T, source, a, b, c, range )[127X[104X
+    [4X[25X>[125X [27X  function( T, source, a, b, c, target )[127X[104X
     [4X[25X>[125X [27X    return LeftCartesianDistributivityFactoringWithGivenObjects( T,[127X[104X
     [4X[25X>[125X [27X                   source,[127X[104X
     [4X[25X>[125X [27X                   a,[127X[104X
     [4X[25X>[125X [27X                   [ b, c ],[127X[104X
-    [4X[25X>[125X [27X                   range ); end;[127X[104X
-    [4X[28Xfunction( T, source, a, b, c, range ) ... end[128X[104X
+    [4X[25X>[125X [27X                   target ); end;[127X[104X
+    [4X[28Xfunction( T, source, a, b, c, target ) ... end[128X[104X
     [4X[25Xgap>[125X [27Xlfactor_implemented := implemented_func( DC, axb_u_axc, a, b, c, a_x_buc );[127X[104X
     [4X[28X<A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts([128X[104X
     [4X[28X PathCategory( FinQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
@@ -382,14 +382,14 @@
     [4X[25X>[125X [27X          DC,[127X[104X
     [4X[25X>[125X [27X          [ "category", "object", "object", "object", "object", "object" ],[127X[104X
     [4X[25X>[125X [27X          "morphism" );[127X[104X
-    [4X[28Xfunction( T_1, source_1, a_1, b_1, c_1, range_1 ) ... end[128X[104X
+    [4X[28Xfunction( T_1, source_1, a_1, b_1, c_1, target_1 ) ... end[128X[104X
     [4X[25Xgap>[125X [27XStopTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
     [4X[25Xgap>[125X [27X#DisplayTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_implemented_func( DC, axb_u_axc, a, b, c, a_x_buc ) =[127X[104X
     [4X[25X>[125X [27X  lfactor_implemented;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDisplay( compiled_implemented_func );[127X[104X
-    [4X[28Xfunction ( T_1, source_1, a_1, b_1, c_1, range_1 )[128X[104X
+    [4X[28Xfunction ( T_1, source_1, a_1, b_1, c_1, target_1 )[128X[104X
     [4X[28X    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1,[128X[104X
     [4X[28X          deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;[128X[104X
     [4X[28X    deduped_8_1 := [ b_1, c_1 ];[128X[104X
@@ -403,7 +403,7 @@
     [4X[28X    return[128X[104X
     [4X[28X      UniversalMorphismFromCoproductWithGivenCoproduct( T_1,[128X[104X
     [4X[28X        [ deduped_3_1, deduped_4_1 ],[128X[104X
-    [4X[28X        range_1,[128X[104X
+    [4X[28X        target_1,[128X[104X
     [4X[28X        [ UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,[128X[104X
     [4X[28X            deduped_2_1,[128X[104X
     [4X[28X            deduped_3_1,[128X[104X
@@ -487,13 +487,13 @@
     [4X[25X>[125X [27X          T,[127X[104X
     [4X[25X>[125X [27X          [ "category", "object", "object", "object", "object", "object" ],[127X[104X
     [4X[25X>[125X [27X          "morphism" );[127X[104X
-    [4X[28Xfunction( T_1, source_1, a_1, b_1, c_1, range_1 ) ... end[128X[104X
+    [4X[28Xfunction( T_1, source_1, a_1, b_1, c_1, target_1 ) ... end[128X[104X
     [4X[25Xgap>[125X [27XStopTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
     [4X[25Xgap>[125X [27X#DisplayTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_func( DC, axb_u_axc, a, b, c, a_x_buc ) = lfactor;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
-    [4X[28Xfunction ( T_1, source_1, a_1, b_1, c_1, range_1 )[128X[104X
+    [4X[28Xfunction ( T_1, source_1, a_1, b_1, c_1, target_1 )[128X[104X
     [4X[28X    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;[128X[104X
     [4X[28X    deduped_5_1 := [ a_1, c_1 ];[128X[104X
     [4X[28X    deduped_4_1 := [ a_1, b_1 ];[128X[104X
@@ -503,7 +503,7 @@
     [4X[28X    return[128X[104X
     [4X[28X      UniversalMorphismFromCoproductWithGivenCoproduct( T_1,[128X[104X
     [4X[28X        deduped_1_1,[128X[104X
-    [4X[28X        range_1,[128X[104X
+    [4X[28X        target_1,[128X[104X
     [4X[28X        [ PreCompose( T_1,[128X[104X
     [4X[28X            UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,[128X[104X
     [4X[28X                deduped_4_1,[128X[104X
@@ -519,7 +519,7 @@
     [4X[28X            InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,[128X[104X
     [4X[28X                deduped_1_1,[128X[104X
     [4X[28X                1,[128X[104X
-    [4X[28X                range_1 ) ),[128X[104X
+    [4X[28X                target_1 ) ),[128X[104X
     [4X[28X          PreCompose( T_1,[128X[104X
     [4X[28X              UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,[128X[104X
     [4X[28X                  deduped_5_1,[128X[104X
@@ -536,7 +536,7 @@
     [4X[28X              InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,[128X[104X
     [4X[28X                  deduped_1_1,[128X[104X
     [4X[28X                  2,[128X[104X
-    [4X[28X                  range_1 ) ) ],[128X[104X
+    [4X[28X                  target_1 ) ) ],[128X[104X
     [4X[28X        source_1 );[128X[104X
     [4X[28Xend[128X[104X
     [4X[28X#@fi[128X[104X
