@@ -57,9 +57,9 @@ InstallOtherMethod( QuotientCategory,
     
     leading_monomials := List( reduced_gb, g -> g[1] );
     
-    if HasFiniteNumberOfNonMultiples( C, leading_monomials ) then
+    if HasFiniteNumberOfMacaulayMorphisms( C, leading_monomials ) then
         
-        hom_quo_C := ExternalHoms( C, leading_monomials );
+        hom_quo_C := MacaulayMorphisms( C, leading_monomials );
         
         SetExternalHoms( quo_C,
               LazyHList( [ 1 .. NumberOfObjects( q ) ],
