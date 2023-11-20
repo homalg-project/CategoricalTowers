@@ -21,24 +21,6 @@ implemented_func := { T, A, AA } -> CartesianDiagonalWithGivenCartesianPower( T,
 
 delta_implemented := implemented_func( PC, a, aa );
 
-# TODO: the following two logic templates only hold up to congruence
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "cat", "obj" ],
-        src_template := "ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, ListWithIdenticalEntries( 1, obj ), 1, obj )",
-        dst_template := "IdentityMorphism( cat, obj )",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "cat", "obj", "beta" ],
-        src_template := "PreCompose( cat, IdentityMorphism( cat, obj ), beta )",
-        dst_template := "beta",
-    )
-);
-
 StartTimer( "CartesianDiagonalWithGivenCartesianSquare" );
 
 StopCompilationAtPrimitivelyInstalledOperationsOfCategory( PC );
@@ -120,7 +102,9 @@ Assert( 0, func( PC, a, aa ) = delta );
 StartTimer( "CartesianDiagonalWithGivenCartesianSquare" );
 
 StopCompilationAtPrimitivelyInstalledOperationsOfCategory( T );
-#StopCompilationAtCategory( T );
+
+ReadPackageOnce( "FiniteCocompletions",
+        "examples/precompileCartesianDiagonal_CompilerLogic.g" );
 
 compiled_func := CapJitCompiledFunction( func, T, [ "category", "object", "object" ], "morphism" );
 

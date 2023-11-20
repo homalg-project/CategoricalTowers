@@ -78,13 +78,14 @@ StopCompilationAtPrimitivelyInstalledOperationsOfCategory( DC );
 
 ReadPackageOnce( "FiniteCocompletions",
     "examples/precompileLeftCartesianDistributivityFactoring_CompilerLogic.g" );
+
 #! true
 compiled_implemented_func :=
   CapJitCompiledFunction( implemented_func,
           DC,
           [ "category", "object", "object", "object", "object", "object" ],
           "morphism" );
-#! function( T_1, source_1, a_1, b_1, c_1, range_1 ) ... end
+#! function( T_1, source_1, a_1, b_1, c_1, target_1 ) ... end
 
 StopTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );
 #DisplayTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );
@@ -94,7 +95,7 @@ compiled_implemented_func( DC, axb_u_axc, a, b, c, a_x_buc ) =
 #! true
 
 Display( compiled_implemented_func );
-#! function ( T_1, source_1, a_1, b_1, c_1, range_1 )
+#! function ( T_1, source_1, a_1, b_1, c_1, target_1 )
 #!     local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1,
 #!           deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
 #!     deduped_8_1 := [ b_1, c_1 ];
@@ -108,7 +109,7 @@ Display( compiled_implemented_func );
 #!     return
 #!       UniversalMorphismFromCoproductWithGivenCoproduct( T_1,
 #!         [ deduped_3_1, deduped_4_1 ],
-#!         range_1,
+#!         target_1,
 #!         [ UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,
 #!             deduped_2_1,
 #!             deduped_3_1,
@@ -211,7 +212,7 @@ compiled_func :=
           T,
           [ "category", "object", "object", "object", "object", "object" ],
           "morphism" );
-#! function( T_1, source_1, a_1, b_1, c_1, range_1 ) ... end
+#! function( T_1, source_1, a_1, b_1, c_1, target_1 ) ... end
 
 StopTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );
 #DisplayTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );
@@ -220,7 +221,7 @@ compiled_func( DC, axb_u_axc, a, b, c, a_x_buc ) = lfactor;
 #! true
 
 Display( compiled_func );
-#! function ( T_1, source_1, a_1, b_1, c_1, range_1 )
+#! function ( T_1, source_1, a_1, b_1, c_1, target_1 )
 #!     local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
 #!     deduped_5_1 := [ a_1, c_1 ];
 #!     deduped_4_1 := [ a_1, b_1 ];
@@ -230,7 +231,7 @@ Display( compiled_func );
 #!     return
 #!       UniversalMorphismFromCoproductWithGivenCoproduct( T_1,
 #!         deduped_1_1,
-#!         range_1,
+#!         target_1,
 #!         [ PreCompose( T_1,
 #!             UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,
 #!                 deduped_4_1,
@@ -246,7 +247,7 @@ Display( compiled_func );
 #!             InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,
 #!                 deduped_1_1,
 #!                 1,
-#!                 range_1 ) ),
+#!                 target_1 ) ),
 #!           PreCompose( T_1,
 #!               UniversalMorphismIntoDirectProductWithGivenDirectProduct( T_1,
 #!                   deduped_5_1,
@@ -263,7 +264,7 @@ Display( compiled_func );
 #!               InjectionOfCofactorOfCoproductWithGivenCoproduct( T_1,
 #!                   deduped_1_1,
 #!                   2,
-#!                   range_1 ) ) ],
+#!                   target_1 ) ) ],
 #!         source_1 );
 #! end
 
