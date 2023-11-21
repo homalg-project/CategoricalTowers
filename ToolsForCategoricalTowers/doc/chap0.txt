@@ -6,10 +6,10 @@
                          [1X Tools for CategoricalTowers [101X
   
   
-                                   2023.11-05
+                                   2023.11-06
   
   
-                                19 November 2023
+                                21 November 2023
   
   
                                 Mohamed Barakat
@@ -79,6 +79,7 @@
       2.9-4 InjectionOfCofactorOfColimitWithGivenColimit
       2.9-5 UniversalMorphismFromColimit
       2.9-6 UniversalMorphismFromColimitWithGivenColimit
+      2.9-7 PositionsOfSublist
     2.10 [33X[0;0YAdd-methods[133X
       2.10-1 AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory
       2.10-2 AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory

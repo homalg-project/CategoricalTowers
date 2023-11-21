@@ -838,6 +838,16 @@
   [33X[0;0YThe  output is the morphism [23Xu( \tau ): P = \mathrm{Colimit}(D) \rightarrow T[123X
   given by the universal property of the colimit.[133X
   
+  [1X2.9-7 PositionsOfSublist[101X
+  
+  [33X[1;0Y[29X[2XPositionsOfSublist[102X( [3Xsuperlist[103X, [3Xsublist[103X[, [3Xfrom[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of integers[133X
+  
+  [33X[0;0Yreturns  all  indices [23X1 \leq i \leq[123X [10XLength[110X([3Xsuperlist[103X) at which a sublist (of
+  [3Xsuperlist[103X)  equal to [3Xsublist[103X starts. If [3Xsublist[103X does not occur the output is
+  the  empty-list.  The  version  with  given  [3Xfrom[103X starts searching after the
+  position [3Xfrom[103X.[133X
+  
   
   [1X2.10 [33X[0;0YAdd-methods[133X[101X
   

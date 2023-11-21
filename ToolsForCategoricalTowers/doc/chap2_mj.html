@@ -91,6 +91,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7A98698C812AD966">2.9-4 InjectionOfCofactorOfColimitWithGivenColimit</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83EB1F678026F370">2.9-5 UniversalMorphismFromColimit</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7BF4ED2F7A33C7D4">2.9-6 UniversalMorphismFromColimitWithGivenColimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7EECADD181D183AD">2.9-7 PositionsOfSublist</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X85C8C80F785AEB5E">2.10 <span class="Heading">Add-methods</span></a>
 </span>
@@ -1087,6 +1088,15 @@ true
 </li>
 </ul>
 <p>The output is the morphism <span class="SimpleMath">\(u( \tau ): P = \mathrm{Colimit}(D) \rightarrow T\)</span> given by the universal property of the colimit.</p>
+
+<p><a id="X7EECADD181D183AD" name="X7EECADD181D183AD"></a></p>
+
+<h5>2.9-7 PositionsOfSublist</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PositionsOfSublist</code>( <var class="Arg">superlist</var>, <var class="Arg">sublist</var>[, <var class="Arg">from</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list of integers</p>
+
+<p>returns all indices <span class="SimpleMath">\(1 \leq i \leq\)</span> <code class="code">Length</code>(<var class="Arg">superlist</var>) at which a sublist (of <var class="Arg">superlist</var>) equal to <var class="Arg">sublist</var> starts. If <var class="Arg">sublist</var> does not occur the output is the empty-list. The version with given <var class="Arg">from</var> starts searching after the position <var class="Arg">from</var>.</p>
 
 <p><a id="X85C8C80F785AEB5E" name="X85C8C80F785AEB5E"></a></p>
 
