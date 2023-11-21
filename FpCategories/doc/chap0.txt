@@ -6,7 +6,7 @@
       [1X Finitely presented categories by generating quivers and relations [101X
   
   
-                                   2023.11-30
+                                   2023.11-31
   
   
                                 21 November 2023
@@ -113,9 +113,11 @@
       2.5-7 ObjectIndex
       2.5-8 CanonicalRepresentative
   3 [33X[0;0YTools[133X
-    3.1 [33X[0;0YOperations[133X
-      3.1-1 DefiningTripleOfUnderlyingQuiver
-      3.1-2 DataTablesOfCategory
+    3.1 [33X[0;0YProperties[133X
+      3.1-1 IsFinitelyPresentedCategory
+    3.2 [33X[0;0YOperations[133X
+      3.2-1 DefiningTripleOfUnderlyingQuiver
+      3.2-2 DataTablesOfCategory
   
   
   [32X
