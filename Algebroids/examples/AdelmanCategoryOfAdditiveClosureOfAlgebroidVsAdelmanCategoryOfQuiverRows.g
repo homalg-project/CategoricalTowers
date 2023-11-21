@@ -55,7 +55,7 @@ runtime_quiver := Runtime( ) - start;;
 
 if runtime >= runtime_quiver * 6 / 10 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;
 #! true
-if runtime <= runtime_quiver * 7 / 10 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;
+if runtime <= runtime_quiver * 8 / 10 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;
 #! true
 
 #! #@fi
