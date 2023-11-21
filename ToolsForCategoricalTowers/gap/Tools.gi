@@ -862,3 +862,35 @@ InstallMethod( ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperatio
                    ListInstalledOperationsOfCategory( C ) );
     
 end );
+
+##
+InstallGlobalFunction( PositionsOfSublist,
+  
+  function ( arg )
+    local suplist, sublist, pos, len, positions;
+    
+    suplist := arg[1];
+    sublist := arg[2];
+    
+    if Length( arg ) = 3 then
+        pos := arg[3];
+    else
+        pos := 0;
+    fi;
+    
+    len := Length( suplist );
+    positions := [];
+    
+    repeat
+      
+      pos := PositionSublist( suplist, sublist, pos );
+      
+      if pos <> fail and pos <= len then
+            Add( positions, pos );
+      fi;
+      
+    until pos = fail or pos >= len;
+    
+    return positions;
+    
+end );

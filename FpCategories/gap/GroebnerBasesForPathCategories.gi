@@ -108,7 +108,7 @@ InstallMethod( OverlappingCoefficients,
     if l_f >= l_g then
       
       inner_overlaps :=
-            List( PositionsSublist( i_f, i_g ),
+            List( PositionsOfSublist( i_f, i_g ),
               i -> Pair(
                     Pair(
                       IdentityMorphism( C, Source( f ) ),
@@ -122,7 +122,7 @@ InstallMethod( OverlappingCoefficients,
     else
       
       inner_overlaps :=
-            List( PositionsSublist( i_g, i_f ),
+            List( PositionsOfSublist( i_g, i_f ),
               i -> Pair(
                     Pair(
                       MorphismConstructor( C, Source( g ), Pair( i - 1, i_g{[ 1 .. i - 1 ]} ), Source( f ) ),

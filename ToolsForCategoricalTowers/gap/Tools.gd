@@ -608,3 +608,10 @@ DeclareAttribute( "YonedaEmbeddingData",
 ##
 DeclareAttribute( "CoYonedaEmbeddingData",
         IsCapCategory );
+
+#! @Description
+#!  returns all indices $1 \leq i \leq$ <C>Length</C>(<A>superlist</A>) at which a sublist (of <A>superlist</A>) equal to <A>sublist</A> starts.
+#!  If <A>sublist</A> does not occur the output is the empty-list. The version with given <A>from</A> starts searching after the position <A>from</A>.
+#! @Arguments superlist, sublist [, from]
+#! @Returns a list of integers
+DeclareGlobalFunction( "PositionsOfSublist" );
