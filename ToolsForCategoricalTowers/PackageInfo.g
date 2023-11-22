@@ -10,10 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "ToolsForCategoricalTowers",
 Subtitle := "Tools for CategoricalTowers",
-Version := "2023.11-06",
+Version := "2023.11-07",
 
-Date := "2023-11-21",
-Date := "2023-11-21",
+Date := "2023-11-22",
+Date := "2023-11-22",
 License := "GPL-2.0-or-later",
 
 Persons := [

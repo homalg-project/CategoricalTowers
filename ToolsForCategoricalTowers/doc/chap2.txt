@@ -28,7 +28,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2023.11-02", fail );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2023.10-03", fail );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2023.11-01", fail );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalCategoryOfFiniteSets( );[127X[104X
     [4X[28XSkeletalFinSets[128X[104X
@@ -37,6 +37,8 @@
     [4X[28X[128X[104X
     [4X[28X58 primitive operations were used to derive 325 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
+    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
@@ -67,6 +69,8 @@
     [4X[28X[128X[104X
     [4X[28X308 primitive operations were used to derive 318 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
+    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
@@ -95,6 +99,8 @@
     [4X[28X[128X[104X
     [4X[28X248 primitive operations were used to derive 266 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
+    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsFiniteCocompleteCategory[128X[104X
     [4X[28X* IsFiniteCompleteCategory[128X[104X
@@ -167,7 +173,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2023.11-02", fail );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2023.10-03", fail );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2023.11-01", fail );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalCategoryOfFiniteSets( );[127X[104X
     [4X[28XSkeletalFinSets[128X[104X
@@ -176,6 +182,8 @@
     [4X[28X[128X[104X
     [4X[28X58 primitive operations were used to derive 325 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
+    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
@@ -206,6 +214,8 @@
     [4X[28X[128X[104X
     [4X[28X308 primitive operations were used to derive 318 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
+    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
@@ -234,6 +244,8 @@
     [4X[28X[128X[104X
     [4X[28X248 primitive operations were used to derive 266 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
+    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsFiniteCocompleteCategory[128X[104X
     [4X[28X* IsFiniteCompleteCategory[128X[104X
