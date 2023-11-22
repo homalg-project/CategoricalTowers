@@ -40,13 +40,14 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Toposes", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP", "&gt;= 2021.12-09", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP", "&gt;= 2023.11-01", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">op := Opposite( SkeletalFinSets );</span>
 Opposite( SkeletalFinSets )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ListKnownCategoricalProperties( op ) );</span>
 [ "IsBicartesianCategory", "IsBicartesianCoclosedCategory",\
- "IsCartesianCategory", "IsCocartesianCategory",\
+ "IsCartesianCategory", "IsCategoryWithDecidableColifts",\
+ "IsCategoryWithDecidableLifts", "IsCocartesianCategory",\
  "IsCocartesianCoclosedCategory", "IsCodistributiveCategory",\
  "IsEquippedWithHomomorphismStructure", "IsFiniteCocompleteCategory",\
  "IsFiniteCompleteCategory", "IsSkeletalCategory" ]
