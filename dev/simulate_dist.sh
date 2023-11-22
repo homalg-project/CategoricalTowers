@@ -16,13 +16,6 @@ GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/Categor
 #git subtree split --prefix=CategoriesWithAmbientObjects -b CategoriesWithAmbientObjects-split
 echo ""
 
-# ToolsForCategoricalTowers
-echo "Simulate release of ToolsForCategoricalTowers"
-GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/ToolsForCategoricalTowers" --webdir "$PWD/gh-pages/ToolsForCategoricalTowers" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
-# creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
-#git subtree split --prefix=ToolsForCategoricalTowers -b ToolsForCategoricalTowers-split
-echo ""
-
 # CatReps
 echo "Simulate release of CatReps"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/CatReps" --webdir "$PWD/gh-pages/CatReps" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
@@ -126,6 +119,13 @@ echo "Simulate release of SubcategoriesForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/SubcategoriesForCAP" --webdir "$PWD/gh-pages/SubcategoriesForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=SubcategoriesForCAP -b SubcategoriesForCAP-split
+echo ""
+
+# ToolsForCategoricalTowers
+echo "Simulate release of ToolsForCategoricalTowers"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/ToolsForCategoricalTowers" --webdir "$PWD/gh-pages/ToolsForCategoricalTowers" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
+# creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
+#git subtree split --prefix=ToolsForCategoricalTowers -b ToolsForCategoricalTowers-split
 echo ""
 
 # Toposes

@@ -31,10 +31,6 @@ while ! ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F ToolsForCategoricalTowers; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
 while ! ./codecov -Z -v -s ../ -F CatReps; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
@@ -92,6 +88,10 @@ while ! ./codecov -Z -v -s ../ -F QuotientCategories; do
     sleep 60
 done
 while ! ./codecov -Z -v -s ../ -F SubcategoriesForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F ToolsForCategoricalTowers; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
