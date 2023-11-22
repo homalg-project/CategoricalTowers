@@ -5,7 +5,7 @@ LoadPackage( "ToolsForCategoricalTowers" );
 #! true
 LoadPackage( "Toposes", ">= 2023.11-02", fail );
 #! true
-LoadPackage( "FinSetsForCAP", ">= 2023.10-03", fail );
+LoadPackage( "FinSetsForCAP", ">= 2023.11-01", fail );
 #! true
 sFinSets := SkeletalCategoryOfFiniteSets( );
 #! SkeletalFinSets
@@ -14,6 +14,8 @@ Display( sFinSets );
 #! 
 #! 58 primitive operations were used to derive 325 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsElementaryTopos
 #! and furthermore mathematically
@@ -44,6 +46,8 @@ Display( W );
 #! 
 #! 308 primitive operations were used to derive 318 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsElementaryTopos
 #! and furthermore mathematically
@@ -72,6 +76,8 @@ Display( O );
 #! 
 #! 248 primitive operations were used to derive 266 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsFiniteCocompleteCategory
 #! * IsFiniteCompleteCategory
