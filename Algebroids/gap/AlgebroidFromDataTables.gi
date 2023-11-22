@@ -9,40 +9,59 @@ InstallMethod( DataTablesOfCategory,
           [ IsAlgebroid ],
   
   function ( B )
+    local all_objs, support_objs, objs, all_gmors, support_gmors, gmors;
+    
+    all_objs := SetOfObjects( B );
+    support_objs := PositionsProperty( all_objs, o -> not IsZero( o ) );
+    objs := all_objs{support_objs};
+    
+    all_gmors := SetOfGeneratingMorphisms( B );
+    support_gmors := PositionsProperty( all_gmors, m -> not IsZero( m ) );
+    gmors := all_gmors{support_gmors};
     
     return
       NTuple( 5,
+        
         CommutativeRingOfLinearCategory( B ),
         
-        String( UnderlyingQuiver( B ) ),
+        FinQuiver(
+            NTuple( 3,
+              "q",
+              NTuple( 3,
+                Length( support_objs ),
+                List( objs, o -> Label( o ) ),
+                List( objs, o -> LaTeXOutput( o ) ) ),
+              NTuple( 5,
+                Length( support_gmors ),
+                List( gmors, m -> SafePosition( objs, Source( m ) ) ),
+                List( gmors, m -> SafePosition( objs, Target( m ) ) ),
+                List( gmors, m -> Label( m ) ),
+                List( gmors, m -> LabelAsLaTeXString( First( Paths( Representative( UnderlyingQuiverAlgebraElement( m ) ) ) ) ) ) ) ) ),
         
-        List( SetOfObjects( B ),
-              s -> List( SetOfObjects( B ),
-                t -> List( BasisOfExternalHom( B, s, t ),
-                  m -> Concatenation( List( DecompositionOfMorphismInAlgebroid( m ),
-                    function ( dec )
-                      if Length( dec[2] ) = 1 and IsEqualToIdentityMorphism( dec[2][1] ) then
-                          return [ ];
-                      else
-                          return List( dec[2], gmor -> Position( SetOfGeneratingMorphisms( B ), gmor ) );
-                      fi;
-                    end  ) ) ) ) ),
+        List( objs, s -> List( objs, t -> List( BasisOfExternalHom( B, s, t ), m ->
+          Concatenation( List( DecompositionOfMorphismInAlgebroid( m ),
+            function ( dec )
+              if Length( dec[2] ) = 1 and IsEqualToIdentityMorphism( dec[2][1] ) then
+                  return [ ];
+              else
+                  return List( dec[2], gmor -> Position( gmors, gmor ) );
+              fi;
+            end  ) ) ) ) ),
         
-        List( SetOfObjects( B ),
-            o -> List( SetOfGeneratingMorphisms( B ),
-                  m -> EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( B, IdentityMorphism( B, o ), m ) ) ) ) ),
+        List( objs, o -> List( gmors, m ->
+          EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( B, IdentityMorphism( B, o ), m ) ) ) ) ),
         
-        List( SetOfObjects( B ),
-            o -> List( SetOfGeneratingMorphisms( B ),
-                  m -> EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( B, m, IdentityMorphism( B, o ) ) ) ) ) ) );
+        List( objs, o -> List( gmors, m ->
+          EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( B, m, IdentityMorphism( B, o ) ) ) ) ) ) );
         
 end );
 
+##
 InstallMethod( DataTablesOfCategory,
           [ IsQuotientCapCategory ],
   
   function ( qA )
-    local A, q, objs, support_objs, gmors, support_gmors, new_q;
+    local A, all_objs, support_objs, objs, all_gmors, support_gmors, gmors, q;
     
     if not HasRangeCategoryOfHomomorphismStructure( qA ) then
         Error( "the quotient category passed to 'DataTablesOfCategory' must be hom-finite!" );
@@ -54,43 +73,35 @@ InstallMethod( DataTablesOfCategory,
     
     A := UnderlyingCategory( qA );
     
-    q := UnderlyingQuiver( A );
-    
     if not IsAlgebroidFromDataTables( A ) then
         TryNextMethod( );
     fi;
     
-    objs := List( SetOfObjects( A ),
-                o -> ObjectConstructor( qA, o ) );
+    all_objs := List( SetOfObjects( A ), o -> ObjectConstructor( qA, o ) );
+    support_objs := PositionsProperty( all_objs, o -> not IsZero( o ) );
+    objs := all_objs{support_objs};
     
-    support_objs := PositionsProperty( objs, o -> not IsZero( o ) );
-    objs := objs{support_objs};
+    all_gmors := List( SetOfGeneratingMorphisms( A ), m -> MorphismConstructor( qA, ObjectConstructor( qA, Source( m ) ), m, ObjectConstructor( qA, Target( m ) ) ) );
+    support_gmors := PositionsProperty( all_gmors, m -> not IsZero( m ) );
+    gmors := all_gmors{support_gmors};
     
-    gmors := List( SetOfGeneratingMorphisms( A ),
-                m -> MorphismConstructor( qA, ObjectConstructor( qA, Source( m ) ), m, ObjectConstructor( qA, Target( m ) ) ) );
+    q := UnderlyingQuiver( A );
     
-    support_gmors := PositionsProperty( gmors, m -> not IsZero( m ) );
-    gmors := gmors{support_gmors};
-    
-    if Length( support_objs ) <> NumberOfObjects( q ) or Length( support_gmors ) <> NumberOfMorphisms( q ) then
+    if Length( objs ) <> Length( all_objs ) or Length( gmors ) <> Length( all_gmors ) then
       
-      new_q := FinQuiver(
-                  NTuple( 3,
-                    "q",
-                    NTuple( 3,
-                      Length( support_objs ),
-                      LabelsOfObjects( q ){support_objs},
-                      LaTeXStringsOfObjects( q ){support_objs} ),
-                    NTuple( 5,
-                      Length( support_gmors ),
-                      List( IndicesOfSources( q ){support_gmors}, s -> SafePosition( support_objs, s ) ),
-                      List( IndicesOfTargets( q ){support_gmors}, t -> SafePosition( support_objs, t ) ),
-                      LabelsOfMorphisms( q ){support_gmors},
-                      LaTeXStringsOfMorphisms( q ){support_gmors} ) ) );
-      
-    else
-      
-      new_q := q;
+      q := FinQuiver(
+              NTuple( 3,
+                "q",
+                NTuple( 3,
+                  Length( support_objs ),
+                  LabelsOfObjects( q ){support_objs},
+                  LaTeXStringsOfObjects( q ){support_objs} ),
+                NTuple( 5,
+                  Length( support_gmors ),
+                  List( IndicesOfSources( q ){support_gmors}, s -> SafePosition( support_objs, s ) ),
+                  List( IndicesOfTargets( q ){support_gmors}, t -> SafePosition( support_objs, t ) ),
+                  LabelsOfMorphisms( q ){support_gmors},
+                  LaTeXStringsOfMorphisms( q ){support_gmors} ) ) );
       
     fi;
     
@@ -99,19 +110,16 @@ InstallMethod( DataTablesOfCategory,
         
         CommutativeRingOfLinearCategory( A ),
         
-        new_q,
+        q,
         
-        List( objs, s -> List( objs,
-          t -> List( BasisOfExternalHom( qA, s, t ),
-            m -> List( DecompositionIndicesOfMorphismInAlgebroid( MorphismDatum( m ) )[1][2], index -> SafePosition( support_gmors, index ) ) ) ) ),
-        
-        List( objs,
-            o -> List( gmors,
-              gm -> EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( qA, IdentityMorphism( qA, o ), gm ) ) ) ) ),
-        
-        List( objs,
-            o -> List( gmors,
-              gm -> EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( qA, gm, IdentityMorphism( qA, o ) ) ) ) ) ) );
+        List( objs, s -> List( objs, t -> List( BasisOfExternalHom( qA, s, t ), m ->
+          List( DecompositionIndicesOfMorphismInAlgebroid( MorphismDatum( m ) )[1][2], index -> SafePosition( support_gmors, index ) ) ) ) ),
+          
+        List( objs, o -> List( gmors, gm ->
+          EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( qA, IdentityMorphism( qA, o ), gm ) ) ) ) ),
+          
+        List( objs, o -> List( gmors, gm ->
+          EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( qA, gm, IdentityMorphism( qA, o ) ) ) ) ) ) );
     
 end );
 
