@@ -4,16 +4,13 @@ ci-test: doc ci-test_all_packages
 
 # BEGIN PACKAGE JANITOR
 ################################
-doc: doc_Algebroids doc_CategoriesWithAmbientObjects doc_ToolsForCategoricalTowers doc_CatReps doc_ExteriorPowersCategories doc_FiniteCocompletions doc_FpCategories doc_FunctorCategories doc_GradedCategories doc_InternalModules doc_IntrinsicCategories doc_IntrinsicGradedModules doc_IntrinsicModules doc_LazyCategories doc_Locales doc_PreSheaves doc_QuotientCategories doc_SubcategoriesForCAP doc_Toposes doc_ZariskiFrames
+doc: doc_Algebroids doc_CategoriesWithAmbientObjects doc_CatReps doc_ExteriorPowersCategories doc_FiniteCocompletions doc_FpCategories doc_FunctorCategories doc_GradedCategories doc_InternalModules doc_IntrinsicCategories doc_IntrinsicGradedModules doc_IntrinsicModules doc_LazyCategories doc_Locales doc_PreSheaves doc_QuotientCategories doc_SubcategoriesForCAP doc_ToolsForCategoricalTowers doc_Toposes doc_ZariskiFrames
 
 doc_Algebroids:
 	$(MAKE) -C Algebroids doc
 
 doc_CategoriesWithAmbientObjects:
 	$(MAKE) -C CategoriesWithAmbientObjects doc
-
-doc_ToolsForCategoricalTowers:
-	$(MAKE) -C ToolsForCategoricalTowers doc
 
 doc_CatReps:
 	$(MAKE) -C CatReps doc
@@ -60,6 +57,9 @@ doc_QuotientCategories:
 doc_SubcategoriesForCAP:
 	$(MAKE) -C SubcategoriesForCAP doc
 
+doc_ToolsForCategoricalTowers:
+	$(MAKE) -C ToolsForCategoricalTowers doc
+
 doc_Toposes:
 	$(MAKE) -C Toposes doc
 
@@ -67,16 +67,13 @@ doc_ZariskiFrames:
 	$(MAKE) -C ZariskiFrames doc
 
 ################################
-test: doc test_Algebroids test_CategoriesWithAmbientObjects test_ToolsForCategoricalTowers test_CatReps test_ExteriorPowersCategories test_FiniteCocompletions test_FpCategories test_FunctorCategories test_GradedCategories test_InternalModules test_IntrinsicCategories test_IntrinsicGradedModules test_IntrinsicModules test_LazyCategories test_Locales test_PreSheaves test_QuotientCategories test_SubcategoriesForCAP test_Toposes test_ZariskiFrames
+test: doc test_Algebroids test_CategoriesWithAmbientObjects test_CatReps test_ExteriorPowersCategories test_FiniteCocompletions test_FpCategories test_FunctorCategories test_GradedCategories test_InternalModules test_IntrinsicCategories test_IntrinsicGradedModules test_IntrinsicModules test_LazyCategories test_Locales test_PreSheaves test_QuotientCategories test_SubcategoriesForCAP test_ToolsForCategoricalTowers test_Toposes test_ZariskiFrames
 
 test_Algebroids:
 	$(MAKE) -C Algebroids test
 
 test_CategoriesWithAmbientObjects:
 	$(MAKE) -C CategoriesWithAmbientObjects test
-
-test_ToolsForCategoricalTowers:
-	$(MAKE) -C ToolsForCategoricalTowers test
 
 test_CatReps:
 	$(MAKE) -C CatReps test
@@ -123,6 +120,9 @@ test_QuotientCategories:
 test_SubcategoriesForCAP:
 	$(MAKE) -C SubcategoriesForCAP test
 
+test_ToolsForCategoricalTowers:
+	$(MAKE) -C ToolsForCategoricalTowers test
+
 test_Toposes:
 	$(MAKE) -C Toposes test
 
@@ -130,16 +130,13 @@ test_ZariskiFrames:
 	$(MAKE) -C ZariskiFrames test
 
 ################################
-ci-test_all_packages: ci-test_Algebroids ci-test_CategoriesWithAmbientObjects ci-test_ToolsForCategoricalTowers ci-test_CatReps ci-test_ExteriorPowersCategories ci-test_FiniteCocompletions ci-test_FpCategories ci-test_FunctorCategories ci-test_GradedCategories ci-test_InternalModules ci-test_IntrinsicCategories ci-test_IntrinsicGradedModules ci-test_IntrinsicModules ci-test_LazyCategories ci-test_Locales ci-test_PreSheaves ci-test_QuotientCategories ci-test_SubcategoriesForCAP ci-test_Toposes ci-test_ZariskiFrames
+ci-test_all_packages: ci-test_Algebroids ci-test_CategoriesWithAmbientObjects ci-test_CatReps ci-test_ExteriorPowersCategories ci-test_FiniteCocompletions ci-test_FpCategories ci-test_FunctorCategories ci-test_GradedCategories ci-test_InternalModules ci-test_IntrinsicCategories ci-test_IntrinsicGradedModules ci-test_IntrinsicModules ci-test_LazyCategories ci-test_Locales ci-test_PreSheaves ci-test_QuotientCategories ci-test_SubcategoriesForCAP ci-test_ToolsForCategoricalTowers ci-test_Toposes ci-test_ZariskiFrames
 
 ci-test_Algebroids:
 	$(MAKE) -C Algebroids ci-test
 
 ci-test_CategoriesWithAmbientObjects:
 	$(MAKE) -C CategoriesWithAmbientObjects ci-test
-
-ci-test_ToolsForCategoricalTowers:
-	$(MAKE) -C ToolsForCategoricalTowers ci-test
 
 ci-test_CatReps:
 	$(MAKE) -C CatReps ci-test
@@ -185,6 +182,9 @@ ci-test_QuotientCategories:
 
 ci-test_SubcategoriesForCAP:
 	$(MAKE) -C SubcategoriesForCAP ci-test
+
+ci-test_ToolsForCategoricalTowers:
+	$(MAKE) -C ToolsForCategoricalTowers ci-test
 
 ci-test_Toposes:
 	$(MAKE) -C Toposes ci-test

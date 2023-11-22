@@ -16,13 +16,6 @@ git subtree split --prefix=CategoriesWithAmbientObjects -b CategoriesWithAmbient
 git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/CategoriesWithAmbientObjects CategoriesWithAmbientObjects-split:master
 echo ""
 
-# ToolsForCategoricalTowers
-echo "Release ToolsForCategoricalTowers"
-GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/ToolsForCategoricalTowers" --webdir "$PWD/gh-pages/ToolsForCategoricalTowers" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
-git subtree split --prefix=ToolsForCategoricalTowers -b ToolsForCategoricalTowers-split
-git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/ToolsForCategoricalTowers ToolsForCategoricalTowers-split:master
-echo ""
-
 # CatReps
 echo "Release CatReps"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/CatReps" --webdir "$PWD/gh-pages/CatReps" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
@@ -126,6 +119,13 @@ echo "Release SubcategoriesForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/SubcategoriesForCAP" --webdir "$PWD/gh-pages/SubcategoriesForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
 git subtree split --prefix=SubcategoriesForCAP -b SubcategoriesForCAP-split
 git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/SubcategoriesForCAP SubcategoriesForCAP-split:master
+echo ""
+
+# ToolsForCategoricalTowers
+echo "Release ToolsForCategoricalTowers"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/ToolsForCategoricalTowers" --webdir "$PWD/gh-pages/ToolsForCategoricalTowers" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
+git subtree split --prefix=ToolsForCategoricalTowers -b ToolsForCategoricalTowers-split
+git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/ToolsForCategoricalTowers ToolsForCategoricalTowers-split:master
 echo ""
 
 # Toposes

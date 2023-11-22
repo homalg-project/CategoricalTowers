@@ -6,13 +6,14 @@
 
 LoadPackage( "Toposes", false );
 #! true
-LoadPackage( "FinSetsForCAP", ">= 2021.12-09", false );
+LoadPackage( "FinSetsForCAP", ">= 2023.11-01", false );
 #! true
 op := Opposite( SkeletalFinSets );
 #! Opposite( SkeletalFinSets )
 Display( ListKnownCategoricalProperties( op ) );
 #! [ "IsBicartesianCategory", "IsBicartesianCoclosedCategory",\
-#!  "IsCartesianCategory", "IsCocartesianCategory",\
+#!  "IsCartesianCategory", "IsCategoryWithDecidableColifts",\
+#!  "IsCategoryWithDecidableLifts", "IsCocartesianCategory",\
 #!  "IsCocartesianCoclosedCategory", "IsCodistributiveCategory",\
 #!  "IsEquippedWithHomomorphismStructure", "IsFiniteCocompleteCategory",\
 #!  "IsFiniteCompleteCategory", "IsSkeletalCategory" ]

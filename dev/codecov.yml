@@ -10,9 +10,6 @@ flags:
   CategoriesWithAmbientObjects:
     paths:
       - "CategoriesWithAmbientObjects/"
-  ToolsForCategoricalTowers:
-    paths:
-      - "ToolsForCategoricalTowers/"
   CatReps:
     paths:
       - "CatReps/"
@@ -58,6 +55,9 @@ flags:
   SubcategoriesForCAP:
     paths:
       - "SubcategoriesForCAP/"
+  ToolsForCategoricalTowers:
+    paths:
+      - "ToolsForCategoricalTowers/"
   Toposes:
     paths:
       - "Toposes/"
