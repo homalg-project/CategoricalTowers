@@ -794,6 +794,16 @@ InstallOtherMethod( \[\],
 end );
 
 ##
+InstallOtherMethod( \^,
+          [ IsAlgebroidFromDataTables, IsInt ],
+  
+  function ( A, index )
+    
+    return SetOfGeneratingMorphisms( A )[index];
+    
+end );
+
+##
 InstallOtherMethod( MorphismConstructor,
           [ IsAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables, IsDenseList, IsDenseList, IsObjectInAlgebroidFromDataTables ],
   
