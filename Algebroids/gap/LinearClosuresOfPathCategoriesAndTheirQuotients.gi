@@ -131,6 +131,10 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
     
     Finalize( kC );
     
+    if HasRangeCategoryOfHomomorphismStructure( kC ) then
+        Finalize( RangeCategoryOfHomomorphismStructure( kC ) );
+    fi;
+    
     return kC;
     
 end );
