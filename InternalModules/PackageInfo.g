@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "InternalModules",
 Subtitle := "Modules over internal algebras",
-Version := "2023.11-03",
+Version := "2023.11-04",
 
-Date := "2023-11-19",
+Date := "2023-11-23",
 License := "GPL-2.0-or-later",
 
 
