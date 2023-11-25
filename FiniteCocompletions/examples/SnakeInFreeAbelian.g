@@ -161,5 +161,158 @@ Id( s );
 #!  / relations )>
 IsWellDefined( Id( s ) );
 #! true
+Display( s );
+#! 
+#! --------------------------------
+#! Source:
+#! --------------------------------
+#! 
+#! 
+#! --------------------------------
+#! Source:
+#! --------------------------------
+#! 
+#! A 2 x 2 matrix with entries in Algebroid( Q, FreeCategory(
+#! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations
+#! 
+#! [1,1]: (2)-[{ 1*(b*c) }]->(4)
+#! [1,2]: (2)-[{ 1*(2) }]->(2)
+#! [2,1]: (1)-[{ 0 }]->(4)
+#! [2,2]: (1)-[{ -1*(a) }]->(2)
+#! 
+#! 
+#! --------------------------------
+#! Morphism datum:
+#! --------------------------------
+#! 
+#! A 2 x 1 matrix with entries in Algebroid( Q, FreeCategory(
+#! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations
+#! 
+#! [1,1]: (2)-[{ 1*(2) }]->(2)
+#! [2,1]: (1)-[{ 0 }]->(2)
+#! 
+#! 
+#! --------------------------------
+#! Range:
+#! --------------------------------
+#! 
+#! A 1 x 1 matrix with entries in Algebroid( Q, FreeCategory(
+#! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations
+#! 
+#! [1,1]: (2)-[{ 1*(b*c) }]->(4)
+#! 
+#! 
+#! --------------------------------
+#! General description:
+#! --------------------------------
+#! 
+#! A morphism in CoFreyd( AdditiveClosure( Algebroid( Q, FreeCategory(
+#! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) )
+#! 
+#! 
+#! 
+#! --------------------------------
+#! Morphism datum:
+#! --------------------------------
+#! 
+#! 
+#! --------------------------------
+#! Source:
+#! --------------------------------
+#! 
+#! A 1 x 1 matrix with entries in Algebroid( Q, FreeCategory(
+#! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations
+#! 
+#! [1,1]: (2)-[{ 1*(b*c) }]->(4)
+#! 
+#! 
+#! --------------------------------
+#! Morphism datum:
+#! --------------------------------
+#! 
+#! A 1 x 1 matrix with entries in Algebroid( Q, FreeCategory(
+#! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations
+#! 
+#! [1,1]: (2)-[{ 1*(b) }]->(3)
+#! 
+#! 
+#! --------------------------------
+#! Range:
+#! --------------------------------
+#! 
+#! A 1 x 1 matrix with entries in Algebroid( Q, FreeCategory(
+#! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations
+#! 
+#! [1,1]: (3)-[{ 1*(c) }]->(4)
+#! 
+#! 
+#! --------------------------------
+#! General description:
+#! --------------------------------
+#! 
+#! A morphism in CoFreyd( AdditiveClosure( Algebroid( Q, FreeCategory(
+#! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) )
+#! 
+#! 
+#! 
+#! --------------------------------
+#! Range:
+#! --------------------------------
+#! 
+#! 
+#! --------------------------------
+#! Source:
+#! --------------------------------
+#! 
+#! A 2 x 2 matrix with entries in Algebroid( Q, FreeCategory(
+#! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations
+#! 
+#! [1,1]: (3)-[{ 1*(c) }]->(4)
+#! [1,2]: (3)-[{ 1*(3) }]->(3)
+#! [2,1]: (1)-[{ 0 }]->(4)
+#! [2,2]: (1)-[{ 0 }]->(3)
+#! 
+#! 
+#! --------------------------------
+#! Morphism datum:
+#! --------------------------------
+#! 
+#! A 2 x 1 matrix with entries in Algebroid( Q, FreeCategory(
+#! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations
+#! 
+#! [1,1]: (3)-[{ 1*(3) }]->(3)
+#! [2,1]: (1)-[{ 1*(a*b) }]->(3)
+#! 
+#! 
+#! --------------------------------
+#! Range:
+#! --------------------------------
+#! 
+#! A 1 x 1 matrix with entries in Algebroid( Q, FreeCategory(
+#! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations
+#! 
+#! [1,1]: (3)-[{ 1*(c) }]->(4)
+#! 
+#! 
+#! --------------------------------
+#! General description:
+#! --------------------------------
+#! 
+#! A morphism in CoFreyd( AdditiveClosure( Algebroid( Q, FreeCategory(
+#! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) )
+#! 
+#! 
+#! 
+#! --------------------------------
+#! General description:
+#! --------------------------------
+#! 
+#! A morphism in Freyd( CoFreyd( AdditiveClosure( Algebroid( Q, FreeCategory(
+#! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) )
+#! 
+#! A morphism in
+#! AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure(
+#! Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )
+#! / relations ) given by the above data
 #! #@fi
 #! @EndExample

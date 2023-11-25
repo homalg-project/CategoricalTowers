@@ -192,3 +192,34 @@ InstallMethod( ExtendFunctorToAbelianClosureWithStrictDirectSums,
     return DF;
     
 end );
+
+##################################
+##
+## View & Display
+##
+##################################
+
+##
+InstallMethod( Display,
+        [ IsObjectInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure ],
+        
+  function ( a )
+    
+    Display( ObjectDatum( a ) );
+    
+    Print( "An object in ", Name( CapCategory( a ) ), " given by the above data\n" );
+    
+end );
+
+##
+InstallMethod( Display,
+        [ IsMorphismInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure ],
+        
+  function ( phi )
+    local sFinSets;
+    
+    Display( MorphismDatum( phi ) );
+    
+    Print( "A morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
+    
+end );
