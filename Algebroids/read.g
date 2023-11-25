@@ -31,6 +31,8 @@ ReadPackage( "Algebroids", "gap/CategoryOfAlgebroids.gi");
 ReadPackage( "Algebroids", "gap/Bialgebroids.gi");
 ReadPackage( "Algebroids", "gap/SimplicialCategory.gi");
 ReadPackage( "Algebroids", "gap/Tools.gi");
+ReadPackage( "Algebroids", "gap/GroebnerBasesForLinearClosuresOfPathCategories.gi" );
+ReadPackage( "Algebroids", "gap/QuotientsOfLinearClosuresOfPathCategories.gi" );
 
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "Algebroids", "gap/Julia.gi" );
