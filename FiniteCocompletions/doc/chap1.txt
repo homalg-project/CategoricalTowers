@@ -57,8 +57,6 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= ", false );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XT := FiniteStrictCoproductCompletion( InitialCategory( ) );[127X[104X
     [4X[28XFiniteStrictCoproductCompletion( InitialCategory( ) )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
