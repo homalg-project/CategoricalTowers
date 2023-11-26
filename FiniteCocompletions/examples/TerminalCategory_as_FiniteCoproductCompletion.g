@@ -3,8 +3,6 @@
 #! @Example
 LoadPackage( "FiniteCocompletions" );
 #! true
-LoadPackage( "Toposes", ">= ", false );
-#! true
 T := FiniteStrictCoproductCompletion( InitialCategory( ) );
 #! FiniteStrictCoproductCompletion( InitialCategory( ) )
 Display( T );
