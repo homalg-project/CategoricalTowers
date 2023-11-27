@@ -2319,12 +2319,12 @@ InstallMethod( CategoryOfInternalCategories,
         "for a CAP category",
         [ IsCapCategory ],
         
-  function ( C )
-    local Delta2, sC, membership_function;
+  function ( H )
+    local Delta2, sH, membership_function;
     
     Delta2 := SimplicialCategoryTruncatedInDegree( 2 : FinalizeCategory := true );
     
-    sC := PreSheaves( Delta2, C );
+    sH := PreSheaves( Delta2, H );
     
     membership_function :=
       function ( IntCat, nerve )
@@ -2373,7 +2373,7 @@ InstallMethod( CategoryOfInternalCategories,
         
     end;
     
-    return FullSubcategoryByObjectMembershipFunction( sC, membership_function );
+    return FullSubcategoryByObjectMembershipFunction( sH, membership_function );
     
 end );
 
