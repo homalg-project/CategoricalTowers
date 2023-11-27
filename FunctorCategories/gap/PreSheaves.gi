@@ -2338,6 +2338,7 @@ InstallMethod( CategoryOfInternalCategories,
         
         C2_C1xC1 := UniversalMorphismIntoFiberProduct( DC1xC1, [ N.pt, N.ps ] );
         
+        ## check associativity
         if not IsIsomorphism( C2_C1xC1 ) then
             return false;
         fi;
@@ -2367,6 +2368,7 @@ InstallMethod( CategoryOfInternalCategories,
                                 C1xC1 ),
                         C1xC1_C2 );
         
+        ## check the identities
         return IsCongruentForMorphisms( PreCompose( 1xmu, N.mu ), PreCompose( mux1, N.mu ) );
         
     end;
