@@ -92,6 +92,17 @@ CapJitAddTypeSignature( "UnderlyingCategory", [ IsCoequalizerCompletion ],
     
 end );
 
+DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
+        IsCoequalizerCompletion );
+
+#! @Description
+#!  The full embedding functor from the category $C$ underlying
+#!  the finite coproduct cocompletion <A>UC</A> into <A>UC</A>.
+#! @Arguments UC
+#! @Returns a &CAP; functor
+DeclareAttribute( "EmbeddingOfUnderlyingCategory",
+        IsCoequalizerCompletion );
+
 ####################################
 #
 #! @Section Constructors
@@ -104,9 +115,3 @@ end );
 DeclareAttribute( "CoequalizerCompletion",
         IsCapCategory );
 #! @InsertChunk CoequalizerCompletion
-
-DeclareOperation( "AsCoequalizerCompletionObject",
-        [ IsCoequalizerCompletion, IsCapCategoryObject ] );
-
-DeclareOperation( "AsCoequalizerCompletionMorphism",
-        [ IsCoequalizerCompletion, IsCapCategoryMorphism ] );
