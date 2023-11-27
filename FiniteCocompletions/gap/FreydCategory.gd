@@ -22,6 +22,7 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
 #! @Returns a &CAP; functor
 DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsFreydCategory );
+#! @InsertChunk EmbeddingOfUnderlyingCategory
 
 DeclareOperation( "ExtendFunctorToFreydCategoryData",
         [ IsFreydCategory, IsList, IsAdditiveCategory ] );

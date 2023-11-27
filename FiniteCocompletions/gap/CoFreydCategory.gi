@@ -47,6 +47,62 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
+InstallMethod( \.,
+        "for a Fredy category and a positive integer",
+        [ IsCoFreydCategory, IsPosInt ],
+        
+  function( coFreyd, string_as_int )
+    local name, C, Y, Yc;
+    
+    name := NameRNam( string_as_int );
+    
+    C := UnderlyingCategory( coFreyd );
+    
+    Y := EmbeddingOfUnderlyingCategory( coFreyd );
+    
+    Yc := Y( C.(name) );
+    
+    if IsCoFreydCategoryObject( Yc ) then
+        
+        #TODO: is this true?
+        #SetIsProjective( Yc, true );
+        
+    elif IsCoFreydCategoryMorphism( Yc ) then
+        
+        if CanCompute( coFreyd, "IsMonomorphism" ) then
+            IsMonomorphism( Yc );
+        fi;
+        
+        if CanCompute( coFreyd, "IsSplitMonomorphism" ) then
+            IsSplitMonomorphism( Yc );
+        fi;
+        
+        if CanCompute( coFreyd, "IsEpimorphism" ) then
+            IsEpimorphism( Yc );
+        fi;
+        
+        if CanCompute( coFreyd, "IsSplitEpimorphism" ) then
+            IsSplitEpimorphism( Yc );
+        fi;
+        
+        ## IsIsomorphism = IsSplitMonomorphism and IsSplitEpimorphism
+        ## we add this here in case the logic is deactivated
+        if CanCompute( coFreyd, "IsIsomorphism" ) then
+            IsIsomorphism( Yc );
+        fi;
+        
+    else
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "`Yc` is neither an object nor a morphism in `IsFreydCategory`\n" );
+        
+    fi;
+    
+    return Yc;
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( ExtendFunctorToCoFreydCategoryData,
         "for a two categories and a pair of functions",
         [ IsCoFreydCategory, IsList, IsAdditiveCategory ],
