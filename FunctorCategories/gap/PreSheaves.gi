@@ -2319,12 +2319,12 @@ InstallMethod( CategoryOfInternalCategories,
         "for a CAP category",
         [ IsCapCategory ],
         
-  function ( C )
-    local Delta2, sC, membership_function;
+  function ( H )
+    local Delta2, sH, membership_function;
     
     Delta2 := SimplicialCategoryTruncatedInDegree( 2 : FinalizeCategory := true );
     
-    sC := PreSheaves( Delta2, C );
+    sH := PreSheaves( Delta2, H );
     
     membership_function :=
       function ( IntCat, nerve )
@@ -2338,6 +2338,7 @@ InstallMethod( CategoryOfInternalCategories,
         
         C2_C1xC1 := UniversalMorphismIntoFiberProduct( DC1xC1, [ N.pt, N.ps ] );
         
+        ## check associativity
         if not IsIsomorphism( C2_C1xC1 ) then
             return false;
         fi;
@@ -2367,11 +2368,12 @@ InstallMethod( CategoryOfInternalCategories,
                                 C1xC1 ),
                         C1xC1_C2 );
         
+        ## check the identities
         return IsCongruentForMorphisms( PreCompose( 1xmu, N.mu ), PreCompose( mux1, N.mu ) );
         
     end;
     
-    return FullSubcategoryByObjectMembershipFunction( sC, membership_function );
+    return FullSubcategoryByObjectMembershipFunction( sH, membership_function );
     
 end );
 

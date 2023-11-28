@@ -329,75 +329,98 @@ InstallMethod( CoequalizerCompletion,
 end );
 
 ##
-InstallMethod( AsCoequalizerCompletionObject,
-        "for a coequalizer completion category and a category object",
-        [ IsCoequalizerCompletion, IsCapCategoryObject ],
+InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
+        "for a coequalizer completion category",
+        [ IsCoequalizerCompletion ],
         
-  function( Coeq, object )
-    local C, I, u;
+  function( Coeq )
+    local C, embedding_on_objects, embedding_on_morphisms;
     
     C := UnderlyingCategory( Coeq );
     
-    if not IsIdenticalObj( C, CapCategory( object ) ) then
-        Error( "the 2nd argument `object` does not lie in the category UnderlyingCategory( Coeq )\n" );
-    fi;
+    embedding_on_objects :=
+      function( objC )
+        local I, u;
+        
+        if not IsIdenticalObj( C, CapCategory( objC ) ) then
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "the 2nd argument `objC` does not lie in the category UnderlyingCategory( Coeq )\n" );
+        fi;
+        
+        I := InitialObject( C );
+        
+        u := UniversalMorphismFromInitialObjectWithGivenInitialObject( C, objC, I );
+        
+        return ObjectConstructor( Coeq,
+                       Pair( Pair( objC, I ), Pair( u, u ) ) );
+        
+    end;
     
-    I := InitialObject( C );
+    embedding_on_morphisms :=
+      function( source, morC, target )
+        local id;
+        
+        if not IsIdenticalObj( C, CapCategory( morC ) ) then
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "the 2nd argument `morC` does not lie in the category UnderlyingCategory( Coeq )\n" );
+        fi;
+        
+        id := IdentityMorphism( C, InitialObject( C ) );
+        
+        return MorphismConstructor( Coeq,
+                       embedding_on_objects( Source( morC ) ),
+                       Pair( morC, id ),
+                       embedding_on_objects( Target( morC ) ) );
+        
+    end;
     
-    u := UniversalMorphismFromInitialObjectWithGivenInitialObject( C, object, I );
-    
-    return ObjectConstructor( Coeq,
-                   Pair( Pair( object, I ), Pair( u, u ) ) );
+    return Triple( C,
+                   Pair( embedding_on_objects, embedding_on_morphisms ),
+                   Coeq );
     
 end );
 
 ##
-InstallMethod( AsCoequalizerCompletionMorphism,
-        "for a coequalizer completion category and a category morphism",
-        [ IsCoequalizerCompletion, IsCapCategoryMorphism ],
+InstallMethod( EmbeddingOfUnderlyingCategory,
+        "for a coequalizer completion category",
+        [ IsCoequalizerCompletion ],
         
-  function( Coeq, morphism )
-    local C, id;
+  function( Coeq )
+    local data, Y;
     
-    C := UnderlyingCategory( Coeq );
+    data := EmbeddingOfUnderlyingCategoryData( Coeq );
     
-    if not IsIdenticalObj( C, CapCategory( morphism ) ) then
-        Error( "the 2nd argument `morphism` does not lie in the category UnderlyingCategory( Coeq )\n" );
-    fi;
+    Y := CapFunctor( "Embedding functor into a coequalizer cocompletion category", data[1], Coeq );
     
-    id := IdentityMorphism( C, InitialObject( C ) );
+    AddObjectFunction( Y, data[2][1] );
     
-    return MorphismConstructor( Coeq,
-                   AsCoequalizerCompletionObject( Coeq, Source( morphism ) ),
-                   Pair( morphism, id ),
-                   AsCoequalizerCompletionObject( Coeq, Target( morphism ) ) );
+    AddMorphismFunction( Y, data[2][2] );
+    
+    return Y;
     
 end );
-
 ##
 InstallMethod( \.,
         "for a coequalizer completion category and a positive integer",
         [ IsCoequalizerCompletion, IsPosInt ],
         
   function( Coeq, string_as_int )
-    local name, C, Yc;
+    local name, C, Y, Yc;
     
     name := NameRNam( string_as_int );
     
     C := UnderlyingCategory( Coeq );
     
-    Yc := C.(name);
+    Y := EmbeddingOfUnderlyingCategory( Coeq );
     
-    if IsCapCategoryObject( Yc ) then
-        
-        Yc := AsCoequalizerCompletionObject( Coeq, Yc );
+    Yc := Y( C.(name) );
+    
+    if IsObjectInCoequalizerCompletion( Yc ) then
         
         #TODO: is this true?
         #SetIsProjective( Yc, true );
         
-    elif IsCapCategoryMorphism( Yc ) then
-        
-        Yc := AsCoequalizerCompletionMorphism( Coeq, Yc );
+    elif IsMorphismInCoequalizerCompletion( Yc ) then
         
         if CanCompute( Coeq, "IsMonomorphism" ) then
             IsMonomorphism( Yc );

@@ -47,6 +47,62 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
+InstallMethod( \.,
+        "for a Fredy category and a positive integer",
+        [ IsFreydCategory, IsPosInt ],
+        
+  function( Freyd, string_as_int )
+    local name, C, Y, Yc;
+    
+    name := NameRNam( string_as_int );
+    
+    C := UnderlyingCategory( Freyd );
+    
+    Y := EmbeddingOfUnderlyingCategory( Freyd );
+    
+    Yc := Y( C.(name) );
+    
+    if IsFreydCategoryObject( Yc ) then
+        
+        #TODO: is this true?
+        #SetIsProjective( Yc, true );
+        
+    elif IsFreydCategoryMorphism( Yc ) then
+        
+        if CanCompute( Freyd, "IsMonomorphism" ) then
+            IsMonomorphism( Yc );
+        fi;
+        
+        if CanCompute( Freyd, "IsSplitMonomorphism" ) then
+            IsSplitMonomorphism( Yc );
+        fi;
+        
+        if CanCompute( Freyd, "IsEpimorphism" ) then
+            IsEpimorphism( Yc );
+        fi;
+        
+        if CanCompute( Freyd, "IsSplitEpimorphism" ) then
+            IsSplitEpimorphism( Yc );
+        fi;
+        
+        ## IsIsomorphism = IsSplitMonomorphism and IsSplitEpimorphism
+        ## we add this here in case the logic is deactivated
+        if CanCompute( Freyd, "IsIsomorphism" ) then
+            IsIsomorphism( Yc );
+        fi;
+        
+    else
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "`Yc` is neither an object nor a morphism in `Freyd`\n" );
+        
+    fi;
+    
+    return Yc;
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( ExtendFunctorToFreydCategoryData,
         "for a two categories and a pair of functions",
         [ IsFreydCategory, IsList, IsAdditiveCategory ],
