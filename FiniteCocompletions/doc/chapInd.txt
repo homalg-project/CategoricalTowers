@@ -17,6 +17,7 @@
   [2XEmbeddingOfUnderlyingCategory[102X, for IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure 12.2-2 
       for IsAdditiveClosureCategory 9.1-1 
       for IsCategoryOfColimitQuivers 6.2-5 
+      for IsCoequalizerCompletion 7.1-4 
       for IsCoFreydCategory 11.1-1 
       for IsFiniteStrictCoproductCompletion 1.1-4 
       for IsFiniteStrictProductCompletion 2.1-4 

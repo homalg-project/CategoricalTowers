@@ -12,6 +12,57 @@
   [33X[0;0YThe full embedding functor from the additive category [23XC[123X underlying the Freyd
   (=cokernel closure) category [3XFC[103X into [3XFC[103X.[133X
   
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xq := FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR->SG,rhoT:TR->TG,phi:SG->TG,chi:SR->TR]" );[127X[104X
+    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" )[128X[104X
+    [4X[25Xgap>[125X [27XP := PathCategory( q );[127X[104X
+    [4X[28XPathCategory([128X[104X
+    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XC := P / [ [ P.rhoS * P.phi, P.chi * P.rhoT ] ];[127X[104X
+    [4X[28XPathCategory([128X[104X
+    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28X/ [ rhoS•phi = chi•rhoT ][128X[104X
+    [4X[25Xgap>[125X [27Xzz := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XL := LinearClosure( zz, C );[127X[104X
+    [4X[28XZ-LinearClosure( PathCategory([128X[104X
+    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28X/ [ rhoS•phi = chi•rhoT ] )[128X[104X
+    [4X[25Xgap>[125X [27XA := AdditiveClosure( L );[127X[104X
+    [4X[28XAdditiveClosure( Z-LinearClosure( PathCategory([128X[104X
+    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28X/ [ rhoS•phi = chi•rhoT ] ) )[128X[104X
+    [4X[25Xgap>[125X [27XK := CoFreydCategory( A );[127X[104X
+    [4X[28XCoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory([128X[104X
+    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28X/ [ rhoS•phi = chi•rhoT ] ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XF := FreydCategory( K );[127X[104X
+    [4X[28XFreyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory([128X[104X
+    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28X/ [ rhoS•phi = chi•rhoT ] ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XS := CokernelObject( F.rhoS );[127X[104X
+    [4X[28X<An object in Freyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory([128X[104X
+    [4X[28X FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28X / [ rhoS•phi = chi•rhoT ] ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XT := CokernelObject( F.rhoT );[127X[104X
+    [4X[28X<An object in Freyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory([128X[104X
+    [4X[28X FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28X / [ rhoS•phi = chi•rhoT ] ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xpsi := MorphismConstructor( S, K.phi, T );[127X[104X
+    [4X[28X<A morphism in Freyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory([128X[104X
+    [4X[28X FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28X / [ rhoS•phi = chi•rhoT ] ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCokernelObjectFunctorial( F.rhoS, F.phi, F.rhoT ) = psi;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xpsi =[127X[104X
+    [4X[25X>[125X [27X  EvalString( CellAsEvaluatableString( psi, [ "F", "K", "A", "L", "C", "P" ] ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
   [1X10.1-2 ExtendFunctorToFreydCategory[101X
   
   [33X[1;0Y[29X[2XExtendFunctorToFreydCategory[102X( [3XAC[103X ) [32X attribute[133X
