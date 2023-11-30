@@ -24,7 +24,7 @@ ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );
 #! true
 
-k := HomalgFieldOfRationals( );;
+k := HomalgFieldOfRationalsInSingular( );;
 quiver := RightQuiver( "q(3)[a:1->2,b:2->3]" );;
 kF := k[FreeCategory( quiver )];;
 A := AlgebroidFromDataTables( kF / [ kF.ab ] );;
