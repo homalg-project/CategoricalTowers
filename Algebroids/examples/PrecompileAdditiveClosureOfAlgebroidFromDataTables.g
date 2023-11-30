@@ -17,7 +17,7 @@ CapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], IsHomalgRingElemen
 category_constructor :=
   data_tables -> AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables[1] : FinalizeCategory := true ), FinalizeCategory := true ) );;
 
-Q := HomalgFieldOfRationals();;
+Q := HomalgFieldOfRationalsInSingular();;
 q := FinQuiver( "q(*)[x:*->*]" );;
 
 given_arguments :=

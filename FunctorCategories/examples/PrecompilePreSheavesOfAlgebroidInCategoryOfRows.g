@@ -58,6 +58,7 @@ precompile_PreSheavesOfAlgebroidInCategoryOfRows :=
                       "IndecomposableProjectiveObjects",
                       "IndecomposableInjectiveObjects",
                       "IsReflexive",
+                      "CoefficientsOfMorphism",
                       ] ) ); end;;
 
 precompile_PreSheavesOfAlgebroidInCategoryOfRows( A, "PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled" );

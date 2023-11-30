@@ -15,6 +15,8 @@ gap> LoadPackage( "Locales", false );
 true
 gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
+gap> LoadPackage( "IO_ForHomalg", false );
+true
 gap> LoadPackage( "FunctorCategories", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
@@ -26,6 +28,9 @@ gap> LoadPackage( "Locales" );
 true
 gap> LoadPackage( "FreydCategoriesForCAP" );
 true
+gap> LoadPackage( "IO_ForHomalg" );
+true
 gap> LoadPackage( "FunctorCategories" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;
+gap> HOMALG_IO.show_banners := false;;
