@@ -203,7 +203,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationalsInSingular( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kF := k[FreeCategory( quiver )];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( kF / [ kF.ab ] );;</span>
@@ -294,6 +294,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IndecomposableProjectiveObjects",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IndecomposableInjectiveObjects",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsReflexive",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "CoefficientsOfMorphism",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                      ] ) ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesOfAlgebroidInCategoryOfRows( A, "PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesOfAlgebroidInCategoryOfRows( A_bar, "PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled" );</span>
