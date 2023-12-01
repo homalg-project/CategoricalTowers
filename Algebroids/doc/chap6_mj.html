@@ -63,8 +63,6 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X816FDB3783C17B55"><code>6.3-12 \*</code></a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X864884B780B4CB98">6.3-13 ElementaryTensor</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7D5479C97C172F64">6.3-14 ElementaryTensor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X789C404380EAC9CF">6.3-15 AlgebroidAsObjectInPreSheavesCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7B24087B8613304B">6.3-16 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X86EC0F0A78ECBC10">6.4 <span class="Heading">Constructors</span></a>
 </span>
@@ -95,46 +93,6 @@
 <p>Returns: a list</p>
 
 <p>The arguments are an algebroid <var class="Arg">A</var> linear over a field <span class="SimpleMath">\(k\)</span>. This output is <code class="code">true</code> iff the following two conditions hold: (1) the union of all identity morphisms and all generating morphism remain linear independent in the quotient category <span class="SimpleMath">\(C/\mathfrak{m}^2\)</span>; (2) <span class="SimpleMath">\(\mathfrak{m}^i=0\)</span> for some <span class="SimpleMath">\(i\in\mathbb{N}\)</span>, where <span class="SimpleMath">\(\mathfrak{m}^i=\)</span><code class="code">PowerOfArrowIdeal</code>(<var class="Arg">A</var>,<span class="SimpleMath">\(i\)</span>).</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(0,1,2)[x:0-&gt;1,y:1-&gt;2,z:0-&gt;2]" );</span>
-q(0,1,2)[x:0-&gt;1,y:1-&gt;2,z:0-&gt;2]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeCategory( q );</span>
-FreeCategory( RightQuiver( "q(0,1,2)[x:0-&gt;1,y:1-&gt;2,z:0-&gt;2]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );</span>
-Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kF := k[F];</span>
-Algebroid( Q, FreeCategory( RightQuiver( "q(0,1,2)[x:0-&gt;1,y:1-&gt;2,z:0-&gt;2]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := kF / [ kF.xy - kF.z ];</span>
-Algebroid( Q, FreeCategory( RightQuiver( "q(0,1,2)[x:0-&gt;1,y:1-&gt;2,z:0-&gt;2]" ) ) )
-/ relations
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AlgebroidFromDataTables( A );</span>
-Q-algebroid( {0,1,2}[x:0-≻1,y:1-≻2,z:0-≻2] ) defined by 3 objects
-and 3 generating morphisms
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdmissibleAlgebroid( B );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(*)[x:*-&gt;*,y:*-&gt;*]" );</span>
-q(*)[x:*-&gt;*,y:*-&gt;*]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeCategory( q );</span>
-FreeCategory( RightQuiver( "q(*)[x:*-&gt;*,y:*-&gt;*]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kF := k[F];</span>
-Algebra( Q, FreeCategory( RightQuiver( "q(*)[x:*-&gt;*,y:*-&gt;*]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := kF / [ kF.xy - kF.yx, kF.x^3, kF.y^3 ];</span>
-Algebra( Q, FreeCategory( RightQuiver( "q(*)[x:*-&gt;*,y:*-&gt;*]" ) ) ) / relations
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AlgebroidFromDataTables( A );</span>
-Q-algebroid( {*}[x:*-≻*,y:*-≻*] ) defined by 1 object and 2 generating morphisms
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdmissibleAlgebroid( B );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := kF / [ kF.xy - kF.yx, kF.x^3 - kF.x, kF.y^3 ];</span>
-Algebra( Q, FreeCategory( RightQuiver( "q(*)[x:*-&gt;*,y:*-&gt;*]" ) ) ) / relations
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AlgebroidFromDataTables( A );</span>
-Q-algebroid( {*}[x:*-≻*,y:*-≻*] ) defined by 1 object and 2 generating morphisms
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdmissibleAlgebroid( B );</span>
-false
-</pre></div>
 
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
@@ -378,24 +336,6 @@ false
 
 <p>The arguments are two morphisms <var class="Arg">f</var>, <var class="Arg">g</var> and a tensor product algebroid <var class="Arg">T</var><span class="SimpleMath">\(=A\otimes B\)</span> where <var class="Arg">f</var> and <var class="Arg">g</var> belong to <span class="SimpleMath">\(A\)</span> resp. <span class="SimpleMath">\(B\)</span>. The output is the morphism <span class="SimpleMath">\(f\otimes g\)</span> in <var class="Arg">T</var>.</p>
 
-<p><a id="X789C404380EAC9CF" name="X789C404380EAC9CF"></a></p>
-
-<h5>6.3-15 AlgebroidAsObjectInPreSheavesCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AlgebroidAsObjectInPreSheavesCategory</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
-
-<p>The argument is an algebroid <span class="SimpleMath">\(A\)</span> over a commutative ring <span class="SimpleMath">\(k\)</span>. The output is the presheaf object <span class="SimpleMath">\(F_{A}\in \mathrm{PSh}(A^{\mathrm{op}}\otimes A)\)</span> which maps an object <span class="SimpleMath">\(u^{\mathrm{op}}\otimes t \in A^{\mathrm{op}}\otimes A\)</span> to <span class="SimpleMath">\(\mathrm{Hom}_B(t,u) \in k\mbox{-}\mathrm{rows}\)</span> and maps a morphism <span class="SimpleMath">\(g^{\mathrm{op}}\otimes f : v^{\mathrm{op}}\otimes s \to u^{\mathrm{op}}\otimes t \in A^{\mathrm{op}}\otimes A\)</span> to <span class="SimpleMath">\(f\bullet(-)\bullet g =\mathrm{Hom}_B(f,g): \mathrm{Hom}_B(t,u) \to \mathrm{Hom}_B(s,v) \in k\mbox{-}\mathrm{rows}\)</span>.</p>
-
-<p><a id="X7B24087B8613304B" name="X7B24087B8613304B"></a></p>
-
-<h5>6.3-16 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
-
-<p>The argument is a morphism <span class="SimpleMath">\(\alpha: t \to u\)</span> in an algebroid <span class="SimpleMath">\(A\)</span> over a commutative ring <span class="SimpleMath">\(k\)</span>. The output is the morphism <span class="SimpleMath">\(\lambda_{\alpha}:P_{u^{\mathrm{op}}\otimes t} \to F_{A}\)</span> where <span class="SimpleMath">\(P_{u^{\mathrm{op}}\otimes t}\)</span> is the image of <span class="SimpleMath">\(u^{\mathrm{op}}\otimes t\)</span> under the Yoneda embdding <span class="SimpleMath">\(A^{\mathrm{op}}\otimes A \hookrightarrow \mathrm{PSh}(A^{\mathrm{op}}\otimes A)\)</span>; and <span class="SimpleMath">\(\lambda_{\alpha}\)</span> the image of <span class="SimpleMath">\(\alpha\)</span> under the natural isomorphism <span class="SimpleMath">\(\mathrm{Hom}_{A}(t,u) = F_{A}(u^{\mathrm{op}}\otimes t) \simeq \mathrm{Hom}_{\mathrm{PSh}(A^{\mathrm{op}}\otimes A)}(P_{u^{\mathrm{op}}\otimes t},F_{A})\)</span>.</p>
-
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
 <h4>6.4 <span class="Heading">Constructors</span></h4>
@@ -429,14 +369,14 @@ false
 </ul>
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(0,1,2,3)[a:0-&gt;1,b:1-&gt;3,c:0-&gt;2,d:2-&gt;3,e:3-&gt;3]" );</span>
 q(0,1,2,3)[a:0-&gt;1,b:1-&gt;3,c:0-&gt;2,d:2-&gt;3,e:3-&gt;3]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals();</span>
-Q
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeCategory( q );</span>
 FreeCategory( RightQuiver( "q(0,1,2,3)[a:0-&gt;1,b:1-&gt;3,c:0-&gt;2,d:2-&gt;3,e:3-&gt;3]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );</span>
+Q
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kF := k[F];</span>
 Algebroid( Q, FreeCategory( RightQuiver( "q(0,1,2,3)[a:0-&gt;1,b:1-&gt;3,c:0-&gt;2,d:2-&gt;3,
 e:3-&gt;3]" ) ) )
@@ -568,20 +508,6 @@ e:3-≻3] ) defined by 4 objects and 5 generating morphisms ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAbelianCategory( freyd_B );</span>
 true
 #@fi
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( A );</span>
-PreSheaves( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
-defined by 4 objects and 5 generating morphisms, Rows( Q ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := YonedaEmbeddingOfSourceCategory( PSh );</span>
-Yoneda embedding functor
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( Y(A.("3")), PSh.("3") );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( Y(alpha), 2 * PSh.("a•b") + 3 * PSh.("c•d•e^2") );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( Y(alpha), 2 * PSh.("a•b") + 3 * PSh.("c•d•e^2") );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory( A.("e") );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( t );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_op := OppositeAlgebroid( A );</span>
 Q-algebroid( {0,1,2,3}[a:1-≻0,b:3-≻1,c:2-≻0,d:3-≻2,e:3-≻3] ) defined by
 4 objects and 5 generating morphisms
@@ -621,65 +547,6 @@ by 16 objects and 40 generating morphisms
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">w := RandomMorphism( 3x3, 3x3, 15 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( PreCompose( [ u, v, w ] ) )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">      = PreCompose( HomStructure( v ), HomStructure( u, w ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ideal := [ A.("ab") - A.("cd"), 2*A.("be") ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qA := A / ideal;</span>
-QuotientCategory( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
-defined by 4 objects and 5 generating morphisms, 2-sided ideal generated
-by 2 morphisms )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qA.0;</span>
-&lt;(0)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RangeCategoryOfHomomorphismStructure( qA );</span>
-Rows( Q )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( qA.("cde") );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := RandomMorphism( qA, 20 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">1/2 * HomStructure( Source( f ), Target( f ), 2*HomStructure( f ) ) = f;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ideal := List( [ A.0, A.1, A.2 ], IdentityMorphism );</span>
-[ &lt;1*id(0):(0) -≻ (0)&gt;, &lt;1*id(1):(1) -≻ (1)&gt;, &lt;1*id(2):(2) -≻ (2)&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qA := A / ideal;</span>
-QuotientCategory( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
-defined by 4 objects and 5 generating morphisms, 2-sided ideal generated
-by 3 morphisms )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ForAll( [ qA.("0"), qA.("1"), qA.("2") ], IsZeroForObjects );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( qA.("3") );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables_2 := DataTablesOfCategory( qA );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := AlgebroidFromDataTables( data_tables_2 );; # or alternatively</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := AlgebroidFromDataTables( qA );</span>
-Q-algebroid( {3}[e:3-≻3] ) defined by 1 object and 1 generating morphism
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BasisOfExternalHom( D.3, D.3 );</span>
-[ &lt;1*id(3):(3) -≻ (3)&gt;, &lt;1*e:(3) -≻ (3)&gt;, &lt;1*e^2:(3) -≻ (3)&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables_Z := ShallowCopy( data_tables );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables_Z[1] := HomalgRingOfIntegers();;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := AlgebroidFromDataTables( data_tables_Z );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RangeCategoryOfHomomorphismStructure( C );</span>
-Rows( Z )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ideal := [ C.("ab") - C.("cd"), 2*C.("be") ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qC := C / ideal;</span>
-QuotientCategory( Z-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
-defined by 4 objects and 5 generating morphisms, 2-sided ideal generated by
-2 morphisms )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RangeCategoryOfHomomorphismStructure( qC );</span>
-Freyd( Rows( Z ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( qC.("cde") );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( 2*qC.("cde") );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">add_qC := AdditiveClosure( qC );</span>
-AdditiveClosure( QuotientCategory( Z-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,
-c:0-≻2,d:2-≻3,e:3-≻3] ) defined by 4 objects and 5 generating morphisms,
-2-sided ideal generated by 2 morphisms ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := RandomObject( add_qC, [[10],[1]] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RandomMorphism( T, T, 5 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := RandomMorphism( T, T, 5 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">w := RandomMorphism( T, T, 5 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( PreCompose( [ u, v, w ] ) )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">      = PreCompose( HomStructure( v ), HomStructure( u, w ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( T, T, 2 * HomStructure( u ) ) = 2 * u;</span>
 true
 </pre></div>
 

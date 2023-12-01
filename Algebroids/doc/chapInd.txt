@@ -18,7 +18,6 @@
       for IsHomalgRing, IsQuiver 5.4-1 
       for IsQuiverAlgebra 5.4-1 
       for IsQuiverAlgebra, IsList 5.4-1 
-  [2XAlgebroidAsObjectInPreSheavesCategory[102X, for IsAlgebroidFromDataTables 6.3-15 
   [2XAlgebroidFromDataTables[102X, for IsDenseList 6.4-1 
   [2XAntipode[102X, for IsAlgebroid 5.2-16 
       for IsFpCategory 2.2-17 
@@ -32,7 +31,6 @@
   [2XAssignSetOfObjects[102X, for IsAlgebroid, IsString 5.2-8 
       for IsAlgebroidFromDataTables, IsString 6.3-1 
       for IsFpCategory, IsString 2.2-8 
-  [2XAssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[102X, for IsMorphismInAlgebroidFromDataTables 6.3-16 
   [2XBasesElements[102X, for IsAlgebroidFromDataTables 6.2-8 
   [2XBasisMorphismsByVertexIndex[102X, for IsAlgebroid 5.2-5 
       for IsFpCategory 2.2-5 
