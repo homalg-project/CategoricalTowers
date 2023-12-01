@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (FunctorCategories) - Chapter 15: Precompilation</title>
+<title>GAP (FunctorCategories) - Chapter 15: Tools</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -15,402 +15,40 @@
 <body class="chap15"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chap16.html">16</a>  <a href="chapInd.html">Ind</a>  </div>
 
-<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap14.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap14.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap16.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap15_mj.html">[MathJax on]</a></p>
-<p><a id="X7D7026828261C26B" name="X7D7026828261C26B"></a></p>
-<div class="ChapSects"><a href="chap15.html#X7D7026828261C26B">15 <span class="Heading">Precompilation</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X7CEE2ECE79790AF4">15.1 <span class="Heading">Precompiling the category of finite quivers</span></a>
+<p><a id="X8508AEF8845565A1" name="X8508AEF8845565A1"></a></p>
+<div class="ChapSects"><a href="chap15.html#X8508AEF8845565A1">15 <span class="Heading">Tools</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X871597447BB998A1">15.1 <span class="Heading">Properties</span></a>
 </span>
-</div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X7F843BA27D4C7463">15.2 <span class="Heading">Precompiling the category of finite reflexive quivers</span></a>
-</span>
-</div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X782D1B918562B444">15.3 <span class="Heading">Precompiling the presheaf category of an algebroid from data tables with values in a category of rows</span></a>
-</span>
-</div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X7F3EAD5984859532">15.4 <span class="Heading">Precompiling the presheaf category of an algebroid with values in a category of rows</span></a>
-</span>
-</div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X7B5E237A80BD355B">15.5 <span class="Heading">Precompiling the category of presheaves with values in SkeletalFinSets</span></a>
-</span>
-</div>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X86E108177FDEDCE6">15.1-1 IsReflexive</a></span>
+</div></div>
 </div>
 
-<h3>15 <span class="Heading">Precompilation</span></h3>
+<h3>15 <span class="Heading">Tools</span></h3>
 
-<p><a id="X7CEE2ECE79790AF4" name="X7CEE2ECE79790AF4"></a></p>
+<p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
 
-<h4>15.1 <span class="Heading">Precompiling the category of finite quivers</span></h4>
+<h4>15.1 <span class="Heading">Properties</span></h4>
 
+<p><a id="X86E108177FDEDCE6" name="X86E108177FDEDCE6"></a></p>
 
-<div class="example"><pre>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2022.09-02", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := { } -&gt; CategoryOfBouquetsEnrichedOver( SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "FinBouquetsPrecompiled";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FunctorCategories";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">   : operations := [ "InitialObject",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "Coproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "InjectionOfCofactorOfCoproductWithGivenCoproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "UniversalMorphismFromCoproductWithGivenCoproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"CoproductOnMorphismsWithGivenCoproducts", # &lt;- derived and leads to an error</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"CoproductFunctorialWithGivenCoproducts", # &lt;- derived</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "DistinguishedObjectOfHomomorphismStructure",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "HomomorphismStructureOnObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"HomomorphismStructureOnMorphismsWithGivenObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "MorphismsOfExternalHom",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     ]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FinBouquetsPrecompiled( );</span>
-CategoryOfBouquetsEnrichedOver( SkeletalFinSets )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := CategoryOfBouquetsEnrichedOver( SkeletalFinSets );</span>
-FinBouquets
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat!.precompiled_functions_added;</span>
-true
-#@fi
-</pre></div>
+<h5>15.1-1 IsReflexive</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsReflexive</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is a (co)presheaf <var class="Arg">F</var>. The output is <code class="code">true</code> if <var class="Arg">F</var> is reflexive, i.e., the <var class="Arg">F</var>-component of the (co)unit of the Isbell adjunction monad is an isomorphism, otherwise the output is <code class="code">false</code>.</p>
 
 
-<div class="example"><pre>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2022.09-02", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := { } -&gt; CategoryOfQuiversEnrichedOver( SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "FinQuiversPrecompiled";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FunctorCategories";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">   : operations := [ "InitialObject",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "Coproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"InjectionOfCofactorOfCoproductWithGivenCoproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"UniversalMorphismFromCoproductWithGivenCoproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"CoproductOnMorphismsWithGivenCoproducts", # &lt;- derived and leads to an error</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"CoproductFunctorialWithGivenCoproducts", # &lt;- derived</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "DistinguishedObjectOfHomomorphismStructure",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "HomomorphismStructureOnObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"HomomorphismStructureOnMorphismsWithGivenObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "MorphismsOfExternalHom",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     ]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FinQuiversPrecompiled( );</span>
-CategoryOfQuiversEnrichedOver( SkeletalFinSets )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := CategoryOfQuiversEnrichedOver( SkeletalFinSets );</span>
-FinQuivers
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat!.precompiled_functions_added;</span>
-true
-#@fi
-</pre></div>
-
-<p><a id="X7F843BA27D4C7463" name="X7F843BA27D4C7463"></a></p>
-
-<h4>15.2 <span class="Heading">Precompiling the category of finite reflexive quivers</span></h4>
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap14.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap16.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="example"><pre>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2022.09-02", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := { } -&gt; CategoryOfReflexiveQuiversEnrichedOver( SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "FinReflexiveQuiversPrecompiled";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FunctorCategories";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">   : operations := [ "InitialObject",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "Coproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"InjectionOfCofactorOfCoproductWithGivenCoproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"UniversalMorphismFromCoproductWithGivenCoproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"CoproductOnMorphismsWithGivenCoproducts", # &lt;- derived and leads to an error</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"CoproductFunctorialWithGivenCoproducts", # &lt;- derived</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "DistinguishedObjectOfHomomorphismStructure",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "HomomorphismStructureOnObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"HomomorphismStructureOnMorphismsWithGivenObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "MorphismsOfExternalHom",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     ]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FinReflexiveQuiversPrecompiled( );</span>
-CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets );</span>
-FinReflexiveQuivers
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat!.precompiled_functions_added;</span>
-true
-#@fi
-</pre></div>
-
-<p><a id="X782D1B918562B444" name="X782D1B918562B444"></a></p>
-
-<h4>15.3 <span class="Heading">Precompiling the presheaf category of an algebroid from data tables with values in a category of rows</span></h4>
-
-
-<div class="example"><pre>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2022.09-02", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FreydCategoriesForCAP", "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationalsInSingular( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kF := k[FreeCategory( quiver )];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( kF / [ kF.ab ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := A -&gt; PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesOfAlgebroidFromDataTablesInCategoryOfRows :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( A, compiled_category_name )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            [ A ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "FunctorCategories",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            compiled_category_name</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            : operations :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    [ "IsZeroForObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsZeroForMorphisms",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsEpimorphism",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsMonomorphism",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsIsomorphism",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsEqualForMorphisms",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsWellDefinedForObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsProjective",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsInjective",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "EpimorphismFromSomeProjectiveObject",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "MonomorphismIntoSomeInjectiveObject",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "ProjectiveLift",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "InjectiveColift",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "EpimorphismFromProjectiveCoverObject",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "MonomorphismIntoInjectiveEnvelopeObject",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IndecomposableProjectiveObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IndecomposableInjectiveObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsReflexive",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      ] ) ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesOfAlgebroidFromDataTablesInCategoryOfRows( A, "PreSheavesOfAlgebroidFromDataTablesInCategoryOfRowsPrecompiled" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := PreSheavesOfAlgebroidFromDataTablesInCategoryOfRowsPrecompiled( A );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat!.precompiled_functions_added;</span>
-true
-#@fi
-</pre></div>
-
-<p><a id="X7F3EAD5984859532" name="X7F3EAD5984859532"></a></p>
-
-<h4>15.4 <span class="Heading">Precompiling the presheaf category of an algebroid with values in a category of rows</span></h4>
-
-
-<div class="example"><pre>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2022.09-02", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FreydCategoriesForCAP", "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := QQ[FreeCategory( quiver )];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_bar := A / [ A.ab ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := A -&gt; PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesOfAlgebroidInCategoryOfRows :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( A, compiled_category_name )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            [ A ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "FunctorCategories",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            compiled_category_name</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            : operations :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    [ "IsZeroForObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsZeroForMorphisms",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsEpimorphism",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsMonomorphism",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsIsomorphism",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsEqualForMorphisms",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsWellDefinedForObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsProjective",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsInjective",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "EpimorphismFromSomeProjectiveObject",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "MonomorphismIntoSomeInjectiveObject",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "ProjectiveLift",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "InjectiveColift",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "EpimorphismFromProjectiveCoverObject",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "MonomorphismIntoInjectiveEnvelopeObject",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IndecomposableProjectiveObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IndecomposableInjectiveObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsReflexive",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "CoefficientsOfMorphism",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      ] ) ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesOfAlgebroidInCategoryOfRows( A, "PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesOfAlgebroidInCategoryOfRows( A_bar, "PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled( A );</span>
-PreSheaves( Algebroid( Q, FreeCategory(
-RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) ),
-Rows( Q ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled( A_bar );</span>
-PreSheaves( Algebroid( Q, FreeCategory(
-RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) ) / relations,
-Rows( Q ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat!.precompiled_functions_added;</span>
-true
-#@fi
-</pre></div>
-
-<p><a id="X7B5E237A80BD355B" name="X7B5E237A80BD355B"></a></p>
-
-<h4>15.5 <span class="Heading">Precompiling the category of presheaves with values in SkeletalFinSets</span></h4>
-
-
-<div class="example"><pre>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2022.09-02", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">free_category_of_quiver := { quiver, sFinSets } -&gt; CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( quiver )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true ), sFinSets ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ RightQuiver( "q(2)[m:1-&gt;2]" ) ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FunctorCategories";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">   : operations := [ "InitialObject",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "Coproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "InjectionOfCofactorOfCoproductWithGivenCoproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "UniversalMorphismFromCoproductWithGivenCoproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"CoproductOnMorphismsWithGivenCoproducts", # &lt;- derived and leads to an error</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"CoproductFunctorialWithGivenCoproducts", # &lt;- derived</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "HomomorphismStructureOnObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "HomomorphismStructureOnMorphismsWithGivenObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "MorphismsOfExternalHom",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"ExponentialOnObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     ]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled( given_arguments[1] );</span>
-PreSheaves( FreeCategory( RightQuiver( "q(2)[m:1-&gt;2]" ) ), SkeletalFinSets )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := PreSheaves( free_category_of_quiver( given_arguments[1], SkeletalFinSets ) );</span>
-PreSheaves( FreeCategory( RightQuiver( "q(2)[m:1-&gt;2]" ) ), SkeletalFinSets )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat!.precompiled_functions_added;</span>
-true
-#@fi
-</pre></div>
-
-
-<div class="example"><pre>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2022.09-02", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">free_category_of_quiver := { quiver, sFinSets } -&gt; FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( quiver )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ), sFinSets ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ RightQuiver( "q(2)[m:1-&gt;2]" ) ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FunctorCategories";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">   : operations := [ "InitialObject",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "Coproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "InjectionOfCofactorOfCoproductWithGivenCoproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "UniversalMorphismFromCoproductWithGivenCoproduct",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"CoproductOnMorphismsWithGivenCoproducts", # &lt;- derived and leads to an error</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"CoproductFunctorialWithGivenCoproducts", # &lt;- derived</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "HomomorphismStructureOnObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "HomomorphismStructureOnMorphismsWithGivenObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     "MorphismsOfExternalHom",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     #"ExponentialOnObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     ]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled( given_arguments[1] );</span>
-PreSheaves( FreeCategory( RightQuiver( "q(2)[m:1-&gt;2]" ) ), SkeletalFinSets )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := PreSheaves( free_category_of_quiver( given_arguments[1], SkeletalFinSets ) );</span>
-PreSheaves( FreeCategory( RightQuiver( "q(2)[m:1-&gt;2]" ) ), SkeletalFinSets )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat!.precompiled_functions_added;</span>
-true
-#@fi
-</pre></div>
-
-
-<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap14.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
-
-
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chap16.html">16</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

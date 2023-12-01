@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (FunctorCategories) - Chapter 13: Futher CAP operations</title>
+<title>GAP (FunctorCategories) - Chapter 13: Quotient categories of algebroids from data tables using presheaves categories</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -15,40 +15,173 @@
 <body class="chap13"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chap16.html">16</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap12.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap14.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap13_mj.html">[MathJax on]</a></p>
-<p><a id="X7A6423127D9D3FE2" name="X7A6423127D9D3FE2"></a></p>
-<div class="ChapSects"><a href="chap13.html#X7A6423127D9D3FE2">13 <span class="Heading">Futher CAP operations</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13.html#X85C8C80F785AEB5E">13.1 <span class="Heading">Add-methods</span></a>
+<p><a id="X7EB9EDAB852531CA" name="X7EB9EDAB852531CA"></a></p>
+<div class="ChapSects"><a href="chap13.html#X7EB9EDAB852531CA">13 <span class="Heading">Quotient categories of algebroids from data tables using presheaves categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13.html#X7C701DBF7BAE649A">13.1 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X81F06E9A851638BD">13.1-1 AddIsReflexive</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X789C404380EAC9CF">13.1-1 AlgebroidAsObjectInPreSheavesCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7B24087B8613304B">13.1-2 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory</a></span>
 </div></div>
 </div>
 
-<h3>13 <span class="Heading">Futher CAP operations</span></h3>
+<h3>13 <span class="Heading">Quotient categories of algebroids from data tables using presheaves categories</span></h3>
 
-<p><a id="X85C8C80F785AEB5E" name="X85C8C80F785AEB5E"></a></p>
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
-<h4>13.1 <span class="Heading">Add-methods</span></h4>
+<h4>13.1 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X81F06E9A851638BD" name="X81F06E9A851638BD"></a></p>
+<p><a id="X789C404380EAC9CF" name="X789C404380EAC9CF"></a></p>
 
-<h5>13.1-1 AddIsReflexive</h5>
+<h5>13.1-1 AlgebroidAsObjectInPreSheavesCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsReflexive</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AlgebroidAsObjectInPreSheavesCategory</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsReflexive</code>. <span class="Math">F: ( arg2 ) \mapsto \mathtt{IsReflexive}(arg2)</span>.</p>
+<p>The argument is an algebroid <span class="Math">A</span> over a commutative ring <span class="Math">k</span>. The output is the presheaf object <span class="Math">F_{A}\in \mathrm{PSh}(A^{\mathrm{op}}\otimes A)</span> which maps an object <span class="Math">u^{\mathrm{op}}\otimes t \in A^{\mathrm{op}}\otimes A</span> to <span class="Math">\mathrm{Hom}_B(t,u) \in k\mbox{-}\mathrm{rows}</span> and maps a morphism <span class="Math">g^{\mathrm{op}}\otimes f : v^{\mathrm{op}}\otimes s \to u^{\mathrm{op}}\otimes t \in A^{\mathrm{op}}\otimes A</span> to <span class="Math">f\bullet(-)\bullet g =\mathrm{Hom}_B(f,g): \mathrm{Hom}_B(t,u) \to \mathrm{Hom}_B(s,v) \in k\mbox{-}\mathrm{rows}</span>.</p>
+
+<p><a id="X7B24087B8613304B" name="X7B24087B8613304B"></a></p>
+
+<h5>13.1-2 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+
+<p>The argument is a morphism <span class="Math">\alpha: t \to u</span> in an algebroid <span class="Math">A</span> over a commutative ring <span class="Math">k</span>. The output is the morphism <span class="Math">\lambda_{\alpha}:P_{u^{\mathrm{op}}\otimes t} \to F_{A}</span> where <span class="Math">P_{u^{\mathrm{op}}\otimes t}</span> is the image of <span class="Math">u^{\mathrm{op}}\otimes t</span> under the Yoneda embdding <span class="Math">A^{\mathrm{op}}\otimes A \hookrightarrow \mathrm{PSh}(A^{\mathrm{op}}\otimes A)</span>; and <span class="Math">\lambda_{\alpha}</span> the image of <span class="Math">\alpha</span> under the natural isomorphism <span class="Math">\mathrm{Hom}_{A}(t,u) = F_{A}(u^{\mathrm{op}}\otimes t) \simeq \mathrm{Hom}_{\mathrm{PSh}(A^{\mathrm{op}}\otimes A)}(P_{u^{\mathrm{op}}\otimes t},F_{A})</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "q(0,1,2,3)[a:0-&gt;1,b:1-&gt;3,c:0-&gt;2,d:2-&gt;3,e:3-&gt;3]" );</span>
+FinQuiver( "q(0,1,2,3)[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals();</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := PathCategory( q );</span>
+PathCategory( FinQuiver( "q(0,1,2,3)[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kC := k[C];</span>
+Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0-≻1,b:1-≻3,c:0-≻2,
+d:2-≻3,e:3-≻3]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quo_kC := kC / [ kC.e^3 ];</span>
+Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0-≻1,b:1-≻3,c:0-≻2,
+d:2-≻3,e:3-≻3]" ) ) ) / [ 1*e^3 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( quo_kC );</span>
+Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] ) defined by
+4 objects and 5 generating morphisms
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory( A.("e") );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( e );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qA := QuotientCategory( A, [ A.ab - A.cd, 2*A.be ] );</span>
+QuotientCategory( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
+defined by 4 objects and 5 generating morphisms, 2-sided ideal generated
+by 2 morphisms )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qA.0;</span>
+&lt;(0)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RangeCategoryOfHomomorphismStructure( qA );</span>
+Rows( Q )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( qA.cde );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := RandomMorphism( qA, 20 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">1/2 * HomStructure( Source( f ), Target( f ), 2 * HomStructure( f ) ) = f;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qA := QuotientCategory( A, [ A.id_0, A.id_1, A.id_2 ] );</span>
+QuotientCategory( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
+defined by 4 objects and 5 generating morphisms, 2-sided ideal generated
+by 3 morphisms )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ForAll( [ qA.0, qA.1, qA.2 ], IsZeroForObjects );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( qA.3 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := AlgebroidFromDataTables( qA );</span>
+Q-algebroid( {3}[e:3-≻3] ) defined by 1 object and 1 generating morphism
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BasisOfExternalHom( D.3, D.3 );</span>
+[ &lt;1*e^2:(3) -≻ (3)&gt;, &lt;1*e:(3) -≻ (3)&gt;, &lt;1*id(3):(3) -≻ (3)&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables := DataTablesOfCategory( quo_kC );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables_Z := ShallowCopy( data_tables );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables_Z[1] := HomalgRingOfIntegers();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AlgebroidFromDataTables( data_tables_Z );</span>
+Z-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] ) defined by
+4 objects and 5 generating morphisms
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RangeCategoryOfHomomorphismStructure( B );</span>
+Rows( Z )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qB := QuotientCategory( B, [ B.ab - B.cd, 2*B.be ] );</span>
+QuotientCategory( Z-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
+defined by 4 objects and 5 generating morphisms, 2-sided ideal generated by
+2 morphisms )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RangeCategoryOfHomomorphismStructure( qB );</span>
+Freyd( Rows( Z ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( qB.cde );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( 2*qB.cde );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">add_qB := AdditiveClosure( qB );</span>
+AdditiveClosure( QuotientCategory( Z-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,
+c:0-≻2,d:2-≻3,e:3-≻3] ) defined by 4 objects and 5 generating morphisms,
+2-sided ideal generated by 2 morphisms ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := RandomObject( add_qB, [[10],[1]] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RandomMorphism( T, T, 5 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := RandomMorphism( T, T, 5 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">w := RandomMorphism( T, T, 5 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( PreCompose( [ u, v, w ] ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      = PreCompose( HomStructure( v ), HomStructure( u, w ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( T, T, 2 * HomStructure( u ) ) = 2 * u;</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "q(0,1,2)[x:0-&gt;1,y:1-&gt;2,z:0-&gt;2]" );</span>
+FinQuiver( "q(0,1,2)[x:0-≻1,y:1-≻2,z:0-≻2]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := PathCategory( q );</span>
+PathCategory( FinQuiver( "q(0,1,2)[x:0-≻1,y:1-≻2,z:0-≻2]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kC := k[C];</span>
+Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2)[x:0-≻1,
+y:1-≻2,z:0-≻2]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := kC / [ kC.xy - kC.z ];</span>
+Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2)[x:0-≻1,
+y:1-≻2,z:0-≻2]" ) ) ) / [ 1*x•y - 1*z ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AlgebroidFromDataTables( A );</span>
+Q-algebroid( {0,1,2}[x:0-≻1,y:1-≻2,z:0-≻2] ) defined by 3 objects
+and 3 generating morphisms
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdmissibleAlgebroid( B );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "q(o)[x:o-&gt;o,y:o-&gt;o]" );</span>
+FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := PathCategory( q );</span>
+PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kC := k[C];</span>
+Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := kC / [ kC.xy - kC.yx, kC.x^3, kC.y^3 ];</span>
+Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
+/ [ 1*x•y - 1*y•x, 1*x^3, 1*y^3 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AlgebroidFromDataTables( A );</span>
+Q-algebroid( {o}[x:o-≻o,y:o-≻o] ) defined by 1 object and 2 generating morphisms
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdmissibleAlgebroid( B );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := kC / [ kC.xy - kC.yx, kC.x^3 - kC.x, kC.y^3 ];</span>
+Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
+/ [ 1*x•y - 1*y•x, 1*x^3 - 1*x, 1*y^3 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AlgebroidFromDataTables( A );</span>
+Q-algebroid( {o}[x:o-≻o,y:o-≻o] ) defined by 1 object and 2 generating morphisms
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdmissibleAlgebroid( B );</span>
+false
+</pre></div>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap12.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap14.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chap16.html">16</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

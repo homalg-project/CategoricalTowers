@@ -6,7 +6,7 @@
                             [1X Categories of functors [101X
   
   
-                                   2023.11-13
+                                   2023.12-01
   
   
                                 1 December 2023
@@ -308,20 +308,25 @@
       12.4-1 CoPreSheaves
       12.4-2 CreateCoPreSheaf
       12.4-3 CreateCoPreSheafMorphismByValues
-  13 [33X[0;0YFuther CAP operations[133X
-    13.1 [33X[0;0YAdd-methods[133X
-      13.1-1 AddIsReflexive
-  14 [33X[0;0YTools[133X
-    14.1 [33X[0;0YProperties[133X
-      14.1-1 IsReflexive
-  15 [33X[0;0YPrecompilation[133X
-    15.1 [33X[0;0YPrecompiling the category of finite quivers[133X
-    15.2 [33X[0;0YPrecompiling the category of finite reflexive quivers[133X
-    15.3 [33X[0;0YPrecompiling the presheaf category of an algebroid from data tables
+  13 [33X[0;0YQuotient categories of algebroids from data tables using presheaves
+  categories[133X
+    13.1 [33X[0;0YAttributes[133X
+      13.1-1 AlgebroidAsObjectInPreSheavesCategory
+      13.1-2 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory
+  14 [33X[0;0YFuther CAP operations[133X
+    14.1 [33X[0;0YAdd-methods[133X
+      14.1-1 AddIsReflexive
+  15 [33X[0;0YTools[133X
+    15.1 [33X[0;0YProperties[133X
+      15.1-1 IsReflexive
+  16 [33X[0;0YPrecompilation[133X
+    16.1 [33X[0;0YPrecompiling the category of finite quivers[133X
+    16.2 [33X[0;0YPrecompiling the category of finite reflexive quivers[133X
+    16.3 [33X[0;0YPrecompiling the presheaf category of an algebroid from data tables
     with values in a category of rows[133X
-    15.4 [33X[0;0YPrecompiling the presheaf category of an algebroid with values in a
+    16.4 [33X[0;0YPrecompiling the presheaf category of an algebroid with values in a
     category of rows[133X
-    15.5 [33X[0;0YPrecompiling the category of presheaves with values in
+    16.5 [33X[0;0YPrecompiling the category of presheaves with values in
     SkeletalFinSets[133X
   
   

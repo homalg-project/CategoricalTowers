@@ -3,7 +3,8 @@
   [1XIndex[101X
   
   [2XAbelianClosure[102X, for IsAlgebroid 10.1-1 
-  [2XAddIsReflexive[102X, for IsCapCategory, IsFunction 13.1-1 
+  [2XAddIsReflexive[102X, for IsCapCategory, IsFunction 14.1-1 
+  [2XAlgebroidAsObjectInPreSheavesCategory[102X, for IsAlgebroidFromDataTables 13.1-1 
   [2XApplyMorphismInCoPreSheafCategoryToObject[102X, for IsCoPreSheafCategory, IsMorphismInCoPreSheafCategory, IsCapCategoryObject 12.3-3 
   [2XApplyMorphismInFunctorCategoryToObject[102X, for IsFunctorCategory, IsMorphismInFunctorCategory, IsCapCategoryObject 1.3-5 
   [2XApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject[102X, for IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject 2.3-4 
@@ -30,6 +31,7 @@
   [2XAssociatedCategoryOfColimitQuiversOfSourceCategory[102X, for IsPreSheafCategory 2.2-11 
   [2XAssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory[102X, for IsPreSheafCategory 2.2-10 
   [2XAssociatedFiniteStrictCoproductCompletionOfSourceCategory[102X, for IsPreSheafCategory 2.2-9 
+  [2XAssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[102X, for IsMorphismInAlgebroidFromDataTables 13.1-2 
   [2XCategoryOfBouquetsEnrichedOver[102X, for IsCapCategory 4.1-1 
   [2XCategoryOfDecoratedQuivers[102X, for IsObjectInCategoryOfQuivers, IsList, IsList 8.1-1 
   [2XCategoryOfInternalCategories[102X, for IsCapCategory 2.1-27 
@@ -154,7 +156,7 @@
   [2XIsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource[102X, for IsPreSheafCategory 11.2-8 
   [2XIsomorphismFromSourceIntoImageOfYonedaEmbeddingOfSource[102X, for IsPreSheafCategory 11.2-7 
   [2XIsPreSheafCategoryOfFpEnrichedCategory[102X, for IsPreSheafCategory 2.4-1 
-  [2XIsReflexive[102X, for IsCapCategoryObject 14.1-1 
+  [2XIsReflexive[102X, for IsCapCategoryObject 15.1-1 
   [2XLoops[102X, for IsObjectInCategoryOfBouquets 4.2-3 
       for IsObjectInCategoryOfReflexiveQuivers 7.2-3 
   [2XMaximalMorphismFromRepresentable[102X, for IsObjectInPreSheafCategory 2.1-12 
