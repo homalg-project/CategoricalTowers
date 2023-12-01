@@ -139,7 +139,7 @@ Dependencies := rec(
                    [ "FpCategories", ">= 2023.12-01" ],
                    [ "QPA", ">= 2.0" ],
                    [ "MatricesForHomalg", ">= 2021.12-01" ],
-                   [ "FreydCategoriesForCAP", ">= 2023.10-05" ],
+                   [ "FreydCategoriesForCAP", ">= 2023.12-01" ],
                    [ "RingsForHomalg", ">= 2018.12.02" ],
                    [ "ToolsForCategoricalTowers", ">= 2023.11-05" ],
                    [ "QuotientCategories", "2023.04-01" ],

@@ -451,8 +451,6 @@ function ( cat_1, arg2_1, arg3_1 )
         return false;
     elif deduped_7_1 <> Length( ObjectList( Range( arg3_1 ) ) ) then
         return false;
-    elif deduped_6_1 = 0 or deduped_7_1 = 0 then
-        return true;
     else
         hoisted_5_1 := [ 1 .. deduped_7_1 ];
         hoisted_4_1 := List( MorphismMatrix( arg3_1 ), function ( logic_new_func_list_2 )
@@ -488,8 +486,6 @@ function ( cat_1, arg2_1, arg3_1 )
         return false;
     elif deduped_7_1 <> Length( ObjectList( Range( arg3_1 ) ) ) then
         return false;
-    elif deduped_6_1 = 0 or deduped_7_1 = 0 then
-        return true;
     else
         hoisted_5_1 := [ 1 .. deduped_7_1 ];
         hoisted_4_1 := List( MorphismMatrix( arg3_1 ), function ( logic_new_func_list_2 )
