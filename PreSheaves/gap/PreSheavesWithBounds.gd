@@ -237,5 +237,3 @@ DeclareOperation( "ApplyObjectInPreSheafCategoryToMorphism",
 DeclareOperation( "ApplyMorphismInPreSheafCategoryToObject",
         [ IsPreSheafWithBoundsCategory, IsMorphismInPreSheafWithBoundsCategory, IsCapCategoryObject ] );
 
-DeclareOperation( "MorphismFromRepresentableFunctor",
-        [ IsPreSheafWithBoundsCategory, IsCapCategoryObject, IsObjectInPreSheafWithBoundsCategory, IsObjectInPreSheafWithBoundsCategory, IsCapCategoryMorphism ] );

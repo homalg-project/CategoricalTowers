@@ -18,5 +18,6 @@ ReadPackage( "FunctorCategories", "gap/AbelianClosure.gd");
 ReadPackage( "FunctorCategories", "gap/Functors.gd");
 ReadPackage( "FunctorCategories", "gap/DirectSumDecomposition.gd");
 ReadPackage( "FunctorCategories", "gap/HomologicalMethods.gd");
+ReadPackage( "FunctorCategories", "gap/QuotientsOfAlgebroidsFromDataTablesUsingPreSheaves.gd");
 ReadPackage( "FunctorCategories", "gap/Tools.gd");
 ReadPackage( "FunctorCategories", "gap/Tools.autogen.gd");
