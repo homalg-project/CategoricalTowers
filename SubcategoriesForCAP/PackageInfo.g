@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "SubcategoriesForCAP",
 Subtitle := "Subcategory and other related constructors for CAP categories",
-Version := "2023.11-08",
-Date := "2023-11-19",
+Version := "2023.11-09",
+Date := "2023-12-02",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -103,6 +103,7 @@ Dependencies := rec(
                    [ "FpCategories", ">= 2023.11-02" ],
                   ],
   SuggestedOtherPackages := [
+                   [ "FreydCategoriesForCAP", ">= 2022.08-04" ],
                    [ "CompilerForCAP", ">= 2022.10-05" ],
                   ],
   ExternalConditions := [ ],
