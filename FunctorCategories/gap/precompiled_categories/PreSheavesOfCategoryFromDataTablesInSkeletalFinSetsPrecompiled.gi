@@ -235,7 +235,7 @@ function ( cat_1, arg2_1, arg3_1 )
                       deduped_6_3 := 1 + deduped_7_3;
                       deduped_5_3 := deduped_15_1[deduped_6_3];
                       deduped_4_3 := 1 + deduped_5_3;
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_7_3 = deduped_22_1[deduped_4_3] and deduped_8_3 = deduped_23_1[deduped_4_3] then
                                       return deduped_10_3 = deduped_5_3;
                                   else
@@ -327,7 +327,7 @@ function ( cat_1, arg2_1, arg3_1 )
                       deduped_6_3 := 1 + deduped_7_3;
                       deduped_5_3 := deduped_15_1[deduped_6_3];
                       deduped_4_3 := 1 + deduped_5_3;
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_7_3 = deduped_22_1[deduped_4_3] and deduped_8_3 = deduped_23_1[deduped_4_3] then
                                       return deduped_10_3 = deduped_5_3;
                                   else
@@ -534,7 +534,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       deduped_6_3 := 1 + deduped_7_3;
                       deduped_5_3 := deduped_15_1[deduped_6_3];
                       deduped_4_3 := 1 + deduped_5_3;
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_7_3 = deduped_22_1[deduped_4_3] and deduped_8_3 = deduped_23_1[deduped_4_3] then
                                       return deduped_10_3 = deduped_5_3;
                                   else
@@ -626,7 +626,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       deduped_6_3 := 1 + deduped_7_3;
                       deduped_5_3 := deduped_15_1[deduped_6_3];
                       deduped_4_3 := 1 + deduped_5_3;
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_7_3 = deduped_22_1[deduped_4_3] and deduped_8_3 = deduped_23_1[deduped_4_3] then
                                       return deduped_10_3 = deduped_5_3;
                                   else
@@ -752,7 +752,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       deduped_6_3 := 1 + deduped_7_3;
                       deduped_5_3 := deduped_15_1[deduped_6_3];
                       deduped_4_3 := 1 + deduped_5_3;
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_7_3 = deduped_22_1[deduped_4_3] and deduped_8_3 = deduped_23_1[deduped_4_3] then
                                       return deduped_10_3 = deduped_5_3;
                                   else
@@ -844,7 +844,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       deduped_6_3 := 1 + deduped_7_3;
                       deduped_5_3 := deduped_15_1[deduped_6_3];
                       deduped_4_3 := 1 + deduped_5_3;
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_7_3 = deduped_22_1[deduped_4_3] and deduped_8_3 = deduped_23_1[deduped_4_3] then
                                       return deduped_10_3 = deduped_5_3;
                                   else
@@ -936,7 +936,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       deduped_6_3 := 1 + deduped_7_3;
                       deduped_5_3 := deduped_15_1[deduped_6_3];
                       deduped_4_3 := 1 + deduped_5_3;
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_7_3 = deduped_22_1[deduped_4_3] and deduped_8_3 = deduped_23_1[deduped_4_3] then
                                       return deduped_10_3 = deduped_5_3;
                                   else
@@ -1117,7 +1117,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
                       deduped_6_3 := 1 + deduped_7_3;
                       deduped_5_3 := deduped_18_1[deduped_6_3];
                       deduped_4_3 := 1 + deduped_5_3;
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_7_3 = deduped_25_1[deduped_4_3] and deduped_8_3 = deduped_26_1[deduped_4_3] then
                                       return deduped_10_3 = deduped_5_3;
                                   else
@@ -1209,7 +1209,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
                       deduped_6_3 := 1 + deduped_7_3;
                       deduped_5_3 := deduped_18_1[deduped_6_3];
                       deduped_4_3 := 1 + deduped_5_3;
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_7_3 = deduped_25_1[deduped_4_3] and deduped_8_3 = deduped_26_1[deduped_4_3] then
                                       return deduped_10_3 = deduped_5_3;
                                   else
@@ -1399,7 +1399,7 @@ function ( cat_1, arg2_1, arg3_1 )
                       deduped_6_3 := 1 + deduped_7_3;
                       deduped_5_3 := deduped_15_1[deduped_6_3];
                       deduped_4_3 := 1 + deduped_5_3;
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_7_3 = deduped_22_1[deduped_4_3] and deduped_8_3 = deduped_23_1[deduped_4_3] then
                                       return deduped_10_3 = deduped_5_3;
                                   else
@@ -1491,7 +1491,7 @@ function ( cat_1, arg2_1, arg3_1 )
                       deduped_6_3 := 1 + deduped_7_3;
                       deduped_5_3 := deduped_15_1[deduped_6_3];
                       deduped_4_3 := 1 + deduped_5_3;
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_7_3 = deduped_22_1[deduped_4_3] and deduped_8_3 = deduped_23_1[deduped_4_3] then
                                       return deduped_10_3 = deduped_5_3;
                                   else

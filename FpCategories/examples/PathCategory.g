@@ -30,7 +30,7 @@ Display( C );
 #! A CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,
 #! a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ):
 #!
-#! 15 primitive operations were used to derive 29 operations for this category
+#! 15 primitive operations were used to derive 30 operations for this category
 SetOfObjects( C );
 #! [ (0), (1), (2), (3), (4), (5) ]
 SetOfGeneratingMorphisms( C );
@@ -68,7 +68,7 @@ Display( qC );
 #! A CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,
 #! a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ]:
 #!
-#! 25 primitive operations were used to derive 63 operations for this category
+#! 25 primitive operations were used to derive 64 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 qC.0;
@@ -132,7 +132,7 @@ Display( P );
 #! A CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,
 #! c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" ) ):
 #!
-#! 16 primitive operations were used to derive 63 operations for this category
+#! 16 primitive operations were used to derive 64 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 HomStructure( P.0, P.5 );

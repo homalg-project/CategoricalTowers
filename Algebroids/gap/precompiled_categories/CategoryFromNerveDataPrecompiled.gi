@@ -233,13 +233,13 @@ end
     AddIsWellDefinedForMorphisms( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, alpha_1 )
     local deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
-    deduped_5_1 := MapOfMorphism( arg2_1 );
+    deduped_5_1 := MapOfMorphism( alpha_1 );
     deduped_4_1 := AsList( deduped_5_1 );
     deduped_3_1 := Length( Target( deduped_5_1 ) );
     deduped_2_1 := Length( Source( deduped_5_1 ) );
-    return IdFunc( function (  )
+    return CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                   if not ForAll( deduped_4_1, function ( a_3 )
                                return (IsBigInt( a_3 ) and a_3 >= 0);
                            end ) then
@@ -270,7 +270,7 @@ function ( cat_1, arg2_1 )
     deduped_4_1 := AsList( deduped_5_1 );
     deduped_3_1 := Length( Target( deduped_5_1 ) );
     deduped_2_1 := Length( Source( deduped_5_1 ) );
-    return IdFunc( function (  )
+    return CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                   if not ForAll( deduped_4_1, function ( a_3 )
                                return (IsBigInt( a_3 ) and a_3 >= 0);
                            end ) then

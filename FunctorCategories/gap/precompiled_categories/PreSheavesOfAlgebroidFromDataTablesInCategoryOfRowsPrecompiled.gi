@@ -1580,13 +1580,13 @@ end
     AddIsWellDefinedForMorphisms( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1;
-    hoisted_2_1 := Target( arg2_1 );
-    hoisted_1_1 := Source( arg2_1 );
+    hoisted_2_1 := Target( alpha_1 );
+    hoisted_1_1 := Source( alpha_1 );
     return ForAll( SetOfObjects( cat_1 ), function ( o_2 )
               local deduped_1_2, deduped_2_2;
-              deduped_2_2 := arg2_1( o_2 );
+              deduped_2_2 := alpha_1( o_2 );
               deduped_1_2 := UnderlyingMatrix( deduped_2_2 );
               if NumberRows( deduped_1_2 ) <> RankOfObject( Source( deduped_2_2 ) ) then
                   return false;
@@ -1600,8 +1600,8 @@ function ( cat_1, arg2_1 )
               local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2;
               deduped_4_2 := hoisted_2_1( m_2 );
               deduped_3_2 := hoisted_1_1( m_2 );
-              deduped_2_2 := arg2_1( Target( m_2 ) );
-              deduped_1_2 := arg2_1( Source( m_2 ) );
+              deduped_2_2 := alpha_1( Target( m_2 ) );
+              deduped_1_2 := alpha_1( Source( m_2 ) );
               return (RankOfObject( Target( deduped_3_2 ) ) = RankOfObject( Source( deduped_1_2 ) ) and RankOfObject( Target( deduped_2_2 ) ) = RankOfObject( Source( deduped_4_2 ) ) and UnderlyingMatrix( deduped_3_2 ) * UnderlyingMatrix( deduped_1_2 ) = UnderlyingMatrix( deduped_2_2 ) * UnderlyingMatrix( deduped_4_2 ));
           end );
 end
