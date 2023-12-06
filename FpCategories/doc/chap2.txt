@@ -310,7 +310,7 @@
     [4X[28XA CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,[128X[104X
     [4X[28Xa:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X15 primitive operations were used to derive 29 operations for this category[128X[104X
+    [4X[28X15 primitive operations were used to derive 30 operations for this category[128X[104X
     [4X[25Xgap>[125X [27XSetOfObjects( C );[127X[104X
     [4X[28X[ (0), (1), (2), (3), (4), (5) ][128X[104X
     [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( C );[127X[104X
@@ -348,7 +348,7 @@
     [4X[28XA CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,[128X[104X
     [4X[28Xa:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ]:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X25 primitive operations were used to derive 63 operations for this category[128X[104X
+    [4X[28X25 primitive operations were used to derive 64 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[25Xgap>[125X [27XqC.0;[127X[104X
@@ -412,7 +412,7 @@
     [4X[28XA CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,[128X[104X
     [4X[28Xc:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X16 primitive operations were used to derive 63 operations for this category[128X[104X
+    [4X[28X16 primitive operations were used to derive 64 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( P.0, P.5 );[127X[104X
