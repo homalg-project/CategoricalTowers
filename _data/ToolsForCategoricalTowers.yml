@@ -1,7 +1,7 @@
 name: ToolsForCategoricalTowers
-version: "2023.11-07"
+version: "2023.12-01"
 license: "GPL-2.0-or-later"
-date: 2023-11-22
+date: 2023-12-06
 description: |
     Tools for CategoricalTowers
 
@@ -17,7 +17,7 @@ GAP: ">= 4.12.1"
 
 needed-pkgs:
     - name: "CAP"
-      version: ">= 2023.10-04"
+      version: ">= 2023.12-02"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
       version: ">= 2023.10-01"
@@ -35,11 +35,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/ToolsForCategori
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ToolsForCategoricalTowers-2023.11-07/ToolsForCategoricalTowers-2023.11-07.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ToolsForCategoricalTowers-2023.12-01/ToolsForCategoricalTowers-2023.12-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ToolsForCategoricalTowers-2023.11-07/ToolsForCategoricalTowers-2023.11-07.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ToolsForCategoricalTowers-2023.12-01/ToolsForCategoricalTowers-2023.12-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/ToolsForCategoricalTowers-2023.11-07/ToolsForCategoricalTowers-2023.11-07-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/ToolsForCategoricalTowers-2023.12-01/ToolsForCategoricalTowers-2023.12-01-manual.pdf
 
 abstract: |
 
@@ -50,22 +50,22 @@ keywords: |
     Category constructor.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Bar22</span>]   <b class='BibAuthor'>Barakat, M.</b>,
+    [<span class='BibKey'>Bar06</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>ToolsForCategoricalTowers, Tools for CategoricalTowers,
-             Version 2023.11-07</i>
-     (<span class='BibYear'>1-22</span>)<br />
+             Version 2023.12-01</i>
+     (<span class='BibYear'>2-06</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ToolsForCategoricalTowers">https://homalg-project.github.io/pkg/ToolsForCategoricalTowers</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ ToolsForCategoricalTowers2023.11-07,
+    @misc{ ToolsForCategoricalTowers2023.12-01,
       author =           {Barakat, M.},
       title =            {{ToolsForCategoricalTowers},         Tools         for
-                          CategoricalTowers, {V}ersion 2023.11-07},
+                          CategoricalTowers, {V}ersion 2023.12-01},
       month =            {3-},
-      year =             {1-22},
+      year =             {2-06},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/ToolsForCategoricalTowers}
@@ -73,6 +73,6 @@ bibtex: |
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{ToolsForCategoricalTowers}}},
       keywords =         {Category constructor},
-      printedkey =       {Bar22}
+      printedkey =       {Bar06}
     }
 
