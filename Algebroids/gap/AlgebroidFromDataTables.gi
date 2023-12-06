@@ -1227,13 +1227,15 @@ InstallMethod( IsAdmissibleAlgebroid,
           [ IsAlgebroidFromDataTables ],
   
   function ( A )
-    local q, dim, i;
+    local q, A_op, dim, i, bool;
     
     q := UnderlyingQuiver( A );
     
-    if HasOppositeAlgebroid( A ) and HasIsAdmissibleAlgebroid( OppositeAlgebroid( A ) ) then
+    A_op := OppositeAlgebroid( A );
+    
+    if HasIsAdmissibleAlgebroid( A_op ) then
         
-        return IsAdmissibleAlgebroid( OppositeAlgebroid( A ) );
+        return IsAdmissibleAlgebroid( A_op );
         
     fi;
     
@@ -1258,7 +1260,11 @@ InstallMethod( IsAdmissibleAlgebroid,
     
     repeat i := i + 1; until dim[i] = dim[i-1];
     
-    return dim[i] = Dimension( A );
+    bool := dim[i] = Dimension( A );
+    
+    SetIsAdmissibleAlgebroid( A_op, bool );
+    
+    return bool;
     
 end );
 
