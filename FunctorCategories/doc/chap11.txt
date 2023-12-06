@@ -195,7 +195,7 @@
     [4X[28XRightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),[128X[104X
     [4X[28XIntervalCategory ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X58 primitive operations were used to derive 206 operations for this category[128X[104X
+    [4X[28X58 primitive operations were used to derive 207 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsFiniteCocompleteCategory[128X[104X
