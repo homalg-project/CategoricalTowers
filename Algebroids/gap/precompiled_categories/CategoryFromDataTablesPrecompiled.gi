@@ -116,9 +116,9 @@ end
     AddIsWellDefinedForMorphisms( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, alpha_1 )
     local deduped_1_1;
-    deduped_1_1 := IndexOfMorphism( arg2_1 );
+    deduped_1_1 := IndexOfMorphism( alpha_1 );
     return IsBigInt( deduped_1_1 ) and deduped_1_1 >= 0 and deduped_1_1 < DataTables( cat_1 )[1][2];
 end
 ########

@@ -225,7 +225,7 @@ function ( cat_1, arg2_1, arg3_1 )
                       deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
                       deduped_5_3 := hoisted_2_2[deduped_6_3];
                       deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_5_3 = deduped_7_3 then
                                       return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
                                   else
@@ -335,7 +335,7 @@ function ( cat_1, arg2_1, arg3_1 )
                       deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
                       deduped_5_3 := hoisted_2_2[deduped_6_3];
                       deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_5_3 = deduped_7_3 then
                                       return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
                                   else
@@ -540,7 +540,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
                       deduped_5_3 := hoisted_2_2[deduped_6_3];
                       deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_5_3 = deduped_7_3 then
                                       return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
                                   else
@@ -650,7 +650,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
                       deduped_5_3 := hoisted_2_2[deduped_6_3];
                       deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_5_3 = deduped_7_3 then
                                       return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
                                   else
@@ -788,7 +788,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
                       deduped_5_3 := hoisted_2_2[deduped_6_3];
                       deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_5_3 = deduped_7_3 then
                                       return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
                                   else
@@ -890,7 +890,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
                       deduped_5_3 := hoisted_2_2[deduped_6_3];
                       deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_5_3 = deduped_7_3 then
                                       return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
                                   else
@@ -997,7 +997,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
                       deduped_5_3 := hoisted_2_2[deduped_6_3];
                       deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_5_3 = deduped_7_3 then
                                       return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
                                   else
@@ -1170,7 +1170,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
                       deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
                       deduped_5_3 := hoisted_2_2[deduped_6_3];
                       deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_5_3 = deduped_7_3 then
                                       return deduped_4_3 = PathAsAlgebraElement( deduped_16_1, hoisted_6_2[deduped_8_3] );
                                   else
@@ -1280,7 +1280,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
                       deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
                       deduped_5_3 := hoisted_2_2[deduped_6_3];
                       deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_5_3 = deduped_7_3 then
                                       return deduped_4_3 = PathAsAlgebraElement( deduped_16_1, hoisted_6_2[deduped_8_3] );
                                   else
@@ -1462,7 +1462,7 @@ function ( cat_1, arg2_1, arg3_1 )
                       deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
                       deduped_5_3 := hoisted_2_2[deduped_6_3];
                       deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_5_3 = deduped_7_3 then
                                       return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
                                   else
@@ -1572,7 +1572,7 @@ function ( cat_1, arg2_1, arg3_1 )
                       deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
                       deduped_5_3 := hoisted_2_2[deduped_6_3];
                       deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
-                      if IdFunc( function (  )
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                   if deduped_5_3 = deduped_7_3 then
                                       return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
                                   else

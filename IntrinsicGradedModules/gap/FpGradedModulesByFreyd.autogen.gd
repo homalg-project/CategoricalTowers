@@ -183,6 +183,7 @@
 #! * <Ref BookName="CAP" Func="IsOne" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsTerminal" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsWellDefinedForMorphisms" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsWellDefinedForMorphismsWithGivenSourceAndRange" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsWellDefinedForObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsZeroForMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsZeroForObjects" Label="for Is" />

@@ -299,18 +299,23 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    local hoisted_3_1, hoisted_4_1;
-    hoisted_4_1 := ObjectList( arg3_1 );
-    hoisted_3_1 := List( BasisPathsByVertexIndex( UnderlyingCategory( cat_1 ) ), function ( logic_new_func_list_2 )
+    local hoisted_4_1, hoisted_5_1, hoisted_6_1, deduped_7_1, deduped_8_1;
+    deduped_8_1 := ObjectList( arg3_1 );
+    deduped_7_1 := ObjectList( arg2_1 );
+    hoisted_6_1 := [ 1 .. Length( deduped_8_1 ) ];
+    hoisted_5_1 := List( deduped_8_1, function ( logic_new_func_x_2 )
+            return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
+    hoisted_4_1 := List( BasisPathsByVertexIndex( UnderlyingCategory( cat_1 ) ), function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, Length );
         end );
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, Sum( Concatenation( List( ObjectList( arg2_1 ), function ( obj_i_2 )
-                  local hoisted_1_2;
-                  hoisted_1_2 := hoisted_3_1[VertexIndex( UnderlyingVertex( obj_i_2 ) )];
-                  return List( hoisted_4_1, function ( obj_j_3 )
-                          return hoisted_1_2[VertexIndex( UnderlyingVertex( obj_j_3 ) )];
-                      end );
-              end ) ) ) );
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, Sum( List( [ 1 .. Length( deduped_7_1 ) ], function ( j_2 )
+                local hoisted_1_2;
+                hoisted_1_2 := hoisted_4_1[CAP_JIT_INCOMPLETE_LOGIC( VertexIndex( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_7_1[j_2] ) ) ) )];
+                return Sum( List( hoisted_6_1, function ( s_3 )
+                          return hoisted_1_2[hoisted_5_1[s_3]];
+                      end ) );
+            end ) ) );
 end
 ########
         
@@ -536,12 +541,12 @@ end
     AddIsWellDefinedForMorphisms( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, hoisted_12_1, deduped_13_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1, deduped_19_1;
     deduped_19_1 := UnderlyingCategory( cat_1 );
-    deduped_18_1 := MorphismMatrix( arg2_1 );
-    deduped_17_1 := ObjectList( Range( arg2_1 ) );
-    deduped_16_1 := ObjectList( Source( arg2_1 ) );
+    deduped_18_1 := MorphismMatrix( alpha_1 );
+    deduped_17_1 := ObjectList( Range( alpha_1 ) );
+    deduped_16_1 := ObjectList( Source( alpha_1 ) );
     deduped_15_1 := Length( deduped_17_1 );
     deduped_14_1 := Length( deduped_16_1 );
     deduped_13_1 := [ 1 .. deduped_14_1 ];
@@ -595,7 +600,7 @@ function ( cat_1, arg2_1 )
                          deduped_3_3 := hoisted_5_2[j_3];
                          hoisted_2_3 := hoisted_7_2[j_3];
                          hoisted_1_3 := hoisted_6_2[j_3];
-                         return (hoisted_1_2[j_3] and IS_IDENTICAL_OBJ( deduped_19_1, hoisted_2_2[j_3] ) and IdFunc( function (  )
+                         return (hoisted_1_2[j_3] and IS_IDENTICAL_OBJ( deduped_19_1, hoisted_2_2[j_3] ) and CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                      if not hoisted_3_2[j_3] = hoisted_5_1 then
                                          return false;
                                      elif hoisted_4_2[j_3] then

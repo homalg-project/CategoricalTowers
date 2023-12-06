@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "IntrinsicModules",
 Subtitle := "Finitely presented modules over computable rings allowing multiple presentations and the notion of elements",
 
-Version := "2023.11-01",
+Version := "2023.12-01",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
@@ -87,7 +87,7 @@ Dependencies := rec(
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                    [ "MatricesForHomalg", ">= 2023.10-01" ],
                    [ "Modules", ">= 2021.04-01" ],
-                   [ "CAP", ">= 2023.10-04" ],
+                   [ "CAP", ">= 2023.12-02" ],
                    [ "MonoidalCategories", ">= 2023.10-01" ],
                    [ "CartesianCategories", ">= 2023.10-01" ],
                    [ "GeneralizedMorphismsForCAP", ">= 2020.10-01" ],
