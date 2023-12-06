@@ -1411,6 +1411,8 @@ InstallOtherMethod( OppositeAlgebroid,
     
     A_op := AlgebroidFromDataTables( data_tables : colors := A!.colors, range_of_HomStructure := RangeCategoryOfHomomorphismStructure( A ) );
     
+    SetOppositeAlgebroid( A_op, A );
+    
     if HasIsAdmissibleAlgebroid( A ) then
         SetIsAdmissibleAlgebroid( A_op, IsAdmissibleAlgebroid( A ) );
     fi;
