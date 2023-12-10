@@ -31,3 +31,11 @@ CapJitAddLogicTemplate(
         dst_template := "beta",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "length", "entry", "func" ],
+        src_template := "List( ListWithIdenticalEntries( length, entry ), func )",
+        dst_template := "ListWithIdenticalEntries( length, func( entry ) )",
+    )
+);

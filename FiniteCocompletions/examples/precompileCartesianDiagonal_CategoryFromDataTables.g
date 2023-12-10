@@ -1,7 +1,7 @@
 LoadPackage( "FunctorCategories", false );
 #! true
 
-LoadPackage( "CompilerForCAP", ">= 2022.09-02", false );
+LoadPackage( "CompilerForCAP", ">= 2023.12-09", false );
 #! true
 
 ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );

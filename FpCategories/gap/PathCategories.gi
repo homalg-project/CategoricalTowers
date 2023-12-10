@@ -149,7 +149,11 @@ InstallMethod( PathCategory,
     AddIdentityMorphism( C,
       function ( C, obj )
         
-        return MorphismConstructor( C, obj, Pair( BigInt( 0 ), [ ] ), obj );
+        return MorphismConstructor( C,
+                       obj,
+                       Pair( BigInt( 0 ),
+                             CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsBigInt ) ) ),
+                       obj );
         
     end );
     

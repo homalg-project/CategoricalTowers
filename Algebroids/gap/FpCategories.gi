@@ -255,7 +255,7 @@ InstallOtherMethodForCompilerForCAP( DecompositionIndicesOfMorphism,
     fi;
     
     if IsEqualToIdentityMorphism( C, mor ) then
-        return [ ];
+        return CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) );
     fi;
     
     cmp := DecomposeQuiverAlgebraElement( UnderlyingQuiverAlgebraElement( mor ) );

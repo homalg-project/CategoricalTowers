@@ -502,7 +502,7 @@ function ( cat_1, alpha_1 )
                     end ) ] ) ) ), UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_44_1, deduped_37_1, deduped_21_1, MorphismMatrix, UnionOfColumnsListList( deduped_25_1, [ List( deduped_22_1, function ( i_2 )
                       local hoisted_1_2, deduped_3_2;
                       deduped_3_2 := deduped_32_1[i_2];
-                      hoisted_1_2 := CreateCapCategoryMorphismWithAttributes( deduped_42_1, deduped_3_2, deduped_3_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_38_1, CAP_JIT_INCOMPLETE_LOGIC( QuiverVertexAsIdentityPath( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_3_2 ) ) ) ) ) );
+                      hoisted_1_2 := CreateCapCategoryMorphismWithAttributes( deduped_42_1, deduped_3_2, deduped_3_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_38_1, CAP_JIT_INCOMPLETE_LOGIC( QuiverVertexAsIdentityPath( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_32_1[i_2] ) ) ) ) ) );
                       return List( deduped_22_1, function ( j_3 )
                               if i_2 = j_3 then
                                   return hoisted_1_2;

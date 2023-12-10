@@ -3,9 +3,9 @@ func := EvalString( ReplacedStringViaRecord( """
     local objects, generating_morphisms,
           embedding_on_objects, embedding_on_morphisms, extended_functorDC;
     
-    objects := [ a, b, c ];
+    objects := CapJitTypedExpression( [ a, b, c ], T -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( T ) ) );
     
-    generating_morphisms := [  ];
+    generating_morphisms := CapJitTypedExpression( [ ], T -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( T ) ) );
     
     ## Q → T
     embedding_on_objects :=

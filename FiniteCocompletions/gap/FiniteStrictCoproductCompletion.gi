@@ -29,9 +29,11 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             return """
                 function( input_arguments... )
-                    
-                    return ObjectConstructor( cat, Pair( BigInt( 0 ), [ ] ) );
-                    
+                  
+                  return ObjectConstructor( cat,
+                                 Pair( BigInt( 0 ),
+                                       CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( cat ) ) ) ) ) );
+                  
                 end
             """;
             
@@ -43,9 +45,13 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             return """
                 function( input_arguments... )
-                    
-                    return MorphismConstructor( cat, top_source, Pair( [ ], [ ] ), top_range );
-                    
+                  
+                  return MorphismConstructor( cat,
+                                 top_source,
+                                 Pair( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsBigInt ) ),
+                                       CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( cat ) ) ) ) ),
+                                 top_range );
+                  
                 end
             """;
             
@@ -548,7 +554,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                        Pair( ## SkeletalFinSets code:
                              BigInt( 0 ),
                              ## FiniteStrictCoproductCompletion code:
-                             [ ] ) );
+                             CapJitTypedExpression( [ ], UC -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( UC ) ) ) ) ) );
         
     end );
     
@@ -556,7 +562,11 @@ InstallMethod( FiniteStrictCoproductCompletion,
     AddUniversalMorphismFromInitialObjectWithGivenInitialObject( UC,
       function ( UC, object, I )
         
-        return MorphismConstructor( UC, I, Pair( [ ], [ ] ), object );
+        return MorphismConstructor( UC,
+                       I,
+                       Pair( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsBigInt ) ),
+                             CapJitTypedExpression( [ ], UC -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( UC ) ) ) ) ),
+                       object );
         
     end );
     
