@@ -320,9 +320,11 @@ function ( cat_1, alpha_1 )
     deduped_2_1 := RankOfObject( Target( deduped_6_1 ) );
     deduped_1_1 := RankOfObject( Source( deduped_6_1 ) );
     return RankOfObject( Source( deduped_3_1 ) ) = deduped_1_1 and RankOfObject( Source( deduped_4_1 ) ) = deduped_2_1 and CAP_JIT_EXPR_CASE_WRAPPER( function (  )
-                  if NumberRows( deduped_5_1 ) <> deduped_1_1 then
+                  if not IsHomalgMatrix( deduped_5_1 ) then
                       return false;
-                  elif NumberColumns( deduped_5_1 ) <> deduped_2_1 then
+                  elif not NumberRows( deduped_5_1 ) = deduped_1_1 then
+                      return false;
+                  elif not NumberColumns( deduped_5_1 ) = deduped_2_1 then
                       return false;
                   else
                       return true;
@@ -344,9 +346,11 @@ function ( cat_1, arg2_1 )
     deduped_2_1 := UnderlyingMatrix( deduped_3_1 );
     deduped_1_1 := RankOfObject( Target( deduped_3_1 ) );
     return deduped_1_1 = RankOfObject( BaseObject( cat_1 ) ) and CAP_JIT_EXPR_CASE_WRAPPER( function (  )
-                if NumberRows( deduped_2_1 ) <> RankOfObject( Source( deduped_3_1 ) ) then
+                if not IsHomalgMatrix( deduped_2_1 ) then
                     return false;
-                elif NumberColumns( deduped_2_1 ) <> deduped_1_1 then
+                elif not NumberRows( deduped_2_1 ) = RankOfObject( Source( deduped_3_1 ) ) then
+                    return false;
+                elif not NumberColumns( deduped_2_1 ) = deduped_1_1 then
                     return false;
                 else
                     return true;
