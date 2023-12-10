@@ -30,12 +30,12 @@ func := EvalString( ReplacedStringViaRecord( """
                       C,
                       Pair( embedding_on_objects, embedding_on_morphisms ),
                       T )[2],
-              T );
+              T )[2];
     
-    return extended_functor[2][2](
-                   A, #extended_functor[2][1]( a ),
+    return extended_functor[2](
+                   A, #extended_functor[1]( a ),
                    delta_reconstructed,
-                   AA ); #extended_functor[2][1]( aa ) );
+                   AA ); #extended_functor[1]( aa ) );
     
 end
 """,
