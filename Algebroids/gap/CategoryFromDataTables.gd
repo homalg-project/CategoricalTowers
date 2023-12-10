@@ -113,27 +113,28 @@ DeclareAttribute( "OppositeMorphismInOppositeCategoryFromDataTables",
 DeclareAttribute( "DecompositionIndicesOfAllMorphisms",
         IsCategoryFromDataTables );
 
-CapJitAddTypeSignature( "DecompositionIndicesOfAllMorphisms", [ IsCategoryFromDataTables ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfListOf(
-                   CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfListOf( IsInt ) ) );
-    
-end );
+#CapJitAddTypeSignature( "DecompositionIndicesOfAllMorphisms", [ IsCategoryFromDataTables ],
+#  function ( input_types )
+#    
+#    return CapJitDataTypeOfListOf(
+#                   CapJitDataTypeOfListOf(
+#                           CapJitDataTypeOfListOf(
+#                                   CapJitDataTypeOfListOf( IsInt ) ) ) );
+#    
+#end );
 
 DeclareAttribute( "RelationsAmongGeneratingMorphisms",
         IsCategoryFromDataTables );
 
-CapJitAddTypeSignature( "RelationsAmongGeneratingMorphisms", [ IsCategoryFromDataTables ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfListOf(
-                   CapJitDataTypeOfNTupleOf( 2,
-                           CapJitDataTypeOfListOf( IsInt ),
-                           CapJitDataTypeOfListOf( IsInt ) ) );
-    
-end );
+#CapJitAddTypeSignature( "RelationsAmongGeneratingMorphisms", [ IsCategoryFromDataTables ],
+#  function ( input_types )
+#    
+#    return CapJitDataTypeOfListOf(
+#                   CapJitDataTypeOfNTupleOf( 2,
+#                           CapJitDataTypeOfListOf( IsInt ),
+#                           CapJitDataTypeOfListOf( IsInt ) ) );
+#    
+#end );
 
 #! @Description
 #!  The finite set of morphisms generating the category <A>C</A> created from data tables.

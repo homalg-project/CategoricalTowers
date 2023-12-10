@@ -469,12 +469,11 @@ end
         
 ########
 function ( cat_1, alpha_1, S_1, i_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1;
+    local hoisted_1_1, hoisted_2_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := ValuesOnAllObjects( alpha_1 );
     deduped_6_1 := S_1[i_1];
     hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := [ 1 .. i_1 - 1 ];
-    hoisted_3_1 := List( deduped_7_1, UnderlyingMatrix );
     hoisted_2_1 := ValuesOfPreSheaf( CAP_JIT_INCOMPLETE_LOGIC( deduped_6_1 ) )[1];
     hoisted_1_1 := List( deduped_7_1, Source );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), deduped_6_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -483,7 +482,7 @@ function ( cat_1, alpha_1, S_1, i_1 )
                       return CAP_JIT_INCOMPLETE_LOGIC( RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[1][o_2] ) ) );
                   end );
               deduped_1_2 := Sum( deduped_2_2{hoisted_4_1} );
-              return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], CAP_JIT_INCOMPLETE_LOGIC( hoisted_2_1[o_2] ), UnderlyingMatrix, CertainColumns( hoisted_3_1[o_2], [ deduped_1_2 + 1 .. deduped_1_2 + deduped_2_2[i_1] ] ) );
+              return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], CAP_JIT_INCOMPLETE_LOGIC( hoisted_2_1[o_2] ), UnderlyingMatrix, CAP_JIT_INCOMPLETE_LOGIC( CertainColumns( UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( deduped_7_1[o_2] ) ), [ deduped_1_2 + 1 .. deduped_1_2 + deduped_2_2[i_1] ] ) ) );
           end ) );
 end
 ########
@@ -1511,9 +1510,11 @@ function ( cat_1, alpha_1 )
               local deduped_1_2, deduped_2_2;
               deduped_2_2 := alpha_1( o_2 );
               deduped_1_2 := UnderlyingMatrix( deduped_2_2 );
-              if NumberRows( deduped_1_2 ) <> RankOfObject( Source( deduped_2_2 ) ) then
+              if not IsHomalgMatrix( deduped_1_2 ) then
                   return false;
-              elif NumberColumns( deduped_1_2 ) <> RankOfObject( Range( deduped_2_2 ) ) then
+              elif not NumberRows( deduped_1_2 ) = RankOfObject( Source( deduped_2_2 ) ) then
+                  return false;
+              elif not NumberColumns( deduped_1_2 ) = RankOfObject( Range( deduped_2_2 ) ) then
                   return false;
               else
                   return true;

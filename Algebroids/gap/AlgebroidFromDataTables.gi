@@ -535,11 +535,13 @@ InstallMethod( AlgebroidFromDataTables,
     AddIdentityMorphism( A,
       
       function ( A, obj )
-        local i;
+        local i, empty_list;
         
         i := ObjectIndex( obj );
         
-        return BasesElements( A )[i][i][SafePositionProperty( DecompositionIndicesOfBasesElements( A )[i][i], indices -> indices = [ ] )];
+        empty_list := CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) );
+        
+        return BasesElements( A )[i][i][SafePositionProperty( DecompositionIndicesOfBasesElements( A )[i][i], indices -> indices = empty_list )];
         
     end );
     

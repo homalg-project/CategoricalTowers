@@ -1,9 +1,9 @@
 func := EvalString( ReplacedStringViaRecord( """
-  function( T, source, a, b, c, target )
+  function( T, A, AA )
     local objects, generating_morphisms,
-          embedding_on_objects, embedding_on_morphisms, extended_functorDC;
+          embedding_on_objects, embedding_on_morphisms, extended_functor;
     
-    objects := CapJitTypedExpression( [ a, b, c ], T -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( T ) ) );
+    objects := CapJitTypedExpression( [ A ], T -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( T ) ) );
     
     generating_morphisms := CapJitTypedExpression( [ ], T -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( T ) ) );
     
@@ -22,21 +22,21 @@ func := EvalString( ReplacedStringViaRecord( """
         
     end;
     
-    ## DC → T
-    extended_functorDC :=
-      ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproductsData(
-              DC,
+    ## PC → T
+    extended_functor :=
+      ExtendFunctorToFiniteStrictProductCompletionData(
+              PC,
               ExtendFunctorToFpCategoryData(
                       C,
                       Pair( embedding_on_objects, embedding_on_morphisms ),
                       T )[2],
               T )[2];
     
-    return extended_functorDC[2](
-                   source, #extended_functorDC[1]( source ),
-                   lfactor_reconstructed,
-                   target ); #extended_functorDC[1]( target ) );
+    return extended_functor[2](
+                   A, #extended_functor[1]( a ),
+                   delta_reconstructed,
+                   AA ); #extended_functor[1]( aa ) );
     
 end
 """,
-  rec( lfactor_reconstructed := lfactor_reconstructed ) ) );
+  rec( delta_reconstructed := delta_reconstructed ) ) );

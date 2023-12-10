@@ -1,5 +1,21 @@
 CapJitAddLogicTemplate(
     rec(
+        variable_names := [ "list", "length" ],
+        src_template := "List( [ 1 .. length ], i -> list[i] )",
+        dst_template := "list{[ 1 .. length ]}",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "entry1", "entry2", "entry3" ],
+        src_template := Concatenation( "[ entry1, entry2, entry3 ]{[ 1 .. ", CapJitGetOrCreateGlobalVariable( 3 )," ]}" ),
+        dst_template := "[ entry1, entry2, entry3 ]",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
         variable_names := [ "cat", "D", "T", "tau", "P" ],
         src_template := "Source( UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, D, T, tau, P ) )",
         dst_template := "T",
