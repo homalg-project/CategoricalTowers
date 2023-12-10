@@ -98,6 +98,11 @@ InstallMethod( FiniteStrictCoproductCompletion,
     SetUnderlyingCategory( UI, I );
     
     ##
+    UI!.compiler_hints.category_attribute_names :=
+      [ "UnderlyingCategory",
+        ];
+    
+    ##
     AddIsWellDefinedForObjects( UI,
       function( UI, object )
         
