@@ -40,7 +40,7 @@
 @InsertChunk DPO
 
 @Subsection Precompilation
-@InsertChunk SliceCategoryOfCategoryOfRowsOfFieldOverTensorUnitPrecompiled
+@InsertChunk SliceCategoryOfCategoryOfRowsOfIntegersOverTensorUnitPrecompiled
 
 @Chapter Slice categories (lazy data structure)
 

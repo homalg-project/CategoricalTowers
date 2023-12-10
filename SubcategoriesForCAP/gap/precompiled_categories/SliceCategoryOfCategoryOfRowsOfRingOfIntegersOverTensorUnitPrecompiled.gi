@@ -311,15 +311,15 @@ end
     AddIsWellDefinedForMorphisms( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, alpha_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := UnderlyingCell( arg2_1 );
+    deduped_6_1 := UnderlyingCell( alpha_1 );
     deduped_5_1 := UnderlyingMatrix( deduped_6_1 );
-    deduped_4_1 := UnderlyingMorphism( Target( arg2_1 ) );
-    deduped_3_1 := UnderlyingMorphism( Source( arg2_1 ) );
+    deduped_4_1 := UnderlyingMorphism( Target( alpha_1 ) );
+    deduped_3_1 := UnderlyingMorphism( Source( alpha_1 ) );
     deduped_2_1 := RankOfObject( Target( deduped_6_1 ) );
     deduped_1_1 := RankOfObject( Source( deduped_6_1 ) );
-    return RankOfObject( Source( deduped_3_1 ) ) = deduped_1_1 and RankOfObject( Source( deduped_4_1 ) ) = deduped_2_1 and IdFunc( function (  )
+    return RankOfObject( Source( deduped_3_1 ) ) = deduped_1_1 and RankOfObject( Source( deduped_4_1 ) ) = deduped_2_1 and CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                   if NumberRows( deduped_5_1 ) <> deduped_1_1 then
                       return false;
                   elif NumberColumns( deduped_5_1 ) <> deduped_2_1 then
@@ -343,7 +343,7 @@ function ( cat_1, arg2_1 )
     deduped_3_1 := UnderlyingMorphism( arg2_1 );
     deduped_2_1 := UnderlyingMatrix( deduped_3_1 );
     deduped_1_1 := RankOfObject( Target( deduped_3_1 ) );
-    return deduped_1_1 = RankOfObject( BaseObject( cat_1 ) ) and IdFunc( function (  )
+    return deduped_1_1 = RankOfObject( BaseObject( cat_1 ) ) and CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                 if NumberRows( deduped_2_1 ) <> RankOfObject( Source( deduped_3_1 ) ) then
                     return false;
                 elif NumberColumns( deduped_2_1 ) <> deduped_1_1 then
