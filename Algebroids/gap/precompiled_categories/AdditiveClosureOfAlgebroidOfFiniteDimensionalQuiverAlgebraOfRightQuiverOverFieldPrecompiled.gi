@@ -335,7 +335,7 @@ function ( cat_1, a_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, MorphismMatrix, List( deduped_6_1, function ( i_2 )
               local hoisted_1_2, deduped_3_2;
               deduped_3_2 := deduped_8_1[i_2];
-              hoisted_1_2 := CreateCapCategoryMorphismWithAttributes( deduped_9_1, deduped_3_2, deduped_3_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_7_1, CAP_JIT_INCOMPLETE_LOGIC( QuiverVertexAsIdentityPath( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_8_1[i_2] ) ) ) ) ) );
+              hoisted_1_2 := CreateCapCategoryMorphismWithAttributes( deduped_9_1, deduped_3_2, deduped_3_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_7_1, CAP_JIT_INCOMPLETE_LOGIC( QuiverVertexAsIdentityPath( UnderlyingVertex( CAP_JIT_INCOMPLETE_LOGIC( deduped_3_2 ) ) ) ) ) );
               return List( deduped_6_1, function ( j_3 )
                       if i_2 = j_3 then
                           return hoisted_1_2;
