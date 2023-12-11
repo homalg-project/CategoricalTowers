@@ -517,3 +517,49 @@
   
   [1X4.3-5 [33X[0;0YPrecompilation[133X[101X
   
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XZZZ := HomalgRingOfIntegers( );;[127X[104X
+    [4X[25Xgap>[125X [27X# HomalgIdentityMatrix( size, ring ) * matrix -> matrix[127X[104X
+    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "size", "ring", "matrix" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "HomalgIdentityMatrix( size, ring ) * matrix",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
+    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "matrix", "dimension", "ring" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "matrix * HomalgIdentityMatrix( dimension, ring )",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27X# we do not use SliceCategoryOverTensorUnit because that installs more operations[127X[104X
+    [4X[25X>[125X [27X# which we are not interested in for this simple test[127X[104X
+    [4X[25X>[125X [27Xcategory_constructor := ring ->[127X[104X
+    [4X[25X>[125X [27X    SliceCategory([127X[104X
+    [4X[25X>[125X [27X        TensorUnit([127X[104X
+    [4X[25X>[125X [27X            CategoryOfRows( ring : FinalizeCategory := true )[127X[104X
+    [4X[25X>[125X [27X        )[127X[104X
+    [4X[25X>[125X [27X    );;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ ZZZ ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "SliceCategoryOfCategoryOfRowsOfRingOfIntegersOverTensorUnitPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "SubcategoriesForCAP";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name[127X[104X
+    [4X[25X>[125X [27X    : operations := "primitive",[127X[104X
+    [4X[25X>[125X [27X    number_of_objectified_objects_in_data_structure_of_object := 3,[127X[104X
+    [4X[25X>[125X [27X    number_of_objectified_morphisms_in_data_structure_of_object := 1,[127X[104X
+    [4X[25X>[125X [27X    number_of_objectified_objects_in_data_structure_of_morphism := 6,[127X[104X
+    [4X[25X>[125X [27X    number_of_objectified_morphisms_in_data_structure_of_morphism := 4[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+  [4X[32X[104X
+  

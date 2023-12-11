@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "SubcategoriesForCAP",
 Subtitle := "Subcategory and other related constructors for CAP categories",
-Version := "2023.11-09",
-Date := "2023-12-02",
+Version := "2023.12-02",
+Date := "2023-12-11",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -98,12 +98,12 @@ Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2023.08-04" ],
+                   [ "CAP", ">= 2023.12-07" ],
                    [ "MonoidalCategories", ">= 2020.03.01" ],
                    [ "FpCategories", ">= 2023.11-02" ],
                   ],
   SuggestedOtherPackages := [
-                   [ "FreydCategoriesForCAP", ">= 2022.08-04" ],
+                   [ "FreydCategoriesForCAP", ">= 2023.12-09" ],
                    [ "CompilerForCAP", ">= 2022.10-05" ],
                   ],
   ExternalConditions := [ ],
