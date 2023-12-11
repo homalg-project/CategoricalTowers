@@ -823,7 +823,7 @@ InstallMethod( LazyCategory,
             arguments := genesis[2];
             
             # operation_name must be the name of a CAP operation which returns an object
-            if not (IsString( operation_name ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).return_type = "object") then
+            if not (IsString( operation_name ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and StartsWith( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).return_type, "object")) then
                 
                 return false;
                 
@@ -894,7 +894,7 @@ InstallMethod( LazyCategory,
             arguments := genesis[2];
             
             # operation_name must be the name of a CAP operation which returns a morphism
-            if not (IsString( operation_name ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).return_type = "morphism") then
+            if not (IsString( operation_name ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and StartsWith( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).return_type, "morphism")) then
                 
                 return false;
                 
