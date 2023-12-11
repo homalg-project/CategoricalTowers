@@ -318,3 +318,12 @@ CapJitAddLogicTemplate(
         dst_template := "1",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "from1", "to1", "from2", "to2" ],
+        variable_filters := [ IsList, IsInt, IsInt, IsInt, IsInt ],
+        src_template := "(list{[ from1 + 1 .. to1 ]}){[ from2 .. to2 ]}",
+        dst_template := "list{[ from1 + from2 .. from1 + to2 ]}",
+    )
+);

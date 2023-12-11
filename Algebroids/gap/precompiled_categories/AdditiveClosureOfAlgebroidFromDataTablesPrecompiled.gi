@@ -372,7 +372,7 @@ end
         
 ########
 function ( cat_1, source_1, range_1, alpha_1 )
-    local hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1, hoisted_8_1, deduped_10_1, deduped_11_1, deduped_12_1, deduped_13_1;
+    local hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, hoisted_7_1, hoisted_8_1, deduped_10_1, deduped_11_1, deduped_12_1, deduped_13_1;
     deduped_13_1 := UnderlyingCategory( cat_1 );
     deduped_12_1 := ObjectList( range_1 );
     deduped_11_1 := ObjectList( source_1 );
@@ -388,7 +388,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
                     return hoisted_1_2[hoisted_4_1[s_3]];
                 end );
         end );
-    deduped_7_1 := List( deduped_10_1, function ( j_2 )
+    hoisted_7_1 := List( deduped_10_1, function ( j_2 )
             local hoisted_1_2;
             hoisted_1_2 := deduped_6_1[j_2];
             return Sum( List( deduped_5_1, function ( s_3 )
@@ -396,17 +396,16 @@ function ( cat_1, source_1, range_1, alpha_1 )
                   end ) );
         end );
     return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, MorphismMatrix, List( deduped_10_1, function ( j_2 )
-              local deduped_1_2, hoisted_2_2, hoisted_3_2, deduped_4_2, deduped_5_2;
-              deduped_5_2 := CAP_JIT_INCOMPLETE_LOGIC( j_2 );
-              deduped_4_2 := Sum( deduped_7_1{[ 1 .. deduped_5_2 - 1 ]} );
+              local deduped_1_2, deduped_2_2, hoisted_3_2, deduped_4_2;
+              deduped_4_2 := CAP_JIT_INCOMPLETE_LOGIC( j_2 );
               hoisted_3_2 := deduped_11_1[j_2];
-              hoisted_2_2 := hoisted_8_1{[ deduped_4_2 + 1 .. deduped_4_2 + deduped_7_1[deduped_5_2] ]};
-              deduped_1_2 := deduped_6_1[deduped_5_2];
+              deduped_2_2 := Sum( hoisted_7_1{[ 1 .. deduped_4_2 - 1 ]} );
+              deduped_1_2 := deduped_6_1[deduped_4_2];
               return List( deduped_5_1, function ( s_3 )
                       local deduped_1_3, deduped_2_3;
                       deduped_2_3 := CAP_JIT_INCOMPLETE_LOGIC( s_3 );
                       deduped_1_3 := Sum( deduped_1_2{[ 1 .. deduped_2_3 - 1 ]} );
-                      return CreateCapCategoryMorphismWithAttributes( deduped_13_1, hoisted_3_2, deduped_12_1[s_3], CoefficientsList, CAP_JIT_INCOMPLETE_LOGIC( hoisted_2_2{[ deduped_1_3 + 1 .. deduped_1_3 + deduped_1_2[deduped_2_3] ]} ) );
+                      return CreateCapCategoryMorphismWithAttributes( deduped_13_1, hoisted_3_2, deduped_12_1[s_3], CoefficientsList, CAP_JIT_INCOMPLETE_LOGIC( hoisted_8_1{[ deduped_2_2 + (deduped_1_3 + 1) .. deduped_2_2 + (deduped_1_3 + deduped_1_2[deduped_2_3]) ]} ) );
                   end );
           end ) );
 end
