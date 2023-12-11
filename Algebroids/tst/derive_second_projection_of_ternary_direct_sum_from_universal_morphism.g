@@ -168,7 +168,11 @@ func := function ( dummy, a_dummy, b_dummy, c_dummy, abc_dummy )
     
     pi := MorphismConstructor( add,
         ObjectConstructor( add, [ a_L, b_L, c_L ] ),
-        [ [ MorphismConstructor( L, a_L, Pair( [ ], [ ] ), b_L ) ], [ MorphismConstructor( L, b_L, Pair( [ 1 ], [ id_b_F ] ), b_L ) ], [ MorphismConstructor( L, c_L, Pair( [ ], [ ] ), b_L ) ] ],
+        [
+            [ MorphismConstructor( L, a_L, Pair( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) ), CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( F ) ) ) ), b_L ) ],
+            [ MorphismConstructor( L, b_L, Pair( [ 1 ], [ id_b_F ] ), b_L ) ],
+            [ MorphismConstructor( L, c_L, Pair( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) ), CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( F ) ) ) ), b_L ) ]
+        ],
         ObjectConstructor( add, [ b_L ] )
     );
     
@@ -248,8 +252,15 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "func" ],
-        src_template := "ListN( [ ], [ ], func )",
-        dst_template := "[ ]",
+        variable_filters := [ rec(
+            filter := IsFunction,
+            signature := Pair(
+                [ rec( filter := IsInt ), CapJitDataTypeOfMorphismOfCategory( dummy ) ],
+                CapJitDataTypeOfMorphismOfCategory( dummy )
+            ),
+        ) ],
+        src_template := "ListN( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) ), CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( dummy ) ) ), func )",
+        dst_template := "CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( dummy ) ) )",
     )
 );
 
@@ -273,7 +284,8 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "cat", "source", "range" ],
-        src_template := "SumOfMorphisms( cat, source, [ ], range )",
+        variable_filters := [ CapJitDataTypeOfCategory( dummy ), CapJitDataTypeOfObjectOfCategory( dummy ), CapJitDataTypeOfObjectOfCategory( dummy ) ],
+        src_template := "SumOfMorphisms( cat, source, CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( dummy ) ) ), range )",
         dst_template := "ZeroMorphism( cat, source, range )",
     )
 );
