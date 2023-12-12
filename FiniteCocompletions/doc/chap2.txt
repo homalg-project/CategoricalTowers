@@ -65,6 +65,8 @@
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
+    [4X[28Xand not yet algorithmically[128X[104X
+    [4X[28X* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsFinitelyPresentedCategory[128X[104X
     [4X[28X* IsFinitelyPresentedLinearCategory[128X[104X
