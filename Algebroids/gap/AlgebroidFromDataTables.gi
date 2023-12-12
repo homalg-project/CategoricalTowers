@@ -332,7 +332,7 @@ InstallMethod( AlgebroidFromDataTables,
     DisableSanityChecks( A );
     
     SetIsAbCategory( A, true );
-    SetIsLinearCategoryOverCommutativeRing( A, true );
+    SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( A, true );
     
     SetCategoryDatum( A, input_data );
     SetCommutativeRingOfLinearCategory( A, input_data[1] );

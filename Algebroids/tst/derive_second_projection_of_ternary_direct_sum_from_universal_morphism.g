@@ -21,6 +21,9 @@ c_F := SetOfObjects( F )[3];
 #
 ZZZ := HomalgRingOfIntegers( );
 L := LinearClosure( ZZZ, F, ReturnTrue );
+# This should automatically be set by `LinearClosure` if the underlying category has finite external homs,
+# but there is no property for this yet.
+SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( L, true );
 
 a_L := LinearClosureObject( L, a_F );
 b_L := LinearClosureObject( L, b_F );

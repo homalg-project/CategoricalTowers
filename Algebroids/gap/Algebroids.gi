@@ -896,6 +896,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     end );
     
     ## Both methods can be derived, but it is more efficient to add them as primitive methods.
+    
+    SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( algebroid, true );
+    
     ##
     AddBasisOfExternalHom( algebroid,
       function( algebroid, object_1, object_2 )
