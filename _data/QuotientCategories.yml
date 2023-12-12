@@ -1,7 +1,7 @@
 name: QuotientCategories
-version: "2023.11-01"
+version: "2023.12-01"
 license: "GPL-2.0-or-later"
-date: 2023-11-10
+date: 2023-12-12
 description: |
     Quotient categories
 
@@ -19,8 +19,11 @@ needed-pkgs:
     - name: "AutoDoc"
       version: ">=2018.02.14"
       url: "https://gap-packages.github.io/AutoDoc"
+    - name: "MatricesForHomalg"
+      version: ">= 2023.11-02"
+      url: "https://homalg-project.github.io/pkg/MatricesForHomalg"
     - name: "CAP"
-      version: ">= 2023.08-04"
+      version: ">= 2023.12-09"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "ToolsForCategoricalTowers"
       version: ">= 2023.11-03"
@@ -32,11 +35,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/QuotientCategori
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2023.11-01/QuotientCategories-2023.11-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2023.12-01/QuotientCategories-2023.12-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2023.11-01/QuotientCategories-2023.11-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2023.12-01/QuotientCategories-2023.12-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2023.11-01/QuotientCategories-2023.11-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2023.12-01/QuotientCategories-2023.12-01-manual.pdf
 
 abstract: |
 
@@ -45,28 +48,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Sal10</span>]   <b class='BibAuthor'>Saleh, K.</b>,
+    [<span class='BibKey'>Sal12</span>]   <b class='BibAuthor'>Saleh, K.</b>,
      <i class='BibTitle'>QuotientCategories, Quotient categories,
-             Version 2023.11-01</i>
-     (<span class='BibYear'>1-10</span>)<br />
+             Version 2023.12-01</i>
+     (<span class='BibYear'>2-12</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/QuotientCategories">https://homalg-project.github.io/pkg/QuotientCategories</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ QuotientCategories2023.11-01,
+    @misc{ QuotientCategories2023.12-01,
       author =           {Saleh, K.},
       title =            {{QuotientCategories},  Quotient  categories, {V}ersion
-                          2023.11-01},
+                          2023.12-01},
       month =            {3-},
-      year =             {1-10},
+      year =             {2-12},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/QuotientCategories}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{QuotientCategories}}},
-      printedkey =       {Sal10}
+      printedkey =       {Sal12}
     }
 
