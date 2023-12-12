@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "QuotientCategories",
 Subtitle := "Quotient categories",
-Version := "2023.11-01",
+Version := "2023.12-01",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -72,7 +72,8 @@ Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [
                 [ "AutoDoc", ">=2018.02.14" ],
-                [ "CAP", ">= 2023.08-04" ],
+                [ "MatricesForHomalg", ">= 2023.11-02" ],
+                [ "CAP", ">= 2023.12-09" ],
                 [ "ToolsForCategoricalTowers", ">= 2023.11-03" ]
                 ],
   SuggestedOtherPackages := [ ],

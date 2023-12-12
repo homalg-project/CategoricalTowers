@@ -152,6 +152,16 @@ InstallMethod( QuotientCategory,
                     "IsAdditiveCategory",
                     ];
     
+    if ( HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms and
+         IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms and
+         HasCommutativeRingOfLinearCategory )( cat ) then
+        
+        if ( HasIsFieldForHomalg and IsFieldForHomalg )( CommutativeRingOfLinearCategory( cat ) ) then
+            Add( properties, "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms" );
+        fi;
+        
+    fi;
+    
     properties := Intersection( ListKnownCategoricalProperties( cat ), properties );
     
     if IsBound( record.extra_properties ) then

@@ -41,7 +41,7 @@ Display( CatReps );
 #! 107 primitive operations were used to derive 363 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
-#! * IsLinearCategoryOverCommutativeRing
+#! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 #! * IsSymmetricMonoidalCategory
 #! * IsAbelianCategory
 CommutativeRingOfLinearCategory( CatReps );

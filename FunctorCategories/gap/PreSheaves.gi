@@ -719,6 +719,16 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     "IsElementaryTopos",
                     ];
     
+    if ( HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms and
+         IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms and
+         HasCommutativeRingOfLinearCategory )( D ) then
+        
+        if ( HasIsFieldForHomalg and IsFieldForHomalg )( CommutativeRingOfLinearCategory( D ) ) then
+            Add( properties, "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms" );
+        fi;
+        
+    fi;
+    
     if HasIsMonoidalCategory( D ) and IsMonoidalCategory( D ) and
        HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
         

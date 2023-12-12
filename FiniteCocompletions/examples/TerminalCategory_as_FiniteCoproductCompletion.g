@@ -20,6 +20,8 @@ Display( T );
 #! * IsElementaryTopos
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
+#! and not yet algorithmically
+#! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 #! and furthermore mathematically
 #! * IsFinitelyPresentedCategory
 #! * IsFinitelyPresentedLinearCategory

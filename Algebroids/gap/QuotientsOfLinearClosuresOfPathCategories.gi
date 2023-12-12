@@ -94,6 +94,8 @@ InstallMethod( QuotientCategory,
         
         SetRangeCategoryOfHomomorphismStructure( quo_kC, range_cat );
         
+        SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( quo_kC, true );
+        
         ##
         AddBasisOfExternalHom( quo_kC,
           function ( quo_kC, source, target )
