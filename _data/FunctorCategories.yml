@@ -1,7 +1,7 @@
 name: FunctorCategories
-version: "2023.12-04"
+version: "2023.12-05"
 license: "GPL-2.0-or-later"
-date: 2023-12-11
+date: 2023-12-12
 description: |
     Categories of functors
 
@@ -27,7 +27,7 @@ needed-pkgs:
       version: ">= 2022.12-01"
       url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
     - name: "CAP"
-      version: ">= 2023.12-07"
+      version: ">= 2023.12-09"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
       version: ">= 2023.10-01"
@@ -36,7 +36,7 @@ needed-pkgs:
       version: ">= 2023.10-01"
       url: "https://homalg-project.github.io/pkg/CartesianCategories"
     - name: "Algebroids"
-      version: ">= 2023.12-01"
+      version: ">= 2023.12-09"
       url: "https://homalg-project.github.io/pkg/Algebroids"
     - name: "FiniteCocompletions"
       version: ">= 2023.12-02"
@@ -51,7 +51,7 @@ needed-pkgs:
       version: ">= 2020.01.10"
       url: "https://homalg-project.github.io/pkg/LinearAlgebraForCAP"
     - name: "FreydCategoriesForCAP"
-      version: ">= 2023.12-09"
+      version: ">= 2023.12-13"
       url: "https://homalg-project.github.io/pkg/FreydCategoriesForCAP"
     - name: "ToolsForCategoricalTowers"
       version: ">= 2023.11-03"
@@ -75,11 +75,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FunctorCategorie
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.12-04/FunctorCategories-2023.12-04.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.12-05/FunctorCategories-2023.12-05.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.12-04/FunctorCategories-2023.12-04.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.12-05/FunctorCategories-2023.12-05.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.12-04/FunctorCategories-2023.12-04-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.12-05/FunctorCategories-2023.12-05-manual.pdf
 
 abstract: |
 
@@ -90,22 +90,22 @@ keywords: |
     functors, natural transformations, finitely presented categories, functors into categories, functors into pre-additive categories, functors into additive categories, functors into pre-abelian categories, functors into abelian categories.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BS11</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+    [<span class='BibKey'>BS12</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FunctorCategories, Categories of functors,
-             Version 2023.12-04</i>
-     (<span class='BibYear'>2-11</span>)<br />
+             Version 2023.12-05</i>
+     (<span class='BibYear'>2-12</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FunctorCategories">https://homalg-project.github.io/pkg/FunctorCategories</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ FunctorCategories2023.12-04,
+    @misc{ FunctorCategories2023.12-05,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FunctorCategories}, Categories of functors, {V}ersion
-                          2023.12-04},
+                          2023.12-05},
       month =            {3-},
-      year =             {2-11},
+      year =             {2-12},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/FunctorCategories}
@@ -117,6 +117,6 @@ bibtex: |
                           pre-additive   categories;   functors   into  additive
                           categories;   functors  into  pre-abelian  categories;
                           functors into abelian categories},
-      printedkey =       {BS11}
+      printedkey =       {BS12}
     }
 
