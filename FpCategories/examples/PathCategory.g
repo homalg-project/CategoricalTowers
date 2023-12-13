@@ -45,9 +45,9 @@ C.id_5;
 C.("id(5)");
 #! id(5):(5) -≻ (5)
 m := C.("x^2*s*a*b*t*y^2");
-#! x^2•s•a•b•t•y^2:(0) -≻ (5)
+#! x^2⋅s⋅a⋅b⋅t⋅y^2:(0) -≻ (5)
 m := C.("x^2sabty^2");
-#! x^2•s•a•b•t•y^2:(0) -≻ (5)
+#! x^2⋅s⋅a⋅b⋅t⋅y^2:(0) -≻ (5)
 IsWellDefined( m );
 #! true
 MorphismLength( m );
@@ -107,7 +107,7 @@ List( SetOfGeneratingMorphisms( kqC ), IsEpimorphism );
 #! [ false, true, true, true, true, true, true, true, false ]
 homs := BasisOfExternalHom( kqC.0, kqC.5 );;
 mor := 2 * homs[1] - 3 * homs[4] + homs[75];
-#! 2*[x^4•s•a•b•t•y^4] - 3*[x^4•s•c•d•t•y^3] + 1*[s•e•t]:(0) -≻ (5)
+#! 2*[x^4⋅s⋅a⋅b⋅t⋅y^4] - 3*[x^4⋅s⋅c⋅d⋅t⋅y^3] + 1*[s⋅e⋅t]:(0) -≻ (5)
 EvalString( CellAsEvaluatableString( mor, [ "kqC", "qC", "C" ] ) ) = mor;
 #! true
 A := AlgebroidFromDataTables( kqC );

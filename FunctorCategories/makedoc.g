@@ -29,6 +29,7 @@ AutoDoc( rec(
                 \DeclareUnicodeCharacter{2B47}{\ensuremath{\!\!\xrightarrow{\sim}\!}}
                 \DeclareUnicodeCharacter{21A6}{\ensuremath{\mapsto}}
                 \DeclareUnicodeCharacter{227B}{\ensuremath{\succ}}
+                \DeclareUnicodeCharacter{22C5}{\ensuremath{\cdot}}
             """,
         ),
     ),
