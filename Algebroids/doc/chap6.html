@@ -430,11 +430,11 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( A.("0"), A.("3") );</span>
 &lt;A row module over Q of rank 6&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_03 := BasisOfExternalHom( A.("0"), A.("3") );</span>
-[ &lt;1*a•b:(0) -≻ (3)&gt;, &lt;1*c•d:(0) -≻ (3)&gt;,
-  &lt;1*a•b•e:(0) -≻ (3)&gt;, &lt;1*c•d•e:(0) -≻ (3)&gt;,
-  &lt;1*a•b•e^2:(0) -≻ (3)&gt;, &lt;1*c•d•e^2:(0) -≻ (3)&gt; ]
+[ &lt;1*a⋅b:(0) -≻ (3)&gt;, &lt;1*c⋅d:(0) -≻ (3)&gt;,
+  &lt;1*a⋅b⋅e:(0) -≻ (3)&gt;, &lt;1*c⋅d⋅e:(0) -≻ (3)&gt;,
+  &lt;1*a⋅b⋅e^2:(0) -≻ (3)&gt;, &lt;1*c⋅d⋅e^2:(0) -≻ (3)&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := 2*hom_03[1] + 3*hom_03[6];</span>
-&lt;2*a•b + 3*c•d•e^2:(0) -≻ (3)&gt;
+&lt;2*a⋅b + 3*c⋅d⋅e^2:(0) -≻ (3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LaTeXOutput( alpha );</span>
 "{0}-\\left({2\\cdot {a}{b} + 3\\cdot {c}{d}{e}^{2}}\\right)\\rightarrow{3}"
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha = MorphismConstructor( A, A.("0"), [ 2, 0, 0, 0, 0, 3 ], A.("3") );</span>
@@ -446,17 +446,17 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoefficientsOfSupportMorphisms( alpha );</span>
 [ 2, 3 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SupportMorphisms( alpha );</span>
-[ &lt;1*a•b:(0) -≻ (3)&gt;, &lt;1*c•d•e^2:(0) -≻ (3)&gt; ]
+[ &lt;1*a⋅b:(0) -≻ (3)&gt;, &lt;1*c⋅d⋅e^2:(0) -≻ (3)&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecompositionIndicesOfMorphismInAlgebroid( alpha );</span>
 [ [ 2, [ 1, 2 ] ], [ 3, [ 3, 4, 5, 5 ] ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecompositionOfMorphismInAlgebroid( alpha );</span>
 [ [ 2, [ &lt;1*a:(0) -≻ (1)&gt;, &lt;1*b:(1) -≻ (3)&gt; ] ],
   [ 3, [ &lt;1*c:(0) -≻ (2)&gt;, &lt;1*d:(2) -≻ (3)&gt;,
          &lt;1*e:(3) -≻ (3)&gt;, &lt;1*e:(3) -≻ (3)&gt; ] ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.("a•b•e");</span>
-&lt;1*a•b•e:(0) -≻ (3)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.("a⋅b⋅e");</span>
+&lt;1*a⋅b⋅e:(0) -≻ (3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.("abe");</span>
-&lt;1*a•b•e:(0) -≻ (3)&gt;
+&lt;1*a⋅b⋅e:(0) -≻ (3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( A.("a"), A.("b") ) = A.("ab");</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := IsomorphismOntoAlgebroidFromDataTables( B, A );</span>
@@ -509,7 +509,7 @@ true
 Q-algebroid( {0,1,2,3}[a:1-≻0,b:3-≻1,c:2-≻0,d:3-≻2,e:3-≻3] ) defined by
 4 objects and 5 generating morphisms
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_op.("ba");</span>
-&lt;1*b•a:(3) -≻ (0)&gt;
+&lt;1*b⋅a:(3) -≻ (0)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">add_A := AdditiveClosure( A );</span>
 AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
 defined by 4 objects and 5 generating morphisms )
