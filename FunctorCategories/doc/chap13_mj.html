@@ -152,7 +152,7 @@ Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2)[x:0-≻1,
 y:1-≻2,z:0-≻2]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := kC / [ kC.xy - kC.z ];</span>
 Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2)[x:0-≻1,
-y:1-≻2,z:0-≻2]" ) ) ) / [ 1*x•y - 1*z ]
+y:1-≻2,z:0-≻2]" ) ) ) / [ 1*x⋅y - 1*z ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AlgebroidFromDataTables( A );</span>
 Q-algebroid( {0,1,2}[x:0-≻1,y:1-≻2,z:0-≻2] ) defined by 3 objects
 and 3 generating morphisms
@@ -166,14 +166,14 @@ PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )
 Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := kC / [ kC.xy - kC.yx, kC.x^3, kC.y^3 ];</span>
 Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
-/ [ 1*x•y - 1*y•x, 1*x^3, 1*y^3 ]
+/ [ 1*x⋅y - 1*y⋅x, 1*x^3, 1*y^3 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AlgebroidFromDataTables( A );</span>
 Q-algebroid( {o}[x:o-≻o,y:o-≻o] ) defined by 1 object and 2 generating morphisms
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdmissibleAlgebroid( B );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := kC / [ kC.xy - kC.yx, kC.x^3 - kC.x, kC.y^3 ];</span>
 Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
-/ [ 1*x•y - 1*y•x, 1*x^3 - 1*x, 1*y^3 ]
+/ [ 1*x⋅y - 1*y⋅x, 1*x^3 - 1*x, 1*y^3 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AlgebroidFromDataTables( A );</span>
 Q-algebroid( {o}[x:o-≻o,y:o-≻o] ) defined by 1 object and 2 generating morphisms
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdmissibleAlgebroid( B );</span>
