@@ -27,7 +27,7 @@ AutoDoc( rec(
                 \DeclareUnicodeCharacter{21A0}{\ensuremath{\!\!\twoheadrightarrow\!}}
                 \DeclareUnicodeCharacter{2B47}{\ensuremath{\!\!\xrightarrow{\sim}\!}}
                 \DeclareUnicodeCharacter{227B}{\ensuremath{\succ}}
-                \DeclareUnicodeCharacter{2022}{\ensuremath{\bullet}}
+                \DeclareUnicodeCharacter{22C5}{\ensuremath{\cdot}}
                 \DeclareUnicodeCharacter{2297}{\ensuremath{\otimes}}
                 % Many thanks to https://tex.stackexchange.com/questions/22466/how-to-convince-fancyvrb-to-give-overfull-warnings/534486#534486
                 \makeatletter

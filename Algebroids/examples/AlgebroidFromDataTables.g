@@ -102,11 +102,11 @@ Perform( [ "a", "b", "c", "d", "e" ], MakeReadWriteGlobal );
 HomStructure( A.("0"), A.("3") );
 #! <A row module over Q of rank 6>
 hom_03 := BasisOfExternalHom( A.("0"), A.("3") );
-#! [ <1*a•b:(0) -≻ (3)>, <1*c•d:(0) -≻ (3)>,
-#!   <1*a•b•e:(0) -≻ (3)>, <1*c•d•e:(0) -≻ (3)>,
-#!   <1*a•b•e^2:(0) -≻ (3)>, <1*c•d•e^2:(0) -≻ (3)> ]
+#! [ <1*a⋅b:(0) -≻ (3)>, <1*c⋅d:(0) -≻ (3)>,
+#!   <1*a⋅b⋅e:(0) -≻ (3)>, <1*c⋅d⋅e:(0) -≻ (3)>,
+#!   <1*a⋅b⋅e^2:(0) -≻ (3)>, <1*c⋅d⋅e^2:(0) -≻ (3)> ]
 alpha := 2*hom_03[1] + 3*hom_03[6];
-#! <2*a•b + 3*c•d•e^2:(0) -≻ (3)>
+#! <2*a⋅b + 3*c⋅d⋅e^2:(0) -≻ (3)>
 LaTeXOutput( alpha );
 #! "{0}-\\left({2\\cdot {a}{b} + 3\\cdot {c}{d}{e}^{2}}\\right)\\rightarrow{3}"
 alpha = MorphismConstructor( A, A.("0"), [ 2, 0, 0, 0, 0, 3 ], A.("3") );
@@ -118,17 +118,17 @@ IndicesOfSupportMorphisms( alpha );
 CoefficientsOfSupportMorphisms( alpha );
 #! [ 2, 3 ]
 SupportMorphisms( alpha );
-#! [ <1*a•b:(0) -≻ (3)>, <1*c•d•e^2:(0) -≻ (3)> ]
+#! [ <1*a⋅b:(0) -≻ (3)>, <1*c⋅d⋅e^2:(0) -≻ (3)> ]
 DecompositionIndicesOfMorphismInAlgebroid( alpha );
 #! [ [ 2, [ 1, 2 ] ], [ 3, [ 3, 4, 5, 5 ] ] ]
 DecompositionOfMorphismInAlgebroid( alpha );
 #! [ [ 2, [ <1*a:(0) -≻ (1)>, <1*b:(1) -≻ (3)> ] ],
 #!   [ 3, [ <1*c:(0) -≻ (2)>, <1*d:(2) -≻ (3)>,
 #!          <1*e:(3) -≻ (3)>, <1*e:(3) -≻ (3)> ] ] ]
-A.("a•b•e");
-#! <1*a•b•e:(0) -≻ (3)>
+A.("a⋅b⋅e");
+#! <1*a⋅b⋅e:(0) -≻ (3)>
 A.("abe");
-#! <1*a•b•e:(0) -≻ (3)>
+#! <1*a⋅b⋅e:(0) -≻ (3)>
 PreCompose( A.("a"), A.("b") ) = A.("ab");
 #! true
 U := IsomorphismOntoAlgebroidFromDataTables( B, A );
@@ -181,7 +181,7 @@ A_op := OppositeAlgebroid( A );
 #! Q-algebroid( {0,1,2,3}[a:1-≻0,b:3-≻1,c:2-≻0,d:3-≻2,e:3-≻3] ) defined by
 #! 4 objects and 5 generating morphisms
 A_op.("ba");
-#! <1*b•a:(3) -≻ (0)>
+#! <1*b⋅a:(3) -≻ (0)>
 add_A := AdditiveClosure( A );
 #! AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )
 #! defined by 4 objects and 5 generating morphisms )

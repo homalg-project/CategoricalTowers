@@ -407,7 +407,7 @@ InstallMethod( AlgebroidFromDataTables,
                                             fi;
                                           end ) ) ) );
     
-    # H(l:i->j, r:p->q) = H( l•id_j, r•id_q ) = H(id_j, r)•H(l, id_q)
+    # H(l:i->j, r:p->q) = H( l⋅id_j, r⋅id_q ) = H(id_j, r)⋅H(l, id_q)
     hom_structure_matrices :=
           LazyHList( [ 1 .. NumberOfObjects( q ) ],
             i -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
@@ -606,7 +606,7 @@ InstallMethod( AlgebroidFromDataTables,
         
     end );
     
-    ##  H(α:i->j, γ:p->q) = H( α•id_j, γ•id_q ) = H(id_j, γ)•H(α, id_q)
+    ##  H(α:i->j, γ:p->q) = H( α⋅id_j, γ⋅id_q ) = H(id_j, γ)⋅H(α, id_q)
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( A,
       
@@ -681,7 +681,7 @@ InstallMethod( AlgebroidFromDataTables,
     end );
     
     ## α:i->j, β:j->k
-    ## α•β = ν⁻¹(ν(α•β)) = ν⁻¹(ν(α•id_j•β)) = ν⁻¹(ν(id_j)•H(α,β))
+    ## α⋅β = ν⁻¹(ν(α⋅β)) = ν⁻¹(ν(α⋅id_j⋅β)) = ν⁻¹(ν(id_j)⋅H(α,β))
     ##
     AddPreCompose( A,
       
@@ -1000,9 +1000,9 @@ InstallMethod( \.,
         return SetOfGeneratingMorphisms( A )[p];
     fi;
     
-    if ForAny( [ "•", "*" ], s -> PositionSublist( name, s ) <> fail ) then
+    if ForAny( [ "⋅", "*" ], s -> PositionSublist( name, s ) <> fail ) then
       
-      labels := SplitString( ReplacedString( name, "•", "*" ), "*" );
+      labels := SplitString( ReplacedString( name, "⋅", "*" ), "*" );
       
       return PreComposeList( A, List( labels, label -> A.(label) ) );
       
@@ -1158,7 +1158,7 @@ InstallMethod( LabelsOfBasesElements,
                                       else
                                         return Concatenation( l[1], "^", String( l[2] ) );
                                       fi;
-                                    end ), "•" );
+                                    end ), "⋅" );
                         
                     fi;
                     

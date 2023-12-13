@@ -445,7 +445,7 @@ InstallMethod( MorphismLabel,
                       return Concatenation( l[1], "^", String( l[2] ) );
                     fi;
                     
-                  end ), "•" );
+                  end ), "⋅" );
       
     fi;
     
