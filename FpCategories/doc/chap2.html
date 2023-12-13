@@ -436,9 +436,9 @@ id(5):(5) -≻ (5)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C.("id(5)");</span>
 id(5):(5) -≻ (5)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := C.("x^2*s*a*b*t*y^2");</span>
-x^2•s•a•b•t•y^2:(0) -≻ (5)
+x^2⋅s⋅a⋅b⋅t⋅y^2:(0) -≻ (5)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := C.("x^2sabty^2");</span>
-x^2•s•a•b•t•y^2:(0) -≻ (5)
+x^2⋅s⋅a⋅b⋅t⋅y^2:(0) -≻ (5)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( m );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismLength( m );</span>
@@ -498,7 +498,7 @@ c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y
 [ false, true, true, true, true, true, true, true, false ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homs := BasisOfExternalHom( kqC.0, kqC.5 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := 2 * homs[1] - 3 * homs[4] + homs[75];</span>
-2*[x^4•s•a•b•t•y^4] - 3*[x^4•s•c•d•t•y^3] + 1*[s•e•t]:(0) -≻ (5)
+2*[x^4⋅s⋅a⋅b⋅t⋅y^4] - 3*[x^4⋅s⋅c⋅d⋅t⋅y^3] + 1*[s⋅e⋅t]:(0) -≻ (5)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EvalString( CellAsEvaluatableString( mor, [ "kqC", "qC", "C" ] ) ) = mor;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( kqC );</span>

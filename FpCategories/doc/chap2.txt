@@ -325,9 +325,9 @@
     [4X[25Xgap>[125X [27XC.("id(5)");[127X[104X
     [4X[28Xid(5):(5) -≻ (5)[128X[104X
     [4X[25Xgap>[125X [27Xm := C.("x^2*s*a*b*t*y^2");[127X[104X
-    [4X[28Xx^2•s•a•b•t•y^2:(0) -≻ (5)[128X[104X
+    [4X[28Xx^2⋅s⋅a⋅b⋅t⋅y^2:(0) -≻ (5)[128X[104X
     [4X[25Xgap>[125X [27Xm := C.("x^2sabty^2");[127X[104X
-    [4X[28Xx^2•s•a•b•t•y^2:(0) -≻ (5)[128X[104X
+    [4X[28Xx^2⋅s⋅a⋅b⋅t⋅y^2:(0) -≻ (5)[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( m );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XMorphismLength( m );[127X[104X
@@ -387,7 +387,7 @@
     [4X[28X[ false, true, true, true, true, true, true, true, false ][128X[104X
     [4X[25Xgap>[125X [27Xhoms := BasisOfExternalHom( kqC.0, kqC.5 );;[127X[104X
     [4X[25Xgap>[125X [27Xmor := 2 * homs[1] - 3 * homs[4] + homs[75];[127X[104X
-    [4X[28X2*[x^4•s•a•b•t•y^4] - 3*[x^4•s•c•d•t•y^3] + 1*[s•e•t]:(0) -≻ (5)[128X[104X
+    [4X[28X2*[x^4⋅s⋅a⋅b⋅t⋅y^4] - 3*[x^4⋅s⋅c⋅d⋅t⋅y^3] + 1*[s⋅e⋅t]:(0) -≻ (5)[128X[104X
     [4X[25Xgap>[125X [27XEvalString( CellAsEvaluatableString( mor, [ "kqC", "qC", "C" ] ) ) = mor;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( kqC );[127X[104X
