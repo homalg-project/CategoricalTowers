@@ -733,7 +733,21 @@ InstallMethodWithCache( PreSheaves,
            );
     
     if HasCommutativeRingOfLinearCategory( D ) then
+        
         category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( D );
+        
+        if HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms ( D ) and
+           IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( D ) then
+            
+            if HasIsFieldForHomalg( CommutativeRingOfLinearCategory( D ) ) and
+               IsFieldForHomalg( CommutativeRingOfLinearCategory( D ) ) then
+                
+                Add( properties, "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms" );
+                
+            fi;
+            
+        fi;
+        
     fi;
     
     PSh := CategoryConstructor( category_constructor_options );
