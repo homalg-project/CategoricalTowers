@@ -9,7 +9,7 @@
 LoadPackage( "FunctorCategories", false );
 #! true
 
-LoadPackage( "CompilerForCAP", ">= 2022.09-02", false );
+LoadPackage( "CompilerForCAP", ">= 2022.09-20", false );
 #! true
 
 ReadPackageOnce( "FreydCategoriesForCAP", "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi" );

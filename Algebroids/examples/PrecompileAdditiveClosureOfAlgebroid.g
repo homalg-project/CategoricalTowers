@@ -6,7 +6,7 @@
 
 LoadPackage( "Algebroids", false );
 #! true
-LoadPackage( "CompilerForCAP", false );
+LoadPackage( "CompilerForCAP", ">= 2023.12-20", false );
 #! true
 
 QQ := HomalgFieldOfRationals( );;
