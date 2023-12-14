@@ -278,7 +278,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                                       return;
                                   end ) );
                         end ) );
-              end ) ), RankOfObject( source_1 ), deduped_27_1, CommutativeRingOfLinearCategory( deduped_28_1 ) ) );
+              end ) ), RankOfObject( source_1 ), deduped_27_1, CommutativeRingOfLinearCategory( cat_1 ) ) );
 end
 ########
         
@@ -316,7 +316,7 @@ function ( cat_1, a_1 )
     deduped_12_1 := UnderlyingCategory( cat_1 );
     deduped_11_1 := ObjectList( a_1 );
     deduped_10_1 := [ 1 .. Length( deduped_11_1 ) ];
-    hoisted_7_1 := ZeroImmutable( CommutativeRingOfLinearCategory( deduped_12_1 ) );
+    hoisted_7_1 := ZeroImmutable( CommutativeRingOfLinearCategory( cat_1 ) );
     hoisted_6_1 := HomomorphismStructureOnObjectsRanks( deduped_12_1 );
     hoisted_4_1 := [  ];
     hoisted_3_1 := DecompositionIndicesOfBasesElements( deduped_12_1 );
@@ -361,7 +361,7 @@ function ( cat_1, source_1, alpha_1, range_1 )
                   return UnionOfColumnsListList( deduped_4_1, List( hoisted_2_1, function ( s_3 )
                             return [ hoisted_1_2[s_3] ];
                         end ) );
-              end ) ), deduped_4_1, RankOfObject( range_1 ), CommutativeRingOfLinearCategory( UnderlyingCategory( cat_1 ) ) ) );
+              end ) ), deduped_4_1, RankOfObject( range_1 ), CommutativeRingOfLinearCategory( cat_1 ) ) );
 end
 ########
         
@@ -594,20 +594,19 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, deduped_7_1, deduped_8_1;
-    deduped_8_1 := UnderlyingCategory( cat_1 );
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, deduped_7_1;
     deduped_7_1 := MorphismMatrix( arg2_1 );
     hoisted_6_1 := [ 1 .. Length( ObjectList( Range( arg2_1 ) ) ) ];
     hoisted_5_1 := List( deduped_7_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, CoefficientsList );
         end );
-    hoisted_4_1 := ZeroImmutable( CommutativeRingOfLinearCategory( deduped_8_1 ) );
+    hoisted_4_1 := ZeroImmutable( CommutativeRingOfLinearCategory( cat_1 ) );
     hoisted_3_1 := List( deduped_7_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
                     return ObjectIndex( Range( logic_new_func_x_3 ) );
                 end );
         end );
-    hoisted_2_1 := HomomorphismStructureOnObjectsRanks( deduped_8_1 );
+    hoisted_2_1 := HomomorphismStructureOnObjectsRanks( UnderlyingCategory( cat_1 ) );
     hoisted_1_1 := List( deduped_7_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
                     return ObjectIndex( Source( logic_new_func_x_3 ) );
@@ -715,41 +714,41 @@ end
 ########
 function ( cat_1, alpha_1, beta_1 )
     local hoisted_5_1, deduped_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, deduped_19_1, hoisted_20_1, hoisted_21_1, hoisted_22_1, hoisted_23_1, hoisted_24_1, hoisted_25_1, hoisted_26_1, hoisted_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1;
-    deduped_37_1 := MorphismMatrix( beta_1 );
-    deduped_36_1 := UnderlyingCategory( cat_1 );
-    deduped_35_1 := MorphismMatrix( alpha_1 );
-    deduped_34_1 := Range( beta_1 );
-    deduped_33_1 := Source( alpha_1 );
-    deduped_32_1 := BasesElements( deduped_36_1 );
-    deduped_31_1 := CommutativeRingOfLinearCategory( deduped_36_1 );
-    deduped_30_1 := ObjectList( deduped_34_1 );
-    deduped_29_1 := ObjectList( deduped_33_1 );
+    deduped_37_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_36_1 := MorphismMatrix( beta_1 );
+    deduped_35_1 := UnderlyingCategory( cat_1 );
+    deduped_34_1 := MorphismMatrix( alpha_1 );
+    deduped_33_1 := Range( beta_1 );
+    deduped_32_1 := Source( alpha_1 );
+    deduped_31_1 := BasesElements( deduped_35_1 );
+    deduped_30_1 := ObjectList( deduped_33_1 );
+    deduped_29_1 := ObjectList( deduped_32_1 );
     hoisted_28_1 := [ 1 .. Length( deduped_30_1 ) ];
     hoisted_26_1 := List( deduped_30_1, ObjectIndex );
     hoisted_25_1 := [ 1 .. Length( ObjectList( Range( alpha_1 ) ) ) ];
-    hoisted_24_1 := List( deduped_37_1, function ( logic_new_func_list_2 )
+    hoisted_24_1 := List( deduped_36_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, CoefficientsList );
         end );
-    hoisted_23_1 := List( deduped_35_1, function ( logic_new_func_list_2 )
+    hoisted_23_1 := List( deduped_34_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, CoefficientsList );
         end );
-    hoisted_22_1 := List( deduped_37_1, function ( logic_new_func_list_2 )
+    hoisted_22_1 := List( deduped_36_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, IndicesOfSupportMorphisms );
         end );
-    hoisted_21_1 := List( deduped_35_1, function ( logic_new_func_list_2 )
+    hoisted_21_1 := List( deduped_34_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, IndicesOfSupportMorphisms );
         end );
-    hoisted_20_1 := HomomorphismStructureOnMorphismsMatrices( deduped_36_1 );
-    deduped_19_1 := ZeroImmutable( deduped_31_1 );
+    hoisted_20_1 := HomomorphismStructureOnMorphismsMatrices( deduped_35_1 );
+    deduped_19_1 := ZeroImmutable( deduped_37_1 );
     hoisted_18_1 := CAP_JIT_INCOMPLETE_LOGIC( 1 );
-    hoisted_17_1 := List( deduped_32_1, function ( logic_new_func_list_2 )
+    hoisted_17_1 := List( deduped_31_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_list_3 )
                     return List( logic_new_func_list_3, function ( logic_new_func_x_4 )
                             return ObjectIndex( Target( logic_new_func_x_4 ) );
                         end );
                 end );
         end );
-    hoisted_16_1 := List( deduped_32_1, function ( logic_new_func_list_2 )
+    hoisted_16_1 := List( deduped_31_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_list_3 )
                     return List( logic_new_func_list_3, function ( logic_new_func_x_4 )
                             return ObjectIndex( Source( logic_new_func_x_4 ) );
@@ -757,44 +756,44 @@ function ( cat_1, alpha_1, beta_1 )
                 end );
         end );
     hoisted_15_1 := [  ];
-    hoisted_14_1 := DecompositionIndicesOfBasesElements( deduped_36_1 );
-    hoisted_13_1 := List( deduped_32_1, function ( logic_new_func_list_2 )
+    hoisted_14_1 := DecompositionIndicesOfBasesElements( deduped_35_1 );
+    hoisted_13_1 := List( deduped_31_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_list_3 )
                     return List( logic_new_func_list_3, CoefficientsList );
                 end );
         end );
-    hoisted_11_1 := List( deduped_37_1, function ( logic_new_func_list_2 )
+    hoisted_11_1 := List( deduped_36_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
                     return Length( IndicesOfSupportMorphisms( logic_new_func_x_3 ) );
                 end );
         end );
-    hoisted_10_1 := List( deduped_37_1, function ( logic_new_func_list_2 )
+    hoisted_10_1 := List( deduped_36_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
                     return ObjectIndex( Range( logic_new_func_x_3 ) );
                 end );
         end );
-    hoisted_9_1 := List( deduped_35_1, function ( logic_new_func_list_2 )
+    hoisted_9_1 := List( deduped_34_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
                     return ObjectIndex( Source( logic_new_func_x_3 ) );
                 end );
         end );
-    hoisted_8_1 := List( deduped_35_1, function ( logic_new_func_list_2 )
+    hoisted_8_1 := List( deduped_34_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
                     return Length( IndicesOfSupportMorphisms( logic_new_func_x_3 ) );
                 end );
         end );
-    hoisted_7_1 := List( deduped_37_1, function ( logic_new_func_list_2 )
+    hoisted_7_1 := List( deduped_36_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
                     return ObjectIndex( Source( logic_new_func_x_3 ) );
                 end );
         end );
-    deduped_6_1 := HomomorphismStructureOnObjectsRanks( deduped_36_1 );
-    hoisted_5_1 := List( deduped_35_1, function ( logic_new_func_list_2 )
+    deduped_6_1 := HomomorphismStructureOnObjectsRanks( deduped_35_1 );
+    hoisted_5_1 := List( deduped_34_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
                     return ObjectIndex( Range( logic_new_func_x_3 ) );
                 end );
         end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_33_1, deduped_34_1, MorphismMatrix, List( [ 1 .. Length( deduped_29_1 ) ], function ( i_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_32_1, deduped_33_1, MorphismMatrix, List( [ 1 .. Length( deduped_29_1 ) ], function ( i_2 )
               local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_8_2;
               deduped_8_2 := deduped_29_1[i_2];
               hoisted_6_2 := deduped_6_1[CAP_JIT_INCOMPLETE_LOGIC( ObjectIndex( CAP_JIT_INCOMPLETE_LOGIC( deduped_8_2 ) ) )];
@@ -804,7 +803,7 @@ function ( cat_1, alpha_1, beta_1 )
               hoisted_2_2 := hoisted_8_1[i_2];
               hoisted_1_2 := hoisted_5_1[i_2];
               return List( hoisted_28_1, function ( j_3 )
-                      return CreateCapCategoryMorphismWithAttributes( deduped_36_1, deduped_8_2, deduped_30_1[j_3], CoefficientsList, Iterated( List( hoisted_25_1, function ( k_4 )
+                      return CreateCapCategoryMorphismWithAttributes( deduped_35_1, deduped_8_2, deduped_30_1[j_3], CoefficientsList, Iterated( List( hoisted_25_1, function ( k_4 )
                                   local deduped_1_4, deduped_3_4, hoisted_4_4, hoisted_5_4, hoisted_6_4, hoisted_7_4, hoisted_8_4, hoisted_9_4, deduped_11_4, deduped_12_4, deduped_13_4, deduped_14_4, deduped_15_4, deduped_16_4, deduped_17_4, deduped_18_4, deduped_19_4, deduped_20_4, deduped_21_4, deduped_22_4;
                                   deduped_22_4 := hoisted_3_2[k_4];
                                   deduped_21_4 := hoisted_2_2[k_4];
@@ -818,11 +817,11 @@ function ( cat_1, alpha_1, beta_1 )
                                           return indices_5 = hoisted_15_1;
                                       end );
                                   deduped_12_4 := [ hoisted_13_1[deduped_20_4][deduped_20_4][deduped_14_4] ];
-                                  deduped_3_4 := [ 1 .. NumberColumns( HomalgMatrixListList( deduped_12_4, 1, deduped_6_1[hoisted_16_1[deduped_20_4][deduped_20_4][deduped_14_4]][hoisted_17_1[deduped_20_4][deduped_20_4][deduped_14_4]], deduped_31_1 ) ) ];
+                                  deduped_3_4 := [ 1 .. NumberColumns( HomalgMatrixListList( deduped_12_4, 1, deduped_6_1[hoisted_16_1[deduped_20_4][deduped_20_4][deduped_14_4]][hoisted_17_1[deduped_20_4][deduped_20_4][deduped_14_4]], deduped_37_1 ) ) ];
                                   deduped_1_4 := deduped_12_4[hoisted_18_1];
                                   if deduped_15_4 = 0 or deduped_21_4 = 0 or (deduped_16_4 = 0 or deduped_19_4 = 0) then
                                       deduped_13_4 := NullMatImmutable( deduped_15_4, deduped_16_4 );
-                                      return CAP_JIT_INCOMPLETE_LOGIC( List( [ 1 .. NumberColumns( HomalgMatrixListList( deduped_13_4, deduped_15_4, deduped_16_4, deduped_31_1 ) ) ], function ( j_5 )
+                                      return CAP_JIT_INCOMPLETE_LOGIC( List( [ 1 .. NumberColumns( HomalgMatrixListList( deduped_13_4, deduped_15_4, deduped_16_4, deduped_37_1 ) ) ], function ( j_5 )
                                                 return Iterated( List( deduped_3_4, function ( k_6 )
                                                           return deduped_1_4[k_6] * deduped_13_4[k_6][j_5];
                                                       end ), function ( alpha_6, beta_6 )
@@ -852,7 +851,7 @@ function ( cat_1, alpha_1, beta_1 )
                                                                 end ) );
                                                       end ) );
                                             end ) );
-                                      return CAP_JIT_INCOMPLETE_LOGIC( List( [ 1 .. NumberColumns( HomalgMatrixListList( deduped_11_4, deduped_15_4, deduped_16_4, deduped_31_1 ) ) ], function ( j_5 )
+                                      return CAP_JIT_INCOMPLETE_LOGIC( List( [ 1 .. NumberColumns( HomalgMatrixListList( deduped_11_4, deduped_15_4, deduped_16_4, deduped_37_1 ) ) ], function ( j_5 )
                                                 return Iterated( List( deduped_3_4, function ( k_6 )
                                                           return deduped_1_4[k_6] * deduped_11_4[k_6][j_5];
                                                       end ), function ( alpha_6, beta_6 )
@@ -881,7 +880,7 @@ function ( cat_1, source_1, list_of_morphisms_1, range_1 )
     deduped_9_1 := ObjectList( range_1 );
     deduped_8_1 := ObjectList( source_1 );
     hoisted_7_1 := [ 1 .. Length( deduped_9_1 ) ];
-    hoisted_5_1 := ZeroImmutable( CommutativeRingOfLinearCategory( deduped_10_1 ) );
+    hoisted_5_1 := ZeroImmutable( CommutativeRingOfLinearCategory( cat_1 ) );
     hoisted_4_1 := List( deduped_9_1, ObjectIndex );
     hoisted_3_1 := HomomorphismStructureOnObjectsRanks( deduped_10_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, MorphismMatrix, List( [ 1 .. Length( deduped_8_1 ) ], function ( i_2 )
@@ -933,7 +932,7 @@ function ( cat_1, a_1, b_1 )
     deduped_9_1 := ObjectList( b_1 );
     deduped_8_1 := ObjectList( a_1 );
     hoisted_7_1 := [ 1 .. Length( deduped_9_1 ) ];
-    hoisted_5_1 := ZeroImmutable( CommutativeRingOfLinearCategory( deduped_10_1 ) );
+    hoisted_5_1 := ZeroImmutable( CommutativeRingOfLinearCategory( cat_1 ) );
     hoisted_4_1 := List( deduped_9_1, ObjectIndex );
     hoisted_3_1 := HomomorphismStructureOnObjectsRanks( deduped_10_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, b_1, MorphismMatrix, List( [ 1 .. Length( deduped_8_1 ) ], function ( i_2 )
