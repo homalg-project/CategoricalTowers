@@ -1,6 +1,5 @@
 #! @Chunk SliceCategory
 
-
 #! @Example
 #! #@if ValueOption( "no_precompiled_code" ) <> true
 LoadPackage( "SubcategoriesForCAP" );
@@ -13,6 +12,18 @@ B := SubobjectClassifier( SkeletalFinSets );
 #! |2|
 S := SliceCategory( B );
 #! A slice category of SkeletalFinSets
+Display( S );
+#! A CAP category with name A slice category of SkeletalFinSets:
+#! 
+#! 50 primitive operations were used to derive 263 operations for this category which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
+#! * IsEquippedWithHomomorphismStructure
+#! * IsFiniteCocompleteCategory
+#! * IsFiniteCompleteCategory
+#! * IsDistributiveCategory
+#! and not yet algorithmically
+#! * IsElementaryTopos
 o0 := MapOfFinSets( B, [ 1, 1 ], B ) / S;
 #! An object in the slice category given by: |2| → |2|
 o1 := MapOfFinSets( FinSet( 3 ), [ 0, 1, 0 ], B ) / S;

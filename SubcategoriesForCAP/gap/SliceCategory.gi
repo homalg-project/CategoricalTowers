@@ -151,7 +151,7 @@ end );
 BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
   function( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter, object_constructor, object_datum )
     local C, list_of_operations_to_install, skip, func, pos, properties, morphism_constructor, morphism_datum,
-          Slice_over_B, TensorProductOnObjectsInSliceOverTensorUnit;
+          Slice_over_B, H, TensorProductOnObjectsInSliceOverTensorUnit;
     
     C := CapCategory( B );
     
@@ -174,6 +174,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     properties := [ #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
                     #"IsAbCategory", cannot be inherited
                     #"IsLinearCategoryOverCommutativeRing", cannot be inherited
+                    "IsCategoryWithDecidableLifts",
                     "IsElementaryTopos",
                     ];
     
@@ -580,7 +581,14 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     if CanCompute( C, "MorphismsOfExternalHom" ) and
        HasRangeCategoryOfHomomorphismStructure( C ) then
         
-        SetRangeCategoryOfHomomorphismStructure( Slice_over_B, RangeCategoryOfHomomorphismStructure( C ) );
+        H := RangeCategoryOfHomomorphismStructure( C );
+        
+        SetRangeCategoryOfHomomorphismStructure( Slice_over_B, H );
+        SetIsEquippedWithHomomorphismStructure( Slice_over_B, true );
+        
+        if CanCompute( H, "Lift" ) then ## yes, Lift not Colift
+            SetIsCategoryWithDecidableColifts( Slice_over_B, true );
+        fi;
         
         #     M ---m--> N
         #      \       /
