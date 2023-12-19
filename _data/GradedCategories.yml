@@ -1,7 +1,7 @@
 name: GradedCategories
-version: "2023.10-01"
+version: "2023.12-01"
 license: "GPL-2.0-or-later"
-date: 2023-10-14
+date: 2023-12-19
 description: |
     Graded closures of categories
 
@@ -24,7 +24,7 @@ needed-pkgs:
       version: ">= 2023.02-01"
       url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
     - name: "CAP"
-      version: ">= 2023.08-14"
+      version: ">= 2023.12-11"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "GroupRepresentationsForCAP"
       version: ">=2017.01.11"
@@ -42,11 +42,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/GradedCategories
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/GradedCategories-2023.10-01/GradedCategories-2023.10-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/GradedCategories-2023.12-01/GradedCategories-2023.12-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/GradedCategories-2023.10-01/GradedCategories-2023.10-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/GradedCategories-2023.12-01/GradedCategories-2023.12-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/GradedCategories-2023.10-01/GradedCategories-2023.10-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/GradedCategories-2023.12-01/GradedCategories-2023.12-01-manual.pdf
 
 abstract: |
 
@@ -57,22 +57,22 @@ keywords: |
     Graded categories.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BZ14</span>]   <b class='BibAuthor'>Barakat, M. and Zickgraf, F.</b>,
+    [<span class='BibKey'>BZ19</span>]   <b class='BibAuthor'>Barakat, M. and Zickgraf, F.</b>,
      <i class='BibTitle'>GradedCategories, Graded closures of categories,
-             Version 2023.10-01</i>
-     (<span class='BibYear'>0-14</span>)<br />
+             Version 2023.12-01</i>
+     (<span class='BibYear'>2-19</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/GradedCategories">https://homalg-project.github.io/pkg/GradedCategories</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ GradedCategories2023.10-01,
+    @misc{ GradedCategories2023.12-01,
       author =           {Barakat, M. and Zickgraf, F.},
       title =            {{GradedCategories},  Graded  closures  of  categories,
-                          {V}ersion 2023.10-01},
+                          {V}ersion 2023.12-01},
       month =            {3-},
-      year =             {0-14},
+      year =             {2-19},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/GradedCategories}
@@ -80,6 +80,6 @@ bibtex: |
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{GradedCategories}}},
       keywords =         {Graded categories},
-      printedkey =       {BZ14}
+      printedkey =       {BZ19}
     }
 
