@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "IntrinsicCategories",
 Subtitle := "Intrinsic categories for CAP",
-Version := "2023.11-01",
-Date := "2023-11-10",
-Date := "2023-11-10",
+Version := "2023.12-01",
+Date := "2023-12-19",
+Date := "2023-12-19",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -71,7 +71,7 @@ Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "AutoDoc", ">= 2016.02.16" ],
-                   [ "CAP", ">= 2023.08-04" ],
+                   [ "CAP", ">= 2023.12-11" ],
                    [ "ToolsForHomalg", ">= 2015.09.23" ],
                    [ "ToolsForCategoricalTowers", ">= 2023.11-03" ],
                    [ "GAPDoc", ">= 1.1" ]
