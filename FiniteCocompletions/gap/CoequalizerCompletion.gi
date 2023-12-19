@@ -17,7 +17,7 @@ InstallMethod( CoequalizerCompletion,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           CoequalizerCompletion;
     
-    if not CheckConstructivenessOfCategory( C, "IsCocartesianCategory" ) = [ ] then
+    if not MissingOperationsForConstructivenessOfCategory( C, "IsCocartesianCategory" ) = [ ] then
         Error( "the given category `C` must be algorithmically cocartesian\n" );
     fi;
     

@@ -1303,7 +1303,7 @@ InstallMethod( IntrinsicCategory,
         IC!.IsCapCategoryIntrinsicEndomorphism := IsCapCategoryIntrinsicMorphism and filter_end;
     fi;
     
-    if CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] then
+    if MissingOperationsForConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] then
         
         hom_filter_obj := ValueOption( "hom_filter_obj" );
         

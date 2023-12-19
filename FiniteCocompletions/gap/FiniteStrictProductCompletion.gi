@@ -86,7 +86,7 @@ InstallMethod( FiniteStrictProductCompletion,
     Finalize( opUopC : FinalizeCategory := true );
     
     if (HasIsInitialCategory and IsInitialCategory)( C ) then
-        Assert( 0, [ ] = CheckConstructivenessOfCategory( opUopC, "IsEquippedWithHomomorphismStructure" ) );
+        Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( opUopC, "IsEquippedWithHomomorphismStructure" ) );
     fi;
     
     ## from the raw object data to the object in the modeling category
@@ -212,7 +212,7 @@ InstallMethod( FiniteStrictProductCompletion,
     Finalize( PC );
     
     if (HasIsInitialCategory and IsInitialCategory)( C ) then
-        Assert( 0, [ ] = CheckConstructivenessOfCategory( PC, "IsEquippedWithHomomorphismStructure" ) );
+        Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( PC, "IsEquippedWithHomomorphismStructure" ) );
     fi;
     
     return PC;

@@ -32,12 +32,12 @@ InstallMethod( ZGradedClosureCategoryWithBounds,
     
     additional_properties := [ ];
     
-    if CheckConstructivenessOfCategory( C, "IsAdditiveCategory" ) = [ ] and
-       CheckConstructivenessOfCategory( C, "IsMonoidalCategory" ) = [ ] then
+    if MissingOperationsForConstructivenessOfCategory( C, "IsAdditiveCategory" ) = [ ] and
+       MissingOperationsForConstructivenessOfCategory( C, "IsMonoidalCategory" ) = [ ] then
         
         Add( additional_properties, "IsMonoidalCategory" );
         
-        if CheckConstructivenessOfCategory( C, "IsBraidedMonoidalCategory" ) = [ ] then
+        if MissingOperationsForConstructivenessOfCategory( C, "IsBraidedMonoidalCategory" ) = [ ] then
             
             Add( additional_properties, "IsBraidedMonoidalCategory" );
             

@@ -15,7 +15,7 @@ Display( PSh );
 #! * IsFiniteCocompleteCategory
 #! * IsFiniteCompleteCategory
 #! * IsDistributiveCategory
-CheckConstructivenessOfCategory( PSh, "IsElementaryTopos" );
+MissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" );
 #! [ "CartesianCoevaluationMorphismWithGivenRange",
 #!   "CartesianEvaluationMorphismWithGivenSource",
 #!   "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",

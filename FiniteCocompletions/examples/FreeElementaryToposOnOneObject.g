@@ -16,7 +16,7 @@ Display( FreeTopos1 );
 #! * IsBicartesianCategory
 #! and not yet algorithmically
 #! * IsFiniteCocompleteCategory
-CheckConstructivenessOfCategory( FreeTopos1, "IsFiniteCocompleteCategory" );
+MissingOperationsForConstructivenessOfCategory( FreeTopos1, "IsFiniteCocompleteCategory" );
 #! [ "UniversalMorphismFromCoequalizerWithGivenCoequalizer" ]
 Poly := FiniteStrictCoproductCompletionOfUnderlyingCategory( FreeTopos1 );
 #! FiniteStrictCoproductCompletion( Opposite( SkeletalFinSets ) )

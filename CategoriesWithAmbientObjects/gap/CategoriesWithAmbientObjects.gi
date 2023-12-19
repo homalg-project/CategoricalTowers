@@ -592,7 +592,7 @@ InstallMethod( CategoryWithAmbientObjects,
         
     fi;
     
-    if CheckConstructivenessOfCategory( abelian_category, "IsEquippedWithHomomorphismStructure" ) = [ ] then
+    if MissingOperationsForConstructivenessOfCategory( abelian_category, "IsEquippedWithHomomorphismStructure" ) = [ ] then
         
         H := RangeCategoryOfHomomorphismStructure( abelian_category );
         
