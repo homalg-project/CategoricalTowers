@@ -30,7 +30,7 @@ Display( C_hat );
 #! * IsCocartesianCategory
 #! and not yet algorithmically
 #! * IsFiniteCocompleteCategory
-CheckConstructivenessOfCategory( C_hat, "IsFiniteCocompleteCategory" );
+MissingOperationsForConstructivenessOfCategory( C_hat, "IsFiniteCocompleteCategory" );
 #! [ "UniversalMorphismFromCoequalizerWithGivenCoequalizer" ]
 P := C_hat.P;
 #! <A projective object in FiniteColimitCompletionWithStrictCoproducts(

@@ -150,7 +150,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
     
     Finalize( UI );
     
-    Assert( 0, [ ] = CheckConstructivenessOfCategory( UI, "IsEquippedWithHomomorphismStructure" ) );
+    Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( UI, "IsEquippedWithHomomorphismStructure" ) );
     
     return UI;
     
@@ -1021,10 +1021,10 @@ InstallMethod( FiniteStrictCoproductCompletion,
     
     if install_hom_structure and
        ( HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure )( C ) and
-       CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
+       MissingOperationsForConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
        IsBound( H ) and
        ( HasIsCartesianCategory and IsCartesianCategory )( H ) and
-       CheckConstructivenessOfCategory( H, "IsCartesianCategory" ) = [ ] then
+       MissingOperationsForConstructivenessOfCategory( H, "IsCartesianCategory" ) = [ ] then
         
         if ( HasIsTerminalCategory and IsTerminalCategory )( H ) or
            not ( HasIsCocartesianCategory and IsCocartesianCategory )( H ) then

@@ -43,8 +43,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_MONOIDAL_STRUCTURE_OF_GRADED_CATEGORY,
     
     C := UnderlyingCategory( ZC );
     
-    if CheckConstructivenessOfCategory( C, "IsAdditiveCategory" ) = [ ] and
-       CheckConstructivenessOfCategory( C, "IsMonoidalCategory" ) = [ ] then
+    if MissingOperationsForConstructivenessOfCategory( C, "IsAdditiveCategory" ) = [ ] and
+       MissingOperationsForConstructivenessOfCategory( C, "IsMonoidalCategory" ) = [ ] then
         
         ##
         AddTensorUnit( ZC,
@@ -412,7 +412,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_MONOIDAL_STRUCTURE_OF_GRADED_CATEGORY,
             
         end );
         
-        if CheckConstructivenessOfCategory( C, "IsBraidedMonoidalCategory" ) = [ ] then
+        if MissingOperationsForConstructivenessOfCategory( C, "IsBraidedMonoidalCategory" ) = [ ] then
             
             ##
             AddBraidingWithGivenTensorProducts( ZC,

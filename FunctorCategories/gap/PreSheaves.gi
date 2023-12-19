@@ -1073,11 +1073,11 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     fi;
     
     if HasRangeCategoryOfHomomorphismStructure( D ) and
-       CheckConstructivenessOfCategory( D, "IsEquippedWithHomomorphismStructure" ) = [ ] then
+       MissingOperationsForConstructivenessOfCategory( D, "IsEquippedWithHomomorphismStructure" ) = [ ] then
         
         H := RangeCategoryOfHomomorphismStructure( D );
         
-        if CheckConstructivenessOfCategory( H, "IsFiniteCompleteCategory" ) = [ ] then
+        if MissingOperationsForConstructivenessOfCategory( H, "IsFiniteCompleteCategory" ) = [ ] then
             
             ## Set the range category of the homomorphism structure of the functor category to be
             ## the range category of the homomorphism structure of the range category D of the functor category:
@@ -1406,7 +1406,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    if CheckConstructivenessOfCategory( D, "IsElementaryTopos" ) = [ ] and
+    if MissingOperationsForConstructivenessOfCategory( D, "IsElementaryTopos" ) = [ ] and
        HasRangeCategoryOfHomomorphismStructure( PSh ) and
        ## in the following we require (1) that the range category D of the presheaf category
        ## is itself the range category of the homomorphism structure of the presheaf category:

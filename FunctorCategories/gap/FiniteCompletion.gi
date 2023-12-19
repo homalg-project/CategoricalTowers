@@ -38,7 +38,7 @@ InstallMethodWithCache( FiniteCompletion,
     Finalize( finite_completion : FinalizeCategory := true );
     
     if (HasIsInitialCategory and IsInitialCategory)( fp_category ) then
-        Assert( 0, [ ] = CheckConstructivenessOfCategory( finite_completion, "IsEquippedWithHomomorphismStructure" ) );
+        Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( finite_completion, "IsEquippedWithHomomorphismStructure" ) );
     fi;
     
     return finite_completion;

@@ -466,7 +466,7 @@ InstallMethodWithCache( CoPreSheaves,
     Finalize( O : FinalizeCategory := true );
     
     if (HasIsInitialCategory and IsInitialCategory)( B ) then
-        Assert( 0, [ ] = CheckConstructivenessOfCategory( O, "IsEquippedWithHomomorphismStructure" ) );
+        Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( O, "IsEquippedWithHomomorphismStructure" ) );
     fi;
     
     ## from the raw object data to the object in the modeling category

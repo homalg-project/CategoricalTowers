@@ -177,7 +177,7 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
     
     Finalize( sFinSets );
     
-    Assert( 0, [ ] = CheckConstructivenessOfCategory( sFinSets, "IsEquippedWithHomomorphismStructure" ) );
+    Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( sFinSets, "IsEquippedWithHomomorphismStructure" ) );
     
     return sFinSets;
     
