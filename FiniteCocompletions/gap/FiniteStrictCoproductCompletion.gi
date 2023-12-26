@@ -98,7 +98,9 @@ InstallMethod( FiniteStrictCoproductCompletion,
                   object_constructor := object_constructor,
                   object_datum := object_datum,
                   morphism_constructor := morphism_constructor,
-                  morphism_datum := morphism_datum ) );
+                  morphism_datum := morphism_datum,
+                  range_category_of_homomorphism_structure := "self",
+                  ) );
     
     ##
     SetUnderlyingCategory( UI, I );

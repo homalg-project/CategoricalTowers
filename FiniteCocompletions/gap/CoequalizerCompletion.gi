@@ -306,12 +306,6 @@ InstallMethod( CoequalizerCompletion,
                    only_primitive_operations := true )
               : FinalizeCategory := false );
     
-    if CanCompute( CoequalizerPairs, "MorphismsOfExternalHom" ) then
-        
-        AddMorphismsOfExternalHomForReinterpretationOfCategory( CoequalizerCompletion );
-        
-    fi;
-    
     SetUnderlyingCategory( CoequalizerCompletion, C );
     
     Append( CoequalizerCompletion!.compiler_hints.category_attribute_names,

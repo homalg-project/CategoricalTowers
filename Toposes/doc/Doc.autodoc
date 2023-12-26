@@ -6,8 +6,6 @@ It follows that an elementary topos is also a finitely cocomplete Heyting catego
 The doctrines of (co)cartesian (co)closed categories and their
 variations are implemented in the CAP-based package `CartesianCategories`.
 
-@Section Morphisms of external Hom
-
 @Section Exact cover with global elements
 
 @Section Subobject classifier

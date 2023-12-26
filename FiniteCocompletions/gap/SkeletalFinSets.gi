@@ -156,12 +156,6 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
                    only_primitive_operations := true )
               : FinalizeCategory := false );
     
-    if CanCompute( UT, "MorphismsOfExternalHom" ) then
-        
-        AddMorphismsOfExternalHomForReinterpretationOfCategory( sFinSets );
-        
-    fi;
-    
     # this is a workhorse category -> no logic and caching only via IsIdenticalObj
     CapCategorySwitchLogicOff( sFinSets );
     

@@ -243,12 +243,6 @@ InstallMethod( CategoryOfColimitQuivers,
                    only_primitive_operations := true )
               : FinalizeCategory := false );
     
-    if CanCompute( ParallelPairsUC, "MorphismsOfExternalHom" ) then
-        
-        AddMorphismsOfExternalHomForReinterpretationOfCategory( ColimitQuivers );
-        
-    fi;
-    
     SetUnderlyingCategory( ColimitQuivers, C );
     
     Append( ColimitQuivers!.compiler_hints.category_attribute_names,

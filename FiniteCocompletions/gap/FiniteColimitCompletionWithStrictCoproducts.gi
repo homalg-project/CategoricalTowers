@@ -137,12 +137,6 @@ InstallMethod( FiniteColimitCompletionWithStrictCoproducts,
                    only_primitive_operations := true )
               : FinalizeCategory := false );
     
-    if CanCompute( ColimitCompletion, "MorphismsOfExternalHom" ) then
-        
-        AddMorphismsOfExternalHomForReinterpretationOfCategory( ColimitCompletion );
-        
-    fi;
-    
     SetUnderlyingCategory( ColimitCompletion, C );
     SetFiniteStrictCoproductCompletionOfUnderlyingCategory( ColimitCompletion, UC );
     
