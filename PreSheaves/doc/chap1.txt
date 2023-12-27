@@ -122,7 +122,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "PreSheaves" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2023.11-02", fail );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2023.12-02", fail );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XT := PreSheaves( InitialCategory( ) );[127X[104X
     [4X[28XPreSheaves( InitialCategory( ), InitialCategory( ) )[128X[104X
@@ -131,7 +131,7 @@
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XA CAP category with name PreSheaves( InitialCategory( ), InitialCategory( ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X93 primitive operations were used to derive 516 operations for this category[128X[104X
+    [4X[28X93 primitive operations were used to derive 518 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
