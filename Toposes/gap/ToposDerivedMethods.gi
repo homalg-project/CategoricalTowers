@@ -504,7 +504,7 @@ AddDerivationToCAP( LowerSegmentOfRelationWithGivenRange,
     
 end );
 
-## the currying {}: a → Ωᵃ of the classifying morphism of the diagonal relation Δ ⊆ a × a
+## the currying {}: a ↪ Ωᵃ of the classifying morphism of the diagonal relation Δ ⊆ a × a
 AddDerivationToCAP( SingletonMorphismWithGivenPowerObject,
         "",
         [ [ CartesianDiagonal, 1 ],
@@ -516,7 +516,7 @@ AddDerivationToCAP( SingletonMorphismWithGivenPowerObject,
     ## Δ: a → a × a
     Delta := CartesianDiagonal( cat, a, 2 );
     
-    ## {}: a → Ωᵃ
+    ## {}: a ↪ Ωᵃ
     singleton_morphism := UpperSegmentOfRelationWithGivenRange( cat, a, a, Delta, Pa );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
@@ -1092,7 +1092,7 @@ AddDerivationToCAP( ExponentialOnObjects,
                  epsilon_,
                  PC );
     
-    ## {}_C: C → PC
+    ## {}_C: C ↪ PC
     sing := SingletonMorphismWithGivenPowerObject( cat,
                     C,
                     PC );
