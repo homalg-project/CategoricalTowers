@@ -1037,7 +1037,7 @@ AddDerivationToCAP( ExponentialOnObjects,
           [ FiberProduct, 1 ] ],
         
   function( cat, B, C )
-    local PB, PC, B_C, BxC, PBxC, PBxC_BxC, PBxC_xBxC, Omega, epsilon, PBxC_xB, PBxC_xB_xC, alpha, epsilon_, v, sing, sigma, v_sigma, u, true_B;
+    local PB, PC, B_C, BxC, PBxC, PBxC_BxC, PBxC_xBxC, Omega, epsilon_BxC, PBxC_xB, PBxC_xB_xC, alpha, epsilon_BxC_, v, sing, sigma, v_sigma, u, true_B;
     
     PB := PowerObject( B );
     PC := PowerObject( C );
@@ -1059,10 +1059,10 @@ AddDerivationToCAP( ExponentialOnObjects,
     Omega := SubobjectClassifier( cat );
     
     ## ϵ_{B × C} : P(B × C) × (B × C) → Ω
-    epsilon := PowerObjectEvaluationMorphismWithGivenObjects( cat,
-                       PBxC_xBxC,
-                       BxC,
-                       Omega );
+    epsilon_BxC := PowerObjectEvaluationMorphismWithGivenObjects( cat,
+                           PBxC_xBxC,
+                           BxC,
+                           Omega );
     
     ## P(B × C) × B
     PBxC_xB := DirectProduct( cat,
@@ -1081,15 +1081,15 @@ AddDerivationToCAP( ExponentialOnObjects,
                      PBxC_xB_xC );
     
     ## ϵ_{B × C} : (P(B × C) × B) × C → Ω
-    epsilon_ := PreCompose( cat,
-                        alpha,
-                        epsilon );
+    epsilon_BxC_ := PreCompose( cat,
+                            alpha,
+                            epsilon_BxC );
     
     ## v: P(B × C) × B → PC
     v := PTransposeMorphismWithGivenRange( cat,
                  PBxC_xB,
                  C,
-                 epsilon_,
+                 epsilon_BxC_,
                  PC );
     
     ## {}_C: C ↪ PC
