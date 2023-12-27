@@ -1020,27 +1020,19 @@ AddDerivationToCAP( RelativePseudoComplementSubobject,
     
 end );
 
-## [MacLane-Moerdijk, p.168]
-AddDerivationToCAP( ExponentialOnObjects,
-        "ExponentialOnObjects from the power object, the power object evaluation morphism, and the P-transpose",
-        [ [ PowerObject, 4 ],
+##
+AddDerivationToCAP( FiberMorphismWithGivenObjects,
+        "FiberMorphismWithGivenObjects using PowerObjectEvaluationMorphism and PTransposeMorphism",
+        [ [ PowerObject, 1 ],
           [ DirectProduct, 4 ],
           [ SubobjectClassifier, 1 ],
           [ PowerObjectEvaluationMorphismWithGivenObjects, 1 ],
           [ CartesianAssociatorRightToLeftWithGivenDirectProducts, 1 ],
-          [ PreCompose, 2 ],
-          [ PTransposeMorphismWithGivenRange, 2 ],
-          [ SingletonMorphismWithGivenPowerObject, 1 ],
-          [ ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier, 1 ],
-          [ TerminalObject, 1 ],
-          [ RelativeTruthMorphismOfTrueWithGivenObjects, 1 ],
-          [ FiberProduct, 1 ] ],
+          [ PreCompose, 1 ],
+          [ PTransposeMorphismWithGivenRange, 1 ] ],
         
-  function( cat, B, C )
-    local PB, PC, B_C, BxC, PBxC, PBxC_BxC, PBxC_xBxC, Omega, epsilon_BxC, PBxC_xB, PBxC_xB_xC, alpha, epsilon_BxC_, v, sing, sigma, v_sigma, u, true_B;
-    
-    PB := PowerObject( B );
-    PC := PowerObject( C );
+  function( cat, PBxC_xB, B, C, PC )
+    local B_C, BxC, PBxC, PBxC_BxC, PBxC_xBxC, Omega, epsilon_BxC, PBxC_xB_xC, alpha, epsilon_BxC_;
     
     B_C := [ B, C ];
     
@@ -1085,11 +1077,50 @@ AddDerivationToCAP( ExponentialOnObjects,
                             alpha,
                             epsilon_BxC );
     
-    ## v: P(B × C) × B → PC
-    v := PTransposeMorphismWithGivenRange( cat,
+    ## v: P(B × C) × B → PC, where
+    ## v(R, b) = π_B⁻¹(b) ∩ R = { c ∈ C | (b,c) ∈ R } ∈ PC
+    return PTransposeMorphismWithGivenRange( cat,
+                   PBxC_xB,
+                   C,
+                   epsilon_BxC_,
+                   PC );
+    
+end );
+
+##
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
+        rec( SingletonSupportOfRelationsWithGivenObjects :=
+             [ [ "PowerObject", 1 ],
+               [ "DirectProduct", 2 ],
+               [ "FiberMorphismWithGivenObjects", 1 ],
+               [ "SingletonMorphismWithGivenPowerObject", 1 ],
+               [ "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier", 1 ],
+               [ "PreCompose", 1 ],
+               [ "PTransposeMorphismWithGivenRange", 1 ] ] ) );
+
+##
+InstallOtherMethodForCompilerForCAP( SingletonSupportOfRelationsWithGivenObjects,
+        "for a category and four category objects",
+        [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+        
+  function( cat, PBxC, B, C, PB )
+    local PC, BxC, PBxC_xB, v, sing, sigma, v_sigma;
+    
+    PC := PowerObject( C );
+    
+    ## B × C
+    BxC := DirectProduct( cat, [ B, C ] );
+    
+    ## P(B × C) × B
+    PBxC_xB := DirectProduct( cat,
+                       [ PBxC, B ] );
+    
+    ## v: P(B × C) × B → PC, where
+    ## v(R, b) = π_B⁻¹(b) ∩ R = { c ∈ C | (b,c) ∈ R } ∈ PC
+    v := FiberMorphismWithGivenObjects( cat,
                  PBxC_xB,
+                 B,
                  C,
-                 epsilon_BxC_,
                  PC );
     
     ## {}_C: C ↪ PC
@@ -1098,21 +1129,57 @@ AddDerivationToCAP( ExponentialOnObjects,
                     PC );
     
     ## σ_C: PC → Ω
-    sigma := ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( cat,
-                     sing,
-                     Omega );
+    sigma := ClassifyingMorphismOfSubobject( cat,
+                     sing );
     
     ## v σ_C: P(B × C) × B → Ω
     v_sigma := PreCompose( cat,
                        v,
                        sigma );
     
-    ## u: P(B × C) → PB
-    u := PTransposeMorphismWithGivenRange( cat,
+    ## u: P(B × C) → PB, where
+    ## u(R) = { b ∈ B | v(R, b) is a singleton } ∈ PB,
+    ## i.e., u(R) is the set of base points b, over which R is a singleton
+    return PTransposeMorphismWithGivenRange( cat,
+                   PBxC,
+                   B,
+                   v_sigma,
+                   PB );
+    
+end );
+
+## [MacLane-Moerdijk, p.168]
+AddDerivationToCAP( ExponentialOnObjects,
+        "ExponentialOnObjects from the power object, the power object evaluation morphism, and the P-transpose",
+        [ [ PowerObject, 3 ],
+          [ DirectProduct, 3 ],
+          [ TerminalObject, 1 ],
+          [ FiberMorphismWithGivenObjects, 1 ],
+          [ SingletonMorphismWithGivenPowerObject, 1 ],
+          [ ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier, 1 ],
+          [ PreCompose, 1 ],
+          [ PTransposeMorphismWithGivenRange, 1 ],
+          [ RelativeTruthMorphismOfTrueWithGivenObjects, 1 ],
+          [ FiberProduct, 1 ] ],
+        
+  function( cat, B, C )
+    local PB, BxC, PBxC, u, true_B;
+    
+    PB := PowerObject( B );
+    
+    ## B × C
+    BxC := DirectProduct( cat, [ B, C ] );
+    
+    ## P(B × C)
+    PBxC := PowerObject( cat, BxC );
+    
+    ## u: P(B × C) → PB, where
+    ## u(R) = { b ∈ B | v(R, b) is a singleton } ∈ PB,
+    ## i.e., u(R) is the set of base points b, over which R is a singleton
+    u := SingletonSupportOfRelationsWithGivenObjects( cat,
                  PBxC,
-                 B,
-                 v_sigma,
-                 PowerObject( cat, B ) );
+                 B, C,
+                 PB );
     
     ## 𝟙 ↪ PB, * ↦ B
     true_B := RelativeTruthMorphismOfTrueWithGivenObjects( cat,

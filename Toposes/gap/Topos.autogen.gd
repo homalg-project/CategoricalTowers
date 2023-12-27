@@ -278,6 +278,44 @@ DeclareOperation( "AddExactCoverWithGlobalElements",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `FiberMorphism`.
+#! $F: ( b, c ) \mapsto \mathtt{FiberMorphism}(b, c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddFiberMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddFiberMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddFiberMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddFiberMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `FiberMorphismWithGivenObjects`.
+#! $F: ( Pbxc_b, b, c, Pc ) \mapsto \mathtt{FiberMorphismWithGivenObjects}(Pbxc_b, b, c, Pc)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddFiberMorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddFiberMorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddFiberMorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddFiberMorphismWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `HasPushoutComplement`.
 #! $F: ( arg2, arg3 ) \mapsto \mathtt{HasPushoutComplement}(arg2, arg3)$.
 #! @Returns nothing

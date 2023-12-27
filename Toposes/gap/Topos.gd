@@ -527,6 +527,34 @@ DeclareAttribute( "RelativePowerObjectFibrationMorphism",
 DeclareAttribute( "RelativePowerObjectEvaluationMorphism",
         IsCapCategoryMorphism );
 
+#! @Description
+#!  The arguments are two objects <A>b</A>, <A>c</A>.
+#!  The output is the morphism <C>PowerObject</C>(b \times c) $\times$ <A>b</A> $\to$ <C>PowerObject</C>( <A>c</A> )
+#!  that for a given relation $R \subseteq$ <A>b</A> $\times$ <A>c</A>
+#!  and an element $y$ in the base <A>b</A> computes the fiber of $y$ as subset of <A>c</A>.
+#! @Returns a morphism in $\mathrm{Hom}( P(b \times c) \times b, Pc )$
+#! @Arguments b, c
+DeclareOperation( "FiberMorphism",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#!  The arguments are four objects <A>Pbxc_xb</A>, <A>b</A>, <A>c</A>, <A>Pc</A>,
+#!  where <A>Pbxc_xb</A> = $P(b \times c) \times b$ and <A>Pc</A> = <C>PowerObject</C>( <A>c</A> ).
+#!  The output is the morphism that for a given relation $R \subseteq$ <A>b</A> $\times$ <A>c</A>
+#!  and an element $y$ in the base <A>b</A> computes the fiber of $y$ as subset of <A>c</A>.
+#! @Returns a morphism in $\mathrm{Hom}( Pbxc_xb, Pc )$
+#! @Arguments Pbxc_xb, b, c, Pc
+DeclareOperation( "FiberMorphismWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#!  Return the morphism that for a given relation $R \subseteq$ <A>b</A> $\times$ <A>c</A>
+#!  computes the subset of <A>b</A> over which $R$ is a singleton.
+#! @Returns a morphism in $\mathrm{Hom}( Pbxc, Pb )$
+#! @Arguments Pbxc, b, c, Pb
+DeclareOperation( "SingletonSupportOfRelationsWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
 ####################################
 ##
 #! @Section Relative truth morphisms
