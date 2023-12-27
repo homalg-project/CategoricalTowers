@@ -86,7 +86,7 @@
     [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2022.11-05" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2022.12-02" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2022.05-01" );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -97,7 +97,7 @@
     [4X[25Xgap>[125X [27XDisplay( S );[127X[104X
     [4X[28XA CAP category with name A slice category of SkeletalFinSets:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X50 primitive operations were used to derive 263 operations for this category which algorithmically[128X[104X
+    [4X[28X50 primitive operations were used to derive 265 operations for this category which algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
