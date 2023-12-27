@@ -1114,12 +1114,13 @@ AddDerivationToCAP( ExponentialOnObjects,
                  v_sigma,
                  PowerObject( cat, B ) );
     
-    ## 𝟙 ↪ PB
+    ## 𝟙 ↪ PB, * ↦ B
     true_B := RelativeTruthMorphismOfTrueWithGivenObjects( cat,
                       TerminalObject( cat ),
                       B,
                       PB );
     
+    ## the set of all relations that are graphs of functions
     return FiberProduct( cat,
                    [ u, true_B ] );
     
