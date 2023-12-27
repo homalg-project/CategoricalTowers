@@ -502,28 +502,28 @@ DeclareOperation( "IntersectWithPreimagesWithGivenObjects",
 
 #! @Description
 #!  The input is a morphism <A>f</A>: $a \to b$.
-#!  The output is the embedding of the relative power object $P_fA \hookrightarrow Pa \times b$,
+#!  The output is the embedding of the relative power object $P_fa \hookrightarrow Pa \times b$,
 #!  where $Pa$ = <C>PowerObject</C>($a$).
 #! @Arguments f
-#! @Returns a monomorphism $\mathrm{Hom}( P_fA, Pa \times b )$
+#! @Returns a monomorphism $\mathrm{Hom}( P_fa, Pa \times b )$
 DeclareAttribute( "EmbeddingOfRelativePowerObject",
         IsCapCategoryMorphism );
 
 #! @Description
 #!  The input is a morphism <A>f</A>: $a \to b$.
-#!  The output is the fibration morphism $P_f: P_fA \rightarrow \times b$,
-#!  where is $P_fA$ the relative power object of <A>f</A>.
+#!  The output is the fibration morphism $P_f: P_fa \rightarrow \times b$,
+#!  where is $P_fa$ the relative power object of <A>f</A>.
 #! @Arguments f
-#! @Returns a monomorphism $\mathrm{Hom}( P_fA, b )$
+#! @Returns a monomorphism $\mathrm{Hom}( P_fa, b )$
 DeclareAttribute( "RelativePowerObjectFibrationMorphism",
         IsCapCategoryMorphism );
 
 #! @Description
 #!  The input is a morphism <A>f</A>: $a \to b$.
-#!  The output is the evaluation morphism $P_fA \times a \rightarrow \Omega \times b$,
-#!  where $Pa$ = <C>PowerObject</C>($a$) and $P_fA$ is the relative power object of <A>f</A>.
+#!  The output is the evaluation morphism $P_fa \times a \rightarrow \Omega \times b$,
+#!  where $Pa$ = <C>PowerObject</C>($a$) and $P_fa$ is the relative power object of <A>f</A>.
 #! @Arguments f
-#! @Returns a monomorphism $\mathrm{Hom}( P_fA \times a, \Omega \times b )$
+#! @Returns a monomorphism $\mathrm{Hom}( P_fa \times a, \Omega \times b )$
 DeclareAttribute( "RelativePowerObjectEvaluationMorphism",
         IsCapCategoryMorphism );
 
