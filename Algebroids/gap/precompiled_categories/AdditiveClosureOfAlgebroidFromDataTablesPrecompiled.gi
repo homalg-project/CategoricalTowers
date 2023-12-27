@@ -119,7 +119,9 @@ end
         
 ########
 function ( cat_1, objects_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, ObjectList, Concatenation( List( objects_1, ObjectList ) ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, ObjectList, Concatenation( List( [ 1 .. Length( objects_1 ) ], function ( i_2 )
+                return CAP_JIT_INCOMPLETE_LOGIC( ObjectList( CAP_JIT_INCOMPLETE_LOGIC( objects_1[i_2] ) ) );
+            end ) ) );
 end
 ########
         
@@ -207,8 +209,8 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     hoisted_9_1 := List( deduped_22_1, function ( i_2 )
             local hoisted_1_2;
             hoisted_1_2 := deduped_8_1[i_2];
-            return Sum( List( deduped_7_1, function ( t_3 )
-                      return hoisted_1_2[t_3];
+            return Sum( List( deduped_7_1, function ( i_3 )
+                      return CAP_JIT_INCOMPLETE_LOGIC( hoisted_1_2[CAP_JIT_INCOMPLETE_LOGIC( i_3 )] );
                   end ) );
         end );
     deduped_4_1 := [ 1 .. Length( deduped_24_1 ) ];
@@ -219,8 +221,8 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                   deduped_2_2 := CAP_JIT_INCOMPLETE_LOGIC( List( deduped_4_1, function ( s_3 )
                             return hoisted_1_2[hoisted_3_1[s_3]];
                         end ) );
-                  return UnionOfColumnsListList( Sum( List( deduped_4_1, function ( s_3 )
-                              return deduped_2_2[s_3];
+                  return UnionOfColumnsListList( Sum( List( deduped_4_1, function ( i_3 )
+                              return CAP_JIT_INCOMPLETE_LOGIC( deduped_2_2[CAP_JIT_INCOMPLETE_LOGIC( i_3 )] );
                           end ) ), List( deduped_22_1, function ( i_3 )
                             local hoisted_1_3, deduped_2_3, hoisted_3_3, hoisted_4_3, hoisted_5_3, hoisted_6_3, hoisted_7_3, deduped_8_3;
                             deduped_8_3 := hoisted_10_1[i_3][j_2];
@@ -295,12 +297,12 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_6_1 := [ 1 .. Length( deduped_8_1 ) ];
     hoisted_5_1 := List( deduped_8_1, ObjectIndex );
     hoisted_4_1 := HomomorphismStructureOnObjectsRanks( UnderlyingCategory( cat_1 ) );
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, Sum( List( [ 1 .. Length( deduped_7_1 ) ], function ( j_2 )
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, Sum( List( [ 1 .. Length( deduped_7_1 ) ], function ( i_2 )
                 local hoisted_1_2;
-                hoisted_1_2 := hoisted_4_1[CAP_JIT_INCOMPLETE_LOGIC( ObjectIndex( CAP_JIT_INCOMPLETE_LOGIC( deduped_7_1[j_2] ) ) )];
-                return Sum( List( hoisted_6_1, function ( s_3 )
-                          return hoisted_1_2[hoisted_5_1[s_3]];
-                      end ) );
+                hoisted_1_2 := hoisted_4_1[CAP_JIT_INCOMPLETE_LOGIC( ObjectIndex( CAP_JIT_INCOMPLETE_LOGIC( deduped_7_1[CAP_JIT_INCOMPLETE_LOGIC( i_2 )] ) ) )];
+                return CAP_JIT_INCOMPLETE_LOGIC( Sum( List( hoisted_6_1, function ( i_3 )
+                            return CAP_JIT_INCOMPLETE_LOGIC( hoisted_1_2[hoisted_5_1[CAP_JIT_INCOMPLETE_LOGIC( i_3 )]] );
+                        end ) ) );
             end ) ) );
 end
 ########
@@ -391,8 +393,8 @@ function ( cat_1, source_1, range_1, alpha_1 )
     hoisted_7_1 := List( deduped_10_1, function ( j_2 )
             local hoisted_1_2;
             hoisted_1_2 := deduped_6_1[j_2];
-            return Sum( List( deduped_5_1, function ( s_3 )
-                      return hoisted_1_2[s_3];
+            return Sum( List( deduped_5_1, function ( i_3 )
+                      return CAP_JIT_INCOMPLETE_LOGIC( hoisted_1_2[CAP_JIT_INCOMPLETE_LOGIC( i_3 )] );
                   end ) );
         end );
     return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, MorphismMatrix, List( deduped_10_1, function ( j_2 )

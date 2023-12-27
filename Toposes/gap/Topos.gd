@@ -502,30 +502,58 @@ DeclareOperation( "IntersectWithPreimagesWithGivenObjects",
 
 #! @Description
 #!  The input is a morphism <A>f</A>: $a \to b$.
-#!  The output is the embedding of the relative power object $P_fA \hookrightarrow Pa \times b$,
+#!  The output is the embedding of the relative power object $P_fa \hookrightarrow Pa \times b$,
 #!  where $Pa$ = <C>PowerObject</C>($a$).
 #! @Arguments f
-#! @Returns a monomorphism $\mathrm{Hom}( P_fA, Pa \times b )$
+#! @Returns a monomorphism $\mathrm{Hom}( P_fa, Pa \times b )$
 DeclareAttribute( "EmbeddingOfRelativePowerObject",
         IsCapCategoryMorphism );
 
 #! @Description
 #!  The input is a morphism <A>f</A>: $a \to b$.
-#!  The output is the fibration morphism $P_f: P_fA \rightarrow \times b$,
-#!  where is $P_fA$ the relative power object of <A>f</A>.
+#!  The output is the fibration morphism $P_f: P_fa \rightarrow \times b$,
+#!  where is $P_fa$ the relative power object of <A>f</A>.
 #! @Arguments f
-#! @Returns a monomorphism $\mathrm{Hom}( P_fA, b )$
+#! @Returns a monomorphism $\mathrm{Hom}( P_fa, b )$
 DeclareAttribute( "RelativePowerObjectFibrationMorphism",
         IsCapCategoryMorphism );
 
 #! @Description
 #!  The input is a morphism <A>f</A>: $a \to b$.
-#!  The output is the evaluation morphism $P_fA \times a \rightarrow \Omega \times b$,
-#!  where $Pa$ = <C>PowerObject</C>($a$) and $P_fA$ is the relative power object of <A>f</A>.
+#!  The output is the evaluation morphism $P_fa \times a \rightarrow \Omega \times b$,
+#!  where $Pa$ = <C>PowerObject</C>($a$) and $P_fa$ is the relative power object of <A>f</A>.
 #! @Arguments f
-#! @Returns a monomorphism $\mathrm{Hom}( P_fA \times a, \Omega \times b )$
+#! @Returns a monomorphism $\mathrm{Hom}( P_fa \times a, \Omega \times b )$
 DeclareAttribute( "RelativePowerObjectEvaluationMorphism",
         IsCapCategoryMorphism );
+
+#! @Description
+#!  The arguments are two objects <A>b</A>, <A>c</A>.
+#!  The output is the morphism <C>PowerObject</C>(b \times c) $\times$ <A>b</A> $\to$ <C>PowerObject</C>( <A>c</A> )
+#!  that for a given relation $R \subseteq$ <A>b</A> $\times$ <A>c</A>
+#!  and an element $y$ in the base <A>b</A> computes the fiber of $y$ as subset of <A>c</A>.
+#! @Returns a morphism in $\mathrm{Hom}( P(b \times c) \times b, Pc )$
+#! @Arguments b, c
+DeclareOperation( "FiberMorphism",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#!  The arguments are four objects <A>Pbxc_xb</A>, <A>b</A>, <A>c</A>, <A>Pc</A>,
+#!  where <A>Pbxc_xb</A> = $P(b \times c) \times b$ and <A>Pc</A> = <C>PowerObject</C>( <A>c</A> ).
+#!  The output is the morphism that for a given relation $R \subseteq$ <A>b</A> $\times$ <A>c</A>
+#!  and an element $y$ in the base <A>b</A> computes the fiber of $y$ as subset of <A>c</A>.
+#! @Returns a morphism in $\mathrm{Hom}( Pbxc_xb, Pc )$
+#! @Arguments Pbxc_xb, b, c, Pc
+DeclareOperation( "FiberMorphismWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#!  Return the morphism that for a given relation $R \subseteq$ <A>b</A> $\times$ <A>c</A>
+#!  computes the subset of <A>b</A> over which $R$ is a singleton.
+#! @Returns a morphism in $\mathrm{Hom}( Pbxc, Pb )$
+#! @Arguments Pbxc, b, c, Pb
+DeclareOperation( "SingletonSupportOfRelationsWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 ####################################
 ##

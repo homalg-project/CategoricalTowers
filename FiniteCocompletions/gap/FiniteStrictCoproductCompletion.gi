@@ -763,6 +763,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             cartesian := List( Cartesian( List( Reversed( data ), datum -> datum[2] ) ), Reversed );
             
+            ## this where distributivity is born:
             return ObjectConstructor( UC,
                            Pair( Product( List( data, datum -> datum[1] ) ), ## SkeletalFinSets code
                                  List( cartesian, L -> DirectProduct( C, L ) ) ) ); ## FiniteStrictCoproductCompletion code

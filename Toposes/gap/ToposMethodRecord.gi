@@ -506,6 +506,25 @@ RelativeTruthMorphismOfImpliesWithGivenObjects := rec(
   output_range_getter_preconditions := [ ],
 ),
 
+FiberMorphism := rec(
+  filter_list := [ "category", "object", "object" ],
+  return_type := "morphism",
+  input_arguments_names := [ "cat", "b", "c" ],
+  output_source_getter_string := "DirectProduct( cat, PowerObject( cat, DirectProduct( b, c ) ), b )",
+  output_source_getter_preconditions := [ [ "DirectProduct", 2 ], [ "PowerObject", 1 ] ],
+  output_range_getter_string := "PowerObject( cat, c )",
+  output_range_getter_preconditions := [ [ "PowerObject", 1 ] ],
+  with_given_object_position := "both" ),
+
+FiberMorphismWithGivenObjects := rec(
+  filter_list := [ "category", "object", "object", "object", "object" ],
+  return_type := "morphism",
+  input_arguments_names := [ "cat", "Pbxc_b", "b", "c", "Pc" ],
+  output_source_getter_string := "Pbxc_b",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Pc",
+  output_range_getter_preconditions := [ ] ),
+
 ListOfSubobjects := rec(
   filter_list := [ "category", "object" ],
   return_type := "list_of_morphisms" ),

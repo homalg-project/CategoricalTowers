@@ -4,7 +4,7 @@
 #! #@if ValueOption( "no_precompiled_code" ) <> true
 LoadPackage( "SubcategoriesForCAP" );
 #! true
-LoadPackage( "Toposes", ">= 2022.11-05" );
+LoadPackage( "Toposes", ">= 2022.12-02" );
 #! true
 LoadPackage( "FinSetsForCAP", ">= 2022.05-01" );
 #! true
@@ -15,7 +15,7 @@ S := SliceCategory( B );
 Display( S );
 #! A CAP category with name A slice category of SkeletalFinSets:
 #! 
-#! 50 primitive operations were used to derive 263 operations for this category which algorithmically
+#! 50 primitive operations were used to derive 265 operations for this category which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
