@@ -1194,6 +1194,94 @@ AddDerivationToCAP( ExponentialOnObjects,
 end );
 
 ##
+AddDerivationToCAP( CartesianEvaluationMorphismWithGivenSource,
+        "CartesianEvaluationMorphismWithGivenSource from the power object, the power object evaluation morphism, and the P-transpose",
+        [ [ PowerObject, 4 ],
+          [ DirectProduct, 4 ],
+          [ FiberMorphismWithGivenObjects, 2 ],
+          [ SingletonMorphismWithGivenPowerObject, 2 ],
+          [ ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier, 1 ],
+          [ PreCompose, 2 ],
+          [ PTransposeMorphismWithGivenRange, 1 ],
+          [ TerminalObject, 1 ],
+          [ RelativeTruthMorphismOfTrueWithGivenObjects, 1 ],
+          [ ProjectionInFactorOfFiberProduct, 1 ],
+          [ DirectProductFunctorialWithGivenDirectProducts, 1 ],
+          [ IdentityMorphism, 1 ],
+          [ LiftAlongMonomorphism, 1 ] ],
+        
+  function( cat, B, C, CB_xB ) ## CB_xB = Cᴮ × B
+    local PB, PC, BxC, PBxC, PBxC_B, PBxC_xB, v, sing, sigma, v_sigma, u, true_B, m, mx1;
+    
+    PB := PowerObject( B );
+    
+    PC := PowerObject( C );
+    
+    ## B × C
+    BxC := DirectProduct( cat, [ B, C ] );
+    
+    ## P(B × C)
+    PBxC := PowerObject( cat, BxC );
+    
+    PBxC_B := [ PBxC, B ];
+    
+    ## P(B × C) × B
+    PBxC_xB := DirectProduct( cat,
+                       PBxC_B );
+    
+    ## v: P(B × C) × B → PC, where
+    ## v(R, b) = π_B⁻¹(b) ∩ R = { c ∈ C | (b,c) ∈ R } ∈ PC
+    v := FiberMorphismWithGivenObjects( cat,
+                 PBxC_xB,
+                 B, C,
+                 PC );
+    
+    ## {}_C: C ↪ PC
+    sing := SingletonMorphismWithGivenPowerObject( cat,
+                    C,
+                    PC );
+    
+    ## u: P(B × C) → PB, where
+    ## u(R) = { b ∈ B | v(R, b) is a singleton } ∈ PB,
+    ## i.e., u(R) is the set of base points b, over which R is a singleton
+    u := SingletonSupportOfRelationsWithGivenObjects( cat,
+                 PBxC,
+                 B, C,
+                 PB );
+    
+    ## 𝟙 ↪ PB, * ↦ B
+    true_B := RelativeTruthMorphismOfTrueWithGivenObjects( cat,
+                      TerminalObject( cat ),
+                      B,
+                      PB );
+    
+    ## m: Cᴮ → P(B × C)
+    m := ProjectionInFactorOfFiberProduct( cat,
+                 [ u, true_B ],
+                 1 );
+    
+    ## m × 1 : Cᴮ × B → P(C × B) × B
+    mx1 := DirectProductFunctorialWithGivenDirectProducts( cat,
+                   CB_xB,
+                   [ Source( m ), B ],
+                   [ m, IdentityMorphism( cat, B ) ],
+                   PBxC_B,
+                   PBxC_xB );
+    
+    ## Cᴮ × B → C
+    return LiftAlongMonomorphism( cat,
+                   ## {}: C ↪ PC
+                   sing,
+                   ## Cᴮ × B → PC
+                   PreCompose( cat,
+                           ## Cᴮ × B → P(C × B) × B
+                           mx1,
+                           ## P(C × B) × B → PC
+                           v ) );
+    
+end );
+
+##
 AddDerivationToCAP( MorphismsOfExternalHom,
         "MorphismsOfExternalHom using MorphismsOfExternalHom in RangeCategoryOfHomomorphismStructure",
         [ [ HomomorphismStructureOnObjects, 1 ],

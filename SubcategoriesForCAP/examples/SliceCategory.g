@@ -4,7 +4,7 @@
 #! #@if ValueOption( "no_precompiled_code" ) <> true
 LoadPackage( "SubcategoriesForCAP" );
 #! true
-LoadPackage( "Toposes", ">= 2022.12-02" );
+LoadPackage( "Toposes", ">= 2022.12-03" );
 #! true
 LoadPackage( "FinSetsForCAP", ">= 2022.05-01" );
 #! true
@@ -15,7 +15,7 @@ S := SliceCategory( B );
 Display( S );
 #! A CAP category with name A slice category of SkeletalFinSets:
 #! 
-#! 50 primitive operations were used to derive 265 operations for this category which algorithmically
+#! 50 primitive operations were used to derive 274 operations for this category which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
@@ -220,5 +220,11 @@ Display( expo1o1 );
 #! { 0,..., 4 } ⱶ[ 0, 0, 0, 0, 1 ]→ { 0, 1 }
 #! 
 #! An object in the slice category given by the above data
+evo1o1 := CartesianEvaluationMorphism( o1, o1 );
+#! A morphism in the slice category given by: |9| → |3|
+Display( evo1o1 );
+#! { 0,..., 8 } ⱶ[ 0, 2, 0, 2, 1, 0, 0, 2, 2 ]→ { 0, 1, 2 }
+#! 
+#! A morphism in the slice category given by the above data
 #! #@fi
 #! @EndExample
