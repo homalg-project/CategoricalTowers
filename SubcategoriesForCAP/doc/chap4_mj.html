@@ -170,7 +170,7 @@
 #@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Toposes", "&gt;= 2022.12-02" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Toposes", "&gt;= 2022.12-03" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP", "&gt;= 2022.05-01" );</span>
 true
@@ -181,7 +181,7 @@ A slice category of SkeletalFinSets
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( S );</span>
 A CAP category with name A slice category of SkeletalFinSets:
 
-50 primitive operations were used to derive 265 operations for this category which algorithmically
+50 primitive operations were used to derive 274 operations for this category which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
 * IsEquippedWithHomomorphismStructure
@@ -386,6 +386,12 @@ An object in the slice category given by: |5| → |2|
 { 0,..., 4 } ⱶ[ 0, 0, 0, 0, 1 ]→ { 0, 1 }
 
 An object in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">evo1o1 := CartesianEvaluationMorphism( o1, o1 );</span>
+A morphism in the slice category given by: |9| → |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( evo1o1 );</span>
+{ 0,..., 8 } ⱶ[ 0, 2, 0, 2, 1, 0, 0, 2, 2 ]→ { 0, 1, 2 }
+
+A morphism in the slice category given by the above data
 #@fi
 </pre></div>
 
