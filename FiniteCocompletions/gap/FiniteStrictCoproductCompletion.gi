@@ -1063,7 +1063,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 local datum;
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
-                datum := ObjectDatum( UC, object );
+                datum := ObjectDatum( H, object );
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
                 Assert( 0, Length( datum ) = 2 and IsBigInt( datum[1] ) and Length( datum[2] ) = datum[1] );
@@ -1190,7 +1190,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             intros := List( [ 0 .. s - 1 ], i ->
                             InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding( C, H,
                                     distinguished_object,
-                                    mor[1 + i], ## ∈ C₀
+                                    mor[1 + i], ## ∈ C₁
                                     Homs[1 + number][1 + i] ) );
             
             intro := UniversalMorphismIntoDirectProductWithGivenDirectProduct( H,
