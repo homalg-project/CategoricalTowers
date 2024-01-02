@@ -1063,7 +1063,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 local datum;
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
-                datum := ObjectDatum( UC, object );
+                datum := ObjectDatum( H, object );
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
                 Assert( 0, Length( datum ) = 2 and IsBigInt( datum[1] ) and Length( datum[2] ) = datum[1] );
