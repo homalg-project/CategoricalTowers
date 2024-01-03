@@ -67,7 +67,7 @@
     [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
     [4X[28XA CAP category with name WrapperCategory( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X311 primitive operations were used to derive 321 operations for this category[128X[104X
+    [4X[28X312 primitive operations were used to derive 326 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -212,7 +212,7 @@
     [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
     [4X[28XA CAP category with name WrapperCategory( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X311 primitive operations were used to derive 321 operations for this category[128X[104X
+    [4X[28X312 primitive operations were used to derive 326 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
