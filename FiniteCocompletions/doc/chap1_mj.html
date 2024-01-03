@@ -677,7 +677,7 @@ FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
 A CAP category with name
 FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) ):
 
-34 primitive operations were used to derive 171 operations for this category
+35 primitive operations were used to derive 172 operations for this category
 which algorithmically
 * IsCategoryWithDecidableLifts
 * IsEquippedWithHomomorphismStructure
@@ -767,54 +767,44 @@ given by the above data
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := HomStructure( sFinSets );</span>
 &lt;An object in
- FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )&gt;
+ FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( I );</span>
-[ 1, [ TerminalObject ] ]
+[ 1, [ An object in TerminalCategoryWithSingleObject( ) ] ]
 
 An object in
-FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
+FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectDatum( I )[2][1];</span>
-&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( U );</span>
-TerminalObject
+&lt;A zero object in TerminalCategoryWithSingleObject( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomAB := HomStructure( A, B );</span>
 &lt;An object in
- FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )&gt;
+ FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := ObjectDatum( HomAB );</span>
-[ 8, [ &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;,
-       &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;,
-       &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;,
-       &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;,
-       &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;,
-       &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;,
-       &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;,
-       &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt; ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homAB := List( [ 0 .. L[1] - 1 ], i -&gt;</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">               MorphismConstructor( sFinSets,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       I,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       Pair( [ i ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                             [ MorphismConstructor( T,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                     U,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                     String( i ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                     L[2][1 + i] ) ] ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       HomAB ) );</span>
+[ 8, [ &lt;A zero object in TerminalCategoryWithSingleObject( )&gt;,
+       &lt;A zero object in TerminalCategoryWithSingleObject( )&gt;,
+       &lt;A zero object in TerminalCategoryWithSingleObject( )&gt;,
+       &lt;A zero object in TerminalCategoryWithSingleObject( )&gt;,
+       &lt;A zero object in TerminalCategoryWithSingleObject( )&gt;,
+       &lt;A zero object in TerminalCategoryWithSingleObject( )&gt;,
+       &lt;A zero object in TerminalCategoryWithSingleObject( )&gt;,
+       &lt;A zero object in TerminalCategoryWithSingleObject( )&gt; ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homAB := List( MorphismsOfExternalHom( A, B ), HomStructure );</span>
 [ &lt;A morphism in
-   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
+   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )&gt;,
   &lt;A morphism in
-   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
+   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )&gt;,
   &lt;A morphism in
-   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
+   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )&gt;,
   &lt;A morphism in
-   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
+   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )&gt;,
   &lt;A morphism in
-   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
+   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )&gt;,
   &lt;A morphism in
-   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
+   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )&gt;,
   &lt;A morphism in
-   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
+   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )&gt;,
   &lt;A morphism in
-   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )&gt; ]
+   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( homAB, IsWellDefined );</span>
 [ true, true, true, true, true, true, true, true ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( homAB, m -&gt; HomStructure( HomStructure( A, B, m ) ) ) = homAB;</span>
@@ -825,7 +815,9 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( alpha );</span>
 { 0, 1, 2 } ⱶ[ 1, 0, 1 ]→ { 0, 1 }
 
-[ PreCompose, PreCompose, PreCompose ]
+[ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism ]
 
 A morphism in
 FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
@@ -836,29 +828,31 @@ given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( gamma );</span>
 { 0, 1, 2 } ⱶ[ 1, 0, 0 ]→ { 0, 1 }
 
-[ PreCompose, PreCompose, PreCompose ]
+[ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism ]
 
 A morphism in
 FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_alpha_gamma := HomStructure( alpha, gamma );</span>
 &lt;A morphism in
- FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )&gt;
+ FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( hom_alpha_gamma );</span>
 { 0,..., 8 } ⱶ[ 7, 5, 5, 2, 0, 0, 2, 0, 0 ]→ { 0,..., 7 }
 
-[ UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-  UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-  UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-  UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-  UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-  UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-  UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-  UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-  UniversalMorphismIntoDirectProductWithGivenDirectProduct ]
+[ A morphism in TerminalCategoryWithSingleObject( ),
+  A morphism in TerminalCategoryWithSingleObject( ),
+  A morphism in TerminalCategoryWithSingleObject( ),
+  A morphism in TerminalCategoryWithSingleObject( ),
+  A morphism in TerminalCategoryWithSingleObject( ),
+  A morphism in TerminalCategoryWithSingleObject( ),
+  A morphism in TerminalCategoryWithSingleObject( ),
+  A morphism in TerminalCategoryWithSingleObject( ),
+  A morphism in TerminalCategoryWithSingleObject( ) ]
 
 A morphism in
-FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
+FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( hom_alpha_gamma );</span>
 true

@@ -586,7 +586,7 @@
     [4X[28XA CAP category with name[128X[104X
     [4X[28XFiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X34 primitive operations were used to derive 171 operations for this category[128X[104X
+    [4X[28X35 primitive operations were used to derive 172 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
@@ -676,54 +676,44 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XI := HomStructure( sFinSets );[127X[104X
     [4X[28X<An object in[128X[104X
-    [4X[28X FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[28X FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( I );[127X[104X
-    [4X[28X[ 1, [ TerminalObject ] ][128X[104X
+    [4X[28X[ 1, [ An object in TerminalCategoryWithSingleObject( ) ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in[128X[104X
-    [4X[28XFiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28XFiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XU := ObjectDatum( I )[2][1];[127X[104X
-    [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( U );[127X[104X
-    [4X[28XTerminalObject[128X[104X
+    [4X[28X<A zero object in TerminalCategoryWithSingleObject( )>[128X[104X
     [4X[25Xgap>[125X [27XHomAB := HomStructure( A, B );[127X[104X
     [4X[28X<An object in[128X[104X
-    [4X[28X FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[28X FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>[128X[104X
     [4X[25Xgap>[125X [27XL := ObjectDatum( HomAB );[127X[104X
-    [4X[28X[ 8, [ <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
-    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
-    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
-    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
-    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
-    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
-    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
-    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )> ] ][128X[104X
-    [4X[25Xgap>[125X [27XhomAB := List( [ 0 .. L[1] - 1 ], i ->[127X[104X
-    [4X[25X>[125X [27X               MorphismConstructor( sFinSets,[127X[104X
-    [4X[25X>[125X [27X                       I,[127X[104X
-    [4X[25X>[125X [27X                       Pair( [ i ],[127X[104X
-    [4X[25X>[125X [27X                             [ MorphismConstructor( T,[127X[104X
-    [4X[25X>[125X [27X                                     U,[127X[104X
-    [4X[25X>[125X [27X                                     String( i ),[127X[104X
-    [4X[25X>[125X [27X                                     L[2][1 + i] ) ] ),[127X[104X
-    [4X[25X>[125X [27X                       HomAB ) );[127X[104X
+    [4X[28X[ 8, [ <A zero object in TerminalCategoryWithSingleObject( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithSingleObject( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithSingleObject( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithSingleObject( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithSingleObject( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithSingleObject( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithSingleObject( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithSingleObject( )> ] ][128X[104X
+    [4X[25Xgap>[125X [27XhomAB := List( MorphismsOfExternalHom( A, B ), HomStructure );[127X[104X
     [4X[28X[ <A morphism in[128X[104X
-    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
+    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>,[128X[104X
     [4X[28X  <A morphism in[128X[104X
-    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
+    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>,[128X[104X
     [4X[28X  <A morphism in[128X[104X
-    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
+    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>,[128X[104X
     [4X[28X  <A morphism in[128X[104X
-    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
+    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>,[128X[104X
     [4X[28X  <A morphism in[128X[104X
-    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
+    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>,[128X[104X
     [4X[28X  <A morphism in[128X[104X
-    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
+    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>,[128X[104X
     [4X[28X  <A morphism in[128X[104X
-    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
+    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>,[128X[104X
     [4X[28X  <A morphism in[128X[104X
-    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )> ][128X[104X
+    [4X[28X   FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )> ][128X[104X
     [4X[25Xgap>[125X [27XList( homAB, IsWellDefined );[127X[104X
     [4X[28X[ true, true, true, true, true, true, true, true ][128X[104X
     [4X[25Xgap>[125X [27XList( homAB, m -> HomStructure( HomStructure( A, B, m ) ) ) = homAB;[127X[104X
@@ -734,7 +724,9 @@
     [4X[25Xgap>[125X [27XDisplay( alpha );[127X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 1, 0, 1 ]→ { 0, 1 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28X[ PreCompose, PreCompose, PreCompose ][128X[104X
+    [4X[28X[ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,[128X[104X
+    [4X[28X  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,[128X[104X
+    [4X[28X  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
@@ -745,29 +737,31 @@
     [4X[25Xgap>[125X [27XDisplay( gamma );[127X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 1, 0, 0 ]→ { 0, 1 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28X[ PreCompose, PreCompose, PreCompose ][128X[104X
+    [4X[28X[ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,[128X[104X
+    [4X[28X  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,[128X[104X
+    [4X[28X  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xhom_alpha_gamma := HomStructure( alpha, gamma );[127X[104X
     [4X[28X<A morphism in[128X[104X
-    [4X[28X FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
+    [4X[28X FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( hom_alpha_gamma );[127X[104X
     [4X[28X{ 0,..., 8 } ⱶ[ 7, 5, 5, 2, 0, 0, 2, 0, 0 ]→ { 0,..., 7 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28X[ UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct ][128X[104X
+    [4X[28X[ A morphism in TerminalCategoryWithSingleObject( ),[128X[104X
+    [4X[28X  A morphism in TerminalCategoryWithSingleObject( ),[128X[104X
+    [4X[28X  A morphism in TerminalCategoryWithSingleObject( ),[128X[104X
+    [4X[28X  A morphism in TerminalCategoryWithSingleObject( ),[128X[104X
+    [4X[28X  A morphism in TerminalCategoryWithSingleObject( ),[128X[104X
+    [4X[28X  A morphism in TerminalCategoryWithSingleObject( ),[128X[104X
+    [4X[28X  A morphism in TerminalCategoryWithSingleObject( ),[128X[104X
+    [4X[28X  A morphism in TerminalCategoryWithSingleObject( ),[128X[104X
+    [4X[28X  A morphism in TerminalCategoryWithSingleObject( ) ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
-    [4X[28XFiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28XFiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( hom_alpha_gamma );[127X[104X
     [4X[28Xtrue[128X[104X
