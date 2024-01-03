@@ -158,12 +158,6 @@ InstallMethod( PairOfParallelArrowsCategory,
                    only_primitive_operations := true )
               : FinalizeCategory := false );
     
-    if CanCompute( PSh, "MorphismsOfExternalHom" ) then
-        
-        AddMorphismsOfExternalHomForReinterpretationOfCategory( ParallelPairs );
-        
-    fi;
-    
     SetUnderlyingCategory( ParallelPairs, C );
     
     Append( ParallelPairs!.compiler_hints.category_attribute_names,

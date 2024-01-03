@@ -10,20 +10,6 @@
 ##
 ####################################
 
-####################################
-##
-#! @Section Morphisms of external Hom
-##
-####################################
-
-#! @Description
-#! The argument are two objects <A>a</A>, <A>b</A>.
-#! The output is a list of all morphisms from <A>a</A> to <A>b</A>.
-#! @Returns a list of morphisms in $\mathrm{Hom}( a, b )$
-#! @Arguments a, b
-DeclareOperation( "MorphismsOfExternalHom",
-        [ IsCapCategoryObject, IsCapCategoryObject ] );
-
 ###################################
 ##
 #! @Section Exact cover with global elements

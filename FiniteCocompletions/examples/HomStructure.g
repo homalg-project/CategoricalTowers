@@ -11,7 +11,7 @@ Display( sFinSets );
 #! A CAP category with name
 #! FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) ):
 #! 
-#! 34 primitive operations were used to derive 171 operations for this category
+#! 35 primitive operations were used to derive 172 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
@@ -101,54 +101,44 @@ IsOne( UniversalMorphismIntoDirectProduct( [ piA, piB ] ) );
 #! true
 I := HomStructure( sFinSets );
 #! <An object in
-#!  FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>
+#!  FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>
 Display( I );
-#! [ 1, [ TerminalObject ] ]
+#! [ 1, [ An object in TerminalCategoryWithSingleObject( ) ] ]
 #! 
 #! An object in
-#! FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
+#! FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )
 #! given by the above data
 U := ObjectDatum( I )[2][1];
-#! <A zero object in TerminalCategoryWithMultipleObjects( )>
-Display( U );
-#! TerminalObject
+#! <A zero object in TerminalCategoryWithSingleObject( )>
 HomAB := HomStructure( A, B );
 #! <An object in
-#!  FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>
+#!  FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>
 L := ObjectDatum( HomAB );
-#! [ 8, [ <A zero object in TerminalCategoryWithMultipleObjects( )>,
-#!        <A zero object in TerminalCategoryWithMultipleObjects( )>,
-#!        <A zero object in TerminalCategoryWithMultipleObjects( )>,
-#!        <A zero object in TerminalCategoryWithMultipleObjects( )>,
-#!        <A zero object in TerminalCategoryWithMultipleObjects( )>,
-#!        <A zero object in TerminalCategoryWithMultipleObjects( )>,
-#!        <A zero object in TerminalCategoryWithMultipleObjects( )>,
-#!        <A zero object in TerminalCategoryWithMultipleObjects( )> ] ]
-homAB := List( [ 0 .. L[1] - 1 ], i ->
-               MorphismConstructor( sFinSets,
-                       I,
-                       Pair( [ i ],
-                             [ MorphismConstructor( T,
-                                     U,
-                                     String( i ),
-                                     L[2][1 + i] ) ] ),
-                       HomAB ) );
+#! [ 8, [ <A zero object in TerminalCategoryWithSingleObject( )>,
+#!        <A zero object in TerminalCategoryWithSingleObject( )>,
+#!        <A zero object in TerminalCategoryWithSingleObject( )>,
+#!        <A zero object in TerminalCategoryWithSingleObject( )>,
+#!        <A zero object in TerminalCategoryWithSingleObject( )>,
+#!        <A zero object in TerminalCategoryWithSingleObject( )>,
+#!        <A zero object in TerminalCategoryWithSingleObject( )>,
+#!        <A zero object in TerminalCategoryWithSingleObject( )> ] ]
+homAB := List( MorphismsOfExternalHom( A, B ), HomStructure );
 #! [ <A morphism in
-#!    FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>,
+#!    FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>,
 #!   <A morphism in
-#!    FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>,
+#!    FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>,
 #!   <A morphism in
-#!    FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>,
+#!    FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>,
 #!   <A morphism in
-#!    FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>,
+#!    FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>,
 #!   <A morphism in
-#!    FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>,
+#!    FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>,
 #!   <A morphism in
-#!    FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>,
+#!    FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>,
 #!   <A morphism in
-#!    FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>,
+#!    FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>,
 #!   <A morphism in
-#!    FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )> ]
+#!    FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )> ]
 List( homAB, IsWellDefined );
 #! [ true, true, true, true, true, true, true, true ]
 List( homAB, m -> HomStructure( HomStructure( A, B, m ) ) ) = homAB;
@@ -159,7 +149,9 @@ alpha := HomStructure( A, B, homAB[6] );
 Display( alpha );
 #! { 0, 1, 2 } ⱶ[ 1, 0, 1 ]→ { 0, 1 }
 #! 
-#! [ PreCompose, PreCompose, PreCompose ]
+#! [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+#!   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+#!   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism ]
 #! 
 #! A morphism in
 #! FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
@@ -170,29 +162,31 @@ gamma := HomStructure( A, B, homAB[2] );
 Display( gamma );
 #! { 0, 1, 2 } ⱶ[ 1, 0, 0 ]→ { 0, 1 }
 #! 
-#! [ PreCompose, PreCompose, PreCompose ]
+#! [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+#!   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+#!   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism ]
 #! 
 #! A morphism in
 #! FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
 #! given by the above data
 hom_alpha_gamma := HomStructure( alpha, gamma );
 #! <A morphism in
-#!  FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )>
+#!  FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )>
 Display( hom_alpha_gamma );
 #! { 0,..., 8 } ⱶ[ 7, 5, 5, 2, 0, 0, 2, 0, 0 ]→ { 0,..., 7 }
 #! 
-#! [ UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct,
-#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct ]
+#! [ A morphism in TerminalCategoryWithSingleObject( ),
+#!   A morphism in TerminalCategoryWithSingleObject( ),
+#!   A morphism in TerminalCategoryWithSingleObject( ),
+#!   A morphism in TerminalCategoryWithSingleObject( ),
+#!   A morphism in TerminalCategoryWithSingleObject( ),
+#!   A morphism in TerminalCategoryWithSingleObject( ),
+#!   A morphism in TerminalCategoryWithSingleObject( ),
+#!   A morphism in TerminalCategoryWithSingleObject( ),
+#!   A morphism in TerminalCategoryWithSingleObject( ) ]
 #! 
 #! A morphism in
-#! FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
+#! FiniteStrictCoproductCompletion( TerminalCategoryWithSingleObject( ) )
 #! given by the above data
 IsWellDefined( hom_alpha_gamma );
 #! true
