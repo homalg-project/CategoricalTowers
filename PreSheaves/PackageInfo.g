@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "PreSheaves",
 Subtitle := "Categories of (co)presheaves",
-Version := "2023.12-06",
-Date := "2023-12-27",
-Date := "2023-12-27",
+Version := "2024.01-01",
+Date := "2024-01-03",
+Date := "2024-01-03",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -88,7 +88,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "MatricesForHomalg", ">= 2023.11-02" ],
-                   [ "CAP", ">= 2023.12-11" ],
+                   [ "CAP", ">= 2023.12-14" ],
                    [ "CartesianCategories", ">= 2023.02-03" ],
                    [ "MonoidalCategories", ">= 2023.02-03" ],
                    [ "ToolsForCategoricalTowers", ">= 2023.11-03" ],
