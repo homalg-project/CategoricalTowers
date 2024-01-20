@@ -662,7 +662,9 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             Omega_C := SubobjectClassifier( C );
             
-            chi_C := ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( mono_C, Omega_C );
+            chi_C := ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( C,
+                             mono_C,
+                             Omega_C );
             
             return MorphismConstructor( cat,
                            Target( mono ),

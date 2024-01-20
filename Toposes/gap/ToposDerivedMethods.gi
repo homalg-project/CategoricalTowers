@@ -393,8 +393,7 @@ AddDerivationToCAP( TruthMorphismOfImpliesWithGivenObjects,
         
   function( cat, Omega2, Omega )
     
-    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
-                   cat,
+    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( cat,
                    EmbeddingOfEqualizer( cat,
                            Omega2,
                            [ TruthMorphismOfAndWithGivenObjects( cat,
@@ -1024,7 +1023,7 @@ end );
 AddDerivationToCAP( FiberMorphismWithGivenObjects,
         "FiberMorphismWithGivenObjects using PowerObjectEvaluationMorphism and PTransposeMorphism",
         [ [ PowerObject, 1 ],
-          [ DirectProduct, 4 ],
+          [ DirectProduct, 3 ],
           [ SubobjectClassifier, 1 ],
           [ PowerObjectEvaluationMorphismWithGivenObjects, 1 ],
           [ CartesianAssociatorRightToLeftWithGivenDirectProducts, 1 ],
@@ -1055,10 +1054,6 @@ AddDerivationToCAP( FiberMorphismWithGivenObjects,
                            PBxC_xBxC,
                            BxC,
                            Omega );
-    
-    ## P(B × C) × B
-    PBxC_xB := DirectProduct( cat,
-                       [ PBxC, B ] );
     
     ## (P(B × C) × B) × C
     PBxC_xB_xC := DirectProduct( cat,
@@ -1106,7 +1101,7 @@ InstallOtherMethodForCompilerForCAP( SingletonSupportOfRelationsWithGivenObjects
   function( cat, PBxC, B, C, PB )
     local PC, BxC, PBxC_xB, v, sing, sigma, v_sigma;
     
-    PC := PowerObject( C );
+    PC := PowerObject( cat, C );
     
     ## B × C
     BxC := DirectProduct( cat, [ B, C ] );
@@ -1165,7 +1160,7 @@ AddDerivationToCAP( ExponentialOnObjects,
   function( cat, B, C )
     local PB, BxC, PBxC, u, true_B;
     
-    PB := PowerObject( B );
+    PB := PowerObject( cat, B );
     
     ## B × C
     BxC := DirectProduct( cat, [ B, C ] );

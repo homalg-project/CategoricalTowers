@@ -137,7 +137,7 @@ InstallOtherMethodForCompilerForCAP( RelativePowerObjectFibrationMorphism,
     
     ## π₂: PA × B → B
     pi_2 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( C,
-                    [ PowerObject( A ), B ],
+                    [ PowerObject( C, A ), B ],
                     2,
                     Target( e ) );
     
@@ -202,14 +202,14 @@ InstallOtherMethodForCompilerForCAP( RelativePowerObjectEvaluationMorphism,
     P_fA_A := [ P_fA, A ];
     PAxB_A := [ PAxB, A ];
     
-    PAxB_xA := DirectProduct( PAxB_A );
+    PAxB_xA := DirectProduct( C, PAxB_A );
     
     ## P_fA ↪ PA × B
     e := EmbeddingOfRelativePowerObject( C, f );
     
     ## e × 1_A: P_fA × A → (PA × B) × A
     eA := DirectProductFunctorialWithGivenDirectProducts( C,
-                  DirectProduct( P_fA_A ),
+                  DirectProduct( C, P_fA_A ),
                   P_fA_A,
                   [ e, IdentityMorphism( C, A ) ],
                   PAxB_A,
