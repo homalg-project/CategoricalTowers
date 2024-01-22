@@ -153,28 +153,28 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XExponentialOnObjects( C, D ) = B;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( CartesianEvaluationMorphism( A, C ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianLeftEvaluationMorphism( A, C ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianEvaluationMorphism( A, C ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianLeftEvaluationMorphism( A, C ) );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( CartesianEvaluationMorphism( C, A ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianLeftEvaluationMorphism( C, A ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianEvaluationMorphism( C, A ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianLeftEvaluationMorphism( C, A ) );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( CartesianCoevaluationMorphism( A, D ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianLeftCoevaluationMorphism( A, D ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianCoevaluationMorphism( A, D ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianLeftCoevaluationMorphism( A, D ) );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( CartesianCoevaluationMorphism( D, A ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianLeftCoevaluationMorphism( D, A ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianCoevaluationMorphism( D, A ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianLeftCoevaluationMorphism( D, A ) );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xth := UniqueMorphism( DirectProduct( A, C ), C );[127X[104X
     [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( th );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xth := DirectProductToExponentialAdjunctionMap( A, C, th );[127X[104X
+    [4X[25Xgap>[125X [27Xth := DirectProductToExponentialLeftAdjunctionMap( A, C, th );[127X[104X
     [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( th );[127X[104X
@@ -186,7 +186,7 @@
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( ht );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xht := ExponentialToDirectProductAdjunctionMap( D, B, ht );[127X[104X
+    [4X[25Xgap>[125X [27Xht := ExponentialToDirectProductLeftAdjunctionMap( D, B, ht );[127X[104X
     [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( ht );[127X[104X
@@ -312,28 +312,28 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XExponentialOnObjects( C, D ) = B;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( CartesianEvaluationMorphism( A, C ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianLeftEvaluationMorphism( A, C ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianEvaluationMorphism( A, C ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianLeftEvaluationMorphism( A, C ) );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( CartesianEvaluationMorphism( C, A ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianLeftEvaluationMorphism( C, A ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianEvaluationMorphism( C, A ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianLeftEvaluationMorphism( C, A ) );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( CartesianCoevaluationMorphism( A, D ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianLeftCoevaluationMorphism( A, D ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianCoevaluationMorphism( A, D ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianLeftCoevaluationMorphism( A, D ) );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( CartesianCoevaluationMorphism( D, A ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianLeftCoevaluationMorphism( D, A ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianCoevaluationMorphism( D, A ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianLeftCoevaluationMorphism( D, A ) );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xth := UniqueMorphism( DirectProduct( A, C ), C );[127X[104X
     [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( th );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xth := DirectProductToExponentialAdjunctionMap( A, C, th );[127X[104X
+    [4X[25Xgap>[125X [27Xth := DirectProductToExponentialLeftAdjunctionMap( A, C, th );[127X[104X
     [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( th );[127X[104X
@@ -345,7 +345,7 @@
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( ht );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xht := ExponentialToDirectProductAdjunctionMap( D, B, ht );[127X[104X
+    [4X[25Xgap>[125X [27Xht := ExponentialToDirectProductLeftAdjunctionMap( D, B, ht );[127X[104X
     [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( ht );[127X[104X
