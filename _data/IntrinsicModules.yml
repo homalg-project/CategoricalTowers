@@ -1,7 +1,7 @@
 name: IntrinsicModules
-version: "2023.12-01"
+version: "2024.01-01"
 license: "GPL-2.0-or-later"
-date: 2023-12-06
+date: 2024-01-22
 description: |
     Finitely presented modules over computable rings allowing multiple presentations and the notion of elements
 
@@ -33,19 +33,19 @@ needed-pkgs:
       version: ">= 2023.12-02"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
-      version: ">= 2023.10-01"
+      version: ">= 2024.01-06"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
     - name: "CartesianCategories"
-      version: ">= 2023.10-01"
+      version: ">= 2024.01-05"
       url: "https://homalg-project.github.io/pkg/CartesianCategories"
     - name: "GeneralizedMorphismsForCAP"
       version: ">= 2020.10-01"
       url: "https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP"
     - name: "FreydCategoriesForCAP"
-      version: ">= 2021.03-01"
+      version: ">= 2024.01-03"
       url: "https://homalg-project.github.io/pkg/FreydCategoriesForCAP"
     - name: "ModulePresentationsForCAP"
-      version: ">= 2020.10-01"
+      version: ">= 2024.01-03"
       url: "https://homalg-project.github.io/pkg/ModulePresentationsForCAP"
     - name: "ToolsForCategoricalTowers"
       version: ">= 2023.11-03"
@@ -63,11 +63,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/IntrinsicModules
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2023.12-01/IntrinsicModules-2023.12-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2024.01-01/IntrinsicModules-2024.01-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2023.12-01/IntrinsicModules-2023.12-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2024.01-01/IntrinsicModules-2024.01-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2023.12-01/IntrinsicModules-2023.12-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2024.01-01/IntrinsicModules-2024.01-01-manual.pdf
 
 abstract: |
 
@@ -78,23 +78,23 @@ keywords: |
     module, finite presentation, computable ring.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BS06</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+    [<span class='BibKey'>BS22</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>IntrinsicModules, Finitely presented modules over computable rings allowing multiple presentations and the notion of elements,
-             Version 2023.12-01</i>
-     (<span class='BibYear'>2-06</span>)<br />
+             Version 2024.01-01</i>
+     (<span class='BibYear'>1-22</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/IntrinsicModules">https://homalg-project.github.io/pkg/IntrinsicModules</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ IntrinsicModules2023.12-01,
+    @misc{ IntrinsicModules2024.01-01,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{IntrinsicModules},  Finitely  presented  modules over
                           computable  rings  allowing multiple presentations and
-                          the notion of elements, {V}ersion 2023.12-01},
-      month =            {3-},
-      year =             {2-06},
+                          the notion of elements, {V}ersion 2024.01-01},
+      month =            {4-},
+      year =             {1-22},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/IntrinsicModules}
@@ -102,6 +102,6 @@ bibtex: |
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{IntrinsicModules}}},
       keywords =         {module; finite presentation; computable ring},
-      printedkey =       {BS06}
+      printedkey =       {BS22}
     }
 
