@@ -775,7 +775,7 @@
     [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
     [4X[28X/ [ a*a*a = 1 ], SkeletalFinSets )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
-    [4X[25Xgap>[125X [27Xev0 := CartesianEvaluationMorphism( Omega0, Omega0 );[127X[104X
+    [4X[25Xgap>[125X [27Xev0 := CartesianLeftEvaluationMorphism( Omega0, Omega0 );[127X[104X
     [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
     [4X[28X / [ a*a*a = 1 ], SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( ev0 );[127X[104X
