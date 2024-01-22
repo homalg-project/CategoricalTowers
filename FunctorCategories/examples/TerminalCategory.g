@@ -14,12 +14,14 @@ IsTerminalCategory( T );
 Display( T );
 #! A CAP category with name FiniteCompletion( InitialCategory( ) ):
 #! 
-#! 90 primitive operations were used to derive 515 operations for this category
+#! 98 primitive operations were used to derive 569 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
+#! * IsLeftClosedMonoidalCategory
+#! * IsLeftCoclosedMonoidalCategory
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
 #! * IsClosedMonoidalLattice

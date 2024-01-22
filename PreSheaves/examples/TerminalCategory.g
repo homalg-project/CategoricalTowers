@@ -12,12 +12,14 @@ IsTerminalCategory( T );
 Display( T );
 #! A CAP category with name PreSheaves( InitialCategory( ), InitialCategory( ) ):
 #! 
-#! 93 primitive operations were used to derive 518 operations for this category
+#! 101 primitive operations were used to derive 572 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
+#! * IsLeftClosedMonoidalCategory
+#! * IsLeftCoclosedMonoidalCategory
 #! * IsBicartesianCoclosedCategory
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives

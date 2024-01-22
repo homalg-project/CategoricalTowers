@@ -40,8 +40,8 @@ AddDerivationToCAP( CoexponentialOnMorphismsWithGivenCoexponentials,
 end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
-AddDerivationToCAP( CocartesianEvaluationMorphismWithGivenRange,
-                    "CocartesianEvaluationMorphismWithGivenRange as the unique morphism",
+AddDerivationToCAP( CocartesianLeftEvaluationMorphismWithGivenRange,
+                    "CocartesianLeftEvaluationMorphismWithGivenRange as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B, Coex_A_B_uB )
@@ -51,8 +51,8 @@ AddDerivationToCAP( CocartesianEvaluationMorphismWithGivenRange,
 end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
-AddDerivationToCAP( CocartesianCoevaluationMorphismWithGivenSource,
-                    "CocartesianCoevaluationMorphismWithGivenSource as the unique morphism",
+AddDerivationToCAP( CocartesianLeftCoevaluationMorphismWithGivenSource,
+                    "CocartesianLeftCoevaluationMorphismWithGivenSource as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B, Coex_AuB_B )
@@ -62,8 +62,8 @@ AddDerivationToCAP( CocartesianCoevaluationMorphismWithGivenSource,
 end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
-AddDerivationToCAP( CoproductToCoexponentialAdjunctionMapWithGivenCoexponential,
-                    "CoproductToCoexponentialAdjunctionMapWithGivenCoexponential using the unique morphism",
+AddDerivationToCAP( CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential,
+                    "CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential using the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, C, B, g, Coexp )
@@ -73,8 +73,8 @@ AddDerivationToCAP( CoproductToCoexponentialAdjunctionMapWithGivenCoexponential,
 end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
-AddDerivationToCAP( CoexponentialToCoproductAdjunctionMapWithGivenCoproduct,
-                    "CoexponentialToCoproductAdjunctionMapWithGivenCoproduct using the unique morphism",
+AddDerivationToCAP( CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct,
+                    "CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct using the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B, f, P )

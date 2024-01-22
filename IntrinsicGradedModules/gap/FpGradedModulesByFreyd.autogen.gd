@@ -44,6 +44,10 @@
 #! * <Ref BookName="CartesianCategories" Func="CartesianRightUnitorInverse" Label="for Is" />
 #! * <Ref BookName="CartesianCategories" Func="CartesianRightUnitorInverseWithGivenDirectProduct" Label="for Is" />
 #! * <Ref BookName="CartesianCategories" Func="CartesianRightUnitorWithGivenDirectProduct" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="ClosedMonoidalLeftCoevaluationMorphism" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="ClosedMonoidalLeftCoevaluationMorphismWithGivenRange" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="ClosedMonoidalLeftEvaluationMorphism" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="ClosedMonoidalLeftEvaluationMorphismWithGivenSource" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoastrictionToImage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoastrictionToImageWithGivenImageObject" Label="for Is" />
 #! * <Ref BookName="CartesianCategories" Func="CocartesianAssociatorLeftToRight" Label="for Is" />
@@ -67,8 +71,6 @@
 #! * <Ref BookName="CAP" Func="Coequalizer" Label="" />
 #! * <Ref BookName="CAP" Func="CoequalizerFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoequalizerFunctorialWithGivenCoequalizers" Label="for Is" />
-#! * <Ref BookName="MonoidalCategories" Func="CoevaluationMorphism" Label="for Is" />
-#! * <Ref BookName="MonoidalCategories" Func="CoevaluationMorphismWithGivenRange" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageObjectFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageObjectFunctorialWithGivenCoimageObjects" Label="for Is" />
@@ -118,8 +120,6 @@
 #! * <Ref BookName="CAP" Func="EqualizerFunctorialWithGivenEqualizers" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="EvaluationForDual" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="EvaluationForDualWithGivenTensorProduct" Label="for Is" />
-#! * <Ref BookName="MonoidalCategories" Func="EvaluationMorphism" Label="for Is" />
-#! * <Ref BookName="MonoidalCategories" Func="EvaluationMorphismWithGivenSource" Label="for Is" />
 #! * <Ref BookName="CAP" Func="FiberProduct" Label="" />
 #! * <Ref BookName="CAP" Func="FiberProductFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="FiberProductFunctorialWithGivenFiberProducts" Label="for Is" />
@@ -155,8 +155,8 @@
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomOnMorphisms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomOnMorphismsWithGivenInternalHoms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomOnObjects" Label="for Is" />
-#! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductAdjunctionMap" Label="for Is" />
-#! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductLeftAdjunctionMap" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" Label="for Is" />
@@ -320,8 +320,8 @@
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductOnMorphisms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductOnMorphismsWithGivenTensorProducts" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductOnObjects" Label="for Is" />
-#! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomAdjunctionMap" Label="for Is" />
-#! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomAdjunctionMapWithGivenInternalHom" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomLeftAdjunctionMap" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorUnit" Label="for Is" />
 #! * <Ref BookName="CAP" Func="TerminalObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="TerminalObjectFunctorial" Label="for Is" />

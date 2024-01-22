@@ -36,7 +36,7 @@ Display( global_G );
 #! { 0, 1 }
 DirectProduct( G, V ) = G;
 #! true
-iso := CartesianEvaluationMorphism( T, G );
+iso := CartesianLeftEvaluationMorphism( T, G );
 #! <A morphism in FinReflexiveQuivers>
 IsIsomorphism( iso );
 #! true

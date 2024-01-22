@@ -98,7 +98,7 @@ InstallOtherMethodForCompilerForCAP( DualOverTensorUnit,
     ## 1 -> InternalHom( J, 1 )
     return PreCompose( cat,
                    ## 1 -> Hom( 1, 1 )
-                   TensorProductToInternalHomAdjunctionMapWithGivenInternalHom( cat,
+                   TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom( cat,
                            unit,
                            unit,
                            LeftUnitor( cat, unit ),
@@ -1147,7 +1147,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             ## FIXME: comply with the internal Hom operations and replace
             ## the weak binary pullback with a weak biased pullback
-            AddTensorProductToInternalHomAdjunctionMap( Slice_over_B,
+            AddTensorProductToInternalHomLeftAdjunctionMap( Slice_over_B,
               function( cat, K, J, f ) ## (f: K ⊗ J -> I) -> (g: K -> Hom( J, I ) = I:J)
                 local C, I, source, target, K2, J2, I2, tau2;
                 
@@ -1162,7 +1162,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                 J2 := UnderlyingMorphism( J ); ## R^j -> R
                 I2 := UnderlyingMorphism( I ); ## R^i -> R
                 
-                tau2 := TensorProductToInternalHomAdjunctionMap( C, Source( K2 ), Source( J2 ), UnderlyingCell( f ) );
+                tau2 := TensorProductToInternalHomLeftAdjunctionMap( C, Source( K2 ), Source( J2 ), UnderlyingCell( f ) );
                 
                 return MorphismConstructor( cat,
                                source,
@@ -1177,7 +1177,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             ## FIXME: comply with the internal Hom operations and replace
             ## the weak binary pullback with a weak biased pullback
-            AddInternalHomToTensorProductAdjunctionMap( Slice_over_B,
+            AddInternalHomToTensorProductLeftAdjunctionMap( Slice_over_B,
               function( cat, J, I, g ) ## (g: K -> Hom( J, I ) = I:J) -> (f: K ⊗ J -> I)
                 local C, K, source, target, K2, J2, I2, g2, tau2;
                 
@@ -1200,7 +1200,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                 
                 return MorphismConstructor( cat,
                                source,
-                               InternalHomToTensorProductAdjunctionMap( C, Source( J2 ), Source( I2 ), g2 ), ## f: R^k ⊗ R^j -> R^i
+                               InternalHomToTensorProductLeftAdjunctionMap( C, Source( J2 ), Source( I2 ), g2 ), ## f: R^k ⊗ R^j -> R^i
                                target );
                 
             end );

@@ -47,7 +47,7 @@ Display( e );
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #! / [ a*a*a = 1 ], SkeletalFinSets )
 #! given by the above data
-ev0 := CartesianEvaluationMorphism( Omega0, Omega0 );
+ev0 := CartesianLeftEvaluationMorphism( Omega0, Omega0 );
 #! <A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #!  / [ a*a*a = 1 ], SkeletalFinSets )>
 Display( ev0 );

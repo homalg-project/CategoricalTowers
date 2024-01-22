@@ -39,8 +39,8 @@ AddDerivationToCAP( ExponentialOnMorphismsWithGivenExponentials,
 end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
-AddDerivationToCAP( CartesianEvaluationMorphismWithGivenSource,
-                    "CartesianEvaluationMorphismWithGivenSource as the unique morphism",
+AddDerivationToCAP( CartesianLeftEvaluationMorphismWithGivenSource,
+                    "CartesianLeftEvaluationMorphismWithGivenSource as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B, Exp_A_B_xA )
@@ -50,8 +50,8 @@ AddDerivationToCAP( CartesianEvaluationMorphismWithGivenSource,
 end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
-AddDerivationToCAP( CartesianCoevaluationMorphismWithGivenRange,
-                    "CartesianCoevaluationMorphismWithGivenRange as the unique morphism",
+AddDerivationToCAP( CartesianLeftCoevaluationMorphismWithGivenRange,
+                    "CartesianLeftCoevaluationMorphismWithGivenRange as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B, Exp_B_AxB )
@@ -61,8 +61,8 @@ AddDerivationToCAP( CartesianCoevaluationMorphismWithGivenRange,
 end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
-AddDerivationToCAP( DirectProductToExponentialAdjunctionMapWithGivenExponential,
-                    "DirectProductToExponentialAdjunctionMapWithGivenExponential using the unique morphism",
+AddDerivationToCAP( DirectProductToExponentialLeftAdjunctionMapWithGivenExponential,
+                    "DirectProductToExponentialLeftAdjunctionMapWithGivenExponential using the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B, f, Exp )
@@ -72,8 +72,8 @@ AddDerivationToCAP( DirectProductToExponentialAdjunctionMapWithGivenExponential,
 end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
-AddDerivationToCAP( ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct,
-                    "ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct using the unique morphism",
+AddDerivationToCAP( ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct,
+                    "ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct using the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, B, C, g, DP )
