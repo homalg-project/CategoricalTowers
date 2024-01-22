@@ -436,11 +436,11 @@ end );
 ## P(a) × a → Ω
 AddDerivationToCAP( PowerObjectEvaluationMorphismWithGivenObjects,
         "PowerObjectEvaluationMorphismWithGivenObjects as a special case of the cartesian evaluation",
-        [ [ CartesianEvaluationMorphismWithGivenSource, 1 ] ],
+        [ [ CartesianLeftEvaluationMorphismWithGivenSource, 1 ] ],
         
   function( cat, Pa_xa, a, Omega )
     
-    return CartesianEvaluationMorphismWithGivenSource( cat,
+    return CartesianLeftEvaluationMorphismWithGivenSource( cat,
                    a,
                    Omega,
                    Pa_xa );
@@ -450,11 +450,11 @@ end );
 ## (f:a × b → Ω) ↦ (a → P(b))
 AddDerivationToCAP( PTransposeMorphismWithGivenRange,
         "PTransposeMorphismWithGivenRange as a special case of the cartesian adjunction",
-        [ [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
+        [ [ DirectProductToExponentialLeftAdjunctionMapWithGivenExponential, 1 ] ],
         
   function( cat, a, b, f, Pb )
     
-    return DirectProductToExponentialAdjunctionMapWithGivenExponential( cat,
+    return DirectProductToExponentialLeftAdjunctionMapWithGivenExponential( cat,
                    a,
                    b,
                    f,
@@ -466,7 +466,7 @@ end );
 AddDerivationToCAP( UpperSegmentOfRelationWithGivenRange,
         "",
         [ [ ClassifyingMorphismOfSubobject, 1 ],
-          [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
+          [ DirectProductToExponentialLeftAdjunctionMapWithGivenExponential, 1 ] ],
         
   function( C, a, b, mu, Pb )
     local chi;
@@ -475,7 +475,7 @@ AddDerivationToCAP( UpperSegmentOfRelationWithGivenRange,
     chi := ClassifyingMorphismOfSubobject( C, mu );
     
     ## a → P(b) encoding the relation given by μ
-    return DirectProductToExponentialAdjunctionMapWithGivenExponential( C, a, b, chi, Pb );
+    return DirectProductToExponentialLeftAdjunctionMapWithGivenExponential( C, a, b, chi, Pb );
     
 end );
 
@@ -485,7 +485,7 @@ AddDerivationToCAP( LowerSegmentOfRelationWithGivenRange,
         [ [ CartesianBraiding, 1 ],
           [ PreCompose, 1 ],
           [ ClassifyingMorphismOfSubobject, 1 ],
-          [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
+          [ DirectProductToExponentialLeftAdjunctionMapWithGivenExponential, 1 ] ],
         
   function( C, a, b, mu, Pa )
     local mu_, chi_;
@@ -500,7 +500,7 @@ AddDerivationToCAP( LowerSegmentOfRelationWithGivenRange,
     chi_ := ClassifyingMorphismOfSubobject( C, mu_ );
     
     ## b → P(a) encoding the relation given by μ
-    return DirectProductToExponentialAdjunctionMapWithGivenExponential( C, b, a, chi_, Pa );
+    return DirectProductToExponentialLeftAdjunctionMapWithGivenExponential( C, b, a, chi_, Pa );
     
 end );
 
@@ -1194,8 +1194,8 @@ AddDerivationToCAP( ExponentialOnObjects,
 end );
 
 ##
-AddDerivationToCAP( CartesianEvaluationMorphismWithGivenSource,
-        "CartesianEvaluationMorphismWithGivenSource from the power object, the power object evaluation morphism, and the P-transpose",
+AddDerivationToCAP( CartesianLeftEvaluationMorphismWithGivenSource,
+        "CartesianLeftEvaluationMorphismWithGivenSource from the power object, the power object evaluation morphism, and the P-transpose",
         [ [ PowerObject, 4 ],
           [ DirectProduct, 4 ],
           [ FiberMorphismWithGivenObjects, 2 ],

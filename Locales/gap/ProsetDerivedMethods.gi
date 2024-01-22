@@ -408,8 +408,8 @@ AddDerivationToCAP( TensorProductOnMorphismsWithGivenTensorProducts,
 end : CategoryFilter := IsMonoidalProset );
 
 ##
-AddDerivationToCAP( EvaluationMorphismWithGivenSource,
-        "EvaluationMorphismWithGivenSource as the unique morphism",
+AddDerivationToCAP( ClosedMonoidalLeftEvaluationMorphismWithGivenSource,
+        "ClosedMonoidalLeftEvaluationMorphismWithGivenSource as the unique morphism",
         [ [ UniqueMorphism, 1 ] ],
         
   function( cat, a, b, s )
@@ -419,8 +419,8 @@ AddDerivationToCAP( EvaluationMorphismWithGivenSource,
 end : CategoryFilter := IsClosedMonoidalProset );
 
 ##
-AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
-        "CoevaluationMorphismWithGivenRange as the unique morphism",
+AddDerivationToCAP( ClosedMonoidalLeftCoevaluationMorphismWithGivenRange,
+        "ClosedMonoidalLeftCoevaluationMorphismWithGivenRange as the unique morphism",
         [ [ UniqueMorphism, 1 ] ],
         
   function( cat, a, b, r )
@@ -430,8 +430,8 @@ AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
 end : CategoryFilter := IsClosedMonoidalProset );
 
 ##
-AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
-        "CoclosedEvaluationMorphismWithGivenRange as the unique morphism",
+AddDerivationToCAP( CoclosedMonoidalLeftEvaluationMorphismWithGivenRange,
+        "CoclosedMonoidalLeftEvaluationMorphismWithGivenRange as the unique morphism",
         [ [ UniqueMorphism, 1 ] ],
         
   function( cat, a, b, r )
@@ -441,8 +441,8 @@ AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
 end : CategoryFilter := IsCoclosedMonoidalProset );
 
 ##
-AddDerivationToCAP( CoclosedCoevaluationMorphismWithGivenSource,
-        "CoclosedCoevaluationMorphismWithGivenSource as the unique morphism",
+AddDerivationToCAP( CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource,
+        "CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource as the unique morphism",
         [ [ UniqueMorphism, 1 ] ],
         
   function( cat, a, b, s )

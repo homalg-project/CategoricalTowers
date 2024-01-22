@@ -105,28 +105,28 @@ ExponentialOnObjects( D, C ) = T;
 #! true
 ExponentialOnObjects( C, D ) = B;
 #! true
-IsWellDefined( CartesianEvaluationMorphism( A, C ) );
+IsWellDefined( CartesianLeftEvaluationMorphism( A, C ) );
 #! true
-IsIsomorphism( CartesianEvaluationMorphism( A, C ) );
+IsIsomorphism( CartesianLeftEvaluationMorphism( A, C ) );
 #! false
-IsWellDefined( CartesianEvaluationMorphism( C, A ) );
+IsWellDefined( CartesianLeftEvaluationMorphism( C, A ) );
 #! true
-IsIsomorphism( CartesianEvaluationMorphism( C, A ) );
+IsIsomorphism( CartesianLeftEvaluationMorphism( C, A ) );
 #! false
-IsWellDefined( CartesianCoevaluationMorphism( A, D ) );
+IsWellDefined( CartesianLeftCoevaluationMorphism( A, D ) );
 #! true
-IsIsomorphism( CartesianCoevaluationMorphism( A, D ) );
+IsIsomorphism( CartesianLeftCoevaluationMorphism( A, D ) );
 #! false
-IsWellDefined( CartesianCoevaluationMorphism( D, A ) );
+IsWellDefined( CartesianLeftCoevaluationMorphism( D, A ) );
 #! true
-IsIsomorphism( CartesianCoevaluationMorphism( D, A ) );
+IsIsomorphism( CartesianLeftCoevaluationMorphism( D, A ) );
 #! false
 th := UniqueMorphism( DirectProduct( A, C ), C );
 #! <An epi-, monomorphism in The frame of Zariski open subsets of the\
 #!  affine spectrum of Z>
 IsWellDefined( th );
 #! true
-th := DirectProductToExponentialAdjunctionMap( A, C, th );
+th := DirectProductToExponentialLeftAdjunctionMap( A, C, th );
 #! <An epi-, monomorphism in The frame of Zariski open subsets of the\
 #!  affine spectrum of Z>
 IsWellDefined( th );
@@ -138,7 +138,7 @@ ht := UniqueMorphism( A, ExponentialOnObjects( D, B ) );
 #!  affine spectrum of Z>
 IsWellDefined( ht );
 #! true
-ht := ExponentialToDirectProductAdjunctionMap( D, B, ht );
+ht := ExponentialToDirectProductLeftAdjunctionMap( D, B, ht );
 #! <An epi-, monomorphism in The frame of Zariski open subsets of the\
 #!  affine spectrum of Z>
 IsWellDefined( ht );

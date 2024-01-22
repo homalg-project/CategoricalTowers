@@ -1495,7 +1495,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
            IsIdenticalObj( D, RangeCategoryOfHomomorphismStructure( B ) ) then
             
             ## G^F × F → G
-            AddCartesianEvaluationMorphismWithGivenSource( PSh,
+            AddCartesianLeftEvaluationMorphismWithGivenSource( PSh,
               function( PSh, F, G, exp )
                 local B, sFinSets, objs, T, Yoneda, presheaf_morphism_on_objects;
                 
@@ -1621,7 +1621,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             end );
             
             ## F → (F × G)^G
-            AddCartesianCoevaluationMorphismWithGivenRange( PSh,
+            AddCartesianLeftCoevaluationMorphismWithGivenRange( PSh,
               function( PSh, F, G, exp )
                 local B, sFinSets, objs, T, Yoneda, presheaf_morphism_on_objects;
                 

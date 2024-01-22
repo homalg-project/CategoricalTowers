@@ -255,7 +255,7 @@ InstallOtherMethodForCompilerForCAP( RelativePowerObjectEvaluationMorphism,
     Omega := SubobjectClassifier( C );
     
     ## ϵ_A : PA × A → Ω
-    epsilon := CartesianEvaluationMorphismWithGivenSource( C,
+    epsilon := CartesianLeftEvaluationMorphismWithGivenSource( C,
                        A,
                        Omega,
                        PAxA );
