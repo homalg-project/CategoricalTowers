@@ -44,9 +44,9 @@ AddDerivationToCAP( CocartesianLeftEvaluationMorphismWithGivenRange,
                     "CocartesianLeftEvaluationMorphismWithGivenRange as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
-  function( cat, A, B, Coex_A_B_uB )
+  function( cat, A, B, Coex_B_A_uA )
         
-    return UniqueMorphism( cat, A, Coex_A_B_uB );
+    return UniqueMorphism( cat, B, Coex_B_A_uA );
     
 end : CategoryFilter := IsCoHeytingAlgebroid );
 
@@ -55,9 +55,9 @@ AddDerivationToCAP( CocartesianLeftCoevaluationMorphismWithGivenSource,
                     "CocartesianLeftCoevaluationMorphismWithGivenSource as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
-  function( cat, A, B, Coex_AuB_B )
+  function( cat, A, B, Coex_BuA_A )
         
-    return UniqueMorphism( cat, Coex_AuB_B, A );
+    return UniqueMorphism( cat, Coex_BuA_A, B );
     
 end : CategoryFilter := IsCoHeytingAlgebroid );
 

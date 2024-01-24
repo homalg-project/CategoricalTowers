@@ -54,9 +54,9 @@ AddDerivationToCAP( CartesianLeftCoevaluationMorphismWithGivenRange,
                     "CartesianLeftCoevaluationMorphismWithGivenRange as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
-  function( cat, A, B, Exp_B_AxB )
+  function( cat, A, B, Exp_A_BxA )
         
-    return UniqueMorphism( cat, A, Exp_B_AxB );
+    return UniqueMorphism( cat, B, Exp_A_BxA );
     
 end : CategoryFilter := IsHeytingAlgebroid );
 
