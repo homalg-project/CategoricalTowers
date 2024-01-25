@@ -425,7 +425,7 @@ AddDerivationToCAP( ClosedMonoidalLeftCoevaluationMorphismWithGivenRange,
         
   function( cat, a, b, r )
     
-    return UniqueMorphism( cat, a, r );
+    return UniqueMorphism( cat, b, r );
     
 end : CategoryFilter := IsClosedMonoidalProset );
 
@@ -436,7 +436,7 @@ AddDerivationToCAP( CoclosedMonoidalLeftEvaluationMorphismWithGivenRange,
         
   function( cat, a, b, r )
     
-    return UniqueMorphism( cat, a, r );
+    return UniqueMorphism( cat, b, r );
     
 end : CategoryFilter := IsCoclosedMonoidalProset );
 
@@ -447,7 +447,7 @@ AddDerivationToCAP( CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource,
         
   function( cat, a, b, s )
     
-    return UniqueMorphism( cat, s, a );
+    return UniqueMorphism( cat, s, b );
     
 end : CategoryFilter := IsCoclosedMonoidalProset );
 

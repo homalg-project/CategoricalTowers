@@ -1620,7 +1620,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 
             end );
             
-            ## F → (F × G)^G
+            ## F → (G × F)^F
             AddCartesianLeftCoevaluationMorphismWithGivenRange( PSh,
               function( PSh, F, G, exp )
                 local B, sFinSets, objs, T, Yoneda, presheaf_morphism_on_objects;
@@ -1639,21 +1639,21 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 
                 presheaf_morphism_on_objects :=
                   function ( source, objB_index, range )
-                    local b, Yb, YbxG, FxG, coev_b;
+                    local b, Yb, YbxF, GxF, coev_b;
                     
                     b := objs[objB_index];
                     
-                    ## source = F(b)
-                    ## range  = ((F × G)^G)(b)
+                    ## source = G(b)
+                    ## range  = ((G × F)^F)(b)
                     
                     Yb := Yoneda[1]( b );
                     
-                    YbxG := DirectProduct( PSh, [ Yb, G ] );
-                    FxG := DirectProduct( PSh, [ F, G ] );
+                    YbxF := DirectProduct( PSh, [ Yb, F ] );
+                    GxF := DirectProduct( PSh, [ G, F ] );
                     
-                    ## coev_b: F(b) → ((F × G)^G)(b), f ↦ coev_b(f), where ((F × G)^G)(b) := Hom(Y(b) × G, F × G):
+                    ## coev_b: G(b) → ((G × F)^F)(b), f ↦ coev_b(f), where ((G × F)^F)(b) := Hom(Y(b) × F, G × F):
                     coev_b :=
-                      function( f ) ## ∈ F(b)
+                      function( f ) ## ∈ G(b)
                         local component, coev_b_f;
                         
                         ## this function assumes that the range category of the homomorphism structure of
@@ -1661,7 +1661,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                         
                         component :=
                           function( b_ )
-                            local phis, Fphis, images, factor1;
+                            local phis, Gphis, images, factor1;
                             
                             phis := List( Yb( b_ ), ## Y(b)(b') = Hom_B(b', b)
                                           phi -> ## φ ∈ Hom_B(b', b) as a natural number
@@ -1671,37 +1671,37 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                                   MorphismConstructor( sFinSets, T, [ phi ], Yb( b_ ) ) ## φ: 1 → Hom_B(b', b)
                                                   ) ); ## φ: b' → b
                             
-                            Fphis := List( phis,
-                                           phi -> F( phi ) ); ## F(φ): F(b) → F(b')
+                            Gphis := List( phis,
+                                           phi -> G( phi ) ); ## G(φ): G(b) → G(b')
                             
-                            images := List( Fphis,
-                                            Fphi -> Fphi( f ) ); ## F(φ)(f) ∈ F(b')
+                            images := List( Gphis,
+                                            Gphi -> Gphi( f ) ); ## G(φ)(f) ∈ G(b')
                             
-                            ## Y(b)(b') = Hom_B(b', b) → F(b'), (φ: b' → b) ↦ (F(φ)(f): F(b) → F(b'))
+                            ## Y(b)(b') = Hom_B(b', b) → G(b'), (φ: b' → b) ↦ (G(φ)(f): G(b) → G(b'))
                             factor1 := MorphismConstructor( sFinSets,
                                                Yb( b_ ),
                                                images,
-                                               F( b_ ) );
+                                               G( b_ ) );
                             
-                            ## (Y(b) × G)(b') = Y(b)(b') × G(b') → F(b') × G(b') = (F × G)(b')
+                            ## (Y(b) × F)(b') = Y(b)(b') × F(b') → G(b') × F(b') = (G × F)(b')
                             return DirectProductOnMorphisms( sFinSets,
                                            factor1,
-                                           IdentityMorphism( sFinSets, G( b_ ) ) );
+                                           IdentityMorphism( sFinSets, F( b_ ) ) );
                             
                         end;
                         
-                        ## coev_b_f: (Y(b) × G) → F × G
+                        ## coev_b_f: (Y(b) × F) → G × F
                         coev_b_f := CreatePreSheafMorphismByValues( PSh,
-                                            YbxG,
+                                            YbxF,
                                             List( objs, b_ -> component( b_ ) ),
-                                            FxG );
+                                            GxF );
                         
-                        ## 1 → Hom(Y(b) × G, F × G)
+                        ## 1 → Hom(Y(b) × F, G × F)
                         return AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( PSh, coev_b_f ) )[1 + 0];
                         
                     end;
                     
-                    ## coev_b: F(b) → ((F × G)^G)(b)
+                    ## coev_b: G(b) → ((G × F)^F)(b)
                     return MorphismConstructor( sFinSets,
                                    source,
                                    List( source, coev_b ),
@@ -1709,7 +1709,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     
                 end;
                 
-                return CreatePreSheafMorphismByFunction( PSh, F, presheaf_morphism_on_objects, exp );
+                return CreatePreSheafMorphismByFunction( PSh, G, presheaf_morphism_on_objects, exp );
                 
             end );
             
