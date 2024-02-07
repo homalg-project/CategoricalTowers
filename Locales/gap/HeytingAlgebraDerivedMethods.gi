@@ -61,8 +61,8 @@ AddDerivationToCAP( CartesianLeftCoevaluationMorphismWithGivenRange,
 end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
-AddDerivationToCAP( DirectProductToExponentialLeftAdjunctionMapWithGivenExponential,
-                    "DirectProductToExponentialLeftAdjunctionMapWithGivenExponential using the unique morphism",
+AddDerivationToCAP( DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential,
+                    "DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential using the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B, f, Exp )
@@ -72,8 +72,8 @@ AddDerivationToCAP( DirectProductToExponentialLeftAdjunctionMapWithGivenExponent
 end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
-AddDerivationToCAP( ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct,
-                    "ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct using the unique morphism",
+AddDerivationToCAP( ExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct,
+                    "ExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct using the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, B, C, g, DP )
