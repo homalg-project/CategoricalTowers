@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FiniteCocompletions",
 Subtitle := "Finite (co)product/(co)limit (co)completions",
-Version := "2024.01-03",
+Version := "2024.02-01",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
@@ -72,8 +72,8 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2023.12-14" ],
-                   [ "MonoidalCategories", ">= 2024.01-06" ],
-                   [ "CartesianCategories", ">= 2024.01-05" ],
+                   [ "MonoidalCategories", ">= 2024.02-01" ],
+                   [ "CartesianCategories", ">= 2024.02-01" ],
                    [ "Toposes", ">= 2024.01-02" ],
                    [ "ToolsForCategoricalTowers", ">= 2023.11-05" ],
                    [ "QuotientCategories", ">= 2023.12-01" ],

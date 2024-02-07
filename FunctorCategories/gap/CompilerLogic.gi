@@ -483,3 +483,11 @@ CapJitAddLogicTemplate(
         dst_template := "number * index"
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number", "base" ],
+        src_template := "DigitInPositionalNotation( number, BigInt( 0 ), BigInt( 1 ), base )",
+        dst_template := "number"
+    )
+);

@@ -2,21 +2,21 @@
 # Toposes: Elementary toposes
 #
 
-gap> LoadPackage( "FinSetsForCAP", "2022.11-06", false );
+gap> LoadPackage( "FinSetsForCAP", "2024.02-02", false );
 true
 gap> Length( ListInstalledOperationsOfCategory( SkeletalFinSets ) );
-328
+336
 gap> BooleanAlgebras := Opposite( SkeletalFinSets );
 Opposite( SkeletalFinSets )
 gap> Length( ListPrimitivelyInstalledOperationsOfCategory( BooleanAlgebras ) );
-249
+259
 gap> Length( ListInstalledOperationsOfCategory( BooleanAlgebras ) );
-267
+275
 gap> Opposite( BooleanAlgebras );
 SkeletalFinSets
 gap> FS := Opposite( WrapperCategory( BooleanAlgebras, rec( ) ) );
 Opposite( WrapperCategory( Opposite( SkeletalFinSets ) ) )
 gap> Length( ListPrimitivelyInstalledOperationsOfCategory( FS ) );
-251
+259
 gap> Length( ListInstalledOperationsOfCategory( FS ) );
-269
+277

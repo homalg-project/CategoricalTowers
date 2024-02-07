@@ -17,7 +17,7 @@ Display( A );
 #! IntrinsicCategory( CategoryWithAmbientObjects(
 #! Freyd( GradedRows( Q[x,y,z] (with weights [ 1, 1, 1 ]) ) ) ) ):
 #! 
-#! 182 primitive operations were used to derive 371 operations for this category
+#! 186 primitive operations were used to derive 379 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsAbelianCategoryWithEnoughProjectives
