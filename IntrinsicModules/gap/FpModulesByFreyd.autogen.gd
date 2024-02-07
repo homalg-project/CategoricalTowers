@@ -48,6 +48,10 @@
 #! * <Ref BookName="MonoidalCategories" Func="ClosedMonoidalLeftCoevaluationMorphismWithGivenRange" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="ClosedMonoidalLeftEvaluationMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="ClosedMonoidalLeftEvaluationMorphismWithGivenSource" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="ClosedMonoidalRightCoevaluationMorphism" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="ClosedMonoidalRightCoevaluationMorphismWithGivenRange" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="ClosedMonoidalRightEvaluationMorphism" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="ClosedMonoidalRightEvaluationMorphismWithGivenSource" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoastrictionToImage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoastrictionToImageWithGivenImageObject" Label="for Is" />
 #! * <Ref BookName="CartesianCategories" Func="CocartesianAssociatorLeftToRight" Label="for Is" />
@@ -156,6 +160,8 @@
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomOnObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductLeftAdjunctionMap" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductRightAdjunctionMap" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" Label="for Is" />
@@ -324,6 +330,8 @@
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductOnObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomLeftAdjunctionMap" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomRightAdjunctionMap" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorUnit" Label="for Is" />
 #! * <Ref BookName="CAP" Func="TerminalObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="TerminalObjectFunctorial" Label="for Is" />

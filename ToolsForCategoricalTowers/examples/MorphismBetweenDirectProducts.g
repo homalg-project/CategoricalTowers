@@ -3,16 +3,16 @@
 #! @Example
 LoadPackage( "ToolsForCategoricalTowers" );
 #! true
-LoadPackage( "Toposes", ">= 2023.12-02", fail );
+LoadPackage( "Toposes", ">= 2024.02-01", fail );
 #! true
-LoadPackage( "FinSetsForCAP", ">= 2023.11-01", fail );
+LoadPackage( "FinSetsForCAP", ">= 2024.02-02", fail );
 #! true
 sFinSets := SkeletalCategoryOfFiniteSets( );
 #! SkeletalFinSets
 Display( sFinSets );
 #! A CAP category with name SkeletalFinSets:
 #! 
-#! 58 primitive operations were used to derive 328 operations for this category
+#! 58 primitive operations were used to derive 336 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
@@ -44,7 +44,7 @@ W := WrapperCategory( sFinSets,
 Display( W );
 #! A CAP category with name WrapperCategory( SkeletalFinSets ):
 #! 
-#! 312 primitive operations were used to derive 326 operations for this category
+#! 320 primitive operations were used to derive 334 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
@@ -74,7 +74,7 @@ O := Opposite( sFinSets );
 Display( O );
 #! A CAP category with name Opposite( SkeletalFinSets ):
 #! 
-#! 249 primitive operations were used to derive 267 operations for this category
+#! 259 primitive operations were used to derive 275 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts

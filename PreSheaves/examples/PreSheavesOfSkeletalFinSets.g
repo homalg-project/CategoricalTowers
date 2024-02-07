@@ -18,6 +18,8 @@ Display( PSh );
 MissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" );
 #! [ "CartesianLeftCoevaluationMorphismWithGivenRange",
 #!   "CartesianLeftEvaluationMorphismWithGivenSource",
+#!   "CartesianRightCoevaluationMorphismWithGivenRange",
+#!   "CartesianRightEvaluationMorphismWithGivenSource",
 #!   "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
 #!   "ExponentialOnMorphismsWithGivenExponentials", "ExponentialOnObjects",
 #!   "IsCongruentForMorphisms", "IsEqualForMorphisms", "IsEqualForObjects",

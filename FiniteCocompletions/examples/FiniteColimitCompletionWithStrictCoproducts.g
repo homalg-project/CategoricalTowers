@@ -8,7 +8,7 @@ FinBouquets;
 Display( FinBouquets );
 #! A CAP category with name FinBouquets:
 #! 
-#! 70 primitive operations were used to derive 316 operations for this category
+#! 70 primitive operations were used to derive 324 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsElementaryTopos
