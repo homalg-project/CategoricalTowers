@@ -26,16 +26,16 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "ToolsForCategoricalTowers" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2023.12-02", fail );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2024.02-01", fail );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2023.11-01", fail );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2024.02-02", fail );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalCategoryOfFiniteSets( );[127X[104X
     [4X[28XSkeletalFinSets[128X[104X
     [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
     [4X[28XA CAP category with name SkeletalFinSets:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X58 primitive operations were used to derive 328 operations for this category[128X[104X
+    [4X[28X58 primitive operations were used to derive 336 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -67,7 +67,7 @@
     [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
     [4X[28XA CAP category with name WrapperCategory( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X312 primitive operations were used to derive 326 operations for this category[128X[104X
+    [4X[28X320 primitive operations were used to derive 334 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -97,7 +97,7 @@
     [4X[25Xgap>[125X [27XDisplay( O );[127X[104X
     [4X[28XA CAP category with name Opposite( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X249 primitive operations were used to derive 267 operations for this category[128X[104X
+    [4X[28X259 primitive operations were used to derive 275 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -171,16 +171,16 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "ToolsForCategoricalTowers" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2023.12-02", fail );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2024.02-01", fail );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2023.11-01", fail );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2024.02-02", fail );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalCategoryOfFiniteSets( );[127X[104X
     [4X[28XSkeletalFinSets[128X[104X
     [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
     [4X[28XA CAP category with name SkeletalFinSets:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X58 primitive operations were used to derive 328 operations for this category[128X[104X
+    [4X[28X58 primitive operations were used to derive 336 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -212,7 +212,7 @@
     [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
     [4X[28XA CAP category with name WrapperCategory( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X312 primitive operations were used to derive 326 operations for this category[128X[104X
+    [4X[28X320 primitive operations were used to derive 334 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -242,7 +242,7 @@
     [4X[25Xgap>[125X [27XDisplay( O );[127X[104X
     [4X[28XA CAP category with name Opposite( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X249 primitive operations were used to derive 267 operations for this category[128X[104X
+    [4X[28X259 primitive operations were used to derive 275 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
