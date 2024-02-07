@@ -368,7 +368,7 @@
     [4X[28XA CAP category with name[128X[104X
     [4X[28XPosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X16 primitive operations were used to derive 261 operations for this category[128X[104X
+    [4X[28X16 primitive operations were used to derive 269 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsClosedMonoidalLattice[128X[104X
@@ -381,7 +381,7 @@
     [4X[28XStablePosetOfCategory( PosetOfCategory([128X[104X
     [4X[28XSliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X15 primitive operations were used to derive 313 operations for this category[128X[104X
+    [4X[28X15 primitive operations were used to derive 329 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsHeytingAlgebra[128X[104X
