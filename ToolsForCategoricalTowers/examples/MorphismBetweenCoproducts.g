@@ -3,9 +3,9 @@
 #! @Example
 LoadPackage( "ToolsForCategoricalTowers" );
 #! true
-LoadPackage( "Toposes", ">= 2024.02-01", fail );
+LoadPackage( "Toposes", ">= 2024.02-01", false );
 #! true
-LoadPackage( "FinSetsForCAP", ">= 2024.02-02", fail );
+LoadPackage( "FinSetsForCAP", ">= 2024.02-02", false );
 #! true
 sFinSets := SkeletalCategoryOfFiniteSets( );
 #! SkeletalFinSets

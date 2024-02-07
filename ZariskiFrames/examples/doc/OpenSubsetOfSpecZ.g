@@ -126,7 +126,7 @@ th := UniqueMorphism( DirectProduct( A, C ), C );
 #!  affine spectrum of Z>
 IsWellDefined( th );
 #! true
-th := DirectProductToExponentialLeftAdjunctionMap( A, C, th );
+th := DirectProductToExponentialLeftAdjunctMorphism( A, C, th );
 #! <An epi-, monomorphism in The frame of Zariski open subsets of the\
 #!  affine spectrum of Z>
 IsWellDefined( th );
@@ -138,7 +138,7 @@ ht := UniqueMorphism( A, ExponentialOnObjects( D, B ) );
 #!  affine spectrum of Z>
 IsWellDefined( ht );
 #! true
-ht := ExponentialToDirectProductLeftAdjunctionMap( D, B, ht );
+ht := ExponentialToDirectProductLeftAdjunctMorphism( D, B, ht );
 #! <An epi-, monomorphism in The frame of Zariski open subsets of the\
 #!  affine spectrum of Z>
 IsWellDefined( ht );

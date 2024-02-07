@@ -62,8 +62,8 @@ AddDerivationToCAP( CocartesianLeftCoevaluationMorphismWithGivenSource,
 end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
-AddDerivationToCAP( CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential,
-                    "CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential using the unique morphism",
+AddDerivationToCAP( CoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential,
+                    "CoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential using the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, C, B, g, Coexp )
@@ -73,8 +73,8 @@ AddDerivationToCAP( CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponent
 end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
-AddDerivationToCAP( CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct,
-                    "CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct using the unique morphism",
+AddDerivationToCAP( CoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct,
+                    "CoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct using the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
   function( cat, A, B, f, P )

@@ -450,11 +450,11 @@ end );
 ## (f:a × b → Ω) ↦ (a → P(b))
 AddDerivationToCAP( PTransposeMorphismWithGivenRange,
         "PTransposeMorphismWithGivenRange as a special case of the cartesian adjunction",
-        [ [ DirectProductToExponentialLeftAdjunctionMapWithGivenExponential, 1 ] ],
+        [ [ DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential, 1 ] ],
         
   function( cat, a, b, f, Pb )
     
-    return DirectProductToExponentialLeftAdjunctionMapWithGivenExponential( cat,
+    return DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential( cat,
                    a,
                    b,
                    f,
@@ -466,7 +466,7 @@ end );
 AddDerivationToCAP( UpperSegmentOfRelationWithGivenRange,
         "",
         [ [ ClassifyingMorphismOfSubobject, 1 ],
-          [ DirectProductToExponentialLeftAdjunctionMapWithGivenExponential, 1 ] ],
+          [ DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential, 1 ] ],
         
   function( C, a, b, mu, Pb )
     local chi;
@@ -475,7 +475,7 @@ AddDerivationToCAP( UpperSegmentOfRelationWithGivenRange,
     chi := ClassifyingMorphismOfSubobject( C, mu );
     
     ## a → P(b) encoding the relation given by μ
-    return DirectProductToExponentialLeftAdjunctionMapWithGivenExponential( C, a, b, chi, Pb );
+    return DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential( C, a, b, chi, Pb );
     
 end );
 
@@ -485,7 +485,7 @@ AddDerivationToCAP( LowerSegmentOfRelationWithGivenRange,
         [ [ CartesianBraiding, 1 ],
           [ PreCompose, 1 ],
           [ ClassifyingMorphismOfSubobject, 1 ],
-          [ DirectProductToExponentialLeftAdjunctionMapWithGivenExponential, 1 ] ],
+          [ DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential, 1 ] ],
         
   function( C, a, b, mu, Pa )
     local mu_, chi_;
@@ -500,7 +500,7 @@ AddDerivationToCAP( LowerSegmentOfRelationWithGivenRange,
     chi_ := ClassifyingMorphismOfSubobject( C, mu_ );
     
     ## b → P(a) encoding the relation given by μ
-    return DirectProductToExponentialLeftAdjunctionMapWithGivenExponential( C, b, a, chi_, Pa );
+    return DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential( C, b, a, chi_, Pa );
     
 end );
 
