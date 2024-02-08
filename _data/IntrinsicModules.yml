@@ -1,7 +1,7 @@
 name: IntrinsicModules
-version: "2024.02-01"
+version: "2024.02-02"
 license: "GPL-2.0-or-later"
-date: 2024-02-07
+date: 2024-02-08
 description: |
     Finitely presented modules over computable rings allowing multiple presentations and the notion of elements
 
@@ -33,10 +33,10 @@ needed-pkgs:
       version: ">= 2023.12-02"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
-      version: ">= 2024.02-01"
+      version: ">= 2024.02-02"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
     - name: "CartesianCategories"
-      version: ">= 2024.02-01"
+      version: ">= 2024.02-02"
       url: "https://homalg-project.github.io/pkg/CartesianCategories"
     - name: "GeneralizedMorphismsForCAP"
       version: ">= 2020.10-01"
@@ -63,11 +63,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/IntrinsicModules
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2024.02-01/IntrinsicModules-2024.02-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2024.02-02/IntrinsicModules-2024.02-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2024.02-01/IntrinsicModules-2024.02-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2024.02-02/IntrinsicModules-2024.02-02.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2024.02-01/IntrinsicModules-2024.02-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2024.02-02/IntrinsicModules-2024.02-02-manual.pdf
 
 abstract: |
 
@@ -78,23 +78,23 @@ keywords: |
     module, finite presentation, computable ring.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BS07</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+    [<span class='BibKey'>BS08</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>IntrinsicModules, Finitely presented modules over computable rings allowing multiple presentations and the notion of elements,
-             Version 2024.02-01</i>
-     (<span class='BibYear'>2-07</span>)<br />
+             Version 2024.02-02</i>
+     (<span class='BibYear'>2-08</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/IntrinsicModules">https://homalg-project.github.io/pkg/IntrinsicModules</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ IntrinsicModules2024.02-01,
+    @misc{ IntrinsicModules2024.02-02,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{IntrinsicModules},  Finitely  presented  modules over
                           computable  rings  allowing multiple presentations and
-                          the notion of elements, {V}ersion 2024.02-01},
+                          the notion of elements, {V}ersion 2024.02-02},
       month =            {4-},
-      year =             {2-07},
+      year =             {2-08},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/IntrinsicModules}
@@ -102,6 +102,6 @@ bibtex: |
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{IntrinsicModules}}},
       keywords =         {module; finite presentation; computable ring},
-      printedkey =       {BS07}
+      printedkey =       {BS08}
     }
 
