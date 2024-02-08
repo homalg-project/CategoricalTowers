@@ -174,7 +174,7 @@
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( th );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xth := DirectProductToExponentialLeftAdjunctionMap( A, C, th );[127X[104X
+    [4X[25Xgap>[125X [27Xth := DirectProductToExponentialLeftAdjunctMorphism( A, C, th );[127X[104X
     [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( th );[127X[104X
@@ -186,7 +186,7 @@
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( ht );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xht := ExponentialToDirectProductLeftAdjunctionMap( D, B, ht );[127X[104X
+    [4X[25Xgap>[125X [27Xht := ExponentialToDirectProductLeftAdjunctMorphism( D, B, ht );[127X[104X
     [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( ht );[127X[104X
@@ -333,7 +333,7 @@
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( th );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xth := DirectProductToExponentialLeftAdjunctionMap( A, C, th );[127X[104X
+    [4X[25Xgap>[125X [27Xth := DirectProductToExponentialLeftAdjunctMorphism( A, C, th );[127X[104X
     [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( th );[127X[104X
@@ -345,7 +345,7 @@
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( ht );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xht := ExponentialToDirectProductLeftAdjunctionMap( D, B, ht );[127X[104X
+    [4X[25Xgap>[125X [27Xht := ExponentialToDirectProductLeftAdjunctMorphism( D, B, ht );[127X[104X
     [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
     [4X[28X affine spectrum of Z>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( ht );[127X[104X
