@@ -260,7 +260,7 @@ PowerObjectFunctorialWithGivenPowerObjects := rec(
   output_range_getter_preconditions := [ ],
 ),
 
-PowerObjectEvaluationMorphism := rec(
+PowerObjectLeftEvaluationMorphism := rec(
   filter_list := [ "category", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a" ],
@@ -270,7 +270,7 @@ PowerObjectEvaluationMorphism := rec(
   output_range_getter_preconditions := [ [ "SubobjectClassifier", 1 ] ],
   with_given_object_position := "both" ),
 
-PowerObjectEvaluationMorphismWithGivenObjects := rec(
+PowerObjectLeftEvaluationMorphismWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "Pa_xa", "a", "Omega" ],
