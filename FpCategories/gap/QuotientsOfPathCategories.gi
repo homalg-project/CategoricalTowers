@@ -150,6 +150,12 @@ InstallMethod( ViewString,
 end );
 
 ##
+InstallMethod( String,
+          [ IsQuotientOfPathCategoryObject ],
+  
+  ViewString );
+
+##
 InstallMethod( DisplayString,
           [ IsQuotientOfPathCategoryMorphism ],
   
@@ -180,3 +186,8 @@ InstallMethod( ViewString,
     
 end );
 
+##
+InstallMethod( String,
+          [ IsQuotientOfPathCategoryMorphism ],
+  
+  ViewString );
