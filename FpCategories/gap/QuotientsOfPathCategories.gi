@@ -59,6 +59,8 @@ InstallOtherMethod( QuotientCategory,
     
     if HasFiniteNumberOfMacaulayMorphisms( C, leading_monomials ) then
         
+        SetIsFinite( quo_C, true );
+        
         hom_quo_C := MacaulayMorphisms( C, leading_monomials );
         
         SetExternalHoms( quo_C,
@@ -129,6 +131,27 @@ InstallMethod( ObjectIndex,
     
 end );
 
+InstallMethod( ExternalHomsWithGivenLengthOp,
+        [ IsQuotientOfPathCategory, IsInt ],
+        
+  function ( quo_C, len )
+    local C, mors;
+    
+    C := UnderlyingCategory( quo_C );
+    
+    mors := ExternalHomsWithGivenLength( C, len );
+    
+    return List( mors, row ->
+                 List( row, morphisms ->
+                       DuplicateFreeList(
+                               List( morphisms, m ->
+                                     MorphismConstructor( quo_C,
+                                             SetOfObjects( quo_C )[ObjectIndex( Source( m ) )],
+                                             m,
+                                             SetOfObjects( quo_C )[ObjectIndex( Target( m ) )] ) ) ) ) );
+    
+end );
+
 ##
 InstallMethod( DisplayString,
           [ IsQuotientOfPathCategoryObject ],
@@ -148,6 +171,12 @@ InstallMethod( ViewString,
     return ViewString( UnderlyingCell( obj ) );
     
 end );
+
+##
+InstallMethod( String,
+          [ IsQuotientOfPathCategoryObject ],
+  
+  ViewString );
 
 ##
 InstallMethod( DisplayString,
@@ -180,3 +209,8 @@ InstallMethod( ViewString,
     
 end );
 
+##
+InstallMethod( String,
+          [ IsQuotientOfPathCategoryMorphism ],
+  
+  ViewString );
