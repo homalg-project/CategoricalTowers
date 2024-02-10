@@ -5,6 +5,28 @@
 #
 
 ##
+InstallOtherMethod( Size,
+        "for a CAP category",
+        [ IsCapCategory and HasSetOfObjects and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function( C )
+    local H, objs;
+    
+    H := RangeCategoryOfHomomorphismStructure( C );
+    
+    if not IsSkeletalCategoryOfFiniteSets( H ) then
+        TryNextMethod( );
+    fi;
+    
+    objs := SetOfObjects( C );
+    
+    return Sum( objs, s ->
+                Sum( objs, t ->
+                     Length( HomStructure( s, t ) ) ) );
+    
+end );
+
+##
 CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
         rec(
             YonedaEmbeddingData :=
