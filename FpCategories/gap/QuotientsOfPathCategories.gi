@@ -131,6 +131,27 @@ InstallMethod( ObjectIndex,
     
 end );
 
+InstallMethod( ExternalHomsWithGivenLengthOp,
+        [ IsQuotientOfPathCategory, IsInt ],
+        
+  function ( quo_C, len )
+    local C, mors;
+    
+    C := UnderlyingCategory( quo_C );
+    
+    mors := ExternalHomsWithGivenLength( C, len );
+    
+    return List( mors, row ->
+                 List( row, morphisms ->
+                       DuplicateFreeList(
+                               List( morphisms, m ->
+                                     MorphismConstructor( quo_C,
+                                             SetOfObjects( quo_C )[ObjectIndex( Source( m ) )],
+                                             m,
+                                             SetOfObjects( quo_C )[ObjectIndex( Target( m ) )] ) ) ) ) );
+    
+end );
+
 ##
 InstallMethod( DisplayString,
           [ IsQuotientOfPathCategoryObject ],
