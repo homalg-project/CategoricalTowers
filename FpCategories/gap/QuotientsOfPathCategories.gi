@@ -59,6 +59,8 @@ InstallOtherMethod( QuotientCategory,
     
     if HasFiniteNumberOfMacaulayMorphisms( C, leading_monomials ) then
         
+        SetIsFinite( quo_C, true );
+        
         hom_quo_C := MacaulayMorphisms( C, leading_monomials );
         
         SetExternalHoms( quo_C,

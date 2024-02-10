@@ -234,6 +234,8 @@ InstallMethod( PathCategory,
     
     if IsFinitePathCategory( C )  then
         
+        SetIsFinite( C, true );
+        
         SetIsEquippedWithHomomorphismStructure( C, true );
         
         SetRangeCategoryOfHomomorphismStructure( C, SkeletalFinSets );
