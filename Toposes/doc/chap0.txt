@@ -6,10 +6,10 @@
                               [1X Elementary toposes [101X
   
   
-                                   2024.02-03
+                                   2024.02-04
   
   
-                                8 February 2024
+                                11 February 2024
   
   
                                 Mohamed Barakat
@@ -90,8 +90,8 @@
       1.4-1 PowerObject
       1.4-2 PowerObjectFunctorial
       1.4-3 PowerObjectFunctorialWithGivenPowerObjects
-      1.4-4 PowerObjectEvaluationMorphism
-      1.4-5 PowerObjectEvaluationMorphismWithGivenObjects
+      1.4-4 PowerObjectLeftEvaluationMorphism
+      1.4-5 PowerObjectLeftEvaluationMorphismWithGivenObjects
       1.4-6 PTransposeMorphism
       1.4-7 PTransposeMorphismWithGivenRange
       1.4-8 UpperSegmentOfRelation
@@ -105,7 +105,7 @@
       1.4-16 IntersectWithPreimagesWithGivenObjects
       1.4-17 EmbeddingOfRelativePowerObject
       1.4-18 RelativePowerObjectFibrationMorphism
-      1.4-19 RelativePowerObjectEvaluationMorphism
+      1.4-19 RelativePowerObjectLeftEvaluationMorphism
       1.4-20 FiberMorphism
       1.4-21 FiberMorphismWithGivenObjects
       1.4-22 SingletonSupportOfRelationsWithGivenObjects
@@ -180,10 +180,10 @@
       1.10-31 AddPTransposeMorphism
       1.10-32 AddPTransposeMorphismWithGivenRange
       1.10-33 AddPowerObject
-      1.10-34 AddPowerObjectEvaluationMorphism
-      1.10-35 AddPowerObjectEvaluationMorphismWithGivenObjects
-      1.10-36 AddPowerObjectFunctorial
-      1.10-37 AddPowerObjectFunctorialWithGivenPowerObjects
+      1.10-34 AddPowerObjectFunctorial
+      1.10-35 AddPowerObjectFunctorialWithGivenPowerObjects
+      1.10-36 AddPowerObjectLeftEvaluationMorphism
+      1.10-37 AddPowerObjectLeftEvaluationMorphismWithGivenObjects
       1.10-38 AddProjectionInDirectProductComplement
       1.10-39 AddProjectionInDirectProductComplementWithGivenDirectProductComplement
       1.10-40 AddPseudoComplementSubobject

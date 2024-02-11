@@ -288,24 +288,24 @@
   that [3XPa[103X[23X= P(a)[123X and [3XPb[103X[23X= P(b)[123X. The output is the power morphism of [23XP(f): Pb \to
   Pa[123X.[133X
   
-  [1X1.4-4 PowerObjectEvaluationMorphism[101X
+  [1X1.4-4 PowerObjectLeftEvaluationMorphism[101X
   
-  [33X[1;0Y[29X[2XPowerObjectEvaluationMorphism[102X( [3Xa[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XPowerObjectLeftEvaluationMorphism[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  \mathrm{PowerObject}(a)  \times a,
             \Omega )[123X[133X
   
-  [33X[0;0YThe  argument  is  an  object  [3Xa[103X.  The output is the power object evaluation
+  [33X[0;0YThe  argument is an object [3Xa[103X. The output is the power object left evaluation
   morphism  of  [23X\epsilon_a:  P(a)  \times  a  \to  \Omega[123X, where [23X\Omega[123X is the
   subobject classifier of [10XCapCategory[110X([3Xa[103X).[133X
   
-  [1X1.4-5 PowerObjectEvaluationMorphismWithGivenObjects[101X
+  [1X1.4-5 PowerObjectLeftEvaluationMorphismWithGivenObjects[101X
   
-  [33X[1;0Y[29X[2XPowerObjectEvaluationMorphismWithGivenObjects[102X( [3XPa_xa[103X, [3Xa[103X, [3XOmega[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XPowerObjectLeftEvaluationMorphismWithGivenObjects[102X( [3XPa_xa[103X, [3Xa[103X, [3XOmega[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( Pa_xa, Omega )[123X[133X
   
   [33X[0;0YThe  arguments  are three objects [3XPa_xa[103X, [3Xa[103X, and [3XOmega[103X, such that [3XPa_xa[103X[23X= P(a)
   \times a[123X and [3XOmega[103X the subobject classifier of [10XCapCategory[110X([3Xa[103X). The output is
-  the power object evaluation morphism of [23X\epsilon_a:[123X [3XPa_xa[103X [23X\to[123X [3XOmega[103X.[133X
+  the power object left evaluation morphism of [23X\epsilon_a:[123X [3XPa_xa[103X [23X\to[123X [3XOmega[103X.[133X
   
   [1X1.4-6 PTransposeMorphism[101X
   
@@ -457,9 +457,9 @@
   [23XP_f:  P_fa  \rightarrow \times b[123X, where is [23XP_fa[123X the relative power object of
   [3Xf[103X.[133X
   
-  [1X1.4-19 RelativePowerObjectEvaluationMorphism[101X
+  [1X1.4-19 RelativePowerObjectLeftEvaluationMorphism[101X
   
-  [33X[1;0Y[29X[2XRelativePowerObjectEvaluationMorphism[102X( [3Xf[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XRelativePowerObjectLeftEvaluationMorphism[102X( [3Xf[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya monomorphism [23X\mathrm{Hom}( P_fa \times a, \Omega \times b )[123X[133X
   
   [33X[0;0YThe  input  is  a morphism [3Xf[103X: [23Xa \to b[123X. The output is the evaluation morphism
@@ -1346,28 +1346,7 @@
   given  function  [23XF[123X to the category for the basic operation [10XPowerObject[110X. [23XF: (
   arg2 ) \mapsto \mathtt{PowerObject}(arg2)[123X.[133X
   
-  [1X1.10-34 AddPowerObjectEvaluationMorphism[101X
-  
-  [33X[1;0Y[29X[2XAddPowerObjectEvaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XPowerObjectEvaluationMorphism[110X.       [23XF:       (       a       )      \mapsto
-  \mathtt{PowerObjectEvaluationMorphism}(a)[123X.[133X
-  
-  [1X1.10-35 AddPowerObjectEvaluationMorphismWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XAddPowerObjectEvaluationMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XPowerObjectEvaluationMorphismWithGivenObjects[110X.   [23XF:  (  Pa_xa,  a,  Omega  )
-  \mapsto   \mathtt{PowerObjectEvaluationMorphismWithGivenObjects}(Pa_xa,   a,
-  Omega)[123X.[133X
-  
-  [1X1.10-36 AddPowerObjectFunctorial[101X
+  [1X1.10-34 AddPowerObjectFunctorial[101X
   
   [33X[1;0Y[29X[2XAddPowerObjectFunctorial[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1376,7 +1355,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XPowerObjectFunctorial[110X. [23XF: ( f ) \mapsto \mathtt{PowerObjectFunctorial}(f)[123X.[133X
   
-  [1X1.10-37 AddPowerObjectFunctorialWithGivenPowerObjects[101X
+  [1X1.10-35 AddPowerObjectFunctorialWithGivenPowerObjects[101X
   
   [33X[1;0Y[29X[2XAddPowerObjectFunctorialWithGivenPowerObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1385,6 +1364,27 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XPowerObjectFunctorialWithGivenPowerObjects[110X.   [23XF:  (  Pb,  f,  Pa  )  \mapsto
   \mathtt{PowerObjectFunctorialWithGivenPowerObjects}(Pb, f, Pa)[123X.[133X
+  
+  [1X1.10-36 AddPowerObjectLeftEvaluationMorphism[101X
+  
+  [33X[1;0Y[29X[2XAddPowerObjectLeftEvaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XPowerObjectLeftEvaluationMorphism[110X.      [23XF:      (      a      )      \mapsto
+  \mathtt{PowerObjectLeftEvaluationMorphism}(a)[123X.[133X
+  
+  [1X1.10-37 AddPowerObjectLeftEvaluationMorphismWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XAddPowerObjectLeftEvaluationMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XPowerObjectLeftEvaluationMorphismWithGivenObjects[110X.  [23XF:  (  Pa_xa, a, Omega )
+  \mapsto \mathtt{PowerObjectLeftEvaluationMorphismWithGivenObjects}(Pa_xa, a,
+  Omega)[123X.[133X
   
   [1X1.10-38 AddProjectionInDirectProductComplement[101X
   
