@@ -449,7 +449,7 @@ InstallMethodWithCache( CoPreSheaves,
     ##
     morphism_datum := { coPSh, m } -> ValuesOnAllObjects( m );
     
-    ## building the categorical tower
+    ## building the categorical tower:
     
     Hom := FunctorCategory( B, D : FinalizeCategory := true );
     

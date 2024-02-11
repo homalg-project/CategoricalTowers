@@ -639,44 +639,6 @@ DeclareOperation( "AddPowerObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `PowerObjectEvaluationMorphism`.
-#! $F: ( a ) \mapsto \mathtt{PowerObjectEvaluationMorphism}(a)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddPowerObjectEvaluationMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddPowerObjectEvaluationMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddPowerObjectEvaluationMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddPowerObjectEvaluationMorphism",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `PowerObjectEvaluationMorphismWithGivenObjects`.
-#! $F: ( Pa_xa, a, Omega ) \mapsto \mathtt{PowerObjectEvaluationMorphismWithGivenObjects}(Pa_xa, a, Omega)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddPowerObjectEvaluationMorphismWithGivenObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddPowerObjectEvaluationMorphismWithGivenObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddPowerObjectEvaluationMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddPowerObjectEvaluationMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
 #! to the category for the basic operation `PowerObjectFunctorial`.
 #! $F: ( f ) \mapsto \mathtt{PowerObjectFunctorial}(f)$.
 #! @Returns nothing
@@ -710,6 +672,44 @@ DeclareOperation( "AddPowerObjectFunctorialWithGivenPowerObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddPowerObjectFunctorialWithGivenPowerObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `PowerObjectLeftEvaluationMorphism`.
+#! $F: ( a ) \mapsto \mathtt{PowerObjectLeftEvaluationMorphism}(a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPowerObjectLeftEvaluationMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPowerObjectLeftEvaluationMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPowerObjectLeftEvaluationMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPowerObjectLeftEvaluationMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `PowerObjectLeftEvaluationMorphismWithGivenObjects`.
+#! $F: ( Pa_xa, a, Omega ) \mapsto \mathtt{PowerObjectLeftEvaluationMorphismWithGivenObjects}(Pa_xa, a, Omega)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPowerObjectLeftEvaluationMorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPowerObjectLeftEvaluationMorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPowerObjectLeftEvaluationMorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPowerObjectLeftEvaluationMorphismWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

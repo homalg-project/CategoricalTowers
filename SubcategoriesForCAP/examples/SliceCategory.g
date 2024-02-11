@@ -4,7 +4,7 @@
 #! #@if ValueOption( "no_precompiled_code" ) <> true
 LoadPackage( "SubcategoriesForCAP" );
 #! true
-LoadPackage( "Toposes", ">= 2024.02-01" );
+LoadPackage( "Toposes", ">= 2024.02-04" );
 #! true
 LoadPackage( "FinSetsForCAP", ">= 2024.02-02" );
 #! true
@@ -127,7 +127,7 @@ Display( Po1 );
 #! { 0,..., 5 } ⱶ[ 0, 0, 0, 0, 1, 1 ]→ { 0, 1 }
 #! 
 #! An object in the slice category given by the above data
-e_o1 := PowerObjectEvaluationMorphism( o1 );
+e_o1 := PowerObjectLeftEvaluationMorphism( o1 );
 #! A morphism in the slice category given by: |10| → |4|
 IsWellDefined( e_o1 );
 #! true
@@ -153,7 +153,7 @@ Display( Po2 );
 #! { 0,..., 7 } ⱶ[ 0, 0, 0, 0, 1, 1, 1, 1 ]→ { 0, 1 }
 #! 
 #! An object in the slice category given by the above data
-e_o2 := PowerObjectEvaluationMorphism( o2 );
+e_o2 := PowerObjectLeftEvaluationMorphism( o2 );
 #! A morphism in the slice category given by: |16| → |4|
 IsWellDefined( e_o2 );
 #! true

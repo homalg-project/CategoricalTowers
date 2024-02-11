@@ -433,8 +433,8 @@ AddDerivationToCAP( PowerObjectFunctorialWithGivenPowerObjects,
 end );
 
 ## P(a) × a → Ω
-AddDerivationToCAP( PowerObjectEvaluationMorphismWithGivenObjects,
-        "PowerObjectEvaluationMorphismWithGivenObjects as a special case of the cartesian evaluation",
+AddDerivationToCAP( PowerObjectLeftEvaluationMorphismWithGivenObjects,
+        "PowerObjectLeftEvaluationMorphismWithGivenObjects as a special case of the cartesian evaluation",
         [ [ CartesianLeftEvaluationMorphismWithGivenSource, 1 ] ],
         
   function( cat, Pa_xa, a, Omega )
@@ -1021,11 +1021,11 @@ end );
 
 ##
 AddDerivationToCAP( FiberMorphismWithGivenObjects,
-        "FiberMorphismWithGivenObjects using PowerObjectEvaluationMorphism and PTransposeMorphism",
+        "FiberMorphismWithGivenObjects using PowerObjectLeftEvaluationMorphism and PTransposeMorphism",
         [ [ PowerObject, 1 ],
           [ DirectProduct, 3 ],
           [ SubobjectClassifier, 1 ],
-          [ PowerObjectEvaluationMorphismWithGivenObjects, 1 ],
+          [ PowerObjectLeftEvaluationMorphismWithGivenObjects, 1 ],
           [ CartesianAssociatorRightToLeftWithGivenDirectProducts, 1 ],
           [ PreCompose, 1 ],
           [ PTransposeMorphismWithGivenRange, 1 ] ],
@@ -1050,7 +1050,7 @@ AddDerivationToCAP( FiberMorphismWithGivenObjects,
     Omega := SubobjectClassifier( cat );
     
     ## ϵ_{B × C} : P(B × C) × (B × C) → Ω
-    epsilon_BxC := PowerObjectEvaluationMorphismWithGivenObjects( cat,
+    epsilon_BxC := PowerObjectLeftEvaluationMorphismWithGivenObjects( cat,
                            PBxC_xBxC,
                            BxC,
                            Omega );

@@ -449,7 +449,7 @@ InstallMethodWithCache( FunctorCategory,
     ##
     morphism_datum := { Hom, m } -> ValuesOnAllObjects( m );
     
-    ## building the categorical tower
+    ## building the categorical tower:
     
     if IsFpCategory( B ) then
         B_op := OppositeFpCategory( B : FinalizeCategory := true );

@@ -160,7 +160,7 @@ InstallMethod( RelativePowerObjectFibrationMorphism,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( RelativePowerObjectEvaluationMorphism,
+InstallOtherMethodForCompilerForCAP( RelativePowerObjectLeftEvaluationMorphism,
         "for a category and a morphism",
         [ IsCapCategory, IsCapCategoryMorphism ],
         
@@ -285,12 +285,12 @@ InstallOtherMethodForCompilerForCAP( RelativePowerObjectEvaluationMorphism,
 end );
 
 ##
-InstallMethod( RelativePowerObjectEvaluationMorphism,
+InstallMethod( RelativePowerObjectLeftEvaluationMorphism,
         "for a morphism",
         [ IsCapCategoryMorphism ],
         
  function( f )
     
-    return RelativePowerObjectEvaluationMorphism( CapCategory( f ), f );
+    return RelativePowerObjectLeftEvaluationMorphism( CapCategory( f ), f );
     
 end );

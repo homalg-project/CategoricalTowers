@@ -756,7 +756,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         end );
         
         ##
-        AddPowerObjectEvaluationMorphismWithGivenObjects( Slice_over_B,
+        AddPowerObjectLeftEvaluationMorphismWithGivenObjects( Slice_over_B,
           function( cat, PM_xM, M, Omega )
             local C, f;
             
@@ -767,7 +767,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             return MorphismConstructor( cat,
                            PM_xM,
-                           RelativePowerObjectEvaluationMorphism( C, f ),
+                           RelativePowerObjectLeftEvaluationMorphism( C, f ),
                            Omega );
             
         end );

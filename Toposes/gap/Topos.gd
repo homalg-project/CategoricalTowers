@@ -356,21 +356,21 @@ DeclareOperation( "PowerObjectFunctorialWithGivenPowerObjects",
 
 #! @Description
 #!  The argument is an object <A>a</A>.
-#!  The output is the power object evaluation morphism of $\epsilon_a: P(a) \times a \to \Omega$,
+#!  The output is the power object left evaluation morphism of $\epsilon_a: P(a) \times a \to \Omega$,
 #!  where $\Omega$ is the subobject classifier of <C>CapCategory</C>(<A>a</A>).
 #! @Arguments a
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{PowerObject}(a) \times a, \Omega )$
-DeclareAttribute( "PowerObjectEvaluationMorphism",
+DeclareAttribute( "PowerObjectLeftEvaluationMorphism",
         IsCapCategoryObject );
 
 #! @Description
 #!  The arguments are three objects <A>Pa_xa</A>, <A>a</A>, and <A>Omega</A>,
 #!  such that <A>Pa_xa</A>$= P(a) \times a$ and
 #!  <A>Omega</A> the subobject classifier of <C>CapCategory</C>(<A>a</A>).
-#!  The output is the power object evaluation morphism of $\epsilon_a:$ <A>Pa_xa</A> $\to$ <A>Omega</A>.
+#!  The output is the power object left evaluation morphism of $\epsilon_a:$ <A>Pa_xa</A> $\to$ <A>Omega</A>.
 #! @Arguments Pa_xa, a, Omega
 #! @Returns a morphism in $\mathrm{Hom}( Pa_xa, Omega )$
-DeclareOperation( "PowerObjectEvaluationMorphismWithGivenObjects",
+DeclareOperation( "PowerObjectLeftEvaluationMorphismWithGivenObjects",
         [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
@@ -510,7 +510,7 @@ DeclareAttribute( "RelativePowerObjectFibrationMorphism",
 #!  where $Pa$ = <C>PowerObject</C>($a$) and $P_fa$ is the relative power object of <A>f</A>.
 #! @Arguments f
 #! @Returns a monomorphism $\mathrm{Hom}( P_fa \times a, \Omega \times b )$
-DeclareAttribute( "RelativePowerObjectEvaluationMorphism",
+DeclareAttribute( "RelativePowerObjectLeftEvaluationMorphism",
         IsCapCategoryMorphism );
 
 #! @Description
