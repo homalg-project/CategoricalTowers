@@ -90,4 +90,3 @@ q3 := FinQuiver( "q(3)[a:1->2,b:2->3]" );
 q4 := FinQuiver( "q(4..6)[a:4->5,b:5->6]" );
 #! FinQuiver( "q(4,5,6)[a:4-≻5,b:5-≻6]" )
 #! @EndExample
-
