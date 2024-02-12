@@ -667,9 +667,9 @@ InstallMethod( \.,
         return SetOfGeneratingMorphisms( C )[p];
     fi;
     
-    if ForAny( [ "•", "*" ], s -> PositionSublist( name, s ) <> fail ) then
+    if ForAny( [ "⋅", "*" ], s -> PositionSublist( name, s ) <> fail ) then
       
-      labels := SplitString( ReplacedString( name, "•", "*" ), "*" );
+      labels := SplitString( ReplacedString( name, "⋅", "*" ), "*" );
       
       return PreComposeList( C, List( labels, label -> C.(label) ) );
       
@@ -733,7 +733,7 @@ InstallMethod( \.,
       
     fi;
     
-    Error( "the label '", name, "' can't be recognized! please try 'f*g' (or 'f•g') instead of 'fg'; and 'f*f' (or 'f•f') instead of 'f^2'\n" );
+    Error( "the label '", name, "' can't be recognized! please try 'f*g' (or 'f⋅g') instead of 'fg'; and 'f*f' (or 'f⋅f') instead of 'f^2'\n" );
     
 end );
 
