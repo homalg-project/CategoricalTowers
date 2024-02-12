@@ -7,9 +7,13 @@
 gap> PushOptions( rec( OnlyNeeded := true ) );
 gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
+gap> LoadPackage( "Digraphs", false );
+true
 gap> LoadPackage( "FpCategories", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
+gap> LoadPackage( "Digraphs" );
+true
 gap> LoadPackage( "FpCategories" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;
