@@ -55,6 +55,7 @@
   [2XPathCategory[102X, for IsFinQuiver 2.2-1 
   [2XQuiverDatum[102X, for IsFinQuiver 1.3-1 
   [2XQuiverName[102X, for IsFinQuiver 1.3-2 
+  [2XQuiverStringOfDigraph[102X, for IsDigraph, IsString, IsString 3.2-3 
   [2XQuotientCategory[102X, for IsPathCategory, IsDenseList 2.5-4 
   [2XRandomFinQuiver[102X 1.2-4 
   [2XReducedGroebnerBasis[102X, for IsPathCategory, IsDenseList 2.4-3 

@@ -35,6 +35,7 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7D32833485711216">3.2-1 DefiningTripleOfUnderlyingQuiver</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DBB356A84FFF444">3.2-2 DataTablesOfCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83B40D197C13837A">3.2-3 QuiverStringOfDigraph</a></span>
 </div></div>
 </div>
 
@@ -74,6 +75,32 @@
 <p>Returns: a pair of lists</p>
 
 <p>The data tables of the category <var class="Arg">C</var>.</p>
+
+<p><a id="X83B40D197C13837A" name="X83B40D197C13837A"></a></p>
+
+<h5>3.2-3 QuiverStringOfDigraph</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; QuiverStringOfDigraph</code>( <var class="Arg">D</var>, <var class="Arg">name_of_quiver</var>, <var class="Arg">prefix_of_name_of_morphisms</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a string</p>
+
+<p>Return a string encoding the underlying quiver of the digraph <var class="Arg">D</var>. The string <var class="Arg">name_of_quiver</var> will be the name of the underlying quiver. The string <var class="Arg">prefix_of_name_of_morphisms</var> will be the prefix of the name all morphisms.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FpCategories", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := "q(1,2,3,4)[m_1_2:1-&gt;2,m_1_3:1-&gt;3,m_2_4:2-&gt;4,m_3_4:3-&gt;4]";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PathCategory( FinQuiver( q ) );</span>
+PathCategory( FinQuiver(
+"q(1,2,3,4)[m_1_2:1-≻2,m_1_3:1-≻3,m_2_4:2-≻4,m_3_4:3-≻4]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">digraph := DigraphReflexiveTransitiveReduction(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                   Digraph( SetOfObjects( F ), IsHomSetInhabited ) );</span>
+&lt;immutable digraph with 4 vertices, 4 edges&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QuiverStringOfDigraph( digraph, "q", "m" ) = q;</span>
+true
+</pre></div>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>

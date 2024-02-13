@@ -6,10 +6,10 @@
       [1X Finitely presented categories by generating quivers and relations [101X
   
   
-                                   2024.02-05
+                                   2024.02-06
   
   
-                                12 February 2024
+                                13 February 2024
   
   
                                 Mohamed Barakat
@@ -118,6 +118,7 @@
     3.2 [33X[0;0YOperations[133X
       3.2-1 DefiningTripleOfUnderlyingQuiver
       3.2-2 DataTablesOfCategory
+      3.2-3 QuiverStringOfDigraph
   
   
   [32X
