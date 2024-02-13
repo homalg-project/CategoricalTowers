@@ -416,7 +416,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddIsTerminal( P,
           function( cat, S )
             
-            return IsWeakTerminal( C, UnderlyingCell( S ) );
+            return IsWeakTerminal( AmbientCategory( cat ), UnderlyingCell( S ) );
             
         end );
         
@@ -427,7 +427,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddIsInitial( P,
           function( cat, S )
             
-            return IsWeakInitial( C, UnderlyingCell( S ) );
+            return IsWeakInitial( AmbientCategory( cat ), UnderlyingCell( S ) );
             
         end );
         
@@ -446,7 +446,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             AddInternalHomOnObjects( P,
               function( cat, S, T )
                 
-                return ObjectConstructor( cat, StableInternalHom( C, UnderlyingCell( S ), UnderlyingCell( T ) ) );
+                return ObjectConstructor( cat, StableInternalHom( AmbientCategory( cat ), UnderlyingCell( S ), UnderlyingCell( T ) ) );
                 
             end );
             
@@ -471,7 +471,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             AddInternalCoHomOnObjects( P,
               function( cat, S, T )
                 
-                return ObjectConstructor( cat, StableInternalCoHom( C, UnderlyingCell( S ), UnderlyingCell( T ) ) );
+                return ObjectConstructor( cat, StableInternalCoHom( AmbientCategory( cat ), UnderlyingCell( S ), UnderlyingCell( T ) ) );
                 
             end );
             
