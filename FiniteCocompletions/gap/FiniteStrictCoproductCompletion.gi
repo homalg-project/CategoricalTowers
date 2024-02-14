@@ -111,6 +111,14 @@ InstallMethod( FiniteStrictCoproductCompletion,
         ];
     
     ##
+    AddSetOfObjectsOfCategory( UI,
+      function( UI )
+        
+        return [ TerminalObject( UI ) ];
+        
+    end );
+    
+    ##
     AddIsWellDefinedForObjects( UI,
       function( UI, object )
         

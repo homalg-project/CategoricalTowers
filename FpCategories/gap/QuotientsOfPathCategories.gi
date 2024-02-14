@@ -36,6 +36,21 @@ InstallOtherMethod( QuotientCategory,
                      congruence_function := congruence_function,
                      underlying_category := C ) : FinalizeCategory := false, overhead := false );
     
+    ##
+    AddSetOfGeneratingMorphismsOfCategory( quo_C,
+      function( quo_C )
+        local objects;
+
+        objects := SetOfObjects( quo_C );
+        
+        return List( SetOfGeneratingMorphisms( UnderlyingCategory( quo_C ) ),
+                     m -> MorphismConstructor( quo_C,
+                             objects[ObjectIndex( Source( m ) )],
+                             m,
+                             objects[ObjectIndex( Target( m ) )] ) );
+        
+    end );
+    
     q := UnderlyingQuiver( C );
     
     SetUnderlyingQuiver( quo_C, q );
@@ -46,20 +61,11 @@ InstallOtherMethod( QuotientCategory,
     
     SetGroebnerBasisOfDefiningRelations( quo_C, reduced_gb );
     
-    SetSetOfObjects( quo_C, List( SetOfObjects( C ), o -> ObjectConstructor( quo_C, o ) ) );
-    
-    SetSetOfGeneratingMorphisms( quo_C,
-            List( SetOfGeneratingMorphisms( C ),
-              m -> MorphismConstructor( quo_C,
-                      SetOfObjects( quo_C )[ObjectIndex( Source( m ) )],
-                      m,
-                      SetOfObjects( quo_C )[ObjectIndex( Target( m ) )] ) ) );
-    
     leading_monomials := List( reduced_gb, g -> g[1] );
     
     if HasFiniteNumberOfMacaulayMorphisms( C, leading_monomials ) then
         
-        SetIsFinite( quo_C, true );
+        SetIsFiniteCategory( quo_C, true );
         
         hom_quo_C := MacaulayMorphisms( C, leading_monomials );
         

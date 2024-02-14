@@ -51,7 +51,7 @@ CapJitAddTypeSignature( "DataTables", [ IsCapCategory ],
   function ( input_types )
     local integer, list_of_integers, list_list_of_integers, list_list_list_of_integers;
     
-    Assert( 0, IsFinite( input_types[1].category ) );
+    Assert( 0, HasIsFiniteCategory( input_types[1].category ) and IsFiniteCategory( input_types[1].category ) );
     
     integer := IsInt;
     
@@ -76,20 +76,6 @@ CapJitAddTypeSignature( "DataTables", [ IsCapCategory ],
                            list_list_list_of_integers ) ); # elimination
     
 end );
-
-#! @Description
-#!  The finite set of objects of the category <A>C</A> created from data tables.
-#! @Arguments C
-#! @Returns a list
-DeclareAttribute( "SetOfObjects",
-        IsCategoryFromDataTables );
-
-#! @Description
-#!  The finite set of morphisms of the category <A>C</A> created from data tables.
-#! @Arguments C
-#! @Returns a list
-DeclareAttribute( "SetOfMorphisms",
-        IsCategoryFromDataTables );
 
 DeclareAttribute( "IndicesOfGeneratingMorphisms",
         IsCategoryFromDataTables );
@@ -135,13 +121,6 @@ DeclareAttribute( "RelationsAmongGeneratingMorphisms",
 #                           CapJitDataTypeOfListOf( IsInt ) ) );
 #    
 #end );
-
-#! @Description
-#!  The finite set of morphisms generating the category <A>C</A> created from data tables.
-#! @Arguments C
-#! @Returns a list
-DeclareAttribute( "SetOfGeneratingMorphisms",
-        IsCategoryFromDataTables );
 
 #! @Description
 #!  The number of morphisms in the category <A>C</A> created from data tables.

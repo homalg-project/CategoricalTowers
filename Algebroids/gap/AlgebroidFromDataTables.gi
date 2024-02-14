@@ -306,9 +306,9 @@ InstallMethod( AlgebroidFromDataTables,
     
     A!.compiler_hints :=
       rec( category_attribute_names :=
-           [ "UnderlyingQuiver",
-             "SetOfObjects",
-             "SetOfGeneratingMorphisms",
+           [ "SetOfObjectsAsUnresolvableAttribute",
+             "SetOfGeneratingMorphismsAsUnresolvableAttribute",
+             "UnderlyingQuiver",
              "CommutativeRingOfLinearCategory",
              "DefiningTripleOfUnderlyingQuiver",
              "HomomorphismStructureOnObjectsRanks",
@@ -464,6 +464,27 @@ InstallMethod( AlgebroidFromDataTables,
       function ( A, alpha )
         
         return CoefficientsList( alpha );
+        
+    end );
+    
+    ##
+    AddSetOfObjectsOfCategory( A,
+      function ( A )
+        
+        return List( [ 1 .. NumberOfObjects( UnderlyingQuiver( A ) ) ], index -> CreateCapCategoryObjectWithAttributes( A, ObjectIndex, index ) );
+        
+    end );
+    
+    ##
+    AddSetOfGeneratingMorphismsOfCategory( A,
+      function ( A )
+        local q;
+        
+        q := UnderlyingQuiver( A );
+        
+        return
+          ListN( [ 1 .. NumberOfMorphisms( q ) ], IndicesOfSources( q ), IndicesOfTargets( q ),
+                 { index, i, j } -> BasesElements( A )[i][j][SafePosition( DecompositionIndicesOfBasesElements( A )[i][j], [ index ] )] );
         
     end );
     
@@ -776,6 +797,28 @@ InstallOtherMethod( AlgebroidFromDataTables,
 end );
 
 ##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for an algebroid from data tables",
+        [ IsAlgebroidFromDataTables ],
+        
+  function( cat )
+    
+    return SetOfObjectsAsUnresolvableAttribute( cat );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for an algebroid from data tables",
+        [ IsAlgebroidFromDataTables ],
+        
+  function( cat )
+    
+    return SetOfGeneratingMorphismsAsUnresolvableAttribute( cat );
+    
+end );
+
+##
 InstallOtherMethod( Dimension,
           [ IsAlgebroidFromDataTables ],
   
@@ -845,31 +888,6 @@ InstallMethod( CoefficientsOfSupportMorphisms,
   function ( alpha )
     
     return CoefficientsList( alpha ){IndicesOfSupportMorphisms( alpha )};
-    
-end );
-
-##
-InstallMethod( SetOfObjects,
-          [ IsAlgebroidFromDataTables ],
-  
-  function ( A )
-    
-    return List( [ 1 .. NumberOfObjects( UnderlyingQuiver( A ) ) ], index -> CreateCapCategoryObjectWithAttributes( A, ObjectIndex, index ) );
-    
-end );
-
-##
-InstallMethod( SetOfGeneratingMorphisms,
-          [ IsAlgebroidFromDataTables ],
-  
-  function ( A )
-    local q;
-    
-    q := UnderlyingQuiver( A );
-    
-    return
-      ListN( [ 1 .. NumberOfMorphisms( q ) ], IndicesOfSources( q ), IndicesOfTargets( q ),
-            { index, i, j } -> BasesElements( A )[i][j][SafePosition( DecompositionIndicesOfBasesElements( A )[i][j], [ index ] )] );
     
 end );
 

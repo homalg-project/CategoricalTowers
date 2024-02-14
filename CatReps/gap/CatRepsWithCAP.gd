@@ -49,27 +49,6 @@ DeclareCategory( "IsMorphismInAFiniteConcreteCategory",
 ####################################
 
 #! @Description
-#!  The set of objects of the concrete category <A>C</A>.
-#! @Arguments C
-#! @Returns a list
-DeclareAttribute( "SetOfObjects",
-        IsCapSubcategory );
-
-#! @Description
-#!  The set of generating morphisms of the concrete category <A>C</A>.
-#! @Arguments C
-#! @Returns a list
-DeclareAttribute( "SetOfGeneratingMorphisms",
-        IsCapSubcategory );
-
-#! @Description
-#!  The set of morphisms of the concrete category <A>C</A>.
-#! @Arguments C
-#! @Returns a list
-DeclareAttribute( "SetOfMorphisms",
-        IsCapSubcategory );
-
-#! @Description
 #!  Return the right quiver <A>q(n)</A> from the concrete category <A>C</A>
 #!  with $n$ objects.
 #! @Arguments C

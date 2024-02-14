@@ -556,14 +556,9 @@ InstallMethodWithCache( CoPreSheaves,
     SetSource( coPSh, B );
     SetTarget( coPSh, D );
     
-    SetSetOfObjects( coPSh, SetOfObjects( B ) );
-    SetSetOfGeneratingMorphisms( coPSh, SetOfGeneratingMorphisms( B ) );
-    
     Append( coPSh!.compiler_hints.category_attribute_names,
             [ "Source",
               "Target",
-              "SetOfObjects",
-              "SetOfGeneratingMorphisms",
               ] );
     
     if not HasRangeCategoryOfHomomorphismStructure( coPSh ) and

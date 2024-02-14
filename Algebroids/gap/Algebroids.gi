@@ -44,13 +44,6 @@ InstallMethod( Dimension,
 end );
 
 ##
-InstallMethod( SetOfObjects,
-        "for an algebroid",
-        [ IsAlgebroid ],
-        
-  A -> List( Vertices( UnderlyingQuiver( A ) ), o -> A.( String( o ) ) ) );
-
-##
 InstallMethod( AssignSetOfObjects,
         [ IsAlgebroid, IsString ],
         
@@ -90,13 +83,6 @@ InstallOtherMethod( AssignSetOfObjects,
     AssignSetOfObjects( A, "" );
     
 end );
-
-##
-InstallMethod( SetOfGeneratingMorphisms,
-        "for an algebroid",
-        [ IsAlgebroid ],
-        
-  A -> List( Arrows( UnderlyingQuiver( A ) ), o -> A.(String( o ) ) ) );
 
 ##
 InstallMethodWithCache( SetOfGeneratingMorphisms,
@@ -456,6 +442,22 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     end );
     
     ##
+    AddSetOfObjectsOfCategory( category,
+      function( category )
+        
+        return List( Vertices( UnderlyingQuiver( category ) ), o -> category.( String( o ) ) );
+        
+    end );
+    
+    ##
+    AddSetOfGeneratingMorphismsOfCategory( category,
+      function( category )
+        
+        return List( Arrows( UnderlyingQuiver( category ) ), o -> category.(String( o ) ) );
+        
+    end );
+    
+    ##
     AddIsWellDefinedForObjects( category,
       function( category, o )
         local v;
@@ -629,6 +631,28 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     SetFilterObj( IdentityFunctor( category ), IsAlgebroidMorphism );
     
     return category;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for an algebroid",
+        [ IsAlgebroid ],
+        
+  function( cat )
+    
+    return SetOfObjectsAsUnresolvableAttribute( cat );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for an algebroid",
+        [ IsAlgebroid ],
+        
+  function( cat )
+    
+    return SetOfGeneratingMorphismsAsUnresolvableAttribute( cat );
     
 end );
 
@@ -1161,8 +1185,8 @@ InstallMethod( Algebroid,
     
     A!.compiler_hints :=
       rec( category_attribute_names :=
-           [ "SetOfObjects",
-             "SetOfGeneratingMorphisms",
+           [ "SetOfObjectsAsUnresolvableAttribute",
+             "SetOfGeneratingMorphismsAsUnresolvableAttribute",
              "UnderlyingQuiver",
              "UnderlyingQuiverAlgebra",
              "BasisPathsByVertexIndex",

@@ -152,6 +152,7 @@ DeclareAttribute( "IndicesOfTargets", IsFinQuiver );
 #! @Returns a list
 DeclareAttribute( "IndicesPairsOfCompatibleMorphisms", IsFinQuiver );
 
+if false then
 #! @Description
 #!  Returns the set of objects of <A>q</A>.
 #! @Arguments q
@@ -163,6 +164,7 @@ DeclareAttribute( "SetOfObjects", IsFinQuiver );
 #! @Arguments q
 #! @Returns a list of &CAP; quiver morphisms
 DeclareAttribute( "SetOfMorphisms", IsFinQuiver );
+fi;
 
 #! @Description
 #!  Returns a list of lists where the entry at $[i,j]$ is the set of morphism from the $i$'th object to the $j$'th object in <A>q</A>.

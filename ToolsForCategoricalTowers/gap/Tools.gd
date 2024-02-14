@@ -6,8 +6,6 @@
 
 #! @Chapter Tools
 
-DeclareGlobalVariable( "CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD" );
-
 DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_CATEGORY_CONSTRUCTOR" );
 
 DeclareGlobalFunction( "RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION" );
@@ -16,15 +14,87 @@ DeclareGlobalFunction( "UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODU
 
 ####################################
 ##
+#! @Section Properties
+##
+####################################
+
+#! @Description
+#!  The (evil) property of <A>C</A> being a category with finitely many objects.
+#! @Arguments C
+DeclareProperty( "IsObjectFiniteCategory",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsObjectFiniteCategory", "IsObjectFiniteCategory" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsObjectFiniteCategory :=
+  DuplicateFreeList( Concatenation( [
+          "SetOfObjectsOfCategory",
+          ],
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory ) );
+
+#! @Description
+#!  The (evil) property of <A>C</A> being a finite category.
+#! @Arguments C
+DeclareProperty( "IsFiniteCategory",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsFiniteCategory", "IsFiniteCategory" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCategory :=
+  DuplicateFreeList( Concatenation( [
+          "SetOfMorphismsOfFiniteCategory",
+          ],
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsObjectFiniteCategory ) );
+
+####################################
+##
 #! @Section Attributes
 ##
 ####################################
 
-DeclareAttribute( "SetOfObjects",
-        IsDummyCategory );
+#! @Description
+#!  Return a duplicate free list of objects of the category <A>C</A>.
+#! @Arguments C
+#! @Returns a list of &CAP; category objects
+DeclareAttribute( "SetOfObjectsOfCategory",
+        IsCapCategory );
 
-DeclareAttribute( "SetOfGeneratingMorphisms",
-        IsDummyCategory );
+#! @Description
+#!  Return a duplicate free list of objects of the category <A>C</A>.
+#!  The corresponding &CAP; operation is <C>SetOfObjectsOfCategory</C>.
+#! @Arguments C
+#! @Returns a list of &CAP; category objects
+DeclareAttribute( "SetOfObjects", IsCapCategory );
+
+CapJitAddTypeSignature( "SetOfObjects", [ IsCapCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+    
+end );
+
+#! @Description
+#!  Return a duplicate free list of morphisms of the finite category <A>C</A>.
+#! @Arguments C
+#! @Returns a list of a &CAP; category morphisms
+DeclareAttribute( "SetOfMorphismsOfFiniteCategory",
+        IsCapCategory );
+
+#! @Description
+#!  Return a duplicate free list of morphisms of the finite category <A>C</A>.
+#!  The corresponding &CAP; operation is <C>SetOfMorphismsOfFiniteCategory</C>.
+#! @Arguments C
+#! @Returns a list of &CAP; category objects
+DeclareAttribute( "SetOfMorphisms", IsCapCategory );
+
+DeclareAttribute( "SetOfObjectsAsUnresolvableAttribute", IsCapCategory );
+
+CapJitAddTypeSignature( "SetOfObjectsAsUnresolvableAttribute", [ IsCapCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+    
+end );
 
 ###################################
 ##

@@ -44,14 +44,30 @@ InstallMethod( ConcreteCategoryForCAP,
     CapCategorySwitchLogicOff( FinSets );
     DisableSanityChecks( FinSets );
     
-    C := Subcategory( FinSets, "A finite concrete category" :
-        overhead := false, FinalizeCategory := false );
+    C := Subcategory( FinSets,
+                 "A finite concrete category" :
+                 overhead := false,
+                 FinalizeCategory := false );
     
     DeactivateCachingOfCategory( C );
     CapCategorySwitchLogicOff( C );
     DisableSanityChecks( C );
     
     SetFilterObj( C, IsFiniteConcreteCategory );
+    
+    AddSetOfObjectsOfCategory( C,
+      function( C )
+        
+        return List( objects, o -> o / C );
+        
+    end );
+    
+    AddSetOfGeneratingMorphismsOfCategory( C,
+      function( C )
+        
+        return List( c.generators, g -> ConvertToMapOfFinSets( objects, g ) / C );
+        
+    end );
     
     AddIsAutomorphism( C,
       function( C, alpha )
@@ -69,14 +85,31 @@ InstallMethod( ConcreteCategoryForCAP,
     
     objects := List( c.objects, FinSet );
     
-    SetSetOfObjects( C, List( objects, o -> o / C ) );
-    
-    SetSetOfGeneratingMorphisms( C, List(
-        c.generators, g -> ConvertToMapOfFinSets( objects, g ) / C ) );
-    
     Finalize( C );
     
     return C;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a finite concrete category",
+        [ IsFiniteConcreteCategory ],
+        
+  function( cat )
+    
+    return SetOfObjectsAsUnresolvableAttribute( cat );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for a finite concrete category",
+        [ IsFiniteConcreteCategory ],
+        
+  function( cat )
+    
+    return SetOfGeneratingMorphismsAsUnresolvableAttribute( cat );
     
 end );
 

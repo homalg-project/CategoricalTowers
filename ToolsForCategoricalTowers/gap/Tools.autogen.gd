@@ -430,6 +430,44 @@ DeclareOperation( "AddRelativeLift",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `SetOfMorphismsOfFiniteCategory`.
+#! $F: (  ) \mapsto \mathtt{SetOfMorphismsOfFiniteCategory}()$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSetOfMorphismsOfFiniteCategory",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSetOfMorphismsOfFiniteCategory",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSetOfMorphismsOfFiniteCategory",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSetOfMorphismsOfFiniteCategory",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `SetOfObjectsOfCategory`.
+#! $F: (  ) \mapsto \mathtt{SetOfObjectsOfCategory}()$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSetOfObjectsOfCategory",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSetOfObjectsOfCategory",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSetOfObjectsOfCategory",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSetOfObjectsOfCategory",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `SumOfImagesOfAllMorphisms`.
 #! $F: ( arg2, arg3 ) \mapsto \mathtt{SumOfImagesOfAllMorphisms}(arg2, arg3)$.
 #! @Returns nothing

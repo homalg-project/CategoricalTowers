@@ -59,7 +59,7 @@ InstallMethod( CategoryFromNerveData,
                  CapJitDataTypeOfMorphismOfCategory( V ),
                  fail );
     
-    SetIsFinite( C, true );
+    SetIsFiniteCategory( C, true );
     
     for prop in input_record.properties do
         
@@ -130,6 +130,30 @@ InstallMethod( CategoryFromNerveData,
       function( C, mor )
         
         return MapOfMorphism( mor );
+        
+    end );
+    
+    ##
+    AddSetOfObjectsOfCategory( C,
+      function( C )
+        
+        return List( [ 0 .. Length( NerveData( C )[1][1] ) - 1 ], i -> CreateObject( C, i ) );
+        
+    end );
+    
+    ##
+    AddSetOfMorphismsOfFiniteCategory( C,
+      function( C )
+        
+        return List( [ 0 .. Length( NerveData( C )[1][2] ) - 1 ], i -> CreateMorphism( C, i ) );
+        
+    end );
+    
+    ##
+    AddSetOfGeneratingMorphismsOfCategory( C,
+     function( C )
+        
+        return List( IndicesOfGeneratingMorphisms( C ), i -> CreateMorphism( C, i ) );
         
     end );
     
@@ -558,6 +582,28 @@ InstallOtherMethod( CategoryFromNerveData,
 end );
 
 ##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a category from nerve data",
+        [ IsCategoryFromNerveData ],
+        
+  function( cat )
+    
+    return SetOfObjectsOfCategory( cat );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for a category from nerve data",
+        [ IsCategoryFromNerveData ],
+        
+  function( cat )
+    
+    return SetOfGeneratingMorphismsOfCategory( cat );
+    
+end );
+
+##
 InstallMethod( Size,
         "for a category from nerve data",
         [ IsCategoryFromNerveData ],
@@ -569,7 +615,7 @@ InstallMethod( Size,
 end );
 
 ##
-InstallMethod( CreateObject,
+InstallMethodForCompilerForCAP( CreateObject,
         "for a category from nerve data and an integer",
         [ IsCategoryFromNerveData, IsInt ],
         
@@ -601,7 +647,7 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethod( CreateMorphism,
+InstallMethodForCompilerForCAP( CreateMorphism,
         "for two objects in a category from nerve data and an integer",
         [ IsObjectInCategoryFromNerveData, IsInt, IsObjectInCategoryFromNerveData ],
         
@@ -627,7 +673,7 @@ InstallMethod( CreateMorphism,
 end );
 
 ##
-InstallMethod( CreateMorphism,
+InstallMethodForCompilerForCAP( CreateMorphism,
         "for a category from nerve data and an integer",
         [ IsCategoryFromNerveData, IsInt ],
         
@@ -667,39 +713,6 @@ InstallMethod( \.,
     fi;
     
     Error( "no object or morphism of name ", name, "\n" );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( SetOfObjects,
-        "for a category from nerve data",
-        [ IsCategoryFromNerveData ],
-        
-  function( C )
-    
-    return List( [ 0 .. Length( NerveData( C )[1][1] ) - 1 ], i -> CreateObject( C, i ) );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( SetOfMorphisms,
-        "for a category from data tables",
-        [ IsCategoryFromNerveData ],
-        
-  function( C )
-    
-    return List( [ 0 .. Length( NerveData( C )[1][2] ) - 1 ], i -> CreateMorphism( C, i ) );
-    
-end );
-
-##
-InstallMethod( SetOfGeneratingMorphisms,
-        "for a category from nerve data",
-        [ IsCategoryFromNerveData ],
-        
-  function( C )
-    
-    return List( IndicesOfGeneratingMorphisms( C ), i -> CreateMorphism( C, i ) );
     
 end );
 

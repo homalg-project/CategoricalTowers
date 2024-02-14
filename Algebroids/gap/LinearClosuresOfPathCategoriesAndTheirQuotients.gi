@@ -57,16 +57,29 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
     
     SetUnderlyingQuiver( kC, UnderlyingQuiver( C ) );
     
-    SetSetOfObjects( kC,
-          List( SetOfObjects( C ),
-                    o -> ObjectConstructor( kC, o ) ) );
+    AddSetOfObjectsOfCategory( kC,
+      function( kC )
+        local C;
+        
+        C := UnderlyingCategory( kC );
+        
+        return List( SetOfObjects( C ), o -> ObjectConstructor( kC, o ) );
+        
+    end );
     
-    SetSetOfGeneratingMorphisms( kC,
-          List( SetOfGeneratingMorphisms( C ),
-                    m -> MorphismConstructor( kC,
-                              SetOfObjects( kC )[ObjectIndex( Source( m ) )],
-                              Pair( [ One( UnderlyingRing( kC ) ) ], [ m ] ),
-                              SetOfObjects( kC )[ObjectIndex( Target( m ) )] ) ) );
+    AddSetOfGeneratingMorphismsOfCategory( kC,
+      function( kC )
+        local C;
+        
+        C := UnderlyingCategory( kC );
+        
+        return List( SetOfGeneratingMorphisms( C ), m ->
+                     MorphismConstructor( kC,
+                             SetOfObjects( kC )[ObjectIndex( Source( m ) )],
+                             Pair( [ One( UnderlyingRing( kC ) ) ], [ m ] ),
+                             SetOfObjects( kC )[ObjectIndex( Target( m ) )] ) );
+        
+    end );
     
     SetDefiningTripleOfUnderlyingQuiver( kC, DefiningTripleOfUnderlyingQuiver( C ) );
     ## this is a hotfix: delete as soon as we install all derivations at once in Finalize instead of the step-by-step addition of derivations in the Add-functions.
@@ -166,6 +179,28 @@ InstallOtherMethod( \[\],
   function ( k, C )
     
     return LinearClosure( k, C );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a linear closure category",
+        [ IsLinearClosure ],
+        
+  function( cat )
+    
+    return SetOfObjectsOfCategory( cat );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for a linear closure category",
+        [ IsLinearClosure ],
+        
+  function( cat )
+    
+    return SetOfGeneratingMorphismsOfCategory( cat );
     
 end );
 

@@ -41,6 +41,8 @@ InstallMethod( PathCategory,
     
     C!.admissible_order := admissible_order;
     
+    SetIsObjectFiniteCategory( C, true );
+    
     SetUnderlyingQuiver( C, q );
     
     SetDefiningTripleOfUnderlyingQuiver( C,
@@ -169,6 +171,33 @@ InstallMethod( PathCategory,
     end );
     
     ##
+    AddSetOfObjectsOfCategory( C,
+      function ( C )
+        
+        return List( [ 1 .. NumberOfObjects( UnderlyingQuiver( C ) ) ], obj_index ->
+                     CreateCapCategoryObjectWithAttributes( C, ObjectIndex, obj_index ) );
+        
+    end );
+    
+    ##
+    AddSetOfGeneratingMorphismsOfCategory( C,
+      function ( C )
+        local q, s, t;
+        
+        q := UnderlyingQuiver( C );
+        
+        s := IndicesOfSources( q );
+        t := IndicesOfTargets( q );
+        
+        return List( [ 1 .. NumberOfMorphisms( q ) ], mor ->
+                     MorphismConstructor( C,
+                             SetOfObjects( C )[s[mor]],
+                             Pair( BigInt( 1 ), [ mor ] ),
+                             SetOfObjects( C )[t[mor]] ) );
+        
+    end );
+    
+    ##
     AddRandomObjectByInteger( C,
       function ( C, n )
         
@@ -234,7 +263,7 @@ InstallMethod( PathCategory,
     
     if IsFinitePathCategory( C )  then
         
-        SetIsFinite( C, true );
+        SetIsFiniteCategory( C, true );
         
         SetIsEquippedWithHomomorphismStructure( C, true );
         
@@ -256,6 +285,28 @@ InstallMethod( PathCategory,
     Finalize( C );
     
     return C;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a path category",
+        [ IsPathCategory ],
+        
+  function( cat )
+    
+    return SetOfObjectsOfCategory( cat );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for a path category",
+        [ IsPathCategory ],
+        
+  function( cat )
+    
+    return SetOfGeneratingMorphismsOfCategory( cat );
     
 end );
 
@@ -346,37 +397,6 @@ InstallOtherMethod( ExternalHomsWithGivenLength,
               s -> LazyHList( [ 1 .. nr_objs ],
                       t -> Concatenation( List( [ l .. u ],
                               len -> ExternalHomsWithGivenLength( C, u + l - len )[s][t] ) ) ) );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( SetOfObjects,
-          [ IsPathCategory ],
-  
-  function ( C )
-    
-    return List( [ 1 .. NumberOfObjects( UnderlyingQuiver( C ) ) ], obj_index ->
-                 CreateCapCategoryObjectWithAttributes( C, ObjectIndex, obj_index ) );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
-          [ IsPathCategory ],
-  
-  function ( C )
-    local q, s, t;
-    
-    q := UnderlyingQuiver( C );
-    
-    s := IndicesOfSources( q );
-    t := IndicesOfTargets( q );
-    
-    return List( [ 1 .. NumberOfMorphisms( q ) ], mor ->
-                 MorphismConstructor( C,
-                         SetOfObjects( C )[s[mor]],
-                         Pair( BigInt( 1 ), [ mor ] ),
-                         SetOfObjects( C )[t[mor]] ) );
     
 end );
 

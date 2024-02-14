@@ -399,8 +399,8 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  create_func_morphism_or_fail := "default"
                  ) );
     
-    if ( HasIsFinite and IsFinite )( C ) then
-        SetIsFinite( P, true );
+    if ( HasIsFiniteCategory and IsFiniteCategory )( C ) then
+        SetIsFiniteCategory( P, true );
     fi;
     
     ADD_COMMON_METHODS_FOR_PREORDERED_SETS( P );
@@ -410,6 +410,32 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     ];
     
     SetAmbientCategory( P, C );
+    
+    if CanCompute( C, "SetOfObjectsOfCategory" ) then
+        
+        AddSetOfObjectsOfCategory( P,
+          function( cat )
+            
+            return List( SetOfObjects( AmbientCategory( cat ) ), o -> ObjectConstructor( cat, o ) );
+            
+        end );
+        
+    fi;
+
+    if CanCompute( C, "SetOfGeneratingMorphismsOfCategory" ) then
+        
+        AddSetOfGeneratingMorphismsOfCategory( P,
+          function( cat )
+            
+            return List( SetOfGeneratingMorphisms( AmbientCategory( cat ) ), m ->
+                         MorphismConstructor( cat,
+                                 ObjectConstructor( cat, Source( m ) ),
+                                 m,
+                                 ObjectConstructor( cat, Target( m ) ) ) );
+            
+        end );
+        
+    fi;
     
     if CanCompute( C, "IsWeakTerminal" ) then
         
@@ -533,6 +559,28 @@ InstallMethod( StablePosetOfCategory,
 end );
 
 ##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a proset or poset of a CAP category",
+        [ IsProsetOrPosetOfCapCategory ],
+        
+  function( cat )
+    
+    return SetOfObjectsOfCategory( cat );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for a proset or poset of a CAP category",
+        [ IsProsetOrPosetOfCapCategory ],
+        
+  function( cat )
+    
+    return SetOfGeneratingMorphismsOfCategory( cat );
+    
+end );
+
+##
 InstallMethod( \.,
         "for a proset or poset of a CAP category and a positive integer",
         [ IsProsetOrPosetOfCapCategory, IsPosInt ],
@@ -560,32 +608,6 @@ InstallMethod( \.,
     fi;
     
     Error( "<cell> is neither an object nor a morphism in the ambient category <C>" );
-    
-end );
-
-##
-InstallMethod( SetOfObjects,
-        "for a proset or poset of a CAP category",
-        [ IsProsetOrPosetOfCapCategory and IsFinite ],
-        
-  function( P )
-    
-    return List( SetOfObjects( AmbientCategory( P ) ), o -> ObjectConstructor( P, o ) );
-    
-end );
-
-##
-InstallMethod( SetOfGeneratingMorphisms,
-        "for a proset or poset of a CAP category",
-        [ IsProsetOrPosetOfCapCategory and IsFinite ],
-        
-  function( P )
-    
-    return List( SetOfGeneratingMorphisms( AmbientCategory( P ) ), m ->
-                 MorphismConstructor( P,
-                         ObjectConstructor( P, Source( m ) ),
-                         m,
-                         ObjectConstructor( P, Target( m ) ) ) );
     
 end );
 

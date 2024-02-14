@@ -752,6 +752,13 @@ InstallMethodWithCache( PreSheaves,
     
     PSh := CategoryConstructor( category_constructor_options );
     
+    if HasIsFiniteCategory( B ) and IsFiniteCategory( B ) and
+       HasIsFiniteCategory( D ) and IsFiniteCategory( D ) then
+        
+        SetIsFiniteCategory( PSh, true );
+        
+    fi;
+    
     SetSource( PSh, B );
     SetTarget( PSh, D );
     SetOppositeOfSource( PSh, B_op );
@@ -902,7 +909,7 @@ InstallMethodWithCache( PreSheaves,
             
             return """
                 function( input_arguments... )
-                    
+                  
                   return ObjectConstructor( cat, Pair( [ ], [ ] ) );
                   
                 end
@@ -941,6 +948,14 @@ InstallMethodWithCache( PreSheaves,
     
     SetSource( T, B );
     SetTarget( T, D );
+    
+    ##
+    AddSetOfObjectsOfCategory( T,
+      function( T )
+        
+        return [ TerminalObject( T ) ];
+        
+    end );
     
     ##
     AddIsWellDefinedForObjects( T,

@@ -457,12 +457,12 @@ InstallMethodWithCache( FunctorCategory,
         B_op := OppositeCategoryFromNerveData( B : FinalizeCategory := true );
     elif IsCategoryFromDataTables( B ) then
         B_op := OppositeCategoryFromDataTables( B : FinalizeCategory := true );
-    elif HasIsFinite( B ) and IsFinite( B ) then
+    elif HasIsInitialCategory( B ) and IsInitialCategory( B ) then
+        B_op := Opposite( B : FinalizeCategory := true );
+    elif HasIsFiniteCategory( B ) and IsFiniteCategory( B ) then
         B_op := OppositeFiniteCategory( B : FinalizeCategory := true );
     elif IsAlgebroid( B ) or IsAlgebroidFromDataTables( B ) then
         B_op := OppositeAlgebroid( B : FinalizeCategory := true );
-    elif HasIsInitialCategory( B ) and IsInitialCategory( B ) then
-        B_op := Opposite( B : FinalizeCategory := true );
     else
         Error( "the first argument must be in { IsFpCategory, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsInitialCategory, IsAlgebroid }\n" );
     fi;
@@ -668,16 +668,11 @@ InstallMethodWithCache( FunctorCategory,
     SetSource( Hom, B );
     SetTarget( Hom, D );
     
-    SetSetOfObjects( Hom, SetOfObjects( B ) );
-    SetSetOfGeneratingMorphisms( Hom, SetOfGeneratingMorphisms( B ) );
-    
     SetOppositeOfSource( Hom, B_op );
     
     Append( Hom!.compiler_hints.category_attribute_names,
             [ "Source",
               "Target",
-              "SetOfObjects",
-              "SetOfGeneratingMorphisms",
               "OppositeOfSource",
               ] );
     
@@ -968,7 +963,7 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( YonedaFibration,
-        [ IsCapCategory and IsFinite ],
+        [ IsCapCategory and IsFiniteCategory ],
         
   function ( B )
     local Hom, Yepis, H, N0, N1;

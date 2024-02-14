@@ -37,6 +37,7 @@ Display( PSh );
 #! * IsCodistributiveCategory
 #! * IsDistributiveCategory
 #! and not yet algorithmically
+#! * IsFiniteCategory
 #! * IsBicartesianClosedCategory
 #! * IsBicartesianCoclosedCategory
 f := PSh.f;

@@ -372,6 +372,66 @@ end
         
     , 100 );
     
+    ##
+    AddSetOfGeneratingMorphismsOfCategory( cat,
+        
+########
+function ( cat_1 )
+    local hoisted_1_1, deduped_3_1, deduped_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
+    deduped_8_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    deduped_7_1 := NerveData( cat_1 );
+    deduped_6_1 := deduped_7_1[2];
+    hoisted_5_1 := deduped_6_1[3];
+    deduped_4_1 := deduped_7_1[1][1];
+    deduped_3_1 := CreateCapCategoryObjectWithAttributes( deduped_8_1, Length, BigInt( 1 ) );
+    hoisted_1_1 := deduped_6_1[2];
+    return List( IndicesOfGeneratingMorphisms( cat_1 ), function ( i_2 )
+            return CreateMorphism( CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_8_1, deduped_3_1, deduped_4_1, AsList, [ hoisted_1_1( i_2 ) ] ) ), i_2, CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_8_1, deduped_3_1, deduped_4_1, AsList, [ hoisted_5_1( i_2 ) ] ) ) );
+        end );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddSetOfMorphismsOfFiniteCategory( cat,
+        
+########
+function ( cat_1 )
+    local hoisted_1_1, deduped_3_1, deduped_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
+    deduped_9_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    deduped_8_1 := NerveData( cat_1 );
+    deduped_7_1 := deduped_8_1[2];
+    deduped_6_1 := deduped_8_1[1];
+    hoisted_5_1 := deduped_7_1[3];
+    deduped_4_1 := deduped_6_1[1];
+    deduped_3_1 := CreateCapCategoryObjectWithAttributes( deduped_9_1, Length, BigInt( 1 ) );
+    hoisted_1_1 := deduped_7_1[2];
+    return List( [ 0 .. Length( deduped_6_1[2] ) - 1 ], function ( i_2 )
+            return CreateMorphism( CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_9_1, deduped_3_1, deduped_4_1, AsList, [ hoisted_1_1( i_2 ) ] ) ), i_2, CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_9_1, deduped_3_1, deduped_4_1, AsList, [ hoisted_5_1( i_2 ) ] ) ) );
+        end );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddSetOfObjectsOfCategory( cat,
+        
+########
+function ( cat_1 )
+    local hoisted_2_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    deduped_4_1 := NerveData( cat_1 )[1][1];
+    hoisted_2_1 := CreateCapCategoryObjectWithAttributes( deduped_5_1, Length, BigInt( 1 ) );
+    return List( [ 0 .. Length( deduped_4_1 ) - 1 ], function ( i_2 )
+            return CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_5_1, hoisted_2_1, deduped_4_1, AsList, [ i_2 ] ) );
+        end );
+end
+########
+        
+    , 100 );
+    
     if IsBound( cat!.precompiled_functions_added ) then
         
         # COVERAGE_IGNORE_NEXT_LINE

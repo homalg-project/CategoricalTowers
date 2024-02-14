@@ -145,7 +145,10 @@ InstallMethod( QuotientCategory,
         commutative_ring := fail;
     fi;
     
-    properties := [ "IsCocartesianCategory",
+    properties := [ "IsObjectFiniteCategory",
+                    "IsFinitelyPresentedCategory",
+                    "IsFiniteCategory",
+                    "IsCocartesianCategory",
                     "IsCartesianCategory",
                     "IsAbCategory",
                     "IsLinearCategoryOverCommutativeRing",
@@ -285,10 +288,24 @@ InstallMethod( QuotientCategory,
                    create_func_morphism := create_func_morphism ) );
     
     SetUnderlyingCategory( quotient_cat, cat );
+    
+    ##
+    AddSetOfObjectsOfCategory( quotient_cat,
+      function( cat )
+        local ambient_cat, objects;
+        
+        ambient_cat := UnderlyingCategory( cat );
+        
+        objects := SetOfObjects( ambient_cat );
+        
+        return List( objects, o -> ObjectConstructor( cat, o ) );
+        
+    end );
+    
     SetQuotientCategoryCongruenceFunction( quotient_cat, record.congruence_function );
     
     if commutative_ring <> fail then
-          SetCommutativeRingOfLinearCategory( quotient_cat, commutative_ring );
+        SetCommutativeRingOfLinearCategory( quotient_cat, commutative_ring );
     fi;
     
     AddIsCongruentForMorphisms( quotient_cat,
@@ -429,6 +446,17 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
         end );
         
     fi;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a quotient category",
+        [ IsQuotientCapCategory ],
+        
+  function( cat )
+    
+    return SetOfObjectsOfCategory( cat );
     
 end );
 
