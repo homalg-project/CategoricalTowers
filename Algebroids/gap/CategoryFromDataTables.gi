@@ -54,7 +54,7 @@ InstallMethod( CategoryFromDataTables,
                  IsBigInt,
                  fail );
     
-    SetIsFinite( C, true );
+    SetIsFiniteCategory( C, true );
     
     for prop in input_record.properties do
         
@@ -148,6 +148,39 @@ InstallMethod( CategoryFromDataTables,
     end );
     
     ##
+    AddSetOfObjectsOfCategory( C,
+      function( C )
+        local C0;
+        
+        C0 :=  DataTables( C )[1][1];
+        
+        return List( [ 0 .. C0 - 1 ], i -> CreateObject( C, i ) );
+        
+    end );
+    
+    ##
+    AddSetOfMorphismsOfFiniteCategory( C,
+      function( C )
+        local C1;
+        
+        C1 := DataTables( C )[1][2];
+        
+        return List( [ 0 .. C1 - 1 ], i -> CreateMorphism( C, i ) );
+        
+    end );
+    
+    ##
+    AddSetOfGeneratingMorphismsOfCategory( C,
+      function( C )
+        local mors;
+        
+        mors := SetOfMorphismsOfFiniteCategory( C );
+        
+        return List( IndicesOfGeneratingMorphisms( C ), i -> mors[1 + i] );
+        
+    end );
+    
+    ##
     AddIsWellDefinedForObjects( C,
       function( C, obj )
         local C0, obj_index;
@@ -208,7 +241,7 @@ InstallMethod( CategoryFromDataTables,
         
         o := ObjectDatum( C, obj );
         
-        return SetOfMorphisms( C )[1 + DataTables( C )[2][1][1 + o]];
+        return SetOfMorphismsOfFiniteCategory( C )[1 + DataTables( C )[2][1][1 + o]];
         
     end );
     
@@ -220,7 +253,7 @@ InstallMethod( CategoryFromDataTables,
         m1 := MorphismDatum( C, mor_1 );
         m2 := MorphismDatum( C, mor_2 );
         
-        return SetOfMorphisms( C )[1 + DataTables( C )[2][4][1 + m1][1 + m2]];
+        return SetOfMorphismsOfFiniteCategory( C )[1 + DataTables( C )[2][4][1 + m1][1 + m2]];
         
     end );
     
@@ -288,7 +321,7 @@ InstallMethod( CategoryFromDataTables,
         
         m := AsList( mor )[1 + 0];
         
-        return SetOfMorphisms( C )[1 + DataTables( C )[2][8][1 + o1][1 + o2][1 + m]];
+        return SetOfMorphismsOfFiniteCategory( C )[1 + DataTables( C )[2][8][1 + o1][1 + o2][1 + m]];
         
     end );
     
@@ -340,6 +373,28 @@ InstallMethod( CategoryFromDataTables,
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := C!.labels,
                         properties := ListKnownCategoricalProperties( C ) ) );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a category from data tabels",
+        [ IsCategoryFromDataTables ],
+        
+  function( cat )
+    
+    return SetOfObjectsOfCategory( cat );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for a category from data tabels",
+        [ IsCategoryFromDataTables ],
+        
+  function( cat )
+    
+    return SetOfGeneratingMorphismsOfCategory( cat );
     
 end );
 
@@ -442,48 +497,6 @@ InstallMethod( \.,
     fi;
     
     Error( "no object or morphism of name ", name, "\n" );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( SetOfObjects,
-        "for a category from data tables",
-        [ IsCategoryFromDataTables ],
-        
-  function( C )
-    local C0;
-    
-    C0 :=  DataTables( C )[1][1];
-    
-    return List( [ 0 .. C0 - 1 ], i -> CreateObject( C, i ) );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( SetOfMorphisms,
-        "for a category from data tables",
-        [ IsCategoryFromDataTables ],
-        
-  function( C )
-    local C1;
-    
-    C1 := DataTables( C )[1][2];
-    
-    return List( [ 0 .. C1 - 1 ], i -> CreateMorphism( C, i ) );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
-        "for a category from data tables",
-        [ IsCategoryFromDataTables ],
-        
-  function( C )
-    local mors;
-    
-    mors := SetOfMorphisms( C );
-    
-    return List( IndicesOfGeneratingMorphisms( C ), i -> mors[1 + i] );
     
 end );
 

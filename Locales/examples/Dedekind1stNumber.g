@@ -14,8 +14,9 @@ IntervalCategory;
 Display( IntervalCategory );
 #! A CAP category with name IntervalCategory:
 #! 
-#! 19 primitive operations were used to derive 324 operations for this category
+#! 21 primitive operations were used to derive 327 operations for this category
 #!  which algorithmically
+#! * IsFiniteCategory
 #! * IsEquippedWithHomomorphismStructure
 #! * IsBooleanAlgebra
 SetOfObjects( IntervalCategory );
@@ -35,6 +36,7 @@ Display( PSh );
 #! * IsCodistributiveCategory
 #! * IsDistributiveCategory
 #! and not yet algorithmically
+#! * IsFiniteCategory
 #! * IsBicartesianClosedCategory
 #! * IsBicartesianCoclosedCategory
 Y := YonedaEmbeddingOfSourceCategory( PSh );

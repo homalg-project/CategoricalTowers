@@ -29,7 +29,7 @@ InstallGlobalFunction( "CreateIntervalCategory",
            [ "DefiningTripleOfUnderlyingQuiver",
              ] );
     
-    SetIsFinite( IntervalCategory, true );
+    SetIsFiniteCategory( IntervalCategory, true );
     
     SetIsBooleanAlgebra( IntervalCategory, true );
     
@@ -136,6 +136,24 @@ InstallGlobalFunction( "CreateIntervalCategory",
     end );
     
     ##
+    AddSetOfObjectsOfCategory( IntervalCategory,
+      function( cat )
+        
+        return [ InitialObject( cat ), TerminalObject( cat ) ];
+        
+    end );
+    
+    ##
+    AddSetOfGeneratingMorphismsOfCategory( IntervalCategory,
+      function( cat )
+        
+        return [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat,
+                       InitialObject( cat ),
+                       TerminalObject( cat ) ) ];
+        
+    end );
+    
+    ##
     AddCoproduct( IntervalCategory,
       function( cat, L )
         
@@ -217,9 +235,9 @@ InstallMethodForCompilerForCAP( SetOfObjects,
         "for an interval category",
         [ IsIntervalCategory ],
         
-  function( interval_category )
+  function( cat )
     
-    return [ InitialObject( interval_category ), TerminalObject( interval_category ) ];
+    return SetOfObjectsOfCategory( cat );
     
 end );
 
@@ -228,11 +246,9 @@ InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
         "for an interval category",
         [ IsIntervalCategory ],
         
-  function( interval_category )
+  function( cat )
     
-    return [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( interval_category,
-                   InitialObject( interval_category ),
-                   TerminalObject( interval_category ) ) ];
+    return SetOfGeneratingMorphismsOfCategory( cat );
     
 end );
 

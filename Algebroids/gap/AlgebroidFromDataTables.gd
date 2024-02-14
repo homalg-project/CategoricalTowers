@@ -105,34 +105,6 @@ DeclareAttribute( "CategoryDatum",
 
 #! @Description
 #!  The argument is an algebroid <A>A</A>.
-#!  The output is the finite set of objects of <A>A</A>.
-#! @Arguments A
-#! @Returns a list of &CAP; category objects
-DeclareAttribute( "SetOfObjects", IsAlgebroidFromDataTables );
-
-CapJitAddTypeSignature( "SetOfObjects", [ IsAlgebroidFromDataTables ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
-    
-end );
-
-#! @Description
-#!  The argument is an algebroid <A>A</A>.
-#!  The output is the finite set of generating morphisms of <A>A</A>.
-#! @Arguments A
-#! @Returns a list of a &CAP; category morphisms
-DeclareAttribute( "SetOfGeneratingMorphisms", IsAlgebroidFromDataTables );
-
-CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsAlgebroidFromDataTables ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
-    
-end );
-
-#! @Description
-#!  The argument is an algebroid <A>A</A>.
 #!  The output is a list of lists $L$ where $L[i][j]$ is the basis of the external hom $\mathrm{Hom}_B(u,v)$ where $u$ and $v$ are $i$'th resp. $j$'th objects in $A$.
 #! @Arguments A
 #! @Returns a list of lists

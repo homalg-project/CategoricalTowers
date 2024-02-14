@@ -82,8 +82,8 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_35_1 := deduped_39_1[1];
     deduped_34_1 := deduped_40_1[2];
     deduped_33_1 := deduped_39_1[2];
-    deduped_32_1 := SetOfObjects( deduped_38_1 );
-    deduped_31_1 := SetOfGeneratingMorphisms( deduped_38_1 );
+    deduped_32_1 := SetOfObjectsAsUnresolvableAttribute( deduped_38_1 );
+    deduped_31_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_38_1 );
     deduped_30_1 := Length( deduped_32_1 );
     deduped_29_1 := [ 1 .. deduped_30_1 ];
     deduped_28_1 := [ 1 .. Length( deduped_31_1 ) ];
@@ -187,8 +187,8 @@ function ( cat_1, arg2_1 )
     deduped_21_1 := CommutativeRingOfLinearCategory( cat_1 );
     deduped_20_1 := ValuesOfPreSheaf( Target( arg2_1 ) );
     deduped_19_1 := ValuesOfPreSheaf( Source( arg2_1 ) );
-    deduped_18_1 := SetOfObjects( deduped_22_1 );
-    deduped_17_1 := SetOfGeneratingMorphisms( deduped_22_1 );
+    deduped_18_1 := SetOfObjectsAsUnresolvableAttribute( deduped_22_1 );
+    deduped_17_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_22_1 );
     deduped_16_1 := deduped_20_1[2];
     deduped_15_1 := deduped_19_1[2];
     deduped_14_1 := [ 1 .. Length( deduped_17_1 ) ];
@@ -985,8 +985,8 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_35_1 := ValuesOfPreSheaf( Source( alpha_1 ) );
     deduped_34_1 := ValuesOfPreSheaf( Source( beta_1 ) );
     deduped_33_1 := ValuesOfPreSheaf( Target( alpha_1 ) );
-    deduped_32_1 := SetOfObjects( deduped_39_1 );
-    deduped_31_1 := SetOfGeneratingMorphisms( deduped_39_1 );
+    deduped_32_1 := SetOfObjectsAsUnresolvableAttribute( deduped_39_1 );
+    deduped_31_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_39_1 );
     deduped_30_1 := deduped_36_1[2];
     deduped_29_1 := deduped_35_1[2];
     deduped_28_1 := deduped_34_1[2];
@@ -1102,8 +1102,8 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_22_1 := Source( cat_1 );
     deduped_21_1 := deduped_25_1[2];
     deduped_20_1 := deduped_24_1[2];
-    deduped_19_1 := SetOfGeneratingMorphisms( deduped_22_1 );
-    deduped_18_1 := SetOfObjects( deduped_22_1 );
+    deduped_19_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_22_1 );
+    deduped_18_1 := SetOfObjectsAsUnresolvableAttribute( deduped_22_1 );
     deduped_17_1 := [ 1 .. Length( deduped_19_1 ) ];
     deduped_16_1 := [ 1 .. Length( deduped_18_1 ) ];
     hoisted_4_1 := List( deduped_21_1, function ( logic_new_func_x_2 )
@@ -1350,8 +1350,8 @@ function ( cat_1, alpha_1 )
     deduped_22_1 := Target( cat_1 );
     deduped_21_1 := ValuesOfPreSheaf( Target( alpha_1 ) );
     deduped_20_1 := ValuesOfPreSheaf( Source( alpha_1 ) );
-    deduped_19_1 := SetOfObjects( deduped_24_1 );
-    deduped_18_1 := SetOfGeneratingMorphisms( deduped_24_1 );
+    deduped_19_1 := SetOfObjectsAsUnresolvableAttribute( deduped_24_1 );
+    deduped_18_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_24_1 );
     deduped_17_1 := deduped_21_1[2];
     deduped_16_1 := deduped_20_1[2];
     deduped_15_1 := [ 1 .. Length( deduped_18_1 ) ];
@@ -1417,12 +1417,12 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_32_1 := ValuesOfPreSheaf( range_1 );
     deduped_31_1 := ValuesOfPreSheaf( source_1 );
     deduped_30_1 := Source( cat_1 );
-    deduped_29_1 := SetOfGeneratingMorphisms( deduped_30_1 );
+    deduped_29_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_30_1 );
     deduped_28_1 := deduped_32_1[2];
     deduped_27_1 := deduped_31_1[2];
     deduped_26_1 := deduped_32_1[1];
     deduped_25_1 := deduped_31_1[1];
-    deduped_24_1 := SetOfObjects( deduped_30_1 );
+    deduped_24_1 := SetOfObjectsAsUnresolvableAttribute( deduped_30_1 );
     deduped_23_1 := Length( deduped_24_1 );
     deduped_22_1 := [ 1 .. Length( deduped_29_1 ) ];
     deduped_21_1 := [ 1 .. deduped_23_1 ];
@@ -1514,7 +1514,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return ForAll( SetOfObjects( Source( cat_1 ) ), function ( object_2 )
+    return ForAll( SetOfObjectsAsUnresolvableAttribute( Source( cat_1 ) ), function ( object_2 )
             return IsZero( DecideZeroColumns( UnderlyingMatrix( arg3_1( object_2 ) ), UnderlyingMatrix( arg2_1( object_2 ) ) ) );
         end );
 end
@@ -1527,7 +1527,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return ForAll( SetOfObjects( cat_1 ), function ( o_2 )
+    return ForAll( SetOfObjectsAsUnresolvableAttribute( Source( cat_1 ) ), function ( o_2 )
             return UnderlyingMatrix( arg2_1( o_2 ) ) = UnderlyingMatrix( arg3_1( o_2 ) );
         end );
 end
@@ -1540,9 +1540,11 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return ForAll( SetOfObjects( cat_1 ), function ( o_2 )
+    local deduped_1_1;
+    deduped_1_1 := Source( cat_1 );
+    return ForAll( SetOfObjectsAsUnresolvableAttribute( deduped_1_1 ), function ( o_2 )
               return RankOfObject( arg2_1( o_2 ) ) = RankOfObject( arg3_1( o_2 ) );
-          end ) and ForAll( SetOfGeneratingMorphisms( cat_1 ), function ( m_2 )
+          end ) and ForAll( SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_1_1 ), function ( m_2 )
               return UnderlyingMatrix( arg2_1( m_2 ) ) = UnderlyingMatrix( arg3_1( m_2 ) );
           end );
 end
@@ -1555,7 +1557,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return ForAll( SetOfObjects( Source( cat_1 ) ), function ( object_2 )
+    return ForAll( SetOfObjectsAsUnresolvableAttribute( Source( cat_1 ) ), function ( object_2 )
             return IsZero( DecideZeroRows( UnderlyingMatrix( arg3_1( object_2 ) ), UnderlyingMatrix( arg2_1( object_2 ) ) ) );
         end );
 end
@@ -1568,10 +1570,11 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local hoisted_1_1, hoisted_2_1;
+    local hoisted_1_1, hoisted_2_1, deduped_3_1;
+    deduped_3_1 := Source( cat_1 );
     hoisted_2_1 := Target( alpha_1 );
     hoisted_1_1 := Source( alpha_1 );
-    return ForAll( SetOfObjects( cat_1 ), function ( o_2 )
+    return ForAll( SetOfObjectsAsUnresolvableAttribute( deduped_3_1 ), function ( o_2 )
               local deduped_1_2, deduped_2_2;
               deduped_2_2 := alpha_1( o_2 );
               deduped_1_2 := UnderlyingMatrix( deduped_2_2 );
@@ -1585,7 +1588,7 @@ function ( cat_1, alpha_1 )
                   return true;
               fi;
               return;
-          end ) and ForAll( SetOfGeneratingMorphisms( cat_1 ), function ( m_2 )
+          end ) and ForAll( SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_3_1 ), function ( m_2 )
               local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2;
               deduped_4_2 := hoisted_2_1( m_2 );
               deduped_3_2 := hoisted_1_1( m_2 );

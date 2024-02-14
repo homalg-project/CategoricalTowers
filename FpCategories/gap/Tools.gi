@@ -5,6 +5,36 @@
 #
 
 ##
+InstallTrueMethod( IsObjectFiniteCategory, IsFinitelyPresentedCategory );
+
+##
+InstallMethod( SetOfGeneratingMorphisms,
+        [ IsInitialCategory ],
+        
+  function( I )
+    
+    return [ ];
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for a quotient category",
+        [ IsQuotientCapCategory ],
+        
+  function( cat )
+    
+    return SetOfGeneratingMorphismsOfCategory( cat );
+    
+end );
+
+##
+InstallMethod( SetOfGeneratingMorphismsAsUnresolvableAttribute,
+        [ IsCapCategory ],
+        
+  SetOfGeneratingMorphismsOfCategory );
+
+##
 InstallOtherMethod( Size,
         "for a CAP category",
         [ IsCapCategory and HasSetOfObjects and HasRangeCategoryOfHomomorphismStructure ],

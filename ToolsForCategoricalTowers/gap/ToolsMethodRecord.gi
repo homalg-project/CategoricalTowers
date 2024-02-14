@@ -4,7 +4,19 @@
 # Implementations
 #
 
-InstallValue( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD, rec(
+BindGlobal( "CATEGORICAL_TOWERS_METHOD_NAME_RECORD", rec(
+
+SetOfObjectsOfCategory := rec(
+  filter_list := [ "category" ],
+  return_type := "list_of_objects",
+  dual_operation := "SetOfObjectsOfCategory",
+),
+
+SetOfMorphismsOfFiniteCategory := rec(
+  filter_list := [ "category" ],
+  return_type := "list_of_morphisms",
+  dual_operation := "SetOfMorphismsOfFiniteCategory",
+),
 
 MorphismBetweenCoproducts := rec(
   filter_list := [ "category", "list_of_objects", "list_of_integers_and_list_of_morphisms", "list_of_objects" ],
@@ -587,16 +599,16 @@ UniversalMorphismFromColimitWithGivenColimit := rec(
 
 ) );
 
-CAP_INTERNAL_ENHANCE_NAME_RECORD( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD );
+CAP_INTERNAL_ENHANCE_NAME_RECORD( CATEGORICAL_TOWERS_METHOD_NAME_RECORD );
 
 CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
-    CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD,
+    CATEGORICAL_TOWERS_METHOD_NAME_RECORD,
     "ToolsForCategoricalTowers",
     "Tools.autogen.gd",
     "Futher CAP operations",
     "Add-methods"
 );
 
-CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD, "ToolsForCategoricalTowers" );
+CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( CATEGORICAL_TOWERS_METHOD_NAME_RECORD, "ToolsForCategoricalTowers" );
 
-CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD );
+CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( CATEGORICAL_TOWERS_METHOD_NAME_RECORD );

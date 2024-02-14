@@ -311,7 +311,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, commutative_ring,
           properties, supports_empty_limits, prop, option_record,
-          PSh, objects, generating_morphisms, H, auxiliary_indices;
+          PSh, H, auxiliary_indices;
     
     if IsFpCategory( B ) then
         B_op := OppositeFpCategory( B : FinalizeCategory := true );
@@ -326,7 +326,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         B_op := OppositeCategoryFromNerveData( B : FinalizeCategory := true );
     elif IsCategoryFromDataTables( B ) then
         B_op := OppositeCategoryFromDataTables( B : FinalizeCategory := true );
-    elif HasIsFinite( B ) and IsFinite( B ) then
+    elif HasIsFiniteCategory( B ) and IsFiniteCategory( B ) then
         B_op := OppositeFiniteCategory( B : FinalizeCategory := true );
     elif IsAlgebroid( B ) then
         B_op := OppositeAlgebroid( B : FinalizeCategory := true );
@@ -385,7 +385,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
        IsCategoryFromNerveData( B ) or
        IsCategoryFromDataTables( B ) or
-       (HasIsFinite and IsFinite)( B ) or
+       (HasIsFiniteCategory and IsFiniteCategory)( B ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) or
        IsAlgebroidFromDataTables( B ) then
         
@@ -776,11 +776,12 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     PSh := CategoryConstructor( option_record );
     
-    objects := SetOfObjects( B );
-    generating_morphisms := SetOfGeneratingMorphisms( B );
-    
-    SetSetOfObjects( PSh, objects );
-    SetSetOfGeneratingMorphisms( PSh, generating_morphisms );
+    if HasIsFiniteCategory( B ) and IsFiniteCategory( B ) and
+       HasIsFiniteCategory( D ) and IsFiniteCategory( D ) then
+        
+        SetIsFiniteCategory( PSh, true );
+        
+    fi;
     
     SetSource( PSh, B );
     SetTarget( PSh, D );
@@ -789,8 +790,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     PSh!.compiler_hints.category_attribute_names :=
       [ "Source",
         "Target",
-        "SetOfObjects",
-        "SetOfGeneratingMorphisms",
         "OppositeOfSource",
         ];
     
@@ -860,9 +859,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( PSh,
           function ( PSh, r, eta )
-            local B, D, eta_o_vals, natural_transformation_on_objects;
+            local D, eta_o_vals, natural_transformation_on_objects;
             
-            B := Source( PSh );
             D := Target( PSh );
             
             eta_o_vals := ValuesOnAllObjects( eta );
@@ -883,15 +881,19 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
        IsCategoryFromNerveData( B ) or
        IsCategoryFromDataTables( B ) or
-       (HasIsFinite and IsFinite)( B ) or
+       (HasIsFiniteCategory and IsFiniteCategory)( B ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) or
        IsAlgebroidFromDataTables( B ) then
         
         AddIsWellDefinedForMorphisms( PSh,
           function ( PSh, eta )
-            local D, F, G;
+            local B, D, objects, generating_morphisms, F, G;
             
+            B := Source( PSh );
             D := Target( PSh );
+            
+            objects := SetOfObjects( B );
+            generating_morphisms := SetOfGeneratingMorphisms( B );
             
             F := Source( eta );
             G := Target( eta );
@@ -919,9 +921,13 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             AddIsWellDefinedForObjects( PSh,
               function ( PSh, F )
-                local D;
+                local B, D, objects, generating_morphisms;
                 
+                B := Source( PSh );
                 D := Target( PSh );
+                
+                objects := SetOfObjects( B );
+                generating_morphisms := SetOfGeneratingMorphisms( B );
                 
                 if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
                     return false;
@@ -943,9 +949,13 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             AddIsWellDefinedForObjects( PSh,
               function ( PSh, F )
-                local D;
+                local B, D, objects, generating_morphisms;
                 
+                B := Source( PSh );
                 D := Target( PSh );
+                
+                objects := SetOfObjects( B );
+                generating_morphisms := SetOfGeneratingMorphisms( B );
                 
                 if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
                     return false;
@@ -967,10 +977,13 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
 
             AddIsWellDefinedForObjects( PSh,
               function ( PSh, F )
-                local B, D, pairs;
+                local B, D, objects, generating_morphisms, pairs;
                 
                 B := Source( PSh );
                 D := Target( PSh );
+                
+                objects := SetOfObjects( B );
+                generating_morphisms := SetOfGeneratingMorphisms( B );
                 
                 if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
                     return false;
@@ -995,20 +1008,21 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             AddIsWellDefinedForObjects( PSh,
               function ( PSh, F )
-                local V, objects, generating_morphisms, relations, on_mors, is_equal;
+                local B, D, objects, generating_morphisms, relations, on_mors, is_equal;
                 
-                V := Target( PSh );
+                B := Source( PSh );
+                D := Target( PSh );
                 
                 objects := SetOfObjects( B );
                 generating_morphisms := SetOfGeneratingMorphisms( B );
                 
-                if not ForAll( objects, o -> IsWellDefinedForObjects( V, F( o ) ) ) then
+                if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( V, F( m ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( V, F( Target( m ) ), Source( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
                     return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( V, F( Source( m ) ), Target( F( m ) ) ) ) then
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
                     return false;
                 fi;
                 
@@ -1022,14 +1036,14 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     if IsEmpty( pair[1] ) and IsEmpty( pair[2] ) then
                         Error( "both lists in the relation are empty\n" );
                     elif IsEmpty( pair[2] ) then
-                        return IsOne( PreComposeList( V, List( Reversed( pair[1] ), i -> on_mors[1 + i] ) ) );
+                        return IsOne( PreComposeList( D, List( Reversed( pair[1] ), i -> on_mors[1 + i] ) ) );
                     elif IsEmpty( pair[1] ) then
-                        return IsOne( PreComposeList( V, List( Reversed( pair[2] ), i -> on_mors[1 + i] ) ) );
+                        return IsOne( PreComposeList( D, List( Reversed( pair[2] ), i -> on_mors[1 + i] ) ) );
                     fi;
                     
-                    return IsCongruentForMorphisms( V,
-                                   PreComposeList( V, List( Reversed( pair[1] ), i -> on_mors[1 + i] ) ),
-                                   PreComposeList( V, List( Reversed( pair[2] ), i -> on_mors[1 + i] ) ) );
+                    return IsCongruentForMorphisms( D,
+                                   PreComposeList( D, List( Reversed( pair[1] ), i -> on_mors[1 + i] ) ),
+                                   PreComposeList( D, List( Reversed( pair[2] ), i -> on_mors[1 + i] ) ) );
                     
                 end;
                 
@@ -1041,9 +1055,13 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
         AddIsEqualForObjects( PSh,
           function ( PSh, F, G )
-            local D;
+            local B, D, objects, generating_morphisms;
             
+            B := Source( PSh );
             D := Target( PSh );
+            
+            objects := SetOfObjects( B );
+            generating_morphisms := SetOfGeneratingMorphisms( B );
             
             return ForAll( objects, o -> IsEqualForObjects( D, F( o ), G( o ) ) ) and
                    ForAll( generating_morphisms, m -> IsEqualForMorphisms( D, F( m ), G( m ) ) );
@@ -1052,9 +1070,12 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
         AddIsEqualForMorphisms( PSh,
           function ( PSh, eta, epsilon )
-            local D;
+            local B, D, objects;
             
+            B := Source( PSh );
             D := Target( PSh );
+            
+            objects := SetOfObjects( B );
             
             return ForAll( objects, o -> IsEqualForMorphisms( D, eta( o ), epsilon( o ) ) );
             
@@ -1062,9 +1083,12 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
         AddIsCongruentForMorphisms( PSh,
           function ( PSh, eta, epsilon )
-            local D;
+            local B, D, objects;
             
+            B := Source( PSh );
             D := Target( PSh );
+            
+            objects := SetOfObjects( B );
             
             return ForAll( objects, o -> IsCongruentForMorphisms( D, eta( o ), epsilon( o ) ) );
             
@@ -2198,7 +2222,7 @@ InstallMethodWithCache( PreSheaves,
             
             return """
                 function( input_arguments... )
-                    
+                  
                   return ObjectConstructor( cat, Pair( [ ], [ ] ) );
                   
                 end
@@ -2236,6 +2260,14 @@ InstallMethodWithCache( PreSheaves,
     
     SetSource( T, B );
     SetTarget( T, D );
+    
+    ##
+    AddSetOfObjectsOfCategory( T,
+      function( T )
+        
+        return [ TerminalObject( T ) ];
+        
+    end );
     
     ##
     AddIsWellDefinedForObjects( T,
@@ -4147,6 +4179,7 @@ InstallOtherMethodForCompilerForCAP( SievesOfPathsToTruth,
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     D := DistinguishedObjectOfHomomorphismStructure( B );

@@ -97,34 +97,6 @@ CapJitAddTypeSignature( "UnderlyingQuiver", [ IsPathCategory ],
 end );
 
 #! @Description
-#!  Returns the set of objects of <A>C</A>.
-#! @Arguments C
-#! @Returns a list of &CAP; category objects
-DeclareAttribute( "SetOfObjects", IsPathCategory );
-
-CapJitAddTypeSignature( "SetOfObjects", [ IsPathCategory ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfListOf(
-                   CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
-    
-end );
-
-#! @Description
-#!  Returns the set of generating morphisms of <A>C</A>.
-#! @Arguments C
-#! @Returns a list of &CAP; category morphisms
-DeclareAttribute( "SetOfGeneratingMorphisms", IsPathCategory );
-
-CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsPathCategory ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfListOf(
-                   CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
-    
-end );
-
-#! @Description
 #!  Returns the index of the object <A>v</A>.
 #! @Arguments v
 #! @Returns a positive integer

@@ -45,7 +45,7 @@ DeclareCategory( "IsMorphismInFunctorCategory",
 ####################################
 
 #! @Description
-#!  The source category of the functor category <A>cat</A>.
+#!  The source category of the functor category <A>Hom</A>.
 #! @Arguments Hom
 #! @Returns a &CAP; category
 DeclareAttribute( "Source",
@@ -59,7 +59,7 @@ CapJitAddTypeSignature( "Source", [ IsFunctorCategory ],
 end );
 
 #! @Description
-#!  The target category of the functor category <A>cat</A>.
+#!  The target category of the functor category <A>Hom</A>.
 #! @Arguments Hom
 #! @Returns a &CAP; category
 DeclareAttribute( "Target",

@@ -25,7 +25,7 @@ end );
 ##
 InstallMethod( IndicesOfGeneratingMorphismsFromHomStructure,
         "for a finite category",
-        [ IsCapCategory and IsFinite ],
+        [ IsCapCategory and IsFiniteCategory ],
         
   function( C )
     local sFinSets, C0, N0, D00, N0N0, p21, p22, C1, T, st, mors;
@@ -69,20 +69,12 @@ end );
 ##
 InstallMethod( OppositeFiniteCategory,
         "for a finite category",
-        [ IsCapCategory and IsFinite ],
+        [ IsCapCategory and IsFiniteCategory ],
         
   function( C )
     local C_op, defining_triple;
     
     C_op := Opposite( C );
-    
-    SetIsFinite( C_op, true );
-    
-    SetSetOfObjects( C_op,
-            List( SetOfObjects( C ), Opposite ) );
-    
-    SetSetOfGeneratingMorphisms( C_op,
-            List( SetOfGeneratingMorphisms( C ), Opposite ) );
     
     defining_triple := DefiningTripleOfUnderlyingQuiver( C );
     

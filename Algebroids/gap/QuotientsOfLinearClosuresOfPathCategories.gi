@@ -40,24 +40,29 @@ InstallMethod( QuotientCategory,
     name := Concatenation( Name( kC ), " / [ ", JoinStringsWithSeparator( name, ", " ), " ]" );
     
     quo_kC := QuotientCategory(
-                    rec( name := name,
-                    nr_arguments_of_congruence_function := 1,
-                    congruence_function := congruence_function,
-                    underlying_category := kC ) : FinalizeCategory := false );
+                      rec( name := name,
+                           nr_arguments_of_congruence_function := 1,
+                           congruence_function := congruence_function,
+                           underlying_category := kC )
+                      : FinalizeCategory := false );
     
     SetDefiningRelations( quo_kC, relations );
     SetGroebnerBasisOfDefiningRelations( quo_kC, reduced_gb );
     
-    SetSetOfObjects( quo_kC,
-        List( SetOfObjects( kC ), o -> ObjectConstructor( quo_kC, o ) ) );
+    AddSetOfGeneratingMorphismsOfCategory( quo_kC,
+      function( quo_kC )
+        local kC;
+        
+        kC := UnderlyingCategory( quo_kC );
+        
+        return List( SetOfGeneratingMorphisms( kC ), m ->
+                     MorphismConstructor( quo_kC,
+                             SetOfObjects( quo_kC )[ObjectIndex( ObjectDatum( kC, Source( m ) ) )],
+                             m,
+                             SetOfObjects( quo_kC )[ObjectIndex( ObjectDatum( kC, Target( m ) ) )] ) );
+        
+    end );
     
-    SetSetOfGeneratingMorphisms( quo_kC,
-        List( SetOfGeneratingMorphisms( kC ), m ->
-                    MorphismConstructor( quo_kC,
-                        SetOfObjects( quo_kC )[ObjectIndex( ObjectDatum( kC, Source( m ) ) )],
-                        m,
-                        SetOfObjects( quo_kC )[ObjectIndex( ObjectDatum( kC, Target( m ) ) )] ) ) );
-
     # Hom-Structure
     
     leading_monomials := List( reduced_gb, g -> SupportMorphisms( g )[1] );
@@ -318,14 +323,29 @@ InstallMethod( QuotientCategory,
     SetUnderlyingCategory( quo_k_quo_C, k_quo_C );
     SetDefiningRelations( quo_k_quo_C, relations );
     
-    SetSetOfObjects( quo_k_quo_C, List( SetOfObjects( quo_kC ), obj -> ReinterpretationOfObject( quo_k_quo_C, obj ) ) );
+    AddSetOfObjectsOfCategory( quo_k_quo_C,
+      function( quo_k_quo_C )
+        local quo_kC;
+        
+        quo_kC := ModelingCategory( quo_k_quo_C );
+        
+        return List( SetOfObjects( quo_kC ), obj -> ReinterpretationOfObject( quo_k_quo_C, obj ) );
+        
+    end );
     
-    SetSetOfGeneratingMorphisms( quo_k_quo_C,
-        ListN( IndicesOfSources( q ), SetOfGeneratingMorphisms( quo_kC ), IndicesOfTargets( q ),
-          { s, m, t } -> ReinterpretationOfMorphism( quo_k_quo_C,
+    AddSetOfGeneratingMorphismsOfCategory( quo_k_quo_C,
+      function( quo_k_quo_C )
+        local quo_kC;
+        
+        quo_kC := ModelingCategory( quo_k_quo_C );
+        
+        return ListN( IndicesOfSources( q ), SetOfGeneratingMorphisms( quo_kC ), IndicesOfTargets( q ), { s, m, t } ->
+                      ReinterpretationOfMorphism( quo_k_quo_C,
                               SetOfObjects( quo_k_quo_C )[s],
                               m,
-                              SetOfObjects( quo_k_quo_C )[t] ) ) );
+                              SetOfObjects( quo_k_quo_C )[t] ) );
+        
+    end );
     
     if HasIsEquippedWithHomomorphismStructure( quo_kC ) and IsEquippedWithHomomorphismStructure( quo_kC ) then
         

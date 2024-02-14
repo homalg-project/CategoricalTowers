@@ -29,20 +29,6 @@ InstallMethod( Size,
 end );
 
 ##
-InstallMethod( SetOfObjects,
-        "for a f.p. category",
-        [ IsFpCategory ],
-        
-  A -> List( Vertices( UnderlyingQuiver( A ) ), o -> A.( String( o ) ) ) );
-
-##
-InstallOtherMethod( SetOfObjects,
-        "for an initial category",
-        [ IsCapCategory and IsInitialCategory ],
-        
-  A -> [ ] );
-
-##
 InstallMethod( AssignSetOfObjects,
         [ IsFpCategory, IsString ],
         
@@ -81,62 +67,6 @@ InstallOtherMethod( AssignSetOfObjects,
     AssignSetOfObjects( A, "" );
     
 end );
-
-##
-InstallMethodForCompilerForCAP( SetOfMorphisms,
-        "for a category from data tables",
-        [ IsFpCategory and IsFinite ],
-        
-  function( C )
-    local objs;
-    
-    objs := SetOfObjects( C );
-    
-    ## varying the target (column-index) before varying the source ("row"-index)
-    ## in the for-loops below is enforced by SetOfMorphisms for IsCategoryFromNerveData,
-    ## which in turn is enforced by our convention for ProjectionInFactorOfDirectProduct in SkeletalFinSets,
-    ## which is the "double-reverse" convention of the GAP command Cartesian:
-    
-    # gap> A := FinSet( 3 );
-    # |3|
-    # gap> B := FinSet( 4 );
-    # |4|
-    # gap> data := List( [ A, B ], AsList );
-    # [ [ 0 .. 2 ], [ 0 .. 3 ] ]
-    # gap> pi1 := ProjectionInFactorOfDirectProduct( [ A, B ], 1 );
-    # |12| → |3|
-    # gap> pi2 := ProjectionInFactorOfDirectProduct( [ A, B ], 2 );
-    # |12| → |4|
-    # gap> List( [ 0 .. 11 ], i -> [ pi1(i), pi2(i) ] );
-    # [ [ 0, 0 ], [ 1, 0 ], [ 2, 0 ], [ 0, 1 ], [ 1, 1 ], [ 2, 1 ], [ 0, 2 ], [ 1, 2 ], [ 2, 2 ], [ 0, 3 ], [ 1, 3 ], [ 2, 3 ] ]
-    # gap> List( Cartesian( Reversed( data ) ), Reversed );
-    # [ [ 0, 0 ], [ 1, 0 ], [ 2, 0 ], [ 0, 1 ], [ 1, 1 ], [ 2, 1 ], [ 0, 2 ], [ 1, 2 ], [ 2, 2 ], [ 0, 3 ], [ 1, 3 ], [ 2, 3 ] ]
-    # gap> L1 = L2;
-    # true
-    # gap> Cartesian( data );
-    # [ [ 0, 0 ], [ 0, 1 ], [ 0, 2 ], [ 0, 3 ], [ 1, 0 ], [ 1, 1 ], [ 1, 2 ], [ 1, 3 ], [ 2, 0 ], [ 2, 1 ], [ 2, 2 ], [ 2, 3 ] ]
-    # gap> L1 = L3;
-    # false
-    
-    return Concatenation( List( objs, t ->
-                   Concatenation( List( objs, s ->
-                           MorphismsOfExternalHom( C, s, t ) ) ) ) );
-    
-end );
-
-##
-InstallMethod( SetOfGeneratingMorphisms,
-        "for a f.p. category",
-        [ IsFpCategory ],
-        
-  A -> List( Arrows( UnderlyingQuiver( A ) ), o -> A.(String( o ) ) ) );
-
-##
-InstallOtherMethod( SetOfGeneratingMorphisms,
-        "for an initial category",
-        [ IsCapCategory and IsInitialCategory ],
-        
-  A -> [ ] );
 
 ##
 InstallMethodWithCache( SetOfGeneratingMorphisms,
@@ -305,7 +235,7 @@ end );
 ##
 InstallMethod( DecompositionIndicesOfAllMorphismsFromHomStructure,
         "for a f.p. category",
-        [ IsFpCategory and IsFinite ],
+        [ IsFpCategory and IsFiniteCategory ],
         
   function( C )
     local objs;
@@ -321,7 +251,7 @@ end );
 ##
 InstallMethod( DecompositionIndicesOfAllMorphisms,
         "for a f.p. category",
-        [ IsFpCategory and IsFinite ],
+        [ IsFpCategory and IsFiniteCategory ],
         
   DecompositionIndicesOfAllMorphismsFromHomStructure  );
 
@@ -377,6 +307,22 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
       function( category, m )
         
         return UnderlyingQuiverAlgebraElement( m );
+        
+    end );
+    
+    ##
+    AddSetOfObjectsOfCategory( category,
+      function( category )
+        
+        return List( Vertices( UnderlyingQuiver( category ) ), o -> category.( String( o ) ) );
+
+    end );
+    
+    ##
+    AddSetOfGeneratingMorphismsOfCategory( category,
+      function( category )
+        
+        return List( Arrows( UnderlyingQuiver( category ) ), o -> category.(String( o ) ) );
         
     end );
     
@@ -523,6 +469,28 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
     Finalize( category );
     
     return category;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a f.p. category",
+        [ IsFpCategory ],
+        
+  function( cat )
+    
+    return SetOfObjectsAsUnresolvableAttribute( cat );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for a f.p. category",
+        [ IsFpCategory ],
+        
+  function( cat )
+    
+    return SetOfGeneratingMorphismsAsUnresolvableAttribute( cat );
     
 end );
 
@@ -838,9 +806,9 @@ InstallMethodWithCache( Category,
         fi;
     fi;
     
-    SetIsFinite( C, IsFiniteDimensional( A ) );
+    SetIsFiniteCategory( C, IsFiniteDimensional( A ) );
     
-    if IsFinite( C ) then
+    if IsFiniteCategory( C ) then
         SetRangeCategoryOfHomomorphismStructure( C, range_category_of_HomStructure );
     fi;
     
@@ -849,8 +817,8 @@ InstallMethodWithCache( Category,
     
     C!.compiler_hints :=
       rec( category_attribute_names :=
-           [ "SetOfObjects",
-             "SetOfGeneratingMorphisms",
+           [ "SetOfObjectsAsUnresolvableAttribute",
+             "SetOfGeneratingMorphismsAsUnresolvableAttribute",
              "UnderlyingQuiver",
              "UnderlyingQuiverAlgebra",
              "BasisPathsByVertexIndex",
@@ -1645,7 +1613,7 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
-        [ IsCapCategory and IsFinite ],
+        [ IsCapCategory and IsFiniteCategory ],
         
   function ( B )
     local A, sFinSets, B0, N0, D00, N0N0, p21, p22, B1, N1, N1_elements, d, id, pi2, s, t,
@@ -1655,6 +1623,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     B0 := SetOfObjects( B );
@@ -1955,7 +1924,7 @@ end );
 
 ##
 InstallMethod( NerveTruncatedInDegree2AsFunctor,
-        [ IsCapCategory and IsFinite ],
+        [ IsCapCategory and IsFiniteCategory ],
         
   function ( B )
     local nerve, nerve_ValuesOnAllObjects, nerve_ValuesOnAllGeneratingMorphisms, name, Delta2, Delta2op;
@@ -1989,7 +1958,7 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
-        [ IsCapCategory and IsFinite ],
+        [ IsCapCategory and IsFiniteCategory ],
         
   function ( B )
     local sFinSets, objs, mors, o, m, Hom2, hom3, Hom3, tum2, emb2, sum2, iso2,
@@ -1998,6 +1967,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     objs := SetOfObjects( B );
@@ -2287,7 +2257,7 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
-        [ IsCapCategory and IsFinite ],
+        [ IsCapCategory and IsFiniteCategory ],
         
   function ( B )
     local sFinSets, D, Omega, Yepis, Ymu, Ypt, sieves, defining_triple, lobjs, lmors, arrows, id, N1,
@@ -2298,6 +2268,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     D := DistinguishedObjectOfHomomorphismStructure( B );

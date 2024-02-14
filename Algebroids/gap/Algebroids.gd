@@ -188,40 +188,12 @@ DeclareAttribute( "HomStructureOnBasisPaths",
 #end );
 
 #! @Description
-#!  The finite set of objects of the finitely presented algebroid <A>A</A>.
-#! @Arguments A
-#! @Returns a list
-DeclareAttribute( "SetOfObjects",
-        IsAlgebroid );
-
-CapJitAddTypeSignature( "SetOfObjects", [ IsAlgebroid ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
-    
-end );
-
-#! @Description
 #!  Assigns the objects of the finitely presented algebroid <A>A</A> to global variables.
 #!  Names of the variables are the concatenation of <A>label</A> with the names of the defining vertices.
 #! @Arguments A, label
 #! @Returns nothing
 DeclareOperation( "AssignSetOfObjects",
         [ IsAlgebroid, IsString ] );
-
-#! @Description
-#!  The finite set of morphisms generating the finitely presented algebroid <A>A</A>.
-#! @Arguments A
-#! @Returns a list
-DeclareAttribute( "SetOfGeneratingMorphisms",
-        IsAlgebroid );
-
-CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsAlgebroid ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
-    
-end );
 
 #! @Description
 #!  The subset of the generating morphisms that start at <A>obj_1</A> and ends at <A>obj_2</A>.

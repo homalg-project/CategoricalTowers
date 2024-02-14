@@ -122,7 +122,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_48_1 := ValuesOfPreSheaf( arg2_1 );
     deduped_47_1 := Source( cat_1 );
     deduped_46_1 := deduped_48_1[2];
-    deduped_45_1 := SetOfObjects( deduped_47_1 );
+    deduped_45_1 := SetOfObjectsAsUnresolvableAttribute( deduped_47_1 );
     deduped_44_1 := DefiningTripleOfUnderlyingQuiver( deduped_47_1 );
     deduped_43_1 := [ 0 .. deduped_44_1[2] - 1 ];
     deduped_42_1 := [ 0 .. deduped_44_1[1] - 1 ];
@@ -161,7 +161,7 @@ function ( cat_1, arg2_1, arg3_1 )
                 end ) ) - 1 ];
     deduped_37_1 := Product( deduped_39_1 );
     deduped_36_1 := [ 0 .. deduped_37_1 - 1 ];
-    deduped_20_1 := SetOfGeneratingMorphisms( deduped_47_1 );
+    deduped_20_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_47_1 );
     deduped_32_1 := List( deduped_43_1, function ( m_2 )
             local deduped_1_2, deduped_2_2;
             deduped_2_2 := 1 + m_2;
@@ -403,7 +403,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_109_1 := ValuesOfPreSheaf( Target( alpha_1 ) );
     deduped_108_1 := DefiningTripleOfUnderlyingQuiver( deduped_112_1 );
     deduped_107_1 := ValuesOfPreSheaf( Target( beta_1 ) );
-    deduped_106_1 := SetOfObjects( deduped_112_1 );
+    deduped_106_1 := SetOfObjectsAsUnresolvableAttribute( deduped_112_1 );
     deduped_105_1 := ValuesOfPreSheaf( Source( alpha_1 ) );
     deduped_104_1 := deduped_109_1[2];
     deduped_103_1 := deduped_105_1[2];
@@ -485,7 +485,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_84_1 := [ 0 .. deduped_87_1 - 1 ];
     deduped_83_1 := [ 0 .. deduped_86_1 - 1 ];
     deduped_82_1 := [ 0 .. deduped_85_1 - 1 ];
-    deduped_20_1 := SetOfGeneratingMorphisms( deduped_112_1 );
+    deduped_20_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_112_1 );
     deduped_32_1 := List( deduped_99_1, function ( m_2 )
             local deduped_1_2, deduped_2_2;
             deduped_2_2 := 1 + m_2;
@@ -1079,7 +1079,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_60_1 := ValuesOfPreSheaf( source_1 );
     deduped_59_1 := Source( cat_1 );
     deduped_58_1 := deduped_60_1[2];
-    deduped_57_1 := SetOfObjects( deduped_59_1 );
+    deduped_57_1 := SetOfObjectsAsUnresolvableAttribute( deduped_59_1 );
     deduped_56_1 := deduped_61_1[1];
     deduped_55_1 := deduped_60_1[1];
     deduped_54_1 := DefiningTripleOfUnderlyingQuiver( deduped_59_1 );
@@ -1124,7 +1124,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_44_1 := Product( deduped_46_1 );
     deduped_43_1 := [ 0 .. deduped_44_1 - 1 ];
     hoisted_42_1 := Target( cat_1 );
-    deduped_23_1 := SetOfGeneratingMorphisms( deduped_59_1 );
+    deduped_23_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_59_1 );
     deduped_35_1 := List( deduped_49_1, function ( m_2 )
             local deduped_1_2, deduped_2_2;
             deduped_2_2 := 1 + m_2;
@@ -1381,7 +1381,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_62_1 := Source( cat_1 );
     deduped_61_1 := deduped_63_1[2];
     deduped_60_1 := deduped_64_1[1];
-    deduped_59_1 := SetOfObjects( deduped_62_1 );
+    deduped_59_1 := SetOfObjectsAsUnresolvableAttribute( deduped_62_1 );
     deduped_58_1 := deduped_63_1[1];
     deduped_57_1 := DefiningTripleOfUnderlyingQuiver( deduped_62_1 );
     deduped_56_1 := ListOfValues( deduped_58_1 );
@@ -1424,7 +1424,7 @@ function ( cat_1, arg2_1, arg3_1 )
                 end ) ) - 1 ];
     deduped_47_1 := Product( deduped_49_1 );
     deduped_46_1 := [ 0 .. deduped_47_1 - 1 ];
-    deduped_20_1 := SetOfGeneratingMorphisms( deduped_62_1 );
+    deduped_20_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_62_1 );
     deduped_32_1 := List( deduped_53_1, function ( m_2 )
             local deduped_1_2, deduped_2_2;
             deduped_2_2 := 1 + m_2;

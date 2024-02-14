@@ -51,7 +51,7 @@ CapJitAddTypeSignature( "NerveData", [ IsCapCategory ],
   function ( input_types )
     local V, obj, mor;
     
-    Assert( 0, IsFinite( input_types[1].category ) );
+    Assert( 0, HasIsFiniteCategory( input_types[1].category ) and IsFiniteCategory( input_types[1].category ) );
     
     V := RangeCategoryOfHomomorphismStructure( input_types[1].category );
     
@@ -75,36 +75,15 @@ CapJitAddTypeSignature( "NerveData", [ IsCapCategory ],
     
 end );
 
-#! @Description
-#!  The finite set of objects of the category <A>C</A> created from nerve data.
-#! @Arguments C
-#! @Returns a list
-DeclareAttribute( "SetOfObjects",
-        IsCategoryFromNerveData );
-
-#CapJitAddTypeSignature( "SetOfObjects", [ IsCategoryFromNerveData ],
-#  function ( input_types )
-#    
-#    return CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
-#    
-#end );
-
-#! @Description
-#!  The finite set of morphisms of the category <A>C</A> created from nerve data.
-#! @Arguments C
-#! @Returns a list
-DeclareAttribute( "SetOfMorphisms",
-        IsCategoryFromNerveData );
-
 DeclareAttribute( "IndicesOfGeneratingMorphisms",
         IsCategoryFromNerveData );
 
-#CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromNerveData ],
-#  function ( input_types )
-#    
-#    return CapJitDataTypeOfListOf( IsInt );
-#    
-#end );
+CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromNerveData ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf( IsInt );
+    
+end );
 
 DeclareAttribute( "DecompositionIndicesOfAllMorphisms",
         IsCategoryFromNerveData );
@@ -127,20 +106,6 @@ DeclareAttribute( "RelationsAmongGeneratingMorphisms",
 #                   CapJitDataTypeOfNTupleOf( 2,
 #                           CapJitDataTypeOfListOf( IsInt ),
 #                           CapJitDataTypeOfListOf( IsInt ) ) );
-#    
-#end );
-
-#! @Description
-#!  The finite set of morphisms generating the category <A>C</A> created from nerve data.
-#! @Arguments C
-#! @Returns a list
-DeclareAttribute( "SetOfGeneratingMorphisms",
-        IsCategoryFromNerveData );
-
-#CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsCategoryFromNerveData ],
-#  function ( input_types )
-#    
-#    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
 #    
 #end );
 

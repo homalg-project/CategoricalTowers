@@ -5,6 +5,37 @@
 #
 
 ##
+InstallTrueMethod( IsFiniteCategory, IsInitialCategory );
+InstallTrueMethod( IsFinite, IsFiniteCategory );
+InstallTrueMethod( IsObjectFiniteCategory, IsFiniteCategory );
+
+##
+InstallMethod( SetOfObjectsAsUnresolvableAttribute,
+        [ IsCapCategory ],
+        
+  SetOfObjectsOfCategory );
+
+##
+InstallMethod( SetOfObjects,
+        [ IsInitialCategory ],
+        
+  function( I )
+    
+    return [ ];
+    
+end );
+
+##
+InstallMethod( SetOfMorphisms,
+        [ IsCapCategory ],
+        
+  function( cat )
+    
+    return SetOfMorphismsOfFiniteCategory( cat );
+    
+end );
+
+##
 InstallMethod( CallFuncList,
         [ IsCapFunctor, IsList ],
         

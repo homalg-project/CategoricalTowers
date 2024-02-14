@@ -197,6 +197,62 @@ end
         
     , 100 );
     
+    ##
+    AddSetOfGeneratingMorphismsOfCategory( cat,
+        
+########
+function ( cat_1 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := DataTables( cat_1 );
+    deduped_4_1 := deduped_5_1[2];
+    hoisted_2_1 := deduped_4_1[3];
+    hoisted_1_1 := deduped_4_1[2];
+    hoisted_3_1 := List( [ 0 .. deduped_5_1[1][2] - 1 ], function ( i_2 )
+            local deduped_1_2;
+            deduped_1_2 := 1 + i_2;
+            return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, IndexOfObject, hoisted_1_1[deduped_1_2] ), CreateCapCategoryObjectWithAttributes( cat_1, IndexOfObject, hoisted_2_1[deduped_1_2] ), IndexOfMorphism, i_2 );
+        end );
+    return List( IndicesOfGeneratingMorphisms( cat_1 ), function ( i_2 )
+            return hoisted_3_1[1 + i_2];
+        end );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddSetOfMorphismsOfFiniteCategory( cat,
+        
+########
+function ( cat_1 )
+    local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1;
+    deduped_4_1 := DataTables( cat_1 );
+    deduped_3_1 := deduped_4_1[2];
+    hoisted_2_1 := deduped_3_1[3];
+    hoisted_1_1 := deduped_3_1[2];
+    return List( [ 0 .. deduped_4_1[1][2] - 1 ], function ( i_2 )
+            local deduped_1_2;
+            deduped_1_2 := 1 + i_2;
+            return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, IndexOfObject, hoisted_1_1[deduped_1_2] ), CreateCapCategoryObjectWithAttributes( cat_1, IndexOfObject, hoisted_2_1[deduped_1_2] ), IndexOfMorphism, i_2 );
+        end );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddSetOfObjectsOfCategory( cat,
+        
+########
+function ( cat_1 )
+    return List( [ 0 .. DataTables( cat_1 )[1][1] - 1 ], function ( i_2 )
+            return CreateCapCategoryObjectWithAttributes( cat_1, IndexOfObject, i_2 );
+        end );
+end
+########
+        
+    , 100 );
+    
     if IsBound( cat!.precompiled_functions_added ) then
         
         # COVERAGE_IGNORE_NEXT_LINE

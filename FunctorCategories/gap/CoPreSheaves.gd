@@ -45,8 +45,8 @@ DeclareCategory( "IsMorphismInCoPreSheafCategory",
 ####################################
 
 #! @Description
-#!  The source category of the copresheaf category <A>cat</A>.
-#! @Arguments cat
+#!  The source category of the copresheaf category <A>coPSh</A>.
+#! @Arguments coPSh
 #! @Returns a &CAP; category
 DeclareAttribute( "Source",
         IsCoPreSheafCategory );
@@ -59,8 +59,8 @@ CapJitAddTypeSignature( "Source", [ IsCoPreSheafCategory ],
 end );
 
 #! @Description
-#!  The target category of the copresheaf category <A>cat</A>.
-#! @Arguments cat
+#!  The target category of the copresheaf category <A>coPSh</A>.
+#! @Arguments coPSh
 #! @Returns a &CAP; category
 DeclareAttribute( "Target",
         IsCoPreSheafCategory );

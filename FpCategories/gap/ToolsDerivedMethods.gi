@@ -5,6 +5,17 @@
 #
 
 ##
+AddDerivationToCAP( SetOfGeneratingMorphismsOfCategory,
+        "SetOfGeneratingMorphismsOfCategory for the initial category",
+        [  ],
+        
+  function( initial_category )
+    
+    return [ ];
+    
+end : CategoryFilter := cat -> HasIsInitialCategory( cat ) and IsInitialCategory( cat ) );
+
+##
 AddDerivationToCAP( IsMonomorphism,
         "IsMonomorphism using the Yoneda embedding",
         [ [ HomomorphismStructureOnObjects, 2 ],
