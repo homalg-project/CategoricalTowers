@@ -31,9 +31,7 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13.html#X7C701DBF7BAE649A">13.2 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X7B0117A683ED74DD">13.2-1 SetOfObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X801404DF7C2DEF86">13.2-2 SetOfGeneratingMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X832ED2957909B491">13.2-3 ClassicalTruthValue</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13.html#X832ED2957909B491">13.2-1 ClassicalTruthValue</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13.html#X7D03633A7D98026B">13.3 <span class="Heading">GAP categories</span></a>
 </span>
@@ -80,8 +78,9 @@ IntervalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( IntervalCategory );</span>
 A CAP category with name IntervalCategory:
 
-19 primitive operations were used to derive 324 operations for this category
+21 primitive operations were used to derive 327 operations for this category
  which algorithmically
+* IsFiniteCategory
 * IsEquippedWithHomomorphismStructure
 * IsBooleanAlgebra
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjects( IntervalCategory );</span>
@@ -101,6 +100,7 @@ which algorithmically
 * IsCodistributiveCategory
 * IsDistributiveCategory
 and not yet algorithmically
+* IsFiniteCategory
 * IsBicartesianClosedCategory
 * IsBicartesianCoclosedCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := YonedaEmbeddingOfSourceCategory( PSh );</span>
@@ -157,27 +157,9 @@ given by the above data
 
 <h4>13.2 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X7B0117A683ED74DD" name="X7B0117A683ED74DD"></a></p>
-
-<h5>13.2-1 SetOfObjects</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetOfObjects</code>( <var class="Arg">I</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
-
-<p>The two-element set of objects of the interval category <var class="Arg">I</var>.</p>
-
-<p><a id="X801404DF7C2DEF86" name="X801404DF7C2DEF86"></a></p>
-
-<h5>13.2-2 SetOfGeneratingMorphisms</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetOfGeneratingMorphisms</code>( <var class="Arg">I</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
-
-<p>The one-element set containing the generating morphism of the interval category <var class="Arg">I</var>.</p>
-
 <p><a id="X832ED2957909B491" name="X832ED2957909B491"></a></p>
 
-<h5>13.2-3 ClassicalTruthValue</h5>
+<h5>13.2-1 ClassicalTruthValue</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClassicalTruthValue</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>

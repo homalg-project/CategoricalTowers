@@ -31,8 +31,9 @@
     [4X[25Xgap>[125X [27XDisplay( IntervalCategory );[127X[104X
     [4X[28XA CAP category with name IntervalCategory:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X19 primitive operations were used to derive 324 operations for this category[128X[104X
+    [4X[28X21 primitive operations were used to derive 327 operations for this category[128X[104X
     [4X[28X which algorithmically[128X[104X
+    [4X[28X* IsFiniteCategory[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsBooleanAlgebra[128X[104X
     [4X[25Xgap>[125X [27XSetOfObjects( IntervalCategory );[127X[104X
@@ -52,6 +53,7 @@
     [4X[28X* IsCodistributiveCategory[128X[104X
     [4X[28X* IsDistributiveCategory[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
+    [4X[28X* IsFiniteCategory[128X[104X
     [4X[28X* IsBicartesianClosedCategory[128X[104X
     [4X[28X* IsBicartesianCoclosedCategory[128X[104X
     [4X[25Xgap>[125X [27XY := YonedaEmbeddingOfSourceCategory( PSh );[127X[104X
@@ -107,22 +109,7 @@
   
   [1X13.2 [33X[0;0YAttributes[133X[101X
   
-  [1X13.2-1 SetOfObjects[101X
-  
-  [33X[1;0Y[29X[2XSetOfObjects[102X( [3XI[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YThe two-element set of objects of the interval category [3XI[103X.[133X
-  
-  [1X13.2-2 SetOfGeneratingMorphisms[101X
-  
-  [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XI[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YThe  one-element  set  containing  the  generating  morphism of the interval
-  category [3XI[103X.[133X
-  
-  [1X13.2-3 ClassicalTruthValue[101X
+  [1X13.2-1 ClassicalTruthValue[101X
   
   [33X[1;0Y[29X[2XClassicalTruthValue[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X

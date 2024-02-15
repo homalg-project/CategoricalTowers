@@ -40,7 +40,7 @@
   [2XCanonicalObject[102X, for IsConstructibleObject 12.3-3 
       for IsObjectInMeetSemilatticeOfDifferences 9.2-3 
   [2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY[102X 8.1-1 
-  [2XClassicalTruthValue[102X, for IsObjectInIntervalCategory 13.2-3 
+  [2XClassicalTruthValue[102X, for IsObjectInIntervalCategory 13.2-1 
   [2XClosure[102X, for IsConstructibleObject 12.3-7 
       for IsObjectInMeetSemilatticeOfDifferences 9.2-5 
   [2XClosureAsConstructibleObject[102X, for IsConstructibleObject 12.3-8 
@@ -175,8 +175,6 @@
   [2XProsetOfCategory[102X, for IsCapCategory 8.2-2 
   [2XRemove[102X, for IsNodeInDatastructureOfConstructibleObjects 14.3-5 
   [2XRemoveObsoleteSubtrahends[102X, for IsDatastructureForConstructibleObjects 14.3-7 
-  [2XSetOfGeneratingMorphisms[102X, for IsIntervalCategory 13.2-2 
-  [2XSetOfObjects[102X, for IsIntervalCategory 13.2-1 
   [2XSquash[102X, for IsDatastructureForConstructibleObjects 14.3-8 
   [2XSquashOnce[102X, for IsDatastructureForConstructibleObjects 14.3-6 
   [2XStableInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject 5.3-1 
