@@ -1178,28 +1178,7 @@
   
   [1X1.3 [33X[0;0YAttributes[133X[101X
   
-  [1X1.3-1 SetOfObjects[101X
-  
-  [33X[1;0Y[29X[2XSetOfObjects[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YThe set of objects of the concrete category [3XC[103X.[133X
-  
-  [1X1.3-2 SetOfGeneratingMorphisms[101X
-  
-  [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YThe set of generating morphisms of the concrete category [3XC[103X.[133X
-  
-  [1X1.3-3 SetOfMorphisms[101X
-  
-  [33X[1;0Y[29X[2XSetOfMorphisms[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YThe set of morphisms of the concrete category [3XC[103X.[133X
-  
-  [1X1.3-4 RightQuiverFromConcreteCategory[101X
+  [1X1.3-1 RightQuiverFromConcreteCategory[101X
   
   [33X[1;0Y[29X[2XRightQuiverFromConcreteCategory[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya right quiver[133X
