@@ -85,7 +85,8 @@
     [4X[28XFiniteColimitCompletionWithStrictCoproducts([128X[104X
     [4X[28XFreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X21 primitive operations were used to derive 63 operations for this category which algorithmically[128X[104X
+    [4X[28X22 primitive operations were used to derive 64 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCocartesianCategory[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
     [4X[28X* IsFiniteCocompleteCategory[128X[104X

@@ -62,10 +62,11 @@
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XA CAP category with name FiniteStrictCoproductCompletion( InitialCategory( ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X110 primitive operations were used to derive 645 operations for this category[128X[104X
+    [4X[28X111 primitive operations were used to derive 647 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
+    [4X[28X* IsFiniteCategory[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
     [4X[28X* IsLeftClosedMonoidalCategory[128X[104X
@@ -77,9 +78,9 @@
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
+    [4X[28X* IsFinitelyPresentedCategory[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
-    [4X[28X* IsFinitelyPresentedCategory[128X[104X
     [4X[28X* IsFinitelyPresentedLinearCategory[128X[104X
     [4X[28X* IsLinearClosureOfACategory[128X[104X
     [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
