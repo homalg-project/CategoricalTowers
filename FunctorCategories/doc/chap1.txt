@@ -65,14 +65,14 @@
   [33X[1;0Y[29X[2XSource[102X( [3XHom[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YThe source category of the functor category [3Xcat[103X.[133X
+  [33X[0;0YThe source category of the functor category [3XHom[103X.[133X
   
   [1X1.2-2 Target[101X
   
   [33X[1;0Y[29X[2XTarget[102X( [3XHom[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YThe target category of the functor category [3Xcat[103X.[133X
+  [33X[0;0YThe target category of the functor category [3XHom[103X.[133X
   
   [1X1.2-3 Source[101X
   
