@@ -85,70 +85,56 @@
   
   [33X[0;0YReturns the defining quiver of the path category [3XC[103X.[133X
   
-  [1X2.3-2 SetOfObjects[101X
-  
-  [33X[1;0Y[29X[2XSetOfObjects[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X category objects[133X
-  
-  [33X[0;0YReturns the set of objects of [3XC[103X.[133X
-  
-  [1X2.3-3 SetOfGeneratingMorphisms[101X
-  
-  [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X category morphisms[133X
-  
-  [33X[0;0YReturns the set of generating morphisms of [3XC[103X.[133X
-  
-  [1X2.3-4 ObjectIndex[101X
+  [1X2.3-2 ObjectIndex[101X
   
   [33X[1;0Y[29X[2XObjectIndex[102X( [3Xv[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya positive integer[133X
   
   [33X[0;0YReturns the index of the object [3Xv[103X.[133X
   
-  [1X2.3-5 ObjectLabel[101X
+  [1X2.3-3 ObjectLabel[101X
   
   [33X[1;0Y[29X[2XObjectLabel[102X( [3Xv[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya string[133X
   
   [33X[0;0YReturns the label of the object [3Xv[103X.[133X
   
-  [1X2.3-6 MorphismLength[101X
+  [1X2.3-4 MorphismLength[101X
   
   [33X[1;0Y[29X[2XMorphismLength[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya positive integer[133X
   
   [33X[0;0YReturns the length of [3Xalpha[103X.[133X
   
-  [1X2.3-7 MorphismSupport[101X
+  [1X2.3-5 MorphismSupport[101X
   
   [33X[1;0Y[29X[2XMorphismSupport[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya dense-list of [5XCAP[105X quiver morphisms[133X
   
   [33X[0;0YReturns the list of morphisms in the underlying quiver which defines [3Xalpha[103X.[133X
   
-  [1X2.3-8 MorphismIndices[101X
+  [1X2.3-6 MorphismIndices[101X
   
   [33X[1;0Y[29X[2XMorphismIndices[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya dense-list of positive integers[133X
   
   [33X[0;0YReturns the indices of the morphisms in [10XMorphismSupport[110X([3Xalpha[103X).[133X
   
-  [1X2.3-9 MorphismLabel[101X
+  [1X2.3-7 MorphismLabel[101X
   
   [33X[1;0Y[29X[2XMorphismLabel[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya positive integer[133X
   
   [33X[0;0YReturns the label of the morphism [3Xalpha[103X.[133X
   
-  [1X2.3-10 IsFinitePathCategory[101X
+  [1X2.3-8 IsFinitePathCategory[101X
   
   [33X[1;0Y[29X[2XIsFinitePathCategory[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
   [33X[0;0YReturns whether [3XC[103X can be enriched over the category of finite sets.[133X
   
-  [1X2.3-11 HasFiniteNumberOfMacaulayMorphisms[101X
+  [1X2.3-9 HasFiniteNumberOfMacaulayMorphisms[101X
   
   [33X[1;0Y[29X[2XHasFiniteNumberOfMacaulayMorphisms[102X( [3XC[103X, [3Xmors[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -159,7 +145,7 @@
   whether  the  number of morphisms that are not multiples of elements in [3Xmors[103X
   (i.e., Macaulay monomials) is finite.[133X
   
-  [1X2.3-12 MacaulayMorphisms[101X
+  [1X2.3-10 MacaulayMorphisms[101X
   
   [33X[1;0Y[29X[2XMacaulayMorphisms[102X( [3XC[103X, [3Xmors[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -310,7 +296,9 @@
     [4X[28XA CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,[128X[104X
     [4X[28Xa:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X15 primitive operations were used to derive 30 operations for this category[128X[104X
+    [4X[28X17 primitive operations were used to derive 32 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsObjectFiniteCategory[128X[104X
     [4X[25Xgap>[125X [27XSetOfObjects( C );[127X[104X
     [4X[28X[ (0), (1), (2), (3), (4), (5) ][128X[104X
     [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( C );[127X[104X
@@ -348,8 +336,9 @@
     [4X[28XA CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,[128X[104X
     [4X[28Xa:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ]:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X25 primitive operations were used to derive 64 operations for this category[128X[104X
+    [4X[28X27 primitive operations were used to derive 67 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsFiniteCategory[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[25Xgap>[125X [27XqC.0;[127X[104X
     [4X[28X(0)[128X[104X
@@ -412,8 +401,9 @@
     [4X[28XA CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,[128X[104X
     [4X[28Xc:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X16 primitive operations were used to derive 64 operations for this category[128X[104X
+    [4X[28X18 primitive operations were used to derive 67 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsFiniteCategory[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( P.0, P.5 );[127X[104X
     [4X[28X|3|[128X[104X
