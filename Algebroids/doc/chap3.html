@@ -26,11 +26,8 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E3FA58F7A494BA5">3.1-1 NerveData</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E05C37E7F355D4D">3.1-2 SetOfObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8248F11F7FCADBF4">3.1-3 SetOfMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83496CF2824C1AF7">3.1-4 SetOfGeneratingMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F8C00D07A057EC1">3.1-5 Size</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8286BD957E169BEC">3.1-6 OppositeCategoryFromNerveData</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F8C00D07A057EC1">3.1-2 Size</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8286BD957E169BEC">3.1-3 OppositeCategoryFromNerveData</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X86EC0F0A78ECBC10">3.2 <span class="Heading">Constructors</span></a>
 </span>
@@ -65,36 +62,9 @@
 
 <p>The nerve data used to create the category <var class="Arg">C</var>. It might differ from the "normalized" output of <code class="code">NerveTruncatedInDegree2Data</code>( <var class="Arg">C</var> ).</p>
 
-<p><a id="X7E05C37E7F355D4D" name="X7E05C37E7F355D4D"></a></p>
-
-<h5>3.1-2 SetOfObjects</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetOfObjects</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
-
-<p>The finite set of objects of the category <var class="Arg">C</var> created from nerve data.</p>
-
-<p><a id="X8248F11F7FCADBF4" name="X8248F11F7FCADBF4"></a></p>
-
-<h5>3.1-3 SetOfMorphisms</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetOfMorphisms</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
-
-<p>The finite set of morphisms of the category <var class="Arg">C</var> created from nerve data.</p>
-
-<p><a id="X83496CF2824C1AF7" name="X83496CF2824C1AF7"></a></p>
-
-<h5>3.1-4 SetOfGeneratingMorphisms</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetOfGeneratingMorphisms</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
-
-<p>The finite set of morphisms generating the category <var class="Arg">C</var> created from nerve data.</p>
-
 <p><a id="X7F8C00D07A057EC1" name="X7F8C00D07A057EC1"></a></p>
 
-<h5>3.1-5 Size</h5>
+<h5>3.1-2 Size</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Size</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a nonnegative integer</p>
@@ -103,7 +73,7 @@
 
 <p><a id="X8286BD957E169BEC" name="X8286BD957E169BEC"></a></p>
 
-<h5>3.1-6 OppositeCategoryFromNerveData</h5>
+<h5>3.1-3 OppositeCategoryFromNerveData</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OppositeCategoryFromNerveData</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
@@ -172,11 +142,11 @@ A CAP category with name
 FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) )
 / [ s*id = C0, t*id = C0 ]:
 
-16 primitive operations were used to derive 54 operations for this category
+19 primitive operations were used to derive 57 operations for this category
 which algorithmically
-* IsEquippedWithHomomorphismStructure
-and furthermore mathematically
+* IsFiniteCategory
 * IsFinitelyPresentedCategory
+* IsEquippedWithHomomorphismStructure
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C0 := CreateObject( C, 0 );</span>
 &lt;(C0)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( C0 );</span>

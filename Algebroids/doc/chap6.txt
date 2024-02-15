@@ -57,23 +57,7 @@
   
   [33X[0;0YThe data tables used to define [23XA[123X.[133X
   
-  [1X6.2-6 SetOfObjects[101X
-  
-  [33X[1;0Y[29X[2XSetOfObjects[102X( [3XA[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X category objects[133X
-  
-  [33X[0;0YThe  argument  is an algebroid [3XA[103X. The output is the finite set of objects of
-  [3XA[103X.[133X
-  
-  [1X6.2-7 SetOfGeneratingMorphisms[101X
-  
-  [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XA[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of a [5XCAP[105X category morphisms[133X
-  
-  [33X[0;0YThe  argument  is an algebroid [3XA[103X. The output is the finite set of generating
-  morphisms of [3XA[103X.[133X
-  
-  [1X6.2-8 BasesElements[101X
+  [1X6.2-6 BasesElements[101X
   
   [33X[1;0Y[29X[2XBasesElements[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of lists[133X
@@ -82,7 +66,7 @@
   [23XL[i][j][123X  is  the basis of the external hom [23X\mathrm{Hom}_B(u,v)[123X where [23Xu[123X and [23Xv[123X
   are [23Xi[123X'th resp. [23Xj[123X'th objects in [23XA[123X.[133X
   
-  [1X6.2-9 DecompositionIndicesOfBasesElements[101X
+  [1X6.2-7 DecompositionIndicesOfBasesElements[101X
   
   [33X[1;0Y[29X[2XDecompositionIndicesOfBasesElements[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of lists[133X
@@ -92,7 +76,7 @@
   [23X\mathrm{Hom}_B(u,v)[123X where [23Xu[123X and [23Xv[123X are [23Xi[123X'th resp. [23Xj[123X'th objects in [23XA[123X. In other
   words, it is the third entry in the underlying defining data tables.[133X
   
-  [1X6.2-10 LabelsOfBasesElements[101X
+  [1X6.2-8 LabelsOfBasesElements[101X
   
   [33X[1;0Y[29X[2XLabelsOfBasesElements[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of lists[133X
@@ -101,7 +85,7 @@
   [23XL[i][j][123X  is  the labels of the basis elements of [23X\mathrm{Hom}_B(u,v)[123X where [23Xu[123X
   and [23Xv[123X are [23Xi[123X'th resp. [23Xj[123X'th objects in [23XA[123X.[133X
   
-  [1X6.2-11 LaTeXStringsOfBasesElements[101X
+  [1X6.2-9 LaTeXStringsOfBasesElements[101X
   
   [33X[1;0Y[29X[2XLaTeXStringsOfBasesElements[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of lists[133X
@@ -110,7 +94,7 @@
   [23XL[i][j][123X  is  the  latex strings of the basis elements of [23X\mathrm{Hom}_B(u,v)[123X
   where [23Xu[123X and [23Xv[123X are [23Xi[123X'th resp. [23Xj[123X'th objects in [23XA[123X.[133X
   
-  [1X6.2-12 PowerOfArrowIdeal[101X
+  [1X6.2-10 PowerOfArrowIdeal[101X
   
   [33X[1;0Y[29X[2XPowerOfArrowIdeal[102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X

@@ -96,14 +96,7 @@
   basis_path_1   *   x  *  basis_path_2  ][110X  for  [10Xbasis_path_1:  v'  ->  v[110X  and
   [10Xbasis_path_2: w -> w'[110X.[133X
   
-  [1X5.2-7 SetOfObjects[101X
-  
-  [33X[1;0Y[29X[2XSetOfObjects[102X( [3XA[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YThe finite set of objects of the finitely presented algebroid [3XA[103X.[133X
-  
-  [1X5.2-8 AssignSetOfObjects[101X
+  [1X5.2-7 AssignSetOfObjects[101X
   
   [33X[1;0Y[29X[2XAssignSetOfObjects[102X( [3XA[103X, [3Xlabel[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -112,14 +105,7 @@
   variables.  Names  of  the variables are the concatenation of [3Xlabel[103X with the
   names of the defining vertices.[133X
   
-  [1X5.2-9 SetOfGeneratingMorphisms[101X
-  
-  [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XA[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YThe finite set of morphisms generating the finitely presented algebroid [3XA[103X.[133X
-  
-  [1X5.2-10 SetOfGeneratingMorphisms[101X
+  [1X5.2-8 SetOfGeneratingMorphisms[101X
   
   [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XA[103X, [3Xobj_1[103X, [3Xobj_2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -127,7 +113,7 @@
   [33X[0;0YThe  subset  of  the  generating  morphisms  that start at [3Xobj_1[103X and ends at
   [3Xobj_2[103X.[133X
   
-  [1X5.2-11 SetOfGeneratingMorphisms[101X
+  [1X5.2-9 SetOfGeneratingMorphisms[101X
   
   [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3Xobj_1[103X, [3Xobj_2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -135,7 +121,7 @@
   [33X[0;0YThe  subset  of  the  generating  morphisms  that start at [3Xobj_1[103X and ends at
   [3Xobj_2[103X.[133X
   
-  [1X5.2-12 SetOfGeneratingMorphisms[101X
+  [1X5.2-10 SetOfGeneratingMorphisms[101X
   
   [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XA[103X, [3Xi[103X, [3Xj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -143,7 +129,7 @@
   [33X[0;0YDelegates     to     [10XSetOfGeneratingMorphisms[110X(     [3XA[103X,    [10XSetOfObjects[110X([3XA[103X)[[3Xi[103X],
   [10XSetOfObjects[110X([3XA[103X)[[3Xj[103X] ).[133X
   
-  [1X5.2-13 AssignSetOfGeneratingMorphisms[101X
+  [1X5.2-11 AssignSetOfGeneratingMorphisms[101X
   
   [33X[1;0Y[29X[2XAssignSetOfGeneratingMorphisms[102X( [3XA[103X, [3Xlabel[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -152,7 +138,7 @@
   global variables. Names of the variables are the concatenation of [3Xlabel[103X with
   the names of the defining arrows.[133X
   
-  [1X5.2-14 RelationsOfAlgebroid[101X
+  [1X5.2-12 RelationsOfAlgebroid[101X
   
   [33X[1;0Y[29X[2XRelationsOfAlgebroid[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XQPA[105X path algebra[133X
@@ -160,49 +146,49 @@
   [33X[0;0YThe  relations  of  the  algebroid  [3XA[103X  corresponding  to [10XRelationsOfAlgebra(
   UnderlyingQuiverAlgebra( [3XA[103X[10X ) )[110X.[133X
   
-  [1X5.2-15 OppositeAlgebroid[101X
+  [1X5.2-13 OppositeAlgebroid[101X
   
   [33X[1;0Y[29X[2XOppositeAlgebroid[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
   [33X[0;0YThe algebroid defined by the opposite of the underlying quiver algebra.[133X
   
-  [1X5.2-16 Antipode[101X
+  [1X5.2-14 Antipode[101X
   
   [33X[1;0Y[29X[2XAntipode[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
   
   [33X[0;0YThe antipode of the Hopf algebroid [3XB[103X.[133X
   
-  [1X5.2-17 UnderlyingVertex[101X
+  [1X5.2-15 UnderlyingVertex[101X
   
   [33X[1;0Y[29X[2XUnderlyingVertex[102X( [3Xobj[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya vertex in a [5XQPA[105X quiver[133X
   
   [33X[0;0YThe vertex of the quiver underlying the object [3Xobj[103X in an algebroid.[133X
   
-  [1X5.2-18 UnderlyingQuiverAlgebraElement[101X
+  [1X5.2-16 UnderlyingQuiverAlgebraElement[101X
   
   [33X[1;0Y[29X[2XUnderlyingQuiverAlgebraElement[102X( [3Xmor[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan element in a [5XQPA[105X path algebra[133X
   
   [33X[0;0YThe quiver algebra element underlying the morphism [3Xmor[103X in an algebroid.[133X
   
-  [1X5.2-19 UnderlyingAlgebra[101X
+  [1X5.2-17 UnderlyingAlgebra[101X
   
   [33X[1;0Y[29X[2XUnderlyingAlgebra[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya ring[133X
   
   [33X[0;0YThe underlying algebra of an algebroid.[133X
   
-  [1X5.2-20 Parity[101X
+  [1X5.2-18 Parity[101X
   
   [33X[1;0Y[29X[2XParity[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya string ("left" or "right")[133X
   
   [33X[0;0YThe parity of an algebroid.[133X
   
-  [1X5.2-21 POW[101X
+  [1X5.2-19 POW[101X
   
   [33X[1;0Y[29X[2XPOW[102X( [3XA[103X, [3Xn[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
