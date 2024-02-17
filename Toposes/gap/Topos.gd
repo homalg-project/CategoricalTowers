@@ -522,6 +522,7 @@ DeclareAttribute( "RelativePowerObjectLeftEvaluationMorphism",
 #! @Arguments b, c
 DeclareOperation( "LeftFiberMorphism",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
+#! @InsertChunk LeftFiberMorphism
 
 #! @Description
 #!  The arguments are four objects <A>Pbxc_xb</A>, <A>b</A>, <A>c</A>, <A>Pc</A>,

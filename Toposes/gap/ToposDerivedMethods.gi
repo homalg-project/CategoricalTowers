@@ -1018,7 +1018,7 @@ AddDerivationToCAP( LeftFiberMorphismWithGivenObjects,
           [ DirectProduct, 3 ],
           [ SubobjectClassifier, 1 ],
           [ PowerObjectLeftEvaluationMorphismWithGivenObjects, 1 ],
-          [ CartesianAssociatorRightToLeftWithGivenDirectProducts, 1 ],
+          [ CartesianAssociatorLeftToRightWithGivenDirectProducts, 1 ],
           [ PreCompose, 1 ],
           [ PLeftTransposeMorphismWithGivenRange, 1 ] ],
         
@@ -1051,13 +1051,13 @@ AddDerivationToCAP( LeftFiberMorphismWithGivenObjects,
     PBxC_xB_xC := DirectProduct( cat,
                           [ PBxC_xB, C ] );
     
-    ## P(B × C) × (B × C) → (P(B × C) × B) × C
-    alpha := CartesianAssociatorRightToLeftWithGivenDirectProducts( cat,
-                     PBxC_xBxC,
+    ## (P(B × C) × B) × C → P(B × C) × (B × C)
+    alpha := CartesianAssociatorLeftToRightWithGivenDirectProducts( cat,
+                     PBxC_xB_xC,
                      PBxC,
                      B,
                      C,
-                     PBxC_xB_xC );
+                     PBxC_xBxC );
     
     ## ϵ_{B × C} : (P(B × C) × B) × C → Ω
     epsilon_BxC_ := PreCompose( cat,
