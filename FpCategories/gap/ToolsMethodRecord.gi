@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# ToolsForCategoricalTowers: Tools for CategoricalTowers
+# FpCategories: Finitely presented categories by generating quivers and relations
 #
 # Implementations
 #
