@@ -447,8 +447,8 @@ AddDerivationToCAP( PowerObjectLeftEvaluationMorphismWithGivenObjects,
 end );
 
 ## (f:a × b → Ω) ↦ (a → P(b))
-AddDerivationToCAP( PTransposeMorphismWithGivenRange,
-        "PTransposeMorphismWithGivenRange as a special case of the cartesian adjunction",
+AddDerivationToCAP( PLeftTransposeMorphismWithGivenRange,
+        "PLeftTransposeMorphismWithGivenRange as a special case of the cartesian adjunction",
         [ [ DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential, 1 ] ],
         
   function( cat, a, b, f, Pb )
@@ -581,7 +581,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfTrueWithGivenObjects,
           [ TruthMorphismOfTrue, 1 ],
           [ DirectProduct, 1 ],
           [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 1 ],
-          [ PTransposeMorphismWithGivenRange, 1 ] ],
+          [ PLeftTransposeMorphismWithGivenRange, 1 ] ],
         
   function( cat, T, a, Pa )
     local true_a, T_a, Txa;
@@ -601,7 +601,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfTrueWithGivenObjects,
     Txa := DirectProduct( cat, T_a );
     
     ## PTranspose( 𝟙 × a → a → 𝟙 → Ω ) = 𝟙 ↪ Pa
-    return PTransposeMorphismWithGivenRange( cat,
+    return PLeftTransposeMorphismWithGivenRange( cat,
                    T,
                    a,
                    PreCompose( cat,
@@ -622,7 +622,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfFalseWithGivenObjects,
           [ TruthMorphismOfFalse, 1 ],
           [ DirectProduct, 1 ],
           [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 1 ],
-          [ PTransposeMorphismWithGivenRange, 1 ] ],
+          [ PLeftTransposeMorphismWithGivenRange, 1 ] ],
         
   function( cat, T, a, Pa )
     local false_a, T_a, Txa;
@@ -642,7 +642,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfFalseWithGivenObjects,
     Txa := DirectProduct( cat, T_a );
     
     ## PTranspose( 𝟙 × a → a → 𝟙 → Ω ) = 𝟙 ↪ Pa
-    return PTransposeMorphismWithGivenRange( cat,
+    return PLeftTransposeMorphismWithGivenRange( cat,
                    T,
                    a,
                    PreCompose( cat,
@@ -1012,15 +1012,15 @@ AddDerivationToCAP( RelativePseudoComplementSubobject,
 end );
 
 ##
-AddDerivationToCAP( FiberMorphismWithGivenObjects,
-        "FiberMorphismWithGivenObjects using PowerObjectLeftEvaluationMorphism and PTransposeMorphism",
+AddDerivationToCAP( LeftFiberMorphismWithGivenObjects,
+        "LeftFiberMorphismWithGivenObjects using PowerObjectLeftEvaluationMorphism and PLeftTransposeMorphism",
         [ [ PowerObject, 1 ],
           [ DirectProduct, 3 ],
           [ SubobjectClassifier, 1 ],
           [ PowerObjectLeftEvaluationMorphismWithGivenObjects, 1 ],
           [ CartesianAssociatorRightToLeftWithGivenDirectProducts, 1 ],
           [ PreCompose, 1 ],
-          [ PTransposeMorphismWithGivenRange, 1 ] ],
+          [ PLeftTransposeMorphismWithGivenRange, 1 ] ],
         
   function( cat, PBxC_xB, B, C, PC )
     local B_C, BxC, PBxC, PBxC_BxC, PBxC_xBxC, Omega, epsilon_BxC, PBxC_xB_xC, alpha, epsilon_BxC_;
@@ -1066,7 +1066,7 @@ AddDerivationToCAP( FiberMorphismWithGivenObjects,
     
     ## v: P(B × C) × B → PC, where
     ## v(R, b) = π_B⁻¹(b) ∩ R = { c ∈ C | (b,c) ∈ R } ∈ PC
-    return PTransposeMorphismWithGivenRange( cat,
+    return PLeftTransposeMorphismWithGivenRange( cat,
                    PBxC_xB,
                    C,
                    epsilon_BxC_,
@@ -1079,11 +1079,11 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
         rec( SingletonSupportOfRelationsWithGivenObjects :=
              [ [ "PowerObject", 1 ],
                [ "DirectProduct", 2 ],
-               [ "FiberMorphismWithGivenObjects", 1 ],
+               [ "LeftFiberMorphismWithGivenObjects", 1 ],
                [ "SingletonMorphismWithGivenPowerObject", 1 ],
                [ "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier", 1 ],
                [ "PreCompose", 1 ],
-               [ "PTransposeMorphismWithGivenRange", 1 ] ] ) );
+               [ "PLeftTransposeMorphismWithGivenRange", 1 ] ] ) );
 
 ##
 InstallOtherMethodForCompilerForCAP( SingletonSupportOfRelationsWithGivenObjects,
@@ -1104,7 +1104,7 @@ InstallOtherMethodForCompilerForCAP( SingletonSupportOfRelationsWithGivenObjects
     
     ## v: P(B × C) × B → PC, where
     ## v(R, b) = π_B⁻¹(b) ∩ R = { c ∈ C | (b,c) ∈ R } ∈ PC
-    v := FiberMorphismWithGivenObjects( cat,
+    v := LeftFiberMorphismWithGivenObjects( cat,
                  PBxC_xB,
                  B,
                  C,
@@ -1127,7 +1127,7 @@ InstallOtherMethodForCompilerForCAP( SingletonSupportOfRelationsWithGivenObjects
     ## u: P(B × C) → PB, where
     ## u(R) = { b ∈ B | v(R, b) is a singleton } ∈ PB,
     ## i.e., u(R) is the set of base points b, over which R is a singleton
-    return PTransposeMorphismWithGivenRange( cat,
+    return PLeftTransposeMorphismWithGivenRange( cat,
                    PBxC,
                    B,
                    v_sigma,
@@ -1141,11 +1141,11 @@ AddDerivationToCAP( ExponentialOnObjects,
         [ [ PowerObject, 3 ],
           [ DirectProduct, 3 ],
           [ TerminalObject, 1 ],
-          [ FiberMorphismWithGivenObjects, 1 ],
+          [ LeftFiberMorphismWithGivenObjects, 1 ],
           [ SingletonMorphismWithGivenPowerObject, 1 ],
           [ ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier, 1 ],
           [ PreCompose, 1 ],
-          [ PTransposeMorphismWithGivenRange, 1 ],
+          [ PLeftTransposeMorphismWithGivenRange, 1 ],
           [ RelativeTruthMorphismOfTrueWithGivenObjects, 1 ],
           [ FiberProduct, 1 ] ],
         
@@ -1185,11 +1185,11 @@ AddDerivationToCAP( CartesianLeftEvaluationMorphismWithGivenSource,
         "CartesianLeftEvaluationMorphismWithGivenSource from the power object, the power object evaluation morphism, and the P-transpose",
         [ [ PowerObject, 4 ],
           [ DirectProduct, 4 ],
-          [ FiberMorphismWithGivenObjects, 2 ],
+          [ LeftFiberMorphismWithGivenObjects, 2 ],
           [ SingletonMorphismWithGivenPowerObject, 2 ],
           [ ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier, 1 ],
           [ PreCompose, 2 ],
-          [ PTransposeMorphismWithGivenRange, 1 ],
+          [ PLeftTransposeMorphismWithGivenRange, 1 ],
           [ TerminalObject, 1 ],
           [ RelativeTruthMorphismOfTrueWithGivenObjects, 1 ],
           [ ProjectionInFactorOfFiberProduct, 1 ],
@@ -1218,7 +1218,7 @@ AddDerivationToCAP( CartesianLeftEvaluationMorphismWithGivenSource,
     
     ## v: P(B × C) × B → PC, where
     ## v(R, b) = π_B⁻¹(b) ∩ R = { c ∈ C | (b,c) ∈ R } ∈ PC
-    v := FiberMorphismWithGivenObjects( cat,
+    v := LeftFiberMorphismWithGivenObjects( cat,
                  PBxC_xB,
                  B, C,
                  PC );

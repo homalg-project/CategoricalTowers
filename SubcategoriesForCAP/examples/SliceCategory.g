@@ -212,7 +212,7 @@ f := MorphismConstructor( o12, ff, omega );
 #! A morphism in the slice category given by: |6| → |4|
 IsWellDefined( f );
 #! true
-g := PTransposeMorphism( o1, o2, f );
+g := PLeftTransposeMorphism( o1, o2, f );
 #! A morphism in the slice category given by: |3| → |8|
 expo1o1 := Exponential( o1, o1 );
 #! An object in the slice category given by: |5| → |2|
