@@ -481,25 +481,17 @@ end );
 ## Rewrite a relation μ:R ↪ a × b as a morphism b → P(a)
 AddDerivationToCAP( LowerSegmentOfRelationWithGivenRange,
         "",
-        [ [ CartesianBraiding, 1 ],
-          [ PreCompose, 1 ],
-          [ ClassifyingMorphismOfSubobject, 1 ],
-          [ DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential, 1 ] ],
+        [ [ ClassifyingMorphismOfSubobject, 1 ],
+          [ DirectProductToExponentialRightAdjunctMorphismWithGivenExponential, 1 ] ],
         
   function( C, a, b, mu, Pa )
-    local mu_, chi_;
+    local chi;
     
-    ## μ⁻: s(μ) ↪ b × a is the composition s(μ) ↪ a × b ⭇ b × a
-    ## of μ: s(μ) ↪ a × b and the canonical braiding a × b ⭇ b × a
-    mu_ := PreCompose( C,
-                   mu,
-                   CartesianBraiding( C, a, b ) );
-    
-    ## χ⁻: b × a → Ω is the classifying morphism of μ⁻: s(μ) ↪ b × a
-    chi_ := ClassifyingMorphismOfSubobject( C, mu_ );
+    ## χ: a × b → Ω is the classifying morphism of μ: s(μ) ↪ a × b
+    chi := ClassifyingMorphismOfSubobject( C, mu );
     
     ## b → P(a) encoding the relation given by μ
-    return DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential( C, b, a, chi_, Pa );
+    return DirectProductToExponentialRightAdjunctMorphismWithGivenExponential( C, a, b, chi, Pa );
     
 end );
 
