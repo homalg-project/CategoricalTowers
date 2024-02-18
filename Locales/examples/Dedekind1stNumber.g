@@ -16,6 +16,8 @@ Display( IntervalCategory );
 #! 
 #! 21 primitive operations were used to derive 327 operations for this category
 #!  which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsFiniteCategory
 #! * IsEquippedWithHomomorphismStructure
 #! * IsBooleanAlgebra

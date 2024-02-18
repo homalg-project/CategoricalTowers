@@ -36,6 +36,8 @@ InstallGlobalFunction( "CreateIntervalCategory",
     SetRangeCategoryOfHomomorphismStructure( IntervalCategory, IntervalCategory );
     SetIsEquippedWithHomomorphismStructure( IntervalCategory, true );
     
+    SetIsCategoryWithDecidableLifts( IntervalCategory, true );
+    SetIsCategoryWithDecidableColifts( IntervalCategory, true );
     
     ##
     AddObjectConstructor( IntervalCategory,
