@@ -100,7 +100,7 @@ Dependencies := rec(
                    [ "LinearAlgebraForCAP", ">= 2024.01-04" ],
                    [ "FreydCategoriesForCAP", ">= 2024.01-03" ],
                    [ "SubcategoriesForCAP", ">= 2024.01-01" ],
-                   [ "Toposes", ">= 2024.01-02" ],
+                   [ "Toposes", ">= 2024.02-08" ],
                    [ "FinSetsForCAP", ">= 2024.02-02" ],
                    [ "ToolsForHigherHomologicalAlgebra", ">= 2023.03-01" ],
                    ],

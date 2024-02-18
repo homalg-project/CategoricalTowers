@@ -432,6 +432,20 @@ AddDerivationToCAP( PowerObjectFunctorialWithGivenPowerObjects,
     
 end );
 
+## a × P(a) → Ω
+AddDerivationToCAP( PowerObjectRightEvaluationMorphismWithGivenObjects,
+        "PowerObjectRightEvaluationMorphismWithGivenObjects as a special case of the cartesian evaluation",
+        [ [ CartesianRightEvaluationMorphismWithGivenSource, 1 ] ],
+        
+  function( cat, axPa, a, Omega )
+    
+    return CartesianRightEvaluationMorphismWithGivenSource( cat,
+                   a,
+                   Omega,
+                   axPa );
+    
+end );
+
 ## P(a) × a → Ω
 AddDerivationToCAP( PowerObjectLeftEvaluationMorphismWithGivenObjects,
         "PowerObjectLeftEvaluationMorphismWithGivenObjects as a special case of the cartesian evaluation",
@@ -443,6 +457,21 @@ AddDerivationToCAP( PowerObjectLeftEvaluationMorphismWithGivenObjects,
                    a,
                    Omega,
                    Pa_xa );
+    
+end );
+
+## (f:a × b → Ω) ↦ (b → P(a))
+AddDerivationToCAP( PRightTransposeMorphismWithGivenRange,
+        "PRightTransposeMorphismWithGivenRange as a special case of the cartesian adjunction",
+        [ [ DirectProductToExponentialRightAdjunctMorphismWithGivenExponential, 1 ] ],
+        
+  function( cat, a, b, f, Pa )
+    
+    return DirectProductToExponentialRightAdjunctMorphismWithGivenExponential( cat,
+                   a,
+                   b,
+                   f,
+                   Pa );
     
 end );
 
@@ -1008,6 +1037,69 @@ AddDerivationToCAP( RelativePseudoComplementSubobject,
   function( cat, iota1, iota2 )
     
     return Source( EmbeddingOfRelativePseudoComplementSubobject( cat, iota1, iota2 ) );
+    
+end );
+
+##
+AddDerivationToCAP( RightFiberMorphismWithGivenObjects,
+        "RightFiberMorphismWithGivenObjects using PowerObjectRightEvaluationMorphism and PRightTransposeMorphism",
+        [ [ PowerObject, 1 ],
+          [ DirectProduct, 3 ],
+          [ SubobjectClassifier, 1 ],
+          [ PowerObjectRightEvaluationMorphismWithGivenObjects, 1 ],
+          [ CartesianAssociatorRightToLeftWithGivenDirectProducts, 1 ],
+          [ PreCompose, 1 ],
+          [ PRightTransposeMorphismWithGivenRange, 1 ] ],
+        
+  function( cat, CxPBxC, B, C, PB )
+    local B_C, BxC, PBxC, BxC_PBxC, BxCx_PBxC, Omega, epsilon_BxC, Bx_Cx_PBxC, alpha, epsilon_BxC_;
+    
+    B_C := [ B, C ];
+    
+    ## B × C
+    BxC := DirectProduct( cat, B_C );
+    
+    ## P(B × C)
+    PBxC := PowerObject( cat, BxC );
+    
+    BxC_PBxC := [ BxC, PBxC ];
+    
+    ## P(B × C) × (B × C)
+    BxCx_PBxC := DirectProduct( cat, BxC_PBxC );
+    
+    ## Ω
+    Omega := SubobjectClassifier( cat );
+    
+    ## ϵ_{B × C} : (B × C) × P(B × C) → Ω
+    epsilon_BxC := PowerObjectRightEvaluationMorphismWithGivenObjects( cat,
+                           BxCx_PBxC,
+                           BxC,
+                           Omega );
+    
+    ## B × (C × P(B × C))
+    Bx_Cx_PBxC := DirectProduct( cat,
+                          [ B, CxPBxC ] );
+    
+    ## B × (C × P(B × C)) → (B × C) × P(B × C)
+    alpha := CartesianAssociatorRightToLeftWithGivenDirectProducts( cat,
+                     Bx_Cx_PBxC,
+                     B,
+                     C,
+                     PBxC,
+                     BxCx_PBxC );
+    
+    ## ϵ_{B × C} : B × (C × P(B × C)) → Ω
+    epsilon_BxC_ := PreCompose( cat,
+                            alpha,
+                            epsilon_BxC );
+    
+    ## v: C × P(B × C) → PB, where
+    ## v(R, c) = π_C⁻¹(c) ∩ R = { b ∈ B | (b,c) ∈ R } ∈ PB
+    return PRightTransposeMorphismWithGivenRange( cat,
+                   B,
+                   CxPBxC,
+                   epsilon_BxC_,
+                   PB );
     
 end );
 

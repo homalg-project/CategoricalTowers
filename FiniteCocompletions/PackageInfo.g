@@ -74,6 +74,7 @@ Dependencies := rec(
                    [ "CAP", ">= 2024.02-01" ],
                    [ "MonoidalCategories", ">= 2024.02-01" ],
                    [ "CartesianCategories", ">= 2024.02-01" ],
+                   [ "Toposes", ">= 2024.02-08" ],
                    [ "ToolsForCategoricalTowers", ">= 2024.02-03" ],
                    [ "Toposes", ">= 2024.01-02" ],
                    [ "Locales", ">= 2024.02-13" ],

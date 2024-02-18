@@ -260,6 +260,26 @@ PowerObjectFunctorialWithGivenPowerObjects := rec(
   output_range_getter_preconditions := [ ],
 ),
 
+PowerObjectRightEvaluationMorphism := rec(
+  filter_list := [ "category", "object" ],
+  return_type := "morphism",
+  input_arguments_names := [ "cat", "a" ],
+  output_source_getter_string := "DirectProduct( cat, [ a, PowerObject( cat, a ) ] )",
+  output_source_getter_preconditions := [ [ "PowerObject", 1 ], [ "DirectProduct", 1 ] ],
+  output_range_getter_string := "SubobjectClassifier( cat )",
+  output_range_getter_preconditions := [ [ "SubobjectClassifier", 1 ] ],
+  with_given_object_position := "both" ),
+
+PowerObjectRightEvaluationMorphismWithGivenObjects := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  return_type := "morphism",
+  input_arguments_names := [ "cat", "axPa", "a", "Omega" ],
+  output_source_getter_string := "axPa",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Omega",
+  output_range_getter_preconditions := [ ],
+),
+
 PowerObjectLeftEvaluationMorphism := rec(
   filter_list := [ "category", "object" ],
   return_type := "morphism",
@@ -277,6 +297,26 @@ PowerObjectLeftEvaluationMorphismWithGivenObjects := rec(
   output_source_getter_string := "Pa_xa",
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "Omega",
+  output_range_getter_preconditions := [ ],
+),
+
+PRightTransposeMorphism := rec(
+  filter_list := [ "category", "object", "object", "morphism" ],
+  return_type := "morphism",
+  input_arguments_names := [ "cat", "a", "b", "f" ],
+  output_source_getter_string := "b",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "PowerObject( cat, a )",
+  output_range_getter_preconditions := [ [ "PowerObject", 1 ] ],
+  with_given_object_position := "Range" ),
+
+PRightTransposeMorphismWithGivenRange := rec(
+  filter_list := [ "category", "object", "object", "morphism", "object" ],
+  return_type := "morphism",
+  input_arguments_names := [ "cat", "a", "b", "f", "Pa" ],
+  output_source_getter_string := "b",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Pa",
   output_range_getter_preconditions := [ ],
 ),
 
@@ -499,6 +539,25 @@ RelativeTruthMorphismOfImpliesWithGivenObjects := rec(
   output_range_getter_string := "Pa",
   output_range_getter_preconditions := [ ],
 ),
+
+RightFiberMorphism := rec(
+  filter_list := [ "category", "object", "object" ],
+  return_type := "morphism",
+  input_arguments_names := [ "cat", "b", "c" ],
+  output_source_getter_string := "DirectProduct( cat, [ c, PowerObject( cat, DirectProduct( cat, [ b, c ] ) ) ] )",
+  output_source_getter_preconditions := [ [ "DirectProduct", 2 ], [ "PowerObject", 1 ] ],
+  output_range_getter_string := "PowerObject( cat, b )",
+  output_range_getter_preconditions := [ [ "PowerObject", 1 ] ],
+  with_given_object_position := "both" ),
+
+RightFiberMorphismWithGivenObjects := rec(
+  filter_list := [ "category", "object", "object", "object", "object" ],
+  return_type := "morphism",
+  input_arguments_names := [ "cat", "cxPbxc", "b", "c", "Pb" ],
+  output_source_getter_string := "cxPbxc",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "Pb",
+  output_range_getter_preconditions := [ ] ),
 
 LeftFiberMorphism := rec(
   filter_list := [ "category", "object", "object" ],

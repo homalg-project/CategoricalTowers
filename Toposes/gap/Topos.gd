@@ -356,6 +356,25 @@ DeclareOperation( "PowerObjectFunctorialWithGivenPowerObjects",
 
 #! @Description
 #!  The argument is an object <A>a</A>.
+#!  The output is the power object right evaluation morphism of $\epsilon_a: a \times P(a) \to \Omega$,
+#!  where $\Omega$ is the subobject classifier of <C>CapCategory</C>(<A>a</A>).
+#! @Arguments a
+#! @Returns a morphism in $\mathrm{Hom}( a \times \mathrm{PowerObject}(a), \Omega )$
+DeclareAttribute( "PowerObjectRightEvaluationMorphism",
+        IsCapCategoryObject );
+
+#! @Description
+#!  The arguments are three objects <A>Pa_xa</A>, <A>a</A>, and <A>Omega</A>,
+#!  such that <A>axPa</A>$= a \times P(a)$ and
+#!  <A>Omega</A> the subobject classifier of <C>CapCategory</C>(<A>a</A>).
+#!  The output is the power object right evaluation morphism of $\epsilon_a:$ <A>axPa</A> $\to$ <A>Omega</A>.
+#! @Arguments axPa, a, Omega
+#! @Returns a morphism in $\mathrm{Hom}( axPa, Omega )$
+DeclareOperation( "PowerObjectRightEvaluationMorphismWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#!  The argument is an object <A>a</A>.
 #!  The output is the power object left evaluation morphism of $\epsilon_a: P(a) \times a \to \Omega$,
 #!  where $\Omega$ is the subobject classifier of <C>CapCategory</C>(<A>a</A>).
 #! @Arguments a
@@ -372,6 +391,28 @@ DeclareAttribute( "PowerObjectLeftEvaluationMorphism",
 #! @Returns a morphism in $\mathrm{Hom}( Pa_xa, Omega )$
 DeclareOperation( "PowerObjectLeftEvaluationMorphismWithGivenObjects",
         [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#!  The arguments are two objects <A>a</A>, <A>b</A>,
+#!  a morphism <A>f</A>: <A>a</A> $\times$ <A>b</A> $\to \Omega$,
+#!  where $\Omega$ is the subobject classifier of <C>CapCategory</C>(<A>f</A>).
+#!  The output is the $P$-right-transpose morphism <A>b</A> $\to P(a)$,
+#!  where $P(a) =$ <C>PowerObject</C>( <A>a</A> ).
+#! @Arguments a, b, f
+#! @Returns a morphism in $\mathrm{Hom}( b, P(a) )$
+DeclareOperation( "PRightTransposeMorphism",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+#! @Description
+#!  The arguments are two objects <A>a</A>, <A>b</A>,
+#!  a morphism <A>f</A>: <A>a</A> $\times$ <A>b</A> $\to \Omega$, and an object <A>Pa</A>,
+#!  where $\Omega$ is the subobject classifier of <C>CapCategory</C>(<A>f</A>)
+#!  and <A>Pa</A> = <C>PowerObject</C>( <A>a</A> ).
+#!  The output is the $P$-right-transpose morphism <A>b</A> $\to$ <A>Pa</A>.
+#! @Arguments a, b, f, Pa
+#! @Returns a morphism in $\mathrm{Hom}( b, Pa )$
+DeclareOperation( "PRightTransposeMorphismWithGivenRange",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #!  The arguments are two objects <A>a</A>, <A>b</A>,
@@ -512,6 +553,27 @@ DeclareAttribute( "RelativePowerObjectFibrationMorphism",
 #! @Returns a monomorphism $\mathrm{Hom}( P_fa \times a, \Omega \times b )$
 DeclareAttribute( "RelativePowerObjectLeftEvaluationMorphism",
         IsCapCategoryMorphism );
+
+#! @Description
+#!  The arguments are two objects <A>b</A>, <A>c</A>.
+#!  The output is the morphism <A>c</A> $\times$ <C>PowerObject</C>(b \times c) $\to$ <C>PowerObject</C>( <A>b</A> )
+#!  that for a given relation $R \subseteq$ <A>b</A> $\times$ <A>c</A>
+#!  and an element $y$ in the base <A>c</A> computes the fiber over $y$ as subset of <A>b</A>.
+#! @Returns a morphism in $\mathrm{Hom}( c \times P(b \times c), P(b) )$
+#! @Arguments b, c
+DeclareOperation( "RightFiberMorphism",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+#! @InsertChunk RightFiberMorphism
+
+#! @Description
+#!  The arguments are four objects <A>cxPbxc</A>, <A>b</A>, <A>c</A>, <A>Pb</A>,
+#!  where <A>cxPbxc</A> = $c \times P(b \times c)$ and <A>Pb</A> = <C>PowerObject</C>( <A>b</A> ).
+#!  The output is the morphism that for a given relation $R \subseteq$ <A>b</A> $\times$ <A>c</A>
+#!  and an element $y$ in the base <A>c</A> computes the fiber over $y$ as subset of <A>b</A>.
+#! @Returns a morphism in $\mathrm{Hom}( cxPbxc, Pb )$
+#! @Arguments cxPbxc, b, c, Pb
+DeclareOperation( "RightFiberMorphismWithGivenObjects",
+        [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #!  The arguments are two objects <A>b</A>, <A>c</A>.
