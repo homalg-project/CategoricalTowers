@@ -224,6 +224,11 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
         H := RangeCategoryOfHomomorphismStructure( C );
         
+        if IsIntervalCategory( H ) then
+            SetIsThinCategory( UC, true );
+            SetIsCategoryWithDecidableColifts( UC, true );
+        fi;
+        
     fi;
     
     ##
@@ -1423,7 +1428,8 @@ InstallMethod( FiniteStrictCoproductCompletion,
             fi;
             
         elif ( IsBound( IsSkeletalCategoryOfFiniteSets ) and ValueGlobal( "IsSkeletalCategoryOfFiniteSets" )( H ) ) or
-          IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( H ) then
+          IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( H ) or
+          IsIntervalCategory( H ) then
             
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UC,
