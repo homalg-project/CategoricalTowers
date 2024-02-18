@@ -1152,7 +1152,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             maps := List( [ 0 .. t ^ s - 1 ], m ->
                           List( [ 0 .. s - 1 ], i ->
-                                RemInt( QuoInt( m, t ^ i ), t ) ) );
+                                DigitInPositionalNotation( m, i, s, t  ) ) );
             
             return Coproduct( H,
                            List( maps, map ->
@@ -1179,7 +1179,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             maps := List( [ 0 .. t ^ s - 1 ], m ->
                           List( [ 0 .. s - 1 ], i ->
-                                RemInt( QuoInt( m, t ^ i ), t ) ) );
+                                DigitInPositionalNotation( m, i, s, t ) ) );
             
             LS := pairS[2];
             LT := pairT[2];
@@ -1332,7 +1332,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
                 maps := List( [ 0 .. t ^ s - 1 ], m ->
                               List( [ 0 .. s - 1 ], i ->
-                                    RemInt( QuoInt( m, t ^ i ), t ) ) );
+                                    DigitInPositionalNotation( m, i, s, t ) ) );
                 
                 LS := pairS[2];
                 LT := pairT[2];
@@ -1396,7 +1396,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                     
                     maps := List( [ 0 .. t ^ s - 1 ], m ->
                                   List( [ 0 .. s - 1 ], i ->
-                                        RemInt( QuoInt( m, t ^ i ), t ) ) );
+                                        DigitInPositionalNotation( m, i, s, t ) ) );
                     ## FiniteStrictCoproductCompletion code:
                     
                     source_objects := source_datum[2];
@@ -1441,7 +1441,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
                 maps := List( [ 0 .. t ^ s - 1 ], m ->
                               List( [ 0 .. s - 1 ], i ->
-                                    RemInt( QuoInt( m, t ^ i ), t ) ) );
+                                    DigitInPositionalNotation( m, i, s, t ) ) );
                 
                 LS := pairS[2];
                 LT := pairT[2];
@@ -1458,7 +1458,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 number := BigInt( SafeFirst( [ 0 .. t ^ s - 1 ], i -> Sum( List( homs{[ 1 .. 1 + i ]}, Length ) ) > value ) );
                 
                 ## number -> map
-                map := List( [ 0 .. s - 1 ], i -> RemInt( QuoInt( number, t^i ), t ) );
+                map := List( [ 0 .. s - 1 ], i -> DigitInPositionalNotation( number, i, s, t ) );
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
                 Assert( 0, map = maps[1 + number] );
