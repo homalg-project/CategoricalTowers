@@ -66,6 +66,11 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
         ],
     );
     
+    if HasIsFiniteCategory( P ) and IsFiniteCategory( P ) then
+        SetIsFiniteCategory( D, true );
+        SetIsFinitelyPresentedCategory( D, true );
+    fi;
+    
     ADD_COMMON_METHODS_FOR_PREORDERED_SETS( D );
     
     ##
@@ -115,6 +120,24 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
         Error( "the category is not known to be skeletal\n" );
     elif not ( "DirectProduct" in L and "Coproduct" in L ) then
         Error( "the category does not seem to be a lattice\n" );
+    fi;
+    
+    if CanCompute( P, "SetOfObjectsOfCategory" ) then
+        
+        AddSetOfObjectsOfCategory( D,
+          function( D )
+            local objects, L;
+            
+            objects := SetOfObjects( P );
+            
+            L := List( objects, m ->
+                       List( objects, s ->
+                             ObjectConstructor( D, Pair( m, s ) ) ) );
+            
+            return DuplicateFreeList( Concatenation( L ) );
+            
+        end );
+        
     fi;
     
     ##
@@ -172,6 +195,28 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
     Finalize( D );
     
     return D;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a meet-semilattice of single differences",
+        [ IsMeetSemilatticeOfSingleDifferences ],
+        
+  function( D )
+    
+    return SetOfObjectsOfCategory( D );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for a meet-semilattice of single differences",
+        [ IsMeetSemilatticeOfSingleDifferences ],
+        
+  function( D )
+    
+    return SetOfGeneratingMorphismsOfCategory( D );
     
 end );
 
