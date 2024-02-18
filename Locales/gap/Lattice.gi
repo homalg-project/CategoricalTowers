@@ -32,7 +32,7 @@ InstallTrueMethod( IsStrictCartesianCategory, IsPosetCategory and IsCartesianCat
 InstallTrueMethod( IsStrictCocartesianCategory, IsPosetCategory and IsCocartesianCategory );
 
 InstallTrueMethod( IsMeetSemiLattice, IsCartesianProset and IsSkeletalCategory );
-InstallTrueMethod( IsCartesianCategory, IsMeetSemiLattice );
+InstallTrueMethod( IsCartesianProset, IsMeetSemiLattice );
 InstallTrueMethod( IsSkeletalCategory, IsMeetSemiLattice );
 
 InstallTrueMethod( IsJoinSemiLattice, IsCocartesianProset and IsSkeletalCategory );
