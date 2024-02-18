@@ -559,3 +559,29 @@ AddDerivationToCAP( IsIsomorphicForObjects,
            IsSplitMonomorphism( cat, UniqueMorphism( cat, M, N ) );
     
 end : CategoryFilter := IsThinCategory );
+
+if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
+
+##
+AddDerivationToCAP( SetOfGeneratingMorphismsOfCategory,
+        "",
+        [ [ SetOfObjectsOfCategory, 1 ],
+          [ IsHomSetInhabited, 1 ],
+          [ UniqueMorphism, 4 ] ],
+        
+  function( cat )
+    local objects, l, digraph;
+    
+    objects := SetOfObjectsOfCategory( cat );
+    
+    l := Length( objects );
+    
+    digraph := DigraphReflexiveTransitiveReduction( Digraph( objects, IsHomSetInhabited ) );
+    
+    return Concatenation( List( [ 1 .. l ], s ->
+                   List( OutNeighborsOfVertex( digraph, s ), t ->
+                         UniqueMorphism( cat, objects[s], objects[t] ) ) ) );
+    
+end : CategoryFilter := IsThinCategory and IsFiniteCategory );
+
+fi;
