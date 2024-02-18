@@ -534,3 +534,14 @@ AddDerivationToCAP( BraidingInverseWithGivenTensorProducts,
     return UniqueMorphism( cat, NM, MN );
     
 end : CategoryFilter := IsMonoidalProset );
+
+##
+AddDerivationToCAP( UniqueMorphism,
+        "UniqueMorphism using MorphismsOfExternalHom",
+        [ [ MorphismsOfExternalHom, 1 ] ],
+        
+  function( cat, M, N )
+    
+    return MorphismsOfExternalHom( cat, M, N )[1];
+    
+end : CategoryFilter := IsThinCategory );
