@@ -13,7 +13,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
     local name, category_filter, category_object_filter, category_morphism_filter,
           create_func_object, create_func_morphism,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
-          properties, UI;
+          UI;
     
     name := Concatenation( "FiniteStrictCoproductCompletion( ", Name( I ), " )" );
     
