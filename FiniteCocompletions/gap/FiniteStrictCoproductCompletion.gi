@@ -172,7 +172,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         [ IsCapCategory ],
         
   function ( C )
-    local UC, install_hom_structure, H,
+    local UC, H, install_hom_structure,
           object_func, morphism_func, object_func_inverse, morphism_func_inverse, extended;
     
     ##
@@ -217,6 +217,12 @@ InstallMethod( FiniteStrictCoproductCompletion,
     if ( HasIsFiniteCompleteCategory and IsFiniteCompleteCategory )( C ) then
         
         SetIsFiniteCompleteCategory( UC, true );
+        
+    fi;
+    
+    if HasRangeCategoryOfHomomorphismStructure( C ) then
+        
+        H := RangeCategoryOfHomomorphismStructure( C );
         
     fi;
     
@@ -1025,10 +1031,6 @@ InstallMethod( FiniteStrictCoproductCompletion,
     fi;
     
     install_hom_structure := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "install_hom_structure", true );
-    
-    if HasRangeCategoryOfHomomorphismStructure( C ) then
-        H := RangeCategoryOfHomomorphismStructure( C );
-    fi;
     
     if install_hom_structure and
        ( HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure )( C ) and
