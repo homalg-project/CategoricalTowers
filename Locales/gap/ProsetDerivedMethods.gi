@@ -545,3 +545,17 @@ AddDerivationToCAP( UniqueMorphism,
     return MorphismsOfExternalHom( cat, M, N )[1];
     
 end : CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsIsomorphicForObjects,
+        "IsIsomorphicForObjects using the unique morphism",
+        [ [ IsHomSetInhabited, 1 ],
+          [ UniqueMorphism, 1 ],
+          [ IsSplitMonomorphism, 1 ] ],
+        
+  function( cat, M, N )
+    
+    return IsHomSetInhabited( cat, M, N ) and
+           IsSplitMonomorphism( cat, UniqueMorphism( cat, M, N ) );
+    
+end : CategoryFilter := IsThinCategory );
