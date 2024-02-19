@@ -19,6 +19,20 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        [ IsCapCategory and HasOppositeCategory ],
+        
+  function( cat_op )
+    
+    return List( SetOfGeneratingMorphisms( OppositeCategory( cat_op ) ), mor ->
+                 MorphismConstructor( cat_op,
+                         ObjectConstructor( cat_op, Target( mor ) ),
+                         mor,
+                         ObjectConstructor( cat_op, Source( mor ) ) ) );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
         "for a quotient category",
         [ IsQuotientCapCategory ],
         
