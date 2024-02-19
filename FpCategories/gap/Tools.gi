@@ -48,6 +48,26 @@ InstallMethod( SetOfGeneratingMorphismsAsUnresolvableAttribute,
         
   SetOfGeneratingMorphismsOfCategory );
 
+## using InstallMethodForCompilerForCAP with IsFinitelyPresentedCategory
+## leads to a no-method-found-error when executing
+## FunctorCategories/examples/PrecompilePreSheavesOfAlgebroidFromDataTablesInCategoryOfRows.g
+InstallMethod( DefiningTripleOfUnderlyingQuiver,
+        [ IsCapCategory and IsFinitelyPresentedCategory ],
+        
+  function( cat )
+    local objs, mors;
+    
+    objs := SetOfObjectsOfCategory( cat );
+    mors := SetOfGeneratingMorphismsOfCategory( cat );
+    
+    return Triple( Length( objs ),
+                   Length( mors ),
+                   List( mors, mor ->
+                         Pair( -1 + SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( cat, obj, Source( mor ) ) ),
+                               -1 + SafeUniquePositionProperty( objs, obj -> IsEqualForObjects( cat, obj, Target( mor ) ) ) ) ) );
+    
+end );
+
 ##
 InstallOtherMethod( Size,
         "for a CAP category",
