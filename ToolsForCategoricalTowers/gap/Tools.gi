@@ -26,6 +26,16 @@ InstallMethod( SetOfObjects,
 end );
 
 ##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        [ IsCapCategory and HasOppositeCategory ],
+        
+  function( cat_op )
+    
+    return List( SetOfObjects( OppositeCategory( cat_op ) ), obj -> ObjectConstructor( cat_op, obj ) );
+    
+end );
+
+##
 InstallMethod( SetOfMorphisms,
         [ IsCapCategory ],
         
