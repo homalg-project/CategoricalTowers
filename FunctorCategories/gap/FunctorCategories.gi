@@ -745,6 +745,28 @@ InstallMethod( Hom,
         
   FunctorCategory );
 
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a functor category",
+        [ IsFunctorCategory ],
+        
+  function( Hom )
+    
+    return SetOfObjectsOfCategory( Hom );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for a functor category",
+        [ IsFunctorCategory ],
+        
+  function( Hom )
+    
+    return SetOfGeneratingMorphismsOfCategory( Hom );
+    
+end );
+
 ####################################
 #
 # Methods for attributes

@@ -616,6 +616,28 @@ InstallMethod( CoPreSheaves,
     
 end );
 
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a copresheaf category",
+        [ IsCoPreSheafCategory ],
+        
+  function( coPSh )
+    
+    return SetOfObjectsOfCategory( coPSh );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for a copresheaf category",
+        [ IsCoPreSheafCategory ],
+        
+  function( coPSh )
+    
+    return SetOfGeneratingMorphismsOfCategory( coPSh );
+    
+end );
+
 ####################################
 #
 # Methods for attributes
