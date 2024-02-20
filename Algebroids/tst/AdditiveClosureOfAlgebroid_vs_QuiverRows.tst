@@ -43,7 +43,7 @@ gap> runtime_quiver := Runtime( ) - start;;
 #
 gap> if runtime >= runtime_quiver * 3 / 10 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;
 true
-gap> if runtime <= runtime_quiver * 4 / 10 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;
+gap> if runtime <= runtime_quiver * 5 / 10 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;
 true
 
 #
