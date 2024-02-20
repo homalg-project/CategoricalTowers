@@ -4,6 +4,7 @@
 # Implementations
 #
 
+#= comment for Julia
 if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
 
 ##
@@ -62,3 +63,4 @@ InstallOtherMethod( DotVertexLabelledDigraph,
 end );
 
 fi;
+# =#
