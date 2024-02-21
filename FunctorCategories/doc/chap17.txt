@@ -1,0 +1,358 @@
+  
+  [1X17 [33X[0;0YPrecompilation[133X[101X
+  
+  
+  [1X17.1 [33X[0;0YPrecompiling the category of finite quivers[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2022.09-02", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := { } -> CategoryOfBouquetsEnrichedOver( SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "FinBouquetsPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "FunctorCategories";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name[127X[104X
+    [4X[25X>[125X [27X   : operations := [ "InitialObject",[127X[104X
+    [4X[25X>[125X [27X                     "Coproduct",[127X[104X
+    [4X[25X>[125X [27X                     "InjectionOfCofactorOfCoproductWithGivenCoproduct",[127X[104X
+    [4X[25X>[125X [27X                     "UniversalMorphismFromCoproductWithGivenCoproduct",[127X[104X
+    [4X[25X>[125X [27X                     #"CoproductOnMorphismsWithGivenCoproducts", # <- derived and leads to an error[127X[104X
+    [4X[25X>[125X [27X                     #"CoproductFunctorialWithGivenCoproducts", # <- derived[127X[104X
+    [4X[25X>[125X [27X                     "DistinguishedObjectOfHomomorphismStructure",[127X[104X
+    [4X[25X>[125X [27X                     "HomomorphismStructureOnObjects",[127X[104X
+    [4X[25X>[125X [27X                     #"HomomorphismStructureOnMorphismsWithGivenObjects",[127X[104X
+    [4X[25X>[125X [27X                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",[127X[104X
+    [4X[25X>[125X [27X                     "MorphismsOfExternalHom",[127X[104X
+    [4X[25X>[125X [27X                     ][127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XFinBouquetsPrecompiled( );[127X[104X
+    [4X[28XCategoryOfBouquetsEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27Xcat := CategoryOfBouquetsEnrichedOver( SkeletalFinSets );[127X[104X
+    [4X[28XFinBouquets[128X[104X
+    [4X[25Xgap>[125X [27Xcat!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2022.09-02", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := { } -> CategoryOfQuiversEnrichedOver( SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "FinQuiversPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "FunctorCategories";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name[127X[104X
+    [4X[25X>[125X [27X   : operations := [ "InitialObject",[127X[104X
+    [4X[25X>[125X [27X                     "Coproduct",[127X[104X
+    [4X[25X>[125X [27X                     #"InjectionOfCofactorOfCoproductWithGivenCoproduct",[127X[104X
+    [4X[25X>[125X [27X                     #"UniversalMorphismFromCoproductWithGivenCoproduct",[127X[104X
+    [4X[25X>[125X [27X                     #"CoproductOnMorphismsWithGivenCoproducts", # <- derived and leads to an error[127X[104X
+    [4X[25X>[125X [27X                     #"CoproductFunctorialWithGivenCoproducts", # <- derived[127X[104X
+    [4X[25X>[125X [27X                     "DistinguishedObjectOfHomomorphismStructure",[127X[104X
+    [4X[25X>[125X [27X                     "HomomorphismStructureOnObjects",[127X[104X
+    [4X[25X>[125X [27X                     #"HomomorphismStructureOnMorphismsWithGivenObjects",[127X[104X
+    [4X[25X>[125X [27X                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",[127X[104X
+    [4X[25X>[125X [27X                     "MorphismsOfExternalHom",[127X[104X
+    [4X[25X>[125X [27X                     ][127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XFinQuiversPrecompiled( );[127X[104X
+    [4X[28XCategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27Xcat := CategoryOfQuiversEnrichedOver( SkeletalFinSets );[127X[104X
+    [4X[28XFinQuivers[128X[104X
+    [4X[25Xgap>[125X [27Xcat!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X17.2 [33X[0;0YPrecompiling the category of finite reflexive quivers[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2022.09-02", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := { } -> CategoryOfReflexiveQuiversEnrichedOver( SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "FinReflexiveQuiversPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "FunctorCategories";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name[127X[104X
+    [4X[25X>[125X [27X   : operations := [ "InitialObject",[127X[104X
+    [4X[25X>[125X [27X                     "Coproduct",[127X[104X
+    [4X[25X>[125X [27X                     #"InjectionOfCofactorOfCoproductWithGivenCoproduct",[127X[104X
+    [4X[25X>[125X [27X                     #"UniversalMorphismFromCoproductWithGivenCoproduct",[127X[104X
+    [4X[25X>[125X [27X                     #"CoproductOnMorphismsWithGivenCoproducts", # <- derived and leads to an error[127X[104X
+    [4X[25X>[125X [27X                     #"CoproductFunctorialWithGivenCoproducts", # <- derived[127X[104X
+    [4X[25X>[125X [27X                     "DistinguishedObjectOfHomomorphismStructure",[127X[104X
+    [4X[25X>[125X [27X                     "HomomorphismStructureOnObjects",[127X[104X
+    [4X[25X>[125X [27X                     #"HomomorphismStructureOnMorphismsWithGivenObjects",[127X[104X
+    [4X[25X>[125X [27X                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",[127X[104X
+    [4X[25X>[125X [27X                     "MorphismsOfExternalHom",[127X[104X
+    [4X[25X>[125X [27X                     ][127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XFinReflexiveQuiversPrecompiled( );[127X[104X
+    [4X[28XCategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27Xcat := CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets );[127X[104X
+    [4X[28XFinReflexiveQuivers[128X[104X
+    [4X[25Xgap>[125X [27Xcat!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X17.3  [33X[0;0YPrecompiling  the  presheaf  category of an algebroid from data tables[101X
+  [1Xwith values in a category of rows[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2022.09-20", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FreydCategoriesForCAP", "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationalsInSingular( );;[127X[104X
+    [4X[25Xgap>[125X [27Xquiver := RightQuiver( "q(3)[a:1->2,b:2->3]" );;[127X[104X
+    [4X[25Xgap>[125X [27XkF := k[FreeCategory( quiver )];;[127X[104X
+    [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( kF / [ kF.ab ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := A -> PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_PreSheavesOfAlgebroidFromDataTablesInCategoryOfRows :=[127X[104X
+    [4X[25X>[125X [27X  function( A, compiled_category_name )[127X[104X
+    [4X[25X>[125X [27X    CapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X            category_constructor,[127X[104X
+    [4X[25X>[125X [27X            [ A ],[127X[104X
+    [4X[25X>[125X [27X            "FunctorCategories",[127X[104X
+    [4X[25X>[125X [27X            compiled_category_name[127X[104X
+    [4X[25X>[125X [27X            : operations :=[127X[104X
+    [4X[25X>[125X [27X            Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),[127X[104X
+    [4X[25X>[125X [27X                    [ "IsZeroForObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IsZeroForMorphisms",[127X[104X
+    [4X[25X>[125X [27X                      "IsEpimorphism",[127X[104X
+    [4X[25X>[125X [27X                      "IsMonomorphism",[127X[104X
+    [4X[25X>[125X [27X                      "IsIsomorphism",[127X[104X
+    [4X[25X>[125X [27X                      "IsEqualForMorphisms",[127X[104X
+    [4X[25X>[125X [27X                      "IsWellDefinedForObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IsProjective",[127X[104X
+    [4X[25X>[125X [27X                      "IsInjective",[127X[104X
+    [4X[25X>[125X [27X                      "EpimorphismFromSomeProjectiveObject",[127X[104X
+    [4X[25X>[125X [27X                      "MonomorphismIntoSomeInjectiveObject",[127X[104X
+    [4X[25X>[125X [27X                      "ProjectiveLift",[127X[104X
+    [4X[25X>[125X [27X                      "InjectiveColift",[127X[104X
+    [4X[25X>[125X [27X                      "EpimorphismFromProjectiveCoverObject",[127X[104X
+    [4X[25X>[125X [27X                      "MonomorphismIntoInjectiveEnvelopeObject",[127X[104X
+    [4X[25X>[125X [27X                      "IndecomposableProjectiveObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IndecomposableInjectiveObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IsReflexive",[127X[104X
+    [4X[25X>[125X [27X                      ] ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_PreSheavesOfAlgebroidFromDataTablesInCategoryOfRows( A, "PreSheavesOfAlgebroidFromDataTablesInCategoryOfRowsPrecompiled" );[127X[104X
+    [4X[25Xgap>[125X [27Xcat := PreSheavesOfAlgebroidFromDataTablesInCategoryOfRowsPrecompiled( A );;[127X[104X
+    [4X[25Xgap>[125X [27Xcat!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X17.4  [33X[0;0YPrecompiling  the  presheaf  category of an algebroid with values in a[101X
+  [1Xcategory of rows[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2023.12-20", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FreydCategoriesForCAP", "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27Xquiver := RightQuiver( "q(3)[a:1->2,b:2->3]" );;[127X[104X
+    [4X[25Xgap>[125X [27XA := QQ[FreeCategory( quiver )];;[127X[104X
+    [4X[25Xgap>[125X [27XA_bar := A / [ A.ab ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := A -> PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_PreSheavesOfAlgebroidInCategoryOfRows :=[127X[104X
+    [4X[25X>[125X [27X  function( A, compiled_category_name )[127X[104X
+    [4X[25X>[125X [27X    CapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X            category_constructor,[127X[104X
+    [4X[25X>[125X [27X            [ A ],[127X[104X
+    [4X[25X>[125X [27X            "FunctorCategories",[127X[104X
+    [4X[25X>[125X [27X            compiled_category_name[127X[104X
+    [4X[25X>[125X [27X            : operations :=[127X[104X
+    [4X[25X>[125X [27X            Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),[127X[104X
+    [4X[25X>[125X [27X                    [ "IsZeroForObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IsZeroForMorphisms",[127X[104X
+    [4X[25X>[125X [27X                      "IsEpimorphism",[127X[104X
+    [4X[25X>[125X [27X                      "IsMonomorphism",[127X[104X
+    [4X[25X>[125X [27X                      "IsIsomorphism",[127X[104X
+    [4X[25X>[125X [27X                      "IsEqualForMorphisms",[127X[104X
+    [4X[25X>[125X [27X                      "IsWellDefinedForObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IsProjective",[127X[104X
+    [4X[25X>[125X [27X                      "IsInjective",[127X[104X
+    [4X[25X>[125X [27X                      "EpimorphismFromSomeProjectiveObject",[127X[104X
+    [4X[25X>[125X [27X                      "MonomorphismIntoSomeInjectiveObject",[127X[104X
+    [4X[25X>[125X [27X                      "ProjectiveLift",[127X[104X
+    [4X[25X>[125X [27X                      "InjectiveColift",[127X[104X
+    [4X[25X>[125X [27X                      "EpimorphismFromProjectiveCoverObject",[127X[104X
+    [4X[25X>[125X [27X                      "MonomorphismIntoInjectiveEnvelopeObject",[127X[104X
+    [4X[25X>[125X [27X                      "IndecomposableProjectiveObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IndecomposableInjectiveObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IsReflexive",[127X[104X
+    [4X[25X>[125X [27X                      "CoefficientsOfMorphism",[127X[104X
+    [4X[25X>[125X [27X                      ] ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_PreSheavesOfAlgebroidInCategoryOfRows( A, "PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled" );[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_PreSheavesOfAlgebroidInCategoryOfRows( A_bar, "PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled" );[127X[104X
+    [4X[25Xgap>[125X [27XPreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled( A );[127X[104X
+    [4X[28XPreSheaves( Algebroid( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(3)[a:1->2,b:2->3]" ) ) ),[128X[104X
+    [4X[28XRows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27Xcat := PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled( A_bar );[127X[104X
+    [4X[28XPreSheaves( Algebroid( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(3)[a:1->2,b:2->3]" ) ) ) / relations,[128X[104X
+    [4X[28XRows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27Xcat!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X17.5 [33X[0;0YPrecompiling the category of presheaves with values in SkeletalFinSets[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2022.09-02", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xfree_category_of_quiver := { quiver, sFinSets } -> CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
+    [4X[25X>[125X [27X  function( quiver )[127X[104X
+    [4X[25X>[125X [27X    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true ), sFinSets ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ RightQuiver( "q(2)[m:1->2]" ) ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "FunctorCategories";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name[127X[104X
+    [4X[25X>[125X [27X   : operations := [ "InitialObject",[127X[104X
+    [4X[25X>[125X [27X                     "Coproduct",[127X[104X
+    [4X[25X>[125X [27X                     "InjectionOfCofactorOfCoproductWithGivenCoproduct",[127X[104X
+    [4X[25X>[125X [27X                     "UniversalMorphismFromCoproductWithGivenCoproduct",[127X[104X
+    [4X[25X>[125X [27X                     #"CoproductOnMorphismsWithGivenCoproducts", # <- derived and leads to an error[127X[104X
+    [4X[25X>[125X [27X                     #"CoproductFunctorialWithGivenCoproducts", # <- derived[127X[104X
+    [4X[25X>[125X [27X                     "HomomorphismStructureOnObjects",[127X[104X
+    [4X[25X>[125X [27X                     "HomomorphismStructureOnMorphismsWithGivenObjects",[127X[104X
+    [4X[25X>[125X [27X                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",[127X[104X
+    [4X[25X>[125X [27X                     "MorphismsOfExternalHom",[127X[104X
+    [4X[25X>[125X [27X                     #"ExponentialOnObjects",[127X[104X
+    [4X[25X>[125X [27X                     ][127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XPreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled( given_arguments[1] );[127X[104X
+    [4X[28XPreSheaves( FreeCategory( RightQuiver( "q(2)[m:1->2]" ) ), SkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27Xcat := PreSheaves( free_category_of_quiver( given_arguments[1], SkeletalFinSets ) );[127X[104X
+    [4X[28XPreSheaves( FreeCategory( RightQuiver( "q(2)[m:1->2]" ) ), SkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27Xcat!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2022.09-02", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xfree_category_of_quiver := { quiver, sFinSets } -> FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
+    [4X[25X>[125X [27X  function( quiver )[127X[104X
+    [4X[25X>[125X [27X    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ), sFinSets ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ RightQuiver( "q(2)[m:1->2]" ) ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "FunctorCategories";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name[127X[104X
+    [4X[25X>[125X [27X   : operations := [ "InitialObject",[127X[104X
+    [4X[25X>[125X [27X                     "Coproduct",[127X[104X
+    [4X[25X>[125X [27X                     "InjectionOfCofactorOfCoproductWithGivenCoproduct",[127X[104X
+    [4X[25X>[125X [27X                     "UniversalMorphismFromCoproductWithGivenCoproduct",[127X[104X
+    [4X[25X>[125X [27X                     #"CoproductOnMorphismsWithGivenCoproducts", # <- derived and leads to an error[127X[104X
+    [4X[25X>[125X [27X                     #"CoproductFunctorialWithGivenCoproducts", # <- derived[127X[104X
+    [4X[25X>[125X [27X                     "HomomorphismStructureOnObjects",[127X[104X
+    [4X[25X>[125X [27X                     "HomomorphismStructureOnMorphismsWithGivenObjects",[127X[104X
+    [4X[25X>[125X [27X                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",[127X[104X
+    [4X[25X>[125X [27X                     "MorphismsOfExternalHom",[127X[104X
+    [4X[25X>[125X [27X                     #"ExponentialOnObjects",[127X[104X
+    [4X[25X>[125X [27X                     ][127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XPreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled( given_arguments[1] );[127X[104X
+    [4X[28XPreSheaves( FreeCategory( RightQuiver( "q(2)[m:1->2]" ) ), SkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27Xcat := PreSheaves( free_category_of_quiver( given_arguments[1], SkeletalFinSets ) );[127X[104X
+    [4X[28XPreSheaves( FreeCategory( RightQuiver( "q(2)[m:1->2]" ) ), SkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27Xcat!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  

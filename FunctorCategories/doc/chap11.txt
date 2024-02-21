@@ -173,81 +173,52 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Locales", ">= 2023.06-01", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQ := RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" );[127X[104X
-    [4X[28XQ(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t][128X[104X
-    [4X[25Xgap>[125X [27XF := FreeCategory( Q );[127X[104X
-    [4X[28XFreeCategory( RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) )[128X[104X
-    [4X[25Xgap>[125X [27XC := F / [ [ F.ab, F.cd ] ];[127X[104X
-    [4X[28XFreeCategory( RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) )[128X[104X
-    [4X[28X/ [ a*b = c*d ][128X[104X
-    [4X[25Xgap>[125X [27XB := PosetOfCategory( C );[127X[104X
-    [4X[28XPosetOfCategory( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] )[128X[104X
-    [4X[25Xgap>[125X [27XPSh := PreSheaves( B );[127X[104X
-    [4X[28XPreSheaves( PosetOfCategory( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),[128X[104X
-    [4X[28XIntervalCategory )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( PSh );[127X[104X
-    [4X[28XA CAP category with name[128X[104X
-    [4X[28XPreSheaves( PosetOfCategory( FreeCategory([128X[104X
-    [4X[28XRightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),[128X[104X
-    [4X[28XIntervalCategory ):[128X[104X
+    [4X[25Xgap>[125X [27Xq := FinQuiver( "q(A,B)" );[127X[104X
+    [4X[28XFinQuiver( "q(A,B)[]" )[128X[104X
+    [4X[25Xgap>[125X [27XF := PathCategory( q );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q(A,B)[]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XP := PosetOfCategory( F );[127X[104X
+    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XD := FreeDistributiveCompletion( P );[127X[104X
+    [4X[28XFreeDistributiveCompletion([128X[104X
+    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( D );[127X[104X
+    [4X[28XA CAP category with name FreeDistributiveCompletion([128X[104X
+    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X58 primitive operations were used to derive 207 operations for this category[128X[104X
+    [4X[28X54 primitive operations were used to derive 250 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
-    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
-    [4X[28X* IsFiniteCocompleteCategory[128X[104X
-    [4X[28X* IsFiniteCompleteCategory[128X[104X
-    [4X[28X* IsCodistributiveCategory[128X[104X
-    [4X[28X* IsDistributiveCategory[128X[104X
-    [4X[28Xand not yet algorithmically[128X[104X
     [4X[28X* IsFiniteCategory[128X[104X
-    [4X[28X* IsBicartesianClosedCategory[128X[104X
-    [4X[28X* IsBicartesianCoclosedCategory[128X[104X
-    [4X[25Xgap>[125X [27Xf := PSh.f;[127X[104X
-    [4X[28X<A projective object in PreSheaves( PosetOfCategory( FreeCategory([128X[104X
-    [4X[28X RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),[128X[104X
-    [4X[28X IntervalCategory )>[128X[104X
-    [4X[25Xgap>[125X [27XA := PSh.A;[127X[104X
-    [4X[28X<A projective object in PreSheaves( PosetOfCategory( FreeCategory([128X[104X
-    [4X[28X RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),[128X[104X
-    [4X[28X IntervalCategory )>[128X[104X
-    [4X[25Xgap>[125X [27XC := PSh.C;[127X[104X
-    [4X[28X<A projective object in PreSheaves( PosetOfCategory( FreeCategory([128X[104X
-    [4X[28X RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),[128X[104X
-    [4X[28X IntervalCategory )>[128X[104X
-    [4X[25Xgap>[125X [27Xt := PSh.t;[127X[104X
-    [4X[28X<A projective object in PreSheaves( PosetOfCategory( FreeCategory([128X[104X
-    [4X[28X RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),[128X[104X
-    [4X[28X IntervalCategory )>[128X[104X
-    [4X[25Xgap>[125X [27XIsTerminal( t );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsInitial( f );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XList( [ f, A, C, t ], IsReflexive );[127X[104X
-    [4X[28X[ true, true, true, true ][128X[104X
-    [4X[25Xgap>[125X [27Xi := InitialObject( PSh );[127X[104X
-    [4X[28X<An object in PreSheaves( PosetOfCategory( FreeCategory([128X[104X
-    [4X[28X RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),[128X[104X
-    [4X[28X IntervalCategory )>[128X[104X
-    [4X[25Xgap>[125X [27XIsReflexive( i );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsHomSetInhabited( i, f );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsHomSetInhabited( f, i );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XAC := Coproduct( A, C );[127X[104X
-    [4X[28X<An object in PreSheaves( PosetOfCategory( FreeCategory([128X[104X
-    [4X[28X RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),[128X[104X
-    [4X[28X IntervalCategory )>[128X[104X
-    [4X[25Xgap>[125X [27XIsReflexive( AC );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsHomSetInhabited( AC, t );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsHomSetInhabited( t, AC );[127X[104X
-    [4X[28Xfalse[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsDistributiveLattice[128X[104X
+    [4X[28Xand not yet algorithmically[128X[104X
+    [4X[28X* IsBiHeytingAlgebra[128X[104X
+    [4X[25Xgap>[125X [27XLength( SetOfObjects( D ) );[127X[104X
+    [4X[28X6[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( DotVertexLabelledDigraph( DigraphOfPoset( D ) ) );[127X[104X
+    [4X[28X//dot[128X[104X
+    [4X[28Xdigraph subobject_lattice{[128X[104X
+    [4X[28Xrankdir="BT"[128X[104X
+    [4X[28Xminlen=0[128X[104X
+    [4X[28Xnode [shape=circle width=0 height=0][128X[104X
+    [4X[28X1 [label="0" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"][128X[104X
+    [4X[28X2 [label="1" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"][128X[104X
+    [4X[28X3 [label="2" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"][128X[104X
+    [4X[28X4 [label="3" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"][128X[104X
+    [4X[28X5 [label="4" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"][128X[104X
+    [4X[28X6 [label="5" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"][128X[104X
+    [4X[28X1 -> 5 [arrowsize=0.5][128X[104X
+    [4X[28X3 -> 6 [arrowsize=0.5][128X[104X
+    [4X[28X4 -> 6 [arrowsize=0.5][128X[104X
+    [4X[28X5 -> 3 [arrowsize=0.5][128X[104X
+    [4X[28X5 -> 4 [arrowsize=0.5][128X[104X
+    [4X[28X6 -> 2 [arrowsize=0.5][128X[104X
+    [4X[28X}[128X[104X
+    [4X[25Xgap>[125X [27XM := MeetSemilatticeOfSingleDifferences( D );[127X[104X
+    [4X[28XThe meet-semilattice of single differences of FreeDistributiveCompletion([128X[104X
+    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XLength( SetOfObjects( M ) );[127X[104X
+    [4X[28X13[128X[104X
   [4X[32X[104X
   
   
