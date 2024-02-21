@@ -27,18 +27,14 @@ Display( PSh );
 #! RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),
 #! IntervalCategory ):
 #! 
-#! 58 primitive operations were used to derive 207 operations for this category
+#! 54 primitive operations were used to derive 250 operations for this category
 #! which algorithmically
-#! * IsEquippedWithHomomorphismStructure
-#! * IsFiniteCocompleteCategory
-#! * IsFiniteCompleteCategory
-#! * IsCodistributiveCategory
-#! * IsDistributiveCategory
-#! and not yet algorithmically
 #! * IsFiniteCategory
 #! * IsFinitelyPresentedCategory
-#! * IsBicartesianClosedCategory
-#! * IsBicartesianCoclosedCategory
+#! * IsEquippedWithHomomorphismStructure
+#! * IsDistributiveLattice
+#! and not yet algorithmically
+#! * IsBiHeytingAlgebra
 f := PSh.f;
 #! <A projective object in PreSheaves( PosetOfCategory( FreeCategory(
 #!  RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),
