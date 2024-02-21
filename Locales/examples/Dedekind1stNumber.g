@@ -28,13 +28,13 @@ PSh := PreSheaves( IntervalCategory );
 Display( PSh );
 #! A CAP category with name PreSheaves( IntervalCategory, IntervalCategory ):
 #! 
-#! 54 primitive operations were used to derive 249 operations for this category
+#! 54 primitive operations were used to derive 250 operations for this category
 #! which algorithmically
 #! * IsFiniteCategory
+#! * IsFinitelyPresentedCategory
 #! * IsEquippedWithHomomorphismStructure
 #! * IsDistributiveLattice
 #! and not yet algorithmically
-#! * IsFinitelyPresentedCategory
 #! * IsBiHeytingAlgebra
 Y := YonedaEmbeddingOfSourceCategory( PSh );
 #! Yoneda embedding functor
