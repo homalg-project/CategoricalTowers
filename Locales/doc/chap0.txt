@@ -7,7 +7,7 @@
                   and Boolean algebras of constructible sets [101X
   
   
-                                   2024.02-14
+                                   2024.02-20
   
   
                                 21 February 2024
@@ -321,6 +321,9 @@
   15 [33X[0;0YTests[133X
     15.1 [33X[0;0YGAP categories[133X
       15.1-1 [33X[0;0YPrecompilation[133X
+  16 [33X[0;0YLocales automatic generated documentation[133X
+    16.1 [33X[0;0YLocales automatic generated documentation of methods[133X
+      16.1-1 DigraphOfPoset
   
   
   [32X

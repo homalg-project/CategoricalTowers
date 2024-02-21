@@ -51,6 +51,7 @@
   [2XDatastructureForConstructibleObject[102X 14.2-1 
   [2XDigraphOfChildren[102X, for IsDatastructureForConstructibleObjects 14.3-11 
   [2XDigraphOfParents[102X, for IsDatastructureForConstructibleObjects 14.3-10 
+  [2XDigraphOfPoset[102X, for IsThinCategory and IsFiniteCategory 16.1-1 
   [2XDimension[102X, for IsConstructibleObject 12.3-9 
       for IsObjectInMeetSemilatticeOfDifferences 9.2-6 
   [2XDiscreteSkeletalCategory[102X, for IsString 7.1-2 
