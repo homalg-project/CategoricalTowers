@@ -39,6 +39,7 @@ Display( PSh );
 #! * IsDistributiveCategory
 #! and not yet algorithmically
 #! * IsFiniteCategory
+#! * IsFinitelyPresentedCategory
 #! * IsBicartesianClosedCategory
 #! * IsBicartesianCoclosedCategory
 Y := YonedaEmbeddingOfSourceCategory( PSh );

@@ -753,6 +753,14 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         supports_empty_limits := false;
     fi;
     
+    if HasIsFiniteCategory( B ) and IsFiniteCategory( B ) and
+       HasIsFiniteCategory( D ) and IsFiniteCategory( D ) then
+        
+        Add( properties, "IsFiniteCategory" );
+        Add( properties, "IsFinitelyPresentedCategory" );
+        
+    fi;
+    
     option_record := rec( name := name,
                           category_filter := IsPreSheafCategoryOfFpEnrichedCategory,
                           category_object_filter := IsObjectInPreSheafCategoryOfFpEnrichedCategory,
@@ -775,13 +783,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     fi;
     
     PSh := CategoryConstructor( option_record );
-    
-    if HasIsFiniteCategory( B ) and IsFiniteCategory( B ) and
-       HasIsFiniteCategory( D ) and IsFiniteCategory( D ) then
-        
-        SetIsFiniteCategory( PSh, true );
-        
-    fi;
     
     SetSource( PSh, B );
     SetTarget( PSh, D );
