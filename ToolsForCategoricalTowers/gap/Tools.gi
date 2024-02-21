@@ -8,6 +8,7 @@
 InstallTrueMethod( IsFiniteCategory, IsInitialCategory );
 InstallTrueMethod( IsFinite, IsFiniteCategory );
 InstallTrueMethod( IsObjectFiniteCategory, IsFiniteCategory );
+InstallTrueMethod( IsEquivalentToFiniteCategory, IsFiniteCategory );
 
 ##
 InstallMethod( SetOfObjectsAsUnresolvableAttribute,
