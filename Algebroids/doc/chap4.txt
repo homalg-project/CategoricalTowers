@@ -90,7 +90,6 @@
     [4X[28X19 primitive operations were used to derive 57 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsFiniteCategory[128X[104X
-    [4X[28X* IsFinitelyPresentedCategory[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[25Xgap>[125X [27XC0 := CreateObject( C, 0 );[127X[104X
     [4X[28X<(C0)>[128X[104X
