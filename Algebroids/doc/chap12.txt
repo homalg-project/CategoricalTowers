@@ -209,9 +209,9 @@
     [4X[25Xgap>[125X [27XDisplay( Size( GenerateSubobjects( gens ) ) );[127X[104X
     [4X[28X18[128X[104X
     [4X[25Xgap>[125X [27Xruntime_quiver := Runtime( ) - start;;[127X[104X
-    [4X[25Xgap>[125X [27Xif runtime >= runtime_quiver * 6 / 10 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;[127X[104X
+    [4X[25Xgap>[125X [27Xif runtime >= runtime_quiver * 1 / 20 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xif runtime <= runtime_quiver * 7 / 10 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;[127X[104X
+    [4X[25Xgap>[125X [27Xif runtime <= runtime_quiver * 2 / 10 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[28X#@fi[128X[104X
   [4X[32X[104X
