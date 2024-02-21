@@ -7,79 +7,50 @@
 #! @Example
 LoadPackage( "FunctorCategories", false );
 #! true
-LoadPackage( "Locales", ">= 2023.06-01", false );
-#! true
-Q := RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" );
-#! Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]
-F := FreeCategory( Q );
-#! FreeCategory( RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) )
-C := F / [ [ F.ab, F.cd ] ];
-#! FreeCategory( RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) )
-#! / [ a*b = c*d ]
-B := PosetOfCategory( C );
-#! PosetOfCategory( FreeCategory(
-#! RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] )
-PSh := PreSheaves( B );
-#! PreSheaves( PosetOfCategory( FreeCategory(
-#! RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),
-#! IntervalCategory )
-Display( PSh );
-#! A CAP category with name
-#! PreSheaves( PosetOfCategory( FreeCategory(
-#! RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),
-#! IntervalCategory ):
+q := FinQuiver( "q(A,B)" );
+#! FinQuiver( "q(A,B)[]" )
+F := PathCategory( q );
+#! PathCategory( FinQuiver( "q(A,B)[]" ) )
+P := PosetOfCategory( F );
+#! PosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) )
+D := FreeDistributiveCompletion( P );
+#! FreeDistributiveCompletion(
+#! PosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) )
+Display( D );
+#! A CAP category with name FreeDistributiveCompletion(
+#! PosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) ):
 #! 
-#! 58 primitive operations were used to derive 207 operations for this category
+#! 54 primitive operations were used to derive 250 operations for this category
 #! which algorithmically
-#! * IsEquippedWithHomomorphismStructure
-#! * IsFiniteCocompleteCategory
-#! * IsFiniteCompleteCategory
-#! * IsCodistributiveCategory
-#! * IsDistributiveCategory
-#! and not yet algorithmically
 #! * IsFiniteCategory
-#! * IsBicartesianClosedCategory
-#! * IsBicartesianCoclosedCategory
-f := PSh.f;
-#! <A projective object in PreSheaves( PosetOfCategory( FreeCategory(
-#!  RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),
-#!  IntervalCategory )>
-A := PSh.A;
-#! <A projective object in PreSheaves( PosetOfCategory( FreeCategory(
-#!  RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),
-#!  IntervalCategory )>
-C := PSh.C;
-#! <A projective object in PreSheaves( PosetOfCategory( FreeCategory(
-#!  RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),
-#!  IntervalCategory )>
-t := PSh.t;
-#! <A projective object in PreSheaves( PosetOfCategory( FreeCategory(
-#!  RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),
-#!  IntervalCategory )>
-IsTerminal( t );
-#! true
-IsInitial( f );
-#! false
-List( [ f, A, C, t ], IsReflexive );
-#! [ true, true, true, true ]
-i := InitialObject( PSh );
-#! <An object in PreSheaves( PosetOfCategory( FreeCategory(
-#!  RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),
-#!  IntervalCategory )>
-IsReflexive( i );
-#! false
-IsHomSetInhabited( i, f );
-#! true
-IsHomSetInhabited( f, i );
-#! false
-AC := Coproduct( A, C );
-#! <An object in PreSheaves( PosetOfCategory( FreeCategory(
-#!  RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" ) ) / [ a*b = c*d ] ),
-#!  IntervalCategory )>
-IsReflexive( AC );
-#! false
-IsHomSetInhabited( AC, t );
-#! true
-IsHomSetInhabited( t, AC );
-#! false
+#! * IsEquippedWithHomomorphismStructure
+#! * IsDistributiveLattice
+#! and not yet algorithmically
+#! * IsBiHeytingAlgebra
+Length( SetOfObjects( D ) );
+#! 6
+Display( DotVertexLabelledDigraph( DigraphOfPoset( D ) ) );
+#! //dot
+#! digraph subobject_lattice{
+#! rankdir="BT"
+#! minlen=0
+#! node [shape=circle width=0 height=0]
+#! 1 [label="0" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"]
+#! 2 [label="1" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"]
+#! 3 [label="2" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"]
+#! 4 [label="3" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"]
+#! 5 [label="4" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"]
+#! 6 [label="5" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"]
+#! 1 -> 5 [arrowsize=0.5]
+#! 3 -> 6 [arrowsize=0.5]
+#! 4 -> 6 [arrowsize=0.5]
+#! 5 -> 3 [arrowsize=0.5]
+#! 5 -> 4 [arrowsize=0.5]
+#! 6 -> 2 [arrowsize=0.5]
+#! }
+M := MeetSemilatticeOfSingleDifferences( D );
+#! The meet-semilattice of single differences of FreeDistributiveCompletion(
+#! PosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) )
+Length( SetOfObjects( M ) );
+#! 13
 #! @EndExample

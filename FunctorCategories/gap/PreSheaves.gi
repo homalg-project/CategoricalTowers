@@ -753,6 +753,25 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         supports_empty_limits := false;
     fi;
     
+    if HasIsFiniteCategory( B ) and IsFiniteCategory( B ) and
+       HasIsFiniteCategory( D ) and IsFiniteCategory( D ) then
+        
+        Add( properties, "IsFiniteCategory" );
+        Add( properties, "IsFinitelyPresentedCategory" );
+        
+    fi;
+    
+    if HasIsThinCategory( B ) and IsThinCategory( B ) and
+       IsIntervalCategory( D ) then
+        
+        Add( properties, "IsThinCategory" );
+        
+        if HasIsSkeletalCategory( B ) and IsSkeletalCategory( B ) then
+            Add( properties, "IsSkeletalCategory" );
+        fi;
+        
+    fi;
+    
     option_record := rec( name := name,
                           category_filter := IsPreSheafCategoryOfFpEnrichedCategory,
                           category_object_filter := IsObjectInPreSheafCategoryOfFpEnrichedCategory,
@@ -776,13 +795,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     PSh := CategoryConstructor( option_record );
     
-    if HasIsFiniteCategory( B ) and IsFiniteCategory( B ) and
-       HasIsFiniteCategory( D ) and IsFiniteCategory( D ) then
-        
-        SetIsFiniteCategory( PSh, true );
-        
-    fi;
-    
     SetSource( PSh, B );
     SetTarget( PSh, D );
     SetOppositeOfSource( PSh, B_op );
@@ -792,6 +804,35 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         "Target",
         "OppositeOfSource",
         ];
+    
+    if HasIsFiniteCategory( B ) and IsFiniteCategory( B ) and
+       CanCompute( B, "SetOfObjectsOfCategory" ) and
+       HasIsPosetCategory( PSh ) and IsPosetCategory( PSh ) and
+       IsIntervalCategory( D ) then
+        
+        ##
+        AddSetOfObjectsOfCategory( PSh,
+          function( PSh )
+            local B, Yoneda, representables, l, combinations, joins;
+            
+            B := Source( PSh );
+            
+            ## the Yoneda embedding: B ↪ PSh( B )
+            Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh );
+            
+            representables := List( SetOfObjects( B ), Yoneda[1] );
+            
+            l := Length( representables );
+            
+            combinations := Concatenation( List( [ 0 .. l ], k -> Combinations( [ 1 .. l ], k ) ) );
+            
+            joins := List( combinations, subset -> Coproduct( PSh, representables{subset} ) );
+            
+            return DuplicateFreeList( joins );
+            
+        end );
+        
+    fi;
     
     if CanCompute( D, "IsLiftableAlongMonomorphism" ) then
         

@@ -27,7 +27,6 @@ Display( C );
 #! 19 primitive operations were used to derive 57 operations for this category
 #! which algorithmically
 #! * IsFiniteCategory
-#! * IsFinitelyPresentedCategory
 #! * IsEquippedWithHomomorphismStructure
 C0 := CreateObject( C, 0 );
 #! <(C0)>

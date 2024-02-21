@@ -46,6 +46,14 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCategory :=
           ],
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsObjectFiniteCategory ) );
 
+#! @Description
+#!  The property of <A>C</A> being equivalent to a finite category.
+#! @Arguments C
+DeclareProperty( "IsEquivalentToFiniteCategory",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsEquivalentToFiniteCategory", "IsEquivalentToFiniteCategory" ] );
+
 ####################################
 ##
 #! @Section Attributes

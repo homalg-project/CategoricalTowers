@@ -6,6 +6,7 @@
 
 ##
 InstallTrueMethod( IsObjectFiniteCategory, IsFinitelyPresentedCategory );
+InstallTrueMethod( IsFinitelyPresentedCategory, IsFiniteCategory );
 
 ##
 InstallMethod( SetOfGeneratingMorphisms,

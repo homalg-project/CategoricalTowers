@@ -225,8 +225,14 @@ InstallMethod( FiniteStrictCoproductCompletion,
         H := RangeCategoryOfHomomorphismStructure( C );
         
         if IsIntervalCategory( H ) then
+            
             SetIsThinCategory( UC, true );
             SetIsCategoryWithDecidableColifts( UC, true );
+            
+            if HasIsEquivalentToFiniteCategory( C ) and IsEquivalentToFiniteCategory( C ) then
+                SetIsEquivalentToFiniteCategory( UC, true );
+            fi;
+            
         fi;
         
     fi;

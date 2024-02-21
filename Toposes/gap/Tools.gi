@@ -17,7 +17,7 @@ InstallMethod( DigraphOfSubobjects,
     subobjects := ListOfSubobjects( A );
     
     D := Digraph( [ 1 .. Length( subobjects ) ],
-                 { i, j } -> IsLiftableAlongMonomorphism( subobjects[i], subobjects[j] ) );
+                 { i, j } -> IsDominating( subobjects[i], subobjects[j] ) );
     
     D := DigraphReflexiveTransitiveReduction( D );
     
@@ -39,7 +39,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     str   := "//dot\n";
     
     Append( str, "digraph subobject_lattice{\n" );
-    Append( str, "rankdir=\"TB\"\n" );
+    Append( str, "rankdir=\"BT\"\n" );
     Append( str, "minlen=0\n" );
     Append( str, "node [shape=circle width=0 height=0]\n" );
     

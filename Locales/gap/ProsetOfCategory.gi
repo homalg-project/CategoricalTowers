@@ -399,7 +399,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  create_func_morphism_or_fail := "default"
                  ) );
     
-    if ( HasIsFiniteCategory and IsFiniteCategory )( C ) then
+    if ( HasIsObjectFiniteCategory and IsObjectFiniteCategory )( C ) then
         SetIsFiniteCategory( P, true );
     fi;
     

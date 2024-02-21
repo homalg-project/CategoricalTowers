@@ -14,6 +14,7 @@ ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gd");
 ReadPackage( "FunctorCategories", "gap/CategoryOfDecoratedQuivers.gd");
 ReadPackage( "FunctorCategories", "gap/CategoryOfReflexiveQuivers.gd");
 ReadPackage( "FunctorCategories", "gap/FiniteCompletion.gd");
+ReadPackage( "FunctorCategories", "gap/FreeDistributiveCompletion.gd");
 ReadPackage( "FunctorCategories", "gap/AbelianClosure.gd");
 ReadPackage( "FunctorCategories", "gap/Functors.gd");
 ReadPackage( "FunctorCategories", "gap/DirectSumDecomposition.gd");

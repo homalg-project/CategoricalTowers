@@ -116,3 +116,25 @@ InstallMethod( \.,
     return UnderlyingCell( cell ).(NameRNam( string_as_int ));
     
 end );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a finite cocompletion category",
+        [ IsFiniteCocompletion ],
+        
+  function( finite_cocompletion )
+    
+    return SetOfObjectsOfCategory( finite_cocompletion );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for a finite cocompletion category",
+        [ IsFiniteCocompletion ],
+        
+  function( finite_cocompletion )
+    
+    return SetOfGeneratingMorphismsOfCategory( finite_cocompletion );
+    
+end );

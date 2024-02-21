@@ -25,6 +25,7 @@ InstallTrueMethod( IsDistributiveBicartesianProset, IsBicartesianProset and IsCo
 InstallTrueMethod( IsBicartesianProset, IsDistributiveBicartesianProset );
 InstallTrueMethod( IsDistributiveCategory, IsDistributiveBicartesianProset );
 InstallTrueMethod( IsCodistributiveCategory, IsDistributiveBicartesianProset );
+InstallTrueMethod( IsBiHeytingAlgebroid, IsDistributiveBicartesianProset and IsEquivalentToFiniteCategory );
 
 ## thin & skeletal
 
