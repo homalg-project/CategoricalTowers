@@ -46,6 +46,7 @@
   [2XGlobalSectionFunctor[102X, for IsCapCategory 1.3-2 
   [2XInjectionOfCofactorOfColimit[102X, for IsList, IsList, IsInt 2.9-3 
   [2XInjectionOfCofactorOfColimitWithGivenColimit[102X, for IsList, IsList, IsInt, IsCapCategoryObject 2.9-4 
+  [2XIsEquivalentToFiniteCategory[102X, for IsCapCategory 1.1-3 
   [2XIsFiniteCategory[102X, for IsCapCategory 1.1-2 
   [2XIsObjectFiniteCategory[102X, for IsCapCategory 1.1-1 
   [2XIsWeakInitial[102X, for IsCapCategoryObject 2.3-2 
