@@ -203,6 +203,30 @@ InstallOtherMethod( DotVertexLabelledDigraph,
 end );
 
 ##
+InstallMethod( DigraphOfPoset,
+        "for a proset",
+        [ IsThinCategory and IsFiniteCategory ],
+        
+  function( P )
+    local objects, D;
+    
+    objects := SetOfObjectsOfCategory( P );
+    
+    if ValueOption( "use_vertex_lables" ) = true then
+        D := Digraph( objects, IsHomSetInhabited );
+    else
+        D := Digraph( [ 0 .. Length( objects ) - 1 ], { i, j } -> IsHomSetInhabited( objects[1+i], objects[1+j] ) );
+    fi;
+    
+    D := DigraphReflexiveTransitiveReduction( D );
+    
+    SetFilterObj( D, IsDigraphOfSubobjects );
+    
+    return D;
+    
+end );
+
+##
 InstallMethod( Visualize,
         "for a datastructure of a constructible object",
         [ IsDatastructureForConstructibleObjects ],
