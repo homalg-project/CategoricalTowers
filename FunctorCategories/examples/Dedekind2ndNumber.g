@@ -30,7 +30,6 @@ Display( PSh );
 #! 54 primitive operations were used to derive 250 operations for this category
 #! which algorithmically
 #! * IsFiniteCategory
-#! * IsFinitelyPresentedCategory
 #! * IsEquippedWithHomomorphismStructure
 #! * IsDistributiveLattice
 #! and not yet algorithmically

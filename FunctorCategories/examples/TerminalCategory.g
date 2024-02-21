@@ -30,7 +30,6 @@ Display( T );
 #! * IsRigidSymmetricCoclosedMonoidalCategory
 #! and not yet algorithmically
 #! * IsFiniteCategory
-#! * IsFinitelyPresentedCategory
 #! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 #! and furthermore mathematically
 #! * IsDiscreteCategory
