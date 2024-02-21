@@ -7,8 +7,6 @@
 #! @Example
 LoadPackage( "FunctorCategories", false );
 #! true
-LoadPackage( "Locales", ">= 2023.06-01", false );
-#! true
 Q := RightQuiver( "Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]" );
 #! Q(f,A,C,t)[a:f->A,b:A->t,c:f->C,d:C->t]
 F := FreeCategory( Q );

@@ -3,8 +3,6 @@
 #! @Example
 LoadPackage( "FunctorCategories", false );
 #! true
-LoadPackage( "Locales", ">= 2023.05-05", false );
-#! true
 T := FiniteCompletion( InitialCategory( ) );
 #! FiniteCompletion( InitialCategory( ) )
 IsIdenticalObj( RangeCategoryOfHomomorphismStructure( T ), T );
