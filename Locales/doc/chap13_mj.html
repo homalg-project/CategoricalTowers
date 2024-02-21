@@ -34,7 +34,7 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13_mj.html#X7C701DBF7BAE649A">13.2 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X832ED2957909B491">13.2-1 ClassicalTruthValue</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X843283438129A41A">13.2-1 Length</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13_mj.html#X7D03633A7D98026B">13.3 <span class="Heading">GAP categories</span></a>
 </span>
@@ -83,6 +83,8 @@ A CAP category with name IntervalCategory:
 
 21 primitive operations were used to derive 327 operations for this category
  which algorithmically
+* IsCategoryWithDecidableColifts
+* IsCategoryWithDecidableLifts
 * IsFiniteCategory
 * IsEquippedWithHomomorphismStructure
 * IsBooleanAlgebra
@@ -160,14 +162,14 @@ given by the above data
 
 <h4>13.2 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X832ED2957909B491" name="X832ED2957909B491"></a></p>
+<p><a id="X843283438129A41A" name="X843283438129A41A"></a></p>
 
-<h5>13.2-1 ClassicalTruthValue</h5>
+<h5>13.2-1 Length</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClassicalTruthValue</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a boolean</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Length</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
 
-<p>The truth value of the object <var class="Arg">a</var> in the interval category.</p>
+<p>The truth value of the object <var class="Arg">a</var> in the interval category. It is either <span class="SimpleMath">\(0\)</span> for false or <span class="SimpleMath">\(1\)</span> for true.</p>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
