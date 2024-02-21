@@ -684,7 +684,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
        CanCompute( C, "SingletonMorphism" ) and
        CanCompute( C, "RelativeTruthMorphismOfAndWithGivenObjects" ) and
        CanCompute( C, "DirectProductFunctorialWithGivenDirectProducts" ) and
-       CanCompute( C, "PTransposeMorphismWithGivenRange" ) then
+       CanCompute( C, "PLeftTransposeMorphismWithGivenRange" ) then
         
         ##
         AddPowerObject( Slice_over_B,
@@ -773,7 +773,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         end );
         
         ##
-        AddPTransposeMorphismWithGivenRange( Slice_over_B,
+        AddPLeftTransposeMorphismWithGivenRange( Slice_over_B,
           function( cat, M, N, f, PN )
             local C, Omega, B, m, n, ff, pr1, chi, iota, emb, cmp, h, A, D, PD, k, km, e, g;
             
@@ -824,7 +824,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             PD := PowerObject( C, D );
             
             ## k: A → P(D)
-            k := PTransposeMorphismWithGivenRange( C,
+            k := PLeftTransposeMorphismWithGivenRange( C,
                          A,
                          D,
                          h,

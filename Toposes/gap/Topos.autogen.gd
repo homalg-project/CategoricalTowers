@@ -278,44 +278,6 @@ DeclareOperation( "AddExactCoverWithGlobalElements",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `FiberMorphism`.
-#! $F: ( b, c ) \mapsto \mathtt{FiberMorphism}(b, c)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddFiberMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddFiberMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddFiberMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddFiberMorphism",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `FiberMorphismWithGivenObjects`.
-#! $F: ( Pbxc_b, b, c, Pc ) \mapsto \mathtt{FiberMorphismWithGivenObjects}(Pbxc_b, b, c, Pc)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddFiberMorphismWithGivenObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddFiberMorphismWithGivenObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddFiberMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddFiberMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
 #! to the category for the basic operation `HasPushoutComplement`.
 #! $F: ( arg2, arg3 ) \mapsto \mathtt{HasPushoutComplement}(arg2, arg3)$.
 #! @Returns nothing
@@ -506,6 +468,44 @@ DeclareOperation( "AddLawvereTierneySubobjects",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `LeftFiberMorphism`.
+#! $F: ( b, c ) \mapsto \mathtt{LeftFiberMorphism}(b, c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLeftFiberMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddLeftFiberMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddLeftFiberMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddLeftFiberMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `LeftFiberMorphismWithGivenObjects`.
+#! $F: ( Pbxc_b, b, c, Pc ) \mapsto \mathtt{LeftFiberMorphismWithGivenObjects}(Pbxc_b, b, c, Pc)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLeftFiberMorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddLeftFiberMorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddLeftFiberMorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddLeftFiberMorphismWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `ListOfSubobjects`.
 #! $F: ( arg2 ) \mapsto \mathtt{ListOfSubobjects}(arg2)$.
 #! @Returns nothing
@@ -582,39 +582,77 @@ DeclareOperation( "AddNonliftableMorphismFromDistinguishedObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `PTransposeMorphism`.
-#! $F: ( a, b, f ) \mapsto \mathtt{PTransposeMorphism}(a, b, f)$.
+#! to the category for the basic operation `PLeftTransposeMorphism`.
+#! $F: ( a, b, f ) \mapsto \mathtt{PLeftTransposeMorphism}(a, b, f)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddPTransposeMorphism",
+DeclareOperation( "AddPLeftTransposeMorphism",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddPTransposeMorphism",
+DeclareOperation( "AddPLeftTransposeMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddPTransposeMorphism",
+DeclareOperation( "AddPLeftTransposeMorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddPTransposeMorphism",
+DeclareOperation( "AddPLeftTransposeMorphism",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `PTransposeMorphismWithGivenRange`.
-#! $F: ( a, b, f, Pb ) \mapsto \mathtt{PTransposeMorphismWithGivenRange}(a, b, f, Pb)$.
+#! to the category for the basic operation `PLeftTransposeMorphismWithGivenRange`.
+#! $F: ( a, b, f, Pb ) \mapsto \mathtt{PLeftTransposeMorphismWithGivenRange}(a, b, f, Pb)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddPTransposeMorphismWithGivenRange",
+DeclareOperation( "AddPLeftTransposeMorphismWithGivenRange",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddPTransposeMorphismWithGivenRange",
+DeclareOperation( "AddPLeftTransposeMorphismWithGivenRange",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddPTransposeMorphismWithGivenRange",
+DeclareOperation( "AddPLeftTransposeMorphismWithGivenRange",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddPTransposeMorphismWithGivenRange",
+DeclareOperation( "AddPLeftTransposeMorphismWithGivenRange",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `PRightTransposeMorphism`.
+#! $F: ( a, b, f ) \mapsto \mathtt{PRightTransposeMorphism}(a, b, f)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPRightTransposeMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPRightTransposeMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPRightTransposeMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPRightTransposeMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `PRightTransposeMorphismWithGivenRange`.
+#! $F: ( a, b, f, Pa ) \mapsto \mathtt{PRightTransposeMorphismWithGivenRange}(a, b, f, Pa)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPRightTransposeMorphismWithGivenRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPRightTransposeMorphismWithGivenRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPRightTransposeMorphismWithGivenRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPRightTransposeMorphismWithGivenRange",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -710,6 +748,44 @@ DeclareOperation( "AddPowerObjectLeftEvaluationMorphismWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddPowerObjectLeftEvaluationMorphismWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `PowerObjectRightEvaluationMorphism`.
+#! $F: ( a ) \mapsto \mathtt{PowerObjectRightEvaluationMorphism}(a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPowerObjectRightEvaluationMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPowerObjectRightEvaluationMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPowerObjectRightEvaluationMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPowerObjectRightEvaluationMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `PowerObjectRightEvaluationMorphismWithGivenObjects`.
+#! $F: ( axPa, a, Omega ) \mapsto \mathtt{PowerObjectRightEvaluationMorphismWithGivenObjects}(axPa, a, Omega)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPowerObjectRightEvaluationMorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPowerObjectRightEvaluationMorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPowerObjectRightEvaluationMorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPowerObjectRightEvaluationMorphismWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -1033,6 +1109,44 @@ DeclareOperation( "AddRelativeTruthMorphismOfTrueWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddRelativeTruthMorphismOfTrueWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RightFiberMorphism`.
+#! $F: ( b, c ) \mapsto \mathtt{RightFiberMorphism}(b, c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRightFiberMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRightFiberMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRightFiberMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRightFiberMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RightFiberMorphismWithGivenObjects`.
+#! $F: ( cxPbxc, b, c, Pb ) \mapsto \mathtt{RightFiberMorphismWithGivenObjects}(cxPbxc, b, c, Pb)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRightFiberMorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRightFiberMorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRightFiberMorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRightFiberMorphismWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

@@ -14,7 +14,7 @@ IntervalCategory;
 Display( IntervalCategory );
 #! A CAP category with name IntervalCategory:
 #! 
-#! 21 primitive operations were used to derive 327 operations for this category
+#! 21 primitive operations were used to derive 329 operations for this category
 #!  which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
