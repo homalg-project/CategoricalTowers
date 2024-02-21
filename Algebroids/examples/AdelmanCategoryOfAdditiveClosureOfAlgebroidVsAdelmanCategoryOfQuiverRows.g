@@ -53,9 +53,9 @@ Display( Size( GenerateSubobjects( gens ) ) );
 #! 18
 runtime_quiver := Runtime( ) - start;;
 
-if runtime >= runtime_quiver * 6 / 10 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;
+if runtime >= runtime_quiver * 1 / 20 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;
 #! true
-if runtime <= runtime_quiver * 7 / 10 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;
+if runtime <= runtime_quiver * 2 / 10 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;
 #! true
 
 #! #@fi

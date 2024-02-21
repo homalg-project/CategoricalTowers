@@ -2357,6 +2357,28 @@ InstallMethod( AssociatedCategoryOfColimitQuiversOfSourceCategory,
 end );
 
 ##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a presheaf category",
+        [ IsPreSheafCategory ],
+        
+  function( PSh )
+    
+    return SetOfObjectsOfCategory( PSh );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for a presheaf category",
+        [ IsPreSheafCategory ],
+        
+  function( PSh )
+    
+    return SetOfGeneratingMorphismsOfCategory( PSh );
+    
+end );
+
+##
 InstallMethod( CategoryOfInternalCategories,
         "for a CAP category",
         [ IsCapCategory ],

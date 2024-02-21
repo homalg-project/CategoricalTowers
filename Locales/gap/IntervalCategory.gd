@@ -39,16 +39,17 @@ DeclareCategory( "IsMorphismInIntervalCategory",
 
 #! @Description
 #!  The truth value of the object <A>a</A> in the interval category.
+#!  It is either $0$ for false or $1$ for true.
 #! @Arguments a
-#! @Returns a boolean
-DeclareAttribute( "ClassicalTruthValue",
+#! @Returns an integer
+DeclareAttribute( "Length",
         IsObjectInIntervalCategory );
 
-CapJitAddTypeSignature( "ClassicalTruthValue", [ IsIntervalCategory ],
+CapJitAddTypeSignature( "Length", [ IsIntervalCategory ],
   function ( input_types )
     
-    return rec( filter := IsBool );
-
+    return rec( filter := IsBigInt );
+    
 end );
 
 ####################################

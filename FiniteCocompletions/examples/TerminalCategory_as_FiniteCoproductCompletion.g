@@ -8,7 +8,7 @@ T := FiniteStrictCoproductCompletion( InitialCategory( ) );
 Display( T );
 #! A CAP category with name FiniteStrictCoproductCompletion( InitialCategory( ) ):
 #! 
-#! 111 primitive operations were used to derive 647 operations for this category
+#! 110 primitive operations were used to derive 665 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
@@ -17,25 +17,26 @@ Display( T );
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsLeftClosedMonoidalCategory
 #! * IsLeftCoclosedMonoidalCategory
-#! * IsBicartesianCoclosedCategory
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
+#! * IsClosedMonoidalLattice
+#! * IsCoclosedMonoidalLattice
 #! * IsElementaryTopos
+#! * IsBooleanAlgebra
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
 #! and not yet algorithmically
 #! * IsFinitelyPresentedCategory
 #! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 #! and furthermore mathematically
+#! * IsDiscreteCategory
 #! * IsFinitelyPresentedLinearCategory
 #! * IsLinearClosureOfACategory
 #! * IsLocallyOfFiniteInjectiveDimension
 #! * IsLocallyOfFiniteProjectiveDimension
-#! * IsSkeletalCategory
-#! * IsStrictCartesianCategory
-#! * IsStrictCocartesianCategory
-#! * IsStrictMonoidalCategory
+#! * IsStableProset
 #! * IsTerminalCategory
+#! * IsTotalOrderCategory
 i := InitialObject( T );
 #! <A zero object in FiniteStrictCoproductCompletion( InitialCategory( ) )>
 t := TerminalObject( T );

@@ -163,26 +163,24 @@ AddDerivationToCAP( Equalizer,
 end : CategoryFilter := IsThinCategory );
 
 ##
-AddDerivationToCAP( EmbeddingOfEqualizer,
-        "EmbeddingOfEqualizer using the unique morphism into source of the diagram",
-        [ [ Equalizer, 1 ],
-          [ UniqueMorphism, 1 ] ],
+AddDerivationToCAP( EmbeddingOfEqualizerWithGivenEqualizer,
+        "EmbeddingOfEqualizerWithGivenEqualizer using the unique morphism",
+        [ [ UniqueMorphism, 1 ] ],
         
-  function( cat, A, D )
+  function( cat, source_of_diagram, diagram, equalizer )
     
-    return UniqueMorphism( cat, Equalizer( cat, A, D ), A );
+    return UniqueMorphism( cat, equalizer, source_of_diagram );
     
 end : CategoryFilter := IsThinCategory );
 
 ##
-AddDerivationToCAP( UniversalMorphismIntoEqualizer,
-        "UniversalMorphismIntoEqualizer using the unique morphism from the test object",
-        [ [ Equalizer, 1 ],
-          [ UniqueMorphism, 1 ] ],
+AddDerivationToCAP( UniversalMorphismIntoEqualizerWithGivenEqualizer,
+        "UniversalMorphismIntoEqualizerWithGivenEqualizer using the unique morphism",
+        [ [ UniqueMorphism, 1 ] ],
         
-  function( cat, A, D, test_object, tau )
+  function( cat, source_of_diagram, diagram, source, tau, equalizer )
     
-    return UniqueMorphism( cat, test_object, Equalizer( cat, A, D ) );
+    return UniqueMorphism( cat, source, equalizer );
     
 end : CategoryFilter := IsThinCategory );
 
@@ -198,29 +196,27 @@ AddDerivationToCAP( Coequalizer,
 end : CategoryFilter := IsThinCategory );
 
 ##
-AddDerivationToCAP( ProjectionOntoCoequalizer,
-        "ProjectionOntoCoequalizer using the unique morphism from range of the diagram",
-        [ [ Coequalizer, 1 ],
-          [ UniqueMorphism, 1 ] ],
+AddDerivationToCAP( ProjectionOntoCoequalizerWithGivenCoequalizer,
+        "ProjectionOntoCoequalizerWithGivenCoequalizer using the unique morphism",
+        [ [ UniqueMorphism, 1 ] ],
         
-  function( cat, A, D )
+  function( cat, target_of_diagram, diagram, coequalizer )
     
-    return UniqueMorphism( cat, A, Coequalizer( cat, A, D ) );
+    return UniqueMorphism( cat, target_of_diagram, coequalizer );
     
 end : CategoryFilter := IsThinCategory );
 
 ##
-AddDerivationToCAP( UniversalMorphismFromCoequalizer,
-        "UniversalMorphismIntoEqualizer using the unique morphism into the test object",
-        [ [ Coequalizer, 1 ],
-          [ UniqueMorphism, 1 ] ],
+AddDerivationToCAP( UniversalMorphismFromCoequalizerWithGivenCoequalizer,
+        "UniversalMorphismFromCoequalizerWithGivenCoequalizer using the unique morphism",
+        [ [ UniqueMorphism, 1 ] ],
         
-  function( cat, A, D, test_object, tau )
+  function( cat, target_of_diagram, diagram, target, tau, coequalizer )
     
-    return UniqueMorphism( cat, Coequalizer( cat, A, D ), test_object );
+    return UniqueMorphism( cat, coequalizer, target );
     
 end : CategoryFilter := IsThinCategory );
-    
+
 ##
 AddDerivationToCAP( IsMonomorphism,
         "IsMonomorphism is always true in a thin category",
@@ -538,3 +534,54 @@ AddDerivationToCAP( BraidingInverseWithGivenTensorProducts,
     return UniqueMorphism( cat, NM, MN );
     
 end : CategoryFilter := IsMonoidalProset );
+
+##
+AddDerivationToCAP( UniqueMorphism,
+        "UniqueMorphism using MorphismsOfExternalHom",
+        [ [ MorphismsOfExternalHom, 1 ] ],
+        
+  function( cat, M, N )
+    
+    return MorphismsOfExternalHom( cat, M, N )[1];
+    
+end : CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsIsomorphicForObjects,
+        "IsIsomorphicForObjects using the unique morphism",
+        [ [ IsHomSetInhabited, 1 ],
+          [ UniqueMorphism, 1 ],
+          [ IsSplitMonomorphism, 1 ] ],
+        
+  function( cat, M, N )
+    
+    return IsHomSetInhabited( cat, M, N ) and
+           IsSplitMonomorphism( cat, UniqueMorphism( cat, M, N ) );
+    
+end : CategoryFilter := IsThinCategory );
+
+if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
+
+##
+AddDerivationToCAP( SetOfGeneratingMorphismsOfCategory,
+        "",
+        [ [ SetOfObjectsOfCategory, 1 ],
+          [ IsHomSetInhabited, 1 ],
+          [ UniqueMorphism, 4 ] ],
+        
+  function( cat )
+    local objects, l, digraph;
+    
+    objects := SetOfObjectsOfCategory( cat );
+    
+    l := Length( objects );
+    
+    digraph := DigraphReflexiveTransitiveReduction( Digraph( objects, IsHomSetInhabited ) );
+    
+    return Concatenation( List( [ 1 .. l ], s ->
+                   List( OutNeighborsOfVertex( digraph, s ), t ->
+                         UniqueMorphism( cat, objects[s], objects[t] ) ) ) );
+    
+end : CategoryFilter := IsThinCategory and IsFiniteCategory );
+
+fi;

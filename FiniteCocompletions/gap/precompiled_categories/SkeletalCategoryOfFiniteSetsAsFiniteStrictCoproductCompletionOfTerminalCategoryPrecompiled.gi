@@ -371,15 +371,15 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    local hoisted_2_1, deduped_3_1, deduped_4_1;
-    deduped_4_1 := Length( arg2_1 );
-    deduped_3_1 := Length( arg3_1 );
-    hoisted_2_1 := [ 0 .. deduped_4_1 - 1 ];
-    return Concatenation( List( [ 0 .. deduped_3_1 ^ deduped_4_1 - 1 ], function ( m_2 )
+    local hoisted_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( arg2_1 );
+    deduped_4_1 := Length( arg3_1 );
+    hoisted_3_1 := [ 0 .. deduped_5_1 - 1 ];
+    return Concatenation( List( [ 0 .. deduped_4_1 ^ deduped_5_1 - 1 ], function ( m_2 )
               local hoisted_1_2;
               hoisted_1_2 := CAP_JIT_INCOMPLETE_LOGIC( m_2 );
-              return [ CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, AsList, CAP_JIT_INCOMPLETE_LOGIC( List( hoisted_2_1, function ( i_3 )
-                              return REM_INT( QUO_INT( hoisted_1_2, deduped_3_1 ^ i_3 ), deduped_3_1 );
+              return [ CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, AsList, CAP_JIT_INCOMPLETE_LOGIC( List( hoisted_3_1, function ( i_3 )
+                              return DigitInPositionalNotation( hoisted_1_2, i_3, deduped_5_1, deduped_4_1 );
                           end ) ) ) ];
           end ) );
 end

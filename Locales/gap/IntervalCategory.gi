@@ -15,7 +15,7 @@ InstallGlobalFunction( "CreateIntervalCategory",
               IsObjectInIntervalCategory,
               IsMorphismInIntervalCategory,
               IsCapCategoryTwoCell,
-              IsBool,
+              IsBigInt,
               fail,
               fail );
     
@@ -36,14 +36,15 @@ InstallGlobalFunction( "CreateIntervalCategory",
     SetRangeCategoryOfHomomorphismStructure( IntervalCategory, IntervalCategory );
     SetIsEquippedWithHomomorphismStructure( IntervalCategory, true );
     
-    ADD_UNIQUE_MORPHISM( IntervalCategory );
+    SetIsCategoryWithDecidableLifts( IntervalCategory, true );
+    SetIsCategoryWithDecidableColifts( IntervalCategory, true );
     
     ##
     AddObjectConstructor( IntervalCategory,
       function( cat, truth_value )
         
         return CreateCapCategoryObjectWithAttributes( cat,
-                       ClassicalTruthValue, truth_value );
+                       Length, truth_value );
         
     end );
     
@@ -51,15 +52,18 @@ InstallGlobalFunction( "CreateIntervalCategory",
     AddObjectDatum( IntervalCategory,
       function( cat, obj )
         
-        return ClassicalTruthValue( obj );
+        return Length( obj );
         
     end );
     
     ##
     AddMorphismConstructor( IntervalCategory,
-      function( cat, source, unspecified, range )
+      function( cat, source, map, range )
         
-        return UniqueMorphism( cat, source, range );
+        return CreateCapCategoryMorphismWithAttributes( cat,
+                       source,
+                       range,
+                       AsList, map );
         
     end );
     
@@ -67,7 +71,18 @@ InstallGlobalFunction( "CreateIntervalCategory",
     AddMorphismDatum( IntervalCategory,
       function( cat, mor )
         
-        return fail;
+        return AsList( mor );
+        
+    end );
+    
+    ##
+    AddUniqueMorphism( IntervalCategory,
+      function( cat, source, range )
+        
+        return MorphismConstructor( cat,
+                       source,
+                       [ 0 .. Length( source ) - 1 ],
+                       range );
         
     end );
     
@@ -107,7 +122,7 @@ InstallGlobalFunction( "CreateIntervalCategory",
     AddInitialObject( IntervalCategory,
       function( cat )
         
-        return ObjectConstructor( cat, false );
+        return ObjectConstructor( cat, BigInt( 0 ) );
         
     end );
     
@@ -123,7 +138,7 @@ InstallGlobalFunction( "CreateIntervalCategory",
     AddTerminalObject( IntervalCategory,
       function( cat )
         
-        return ObjectConstructor( cat, true );
+        return ObjectConstructor( cat, BigInt( 1 ) );
         
     end );
     
@@ -206,7 +221,7 @@ InstallGlobalFunction( "CreateIntervalCategory",
       function( cat, a, b )
         
         if IsTerminal( cat, a ) and IsInitial( cat, b ) then
-            return [ ];
+            return CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( cat ) ) );;
         fi;
         
         return [ UniqueMorphism( cat, a, b ) ];
@@ -394,12 +409,12 @@ InstallMethod( PrintString,
         
   function( obj )
     
-    if ObjectDatum( obj ) = false then
+    if ObjectDatum( obj ) = 0 then
         return "<(⊥)>";
-    elif ObjectDatum( obj ) = true then
+    elif ObjectDatum( obj ) = 1 then
         return "<(⊤)>";
     else
-        Error( "ObjectDatum( obj ) is not in [ false, true ]\n" );
+        Error( "ObjectDatum( obj ) is not in [ 0, 1 ]\n" );
     fi;
     
 end );
@@ -436,12 +451,12 @@ InstallMethod( PrintString,
     
     if IsEndomorphism( mor ) then
         obj := Source( mor );
-        if ObjectDatum( obj ) = false then
+        if ObjectDatum( obj ) = 0 then
             return "(⊥)-[(⊥)]->(⊥)";
-        elif ObjectDatum( obj ) = true then
+        elif ObjectDatum( obj ) = 1 then
             return "(⊤)-[(⊤)]->(⊤)";
         else
-            Error( "ObjectDatum( obj ) is not in [ false, true ]\n" );
+            Error( "ObjectDatum( obj ) is not in [ 0, 1 ]\n" );
         fi;
     elif IsInitial( Source( mor ) ) and IsTerminal( Target( mor ) ) then
         return "(⊥)-[(⇒)]->(⊤)";

@@ -8,6 +8,8 @@ SetInfoLevel( InfoLocales, 1 );
 
 InstallTrueMethod( IsThinCategory, IsDiscreteCategory );
 
+InstallTrueMethod( IsFiniteCategory, IsThinCategory and IsObjectFiniteCategory );
+
 InstallTrueMethod( IsMonoidalProset, IsThinCategory and IsMonoidalCategory );
 InstallTrueMethod( IsThinCategory, IsMonoidalProset );
 InstallTrueMethod( IsMonoidalCategory, IsMonoidalProset );
