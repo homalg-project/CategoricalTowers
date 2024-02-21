@@ -16,65 +16,71 @@
   [2XAddEmbeddingOfUnionSubobject[102X, for IsCapCategory, IsFunction 1.10-12 
   [2XAddEmbeddingOfUnionSubobjectWithGivenUnion[102X, for IsCapCategory, IsFunction 1.10-13 
   [2XAddExactCoverWithGlobalElements[102X, for IsCapCategory, IsFunction 1.10-14 
-  [2XAddFiberMorphism[102X, for IsCapCategory, IsFunction 1.10-15 
-  [2XAddFiberMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-16 
-  [2XAddHasPushoutComplement[102X, for IsCapCategory, IsFunction 1.10-17 
-  [2XAddIndexOfNonliftableMorphismFromDistinguishedObject[102X, for IsCapCategory, IsFunction 1.10-18 
-  [2XAddInjectionOfCoproductComplement[102X, for IsCapCategory, IsFunction 1.10-19 
-  [2XAddInjectionOfCoproductComplementWithGivenCoproductComplement[102X, for IsCapCategory, IsFunction 1.10-20 
-  [2XAddIntersectionSubobject[102X, for IsCapCategory, IsFunction 1.10-21 
-  [2XAddIsomorphismOntoCartesianSquareOfPowerObject[102X, for IsCapCategory, IsFunction 1.10-22 
-  [2XAddIsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-23 
-  [2XAddLawvereTierneyEmbeddingsOfSubobjectClassifiers[102X, for IsCapCategory, IsFunction 1.10-24 
-  [2XAddLawvereTierneyLocalModalityOperators[102X, for IsCapCategory, IsFunction 1.10-25 
-  [2XAddLawvereTierneySubobjects[102X, for IsCapCategory, IsFunction 1.10-26 
+  [2XAddHasPushoutComplement[102X, for IsCapCategory, IsFunction 1.10-15 
+  [2XAddIndexOfNonliftableMorphismFromDistinguishedObject[102X, for IsCapCategory, IsFunction 1.10-16 
+  [2XAddInjectionOfCoproductComplement[102X, for IsCapCategory, IsFunction 1.10-17 
+  [2XAddInjectionOfCoproductComplementWithGivenCoproductComplement[102X, for IsCapCategory, IsFunction 1.10-18 
+  [2XAddIntersectionSubobject[102X, for IsCapCategory, IsFunction 1.10-19 
+  [2XAddIsomorphismOntoCartesianSquareOfPowerObject[102X, for IsCapCategory, IsFunction 1.10-20 
+  [2XAddIsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-21 
+  [2XAddLawvereTierneyEmbeddingsOfSubobjectClassifiers[102X, for IsCapCategory, IsFunction 1.10-22 
+  [2XAddLawvereTierneyLocalModalityOperators[102X, for IsCapCategory, IsFunction 1.10-23 
+  [2XAddLawvereTierneySubobjects[102X, for IsCapCategory, IsFunction 1.10-24 
+  [2XAddLeftFiberMorphism[102X, for IsCapCategory, IsFunction 1.10-25 
+  [2XAddLeftFiberMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-26 
   [2XAddListOfSubobjects[102X, for IsCapCategory, IsFunction 1.10-27 
   [2XAddLowerSegmentOfRelation[102X, for IsCapCategory, IsFunction 1.10-28 
   [2XAddLowerSegmentOfRelationWithGivenRange[102X, for IsCapCategory, IsFunction 1.10-29 
   [2XAddNonliftableMorphismFromDistinguishedObject[102X, for IsCapCategory, IsFunction 1.10-30 
-  [2XAddPowerObject[102X, for IsCapCategory, IsFunction 1.10-33 
-  [2XAddPowerObjectFunctorial[102X, for IsCapCategory, IsFunction 1.10-34 
-  [2XAddPowerObjectFunctorialWithGivenPowerObjects[102X, for IsCapCategory, IsFunction 1.10-35 
-  [2XAddPowerObjectLeftEvaluationMorphism[102X, for IsCapCategory, IsFunction 1.10-36 
-  [2XAddPowerObjectLeftEvaluationMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-37 
-  [2XAddProjectionInDirectProductComplement[102X, for IsCapCategory, IsFunction 1.10-38 
-  [2XAddProjectionInDirectProductComplementWithGivenDirectProductComplement[102X, for IsCapCategory, IsFunction 1.10-39 
-  [2XAddPseudoComplementSubobject[102X, for IsCapCategory, IsFunction 1.10-40 
-  [2XAddPTransposeMorphism[102X, for IsCapCategory, IsFunction 1.10-31 
-  [2XAddPTransposeMorphismWithGivenRange[102X, for IsCapCategory, IsFunction 1.10-32 
-  [2XAddPushoutComplement[102X, for IsCapCategory, IsFunction 1.10-41 
-  [2XAddRelativePseudoComplementSubobject[102X, for IsCapCategory, IsFunction 1.10-42 
-  [2XAddRelativeTruthMorphismOfAnd[102X, for IsCapCategory, IsFunction 1.10-43 
-  [2XAddRelativeTruthMorphismOfAndWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-44 
-  [2XAddRelativeTruthMorphismOfFalse[102X, for IsCapCategory, IsFunction 1.10-45 
-  [2XAddRelativeTruthMorphismOfFalseWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-46 
-  [2XAddRelativeTruthMorphismOfImplies[102X, for IsCapCategory, IsFunction 1.10-47 
-  [2XAddRelativeTruthMorphismOfImpliesWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-48 
-  [2XAddRelativeTruthMorphismOfNot[102X, for IsCapCategory, IsFunction 1.10-49 
-  [2XAddRelativeTruthMorphismOfNotWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-50 
-  [2XAddRelativeTruthMorphismOfOr[102X, for IsCapCategory, IsFunction 1.10-51 
-  [2XAddRelativeTruthMorphismOfOrWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-52 
-  [2XAddRelativeTruthMorphismOfTrue[102X, for IsCapCategory, IsFunction 1.10-53 
-  [2XAddRelativeTruthMorphismOfTrueWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-54 
-  [2XAddSingletonMorphism[102X, for IsCapCategory, IsFunction 1.10-55 
-  [2XAddSingletonMorphismWithGivenPowerObject[102X, for IsCapCategory, IsFunction 1.10-56 
-  [2XAddSubobjectClassifier[102X, for IsCapCategory, IsFunction 1.10-57 
-  [2XAddSubobjectOfClassifyingMorphism[102X, for IsCapCategory, IsFunction 1.10-58 
-  [2XAddTruthMorphismOfAnd[102X, for IsCapCategory, IsFunction 1.10-59 
-  [2XAddTruthMorphismOfAndWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-60 
-  [2XAddTruthMorphismOfFalse[102X, for IsCapCategory, IsFunction 1.10-61 
-  [2XAddTruthMorphismOfFalseWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-62 
-  [2XAddTruthMorphismOfImplies[102X, for IsCapCategory, IsFunction 1.10-63 
-  [2XAddTruthMorphismOfImpliesWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-64 
-  [2XAddTruthMorphismOfNot[102X, for IsCapCategory, IsFunction 1.10-65 
-  [2XAddTruthMorphismOfNotWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-66 
-  [2XAddTruthMorphismOfOr[102X, for IsCapCategory, IsFunction 1.10-67 
-  [2XAddTruthMorphismOfOrWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-68 
-  [2XAddTruthMorphismOfTrue[102X, for IsCapCategory, IsFunction 1.10-69 
-  [2XAddTruthMorphismOfTrueWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-70 
-  [2XAddUnionSubobject[102X, for IsCapCategory, IsFunction 1.10-71 
-  [2XAddUpperSegmentOfRelation[102X, for IsCapCategory, IsFunction 1.10-72 
-  [2XAddUpperSegmentOfRelationWithGivenRange[102X, for IsCapCategory, IsFunction 1.10-73 
+  [2XAddPLeftTransposeMorphism[102X, for IsCapCategory, IsFunction 1.10-31 
+  [2XAddPLeftTransposeMorphismWithGivenRange[102X, for IsCapCategory, IsFunction 1.10-32 
+  [2XAddPowerObject[102X, for IsCapCategory, IsFunction 1.10-35 
+  [2XAddPowerObjectFunctorial[102X, for IsCapCategory, IsFunction 1.10-36 
+  [2XAddPowerObjectFunctorialWithGivenPowerObjects[102X, for IsCapCategory, IsFunction 1.10-37 
+  [2XAddPowerObjectLeftEvaluationMorphism[102X, for IsCapCategory, IsFunction 1.10-38 
+  [2XAddPowerObjectLeftEvaluationMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-39 
+  [2XAddPowerObjectRightEvaluationMorphism[102X, for IsCapCategory, IsFunction 1.10-40 
+  [2XAddPowerObjectRightEvaluationMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-41 
+  [2XAddPRightTransposeMorphism[102X, for IsCapCategory, IsFunction 1.10-33 
+  [2XAddPRightTransposeMorphismWithGivenRange[102X, for IsCapCategory, IsFunction 1.10-34 
+  [2XAddProjectionInDirectProductComplement[102X, for IsCapCategory, IsFunction 1.10-42 
+  [2XAddProjectionInDirectProductComplementWithGivenDirectProductComplement[102X, for IsCapCategory, IsFunction 1.10-43 
+  [2XAddPseudoComplementSubobject[102X, for IsCapCategory, IsFunction 1.10-44 
+  [2XAddPushoutComplement[102X, for IsCapCategory, IsFunction 1.10-45 
+  [2XAddRelativePseudoComplementSubobject[102X, for IsCapCategory, IsFunction 1.10-46 
+  [2XAddRelativeTruthMorphismOfAnd[102X, for IsCapCategory, IsFunction 1.10-47 
+  [2XAddRelativeTruthMorphismOfAndWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-48 
+  [2XAddRelativeTruthMorphismOfFalse[102X, for IsCapCategory, IsFunction 1.10-49 
+  [2XAddRelativeTruthMorphismOfFalseWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-50 
+  [2XAddRelativeTruthMorphismOfImplies[102X, for IsCapCategory, IsFunction 1.10-51 
+  [2XAddRelativeTruthMorphismOfImpliesWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-52 
+  [2XAddRelativeTruthMorphismOfNot[102X, for IsCapCategory, IsFunction 1.10-53 
+  [2XAddRelativeTruthMorphismOfNotWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-54 
+  [2XAddRelativeTruthMorphismOfOr[102X, for IsCapCategory, IsFunction 1.10-55 
+  [2XAddRelativeTruthMorphismOfOrWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-56 
+  [2XAddRelativeTruthMorphismOfTrue[102X, for IsCapCategory, IsFunction 1.10-57 
+  [2XAddRelativeTruthMorphismOfTrueWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-58 
+  [2XAddRightFiberMorphism[102X, for IsCapCategory, IsFunction 1.10-59 
+  [2XAddRightFiberMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-60 
+  [2XAddSingletonMorphism[102X, for IsCapCategory, IsFunction 1.10-61 
+  [2XAddSingletonMorphismWithGivenPowerObject[102X, for IsCapCategory, IsFunction 1.10-62 
+  [2XAddSubobjectClassifier[102X, for IsCapCategory, IsFunction 1.10-63 
+  [2XAddSubobjectOfClassifyingMorphism[102X, for IsCapCategory, IsFunction 1.10-64 
+  [2XAddTruthMorphismOfAnd[102X, for IsCapCategory, IsFunction 1.10-65 
+  [2XAddTruthMorphismOfAndWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-66 
+  [2XAddTruthMorphismOfFalse[102X, for IsCapCategory, IsFunction 1.10-67 
+  [2XAddTruthMorphismOfFalseWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-68 
+  [2XAddTruthMorphismOfImplies[102X, for IsCapCategory, IsFunction 1.10-69 
+  [2XAddTruthMorphismOfImpliesWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-70 
+  [2XAddTruthMorphismOfNot[102X, for IsCapCategory, IsFunction 1.10-71 
+  [2XAddTruthMorphismOfNotWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-72 
+  [2XAddTruthMorphismOfOr[102X, for IsCapCategory, IsFunction 1.10-73 
+  [2XAddTruthMorphismOfOrWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-74 
+  [2XAddTruthMorphismOfTrue[102X, for IsCapCategory, IsFunction 1.10-75 
+  [2XAddTruthMorphismOfTrueWithGivenObjects[102X, for IsCapCategory, IsFunction 1.10-76 
+  [2XAddUnionSubobject[102X, for IsCapCategory, IsFunction 1.10-77 
+  [2XAddUpperSegmentOfRelation[102X, for IsCapCategory, IsFunction 1.10-78 
+  [2XAddUpperSegmentOfRelationWithGivenRange[102X, for IsCapCategory, IsFunction 1.10-79 
   [2XAsMorphismInCategoryOfRelations[102X, for IsCapCategoryMorphism 2.2-2 
   [2XCartesianSquareOfSubobjectClassifier[102X, for IsCapCategory 1.2-3 
   [2XCategoryOfRelations[102X, for IsCapCategory 2.2-1 
@@ -89,53 +95,57 @@
   [2XEmbeddingOfPseudoComplementSubobject[102X, for IsCapCategoryMorphism 1.6-2 
   [2XEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.6-3 
   [2XEmbeddingOfRelationInDirectProduct[102X, for IsMorphismInCategoryOfRelations 2.3-8 
-  [2XEmbeddingOfRelativePowerObject[102X, for IsCapCategoryMorphism 1.4-17 
+  [2XEmbeddingOfRelativePowerObject[102X, for IsCapCategoryMorphism 1.4-21 
   [2XEmbeddingOfRelativePseudoComplementSubobject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.6-11 
   [2XEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.6-12 
   [2XEmbeddingOfUnionSubobject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.6-8 
   [2XEmbeddingOfUnionSubobjectWithGivenUnion[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.6-9 
   [2XExactCoverWithGlobalElements[102X, for IsCapCategoryObject 1.1-1 
-  [2XFiberMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.4-20 
-  [2XFiberMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.4-21 
   [2XHasPushoutComplement[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.7-3 
   [2XHonestRepresentative[102X, for IsMorphismInCategoryOfRelations 2.3-13 
   [2XIndexOfNonliftableMorphismFromDistinguishedObject[102X, for IsCapCategoryMorphism 1.1-2 
   [2XInjectionOfCoproductComplement[102X, for IsCapCategoryMorphism 1.11-2 
   [2XInjectionOfCoproductComplementWithGivenCoproductComplement[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.11-3 
   [2XIntersectionSubobject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.6-4 
-  [2XIntersectWithPreimagesWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.4-16 
+  [2XIntersectWithPreimagesWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.4-20 
   [2XIsCategoryOfRelations[102X, for IsCapCategory 2.1-1 
   [2XIsElementaryTopos[102X, for IsCapCategory 1.2-1 
   [2XIsHonest[102X, for IsMorphismInCategoryOfRelations 2.4-1 
   [2XIsMorphismInCategoryOfRelations[102X, for IsCapCategoryMorphism 2.1-3 
   [2XIsObjectInCategoryOfRelations[102X, for IsCapCategoryObject 2.1-2 
-  [2XIsomorphismOntoCartesianSquareOfPowerObject[102X, for IsCapCategoryObject 1.4-14 
-  [2XIsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.4-15 
+  [2XIsomorphismOntoCartesianSquareOfPowerObject[102X, for IsCapCategoryObject 1.4-18 
+  [2XIsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.4-19 
   [2XLawvereTierneyEmbeddingsOfSubobjectClassifiers[102X, for IsCapCategory 1.9-3 
   [2XLawvereTierneyLocalModalityOperators[102X, for IsCapCategory 1.9-1 
   [2XLawvereTierneySubobjects[102X, for IsCapCategory 1.9-2 
+  [2XLeftFiberMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.4-26 
+  [2XLeftFiberMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.4-27 
   [2XListOfSubobjects[102X, for IsCapCategoryObject 1.2-7 
-  [2XLowerSegmentOfRelation[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.4-10 
-  [2XLowerSegmentOfRelationWithGivenRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.4-11 
+  [2XLowerSegmentOfRelation[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.4-14 
+  [2XLowerSegmentOfRelationWithGivenRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.4-15 
   [2XMaximalRelationIntoTerminalObject[102X, for IsObjectInCategoryOfRelations 2.3-5 
   [2XMorphismByStandardizedSpan[102X, for IsMorphismInCategoryOfRelations 2.3-12 
   [2XNonliftableMorphismFromDistinguishedObject[102X, for IsCapCategoryMorphism 1.1-3 
+  [2XPLeftTransposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.4-10 
+  [2XPLeftTransposeMorphismWithGivenRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.4-11 
   [2XPowerObject[102X, for IsCapCategoryObject 1.4-1 
   [2XPowerObjectFunctorial[102X, for IsCapCategoryMorphism 1.4-2 
   [2XPowerObjectFunctorialWithGivenPowerObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.4-3 
-  [2XPowerObjectLeftEvaluationMorphism[102X, for IsCapCategoryObject 1.4-4 
-  [2XPowerObjectLeftEvaluationMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.4-5 
+  [2XPowerObjectLeftEvaluationMorphism[102X, for IsCapCategoryObject 1.4-6 
+  [2XPowerObjectLeftEvaluationMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.4-7 
+  [2XPowerObjectRightEvaluationMorphism[102X, for IsCapCategoryObject 1.4-4 
+  [2XPowerObjectRightEvaluationMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.4-5 
+  [2XPRightTransposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.4-8 
+  [2XPRightTransposeMorphismWithGivenRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.4-9 
   [2XProjectionInDirectProductComplement[102X, for IsCapCategoryMorphism 1.11-5 
   [2XProjectionInDirectProductComplementWithGivenDirectProductComplement[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.11-6 
   [2XPseudoComplementSubobject[102X, for IsCapCategoryMorphism 1.6-1 
   [2XPseudoInverse[102X, for IsMorphismInCategoryOfRelations 2.3-6 
   [2XPseudoInverseOfHonestMorphism[102X, for IsCapCategoryMorphism 2.3-7 
-  [2XPTransposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.4-6 
-  [2XPTransposeMorphismWithGivenRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.4-7 
   [2XPushoutComplement[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.7-4 
   [2XRangeProjection[102X, for IsMorphismInCategoryOfRelations 2.3-10 
-  [2XRelativePowerObjectFibrationMorphism[102X, for IsCapCategoryMorphism 1.4-18 
-  [2XRelativePowerObjectLeftEvaluationMorphism[102X, for IsCapCategoryMorphism 1.4-19 
+  [2XRelativePowerObjectFibrationMorphism[102X, for IsCapCategoryMorphism 1.4-22 
+  [2XRelativePowerObjectLeftEvaluationMorphism[102X, for IsCapCategoryMorphism 1.4-23 
   [2XRelativePseudoComplementSubobject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.6-10 
   [2XRelativeTruthMorphismOfAnd[102X, for IsCapCategoryObject 1.5-7 
   [2XRelativeTruthMorphismOfAndWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-8 
@@ -149,9 +159,11 @@
   [2XRelativeTruthMorphismOfOrWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-10 
   [2XRelativeTruthMorphismOfTrue[102X, for IsCapCategoryObject 1.5-1 
   [2XRelativeTruthMorphismOfTrueWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-2 
-  [2XSingletonMorphism[102X, for IsCapCategoryObject 1.4-12 
-  [2XSingletonMorphismWithGivenPowerObject[102X, for IsCapCategoryObject, IsCapCategoryObject 1.4-13 
-  [2XSingletonSupportOfRelationsWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.4-22 
+  [2XRightFiberMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.4-24 
+  [2XRightFiberMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.4-25 
+  [2XSingletonMorphism[102X, for IsCapCategoryObject 1.4-16 
+  [2XSingletonMorphismWithGivenPowerObject[102X, for IsCapCategoryObject, IsCapCategoryObject 1.4-17 
+  [2XSingletonSupportOfRelationsWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.4-28 
   [2XSourceProjection[102X, for IsMorphismInCategoryOfRelations 2.3-9 
   [2XStandardizedSpan[102X, for IsMorphismInCategoryOfRelations 2.3-11 
   [2XSubobjectClassifier[102X, for IsCapCategory 1.2-2 
@@ -173,8 +185,8 @@
   [2XUnderlyingSpan[102X, for IsMorphismInCategoryOfRelations 2.3-4 
   [2XUnionSubobject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.6-7 
   [2XUnitObjectInCategoryOfRelations[102X, for IsCategoryOfRelations 2.3-2 
-  [2XUpperSegmentOfRelation[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.4-8 
-  [2XUpperSegmentOfRelationWithGivenRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.4-9 
+  [2XUpperSegmentOfRelation[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.4-12 
+  [2XUpperSegmentOfRelationWithGivenRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.4-13 
   
   
   -------------------------------------------------------
