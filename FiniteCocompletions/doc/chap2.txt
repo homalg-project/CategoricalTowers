@@ -53,7 +53,7 @@
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XA CAP category with name FiniteStrictProductCompletion( InitialCategory( ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X108 primitive operations were used to derive 609 operations for this category[128X[104X
+    [4X[28X108 primitive operations were used to derive 612 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -70,7 +70,6 @@
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
-    [4X[28X* IsFinitelyPresentedCategory[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsDiscreteCategory[128X[104X
