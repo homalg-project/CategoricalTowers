@@ -62,7 +62,7 @@
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XA CAP category with name FiniteStrictCoproductCompletion( InitialCategory( ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X111 primitive operations were used to derive 647 operations for this category[128X[104X
+    [4X[28X110 primitive operations were used to derive 665 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -71,25 +71,26 @@
     [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
     [4X[28X* IsLeftClosedMonoidalCategory[128X[104X
     [4X[28X* IsLeftCoclosedMonoidalCategory[128X[104X
-    [4X[28X* IsBicartesianCoclosedCategory[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughInjectives[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
+    [4X[28X* IsClosedMonoidalLattice[128X[104X
+    [4X[28X* IsCoclosedMonoidalLattice[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
+    [4X[28X* IsBooleanAlgebra[128X[104X
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
     [4X[28X* IsFinitelyPresentedCategory[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsDiscreteCategory[128X[104X
     [4X[28X* IsFinitelyPresentedLinearCategory[128X[104X
     [4X[28X* IsLinearClosureOfACategory[128X[104X
     [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
     [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
-    [4X[28X* IsSkeletalCategory[128X[104X
-    [4X[28X* IsStrictCartesianCategory[128X[104X
-    [4X[28X* IsStrictCocartesianCategory[128X[104X
-    [4X[28X* IsStrictMonoidalCategory[128X[104X
+    [4X[28X* IsStableProset[128X[104X
     [4X[28X* IsTerminalCategory[128X[104X
+    [4X[28X* IsTotalOrderCategory[128X[104X
     [4X[25Xgap>[125X [27Xi := InitialObject( T );[127X[104X
     [4X[28X<A zero object in FiniteStrictCoproductCompletion( InitialCategory( ) )>[128X[104X
     [4X[25Xgap>[125X [27Xt := TerminalObject( T );[127X[104X
