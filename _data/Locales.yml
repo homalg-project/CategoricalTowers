@@ -1,5 +1,5 @@
 name: Locales
-version: "2024.02-13"
+version: "2024.02-14"
 license: "GPL-2.0-or-later"
 date: 2024-02-21
 description: |
@@ -58,11 +58,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/Locales/PackageI
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2024.02-13/Locales-2024.02-13.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2024.02-14/Locales-2024.02-14.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2024.02-13/Locales-2024.02-13.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2024.02-14/Locales-2024.02-14.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2024.02-13/Locales-2024.02-13-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2024.02-14/Locales-2024.02-14-manual.pdf
 
 abstract: |
 
@@ -75,7 +75,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BLK21</span>]   <b class='BibAuthor'>Barakat, M., Lange-Hegermann, M. and Kuhmichel, T.</b>,
      <i class='BibTitle'>Locales, Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets,
-             Version 2024.02-13</i>
+             Version 2024.02-14</i>
      (<span class='BibYear'>2-21</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/Locales">https://homalg-project.github.io/pkg/Locales</a></span>.
@@ -83,11 +83,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ Locales2024.02-13,
+    @misc{ Locales2024.02-14,
       author =           {Barakat, M. and Lange-Hegermann, M. and Kuhmichel, T.},
       title =            {{Locales},    Locales,    frames,    coframes,    meet
                           semi-lattices  of  locally closed subsets, and Boolean
-                          algebras of constructible sets, {V}ersion 2024.02-13},
+                          algebras of constructible sets, {V}ersion 2024.02-14},
       month =            {4-},
       year =             {2-21},
       note =             {GAP package},
