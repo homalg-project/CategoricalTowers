@@ -212,7 +212,7 @@ InstallMethod( DigraphOfPoset,
     
     objects := SetOfObjectsOfCategory( P );
     
-    if ValueOption( "use_vertex_lables" ) = true then
+    if ValueOption( "use_vertex_labels" ) = true then
         D := Digraph( objects, IsHomSetInhabited );
     else
         D := Digraph( [ 0 .. Length( objects ) - 1 ], { i, j } -> IsHomSetInhabited( objects[1+i], objects[1+j] ) );
