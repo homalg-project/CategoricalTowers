@@ -6,10 +6,10 @@
                               [1X Elementary toposes [101X
   
   
-                                   2024.02-08
+                                   2024.02-09
   
   
-                                21 February 2024
+                                23 February 2024
   
   
                                 Mohamed Barakat
@@ -266,8 +266,6 @@
   3 [33X[0;0YTools[133X
     3.1 [33X[0;0YVisualizing posets of subobjects[133X
       3.1-1 DigraphOfSubobjects
-  4 [33X[0;0YExamples and Tests[133X
-    4.1 [33X[0;0YOpposite category[133X
   
   
   [32X
