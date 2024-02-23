@@ -31,6 +31,7 @@ Display( Poly );
 #! * IsFiniteCompleteCategory
 #! * IsDistributiveCategory
 #! and furthermore mathematically
+#! * IsStrictCartesianCategory
 #! * IsStrictCocartesianCategory
 #! @EndExample
 #! @EndChunk

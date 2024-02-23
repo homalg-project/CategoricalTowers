@@ -77,6 +77,7 @@ Dependencies := rec(
                    [ "Toposes", ">= 2024.02-08" ],
                    [ "ToolsForCategoricalTowers", ">= 2024.02-05" ],
                    [ "Toposes", ">= 2024.01-02" ],
+                   [ "FinSetsForCAP", ">= 2024.02-09" ],
                    [ "Locales", ">= 2024.02-13" ],
                    [ "QuotientCategories", ">= 2024.02-01" ],
                    [ "FpCategories", ">= 2024.02-11" ],

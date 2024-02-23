@@ -5,7 +5,7 @@ LoadPackage( "ToolsForCategoricalTowers" );
 #! true
 LoadPackage( "Toposes", ">= 2024.02-08", false );
 #! true
-LoadPackage( "FinSetsForCAP", ">= 2024.02-02", false );
+LoadPackage( "FinSetsForCAP", ">= 2024.02-09", false );
 #! true
 sFinSets := SkeletalCategoryOfFiniteSets( );
 #! SkeletalFinSets
@@ -20,6 +20,8 @@ Display( sFinSets );
 #! * IsElementaryTopos
 #! and furthermore mathematically
 #! * IsSkeletalCategory
+#! * IsStrictCartesianCategory
+#! * IsStrictCocartesianCategory
 a := FinSet( sFinSets, 2 );
 #! |2|
 b := FinSet( sFinSets, 3 );
@@ -52,6 +54,8 @@ Display( W );
 #! * IsElementaryTopos
 #! and furthermore mathematically
 #! * IsSkeletalCategory
+#! * IsStrictCartesianCategory
+#! * IsStrictCocartesianCategory
 W_a := a / W;
 #! <An object in WrapperCategory( SkeletalFinSets )>
 W_b := b / W;
@@ -84,6 +88,8 @@ Display( O );
 #! * IsBicartesianCoclosedCategory
 #! and furthermore mathematically
 #! * IsSkeletalCategory
+#! * IsStrictCartesianCategory
+#! * IsStrictCocartesianCategory
 O_a := a / O;
 #! <An object in Opposite( SkeletalFinSets )>
 O_b := b / O;
