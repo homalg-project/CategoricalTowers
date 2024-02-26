@@ -162,7 +162,7 @@
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Toposes", "&gt;= 2024.02-08", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP", "&gt;= 2024.02-02", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP", "&gt;= 2024.02-09", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalCategoryOfFiniteSets( );</span>
 SkeletalFinSets
@@ -177,6 +177,8 @@ which algorithmically
 * IsElementaryTopos
 and furthermore mathematically
 * IsSkeletalCategory
+* IsStrictCartesianCategory
+* IsStrictCocartesianCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := FinSet( sFinSets, 2 );</span>
 |2|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := FinSet( sFinSets, 3 );</span>
@@ -209,6 +211,8 @@ which algorithmically
 * IsElementaryTopos
 and furthermore mathematically
 * IsSkeletalCategory
+* IsStrictCartesianCategory
+* IsStrictCocartesianCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W_a := a / W;</span>
 &lt;An object in WrapperCategory( SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W_b := b / W;</span>
@@ -241,6 +245,8 @@ which algorithmically
 * IsBicartesianCoclosedCategory
 and furthermore mathematically
 * IsSkeletalCategory
+* IsStrictCartesianCategory
+* IsStrictCocartesianCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">O_a := a / O;</span>
 &lt;An object in Opposite( SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">O_b := b / O;</span>
@@ -318,7 +324,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Toposes", "&gt;= 2024.02-08", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP", "&gt;= 2024.02-02", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP", "&gt;= 2024.02-09", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalCategoryOfFiniteSets( );</span>
 SkeletalFinSets
@@ -333,6 +339,8 @@ which algorithmically
 * IsElementaryTopos
 and furthermore mathematically
 * IsSkeletalCategory
+* IsStrictCartesianCategory
+* IsStrictCocartesianCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := FinSet( sFinSets, 2 );</span>
 |2|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := FinSet( sFinSets, 3 );</span>
@@ -365,6 +373,8 @@ which algorithmically
 * IsElementaryTopos
 and furthermore mathematically
 * IsSkeletalCategory
+* IsStrictCartesianCategory
+* IsStrictCocartesianCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W_a := a / W;</span>
 &lt;An object in WrapperCategory( SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W_b := b / W;</span>
@@ -397,6 +407,8 @@ which algorithmically
 * IsBicartesianCoclosedCategory
 and furthermore mathematically
 * IsSkeletalCategory
+* IsStrictCartesianCategory
+* IsStrictCocartesianCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">O_a := a / O;</span>
 &lt;An object in Opposite( SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">O_b := b / O;</span>

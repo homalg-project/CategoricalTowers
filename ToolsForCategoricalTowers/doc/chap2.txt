@@ -28,7 +28,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2024.02-08", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2024.02-02", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2024.02-09", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalCategoryOfFiniteSets( );[127X[104X
     [4X[28XSkeletalFinSets[128X[104X
@@ -43,6 +43,8 @@
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[28X* IsStrictCartesianCategory[128X[104X
+    [4X[28X* IsStrictCocartesianCategory[128X[104X
     [4X[25Xgap>[125X [27Xa := FinSet( sFinSets, 2 );[127X[104X
     [4X[28X|2|[128X[104X
     [4X[25Xgap>[125X [27Xb := FinSet( sFinSets, 3 );[127X[104X
@@ -75,6 +77,8 @@
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[28X* IsStrictCartesianCategory[128X[104X
+    [4X[28X* IsStrictCocartesianCategory[128X[104X
     [4X[25Xgap>[125X [27XW_a := a / W;[127X[104X
     [4X[28X<An object in WrapperCategory( SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XW_b := b / W;[127X[104X
@@ -107,6 +111,8 @@
     [4X[28X* IsBicartesianCoclosedCategory[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[28X* IsStrictCartesianCategory[128X[104X
+    [4X[28X* IsStrictCocartesianCategory[128X[104X
     [4X[25Xgap>[125X [27XO_a := a / O;[127X[104X
     [4X[28X<An object in Opposite( SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XO_b := b / O;[127X[104X
@@ -173,7 +179,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2024.02-08", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2024.02-02", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2024.02-09", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalCategoryOfFiniteSets( );[127X[104X
     [4X[28XSkeletalFinSets[128X[104X
@@ -188,6 +194,8 @@
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[28X* IsStrictCartesianCategory[128X[104X
+    [4X[28X* IsStrictCocartesianCategory[128X[104X
     [4X[25Xgap>[125X [27Xa := FinSet( sFinSets, 2 );[127X[104X
     [4X[28X|2|[128X[104X
     [4X[25Xgap>[125X [27Xb := FinSet( sFinSets, 3 );[127X[104X
@@ -220,6 +228,8 @@
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[28X* IsStrictCartesianCategory[128X[104X
+    [4X[28X* IsStrictCocartesianCategory[128X[104X
     [4X[25Xgap>[125X [27XW_a := a / W;[127X[104X
     [4X[28X<An object in WrapperCategory( SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XW_b := b / W;[127X[104X
@@ -252,6 +262,8 @@
     [4X[28X* IsBicartesianCoclosedCategory[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[28X* IsStrictCartesianCategory[128X[104X
+    [4X[28X* IsStrictCocartesianCategory[128X[104X
     [4X[25Xgap>[125X [27XO_a := a / O;[127X[104X
     [4X[28X<An object in Opposite( SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XO_b := b / O;[127X[104X
