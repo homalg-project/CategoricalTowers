@@ -106,9 +106,8 @@
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
-    [4X[28X* IsFiniteCocompleteCategory[128X[104X
-    [4X[28X* IsFiniteCompleteCategory[128X[104X
     [4X[28X* IsBicartesianCoclosedCategory[128X[104X
+    [4X[28X* IsFiniteBicompleteCategory[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
     [4X[28X* IsStrictCartesianCategory[128X[104X
@@ -257,9 +256,8 @@
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
-    [4X[28X* IsFiniteCocompleteCategory[128X[104X
-    [4X[28X* IsFiniteCompleteCategory[128X[104X
     [4X[28X* IsBicartesianCoclosedCategory[128X[104X
+    [4X[28X* IsFiniteBicompleteCategory[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
     [4X[28X* IsStrictCartesianCategory[128X[104X
