@@ -154,6 +154,7 @@ InstallMethod( Subcategory,
                         "IsSkeletalCategory",
                         "IsFiniteObjectCategory",
                         "IsFiniteCategory",
+                        "IsThinCategory",
                         ## "IsFinitelyPresentedCategory", can this be inherited?
                         "IsEnrichedOverCommutativeRegularSemigroup",
                         "IsAbCategory",
@@ -166,6 +167,7 @@ InstallMethod( Subcategory,
         properties := [ "IsSkeletalCategory",
                         "IsFiniteObjectCategory",
                         "IsFiniteCategory",
+                        "IsThinCategory",
                         #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
                         #"IsAbCategory", cannot be inherited
                         #"IsLinearCategoryOverCommutativeRing", cannot be inherited
@@ -195,6 +197,23 @@ InstallMethod( Subcategory,
           function( D )
             
             return List( Filtered( SetOfObjects( AmbientCategory( D ) ), D!.ObjectMembershipFunction ), object -> ObjectConstructor( D, object ) );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "UniqueMorphism" ) then
+        
+        ##
+        AddUniqueMorphism( D,
+          function( D, source, target )
+            
+            return MorphismConstructor( D,
+                           source,
+                           UniqueMorphism( AmbientCategory( C ),
+                                   ObjectDatum( D, source ),
+                                   ObjectDatum( D, target ) ),
+                           target );
             
         end );
         
