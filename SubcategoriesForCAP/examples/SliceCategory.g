@@ -19,9 +19,8 @@ Display( S );
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
-#! * IsFiniteCocompleteCategory
-#! * IsFiniteCompleteCategory
 #! * IsDistributiveCategory
+#! * IsFiniteBicompleteCategory
 #! and not yet algorithmically
 #! * IsElementaryTopos
 o0 := MapOfFinSets( B, [ 1, 1 ], B ) / S;
