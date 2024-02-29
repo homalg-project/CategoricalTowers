@@ -173,18 +173,18 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xq := FinQuiver( "q(A,B)" );[127X[104X
-    [4X[28XFinQuiver( "q(A,B)[]" )[128X[104X
-    [4X[25Xgap>[125X [27XF := PathCategory( q );[127X[104X
-    [4X[28XPathCategory( FinQuiver( "q(A,B)[]" ) )[128X[104X
+    [4X[25Xgap>[125X [27Xpq := FinQuiver( "quiver(p,q)" );[127X[104X
+    [4X[28XFinQuiver( "quiver(p,q)[]" )[128X[104X
+    [4X[25Xgap>[125X [27XF := PathCategory( pq );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "quiver(p,q)[]" ) )[128X[104X
     [4X[25Xgap>[125X [27XP := PosetOfCategory( F );[127X[104X
-    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XD := FreeDistributiveCompletion( P );[127X[104X
+    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XDist := FreeDistributiveCompletion( P );[127X[104X
     [4X[28XFreeDistributiveCompletion([128X[104X
-    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( D );[127X[104X
+    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Dist );[127X[104X
     [4X[28XA CAP category with name FreeDistributiveCompletion([128X[104X
-    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) ):[128X[104X
+    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) ):[128X[104X
     [4X[28X[128X[104X
     [4X[28X54 primitive operations were used to derive 250 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
@@ -193,9 +193,9 @@
     [4X[28X* IsDistributiveLattice[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
     [4X[28X* IsBiHeytingAlgebra[128X[104X
-    [4X[25Xgap>[125X [27XLength( SetOfObjects( D ) );[127X[104X
+    [4X[25Xgap>[125X [27XLength( SetOfObjects( Dist ) );[127X[104X
     [4X[28X6[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( DotVertexLabelledDigraph( DigraphOfPoset( D ) ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( DotVertexLabelledDigraph( DigraphOfPoset( Dist ) ) );[127X[104X
     [4X[28X//dot[128X[104X
     [4X[28Xdigraph subobject_lattice{[128X[104X
     [4X[28Xrankdir="BT"[128X[104X
@@ -214,10 +214,10 @@
     [4X[28X5 -> 4 [arrowsize=0.5][128X[104X
     [4X[28X6 -> 2 [arrowsize=0.5][128X[104X
     [4X[28X}[128X[104X
-    [4X[25Xgap>[125X [27XM := MeetSemilatticeOfSingleDifferences( D );[127X[104X
-    [4X[28XThe meet-semilattice of single differences of FreeDistributiveCompletion([128X[104X
-    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XLength( SetOfObjects( M ) );[127X[104X
+    [4X[25Xgap>[125X [27XDiffbCSL := MeetSemilatticeOfSingleDifferences( Dist );[127X[104X
+    [4X[28XMeetSemilatticeOfSingleDifferences( FreeDistributiveCompletion([128X[104X
+    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XLength( SetOfObjects( DiffbCSL ) );[127X[104X
     [4X[28X13[128X[104X
   [4X[32X[104X
   

@@ -219,18 +219,18 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "q(A,B)" );</span>
-FinQuiver( "q(A,B)[]" )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PathCategory( q );</span>
-PathCategory( FinQuiver( "q(A,B)[]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pq := FinQuiver( "quiver(p,q)" );</span>
+FinQuiver( "quiver(p,q)[]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PathCategory( pq );</span>
+PathCategory( FinQuiver( "quiver(p,q)[]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PosetOfCategory( F );</span>
-PosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := FreeDistributiveCompletion( P );</span>
+PosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dist := FreeDistributiveCompletion( P );</span>
 FreeDistributiveCompletion(
-PosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( D );</span>
+PosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Dist );</span>
 A CAP category with name FreeDistributiveCompletion(
-PosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) ):
+PosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) ):
 
 54 primitive operations were used to derive 250 operations for this category
 which algorithmically
@@ -239,9 +239,9 @@ which algorithmically
 * IsDistributiveLattice
 and not yet algorithmically
 * IsBiHeytingAlgebra
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfObjects( D ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfObjects( Dist ) );</span>
 6
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( DotVertexLabelledDigraph( DigraphOfPoset( D ) ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( DotVertexLabelledDigraph( DigraphOfPoset( Dist ) ) );</span>
 //dot
 digraph subobject_lattice{
 rankdir="BT"
@@ -260,10 +260,10 @@ node [shape=circle width=0 height=0]
 5 -&gt; 4 [arrowsize=0.5]
 6 -&gt; 2 [arrowsize=0.5]
 }
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := MeetSemilatticeOfSingleDifferences( D );</span>
-The meet-semilattice of single differences of FreeDistributiveCompletion(
-PosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfObjects( M ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DiffbCSL := MeetSemilatticeOfSingleDifferences( Dist );</span>
+MeetSemilatticeOfSingleDifferences( FreeDistributiveCompletion(
+PosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfObjects( DiffbCSL ) );</span>
 13
 </pre></div>
 
