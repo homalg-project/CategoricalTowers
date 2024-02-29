@@ -1,7 +1,7 @@
 name: FunctorCategories
-version: "2024.02-11"
+version: "2024.02-14"
 license: "GPL-2.0-or-later"
-date: 2024-02-21
+date: 2024-02-29
 description: |
     Categories of functors
 
@@ -33,7 +33,7 @@ needed-pkgs:
       version: ">= 2024.02-01"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
     - name: "CartesianCategories"
-      version: ">= 2024.02-01"
+      version: ">= 2024.02-05"
       url: "https://homalg-project.github.io/pkg/CartesianCategories"
     - name: "ToolsForCategoricalTowers"
       version: ">= 2024.02-03"
@@ -69,7 +69,7 @@ needed-pkgs:
       version: ">= 2024.02-14"
       url: "https://homalg-project.github.io/pkg/Locales"
     - name: "FinSetsForCAP"
-      version: ">= 2024.02-02"
+      version: ">= 2024.02-09"
       url: "https://homalg-project.github.io/pkg/FinSetsForCAP"
     - name: "ToolsForHigherHomologicalAlgebra"
       version: ">= 2023.03-01"
@@ -81,11 +81,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FunctorCategorie
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.02-11/FunctorCategories-2024.02-11.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.02-14/FunctorCategories-2024.02-14.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.02-11/FunctorCategories-2024.02-11.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.02-14/FunctorCategories-2024.02-14.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.02-11/FunctorCategories-2024.02-11-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.02-14/FunctorCategories-2024.02-14-manual.pdf
 
 abstract: |
 
@@ -96,22 +96,22 @@ keywords: |
     functors, natural transformations, finitely presented categories, functors into categories, functors into pre-additive categories, functors into additive categories, functors into pre-abelian categories, functors into abelian categories.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BS21</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+    [<span class='BibKey'>BS29</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FunctorCategories, Categories of functors,
-             Version 2024.02-11</i>
-     (<span class='BibYear'>2-21</span>)<br />
+             Version 2024.02-14</i>
+     (<span class='BibYear'>2-29</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FunctorCategories">https://homalg-project.github.io/pkg/FunctorCategories</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ FunctorCategories2024.02-11,
+    @misc{ FunctorCategories2024.02-14,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FunctorCategories}, Categories of functors, {V}ersion
-                          2024.02-11},
+                          2024.02-14},
       month =            {4-},
-      year =             {2-21},
+      year =             {2-29},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/FunctorCategories}
@@ -123,6 +123,6 @@ bibtex: |
                           pre-additive   categories;   functors   into  additive
                           categories;   functors  into  pre-abelian  categories;
                           functors into abelian categories},
-      printedkey =       {BS21}
+      printedkey =       {BS29}
     }
 
