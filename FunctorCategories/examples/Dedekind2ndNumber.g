@@ -49,8 +49,8 @@ Display( DotVertexLabelledDigraph( DigraphOfPoset( Dist ) ) );
 #! 6 -> 2 [arrowsize=0.5]
 #! }
 DiffbCSL := MeetSemilatticeOfSingleDifferences( Dist );
-#! The meet-semilattice of single differences of FreeDistributiveCompletion(
-#! PosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) )
+#! MeetSemilatticeOfSingleDifferences( FreeDistributiveCompletion(
+#! PosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) ) )
 Length( SetOfObjects( DiffbCSL ) );
 #! 13
 #! @EndExample

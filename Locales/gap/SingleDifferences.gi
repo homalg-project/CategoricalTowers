@@ -41,9 +41,7 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
                "for the meet-semilattice of single differences to be well-defined\n" );
     fi;
     
-    name := "The meet-semilattice of single differences of ";
-    
-    name := Concatenation( name, Name( P ) );
+    name := Concatenation( "MeetSemilatticeOfSingleDifferences( ", Name( P ), " )" );
     
     D := CreateCapCategoryWithDataTypes( name,
                  IsMeetSemilatticeOfSingleDifferences,

@@ -56,9 +56,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
   function( P )
     local name, C, D, BinaryDirectProduct;
     
-    name := "The Boolean algebra of constructible objects as unions of formal single differences of ";
-    
-    name := Concatenation( name, Name( P ) );
+    name := Concatenation( "BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences( ", Name( P ), " )" );
     
     C := CreateCapCategory( name,
                  IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences,
