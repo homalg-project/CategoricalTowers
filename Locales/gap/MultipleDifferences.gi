@@ -36,9 +36,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
                "for the meet-semilattice of multiple differences to be well-defined\n" );
     fi;
     
-    name := "The meet-semilattice of multiple differences of ";
-    
-    name := Concatenation( name, Name( P ) );
+    name := Concatenation( "MeetSemilatticeOfMultipleDifferences( ", Name( P ), " )" );
     
     D := CreateCapCategory( name,
                  IsMeetSemilatticeOfMultipleDifferences,
