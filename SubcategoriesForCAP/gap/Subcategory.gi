@@ -152,6 +152,8 @@ InstallMethod( Subcategory,
         category_constructor_options.category_morphism_filter := IsMorphismInAFullSubcategory;
         properties := [ "IsEquippedWithHomomorphismStructure",
                         "IsSkeletalCategory",
+                        "IsFiniteObjectCategory",
+                        "IsFiniteCategory",
                         ## "IsFinitelyPresentedCategory", can this be inherited?
                         "IsEnrichedOverCommutativeRegularSemigroup",
                         "IsAbCategory",
@@ -162,6 +164,8 @@ InstallMethod( Subcategory,
         category_constructor_options.category_object_filter := IsObjectInASubcategory;
         category_constructor_options.category_morphism_filter := IsMorphismInASubcategory;
         properties := [ "IsSkeletalCategory",
+                        "IsFiniteObjectCategory",
+                        "IsFiniteCategory",
                         #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
                         #"IsAbCategory", cannot be inherited
                         #"IsLinearCategoryOverCommutativeRing", cannot be inherited
@@ -183,6 +187,18 @@ InstallMethod( Subcategory,
     ];
     
     SetAmbientCategory( D, C );
+    
+    if CanCompute( C, "SetOfObjectsOfCategory" ) then
+        
+        ##
+        AddSetOfObjectsOfCategory( D,
+          function( D )
+            
+            return List( Filtered( SetOfObjects( AmbientCategory( D ) ), D!.ObjectMembershipFunction ), object -> ObjectConstructor( D, object ) );
+            
+        end );
+        
+    fi;
     
     Finalize( D );
     
@@ -250,6 +266,17 @@ InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
     Finalize( subcat );
     
     return subcat;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a subcategory",
+        [ IsCapSubcategory ],
+        
+  function( cat )
+    
+    return SetOfObjectsOfCategory( cat );
     
 end );
 
