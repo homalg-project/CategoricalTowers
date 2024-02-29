@@ -150,7 +150,10 @@ InstallMethod( Subcategory,
         category_constructor_options.category_filter := IsCapFullSubcategory;
         category_constructor_options.category_object_filter := IsObjectInAFullSubcategory;
         category_constructor_options.category_morphism_filter := IsMorphismInAFullSubcategory;
-        properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
+        properties := [ "IsEquippedWithHomomorphismStructure",
+                        "IsSkeletalCategory",
+                        ## "IsFinitelyPresentedCategory", can this be inherited?
+                        "IsEnrichedOverCommutativeRegularSemigroup",
                         "IsAbCategory",
                         "IsLinearCategoryOverCommutativeRing"
                         ];
@@ -158,7 +161,8 @@ InstallMethod( Subcategory,
         category_constructor_options.category_filter := IsCapSubcategory;
         category_constructor_options.category_object_filter := IsObjectInASubcategory;
         category_constructor_options.category_morphism_filter := IsMorphismInASubcategory;
-        properties := [ #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
+        properties := [ "IsSkeletalCategory",
+                        #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
                         #"IsAbCategory", cannot be inherited
                         #"IsLinearCategoryOverCommutativeRing", cannot be inherited
                         ];
