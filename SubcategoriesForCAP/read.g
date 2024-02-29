@@ -16,3 +16,7 @@ if IsPackageMarkedForLoading( "Toposes", ">= 2020.02.19" ) and
   ReadPackage( "SubcategoriesForCAP", "gap/LazySliceCategory.gi");
   
 fi;
+
+if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
+    ReadPackage( "SubcategoriesForCAP", "gap/ToolsUsingDigraphs.gi");
+fi;

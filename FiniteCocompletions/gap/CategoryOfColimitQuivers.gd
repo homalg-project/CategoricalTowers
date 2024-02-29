@@ -118,6 +118,15 @@ CapJitAddTypeSignature( "FiniteColimitCompletionWithStrictCoproductsOfUnderlying
     
 end );
 
+#! @Description
+#!  The inputs are a colimit quiver <A>colim_quiver</A> in the category $C$
+#!  and a list <A>vertices</A> of objects in $C$.
+#!  The output is the full colimit subquiver on these objects.
+#! @Returns a monomorphism of colimit quivers
+#! @Arguments colim_quiver, vertices
+DeclareOperation( "EmbeddingOfFullColimitSubquiver",
+        [ IsObjectInCategoryOfColimitQuivers, IsList ] );
+
 ####################################
 #
 #! @Section Constructors

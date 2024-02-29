@@ -228,6 +228,21 @@ InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
 end );
 
 ##
+InstallMethod( SetOfGeneratingObjects,
+        "for a meet-semilattice of single differences",
+        [ IsMeetSemilatticeOfSingleDifferences ],
+        
+  function( D )
+    local Dist;
+    
+    Dist := UnderlyingCategory( D );
+    
+    return List( SetOfObjects( Dist ), minued ->
+                 SingleDifference( D, Pair( minued, InitialObject( Dist ) ) ) );
+    
+end );
+
+##
 InstallMethod( \-,
         "for two objects in a thin category",
         [ IsObjectInThinCategory, IsObjectInThinCategory ],
@@ -316,7 +331,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid,
         "for a Heyting algebroid and two objects in it",
-        [ IsCapCategory and IsHeytingAlgebroid, IsObjectInThinCategory, IsObjectInThinCategory ],
+        [ IsCapCategory and IsHeytingAlgebroid, IsCapCategoryObject, IsCapCategoryObject ],
         
   function( L, minuend, subtrahend )
     local H;
@@ -332,7 +347,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid,
         "for a co-Heyting algebroid and two objects in it",
-        [ IsCapCategory and IsCoHeytingAlgebroid, IsObjectInThinCategory, IsObjectInThinCategory ],
+        [ IsCapCategory and IsCoHeytingAlgebroid, IsCapCategoryObject, IsCapCategoryObject ],
         
   function( L, minuend, subtrahend )
     local H;
@@ -579,6 +594,22 @@ InstallMethod( \.,
     fi;
     
     Error( "no component with this name available\n" );
+    
+end );
+
+##
+InstallMethod( \.,
+        "for a meet-semilattice of formal single differences and a positive integer",
+        [ IsMeetSemilatticeOfSingleDifferences, IsPosInt ],
+
+  function( D, string_as_int )
+    local Dist, name;
+    
+    Dist := UnderlyingCategory( D );
+    
+    name := NameRNam( string_as_int );
+    
+    return SingleDifference( D, Pair( Dist.(name), InitialObject( Dist ) ) );
     
 end );
 

@@ -94,6 +94,9 @@ DeclareAttribute( "MeetSemilatticeOfSingleDifferences",
 DeclareOperation( "SingleDifference",
         [ IsList ] );
 
+DeclareAttribute( "SetOfGeneratingObjects",
+        IsMeetSemilatticeOfSingleDifferences );
+
 #! @Description
 #!  Form the formal single difference object <A>A</A> - <A>B</A>.
 #!  The expression <A>A</A> - 0 := <A>A</A> - <C>InitialObject</C>( <C>CapCategory</C>( <A>A</A> ) ).

@@ -3240,6 +3240,80 @@ InstallMethod( AssociatedCoequalizerPairInPreSheaves,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( AssociatedCellInPreSheaves,
+        "for a category of colimit quivers and an object therein",
+        [ IsCategoryOfColimitQuivers, IsObjectInCategoryOfColimitQuivers ],
+        
+  function( ColimitQuiversC, colimit_quiver )
+    local PSh, coequalizer_pair;
+    
+    PSh := CategoryOfPreSheavesOfUnderlyingCategory( ColimitQuiversC );
+    
+    coequalizer_pair := AssociatedCoequalizerPairInPreSheaves( ColimitQuiversC, colimit_quiver );
+    
+    return Coequalizer( PSh, coequalizer_pair[1], coequalizer_pair[2] );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( AssociatedCellInPreSheaves,
+        "for a category of colimit quivers, two objects and a morphism therein",
+        [ IsCategoryOfColimitQuivers, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsMorphismInCategoryOfColimitQuivers, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function( ColimitQuiversC, source, colimit_quiver_morphism, target )
+    local ParallelPairs, PSh_VA, mor_VA, S, T, V, A, PSh, Yoneda, Y_V, Y_A;
+    
+    ParallelPairs := ModelingCategory( ColimitQuiversC );
+    
+    PSh_VA := ModelingCategory( ParallelPairs );
+    
+    mor_VA := MorphismDatum( PSh_VA,
+                      ModelingMorphism( ParallelPairs,
+                              ModelingMorphism( ColimitQuiversC, colimit_quiver_morphism ) ) );
+    
+    V := mor_VA[1];
+    
+    PSh := CategoryOfPreSheavesOfUnderlyingCategory( ColimitQuiversC );
+    
+    Yoneda := EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheavesData( PSh )[2];
+    
+    Y_V := Yoneda[2]( Yoneda[1]( Source( V ) ), V, Yoneda[1]( Target( V ) ) );
+    
+    return CoequalizerFunctorialWithGivenCoequalizers( PSh,
+                   source,
+                   AssociatedCoequalizerPairInPreSheaves( ColimitQuiversC, Source( colimit_quiver_morphism ) )[2],
+                   Y_V,
+                   AssociatedCoequalizerPairInPreSheaves( ColimitQuiversC, Target( colimit_quiver_morphism ) )[2],
+                   target );
+    
+end );
+
+##
+InstallOtherMethod( AssociatedCellInPreSheaves,
+        "for a category of colimit quivers and an morphism therein",
+        [ IsCategoryOfColimitQuivers, IsMorphismInCategoryOfColimitQuivers ],
+        
+  function( ColimitQuiversC, colimit_quiver_morphism )
+    
+    return AssociatedCellInPreSheaves( ColimitQuiversC,
+                   AssociatedCellInPreSheaves( Source( colimit_quiver_morphism ) ),
+                   colimit_quiver_morphism,
+                   AssociatedCellInPreSheaves( Target( colimit_quiver_morphism ) ) );
+    
+end );
+
+##
+InstallOtherMethod( AssociatedCellInPreSheaves,
+        "for a category of colimit quivers and a cell therein",
+        [ IsCellInCategoryOfColimitQuivers ],
+        
+  function( colimit_quiver_cell )
+    
+    return AssociatedCellInPreSheaves( CapCategory( colimit_quiver_cell ), colimit_quiver_cell );
+    
+end );
+
+##
 InstallOtherMethodForCompilerForCAP( AssociatedCoequalizerPairInPreSheaves,
         "for the finite colimit completion of a category and an object therein",
         [ IsFiniteColimitCompletionWithStrictCoproducts, IsObjectInFiniteColimitCompletionWithStrictCoproducts ],
@@ -4567,6 +4641,260 @@ InstallMethod( SimpleObjects,
     od;
     
     return simple_objs;
+    
+end );
+
+####################################
+#
+# Methods for operations
+#
+####################################
+
+##
+InstallOtherMethodForCompilerForCAP( IsClosedPreSheafWRTCoproductCocones,
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsList ],
+        
+  function( PSh, presheaf, list_of_coproduct_cones )
+    local H, coproducts, cocones;
+    
+    H := Target( PSh );
+    
+    coproducts := List( list_of_coproduct_cones, cocone -> cocone[1] );
+    cocones := List( list_of_coproduct_cones, cocone -> cocone[2] );
+    
+    return ForAll( [ 1 .. Length( coproducts ) ], i ->
+                   IsIsomorphism( H,
+                           UniversalMorphismIntoDirectProduct( H,
+                                   List( cocones[i], morphism ->
+                                         ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, presheaf, Source( morphism ) ) ),
+                                   ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, presheaf, coproducts[i] ),
+                                   List( cocones[i], morphism ->
+                                         ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism( PSh, presheaf, morphism ) ) ) ) );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( IsClosedPreSheafWRTCoproducts,
+        [ IsPreSheafCategory and IsThinCategory, IsObjectInPreSheafCategory, IsList ],
+        
+  function( PSh, presheaf, list_of_coproducts )
+    local P, coproducts, cocones, list_of_coproduct_cones;
+    
+    P := Source( PSh );
+    
+    if not CanCompute( P, "UniqueMorphism" ) then
+        Error( "the poset `P := Source( PSh )` cannot compute the categorical operation `UniqueMorphism`\n" );
+    fi;
+    
+    coproducts := List( list_of_coproducts, cocone -> cocone[1] );
+    cocones := List( list_of_coproducts, cocone -> List( cocone[2], cofactor -> UniqueMorphism( P, cofactor, cocone[1] ) ) );
+    
+    list_of_coproduct_cones := ListN( coproducts, cocones, { coproduct, cocone } -> [ coproduct, cocone ] );
+    
+    return IsClosedPreSheafWRTCoproductCocones( PSh, presheaf, list_of_coproduct_cones );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( IsClosedPreSheafWRTCoproductsByIndices,
+        [ IsPreSheafCategory and IsThinCategory, IsObjectInPreSheafCategory, IsList ],
+        
+  function( PSh, presheaf, list_of_coproducts_by_indices )
+    local offset, P, objects, coproducts, cofactors, list_of_coproducts;
+    
+    offset := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "offset", 0 );
+    
+    P := Source( PSh );
+    
+    objects := SetOfObjects( P );
+    
+    coproducts := List( list_of_coproducts_by_indices, cocone -> objects[offset + cocone[1]] );
+    cofactors := List( list_of_coproducts_by_indices, cocone -> List( cocone[2], i -> objects[offset + i] ) );
+    
+    list_of_coproducts := ListN( coproducts, cofactors, { coproduct, cofactor } -> [ coproduct, cofactor ] );
+    
+    return IsClosedPreSheafWRTCoproducts( PSh, presheaf, list_of_coproducts );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( EmbeddingIntoClosureOfPreSheafWRTCoproductCocone,
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsList ],
+        
+  function( PSh, presheaf, coproduct_cocone )
+    local C, H, C_hat, ColimitQuiversC, objects, id_objects,
+          colim_quiver_of_presheaf, vertices_arrows, vertices, arrows, v, vertices_indices,
+          coproduct, id_coproduct, c, coproduct_index, coproduct_indices_in_vertices,
+          cocone, l, diagram, diagram_indices, diagram_indices_in_vertices,
+          direct_product_diagram, direct_product, universal_morphism, universal_map, projection_morphisms, projection_maps,
+          d, additional_vertices, additional_arrows_in, additional_arrows_out, closure_of_colim_quiver_of_presheaf, embedding;
+    
+    ## categories
+    C := Source( PSh );
+    H := Target( PSh );
+    
+    C_hat := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
+    
+    ColimitQuiversC := CategoryOfColimitQuiversOfSourceCategory( PSh );
+    
+    objects := SetOfObjects( C );
+    
+    id_objects := List( objects, o -> IdentityMorphism( C, o ) );
+    
+    ## presheaf
+    colim_quiver_of_presheaf := AssociatedColimitQuiver( C_hat, CoYonedaLemmaOnObjects( presheaf ) );
+    
+    vertices_arrows := ObjectDatum( ColimitQuiversC, colim_quiver_of_presheaf );
+    
+    vertices := vertices_arrows[1];
+    arrows := vertices_arrows[2];
+    
+    v := Length( vertices );
+    
+    vertices_indices := List( vertices, vertex -> -1 + SafeUniquePositionProperty( objects, o -> IsEqualForObjects( C, vertex, o ) ) );
+    
+    ## coproduct
+    coproduct := coproduct_cocone[1];
+    
+    id_coproduct := IdentityMorphism( C, coproduct );
+    
+    c := presheaf( coproduct );
+    
+    coproduct_index := -1 + SafeUniquePositionProperty( objects, o -> IsEqualForObjects( C, coproduct_cocone[1], o ) );
+    
+    coproduct_indices_in_vertices := Positions( vertices_indices, coproduct_index );
+    
+    ## cocone
+    cocone := coproduct_cocone[2];
+    
+    l := Length( cocone );
+    
+    ## diagram
+    diagram := List( cocone, Source );
+    
+    diagram_indices := List( diagram, obj ->
+                             -1 + SafeUniquePositionProperty( objects, o -> IsEqualForObjects( C, obj, o ) ) );
+    
+    diagram_indices_in_vertices := List( diagram_indices, i -> Positions( vertices_indices, i ) );
+    
+    ## direct product
+    direct_product_diagram := List( diagram, presheaf );
+    
+    direct_product := DirectProduct( H, direct_product_diagram );
+    
+    universal_morphism := UniversalMorphismIntoDirectProductWithGivenDirectProduct( H,
+                                  direct_product_diagram,
+                                  c,
+                                  List( cocone, presheaf ),
+                                  direct_product );
+    
+    universal_map := MorphismDatum( H, universal_morphism );
+    
+    projection_morphisms := List( [ 1 .. l ], p ->
+                                  ProjectionInFactorOfDirectProductWithGivenDirectProduct( H,
+                                          direct_product_diagram,
+                                          p,
+                                          direct_product ) );
+    
+    projection_maps := List( [ 1 .. l ], p -> AsList( projection_morphisms[p] ) );
+    
+    d := Length( direct_product );
+    
+    ## closure of colimit quiver of presheaf
+    additional_vertices := ListWithIdenticalEntries( d, coproduct );
+    
+    additional_arrows_in := List( [ 0 .. Length( c ) - 1 ], i ->
+                                  Triple( v + universal_map[1 + i], id_coproduct, -1 + coproduct_indices_in_vertices[1 + i] ) );
+    
+    additional_arrows_out := List( [ 1 .. l ], p ->
+                                   List( [ 0 .. d - 1 ], i ->
+                                         Triple( -1 + diagram_indices_in_vertices[p][1 + projection_maps[p][1 + i]], cocone[p], v + i ) ) );
+    
+    closure_of_colim_quiver_of_presheaf := CreateColimitQuiver( ColimitQuiversC,
+                                                   Pair( Concatenation( vertices, additional_vertices ),
+                                                         Concatenation( arrows, additional_arrows_in, Concatenation( additional_arrows_out ) ) ) );
+    
+    embedding := CreateMorphismOfColimitQuivers( ColimitQuiversC,
+                         colim_quiver_of_presheaf,
+                         Pair( Pair( [ 0 .. v - 1 ], id_objects{1 + vertices_indices} ),
+                               [ 0 .. Length( arrows ) - 1 ] ),
+                         closure_of_colim_quiver_of_presheaf );
+    
+    return AssociatedCellInPreSheaves( ColimitQuiversC, embedding );
+    
+end );
+
+##
+InstallMethod( EmbeddingIntoClosureOfPreSheafWRTCoproductCocone,
+        [ IsObjectInPreSheafCategory, IsList ],
+        
+  function( presheaf, coproduct_cocone )
+    
+    return EmbeddingIntoClosureOfPreSheafWRTCoproductCocone( CapCategory( presheaf ), presheaf, coproduct_cocone );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( EmbeddingIntoClosureOfPreSheafWRTCoproductCocones,
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsList ],
+        
+  function( PSh, presheaf, coproduct_cocones )
+    local func;
+    
+    func :=
+      function( embedding, cocone )
+        return PreCompose( PSh,
+                       embedding,
+                       EmbeddingIntoClosureOfPreSheafWRTCoproductCocone( PSh,
+                               Target( embedding ),
+                               cocone ) );
+    end;
+    
+    return Iterated( coproduct_cocones,
+                   func,
+                   IdentityMorphism( PSh, presheaf ) );
+    
+end );
+
+##
+InstallMethod( EmbeddingIntoClosureOfPreSheafWRTCoproductCocones,
+        [ IsObjectInPreSheafCategory, IsList ],
+        
+  function( presheaf, coproduct_cocones )
+    
+    return EmbeddingIntoClosureOfPreSheafWRTCoproductCocones( CapCategory( presheaf ), presheaf, coproduct_cocones );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( EmbeddingIntoClosureOfPreSheafWRTCoproducts,
+        [ IsPreSheafCategory and IsThinCategory, IsObjectInPreSheafCategory, IsList ],
+        
+  function( PSh, presheaf, list_of_coproducts )
+    local P, coproducts, cocones, list_of_coproduct_cones;
+    
+    P := Source( PSh );
+    
+    if not CanCompute( P, "UniqueMorphism" ) then
+        Error( "the poset `P := Source( PSh )` cannot compute the categorical operation `UniqueMorphism`\n" );
+    fi;
+    
+    coproducts := List( list_of_coproducts, cocone -> cocone[1] );
+    cocones := List( list_of_coproducts, cocone -> List( cocone[2], cofactor -> UniqueMorphism( P, cofactor, cocone[1] ) ) );
+    
+    list_of_coproduct_cones := ListN( coproducts, cocones, { coproduct, cocone } -> [ coproduct, cocone ] );
+    
+    return EmbeddingIntoClosureOfPreSheafWRTCoproductCocones( PSh, presheaf, list_of_coproduct_cones );
+    
+end );
+
+##
+InstallMethod( EmbeddingIntoClosureOfPreSheafWRTCoproducts,
+        [ IsObjectInPreSheafCategory, IsList ],
+        
+  function( presheaf, list_of_coproducts )
+    
+    return EmbeddingIntoClosureOfPreSheafWRTCoproducts( CapCategory( presheaf ), presheaf, list_of_coproducts );
     
 end );
 

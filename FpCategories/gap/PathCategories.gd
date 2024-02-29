@@ -173,5 +173,11 @@ DeclareAttribute( "ExternalHoms", IsPathCategory );
 #
 ####################################
 
+DeclareAttribute( "DecompositionIndicesOfMorphism",
+        IsPathCategoryMorphism );
+
+DeclareAttribute( "DecompositionOfMorphismInCategory",
+        IsPathCategoryMorphism );
+
 DeclareOperation( "ExtendFunctorToFpCategoryData",
         [ IsPathCategory, IsList, IsCapCategory ] );
