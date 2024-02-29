@@ -4,8 +4,7 @@
 # Implementations
 #
 
-InstallTrueMethod( IsFiniteCompleteCategory, IsElementaryTopos );
-InstallTrueMethod( IsFiniteCocompleteCategory, IsElementaryTopos );
+InstallTrueMethod( IsFiniteBicompleteCategory, IsElementaryTopos );
 InstallTrueMethod( IsBicartesianClosedCategory, IsElementaryTopos );
 
 ## MacLane-Moerdijk, Proof of Thm IV.7.1, page 192, diagram (5)

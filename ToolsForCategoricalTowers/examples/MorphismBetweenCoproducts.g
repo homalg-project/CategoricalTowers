@@ -83,9 +83,8 @@ Display( O );
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
-#! * IsFiniteCocompleteCategory
-#! * IsFiniteCompleteCategory
 #! * IsBicartesianCoclosedCategory
+#! * IsFiniteBicompleteCategory
 #! and furthermore mathematically
 #! * IsSkeletalCategory
 #! * IsStrictCartesianCategory
