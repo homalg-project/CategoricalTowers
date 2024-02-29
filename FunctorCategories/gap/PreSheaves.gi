@@ -2717,12 +2717,16 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
                            CoefficientsList( morB ),
                            SetOfObjects( B_op )[ObjectIndex( Source( morB ) )] );
         
-    else
+    elif IsAlgebroid( B ) then
         
         morB_op := MorphismConstructor( B_op,
                            SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Target( morB ) ) )],
                            OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( morB ) ),
                            SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Source( morB ) ) )] );
+        
+    else
+        
+        Error( "the type of the source category `B` is not supported yet\n" );
         
     fi;
     

@@ -150,7 +150,13 @@ InstallMethod( Subcategory,
         category_constructor_options.category_filter := IsCapFullSubcategory;
         category_constructor_options.category_object_filter := IsObjectInAFullSubcategory;
         category_constructor_options.category_morphism_filter := IsMorphismInAFullSubcategory;
-        properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
+        properties := [ "IsEquippedWithHomomorphismStructure",
+                        "IsSkeletalCategory",
+                        "IsFiniteObjectCategory",
+                        "IsFiniteCategory",
+                        "IsThinCategory",
+                        ## "IsFinitelyPresentedCategory", can this be inherited?
+                        "IsEnrichedOverCommutativeRegularSemigroup",
                         "IsAbCategory",
                         "IsLinearCategoryOverCommutativeRing"
                         ];
@@ -158,7 +164,11 @@ InstallMethod( Subcategory,
         category_constructor_options.category_filter := IsCapSubcategory;
         category_constructor_options.category_object_filter := IsObjectInASubcategory;
         category_constructor_options.category_morphism_filter := IsMorphismInASubcategory;
-        properties := [ #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
+        properties := [ "IsSkeletalCategory",
+                        "IsFiniteObjectCategory",
+                        "IsFiniteCategory",
+                        "IsThinCategory",
+                        #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
                         #"IsAbCategory", cannot be inherited
                         #"IsLinearCategoryOverCommutativeRing", cannot be inherited
                         ];
@@ -179,6 +189,35 @@ InstallMethod( Subcategory,
     ];
     
     SetAmbientCategory( D, C );
+    
+    if CanCompute( C, "SetOfObjectsOfCategory" ) then
+        
+        ##
+        AddSetOfObjectsOfCategory( D,
+          function( D )
+            
+            return List( Filtered( SetOfObjects( AmbientCategory( D ) ), D!.ObjectMembershipFunction ), object -> ObjectConstructor( D, object ) );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "UniqueMorphism" ) then
+        
+        ##
+        AddUniqueMorphism( D,
+          function( D, source, target )
+            
+            return MorphismConstructor( D,
+                           source,
+                           UniqueMorphism( AmbientCategory( C ),
+                                   ObjectDatum( D, source ),
+                                   ObjectDatum( D, target ) ),
+                           target );
+            
+        end );
+        
+    fi;
     
     Finalize( D );
     
@@ -246,6 +285,17 @@ InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
     Finalize( subcat );
     
     return subcat;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a subcategory",
+        [ IsCapSubcategory ],
+        
+  function( cat )
+    
+    return SetOfObjectsOfCategory( cat );
     
 end );
 
