@@ -7,18 +7,18 @@
 #! @Example
 LoadPackage( "FunctorCategories", false );
 #! true
-q := FinQuiver( "q(A,B)" );
-#! FinQuiver( "q(A,B)[]" )
-F := PathCategory( q );
-#! PathCategory( FinQuiver( "q(A,B)[]" ) )
+pq := FinQuiver( "quiver(p,q)" );
+#! FinQuiver( "quiver(p,q)[]" )
+F := PathCategory( pq );
+#! PathCategory( FinQuiver( "quiver(p,q)[]" ) )
 P := PosetOfCategory( F );
-#! PosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) )
-D := FreeDistributiveCompletion( P );
+#! PosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) )
+Dist := FreeDistributiveCompletion( P );
 #! FreeDistributiveCompletion(
-#! PosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) )
-Display( D );
+#! PosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) )
+Display( Dist );
 #! A CAP category with name FreeDistributiveCompletion(
-#! PosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) ):
+#! PosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) ):
 #! 
 #! 54 primitive operations were used to derive 250 operations for this category
 #! which algorithmically
@@ -27,9 +27,9 @@ Display( D );
 #! * IsDistributiveLattice
 #! and not yet algorithmically
 #! * IsBiHeytingAlgebra
-Length( SetOfObjects( D ) );
+Length( SetOfObjects( Dist ) );
 #! 6
-Display( DotVertexLabelledDigraph( DigraphOfPoset( D ) ) );
+Display( DotVertexLabelledDigraph( DigraphOfPoset( Dist ) ) );
 #! //dot
 #! digraph subobject_lattice{
 #! rankdir="BT"
@@ -48,9 +48,9 @@ Display( DotVertexLabelledDigraph( DigraphOfPoset( D ) ) );
 #! 5 -> 4 [arrowsize=0.5]
 #! 6 -> 2 [arrowsize=0.5]
 #! }
-M := MeetSemilatticeOfSingleDifferences( D );
+DiffbCSL := MeetSemilatticeOfSingleDifferences( Dist );
 #! The meet-semilattice of single differences of FreeDistributiveCompletion(
-#! PosetOfCategory( PathCategory( FinQuiver( "q(A,B)[]" ) ) ) )
-Length( SetOfObjects( M ) );
+#! PosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) )
+Length( SetOfObjects( DiffbCSL ) );
 #! 13
 #! @EndExample
