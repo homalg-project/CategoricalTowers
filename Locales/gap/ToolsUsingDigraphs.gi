@@ -208,14 +208,16 @@ InstallMethod( DigraphOfPoset,
         [ IsThinCategory and IsFiniteCategory ],
         
   function( P )
-    local objects, D;
+    local objects, offset, D;
     
     objects := SetOfObjectsOfCategory( P );
+    
+    offset := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "offset", 1 );
     
     if ValueOption( "use_vertex_labels" ) = true then
         D := Digraph( objects, IsHomSetInhabited );
     else
-        D := Digraph( [ 0 .. Length( objects ) - 1 ], { i, j } -> IsHomSetInhabited( objects[1+i], objects[1+j] ) );
+        D := Digraph( [ offset .. offset + Length( objects ) - 1 ], { i, j } -> IsHomSetInhabited( objects[1-offset+i], objects[1-offset+j] ) );
     fi;
     
     D := DigraphReflexiveTransitiveReduction( D );
@@ -223,6 +225,87 @@ InstallMethod( DigraphOfPoset,
     SetFilterObj( D, IsDigraphOfSubobjects );
     
     return D;
+    
+end );
+
+##
+InstallOtherMethod( DotVertexLabelledDigraph,
+        [ IsDigraphByOutNeighboursRep and IsDigraphOfSubobjects, IsList ],
+        
+  function( D, list_of_colorings )
+    local out, str, i, pos, j;
+    
+    # Copied from DotVertexLabeledDigraph() at Digraphs/gap/display.gi
+    out   := OutNeighbours( D );
+    str   := "//dot\n";
+    
+    Append( str, "digraph subobject_lattice{\n" );
+    Append( str, "rankdir=\"BT\"\n" );
+    Append( str, "minlen=0\n" );
+    Append( str, "node [shape=circle width=0 height=0]\n" );
+    
+    for i in DigraphVertices( D ) do
+        Append( str, String( i ) );
+        Append( str, " [label=\"" );
+        Append( str, String( DigraphVertexLabel( D, i ) ) );
+        pos := PositionProperty( list_of_colorings, pair -> pair[1] = i );
+        Append( str, "\"" );
+        if IsInt( pos ) then
+            Append( str, Concatenation( " color=", list_of_colorings[pos][2], " fontcolor=", list_of_colorings[pos][2] ) );
+        fi;
+        Append( str, " fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
+    od;
+    
+    for i in DigraphVertices( D ) do
+        for j in out[i] do
+            Append( str, Concatenation( String( i ), " -> ", String( j ), " [arrowsize=0.5]\n" ) );
+        od;
+    od;
+    
+    Append( str, "}\n" );
+    
+    return str;
+    
+end );
+
+##
+InstallOtherMethod( DotVertexLabelledDigraph,
+        [ IsPosetCategory and IsFiniteCategory, IsList, IsList ],
+        
+  function( P, lists_of_subobjects, list_of_colors )
+    local c, objects, l, func, list_of_colorings;
+    
+    c := Length( list_of_colors );
+    
+    Assert( 0, Length( lists_of_subobjects ) + 1 = c );
+    
+    objects := SetOfObjects( P );
+    
+    l := Length( objects );
+    
+    func :=
+      function( emb )
+        if IsCapFunctor( emb ) then
+            return List( SetOfObjects( SourceOfFunctor( emb ) ), emb );
+        elif IsBoundGlobal( "IsCapSubcategory" ) and ValueGlobal( "IsCapSubcategory" )( emb ) then
+            return List( SetOfObjects( emb ), UnderlyingCell );
+        else
+            return emb;
+        fi;
+        
+    end;
+    
+    lists_of_subobjects := List( lists_of_subobjects, func );
+    
+    list_of_colorings := List( lists_of_subobjects, list_of_subobjects ->
+                               List( list_of_subobjects, object ->
+                                     SafeUniquePositionProperty( objects, obj -> IsEqualForObjects( P, obj, object ) ) ) );
+    
+    list_of_colorings := Concatenation( [ Difference( [ 1 .. l ], Concatenation( list_of_colorings ) ) ], list_of_colorings );
+    
+    list_of_colorings := List( [ 1 .. c ], i -> List( list_of_colorings[i], o -> [ o, list_of_colors[i] ] ) );
+    
+    return DotVertexLabelledDigraph( DigraphOfPoset( P ), Concatenation( list_of_colorings ) );
     
 end );
 

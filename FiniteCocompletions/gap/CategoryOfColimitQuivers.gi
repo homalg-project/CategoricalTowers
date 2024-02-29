@@ -349,6 +349,65 @@ InstallMethod( CategoryOfPreSheavesOfUnderlyingCategory,
     
 end );
 
+##
+InstallMethod( CategoryOfPreSheavesOfUnderlyingCategory,
+        [ IsCategoryOfColimitQuivers ],
+        
+  function( ColimitQuiversC )
+    
+    return PreSheaves( UnderlyingCategory( ColimitQuiversC ) );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( EmbeddingOfFullColimitSubquiver,
+        [ IsCategoryOfColimitQuivers, IsObjectInCategoryOfColimitQuivers, IsList ],
+        
+  function( ColimitQuiversC, colim_quiver, list_of_objects )
+    local C, vertices_arrows, vertices, arrows, positions, V, id, A, colim_subquiver, embedding;
+    
+    C := UnderlyingCategory( ColimitQuiversC );
+    
+    vertices_arrows := ObjectDatum( ColimitQuiversC, colim_quiver );
+    
+    vertices := vertices_arrows[1];
+    arrows := vertices_arrows[2];
+    
+    positions := List( vertices, vertex ->
+                       PositionProperty( list_of_objects, obj -> IsEqualForObjects( C, obj, vertex ) ) );
+    
+    V := Filtered( [ 0 .. Length( vertices ) - 1 ], i -> IsInt( positions[1 + i] ) );
+    
+    id := List( list_of_objects, obj -> IdentityMorphism( C, obj ) );
+    
+    A := Filtered( [ 0 .. Length( arrows ) - 1 ], j ->
+                 ( arrows[1 + j][1] in V ) and ( arrows[1 + j][3] in V ) );
+    
+    colim_subquiver := CreateColimitQuiver( ColimitQuiversC,
+                               Pair( vertices{1 + V}, arrows{1 + A} ) );
+    
+    embedding := CreateMorphismOfColimitQuivers( ColimitQuiversC,
+                         colim_subquiver,
+                         Pair( Pair( V, id{positions{1 + V}} ),
+                               A ),
+                         colim_quiver );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetIsMonomorphism( embedding, true );
+    
+    return embedding;
+    
+end );
+
+##
+InstallMethod( EmbeddingOfFullColimitSubquiver,
+        [ IsObjectInCategoryOfColimitQuivers, IsList ],
+        
+  function( colim_quiver, list_of_objects )
+    
+    return EmbeddingOfFullColimitSubquiver( CapCategory( colim_quiver ), colim_quiver, list_of_objects );
+    
+end );
+
 ####################################
 #
 # View, Print, Display and LaTeX methods:

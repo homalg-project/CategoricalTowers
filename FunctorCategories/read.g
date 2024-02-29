@@ -34,6 +34,8 @@ ReadPackage( "FunctorCategories", "gap/CategoryOfReflexiveQuivers.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCompletion.gi");
 ReadPackage( "FunctorCategories", "gap/FreeDistributiveCompletion.gi");
 ReadPackage( "FunctorCategories", "gap/AbelianClosure.gi");
+ReadPackage( "FunctorCategories", "gap/ClosedPreSheavesWRTColimitingCocones.gi");
+ReadPackage( "FunctorCategories", "gap/ClosedCoPreSheavesWRTLimitingCones.gi");
 ReadPackage( "FunctorCategories", "gap/Functors.gi");
 ReadPackage( "FunctorCategories", "gap/DirectSumDecomposition.gi");
 ReadPackage( "FunctorCategories", "gap/HomologicalMethods.gi");

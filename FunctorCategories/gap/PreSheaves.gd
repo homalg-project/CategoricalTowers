@@ -394,6 +394,10 @@ DeclareAttribute( "AssociatedCoequalizerPairInPreSheaves",
         IsObjectInCategoryOfColimitQuivers );
 
 #! @Arguments F
+DeclareAttribute( "AssociatedCellInPreSheaves",
+        IsCellInCategoryOfColimitQuivers );
+
+#! @Arguments F
 DeclareAttribute( "AssociatedCoequalizerPairInPreSheaves",
         IsObjectInFiniteColimitCompletionWithStrictCoproducts );
 

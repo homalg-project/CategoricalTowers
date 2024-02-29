@@ -1067,6 +1067,42 @@ InstallOtherMethod( ExternalHoms,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( DecompositionIndicesOfMorphism,
+        "for a path category and a morphism therein",
+        [ IsPathCategory, IsPathCategoryMorphism ],
+        
+  function( C, mor )
+    
+    return List( MorphismIndices( mor ), i -> -1 + i );
+    
+end );
+
+##
+InstallMethod( DecompositionIndicesOfMorphism,
+        "for a morphism in a path category",
+        [ IsPathCategoryMorphism ],
+        
+  function( mor )
+    
+    return DecompositionIndicesOfMorphism( CapCategory( mor ), mor );
+    
+end );
+
+##
+InstallMethod( DecompositionOfMorphismInCategory,
+        "for a morphism in a path category",
+        [ IsPathCategoryMorphism ],
+        
+  function( mor )
+    local C;
+    
+    C := CapCategory( mor );
+    
+    return SetOfGeneratingMorphisms( C ){1 + DecompositionIndicesOfMorphism( mor )};
+    
+end );
+
+##
 InstallMethod( DatumOfCellAsEvaluatableString,
         [ IsPathCategoryMorphism, IsList ],
         
