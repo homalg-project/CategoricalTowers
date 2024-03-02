@@ -22,6 +22,8 @@ AutoDoc( rec(
                 \DeclareUnicodeCharacter{22A4}{\ensuremath{\top}}
                 \DeclareUnicodeCharacter{22A5}{\ensuremath{\bot}}
                 \DeclareUnicodeCharacter{21D2}{\ensuremath{\Rightarrow}}
+                \DeclareUnicodeCharacter{227B}{\ensuremath{\succ}}
+                \DeclareUnicodeCharacter{22C5}{\ensuremath{\cdot}}
                 % Many thanks to https://tex.stackexchange.com/questions/22466/how-to-convince-fancyvrb-to-give-overfull-warnings/534486#534486
                 \makeatletter
                 \def\FV@ListProcessLine#1{%

@@ -424,12 +424,25 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     if CanCompute( C, "SetOfObjectsOfCategory" ) then
         
-        AddSetOfObjectsOfCategory( P,
-          function( P )
+        if skeletal then
             
-            return List( SetOfObjects( AmbientCategory( P ) ), o -> ObjectConstructor( P, o ) );
+            AddSetOfObjectsOfCategory( P,
+              function( P )
+                
+                return DuplicateFreeList( List( SetOfObjects( AmbientCategory( P ) ), o -> ObjectConstructor( P, o ) ) );
+                
+            end );
             
-        end );
+        else
+            
+            AddSetOfObjectsOfCategory( P,
+              function( P )
+                
+                return List( SetOfObjects( AmbientCategory( P ) ), o -> ObjectConstructor( P, o ) );
+                
+            end );
+            
+        fi;
         
     fi;
     

@@ -24,6 +24,8 @@ AutoDoc( rec(
                 \DeclareUnicodeCharacter{22A4}{\ensuremath{\top}}
                 \DeclareUnicodeCharacter{22A5}{\ensuremath{\bot}}
                 \DeclareUnicodeCharacter{21D2}{\ensuremath{\Rightarrow}}
+                \DeclareUnicodeCharacter{227B}{\ensuremath{\succ}}
+                \DeclareUnicodeCharacter{22C5}{\ensuremath{\cdot}}
             """,
         ),
     ),
