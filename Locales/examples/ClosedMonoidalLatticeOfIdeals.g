@@ -1,9 +1,7 @@
-#! @Chunk PosetOfCategory
-
-LoadPackage( "Locales" );
+#! @Chunk ClosedMonoidalLatticeOfIdeals
 
 #! @Example
-LoadPackage( "SubcategoriesForCAP", ">= 2020.10-02" );
+LoadPackage( "SubcategoriesForCAP", ">= 2024.02-11", false );
 #! true
 Q := HomalgFieldOfRationalsInSingular( );
 #! Q
@@ -15,6 +13,15 @@ S := SliceCategoryOverTensorUnit( F );
 #! SliceCategoryOverTensorUnit( Rows( Q[x,y] ) )
 P := PosetOfCategory( S );
 #! PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
+Display( P );
+#! A CAP category with name
+#! PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):
+#! 
+#! 16 primitive operations were used to derive 269 operations for this category
+#! which algorithmically
+#! * IsEquippedWithHomomorphismStructure
+#! * IsClosedMonoidalLattice
+#! * IsSymmetricClosedMonoidalCategory
 I := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;
 #! An object in the poset given by: An object in the slice category given by:
 #! <A morphism in Rows( Q[x,y] )>
