@@ -411,6 +411,17 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     SetAmbientCategory( P, C );
     
+    if not skeletal and CanCompute( C, "IsEqualForObjects" ) then
+        
+        AddIsEqualForObjects( P,
+          function( P, S, T )
+            
+            return IsEqualForObjects( AmbientCategory( P ), UnderlyingCell( S ), UnderlyingCell( T ) );
+            
+        end );
+        
+    fi;
+    
     if CanCompute( C, "SetOfObjectsOfCategory" ) then
         
         AddSetOfObjectsOfCategory( P,
