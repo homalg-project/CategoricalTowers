@@ -421,7 +421,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         end );
         
     fi;
-
+    
     if CanCompute( C, "SetOfGeneratingMorphismsOfCategory" ) then
         
         AddSetOfGeneratingMorphismsOfCategory( P,
