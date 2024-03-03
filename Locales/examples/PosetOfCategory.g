@@ -29,4 +29,6 @@ P.a = P.b;
 #! true
 Length( SetOfMorphisms( P ) );
 #! 1
+Size( P );
+#! 1
 #! @EndExample

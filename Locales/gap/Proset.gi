@@ -54,6 +54,28 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
 end );
 
 ##
+InstallOtherMethod( Size,
+        "for finite prosets",
+        [ IsCapCategory and IsThinCategory and IsFiniteCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function( P )
+    local H, objs;
+    
+    H := RangeCategoryOfHomomorphismStructure( P );
+    
+    if not IsIntervalCategory( H ) then
+        TryNextMethod( );
+    fi;
+    
+    objs := SetOfObjects( P );
+    
+    return Sum( objs, s ->
+                Sum( objs, t ->
+                     Length( HomomorphismStructureOnObjects( P, s, t ) ) ) );
+    
+end );
+
+##
 InstallMethod( Display,
         "for an object in a proset",
         [ IsMorphismInThinCategory ],
