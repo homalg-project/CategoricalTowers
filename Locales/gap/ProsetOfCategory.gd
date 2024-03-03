@@ -141,6 +141,7 @@ DeclareOperation( "CreateProsetOrPosetOfCategory",
 #! @Arguments C
 DeclareAttribute( "ProsetOfCategory",
         IsCapCategory );
+#! @InsertChunk ProsetOfCategory
 
 #! @Arguments C
 DeclareAttribute( "StableProsetOfCategory",
@@ -149,6 +150,7 @@ DeclareAttribute( "StableProsetOfCategory",
 #! @Arguments C
 DeclareAttribute( "PosetOfCategory",
         IsCapCategory );
+#! @InsertChunk PosetOfCategory
 
 #! @Arguments C
 DeclareAttribute( "StablePosetOfCategory",

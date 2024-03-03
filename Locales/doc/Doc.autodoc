@@ -55,11 +55,11 @@
 @Section GAP categories
 
 @Subsection Poset of category
-@InsertChunk PosetOfCategory
+@InsertChunk ClosedMonoidalLatticeOfIdeals
 
 @Subsection Stable poset of category
 @InsertChunk NilRadical
-@InsertChunk StablePosetOfCategory
+@InsertChunk HeytingAlgebraOfRadicalIdeals
 
 @Chapter Meet-semilattice of single/multiple differences
 

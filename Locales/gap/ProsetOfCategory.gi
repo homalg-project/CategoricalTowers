@@ -411,27 +411,51 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     SetAmbientCategory( P, C );
     
-    if CanCompute( C, "SetOfObjectsOfCategory" ) then
+    if not skeletal and CanCompute( C, "IsEqualForObjects" ) then
         
-        AddSetOfObjectsOfCategory( P,
-          function( cat )
+        AddIsEqualForObjects( P,
+          function( P, S, T )
             
-            return List( SetOfObjects( AmbientCategory( cat ) ), o -> ObjectConstructor( cat, o ) );
+            return IsEqualForObjects( AmbientCategory( P ), UnderlyingCell( S ), UnderlyingCell( T ) );
             
         end );
         
     fi;
-
+    
+    if CanCompute( C, "SetOfObjectsOfCategory" ) then
+        
+        if skeletal then
+            
+            AddSetOfObjectsOfCategory( P,
+              function( P )
+                
+                return DuplicateFreeList( List( SetOfObjects( AmbientCategory( P ) ), o -> ObjectConstructor( P, o ) ) );
+                
+            end );
+            
+        else
+            
+            AddSetOfObjectsOfCategory( P,
+              function( P )
+                
+                return List( SetOfObjects( AmbientCategory( P ) ), o -> ObjectConstructor( P, o ) );
+                
+            end );
+            
+        fi;
+        
+    fi;
+    
     if CanCompute( C, "SetOfGeneratingMorphismsOfCategory" ) then
         
         AddSetOfGeneratingMorphismsOfCategory( P,
-          function( cat )
+          function( P )
             
-            return List( SetOfGeneratingMorphisms( AmbientCategory( cat ) ), m ->
-                         MorphismConstructor( cat,
-                                 ObjectConstructor( cat, Source( m ) ),
+            return List( SetOfGeneratingMorphisms( AmbientCategory( P ) ), m ->
+                         MorphismConstructor( P,
+                                 ObjectConstructor( P, Source( m ) ),
                                  m,
-                                 ObjectConstructor( cat, Target( m ) ) ) );
+                                 ObjectConstructor( P, Target( m ) ) ) );
             
         end );
         
@@ -440,9 +464,9 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     if CanCompute( C, "IsWeakTerminal" ) then
         
         AddIsTerminal( P,
-          function( cat, S )
+          function( P, S )
             
-            return IsWeakTerminal( AmbientCategory( cat ), UnderlyingCell( S ) );
+            return IsWeakTerminal( AmbientCategory( P ), UnderlyingCell( S ) );
             
         end );
         
@@ -451,9 +475,9 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     if CanCompute( C, "IsWeakInitial" ) then
         
         AddIsInitial( P,
-          function( cat, S )
+          function( P, S )
             
-            return IsWeakInitial( AmbientCategory( cat ), UnderlyingCell( S ) );
+            return IsWeakInitial( AmbientCategory( P ), UnderlyingCell( S ) );
             
         end );
         
@@ -470,9 +494,9 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             
             ##
             AddInternalHomOnObjects( P,
-              function( cat, S, T )
+              function( P, S, T )
                 
-                return ObjectConstructor( cat, StableInternalHom( AmbientCategory( cat ), UnderlyingCell( S ), UnderlyingCell( T ) ) );
+                return ObjectConstructor( P, StableInternalHom( AmbientCategory( P ), UnderlyingCell( S ), UnderlyingCell( T ) ) );
                 
             end );
             
@@ -481,7 +505,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             
             ##
             AddExponentialOnObjects( P,
-              { cat, S, T } -> InternalHomOnObjects( cat, S, T ) );
+              { P, S, T } -> InternalHomOnObjects( P, S, T ) );
             
         fi;
         
@@ -495,9 +519,9 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             
             ##
             AddInternalCoHomOnObjects( P,
-              function( cat, S, T )
+              function( P, S, T )
                 
-                return ObjectConstructor( cat, StableInternalCoHom( AmbientCategory( cat ), UnderlyingCell( S ), UnderlyingCell( T ) ) );
+                return ObjectConstructor( P, StableInternalCoHom( AmbientCategory( P ), UnderlyingCell( S ), UnderlyingCell( T ) ) );
                 
             end );
             
@@ -506,7 +530,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             
             ##
             AddCoexponentialOnObjects( P,
-              { cat, S, T } -> InternalCoHomOnObjects( cat, S, T ) );
+              { P, S, T } -> InternalCoHomOnObjects( P, S, T ) );
             
         fi;
         

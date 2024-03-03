@@ -71,8 +71,8 @@ end );
 
 ##
 InstallOtherMethod( Size,
-        "for a CAP category",
-        [ IsCapCategory and HasSetOfObjects and HasRangeCategoryOfHomomorphismStructure ],
+        "for a finite category",
+        [ IsCapCategory and IsFiniteCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function( C )
     local H, objs;
@@ -87,7 +87,7 @@ InstallOtherMethod( Size,
     
     return Sum( objs, s ->
                 Sum( objs, t ->
-                     Length( HomStructure( s, t ) ) ) );
+                     Length( HomomorphismStructureOnObjects( C, s, t ) ) ) );
     
 end );
 

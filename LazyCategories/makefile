@@ -43,6 +43,12 @@ test-notebooks:
 		rm modified_in out modified_out; \
 	done
 
+update-notebooks:
+	cd examples/notebooks/; \
+	for filename in *.ipynb; do \
+		jupyter nbconvert --ExecutePreprocessor.kernel_name=julia-$$(julia -e 'print(VERSION.major); print("."); print(VERSION.minor)') --ExecutePreprocessor.record_timing=False --to notebook --inplace --execute "$$filename"; \
+	done
+
 test-spacing:
 	# exit code 1 means no match, which is what we want here (exit code 2 signals an error)
 	grep -R "[^ [\"]  " gap/*.gi; test $$? -eq 1 || (echo "Duplicate spaces found" && exit 1)

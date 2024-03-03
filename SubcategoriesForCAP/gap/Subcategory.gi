@@ -210,7 +210,7 @@ InstallMethod( Subcategory,
             
             return MorphismConstructor( D,
                            source,
-                           UniqueMorphism( AmbientCategory( C ),
+                           UniqueMorphism( AmbientCategory( D ),
                                    ObjectDatum( D, source ),
                                    ObjectDatum( D, target ) ),
                            target );

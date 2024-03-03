@@ -1,9 +1,7 @@
-#! @Chunk StablePosetOfCategory
-
-LoadPackage( "Locales" );
+#! @Chunk HeytingAlgebraOfRadicalIdeals
 
 #! @Example
-LoadPackage( "SubcategoriesForCAP", ">= 2023.02-06" );
+LoadPackage( "SubcategoriesForCAP", ">= 2024.02-11", false );
 #! true
 Q := HomalgFieldOfRationalsInSingular( );
 #! Q
