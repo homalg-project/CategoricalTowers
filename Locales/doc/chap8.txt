@@ -19,6 +19,39 @@
   
   [33X[1;0Y[29X[2XProsetOfCategory[102X( [3XC[103X ) [32X attribute[133X
   
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Locales", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xq := FinQuiver( "q(a,b)[f:a->b,g:b->a]" );[127X[104X
+    [4X[28XFinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" )[128X[104X
+    [4X[25Xgap>[125X [27XF := PathCategory( q );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XC := F / [ [ F.fg, F.id_a ], [ F.gf, F.id_b ] ];[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ][128X[104X
+    [4X[25Xgap>[125X [27XP := ProsetOfCategory( C );[127X[104X
+    [4X[28XProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ] )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
+    [4X[28XA CAP category with name[128X[104X
+    [4X[28XProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ] ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X10 primitive operations were used to derive 78 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsThinCategory[128X[104X
+    [4X[28X* IsFiniteCategory[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[25Xgap>[125X [27XSetOfObjects( P );[127X[104X
+    [4X[28X[ An object in the proset given by: (a), An object in the proset given by: (b) ][128X[104X
+    [4X[25Xgap>[125X [27XP.a = P.b;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XLength( SetOfMorphisms( P ) );[127X[104X
+    [4X[28X4[128X[104X
+    [4X[25Xgap>[125X [27XSize( P );[127X[104X
+    [4X[28X4[128X[104X
+  [4X[32X[104X
+  
   [1X8.2-3 StableProsetOfCategory[101X
   
   [33X[1;0Y[29X[2XStableProsetOfCategory[102X( [3XC[103X ) [32X attribute[133X
@@ -26,6 +59,39 @@
   [1X8.2-4 PosetOfCategory[101X
   
   [33X[1;0Y[29X[2XPosetOfCategory[102X( [3XC[103X ) [32X attribute[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Locales", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xq := FinQuiver( "q(a,b)[f:a->b,g:b->a]" );[127X[104X
+    [4X[28XFinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" )[128X[104X
+    [4X[25Xgap>[125X [27XF := PathCategory( q );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XC := F / [ [ F.fg, F.id_a ], [ F.gf, F.id_b ] ];[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ][128X[104X
+    [4X[25Xgap>[125X [27XP := PosetOfCategory( C );[127X[104X
+    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ] )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
+    [4X[28XA CAP category with name[128X[104X
+    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ] ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X9 primitive operations were used to derive 80 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsFiniteCategory[128X[104X
+    [4X[28X* IsPosetCategory[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[25Xgap>[125X [27XSetOfObjects( P );[127X[104X
+    [4X[28X[ An object in the poset given by: (a) ][128X[104X
+    [4X[25Xgap>[125X [27XP.a = P.b;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLength( SetOfMorphisms( P ) );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XSize( P );[127X[104X
+    [4X[28X1[128X[104X
+  [4X[32X[104X
   
   [1X8.2-5 StablePosetOfCategory[101X
   
@@ -240,7 +306,7 @@
   [1X8.5-1 [33X[0;0YPoset of category[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2020.10-02" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2024.02-11", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
     [4X[28XQ[128X[104X
@@ -252,6 +318,15 @@
     [4X[28XSliceCategoryOverTensorUnit( Rows( Q[x,y] ) )[128X[104X
     [4X[25Xgap>[125X [27XP := PosetOfCategory( S );[127X[104X
     [4X[28XPosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
+    [4X[28XA CAP category with name[128X[104X
+    [4X[28XPosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X16 primitive operations were used to derive 269 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsClosedMonoidalLattice[128X[104X
+    [4X[28X* IsSymmetricClosedMonoidalCategory[128X[104X
     [4X[25Xgap>[125X [27XI := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;[127X[104X
     [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
     [4X[28X<A morphism in Rows( Q[x,y] )>[128X[104X
@@ -352,7 +427,7 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2023.02-06" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2024.02-11", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
     [4X[28XQ[128X[104X
