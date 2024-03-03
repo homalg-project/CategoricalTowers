@@ -299,6 +299,17 @@ InstallMethodForCompilerForCAP( SetOfObjects,
     
 end );
 
+##
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
+        "for a subcategory",
+        [ IsCapSubcategory ],
+        
+  function( cat )
+    
+    return SetOfGeneratingMorphismsOfCategory( cat );
+    
+end );
+
 ##################################
 ##
 ## View & Display
