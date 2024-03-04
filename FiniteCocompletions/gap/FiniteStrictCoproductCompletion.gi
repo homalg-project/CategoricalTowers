@@ -1526,6 +1526,21 @@ end );
 ##
 InstallMethod( EnrichmentSpecificFiniteStrictCoproductCompletion,
         "for a category and its range category of homomorphism structure",
+        [ IsCapCategory, IsIntervalCategory ],
+        
+  function( C, H )
+    
+    if not IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( C ) ) then
+        Error( "the second category `H` must coincide with the range category of homomorphism structure of the first category `C`\n" );
+    fi;
+    
+    return FiniteStrictCoproductCompletion( C );
+    
+end );
+
+##
+InstallMethod( EnrichmentSpecificFiniteStrictCoproductCompletion,
+        "for a category and its range category of homomorphism structure",
         [ IsCapCategory, IsSkeletalCategoryOfFiniteSets ],
         
   function( C, H )
@@ -1810,6 +1825,93 @@ InstallOtherMethodForCompilerForCAP( TensorizeMorphismWithObjectInRangeCategoryO
         [ IsSkeletalCategoryOfFiniteSets,
           IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
           IsCapCategoryObject, IsCapCategoryMorphism, IsSkeletalFiniteSet, IsCapCategoryObject ],
+        
+  function( H, UC, source, phi, h, target )
+    local l;
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( phi ), UnderlyingCategory( UC ) ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( h ), H ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( UC ), H ) );
+    
+    l := ObjectDatum( H, h );
+    
+    return MorphismConstructor( UC,
+                   source,
+                   Pair( [ 0 .. l - 1 ], ListWithIdenticalEntries( l, phi ) ),
+                   target );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure,
+        "for a interval category, a finite strict coproduct cocompletion, an object in the cocartesian category, and an object in the interval category",
+        [ IsIntervalCategory,
+          IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
+          IsCapCategoryObject, IsObjectInIntervalCategory ],
+        
+  function( H, UC, c, h )
+    local l;
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( c ), UnderlyingCategory( UC ) ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( h ), H ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( UC ), H ) );
+    
+    l := ObjectDatum( H, h );
+    
+    return ObjectConstructor( UC, Pair( l, ListWithIdenticalEntries( l, c ) ) );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure,
+        "for a interval category, a finite strict coproduct cocompletion, three objects in the cocartesian category, and a morphism in the interval category",
+        [ IsIntervalCategory,
+          IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
+          IsCapCategoryObject, IsCapCategoryObject, IsMorphismInIntervalCategory, IsCapCategoryObject ],
+        
+  function( H, UC, source, c, nu, target )
+    local C, id_d, s, nu_list;
+    
+    C := UnderlyingCategory( UC );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( c ), C ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( nu ), H ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( UC ), H ) );
+    
+    id_d := IdentityMorphism( C, c );
+    
+    s := ObjectDatum( H, Source( nu ) );
+    
+    nu_list := MorphismDatum( H, nu );
+    
+    return MorphismConstructor( UC,
+                   source,
+                   Pair( nu_list, ListWithIdenticalEntries( s, id_d ) ),
+                   target );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure,
+        "for a interval category, a finite strict coproduct cocompletion, two objects and a morphism in the cocartesian category, and an object in the interval category",
+        [ IsIntervalCategory,
+          IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
+          IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInIntervalCategory, IsCapCategoryObject ],
         
   function( H, UC, source, phi, h, target )
     local l;
