@@ -31,4 +31,9 @@ Length( SetOfMorphisms( P ) );
 #! 4
 Size( P );
 #! 4
+SetOfGeneratingMorphisms( P );
+#! [ <An epi-, monomorphism in ProsetOfCategory( PathCategory(
+#!    FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) ) / [ f⋅g = id(a), g⋅f = id(b) ] )>,
+#!   <An epi-, monomorphism in ProsetOfCategory( PathCategory(
+#!    FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) ) / [ f⋅g = id(a), g⋅f = id(b) ] )> ]
 #! @EndExample
