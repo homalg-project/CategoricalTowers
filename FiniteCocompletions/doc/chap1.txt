@@ -73,9 +73,9 @@
     [4X[28X* IsLeftCoclosedMonoidalCategory[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughInjectives[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
-    [4X[28X* IsClosedMonoidalLattice[128X[104X
-    [4X[28X* IsCoclosedMonoidalLattice[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
+    [4X[28X* IsSymmetricClosedMonoidalLattice[128X[104X
+    [4X[28X* IsSymmetricCoclosedMonoidalLattice[128X[104X
     [4X[28X* IsBooleanAlgebra[128X[104X
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
