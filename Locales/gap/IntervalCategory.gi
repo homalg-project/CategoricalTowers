@@ -90,7 +90,7 @@ InstallGlobalFunction( "CreateIntervalCategory",
     AddIsWellDefinedForObjects( IntervalCategory,
       function( cat, obj )
         
-        return ObjectDatum( cat, obj ) = true or ObjectDatum( cat, obj ) = false;
+        return ObjectDatum( cat, obj ) = BigInt( 0 ) or ObjectDatum( cat, obj ) = BigInt( 1 );
         
     end );
     
