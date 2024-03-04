@@ -23,7 +23,7 @@
   [33X[1;0Y[29X[2XIsMonoidalPoset[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe property of [3XC[103X being a closed monoidal thin skeletal category.[133X
+  [33X[0;0YThe property of [3XC[103X being a monoidal thin skeletal category.[133X
   
   [1X2.1-4 IsClosedMonoidalPoset[101X
   
@@ -38,6 +38,28 @@
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe property of [3XC[103X being a coclosed monoidal thin skeletal category.[133X
+  
+  [1X2.1-6 IsSymmetricMonoidalPoset[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricMonoidalPoset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a symmetric monoidal thin skeletal category.[133X
+  
+  [1X2.1-7 IsSymmetricClosedMonoidalPoset[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricClosedMonoidalPoset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a symmetric closed monoidal thin skeletal category.[133X
+  
+  [1X2.1-8 IsSymmetricCoclosedMonoidalPoset[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricCoclosedMonoidalPoset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  property  of  [3XC[103X  being  a  symmetric  coclosed  monoidal  thin skeletal
+  category.[133X
   
   
   [1X2.2 [33X[0;0YOperations[133X[101X

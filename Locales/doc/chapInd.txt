@@ -141,6 +141,15 @@
   [2XIsProsetAsCategory[102X, for IsCapCategory and IsThinCategory 7.3-1 
   [2XIsProsetOfCapCategory[102X, for IsProsetOrPosetOfCapCategory 8.5-7 
   [2XIsProsetOrPosetOfCapCategory[102X, for IsCapCategory 8.5-3 
+  [2XIsSymmetricClosedMonoidalLattice[102X, for IsCapCategory 3.1-13 
+  [2XIsSymmetricClosedMonoidalPoset[102X, for IsCapCategory 2.1-7 
+  [2XIsSymmetricClosedMonoidalProset[102X, for IsCapCategory 1.3-7 
+  [2XIsSymmetricCoclosedMonoidalLattice[102X, for IsCapCategory 3.1-14 
+  [2XIsSymmetricCoclosedMonoidalPoset[102X, for IsCapCategory 2.1-8 
+  [2XIsSymmetricCoclosedMonoidalProset[102X, for IsCapCategory 1.3-8 
+  [2XIsSymmetricMonoidalLattice[102X, for IsCapCategory 3.1-12 
+  [2XIsSymmetricMonoidalPoset[102X, for IsCapCategory 2.1-6 
+  [2XIsSymmetricMonoidalProset[102X, for IsCapCategory 1.3-6 
   [2XIsThinCategory[102X, for IsCapCategory 1.3-1 
   [2XIsTotalOrderCategory[102X, for IsCapCategory 2.1-2 
   [2XIterator[102X, for IsConstructibleObject 12.4-5 

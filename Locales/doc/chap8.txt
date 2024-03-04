@@ -325,8 +325,7 @@
     [4X[28X16 primitive operations were used to derive 269 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
-    [4X[28X* IsClosedMonoidalLattice[128X[104X
-    [4X[28X* IsSymmetricClosedMonoidalCategory[128X[104X
+    [4X[28X* IsSymmetricClosedMonoidalLattice[128X[104X
     [4X[25Xgap>[125X [27XI := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;[127X[104X
     [4X[28XAn object in the poset given by: An object in the slice category given by:[128X[104X
     [4X[28X<A morphism in Rows( Q[x,y] )>[128X[104X
@@ -446,8 +445,7 @@
     [4X[28X16 primitive operations were used to derive 269 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
-    [4X[28X* IsClosedMonoidalLattice[128X[104X
-    [4X[28X* IsSymmetricClosedMonoidalCategory[128X[104X
+    [4X[28X* IsSymmetricClosedMonoidalLattice[128X[104X
     [4X[25Xgap>[125X [27XL := StablePosetOfCategory( P );[127X[104X
     [4X[28XStablePosetOfCategory( PosetOfCategory([128X[104X
     [4X[28XSliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )[128X[104X
@@ -460,8 +458,7 @@
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsHeytingAlgebra[128X[104X
-    [4X[28X* IsClosedMonoidalLattice[128X[104X
-    [4X[28X* IsSymmetricClosedMonoidalCategory[128X[104X
+    [4X[28X* IsSymmetricClosedMonoidalLattice[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsStableProset[128X[104X
     [4X[25Xgap>[125X [27XI := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P / L;[127X[104X

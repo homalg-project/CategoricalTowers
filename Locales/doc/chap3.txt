@@ -83,6 +83,27 @@
   
   [33X[0;0YThe property of [3XC[103X being a coclosed monoidal lattice.[133X
   
+  [1X3.1-12 IsSymmetricMonoidalLattice[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricMonoidalLattice[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a symmetric monoidal lattice.[133X
+  
+  [1X3.1-13 IsSymmetricClosedMonoidalLattice[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricClosedMonoidalLattice[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a symmetric closed monoidal lattice.[133X
+  
+  [1X3.1-14 IsSymmetricCoclosedMonoidalLattice[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricCoclosedMonoidalLattice[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a symmetric coclosed monoidal lattice.[133X
+  
   
   [1X3.2 [33X[0;0YAttributes[133X[101X
   

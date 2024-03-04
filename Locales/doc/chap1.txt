@@ -57,6 +57,27 @@
   
   [33X[0;0YThe property of [3XC[103X being a coclosed monoidal thin category.[133X
   
+  [1X1.3-6 IsSymmetricMonoidalProset[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricMonoidalProset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a symmetric monoidal thin category.[133X
+  
+  [1X1.3-7 IsSymmetricClosedMonoidalProset[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricClosedMonoidalProset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a symmetric closed monoidal thin category.[133X
+  
+  [1X1.3-8 IsSymmetricCoclosedMonoidalProset[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricCoclosedMonoidalProset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a symmetric coclosed monoidal thin category.[133X
+  
   
   [1X1.4 [33X[0;0YOperations[133X[101X
   

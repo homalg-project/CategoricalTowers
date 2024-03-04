@@ -7,10 +7,10 @@
                   and Boolean algebras of constructible sets [101X
   
   
-                                   2024.03-03
+                                   2024.03-04
   
   
-                                  3 March 2024
+                                  4 March 2024
   
   
                                 Mohamed Barakat
@@ -64,6 +64,9 @@
       1.3-3 IsMonoidalProset
       1.3-4 IsClosedMonoidalProset
       1.3-5 IsCoclosedMonoidalProset
+      1.3-6 IsSymmetricMonoidalProset
+      1.3-7 IsSymmetricClosedMonoidalProset
+      1.3-8 IsSymmetricCoclosedMonoidalProset
     1.4 [33X[0;0YOperations[133X
       1.4-1 AreIsomorphicForObjectsIfIsHomSetInhabited
     1.5 [33X[0;0YGAP categories[133X
@@ -79,6 +82,9 @@
       2.1-3 IsMonoidalPoset
       2.1-4 IsClosedMonoidalPoset
       2.1-5 IsCoclosedMonoidalPoset
+      2.1-6 IsSymmetricMonoidalPoset
+      2.1-7 IsSymmetricClosedMonoidalPoset
+      2.1-8 IsSymmetricCoclosedMonoidalPoset
     2.2 [33X[0;0YOperations[133X
       2.2-1 IsEqualForObjectsIfIsHomSetInhabited
     2.3 [33X[0;0YAdd-methods[133X
@@ -96,6 +102,9 @@
       3.1-9 IsMonoidalLattice
       3.1-10 IsClosedMonoidalLattice
       3.1-11 IsCoclosedMonoidalLattice
+      3.1-12 IsSymmetricMonoidalLattice
+      3.1-13 IsSymmetricClosedMonoidalLattice
+      3.1-14 IsSymmetricCoclosedMonoidalLattice
     3.2 [33X[0;0YAttributes[133X
       3.2-1 Factors
       3.2-2 FactorsAttr
