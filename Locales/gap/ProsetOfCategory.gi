@@ -446,7 +446,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
     fi;
     
-    if CanCompute( C, "SetOfGeneratingMorphismsOfCategory" ) then
+    if not skeletal and CanCompute( C, "SetOfGeneratingMorphismsOfCategory" ) then
         
         AddSetOfGeneratingMorphismsOfCategory( P,
           function( P )
