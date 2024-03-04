@@ -33,7 +33,7 @@ DeclareProperty( "IsTotalOrderCategory",
 AddCategoricalProperty( [ "IsTotalOrderCategory", "IsTotalOrderCategory" ] );
 
 #! @Description
-#!  The property of <A>C</A> being a closed monoidal thin skeletal category.
+#!  The property of <A>C</A> being a monoidal thin skeletal category.
 #! @Arguments C
 DeclareProperty( "IsMonoidalPoset",
         IsCapCategory );
@@ -70,6 +70,45 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalPoset :=
   DuplicateFreeList( Concatenation(
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalPoset,
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a symmetric monoidal thin skeletal category.
+#! @Arguments C
+DeclareProperty( "IsSymmetricMonoidalPoset",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsSymmetricMonoidalPoset", "IsSymmetricMonoidalPoset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalPoset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a symmetric closed monoidal thin skeletal category.
+#! @Arguments C
+DeclareProperty( "IsSymmetricClosedMonoidalPoset",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsSymmetricClosedMonoidalPoset", "IsSymmetricCoclosedMonoidalPoset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricClosedMonoidalPoset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalPoset,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricClosedMonoidalCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a symmetric coclosed monoidal thin skeletal category.
+#! @Arguments C
+DeclareProperty( "IsSymmetricCoclosedMonoidalPoset",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsSymmetricCoclosedMonoidalPoset", "IsSymmetricClosedMonoidalPoset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricCoclosedMonoidalPoset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalPoset,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricCoclosedMonoidalCategory ) );
 
 #! @Section Operations
 

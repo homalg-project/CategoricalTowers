@@ -23,8 +23,8 @@ Display( T );
 #! * IsLeftCoclosedMonoidalCategory
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
-#! * IsClosedMonoidalLattice
-#! * IsCoclosedMonoidalLattice
+#! * IsSymmetricClosedMonoidalLattice
+#! * IsSymmetricCoclosedMonoidalLattice
 #! * IsBooleanAlgebra
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
