@@ -60,6 +60,19 @@ InstallTrueMethod( IsCoclosedMonoidalLattice, IsMonoidalLattice and IsCoclosedMo
 InstallTrueMethod( IsMonoidalLattice, IsCoclosedMonoidalLattice );
 InstallTrueMethod( IsCoclosedMonoidalCategory, IsCoclosedMonoidalLattice );
 
+InstallTrueMethod( IsSymmetricMonoidalLattice, IsLattice and IsStrictMonoidalCategory and IsSymmetricMonoidalCategory );
+InstallTrueMethod( IsLattice, IsSymmetricMonoidalLattice );
+InstallTrueMethod( IsStrictMonoidalCategory, IsSymmetricMonoidalLattice );
+InstallTrueMethod( IsSymmetricMonoidalCategory, IsSymmetricMonoidalLattice );
+
+InstallTrueMethod( IsSymmetricClosedMonoidalLattice, IsSymmetricMonoidalLattice and IsSymmetricClosedMonoidalCategory );
+InstallTrueMethod( IsSymmetricMonoidalLattice, IsSymmetricClosedMonoidalLattice );
+InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsSymmetricClosedMonoidalLattice );
+
+InstallTrueMethod( IsSymmetricCoclosedMonoidalLattice, IsSymmetricMonoidalLattice and IsSymmetricCoclosedMonoidalCategory );
+InstallTrueMethod( IsSymmetricMonoidalLattice, IsSymmetricCoclosedMonoidalLattice );
+InstallTrueMethod( IsSymmetricCoclosedMonoidalCategory, IsSymmetricCoclosedMonoidalLattice );
+
 ##
 InstallMethod( Factors,
         "for an object in a thin category",

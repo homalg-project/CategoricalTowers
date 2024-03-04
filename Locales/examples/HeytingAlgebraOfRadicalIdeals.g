@@ -20,8 +20,7 @@ Display( P );
 #! 16 primitive operations were used to derive 269 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
-#! * IsClosedMonoidalLattice
-#! * IsSymmetricClosedMonoidalCategory
+#! * IsSymmetricClosedMonoidalLattice
 L := StablePosetOfCategory( P );
 #! StablePosetOfCategory( PosetOfCategory(
 #! SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )
@@ -34,8 +33,7 @@ Display( L );
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsHeytingAlgebra
-#! * IsClosedMonoidalLattice
-#! * IsSymmetricClosedMonoidalCategory
+#! * IsSymmetricClosedMonoidalLattice
 #! and furthermore mathematically
 #! * IsStableProset
 I := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P / L;

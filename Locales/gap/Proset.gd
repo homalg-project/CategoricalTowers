@@ -101,6 +101,45 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalProset :=
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalProset,
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalCategory ) );
 
+#! @Description
+#!  The property of <A>C</A> being a symmetric monoidal thin category.
+#! @Arguments C
+DeclareProperty( "IsSymmetricMonoidalProset",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsSymmetricMonoidalProset", "IsSymmetricMonoidalProset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalProset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a symmetric closed monoidal thin category.
+#! @Arguments C
+DeclareProperty( "IsSymmetricClosedMonoidalProset",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsSymmetricClosedMonoidalProset", "IsSymmetricCoclosedMonoidalProset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricClosedMonoidalProset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalProset,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricClosedMonoidalCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a symmetric coclosed monoidal thin category.
+#! @Arguments C
+DeclareProperty( "IsSymmetricCoclosedMonoidalProset",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsSymmetricCoclosedMonoidalProset", "IsSymmetricClosedMonoidalProset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricCoclosedMonoidalProset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalProset,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricCoclosedMonoidalCategory ) );
+
 ####################################
 #
 #! @Section Operations

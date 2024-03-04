@@ -155,6 +155,45 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalLattice :=
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalLattice,
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalCategory ) );
 
+#! @Description
+#!  The property of <A>C</A> being a symmetric monoidal lattice.
+#! @Arguments C
+DeclareProperty( "IsSymmetricMonoidalLattice",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsSymmetricMonoidalLattice", "IsSymmetricMonoidalLattice" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalLattice :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLattice,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a symmetric closed monoidal lattice.
+#! @Arguments C
+DeclareProperty( "IsSymmetricClosedMonoidalLattice",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsSymmetricClosedMonoidalLattice", "IsSymmetricCoclosedMonoidalLattice" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricClosedMonoidalLattice :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalLattice,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricClosedMonoidalCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a symmetric coclosed monoidal lattice.
+#! @Arguments C
+DeclareProperty( "IsSymmetricCoclosedMonoidalLattice",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsSymmetricCoclosedMonoidalLattice", "IsSymmetricClosedMonoidalLattice" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricCoclosedMonoidalLattice :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalLattice,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricCoclosedMonoidalCategory ) );
+
 #! @Section Attributes
 
 #! @Description

@@ -22,6 +22,18 @@ InstallTrueMethod( IsCoclosedMonoidalProset, IsMonoidalProset and IsCoclosedMono
 InstallTrueMethod( IsMonoidalProset, IsCoclosedMonoidalProset );
 InstallTrueMethod( IsCoclosedMonoidalCategory, IsCoclosedMonoidalProset );
 
+InstallTrueMethod( IsSymmetricMonoidalProset, IsThinCategory and IsSymmetricMonoidalCategory );
+InstallTrueMethod( IsThinCategory, IsSymmetricMonoidalProset );
+InstallTrueMethod( IsSymmetricMonoidalCategory, IsSymmetricMonoidalProset );
+
+InstallTrueMethod( IsSymmetricClosedMonoidalProset, IsSymmetricMonoidalProset and IsSymmetricClosedMonoidalCategory );
+InstallTrueMethod( IsSymmetricMonoidalProset, IsSymmetricClosedMonoidalProset );
+InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsSymmetricClosedMonoidalProset );
+
+InstallTrueMethod( IsSymmetricCoclosedMonoidalProset, IsSymmetricMonoidalProset and IsSymmetricCoclosedMonoidalCategory );
+InstallTrueMethod( IsSymmetricMonoidalProset, IsSymmetricCoclosedMonoidalProset );
+InstallTrueMethod( IsSymmetricCoclosedMonoidalCategory, IsSymmetricCoclosedMonoidalProset );
+
 ##
 InstallGlobalFunction( ADD_UNIQUE_MORPHISM,
   function( preordered_set )

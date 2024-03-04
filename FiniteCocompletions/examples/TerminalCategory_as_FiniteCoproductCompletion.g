@@ -19,9 +19,9 @@ Display( T );
 #! * IsLeftCoclosedMonoidalCategory
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
-#! * IsClosedMonoidalLattice
-#! * IsCoclosedMonoidalLattice
 #! * IsElementaryTopos
+#! * IsSymmetricClosedMonoidalLattice
+#! * IsSymmetricCoclosedMonoidalLattice
 #! * IsBooleanAlgebra
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory

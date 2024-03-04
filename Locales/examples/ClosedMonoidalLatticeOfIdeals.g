@@ -20,8 +20,7 @@ Display( P );
 #! 16 primitive operations were used to derive 269 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
-#! * IsClosedMonoidalLattice
-#! * IsSymmetricClosedMonoidalCategory
+#! * IsSymmetricClosedMonoidalLattice
 I := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;
 #! An object in the poset given by: An object in the slice category given by:
 #! <A morphism in Rows( Q[x,y] )>

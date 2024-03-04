@@ -22,6 +22,19 @@ InstallTrueMethod( IsCoclosedMonoidalPoset, IsMonoidalPoset and IsCoclosedMonoid
 InstallTrueMethod( IsMonoidalPoset, IsCoclosedMonoidalPoset );
 InstallTrueMethod( IsCoclosedMonoidalCategory, IsCoclosedMonoidalPoset );
 
+InstallTrueMethod( IsSymmetricMonoidalPoset, IsPosetCategory and IsStrictMonoidalCategory and IsSymmetricMonoidalCategory );
+InstallTrueMethod( IsPosetCategory, IsSymmetricMonoidalPoset );
+InstallTrueMethod( IsStrictMonoidalCategory, IsSymmetricMonoidalPoset );
+InstallTrueMethod( IsSymmetricMonoidalCategory, IsSymmetricMonoidalPoset );
+
+InstallTrueMethod( IsSymmetricClosedMonoidalPoset, IsSymmetricMonoidalPoset and IsSymmetricClosedMonoidalCategory );
+InstallTrueMethod( IsSymmetricMonoidalPoset, IsSymmetricClosedMonoidalPoset );
+InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsSymmetricClosedMonoidalPoset );
+
+InstallTrueMethod( IsSymmetricCoclosedMonoidalPoset, IsSymmetricMonoidalPoset and IsSymmetricCoclosedMonoidalCategory );
+InstallTrueMethod( IsSymmetricMonoidalPoset, IsSymmetricCoclosedMonoidalPoset );
+InstallTrueMethod( IsSymmetricCoclosedMonoidalCategory, IsSymmetricCoclosedMonoidalPoset );
+
 ##
 InstallMethod( \<,
         "for two objects in a thin category",
