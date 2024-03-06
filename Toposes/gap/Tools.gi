@@ -50,16 +50,16 @@ InstallOtherMethod( DotVertexLabelledDigraph,
         Append( str, "\" fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
     od;
     
-  for i in DigraphVertices( D ) do
-      for j in out[i] do
-          Append( str, Concatenation( String( i ), " -> ", String( j ), " [arrowsize=0.5]\n" ) );
-      od;
-  od;
-  
-  Append( str, "}\n" );
-  
-  return str;
-  
+    for i in DigraphVertices( D ) do
+        for j in out[i] do
+            Append( str, Concatenation( String( i ), " -> ", String( j ), " [arrowsize=0.5]\n" ) );
+        od;
+    od;
+    
+    Append( str, "}\n" );
+    
+    return str;
+    
 end );
 
 fi;

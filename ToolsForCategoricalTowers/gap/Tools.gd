@@ -691,3 +691,11 @@ DeclareAttribute( "CoYonedaEmbeddingData",
 #! @Arguments superlist, sublist [, from]
 #! @Returns a list of integers
 DeclareGlobalFunction( "PositionsOfSublist" );
+
+#! @Description
+#!  The input is a category <A>cat</A> and a list of objects therein, such that the list $L$ of all possible finite coproducts is finite.
+#!  The output is the list $L$.
+#! @Arguments cat, objects
+#! @Returns a list of objects
+DeclareOperation( "AllCoproducts",
+        [ IsCapCategory and IsCocartesianCategory, IsList ] );

@@ -6,8 +6,7 @@
 
 #! @Description
 #!  The Hasse digraph of a poset.
-#! @Arguments C
+#! @Arguments P
 #! @Returns a digraph
 DeclareOperation( "DigraphOfPoset",
         [ IsThinCategory and IsFiniteCategory ] );
-

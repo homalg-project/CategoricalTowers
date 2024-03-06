@@ -30,8 +30,8 @@ end );
 
 ##
 InstallMethod( MeetSemilatticeOfSingleDifferences,
-        "for a CAP category",
-        [ IsCapCategory and IsThinCategory ],
+        "for a distributive proset",
+        [ IsCapCategory and IsThinCategory and IsDistributiveCategory ],
         
   function( P )
     local name, D, L;
@@ -120,24 +120,6 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
         Error( "the category does not seem to be a lattice\n" );
     fi;
     
-    if CanCompute( P, "SetOfObjectsOfCategory" ) then
-        
-        AddSetOfObjectsOfCategory( D,
-          function( D )
-            local objects, L;
-            
-            objects := SetOfObjects( P );
-            
-            L := List( objects, m ->
-                       List( objects, s ->
-                             ObjectConstructor( D, Pair( m, s ) ) ) );
-            
-            return DuplicateFreeList( Concatenation( L ) );
-            
-        end );
-        
-    fi;
-    
     ##
     AddTerminalObject( D,
       function( D )
@@ -187,6 +169,33 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
         return SingleDifference( D, Pair( T, S ) );
         
     end );
+    
+    if CanCompute( P, "SetOfObjectsOfCategory" ) then
+        
+        AddSetOfObjectsOfCategory( D,
+          function( D )
+            local P, objects, empty, objects_nonempty, L;
+            
+            P := UnderlyingCategory( D );
+            
+            objects := SetOfObjects( P );
+            
+            empty := InitialObject( P );
+            
+            objects_nonempty := Filtered( objects, o -> not IsInitial( P, o ) );
+            
+            L := Concatenation(
+                         ## the original objects are listed first
+                         List( objects, m -> ObjectConstructor( D, Pair( m, empty ) ) ),
+                         Concatenation( List( objects, m ->
+                                 List( objects_nonempty, s ->
+                                       ObjectConstructor( D, Pair( m, s ) ) ) ) ) );
+            
+            return DuplicateFreeList( L );
+            
+        end );
+        
+    fi;
     
     HandlePrecompiledTowers( D, P, "MeetSemilatticeOfDifferences" );
     

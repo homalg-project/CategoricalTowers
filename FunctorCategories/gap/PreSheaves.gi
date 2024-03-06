@@ -813,7 +813,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         ##
         AddSetOfObjectsOfCategory( PSh,
           function( PSh )
-            local B, Yoneda, representables, l, predicate, func, joins_initial_value, joins;
+            local B, Yoneda, representables, joins;
             
             B := Source( PSh );
             
@@ -822,60 +822,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             representables := List( SetOfObjects( B ), Yoneda[1] );
             
-            l := Length( representables );
-            
-            predicate :=
-              function( joins, joins_new )
-                
-                return Length( Last( joins_new ) ) = 0 or
-                       Length( joins ) = l + 1;
-                
-            end;
-            
-            func :=
-              function( joins )
-                local i, largest_joins, new_joins, joins_new, r, join, coproduct, m, pos;
-                
-                i := Length( joins );
-                
-                largest_joins := Last( joins );
-                
-                new_joins := [ ];
-                
-                joins_new := Concatenation( joins, [ new_joins ] );
-                
-                for r in [ i .. l ] do
-                    for join in largest_joins do
-                        if r > Maximum( join[1] ) then
-                            
-                            coproduct := BinaryCoproduct( PSh, join[2], representables[r] );
-                            
-                            for m in [ 2 .. i + 1 ] do
-                                pos := PositionProperty( joins_new[m], entry -> IsEqualForObjects( PSh, entry[2], coproduct ) );
-                                
-                                if IsInt( pos ) then
-                                    Add( joins_new[m][pos][1], r );
-                                    break;
-                                fi;
-                                
-                            od;
-                            
-                            if pos = fail then
-                                Add( new_joins, Pair( Concatenation( join[1], [ r ] ), coproduct ) );
-                            fi;
-                            
-                        fi;
-                    od;
-                od;
-                
-                return joins_new;
-                
-            end;
-            
-            joins_initial_value := [ [ Pair( [ ], InitialObject( PSh ) ) ],
-                                     List( [ 1 .. l ], i -> Pair( [ i ], representables[i] ) ) ];
-            
-            joins := CapFixpoint( predicate, func, joins_initial_value );
+            joins := AllCoproducts( PSh, representables );
             
             return List( Concatenation( joins ), entry -> entry[2] );
             
