@@ -1471,7 +1471,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
        ## in the following we require (1) that the range category D of the presheaf category
        ## is itself the range category of the homomorphism structure of the presheaf category:
        IsIdenticalObj( D, RangeCategoryOfHomomorphismStructure( PSh ) ) and
-       MissingOperationsForConstructivenessOfCategory( D, "IsElementaryTopos" ) = [ ] then
+       ( MissingOperationsForConstructivenessOfCategory( D, "IsElementaryTopos" ) = [ ] or
+         MissingOperationsForConstructivenessOfCategory( D, "IsHeytingAlgebroid" ) = [ ] ) then
         
         ##
         AddExponentialOnObjects ( PSh,
