@@ -85,10 +85,10 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     ##
     AddIsWellDefinedForObjects( C,
-      function( cat, A )
+      function( C, A )
         local D;
         
-        D := UnderlyingMeetSemilatticeOfSingleDifferences( cat );
+        D := UnderlyingMeetSemilatticeOfSingleDifferences( C );
         
         return ForAll( ListOfObjectsInMeetSemilatticeOfDifferences( A ), M -> IsWellDefinedForObjects( D, M ) );
         
@@ -96,10 +96,10 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     ##
     AddIsHomSetInhabited( C,
-      function( cat, A, B )
+      function( C, A, B )
         local D;
         
-        D := UnderlyingMeetSemilatticeOfSingleDifferences( cat );
+        D := UnderlyingMeetSemilatticeOfSingleDifferences( C );
         
         return ForAll( ListOfObjectsInMeetSemilatticeOfDifferences( A ), M -> IsHomSetInhabitedWithTypeCast( D, M, B ) );
         
@@ -107,40 +107,40 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     ##
     AddTerminalObject( C,
-      function( cat )
+      function( C )
         local T;
         
-        T := TerminalObject( UnderlyingMeetSemilatticeOfSingleDifferences( cat ) );
+        T := TerminalObject( UnderlyingMeetSemilatticeOfSingleDifferences( C ) );
         
-        return UnionOfListOfDifferences( cat, [ T ] );
+        return UnionOfListOfDifferences( C, [ T ] );
         
     end );
     
     ##
     AddInitialObject( C,
-      function( cat )
+      function( C )
         
-        return UnionOfListOfDifferences( cat, [ ] );
+        return UnionOfListOfDifferences( C, [ ] );
         
     end );
     
     ##
     AddIsInitial( C,
-      function( cat, A )
+      function( C, A )
         local D;
         
-        D := UnderlyingMeetSemilatticeOfSingleDifferences( cat );
+        D := UnderlyingMeetSemilatticeOfSingleDifferences( C );
         
         return ForAll( ListOfObjectsInMeetSemilatticeOfDifferences( A ), d -> IsInitial( D, d ) );
         
     end );
     
-    BinaryDirectProduct := function( cat, A, B )
+    BinaryDirectProduct := function( C, A, B )
         local D, L, l, I, U;
 
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        D := UnderlyingMeetSemilatticeOfSingleDifferences( cat );
+        D := UnderlyingMeetSemilatticeOfSingleDifferences( C );
         
         L := [ ListOfObjectsInMeetSemilatticeOfDifferences( A ),
                ListOfObjectsInMeetSemilatticeOfDifferences( B ) ];
@@ -153,38 +153,38 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         ## the distributive law
         U := List( I, i -> DirectProduct( D, List( l, j -> L[j][i[j]] ) ) );
         
-        return UnionOfListOfDifferences( cat, U );
+        return UnionOfListOfDifferences( C, U );
         
     end;
     
     ##
     AddDirectProduct( C,
-      function( cat, L )
+      function( C, L )
         
-        return Iterated( L, { A, B } -> BinaryDirectProduct( cat, A, B ), TerminalObject( C ) );
+        return Iterated( L, { A, B } -> BinaryDirectProduct( C, A, B ), TerminalObject( C ) );
         
     end );
     
     ##
     AddCoproduct( C,
-      function( cat, L )
+      function( C, L )
         local D, differences;
         
-        D := UnderlyingMeetSemilatticeOfSingleDifferences( cat );
+        D := UnderlyingMeetSemilatticeOfSingleDifferences( C );
         
         differences := Concatenation( List( L, ListOfObjectsInMeetSemilatticeOfDifferences ) );
         
         ## an advantage of this specific data structure for constructible objects
-        return UnionOfListOfDifferences( cat, Filtered( differences, d -> not IsInitial( D, d ) ) );
+        return UnionOfListOfDifferences( C, Filtered( differences, d -> not IsInitial( D, d ) ) );
         
     end );
     
     ##
     AddCoexponentialOnObjects( C,
-      function( cat, A, B )
+      function( C, A, B )
         local D, DB;
         
-        D := UnderlyingMeetSemilatticeOfSingleDifferences( cat );
+        D := UnderlyingMeetSemilatticeOfSingleDifferences( C );
         
         DB := ListOfPreObjectsInMeetSemilatticeOfDifferences( B );
         
