@@ -10,4 +10,3 @@
 #! @Returns a digraph
 DeclareOperation( "DigraphOfPoset",
         [ IsThinCategory and IsFiniteCategory ] );
-
