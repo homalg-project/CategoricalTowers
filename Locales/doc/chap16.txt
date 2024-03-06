@@ -6,7 +6,7 @@
   
   [1X16.1-1 DigraphOfPoset[101X
   
-  [33X[1;0Y[29X[2XDigraphOfPoset[102X( [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XDigraphOfPoset[102X( [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya digraph[133X
   
   [33X[0;0YThe Hasse digraph of a poset.[133X
