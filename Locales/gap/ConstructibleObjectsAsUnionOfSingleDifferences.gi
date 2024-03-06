@@ -84,6 +84,14 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     ADD_COMMON_METHODS_FOR_PREORDERED_SETS( C );
     
     ##
+    AddObjectConstructor( C,
+      function( C, list_of_differences )
+        
+        return UnionOfListOfDifferences( C, list_of_differences );
+        
+    end );
+    
+    ##
     AddIsWellDefinedForObjects( C,
       function( C, A )
         local D;
