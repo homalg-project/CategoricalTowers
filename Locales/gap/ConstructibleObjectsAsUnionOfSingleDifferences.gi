@@ -204,6 +204,28 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         
     end );
     
+    if CanCompute( D, "SetOfObjectsOfCategory" ) then
+        
+        AddSetOfObjectsOfCategory( C,
+          function( C )
+            local D, objects, generators, joins;
+            
+            D := UnderlyingMeetSemilatticeOfSingleDifferences( C );
+            
+            objects := Filtered( SetOfObjects( D ), obj -> not IsInitial( D, obj ) );
+            
+            objects := MaximalObjects( objects, { a, b } -> IsHomSetInhabited( D, b, a ) );
+            
+            generators := List( objects, obj -> ObjectConstructor( C, [ obj ] ) );
+            
+            joins := AllCoproducts( C, generators );
+            
+            return List( Concatenation( joins ), entry -> entry[2] );
+            
+        end );
+        
+    fi;
+    
     if ValueOption( "FinalizeCategory" ) = false then
         
         return C;
@@ -215,6 +237,17 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     Finalize( C );
     
     return C;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a Boolean algebra of constructible objects",
+        [ IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences ],
+        
+  function( C )
+    
+    return SetOfObjectsOfCategory( C );
     
 end );
 
