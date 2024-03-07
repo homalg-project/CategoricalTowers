@@ -1,7 +1,7 @@
 name: Toposes
-version: "2024.02-10"
+version: "2024.03-01"
 license: "GPL-2.0-or-later"
-date: 2024-02-29
+date: 2024-03-07
 description: |
     Elementary toposes
 
@@ -52,11 +52,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/Toposes/PackageI
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Toposes-2024.02-10/Toposes-2024.02-10.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Toposes-2024.03-01/Toposes-2024.03-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Toposes-2024.02-10/Toposes-2024.02-10.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Toposes-2024.03-01/Toposes-2024.03-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Toposes-2024.02-10/Toposes-2024.02-10-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Toposes-2024.03-01/Toposes-2024.03-01-manual.pdf
 
 abstract: |
 
@@ -67,28 +67,28 @@ keywords: |
     elementary toposes.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BZRK29</span>]   <b class='BibAuthor'>Barakat, M., Zickgraf, F., Román, M. and Kuhmichel, T.</b>,
+    [<span class='BibKey'>BZRK07</span>]   <b class='BibAuthor'>Barakat, M., Zickgraf, F., Román, M. and Kuhmichel, T.</b>,
      <i class='BibTitle'>Toposes, Elementary toposes,
-             Version 2024.02-10</i>
-     (<span class='BibYear'>2-29</span>)<br />
+             Version 2024.03-01</i>
+     (<span class='BibYear'>3-07</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/Toposes">https://homalg-project.github.io/pkg/Toposes</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ Toposes2024.02-10,
+    @misc{ Toposes2024.03-01,
       author =           {Barakat,  M.  and  Zickgraf, F. and Rom{\a'a}n, M. and
                           Kuhmichel, T.},
-      title =            {{Toposes}, Elementary toposes, {V}ersion 2024.02-10},
+      title =            {{Toposes}, Elementary toposes, {V}ersion 2024.03-01},
       month =            {4-},
-      year =             {2-29},
+      year =             {3-07},
       note =             {GAP package},
       howpublished =     {\href   {https://homalg-project.github.io/pkg/Toposes}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{Toposes}}},
       keywords =         {elementary toposes},
-      printedkey =       {BZRK29}
+      printedkey =       {BZRK07}
     }
 
