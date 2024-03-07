@@ -120,8 +120,8 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "length" ],
-        src_template := "ForAll( [ 1 .. length ], i -> true )",
+        variable_names := [ "list" ],
+        src_template := "ForAll( list, i -> true )",
         dst_template := "true",
     )
 );
