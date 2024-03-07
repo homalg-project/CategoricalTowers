@@ -144,14 +144,6 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "length" ],
-        src_template := "Sum( ListWithIdenticalEntries( length, BigInt( 0 ) ) )",
-        dst_template := "BigInt( 0 )",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
         variable_names := [ "number", "index" ],
         src_template := "[ number ][index]",
         dst_template := "number",
@@ -195,13 +187,5 @@ CapJitAddLogicTemplate(
         variable_names := [ "l", "entry" ],
         src_template := "Cartesian( Reversed( List( [ 0 .. l - 1 ], i -> [ entry ] ) ) )",
         dst_template := "[ ListWithIdenticalEntries( l, entry ) ]",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "l", "entry" ],
-        src_template := "Reversed( ListWithIdenticalEntries( l, entry ) )",
-        dst_template := "ListWithIdenticalEntries( l, entry )",
     )
 );
