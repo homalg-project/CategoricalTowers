@@ -189,3 +189,11 @@ CapJitAddLogicTemplate(
         dst_template := "[ ListWithIdenticalEntries( l, entry ) ]",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        src_template := "BigInt( 1 ) ^ number",
+        dst_template := "BigInt( 1 )",
+    )
+);
