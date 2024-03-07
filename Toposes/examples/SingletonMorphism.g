@@ -5,7 +5,7 @@ LoadPackage( "FinSetsForCAP" );
 #! true
 sFinSets := SkeletalCategoryOfFiniteSets( : no_precompiled_code := true );
 #! SkeletalFinSets
-a := 3 / sFinSets;
+a := BigInt( 3 ) / sFinSets;
 #! |3|
 sa := SingletonMorphism( a );
 #! |3| ↪ |8|
