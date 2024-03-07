@@ -3,7 +3,7 @@
 #! @Example
 LoadPackage( "FinSetsForCAP" );
 #! true
-sFinSets := SkeletalCategoryOfFiniteSets( : no_precompiled_code );
+sFinSets := SkeletalCategoryOfFiniteSets( : no_precompiled_code := true );
 #! SkeletalFinSets
 a := 3 / sFinSets;
 #! |3|
