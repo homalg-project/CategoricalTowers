@@ -40,6 +40,50 @@ AddDerivationToCAP( CoexponentialOnMorphismsWithGivenCoexponentials,
 end : CategoryFilter := IsCoHeytingAlgebroid );
 
 ##
+AddDerivationToCAP( CocartesianRightEvaluationMorphismWithGivenRange,
+                    "CocartesianRightEvaluationMorphismWithGivenRange as the unique morphism",
+                    [ [ UniqueMorphism, 1 ] ],
+                    
+  function( cat, A, B, AuCoex_B_A )
+        
+    return UniqueMorphism( cat, B, AuCoex_B_A );
+    
+end : CategoryFilter := IsCoHeytingAlgebroid );
+
+##
+AddDerivationToCAP( CocartesianRightCoevaluationMorphismWithGivenSource,
+                    "CocartesianRightCoevaluationMorphismWithGivenSource as the unique morphism",
+                    [ [ UniqueMorphism, 1 ] ],
+                    
+  function( cat, A, B, Coex_AuB_A )
+        
+    return UniqueMorphism( cat, Coex_AuB_A, B );
+    
+end : CategoryFilter := IsCoHeytingAlgebroid );
+
+##
+AddDerivationToCAP( CoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential,
+                    "CoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential using the unique morphism",
+                    [ [ UniqueMorphism, 1 ] ],
+                    
+  function( cat, B, C, g, Coexp )
+            
+    return UniqueMorphism( cat, Coexp, C );
+    
+end : CategoryFilter := IsCoHeytingAlgebroid );
+
+##
+AddDerivationToCAP( CoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct,
+                    "CoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct using the unique morphism",
+                    [ [ UniqueMorphism, 1 ] ],
+                    
+  function( cat, A, B, f, P )
+        
+        return UniqueMorphism( cat, A, P );
+    
+end : CategoryFilter := IsCoHeytingAlgebroid );
+
+##
 AddDerivationToCAP( CocartesianLeftEvaluationMorphismWithGivenRange,
                     "CocartesianLeftEvaluationMorphismWithGivenRange as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],

@@ -20,7 +20,7 @@ Display( Dist );
 #! A CAP category with name FreeDistributiveCompletion(
 #! PosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) ):
 #! 
-#! 54 primitive operations were used to derive 250 operations for this category
+#! 54 primitive operations were used to derive 253 operations for this category
 #! which algorithmically
 #! * IsFiniteCategory
 #! * IsEquippedWithHomomorphismStructure

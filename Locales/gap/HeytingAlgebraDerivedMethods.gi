@@ -39,6 +39,50 @@ AddDerivationToCAP( ExponentialOnMorphismsWithGivenExponentials,
 end : CategoryFilter := IsHeytingAlgebroid );
 
 ##
+AddDerivationToCAP( CartesianRightEvaluationMorphismWithGivenSource,
+                    "CartesianRightEvaluationMorphismWithGivenSource as the unique morphism",
+                    [ [ UniqueMorphism, 1 ] ],
+                    
+  function( cat, A, B, AxExp_A_B )
+        
+    return UniqueMorphism( cat, AxExp_A_B, B );
+    
+end : CategoryFilter := IsHeytingAlgebroid );
+
+##
+AddDerivationToCAP( CartesianRightCoevaluationMorphismWithGivenRange,
+                    "CartesianRightCoevaluationMorphismWithGivenRange as the unique morphism",
+                    [ [ UniqueMorphism, 1 ] ],
+                    
+  function( cat, A, B, Exp_A_AxB )
+        
+    return UniqueMorphism( cat, A, Exp_A_AxB );
+    
+end : CategoryFilter := IsHeytingAlgebroid );
+
+##
+AddDerivationToCAP( DirectProductToExponentialRightAdjunctMorphismWithGivenExponential,
+                    "DirectProductToExponentialRightAdjunctMorphismWithGivenExponential using the unique morphism",
+                    [ [ UniqueMorphism, 1 ] ],
+                    
+  function( cat, A, B, f, Exp )
+    
+    return UniqueMorphism( cat, B, Exp );
+    
+end : CategoryFilter := IsHeytingAlgebroid );
+
+##
+AddDerivationToCAP( ExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct,
+                    "ExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct using the unique morphism",
+                    [ [ UniqueMorphism, 1 ] ],
+                    
+  function( cat, B, C, g, DP )
+        
+        return UniqueMorphism( cat, DP, C );
+    
+end : CategoryFilter := IsHeytingAlgebroid );
+
+##
 AddDerivationToCAP( CartesianLeftEvaluationMorphismWithGivenSource,
                     "CartesianLeftEvaluationMorphismWithGivenSource as the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
