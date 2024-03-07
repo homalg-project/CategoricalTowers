@@ -528,7 +528,7 @@ end );
 AddDerivationToCAP( SingletonMorphismWithGivenPowerObject,
         "",
         [ [ CartesianDiagonal, 1 ],
-          [ UpperSegmentOfRelationWithGivenRange, 1 ] ],
+          [ LowerSegmentOfRelationWithGivenRange, 1 ] ],
         
   function( cat, a, Pa )
     local Delta, singleton_morphism;
@@ -537,7 +537,7 @@ AddDerivationToCAP( SingletonMorphismWithGivenPowerObject,
     Delta := CartesianDiagonal( cat, a, 2 );
     
     ## {}: a ↪ Ωᵃ
-    singleton_morphism := UpperSegmentOfRelationWithGivenRange( cat, a, a, Delta, Pa );
+    singleton_morphism := LowerSegmentOfRelationWithGivenRange( cat, a, a, Delta, Pa );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsMonomorphism( singleton_morphism, true );

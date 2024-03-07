@@ -30,8 +30,8 @@ end );
 
 ##
 InstallMethod( MeetSemilatticeOfSingleDifferences,
-        "for a distributive proset",
-        [ IsCapCategory and IsThinCategory and IsDistributiveCategory ],
+        "for a CAP category",
+        [ IsCapCategory and IsThinCategory ],
         
   function( P )
     local name, D, L;
