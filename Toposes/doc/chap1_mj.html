@@ -640,12 +640,16 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := FinSet( 3 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalCategoryOfFiniteSets( : no_precompiled_code );</span>
+SkeletalFinSets
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := 3 / sFinSets;</span>
 |3|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sa := SingletonMorphism( a );</span>
 |3| ↪ |8|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( sa );</span>
 { 0, 1, 2 } ⱶ[ 1, 2, 4 ]→ { 0,..., 7 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sa = UpperSegmentOfRelation( a, a, CartesianDiagonal( a, 2 ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sa = LowerSegmentOfRelation( a, a, CartesianDiagonal( a, 2 ) );</span>
 true
 </pre></div>
