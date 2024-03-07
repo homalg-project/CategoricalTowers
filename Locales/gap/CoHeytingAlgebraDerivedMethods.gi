@@ -66,9 +66,9 @@ AddDerivationToCAP( CoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexpone
                     "CoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential using the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
-  function( cat, C, B, g, Coexp )
+  function( cat, B, C, g, Coexp )
             
-    return UniqueMorphism( cat, Coexp, C );
+    return UniqueMorphism( cat, Coexp, B );
     
 end : CategoryFilter := IsCoHeytingAlgebroid );
 
@@ -77,7 +77,7 @@ AddDerivationToCAP( CoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduc
                     "CoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct using the unique morphism",
                     [ [ UniqueMorphism, 1 ] ],
                     
-  function( cat, A, B, f, P )
+  function( cat, A, C, f, P )
         
         return UniqueMorphism( cat, A, P );
     
