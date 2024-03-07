@@ -414,9 +414,9 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XsFinSets := SkeletalCategoryOfFiniteSets( : no_precompiled_code );[127X[104X
+    [4X[25Xgap>[125X [27XsFinSets := SkeletalCategoryOfFiniteSets( : no_precompiled_code := true );[127X[104X
     [4X[28XSkeletalFinSets[128X[104X
-    [4X[25Xgap>[125X [27Xa := 3 / sFinSets;[127X[104X
+    [4X[25Xgap>[125X [27Xa := BigInt( 3 ) / sFinSets;[127X[104X
     [4X[28X|3|[128X[104X
     [4X[25Xgap>[125X [27Xsa := SingletonMorphism( a );[127X[104X
     [4X[28X|3| ↪ |8|[128X[104X
