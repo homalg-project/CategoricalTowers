@@ -6,10 +6,10 @@
                          [1X Tools for CategoricalTowers [101X
   
   
-                                   2024.02-07
+                                   2024.03-01
   
   
-                                29 February 2024
+                                  7 March 2024
   
   
                                 Mohamed Barakat
@@ -89,6 +89,7 @@
       2.9-5 UniversalMorphismFromColimit
       2.9-6 UniversalMorphismFromColimitWithGivenColimit
       2.9-7 PositionsOfSublist
+      2.9-8 AllCoproducts
     2.10 [33X[0;0YAdd-methods[133X
       2.10-1 AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory
       2.10-2 AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory

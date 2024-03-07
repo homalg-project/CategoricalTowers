@@ -33,6 +33,7 @@
   [2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X, for IsCapCategory, IsFunction 2.10-29 
   [2XAddUniversalMorphismIntoLimit[102X, for IsCapCategory, IsFunction 2.10-30 
   [2XAddUniversalMorphismIntoLimitWithGivenLimit[102X, for IsCapCategory, IsFunction 2.10-31 
+  [2XAllCoproducts[102X, for IsCapCategory and IsCocartesianCategory, IsList 2.9-8 
   [2XBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[102X, for IsList, IsList 2.7-5 
       for IsList, IsList, IsList, IsList 2.7-4 
   [2XBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[102X, for IsList, IsList 2.7-3 
