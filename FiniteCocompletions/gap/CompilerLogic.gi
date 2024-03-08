@@ -120,8 +120,8 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "length" ],
-        src_template := "ForAll( [ 1 .. length ], i -> true )",
+        variable_names := [ "list" ],
+        src_template := "ForAll( list, i -> true )",
         dst_template := "true",
     )
 );
@@ -139,14 +139,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "length" ],
         src_template := "Sum( ListWithIdenticalEntries( length, BigInt( 1 ) ) )",
         dst_template := "length",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "length" ],
-        src_template := "Sum( ListWithIdenticalEntries( length, BigInt( 0 ) ) )",
-        dst_template := "BigInt( 0 )",
     )
 );
 
@@ -200,8 +192,8 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "l", "entry" ],
-        src_template := "Reversed( ListWithIdenticalEntries( l, entry ) )",
-        dst_template := "ListWithIdenticalEntries( l, entry )",
+        variable_names := [ "number" ],
+        src_template := "BigInt( 1 ) ^ number",
+        dst_template := "BigInt( 1 )",
     )
 );
