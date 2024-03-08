@@ -95,9 +95,7 @@ InstallMethod( QuotientCategory,
             
         fi;
         
-        SetIsEquippedWithHomomorphismStructure( quo_kC, true );
-        
-        SetRangeCategoryOfHomomorphismStructure( quo_kC, range_cat );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( quo_kC, range_cat );
         
         SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( quo_kC, true );
         

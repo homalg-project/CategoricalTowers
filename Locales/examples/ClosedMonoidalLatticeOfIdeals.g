@@ -19,6 +19,8 @@ Display( P );
 #! 
 #! 15 primitive operations were used to derive 269 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsSymmetricClosedMonoidalLattice
 I := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;

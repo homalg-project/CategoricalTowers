@@ -788,9 +788,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
     fi;
     
-    SetRangeCategoryOfHomomorphismStructure( algebroid, range_category );
-    
-    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( algebroid ), range_category ) );
+    SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( algebroid, range_category );
     
     ##
     AddHomomorphismStructureOnObjects( algebroid,
@@ -950,8 +948,6 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         return CoefficientsOfPaths( BasisPathsByVertexIndex( algebroid )[a][b], element );
         
     end );
-    
-    SetIsEquippedWithHomomorphismStructure( algebroid, true );
     
 end );
 

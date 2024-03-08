@@ -723,8 +723,6 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
             
         end );
         
-        SetIsEquippedWithHomomorphismStructure( fpcategory, true );
-        
     fi;
     
 end );
@@ -809,7 +807,7 @@ InstallMethodWithCache( Category,
     SetIsFiniteCategory( C, IsFiniteDimensional( A ) );
     
     if IsFiniteCategory( C ) then
-        SetRangeCategoryOfHomomorphismStructure( C, range_category_of_HomStructure );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( C, range_category_of_HomStructure );
     fi;
     
     C!.Vertices := rec( );

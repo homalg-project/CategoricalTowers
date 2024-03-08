@@ -1129,9 +1129,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
         fi;
         
-        SetRangeCategoryOfHomomorphismStructure( UC, H );
-        
-        SetIsEquippedWithHomomorphismStructure( UC, true );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( UC, H );
         
         ##
         AddDistinguishedObjectOfHomomorphismStructure( UC,

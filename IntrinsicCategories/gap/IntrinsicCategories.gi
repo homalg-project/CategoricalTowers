@@ -1337,8 +1337,7 @@ InstallMethod( IntrinsicCategory,
             H := IC;
         fi;
         
-        SetRangeCategoryOfHomomorphismStructure( IC, H );
-        SetIsEquippedWithHomomorphismStructure( IC, true );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( IC, H );
         
         AddDistinguishedObjectOfHomomorphismStructure( IC,
           function( IC )

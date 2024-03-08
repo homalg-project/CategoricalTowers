@@ -11,6 +11,30 @@ InstallTrueMethod( IsObjectFiniteCategory, IsFiniteCategory );
 InstallTrueMethod( IsEquivalentToFiniteCategory, IsFiniteCategory );
 
 ##
+InstallMethod( SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE,
+        "for two CAP categories",
+        [ IsCapCategory, IsCapCategory ],
+        
+  function( C, H )
+    
+    if HasRangeCategoryOfHomomorphismStructure( C ) then
+        Error( "the range category of the homomorphism structure is already set for the category `C`\n" );
+    fi;
+    
+    SetRangeCategoryOfHomomorphismStructure( C, H );
+    SetIsEquippedWithHomomorphismStructure( C, true );
+    
+    ## be sure the above assignment succeeded:
+    Assert( 0, IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( C ) ) );
+    
+    if MissingOperationsForConstructivenessOfCategory( H, "IsCategoryWithDecidableLifts" ) = [ ] then
+        SetIsCategoryWithDecidableLifts( C, true );
+        SetIsCategoryWithDecidableColifts( C, true );
+    fi;
+    
+end );
+
+##
 InstallMethod( SetOfObjectsAsUnresolvableAttribute,
         [ IsCapCategory ],
         

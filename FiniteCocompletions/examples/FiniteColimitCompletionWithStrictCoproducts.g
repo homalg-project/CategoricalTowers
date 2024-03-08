@@ -10,6 +10,8 @@ Display( FinBouquets );
 #! 
 #! 70 primitive operations were used to derive 330 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsElementaryTopos
 C := UnderlyingCategory( FinBouquets );

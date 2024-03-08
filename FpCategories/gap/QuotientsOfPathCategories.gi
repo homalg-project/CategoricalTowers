@@ -78,9 +78,7 @@ InstallOtherMethod( QuotientCategory,
                               m,
                               SetOfObjects( quo_C )[t] ) ) ) ) );
         
-        SetIsEquippedWithHomomorphismStructure( quo_C, true );
-        
-        SetRangeCategoryOfHomomorphismStructure( quo_C, SkeletalFinSets );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( quo_C, SkeletalFinSets );
         
         ##
         AddMorphismsOfExternalHom( quo_C,

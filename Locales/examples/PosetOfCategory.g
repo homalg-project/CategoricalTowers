@@ -20,6 +20,8 @@ Display( P );
 #! 
 #! 7 primitive operations were used to derive 80 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsFiniteCategory
 #! * IsPosetCategory
 #! * IsEquippedWithHomomorphismStructure

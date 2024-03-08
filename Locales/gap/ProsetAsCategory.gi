@@ -104,9 +104,6 @@ InstallMethodWithCache( ProsetAsCategory,
         Setter( prop )( P, true );
     od;
     
-    ## the following call to ADD_COMMON_METHODS_FOR_PREORDERED_SETS includes:
-    ## * SetRangeCategoryOfHomomorphismStructure( P, IntervalCategory );
-    ## * SetIsEquippedWithHomomorphismStructure( P, true );
     ADD_COMMON_METHODS_FOR_PREORDERED_SETS( P );
     
     AddObjectConstructor( P,

@@ -73,8 +73,8 @@ InstallMethod( CategoryFromNerveData,
     
     C!.labels := input_record.labels;
     
-    SetIsEquippedWithHomomorphismStructure( C, true );
-    SetRangeCategoryOfHomomorphismStructure( C, V );
+    SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( C, V );
+    
     SetNerveData( C, nerve_data );
     
     ## s: C₁ → C₀

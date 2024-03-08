@@ -265,9 +265,7 @@ InstallMethod( PathCategory,
         
         SetIsFiniteCategory( C, true );
         
-        SetIsEquippedWithHomomorphismStructure( C, true );
-        
-        SetRangeCategoryOfHomomorphismStructure( C, SkeletalFinSets );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( C, SkeletalFinSets );
         
         AddMorphismsOfExternalHom( C,
           function ( C, obj_1, obj_2 )

@@ -19,6 +19,7 @@ Display( DC );
 #! 
 #! 30 primitive operations were used to derive 139 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsDistributiveCategory

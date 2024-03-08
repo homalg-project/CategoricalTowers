@@ -262,11 +262,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATE
         return;
     fi;
     
-    ##
-    SetRangeCategoryOfHomomorphismStructure( PSh, H );
-
-    ##
-    SetIsEquippedWithHomomorphismStructure( PSh, true );
+    if not HasRangeCategoryOfHomomorphismStructure( H ) then
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( PSh, H );
+    fi;
     
     ## Be sure the above assignment succeeded:
     Assert( 0, IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( PSh ) ) );

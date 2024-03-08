@@ -40,6 +40,8 @@ Display( CatReps );
 #! 
 #! 107 primitive operations were used to derive 363 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 #! * IsSymmetricMonoidalCategory

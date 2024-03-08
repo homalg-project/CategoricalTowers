@@ -33,8 +33,7 @@ InstallGlobalFunction( "CreateIntervalCategory",
     
     SetIsBooleanAlgebra( IntervalCategory, true );
     
-    SetRangeCategoryOfHomomorphismStructure( IntervalCategory, IntervalCategory );
-    SetIsEquippedWithHomomorphismStructure( IntervalCategory, true );
+    SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( IntervalCategory, IntervalCategory );
     
     SetIsCategoryWithDecidableLifts( IntervalCategory, true );
     SetIsCategoryWithDecidableColifts( IntervalCategory, true );
@@ -280,12 +279,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_ENRICHMENT_OVER_INTERVAL_CATEGORY,
         Error( "the value `V` of the option key `range_of_HomStructure` is not an interval category\n" );
     fi;
     
-    if HasRangeCategoryOfHomomorphismStructure( preordered_set ) then
-        Print( "WARNING: the range category of the homomorphism structure is already set for `preordered_set`\n" );
-    fi;
-    
-    SetRangeCategoryOfHomomorphismStructure( preordered_set, V );
-    SetIsEquippedWithHomomorphismStructure( preordered_set, true );
+    SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( preordered_set, V );
     
 end );
 

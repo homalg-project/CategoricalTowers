@@ -19,6 +19,8 @@ Display( P );
 #! 
 #! 15 primitive operations were used to derive 269 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsSymmetricClosedMonoidalLattice
 L := StablePosetOfCategory( P );
@@ -31,6 +33,8 @@ Display( L );
 #! 
 #! 14 primitive operations were used to derive 331 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsHeytingAlgebra
 #! * IsSymmetricClosedMonoidalLattice

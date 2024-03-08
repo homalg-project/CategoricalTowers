@@ -26,6 +26,7 @@ Display( Poly );
 #! 
 #! 33 primitive operations were used to derive 173 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsFiniteCompleteCategory

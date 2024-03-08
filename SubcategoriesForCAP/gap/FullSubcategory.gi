@@ -80,7 +80,7 @@ InstallMethod( FullSubcategory,
     
     if HasRangeCategoryOfHomomorphismStructure( C ) then
         
-        SetRangeCategoryOfHomomorphismStructure( D, RangeCategoryOfHomomorphismStructure( C ) );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( D, RangeCategoryOfHomomorphismStructure( C ) );
         
         if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
             AddDistinguishedObjectOfHomomorphismStructure( D,

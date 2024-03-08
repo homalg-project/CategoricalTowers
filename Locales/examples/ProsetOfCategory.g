@@ -21,6 +21,8 @@ Display( P );
 #! 9 primitive operations were used to derive 78 operations for this category
 #! which algorithmically
 #! * IsThinCategory
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsFiniteCategory
 #! * IsEquippedWithHomomorphismStructure
 SetOfObjects( P );
