@@ -2347,6 +2347,30 @@ InstallMethodWithCache( PreSheaves,
         
     end );
     
+    ##
+    AddMorphismsOfExternalHom( T,
+      function( T, object1, object2 )
+        
+        return IdentityMorphism( T, object1 );
+        
+    end );
+    
+    ##
+    AddBasisOfExternalHom( T,
+      function( T, object1, object2 )
+        
+        return [ ];
+        
+    end );
+    
+    ##
+    AddCoefficientsOfMorphism( T,
+      function( T, morphism )
+        
+        return [ ];
+        
+    end );
+    
     Finalize( T );
     
     return T;
