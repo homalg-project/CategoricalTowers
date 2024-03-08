@@ -221,6 +221,90 @@ InstallMethodForCompilerForCAP( CoYonedaEmbeddingData,
     
 end );
 
+##
+InstallOtherMethodForCompilerForCAP( AllDecompositionsOfMorphismInCategory,
+        "for a f.p. category with decidable colifts and a morphism therein",
+        [ IsCapCategory and IsFinitelyPresentedCategory and IsCategoryWithDecidableColifts, IsCapCategoryMorphism ],
+        
+  function( P, mor )
+    local source, gen_mors, pos, predicate, decompose_one_step, func, add_non_identity_colift, initial_value;
+    
+    if IsEqualToIdentityMorphism( P, mor ) then
+        return [ ];
+    fi;
+    
+    source := Source( mor );
+    
+    gen_mors := SetOfGeneratingMorphisms( P );
+    
+    pos := PositionProperty( gen_mors, gen -> IsEqualForMorphismsOnMor( P, gen, mor ) );
+    
+    if IsInt( pos ) then
+        return [ [ gen_mors[pos] ] ];
+    fi;
+    
+    predicate :=
+      function( decompositions, decompositions_new )
+        
+        return Length( decompositions ) = Length( decompositions_new );
+        
+    end;
+    
+    decompose_one_step :=
+      function( decomposition )
+        local head, decompositions_of_last;
+        
+        decompositions_of_last := AllDecompositionsOfMorphismInCategory( P, Last( decomposition ) );
+        
+        if Length( decompositions_of_last ) = 0 then
+            return [ decomposition ];
+        else
+            head := decomposition{[ 1 .. Length( decomposition ) - 1 ]};
+            
+            return List( decompositions_of_last, decomps -> Concatenation( head, decomps ) );
+        fi;
+        
+    end;
+    
+    func :=
+      function( decompositions )
+        
+        return Concatenation( List( decompositions, decompose_one_step ) );
+        
+    end;
+    
+    add_non_identity_colift :=
+      function( gen, mor )
+        local colift;
+        
+        colift := Colift( P, gen, mor );
+        
+        if IsEqualToIdentityMorphism( P, colift ) then
+            return [ gen ];
+        else
+            return [ gen, colift ];
+        fi;
+        
+    end;
+    
+    initial_value :=
+      List( Filtered( gen_mors, gen -> IsEqualForObjects( P, Source( gen ), source ) and IsColiftable( P, gen, mor ) ), gen -> add_non_identity_colift( gen, mor ) );
+    
+    return CapFixpoint( predicate, func, initial_value );
+    
+end );
+
+##
+InstallMethod( AllDecompositionsOfMorphismInCategory,
+        "for a morphism in a f.p. category with decidable colifts",
+        [ IsCapCategoryMorphism ],
+        
+  function( mor )
+    
+    return AllDecompositionsOfMorphismInCategory( CapCategory( mor ), mor );
+    
+end );
+
 if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
 
 ##
