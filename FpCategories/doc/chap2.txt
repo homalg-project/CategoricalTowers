@@ -338,6 +338,8 @@
     [4X[28X[128X[104X
     [4X[28X27 primitive operations were used to derive 67 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
+    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsFiniteCategory[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[25Xgap>[125X [27XqC.0;[127X[104X
@@ -403,6 +405,8 @@
     [4X[28X[128X[104X
     [4X[28X18 primitive operations were used to derive 67 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
+    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsFiniteCategory[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( P.0, P.5 );[127X[104X
