@@ -602,7 +602,7 @@ InstallMethod( CategoryWithAmbientObjects,
             H := category_with_ambient_objects;
         fi;
         
-        SetRangeCategoryOfHomomorphismStructure( category_with_ambient_objects, H );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( category_with_ambient_objects, H );
         
         AddDistinguishedObjectOfHomomorphismStructure( category_with_ambient_objects,
           function( cat )
@@ -660,8 +660,6 @@ InstallMethod( CategoryWithAmbientObjects,
                       range );
             
         end );
-        
-        SetIsEquippedWithHomomorphismStructure( category_with_ambient_objects, true );
         
     fi;
     

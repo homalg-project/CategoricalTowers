@@ -679,8 +679,7 @@ InstallMethodWithCache( FunctorCategory,
     if not HasRangeCategoryOfHomomorphismStructure( Hom ) and
        (HasIsInitialCategory and IsInitialCategory)( B ) then
         
-        SetRangeCategoryOfHomomorphismStructure( Hom, Hom );
-        SetIsEquippedWithHomomorphismStructure( Hom, true );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( Hom, Hom );
         
     fi;
     

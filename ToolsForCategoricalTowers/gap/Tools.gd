@@ -6,11 +6,33 @@
 
 #! @Chapter Tools
 
+####################################
+##
+#! @Section Tools
+##
+####################################
+
 DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_CATEGORY_CONSTRUCTOR" );
 
 DeclareGlobalFunction( "RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION" );
 
 DeclareGlobalFunction( "UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUCT_PREFUNCTION" );
+
+#! @Description
+#!  The input are two categories <A>C</A> and <A>H</A>.
+#!  There is not output but the following side effects are applied to <A>C</A>:
+#!  * <C>SetRangeCategoryOfHomomorphismStructure</C>( <A>C</A>, <A>H</A> )
+#!  * <C>SetIsEquippedWithHomomorphismStructure</C>( <A>C</A>, <C>true</C> )
+#!  
+#!  Furthermore, if <C>IsCategoryWithDecidableLifts</C>( <A>H</A> ) then
+#!  * <C>SetIsCategoryWithDecidableLifts</C>( <A>C</A>, <C>true</C> )
+#!  * <C>SetIsCategoryWithDecidableColifts</C>( <A>C</A>, <C>true</C> )
+#!
+#!  An error is raised if <C>RangeCategoryOfHomomorphismStructure</C>( <A>C</A> )
+#!  is already set.
+#! @Arguments C, H
+DeclareOperation( "SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE",
+        [ IsCapCategory, IsCapCategory ] );
 
 ####################################
 ##

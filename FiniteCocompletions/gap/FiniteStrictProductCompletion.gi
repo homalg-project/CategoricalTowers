@@ -66,7 +66,7 @@ InstallMethod( FiniteStrictProductCompletion,
     opC := Opposite( C : only_primitive_operations := true, FinalizeCategory := false );
 
     if HasRangeCategoryOfHomomorphismStructure( C ) and not HasRangeCategoryOfHomomorphismStructure( opC ) then
-        SetRangeCategoryOfHomomorphismStructure( opC, RangeCategoryOfHomomorphismStructure( C ) );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( opC, RangeCategoryOfHomomorphismStructure( C ) );
     fi;
     
     Finalize( opC : FinalizeCategory := true );
@@ -78,8 +78,7 @@ InstallMethod( FiniteStrictProductCompletion,
     if not HasRangeCategoryOfHomomorphismStructure( opUopC ) and
        (HasIsInitialCategory and IsInitialCategory)( C ) then
         
-        SetRangeCategoryOfHomomorphismStructure( opUopC, opUopC );
-        SetIsEquippedWithHomomorphismStructure( opUopC, true );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( opUopC, opUopC );
         
     fi;
     
@@ -198,8 +197,7 @@ InstallMethod( FiniteStrictProductCompletion,
     if not HasRangeCategoryOfHomomorphismStructure( PC ) and
        (HasIsInitialCategory and IsInitialCategory)( C ) then
         
-        SetRangeCategoryOfHomomorphismStructure( PC, PC );
-        SetIsEquippedWithHomomorphismStructure( PC, true );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( PC, PC );
         
     fi;
     

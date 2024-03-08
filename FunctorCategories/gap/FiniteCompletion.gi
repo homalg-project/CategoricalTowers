@@ -30,8 +30,7 @@ InstallMethodWithCache( FiniteCompletion,
     if not HasRangeCategoryOfHomomorphismStructure( finite_completion ) and
        (HasIsInitialCategory and IsInitialCategory)( fp_category ) then
         
-        SetRangeCategoryOfHomomorphismStructure( finite_completion, finite_completion );
-        SetIsEquippedWithHomomorphismStructure( finite_completion, true );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( finite_completion, finite_completion );
         
     fi;
     

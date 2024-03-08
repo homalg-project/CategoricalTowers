@@ -353,9 +353,7 @@ InstallMethod( AlgebroidFromDataTables,
         CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure",
             CategoryOfRows( ring : overhead := false, FinalizeCategory := true ) );
     
-    SetIsEquippedWithHomomorphismStructure( A, true );
-    
-    SetRangeCategoryOfHomomorphismStructure( A, range_category_of_hom_structure );
+    SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( A, range_category_of_hom_structure );
     
     ranks := List( input_data[3], s -> List( s, Length ) );
     

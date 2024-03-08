@@ -32,8 +32,7 @@ InstallMethodWithCache( FreeDistributiveCompletion,
     if not HasRangeCategoryOfHomomorphismStructure( free_distributive_completion ) and
        (HasIsInitialCategory and IsInitialCategory)( fp_category ) then
         
-        SetRangeCategoryOfHomomorphismStructure( free_distributive_completion, free_distributive_completion );
-        SetIsEquippedWithHomomorphismStructure( free_distributive_completion, true );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( free_distributive_completion, free_distributive_completion );
         
     fi;
     

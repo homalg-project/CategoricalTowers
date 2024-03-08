@@ -13,6 +13,7 @@ Display( sFinSets );
 #! 
 #! 35 primitive operations were used to derive 172 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsFiniteCompleteCategory

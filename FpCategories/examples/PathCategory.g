@@ -72,6 +72,8 @@ Display( qC );
 #!
 #! 27 primitive operations were used to derive 67 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsFiniteCategory
 #! * IsEquippedWithHomomorphismStructure
 qC.0;
@@ -137,6 +139,8 @@ Display( P );
 #!
 #! 18 primitive operations were used to derive 67 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsFiniteCategory
 #! * IsEquippedWithHomomorphismStructure
 HomStructure( P.0, P.5 );

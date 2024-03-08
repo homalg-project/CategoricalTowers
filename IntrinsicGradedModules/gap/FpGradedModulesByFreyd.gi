@@ -233,8 +233,9 @@ InstallMethod( FpGradedLeftModules,
         
     fi;
     
-    SetRangeCategoryOfHomomorphismStructure( P, P );
-    SetIsEquippedWithHomomorphismStructure( P, true );
+    if not HasRangeCategoryOfHomomorphismStructure( P ) then
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( P, P );
+    fi;
     
     Finalize( P : FinalizeCategory := true );
     
@@ -315,8 +316,9 @@ InstallMethod( FpGradedRightModules,
         
     end );
     
-    SetRangeCategoryOfHomomorphismStructure( P, P );
-    SetIsEquippedWithHomomorphismStructure( P, true );
+    if not HasRangeCategoryOfHomomorphismStructure( P ) then
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( P, P );
+    fi;
     
     Finalize( P : FinalizeCategory := true );
     

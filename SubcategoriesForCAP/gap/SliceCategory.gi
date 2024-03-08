@@ -583,8 +583,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
         H := RangeCategoryOfHomomorphismStructure( C );
         
-        SetRangeCategoryOfHomomorphismStructure( Slice_over_B, H );
-        SetIsEquippedWithHomomorphismStructure( Slice_over_B, true );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( Slice_over_B, H );
         
         if CanCompute( H, "Lift" ) then ## yes, Lift not Colift
             SetIsCategoryWithDecidableColifts( Slice_over_B, true );

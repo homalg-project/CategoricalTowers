@@ -559,3 +559,16 @@ AddDerivationToCAP( IsIsomorphicForObjects,
            IsSplitMonomorphism( cat, UniqueMorphism( cat, M, N ) );
     
 end : CategoryFilter := IsThinCategory );
+
+##
+AddFinalDerivation( UniqueMorphism,
+        "UniqueMorphism using CreateCapCategoryMorphismWithAttributes",
+        [ ],
+        [ UniqueMorphism,
+          MorphismsOfExternalHom ],
+        
+  function( cat, A, B )
+    
+    return CreateCapCategoryMorphismWithAttributes( cat, A, B );
+    
+end : CategoryFilter := IsThinCategory );

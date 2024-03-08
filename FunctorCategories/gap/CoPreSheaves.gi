@@ -458,8 +458,7 @@ InstallMethodWithCache( CoPreSheaves,
     if not HasRangeCategoryOfHomomorphismStructure( O ) and
        (HasIsInitialCategory and IsInitialCategory)( B ) then
         
-        SetRangeCategoryOfHomomorphismStructure( O, O );
-        SetIsEquippedWithHomomorphismStructure( O, true );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( O, O );
         
     fi;
     
@@ -564,8 +563,7 @@ InstallMethodWithCache( CoPreSheaves,
     if not HasRangeCategoryOfHomomorphismStructure( coPSh ) and
        (HasIsInitialCategory and IsInitialCategory)( B ) then
         
-        SetRangeCategoryOfHomomorphismStructure( coPSh, coPSh );
-        SetIsEquippedWithHomomorphismStructure( coPSh, true );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( coPSh, coPSh );
         
     fi;
     

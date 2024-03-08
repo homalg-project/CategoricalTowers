@@ -70,9 +70,8 @@ InstallMethod( CategoryFromDataTables,
     
     V := input_record.range_of_HomStructure;
     
-    SetIsEquippedWithHomomorphismStructure( C, true );
-    SetRangeCategoryOfHomomorphismStructure( C, V );
-
+    SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( C, V );
+    
     data_tables := input_record.data_tables;
     
     SetDataTables( C, data_tables );

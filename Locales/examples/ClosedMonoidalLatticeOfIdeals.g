@@ -17,8 +17,10 @@ Display( P );
 #! A CAP category with name
 #! PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):
 #! 
-#! 16 primitive operations were used to derive 269 operations for this category
+#! 15 primitive operations were used to derive 269 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsSymmetricClosedMonoidalLattice
 I := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;

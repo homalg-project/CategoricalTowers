@@ -22,6 +22,8 @@ Display( Dist );
 #! 
 #! 56 primitive operations were used to derive 286 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsFiniteCategory
 #! * IsEquippedWithHomomorphismStructure
 #! * IsHeytingAlgebra
