@@ -122,9 +122,11 @@ A CAP category with name
 ProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
 / [ f⋅g = id(a), g⋅f = id(b) ] ):
 
-10 primitive operations were used to derive 78 operations for this category
+9 primitive operations were used to derive 78 operations for this category
 which algorithmically
 * IsThinCategory
+* IsCategoryWithDecidableColifts
+* IsCategoryWithDecidableLifts
 * IsFiniteCategory
 * IsEquippedWithHomomorphismStructure
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjects( P );</span>
@@ -171,8 +173,10 @@ A CAP category with name
 PosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
 / [ f⋅g = id(a), g⋅f = id(b) ] ):
 
-8 primitive operations were used to derive 80 operations for this category
+7 primitive operations were used to derive 80 operations for this category
 which algorithmically
+* IsCategoryWithDecidableColifts
+* IsCategoryWithDecidableLifts
 * IsFiniteCategory
 * IsPosetCategory
 * IsEquippedWithHomomorphismStructure
@@ -436,8 +440,10 @@ PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
 A CAP category with name
 PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):
 
-16 primitive operations were used to derive 269 operations for this category
+15 primitive operations were used to derive 269 operations for this category
 which algorithmically
+* IsCategoryWithDecidableColifts
+* IsCategoryWithDecidableLifts
 * IsEquippedWithHomomorphismStructure
 * IsSymmetricClosedMonoidalLattice
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;</span>
@@ -559,8 +565,10 @@ PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
 A CAP category with name
 PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):
 
-16 primitive operations were used to derive 269 operations for this category
+15 primitive operations were used to derive 269 operations for this category
 which algorithmically
+* IsCategoryWithDecidableColifts
+* IsCategoryWithDecidableLifts
 * IsEquippedWithHomomorphismStructure
 * IsSymmetricClosedMonoidalLattice
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := StablePosetOfCategory( P );</span>
@@ -571,8 +579,10 @@ A CAP category with name
 StablePosetOfCategory( PosetOfCategory(
 SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):
 
-15 primitive operations were used to derive 331 operations for this category
+14 primitive operations were used to derive 331 operations for this category
 which algorithmically
+* IsCategoryWithDecidableColifts
+* IsCategoryWithDecidableLifts
 * IsEquippedWithHomomorphismStructure
 * IsHeytingAlgebra
 * IsSymmetricClosedMonoidalLattice
