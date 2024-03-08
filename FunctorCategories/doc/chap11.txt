@@ -188,6 +188,8 @@
     [4X[28X[128X[104X
     [4X[28X56 primitive operations were used to derive 286 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
+    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsFiniteCategory[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsHeytingAlgebra[128X[104X
