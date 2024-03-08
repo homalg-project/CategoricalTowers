@@ -35,33 +35,10 @@ InstallTrueMethod( IsSymmetricMonoidalProset, IsSymmetricCoclosedMonoidalProset 
 InstallTrueMethod( IsSymmetricCoclosedMonoidalCategory, IsSymmetricCoclosedMonoidalProset );
 
 ##
-InstallGlobalFunction( ADD_UNIQUE_MORPHISM,
-  function( preordered_set )
-    
-    ##
-    AddUniqueMorphism( preordered_set,
-      function( cat, A, B )
-        
-        #% CAP_JIT_DROP_NEXT_STATEMENT
-        if not IsIdenticalObj( cat, CapCategory( A ) ) then
-            Error( "the first object belong to different category\n" );
-        elif not IsIdenticalObj( cat, CapCategory( B ) ) then
-            Error( "the second object belong to different category\n" );
-        fi;
-        
-        return CreateCapCategoryMorphismWithAttributes( cat, A, B );
-        
-    end );
-    
-end );
-
-##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
   function( preordered_set )
     
     ADD_COMMON_METHODS_FOR_ENRICHMENT_OVER_INTERVAL_CATEGORY( preordered_set );
-    
-    ADD_UNIQUE_MORPHISM( preordered_set );
     
 end );
 

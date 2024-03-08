@@ -18,7 +18,7 @@ Display( P );
 #! PosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
 #! / [ f⋅g = id(a), g⋅f = id(b) ] ):
 #! 
-#! 8 primitive operations were used to derive 80 operations for this category
+#! 7 primitive operations were used to derive 80 operations for this category
 #! which algorithmically
 #! * IsFiniteCategory
 #! * IsPosetCategory

@@ -8,7 +8,7 @@ D := DiscreteSkeletalCategory( "IsPosInt" );
 Display( D );
 #! A CAP category with name DiscreteSkeletalCategory( "IsPosInt" ):
 #! 
-#! 11 primitive operations were used to derive 77 operations for this category
+#! 8 primitive operations were used to derive 77 operations for this category
 #! which algorithmically
 #! * IsPosetCategory
 #! * IsEquippedWithHomomorphismStructure

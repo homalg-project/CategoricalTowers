@@ -17,7 +17,7 @@ Display( P );
 #! A CAP category with name
 #! PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):
 #! 
-#! 16 primitive operations were used to derive 269 operations for this category
+#! 15 primitive operations were used to derive 269 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsSymmetricClosedMonoidalLattice
@@ -29,7 +29,7 @@ Display( L );
 #! StablePosetOfCategory( PosetOfCategory(
 #! SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):
 #! 
-#! 15 primitive operations were used to derive 331 operations for this category
+#! 14 primitive operations were used to derive 331 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsHeytingAlgebra
