@@ -688,6 +688,12 @@ InstallMethod( ViewString,
 end );
 
 ##
+InstallMethod( PrintString,
+        [ IsObjectInProsetOfCategory ],
+        
+  StringView );
+
+##
 InstallMethod( ViewString,
         [ IsMorphismInProsetOfCategory and HasUnderlyingCell ],
         
@@ -697,6 +703,12 @@ InstallMethod( ViewString,
                    StringView( UnderlyingCell( mor ) ) );
     
 end );
+
+##
+InstallMethod( PrintString,
+        [ IsMorphismInProsetOfCategory ],
+        
+  StringView );
 
 ##
 InstallMethod( ViewString,
@@ -754,6 +766,12 @@ InstallMethod( ViewString,
 end );
 
 ##
+InstallMethod( PrintString,
+        [ IsObjectInPosetOfCategory ],
+        
+  StringView );
+
+##
 InstallMethod( ViewString,
         [ IsMorphismInPosetOfCategory and HasUnderlyingCell ],
         
@@ -763,6 +781,12 @@ InstallMethod( ViewString,
                    StringView( UnderlyingCell( mor ) ) );
     
 end );
+
+##
+InstallMethod( PrintString,
+        [ IsMorphismInPosetOfCategory ],
+        
+  StringView );
 
 ##
 InstallMethod( ViewString,
