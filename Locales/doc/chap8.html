@@ -135,10 +135,8 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( P );</span>
 4
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( P );</span>
-[ &lt;An epi-, monomorphism in ProsetOfCategory( PathCategory(
-   FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) ) / [ f⋅g = id(a), g⋅f = id(b) ] )&gt;,
-  &lt;An epi-, monomorphism in ProsetOfCategory( PathCategory(
-   FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) ) / [ f⋅g = id(a), g⋅f = id(b) ] )&gt; ]
+[ A morphism in the proset given by: [f]:(a) -≻ (b),
+  A morphism in the proset given by: [g]:(b) -≻ (a) ]
 </pre></div>
 
 <p><a id="X8752F6307A2CC7FF" name="X8752F6307A2CC7FF"></a></p>
@@ -620,8 +618,8 @@ An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IJqJ = I;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );</span>
-&lt;An epi-, monomorphism in StablePosetOfCategory( PosetOfCategory(
- SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )&gt;
+A morphism in the stable poset given by: &lt;An epi-, monomorphism in
+PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iota );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( iota );</span>

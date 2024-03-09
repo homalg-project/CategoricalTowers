@@ -53,10 +53,8 @@
     [4X[25Xgap>[125X [27XSize( P );[127X[104X
     [4X[28X4[128X[104X
     [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( P );[127X[104X
-    [4X[28X[ <An epi-, monomorphism in ProsetOfCategory( PathCategory([128X[104X
-    [4X[28X   FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) ) / [ f⋅g = id(a), g⋅f = id(b) ] )>,[128X[104X
-    [4X[28X  <An epi-, monomorphism in ProsetOfCategory( PathCategory([128X[104X
-    [4X[28X   FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) ) / [ f⋅g = id(a), g⋅f = id(b) ] )> ][128X[104X
+    [4X[28X[ A morphism in the proset given by: [f]:(a) -≻ (b),[128X[104X
+    [4X[28X  A morphism in the proset given by: [g]:(b) -≻ (a) ][128X[104X
   [4X[32X[104X
   
   [1X8.2-3 StableProsetOfCategory[101X
@@ -513,8 +511,8 @@
     [4X[25Xgap>[125X [27XIJqJ = I;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xiota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );[127X[104X
-    [4X[28X<An epi-, monomorphism in StablePosetOfCategory( PosetOfCategory([128X[104X
-    [4X[28X SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )>[128X[104X
+    [4X[28XA morphism in the stable poset given by: <An epi-, monomorphism in[128X[104X
+    [4X[28XPosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( iota );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( iota );[127X[104X
