@@ -65,6 +65,36 @@ InstallOtherMethod( Size,
 end );
 
 ##
+InstallOtherMethod( CapFunctor,
+        "for a thin category, two lists, and the interval category",
+        [ IsThinCategory and IsFiniteCategory, IsList, IsList, IsIntervalCategory ],
+        
+  function( P, imgs_of_objs, imgs_of_gmors, interval_category )
+    local F;
+    
+    F := CapFunctor( Concatenation( "Functor from ", Name( P ), " -> ", Name( interval_category ) ), P, interval_category );
+    
+    AddObjectFunction( F,
+      function ( obj )
+        
+        return imgs_of_objs[SafeUniquePositionProperty( SetOfObjects( P ), o -> IsEqualForObjects( P, o, obj ) )];
+        
+    end );
+    
+    AddMorphismFunction( F,
+      function ( F_s, mor, F_t )
+        
+        return UniqueMorphism( interval_category,
+                       F_s,
+                       F_t );
+        
+    end );
+    
+    return F;
+    
+end );
+
+##
 InstallMethod( Display,
         "for an object in a proset",
         [ IsMorphismInThinCategory ],
