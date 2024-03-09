@@ -58,6 +58,10 @@
 
 @InsertChunk Weierstrass
 
+@Subsection Optimized co-Yoneda lemma for posets
+
+@InsertChunk OptimizedCoYoneda
+
 @Chapter Finite cocompletion of a finitely presented (linear) category
 
 @Section Constructors

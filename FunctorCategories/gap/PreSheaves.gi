@@ -3415,6 +3415,113 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
+        [ IsIntervalCategory, IsPreSheafCategory, IsObjectInPreSheafCategory ],
+        
+  function ( H, PSh, F )
+    local C, defining_triple, nr_objs, objs, homs, predicate, func, initial, cover, F_on_objs, embs, add_img_size, L;
+    
+    if IsInitial( PSh, F ) then
+        return [ ];
+    fi;
+    
+    C := Source( PSh );
+    
+    defining_triple := DefiningTripleOfUnderlyingQuiver( C );
+    nr_objs := defining_triple[1];
+    
+    objs := SetOfObjects( C );
+    
+    ## compute all Hom(-, objC) to order them by their cardinalities/dimension below
+    homs := List( objs, objC ->
+                  Sum( List( objs, srcC -> Length( HomomorphismStructureOnObjects( C, srcC, objC ) ) ) ) );
+    
+    predicate :=
+      function( pi_data, pi_data_new )
+        
+        return IsIsomorphism( PSh,
+                       MorphismFromCoproductOfRepresentables( PSh,
+                               pi_data_new,
+                               F ) );
+        
+    end;
+    
+    func :=
+      function( pi_data )
+        local pi, im_emb, pos_nontrivial, homs_relevant, max, pos, obj, nonliftable, mor_from_rep, values_of_mor_from_rep, pi_datum_new, pi_data_new;
+        
+        pi := MorphismFromCoproductOfRepresentables( PSh,
+                      pi_data,
+                      F );
+        
+        im_emb := ListOfValues( ValuesOnAllObjects( pi ) );
+        
+        ## the positions of the components im_emb_o of the natural transformation im_emb which are not epis:
+        pos_nontrivial := PositionsProperty( im_emb, im_emb_o -> not IsIsomorphism( H, im_emb_o ) );
+        
+        homs_relevant := homs{pos_nontrivial};
+        
+        max := Maximum( homs_relevant );
+        
+        pos := pos_nontrivial[SafePosition( homs_relevant, max )];
+        
+        obj := objs[pos];
+        
+        nonliftable := NonliftableMorphismFromDistinguishedObject( H, im_emb[pos] );
+        
+        mor_from_rep := MorphismFromRepresentableByYonedaLemma( PSh,
+                                        obj,
+                                        nonliftable,
+                                        F );
+        
+        values_of_mor_from_rep := ValuesOnAllObjects( mor_from_rep );
+        
+        pi_datum_new := NTuple( 6,
+                                obj,
+                                nonliftable,
+                                -1 + pos,
+                                -1 + IndexOfNonliftableMorphismFromDistinguishedObject( H, im_emb[pos] ),
+                                mor_from_rep,
+                                values_of_mor_from_rep );
+        
+        pi_data_new := Filtered( pi_data, datum -> ForAny( [ 1 .. nr_objs ], o -> not IsLiftable( H, datum[6][o], values_of_mor_from_rep[o] ) ) );
+        
+        return Concatenation( pi_data_new,
+                       [ pi_datum_new ] );
+        
+    end;
+    
+    initial := [ ];
+    
+    cover := CapFixpoint( predicate, func, initial );
+    
+    add_img_size :=
+      function( pi_datum )
+        
+        return NTuple( 7,
+                       pi_datum[1],
+                       pi_datum[2],
+                       pi_datum[3],
+                       pi_datum[4],
+                       pi_datum[5],
+                       pi_datum[6],
+                       Sum( List( pi_datum[6], mor -> ObjectDatum( H, ImageObject( H, mor ) ) ) ) );
+        
+    end;
+    
+    ## collect according to objs
+    L := List( objs, objB -> Filtered( cover, e -> IsIdenticalObj( e[1], objB ) ) );
+    
+    L := List( L, L_o -> List( L_o, add_img_size ) );
+    
+    ## sort by sizes of images per object
+    L := List( L, L_o -> SortedList( L_o, {a,b} -> a[7] > b[7] ) );
+    
+    return Concatenation( L );
+    
+end );
+
+##
 InstallOtherMethodForCompilerForCAP( MaximalMorphismFromRepresentable,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
