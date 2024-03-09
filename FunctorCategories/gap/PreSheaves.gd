@@ -354,10 +354,6 @@ DeclareAttribute( "CoveringListOfRepresentables",
         IsObjectInPreSheafCategory );
 
 #! @Arguments F
-DeclareAttribute( "DoctrineSpecificCoveringListOfRepresentables",
-        IsObjectInPreSheafCategory );
-
-#! @Arguments F
 DeclareAttribute( "CoveringListOfRepresentablesUsingSplits",
         IsObjectInPreSheafCategory );
 

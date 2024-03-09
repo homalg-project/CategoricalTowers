@@ -1456,7 +1456,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           function( PSh, F )
             
             return MorphismFromCoproductOfRepresentables( PSh,
-                           DoctrineSpecificCoveringListOfRepresentables( D, PSh, F ),
+                           CoveringListOfRepresentables( D, PSh, F ),
                            F );
             
         end );
@@ -3307,17 +3307,16 @@ end );
 
 ##
 InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
+        [ IsSkeletalCategoryOfFiniteSets, IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
-  function ( PSh, F )
-    local C, H, defining_triple, nr_objs, objs, homs, predicate, func, initial, cover, F_on_objs, embs, add_img_size, L;
+  function ( H, PSh, F )
+    local C, defining_triple, nr_objs, objs, homs, predicate, func, initial, cover, F_on_objs, embs, add_img_size, L;
     
     if IsInitial( PSh, F ) then
         return [ ];
     fi;
     
     C := Source( PSh );
-    H := Target( PSh );
     
     defining_triple := DefiningTripleOfUnderlyingQuiver( C );
     nr_objs := defining_triple[1];
@@ -3412,16 +3411,6 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
     L := List( L, L_o -> SortedList( L_o, {a,b} -> a[7] > b[7] ) );
     
     return Concatenation( L );
-    
-end );
-
-##
-InstallMethod( CoveringListOfRepresentables,
-        [ IsObjectInPreSheafCategory ],
-        
-  function ( F )
-    
-    return CoveringListOfRepresentables( CapCategory( F ), F );
     
 end );
 
@@ -3538,27 +3527,7 @@ InstallMethod( MaximalMorphismFromRepresentable,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentables,
-        [ IsElementaryTopos, IsPreSheafCategory, IsObjectInPreSheafCategory ],
-        
-  function ( H, PSh, F )
-    
-    return CoveringListOfRepresentables( PSh, F );
-    
-end );
-
-##
-InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentables,
-        [ IsBooleanAlgebroid, IsPreSheafCategory, IsObjectInPreSheafCategory ],
-        
-  function ( H, PSh, F )
-    
-    return CoveringListOfRepresentables( PSh, F );
-    
-end );
-
-##
-InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentables,
+InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
         [ IsAbelianCategory, IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( H, PSh, F )
@@ -3619,7 +3588,7 @@ InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentable
 end );
 
 ##
-InstallMethod( DoctrineSpecificCoveringListOfRepresentables,
+InstallMethod( CoveringListOfRepresentables,
         [ IsObjectInPreSheafCategory ],
         
   function ( F )
@@ -3627,7 +3596,7 @@ InstallMethod( DoctrineSpecificCoveringListOfRepresentables,
     
     PSh := CapCategory( F );
     
-    return DoctrineSpecificCoveringListOfRepresentables( Target( PSh ), PSh, F );
+    return CoveringListOfRepresentables( Target( PSh ), PSh, F );
     
 end );
 
@@ -3875,7 +3844,7 @@ InstallOtherMethodForCompilerForCAP( SectionFromOptimizedCoYonedaProjectiveObjec
   function ( PSh, F )
     
     return SectionAndComplementByCoveringListOfRepresentables( PSh,
-                   DoctrineSpecificCoveringListOfRepresentables( Target( PSh ), PSh, F ),
+                   CoveringListOfRepresentables( Target( PSh ), PSh, F ),
                    F )[1];
     
 end );
@@ -4051,7 +4020,7 @@ InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoO
   function ( PSh, F )
     
     return RetractionByCoveringListOfRepresentables( Target( PSh ), PSh,
-                   DoctrineSpecificCoveringListOfRepresentables( Target( PSh ), PSh, F ),
+                   CoveringListOfRepresentables( Target( PSh ), PSh, F ),
                    F );
     
 end );
