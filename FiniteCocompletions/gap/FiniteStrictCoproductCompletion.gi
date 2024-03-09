@@ -471,96 +471,100 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     end );
     
-    if CanCompute( C, "IsLiftable" ) then
+    if not ( IsBound( H ) and IsIntervalCategory( H ) ) then
         
-        ## is β liftable along α?
-        AddIsLiftable( UC,
-          function ( UC, beta, alpha )
-            local C, alpha_datum, beta_datum, alpha_map, beta_map, alpha_mor, beta_mor, is_liftable, S, s;
+        if CanCompute( C, "IsLiftable" ) then
             
-            C := UnderlyingCategory( UC );
-            
-            alpha_datum := MorphismDatum( UC, alpha );
-            beta_datum := MorphismDatum( UC, beta );
-            
-            alpha_map := alpha_datum[1];
-            beta_map := beta_datum[1];
-            
-            alpha_mor := alpha_datum[2];
-            beta_mor := beta_datum[2];
-            
-            is_liftable :=
-              function ( b )
-                local beta_b, fiber_of_beta_b_along_alpha;
+            ## is β liftable along α?
+            AddIsLiftable( UC,
+              function ( UC, beta, alpha )
+                local C, alpha_datum, beta_datum, alpha_map, beta_map, alpha_mor, beta_mor, is_liftable, S, s;
                 
-                beta_b := beta_map[1 + b];
+                C := UnderlyingCategory( UC );
                 
-                fiber_of_beta_b_along_alpha := Positions( alpha_map, beta_b );
+                alpha_datum := MorphismDatum( UC, alpha );
+                beta_datum := MorphismDatum( UC, beta );
                 
-                ## note: ForAny( [ ], func ) = false
-                return ForAny( fiber_of_beta_b_along_alpha, a -> IsLiftable( C, beta_mor[1 + b], alpha_mor[a] ) );
+                alpha_map := alpha_datum[1];
+                beta_map := beta_datum[1];
                 
-            end;
+                alpha_mor := alpha_datum[2];
+                beta_mor := beta_datum[2];
+                
+                is_liftable :=
+                  function ( b )
+                    local beta_b, fiber_of_beta_b_along_alpha;
+                    
+                    beta_b := beta_map[1 + b];
+                    
+                    fiber_of_beta_b_along_alpha := Positions( alpha_map, beta_b );
+                    
+                    ## note: ForAny( [ ], func ) = false
+                    return ForAny( fiber_of_beta_b_along_alpha, a -> IsLiftable( C, beta_mor[1 + b], alpha_mor[a] ) );
+                    
+                end;
+                
+                S := Source( beta );
+                
+                s := ObjectDatum( UC, S )[1];
+                
+                return ForAll( [ 0 .. s - 1 ], b -> is_liftable( b ) );
+                
+            end );
             
-            S := Source( beta );
-            
-            s := ObjectDatum( UC, S )[1];
-            
-            return ForAll( [ 0 .. s - 1 ], b -> is_liftable( b ) );
-            
-        end );
+        fi;
         
-    fi;
-    
-    if CanCompute( C, "IsLiftable" ) and
-       CanCompute( C, "Lift" ) then
-        
-        SetIsCategoryWithDecidableLifts( UC, true );
-        
-        ## the lift χ of β along α, i.e., χ α = β
-        AddLift( UC,
-          function ( UC, beta, alpha )
-            local C, alpha_datum, beta_datum, alpha_map, beta_map,
-                  alpha_mor, beta_mor, chi, map, mor, S, T, s;
+        if CanCompute( C, "IsLiftable" ) and
+           CanCompute( C, "Lift" ) then
             
-            C := UnderlyingCategory( UC );
+            SetIsCategoryWithDecidableLifts( UC, true );
             
-            alpha_datum := MorphismDatum( UC, alpha );
-            beta_datum := MorphismDatum( UC, beta );
-            
-            alpha_map := alpha_datum[1];
-            beta_map := beta_datum[1];
-            
-            alpha_mor := alpha_datum[2];
-            beta_mor := beta_datum[2];
-            
-            chi :=
-              function ( b )
-                local beta_b, fiber_of_beta_b_along_alpha, a;
+            ## the lift χ of β along α, i.e., χ α = β
+            AddLift( UC,
+              function ( UC, beta, alpha )
+                local C, alpha_datum, beta_datum, alpha_map, beta_map,
+                      alpha_mor, beta_mor, chi, map, mor, S, T, s;
                 
-                beta_b := beta_map[1 + b];
+                C := UnderlyingCategory( UC );
                 
-                fiber_of_beta_b_along_alpha := Positions( alpha_map, beta_b );
+                alpha_datum := MorphismDatum( UC, alpha );
+                beta_datum := MorphismDatum( UC, beta );
                 
-                return -1 + BigInt( SafeFirst( fiber_of_beta_b_along_alpha, a -> IsLiftable( C, beta_mor[1 + b], alpha_mor[a] ) ) );
+                alpha_map := alpha_datum[1];
+                beta_map := beta_datum[1];
                 
-            end;
+                alpha_mor := alpha_datum[2];
+                beta_mor := beta_datum[2];
+                
+                chi :=
+                  function ( b )
+                    local beta_b, fiber_of_beta_b_along_alpha, a;
+                    
+                    beta_b := beta_map[1 + b];
+                    
+                    fiber_of_beta_b_along_alpha := Positions( alpha_map, beta_b );
+                    
+                    return -1 + BigInt( SafeFirst( fiber_of_beta_b_along_alpha, a -> IsLiftable( C, beta_mor[1 + b], alpha_mor[a] ) ) );
+                    
+                end;
+                
+                S := Source( beta );
+                T := Source( alpha );
+                
+                s := ObjectDatum( UC, S )[1];
+                
+                map := List( [ 0 .. s - 1 ], b -> chi( b ) );
+                
+                mor := List( [ 0 .. s - 1 ], b -> Lift( C, beta_mor[1 + b], alpha_mor[1 + map[1 + b]] ) );
+                
+                return MorphismConstructor( UC,
+                               S,
+                               Pair( map, mor ),
+                               T );
+                
+            end );
             
-            S := Source( beta );
-            T := Source( alpha );
-            
-            s := ObjectDatum( UC, S )[1];
-            
-            map := List( [ 0 .. s - 1 ], b -> chi( b ) );
-            
-            mor := List( [ 0 .. s - 1 ], b -> Lift( C, beta_mor[1 + b], alpha_mor[1 + map[1 + b]] ) );
-            
-            return MorphismConstructor( UC,
-                           S,
-                           Pair( map, mor ),
-                           T );
-            
-        end );
+        fi;
         
     fi;
     
