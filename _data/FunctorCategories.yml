@@ -1,5 +1,5 @@
 name: FunctorCategories
-version: "2024.03-09"
+version: "2024.03-10"
 license: "GPL-2.0-or-later"
 date: 2024-03-09
 description: |
@@ -81,11 +81,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FunctorCategorie
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.03-09/FunctorCategories-2024.03-09.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.03-10/FunctorCategories-2024.03-10.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.03-09/FunctorCategories-2024.03-09.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.03-10/FunctorCategories-2024.03-10.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.03-09/FunctorCategories-2024.03-09-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.03-10/FunctorCategories-2024.03-10-manual.pdf
 
 abstract: |
 
@@ -98,7 +98,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BS09</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FunctorCategories, Categories of functors,
-             Version 2024.03-09</i>
+             Version 2024.03-10</i>
      (<span class='BibYear'>3-09</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FunctorCategories">https://homalg-project.github.io/pkg/FunctorCategories</a></span>.
@@ -106,10 +106,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ FunctorCategories2024.03-09,
+    @misc{ FunctorCategories2024.03-10,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FunctorCategories}, Categories of functors, {V}ersion
-                          2024.03-09},
+                          2024.03-10},
       month =            {4-},
       year =             {3-09},
       note =             {GAP package},
