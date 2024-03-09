@@ -677,97 +677,157 @@ end );
 ##################################
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         [ IsObjectInProsetOfCategory ],
         
   function( a )
     
-    Print( "An object in the proset given by: " );
-    
-    ViewObj( UnderlyingCell( a ) );
+    return Concatenation( "An object in the proset given by: ",
+                   StringView( UnderlyingCell( a ) ) );
     
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( PrintString,
+        [ IsObjectInProsetOfCategory ],
+        
+  StringView );
+
+##
+InstallMethod( ViewString,
+        [ IsMorphismInProsetOfCategory and HasUnderlyingCell ],
+        
+  function( mor )
+    
+    return Concatenation( "A morphism in the proset given by: ",
+                   StringView( UnderlyingCell( mor ) ) );
+    
+end );
+
+##
+InstallMethod( PrintString,
+        [ IsMorphismInProsetOfCategory ],
+        
+  StringView );
+
+##
+InstallMethod( ViewString,
         [ IsObjectInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
         
   function( a )
     
-    Print( "An object in the stable proset given by: " );
-    
-    ViewObj( UnderlyingCell( a ) );
+    return Concatenation( "An object in the stable proset given by: ",
+                   StringView( UnderlyingCell( a ) ) );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( ViewString,
+        [ IsMorphismInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory and HasUnderlyingCell ],
+        
+  function( mor )
+    
+    return Concatenation( "A morphism in the stable proset given by: ",
+                   StringView( UnderlyingCell( mor ) ) );
+    
+end );
+
+##
+InstallMethod( DisplayString,
         [ IsObjectInProsetOfCategory ],
         
   function( a )
     
-    Display( UnderlyingCell( a ) );
-    
-    Display( "\nAn object in the proset given by the above data" );
+    return Concatenation( StringDisplay( UnderlyingCell( a ) ),
+                   "\nAn object in the proset given by the above data" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsObjectInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
         
   function( a )
     
-    Display( UnderlyingCell( a ) );
-    
-    Display( "\nAn object in the stable proset given by the above data" );
+    return Concatenation( StringDisplay( UnderlyingCell( a ) ),
+                   "\nAn object in the stable proset given by the above data" );
     
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         [ IsObjectInPosetOfCategory ],
         
   function( a )
     
-    Print( "An object in the poset given by: " );
-    
-    ViewObj( UnderlyingCell( a ) );
+    return Concatenation( "An object in the poset given by: ",
+                   StringView( UnderlyingCell( a ) ) );
     
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( PrintString,
+        [ IsObjectInPosetOfCategory ],
+        
+  StringView );
+
+##
+InstallMethod( ViewString,
+        [ IsMorphismInPosetOfCategory and HasUnderlyingCell ],
+        
+  function( mor )
+    
+    return Concatenation( "A morphism in the poset given by: ",
+                   StringView( UnderlyingCell( mor ) ) );
+    
+end );
+
+##
+InstallMethod( PrintString,
+        [ IsMorphismInPosetOfCategory ],
+        
+  StringView );
+
+##
+InstallMethod( ViewString,
         [ IsObjectInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
         
   function( a )
     
-    Print( "An object in the stable poset given by: " );
-    
-    ViewObj( UnderlyingCell( a ) );
+    return Concatenation( "An object in the stable poset given by: ",
+                   StringView( UnderlyingCell( a ) ) );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( ViewString,
+        [ IsMorphismInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory and HasUnderlyingCell ],
+        
+  function( mor )
+    
+    return Concatenation( "A morphism in the stable poset given by: ",
+                   StringView( UnderlyingCell( mor ) ) );
+    
+end );
+
+##
+InstallMethod( DisplayString,
         [ IsObjectInPosetOfCategory ],
         
   function( a )
     
-    Display( UnderlyingCell( a ) );
-    
-    Display( "\nAn object in the poset given by the above data" );
+    return Concatenation( StringDisplay( UnderlyingCell( a ) ),
+                   "\nAn object in the poset given by the above data" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsObjectInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
         
   function( a )
     
-    Display( UnderlyingCell( a ) );
-    
-    Display( "\nAn object in the stable poset given by the above data" );
+    return Concatenation( StringDisplay( UnderlyingCell( a ) ),
+                   "\nAn object in the stable poset given by the above data" );
     
 end );

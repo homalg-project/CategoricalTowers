@@ -4531,7 +4531,7 @@ InstallMethod( DisplayString,
     for i in [ 1 .. Length( objects ) ] do
         
         string := Concatenation( string,
-                          "Image of ", ViewString( objects[i] ), ":\n",
+                          "Image of ", StringView( objects[i] ), ":\n",
                           StringDisplay( images_of_objects[i] ),
                           "\n" );
         
@@ -4631,7 +4631,7 @@ InstallMethod( DisplayString,
     for i in [ 1 .. Length( objects ) ] do
         
         string := Concatenation( string,
-                          "Image of ", ViewString( objects[i] ), ":\n",
+                          "Image of ", StringView( objects[i] ), ":\n",
                           StringDisplay( images_of_objects[i] ),
                           "\n" );
         
