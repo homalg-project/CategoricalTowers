@@ -244,9 +244,9 @@ AddDerivationToCAP( IsLiftableAlongMonomorphism,
         "IsLiftableAlongMonomorphism using IsHomSetInhabited",
         [ [ IsHomSetInhabited, 1 ] ],
         
-  function( cat, u1, u2 )
+  function( cat, mono, tau )
     
-    return IsHomSetInhabited( cat, Source( u1 ), Source( u2 ) );
+    return IsHomSetInhabited( cat, Source( tau ), Source( mono ) );
     
 end : CategoryFilter := IsThinCategory );
 
