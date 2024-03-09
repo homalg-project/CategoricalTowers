@@ -75,8 +75,8 @@ IJqJ := InternalHom( J, IJ ); ## this is the ideal quotient IJ : J
 IJqJ = I;
 #! true
 iota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );
-#! <An epi-, monomorphism in StablePosetOfCategory( PosetOfCategory(
-#!  SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )>
+#! A morphism in the stable poset given by: <An epi-, monomorphism in
+#! PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )>
 IsWellDefined( iota );
 #! true
 IsOne( iota );

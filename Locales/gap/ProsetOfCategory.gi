@@ -689,12 +689,34 @@ end );
 
 ##
 InstallMethod( ViewString,
+        [ IsMorphismInProsetOfCategory and HasUnderlyingCell ],
+        
+  function( mor )
+    
+    return Concatenation( "A morphism in the proset given by: ",
+                   StringView( UnderlyingCell( mor ) ) );
+    
+end );
+
+##
+InstallMethod( ViewString,
         [ IsObjectInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
         
   function( a )
     
     return Concatenation( "An object in the stable proset given by: ",
                    StringView( UnderlyingCell( a ) ) );
+    
+end );
+
+##
+InstallMethod( ViewString,
+        [ IsMorphismInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory and HasUnderlyingCell ],
+        
+  function( mor )
+    
+    return Concatenation( "A morphism in the stable proset given by: ",
+                   StringView( UnderlyingCell( mor ) ) );
     
 end );
 
@@ -733,12 +755,34 @@ end );
 
 ##
 InstallMethod( ViewString,
+        [ IsMorphismInPosetOfCategory and HasUnderlyingCell ],
+        
+  function( mor )
+    
+    return Concatenation( "A morphism in the poset given by: ",
+                   StringView( UnderlyingCell( mor ) ) );
+    
+end );
+
+##
+InstallMethod( ViewString,
         [ IsObjectInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
         
   function( a )
     
     return Concatenation( "An object in the stable poset given by: ",
                    StringView( UnderlyingCell( a ) ) );
+    
+end );
+
+##
+InstallMethod( ViewString,
+        [ IsMorphismInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory and HasUnderlyingCell ],
+        
+  function( mor )
+    
+    return Concatenation( "A morphism in the stable poset given by: ",
+                   StringView( UnderlyingCell( mor ) ) );
     
 end );
 
