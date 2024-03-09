@@ -677,26 +677,24 @@ end );
 ##################################
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         [ IsObjectInProsetOfCategory ],
         
   function( a )
     
-    Print( "An object in the proset given by: " );
-    
-    ViewObj( UnderlyingCell( a ) );
+    return Concatenation( "An object in the proset given by: ",
+                   StringView( UnderlyingCell( a ) ) );
     
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         [ IsObjectInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
         
   function( a )
     
-    Print( "An object in the stable proset given by: " );
-    
-    ViewObj( UnderlyingCell( a ) );
+    return Concatenation( "An object in the stable proset given by: ",
+                   StringView( UnderlyingCell( a ) ) );
     
 end );
 
@@ -725,26 +723,24 @@ InstallMethod( Display,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         [ IsObjectInPosetOfCategory ],
         
   function( a )
     
-    Print( "An object in the poset given by: " );
-    
-    ViewObj( UnderlyingCell( a ) );
+    return Concatenation( "An object in the poset given by: ",
+                   StringView( UnderlyingCell( a ) ) );
     
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         [ IsObjectInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
         
   function( a )
     
-    Print( "An object in the stable poset given by: " );
-    
-    ViewObj( UnderlyingCell( a ) );
+    return Concatenation( "An object in the stable poset given by: ",
+                   StringView( UnderlyingCell( a ) ) );
     
 end );
 
