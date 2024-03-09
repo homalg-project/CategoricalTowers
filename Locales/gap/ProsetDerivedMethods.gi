@@ -244,9 +244,9 @@ AddDerivationToCAP( IsLiftableAlongMonomorphism,
         "IsLiftableAlongMonomorphism using IsHomSetInhabited",
         [ [ IsHomSetInhabited, 1 ] ],
         
-  function( cat, u1, u2 )
+  function( cat, mono, tau )
     
-    return IsHomSetInhabited( cat, Source( u1 ), Source( u2 ) );
+    return IsHomSetInhabited( cat, Source( tau ), Source( mono ) );
     
 end : CategoryFilter := IsThinCategory );
 
@@ -255,10 +255,10 @@ AddDerivationToCAP( LiftAlongMonomorphism,
         "LiftAlongMonomorphism using the unique morphism from the source of the first argument to the source of the second",
         [ [ UniqueMorphism, 1 ] ],
         
-  function( cat, u1, u2 )
+  function( cat, mono, tau )
     
     ## the behavior of LiftAlongMonomorphism is unspecified on input violating the specification
-    return UniqueMorphism( cat, Source( u2 ), Source( u1 ) );
+    return UniqueMorphism( cat, Source( tau ), Source( mono ) );
     
 end : CategoryFilter := IsThinCategory );
 
@@ -267,9 +267,9 @@ AddDerivationToCAP( IsColiftableAlongEpimorphism,
         "IsColiftableAlongEpimorphism using IsHomSetInhabited",
         [ [ IsHomSetInhabited, 1 ] ],
         
-  function( cat, u1, u2 )
+  function( cat, epi, tau )
     
-    return IsHomSetInhabited( cat, Target( u1 ), Target( u2 ) );
+    return IsHomSetInhabited( cat, Target( epi ), Target( tau ) );
     
 end : CategoryFilter := IsThinCategory );
 
@@ -278,10 +278,10 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
         "ColiftAlongEpimorphism using the unique morphism from the range of the second argument to the range of the first",
         [ [ UniqueMorphism, 1 ] ],
         
-  function( cat, u1, u2 )
+  function( cat, epi, tau )
     
     ## the behavior of ColiftAlongEpimorphism is unspecified on input violating the specification
-    return UniqueMorphism( cat, Target( u1 ), Target( u2 ) );
+    return UniqueMorphism( cat, Target( epi ), Target( tau ) );
     
 end : CategoryFilter := IsThinCategory );
 
