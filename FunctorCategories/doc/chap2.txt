@@ -88,59 +88,55 @@
   
   [33X[1;0Y[29X[2XCoveringListOfRepresentables[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-14 DoctrineSpecificCoveringListOfRepresentables[101X
-  
-  [33X[1;0Y[29X[2XDoctrineSpecificCoveringListOfRepresentables[102X( [3XF[103X ) [32X attribute[133X
-  
-  [1X2.1-15 CoveringListOfRepresentablesUsingSplits[101X
+  [1X2.1-14 CoveringListOfRepresentablesUsingSplits[101X
   
   [33X[1;0Y[29X[2XCoveringListOfRepresentablesUsingSplits[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-16 EpimorphismFromSomeProjectiveObjectUsingSplits[101X
+  [1X2.1-15 EpimorphismFromSomeProjectiveObjectUsingSplits[101X
   
   [33X[1;0Y[29X[2XEpimorphismFromSomeProjectiveObjectUsingSplits[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-17 SectionAndComplementByCoveringListOfRepresentables[101X
+  [1X2.1-16 SectionAndComplementByCoveringListOfRepresentables[101X
   
   [33X[1;0Y[29X[2XSectionAndComplementByCoveringListOfRepresentables[102X( [3XF[103X ) [32X operation[133X
   
-  [1X2.1-18 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[101X
+  [1X2.1-17 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[101X
   
   [33X[1;0Y[29X[2XSectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-19 RetractionByCoveringListOfRepresentables[101X
+  [1X2.1-18 RetractionByCoveringListOfRepresentables[101X
   
   [33X[1;0Y[29X[2XRetractionByCoveringListOfRepresentables[102X( [3XF[103X ) [32X operation[133X
   
-  [1X2.1-20 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[101X
+  [1X2.1-19 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[101X
   
   [33X[1;0Y[29X[2XRetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-21 OptimizedCoYonedaLemmaOnObjects[101X
+  [1X2.1-20 OptimizedCoYonedaLemmaOnObjects[101X
   
   [33X[1;0Y[29X[2XOptimizedCoYonedaLemmaOnObjects[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-22 OptimizedCoYonedaLemmaOnMorphisms[101X
+  [1X2.1-21 OptimizedCoYonedaLemmaOnMorphisms[101X
   
   [33X[1;0Y[29X[2XOptimizedCoYonedaLemmaOnMorphisms[102X( [3Xphi[103X ) [32X attribute[133X
   
-  [1X2.1-23 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[101X
+  [1X2.1-22 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[101X
   
   [33X[1;0Y[29X[2XCoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-24 OptimizedCoYonedaLemmaCoequalizerPair[101X
+  [1X2.1-23 OptimizedCoYonedaLemmaCoequalizerPair[101X
   
   [33X[1;0Y[29X[2XOptimizedCoYonedaLemmaCoequalizerPair[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-25 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion[101X
+  [1X2.1-24 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion[101X
   
   [33X[1;0Y[29X[2XApplyPreSheafToObjectInFiniteStrictCoproductCompletion[102X( [3XPSh[103X, [3Xpresheaf[103X, [3Xobj[103X ) [32X operation[133X
   
-  [1X2.1-26 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[101X
+  [1X2.1-25 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[101X
   
   [33X[1;0Y[29X[2XApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[102X( [3XPSh[103X, [3Xpresheaf[103X, [3Xmor[103X ) [32X operation[133X
   
-  [1X2.1-27 CategoryOfInternalCategories[101X
+  [1X2.1-26 CategoryOfInternalCategories[101X
   
   [33X[1;0Y[29X[2XCategoryOfInternalCategories[102X( [3XC[103X ) [32X attribute[133X
   
@@ -1632,5 +1628,58 @@
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XCoimageObject( pi ) = CoimageObject( co );[127X[104X
     [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.6-6 [33X[0;0YOptimized co-Yoneda lemma for posets[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", ">= 2024.03-13", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xq := FinQuiver( "q(a,l,r,i,c,b)[ac:a->c,lc:l->c,ri:r->i,ic:i->c,cb:c->b]" );[127X[104X
+    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" )[128X[104X
+    [4X[25Xgap>[125X [27XF := PathCategory( q );[127X[104X
+    [4X[28XPathCategory([128X[104X
+    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XSize( F );[127X[104X
+    [4X[28X16[128X[104X
+    [4X[25Xgap>[125X [27XP := PosetOfCategory( F );[127X[104X
+    [4X[28XPosetOfCategory( PathCategory([128X[104X
+    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XSize( P );[127X[104X
+    [4X[28X16[128X[104X
+    [4X[25Xgap>[125X [27XPSh := PreSheaves( P );[127X[104X
+    [4X[28XPreSheaves( PosetOfCategory( PathCategory([128X[104X
+    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ),[128X[104X
+    [4X[28XIntervalCategory )[128X[104X
+    [4X[25Xgap>[125X [27Xc := PSh.c;[127X[104X
+    [4X[28X<A projective object in PreSheaves( PosetOfCategory( PathCategory([128X[104X
+    [4X[28X FinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ),[128X[104X
+    [4X[28X IntervalCategory )>[128X[104X
+    [4X[25Xgap>[125X [27Xsection :=[127X[104X
+    [4X[25X>[125X [27X  SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( c );[127X[104X
+    [4X[28X<A split monomorphism in FiniteStrictCoproductCompletion([128X[104X
+    [4X[28X PosetOfCategory( PathCategory([128X[104X
+    [4X[28X FinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( section );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( section );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Source( section ) );[127X[104X
+    [4X[28X[ 1, [ An object in the poset given by: (c) ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FiniteStrictCoproductCompletion( PosetOfCategory( PathCategory([128X[104X
+    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Target( section ) );[127X[104X
+    [4X[28X[ 5, [ An object in the poset given by: (a),[128X[104X
+    [4X[28X       An object in the poset given by: (l),[128X[104X
+    [4X[28X       An object in the poset given by: (r),[128X[104X
+    [4X[28X       An object in the poset given by: (i),[128X[104X
+    [4X[28X       An object in the poset given by: (c) ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FiniteStrictCoproductCompletion( PosetOfCategory( PathCategory([128X[104X
+    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
   [4X[32X[104X
   

@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2024.03-10",
+Version := "2024.03-13",
 
 Date := "2024-03-09",
 Date := "2024-03-09",
@@ -102,7 +102,7 @@ Dependencies := rec(
                    [ "FreydCategoriesForCAP", ">= 2024.01-03" ],
                    [ "SubcategoriesForCAP", ">= 2024.01-01" ],
                    [ "Toposes", ">= 2024.02-08" ],
-                   [ "Locales", ">= 2024.03-17" ],
+                   [ "Locales", ">= 2024.03-23" ],
                    [ "FinSetsForCAP", ">= 2024.02-09" ],
                    [ "ToolsForHigherHomologicalAlgebra", ">= 2023.03-01" ],
                    ],

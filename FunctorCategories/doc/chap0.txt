@@ -6,7 +6,7 @@
                             [1X Categories of functors [101X
   
   
-                                   2024.03-10
+                                   2024.03-13
   
   
                                   9 March 2024
@@ -92,20 +92,19 @@
       2.1-11 MorphismFromCoproductOfRepresentables
       2.1-12 MaximalMorphismFromRepresentable
       2.1-13 CoveringListOfRepresentables
-      2.1-14 DoctrineSpecificCoveringListOfRepresentables
-      2.1-15 CoveringListOfRepresentablesUsingSplits
-      2.1-16 EpimorphismFromSomeProjectiveObjectUsingSplits
-      2.1-17 SectionAndComplementByCoveringListOfRepresentables
-      2.1-18 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject
-      2.1-19 RetractionByCoveringListOfRepresentables
-      2.1-20 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject
-      2.1-21 OptimizedCoYonedaLemmaOnObjects
-      2.1-22 OptimizedCoYonedaLemmaOnMorphisms
-      2.1-23 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma
-      2.1-24 OptimizedCoYonedaLemmaCoequalizerPair
-      2.1-25 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion
-      2.1-26 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion
-      2.1-27 CategoryOfInternalCategories
+      2.1-14 CoveringListOfRepresentablesUsingSplits
+      2.1-15 EpimorphismFromSomeProjectiveObjectUsingSplits
+      2.1-16 SectionAndComplementByCoveringListOfRepresentables
+      2.1-17 SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject
+      2.1-18 RetractionByCoveringListOfRepresentables
+      2.1-19 RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject
+      2.1-20 OptimizedCoYonedaLemmaOnObjects
+      2.1-21 OptimizedCoYonedaLemmaOnMorphisms
+      2.1-22 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma
+      2.1-23 OptimizedCoYonedaLemmaCoequalizerPair
+      2.1-24 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion
+      2.1-25 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion
+      2.1-26 CategoryOfInternalCategories
     2.2 [33X[0;0YAttributes[133X
       2.2-1 ValuesOnAllObjects
       2.2-2 UnderlyingCapTwoCategoryCell
@@ -135,6 +134,7 @@
       2.6-3 [33X[0;0YThe colimit completion of a cyclic monoid[133X
       2.6-4 [33X[0;0YThe linearization of the colimit completion of a cyclic monoid[133X
       2.6-5 [33X[0;0YThe Weierstrass normal form[133X
+      2.6-6 [33X[0;0YOptimized co-Yoneda lemma for posets[133X
   3 [33X[0;0YFinite cocompletion of a finitely presented (linear) category[133X
     3.1 [33X[0;0YConstructors[133X
       3.1-1 FiniteCocompletion
