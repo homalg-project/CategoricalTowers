@@ -3546,6 +3546,16 @@ end );
 
 ##
 InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentables,
+        [ IsBooleanAlgebroid, IsPreSheafCategory, IsObjectInPreSheafCategory ],
+        
+  function ( H, PSh, F )
+    
+    return CoveringListOfRepresentables( PSh, F );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( DoctrineSpecificCoveringListOfRepresentables,
         [ IsAbelianCategory, IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( H, PSh, F )

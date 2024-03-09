@@ -446,6 +446,30 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
     fi;
     
+    if CanCompute( C, "MorphismsOfExternalHom" ) then
+        
+        ##
+        AddMorphismsOfExternalHom( P,
+          function( P, S, T )
+            local mors;
+            
+            mors := MorphismsOfExternalHom( AmbientCategory( P ),
+                            UnderlyingCell( S ),
+                            UnderlyingCell( T ) );
+            
+            ## a trick to avoid an if/else statement (see ?CompilerForCAP:Requirements):
+            mors := mors{[ 1 .. 1 - 0 ^ Length( mors ) ]};
+            
+            return List( mors, mor ->
+                         MorphismConstructor( P,
+                                 S,
+                                 mor,
+                                 T ) );
+            
+        end );
+        
+    fi;
+    
     if not skeletal and CanCompute( C, "SetOfGeneratingMorphismsOfCategory" ) then
         
         AddSetOfGeneratingMorphismsOfCategory( P,

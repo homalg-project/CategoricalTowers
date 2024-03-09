@@ -31,7 +31,7 @@ Display( L );
 #! StablePosetOfCategory( PosetOfCategory(
 #! SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):
 #! 
-#! 14 primitive operations were used to derive 331 operations for this category
+#! 15 primitive operations were used to derive 331 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
