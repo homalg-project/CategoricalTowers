@@ -2743,7 +2743,10 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
         
     else
         
-        Error( "the type of the source category `B` is not supported yet\n" );
+        morB_op := MorphismConstructor( B_op,
+                           SetOfObjects( B_op )[SafeUniquePositionProperty( SetOfObjects( B ), obj -> IsEqualForObjects( B, obj, Target( morB ) ) )],
+                           morB,
+                           SetOfObjects( B_op )[SafeUniquePositionProperty( SetOfObjects( B ), obj -> IsEqualForObjects( B, obj, Source( morB ) ) )] );
         
     fi;
     
