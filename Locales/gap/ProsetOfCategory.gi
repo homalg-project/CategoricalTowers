@@ -699,26 +699,24 @@ InstallMethod( ViewString,
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsObjectInProsetOfCategory ],
         
   function( a )
     
-    Display( UnderlyingCell( a ) );
-    
-    Display( "\nAn object in the proset given by the above data" );
+    return Concatenation( StringDisplay( UnderlyingCell( a ) ),
+                   "\nAn object in the proset given by the above data" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsObjectInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
         
   function( a )
     
-    Display( UnderlyingCell( a ) );
-    
-    Display( "\nAn object in the stable proset given by the above data" );
+    return Concatenation( StringDisplay( UnderlyingCell( a ) ),
+                   "\nAn object in the stable proset given by the above data" );
     
 end );
 
@@ -745,25 +743,23 @@ InstallMethod( ViewString,
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsObjectInPosetOfCategory ],
         
   function( a )
     
-    Display( UnderlyingCell( a ) );
-    
-    Display( "\nAn object in the poset given by the above data" );
+    return Concatenation( StringDisplay( UnderlyingCell( a ) ),
+                   "\nAn object in the poset given by the above data" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsObjectInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
         
   function( a )
     
-    Display( UnderlyingCell( a ) );
-    
-    Display( "\nAn object in the stable poset given by the above data" );
+    return Concatenation( StringDisplay( UnderlyingCell( a ) ),
+                   "\nAn object in the stable poset given by the above data" );
     
 end );
