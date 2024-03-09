@@ -37,7 +37,7 @@
     [4X[28XProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
     [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ] ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X9 primitive operations were used to derive 78 operations for this category[128X[104X
+    [4X[28X10 primitive operations were used to derive 78 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsThinCategory[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
@@ -85,7 +85,7 @@
     [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
     [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ] ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X7 primitive operations were used to derive 80 operations for this category[128X[104X
+    [4X[28X8 primitive operations were used to derive 80 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -469,7 +469,7 @@
     [4X[28XStablePosetOfCategory( PosetOfCategory([128X[104X
     [4X[28XSliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X14 primitive operations were used to derive 331 operations for this category[128X[104X
+    [4X[28X15 primitive operations were used to derive 331 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
