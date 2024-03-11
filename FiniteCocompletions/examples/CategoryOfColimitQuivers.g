@@ -103,11 +103,7 @@ Display( F_as_coequalizer_pair );
 #! 
 #! An object in FiniteColimitCompletionWithStrictCoproducts(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
-F_as_colimit_quiver :=
-  ReinterpretationOfObject( ColimitQuiversC,
-          ObjectDatum( ModelingObject( ModelingCategory( ColimitCompletionC ),
-                  ModelingObject( ColimitCompletionC,
-                          F_as_coequalizer_pair ) ) ) );
+F_as_colimit_quiver := AssociatedColimitQuiver( F_as_coequalizer_pair );
 #! <An object in CategoryOfColimitQuivers(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
 Display( F_as_colimit_quiver );

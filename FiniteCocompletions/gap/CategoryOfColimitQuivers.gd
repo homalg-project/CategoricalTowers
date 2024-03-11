@@ -100,17 +100,19 @@ CapJitAddTypeSignature( "CategoryOfColimitQuivers", [ IsCapCategory ], function 
     
 end );
 
-#!
+#! @Arguments ColimitQuivers, list
+#! @Returns a colimit quiver
 DeclareOperation( "CreateColimitQuiver",
         [ IsCategoryOfColimitQuivers, IsList ] );
 
-#!
+#! @Arguments source, list_of_images, target
+#! @Returns a colimit quiver morphism
 DeclareOperation( "CreateMorphismOfColimitQuivers",
-        [ IsObjectInCategoryOfColimitQuivers, IsList ] );
+        [ IsObjectInCategoryOfColimitQuivers, IsList, IsObjectInCategoryOfColimitQuivers ] );
 
 #! @Description
 #!  Return the category $C$ underlying the category of colimit quivers
-#!  <A>ColimitQuivers</A><C> := CategoryOfColimitQuivers(</C> $C$ <C>)</C>).
+#!  <A>ColimitQuivers</A> := <C>CategoryOfColimitQuivers</C>( $C$ ).
 #! @Arguments ColimitQuivers
 DeclareAttribute( "UnderlyingCategory",
         IsCategoryOfColimitQuivers );
