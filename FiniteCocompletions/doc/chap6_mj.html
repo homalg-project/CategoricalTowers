@@ -36,7 +36,7 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X785C21C17F786A08">6.2-1 CategoryOfColimitQuivers</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7FFD17158275C768">6.2-2 CreateColimitQuiver</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7ACAD98D7CD12AEF">6.2-3 CreateMorphismOfColimitQuivers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X8423E15E82539406">6.2-3 CreateMorphismOfColimitQuivers</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7E7C3F167FBBC4FA">6.2-4 UnderlyingCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X8767AE0182F5279E">6.2-5 EmbeddingOfUnderlyingCategory</a></span>
 </div></div>
@@ -183,11 +183,7 @@ FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) given by the above data
 
 An object in FiniteColimitCompletionWithStrictCoproducts(
 FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_colimit_quiver :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  ReinterpretationOfObject( ColimitQuiversC,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">          ObjectDatum( ModelingObject( ModelingCategory( ColimitCompletionC ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  ModelingObject( ColimitCompletionC,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                          F_as_coequalizer_pair ) ) ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_colimit_quiver := AssociatedColimitQuiver( F_as_coequalizer_pair );</span>
 &lt;An object in CategoryOfColimitQuivers(
  FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F_as_colimit_quiver );</span>
@@ -203,18 +199,22 @@ FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
 
 <h5>6.2-2 CreateColimitQuiver</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateColimitQuiver</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X7ACAD98D7CD12AEF" name="X7ACAD98D7CD12AEF"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateColimitQuiver</code>( <var class="Arg">ColimitQuivers</var>, <var class="Arg">list</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a colimit quiver</p>
+
+<p><a id="X8423E15E82539406" name="X8423E15E82539406"></a></p>
 
 <h5>6.2-3 CreateMorphismOfColimitQuivers</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateMorphismOfColimitQuivers</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateMorphismOfColimitQuivers</code>( <var class="Arg">source</var>, <var class="Arg">list_of_images</var>, <var class="Arg">target</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a colimit quiver morphism</p>
+
 <p><a id="X7E7C3F167FBBC4FA" name="X7E7C3F167FBBC4FA"></a></p>
 
 <h5>6.2-4 UnderlyingCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">ColimitQuivers</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Return the category <span class="SimpleMath">\(C\)</span> underlying the category of colimit quivers <var class="Arg">ColimitQuivers</var><code class="code"> := CategoryOfColimitQuivers(</code> <span class="SimpleMath">\(C\)</span> <code class="code">)</code>).</p>
+<p>Return the category <span class="SimpleMath">\(C\)</span> underlying the category of colimit quivers <var class="Arg">ColimitQuivers</var> := <code class="code">CategoryOfColimitQuivers</code>( <span class="SimpleMath">\(C\)</span> ).</p>
 
 <p><a id="X8767AE0182F5279E" name="X8767AE0182F5279E"></a></p>
 

@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2024.03-06
+                                   2024.03-07
   
   
-                                  9 March 2024
+                                 11 March 2024
   
   
                                 Mohamed Barakat
@@ -154,6 +154,7 @@
       8.1-4 DefiningPairOfMorphismBetweenCoequalizerPairs
     8.2 [33X[0;0YConstructors[133X
       8.2-1 FiniteColimitCompletionWithStrictCoproducts
+      8.2-2 AssociatedColimitQuiver
     8.3 [33X[0;0YGAP categories[133X
       8.3-1 IsFiniteColimitCompletionWithStrictCoproducts
       8.3-2 IsCellInFiniteColimitCompletionWithStrictCoproducts
