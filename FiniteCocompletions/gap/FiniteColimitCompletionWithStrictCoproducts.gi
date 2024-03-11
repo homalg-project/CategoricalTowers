@@ -312,6 +312,38 @@ InstallMethod( \.,
     
 end );
 
+##
+InstallOtherMethodForCompilerForCAP( AssociatedColimitQuiver,
+        "for the category of finite colimit completion of a category and an object therein",
+        [ IsFiniteColimitCompletionWithStrictCoproducts, IsObjectInFiniteColimitCompletionWithStrictCoproducts, IsCategoryOfColimitQuivers ],
+        
+  function( ColimitCompletionC, coequalizer_pair, ColimitQuiversC )
+    
+    return ReinterpretationOfObject( ColimitQuiversC,
+                   ObjectDatum( ModelingObject( ModelingCategory( ColimitCompletionC ),
+                           ModelingObject( ColimitCompletionC,
+                                   coequalizer_pair ) ) ) );
+    
+end );
+
+##
+InstallMethod( AssociatedColimitQuiver,
+        "for an object in the category of finite colimit completion of a category",
+        [ IsObjectInFiniteColimitCompletionWithStrictCoproducts ],
+        
+  function( coequalizer_pair )
+    local ColimitCompletionC, C, ColimitQuiversC;
+    
+    ColimitCompletionC := CapCategory( coequalizer_pair );
+    
+    C := UnderlyingCategory( ColimitCompletionC );
+    
+    ColimitQuiversC := CategoryOfColimitQuivers( C );
+    
+    return AssociatedColimitQuiver( ColimitCompletionC, coequalizer_pair, ColimitQuiversC );
+    
+end );
+
 ####################################
 #
 # View, Print, Display and LaTeX methods:
