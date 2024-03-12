@@ -162,7 +162,7 @@ DeclareAttribute( "AssociatedFiniteColimitCompletionWithStrictCoproductsOfSource
 CapJitAddTypeSignature( "AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory", [ IsPreSheafCategory ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( CoequalizerCompletion( AssociatedFiniteStrictCoproductCompletionOfSourceCategory( input_types[1].category ) ) );
+    return CapJitDataTypeOfCategory( FiniteColimitCompletionWithStrictCoproducts( Source( input_types[1].category ) ) );
     
 end );
 
