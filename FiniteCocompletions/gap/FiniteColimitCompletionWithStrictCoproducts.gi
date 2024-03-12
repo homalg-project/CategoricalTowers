@@ -144,6 +144,7 @@ InstallMethod( FiniteColimitCompletionWithStrictCoproducts,
             [ "UnderlyingCategory",
               "FiniteStrictCoproductCompletionOfUnderlyingCategory",
               "CategoryOfColimitQuiversOfUnderlyingCategory",
+              "CategoryOfPreSheavesOfUnderlyingCategory",
               ] );
     
     if ValueOption( "no_precompiled_code" ) <> true then
@@ -320,6 +321,16 @@ InstallMethod( CategoryOfColimitQuiversOfUnderlyingCategory,
   function( C_hat )
     
     return CategoryOfColimitQuivers( UnderlyingCategory( C_hat ) );
+    
+end );
+
+##
+InstallMethod( CategoryOfPreSheavesOfUnderlyingCategory,
+        [ IsFiniteColimitCompletionWithStrictCoproducts ],
+        
+  function( C_hat )
+    
+    return PreSheaves( UnderlyingCategory( C_hat ) );
     
 end );
 

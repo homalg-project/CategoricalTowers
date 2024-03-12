@@ -144,6 +144,21 @@ DeclareOperation( "AsColimitCompletionMorphism",
         [ IsFiniteColimitCompletionWithStrictCoproducts, IsCapCategoryMorphism ] );
 
 #! @Description
+#!  Given the finite colimit completion category <A>C_hat</A>=<C>FiniteColimitCompletionWithStrictCoproducts</C>( $C$ )
+#!  of a $V$-enriched category $C$, return the associated category <C>PreSheaves</C>( $C$, $V$ ) of presheaves.
+#! @Arguments C_hat
+#! @Returns a &CAP; category
+DeclareAttribute( "CategoryOfPreSheavesOfUnderlyingCategory",
+        IsFiniteColimitCompletionWithStrictCoproducts );
+
+CapJitAddTypeSignature( "CategoryOfPreSheavesOfUnderlyingCategory", [ IsFiniteColimitCompletionWithStrictCoproducts ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( CategoryOfPreSheavesOfUnderlyingCategory( input_types[1].category ) );
+    
+end );
+
+#! @Description
 #!  The input is an object <A>coequalizer_object</A> in the category of finite colimit completion of a category.
 #!  The output is the corresponding colimit quiver.
 #! @Arguments coequalizer_object
