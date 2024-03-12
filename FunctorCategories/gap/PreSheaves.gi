@@ -3195,18 +3195,21 @@ InstallMethod( EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheaves,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerPair,
-        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+InstallOtherMethodForCompilerForCAP( AssociatedCoequalizerPairInPreSheaves,
+        "for the finite colimit completion of a category and an object therein",
+        [ IsFiniteColimitCompletionWithStrictCoproducts, IsObjectInFiniteColimitCompletionWithStrictCoproducts ],
         
-  function ( PSh, F )
-    local F_VAst, V, A, s, t, Yoneda, Y_V, Y_A;
+  function( C_hat, coequalizer_object )
+    local F_VAst, V, A, s, t, PSh, Yoneda, Y_V, Y_A;
     
-    F_VAst := ObjectDatum( FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh ), CoYonedaLemmaOnObjects( PSh, F ) );
+    F_VAst := ObjectDatum( C_hat, coequalizer_object );
     
     V := F_VAst[1][1];
     A := F_VAst[1][2];
     s := F_VAst[2][1];
     t := F_VAst[2][2];
+    
+    PSh := CategoryOfPreSheavesOfUnderlyingCategory( C_hat );
     
     Yoneda := EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheavesData( PSh )[2];
     
@@ -3216,6 +3219,30 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerPair,
     return Pair( Y_V,
                  Pair( Yoneda[2]( Y_A, s, Y_V ),
                        Yoneda[2]( Y_A, t, Y_V ) ) );
+    
+end );
+
+##
+InstallMethod( AssociatedCoequalizerPairInPreSheaves,
+        "for an object in the finite colimit completion of a category",
+        [ IsObjectInFiniteColimitCompletionWithStrictCoproducts ],
+        
+  function( coequalizer_object )
+    
+    return AssociatedCoequalizerPairInPreSheaves( CapCategory( coequalizer_object ), coequalizer_object );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerPair,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh, F )
+    local C_hat;
+    
+    C_hat := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
+    
+    return AssociatedCoequalizerPairInPreSheaves( C_hat, CoYonedaLemmaOnObjects( PSh, F ) );
     
 end );
 

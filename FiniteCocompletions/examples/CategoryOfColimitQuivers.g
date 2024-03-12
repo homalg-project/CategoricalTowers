@@ -1,7 +1,7 @@
 #! @BeginChunk CategoryOfColimitQuivers
 
 #! @Example
-LoadPackage( "FunctorCategories", ">= 2023.11-07", false );
+LoadPackage( "FunctorCategories", ">= 2024.03-17", false );
 #! true
 FinBouquets;
 #! FinBouquets
@@ -52,6 +52,18 @@ Display( F );
 F_as_presheaf := ModelingObject( Chat, ModelingObject( FinBouquets, F ) );
 #! <An object in PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ),
 #!  SkeletalFinSets )>
+Display( F_as_presheaf );
+#! Image of <(P)>:
+#! { 0, 1, 2 }
+#! 
+#! Image of <(L)>:
+#! { 0,..., 3 }
+#! 
+#! Image of (P)-[(b)]->(L):
+#! { 0,..., 3 } ⱶ[ 0, 0, 0, 2 ]→ { 0, 1, 2 }
+#! 
+#! An object in PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ),
+#! SkeletalFinSets ) given by the above data
 F_as_coequalizer_object := CoYonedaLemmaOnObjects( F_as_presheaf );
 #! <An object in FiniteColimitCompletionWithStrictCoproducts(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
@@ -103,6 +115,9 @@ Display( F_as_coequalizer_object );
 #! 
 #! An object in FiniteColimitCompletionWithStrictCoproducts(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
+F_as_presheaf =
+  Coequalizer( AssociatedCoequalizerPairInPreSheaves( F_as_coequalizer_object )[2] );
+#! true
 F_as_colimit_quiver := AssociatedColimitQuiver( F_as_coequalizer_object );
 #! <An object in CategoryOfColimitQuivers(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>

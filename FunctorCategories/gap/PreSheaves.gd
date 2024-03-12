@@ -390,6 +390,10 @@ DeclareAttribute( "CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma",
         IsObjectInPreSheafCategory );
 
 #! @Arguments F
+DeclareAttribute( "AssociatedCoequalizerPairInPreSheaves",
+        IsObjectInFiniteColimitCompletionWithStrictCoproducts );
+
+#! @Arguments F
 DeclareAttribute( "OptimizedCoYonedaLemmaCoequalizerPair",
         IsObjectInPreSheafCategory );
 
