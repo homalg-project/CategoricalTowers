@@ -248,6 +248,7 @@ InstallMethod( CategoryOfColimitQuivers,
     Append( ColimitQuivers!.compiler_hints.category_attribute_names,
             [ "UnderlyingCategory",
               "FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory",
+              "CategoryOfPreSheavesOfUnderlyingCategory",
               ] );
     
     if ValueOption( "no_precompiled_code" ) <> true then
@@ -335,6 +336,16 @@ InstallMethod( FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory,
   function( ColimitQuiversC )
     
     return FiniteColimitCompletionWithStrictCoproducts( UnderlyingCategory( ColimitQuiversC ) );
+    
+end );
+
+##
+InstallMethod( CategoryOfPreSheavesOfUnderlyingCategory,
+        [ IsCategoryOfColimitQuivers ],
+        
+  function( ColimitQuiversC )
+    
+    return PreSheaves( UnderlyingCategory( ColimitQuiversC ) );
     
 end );
 

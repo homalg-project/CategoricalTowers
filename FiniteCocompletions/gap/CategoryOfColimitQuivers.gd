@@ -147,3 +147,18 @@ DeclareOperation( "CreateColimitQuiver",
 #! @Returns a colimit quiver morphism
 DeclareOperation( "CreateMorphismOfColimitQuivers",
         [ IsObjectInCategoryOfColimitQuivers, IsList, IsObjectInCategoryOfColimitQuivers ] );
+
+#! @Description
+#!  Given the category <A>ColimitQuiversC</A>=<C>CategoryOfColimitQuivers</C>( $C$ ) of colimit quivers
+#!  in a $V$-enriched category $C$, return the associated category <C>PreSheaves</C>( $C$, $V$ ) of presheaves.
+#! @Arguments ColimitQuiversC
+#! @Returns a &CAP; category
+DeclareAttribute( "CategoryOfPreSheavesOfUnderlyingCategory",
+        IsCategoryOfColimitQuivers );
+
+CapJitAddTypeSignature( "CategoryOfPreSheavesOfUnderlyingCategory", [ IsCategoryOfColimitQuivers ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( CategoryOfPreSheavesOfUnderlyingCategory( input_types[1].category ) );
+    
+end );
