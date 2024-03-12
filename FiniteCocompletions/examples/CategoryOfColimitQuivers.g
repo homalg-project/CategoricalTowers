@@ -1,7 +1,7 @@
 #! @BeginChunk CategoryOfColimitQuivers
 
 #! @Example
-LoadPackage( "FunctorCategories", ">= 2024.03-17", false );
+LoadPackage( "FunctorCategories", ">= 2024.03-18", false );
 #! true
 FinBouquets;
 #! FinBouquets
@@ -128,5 +128,8 @@ Display( F_as_colimit_quiver );
 #! 
 #! An object in CategoryOfColimitQuivers(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
+F_as_presheaf =
+  Coequalizer( AssociatedCoequalizerPairInPreSheaves( F_as_colimit_quiver )[2] );
+#! true
 #! @EndExample
 #! @EndChunk

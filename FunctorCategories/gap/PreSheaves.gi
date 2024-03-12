@@ -3196,6 +3196,51 @@ end );
 
 ##
 InstallOtherMethodForCompilerForCAP( AssociatedCoequalizerPairInPreSheaves,
+        "for a category of colimit quivers and an object therein",
+        [ IsCategoryOfColimitQuivers, IsObjectInCategoryOfColimitQuivers ],
+        
+  function( ColimitQuiversC, colimit_quiver )
+    local ParallelPairs, PSh_VA, F_VAst, V, A, s, t, PSh, Yoneda, Y_V, Y_A;
+    
+    ParallelPairs := ModelingCategory( ColimitQuiversC );
+    
+    PSh_VA := ModelingCategory( ParallelPairs );
+    
+    F_VAst := ObjectDatum( PSh_VA,
+                      ModelingObject( ParallelPairs,
+                              ModelingObject( ColimitQuiversC, colimit_quiver ) ) );
+    
+    V := F_VAst[1][1];
+    A := F_VAst[1][2];
+    s := F_VAst[2][1];
+    t := F_VAst[2][2];
+    
+    PSh := CategoryOfPreSheavesOfUnderlyingCategory( ColimitQuiversC );
+    
+    Yoneda := EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheavesData( PSh )[2];
+    
+    Y_V := Yoneda[1]( V );
+    Y_A := Yoneda[1]( A );
+    
+    return Pair( Y_V,
+                 Pair( Yoneda[2]( Y_A, s, Y_V ),
+                       Yoneda[2]( Y_A, t, Y_V ) ) );
+    
+end );
+
+##
+InstallMethod( AssociatedCoequalizerPairInPreSheaves,
+        "for a colimit quiver in a category",
+        [ IsObjectInCategoryOfColimitQuivers ],
+        
+  function ( F )
+    
+    return AssociatedCoequalizerPairInPreSheaves( CapCategory( F ), F );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( AssociatedCoequalizerPairInPreSheaves,
         "for the finite colimit completion of a category and an object therein",
         [ IsFiniteColimitCompletionWithStrictCoproducts, IsObjectInFiniteColimitCompletionWithStrictCoproducts ],
         
