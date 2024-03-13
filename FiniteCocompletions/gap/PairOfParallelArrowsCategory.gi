@@ -16,7 +16,7 @@ InstallMethod( PairOfParallelArrowsCategory,
   function ( C )
     local object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
-          F, PSh,
+          F, PSh_VA,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           ParallelPairs;
@@ -68,14 +68,14 @@ InstallMethod( PairOfParallelArrowsCategory,
     
     F := CategoryFromDataTables( F : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
     
-    PSh := PreSheaves( F, C : FinalizeCategory := true );
+    PSh_VA := PreSheaves( F, C : FinalizeCategory := true );
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
       function( ParallelPairs, pair_of_pairs )
-        local PSh, A, V, s, t;
+        local PSh_VA, A, V, s, t;
         
-        PSh := ModelingCategory( ParallelPairs );
+        PSh_VA := ModelingCategory( ParallelPairs );
         
         V := pair_of_pairs[1][1];
         A := pair_of_pairs[1][2];
@@ -83,19 +83,19 @@ InstallMethod( PairOfParallelArrowsCategory,
         s := pair_of_pairs[2][1];
         t := pair_of_pairs[2][2];
         
-        return ObjectConstructor( PSh, Pair( [ V, A ], [ s, t ] ) );
+        return ObjectConstructor( PSh_VA, Pair( [ V, A ], [ s, t ] ) );
         
     end;
     
     ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
       function( ParallelPairs, obj )
-        local PSh, VAst, VA, st;
+        local PSh_VA, VAst, VA, st;
         
-        PSh := ModelingCategory( ParallelPairs );
+        PSh_VA := ModelingCategory( ParallelPairs );
         
         ## Pair( [ V, A ], [ s, t ] )
-        VAst := ObjectDatum( PSh, obj );
+        VAst := ObjectDatum( PSh_VA, obj );
         
         VA := VAst[1];
         st := VAst[2];
@@ -108,14 +108,14 @@ InstallMethod( PairOfParallelArrowsCategory,
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
       function( ParallelPairs, source, pair, target )
-        local PSh, V, A;
+        local PSh_VA, V, A;
         
-        PSh := ModelingCategory( ParallelPairs );
+        PSh_VA := ModelingCategory( ParallelPairs );
         
         V := pair[1];
         A := pair[2];
         
-        return MorphismConstructor( PSh,
+        return MorphismConstructor( PSh_VA,
                        source,
                        [ V, A ], ## convert from pair to list for CompilerForCAP
                        target );
@@ -125,11 +125,11 @@ InstallMethod( PairOfParallelArrowsCategory,
     ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
       function( ParallelPairs, mor )
-        local PSh, mor_datum;
+        local PSh_VA, mor_datum;
         
-        PSh := ModelingCategory( ParallelPairs );
+        PSh_VA := ModelingCategory( ParallelPairs );
         
-        mor_datum := MorphismDatum( PSh, mor );
+        mor_datum := MorphismDatum( PSh_VA, mor );
         
         return Pair( mor_datum[1], mor_datum[2] ); ## convert from list to pair for CompilerForCAP
         
@@ -140,7 +140,7 @@ InstallMethod( PairOfParallelArrowsCategory,
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
     ParallelPairs :=
-      ReinterpretationOfCategory( PSh,
+      ReinterpretationOfCategory( PSh_VA,
               rec( name := Concatenation( "PairOfParallelArrowsCategory( ", Name( C ), " )" ),
                    category_filter := IsPairOfParallelArrowsCategory,
                    category_object_filter := IsObjectInPairOfParallelArrowsCategory,

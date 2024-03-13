@@ -1307,13 +1307,13 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             end );
             
             Append( PSh!.compiler_hints.category_attribute_names,
-                    [ "AssociatedFiniteStrictCoproductCompletionOfSourceCategory",
-                      "AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory",
+                    [ "FiniteStrictCoproductCompletionOfSourceCategory",
+                      "FiniteColimitCompletionWithStrictCoproductsOfSourceCategory",
                       ] );
             
             if not (HasIsAbCategory and IsAbCategory)( B ) then
                 Append( PSh!.compiler_hints.category_attribute_names,
-                    [ "AssociatedCategoryOfColimitQuiversOfSourceCategory",
+                    [ "CategoryOfColimitQuiversOfSourceCategory",
                       ] );
             fi;
             
@@ -2385,7 +2385,7 @@ InstallMethod( PreSheaves,
 end );
 
 ##
-InstallMethod( AssociatedFiniteStrictCoproductCompletionOfSourceCategory,
+InstallMethod( FiniteStrictCoproductCompletionOfSourceCategory,
         [ IsPreSheafCategory ],
         
   function( PSh )
@@ -2395,7 +2395,7 @@ InstallMethod( AssociatedFiniteStrictCoproductCompletionOfSourceCategory,
 end );
 
 ##
-InstallMethod( AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory,
+InstallMethod( FiniteColimitCompletionWithStrictCoproductsOfSourceCategory,
         [ IsPreSheafCategory ],
         
   function( PSh )
@@ -2405,7 +2405,7 @@ InstallMethod( AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCate
 end );
 
 ##
-InstallMethod( AssociatedCategoryOfColimitQuiversOfSourceCategory,
+InstallMethod( CategoryOfColimitQuiversOfSourceCategory,
         [ IsPreSheafCategory ],
         
   function( PSh )
@@ -2885,7 +2885,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     objs := SetOfObjects( C );
     mors := SetOfGeneratingMorphisms( C );
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     F_vals := ValuesOfPreSheaf( F );
     
@@ -2964,7 +2964,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
                  V_list_of_objects_in_UC,
                  V );
     
-    C_hat := AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
+    C_hat := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
     return ObjectConstructor( C_hat,
                    Pair( Pair( V, A ), Pair( s, t ) ) );
@@ -3020,9 +3020,9 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
     F_vals := ValuesOfPreSheaf( F );
     G_vals := ValuesOfPreSheaf( G );
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
-    C_hat := AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
+    C_hat := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
     coYo_F_VA := ObjectDatum( C_hat, source )[1];
     coYo_G_VA := ObjectDatum( C_hat, range )[1];
@@ -3145,7 +3145,7 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingCoYonedaLemma
   function ( PSh, F )
     local F_VAst;
     
-    F_VAst := ObjectDatum( AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh ), CoYonedaLemmaOnObjects( PSh, F ) );
+    F_VAst := ObjectDatum( FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh ), CoYonedaLemmaOnObjects( PSh, F ) );
     
     return Pair( F_VAst[1][1],
                  [ F_VAst[2][1], F_VAst[2][2] ] ); ## turn the pair F_VAst[2] into a list
@@ -3169,7 +3169,7 @@ InstallMethodForCompilerForCAP( EmbeddingFunctorOfFiniteStrictCoproductCompletio
   function ( PSh )
     local UC;
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     return ExtendFunctorToFiniteStrictCoproductCompletionData( UC, YonedaEmbeddingDataOfSourceCategory( PSh ), PSh );
     
@@ -3195,18 +3195,27 @@ InstallMethod( EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheaves,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerPair,
-        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+InstallOtherMethodForCompilerForCAP( AssociatedCoequalizerPairInPreSheaves,
+        "for a category of colimit quivers and an object therein",
+        [ IsCategoryOfColimitQuivers, IsObjectInCategoryOfColimitQuivers ],
         
-  function ( PSh, F )
-    local F_VAst, V, A, s, t, Yoneda, Y_V, Y_A;
+  function( ColimitQuiversC, colimit_quiver )
+    local ParallelPairs, PSh_VA, F_VAst, V, A, s, t, PSh, Yoneda, Y_V, Y_A;
     
-    F_VAst := ObjectDatum( AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh ), CoYonedaLemmaOnObjects( PSh, F ) );
+    ParallelPairs := ModelingCategory( ColimitQuiversC );
+    
+    PSh_VA := ModelingCategory( ParallelPairs );
+    
+    F_VAst := ObjectDatum( PSh_VA,
+                      ModelingObject( ParallelPairs,
+                              ModelingObject( ColimitQuiversC, colimit_quiver ) ) );
     
     V := F_VAst[1][1];
     A := F_VAst[1][2];
     s := F_VAst[2][1];
     t := F_VAst[2][2];
+    
+    PSh := CategoryOfPreSheavesOfUnderlyingCategory( ColimitQuiversC );
     
     Yoneda := EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheavesData( PSh )[2];
     
@@ -3216,6 +3225,69 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerPair,
     return Pair( Y_V,
                  Pair( Yoneda[2]( Y_A, s, Y_V ),
                        Yoneda[2]( Y_A, t, Y_V ) ) );
+    
+end );
+
+##
+InstallMethod( AssociatedCoequalizerPairInPreSheaves,
+        "for a colimit quiver in a category",
+        [ IsObjectInCategoryOfColimitQuivers ],
+        
+  function ( F )
+    
+    return AssociatedCoequalizerPairInPreSheaves( CapCategory( F ), F );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( AssociatedCoequalizerPairInPreSheaves,
+        "for the finite colimit completion of a category and an object therein",
+        [ IsFiniteColimitCompletionWithStrictCoproducts, IsObjectInFiniteColimitCompletionWithStrictCoproducts ],
+        
+  function( C_hat, coequalizer_object )
+    local F_VAst, V, A, s, t, PSh, Yoneda, Y_V, Y_A;
+    
+    F_VAst := ObjectDatum( C_hat, coequalizer_object );
+    
+    V := F_VAst[1][1];
+    A := F_VAst[1][2];
+    s := F_VAst[2][1];
+    t := F_VAst[2][2];
+    
+    PSh := CategoryOfPreSheavesOfUnderlyingCategory( C_hat );
+    
+    Yoneda := EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheavesData( PSh )[2];
+    
+    Y_V := Yoneda[1]( V );
+    Y_A := Yoneda[1]( A );
+    
+    return Pair( Y_V,
+                 Pair( Yoneda[2]( Y_A, s, Y_V ),
+                       Yoneda[2]( Y_A, t, Y_V ) ) );
+    
+end );
+
+##
+InstallMethod( AssociatedCoequalizerPairInPreSheaves,
+        "for an object in the finite colimit completion of a category",
+        [ IsObjectInFiniteColimitCompletionWithStrictCoproducts ],
+        
+  function( coequalizer_object )
+    
+    return AssociatedCoequalizerPairInPreSheaves( CapCategory( coequalizer_object ), coequalizer_object );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerPair,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh, F )
+    local C_hat;
+    
+    C_hat := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
+    
+    return AssociatedCoequalizerPairInPreSheaves( C_hat, CoYonedaLemmaOnObjects( PSh, F ) );
     
 end );
 
@@ -3844,7 +3916,7 @@ InstallOtherMethodForCompilerForCAP( SectionAndComplementByCoveringListOfReprese
     
     objs := SetOfObjects( C );
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     F_on_objs := ObjectDatum( PSh, F )[1];
     
@@ -3975,9 +4047,9 @@ InstallOtherMethodForCompilerForCAP( RetractionByCoveringListOfRepresentables,
           section_complement, section, complement, summands, iso, inv,
           lift_on_O, lift_on_complement, lift, map, mor, lift_t_idV, retraction;
     
-    CoequalizerPairs := AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
+    CoequalizerPairs := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     coYoF := CoYonedaLemmaOnObjects( PSh, F );
     
@@ -4066,9 +4138,9 @@ InstallOtherMethodForCompilerForCAP( RetractionByCoveringListOfRepresentables,
     local CoequalizerPairs, UC, coYoneda, F_VAst, V, A, s, t,
           section_complement, section, complement, summands, iso, inv, O, O_A, alpha, lift, retraction;
     
-    CoequalizerPairs := AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
+    CoequalizerPairs := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     coYoneda := CoYonedaLemmaOnObjects( PSh, F );
     
@@ -4152,9 +4224,9 @@ InstallOtherMethodForCompilerForCAP( OptimizedCoYonedaLemmaOnObjects,
    function ( PSh, F )
     local ColimitCompletionC, UC, F_VAst, H, retraction;
     
-    ColimitCompletionC := AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
+    ColimitCompletionC := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     F_VAst := ObjectDatum( ColimitCompletionC, CoYonedaLemmaOnObjects( PSh, F ) );
     
@@ -4186,7 +4258,7 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingOptimizedCoYo
   function ( PSh, F )
     local F_VAst;
     
-    F_VAst := ObjectDatum( AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh ), OptimizedCoYonedaLemmaOnObjects( PSh, F ) );
+    F_VAst := ObjectDatum( FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh ), OptimizedCoYonedaLemmaOnObjects( PSh, F ) );
     
     return Pair( F_VAst[1][1],
                  [ F_VAst[2][1], F_VAst[2][2] ] ); ## turn the pair F_VAst[2] into a list for Coequalizer
@@ -4210,7 +4282,7 @@ InstallOtherMethodForCompilerForCAP( OptimizedCoYonedaLemmaCoequalizerPair,
   function ( PSh, F )
     local F_VAst, V, A, s, t, Yoneda, Y_V, Y_A;
     
-    F_VAst := ObjectDatum( AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh ), OptimizedCoYonedaLemmaOnObjects( PSh, F ) );
+    F_VAst := ObjectDatum( FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh ), OptimizedCoYonedaLemmaOnObjects( PSh, F ) );
     
     V := F_VAst[1][1];
     A := F_VAst[1][2];
@@ -4249,7 +4321,7 @@ InstallMethodForCompilerForCAP( ApplyPreSheafToObjectInFiniteStrictCoproductComp
     ## this code should be produced by something similar to ExtendFunctorToFiniteStrictProductCompletion:
     ## Apply Hom(-,G) to an object (in UC)
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     object_data := ObjectDatum( UC, object );
     
@@ -4269,7 +4341,7 @@ InstallMethodForCompilerForCAP( ApplyPreSheafToMorphismInFiniteStrictCoproductCo
     ## this code should be produced by something similar to ExtendFunctorToFiniteStrictProductCompletion:
     ## Apply Hom(-,G) to a morphism (in UC)
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     G_on_source_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, Source( morphism ) );
     G_on_range_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, Target( morphism ) );

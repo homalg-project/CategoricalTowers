@@ -44,6 +44,29 @@ DeclareCategory( "IsMorphismInCategoryOfColimitQuivers",
 #
 ####################################
 
+#! @Description
+#!  Return the category $C$ underlying the category of colimit quivers
+#!  <A>ColimitQuivers</A> := <C>CategoryOfColimitQuivers</C>( $C$ ).
+#! @Arguments ColimitQuivers
+DeclareAttribute( "UnderlyingCategory",
+        IsCategoryOfColimitQuivers );
+
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsCategoryOfColimitQuivers ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
+#! @Description
+#!  The full embedding functor from the category $C$ underlying
+#!  the category of colimit quivers
+#!  <A>ColimitQuivers</A> into <A>ColimitQuivers</A>.
+#! @Arguments ColimitQuivers
+#! @Returns a &CAP; functor
+DeclareAttribute( "EmbeddingOfUnderlyingCategory",
+        IsCategoryOfColimitQuivers );
+
 #! @Arguments colimit_quiver
 DeclareAttribute( "DefiningPairOfColimitQuiver",
         IsObjectInCategoryOfColimitQuivers );
@@ -80,6 +103,21 @@ CapJitAddTypeSignature( "DefiningPairOfColimitQuiverMorphism", [ IsMorphismInCat
     
 end );
 
+#! @Description
+#!  Given the presheaf category <A>PSh</A>=<C>PreSheaves</C>( $C$, $V$ ), return
+#!  the ambient category <C>CoequalizerCompletion</C>( <C>AssociatedFiniteStrictCoproductCompletionOfSourceCategory</C>( <A>PSh</A> ) ).
+#! @Arguments PSh
+#! @Returns a &CAP; category
+DeclareAttribute( "FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory",
+        IsCategoryOfColimitQuivers );
+
+CapJitAddTypeSignature( "FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory", [ IsCategoryOfColimitQuivers ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 ####################################
 #
 #! @Section Constructors
@@ -111,24 +149,16 @@ DeclareOperation( "CreateMorphismOfColimitQuivers",
         [ IsObjectInCategoryOfColimitQuivers, IsList, IsObjectInCategoryOfColimitQuivers ] );
 
 #! @Description
-#!  Return the category $C$ underlying the category of colimit quivers
-#!  <A>ColimitQuivers</A> := <C>CategoryOfColimitQuivers</C>( $C$ ).
-#! @Arguments ColimitQuivers
-DeclareAttribute( "UnderlyingCategory",
+#!  Given the category <A>ColimitQuiversC</A>=<C>CategoryOfColimitQuivers</C>( $C$ ) of colimit quivers
+#!  in a $V$-enriched category $C$, return the associated category <C>PreSheaves</C>( $C$, $V$ ) of presheaves.
+#! @Arguments ColimitQuiversC
+#! @Returns a &CAP; category
+DeclareAttribute( "CategoryOfPreSheavesOfUnderlyingCategory",
         IsCategoryOfColimitQuivers );
 
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsCategoryOfColimitQuivers ],
+CapJitAddTypeSignature( "CategoryOfPreSheavesOfUnderlyingCategory", [ IsCategoryOfColimitQuivers ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( CategoryOfPreSheavesOfUnderlyingCategory( input_types[1].category ) );
     
 end );
-
-#! @Description
-#!  The full embedding functor from the category $C$ underlying
-#!  the category of colimit quivers
-#!  <A>ColimitQuivers</A> into <A>ColimitQuivers</A>.
-#! @Arguments ColimitQuivers
-#! @Returns a &CAP; functor
-DeclareAttribute( "EmbeddingOfUnderlyingCategory",
-        IsCategoryOfColimitQuivers );

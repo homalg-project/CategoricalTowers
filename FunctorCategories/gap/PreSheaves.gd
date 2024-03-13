@@ -137,14 +137,14 @@ DeclareAttribute( "NerveTruncatedInDegree2", IsCapCategory );
 DeclareAttribute( "SievesOfPathsToTruth", IsMorphismInPreSheafCategory );
 
 #! @Description
-#!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
+#!  Given the presheaf category <A>PSh</A>=<C>PreSheaves</C>( $C$, $V$ ), return
 #!  the "sub"category <C>EnrichmentSpecificFiniteStrictCoproductCompletion</C>( $C$ ).
 #! @Arguments PSh
 #! @Returns a &CAP; category
-DeclareAttribute( "AssociatedFiniteStrictCoproductCompletionOfSourceCategory",
+DeclareAttribute( "FiniteStrictCoproductCompletionOfSourceCategory",
         IsPreSheafCategory );
 
-CapJitAddTypeSignature( "AssociatedFiniteStrictCoproductCompletionOfSourceCategory", [ IsPreSheafCategory ],
+CapJitAddTypeSignature( "FiniteStrictCoproductCompletionOfSourceCategory", [ IsPreSheafCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( EnrichmentSpecificFiniteStrictCoproductCompletion( Source( input_types[1].category ) ) );
@@ -152,30 +152,30 @@ CapJitAddTypeSignature( "AssociatedFiniteStrictCoproductCompletionOfSourceCatego
 end );
 
 #! @Description
-#!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
-#!  the ambient category <C>CoequalizerCompletion</C>( <C>AssociatedFiniteStrictCoproductCompletionOfSourceCategory</C>( <A>PSh</A> ) ).
+#!  Given the presheaf category <A>PSh</A>=<C>PreSheaves</C>( $C$, $V$ ), return
+#!  the ambient category <C>CoequalizerCompletion</C>( <C>FiniteStrictCoproductCompletionOfSourceCategory</C>( <A>PSh</A> ) ).
 #! @Arguments PSh
 #! @Returns a &CAP; category
-DeclareAttribute( "AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory",
+DeclareAttribute( "FiniteColimitCompletionWithStrictCoproductsOfSourceCategory",
         IsPreSheafCategory );
 
-CapJitAddTypeSignature( "AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory", [ IsPreSheafCategory ],
+CapJitAddTypeSignature( "FiniteColimitCompletionWithStrictCoproductsOfSourceCategory", [ IsPreSheafCategory ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( CoequalizerCompletion( AssociatedFiniteStrictCoproductCompletionOfSourceCategory( input_types[1].category ) ) );
+    return CapJitDataTypeOfCategory( FiniteColimitCompletionWithStrictCoproducts( Source( input_types[1].category ) ) );
     
 end );
 
 #! @Description
-#!  Given the presheaf category <A>PSh</A>=<C>PSh</C>($C,V$) return
+#!  Given the presheaf category <A>PSh</A>=<C>PreSheaves</C>( $C$, $V$ ) return
 #!  the ambient category <C>CategoryOfColimitQuivers</C>( $C$ ), provided
 #!  $C$ is enriched over <C>SkeletalFinSets</C>.
 #! @Arguments PSh
 #! @Returns a &CAP; category
-DeclareAttribute( "AssociatedCategoryOfColimitQuiversOfSourceCategory",
+DeclareAttribute( "CategoryOfColimitQuiversOfSourceCategory",
         IsPreSheafCategory );
 
-CapJitAddTypeSignature( "AssociatedCategoryOfColimitQuiversOfSourceCategory", [ IsPreSheafCategory ],
+CapJitAddTypeSignature( "CategoryOfColimitQuiversOfSourceCategory", [ IsPreSheafCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( CategoryOfColimitQuivers( Source( input_types[1].category ) ) );
@@ -388,6 +388,14 @@ DeclareAttribute( "OptimizedCoYonedaLemmaOnMorphisms",
 #! @Arguments F
 DeclareAttribute( "CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma",
         IsObjectInPreSheafCategory );
+
+#! @Arguments F
+DeclareAttribute( "AssociatedCoequalizerPairInPreSheaves",
+        IsObjectInCategoryOfColimitQuivers );
+
+#! @Arguments F
+DeclareAttribute( "AssociatedCoequalizerPairInPreSheaves",
+        IsObjectInFiniteColimitCompletionWithStrictCoproducts );
 
 #! @Arguments F
 DeclareAttribute( "OptimizedCoYonedaLemmaCoequalizerPair",

@@ -108,6 +108,22 @@ CapJitAddTypeSignature( "DefiningPairOfMorphismBetweenCoequalizerPairs", [ IsMor
     
 end );
 
+#! @Description
+#!  Given the presheaf category <A>PSh</A>=<C>PreSheaves</C>( $C$, $V$ ) return
+#!  the ambient category <C>CategoryOfColimitQuivers</C>( $C$ ), provided
+#!  $C$ is enriched over <C>SkeletalFinSets</C>.
+#! @Arguments PSh
+#! @Returns a &CAP; category
+DeclareAttribute( "CategoryOfColimitQuiversOfUnderlyingCategory",
+        IsFiniteColimitCompletionWithStrictCoproducts );
+
+CapJitAddTypeSignature( "CategoryOfColimitQuiversOfUnderlyingCategory", [ IsFiniteColimitCompletionWithStrictCoproducts ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( CategoryOfColimitQuiversOfUnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 ####################################
 #
 #! @Section Constructors
@@ -128,9 +144,24 @@ DeclareOperation( "AsColimitCompletionMorphism",
         [ IsFiniteColimitCompletionWithStrictCoproducts, IsCapCategoryMorphism ] );
 
 #! @Description
-#!  The input is an object <A>coequalizer_pair</A> in the category of finite colimit completion of a category.
+#!  Given the finite colimit completion category <A>C_hat</A>=<C>FiniteColimitCompletionWithStrictCoproducts</C>( $C$ )
+#!  of a $V$-enriched category $C$, return the associated category <C>PreSheaves</C>( $C$, $V$ ) of presheaves.
+#! @Arguments C_hat
+#! @Returns a &CAP; category
+DeclareAttribute( "CategoryOfPreSheavesOfUnderlyingCategory",
+        IsFiniteColimitCompletionWithStrictCoproducts );
+
+CapJitAddTypeSignature( "CategoryOfPreSheavesOfUnderlyingCategory", [ IsFiniteColimitCompletionWithStrictCoproducts ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( CategoryOfPreSheavesOfUnderlyingCategory( input_types[1].category ) );
+    
+end );
+
+#! @Description
+#!  The input is an object <A>coequalizer_object</A> in the category of finite colimit completion of a category.
 #!  The output is the corresponding colimit quiver.
-#! @Arguments coequalizer_pair
+#! @Arguments coequalizer_object
 #! @Returns a colimit quiver
 DeclareAttribute( "AssociatedColimitQuiver",
         IsObjectInFiniteColimitCompletionWithStrictCoproducts );
