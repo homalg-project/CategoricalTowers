@@ -143,6 +143,7 @@ InstallMethod( FiniteColimitCompletionWithStrictCoproducts,
     Append( ColimitCompletion!.compiler_hints.category_attribute_names,
             [ "UnderlyingCategory",
               "FiniteStrictCoproductCompletionOfUnderlyingCategory",
+              "CategoryOfColimitQuiversOfUnderlyingCategory",
               ] );
     
     if ValueOption( "no_precompiled_code" ) <> true then
@@ -313,16 +314,34 @@ InstallMethod( \.,
 end );
 
 ##
+InstallMethod( CategoryOfColimitQuiversOfUnderlyingCategory,
+        [ IsFiniteColimitCompletionWithStrictCoproducts ],
+        
+  function( C_hat )
+    
+    return CategoryOfColimitQuivers( UnderlyingCategory( C_hat ) );
+    
+end );
+
+##
 InstallOtherMethodForCompilerForCAP( AssociatedColimitQuiver,
         "for the category of finite colimit completion of a category and an object therein",
-        [ IsFiniteColimitCompletionWithStrictCoproducts, IsObjectInFiniteColimitCompletionWithStrictCoproducts, IsCategoryOfColimitQuivers ],
+        [ IsFiniteColimitCompletionWithStrictCoproducts, IsObjectInFiniteColimitCompletionWithStrictCoproducts ],
         
-  function( ColimitCompletionC, coequalizer_object, ColimitQuiversC )
+  function( ColimitCompletionC, coequalizer_object )
+    local ColimitQuiversC, Coeq, Quot;
+    
+    ColimitQuiversC := CategoryOfColimitQuiversOfUnderlyingCategory( ColimitCompletionC );
+    
+    Coeq := ModelingCategory( ColimitCompletionC );
+    
+    Quot := ModelingCategory( Coeq );
     
     return ReinterpretationOfObject( ColimitQuiversC,
-                   ObjectDatum( ModelingObject( ModelingCategory( ColimitCompletionC ),
-                           ModelingObject( ColimitCompletionC,
-                                   coequalizer_object ) ) ) );
+                   ObjectDatum( Quot,
+                           ModelingObject( Coeq,
+                                   ModelingObject( ColimitCompletionC,
+                                           coequalizer_object ) ) ) );
     
 end );
 
@@ -332,15 +351,8 @@ InstallMethod( AssociatedColimitQuiver,
         [ IsObjectInFiniteColimitCompletionWithStrictCoproducts ],
         
   function( coequalizer_object )
-    local ColimitCompletionC, C, ColimitQuiversC;
     
-    ColimitCompletionC := CapCategory( coequalizer_object );
-    
-    C := UnderlyingCategory( ColimitCompletionC );
-    
-    ColimitQuiversC := CategoryOfColimitQuivers( C );
-    
-    return AssociatedColimitQuiver( ColimitCompletionC, coequalizer_object, ColimitQuiversC );
+    return AssociatedColimitQuiver( CapCategory( coequalizer_object ), coequalizer_object );
     
 end );
 
