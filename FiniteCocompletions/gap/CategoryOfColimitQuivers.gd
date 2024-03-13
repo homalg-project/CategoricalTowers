@@ -103,6 +103,21 @@ CapJitAddTypeSignature( "DefiningPairOfColimitQuiverMorphism", [ IsMorphismInCat
     
 end );
 
+#! @Description
+#!  Given the presheaf category <A>PSh</A>=<C>PreSheaves</C>( $C$, $V$ ), return
+#!  the ambient category <C>CoequalizerCompletion</C>( <C>AssociatedFiniteStrictCoproductCompletionOfSourceCategory</C>( <A>PSh</A> ) ).
+#! @Arguments PSh
+#! @Returns a &CAP; category
+DeclareAttribute( "FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory",
+        IsCategoryOfColimitQuivers );
+
+CapJitAddTypeSignature( "FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory", [ IsCategoryOfColimitQuivers ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 ####################################
 #
 #! @Section Constructors
