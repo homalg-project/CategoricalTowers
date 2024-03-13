@@ -51,7 +51,7 @@ InstallMethodForCompilerForCAP( ExternalHomOnMorphismsEqualizerFunctorialDataUsi
           eta_coequalizer_object_morphism, eta_coequalizer_object_as_presheaf_morphism_datum,
           S, eta_V_S, F_data, F_V, F_V_data, diagram_F_V_S, T, diagram_F_V_T, D, F_V_rho;
     
-    colimit_completion_C := AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
+    colimit_completion_C := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
     UC := FiniteStrictCoproductCompletionOfUnderlyingCategory( colimit_completion_C );
     
