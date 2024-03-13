@@ -25,8 +25,11 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7C701DBF7BAE649A">6.1 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E77BDC07B01344C">6.1-1 DefiningPairOfColimitQuiver</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8143F3937F43AB3F">6.1-2 DefiningPairOfColimitQuiverMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E7C3F167FBBC4FA">6.1-1 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8767AE0182F5279E">6.1-2 EmbeddingOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E77BDC07B01344C">6.1-3 DefiningPairOfColimitQuiver</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8143F3937F43AB3F">6.1-4 DefiningPairOfColimitQuiverMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79C68A108347D50E">6.1-5 FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X86EC0F0A78ECBC10">6.2 <span class="Heading">Constructors</span></a>
 </span>
@@ -34,8 +37,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X785C21C17F786A08">6.2-1 CategoryOfColimitQuivers</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7FFD17158275C768">6.2-2 CreateColimitQuiver</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8423E15E82539406">6.2-3 CreateMorphismOfColimitQuivers</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E7C3F167FBBC4FA">6.2-4 UnderlyingCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8767AE0182F5279E">6.2-5 EmbeddingOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X851AC91987FE7756">6.2-4 CategoryOfPreSheavesOfUnderlyingCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7D03633A7D98026B">6.3 <span class="Heading">GAP categories</span></a>
 </span>
@@ -53,16 +55,41 @@
 
 <h4>6.1 <span class="Heading">Attributes</span></h4>
 
+<p><a id="X7E7C3F167FBBC4FA" name="X7E7C3F167FBBC4FA"></a></p>
+
+<h5>6.1-1 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">ColimitQuivers</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Return the category <span class="Math">C</span> underlying the category of colimit quivers <var class="Arg">ColimitQuivers</var> := <code class="code">CategoryOfColimitQuivers</code>( <span class="Math">C</span> ).</p>
+
+<p><a id="X8767AE0182F5279E" name="X8767AE0182F5279E"></a></p>
+
+<h5>6.1-2 EmbeddingOfUnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnderlyingCategory</code>( <var class="Arg">ColimitQuivers</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>The full embedding functor from the category <span class="Math">C</span> underlying the category of colimit quivers <var class="Arg">ColimitQuivers</var> into <var class="Arg">ColimitQuivers</var>.</p>
+
 <p><a id="X7E77BDC07B01344C" name="X7E77BDC07B01344C"></a></p>
 
-<h5>6.1-1 DefiningPairOfColimitQuiver</h5>
+<h5>6.1-3 DefiningPairOfColimitQuiver</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningPairOfColimitQuiver</code>( <var class="Arg">colimit_quiver</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p><a id="X8143F3937F43AB3F" name="X8143F3937F43AB3F"></a></p>
 
-<h5>6.1-2 DefiningPairOfColimitQuiverMorphism</h5>
+<h5>6.1-4 DefiningPairOfColimitQuiverMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningPairOfColimitQuiverMorphism</code>( <var class="Arg">colimit_quiver_morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X79C68A108347D50E" name="X79C68A108347D50E"></a></p>
+
+<h5>6.1-5 FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Given the presheaf category <var class="Arg">PSh</var>=<code class="code">PreSheaves</code>( <span class="Math">C</span>, <span class="Math">V</span> ), return the ambient category <code class="code">CoequalizerCompletion</code>( <code class="code">AssociatedFiniteStrictCoproductCompletionOfSourceCategory</code>( <var class="Arg">PSh</var> ) ).</p>
+
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
 <h4>6.2 <span class="Heading">Constructors</span></h4>
@@ -78,7 +105,7 @@
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", "&gt;= 2023.11-07", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", "&gt;= 2024.03-18", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FinBouquets;</span>
 FinBouquets
@@ -129,10 +156,22 @@ FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_presheaf := ModelingObject( Chat, ModelingObject( FinBouquets, F ) );</span>
 &lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ),
  SkeletalFinSets )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_coequalizer_pair := CoYonedaLemmaOnObjects( F_as_presheaf );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F_as_presheaf );</span>
+Image of &lt;(P)&gt;:
+{ 0, 1, 2 }
+
+Image of &lt;(L)&gt;:
+{ 0,..., 3 }
+
+Image of (P)-[(b)]-&gt;(L):
+{ 0,..., 3 } ⱶ[ 0, 0, 0, 2 ]→ { 0, 1, 2 }
+
+An object in PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ),
+SkeletalFinSets ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_coequalizer_object := CoYonedaLemmaOnObjects( F_as_presheaf );</span>
 &lt;An object in FiniteColimitCompletionWithStrictCoproducts(
 FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ColimitCompletionC := CapCategory( F_as_coequalizer_pair );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ColimitCompletionC := CapCategory( F_as_coequalizer_object );</span>
 FiniteColimitCompletionWithStrictCoproducts(
 FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ColimitCompletionC );</span>
@@ -145,7 +184,7 @@ which algorithmically
 * IsCocartesianCategory
 and not yet algorithmically
 * IsFiniteCocompleteCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F_as_coequalizer_pair );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F_as_coequalizer_object );</span>
 Image of &lt;(V)&gt;:
 [ 7, [ &lt;(P)&gt;, &lt;(P)&gt;, &lt;(P)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt; ] ]
 
@@ -180,7 +219,10 @@ FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) given by the above data
 
 An object in FiniteColimitCompletionWithStrictCoproducts(
 FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_colimit_quiver := AssociatedColimitQuiver( F_as_coequalizer_pair );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_presheaf =</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  Coequalizer( AssociatedCoequalizerPairInPreSheaves( F_as_coequalizer_object )[2] );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_colimit_quiver := AssociatedColimitQuiver( F_as_coequalizer_object );</span>
 &lt;An object in CategoryOfColimitQuivers(
  FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F_as_colimit_quiver );</span>
@@ -190,6 +232,9 @@ FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
 
 An object in CategoryOfColimitQuivers(
 FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_presheaf =</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  Coequalizer( AssociatedCoequalizerPairInPreSheaves( F_as_colimit_quiver )[2] );</span>
+true
 </pre></div>
 
 <p><a id="X7FFD17158275C768" name="X7FFD17158275C768"></a></p>
@@ -206,21 +251,14 @@ FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateMorphismOfColimitQuivers</code>( <var class="Arg">source</var>, <var class="Arg">list_of_images</var>, <var class="Arg">target</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a colimit quiver morphism</p>
 
-<p><a id="X7E7C3F167FBBC4FA" name="X7E7C3F167FBBC4FA"></a></p>
+<p><a id="X851AC91987FE7756" name="X851AC91987FE7756"></a></p>
 
-<h5>6.2-4 UnderlyingCategory</h5>
+<h5>6.2-4 CategoryOfPreSheavesOfUnderlyingCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">ColimitQuivers</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Return the category <span class="Math">C</span> underlying the category of colimit quivers <var class="Arg">ColimitQuivers</var> := <code class="code">CategoryOfColimitQuivers</code>( <span class="Math">C</span> ).</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfPreSheavesOfUnderlyingCategory</code>( <var class="Arg">ColimitQuiversC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<p><a id="X8767AE0182F5279E" name="X8767AE0182F5279E"></a></p>
-
-<h5>6.2-5 EmbeddingOfUnderlyingCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnderlyingCategory</code>( <var class="Arg">ColimitQuivers</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
-
-<p>The full embedding functor from the category <span class="Math">C</span> underlying the category of colimit quivers <var class="Arg">ColimitQuivers</var> into <var class="Arg">ColimitQuivers</var>.</p>
+<p>Given the category <var class="Arg">ColimitQuiversC</var>=<code class="code">CategoryOfColimitQuivers</code>( <span class="Math">C</span> ) of colimit quivers in a <span class="Math">V</span>-enriched category <span class="Math">C</span>, return the associated category <code class="code">PreSheaves</code>( <span class="Math">C</span>, <span class="Math">V</span> ) of presheaves.</p>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 

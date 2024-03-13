@@ -5,19 +5,22 @@
   [2XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure[102X, for IsCapCategory 12.2-1 
   [2XAsList[102X, for IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory 4.1-3 
       for IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory 4.1-2 
-  [2XAssociatedColimitQuiver[102X, for IsObjectInFiniteColimitCompletionWithStrictCoproducts 8.2-2 
+  [2XAssociatedColimitQuiver[102X, for IsObjectInFiniteColimitCompletionWithStrictCoproducts 8.2-3 
   [2XCategoryOfColimitQuivers[102X, for IsCapCategory 6.2-1 
+  [2XCategoryOfColimitQuiversOfUnderlyingCategory[102X, for IsFiniteColimitCompletionWithStrictCoproducts 8.1-5 
+  [2XCategoryOfPreSheavesOfUnderlyingCategory[102X, for IsCategoryOfColimitQuivers 6.2-4 
+      for IsFiniteColimitCompletionWithStrictCoproducts 8.2-2 
   [2XCoequalizerCompletion[102X, for IsCapCategory 7.2-1 
   [2XCreateColimitQuiver[102X, for IsCategoryOfColimitQuivers, IsList 6.2-2 
   [2XCreateMorphismOfColimitQuivers[102X, for IsObjectInCategoryOfColimitQuivers, IsList, IsObjectInCategoryOfColimitQuivers 6.2-3 
-  [2XDefiningPairOfColimitQuiver[102X, for IsObjectInCategoryOfColimitQuivers 6.1-1 
-  [2XDefiningPairOfColimitQuiverMorphism[102X, for IsMorphismInCategoryOfColimitQuivers 6.1-2 
+  [2XDefiningPairOfColimitQuiver[102X, for IsObjectInCategoryOfColimitQuivers 6.1-3 
+  [2XDefiningPairOfColimitQuiverMorphism[102X, for IsMorphismInCategoryOfColimitQuivers 6.1-4 
   [2XDefiningPairOfMorphismBetweenCoequalizerPairs[102X, for IsMorphismInCoequalizerCompletion 7.1-2 
       for IsMorphismInFiniteColimitCompletionWithStrictCoproducts 8.1-4 
   [2XDefiningPairOfMorphismBetweenParallelPairs[102X, for IsMorphismInPairOfParallelArrowsCategory 5.2-2 
   [2XEmbeddingOfUnderlyingCategory[102X, for IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure 12.2-2 
       for IsAdditiveClosureCategory 9.1-1 
-      for IsCategoryOfColimitQuivers 6.2-5 
+      for IsCategoryOfColimitQuivers 6.1-2 
       for IsCoequalizerCompletion 7.1-4 
       for IsCoFreydCategory 11.1-1 
       for IsFiniteStrictCoproductCompletion 1.1-4 
@@ -33,6 +36,7 @@
   [2XExtendFunctorToFreydCategory[102X, for IsCapFunctor 10.1-2 
   [2XExtendFunctorToStrictAdditiveClosure[102X, for IsCapFunctor 9.1-2 
   [2XFiniteColimitCompletionWithStrictCoproducts[102X, for IsCapCategory 8.2-1 
+  [2XFiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory[102X, for IsCategoryOfColimitQuivers 6.1-5 
   [2XFiniteStrictCoproductCompletion[102X, for IsCapCategory 1.2-1 
   [2XFiniteStrictCoproductCompletionOfUnderlyingCategory[102X, for IsFiniteColimitCompletionWithStrictCoproducts 8.1-2 
   [2XFiniteStrictProductCompletion[102X, for IsCapCategory 2.2-1 
@@ -89,7 +93,7 @@
   [2XTensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure[102X, for IsCapCategoryObject, IsCapCategoryMorphism 13.1-2 
   [2XTensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure[102X, for IsCapCategoryObject, IsCapCategoryObject 13.1-1 
   [2XUnderlyingCategory[102X, for IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure 12.1-1 
-      for IsCategoryOfColimitQuivers 6.2-4 
+      for IsCategoryOfColimitQuivers 6.1-1 
       for IsCoequalizerCompletion 7.1-3 
       for IsFiniteColimitCompletionWithStrictCoproducts 8.1-1 
       for IsFiniteStrictCoproductCompletion 1.1-3 
