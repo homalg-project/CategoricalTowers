@@ -128,9 +128,9 @@ DeclareOperation( "AsColimitCompletionMorphism",
         [ IsFiniteColimitCompletionWithStrictCoproducts, IsCapCategoryMorphism ] );
 
 #! @Description
-#!  The input is an object <A>coequalizer_pair</A> in the category of finite colimit completion of a category.
+#!  The input is an object <A>coequalizer_object</A> in the category of finite colimit completion of a category.
 #!  The output is the corresponding colimit quiver.
-#! @Arguments coequalizer_pair
+#! @Arguments coequalizer_object
 #! @Returns a colimit quiver
 DeclareAttribute( "AssociatedColimitQuiver",
         IsObjectInFiniteColimitCompletionWithStrictCoproducts );
