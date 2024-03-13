@@ -1307,7 +1307,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             end );
             
             Append( PSh!.compiler_hints.category_attribute_names,
-                    [ "AssociatedFiniteStrictCoproductCompletionOfSourceCategory",
+                    [ "FiniteStrictCoproductCompletionOfSourceCategory",
                       "AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory",
                       ] );
             
@@ -2385,7 +2385,7 @@ InstallMethod( PreSheaves,
 end );
 
 ##
-InstallMethod( AssociatedFiniteStrictCoproductCompletionOfSourceCategory,
+InstallMethod( FiniteStrictCoproductCompletionOfSourceCategory,
         [ IsPreSheafCategory ],
         
   function( PSh )
@@ -2885,7 +2885,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     objs := SetOfObjects( C );
     mors := SetOfGeneratingMorphisms( C );
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     F_vals := ValuesOfPreSheaf( F );
     
@@ -3020,7 +3020,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
     F_vals := ValuesOfPreSheaf( F );
     G_vals := ValuesOfPreSheaf( G );
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     C_hat := AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
@@ -3169,7 +3169,7 @@ InstallMethodForCompilerForCAP( EmbeddingFunctorOfFiniteStrictCoproductCompletio
   function ( PSh )
     local UC;
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     return ExtendFunctorToFiniteStrictCoproductCompletionData( UC, YonedaEmbeddingDataOfSourceCategory( PSh ), PSh );
     
@@ -3844,7 +3844,7 @@ InstallOtherMethodForCompilerForCAP( SectionAndComplementByCoveringListOfReprese
     
     objs := SetOfObjects( C );
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     F_on_objs := ObjectDatum( PSh, F )[1];
     
@@ -3977,7 +3977,7 @@ InstallOtherMethodForCompilerForCAP( RetractionByCoveringListOfRepresentables,
     
     CoequalizerPairs := AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     coYoF := CoYonedaLemmaOnObjects( PSh, F );
     
@@ -4068,7 +4068,7 @@ InstallOtherMethodForCompilerForCAP( RetractionByCoveringListOfRepresentables,
     
     CoequalizerPairs := AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     coYoneda := CoYonedaLemmaOnObjects( PSh, F );
     
@@ -4154,7 +4154,7 @@ InstallOtherMethodForCompilerForCAP( OptimizedCoYonedaLemmaOnObjects,
     
     ColimitCompletionC := AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     F_VAst := ObjectDatum( ColimitCompletionC, CoYonedaLemmaOnObjects( PSh, F ) );
     
@@ -4249,7 +4249,7 @@ InstallMethodForCompilerForCAP( ApplyPreSheafToObjectInFiniteStrictCoproductComp
     ## this code should be produced by something similar to ExtendFunctorToFiniteStrictProductCompletion:
     ## Apply Hom(-,G) to an object (in UC)
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     object_data := ObjectDatum( UC, object );
     
@@ -4269,7 +4269,7 @@ InstallMethodForCompilerForCAP( ApplyPreSheafToMorphismInFiniteStrictCoproductCo
     ## this code should be produced by something similar to ExtendFunctorToFiniteStrictProductCompletion:
     ## Apply Hom(-,G) to a morphism (in UC)
     
-    UC := AssociatedFiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     G_on_source_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, Source( morphism ) );
     G_on_range_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, Target( morphism ) );
