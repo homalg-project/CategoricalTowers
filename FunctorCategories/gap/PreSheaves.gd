@@ -172,10 +172,10 @@ end );
 #!  $C$ is enriched over <C>SkeletalFinSets</C>.
 #! @Arguments PSh
 #! @Returns a &CAP; category
-DeclareAttribute( "AssociatedCategoryOfColimitQuiversOfSourceCategory",
+DeclareAttribute( "CategoryOfColimitQuiversOfSourceCategory",
         IsPreSheafCategory );
 
-CapJitAddTypeSignature( "AssociatedCategoryOfColimitQuiversOfSourceCategory", [ IsPreSheafCategory ],
+CapJitAddTypeSignature( "CategoryOfColimitQuiversOfSourceCategory", [ IsPreSheafCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( CategoryOfColimitQuivers( Source( input_types[1].category ) ) );

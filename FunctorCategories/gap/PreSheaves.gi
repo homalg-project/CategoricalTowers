@@ -1313,7 +1313,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             if not (HasIsAbCategory and IsAbCategory)( B ) then
                 Append( PSh!.compiler_hints.category_attribute_names,
-                    [ "AssociatedCategoryOfColimitQuiversOfSourceCategory",
+                    [ "CategoryOfColimitQuiversOfSourceCategory",
                       ] );
             fi;
             
@@ -2405,7 +2405,7 @@ InstallMethod( AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCate
 end );
 
 ##
-InstallMethod( AssociatedCategoryOfColimitQuiversOfSourceCategory,
+InstallMethod( CategoryOfColimitQuiversOfSourceCategory,
         [ IsPreSheafCategory ],
         
   function( PSh )
