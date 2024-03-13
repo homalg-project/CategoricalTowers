@@ -15,8 +15,8 @@
   [2XApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGeneratingMorphismOrIdentity[102X, for IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism 2.3-3 
   [2XApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism[102X, for IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism 2.3-2 
   [2XApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject[102X, for IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject 2.3-1 
-  [2XApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[102X, for IsCapCategory, IsObjectInPreSheafCategory, IsMorphismInFiniteStrictCoproductCompletion 2.1-25 
-  [2XApplyPreSheafToObjectInFiniteStrictCoproductCompletion[102X, for IsCapCategory, IsObjectInPreSheafCategory, IsObjectInFiniteStrictCoproductCompletion 2.1-24 
+  [2XApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[102X, for IsCapCategory, IsObjectInPreSheafCategory, IsMorphismInFiniteStrictCoproductCompletion 2.1-27 
+  [2XApplyPreSheafToObjectInFiniteStrictCoproductCompletion[102X, for IsCapCategory, IsObjectInPreSheafCategory, IsObjectInFiniteStrictCoproductCompletion 2.1-26 
   [2XArrows[102X, for IsObjectInCategoryOfDecoratedQuivers 8.2-5 
       for IsObjectInCategoryOfQuivers 5.2-3 
       for IsObjectInCategoryOfReflexiveQuivers 7.2-4 
@@ -28,13 +28,13 @@
   [2XAsObjectInFunctorCategory[102X, for IsCapCategory, IsList, IsList 1.1-2 
       for IsCapCategory, IsRecord, IsRecord 1.1-2 
       for IsCapFunctor 1.1-2 
-  [2XAssociatedCategoryOfColimitQuiversOfSourceCategory[102X, for IsPreSheafCategory 2.2-11 
-  [2XAssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory[102X, for IsPreSheafCategory 2.2-10 
-  [2XAssociatedFiniteStrictCoproductCompletionOfSourceCategory[102X, for IsPreSheafCategory 2.2-9 
+  [2XAssociatedCoequalizerPairInPreSheaves[102X, for IsObjectInCategoryOfColimitQuivers 2.1-23 
+      for IsObjectInFiniteColimitCompletionWithStrictCoproducts 2.1-24 
   [2XAssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[102X, for IsMorphismInAlgebroidFromDataTables 14.1-2 
   [2XCategoryOfBouquetsEnrichedOver[102X, for IsCapCategory 4.1-1 
+  [2XCategoryOfColimitQuiversOfSourceCategory[102X, for IsPreSheafCategory 2.2-11 
   [2XCategoryOfDecoratedQuivers[102X, for IsObjectInCategoryOfQuivers, IsList, IsList 8.1-1 
-  [2XCategoryOfInternalCategories[102X, for IsCapCategory 2.1-26 
+  [2XCategoryOfInternalCategories[102X, for IsCapCategory 2.1-28 
   [2XCategoryOfQuiversEnrichedOver[102X, for IsCapCategory 5.1-1 
   [2XCategoryOfReflexiveQuiversEnrichedOver[102X, for IsCapCategory 7.1-1 
   [2XCoequalizerDataOfPreSheafUsingCoYonedaLemma[102X, for IsObjectInPreSheafCategory 2.1-6 
@@ -98,8 +98,10 @@
   [2XFinBouquets[102X 4.4-2 
   [2XFiniteCocompletion[102X, for IsCapCategory 3.1-1 
       for IsCapCategory, IsCapCategory 3.1-1 
+  [2XFiniteColimitCompletionWithStrictCoproductsOfSourceCategory[102X, for IsPreSheafCategory 2.2-10 
   [2XFiniteCompletion[102X, for IsCapCategory 9.1-1 
       for IsCapCategory, IsCapCategory 9.1-1 
+  [2XFiniteStrictCoproductCompletionOfSourceCategory[102X, for IsPreSheafCategory 2.2-9 
   [2XFinQuivers[102X 5.4-1 
   [2XFinReflexiveQuivers[102X 7.4-2 
   [2XFreeDistributiveCompletion[102X, for IsCapCategory 13.3-1 
@@ -175,7 +177,7 @@
   [2XNerveTruncatedInDegree2[102X, for IsCapCategory 2.2-7 
   [2XOppositeOfSource[102X, for IsCoPreSheafCategory 12.2-5 
       for IsFunctorCategory 1.2-5 
-  [2XOptimizedCoYonedaLemmaCoequalizerPair[102X, for IsObjectInPreSheafCategory 2.1-23 
+  [2XOptimizedCoYonedaLemmaCoequalizerPair[102X, for IsObjectInPreSheafCategory 2.1-25 
   [2XOptimizedCoYonedaLemmaOnMorphisms[102X, for IsMorphismInPreSheafCategory 2.1-21 
   [2XOptimizedCoYonedaLemmaOnObjects[102X, for IsObjectInPreSheafCategory 2.1-20 
   [2XPreSheaves[102X, for IsCapCategory, IsHomalgRing 2.1-1 

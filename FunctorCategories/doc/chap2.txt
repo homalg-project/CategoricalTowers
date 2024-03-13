@@ -124,19 +124,27 @@
   
   [33X[1;0Y[29X[2XCoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-23 OptimizedCoYonedaLemmaCoequalizerPair[101X
+  [1X2.1-23 AssociatedCoequalizerPairInPreSheaves[101X
+  
+  [33X[1;0Y[29X[2XAssociatedCoequalizerPairInPreSheaves[102X( [3XF[103X ) [32X attribute[133X
+  
+  [1X2.1-24 AssociatedCoequalizerPairInPreSheaves[101X
+  
+  [33X[1;0Y[29X[2XAssociatedCoequalizerPairInPreSheaves[102X( [3XF[103X ) [32X attribute[133X
+  
+  [1X2.1-25 OptimizedCoYonedaLemmaCoequalizerPair[101X
   
   [33X[1;0Y[29X[2XOptimizedCoYonedaLemmaCoequalizerPair[102X( [3XF[103X ) [32X attribute[133X
   
-  [1X2.1-24 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion[101X
+  [1X2.1-26 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion[101X
   
   [33X[1;0Y[29X[2XApplyPreSheafToObjectInFiniteStrictCoproductCompletion[102X( [3XPSh[103X, [3Xpresheaf[103X, [3Xobj[103X ) [32X operation[133X
   
-  [1X2.1-25 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[101X
+  [1X2.1-27 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[101X
   
   [33X[1;0Y[29X[2XApplyPreSheafToMorphismInFiniteStrictCoproductCompletion[102X( [3XPSh[103X, [3Xpresheaf[103X, [3Xmor[103X ) [32X operation[133X
   
-  [1X2.1-26 CategoryOfInternalCategories[101X
+  [1X2.1-28 CategoryOfInternalCategories[101X
   
   [33X[1;0Y[29X[2XCategoryOfInternalCategories[102X( [3XC[103X ) [32X attribute[133X
   
@@ -623,30 +631,31 @@
   [23Xx \in P(c)[123X to its [21Xpaths to truth[121X [23Xf: a \to c[123X translating [23Xx[123X into [23Xf(x) \in Q(a)
   \subseteq P(a)[123X.[133X
   
-  [1X2.2-9 AssociatedFiniteStrictCoproductCompletionOfSourceCategory[101X
+  [1X2.2-9 FiniteStrictCoproductCompletionOfSourceCategory[101X
   
-  [33X[1;0Y[29X[2XAssociatedFiniteStrictCoproductCompletionOfSourceCategory[102X( [3XPSh[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XFiniteStrictCoproductCompletionOfSourceCategory[102X( [3XPSh[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YGiven   the   presheaf   category   [3XPSh[103X=[10XPSh[110X([23XC,V[123X)  return  the  "sub"category
+  [33X[0;0YGiven the presheaf category [3XPSh[103X=[10XPreSheaves[110X( [23XC[123X, [23XV[123X ), return the "sub"category
   [10XEnrichmentSpecificFiniteStrictCoproductCompletion[110X( [23XC[123X ).[133X
   
-  [1X2.2-10 AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory[101X
+  [1X2.2-10 FiniteColimitCompletionWithStrictCoproductsOfSourceCategory[101X
   
-  [33X[1;0Y[29X[2XAssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory[102X( [3XPSh[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XFiniteColimitCompletionWithStrictCoproductsOfSourceCategory[102X( [3XPSh[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YGiven  the  presheaf  category  [3XPSh[103X=[10XPSh[110X([23XC,V[123X)  return  the  ambient  category
-  [10XCoequalizerCompletion[110X(
-  [10XAssociatedFiniteStrictCoproductCompletionOfSourceCategory[110X( [3XPSh[103X ) ).[133X
+  [33X[0;0YGiven  the  presheaf  category  [3XPSh[103X=[10XPreSheaves[110X(  [23XC[123X,  [23XV[123X ), return the ambient
+  category                                              [10XCoequalizerCompletion[110X(
+  [10XFiniteStrictCoproductCompletionOfSourceCategory[110X( [3XPSh[103X ) ).[133X
   
-  [1X2.2-11 AssociatedCategoryOfColimitQuiversOfSourceCategory[101X
+  [1X2.2-11 CategoryOfColimitQuiversOfSourceCategory[101X
   
-  [33X[1;0Y[29X[2XAssociatedCategoryOfColimitQuiversOfSourceCategory[102X( [3XPSh[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCategoryOfColimitQuiversOfSourceCategory[102X( [3XPSh[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YGiven  the  presheaf  category  [3XPSh[103X=[10XPSh[110X([23XC,V[123X)  return  the  ambient  category
-  [10XCategoryOfColimitQuivers[110X( [23XC[123X ), provided [23XC[123X is enriched over [10XSkeletalFinSets[110X.[133X
+  [33X[0;0YGiven  the  presheaf  category  [3XPSh[103X=[10XPreSheaves[110X(  [23XC[123X,  [23XV[123X  ) return the ambient
+  category   [10XCategoryOfColimitQuivers[110X(  [23XC[123X  ),  provided  [23XC[123X  is  enriched  over
+  [10XSkeletalFinSets[110X.[133X
   
   
   [1X2.3 [33X[0;0YOperations[133X[101X

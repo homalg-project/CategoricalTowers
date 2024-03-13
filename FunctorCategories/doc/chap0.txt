@@ -6,10 +6,10 @@
                             [1X Categories of functors [101X
   
   
-                                   2024.03-13
+                                   2024.03-18
   
   
-                                  9 March 2024
+                                 13 March 2024
   
   
                                 Mohamed Barakat
@@ -101,10 +101,12 @@
       2.1-20 OptimizedCoYonedaLemmaOnObjects
       2.1-21 OptimizedCoYonedaLemmaOnMorphisms
       2.1-22 CoequalizerDataOfPreSheafUsingOptimizedCoYonedaLemma
-      2.1-23 OptimizedCoYonedaLemmaCoequalizerPair
-      2.1-24 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion
-      2.1-25 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion
-      2.1-26 CategoryOfInternalCategories
+      2.1-23 AssociatedCoequalizerPairInPreSheaves
+      2.1-24 AssociatedCoequalizerPairInPreSheaves
+      2.1-25 OptimizedCoYonedaLemmaCoequalizerPair
+      2.1-26 ApplyPreSheafToObjectInFiniteStrictCoproductCompletion
+      2.1-27 ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion
+      2.1-28 CategoryOfInternalCategories
     2.2 [33X[0;0YAttributes[133X
       2.2-1 ValuesOnAllObjects
       2.2-2 UnderlyingCapTwoCategoryCell
@@ -114,9 +116,9 @@
       2.2-6 SimpleObjects
       2.2-7 NerveTruncatedInDegree2
       2.2-8 SievesOfPathsToTruth
-      2.2-9 AssociatedFiniteStrictCoproductCompletionOfSourceCategory
-      2.2-10 AssociatedFiniteColimitCompletionWithStrictCoproductsOfSourceCategory
-      2.2-11 AssociatedCategoryOfColimitQuiversOfSourceCategory
+      2.2-9 FiniteStrictCoproductCompletionOfSourceCategory
+      2.2-10 FiniteColimitCompletionWithStrictCoproductsOfSourceCategory
+      2.2-11 CategoryOfColimitQuiversOfSourceCategory
     2.3 [33X[0;0YOperations[133X
       2.3-1 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject
       2.3-2 ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism
