@@ -44,6 +44,29 @@ DeclareCategory( "IsMorphismInCategoryOfColimitQuivers",
 #
 ####################################
 
+#! @Description
+#!  Return the category $C$ underlying the category of colimit quivers
+#!  <A>ColimitQuivers</A> := <C>CategoryOfColimitQuivers</C>( $C$ ).
+#! @Arguments ColimitQuivers
+DeclareAttribute( "UnderlyingCategory",
+        IsCategoryOfColimitQuivers );
+
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsCategoryOfColimitQuivers ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
+#! @Description
+#!  The full embedding functor from the category $C$ underlying
+#!  the category of colimit quivers
+#!  <A>ColimitQuivers</A> into <A>ColimitQuivers</A>.
+#! @Arguments ColimitQuivers
+#! @Returns a &CAP; functor
+DeclareAttribute( "EmbeddingOfUnderlyingCategory",
+        IsCategoryOfColimitQuivers );
+
 #! @Arguments colimit_quiver
 DeclareAttribute( "DefiningPairOfColimitQuiver",
         IsObjectInCategoryOfColimitQuivers );
@@ -109,26 +132,3 @@ DeclareOperation( "CreateColimitQuiver",
 #! @Returns a colimit quiver morphism
 DeclareOperation( "CreateMorphismOfColimitQuivers",
         [ IsObjectInCategoryOfColimitQuivers, IsList, IsObjectInCategoryOfColimitQuivers ] );
-
-#! @Description
-#!  Return the category $C$ underlying the category of colimit quivers
-#!  <A>ColimitQuivers</A> := <C>CategoryOfColimitQuivers</C>( $C$ ).
-#! @Arguments ColimitQuivers
-DeclareAttribute( "UnderlyingCategory",
-        IsCategoryOfColimitQuivers );
-
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsCategoryOfColimitQuivers ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
-    
-end );
-
-#! @Description
-#!  The full embedding functor from the category $C$ underlying
-#!  the category of colimit quivers
-#!  <A>ColimitQuivers</A> into <A>ColimitQuivers</A>.
-#! @Arguments ColimitQuivers
-#! @Returns a &CAP; functor
-DeclareAttribute( "EmbeddingOfUnderlyingCategory",
-        IsCategoryOfColimitQuivers );
