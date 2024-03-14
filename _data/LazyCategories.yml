@@ -1,7 +1,7 @@
 name: LazyCategories
-version: "2024.03-01"
+version: "2024.03-02"
 license: "GPL-2.0-or-later"
-date: 2024-03-03
+date: 2024-03-14
 description: |
     Construct an equivalent lazy category out of a CAP category
 
@@ -46,11 +46,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/LazyCategories/P
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2024.03-01/LazyCategories-2024.03-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2024.03-02/LazyCategories-2024.03-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2024.03-01/LazyCategories-2024.03-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2024.03-02/LazyCategories-2024.03-02.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2024.03-01/LazyCategories-2024.03-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2024.03-02/LazyCategories-2024.03-02-manual.pdf
 
 abstract: |
 
@@ -59,28 +59,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Bar03</span>]   <b class='BibAuthor'>Barakat, M.</b>,
+    [<span class='BibKey'>Bar14</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>LazyCategories, Construct an equivalent lazy category out of a CAP category,
-             Version 2024.03-01</i>
-     (<span class='BibYear'>3-03</span>)<br />
+             Version 2024.03-02</i>
+     (<span class='BibYear'>3-14</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/LazyCategories">https://homalg-project.github.io/pkg/LazyCategories</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ LazyCategories2024.03-01,
+    @misc{ LazyCategories2024.03-02,
       author =           {Barakat, M.},
       title =            {{LazyCategories},   Construct   an   equivalent   lazy
-                          category out of a CAP category, {V}ersion 2024.03-01},
+                          category out of a CAP category, {V}ersion 2024.03-02},
       month =            {4-},
-      year =             {3-03},
+      year =             {3-14},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/LazyCategories}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{LazyCategories}}},
-      printedkey =       {Bar03}
+      printedkey =       {Bar14}
     }
 
