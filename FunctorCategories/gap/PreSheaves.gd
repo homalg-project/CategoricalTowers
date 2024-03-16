@@ -169,7 +169,7 @@ end );
 #! @Description
 #!  Given the presheaf category <A>PSh</A>=<C>PreSheaves</C>( $C$, $V$ ) return
 #!  the ambient category <C>CategoryOfColimitQuivers</C>( $C$ ), provided
-#!  $C$ is enriched over <C>SkeletalFinSets</C>.
+#!  $C$ is enriched over <C>SkeletalFinSets</C> or over <C>IntervalCategory</C>.
 #! @Arguments PSh
 #! @Returns a &CAP; category
 DeclareAttribute( "CategoryOfColimitQuiversOfSourceCategory",
