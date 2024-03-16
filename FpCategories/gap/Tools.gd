@@ -89,6 +89,24 @@ CapJitAddTypeSignature( "DefiningTripleOfUnderlyingQuiver", [ IsCapCategory ],
 end );
 
 #! @Description
+#!  Return the list of decompositions of the morphism <A>mor</A>
+#!  in the finitely presented, Hom-finite category $C$,
+#!  where each decomposition is a list in the generators in <C>SetOfGeneratorsOfCategory</C>( $C$ ).
+#! @Arguments mor
+#! @Returns a list of lists of morphisms
+DeclareAttribute( "AllDecompositionsOfMorphismInCategory",
+        IsCapCategoryMorphism );
+
+CapJitAddTypeSignature( "AllDecompositionsOfMorphismInCategory", [ IsCapCategory, IsCapCategoryMorphism ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf(
+                   CapJitDataTypeOfListOf(
+                           CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) ) );
+    
+end );
+
+#! @Description
 #!  The data tables of the category <A>C</A>.
 #! @Arguments C
 #! @Returns a pair of lists

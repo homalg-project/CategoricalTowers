@@ -394,6 +394,10 @@ DeclareAttribute( "AssociatedCoequalizerPairInPreSheaves",
         IsObjectInCategoryOfColimitQuivers );
 
 #! @Arguments F
+DeclareAttribute( "AssociatedCellInPreSheaves",
+        IsCellInCategoryOfColimitQuivers );
+
+#! @Arguments F
 DeclareAttribute( "AssociatedCoequalizerPairInPreSheaves",
         IsObjectInFiniteColimitCompletionWithStrictCoproducts );
 
@@ -417,3 +421,27 @@ DeclareOperation( "ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion",
 #! @Arguments C
 DeclareAttribute( "CategoryOfInternalCategories",
         IsCapCategory );
+
+#! @Arguments PSh, presheaf, coproducts_cocones
+DeclareOperation( "IsClosedPreSheafWRTCoproductCocones",
+        [ IsObjectInPreSheafCategory, IsList ] );
+
+#! @Arguments PSh, presheaf, lists_of_cofactors
+DeclareOperation( "IsClosedPreSheafWRTCoproducts",
+        [ IsObjectInPreSheafCategory, IsList ] );
+
+#! @Arguments presheaf, lists_of_indices
+DeclareOperation( "IsClosedPreSheafWRTCoproductsByIndices",
+        [ IsObjectInPreSheafCategory, IsList ] );
+
+#! @Arguments presheaf, coproduct_cocone
+DeclareOperation( "EmbeddingIntoClosureOfPreSheafWRTCoproductCocone",
+        [ IsObjectInPreSheafCategory, IsList ] );
+
+#! @Arguments presheaf, coproducts_cocones
+DeclareOperation( "EmbeddingIntoClosureOfPreSheafWRTCoproductCocones",
+        [ IsObjectInPreSheafCategory, IsList ] );
+
+#! @Arguments presheaf, lists_of_cofactors
+DeclareOperation( "EmbeddingIntoClosureOfPreSheafWRTCoproducts",
+        [ IsObjectInPreSheafCategory, IsList ] );
