@@ -655,7 +655,7 @@
   
   [33X[0;0YGiven  the  presheaf  category  [3XPSh[103X=[10XPreSheaves[110X(  [23XC[123X,  [23XV[123X  ) return the ambient
   category   [10XCategoryOfColimitQuivers[110X(  [23XC[123X  ),  provided  [23XC[123X  is  enriched  over
-  [10XSkeletalFinSets[110X.[133X
+  [10XSkeletalFinSets[110X or over [10XIntervalCategory[110X.[133X
   
   
   [1X2.3 [33X[0;0YOperations[133X[101X
