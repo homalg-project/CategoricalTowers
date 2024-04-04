@@ -262,7 +262,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATE
         return;
     fi;
     
-    if not HasRangeCategoryOfHomomorphismStructure( H ) then
+    if not HasRangeCategoryOfHomomorphismStructure( PSh ) then
         SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( PSh, H );
     fi;
     
