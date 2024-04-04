@@ -1,7 +1,7 @@
 name: FunctorCategories
-version: "2024.03-21"
+version: "2024.03-22"
 license: "GPL-2.0-or-later"
-date: 2024-03-19
+date: 2024-04-04
 description: |
     Categories of functors
 
@@ -22,7 +22,7 @@ GAP: ">= 4.12.1"
 needed-pkgs:
     - name: "GAPDoc"
       version: ">= 1.5"
-      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+      url: "https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "ToolsForHomalg"
       version: ">= 2022.12-01"
       url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
@@ -81,11 +81,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FunctorCategorie
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.03-21/FunctorCategories-2024.03-21.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.03-22/FunctorCategories-2024.03-22.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.03-21/FunctorCategories-2024.03-21.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.03-22/FunctorCategories-2024.03-22.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.03-21/FunctorCategories-2024.03-21-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2024.03-22/FunctorCategories-2024.03-22-manual.pdf
 
 abstract: |
 
@@ -96,33 +96,34 @@ keywords: |
     functors, natural transformations, finitely presented categories, functors into categories, functors into pre-additive categories, functors into additive categories, functors into pre-abelian categories, functors into abelian categories.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BS19</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+    [<span class='BibKey'>BS04</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FunctorCategories, Categories of functors,
-             Version 2024.03-21</i>
-     (<span class='BibYear'>3-19</span>)<br />
+             Version 2024.03-22</i>
+     (<span class='BibYear'>4-04</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FunctorCategories">https://homalg-project.github.io/pkg/FunctorCategories</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ FunctorCategories2024.03-21,
+    @misc{ FunctorCategories,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FunctorCategories}, Categories of functors, {V}ersion
-                          2024.03-21},
-      month =            {4-},
-      year =             {3-19},
+                          2024.03\texttt{\symbol{45}}22},
+      month =            {4\texttt{\symbol{45}}},
+      year =             {4\texttt{\symbol{45}}04},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/FunctorCategories}
-                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{FunctorCategories}}},
       keywords =         {functors;  natural transformations; finitely presented
                           categories;  functors  into  categories; functors into
-                          pre-additive   categories;   functors   into  additive
-                          categories;   functors  into  pre-abelian  categories;
-                          functors into abelian categories},
-      printedkey =       {BS19}
+                          pre\texttt{\symbol{45}}additive  categories;  functors
+                          into     additive     categories;     functors    into
+                          pre\texttt{\symbol{45}}abelian   categories;  functors
+                          into abelian categories},
+      printedkey =       {BS04}
     }
 
