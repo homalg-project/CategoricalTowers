@@ -72,3 +72,25 @@ end );
 #! @Arguments F
 DeclareProperty( "IsReflexive",
         IsCapCategoryObject );
+
+###################################
+##
+#! @Section Operations
+##
+###################################
+
+#! @Arguments PSh, lists_of_cofactors
+DeclareOperation( "CoconesOfCoproducts",
+        [ IsCapCategory, IsList ] );
+
+#! @Arguments PSh, lists_of_cofactors_by_indices
+DeclareOperation( "CoconesOfCoproductsByIndices",
+        [ IsCapCategory, IsList ] );
+
+#! @Arguments PSh, lists_of_factors
+DeclareOperation( "ConesOfProducts",
+        [ IsCapCategory, IsList ] );
+
+#! @Arguments PSh, lists_of_factors_by_indices
+DeclareOperation( "ConesOfProductsByIndices",
+        [ IsCapCategory, IsList ] );

@@ -306,12 +306,23 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         [ IsCapCategory, IsCapCategory ],
         
   function ( B, D )
-    local B_op, kq, A, relations, name, list_of_operations,
+    local object_datum_type, morphism_datum_type, is_computable,
+          B_op, kq, A, relations, name, list_of_operations,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, commutative_ring,
           properties, supports_empty_limits, prop, option_record,
           PSh, H, auxiliary_indices;
+    
+    object_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( D ) ),
+              CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) ) );
+    
+    morphism_datum_type :=
+      CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) );
+    
+    is_computable := IsBound( D!.is_computable ) and D!.is_computable;
     
     if IsFpCategory( B ) then
         B_op := OppositeFpCategory( B : FinalizeCategory := true );
@@ -326,6 +337,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         B_op := OppositeCategoryFromNerveData( B : FinalizeCategory := true );
     elif IsCategoryFromDataTables( B ) then
         B_op := OppositeCategoryFromDataTables( B : FinalizeCategory := true );
+    elif WasCreatedAsOppositeCategory( B ) then
+        B_op := OppositeCategory( B );
     elif HasIsFiniteCategory( B ) and IsFiniteCategory( B ) then
         B_op := OppositeFiniteCategory( B : FinalizeCategory := true );
     elif IsAlgebroid( B ) then
@@ -776,17 +789,20 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                           category_filter := IsPreSheafCategoryOfFpEnrichedCategory,
                           category_object_filter := IsObjectInPreSheafCategoryOfFpEnrichedCategory,
                           category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
-                          supports_empty_limits := supports_empty_limits,
-                          list_of_operations_to_install := list_of_operations_to_install,
+                          object_datum_type := object_datum_type,
+                          morphism_datum_type := morphism_datum_type,
                           properties := properties,
                           object_constructor := object_constructor,
                           object_datum := object_datum,
                           morphism_constructor := morphism_constructor,
                           morphism_datum := morphism_datum,
+                          list_of_operations_to_install := list_of_operations_to_install,
+                          is_computable := is_computable,
+                          supports_empty_limits := supports_empty_limits,
+                          underlying_category_getter_string := "Target",
                           create_func_bool := create_func_bool,
                           create_func_object := create_func_object,
                           create_func_morphism := create_func_morphism,
-                          underlying_category_getter_string := "Target"
                           );
     
     if not commutative_ring = fail then
@@ -2741,6 +2757,13 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
                            OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( morB ) ),
                            SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Source( morB ) ) )] );
         
+    elif WasCreatedAsOppositeCategory( B ) then
+        
+        morB_op := MorphismConstructor( B_op,
+                           SetOfObjects( B_op )[SafeUniquePositionProperty( SetOfObjects( B ), obj -> IsEqualForObjects( B, obj, Target( morB ) ) )],
+                           MorphismDatum( B_op, MorphismDatum( B, morB ) ),
+                           SetOfObjects( B_op )[SafeUniquePositionProperty( SetOfObjects( B ), obj -> IsEqualForObjects( B, obj, Source( morB ) ) )] );
+        
     else
         
         morB_op := MorphismConstructor( B_op,
@@ -3236,6 +3259,80 @@ InstallMethod( AssociatedCoequalizerPairInPreSheaves,
   function ( F )
     
     return AssociatedCoequalizerPairInPreSheaves( CapCategory( F ), F );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( AssociatedCellInPreSheaves,
+        "for a category of colimit quivers and an object therein",
+        [ IsCategoryOfColimitQuivers, IsObjectInCategoryOfColimitQuivers ],
+        
+  function( ColimitQuiversC, colimit_quiver )
+    local PSh, coequalizer_pair;
+    
+    PSh := CategoryOfPreSheavesOfUnderlyingCategory( ColimitQuiversC );
+    
+    coequalizer_pair := AssociatedCoequalizerPairInPreSheaves( ColimitQuiversC, colimit_quiver );
+    
+    return Coequalizer( PSh, coequalizer_pair[1], coequalizer_pair[2] );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( AssociatedCellInPreSheaves,
+        "for a category of colimit quivers, two objects and a morphism therein",
+        [ IsCategoryOfColimitQuivers, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsMorphismInCategoryOfColimitQuivers, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function( ColimitQuiversC, source, colimit_quiver_morphism, target )
+    local ParallelPairs, PSh_VA, mor_VA, S, T, V, A, PSh, Yoneda, Y_V, Y_A;
+    
+    ParallelPairs := ModelingCategory( ColimitQuiversC );
+    
+    PSh_VA := ModelingCategory( ParallelPairs );
+    
+    mor_VA := MorphismDatum( PSh_VA,
+                      ModelingMorphism( ParallelPairs,
+                              ModelingMorphism( ColimitQuiversC, colimit_quiver_morphism ) ) );
+    
+    V := mor_VA[1];
+    
+    PSh := CategoryOfPreSheavesOfUnderlyingCategory( ColimitQuiversC );
+    
+    Yoneda := EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheavesData( PSh )[2];
+    
+    Y_V := Yoneda[2]( Yoneda[1]( Source( V ) ), V, Yoneda[1]( Target( V ) ) );
+    
+    return CoequalizerFunctorialWithGivenCoequalizers( PSh,
+                   source,
+                   AssociatedCoequalizerPairInPreSheaves( ColimitQuiversC, Source( colimit_quiver_morphism ) )[2],
+                   Y_V,
+                   AssociatedCoequalizerPairInPreSheaves( ColimitQuiversC, Target( colimit_quiver_morphism ) )[2],
+                   target );
+    
+end );
+
+##
+InstallOtherMethod( AssociatedCellInPreSheaves,
+        "for a category of colimit quivers and an morphism therein",
+        [ IsCategoryOfColimitQuivers, IsMorphismInCategoryOfColimitQuivers ],
+        
+  function( ColimitQuiversC, colimit_quiver_morphism )
+    
+    return AssociatedCellInPreSheaves( ColimitQuiversC,
+                   AssociatedCellInPreSheaves( Source( colimit_quiver_morphism ) ),
+                   colimit_quiver_morphism,
+                   AssociatedCellInPreSheaves( Target( colimit_quiver_morphism ) ) );
+    
+end );
+
+##
+InstallOtherMethod( AssociatedCellInPreSheaves,
+        "for a category of colimit quivers and a cell therein",
+        [ IsCellInCategoryOfColimitQuivers ],
+        
+  function( colimit_quiver_cell )
+    
+    return AssociatedCellInPreSheaves( CapCategory( colimit_quiver_cell ), colimit_quiver_cell );
     
 end );
 

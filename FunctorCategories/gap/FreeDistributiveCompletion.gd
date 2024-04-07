@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Free distributive completion of a finitely presented (linear) category
+#! @Chapter Free distributive completion of a finitely presented category
 
 ####################################
 #

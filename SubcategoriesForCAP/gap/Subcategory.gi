@@ -90,7 +90,8 @@ InstallMethod( Subcategory,
         [ IsCapCategory, IsString ],
         
   function( C, name )
-    local category_constructor_options, list_of_operations_to_install, is_full, is_additive, skip, func, pos, properties, D;
+    local category_constructor_options, list_of_operations_to_install, is_full, is_additive, additional_operations_to_install,
+          skip, func, pos, properties, additional_properties, D;
     
     category_constructor_options := rec(
          name := name,
@@ -115,6 +116,10 @@ InstallMethod( Subcategory,
     is_full := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_full", false );
     
     is_additive := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_additive", false );
+    
+    additional_operations_to_install := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "additional_operations_to_install", [ ] );
+    
+    list_of_operations_to_install := DuplicateFreeList( Concatenation( list_of_operations_to_install, additional_operations_to_install ) );
     
     if IsIdenticalObj( is_full, true ) then
         Append( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY );
@@ -180,7 +185,11 @@ InstallMethod( Subcategory,
         Add( properties, "IsAdditiveCategory" );
     fi;
     
-    category_constructor_options.properties := properties;
+    additional_properties := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "properties", [ ] );
+    
+    category_constructor_options.properties := Concatenation( properties, additional_properties );
+    
+    category_constructor_options.supports_empty_limits := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "supports_empty_limits", false );
     
     D := CategoryConstructor( category_constructor_options );
     
@@ -289,6 +298,33 @@ InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
 end );
 
 ##
+InstallMethod( \.,
+        "for a subcategory and a positive integer",
+        [ IsCapSubcategory, IsPosInt ],
+        
+  function( subcategory, string_as_int )
+    local name, C, c;
+    
+    name := NameRNam( string_as_int );
+    
+    C := AmbientCategory( subcategory );
+    
+    c := C.(name);
+    
+    if ( IsCapCategoryObject( c ) or IsCapCategoryMorphism( c ) ) and
+       IsIdenticalObj( CapCategory( c ), C ) then
+        
+        return c / subcategory;
+        
+    else
+        
+        Error( "`c` is neither an object nor a morphism in the ambient category `C`\n" );
+        
+    fi;
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( SetOfObjects,
         "for a subcategory",
         [ IsCapSubcategory ],
@@ -318,7 +354,8 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsObjectInASubcategory ],
+        [ IsObjectInASubcategory ],
+        
   function( a )
     
     Print( "An object in subcategory given by: " );
@@ -329,7 +366,8 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsMorphismInASubcategory ],
+        [ IsMorphismInASubcategory ],
+        
   function( phi )
     
     Print( "A morphism in subcategory given by: " );
@@ -340,7 +378,8 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsObjectInASubcategory ],
+        [ IsObjectInASubcategory ],
+        
   function( a )
     
     Print( "An object in subcategory given by: " );
@@ -351,7 +390,8 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsMorphismInASubcategory ],
+        [ IsMorphismInASubcategory ],
+        
   function( phi )
     
     Print( "A morphism in subcategory given by: " );
@@ -359,4 +399,3 @@ InstallMethod( Display,
     Display( UnderlyingCell( phi ) );
     
 end );
-
