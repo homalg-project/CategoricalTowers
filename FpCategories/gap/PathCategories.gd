@@ -175,3 +175,5 @@ DeclareAttribute( "ExternalHoms", IsPathCategory );
 
 DeclareOperation( "ExtendFunctorToFpCategoryData",
         [ IsPathCategory, IsList, IsCapCategory ] );
+
+DeclareGlobalFunction( "FpCategories_SORT_MORPHISMS_LIKE_QPA" );

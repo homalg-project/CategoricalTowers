@@ -158,3 +158,39 @@ T := AlgebroidFromDataTables( kP );
 HomStructure( T.0, T.5 );
 #! <A row module over Q of rank 3>
 #! @EndExample
+
+#! @Example
+LoadPackage( "Algebroids", false );
+#! true
+str := "q(o)[x:o->o,y:o->o,z:o->o]";;
+C := PathCategory( FinQuiver( str ) : sort_external_homs_like_qpa := true );
+#! PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o]" ) )
+F := FreeCategory( RightQuiver( str ) );
+#! FreeCategory( RightQuiver( "q(o)[x:o->o,y:o->o,z:o->o]" ) )
+qC := C / [ [C.x^3, C.x], [C.y^3, C.y], [C.z^3, C.z],
+            [C.xy, C.yx], [C.xz, C.zx], [C.yz, C.zy] ];
+#! PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o]" ) ) /
+#!            [ x^3 = x, y^3 = y, z^3 = z, ... ]
+qF := F / [ [F.x^3, F.x], [F.y^3, F.y], [F.z^3, F.z],
+            [F.xy, F.yx], [F.xz, F.zx], [F.yz, F.zy] ];
+#! FreeCategory( RightQuiver( "q(o)[x:o->o,y:o->o,z:o->o]" ) ) / relations
+MorphismsOfExternalHom( qC.o, qC.o );
+#! [ [id(o)]:(o) -≻ (o), [x]:(o) -≻ (o), [y]:(o) -≻ (o), [z]:(o) -≻ (o),
+#!   [x^2]:(o) -≻ (o), [x⋅y]:(o) -≻ (o), [x⋅z]:(o) -≻ (o), [y^2]:(o) -≻ (o),
+#!   [y⋅z]:(o) -≻ (o), [z^2]:(o) -≻ (o), [x^2⋅y]:(o) -≻ (o), [x^2⋅z]:(o) -≻ (o),
+#!   [x⋅y^2]:(o) -≻ (o), [x⋅y⋅z]:(o) -≻ (o), [x⋅z^2]:(o) -≻ (o),
+#!   [y^2⋅z]:(o) -≻ (o), [y⋅z^2]:(o) -≻ (o), [x^2⋅y^2]:(o) -≻ (o),
+#!   [x^2⋅y⋅z]:(o) -≻ (o), [x^2⋅z^2]:(o) -≻ (o), [x⋅y^2⋅z]:(o) -≻ (o),
+#!   [x⋅y⋅z^2]:(o) -≻ (o), [y^2⋅z^2]:(o) -≻ (o), [x^2⋅y^2⋅z]:(o) -≻ (o),
+#!   [x^2⋅y⋅z^2]:(o) -≻ (o), [x⋅y^2⋅z^2]:(o) -≻ (o), [x^2⋅y^2⋅z^2]:(o) -≻ (o) ]
+MorphismsOfExternalHom( qF.o, qF.o );
+#! [ (o)-[(o)]->(o), (o)-[(x)]->(o), (o)-[(y)]->(o), (o)-[(z)]->(o),
+#!   (o)-[(x*x)]->(o), (o)-[(x*y)]->(o), (o)-[(x*z)]->(o), (o)-[(y*y)]->(o),
+#!   (o)-[(y*z)]->(o), (o)-[(z*z)]->(o), (o)-[(x*x*y)]->(o), (o)-[(x*x*z)]->(o),
+#!   (o)-[(x*y*y)]->(o), (o)-[(x*y*z)]->(o), (o)-[(x*z*z)]->(o),
+#!   (o)-[(y*y*z)]->(o), (o)-[(y*z*z)]->(o), (o)-[(x*x*y*y)]->(o),
+#!   (o)-[(x*x*y*z)]->(o), (o)-[(x*x*z*z)]->(o), (o)-[(x*y*y*z)]->(o),
+#!   (o)-[(x*y*z*z)]->(o), (o)-[(y*y*z*z)]->(o), (o)-[(x*x*y*y*z)]->(o),
+#!   (o)-[(x*x*y*z*z)]->(o), (o)-[(x*y*y*z*z)]->(o), (o)-[(x*x*y*y*z*z)]->(o) ]
+#! @EndExample
+
