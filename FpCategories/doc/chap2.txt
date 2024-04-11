@@ -425,3 +425,38 @@
     [4X[28X<A row module over Q of rank 3>[128X[104X
   [4X[32X[104X
   
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xstr := "q(o)[x:o->o,y:o->o,z:o->o]";;[127X[104X
+    [4X[25Xgap>[125X [27XC := PathCategory( FinQuiver( str ) : sort_external_homs_like_qpa := true );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XF := FreeCategory( RightQuiver( str ) );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(o)[x:o->o,y:o->o,z:o->o]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XqC := C / [ [C.x^3, C.x], [C.y^3, C.y], [C.z^3, C.z],[127X[104X
+    [4X[25X>[125X [27X            [C.xy, C.yx], [C.xz, C.zx], [C.yz, C.zy] ];[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o]" ) ) /[128X[104X
+    [4X[28X           [ x^3 = x, y^3 = y, z^3 = z, ... ][128X[104X
+    [4X[25Xgap>[125X [27XqF := F / [ [F.x^3, F.x], [F.y^3, F.y], [F.z^3, F.z],[127X[104X
+    [4X[25X>[125X [27X            [F.xy, F.yx], [F.xz, F.zx], [F.yz, F.zy] ];[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(o)[x:o->o,y:o->o,z:o->o]" ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XMorphismsOfExternalHom( qC.o, qC.o );[127X[104X
+    [4X[28X[ [id(o)]:(o) -≻ (o), [x]:(o) -≻ (o), [y]:(o) -≻ (o), [z]:(o) -≻ (o),[128X[104X
+    [4X[28X  [x^2]:(o) -≻ (o), [x⋅y]:(o) -≻ (o), [x⋅z]:(o) -≻ (o), [y^2]:(o) -≻ (o),[128X[104X
+    [4X[28X  [y⋅z]:(o) -≻ (o), [z^2]:(o) -≻ (o), [x^2⋅y]:(o) -≻ (o), [x^2⋅z]:(o) -≻ (o),[128X[104X
+    [4X[28X  [x⋅y^2]:(o) -≻ (o), [x⋅y⋅z]:(o) -≻ (o), [x⋅z^2]:(o) -≻ (o),[128X[104X
+    [4X[28X  [y^2⋅z]:(o) -≻ (o), [y⋅z^2]:(o) -≻ (o), [x^2⋅y^2]:(o) -≻ (o),[128X[104X
+    [4X[28X  [x^2⋅y⋅z]:(o) -≻ (o), [x^2⋅z^2]:(o) -≻ (o), [x⋅y^2⋅z]:(o) -≻ (o),[128X[104X
+    [4X[28X  [x⋅y⋅z^2]:(o) -≻ (o), [y^2⋅z^2]:(o) -≻ (o), [x^2⋅y^2⋅z]:(o) -≻ (o),[128X[104X
+    [4X[28X  [x^2⋅y⋅z^2]:(o) -≻ (o), [x⋅y^2⋅z^2]:(o) -≻ (o), [x^2⋅y^2⋅z^2]:(o) -≻ (o) ][128X[104X
+    [4X[25Xgap>[125X [27XMorphismsOfExternalHom( qF.o, qF.o );[127X[104X
+    [4X[28X[ (o)-[(o)]->(o), (o)-[(x)]->(o), (o)-[(y)]->(o), (o)-[(z)]->(o),[128X[104X
+    [4X[28X  (o)-[(x*x)]->(o), (o)-[(x*y)]->(o), (o)-[(x*z)]->(o), (o)-[(y*y)]->(o),[128X[104X
+    [4X[28X  (o)-[(y*z)]->(o), (o)-[(z*z)]->(o), (o)-[(x*x*y)]->(o), (o)-[(x*x*z)]->(o),[128X[104X
+    [4X[28X  (o)-[(x*y*y)]->(o), (o)-[(x*y*z)]->(o), (o)-[(x*z*z)]->(o),[128X[104X
+    [4X[28X  (o)-[(y*y*z)]->(o), (o)-[(y*z*z)]->(o), (o)-[(x*x*y*y)]->(o),[128X[104X
+    [4X[28X  (o)-[(x*x*y*z)]->(o), (o)-[(x*x*z*z)]->(o), (o)-[(x*y*y*z)]->(o),[128X[104X
+    [4X[28X  (o)-[(x*y*z*z)]->(o), (o)-[(y*y*z*z)]->(o), (o)-[(x*x*y*y*z)]->(o),[128X[104X
+    [4X[28X  (o)-[(x*x*y*z*z)]->(o), (o)-[(x*y*y*z*z)]->(o), (o)-[(x*x*y*y*z*z)]->(o) ][128X[104X
+  [4X[32X[104X
+  
