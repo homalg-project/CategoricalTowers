@@ -547,7 +547,7 @@ DeclareAttribute( "RelativePowerObjectFibrationMorphism",
 #! @Description
 #!  The input is a morphism <A>f</A>: $a \to b$.
 #!  The output is the evaluation morphism $P_fa \times a \rightarrow \Omega \times b$,
-#!  where $Pa$ = <C>PowerObject</C>($a$) and $P_fa$ is the relative power object of <A>f</A>.
+#!  where $P_fa$ is the relative power object of <A>f</A>.
 #! @Arguments f
 #! @Returns a monomorphism $\mathrm{Hom}( P_fa \times a, \Omega \times b )$
 DeclareAttribute( "RelativePowerObjectLeftEvaluationMorphism",
