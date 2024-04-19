@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "ZariskiFrames",
 Subtitle := "(Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties",
-Version := "2024.04-01",
+Version := "2024.04-02",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
@@ -98,7 +98,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.12.1",
+  GAP := ">= 4.13.0",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2023.08-18" ],
