@@ -1,7 +1,7 @@
 name: CategoriesWithAmbientObjects
-version: "2023.12-01"
+version: "2024.04-01"
 license: "GPL-2.0-or-later"
-date: 2023-12-19
+date: 2024-04-22
 description: |
     Categories with objects having ambient objects
 
@@ -17,12 +17,15 @@ maintainers:
     - name: Kamal Saleh
       url: https://github.com/kamalsaleh/
 
-GAP: ">= 4.12.1"
+GAP: ">= 4.13.0"
 
 needed-pkgs:
     - name: "AutoDoc"
       version: ">= 2013.12.04"
       url: "https://gap-packages.github.io/AutoDoc"
+    - name: "ToolsForHomalg"
+      version: ">= 2015.09.23"
+      url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
     - name: "CAP"
       version: ">= 2023.12-11"
       url: "https://homalg-project.github.io/pkg/CAP"
@@ -35,12 +38,12 @@ needed-pkgs:
     - name: "FreydCategoriesForCAP"
       version: ">= 2022.06-03"
       url: "https://homalg-project.github.io/pkg/FreydCategoriesForCAP"
-    - name: "ToolsForHomalg"
-      version: ">= 2015.09.23"
-      url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
+    - name: "ToolsForCategoricalTowers"
+      version: ">= 2024.03-02"
+      url: "https://homalg-project.github.io/pkg/ToolsForCategoricalTowers"
     - name: "GAPDoc"
       version: ">= 1.1"
-      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+      url: "https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
 
 www: https://homalg-project.github.io/pkg/CategoriesWithAmbientObjects
 readme: README.md
@@ -48,11 +51,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/CategoriesWithAm
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.12-01/CategoriesWithAmbientObjects-2023.12-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2024.04-01/CategoriesWithAmbientObjects-2024.04-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.12-01/CategoriesWithAmbientObjects-2023.12-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2024.04-01/CategoriesWithAmbientObjects-2024.04-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.12-01/CategoriesWithAmbientObjects-2023.12-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2024.04-01/CategoriesWithAmbientObjects-2024.04-01-manual.pdf
 
 abstract: |
 
@@ -63,29 +66,30 @@ keywords: |
     categories, ambient objects.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BS19</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+    [<span class='BibKey'>BS22</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>CategoriesWithAmbientObjects, Categories with objects having ambient objects,
-             Version 2023.12-01</i>
-     (<span class='BibYear'>2-19</span>)<br />
+             Version 2024.04-01</i>
+     (<span class='BibYear'>4-22</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CategoriesWithAmbientObjects">https://homalg-project.github.io/pkg/CategoriesWithAmbientObjects</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ CategoriesWithAmbientObjects2023.12-01,
+    @misc{ CategoriesWithAmbientObjects,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{CategoriesWithAmbientObjects},     Categories    with
-                          objects having ambient objects, {V}ersion 2023.12-01},
-      month =            {3-},
-      year =             {2-19},
+                          objects     having    ambient    objects,    {V}ersion
+                          2024.04\texttt{\symbol{45}}01},
+      month =            {4\texttt{\symbol{45}}},
+      year =             {4\texttt{\symbol{45}}22},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/CategoriesWithAmbientObjects}
-                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{CategoriesWithAmbientObjects}}},
       keywords =         {categories; ambient objects},
-      printedkey =       {BS19}
+      printedkey =       {BS22}
     }
 
