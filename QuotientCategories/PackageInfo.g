@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "QuotientCategories",
 Subtitle := "Quotient categories",
-Version := "2024.02-01",
-Date := "2024-02-15",
+Version := "2024.04-01",
+Date := "2024-04-22",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -69,7 +69,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.12.1",
+  GAP := ">= 4.13.0",
   NeededOtherPackages := [
                 [ "AutoDoc", ">=2018.02.14" ],
                 [ "MatricesForHomalg", ">= 2023.11-02" ],
