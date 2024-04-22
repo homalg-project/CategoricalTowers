@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "FiniteCocompletions",
 Subtitle := "Finite (co)product/(co)limit (co)completions",
-Version := "2024.04-01",
-Date := "2024-04-07",
-Date := "2024-04-07",
+Version := "2024.04-02",
+Date := "2024-04-22",
+Date := "2024-04-22",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -68,7 +68,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.12.1",
+  GAP := ">= 4.13.0",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2024.02-01" ],
