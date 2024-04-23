@@ -390,6 +390,8 @@ InstallMethod( LazyCategory,
     object_constructor :=
       function( D, object_operation_and_arguments_genesis_pair )
         
+        Assert( 0, IsCapCategory( object_operation_and_arguments_genesis_pair[2][1] ) );
+        
         return CreateCapCategoryObjectWithAttributes( D,
                        GenesisOfCell, object_operation_and_arguments_genesis_pair );
         
@@ -689,7 +691,7 @@ InstallMethod( LazyCategory,
                     return Source( ess[1] );
                 fi;
                 
-                return ObjectConstructor( D, Pair( "FiberProduct", [ diagram ] ) );
+                return ObjectConstructor( D, Pair( "FiberProduct", [ D, diagram ] ) );
                 
             end );
             
@@ -719,7 +721,7 @@ InstallMethod( LazyCategory,
                     
                 fi;
                 
-                return MorphismConstructor( D, P, Pair( "ProjectionInFactorOfFiberProductWithGivenFiberProduct", [ diagram, k, P ] ), Source( diagram[k] ) );
+                return MorphismConstructor( D, P, Pair( "ProjectionInFactorOfFiberProductWithGivenFiberProduct", [ D, diagram, k, P ] ), Source( diagram[k] ) );
                 
             end );
             
@@ -741,7 +743,7 @@ InstallMethod( LazyCategory,
                     return Target( ess[1] );
                 fi;
                 
-                return ObjectConstructor( D, Pair( "Pushout", [ diagram ] ) );
+                return ObjectConstructor( D, Pair( "Pushout", [ D, diagram ] ) );
                 
             end );
             
@@ -771,7 +773,7 @@ InstallMethod( LazyCategory,
                     
                 fi;
                 
-                return MorphismConstructor( D, Target( diagram[k] ), Pair( "InjectionOfCofactorOfPushoutWithGivenPushout", [ diagram, k, I ] ), I );
+                return MorphismConstructor( D, Target( diagram[k] ), Pair( "InjectionOfCofactorOfPushoutWithGivenPushout", [ D, diagram, k, I ] ), I );
                 
             end );
             
@@ -979,7 +981,7 @@ InstallMethod( LazyCategory,
         AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
           function( D, r, phi )
             
-            return MorphismConstructor( D, Source( phi ), Pair( "MultiplyWithElementOfCommutativeRingForMorphisms", [ r, phi ] ), Target( phi ) );
+            return MorphismConstructor( D, Source( phi ), Pair( "MultiplyWithElementOfCommutativeRingForMorphisms", [ D, r, phi ] ), Target( phi ) );
             
         end );
         
