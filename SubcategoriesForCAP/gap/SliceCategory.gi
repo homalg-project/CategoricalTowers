@@ -774,7 +774,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         ##
         AddPLeftTransposeMorphismWithGivenRange( Slice_over_B,
           function( cat, M, N, f, PN )
-            local C, Omega, B, m, n, ff, pr1, chi, iota, emb, cmp, h, A, D, PD, k, km, e, g;
+            local C, Omega, B, m, n, ff, pr1, chi, iota, emb, cmp, h, Ms, Ns, PNs, k, km, e, g;
             
             C := AmbientCategory( cat );
             
@@ -782,13 +782,13 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             B := BaseObject( cat );
             
-            ## m: A → B
+            ## m: Ms → B
             m := UnderlyingMorphism( M );
             
-            ## n: D → B
+            ## n: Ns → B
             n := UnderlyingMorphism( N );
             
-            ## A m_×_n D → Ω × B
+            ## Ms m_×_n Ns → Ω × B
             ff := UnderlyingCell( f );
             
             ## Ω × B → Ω
@@ -797,49 +797,50 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                            1,
                            Range( ff ) );
             
-            ## χ: A m_×_n D → Ω
+            ## χ: Ms m_×_n Ns → Ω
             chi := PreCompose( C,
                            ff,
                            pr1 );
             
-            ## ι: S ↪ A m_×_n D
+            ## ι: S ↪ Ms m_×_n Ns
             iota := SubobjectOfClassifyingMorphism( C, chi );
             
-            ## A m_×_n D ↪ A × D
+            ## Ms m_×_n Ns ↪ Ms × Ns
             emb := FiberProductEmbeddingInDirectProduct( C, [ m, n ] );
             
-            ## S ↪ A × D
+            ## S ↪ Ms × Ns
             cmp := PreCompose( C, iota, emb );
             
-            ## A × D → Ω
+            ## Ms × Ns → Ω
             h := ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( C,
                          cmp,
                          Omega );
             
-            A := Source( m );
+            Ms := Source( m );
             
-            D := Source( n );
+            Ns := Source( n );
             
-            PD := PowerObject( C, D );
+            ## P(Ns)
+            PNs := PowerObject( C, Ns );
             
-            ## k: A → P(D)
+            ## k: Ms → P(Ns)
             k := PLeftTransposeMorphismWithGivenRange( C,
-                         A,
-                         D,
+                         Ms,
+                         Ns,
                          h,
-                         PD );
+                         PNs );
             
-            ## e: P_nD ↪ PD × B
+            ## e: P_n(Ns) ↪ P(Ns) × B
             e := EmbeddingOfRelativePowerObject( C, n );
             
-            ## ⟨k,m⟩: A → PD × B
+            ## ⟨k,m⟩: Ms → P(Ns) × B
             km := UniversalMorphismIntoDirectProductWithGivenDirectProduct( C,
-                          [ PD, B ],
-                          A,
+                          [ PNs, B ],
+                          Ms,
                           [ k, m ],
                           Range( e ) );
             
-            ## g: A → P_nD
+            ## g: Ms → P_n(Ns)
             g := LiftAlongMonomorphism( C,
                          e,
                          km );

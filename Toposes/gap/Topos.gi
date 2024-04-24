@@ -192,7 +192,7 @@ InstallOtherMethodForCompilerForCAP( RelativePowerObjectLeftEvaluationMorphism,
     ## P_f: P_fA → B
     P_f := RelativePowerObjectFibrationMorphism( C, f );
     
-    ## P_fA (P_f_x_f) A ↪ P_fA x A
+    ## P_fA (P_f_x_f) A ↪ P_fA × A
     emb := FiberProductEmbeddingInDirectProduct( C,
                    [ P_f, f ] );
     
@@ -254,10 +254,10 @@ InstallOtherMethodForCompilerForCAP( RelativePowerObjectLeftEvaluationMorphism,
     Omega := SubobjectClassifier( C );
     
     ## ϵ_A : PA × A → Ω
-    epsilon := CartesianLeftEvaluationMorphismWithGivenSource( C,
+    epsilon := PowerObjectLeftEvaluationMorphismWithGivenObjects( C,
+                       PAxA,
                        A,
-                       Omega,
-                       PAxA );
+                       Omega );
     
     Omega_B := [ Omega, B ];
     
@@ -271,6 +271,7 @@ InstallOtherMethodForCompilerForCAP( RelativePowerObjectLeftEvaluationMorphism,
                           Omega_B,
                           Omega_xB );
     
+    ## P_fA × A → Ω × B
     return PreComposeList( C,
                    Source( emb ),
                    [ emb,

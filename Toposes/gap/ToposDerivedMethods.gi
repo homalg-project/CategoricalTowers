@@ -1064,7 +1064,7 @@ AddDerivationToCAP( RightFiberMorphismWithGivenObjects,
     
     BxC_PBxC := [ BxC, PBxC ];
     
-    ## P(B × C) × (B × C)
+    ## (B × C) × P(B × C)
     BxCx_PBxC := DirectProduct( cat, BxC_PBxC );
     
     ## Ω
@@ -1339,7 +1339,7 @@ AddDerivationToCAP( CartesianLeftEvaluationMorphismWithGivenSource,
                  [ u, true_B ],
                  1 );
     
-    ## m × 1 : Cᴮ × B → P(C × B) × B
+    ## m × 1_B : Cᴮ × B → P(B × C) × B
     mx1 := DirectProductFunctorialWithGivenDirectProducts( cat,
                    CB_xB,
                    [ Source( m ), B ],
@@ -1353,9 +1353,9 @@ AddDerivationToCAP( CartesianLeftEvaluationMorphismWithGivenSource,
                    sing,
                    ## Cᴮ × B → PC
                    PreCompose( cat,
-                           ## Cᴮ × B → P(C × B) × B
+                           ## Cᴮ × B → P(B × C) × B
                            mx1,
-                           ## P(C × B) × B → PC
+                           ## P(B × C) × B → PC
                            v ) );
     
 end );
