@@ -505,8 +505,8 @@
   [6XReturns:[106X  [33X[0;10Ya monomorphism [23X\mathrm{Hom}( P_fa \times a, \Omega \times b )[123X[133X
   
   [33X[0;0YThe  input  is  a morphism [3Xf[103X: [23Xa \to b[123X. The output is the evaluation morphism
-  [23XP_fa  \times  a  \rightarrow  \Omega \times b[123X, where [23XPa[123X = [10XPowerObject[110X([23Xa[123X) and
-  [23XP_fa[123X is the relative power object of [3Xf[103X.[133X
+  [23XP_fa  \times a \rightarrow \Omega \times b[123X, where [23XP_fa[123X is the relative power
+  object of [3Xf[103X.[133X
   
   [1X1.4-24 RightFiberMorphism[101X
   
