@@ -183,6 +183,8 @@ InstallGlobalFunction( FinQuiver,
                     j -> Concatenation( q_datum[3][4][j], ":", q_datum[2][2][q_datum[3][2][j]],"-≻",q_datum[2][2][q_datum[3][3][j]] ) ), "," ),
                 "]\" )" );
     
+    name := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "name", name );
+    
     q := CreateCapCategoryWithDataTypes( name,
                  IsFinQuiver,
                  IsFinQuiverObject,
