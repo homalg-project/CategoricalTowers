@@ -28,7 +28,7 @@ InstallMethod( DigraphOfSubobjects,
 end );
 
 ##
-InstallOtherMethod( DotVertexLabelledDigraph,
+InstallOtherMethod( DotVertexLabeledDigraph,
         [ IsDigraphByOutNeighboursRep and IsDigraphOfSubobjects ],
 
   function( D )

@@ -165,7 +165,7 @@ InstallMethod( DigraphOfChildren,
 end );
     
 ##
-InstallOtherMethod( DotVertexLabelledDigraph,
+InstallOtherMethod( DotVertexLabeledDigraph,
         "for a datastructure of a constructible object",
         [ IsDatastructureForConstructibleObjects ],
         
@@ -233,6 +233,6 @@ InstallMethod( Visualize,
         
   function( C )
     
-    Splash( DotVertexLabelledDigraph( C ) );
+    Splash( DotVertexLabeledDigraph( C ) );
     
 end );

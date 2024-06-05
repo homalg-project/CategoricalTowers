@@ -409,7 +409,7 @@ MakeShowable( [ "image/svg+xml" ], IsObjectInCategoryOfDecoratedQuivers );
 MakeShowable( [ "image/svg+xml" ], IsMorphismInCategoryOfDecoratedQuivers and IsMonomorphism );
 
 ##
-InstallOtherMethod( DotVertexLabelledDigraph,
+InstallOtherMethod( DotVertexLabeledDigraph,
         "for an object in a category of decorated quivers",
         [ IsObjectInCategoryOfDecoratedQuivers ],
         
@@ -465,7 +465,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
 end );
 
 ##
-InstallOtherMethod( DotVertexLabelledDigraph,
+InstallOtherMethod( DotVertexLabeledDigraph,
         "for a morphism in a category of decorated quivers",
         [ IsMorphismInCategoryOfDecoratedQuivers and IsMonomorphism ],
         
@@ -543,7 +543,7 @@ InstallMethod( SvgString,
         
   function ( cell )
     
-    return DotToSVG( DotVertexLabelledDigraph( cell ) );
+    return DotToSVG( DotVertexLabeledDigraph( cell ) );
     
 end );
 

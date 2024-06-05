@@ -110,7 +110,7 @@ DeclareAttribute( "SvgString",
         IsCellInCategoryOfReflexiveQuivers );
 
 #! @Arguments cell
-DeclareOperation( "DotVertexLabelledDigraph",
+DeclareOperation( "DotVertexLabeledDigraph",
         [ IsCellInCategoryOfReflexiveQuivers ] );
 
 ####################################

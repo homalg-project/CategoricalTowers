@@ -102,7 +102,7 @@ DeclareAttribute( "SvgString",
         IsCellInCategoryOfBouquets );
 
 #! @Arguments cell
-DeclareOperation( "DotVertexLabelledDigraph",
+DeclareOperation( "DotVertexLabeledDigraph",
         [ IsCellInCategoryOfBouquets ] );
 
 ####################################

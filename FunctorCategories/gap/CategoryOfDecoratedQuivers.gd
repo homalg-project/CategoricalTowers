@@ -103,7 +103,7 @@ DeclareAttribute( "SvgString",
         IsCellInCategoryOfDecoratedQuivers );
 
 #! @Arguments cell
-DeclareOperation( "DotVertexLabelledDigraph",
+DeclareOperation( "DotVertexLabeledDigraph",
         [ IsCellInCategoryOfDecoratedQuivers ] );
 
 ####################################

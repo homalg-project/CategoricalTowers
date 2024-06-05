@@ -117,7 +117,7 @@ InstallMethod( DigraphOfEvaluation,
 end );
 
 ##
-InstallOtherMethod( DotVertexLabelledDigraph,
+InstallOtherMethod( DotVertexLabeledDigraph,
         "for a cell in a lazy category",
         [ IsCellInLazyCategory ],
         
@@ -168,6 +168,6 @@ InstallMethod( Visualize,
         
   function( c )
     
-    Splash( DotVertexLabelledDigraph( c ) );
+    Splash( DotVertexLabeledDigraph( c ) );
     
 end );

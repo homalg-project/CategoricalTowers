@@ -477,7 +477,7 @@ MakeShowable( [ "image/svg+xml" ], IsObjectInCategoryOfReflexiveQuivers );
 MakeShowable( [ "image/svg+xml" ], IsMorphismInCategoryOfReflexiveQuivers and IsMonomorphism );
 
 ##
-InstallOtherMethod( DotVertexLabelledDigraph,
+InstallOtherMethod( DotVertexLabeledDigraph,
         "for an object in a category of finite reflexive quivers",
         [ IsObjectInCategoryOfReflexiveQuivers ],
         
@@ -530,7 +530,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
 end );
 
 ##
-InstallOtherMethod( DotVertexLabelledDigraph,
+InstallOtherMethod( DotVertexLabeledDigraph,
         "for a morphism in a category of finite reflexive quivers",
         [ IsMorphismInCategoryOfReflexiveQuivers and IsMonomorphism ],
         
@@ -605,7 +605,7 @@ InstallMethod( SvgString,
         
   function ( cell )
     
-    return DotToSVG( DotVertexLabelledDigraph( cell ) );
+    return DotToSVG( DotVertexLabeledDigraph( cell ) );
     
 end );
 

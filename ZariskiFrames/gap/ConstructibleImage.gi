@@ -669,7 +669,7 @@ InstallMethod( CharacteristicSetAsList,
 end );
 
 ##
-InstallOtherMethod( DotVertexLabelledDigraph,
+InstallOtherMethod( DotVertexLabeledDigraph,
         "for a constructible object",
         [ IsConstructibleObject ],
         
@@ -679,7 +679,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
         Print( "no datastructure of a constructible object found\n" );
     fi;
     
-    return DotVertexLabelledDigraph( A!.C );
+    return DotVertexLabeledDigraph( A!.C );
     
 end );
 

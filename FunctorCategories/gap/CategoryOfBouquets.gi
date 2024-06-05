@@ -430,7 +430,7 @@ MakeShowable( [ "image/svg+xml" ], IsObjectInCategoryOfBouquets );
 MakeShowable( [ "image/svg+xml" ], IsMorphismInCategoryOfBouquets and IsMonomorphism );
 
 ##
-InstallOtherMethod( DotVertexLabelledDigraph,
+InstallOtherMethod( DotVertexLabeledDigraph,
         "for an object in a category of bouquets",
         [ IsObjectInCategoryOfBouquets ],
         
@@ -473,7 +473,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
 end );
 
 ##
-InstallOtherMethod( DotVertexLabelledDigraph,
+InstallOtherMethod( DotVertexLabeledDigraph,
         "for a morphism in a category of bouquets",
         [ IsMorphismInCategoryOfBouquets and IsMonomorphism ],
         
@@ -538,7 +538,7 @@ InstallMethod( SvgString,
         
   function ( cell )
     
-    return DotToSVG( DotVertexLabelledDigraph( cell ) );
+    return DotToSVG( DotVertexLabeledDigraph( cell ) );
     
 end );
 

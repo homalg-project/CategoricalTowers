@@ -26,7 +26,7 @@ InstallOtherMethod( Visualize,
         
         return Julia.Base.display(
                        Julia.Base.MIME( GAPToJulia( "image/svg+xml" ) ),
-                       GAPToJulia( DotToSVG( DotVertexLabelledDigraph( c ) ) ) );
+                       GAPToJulia( DotToSVG( DotVertexLabeledDigraph( c ) ) ) );
         
     elif IsRunningInPluto( ) then
         
@@ -34,7 +34,7 @@ InstallOtherMethod( Visualize,
         
         return Julia.PlutoUI.Show(
                        Julia.Base.MIME( GAPToJulia( "image/svg+xml" ) ),
-                       GAPToJulia( DotToSVG( DotVertexLabelledDigraph( c ) ) ) );
+                       GAPToJulia( DotToSVG( DotVertexLabeledDigraph( c ) ) ) );
         
     fi;
     
