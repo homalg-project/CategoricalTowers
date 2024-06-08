@@ -198,8 +198,7 @@ InstallMethod( CategoryWithAmbientObjects,
         
   function( abelian_category )
     local category_with_ambient_objects, prop, structure_record,
-          preconditions, category_weight_list,
-          zero_object, H;
+          preconditions, zero_object, H;
     
     if not IsFinalized( abelian_category ) then
         
@@ -260,13 +259,10 @@ InstallMethod( CategoryWithAmbientObjects,
         
     end;
     
-    ##
-    category_weight_list := abelian_category!.derivations_weight_list;
-    
     ## ZeroObject with ambient object
     preconditions := [ "ZeroObject" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( abelian_category, c ) ) then
         
         zero_object := ZeroObject( abelian_category );
         
@@ -295,7 +291,7 @@ InstallMethod( CategoryWithAmbientObjects,
     preconditions := [ "DirectSum",
                        "PreCompose" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( abelian_category, c ) ) then
         
         structure_record.DirectSum :=
           function( obj_list, underlying_direct_sum )
@@ -317,7 +313,7 @@ InstallMethod( CategoryWithAmbientObjects,
                        "PreCompose",
                        "LiftAlongMonomorphism" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( abelian_category, c ) ) then
         
         structure_record.Lift :=
           function( mono, range )
@@ -340,7 +336,7 @@ InstallMethod( CategoryWithAmbientObjects,
                        "PreCompose",
                        "ColiftAlongEpimorphism" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( abelian_category, c ) ) then
         
         structure_record.Colift :=
           function( epi, source )
