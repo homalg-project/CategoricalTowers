@@ -246,6 +246,13 @@ Perform( ListOfMatrixImages( comult ), Display );
 #! A row module over GF(2) of rank 16
 #! 
 #! A morphism in Rows( GF(2) )
+MatBialg_F := CategoryOfFpMatrixBialgebras( MatAlg_F );
+#! CategoryOfFpMatrixBialgebras( GF(2) )
+B := Triple( M, counit, comult ) / MatBialg_F;
+#! <An object in CategoryOfFpMatrixBialgebras( GF(2) )>
+IsWellDefined( B );
+#! true
+
 #! @EndExample
 
 #! @EndChunk

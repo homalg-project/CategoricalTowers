@@ -45,3 +45,12 @@ DeclareOperation( "QuiverRowsObject",
 
 DeclareOperation( "QuiverRowsMorphism",
         [ IsQuiverRowsObject, IsJuliaObject, IsQuiverRowsObject ] );
+
+DeclareOperation( "Counit",
+        [ IsObject, IsJuliaObject ] );
+
+DeclareOperation( "Comultiplication",
+        [ IsObject, IsJuliaObject ] );
+
+DeclareOperation( "Antipode",
+        [ IsObject, IsJuliaObject ] );

@@ -71,9 +71,9 @@ W5 := ConstructibleProjection( V5 );
 Display( W5 );
 #! ( V( <> )
 #! 
-#! \ V( <a+1> )
+#! \ V( <a> )
 #! 
-#! \ V( <a> ) )
+#! \ V( <a+1> ) )
 V6 := (ClosedSubsetOfSpec( "b-a^2+1", R ) + ClosedSubsetOfSpec( "a^2-1", R ))
       - ClosedSubsetOfSpec( "a*b", R );
 #! V_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )
