@@ -241,8 +241,8 @@ DeclareOperation( "MorphismBetweenCoproductsWithGivenCoproducts",
 #! * <A>diagram_S</A> is a list of objects $(A_i)_{i = 0 \dots m - 1}$,
 #! * <A>diagram_T</A> is a list of objects $(B_j)_{j = 0 \dots n - 1}$,
 #! * <A>F</A> is a pair consisting of a list $f = (f_j)_{j = 0 \dots n - 1}$
-#!   of length $m$ of integers between $0, \ldots, m - 1$
-#!   and a list of morphisms $( B_j \rightarrow A_{f_j} )_{j = 0 \dots n - 1}$.
+#!   of length $n$ of integers between $0, \ldots, m - 1$
+#!   and a list of morphisms $( A_{f_j} \rightarrow B_j )_{j = 0 \dots n - 1}$.
 #! The output is the morphism
 #! $\times_{i=0}^{m-1} A_i \rightarrow \times_{j=0}^{n-1} B_j$
 #! defined by the pair <A>F</A>.
@@ -259,8 +259,8 @@ DeclareOperation( "MorphismBetweenDirectProducts",
 #! * <A>S</A> is the product $\times_{i=0}^{m-1} A_i$,
 #! * <A>T</A> is the product $\times_{j=0}^{n-1} B_j$,
 #! * <A>F</A> is a pair consisting of a list $f = (f_j)_{j = 0 \dots n - 1}$
-#!   of length $m$ of integers between $0, \ldots, m - 1$
-#!   and a list of morphisms $( B_j \rightarrow A_{f_j} )_{j = 0 \dots n - 1}$.
+#!   of length $n$ of integers between $0, \ldots, m - 1$
+#!   and a list of morphisms $( A_{f_j} \rightarrow B_j )_{j = 0 \dots n - 1}$.
 #! The output is the morphism
 #! $\times_{i=0}^{m-1} A_i \rightarrow \times_{j=0}^{n-1} B_j$
 #! defined by the pair <A>F</A>.
