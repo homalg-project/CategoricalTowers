@@ -167,8 +167,8 @@
   [30X    [33X[0;6Y[3Xdiagram_T[103X is a list of objects [23X(B_j)_{j = 0 \dots n - 1}[123X,[133X
   
   [30X    [33X[0;6Y[3XF[103X  is  a  pair  consisting  of a list [23Xf = (f_j)_{j = 0 \dots n - 1}[123X of
-        length  [23Xm[123X of integers between [23X0, \ldots, m - 1[123X and a list of morphisms
-        [23X( B_j \rightarrow A_{f_j} )_{j = 0 \dots n - 1}[123X.[133X
+        length  [23Xn[123X of integers between [23X0, \ldots, m - 1[123X and a list of morphisms
+        [23X( A_{f_j} \rightarrow B_j )_{j = 0 \dots n - 1}[123X.[133X
   
   [33X[0;0YThe    output   is   the   morphism   [23X\times_{i=0}^{m-1}   A_i   \rightarrow
   \times_{j=0}^{n-1} B_j[123X defined by the pair [3XF[103X.[133X
@@ -298,8 +298,8 @@
   [30X    [33X[0;6Y[3XT[103X is the product [23X\times_{j=0}^{n-1} B_j[123X,[133X
   
   [30X    [33X[0;6Y[3XF[103X  is  a  pair  consisting  of a list [23Xf = (f_j)_{j = 0 \dots n - 1}[123X of
-        length  [23Xm[123X of integers between [23X0, \ldots, m - 1[123X and a list of morphisms
-        [23X( B_j \rightarrow A_{f_j} )_{j = 0 \dots n - 1}[123X.[133X
+        length  [23Xn[123X of integers between [23X0, \ldots, m - 1[123X and a list of morphisms
+        [23X( A_{f_j} \rightarrow B_j )_{j = 0 \dots n - 1}[123X.[133X
   
   [33X[0;0YThe    output   is   the   morphism   [23X\times_{i=0}^{m-1}   A_i   \rightarrow
   \times_{j=0}^{n-1} B_j[123X defined by the pair [3XF[103X.[133X
