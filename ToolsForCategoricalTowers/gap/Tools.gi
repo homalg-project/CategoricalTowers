@@ -671,6 +671,28 @@ InstallOtherMethod( LimitPair,
 end );
 
 ##
+InstallOtherMethod( Limit,
+        "for a catgory and a list",
+        [ IsCapCategory, IsList ],
+        
+  function( C, pair )
+    
+    return Limit( C, pair[1], pair[2] );
+    
+end );
+
+##
+InstallOtherMethod( Limit,
+        "for a list",
+        [ IsList ],
+        
+  function( pair )
+    
+    return Limit( CapCategory( pair[1][1] ), pair );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( ColimitPair,
         "for a catgory and two lists",
         [ IsCapCategory, IsList, IsList ],
@@ -712,28 +734,6 @@ InstallOtherMethod( ColimitPair,
   function( pair )
     
     return ColimitPair( CapCategory( pair[1][1] ), pair[1], pair[2] );
-    
-end );
-
-##
-InstallOtherMethod( Limit,
-        "for a catgory and a list",
-        [ IsCapCategory, IsList ],
-        
-  function( C, pair )
-    
-    return Limit( C, pair[1], pair[2] );
-    
-end );
-
-##
-InstallOtherMethod( Limit,
-        "for a list",
-        [ IsList ],
-        
-  function( pair )
-    
-    return Limit( CapCategory( pair[1][1] ), pair );
     
 end );
 
