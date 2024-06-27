@@ -114,7 +114,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
     AddSetOfObjectsOfCategory( UI,
       function( UI )
         
-        return [ TerminalObject( UI ) ];
+        return [ InitialObject( UI ) ];
         
     end );
     

@@ -7,6 +7,8 @@ LoadPackage( "Toposes", ">= 2024.02-08", fail );
 #! true
 T := PreSheaves( InitialCategory( ) );
 #! PreSheaves( InitialCategory( ), InitialCategory( ) )
+IsIdenticalObj( T, RangeCategoryOfHomomorphismStructure( T ) );
+#! true
 IsTerminalCategory( T );
 #! true
 Display( T );

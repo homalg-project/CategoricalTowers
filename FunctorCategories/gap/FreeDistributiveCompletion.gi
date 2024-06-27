@@ -14,9 +14,9 @@ InstallMethodWithCache( FreeDistributiveCompletion,
           free_distributive_completion;
     
     ## building the categorical tower:
-    finite_completion := FiniteCompletion( fp_category, range_category_of_hom_structure : FinalizeCategory := true, overhead := false );
+    finite_completion := FiniteCompletion( fp_category, range_category_of_hom_structure : overhead := false, FinalizeCategory := true );
     
-    finite_cocompletion := FiniteCocompletion( finite_completion, range_category_of_hom_structure : FinalizeCategory := true, overhead := false );
+    finite_cocompletion := FiniteCocompletion( finite_completion, range_category_of_hom_structure : overhead := false, FinalizeCategory := true );
     
     free_distributive_completion :=
       WrapperCategory( finite_cocompletion,
