@@ -539,14 +539,14 @@ AddFinalDerivationBundle( "Limit using DirectProduct and Equalizer",
     [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ],
     [ PreCompose, 2 ] ],
   function( cat, objects, decorated_morphisms )
-      local pair;
-      
-      pair := LimitPair( cat,
-                        objects,
-                        decorated_morphisms );
-      
-      return Equalizer( cat, pair[1], pair[2] );
-      
+    local pair;
+    
+    pair := LimitPair( cat,
+                    objects,
+                    decorated_morphisms );
+    
+    return Equalizer( cat, pair[1], pair[2] );
+    
   end
 ],
 [
@@ -558,21 +558,21 @@ AddFinalDerivationBundle( "Limit using DirectProduct and Equalizer",
     [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ],
     [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ] ],
   function( cat, objects, decorated_morphisms, k, limit )
-      local pair;
-      
-      pair := LimitPair( cat,
-                        objects,
-                        decorated_morphisms );
-      
-      return PreCompose( cat,
-                     EmbeddingOfEqualizerWithGivenEqualizer( cat,
-                             pair[1],
-                             pair[2],
-                             limit ),
-                     ProjectionInFactorOfDirectProduct( cat,
-                             objects,
-                             1 + k ) );
-      
+    local pair;
+    
+    pair := LimitPair( cat,
+                    objects,
+                    decorated_morphisms );
+    
+    return PreCompose( cat,
+                   EmbeddingOfEqualizerWithGivenEqualizer( cat,
+                           pair[1],
+                           pair[2],
+                           limit ),
+                   ProjectionInFactorOfDirectProduct( cat,
+                           objects,
+                           1 + k ) );
+    
   end
 ],
 [
@@ -585,22 +585,22 @@ AddFinalDerivationBundle( "Limit using DirectProduct and Equalizer",
     [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ],
     [ PreCompose, 2 ] ],
   function( cat, objects, decorated_morphisms, T, tau, limit )
-      local pair;
-      
-      pair := LimitPair( cat,
-                        objects,
-                        decorated_morphisms );
-      
-      return LiftAlongMonomorphism( cat,
-                     EmbeddingOfEqualizerWithGivenEqualizer( cat,
-                             pair[1],
-                             pair[2],
-                             limit ),
-                     UniversalMorphismIntoDirectProduct( cat,
-                             objects,
-                             T,
-                             tau ) );
-      
+    local pair;
+    
+    pair := LimitPair( cat,
+                    objects,
+                    decorated_morphisms );
+    
+    return LiftAlongMonomorphism( cat,
+                   EmbeddingOfEqualizerWithGivenEqualizer( cat,
+                           pair[1],
+                           pair[2],
+                           limit ),
+                   UniversalMorphismIntoDirectProduct( cat,
+                           objects,
+                           T,
+                           tau ) );
+    
   end
 ]
  );
