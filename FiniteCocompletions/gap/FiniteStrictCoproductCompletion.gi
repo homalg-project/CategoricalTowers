@@ -172,7 +172,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         [ IsCapCategory ],
         
   function ( C )
-    local UC, H, install_hom_structure,
+    local UC, H,
           object_func, morphism_func, object_func_inverse, morphism_func_inverse, extended;
     
     ##
@@ -1045,13 +1045,10 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     fi;
     
-    install_hom_structure := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "install_hom_structure", true );
-    
-    if install_hom_structure and
-       ( HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure )( C ) and
+    if HasIsEquippedWithHomomorphismStructure( C ) and IsEquippedWithHomomorphismStructure( C ) and
        MissingOperationsForConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
        IsBound( H ) and
-       ( HasIsCartesianCategory and IsCartesianCategory )( H ) and
+       HasIsCartesianCategory( H ) and IsCartesianCategory( H ) and
        MissingOperationsForConstructivenessOfCategory( H, "IsCartesianCategory" ) = [ ] then
         
         if ( HasIsTerminalCategory and IsTerminalCategory )( H ) or
