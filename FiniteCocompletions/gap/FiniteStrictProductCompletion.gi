@@ -84,7 +84,7 @@ InstallMethod( FiniteStrictProductCompletion,
     
     Finalize( opUopC : FinalizeCategory := true );
     
-    if (HasIsInitialCategory and IsInitialCategory)( C ) then
+    if HasIsInitialCategory( C ) and IsInitialCategory( C ) then
         Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( opUopC, "IsEquippedWithHomomorphismStructure" ) );
     fi;
     
@@ -203,7 +203,7 @@ InstallMethod( FiniteStrictProductCompletion,
     
     Finalize( PC );
     
-    if (HasIsInitialCategory and IsInitialCategory)( C ) then
+    if HasIsInitialCategory( C ) and IsInitialCategory( C ) then
         Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( PC, "IsEquippedWithHomomorphismStructure" ) );
     fi;
     

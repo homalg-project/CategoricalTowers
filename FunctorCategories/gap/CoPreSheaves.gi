@@ -464,7 +464,7 @@ InstallMethodWithCache( CoPreSheaves,
     
     Finalize( O : FinalizeCategory := true );
     
-    if (HasIsInitialCategory and IsInitialCategory)( B ) then
+    if HasIsInitialCategory( B ) and IsInitialCategory( B ) then
         Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( O, "IsEquippedWithHomomorphismStructure" ) );
     fi;
     

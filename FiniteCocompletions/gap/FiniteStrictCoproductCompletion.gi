@@ -207,14 +207,14 @@ InstallMethod( FiniteStrictCoproductCompletion,
     
     SetIsStrictCocartesianCategory( UC, true );
 
-    if ( HasIsCartesianCategory and IsCartesianCategory )( C ) then
-        if ( HasIsStrictCartesianCategory and IsStrictCartesianCategory )( C ) then
+    if HasIsCartesianCategory( C ) and IsCartesianCategory( C ) then
+        if HasIsStrictCartesianCategory( C ) and IsStrictCartesianCategory( C ) then
             SetIsStrictCartesianCategory( UC, true );
         fi;
         SetIsDistributiveCategory( UC, true );
     fi;
     
-    if ( HasIsFiniteCompleteCategory and IsFiniteCompleteCategory )( C ) then
+    if HasIsFiniteCompleteCategory( C ) and IsFiniteCompleteCategory( C ) then
         
         SetIsFiniteCompleteCategory( UC, true );
         
