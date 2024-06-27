@@ -147,6 +147,7 @@ InstallMethod( FiniteStrictProductCompletion,
                                                    ObjectConstructor( opC, Source( morC ) ) ) ) ),
                                ObjectDatum( opUopC, source ) ),
                        target );
+        
     end;
     
     ## from the morphism in the modeling category to the raw morphism data

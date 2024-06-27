@@ -512,7 +512,7 @@ InstallMethodWithCache( FunctorCategory,
         return MorphismDatum( PSh, mor );
         
     end;
-
+    
     ##
     Hom :=
       ReinterpretationOfCategory( PSh,
