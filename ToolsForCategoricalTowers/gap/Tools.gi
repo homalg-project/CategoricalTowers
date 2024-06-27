@@ -693,6 +693,17 @@ InstallOtherMethod( Limit,
 end );
 
 ##
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
+        rec(
+            ColimitPair :=
+            [ [ "Coproduct", 2 ],
+              [ "InjectionOfCofactorOfCoproductWithGivenCoproduct", 2 ], ## called in List
+              [ "UniversalMorphismFromCoproductWithGivenCoproduct", 2 ],
+              [ "PreCompose", 2 ] ] ## called in List
+            )
+);
+
+##
 InstallMethodForCompilerForCAP( ColimitPair,
         "for a catgory and two lists",
         [ IsCapCategory, IsList, IsList ],
