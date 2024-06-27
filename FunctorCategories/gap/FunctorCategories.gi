@@ -676,13 +676,6 @@ InstallMethodWithCache( FunctorCategory,
               "OppositeOfSource",
               ] );
     
-    if not HasRangeCategoryOfHomomorphismStructure( Hom ) and
-       (HasIsInitialCategory and IsInitialCategory)( B ) then
-        
-        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( Hom, Hom );
-        
-    fi;
-    
     Finalize( Hom );
     
     return Hom;

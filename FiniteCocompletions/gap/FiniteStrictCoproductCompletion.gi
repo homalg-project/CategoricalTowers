@@ -13,7 +13,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
     local name, category_filter, category_object_filter, category_morphism_filter,
           create_func_object, create_func_morphism,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
-          UI;
+          H, UI;
     
     name := Concatenation( "FiniteStrictCoproductCompletion( ", Name( I ), " )" );
     
@@ -86,21 +86,33 @@ InstallMethod( FiniteStrictCoproductCompletion,
     
     morphism_datum := { UI, morphism } -> PairOfLists( morphism );
     
-    UI := CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
-                  name := name,
-                  supports_empty_limits := true,
-                  category_filter := category_filter,
-                  category_object_filter := category_object_filter,
-                  category_morphism_filter := category_morphism_filter,
-                  create_func_object := create_func_object,
-                  create_func_morphism := create_func_morphism,
-                  create_func_morphism_or_fail := create_func_morphism,
-                  object_constructor := object_constructor,
-                  object_datum := object_datum,
-                  morphism_constructor := morphism_constructor,
-                  morphism_datum := morphism_datum,
-                  range_category_of_homomorphism_structure := "self",
-                  ) );
+    if HasRangeCategoryOfHomomorphismStructure( I ) then
+        H := RangeCategoryOfHomomorphismStructure( I );
+        if not IsIdenticalObj( I, H ) then
+            H := FiniteStrictCoproductCompletion( H );
+        else
+            H := "self";
+        fi;
+    else
+        H := "self";
+    fi;
+    
+    UI :=
+      CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
+              name := name,
+              supports_empty_limits := true,
+              category_filter := category_filter,
+              category_object_filter := category_object_filter,
+              category_morphism_filter := category_morphism_filter,
+              create_func_object := create_func_object,
+              create_func_morphism := create_func_morphism,
+              create_func_morphism_or_fail := create_func_morphism,
+              object_constructor := object_constructor,
+              object_datum := object_datum,
+              morphism_constructor := morphism_constructor,
+              morphism_datum := morphism_datum,
+              range_category_of_homomorphism_structure := H,
+              ) );
     
     ##
     SetUnderlyingCategory( UI, I );
@@ -149,6 +161,59 @@ InstallMethod( FiniteStrictCoproductCompletion,
         return true;
         
     end );
+    
+    if not H = "self" then ## if H = "self", the Hom-structure will be derived from the closed monoidal structure
+        
+        ##
+        AddDistinguishedObjectOfHomomorphismStructure( UI,
+          function( UI )
+            local H;
+            
+            H := RangeCategoryOfHomomorphismStructure( UI );
+            
+            return InitialObject( H );
+            
+        end );
+        
+        ##
+        AddHomomorphismStructureOnObjects( UI,
+                function( UI, S, T )
+            
+            return DistinguishedObjectOfHomomorphismStructure( UI );
+            
+        end );
+        
+        ##
+        AddHomomorphismStructureOnMorphismsWithGivenObjects( UI,
+          function ( UI, source, alpha, gamma, target )
+            local H;
+            
+            H := RangeCategoryOfHomomorphismStructure( UI );
+            
+            return MorphismConstructor( H, source, fail, target );
+            
+        end );
+        
+        ##
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( UI,
+          function( UI, distinguished_object, phi, target )
+            local H;
+            
+            H := RangeCategoryOfHomomorphismStructure( UI );
+            
+            return MorphismConstructor( H, distinguished_object, fail, target );
+            
+        end );
+        
+        ##
+        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UI,
+          function( UI, S, T, morphism )
+            
+            return MorphismConstructor( UI, S, fail, T );
+            
+        end );
+        
+    fi;
     
     ##
     AddMorphismsOfExternalHom( UI,

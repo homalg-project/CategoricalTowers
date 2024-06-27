@@ -25,18 +25,9 @@ InstallMethodWithCache( FreeDistributiveCompletion,
                    category_object_filter := IsWrapperCapCategoryObject and IsObjectInFreeDistributiveCompletion,
                    category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInFreeDistributiveCompletion,
                    only_primitive_operations := true )
-              : FinalizeCategory := false );
+              );
     
     SetUnderlyingCategory( free_distributive_completion, fp_category );
-    
-    if not HasRangeCategoryOfHomomorphismStructure( free_distributive_completion ) and
-       (HasIsInitialCategory and IsInitialCategory)( fp_category ) then
-        
-        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( free_distributive_completion, free_distributive_completion );
-        
-    fi;
-    
-    Finalize( free_distributive_completion : FinalizeCategory := true );
     
     if (HasIsInitialCategory and IsInitialCategory)( fp_category ) then
         Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( free_distributive_completion, "IsEquippedWithHomomorphismStructure" ) );

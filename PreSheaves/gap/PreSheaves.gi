@@ -860,16 +860,16 @@ InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
         [ IsCapCategory and IsInitialCategory, IsCapCategory ],
         
-  function ( B, D )
+  function ( I, D )
     local name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_object, create_func_morphism,
-          T;
+          H, PSh_I_I;
     
     name := "PreSheaves( ";
     
-    if HasName( B ) and HasName( D ) then
-        name := Concatenation( name, Name( B ), ", ", Name( D ), " )" );
+    if HasName( I ) and HasName( D ) then
+        name := Concatenation( name, Name( I ), ", ", Name( D ), " )" );
     else
         name := Concatenation( name, "..., ... )" );
     fi;
@@ -931,75 +931,156 @@ InstallMethodWithCache( PreSheaves,
             
         end;
     
-    T := CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
-                 name := name,
-                 category_filter := category_filter,
-                 category_object_filter := category_object_filter,
-                 category_morphism_filter := category_morphism_filter,
-                 create_func_object := create_func_object,
-                 create_func_morphism := create_func_morphism,
-                 create_func_morphism_or_fail := create_func_morphism,
-                 object_constructor := object_constructor,
-                 object_datum := object_datum,
-                 morphism_constructor := morphism_constructor,
-                 morphism_datum := morphism_datum,
-                 range_category_of_homomorphism_structure := "self",
-                 ) );
+    if HasRangeCategoryOfHomomorphismStructure( I ) then
+        H := RangeCategoryOfHomomorphismStructure( I );
+        if not IsIdenticalObj( I, H ) then
+            H := PreSheaves( H, H );
+        else
+            H := "self";
+        fi;
+    else
+        H := "self";
+    fi;
     
-    SetSource( T, B );
-    SetTarget( T, D );
+    PSh_I_I :=
+      CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
+              name := name,
+              supports_empty_limits := true,
+              category_filter := category_filter,
+              category_object_filter := category_object_filter,
+              category_morphism_filter := category_morphism_filter,
+              create_func_object := create_func_object,
+              create_func_morphism := create_func_morphism,
+              create_func_morphism_or_fail := create_func_morphism,
+              object_constructor := object_constructor,
+              object_datum := object_datum,
+              morphism_constructor := morphism_constructor,
+              morphism_datum := morphism_datum,
+              range_category_of_homomorphism_structure := H,
+              ) );
     
     ##
-    AddSetOfObjectsOfCategory( T,
-      function( T )
+    SetSource( PSh_I_I, I );
+    SetTarget( PSh_I_I, D );
+    
+    ##
+    PSh_I_I!.compiler_hints.category_attribute_names :=
+      [ "Source",
+        "Target",
+        ];
+    
+    ##
+    AddSetOfObjectsOfCategory( PSh_I_I,
+      function( PSh_I_I )
         
-        return [ TerminalObject( T ) ];
+        return [ InitialObject( PSh_I_I ) ];
         
     end );
     
     ##
-    AddIsWellDefinedForObjects( T,
-      function( T, object )
+    AddIsWellDefinedForObjects( PSh_I_I,
+      function( PSh_I_I, object )
         
         return true;
         
     end );
     
     ##
-    AddIsWellDefinedForMorphisms( T,
-      function( T, morphism )
+    AddIsWellDefinedForMorphisms( PSh_I_I,
+      function( PSh_I_I, morphism )
         
         return true;
         
     end );
     
     ##
-    AddIsEqualForObjects( T,
-      function( T, object1, object2 )
+    AddIsEqualForObjects( PSh_I_I,
+      function( PSh_I_I, object1, object2 )
         
         return true;
         
     end );
     
     ##
-    AddIsEqualForMorphisms( T,
-      function( T, morphism1, morphism2 )
+    AddIsEqualForMorphisms( PSh_I_I,
+      function( PSh_I_I, morphism1, morphism2 )
         
         return true;
         
     end );
     
     ##
-    AddIsCongruentForMorphisms( T,
-      function( T, morphism1, morphism2 )
+    AddIsCongruentForMorphisms( PSh_I_I,
+      function( PSh_I_I, morphism1, morphism2 )
         
         return true;
         
     end );
     
-    Finalize( T );
+    if not H = "self" then
+        
+        ##
+        AddDistinguishedObjectOfHomomorphismStructure( PSh_I_I,
+          function( PSh_I_I )
+            local H;
+            
+            H := RangeCategoryOfHomomorphismStructure( PSh_I_I );
+            
+            return InitialObject( H );
+            
+        end );
+        
+        ##
+        AddHomomorphismStructureOnObjects( PSh_I_I,
+                function( PSh_I_I, S, T )
+            
+            return DistinguishedObjectOfHomomorphismStructure( PSh_I_I );
+            
+        end );
+        
+        ##
+        AddHomomorphismStructureOnMorphismsWithGivenObjects( PSh_I_I,
+          function ( PSh_I_I, source, alpha, gamma, target )
+            local H;
+            
+            H := RangeCategoryOfHomomorphismStructure( PSh_I_I );
+            
+            return MorphismConstructor( H, source, fail, target );
+            
+        end );
+        
+        ##
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( PSh_I_I,
+          function( PSh_I_I, distinguished_object, phi, target )
+            local H;
+            
+            H := RangeCategoryOfHomomorphismStructure( PSh_I_I );
+            
+            return MorphismConstructor( H, distinguished_object, fail, target );
+            
+        end );
+        
+        ##
+        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh_I_I,
+          function( PSh_I_I, S, T, morphism )
+            
+            return MorphismConstructor( PSh_I_I, S, fail, T );
+            
+        end );
+        
+    fi;
     
-    return T;
+    ##
+    AddMorphismsOfExternalHom( PSh_I_I,
+      function( PSh_I_I, object1, object2 )
+        
+        return IdentityMorphism( PSh_I_I, object1 );
+        
+    end );
+    
+    Finalize( PSh_I_I );
+    
+    return PSh_I_I;
     
 end );
 

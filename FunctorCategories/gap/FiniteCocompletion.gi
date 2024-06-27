@@ -23,7 +23,8 @@ InstallMethodWithCache( FiniteCocompletion,
                    category_filter := IsWrapperCapCategory and IsFiniteCocompletion,
                    category_object_filter := IsWrapperCapCategoryObject and IsObjectInFiniteCocompletion,
                    category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInFiniteCocompletion,
-                   only_primitive_operations := true ) );
+                   only_primitive_operations := true )
+              );
     
     SetUnderlyingCategory( finite_cocompletion, fp_category );
     
