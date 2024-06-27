@@ -589,7 +589,7 @@
     [4X[28XA CAP category with name[128X[104X
     [4X[28XFiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X35 primitive operations were used to derive 172 operations for this category[128X[104X
+    [4X[28X35 primitive operations were used to derive 167 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
