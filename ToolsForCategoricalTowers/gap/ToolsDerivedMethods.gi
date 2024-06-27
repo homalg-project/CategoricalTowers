@@ -539,14 +539,14 @@ AddFinalDerivationBundle( "Limit using DirectProduct and Equalizer",
     [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ],
     [ PreCompose, 2 ] ],
   function( cat, objects, decorated_morphisms )
-      local pair;
-      
-      pair := LimitPair( cat,
-                        objects,
-                        decorated_morphisms );
-      
-      return Equalizer( cat, pair[1], pair[2] );
-      
+    local pair;
+    
+    pair := LimitPair( cat,
+                    objects,
+                    decorated_morphisms );
+    
+    return Equalizer( cat, pair[1], pair[2] );
+    
   end
 ],
 [
@@ -558,21 +558,21 @@ AddFinalDerivationBundle( "Limit using DirectProduct and Equalizer",
     [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ],
     [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ] ],
   function( cat, objects, decorated_morphisms, k, limit )
-      local pair;
-      
-      pair := LimitPair( cat,
-                        objects,
-                        decorated_morphisms );
-      
-      return PreCompose( cat,
-                     EmbeddingOfEqualizerWithGivenEqualizer( cat,
-                             pair[1],
-                             pair[2],
-                             limit ),
-                     ProjectionInFactorOfDirectProduct( cat,
-                             objects,
-                             1 + k ) );
-      
+    local pair;
+    
+    pair := LimitPair( cat,
+                    objects,
+                    decorated_morphisms );
+    
+    return PreCompose( cat,
+                   EmbeddingOfEqualizerWithGivenEqualizer( cat,
+                           pair[1],
+                           pair[2],
+                           limit ),
+                   ProjectionInFactorOfDirectProduct( cat,
+                           objects,
+                           1 + k ) );
+    
   end
 ],
 [
@@ -585,22 +585,22 @@ AddFinalDerivationBundle( "Limit using DirectProduct and Equalizer",
     [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ],
     [ PreCompose, 2 ] ],
   function( cat, objects, decorated_morphisms, T, tau, limit )
-      local pair;
-      
-      pair := LimitPair( cat,
-                        objects,
-                        decorated_morphisms );
-      
-      return LiftAlongMonomorphism( cat,
-                     EmbeddingOfEqualizerWithGivenEqualizer( cat,
-                             pair[1],
-                             pair[2],
-                             limit ),
-                     UniversalMorphismIntoDirectProduct( cat,
-                             objects,
-                             T,
-                             tau ) );
-      
+    local pair;
+    
+    pair := LimitPair( cat,
+                    objects,
+                    decorated_morphisms );
+    
+    return LiftAlongMonomorphism( cat,
+                   EmbeddingOfEqualizerWithGivenEqualizer( cat,
+                           pair[1],
+                           pair[2],
+                           limit ),
+                   UniversalMorphismIntoDirectProduct( cat,
+                           objects,
+                           T,
+                           tau ) );
+    
   end
 ]
  );
@@ -609,9 +609,16 @@ AddFinalDerivationBundle( "Limit using DirectProduct and Equalizer",
 AddFinalDerivationBundle( "Colimit using limit in the opposite category",
         ## FIXME: remove the following list and add it to CategoryFilter;
         ## problem: Input category must be finalized to create opposite category
-        [ [ Limit, 1 ],
-          [ ProjectionInFactorOfLimitWithGivenLimit, 1 ],
-          [ UniversalMorphismIntoLimitWithGivenLimit,1 ] ],
+        [ [ Coproduct, 2 ],
+          [ Coequalizer, 1 ],
+          [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ], ## called in List
+          [ UniversalMorphismFromCoproductWithGivenCoproduct, 2 ],
+          [ PreCompose, 3 ], ## called in List
+          [ ProjectionOntoCoequalizerWithGivenCoequalizer, 1 ],
+          [ InjectionOfCofactorOfCoproduct, 1 ],
+          [ UniversalMorphismFromCoproduct, 1 ],
+          [ ColiftAlongEpimorphism, 1 ],
+          ],
         [ Colimit,
           InjectionOfCofactorOfColimit,
           InjectionOfCofactorOfColimitWithGivenColimit,
@@ -620,40 +627,74 @@ AddFinalDerivationBundle( "Colimit using limit in the opposite category",
           ],
 [
   Colimit,
-  [ [ Limit, 1 ] ],
+  [ [ Coequalizer, 1 ],
+    [ Coproduct, 2 ],
+    [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ],
+    [ UniversalMorphismFromCoproductWithGivenCoproduct, 2 ],
+    [ PreCompose, 2 ] ],
   function( cat, objects, decorated_morphisms )
-      
-      return Opposite( Limit( Opposite( cat ),
-                     List( objects, Opposite ),
-                     List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ) ) );
-      
+    local pair;
+    
+    pair := ColimitPair( cat,
+                    objects,
+                    decorated_morphisms );
+    
+    return Coequalizer( cat, pair[1], pair[2] );
+    
   end
 ],
 [
   InjectionOfCofactorOfColimitWithGivenColimit,
-  [ [ ProjectionInFactorOfLimitWithGivenLimit, 1 ] ],
+  [ [ PreCompose, 3 ],
+    [ ProjectionOntoCoequalizerWithGivenCoequalizer, 1 ],
+    [ InjectionOfCofactorOfCoproduct, 1 ],
+    [ Coproduct, 2 ],
+    [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ],
+    [ UniversalMorphismFromCoproductWithGivenCoproduct, 2 ] ],
   function( cat, objects, decorated_morphisms, k, colimit )
-      
-      return Opposite( ProjectionInFactorOfLimitWithGivenLimit( Opposite( cat ),
-                     List( objects, Opposite ),
-                     List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ),
-                     k,
-                     Opposite( colimit ) ) );
-      
+    local pair;
+    
+    pair := ColimitPair( cat,
+                    objects,
+                    decorated_morphisms );
+    
+    return PreCompose( cat,
+                   InjectionOfCofactorOfCoproduct( cat,
+                           objects,
+                           1 + k ),
+                   ProjectionOntoCoequalizerWithGivenCoequalizer( cat,
+                           pair[1],
+                           pair[2],
+                           colimit ) );
+    
   end
 ],
 [
   UniversalMorphismFromColimitWithGivenColimit,
-  [ [ UniversalMorphismIntoLimitWithGivenLimit, 1 ] ],
+  [ [ ColiftAlongEpimorphism, 1 ],
+    [ ProjectionOntoCoequalizerWithGivenCoequalizer, 1 ],
+    [ UniversalMorphismFromCoproduct, 1 ],
+    [ Coproduct, 2 ],
+    [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ],
+    [ UniversalMorphismFromCoproductWithGivenCoproduct, 2 ],
+    [ PreCompose, 2 ] ],
   function( cat, objects, decorated_morphisms, T, tau, colimit )
-      
-      return Opposite( UniversalMorphismIntoLimitWithGivenLimit( Opposite( cat ),
-                     List( objects, Opposite ),
-                     List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ),
-                     Opposite( T ),
-                     List( tau, Opposite ),
-                     Opposite( colimit ) ) );
-      
+    local pair;
+    
+    pair := ColimitPair( cat,
+                    objects,
+                    decorated_morphisms );
+    
+    return ColiftAlongEpimorphism( cat,
+                   ProjectionOntoCoequalizerWithGivenCoequalizer( cat,
+                           pair[1],
+                           pair[2],
+                           colimit ),
+                   UniversalMorphismFromCoproduct( cat,
+                           objects,
+                           T,
+                           tau ) );
+    
   end
 ]
  );

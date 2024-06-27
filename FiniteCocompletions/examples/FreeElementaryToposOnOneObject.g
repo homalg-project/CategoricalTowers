@@ -24,7 +24,7 @@ Display( Poly );
 #! A CAP category with name
 #! FiniteStrictCoproductCompletion( Opposite( SkeletalFinSets ) ):
 #! 
-#! 33 primitive operations were used to derive 173 operations for this category
+#! 33 primitive operations were used to derive 168 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
