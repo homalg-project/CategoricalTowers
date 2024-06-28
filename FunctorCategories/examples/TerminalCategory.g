@@ -5,14 +5,16 @@ LoadPackage( "FunctorCategories", false );
 #! true
 T := FiniteCompletion( InitialCategory( ) );
 #! FiniteCompletion( InitialCategory( ) )
-IsIdenticalObj( RangeCategoryOfHomomorphismStructure( T ), T );
-#! true
+H := RangeCategoryOfHomomorphismStructure( T );
+#! PreSheaves( InitialCategory( ), InitialCategory( ) )
 IsTerminalCategory( T );
+#! true
+IsTerminalCategory( H );
 #! true
 Display( T );
 #! A CAP category with name FiniteCompletion( InitialCategory( ) ):
 #! 
-#! 110 primitive operations were used to derive 627 operations for this category
+#! 117 primitive operations were used to derive 627 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts

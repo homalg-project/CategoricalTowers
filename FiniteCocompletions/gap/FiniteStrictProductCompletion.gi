@@ -63,28 +63,13 @@ InstallMethod( FiniteStrictProductCompletion,
     
     ## building the categorical tower:
     
-    opC := Opposite( C : only_primitive_operations := true, FinalizeCategory := false );
-
-    if HasRangeCategoryOfHomomorphismStructure( C ) and not HasRangeCategoryOfHomomorphismStructure( opC ) then
-        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( opC, RangeCategoryOfHomomorphismStructure( C ) );
-    fi;
-    
-    Finalize( opC : FinalizeCategory := true );
+    opC := Opposite( C : only_primitive_operations := true, FinalizeCategory := true );
     
     UopC := FiniteStrictCoproductCompletion( opC : FinalizeCategory := true );
     
-    opUopC := Opposite( UopC : only_primitive_operations := true, FinalizeCategory := false );
+    opUopC := Opposite( UopC : only_primitive_operations := true, FinalizeCategory := true );
     
-    if not HasRangeCategoryOfHomomorphismStructure( opUopC ) and
-       (HasIsInitialCategory and IsInitialCategory)( C ) then
-        
-        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( opUopC, opUopC );
-        
-    fi;
-    
-    Finalize( opUopC : FinalizeCategory := true );
-    
-    if (HasIsInitialCategory and IsInitialCategory)( C ) then
+    if HasIsInitialCategory( C ) and IsInitialCategory( C ) then
         Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( opUopC, "IsEquippedWithHomomorphismStructure" ) );
     fi;
     
@@ -147,6 +132,7 @@ InstallMethod( FiniteStrictProductCompletion,
                                                    ObjectConstructor( opC, Source( morC ) ) ) ) ),
                                ObjectDatum( opUopC, source ) ),
                        target );
+        
     end;
     
     ## from the morphism in the modeling category to the raw morphism data
@@ -187,23 +173,14 @@ InstallMethod( FiniteStrictProductCompletion,
                    modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                    modeling_tower_morphism_datum := modeling_tower_morphism_datum,
                    only_primitive_operations := true )
-              : FinalizeCategory := false );
+              );
     
     SetUnderlyingCategory( PC, C );
     
     Append( PC!.compiler_hints.category_attribute_names,
             [ "UnderlyingCategory" ] );
     
-    if not HasRangeCategoryOfHomomorphismStructure( PC ) and
-       (HasIsInitialCategory and IsInitialCategory)( C ) then
-        
-        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( PC, PC );
-        
-    fi;
-    
-    Finalize( PC );
-    
-    if (HasIsInitialCategory and IsInitialCategory)( C ) then
+    if HasIsInitialCategory( C ) and IsInitialCategory( C ) then
         Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( PC, "IsEquippedWithHomomorphismStructure" ) );
     fi;
     

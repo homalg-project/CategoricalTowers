@@ -13,7 +13,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
     local name, category_filter, category_object_filter, category_morphism_filter,
           create_func_object, create_func_morphism,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
-          UI;
+          H, UI;
     
     name := Concatenation( "FiniteStrictCoproductCompletion( ", Name( I ), " )" );
     
@@ -86,21 +86,33 @@ InstallMethod( FiniteStrictCoproductCompletion,
     
     morphism_datum := { UI, morphism } -> PairOfLists( morphism );
     
-    UI := CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
-                  name := name,
-                  supports_empty_limits := true,
-                  category_filter := category_filter,
-                  category_object_filter := category_object_filter,
-                  category_morphism_filter := category_morphism_filter,
-                  create_func_object := create_func_object,
-                  create_func_morphism := create_func_morphism,
-                  create_func_morphism_or_fail := create_func_morphism,
-                  object_constructor := object_constructor,
-                  object_datum := object_datum,
-                  morphism_constructor := morphism_constructor,
-                  morphism_datum := morphism_datum,
-                  range_category_of_homomorphism_structure := "self",
-                  ) );
+    if HasRangeCategoryOfHomomorphismStructure( I ) then
+        H := RangeCategoryOfHomomorphismStructure( I );
+        if not IsIdenticalObj( I, H ) then
+            H := FiniteStrictCoproductCompletion( H );
+        else
+            H := "self";
+        fi;
+    else
+        H := "self";
+    fi;
+    
+    UI :=
+      CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
+              name := name,
+              supports_empty_limits := true,
+              category_filter := category_filter,
+              category_object_filter := category_object_filter,
+              category_morphism_filter := category_morphism_filter,
+              create_func_object := create_func_object,
+              create_func_morphism := create_func_morphism,
+              create_func_morphism_or_fail := create_func_morphism,
+              object_constructor := object_constructor,
+              object_datum := object_datum,
+              morphism_constructor := morphism_constructor,
+              morphism_datum := morphism_datum,
+              range_category_of_homomorphism_structure := H,
+              ) );
     
     ##
     SetUnderlyingCategory( UI, I );
@@ -114,7 +126,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
     AddSetOfObjectsOfCategory( UI,
       function( UI )
         
-        return [ TerminalObject( UI ) ];
+        return [ InitialObject( UI ) ];
         
     end );
     
@@ -150,6 +162,59 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     end );
     
+    if not H = "self" then ## if H = "self", the Hom-structure will be derived from the closed monoidal structure
+        
+        ##
+        AddDistinguishedObjectOfHomomorphismStructure( UI,
+          function( UI )
+            local H;
+            
+            H := RangeCategoryOfHomomorphismStructure( UI );
+            
+            return InitialObject( H );
+            
+        end );
+        
+        ##
+        AddHomomorphismStructureOnObjects( UI,
+                function( UI, S, T )
+            
+            return DistinguishedObjectOfHomomorphismStructure( UI );
+            
+        end );
+        
+        ##
+        AddHomomorphismStructureOnMorphismsWithGivenObjects( UI,
+          function ( UI, source, alpha, gamma, target )
+            local H;
+            
+            H := RangeCategoryOfHomomorphismStructure( UI );
+            
+            return MorphismConstructor( H, source, fail, target );
+            
+        end );
+        
+        ##
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( UI,
+          function( UI, distinguished_object, phi, target )
+            local H;
+            
+            H := RangeCategoryOfHomomorphismStructure( UI );
+            
+            return MorphismConstructor( H, distinguished_object, fail, target );
+            
+        end );
+        
+        ##
+        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UI,
+          function( UI, S, T, morphism )
+            
+            return MorphismConstructor( UI, S, fail, T );
+            
+        end );
+        
+    fi;
+    
     ##
     AddMorphismsOfExternalHom( UI,
       function( UI, object1, object2 )
@@ -172,7 +237,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         [ IsCapCategory ],
         
   function ( C )
-    local UC, H, install_hom_structure,
+    local UC, H,
           object_func, morphism_func, object_func_inverse, morphism_func_inverse, extended;
     
     ##
@@ -207,14 +272,14 @@ InstallMethod( FiniteStrictCoproductCompletion,
     
     SetIsStrictCocartesianCategory( UC, true );
 
-    if ( HasIsCartesianCategory and IsCartesianCategory )( C ) then
-        if ( HasIsStrictCartesianCategory and IsStrictCartesianCategory )( C ) then
+    if HasIsCartesianCategory( C ) and IsCartesianCategory( C ) then
+        if HasIsStrictCartesianCategory( C ) and IsStrictCartesianCategory( C ) then
             SetIsStrictCartesianCategory( UC, true );
         fi;
         SetIsDistributiveCategory( UC, true );
     fi;
     
-    if ( HasIsFiniteCompleteCategory and IsFiniteCompleteCategory )( C ) then
+    if HasIsFiniteCompleteCategory( C ) and IsFiniteCompleteCategory( C ) then
         
         SetIsFiniteCompleteCategory( UC, true );
         
@@ -1045,13 +1110,10 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     fi;
     
-    install_hom_structure := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "install_hom_structure", true );
-    
-    if install_hom_structure and
-       ( HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure )( C ) and
+    if HasIsEquippedWithHomomorphismStructure( C ) and IsEquippedWithHomomorphismStructure( C ) and
        MissingOperationsForConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
        IsBound( H ) and
-       ( HasIsCartesianCategory and IsCartesianCategory )( H ) and
+       HasIsCartesianCategory( H ) and IsCartesianCategory( H ) and
        MissingOperationsForConstructivenessOfCategory( H, "IsCartesianCategory" ) = [ ] then
         
         if ( HasIsTerminalCategory and IsTerminalCategory )( H ) or

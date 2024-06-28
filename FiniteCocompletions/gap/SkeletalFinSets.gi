@@ -58,65 +58,52 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
     ## the initial category in the doctrine of categories
     I := InitialCategory( : FinalizeCategory := true );
     
-    ##
-    UT := FreeDistributiveCategoryWithStrictProductAndCoproducts( I : FinalizeCategory := true );
+    ## the terminal category
+    T := FiniteStrictCoproductCompletion( I : FinalizeCategory := true );
+    
+    UT := FiniteStrictCoproductCompletion( T : FinalizeCategory := true );
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
       function( sFinSets, cardinality )
-        local DI, UT, T;
+        local UT, T;
         
-        DI := ModelingCategory( sFinSets );
-        
-        UT := ModelingCategory( DI );
+        UT := ModelingCategory( sFinSets );
         
         T := UnderlyingCategory( UT );
         
-        return ObjectConstructor( DI,
-                       ObjectConstructor( UT,
-                               Pair( cardinality,
-                                     ListWithIdenticalEntries( cardinality,
-                                             TerminalObject( T ) ) ) ) );
+        return ObjectConstructor( UT,
+                       Pair( cardinality,
+                             ListWithIdenticalEntries( cardinality,
+                                     InitialObject( T ) ) ) );
         
     end;
     
     ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
       function( sFinSets, U )
-        local DI, UT;
+        local UT;
         
-        DI := ModelingCategory( sFinSets );
+        UT := ModelingCategory( sFinSets );
         
-        UT := ModelingCategory( DI );
-        
-        return ObjectDatum( UT,
-                       ObjectDatum( DI,
-                               U ) )[1];
+        return ObjectDatum( UT, U )[1];
         
     end;
     
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
       function( sFinSets, source, map, target )
-        local DI, UT, T, source_UT, target_UT;
+        local UT, T;
         
-        DI := ModelingCategory( sFinSets );
-        
-        UT := ModelingCategory( DI );
+        UT := ModelingCategory( sFinSets );
         
         T := UnderlyingCategory( UT );
         
-        source_UT := ObjectDatum( DI, source );
-        target_UT := ObjectDatum( DI, target );
-        
-        return MorphismConstructor( DI,
+        return MorphismConstructor( UT,
                        source,
-                       MorphismConstructor( UT,
-                               source_UT,
-                               Pair( map,
-                                     ListWithIdenticalEntries( ObjectDatum( UT, source_UT )[1],
-                                             IdentityMorphism( T, TerminalObject( T ) ) ) ),
-                               target_UT ),
+                       Pair( map,
+                             ListWithIdenticalEntries( ObjectDatum( UT, source )[1],
+                                     IdentityMorphism( T, InitialObject( T ) ) ) ),
                        target );
         
     end;
@@ -124,15 +111,11 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_datum :=
       function( sFinSets, mor )
-        local DI, UT;
+        local UT;
         
-        DI := ModelingCategory( sFinSets );
+        UT := ModelingCategory( sFinSets );
         
-        UT := ModelingCategory( DI );
-        
-        return MorphismDatum( UT,
-                       MorphismDatum( DI,
-                               mor ) )[1];
+        return MorphismDatum( UT, mor )[1];
         
     end;
     
@@ -159,10 +142,6 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
     # this is a workhorse category -> no logic and caching only via IsIdenticalObj
     CapCategorySwitchLogicOff( sFinSets );
     
-    ##
-    Assert( 0, HasRangeCategoryOfHomomorphismStructure( sFinSets ) );
-    Assert( 0, IsIdenticalObj( sFinSets, RangeCategoryOfHomomorphismStructure( sFinSets ) ) );
-    
     if ValueOption( "no_precompiled_code" ) <> true then
         
         ADD_FUNCTIONS_FOR_SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategoryPrecompiled( sFinSets );
@@ -170,6 +149,10 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
     fi;
     
     Finalize( sFinSets );
+    
+    ##
+    Assert( 0, HasRangeCategoryOfHomomorphismStructure( sFinSets ) );
+    Assert( 0, IsIdenticalObj( sFinSets, RangeCategoryOfHomomorphismStructure( sFinSets ) ) );
     
     Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( sFinSets, "IsEquippedWithHomomorphismStructure" ) );
     

@@ -453,18 +453,9 @@ InstallMethodWithCache( CoPreSheaves,
     
     Hom := FunctorCategory( B, D : FinalizeCategory := true );
     
-    O := Opposite( Hom : FinalizeCategory := false, only_primitive_operations := true );
+    O := Opposite( Hom : only_primitive_operations := true, FinalizeCategory := true );
     
-    if not HasRangeCategoryOfHomomorphismStructure( O ) and
-       (HasIsInitialCategory and IsInitialCategory)( B ) then
-        
-        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( O, O );
-        
-    fi;
-    
-    Finalize( O : FinalizeCategory := true );
-    
-    if (HasIsInitialCategory and IsInitialCategory)( B ) then
+    if HasIsInitialCategory( B ) and IsInitialCategory( B ) then
         Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( O, "IsEquippedWithHomomorphismStructure" ) );
     fi;
     
@@ -550,7 +541,7 @@ InstallMethodWithCache( CoPreSheaves,
                    modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                    modeling_tower_morphism_datum := modeling_tower_morphism_datum,
                    only_primitive_operations := true )
-              : FinalizeCategory := false );
+              );
     
     SetSource( coPSh, B );
     SetTarget( coPSh, D );
@@ -559,15 +550,6 @@ InstallMethodWithCache( CoPreSheaves,
             [ "Source",
               "Target",
               ] );
-    
-    if not HasRangeCategoryOfHomomorphismStructure( coPSh ) and
-       (HasIsInitialCategory and IsInitialCategory)( B ) then
-        
-        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( coPSh, coPSh );
-        
-    fi;
-    
-    Finalize( coPSh );
     
     return coPSh;
     

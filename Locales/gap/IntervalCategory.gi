@@ -7,7 +7,7 @@
 ##
 InstallGlobalFunction( "CreateIntervalCategory",
   function( )
-    local I, IntervalCategory;
+    local IntervalCategory;
     
     IntervalCategory :=
       CreateCapCategoryWithDataTypes( "IntervalCategory",

@@ -14,9 +14,9 @@ InstallMethodWithCache( FreeDistributiveCompletion,
           free_distributive_completion;
     
     ## building the categorical tower:
-    finite_completion := FiniteCompletion( fp_category, range_category_of_hom_structure : FinalizeCategory := true, overhead := false );
+    finite_completion := FiniteCompletion( fp_category, range_category_of_hom_structure : overhead := false, FinalizeCategory := true );
     
-    finite_cocompletion := FiniteCocompletion( finite_completion, range_category_of_hom_structure : FinalizeCategory := true, overhead := false );
+    finite_cocompletion := FiniteCocompletion( finite_completion, range_category_of_hom_structure : overhead := false, FinalizeCategory := true );
     
     free_distributive_completion :=
       WrapperCategory( finite_cocompletion,
@@ -25,18 +25,9 @@ InstallMethodWithCache( FreeDistributiveCompletion,
                    category_object_filter := IsWrapperCapCategoryObject and IsObjectInFreeDistributiveCompletion,
                    category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInFreeDistributiveCompletion,
                    only_primitive_operations := true )
-              : FinalizeCategory := false );
+              );
     
     SetUnderlyingCategory( free_distributive_completion, fp_category );
-    
-    if not HasRangeCategoryOfHomomorphismStructure( free_distributive_completion ) and
-       (HasIsInitialCategory and IsInitialCategory)( fp_category ) then
-        
-        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( free_distributive_completion, free_distributive_completion );
-        
-    fi;
-    
-    Finalize( free_distributive_completion : FinalizeCategory := true );
     
     if (HasIsInitialCategory and IsInitialCategory)( fp_category ) then
         Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( free_distributive_completion, "IsEquippedWithHomomorphismStructure" ) );
