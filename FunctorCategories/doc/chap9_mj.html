@@ -138,14 +138,16 @@
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := FiniteCompletion( InitialCategory( ) );</span>
 FiniteCompletion( InitialCategory( ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( RangeCategoryOfHomomorphismStructure( T ), T );</span>
-true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := RangeCategoryOfHomomorphismStructure( T );</span>
+PreSheaves( InitialCategory( ), InitialCategory( ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminalCategory( T );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminalCategory( H );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A CAP category with name FiniteCompletion( InitialCategory( ) ):
 
-110 primitive operations were used to derive 627 operations for this category
+117 primitive operations were used to derive 627 operations for this category
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
