@@ -17,9 +17,9 @@ Display( T );
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsLeftClosedMonoidalCategory
 #! * IsLeftCoclosedMonoidalCategory
+#! * IsElementaryTopos
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
-#! * IsElementaryTopos
 #! * IsSymmetricClosedMonoidalLattice
 #! * IsSymmetricCoclosedMonoidalLattice
 #! * IsBooleanAlgebra
