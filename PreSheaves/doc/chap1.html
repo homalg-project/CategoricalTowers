@@ -221,16 +221,18 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := PreSheaves( InitialCategory( ) );</span>
 PreSheaves( InitialCategory( ), InitialCategory( ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( T, RangeCategoryOfHomomorphismStructure( T ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminalCategory( T );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A CAP category with name PreSheaves( InitialCategory( ), InitialCategory( ) ):
 
-110 primitive operations were used to derive 611 operations for this category
+111 primitive operations were used to derive 617 operations for this category
 which algorithmically
-* IsObjectFiniteCategory
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
+* IsFiniteCategory
 * IsEquippedWithHomomorphismStructure
 * IsLinearCategoryOverCommutativeRing
 * IsLeftClosedMonoidalCategory
@@ -242,7 +244,6 @@ which algorithmically
 * IsRigidSymmetricClosedMonoidalCategory
 * IsRigidSymmetricCoclosedMonoidalCategory
 and not yet algorithmically
-* IsFiniteCategory
 * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 and furthermore mathematically
 * IsLocallyOfFiniteInjectiveDimension
