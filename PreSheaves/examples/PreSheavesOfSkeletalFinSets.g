@@ -12,8 +12,8 @@ Display( PSh );
 #! 
 #! 46 primitive operations were used to derive 165 operations for this category
 #! which not yet algorithmically
-#! * IsDistributiveCategory
 #! * IsFiniteBicompleteCategory
+#! * IsDistributiveCategory
 MissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" );
 #! [ "CartesianLeftCoevaluationMorphismWithGivenRange",
 #!   "CartesianLeftEvaluationMorphismWithGivenSource",

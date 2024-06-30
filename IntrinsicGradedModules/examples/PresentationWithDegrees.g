@@ -20,8 +20,8 @@ Display( A );
 #! 186 primitive operations were used to derive 379 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
-#! * IsAbelianCategoryWithEnoughProjectives
 #! * IsSymmetricClosedMonoidalCategory
+#! * IsAbelianCategoryWithEnoughProjectives
 mat := HomalgMatrix( "[ 0, z, -y,  -z, 0, x,  y, -x, 0 ]", 3, 3, S );
 #! <A 3 x 3 matrix over a graded ring>
 phi := GradedMap( mat, "left", S );
