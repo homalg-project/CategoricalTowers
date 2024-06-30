@@ -31,8 +31,8 @@ AddCategoricalProperty( [ "IsHeytingAlgebra", "IsCoHeytingAlgebra" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsHeytingAlgebra :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsHeytingAlgebroid,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory ) );
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsHeytingAlgebroid ) );
 
 #! @Section Operations
 

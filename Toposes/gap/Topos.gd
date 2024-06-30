@@ -132,16 +132,16 @@ DeclareProperty( "IsElementaryTopos",
 AddCategoricalProperty( [ "IsElementaryTopos", fail ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsElementaryTopos :=
-  DuplicateFreeList( SortedList(
-          Concatenation( [
-                  "SubobjectClassifier",
-                  "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
-                  #"TruthMorphismOfTrueWithGivenObjects", ## derived from SubobjectClassifier & ClassifyingMorphismOfSubobjectWithGiven... & IdentityMorphism
-                  "SubobjectOfClassifyingMorphism", ## can be derived from SubobjectClassifier & TruthMorphismOfTrueWithGivenObjects & ProjectionInFactorOfFiberProduct
-                  ],
+  DuplicateFreeList(
+          Concatenation(
                   CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory,
                   CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteBicompleteCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory ) ) );
+                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory,
+                  [ "SubobjectClassifier",
+                    "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
+                    #"TruthMorphismOfTrueWithGivenObjects", ## derived from SubobjectClassifier & ClassifyingMorphismOfSubobjectWithGiven... & IdentityMorphism
+                    "SubobjectOfClassifyingMorphism", ## can be derived from SubobjectClassifier & TruthMorphismOfTrueWithGivenObjects & ProjectionInFactorOfFiberProduct
+                    ] ) );
 
 #! A subobject classifier consists of three parts:
 #! * an object $\Omega$,

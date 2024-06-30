@@ -19,10 +19,10 @@ DeclareProperty( "IsPosetCategory",
 AddCategoricalProperty( [ "IsPosetCategory", "IsPosetCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory :=
-  DuplicateFreeList( Concatenation( [
-          "IsEqualForObjectsIfIsHomSetInhabited",
-          ],
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory ) );
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory,
+          [ "IsEqualForObjectsIfIsHomSetInhabited",
+            ] ) );
 
 #! @Description
 #!  The property of <A>C</A> being a total order &CAP; category.
