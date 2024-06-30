@@ -131,7 +131,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     
     Append( str, "digraph hgn{\n" );
     Append( str, "node [shape=rect]\n" );
-
+    
     for i in DigraphVertices( D ) do
         Append( str, String(i) );
         Append( str, " [label=\"" );
