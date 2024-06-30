@@ -34,6 +34,27 @@ DeclareGlobalFunction( "UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODU
 DeclareOperation( "SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE",
         [ IsCapCategory, IsCapCategory ] );
 
+#! @Description
+#!  The function takes no arguments and returns the list of known doctrines.
+#! @Returns a list
+DeclareGlobalFunction( "ListKnownDoctrines" );
+
+#! @Description
+#!  The argument <A>doctrine_name</A> is a string which is a name of a valid doctrine
+#!  in the <C>ListKnownDoctrines</C>().
+#! @Returns a list
+#! @Arguments doctrine_name
+DeclareGlobalFunction( "ListMethodsOfDoctrine" );
+
+#! @Description
+#!  The argument is a nonempty list <A>doctrine_names</A> of strings of doctrine names and the output
+#!  is a dummy category created using <C>DummyCategory</C> which lies in the given doctrine.
+#! @Returns a &CAP; category
+#! @Arguments doctrine_names
+DeclareOperation( "DummyCategoryInDoctrines",
+        [ IsList ] );
+#! @InsertChunk DummyCategoryInDoctrines
+
 ####################################
 ##
 #! @Section Properties

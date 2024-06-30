@@ -11,6 +11,46 @@ InstallTrueMethod( IsObjectFiniteCategory, IsFiniteCategory );
 InstallTrueMethod( IsEquivalentToFiniteCategory, IsFiniteCategory );
 
 ##
+InstallGlobalFunction( ListMethodsOfDoctrine,
+  function( doctrine_name )
+    
+    return DuplicateFreeList( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.(doctrine_name) );
+    
+end );
+
+##
+InstallMethod( DummyCategoryInDoctrines,
+        "for a list of string",
+        [ IsList ],
+
+  function( doctrine_names )
+    local options;
+    
+    if IsEmpty( doctrine_names ) then
+        Error( "the list of doctrine names is empty\n" );
+    elif IsStringRep( doctrine_names ) then
+        doctrine_names := [ doctrine_names ];
+    fi;
+    
+    if not IsSubset( ListKnownDoctrines( ), doctrine_names ) then
+        Error( "the following entries are not supported doctrines: ", String( Difference( doctrine_names, ListKnownDoctrines( ) ) ), "\n" );
+    fi;
+    
+    doctrine_names := MaximalObjects( doctrine_names, { doc1, doc2 } -> IsSubset( ListMethodsOfDoctrine( doc2 ), ListMethodsOfDoctrine( doc1 ) ) );
+    
+    options := rec( );
+    
+    options.name := Concatenation( "DummyCategoryInDoctrines( ", String( doctrine_names ), " )" );
+    
+    options.properties := Difference( doctrine_names, "EveryCategory" );
+    
+    options.list_of_operations_to_install := Set( Concatenation( List( doctrine_names, ListMethodsOfDoctrine ) ) );
+    
+    return DummyCategory( options );
+    
+end );
+
+##
 InstallMethod( SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE,
         "for two CAP categories",
         [ IsCapCategory, IsCapCategory ],

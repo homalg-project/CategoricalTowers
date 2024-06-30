@@ -8,6 +8,10 @@ ReadPackage( "ToolsForCategoricalTowers", "gap/Tools.gi");
 ReadPackage( "ToolsForCategoricalTowers", "gap/ToolsMethodRecord.gi");
 ReadPackage( "ToolsForCategoricalTowers", "gap/ToolsDerivedMethods.gi");
 
+if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
+    ReadPackage( "ToolsForCategoricalTowers", "gap/ToolsUsingDigraphs.gi");
+fi;
+
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "ToolsForCategoricalTowers", "gap/Julia.gi" );
 fi;

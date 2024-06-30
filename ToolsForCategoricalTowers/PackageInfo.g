@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "ToolsForCategoricalTowers",
 Subtitle := "Tools for CategoricalTowers",
-Version := "2024.06-03",
+Version := "2024.06-04",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
@@ -76,7 +76,9 @@ Dependencies := rec(
                    [ "CartesianCategories", ">= 2024.06-01" ],
                    [ "ToolsForHomalg", ">= 2021.11-01" ],
                    ],
-  SuggestedOtherPackages := [ ],
+  SuggestedOtherPackages := [
+                   [ "Digraphs", ">= 1.3.1" ],
+                   ],
   ExternalConditions := [ ],
 ),
 
