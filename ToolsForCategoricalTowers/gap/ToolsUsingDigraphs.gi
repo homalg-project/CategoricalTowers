@@ -7,9 +7,23 @@
 ##
 InstallGlobalFunction( DigraphOfKnownDoctrines,
   function( )
-    local D, doctrines, positions;
+    local compare, D, doctrines, positions;
     
-    D := Digraph( Set( RecNames( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD ) ), { a, b } -> IsSubset( ListMethodsOfDoctrine( a ), ListMethodsOfDoctrine( b ) ) );
+    compare :=
+      function( a, b )
+        local bool;
+        
+        bool := IsSubset( ListMethodsOfDoctrine( a ), ListMethodsOfDoctrine( b ) );
+        
+        if IsBoundGlobal( a ) then
+            return ( b in ListImpliedFilters( ValueGlobal( a ) ) ) or bool;
+        else
+            return bool;
+        fi;
+        
+    end;
+    
+    D := Digraph( Set( RecNames( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD ) ), compare );
     
     doctrines := ShallowCopy( D!.vertexlabels );
     
