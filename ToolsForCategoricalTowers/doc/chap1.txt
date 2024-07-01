@@ -24,6 +24,51 @@
   [33X[0;0YAn  error  is raised if [10XRangeCategoryOfHomomorphismStructure[110X( [3XC[103X ) is already
   set.[133X
   
+  [1X1.1-2 ListKnownDoctrines[101X
+  
+  [33X[1;0Y[29X[2XListKnownDoctrines[102X( [3Xarg[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe function takes no arguments and returns the list of known doctrines.[133X
+  
+  [1X1.1-3 ListMethodsOfDoctrine[101X
+  
+  [33X[1;0Y[29X[2XListMethodsOfDoctrine[102X( [3Xdoctrine_name[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  argument  [3Xdoctrine_name[103X is a string which is a name of a valid doctrine
+  in the [10XListKnownDoctrines[110X().[133X
+  
+  [1X1.1-4 DummyCategoryInDoctrines[101X
+  
+  [33X[1;0Y[29X[2XDummyCategoryInDoctrines[102X( [3Xdoctrine_names[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThe  argument is a nonempty list [3Xdoctrine_names[103X of strings of doctrine names
+  and the output is a dummy category created using [10XDummyCategory[110X which lies in
+  the given doctrine.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "ToolsForCategoricalTowers", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XD1 := DummyCategoryInDoctrines( "IsAbCategory" );[127X[104X
+    [4X[28XDummyCategoryInDoctrines( [ "IsAbCategory" ] )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( D1 );[127X[104X
+    [4X[28XA CAP category with name DummyCategoryInDoctrines( [ "IsAbCategory" ] ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X10 primitive operations were used to derive 21 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsAbCategory[128X[104X
+    [4X[25Xgap>[125X [27XD2 := DummyCategoryInDoctrines( [ "IsAbCategory", "IsAbelianCategory" ] );[127X[104X
+    [4X[28XDummyCategoryInDoctrines( [ "IsAbelianCategory" ] )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( D2 );[127X[104X
+    [4X[28XA CAP category with name DummyCategoryInDoctrines( [ "IsAbelianCategory" ] ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X26 primitive operations were used to derive 284 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsAbelianCategory[128X[104X
+  [4X[32X[104X
+  
   
   [1X1.2 [33X[0;0YProperties[133X[101X
   

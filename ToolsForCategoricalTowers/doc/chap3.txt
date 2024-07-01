@@ -1,0 +1,32 @@
+  
+  [1X3 [33X[0;0YToolsForCategoricalTowers automatic generated documentation[133X[101X
+  
+  
+  [1X3.1  [33X[0;0YToolsForCategoricalTowers  automatic  generated documentation of global[101X
+  [1Xfunctions[133X[101X
+  
+  [1X3.1-1 DigraphOfKnownDoctrines[101X
+  
+  [33X[1;0Y[29X[2XDigraphOfKnownDoctrines[102X( [3Xarg[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya digraph[133X
+  
+  [33X[0;0YThe Hasse digraph of the known doctrines.[133X
+  
+  
+  [1X3.2 [33X[0;0YToolsForCategoricalTowers automatic generated documentation of methods[133X[101X
+  
+  [1X3.2-1 Visualize[101X
+  
+  [33X[1;0Y[29X[2XVisualize[102X( [3XD[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YOpens a PDF with the graph of the digraph D of known doctrines.[133X
+  
+  
+  [1X3.3   [33X[0;0YToolsForCategoricalTowers   automatic   generated   documentation   of[101X
+  [1Xattributes[133X[101X
+  
+  [1X3.3-1 SvgString[101X
+  
+  [33X[1;0Y[29X[2XSvgString[102X( [3Xcell[103X ) [32X attribute[133X
+  
