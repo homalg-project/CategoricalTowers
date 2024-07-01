@@ -355,8 +355,8 @@
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
-    [4X[28X* IsAbelianCategory[128X[104X
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
+    [4X[28X* IsAbelianCategory[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
     [4X[25Xgap>[125X [27XG := UnderlyingGroupForRepresentationCategory( srepG );[127X[104X
