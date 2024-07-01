@@ -12,3 +12,7 @@
   [33X[0;0YThe  argument  is  an  object  [3XA[103X.  The  output  is  the reflexive transitive
   reduction of the poset of all subobjects of [3XA[103X.[133X
   
+  [1X3.1-2 SvgString[101X
+  
+  [33X[1;0Y[29X[2XSvgString[102X( [3Xdigraph[103X ) [32X attribute[133X
+  
