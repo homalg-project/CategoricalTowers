@@ -23,13 +23,13 @@ Display( T );
 #! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 #! * IsLeftClosedMonoidalCategory
 #! * IsLeftCoclosedMonoidalCategory
+#! * IsRigidSymmetricClosedMonoidalCategory
+#! * IsRigidSymmetricCoclosedMonoidalCategory
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
 #! * IsSymmetricClosedMonoidalLattice
 #! * IsSymmetricCoclosedMonoidalLattice
 #! * IsBooleanAlgebra
-#! * IsRigidSymmetricClosedMonoidalCategory
-#! * IsRigidSymmetricCoclosedMonoidalCategory
 #! and furthermore mathematically
 #! * IsDiscreteCategory
 #! * IsFinitelyPresentedLinearCategory

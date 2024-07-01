@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2024.06-07",
+Version := "2024.06-09",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
@@ -90,8 +90,8 @@ Dependencies := rec(
                    [ "GAPDoc", ">= 1.5" ],
                    [ "ToolsForHomalg", ">= 2022.12-01" ],
                    [ "CAP", ">= 2024.06-03" ],
-                   [ "MonoidalCategories", ">= 2024.06-01" ],
-                   [ "CartesianCategories", ">= 2024.06-01" ],
+                   [ "MonoidalCategories", ">= 2024.06-02" ],
+                   [ "CartesianCategories", ">= 2024.06-03" ],
                    [ "ToolsForCategoricalTowers", ">= 2024.03-02" ],
                    [ "FpCategories", ">= 2024.03-03" ],
                    [ "Algebroids", ">= 2024.03-01" ],
@@ -101,7 +101,7 @@ Dependencies := rec(
                    [ "LinearAlgebraForCAP", ">= 2024.01-04" ],
                    [ "FreydCategoriesForCAP", ">= 2024.01-03" ],
                    [ "SubcategoriesForCAP", ">= 2024.01-01" ],
-                   [ "Toposes", ">= 2024.02-08" ],
+                   [ "Toposes", ">= 2024.06-02" ],
                    [ "Locales", ">= 2024.03-23" ],
                    [ "FinSetsForCAP", ">= 2024.02-09" ],
                    [ "ToolsForHigherHomologicalAlgebra", ">= 2023.03-01" ],

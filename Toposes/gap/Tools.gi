@@ -9,8 +9,8 @@ if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
 
 ##
 InstallMethod( DigraphOfSubobjects,
-               [ IsCapCategoryObject ],
-               
+        [ IsCapCategoryObject ],
+        
   function( A )
     local subobjects, D;
     
@@ -29,8 +29,9 @@ end );
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
+        "for a digraph of subobjects",
         [ IsDigraphByOutNeighboursRep and IsDigraphOfSubobjects ],
-
+        
   function( D )
     local out, str, i, j;
     
@@ -59,6 +60,19 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     Append( str, "}\n" );
     
     return str;
+    
+end );
+
+MakeShowable( [ "image/svg+xml" ], IsDigraphByOutNeighboursRep and IsDigraphOfSubobjects );
+
+##
+InstallMethod( SvgString,
+        "for a digraph of subobjects",
+        [ IsDigraphByOutNeighboursRep and IsDigraphOfSubobjects ],
+        
+  function( D )
+    
+    return DotToSVG( DotVertexLabelledDigraph( D ) );
     
 end );
 

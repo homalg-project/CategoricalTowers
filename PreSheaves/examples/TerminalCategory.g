@@ -3,7 +3,7 @@
 #! @Example
 LoadPackage( "PreSheaves" );
 #! true
-LoadPackage( "Toposes", ">= 2024.02-08", fail );
+LoadPackage( "Toposes", ">= 2024.06-03", fail );
 #! true
 T := PreSheaves( InitialCategory( ) );
 #! PreSheaves( InitialCategory( ), InitialCategory( ) )
@@ -23,12 +23,12 @@ Display( T );
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsLeftClosedMonoidalCategory
 #! * IsLeftCoclosedMonoidalCategory
-#! * IsElementaryTopos
-#! * IsAbelianCategoryWithEnoughInjectives
-#! * IsAbelianCategoryWithEnoughProjectives
 #! * IsBicartesianCoclosedCategory
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
+#! * IsElementaryTopos
+#! * IsAbelianCategoryWithEnoughInjectives
+#! * IsAbelianCategoryWithEnoughProjectives
 #! and not yet algorithmically
 #! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 #! and furthermore mathematically

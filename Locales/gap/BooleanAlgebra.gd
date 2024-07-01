@@ -33,8 +33,8 @@ AddCategoricalProperty( [ "IsBiHeytingAlgebra", "IsBiHeytingAlgebra" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebra :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebroid,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory ) );
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebroid ) );
 
 #! @Description
 #!  The property of <A>C</A> being a Boolean algebroid.
@@ -45,11 +45,11 @@ DeclareProperty( "IsBooleanAlgebroid",
 AddCategoricalProperty( [ "IsBooleanAlgebroid", "IsBooleanAlgebroid" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebroid :=
-  DuplicateFreeList( Concatenation( [
-          "MorphismFromDoubleNegationWithGivenDoubleNegation",
-          "MorphismToDoubleConegationWithGivenDoubleConegation",
-          ],
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebroid ) );
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebroid,
+          [ "MorphismFromDoubleNegationWithGivenDoubleNegation",
+            "MorphismToDoubleConegationWithGivenDoubleConegation",
+            ] ) );
 
 #! @Description
 #!  The property of <A>C</A> being a Boolean algebra.
@@ -61,8 +61,8 @@ AddCategoricalProperty( [ "IsBooleanAlgebra", "IsBooleanAlgebra" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebra :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebroid,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory ) );
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebroid ) );
 
 #! @Section Operations
 

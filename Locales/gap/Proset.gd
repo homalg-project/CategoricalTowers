@@ -48,10 +48,10 @@ DeclareProperty( "IsThinCategory",
 AddCategoricalProperty( [ "IsThinCategory", "IsThinCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory :=
-  DuplicateFreeList( Concatenation( [
-          "AreIsomorphicForObjectsIfIsHomSetInhabited",
-          ],
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory ) );
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+          [ "AreIsomorphicForObjectsIfIsHomSetInhabited",
+            ] ) );
 
 #! @Description
 #!  The property of <A>C</A> being a discrete &CAP; category,

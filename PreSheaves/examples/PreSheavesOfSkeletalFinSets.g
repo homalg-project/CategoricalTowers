@@ -3,6 +3,8 @@
 #! @Example
 LoadPackage( "PreSheaves" );
 #! true
+LoadPackage( "Toposes", ">= 2024.06-03", fail );
+#! true
 LoadPackage( "FinSetsForCAP" );
 #! true
 PSh := PreSheaves( SkeletalFinSets, SkeletalFinSets );
@@ -12,17 +14,17 @@ Display( PSh );
 #! 
 #! 46 primitive operations were used to derive 165 operations for this category
 #! which not yet algorithmically
-#! * IsDistributiveCategory
 #! * IsFiniteBicompleteCategory
+#! * IsDistributiveCategory
 MissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" );
-#! [ "CartesianLeftCoevaluationMorphismWithGivenRange",
-#!   "CartesianLeftEvaluationMorphismWithGivenSource",
-#!   "CartesianRightCoevaluationMorphismWithGivenRange",
+#! [ "IsEqualForObjects", "IsEqualForMorphisms", "IsCongruentForMorphisms",
+#!   "ExponentialOnObjects", "ExponentialOnMorphismsWithGivenExponentials",
 #!   "CartesianRightEvaluationMorphismWithGivenSource",
+#!   "CartesianRightCoevaluationMorphismWithGivenRange",
+#!   "CartesianLeftEvaluationMorphismWithGivenSource",
+#!   "CartesianLeftCoevaluationMorphismWithGivenRange", "SubobjectClassifier",
 #!   "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
-#!   "ExponentialOnMorphismsWithGivenExponentials", "ExponentialOnObjects",
-#!   "IsCongruentForMorphisms", "IsEqualForMorphisms", "IsEqualForObjects",
-#!   "SubobjectClassifier", "SubobjectOfClassifyingMorphism" ]
+#!   "SubobjectOfClassifyingMorphism" ]
 Y := YonedaEmbeddingOfSourceCategory( PSh );
 #! Yoneda embedding functor
 omega := SubobjectClassifier( SourceOfFunctor( Y ) );
