@@ -220,7 +220,7 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "PreSheaves" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Toposes", "&gt;= 2024.02-08", fail );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Toposes", "&gt;= 2024.06-03", fail );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := PreSheaves( InitialCategory( ) );</span>
 PreSheaves( InitialCategory( ), InitialCategory( ) )
@@ -240,12 +240,12 @@ which algorithmically
 * IsLinearCategoryOverCommutativeRing
 * IsLeftClosedMonoidalCategory
 * IsLeftCoclosedMonoidalCategory
-* IsElementaryTopos
-* IsAbelianCategoryWithEnoughInjectives
-* IsAbelianCategoryWithEnoughProjectives
 * IsBicartesianCoclosedCategory
 * IsRigidSymmetricClosedMonoidalCategory
 * IsRigidSymmetricCoclosedMonoidalCategory
+* IsElementaryTopos
+* IsAbelianCategoryWithEnoughInjectives
+* IsAbelianCategoryWithEnoughProjectives
 and not yet algorithmically
 * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 and furthermore mathematically
@@ -299,6 +299,8 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "PreSheaves" );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Toposes", "&gt;= 2024.06-03", fail );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( SkeletalFinSets, SkeletalFinSets );</span>
@@ -308,17 +310,17 @@ A CAP category with name PreSheaves( SkeletalFinSets, SkeletalFinSets ):
 
 46 primitive operations were used to derive 165 operations for this category
 which not yet algorithmically
-* IsDistributiveCategory
 * IsFiniteBicompleteCategory
+* IsDistributiveCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" );</span>
-[ "CartesianLeftCoevaluationMorphismWithGivenRange",
-  "CartesianLeftEvaluationMorphismWithGivenSource",
-  "CartesianRightCoevaluationMorphismWithGivenRange",
+[ "IsEqualForObjects", "IsEqualForMorphisms", "IsCongruentForMorphisms",
+  "ExponentialOnObjects", "ExponentialOnMorphismsWithGivenExponentials",
   "CartesianRightEvaluationMorphismWithGivenSource",
+  "CartesianRightCoevaluationMorphismWithGivenRange",
+  "CartesianLeftEvaluationMorphismWithGivenSource",
+  "CartesianLeftCoevaluationMorphismWithGivenRange", "SubobjectClassifier",
   "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
-  "ExponentialOnMorphismsWithGivenExponentials", "ExponentialOnObjects",
-  "IsCongruentForMorphisms", "IsEqualForMorphisms", "IsEqualForObjects",
-  "SubobjectClassifier", "SubobjectOfClassifyingMorphism" ]
+  "SubobjectOfClassifyingMorphism" ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := YonedaEmbeddingOfSourceCategory( PSh );</span>
 Yoneda embedding functor
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">omega := SubobjectClassifier( SourceOfFunctor( Y ) );</span>

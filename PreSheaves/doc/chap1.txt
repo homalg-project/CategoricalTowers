@@ -122,7 +122,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "PreSheaves" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2024.02-08", fail );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2024.06-03", fail );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XT := PreSheaves( InitialCategory( ) );[127X[104X
     [4X[28XPreSheaves( InitialCategory( ), InitialCategory( ) )[128X[104X
@@ -142,12 +142,12 @@
     [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
     [4X[28X* IsLeftClosedMonoidalCategory[128X[104X
     [4X[28X* IsLeftCoclosedMonoidalCategory[128X[104X
-    [4X[28X* IsElementaryTopos[128X[104X
-    [4X[28X* IsAbelianCategoryWithEnoughInjectives[128X[104X
-    [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
     [4X[28X* IsBicartesianCoclosedCategory[128X[104X
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
+    [4X[28X* IsElementaryTopos[128X[104X
+    [4X[28X* IsAbelianCategoryWithEnoughInjectives[128X[104X
+    [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
@@ -199,6 +199,8 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "PreSheaves" );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2024.06-03", fail );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XPSh := PreSheaves( SkeletalFinSets, SkeletalFinSets );[127X[104X
@@ -208,17 +210,17 @@
     [4X[28X[128X[104X
     [4X[28X46 primitive operations were used to derive 165 operations for this category[128X[104X
     [4X[28Xwhich not yet algorithmically[128X[104X
-    [4X[28X* IsDistributiveCategory[128X[104X
     [4X[28X* IsFiniteBicompleteCategory[128X[104X
+    [4X[28X* IsDistributiveCategory[128X[104X
     [4X[25Xgap>[125X [27XMissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" );[127X[104X
-    [4X[28X[ "CartesianLeftCoevaluationMorphismWithGivenRange",[128X[104X
-    [4X[28X  "CartesianLeftEvaluationMorphismWithGivenSource",[128X[104X
-    [4X[28X  "CartesianRightCoevaluationMorphismWithGivenRange",[128X[104X
+    [4X[28X[ "IsEqualForObjects", "IsEqualForMorphisms", "IsCongruentForMorphisms",[128X[104X
+    [4X[28X  "ExponentialOnObjects", "ExponentialOnMorphismsWithGivenExponentials",[128X[104X
     [4X[28X  "CartesianRightEvaluationMorphismWithGivenSource",[128X[104X
+    [4X[28X  "CartesianRightCoevaluationMorphismWithGivenRange",[128X[104X
+    [4X[28X  "CartesianLeftEvaluationMorphismWithGivenSource",[128X[104X
+    [4X[28X  "CartesianLeftCoevaluationMorphismWithGivenRange", "SubobjectClassifier",[128X[104X
     [4X[28X  "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",[128X[104X
-    [4X[28X  "ExponentialOnMorphismsWithGivenExponentials", "ExponentialOnObjects",[128X[104X
-    [4X[28X  "IsCongruentForMorphisms", "IsEqualForMorphisms", "IsEqualForObjects",[128X[104X
-    [4X[28X  "SubobjectClassifier", "SubobjectOfClassifyingMorphism" ][128X[104X
+    [4X[28X  "SubobjectOfClassifyingMorphism" ][128X[104X
     [4X[25Xgap>[125X [27XY := YonedaEmbeddingOfSourceCategory( PSh );[127X[104X
     [4X[28XYoneda embedding functor[128X[104X
     [4X[25Xgap>[125X [27Xomega := SubobjectClassifier( SourceOfFunctor( Y ) );[127X[104X
