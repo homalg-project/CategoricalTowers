@@ -49,6 +49,7 @@ DeclareGlobalFunction( "ListMethodsOfDoctrine" );
 #! @Description
 #!  The argument is a nonempty list <A>doctrine_names</A> of strings of doctrine names and the output
 #!  is a dummy category created using <C>DummyCategory</C> which lies in the given doctrine.
+#!  If the option `minimal` is set to true, then only a logically minimal subset of the doctrines is considered.
 #! @Returns a &CAP; category
 #! @Arguments doctrine_names
 DeclareOperation( "DummyCategoryInDoctrines",
