@@ -7,6 +7,8 @@
 ReadPackage( "ToolsForCategoricalTowers", "gap/Tools.gd");
 ReadPackage( "ToolsForCategoricalTowers", "gap/Tools.autogen.gd");
 
+ReadPackage( "ToolsForCategoricalTowers", "gap/ToolsUsingDigraphs.gd");
+
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "ToolsForCategoricalTowers", "gap/Julia.gd" );
 fi;
