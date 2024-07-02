@@ -546,7 +546,6 @@
     [4X[25X>[125X [27X        variable_names := [ "size", "ring", "matrix" ],[127X[104X
     [4X[25X>[125X [27X        src_template := "HomalgIdentityMatrix( size, ring ) * matrix",[127X[104X
     [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
-    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
     [4X[25X>[125X [27X    )[127X[104X
     [4X[25X>[125X [27X);[127X[104X
     [4X[25Xgap>[125X [27XCapJitAddLogicTemplate([127X[104X
