@@ -24,7 +24,7 @@ InstallMethod( DummyCategoryInDoctrines,
         [ IsList ],
 
   function( doctrine_names )
-    local options;
+    local minimal, compare, options;
     
     if IsEmpty( doctrine_names ) then
         Error( "the list of doctrine names is empty\n" );
@@ -36,15 +36,36 @@ InstallMethod( DummyCategoryInDoctrines,
         Error( "the following entries are not supported doctrines: ", String( Difference( doctrine_names, ListKnownDoctrines( ) ) ), "\n" );
     fi;
     
-    doctrine_names := MaximalObjects( doctrine_names, { doc1, doc2 } -> IsSubset( ListMethodsOfDoctrine( doc2 ), ListMethodsOfDoctrine( doc1 ) ) );
+    minimal := ValueOption( "minimal" );
+    
+    compare :=
+      function( b, a )
+        local bool;
+        
+        bool := IsSubset( ListMethodsOfDoctrine( a ), ListMethodsOfDoctrine( b ) );
+        
+        if minimal = true and IsBoundGlobal( a ) then
+            return ( b in ListImpliedFilters( ValueGlobal( a ) ) ) or bool;
+        else
+            return bool;
+        fi;
+        
+    end;
+    
+    doctrine_names := MaximalObjects( doctrine_names, compare );
     
     options := rec( );
     
     options.name := Concatenation( "DummyCategoryInDoctrines( ", String( doctrine_names ), " )" );
     
-    options.properties := Difference( doctrine_names, "EveryCategory" );
+    options.properties := Difference( doctrine_names, [ "EveryCategory" ] );
     
-    options.list_of_operations_to_install := Set( Concatenation( List( doctrine_names, ListMethodsOfDoctrine ) ) );
+    options.list_of_operations_to_install :=
+      Set( Concatenation(
+              Concatenation( List( doctrine_names, ListMethodsOfDoctrine ) ),
+              [ "ObjectConstructor", "ObjectDatum",
+                "MorphismConstructor", "MorphismDatum",
+                "IsWellDefinedForObjects", "IsWellDefinedForMorphisms" ] ) );
     
     return DummyCategory( options );
     

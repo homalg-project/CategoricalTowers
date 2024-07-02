@@ -8,7 +8,7 @@ D1 := DummyCategoryInDoctrines( "IsAbCategory" );
 Display( D1 );
 #! A CAP category with name DummyCategoryInDoctrines( [ "IsAbCategory" ] ):
 #! 
-#! 10 primitive operations were used to derive 21 operations for this category
+#! 16 primitive operations were used to derive 28 operations for this category
 #! which algorithmically
 #! * IsAbCategory
 D2 := DummyCategoryInDoctrines( [ "IsAbCategory", "IsAbelianCategory" ] );
@@ -16,7 +16,34 @@ D2 := DummyCategoryInDoctrines( [ "IsAbCategory", "IsAbelianCategory" ] );
 Display( D2 );
 #! A CAP category with name DummyCategoryInDoctrines( [ "IsAbelianCategory" ] ):
 #! 
-#! 26 primitive operations were used to derive 284 operations for this category
+#! 32 primitive operations were used to derive 291 operations for this category
 #! which algorithmically
 #! * IsAbelianCategory
+D3 := DummyCategoryInDoctrines(
+              [ "IsCategoryWithInitialObject",
+                "IsCategoryWithTerminalObject",
+                "IsCategoryWithZeroObject" ] );
+#! DummyCategoryInDoctrines(
+#! [ "IsCategoryWithInitialObject", "IsCategoryWithTerminalObject",
+#!   "IsCategoryWithZeroObject" ] )
+Display( D3 );
+#! A CAP category with name DummyCategoryInDoctrines(
+#! [ "IsCategoryWithInitialObject", "IsCategoryWithTerminalObject",
+#!   "IsCategoryWithZeroObject" ] ):
+#! 
+#! 18 primitive operations were used to derive 41 operations for this category
+#! which algorithmically
+#! * IsCategoryWithZeroObject
+D4 := DummyCategoryInDoctrines(
+              [ "IsCategoryWithInitialObject",
+                "IsCategoryWithTerminalObject",
+                "IsCategoryWithZeroObject" ] : minimal := true );
+#! DummyCategoryInDoctrines( [ "IsCategoryWithZeroObject" ] )
+Display( D4 );
+#! A CAP category with name DummyCategoryInDoctrines(
+#! [ "IsCategoryWithZeroObject" ] ):
+#! 
+#! 14 primitive operations were used to derive 41 operations for this category
+#! which algorithmically
+#! * IsCategoryWithZeroObject
 #! @EndExample
