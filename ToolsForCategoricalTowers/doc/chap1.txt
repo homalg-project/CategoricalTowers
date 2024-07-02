@@ -46,7 +46,8 @@
   
   [33X[0;0YThe  argument is a nonempty list [3Xdoctrine_names[103X of strings of doctrine names
   and the output is a dummy category created using [10XDummyCategory[110X which lies in
-  the given doctrine.[133X
+  the  given  doctrine.  If  the  option  [10Xminimal[110X  is set to true, then only a
+  logically minimal subset of the doctrines is considered.[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "ToolsForCategoricalTowers", false );[127X[104X
@@ -56,7 +57,7 @@
     [4X[25Xgap>[125X [27XDisplay( D1 );[127X[104X
     [4X[28XA CAP category with name DummyCategoryInDoctrines( [ "IsAbCategory" ] ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X10 primitive operations were used to derive 21 operations for this category[128X[104X
+    [4X[28X16 primitive operations were used to derive 28 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsAbCategory[128X[104X
     [4X[25Xgap>[125X [27XD2 := DummyCategoryInDoctrines( [ "IsAbCategory", "IsAbelianCategory" ] );[127X[104X
@@ -64,9 +65,36 @@
     [4X[25Xgap>[125X [27XDisplay( D2 );[127X[104X
     [4X[28XA CAP category with name DummyCategoryInDoctrines( [ "IsAbelianCategory" ] ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X26 primitive operations were used to derive 284 operations for this category[128X[104X
+    [4X[28X32 primitive operations were used to derive 291 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsAbelianCategory[128X[104X
+    [4X[25Xgap>[125X [27XD3 := DummyCategoryInDoctrines([127X[104X
+    [4X[25X>[125X [27X              [ "IsCategoryWithInitialObject",[127X[104X
+    [4X[25X>[125X [27X                "IsCategoryWithTerminalObject",[127X[104X
+    [4X[25X>[125X [27X                "IsCategoryWithZeroObject" ] );[127X[104X
+    [4X[28XDummyCategoryInDoctrines([128X[104X
+    [4X[28X[ "IsCategoryWithInitialObject", "IsCategoryWithTerminalObject",[128X[104X
+    [4X[28X  "IsCategoryWithZeroObject" ] )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( D3 );[127X[104X
+    [4X[28XA CAP category with name DummyCategoryInDoctrines([128X[104X
+    [4X[28X[ "IsCategoryWithInitialObject", "IsCategoryWithTerminalObject",[128X[104X
+    [4X[28X  "IsCategoryWithZeroObject" ] ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X18 primitive operations were used to derive 41 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithZeroObject[128X[104X
+    [4X[25Xgap>[125X [27XD4 := DummyCategoryInDoctrines([127X[104X
+    [4X[25X>[125X [27X              [ "IsCategoryWithInitialObject",[127X[104X
+    [4X[25X>[125X [27X                "IsCategoryWithTerminalObject",[127X[104X
+    [4X[25X>[125X [27X                "IsCategoryWithZeroObject" ] : minimal := true );[127X[104X
+    [4X[28XDummyCategoryInDoctrines( [ "IsCategoryWithZeroObject" ] )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( D4 );[127X[104X
+    [4X[28XA CAP category with name DummyCategoryInDoctrines([128X[104X
+    [4X[28X[ "IsCategoryWithZeroObject" ] ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X14 primitive operations were used to derive 41 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithZeroObject[128X[104X
   [4X[32X[104X
   
   

@@ -122,7 +122,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DummyCategoryInDoctrines</code>( <var class="Arg">doctrine_names</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<p>The argument is a nonempty list <var class="Arg">doctrine_names</var> of strings of doctrine names and the output is a dummy category created using <code class="code">DummyCategory</code> which lies in the given doctrine.</p>
+<p>The argument is a nonempty list <var class="Arg">doctrine_names</var> of strings of doctrine names and the output is a dummy category created using <code class="code">DummyCategory</code> which lies in the given doctrine. If the option <code class="code">minimal</code> is set to true, then only a logically minimal subset of the doctrines is considered.</p>
 
 
 <div class="example"><pre>
@@ -133,7 +133,7 @@ DummyCategoryInDoctrines( [ "IsAbCategory" ] )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( D1 );</span>
 A CAP category with name DummyCategoryInDoctrines( [ "IsAbCategory" ] ):
 
-10 primitive operations were used to derive 21 operations for this category
+16 primitive operations were used to derive 28 operations for this category
 which algorithmically
 * IsAbCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D2 := DummyCategoryInDoctrines( [ "IsAbCategory", "IsAbelianCategory" ] );</span>
@@ -141,9 +141,36 @@ DummyCategoryInDoctrines( [ "IsAbelianCategory" ] )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( D2 );</span>
 A CAP category with name DummyCategoryInDoctrines( [ "IsAbelianCategory" ] ):
 
-26 primitive operations were used to derive 284 operations for this category
+32 primitive operations were used to derive 291 operations for this category
 which algorithmically
 * IsAbelianCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D3 := DummyCategoryInDoctrines(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              [ "IsCategoryWithInitialObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                "IsCategoryWithTerminalObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                "IsCategoryWithZeroObject" ] );</span>
+DummyCategoryInDoctrines(
+[ "IsCategoryWithInitialObject", "IsCategoryWithTerminalObject",
+  "IsCategoryWithZeroObject" ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( D3 );</span>
+A CAP category with name DummyCategoryInDoctrines(
+[ "IsCategoryWithInitialObject", "IsCategoryWithTerminalObject",
+  "IsCategoryWithZeroObject" ] ):
+
+18 primitive operations were used to derive 41 operations for this category
+which algorithmically
+* IsCategoryWithZeroObject
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D4 := DummyCategoryInDoctrines(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              [ "IsCategoryWithInitialObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                "IsCategoryWithTerminalObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                "IsCategoryWithZeroObject" ] : minimal := true );</span>
+DummyCategoryInDoctrines( [ "IsCategoryWithZeroObject" ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( D4 );</span>
+A CAP category with name DummyCategoryInDoctrines(
+[ "IsCategoryWithZeroObject" ] ):
+
+14 primitive operations were used to derive 41 operations for this category
+which algorithmically
+* IsCategoryWithZeroObject
 </pre></div>
 
 <p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
