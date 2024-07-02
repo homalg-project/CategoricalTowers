@@ -141,7 +141,6 @@ CapJitAddLogicTemplate(
                 end ) )
             )
         """,
-        needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
     )
 );
 
@@ -171,7 +170,6 @@ CapJitAddLogicTemplate(
                 end ) )
             )
         """,
-        needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
     )
 );
 
@@ -181,7 +179,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "listlist", "nr_rows", "nr_cols", "ring" ],
         src_template := "EntriesOfHomalgMatrixAsListList( HomalgMatrixListList( listlist, nr_rows, nr_cols, ring ) )",
         dst_template := "listlist",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2021.12-01" ] ],
     )
 );
 
@@ -217,7 +214,6 @@ CapJitAddLogicTemplate(
         src_template := "List( UnionOfRowsListList( nr_cols, listlist ), row -> List( row, func ) )",
         dst_template := "UnionOfRowsListList( nr_cols, List( listlist, list -> List( list, new_row -> List( new_row, func ) ) ) )",
         new_funcs := [ [ "list" ], [ "new_row" ] ],
-        needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
     )
 );
 
@@ -228,7 +224,6 @@ CapJitAddLogicTemplate(
         src_template := "List( UnionOfColumnsListList( nr_rows, listlist ), row -> List( row, func ) )",
         dst_template := "UnionOfColumnsListList( nr_rows, List( listlist, list -> List( list, new_row -> List( new_row, func ) ) ) )",
         new_funcs := [ [ "list" ], [ "new_row" ] ],
-        needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
     )
 );
 
