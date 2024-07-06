@@ -213,7 +213,7 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
               deduped_3_2 := hoisted_3_1[o_2];
               hoisted_2_2 := hoisted_5_1[o_2];
               deduped_1_2 := hoisted_4_1[o_2];
-              return CreateCapCategoryMorphismWithAttributes( hoisted_7_1, deduped_8_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_3_2 ], function ( i_3 )
+              return CreateCapCategoryMorphismWithAttributes( hoisted_7_1, deduped_8_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, HomalgMatrixListList( PermutationMat( PermList( List( [ 1 .. deduped_3_2 ], function ( i_3 )
                               local deduped_1_3;
                               deduped_1_3 := i_3 - 1;
                               return REM_INT( deduped_1_3, deduped_1_2 ) * hoisted_2_2 + QUO_INT( deduped_1_3, deduped_1_2 ) + 1;
@@ -242,7 +242,7 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
               deduped_3_2 := hoisted_3_1[o_2];
               hoisted_2_2 := hoisted_5_1[o_2];
               deduped_1_2 := hoisted_4_1[o_2];
-              return CreateCapCategoryMorphismWithAttributes( hoisted_7_1, deduped_8_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_3_2 ], function ( i_3 )
+              return CreateCapCategoryMorphismWithAttributes( hoisted_7_1, deduped_8_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, HomalgMatrixListList( PermutationMat( PermList( List( [ 1 .. deduped_3_2 ], function ( i_3 )
                               local deduped_1_3;
                               deduped_1_3 := i_3 - 1;
                               return REM_INT( deduped_1_3, deduped_1_2 ) * hoisted_2_2 + QUO_INT( deduped_1_3, deduped_1_2 ) + 1;

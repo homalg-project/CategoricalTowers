@@ -18,7 +18,7 @@ function ( cat_1, a_1, b_1 )
     deduped_8_1 := AmbientCategory( deduped_10_1 );
     deduped_7_1 := UnderlyingRing( deduped_8_1 );
     deduped_6_1 := HomalgIdentityMatrix( 1, deduped_7_1 );
-    deduped_5_1 := HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_12_1 ], function ( i_2 )
+    deduped_5_1 := HomalgMatrixListList( PermutationMat( PermList( List( [ 1 .. deduped_12_1 ], function ( i_2 )
                   local deduped_1_2;
                   deduped_1_2 := i_2 - 1;
                   return REM_INT( deduped_1_2, 1 ) * 1 + QUO_INT( deduped_1_2, 1 ) + 1;
