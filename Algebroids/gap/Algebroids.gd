@@ -124,7 +124,7 @@ CapJitAddTypeSignature( "UnderlyingQuiver", [ IsAlgebroid ], IsQuiver );
 DeclareAttribute( "UnderlyingQuiverAlgebra",
         IsAlgebroid );
 
-CapJitAddTypeSignature( "UnderlyingQuiverAlgebra", [ IsAlgebroid ], IsQuiverAlgebra );
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebra", [ IsAlgebroid ], input_types -> CapJitDataTypeOfRing( UnderlyingQuiverAlgebra( input_types[1].category ) ) );
 
 #! @Description
 #!  The dimension of the underlying quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>.
@@ -173,19 +173,6 @@ DeclareAttribute( "BasisMorphismsByVertexIndex",
 #! @Returns a six-dimensional matrix of matrices
 DeclareAttribute( "HomStructureOnBasisPaths",
         IsAlgebroid );
-
-#CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsAlgebroid ], function ( input_types )
-#    
-#    return CapJitDataTypeOfListOf(
-#                   CapJitDataTypeOfListOf(
-#                           CapJitDataTypeOfListOf(
-#                                   CapJitDataTypeOfListOf(
-#                                           CapJitDataTypeOfListOf(
-#                                                   CapJitDataTypeOfListOf(
-#                                                           CapJitDataTypeOfListOf(
-#                                                                   CapJitDataTypeOfListOf( IsInt ) ) ) ) ) ) ) );
-#    
-#end );
 
 #! @Description
 #!  Assigns the objects of the finitely presented algebroid <A>A</A> to global variables.
@@ -268,7 +255,7 @@ CapJitAddTypeSignature( "UnderlyingVertex", [ IsObjectInAlgebroid ], IsQuiverVer
 DeclareAttribute( "UnderlyingQuiverAlgebraElement",
         IsMorphismInAlgebroid );
 
-CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInAlgebroid ], IsQuiverAlgebraElement );
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInAlgebroid ], input_types -> CapJitDataTypeOfElementOfRing( UnderlyingQuiverAlgebra( input_types[1].category ) ) );
 
 #! @Description
 #!  The underlying algebra of an algebroid.

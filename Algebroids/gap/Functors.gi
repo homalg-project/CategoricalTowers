@@ -269,6 +269,9 @@ InstallMethod( ProjectionFromAlgebroidOfPathAlgebra,
     
     kQ := PathAlgebra( A );
     
+    SetRingFilter( kQ, IsQuiverAlgebra );
+    SetRingElementFilter( kQ, IsQuiverAlgebraElement );
+    
     if IsIdenticalObj( A, kQ ) then
       
       return IdentityFunctor( algebroid );

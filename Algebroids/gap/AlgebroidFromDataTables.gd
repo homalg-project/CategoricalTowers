@@ -249,7 +249,7 @@ DeclareAttribute( "CoefficientsList", IsMorphismInAlgebroidFromDataTables );
 
 CapJitAddTypeSignature( "CoefficientsList", [ IsMorphismInAlgebroidFromDataTables ], function ( input_types )
     
-    return CapJitDataTypeOfListOf( IsHomalgRingElement );
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfElementOfRing( CategoryDatum( input_types[1].category )[1] ) );
     
 end );
 

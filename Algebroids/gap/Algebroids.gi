@@ -851,7 +851,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
                 p ->
                 Sum(
                     [ 1 .. Length( basis_b_bp ) ],
-                    q -> coeffs_alpha[p] * coeffs_beta[q] * hom_structure_on_basis_paths[ a ][ b ][ ap ][ bp ][ p ][ q ]
+                    q -> coeffs_alpha[p] * coeffs_beta[q] * HomStructureOnBasisPaths( algebroid )[ a ][ b ][ ap ][ bp ][ p ][ q ]
                 )
             );
             
@@ -1281,8 +1281,14 @@ InstallMethod( Algebroid,
         [ IsHomalgRing, IsQuiver ],
         
   function( R, quiver )
+    local A;
     
-    return Algebroid( PathAlgebra( R, quiver ) );
+    A := PathAlgebra( R, quiver );
+    
+    SetRingFilter( A, IsQuiverAlgebra );
+    SetRingElementFilter( A, IsQuiverAlgebraElement );
+    
+    return Algebroid( A );
     
 end );
 
@@ -1309,11 +1315,17 @@ InstallMethodWithCache( Algebroid,
     
     kq := PathAlgebra( k, UnderlyingQuiver( C ) );
     
+    SetRingFilter( kq, IsQuiverAlgebra );
+    SetRingElementFilter( kq, IsQuiverAlgebraElement );
+    
     relations := List( relations, a -> PathAsAlgebraElement( kq, a[1] ) - PathAsAlgebraElement( kq, a[2] ) );
     
     A := kq / Ideal( kq, relations );
     
     A := kq / GroebnerBasis( IdealOfQuotient( A ) );
+    
+    SetRingFilter( A, IsQuiverAlgebra );
+    SetRingElementFilter( A, IsQuiverAlgebraElement );
     
     A := Algebroid( A, over_Z ); ## do not call the single argument method Algebroid as it is an attribute
     

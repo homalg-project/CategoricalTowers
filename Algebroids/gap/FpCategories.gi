@@ -878,8 +878,14 @@ InstallMethod( Category,
         [ IsQuiver, IsList ],
         
   function( quiver, L )
+    local A;
     
-    return Category( PathAlgebra( ALGEBROIDS.ring, quiver ), L );
+    A := PathAlgebra( ALGEBROIDS.ring, quiver );
+    
+    SetRingFilter( A, IsQuiverAlgebra );
+    SetRingElementFilter( A, IsQuiverAlgebraElement );
+    
+    return Category( A, L );
     
 end );
 

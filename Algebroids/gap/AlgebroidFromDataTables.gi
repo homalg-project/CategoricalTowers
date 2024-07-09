@@ -283,7 +283,7 @@ InstallMethod( AlgebroidFromDataTables,
              IsMorphismInAlgebroidFromDataTables,
              IsCapCategoryTwoCell,
              IsInt,
-             CapJitDataTypeOfListOf( IsHomalgRingElement ),
+             CapJitDataTypeOfListOf( CapJitDataTypeOfElementOfRing( ring ) ),
              fail );
     
     colors := ValueOption( "colors" );
