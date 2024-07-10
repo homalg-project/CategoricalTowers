@@ -979,7 +979,7 @@ BindGlobal( "AdditiveClosureOfAlgebroidFromDataTablesPrecompiled", function ( da
         
         
         function ( data_tables )
-    return AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables[1] : FinalizeCategory := true ),
+    return AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRows_as_AdditiveClosure_RingAsCategory( data_tables[1] : FinalizeCategory := true ),
           FinalizeCategory := true ) );
 end;
         

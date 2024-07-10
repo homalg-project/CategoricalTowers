@@ -8,7 +8,7 @@ LoadPackage( "Algebroids", false );
 
 quiver := RightQuiver( "Q(3)[a:1->2,b:1->2,c:2->3]" );;
 kQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;
-# without precompiled code, CategoryOfRowsAsAdditiveClosureOfRingAsCategory is
+# without precompiled code, CategoryOfRows_as_AdditiveClosure_RingAsCategory is
 # used as range of the homomorphism structure which does not have enough
 # operations for the hom strucutre of AdelmanCategory
 Aoid := Algebroid( kQ : no_precompiled_code := false );;
