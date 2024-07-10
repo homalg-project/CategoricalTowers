@@ -63,11 +63,11 @@ InstallMethod( FiniteStrictProductCompletion,
     
     ## building the categorical tower:
     
-    opC := Opposite( C : only_primitive_operations := true, FinalizeCategory := true );
+    opC := Opposite( C : only_primitive_operations_and_hom_structure := true, FinalizeCategory := true );
     
     UopC := FiniteStrictCoproductCompletion( opC : FinalizeCategory := true );
     
-    opUopC := Opposite( UopC : only_primitive_operations := true, FinalizeCategory := true );
+    opUopC := Opposite( UopC : only_primitive_operations_and_hom_structure := true, FinalizeCategory := true );
     
     if HasIsInitialCategory( C ) and IsInitialCategory( C ) then
         Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( opUopC, "IsEquippedWithHomomorphismStructure" ) );

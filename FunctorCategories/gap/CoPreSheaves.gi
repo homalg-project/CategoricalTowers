@@ -453,7 +453,7 @@ InstallMethodWithCache( CoPreSheaves,
     
     Hom := FunctorCategory( B, D : FinalizeCategory := true );
     
-    O := Opposite( Hom : only_primitive_operations := true, FinalizeCategory := true );
+    O := Opposite( Hom : only_primitive_operations_and_hom_structure := true, FinalizeCategory := true );
     
     if HasIsInitialCategory( B ) and IsInitialCategory( B ) then
         Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( O, "IsEquippedWithHomomorphismStructure" ) );
