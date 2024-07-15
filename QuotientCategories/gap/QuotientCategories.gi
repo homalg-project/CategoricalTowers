@@ -289,6 +289,12 @@ InstallMethod( QuotientCategory,
     
     SetUnderlyingCategory( quotient_cat, cat );
     
+    quotient_cat!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingCategory",
+        ],
+    );
+    
     ##
     AddSetOfObjectsOfCategory( quotient_cat,
       function( cat )

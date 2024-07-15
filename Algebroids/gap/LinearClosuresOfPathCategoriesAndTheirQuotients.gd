@@ -42,7 +42,23 @@ DeclareOperation( "QuotientCategory", [ IsLinearClosure, IsDenseList ] );
 #! @InsertChunk GroebnerBasisForLinearClosuresOfPathCategories
 
 DeclareAttribute( "DefiningRelations", IsQuotientCapCategory );
+
 DeclareAttribute( "GroebnerBasisOfDefiningRelations", IsQuotientCapCategory );
+
+CapJitAddTypeSignature( "GroebnerBasisOfDefiningRelations", [ IsQuotientCapCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) );
+    
+end );
+
+DeclareAttribute( "ExternalHoms", IsQuotientCapCategory );
+
+CapJitAddTypeSignature( "ExternalHoms", [ IsQuotientCapCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) ) ) );
+    
+end );
+
 
 DeclareGlobalFunction( "INSTALL_VIEW_AND_DISPLAY_METHODS_IN_LINEAR_CLOSURES_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS" );
 DeclareGlobalFunction( "INSTALL_VIEW_AND_DISPLAY_METHODS_IN_QUOTIENT_CATEGORIES_OF_LINEAR_CLOSURES_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS" );

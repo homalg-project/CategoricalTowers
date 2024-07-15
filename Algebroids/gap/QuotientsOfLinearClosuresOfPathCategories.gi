@@ -49,6 +49,8 @@ InstallMethod( QuotientCategory,
     SetDefiningRelations( quo_kC, relations );
     SetGroebnerBasisOfDefiningRelations( quo_kC, reduced_gb );
     
+    Add( quo_kC!.compiler_hints.category_attribute_names, "GroebnerBasisOfDefiningRelations" );
+    
     AddSetOfGeneratingMorphismsOfCategory( quo_kC,
       function( quo_kC )
         local kC;
@@ -83,6 +85,8 @@ InstallMethod( QuotientCategory,
                                   SetOfObjects( kC )[t] ),
                               SetOfObjects( quo_kC )[t] ) ) ) ) );
         
+        Add( quo_kC!.compiler_hints.category_attribute_names, "ExternalHoms" );
+        
         range_cat := ValueOption( "range_of_HomStructure" );
         
         if range_cat = fail and (HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure)( kC ) then
@@ -116,16 +120,16 @@ InstallMethod( QuotientCategory,
         ##
         AddCoefficientsOfMorphism( quo_kC,
           function ( quo_kC, mor )
-            local kC, s, t, support_mor;
+            local kC, s, t, red_mor, support_mor;
             
             kC := UnderlyingCategory( quo_kC );
             
             s := ObjectIndex( ObjectDatum( kC, ObjectDatum( quo_kC, Source( mor ) ) ) );
             t := ObjectIndex( ObjectDatum( kC, ObjectDatum( quo_kC, Target( mor ) ) ) );
             
-            mor := ReductionOfMorphism( kC, MorphismDatum( quo_kC, mor ), GroebnerBasisOfDefiningRelations( quo_kC ) );
+            red_mor := ReductionOfMorphism( kC, MorphismDatum( quo_kC, mor ), GroebnerBasisOfDefiningRelations( quo_kC ) );
             
-            support_mor := SupportMorphisms( mor );
+            support_mor := SupportMorphisms( red_mor );
             
             return List( ExternalHoms( quo_kC )[s][t],
                                 function ( m )
@@ -136,7 +140,7 @@ InstallMethod( QuotientCategory,
                                   if p = fail then
                                       return Zero( UnderlyingRing( kC ) );
                                   else
-                                      return CoefficientsList( mor )[p];
+                                      return CoefficientsList( red_mor )[p];
                                   fi;
                                   
                                 end );
