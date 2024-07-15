@@ -14,6 +14,9 @@ c := quiver.c;
 #
 F := FreeCategory( quiver );
 
+SetRingFilter( UnderlyingQuiverAlgebra( F ), IsQuiverAlgebra );
+SetRingElementFilter( UnderlyingQuiverAlgebra( F ), IsQuiverAlgebraElement );
+
 a_F := SetOfObjects( F )[1];
 b_F := SetOfObjects( F )[2];
 c_F := SetOfObjects( F )[3];
@@ -155,9 +158,9 @@ func := function ( dummy, a_dummy, b_dummy, c_dummy, abc_dummy )
     
     # construct pi using only primitive data (quiver vertices, lists, tuples, integers) using the constructors
     # this could be automated once the "FIXME" comment below is addressed
-    a_F := ObjectConstructor( F, a );
-    b_F := ObjectConstructor( F, b );
-    c_F := ObjectConstructor( F, c );
+    a_F := ObjectConstructor( F, CapJitTypedExpression( a, { } -> rec( filter := IsQuiverVertex ) ) );
+    b_F := ObjectConstructor( F, CapJitTypedExpression( b, { } -> rec( filter := IsQuiverVertex ) ) );
+    c_F := ObjectConstructor( F, CapJitTypedExpression( c, { } -> rec( filter := IsQuiverVertex ) ) );
     
     # FIXME:
     # A native implementation of `FreeCategory` not relying on QPA would have lists of morphisms as morphism data and

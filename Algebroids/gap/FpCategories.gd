@@ -84,7 +84,7 @@ DeclareAttribute( "UnderlyingQuiver",
 DeclareAttribute( "UnderlyingQuiverAlgebra",
         IsFpCategory );
 
-CapJitAddTypeSignature( "UnderlyingQuiverAlgebra", [ IsFpCategory ], IsQuiverAlgebra );
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebra", [ IsFpCategory ], input_types -> CapJitDataTypeOfRing( UnderlyingQuiverAlgebra( input_types[1].category ) ) );
 
 #! @Description
 #!  The number of morphisms in the finitely presented category <A>C</A>.
@@ -240,7 +240,7 @@ CapJitAddTypeSignature( "UnderlyingVertex", [ IsObjectInFpCategory ], IsQuiverVe
 DeclareAttribute( "UnderlyingQuiverAlgebraElement",
         IsMorphismInFpCategory );
 
-CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInFpCategory ], IsQuiverAlgebraElement );
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInFpCategory ], input_types -> CapJitDataTypeOfElementOfRing( UnderlyingQuiverAlgebra( input_types[1].category ) ) );
 
 ##
 DeclareAttribute( "BasisPathOfPathAlgebraBasisElement",

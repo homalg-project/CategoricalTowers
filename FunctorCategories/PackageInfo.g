@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2024.07-01",
+Version := "2024.07-03",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
@@ -89,7 +89,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "ToolsForHomalg", ">= 2022.12-01" ],
-                   [ "CAP", ">= 2024.06-03" ],
+                   [ "CAP", ">= 2024.07-04" ],
                    [ "MonoidalCategories", ">= 2024.06-02" ],
                    [ "CartesianCategories", ">= 2024.06-03" ],
                    [ "ToolsForCategoricalTowers", ">= 2024.03-02" ],
@@ -99,7 +99,7 @@ Dependencies := rec(
                    [ "PreSheaves", ">= 2024.02-02" ],
                    [ "RingsForHomalg", ">= 2020.02.04" ],
                    [ "LinearAlgebraForCAP", ">= 2024.07-02" ],
-                   [ "FreydCategoriesForCAP", ">= 2024.07-02" ],
+                   [ "FreydCategoriesForCAP", ">= 2024.07-05" ],
                    [ "SubcategoriesForCAP", ">= 2024.01-01" ],
                    [ "Toposes", ">= 2024.06-02" ],
                    [ "Locales", ">= 2024.03-23" ],

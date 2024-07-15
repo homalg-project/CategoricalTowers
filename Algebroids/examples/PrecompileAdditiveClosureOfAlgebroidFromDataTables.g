@@ -12,10 +12,10 @@ LoadPackage( "CompilerForCAP", ">= 2023.12-20", false );
 ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 #! true
 
-CapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], IsHomalgRingElement );;
+CapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], input_types -> input_types[1] );;
 
 category_constructor :=
-  data_tables -> AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables[1] : FinalizeCategory := true ), FinalizeCategory := true ) );;
+  data_tables -> AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRows_as_AdditiveClosure_RingAsCategory( data_tables[1] : FinalizeCategory := true ), FinalizeCategory := true ) );;
 
 Q := HomalgFieldOfRationalsInSingular();;
 q := FinQuiver( "q(*)[x:*->*]" );;

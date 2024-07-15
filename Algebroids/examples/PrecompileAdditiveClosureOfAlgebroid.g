@@ -13,12 +13,25 @@ QQ := HomalgFieldOfRationals( );;
 snake_quiver := RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" );;
 A := PathAlgebra( QQ, snake_quiver );;
 
+SetRingFilter( A, IsQuiverAlgebra );
+SetRingElementFilter( A, IsQuiverAlgebraElement );
+
 ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 #! true
 
 # only valid for the construction above
 # FIXME: IsInt should be IsRat, but specializations of types are not yet supported by CompilerForCAP
 CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], CapJitDataTypeOfListOf( IsInt ) );
+CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsAlgebroid ], function ( input_types )
+    
+    return CapJitDataTypeOfListOf(
+                   CapJitDataTypeOfListOf(
+                           CapJitDataTypeOfListOf(
+                                   CapJitDataTypeOfListOf(
+                                           CapJitDataTypeOfListOf(
+                                                   CapJitDataTypeOfListOf(
+                                                           CapJitDataTypeOfListOf(
+                                                                   CapJitDataTypeOfListOf( IsInt ) ) ) ) ) ) ) ); end );
 
 # EXPERIMENTAL
 Add( CAP_JIT_EXPENSIVE_FUNCTION_NAMES, "CoefficientsOfPaths" );
