@@ -10,11 +10,23 @@
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
     [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
     [4X[25Xgap>[125X [27XA := PathAlgebra( QQ, snake_quiver );;[127X[104X
+    [4X[25Xgap>[125X [27XSetRingFilter( A, IsQuiverAlgebra );[127X[104X
+    [4X[25Xgap>[125X [27XSetRingElementFilter( A, IsQuiverAlgebraElement );[127X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X# only valid for the construction above[127X[104X
     [4X[25X>[125X [27X# FIXME: IsInt should be IsRat, but specializations of types are not yet supported by CompilerForCAP[127X[104X
     [4X[25X>[125X [27XCapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], CapJitDataTypeOfListOf( IsInt ) );[127X[104X
+    [4X[25Xgap>[125X [27XCapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsAlgebroid ], function ( input_types )[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    return CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                   CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                           CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                   CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                           CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                                   CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                                           CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                                                   CapJitDataTypeOfListOf( IsInt ) ) ) ) ) ) ) ); end );[127X[104X
     [4X[25Xgap>[125X [27X# EXPERIMENTAL[127X[104X
     [4X[25X>[125X [27XAdd( CAP_JIT_EXPENSIVE_FUNCTION_NAMES, "CoefficientsOfPaths" );[127X[104X
     [4X[25Xgap>[125X [27Xprecompile_AdditiveClosureOfAlgebroid :=[127X[104X
@@ -52,9 +64,9 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], IsHomalgRingElement );;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], input_types -> input_types[1] );;[127X[104X
     [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
-    [4X[25X>[125X [27X  data_tables -> AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( data_tables[1] : FinalizeCategory := true ), FinalizeCategory := true ) );;[127X[104X
+    [4X[25X>[125X [27X  data_tables -> AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRows_as_AdditiveClosure_RingAsCategory( data_tables[1] : FinalizeCategory := true ), FinalizeCategory := true ) );;[127X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular();;[127X[104X
     [4X[25Xgap>[125X [27Xq := FinQuiver( "q(*)[x:*->*]" );;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments :=[127X[104X
@@ -95,12 +107,25 @@
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
     [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
     [4X[25Xgap>[125X [27XA := PathAlgebra( QQ, snake_quiver );;[127X[104X
+    [4X[25Xgap>[125X [27XSetRingFilter( A, IsQuiverAlgebra );[127X[104X
+    [4X[25Xgap>[125X [27XSetRingElementFilter( A, IsQuiverAlgebraElement );[127X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X# only valid for the construction above[127X[104X
     [4X[25X>[125X [27X# FIXME: IsInt should be IsRat, but specializations of types are not yet supported by CompilerForCAP[127X[104X
     [4X[25X>[125X [27X# this might already have been added by PrecompileAdditiveClosureOfAlgebroid.g[127X[104X
     [4X[25X>[125X [27Xif not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.CoefficientsOfPaths ) then CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], CapJitDataTypeOfListOf( IsInt ) ); fi;[127X[104X
+    [4X[25Xgap>[125X [27Xif not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.HomStructureOnBasisPaths ) then[127X[104X
+    [4X[25X>[125X [27X    CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsAlgebroid ], function ( input_types )[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        return CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                       CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                               CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                       CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                               CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                                       CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                                               CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                                                       CapJitDataTypeOfListOf( IsInt ) ) ) ) ) ) ) ); end ); fi;[127X[104X
     [4X[25Xgap>[125X [27X# EXPERIMENTAL[127X[104X
     [4X[25X>[125X [27XAdd( CAP_JIT_EXPENSIVE_FUNCTION_NAMES, "CoefficientsOfPaths" );[127X[104X
     [4X[25Xgap>[125X [27Xprecompile_AdelmanCategoryOfAdditiveClosureOfAlgebroid := function( Rq, over_Z, ring )[127X[104X

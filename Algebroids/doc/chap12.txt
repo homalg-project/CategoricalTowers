@@ -224,7 +224,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(3)[a:1->2,b:1->2,c:2->3]" );;[127X[104X
     [4X[25Xgap>[125X [27XkQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;[127X[104X
-    [4X[25Xgap>[125X [27X# without precompiled code, CategoryOfRowsAsAdditiveClosureOfRingAsCategory is[127X[104X
+    [4X[25Xgap>[125X [27X# without precompiled code, CategoryOfRows_as_AdditiveClosure_RingAsCategory is[127X[104X
     [4X[25X>[125X [27X# used as range of the homomorphism structure which does not have enough[127X[104X
     [4X[25X>[125X [27X# operations for the hom strucutre of AdelmanCategory[127X[104X
     [4X[25X>[125X [27XAoid := Algebroid( kQ : no_precompiled_code := false );;[127X[104X
