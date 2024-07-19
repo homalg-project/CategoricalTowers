@@ -321,8 +321,9 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "func" ],
+        variable_filters := [ rec( filter := IsFunction, signature := Pair( [ rec( filter := IsBigInt ), rec( filter := IsBigInt ) ], CapJitDataTypeOfNTupleOf( 2, IsBigInt, IsBigInt ) ) ) ],
         src_template := "ListN( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsBigInt ) ), CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsBigInt ) ), func )",
-        dst_template := "CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsBigInt ) )",
+        dst_template := "CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfNTupleOf( 2, IsBigInt, IsBigInt ) ) )",
     )
 );
 

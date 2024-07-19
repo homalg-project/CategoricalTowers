@@ -10,10 +10,9 @@ BindGlobal( "ADD_FUNCTIONS_FOR_FinReflexiveQuiversPrecompiled", function ( cat )
         
 ########
 function ( cat_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := [  ];
+    local deduped_1_1;
     deduped_1_1 := BigInt( 0 );
-    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets, NTuple( 4, deduped_1_1, deduped_1_1, deduped_2_1, deduped_2_1 ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets, NTuple( 4, deduped_1_1, deduped_1_1, [  ], [  ] ) );
 end
 ########
         
