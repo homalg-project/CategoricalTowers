@@ -6,7 +6,7 @@
 
 LoadPackage( "Algebroids", false );
 #! true
-LoadPackage( "CompilerForCAP", ">= 2023.12-20", false );
+LoadPackage( "CompilerForCAP", ">= 2024.07-09", false );
 #! true
 ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 #! true

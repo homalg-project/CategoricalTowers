@@ -320,7 +320,12 @@ function ( cat_1, a_1 )
     deduped_10_1 := [ 1 .. Length( deduped_11_1 ) ];
     hoisted_7_1 := ZeroImmutable( CommutativeRingOfLinearCategory( cat_1 ) );
     hoisted_6_1 := HomomorphismStructureOnObjectsRanks( deduped_12_1 );
-    hoisted_4_1 := [  ];
+    hoisted_4_1 := CapJitTypedExpression( [  ], function (  )
+            return rec(
+                filter := IsList,
+                element_type := rec(
+                    filter := IsInt ) );
+        end );
     hoisted_3_1 := DecompositionIndicesOfBasesElements( deduped_12_1 );
     hoisted_2_1 := BasesElements( deduped_12_1 );
     deduped_1_1 := List( deduped_11_1, ObjectIndex );
@@ -757,7 +762,12 @@ function ( cat_1, alpha_1, beta_1 )
                         end );
                 end );
         end );
-    hoisted_15_1 := [  ];
+    hoisted_15_1 := CapJitTypedExpression( [  ], function (  )
+            return rec(
+                filter := IsList,
+                element_type := rec(
+                    filter := IsInt ) );
+        end );
     hoisted_14_1 := DecompositionIndicesOfBasesElements( deduped_35_1 );
     hoisted_13_1 := List( deduped_31_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_list_3 )
