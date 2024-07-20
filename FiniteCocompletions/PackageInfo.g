@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "FiniteCocompletions",
 Subtitle := "Finite (co)product/(co)limit (co)completions",
-Version := "2024.07-01",
-Date := "2024-07-15",
-Date := "2024-07-15",
+Version := "2024.07-02",
+Date := "2024-07-20",
+Date := "2024-07-20",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -84,9 +84,7 @@ Dependencies := rec(
                    [ "Algebroids", ">= 2024.02-02" ],
                    [ "PreSheaves", ">= 2024.02-02" ],
                    ],
-  SuggestedOtherPackages := [
-                   [ "CompilerForCAP", ">= 2023.12-09" ],
-                   ],
+  SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),
 
