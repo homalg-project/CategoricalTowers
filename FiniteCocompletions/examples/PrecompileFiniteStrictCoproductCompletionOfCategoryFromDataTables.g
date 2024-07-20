@@ -9,7 +9,7 @@
 LoadPackage( "FiniteCocompletions", false );
 #! true
 
-LoadPackage( "CompilerForCAP", ">= 2023.12-09", false );
+LoadPackage( "CompilerForCAP", ">= 2024.07-09", false );
 #! true
 
 ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );

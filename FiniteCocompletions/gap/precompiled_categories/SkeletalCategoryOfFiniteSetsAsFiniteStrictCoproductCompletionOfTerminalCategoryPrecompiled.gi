@@ -470,7 +470,12 @@ end
         
 ########
 function ( cat_1, T_1, P_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, AsList, [  ] );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, AsList, CapJitTypedExpression( [  ], function (  )
+              return rec(
+                  filter := IsList,
+                  element_type := rec(
+                      filter := IsInt ) );
+          end ) );
 end
 ########
         

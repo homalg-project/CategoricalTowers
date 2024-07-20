@@ -12,7 +12,12 @@ BindGlobal( "ADD_FUNCTIONS_FOR_FinBouquetsPrecompiled", function ( cat )
 function ( cat_1 )
     local deduped_1_1;
     deduped_1_1 := BigInt( 0 );
-    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfBouquetEnrichedOverSkeletalFinSets, NTuple( 3, deduped_1_1, deduped_1_1, [  ] ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfBouquetEnrichedOverSkeletalFinSets, NTuple( 3, deduped_1_1, deduped_1_1, CapJitTypedExpression( [  ], function (  )
+                return rec(
+                    filter := IsList,
+                    element_type := rec(
+                        filter := IsInt ) );
+            end ) ) );
 end
 ########
         

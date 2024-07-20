@@ -15,7 +15,12 @@ function ( cat_1 )
     deduped_5_1 := Source( cat_1 );
     deduped_4_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, Length, BigInt( 0 ) );
     deduped_3_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
-    hoisted_2_1 := CreateCapCategoryMorphismWithAttributes( deduped_6_1, deduped_4_1, deduped_4_1, AsList, [  ] );
+    hoisted_2_1 := CreateCapCategoryMorphismWithAttributes( deduped_6_1, deduped_4_1, deduped_4_1, AsList, CapJitTypedExpression( [  ], function (  )
+              return rec(
+                  filter := IsList,
+                  element_type := rec(
+                      filter := IsInt ) );
+          end ) );
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Target, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_3_1[1] ], function ( o_2 )
                 return deduped_4_1;
             end ), LazyHList( [ 1 .. deduped_3_1[2] ], function ( m_2 )
