@@ -203,6 +203,15 @@ end );
 DeclareOperation( "ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject ] );
 
+CapJitAddTypeSignature( "ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject", [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject ], function ( input_types )
+    
+    Assert( 0, input_types[2].category = input_types[1].category );
+    Assert( 0, input_types[3].category = Source( input_types[1].category ) );
+    
+    return CapJitDataTypeOfObjectOfCategory( Target( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #!  Apply the presheaf <A>F</A> to the morphism <A>mor</A>.
 #!  The shorthand is <A>F</A>(<A>mor</A>).
@@ -225,6 +234,15 @@ DeclareOperation( "ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToGenerating
 #! @Returns a &CAP; morphism
 DeclareOperation( "ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject ] );
+
+CapJitAddTypeSignature( "ApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject", [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject ], function ( input_types )
+    
+    Assert( 0, input_types[2].category = input_types[1].category );
+    Assert( 0, input_types[3].category = Source( input_types[1].category ) );
+    
+    return CapJitDataTypeOfMorphismOfCategory( Target( input_types[1].category ) );
+    
+end );
 
 ####################################
 #
