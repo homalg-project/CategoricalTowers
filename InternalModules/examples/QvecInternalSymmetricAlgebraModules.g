@@ -6,7 +6,7 @@ LoadPackage( "InternalModules" );
 
 Q := HomalgFieldOfRationals( );;
 Qvec := MatrixCategory( Q );;
-v := VectorSpaceObject( 3, Q );;
+v := 3 / Qvec;;
 ZQvec := PositivelyZGradedClosureCategory( Qvec );
 #! PositivelyZGradedClosureCategory( Category of matrices over Q )
 V := ObjectInZGradedClosureCategoryWithBounds( ZQvec, v, 1 );;
@@ -25,8 +25,7 @@ S := SymmetricAlgebraAsLeftModule( v );
 #!  with undecidable (mathematical) equality of morphisms and
 #!  uncomputable lifts and colifts>
 
-u := VectorSpaceObject( 3, Q );;
-U := ObjectInZGradedClosureCategoryWithBounds( ZQvec, u, 3 );;
+U := ObjectInZGradedClosureCategoryWithBounds( ZQvec, v, 3 );;
 F := FreeInternalModule( U, SVMod );
 #! <An object in Abelian category of
 #!  left modules over the internal symmetric algebra of
