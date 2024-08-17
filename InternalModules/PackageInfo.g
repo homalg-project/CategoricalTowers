@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "InternalModules",
 Subtitle := "Modules over internal algebras",
-Version := "2024.06-03",
+Version := "2024.08-01",
 
-Date := "2024-07-01",
+Date := "2024-08-17",
 License := "GPL-2.0-or-later",
 
 
@@ -88,6 +88,7 @@ Dependencies := rec(
                            [ "CAP", ">= 2024.06-03" ],
                            [ "MonoidalCategories", ">= 2024.06-02" ],
                            [ "CartesianCategories", ">= 2024.06-03" ],
+                           [ "LinearAlgebraForCAP", ">= 2024.08-03" ],
                            [ "ToolsForCategoricalTowers", ">= 2023.11-03" ],
                            [ "GradedCategories", ">= 2023.08-02" ],
                            [ "AttributeCategoryForCAP", ">= 2023.02-03" ],

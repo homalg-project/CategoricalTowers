@@ -14,7 +14,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XF2 := HomalgRingOfIntegers( 2 );;[127X[104X
     [4X[25Xgap>[125X [27XF2vec := MatrixCategory( F2 );;[127X[104X
-    [4X[25Xgap>[125X [27Xv := VectorSpaceObject( 3, F2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xv := 3 / F2vec;;[127X[104X
     [4X[25Xgap>[125X [27XZF2vec := PositivelyZGradedClosureCategory( F2vec );[127X[104X
     [4X[28XPositivelyZGradedClosureCategory( Category of matrices over GF(2) )[128X[104X
     [4X[25Xgap>[125X [27XV := ObjectInZGradedClosureCategoryWithBounds( ZF2vec, v, 1 );;[127X[104X
@@ -33,8 +33,7 @@
     [4X[28X A vector space object over GF(2) of dimension 3[128X[104X
     [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
     [4X[28X uncomputable lifts and colifts>[128X[104X
-    [4X[25Xgap>[125X [27Xu := VectorSpaceObject( 3, F2 );;[127X[104X
-    [4X[25Xgap>[125X [27XU := ObjectInZGradedClosureCategoryWithBounds( ZF2vec, u, 3 );;[127X[104X
+    [4X[25Xgap>[125X [27XU := ObjectInZGradedClosureCategoryWithBounds( ZF2vec, v, 3 );;[127X[104X
     [4X[25Xgap>[125X [27XF := FreeInternalModule( U, SVMod );[127X[104X
     [4X[28X<An object in Abelian category of[128X[104X
     [4X[28X left modules over the internal symmetric algebra of[128X[104X
@@ -65,7 +64,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );;[127X[104X
     [4X[25Xgap>[125X [27XQvec := MatrixCategory( Q );;[127X[104X
-    [4X[25Xgap>[125X [27Xv := VectorSpaceObject( 3, Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xv := 3 / Qvec;;[127X[104X
     [4X[25Xgap>[125X [27XZQvec := PositivelyZGradedClosureCategory( Qvec );[127X[104X
     [4X[28XPositivelyZGradedClosureCategory( Category of matrices over Q )[128X[104X
     [4X[25Xgap>[125X [27XV := ObjectInZGradedClosureCategoryWithBounds( ZQvec, v, 1 );;[127X[104X
@@ -83,8 +82,7 @@
     [4X[28X A vector space object over Q of dimension 3[128X[104X
     [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
     [4X[28X uncomputable lifts and colifts>[128X[104X
-    [4X[25Xgap>[125X [27Xu := VectorSpaceObject( 3, Q );;[127X[104X
-    [4X[25Xgap>[125X [27XU := ObjectInZGradedClosureCategoryWithBounds( ZQvec, u, 3 );;[127X[104X
+    [4X[25Xgap>[125X [27XU := ObjectInZGradedClosureCategoryWithBounds( ZQvec, v, 3 );;[127X[104X
     [4X[25Xgap>[125X [27XF := FreeInternalModule( U, SVMod );[127X[104X
     [4X[28X<An object in Abelian category of[128X[104X
     [4X[28X left modules over the internal symmetric algebra of[128X[104X
@@ -825,7 +823,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );;[127X[104X
     [4X[25Xgap>[125X [27XQvec := MatrixCategory( Q );;[127X[104X
-    [4X[25Xgap>[125X [27Xv := VectorSpaceObject( 6, Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xv := 6 / Qvec;;[127X[104X
     [4X[25Xgap>[125X [27XZQvec := FinitelyZGradedClosureCategory( Qvec );[127X[104X
     [4X[28XFinitelyZGradedClosureCategory( Category of matrices over Q )[128X[104X
     [4X[25Xgap>[125X [27XV := ObjectInZGradedClosureCategoryWithBounds( ZQvec, v, 1 );;[127X[104X
@@ -854,7 +852,7 @@
     [4X[28X[ [  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in Category of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27Xu := VectorSpaceObject( 3, Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xu := 3 / Qvec;;[127X[104X
     [4X[25Xgap>[125X [27XU := ObjectInZGradedClosureCategoryWithBounds( ZQvec, u, 3 );;[127X[104X
     [4X[25Xgap>[125X [27XF := FreeInternalModule( U, ExtVMod );[127X[104X
     [4X[28X<An object in Abelian category of[128X[104X

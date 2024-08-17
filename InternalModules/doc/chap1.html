@@ -60,7 +60,7 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F2 := HomalgRingOfIntegers( 2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F2vec := MatrixCategory( F2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := VectorSpaceObject( 3, F2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := 3 / F2vec;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZF2vec := PositivelyZGradedClosureCategory( F2vec );</span>
 PositivelyZGradedClosureCategory( Category of matrices over GF(2) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInZGradedClosureCategoryWithBounds( ZF2vec, v, 1 );;</span>
@@ -79,8 +79,7 @@ uncomputable lifts and colifts
  A vector space object over GF(2) of dimension 3
  with undecidable (mathematical) equality of morphisms and
  uncomputable lifts and colifts&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := VectorSpaceObject( 3, F2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInZGradedClosureCategoryWithBounds( ZF2vec, u, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInZGradedClosureCategoryWithBounds( ZF2vec, v, 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeInternalModule( U, SVMod );</span>
 &lt;An object in Abelian category of
  left modules over the internal symmetric algebra of
@@ -113,7 +112,7 @@ A morphism in Category of matrices over GF(2)
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qvec := MatrixCategory( Q );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := VectorSpaceObject( 3, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := 3 / Qvec;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZQvec := PositivelyZGradedClosureCategory( Qvec );</span>
 PositivelyZGradedClosureCategory( Category of matrices over Q )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInZGradedClosureCategoryWithBounds( ZQvec, v, 1 );;</span>
@@ -131,8 +130,7 @@ uncomputable lifts and colifts
  A vector space object over Q of dimension 3
  with undecidable (mathematical) equality of morphisms and
  uncomputable lifts and colifts&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := VectorSpaceObject( 3, Q );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInZGradedClosureCategoryWithBounds( ZQvec, u, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInZGradedClosureCategoryWithBounds( ZQvec, v, 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeInternalModule( U, SVMod );</span>
 &lt;An object in Abelian category of
  left modules over the internal symmetric algebra of
@@ -875,7 +873,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qvec := MatrixCategory( Q );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := VectorSpaceObject( 6, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := 6 / Qvec;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZQvec := FinitelyZGradedClosureCategory( Qvec );</span>
 FinitelyZGradedClosureCategory( Category of matrices over Q )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInZGradedClosureCategoryWithBounds( ZQvec, v, 1 );;</span>
@@ -904,7 +902,7 @@ degree: 3
 [ [  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ] ]
 
 A morphism in Category of matrices over Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := VectorSpaceObject( 3, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := 3 / Qvec;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInZGradedClosureCategoryWithBounds( ZQvec, u, 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeInternalModule( U, ExtVMod );</span>
 &lt;An object in Abelian category of
