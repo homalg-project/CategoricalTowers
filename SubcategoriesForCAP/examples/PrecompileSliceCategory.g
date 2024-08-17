@@ -4,7 +4,7 @@
 
 LoadPackage( "SubcategoriesForCAP" );
 #! true
-LoadPackage( "FreydCategoriesForCAP" );
+LoadPackage( "FreydCategoriesForCAP", ">= 2024.08-01" );
 #! true
 
 ZZZ := HomalgRingOfIntegers( );;

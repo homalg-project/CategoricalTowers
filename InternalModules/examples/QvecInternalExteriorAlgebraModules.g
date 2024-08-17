@@ -6,7 +6,7 @@ LoadPackage( "InternalModules" );
 
 Q := HomalgFieldOfRationals( );;
 Qvec := MatrixCategory( Q );;
-v := VectorSpaceObject( 6, Q );;
+v := 6 / Qvec;;
 ZQvec := FinitelyZGradedClosureCategory( Qvec );
 #! FinitelyZGradedClosureCategory( Category of matrices over Q )
 V := ObjectInZGradedClosureCategoryWithBounds( ZQvec, v, 1 );;
@@ -37,7 +37,7 @@ e1 := InternalElement( e1 );
 #! 
 #! A morphism in Category of matrices over Q
 
-u := VectorSpaceObject( 3, Q );;
+u := 3 / Qvec;;
 U := ObjectInZGradedClosureCategoryWithBounds( ZQvec, u, 3 );;
 F := FreeInternalModule( U, ExtVMod );
 #! <An object in Abelian category of

@@ -6,7 +6,7 @@ LoadPackage( "InternalModules" );
 
 F2 := HomalgRingOfIntegers( 2 );;
 F2vec := MatrixCategory( F2 );;
-v := VectorSpaceObject( 3, F2 );;
+v := 3 / F2vec;;
 ZF2vec := PositivelyZGradedClosureCategory( F2vec );
 #! PositivelyZGradedClosureCategory( Category of matrices over GF(2) )
 V := ObjectInZGradedClosureCategoryWithBounds( ZF2vec, v, 1 );;
@@ -26,8 +26,7 @@ S := SymmetricAlgebraAsLeftModule( v );
 #!  with undecidable (mathematical) equality of morphisms and
 #!  uncomputable lifts and colifts>
 
-u := VectorSpaceObject( 3, F2 );;
-U := ObjectInZGradedClosureCategoryWithBounds( ZF2vec, u, 3 );;
+U := ObjectInZGradedClosureCategoryWithBounds( ZF2vec, v, 3 );;
 F := FreeInternalModule( U, SVMod );
 #! <An object in Abelian category of
 #!  left modules over the internal symmetric algebra of
