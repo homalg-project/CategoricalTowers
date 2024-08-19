@@ -6,7 +6,11 @@
 
 #! @Chapter Tools
 
+####################################
+#
 #! @Section Tools for quivers
+#
+####################################
 
 #! @Description
 #!  Return a triple consisting of the number of vertices of the quiver <A>q</A>,
@@ -18,7 +22,11 @@ DeclareAttribute( "DefiningTripleOfAQuiver",
         IsQuiver );
 #! @InsertChunk DefiningTripleOfAQuiver
 
+####################################
+#
 #! @Section Tools for categories
+#
+####################################
 
 #! @Description
 #!  The nerve data of the category <A>C</A>.
