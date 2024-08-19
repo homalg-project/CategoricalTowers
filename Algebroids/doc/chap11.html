@@ -22,29 +22,47 @@
 <p id="mathjaxlink" class="pcenter"><a href="chap11_mj.html">[MathJax on]</a></p>
 <p><a id="X8508AEF8845565A1" name="X8508AEF8845565A1"></a></p>
 <div class="ChapSects"><a href="chap11.html#X8508AEF8845565A1">11 <span class="Heading">Tools</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X839DC59F790B90DE">11.1 <span class="Heading">Tools for quivers</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X7C701DBF7BAE649A">11.1 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X7ECD9D7C7A4B626E">11.1-1 DefiningTripleOfAQuiver</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X8077FCEB82720B59">11.1-1 Dimension</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X7C0B9C8F798E9D99">11.2 <span class="Heading">Tools for categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X839DC59F790B90DE">11.2 <span class="Heading">Tools for quivers</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X8425B40781737758">11.2-1 NerveTruncatedInDegree2Data</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X83BB7A397CA3C0D8">11.2-2 IndicesOfGeneratingMorphismsFromHomStructure</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X7D5912F38287ADBA">11.2-3 OppositeFiniteCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X7ECD9D7C7A4B626E">11.2-1 DefiningTripleOfAQuiver</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X7C0B9C8F798E9D99">11.3 <span class="Heading">Tools for categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X8425B40781737758">11.3-1 NerveTruncatedInDegree2Data</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X83BB7A397CA3C0D8">11.3-2 IndicesOfGeneratingMorphismsFromHomStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X7D5912F38287ADBA">11.3-3 OppositeFiniteCategory</a></span>
 </div></div>
 </div>
 
 <h3>11 <span class="Heading">Tools</span></h3>
 
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>11.1 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X8077FCEB82720B59" name="X8077FCEB82720B59"></a></p>
+
+<h5>11.1-1 Dimension</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dimension</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>Return the dimension of the object-finite linear category C with free external Homs of finite rank.</p>
+
 <p><a id="X839DC59F790B90DE" name="X839DC59F790B90DE"></a></p>
 
-<h4>11.1 <span class="Heading">Tools for quivers</span></h4>
+<h4>11.2 <span class="Heading">Tools for quivers</span></h4>
 
 <p><a id="X7ECD9D7C7A4B626E" name="X7ECD9D7C7A4B626E"></a></p>
 
-<h5>11.1-1 DefiningTripleOfAQuiver</h5>
+<h5>11.2-1 DefiningTripleOfAQuiver</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningTripleOfAQuiver</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a triple</p>
@@ -63,11 +81,11 @@ q(0,1,2,3,4)[a:0-&gt;0,s:0-&gt;1,t:0-&gt;1,m:3-&gt;0]
 
 <p><a id="X7C0B9C8F798E9D99" name="X7C0B9C8F798E9D99"></a></p>
 
-<h4>11.2 <span class="Heading">Tools for categories</span></h4>
+<h4>11.3 <span class="Heading">Tools for categories</span></h4>
 
 <p><a id="X8425B40781737758" name="X8425B40781737758"></a></p>
 
-<h5>11.2-1 NerveTruncatedInDegree2Data</h5>
+<h5>11.3-1 NerveTruncatedInDegree2Data</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NerveTruncatedInDegree2Data</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a pair consisting of a triple and an 8-tuple</p>
@@ -76,7 +94,7 @@ q(0,1,2,3,4)[a:0-&gt;0,s:0-&gt;1,t:0-&gt;1,m:3-&gt;0]
 
 <p><a id="X83BB7A397CA3C0D8" name="X83BB7A397CA3C0D8"></a></p>
 
-<h5>11.2-2 IndicesOfGeneratingMorphismsFromHomStructure</h5>
+<h5>11.3-2 IndicesOfGeneratingMorphismsFromHomStructure</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IndicesOfGeneratingMorphismsFromHomStructure</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list of integers</p>
@@ -85,7 +103,7 @@ q(0,1,2,3,4)[a:0-&gt;0,s:0-&gt;1,t:0-&gt;1,m:3-&gt;0]
 
 <p><a id="X7D5912F38287ADBA" name="X7D5912F38287ADBA"></a></p>
 
-<h5>11.2-3 OppositeFiniteCategory</h5>
+<h5>11.3-3 OppositeFiniteCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OppositeFiniteCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>

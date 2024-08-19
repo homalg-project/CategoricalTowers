@@ -7,10 +7,10 @@
                                     quivers [101X
   
   
-                                   2024.07-04
+                                   2024.08-01
   
   
-                                  20 July 2024
+                                 19 August 2024
   
   
                                 Mohamed Barakat
@@ -298,12 +298,14 @@
       10.1-3 ReducedGroebnerBasis
       10.1-4 QuotientCategory
   11 [33X[0;0YTools[133X
-    11.1 [33X[0;0YTools for quivers[133X
-      11.1-1 DefiningTripleOfAQuiver
-    11.2 [33X[0;0YTools for categories[133X
-      11.2-1 NerveTruncatedInDegree2Data
-      11.2-2 IndicesOfGeneratingMorphismsFromHomStructure
-      11.2-3 OppositeFiniteCategory
+    11.1 [33X[0;0YAttributes[133X
+      11.1-1 Dimension
+    11.2 [33X[0;0YTools for quivers[133X
+      11.2-1 DefiningTripleOfAQuiver
+    11.3 [33X[0;0YTools for categories[133X
+      11.3-1 NerveTruncatedInDegree2Data
+      11.3-2 IndicesOfGeneratingMorphismsFromHomStructure
+      11.3-3 OppositeFiniteCategory
   12 [33X[0;0YExamples and Tests[133X
     12.1 [33X[0;0YAdelman 5 lemma[133X
     12.2 [33X[0;0YBasics of additive closure[133X

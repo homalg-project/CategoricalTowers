@@ -78,6 +78,8 @@
     [4X[28Xy^10 = y^5 ] ) / [ 1*[x^5], 1*[y^5] ][128X[104X
     [4X[25Xgap>[125X [27XHomStructure( quo_k_quo_C.0, quo_k_quo_C.5 );[127X[104X
     [4X[28X<A row module over Q of rank 50>[128X[104X
+    [4X[25Xgap>[125X [27XDimension( quo_k_quo_C );[127X[104X
+    [4X[28X126[128X[104X
     [4X[25Xgap>[125X [27XModelingCategory( quo_k_quo_C );[127X[104X
     [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,[128X[104X
     [4X[28Xc:1-≻3, e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) ) / [ 1*x^10 - 1*x^5,[128X[104X
