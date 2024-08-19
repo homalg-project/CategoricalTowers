@@ -57,6 +57,8 @@ quo_k_quo_C := k_quo_C / [ k_quo_C.x^5, k_quo_C.y^5 ];
 #! y^10 = y^5 ] ) / [ 1*[x^5], 1*[y^5] ]
 HomStructure( quo_k_quo_C.0, quo_k_quo_C.5 );
 #! <A row module over Q of rank 50>
+Dimension( quo_k_quo_C );
+#! 126
 ModelingCategory( quo_k_quo_C );
 #! Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,
 #! c:1-≻3, e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) ) / [ 1*x^10 - 1*x^5,

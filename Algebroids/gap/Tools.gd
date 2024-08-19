@@ -6,7 +6,25 @@
 
 #! @Chapter Tools
 
+#! @Section Tools for linear categories
+
+####################################
+#
+#! @Section Attributes
+#
+####################################
+
+#! @Description
+#!  Return the dimension of the object-finite linear category C with free external Homs of finite rank.
+#! @Arguments C
+#! @Returns an integer
+DeclareAttribute( "Dimension", IsCapCategory and IsObjectFiniteCategory and IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms );
+
+####################################
+#
 #! @Section Tools for quivers
+#
+####################################
 
 #! @Description
 #!  Return a triple consisting of the number of vertices of the quiver <A>q</A>,
@@ -18,7 +36,11 @@ DeclareAttribute( "DefiningTripleOfAQuiver",
         IsQuiver );
 #! @InsertChunk DefiningTripleOfAQuiver
 
+####################################
+#
 #! @Section Tools for categories
+#
+####################################
 
 #! @Description
 #!  The nerve data of the category <A>C</A>.

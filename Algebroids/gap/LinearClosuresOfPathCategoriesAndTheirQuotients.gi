@@ -48,7 +48,9 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
     fi;
     
     kC := LinearClosure( k, C, sorting_func : FinalizeCategory := false ); # every morphism starts by its maximum monomial
-
+    
+    SetIsObjectFiniteCategory( kC, true );
+    
     kC!.Name := Concatenation( RingName( k ), "-", kC!.Name );
     
     kC!.admissible_order := admissible_order;
