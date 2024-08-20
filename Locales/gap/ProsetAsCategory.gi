@@ -165,25 +165,7 @@ InstallMethodWithCache( ProsetAsCategory,
         
     end );
     
-    AddPreCompose( P,
-      function( cat, mor_pre, mor_post )
-        
-        return MorphismConstructor( cat,
-                       Source( mor_pre ),
-                       fail,
-                       Target( mor_post ) );
-        
-    end );
-    
-    AddIdentityMorphism( P,
-      function( cat, a )
-        
-        return MorphismConstructor( cat,
-                       a,
-                       fail,
-                       a );
-        
-    end );
+    # PreCompose and IdentityMorphism are automatically derived from UniqueMorphism, which in turn is installed via a final derivation
     
     Finalize( P );
     
