@@ -203,21 +203,21 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1;
     deduped_8_1 := ValuesOfPreSheaf( s_1 )[1];
     hoisted_7_1 := Target( cat_1 );
-    hoisted_6_1 := CommutativeRingOfLinearCategory( cat_1 );
-    hoisted_5_1 := List( ValuesOfPreSheaf( b_1 )[1], RankOfObject );
-    hoisted_4_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
+    hoisted_6_1 := List( ValuesOfPreSheaf( b_1 )[1], RankOfObject );
+    hoisted_5_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
+    hoisted_4_1 := CommutativeRingOfLinearCategory( cat_1 );
     hoisted_3_1 := List( deduped_8_1, RankOfObject );
     hoisted_2_1 := ValuesOfPreSheaf( r_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := hoisted_3_1[o_2];
-              hoisted_2_2 := hoisted_5_1[o_2];
-              deduped_1_2 := hoisted_4_1[o_2];
-              return CreateCapCategoryMorphismWithAttributes( hoisted_7_1, deduped_8_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, HomalgMatrixListList( PermutationMat( PermList( List( [ 1 .. deduped_3_2 ], function ( i_3 )
-                              local deduped_1_3;
-                              deduped_1_3 := i_3 - 1;
-                              return REM_INT( deduped_1_3, deduped_1_2 ) * hoisted_2_2 + QUO_INT( deduped_1_3, deduped_1_2 ) + 1;
-                          end ) ), deduped_3_2 ), deduped_3_2, deduped_3_2, hoisted_6_1 ) );
+              hoisted_2_2 := hoisted_6_1[o_2];
+              deduped_1_2 := hoisted_5_1[o_2];
+              return CreateCapCategoryMorphismWithAttributes( hoisted_7_1, deduped_8_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, CertainRows( HomalgIdentityMatrix( deduped_3_2, hoisted_4_1 ), List( [ 1 .. deduped_3_2 ], function ( i_3 )
+                          local deduped_1_3;
+                          deduped_1_3 := i_3 - 1;
+                          return REM_INT( deduped_1_3, deduped_1_2 ) * hoisted_2_2 + QUO_INT( deduped_1_3, deduped_1_2 ) + 1;
+                      end ) ) );
           end ) );
 end
 ########
@@ -232,21 +232,21 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1;
     deduped_8_1 := ValuesOfPreSheaf( s_1 )[1];
     hoisted_7_1 := Target( cat_1 );
-    hoisted_6_1 := CommutativeRingOfLinearCategory( cat_1 );
-    hoisted_5_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
-    hoisted_4_1 := List( ValuesOfPreSheaf( b_1 )[1], RankOfObject );
+    hoisted_6_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
+    hoisted_5_1 := List( ValuesOfPreSheaf( b_1 )[1], RankOfObject );
+    hoisted_4_1 := CommutativeRingOfLinearCategory( cat_1 );
     hoisted_3_1 := List( deduped_8_1, RankOfObject );
     hoisted_2_1 := ValuesOfPreSheaf( r_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := hoisted_3_1[o_2];
-              hoisted_2_2 := hoisted_5_1[o_2];
-              deduped_1_2 := hoisted_4_1[o_2];
-              return CreateCapCategoryMorphismWithAttributes( hoisted_7_1, deduped_8_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, HomalgMatrixListList( PermutationMat( PermList( List( [ 1 .. deduped_3_2 ], function ( i_3 )
-                              local deduped_1_3;
-                              deduped_1_3 := i_3 - 1;
-                              return REM_INT( deduped_1_3, deduped_1_2 ) * hoisted_2_2 + QUO_INT( deduped_1_3, deduped_1_2 ) + 1;
-                          end ) ), deduped_3_2 ), deduped_3_2, deduped_3_2, hoisted_6_1 ) );
+              hoisted_2_2 := hoisted_6_1[o_2];
+              deduped_1_2 := hoisted_5_1[o_2];
+              return CreateCapCategoryMorphismWithAttributes( hoisted_7_1, deduped_8_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, CertainRows( HomalgIdentityMatrix( deduped_3_2, hoisted_4_1 ), List( [ 1 .. deduped_3_2 ], function ( i_3 )
+                          local deduped_1_3;
+                          deduped_1_3 := i_3 - 1;
+                          return REM_INT( deduped_1_3, deduped_1_2 ) * hoisted_2_2 + QUO_INT( deduped_1_3, deduped_1_2 ) + 1;
+                      end ) ) );
           end ) );
 end
 ########
