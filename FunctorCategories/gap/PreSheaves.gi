@@ -354,7 +354,12 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         if HasCounit( B_op ) and HasComultiplication( B_op ) then
             
             Append( list_of_operations, CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY );
-            Append( list_of_operations, CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY_WITH_DUALS );
+            
+            if HasAntipode( B_op ) then
+                
+                Append( list_of_operations, CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY_WITH_DUALS );
+                
+            fi;
             
         elif HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
             
