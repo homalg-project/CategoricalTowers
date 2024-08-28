@@ -166,6 +166,9 @@ DeclareAttribute( "HomomorphismStructureOnMorphismsMatrices", IsAlgebroidFromDat
 
 CapJitAddTypeSignature( "HomomorphismStructureOnMorphismsMatrices", [ IsAlgebroidFromDataTables ],
   function ( input_types )
+    local ring;
+    
+    ring := CommutativeRingOfLinearCategory( input_types[1].category );
     
     return CapJitDataTypeOfListOf(
               CapJitDataTypeOfListOf(
@@ -173,8 +176,7 @@ CapJitAddTypeSignature( "HomomorphismStructureOnMorphismsMatrices", [ IsAlgebroi
                       CapJitDataTypeOfListOf(
                           CapJitDataTypeOfListOf(
                               CapJitDataTypeOfListOf(
-                                  CapJitDataTypeOfListOf(
-                                      CapJitDataTypeOfListOf( IsInt ) ) ) ) ) ) ) );
+                                rec( filter := IsHomalgMatrix, ring := ring ) ) ) ) ) ) );
 
     
 end );
