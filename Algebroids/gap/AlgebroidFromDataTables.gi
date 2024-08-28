@@ -130,42 +130,6 @@ end );
 ############################
 
 ##
-BindGlobal( "_Product_Matrices_",
-  
-  function ( m_1, mat_1, n_1, m_2, mat_2, n_2, ring )
-    
-    if n_1 <> m_2 then
-        Error("you are multiplying two non-compatible matrices!");
-    fi;
-    
-    if m_1 = 0 or n_2 = 0 then
-        return ListWithIdenticalEntries( m_1, [] );
-    elif n_1 = 0 then
-        return NullMat( m_1, n_2, ring );
-    else
-        return mat_1 * mat_2;
-    fi;
-    
-end );
-
-##
-BindGlobal( "_Product_Matrices_List_",
-  
-  function ( L, ring )
-    
-    if IsEmpty( L ) then
-        Error( "the list pass to '_Product_Matrices_List_' must not be empty!" );
-    fi;
-    
-    if Length( L ) = 1 then
-        return L[1];
-    else
-        return Iterated( L, { l, r } -> [ l[1], _Product_Matrices_( l[1], l[2], l[3], r[1], r[2], r[3], ring ), r[3] ] );
-    fi;
-    
-end );
-
-##
 BindGlobal( "_KroneckerProduct_",
   function ( m_1, mat_1, n_1, m_2, mat_2, n_2 )
     
@@ -368,42 +332,26 @@ InstallMethod( AlgebroidFromDataTables,
     # [ [ hom(o_s, m_h:s_h -> t_h): hom(o_s, s_h) -> hom(o_s, t_h) ] ]_{s,h}
     hom_structure_objs_gmors := LazyHList( [ 1 .. NumberOfObjects( q ) ],
                   s -> LazyHList( [ 1 .. NumberOfMorphisms( q ) ],
-                    h -> [ ranks[s][IndicesOfSources( q )[h]],
-                           input_data[4][s][h],
-                           ranks[s][IndicesOfTargets( q )[h]] ] ) );
+                    h -> HomalgMatrix( input_data[4][s][h], ranks[s][IndicesOfSources( q )[h]], ranks[s][IndicesOfTargets( q )[h]], ring ) ) );
     
     # [ [ [ [ hom(o_s, m:o_i -> o_j):hom(o_s, o_i) -> hom(o_s, o_j) ] ] ] ]_{s,i,j,m}
     hom_structure_objs_mors := LazyHList( [ 1 .. NumberOfObjects( q ) ],
                                   s -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
                                     i -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
                                        j ->  LazyHList( input_data[3][i][j],
-                                          function ( indices )
-                                            if indices = [ ] then
-                                              return [ ranks[s][i], IdentityMat( ranks[s][i], ring ), ranks[s][i] ];
-                                            else
-                                              return _Product_Matrices_List_( hom_structure_objs_gmors[s]{indices}, ring );
-                                            fi;
-                                          end ) ) ) );
+                                          indices -> Iterated( _ConcatenationLazyHLists_( [ LazyHList( [ 1 ], r -> HomalgIdentityMatrix( ranks[s][i], ring ) ), hom_structure_objs_gmors[s]{indices} ] ), \*  ) ) ) ) );
     
     # [ [ hom(m_h:s_h -> t_h, o_t): hom(t_h, o_t) -> hom(s_h, o_t) ] ]_{t,h}
     hom_structure_gmors_objs := LazyHList( [ 1 .. NumberOfObjects( q ) ],
                   t -> LazyHList( [ 1 .. NumberOfMorphisms( q ) ],
-                    h -> [ ranks[IndicesOfTargets( q )[h]][t],
-                           input_data[5][t][h],
-                           ranks[IndicesOfSources( q )[h]][t] ] ) );
+                    h -> HomalgMatrix( input_data[5][t][h], ranks[IndicesOfTargets( q )[h]][t], ranks[IndicesOfSources( q )[h]][t], ring ) ) );
     
     # [ [ [ [ hom(m:o_i -> o_j, o_t):hom(o_j, o_t) -> hom(o_i, o_t) ] ] ] ]_{t,i,j,m}
     hom_structure_mors_objs := LazyHList( [ 1 .. NumberOfObjects( q ) ],
                                   t -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
                                     i -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
                                        j ->  LazyHList( input_data[3][i][j],
-                                          function ( indices )
-                                            if indices = [ ] then
-                                              return [ ranks[i][t], IdentityMat( ranks[i][t], ring ), ranks[i][t] ];
-                                            else
-                                              return _Product_Matrices_List_( hom_structure_gmors_objs[t]{Reversed(indices)}, ring );
-                                            fi;
-                                          end ) ) ) );
+                                          indices -> Iterated( _ConcatenationLazyHLists_( [ LazyHList( [ 1 ], r -> HomalgIdentityMatrix( ranks[j][t], ring ) ), hom_structure_gmors_objs[t]{Reversed(indices)} ] ), \* ) ) ) ) );
     
     # H(l:i->j, r:p->q) = H( l⋅id_j, r⋅id_q ) = H(id_j, r)⋅H(l, id_q)
     hom_structure_matrices :=
@@ -413,7 +361,7 @@ InstallMethod( AlgebroidFromDataTables,
                 p -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
                   q -> LazyHList( hom_structure_mors_objs[q][i][j],
                     l -> LazyHList( hom_structure_objs_mors[j][p][q],
-                      r -> _Product_Matrices_( r[1], r[2], r[3], l[1], l[2], l[3], ring ) ) ) ) ) ) );
+                      r -> r * l ) ) ) ) ) );
     
     if eager then
        
@@ -654,12 +602,9 @@ InstallMethod( AlgebroidFromDataTables,
             
             mat := Sum( List( [ 1 .. Length( s_alpha ) ],
                     l -> Sum( List( [ 1 .. Length( s_gamma ) ],
-                      r -> List( hom_ijpq[s_alpha[l]][s_gamma[r]], x -> List( x, y -> (coeffs_alpha[s_alpha[l]] * coeffs_gamma[s_gamma[r]]) * y ) ) ) ) ) );
+                      r -> coeffs_alpha[s_alpha[l]] * coeffs_gamma[s_gamma[r]] * hom_ijpq[s_alpha[l]][s_gamma[r]] ) ) ) );
             
-            return MorphismConstructor( RangeCategoryOfHomomorphismStructure( A ),
-                          s,
-                          HomalgMatrixListList( mat, RankOfObject( s ), RankOfObject( r ), CommutativeRingOfLinearCategory( A ) ),
-                          r );
+            return MorphismConstructor( RangeCategoryOfHomomorphismStructure( A ), s, mat, r );
             
         fi;
         
