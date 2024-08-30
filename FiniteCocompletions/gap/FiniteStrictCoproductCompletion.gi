@@ -7,233 +7,6 @@
 ##
 InstallMethod( FiniteStrictCoproductCompletion,
         "for a CAP category",
-        [ IsCapCategory and IsInitialCategory ],
-        
-  function ( I )
-    local name, category_filter, category_object_filter, category_morphism_filter,
-          create_func_object, create_func_morphism,
-          object_constructor, object_datum, morphism_constructor, morphism_datum,
-          H, UI;
-    
-    name := Concatenation( "FiniteStrictCoproductCompletion( ", Name( I ), " )" );
-    
-    category_filter := IsFiniteStrictCoproductCompletion;
-    
-    category_object_filter := IsObjectInFiniteStrictCoproductCompletion and HasIsZeroForObjects and IsZeroForObjects;
-    
-    category_morphism_filter := IsMorphismInFiniteStrictCoproductCompletion and HasIsZeroForMorphisms and IsZeroForMorphisms;
-    
-    ## e.g., ZeroObject, DirectSum
-    create_func_object :=
-        function( name, UI )
-            
-            return """
-                function( input_arguments... )
-                  
-                  return ObjectConstructor( cat,
-                                 Pair( BigInt( 0 ),
-                                       CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( cat ) ) ) ) ) );
-                  
-                end
-            """;
-            
-        end;
-    
-    ## e.g., IdentityMorphism, PreCompose
-    create_func_morphism :=
-        function( name, UI )
-            
-            return """
-                function( input_arguments... )
-                  
-                  return MorphismConstructor( cat,
-                                 top_source,
-                                 Pair( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsBigInt ) ),
-                                       CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( cat ) ) ) ) ),
-                                 top_range );
-                  
-                end
-            """;
-            
-        end;
-    
-    ##
-    object_constructor :=
-      function ( UI, pair_of_int_and_list )
-        
-        return CreateCapCategoryObjectWithAttributes( UI,
-                       PairOfIntAndList, pair_of_int_and_list );
-        
-    end;
-    
-    object_datum := { UI, object } -> PairOfIntAndList( object );
-    
-    morphism_constructor :=
-      function ( UI, S, pair_of_lists, T )
-        
-        #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0, IsList( pair_of_lists ) and
-                Length( pair_of_lists ) = 2 and
-                IsList( pair_of_lists[1] ) and
-                IsList( pair_of_lists[2] ) );
-        
-        return CreateCapCategoryMorphismWithAttributes( UI,
-                       S,
-                       T,
-                       PairOfLists, pair_of_lists );
-        
-    end;
-    
-    morphism_datum := { UI, morphism } -> PairOfLists( morphism );
-    
-    if HasRangeCategoryOfHomomorphismStructure( I ) then
-        H := RangeCategoryOfHomomorphismStructure( I );
-        if not IsIdenticalObj( I, H ) then
-            H := FiniteStrictCoproductCompletion( H );
-        else
-            H := "self";
-        fi;
-    else
-        H := "self";
-    fi;
-    
-    UI :=
-      CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
-              name := name,
-              supports_empty_limits := true,
-              category_filter := category_filter,
-              category_object_filter := category_object_filter,
-              category_morphism_filter := category_morphism_filter,
-              create_func_object := create_func_object,
-              create_func_morphism := create_func_morphism,
-              create_func_morphism_or_fail := create_func_morphism,
-              object_constructor := object_constructor,
-              object_datum := object_datum,
-              morphism_constructor := morphism_constructor,
-              morphism_datum := morphism_datum,
-              range_category_of_homomorphism_structure := H,
-              ) );
-    
-    ##
-    SetUnderlyingCategory( UI, I );
-    
-    ##
-    UI!.compiler_hints.category_attribute_names :=
-      [ "UnderlyingCategory",
-        ];
-    
-    ##
-    AddSetOfObjectsOfCategory( UI,
-      function( UI )
-        
-        return [ InitialObject( UI ) ];
-        
-    end );
-    
-    ##
-    AddIsWellDefinedForObjects( UI,
-      function( UI, object )
-        
-        return true;
-        
-    end );
-    
-    ##
-    AddIsWellDefinedForMorphisms( UI,
-      function( UI, morphism )
-        
-        return true;
-        
-    end );
-    
-    ##
-    AddIsEqualForObjects( UI,
-      function( UI, object1, object2 )
-        
-        return true;
-        
-    end );
-    
-    ##
-    AddIsEqualForMorphisms( UI,
-      function( UI, morphism1, morphism2 )
-        
-        return true;
-        
-    end );
-    
-    if not H = "self" then ## if H = "self", the Hom-structure will be derived from the closed monoidal structure
-        
-        ##
-        AddDistinguishedObjectOfHomomorphismStructure( UI,
-          function( UI )
-            local H;
-            
-            H := RangeCategoryOfHomomorphismStructure( UI );
-            
-            return InitialObject( H );
-            
-        end );
-        
-        ##
-        AddHomomorphismStructureOnObjects( UI,
-                function( UI, S, T )
-            
-            return DistinguishedObjectOfHomomorphismStructure( UI );
-            
-        end );
-        
-        ##
-        AddHomomorphismStructureOnMorphismsWithGivenObjects( UI,
-          function ( UI, source, alpha, gamma, target )
-            local H;
-            
-            H := RangeCategoryOfHomomorphismStructure( UI );
-            
-            return MorphismConstructor( H, source, fail, target );
-            
-        end );
-        
-        ##
-        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( UI,
-          function( UI, distinguished_object, phi, target )
-            local H;
-            
-            H := RangeCategoryOfHomomorphismStructure( UI );
-            
-            return MorphismConstructor( H, distinguished_object, fail, target );
-            
-        end );
-        
-        ##
-        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UI,
-          function( UI, S, T, morphism )
-            
-            return MorphismConstructor( UI, S, fail, T );
-            
-        end );
-        
-    fi;
-    
-    ##
-    AddMorphismsOfExternalHom( UI,
-      function( UI, object1, object2 )
-        
-        return [ IdentityMorphism( UI, object1 ) ];
-        
-    end );
-    
-    Finalize( UI );
-    
-    Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( UI, "IsEquippedWithHomomorphismStructure" ) );
-    
-    return UI;
-    
-end );
-
-##
-InstallMethod( FiniteStrictCoproductCompletion,
-        "for a CAP category",
         [ IsCapCategory ],
         
   function ( C )
@@ -1584,6 +1357,233 @@ InstallMethod( FiniteStrictCoproductCompletion,
     Finalize( UC );
     
     return UC;
+    
+end );
+
+##
+InstallMethod( FiniteStrictCoproductCompletion,
+        "for a CAP category",
+        [ IsCapCategory and IsInitialCategory ],
+        
+  function ( I )
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          create_func_object, create_func_morphism,
+          object_constructor, object_datum, morphism_constructor, morphism_datum,
+          H, UI;
+    
+    name := Concatenation( "FiniteStrictCoproductCompletion( ", Name( I ), " )" );
+    
+    category_filter := IsFiniteStrictCoproductCompletion;
+    
+    category_object_filter := IsObjectInFiniteStrictCoproductCompletion and HasIsZeroForObjects and IsZeroForObjects;
+    
+    category_morphism_filter := IsMorphismInFiniteStrictCoproductCompletion and HasIsZeroForMorphisms and IsZeroForMorphisms;
+    
+    ## e.g., ZeroObject, DirectSum
+    create_func_object :=
+        function( name, UI )
+            
+            return """
+                function( input_arguments... )
+                  
+                  return ObjectConstructor( cat,
+                                 Pair( BigInt( 0 ),
+                                       CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( cat ) ) ) ) ) );
+                  
+                end
+            """;
+            
+        end;
+    
+    ## e.g., IdentityMorphism, PreCompose
+    create_func_morphism :=
+        function( name, UI )
+            
+            return """
+                function( input_arguments... )
+                  
+                  return MorphismConstructor( cat,
+                                 top_source,
+                                 Pair( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsBigInt ) ),
+                                       CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( cat ) ) ) ) ),
+                                 top_range );
+                  
+                end
+            """;
+            
+        end;
+    
+    ##
+    object_constructor :=
+      function ( UI, pair_of_int_and_list )
+        
+        return CreateCapCategoryObjectWithAttributes( UI,
+                       PairOfIntAndList, pair_of_int_and_list );
+        
+    end;
+    
+    object_datum := { UI, object } -> PairOfIntAndList( object );
+    
+    morphism_constructor :=
+      function ( UI, S, pair_of_lists, T )
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, IsList( pair_of_lists ) and
+                Length( pair_of_lists ) = 2 and
+                IsList( pair_of_lists[1] ) and
+                IsList( pair_of_lists[2] ) );
+        
+        return CreateCapCategoryMorphismWithAttributes( UI,
+                       S,
+                       T,
+                       PairOfLists, pair_of_lists );
+        
+    end;
+    
+    morphism_datum := { UI, morphism } -> PairOfLists( morphism );
+    
+    if HasRangeCategoryOfHomomorphismStructure( I ) then
+        H := RangeCategoryOfHomomorphismStructure( I );
+        if not IsIdenticalObj( I, H ) then
+            H := FiniteStrictCoproductCompletion( H );
+        else
+            H := "self";
+        fi;
+    else
+        H := "self";
+    fi;
+    
+    UI :=
+      CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
+              name := name,
+              supports_empty_limits := true,
+              category_filter := category_filter,
+              category_object_filter := category_object_filter,
+              category_morphism_filter := category_morphism_filter,
+              create_func_object := create_func_object,
+              create_func_morphism := create_func_morphism,
+              create_func_morphism_or_fail := create_func_morphism,
+              object_constructor := object_constructor,
+              object_datum := object_datum,
+              morphism_constructor := morphism_constructor,
+              morphism_datum := morphism_datum,
+              range_category_of_homomorphism_structure := H,
+              ) );
+    
+    ##
+    SetUnderlyingCategory( UI, I );
+    
+    ##
+    UI!.compiler_hints.category_attribute_names :=
+      [ "UnderlyingCategory",
+        ];
+    
+    ##
+    AddSetOfObjectsOfCategory( UI,
+      function( UI )
+        
+        return [ InitialObject( UI ) ];
+        
+    end );
+    
+    ##
+    AddIsWellDefinedForObjects( UI,
+      function( UI, object )
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddIsWellDefinedForMorphisms( UI,
+      function( UI, morphism )
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddIsEqualForObjects( UI,
+      function( UI, object1, object2 )
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddIsEqualForMorphisms( UI,
+      function( UI, morphism1, morphism2 )
+        
+        return true;
+        
+    end );
+    
+    if not H = "self" then ## if H = "self", the Hom-structure will be derived from the closed monoidal structure
+        
+        ##
+        AddDistinguishedObjectOfHomomorphismStructure( UI,
+          function( UI )
+            local H;
+            
+            H := RangeCategoryOfHomomorphismStructure( UI );
+            
+            return InitialObject( H );
+            
+        end );
+        
+        ##
+        AddHomomorphismStructureOnObjects( UI,
+                function( UI, S, T )
+            
+            return DistinguishedObjectOfHomomorphismStructure( UI );
+            
+        end );
+        
+        ##
+        AddHomomorphismStructureOnMorphismsWithGivenObjects( UI,
+          function ( UI, source, alpha, gamma, target )
+            local H;
+            
+            H := RangeCategoryOfHomomorphismStructure( UI );
+            
+            return MorphismConstructor( H, source, fail, target );
+            
+        end );
+        
+        ##
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( UI,
+          function( UI, distinguished_object, phi, target )
+            local H;
+            
+            H := RangeCategoryOfHomomorphismStructure( UI );
+            
+            return MorphismConstructor( H, distinguished_object, fail, target );
+            
+        end );
+        
+        ##
+        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UI,
+          function( UI, S, T, morphism )
+            
+            return MorphismConstructor( UI, S, fail, T );
+            
+        end );
+        
+    fi;
+    
+    ##
+    AddMorphismsOfExternalHom( UI,
+      function( UI, object1, object2 )
+        
+        return [ IdentityMorphism( UI, object1 ) ];
+        
+    end );
+    
+    Finalize( UI );
+    
+    Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( UI, "IsEquippedWithHomomorphismStructure" ) );
+    
+    return UI;
     
 end );
 
