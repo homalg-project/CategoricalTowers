@@ -106,13 +106,13 @@ CapJitAddTypeSignature( "AmbientCategory", [ IsProsetOrPosetOfCapCategory ], fun
 end );
 
 #! @Description
-#!  The cell in the ambient category underlying <A>cell</A>.
-#! @Arguments cell
-#! @Returns a &CAP; cell
-DeclareAttribute( "UnderlyingCell",
-        IsCellInProsetOfCategory );
+#!  The object in the ambient category underlying <A>obj</A>.
+#! @Arguments obj
+#! @Returns a &CAP; category object
+DeclareAttribute( "UnderlyingObject",
+        IsObjectInProsetOfCategory );
 
-CapJitAddTypeSignature( "UnderlyingCell", [ IsObjectInPosetOfCategory ], function ( input_types )
+CapJitAddTypeSignature( "UnderlyingObject", [ IsObjectInPosetOfCategory ], function ( input_types )
     
     Assert( 0, IsProsetOrPosetOfCapCategory( input_types[1].category ) );
     
@@ -120,7 +120,14 @@ CapJitAddTypeSignature( "UnderlyingCell", [ IsObjectInPosetOfCategory ], functio
     
 end );
 
-CapJitAddTypeSignature( "UnderlyingCell", [ IsMorphismInPosetOfCategory ], function ( input_types )
+#! @Description
+#!  The morphism in the ambient category underlying <A>mor</A>.
+#! @Arguments mor
+#! @Returns a &CAP; category morphism
+DeclareAttribute( "UnderlyingMorphism",
+        IsMorphismInPosetOfCategory );
+
+CapJitAddTypeSignature( "UnderlyingMorphism", [ IsMorphismInPosetOfCategory ], function ( input_types )
     
     Assert( 0, IsProsetOrPosetOfCapCategory( input_types[1].category ) );
     

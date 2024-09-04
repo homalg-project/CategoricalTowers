@@ -8,7 +8,7 @@
 InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
   [
    # create_func_bool and create_func_object can only deal with operations which do
-   # not get morphisms as arguments, because they access `UnderlyingCell` which is
+   # not get morphisms as arguments, because they access `UnderlyingMorphism` which is
    # not set for morphisms
    "IsWellDefinedForObjects",
    "IsHomSetInhabited",
@@ -201,37 +201,37 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( underlying_object, AmbientCategory( cat ), [ "the object datum given to the object constructor of <cat>" ] );
         
         return CreateCapCategoryObjectWithAttributes( cat,
-                       UnderlyingCell, underlying_object );
+                       UnderlyingObject, underlying_object );
         
     end;
     
-    object_datum := { cat, object } -> UnderlyingCell( object );
+    object_datum := { cat, object } -> UnderlyingObject( object );
     
     morphism_constructor := function( cat, source, underlying_morphism, range )
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), [ "the morphism datum given to the morphism constructor of <cat>" ] );
         
-        if IsEqualForObjects( AmbientCategory( cat ), Source( underlying_morphism ), UnderlyingCell( source ) ) = false then
+        if IsEqualForObjects( AmbientCategory( cat ), Source( underlying_morphism ), UnderlyingObject( source ) ) = false then
             
-            Error( "the source of the morphism datum must be equal to <UnderlyingCell( source )>" );
+            Error( "the source of the morphism datum must be equal to <UnderlyingObject( source )>" );
             
         fi;
         
-        if IsEqualForObjects( AmbientCategory( cat ), Target( underlying_morphism ), UnderlyingCell( range ) ) = false then
+        if IsEqualForObjects( AmbientCategory( cat ), Target( underlying_morphism ), UnderlyingObject( range ) ) = false then
             
-            Error( "the range of the morphism datum must be equal to <UnderlyingCell( range )>" );
+            Error( "the range of the morphism datum must be equal to <UnderlyingObject( range )>" );
             
         fi;
         
         return CreateCapCategoryMorphismWithAttributes( cat,
                        source,
                        range,
-                       UnderlyingCell, underlying_morphism );
+                       UnderlyingMorphism, underlying_morphism );
         
     end;
     
-    morphism_datum := { cat, morphism } -> UnderlyingCell( morphism );
+    morphism_datum := { cat, morphism } -> UnderlyingMorphism( morphism );
     
     P := CategoryConstructor( rec(
                  name := name,
@@ -272,7 +272,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddIsEqualForObjects( P,
           function( P, S, T )
             
-            return IsEqualForObjects( AmbientCategory( P ), UnderlyingCell( S ), UnderlyingCell( T ) );
+            return IsEqualForObjects( AmbientCategory( P ), UnderlyingObject( S ), UnderlyingObject( T ) );
             
         end );
         
@@ -310,8 +310,8 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             local mors;
             
             mors := MorphismsOfExternalHom( AmbientCategory( P ),
-                            UnderlyingCell( S ),
-                            UnderlyingCell( T ) );
+                            UnderlyingObject( S ),
+                            UnderlyingObject( T ) );
             
             ## a trick to avoid an if/else statement (see ?CompilerForCAP:Requirements):
             mors := mors{[ 1 .. 1 - 0 ^ Length( mors ) ]};
@@ -346,7 +346,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddIsTerminal( P,
           function( P, S )
             
-            return IsWeakTerminal( AmbientCategory( P ), UnderlyingCell( S ) );
+            return IsWeakTerminal( AmbientCategory( P ), UnderlyingObject( S ) );
             
         end );
         
@@ -357,7 +357,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddIsInitial( P,
           function( P, S )
             
-            return IsWeakInitial( AmbientCategory( P ), UnderlyingCell( S ) );
+            return IsWeakInitial( AmbientCategory( P ), UnderlyingObject( S ) );
             
         end );
         
@@ -376,7 +376,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             AddInternalHomOnObjects( P,
               function( P, S, T )
                 
-                return ObjectConstructor( P, StableInternalHom( AmbientCategory( P ), UnderlyingCell( S ), UnderlyingCell( T ) ) );
+                return ObjectConstructor( P, StableInternalHom( AmbientCategory( P ), UnderlyingObject( S ), UnderlyingObject( T ) ) );
                 
             end );
             
@@ -401,7 +401,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             AddInternalCoHomOnObjects( P,
               function( P, S, T )
                 
-                return ObjectConstructor( P, StableInternalCoHom( AmbientCategory( P ), UnderlyingCell( S ), UnderlyingCell( T ) ) );
+                return ObjectConstructor( P, StableInternalCoHom( AmbientCategory( P ), UnderlyingObject( S ), UnderlyingObject( T ) ) );
                 
             end );
             
@@ -539,7 +539,7 @@ InstallMethod( ViewString,
   function( a )
     
     return Concatenation( "An object in the proset given by: ",
-                   StringView( UnderlyingCell( a ) ) );
+                   StringView( UnderlyingObject( a ) ) );
     
 end );
 
@@ -551,12 +551,12 @@ InstallMethod( PrintString,
 
 ##
 InstallMethod( ViewString,
-        [ IsMorphismInProsetOfCategory and HasUnderlyingCell ],
+        [ IsMorphismInProsetOfCategory and HasUnderlyingMorphism ],
         
   function( mor )
     
     return Concatenation( "A morphism in the proset given by: ",
-                   StringView( UnderlyingCell( mor ) ) );
+                   StringView( UnderlyingMorphism( mor ) ) );
     
 end );
 
@@ -573,18 +573,18 @@ InstallMethod( ViewString,
   function( a )
     
     return Concatenation( "An object in the stable proset given by: ",
-                   StringView( UnderlyingCell( a ) ) );
+                   StringView( UnderlyingObject( a ) ) );
     
 end );
 
 ##
 InstallMethod( ViewString,
-        [ IsMorphismInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory and HasUnderlyingCell ],
+        [ IsMorphismInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory and HasUnderlyingMorphism ],
         
   function( mor )
     
     return Concatenation( "A morphism in the stable proset given by: ",
-                   StringView( UnderlyingCell( mor ) ) );
+                   StringView( UnderlyingMorphism( mor ) ) );
     
 end );
 
@@ -594,7 +594,7 @@ InstallMethod( DisplayString,
         
   function( a )
     
-    return Concatenation( StringDisplay( UnderlyingCell( a ) ),
+    return Concatenation( StringDisplay( UnderlyingObject( a ) ),
                    "\nAn object in the proset given by the above data" );
     
 end );
@@ -605,7 +605,7 @@ InstallMethod( DisplayString,
         
   function( a )
     
-    return Concatenation( StringDisplay( UnderlyingCell( a ) ),
+    return Concatenation( StringDisplay( UnderlyingObject( a ) ),
                    "\nAn object in the stable proset given by the above data" );
     
 end );
@@ -617,7 +617,7 @@ InstallMethod( ViewString,
   function( a )
     
     return Concatenation( "An object in the poset given by: ",
-                   StringView( UnderlyingCell( a ) ) );
+                   StringView( UnderlyingObject( a ) ) );
     
 end );
 
@@ -629,12 +629,12 @@ InstallMethod( PrintString,
 
 ##
 InstallMethod( ViewString,
-        [ IsMorphismInPosetOfCategory and HasUnderlyingCell ],
+        [ IsMorphismInPosetOfCategory and HasUnderlyingMorphism ],
         
   function( mor )
     
     return Concatenation( "A morphism in the poset given by: ",
-                   StringView( UnderlyingCell( mor ) ) );
+                   StringView( UnderlyingMorphism( mor ) ) );
     
 end );
 
@@ -651,18 +651,18 @@ InstallMethod( ViewString,
   function( a )
     
     return Concatenation( "An object in the stable poset given by: ",
-                   StringView( UnderlyingCell( a ) ) );
+                   StringView( UnderlyingObject( a ) ) );
     
 end );
 
 ##
 InstallMethod( ViewString,
-        [ IsMorphismInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory and HasUnderlyingCell ],
+        [ IsMorphismInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory and HasUnderlyingMorphism ],
         
   function( mor )
     
     return Concatenation( "A morphism in the stable poset given by: ",
-                   StringView( UnderlyingCell( mor ) ) );
+                   StringView( UnderlyingMorphism( mor ) ) );
     
 end );
 
@@ -672,7 +672,7 @@ InstallMethod( DisplayString,
         
   function( a )
     
-    return Concatenation( StringDisplay( UnderlyingCell( a ) ),
+    return Concatenation( StringDisplay( UnderlyingObject( a ) ),
                    "\nAn object in the poset given by the above data" );
     
 end );
@@ -683,7 +683,7 @@ InstallMethod( DisplayString,
         
   function( a )
     
-    return Concatenation( StringDisplay( UnderlyingCell( a ) ),
+    return Concatenation( StringDisplay( UnderlyingObject( a ) ),
                    "\nAn object in the stable poset given by the above data" );
     
 end );
