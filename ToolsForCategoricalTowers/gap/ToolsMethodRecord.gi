@@ -240,7 +240,7 @@ RelativeLift := rec(
     
     return [ true ];
   end,
-  return_type := "morphism_or_fail",
+  return_type := "morphism",
   #dual_operation := "RelativeColift",
   dual_arguments_reversed := true,
   is_merely_set_theoretic := true ),

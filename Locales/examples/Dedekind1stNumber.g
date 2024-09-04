@@ -28,7 +28,7 @@ PSh := PreSheaves( IntervalCategory );
 Display( PSh );
 #! A CAP category with name PreSheaves( IntervalCategory, IntervalCategory ):
 #! 
-#! 56 primitive operations were used to derive 286 operations for this category
+#! 58 primitive operations were used to derive 286 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
