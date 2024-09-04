@@ -90,10 +90,10 @@ CapJitAddTypeSignature( "UnderlyingPreorderFunction", [ IsProsetAsCategory ],
 end );
 
 #!
-DeclareAttribute( "UnderlyingObject",
+DeclareAttribute( "UnderlyingDatum",
         IsObjectInThinCategory );
 
-CapJitAddTypeSignature( "UnderlyingObject", [ IsObjectInThinCategory ],
+CapJitAddTypeSignature( "UnderlyingDatum", [ IsObjectInThinCategory ],
  function ( input_types )
     
     Assert( 0, IsProsetAsCategory( input_types[1].category ) );

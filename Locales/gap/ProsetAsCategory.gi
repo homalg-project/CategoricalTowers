@@ -110,14 +110,14 @@ InstallMethodWithCache( ProsetAsCategory,
       function ( C, o )
         
         return CreateCapCategoryObjectWithAttributes( C,
-                       UnderlyingObject, o );
+                       UnderlyingDatum, o );
         
     end );
     
     AddObjectDatum( P,
       function( cat, obj )
         
-        return UnderlyingObject( obj );
+        return UnderlyingDatum( obj );
         
     end );
     
