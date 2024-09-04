@@ -152,70 +152,76 @@ AddDerivationToCAP( IsCodominating,
 end : CategoryFilter := IsThinCategory );
 
 ##
-AddDerivationToCAP( Equalizer,
-        "Equalizer using Source",
-        [  ],
-        
+AddFinalDerivationBundle( "Equalizer using Source and the unique morphism",
+                    [ [ UniqueMorphism, 1 ] ],
+                    [ Equalizer,
+                      EmbeddingOfEqualizer,
+                      EmbeddingOfEqualizerWithGivenEqualizer,
+                      UniversalMorphismIntoEqualizer,
+                      UniversalMorphismIntoEqualizerWithGivenEqualizer ],
+[
+  Equalizer,
+  [ ],
   function( cat, A, D )
     
     return A;
     
-end : CategoryFilter := IsThinCategory );
-
-##
-AddDerivationToCAP( EmbeddingOfEqualizerWithGivenEqualizer,
-        "EmbeddingOfEqualizerWithGivenEqualizer using the unique morphism",
-        [ [ UniqueMorphism, 1 ] ],
-        
+  end
+],
+[
+  EmbeddingOfEqualizerWithGivenEqualizer,
+  [ [ UniqueMorphism, 1 ] ],
   function( cat, source_of_diagram, diagram, equalizer )
     
     return UniqueMorphism( cat, equalizer, source_of_diagram );
     
-end : CategoryFilter := IsThinCategory );
-
-##
-AddDerivationToCAP( UniversalMorphismIntoEqualizerWithGivenEqualizer,
-        "UniversalMorphismIntoEqualizerWithGivenEqualizer using the unique morphism",
-        [ [ UniqueMorphism, 1 ] ],
-        
+  end
+],
+[
+  UniversalMorphismIntoEqualizerWithGivenEqualizer,
+  [ [ UniqueMorphism, 1 ] ],
   function( cat, source_of_diagram, diagram, source, tau, equalizer )
     
     return UniqueMorphism( cat, source, equalizer );
     
-end : CategoryFilter := IsThinCategory );
+  end
+] : CategoryFilter := IsThinCategory );
 
 ##
-AddDerivationToCAP( Coequalizer,
-        "Coequalizer using Range",
-        [  ],
-        
+AddFinalDerivationBundle( "Coequalizer using Range and the unique morphism",
+                    [ [ UniqueMorphism, 1 ] ],
+                    [ Coequalizer,
+                      ProjectionOntoCoequalizer,
+                      ProjectionOntoCoequalizerWithGivenCoequalizer,
+                      UniversalMorphismFromCoequalizer,
+                      UniversalMorphismFromCoequalizerWithGivenCoequalizer ],
+[
+  Coequalizer,
+  [ ],
   function( cat, A, D )
     
     return A;
     
-end : CategoryFilter := IsThinCategory );
-
-##
-AddDerivationToCAP( ProjectionOntoCoequalizerWithGivenCoequalizer,
-        "ProjectionOntoCoequalizerWithGivenCoequalizer using the unique morphism",
-        [ [ UniqueMorphism, 1 ] ],
-        
+  end
+],
+[
+  ProjectionOntoCoequalizerWithGivenCoequalizer,
+  [ [ UniqueMorphism, 1 ] ],
   function( cat, target_of_diagram, diagram, coequalizer )
     
     return UniqueMorphism( cat, target_of_diagram, coequalizer );
     
-end : CategoryFilter := IsThinCategory );
-
-##
-AddDerivationToCAP( UniversalMorphismFromCoequalizerWithGivenCoequalizer,
-        "UniversalMorphismFromCoequalizerWithGivenCoequalizer using the unique morphism",
-        [ [ UniqueMorphism, 1 ] ],
-        
+  end
+],
+[
+  UniversalMorphismFromCoequalizerWithGivenCoequalizer,
+  [ [ UniqueMorphism, 1 ] ],
   function( cat, target_of_diagram, diagram, target, tau, coequalizer )
     
     return UniqueMorphism( cat, coequalizer, target );
     
-end : CategoryFilter := IsThinCategory );
+  end
+] : CategoryFilter := IsThinCategory );
 
 ##
 AddDerivationToCAP( IsMonomorphism,
