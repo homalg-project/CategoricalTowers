@@ -88,12 +88,10 @@ InstallMethod( AsCellOfProset,
     
     P := ProsetOfCategory( CapCategory( morphism ) );
     
-    return MorphismConstructor(
-        P,
-        ObjectConstructor( P, Source( morphism ) ),
-        morphism,
-        ObjectConstructor( P, Target( morphism ) )
-    );
+    return MorphismConstructor( P,
+                   ObjectConstructor( P, Source( morphism ) ),
+                   morphism,
+                   ObjectConstructor( P, Target( morphism ) ) );
     
 end );
 
@@ -107,12 +105,10 @@ InstallMethod( AsCellOfStableProset,
     
     P := StableProsetOfCategory( CapCategory( morphism ) );
     
-    return MorphismConstructor(
-        P,
-        ObjectConstructor( P, Source( morphism ) ),
-        morphism,
-        ObjectConstructor( P, Target( morphism ) )
-    );
+    return MorphismConstructor( P,
+                   ObjectConstructor( P, Source( morphism ) ),
+                   morphism,
+                   ObjectConstructor( P, Target( morphism ) ) );
     
 end );
 
@@ -154,12 +150,10 @@ InstallMethod( AsCellOfPoset,
     
     P := PosetOfCategory( CapCategory( morphism ) );
     
-    return MorphismConstructor(
-        P,
-        ObjectConstructor( P, Source( morphism ) ),
-        morphism,
-        ObjectConstructor( P, Target( morphism ) )
-    );
+    return MorphismConstructor( P,
+                   ObjectConstructor( P, Source( morphism ) ),
+                   morphism,
+                   ObjectConstructor( P, Target( morphism ) ) );
     
 end );
 
@@ -173,12 +167,10 @@ InstallMethod( AsCellOfStablePoset,
     
     P := StablePosetOfCategory( CapCategory( morphism ) );
     
-    return MorphismConstructor(
-        P,
-        ObjectConstructor( P, Source( morphism ) ),
-        morphism,
-        ObjectConstructor( P, Target( morphism ) )
-    );
+    return MorphismConstructor( P,
+                   ObjectConstructor( P, Source( morphism ) ),
+                   morphism,
+                   ObjectConstructor( P, Target( morphism ) ) );
     
 end );
 
@@ -189,12 +181,10 @@ InstallOtherMethod( \/,
         
   function( morphism, P )
     
-    return MorphismConstructor(
-        P,
-        ObjectConstructor( P, Source( morphism ) ),
-        morphism,
-        ObjectConstructor( P, Target( morphism ) )
-    );
+    return MorphismConstructor( P,
+                   ObjectConstructor( P, Source( morphism ) ),
+                   morphism,
+                   ObjectConstructor( P, Target( morphism ) ) );
     
 end );
 
@@ -348,7 +338,8 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( underlying_object, AmbientCategory( cat ), [ "the object datum given to the object constructor of <cat>" ] );
         
-        return CreateCapCategoryObjectWithAttributes( cat, UnderlyingCell, underlying_object );
+        return CreateCapCategoryObjectWithAttributes( cat,
+                       UnderlyingCell, underlying_object );
         
     end;
     
@@ -371,7 +362,10 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             
         fi;
         
-        return CreateCapCategoryMorphismWithAttributes( cat, source, range, UnderlyingCell, underlying_morphism );
+        return CreateCapCategoryMorphismWithAttributes( cat,
+                       source,
+                       range,
+                       UnderlyingCell, underlying_morphism );
         
     end;
     
