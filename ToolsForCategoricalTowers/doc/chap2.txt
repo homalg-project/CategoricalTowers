@@ -335,12 +335,12 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(b,a) + \{ \mathtt{fail} \}[123X[133X
   
   [33X[0;0YThe   arguments  are  two  morphisms  [23X\beta:  b  \rightarrow  c[123X,  [23X\alpha:  a
-  \rightarrow  c[123X,  and  [23X\nu:  d  \rightarrow c[123X . The output is a relative lift
-  [23X\beta  / \alpha: b \rightarrow a[123X of [23X\beta[123X along [23X\alpha[123X modulo [23X\nu[123X. if such a
-  relative  lift exists or [23X\mathtt{fail}[123X if it doesn't. Recall that a relative
-  lift  [23X\beta  / \alpha: b \rightarrow a[123X of [23X\beta[123X along [23X\alpha[123X modulo [23X\nu[123X is a
-  morphism  such  that  [23X\alpha  \circ (\beta / \alpha) \sim_{b,c} \beta + \chi
-  \nu[123X, for some morphism [23X\chi: b \rightarrow d[123X.[133X
+  \rightarrow  c[123X,  and  [23X\nu: d \rightarrow c[123X such that a relative lift [23X\beta /
+  \alpha:  b  \rightarrow  a[123X  of  [23X\beta[123X along [23X\alpha[123X modulo [23X\nu[123X exists. Such a
+  relative  lift  is  returned.  Recall that a relative lift [23X\beta / \alpha: b
+  \rightarrow  a[123X  of  [23X\beta[123X  along  [23X\alpha[123X  modulo [23X\nu[123X is a morphism such that
+  [23X\alpha \circ (\beta / \alpha) \sim_{b,c} \beta + \chi \nu[123X, for some morphism
+  [23X\chi: b \rightarrow d[123X.[133X
   
   
   [1X2.5 [33X[0;0YBiased relative weak fiber product[133X[101X
