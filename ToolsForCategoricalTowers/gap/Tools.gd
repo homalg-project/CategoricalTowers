@@ -322,9 +322,9 @@ DeclareProperty( "IsWeakInitial",
 ###################################
 
 #! @Description
-#! The arguments are two morphisms $\beta: b \rightarrow c$, $\alpha: a \rightarrow c$, and $\nu: d \rightarrow c$ .
-#! The output is a relative lift $\beta / \alpha: b \rightarrow a$ of $\beta$ along $\alpha$ modulo $\nu$.
-#! if such a relative lift exists or $\mathtt{fail}$ if it doesn't.
+#! The arguments are two morphisms $\beta: b \rightarrow c$, $\alpha: a \rightarrow c$, and $\nu: d \rightarrow c$
+#! such that a relative lift $\beta / \alpha: b \rightarrow a$ of $\beta$ along $\alpha$ modulo $\nu$ exists.
+#! Such a relative lift is returned.
 #! Recall that a relative lift $\beta / \alpha: b \rightarrow a$ of $\beta$ along $\alpha$ modulo $\nu$ is
 #! a morphism such that $\alpha \circ (\beta / \alpha) \sim_{b,c} \beta + \chi \nu$, for some morphism $\chi: b \rightarrow d$.
 #! @Returns a morphism in $\mathrm{Hom}(b,a) + \{ \mathtt{fail} \}$
