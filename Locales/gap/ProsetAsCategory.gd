@@ -16,7 +16,7 @@
 #!  The &GAP; category of preordered sets viewed as categories.
 #! @Arguments object
 DeclareCategory( "IsProsetAsCategory",
-        IsCapCategory and IsThinCategory );
+        IsCategoryWithoutMorphismData );
 
 ####################################
 #

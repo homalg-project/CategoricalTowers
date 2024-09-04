@@ -8,8 +8,7 @@
 InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
   [
    # create_func_bool and create_func_object can only deal with operations which do
-   # not get morphisms as arguments, because they access `UnderlyingMorphism` which is
-   # not set for morphisms
+   # not get morphisms as arguments, because they access data which are not set for morphisms
    "IsWellDefinedForObjects",
    "IsHomSetInhabited",
    "TensorUnit",
@@ -255,6 +254,8 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  create_func_morphism_or_fail := "default"
                  ) );
     
+    SetIsThinCategory( P, true );
+    
     if ( HasIsObjectFiniteCategory and IsObjectFiniteCategory )( C ) then
         SetIsFiniteCategory( P, true );
     fi;
@@ -266,6 +267,36 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     ];
     
     SetAmbientCategory( P, C );
+    
+    if not CanCompute( C, "MorphismsOfExternalHom" ) then
+        
+        ##
+        AddUniqueMorphism( P,
+          function( P, source, target )
+            
+            return CreateCapCategoryMorphismWithAttributes( P,
+                           source,
+                           target );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "IsWellDefinedForMorphisms" ) then
+        
+        ##
+        AddIsWellDefinedForMorphisms( P,
+          function( P, mor )
+            
+            if HasUnderlyingMorphism( mor ) then
+                return IsWellDefinedForMorphisms( AmbientCategory( P ), UnderlyingMorphism( mor ) );
+            fi;
+            
+            return IsHomSetInhabited( P, Source( mor ), Target( mor ) );
+            
+        end );
+        
+    fi;
     
     if not skeletal and CanCompute( C, "IsEqualForObjects" ) then
         

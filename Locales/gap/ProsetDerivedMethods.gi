@@ -4,7 +4,7 @@
 # Implementations
 #
 
-## FIXME: CategoryFilter := C -> HasIsThinCategory( C ) and IsThinCategory( C ) and CanCompute( C, "UniqueMorphism" )
+##
 AddDerivationToCAP( IsWellDefinedForMorphisms,
         "IsWellDefinedForMorphisms checking the inhabitedness of the homset",
         [ [ IsHomSetInhabited, 1 ] ],
@@ -13,7 +13,7 @@ AddDerivationToCAP( IsWellDefinedForMorphisms,
     
     return IsHomSetInhabited( cat, Source( u ), Target( u ) );
         
-end : CategoryFilter := IsThinCategory );
+end : CategoryFilter := cat -> IsCategoryWithoutMorphismData( cat ) and HasIsThinCategory( cat ) and IsThinCategory( cat ) );
 
 ##
 AddDerivationToCAP( IsCongruentForMorphisms,
@@ -567,14 +567,12 @@ AddDerivationToCAP( IsIsomorphicForObjects,
 end : CategoryFilter := IsThinCategory );
 
 ##
-AddFinalDerivation( UniqueMorphism,
+AddDerivationToCAP( UniqueMorphism,
         "UniqueMorphism using CreateCapCategoryMorphismWithAttributes",
         [ ],
-        [ UniqueMorphism,
-          MorphismsOfExternalHom ],
         
   function( cat, A, B )
     
     return CreateCapCategoryMorphismWithAttributes( cat, A, B );
     
-end : CategoryFilter := IsThinCategory );
+end : CategoryFilter := cat -> IsCategoryWithoutMorphismData( cat ) and HasIsThinCategory( cat ) and IsThinCategory( cat ) );

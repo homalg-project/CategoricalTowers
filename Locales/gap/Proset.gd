@@ -22,6 +22,12 @@ DeclareInfoClass( "InfoLocales" );
 ####################################
 
 #! @Description
+#!  The &GAP; category of categories with morphisms without a morphism datum.
+#! @Arguments object
+DeclareCategory( "IsCategoryWithoutMorphismData",
+        IsCapCategory );
+
+#! @Description
 #!  The &GAP; category of objects in a thin &CAP; category.
 #! @Arguments object
 DeclareCategory( "IsObjectInThinCategory",
