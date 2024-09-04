@@ -186,7 +186,7 @@
     [4X[28XA CAP category with name FreeDistributiveCompletion([128X[104X
     [4X[28XPosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X56 primitive operations were used to derive 286 operations for this category[128X[104X
+    [4X[28X58 primitive operations were used to derive 286 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
