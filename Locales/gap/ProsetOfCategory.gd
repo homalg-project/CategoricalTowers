@@ -155,23 +155,3 @@ DeclareAttribute( "PosetOfCategory",
 #! @Arguments C
 DeclareAttribute( "StablePosetOfCategory",
         IsCapCategory );
-
-#! @Arguments c
-DeclareAttribute( "AsCellOfProset",
-        IsCapCategoryCell );
-
-#! @Arguments c
-DeclareAttribute( "AsCellOfStableProset",
-        IsCapCategoryCell );
-
-#! @Arguments c
-DeclareAttribute( "AsCellOfPoset",
-        IsCapCategoryCell );
-
-#! @Arguments c
-DeclareAttribute( "AsCellOfStablePoset",
-        IsCapCategoryCell );
-
-#! @Arguments object, P
-DeclareOperation( "/",
-        [ IsCapCategoryCell, IsProsetOrPosetOfCapCategory ] );
