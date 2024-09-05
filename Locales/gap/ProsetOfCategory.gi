@@ -251,7 +251,6 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  create_func_bool := "default",
                  create_func_object := "default",
                  create_func_morphism := create_func_morphism,
-                 create_func_morphism_or_fail := "default"
                  ) );
     
     SetIsThinCategory( P, true );

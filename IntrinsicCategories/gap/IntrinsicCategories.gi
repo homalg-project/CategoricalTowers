@@ -1122,7 +1122,7 @@ InstallMethod( IntrinsicCategory,
   function( C )
     local name, filter_obj, filter_mor,
           list_of_operations_to_install, func, pos, skip, properties, supports_empty_limits,
-          create_func_morphism, create_func_morphism_or_fail,
+          create_func_morphism,
           category_constructor_options, IC, todo_func, strict, filter_end,
           hom_filter_obj, hom_filter_mor,  hom_filter_end, hom_todo_func, H;
     
@@ -1203,33 +1203,6 @@ InstallMethod( IntrinsicCategory,
         
     end;
     
-    create_func_morphism_or_fail :=
-      function( name, IC )
-        
-        return """
-          function( input_arguments... )
-            local underlying_result, result;
-            
-            underlying_result := operation_name( underlying_arguments... );
-            
-            if underlying_result = fail then
-                
-                return fail;
-                
-            else
-                
-                result := top_morphism_getter( cat, top_source, underlying_result, top_range );
-            
-                cat!.todo_func( [ input_arguments... ], result );
-                
-                return result;
-                
-            fi;
-            
-        end""";
-        
-    end;
-    
     category_constructor_options :=
       rec( name := name,
            category_filter := IsIntrinsicCategory,
@@ -1247,9 +1220,7 @@ InstallMethod( IntrinsicCategory,
            generic_output_range_getter_string := "Intrinsify( cat, Target( underlying_result ) ), 1",
            create_func_bool := "default",
            create_func_object := "default",
-           create_func_object_or_fail := "default",
            create_func_morphism := create_func_morphism,
-           create_func_morphism_or_fail := create_func_morphism_or_fail,
            create_func_list_of_objects := "default"
            );
     

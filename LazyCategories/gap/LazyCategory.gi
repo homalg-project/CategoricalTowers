@@ -374,8 +374,8 @@ InstallMethod( LazyCategory,
         
   function( C )
     local name, object_constructor, object_datum, morphism_constructor, morphism_datum,
-          create_func_bool, create_func_object, create_func_object_or_fail,
-          create_func_morphism, create_func_universal_morphism, create_func_morphism_or_fail,
+          create_func_bool, create_func_object,
+          create_func_morphism, create_func_universal_morphism,
           create_func_list_of_objects, primitive_operations, list_of_operations_to_install, skip, func, pos,
           commutative_ring, properties, ignore, supports_empty_limits, category_constructor_options,
           D, optimize, show_evaluation, cache, print, list, lazify_range_of_hom_structure, HC;
@@ -437,29 +437,6 @@ InstallMethod( LazyCategory,
         
     end;
     
-    create_func_object_or_fail :=
-      function( name, D )
-        
-        return """
-          function( input_arguments... )
-            local underlying_result;
-            
-            underlying_result := operation_name( underlying_arguments... );
-            
-            if underlying_result = fail then
-                
-                return fail;
-                
-            else
-                
-                return top_object_getter( cat, Pair( "IdFunc", [ underlying_result ] ) );
-                
-            fi;
-            
-        end""";
-        
-    end;
-    
     ## e.g., ZeroObjectFunctorial, IdentityMorphism, PreCompose
     create_func_morphism :=
       function( name, D )
@@ -473,29 +450,6 @@ InstallMethod( LazyCategory,
         
     end;
     
-    create_func_morphism_or_fail :=
-      function( name, D )
-        
-        return """
-          function( input_arguments... )
-            local underlying_result;
-            
-            underlying_result := operation_name( underlying_arguments... );
-            
-            if underlying_result = fail then
-                
-                return fail;
-                
-            else
-                
-                return top_morphism_getter( cat, top_source, underlying_result, top_range );
-                
-            fi;
-            
-        end""";
-        
-    end;
-
     create_func_list_of_objects :=
       function( name, D )
         
@@ -600,9 +554,7 @@ InstallMethod( LazyCategory,
            #generic_output_range_getter_string :=,
            create_func_bool := "default",
            create_func_object := create_func_object,
-           create_func_object_or_fail := create_func_object_or_fail,
            create_func_morphism := create_func_morphism,
-           create_func_morphism_or_fail := create_func_morphism_or_fail,
            create_func_list_of_objects := create_func_list_of_objects,
            );
     
