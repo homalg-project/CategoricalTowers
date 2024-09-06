@@ -222,7 +222,7 @@
     [4X[28XIntrinsicCategory( CategoryWithAmbientObjects([128X[104X
     [4X[28XFreyd( GradedRows( Q[x,y,z] (with weights [ 1, 1, 1 ]) ) ) ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X186 primitive operations were used to derive 379 operations for this category[128X[104X
+    [4X[28X184 primitive operations were used to derive 376 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsSymmetricClosedMonoidalCategory[128X[104X
@@ -578,9 +578,6 @@
   
   [30X    [33X[0;6Y[2XColiftAlongEpimorphism[102X      ([14XCAP:      ColiftAlongEpimorphism      for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XColiftOrFail[102X    ([14XCAP:    ColiftOrFail    for    IsCapCategoryMorphism,
-        IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XColimit[102X ([14XToolsForCategoricalTowers: Colimit for IsList, IsList[114X)[133X
   
@@ -1112,9 +1109,6 @@
   [30X    [33X[0;6Y[2XLiftAlongMonomorphism[102X       ([14XCAP:       LiftAlongMonomorphism      for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XLiftOrFail[102X     ([14XCAP:     LiftOrFail     for     IsCapCategoryMorphism,
-        IsCapCategoryMorphism[114X)[133X
-  
   [30X    [33X[0;6Y[2XLimit[102X ([14XToolsForCategoricalTowers: Limit for IsList, IsList[114X)[133X
   
   [30X    [33X[0;6Y[2XMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[102X
@@ -1366,9 +1360,6 @@
   
   [30X    [33X[0;6Y[2XSolveLinearSystemInAbCategory[102X  ([14XCAP: SolveLinearSystemInAbCategory for
         IsList, IsList, IsList[114X)[133X
-  
-  [30X    [33X[0;6Y[2XSolveLinearSystemInAbCategoryOrFail[102X                              ([14XCAP:
-        SolveLinearSystemInAbCategoryOrFail for IsList, IsList, IsList[114X)[133X
   
   [30X    [33X[0;6Y[2XSomeProjectiveObject[102X        ([14XCAP:       SomeProjectiveObject       for
         IsCapCategoryObject[114X)[133X
