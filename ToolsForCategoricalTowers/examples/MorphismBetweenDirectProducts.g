@@ -12,7 +12,7 @@ sFinSets := SkeletalCategoryOfFiniteSets( );
 Display( sFinSets );
 #! A CAP category with name SkeletalFinSets:
 #! 
-#! 58 primitive operations were used to derive 350 operations for this category
+#! 58 primitive operations were used to derive 348 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
@@ -46,7 +46,7 @@ W := WrapperCategory( sFinSets,
 Display( W );
 #! A CAP category with name WrapperCategory( SkeletalFinSets ):
 #! 
-#! 326 primitive operations were used to derive 340 operations for this category
+#! 324 primitive operations were used to derive 338 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
@@ -78,7 +78,7 @@ O := Opposite( sFinSets );
 Display( O );
 #! A CAP category with name Opposite( SkeletalFinSets ):
 #! 
-#! 259 primitive operations were used to derive 275 operations for this category
+#! 257 primitive operations were used to derive 273 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts

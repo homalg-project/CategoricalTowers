@@ -17,7 +17,7 @@ Display( DC );
 #! FreeDistributiveCategoryWithStrictProductAndCoproducts(
 #! FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ):
 #! 
-#! 30 primitive operations were used to derive 139 operations for this category
+#! 30 primitive operations were used to derive 137 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts

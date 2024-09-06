@@ -8,7 +8,7 @@ D := TotalOrderAsCategory( "IsInt", {a,b} -> a <= b );
 Display( D );
 #! A CAP category with name TotalOrderAsCategory( "IsInt" ):
 #! 
-#! 8 primitive operations were used to derive 79 operations for this category
+#! 8 primitive operations were used to derive 77 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
