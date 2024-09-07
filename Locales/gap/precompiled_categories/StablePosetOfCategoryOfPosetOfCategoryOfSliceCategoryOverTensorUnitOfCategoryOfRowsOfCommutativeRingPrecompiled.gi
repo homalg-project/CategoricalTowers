@@ -14,7 +14,7 @@ function ( cat_1, a_1, b_1 )
     deduped_12_1 := 1 * 1;
     deduped_11_1 := AmbientCategory( cat_1 );
     deduped_10_1 := AmbientCategory( deduped_11_1 );
-    deduped_9_1 := UnderlyingMorphism( UnderlyingCell( UnderlyingCell( a_1 ) ) );
+    deduped_9_1 := UnderlyingMorphism( UnderlyingObject( UnderlyingObject( a_1 ) ) );
     deduped_8_1 := AmbientCategory( deduped_10_1 );
     deduped_7_1 := UnderlyingRing( deduped_8_1 );
     deduped_6_1 := HomalgIdentityMatrix( 1, deduped_7_1 );
@@ -29,8 +29,8 @@ function ( cat_1, a_1, b_1 )
             return IsZero( DecideZeroRows( y_2, x_2 ) );
         end, function ( x_2 )
             return ReducedSyzygiesOfRows( hoisted_4_1, DiagMat( deduped_7_1, ListWithIdenticalEntries( hoisted_2_1, x_2 ) ) );
-        end, UnderlyingMatrix( UnderlyingMorphism( UnderlyingCell( UnderlyingCell( b_1 ) ) ) ) );
-    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingCell, CreateCapCategoryObjectWithAttributes( deduped_11_1, UnderlyingCell, CreateCapCategoryObjectWithAttributes( deduped_10_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_8_1, CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) ) ) );
+        end, UnderlyingMatrix( UnderlyingMorphism( UnderlyingObject( UnderlyingObject( b_1 ) ) ) ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingObject, CreateCapCategoryObjectWithAttributes( deduped_11_1, UnderlyingObject, CreateCapCategoryObjectWithAttributes( deduped_10_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_8_1, CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) ) ) );
 end
 ########
         

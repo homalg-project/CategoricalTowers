@@ -87,6 +87,7 @@ InstallMethodWithCache( ProsetAsCategory,
     
     P!.supports_empty_limits := false;
     
+    SetIsThinCategory( P, true );
     SetUnderlyingObjectFilter( P, ValueGlobal( input_record.object_datum_filter_string ) );
     SetUnderlyingObjectMembershipFunction( P, input_record.object_datum_membership_func );
     SetUnderlyingObjectEqualityFunction( P, input_record.object_datum_equality_func );
@@ -110,14 +111,14 @@ InstallMethodWithCache( ProsetAsCategory,
       function ( C, o )
         
         return CreateCapCategoryObjectWithAttributes( C,
-                       UnderlyingObject, o );
+                       UnderlyingDatum, o );
         
     end );
     
     AddObjectDatum( P,
       function( cat, obj )
         
-        return UnderlyingObject( obj );
+        return UnderlyingDatum( obj );
         
     end );
     
