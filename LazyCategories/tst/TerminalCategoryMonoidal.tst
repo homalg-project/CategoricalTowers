@@ -15,22 +15,22 @@ gap> opposite := Opposite( L, "Opposite with all operations" );;
 gap> opposite_primitive := Opposite( L, "Opposite with primitive operations" : only_primitive_operations := true );;
 
 ##############################################
-# MonoidalCategoriesTensorProductAndUnitTest
+# MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest
 ##############################################
 
 gap> a := "a" / T / L;;
 gap> b := "b" / T / L;;
 
-gap> MonoidalCategoriesTensorProductAndUnitTest( L, opposite, a, b );;
-gap> MonoidalCategoriesTensorProductAndUnitTest( L, opposite_primitive, a, b );;
+gap> MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest( L, opposite, a, b );;
+gap> MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest( L, opposite_primitive, a, b );;
 
 gap> z := ZeroObject( L );;
 
-gap> MonoidalCategoriesTensorProductAndUnitTest( L, opposite, z, b );;
-gap> MonoidalCategoriesTensorProductAndUnitTest( L, opposite_primitive, z, b );;
+gap> MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest( L, opposite, z, b );;
+gap> MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest( L, opposite_primitive, z, b );;
 
-gap> MonoidalCategoriesTensorProductAndUnitTest( L, opposite, a, z );;
-gap> MonoidalCategoriesTensorProductAndUnitTest( L, opposite_primitive, a, z );;
+gap> MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest( L, opposite, a, z );;
+gap> MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest( L, opposite_primitive, a, z );;
 
 ##############################################
 # MonoidalCategoriesTest
