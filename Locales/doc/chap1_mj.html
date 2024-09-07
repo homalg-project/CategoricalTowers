@@ -55,8 +55,9 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7D03633A7D98026B">1.5 <span class="Heading">GAP categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X81147C8787D95719">1.5-1 IsObjectInThinCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7AC4E7D484A5CAF3">1.5-2 IsMorphismInThinCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CD9D9627C565CF4">1.5-1 IsCategoryWithoutMorphismData</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X81147C8787D95719">1.5-2 IsObjectInThinCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7AC4E7D484A5CAF3">1.5-3 IsMorphismInThinCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X85C8C80F785AEB5E">1.6 <span class="Heading">Add-methods</span></a>
 </span>
@@ -183,9 +184,18 @@
 
 <h4>1.5 <span class="Heading">GAP categories</span></h4>
 
+<p><a id="X7CD9D9627C565CF4" name="X7CD9D9627C565CF4"></a></p>
+
+<h5>1.5-1 IsCategoryWithoutMorphismData</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryWithoutMorphismData</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of categories with morphisms without a morphism datum.</p>
+
 <p><a id="X81147C8787D95719" name="X81147C8787D95719"></a></p>
 
-<h5>1.5-1 IsObjectInThinCategory</h5>
+<h5>1.5-2 IsObjectInThinCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInThinCategory</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -194,7 +204,7 @@
 
 <p><a id="X7AC4E7D484A5CAF3" name="X7AC4E7D484A5CAF3"></a></p>
 
-<h5>1.5-2 IsMorphismInThinCategory</h5>
+<h5>1.5-3 IsMorphismInThinCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInThinCategory</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>

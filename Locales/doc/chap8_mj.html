@@ -38,17 +38,13 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X8752F6307A2CC7FF">8.2-3 StableProsetOfCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X7CED62D3823B3875">8.2-4 PosetOfCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X7C510918829D2DAF">8.2-5 StablePosetOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X83C7D92980FD8200">8.2-6 AsCellOfProset</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X7F1751537AB8BFF5">8.2-7 AsCellOfStableProset</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X80E0FC6A79F094D5">8.2-8 AsCellOfPoset</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X7D18EFF57A55C225">8.2-9 AsCellOfStablePoset</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X80BF5F0187E00004">8.2-10 /</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8_mj.html#X7C701DBF7BAE649A">8.3 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X85702AB27ADF48CA">8.3-1 AmbientCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X812067018336213A">8.3-2 UnderlyingCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X817D54B379EADB27">8.3-2 UnderlyingObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X7A77521E87E8F1DA">8.3-3 UnderlyingMorphism</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8_mj.html#X7A489A5D79DA9E5C">8.4 <span class="Heading">Examples</span></a>
 </span>
@@ -122,7 +118,7 @@ A CAP category with name
 ProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
 / [ f⋅g = id(a), g⋅f = id(b) ] ):
 
-10 primitive operations were used to derive 76 operations for this category
+11 primitive operations were used to derive 76 operations for this category
 which algorithmically
 * IsThinCategory
 * IsCategoryWithDecidableColifts
@@ -171,7 +167,7 @@ A CAP category with name
 PosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
 / [ f⋅g = id(a), g⋅f = id(b) ] ):
 
-8 primitive operations were used to derive 78 operations for this category
+9 primitive operations were used to derive 78 operations for this category
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
@@ -195,31 +191,6 @@ true
 <h5>8.2-5 StablePosetOfCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StablePosetOfCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X83C7D92980FD8200" name="X83C7D92980FD8200"></a></p>
-
-<h5>8.2-6 AsCellOfProset</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCellOfProset</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7F1751537AB8BFF5" name="X7F1751537AB8BFF5"></a></p>
-
-<h5>8.2-7 AsCellOfStableProset</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCellOfStableProset</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X80E0FC6A79F094D5" name="X80E0FC6A79F094D5"></a></p>
-
-<h5>8.2-8 AsCellOfPoset</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCellOfPoset</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7D18EFF57A55C225" name="X7D18EFF57A55C225"></a></p>
-
-<h5>8.2-9 AsCellOfStablePoset</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCellOfStablePoset</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X80BF5F0187E00004" name="X80BF5F0187E00004"></a></p>
-
-<h5>8.2-10 /</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; /</code>( <var class="Arg">object</var>, <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
 <h4>8.3 <span class="Heading">Attributes</span></h4>
@@ -233,14 +204,23 @@ true
 
 <p>The ambient category of the proset <var class="Arg">P</var>.</p>
 
-<p><a id="X812067018336213A" name="X812067018336213A"></a></p>
+<p><a id="X817D54B379EADB27" name="X817D54B379EADB27"></a></p>
 
-<h5>8.3-2 UnderlyingCell</h5>
+<h5>8.3-2 UnderlyingObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCell</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> cell</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingObject</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category object</p>
 
-<p>The cell in the ambient category underlying <var class="Arg">cell</var>.</p>
+<p>The object in the ambient category underlying <var class="Arg">obj</var>.</p>
+
+<p><a id="X7A77521E87E8F1DA" name="X7A77521E87E8F1DA"></a></p>
+
+<h5>8.3-3 UnderlyingMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingMorphism</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+
+<p>The morphism in the ambient category underlying <var class="Arg">mor</var>.</p>
 
 <p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
 
@@ -438,7 +418,7 @@ PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
 A CAP category with name
 PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):
 
-15 primitive operations were used to derive 267 operations for this category
+17 primitive operations were used to derive 267 operations for this category
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
@@ -563,7 +543,7 @@ PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
 A CAP category with name
 PosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):
 
-15 primitive operations were used to derive 267 operations for this category
+17 primitive operations were used to derive 267 operations for this category
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
@@ -577,7 +557,7 @@ A CAP category with name
 StablePosetOfCategory( PosetOfCategory(
 SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):
 
-15 primitive operations were used to derive 329 operations for this category
+16 primitive operations were used to derive 329 operations for this category
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts

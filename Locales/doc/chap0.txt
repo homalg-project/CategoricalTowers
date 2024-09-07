@@ -7,10 +7,10 @@
                   and Boolean algebras of constructible sets [101X
   
   
-                                   2024.09-02
+                                   2024.09-03
   
   
-                                6 September 2024
+                                7 September 2024
   
   
                                 Mohamed Barakat
@@ -70,8 +70,9 @@
     1.4 [33X[0;0YOperations[133X
       1.4-1 AreIsomorphicForObjectsIfIsHomSetInhabited
     1.5 [33X[0;0YGAP categories[133X
-      1.5-1 IsObjectInThinCategory
-      1.5-2 IsMorphismInThinCategory
+      1.5-1 IsCategoryWithoutMorphismData
+      1.5-2 IsObjectInThinCategory
+      1.5-3 IsMorphismInThinCategory
     1.6 [33X[0;0YAdd-methods[133X
       1.6-1 AddAreIsomorphicForObjectsIfIsHomSetInhabited
       1.6-2 AddUniqueMorphism
@@ -173,7 +174,7 @@
       7.2-2 UnderlyingObjectMembershipFunction
       7.2-3 UnderlyingObjectEqualityFunction
       7.2-4 UnderlyingPreorderFunction
-      7.2-5 UnderlyingObject
+      7.2-5 UnderlyingDatum
     7.3 [33X[0;0YGAP categories[133X
       7.3-1 IsProsetAsCategory
   8 [33X[0;0YThe (stable) proset/poset of a category[133X
@@ -185,14 +186,10 @@
       8.2-3 StableProsetOfCategory
       8.2-4 PosetOfCategory
       8.2-5 StablePosetOfCategory
-      8.2-6 AsCellOfProset
-      8.2-7 AsCellOfStableProset
-      8.2-8 AsCellOfPoset
-      8.2-9 AsCellOfStablePoset
-      8.2-10 /
     8.3 [33X[0;0YAttributes[133X
       8.3-1 AmbientCategory
-      8.3-2 UnderlyingCell
+      8.3-2 UnderlyingObject
+      8.3-3 UnderlyingMorphism
     8.4 [33X[0;0YExamples[133X
       8.4-1 [33X[0;0YIdeal quotient[133X
     8.5 [33X[0;0YGAP categories[133X

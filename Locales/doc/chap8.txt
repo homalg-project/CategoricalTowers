@@ -37,7 +37,7 @@
     [4X[28XProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
     [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ] ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X10 primitive operations were used to derive 76 operations for this category[128X[104X
+    [4X[28X11 primitive operations were used to derive 76 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsThinCategory[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
@@ -83,7 +83,7 @@
     [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
     [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ] ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X8 primitive operations were used to derive 78 operations for this category[128X[104X
+    [4X[28X9 primitive operations were used to derive 78 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -106,26 +106,6 @@
   
   [33X[1;0Y[29X[2XStablePosetOfCategory[102X( [3XC[103X ) [32X attribute[133X
   
-  [1X8.2-6 AsCellOfProset[101X
-  
-  [33X[1;0Y[29X[2XAsCellOfProset[102X( [3Xc[103X ) [32X attribute[133X
-  
-  [1X8.2-7 AsCellOfStableProset[101X
-  
-  [33X[1;0Y[29X[2XAsCellOfStableProset[102X( [3Xc[103X ) [32X attribute[133X
-  
-  [1X8.2-8 AsCellOfPoset[101X
-  
-  [33X[1;0Y[29X[2XAsCellOfPoset[102X( [3Xc[103X ) [32X attribute[133X
-  
-  [1X8.2-9 AsCellOfStablePoset[101X
-  
-  [33X[1;0Y[29X[2XAsCellOfStablePoset[102X( [3Xc[103X ) [32X attribute[133X
-  
-  [1X8.2-10 /[101X
-  
-  [33X[1;0Y[29X[2X/[102X( [3Xobject[103X, [3XP[103X ) [32X operation[133X
-  
   
   [1X8.3 [33X[0;0YAttributes[133X[101X
   
@@ -136,12 +116,19 @@
   
   [33X[0;0YThe ambient category of the proset [3XP[103X.[133X
   
-  [1X8.3-2 UnderlyingCell[101X
+  [1X8.3-2 UnderlyingObject[101X
   
-  [33X[1;0Y[29X[2XUnderlyingCell[102X( [3Xcell[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X cell[133X
+  [33X[1;0Y[29X[2XUnderlyingObject[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category object[133X
   
-  [33X[0;0YThe cell in the ambient category underlying [3Xcell[103X.[133X
+  [33X[0;0YThe object in the ambient category underlying [3Xobj[103X.[133X
+  
+  [1X8.3-3 UnderlyingMorphism[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingMorphism[102X( [3Xmor[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category morphism[133X
+  
+  [33X[0;0YThe morphism in the ambient category underlying [3Xmor[103X.[133X
   
   
   [1X8.4 [33X[0;0YExamples[133X[101X
@@ -331,7 +318,7 @@
     [4X[28XA CAP category with name[128X[104X
     [4X[28XPosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X15 primitive operations were used to derive 267 operations for this category[128X[104X
+    [4X[28X17 primitive operations were used to derive 267 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -453,7 +440,7 @@
     [4X[28XA CAP category with name[128X[104X
     [4X[28XPosetOfCategory( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X15 primitive operations were used to derive 267 operations for this category[128X[104X
+    [4X[28X17 primitive operations were used to derive 267 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -467,7 +454,7 @@
     [4X[28XStablePosetOfCategory( PosetOfCategory([128X[104X
     [4X[28XSliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X15 primitive operations were used to derive 329 operations for this category[128X[104X
+    [4X[28X16 primitive operations were used to derive 329 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X

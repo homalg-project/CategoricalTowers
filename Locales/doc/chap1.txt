@@ -93,14 +93,21 @@
   
   [1X1.5 [33X[0;0YGAP categories[133X[101X
   
-  [1X1.5-1 IsObjectInThinCategory[101X
+  [1X1.5-1 IsCategoryWithoutMorphismData[101X
+  
+  [33X[1;0Y[29X[2XIsCategoryWithoutMorphismData[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of categories with morphisms without a morphism datum.[133X
+  
+  [1X1.5-2 IsObjectInThinCategory[101X
   
   [33X[1;0Y[29X[2XIsObjectInThinCategory[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a thin [5XCAP[105X category.[133X
   
-  [1X1.5-2 IsMorphismInThinCategory[101X
+  [1X1.5-3 IsMorphismInThinCategory[101X
   
   [33X[1;0Y[29X[2XIsMorphismInThinCategory[102X( [3Xmorphism[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X

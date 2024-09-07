@@ -198,9 +198,9 @@
   accepts         two         arguments        in        the        [5XGAP[105X-filter
   [10XValueGlobal[110X([10XUnderlyingObjectFilter[110X([3XC[103X)) and returns [3Xtrue[103X or [3Xfalse[103X.[133X
   
-  [1X7.2-5 UnderlyingObject[101X
+  [1X7.2-5 UnderlyingDatum[101X
   
-  [33X[1;0Y[29X[2XUnderlyingObject[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XUnderlyingDatum[102X( [3Xarg[103X ) [32X attribute[133X
   
   
   [1X7.3 [33X[0;0YGAP categories[133X[101X

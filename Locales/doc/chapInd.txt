@@ -2,7 +2,6 @@
   
   [1XIndex[101X
   
-  [2X/[102X, for IsCapCategoryCell, IsProsetOrPosetOfCapCategory 8.2-10 
   [2X\*[102X, for IsObjectInThinCategory, IsObjectInThinCategory 3.3-1 
   [2X\+[102X, for IsObjectInThinCategory, IsObjectInThinCategory 3.3-2 
   [2X\-[102X, for IsObjectInThinCategory, IsObjectInThinCategory 10.1-2 
@@ -27,10 +26,6 @@
   [2XAddUniqueMorphism[102X, for IsCapCategory, IsFunction 1.6-2 
   [2XAmbientCategory[102X, for IsProsetOrPosetOfCapCategory 8.3-1 
   [2XAreIsomorphicForObjectsIfIsHomSetInhabited[102X, for IsCapCategoryObject, IsCapCategoryObject 1.4-1 
-  [2XAsCellOfPoset[102X, for IsCapCategoryCell 8.2-8 
-  [2XAsCellOfProset[102X, for IsCapCategoryCell 8.2-6 
-  [2XAsCellOfStablePoset[102X, for IsCapCategoryCell 8.2-9 
-  [2XAsCellOfStableProset[102X, for IsCapCategoryCell 8.2-7 
   [2XAsMultipleDifference[102X 11.1-2 
   [2XAsSingleDifference[102X, for IsObjectInMeetSemilatticeOfMultipleDifferences 11.2-1 
   [2XAsUnionOfMultipleDifferences[102X, for IsDatastructureForConstructibleObjects 14.3-9 
@@ -75,6 +70,7 @@
   [2XIsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences[102X, for IsBooleanAlgebraOfConstructibleObjects 12.5-7 
   [2XIsBooleanAlgebroid[102X, for IsCapCategory 6.1-3 
   [2XIsCartesianProset[102X, for IsCapCategory 3.1-1 
+  [2XIsCategoryWithoutMorphismData[102X, for IsCapCategory 1.5-1 
   [2XIsCellInIntervalCategory[102X, for IsCapCategoryCell 13.3-2 
   [2XIsCellInPosetOfCategory[102X, for IsCellInProsetOrPosetOfCategory 8.5-12 
   [2XIsCellInProsetOfCategory[102X, for IsCellInProsetOrPosetOfCategory 8.5-8 
@@ -124,7 +120,7 @@
   [2XIsMorphismInMeetSemilatticeOfSingleDifferences[102X, for IsMorphismInMeetSemilatticeOfDifferences 10.3-3 
   [2XIsMorphismInPosetOfCategory[102X, for IsCellInPosetOfCategory and IsMorphismInThinCategory 8.5-14 
   [2XIsMorphismInProsetOfCategory[102X, for IsCellInProsetOfCategory and IsMorphismInThinCategory 8.5-10 
-  [2XIsMorphismInThinCategory[102X, for IsCapCategoryMorphism and IsMonomorphism and IsEpimorphism 1.5-2 
+  [2XIsMorphismInThinCategory[102X, for IsCapCategoryMorphism and IsMonomorphism and IsEpimorphism 1.5-3 
   [2XIsNodeInDatastructureOfConstructibleObjects[102X, for IsAttributeStoringRep 14.4-2 
   [2XIsObjectInIntervalCategory[102X, for IsCellInIntervalCategory and IsCapCategoryObject 13.3-3 
   [2XIsObjectInMeetSemilatticeOfDifferences[102X, for IsObjectInThinCategory 9.4-2 
@@ -133,12 +129,12 @@
   [2XIsObjectInPosetOfCategory[102X, for IsCellInPosetOfCategory and IsObjectInProsetOrPosetOfCategory 8.5-13 
   [2XIsObjectInProsetOfCategory[102X, for IsCellInProsetOfCategory and IsObjectInProsetOrPosetOfCategory 8.5-9 
   [2XIsObjectInProsetOrPosetOfCategory[102X, for IsCellInProsetOrPosetOfCategory and IsObjectInThinCategory 8.5-6 
-  [2XIsObjectInThinCategory[102X, for IsCapCategoryObject 1.5-1 
+  [2XIsObjectInThinCategory[102X, for IsCapCategoryObject 1.5-2 
   [2XIsOpen[102X, for IsConstructibleObject 12.2-1 
       for IsObjectInMeetSemilatticeOfDifferences 9.1-2 
   [2XIsPosetCategory[102X, for IsCapCategory 2.1-1 
   [2XIsPosetOfCapCategory[102X, for IsProsetOrPosetOfCapCategory 8.5-11 
-  [2XIsProsetAsCategory[102X, for IsCapCategory and IsThinCategory 7.3-1 
+  [2XIsProsetAsCategory[102X, for IsCategoryWithoutMorphismData 7.3-1 
   [2XIsProsetOfCapCategory[102X, for IsProsetOrPosetOfCapCategory 8.5-7 
   [2XIsProsetOrPosetOfCapCategory[102X, for IsCapCategory 8.5-3 
   [2XIsSymmetricClosedMonoidalLattice[102X, for IsCapCategory 3.1-13 
@@ -197,8 +193,9 @@
   [2XTotalOrderAsCategory[102X, for IsString, IsFunction 7.1-3 
   [2XUnderlyingCategory[102X, for IsBooleanAlgebraOfConstructibleObjects 12.3-1 
       for IsMeetSemilatticeOfDifferences 9.2-1 
-  [2XUnderlyingCell[102X, for IsCellInProsetOfCategory 8.3-2 
-  [2XUnderlyingObject[102X, for IsObjectInThinCategory 7.2-5 
+  [2XUnderlyingDatum[102X, for IsObjectInThinCategory 7.2-5 
+  [2XUnderlyingMorphism[102X, for IsMorphismInPosetOfCategory 8.3-3 
+  [2XUnderlyingObject[102X, for IsObjectInProsetOfCategory 8.3-2 
   [2XUnderlyingObjectEqualityFunction[102X, for IsProsetAsCategory 7.2-3 
   [2XUnderlyingObjectFilter[102X, for IsProsetAsCategory 7.2-1 
   [2XUnderlyingObjectMembershipFunction[102X, for IsProsetAsCategory 7.2-2 
