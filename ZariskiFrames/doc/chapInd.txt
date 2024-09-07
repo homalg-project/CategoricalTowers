@@ -96,7 +96,7 @@
   [2XIsZariskiFrame[102X, for IsZariskiFrameOrCoframe 2.1-1 
   [2XIsZariskiFrameOfAnAffineVariety[102X, for IsZariskiFrame 5.1-1 
   [2XIsZariskiFrameOfAProjectiveVariety[102X, for IsZariskiFrame 9.1-1 
-  [2XIsZariskiFrameOrCoframe[102X, for IsCapCategory and IsDistributiveLattice 1.2-1 
+  [2XIsZariskiFrameOrCoframe[102X, for IsCategoryWithoutMorphismData 1.2-1 
   [2XKnownFactors[102X, for IsObjectInZariskiCoframe 3.4-2 
   [2XLocallyClosedApproximationOfImage[102X, for IsHomalgRingMap 12.2-4 
   [2XLocallyClosedApproximationOfImageViaGenericFreeness[102X, for IsHomalgRingMap 12.2-6 
