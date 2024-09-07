@@ -207,7 +207,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     object_datum := { cat, object } -> UnderlyingObject( object );
     
-    morphism_constructor := function( cat, source, underlying_morphism, range )
+    morphism_constructor := function( cat, source, underlying_morphism, target )
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), [ "the morphism datum given to the morphism constructor of <cat>" ] );
@@ -218,15 +218,15 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             
         fi;
         
-        if IsEqualForObjects( AmbientCategory( cat ), Target( underlying_morphism ), UnderlyingObject( range ) ) = false then
+        if IsEqualForObjects( AmbientCategory( cat ), Target( underlying_morphism ), UnderlyingObject( target ) ) = false then
             
-            Error( "the range of the morphism datum must be equal to <UnderlyingObject( range )>" );
+            Error( "the target of the morphism datum must be equal to <UnderlyingObject( target )>" );
             
         fi;
         
         return CreateCapCategoryMorphismWithAttributes( cat,
                        source,
-                       range,
+                       target,
                        UnderlyingMorphism, underlying_morphism );
         
     end;
