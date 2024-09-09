@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "IntrinsicCategories",
 Subtitle := "Intrinsic categories for CAP",
-Version := "2024.03-01",
-Date := "2024-03-08",
-Date := "2024-03-08",
+Version := "2024.09-02",
+Date := "2024-09-09",
+Date := "2024-09-09",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -68,7 +68,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.12.1",
+  GAP := ">= 4.13.0",
   NeededOtherPackages := [
                    [ "AutoDoc", ">= 2016.02.16" ],
                    [ "CAP", ">= 2023.12-11" ],
