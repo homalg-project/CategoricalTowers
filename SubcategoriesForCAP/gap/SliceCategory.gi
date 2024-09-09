@@ -237,7 +237,6 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                    list_of_operations_to_install := list_of_operations_to_install,
                    create_func_bool := "default",
                    create_func_morphism := "default",
-                   create_func_morphism_or_fail := "default",
                    underlying_category_getter_string := "AmbientCategory",
                    # UnderlyingMorphism is an attribute in the eager case but a proper operation in the lazy case
                    underlying_object_getter_string := "SourceOfUnderlyingMorphism",
