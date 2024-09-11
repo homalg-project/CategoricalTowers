@@ -3,6 +3,7 @@
   [1XIndex[101X
   
   [2XAddSetOfGeneratingMorphismsOfCategory[102X, for IsCapCategory, IsFunction 4.1-1 
+      for IsCapCategory, IsFunction, IsInt 4.1-1 
   [2XAssignSetOfGeneratingMorphisms[102X, for IsPathCategory, IsString 2.2-5 
   [2XAssignSetOfObjects[102X, for IsPathCategory, IsString 2.2-4 
   [2XCanonicalRepresentative[102X, for IsQuotientOfPathCategoryMorphism 2.5-8 
