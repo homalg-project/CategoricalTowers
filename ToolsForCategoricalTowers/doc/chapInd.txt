@@ -3,36 +3,67 @@
   [1XIndex[101X
   
   [2XAddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[102X, for IsCapCategory, IsFunction 2.10-1 
+      for IsCapCategory, IsFunction, IsInt 2.10-1 
   [2XAddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[102X, for IsCapCategory, IsFunction 2.10-2 
+      for IsCapCategory, IsFunction, IsInt 2.10-2 
   [2XAddBiasedRelativeWeakFiberProduct[102X, for IsCapCategory, IsFunction 2.10-3 
+      for IsCapCategory, IsFunction, IsInt 2.10-3 
   [2XAddColimit[102X, for IsCapCategory, IsFunction 2.10-4 
+      for IsCapCategory, IsFunction, IsInt 2.10-4 
   [2XAddEmbeddingOfSumOfImagesOfAllMorphisms[102X, for IsCapCategory, IsFunction 2.10-5 
+      for IsCapCategory, IsFunction, IsInt 2.10-5 
   [2XAddInjectionOfCofactorOfColimit[102X, for IsCapCategory, IsFunction 2.10-6 
+      for IsCapCategory, IsFunction, IsInt 2.10-6 
   [2XAddInjectionOfCofactorOfColimitWithGivenColimit[102X, for IsCapCategory, IsFunction 2.10-7 
+      for IsCapCategory, IsFunction, IsInt 2.10-7 
   [2XAddIsWeakInitial[102X, for IsCapCategory, IsFunction 2.10-8 
+      for IsCapCategory, IsFunction, IsInt 2.10-8 
   [2XAddIsWeakTerminal[102X, for IsCapCategory, IsFunction 2.10-9 
+      for IsCapCategory, IsFunction, IsInt 2.10-9 
   [2XAddLimit[102X, for IsCapCategory, IsFunction 2.10-10 
+      for IsCapCategory, IsFunction, IsInt 2.10-10 
   [2XAddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[102X, for IsCapCategory, IsFunction 2.10-11 
+      for IsCapCategory, IsFunction, IsInt 2.10-11 
   [2XAddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[102X, for IsCapCategory, IsFunction 2.10-12 
+      for IsCapCategory, IsFunction, IsInt 2.10-12 
   [2XAddMorphismBetweenCoproducts[102X, for IsCapCategory, IsFunction 2.10-13 
+      for IsCapCategory, IsFunction, IsInt 2.10-13 
   [2XAddMorphismBetweenCoproductsWithGivenCoproducts[102X, for IsCapCategory, IsFunction 2.10-14 
+      for IsCapCategory, IsFunction, IsInt 2.10-14 
   [2XAddMorphismBetweenDirectProducts[102X, for IsCapCategory, IsFunction 2.10-15 
+      for IsCapCategory, IsFunction, IsInt 2.10-15 
   [2XAddMorphismBetweenDirectProductsWithGivenDirectProducts[102X, for IsCapCategory, IsFunction 2.10-16 
+      for IsCapCategory, IsFunction, IsInt 2.10-16 
   [2XAddMorphismOntoSumOfImagesOfAllMorphisms[102X, for IsCapCategory, IsFunction 2.10-17 
+      for IsCapCategory, IsFunction, IsInt 2.10-17 
   [2XAddProjectionInFactorOfLimit[102X, for IsCapCategory, IsFunction 2.10-18 
+      for IsCapCategory, IsFunction, IsInt 2.10-18 
   [2XAddProjectionInFactorOfLimitWithGivenLimit[102X, for IsCapCategory, IsFunction 2.10-19 
+      for IsCapCategory, IsFunction, IsInt 2.10-19 
   [2XAddProjectionOfBiasedRelativeWeakFiberProduct[102X, for IsCapCategory, IsFunction 2.10-20 
+      for IsCapCategory, IsFunction, IsInt 2.10-20 
   [2XAddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X, for IsCapCategory, IsFunction 2.10-21 
+      for IsCapCategory, IsFunction, IsInt 2.10-21 
   [2XAddRelativeLift[102X, for IsCapCategory, IsFunction 2.10-22 
+      for IsCapCategory, IsFunction, IsInt 2.10-22 
   [2XAddSetOfMorphismsOfFiniteCategory[102X, for IsCapCategory, IsFunction 2.10-23 
+      for IsCapCategory, IsFunction, IsInt 2.10-23 
   [2XAddSetOfObjectsOfCategory[102X, for IsCapCategory, IsFunction 2.10-24 
+      for IsCapCategory, IsFunction, IsInt 2.10-24 
   [2XAddSumOfImagesOfAllMorphisms[102X, for IsCapCategory, IsFunction 2.10-25 
+      for IsCapCategory, IsFunction, IsInt 2.10-25 
   [2XAddUniversalMorphismFromColimit[102X, for IsCapCategory, IsFunction 2.10-26 
+      for IsCapCategory, IsFunction, IsInt 2.10-26 
   [2XAddUniversalMorphismFromColimitWithGivenColimit[102X, for IsCapCategory, IsFunction 2.10-27 
+      for IsCapCategory, IsFunction, IsInt 2.10-27 
   [2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProduct[102X, for IsCapCategory, IsFunction 2.10-28 
+      for IsCapCategory, IsFunction, IsInt 2.10-28 
   [2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X, for IsCapCategory, IsFunction 2.10-29 
+      for IsCapCategory, IsFunction, IsInt 2.10-29 
   [2XAddUniversalMorphismIntoLimit[102X, for IsCapCategory, IsFunction 2.10-30 
+      for IsCapCategory, IsFunction, IsInt 2.10-30 
   [2XAddUniversalMorphismIntoLimitWithGivenLimit[102X, for IsCapCategory, IsFunction 2.10-31 
+      for IsCapCategory, IsFunction, IsInt 2.10-31 
   [2XAllCoproducts[102X, for IsCapCategory and IsCocartesianCategory, IsList 2.9-8 
   [2XBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[102X, for IsList, IsList 2.7-5 
       for IsList, IsList, IsList, IsList 2.7-4 

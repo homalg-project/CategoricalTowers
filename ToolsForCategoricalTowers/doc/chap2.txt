@@ -885,334 +885,436 @@
   [1X2.10-1 AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[101X
   
   [33X[1;0Y[29X[2XAddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[110X.  [23XF: ( arg2,
-  arg3,              arg4,              arg5             )             \mapsto
+  [10XBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[110X. Optionally,
+  a  weight (default: 100) can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster    execution).    [23XF:   (   arg2,   arg3,   arg4,   arg5   )   \mapsto
   \mathtt{BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory}(arg2,
   arg3, arg4, arg5)[123X.[133X
   
   [1X2.10-2 AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[101X
   
   [33X[1;0Y[29X[2XAddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[110X. [23XF: ( arg2, arg3 )
-  \mapsto
+  [10XBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[110X.   Optionally,   a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster      execution).      [23XF:      (      arg2,     arg3     )     \mapsto
   \mathtt{BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory}(arg2,
   arg3)[123X.[133X
   
   [1X2.10-3 AddBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XBiasedRelativeWeakFiberProduct[110X.   [23XF:   (   arg2,   arg3,   arg4   )  \mapsto
-  \mathtt{BiasedRelativeWeakFiberProduct}(arg2, arg3, arg4)[123X.[133X
+  [10XBiasedRelativeWeakFiberProduct[110X.  Optionally,  a weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight = less complex = faster execution). [23XF: ( arg2,
+  arg3,  arg4  )  \mapsto  \mathtt{BiasedRelativeWeakFiberProduct}(arg2, arg3,
+  arg4)[123X.[133X
   
   [1X2.10-4 AddColimit[101X
   
   [33X[1;0Y[29X[2XAddColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddColimit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given  function  [23XF[123X  to  the  category  for the basic operation [10XColimit[110X. [23XF: (
-  objects,    decorated_morphisms    )    \mapsto    \mathtt{Colimit}(objects,
-  decorated_morphisms)[123X.[133X
+  given   function  [23XF[123X  to  the  category  for  the  basic  operation  [10XColimit[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less  complex  =  faster  execution).  [23XF:  (  objects, decorated_morphisms )
+  \mapsto \mathtt{Colimit}(objects, decorated_morphisms)[123X.[133X
   
   [1X2.10-5 AddEmbeddingOfSumOfImagesOfAllMorphisms[101X
   
   [33X[1;0Y[29X[2XAddEmbeddingOfSumOfImagesOfAllMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddEmbeddingOfSumOfImagesOfAllMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XEmbeddingOfSumOfImagesOfAllMorphisms[110X.     [23XF:    (    a,    b    )    \mapsto
-  \mathtt{EmbeddingOfSumOfImagesOfAllMorphisms}(a, b)[123X.[133X
+  [10XEmbeddingOfSumOfImagesOfAllMorphisms[110X.  Optionally,  a  weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( a, b ) \mapsto \mathtt{EmbeddingOfSumOfImagesOfAllMorphisms}(a, b)[123X.[133X
   
   [1X2.10-6 AddInjectionOfCofactorOfColimit[101X
   
   [33X[1;0Y[29X[2XAddInjectionOfCofactorOfColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddInjectionOfCofactorOfColimit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XInjectionOfCofactorOfColimit[110X. [23XF: ( objects, decorated_morphisms, k ) \mapsto
+  [10XInjectionOfCofactorOfColimit[110X.  Optionally,  a  weight  (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the function (lower weight = less complex = faster execution). [23XF: ( objects,
+  decorated_morphisms,                k                )               \mapsto
   \mathtt{InjectionOfCofactorOfColimit}(objects, decorated_morphisms, k)[123X.[133X
   
   [1X2.10-7 AddInjectionOfCofactorOfColimitWithGivenColimit[101X
   
   [33X[1;0Y[29X[2XAddInjectionOfCofactorOfColimitWithGivenColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddInjectionOfCofactorOfColimitWithGivenColimit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XInjectionOfCofactorOfColimitWithGivenColimit[110X.       [23XF:       (      objects,
-  decorated_morphisms,            k,           P           )           \mapsto
+  [10XInjectionOfCofactorOfColimitWithGivenColimit[110X. Optionally, a weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:     (     objects,     decorated_morphisms,     k,     P     )    \mapsto
   \mathtt{InjectionOfCofactorOfColimitWithGivenColimit}(objects,
   decorated_morphisms, k, P)[123X.[133X
   
   [1X2.10-8 AddIsWeakInitial[101X
   
   [33X[1;0Y[29X[2XAddIsWeakInitial[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsWeakInitial[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given function [23XF[123X to the category for the basic operation [10XIsWeakInitial[110X. [23XF: (
-  arg2 ) \mapsto \mathtt{IsWeakInitial}(arg2)[123X.[133X
+  given  function  [23XF[123X  to  the  category for the basic operation [10XIsWeakInitial[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less    complex    =    faster    execution).    [23XF:   (   arg2   )   \mapsto
+  \mathtt{IsWeakInitial}(arg2)[123X.[133X
   
   [1X2.10-9 AddIsWeakTerminal[101X
   
   [33X[1;0Y[29X[2XAddIsWeakTerminal[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsWeakTerminal[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given  function [23XF[123X to the category for the basic operation [10XIsWeakTerminal[110X. [23XF:
-  ( arg2 ) \mapsto \mathtt{IsWeakTerminal}(arg2)[123X.[133X
+  given  function  [23XF[123X  to  the category for the basic operation [10XIsWeakTerminal[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less    complex    =    faster    execution).    [23XF:   (   arg2   )   \mapsto
+  \mathtt{IsWeakTerminal}(arg2)[123X.[133X
   
   [1X2.10-10 AddLimit[101X
   
   [33X[1;0Y[29X[2XAddLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddLimit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given  function  [23XF[123X  to  the  category  for  the  basic operation [10XLimit[110X. [23XF: (
-  objects,     decorated_morphisms     )    \mapsto    \mathtt{Limit}(objects,
-  decorated_morphisms)[123X.[133X
+  given  function [23XF[123X to the category for the basic operation [10XLimit[110X. Optionally,
+  a  weight (default: 100) can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster   execution).   [23XF:   (   objects,   decorated_morphisms   )   \mapsto
+  \mathtt{Limit}(objects, decorated_morphisms)[123X.[133X
   
   [1X2.10-11 AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[101X
   
   [33X[1;0Y[29X[2XAddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[110X.   [23XF:   (
-  arg2,                    arg3                    )                   \mapsto
+  [10XMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex   =   faster   execution).   [23XF:   (   arg2,  arg3  )  \mapsto
   \mathtt{MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory}(arg2,
   arg3)[123X.[133X
   
   [1X2.10-12 AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[101X
   
   [33X[1;0Y[29X[2XAddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[110X.  [23XF:  (  arg2, arg3,
-  arg4                                )                                \mapsto
+  [10XMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[110X.    Optionally,    a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster     execution).     [23XF:    (    arg2,    arg3,    arg4    )    \mapsto
   \mathtt{MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory}(arg2, arg3,
   arg4)[123X.[133X
   
   [1X2.10-13 AddMorphismBetweenCoproducts[101X
   
   [33X[1;0Y[29X[2XAddMorphismBetweenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismBetweenCoproducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismBetweenCoproducts[110X.   [23XF:  (  source_diagram,  pair,  range_diagram  )
-  \mapsto       \mathtt{MorphismBetweenCoproducts}(source_diagram,       pair,
-  range_diagram)[123X.[133X
+  [10XMorphismBetweenCoproducts[110X.  Optionally,  a  weight  (default:  100)  can  be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight  =  less  complex  =  faster  execution). [23XF: (
+  source_diagram,         pair,         range_diagram         )        \mapsto
+  \mathtt{MorphismBetweenCoproducts}(source_diagram, pair, range_diagram)[123X.[133X
   
   [1X2.10-14 AddMorphismBetweenCoproductsWithGivenCoproducts[101X
   
   [33X[1;0Y[29X[2XAddMorphismBetweenCoproductsWithGivenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismBetweenCoproductsWithGivenCoproducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismBetweenCoproductsWithGivenCoproducts[110X.  [23XF: ( S, source_diagram, pair,
-  range_diagram,                  T                  )                 \mapsto
+  [10XMorphismBetweenCoproductsWithGivenCoproducts[110X. Optionally, a weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:    (    S,    source_diagram,    pair,   range_diagram,   T   )   \mapsto
   \mathtt{MorphismBetweenCoproductsWithGivenCoproducts}(S,     source_diagram,
   pair, range_diagram, T)[123X.[133X
   
   [1X2.10-15 AddMorphismBetweenDirectProducts[101X
   
   [33X[1;0Y[29X[2XAddMorphismBetweenDirectProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismBetweenDirectProducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismBetweenDirectProducts[110X.  [23XF:  (  source_diagram, pair, range_diagram )
-  \mapsto     \mathtt{MorphismBetweenDirectProducts}(source_diagram,     pair,
-  range_diagram)[123X.[133X
+  [10XMorphismBetweenDirectProducts[110X.  Optionally,  a  weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight  =  less  complex  =  faster  execution). [23XF: (
+  source_diagram,         pair,         range_diagram         )        \mapsto
+  \mathtt{MorphismBetweenDirectProducts}(source_diagram, pair, range_diagram)[123X.[133X
   
   [1X2.10-16 AddMorphismBetweenDirectProductsWithGivenDirectProducts[101X
   
   [33X[1;0Y[29X[2XAddMorphismBetweenDirectProductsWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismBetweenDirectProductsWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismBetweenDirectProductsWithGivenDirectProducts[110X.      [23XF:      (      S,
-  source_diagram,       pair,       range_diagram,       T      )      \mapsto
+  [10XMorphismBetweenDirectProductsWithGivenDirectProducts[110X.  Optionally,  a weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster  execution). [23XF: ( S, source_diagram, pair, range_diagram, T ) \mapsto
   \mathtt{MorphismBetweenDirectProductsWithGivenDirectProducts}(S,
   source_diagram, pair, range_diagram, T)[123X.[133X
   
   [1X2.10-17 AddMorphismOntoSumOfImagesOfAllMorphisms[101X
   
   [33X[1;0Y[29X[2XAddMorphismOntoSumOfImagesOfAllMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismOntoSumOfImagesOfAllMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismOntoSumOfImagesOfAllMorphisms[110X.    [23XF:    (    a,    b    )    \mapsto
-  \mathtt{MorphismOntoSumOfImagesOfAllMorphisms}(a, b)[123X.[133X
+  [10XMorphismOntoSumOfImagesOfAllMorphisms[110X.  Optionally,  a weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( a, b ) \mapsto \mathtt{MorphismOntoSumOfImagesOfAllMorphisms}(a, b)[123X.[133X
   
   [1X2.10-18 AddProjectionInFactorOfLimit[101X
   
   [33X[1;0Y[29X[2XAddProjectionInFactorOfLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddProjectionInFactorOfLimit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XProjectionInFactorOfLimit[110X.  [23XF:  (  objects, decorated_morphisms, k ) \mapsto
-  \mathtt{ProjectionInFactorOfLimit}(objects, decorated_morphisms, k)[123X.[133X
+  [10XProjectionInFactorOfLimit[110X.  Optionally,  a  weight  (default:  100)  can  be
+  specified which should roughly correspond to the computational complexity of
+  the function (lower weight = less complex = faster execution). [23XF: ( objects,
+  decorated_morphisms, k ) \mapsto \mathtt{ProjectionInFactorOfLimit}(objects,
+  decorated_morphisms, k)[123X.[133X
   
   [1X2.10-19 AddProjectionInFactorOfLimitWithGivenLimit[101X
   
   [33X[1;0Y[29X[2XAddProjectionInFactorOfLimitWithGivenLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddProjectionInFactorOfLimitWithGivenLimit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XProjectionInFactorOfLimitWithGivenLimit[110X.  [23XF: ( objects, decorated_morphisms,
-  k,  P  )  \mapsto  \mathtt{ProjectionInFactorOfLimitWithGivenLimit}(objects,
+  [10XProjectionInFactorOfLimitWithGivenLimit[110X. Optionally, a weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:     (     objects,     decorated_morphisms,     k,     P     )    \mapsto
+  \mathtt{ProjectionInFactorOfLimitWithGivenLimit}(objects,
   decorated_morphisms, k, P)[123X.[133X
   
   [1X2.10-20 AddProjectionOfBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddProjectionOfBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddProjectionOfBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XProjectionOfBiasedRelativeWeakFiberProduct[110X.   [23XF:   (   a,  b,  c  )  \mapsto
+  [10XProjectionOfBiasedRelativeWeakFiberProduct[110X.  Optionally,  a weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:          (          a,          b,          c          )          \mapsto
   \mathtt{ProjectionOfBiasedRelativeWeakFiberProduct}(a, b, c)[123X.[133X
   
   [1X2.10-21 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[110X.
-  [23XF:         (         a,        b,        c,        P        )        \mapsto
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex   =   faster   execution).   [23XF:  (  a,  b,  c,  P  )  \mapsto
   \mathtt{ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct}(a,
   b, c, P)[123X.[133X
   
   [1X2.10-22 AddRelativeLift[101X
   
   [33X[1;0Y[29X[2XAddRelativeLift[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddRelativeLift[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given  function [23XF[123X to the category for the basic operation [10XRelativeLift[110X. [23XF: (
-  beta, alpha, nu ) \mapsto \mathtt{RelativeLift}(beta, alpha, nu)[123X.[133X
+  given  function  [23XF[123X  to  the  category  for the basic operation [10XRelativeLift[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex  =  faster  execution).  [23XF:  (  beta,  alpha,  nu  )  \mapsto
+  \mathtt{RelativeLift}(beta, alpha, nu)[123X.[133X
   
   [1X2.10-23 AddSetOfMorphismsOfFiniteCategory[101X
   
   [33X[1;0Y[29X[2XAddSetOfMorphismsOfFiniteCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddSetOfMorphismsOfFiniteCategory[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XSetOfMorphismsOfFiniteCategory[110X.         [23XF:         (        )        \mapsto
-  \mathtt{SetOfMorphismsOfFiniteCategory}()[123X.[133X
+  [10XSetOfMorphismsOfFiniteCategory[110X.  Optionally,  a weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight  =  less  complex  = faster execution). [23XF: ( )
+  \mapsto \mathtt{SetOfMorphismsOfFiniteCategory}()[123X.[133X
   
   [1X2.10-24 AddSetOfObjectsOfCategory[101X
   
   [33X[1;0Y[29X[2XAddSetOfObjectsOfCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddSetOfObjectsOfCategory[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XSetOfObjectsOfCategory[110X. [23XF: ( ) \mapsto \mathtt{SetOfObjectsOfCategory}()[123X.[133X
+  [10XSetOfObjectsOfCategory[110X. Optionally, a weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower  weight  = less complex = faster execution). [23XF: ( ) \mapsto
+  \mathtt{SetOfObjectsOfCategory}()[123X.[133X
   
   [1X2.10-25 AddSumOfImagesOfAllMorphisms[101X
   
   [33X[1;0Y[29X[2XAddSumOfImagesOfAllMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddSumOfImagesOfAllMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XSumOfImagesOfAllMorphisms[110X.     [23XF:     (     arg2,     arg3     )     \mapsto
-  \mathtt{SumOfImagesOfAllMorphisms}(arg2, arg3)[123X.[133X
+  [10XSumOfImagesOfAllMorphisms[110X.  Optionally,  a  weight  (default:  100)  can  be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight = less complex = faster execution). [23XF: ( arg2,
+  arg3 ) \mapsto \mathtt{SumOfImagesOfAllMorphisms}(arg2, arg3)[123X.[133X
   
   [1X2.10-26 AddUniversalMorphismFromColimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddUniversalMorphismFromColimit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XUniversalMorphismFromColimit[110X.  [23XF:  (  objects, decorated_morphisms, T, tau )
-  \mapsto  \mathtt{UniversalMorphismFromColimit}(objects, decorated_morphisms,
-  T, tau)[123X.[133X
+  [10XUniversalMorphismFromColimit[110X.  Optionally,  a  weight  (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the function (lower weight = less complex = faster execution). [23XF: ( objects,
+  decorated_morphisms,           T,           tau           )          \mapsto
+  \mathtt{UniversalMorphismFromColimit}(objects, decorated_morphisms, T, tau)[123X.[133X
   
   [1X2.10-27 AddUniversalMorphismFromColimitWithGivenColimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromColimitWithGivenColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddUniversalMorphismFromColimitWithGivenColimit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XUniversalMorphismFromColimitWithGivenColimit[110X.       [23XF:       (      objects,
-  decorated_morphisms,         T,        tau,        P        )        \mapsto
+  [10XUniversalMorphismFromColimitWithGivenColimit[110X. Optionally, a weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:    (    objects,    decorated_morphisms,    T,    tau,    P   )   \mapsto
   \mathtt{UniversalMorphismFromColimitWithGivenColimit}(objects,
   decorated_morphisms, T, tau, P)[123X.[133X
   
   [1X2.10-28 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XUniversalMorphismIntoBiasedRelativeWeakFiberProduct[110X.  [23XF:  (  a,  b,  c,  t )
-  \mapsto  \mathtt{UniversalMorphismIntoBiasedRelativeWeakFiberProduct}(a,  b,
-  c, t)[123X.[133X
+  [10XUniversalMorphismIntoBiasedRelativeWeakFiberProduct[110X.  Optionally,  a  weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster     execution).     [23XF:     (     a,     b,    c,    t    )    \mapsto
+  \mathtt{UniversalMorphismIntoBiasedRelativeWeakFiberProduct}(a, b, c, t)[123X.[133X
   
   [1X2.10-29 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[110X.
-  [23XF:       (       a,       b,       c,       t,       P       )       \mapsto
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex  =  faster  execution).  [23XF:  (  a,  b,  c,  t,  P  )  \mapsto
   \mathtt{UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct}(a,
   b, c, t, P)[123X.[133X
   
   [1X2.10-30 AddUniversalMorphismIntoLimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddUniversalMorphismIntoLimit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XUniversalMorphismIntoLimit[110X.  [23XF:  (  objects,  decorated_morphisms,  T, tau )
-  \mapsto \mathtt{UniversalMorphismIntoLimit}(objects, decorated_morphisms, T,
-  tau)[123X.[133X
+  [10XUniversalMorphismIntoLimit[110X.  Optionally,  a  weight  (default:  100)  can be
+  specified which should roughly correspond to the computational complexity of
+  the function (lower weight = less complex = faster execution). [23XF: ( objects,
+  decorated_morphisms,           T,           tau           )          \mapsto
+  \mathtt{UniversalMorphismIntoLimit}(objects, decorated_morphisms, T, tau)[123X.[133X
   
   [1X2.10-31 AddUniversalMorphismIntoLimitWithGivenLimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoLimitWithGivenLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddUniversalMorphismIntoLimitWithGivenLimit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XUniversalMorphismIntoLimitWithGivenLimit[110X. [23XF: ( objects, decorated_morphisms,
-  T,                tau,               P               )               \mapsto
+  [10XUniversalMorphismIntoLimitWithGivenLimit[110X.  Optionally,  a  weight  (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:    (    objects,    decorated_morphisms,    T,    tau,    P   )   \mapsto
   \mathtt{UniversalMorphismIntoLimitWithGivenLimit}(objects,
   decorated_morphisms, T, tau, P)[123X.[133X
   
