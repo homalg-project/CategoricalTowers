@@ -120,21 +120,29 @@
   [1X1.6-1 AddAreIsomorphicForObjectsIfIsHomSetInhabited[101X
   
   [33X[1;0Y[29X[2XAddAreIsomorphicForObjectsIfIsHomSetInhabited[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddAreIsomorphicForObjectsIfIsHomSetInhabited[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XAreIsomorphicForObjectsIfIsHomSetInhabited[110X.   [23XF:  (  arg2,  arg3  )  \mapsto
+  [10XAreIsomorphicForObjectsIfIsHomSetInhabited[110X.  Optionally,  a weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:            (           arg2,           arg3           )           \mapsto
   \mathtt{AreIsomorphicForObjectsIfIsHomSetInhabited}(arg2, arg3)[123X.[133X
   
   [1X1.6-2 AddUniqueMorphism[101X
   
   [33X[1;0Y[29X[2XAddUniqueMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddUniqueMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given  function [23XF[123X to the category for the basic operation [10XUniqueMorphism[110X. [23XF:
-  ( A, B ) \mapsto \mathtt{UniqueMorphism}(A, B)[123X.[133X
+  given  function  [23XF[123X  to  the category for the basic operation [10XUniqueMorphism[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less    complex    =    faster   execution).   [23XF:   (   A,   B   )   \mapsto
+  \mathtt{UniqueMorphism}(A, B)[123X.[133X
   
   [33X[0;0YProsets  are  thin  categories,  i.e., each Hom-set is either a singleton or
   empty.[133X

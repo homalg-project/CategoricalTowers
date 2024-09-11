@@ -8,22 +8,39 @@
   [2X\[\][102X, for IsConstructibleObject, IsInt 12.4-4 
       for IsObjectInMeetSemilatticeOfMultipleDifferences, IsInt 11.3-2 
   [2XAddAreIsomorphicForObjectsIfIsHomSetInhabited[102X, for IsCapCategory, IsFunction 1.6-1 
+      for IsCapCategory, IsFunction, IsInt 1.6-1 
   [2XAddConegationOnMorphisms[102X, for IsCapCategory, IsFunction 5.4-1 
+      for IsCapCategory, IsFunction, IsInt 5.4-1 
   [2XAddConegationOnMorphismsWithGivenConegations[102X, for IsCapCategory, IsFunction 5.4-2 
+      for IsCapCategory, IsFunction, IsInt 5.4-2 
   [2XAddConegationOnObjects[102X, for IsCapCategory, IsFunction 5.4-3 
+      for IsCapCategory, IsFunction, IsInt 5.4-3 
   [2XAddIsEqualForObjectsIfIsHomSetInhabited[102X, for IsCapCategory, IsFunction 2.3-1 
+      for IsCapCategory, IsFunction, IsInt 2.3-1 
   [2XAddMorphismFromDoubleConegation[102X, for IsCapCategory, IsFunction 5.4-4 
+      for IsCapCategory, IsFunction, IsInt 5.4-4 
   [2XAddMorphismFromDoubleConegationWithGivenDoubleConegation[102X, for IsCapCategory, IsFunction 5.4-5 
+      for IsCapCategory, IsFunction, IsInt 5.4-5 
   [2XAddMorphismFromDoubleNegation[102X, for IsCapCategory, IsFunction 6.3-1 
+      for IsCapCategory, IsFunction, IsInt 6.3-1 
   [2XAddMorphismFromDoubleNegationWithGivenDoubleNegation[102X, for IsCapCategory, IsFunction 6.3-2 
+      for IsCapCategory, IsFunction, IsInt 6.3-2 
   [2XAddMorphismToDoubleConegation[102X, for IsCapCategory, IsFunction 6.3-3 
+      for IsCapCategory, IsFunction, IsInt 6.3-3 
   [2XAddMorphismToDoubleConegationWithGivenDoubleConegation[102X, for IsCapCategory, IsFunction 6.3-4 
+      for IsCapCategory, IsFunction, IsInt 6.3-4 
   [2XAddMorphismToDoubleNegation[102X, for IsCapCategory, IsFunction 4.4-1 
+      for IsCapCategory, IsFunction, IsInt 4.4-1 
   [2XAddMorphismToDoubleNegationWithGivenDoubleNegation[102X, for IsCapCategory, IsFunction 4.4-2 
+      for IsCapCategory, IsFunction, IsInt 4.4-2 
   [2XAddNegationOnMorphisms[102X, for IsCapCategory, IsFunction 4.4-3 
+      for IsCapCategory, IsFunction, IsInt 4.4-3 
   [2XAddNegationOnMorphismsWithGivenNegations[102X, for IsCapCategory, IsFunction 4.4-4 
+      for IsCapCategory, IsFunction, IsInt 4.4-4 
   [2XAddNegationOnObjects[102X, for IsCapCategory, IsFunction 4.4-5 
+      for IsCapCategory, IsFunction, IsInt 4.4-5 
   [2XAddUniqueMorphism[102X, for IsCapCategory, IsFunction 1.6-2 
+      for IsCapCategory, IsFunction, IsInt 1.6-2 
   [2XAmbientCategory[102X, for IsProsetOrPosetOfCapCategory 8.3-1 
   [2XAreIsomorphicForObjectsIfIsHomSetInhabited[102X, for IsCapCategoryObject, IsCapCategoryObject 1.4-1 
   [2XAsMultipleDifference[102X 11.1-2 

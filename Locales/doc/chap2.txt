@@ -79,11 +79,15 @@
   [1X2.3-1 AddIsEqualForObjectsIfIsHomSetInhabited[101X
   
   [33X[1;0Y[29X[2XAddIsEqualForObjectsIfIsHomSetInhabited[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsEqualForObjectsIfIsHomSetInhabited[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsEqualForObjectsIfIsHomSetInhabited[110X.    [23XF:   (   arg2,   arg3   )   \mapsto
+  [10XIsEqualForObjectsIfIsHomSetInhabited[110X.  Optionally,  a  weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:            (           arg2,           arg3           )           \mapsto
   \mathtt{IsEqualForObjectsIfIsHomSetInhabited}(arg2, arg3)[123X.[133X
   
   [33X[0;0YPosets are skeletal, thin categories.[133X

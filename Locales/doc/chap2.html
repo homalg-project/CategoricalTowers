@@ -146,9 +146,10 @@
 <h5>2.3-1 AddIsEqualForObjectsIfIsHomSetInhabited</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForObjectsIfIsHomSetInhabited</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForObjectsIfIsHomSetInhabited</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsEqualForObjectsIfIsHomSetInhabited</code>. <span class="Math">F: ( arg2, arg3 ) \mapsto \mathtt{IsEqualForObjectsIfIsHomSetInhabited}(arg2, arg3)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsEqualForObjectsIfIsHomSetInhabited</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="Math">F: ( arg2, arg3 ) \mapsto \mathtt{IsEqualForObjectsIfIsHomSetInhabited}(arg2, arg3)</span>.</p>
 
 <p>Posets are skeletal, thin categories.</p>
 

@@ -74,40 +74,54 @@
   [1X6.3-1 AddMorphismFromDoubleNegation[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromDoubleNegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismFromDoubleNegation[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismFromDoubleNegation[110X.        [23XF:        (       a       )       \mapsto
-  \mathtt{MorphismFromDoubleNegation}(a)[123X.[133X
+  [10XMorphismFromDoubleNegation[110X.  Optionally,  a  weight  (default:  100)  can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight  =  less complex = faster execution). [23XF: ( a )
+  \mapsto \mathtt{MorphismFromDoubleNegation}(a)[123X.[133X
   
   [1X6.3-2 AddMorphismFromDoubleNegationWithGivenDoubleNegation[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromDoubleNegationWithGivenDoubleNegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismFromDoubleNegationWithGivenDoubleNegation[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismFromDoubleNegationWithGivenDoubleNegation[110X.  [23XF:  (  a,  s  )  \mapsto
+  [10XMorphismFromDoubleNegationWithGivenDoubleNegation[110X.   Optionally,   a  weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      s      )      \mapsto
   \mathtt{MorphismFromDoubleNegationWithGivenDoubleNegation}(a, s)[123X.[133X
   
   [1X6.3-3 AddMorphismToDoubleConegation[101X
   
   [33X[1;0Y[29X[2XAddMorphismToDoubleConegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismToDoubleConegation[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismToDoubleConegation[110X.        [23XF:        (       a       )       \mapsto
-  \mathtt{MorphismToDoubleConegation}(a)[123X.[133X
+  [10XMorphismToDoubleConegation[110X.  Optionally,  a  weight  (default:  100)  can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight  =  less complex = faster execution). [23XF: ( a )
+  \mapsto \mathtt{MorphismToDoubleConegation}(a)[123X.[133X
   
   [1X6.3-4 AddMorphismToDoubleConegationWithGivenDoubleConegation[101X
   
   [33X[1;0Y[29X[2XAddMorphismToDoubleConegationWithGivenDoubleConegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismToDoubleConegationWithGivenDoubleConegation[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismToDoubleConegationWithGivenDoubleConegation[110X.  [23XF:  (  a,  r ) \mapsto
+  [10XMorphismToDoubleConegationWithGivenDoubleConegation[110X.  Optionally,  a  weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      r      )      \mapsto
   \mathtt{MorphismToDoubleConegationWithGivenDoubleConegation}(a, r)[123X.[133X
   

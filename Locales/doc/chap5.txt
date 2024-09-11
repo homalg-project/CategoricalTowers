@@ -80,49 +80,67 @@
   [1X5.4-1 AddConegationOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddConegationOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddConegationOnMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XConegationOnMorphisms[110X.        [23XF:        (        alpha       )       \mapsto
-  \mathtt{ConegationOnMorphisms}(alpha)[123X.[133X
+  [10XConegationOnMorphisms[110X.  Optionally, a weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower  weight  =  less  complex = faster execution). [23XF: ( alpha )
+  \mapsto \mathtt{ConegationOnMorphisms}(alpha)[123X.[133X
   
   [1X5.4-2 AddConegationOnMorphismsWithGivenConegations[101X
   
   [33X[1;0Y[29X[2XAddConegationOnMorphismsWithGivenConegations[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddConegationOnMorphismsWithGivenConegations[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XConegationOnMorphismsWithGivenConegations[110X.  [23XF:  (  s,  alpha,  r  )  \mapsto
+  [10XConegationOnMorphismsWithGivenConegations[110X.  Optionally,  a  weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:          (          s,         alpha,         r         )         \mapsto
   \mathtt{ConegationOnMorphismsWithGivenConegations}(s, alpha, r)[123X.[133X
   
   [1X5.4-3 AddConegationOnObjects[101X
   
   [33X[1;0Y[29X[2XAddConegationOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddConegationOnObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XConegationOnObjects[110X. [23XF: ( arg2 ) \mapsto \mathtt{ConegationOnObjects}(arg2)[123X.[133X
+  [10XConegationOnObjects[110X.  Optionally,  a  weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower  weight  =  less  complex  = faster execution). [23XF: ( arg2 )
+  \mapsto \mathtt{ConegationOnObjects}(arg2)[123X.[133X
   
   [1X5.4-4 AddMorphismFromDoubleConegation[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromDoubleConegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismFromDoubleConegation[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismFromDoubleConegation[110X.       [23XF:       (       a       )       \mapsto
-  \mathtt{MorphismFromDoubleConegation}(a)[123X.[133X
+  [10XMorphismFromDoubleConegation[110X.  Optionally,  a  weight  (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight  =  less complex = faster execution). [23XF: ( a )
+  \mapsto \mathtt{MorphismFromDoubleConegation}(a)[123X.[133X
   
   [1X5.4-5 AddMorphismFromDoubleConegationWithGivenDoubleConegation[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromDoubleConegationWithGivenDoubleConegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismFromDoubleConegationWithGivenDoubleConegation[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismFromDoubleConegationWithGivenDoubleConegation[110X.  [23XF:  ( a, s ) \mapsto
+  [10XMorphismFromDoubleConegationWithGivenDoubleConegation[110X.  Optionally, a weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      s      )      \mapsto
   \mathtt{MorphismFromDoubleConegationWithGivenDoubleConegation}(a, s)[123X.[133X
   

@@ -78,49 +78,67 @@
   [1X4.4-1 AddMorphismToDoubleNegation[101X
   
   [33X[1;0Y[29X[2XAddMorphismToDoubleNegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismToDoubleNegation[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismToDoubleNegation[110X.        [23XF:        (        a        )       \mapsto
-  \mathtt{MorphismToDoubleNegation}(a)[123X.[133X
+  [10XMorphismToDoubleNegation[110X.   Optionally,  a  weight  (default:  100)  can  be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight  =  less complex = faster execution). [23XF: ( a )
+  \mapsto \mathtt{MorphismToDoubleNegation}(a)[123X.[133X
   
   [1X4.4-2 AddMorphismToDoubleNegationWithGivenDoubleNegation[101X
   
   [33X[1;0Y[29X[2XAddMorphismToDoubleNegationWithGivenDoubleNegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismToDoubleNegationWithGivenDoubleNegation[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismToDoubleNegationWithGivenDoubleNegation[110X.   [23XF:   (  a,  r  )  \mapsto
+  [10XMorphismToDoubleNegationWithGivenDoubleNegation[110X.    Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      r      )      \mapsto
   \mathtt{MorphismToDoubleNegationWithGivenDoubleNegation}(a, r)[123X.[133X
   
   [1X4.4-3 AddNegationOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddNegationOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddNegationOnMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XNegationOnMorphisms[110X.        [23XF:        (        alpha        )        \mapsto
-  \mathtt{NegationOnMorphisms}(alpha)[123X.[133X
+  [10XNegationOnMorphisms[110X.  Optionally,  a  weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower  weight  =  less  complex = faster execution). [23XF: ( alpha )
+  \mapsto \mathtt{NegationOnMorphisms}(alpha)[123X.[133X
   
   [1X4.4-4 AddNegationOnMorphismsWithGivenNegations[101X
   
   [33X[1;0Y[29X[2XAddNegationOnMorphismsWithGivenNegations[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddNegationOnMorphismsWithGivenNegations[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XNegationOnMorphismsWithGivenNegations[110X.   [23XF:   (   s,   alpha,  r  )  \mapsto
-  \mathtt{NegationOnMorphismsWithGivenNegations}(s, alpha, r)[123X.[133X
+  [10XNegationOnMorphismsWithGivenNegations[110X.  Optionally,  a weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( s, alpha, r ) \mapsto \mathtt{NegationOnMorphismsWithGivenNegations}(s,
+  alpha, r)[123X.[133X
   
   [1X4.4-5 AddNegationOnObjects[101X
   
   [33X[1;0Y[29X[2XAddNegationOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddNegationOnObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function [23XF[123X to the category for the basic operation [10XNegationOnObjects[110X.
-  [23XF: ( arg2 ) \mapsto \mathtt{NegationOnObjects}(arg2)[123X.[133X
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less    complex    =    faster    execution).    [23XF:   (   arg2   )   \mapsto
+  \mathtt{NegationOnObjects}(arg2)[123X.[133X
   
