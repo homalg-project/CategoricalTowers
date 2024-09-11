@@ -1335,711 +1335,790 @@ true
 <h5>1.10-1 AddCartesianSquareOfSubobjectClassifier</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianSquareOfSubobjectClassifier</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianSquareOfSubobjectClassifier</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianSquareOfSubobjectClassifier</code>. <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{CartesianSquareOfSubobjectClassifier}()\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianSquareOfSubobjectClassifier</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{CartesianSquareOfSubobjectClassifier}()\)</span>.</p>
 
 <p><a id="X7CB2F66B8022D23C" name="X7CB2F66B8022D23C"></a></p>
 
 <h5>1.10-2 AddClassifyingMorphismOfSubobject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddClassifyingMorphismOfSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddClassifyingMorphismOfSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ClassifyingMorphismOfSubobject</code>. <span class="SimpleMath">\(F: ( alpha ) \mapsto \mathtt{ClassifyingMorphismOfSubobject}(alpha)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ClassifyingMorphismOfSubobject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( alpha ) \mapsto \mathtt{ClassifyingMorphismOfSubobject}(alpha)\)</span>.</p>
 
 <p><a id="X7EA4360E79D92811" name="X7EA4360E79D92811"></a></p>
 
 <h5>1.10-3 AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</code>. <span class="SimpleMath">\(F: ( alpha, Omega ) \mapsto \mathtt{ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier}(alpha, Omega)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( alpha, Omega ) \mapsto \mathtt{ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier}(alpha, Omega)\)</span>.</p>
 
 <p><a id="X7AE60CB0878DA9E9" name="X7AE60CB0878DA9E9"></a></p>
 
 <h5>1.10-4 AddCoproductComplement</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoproductComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoproductComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CoproductComplement</code>. <span class="SimpleMath">\(F: ( iota ) \mapsto \mathtt{CoproductComplement}(iota)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CoproductComplement</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( iota ) \mapsto \mathtt{CoproductComplement}(iota)\)</span>.</p>
 
 <p><a id="X7BE239CF7D0D28EB" name="X7BE239CF7D0D28EB"></a></p>
 
 <h5>1.10-5 AddDirectProductComplement</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectProductComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectProductComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">DirectProductComplement</code>. <span class="SimpleMath">\(F: ( pi ) \mapsto \mathtt{DirectProductComplement}(pi)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">DirectProductComplement</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( pi ) \mapsto \mathtt{DirectProductComplement}(pi)\)</span>.</p>
 
 <p><a id="X85AADBAE82CF7236" name="X85AADBAE82CF7236"></a></p>
 
 <h5>1.10-6 AddEmbeddingOfIntersectionSubobject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfIntersectionSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfIntersectionSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfIntersectionSubobject</code>. <span class="SimpleMath">\(F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfIntersectionSubobject}(iota1, iota2)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfIntersectionSubobject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfIntersectionSubobject}(iota1, iota2)\)</span>.</p>
 
 <p><a id="X8732F76787D06A4C" name="X8732F76787D06A4C"></a></p>
 
 <h5>1.10-7 AddEmbeddingOfIntersectionSubobjectWithGivenIntersection</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfIntersectionSubobjectWithGivenIntersection</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfIntersectionSubobjectWithGivenIntersection</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfIntersectionSubobjectWithGivenIntersection</code>. <span class="SimpleMath">\(F: ( iota1, iota2, intersection ) \mapsto \mathtt{EmbeddingOfIntersectionSubobjectWithGivenIntersection}(iota1, iota2, intersection)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfIntersectionSubobjectWithGivenIntersection</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( iota1, iota2, intersection ) \mapsto \mathtt{EmbeddingOfIntersectionSubobjectWithGivenIntersection}(iota1, iota2, intersection)\)</span>.</p>
 
 <p><a id="X7E9CBB3581CE9C0E" name="X7E9CBB3581CE9C0E"></a></p>
 
 <h5>1.10-8 AddEmbeddingOfPseudoComplementSubobject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfPseudoComplementSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfPseudoComplementSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfPseudoComplementSubobject</code>. <span class="SimpleMath">\(F: ( iota ) \mapsto \mathtt{EmbeddingOfPseudoComplementSubobject}(iota)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfPseudoComplementSubobject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( iota ) \mapsto \mathtt{EmbeddingOfPseudoComplementSubobject}(iota)\)</span>.</p>
 
 <p><a id="X7FDD29CF85B64B8A" name="X7FDD29CF85B64B8A"></a></p>
 
 <h5>1.10-9 AddEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement</code>. <span class="SimpleMath">\(F: ( iota, complement ) \mapsto \mathtt{EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement}(iota, complement)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( iota, complement ) \mapsto \mathtt{EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement}(iota, complement)\)</span>.</p>
 
 <p><a id="X7E79CCA97E8F35FA" name="X7E79CCA97E8F35FA"></a></p>
 
 <h5>1.10-10 AddEmbeddingOfRelativePseudoComplementSubobject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfRelativePseudoComplementSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfRelativePseudoComplementSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfRelativePseudoComplementSubobject</code>. <span class="SimpleMath">\(F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfRelativePseudoComplementSubobject}(iota1, iota2)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfRelativePseudoComplementSubobject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfRelativePseudoComplementSubobject}(iota1, iota2)\)</span>.</p>
 
 <p><a id="X80F3334F8467F04E" name="X80F3334F8467F04E"></a></p>
 
 <h5>1.10-11 AddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</code>. <span class="SimpleMath">\(F: ( iota1, iota2, implication ) \mapsto \mathtt{EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication}(iota1, iota2, implication)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( iota1, iota2, implication ) \mapsto \mathtt{EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication}(iota1, iota2, implication)\)</span>.</p>
 
 <p><a id="X80995E467B4F8266" name="X80995E467B4F8266"></a></p>
 
 <h5>1.10-12 AddEmbeddingOfUnionSubobject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfUnionSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfUnionSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfUnionSubobject</code>. <span class="SimpleMath">\(F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfUnionSubobject}(iota1, iota2)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfUnionSubobject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfUnionSubobject}(iota1, iota2)\)</span>.</p>
 
 <p><a id="X78843A817F0CA84F" name="X78843A817F0CA84F"></a></p>
 
 <h5>1.10-13 AddEmbeddingOfUnionSubobjectWithGivenUnion</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfUnionSubobjectWithGivenUnion</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfUnionSubobjectWithGivenUnion</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfUnionSubobjectWithGivenUnion</code>. <span class="SimpleMath">\(F: ( iota1, iota2, union ) \mapsto \mathtt{EmbeddingOfUnionSubobjectWithGivenUnion}(iota1, iota2, union)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfUnionSubobjectWithGivenUnion</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( iota1, iota2, union ) \mapsto \mathtt{EmbeddingOfUnionSubobjectWithGivenUnion}(iota1, iota2, union)\)</span>.</p>
 
 <p><a id="X8433D231788BD541" name="X8433D231788BD541"></a></p>
 
 <h5>1.10-14 AddExactCoverWithGlobalElements</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddExactCoverWithGlobalElements</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddExactCoverWithGlobalElements</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ExactCoverWithGlobalElements</code>. <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{ExactCoverWithGlobalElements}(arg2)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ExactCoverWithGlobalElements</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{ExactCoverWithGlobalElements}(arg2)\)</span>.</p>
 
 <p><a id="X84D738F979FCF1F7" name="X84D738F979FCF1F7"></a></p>
 
 <h5>1.10-15 AddHasPushoutComplement</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddHasPushoutComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddHasPushoutComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">HasPushoutComplement</code>. <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{HasPushoutComplement}(arg2, arg3)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">HasPushoutComplement</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{HasPushoutComplement}(arg2, arg3)\)</span>.</p>
 
 <p><a id="X8262A5F0863AA786" name="X8262A5F0863AA786"></a></p>
 
 <h5>1.10-16 AddIndexOfNonliftableMorphismFromDistinguishedObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIndexOfNonliftableMorphismFromDistinguishedObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIndexOfNonliftableMorphismFromDistinguishedObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IndexOfNonliftableMorphismFromDistinguishedObject</code>. <span class="SimpleMath">\(F: ( iota ) \mapsto \mathtt{IndexOfNonliftableMorphismFromDistinguishedObject}(iota)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IndexOfNonliftableMorphismFromDistinguishedObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( iota ) \mapsto \mathtt{IndexOfNonliftableMorphismFromDistinguishedObject}(iota)\)</span>.</p>
 
 <p><a id="X82984B3A86CFA507" name="X82984B3A86CFA507"></a></p>
 
 <h5>1.10-17 AddInjectionOfCoproductComplement</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfCoproductComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfCoproductComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InjectionOfCoproductComplement</code>. <span class="SimpleMath">\(F: ( iota ) \mapsto \mathtt{InjectionOfCoproductComplement}(iota)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InjectionOfCoproductComplement</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( iota ) \mapsto \mathtt{InjectionOfCoproductComplement}(iota)\)</span>.</p>
 
 <p><a id="X782D63A7784688E0" name="X782D63A7784688E0"></a></p>
 
 <h5>1.10-18 AddInjectionOfCoproductComplementWithGivenCoproductComplement</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfCoproductComplementWithGivenCoproductComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfCoproductComplementWithGivenCoproductComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InjectionOfCoproductComplementWithGivenCoproductComplement</code>. <span class="SimpleMath">\(F: ( iota, complement ) \mapsto \mathtt{InjectionOfCoproductComplementWithGivenCoproductComplement}(iota, complement)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InjectionOfCoproductComplementWithGivenCoproductComplement</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( iota, complement ) \mapsto \mathtt{InjectionOfCoproductComplementWithGivenCoproductComplement}(iota, complement)\)</span>.</p>
 
 <p><a id="X7FB3C59484624E44" name="X7FB3C59484624E44"></a></p>
 
 <h5>1.10-19 AddIntersectionSubobject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIntersectionSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIntersectionSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IntersectionSubobject</code>. <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{IntersectionSubobject}(arg2, arg3)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IntersectionSubobject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{IntersectionSubobject}(arg2, arg3)\)</span>.</p>
 
 <p><a id="X7B2FB0607F10D843" name="X7B2FB0607F10D843"></a></p>
 
 <h5>1.10-20 AddIsomorphismOntoCartesianSquareOfPowerObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismOntoCartesianSquareOfPowerObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismOntoCartesianSquareOfPowerObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsomorphismOntoCartesianSquareOfPowerObject</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{IsomorphismOntoCartesianSquareOfPowerObject}(a)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsomorphismOntoCartesianSquareOfPowerObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{IsomorphismOntoCartesianSquareOfPowerObject}(a)\)</span>.</p>
 
 <p><a id="X87E98C1D7DAAB6C3" name="X87E98C1D7DAAB6C3"></a></p>
 
 <h5>1.10-21 AddIsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects</code>. <span class="SimpleMath">\(F: ( ExpaOmega2, a, PaxPa ) \mapsto \mathtt{IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects}(ExpaOmega2, a, PaxPa)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( ExpaOmega2, a, PaxPa ) \mapsto \mathtt{IsomorphismOntoCartesianSquareOfPowerObjectWithGivenObjects}(ExpaOmega2, a, PaxPa)\)</span>.</p>
 
 <p><a id="X87C1567A7E4DC50A" name="X87C1567A7E4DC50A"></a></p>
 
 <h5>1.10-22 AddLawvereTierneyEmbeddingsOfSubobjectClassifiers</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLawvereTierneyEmbeddingsOfSubobjectClassifiers</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLawvereTierneyEmbeddingsOfSubobjectClassifiers</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LawvereTierneyEmbeddingsOfSubobjectClassifiers</code>. <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{LawvereTierneyEmbeddingsOfSubobjectClassifiers}()\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LawvereTierneyEmbeddingsOfSubobjectClassifiers</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{LawvereTierneyEmbeddingsOfSubobjectClassifiers}()\)</span>.</p>
 
 <p><a id="X84AF140B851CD072" name="X84AF140B851CD072"></a></p>
 
 <h5>1.10-23 AddLawvereTierneyLocalModalityOperators</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLawvereTierneyLocalModalityOperators</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLawvereTierneyLocalModalityOperators</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LawvereTierneyLocalModalityOperators</code>. <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{LawvereTierneyLocalModalityOperators}()\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LawvereTierneyLocalModalityOperators</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{LawvereTierneyLocalModalityOperators}()\)</span>.</p>
 
 <p><a id="X836DC3837FDBB6DE" name="X836DC3837FDBB6DE"></a></p>
 
 <h5>1.10-24 AddLawvereTierneySubobjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLawvereTierneySubobjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLawvereTierneySubobjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LawvereTierneySubobjects</code>. <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{LawvereTierneySubobjects}()\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LawvereTierneySubobjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{LawvereTierneySubobjects}()\)</span>.</p>
 
 <p><a id="X7AF8860280748FCF" name="X7AF8860280748FCF"></a></p>
 
 <h5>1.10-25 AddLeftFiberMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftFiberMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftFiberMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LeftFiberMorphism</code>. <span class="SimpleMath">\(F: ( b, c ) \mapsto \mathtt{LeftFiberMorphism}(b, c)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LeftFiberMorphism</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( b, c ) \mapsto \mathtt{LeftFiberMorphism}(b, c)\)</span>.</p>
 
 <p><a id="X7CB64A8484E8A3D8" name="X7CB64A8484E8A3D8"></a></p>
 
 <h5>1.10-26 AddLeftFiberMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftFiberMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftFiberMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LeftFiberMorphismWithGivenObjects</code>. <span class="SimpleMath">\(F: ( Pbxc_b, b, c, Pc ) \mapsto \mathtt{LeftFiberMorphismWithGivenObjects}(Pbxc_b, b, c, Pc)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LeftFiberMorphismWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( Pbxc_b, b, c, Pc ) \mapsto \mathtt{LeftFiberMorphismWithGivenObjects}(Pbxc_b, b, c, Pc)\)</span>.</p>
 
 <p><a id="X81DF32AC7BB696D4" name="X81DF32AC7BB696D4"></a></p>
 
 <h5>1.10-27 AddListOfSubobjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddListOfSubobjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddListOfSubobjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ListOfSubobjects</code>. <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{ListOfSubobjects}(arg2)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ListOfSubobjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{ListOfSubobjects}(arg2)\)</span>.</p>
 
 <p><a id="X84BCE83981DCA25D" name="X84BCE83981DCA25D"></a></p>
 
 <h5>1.10-28 AddLowerSegmentOfRelation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLowerSegmentOfRelation</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLowerSegmentOfRelation</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LowerSegmentOfRelation</code>. <span class="SimpleMath">\(F: ( a, b, mu ) \mapsto \mathtt{LowerSegmentOfRelation}(a, b, mu)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LowerSegmentOfRelation</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, mu ) \mapsto \mathtt{LowerSegmentOfRelation}(a, b, mu)\)</span>.</p>
 
 <p><a id="X85F8E22580B665B4" name="X85F8E22580B665B4"></a></p>
 
 <h5>1.10-29 AddLowerSegmentOfRelationWithGivenRange</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLowerSegmentOfRelationWithGivenRange</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLowerSegmentOfRelationWithGivenRange</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LowerSegmentOfRelationWithGivenRange</code>. <span class="SimpleMath">\(F: ( a, b, mu, Pa ) \mapsto \mathtt{LowerSegmentOfRelationWithGivenRange}(a, b, mu, Pa)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LowerSegmentOfRelationWithGivenRange</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, mu, Pa ) \mapsto \mathtt{LowerSegmentOfRelationWithGivenRange}(a, b, mu, Pa)\)</span>.</p>
 
 <p><a id="X7DB2E0FE82B66B34" name="X7DB2E0FE82B66B34"></a></p>
 
 <h5>1.10-30 AddNonliftableMorphismFromDistinguishedObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddNonliftableMorphismFromDistinguishedObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddNonliftableMorphismFromDistinguishedObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">NonliftableMorphismFromDistinguishedObject</code>. <span class="SimpleMath">\(F: ( iota ) \mapsto \mathtt{NonliftableMorphismFromDistinguishedObject}(iota)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">NonliftableMorphismFromDistinguishedObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( iota ) \mapsto \mathtt{NonliftableMorphismFromDistinguishedObject}(iota)\)</span>.</p>
 
 <p><a id="X85300D607C397713" name="X85300D607C397713"></a></p>
 
 <h5>1.10-31 AddPLeftTransposeMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPLeftTransposeMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPLeftTransposeMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PLeftTransposeMorphism</code>. <span class="SimpleMath">\(F: ( a, b, f ) \mapsto \mathtt{PLeftTransposeMorphism}(a, b, f)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PLeftTransposeMorphism</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, f ) \mapsto \mathtt{PLeftTransposeMorphism}(a, b, f)\)</span>.</p>
 
 <p><a id="X86687F1F7D53B0FA" name="X86687F1F7D53B0FA"></a></p>
 
 <h5>1.10-32 AddPLeftTransposeMorphismWithGivenRange</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPLeftTransposeMorphismWithGivenRange</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPLeftTransposeMorphismWithGivenRange</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PLeftTransposeMorphismWithGivenRange</code>. <span class="SimpleMath">\(F: ( a, b, f, Pb ) \mapsto \mathtt{PLeftTransposeMorphismWithGivenRange}(a, b, f, Pb)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PLeftTransposeMorphismWithGivenRange</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, f, Pb ) \mapsto \mathtt{PLeftTransposeMorphismWithGivenRange}(a, b, f, Pb)\)</span>.</p>
 
 <p><a id="X7B95FDC678169DAD" name="X7B95FDC678169DAD"></a></p>
 
 <h5>1.10-33 AddPRightTransposeMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPRightTransposeMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPRightTransposeMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PRightTransposeMorphism</code>. <span class="SimpleMath">\(F: ( a, b, f ) \mapsto \mathtt{PRightTransposeMorphism}(a, b, f)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PRightTransposeMorphism</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, f ) \mapsto \mathtt{PRightTransposeMorphism}(a, b, f)\)</span>.</p>
 
 <p><a id="X7A3B26D17E6A23C6" name="X7A3B26D17E6A23C6"></a></p>
 
 <h5>1.10-34 AddPRightTransposeMorphismWithGivenRange</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPRightTransposeMorphismWithGivenRange</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPRightTransposeMorphismWithGivenRange</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PRightTransposeMorphismWithGivenRange</code>. <span class="SimpleMath">\(F: ( a, b, f, Pa ) \mapsto \mathtt{PRightTransposeMorphismWithGivenRange}(a, b, f, Pa)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PRightTransposeMorphismWithGivenRange</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, f, Pa ) \mapsto \mathtt{PRightTransposeMorphismWithGivenRange}(a, b, f, Pa)\)</span>.</p>
 
 <p><a id="X83FA18FC80B0A98C" name="X83FA18FC80B0A98C"></a></p>
 
 <h5>1.10-35 AddPowerObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PowerObject</code>. <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{PowerObject}(arg2)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PowerObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{PowerObject}(arg2)\)</span>.</p>
 
 <p><a id="X796C3BEC792BDF57" name="X796C3BEC792BDF57"></a></p>
 
 <h5>1.10-36 AddPowerObjectFunctorial</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObjectFunctorial</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObjectFunctorial</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PowerObjectFunctorial</code>. <span class="SimpleMath">\(F: ( f ) \mapsto \mathtt{PowerObjectFunctorial}(f)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PowerObjectFunctorial</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( f ) \mapsto \mathtt{PowerObjectFunctorial}(f)\)</span>.</p>
 
 <p><a id="X87967CBC7A27F6A5" name="X87967CBC7A27F6A5"></a></p>
 
 <h5>1.10-37 AddPowerObjectFunctorialWithGivenPowerObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObjectFunctorialWithGivenPowerObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObjectFunctorialWithGivenPowerObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PowerObjectFunctorialWithGivenPowerObjects</code>. <span class="SimpleMath">\(F: ( Pb, f, Pa ) \mapsto \mathtt{PowerObjectFunctorialWithGivenPowerObjects}(Pb, f, Pa)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PowerObjectFunctorialWithGivenPowerObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( Pb, f, Pa ) \mapsto \mathtt{PowerObjectFunctorialWithGivenPowerObjects}(Pb, f, Pa)\)</span>.</p>
 
 <p><a id="X7EA3855281E96F55" name="X7EA3855281E96F55"></a></p>
 
 <h5>1.10-38 AddPowerObjectLeftEvaluationMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObjectLeftEvaluationMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObjectLeftEvaluationMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PowerObjectLeftEvaluationMorphism</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{PowerObjectLeftEvaluationMorphism}(a)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PowerObjectLeftEvaluationMorphism</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{PowerObjectLeftEvaluationMorphism}(a)\)</span>.</p>
 
 <p><a id="X832A959C796D8CED" name="X832A959C796D8CED"></a></p>
 
 <h5>1.10-39 AddPowerObjectLeftEvaluationMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObjectLeftEvaluationMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObjectLeftEvaluationMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PowerObjectLeftEvaluationMorphismWithGivenObjects</code>. <span class="SimpleMath">\(F: ( Pa_xa, a, Omega ) \mapsto \mathtt{PowerObjectLeftEvaluationMorphismWithGivenObjects}(Pa_xa, a, Omega)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PowerObjectLeftEvaluationMorphismWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( Pa_xa, a, Omega ) \mapsto \mathtt{PowerObjectLeftEvaluationMorphismWithGivenObjects}(Pa_xa, a, Omega)\)</span>.</p>
 
 <p><a id="X85D1BDF1829A5C15" name="X85D1BDF1829A5C15"></a></p>
 
 <h5>1.10-40 AddPowerObjectRightEvaluationMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObjectRightEvaluationMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObjectRightEvaluationMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PowerObjectRightEvaluationMorphism</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{PowerObjectRightEvaluationMorphism}(a)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PowerObjectRightEvaluationMorphism</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{PowerObjectRightEvaluationMorphism}(a)\)</span>.</p>
 
 <p><a id="X82F349377B4FFF8C" name="X82F349377B4FFF8C"></a></p>
 
 <h5>1.10-41 AddPowerObjectRightEvaluationMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObjectRightEvaluationMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObjectRightEvaluationMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PowerObjectRightEvaluationMorphismWithGivenObjects</code>. <span class="SimpleMath">\(F: ( axPa, a, Omega ) \mapsto \mathtt{PowerObjectRightEvaluationMorphismWithGivenObjects}(axPa, a, Omega)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PowerObjectRightEvaluationMorphismWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( axPa, a, Omega ) \mapsto \mathtt{PowerObjectRightEvaluationMorphismWithGivenObjects}(axPa, a, Omega)\)</span>.</p>
 
 <p><a id="X7BB03D0284B11813" name="X7BB03D0284B11813"></a></p>
 
 <h5>1.10-42 AddProjectionInDirectProductComplement</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInDirectProductComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInDirectProductComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ProjectionInDirectProductComplement</code>. <span class="SimpleMath">\(F: ( pi ) \mapsto \mathtt{ProjectionInDirectProductComplement}(pi)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ProjectionInDirectProductComplement</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( pi ) \mapsto \mathtt{ProjectionInDirectProductComplement}(pi)\)</span>.</p>
 
 <p><a id="X80D3B9ED8449A32A" name="X80D3B9ED8449A32A"></a></p>
 
 <h5>1.10-43 AddProjectionInDirectProductComplementWithGivenDirectProductComplement</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInDirectProductComplementWithGivenDirectProductComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInDirectProductComplementWithGivenDirectProductComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ProjectionInDirectProductComplementWithGivenDirectProductComplement</code>. <span class="SimpleMath">\(F: ( pi, complement ) \mapsto \mathtt{ProjectionInDirectProductComplementWithGivenDirectProductComplement}(pi, complement)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ProjectionInDirectProductComplementWithGivenDirectProductComplement</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( pi, complement ) \mapsto \mathtt{ProjectionInDirectProductComplementWithGivenDirectProductComplement}(pi, complement)\)</span>.</p>
 
 <p><a id="X834E53457F00D41E" name="X834E53457F00D41E"></a></p>
 
 <h5>1.10-44 AddPseudoComplementSubobject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPseudoComplementSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPseudoComplementSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PseudoComplementSubobject</code>. <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{PseudoComplementSubobject}(arg2)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PseudoComplementSubobject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{PseudoComplementSubobject}(arg2)\)</span>.</p>
 
 <p><a id="X86E9745A85A060F3" name="X86E9745A85A060F3"></a></p>
 
 <h5>1.10-45 AddPushoutComplement</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPushoutComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPushoutComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PushoutComplement</code>. <span class="SimpleMath">\(F: ( l, m ) \mapsto \mathtt{PushoutComplement}(l, m)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PushoutComplement</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( l, m ) \mapsto \mathtt{PushoutComplement}(l, m)\)</span>.</p>
 
 <p><a id="X862A4CFB847723DB" name="X862A4CFB847723DB"></a></p>
 
 <h5>1.10-46 AddRelativePseudoComplementSubobject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativePseudoComplementSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativePseudoComplementSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativePseudoComplementSubobject</code>. <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{RelativePseudoComplementSubobject}(arg2, arg3)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativePseudoComplementSubobject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{RelativePseudoComplementSubobject}(arg2, arg3)\)</span>.</p>
 
 <p><a id="X8348E6968682917E" name="X8348E6968682917E"></a></p>
 
 <h5>1.10-47 AddRelativeTruthMorphismOfAnd</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfAnd</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfAnd</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfAnd</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfAnd}(a)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfAnd</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfAnd}(a)\)</span>.</p>
 
 <p><a id="X791447C57E68BE48" name="X791447C57E68BE48"></a></p>
 
 <h5>1.10-48 AddRelativeTruthMorphismOfAndWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfAndWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfAndWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfAndWithGivenObjects</code>. <span class="SimpleMath">\(F: ( PaxPa, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfAndWithGivenObjects}(PaxPa, a, Pa)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfAndWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( PaxPa, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfAndWithGivenObjects}(PaxPa, a, Pa)\)</span>.</p>
 
 <p><a id="X80B4AF7682ED2C6D" name="X80B4AF7682ED2C6D"></a></p>
 
 <h5>1.10-49 AddRelativeTruthMorphismOfFalse</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfFalse</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfFalse</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfFalse</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfFalse}(a)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfFalse</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfFalse}(a)\)</span>.</p>
 
 <p><a id="X7F7E479D85DADE2F" name="X7F7E479D85DADE2F"></a></p>
 
 <h5>1.10-50 AddRelativeTruthMorphismOfFalseWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfFalseWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfFalseWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfFalseWithGivenObjects</code>. <span class="SimpleMath">\(F: ( T, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfFalseWithGivenObjects}(T, a, Pa)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfFalseWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( T, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfFalseWithGivenObjects}(T, a, Pa)\)</span>.</p>
 
 <p><a id="X821D71717829EB9C" name="X821D71717829EB9C"></a></p>
 
 <h5>1.10-51 AddRelativeTruthMorphismOfImplies</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfImplies</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfImplies</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfImplies</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfImplies}(a)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfImplies</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfImplies}(a)\)</span>.</p>
 
 <p><a id="X7ACB0987832023B8" name="X7ACB0987832023B8"></a></p>
 
 <h5>1.10-52 AddRelativeTruthMorphismOfImpliesWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfImpliesWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfImpliesWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfImpliesWithGivenObjects</code>. <span class="SimpleMath">\(F: ( PaxPa, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfImpliesWithGivenObjects}(PaxPa, a, Pa)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfImpliesWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( PaxPa, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfImpliesWithGivenObjects}(PaxPa, a, Pa)\)</span>.</p>
 
 <p><a id="X811049B77FF03F7F" name="X811049B77FF03F7F"></a></p>
 
 <h5>1.10-53 AddRelativeTruthMorphismOfNot</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfNot</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfNot</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfNot</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfNot}(a)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfNot</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfNot}(a)\)</span>.</p>
 
 <p><a id="X7EF8B31B871A1049" name="X7EF8B31B871A1049"></a></p>
 
 <h5>1.10-54 AddRelativeTruthMorphismOfNotWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfNotWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfNotWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfNotWithGivenObjects</code>. <span class="SimpleMath">\(F: ( Pa, a, Pa1 ) \mapsto \mathtt{RelativeTruthMorphismOfNotWithGivenObjects}(Pa, a, Pa1)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfNotWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( Pa, a, Pa1 ) \mapsto \mathtt{RelativeTruthMorphismOfNotWithGivenObjects}(Pa, a, Pa1)\)</span>.</p>
 
 <p><a id="X7A964E12823DF238" name="X7A964E12823DF238"></a></p>
 
 <h5>1.10-55 AddRelativeTruthMorphismOfOr</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfOr</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfOr</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfOr</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfOr}(a)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfOr</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfOr}(a)\)</span>.</p>
 
 <p><a id="X7CAB532683FC3B81" name="X7CAB532683FC3B81"></a></p>
 
 <h5>1.10-56 AddRelativeTruthMorphismOfOrWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfOrWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfOrWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfOrWithGivenObjects</code>. <span class="SimpleMath">\(F: ( PaxPa, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfOrWithGivenObjects}(PaxPa, a, Pa)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfOrWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( PaxPa, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfOrWithGivenObjects}(PaxPa, a, Pa)\)</span>.</p>
 
 <p><a id="X85DED6B97CA88ED6" name="X85DED6B97CA88ED6"></a></p>
 
 <h5>1.10-57 AddRelativeTruthMorphismOfTrue</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfTrue</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfTrue</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfTrue</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfTrue}(a)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfTrue</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{RelativeTruthMorphismOfTrue}(a)\)</span>.</p>
 
 <p><a id="X7EA4B5D9869BA4FE" name="X7EA4B5D9869BA4FE"></a></p>
 
 <h5>1.10-58 AddRelativeTruthMorphismOfTrueWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfTrueWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeTruthMorphismOfTrueWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfTrueWithGivenObjects</code>. <span class="SimpleMath">\(F: ( T, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfTrueWithGivenObjects}(T, a, Pa)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeTruthMorphismOfTrueWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( T, a, Pa ) \mapsto \mathtt{RelativeTruthMorphismOfTrueWithGivenObjects}(T, a, Pa)\)</span>.</p>
 
 <p><a id="X78EF07057C31413B" name="X78EF07057C31413B"></a></p>
 
 <h5>1.10-59 AddRightFiberMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightFiberMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightFiberMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RightFiberMorphism</code>. <span class="SimpleMath">\(F: ( b, c ) \mapsto \mathtt{RightFiberMorphism}(b, c)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RightFiberMorphism</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( b, c ) \mapsto \mathtt{RightFiberMorphism}(b, c)\)</span>.</p>
 
 <p><a id="X849D62A879D83287" name="X849D62A879D83287"></a></p>
 
 <h5>1.10-60 AddRightFiberMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightFiberMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightFiberMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RightFiberMorphismWithGivenObjects</code>. <span class="SimpleMath">\(F: ( cxPbxc, b, c, Pb ) \mapsto \mathtt{RightFiberMorphismWithGivenObjects}(cxPbxc, b, c, Pb)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RightFiberMorphismWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( cxPbxc, b, c, Pb ) \mapsto \mathtt{RightFiberMorphismWithGivenObjects}(cxPbxc, b, c, Pb)\)</span>.</p>
 
 <p><a id="X8132FB527C65EB48" name="X8132FB527C65EB48"></a></p>
 
 <h5>1.10-61 AddSingletonMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSingletonMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSingletonMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">SingletonMorphism</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{SingletonMorphism}(a)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">SingletonMorphism</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{SingletonMorphism}(a)\)</span>.</p>
 
 <p><a id="X834AF15D824C9D4B" name="X834AF15D824C9D4B"></a></p>
 
 <h5>1.10-62 AddSingletonMorphismWithGivenPowerObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSingletonMorphismWithGivenPowerObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSingletonMorphismWithGivenPowerObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">SingletonMorphismWithGivenPowerObject</code>. <span class="SimpleMath">\(F: ( a, Pa ) \mapsto \mathtt{SingletonMorphismWithGivenPowerObject}(a, Pa)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">SingletonMorphismWithGivenPowerObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, Pa ) \mapsto \mathtt{SingletonMorphismWithGivenPowerObject}(a, Pa)\)</span>.</p>
 
 <p><a id="X7F91B1417B647CBA" name="X7F91B1417B647CBA"></a></p>
 
 <h5>1.10-63 AddSubobjectClassifier</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSubobjectClassifier</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSubobjectClassifier</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">SubobjectClassifier</code>. <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{SubobjectClassifier}()\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">SubobjectClassifier</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{SubobjectClassifier}()\)</span>.</p>
 
 <p><a id="X814CF88C850C8077" name="X814CF88C850C8077"></a></p>
 
 <h5>1.10-64 AddSubobjectOfClassifyingMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSubobjectOfClassifyingMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSubobjectOfClassifyingMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">SubobjectOfClassifyingMorphism</code>. <span class="SimpleMath">\(F: ( alpha ) \mapsto \mathtt{SubobjectOfClassifyingMorphism}(alpha)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">SubobjectOfClassifyingMorphism</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( alpha ) \mapsto \mathtt{SubobjectOfClassifyingMorphism}(alpha)\)</span>.</p>
 
 <p><a id="X878C7A5385273892" name="X878C7A5385273892"></a></p>
 
 <h5>1.10-65 AddTruthMorphismOfAnd</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfAnd</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfAnd</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfAnd</code>. <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{TruthMorphismOfAnd}()\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfAnd</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{TruthMorphismOfAnd}()\)</span>.</p>
 
 <p><a id="X7D7EC93980CE4B2E" name="X7D7EC93980CE4B2E"></a></p>
 
 <h5>1.10-66 AddTruthMorphismOfAndWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfAndWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfAndWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfAndWithGivenObjects</code>. <span class="SimpleMath">\(F: ( Omega2, Omega ) \mapsto \mathtt{TruthMorphismOfAndWithGivenObjects}(Omega2, Omega)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfAndWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( Omega2, Omega ) \mapsto \mathtt{TruthMorphismOfAndWithGivenObjects}(Omega2, Omega)\)</span>.</p>
 
 <p><a id="X811150A6829C8DF3" name="X811150A6829C8DF3"></a></p>
 
 <h5>1.10-67 AddTruthMorphismOfFalse</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfFalse</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfFalse</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfFalse</code>. <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{TruthMorphismOfFalse}()\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfFalse</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{TruthMorphismOfFalse}()\)</span>.</p>
 
 <p><a id="X868C7D2D7D4A1A30" name="X868C7D2D7D4A1A30"></a></p>
 
 <h5>1.10-68 AddTruthMorphismOfFalseWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfFalseWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfFalseWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfFalseWithGivenObjects</code>. <span class="SimpleMath">\(F: ( T, Omega ) \mapsto \mathtt{TruthMorphismOfFalseWithGivenObjects}(T, Omega)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfFalseWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( T, Omega ) \mapsto \mathtt{TruthMorphismOfFalseWithGivenObjects}(T, Omega)\)</span>.</p>
 
 <p><a id="X786B746E855FE383" name="X786B746E855FE383"></a></p>
 
 <h5>1.10-69 AddTruthMorphismOfImplies</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfImplies</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfImplies</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfImplies</code>. <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{TruthMorphismOfImplies}()\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfImplies</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{TruthMorphismOfImplies}()\)</span>.</p>
 
 <p><a id="X80E40A4F7E13DAC3" name="X80E40A4F7E13DAC3"></a></p>
 
 <h5>1.10-70 AddTruthMorphismOfImpliesWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfImpliesWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfImpliesWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfImpliesWithGivenObjects</code>. <span class="SimpleMath">\(F: ( Omega2, Omega ) \mapsto \mathtt{TruthMorphismOfImpliesWithGivenObjects}(Omega2, Omega)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfImpliesWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( Omega2, Omega ) \mapsto \mathtt{TruthMorphismOfImpliesWithGivenObjects}(Omega2, Omega)\)</span>.</p>
 
 <p><a id="X85D4D57283F6F364" name="X85D4D57283F6F364"></a></p>
 
 <h5>1.10-71 AddTruthMorphismOfNot</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfNot</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfNot</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfNot</code>. <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{TruthMorphismOfNot}()\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfNot</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{TruthMorphismOfNot}()\)</span>.</p>
 
 <p><a id="X7A923DE7861F80D8" name="X7A923DE7861F80D8"></a></p>
 
 <h5>1.10-72 AddTruthMorphismOfNotWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfNotWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfNotWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfNotWithGivenObjects</code>. <span class="SimpleMath">\(F: ( Omega, Omega1 ) \mapsto \mathtt{TruthMorphismOfNotWithGivenObjects}(Omega, Omega1)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfNotWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( Omega, Omega1 ) \mapsto \mathtt{TruthMorphismOfNotWithGivenObjects}(Omega, Omega1)\)</span>.</p>
 
 <p><a id="X789B8ED08194D48B" name="X789B8ED08194D48B"></a></p>
 
 <h5>1.10-73 AddTruthMorphismOfOr</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfOr</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfOr</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfOr</code>. <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{TruthMorphismOfOr}()\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfOr</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{TruthMorphismOfOr}()\)</span>.</p>
 
 <p><a id="X80BE48FC8508F89C" name="X80BE48FC8508F89C"></a></p>
 
 <h5>1.10-74 AddTruthMorphismOfOrWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfOrWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfOrWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfOrWithGivenObjects</code>. <span class="SimpleMath">\(F: ( Omega2, Omega ) \mapsto \mathtt{TruthMorphismOfOrWithGivenObjects}(Omega2, Omega)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfOrWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( Omega2, Omega ) \mapsto \mathtt{TruthMorphismOfOrWithGivenObjects}(Omega2, Omega)\)</span>.</p>
 
 <p><a id="X7D8C4128863D21D8" name="X7D8C4128863D21D8"></a></p>
 
 <h5>1.10-75 AddTruthMorphismOfTrue</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfTrue</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfTrue</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfTrue</code>. <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{TruthMorphismOfTrue}()\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfTrue</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( ) \mapsto \mathtt{TruthMorphismOfTrue}()\)</span>.</p>
 
 <p><a id="X87604F3D86857559" name="X87604F3D86857559"></a></p>
 
 <h5>1.10-76 AddTruthMorphismOfTrueWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfTrueWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfTrueWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfTrueWithGivenObjects</code>. <span class="SimpleMath">\(F: ( T, Omega ) \mapsto \mathtt{TruthMorphismOfTrueWithGivenObjects}(T, Omega)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">TruthMorphismOfTrueWithGivenObjects</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( T, Omega ) \mapsto \mathtt{TruthMorphismOfTrueWithGivenObjects}(T, Omega)\)</span>.</p>
 
 <p><a id="X7F015BE281A0E121" name="X7F015BE281A0E121"></a></p>
 
 <h5>1.10-77 AddUnionSubobject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUnionSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUnionSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UnionSubobject</code>. <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{UnionSubobject}(arg2, arg3)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UnionSubobject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{UnionSubobject}(arg2, arg3)\)</span>.</p>
 
 <p><a id="X797DB1AD7CF6E0D2" name="X797DB1AD7CF6E0D2"></a></p>
 
 <h5>1.10-78 AddUpperSegmentOfRelation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUpperSegmentOfRelation</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUpperSegmentOfRelation</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UpperSegmentOfRelation</code>. <span class="SimpleMath">\(F: ( a, b, mu ) \mapsto \mathtt{UpperSegmentOfRelation}(a, b, mu)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UpperSegmentOfRelation</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, mu ) \mapsto \mathtt{UpperSegmentOfRelation}(a, b, mu)\)</span>.</p>
 
 <p><a id="X82F68A227D9C273B" name="X82F68A227D9C273B"></a></p>
 
 <h5>1.10-79 AddUpperSegmentOfRelationWithGivenRange</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUpperSegmentOfRelationWithGivenRange</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUpperSegmentOfRelationWithGivenRange</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UpperSegmentOfRelationWithGivenRange</code>. <span class="SimpleMath">\(F: ( a, b, mu, Pb ) \mapsto \mathtt{UpperSegmentOfRelationWithGivenRange}(a, b, mu, Pb)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UpperSegmentOfRelationWithGivenRange</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, mu, Pb ) \mapsto \mathtt{UpperSegmentOfRelationWithGivenRange}(a, b, mu, Pb)\)</span>.</p>
 
 <p><a id="X8568F12282E67C84" name="X8568F12282E67C84"></a></p>
 
