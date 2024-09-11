@@ -4,6 +4,7 @@
   
   [2XAbelianClosure[102X, for IsAlgebroid 10.1-1 
   [2XAddIsReflexive[102X, for IsCapCategory, IsFunction 15.1-1 
+      for IsCapCategory, IsFunction, IsInt 15.1-1 
   [2XAlgebroidAsObjectInPreSheavesCategory[102X, for IsAlgebroidFromDataTables 14.1-1 
   [2XApplyMorphismInCoPreSheafCategoryToObject[102X, for IsCoPreSheafCategory, IsMorphismInCoPreSheafCategory, IsCapCategoryObject 12.3-3 
   [2XApplyMorphismInFunctorCategoryToObject[102X, for IsFunctorCategory, IsMorphismInFunctorCategory, IsCapCategoryObject 1.3-5 
