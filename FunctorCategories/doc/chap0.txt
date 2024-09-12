@@ -6,10 +6,10 @@
                             [1X Categories of functors [101X
   
   
-                                   2024.09-05
+                                   2024.09-06
   
   
-                               11 September 2024
+                               12 September 2024
   
   
                                 Mohamed Barakat
@@ -326,12 +326,12 @@
     14.1 [33X[0;0YAttributes[133X
       14.1-1 AlgebroidAsObjectInPreSheavesCategory
       14.1-2 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory
-  15 [33X[0;0YFuther CAP operations[133X
-    15.1 [33X[0;0YAdd-methods[133X
-      15.1-1 AddIsReflexive
-  16 [33X[0;0YTools[133X
-    16.1 [33X[0;0YProperties[133X
-      16.1-1 IsReflexive
+  15 [33X[0;0YTools[133X
+    15.1 [33X[0;0YProperties[133X
+      15.1-1 IsReflexive
+  16 [33X[0;0YFuther CAP operations[133X
+    16.1 [33X[0;0YAdd-methods[133X
+      16.1-1 AddIsReflexive
   17 [33X[0;0YPrecompilation[133X
     17.1 [33X[0;0YPrecompiling the category of finite quivers[133X
     17.2 [33X[0;0YPrecompiling the category of finite reflexive quivers[133X
