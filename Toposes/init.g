@@ -6,7 +6,7 @@
 
 ## Topos
 ReadPackage( "Toposes", "gap/Topos.gd" );
-ReadPackage( "Toposes", "gap/Topos.autogen.gd" );
+ReadPackage( "Toposes", "gap/ToposMethodRecordDeclarations.autogen.gd" );
 
 ## Category of relations
 ReadPackage( "Toposes", "gap/CategoryOfRelations.gd" );

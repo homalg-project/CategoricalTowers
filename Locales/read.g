@@ -5,10 +5,12 @@
 #
 
 ReadPackage( "Locales", "gap/ProsetMethodRecord.gi");
+ReadPackage( "Locales", "gap/ProsetMethodRecordInstallations.autogen.gi");
 ReadPackage( "Locales", "gap/Proset.gi");
 ReadPackage( "Locales", "gap/ProsetDerivedMethods.gi");
 
 ReadPackage( "Locales", "gap/PosetMethodRecord.gi");
+ReadPackage( "Locales", "gap/PosetMethodRecordInstallations.autogen.gi");
 ReadPackage( "Locales", "gap/Poset.gi");
 ReadPackage( "Locales", "gap/PosetDerivedMethods.gi");
 
@@ -18,6 +20,9 @@ ReadPackage( "Locales", "gap/LatticeDerivedMethods.gi");
 ReadPackage( "Locales", "gap/HeytingAlgebraMethodRecord.gi");
 ReadPackage( "Locales", "gap/CoHeytingAlgebraMethodRecord.gi");
 
+ReadPackage( "Locales", "gap/HeytingAlgebraMethodRecordInstallations.autogen.gi");
+ReadPackage( "Locales", "gap/CoHeytingAlgebraMethodRecordInstallations.autogen.gi");
+
 ReadPackage( "Locales", "gap/HeytingAlgebra.gi");
 ReadPackage( "Locales", "gap/CoHeytingAlgebra.gi");
 
@@ -25,6 +30,7 @@ ReadPackage( "Locales", "gap/HeytingAlgebraDerivedMethods.gi");
 ReadPackage( "Locales", "gap/CoHeytingAlgebraDerivedMethods.gi");
 
 ReadPackage( "Locales", "gap/BooleanAlgebraMethodRecord.gi");
+ReadPackage( "Locales", "gap/BooleanAlgebraMethodRecordInstallations.autogen.gi");
 ReadPackage( "Locales", "gap/BooleanAlgebra.gi");
 ReadPackage( "Locales", "gap/BooleanAlgebraDerivedMethods.gi");
 

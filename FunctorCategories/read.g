@@ -20,6 +20,7 @@ ReadPackage( "FunctorCategories", "gap/precompiled_categories/PreSheavesOfAlgebr
 
 ReadPackage( "FunctorCategories", "gap/Tools.gi");
 ReadPackage( "FunctorCategories", "gap/ToolsMethodRecord.gi");
+ReadPackage( "FunctorCategories", "gap/ToolsMethodRecordInstallations.autogen.gi");
 ReadPackage( "FunctorCategories", "gap/ToolsDerivedMethods.gi");
 
 ReadPackage( "FunctorCategories", "gap/PreSheaves.gi");
