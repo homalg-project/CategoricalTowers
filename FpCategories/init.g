@@ -9,4 +9,4 @@ ReadPackage( "FpCategories", "gap/PathCategories.gd");
 ReadPackage( "FpCategories", "gap/GroebnerBasesForPathCategories.gd");
 ReadPackage( "FpCategories", "gap/QuotientsOfPathCategories.gd");
 ReadPackage( "FpCategories", "gap/Tools.gd");
-ReadPackage( "FpCategories", "gap/Tools.autogen.gd");
+ReadPackage( "FpCategories", "gap/ToolsMethodRecordDeclarations.autogen.gd");

@@ -5,7 +5,7 @@
 #
 
 ReadPackage( "ToolsForCategoricalTowers", "gap/Tools.gd");
-ReadPackage( "ToolsForCategoricalTowers", "gap/Tools.autogen.gd");
+ReadPackage( "ToolsForCategoricalTowers", "gap/ToolsMethodRecordDeclarations.autogen.gd");
 
 ReadPackage( "ToolsForCategoricalTowers", "gap/ToolsUsingDigraphs.gd");
 

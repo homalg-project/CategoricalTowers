@@ -10,4 +10,5 @@ ReadPackage( "FpCategories", "gap/GroebnerBasesForPathCategories.gi");
 ReadPackage( "FpCategories", "gap/QuotientsOfPathCategories.gi");
 ReadPackage( "FpCategories", "gap/Tools.gi");
 ReadPackage( "FpCategories", "gap/ToolsMethodRecord.gi");
+ReadPackage( "FpCategories", "gap/ToolsMethodRecordInstallations.autogen.gi");
 ReadPackage( "FpCategories", "gap/ToolsDerivedMethods.gi");

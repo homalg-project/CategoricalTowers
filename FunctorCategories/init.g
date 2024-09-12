@@ -21,4 +21,4 @@ ReadPackage( "FunctorCategories", "gap/DirectSumDecomposition.gd");
 ReadPackage( "FunctorCategories", "gap/HomologicalMethods.gd");
 ReadPackage( "FunctorCategories", "gap/QuotientsOfAlgebroidsFromDataTablesUsingPreSheaves.gd");
 ReadPackage( "FunctorCategories", "gap/Tools.gd");
-ReadPackage( "FunctorCategories", "gap/Tools.autogen.gd");
+ReadPackage( "FunctorCategories", "gap/ToolsMethodRecordDeclarations.autogen.gd");

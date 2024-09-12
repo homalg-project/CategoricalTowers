@@ -5,21 +5,21 @@
 #
 
 ReadPackage( "Locales", "gap/Proset.gd");
-ReadPackage( "Locales", "gap/Proset.autogen.gd");
+ReadPackage( "Locales", "gap/ProsetMethodRecordDeclarations.autogen.gd");
 
 ReadPackage( "Locales", "gap/Poset.gd");
-ReadPackage( "Locales", "gap/Poset.autogen.gd");
+ReadPackage( "Locales", "gap/PosetMethodRecordDeclarations.autogen.gd");
 
 ReadPackage( "Locales", "gap/Lattice.gd");
 
 ReadPackage( "Locales", "gap/HeytingAlgebra.gd");
 ReadPackage( "Locales", "gap/CoHeytingAlgebra.gd");
 
-ReadPackage( "Locales", "gap/HeytingAlgebra.autogen.gd");
-ReadPackage( "Locales", "gap/CoHeytingAlgebra.autogen.gd");
+ReadPackage( "Locales", "gap/HeytingAlgebraMethodRecordDeclarations.autogen.gd");
+ReadPackage( "Locales", "gap/CoHeytingAlgebraMethodRecordDeclarations.autogen.gd");
 
 ReadPackage( "Locales", "gap/BooleanAlgebra.gd");
-ReadPackage( "Locales", "gap/BooleanAlgebra.autogen.gd");
+ReadPackage( "Locales", "gap/BooleanAlgebraMethodRecordDeclarations.autogen.gd");
 
 ReadPackage( "Locales", "gap/Tools.gd");
 

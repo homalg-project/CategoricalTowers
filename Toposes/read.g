@@ -6,6 +6,7 @@
 
 ## Topos
 ReadPackage( "Toposes", "gap/ToposMethodRecord.gi" );
+ReadPackage( "Toposes", "gap/ToposMethodRecordInstallations.autogen.gi" );
 ReadPackage( "Toposes", "gap/Topos.gi" );
 
 ReadPackage( "Toposes", "gap/ToposDerivedMethods.gi" );

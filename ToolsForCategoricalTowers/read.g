@@ -6,6 +6,7 @@
 
 ReadPackage( "ToolsForCategoricalTowers", "gap/Tools.gi");
 ReadPackage( "ToolsForCategoricalTowers", "gap/ToolsMethodRecord.gi");
+ReadPackage( "ToolsForCategoricalTowers", "gap/ToolsMethodRecordInstallations.autogen.gi");
 ReadPackage( "ToolsForCategoricalTowers", "gap/ToolsDerivedMethods.gi");
 
 if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
