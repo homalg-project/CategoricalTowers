@@ -45,7 +45,7 @@ IsZero( qA.3 );
 D := AlgebroidFromDataTables( qA );
 #! Q-algebroid( {3}[e:3-≻3] ) defined by 1 object and 1 generating morphism
 BasisOfExternalHom( D.3, D.3 );
-#! [ <1*e^2:(3) -≻ (3)>, <1*e:(3) -≻ (3)>, <1*id(3):(3) -≻ (3)> ]
+#! [ <1*id(3):(3) -≻ (3)>, <1*e:(3) -≻ (3)>, <1*e^2:(3) -≻ (3)> ]
 data_tables := DataTablesOfCategory( quo_kC );;
 data_tables_Z := ShallowCopy( data_tables );;
 data_tables_Z[1] := HomalgRingOfIntegers();;
@@ -107,14 +107,14 @@ kC := k[C];
 #! Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
 A := kC / [ kC.xy - kC.yx, kC.x^3, kC.y^3 ];
 #! Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
-#! / [ 1*x⋅y - 1*y⋅x, 1*x^3, 1*y^3 ]
+#! / [ -1*y⋅x + 1*x⋅y, 1*x^3, 1*y^3 ]
 B := AlgebroidFromDataTables( A );
 #! Q-algebroid( {o}[x:o-≻o,y:o-≻o] ) defined by 1 object and 2 generating morphisms
 IsAdmissibleAlgebroid( B );
 #! true
 A := kC / [ kC.xy - kC.yx, kC.x^3 - kC.x, kC.y^3 ];
 #! Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
-#! / [ 1*x⋅y - 1*y⋅x, 1*x^3 - 1*x, 1*y^3 ]
+#! / [ -1*y⋅x + 1*x⋅y, 1*x^3 - 1*x, 1*y^3 ]
 B := AlgebroidFromDataTables( A );
 #! Q-algebroid( {o}[x:o-≻o,y:o-≻o] ) defined by 1 object and 2 generating morphisms
 IsAdmissibleAlgebroid( B );
