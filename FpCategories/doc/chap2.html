@@ -394,7 +394,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( str );</span>
 FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,
 t:4-≻5,y:5-≻5]" )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := PathCategory( q );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := PathCategory( q : admissible_order := "Dp" );</span>
 PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,
 b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( C );</span>
@@ -502,7 +502,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">str := "q(0,1,2,3,4,5)[s:0-&gt;1,a:1-&gt;2,c:1-&gt;3,e:1-&gt;4,b:2-&gt;4,d:3-&gt;4,t:4-&gt;5]";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := FinQuiver( str );</span>
 FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PathCategory( quiver );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PathCategory( quiver : admissible_order := "Dp" );</span>
 PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,
 d:3-≻4,t:4-≻5]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
@@ -536,7 +536,7 @@ defined by 6 objects and 7 generating morphisms
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">str := "q(o)[x:o-&gt;o,y:o-&gt;o,z:o-&gt;o]";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := PathCategory( FinQuiver( str ) : sort_external_homs_like_qpa := true );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := PathCategory( FinQuiver( str ) );</span>
 PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeCategory( RightQuiver( str ) );</span>
 FreeCategory( RightQuiver( "q(o)[x:o-&gt;o,y:o-&gt;o,z:o-&gt;o]" ) )
