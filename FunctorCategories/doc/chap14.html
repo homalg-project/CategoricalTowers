@@ -100,7 +100,7 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := AlgebroidFromDataTables( qA );</span>
 Q-algebroid( {3}[e:3-≻3] ) defined by 1 object and 1 generating morphism
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BasisOfExternalHom( D.3, D.3 );</span>
-[ &lt;1*e^2:(3) -≻ (3)&gt;, &lt;1*e:(3) -≻ (3)&gt;, &lt;1*id(3):(3) -≻ (3)&gt; ]
+[ &lt;1*id(3):(3) -≻ (3)&gt;, &lt;1*e:(3) -≻ (3)&gt;, &lt;1*e^2:(3) -≻ (3)&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables := DataTablesOfCategory( quo_kC );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables_Z := ShallowCopy( data_tables );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables_Z[1] := HomalgRingOfIntegers();;</span>
@@ -163,14 +163,14 @@ PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )
 Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := kC / [ kC.xy - kC.yx, kC.x^3, kC.y^3 ];</span>
 Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
-/ [ 1*x⋅y - 1*y⋅x, 1*x^3, 1*y^3 ]
+/ [ -1*y⋅x + 1*x⋅y, 1*x^3, 1*y^3 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AlgebroidFromDataTables( A );</span>
 Q-algebroid( {o}[x:o-≻o,y:o-≻o] ) defined by 1 object and 2 generating morphisms
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdmissibleAlgebroid( B );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := kC / [ kC.xy - kC.yx, kC.x^3 - kC.x, kC.y^3 ];</span>
 Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
-/ [ 1*x⋅y - 1*y⋅x, 1*x^3 - 1*x, 1*y^3 ]
+/ [ -1*y⋅x + 1*x⋅y, 1*x^3 - 1*x, 1*y^3 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AlgebroidFromDataTables( A );</span>
 Q-algebroid( {o}[x:o-≻o,y:o-≻o] ) defined by 1 object and 2 generating morphisms
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdmissibleAlgebroid( B );</span>
