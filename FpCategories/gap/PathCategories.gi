@@ -9,28 +9,19 @@ InstallMethod( PathCategory,
           [ IsFinQuiver ],
   
   function ( q )
-    local sort_external_homs_like_qpa, admissible_order, name, C;
+    local admissible_order, name, C;
     
-    sort_external_homs_like_qpa := ValueOption( "sort_external_homs_like_qpa" );
+    admissible_order := ValueOption( "admissible_order" );
     
-    if sort_external_homs_like_qpa = true then
-      
-      admissible_order := "dp";
-      
-    else
-      
-      admissible_order := ValueOption( "admissible_order" );
-      
-      if admissible_order = fail then
-          
-          admissible_order := "Dp";
-          
-      elif not admissible_order in [ "Dp", "dp" ] then
-          
-          Error( "only \"Dp\" and \"dp\" admissible orders are supported!\n" );
-          
-      fi;
-      
+    if admissible_order = fail then
+        
+        ## like QPA
+        admissible_order := "dp";
+        
+    elif not admissible_order in [ "dp", "Dp" ] then
+        
+        Error( "only \"dp\" and \"Dp\" admissible orders are supported!\n" );
+        
     fi;
     
     name := Concatenation( "PathCategory( ", Name( q ), " )" );
@@ -48,8 +39,6 @@ InstallMethod( PathCategory,
                  : overhead := false );
     
     C!.category_as_first_argument := true;
-    
-    C!.sort_external_homs_like_qpa := sort_external_homs_like_qpa;
     
     C!.admissible_order := admissible_order;
     
@@ -1087,7 +1076,7 @@ InstallMethod( MacaulayMorphisms,
         
     until hypothesis;
     
-    if C!.sort_external_homs_like_qpa = true then
+    if C!.admissible_order = "dp" then
         
         FpCategories_SORT_MORPHISMS_LIKE_QPA( supports );
         

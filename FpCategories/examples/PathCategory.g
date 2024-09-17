@@ -23,7 +23,7 @@ str :=
 q := FinQuiver( str );
 #! FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,
 #! t:4-≻5,y:5-≻5]" )
-C := PathCategory( q );
+C := PathCategory( q : admissible_order := "Dp" );
 #! PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,
 #! b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) )
 Display( C );
@@ -130,7 +130,7 @@ LoadPackage( "Algebroids", false );
 str := "q(0,1,2,3,4,5)[s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5]";;
 quiver := FinQuiver( str );
 #! FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" )
-P := PathCategory( quiver );
+P := PathCategory( quiver : admissible_order := "Dp" );
 #! PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,
 #! d:3-≻4,t:4-≻5]" ) )
 Display( P );
@@ -163,7 +163,7 @@ HomStructure( T.0, T.5 );
 LoadPackage( "Algebroids", false );
 #! true
 str := "q(o)[x:o->o,y:o->o,z:o->o]";;
-C := PathCategory( FinQuiver( str ) : sort_external_homs_like_qpa := true );
+C := PathCategory( FinQuiver( str ) );
 #! PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o]" ) )
 F := FreeCategory( RightQuiver( str ) );
 #! FreeCategory( RightQuiver( "q(o)[x:o->o,y:o->o,z:o->o]" ) )
