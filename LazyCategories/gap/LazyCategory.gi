@@ -500,7 +500,7 @@ InstallMethod( LazyCategory,
     properties := ListKnownCategoricalProperties( C );
     
     ignore := [ "IsSkeletalCategory" ];
-    Append( ignore, Filtered( properties, p -> "IsSkeletalCategory" in ListImpliedFilters( FilterByName( p ) ) ) );
+    Append( ignore, Filtered( properties, p -> IsSpecializationOfFilter( IsSkeletalCategory, FilterByName( p ) ) ) );
     Append( ignore, Filtered( properties, p -> IsInt( PositionSublist( p, "Strict" ) ) ) );
     Append( ignore, Filtered( properties, p -> ForAny( ListImpliedFilters( FilterByName( p ) ), i -> IsInt( PositionSublist( i, "Strict" ) ) ) ) );
     

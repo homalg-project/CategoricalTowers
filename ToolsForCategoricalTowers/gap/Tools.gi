@@ -44,8 +44,8 @@ InstallMethod( DummyCategoryInDoctrines,
         
         bool := IsSubset( ListMethodsOfDoctrine( a ), ListMethodsOfDoctrine( b ) );
         
-        if minimal = true and IsBoundGlobal( a ) then
-            return ( b in ListImpliedFilters( ValueGlobal( a ) ) ) or bool;
+        if minimal = true and IsBoundGlobal( a ) and IsBoundGlobal( b ) then
+            return IsSpecializationOfFilter( ValueGlobal( b ), ValueGlobal( a ) ) or bool;
         else
             return bool;
         fi;
