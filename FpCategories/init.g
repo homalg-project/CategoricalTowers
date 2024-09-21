@@ -10,3 +10,7 @@ ReadPackage( "FpCategories", "gap/GroebnerBasesForPathCategories.gd");
 ReadPackage( "FpCategories", "gap/QuotientsOfPathCategories.gd");
 ReadPackage( "FpCategories", "gap/Tools.gd");
 ReadPackage( "FpCategories", "gap/ToolsMethodRecordDeclarations.autogen.gd");
+
+if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
+    ReadPackage( "FpCategories", "gap/Julia.gi" );
+fi;
