@@ -1311,15 +1311,19 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 
             end );
             
-            Append( PSh!.compiler_hints.category_attribute_names,
-                    [ "FiniteStrictCoproductCompletionOfSourceCategory",
-                      "FiniteColimitCompletionWithStrictCoproductsOfSourceCategory",
-                      ] );
-            
-            if not (HasIsAbCategory and IsAbCategory)( B ) then
+            if IsIdenticalObj( H, D ) then
+                
                 Append( PSh!.compiler_hints.category_attribute_names,
-                    [ "CategoryOfColimitQuiversOfSourceCategory",
-                      ] );
+                        [ "FiniteStrictCoproductCompletionOfSourceCategory",
+                          "FiniteColimitCompletionWithStrictCoproductsOfSourceCategory",
+                          ] );
+                
+                if not (HasIsAbCategory and IsAbCategory)( B ) then
+                    Append( PSh!.compiler_hints.category_attribute_names,
+                            [ "CategoryOfColimitQuiversOfSourceCategory",
+                              ] );
+                fi;
+                
             fi;
             
             if IsSkeletalCategoryOfFiniteSets( D ) and IsSkeletalCategoryOfFiniteSets( H ) then
