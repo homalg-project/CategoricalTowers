@@ -18,22 +18,24 @@ N := NerveTruncatedInDegree2( F );
 Assert( 0, IsWellDefined( N ) );
 
 Quivers := PreSheaves( F, FinSets );
-Fop := Source( Quivers );
+Assert( 0, IsIdenticalObj( F, Source( Quivers ) ) );
 Y := YonedaEmbedding( F );
 
 Display( Y( F.V ) );
 Display( Y( F.A ) );
 
-D := DistinguishedObjectOfHomomorphismStructure( Fop );
+D := DistinguishedObjectOfHomomorphismStructure( F );
 
-ss := MapOfFinSets( D, [ 0 ], HomStructure( Fop.A, Fop.V ) );
-tt := MapOfFinSets( D, [ 1 ], HomStructure( Fop.A, Fop.V ) );
+ss := MapOfFinSets( D, [ 0 ], HomStructure( F.V, F.A ) );
+tt := MapOfFinSets( D, [ 1 ], HomStructure( F.V, F.A ) );
 
-s := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Fop, Fop.A, Fop.V, ss );
-t := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Fop, Fop.A, Fop.V, tt );
+s := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( F, F.V, F.A, ss );
+t := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( F, F.V, F.A, tt );
 
 Assert( 0, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( s ) = ss );
 Assert( 0, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( t ) = tt );
+
+Fop := OppositeFpCategory( F );
 
 ## The rewriting rule
 K_V := FinSet( [ 1, 2 ] );
