@@ -170,36 +170,6 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
-    [4X[25X>[125X [27X  function( quiver )[127X[104X
-    [4X[25X>[125X [27X    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ); return CategoryFromNerveData( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;[127X[104X
-    [4X[25Xgap>[125X [27Xgiven_arguments := [ RightQuiver( "q(a,b)[m:a->b]" ) ];;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_category_name := "CategoryFromNerveDataPrecompiled";;[127X[104X
-    [4X[25Xgap>[125X [27Xpackage_name := "Algebroids";;[127X[104X
-    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
-    [4X[25X>[125X [27X    category_constructor,[127X[104X
-    [4X[25X>[125X [27X    given_arguments,[127X[104X
-    [4X[25X>[125X [27X    package_name,[127X[104X
-    [4X[25X>[125X [27X    compiled_category_name[127X[104X
-    [4X[25X>[125X [27X        : operations := Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( given_arguments[1] : no_precompiled_code := true ) ),[127X[104X
-    [4X[25X>[125X [27X                                [ "HomomorphismStructureOnMorphismsWithGivenObjects" ] ) );;[127X[104X
-    [4X[25Xgap>[125X [27XCategoryFromNerveDataPrecompiled( given_arguments[1] );[127X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(a,b)[m:a->b]" ) )[128X[104X
-    [4X[25Xgap>[125X [27XCategoryFromNerveData( FreeCategory( given_arguments[1] ) )!.precompiled_functions_added;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2024.07-09", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
     [4X[25X>[125X [27X  function( quiver )[127X[104X
     [4X[25X>[125X [27X    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ); return CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;[127X[104X

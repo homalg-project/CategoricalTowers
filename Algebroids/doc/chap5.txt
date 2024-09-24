@@ -323,16 +323,7 @@
   then  the  output is the constant functor having [3Xobj[103X as the value on objects
   and [10XIdentityMorphism[110X([3Xobj[103X) as the value on morphisms.[133X
   
-  [1X5.4-4 NaturalTransformation[101X
-  
-  [33X[1;0Y[29X[2XNaturalTransformation[102X( [3Xeta[103X, [3XF[103X, [3XG[103X ) [32X operation[133X
-  [33X[1;0Y[29X[2XNaturalTransformation[102X( [3XF[103X, [3Xeta[103X, [3XG[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X natural transformation[133X
-  
-  [33X[0;0YConstruct,   using   the   record   (or  list)  of  images  [3Xeta[103X,  a  natural
-  transformation from the functor [3XF[103X to the parallel functor [3XG[103X.[133X
-  
-  [1X5.4-5 ObjectInAlgebroid[101X
+  [1X5.4-4 ObjectInAlgebroid[101X
   
   [33X[1;0Y[29X[2XObjectInAlgebroid[102X( [3XA[103X, [3XV[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object in a [5XCAP[105X category[133X
@@ -340,14 +331,14 @@
   [33X[0;0YThe  constructor  of  objects  in  an  algebroid  [3XA[103X  given a vertex [3XV[103X in the
   underlying quiver.[133X
   
-  [1X5.4-6 \/[101X
+  [1X5.4-5 \/[101X
   
   [33X[1;0Y[29X[2X\/[102X( [3XV[103X, [3XA[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object in a [5XCAP[105X category[133X
   
   [33X[0;0YDelegates to [10XObjectInAlgebroid[110X( [3XA[103X, [3XV[103X ).[133X
   
-  [1X5.4-7 MorphismInAlgebroid[101X
+  [1X5.4-6 MorphismInAlgebroid[101X
   
   [33X[1;0Y[29X[2XMorphismInAlgebroid[102X( [3XS[103X, [3Xpath[103X, [3XT[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XMorphismInAlgebroid[102X( [3XA[103X, [3Xpath[103X ) [32X operation[133X
@@ -357,14 +348,14 @@
   target [3XT[103X, and the underlying quiver algebra element [3Xpath[103X. If neither [3XS[103X nor [3XT[103X
   are provided they are read off from [3Xpath[103X.[133X
   
-  [1X5.4-8 \/[101X
+  [1X5.4-7 \/[101X
   
   [33X[1;0Y[29X[2X\/[102X( [3Xpath[103X, [3XA[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in a [5XCAP[105X category[133X
   
   [33X[0;0YDelegates to [10XMorphismInAlgebroid[110X( [3Xpath[103X ).[133X
   
-  [1X5.4-9 POW[101X
+  [1X5.4-8 POW[101X
   
   [33X[1;0Y[29X[2XPOW[102X( [3Xphi[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X

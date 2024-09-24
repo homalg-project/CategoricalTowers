@@ -37,9 +37,11 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X79BA47077DAFFF2D">4.2-1 CategoryFromDataTables</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7BFA46AA7E326524">4.2-2 CategoryFromDataTables</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7DC53A0D82C4808D">4.2-3 CategoryFromDataTables</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7A6157E483CE5156">4.2-4 CreateObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X789F940282B2FE7C">4.2-5 CreateMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8553D54A7FCD77B2">4.2-3 CategoryFromDataTables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7CA023567AE0263E">4.2-4 CategoryFromDataTables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7DC53A0D82C4808D">4.2-5 CategoryFromDataTables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7A6157E483CE5156">4.2-6 CreateObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X789F940282B2FE7C">4.2-7 CreateMorphism</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7D03633A7D98026B">4.3 <span class="Heading">GAP categories</span></a>
 </span>
@@ -123,20 +125,20 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta1 := SimplicialCategoryTruncatedInDegree( 1 );</span>
-FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) )
-/ [ s*id = C0, t*id = C0 ]
+PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+/ [ s⋅id = id(C0), t⋅id = id(C0) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( Delta1 );</span>
 7
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mors := SetOfMorphisms( Delta1 );</span>
-[ (C0)-[(C0)]-&gt;(C0), (C1)-[(id)]-&gt;(C0), (C0)-[(s)]-&gt;(C1), (C0)-[(t)]-&gt;(C1),
-  (C1)-[(C1)]-&gt;(C1), (C1)-[(id*s)]-&gt;(C1), (C1)-[(id*t)]-&gt;(C1) ]
+[ [id(C0)]:(C0) -≻ (C0), [id]:(C1) -≻ (C0), [s]:(C0) -≻ (C1), [t]:(C0) -≻ (C1),
+  [id(C1)]:(C1) -≻ (C1), [id⋅s]:(C1) -≻ (C1), [id⋅t]:(C1) -≻ (C1) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( mors, DecompositionOfMorphismInCategory );</span>
-[ [  ], [ (C1)-[(id)]-&gt;(C0) ], [ (C0)-[(s)]-&gt;(C1) ], [ (C0)-[(t)]-&gt;(C1) ],
-  [  ], [ (C1)-[(id)]-&gt;(C0), (C0)-[(s)]-&gt;(C1) ],
-  [ (C1)-[(id)]-&gt;(C0), (C0)-[(t)]-&gt;(C1) ] ]
+[ [  ], [ [id]:(C1) -≻ (C0) ], [ [s]:(C0) -≻ (C1) ], [ [t]:(C0) -≻ (C1) ],
+  [  ], [ [id]:(C1) -≻ (C0), [s]:(C0) -≻ (C1) ],
+  [ [id]:(C1) -≻ (C0), [t]:(C0) -≻ (C1) ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := CategoryFromDataTables( Delta1 );</span>
-FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) )
-/ [ s*id = C0, t*id = C0 ]
+PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+/ [ s⋅id = id(C0), t⋅id = id(C0) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( C );</span>
 7
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morsC := SetOfMorphisms( C );</span>
@@ -154,8 +156,8 @@ true
 [ (C1)-[(id)]-&gt;(C0), (C0)-[(s)]-&gt;(C1), (C0)-[(t)]-&gt;(C1) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( C );</span>
 A CAP category with name
-FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) )
-/ [ s*id = C0, t*id = C0 ]:
+PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+/ [ s⋅id = id(C0), t⋅id = id(C0) ]:
 
 19 primitive operations were used to derive 55 operations for this category
 which algorithmically
@@ -280,8 +282,8 @@ true
   [ (C1)-[(id)]-&gt;(C0), (C0)-[(t)]-&gt;(C1) ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C_op := OppositeCategoryFromDataTables( C );</span>
 Opposite(
-FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) )
-/ [ s*id = C0, t*id = C0 ] )
+PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+/ [ s⋅id = id(C0), t⋅id = id(C0) ] )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( OppositeCategoryFromDataTables( C_op ), C );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IndicesOfGeneratingMorphisms( C_op );</span>
@@ -302,14 +304,24 @@ true
 <h5>4.2-2 CategoryFromDataTables</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryFromDataTables</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7DC53A0D82C4808D" name="X7DC53A0D82C4808D"></a></p>
+<p><a id="X8553D54A7FCD77B2" name="X8553D54A7FCD77B2"></a></p>
 
 <h5>4.2-3 CategoryFromDataTables</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryFromDataTables</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7CA023567AE0263E" name="X7CA023567AE0263E"></a></p>
+
+<h5>4.2-4 CategoryFromDataTables</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryFromDataTables</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7DC53A0D82C4808D" name="X7DC53A0D82C4808D"></a></p>
+
+<h5>4.2-5 CategoryFromDataTables</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryFromDataTables</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p><a id="X7A6157E483CE5156" name="X7A6157E483CE5156"></a></p>
 
-<h5>4.2-4 CreateObject</h5>
+<h5>4.2-6 CreateObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateObject</code>( <var class="Arg">C</var>, <var class="Arg">o</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
@@ -318,17 +330,13 @@ true
 
 <p><a id="X789F940282B2FE7C" name="X789F940282B2FE7C"></a></p>
 
-<h5>4.2-5 CreateMorphism</h5>
+<h5>4.2-7 CreateMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateMorphism</code>( <var class="Arg">C</var>, <var class="Arg">m</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateMorphism</code>( <var class="Arg">source</var>, <var class="Arg">m</var>, <var class="Arg">range</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateMorphism</code>( <var class="Arg">C</var>, <var class="Arg">m</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateMorphism</code>( <var class="Arg">source</var>, <var class="Arg">m</var>, <var class="Arg">range</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
 <p>Construct the <var class="Arg">m</var>-th morphism <var class="Arg">source</var><span class="SimpleMath">\(\to\)</span><var class="Arg">range</var> in the category <var class="Arg">C</var> created from data tables.</p>
-
-<p>Construct the <var class="Arg">m</var>-th morphism <var class="Arg">source</var><span class="SimpleMath">\(\to\)</span><var class="Arg">range</var> in the category <var class="Arg">C</var> created from nerve data.</p>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 

@@ -199,37 +199,6 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( quiver )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ); return CategoryFromNerveData( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ RightQuiver( "q(a,b)[m:a-&gt;b]" ) ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "CategoryFromNerveDataPrecompiled";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "Algebroids";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        : operations := Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( given_arguments[1] : no_precompiled_code := true ) ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                [ "HomomorphismStructureOnMorphismsWithGivenObjects" ] ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryFromNerveDataPrecompiled( given_arguments[1] );</span>
-FreeCategory( RightQuiver( "q(a,b)[m:a-&gt;b]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryFromNerveData( FreeCategory( given_arguments[1] ) )!.precompiled_functions_added;</span>
-true
-#@fi
-</pre></div>
-
-
-<div class="example"><pre>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2024.07-09", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( quiver )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ); return CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;</span>

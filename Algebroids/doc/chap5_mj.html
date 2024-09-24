@@ -74,12 +74,11 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X8054B5F37FF33C81">5.4-1 Algebroid</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7846A45884309F2A">5.4-2 DescentToZDefinedByBasisPaths</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7969EBA07C957C42">5.4-3 CapFunctor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7F4082A98513DCD4">5.4-4 NaturalTransformation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X86FBDE7B7B6358EA">5.4-5 ObjectInAlgebroid</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X84AB94DF86DC1429"><code>5.4-6 \/</code></a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X79021B6B8612899C">5.4-7 MorphismInAlgebroid</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X836186A287BC22D3"><code>5.4-8 \/</code></a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7B14F8D3871D657D">5.4-9 POW</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X86FBDE7B7B6358EA">5.4-4 ObjectInAlgebroid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X84AB94DF86DC1429"><code>5.4-5 \/</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X79021B6B8612899C">5.4-6 MorphismInAlgebroid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X836186A287BC22D3"><code>5.4-7 \/</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7B14F8D3871D657D">5.4-8 POW</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7D03633A7D98026B">5.5 <span class="Heading">GAP categories</span></a>
 </span>
@@ -426,19 +425,9 @@
 
 <p>In the case of two arguments, where the second argument is an object <var class="Arg">obj</var> then the output is the constant functor having <var class="Arg">obj</var> as the value on objects and <code class="code">IdentityMorphism</code>(<var class="Arg">obj</var>) as the value on morphisms.</p>
 
-<p><a id="X7F4082A98513DCD4" name="X7F4082A98513DCD4"></a></p>
-
-<h5>5.4-4 NaturalTransformation</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NaturalTransformation</code>( <var class="Arg">eta</var>, <var class="Arg">F</var>, <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NaturalTransformation</code>( <var class="Arg">F</var>, <var class="Arg">eta</var>, <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> natural transformation</p>
-
-<p>Construct, using the record (or list) of images <var class="Arg">eta</var>, a natural transformation from the functor <var class="Arg">F</var> to the parallel functor <var class="Arg">G</var>.</p>
-
 <p><a id="X86FBDE7B7B6358EA" name="X86FBDE7B7B6358EA"></a></p>
 
-<h5>5.4-5 ObjectInAlgebroid</h5>
+<h5>5.4-4 ObjectInAlgebroid</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectInAlgebroid</code>( <var class="Arg">A</var>, <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object in a <strong class="pkg">CAP</strong> category</p>
@@ -447,7 +436,7 @@
 
 <p><a id="X84AB94DF86DC1429" name="X84AB94DF86DC1429"></a></p>
 
-<h5><code>5.4-6 \/</code></h5>
+<h5><code>5.4-5 \/</code></h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \/</code>( <var class="Arg">V</var>, <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object in a <strong class="pkg">CAP</strong> category</p>
@@ -456,7 +445,7 @@
 
 <p><a id="X79021B6B8612899C" name="X79021B6B8612899C"></a></p>
 
-<h5>5.4-7 MorphismInAlgebroid</h5>
+<h5>5.4-6 MorphismInAlgebroid</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismInAlgebroid</code>( <var class="Arg">S</var>, <var class="Arg">path</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismInAlgebroid</code>( <var class="Arg">A</var>, <var class="Arg">path</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
@@ -466,7 +455,7 @@
 
 <p><a id="X836186A287BC22D3" name="X836186A287BC22D3"></a></p>
 
-<h5><code>5.4-8 \/</code></h5>
+<h5><code>5.4-7 \/</code></h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \/</code>( <var class="Arg">path</var>, <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in a <strong class="pkg">CAP</strong> category</p>
@@ -475,7 +464,7 @@
 
 <p><a id="X7B14F8D3871D657D" name="X7B14F8D3871D657D"></a></p>
 
-<h5>5.4-9 POW</h5>
+<h5>5.4-8 POW</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; POW</code>( <var class="Arg">phi</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP morphism</p>
