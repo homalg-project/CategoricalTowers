@@ -140,7 +140,7 @@ Display( coeq );
 #! [3,2]: (VS)-[{ 0 }]->(VS)
 #! [4,1]: (VS)-[{ 1*(m3) }]->(VT)
 #! [4,2]: (VS)-[{ 0 }]->(VS)
-#! An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
+#! An object in PreSheaves( PathCategory( FinQuiver( "q(V,A)[s:V-≻A,t:V-≻A]" ) ),
 #! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) ) / relations ) )
@@ -189,7 +189,7 @@ Display( proj );
 #! [1,2]: (AT)-[{ 0 }]->(VS)
 #! [1,3]: (AT)-[{ 0 }]->(VS)
 #! [1,4]: (AT)-[{ 0 }]->(VS)
-#! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
+#! A morphism in PreSheaves( PathCategory( FinQuiver( "q(V,A)[s:V-≻A,t:V-≻A]" ) ),
 #! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )

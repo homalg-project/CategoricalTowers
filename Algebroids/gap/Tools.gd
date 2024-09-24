@@ -42,27 +42,6 @@ DeclareAttribute( "DefiningTripleOfAQuiver",
 #
 ####################################
 
-#! @Description
-#!  The nerve data of the category <A>C</A>.
-#! @Arguments C
-#! @Returns a pair consisting of a triple and an 8-tuple
-DeclareAttribute( "NerveTruncatedInDegree2Data",
-        IsCapCategory );
-
-#! @Description
-#!  The normalized indices of the generating morphisms of the finite category <A>C</A>.
-#! @Arguments C
-#! @Returns a list of integers
-DeclareAttribute( "IndicesOfGeneratingMorphismsFromHomStructure",
-        IsCapCategory );
-
-#! @Description
-#!  The opposite category of a finite category <A>C</A>.
-#! @Arguments C
-#! @Returns a &CAP; category
-DeclareAttribute( "OppositeFiniteCategory",
-        IsCapCategory );
-
 DeclareGlobalFunction( "DefiningTripleOfUnderlyingQuiverAsString" );
 
 DeclareGlobalFunction( "DefiningTripleOfUnderlyingQuiverAsENHANCED_SYNTAX_TREE" );

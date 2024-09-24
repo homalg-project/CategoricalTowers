@@ -84,6 +84,15 @@ DeclareOperation( "AssignSetOfGeneratingMorphisms", [ IsPathCategory, IsString ]
 ####################################
 
 #! @Description
+#!  Returns the opposite category of the path category <A>C</A>.
+#! @Arguments C
+#! @Returns a path category
+DeclareAttribute( "OppositePathCategory", IsPathCategory );
+
+#! @Arguments C
+DeclareAttribute( "CategoryFromNerveData", IsPathCategory );
+
+#! @Description
 #!  Returns the defining quiver of the path category <A>C</A>.
 #! @Arguments C
 #! @Returns a list of &CAP; category objects
@@ -140,6 +149,12 @@ CapJitAddTypeSignature( "MorphismIndices", [ IsPathCategoryMorphism ], CapJitDat
 #! @Returns a positive integer
 DeclareAttribute( "MorphismLabel", IsPathCategoryMorphism );
 
+DeclareAttribute( "DecompositionIndicesOfMorphism",
+        IsPathCategoryMorphism );
+
+DeclareAttribute( "DecompositionOfMorphismInCategory",
+        IsPathCategoryMorphism );
+
 #! @Description
 #!  Returns whether <A>C</A> can be enriched over the category of finite sets.
 #! @Arguments C
@@ -166,6 +181,9 @@ DeclareOperation( "MacaulayMorphisms", [ IsPathCategory, IsDenseList ] );
 KeyDependentOperation( "ExternalHomsWithGivenLengthData", IsPathCategory, IsInt, ReturnTrue );
 KeyDependentOperation( "ExternalHomsWithGivenLength", IsCapCategory, IsInt, ReturnTrue );
 DeclareAttribute( "ExternalHoms", IsPathCategory );
+
+DeclareAttribute( "RelationsAmongGeneratingMorphisms",
+        IsPathCategory );
 
 ####################################
 #

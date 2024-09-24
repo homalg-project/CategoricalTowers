@@ -22,6 +22,10 @@ AutoDoc( rec(
             LateExtraPreamble := """
                 \usepackage{mathtools}
                 \usepackage{tikz-cd}
+                \DeclareUnicodeCharacter{2C76}{\ensuremath{\vdash}\!\!}
+                \DeclareUnicodeCharacter{2192}{\ensuremath{\!\!\rightarrow\!}}
+                \DeclareUnicodeCharacter{21AA}{\ensuremath{\!\!\hookrightarrow\!}}
+                \DeclareUnicodeCharacter{21A0}{\ensuremath{\!\!\twoheadrightarrow\!}}
                 \DeclareUnicodeCharacter{2B47}{\ensuremath{\!\!\xrightarrow{\sim}\!}}
                 \DeclareUnicodeCharacter{227B}{\ensuremath{\succ}}
                 \DeclareUnicodeCharacter{22C5}{\ensuremath{\cdot}}

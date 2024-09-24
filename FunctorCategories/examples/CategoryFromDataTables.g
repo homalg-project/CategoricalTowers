@@ -6,13 +6,14 @@
 LoadPackage( "FunctorCategories", false );
 #! true
 Delta1 := UnderlyingCategory( FinReflexiveQuivers );
-#! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
-#! / [ s*id = C0, t*id = C0 ]
+#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+#! / [ s⋅id = id(C0), t⋅id = id(C0) ]
 N := NerveTruncatedInDegree2( Delta1 );
-#! <An object in PreSheaves( FreeCategory( RightQuiver(
-#!   "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
-#!                    is:C2->C1,it:C2->C1,
-#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,
+#! <An object in PreSheaves( PathCategory( FinQuiver(
+#!   "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
+#!                    is:C2-≻C1,it:C2-≻C1,
+#!                    ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+#! / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],
 #!  SkeletalFinSets )>
 IsWellDefined( N );
 #! true
@@ -37,18 +38,19 @@ Display( N.is );
 Display( N.it );
 #! { 0,..., 6 } ⱶ[ 0, 4, 7, 8, 17, 20, 23 ]→ { 0,..., 25 }
 Delta2 := Source( N );
-#! FreeCategory( RightQuiver(
-#!   "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
-#!                    is:C2->C1,it:C2->C1,
-#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations
+#! PathCategory( FinQuiver(
+#!   "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
+#!                    is:C2-≻C1,it:C2-≻C1,
+#!                    ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+#! / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
 N( Delta2.it ) = N.it;
 #! true
 L := [ Delta2.it, Delta2.id, Delta2.t ];
 #! [ (C2)-[(it)]->(C1), (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ]
 mor := PreComposeList( L );
-#! (C2)-[(is*id*t)]->(C1)
+#! (C2)-[(it*pt*is)]->(C1)
 DecompositionOfMorphismInCategory( mor );
-#! [ (C2)-[(is)]->(C1), (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ]
+#! [ (C2)-[(it)]->(C1), (C1)-[(pt)]->(C2), (C2)-[(is)]->(C1) ]
 NL := N( mor );
 #! |7| → |26|
 Display( NL );

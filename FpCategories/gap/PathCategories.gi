@@ -9,7 +9,7 @@ InstallMethod( PathCategory,
           [ IsFinQuiver ],
   
   function ( q )
-    local admissible_order, name, C;
+    local admissible_order, name, C, range_of_HomStructure;
     
     admissible_order := ValueOption( "admissible_order" );
     
@@ -42,7 +42,7 @@ InstallMethod( PathCategory,
     
     C!.admissible_order := admissible_order;
     
-    SetIsObjectFiniteCategory( C, true );
+    SetIsFinitelyPresentedCategory( C, true );
     
     SetUnderlyingQuiver( C, q );
     
@@ -266,7 +266,15 @@ InstallMethod( PathCategory,
         
         SetIsFiniteCategory( C, true );
         
-        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( C, SkeletalFinSets );
+        range_of_HomStructure := ValueOption( "range_of_HomStructure" );
+        
+        if not IsSkeletalCategoryOfFiniteSets( range_of_HomStructure ) then
+            range_of_HomStructure := SkeletalFinSets;
+        fi;
+        
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( C, range_of_HomStructure );
+        
+        Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( C ), range_of_HomStructure ) );
         
         AddMorphismsOfExternalHom( C,
           function ( C, obj_1, obj_2 )
@@ -306,6 +314,37 @@ InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
   function( cat )
     
     return SetOfGeneratingMorphismsOfCategory( cat );
+    
+end );
+
+##
+InstallOtherMethod( DecompositionIndicesOfMorphism,
+        "for a path category and a morphism therein",
+        [ IsPathCategory, IsPathCategoryMorphism ],
+        
+  function( C, mor )
+    
+    return -1 + MorphismDatum( C, mor )[2];
+    
+end );
+
+##
+InstallMethod( DecompositionOfMorphismInCategory,
+        "for a morphism in a path category",
+        [ IsPathCategoryMorphism ],
+        
+  function( mor )
+    local C, dec;
+    
+    C := CapCategory( mor );
+    
+    dec := SetOfGeneratingMorphisms( C ){1 + DecompositionIndicesOfMorphism( C, mor )};
+    
+    if ForAny( dec, IsEqualToIdentityMorphism ) then
+        Error( "one of the generating morphisms is an identity morphism\n" );
+    fi;
+    
+    return dec;
     
 end );
 
@@ -756,6 +795,56 @@ InstallMethod( \.,
     
 end );
 
+##
+InstallMethod( OppositePathCategory,
+        "for a path category",
+        [ IsPathCategory ],
+        
+  function( C )
+    local quiver_op, range_category, C_op;
+    
+    quiver_op := OppositeQuiver( UnderlyingQuiver( C ) );
+    
+    if HasRangeCategoryOfHomomorphismStructure( C ) then
+        C_op := PathCategory( quiver_op : range_of_HomStructure := RangeCategoryOfHomomorphismStructure( C ) );
+    else
+        C_op := PathCategory( quiver_op );
+    fi;
+    
+    SetOppositePathCategory( C_op, C );
+    
+    return C_op;
+    
+end );
+
+##
+InstallOtherMethod( CapFunctor,
+        "for a path category, two lists, and a category",
+        [ IsPathCategory, IsList, IsList, IsCapCategory ],
+        
+  function( C, imgs_of_objs, imgs_of_gmors, D )
+    local F;
+    
+    F := CapFunctor( Concatenation( "Functor from ", Name( C ), " -> ", Name( D ) ), C, D );
+    
+    AddObjectFunction( F,
+      function ( obj )
+        
+        return imgs_of_objs[ObjectIndex( obj )];
+        
+    end );
+    
+    AddMorphismFunction( F,
+      function ( F_s, mor, F_t )
+        
+        return PreComposeList( D, F_s, imgs_of_gmors{MorphismIndices( mor )}, F_t );
+        
+    end );
+    
+    return F;
+    
+end );
+
 ###################
 #
 # Orders
@@ -1170,6 +1259,62 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFpCategoryData,
     return Triple( PQ,
                    Pair( extended_functor_on_objects, extended_functor_on_morphisms ),
                    category );
+    
+end );
+
+##
+InstallMethod( DecompositionIndicesOfAllMorphismsFromHomStructure,
+        "for a path category",
+        [ IsPathCategory and IsFinite ],
+        
+  function( C )
+    local objs;
+    
+    objs := SetOfObjects( C );
+    
+    return List( objs, t ->
+                 List( objs, s ->
+                       List( MorphismsOfExternalHom( C, s, t ), mor -> List( MorphismIndices( mor ), i -> -1 + i ) ) ) );
+    
+end );
+
+##
+InstallMethod( RelationsAmongGeneratingMorphisms,
+        "for a path category",
+        [ IsPathCategory ],
+        
+  function( C )
+    
+    return [ ];
+    
+end );
+
+##
+InstallMethod( CategoryFromNerveData,
+        "for a path category",
+        [ IsPathCategory and IsFinite ],
+        
+  function( C )
+    
+    return CategoryFromNerveData(
+                   rec( name := Name( C ),
+                        nerve_data := NerveTruncatedInDegree2Data( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
+                        decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphismsFromHomStructure( C ),
+                        relations := RelationsAmongGeneratingMorphisms( C ),
+                        labels := [ List( SetOfObjects( C ), ObjectLabel ), List( SetOfGeneratingMorphisms( C ), MorphismLabel ) ],
+                        properties := ListKnownCategoricalProperties( C ) ) );
+    
+end );
+
+##
+InstallMethod( DataTablesOfCategory,
+        "for a path category",
+        [ IsPathCategory ],
+        
+  function( C )
+    
+    return DataTablesOfCategory( CategoryFromNerveData( C : FinalizeCategory := true ) );
     
 end );
 

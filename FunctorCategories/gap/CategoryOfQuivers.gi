@@ -106,7 +106,7 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
     morphism_datum := { Quivers, m } -> DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets( m );
     
     ## building the categorical tower:
-    F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );
+    F := PathCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );
     
     F := CategoryFromDataTables( F : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
     

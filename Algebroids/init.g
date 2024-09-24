@@ -9,13 +9,11 @@ ReadPackage( "Algebroids", "gap/QuiverRows.gd" );
 ReadPackage( "Algebroids", "gap/FpCategories.gd");
 ReadPackage( "Algebroids", "gap/Algebroids.gd");
 ReadPackage( "Algebroids", "gap/Functors.gd");
-ReadPackage( "Algebroids", "gap/CategoryFromNerveData.gd");
 ReadPackage( "Algebroids", "gap/CategoryFromDataTables.gd");
 ReadPackage( "Algebroids", "gap/LinearClosuresOfPathCategoriesAndTheirQuotients.gd");
 ReadPackage( "Algebroids", "gap/AlgebroidFromDataTables.gd");
 ReadPackage( "Algebroids", "gap/CategoryOfAlgebroids.gd");
 ReadPackage( "Algebroids", "gap/Bialgebroids.gd");
-ReadPackage( "Algebroids", "gap/SimplicialCategory.gd");
 ReadPackage( "Algebroids", "gap/Tools.gd");
 
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then

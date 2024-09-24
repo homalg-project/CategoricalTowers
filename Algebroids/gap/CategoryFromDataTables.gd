@@ -175,6 +175,14 @@ DeclareAttribute( "CategoryFromDataTables",
 
 #! @Arguments C
 DeclareAttribute( "CategoryFromDataTables",
+        IsPathCategory );
+
+#! @Arguments C
+DeclareAttribute( "CategoryFromDataTables",
+        IsQuotientOfPathCategory );
+
+#! @Arguments C
+DeclareAttribute( "CategoryFromDataTables",
         IsCategoryFromNerveData );
 
 #! @Description

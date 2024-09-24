@@ -322,6 +322,11 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             A := PathAlgebra( A );
         fi;
         relations := List( relations, a -> List( a, ai -> PathAsAlgebraElement( A, ai ) ) );
+    elif IsPathCategory( B ) then
+        B_op := OppositePathCategory( B : FinalizeCategory := true );
+    elif IsQuotientOfPathCategory( B ) then
+        B_op := OppositeQuotientOfPathCategory( B : FinalizeCategory := true );
+        relations := DefiningRelations( B_op );
     elif IsCategoryFromNerveData( B ) then
         B_op := OppositeCategoryFromNerveData( B : FinalizeCategory := true );
     elif IsCategoryFromDataTables( B ) then
@@ -921,6 +926,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     fi;
     
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
+       IsPathCategory( B ) or
+       IsQuotientOfPathCategory( B ) or
        IsCategoryFromNerveData( B ) or
        IsCategoryFromDataTables( B ) or
        (HasIsFiniteCategory and IsFiniteCategory)( B ) or
@@ -984,6 +991,62 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 F := UnderlyingCapTwoCategoryCell( F );
                 
                 return ForAll( relations, m -> IsCongruentForMorphisms( D, ApplyToQuiverAlgebraElement( F, m[1] ), ApplyToQuiverAlgebraElement( F, m[2] ) ) );
+                
+            end );
+            
+        elif IsPathCategory( B ) then
+            
+            AddIsWellDefinedForObjects( PSh,
+              function ( PSh, F )
+                local B, D, objects, generating_morphisms;
+                
+                B := Source( PSh );
+                D := Target( PSh );
+                
+                objects := SetOfObjects( B );
+                generating_morphisms := SetOfGeneratingMorphisms( B );
+                
+                if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
+                    return false;
+                fi;
+                
+                return true;
+                
+            end );
+            
+        elif IsQuotientOfPathCategory( B ) then
+            
+            AddIsWellDefinedForObjects( PSh,
+              function ( PSh, F )
+                local B, D, objects, generating_morphisms;
+                
+                B := Source( PSh );
+                D := Target( PSh );
+                
+                objects := SetOfObjects( B );
+                generating_morphisms := SetOfGeneratingMorphisms( B );
+                
+                if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
+                    return false;
+                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
+                    return false;
+                fi;
+
+                F := ValuesOfPreSheaf( F );
+                
+                F := CapFunctor( UnderlyingCategory( OppositeOfSource( PSh ) ), F[1], F[2], Target( PSh ) );
+                
+                return ForAll( relations, m -> IsCongruentForMorphisms( D, F( m[1] ), F( m[2] ) ) );
                 
             end );
             
@@ -2526,7 +2589,7 @@ InstallMethod( CategoryOfInternalCategories,
   function ( H )
     local Delta2, sH, membership_function;
     
-    Delta2 := SimplicialCategoryTruncatedInDegree( 2 : FinalizeCategory := true );
+    Delta2 := SimplicialCategoryTruncatedInDegree2;
     
     sH := PreSheaves( Delta2, H );
     
@@ -4465,7 +4528,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
         
   function ( B )
     
-    return CreatePreSheafByValues( PreSheaves( SimplicialCategoryTruncatedInDegree( 2 ) ), NerveTruncatedInDegree2Data( B ) );
+    return CreatePreSheafByValues( PreSheaves( SimplicialCategoryTruncatedInDegree2 ), NerveTruncatedInDegree2Data( B ) );
     
 end );
 
@@ -4475,7 +4538,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
         
   function ( B )
     
-    return CreatePreSheafByValues( PreSheaves( CategoryFromNerveData( SimplicialCategoryTruncatedInDegree( 2 ) ) ), NerveTruncatedInDegree2Data( B ) );
+    return CreatePreSheafByValues( PreSheaves( CategoryFromNerveData( SimplicialCategoryTruncatedInDegree2 ) ), NerveTruncatedInDegree2Data( B ) );
     
 end );
 
@@ -4485,7 +4548,27 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
         
   function ( B )
     
-    return CreatePreSheafByValues( PreSheaves( CategoryFromDataTables( SimplicialCategoryTruncatedInDegree( 2 ) ) ), NerveTruncatedInDegree2Data( B ) );
+    return CreatePreSheafByValues( PreSheaves( CategoryFromDataTables( SimplicialCategoryTruncatedInDegree2 ) ), NerveTruncatedInDegree2Data( B ) );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
+        [ IsPathCategory ],
+        
+  function ( B )
+    
+    return CreatePreSheafByValues( PreSheaves( SimplicialCategoryTruncatedInDegree2 ), NerveTruncatedInDegree2Data( B ) );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
+        [ IsQuotientOfPathCategory ],
+        
+  function ( B )
+    
+    return CreatePreSheafByValues( PreSheaves( SimplicialCategoryTruncatedInDegree2 ), NerveTruncatedInDegree2Data( B ) );
     
 end );
 

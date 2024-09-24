@@ -9,9 +9,6 @@
 @Section A f.p. category
 @InsertChunk FpCategory
 
-@Section The full subcategory of the simplicial category truncated in degree 2
-@InsertChunk Delta2
-
 @Section Algebroids
 @InsertChunk Algebroid
 
@@ -103,5 +100,4 @@
 @InsertChunk PrecompileAdditiveClosureOfAlgebroid
 @InsertChunk PrecompileAdditiveClosureOfAlgebroidFromDataTables
 @InsertChunk PrecompileAdelmanCategoryOfAdditiveClosureOfAlgebroid
-@InsertChunk PrecompileCategoryFromNerveData
 @InsertChunk PrecompileCategoryFromDataTables

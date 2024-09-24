@@ -4,22 +4,22 @@
 
 #! #@if ValueOption( "no_precompiled_code" ) <> true
 
-LoadPackage( "Algebroids", false );
+LoadPackage( "FpCategories", false );
 #! true
 LoadPackage( "CompilerForCAP", ">= 2024.07-09", false );
 #! true
-ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
+ReadPackageOnce( "FpCategories", "gap/CompilerLogic.gi" );
 #! true
 ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );
 #! true
 
 category_constructor :=
   function( quiver )
-    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ); return CategoryFromNerveData( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;
+    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ); return CategoryFromNerveData( PathCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;
 
-given_arguments := [ RightQuiver( "q(a,b)[m:a->b]" ) ];;
+given_arguments := [ FinQuiver( "q(a,b)[m:a->b]" ) ];;
 compiled_category_name := "CategoryFromNerveDataPrecompiled";;
-package_name := "Algebroids";;
+package_name := "FpCategories";;
 
 CapJitPrecompileCategoryAndCompareResult(
     category_constructor,
@@ -30,9 +30,9 @@ CapJitPrecompileCategoryAndCompareResult(
                                 [ "HomomorphismStructureOnMorphismsWithGivenObjects" ] ) );;
 
 CategoryFromNerveDataPrecompiled( given_arguments[1] );
-#! FreeCategory( RightQuiver( "q(a,b)[m:a->b]" ) )
+#! PathCategory( FinQuiver( "q(a,b)[m:a-≻b]" ) )
 
-CategoryFromNerveData( FreeCategory( given_arguments[1] ) )!.precompiled_functions_added;
+CategoryFromNerveData( PathCategory( given_arguments[1] ) )!.precompiled_functions_added;
 #! true
 
 #! #@fi

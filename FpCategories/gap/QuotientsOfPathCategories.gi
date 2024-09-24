@@ -9,7 +9,7 @@ InstallOtherMethod( QuotientCategory,
         [ IsPathCategory, IsDenseList ],
   
   function ( C, relations )
-    local reduced_gb, congruence_function, name, quo_C, q, leading_monomials, hom_quo_C;
+    local reduced_gb, congruence_function, name, quo_C, q, leading_monomials, hom_quo_C, range_of_HomStructure;
     
     reduced_gb := ReducedGroebnerBasis( C, relations );
     
@@ -35,6 +35,8 @@ InstallOtherMethod( QuotientCategory,
                      nr_arguments_of_congruence_function := 2,
                      congruence_function := congruence_function,
                      underlying_category := C ) : FinalizeCategory := false, overhead := false );
+    
+    SetIsFinitelyPresentedCategory( quo_C, true );
     
     ##
     AddSetOfGeneratingMorphismsOfCategory( quo_C,
@@ -78,7 +80,15 @@ InstallOtherMethod( QuotientCategory,
                               m,
                               SetOfObjects( quo_C )[t] ) ) ) ) );
         
-        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( quo_C, SkeletalFinSets );
+        range_of_HomStructure := ValueOption( "range_of_HomStructure" );
+        
+        if not IsSkeletalCategoryOfFiniteSets( range_of_HomStructure ) then
+            range_of_HomStructure := SkeletalFinSets;
+        fi;
+        
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( quo_C, range_of_HomStructure );
+        
+        Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( quo_C ), range_of_HomStructure ) );
         
         ##
         AddMorphismsOfExternalHom( quo_C,
@@ -155,6 +165,192 @@ InstallMethod( ExternalHomsWithGivenLengthOp,
                                              SetOfObjects( quo_C )[ObjectIndex( Target( m ) )] ) ) ) ) );
     
 end );
+
+##
+InstallMethod( OppositeQuotientOfPathCategory,
+        "for a quotient of a path category",
+        [ IsQuotientOfPathCategory ],
+        
+  function( quo_C )
+    local C, C_op, relations_op, quo_C_op;
+    
+    C := UnderlyingCategory( quo_C );
+    
+    C_op := OppositePathCategory( C );
+    
+    relations_op :=  List( DefiningRelations( quo_C ), pair ->
+                           Pair( MorphismConstructor( C_op,
+                                   SetOfObjects( C_op )[ObjectIndex( Target( pair[1] ) )],
+                                   Pair( MorphismLength( pair[1] ), Reversed( MorphismIndices( pair[1] ) ) ),
+                                   SetOfObjects( C_op )[ObjectIndex( Source( pair[1] ) )] ),
+                                 MorphismConstructor( C_op,
+                                   SetOfObjects( C_op )[ObjectIndex( Target( pair[2] ) )],
+                                   Pair( MorphismLength( pair[2] ), Reversed( MorphismIndices( pair[2] ) ) ),
+                                   SetOfObjects( C_op )[ObjectIndex( Source( pair[2] ) )] ) ) );
+    
+    quo_C_op := QuotientCategory( C_op, relations_op );
+    
+    SetOppositeQuotientOfPathCategory( quo_C_op, quo_C );
+    
+    return quo_C_op;
+    
+end );
+
+##
+InstallOtherMethod( CapFunctor,
+        "for a quotient of a path category, two lists, and a category",
+        [ IsQuotientOfPathCategory, IsList, IsList, IsCapCategory ],
+        
+  function( C, imgs_of_objs, imgs_of_gmors, D )
+    local F;
+    
+    F := CapFunctor( Concatenation( "Functor from ", Name( C ), " -> ", Name( D ) ), C, D );
+    
+    AddObjectFunction( F,
+      function ( obj )
+        
+        return imgs_of_objs[ObjectIndex( ObjectDatum( obj ) )];
+        
+    end );
+    
+    AddMorphismFunction( F,
+      function ( F_s, mor, F_t )
+        
+        return PreComposeList( D, F_s, imgs_of_gmors{MorphismIndices( MorphismDatum( mor ) )}, F_t );
+        
+    end );
+    
+    return F;
+    
+end );
+
+##
+InstallOtherMethod( CapFunctor,
+        "for a quotient of a path category, two records, and a category",
+        [ IsQuotientOfPathCategory, IsRecord, IsRecord, IsCapCategory ],
+        
+  function( C, imgs_of_objs, imgs_of_gmors, D )
+    local F;
+    
+    F := CapFunctor( Concatenation( "Functor from ", Name( C ), " -> ", Name( D ) ), C, D );
+    
+    AddObjectFunction( F,
+      function ( obj )
+        
+        return imgs_of_objs.(ObjectLabel( ObjectDatum( obj ) ));
+        
+    end );
+    
+    AddMorphismFunction( F,
+      function ( F_s, mor, F_t )
+        
+        return PreComposeList( D,
+                       F_s,
+                       List( MorphismSupport( MorphismDatum( mor ) ), m ->
+                             imgs_of_gmors.(MorphismLabel( m )) ),
+                       F_t );
+        
+    end );
+    
+    return F;
+    
+end );
+
+##
+InstallOtherMethod( DecompositionIndicesOfMorphism,
+        "for a quotient of a path category and a morphism therein",
+        [ IsQuotientOfPathCategory, IsQuotientOfPathCategoryMorphism ],
+        
+  function( C, mor )
+    
+    return DecompositionIndicesOfMorphism( UnderlyingCategory( C ), MorphismDatum( C, mor ) );
+    
+end );
+
+##
+InstallMethod( DecompositionOfMorphismInCategory,
+        "for a morphism in a quotient of a path category",
+        [ IsQuotientOfPathCategoryMorphism ],
+        
+  function( mor )
+    local C, dec;
+    
+    C := CapCategory( mor );
+    
+    dec := SetOfGeneratingMorphisms( C ){1 + DecompositionIndicesOfMorphism( C, mor )};
+    
+    if ForAny( dec, IsEqualToIdentityMorphism ) then
+        Error( "one of the generating morphisms is an identity morphism\n" );
+    fi;
+    
+    return dec;
+    
+end );
+
+##
+InstallMethod( DecompositionIndicesOfAllMorphismsFromHomStructure,
+        "for a quotient of a path category",
+        [ IsQuotientOfPathCategory and IsFinite ],
+        
+  function( C )
+    local objs;
+    
+    objs := SetOfObjects( C );
+    
+    return List( objs, t ->
+                 List( objs, s ->
+                       List( MorphismsOfExternalHom( C, s, t ), mor -> List( MorphismIndices( CanonicalRepresentative( mor ) ), i -> -1 + i ) ) ) );
+    
+end );
+
+##
+InstallMethod( RelationsAmongGeneratingMorphisms,
+        "for a quotient of a path category",
+        [ IsQuotientOfPathCategory ],
+        
+  function( C )
+    
+    return List( DefiningRelations( C ), pair ->
+                 Pair( List( MorphismIndices( pair[1] ), i -> -1 + i ),
+                       List( MorphismIndices( pair[2] ), i -> -1 + i ) ) );
+    
+end );
+
+##
+InstallMethod( CategoryFromNerveData,
+        "for a quotient of a path category",
+        [ IsQuotientOfPathCategory and IsFinite ],
+        
+  function( C )
+    
+    return CategoryFromNerveData(
+                   rec( name := Name( C ),
+                        nerve_data := NerveTruncatedInDegree2Data( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
+                        decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphismsFromHomStructure( C ),
+                        relations := RelationsAmongGeneratingMorphisms( C ),
+                        labels := [ List( SetOfObjects( C ), o -> ObjectLabel( UnderlyingCell( o ) ) ),
+                                List( SetOfGeneratingMorphisms( C ), m -> MorphismLabel( CanonicalRepresentative( m ) ) ) ],
+                        properties := ListKnownCategoricalProperties( C ) ) );
+    
+end );
+
+##
+InstallMethod( DataTablesOfCategory,
+        "for a quotient of a path category",
+        [ IsQuotientOfPathCategory ],
+        
+  function( C )
+    
+    return DataTablesOfCategory( CategoryFromNerveData( C : FinalizeCategory := true ) );
+    
+end );
+
+###################
+#
+# View Methods
+#
+###################
 
 ##
 InstallMethod( DisplayString,

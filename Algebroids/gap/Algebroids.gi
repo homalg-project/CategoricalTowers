@@ -2163,38 +2163,6 @@ end );
 
 ##
 InstallMethod( NaturalTransformation,
-        "for a list and two CAP functors",
-        [ IsCapFunctor, IsList, IsCapFunctor ],
-        
-  function( F, images, G )
-    local eta, vertices;
-    
-    eta := NaturalTransformation( Concatenation( "Natural transformation from ", Name( F ), " -> ", Name( G ) ), F, G );
-    
-    eta!.ValuesOnAllObjects := images;
-    
-    vertices := Vertices( QuiverOfAlgebra( UnderlyingQuiverAlgebra( AsCapCategory( Source( F ) ) ) ) );
-    
-    AddNaturalTransformationFunction( eta,
-      function( source, obj, range )
-        local pos;
-        
-        pos := SafePosition( vertices, UnderlyingVertex( obj ) );
-        
-        if not IsInt( pos ) then
-            Error( "vertex UnderlyingVertex( obj ) = ", UnderlyingVertex( obj ), " not found in the list ", vertices, " of vertices\n" );
-        fi;
-        
-        return images[pos];
-        
-    end );
-    
-    return eta;
-    
-end );
-
-##
-InstallMethod( NaturalTransformation,
         "for a record and two CAP functors",
         [ IsRecord, IsCapFunctor, IsCapFunctor ],
         
