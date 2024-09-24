@@ -146,7 +146,7 @@
     [4X[28X[3,1]: (o)-[{ 0 }]->(o)[128X[104X
     [4X[28X[3,2]: (o)-[{ 0 }]->(o)[128X[104X
     [4X[28X[3,3]: (o)-[{ 1*(x) }]->(o)[128X[104X
-    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),[128X[104X
+    [4X[28XAn object in PreSheaves( PathCategory( FinQuiver( "q(V,A)[s:V-≻A,t:V-≻A]" ) ),[128X[104X
     [4X[28XAdditiveClosure( Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) /[128X[104X
     [4X[28Xrelations ) ) given by the above data[128X[104X
     [4X[28X[128X[104X

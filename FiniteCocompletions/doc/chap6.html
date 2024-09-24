@@ -105,56 +105,56 @@
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", "&gt;= 2024.03-18", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", "&gt;= 2024.09-09", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FinBouquets;</span>
 FinBouquets
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Chat := ModelingCategory( FinBouquets );</span>
-FiniteCocompletion( FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )
+FiniteCocompletion( PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ColimitQuiversC := CategoryOfColimitQuivers(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                 UnderlyingCategory( FinBouquets ) );</span>
 CategoryOfColimitQuivers(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )
+PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := ColimitQuiversC.P;</span>
 &lt;A projective object in CategoryOfColimitQuivers(
- FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
+ PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
 [ [ &lt;(P)&gt; ], [  ] ]
 
 An object in CategoryOfColimitQuivers(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := ColimitQuiversC.L;</span>
 &lt;A projective object in CategoryOfColimitQuivers(
- FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
+ PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( L );</span>
 [ [ &lt;(L)&gt; ], [  ] ]
 
 An object in CategoryOfColimitQuivers(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := ColimitQuiversC.b;</span>
 &lt;A morphism in CategoryOfColimitQuivers(
- FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
+ PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( b );</span>
 Source: [ [ &lt;(P)&gt; ], [  ] ]
 
 An object in CategoryOfColimitQuivers(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
 
 Datum:  [ [ [ 0 ], [ (P)-[(b)]-&gt;(L) ] ], [  ] ]
 
 Range:  [ [ &lt;(L)&gt; ], [  ] ]
 
 An object in CategoryOfColimitQuivers(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
 
 A morphism in CategoryOfColimitQuivers(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := CreateBouquet( 3, [ 0, 0, 0, 2 ] );</span>
 &lt;An object in FinBouquets&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F );</span>
 ( { 0, 1, 2 }, { 0 ↦ 0, 1 ↦ 0, 2 ↦ 0, 3 ↦ 2 } )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_presheaf := ModelingObject( Chat, ModelingObject( FinBouquets, F ) );</span>
-&lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ),
+&lt;An object in PreSheaves( PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ),
  SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F_as_presheaf );</span>
 Image of &lt;(P)&gt;:
@@ -166,18 +166,18 @@ Image of &lt;(L)&gt;:
 Image of (P)-[(b)]-&gt;(L):
 { 0,..., 3 } ⱶ[ 0, 0, 0, 2 ]→ { 0, 1, 2 }
 
-An object in PreSheaves( FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ),
+An object in PreSheaves( PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ),
 SkeletalFinSets ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_coequalizer_object := CoYonedaLemmaOnObjects( F_as_presheaf );</span>
 &lt;An object in FiniteColimitCompletionWithStrictCoproducts(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
+PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ColimitCompletionC := CapCategory( F_as_coequalizer_object );</span>
 FiniteColimitCompletionWithStrictCoproducts(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )
+PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ColimitCompletionC );</span>
 A CAP category with name
 FiniteColimitCompletionWithStrictCoproducts(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ):
+PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ):
 
 22 primitive operations were used to derive 64 operations for this category
 which algorithmically
@@ -188,50 +188,50 @@ and not yet algorithmically
 Image of &lt;(V)&gt;:
 [ 7, [ &lt;(P)&gt;, &lt;(P)&gt;, &lt;(P)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt; ] ]
 
-An object in FiniteStrictCoproductCompletion( FreeCategory(
-RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+An object in FiniteStrictCoproductCompletion( PathCategory(
+FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
 
 Image of &lt;(A)&gt;:
 [ 4, [ &lt;(P)&gt;, &lt;(P)&gt;, &lt;(P)&gt;, &lt;(P)&gt; ] ]
 
-An object in FiniteStrictCoproductCompletion( FreeCategory(
-RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+An object in FiniteStrictCoproductCompletion( PathCategory(
+FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
 
 Image of (V)-[(s)]-&gt;(A):
 { 0,..., 3 } ⱶ[ 0, 0, 0, 2 ]→ { 0,..., 6 }
 
 [ (P)-[(P)]-&gt;(P), (P)-[(P)]-&gt;(P), (P)-[(P)]-&gt;(P), (P)-[(P)]-&gt;(P) ]
 
-A morphism in FiniteStrictCoproductCompletion( FreeCategory(
-RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+A morphism in FiniteStrictCoproductCompletion( PathCategory(
+FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
 
 Image of (V)-[(t)]-&gt;(A):
 { 0,..., 3 } ⱶ[ 3, 4, 5, 6 ]→ { 0,..., 6 }
 
 [ (P)-[(b)]-&gt;(L), (P)-[(b)]-&gt;(L), (P)-[(b)]-&gt;(L), (P)-[(b)]-&gt;(L) ]
 
-A morphism in FiniteStrictCoproductCompletion( FreeCategory(
-RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+A morphism in FiniteStrictCoproductCompletion( PathCategory(
+FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
 
-An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V-&gt;A,t:V-&gt;A]" ) ),
+An object in PreSheaves( PathCategory( FinQuiver( "q(V,A)[s:V-≻A,t:V-≻A]" ) ),
 FiniteStrictCoproductCompletion(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) ) given by the above data
+PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) ) given by the above data
 
 An object in FiniteColimitCompletionWithStrictCoproducts(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_presheaf =</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  Coequalizer( AssociatedCoequalizerPairInPreSheaves( F_as_coequalizer_object )[2] );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_colimit_quiver := AssociatedColimitQuiver( F_as_coequalizer_object );</span>
 &lt;An object in CategoryOfColimitQuivers(
- FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) )&gt;
+ PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F_as_colimit_quiver );</span>
 [ [ &lt;(P)&gt;, &lt;(P)&gt;, &lt;(P)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt;, &lt;(L)&gt; ],
   [ [ 0, (P)-[(b)]-&gt;(L), 3 ], [ 0, (P)-[(b)]-&gt;(L), 4 ],
     [ 0, (P)-[(b)]-&gt;(L), 5 ], [ 2, (P)-[(b)]-&gt;(L), 6 ] ] ]
 
 An object in CategoryOfColimitQuivers(
-FreeCategory( RightQuiver( "q(P,L)[b:P-&gt;L]" ) ) ) given by the above data
+PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_as_presheaf =</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  Coequalizer( AssociatedCoequalizerPairInPreSheaves( F_as_colimit_quiver )[2] );</span>
 true
