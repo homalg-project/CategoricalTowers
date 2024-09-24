@@ -607,24 +607,32 @@ true
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2 := SimplicialCategoryTruncatedInDegree( 2 );</span>
-FreeCategory( RightQuiver(
-  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
-                   is:C2-&gt;C1,it:C2-&gt;C1,
-                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RelationsOfFpCategory( Delta2 );</span>
-[ [ (s*id), (C0) ], [ (t*id), (C0) ],
-  [ (ps*is), (C1) ], [ (pt*it), (C1) ],
-  [ (is*id), (it*id) ], [ (pt*is), (id*t) ],
-  [ (ps*it), (id*s) ], [ (s*pt), (t*ps) ],
-  [ (s*mu), (s*ps) ], [ (t*mu), (t*pt) ],
-  [ (mu*is), (C1) ], [ (mu*it), (C1) ] ]
+PathCategory( FinQuiver(
+  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
+                   is:C2-≻C1,it:C2-≻C1,
+                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DefiningRelations( Delta2 );</span>
+[ [ s⋅id:(C0) -≻ (C0), id(C0):(C0) -≻ (C0) ],
+  [ t⋅id:(C0) -≻ (C0), id(C0):(C0) -≻ (C0) ],
+  [ ps⋅is:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],
+  [ pt⋅it:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],
+  [ is⋅id:(C2) -≻ (C0), it⋅id:(C2) -≻ (C0) ],
+  [ pt⋅is:(C1) -≻ (C1), id⋅t:(C1) -≻ (C1) ],
+  [ ps⋅it:(C1) -≻ (C1), id⋅s:(C1) -≻ (C1) ],
+  [ s⋅pt:(C0) -≻ (C2), t⋅ps:(C0) -≻ (C2) ],
+  [ s⋅mu:(C0) -≻ (C2), s⋅ps:(C0) -≻ (C2) ],
+  [ t⋅mu:(C0) -≻ (C2), t⋅pt:(C0) -≻ (C2) ],
+  [ mu⋅is:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],
+  [ mu⋅it:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( Delta2 );</span>
 31
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := NerveTruncatedInDegree2( Delta2 );</span>
-&lt;An object in PreSheaves( FreeCategory( RightQuiver(
-  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
-                   is:C2-&gt;C1,it:C2-&gt;C1,
-                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations,
+&lt;An object in PreSheaves( PathCategory( FinQuiver(
+  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
+                   is:C2-≻C1,it:C2-≻C1,
+                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],
  SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( N );</span>
 true
@@ -647,10 +655,11 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IntCat := CategoryOfInternalCategories(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                  RangeCategoryOfHomomorphismStructure( Delta2 ) );</span>
 FullSubcategoryByObjectMembershipFunction(
-PreSheaves( FreeCategory( RightQuiver(
-  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
-                   is:C2-&gt;C1,it:C2-&gt;C1,
-                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations,
+PreSheaves( PathCategory( FinQuiver(
+  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
+                   is:C2-≻C1,it:C2-≻C1,
+                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],
 SkeletalFinSets ), ObjectMembershipFunction )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( N / IntCat );</span>
 true
@@ -661,15 +670,17 @@ true
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2 := CategoryFromNerveData( SimplicialCategoryTruncatedInDegree( 2 ) );</span>
-FreeCategory( RightQuiver(
-  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
-                   is:C2-&gt;C1,it:C2-&gt;C1,
-                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations
+PathCategory( FinQuiver(
+  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
+                   is:C2-≻C1,it:C2-≻C1,
+                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := NerveTruncatedInDegree2( Delta2 );</span>
-&lt;An object in PreSheaves( FreeCategory( RightQuiver(
-  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
-                   is:C2-&gt;C1,it:C2-&gt;C1,
-                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations,
+&lt;An object in PreSheaves( PathCategory( FinQuiver(
+  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
+                   is:C2-≻C1,it:C2-≻C1,
+                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],
  SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( N );</span>
 true
@@ -698,13 +709,14 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta1 := UnderlyingCategory( FinReflexiveQuivers );</span>
-FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) )
-/ [ s*id = C0, t*id = C0 ]
+PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+/ [ s⋅id = id(C0), t⋅id = id(C0) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := NerveTruncatedInDegree2( Delta1 );</span>
-&lt;An object in PreSheaves( FreeCategory( RightQuiver(
-  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
-                   is:C2-&gt;C1,it:C2-&gt;C1,
-                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations,
+&lt;An object in PreSheaves( PathCategory( FinQuiver(
+  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
+                   is:C2-≻C1,it:C2-≻C1,
+                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],
  SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( N );</span>
 true
@@ -729,18 +741,19 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.it );</span>
 { 0,..., 6 } ⱶ[ 0, 4, 7, 8, 17, 20, 23 ]→ { 0,..., 25 }
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2 := Source( N );</span>
-FreeCategory( RightQuiver(
-  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
-                   is:C2-&gt;C1,it:C2-&gt;C1,
-                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations
+PathCategory( FinQuiver(
+  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
+                   is:C2-≻C1,it:C2-≻C1,
+                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N( Delta2.it ) = N.it;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := [ Delta2.it, Delta2.id, Delta2.t ];</span>
 [ (C2)-[(it)]-&gt;(C1), (C1)-[(id)]-&gt;(C0), (C0)-[(t)]-&gt;(C1) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := PreComposeList( L );</span>
-(C2)-[(is*id*t)]-&gt;(C1)
+(C2)-[(it*pt*is)]-&gt;(C1)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecompositionOfMorphismInCategory( mor );</span>
-[ (C2)-[(is)]-&gt;(C1), (C1)-[(id)]-&gt;(C0), (C0)-[(t)]-&gt;(C1) ]
+[ (C2)-[(it)]-&gt;(C1), (C1)-[(pt)]-&gt;(C2), (C2)-[(is)]-&gt;(C1) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NL := N( mor );</span>
 |7| → |26|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( NL );</span>

@@ -473,24 +473,32 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XDelta2 := SimplicialCategoryTruncatedInDegree( 2 );[127X[104X
-    [4X[28XFreeCategory( RightQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
-    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
-    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations[128X[104X
-    [4X[25Xgap>[125X [27XRelationsOfFpCategory( Delta2 );[127X[104X
-    [4X[28X[ [ (s*id), (C0) ], [ (t*id), (C0) ],[128X[104X
-    [4X[28X  [ (ps*is), (C1) ], [ (pt*it), (C1) ],[128X[104X
-    [4X[28X  [ (is*id), (it*id) ], [ (pt*is), (id*t) ],[128X[104X
-    [4X[28X  [ (ps*it), (id*s) ], [ (s*pt), (t*ps) ],[128X[104X
-    [4X[28X  [ (s*mu), (s*ps) ], [ (t*mu), (t*pt) ],[128X[104X
-    [4X[28X  [ (mu*is), (C1) ], [ (mu*it), (C1) ] ][128X[104X
+    [4X[28XPathCategory( FinQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,[128X[104X
+    [4X[28X                   is:C2-≻C1,it:C2-≻C1,[128X[104X
+    [4X[28X                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )[128X[104X
+    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ][128X[104X
+    [4X[25Xgap>[125X [27XDefiningRelations( Delta2 );[127X[104X
+    [4X[28X[ [ s⋅id:(C0) -≻ (C0), id(C0):(C0) -≻ (C0) ],[128X[104X
+    [4X[28X  [ t⋅id:(C0) -≻ (C0), id(C0):(C0) -≻ (C0) ],[128X[104X
+    [4X[28X  [ ps⋅is:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],[128X[104X
+    [4X[28X  [ pt⋅it:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],[128X[104X
+    [4X[28X  [ is⋅id:(C2) -≻ (C0), it⋅id:(C2) -≻ (C0) ],[128X[104X
+    [4X[28X  [ pt⋅is:(C1) -≻ (C1), id⋅t:(C1) -≻ (C1) ],[128X[104X
+    [4X[28X  [ ps⋅it:(C1) -≻ (C1), id⋅s:(C1) -≻ (C1) ],[128X[104X
+    [4X[28X  [ s⋅pt:(C0) -≻ (C2), t⋅ps:(C0) -≻ (C2) ],[128X[104X
+    [4X[28X  [ s⋅mu:(C0) -≻ (C2), s⋅ps:(C0) -≻ (C2) ],[128X[104X
+    [4X[28X  [ t⋅mu:(C0) -≻ (C2), t⋅pt:(C0) -≻ (C2) ],[128X[104X
+    [4X[28X  [ mu⋅is:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],[128X[104X
+    [4X[28X  [ mu⋅it:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ] ][128X[104X
     [4X[25Xgap>[125X [27XSize( Delta2 );[127X[104X
     [4X[28X31[128X[104X
     [4X[25Xgap>[125X [27XN := NerveTruncatedInDegree2( Delta2 );[127X[104X
-    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
-    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
-    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,[128X[104X
+    [4X[28X<An object in PreSheaves( PathCategory( FinQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,[128X[104X
+    [4X[28X                   is:C2-≻C1,it:C2-≻C1,[128X[104X
+    [4X[28X                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )[128X[104X
+    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],[128X[104X
     [4X[28X SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( N );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -513,10 +521,11 @@
     [4X[25Xgap>[125X [27XIntCat := CategoryOfInternalCategories([127X[104X
     [4X[25X>[125X [27X                  RangeCategoryOfHomomorphismStructure( Delta2 ) );[127X[104X
     [4X[28XFullSubcategoryByObjectMembershipFunction([128X[104X
-    [4X[28XPreSheaves( FreeCategory( RightQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
-    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
-    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,[128X[104X
+    [4X[28XPreSheaves( PathCategory( FinQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,[128X[104X
+    [4X[28X                   is:C2-≻C1,it:C2-≻C1,[128X[104X
+    [4X[28X                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )[128X[104X
+    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],[128X[104X
     [4X[28XSkeletalFinSets ), ObjectMembershipFunction )[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( N / IntCat );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -527,15 +536,17 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XDelta2 := CategoryFromNerveData( SimplicialCategoryTruncatedInDegree( 2 ) );[127X[104X
-    [4X[28XFreeCategory( RightQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
-    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
-    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations[128X[104X
+    [4X[28XPathCategory( FinQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,[128X[104X
+    [4X[28X                   is:C2-≻C1,it:C2-≻C1,[128X[104X
+    [4X[28X                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )[128X[104X
+    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ][128X[104X
     [4X[25Xgap>[125X [27XN := NerveTruncatedInDegree2( Delta2 );[127X[104X
-    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
-    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
-    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,[128X[104X
+    [4X[28X<An object in PreSheaves( PathCategory( FinQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,[128X[104X
+    [4X[28X                   is:C2-≻C1,it:C2-≻C1,[128X[104X
+    [4X[28X                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )[128X[104X
+    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],[128X[104X
     [4X[28X SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( N );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -564,13 +575,14 @@
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDelta1 := UnderlyingCategory( FinReflexiveQuivers );[127X[104X
-    [4X[28XFreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )[128X[104X
-    [4X[28X/ [ s*id = C0, t*id = C0 ][128X[104X
+    [4X[28XPathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )[128X[104X
+    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0) ][128X[104X
     [4X[25Xgap>[125X [27XN := NerveTruncatedInDegree2( Delta1 );[127X[104X
-    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
-    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
-    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,[128X[104X
+    [4X[28X<An object in PreSheaves( PathCategory( FinQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,[128X[104X
+    [4X[28X                   is:C2-≻C1,it:C2-≻C1,[128X[104X
+    [4X[28X                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )[128X[104X
+    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],[128X[104X
     [4X[28X SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( N );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -595,18 +607,19 @@
     [4X[25Xgap>[125X [27XDisplay( N.it );[127X[104X
     [4X[28X{ 0,..., 6 } ⱶ[ 0, 4, 7, 8, 17, 20, 23 ]→ { 0,..., 25 }[128X[104X
     [4X[25Xgap>[125X [27XDelta2 := Source( N );[127X[104X
-    [4X[28XFreeCategory( RightQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
-    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
-    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations[128X[104X
+    [4X[28XPathCategory( FinQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,[128X[104X
+    [4X[28X                   is:C2-≻C1,it:C2-≻C1,[128X[104X
+    [4X[28X                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )[128X[104X
+    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ][128X[104X
     [4X[25Xgap>[125X [27XN( Delta2.it ) = N.it;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XL := [ Delta2.it, Delta2.id, Delta2.t ];[127X[104X
     [4X[28X[ (C2)-[(it)]->(C1), (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ][128X[104X
     [4X[25Xgap>[125X [27Xmor := PreComposeList( L );[127X[104X
-    [4X[28X(C2)-[(is*id*t)]->(C1)[128X[104X
+    [4X[28X(C2)-[(it*pt*is)]->(C1)[128X[104X
     [4X[25Xgap>[125X [27XDecompositionOfMorphismInCategory( mor );[127X[104X
-    [4X[28X[ (C2)-[(is)]->(C1), (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ][128X[104X
+    [4X[28X[ (C2)-[(it)]->(C1), (C1)-[(pt)]->(C2), (C2)-[(is)]->(C1) ][128X[104X
     [4X[25Xgap>[125X [27XNL := N( mor );[127X[104X
     [4X[28X|7| → |26|[128X[104X
     [4X[25Xgap>[125X [27XDisplay( NL );[127X[104X
