@@ -1,19 +1,33 @@
   
-  [1X4 [33X[0;0YFuther CAP operations[133X[101X
+  [1X4 [33X[0;0YPrecompilation[133X[101X
   
-  
-  [1X4.1 [33X[0;0YAdd-methods[133X[101X
-  
-  [1X4.1-1 AddSetOfGeneratingMorphismsOfCategory[101X
-  
-  [33X[1;0Y[29X[2XAddSetOfGeneratingMorphismsOfCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [33X[1;0Y[29X[2XAddSetOfGeneratingMorphismsOfCategory[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XSetOfGeneratingMorphismsOfCategory[110X.  Optionally, a weight (default: 100) can
-  be specified which should roughly correspond to the computational complexity
-  of  the  function  (lower  weight = less complex = faster execution). [23XF: ( )
-  \mapsto \mathtt{SetOfGeneratingMorphismsOfCategory}()[123X.[133X
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FpCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2024.07-09", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FpCategories", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
+    [4X[25X>[125X [27X  function( quiver )[127X[104X
+    [4X[25X>[125X [27X    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ); return CategoryFromNerveData( PathCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ FinQuiver( "q(a,b)[m:a->b]" ) ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "CategoryFromNerveDataPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "FpCategories";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name[127X[104X
+    [4X[25X>[125X [27X        : operations := Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( given_arguments[1] : no_precompiled_code := true ) ),[127X[104X
+    [4X[25X>[125X [27X                                [ "HomomorphismStructureOnMorphismsWithGivenObjects" ] ) );;[127X[104X
+    [4X[25Xgap>[125X [27XCategoryFromNerveDataPrecompiled( given_arguments[1] );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q(a,b)[m:a-≻b]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XCategoryFromNerveData( PathCategory( given_arguments[1] ) )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
   
