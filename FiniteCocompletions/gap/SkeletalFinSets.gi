@@ -154,7 +154,11 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
     Assert( 0, HasRangeCategoryOfHomomorphismStructure( sFinSets ) );
     Assert( 0, IsIdenticalObj( sFinSets, RangeCategoryOfHomomorphismStructure( sFinSets ) ) );
     
-    Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( sFinSets, "IsEquippedWithHomomorphismStructure" ) );
+    if IsFinalized( sFinSets ) then
+        
+        Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( sFinSets, "IsEquippedWithHomomorphismStructure" ) );
+        
+    fi;
     
     return sFinSets;
     

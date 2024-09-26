@@ -25,4 +25,4 @@ gap> IsIsomorphicForObjects( p, Coproduct( [ p, p ] ) );
 true
 
 #
-gap> STOP_TEST( "cartesian" );
+gap> STOP_TEST( "lift_for_prosets" );
