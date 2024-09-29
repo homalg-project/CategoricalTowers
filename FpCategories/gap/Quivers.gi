@@ -152,7 +152,8 @@ InstallGlobalFunction( RandomFinQuiver,
 end );
 
 ##
-InstallGlobalFunction( FinQuiver,
+InstallMethod( FinQuiver,
+        [ IsList ],
   
   function ( q_datum )
     local colors, name, q;

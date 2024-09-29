@@ -17,3 +17,7 @@ ReadPackage( "FpCategories", "gap/ToolsMethodRecord.gi");
 ReadPackage( "FpCategories", "gap/ToolsMethodRecordInstallations.autogen.gi");
 ReadPackage( "FpCategories", "gap/ToolsDerivedMethods.gi");
 ReadPackage( "FpCategories", "gap/SimplicialCategory.gi");
+
+if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
+    ReadPackage( "FpCategories", "gap/Julia.gi" );
+fi;
