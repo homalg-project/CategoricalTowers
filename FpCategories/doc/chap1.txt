@@ -6,7 +6,7 @@
   
   [1X1.1-1 FinQuiver[101X
   
-  [33X[1;0Y[29X[2XFinQuiver[102X( [3Xq_datum[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XFinQuiver[102X( [3Xq_datum[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X quiver[133X
   
   [33X[0;0YConstruct a CAP quiver out of the [3Xq_datum[103X which is specified as follows:[133X

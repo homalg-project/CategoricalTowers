@@ -18,7 +18,7 @@
   [2XDefiningRelations[102X, for IsQuotientOfPathCategory 2.2-3 
   [2XDefiningTripleOfUnderlyingQuiver[102X, for IsCapCategory 3.3-1 
   [2XExternalHoms[102X, for IsFinQuiver 1.2-14 
-  [2XFinQuiver[102X 1.1-1 
+  [2XFinQuiver[102X, for IsList 1.1-1 
   [2XGroebnerBasis[102X, for IsPathCategory, IsDenseList 6.1-1 
   [2XGroebnerBasisOfDefiningRelations[102X, for IsQuotientOfPathCategory 2.2-4 
   [2XHasFiniteNumberOfMacaulayMorphisms[102X, for IsPathCategory, IsDenseList 6.4-11 
