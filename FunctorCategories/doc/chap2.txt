@@ -1091,6 +1091,20 @@
     [4X[28XA morphism in FiniteStrictCoproductCompletion([128X[104X
     [4X[28XFreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
     [4X[28X/ [ x*x*x*x*x*x*x = x*x*x ] ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xpi := EpimorphismFromSomeProjectiveObject( G );[127X[104X
+    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27Xast := AstrictionToCoimage( pi );[127X[104X
+    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( ast );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( ast );[127X[104X
+    [4X[28XImage of <(o)>:[128X[104X
+    [4X[28X{ 0,..., 7 } ⱶ[ 7, 2, 3, 1, 0, 5, 4, 6 ]→ { 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data[128X[104X
   [4X[32X[104X
   
   [33X[0;0YStream-vortex-system: Study the colimit completion of a cyclic monoid[133X
@@ -1210,6 +1224,22 @@
     [4X[28XA morphism in FiniteStrictCoproductCompletion([128X[104X
     [4X[28XFreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
     [4X[28X/ [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ] ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xpi := EpimorphismFromSomeProjectiveObject( G );[127X[104X
+    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27Xast := AstrictionToCoimage( pi );[127X[104X
+    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( ast );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( ast );[127X[104X
+    [4X[28XImage of <(o)>:[128X[104X
+    [4X[28X{ 0,..., 17 } ⱶ[ 17, 16, 9, 6, 0, 5, 4, 3, 2,[128X[104X
+    [4X[28X                 1, 15, 10, 11, 7, 12, 13, 8, 14 ]→ { 0,..., 17 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[28X/ [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
   [4X[32X[104X
   
   

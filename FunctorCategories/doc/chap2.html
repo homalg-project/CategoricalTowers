@@ -1237,6 +1237,20 @@ true
 A morphism in FiniteStrictCoproductCompletion(
 FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
 / [ x*x*x*x*x*x*x = x*x*x ] ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi := EpimorphismFromSomeProjectiveObject( G );</span>
+&lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+ / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ast := AstrictionToCoimage( pi );</span>
+&lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+ / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( ast );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ast );</span>
+Image of &lt;(o)&gt;:
+{ 0,..., 7 } ⱶ[ 7, 2, 3, 1, 0, 5, 4, 6 ]→ { 0,..., 7 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data
 </pre></div>
 
 <p>Stream-vortex-system: Study the colimit completion of a cyclic monoid</p>
@@ -1357,6 +1371,22 @@ true
 A morphism in FiniteStrictCoproductCompletion(
 FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
 / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ] ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi := EpimorphismFromSomeProjectiveObject( G );</span>
+&lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+ / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ast := AstrictionToCoimage( pi );</span>
+&lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+ / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( ast );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ast );</span>
+Image of &lt;(o)&gt;:
+{ 0,..., 17 } ⱶ[ 17, 16, 9, 6, 0, 5, 4, 3, 2,
+                 1, 15, 10, 11, 7, 12, 13, 8, 14 ]→ { 0,..., 17 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
+/ [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )
+given by the above data
 </pre></div>
 
 <p><a id="X7EF1F1847C6C6973" name="X7EF1F1847C6C6973"></a></p>
