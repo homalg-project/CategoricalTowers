@@ -12,7 +12,3 @@ ReadPackage( "FpCategories", "gap/CategoryFromNerveData.gd");
 ReadPackage( "FpCategories", "gap/Tools.gd");
 ReadPackage( "FpCategories", "gap/ToolsMethodRecordDeclarations.autogen.gd");
 ReadPackage( "FpCategories", "gap/SimplicialCategory.gd");
-
-if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
-    ReadPackage( "FpCategories", "gap/Julia.gi" );
-fi;
