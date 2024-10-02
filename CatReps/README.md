@@ -65,7 +65,7 @@ which constructively
 * IsEquippedWithHomomorphismStructure
 * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 * IsSymmetricMonoidalCategory
-* IsAbelianCategory
+* IsAbelianCategoryWithEnoughProjectives
 gap> CommutativeRingOfLinearCategory( CatReps );
 Q
 ```

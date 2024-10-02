@@ -45,7 +45,7 @@ Display( CatReps );
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 #! * IsSymmetricMonoidalCategory
-#! * IsAbelianCategory
+#! * IsAbelianCategoryWithEnoughProjectives
 CommutativeRingOfLinearCategory( CatReps );
 #! GF(3)
 zero := ZeroObject( CatReps );
