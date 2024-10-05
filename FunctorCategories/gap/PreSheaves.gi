@@ -1523,6 +1523,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
        IsCategoryOfColumns( D ) or
        IsMatrixCategory( D ) then
         
+        if HasIsAbelianCategory( PSh ) and IsAbelianCategory( PSh ) then
+            SetIsAbelianCategoryWithEnoughProjectives( PSh, true );
+        fi;
+        
         ##
         AddEpimorphismFromSomeProjectiveObject( PSh,
           function( PSh, F )
