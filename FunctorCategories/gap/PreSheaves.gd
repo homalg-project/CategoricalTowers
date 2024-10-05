@@ -107,7 +107,7 @@ DeclareAttribute( "ImageOfYonedaEmbeddingOfSource",
 #! @Arguments PSh
 #! @Returns a list of objects
 DeclareAttribute( "SimpleObjects", IsPreSheafCategory );
-
+#! @InsertChunk SimpleObjects
 #! @InsertChunk ProjectiveResolution
 #! @InsertChunk ProjectiveResolutionAlgebroidFromDataTables
 

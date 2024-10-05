@@ -4714,8 +4714,18 @@ end );
 ##
 InstallMethod( SimpleObjects,
         [ IsPreSheafCategory ],
+        
   function ( PSh )
-    local D, defining_triple, obj_vals, mor_vals, simple_objs, i;
+    local B, D, defining_triple, obj_vals, mor_vals, simple_objs, i;
+    
+    B := Source( PSh );
+    
+    if not ( ( HasUnderlyingQuiverAlgebra( B ) and IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) ) or
+             ( HasIsAdmissibleAlgebroid( B ) and IsAdmissibleAlgebroid( B ) ) ) then
+        
+        TryNextMethod( );
+        
+    fi;
     
     D := Target( PSh );
     
@@ -4729,7 +4739,7 @@ InstallMethod( SimpleObjects,
       
       obj_vals[i] := TensorUnit( D );
       
-      mor_vals := List( defining_triple[3], r -> ZeroMorphism( D, obj_vals[r[2]], obj_vals[r[1]] ) );
+      mor_vals := List( defining_triple[3], r -> ZeroMorphism( D, obj_vals[1 + r[2]], obj_vals[1 + r[1]] ) );
       
       simple_objs[i] := CreatePreSheafByValues( PSh, obj_vals, mor_vals );
       
