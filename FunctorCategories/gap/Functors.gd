@@ -32,6 +32,7 @@ DeclareOperation( "NakayamaLeftAdjoint",
 #! @Group NakayamaLeftAdjoint
 DeclareAttribute( "NakayamaLeftAdjoint",
         IsAlgebroid );
+#! @InsertChunk NakayamaLeftAdjoint
 
 ##
 DeclareAttribute( "NakayamaRightAdjointData",
@@ -49,6 +50,7 @@ DeclareOperation( "NakayamaRightAdjoint",
 #! @Group NakayamaRightAdjoint
 DeclareAttribute( "NakayamaRightAdjoint",
         IsAlgebroid );
+#! @InsertChunk NakayamaRightAdjoint
 
 ##
 DeclareOperation( "IsbellLeftAdjointData",
