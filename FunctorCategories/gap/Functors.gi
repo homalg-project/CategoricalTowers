@@ -65,7 +65,7 @@ InstallMethod( NakayamaLeftAdjoint,
     
     Nakayama_functor := CapFunctor( "Nakayama left adjoint", PSh, coPSh );
     
-    Nakayama_functor_data := NakayamaLeftAdjointData( PSh, coPSh );
+    Nakayama_functor_data := NakayamaLeftAdjointData( coPSh );
     
     AddObjectFunction( Nakayama_functor, Nakayama_functor_data[1] );
     
@@ -137,7 +137,7 @@ InstallMethod( NakayamaRightAdjoint,
         "for categories of copresheaves and presheaves of a f.p. algebroid with a Hom-structure",
         [ IsCoPreSheafCategory, IsPreSheafCategory ],
         
-  function ( PSh, coPSh )
+  function ( coPSh, PSh )
     local Nakayama_functor, Nakayama_functor_data;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
@@ -145,7 +145,7 @@ InstallMethod( NakayamaRightAdjoint,
     
     Nakayama_functor := CapFunctor( "Nakayama right adjoint", coPSh, PSh );
     
-    Nakayama_functor_data := NakayamaRightAdjointData( coPSh, PSh );
+    Nakayama_functor_data := NakayamaRightAdjointData( PSh );
     
     AddObjectFunction( Nakayama_functor, Nakayama_functor_data[1] );
     
