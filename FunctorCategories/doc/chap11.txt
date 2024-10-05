@@ -244,6 +244,126 @@
   [33X[0;0YReturns  the  Nakayama  right adjoint functor from [3XcoPSh[103X = [10XCoPreSheaves[110X( [3XB[103X )
   [23X\to[123X [3XPSh[103X = [10XPreSheaves[110X( [3XB[103X ).[133X
   
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XF := FreeCategory( RightQuiver( "q(1,2,3)[a:1->2,b:2->3]" ) );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQF := Q[F];[127X[104X
+    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XA3 := QF / [ QF.ab ];[127X[104X
+    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XPSh := PreSheaves( A3 );[127X[104X
+    [4X[28XPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
+    [4X[28X/ relations, Rows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27Xprj := IndecomposableProjectiveObjects( PSh );[127X[104X
+    [4X[28X[ <(1)->1, (2)->0, (3)->0; (a)->0x1, (b)->0x0>,[128X[104X
+    [4X[28X  <(1)->1, (2)->1, (3)->0; (a)->1x1, (b)->0x1>,[128X[104X
+    [4X[28X  <(1)->0, (2)->1, (3)->1; (a)->1x0, (b)->1x1> ][128X[104X
+    [4X[25Xgap>[125X [27XList( prj, IsInjective );[127X[104X
+    [4X[28X[ false, true, true ][128X[104X
+    [4X[25Xgap>[125X [27XP1 := prj[1];[127X[104X
+    [4X[28X<(1)->1, (2)->0, (3)->0; (a)->0x1, (b)->0x0>[128X[104X
+    [4X[25Xgap>[125X [27Xiota0 := MonomorphismIntoInjectiveEnvelopeObject( P1 );[127X[104X
+    [4X[28X<(1)->1x1, (2)->0x1, (3)->0x0>[128X[104X
+    [4X[25Xgap>[125X [27Xepsilon1 := CokernelProjection( iota0 );[127X[104X
+    [4X[28X<(1)->1x0, (2)->1x1, (3)->0x0>[128X[104X
+    [4X[25Xgap>[125X [27XSigma1 := Target( epsilon1 );[127X[104X
+    [4X[28X<(1)->0, (2)->1, (3)->0; (a)->1x0, (b)->0x1>[128X[104X
+    [4X[25Xgap>[125X [27Xiota1 := MonomorphismIntoInjectiveEnvelopeObject( Sigma1 );[127X[104X
+    [4X[28X<(1)->0x0, (2)->1x1, (3)->0x1>[128X[104X
+    [4X[25Xgap>[125X [27Xd1 := PreCompose( epsilon1, iota1 );[127X[104X
+    [4X[28X<(1)->1x0, (2)->1x1, (3)->0x1>[128X[104X
+    [4X[25Xgap>[125X [27XIR := IsbellRightAdjoint( A3 );[127X[104X
+    [4X[28XIsbell right adjoint functor[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( IR );[127X[104X
+    [4X[28XIsbell right adjoint functor:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XCoPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
+    [4X[28X/ relations, Rows( Q ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
+    [4X[28X/ relations, Rows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27XNL := NakayamaLeftAdjoint( A3 );[127X[104X
+    [4X[28XNakayama left adjoint[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( NL );[127X[104X
+    [4X[28XNakayama left adjoint:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
+    [4X[28X/ relations, Rows( Q ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XCoPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
+    [4X[28X/ relations, Rows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27Xtau_P1 := CokernelObject( IR( NL( d1 ) ) );[127X[104X
+    [4X[28X<(1)->0, (2)->1, (3)->0; (a)->1x0, (b)->0x1>[128X[104X
+    [4X[25Xgap>[125X [27Xtau_P1 = SimpleObjects( PSh )[2];[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XF := FreeCategory( RightQuiver( "q(1,2,3)[a:1->2,b:2->3]" ) );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQF := Q[F];[127X[104X
+    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XA3 := QF / [ QF.ab ];[127X[104X
+    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XPSh := PreSheaves( A3 );[127X[104X
+    [4X[28XPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
+    [4X[28X/ relations, Rows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27Xinj := IndecomposableInjectiveObjects( PSh );[127X[104X
+    [4X[28X[ <(1)->1, (2)->1, (3)->0; (a)->1x1, (b)->0x1>,[128X[104X
+    [4X[28X  <(1)->0, (2)->1, (3)->1; (a)->1x0, (b)->1x1>,[128X[104X
+    [4X[28X  <(1)->0, (2)->0, (3)->1; (a)->0x0, (b)->1x0> ][128X[104X
+    [4X[25Xgap>[125X [27XList( inj, IsProjective );[127X[104X
+    [4X[28X[ true, true, false ][128X[104X
+    [4X[25Xgap>[125X [27XI3 := inj[3];[127X[104X
+    [4X[28X<(1)->0, (2)->0, (3)->1; (a)->0x0, (b)->1x0>[128X[104X
+    [4X[25Xgap>[125X [27Xpi0 := EpimorphismFromProjectiveCoverObject( I3 );[127X[104X
+    [4X[28X<(1)->0x0, (2)->1x0, (3)->1x1>[128X[104X
+    [4X[25Xgap>[125X [27Xkappa1 := KernelEmbedding( pi0 );[127X[104X
+    [4X[28X<(1)->0x0, (2)->1x1, (3)->0x1>[128X[104X
+    [4X[25Xgap>[125X [27XOmega1 := Source( kappa1 );[127X[104X
+    [4X[28X<(1)->0, (2)->1, (3)->0; (a)->1x0, (b)->0x1>[128X[104X
+    [4X[25Xgap>[125X [27Xpi1 := EpimorphismFromProjectiveCoverObject( Omega1 );[127X[104X
+    [4X[28X<(1)->1x0, (2)->1x1, (3)->0x0>[128X[104X
+    [4X[25Xgap>[125X [27Xd1 := PreCompose( pi1, kappa1 );[127X[104X
+    [4X[28X<(1)->1x0, (2)->1x1, (3)->0x1>[128X[104X
+    [4X[25Xgap>[125X [27XIL := IsbellLeftAdjoint( A3 );[127X[104X
+    [4X[28XIsbell left adjoint functor[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( IL );[127X[104X
+    [4X[28XIsbell left adjoint functor:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
+    [4X[28X/ relations, Rows( Q ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XCoPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
+    [4X[28X/ relations, Rows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27XNR := NakayamaRightAdjoint( A3 );[127X[104X
+    [4X[28XNakayama right adjoint[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( NR );[127X[104X
+    [4X[28XNakayama right adjoint:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XCoPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
+    [4X[28X/ relations, Rows( Q ) )[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
+    [4X[28X/ relations, Rows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27XtauI3 := KernelObject( NR( IL( d1 ) ) );[127X[104X
+    [4X[28X<(1)->0, (2)->1, (3)->0; (a)->1x0, (b)->0x1>[128X[104X
+    [4X[25Xgap>[125X [27XtauI3 = SimpleObjects( PSh )[2];[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
   [1X11.2-3 IsbellLeftAdjoint[101X
   
   [33X[1;0Y[29X[2XIsbellLeftAdjoint[102X( [3XPSh[103X, [3XcoPSh[103X ) [32X operation[133X
