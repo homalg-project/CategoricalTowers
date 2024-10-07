@@ -35,8 +35,6 @@ InstallMethod( CategoryOfLeftEModules,
     
     SetIsAbelianCategory( EVMod, true );
     
-    Reevaluate( EVMod!.derivations_weight_list );
-    
     Finalize( EVMod );
     
     SetCategoryOfLeftEModules( V, EVMod );
@@ -69,8 +67,6 @@ InstallMethod( CategoryOfRightEModules,
     SetCommutativeRingOfLinearCategory( ModEV, CommutativeRingOfLinearCategory( CapCategory( V ) ) );
     
     SetIsAbelianCategory( ModEV, true );
-    
-    Reevaluate( ModEV!.derivations_weight_list );
     
     Finalize( ModEV );
     

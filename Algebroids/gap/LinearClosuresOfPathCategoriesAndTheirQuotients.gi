@@ -84,8 +84,6 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
     end );
     
     SetDefiningTripleOfUnderlyingQuiver( kC, DefiningTripleOfUnderlyingQuiver( C ) );
-    ## this is a hotfix: delete as soon as we install all derivations at once in Finalize instead of the step-by-step addition of derivations in the Add-functions.
-    Reevaluate( kC!.derivations_weight_list );
     
     if CanCompute( C, "MorphismsOfExternalHom" ) then
         
