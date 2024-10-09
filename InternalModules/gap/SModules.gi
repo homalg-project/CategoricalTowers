@@ -35,8 +35,6 @@ InstallMethod( CategoryOfLeftSModules,
     
     SetIsAbelianCategory( SVMod, true );
     
-    Reevaluate( SVMod!.derivations_weight_list );
-    
     Finalize( SVMod );
     
     SetCategoryOfLeftSModules( V, SVMod );
@@ -69,8 +67,6 @@ InstallMethod( CategoryOfRightSModules,
     SetCommutativeRingOfLinearCategory( ModSV, CommutativeRingOfLinearCategory( CapCategory( V ) ) );
     
     SetIsAbelianCategory( ModSV, true );
-    
-    Reevaluate( ModSV!.derivations_weight_list );
     
     Finalize( ModSV );
     
