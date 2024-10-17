@@ -902,10 +902,18 @@ InstallMethod( LazyCategory,
     end );
     
     AddIsEqualForCacheForObjects( D,
-      { D, a, b } -> IsEqualForObjects( D, a, b ) );
+      function( D, a, b )
+        
+        return IsEqualForObjects( D, a, b );
+        
+    end );
     
     AddIsEqualForCacheForMorphisms( D,
-      { D, phi, psi } -> IsEqualForMorphismsOnMor( D, phi, psi ) );
+      function( D, phi, psi )
+        
+        return IsEqualForMorphismsOnMor( D, phi, psi );
+        
+    end );
     
     if CanCompute( C, "IsCongruentForMorphisms" ) then
         
@@ -988,6 +996,7 @@ InstallMethod( LazyCategory,
                 return result;
                 
             end );
+            
         fi;
         
         if CanCompute( C, "CoefficientsOfMorphism" ) then
@@ -1020,6 +1029,7 @@ InstallMethod( LazyCategory,
                 return result;
                 
             end );
+            
         fi;
         
         lazify_range_of_hom_structure := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "lazify_range_of_hom_structure", false ), true );
