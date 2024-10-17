@@ -512,10 +512,10 @@ InstallMethod( LazyCategory,
         
         if primitive_operations then
             Append( list_of_operations_to_install,
-                    [ "AssociatorLeftToRightWithGivenTensorProducts",
-                      "AssociatorRightToLeftWithGivenTensorProducts",
-                      "LeftUnitorWithGivenTensorProduct",
+                    [ "LeftUnitorWithGivenTensorProduct",
                       "RightUnitorWithGivenTensorProduct",
+                      "AssociatorLeftToRightWithGivenTensorProducts",
+                      "AssociatorRightToLeftWithGivenTensorProducts",
                       ] );
             
             Sort( list_of_operations_to_install );
