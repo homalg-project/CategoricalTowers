@@ -1,9 +1,9 @@
 #! @Chunk LazySliceCategory
 
-LoadPackage( "SubcategoriesForCAP" );
-
 #! @Example
-LoadPackage( "FinSetsForCAP", ">= 2022.05-05" );
+LoadPackage( "SubcategoriesForCAP", false );
+#! true
+LoadPackage( "FinSetsForCAP", ">= 2022.05-05", false );
 #! true
 B := FinSet( 2 );
 #! |2|
