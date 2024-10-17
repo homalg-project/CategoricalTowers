@@ -10,10 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "CatReps",
 Subtitle := "Representations and cohomology of finite categories",
-Version := "2024.09-04",
+Version := "2024.10-01",
 
-Date := "2024-10-05",
-Date := "2024-10-05",
+Date := "2024-10-17",
+Date := "2024-10-17",
 License := "GPL-2.0-or-later",
 
 Persons := [
