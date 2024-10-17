@@ -2,11 +2,11 @@
 
 #! @Example
 #! #@if ValueOption( "no_precompiled_code" ) <> true
-LoadPackage( "SubcategoriesForCAP" );
+LoadPackage( "SubcategoriesForCAP", false );
 #! true
-LoadPackage( "Toposes", ">= 2024.02-04" );
+LoadPackage( "Toposes", ">= 2024.02-04", false );
 #! true
-LoadPackage( "FinSetsForCAP", ">= 2024.02-02" );
+LoadPackage( "FinSetsForCAP", ">= 2024.02-02", false );
 #! true
 B := SubobjectClassifier( SkeletalFinSets );
 #! |2|
