@@ -510,7 +510,7 @@ InstallMethod( LazyCategory,
         Info( InfoLazyCategory, 2, "LazyCategory cannot deal with strictness of monoidal structures yet, ",
               "so we will be ignoring the following properties for ", C, ": ", ignore );
         
-        if primitive_operations then
+        if primitive_operations and HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) then
             Append( list_of_operations_to_install,
                     [ "LeftUnitorWithGivenTensorProduct",
                       "RightUnitorWithGivenTensorProduct",
