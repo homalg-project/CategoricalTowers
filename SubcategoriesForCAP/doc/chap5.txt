@@ -93,7 +93,9 @@
   [1X5.4-1 [33X[0;0YLazySliceCategory[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2022.05-05" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2022.05-05", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XB := FinSet( 2 );[127X[104X
     [4X[28X|2|[128X[104X
