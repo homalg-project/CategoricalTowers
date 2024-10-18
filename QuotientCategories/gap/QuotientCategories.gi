@@ -75,7 +75,7 @@ InstallMethod( QuotientCategory,
         [ IsRecord ],
         
   function( record )
-    local congruence_function, cat, name, category_filter, category_object_filter, category_morphism_filter,
+    local congruence_function, ambient_cat, name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, commutative_ring,
@@ -103,12 +103,12 @@ InstallMethod( QuotientCategory,
       
     fi;
     
-    cat := record.underlying_category;
+    ambient_cat := record.underlying_category;
     
     if IsBound( record.name ) then
       name := record.name;
     else
-      name := Concatenation( "QuotientCategory( ", Name( cat ), " ) defined by the congruence function ", NameFunction( record.congruence_function ) );
+      name := Concatenation( "QuotientCategory( ", Name( ambient_cat ), " ) defined by the congruence function ", NameFunction( record.congruence_function ) );
     fi;
     
     if IsBound( record.category_filter ) then
@@ -137,10 +137,10 @@ InstallMethod( QuotientCategory,
     
     morphism_datum := { quotient_cat, m } -> UnderlyingCell( m );
     
-    list_of_operations_to_install := Intersection( ListInstalledOperationsOfCategory( cat ), CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY );
+    list_of_operations_to_install := Intersection( ListInstalledOperationsOfCategory( ambient_cat ), CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY );
     
-    if HasCommutativeRingOfLinearCategory( cat ) then
-        commutative_ring := CommutativeRingOfLinearCategory( cat );
+    if HasCommutativeRingOfLinearCategory( ambient_cat ) then
+        commutative_ring := CommutativeRingOfLinearCategory( ambient_cat );
     else
         commutative_ring := fail;
     fi;
@@ -157,15 +157,15 @@ InstallMethod( QuotientCategory,
     
     if ( HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms and
          IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms and
-         HasCommutativeRingOfLinearCategory )( cat ) then
+         HasCommutativeRingOfLinearCategory )( ambient_cat ) then
         
-        if ( HasIsFieldForHomalg and IsFieldForHomalg )( CommutativeRingOfLinearCategory( cat ) ) then
+        if ( HasIsFieldForHomalg and IsFieldForHomalg )( CommutativeRingOfLinearCategory( ambient_cat ) ) then
             Add( properties, "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms" );
         fi;
         
     fi;
     
-    properties := Intersection( ListKnownCategoricalProperties( cat ), properties );
+    properties := Intersection( ListKnownCategoricalProperties( ambient_cat ), properties );
     
     if IsBound( record.extra_properties ) then
         properties := SortedList( Concatenation( properties, record.extra_properties ) );
@@ -262,8 +262,8 @@ InstallMethod( QuotientCategory,
     
     end;
     
-    if IsBound( cat!.supports_empty_limits ) then
-        supports_empty_limits := cat!.supports_empty_limits;
+    if IsBound( ambient_cat!.supports_empty_limits ) then
+        supports_empty_limits := ambient_cat!.supports_empty_limits;
     else
         supports_empty_limits := false;
     fi;
@@ -287,18 +287,18 @@ InstallMethod( QuotientCategory,
                    create_func_object := create_func_object,
                    create_func_morphism := create_func_morphism ) );
     
-    SetUnderlyingCategory( quotient_cat, cat );
+    SetUnderlyingCategory( quotient_cat, ambient_cat );
     
     ##
     AddSetOfObjectsOfCategory( quotient_cat,
-      function( cat )
+      function( quotient_cat )
         local ambient_cat, objects;
         
-        ambient_cat := UnderlyingCategory( cat );
+        ambient_cat := UnderlyingCategory( quotient_cat );
         
         objects := SetOfObjects( ambient_cat );
         
-        return List( objects, o -> ObjectConstructor( cat, o ) );
+        return List( objects, o -> ObjectConstructor( quotient_cat, o ) );
         
     end );
     
@@ -315,7 +315,7 @@ InstallMethod( QuotientCategory,
         
     end );
     
-    if CanCompute( cat, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
+    if CanCompute( ambient_cat, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
         
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( quotient_cat,
@@ -338,11 +338,11 @@ end );
 
 InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
   function( quotient_cat )
-    local cat;
+    local ambient_cat;
     
-    cat := UnderlyingCategory( quotient_cat );
+    ambient_cat := UnderlyingCategory( quotient_cat );
     
-    if CanCompute( cat, "RandomObjectByInteger" ) then
+    if CanCompute( ambient_cat, "RandomObjectByInteger" ) then
         
         AddRandomObjectByInteger( quotient_cat,
             function( quotient_cat, i )
@@ -351,7 +351,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
         
     fi;
     
-    if CanCompute( cat, "RandomMorphismWithFixedSourceAndRangeByInteger" ) then
+    if CanCompute( ambient_cat, "RandomMorphismWithFixedSourceAndRangeByInteger" ) then
         
         AddRandomMorphismWithFixedSourceAndRangeByInteger( quotient_cat,
             function( quotient_cat, S, R, i )
@@ -362,7 +362,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
         
     fi;
     
-    if CanCompute( cat, "RandomMorphismWithFixedSourceByInteger" ) then
+    if CanCompute( ambient_cat, "RandomMorphismWithFixedSourceByInteger" ) then
         
         AddRandomMorphismWithFixedSourceByInteger( quotient_cat,
             function( quotient_cat, S, i )
@@ -373,7 +373,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
         
     fi;
     
-    if CanCompute( cat, "RandomMorphismWithFixedRangeByInteger" ) then
+    if CanCompute( ambient_cat, "RandomMorphismWithFixedRangeByInteger" ) then
         
         AddRandomMorphismWithFixedRangeByInteger( quotient_cat,
             function( quotient_cat, R, i )
@@ -384,7 +384,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
         
     fi;
     
-    if CanCompute( cat, "RandomMorphismByInteger" ) then
+    if CanCompute( ambient_cat, "RandomMorphismByInteger" ) then
         
         AddRandomMorphismByInteger( quotient_cat,
             function( quotient_cat, i )
@@ -394,7 +394,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
         end );
     fi;
     
-    if CanCompute( cat, "RandomObjectByList" ) then
+    if CanCompute( ambient_cat, "RandomObjectByList" ) then
         
         AddRandomObjectByList( quotient_cat,
             function( quotient_cat, L )
@@ -403,7 +403,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
         
     fi;
     
-    if CanCompute( cat, "RandomMorphismWithFixedSourceAndRangeByList" ) then
+    if CanCompute( ambient_cat, "RandomMorphismWithFixedSourceAndRangeByList" ) then
         
         AddRandomMorphismWithFixedSourceAndRangeByList( quotient_cat,
             function( quotient_cat, S, R, L )
@@ -414,7 +414,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
         
     fi;
     
-    if CanCompute( cat, "RandomMorphismWithFixedSourceByList" ) then
+    if CanCompute( ambient_cat, "RandomMorphismWithFixedSourceByList" ) then
         
         AddRandomMorphismWithFixedSourceByList( quotient_cat,
             function( quotient_cat, S, L )
@@ -425,7 +425,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
         
     fi;
     
-    if CanCompute( cat, "RandomMorphismWithFixedRangeByList" ) then
+    if CanCompute( ambient_cat, "RandomMorphismWithFixedRangeByList" ) then
         
         AddRandomMorphismWithFixedRangeByList( quotient_cat,
             function( quotient_cat, R, L )
@@ -436,7 +436,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
         
     fi;
     
-    if CanCompute( cat, "RandomMorphismByList" ) then
+    if CanCompute( ambient_cat, "RandomMorphismByList" ) then
         
         AddRandomMorphismByList( quotient_cat,
             function( quotient_cat, L )
