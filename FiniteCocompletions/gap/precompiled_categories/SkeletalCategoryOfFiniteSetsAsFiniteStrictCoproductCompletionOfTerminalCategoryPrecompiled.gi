@@ -105,6 +105,35 @@ end
     , 100 );
     
     ##
+    cat!.cached_precompiled_functions.HomomorphismStructureOnMorphismsWithGivenObjects :=
+        
+########
+function ( cat_1, source_1, alpha_1, beta_1, range_1 )
+    local deduped_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, hoisted_6_1;
+    hoisted_6_1 := Length( Range( beta_1 ) );
+    deduped_5_1 := [ 0 .. Length( Source( alpha_1 ) ) - 1 ];
+    hoisted_4_1 := AsList( beta_1 );
+    hoisted_3_1 := AsList( alpha_1 );
+    hoisted_2_1 := [ 0 .. Length( Range( alpha_1 ) ) - 1 ];
+    deduped_1_1 := Length( Source( beta_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( gg_2 )
+              local hoisted_1_2, hoisted_2_2;
+              hoisted_1_2 := List( hoisted_2_1, function ( i_3 )
+                      return REM_INT( QUO_INT( gg_2, deduped_1_1 ^ i_3 ), deduped_1_1 );
+                  end );
+              hoisted_2_2 := List( deduped_5_1, function ( j_3 )
+                      return hoisted_4_1[1 + hoisted_1_2[(1 + hoisted_3_1[(1 + j_3)])]];
+                  end );
+              return Sum( deduped_5_1, function ( i_3 )
+                      return hoisted_2_2[(1 + i_3)] * hoisted_6_1 ^ i_3;
+                  end );
+          end ) );
+end
+########
+        
+    ;
+    
+    ##
     AddHomomorphismStructureOnObjects( cat,
         
 ########
@@ -386,6 +415,29 @@ end
 ########
         
     , 100 );
+    
+    ##
+    cat!.cached_precompiled_functions.MorphismsOfExternalHom :=
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    local hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
+    deduped_7_1 := Length( arg2_1 );
+    deduped_6_1 := Length( arg3_1 );
+    deduped_5_1 := [ 0 .. deduped_6_1 ^ deduped_7_1 - 1 ];
+    hoisted_3_1 := [ 0 .. deduped_7_1 - 1 ];
+    hoisted_4_1 := List( deduped_5_1, function ( m_2 )
+            return List( hoisted_3_1, function ( i_3 )
+                    return DigitInPositionalNotation( m_2, i_3, deduped_7_1, deduped_6_1 );
+                end );
+        end );
+    return Concatenation( List( deduped_5_1, function ( m_2 )
+              return [ CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, AsList, hoisted_4_1[1 + m_2] ) ];
+          end ) );
+end
+########
+        
+    ;
     
     ##
     AddObjectConstructor( cat,

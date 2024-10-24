@@ -75,6 +75,58 @@ end
     , 100 );
     
     ##
+    cat!.cached_precompiled_functions.Coproduct :=
+        
+########
+function ( cat_1, objects_1 )
+    local hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
+    deduped_6_1 := Target( cat_1 );
+    deduped_5_1 := Source( cat_1 );
+    deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
+    hoisted_3_1 := [ 1 .. Length( objects_1 ) ];
+    hoisted_2_1 := deduped_4_1[3];
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Target, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
+                return CreateCapCategoryObjectWithAttributes( deduped_6_1, Length, Sum( List( objects_1, function ( F_3 )
+                            return List( ValuesOfPreSheaf( F_3 )[1], Length )[o_2];
+                        end ) ) );
+            end ), LazyHList( [ 1 .. deduped_4_1[2] ], function ( m_2 )
+                local hoisted_1_2, hoisted_2_2, hoisted_3_2, deduped_4_2, hoisted_5_2, deduped_6_2;
+                deduped_6_2 := hoisted_2_1[m_2];
+                hoisted_5_2 := List( objects_1, function ( F_3 )
+                        return List( ValuesOfPreSheaf( F_3 )[2], AsList )[m_2];
+                    end );
+                deduped_4_2 := List( objects_1, function ( F_3 )
+                        return List( ValuesOfPreSheaf( F_3 )[2], function ( logic_new_func_x_4 )
+                                  return Length( Range( logic_new_func_x_4 ) );
+                              end )[m_2];
+                    end );
+                hoisted_3_2 := List( objects_1, function ( F_3 )
+                        return List( ValuesOfPreSheaf( F_3 )[2], function ( logic_new_func_x_4 )
+                                  return Length( Source( logic_new_func_x_4 ) );
+                              end )[m_2];
+                    end );
+                hoisted_2_2 := 1 + deduped_6_2[1];
+                hoisted_1_2 := 1 + deduped_6_2[2];
+                return CreateCapCategoryMorphismWithAttributes( deduped_6_1, CreateCapCategoryObjectWithAttributes( deduped_6_1, Length, Sum( List( objects_1, function ( F_3 )
+                              return List( ValuesOfPreSheaf( F_3 )[1], Length )[hoisted_1_2];
+                          end ) ) ), CreateCapCategoryObjectWithAttributes( deduped_6_1, Length, Sum( List( objects_1, function ( F_3 )
+                              return List( ValuesOfPreSheaf( F_3 )[1], Length )[hoisted_2_2];
+                          end ) ) ), AsList, Concatenation( List( hoisted_3_1, function ( i_3 )
+                            local hoisted_1_3, hoisted_2_3, deduped_3_3;
+                            deduped_3_3 := Sum( deduped_4_2{[ 1 .. i_3 - 1 ]} );
+                            hoisted_2_3 := [ deduped_3_3 .. deduped_3_3 + deduped_4_2[i_3] - 1 ];
+                            hoisted_1_3 := hoisted_5_2[i_3];
+                            return List( [ 0 .. hoisted_3_2[i_3] - 1 ], function ( i_4 )
+                                    return hoisted_2_3[1 + hoisted_1_3[(1 + i_4)]];
+                                end );
+                        end ) ) );
+            end ) ) );
+end
+########
+        
+    ;
+    
+    ##
     AddInjectionOfCofactorOfCoproductWithGivenCoproduct( cat,
         
 ########
@@ -99,6 +151,30 @@ end
     , 100 );
     
     ##
+    cat!.cached_precompiled_functions.InjectionOfCofactorOfCoproductWithGivenCoproduct :=
+        
+########
+function ( cat_1, objects_1, k_1, P_1 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1;
+    hoisted_3_1 := Target( cat_1 );
+    hoisted_2_1 := [ 1 .. k_1 - 1 ];
+    hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, objects_1[k_1], P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+              local deduped_1_2, deduped_2_2;
+              deduped_2_2 := List( objects_1, function ( F_3 )
+                      return List( ValuesOfPreSheaf( F_3 )[1], Length )[o_2];
+                  end );
+              deduped_1_2 := Sum( deduped_2_2{hoisted_2_1} );
+              return CreateCapCategoryMorphismWithAttributes( hoisted_3_1, List( objects_1, function ( F_3 )
+                          return ValuesOfPreSheaf( F_3 )[1][o_2];
+                      end )[k_1], hoisted_1_1[o_2], AsList, [ deduped_1_2 .. deduped_1_2 + deduped_2_2[k_1] - 1 ] );
+          end ) );
+end
+########
+        
+    ;
+    
+    ##
     AddUniversalMorphismFromCoproductWithGivenCoproduct( cat,
         
 ########
@@ -116,6 +192,25 @@ end
 ########
         
     , 100 );
+    
+    ##
+    cat!.cached_precompiled_functions.UniversalMorphismFromCoproductWithGivenCoproduct :=
+        
+########
+function ( cat_1, objects_1, T_1, tau_1, P_1 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1;
+    hoisted_3_1 := Target( cat_1 );
+    hoisted_2_1 := ValuesOfPreSheaf( T_1 )[1];
+    hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+              return CreateCapCategoryMorphismWithAttributes( hoisted_3_1, hoisted_1_1[o_2], hoisted_2_1[o_2], AsList, Concatenation( List( tau_1, function ( eta_3 )
+                          return List( ValuesOnAllObjects( eta_3 ), AsList )[o_2];
+                      end ) ) );
+          end ) );
+end
+########
+        
+    ;
     
     ##
     AddHomomorphismStructureOnObjects( cat,
@@ -395,6 +490,295 @@ end
 ########
         
     , 100 );
+    
+    ##
+    cat!.cached_precompiled_functions.HomomorphismStructureOnObjects :=
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    local deduped_1_1, deduped_2_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_10_1, deduped_12_1, deduped_13_1, deduped_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, deduped_19_1, deduped_20_1, deduped_21_1, hoisted_22_1, deduped_24_1, hoisted_26_1, hoisted_27_1, hoisted_28_1, deduped_29_1, hoisted_31_1, deduped_32_1, deduped_33_1, hoisted_34_1, hoisted_35_1, hoisted_36_1, hoisted_37_1, deduped_38_1, deduped_39_1, deduped_40_1, deduped_41_1, deduped_42_1, deduped_43_1, deduped_44_1, deduped_45_1, deduped_46_1, deduped_47_1, deduped_48_1, deduped_49_1, deduped_50_1, deduped_51_1;
+    deduped_51_1 := ValuesOfPreSheaf( arg3_1 );
+    deduped_50_1 := ValuesOfPreSheaf( arg2_1 );
+    deduped_49_1 := Source( cat_1 );
+    deduped_48_1 := deduped_50_1[2];
+    deduped_47_1 := SetOfObjectsAsUnresolvableAttribute( deduped_49_1 );
+    deduped_46_1 := DefiningTripleOfUnderlyingQuiver( deduped_49_1 );
+    deduped_45_1 := [ 0 .. deduped_46_1[2] - 1 ];
+    deduped_44_1 := [ 0 .. deduped_46_1[1] - 1 ];
+    deduped_1_1 := List( deduped_50_1[1], Length );
+    deduped_43_1 := List( deduped_44_1, function ( o_2 )
+            return deduped_1_1[1 + o_2];
+        end );
+    deduped_5_1 := deduped_46_1[3];
+    deduped_7_1 := List( deduped_45_1, function ( m_2 )
+            return deduped_5_1[1 + m_2][1];
+        end );
+    deduped_6_1 := List( deduped_45_1, function ( m_2 )
+            return deduped_5_1[1 + m_2][2];
+        end );
+    deduped_8_1 := List( deduped_45_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + m_2;
+            deduped_1_2 := deduped_1_1[1 + deduped_6_1[deduped_2_2]];
+            return NTuple( 2, deduped_1_2, ListWithIdenticalEntries( deduped_1_2, deduped_47_1[1 + deduped_7_1[deduped_2_2]] ) );
+        end );
+    deduped_42_1 := [ 0 .. Sum( List( deduped_45_1, function ( i_2 )
+                    return deduped_8_1[1 + i_2][1];
+                end ) ) - 1 ];
+    deduped_4_1 := List( deduped_51_1[1], Length );
+    deduped_2_1 := List( deduped_47_1, UnderlyingVertex );
+    deduped_41_1 := Concatenation( List( deduped_44_1, function ( o_2 )
+              local hoisted_1_2, deduped_2_2;
+              deduped_2_2 := 1 + o_2;
+              hoisted_1_2 := deduped_2_1[deduped_2_2];
+              return ListWithIdenticalEntries( deduped_1_1[deduped_2_2], deduped_4_1[SafeUniquePositionProperty( deduped_47_1, function ( obj_3 )
+                         return UnderlyingVertex( obj_3 ) = hoisted_1_2;
+                     end )] );
+          end ) );
+    deduped_40_1 := [ 0 .. Sum( List( deduped_45_1, function ( m_2 )
+                    return deduped_1_1[1 + deduped_5_1[(1 + m_2)][2]];
+                end ) ) - 1 ];
+    deduped_39_1 := Product( deduped_41_1 );
+    deduped_38_1 := [ 0 .. deduped_39_1 - 1 ];
+    deduped_20_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_49_1 );
+    deduped_33_1 := List( deduped_45_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + m_2;
+            deduped_1_2 := deduped_1_1[1 + deduped_6_1[deduped_2_2]];
+            return NTuple( 2, [ 0 .. deduped_1_2 - 1 ], ListWithIdenticalEntries( deduped_1_2, deduped_20_1[deduped_2_2] ) );
+        end );
+    deduped_13_1 := UnderlyingQuiverAlgebra( deduped_49_1 );
+    deduped_12_1 := List( deduped_44_1, function ( o_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + o_2;
+            deduped_1_2 := deduped_1_1[deduped_2_2];
+            return NTuple( 2, deduped_1_2, ListWithIdenticalEntries( deduped_1_2, deduped_47_1[deduped_2_2] ) );
+        end );
+    deduped_32_1 := List( deduped_45_1, function ( i_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := deduped_6_1[1 + i_2];
+            deduped_2_2 := 1 + deduped_3_2;
+            deduped_1_2 := Sum( deduped_43_1{[ 1 .. deduped_3_2 ]} );
+            return NTuple( 2, [ deduped_1_2 .. deduped_1_2 + deduped_43_1[deduped_2_2] - 1 ], List( deduped_12_1[deduped_2_2][2], function ( objC_3 )
+                      return CreateCapCategoryMorphismWithAttributes( deduped_49_1, objC_3, objC_3, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_13_1, QuiverVertexAsIdentityPath( UnderlyingVertex( objC_3 ) ) ) );
+                  end ) );
+        end );
+    deduped_24_1 := Sum( deduped_43_1 );
+    hoisted_35_1 := Concatenation( List( deduped_45_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2;
+              deduped_3_2 := 1 + i_2;
+              hoisted_2_2 := deduped_32_1[deduped_3_2][1];
+              hoisted_1_2 := deduped_33_1[deduped_3_2][1];
+              return List( [ 0 .. deduped_8_1[deduped_3_2][1] - 1 ], function ( i_3 )
+                      local hoisted_3_3, deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3;
+                      deduped_7_3 := hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                      deduped_6_3 := 1 + deduped_7_3;
+                      deduped_5_3 := deduped_41_1[deduped_6_3];
+                      deduped_4_3 := Product( deduped_41_1{[ 1 .. deduped_7_3 ]} );
+                      hoisted_3_3 := DivIntWithGivenQuotient( deduped_39_1, deduped_4_3, deduped_5_3 * Product( deduped_41_1{[ (deduped_6_3 + 1) .. deduped_24_1 ]} ) );
+                      return List( deduped_38_1, function ( i_4 )
+                              return RemIntWithDomain( QuoIntWithDomain( i_4, deduped_4_3, deduped_39_1 ), deduped_5_3, hoisted_3_3 );
+                          end );
+                  end );
+          end ) );
+    deduped_21_1 := List( deduped_51_1[2], AsList );
+    hoisted_34_1 := Concatenation( List( deduped_45_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2;
+              deduped_10_2 := 1 + i_2;
+              deduped_9_2 := deduped_33_1[deduped_10_2];
+              deduped_8_2 := deduped_9_2[2];
+              deduped_7_2 := deduped_32_1[deduped_10_2][2];
+              hoisted_6_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return QuiverVertexAsIdentityPath( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
+                  end );
+              hoisted_5_2 := List( deduped_7_2, UnderlyingQuiverAlgebraElement );
+              hoisted_4_2 := List( deduped_8_2, UnderlyingQuiverAlgebraElement );
+              hoisted_3_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Source( logic_new_func_x_3 ) );
+                  end );
+              hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
+                  end );
+              hoisted_1_2 := deduped_9_2[1];
+              return List( [ 0 .. deduped_8_1[deduped_10_2][1] - 1 ], function ( i_3 )
+                      local deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3, deduped_8_3;
+                      deduped_8_3 := 1 + i_3;
+                      deduped_7_3 := hoisted_3_2[deduped_8_3];
+                      deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
+                      deduped_5_3 := hoisted_2_2[deduped_6_3];
+                      deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                  if deduped_5_3 = deduped_7_3 then
+                                      return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
+                                  else
+                                      return false;
+                                  fi;
+                                  return;
+                              end )(  ) then
+                          return [ 0 .. deduped_4_1[SafeUniquePositionProperty( deduped_47_1, function ( obj_4 )
+                                         return (UnderlyingVertex( obj_4 ) = deduped_7_3);
+                                     end )] - 1 ];
+                      else
+                          return deduped_21_1[SafeUniquePositionProperty( deduped_20_1, function ( mor_4 )
+                                   if UnderlyingVertex( Source( mor_4 ) ) = deduped_7_3 and UnderlyingVertex( Range( mor_4 ) ) = deduped_5_3 then
+                                       return UnderlyingQuiverAlgebraElement( mor_4 ) = deduped_4_3;
+                                   else
+                                       return false;
+                                   fi;
+                                   return;
+                               end )];
+                      fi;
+                      return;
+                  end );
+          end ) );
+    deduped_10_1 := Concatenation( List( deduped_45_1, function ( i_2 )
+              return ListWithIdenticalEntries( deduped_8_1[1 + i_2][1], deduped_39_1 );
+          end ) );
+    hoisted_36_1 := List( deduped_42_1, function ( i_2 )
+            local hoisted_1_2, hoisted_2_2, deduped_3_2;
+            deduped_3_2 := 1 + i_2;
+            hoisted_2_2 := hoisted_34_1[deduped_3_2];
+            hoisted_1_2 := hoisted_35_1[deduped_3_2];
+            return List( [ 0 .. deduped_10_1[deduped_3_2] - 1 ], function ( i_3 )
+                    return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                end );
+        end );
+    hoisted_28_1 := Concatenation( List( deduped_45_1, function ( m_2 )
+              local hoisted_1_2, deduped_2_2;
+              deduped_2_2 := 1 + m_2;
+              hoisted_1_2 := deduped_2_1[1 + deduped_7_1[deduped_2_2]];
+              return ListWithIdenticalEntries( deduped_1_1[1 + deduped_6_1[deduped_2_2]], deduped_4_1[SafeUniquePositionProperty( deduped_47_1, function ( obj_3 )
+                         return UnderlyingVertex( obj_3 ) = hoisted_1_2;
+                     end )] );
+          end ) );
+    deduped_29_1 := List( deduped_40_1, function ( j_2 )
+            return Product( hoisted_28_1{[ 1 .. j_2 ]} );
+        end );
+    hoisted_37_1 := List( deduped_38_1, function ( i_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := 1 + i_2;
+            return Sum( deduped_40_1, function ( j_3 )
+                    local deduped_1_3;
+                    deduped_1_3 := 1 + j_3;
+                    return hoisted_36_1[deduped_1_3][hoisted_1_2] * deduped_29_1[deduped_1_3];
+                end );
+        end );
+    hoisted_18_1 := List( deduped_47_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
+    hoisted_17_1 := List( deduped_48_1, function ( logic_new_func_x_2 )
+            return Length( Source( logic_new_func_x_2 ) );
+        end );
+    hoisted_16_1 := List( deduped_48_1, AsList );
+    deduped_19_1 := List( deduped_45_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := 1 + m_2;
+            deduped_2_2 := 1 + deduped_7_1[deduped_3_2];
+            deduped_1_2 := deduped_47_1[deduped_2_2];
+            return NTuple( 2, hoisted_16_1[deduped_3_2], ListWithIdenticalEntries( hoisted_17_1[deduped_3_2], CreateCapCategoryMorphismWithAttributes( deduped_49_1, deduped_1_2, deduped_1_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_13_1, hoisted_18_1[deduped_2_2] ) ) ) );
+        end );
+    deduped_15_1 := List( deduped_45_1, function ( i_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := deduped_7_1[1 + i_2];
+            deduped_2_2 := 1 + deduped_3_2;
+            deduped_1_2 := Sum( deduped_43_1{[ 1 .. deduped_3_2 ]} );
+            return NTuple( 2, [ deduped_1_2 .. deduped_1_2 + deduped_43_1[deduped_2_2] - 1 ], List( deduped_12_1[deduped_2_2][2], function ( objC_3 )
+                      return CreateCapCategoryMorphismWithAttributes( deduped_49_1, objC_3, objC_3, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_13_1, QuiverVertexAsIdentityPath( UnderlyingVertex( objC_3 ) ) ) );
+                  end ) );
+        end );
+    hoisted_26_1 := Concatenation( List( deduped_45_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2;
+              deduped_3_2 := 1 + i_2;
+              hoisted_2_2 := deduped_15_1[deduped_3_2][1];
+              hoisted_1_2 := deduped_19_1[deduped_3_2][1];
+              return List( [ 0 .. deduped_8_1[deduped_3_2][1] - 1 ], function ( i_3 )
+                      local hoisted_3_3, deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3;
+                      deduped_7_3 := hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                      deduped_6_3 := 1 + deduped_7_3;
+                      deduped_5_3 := deduped_41_1[deduped_6_3];
+                      deduped_4_3 := Product( deduped_41_1{[ 1 .. deduped_7_3 ]} );
+                      hoisted_3_3 := DivIntWithGivenQuotient( deduped_39_1, deduped_4_3, deduped_5_3 * Product( deduped_41_1{[ (deduped_6_3 + 1) .. deduped_24_1 ]} ) );
+                      return List( deduped_38_1, function ( i_4 )
+                              return RemIntWithDomain( QuoIntWithDomain( i_4, deduped_4_3, deduped_39_1 ), deduped_5_3, hoisted_3_3 );
+                          end );
+                  end );
+          end ) );
+    hoisted_22_1 := Concatenation( List( deduped_45_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2;
+              deduped_10_2 := 1 + i_2;
+              deduped_9_2 := deduped_19_1[deduped_10_2];
+              deduped_8_2 := deduped_9_2[2];
+              deduped_7_2 := deduped_15_1[deduped_10_2][2];
+              hoisted_6_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return QuiverVertexAsIdentityPath( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
+                  end );
+              hoisted_5_2 := List( deduped_7_2, UnderlyingQuiverAlgebraElement );
+              hoisted_4_2 := List( deduped_8_2, UnderlyingQuiverAlgebraElement );
+              hoisted_3_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Source( logic_new_func_x_3 ) );
+                  end );
+              hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
+                  end );
+              hoisted_1_2 := deduped_9_2[1];
+              return List( [ 0 .. deduped_8_1[deduped_10_2][1] - 1 ], function ( i_3 )
+                      local deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3, deduped_8_3;
+                      deduped_8_3 := 1 + i_3;
+                      deduped_7_3 := hoisted_3_2[deduped_8_3];
+                      deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
+                      deduped_5_3 := hoisted_2_2[deduped_6_3];
+                      deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                  if deduped_5_3 = deduped_7_3 then
+                                      return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
+                                  else
+                                      return false;
+                                  fi;
+                                  return;
+                              end )(  ) then
+                          return [ 0 .. deduped_4_1[SafeUniquePositionProperty( deduped_47_1, function ( obj_4 )
+                                         return (UnderlyingVertex( obj_4 ) = deduped_7_3);
+                                     end )] - 1 ];
+                      else
+                          return deduped_21_1[SafeUniquePositionProperty( deduped_20_1, function ( mor_4 )
+                                   if UnderlyingVertex( Source( mor_4 ) ) = deduped_7_3 and UnderlyingVertex( Range( mor_4 ) ) = deduped_5_3 then
+                                       return UnderlyingQuiverAlgebraElement( mor_4 ) = deduped_4_3;
+                                   else
+                                       return false;
+                                   fi;
+                                   return;
+                               end )];
+                      fi;
+                      return;
+                  end );
+          end ) );
+    hoisted_27_1 := List( deduped_42_1, function ( i_2 )
+            local hoisted_1_2, hoisted_2_2, deduped_3_2;
+            deduped_3_2 := 1 + i_2;
+            hoisted_2_2 := hoisted_22_1[deduped_3_2];
+            hoisted_1_2 := hoisted_26_1[deduped_3_2];
+            return List( [ 0 .. deduped_10_1[deduped_3_2] - 1 ], function ( i_3 )
+                    return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                end );
+        end );
+    hoisted_31_1 := List( deduped_38_1, function ( i_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := 1 + i_2;
+            return Sum( deduped_40_1, function ( j_3 )
+                    local deduped_1_3;
+                    deduped_1_3 := 1 + j_3;
+                    return hoisted_27_1[deduped_1_3][hoisted_1_2] * deduped_29_1[deduped_1_3];
+                end );
+        end );
+    return CreateCapCategoryObjectWithAttributes( Target( cat_1 ), Length, Length( Filtered( deduped_38_1, function ( x_2 )
+                local deduped_1_2;
+                deduped_1_2 := 1 + x_2;
+                return hoisted_31_1[deduped_1_2] = hoisted_37_1[deduped_1_2];
+            end ) ) );
+end
+########
+        
+    ;
     
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
@@ -1075,6 +1459,708 @@ end
     , 100 );
     
     ##
+    cat!.cached_precompiled_functions.HomomorphismStructureOnMorphismsWithGivenObjects :=
+        
+########
+function ( cat_1, source_1, alpha_1, beta_1, range_1 )
+    local deduped_1_1, deduped_2_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_10_1, deduped_12_1, deduped_13_1, deduped_15_1, hoisted_16_1, hoisted_17_1, deduped_18_1, deduped_19_1, deduped_20_1, deduped_21_1, hoisted_22_1, hoisted_26_1, hoisted_27_1, hoisted_28_1, deduped_29_1, hoisted_31_1, deduped_32_1, deduped_33_1, hoisted_34_1, hoisted_35_1, hoisted_36_1, hoisted_37_1, deduped_38_1, deduped_39_1, hoisted_40_1, hoisted_41_1, hoisted_45_1, hoisted_46_1, hoisted_49_1, deduped_50_1, hoisted_51_1, hoisted_52_1, deduped_53_1, deduped_54_1, hoisted_55_1, deduped_58_1, hoisted_60_1, hoisted_61_1, hoisted_62_1, hoisted_63_1, deduped_64_1, deduped_65_1, deduped_66_1, hoisted_67_1, hoisted_68_1, deduped_69_1, hoisted_70_1, hoisted_71_1, hoisted_72_1, hoisted_73_1, deduped_74_1, hoisted_76_1, deduped_77_1, deduped_78_1, hoisted_79_1, hoisted_80_1, hoisted_81_1, hoisted_82_1, hoisted_83_1, hoisted_84_1, hoisted_85_1, hoisted_86_1, deduped_87_1, deduped_88_1, deduped_89_1, deduped_90_1, deduped_91_1, deduped_92_1, deduped_93_1, deduped_94_1, deduped_95_1, deduped_96_1, deduped_97_1, deduped_98_1, deduped_99_1, deduped_100_1, deduped_101_1, deduped_102_1, deduped_103_1, deduped_104_1, deduped_105_1, deduped_106_1, deduped_107_1, deduped_108_1, deduped_109_1, deduped_110_1, deduped_111_1, deduped_112_1, deduped_113_1, deduped_114_1, deduped_115_1, deduped_116_1, deduped_117_1, deduped_118_1;
+    deduped_118_1 := Source( cat_1 );
+    deduped_117_1 := ListOfValues( ValuesOnAllObjects( alpha_1 ) );
+    deduped_116_1 := ValuesOfPreSheaf( Source( beta_1 ) );
+    deduped_115_1 := ValuesOfPreSheaf( Target( alpha_1 ) );
+    deduped_114_1 := DefiningTripleOfUnderlyingQuiver( deduped_118_1 );
+    deduped_113_1 := ValuesOfPreSheaf( Target( beta_1 ) );
+    deduped_112_1 := SetOfObjectsAsUnresolvableAttribute( deduped_118_1 );
+    deduped_111_1 := ValuesOfPreSheaf( Source( alpha_1 ) );
+    deduped_110_1 := [ 0 .. Length( source_1 ) - 1 ];
+    deduped_109_1 := deduped_115_1[2];
+    deduped_108_1 := deduped_111_1[2];
+    deduped_107_1 := deduped_114_1[1];
+    deduped_106_1 := [ 1 .. deduped_107_1 ];
+    deduped_105_1 := [ 0 .. deduped_107_1 - 1 ];
+    deduped_104_1 := [ 0 .. deduped_114_1[2] - 1 ];
+    deduped_38_1 := List( deduped_115_1[1], Length );
+    deduped_103_1 := List( deduped_105_1, function ( o_2 )
+            return deduped_38_1[1 + o_2];
+        end );
+    deduped_1_1 := List( deduped_111_1[1], Length );
+    deduped_102_1 := List( deduped_105_1, function ( o_2 )
+            return deduped_1_1[1 + o_2];
+        end );
+    deduped_101_1 := Sum( deduped_102_1 );
+    deduped_5_1 := deduped_114_1[3];
+    deduped_7_1 := List( deduped_104_1, function ( m_2 )
+            return deduped_5_1[1 + m_2][1];
+        end );
+    deduped_6_1 := List( deduped_104_1, function ( m_2 )
+            return deduped_5_1[1 + m_2][2];
+        end );
+    deduped_64_1 := List( deduped_104_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + m_2;
+            deduped_1_2 := deduped_38_1[1 + deduped_6_1[deduped_2_2]];
+            return NTuple( 2, deduped_1_2, ListWithIdenticalEntries( deduped_1_2, deduped_112_1[1 + deduped_7_1[deduped_2_2]] ) );
+        end );
+    deduped_100_1 := [ 0 .. Sum( List( deduped_104_1, function ( i_2 )
+                    return deduped_64_1[1 + i_2][1];
+                end ) ) - 1 ];
+    deduped_99_1 := [ 0 .. deduped_101_1 - 1 ];
+    deduped_8_1 := List( deduped_104_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + m_2;
+            deduped_1_2 := deduped_1_1[1 + deduped_6_1[deduped_2_2]];
+            return NTuple( 2, deduped_1_2, ListWithIdenticalEntries( deduped_1_2, deduped_112_1[1 + deduped_7_1[deduped_2_2]] ) );
+        end );
+    deduped_98_1 := [ 0 .. Sum( List( deduped_104_1, function ( i_2 )
+                    return deduped_8_1[1 + i_2][1];
+                end ) ) - 1 ];
+    deduped_39_1 := List( deduped_116_1[1], Length );
+    deduped_2_1 := List( deduped_112_1, UnderlyingVertex );
+    deduped_97_1 := Concatenation( List( deduped_105_1, function ( o_2 )
+              local hoisted_1_2, deduped_2_2;
+              deduped_2_2 := 1 + o_2;
+              hoisted_1_2 := deduped_2_1[deduped_2_2];
+              return ListWithIdenticalEntries( deduped_38_1[deduped_2_2], deduped_39_1[SafeUniquePositionProperty( deduped_112_1, function ( obj_3 )
+                         return UnderlyingVertex( obj_3 ) = hoisted_1_2;
+                     end )] );
+          end ) );
+    deduped_96_1 := Concatenation( List( deduped_105_1, function ( o_2 )
+              local hoisted_1_2, deduped_2_2;
+              deduped_2_2 := 1 + o_2;
+              hoisted_1_2 := deduped_2_1[deduped_2_2];
+              return ListWithIdenticalEntries( deduped_1_1[deduped_2_2], deduped_39_1[SafeUniquePositionProperty( deduped_112_1, function ( obj_3 )
+                         return UnderlyingVertex( obj_3 ) = hoisted_1_2;
+                     end )] );
+          end ) );
+    deduped_4_1 := List( deduped_113_1[1], Length );
+    deduped_95_1 := Concatenation( List( deduped_105_1, function ( o_2 )
+              local hoisted_1_2, deduped_2_2;
+              deduped_2_2 := 1 + o_2;
+              hoisted_1_2 := deduped_2_1[deduped_2_2];
+              return ListWithIdenticalEntries( deduped_1_1[deduped_2_2], deduped_4_1[SafeUniquePositionProperty( deduped_112_1, function ( obj_3 )
+                         return UnderlyingVertex( obj_3 ) = hoisted_1_2;
+                     end )] );
+          end ) );
+    deduped_94_1 := [ 0 .. Sum( List( deduped_104_1, function ( m_2 )
+                    return deduped_38_1[1 + deduped_5_1[(1 + m_2)][2]];
+                end ) ) - 1 ];
+    deduped_93_1 := [ 0 .. Sum( List( deduped_104_1, function ( m_2 )
+                    return deduped_1_1[1 + deduped_5_1[(1 + m_2)][2]];
+                end ) ) - 1 ];
+    deduped_92_1 := Product( deduped_97_1 );
+    deduped_91_1 := Product( deduped_96_1 );
+    deduped_90_1 := Product( deduped_95_1 );
+    deduped_89_1 := [ 0 .. deduped_92_1 - 1 ];
+    deduped_88_1 := [ 0 .. deduped_91_1 - 1 ];
+    deduped_87_1 := [ 0 .. deduped_90_1 - 1 ];
+    deduped_20_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_118_1 );
+    deduped_33_1 := List( deduped_104_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + m_2;
+            deduped_1_2 := deduped_1_1[1 + deduped_6_1[deduped_2_2]];
+            return NTuple( 2, [ 0 .. deduped_1_2 - 1 ], ListWithIdenticalEntries( deduped_1_2, deduped_20_1[deduped_2_2] ) );
+        end );
+    deduped_13_1 := UnderlyingQuiverAlgebra( deduped_118_1 );
+    deduped_12_1 := List( deduped_105_1, function ( o_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + o_2;
+            deduped_1_2 := deduped_1_1[deduped_2_2];
+            return NTuple( 2, deduped_1_2, ListWithIdenticalEntries( deduped_1_2, deduped_112_1[deduped_2_2] ) );
+        end );
+    deduped_32_1 := List( deduped_104_1, function ( i_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := deduped_6_1[1 + i_2];
+            deduped_2_2 := 1 + deduped_3_2;
+            deduped_1_2 := Sum( deduped_102_1{[ 1 .. deduped_3_2 ]} );
+            return NTuple( 2, [ deduped_1_2 .. deduped_1_2 + deduped_102_1[deduped_2_2] - 1 ], List( deduped_12_1[deduped_2_2][2], function ( objC_3 )
+                      return CreateCapCategoryMorphismWithAttributes( deduped_118_1, objC_3, objC_3, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_13_1, QuiverVertexAsIdentityPath( UnderlyingVertex( objC_3 ) ) ) );
+                  end ) );
+        end );
+    hoisted_35_1 := Concatenation( List( deduped_104_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2;
+              deduped_3_2 := 1 + i_2;
+              hoisted_2_2 := deduped_32_1[deduped_3_2][1];
+              hoisted_1_2 := deduped_33_1[deduped_3_2][1];
+              return List( [ 0 .. deduped_8_1[deduped_3_2][1] - 1 ], function ( i_3 )
+                      local hoisted_3_3, deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3;
+                      deduped_7_3 := hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                      deduped_6_3 := 1 + deduped_7_3;
+                      deduped_5_3 := deduped_95_1[deduped_6_3];
+                      deduped_4_3 := Product( deduped_95_1{[ 1 .. deduped_7_3 ]} );
+                      hoisted_3_3 := DivIntWithGivenQuotient( deduped_90_1, deduped_4_3, deduped_5_3 * Product( deduped_95_1{[ (deduped_6_3 + 1) .. deduped_101_1 ]} ) );
+                      return List( deduped_87_1, function ( i_4 )
+                              return RemIntWithDomain( QuoIntWithDomain( i_4, deduped_4_3, deduped_90_1 ), deduped_5_3, hoisted_3_3 );
+                          end );
+                  end );
+          end ) );
+    deduped_21_1 := List( deduped_113_1[2], AsList );
+    hoisted_34_1 := Concatenation( List( deduped_104_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2;
+              deduped_10_2 := 1 + i_2;
+              deduped_9_2 := deduped_33_1[deduped_10_2];
+              deduped_8_2 := deduped_9_2[2];
+              deduped_7_2 := deduped_32_1[deduped_10_2][2];
+              hoisted_6_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return QuiverVertexAsIdentityPath( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
+                  end );
+              hoisted_5_2 := List( deduped_7_2, UnderlyingQuiverAlgebraElement );
+              hoisted_4_2 := List( deduped_8_2, UnderlyingQuiverAlgebraElement );
+              hoisted_3_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Source( logic_new_func_x_3 ) );
+                  end );
+              hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
+                  end );
+              hoisted_1_2 := deduped_9_2[1];
+              return List( [ 0 .. deduped_8_1[deduped_10_2][1] - 1 ], function ( i_3 )
+                      local deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3, deduped_8_3;
+                      deduped_8_3 := 1 + i_3;
+                      deduped_7_3 := hoisted_3_2[deduped_8_3];
+                      deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
+                      deduped_5_3 := hoisted_2_2[deduped_6_3];
+                      deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                  if deduped_5_3 = deduped_7_3 then
+                                      return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
+                                  else
+                                      return false;
+                                  fi;
+                                  return;
+                              end )(  ) then
+                          return [ 0 .. deduped_4_1[SafeUniquePositionProperty( deduped_112_1, function ( obj_4 )
+                                         return (UnderlyingVertex( obj_4 ) = deduped_7_3);
+                                     end )] - 1 ];
+                      else
+                          return deduped_21_1[SafeUniquePositionProperty( deduped_20_1, function ( mor_4 )
+                                   if UnderlyingVertex( Source( mor_4 ) ) = deduped_7_3 and UnderlyingVertex( Range( mor_4 ) ) = deduped_5_3 then
+                                       return UnderlyingQuiverAlgebraElement( mor_4 ) = deduped_4_3;
+                                   else
+                                       return false;
+                                   fi;
+                                   return;
+                               end )];
+                      fi;
+                      return;
+                  end );
+          end ) );
+    deduped_10_1 := Concatenation( List( deduped_104_1, function ( i_2 )
+              return ListWithIdenticalEntries( deduped_8_1[1 + i_2][1], deduped_90_1 );
+          end ) );
+    hoisted_36_1 := List( deduped_98_1, function ( i_2 )
+            local hoisted_1_2, hoisted_2_2, deduped_3_2;
+            deduped_3_2 := 1 + i_2;
+            hoisted_2_2 := hoisted_34_1[deduped_3_2];
+            hoisted_1_2 := hoisted_35_1[deduped_3_2];
+            return List( [ 0 .. deduped_10_1[deduped_3_2] - 1 ], function ( i_3 )
+                    return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                end );
+        end );
+    hoisted_28_1 := Concatenation( List( deduped_104_1, function ( m_2 )
+              local hoisted_1_2, deduped_2_2;
+              deduped_2_2 := 1 + m_2;
+              hoisted_1_2 := deduped_2_1[1 + deduped_7_1[deduped_2_2]];
+              return ListWithIdenticalEntries( deduped_1_1[1 + deduped_6_1[deduped_2_2]], deduped_4_1[SafeUniquePositionProperty( deduped_112_1, function ( obj_3 )
+                         return UnderlyingVertex( obj_3 ) = hoisted_1_2;
+                     end )] );
+          end ) );
+    deduped_29_1 := List( deduped_93_1, function ( j_2 )
+            return Product( hoisted_28_1{[ 1 .. j_2 ]} );
+        end );
+    hoisted_37_1 := List( deduped_87_1, function ( i_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := 1 + i_2;
+            return Sum( deduped_93_1, function ( j_3 )
+                    local deduped_1_3;
+                    deduped_1_3 := 1 + j_3;
+                    return hoisted_36_1[deduped_1_3][hoisted_1_2] * deduped_29_1[deduped_1_3];
+                end );
+        end );
+    deduped_18_1 := List( deduped_112_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
+    hoisted_17_1 := List( deduped_108_1, function ( logic_new_func_x_2 )
+            return Length( Source( logic_new_func_x_2 ) );
+        end );
+    hoisted_16_1 := List( deduped_108_1, AsList );
+    deduped_19_1 := List( deduped_104_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := 1 + m_2;
+            deduped_2_2 := 1 + deduped_7_1[deduped_3_2];
+            deduped_1_2 := deduped_112_1[deduped_2_2];
+            return NTuple( 2, hoisted_16_1[deduped_3_2], ListWithIdenticalEntries( hoisted_17_1[deduped_3_2], CreateCapCategoryMorphismWithAttributes( deduped_118_1, deduped_1_2, deduped_1_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_13_1, deduped_18_1[deduped_2_2] ) ) ) );
+        end );
+    deduped_15_1 := List( deduped_104_1, function ( i_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := deduped_7_1[1 + i_2];
+            deduped_2_2 := 1 + deduped_3_2;
+            deduped_1_2 := Sum( deduped_102_1{[ 1 .. deduped_3_2 ]} );
+            return NTuple( 2, [ deduped_1_2 .. deduped_1_2 + deduped_102_1[deduped_2_2] - 1 ], List( deduped_12_1[deduped_2_2][2], function ( objC_3 )
+                      return CreateCapCategoryMorphismWithAttributes( deduped_118_1, objC_3, objC_3, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_13_1, QuiverVertexAsIdentityPath( UnderlyingVertex( objC_3 ) ) ) );
+                  end ) );
+        end );
+    hoisted_26_1 := Concatenation( List( deduped_104_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2;
+              deduped_3_2 := 1 + i_2;
+              hoisted_2_2 := deduped_15_1[deduped_3_2][1];
+              hoisted_1_2 := deduped_19_1[deduped_3_2][1];
+              return List( [ 0 .. deduped_8_1[deduped_3_2][1] - 1 ], function ( i_3 )
+                      local hoisted_3_3, deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3;
+                      deduped_7_3 := hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                      deduped_6_3 := 1 + deduped_7_3;
+                      deduped_5_3 := deduped_95_1[deduped_6_3];
+                      deduped_4_3 := Product( deduped_95_1{[ 1 .. deduped_7_3 ]} );
+                      hoisted_3_3 := DivIntWithGivenQuotient( deduped_90_1, deduped_4_3, deduped_5_3 * Product( deduped_95_1{[ (deduped_6_3 + 1) .. deduped_101_1 ]} ) );
+                      return List( deduped_87_1, function ( i_4 )
+                              return RemIntWithDomain( QuoIntWithDomain( i_4, deduped_4_3, deduped_90_1 ), deduped_5_3, hoisted_3_3 );
+                          end );
+                  end );
+          end ) );
+    hoisted_22_1 := Concatenation( List( deduped_104_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2;
+              deduped_10_2 := 1 + i_2;
+              deduped_9_2 := deduped_19_1[deduped_10_2];
+              deduped_8_2 := deduped_9_2[2];
+              deduped_7_2 := deduped_15_1[deduped_10_2][2];
+              hoisted_6_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return QuiverVertexAsIdentityPath( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
+                  end );
+              hoisted_5_2 := List( deduped_7_2, UnderlyingQuiverAlgebraElement );
+              hoisted_4_2 := List( deduped_8_2, UnderlyingQuiverAlgebraElement );
+              hoisted_3_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Source( logic_new_func_x_3 ) );
+                  end );
+              hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
+                  end );
+              hoisted_1_2 := deduped_9_2[1];
+              return List( [ 0 .. deduped_8_1[deduped_10_2][1] - 1 ], function ( i_3 )
+                      local deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3, deduped_8_3;
+                      deduped_8_3 := 1 + i_3;
+                      deduped_7_3 := hoisted_3_2[deduped_8_3];
+                      deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
+                      deduped_5_3 := hoisted_2_2[deduped_6_3];
+                      deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                  if deduped_5_3 = deduped_7_3 then
+                                      return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
+                                  else
+                                      return false;
+                                  fi;
+                                  return;
+                              end )(  ) then
+                          return [ 0 .. deduped_4_1[SafeUniquePositionProperty( deduped_112_1, function ( obj_4 )
+                                         return (UnderlyingVertex( obj_4 ) = deduped_7_3);
+                                     end )] - 1 ];
+                      else
+                          return deduped_21_1[SafeUniquePositionProperty( deduped_20_1, function ( mor_4 )
+                                   if UnderlyingVertex( Source( mor_4 ) ) = deduped_7_3 and UnderlyingVertex( Range( mor_4 ) ) = deduped_5_3 then
+                                       return UnderlyingQuiverAlgebraElement( mor_4 ) = deduped_4_3;
+                                   else
+                                       return false;
+                                   fi;
+                                   return;
+                               end )];
+                      fi;
+                      return;
+                  end );
+          end ) );
+    hoisted_27_1 := List( deduped_98_1, function ( i_2 )
+            local hoisted_1_2, hoisted_2_2, deduped_3_2;
+            deduped_3_2 := 1 + i_2;
+            hoisted_2_2 := hoisted_22_1[deduped_3_2];
+            hoisted_1_2 := hoisted_26_1[deduped_3_2];
+            return List( [ 0 .. deduped_10_1[deduped_3_2] - 1 ], function ( i_3 )
+                    return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                end );
+        end );
+    hoisted_31_1 := List( deduped_87_1, function ( i_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := 1 + i_2;
+            return Sum( deduped_93_1, function ( j_3 )
+                    local deduped_1_3;
+                    deduped_1_3 := 1 + j_3;
+                    return hoisted_27_1[deduped_1_3][hoisted_1_2] * deduped_29_1[deduped_1_3];
+                end );
+        end );
+    hoisted_86_1 := Filtered( deduped_87_1, function ( x_2 )
+            local deduped_1_2;
+            deduped_1_2 := 1 + x_2;
+            return hoisted_31_1[deduped_1_2] = hoisted_37_1[deduped_1_2];
+        end );
+    hoisted_46_1 := List( deduped_99_1, function ( j_2 )
+            return Product( deduped_95_1{[ 1 .. j_2 ]} );
+        end );
+    hoisted_40_1 := List( ValuesOnAllObjects( beta_1 ), AsList );
+    hoisted_41_1 := Concatenation( List( deduped_105_1, function ( o_2 )
+              local hoisted_1_2, deduped_2_2;
+              deduped_2_2 := 1 + o_2;
+              hoisted_1_2 := deduped_2_1[deduped_2_2];
+              return ListWithIdenticalEntries( deduped_1_1[deduped_2_2], hoisted_40_1[SafeUniquePositionProperty( deduped_112_1, function ( obj_3 )
+                         return UnderlyingVertex( obj_3 ) = hoisted_1_2;
+                     end )] );
+          end ) );
+    hoisted_45_1 := List( [ 1 .. deduped_101_1 ], function ( i_2 )
+            local hoisted_3_2, hoisted_4_2, deduped_5_2, deduped_6_2;
+            deduped_6_2 := deduped_96_1[i_2];
+            deduped_5_2 := Product( deduped_96_1{[ 1 .. i_2 - 1 ]} );
+            hoisted_4_2 := hoisted_41_1[i_2];
+            hoisted_3_2 := DivIntWithGivenQuotient( deduped_91_1, deduped_5_2, deduped_6_2 * Product( deduped_96_1{[ (i_2 + 1) .. deduped_101_1 ]} ) );
+            return List( deduped_88_1, function ( i_3 )
+                    return hoisted_4_2[1 + RemIntWithDomain( QuoIntWithDomain( i_3, deduped_5_2, deduped_91_1 ), deduped_6_2, hoisted_3_2 )];
+                end );
+        end );
+    hoisted_63_1 := List( deduped_88_1, function ( i_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := 1 + i_2;
+            return Sum( deduped_99_1, function ( j_3 )
+                    local deduped_1_3;
+                    deduped_1_3 := 1 + j_3;
+                    return hoisted_45_1[deduped_1_3][hoisted_1_2] * hoisted_46_1[deduped_1_3];
+                end );
+        end );
+    hoisted_62_1 := List( deduped_99_1, function ( j_2 )
+            return Product( deduped_96_1{[ 1 .. j_2 ]} );
+        end );
+    deduped_58_1 := Sum( deduped_103_1 );
+    hoisted_52_1 := List( deduped_117_1, function ( logic_new_func_x_2 )
+            return Length( Source( logic_new_func_x_2 ) );
+        end );
+    hoisted_51_1 := List( deduped_117_1, AsList );
+    deduped_53_1 := List( deduped_105_1, function ( o_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + o_2;
+            deduped_1_2 := deduped_112_1[deduped_2_2];
+            return NTuple( 2, hoisted_51_1[deduped_2_2], ListWithIdenticalEntries( hoisted_52_1[deduped_2_2], CreateCapCategoryMorphismWithAttributes( deduped_118_1, deduped_1_2, deduped_1_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_13_1, deduped_18_1[deduped_2_2] ) ) ) );
+        end );
+    hoisted_60_1 := Concatenation( List( deduped_106_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2;
+              deduped_3_2 := Sum( deduped_103_1{[ 1 .. i_2 - 1 ]} );
+              hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + deduped_103_1[i_2] - 1 ];
+              hoisted_1_2 := deduped_53_1[i_2][1];
+              return List( [ 0 .. deduped_12_1[i_2][1] - 1 ], function ( i_3 )
+                      local hoisted_3_3, deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3;
+                      deduped_7_3 := hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                      deduped_6_3 := 1 + deduped_7_3;
+                      deduped_5_3 := deduped_97_1[deduped_6_3];
+                      deduped_4_3 := Product( deduped_97_1{[ 1 .. deduped_7_3 ]} );
+                      hoisted_3_3 := DivIntWithGivenQuotient( deduped_92_1, deduped_4_3, deduped_5_3 * Product( deduped_97_1{[ (deduped_6_3 + 1) .. deduped_58_1 ]} ) );
+                      return List( deduped_89_1, function ( i_4 )
+                              return RemIntWithDomain( QuoIntWithDomain( i_4, deduped_4_3, deduped_92_1 ), deduped_5_3, hoisted_3_3 );
+                          end );
+                  end );
+          end ) );
+    deduped_54_1 := List( deduped_116_1[2], AsList );
+    deduped_50_1 := List( deduped_105_1, function ( o_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + o_2;
+            deduped_1_2 := deduped_38_1[deduped_2_2];
+            return NTuple( 2, deduped_1_2, ListWithIdenticalEntries( deduped_1_2, deduped_112_1[deduped_2_2] ) );
+        end );
+    hoisted_55_1 := Concatenation( List( deduped_106_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2;
+              deduped_9_2 := deduped_53_1[i_2];
+              deduped_8_2 := deduped_9_2[2];
+              deduped_7_2 := deduped_50_1[i_2][2];
+              hoisted_6_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return QuiverVertexAsIdentityPath( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
+                  end );
+              hoisted_5_2 := List( deduped_7_2, function ( objC_3 )
+                      return PathAsAlgebraElement( deduped_13_1, QuiverVertexAsIdentityPath( UnderlyingVertex( objC_3 ) ) );
+                  end );
+              hoisted_4_2 := List( deduped_8_2, UnderlyingQuiverAlgebraElement );
+              hoisted_3_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Source( logic_new_func_x_3 ) );
+                  end );
+              hoisted_2_2 := List( deduped_7_2, UnderlyingVertex );
+              hoisted_1_2 := deduped_9_2[1];
+              return List( [ 0 .. deduped_12_1[i_2][1] - 1 ], function ( i_3 )
+                      local deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3, deduped_8_3;
+                      deduped_8_3 := 1 + i_3;
+                      deduped_7_3 := hoisted_3_2[deduped_8_3];
+                      deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
+                      deduped_5_3 := hoisted_2_2[deduped_6_3];
+                      deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                  if deduped_5_3 = deduped_7_3 then
+                                      return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
+                                  else
+                                      return false;
+                                  fi;
+                                  return;
+                              end )(  ) then
+                          return [ 0 .. deduped_39_1[SafeUniquePositionProperty( deduped_112_1, function ( obj_4 )
+                                         return (UnderlyingVertex( obj_4 ) = deduped_7_3);
+                                     end )] - 1 ];
+                      else
+                          return deduped_54_1[SafeUniquePositionProperty( deduped_20_1, function ( mor_4 )
+                                   if UnderlyingVertex( Source( mor_4 ) ) = deduped_7_3 and UnderlyingVertex( Range( mor_4 ) ) = deduped_5_3 then
+                                       return UnderlyingQuiverAlgebraElement( mor_4 ) = deduped_4_3;
+                                   else
+                                       return false;
+                                   fi;
+                                   return;
+                               end )];
+                      fi;
+                      return;
+                  end );
+          end ) );
+    hoisted_49_1 := Concatenation( List( deduped_106_1, function ( i_2 )
+              return ListWithIdenticalEntries( deduped_12_1[i_2][1], deduped_92_1 );
+          end ) );
+    hoisted_61_1 := List( [ 0 .. Sum( List( deduped_106_1, function ( i_2 )
+                      return deduped_12_1[i_2][1];
+                  end ) ) - 1 ], function ( i_2 )
+            local hoisted_1_2, hoisted_2_2, deduped_3_2;
+            deduped_3_2 := 1 + i_2;
+            hoisted_2_2 := hoisted_55_1[deduped_3_2];
+            hoisted_1_2 := hoisted_60_1[deduped_3_2];
+            return List( [ 0 .. hoisted_49_1[deduped_3_2] - 1 ], function ( i_3 )
+                    return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                end );
+        end );
+    hoisted_84_1 := List( deduped_89_1, function ( i_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := 1 + i_2;
+            return hoisted_63_1[1 + Sum( deduped_99_1, function ( j_3 )
+                       local deduped_1_3;
+                       deduped_1_3 := (1 + j_3);
+                       return hoisted_61_1[deduped_1_3][hoisted_1_2] * hoisted_62_1[deduped_1_3];
+                   end )];
+        end );
+    deduped_78_1 := List( deduped_104_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + m_2;
+            deduped_1_2 := deduped_38_1[1 + deduped_6_1[deduped_2_2]];
+            return NTuple( 2, [ 0 .. deduped_1_2 - 1 ], ListWithIdenticalEntries( deduped_1_2, deduped_20_1[deduped_2_2] ) );
+        end );
+    deduped_77_1 := List( deduped_104_1, function ( i_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := deduped_6_1[1 + i_2];
+            deduped_2_2 := 1 + deduped_3_2;
+            deduped_1_2 := Sum( deduped_103_1{[ 1 .. deduped_3_2 ]} );
+            return NTuple( 2, [ deduped_1_2 .. deduped_1_2 + deduped_103_1[deduped_2_2] - 1 ], List( deduped_50_1[deduped_2_2][2], function ( objC_3 )
+                      return CreateCapCategoryMorphismWithAttributes( deduped_118_1, objC_3, objC_3, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_13_1, QuiverVertexAsIdentityPath( UnderlyingVertex( objC_3 ) ) ) );
+                  end ) );
+        end );
+    hoisted_80_1 := Concatenation( List( deduped_104_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2;
+              deduped_3_2 := 1 + i_2;
+              hoisted_2_2 := deduped_77_1[deduped_3_2][1];
+              hoisted_1_2 := deduped_78_1[deduped_3_2][1];
+              return List( [ 0 .. deduped_64_1[deduped_3_2][1] - 1 ], function ( i_3 )
+                      local hoisted_3_3, deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3;
+                      deduped_7_3 := hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                      deduped_6_3 := 1 + deduped_7_3;
+                      deduped_5_3 := deduped_97_1[deduped_6_3];
+                      deduped_4_3 := Product( deduped_97_1{[ 1 .. deduped_7_3 ]} );
+                      hoisted_3_3 := DivIntWithGivenQuotient( deduped_92_1, deduped_4_3, deduped_5_3 * Product( deduped_97_1{[ (deduped_6_3 + 1) .. deduped_58_1 ]} ) );
+                      return List( deduped_89_1, function ( i_4 )
+                              return RemIntWithDomain( QuoIntWithDomain( i_4, deduped_4_3, deduped_92_1 ), deduped_5_3, hoisted_3_3 );
+                          end );
+                  end );
+          end ) );
+    hoisted_79_1 := Concatenation( List( deduped_104_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2;
+              deduped_10_2 := 1 + i_2;
+              deduped_9_2 := deduped_78_1[deduped_10_2];
+              deduped_8_2 := deduped_9_2[2];
+              deduped_7_2 := deduped_77_1[deduped_10_2][2];
+              hoisted_6_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return QuiverVertexAsIdentityPath( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
+                  end );
+              hoisted_5_2 := List( deduped_7_2, UnderlyingQuiverAlgebraElement );
+              hoisted_4_2 := List( deduped_8_2, UnderlyingQuiverAlgebraElement );
+              hoisted_3_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Source( logic_new_func_x_3 ) );
+                  end );
+              hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
+                  end );
+              hoisted_1_2 := deduped_9_2[1];
+              return List( [ 0 .. deduped_64_1[deduped_10_2][1] - 1 ], function ( i_3 )
+                      local deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3, deduped_8_3;
+                      deduped_8_3 := 1 + i_3;
+                      deduped_7_3 := hoisted_3_2[deduped_8_3];
+                      deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
+                      deduped_5_3 := hoisted_2_2[deduped_6_3];
+                      deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                  if deduped_5_3 = deduped_7_3 then
+                                      return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
+                                  else
+                                      return false;
+                                  fi;
+                                  return;
+                              end )(  ) then
+                          return [ 0 .. deduped_39_1[SafeUniquePositionProperty( deduped_112_1, function ( obj_4 )
+                                         return (UnderlyingVertex( obj_4 ) = deduped_7_3);
+                                     end )] - 1 ];
+                      else
+                          return deduped_54_1[SafeUniquePositionProperty( deduped_20_1, function ( mor_4 )
+                                   if UnderlyingVertex( Source( mor_4 ) ) = deduped_7_3 and UnderlyingVertex( Range( mor_4 ) ) = deduped_5_3 then
+                                       return UnderlyingQuiverAlgebraElement( mor_4 ) = deduped_4_3;
+                                   else
+                                       return false;
+                                   fi;
+                                   return;
+                               end )];
+                      fi;
+                      return;
+                  end );
+          end ) );
+    deduped_65_1 := Concatenation( List( deduped_104_1, function ( i_2 )
+              return ListWithIdenticalEntries( deduped_64_1[1 + i_2][1], deduped_92_1 );
+          end ) );
+    hoisted_81_1 := List( deduped_100_1, function ( i_2 )
+            local hoisted_1_2, hoisted_2_2, deduped_3_2;
+            deduped_3_2 := 1 + i_2;
+            hoisted_2_2 := hoisted_79_1[deduped_3_2];
+            hoisted_1_2 := hoisted_80_1[deduped_3_2];
+            return List( [ 0 .. deduped_65_1[deduped_3_2] - 1 ], function ( i_3 )
+                    return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                end );
+        end );
+    hoisted_73_1 := Concatenation( List( deduped_104_1, function ( m_2 )
+              local hoisted_1_2, deduped_2_2;
+              deduped_2_2 := 1 + m_2;
+              hoisted_1_2 := deduped_2_1[1 + deduped_7_1[deduped_2_2]];
+              return ListWithIdenticalEntries( deduped_38_1[1 + deduped_6_1[deduped_2_2]], deduped_39_1[SafeUniquePositionProperty( deduped_112_1, function ( obj_3 )
+                         return UnderlyingVertex( obj_3 ) = hoisted_1_2;
+                     end )] );
+          end ) );
+    deduped_74_1 := List( deduped_94_1, function ( j_2 )
+            return Product( hoisted_73_1{[ 1 .. j_2 ]} );
+        end );
+    hoisted_82_1 := List( deduped_89_1, function ( i_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := 1 + i_2;
+            return Sum( deduped_94_1, function ( j_3 )
+                    local deduped_1_3;
+                    deduped_1_3 := 1 + j_3;
+                    return hoisted_81_1[deduped_1_3][hoisted_1_2] * deduped_74_1[deduped_1_3];
+                end );
+        end );
+    hoisted_68_1 := List( deduped_109_1, function ( logic_new_func_x_2 )
+            return Length( Source( logic_new_func_x_2 ) );
+        end );
+    hoisted_67_1 := List( deduped_109_1, AsList );
+    deduped_69_1 := List( deduped_104_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := 1 + m_2;
+            deduped_2_2 := 1 + deduped_7_1[deduped_3_2];
+            deduped_1_2 := deduped_112_1[deduped_2_2];
+            return NTuple( 2, hoisted_67_1[deduped_3_2], ListWithIdenticalEntries( hoisted_68_1[deduped_3_2], CreateCapCategoryMorphismWithAttributes( deduped_118_1, deduped_1_2, deduped_1_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_13_1, deduped_18_1[deduped_2_2] ) ) ) );
+        end );
+    deduped_66_1 := List( deduped_104_1, function ( i_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := deduped_7_1[1 + i_2];
+            deduped_2_2 := 1 + deduped_3_2;
+            deduped_1_2 := Sum( deduped_103_1{[ 1 .. deduped_3_2 ]} );
+            return NTuple( 2, [ deduped_1_2 .. deduped_1_2 + deduped_103_1[deduped_2_2] - 1 ], List( deduped_50_1[deduped_2_2][2], function ( objC_3 )
+                      return CreateCapCategoryMorphismWithAttributes( deduped_118_1, objC_3, objC_3, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_13_1, QuiverVertexAsIdentityPath( UnderlyingVertex( objC_3 ) ) ) );
+                  end ) );
+        end );
+    hoisted_71_1 := Concatenation( List( deduped_104_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2;
+              deduped_3_2 := 1 + i_2;
+              hoisted_2_2 := deduped_66_1[deduped_3_2][1];
+              hoisted_1_2 := deduped_69_1[deduped_3_2][1];
+              return List( [ 0 .. deduped_64_1[deduped_3_2][1] - 1 ], function ( i_3 )
+                      local hoisted_3_3, deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3;
+                      deduped_7_3 := hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                      deduped_6_3 := 1 + deduped_7_3;
+                      deduped_5_3 := deduped_97_1[deduped_6_3];
+                      deduped_4_3 := Product( deduped_97_1{[ 1 .. deduped_7_3 ]} );
+                      hoisted_3_3 := DivIntWithGivenQuotient( deduped_92_1, deduped_4_3, deduped_5_3 * Product( deduped_97_1{[ (deduped_6_3 + 1) .. deduped_58_1 ]} ) );
+                      return List( deduped_89_1, function ( i_4 )
+                              return RemIntWithDomain( QuoIntWithDomain( i_4, deduped_4_3, deduped_92_1 ), deduped_5_3, hoisted_3_3 );
+                          end );
+                  end );
+          end ) );
+    hoisted_70_1 := Concatenation( List( deduped_104_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2;
+              deduped_10_2 := 1 + i_2;
+              deduped_9_2 := deduped_69_1[deduped_10_2];
+              deduped_8_2 := deduped_9_2[2];
+              deduped_7_2 := deduped_66_1[deduped_10_2][2];
+              hoisted_6_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return QuiverVertexAsIdentityPath( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
+                  end );
+              hoisted_5_2 := List( deduped_7_2, UnderlyingQuiverAlgebraElement );
+              hoisted_4_2 := List( deduped_8_2, UnderlyingQuiverAlgebraElement );
+              hoisted_3_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Source( logic_new_func_x_3 ) );
+                  end );
+              hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
+                  end );
+              hoisted_1_2 := deduped_9_2[1];
+              return List( [ 0 .. deduped_64_1[deduped_10_2][1] - 1 ], function ( i_3 )
+                      local deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3, deduped_8_3;
+                      deduped_8_3 := 1 + i_3;
+                      deduped_7_3 := hoisted_3_2[deduped_8_3];
+                      deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
+                      deduped_5_3 := hoisted_2_2[deduped_6_3];
+                      deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                  if deduped_5_3 = deduped_7_3 then
+                                      return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
+                                  else
+                                      return false;
+                                  fi;
+                                  return;
+                              end )(  ) then
+                          return [ 0 .. deduped_39_1[SafeUniquePositionProperty( deduped_112_1, function ( obj_4 )
+                                         return (UnderlyingVertex( obj_4 ) = deduped_7_3);
+                                     end )] - 1 ];
+                      else
+                          return deduped_54_1[SafeUniquePositionProperty( deduped_20_1, function ( mor_4 )
+                                   if UnderlyingVertex( Source( mor_4 ) ) = deduped_7_3 and UnderlyingVertex( Range( mor_4 ) ) = deduped_5_3 then
+                                       return UnderlyingQuiverAlgebraElement( mor_4 ) = deduped_4_3;
+                                   else
+                                       return false;
+                                   fi;
+                                   return;
+                               end )];
+                      fi;
+                      return;
+                  end );
+          end ) );
+    hoisted_72_1 := List( deduped_100_1, function ( i_2 )
+            local hoisted_1_2, hoisted_2_2, deduped_3_2;
+            deduped_3_2 := 1 + i_2;
+            hoisted_2_2 := hoisted_70_1[deduped_3_2];
+            hoisted_1_2 := hoisted_71_1[deduped_3_2];
+            return List( [ 0 .. deduped_65_1[deduped_3_2] - 1 ], function ( i_3 )
+                    return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                end );
+        end );
+    hoisted_76_1 := List( deduped_89_1, function ( i_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := 1 + i_2;
+            return Sum( deduped_94_1, function ( j_3 )
+                    local deduped_1_3;
+                    deduped_1_3 := 1 + j_3;
+                    return hoisted_72_1[deduped_1_3][hoisted_1_2] * deduped_74_1[deduped_1_3];
+                end );
+        end );
+    hoisted_83_1 := Filtered( deduped_89_1, function ( x_2 )
+            local deduped_1_2;
+            deduped_1_2 := 1 + x_2;
+            return hoisted_76_1[deduped_1_2] = hoisted_82_1[deduped_1_2];
+        end );
+    hoisted_85_1 := List( deduped_110_1, function ( i_2 )
+            return hoisted_84_1[1 + hoisted_83_1[(1 + i_2)]];
+        end );
+    return CreateCapCategoryMorphismWithAttributes( Target( cat_1 ), source_1, range_1, AsList, List( deduped_110_1, function ( x_2 )
+              return -1 + BigInt( SafePosition( hoisted_86_1, hoisted_85_1[(1 + x_2)] ) );
+          end ) );
+end
+########
+        
+    ;
+    
+    ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
         
 ########
@@ -1374,6 +2460,328 @@ end
 ########
         
     , 100 );
+    
+    ##
+    cat!.cached_precompiled_functions.InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism :=
+        
+########
+function ( cat_1, source_1, range_1, alpha_1 )
+    local deduped_3_1, deduped_4_1, deduped_5_1, deduped_7_1, deduped_9_1, hoisted_13_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1, deduped_20_1, deduped_21_1, deduped_23_1, hoisted_24_1, hoisted_25_1, hoisted_26_1, deduped_27_1, deduped_28_1, deduped_29_1, hoisted_30_1, deduped_31_1, hoisted_32_1, hoisted_33_1, hoisted_34_1, deduped_35_1, hoisted_37_1, deduped_38_1, deduped_39_1, hoisted_40_1, hoisted_41_1, hoisted_42_1, hoisted_43_1, hoisted_44_1, hoisted_45_1, hoisted_46_1, hoisted_47_1, deduped_48_1, deduped_49_1, deduped_50_1, deduped_51_1, deduped_52_1, deduped_53_1, deduped_54_1, deduped_55_1, deduped_56_1, deduped_57_1, deduped_58_1, deduped_59_1, deduped_60_1, deduped_61_1, deduped_62_1, deduped_63_1, deduped_64_1, deduped_65_1, deduped_66_1;
+    deduped_66_1 := ValuesOfPreSheaf( range_1 );
+    deduped_65_1 := ValuesOfPreSheaf( source_1 );
+    deduped_64_1 := Source( cat_1 );
+    deduped_63_1 := deduped_65_1[2];
+    deduped_62_1 := SetOfObjectsAsUnresolvableAttribute( deduped_64_1 );
+    deduped_61_1 := deduped_66_1[1];
+    deduped_60_1 := deduped_65_1[1];
+    deduped_59_1 := DefiningTripleOfUnderlyingQuiver( deduped_64_1 );
+    deduped_58_1 := ListOfValues( deduped_60_1 );
+    deduped_57_1 := deduped_59_1[1];
+    deduped_56_1 := [ 1 .. deduped_57_1 ];
+    deduped_55_1 := [ 0 .. deduped_59_1[2] - 1 ];
+    deduped_54_1 := [ 0 .. deduped_57_1 - 1 ];
+    deduped_4_1 := List( deduped_60_1, Length );
+    deduped_53_1 := List( deduped_54_1, function ( o_2 )
+            return deduped_4_1[1 + o_2];
+        end );
+    deduped_14_1 := deduped_59_1[3];
+    deduped_16_1 := List( deduped_55_1, function ( m_2 )
+            return deduped_14_1[1 + m_2][1];
+        end );
+    deduped_15_1 := List( deduped_55_1, function ( m_2 )
+            return deduped_14_1[1 + m_2][2];
+        end );
+    deduped_17_1 := List( deduped_55_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + m_2;
+            deduped_1_2 := deduped_4_1[1 + deduped_15_1[deduped_2_2]];
+            return NTuple( 2, deduped_1_2, ListWithIdenticalEntries( deduped_1_2, deduped_62_1[1 + deduped_16_1[deduped_2_2]] ) );
+        end );
+    deduped_52_1 := [ 0 .. Sum( List( deduped_55_1, function ( i_2 )
+                    return deduped_17_1[1 + i_2][1];
+                end ) ) - 1 ];
+    deduped_7_1 := List( deduped_61_1, Length );
+    deduped_5_1 := List( deduped_62_1, UnderlyingVertex );
+    deduped_51_1 := Concatenation( List( deduped_54_1, function ( o_2 )
+              local hoisted_1_2, deduped_2_2;
+              deduped_2_2 := 1 + o_2;
+              hoisted_1_2 := deduped_5_1[deduped_2_2];
+              return ListWithIdenticalEntries( deduped_4_1[deduped_2_2], deduped_7_1[SafeUniquePositionProperty( deduped_62_1, function ( obj_3 )
+                         return UnderlyingVertex( obj_3 ) = hoisted_1_2;
+                     end )] );
+          end ) );
+    deduped_50_1 := [ 0 .. Sum( List( deduped_55_1, function ( m_2 )
+                    return deduped_4_1[1 + deduped_14_1[(1 + m_2)][2]];
+                end ) ) - 1 ];
+    deduped_49_1 := Product( deduped_51_1 );
+    deduped_48_1 := [ 0 .. deduped_49_1 - 1 ];
+    hoisted_47_1 := Target( cat_1 );
+    hoisted_46_1 := [ 0 .. Length( Source( alpha_1 ) ) - 1 ];
+    deduped_28_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_64_1 );
+    deduped_39_1 := List( deduped_55_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + m_2;
+            deduped_1_2 := deduped_4_1[1 + deduped_15_1[deduped_2_2]];
+            return NTuple( 2, [ 0 .. deduped_1_2 - 1 ], ListWithIdenticalEntries( deduped_1_2, deduped_28_1[deduped_2_2] ) );
+        end );
+    deduped_21_1 := UnderlyingQuiverAlgebra( deduped_64_1 );
+    deduped_20_1 := List( deduped_54_1, function ( o_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + o_2;
+            deduped_1_2 := deduped_4_1[deduped_2_2];
+            return NTuple( 2, deduped_1_2, ListWithIdenticalEntries( deduped_1_2, deduped_62_1[deduped_2_2] ) );
+        end );
+    deduped_38_1 := List( deduped_55_1, function ( i_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := deduped_15_1[1 + i_2];
+            deduped_2_2 := 1 + deduped_3_2;
+            deduped_1_2 := Sum( deduped_53_1{[ 1 .. deduped_3_2 ]} );
+            return NTuple( 2, [ deduped_1_2 .. deduped_1_2 + deduped_53_1[deduped_2_2] - 1 ], List( deduped_20_1[deduped_2_2][2], function ( objC_3 )
+                      return CreateCapCategoryMorphismWithAttributes( deduped_64_1, objC_3, objC_3, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_21_1, QuiverVertexAsIdentityPath( UnderlyingVertex( objC_3 ) ) ) );
+                  end ) );
+        end );
+    deduped_31_1 := Sum( deduped_53_1 );
+    hoisted_41_1 := Concatenation( List( deduped_55_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2;
+              deduped_3_2 := 1 + i_2;
+              hoisted_2_2 := deduped_38_1[deduped_3_2][1];
+              hoisted_1_2 := deduped_39_1[deduped_3_2][1];
+              return List( [ 0 .. deduped_17_1[deduped_3_2][1] - 1 ], function ( i_3 )
+                      local hoisted_3_3, deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3;
+                      deduped_7_3 := hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                      deduped_6_3 := 1 + deduped_7_3;
+                      deduped_5_3 := deduped_51_1[deduped_6_3];
+                      deduped_4_3 := Product( deduped_51_1{[ 1 .. deduped_7_3 ]} );
+                      hoisted_3_3 := DivIntWithGivenQuotient( deduped_49_1, deduped_4_3, deduped_5_3 * Product( deduped_51_1{[ (deduped_6_3 + 1) .. deduped_31_1 ]} ) );
+                      return List( deduped_48_1, function ( i_4 )
+                              return RemIntWithDomain( QuoIntWithDomain( i_4, deduped_4_3, deduped_49_1 ), deduped_5_3, hoisted_3_3 );
+                          end );
+                  end );
+          end ) );
+    deduped_29_1 := List( deduped_66_1[2], AsList );
+    hoisted_40_1 := Concatenation( List( deduped_55_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2;
+              deduped_10_2 := 1 + i_2;
+              deduped_9_2 := deduped_39_1[deduped_10_2];
+              deduped_8_2 := deduped_9_2[2];
+              deduped_7_2 := deduped_38_1[deduped_10_2][2];
+              hoisted_6_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return QuiverVertexAsIdentityPath( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
+                  end );
+              hoisted_5_2 := List( deduped_7_2, UnderlyingQuiverAlgebraElement );
+              hoisted_4_2 := List( deduped_8_2, UnderlyingQuiverAlgebraElement );
+              hoisted_3_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Source( logic_new_func_x_3 ) );
+                  end );
+              hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
+                  end );
+              hoisted_1_2 := deduped_9_2[1];
+              return List( [ 0 .. deduped_17_1[deduped_10_2][1] - 1 ], function ( i_3 )
+                      local deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3, deduped_8_3;
+                      deduped_8_3 := 1 + i_3;
+                      deduped_7_3 := hoisted_3_2[deduped_8_3];
+                      deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
+                      deduped_5_3 := hoisted_2_2[deduped_6_3];
+                      deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                  if deduped_5_3 = deduped_7_3 then
+                                      return deduped_4_3 = PathAsAlgebraElement( deduped_21_1, hoisted_6_2[deduped_8_3] );
+                                  else
+                                      return false;
+                                  fi;
+                                  return;
+                              end )(  ) then
+                          return [ 0 .. deduped_7_1[SafeUniquePositionProperty( deduped_62_1, function ( obj_4 )
+                                         return (UnderlyingVertex( obj_4 ) = deduped_7_3);
+                                     end )] - 1 ];
+                      else
+                          return deduped_29_1[SafeUniquePositionProperty( deduped_28_1, function ( mor_4 )
+                                   if UnderlyingVertex( Source( mor_4 ) ) = deduped_7_3 and UnderlyingVertex( Range( mor_4 ) ) = deduped_5_3 then
+                                       return UnderlyingQuiverAlgebraElement( mor_4 ) = deduped_4_3;
+                                   else
+                                       return false;
+                                   fi;
+                                   return;
+                               end )];
+                      fi;
+                      return;
+                  end );
+          end ) );
+    deduped_18_1 := Concatenation( List( deduped_55_1, function ( i_2 )
+              return ListWithIdenticalEntries( deduped_17_1[1 + i_2][1], deduped_49_1 );
+          end ) );
+    hoisted_42_1 := List( deduped_52_1, function ( i_2 )
+            local hoisted_1_2, hoisted_2_2, deduped_3_2;
+            deduped_3_2 := 1 + i_2;
+            hoisted_2_2 := hoisted_40_1[deduped_3_2];
+            hoisted_1_2 := hoisted_41_1[deduped_3_2];
+            return List( [ 0 .. deduped_18_1[deduped_3_2] - 1 ], function ( i_3 )
+                    return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                end );
+        end );
+    hoisted_34_1 := Concatenation( List( deduped_55_1, function ( m_2 )
+              local hoisted_1_2, deduped_2_2;
+              deduped_2_2 := 1 + m_2;
+              hoisted_1_2 := deduped_5_1[1 + deduped_16_1[deduped_2_2]];
+              return ListWithIdenticalEntries( deduped_4_1[1 + deduped_15_1[deduped_2_2]], deduped_7_1[SafeUniquePositionProperty( deduped_62_1, function ( obj_3 )
+                         return UnderlyingVertex( obj_3 ) = hoisted_1_2;
+                     end )] );
+          end ) );
+    deduped_35_1 := List( deduped_50_1, function ( j_2 )
+            return Product( hoisted_34_1{[ 1 .. j_2 ]} );
+        end );
+    hoisted_43_1 := List( deduped_48_1, function ( i_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := 1 + i_2;
+            return Sum( deduped_50_1, function ( j_3 )
+                    local deduped_1_3;
+                    deduped_1_3 := 1 + j_3;
+                    return hoisted_42_1[deduped_1_3][hoisted_1_2] * deduped_35_1[deduped_1_3];
+                end );
+        end );
+    hoisted_26_1 := List( deduped_62_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
+    hoisted_25_1 := List( deduped_63_1, function ( logic_new_func_x_2 )
+            return Length( Source( logic_new_func_x_2 ) );
+        end );
+    hoisted_24_1 := List( deduped_63_1, AsList );
+    deduped_27_1 := List( deduped_55_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := 1 + m_2;
+            deduped_2_2 := 1 + deduped_16_1[deduped_3_2];
+            deduped_1_2 := deduped_62_1[deduped_2_2];
+            return NTuple( 2, hoisted_24_1[deduped_3_2], ListWithIdenticalEntries( hoisted_25_1[deduped_3_2], CreateCapCategoryMorphismWithAttributes( deduped_64_1, deduped_1_2, deduped_1_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_21_1, hoisted_26_1[deduped_2_2] ) ) ) );
+        end );
+    deduped_23_1 := List( deduped_55_1, function ( i_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := deduped_16_1[1 + i_2];
+            deduped_2_2 := 1 + deduped_3_2;
+            deduped_1_2 := Sum( deduped_53_1{[ 1 .. deduped_3_2 ]} );
+            return NTuple( 2, [ deduped_1_2 .. deduped_1_2 + deduped_53_1[deduped_2_2] - 1 ], List( deduped_20_1[deduped_2_2][2], function ( objC_3 )
+                      return CreateCapCategoryMorphismWithAttributes( deduped_64_1, objC_3, objC_3, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_21_1, QuiverVertexAsIdentityPath( UnderlyingVertex( objC_3 ) ) ) );
+                  end ) );
+        end );
+    hoisted_32_1 := Concatenation( List( deduped_55_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2;
+              deduped_3_2 := 1 + i_2;
+              hoisted_2_2 := deduped_23_1[deduped_3_2][1];
+              hoisted_1_2 := deduped_27_1[deduped_3_2][1];
+              return List( [ 0 .. deduped_17_1[deduped_3_2][1] - 1 ], function ( i_3 )
+                      local hoisted_3_3, deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3;
+                      deduped_7_3 := hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                      deduped_6_3 := 1 + deduped_7_3;
+                      deduped_5_3 := deduped_51_1[deduped_6_3];
+                      deduped_4_3 := Product( deduped_51_1{[ 1 .. deduped_7_3 ]} );
+                      hoisted_3_3 := DivIntWithGivenQuotient( deduped_49_1, deduped_4_3, deduped_5_3 * Product( deduped_51_1{[ (deduped_6_3 + 1) .. deduped_31_1 ]} ) );
+                      return List( deduped_48_1, function ( i_4 )
+                              return RemIntWithDomain( QuoIntWithDomain( i_4, deduped_4_3, deduped_49_1 ), deduped_5_3, hoisted_3_3 );
+                          end );
+                  end );
+          end ) );
+    hoisted_30_1 := Concatenation( List( deduped_55_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2;
+              deduped_10_2 := 1 + i_2;
+              deduped_9_2 := deduped_27_1[deduped_10_2];
+              deduped_8_2 := deduped_9_2[2];
+              deduped_7_2 := deduped_23_1[deduped_10_2][2];
+              hoisted_6_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return QuiverVertexAsIdentityPath( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
+                  end );
+              hoisted_5_2 := List( deduped_7_2, UnderlyingQuiverAlgebraElement );
+              hoisted_4_2 := List( deduped_8_2, UnderlyingQuiverAlgebraElement );
+              hoisted_3_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Source( logic_new_func_x_3 ) );
+                  end );
+              hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
+                  end );
+              hoisted_1_2 := deduped_9_2[1];
+              return List( [ 0 .. deduped_17_1[deduped_10_2][1] - 1 ], function ( i_3 )
+                      local deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3, deduped_8_3;
+                      deduped_8_3 := 1 + i_3;
+                      deduped_7_3 := hoisted_3_2[deduped_8_3];
+                      deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
+                      deduped_5_3 := hoisted_2_2[deduped_6_3];
+                      deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                  if deduped_5_3 = deduped_7_3 then
+                                      return deduped_4_3 = PathAsAlgebraElement( deduped_21_1, hoisted_6_2[deduped_8_3] );
+                                  else
+                                      return false;
+                                  fi;
+                                  return;
+                              end )(  ) then
+                          return [ 0 .. deduped_7_1[SafeUniquePositionProperty( deduped_62_1, function ( obj_4 )
+                                         return (UnderlyingVertex( obj_4 ) = deduped_7_3);
+                                     end )] - 1 ];
+                      else
+                          return deduped_29_1[SafeUniquePositionProperty( deduped_28_1, function ( mor_4 )
+                                   if UnderlyingVertex( Source( mor_4 ) ) = deduped_7_3 and UnderlyingVertex( Range( mor_4 ) ) = deduped_5_3 then
+                                       return UnderlyingQuiverAlgebraElement( mor_4 ) = deduped_4_3;
+                                   else
+                                       return false;
+                                   fi;
+                                   return;
+                               end )];
+                      fi;
+                      return;
+                  end );
+          end ) );
+    hoisted_33_1 := List( deduped_52_1, function ( i_2 )
+            local hoisted_1_2, hoisted_2_2, deduped_3_2;
+            deduped_3_2 := 1 + i_2;
+            hoisted_2_2 := hoisted_30_1[deduped_3_2];
+            hoisted_1_2 := hoisted_32_1[deduped_3_2];
+            return List( [ 0 .. deduped_18_1[deduped_3_2] - 1 ], function ( i_3 )
+                    return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                end );
+        end );
+    hoisted_37_1 := List( deduped_48_1, function ( i_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := 1 + i_2;
+            return Sum( deduped_50_1, function ( j_3 )
+                    local deduped_1_3;
+                    deduped_1_3 := 1 + j_3;
+                    return hoisted_33_1[deduped_1_3][hoisted_1_2] * deduped_35_1[deduped_1_3];
+                end );
+        end );
+    hoisted_45_1 := Filtered( deduped_48_1, function ( x_2 )
+            local deduped_1_2;
+            deduped_1_2 := 1 + x_2;
+            return hoisted_37_1[deduped_1_2] = hoisted_43_1[deduped_1_2];
+        end );
+    hoisted_44_1 := AsList( alpha_1 );
+    deduped_3_1 := List( deduped_58_1, Length );
+    deduped_9_1 := List( deduped_56_1, function ( i_2 )
+            return Product( deduped_51_1{[ 1 + Sum( deduped_3_1{[ 1 .. (i_2 - 1) ]} ) .. Sum( deduped_3_1{[ 1 .. i_2 ]} ) ]} );
+        end );
+    hoisted_13_1 := List( deduped_56_1, function ( i_2 )
+            local hoisted_3_2, deduped_4_2, deduped_5_2;
+            deduped_5_2 := deduped_9_1[i_2];
+            deduped_4_2 := Product( deduped_9_1{[ 1 .. i_2 - 1 ]} );
+            hoisted_3_2 := DivIntWithGivenQuotient( deduped_49_1, deduped_4_2, deduped_5_2 * Product( deduped_9_1{[ (i_2 + 1) .. deduped_57_1 ]} ) );
+            return List( deduped_48_1, function ( i_3 )
+                    return RemIntWithDomain( QuoIntWithDomain( i_3, deduped_4_2, deduped_49_1 ), deduped_5_2, hoisted_3_2 );
+                end );
+        end );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, ValuesOnAllObjects, List( deduped_56_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, hoisted_4_2, deduped_5_2;
+              deduped_5_2 := deduped_3_1[i_2];
+              hoisted_4_2 := deduped_7_1[i_2];
+              hoisted_1_2 := hoisted_13_1[i_2];
+              hoisted_2_2 := List( hoisted_46_1, function ( i_3 )
+                        return hoisted_1_2[1 + hoisted_45_1[(1 + hoisted_44_1[(1 + i_3)])]];
+                    end )[1];
+              return CreateCapCategoryMorphismWithAttributes( hoisted_47_1, deduped_58_1[i_2], deduped_61_1[i_2], AsList, List( [ 0 .. deduped_5_2 - 1 ], function ( i_3 )
+                        return DigitInPositionalNotation( hoisted_2_2, i_3, deduped_5_2, hoisted_4_2 );
+                    end ) );
+          end ) );
+end
+########
+        
+    ;
     
     ##
     AddMorphismsOfExternalHom( cat,
@@ -1685,6 +3093,327 @@ end
 ########
         
     , 802 : IsPrecompiledDerivation := true );
+    
+    ##
+    cat!.cached_precompiled_functions.MorphismsOfExternalHom :=
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    local deduped_1_1, deduped_2_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_10_1, deduped_12_1, deduped_13_1, deduped_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, deduped_19_1, deduped_20_1, deduped_21_1, hoisted_22_1, deduped_24_1, hoisted_26_1, hoisted_27_1, hoisted_28_1, deduped_29_1, hoisted_31_1, deduped_32_1, deduped_33_1, hoisted_34_1, hoisted_35_1, hoisted_36_1, hoisted_37_1, deduped_40_1, deduped_41_1, hoisted_43_1, hoisted_45_1, deduped_47_1, deduped_48_1, deduped_49_1, deduped_50_1, deduped_51_1, deduped_52_1, deduped_53_1, deduped_54_1, deduped_55_1, deduped_56_1, deduped_57_1, deduped_58_1, deduped_59_1, deduped_60_1, deduped_61_1, deduped_62_1, deduped_63_1, deduped_64_1, deduped_65_1, deduped_66_1;
+    deduped_66_1 := ValuesOfPreSheaf( arg3_1 );
+    deduped_65_1 := ValuesOfPreSheaf( arg2_1 );
+    deduped_64_1 := Source( cat_1 );
+    deduped_63_1 := deduped_65_1[2];
+    deduped_62_1 := deduped_66_1[1];
+    deduped_61_1 := SetOfObjectsAsUnresolvableAttribute( deduped_64_1 );
+    deduped_60_1 := deduped_65_1[1];
+    deduped_59_1 := DefiningTripleOfUnderlyingQuiver( deduped_64_1 );
+    deduped_58_1 := ListOfValues( deduped_60_1 );
+    deduped_57_1 := deduped_59_1[1];
+    deduped_56_1 := [ 1 .. deduped_57_1 ];
+    deduped_55_1 := [ 0 .. deduped_59_1[2] - 1 ];
+    deduped_54_1 := [ 0 .. deduped_57_1 - 1 ];
+    deduped_1_1 := List( deduped_60_1, Length );
+    deduped_53_1 := List( deduped_54_1, function ( o_2 )
+            return deduped_1_1[1 + o_2];
+        end );
+    deduped_5_1 := deduped_59_1[3];
+    deduped_7_1 := List( deduped_55_1, function ( m_2 )
+            return deduped_5_1[1 + m_2][1];
+        end );
+    deduped_6_1 := List( deduped_55_1, function ( m_2 )
+            return deduped_5_1[1 + m_2][2];
+        end );
+    deduped_8_1 := List( deduped_55_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + m_2;
+            deduped_1_2 := deduped_1_1[1 + deduped_6_1[deduped_2_2]];
+            return NTuple( 2, deduped_1_2, ListWithIdenticalEntries( deduped_1_2, deduped_61_1[1 + deduped_7_1[deduped_2_2]] ) );
+        end );
+    deduped_52_1 := [ 0 .. Sum( List( deduped_55_1, function ( i_2 )
+                    return deduped_8_1[1 + i_2][1];
+                end ) ) - 1 ];
+    deduped_4_1 := List( deduped_62_1, Length );
+    deduped_2_1 := List( deduped_61_1, UnderlyingVertex );
+    deduped_51_1 := Concatenation( List( deduped_54_1, function ( o_2 )
+              local hoisted_1_2, deduped_2_2;
+              deduped_2_2 := 1 + o_2;
+              hoisted_1_2 := deduped_2_1[deduped_2_2];
+              return ListWithIdenticalEntries( deduped_1_1[deduped_2_2], deduped_4_1[SafeUniquePositionProperty( deduped_61_1, function ( obj_3 )
+                         return UnderlyingVertex( obj_3 ) = hoisted_1_2;
+                     end )] );
+          end ) );
+    deduped_50_1 := [ 0 .. Sum( List( deduped_55_1, function ( m_2 )
+                    return deduped_1_1[1 + deduped_5_1[(1 + m_2)][2]];
+                end ) ) - 1 ];
+    deduped_49_1 := Product( deduped_51_1 );
+    deduped_48_1 := [ 0 .. deduped_49_1 - 1 ];
+    deduped_20_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_64_1 );
+    deduped_33_1 := List( deduped_55_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + m_2;
+            deduped_1_2 := deduped_1_1[1 + deduped_6_1[deduped_2_2]];
+            return NTuple( 2, [ 0 .. deduped_1_2 - 1 ], ListWithIdenticalEntries( deduped_1_2, deduped_20_1[deduped_2_2] ) );
+        end );
+    deduped_13_1 := UnderlyingQuiverAlgebra( deduped_64_1 );
+    deduped_12_1 := List( deduped_54_1, function ( o_2 )
+            local deduped_1_2, deduped_2_2;
+            deduped_2_2 := 1 + o_2;
+            deduped_1_2 := deduped_1_1[deduped_2_2];
+            return NTuple( 2, deduped_1_2, ListWithIdenticalEntries( deduped_1_2, deduped_61_1[deduped_2_2] ) );
+        end );
+    deduped_32_1 := List( deduped_55_1, function ( i_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := deduped_6_1[1 + i_2];
+            deduped_2_2 := 1 + deduped_3_2;
+            deduped_1_2 := Sum( deduped_53_1{[ 1 .. deduped_3_2 ]} );
+            return NTuple( 2, [ deduped_1_2 .. deduped_1_2 + deduped_53_1[deduped_2_2] - 1 ], List( deduped_12_1[deduped_2_2][2], function ( objC_3 )
+                      return CreateCapCategoryMorphismWithAttributes( deduped_64_1, objC_3, objC_3, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_13_1, QuiverVertexAsIdentityPath( UnderlyingVertex( objC_3 ) ) ) );
+                  end ) );
+        end );
+    deduped_24_1 := Sum( deduped_53_1 );
+    hoisted_35_1 := Concatenation( List( deduped_55_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2;
+              deduped_3_2 := 1 + i_2;
+              hoisted_2_2 := deduped_32_1[deduped_3_2][1];
+              hoisted_1_2 := deduped_33_1[deduped_3_2][1];
+              return List( [ 0 .. deduped_8_1[deduped_3_2][1] - 1 ], function ( i_3 )
+                      local hoisted_3_3, deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3;
+                      deduped_7_3 := hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                      deduped_6_3 := 1 + deduped_7_3;
+                      deduped_5_3 := deduped_51_1[deduped_6_3];
+                      deduped_4_3 := Product( deduped_51_1{[ 1 .. deduped_7_3 ]} );
+                      hoisted_3_3 := DivIntWithGivenQuotient( deduped_49_1, deduped_4_3, deduped_5_3 * Product( deduped_51_1{[ (deduped_6_3 + 1) .. deduped_24_1 ]} ) );
+                      return List( deduped_48_1, function ( i_4 )
+                              return RemIntWithDomain( QuoIntWithDomain( i_4, deduped_4_3, deduped_49_1 ), deduped_5_3, hoisted_3_3 );
+                          end );
+                  end );
+          end ) );
+    deduped_21_1 := List( deduped_66_1[2], AsList );
+    hoisted_34_1 := Concatenation( List( deduped_55_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2;
+              deduped_10_2 := 1 + i_2;
+              deduped_9_2 := deduped_33_1[deduped_10_2];
+              deduped_8_2 := deduped_9_2[2];
+              deduped_7_2 := deduped_32_1[deduped_10_2][2];
+              hoisted_6_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return QuiverVertexAsIdentityPath( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
+                  end );
+              hoisted_5_2 := List( deduped_7_2, UnderlyingQuiverAlgebraElement );
+              hoisted_4_2 := List( deduped_8_2, UnderlyingQuiverAlgebraElement );
+              hoisted_3_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Source( logic_new_func_x_3 ) );
+                  end );
+              hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
+                  end );
+              hoisted_1_2 := deduped_9_2[1];
+              return List( [ 0 .. deduped_8_1[deduped_10_2][1] - 1 ], function ( i_3 )
+                      local deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3, deduped_8_3;
+                      deduped_8_3 := 1 + i_3;
+                      deduped_7_3 := hoisted_3_2[deduped_8_3];
+                      deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
+                      deduped_5_3 := hoisted_2_2[deduped_6_3];
+                      deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                  if deduped_5_3 = deduped_7_3 then
+                                      return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
+                                  else
+                                      return false;
+                                  fi;
+                                  return;
+                              end )(  ) then
+                          return [ 0 .. deduped_4_1[SafeUniquePositionProperty( deduped_61_1, function ( obj_4 )
+                                         return (UnderlyingVertex( obj_4 ) = deduped_7_3);
+                                     end )] - 1 ];
+                      else
+                          return deduped_21_1[SafeUniquePositionProperty( deduped_20_1, function ( mor_4 )
+                                   if UnderlyingVertex( Source( mor_4 ) ) = deduped_7_3 and UnderlyingVertex( Range( mor_4 ) ) = deduped_5_3 then
+                                       return UnderlyingQuiverAlgebraElement( mor_4 ) = deduped_4_3;
+                                   else
+                                       return false;
+                                   fi;
+                                   return;
+                               end )];
+                      fi;
+                      return;
+                  end );
+          end ) );
+    deduped_10_1 := Concatenation( List( deduped_55_1, function ( i_2 )
+              return ListWithIdenticalEntries( deduped_8_1[1 + i_2][1], deduped_49_1 );
+          end ) );
+    hoisted_36_1 := List( deduped_52_1, function ( i_2 )
+            local hoisted_1_2, hoisted_2_2, deduped_3_2;
+            deduped_3_2 := 1 + i_2;
+            hoisted_2_2 := hoisted_34_1[deduped_3_2];
+            hoisted_1_2 := hoisted_35_1[deduped_3_2];
+            return List( [ 0 .. deduped_10_1[deduped_3_2] - 1 ], function ( i_3 )
+                    return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                end );
+        end );
+    hoisted_28_1 := Concatenation( List( deduped_55_1, function ( m_2 )
+              local hoisted_1_2, deduped_2_2;
+              deduped_2_2 := 1 + m_2;
+              hoisted_1_2 := deduped_2_1[1 + deduped_7_1[deduped_2_2]];
+              return ListWithIdenticalEntries( deduped_1_1[1 + deduped_6_1[deduped_2_2]], deduped_4_1[SafeUniquePositionProperty( deduped_61_1, function ( obj_3 )
+                         return UnderlyingVertex( obj_3 ) = hoisted_1_2;
+                     end )] );
+          end ) );
+    deduped_29_1 := List( deduped_50_1, function ( j_2 )
+            return Product( hoisted_28_1{[ 1 .. j_2 ]} );
+        end );
+    hoisted_37_1 := List( deduped_48_1, function ( i_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := 1 + i_2;
+            return Sum( deduped_50_1, function ( j_3 )
+                    local deduped_1_3;
+                    deduped_1_3 := 1 + j_3;
+                    return hoisted_36_1[deduped_1_3][hoisted_1_2] * deduped_29_1[deduped_1_3];
+                end );
+        end );
+    hoisted_18_1 := List( deduped_61_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
+    hoisted_17_1 := List( deduped_63_1, function ( logic_new_func_x_2 )
+            return Length( Source( logic_new_func_x_2 ) );
+        end );
+    hoisted_16_1 := List( deduped_63_1, AsList );
+    deduped_19_1 := List( deduped_55_1, function ( m_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := 1 + m_2;
+            deduped_2_2 := 1 + deduped_7_1[deduped_3_2];
+            deduped_1_2 := deduped_61_1[deduped_2_2];
+            return NTuple( 2, hoisted_16_1[deduped_3_2], ListWithIdenticalEntries( hoisted_17_1[deduped_3_2], CreateCapCategoryMorphismWithAttributes( deduped_64_1, deduped_1_2, deduped_1_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_13_1, hoisted_18_1[deduped_2_2] ) ) ) );
+        end );
+    deduped_15_1 := List( deduped_55_1, function ( i_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2;
+            deduped_3_2 := deduped_7_1[1 + i_2];
+            deduped_2_2 := 1 + deduped_3_2;
+            deduped_1_2 := Sum( deduped_53_1{[ 1 .. deduped_3_2 ]} );
+            return NTuple( 2, [ deduped_1_2 .. deduped_1_2 + deduped_53_1[deduped_2_2] - 1 ], List( deduped_12_1[deduped_2_2][2], function ( objC_3 )
+                      return CreateCapCategoryMorphismWithAttributes( deduped_64_1, objC_3, objC_3, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( deduped_13_1, QuiverVertexAsIdentityPath( UnderlyingVertex( objC_3 ) ) ) );
+                  end ) );
+        end );
+    hoisted_26_1 := Concatenation( List( deduped_55_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2;
+              deduped_3_2 := 1 + i_2;
+              hoisted_2_2 := deduped_15_1[deduped_3_2][1];
+              hoisted_1_2 := deduped_19_1[deduped_3_2][1];
+              return List( [ 0 .. deduped_8_1[deduped_3_2][1] - 1 ], function ( i_3 )
+                      local hoisted_3_3, deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3;
+                      deduped_7_3 := hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                      deduped_6_3 := 1 + deduped_7_3;
+                      deduped_5_3 := deduped_51_1[deduped_6_3];
+                      deduped_4_3 := Product( deduped_51_1{[ 1 .. deduped_7_3 ]} );
+                      hoisted_3_3 := DivIntWithGivenQuotient( deduped_49_1, deduped_4_3, deduped_5_3 * Product( deduped_51_1{[ (deduped_6_3 + 1) .. deduped_24_1 ]} ) );
+                      return List( deduped_48_1, function ( i_4 )
+                              return RemIntWithDomain( QuoIntWithDomain( i_4, deduped_4_3, deduped_49_1 ), deduped_5_3, hoisted_3_3 );
+                          end );
+                  end );
+          end ) );
+    hoisted_22_1 := Concatenation( List( deduped_55_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2;
+              deduped_10_2 := 1 + i_2;
+              deduped_9_2 := deduped_19_1[deduped_10_2];
+              deduped_8_2 := deduped_9_2[2];
+              deduped_7_2 := deduped_15_1[deduped_10_2][2];
+              hoisted_6_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return QuiverVertexAsIdentityPath( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
+                  end );
+              hoisted_5_2 := List( deduped_7_2, UnderlyingQuiverAlgebraElement );
+              hoisted_4_2 := List( deduped_8_2, UnderlyingQuiverAlgebraElement );
+              hoisted_3_2 := List( deduped_8_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Source( logic_new_func_x_3 ) );
+                  end );
+              hoisted_2_2 := List( deduped_7_2, function ( logic_new_func_x_3 )
+                      return UnderlyingVertex( Target( logic_new_func_x_3 ) );
+                  end );
+              hoisted_1_2 := deduped_9_2[1];
+              return List( [ 0 .. deduped_8_1[deduped_10_2][1] - 1 ], function ( i_3 )
+                      local deduped_4_3, deduped_5_3, deduped_6_3, deduped_7_3, deduped_8_3;
+                      deduped_8_3 := 1 + i_3;
+                      deduped_7_3 := hoisted_3_2[deduped_8_3];
+                      deduped_6_3 := 1 + hoisted_1_2[deduped_8_3];
+                      deduped_5_3 := hoisted_2_2[deduped_6_3];
+                      deduped_4_3 := hoisted_4_2[deduped_8_3] * hoisted_5_2[deduped_6_3];
+                      if CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                  if deduped_5_3 = deduped_7_3 then
+                                      return deduped_4_3 = PathAsAlgebraElement( deduped_13_1, hoisted_6_2[deduped_8_3] );
+                                  else
+                                      return false;
+                                  fi;
+                                  return;
+                              end )(  ) then
+                          return [ 0 .. deduped_4_1[SafeUniquePositionProperty( deduped_61_1, function ( obj_4 )
+                                         return (UnderlyingVertex( obj_4 ) = deduped_7_3);
+                                     end )] - 1 ];
+                      else
+                          return deduped_21_1[SafeUniquePositionProperty( deduped_20_1, function ( mor_4 )
+                                   if UnderlyingVertex( Source( mor_4 ) ) = deduped_7_3 and UnderlyingVertex( Range( mor_4 ) ) = deduped_5_3 then
+                                       return UnderlyingQuiverAlgebraElement( mor_4 ) = deduped_4_3;
+                                   else
+                                       return false;
+                                   fi;
+                                   return;
+                               end )];
+                      fi;
+                      return;
+                  end );
+          end ) );
+    hoisted_27_1 := List( deduped_52_1, function ( i_2 )
+            local hoisted_1_2, hoisted_2_2, deduped_3_2;
+            deduped_3_2 := 1 + i_2;
+            hoisted_2_2 := hoisted_22_1[deduped_3_2];
+            hoisted_1_2 := hoisted_26_1[deduped_3_2];
+            return List( [ 0 .. deduped_10_1[deduped_3_2] - 1 ], function ( i_3 )
+                    return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
+                end );
+        end );
+    hoisted_31_1 := List( deduped_48_1, function ( i_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := 1 + i_2;
+            return Sum( deduped_50_1, function ( j_3 )
+                    local deduped_1_3;
+                    deduped_1_3 := 1 + j_3;
+                    return hoisted_27_1[deduped_1_3][hoisted_1_2] * deduped_29_1[deduped_1_3];
+                end );
+        end );
+    deduped_47_1 := Filtered( deduped_48_1, function ( x_2 )
+            local deduped_1_2;
+            deduped_1_2 := 1 + x_2;
+            return hoisted_31_1[deduped_1_2] = hoisted_37_1[deduped_1_2];
+        end );
+    hoisted_45_1 := Target( cat_1 );
+    deduped_40_1 := List( deduped_58_1, Length );
+    deduped_41_1 := List( deduped_56_1, function ( i_2 )
+            return Product( deduped_51_1{[ 1 + Sum( deduped_40_1{[ 1 .. (i_2 - 1) ]} ) .. Sum( deduped_40_1{[ 1 .. i_2 ]} ) ]} );
+        end );
+    hoisted_43_1 := List( deduped_56_1, function ( i_2 )
+            local hoisted_3_2, deduped_4_2, deduped_5_2;
+            deduped_5_2 := deduped_41_1[i_2];
+            deduped_4_2 := Product( deduped_41_1{[ 1 .. i_2 - 1 ]} );
+            hoisted_3_2 := DivIntWithGivenQuotient( deduped_49_1, deduped_4_2, deduped_5_2 * Product( deduped_41_1{[ (i_2 + 1) .. deduped_57_1 ]} ) );
+            return List( deduped_48_1, function ( i_3 )
+                    return RemIntWithDomain( QuoIntWithDomain( i_3, deduped_4_2, deduped_49_1 ), deduped_5_2, hoisted_3_2 );
+                end );
+        end );
+    return List( [ 0 .. Length( deduped_47_1 ) - 1 ], function ( i_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := 1 + deduped_47_1[(1 + i_2)];
+            return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, ValuesOnAllObjects, List( deduped_56_1, function ( i_3 )
+                      local hoisted_1_3, hoisted_3_3, deduped_4_3;
+                      deduped_4_3 := deduped_40_1[i_3];
+                      hoisted_3_3 := deduped_4_1[i_3];
+                      hoisted_1_3 := hoisted_43_1[i_3][hoisted_1_2];
+                      return CreateCapCategoryMorphismWithAttributes( hoisted_45_1, deduped_58_1[i_3], deduped_62_1[i_3], AsList, List( [ 0 .. deduped_4_3 - 1 ], function ( i_4 )
+                                return DigitInPositionalNotation( hoisted_1_3, i_4, deduped_4_3, hoisted_3_3 );
+                            end ) );
+                  end ) );
+        end );
+end
+########
+        
+    ;
     
     if IsBound( cat!.precompiled_functions_added ) then
         
