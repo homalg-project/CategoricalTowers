@@ -10,7 +10,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_StablePosetOfCategoryOfPosetOfCategoryOfSliceCate
         
 ########
 function ( cat_1, a_1, b_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1;
+    local hoisted_1_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1;
     deduped_12_1 := 1 * 1;
     deduped_11_1 := AmbientCategory( cat_1 );
     deduped_10_1 := AmbientCategory( deduped_11_1 );
@@ -18,19 +18,19 @@ function ( cat_1, a_1, b_1 )
     deduped_8_1 := AmbientCategory( deduped_10_1 );
     deduped_7_1 := UnderlyingRing( deduped_8_1 );
     deduped_6_1 := HomalgIdentityMatrix( 1, deduped_7_1 );
-    deduped_5_1 := CertainRows( HomalgIdentityMatrix( deduped_12_1, deduped_7_1 ), List( [ 1 .. deduped_12_1 ], function ( i_2 )
+    deduped_4_1 := CertainRows( HomalgIdentityMatrix( deduped_12_1, deduped_7_1 ), List( [ 1 .. deduped_12_1 ], function ( i_2 )
               local deduped_1_2;
               deduped_1_2 := i_2 - 1;
               return REM_INT( deduped_1_2, 1 ) * 1 + QUO_INT( deduped_1_2, 1 ) + 1;
           end ) );
-    hoisted_4_1 := ConvertMatrixToRow( deduped_6_1 ) * deduped_5_1 * DiagMat( deduped_7_1, ListWithIdenticalEntries( 1, deduped_5_1 ) ) * DiagMat( deduped_7_1, ListWithIdenticalEntries( 1, deduped_6_1 ) ) * TransposedMatrix( UnderlyingMatrix( deduped_9_1 ) );
-    hoisted_2_1 := RankOfObject( Source( deduped_9_1 ) );
-    morphism_attr_1_1 := CapFixpoint( function ( x_2, y_2 )
+    hoisted_3_1 := ConvertMatrixToRow( deduped_6_1 ) * deduped_4_1 * DiagMat( deduped_7_1, ListWithIdenticalEntries( 1, deduped_4_1 ) ) * DiagMat( deduped_7_1, ListWithIdenticalEntries( 1, deduped_6_1 ) ) * TransposedMatrix( UnderlyingMatrix( deduped_9_1 ) );
+    hoisted_1_1 := RankOfObject( Source( deduped_9_1 ) );
+    deduped_5_1 := CapFixpoint( function ( x_2, y_2 )
             return IsZero( DecideZeroRows( y_2, x_2 ) );
         end, function ( x_2 )
-            return ReducedSyzygiesOfRows( hoisted_4_1, DiagMat( deduped_7_1, ListWithIdenticalEntries( hoisted_2_1, x_2 ) ) );
+            return ReducedSyzygiesOfRows( hoisted_3_1, DiagMat( deduped_7_1, ListWithIdenticalEntries( hoisted_1_1, x_2 ) ) );
         end, UnderlyingMatrix( UnderlyingMorphism( UnderlyingObject( UnderlyingObject( b_1 ) ) ) ) );
-    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingObject, CreateCapCategoryObjectWithAttributes( deduped_11_1, UnderlyingObject, CreateCapCategoryObjectWithAttributes( deduped_10_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_8_1, CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) ) ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingObject, CreateCapCategoryObjectWithAttributes( deduped_11_1, UnderlyingObject, CreateCapCategoryObjectWithAttributes( deduped_10_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_8_1, CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberRows( deduped_5_1 ) ), CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberColumns( deduped_5_1 ) ), UnderlyingMatrix, deduped_5_1 ) ) ) );
 end
 ########
         

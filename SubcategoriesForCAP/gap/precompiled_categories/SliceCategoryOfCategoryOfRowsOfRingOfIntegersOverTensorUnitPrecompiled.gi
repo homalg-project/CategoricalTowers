@@ -37,19 +37,37 @@ end
     , 100 );
     
     ##
+    cat!.cached_precompiled_functions.Coproduct :=
+        
+########
+function ( cat_1, objects_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := BaseObject( cat_1 );
+    deduped_1_1 := AmbientCategory( cat_1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_1_1, CreateCapCategoryObjectWithAttributes( deduped_1_1, RankOfObject, Sum( List( objects_1, function ( logic_new_func_x_2 )
+                    return RankOfObject( Source( UnderlyingMorphism( logic_new_func_x_2 ) ) );
+                end ) ) ), deduped_2_1, UnderlyingMatrix, UnionOfRows( UnderlyingRing( deduped_1_1 ), RankOfObject( deduped_2_1 ), List( objects_1, function ( logic_new_func_x_2 )
+                  return UnderlyingMatrix( UnderlyingMorphism( logic_new_func_x_2 ) );
+              end ) ) ) );
+end
+########
+        
+    ;
+    
+    ##
     AddDirectProduct( cat,
         
 ########
 function ( cat_1, objects_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
+    local deduped_1_1, deduped_2_1, deduped_3_1;
     deduped_3_1 := BaseObject( cat_1 );
     deduped_2_1 := AmbientCategory( cat_1 );
-    morphism_attr_1_1 := Iterated( List( objects_1, function ( logic_new_func_x_2 )
+    deduped_1_1 := Iterated( List( objects_1, function ( logic_new_func_x_2 )
               return UnderlyingMatrix( UnderlyingMorphism( logic_new_func_x_2 ) );
           end ), function ( I_2, J_2 )
             return ReducedSyzygiesOfRows( I_2, J_2 ) * I_2;
         end, HomalgIdentityMatrix( RankOfObject( deduped_3_1 ), UnderlyingRing( deduped_2_1 ) ) );
-    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_2_1, CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), deduped_3_1, UnderlyingMatrix, morphism_attr_1_1 ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_2_1, CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, NumberRows( deduped_1_1 ) ), deduped_3_1, UnderlyingMatrix, deduped_1_1 ) );
 end
 ########
         
@@ -74,11 +92,10 @@ end
         
 ########
 function ( cat_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := BaseObject( cat_1 );
-    deduped_2_1 := AmbientCategory( cat_1 );
-    morphism_attr_1_1 := HomalgZeroMatrix( 0, RankOfObject( deduped_3_1 ), UnderlyingRing( deduped_2_1 ) );
-    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_2_1, CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, 0 ), deduped_3_1, UnderlyingMatrix, morphism_attr_1_1 ) );
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := BaseObject( cat_1 );
+    deduped_1_1 := AmbientCategory( cat_1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_1_1, CreateCapCategoryObjectWithAttributes( deduped_1_1, RankOfObject, 0 ), deduped_2_1, UnderlyingMatrix, HomalgZeroMatrix( 0, RankOfObject( deduped_2_1 ), UnderlyingRing( deduped_1_1 ) ) ) );
 end
 ########
         
@@ -103,6 +120,26 @@ end
 ########
         
     , 100 );
+    
+    ##
+    cat!.cached_precompiled_functions.InjectionOfCofactorOfCoproductWithGivenCoproduct :=
+        
+########
+function ( cat_1, objects_1, k_1, P_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
+    deduped_4_1 := AmbientCategory( cat_1 );
+    deduped_3_1 := UnderlyingRing( deduped_4_1 );
+    deduped_2_1 := List( objects_1, function ( Li_2 )
+            return RankOfObject( Source( UnderlyingMorphism( Li_2 ) ) );
+        end );
+    deduped_1_1 := deduped_2_1[k_1];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, objects_1[k_1], P_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_4_1, List( objects_1, function ( Li_2 )
+                  return Source( UnderlyingMorphism( Li_2 ) );
+              end )[k_1], CreateCapCategoryObjectWithAttributes( deduped_4_1, RankOfObject, Sum( deduped_2_1 ) ), UnderlyingMatrix, UnionOfColumns( deduped_3_1, deduped_1_1, [ HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_3_1 ) ] ) ) );
+end
+########
+        
+    ;
     
     ##
     AddInverseForMorphisms( cat,
@@ -492,6 +529,24 @@ end
 ########
         
     , 100 );
+    
+    ##
+    cat!.cached_precompiled_functions.UniversalMorphismFromCoproductWithGivenCoproduct :=
+        
+########
+function ( cat_1, objects_1, T_1, tau_1, P_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := AmbientCategory( cat_1 );
+    deduped_1_1 := Source( UnderlyingMorphism( T_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_2_1, CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, Sum( List( objects_1, function ( Li_2 )
+                    return RankOfObject( Source( UnderlyingMorphism( Li_2 ) ) );
+                end ) ) ), deduped_1_1, UnderlyingMatrix, UnionOfRows( UnderlyingRing( deduped_2_1 ), RankOfObject( deduped_1_1 ), List( tau_1, function ( logic_new_func_x_2 )
+                  return UnderlyingMatrix( UnderlyingCell( logic_new_func_x_2 ) );
+              end ) ) ) );
+end
+########
+        
+    ;
     
     ##
     AddUniversalMorphismFromInitialObjectWithGivenInitialObject( cat,
