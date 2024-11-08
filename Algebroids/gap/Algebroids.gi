@@ -2330,24 +2330,26 @@ InstallMethod( ViewString,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for a morphism in an algebroid",
         [ IsMorphismInAlgebroid ],
         
   function( o )
     
     if IsRightQuiverAlgebra( UnderlyingQuiverAlgebra( CapCategory( o ) ) ) then
-        ViewObj( UnderlyingVertex( Source( o ) ) );
-        Print( "-[" );
-        ViewObj( UnderlyingQuiverAlgebraElement( o ) );
-        Print( "]->" );
-        ViewObj( UnderlyingVertex( Target( o ) ) );
+        return Concatenation(
+                       StringView( UnderlyingVertex( Source( o ) ) ),
+                       "-[",
+                       StringView( UnderlyingQuiverAlgebraElement( o ) ),
+                       "]->",
+                       StringView( UnderlyingVertex( Target( o ) ) ) );
     else
-        ViewObj( UnderlyingVertex( Target( o ) ) );
-        Print( "<-[" );
-        ViewObj( UnderlyingQuiverAlgebraElement( o ) );
-        Print( "]-" );
-        ViewObj( UnderlyingVertex( Source( o ) ) );
+        return Concatenation(
+                       StringView( UnderlyingVertex( Target( o ) ) ),
+                       "<-[",
+                       StringView( UnderlyingQuiverAlgebraElement( o ) ),
+                       "]-",
+                       StringView( UnderlyingVertex( Source( o ) ) ) );
     fi;
     
 end );
