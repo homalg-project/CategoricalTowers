@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2024.11-01",
+Version := "2024.11-02",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
@@ -101,7 +101,7 @@ Dependencies := rec(
                    [ "LinearAlgebraForCAP", ">= 2024.08-07" ],
                    [ "FreydCategoriesForCAP", ">= 2024.08-07" ],
                    [ "SubcategoriesForCAP", ">= 2024.01-01" ],
-                   [ "Toposes", ">= 2024.06-02" ],
+                   [ "Toposes", ">= 2024.11-01" ],
                    [ "Locales", ">= 2024.03-23" ],
                    [ "FinSetsForCAP", ">= 2024.02-09" ],
                    [ "ToolsForHigherHomologicalAlgebra", ">= 2023.03-01" ],
