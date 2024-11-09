@@ -15,4 +15,3 @@ These notebooks use the [Julia](https://julialang.org/) package
 [CapAndHomalg](https://github.com/homalg-project/CapAndHomalg.jl).
 
 You can click on a notebook to view a read-only version right here on GitHub.
-From there, you can run an interactive version in your browser via the `launch binder` button at the top of the notebook.
