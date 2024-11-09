@@ -1,5 +1,5 @@
 name: LazyCategories
-version: "2024.11-01"
+version: "2024.11-02"
 license: "GPL-2.0-or-later"
 date: 2024-11-09
 description: |
@@ -46,11 +46,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/LazyCategories/P
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2024.11-01/LazyCategories-2024.11-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2024.11-02/LazyCategories-2024.11-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2024.11-01/LazyCategories-2024.11-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2024.11-02/LazyCategories-2024.11-02.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2024.11-01/LazyCategories-2024.11-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-2024.11-02/LazyCategories-2024.11-02-manual.pdf
 
 abstract: |
 
@@ -61,7 +61,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Bar09</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>LazyCategories, Construct an equivalent lazy category out of a CAP category,
-             Version 2024.11-01</i>
+             Version 2024.11-02</i>
      (<span class='BibYear'>1-09</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/LazyCategories">https://homalg-project.github.io/pkg/LazyCategories</a></span>.
@@ -73,7 +73,7 @@ bibtex: |
       author =           {Barakat, M.},
       title =            {{LazyCategories},   Construct   an   equivalent   lazy
                           category    out   of   a   CAP   category,   {V}ersion
-                          2024.11\texttt{\symbol{45}}01},
+                          2024.11\texttt{\symbol{45}}02},
       month =            {4\texttt{\symbol{45}}},
       year =             {1\texttt{\symbol{45}}09},
       note =             {GAP package},
