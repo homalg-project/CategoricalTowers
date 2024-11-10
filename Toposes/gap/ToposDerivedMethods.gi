@@ -145,9 +145,11 @@ AddDerivationToCAP( DirectProductComplement,
     
 end );
 
+## in a finite bicomplete category the regular image is the equalizer of cokernel pair
+## https://ncatlab.org/nlab/show/image#AsEqualizer
 ## Page 20 in Peter Freyd, Aspect of topoi, Bull. Austral. Math. Soc, 7 (1972)
 AddDerivationToCAP( ImageEmbedding,
-        "the (regular) image as the equalizer of the cokernel-pair",
+        "the regular image as the equalizer of the cokernel pair",
         [ [ EmbeddingOfEqualizer, 1 ],
           [ InjectionOfCofactorOfPushout, 2 ] ],
         
@@ -160,7 +162,25 @@ AddDerivationToCAP( ImageEmbedding,
                    [ InjectionOfCofactorOfPushout( cat, D, 1 ),
                      InjectionOfCofactorOfPushout( cat, D, 2 ) ] );
     
-end );
+end : CategoryFilter := IsFiniteBicompleteCategory );
+
+## in a finite bicomplete category the regular coimage is the coequalizer of kernel pair
+## https://ncatlab.org/nlab/show/image#AsEqualizer
+AddDerivationToCAP( CoimageProjection,
+        "the regular coimage as the equalizer of the kernel pair",
+        [ [ ProjectionOntoCoequalizer, 1 ],
+          [ ProjectionInFactorOfFiberProduct, 2 ] ],
+        
+  function( cat, mor )
+    local D;
+    
+    D := [ mor, mor ];
+    
+    return ProjectionOntoCoequalizer( cat,
+                   [ ProjectionInFactorOfFiberProduct( cat, D, 1 ),
+                     ProjectionInFactorOfFiberProduct( cat, D, 2 ) ] );
+    
+end : CategoryFilter := IsFiniteBicompleteCategory );
 
 ##
 AddDerivationToCAP( ImageEmbedding,
