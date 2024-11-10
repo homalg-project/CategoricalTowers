@@ -705,7 +705,7 @@ InstallMethodWithCache( PreSheaves,
                     "IsCodistributiveCategory",
                     "IsFiniteCompleteCategory",
                     "IsFiniteCocompleteCategory",
-                    #"IsElementaryTopos",
+                    "IsElementaryTopos",
                     ];
     
     Append( properties, CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "properties", [ ] ) );
