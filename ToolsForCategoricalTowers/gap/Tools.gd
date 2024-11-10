@@ -18,6 +18,8 @@ DeclareGlobalFunction( "RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION" );
 
 DeclareGlobalFunction( "UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUCT_PREFUNCTION" );
 
+DeclareGlobalFunction( "CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD" );
+
 #! @Description
 #!  The input are two categories <A>C</A> and <A>H</A>.
 #!  There is not output but the following side effects are applied to <A>C</A>:

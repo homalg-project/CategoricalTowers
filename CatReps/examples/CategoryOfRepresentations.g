@@ -38,7 +38,7 @@ Display( CatReps );
 #! RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,
 #! Category of matrices over GF(3) ):
 #! 
-#! 107 primitive operations were used to derive 360 operations for this category
+#! 70 primitive operations were used to derive 360 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts

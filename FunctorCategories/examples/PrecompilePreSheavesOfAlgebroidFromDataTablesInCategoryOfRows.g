@@ -39,7 +39,9 @@ precompile_PreSheavesOfAlgebroidFromDataTablesInCategoryOfRows :=
             "FunctorCategories",
             compiled_category_name
             : operations :=
-            Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),
+            Difference( Concatenation(
+                    ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),
+                    [ "InverseForMorphisms" ] ),
                     [ "IsZeroForObjects",
                       "IsZeroForMorphisms",
                       "IsEpimorphism",
