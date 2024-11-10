@@ -1031,7 +1031,7 @@ InstallMethodWithCache( PreSheaves,
         
         ##
         AddHomomorphismStructureOnObjects( PSh_I_I,
-                function( PSh_I_I, S, T )
+          function( PSh_I_I, S, T )
             
             return DistinguishedObjectOfHomomorphismStructure( PSh_I_I );
             
