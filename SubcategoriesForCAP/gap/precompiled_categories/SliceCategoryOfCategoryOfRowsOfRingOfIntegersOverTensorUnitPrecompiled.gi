@@ -99,7 +99,7 @@ function ( cat_1 )
 end
 ########
         
-    , 100 );
+    , 303 );
     
     ##
     AddInjectionOfCofactorOfCoproductWithGivenCoproduct( cat,
@@ -119,7 +119,7 @@ function ( cat_1, objects_1, k_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 505 );
     
     ##
     cat!.cached_precompiled_functions.InjectionOfCofactorOfCoproductWithGivenCoproduct :=
@@ -154,7 +154,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 100 );
+    , 201 );
     
     ##
     AddIsAutomorphism( cat,
@@ -171,7 +171,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 505 );
     
     ##
     AddIsColiftableAlongEpimorphism( cat,
@@ -182,7 +182,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 101 );
     
     ##
     AddIsCongruentForMorphisms( cat,
@@ -218,7 +218,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 200 );
     
     ##
     AddIsHomSetInhabited( cat,
@@ -240,7 +240,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 101 );
     
     ##
     AddIsIsomorphism( cat,
@@ -255,7 +255,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 403 );
     
     ##
     AddIsLiftable( cat,
@@ -277,7 +277,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 101 );
     
     ##
     AddIsOne( cat,
@@ -290,7 +290,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 201 );
     
     ##
     AddIsSplitEpimorphism( cat,
@@ -303,7 +303,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 201 );
     
     ##
     AddIsTerminal( cat,
@@ -318,7 +318,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 403 );
     
     ##
     AddIsWeakInitial( cat,
@@ -371,7 +371,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 100 );
+    , 500 );
     
     ##
     AddIsWellDefinedForObjects( cat,
@@ -397,7 +397,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 200 );
     
     ##
     AddLift( cat,
@@ -483,7 +483,7 @@ function ( cat_1, beta_1, alpha_1 )
 end
 ########
         
-    , 100 );
+    , 101 );
     
     ##
     AddPreCompose( cat,
@@ -528,7 +528,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 505 );
     
     ##
     cat!.cached_precompiled_functions.UniversalMorphismFromCoproductWithGivenCoproduct :=
@@ -561,7 +561,7 @@ function ( cat_1, T_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 101 );
     
     ##
     AddUniversalMorphismIntoTerminalObject( cat,

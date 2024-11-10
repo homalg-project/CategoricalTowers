@@ -2343,13 +2343,13 @@ InstallMethodWithCache( PreSheaves,
     create_func_object :=
         function( name, PSh_I_I )
             
-            return """
+            return Pair( """
                 function( input_arguments... )
                   
                   return ObjectConstructor( cat, Pair( [ ], [ ] ) );
                   
                 end
-            """;
+            """, 1 );
             
         end;
     
@@ -2357,13 +2357,13 @@ InstallMethodWithCache( PreSheaves,
     create_func_morphism :=
         function( name, PSh_I_I )
             
-            return """
+            return Pair( """
                 function( input_arguments... )
                     
                     return MorphismConstructor( cat, top_source, [ ], top_range );
                     
                 end
-            """;
+            """, 1 );
             
         end;
     
@@ -2410,7 +2410,7 @@ InstallMethodWithCache( PreSheaves,
         
         return [ InitialObject( PSh_I_I ) ];
         
-    end );
+    end, OperationWeight( PSh_I_I, "InitialObject" ) );
     
     ##
     AddIsWellDefinedForObjects( PSh_I_I,
@@ -2418,7 +2418,7 @@ InstallMethodWithCache( PreSheaves,
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddIsWellDefinedForMorphisms( PSh_I_I,
@@ -2426,7 +2426,7 @@ InstallMethodWithCache( PreSheaves,
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddIsEqualForObjects( PSh_I_I,
@@ -2434,7 +2434,7 @@ InstallMethodWithCache( PreSheaves,
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddIsEqualForMorphisms( PSh_I_I,
@@ -2442,7 +2442,7 @@ InstallMethodWithCache( PreSheaves,
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddIsCongruentForMorphisms( PSh_I_I,
@@ -2450,7 +2450,7 @@ InstallMethodWithCache( PreSheaves,
         
         return true;
         
-    end );
+    end, 1 );
     
     if not H = "self" then
         
@@ -2463,7 +2463,7 @@ InstallMethodWithCache( PreSheaves,
             
             return InitialObject( H );
             
-        end );
+        end, OperationWeight( H, "InitialObject" ) );
         
         ##
         AddHomomorphismStructureOnObjects( PSh_I_I,
@@ -2471,7 +2471,7 @@ InstallMethodWithCache( PreSheaves,
             
             return DistinguishedObjectOfHomomorphismStructure( PSh_I_I );
             
-        end );
+        end, OperationWeight( PSh_I_I, "DistinguishedObjectOfHomomorphismStructure" ) );
         
         ##
         AddHomomorphismStructureOnMorphismsWithGivenObjects( PSh_I_I,
@@ -2482,7 +2482,7 @@ InstallMethodWithCache( PreSheaves,
             
             return MorphismConstructor( H, source, fail, target );
             
-        end );
+        end, 1 );
         
         ##
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( PSh_I_I,
@@ -2493,7 +2493,7 @@ InstallMethodWithCache( PreSheaves,
             
             return MorphismConstructor( H, distinguished_object, fail, target );
             
-        end );
+        end, 1 );
         
         ##
         AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh_I_I,
@@ -2501,7 +2501,7 @@ InstallMethodWithCache( PreSheaves,
             
             return MorphismConstructor( PSh_I_I, S, fail, T );
             
-        end );
+        end, 1 );
         
     fi;
     
@@ -2511,7 +2511,7 @@ InstallMethodWithCache( PreSheaves,
         
         return IdentityMorphism( PSh_I_I, object1 );
         
-    end );
+    end, OperationWeight( PSh_I_I, "IdentityMorphism" ) );
     
     ##
     AddBasisOfExternalHom( PSh_I_I,
@@ -2519,7 +2519,7 @@ InstallMethodWithCache( PreSheaves,
         
         return [ ];
         
-    end );
+    end, 1 );
     
     ##
     AddCoefficientsOfMorphism( PSh_I_I,
@@ -2527,7 +2527,7 @@ InstallMethodWithCache( PreSheaves,
         
         return [ ];
         
-    end );
+    end, 1 );
     
     Finalize( PSh_I_I );
     

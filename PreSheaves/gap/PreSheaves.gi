@@ -13,12 +13,13 @@
 ##
 InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_TO_ALWAYS_INSTALL_PRIMITIVELY_FOR_PRESHEAF_CATEGORY,
         [ 
-          "CokernelColift",
-          "CokernelColiftWithGivenCokernelObject",
+          #"CokernelColift",
+          #"CokernelColiftWithGivenCokernelObject",
           "ColiftAlongEpimorphism",
-          "KernelLift",
-          "KernelLiftWithGivenKernelObject",
+          #"KernelLift",
+          #"KernelLiftWithGivenKernelObject",
           "LiftAlongMonomorphism",
+          #"InverseForMorphisms", #WARNING: Overwriting a function for InverseForMorphisms primitively added to "PreSheaves( SkeletalFinSets, SkeletalFinSets )" with a derivation.
           "IsEpimorphism",
           "IsIsomorphism",
           "IsMonomorphism",
@@ -284,11 +285,11 @@ InstallMethodWithCache( PreSheaves,
         [ IsCapCategory, IsCapCategory ],
         
   function ( B, D )
-    local B_op, name, list_of_operations, list_of_operations_to_always_install_primitively,
+    local B_op, name,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
-          is_computable, list_of_operations_to_install, skip, func,
-          supports_empty_limits, properties, category_constructor_options,
+          is_computable, list_of_operations, list_of_operations_to_always_install_primitively, list_of_operations_to_install,
+          skip, func, supports_empty_limits, properties, category_constructor_options,
           PSh;
     
     B_op := Opposite( B : FinalizeCategory := true );
@@ -302,14 +303,6 @@ InstallMethodWithCache( PreSheaves,
     fi;
     
     is_computable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_computable", false );
-    
-    list_of_operations :=
-      CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations",
-                                 ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY ) );
-    
-    list_of_operations_to_always_install_primitively :=
-      CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations_to_always_install_primitively",
-                                 ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_TO_ALWAYS_INSTALL_PRIMITIVELY_FOR_PRESHEAF_CATEGORY ) );
     
     ##
     object_constructor := function( cat, pair_of_functions_of_presheaf )
@@ -352,7 +345,7 @@ InstallMethodWithCache( PreSheaves,
         if name in [ "TerminalObject", "InitialObject", "ZeroObject" ] then
             
             return ## a constructor for universal objects: TerminalObject
-              ReplacedStringViaRecord(
+              Pair( ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, objD, presheaf_on_objects, presheaf_on_morphisms;
@@ -369,12 +362,24 @@ InstallMethodWithCache( PreSheaves,
                 
             end
             """,
-            rec( functorial_with_given_objects := functorial.with_given_without_given_name_pair[2] ) );
+            rec( functorial_with_given_objects := functorial.with_given_without_given_name_pair[2] ) ),
+            (function()
+                local weight;
+                
+                weight := 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] );
+                
+                if IsSubset( D!.operations.(functorial.with_given_without_given_name_pair[2]).type, "derivation" ) then
+                    return weight - 2;
+                else
+                    return weight;
+                fi;
+                
+            end )() );
             
         elif name in [ "FiberProduct", "Pushout" ] then
             
             return ## a constructor for universal objects: FiberProduct
-              ReplacedStringViaRecord(
+              Pair( ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, i_arg, etas, presheaf_on_objects, presheaf_on_morphisms;
@@ -447,12 +452,30 @@ InstallMethodWithCache( PreSheaves,
                 
             end
             """,
-            rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
+            rec( functorial := functorial.with_given_without_given_name_pair[2] ) ),
+            (function()
+                local weight;
+                
+                weight := 2 * OperationWeight( D, name );
+                
+                if IsSubset( D!.operations.(name).type, "derivation" ) then
+                    weight := weight - 2;
+                fi;
+                
+                weight := weight + 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] );
+                
+                if IsSubset( D!.operations.(functorial.with_given_without_given_name_pair[2]).type, "derivation" ) then
+                    weight := weight - 2;
+                fi;
+                
+                return weight;
+                
+            end )() );
             
         elif name in [ "Equalizer", "Coequalizer" ] then
             
             return ## a constructor for universal objects: Equalizer
-              ReplacedStringViaRecord(
+              Pair( ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, i_arg, object, etas, presheaf_on_objects, presheaf_on_morphisms;
@@ -528,12 +551,30 @@ InstallMethodWithCache( PreSheaves,
                 
             end
             """,
-            rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
+            rec( functorial := functorial.with_given_without_given_name_pair[2] ) ),
+            (function()
+                local weight;
+                
+                weight := 2 * OperationWeight( D, name );
+                
+                if IsSubset( D!.operations.(name).type, "derivation" ) then
+                    weight := weight - 2;
+                fi;
+                
+                weight := weight + 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] );
+                
+                if IsSubset( D!.operations.(functorial.with_given_without_given_name_pair[2]).type, "derivation" ) then
+                    weight := weight - 2;
+                fi;
+                
+                return weight;
+                
+            end )() );
             
         elif name in [ "DirectProduct", "Coproduct", "DirectSum" ] then
             
             return ## a constructor for universal objects: DirectSum
-              ReplacedStringViaRecord(
+              Pair( ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, i_arg, Fs, presheaf_on_objects, presheaf_on_morphisms;
@@ -561,12 +602,30 @@ InstallMethodWithCache( PreSheaves,
                 
             end
             """,
-            rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
+            rec( functorial := functorial.with_given_without_given_name_pair[2] ) ),
+            (function()
+                local weight;
+                
+                weight := 2 * OperationWeight( D, name );
+                
+                if IsSubset( D!.operations.(name).type, "derivation" ) then
+                    weight := weight - 2;
+                fi;
+                
+                weight := weight + 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] );
+                
+                if IsSubset( D!.operations.(functorial.with_given_without_given_name_pair[2]).type, "derivation" ) then
+                    weight := weight - 2;
+                fi;
+                
+                return weight;
+                
+            end )() );
             
         elif name in [ "KernelObject", "CokernelObject", "ImageObject", "CoimageObject" ] then
             
             return ## a constructor for universal objects: KernelObject
-              ReplacedStringViaRecord(
+              Pair( ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, i_arg, eta, presheaf_on_objects, presheaf_on_morphisms;
@@ -621,7 +680,25 @@ InstallMethodWithCache( PreSheaves,
                 
             end
             """,
-            rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
+            rec( functorial := functorial.with_given_without_given_name_pair[2] ) ),
+            (function()
+                local weight;
+                
+                weight := 2 * OperationWeight( D, name );
+                
+                if IsSubset( D!.operations.(name).type, "derivation" ) then
+                    weight := weight - 2;
+                fi;
+                
+                weight := weight + 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] );
+                
+                if IsSubset( D!.operations.(functorial.with_given_without_given_name_pair[2]).type, "derivation" ) then
+                    weight := weight - 2;
+                fi;
+                
+                return weight;
+                
+            end )() );
             
         else
             
@@ -639,7 +716,7 @@ InstallMethodWithCache( PreSheaves,
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
         return
-          ReplacedStringViaRecord(
+          Pair( ReplacedStringViaRecord(
           """
           function ( input_arguments... )
             local D, i_arg, natural_transformation_on_objects;
@@ -682,9 +759,29 @@ InstallMethodWithCache( PreSheaves,
                          Error( "cannot deal with ", type );
                      fi;
                      
-                  end ) ) );
+                  end ) ) ),
+            (function()
+                local weight;
+                
+                weight := 2 * OperationWeight( D, name );
+                
+                if IsSubset( D!.operations.(name).type, "derivation" ) then
+                    return weight - 2;
+                else
+                    return weight;
+                fi;
+                
+            end )() );
         
     end;
+    
+    list_of_operations :=
+      CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations",
+                                 ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY ) );
+    
+    list_of_operations_to_always_install_primitively :=
+      CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations_to_always_install_primitively",
+                                 ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_TO_ALWAYS_INSTALL_PRIMITIVELY_FOR_PRESHEAF_CATEGORY ) );
     
     list_of_operations_to_install :=
       Concatenation(
@@ -795,48 +892,6 @@ InstallMethodWithCache( PreSheaves,
         "OppositeOfSource",
         ];
     
-    ## this code should become obsolete with following feature request:
-    ## https://github.com/homalg-project/CAP_project/issues/801
-    if CanCompute( D, "MorphismBetweenDirectSumsWithGivenDirectSums" ) then
-        
-        ##
-        AddMorphismBetweenDirectSumsWithGivenDirectSums( PSh,
-          function ( PSh, S, diagram_S, M, diagram_T, T )
-            local D, S_o, T_o, natural_transformation_on_objects;
-            
-            D := Target( PSh );
-            
-            S_o := PairOfFunctionsOfPreSheaf( S )[1];
-            T_o := PairOfFunctionsOfPreSheaf( T )[1];
-            
-            natural_transformation_on_objects :=
-              function ( source, objB, range )
-                local S_list, T_list;
-                
-                S_list := List( diagram_S, Si -> PairOfFunctionsOfPreSheaf( Si )[1]( objB ) );
-                T_list := List( diagram_T, Ti -> PairOfFunctionsOfPreSheaf( Ti )[1]( objB ) );
-                
-                return MorphismBetweenDirectSumsWithGivenDirectSums(
-                               D,
-                               S_o( objB ),
-                               S_list,
-                               List( [ 1 .. Length( S_list ) ], i->
-                                     List( [ 1 .. Length( T_list ) ], j ->
-                                           FunctionOfPreSheafMorphism( M[i][j] )(
-                                                   S_list[i],
-                                                   objB,
-                                                   T_list[j] ) ) ),
-                               T_list,
-                               T_o( objB ) );
-                
-            end;
-            
-            return MorphismConstructor( PSh, S, natural_transformation_on_objects, T );
-            
-        end );
-        
-    fi;
-    
     if HasCommutativeRingOfLinearCategory( D ) then
         
         SetCommutativeRingOfLinearCategory( PSh, CommutativeRingOfLinearCategory( D ) );
@@ -869,7 +924,7 @@ InstallMethodWithCache( PreSheaves,
             
             return MorphismConstructor( PSh, Source( eta ), natural_transformation_on_objects, Target( eta ) );
             
-        end );
+        end, 2 * OperationWeight( D, "MultiplyWithElementOfCommutativeRingForMorphisms" ) );
         
     fi;
     
@@ -933,13 +988,13 @@ InstallMethodWithCache( PreSheaves,
     create_func_object :=
         function( name, cat )
             
-            return """
+            return Pair( """
                 function( input_arguments... )
                   
                   return ObjectConstructor( cat, Pair( [ ], [ ] ) );
                   
                 end
-            """;
+            """, 1 );
             
         end;
     
@@ -947,13 +1002,13 @@ InstallMethodWithCache( PreSheaves,
     create_func_morphism :=
         function( name, cat )
             
-            return """
+            return Pair( """
                 function( input_arguments... )
                     
                     return MorphismConstructor( cat, top_source, [ ], top_range );
                     
                 end
-            """;
+            """, 1 );
             
         end;
     
@@ -1000,7 +1055,7 @@ InstallMethodWithCache( PreSheaves,
         
         return [ InitialObject( PSh_I_I ) ];
         
-    end );
+    end, 1 );
     
     ##
     AddIsWellDefinedForObjects( PSh_I_I,
@@ -1008,7 +1063,7 @@ InstallMethodWithCache( PreSheaves,
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddIsWellDefinedForMorphisms( PSh_I_I,
@@ -1016,7 +1071,7 @@ InstallMethodWithCache( PreSheaves,
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddIsEqualForObjects( PSh_I_I,
@@ -1024,7 +1079,7 @@ InstallMethodWithCache( PreSheaves,
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddIsEqualForMorphisms( PSh_I_I,
@@ -1032,7 +1087,7 @@ InstallMethodWithCache( PreSheaves,
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddIsCongruentForMorphisms( PSh_I_I,
@@ -1040,7 +1095,7 @@ InstallMethodWithCache( PreSheaves,
         
         return true;
         
-    end );
+    end, 1 );
     
     if not H = "self" then
         
@@ -1053,7 +1108,7 @@ InstallMethodWithCache( PreSheaves,
             
             return InitialObject( H );
             
-        end );
+        end, OperationWeight( H, "InitialObject" ) );
         
         ##
         AddHomomorphismStructureOnObjects( PSh_I_I,
@@ -1061,7 +1116,7 @@ InstallMethodWithCache( PreSheaves,
             
             return DistinguishedObjectOfHomomorphismStructure( PSh_I_I );
             
-        end );
+        end, OperationWeight( PSh_I_I, "DistinguishedObjectOfHomomorphismStructure" ) );
         
         ##
         AddHomomorphismStructureOnMorphismsWithGivenObjects( PSh_I_I,
@@ -1072,7 +1127,7 @@ InstallMethodWithCache( PreSheaves,
             
             return MorphismConstructor( H, source, fail, target );
             
-        end );
+        end, 1 );
         
         ##
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( PSh_I_I,
@@ -1083,7 +1138,7 @@ InstallMethodWithCache( PreSheaves,
             
             return MorphismConstructor( H, distinguished_object, fail, target );
             
-        end );
+        end, 1 );
         
         ##
         AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh_I_I,
@@ -1091,7 +1146,7 @@ InstallMethodWithCache( PreSheaves,
             
             return MorphismConstructor( PSh_I_I, S, fail, T );
             
-        end );
+        end, 1 );
         
     fi;
     
@@ -1101,7 +1156,7 @@ InstallMethodWithCache( PreSheaves,
         
         return IdentityMorphism( PSh_I_I, object1 );
         
-    end );
+    end, OperationWeight( PSh_I_I, "IdentityMorphism" ) );
     
     Finalize( PSh_I_I );
     

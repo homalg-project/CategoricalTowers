@@ -94,18 +94,19 @@ InstallMethod( Subcategory,
     
     category_constructor_options := rec(
          name := name,
-         create_func_bool := "default",
-         create_func_object := "default",
-         create_func_morphism := "default",
          object_constructor := { cat, obj } -> AsSubcategoryCell( cat, obj ),
          object_datum := { cat, obj } -> UnderlyingCell( obj ),
          morphism_constructor := { cat, source, mor, range } -> AsSubcategoryCell( source, mor, range ),
          morphism_datum := { cat, mor } -> UnderlyingCell( mor ),
          underlying_category_getter_string := "AmbientCategory",
+         underlying_category := C,
          underlying_object_getter_string := "ObjectDatum",
          underlying_morphism_getter_string := "MorphismDatum",
          top_object_getter_string := "ObjectConstructor",
          top_morphism_getter_string := "MorphismConstructor",
+         create_func_bool := "default",
+         create_func_object := "default",
+         create_func_morphism := "default",
     );
     
     ## list_of_operations_to_install
@@ -195,9 +196,9 @@ InstallMethod( Subcategory,
         AddSetOfObjectsOfCategory( D,
           function( D )
             
-            return List( Filtered( SetOfObjects( AmbientCategory( D ) ), D!.ObjectMembershipFunction ), object -> ObjectConstructor( D, object ) );
+            return List( Filtered( SetOfObjectsOfCategory( AmbientCategory( D ) ), D!.ObjectMembershipFunction ), object -> ObjectConstructor( D, object ) );
             
-        end );
+        end, OperationWeight( C, "SetOfObjectsOfCategory" ) );
         
     fi;
     
@@ -214,7 +215,7 @@ InstallMethod( Subcategory,
                                    ObjectDatum( D, target ) ),
                            target );
             
-        end );
+        end, OperationWeight( C, "UniqueMorphism" ) );
         
     fi;
     
@@ -264,7 +265,7 @@ InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
         
         return ForAny( L, obj -> IsEqualForObjects( obj, UnderlyingCell( a ) ) );
         
-    end );
+    end, 2 * OperationWeight( C, "IsEqualForObjects" ) );
     
     if CanCompute( C, "IsWellDefinedForMorphisms" ) then
         
@@ -275,7 +276,7 @@ InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
                    IsWellDefinedForObjects( cat, Target( phi ) ) and
                    IsWellDefinedForMorphisms( AmbientCategory( cat ), UnderlyingCell( phi ) );
             
-        end );
+        end, 2 * OperationWeight( C, "IsEqualForObjects" ) + OperationWeight( C, "IsWellDefinedForMorphisms" ) );
         
     fi;
     

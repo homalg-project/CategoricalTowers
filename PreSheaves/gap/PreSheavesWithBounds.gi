@@ -14,7 +14,7 @@ InstallMethod( PreSheavesWithBounds,
           object_datum_type, morphism_datum_type, commutative_ring_of_linear_category,
           additional_properties, properties,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
-          union_of_supports, list_of_operations_to_install,
+          union_of_supports, list_of_operations, list_of_operations_to_always_install_primitively, list_of_operations_to_install,
           create_func_bool, create_func_object, create_func_morphism, supports_empty_limits,
           xPSh;
     
@@ -98,9 +98,25 @@ InstallMethod( PreSheavesWithBounds,
         
     end;
     
+    list_of_operations :=
+      CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations",
+                                 ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY ) );
+    
+    list_of_operations_to_always_install_primitively :=
+      CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations_to_always_install_primitively",
+                                 ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_TO_ALWAYS_INSTALL_PRIMITIVELY_FOR_PRESHEAF_CATEGORY ) );
+    
     list_of_operations_to_install :=
-      Filtered( ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperationsAreReplacedWithCorrespondingObjectAndWithGivenOperations( PSh ), name ->
-              CAP_INTERNAL_METHOD_NAME_RECORD.(name).return_type <> "bool" );
+      Concatenation(
+              ListPrimitivelyInstalledOperationsOfCategory( D ),
+              Intersection( list_of_operations_to_always_install_primitively, ListInstalledOperationsOfCategory( D ) ) );
+    
+    list_of_operations_to_install :=
+      Concatenation( List( list_of_operations_to_install, name -> CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD( name, list_of_operations_to_install ) ) );
+    
+    list_of_operations_to_install := Intersection( list_of_operations_to_install, list_of_operations );
+    
+    list_of_operations_to_install := Filtered( list_of_operations_to_install, name -> CAP_INTERNAL_METHOD_NAME_RECORD.(name).return_type <> "bool" );
     
     create_func_bool := "default"; # this function will never be used
     
@@ -111,7 +127,7 @@ InstallMethod( PreSheavesWithBounds,
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
         return
-          ReplacedStringViaRecord(
+          Pair( ReplacedStringViaRecord(
             """
             function( input_arguments... )
               local PSh, i_arg;
@@ -166,7 +182,7 @@ InstallMethod( PreSheavesWithBounds,
                       Error( "can only deal with \"object\", \"morphism\", \"list_of_objects\", \"list_of_morphisms\"" );
                   fi;
                   
-                end)( ) ) );
+                end)( ) ) ), OperationWeight( PSh, name ) );
                 
       end;
     
@@ -177,7 +193,7 @@ InstallMethod( PreSheavesWithBounds,
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
         return
-          ReplacedStringViaRecord(
+          Pair( ReplacedStringViaRecord(
           """
           function ( input_arguments... )
             local PSh, i_arg;
@@ -217,7 +233,7 @@ InstallMethod( PreSheavesWithBounds,
                         Error( "can only deal with \"integer\", \"object\", \"morphism\", \"list_of_objects\", \"list_of_morphisms\", \"pair_of_morphisms\"" );
                      fi;
                      
-                  end ) ) );
+                  end ) ) ), OperationWeight( PSh, name ) );
     
     end;
     
@@ -284,7 +300,7 @@ InstallMethod( PreSheavesWithBounds,
             
             return ForAll( [ Minimum( F_datum[2][1], G_datum[2][1] ) .. Maximum( F_datum[2][2], G_datum[2][2] ) ], func );
             
-        end );
+        end, OperationWeight( D, "IsEqualForObjects" ) );
         
         AddIsEqualForMorphisms( xPSh,
           function( xPSh, phi, psi )
@@ -324,7 +340,7 @@ InstallMethod( PreSheavesWithBounds,
             
             return ForAll( [ Minimum( F_datum[2][1], G_datum[2][1] ) .. Maximum( F_datum[2][2], G_datum[2][2] ) ], func );
             
-        end );
+        end, OperationWeight( D, "IsEqualForMorphisms" ) );
         
         AddIsCongruentForMorphisms( xPSh,
           function( xPSh, phi, psi )
@@ -364,7 +380,7 @@ InstallMethod( PreSheavesWithBounds,
             
             return ForAll( [ Minimum( F_datum[2][1], G_datum[2][1] ) .. Maximum( F_datum[2][2], G_datum[2][2] ) ], func );
             
-        end );
+        end, OperationWeight( D, "IsCongruentForMorphisms" ) );
         
     else
         
@@ -376,14 +392,14 @@ InstallMethod( PreSheavesWithBounds,
             
             return IsIdenticalObj( F, G );
             
-        end );
+        end, 1 );
         
         AddIsEqualForMorphisms( xPSh,
           function( xPSh, phi, psi )
             
             return IsIdenticalObj( phi, psi );
             
-        end );
+        end, 1 );
         
     fi;
     

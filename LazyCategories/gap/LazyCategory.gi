@@ -415,12 +415,12 @@ InstallMethod( LazyCategory,
     create_func_bool :=
       function( name, D )
         
-        return """
+        return Pair( """
           function( input_arguments... )
             
             return operation_name( underlying_arguments... );
             
-        end""";
+        end""", OperationWeight( C, name ) );
         
     end;
     
@@ -428,12 +428,12 @@ InstallMethod( LazyCategory,
     create_func_object :=
       function( name, D )
         
-        return """
+        return Pair( """
           function( input_arguments... )
             
             return top_object_getter( cat, Pair( "operation_name", [ input_arguments... ] ) );
             
-        end""";
+        end""", OperationWeight( C, name ) );
         
     end;
     
@@ -441,19 +441,19 @@ InstallMethod( LazyCategory,
     create_func_morphism :=
       function( name, D )
         
-        return """
+        return Pair( """
           function( input_arguments... )
             
             return top_morphism_getter( cat, top_source, Pair( "operation_name", [ input_arguments... ] ), top_range );
             
-        end""";
+        end""", OperationWeight( C, name ) );
         
     end;
     
     create_func_list_of_objects :=
       function( name, D )
         
-        return """
+        return Pair( """
           function( input_arguments... )
             local underlying_result;
             
@@ -461,7 +461,7 @@ InstallMethod( LazyCategory,
             
             return List( underlying_result, object -> top_object_getter( cat, object ) );
             
-        end""";
+        end""", OperationWeight( C, name ) );
         
     end;
     
@@ -545,6 +545,7 @@ InstallMethod( LazyCategory,
            list_of_operations_to_install := list_of_operations_to_install,
            supports_empty_limits := supports_empty_limits,
            underlying_category_getter_string := "UnderlyingCategory",
+           underlying_category := C,
            underlying_object_getter_string := "EvaluatedCell",
            underlying_morphism_getter_string := "EvaluatedCell",
            top_object_getter_string := "ObjectConstructor",
@@ -609,7 +610,7 @@ InstallMethod( LazyCategory,
             
             return MorphismConstructor( D, Source( phi ), Pair( "PreCompose", [ D, phi, psi ] ), Target( psi ) );
             
-        end );
+        end, OperationWeight( C, "PreCompose" ) );
         
         if CanCompute( C, "DirectSum" ) then
             
@@ -623,7 +624,7 @@ InstallMethod( LazyCategory,
                 
                 return ObjectConstructor( D, Pair( "DirectSum", [ D, diagram ] ) );
                 
-            end );
+            end, OperationWeight( C, "DirectSum" ) );
             
         fi;
         
@@ -645,7 +646,7 @@ InstallMethod( LazyCategory,
                 
                 return ObjectConstructor( D, Pair( "FiberProduct", [ D, diagram ] ) );
                 
-            end );
+            end, OperationWeight( C, "FiberProduct" ) );
             
         fi;
         
@@ -675,7 +676,7 @@ InstallMethod( LazyCategory,
                 
                 return MorphismConstructor( D, P, Pair( "ProjectionInFactorOfFiberProductWithGivenFiberProduct", [ D, diagram, k, P ] ), Source( diagram[k] ) );
                 
-            end );
+            end, OperationWeight( C, "ProjectionInFactorOfFiberProductWithGivenFiberProduct" ) );
             
         fi;
         
@@ -697,7 +698,7 @@ InstallMethod( LazyCategory,
                 
                 return ObjectConstructor( D, Pair( "Pushout", [ D, diagram ] ) );
                 
-            end );
+            end, OperationWeight( C, "Pushout" ) );
             
         fi;
         
@@ -727,7 +728,7 @@ InstallMethod( LazyCategory,
                 
                 return MorphismConstructor( D, Target( diagram[k] ), Pair( "InjectionOfCofactorOfPushoutWithGivenPushout", [ D, diagram, k, I ] ), I );
                 
-            end );
+            end, OperationWeight( C, "InjectionOfCofactorOfPushoutWithGivenPushout" ) );
             
         fi;
         
@@ -800,7 +801,7 @@ InstallMethod( LazyCategory,
         
         return true;
         
-    end );
+    end, OperationWeight( C, "IsWellDefinedForObjects" ) );
     
     AddIsEqualForObjects( D,
       function( D, a, b )
@@ -820,7 +821,7 @@ InstallMethod( LazyCategory,
         
         return false;
         
-    end );
+    end, OperationWeight( C, "IsEqualForObjects" ) );
     
     AddIsWellDefinedForMorphisms( D,
       function( D, phi )
@@ -883,7 +884,7 @@ InstallMethod( LazyCategory,
         
         return true;
         
-    end );
+    end, OperationWeight( C, "IsWellDefinedForMorphisms" ) );
     
     AddIsEqualForMorphisms( D,
       function( D, phi, psi )
@@ -899,20 +900,20 @@ InstallMethod( LazyCategory,
         
         return false;
         
-    end );
+    end, OperationWeight( C, "IsEqualForMorphisms" ) );
     
     AddIsEqualForCacheForObjects( D,
       function( D, a, b )
         
         return IsEqualForObjects( D, a, b );
         
-    end );
+    end, OperationWeight( C, "IsEqualForMorphisms" ) );
     
     AddIsEqualForCacheForMorphisms( D,
       function( D, phi, psi )
-        
+
         return IsEqualForMorphismsOnMor( D, phi, psi );
-        
+
     end );
     
     if CanCompute( C, "IsCongruentForMorphisms" ) then
@@ -927,7 +928,7 @@ InstallMethod( LazyCategory,
             
             return IsCongruentForMorphisms( UnderlyingCategory( D ), EvaluatedCell( phi ), EvaluatedCell( psi ) );
             
-        end );
+        end, OperationWeight( C, "IsCongruentForMorphisms" ) );
         
     fi;
     
@@ -943,7 +944,7 @@ InstallMethod( LazyCategory,
             
             return MorphismConstructor( D, Source( phi ), Pair( "MultiplyWithElementOfCommutativeRingForMorphisms", [ D, r, phi ] ), Target( phi ) );
             
-        end );
+        end, OperationWeight( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) );
         
     fi;
     
@@ -995,7 +996,7 @@ InstallMethod( LazyCategory,
                 
                 return result;
                 
-            end );
+            end, OperationWeight( C, "BasisOfExternalHom" ) );
             
         fi;
         
@@ -1028,7 +1029,7 @@ InstallMethod( LazyCategory,
                 
                 return result;
                 
-            end );
+            end, OperationWeight( C, "CoefficientsOfMorphism" ) );
             
         fi;
         
@@ -1052,7 +1053,7 @@ InstallMethod( LazyCategory,
                     
                     return ObjectConstructor( HC, Pair( "DistinguishedObjectOfHomomorphismStructure", [ D ] ) );
                     
-                end );
+                end, OperationWeight( C, "DistinguishedObjectOfHomomorphismStructure" ) );
             fi;
             
             if CanCompute( C, "HomomorphismStructureOnObjects" ) then
@@ -1061,7 +1062,7 @@ InstallMethod( LazyCategory,
                     
                     return ObjectConstructor( HC, Pair( "HomomorphismStructureOnObjects", [ D, a, b ] ) );
                     
-                end );
+                end, OperationWeight( C, "HomomorphismStructureOnObjects" ) );
             fi;
             
             if CanCompute( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) then
@@ -1070,7 +1071,7 @@ InstallMethod( LazyCategory,
                     
                     return MorphismConstructor( HC, s, Pair( "HomomorphismStructureOnMorphismsWithGivenObjects", [ D, s, alpha, beta, r ] ), r );
                     
-                end );
+                end, OperationWeight( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) );
             fi;
             
             if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" ) then
@@ -1079,7 +1080,7 @@ InstallMethod( LazyCategory,
                     
                     return MorphismConstructor( HC, distinguished_object, Pair( "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects", [ D, distinguished_object, alpha, range ] ), range );
                     
-                end );
+                end, OperationWeight( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" ) );
             fi;
             
             if CanCompute( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) then
@@ -1088,7 +1089,7 @@ InstallMethod( LazyCategory,
                     
                     return MorphismConstructor( D, a, Pair( "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism", [ D, a, b, iota ] ), b );
                     
-                end );
+                end, OperationWeight( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) );
             fi;
             
         else
@@ -1101,7 +1102,7 @@ InstallMethod( LazyCategory,
                     
                     return DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( D ) );
                     
-                end );
+                end, OperationWeight( C, "DistinguishedObjectOfHomomorphismStructure" ) );
             fi;
             
             if CanCompute( C, "HomomorphismStructureOnObjects" ) then
@@ -1110,7 +1111,7 @@ InstallMethod( LazyCategory,
                     
                     return HomomorphismStructureOnObjects( UnderlyingCategory( D ), EvaluatedCell( a ), EvaluatedCell( b ) );
                     
-                end );
+                end, OperationWeight( C, "HomomorphismStructureOnObjects" ) );
             fi;
             
             if CanCompute( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) then
@@ -1119,7 +1120,7 @@ InstallMethod( LazyCategory,
                     
                     return HomomorphismStructureOnMorphismsWithGivenObjects( UnderlyingCategory( D ), s, EvaluatedCell( alpha ), EvaluatedCell( beta ), r );
                     
-                end );
+                end, OperationWeight( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) );
             fi;
             
             if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" ) then
@@ -1128,7 +1129,7 @@ InstallMethod( LazyCategory,
                     
                     return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( UnderlyingCategory( D ), distinguished_object, EvaluatedCell( alpha ), range );
                     
-                end );
+                end, OperationWeight( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" ) );
             fi;
             
             if CanCompute( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) then
@@ -1137,7 +1138,7 @@ InstallMethod( LazyCategory,
                     
                     return AsMorphismInLazyCategory( a, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCategory( D ), EvaluatedCell( a ), EvaluatedCell( b ), iota ), b );
                     
-                end );
+                end, OperationWeight( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) );
             fi;
             
         fi;
