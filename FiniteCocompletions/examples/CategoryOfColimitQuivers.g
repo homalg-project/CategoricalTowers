@@ -75,7 +75,7 @@ Display( ColimitCompletionC );
 #! FiniteColimitCompletionWithStrictCoproducts(
 #! PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ):
 #! 
-#! 22 primitive operations were used to derive 64 operations for this category
+#! 21 primitive operations were used to derive 63 operations for this category
 #! which algorithmically
 #! * IsCocartesianCategory
 #! and not yet algorithmically

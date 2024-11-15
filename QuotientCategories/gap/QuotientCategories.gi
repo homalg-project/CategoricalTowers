@@ -289,18 +289,22 @@ InstallMethod( QuotientCategory,
     
     SetUnderlyingCategory( quotient_cat, ambient_cat );
     
-    ##
-    AddSetOfObjectsOfCategory( quotient_cat,
-      function( quotient_cat )
-        local ambient_cat, objects;
+    if CanCompute( ambient_cat, "SetOfObjectsOfCategory" ) then
         
-        ambient_cat := UnderlyingCategory( quotient_cat );
+        ##
+        AddSetOfObjectsOfCategory( quotient_cat,
+          function( quotient_cat )
+            local ambient_cat, objects;
+            
+            ambient_cat := UnderlyingCategory( quotient_cat );
+            
+            objects := SetOfObjects( ambient_cat );
+            
+            return List( objects, o -> ObjectConstructor( quotient_cat, o ) );
+            
+        end );
         
-        objects := SetOfObjects( ambient_cat );
-        
-        return List( objects, o -> ObjectConstructor( quotient_cat, o ) );
-        
-    end );
+    fi;
     
     SetQuotientCategoryCongruenceFunction( quotient_cat, record.congruence_function );
     
