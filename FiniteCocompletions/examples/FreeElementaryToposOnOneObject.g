@@ -11,7 +11,7 @@ Display( FreeTopos1 );
 #! A CAP category with name
 #! FiniteColimitCompletionWithStrictCoproducts( Opposite( SkeletalFinSets ) ):
 #! 
-#! 27 primitive operations were used to derive 103 operations for this category
+#! 26 primitive operations were used to derive 102 operations for this category
 #! which algorithmically
 #! * IsBicartesianCategory
 #! and not yet algorithmically
