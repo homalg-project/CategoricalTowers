@@ -528,6 +528,37 @@ InstallGlobalFunction( UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUC
   end
 );
 
+##
+InstallGlobalFunction( CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD,
+  function( name_of_cap_operation, list_of_cap_operations )
+    local info;
+    
+    info := CAP_INTERNAL_METHOD_NAME_RECORD.(name_of_cap_operation);
+    
+    if IsBound( info.with_given_without_given_name_pair ) and
+       IsBound( info.output_source_getter_preconditions ) and
+       IsBound( info.output_range_getter_preconditions ) and
+       IsBound( info.with_given_without_given_name_pair ) and
+       IsList( info.with_given_without_given_name_pair ) and
+       Length( info.with_given_without_given_name_pair ) = 2 and
+       info.with_given_without_given_name_pair[1] in list_of_cap_operations and
+       not info.with_given_without_given_name_pair[2] in list_of_cap_operations then
+        
+        Assert( 0, info.return_type = "morphism" );
+        
+        return Concatenation(
+                       List( info.output_source_getter_preconditions, e -> e[1] ),
+                       List( info.output_range_getter_preconditions, e -> e[1] ),
+                       [ info.with_given_without_given_name_pair[2] ] );
+        
+    else
+        
+        return [ name_of_cap_operation ];
+        
+    fi;
+    
+end );
+
 ####################################
 #
 # methods for operations:

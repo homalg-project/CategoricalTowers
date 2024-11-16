@@ -44,6 +44,8 @@ DeclareCategory( "IsMorphismInPreSheafCategory",
 #
 ####################################
 
+DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_TO_ALWAYS_INSTALL_PRIMITIVELY_FOR_PRESHEAF_CATEGORY" );
+
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY" );
 
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY" );

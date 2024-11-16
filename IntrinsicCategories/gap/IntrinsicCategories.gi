@@ -1348,15 +1348,14 @@ InstallMethod( IntrinsicCategory,
             
         end );
         
-        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( IC,
-          function( IC, morphism )
-            local mor, D, hom;
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( IC,
+          function( IC, D, morphism, hom )
+            local mor;
             
-            mor := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCategory( IC ), ActiveCell( morphism ) );
-            
-            D := DistinguishedObjectOfHomomorphismStructure( IC );
-            
-            hom := HomomorphismStructureOnMorphismsWithGivenObjects( IC, Source( morphism ), Target( morphism ) );
+            mor := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( UnderlyingCategory( IC ),
+                           D,
+                           ActiveCell( morphism ),
+                           hom );
             
             return Intrinsify(
                            mor,

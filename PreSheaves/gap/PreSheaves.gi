@@ -11,6 +11,20 @@
 ####################################
 
 ##
+InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_TO_ALWAYS_INSTALL_PRIMITIVELY_FOR_PRESHEAF_CATEGORY,
+        [ 
+          "CokernelColift",
+          "CokernelColiftWithGivenCokernelObject",
+          "ColiftAlongEpimorphism",
+          "KernelLift",
+          "KernelLiftWithGivenKernelObject",
+          "LiftAlongMonomorphism",
+          "IsEpimorphism",
+          "IsIsomorphism",
+          "IsMonomorphism",
+         ] );
+
+##
 InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY,
         [ 
           "AdditionForMorphisms",
@@ -270,7 +284,7 @@ InstallMethodWithCache( PreSheaves,
         [ IsCapCategory, IsCapCategory ],
         
   function ( B, D )
-    local B_op, name, list_of_operations,
+    local B_op, name, list_of_operations, list_of_operations_to_always_install_primitively,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           is_computable, list_of_operations_to_install, skip, func,
@@ -289,7 +303,13 @@ InstallMethodWithCache( PreSheaves,
     
     is_computable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_computable", false );
     
-    list_of_operations := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations", ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY ) );
+    list_of_operations :=
+      CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations",
+                                 ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY ) );
+    
+    list_of_operations_to_always_install_primitively :=
+      CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations_to_always_install_primitively",
+                                 ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_TO_ALWAYS_INSTALL_PRIMITIVELY_FOR_PRESHEAF_CATEGORY ) );
     
     ##
     object_constructor := function( cat, pair_of_functions_of_presheaf )
@@ -666,8 +686,14 @@ InstallMethodWithCache( PreSheaves,
         
     end;
     
-    ## we cannot use ListPrimitivelyInstalledOperationsOfCategory since the unique lifts/colifts might be missing
-    list_of_operations_to_install := ShallowCopy( ListInstalledOperationsOfCategory( D ) );
+    list_of_operations_to_install :=
+      Concatenation(
+              ListPrimitivelyInstalledOperationsOfCategory( D ),
+              Intersection( list_of_operations_to_always_install_primitively, ListInstalledOperationsOfCategory( D ) ) );
+    
+    list_of_operations_to_install :=
+      Concatenation( List( list_of_operations_to_install, name -> CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD( name, list_of_operations_to_install ) ) );
+    
     list_of_operations_to_install := Intersection( list_of_operations_to_install, list_of_operations );
     
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",

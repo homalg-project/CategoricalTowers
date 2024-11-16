@@ -12,7 +12,7 @@ PSh := PreSheaves( SkeletalFinSets, SkeletalFinSets );
 Display( PSh );
 #! A CAP category with name PreSheaves( SkeletalFinSets, SkeletalFinSets ):
 #! 
-#! 46 primitive operations were used to derive 169 operations for this category
+#! 28 primitive operations were used to derive 169 operations for this category
 #! which not yet algorithmically
 #! * IsElementaryTopos
 MissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" );
