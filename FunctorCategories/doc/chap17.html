@@ -213,7 +213,9 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            "FunctorCategories",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            compiled_category_name</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            : operations :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            Difference( Concatenation(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    [ "InverseForMorphisms" ] ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                    [ "IsZeroForObjects",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsZeroForMorphisms",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsEpimorphism",</span>
@@ -272,7 +274,9 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            "FunctorCategories",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            compiled_category_name</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            : operations :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            Difference( Concatenation(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    [ "InverseForMorphisms" ] ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                    [ "IsZeroForObjects",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsZeroForMorphisms",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsEpimorphism",</span>
