@@ -46,14 +46,14 @@
   [33X[0;0YReturn the finite colimit completion of the category [3Xcat[103X.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", ">= 2023.10-04", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", ">= 2024.11-03", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XFinBouquets;[127X[104X
     [4X[28XFinBouquets[128X[104X
     [4X[25Xgap>[125X [27XDisplay( FinBouquets );[127X[104X
     [4X[28XA CAP category with name FinBouquets:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X70 primitive operations were used to derive 336 operations for this category[128X[104X
+    [4X[28X52 primitive operations were used to derive 336 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X

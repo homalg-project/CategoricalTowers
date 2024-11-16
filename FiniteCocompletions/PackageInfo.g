@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FiniteCocompletions",
 Subtitle := "Finite (co)product/(co)limit (co)completions",
-Version := "2024.11-02",
+Version := "2024.11-03",
 Date := "2024-11-16",
 Date := "2024-11-16",
 License := "GPL-2.0-or-later",
@@ -82,7 +82,7 @@ Dependencies := rec(
                    [ "QuotientCategories", ">= 2024.11-01" ],
                    [ "FpCategories", ">= 2024.09-06" ],
                    [ "Algebroids", ">= 2024.09-04" ],
-                   [ "PreSheaves", ">= 2024.02-02" ],
+                   [ "PreSheaves", ">= 2024.11-02" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
