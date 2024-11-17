@@ -169,7 +169,10 @@
     [4X[25X>[125X [27X            : operations :=[127X[104X
     [4X[25X>[125X [27X            Difference( Concatenation([127X[104X
     [4X[25X>[125X [27X                    ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),[127X[104X
-    [4X[25X>[125X [27X                    [ "InverseForMorphisms" ] ),[127X[104X
+    [4X[25X>[125X [27X                    [ "InverseForMorphisms",[127X[104X
+    [4X[25X>[125X [27X                      "CokernelColiftWithGivenCokernelObject",[127X[104X
+    [4X[25X>[125X [27X                      "KernelLiftWithGivenKernelObject",[127X[104X
+    [4X[25X>[125X [27X                      ] ),[127X[104X
     [4X[25X>[125X [27X                    [ "IsZeroForObjects",[127X[104X
     [4X[25X>[125X [27X                      "IsZeroForMorphisms",[127X[104X
     [4X[25X>[125X [27X                      "IsEpimorphism",[127X[104X
@@ -229,7 +232,10 @@
     [4X[25X>[125X [27X            : operations :=[127X[104X
     [4X[25X>[125X [27X            Difference( Concatenation([127X[104X
     [4X[25X>[125X [27X                    ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),[127X[104X
-    [4X[25X>[125X [27X                    [ "InverseForMorphisms" ] ),[127X[104X
+    [4X[25X>[125X [27X                    [ "InverseForMorphisms",[127X[104X
+    [4X[25X>[125X [27X                      "CokernelColiftWithGivenCokernelObject",[127X[104X
+    [4X[25X>[125X [27X                      "KernelLiftWithGivenKernelObject",[127X[104X
+    [4X[25X>[125X [27X                      ] ),[127X[104X
     [4X[25X>[125X [27X                    [ "IsZeroForObjects",[127X[104X
     [4X[25X>[125X [27X                      "IsZeroForMorphisms",[127X[104X
     [4X[25X>[125X [27X                      "IsEpimorphism",[127X[104X
