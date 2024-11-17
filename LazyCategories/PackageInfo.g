@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "LazyCategories",
 Subtitle := "Construct an equivalent lazy category out of a CAP category",
-Version := "2024.11-02",
-Date := "2024-11-09",
-Date := "2024-11-09",
+Version := "2024.11-03",
+Date := "2024-11-17",
+Date := "2024-11-17",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -72,7 +72,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "ToolsForHomalg", ">= 2021.12-02" ],
-                   [ "CAP", ">= 2023.08-04" ],
+                   [ "CAP", ">= 2024.11-01" ],
                    [ "MonoidalCategories", ">= 2024.09-02" ],
                    [ "ToolsForCategoricalTowers", ">= 2023.11-03" ],
                    [ "Toposes", ">= 2022.04-19" ],
