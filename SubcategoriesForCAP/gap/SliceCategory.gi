@@ -238,6 +238,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                    create_func_bool := "default",
                    create_func_morphism := "default",
                    underlying_category_getter_string := "AmbientCategory",
+                   underlying_category := C,
                    # UnderlyingMorphism is an attribute in the eager case but a proper operation in the lazy case
                    underlying_object_getter_string := "SourceOfUnderlyingMorphism",
                    underlying_morphism_getter_string := "MorphismDatum",
@@ -265,7 +266,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         return IsEqualForObjects( C, Target( m ), BaseObject( cat ) ) and
                IsWellDefinedForMorphisms( C, m );
         
-    end );
+    end, OperationWeight( C, "IsEqualForObjects" ) + OperationWeight( C, "IsWellDefinedForMorphisms" ) );
     
     AddIsWellDefinedForMorphisms( Slice_over_B,
       function( cat, phi )
@@ -283,7 +284,11 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                IsWellDefinedForMorphisms( C, phi_underlying ) and
                IsCongruentForMorphisms( C, mS, PreCompose( C, phi_underlying, mT ) );
         
-    end );
+    end,
+      2 * OperationWeight( C, "IsEqualForObjects" ) +
+      OperationWeight( C, "IsWellDefinedForMorphisms" ) +
+      OperationWeight( C, "PreCompose" ) +
+      OperationWeight( C, "IsCongruentForMorphisms" ) );
     
     AddIsEqualForObjects( Slice_over_B,
       function( cat, a, b )
@@ -296,21 +301,21 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
         return IsEqualForObjects( C, Source( a_underlying ), Source( b_underlying ) ) and IsEqualForMorphisms( C, a_underlying, b_underlying );
         
-    end );
+    end, OperationWeight( C, "IsEqualForObjects" ) + OperationWeight( C, "IsEqualForMorphisms" ) );
     
     AddIsEqualForMorphisms( Slice_over_B,
       function( cat, phi, psi )
         
         return IsEqualForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
         
-    end );
+    end, OperationWeight( C, "IsEqualForMorphisms" ) );
     
     AddIsCongruentForMorphisms( Slice_over_B,
       function( cat, phi, psi )
         
         return IsCongruentForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
         
-    end );
+    end, OperationWeight( C, "IsCongruentForMorphisms" ) );
     
     if CanCompute( C, "IsEqualForCacheForMorphisms" ) then
         
@@ -335,28 +340,28 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
         return ObjectConstructor( cat, UniversalMorphismFromInitialObject( AmbientCategory( cat ), BaseObject( cat ) ) );
         
-    end );
+    end, OperationWeight( C, "UniversalMorphismFromInitialObject" ) );
     
     AddTerminalObject( Slice_over_B,
       function( cat )
         
         return ObjectConstructor( cat, IdentityMorphism( AmbientCategory( cat ), BaseObject( cat ) ) );
         
-    end );
+    end, OperationWeight( C, "IdentityMorphism" ) );
     
     AddIsTerminal( Slice_over_B,
       function( cat, M )
         
         return IsIsomorphism( AmbientCategory( cat ), UnderlyingMorphism( M ) );
         
-    end );
+    end, OperationWeight( C, "IsIsomorphism" ) );
     
     AddUniversalMorphismIntoTerminalObject( Slice_over_B,
       function( cat, M )
         
         return MorphismConstructor( cat, M, UnderlyingMorphism( M ), TerminalObject( cat ) );
         
-    end );
+    end, OperationWeight( Slice_over_B, "TerminalObject" ) );
     
     if CanCompute( C, "ZeroObject" ) and CanCompute( C, "IsZeroForMorphisms" ) then
         
@@ -365,7 +370,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             return IsZeroForMorphisms( AmbientCategory( cat ), UnderlyingMorphism( M ) );
             
-        end );
+        end, OperationWeight( C, "IsZeroForMorphisms" ) );
         
     fi;
 
@@ -376,7 +381,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             return IsLiftable( AmbientCategory( cat ), UnderlyingMorphism( M ), UnderlyingMorphism( N ) );
             
-        end );
+        end, OperationWeight( C, "IsLiftable" ) );
         
     fi;
     
@@ -398,7 +403,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                                    SourceOfUnderlyingMorphism( cat, P ) ),
                            L[k] );
             
-        end );
+        end, OperationWeight( C, "ProjectionInFactorOfFiberProductWithGivenFiberProduct" ) );
         
         ##
         AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( Slice_over_B,
@@ -413,7 +418,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                                    SourceOfUnderlyingMorphism( cat, P ) ),
                            P );
             
-        end );
+        end, OperationWeight( C, "UniversalMorphismIntoFiberProductWithGivenFiberProduct" ) );
         
     fi;
     
@@ -434,7 +439,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                                    SourceOfUnderlyingMorphism( cat, I ) ),
                            I );
             
-        end );
+        end, OperationWeight( C, "InjectionOfCofactorOfCoproductWithGivenCoproduct" ) );
         
         ##
         AddUniversalMorphismFromCoproductWithGivenCoproduct( Slice_over_B,
@@ -449,7 +454,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                                    SourceOfUnderlyingMorphism( cat, I ) ),
                            T );
             
-        end );
+        end, OperationWeight( C, "UniversalMorphismFromCoproductWithGivenCoproduct" ) );
         
     fi;
     
@@ -478,7 +483,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                            emb,
                            A );
             
-        end );
+        end, OperationWeight( C, "EmbeddingOfEqualizer" ) + OperationWeight( C, "PreCompose" ) );
         
     fi;
     
@@ -498,7 +503,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                                    SourceOfUnderlyingMorphism( cat, E ) ),
                            E );
             
-        end );
+        end, OperationWeight( C, "UniversalMorphismIntoEqualizerWithGivenEqualizer" ) );
         
     fi;
     
@@ -527,7 +532,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                            prj,
                            E );
             
-        end );
+        end, OperationWeight( C, "ProjectionOntoCoequalizer" ) + OperationWeight( C, "ColiftAlongEpimorphism" ) );
         
     fi;
     
@@ -547,7 +552,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                                    SourceOfUnderlyingMorphism( cat, E ) ),
                            T );
             
-        end );
+        end, OperationWeight( C, "UniversalMorphismFromCoequalizerWithGivenCoequalizer" ) );
         
     fi;
     
@@ -575,7 +580,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                            emb,
                            range );
             
-        end );
+        end, OperationWeight( C, "ImageEmbedding" ) + OperationWeight( C, "PreCompose" ) );
         
     fi;
     
@@ -612,7 +617,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                             Source( N_mor ) );
             
             mors_slice := Filtered( mors, m ->
-                                  IsEqualForMorphisms( C,
+                                  IsCongruentForMorphisms( C,
                                           PreCompose( C,
                                                   m,
                                                   N_mor ),
@@ -624,7 +629,10 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                                  mor,
                                  N ) );
             
-        end );
+        end,
+          OperationWeight( C, "MorphismsOfExternalHom" ) +
+          2 * OperationWeight( C, "IsCongruentForMorphisms" ) +
+          2 * OperationWeight( C, "PreCompose" ) );
         
     fi;
     
@@ -643,7 +651,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                                    [ SubobjectClassifier( C ), BaseObject( cat ) ],
                                    2 ) );
             
-        end );
+        end, OperationWeight( C, "ProjectionInFactorOfDirectProduct" ) + OperationWeight( C, "SubobjectClassifier" ) );
         
     fi;
     
@@ -675,7 +683,10 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                                    SourceOfUnderlyingMorphism( cat, Omega ) ),
                            Omega );
             
-        end );
+        end,
+          OperationWeight( C, "SubobjectClassifier" ) +
+          OperationWeight( C, "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier" ) +
+          OperationWeight( C, "UniversalMorphismIntoDirectProductWithGivenDirectProduct" ) );
         
     fi;
     
@@ -920,7 +931,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             return ObjectConstructor( cat, IdentityMorphism( AmbientCategory( cat ), BaseObject( cat ) ) );
             
-        end );
+        end, OperationWeight( C, "IdentityMorphism" ) );
         
         TensorProductOnObjectsInSliceOverTensorUnit := function( cat, I, J )
             local C;

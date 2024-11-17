@@ -41,7 +41,10 @@ precompile_PreSheavesOfAlgebroidInCategoryOfRows :=
             : operations :=
             Difference( Concatenation(
                     ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),
-                    [ "InverseForMorphisms" ] ),
+                    [ "InverseForMorphisms",
+                      "CokernelColiftWithGivenCokernelObject",
+                      "KernelLiftWithGivenKernelObject",
+                      ] ),
                     [ "IsZeroForObjects",
                       "IsZeroForMorphisms",
                       "IsEpimorphism",

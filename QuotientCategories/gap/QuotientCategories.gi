@@ -174,13 +174,13 @@ InstallMethod( QuotientCategory,
     create_func_bool :=
           function ( name, quotient_cat )
             return
-              """
+              Pair( """
               function( input_arguments... )
                 
                 return CallFuncList( operation_name, List( NTuple( number_of_arguments, input_arguments... ){[2 .. number_of_arguments]}, UnderlyingCell ) );
                 
               end
-              """;
+              """, OperationWeight( ambient_cat, name ) );
           end;
     
     create_func_object :=
@@ -188,18 +188,18 @@ InstallMethod( QuotientCategory,
             
             if name in [ "TerminalObject", "InitialObject", "ZeroObject" ] then
               return
-                """
+                Pair( """
                 function( input_arguments... )
                   
                   return ObjectConstructor( cat, operation_name( UnderlyingCategory( cat ) ) );
                   
                 end
-                """;
+                """, OperationWeight( ambient_cat, name ) );
             
             elif name in [ "DirectProduct", "Coproduct", "DirectSum" ] then
               
               return ## a constructor for universal objects: DirectSum
-                """
+                Pair( """
                 function ( input_arguments... )
                   local i_arg;
                   
@@ -208,7 +208,7 @@ InstallMethod( QuotientCategory,
                   return ObjectConstructor( cat, operation_name( UnderlyingCategory( cat ), List( i_arg[2], UnderlyingCell ) ) );
                   
                 end
-                """;
+                """, OperationWeight( ambient_cat, name ) );
             
             else
               
@@ -226,7 +226,7 @@ InstallMethod( QuotientCategory,
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
         return
-          ReplacedStringViaRecord(
+          Pair( ReplacedStringViaRecord(
           """
           function ( input_arguments... )
             local underlying_cat, i_arg;
@@ -258,7 +258,7 @@ InstallMethod( QuotientCategory,
                          Error( "can only deal with \"integer\", \"object\", \"morphism\", \"list_of_objects\", \"list_of_morphisms\"" );
                      fi;
                      
-                  end ) ) );
+                  end ) ) ), OperationWeight( ambient_cat, name ) );
     
     end;
     
@@ -281,6 +281,7 @@ InstallMethod( QuotientCategory,
                    morphism_constructor := morphism_constructor,
                    morphism_datum := morphism_datum,
                    underlying_category_getter_string := "UnderlyingCategory",
+                   underlying_category := ambient_cat,
                    list_of_operations_to_install := list_of_operations_to_install,
                    supports_empty_limits := supports_empty_limits,
                    create_func_bool := create_func_bool,
@@ -302,7 +303,7 @@ InstallMethod( QuotientCategory,
             
             return List( objects, o -> ObjectConstructor( quotient_cat, o ) );
             
-        end );
+        end, OperationWeight( ambient_cat, "SetOfObjectsOfCategory" ) );
         
     fi;
     
@@ -327,7 +328,7 @@ InstallMethod( QuotientCategory,
             
             return MorphismConstructor( quotient_cat, Source( phi ), MultiplyWithElementOfCommutativeRingForMorphisms( UnderlyingCategory( quotient_cat ), r, UnderlyingCell( phi ) ), Target( phi ) );
             
-        end );
+        end, OperationWeight( ambient_cat, "MultiplyWithElementOfCommutativeRingForMorphisms" ) );
     
     fi;
     
@@ -351,7 +352,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
         AddRandomObjectByInteger( quotient_cat,
             function( quotient_cat, i )
               return ObjectConstructor( quotient_cat, RandomObjectByInteger( UnderlyingCategory( quotient_cat ), i ) );
-        end );
+        end, OperationWeight( ambient_cat, "RandomObjectByInteger" ) );
         
     fi;
     
@@ -362,7 +363,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
                 local alpha;
                 alpha := RandomMorphismWithFixedSourceAndRangeByInteger( UnderlyingCategory( quotient_cat ), UnderlyingCell( S ), UnderlyingCell( R ), i );
                 return MorphismConstructor( quotient_cat,  ObjectConstructor( quotient_cat, Source( alpha ) ), alpha, ObjectConstructor( quotient_cat, Target( alpha ) ) );
-        end );
+        end, OperationWeight( ambient_cat, "RandomMorphismWithFixedSourceAndRangeByInteger" ) );
         
     fi;
     
@@ -373,7 +374,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
                 local alpha;
                 alpha := RandomMorphismWithFixedSourceByInteger( UnderlyingCategory( quotient_cat ), UnderlyingCell( S ), i );
                 return MorphismConstructor( quotient_cat,  S, alpha, ObjectConstructor( quotient_cat, Target( alpha ) ) );
-        end );
+        end, OperationWeight( ambient_cat, "RandomMorphismWithFixedSourceByInteger" ) );
         
     fi;
     
@@ -384,7 +385,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
                 local alpha;
                 alpha := RandomMorphismWithFixedRangeByInteger( UnderlyingCategory( quotient_cat ), UnderlyingCell( R ), i );
                 return MorphismConstructor( quotient_cat,  ObjectConstructor( quotient_cat, Source( alpha ) ), alpha, R );
-        end );
+        end, OperationWeight( ambient_cat, "RandomMorphismWithFixedRangeByInteger" ) );
         
     fi;
     
@@ -395,7 +396,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
                 local alpha;
                 alpha := RandomMorphismByInteger( UnderlyingCategory( quotient_cat ), i );
                 return MorphismConstructor( quotient_cat,  ObjectConstructor( quotient_cat, Source( alpha ) ), alpha, ObjectConstructor( quotient_cat, Target( alpha ) ) );
-        end );
+        end, OperationWeight( ambient_cat, "RandomMorphismByInteger" ) );
     fi;
     
     if CanCompute( ambient_cat, "RandomObjectByList" ) then
@@ -403,7 +404,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
         AddRandomObjectByList( quotient_cat,
             function( quotient_cat, L )
               return ObjectConstructor( quotient_cat, RandomObjectByList( UnderlyingCategory( quotient_cat ), L ) );
-        end );
+        end, OperationWeight( ambient_cat, "RandomObjectByList" ) );
         
     fi;
     
@@ -414,7 +415,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
                 local alpha;
                 alpha := RandomMorphismWithFixedSourceAndRangeByList( UnderlyingCategory( quotient_cat ), UnderlyingCell( S ), UnderlyingCell( R ), L );
                 return MorphismConstructor( quotient_cat,  ObjectConstructor( quotient_cat, Source( alpha ) ), alpha, ObjectConstructor( quotient_cat, Target( alpha ) ) );
-        end );
+        end, OperationWeight( ambient_cat, "RandomMorphismWithFixedSourceAndRangeByList" ) );
         
     fi;
     
@@ -425,7 +426,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
                 local alpha;
                 alpha := RandomMorphismWithFixedSourceByList( UnderlyingCategory( quotient_cat ), UnderlyingCell( S ), L );
                 return MorphismConstructor( quotient_cat,  S, alpha, ObjectConstructor( quotient_cat, Target( alpha ) ) );
-        end );
+        end, OperationWeight( ambient_cat, "RandomMorphismWithFixedSourceByList" ) );
         
     fi;
     
@@ -436,7 +437,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
                 local alpha;
                 alpha := RandomMorphismWithFixedRangeByList( UnderlyingCategory( quotient_cat ), UnderlyingCell( R ), L );
                 return MorphismConstructor( quotient_cat,  ObjectConstructor( quotient_cat, Source( alpha ) ), alpha, R );
-        end );
+        end, OperationWeight( ambient_cat, "RandomMorphismWithFixedRangeByList" ) );
         
     fi;
     
@@ -447,7 +448,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
                 local alpha;
                 alpha := RandomMorphismByList( UnderlyingCategory( quotient_cat ), L );
                 return MorphismConstructor( quotient_cat,  ObjectConstructor( quotient_cat, Source( alpha ) ), alpha, ObjectConstructor( quotient_cat, Target( alpha ) ) );
-        end );
+        end, OperationWeight( ambient_cat, "RandomMorphismByList" ) );
         
     fi;
     

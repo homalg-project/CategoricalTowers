@@ -230,7 +230,7 @@ function ( cat_1, alpha_1, T_1, tau_1, P_1 )
     hoisted_1_1 := List( ValuesOnAllObjects( alpha_1 ), function ( logic_new_func_x_2 )
             return SyzygiesOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Range( tau_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local morphism_attr_1_2;
               morphism_attr_1_2 := UniqueLeftDivide( hoisted_1_1[o_2], hoisted_2_1[o_2] );
               return CreateCapCategoryMorphismWithAttributes( deduped_3_1, CreateCapCategoryObjectWithAttributes( deduped_3_1, RankOfObject, NumberRows( morphism_attr_1_2 ) ), hoisted_4_1[o_2], UnderlyingMatrix, morphism_attr_1_2 );
@@ -238,7 +238,7 @@ function ( cat_1, alpha_1, T_1, tau_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 201 : IsPrecompiledDerivation := true );
     
     ##
     cat!.cached_precompiled_functions.CokernelColiftWithGivenCokernelObject :=
@@ -257,7 +257,7 @@ function ( cat_1, alpha_1, T_1, tau_1, P_1 )
     hoisted_1_1 := List( deduped_6_1, function ( logic_new_func_x_2 )
             return NumberColumns( SyzygiesOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) ) );
         end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Range( tau_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( deduped_2_1, CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, hoisted_1_1[o_2] ), hoisted_3_1[o_2], UnderlyingMatrix, UniqueLeftDivide( hoisted_4_1[o_2], hoisted_5_1[o_2] ) );
           end ) );
 end
@@ -1472,7 +1472,7 @@ function ( cat_1, alpha_1, T_1, tau_1, P_1 )
         end );
     hoisted_2_1 := List( deduped_5_1, UnderlyingMatrix );
     hoisted_1_1 := List( deduped_5_1, Source );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( tau_1 ), P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local morphism_attr_1_2;
               morphism_attr_1_2 := UniqueRightDivide( hoisted_2_1[o_2], hoisted_3_1[o_2] );
               return CreateCapCategoryMorphismWithAttributes( deduped_4_1, hoisted_1_1[o_2], CreateCapCategoryObjectWithAttributes( deduped_4_1, RankOfObject, NumberColumns( morphism_attr_1_2 ) ), UnderlyingMatrix, morphism_attr_1_2 );
@@ -1480,7 +1480,7 @@ function ( cat_1, alpha_1, T_1, tau_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 201 : IsPrecompiledDerivation := true );
     
     ##
     cat!.cached_precompiled_functions.KernelLiftWithGivenKernelObject :=
@@ -1499,7 +1499,7 @@ function ( cat_1, alpha_1, T_1, tau_1, P_1 )
             return NumberRows( SyzygiesOfRows( UnderlyingMatrix( logic_new_func_x_2 ) ) );
         end );
     hoisted_1_1 := List( deduped_6_1, Source );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( tau_1 ), P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( deduped_3_1, hoisted_1_1[o_2], CreateCapCategoryObjectWithAttributes( deduped_3_1, RankOfObject, hoisted_2_1[o_2] ), UnderlyingMatrix, UniqueRightDivide( hoisted_4_1[o_2], hoisted_5_1[o_2] ) );
           end ) );
 end

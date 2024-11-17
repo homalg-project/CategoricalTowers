@@ -1187,7 +1187,7 @@ InstallMethod( IntrinsicCategory,
     create_func_morphism :=
       function( name, IC )
         
-        return """
+        return Pair( """
           function( input_arguments... )
             local underlying_result, result;
             
@@ -1199,7 +1199,7 @@ InstallMethod( IntrinsicCategory,
             
             return result;
             
-        end""";
+        end""", OperationWeight( C, name ) );
         
     end;
     
@@ -1212,6 +1212,7 @@ InstallMethod( IntrinsicCategory,
            list_of_operations_to_install := list_of_operations_to_install,
            supports_empty_limits := supports_empty_limits,
            underlying_category_getter_string := "UnderlyingCategory",
+           underlying_category := C,
            underlying_object_getter_string := "ActiveCell",
            underlying_morphism_getter_string := "ActiveCell",
            top_object_getter_string := "Intrinsify",
@@ -1318,7 +1319,7 @@ InstallMethod( IntrinsicCategory,
             
             return Intrinsify( RangeCategoryOfHomomorphismStructure( IC ), D );
             
-        end );
+        end, OperationWeight( C, "DistinguishedObjectOfHomomorphismStructure" ) );
         
         AddHomomorphismStructureOnObjects( IC,
           function( IC, object1, object2 )
@@ -1328,7 +1329,7 @@ InstallMethod( IntrinsicCategory,
             
             return Intrinsify( RangeCategoryOfHomomorphismStructure( IC ), hom );
             
-        end );
+        end, OperationWeight( C, "HomomorphismStructureOnObjects" ) );
         
         AddHomomorphismStructureOnMorphismsWithGivenObjects( IC,
           function( IC, source, alpha, beta, range )
@@ -1346,7 +1347,7 @@ InstallMethod( IntrinsicCategory,
             
             return Intrinsify( hom, source, s, range, t );
             
-        end );
+        end, OperationWeight( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) );
         
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( IC,
           function( IC, D, morphism, hom )
@@ -1362,7 +1363,7 @@ InstallMethod( IntrinsicCategory,
                            D, PositionOfActiveCell( D ),
                            hom, PositionOfActiveCell( hom ) );
             
-        end );
+        end, OperationWeight( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" ) );
         
         AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( IC,
           function( IC, source, range, morphism )
@@ -1381,7 +1382,7 @@ InstallMethod( IntrinsicCategory,
                       source, s,
                       range, t );
             
-        end );
+        end, OperationWeight( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) );
         
     fi;
     
