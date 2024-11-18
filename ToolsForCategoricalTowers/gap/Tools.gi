@@ -544,7 +544,7 @@ InstallGlobalFunction( CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD,
        info.with_given_without_given_name_pair[1] in list_of_cap_operations and
        not info.with_given_without_given_name_pair[2] in list_of_cap_operations then
         
-        Assert( 0, info.return_type = "morphism" );
+        Assert( 0, info.return_type in [ "morphism", "morphism_in_range_category_of_homomorphism_structure" ] );
         
         return Concatenation(
                        List( info.output_source_getter_preconditions, e -> e[1] ),

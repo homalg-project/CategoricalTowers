@@ -300,7 +300,7 @@ InstallMethod( PreSheavesWithBounds,
             
             return ForAll( [ Minimum( F_datum[2][1], G_datum[2][1] ) .. Maximum( F_datum[2][2], G_datum[2][2] ) ], func );
             
-        end, OperationWeight( D, "IsEqualForObjects" ) );
+        end, 2 * OperationWeight( D, "IsEqualForObjects" ) );
         
         AddIsEqualForMorphisms( xPSh,
           function( xPSh, phi, psi )
@@ -340,7 +340,7 @@ InstallMethod( PreSheavesWithBounds,
             
             return ForAll( [ Minimum( F_datum[2][1], G_datum[2][1] ) .. Maximum( F_datum[2][2], G_datum[2][2] ) ], func );
             
-        end, OperationWeight( D, "IsEqualForMorphisms" ) );
+        end, 2 * OperationWeight( D, "IsEqualForMorphisms" ) );
         
         AddIsCongruentForMorphisms( xPSh,
           function( xPSh, phi, psi )
@@ -380,7 +380,7 @@ InstallMethod( PreSheavesWithBounds,
             
             return ForAll( [ Minimum( F_datum[2][1], G_datum[2][1] ) .. Maximum( F_datum[2][2], G_datum[2][2] ) ], func );
             
-        end, OperationWeight( D, "IsCongruentForMorphisms" ) );
+        end, 2 * OperationWeight( D, "IsCongruentForMorphisms" ) );
         
     else
         
