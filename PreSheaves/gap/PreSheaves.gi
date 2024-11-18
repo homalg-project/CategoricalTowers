@@ -363,18 +363,7 @@ InstallMethodWithCache( PreSheaves,
             end
             """,
             rec( functorial_with_given_objects := functorial.with_given_without_given_name_pair[2] ) ),
-            (function()
-                local weight;
-                
-                weight := 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] );
-                
-                if IsSubset( D!.operations.(functorial.with_given_without_given_name_pair[2]).type, "derivation" ) then
-                    return weight - 2;
-                else
-                    return weight;
-                fi;
-                
-            end )() );
+            2 * OperationWeight( D, name ) + 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] ) );
             
         elif name in [ "FiberProduct", "Pushout" ] then
             
@@ -453,24 +442,7 @@ InstallMethodWithCache( PreSheaves,
             end
             """,
             rec( functorial := functorial.with_given_without_given_name_pair[2] ) ),
-            (function()
-                local weight;
-                
-                weight := 2 * OperationWeight( D, name );
-                
-                if IsSubset( D!.operations.(name).type, "derivation" ) then
-                    weight := weight - 2;
-                fi;
-                
-                weight := weight + 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] );
-                
-                if IsSubset( D!.operations.(functorial.with_given_without_given_name_pair[2]).type, "derivation" ) then
-                    weight := weight - 2;
-                fi;
-                
-                return weight;
-                
-            end )() );
+            2 * OperationWeight( D, name ) + 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] ) );
             
         elif name in [ "Equalizer", "Coequalizer" ] then
             
@@ -552,24 +524,7 @@ InstallMethodWithCache( PreSheaves,
             end
             """,
             rec( functorial := functorial.with_given_without_given_name_pair[2] ) ),
-            (function()
-                local weight;
-                
-                weight := 2 * OperationWeight( D, name );
-                
-                if IsSubset( D!.operations.(name).type, "derivation" ) then
-                    weight := weight - 2;
-                fi;
-                
-                weight := weight + 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] );
-                
-                if IsSubset( D!.operations.(functorial.with_given_without_given_name_pair[2]).type, "derivation" ) then
-                    weight := weight - 2;
-                fi;
-                
-                return weight;
-                
-            end )() );
+            2 * OperationWeight( D, name ) + 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] ) );
             
         elif name in [ "DirectProduct", "Coproduct", "DirectSum" ] then
             
@@ -603,24 +558,7 @@ InstallMethodWithCache( PreSheaves,
             end
             """,
             rec( functorial := functorial.with_given_without_given_name_pair[2] ) ),
-            (function()
-                local weight;
-                
-                weight := 2 * OperationWeight( D, name );
-                
-                if IsSubset( D!.operations.(name).type, "derivation" ) then
-                    weight := weight - 2;
-                fi;
-                
-                weight := weight + 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] );
-                
-                if IsSubset( D!.operations.(functorial.with_given_without_given_name_pair[2]).type, "derivation" ) then
-                    weight := weight - 2;
-                fi;
-                
-                return weight;
-                
-            end )() );
+            2 * OperationWeight( D, name ) + 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] ) );
             
         elif name in [ "KernelObject", "CokernelObject", "ImageObject", "CoimageObject" ] then
             
@@ -681,24 +619,7 @@ InstallMethodWithCache( PreSheaves,
             end
             """,
             rec( functorial := functorial.with_given_without_given_name_pair[2] ) ),
-            (function()
-                local weight;
-                
-                weight := 2 * OperationWeight( D, name );
-                
-                if IsSubset( D!.operations.(name).type, "derivation" ) then
-                    weight := weight - 2;
-                fi;
-                
-                weight := weight + 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] );
-                
-                if IsSubset( D!.operations.(functorial.with_given_without_given_name_pair[2]).type, "derivation" ) then
-                    weight := weight - 2;
-                fi;
-                
-                return weight;
-                
-            end )() );
+            2 * OperationWeight( D, name ) + 2 * OperationWeight( D, functorial.with_given_without_given_name_pair[2] ) );
             
         else
             
@@ -760,18 +681,7 @@ InstallMethodWithCache( PreSheaves,
                      fi;
                      
                   end ) ) ),
-            (function()
-                local weight;
-                
-                weight := 2 * OperationWeight( D, name );
-                
-                if IsSubset( D!.operations.(name).type, "derivation" ) then
-                    return weight - 2;
-                else
-                    return weight;
-                fi;
-                
-            end )() );
+        2 * OperationWeight( D, name ) );
         
     end;
     
