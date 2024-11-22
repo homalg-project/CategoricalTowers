@@ -137,7 +137,7 @@ InstallMethod( QuotientCategory,
     
     morphism_datum := { quotient_cat, m } -> UnderlyingCell( m );
     
-    list_of_operations_to_install := Intersection( ListInstalledOperationsOfCategory( ambient_cat ), CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY );
+    list_of_operations_to_install := Intersection( ListPrimitivelyInstalledOperationsOfCategory( ambient_cat ), CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY );
     
     if HasCommutativeRingOfLinearCategory( ambient_cat ) then
         commutative_ring := CommutativeRingOfLinearCategory( ambient_cat );
