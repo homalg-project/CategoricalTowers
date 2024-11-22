@@ -1,7 +1,5 @@
 #! @Chunk SnakeInFreeAbelian
 
-LoadPackage( "LazyCategories" );
-
 #! @Example
 LoadPackage( "Algebroids", ">= 2022.05-06" );
 #! true

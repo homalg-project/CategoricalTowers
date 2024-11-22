@@ -1,7 +1,5 @@
 #! @Chunk SnakeInAbelianPrimitive
 
-LoadPackage( "LazyCategories" );
-
 #! @Example
 LoadPackage( "LinearAlgebraForCAP" );
 #! true
@@ -27,6 +25,8 @@ IsZero( a * b * c );
 #! true
 Qmat := MatrixCategory( Q );
 #! Category of matrices over Q
+LoadPackage( "LazyCategories" );
+#! true
 Lazy := LazyCategory( Qmat :
                 show_evaluation := true, primitive_operations := true );
 #! LazyCategory( Category of matrices over Q )

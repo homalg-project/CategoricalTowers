@@ -1,7 +1,5 @@
 #! @Chunk SnakeInAdditiveClosureOfAlgebroidPrimitive
 
-LoadPackage( "LazyCategories" );
-
 #! @Example
 LoadPackage( "Algebroids", ">= 2022.05-06" );
 #! true
@@ -21,6 +19,8 @@ LoadPackage( "FreydCategoriesForCAP" );
 A_add := AdditiveClosure( A );
 #! AdditiveClosure( Algebroid( Z, FreeCategory(
 #! RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations )
+LoadPackage( "LazyCategories" );
+#! true
 Lazy := LazyCategory( A_add : show_evaluation := true,
                 lazify_range_of_hom_structure := true,
                 primitive_operations := true );

@@ -1,16 +1,18 @@
 #! @Chunk LazyTerminalCategory
 
-LoadPackage( "LazyCategories" );
-
 # the following packages introduce more CAP operations
 # which are not used below; still they make the example file
 # useful for further testing
-LoadPackage( "Locales", ">= 2022.11-04" );
-LoadPackage( "SubcategoriesForCAP" );
 
 #! @Example
+LoadPackage( "Locales", ">= 2022.11-04" );
+#! true
+LoadPackage( "SubcategoriesForCAP" );
+#! true
 T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects( )
+LoadPackage( "LazyCategories" );
+#! true
 L := LazyCategory( T : primitive_operations := true, optimize := 0 );
 #! LazyCategory( TerminalCategoryWithMultipleObjects( ) )
 a := "a" / T / L;
