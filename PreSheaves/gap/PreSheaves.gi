@@ -695,11 +695,8 @@ InstallMethodWithCache( PreSheaves,
     
     list_of_operations_to_install :=
       Concatenation(
-              ListPrimitivelyInstalledOperationsOfCategory( D ),
+              ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperationsAreReplacedWithCorrespondingObjectAndWithGivenOperations( D ),
               Intersection( list_of_operations_to_always_install_primitively, ListInstalledOperationsOfCategory( D ) ) );
-    
-    list_of_operations_to_install :=
-      Concatenation( List( list_of_operations_to_install, name -> CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD( name, list_of_operations_to_install ) ) );
     
     list_of_operations_to_install := Intersection( list_of_operations_to_install, list_of_operations );
     
