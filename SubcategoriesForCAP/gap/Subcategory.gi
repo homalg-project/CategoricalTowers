@@ -124,7 +124,7 @@ InstallMethod( Subcategory,
         Append( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEGORY );
     fi;
     
-    list_of_operations_to_install := Intersection( list_of_operations_to_install, ListInstalledOperationsOfCategory( C ) );
+    list_of_operations_to_install := Intersection( list_of_operations_to_install, ListPrimitivelyInstalledOperationsOfCategory( C ) );
     
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
               ];
