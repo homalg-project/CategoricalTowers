@@ -1,7 +1,5 @@
 #! @Chunk SnakeInFreeAbelianPrimitive
 
-LoadPackage( "LazyCategories" );
-
 #! @Example
 LoadPackage( "Algebroid", ">= 2022.05-02" );
 #! true
