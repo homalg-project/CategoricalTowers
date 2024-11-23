@@ -10,10 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2024.11-04",
+Version := "2024.11-05",
 
-Date := "2024-11-17",
-Date := "2024-11-17",
+Date := "2024-11-23",
+Date := "2024-11-23",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -92,7 +92,7 @@ Dependencies := rec(
                    [ "CAP", ">= 2024.11-01" ],
                    [ "MonoidalCategories", ">= 2024.06-02" ],
                    [ "CartesianCategories", ">= 2024.06-03" ],
-                   [ "ToolsForCategoricalTowers", ">= 2024.11-01" ],
+                   [ "ToolsForCategoricalTowers", ">= 2024.11-03" ],
                    [ "FpCategories", ">= 2024.09-06" ],
                    [ "Algebroids", ">= 2024.09-04" ],
                    [ "FiniteCocompletions", ">= 2024.03-12" ],
