@@ -78,6 +78,8 @@ false
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qmat := MatrixCategory( Q );</span>
 Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lazy := LazyCategory( Qmat : show_evaluation := true );</span>
 LazyCategory( Category of matrices over Q )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := a / Lazy; SetLabel( a, "a" );</span>
@@ -158,6 +160,8 @@ false
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qmat := MatrixCategory( Q );</span>
 Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lazy := LazyCategory( Qmat :</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                show_evaluation := true, primitive_operations := true );</span>
 LazyCategory( Category of matrices over Q )
@@ -476,6 +480,8 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_add := AdditiveClosure( A );</span>
 AdditiveClosure( Algebroid( Z, FreeCategory(
 RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lazy := LazyCategory( A_add : show_evaluation := true,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                lazify_range_of_hom_structure := true );</span>
 LazyCategory( AdditiveClosure( Algebroid( Z, FreeCategory(
@@ -601,6 +607,8 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_add := AdditiveClosure( A );</span>
 AdditiveClosure( Algebroid( Z, FreeCategory(
 RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lazy := LazyCategory( A_add : show_evaluation := true,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                lazify_range_of_hom_structure := true,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                primitive_operations := true );</span>
@@ -709,8 +717,14 @@ RightQuiver( "q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" ) ) ) / relations ) ) )
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales", "&gt;= 2022.11-04" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalCategoryWithMultipleObjects( );</span>
 TerminalCategoryWithMultipleObjects( )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := LazyCategory( T : primitive_operations := true, optimize := 0 );</span>
 LazyCategory( TerminalCategoryWithMultipleObjects( ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := "a" / T / L;</span>
