@@ -945,7 +945,7 @@ end );
 ##
 InstallGlobalFunction( CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD,
   function( name_of_cap_operation, list_of_installed_operations )
-    local info, with_given_operation_name, info_of_with_given, with_given_object_name, pair;
+    local info, with_given_operation_name, info_of_with_given, with_given_object_name, pair, list;
     
     info := CAP_INTERNAL_METHOD_NAME_RECORD.(name_of_cap_operation);
     
@@ -988,15 +988,14 @@ InstallGlobalFunction( CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD,
     
     pair := [ with_given_object_name, with_given_operation_name ];
     
-    Assert( 0,
-            SortedList( pair )
-            =
-            SortedList( Concatenation(
+    list := SortedList( Concatenation(
                     List( info.output_source_getter_preconditions, e -> e[1] ),
                     List( info.output_range_getter_preconditions, e -> e[1] ),
-                    [ with_given_operation_name ] ) ) );
+                    [ with_given_operation_name ] ) );
     
-    return pair;
+    Assert( 0, IsSubset( list, pair ) );
+    
+    return list;
     
 end );
 
