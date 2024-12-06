@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2024.11-05
+                                   2024.12-01
   
   
-                                22 November 2024
+                                6 December 2024
   
   
                                 Mohamed Barakat
