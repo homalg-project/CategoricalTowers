@@ -28,7 +28,7 @@ IsTerminal( t );
 IsInitial( t );
 #! false
 Display( t );
-#! [ 1, [ TerminalObject ] ]
+#! [ 1, [ TerminalObject( ) ] ]
 #! 
 #! An object in
 #! FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
@@ -72,12 +72,18 @@ piA := ProjectionInFactorOfDirectProduct( [ A, B ], 1 );
 Display( piA );
 #! { 0,..., 5 } ⱶ[ 0, 1, 2, 0, 1, 2 ]→ { 0, 1, 2 }
 #! 
-#! [ ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct ]
+#! [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A0, B0 ], 1,
+#!   DirectProduct( [ A0, B0 ] ) ),
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A1, B0 ], 1,
+#!   DirectProduct( [ A1, B0 ] ) ),
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A2, B0 ], 1,
+#!   DirectProduct( [ A2, B0 ] ) ),
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A0, B1 ], 1,
+#!   DirectProduct( [ A0, B1 ] ) ),
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A1, B1 ], 1,
+#!   DirectProduct( [ A1, B1 ] ) ),
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A2, B1 ], 1,
+#!   DirectProduct( [ A2, B1 ] ) ) ]
 #! 
 #! A morphism in
 #! FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
@@ -88,12 +94,18 @@ piB := ProjectionInFactorOfDirectProduct( [ A, B ], 2 );
 Display( piB );
 #! { 0,..., 5 } ⱶ[ 0, 0, 0, 1, 1, 1 ]→ { 0, 1 }
 #! 
-#! [ ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct ]
+#! [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A0, B0 ], 2,
+#!   DirectProduct( [ A0, B0 ] ) ),
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A1, B0 ], 2,
+#!   DirectProduct( [ A1, B0 ] ) ),
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A2, B0 ], 2,
+#!   DirectProduct( [ A2, B0 ] ) ),
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A0, B1 ], 2,
+#!   DirectProduct( [ A0, B1 ] ) ),
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A1, B1 ], 2,
+#!   DirectProduct( [ A1, B1 ] ) ),
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A2, B1 ], 2,
+#!   DirectProduct( [ A2, B1 ] ) ) ]
 #! 
 #! A morphism in
 #! FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
