@@ -606,7 +606,7 @@
     [4X[25Xgap>[125X [27XIsInitial( t );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
-    [4X[28X[ 1, [ TerminalObject ] ][128X[104X
+    [4X[28X[ 1, [ TerminalObject( ) ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in[128X[104X
     [4X[28XFiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
@@ -650,12 +650,18 @@
     [4X[25Xgap>[125X [27XDisplay( piA );[127X[104X
     [4X[28X{ 0,..., 5 } ⱶ[ 0, 1, 2, 0, 1, 2 ]→ { 0, 1, 2 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28X[ ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct ][128X[104X
+    [4X[28X[ ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A0, B0 ], 1,[128X[104X
+    [4X[28X  DirectProduct( [ A0, B0 ] ) ),[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A1, B0 ], 1,[128X[104X
+    [4X[28X  DirectProduct( [ A1, B0 ] ) ),[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A2, B0 ], 1,[128X[104X
+    [4X[28X  DirectProduct( [ A2, B0 ] ) ),[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A0, B1 ], 1,[128X[104X
+    [4X[28X  DirectProduct( [ A0, B1 ] ) ),[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A1, B1 ], 1,[128X[104X
+    [4X[28X  DirectProduct( [ A1, B1 ] ) ),[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A2, B1 ], 1,[128X[104X
+    [4X[28X  DirectProduct( [ A2, B1 ] ) ) ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
@@ -666,12 +672,18 @@
     [4X[25Xgap>[125X [27XDisplay( piB );[127X[104X
     [4X[28X{ 0,..., 5 } ⱶ[ 0, 0, 0, 1, 1, 1 ]→ { 0, 1 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28X[ ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
-    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct ][128X[104X
+    [4X[28X[ ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A0, B0 ], 2,[128X[104X
+    [4X[28X  DirectProduct( [ A0, B0 ] ) ),[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A1, B0 ], 2,[128X[104X
+    [4X[28X  DirectProduct( [ A1, B0 ] ) ),[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A2, B0 ], 2,[128X[104X
+    [4X[28X  DirectProduct( [ A2, B0 ] ) ),[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A0, B1 ], 2,[128X[104X
+    [4X[28X  DirectProduct( [ A0, B1 ] ) ),[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A1, B1 ], 2,[128X[104X
+    [4X[28X  DirectProduct( [ A1, B1 ] ) ),[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A2, B1 ], 2,[128X[104X
+    [4X[28X  DirectProduct( [ A2, B1 ] ) ) ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X

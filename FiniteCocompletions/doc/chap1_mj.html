@@ -697,7 +697,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( t );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
-[ 1, [ TerminalObject ] ]
+[ 1, [ TerminalObject( ) ] ]
 
 An object in
 FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
@@ -741,12 +741,18 @@ given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( piA );</span>
 { 0,..., 5 } ⱶ[ 0, 1, 2, 0, 1, 2 ]→ { 0, 1, 2 }
 
-[ ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-  ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-  ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-  ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-  ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-  ProjectionInFactorOfDirectProductWithGivenDirectProduct ]
+[ ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A0, B0 ], 1,
+  DirectProduct( [ A0, B0 ] ) ),
+  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A1, B0 ], 1,
+  DirectProduct( [ A1, B0 ] ) ),
+  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A2, B0 ], 1,
+  DirectProduct( [ A2, B0 ] ) ),
+  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A0, B1 ], 1,
+  DirectProduct( [ A0, B1 ] ) ),
+  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A1, B1 ], 1,
+  DirectProduct( [ A1, B1 ] ) ),
+  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A2, B1 ], 1,
+  DirectProduct( [ A2, B1 ] ) ) ]
 
 A morphism in
 FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
@@ -757,12 +763,18 @@ given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( piB );</span>
 { 0,..., 5 } ⱶ[ 0, 0, 0, 1, 1, 1 ]→ { 0, 1 }
 
-[ ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-  ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-  ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-  ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-  ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-  ProjectionInFactorOfDirectProductWithGivenDirectProduct ]
+[ ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A0, B0 ], 2,
+  DirectProduct( [ A0, B0 ] ) ),
+  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A1, B0 ], 2,
+  DirectProduct( [ A1, B0 ] ) ),
+  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A2, B0 ], 2,
+  DirectProduct( [ A2, B0 ] ) ),
+  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A0, B1 ], 2,
+  DirectProduct( [ A0, B1 ] ) ),
+  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A1, B1 ], 2,
+  DirectProduct( [ A1, B1 ] ) ),
+  ProjectionInFactorOfDirectProductWithGivenDirectProduct( [ A2, B1 ], 2,
+  DirectProduct( [ A2, B1 ] ) ) ]
 
 A morphism in
 FiniteStrictCoproductCompletion( TerminalCategoryWithMultipleObjects( ) )
