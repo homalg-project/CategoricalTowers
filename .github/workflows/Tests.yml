@@ -47,7 +47,6 @@ jobs:
           cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
       - name: Prepare environment
         run: |
-          [ -d /home/gap/inst/gap-master ] && touch /home/gap/inst/gap-master/pkg/digraphs/gap/doc.g ## workaround for gap-master until new digraphs version is released
           cp ./CategoricalTowers/dev/ci_gaprc /home/gap/.gap/gaprc
           git clone --depth 1 -vv https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 -vv https://github.com/homalg-project/homalg_project.git
