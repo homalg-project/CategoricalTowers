@@ -10,5 +10,5 @@ ReadPackage( "ToolsForCategoricalTowers", "gap/ToolsMethodRecordDeclarations.aut
 ReadPackage( "ToolsForCategoricalTowers", "gap/ToolsUsingDigraphs.gd");
 
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
-    ReadPackage( "ToolsForCategoricalTowers", "gap/Julia.gd" );
+#    ReadPackage( "ToolsForCategoricalTowers", "gap/Julia.gd" );
 fi;
