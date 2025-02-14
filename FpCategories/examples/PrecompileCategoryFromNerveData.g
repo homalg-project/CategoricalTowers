@@ -2,7 +2,7 @@
 
 #! @Example
 
-#! #@if ValueOption( "no_precompiled_code" ) <> true
+#! #@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"
 
 LoadPackage( "FpCategories", false );
 #! true
