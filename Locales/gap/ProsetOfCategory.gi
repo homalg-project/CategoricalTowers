@@ -50,6 +50,20 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
    ] );
 
 ##
+InstallOtherMethod( \/,
+        "for a CAP morphism and a proset or poset of a CAP category",
+        [ IsCapCategoryMorphism, IsProsetOrPosetOfCapCategory ],
+        
+  function( morphism, P )
+    
+    return MorphismConstructor( P,
+                   ObjectConstructor( P, Source( morphism ) ),
+                   morphism,
+                   ObjectConstructor( P, Target( morphism ) ) );
+    
+end );
+
+##
 InstallMethod( CreateProsetOrPosetOfCategory,
         "for a CAP category",
         [ IsCapCategory ],
