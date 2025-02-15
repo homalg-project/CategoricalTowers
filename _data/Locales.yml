@@ -1,7 +1,7 @@
 name: Locales
-version: "2024.12-01"
+version: "2025.02-01"
 license: "GPL-2.0-or-later"
-date: 2024-12-06
+date: 2025-02-15
 description: |
     Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets
 
@@ -61,11 +61,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/Locales/PackageI
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2024.12-01/Locales-2024.12-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2025.02-01/Locales-2025.02-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2024.12-01/Locales-2024.12-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2025.02-01/Locales-2025.02-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2024.12-01/Locales-2024.12-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2025.02-01/Locales-2025.02-01-manual.pdf
 
 abstract: |
 
@@ -76,10 +76,10 @@ keywords: |
     locale, frame, coframe, locally closed, constructible.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BLK06</span>]   <b class='BibAuthor'>Barakat, M., Lange-Hegermann, M. and Kuhmichel, T.</b>,
+    [<span class='BibKey'>BLK15</span>]   <b class='BibAuthor'>Barakat, M., Lange-Hegermann, M. and Kuhmichel, T.</b>,
      <i class='BibTitle'>Locales, Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets,
-             Version 2024.12-01</i>
-     (<span class='BibYear'>2-06</span>)<br />
+             Version 2025.02-01</i>
+     (<span class='BibYear'>2-15</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/Locales">https://homalg-project.github.io/pkg/Locales</a></span>.
     </p>
@@ -89,18 +89,18 @@ bibtex: |
     @misc{ Locales,
       author =           {Barakat, M. and Lange\texttt{\symbol{45}}Hegermann, M.
                           and Kuhmichel, T.},
-      title =            {{Locales},    Locales,    frames,    coframes,    meet
+      title =            {{Locales},    {Locales,    frames,    coframes,   meet
                           semi\texttt{\symbol{45}}lattices   of  locally  closed
-                          subsets,  and  Boolean algebras of constructible sets,
-                          {V}ersion 2024.12\texttt{\symbol{45}}01},
-      month =            {4\texttt{\symbol{45}}},
-      year =             {2\texttt{\symbol{45}}06},
+                          subsets,  and Boolean algebras of constructible sets},
+                          {V}ersion 2025.02\texttt{\symbol{45}}01},
+      month =            {5\texttt{\symbol{45}}},
+      year =             {2\texttt{\symbol{45}}15},
       note =             {GAP package},
       howpublished =     {\href   {https://homalg-project.github.io/pkg/Locales}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{Locales}}},
       keywords =         {locale, frame, coframe, locally closed, constructible},
-      printedkey =       {BLK06}
+      printedkey =       {BLK15}
     }
 
