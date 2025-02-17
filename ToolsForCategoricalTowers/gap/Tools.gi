@@ -1069,6 +1069,39 @@ InstallGlobalFunction( PositionsOfSublist,
 end );
 
 ##
+InstallMethod( \.,
+        "for an opposite category and a positive integer",
+        [ IsCapCategory and WasCreatedAsOppositeCategory, IsPosInt ],
+        
+  function( C_op, string_as_int )
+    local name, C, c;
+    
+    name := NameRNam( string_as_int );
+    
+    C := OppositeCategory( C_op );
+    
+    c := C.(name);
+    
+    if IsCapCategoryObject( c ) and IsIdenticalObj( CapCategory( c ), C ) then
+        
+        return ObjectConstructor( C_op, c );
+        
+    elif IsCapCategoryMorphism( c ) and IsIdenticalObj( CapCategory( c ), C ) then
+        
+        return MorphismConstructor( C_op,
+                       ObjectConstructor( C_op, Target( c ) ),
+                       c,
+                       ObjectConstructor( C_op, Source( c ) ) );
+        
+    else
+        
+        Error( "`c` is neither an object nor a morphism in the category `C := OppositeCategory( C_op )`\n" );
+        
+    fi;
+    
+end );
+
+##
 InstallMethod( AllCoproducts,
         "for a CAP category and a list of objects",
         [ IsCapCategory and IsCocartesianCategory, IsList ],
