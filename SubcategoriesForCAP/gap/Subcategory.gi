@@ -89,8 +89,18 @@ InstallMethod( Subcategory,
         "for a CAP category and a string",
         [ IsCapCategory, IsString ],
         
-  function( C, name )
-    local category_constructor_options, list_of_operations_to_install, is_full, is_additive, skip, func, pos, properties, D;
+  FunctionWithNamedArguments(
+  [
+    [ "is_full", false ],
+    [ "is_additive", false ],
+    [ "additional_operations_to_install", Immutable( [ ] ) ],
+    [ "properties", Immutable( [ ] ) ],
+    [ "supports_empty_limits", false ],
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C, name )
+    local category_constructor_options, list_of_operations_to_install, is_full, is_additive, additional_operations_to_install,
+          skip, func, pos, properties, additional_properties, D;
     
     category_constructor_options := rec(
          name := name,
@@ -112,9 +122,13 @@ InstallMethod( Subcategory,
     ## list_of_operations_to_install
     list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY;
     
-    is_full := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_full", false );
+    is_full := CAP_NAMED_ARGUMENTS.is_full;
     
-    is_additive := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_additive", false );
+    is_additive := CAP_NAMED_ARGUMENTS.is_additive;
+    
+    additional_operations_to_install := CAP_NAMED_ARGUMENTS.additional_operations_to_install;
+    
+    list_of_operations_to_install := DuplicateFreeList( Concatenation( list_of_operations_to_install, additional_operations_to_install ) );
     
     if IsIdenticalObj( is_full, true ) then
         Append( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY );
@@ -180,7 +194,11 @@ InstallMethod( Subcategory,
         Add( properties, "IsAdditiveCategory" );
     fi;
     
-    category_constructor_options.properties := properties;
+    additional_properties := CAP_NAMED_ARGUMENTS.properties;
+    
+    category_constructor_options.properties := DuplicateFreeList( Concatenation( properties, additional_properties ) );
+    
+    category_constructor_options.supports_empty_limits := CAP_NAMED_ARGUMENTS.supports_empty_limits;
     
     D := CategoryConstructor( category_constructor_options );
     
@@ -219,11 +237,13 @@ InstallMethod( Subcategory,
         
     fi;
     
-    Finalize( D );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        Finalize( D );
+    fi;
     
     return D;
     
-end );
+end ) );
 
 ##
 InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
