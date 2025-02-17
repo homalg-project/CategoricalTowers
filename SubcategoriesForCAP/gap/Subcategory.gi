@@ -318,7 +318,8 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsObjectInASubcategory ],
+        [ IsObjectInASubcategory ],
+        
   function( a )
     
     Print( "An object in subcategory given by: " );
@@ -329,7 +330,8 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsMorphismInASubcategory ],
+        [ IsMorphismInASubcategory ],
+        
   function( phi )
     
     Print( "A morphism in subcategory given by: " );
@@ -340,7 +342,8 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsObjectInASubcategory ],
+        [ IsObjectInASubcategory ],
+        
   function( a )
     
     Print( "An object in subcategory given by: " );
@@ -351,7 +354,8 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsMorphismInASubcategory ],
+        [ IsMorphismInASubcategory ],
+        
   function( phi )
     
     Print( "A morphism in subcategory given by: " );
@@ -359,4 +363,3 @@ InstallMethod( Display,
     Display( UnderlyingCell( phi ) );
     
 end );
-

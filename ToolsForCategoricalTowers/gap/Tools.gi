@@ -1070,7 +1070,7 @@ end );
 
 ##
 InstallMethod( AllCoproducts,
-        "for a CAP category and list of objects",
+        "for a CAP category and a list of objects",
         [ IsCapCategory and IsCocartesianCategory, IsList ],
         
   function( cat, objects )
