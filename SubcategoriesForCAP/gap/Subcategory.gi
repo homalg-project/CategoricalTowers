@@ -289,6 +289,33 @@ InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
 end );
 
 ##
+InstallMethod( \.,
+        "for a subcategory and a positive integer",
+        [ IsCapSubcategory, IsPosInt ],
+        
+  function( subcategory, string_as_int )
+    local name, C, c;
+    
+    name := NameRNam( string_as_int );
+    
+    C := AmbientCategory( subcategory );
+    
+    c := C.(name);
+    
+    if ( IsCapCategoryObject( c ) or IsCapCategoryMorphism( c ) ) and
+       IsIdenticalObj( CapCategory( c ), C ) then
+        
+        return c / subcategory;
+        
+    else
+        
+        Error( "`c` is neither an object nor a morphism in the ambient category `C`\n" );
+        
+    fi;
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( SetOfObjects,
         "for a subcategory",
         [ IsCapSubcategory ],
