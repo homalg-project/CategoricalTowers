@@ -260,7 +260,7 @@ end );
 ##
 InstallGlobalFunction( FullSubcategoryByObjectMembershipFunction,
   function( C, membership_func )
-    local name, full;
+    local name, full_subcat;
     
     name := ValueOption( "name_of_full_subcategory" );
     
@@ -272,34 +272,34 @@ InstallGlobalFunction( FullSubcategoryByObjectMembershipFunction,
         
     fi;
     
-    full := FullSubcategory( C, name : FinalizeCategory := false );
+    full_subcat := FullSubcategory( C, name : FinalizeCategory := false );
     
-    SetFilterObj( full, IsCapFullSubcategoryDefinedByObjectMembershipFunction );
+    SetFilterObj( full_subcat, IsCapFullSubcategoryDefinedByObjectMembershipFunction );
     
-    full!.ObjectMembershipFunction := membership_func;
+    full_subcat!.ObjectMembershipFunction := membership_func;
     
     ##
-    AddIsWellDefinedForObjects( full,
-      function( cat, a )
+    AddIsWellDefinedForObjects( full_subcat,
+      function( full_subcat, a )
         
-        return cat!.ObjectMembershipFunction( cat, a ) and
-               IsWellDefinedForObjects( AmbientCategory( cat ), UnderlyingCell( a ) );
+        return full_subcat!.ObjectMembershipFunction( full_subcat, a ) and
+               IsWellDefinedForObjects( AmbientCategory( full_subcat ), UnderlyingCell( a ) );
         
     end );
     
     ##
-    AddIsWellDefinedForMorphisms( full,
-      function( cat, alpha )
+    AddIsWellDefinedForMorphisms( full_subcat,
+      function( full_subcat, alpha )
         
-        return IsWellDefinedForMorphisms( AmbientCategory( cat ), UnderlyingCell( alpha ) ) and
-               IsWellDefinedForObjects( cat, Source( alpha ) ) and
-               IsWellDefinedForObjects( cat, Target( alpha ) );
+        return IsWellDefinedForMorphisms( AmbientCategory( full_subcat ), UnderlyingCell( alpha ) ) and
+               IsWellDefinedForObjects( full_subcat, Source( alpha ) ) and
+               IsWellDefinedForObjects( full_subcat, Target( alpha ) );
         
     end );
     
-    Finalize( full );
+    Finalize( full_subcat );
     
-    return full;
+    return full_subcat;
     
 end );
 
