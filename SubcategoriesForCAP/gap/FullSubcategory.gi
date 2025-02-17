@@ -312,7 +312,9 @@ InstallMethod( FullSubcategoryOfProjectiveObjects,
     
     name := Concatenation( "FullSubcategoryOfProjectiveObjects( ", Name( C ), " )" );
     
-    return FullSubcategoryByObjectMembershipFunction( C, { cat, o } -> IsProjective( C, UnderlyingCell( o ) ) : name_of_full_subcategory := name );
+    return FullSubcategoryByObjectMembershipFunction( C,
+                   { full_subcat, o } -> IsProjective( AmbientCategory( full_subcat ), UnderlyingCell( o ) )
+                   : name_of_full_subcategory := name );
     
 end );
 
@@ -325,7 +327,9 @@ InstallMethod( FullSubcategoryOfInjectiveObjects,
     
     name := Concatenation( "FullSubcategoryOfInjectiveObjects( ", Name( C ), " )" );
     
-    return FullSubcategoryByObjectMembershipFunction( C, { cat, o } -> IsInjective( C, UnderlyingCell( o ) ) : name_of_full_subcategory := name );
+    return FullSubcategoryByObjectMembershipFunction( C,
+                   { full_subcat, o } -> IsInjective( AmbientCategory( full_subcat ), UnderlyingCell( o ) )
+                   : name_of_full_subcategory := name );
     
 end );
 
