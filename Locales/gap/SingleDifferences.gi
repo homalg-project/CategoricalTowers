@@ -228,6 +228,21 @@ InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
 end );
 
 ##
+InstallMethod( SetOfGeneratingObjects,
+        "for a meet-semilattice of single differences",
+        [ IsMeetSemilatticeOfSingleDifferences ],
+        
+  function( D )
+    local Dist;
+    
+    Dist := UnderlyingCategory( D );
+    
+    return List( SetOfObjects( Dist ), minued ->
+                 SingleDifference( D, Pair( minued, InitialObject( Dist ) ) ) );
+    
+end );
+
+##
 InstallMethod( \-,
         "for two objects in a thin category",
         [ IsObjectInThinCategory, IsObjectInThinCategory ],
