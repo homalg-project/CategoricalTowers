@@ -6,10 +6,10 @@
                             [1X Categories of functors [101X
   
   
-                                   2025.02-02
+                                   2025.02-03
   
   
-                                15 February 2025
+                                18 February 2025
   
   
                                 Mohamed Barakat
@@ -310,7 +310,7 @@
       12.4-1 CoPreSheaves
       12.4-2 CreateCoPreSheaf
       12.4-3 CreateCoPreSheafMorphismByValues
-  13 [33X[0;0YFree distributive completion of a finitely presented (linear) category[133X
+  13 [33X[0;0YFree distributive completion of a finitely presented category[133X
     13.1 [33X[0;0Y[5XGAP[105X Categories[133X
       13.1-1 IsFreeDistributiveCompletion
       13.1-2 IsCellInFreeDistributiveCompletion

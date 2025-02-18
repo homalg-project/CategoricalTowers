@@ -1,5 +1,5 @@
   
-  [1X13 [33X[0;0YFree distributive completion of a finitely presented (linear) category[133X[101X
+  [1X13 [33X[0;0YFree distributive completion of a finitely presented category[133X[101X
   
   
   [1X13.1 [33X[0;0Y[5XGAP[105X[101X[1X Categories[133X[101X
