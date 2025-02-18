@@ -10,6 +10,7 @@
 
 #! @Description
 #!  The &GAP; category of a Boolean algebra of constructible objects.
+#! @Arguments category
 DeclareCategory( "IsBooleanAlgebraOfConstructibleObjects",
         IsCapCategory and IsThinCategory );
 
