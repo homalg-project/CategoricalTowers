@@ -316,7 +316,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid,
         "for a Heyting algebroid and two objects in it",
-        [ IsCapCategory and IsHeytingAlgebroid, IsObjectInThinCategory, IsObjectInThinCategory ],
+        [ IsCapCategory and IsHeytingAlgebroid, IsCapCategoryObject, IsCapCategoryObject ],
         
   function( L, minuend, subtrahend )
     local H;
@@ -332,7 +332,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid,
         "for a co-Heyting algebroid and two objects in it",
-        [ IsCapCategory and IsCoHeytingAlgebroid, IsObjectInThinCategory, IsObjectInThinCategory ],
+        [ IsCapCategory and IsCoHeytingAlgebroid, IsCapCategoryObject, IsCapCategoryObject ],
         
   function( L, minuend, subtrahend )
     local H;
