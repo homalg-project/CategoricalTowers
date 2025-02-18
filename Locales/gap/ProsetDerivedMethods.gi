@@ -99,9 +99,9 @@ AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
         [ [ TerminalObject, 1 ],
           [ UniqueMorphism, 1 ] ],
         
-  function( cat, A )
+  function( cat, source )
     
-    return UniqueMorphism( cat, A, TerminalObject( cat ) );
+    return UniqueMorphism( cat, source, TerminalObject( cat ) );
     
 end : CategoryFilter := IsThinCategory );
 
@@ -123,9 +123,9 @@ AddDerivationToCAP( UniversalMorphismFromInitialObject,
         [ [ InitialObject, 1 ],
           [ UniqueMorphism, 1 ] ],
                     
-  function( cat, A )
+  function( cat, target )
     
-    return UniqueMorphism( cat, InitialObject( cat ), A );
+    return UniqueMorphism( cat, InitialObject( cat ), target );
     
 end : CategoryFilter := IsThinCategory );
 
