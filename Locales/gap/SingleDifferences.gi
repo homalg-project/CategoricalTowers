@@ -583,6 +583,22 @@ InstallMethod( \.,
 end );
 
 ##
+InstallMethod( \.,
+        "for a meet-semilattice of formal single differences and a positive integer",
+        [ IsMeetSemilatticeOfSingleDifferences, IsPosInt ],
+
+  function( D, string_as_int )
+    local Dist, name;
+    
+    Dist := UnderlyingCategory( D );
+    
+    name := NameRNam( string_as_int );
+    
+    return SingleDifference( D, Pair( Dist.(name), InitialObject( Dist ) ) );
+    
+end );
+
+##
 InstallMethod( ViewString,
         "for an object in a meet-semilattice of formal single differences",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ],
