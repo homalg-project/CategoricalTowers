@@ -208,14 +208,16 @@ InstallMethod( DigraphOfPoset,
         [ IsThinCategory and IsFiniteCategory ],
         
   function( P )
-    local objects, D;
+    local objects, offset, D;
     
     objects := SetOfObjectsOfCategory( P );
+    
+    offset := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "offset", 1 );
     
     if ValueOption( "use_vertex_labels" ) = true then
         D := Digraph( objects, IsHomSetInhabited );
     else
-        D := Digraph( [ 0 .. Length( objects ) - 1 ], { i, j } -> IsHomSetInhabited( objects[1+i], objects[1+j] ) );
+        D := Digraph( [ offset .. offset + Length( objects ) - 1 ], { i, j } -> IsHomSetInhabited( objects[1-offset+i], objects[1-offset+j] ) );
     fi;
     
     D := DigraphReflexiveTransitiveReduction( D );

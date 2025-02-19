@@ -31,7 +31,7 @@ Display( Dist );
 #! * IsBiHeytingAlgebra
 Length( SetOfObjects( Dist ) );
 #! 6
-Display( DotVertexLabelledDigraph( DigraphOfPoset( Dist ) ) );
+Display( DotVertexLabelledDigraph( DigraphOfPoset( Dist : offset := 0 ) ) );
 #! //dot
 #! digraph subobject_lattice{
 #! rankdir="BT"

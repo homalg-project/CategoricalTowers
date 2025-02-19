@@ -10,9 +10,9 @@
 
 #! @Description
 #!  The &GAP; category of a meet-semilattice of single/multiple differences.
-#! @Arguments object
+#! @Arguments category
 DeclareCategory( "IsMeetSemilatticeOfDifferences",
-        IsCapCategory and IsThinCategory );
+        IsCategoryWithoutMorphismData );
 
 #! @Description
 #!  The &GAP; category of objects in a meet-semilattice of single/multiple differences.
