@@ -197,7 +197,7 @@
     [4X[28X* IsBiHeytingAlgebra[128X[104X
     [4X[25Xgap>[125X [27XLength( SetOfObjects( Dist ) );[127X[104X
     [4X[28X6[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( DotVertexLabelledDigraph( DigraphOfPoset( Dist ) ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( DotVertexLabelledDigraph( DigraphOfPoset( Dist : offset := 0 ) ) );[127X[104X
     [4X[28X//dot[128X[104X
     [4X[28Xdigraph subobject_lattice{[128X[104X
     [4X[28Xrankdir="BT"[128X[104X
