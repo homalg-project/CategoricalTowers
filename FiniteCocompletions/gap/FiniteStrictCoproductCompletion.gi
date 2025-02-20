@@ -229,29 +229,33 @@ InstallMethod( FiniteStrictCoproductCompletion,
         return ForAll( [ 1 .. Length( m1 ) ], i -> IsEqualForMorphisms( C, m1[i], m2[i] ) );
         
     end );
-    
-    ##
-    AddIsCongruentForMorphisms( UC,
-      function ( UC, morphism1, morphism2 )
-        local pair_of_lists1, pair_of_lists2, C, m1, m2;
+
+    if not ( IsBound( H ) and IsIntervalCategory( H ) ) then
         
-        pair_of_lists1 := MorphismDatum( UC, morphism1 );
-        pair_of_lists2 := MorphismDatum( UC, morphism2 );
+        ##
+        AddIsCongruentForMorphisms( UC,
+          function ( UC, morphism1, morphism2 )
+            local pair_of_lists1, pair_of_lists2, C, m1, m2;
+            
+            pair_of_lists1 := MorphismDatum( UC, morphism1 );
+            pair_of_lists2 := MorphismDatum( UC, morphism2 );
+            
+            ## SkeletalFinSets code:
+            if not pair_of_lists1[1] = pair_of_lists2[1] then
+                return false;
+            fi;
+            
+            ## FiniteStrictCoproductCompletion code:
+            C := UnderlyingCategory( UC );
+            
+            m1 := pair_of_lists1[2];
+            m2 := pair_of_lists2[2];
+            
+            return ForAll( [ 1 .. Length( m1 ) ], i -> IsCongruentForMorphisms( C, m1[i], m2[i] ) );
+            
+        end );
         
-        ## SkeletalFinSets code:
-        if not pair_of_lists1[1] = pair_of_lists2[1] then
-            return false;
-        fi;
-        
-        ## FiniteStrictCoproductCompletion code:
-        C := UnderlyingCategory( UC );
-        
-        m1 := pair_of_lists1[2];
-        m2 := pair_of_lists2[2];
-        
-        return ForAll( [ 1 .. Length( m1 ) ], i -> IsCongruentForMorphisms( C, m1[i], m2[i] ) );
-        
-    end );
+    fi;
     
     ##
     AddIdentityMorphism( UC,
