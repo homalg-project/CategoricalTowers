@@ -712,6 +712,16 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
              ];
     
+    if HasIsThinCategory( B ) and IsThinCategory( B ) and
+       IsIntervalCategory( D ) then
+        
+        Append( skip,
+                [ "IsMonomorphism",
+                  "IsEpimorphism",
+                  "IsCongruentForMorphisms" ] );
+        
+    fi;
+    
     list_of_operations_to_install := Difference( list_of_operations_to_install, skip );
     
     if HasCommutativeRingOfLinearCategory( D ) then
@@ -1196,19 +1206,23 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
         end );
         
-        AddIsCongruentForMorphisms( PSh,
-          function ( PSh, eta, epsilon )
-            local B, D, objects;
+        if not ( HasIsThinCategory( B ) and IsThinCategory( B ) and IsIntervalCategory( D ) ) then
             
-            B := Source( PSh );
-            D := Target( PSh );
+            AddIsCongruentForMorphisms( PSh,
+              function ( PSh, eta, epsilon )
+                local B, D, objects;
+                
+                B := Source( PSh );
+                D := Target( PSh );
+                
+                objects := SetOfObjects( B );
+                
+                return ForAll( objects, o -> IsCongruentForMorphisms( D, eta( o ), epsilon( o ) ) );
+                
+            end );
             
-            objects := SetOfObjects( B );
-            
-            return ForAll( objects, o -> IsCongruentForMorphisms( D, eta( o ), epsilon( o ) ) );
-            
-        end );
-          
+        fi;
+        
     fi;
     
     if HasRangeCategoryOfHomomorphismStructure( D ) and
