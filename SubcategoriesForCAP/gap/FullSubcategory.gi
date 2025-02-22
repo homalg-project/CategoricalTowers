@@ -280,10 +280,15 @@ InstallGlobalFunction( FullSubcategoryByObjectMembershipFunction,
     
     ##
     AddIsWellDefinedForObjects( full_subcat,
-      function( full_subcat, a )
+      function( full_subcat, object_in_full_subcat )
+        local ambient_cat, object_in_ambient_cat;
         
-        return full_subcat!.ObjectMembershipFunction( full_subcat, a ) and
-               IsWellDefinedForObjects( AmbientCategory( full_subcat ), UnderlyingCell( a ) );
+        ambient_cat := AmbientCategory( full_subcat );
+        
+        object_in_ambient_cat := UnderlyingCell( object_in_full_subcat );
+        
+        return IsWellDefinedForObjects( ambient_cat, object_in_ambient_cat ) and
+               full_subcat!.ObjectMembershipFunction( ambient_cat, object_in_ambient_cat );
         
     end );
     
@@ -313,7 +318,7 @@ InstallMethod( FullSubcategoryOfProjectiveObjects,
     name := Concatenation( "FullSubcategoryOfProjectiveObjects( ", Name( C ), " )" );
     
     return FullSubcategoryByObjectMembershipFunction( C,
-                   { full_subcat, o } -> IsProjective( AmbientCategory( full_subcat ), UnderlyingCell( o ) )
+                   { C, object } -> IsProjective( C, object )
                    : name_of_full_subcategory := name );
     
 end );
@@ -328,7 +333,7 @@ InstallMethod( FullSubcategoryOfInjectiveObjects,
     name := Concatenation( "FullSubcategoryOfInjectiveObjects( ", Name( C ), " )" );
     
     return FullSubcategoryByObjectMembershipFunction( C,
-                   { full_subcat, o } -> IsInjective( AmbientCategory( full_subcat ), UnderlyingCell( o ) )
+                   { C, object } -> IsInjective( C, object )
                    : name_of_full_subcategory := name );
     
 end );
