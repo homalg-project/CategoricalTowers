@@ -1,7 +1,7 @@
 name: CatReps
-version: "2025.02-01"
+version: "2025.02-02"
 license: "GPL-2.0-or-later"
-date: 2025-02-15
+date: 2025-02-23
 description: |
     Representations and cohomology of finite categories
 
@@ -64,11 +64,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/CatReps/PackageI
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2025.02-01/CatReps-2025.02-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2025.02-02/CatReps-2025.02-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2025.02-01/CatReps-2025.02-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2025.02-02/CatReps-2025.02-02.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2025.02-01/CatReps-2025.02-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2025.02-02/CatReps-2025.02-02-manual.pdf
 
 abstract: |
 
@@ -79,10 +79,10 @@ keywords: |
     finite categories, concrete categories, representations of categories.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BGW15</span>]   <b class='BibAuthor'>Barakat, M., Grün, T. and Webb, P.</b>,
+    [<span class='BibKey'>BGW23</span>]   <b class='BibAuthor'>Barakat, M., Grün, T. and Webb, P.</b>,
      <i class='BibTitle'>CatReps, Representations and cohomology of finite categories,
-             Version 2025.02-01</i>
-     (<span class='BibYear'>2-15</span>)<br />
+             Version 2025.02-02</i>
+     (<span class='BibYear'>2-23</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CatReps">https://homalg-project.github.io/pkg/CatReps</a></span>.
     </p>
@@ -92,9 +92,9 @@ bibtex: |
     @misc{ CatReps,
       author =           {Barakat, M. and Gr{\"u}n, T. and Webb, P.},
       title =            {{CatReps},  {Representations  and cohomology of finite
-                          categories}, {V}ersion 2025.02\texttt{\symbol{45}}01},
+                          categories}, {V}ersion 2025.02\texttt{\symbol{45}}02},
       month =            {5\texttt{\symbol{45}}},
-      year =             {2\texttt{\symbol{45}}15},
+      year =             {2\texttt{\symbol{45}}23},
       note =             {GAP package},
       howpublished =     {\href   {https://homalg-project.github.io/pkg/CatReps}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
@@ -102,6 +102,6 @@ bibtex: |
                           {}{}{}\texttt{CatReps}}},
       keywords =         {finite      categories,      concrete      categories,
                           representations of categories},
-      printedkey =       {BGW15}
+      printedkey =       {BGW23}
     }
 
