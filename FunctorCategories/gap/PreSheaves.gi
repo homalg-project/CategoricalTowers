@@ -2615,60 +2615,64 @@ InstallMethod( CategoryOfInternalCategories,
         [ IsCapCategory ],
         
   function ( H )
-    local Delta2, sH, membership_function;
+    local Delta2, sH, membership_func;
     
     Delta2 := SimplicialCategoryTruncatedInDegree2;
     
     sH := PreSheaves( Delta2, H );
     
-    membership_function :=
-      function ( IntCat, nerve )
-        local N, DC1xC1, C1xC1, C2_C1xC1, C1xC1_C2, DC3, C3, p12, p23, mux1, 1xmu;
+    membership_func :=
+      function ( sH, N )
+        local H, DC1xC1, C1xC1, C2_C1xC1, C1xC1_C2, DC3, C3, p12, p23, mux1, 1xmu;
         
-        N := UnderlyingCell( nerve );
+        H := Target( sH );
         
         DC1xC1 := [ N.s, N.t ];
         
-        C1xC1 := FiberProduct( DC1xC1 );
+        C1xC1 := FiberProduct( H, DC1xC1 );
         
-        C2_C1xC1 := UniversalMorphismIntoFiberProduct( DC1xC1, [ N.pt, N.ps ] );
+        C2_C1xC1 := UniversalMorphismIntoFiberProduct( H, DC1xC1, [ N.pt, N.ps ] );
         
         ## check associativity
-        if not IsIsomorphism( C2_C1xC1 ) then
+        if not IsIsomorphism( H, C2_C1xC1 ) then
             return false;
         fi;
         
-        C1xC1_C2 := Inverse( C2_C1xC1 );
+        C1xC1_C2 := InverseForMorphisms( H, C2_C1xC1 );
         
         DC3 := [ N.ps, N.pt ];
         
-        C3 := FiberProduct( DC3 );
+        C3 := FiberProduct( H, DC3 );
         
-        p12 := ProjectionInFactorOfFiberProductWithGivenFiberProduct( DC3, 2, C3 );
-        p23 := ProjectionInFactorOfFiberProductWithGivenFiberProduct( DC3, 1, C3 );
+        p12 := ProjectionInFactorOfFiberProductWithGivenFiberProduct( H, DC3, 2, C3 );
+        p23 := ProjectionInFactorOfFiberProductWithGivenFiberProduct( H, DC3, 1, C3 );
         
-        mux1 := PreCompose(
-                        UniversalMorphismIntoFiberProductWithGivenFiberProduct(
+        mux1 := PreCompose( H,
+                        UniversalMorphismIntoFiberProductWithGivenFiberProduct( H,
                                 DC1xC1,
                                 C3,
-                                [ PreCompose( p23, N.pt ), PreCompose( p12, N.mu ) ],
+                                [ PreCompose( H, p23, N.pt ),
+                                  PreCompose( H, p12, N.mu ) ],
                                 C1xC1 ),
                         C1xC1_C2 );
         
-        1xmu := PreCompose(
-                        UniversalMorphismIntoFiberProductWithGivenFiberProduct(
+        1xmu := PreCompose( H,
+                        UniversalMorphismIntoFiberProductWithGivenFiberProduct( H,
                                 DC1xC1,
                                 C3,
-                                [ PreCompose( p23, N.mu ), PreCompose( p12, N.ps ) ],
+                                [ PreCompose( H, p23, N.mu ),
+                                  PreCompose( H, p12, N.ps ) ],
                                 C1xC1 ),
                         C1xC1_C2 );
         
         ## check the identities
-        return IsCongruentForMorphisms( PreCompose( 1xmu, N.mu ), PreCompose( mux1, N.mu ) );
+        return IsCongruentForMorphisms( H,
+                       PreCompose( H, 1xmu, N.mu ),
+                       PreCompose( H, mux1, N.mu ) );
         
     end;
     
-    return FullSubcategoryByObjectMembershipFunction( sH, membership_function );
+    return FullSubcategoryByObjectMembershipFunction( sH, membership_func );
     
 end );
 

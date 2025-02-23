@@ -213,8 +213,11 @@ InstallMethod( Subcategory,
         ##
         AddSetOfObjectsOfCategory( D,
           function( D )
+            local C;
             
-            return List( Filtered( SetOfObjectsOfCategory( AmbientCategory( D ) ), obj -> D!.ObjectMembershipFunction( D, obj ) ), object -> ObjectConstructor( D, object ) );
+            C := AmbientCategory( D );
+            
+            return List( Filtered( SetOfObjectsOfCategory( C ), objC -> D!.ObjectMembershipFunction( C, objC ) ), objC -> ObjectConstructor( D, objC ) );
             
         end, OperationWeight( C, "SetOfObjectsOfCategory" ) );
         
