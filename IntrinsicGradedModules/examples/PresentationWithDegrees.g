@@ -22,6 +22,9 @@ Display( A );
 #! * IsEquippedWithHomomorphismStructure
 #! * IsSymmetricClosedMonoidalCategory
 #! * IsAbelianCategoryWithEnoughProjectives
+#! and not yet algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 mat := HomalgMatrix( "[ 0, z, -y,  -z, 0, x,  y, -x, 0 ]", 3, 3, S );
 #! <A 3 x 3 matrix over a graded ring>
 phi := GradedMap( mat, "left", S );
