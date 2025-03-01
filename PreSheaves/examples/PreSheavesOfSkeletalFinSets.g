@@ -3,7 +3,7 @@
 #! @Example
 LoadPackage( "PreSheaves" );
 #! true
-LoadPackage( "Toposes", ">= 2024.06-03", fail );
+LoadPackage( "Toposes", ">= 2025.02-02", fail );
 #! true
 LoadPackage( "FinSetsForCAP" );
 #! true
@@ -12,7 +12,7 @@ PSh := PreSheaves( SkeletalFinSets, SkeletalFinSets );
 Display( PSh );
 #! A CAP category with name PreSheaves( SkeletalFinSets, SkeletalFinSets ):
 #! 
-#! 28 primitive operations were used to derive 169 operations for this category
+#! 28 primitive operations were used to derive 172 operations for this category
 #! which not yet algorithmically
 #! * IsElementaryTopos
 MissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" );

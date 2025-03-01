@@ -159,7 +159,7 @@ AddDerivationToCAP( ImageEmbedding,
     D := [ mor, mor ];
     
     return EmbeddingOfEqualizer( cat,
-                   Source( mor ),
+                   Target( mor ),
                    [ InjectionOfCofactorOfPushout( cat, D, 1 ),
                      InjectionOfCofactorOfPushout( cat, D, 2 ) ] );
     
@@ -178,6 +178,7 @@ AddDerivationToCAP( CoimageProjection,
     D := [ mor, mor ];
     
     return ProjectionOntoCoequalizer( cat,
+                   Source( mor ),
                    [ ProjectionInFactorOfFiberProduct( cat, D, 1 ),
                      ProjectionInFactorOfFiberProduct( cat, D, 2 ) ] );
     
@@ -245,8 +246,7 @@ AddDerivationToCAP( SubobjectOfClassifyingMorphism,
         [ [ TruthMorphismOfTrueWithGivenObjects, 1 ],
           [ TerminalObject, 1 ],
           [ SubobjectClassifier, 1 ],
-          [ ProjectionInFactorOfFiberProduct, 1 ],
-          [ IsMonomorphism, 1 ] ],
+          [ ProjectionInFactorOfFiberProduct, 1 ] ],
         
   function( cat, mor )
     local truth, subobject;
@@ -257,8 +257,6 @@ AddDerivationToCAP( SubobjectOfClassifyingMorphism,
     
     subobject := ProjectionInFactorOfFiberProduct( cat, [ mor, truth ], 1 );
     
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 4, IsMonomorphism( subobject ) );
     #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsMonomorphism( subobject, true );
     
@@ -941,16 +939,13 @@ end );
 ## [Goldblatt 1984: Topoi - The categorical analysis of logic, Theorem 7.1.2]
 AddDerivationToCAP( EmbeddingOfIntersectionSubobject,
         "",
-        [ [ MorphismFromFiberProductToSink, 1 ],
-          [ IsMonomorphism, 1 ] ],
+        [ [ MorphismFromFiberProductToSink, 1 ] ],
         
   function( cat, iota1, iota2 )
     local subobject;
     
     subobject := MorphismFromFiberProductToSink( cat, [ iota1, iota2 ] );
     
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 4, IsMonomorphism( subobject ) );
     #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsMonomorphism( subobject, true );
     
