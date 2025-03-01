@@ -245,8 +245,7 @@ AddDerivationToCAP( SubobjectOfClassifyingMorphism,
         [ [ TruthMorphismOfTrueWithGivenObjects, 1 ],
           [ TerminalObject, 1 ],
           [ SubobjectClassifier, 1 ],
-          [ ProjectionInFactorOfFiberProduct, 1 ],
-          [ IsMonomorphism, 1 ] ],
+          [ ProjectionInFactorOfFiberProduct, 1 ] ],
         
   function( cat, mor )
     local truth, subobject;
@@ -257,8 +256,6 @@ AddDerivationToCAP( SubobjectOfClassifyingMorphism,
     
     subobject := ProjectionInFactorOfFiberProduct( cat, [ mor, truth ], 1 );
     
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 4, IsMonomorphism( subobject ) );
     #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsMonomorphism( subobject, true );
     
