@@ -178,6 +178,7 @@ AddDerivationToCAP( CoimageProjection,
     D := [ mor, mor ];
     
     return ProjectionOntoCoequalizer( cat,
+                   Source( mor ),
                    [ ProjectionInFactorOfFiberProduct( cat, D, 1 ),
                      ProjectionInFactorOfFiberProduct( cat, D, 2 ) ] );
     
