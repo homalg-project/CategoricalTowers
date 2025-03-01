@@ -159,7 +159,7 @@ AddDerivationToCAP( ImageEmbedding,
     D := [ mor, mor ];
     
     return EmbeddingOfEqualizer( cat,
-                   Source( mor ),
+                   Target( mor ),
                    [ InjectionOfCofactorOfPushout( cat, D, 1 ),
                      InjectionOfCofactorOfPushout( cat, D, 2 ) ] );
     
