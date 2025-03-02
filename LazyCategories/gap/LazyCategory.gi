@@ -751,57 +751,61 @@ InstallMethod( LazyCategory,
     fi;
     
     print := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false ), true );
-    
-    AddIsWellDefinedForObjects( D,
-      function( D, a )
-        local genesis, operation_name, arguments;
+
+    if CanCompute( C, "IsWellDefinedForObjects" ) then
         
-        # object must have a genesis or an evaluated cell
-        if not (HasGenesisOfCell( a ) or HasEvaluatedCell( a )) then
+        AddIsWellDefinedForObjects( D,
+          function( D, a )
+            local genesis, operation_name, arguments;
             
-            return false;
-            
-        fi;
-        
-        if HasGenesisOfCell( a ) then
-            
-            genesis := GenesisOfCell( a );
-            
-            # genesis must be a pair
-            if not (IsList( genesis ) and Length( genesis ) = 2) then
+            # object must have a genesis or an evaluated cell
+            if not (HasGenesisOfCell( a ) or HasEvaluatedCell( a )) then
                 
                 return false;
                 
             fi;
             
-            operation_name := genesis[1];
-            arguments := genesis[2];
+            if HasGenesisOfCell( a ) then
+                
+                genesis := GenesisOfCell( a );
+                
+                # genesis must be a pair
+                if not (IsList( genesis ) and Length( genesis ) = 2) then
+                    
+                    return false;
+                    
+                fi;
+                
+                operation_name := genesis[1];
+                arguments := genesis[2];
+                
+                # operation_name must be the name of a CAP operation which returns an object
+                if not (IsString( operation_name ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and StartsWith( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).return_type, "object")) then
+                    
+                    return false;
+                    
+                fi;
+                
+                # arguments must be a list of arguments of the CAP operation
+                if not (IsList( arguments ) and Length( arguments ) = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list )) then
+                    
+                    return false;
+                    
+                fi;
+                
+            fi;
             
-            # operation_name must be the name of a CAP operation which returns an object
-            if not (IsString( operation_name ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and StartsWith( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).return_type, "object")) then
+            if not IsWellDefinedForObjects( C, EvaluatedCell( a ) ) then
                 
                 return false;
                 
             fi;
             
-            # arguments must be a list of arguments of the CAP operation
-            if not (IsList( arguments ) and Length( arguments ) = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list )) then
-                
-                return false;
-                
-            fi;
+            return true;
             
-        fi;
+        end, OperationWeight( C, "IsWellDefinedForObjects" ) );
         
-        if not IsWellDefinedForObjects( C, EvaluatedCell( a ) ) then
-            
-            return false;
-            
-        fi;
-        
-        return true;
-        
-    end, OperationWeight( C, "IsWellDefinedForObjects" ) );
+    fi;
     
     AddIsEqualForObjects( D,
       function( D, a, b )
@@ -823,68 +827,72 @@ InstallMethod( LazyCategory,
         
     end, OperationWeight( C, "IsEqualForObjects" ) );
     
-    AddIsWellDefinedForMorphisms( D,
-      function( D, phi )
-        local genesis, operation_name, arguments;
+    if CanCompute( C, "IsWellDefinedForMorphisms" ) then
         
-        # morphism must have a genesis or an evaluated cell
-        if not (HasGenesisOfCell( phi ) or HasEvaluatedCell( phi )) then
+        AddIsWellDefinedForMorphisms( D,
+          function( D, phi )
+            local genesis, operation_name, arguments;
             
-            return false;
-            
-        fi;
-        
-        if HasGenesisOfCell( phi ) then
-            
-            genesis := GenesisOfCell( phi );
-            
-            # genesis must be a pair
-            if not (IsList( genesis ) and Length( genesis ) = 2) then
+            # morphism must have a genesis or an evaluated cell
+            if not (HasGenesisOfCell( phi ) or HasEvaluatedCell( phi )) then
                 
                 return false;
                 
             fi;
             
-            operation_name := genesis[1];
-            arguments := genesis[2];
+            if HasGenesisOfCell( phi ) then
+                
+                genesis := GenesisOfCell( phi );
+                
+                # genesis must be a pair
+                if not (IsList( genesis ) and Length( genesis ) = 2) then
+                    
+                    return false;
+                    
+                fi;
+                
+                operation_name := genesis[1];
+                arguments := genesis[2];
+                
+                # operation_name must be the name of a CAP operation which returns a morphism
+                if not (IsString( operation_name ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and StartsWith( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).return_type, "morphism")) then
+                    
+                    return false;
+                    
+                fi;
+                
+                # arguments must be a list of arguments of the CAP operation
+                if not (IsList( arguments ) and Length( arguments ) = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list )) then
+                    
+                    return false;
+                    
+                fi;
+                
+            fi;
             
-            # operation_name must be the name of a CAP operation which returns a morphism
-            if not (IsString( operation_name ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and StartsWith( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).return_type, "morphism")) then
+            if not IsEqualForObjects( C, EvaluatedCell( Source( phi ) ), Source( EvaluatedCell( phi ) ) ) then
                 
                 return false;
                 
             fi;
             
-            # arguments must be a list of arguments of the CAP operation
-            if not (IsList( arguments ) and Length( arguments ) = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list )) then
+            if not IsEqualForObjects( C, EvaluatedCell( Target( phi ) ), Target( EvaluatedCell( phi ) ) ) then
                 
                 return false;
                 
             fi;
             
-        fi;
+            if not IsWellDefinedForMorphisms( C, EvaluatedCell( phi ) ) then
+                
+                return false;
+                
+            fi;
+            
+            return true;
+            
+        end, OperationWeight( C, "IsWellDefinedForMorphisms" ) );
         
-        if not IsEqualForObjects( C, EvaluatedCell( Source( phi ) ), Source( EvaluatedCell( phi ) ) ) then
-            
-            return false;
-            
-        fi;
-        
-        if not IsEqualForObjects( C, EvaluatedCell( Target( phi ) ), Target( EvaluatedCell( phi ) ) ) then
-            
-            return false;
-            
-        fi;
-        
-        if not IsWellDefinedForMorphisms( C, EvaluatedCell( phi ) ) then
-            
-            return false;
-            
-        fi;
-        
-        return true;
-        
-    end, OperationWeight( C, "IsWellDefinedForMorphisms" ) );
+    fi;
     
     AddIsEqualForMorphisms( D,
       function( D, phi, psi )
