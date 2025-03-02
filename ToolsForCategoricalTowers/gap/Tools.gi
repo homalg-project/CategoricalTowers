@@ -24,7 +24,7 @@ InstallMethod( DummyCategoryInDoctrines,
         [ IsList ],
 
   function( doctrine_names )
-    local minimal, compare, options;
+    local additional_operations, minimal, compare, options, name, all_operations;
     
     if IsEmpty( doctrine_names ) then
         Error( "the list of doctrine names is empty\n" );
@@ -35,6 +35,8 @@ InstallMethod( DummyCategoryInDoctrines,
     if not IsSubset( ListKnownDoctrines( ), doctrine_names ) then
         Error( "the following entries are not supported doctrines: ", String( Difference( doctrine_names, ListKnownDoctrines( ) ) ), "\n" );
     fi;
+    
+    additional_operations := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "additional_operations", [ ] );
     
     minimal := ValueOption( "minimal" );
     
@@ -56,16 +58,25 @@ InstallMethod( DummyCategoryInDoctrines,
     
     options := rec( );
     
-    options.name := Concatenation( "DummyCategoryInDoctrines( ", String( doctrine_names ), " )" );
+    name := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "name", Concatenation( "DummyCategoryInDoctrines( ", String( doctrine_names ), " )" ) );
+    
+    options.name := name;
     
     options.properties := Difference( doctrine_names, [ "EveryCategory" ] );
     
     options.list_of_operations_to_install :=
       Set( Concatenation(
               Concatenation( List( doctrine_names, ListMethodsOfDoctrine ) ),
+              additional_operations,
               [ "ObjectConstructor", "ObjectDatum",
                 "MorphismConstructor", "MorphismDatum",
                 "IsWellDefinedForObjects", "IsWellDefinedForMorphisms" ] ) );
+    
+    all_operations := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
+    
+    options.list_of_operations_to_install :=
+      Concatenation( List( options.list_of_operations_to_install, operation_name ->
+            CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD( operation_name, all_operations ) ) );
     
     return DummyCategory( options );
     
