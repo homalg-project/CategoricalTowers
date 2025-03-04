@@ -10,7 +10,7 @@ InstallMethod( ListOfEvaluationNodes,
         [ IsCellInLazyCategory ],
         
   function( c )
-    local nodes, queue, add_to_nodes, add_to_queue, children, D;
+    local nodes, queue, add_to_nodes, add_to_queue, parents, D;
     
     nodes := [ ];
     
@@ -44,11 +44,11 @@ InstallMethod( ListOfEvaluationNodes,
             
         elif HasGenesisOfCell( c ) then
             
-            children := GenesisOfCellArguments( c );
+            parents := GenesisOfCellArguments( c );
             
-            children := Filtered( children, child -> IsCellInLazyCategory( child ) or IsList( child ) );
+            parents := Filtered( parents, parent -> IsCellInLazyCategory( parent ) or IsList( parent ) );
             
-            Perform( children, add_to_queue );
+            Perform( parents, add_to_queue );
             
         fi;
         
@@ -56,7 +56,7 @@ InstallMethod( ListOfEvaluationNodes,
     
     nodes := Reversed( nodes );
     
-    D := List( nodes, node -> PositionsOfChildrenOfALazyCell( nodes, node ) );
+    D := List( nodes, node -> PositionsOfParentsOfALazyCell( nodes, node ) );
     
     D := Digraph( D );
     
@@ -74,13 +74,13 @@ InstallMethod( DigraphOfEvaluation,
     
     nodes := ListOfEvaluationNodes( c );
     
-    D := List( nodes, node -> PositionsOfChildrenOfALazyCell( nodes, node ) );
+    D := List( nodes, node -> PositionsOfParentsOfALazyCell( nodes, node ) );
     
     D := Digraph( D );
     
     D := DigraphReverse( D );
     
-    D!.list_of_children := [ ];
+    D!.list_of_parents := [ ];
     
     Perform( [ 1 .. Length( nodes ) ],
             function( i )
@@ -114,7 +114,7 @@ InstallMethod( DigraphOfEvaluation,
               
               SetDigraphVertexLabel( D, i, l );
               
-              D!.list_of_children[i] := PositionsOfChildrenOfALazyCell( nodes, node );
+              D!.list_of_parents[i] := PositionsOfParentsOfALazyCell( nodes, node );
               
           end );
           
@@ -128,7 +128,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
         [ IsCellInLazyCategory ],
         
   function( c )
-    local D, str, i, j, list_of_children, children, l;
+    local D, str, i, j, list_of_parents, parents, l;
     
     D := DigraphOfEvaluation( c );
     
@@ -145,18 +145,18 @@ InstallOtherMethod( DotVertexLabelledDigraph,
         Append( str, "\"]\n" );
     od;
     
-    list_of_children := D!.list_of_children;
+    list_of_parents := D!.list_of_parents;
     
     for i in DigraphVertices( D ) do
-        children := list_of_children[i];
-        l := Length( children );
-        if l > 1 and Length( Set( children ) ) > 1 then
+        parents := list_of_parents[i];
+        l := Length( parents );
+        if l > 1 and Length( Set( parents ) ) > 1 then
             for j in [ 1 .. l ] do
-                Append( str, Concatenation( String(children[j]), " -> ", String(i), " [ label=\"", String(j), "\" ]\n" ) );
+                Append( str, Concatenation( String(parents[j]), " -> ", String(i), " [ label=\"", String(j), "\" ]\n" ) );
             od;
         else
             for j in [ 1 .. l ] do
-                Append( str, Concatenation( String(children[j]), " -> ", String(i), " \n" ) );
+                Append( str, Concatenation( String(parents[j]), " -> ", String(i), " \n" ) );
             od;
         fi;
     od;
