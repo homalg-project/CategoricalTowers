@@ -114,4 +114,5 @@ HC := HomologyObject( s, k );
 #! <An object in LazyCategory( Adelman category( AdditiveClosure(
 #!  Algebroid( Z, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )
 #!  / relations ) ) )>
+DotVertexLabelledDigraph( s );;
 #! @EndExample

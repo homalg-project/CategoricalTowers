@@ -153,6 +153,10 @@ DeclareOperation( "Visualize",
 
 DeclareGlobalFunction( "AreEqualForLazyCells" );
 
-DeclareGlobalFunction( "PositionsOfChildrenOfALazyCell" );
+DeclareOperation( "PositionsOfChildrenOfALazyCell",
+        [ IsList, IsCellInLazyCategory ] );
+
+DeclareOperation( "PositionsOfChildrenOfALazyCell",
+        [ IsList, IsList ] );
 
 DeclareGlobalFunction( "CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION" );
