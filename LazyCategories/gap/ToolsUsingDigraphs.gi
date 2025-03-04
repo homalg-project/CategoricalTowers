@@ -8,14 +8,14 @@
 InstallMethod( ListOfEvaluationNodes,
         "for a cell in a lazy category",
         [ IsCellInLazyCategory ],
-
+        
   function( c )
     local nodes, queue, add_to_nodes, add_to_queue, children, D;
     
     nodes := [ ];
     
     queue := [ c ];
-
+    
     add_to_nodes :=
       function( a )
         if PositionProperty( nodes, b -> AreEqualForLazyCells( a, b ) ) = fail then
