@@ -577,10 +577,10 @@ InstallMethod( LazyCategory,
     optimize := ValueOption( "optimize" );
     
     if not ( IsInt( optimize ) and optimize >= 0 ) then
-        optimize := 1;
+        optimize := 2;
     fi;
     
-    if optimize > 0 then
+    if optimize >= 1 then
         
         AddPreCompose( D,
           function( D, phi, psi )
@@ -611,6 +611,10 @@ InstallMethod( LazyCategory,
             return MorphismConstructor( D, Source( phi ), Pair( "PreCompose", [ D, phi, psi ] ), Target( psi ) );
             
         end, OperationWeight( C, "PreCompose" ) );
+
+    fi;
+    
+    if optimize >= 2 then
         
         if CanCompute( C, "DirectSum" ) then
             
