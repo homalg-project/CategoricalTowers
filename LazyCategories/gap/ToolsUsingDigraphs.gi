@@ -36,13 +36,17 @@ InstallMethod( ListOfEvaluationNodes,
         
         add_to_nodes( c );
         
-        if HasGenesisOfCell( c ) then
+        if IsList( c ) then
+            
+            Assert( 0, ForAll( c, IsCellInLazyCategory ) );
+            
+            Perform( c, add_to_queue );
+            
+        elif HasGenesisOfCell( c ) then
             
             children := GenesisOfCellArguments( c );
             
-            children := Flat( children );
-            
-            children := Filtered( children, IsCellInLazyCategory );
+            children := Filtered( children, child -> IsCellInLazyCategory( child ) or IsList( child ) );
             
             Perform( children, add_to_queue );
             
@@ -102,6 +106,8 @@ InstallMethod( DigraphOfEvaluation,
                   if IsBound( node!.Label ) then
                       l := Concatenation( l, "\n<", node!.Label, ">" );
                   fi;
+              elif IsList( node ) then
+                  l := Concatenation( String( Length( node ) ), "-[ ... ]" );
               fi;
               
               l := Concatenation( "[", String( i ), "]\n", l );
