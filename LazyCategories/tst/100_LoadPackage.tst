@@ -15,6 +15,8 @@ gap> LoadPackage( "Algebroids", false );
 true
 gap> LoadPackage( "GRAPE", false );
 true
+gap> LoadPackage( "Digraphs", false );
+true
 gap> LoadPackage( "Locales", false );
 true
 gap> LoadPackage( "SubcategoriesForCAP", false );
@@ -29,6 +31,8 @@ true
 gap> LoadPackage( "Algebroids" );
 true
 gap> LoadPackage( "GRAPE" );
+true
+gap> LoadPackage( "Digraphs" );
 true
 gap> LoadPackage( "Locales" );
 true
