@@ -8,14 +8,16 @@
 InstallMethod( ListOfEvaluationNodes,
         "for a cell in a lazy category",
         [ IsCellInLazyCategory ],
-
+        
   function( c )
-    local nodes, queue, add_to_nodes, add_to_queue, children, D;
+    local node, nodes, queue, add_to_nodes, add_to_queue, parents, D;
+    
+    node := c;
     
     nodes := [ ];
     
-    queue := [ c ];
-
+    queue := [ node ];
+    
     add_to_nodes :=
       function( a )
         if PositionProperty( nodes, b -> AreEqualForLazyCells( a, b ) ) = fail then
@@ -32,19 +34,23 @@ InstallMethod( ListOfEvaluationNodes,
     
     while not IsEmpty( queue ) do
         
-        c := Remove( queue, 1 );
+        node := Remove( queue, 1 );
         
-        add_to_nodes( c );
+        add_to_nodes( node );
         
-        if HasGenesisOfCell( c ) then
+        if IsList( node ) then
             
-            children := GenesisOfCellArguments( c );
+            Assert( 0, ForAll( node, IsCellInLazyCategory ) );
             
-            children := Flat( children );
+            Perform( node, add_to_queue );
             
-            children := Filtered( children, IsCellInLazyCategory );
+        elif HasGenesisOfCell( node ) then
             
-            Perform( children, add_to_queue );
+            parents := GenesisOfCellArguments( node );
+            
+            parents := Filtered( parents, parent -> IsCellInLazyCategory( parent ) or IsList( parent ) );
+            
+            Perform( parents, add_to_queue );
             
         fi;
         
@@ -52,7 +58,7 @@ InstallMethod( ListOfEvaluationNodes,
     
     nodes := Reversed( nodes );
     
-    D := List( nodes, node -> PositionsOfChildrenOfALazyCell( node, nodes ) );
+    D := List( nodes, node -> PositionsOfParentsOfALazyCell( nodes, node ) );
     
     D := Digraph( D );
     
@@ -70,13 +76,13 @@ InstallMethod( DigraphOfEvaluation,
     
     nodes := ListOfEvaluationNodes( c );
     
-    D := List( nodes, node -> PositionsOfChildrenOfALazyCell( node, nodes ) );
+    D := List( nodes, node -> PositionsOfParentsOfALazyCell( nodes, node ) );
     
     D := Digraph( D );
     
     D := DigraphReverse( D );
     
-    D!.list_of_children := [ ];
+    D!.list_of_parents := [ ];
     
     Perform( [ 1 .. Length( nodes ) ],
             function( i )
@@ -102,13 +108,15 @@ InstallMethod( DigraphOfEvaluation,
                   if IsBound( node!.Label ) then
                       l := Concatenation( l, "\n<", node!.Label, ">" );
                   fi;
+              elif IsList( node ) then
+                  l := Concatenation( String( Length( node ) ), "-[ ... ]" );
               fi;
               
               l := Concatenation( "[", String( i ), "]\n", l );
               
               SetDigraphVertexLabel( D, i, l );
               
-              D!.list_of_children[i] := PositionsOfChildrenOfALazyCell( node, nodes );
+              D!.list_of_parents[i] := PositionsOfParentsOfALazyCell( nodes, node );
               
           end );
           
@@ -122,14 +130,14 @@ InstallOtherMethod( DotVertexLabelledDigraph,
         [ IsCellInLazyCategory ],
         
   function( c )
-    local D, str, i, j, list_of_children, children, l;
+    local D, str, i, j, list_of_parents, parents, l;
     
     D := DigraphOfEvaluation( c );
     
     # Copied from DotVertexLabeledDigraph() at Digraphs/gap/display.gi
     str := "//dot\n";
     
-    Append( str, "digraph hgn{\n" );
+    Append( str, "digraph DigraphOfEvaluation{\n" );
     Append( str, "node [shape=rect]\n" );
     
     for i in DigraphVertices( D ) do
@@ -139,18 +147,18 @@ InstallOtherMethod( DotVertexLabelledDigraph,
         Append( str, "\"]\n" );
     od;
     
-    list_of_children := D!.list_of_children;
+    list_of_parents := D!.list_of_parents;
     
     for i in DigraphVertices( D ) do
-        children := list_of_children[i];
-        l := Length( children );
-        if l > 1 and Length( Set( children ) ) > 1 then
+        parents := list_of_parents[i];
+        l := Length( parents );
+        if l > 1 and Length( Set( parents ) ) > 1 then
             for j in [ 1 .. l ] do
-                Append( str, Concatenation( String(children[j]), " -> ", String(i), " [ label=\"", String(j), "\" ]\n" ) );
+                Append( str, Concatenation( String(parents[j]), " -> ", String(i), " [ label=\"", String(j), "\" ]\n" ) );
             od;
         else
             for j in [ 1 .. l ] do
-                Append( str, Concatenation( String(children[j]), " -> ", String(i), " \n" ) );
+                Append( str, Concatenation( String(parents[j]), " -> ", String(i), " \n" ) );
             od;
         fi;
     od;
