@@ -129,7 +129,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     # Copied from DotVertexLabeledDigraph() at Digraphs/gap/display.gi
     str := "//dot\n";
     
-    Append( str, "digraph hgn{\n" );
+    Append( str, "digraph DigraphOfEvaluation{\n" );
     Append( str, "node [shape=rect]\n" );
     
     for i in DigraphVertices( D ) do
