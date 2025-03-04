@@ -1348,7 +1348,7 @@ end );
 
 ##
 InstallGlobalFunction( PositionsOfChildrenOfALazyCell,
-  function( node, nodes )
+  function( nodes, node )
     local children;
     
     if not HasGenesisOfCell( node ) then

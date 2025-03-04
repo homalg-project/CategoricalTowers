@@ -52,7 +52,7 @@ InstallMethod( ListOfEvaluationNodes,
     
     nodes := Reversed( nodes );
     
-    D := List( nodes, node -> PositionsOfChildrenOfALazyCell( node, nodes ) );
+    D := List( nodes, node -> PositionsOfChildrenOfALazyCell( nodes, node ) );
     
     D := Digraph( D );
     
@@ -70,7 +70,7 @@ InstallMethod( DigraphOfEvaluation,
     
     nodes := ListOfEvaluationNodes( c );
     
-    D := List( nodes, node -> PositionsOfChildrenOfALazyCell( node, nodes ) );
+    D := List( nodes, node -> PositionsOfChildrenOfALazyCell( nodes, node ) );
     
     D := Digraph( D );
     
@@ -108,7 +108,7 @@ InstallMethod( DigraphOfEvaluation,
               
               SetDigraphVertexLabel( D, i, l );
               
-              D!.list_of_children[i] := PositionsOfChildrenOfALazyCell( node, nodes );
+              D!.list_of_children[i] := PositionsOfChildrenOfALazyCell( nodes, node );
               
           end );
           
