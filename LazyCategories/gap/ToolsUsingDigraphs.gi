@@ -10,11 +10,13 @@ InstallMethod( ListOfEvaluationNodes,
         [ IsCellInLazyCategory ],
         
   function( c )
-    local nodes, queue, add_to_nodes, add_to_queue, parents, D;
+    local node, nodes, queue, add_to_nodes, add_to_queue, parents, D;
+    
+    node := c;
     
     nodes := [ ];
     
-    queue := [ c ];
+    queue := [ node ];
     
     add_to_nodes :=
       function( a )
@@ -32,19 +34,19 @@ InstallMethod( ListOfEvaluationNodes,
     
     while not IsEmpty( queue ) do
         
-        c := Remove( queue, 1 );
+        node := Remove( queue, 1 );
         
-        add_to_nodes( c );
+        add_to_nodes( node );
         
-        if IsList( c ) then
+        if IsList( node ) then
             
-            Assert( 0, ForAll( c, IsCellInLazyCategory ) );
+            Assert( 0, ForAll( node, IsCellInLazyCategory ) );
             
-            Perform( c, add_to_queue );
+            Perform( node, add_to_queue );
             
-        elif HasGenesisOfCell( c ) then
+        elif HasGenesisOfCell( node ) then
             
-            parents := GenesisOfCellArguments( c );
+            parents := GenesisOfCellArguments( node );
             
             parents := Filtered( parents, parent -> IsCellInLazyCategory( parent ) or IsList( parent ) );
             
