@@ -1358,31 +1358,31 @@ InstallGlobalFunction( AreEqualForLazyCells,
 end );
 
 ##
-InstallMethod( PositionsOfChildrenOfALazyCell,
+InstallMethod( PositionsOfParentsOfALazyCell,
         [ IsList, IsCellInLazyCategory ],
         
   function( nodes, node )
-    local children;
+    local parents;
     
     if not HasGenesisOfCell( node ) then
         return [ ];
     fi;
     
-    children := GenesisOfCellArguments( node );
+    parents := GenesisOfCellArguments( node );
     
-    children := Filtered( children, child -> IsCellInLazyCategory( child ) or IsList( child ) );
+    parents := Filtered( parents, parent -> IsCellInLazyCategory( parent ) or IsList( parent ) );
     
-    return List( children, child -> PositionProperty( nodes, a -> AreEqualForLazyCells( child, a ) ) );
+    return List( parents, parent -> PositionProperty( nodes, a -> AreEqualForLazyCells( parent, a ) ) );
     
 end );
 
 ##
-InstallMethod( PositionsOfChildrenOfALazyCell,
+InstallMethod( PositionsOfParentsOfALazyCell,
         [ IsList, IsList ],
         
   function( nodes, node )
     
-    return List( node, child -> PositionProperty( nodes, a -> AreEqualForLazyCells( child, a ) ) );
+    return List( node, parent -> PositionProperty( nodes, a -> AreEqualForLazyCells( parent, a ) ) );
     
 end );
 
