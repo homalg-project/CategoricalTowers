@@ -577,10 +577,10 @@ InstallMethod( LazyCategory,
     optimize := ValueOption( "optimize" );
     
     if not ( IsInt( optimize ) and optimize >= 0 ) then
-        optimize := 1;
+        optimize := 2;
     fi;
     
-    if optimize > 0 then
+    if optimize >= 1 then
         
         AddPreCompose( D,
           function( D, phi, psi )
@@ -611,6 +611,10 @@ InstallMethod( LazyCategory,
             return MorphismConstructor( D, Source( phi ), Pair( "PreCompose", [ D, phi, psi ] ), Target( psi ) );
             
         end, OperationWeight( C, "PreCompose" ) );
+
+    fi;
+    
+    if optimize >= 2 then
         
         if CanCompute( C, "DirectSum" ) then
             
@@ -1331,10 +1335,21 @@ end );
 ##
 InstallGlobalFunction( AreEqualForLazyCells,
   function( a, b )
+    local length;
     
-    if not IsIdenticalObj( CapCategory( a ), CapCategory( b ) ) then
+    if IsList( a ) and not IsList( b ) then
         return false;
-    elif not ( ForAll( [ a, b ], IsCapCategoryObject ) or ForAll( [ a, b ], IsCapCategoryMorphism ) ) then
+    elif not IsList( a ) and IsList( b ) then
+        return false;
+    elif IsList( a ) and IsList( b ) then
+        length := Length( a );
+        if not length = Length( b ) then
+            return false;
+        fi;
+        return ForAll( [ 1 .. length ], i -> AreEqualForLazyCells( a[i], b[i] ) );
+    elif not IsIdenticalObj( CapCategory( a ), CapCategory( b ) ) then
+        return false;
+    elif not ( ( IsCapCategoryObject( a ) and IsCapCategoryObject( b ) ) or ( IsCapCategoryMorphism( a ) and IsCapCategoryMorphism( b ) ) ) then
         return false;
     fi;
     
@@ -1343,21 +1358,31 @@ InstallGlobalFunction( AreEqualForLazyCells,
 end );
 
 ##
-InstallGlobalFunction( PositionsOfChildrenOfALazyCell,
-  function( node, nodes )
-    local children;
+InstallMethod( PositionsOfParentsOfALazyCell,
+        [ IsList, IsCellInLazyCategory ],
+        
+  function( nodes, node )
+    local parents;
     
     if not HasGenesisOfCell( node ) then
         return [ ];
     fi;
     
-    children := GenesisOfCellArguments( node );
+    parents := GenesisOfCellArguments( node );
     
-    children := Flat( children );
+    parents := Filtered( parents, parent -> IsCellInLazyCategory( parent ) or IsList( parent ) );
     
-    children := Filtered( children, IsCellInLazyCategory );
+    return List( parents, parent -> PositionProperty( nodes, a -> AreEqualForLazyCells( parent, a ) ) );
     
-    return List( children, child -> PositionProperty( nodes, a -> AreEqualForLazyCells( child, a ) ) );
+end );
+
+##
+InstallMethod( PositionsOfParentsOfALazyCell,
+        [ IsList, IsList ],
+        
+  function( nodes, node )
+    
+    return List( node, parent -> PositionProperty( nodes, a -> AreEqualForLazyCells( parent, a ) ) );
     
 end );
 

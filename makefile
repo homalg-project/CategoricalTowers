@@ -193,7 +193,7 @@ ci-test_ZariskiFrames:
 	$(MAKE) -C ZariskiFrames ci-test
 
 ################################
-update-notebooks: update-notebooks_CatReps update-notebooks_FunctorCategories update-notebooks_InternalModules update-notebooks_LazyCategories
+update-notebooks: update-notebooks_CatReps update-notebooks_FunctorCategories update-notebooks_InternalModules
 
 update-notebooks_CatReps:
 	$(MAKE) -C CatReps update-notebooks
@@ -203,8 +203,5 @@ update-notebooks_FunctorCategories:
 
 update-notebooks_InternalModules:
 	$(MAKE) -C InternalModules update-notebooks
-
-update-notebooks_LazyCategories:
-	$(MAKE) -C LazyCategories update-notebooks
 
 # END PACKAGE JANITOR
