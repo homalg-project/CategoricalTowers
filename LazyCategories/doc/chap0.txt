@@ -6,10 +6,10 @@
          [1X Construct an equivalent lazy category out of a CAP category [101X
   
   
-                                   2025.02-03
+                                   2025.03-03
   
   
-                                  2 March 2025
+                                  6 March 2025
   
   
                                 Mohamed Barakat
