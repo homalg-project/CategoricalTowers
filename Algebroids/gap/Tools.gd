@@ -26,6 +26,9 @@ DeclareAttribute( "Dimension", IsCapCategory and IsObjectFiniteCategory and IsLi
 #
 ####################################
 
+DeclareAttribute( "AssociatedRightQuiver",
+        IsFinQuiver );
+
 #! @Description
 #!  Return a triple consisting of the number of vertices of the quiver <A>q</A>,
 #!  the number of arrows of the quiver <A>q</A>, and a list of pairs of integers

@@ -302,6 +302,9 @@ DeclareAttribute( "TruthMorphismOfTrueToSieveFunctor", IsFpCategory );
 DeclareAttribute( "SieveFunctor", IsFpCategory );
 #! @InsertChunk SieveFunctor
 
+DeclareAttribute( "AssociatedFreeCategory",
+        IsPathCategory );
+
 ####################################
 #
 #! @Section Operations

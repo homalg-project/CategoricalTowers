@@ -271,6 +271,74 @@ InstallMethod( DecompositionOfMorphismInSquareOfAlgebroid,
     
 end );
 
+##
+InstallMethod( AssociatedAlgebroid,
+        "for a linear closure of a path category",
+        [ IsLinearClosure ],
+        
+  function( lin_closure_of_path_cat )
+    local P;
+    
+    P := UnderlyingCategory( lin_closure_of_path_cat );
+    
+    if not IsPathCategory( P ) then
+        TryNextMethod( );
+    fi;
+    
+    return Algebroid( CommutativeRingOfLinearCategory( lin_closure_of_path_cat ), AssociatedFreeCategory( P ) );
+    
+end );
+
+##
+InstallMethod( AssociatedAlgebroid,
+        "for a quotient of a linear closure of a path category",
+        [ IsQuotientCategory ],
+        
+  function( quot_of_lin_closure_of_path_cat )
+    local L, A, objs, mors, rels, func;
+    
+    L := UnderlyingCategory( quot_of_lin_closure_of_path_cat );
+    
+    if not IsLinearClosure( L ) then
+        TryNextMethod( );
+    fi;
+    
+    A := AssociatedAlgebroid( L );
+    
+    objs := SetOfObjects( A );
+    mors := SetOfGeneratingMorphisms( A );
+    
+    rels := DefiningRelations( quot_of_lin_closure_of_path_cat );
+    
+    func :=
+      function( lin_comb )
+        local coef, supp, n, source, target;
+        
+        coef := CoefficientsList( lin_comb );
+        supp := SupportMorphisms( lin_comb );
+        
+        n := Length( supp );
+        Assert( 0, n = Length( coef ) );
+        
+        source := objs[ObjectIndex( ObjectDatum( Source( lin_comb ) ) )];
+        target := objs[ObjectIndex( ObjectDatum( Target( lin_comb ) ) )];
+        
+        return LinearCombinationOfMorphisms( A,
+                       source,
+                       coef,
+                       List( supp, mor ->
+                             PreComposeList( A,
+                                     source,
+                                     mors{MorphismIndices( mor )},
+                                     target ) ),
+                       target );
+        
+    end;
+    
+    return A / List( rels, func );
+    
+end );
+
 ####################################
 #
 # methods for operation:

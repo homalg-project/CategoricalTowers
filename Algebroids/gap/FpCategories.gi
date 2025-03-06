@@ -266,6 +266,17 @@ InstallMethod( DataTablesOfCategory,
     
 end );
 
+##
+InstallMethod( AssociatedFreeCategory,
+        "for a path category",
+        [ IsPathCategory ],
+        
+  function( path_cat )
+    
+    return FreeCategory( AssociatedRightQuiver( UnderlyingQuiver( path_cat ) ) );
+    
+end );
+
 ####################################
 #
 # methods for constructors:
