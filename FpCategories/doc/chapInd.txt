@@ -40,9 +40,9 @@
   [2XIsPathCategory[102X, for IsCapCategory 6.2-1 
   [2XIsPathCategoryMorphism[102X, for IsCapCategoryMorphism 6.2-3 
   [2XIsPathCategoryObject[102X, for IsCapCategoryObject 6.2-2 
-  [2XIsQuotientOfPathCategory[102X, for IsQuotientCapCategory 2.3-1 
-  [2XIsQuotientOfPathCategoryMorphism[102X, for IsQuotientCapCategoryMorphism 2.3-3 
-  [2XIsQuotientOfPathCategoryObject[102X, for IsQuotientCapCategoryObject 2.3-2 
+  [2XIsQuotientOfPathCategory[102X, for IsQuotientCategory 2.3-1 
+  [2XIsQuotientOfPathCategoryMorphism[102X, for IsQuotientCategoryMorphism 2.3-3 
+  [2XIsQuotientOfPathCategoryObject[102X, for IsQuotientCategoryObject 2.3-2 
   [2XLabelsOfMorphisms[102X, for IsFinQuiver 1.2-7 
   [2XLabelsOfObjects[102X, for IsFinQuiver 1.2-4 
   [2XLaTeXStringsOfMorphisms[102X, for IsFinQuiver 1.2-8 
