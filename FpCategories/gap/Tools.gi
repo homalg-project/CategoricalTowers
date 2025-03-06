@@ -36,7 +36,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
         "for a quotient category",
-        [ IsQuotientCapCategory ],
+        [ IsQuotientCategory ],
         
   function( cat )
     

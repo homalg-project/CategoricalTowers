@@ -15,17 +15,17 @@
 #! @Description
 #!  The &GAP; category of quotients of path categories.
 DeclareCategory( "IsQuotientOfPathCategory",
-        IsQuotientCapCategory );
+        IsQuotientCategory );
 
 #! @Description
 #!  The &GAP; category of objects in quotients path categories.
 DeclareCategory( "IsQuotientOfPathCategoryObject",
-        IsQuotientCapCategoryObject );
+        IsQuotientCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in quotients of path categories.
 DeclareCategory( "IsQuotientOfPathCategoryMorphism",
-        IsQuotientCapCategoryMorphism );
+        IsQuotientCategoryMorphism );
 
 ####################################
 #

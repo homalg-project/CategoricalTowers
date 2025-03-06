@@ -114,19 +114,19 @@ InstallMethod( QuotientCategory,
     if IsBound( record.category_filter ) then
       category_filter := record.category_filter;
     else
-      category_filter := IsQuotientCapCategory;
+      category_filter := IsQuotientCategory;
     fi;
     
     if IsBound( record.category_object_filter ) then
       category_object_filter := record.category_object_filter;
     else
-      category_object_filter := IsQuotientCapCategoryObject;
+      category_object_filter := IsQuotientCategoryObject;
     fi;
    
     if IsBound( record.category_morphism_filter ) then
       category_morphism_filter := record.category_morphism_filter;
     else
-      category_morphism_filter := IsQuotientCapCategoryMorphism;
+      category_morphism_filter := IsQuotientCategoryMorphism;
     fi;
     
     object_constructor := { quotient_cat, datum } -> CreateCapCategoryObjectWithAttributes( quotient_cat, UnderlyingCell, datum );
@@ -457,7 +457,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
         "for a quotient category",
-        [ IsQuotientCapCategory ],
+        [ IsQuotientCategory ],
         
   function( cat )
     
@@ -467,21 +467,21 @@ end );
 
 ##
 InstallMethod( \.,
-        [ IsQuotientCapCategory, IsPosInt ],
+        [ IsQuotientCategory, IsPosInt ],
   
   { quotient_cat, string_as_int } -> UnderlyingCategory( quotient_cat ).( NameRNam( string_as_int ) ) / quotient_cat
 );
 
 ##
 InstallOtherMethod( \/,
-            [ IsCapCategoryObject, IsQuotientCapCategory ],
+            [ IsCapCategoryObject, IsQuotientCategory ],
   
   { o, quotient_cat } -> ObjectConstructor( quotient_cat, o )
 );
 
 ##
 InstallOtherMethod( \/,
-            [ IsCapCategoryMorphism, IsQuotientCapCategory ],
+            [ IsCapCategoryMorphism, IsQuotientCategory ],
   
   { alpha, quotient_cat } -> MorphismConstructor( quotient_cat, Source( alpha ) / quotient_cat, alpha, Target( alpha ) / quotient_cat )
 );
@@ -494,7 +494,7 @@ InstallOtherMethod( \/,
 
 ##
 InstallMethod( Display,
-        [ IsQuotientCapCategoryObject ],
+        [ IsQuotientCategoryObject ],
         
   function ( a )
     
@@ -506,7 +506,7 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsQuotientCapCategoryMorphism ],
+        [ IsQuotientCategoryMorphism ],
         
   function ( phi )
     
@@ -518,14 +518,14 @@ end );
 
 ##
 InstallOtherMethod( LaTeXOutput,
-            [ IsQuotientCapCategoryObject ],
+            [ IsQuotientCategoryObject ],
   
   o -> LaTeXOutput( UnderlyingCell( o ) )
 );
 
 ##
 InstallOtherMethod( LaTeXOutput,
-            [ IsQuotientCapCategoryMorphism ],
+            [ IsQuotientCategoryMorphism ],
   
   alpha -> LaTeXOutput( UnderlyingCell( alpha ) )
 );
