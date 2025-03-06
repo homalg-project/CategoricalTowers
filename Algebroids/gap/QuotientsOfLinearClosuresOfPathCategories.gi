@@ -303,9 +303,9 @@ InstallMethod( QuotientCategory,
     quo_k_quo_C :=
         ReinterpretationOfCategory( quo_kC,
           rec( name := name,
-               category_filter := IsQuotientCapCategory,
-               category_object_filter := IsQuotientCapCategoryObject,
-               category_morphism_filter := IsQuotientCapCategoryMorphism,
+               category_filter := IsQuotientCategory,
+               category_object_filter := IsQuotientCategoryObject,
+               category_morphism_filter := IsQuotientCategoryMorphism,
                object_constructor := object_constructor,
                object_datum := object_datum,
                morphism_datum := morphism_datum,
@@ -369,7 +369,7 @@ InstallOtherMethod( \/,
 
 ##
 InstallOtherMethod( DataTablesOfCategory,
-          [ IsQuotientCapCategory ],
+          [ IsQuotientCategory ],
   
   function ( quo_kC )
     local kC, C, all_objs, support_objs, objs, all_gmors, support_gmors, gmors, q;

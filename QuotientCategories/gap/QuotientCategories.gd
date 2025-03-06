@@ -4,49 +4,49 @@
 # Declarations
 #
 #  The &GAP; category of a quotient CAP category.
-DeclareCategory( "IsQuotientCapCategory",
+DeclareCategory( "IsQuotientCategory",
         IsCapCategory );
 
 # @Description
 #  The &GAP; category of objects in a quotient CAP category.
-DeclareCategory( "IsQuotientCapCategoryObject",
+DeclareCategory( "IsQuotientCategoryObject",
         IsCapCategoryObject );
 
 # @Description
 #  The &GAP; category of morphisms in a quotient CAP category.
-DeclareCategory( "IsQuotientCapCategoryMorphism",
+DeclareCategory( "IsQuotientCategoryMorphism",
         IsCapCategoryMorphism );
 
 DeclareOperation( "QuotientCategory", [ IsRecord ] );
 
-DeclareAttribute( "UnderlyingCategory", IsQuotientCapCategory );
+DeclareAttribute( "UnderlyingCategory", IsQuotientCategory );
 
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsQuotientCapCategory ],
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsQuotientCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
     
 end );
 
-DeclareAttribute( "QuotientCategoryCongruenceFunction", IsQuotientCapCategory );
+DeclareAttribute( "QuotientCategoryCongruenceFunction", IsQuotientCategory );
 
-DeclareAttribute( "UnderlyingCell", IsQuotientCapCategoryObject );
+DeclareAttribute( "UnderlyingCell", IsQuotientCategoryObject );
 
-CapJitAddTypeSignature( "UnderlyingCell", [ IsQuotientCapCategoryObject ],
+CapJitAddTypeSignature( "UnderlyingCell", [ IsQuotientCategoryObject ],
  function ( input_types )
     
-    Assert( 0, IsQuotientCapCategory( input_types[1].category ) );
+    Assert( 0, IsQuotientCategory( input_types[1].category ) );
     
     return CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) );
     
 end );
 
-DeclareAttribute( "UnderlyingCell", IsQuotientCapCategoryMorphism );
+DeclareAttribute( "UnderlyingCell", IsQuotientCategoryMorphism );
 
-CapJitAddTypeSignature( "UnderlyingCell", [ IsQuotientCapCategoryMorphism ],
+CapJitAddTypeSignature( "UnderlyingCell", [ IsQuotientCategoryMorphism ],
  function ( input_types )
     
-    Assert( 0, IsQuotientCapCategory( input_types[1].category ) );
+    Assert( 0, IsQuotientCategory( input_types[1].category ) );
     
     return CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) );
     

@@ -41,8 +41,8 @@ DeclareOperation( "QuotientCategory", [ IsLinearClosure, IsDenseList ] );
 #! @InsertChunk QuotientCategoriesOfLinearClosuresOfPathCategories
 #! @InsertChunk GroebnerBasisForLinearClosuresOfPathCategories
 
-DeclareAttribute( "DefiningRelations", IsQuotientCapCategory );
-DeclareAttribute( "GroebnerBasisOfDefiningRelations", IsQuotientCapCategory );
+DeclareAttribute( "DefiningRelations", IsQuotientCategory );
+DeclareAttribute( "GroebnerBasisOfDefiningRelations", IsQuotientCategory );
 
 DeclareGlobalFunction( "INSTALL_VIEW_AND_DISPLAY_METHODS_IN_LINEAR_CLOSURES_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS" );
 DeclareGlobalFunction( "INSTALL_VIEW_AND_DISPLAY_METHODS_IN_QUOTIENT_CATEGORIES_OF_LINEAR_CLOSURES_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS" );

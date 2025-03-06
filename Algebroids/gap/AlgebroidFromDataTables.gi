@@ -58,7 +58,7 @@ end );
 
 ##
 InstallMethod( DataTablesOfCategory,
-          [ IsQuotientCapCategory ],
+          [ IsQuotientCategory ],
   
   function ( qA )
     local A, all_objs, support_objs, objs, all_gmors, support_gmors, gmors, q;
