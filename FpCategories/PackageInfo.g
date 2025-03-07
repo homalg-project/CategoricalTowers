@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "FpCategories",
 Subtitle := "Finitely presented categories by generating quivers and relations",
-Version := "2025.03-01",
-Date := "2025-03-06",
+Version := "2025.03-02",
+Date := "2025-03-07",
 License := "GPL-2.0-or-later",
 
 
@@ -87,7 +87,7 @@ Dependencies := rec(
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2024.09-12" ],
                    [ "ToolsForCategoricalTowers", ">= 2024.03-02" ],
-                   [ "QuotientCategories", ">= 2025.03-01" ],
+                   [ "QuotientCategories", ">= 2025.03-02" ],
                    [ "FinSetsForCAP", ">= 2023.10-03" ],
                    ],
   ExternalConditions := [ ],
