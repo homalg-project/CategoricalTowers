@@ -1318,6 +1318,17 @@ InstallMethod( DataTablesOfCategory,
     
 end );
 
+##
+InstallGlobalFunction( CAP_INTERNAL_EXTRACT_STRING_OF_PATH,
+  function ( q, path )
+    local str;
+    
+    str := ViewString( path );
+    
+    return str{[ 1 .. PositionSublist( str, ":" ) - Length( q!.colors.other ) - 1 ]};
+    
+end );
+
 ###################
 #
 # View Methods
