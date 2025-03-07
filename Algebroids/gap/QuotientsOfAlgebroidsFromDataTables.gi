@@ -9,7 +9,7 @@ InstallOtherMethod( QuotientCategory,
         [ IsAlgebroidFromDataTables, IsDenseList ],
   
   function ( A, relations )
-    local A_op, A_as_presheaf, eager, PSh, tau, S, H, pi, congruence_function, name, quo_A, FinalizeCategory, range_of_HomStructure, ring;
+    local A_op, A_as_presheaf, eager, PSh, tau, S, H, pi, congruence_func, name, quo_A, FinalizeCategory, range_of_HomStructure, ring;
     
     if not IsPackageMarkedForLoading( "FunctorCategories", "2023.12-01" ) then
         
@@ -33,7 +33,7 @@ InstallOtherMethod( QuotientCategory,
         
         pi := CokernelProjection( PSh, tau );
         
-        congruence_function :=
+        congruence_func :=
           function ( m )
             local obj;
             
@@ -45,7 +45,7 @@ InstallOtherMethod( QuotientCategory,
         
     elif CanCompute( H, "IsLiftable" ) then
         
-        congruence_function :=
+        congruence_func :=
           function ( m )
             local obj;
             
@@ -70,8 +70,8 @@ InstallOtherMethod( QuotientCategory,
     quo_A := QuotientCategory(
                   rec( underlying_category := A,
                         name := name,
-                        congruence_function := congruence_function,
-                        nr_arguments_of_congruence_function := 1 ) : FinalizeCategory := false );
+                        congruence_func := congruence_func,
+                        nr_arguments_of_congruence_func := 1 ) : FinalizeCategory := false );
     
     ##
     ## Adding the Hom-Structure

@@ -9,11 +9,11 @@ InstallOtherMethod( QuotientCategory,
         [ IsPathCategory, IsDenseList ],
   
   function ( C, relations )
-    local reduced_gb, congruence_function, name, quo_C, q, leading_monomials, hom_quo_C, range_of_HomStructure;
+    local reduced_gb, congruence_func, name, quo_C, q, leading_monomials, hom_quo_C, range_of_HomStructure;
     
     reduced_gb := ReducedGroebnerBasis( C, relations );
     
-    congruence_function :=
+    congruence_func :=
       { mor_1, mor_2 } -> IsEqualForMorphisms( C,
                               ReductionOfMorphism( C, mor_1, reduced_gb ),
                               ReductionOfMorphism( C, mor_2, reduced_gb ) );
@@ -32,8 +32,8 @@ InstallOtherMethod( QuotientCategory,
                      category_filter := IsQuotientOfPathCategory,
                      category_object_filter := IsQuotientOfPathCategoryObject,
                      category_morphism_filter := IsQuotientOfPathCategoryMorphism,
-                     nr_arguments_of_congruence_function := 2,
-                     congruence_function := congruence_function,
+                     nr_arguments_of_congruence_func := 2,
+                     congruence_func := congruence_func,
                      underlying_category := C ) : FinalizeCategory := false, overhead := false );
     
     SetIsFinitelyPresentedCategory( quo_C, true );

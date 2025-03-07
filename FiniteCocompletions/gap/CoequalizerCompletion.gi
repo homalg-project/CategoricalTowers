@@ -12,7 +12,7 @@ InstallMethod( CoequalizerCompletion,
   function ( C )
     local object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
-          ParallelPairs, CoequalizerPairs, congruence_function,
+          ParallelPairs, CoequalizerPairs, congruence_func,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           CoequalizerCompletion;
@@ -66,7 +66,7 @@ InstallMethod( CoequalizerCompletion,
     ## building the categorical tower:
     ParallelPairs := PairOfParallelArrowsCategory( C : FinalizeCategory := true );
     
-    congruence_function :=
+    congruence_func :=
       function( a, b )
         
         if IsEqualForMorphismsOnMor( ParallelPairs, a, b ) then
@@ -80,8 +80,8 @@ InstallMethod( CoequalizerCompletion,
     CoequalizerPairs :=
       QuotientCategory(
               rec( underlying_category := ParallelPairs,
-                   nr_arguments_of_congruence_function := 2,
-                   congruence_function := congruence_function,
+                   nr_arguments_of_congruence_func := 2,
+                   congruence_func := congruence_func,
                    extra_properties := [ "IsFiniteCocompleteCategory" ] )
               : FinalizeCategory := false );
     

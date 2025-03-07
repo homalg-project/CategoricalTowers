@@ -75,29 +75,29 @@ InstallMethod( QuotientCategory,
         [ IsRecord ],
         
   function( record )
-    local congruence_function, ambient_cat, name, category_filter, category_object_filter, category_morphism_filter,
+    local congruence_func, ambient_cat, name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, commutative_ring,
           properties, supports_empty_limits, quotient_cat;
     
-    if not IsBound( record.congruence_function ) then
-        Error( "the record passed to the category constructor 'QuotientCategory' is missing a component 'congruence_function'!\n" );
+    if not IsBound( record.congruence_func ) then
+        Error( "the record passed to the category constructor 'QuotientCategory' is missing a component 'congruence_func'!\n" );
     fi;
     
-    if not IsBound( record.nr_arguments_of_congruence_function ) then
-        Error( "the record passed to the category constructor 'QuotientCategory' is missing a component 'nr_arguments_of_congruence_function'!\n" );
+    if not IsBound( record.nr_arguments_of_congruence_func ) then
+        Error( "the record passed to the category constructor 'QuotientCategory' is missing a component 'nr_arguments_of_congruence_func'!\n" );
     fi;
     
     record := ShallowCopy( record );
     
-    if record.nr_arguments_of_congruence_function = 1 then
+    if record.nr_arguments_of_congruence_func = 1 then
       
-      record.nr_arguments_of_congruence_function := 2;
+      record.nr_arguments_of_congruence_func := 2;
       
-      congruence_function := record.congruence_function;
+      congruence_func := record.congruence_func;
       
-      record.congruence_function := { alpha, beta } -> congruence_function( SubtractionForMorphisms( alpha, beta ) );
+      record.congruence_func := { alpha, beta } -> congruence_func( SubtractionForMorphisms( alpha, beta ) );
       
       return QuotientCategory( record );
       
@@ -108,7 +108,7 @@ InstallMethod( QuotientCategory,
     if IsBound( record.name ) then
       name := record.name;
     else
-      name := Concatenation( "QuotientCategory( ", Name( ambient_cat ), " ) defined by the congruence function ", NameFunction( record.congruence_function ) );
+      name := Concatenation( "QuotientCategory( ", Name( ambient_cat ), " ) defined by the congruence function ", NameFunction( record.congruence_func ) );
     fi;
     
     if IsBound( record.category_filter ) then
@@ -307,7 +307,7 @@ InstallMethod( QuotientCategory,
         
     fi;
     
-    SetQuotientCategoryCongruenceFunction( quotient_cat, record.congruence_function );
+    SetQuotientCategoryCongruenceFunction( quotient_cat, record.congruence_func );
     
     if commutative_ring <> fail then
         SetCommutativeRingOfLinearCategory( quotient_cat, commutative_ring );
