@@ -9,7 +9,7 @@ InstallMethod( QuotientCategory,
         [ IsLinearClosure, IsDenseList ],
   
   function ( kC, relations )
-    local C, q, reduced_gb, leading_monomials, congruence_function, name, quo_kC, FinalizeCategory, homQ, range_cat;
+    local C, q, reduced_gb, leading_monomials, congruence_func, name, quo_kC, FinalizeCategory, homQ, range_cat;
     
     C := UnderlyingCategory( kC );
     
@@ -21,7 +21,7 @@ InstallMethod( QuotientCategory,
     
     reduced_gb := ReducedGroebnerBasis( kC, relations );
     
-    congruence_function := m -> IsZeroForMorphisms( kC, ReductionOfMorphism( kC, m, reduced_gb ) );
+    congruence_func := m -> IsZeroForMorphisms( kC, ReductionOfMorphism( kC, m, reduced_gb ) );
     
     name := List( relations{[ 1 .. Minimum( 3, Length( relations ) )]},
                   function ( rel )
@@ -41,8 +41,8 @@ InstallMethod( QuotientCategory,
     
     quo_kC := QuotientCategory(
                       rec( name := name,
-                           nr_arguments_of_congruence_function := 1,
-                           congruence_function := congruence_function,
+                           nr_arguments_of_congruence_func := 1,
+                           congruence_func := congruence_func,
                            underlying_category := kC )
                       : FinalizeCategory := false );
     
