@@ -42,7 +42,7 @@ InstallMethod( DataTablesOfCategory,
           Concatenation( List( DecompositionOfMorphismInAlgebroid( m ),
             function ( dec )
               if Length( dec[2] ) = 1 and IsEqualToIdentityMorphism( dec[2][1] ) then
-                  return [ ];
+                  return CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) );
               else
                   return List( dec[2], gmor -> Position( gmors, gmor ) );
               fi;

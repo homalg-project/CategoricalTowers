@@ -54,3 +54,6 @@ end );
 
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY" );
 DeclareGlobalFunction( "ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY" );
+
+DeclareOperation( "ExtendFunctorToQuotientCategoryData",
+        [ IsQuotientCategory, IsList, IsCapCategory ] );

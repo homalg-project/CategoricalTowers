@@ -23,15 +23,7 @@ InstallMethod( QuotientCategory,
     
     congruence_func := m -> IsZeroForMorphisms( kC, ReductionOfMorphism( kC, m, reduced_gb ) );
     
-    name := List( relations{[ 1 .. Minimum( 3, Length( relations ) )]},
-                  function ( rel )
-                    local str;
-                    
-                    str := ViewString( rel );
-                    
-                    return str{[ 1 .. PositionSublist( str, ":" ) - Length( q!.colors.other ) - 1 ]};
-                    
-                  end );
+    name := List( relations{[ 1 .. Minimum( 3, Length( relations ) )]}, rel -> CAP_INTERNAL_EXTRACT_STRING_OF_PATH( q, rel ) );
     
     if Length( relations ) > 3 then
       Add( name, "..." );
