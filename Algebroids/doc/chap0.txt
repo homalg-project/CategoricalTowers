@@ -7,7 +7,7 @@
                                     quivers [101X
   
   
-                                   2025.03-07
+                                   2025.03-08
   
   
                                  10 March 2025
@@ -282,7 +282,7 @@
     10.1 [33X[0;0YAttributes[133X
       10.1-1 CoefficientsRing
       10.1-2 CoefficientsRing
-      10.1-3 DefiningQuintupleOfFinitelyPresentedAlgebra
+      10.1-3 DefiningSeptupleOfFinitelyPresentedAlgebra
       10.1-4 ListOfImages
       10.1-5 NrGenerators
       10.1-6 Generators
