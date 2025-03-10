@@ -835,9 +835,13 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddCoequalizer( FpAlg_k,
       function( FpAlg_k, target, diagram )
-        local datum, data, l, rels;
+        local datum, L, data, l, rels, all_rels;
+        
+        ## if the diagram is empty there is no source
         
         datum := ObjectDatum( FpAlg_k, target );
+        
+        L := datum[1];
         
         data := List( diagram, morphism -> MorphismDatum( FpAlg_k, morphism ) );
         
@@ -845,14 +849,18 @@ InstallMethod( CategoryOfFpAlgebras,
         
         rels := Concatenation( List( [ 1 .. l - 1 ], i -> data[i] - data[i + 1] ) );
         
+        all_rels := Concatenation( rels, datum[6] );
+        
+        all_rels := Filtered( all_rels, rel -> not IsZeroForMorphisms( L, rel ) );
+        
         return ObjectConstructor( FpAlg_k,
                        NTuple( 7,
                                datum[1],
                                datum[2],
                                datum[3],
                                datum[4],
-                               datum[5] + l - 1,
-                               Concatenation( rels, datum[6] ),
+                               Length( all_rels ),
+                               all_rels,
                                datum[7] ) );
         
     end );
