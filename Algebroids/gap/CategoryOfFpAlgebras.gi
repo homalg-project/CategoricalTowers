@@ -667,21 +667,19 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddTensorProductOnMorphismsWithGivenTensorProducts( FpAlg_k,
       function( FpAlg_k, source, algebra_morphism1, algebra_morphism2, target )
-        local k, source1, source2, ambient_source1, ambient_source2, ngens1, ngens2,
+        local target1, target2, ambient_target1, ambient_target2, ngens1, ngens2,
               ambient_target, datum, ngens, gens, gens1, gens2, mor1, mor2,
               functor1_on_mors, functor2_on_mors, o, datum_morphism1, datum_morphism2,
               list_of_images;
         
-        k := CoefficientsRing( FpAlg_k );
+        target1 := Target( algebra_morphism1 );
+        target2 := Target( algebra_morphism2 );
         
-        source1 := Source( algebra_morphism1 );
-        source2 := Source( algebra_morphism2 );
+        ambient_target1 := AmbientAlgebra( target1 );
+        ambient_target2 := AmbientAlgebra( target2 );
         
-        ambient_source1 := AmbientAlgebra( source1 );
-        ambient_source2 := AmbientAlgebra( source2 );
-
-        ngens1 := ObjectDatum( FpAlg_k, ambient_source1 )[1];
-        ngens2 := ObjectDatum( FpAlg_k, ambient_source2 )[1];
+        ngens1 := ObjectDatum( FpAlg_k, ambient_target1 )[1];
+        ngens2 := ObjectDatum( FpAlg_k, ambient_target2 )[1];
         
         ambient_target := AmbientAlgebra( target );
         
@@ -697,12 +695,12 @@ InstallMethod( CategoryOfFpAlgebras,
         gens2 := gens{[ ngens1 + 1 .. ngens ]};
         
         mor1 := MorphismConstructor( FpAlg_k,
-                        ambient_source1,
+                        ambient_target1,
                         gens1,
                         ambient_target );
         
         mor2 := MorphismConstructor( FpAlg_k,
-                        ambient_source2,
+                        ambient_target2,
                         gens2,
                         ambient_target );
         
