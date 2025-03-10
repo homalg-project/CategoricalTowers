@@ -4,11 +4,11 @@
 # Declarations
 #
 
-#! @Chapter Finitely presented algebrasa
+#! @Chapter Category of finitely presented algebras
 
 ####################################
 ##
-#! @Section GAP Categories
+#! @Section GAP categories
 ##
 ####################################
 
@@ -95,13 +95,15 @@ DeclareAttribute( "AssociatedFunctorOfLinearClosuresOfPathCategoriesData",
 
 ####################################
 ##
-# @Section Operations
+#! @Section Operations
 ##
 ####################################
 
+#!
 DeclareOperation( "Counit",
         [ IsObjectInCategoryOfFpAlgebras, IsList ] );
 
+#!
 DeclareOperation( "Comultiplication",
         [ IsObjectInCategoryOfFpAlgebras, IsList ] );
 
