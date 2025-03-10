@@ -96,6 +96,21 @@
 @Section Constructors
 @Section GAP categories
 
+@Chapter Linear closures of path categories and their quotients
+
+@Section Constructors
+
+@Chapter Category of finitely presented algebras
+
+@Section Attributes
+@Section Constructors
+@Section GAP categories
+
+@Chapter Tools
+
+@Section Attributes
+@Section Tools for quivers
+
 @Chapter Precompilation
 @InsertChunk PrecompileAdditiveClosureOfAlgebroid
 @InsertChunk PrecompileAdditiveClosureOfAlgebroidFromDataTables
