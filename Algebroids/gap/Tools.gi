@@ -19,6 +19,22 @@ InstallMethod( Dimension,
 end );
 
 ##
+InstallMethod( AssociatedRightQuiver,
+        "for a finite quiver",
+        [ IsFinQuiver ],
+        
+  function( q )
+    
+    return RightQuiver(
+                   QuiverName( q ),
+                   LabelsOfObjects( q ),
+                   LabelsOfMorphisms( q ),
+                   IndicesOfSources( q ),
+                   IndicesOfTargets( q ) );
+    
+end );
+
+##
 InstallMethod( DefiningTripleOfAQuiver,
         "for a quiver",
         [ IsQuiver ],

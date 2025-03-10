@@ -288,6 +288,12 @@ DeclareAttribute( "DecompositionOfMorphismInAlgebroid",
 DeclareAttribute( "DecompositionOfMorphismInSquareOfAlgebroid",
         IsMorphismInAlgebroid );
 
+DeclareAttribute( "AssociatedAlgebroid",
+        IsLinearClosure );
+
+DeclareAttribute( "AssociatedAlgebroid",
+        IsQuotientCategory );
+
 ####################################
 #
 #! @Section Operations
