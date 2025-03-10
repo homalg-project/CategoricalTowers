@@ -50,7 +50,7 @@ CapJitAddTypeSignature( "CoefficientsRing", [ IsObjectInCategoryOfFpAlgebras ],
 end );
 
 #!
-DeclareAttribute( "DefiningQuintupleOfFinitelyPresentedAlgebra",
+DeclareAttribute( "DefiningSeptupleOfFinitelyPresentedAlgebra",
         IsObjectInCategoryOfFpAlgebras );
 
 #!
