@@ -162,6 +162,10 @@ IsWellDefined( u );
 #! true
 IsOne( u );
 #! true
+v := TensorProduct( pr1, pr2 );
+#! <A morphism in CategoryOfFpAlgebras( GF(2) )>
+IsWellDefined( v );
+#! true
 #! @EndExample
 
 #! @EndChunk
