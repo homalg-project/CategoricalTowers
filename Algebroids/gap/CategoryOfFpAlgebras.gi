@@ -37,25 +37,22 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     AddObjectConstructor( FpAlg_k,
-      function( FpAlg_k, quintuple_nrgens_nmgens_quocat_gens_rels )
-        local nr_of_generators, generators, L, relations;
+      function( FpAlg_k, septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens )
+        local L, unique_object, nr_of_generators, generators, nr_of_relations, relations, names_of_generators;
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0,
-                IsList( quintuple_nrgens_nmgens_quocat_gens_rels ) and
-                Length( quintuple_nrgens_nmgens_quocat_gens_rels ) = 5 and
-                IsList( quintuple_nrgens_nmgens_quocat_gens_rels[2] ) );
+                IsList( septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens ) and
+                Length( septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens ) = 7 );
         
-        nr_of_generators := quintuple_nrgens_nmgens_quocat_gens_rels[1];
-        generators := quintuple_nrgens_nmgens_quocat_gens_rels[4];
+        L := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[1];
+        
+        unique_object := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[2];
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0,
-                IsList( generators ) and
-                Length( generators ) = nr_of_generators and
-                ForAll( generators, IsLinearClosureMorphism ) );
-        
-        L := quintuple_nrgens_nmgens_quocat_gens_rels[3];
+                IsLinearClosureObject( unique_object ) and
+                IsIdenticalObj( L, CapCategory( unique_object ) ) );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0,
@@ -64,15 +61,36 @@ InstallMethod( CategoryOfFpAlgebras,
                 HasCommutativeRingOfLinearCategory( L ) and
                 IsIdenticalObj( k, CommutativeRingOfLinearCategory( L ) ) );
         
-        relations := quintuple_nrgens_nmgens_quocat_gens_rels[5];
+        nr_of_generators := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[3];
+        generators := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[4];
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0,
+                IsInt( nr_of_generators ) and
+                IsList( generators ) and
+                Length( generators ) = nr_of_generators and
+                ForAll( generators, IsLinearClosureMorphism ) );
+        
+        nr_of_relations := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[5];
+        relations := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[6];
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0,
+                IsInt( nr_of_relations ) and
                 IsList( relations ) and
+                Length( relations ) = nr_of_relations and
                 ForAll( relations, IsLinearClosureMorphism ) );
         
+        names_of_generators := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[7];
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0,
+                IsList( names_of_generators ) and
+                Length( names_of_generators ) = nr_of_generators and
+                ForAll( names_of_generators, IsStringRep ) );
+        
         return CreateCapCategoryObjectWithAttributes( FpAlg_k,
-                       DefiningQuintupleOfFinitelyPresentedAlgebra, quintuple_nrgens_nmgens_quocat_gens_rels );
+                       DefiningSeptupleOfFinitelyPresentedAlgebra, septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens );
         
     end );
     
@@ -80,7 +98,7 @@ InstallMethod( CategoryOfFpAlgebras,
     AddObjectDatum( FpAlg_k,
       function( FpAlg_k, algebra )
         
-        return DefiningQuintupleOfFinitelyPresentedAlgebra( algebra );
+        return DefiningSeptupleOfFinitelyPresentedAlgebra( algebra );
         
     end );
     
@@ -115,15 +133,15 @@ InstallMethod( CategoryOfFpAlgebras,
         
         datum1 := ObjectDatum( FpAlg_k, algebra1 );
         datum2 := ObjectDatum( FpAlg_k, algebra2 );
-
-        L := datum1[3];
         
-        return IsIdenticalObj( L, datum2[3] ) and
-               datum1[1] = datum2[1] and
+        L := datum1[1];
+        
+        return IsIdenticalObj( L, datum2[1] ) and
                datum1[2] = datum2[2] and
-               ForAll( [ 1 .. datum1[1] ], i -> IsEqualForMorphismsOnMor( L, datum1[4][i], datum2[4][i] ) ) and
-               Length( datum1[5] ) = Length( datum2[5] ) and
-               ForAll( [ 1 .. Length( datum1[5] ) ], i -> IsEqualForMorphismsOnMor( L, datum1[5][i], datum2[5][i] ) );
+               datum1[3] = datum2[3] and
+               ForAll( [ 1 .. datum1[3] ], i -> IsEqualForMorphismsOnMor( L, datum1[4][i], datum2[4][i] ) ) and
+               datum1[5] = datum2[5] and
+               ForAll( [ 1 .. datum1[5] ], i -> IsEqualForMorphismsOnMor( L, datum1[6][i], datum2[6][i] ) );
         
     end );
     
@@ -135,7 +153,7 @@ InstallMethod( CategoryOfFpAlgebras,
         datum1 := MorphismDatum( FpAlg_k, morphism1 );
         datum2 := MorphismDatum( FpAlg_k, morphism2 );
         
-        L := ObjectDatum( FpAlg_k, Source( morphism1 ) )[3];
+        L := ObjectDatum( FpAlg_k, Source( morphism1 ) )[1];
         
         return Length( datum1 ) = Length( datum2 ) and
                ForAll( [ 1 .. Length( datum1 ) ], i -> IsEqualForMorphismsOnMor( L, datum1[i], datum2[i] ) );
@@ -145,20 +163,25 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddIsCongruentForMorphisms( FpAlg_k,
       function( FpAlg_k, morphism1, morphism2 )
-        local T, datumT, L, o, GB;
+        local S, T, nrgens, L, datum1, datum2, diffs, GB, reds;
         
+        S := Source( morphism1 );
         T := Target( morphism1 );
-
-        datumT := ObjectDatum( FpAlg_k, T );
         
-        L := datumT[3];
+        nrgens := ObjectDatum( FpAlg_k, S )[3];
         
-        o := SetOfObjects( L )[1];
+        L := ObjectDatum( FpAlg_k, T )[1];
+        
+        datum1 := MorphismDatum( FpAlg_k, morphism1 );
+        datum2 := MorphismDatum( FpAlg_k, morphism2 );
+        
+        diffs := List( [ 1 .. nrgens ], i -> SubtractionForMorphisms( L, datum1[i], datum2[i] ) );
         
         GB := GroebnerBasisOfDefiningRelations( T );
         
-        return ForAll( MorphismDatum( FpAlg_k, morphism1 ) - MorphismDatum( FpAlg_k, morphism2 ), image ->
-                       IsZeroForMorphisms( L, ReductionOfMorphism( L, image, GB ) ) );
+        reds := List( diffs, diff -> ReductionOfMorphism( L, diff, GB ) );
+        
+        return ForAll( reds, red -> IsZeroForMorphisms( L, red ) );
         
     end );
     
@@ -173,26 +196,34 @@ InstallMethod( CategoryOfFpAlgebras,
         
         if not IsList( datum ) then
             return false;
-        elif not Length( datum ) = 5 then
+        elif not Length( datum ) = 7 then
             return false;
-        elif not IsInt( datum[1] ) then
+        elif not ( IsLinearClosure( datum[1] ) and
+                IsPathCategory( UnderlyingCategory( datum[1] ) ) and
+                HasCommutativeRingOfLinearCategory( datum[1] ) and
+                IsIdenticalObj( k, CommutativeRingOfLinearCategory( datum[1] ) ) ) then
             return false;
-        elif not ( IsList( datum[2] ) and Length( datum[2] ) = datum[1] ) then
+        elif not IsLinearClosureObject( datum[2] ) then
             return false;
-        elif not ForAll( datum[2], IsStringRep ) then
+        elif not IsIdenticalObj( CapCategory( datum[2] ), datum[1] ) then
             return false;
-        elif not ( IsLinearClosure( datum[3] ) and
-                IsPathCategory( UnderlyingCategory( datum[3] ) ) and
-                HasCommutativeRingOfLinearCategory( datum[3] ) and
-                IsIdenticalObj( k, CommutativeRingOfLinearCategory( datum[3] ) ) ) then
+        elif not IsInt( datum[3] ) then
             return false;
-        elif not ( IsList( datum[4] ) and Length( datum[4] ) = datum[1] ) then
+        elif not ( IsList( datum[4] ) and Length( datum[4] ) = datum[3] ) then
             return false;
-        elif not ForAll( datum[4], gen -> IsIdenticalObj( CapCategory( gen ), datum[3] ) ) then
+        elif not ForAll( datum[4], IsLinearClosureMorphism ) then
             return false;
-        elif not IsList( datum[5] ) then
+        elif not ForAll( datum[4], gen -> IsIdenticalObj( CapCategory( gen ), datum[1] ) ) then
             return false;
-        elif not ForAll( datum[5], rel -> IsIdenticalObj( CapCategory( rel ), datum[3] ) ) then
+        elif not IsInt( datum[5] ) then
+            return false;
+        elif not ( IsList( datum[6] ) and Length( datum[6] ) = datum[5] ) then
+            return false;
+        elif not ForAll( datum[6], rel -> IsIdenticalObj( CapCategory( rel ), datum[1] ) ) then
+            return false;
+        elif not ( IsList( datum[7] ) and Length( datum[7] ) = datum[3] ) then
+            return false;
+        elif not ForAll( datum[7], IsStringRep ) then
             return false;
         fi;
         
@@ -203,7 +234,7 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddIsWellDefinedForMorphisms( FpAlg_k,
       function( FpAlg_k, algebra_morphism )
-        local S, T, datumS, datumT, datum, L, o, functor_on_mors, image_of_source_relations, GB;
+        local S, T, datumS, datumT, datum, L, o, functor_on_mors, image_of_source_relations, GB, reds;
         
         S := Source( algebra_morphism );
         T := Target( algebra_morphism );
@@ -215,23 +246,25 @@ InstallMethod( CategoryOfFpAlgebras,
         
         if not IsList( datum ) then
             return false;
-        elif not ForAll( datum, image -> IsIdenticalObj( CapCategory( image ), ObjectDatum( FpAlg_k, Target( algebra_morphism ) )[3] ) ) then
+        elif not ForAll( datum, image -> IsIdenticalObj( CapCategory( image ), ObjectDatum( FpAlg_k, Target( algebra_morphism ) )[1] ) ) then
             return false;
-        elif not Length( datum ) = ObjectDatum( FpAlg_k, Source( algebra_morphism ) )[1] then
+        elif not Length( datum ) = ObjectDatum( FpAlg_k, Source( algebra_morphism ) )[3] then
             return false;
         fi;
         
-        L := datumT[3];
+        L := datumT[1];
         
-        o := SetOfObjects( L )[1];
+        o := datumT[2];
         
         functor_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, algebra_morphism )[2][2];
         
-        image_of_source_relations := List( datumS[5], rel -> functor_on_mors( o, rel, o ) );
+        image_of_source_relations := List( datumS[6], rel -> functor_on_mors( o, rel, o ) );
         
         GB := GroebnerBasisOfDefiningRelations( T );
         
-        return ForAll( image_of_source_relations, image -> IsZeroForMorphisms( L, ReductionOfMorphism( L, image, GB ) ) );
+        reds := List( image_of_source_relations, image -> ReductionOfMorphism( L, image, GB ) );
+        
+        return ForAll( reds, red -> IsZeroForMorphisms( L, red ) );
         
     end );
     
@@ -251,7 +284,7 @@ InstallMethod( CategoryOfFpAlgebras,
       function( FpAlg_k, pre_morphism, post_morphism )
         local o, post_functor_on_mors;
         
-        o := SetOfObjects( ObjectDatum( Target( post_morphism ) )[3] )[1];
+        o := ObjectDatum( Target( post_morphism ) )[2];
         
         post_functor_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, post_morphism )[2][2];
         
@@ -274,24 +307,24 @@ InstallMethod( CategoryOfFpAlgebras,
         o := SetOfObjects( k_as_algebra )[1];
         
         return ObjectConstructor( FpAlg_k,
-                       NTuple( 5,
-                               0,
-                               CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( IsStringRep ) ),
+                       NTuple( 7,
                                k_as_algebra,
+                               o,
+                               0,
                                CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( k_as_algebra ) ) ),
-                               CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( k_as_algebra ) ) ) ) );
+                               0,
+                               CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( k_as_algebra ) ) ),
+                               CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( IsStringRep ) ) ) );
         
     end );
     
     ##
     AddUniversalMorphismFromInitialObjectWithGivenInitialObject( FpAlg_k,
       function( FpAlg_k, A, k_as_algebra )
-        local datumA, datum0, o;
+        local datumA, datum0;
         
         datumA := ObjectDatum( FpAlg_k, A );
         datum0 := ObjectDatum( FpAlg_k, k_as_algebra );
-        
-        o := SetOfObjects( datumA[3] )[1];
         
         return MorphismConstructor( FpAlg_k,
                        k_as_algebra,
@@ -300,55 +333,15 @@ InstallMethod( CategoryOfFpAlgebras,
         
     end );
     
-    ## will be derived as the empty DirectProduct below
-    #AddTerminalObject( FpAlg_k,
-    #  function( FpAlg_k )
-    #    local k, zero_algebra, o;
-    #    
-    #    k := CoefficientsRing( FpAlg_k );
-    #    
-    #    zero_algebra := LinearClosure( k, PathCategory( FinQuiver( "q(o)[]" ) ) );
-    #    
-    #    o := SetOfObjects( zero_algebra )[1];
-    #    
-    #    return ObjectConstructor( FpAlg_k,
-    #                   NTuple( 5,
-    #                           0,
-    #                           CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( IsStringRep ) ),
-    #                           zero_algebra,
-    #                           CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( zero_algebra ) ) ),
-    #                           [ IdentityMorphism( zero_algebra, o ) ] ) );
-    #    
-    #end );
-    
-    ## will be derived from the empty UniversalMorphismIntoDirectProduct below
-    #AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( FpAlg_k,
-    #  function( FpAlg_k, A, zero_algebra )
-    #    local datumA, datum0, L, o;
-    #    
-    #    datumA := ObjectDatum( FpAlg_k, A );
-    #    datum0 := ObjectDatum( FpAlg_k, zero_algebra );
-    #    
-    #    L := datum0[3];
-    #    
-    #    o := SetOfObjects( L )[1];
-    #    
-    #    return MorphismConstructor( FpAlg_k,
-    #                   A,
-    #                   ListWithIdenticalEntries( datumA[1], ZeroMorphism( L, o, o ) ),
-    #                   zero_algebra );
-    #    
-    #end );
-    
     ##
     AddDirectProduct( FpAlg_k,
       function( FpAlg_k, diagram )
-        local data, nrsgens, nrgens, ambients, l, var, nmgens, quiver, F, k, L, gens, ambient,
-              mors, functors_on_mors, o, idem, orth_idem, central_idem, GB, sum, rels;
+        local data, nrsgens, nrgens, ambients, l, var, nmgens, quiver, F, k, L, o, gens, ambient,
+              mors, functors_on_mors, idem, orth_idem, central_idem, GB, sum, nrsrels, rels;
         
         data := List( diagram, algebra -> ObjectDatum( FpAlg_k, algebra ) );
         
-        nrsgens := List( data, datum -> datum[1] );
+        nrsgens := List( data, datum -> datum[3] );
         
         nrgens := Sum( nrsgens );
         
@@ -375,23 +368,25 @@ InstallMethod( CategoryOfFpAlgebras,
         
         L := LinearClosure( k, F );
         
+        o := SetOfObjects( L )[1];
+        
         gens := List( nmgens, name -> L.(name) );
         
         ambient := ObjectConstructor( FpAlg_k,
-                           NTuple( 5,
-                                   nrgens + l,
-                                   nmgens,
+                           NTuple( 7,
                                    L,
+                                   o,
+                                   nrgens + l,
                                    gens,
-                                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( L ) ) ) ) );
+                                   0,
+                                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( L ) ) ),
+                                   nmgens ) );
         
         gens := List( [ 1 .. l ], m -> gens{[ m + Sum( nrsgens{[ 1 .. m - 1 ]} ) .. m + Sum( nrsgens{[ 1 .. m ]} ) ]} );
         
         mors := List( [ 1 .. l ], m -> MorphismConstructor( FpAlg_k, ambients[m], gens[m]{[ 1 .. nrsgens[m] ]}, ambient ) );
         
         functors_on_mors := List( [ 1 .. l ], m -> AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mors[m] )[2][2] );
-        
-        o := SetOfObjects( L )[1];
         
         ## e_m⋅e_m = e_m
         idem := List( [ 1 .. l ], m ->
@@ -422,12 +417,12 @@ InstallMethod( CategoryOfFpAlgebras,
         
         sum := SubtractionForMorphisms( L,
                        IdentityMorphism( L, o ),
-                       Iterated( List( [ 1 .. l ], m -> gens[m][nrsgens[m] + 1] ),
-                               { mor1, mor2 } -> AdditionForMorphisms( L, mor1, mor2 ),
-                               ZeroMorphism( L, o, o ) ) );
+                       SumOfMorphisms( o, List( [ 1 .. l ], m -> gens[m][nrsgens[m] + 1] ), o ) );
+        
+        nrsrels := List( [ 1 .. l ], m -> data[m][5] );
         
         rels := List( [ 1 .. l ], m ->
-                      List( data[m][5], rel ->
+                      List( data[m][6], rel ->
                             PreCompose( L,
                                     functors_on_mors[m]( o, rel, o ),
                                     gens[m][nrsgens[m] + 1] ) ) ); ## project into the m-th factor
@@ -439,30 +434,31 @@ InstallMethod( CategoryOfFpAlgebras,
         rels := List( rels, rel -> ReductionOfMorphism( L, rel, GB ) );
         
         return ObjectConstructor( FpAlg_k,
-                       NTuple( 5,
-                               nrgens + l,
-                               nmgens,
+                       NTuple( 7,
                                L,
+                               o,
+                               nrgens + l,
                                Concatenation( gens ),
-                               Concatenation( rels, idem, orth_idem, central_idem, [ sum ] ) ) );
+                               2 * ( l + nrgens ) + Sum( nrsrels ) + 1,
+                               Concatenation( rels, idem, orth_idem, central_idem, [ sum ] ),
+                               nmgens ) );
         
     end );
     
     ##
     AddProjectionInFactorOfDirectProductWithGivenDirectProduct( FpAlg_k,
       function( FpAlg_k, diagram, p, product )
-        local nrsgens, target, datum, L, gens, o, id, zero, func, images;
+        local nrsgens, target, datum, L, o, gens, id, zero, func, images;
         
-        nrsgens := List( diagram, algebra -> ObjectDatum( FpAlg_k, algebra )[1] );
+        nrsgens := List( diagram, algebra -> ObjectDatum( FpAlg_k, algebra )[3] );
         
         target := diagram[p];
         
         datum := ObjectDatum( FpAlg_k, target );
         
-        L := datum[3];
+        L := datum[1];
+        o := datum[2];
         gens := datum[4];
-        
-        o := SetOfObjects( L )[1];
         
         id := IdentityMorphism( L, o );
         zero := ZeroMorphism( L, o, o );
@@ -493,11 +489,11 @@ InstallMethod( CategoryOfFpAlgebras,
     AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( FpAlg_k,
       function( FpAlg_k, diagram, source, tau, product )
         local data, nrsgens, nrgens, ambients, ambient, datum, L, l, gens,
-              mors, functors_on_mors, o, idem, orth_idem, central_idem, GB, zero, images;
+              mors, functors_on_mors, idem, orth_idem, central_idem, GB, o, images;
         
         data := List( diagram, algebra -> ObjectDatum( FpAlg_k, algebra ) );
         
-        nrsgens := List( data, datum -> datum[1] );
+        nrsgens := List( data, datum -> datum[3] );
         
         ambients := List( diagram, AmbientAlgebra );
         
@@ -505,14 +501,14 @@ InstallMethod( CategoryOfFpAlgebras,
         
         datum := ObjectDatum( FpAlg_k, product );
 
-        nrgens := datum[1];
+        nrgens := datum[3];
         
         l := Length( diagram );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0, nrgens = Sum( nrsgens ) + l );
         
-        L := datum[3];
+        L := datum[1];
         
         gens := datum[4];
         
@@ -521,8 +517,6 @@ InstallMethod( CategoryOfFpAlgebras,
         mors := List( [ 1 .. l ], m -> MorphismConstructor( FpAlg_k, ambients[m], gens[m]{[ 1 .. nrsgens[m] ]}, ambient ) );
         
         functors_on_mors := List( [ 1 .. l ], m -> AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mors[m] )[2][2] );
-        
-        o := SetOfObjects( L )[1];
         
         ## e_m⋅e_m = e_m
         idem := List( [ 1 .. l ], m ->
@@ -551,7 +545,7 @@ InstallMethod( CategoryOfFpAlgebras,
         
         GB := ReducedGroebnerBasis( L, Concatenation( idem, orth_idem, central_idem ) );
         
-        zero := ZeroMorphism( L, o, o );
+        o := datum[2];
         
         images := List( [ 1 .. l ], m ->
                         List( MorphismDatum( FpAlg_k, tau[m] ), image ->
@@ -559,10 +553,7 @@ InstallMethod( CategoryOfFpAlgebras,
                                       functors_on_mors[m]( o, image, o ),
                                       gens[m][nrsgens[m] + 1] ) ) ); ## project into the m-th factor
         
-        images := List( [ 1 .. nrgens ], i ->
-                        Iterated( List( [ 1 .. l ], m -> images[m][i] ), 
-                                { a, b } -> AdditionForMorphisms( L, a, b ),
-                                zero ) );
+        images := List( [ 1 .. nrgens ], i -> SumOfMorphisms( o, List( [ 1 .. l ], m -> images[m][i] ), o ) );
         
         ## get rid of the unnecessary central idempotents in the various summands,
         ## for the images in the result to resemble the relations of the factors
@@ -587,14 +578,14 @@ InstallMethod( CategoryOfFpAlgebras,
     AddTensorProductOnObjects( FpAlg_k,
       function( FpAlg_k, algebra1, algebra2 )
         local datum1, datum2, nrgens1, nrgens2, nrgens, ambient1, ambient2,
-              var, nmgens, quiver, F, k, L, gens, gens1, gens2, ambient,
-              mor1, mor2, functor1_on_mors, functor2_on_mors, o, rels1, rels2, rels, mixed;
+              var, nmgens, quiver, F, k, L, o, gens, gens1, gens2, ambient,
+              mor1, mor2, functor1_on_mors, functor2_on_mors, nrrels, rels1, rels2, rels, mixed;
         
         datum1 := ObjectDatum( FpAlg_k, algebra1 );
         datum2 := ObjectDatum( FpAlg_k, algebra2 );
         
-        nrgens1 := datum1[1];
-        nrgens2 := datum2[1];
+        nrgens1 := datum1[3];
+        nrgens2 := datum2[3];
         
         nrgens := nrgens1 + nrgens2;
         
@@ -620,15 +611,19 @@ InstallMethod( CategoryOfFpAlgebras,
         
         L := LinearClosure( k, F );
         
+        o := SetOfObjects( L )[1];
+        
         gens := List( nmgens, name -> L.(name) );
         
         ambient := ObjectConstructor( FpAlg_k,
-                           NTuple( 5,
-                                   nrgens,
-                                   nmgens,
+                           NTuple( 7,
                                    L,
+                                   o,
+                                   nrgens,
                                    gens,
-                                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( L ) ) ) ) );
+                                   0,
+                                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( L ) ) ),
+                                   nmgens ) );
         
         gens1 := gens{[ 1 .. nrgens1 ]};
         gens2 := gens{[ nrgens1 + 1 .. nrgens ]};
@@ -639,10 +634,10 @@ InstallMethod( CategoryOfFpAlgebras,
         functor1_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mor1 )[2][2];
         functor2_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mor2 )[2][2];
         
-        o := SetOfObjects( L )[1];
+        nrrels := datum1[5] + datum2[5];
         
-        rels1 := List( datum1[5], rel -> functor1_on_mors( o, rel, o ) );
-        rels2 := List( datum2[5], rel -> functor2_on_mors( o, rel, o ) );
+        rels1 := List( datum1[6], rel -> functor1_on_mors( o, rel, o ) );
+        rels2 := List( datum2[6], rel -> functor2_on_mors( o, rel, o ) );
         
         rels := Concatenation( rels1, rels2 );
         
@@ -655,12 +650,14 @@ InstallMethod( CategoryOfFpAlgebras,
         mixed := Concatenation( mixed );
         
         return ObjectConstructor( FpAlg_k,
-                       NTuple( 5,
-                               nrgens,
-                               nmgens,
+                       NTuple( 7,
                                L,
+                               o,
+                               nrgens,
                                gens,
-                               Concatenation( rels, mixed ) ) );
+                               nrrels + nrgens1 * nrgens2,
+                               Concatenation( rels, mixed ),
+                               nmgens ) );
         
     end );
     
@@ -678,14 +675,14 @@ InstallMethod( CategoryOfFpAlgebras,
         ambient_target1 := AmbientAlgebra( target1 );
         ambient_target2 := AmbientAlgebra( target2 );
         
-        ngens1 := ObjectDatum( FpAlg_k, ambient_target1 )[1];
-        ngens2 := ObjectDatum( FpAlg_k, ambient_target2 )[1];
+        ngens1 := ObjectDatum( FpAlg_k, ambient_target1 )[3];
+        ngens2 := ObjectDatum( FpAlg_k, ambient_target2 )[3];
         
         ambient_target := AmbientAlgebra( target );
         
         datum := ObjectDatum( FpAlg_k, ambient_target );
         
-        ngens := datum[1];
+        ngens := datum[3];
         gens := datum[4];
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
@@ -707,7 +704,7 @@ InstallMethod( CategoryOfFpAlgebras,
         functor1_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( mor1 )[2][2];
         functor2_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( mor2 )[2][2];
         
-        o := SetOfObjects( datum[3] )[1];
+        o := datum[2];
         
         datum_morphism1 := MorphismDatum( FpAlg_k, algebra_morphism1 );
         datum_morphism2 := MorphismDatum( FpAlg_k, algebra_morphism2 );
@@ -794,12 +791,12 @@ InstallMethod( CategoryOfFpAlgebras,
       function( FpAlg_k, source, algebra1, algebra2, target )
         local nrgens1, nrgens2, datum, nrgens, gens;
         
-        nrgens1 := ObjectDatum( FpAlg_k, algebra1 )[1];
-        nrgens2 := ObjectDatum( FpAlg_k, algebra2 )[1];
+        nrgens1 := ObjectDatum( FpAlg_k, algebra1 )[3];
+        nrgens2 := ObjectDatum( FpAlg_k, algebra2 )[3];
         
         datum := ObjectDatum( FpAlg_k, target );
         
-        nrgens := datum[1];
+        nrgens := datum[3];
         gens := datum[4];
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
@@ -817,12 +814,12 @@ InstallMethod( CategoryOfFpAlgebras,
       function( FpAlg_k, source, algebra1, algebra2, target )
         local nrgens1, nrgens2, datum, nrgens, gens;
         
-        nrgens1 := ObjectDatum( FpAlg_k, algebra1 )[1];
-        nrgens2 := ObjectDatum( FpAlg_k, algebra2 )[1];
+        nrgens1 := ObjectDatum( FpAlg_k, algebra1 )[3];
+        nrgens2 := ObjectDatum( FpAlg_k, algebra2 )[3];
         
         datum := ObjectDatum( FpAlg_k, target );
         
-        nrgens := datum[1];
+        nrgens := datum[3];
         gens := datum[4];
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
@@ -838,23 +835,25 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddCoequalizer( FpAlg_k,
       function( FpAlg_k, target, diagram )
-        local datum, data, rels, L;
+        local datum, data, l, rels;
         
         datum := ObjectDatum( FpAlg_k, target );
         
         data := List( diagram, morphism -> MorphismDatum( FpAlg_k, morphism ) );
         
-        rels := Concatenation( List( [ 1 .. Length( diagram ) - 1 ], i -> data[i] - data[i + 1] ) );
+        l := Length( diagram );
         
-        L := datum[3];
+        rels := Concatenation( List( [ 1 .. l - 1 ], i -> data[i] - data[i + 1] ) );
         
         return ObjectConstructor( FpAlg_k,
-                       NTuple( 5,
+                       NTuple( 7,
                                datum[1],
                                datum[2],
-                               L,
+                               datum[3],
                                datum[4],
-                               Concatenation( rels, datum[5] ) ) );
+                               datum[5] + l - 1,
+                               Concatenation( rels, datum[6] ),
+                               datum[7] ) );
         
     end );
     
@@ -893,7 +892,7 @@ InstallMethod( NrGenerators,
         
   function( algebra )
     
-    return ObjectDatum( algebra )[1];
+    return ObjectDatum( algebra )[3];
     
 end );
 
@@ -915,7 +914,7 @@ InstallMethod( AssociatedLinearClosureOfPathCategory,
         
   function( algebra )
     
-    return ObjectDatum( algebra )[3];
+    return ObjectDatum( algebra )[1];
     
 end );
 
@@ -926,7 +925,7 @@ InstallMethod( DefiningRelations,
         
   function( algebra )
     
-    return ObjectDatum( algebra )[5];
+    return ObjectDatum( algebra )[6];
     
 end );
 
@@ -974,12 +973,14 @@ InstallOtherMethodForCompilerForCAP( AmbientAlgebra,
     datum := ObjectDatum( FpAlg_k, algebra );
     
     return ObjectConstructor( FpAlg_k,
-                   NTuple( 5,
+                   NTuple( 7,
                            datum[1],
                            datum[2],
                            datum[3],
                            datum[4],
-                           CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( datum[3] ) ) ) ) );
+                           0,
+                           CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( datum[1] ) ) ),
+                           datum[7] ) );
     
 end );
 
@@ -1000,7 +1001,7 @@ InstallMethod( \/,
         [ IsCapCategory and IsLinearCategoryOverCommutativeRing, IsCategoryOfFinitelyPresentedAlgebras ],
         
   function( cat, FpAlg_k )
-    local k, A, relations, generators, n, get_labels;
+    local k, A, relations, object, generators, get_labels;
     
     k := CommutativeRingOfLinearCategory( cat );
     
@@ -1014,10 +1015,10 @@ InstallMethod( \/,
     else
         Error( "the first argument `cat` should either be an `IsQuotientCategory` or an `IsLinearClosure`\n" );
     fi;
+
+    object := SetOfObjects( A )[1];
     
     generators := SetOfGeneratingMorphisms( A );
-    
-    n := Length( generators );
     
     get_labels :=
       function( gen )
@@ -1034,12 +1035,14 @@ InstallMethod( \/,
     end;
     
     return ObjectConstructor( FpAlg_k,
-                   NTuple( 5,
-                           n,
-                           List( generators, get_labels ),
+                   NTuple( 7,
                            A,
+                           object,
+                           Length( generators ),
                            generators,
-                           relations ) );
+                           Length( relations ),
+                           relations,
+                           List( generators, get_labels ) ) );
     
 end );
 
@@ -1065,8 +1068,8 @@ InstallOtherMethodForCompilerForCAP( AssociatedFunctorOfLinearClosuresOfPathCate
   function( FpAlg_k, algebra_morphism )
     local S, T, path_cat, image_of_unique_object, images_of_generating_morphism;
     
-    S := ObjectDatum( FpAlg_k, Source( algebra_morphism ) )[3];
-    T := ObjectDatum( FpAlg_k, Target( algebra_morphism ) )[3];
+    S := ObjectDatum( FpAlg_k, Source( algebra_morphism ) )[1];
+    T := ObjectDatum( FpAlg_k, Target( algebra_morphism ) )[1];
     
     path_cat := UnderlyingCategory( S );
     
@@ -1133,7 +1136,7 @@ InstallMethod( Comultiplication,
     nrgens := NrGenerators( algebra );
     
     Assert( 0, nrgens = Length( list_of_images_of_comult ) and ForAll( list_of_images_of_comult, IsList ) );
-    Assert( 0, ForAll( list_of_images_of_comult, list -> ForAll( list, a -> Length( a ) = 2 and ForAll( a, IsLinearClosureMorphism ) ) ) );
+    Assert( 0, ForAll( list_of_images_of_comult, list -> ForAll( list, pair -> Length( pair ) = 2 and ForAll( pair, IsLinearClosureMorphism ) ) ) );
     
     nrgens2 := NrGenerators( algebra2 );
     
@@ -1176,29 +1179,29 @@ InstallMethod( DisplayString,
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
-    local k, datum, gens, q, rels, str;
+    local k, datum, gens, q, str, rels;
     
     k := CoefficientsRing( CapCategory( algebra ) );
     
     datum := ObjectDatum( algebra );
     
-    if datum[1] > 0 then
-        gens := Concatenation( "<", JoinStringsWithSeparator( datum[2] ), ">" );
+    if datum[3] > 0 then
+        gens := Concatenation( "<", JoinStringsWithSeparator( datum[7] ), ">" );
     else
         gens := "";
     fi;
     
-    q := UnderlyingQuiver( datum[3] );
+    q := UnderlyingQuiver( datum[1] );
     
-    rels := datum[5];
-    
-    if Length( rels ) > 3 then
+    if datum[5] > 3 then
         str := ", ...";
     else
         str := "";
     fi;
     
-    rels := rels{[ 1 .. Minimum( 3, Length( rels ) ) ]};
+    rels := datum[6];
+    
+    rels := rels{[ 1 .. Minimum( 3, datum[5] ) ]};
     
     rels := Concatenation( " / [ ", JoinStringsWithSeparator( List( rels, rel -> CAP_INTERNAL_EXTRACT_STRING_OF_PATH( q, rel ) ), ", " ), str, " ]" );
     
