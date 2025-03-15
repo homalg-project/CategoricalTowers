@@ -137,11 +137,11 @@ InstallMethod( CategoryOfFpAlgebras,
         L := datum1[1];
         
         return IsIdenticalObj( L, datum2[1] ) and
-               datum1[2] = datum2[2] and
+               IsEqualForObjects( L, datum1[2], datum2[2] ) and
                datum1[3] = datum2[3] and
-               ForAll( [ 1 .. datum1[3] ], i -> IsEqualForMorphismsOnMor( L, datum1[4][i], datum2[4][i] ) ) and
+               ForAll( [ 1 .. datum1[3] ], i -> IsEqualForMorphisms( L, datum1[4][i], datum2[4][i] ) ) and
                datum1[5] = datum2[5] and
-               ForAll( [ 1 .. datum1[5] ], i -> IsEqualForMorphismsOnMor( L, datum1[6][i], datum2[6][i] ) );
+               ForAll( [ 1 .. datum1[5] ], i -> IsEqualForMorphisms( L, datum1[6][i], datum2[6][i] ) );
         
     end );
     
@@ -156,7 +156,7 @@ InstallMethod( CategoryOfFpAlgebras,
         L := ObjectDatum( FpAlg_k, Source( morphism1 ) )[1];
         
         return Length( datum1 ) = Length( datum2 ) and
-               ForAll( [ 1 .. Length( datum1 ) ], i -> IsEqualForMorphismsOnMor( L, datum1[i], datum2[i] ) );
+               ForAll( [ 1 .. Length( datum1 ) ], i -> IsEqualForMorphisms( L, datum1[i], datum2[i] ) );
         
     end );
     
