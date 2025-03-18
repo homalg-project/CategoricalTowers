@@ -24,14 +24,14 @@ IsEpimorphism( x );
 PSh := PreSheaves( C );
 #! PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
 #! / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )
-Fo := FinSet( 8 );
+Go := FinSet( 8 );
 #! |8|
-Display( Fo );
+Display( Go );
 #! { 0,..., 7 }
-Fx := [ 5, 0, 3, 1, 1, 4, 3, 2 ];;
-Fx := MapOfFinSets( Fo, Fx, Fo );
+Gx := [ 5, 0, 3, 1, 1, 4, 3, 2 ];;
+Gx := MapOfFinSets( Go, Gx, Go );
 #! |8| → |8|
-G :=  CreatePreSheafByValues( PSh, Pair( [ Fo ], [ Fx ] ) );
+G :=  CreatePreSheafByValues( PSh, Pair( [ Go ], [ Gx ] ) );
 #! <An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
 #!  / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )>
 IsWellDefined( G );
