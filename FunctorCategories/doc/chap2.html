@@ -1162,14 +1162,14 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( C );</span>
 PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
 / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fo := FinSet( 8 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Go := FinSet( 8 );</span>
 |8|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Fo );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Go );</span>
 { 0,..., 7 }
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fx := [ 5, 0, 3, 1, 1, 4, 3, 2 ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fx := MapOfFinSets( Fo, Fx, Fo );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Gx := [ 5, 0, 3, 1, 1, 4, 3, 2 ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Gx := MapOfFinSets( Go, Gx, Go );</span>
 |8| → |8|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G :=  CreatePreSheafByValues( PSh, Pair( [ Fo ], [ Fx ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G :=  CreatePreSheafByValues( PSh, Pair( [ Go ], [ Gx ] ) );</span>
 &lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
  / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( G );</span>
@@ -1296,14 +1296,14 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( C );</span>
 PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
 / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fo := FinSet( 18 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Go := FinSet( 18 );</span>
 |18|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Fo );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Go );</span>
 { 0,..., 17 }
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fx := [ 5, 0, 1, 2, 3, 4, 0, 2, 5, 6, 6, 7, 7, 8, 8, 9, 9, 16 ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fx := MapOfFinSets( Fo, Fx, Fo );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Gx := [ 5, 0, 1, 2, 3, 4, 0, 2, 5, 6, 6, 7, 7, 8, 8, 9, 9, 16 ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Gx := MapOfFinSets( Go, Gx, Go );</span>
 |18| → |18|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G :=  CreatePreSheafByValues( PSh, Pair( [ Fo ], [ Fx ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G :=  CreatePreSheafByValues( PSh, Pair( [ Go ], [ Gx ] ) );</span>
 &lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
  / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( G );</span>
@@ -1444,14 +1444,14 @@ PreSheaves( Q-algebroid( {o}[x:o-≻o] )
 defined by 1 object and 1 generating morphism, Rows( Q ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := Target( PSh );</span>
 Rows( Q )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fo := 8 / H;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Go := 8 / H;</span>
 &lt;A row module over Q of rank 8&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fx := [ 5, 0, 3, 1, 1, 4, 3, 2 ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fx := IdentityMat( 8 ){1 + Fx};;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fx := HomalgMatrix( Fx, 8, 8, Q );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fx := MorphismConstructor( Fo, Fx, Fo );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Gx := [ 5, 0, 3, 1, 1, 4, 3, 2 ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Gx := IdentityMat( 8 ){1 + Gx};;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Gx := HomalgMatrix( Gx, 8, 8, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Gx := MorphismConstructor( Go, Gx, Go );</span>
 &lt;A morphism in Rows( Q )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Fx );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Gx );</span>
 Source:
 A row module over Q of rank 8
 
@@ -1469,7 +1469,7 @@ Range:
 A row module over Q of rank 8
 
 A morphism in Rows( Q )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G :=  CreatePreSheafByValues( PSh, Pair( [ Fo ], [ Fx ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G :=  CreatePreSheafByValues( PSh, Pair( [ Go ], [ Gx ] ) );</span>
 &lt;(o)-&gt;8; (x)-&gt;8x8&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( G );</span>
 true

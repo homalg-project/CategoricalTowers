@@ -1015,14 +1015,14 @@
     [4X[25Xgap>[125X [27XPSh := PreSheaves( C );[127X[104X
     [4X[28XPreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
     [4X[28X/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )[128X[104X
-    [4X[25Xgap>[125X [27XFo := FinSet( 8 );[127X[104X
+    [4X[25Xgap>[125X [27XGo := FinSet( 8 );[127X[104X
     [4X[28X|8|[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( Fo );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( Go );[127X[104X
     [4X[28X{ 0,..., 7 }[128X[104X
-    [4X[25Xgap>[125X [27XFx := [ 5, 0, 3, 1, 1, 4, 3, 2 ];;[127X[104X
-    [4X[25Xgap>[125X [27XFx := MapOfFinSets( Fo, Fx, Fo );[127X[104X
+    [4X[25Xgap>[125X [27XGx := [ 5, 0, 3, 1, 1, 4, 3, 2 ];;[127X[104X
+    [4X[25Xgap>[125X [27XGx := MapOfFinSets( Go, Gx, Go );[127X[104X
     [4X[28X|8| → |8|[128X[104X
-    [4X[25Xgap>[125X [27XG :=  CreatePreSheafByValues( PSh, Pair( [ Fo ], [ Fx ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XG :=  CreatePreSheafByValues( PSh, Pair( [ Go ], [ Gx ] ) );[127X[104X
     [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
     [4X[28X / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( G );[127X[104X
@@ -1148,14 +1148,14 @@
     [4X[25Xgap>[125X [27XPSh := PreSheaves( C );[127X[104X
     [4X[28XPreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
     [4X[28X/ [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )[128X[104X
-    [4X[25Xgap>[125X [27XFo := FinSet( 18 );[127X[104X
+    [4X[25Xgap>[125X [27XGo := FinSet( 18 );[127X[104X
     [4X[28X|18|[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( Fo );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( Go );[127X[104X
     [4X[28X{ 0,..., 17 }[128X[104X
-    [4X[25Xgap>[125X [27XFx := [ 5, 0, 1, 2, 3, 4, 0, 2, 5, 6, 6, 7, 7, 8, 8, 9, 9, 16 ];;[127X[104X
-    [4X[25Xgap>[125X [27XFx := MapOfFinSets( Fo, Fx, Fo );[127X[104X
+    [4X[25Xgap>[125X [27XGx := [ 5, 0, 1, 2, 3, 4, 0, 2, 5, 6, 6, 7, 7, 8, 8, 9, 9, 16 ];;[127X[104X
+    [4X[25Xgap>[125X [27XGx := MapOfFinSets( Go, Gx, Go );[127X[104X
     [4X[28X|18| → |18|[128X[104X
-    [4X[25Xgap>[125X [27XG :=  CreatePreSheafByValues( PSh, Pair( [ Fo ], [ Fx ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XG :=  CreatePreSheafByValues( PSh, Pair( [ Go ], [ Gx ] ) );[127X[104X
     [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
     [4X[28X / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( G );[127X[104X
@@ -1295,14 +1295,14 @@
     [4X[28Xdefined by 1 object and 1 generating morphism, Rows( Q ) )[128X[104X
     [4X[25Xgap>[125X [27XH := Target( PSh );[127X[104X
     [4X[28XRows( Q )[128X[104X
-    [4X[25Xgap>[125X [27XFo := 8 / H;[127X[104X
+    [4X[25Xgap>[125X [27XGo := 8 / H;[127X[104X
     [4X[28X<A row module over Q of rank 8>[128X[104X
-    [4X[25Xgap>[125X [27XFx := [ 5, 0, 3, 1, 1, 4, 3, 2 ];;[127X[104X
-    [4X[25Xgap>[125X [27XFx := IdentityMat( 8 ){1 + Fx};;[127X[104X
-    [4X[25Xgap>[125X [27XFx := HomalgMatrix( Fx, 8, 8, Q );;[127X[104X
-    [4X[25Xgap>[125X [27XFx := MorphismConstructor( Fo, Fx, Fo );[127X[104X
+    [4X[25Xgap>[125X [27XGx := [ 5, 0, 3, 1, 1, 4, 3, 2 ];;[127X[104X
+    [4X[25Xgap>[125X [27XGx := IdentityMat( 8 ){1 + Gx};;[127X[104X
+    [4X[25Xgap>[125X [27XGx := HomalgMatrix( Gx, 8, 8, Q );;[127X[104X
+    [4X[25Xgap>[125X [27XGx := MorphismConstructor( Go, Gx, Go );[127X[104X
     [4X[28X<A morphism in Rows( Q )>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( Fx );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( Gx );[127X[104X
     [4X[28XSource:[128X[104X
     [4X[28XA row module over Q of rank 8[128X[104X
     [4X[28X[128X[104X
@@ -1320,7 +1320,7 @@
     [4X[28XA row module over Q of rank 8[128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in Rows( Q )[128X[104X
-    [4X[25Xgap>[125X [27XG :=  CreatePreSheafByValues( PSh, Pair( [ Fo ], [ Fx ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XG :=  CreatePreSheafByValues( PSh, Pair( [ Go ], [ Gx ] ) );[127X[104X
     [4X[28X<(o)->8; (x)->8x8>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( G );[127X[104X
     [4X[28Xtrue[128X[104X
