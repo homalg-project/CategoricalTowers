@@ -29,14 +29,14 @@ PSh := PreSheaves( QC );
 #! defined by 1 object and 1 generating morphism, Rows( Q ) )
 H := Target( PSh );
 #! Rows( Q )
-Fo := 8 / H;
+Go := 8 / H;
 #! <A row module over Q of rank 8>
-Fx := [ 5, 0, 3, 1, 1, 4, 3, 2 ];;
-Fx := IdentityMat( 8 ){1 + Fx};;
-Fx := HomalgMatrix( Fx, 8, 8, Q );;
-Fx := MorphismConstructor( Fo, Fx, Fo );
+Gx := [ 5, 0, 3, 1, 1, 4, 3, 2 ];;
+Gx := IdentityMat( 8 ){1 + Gx};;
+Gx := HomalgMatrix( Gx, 8, 8, Q );;
+Gx := MorphismConstructor( Go, Gx, Go );
 #! <A morphism in Rows( Q )>
-Display( Fx );
+Display( Gx );
 #! Source:
 #! A row module over Q of rank 8
 #! 
@@ -54,7 +54,7 @@ Display( Fx );
 #! A row module over Q of rank 8
 #! 
 #! A morphism in Rows( Q )
-G :=  CreatePreSheafByValues( PSh, Pair( [ Fo ], [ Fx ] ) );
+G :=  CreatePreSheafByValues( PSh, Pair( [ Go ], [ Gx ] ) );
 #! <(o)->8; (x)->8x8>
 IsWellDefined( G );
 #! true
