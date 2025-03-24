@@ -431,7 +431,8 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     Append( str, "digraph decorated_quiver{\n" );
     Append( str, "rankdir=\"LR\"\n" );
     Append( str, "minlen=0\n" );
-    Append( str, "node [shape=circle width=0 height=0]\n" );
+    Append( str, "node [shape=circle width=0 height=0 fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
+    Append( str, "edge [arrowsize=0.5 fontsize=10 fontname=\"DejaVu Serif,serif\"]\n" );
     
     for i in AsList( decorated_quiver.V ) do
         Append( str, String( i ) );
@@ -439,7 +440,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
         Append( str, String( i ) );
         Append( str, "\" color =\"" );
         Append( str, decoration_of_vertices[1 + morphism.V( i )] );
-        Append( str, "\" fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
+        Append( str, "\"]\n" );
     od;
     
     arrows := Arrows( decorated_quiver );
@@ -455,7 +456,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
                         String( i ),
                         "\" color=\"",
                         decoration_of_arrows[1 + morphism.A( i )],
-                        "\" arrowsize=0.5 fontsize=10 fontname=\"DejaVu Serif,serif\"]\n" ) );
+                        "\"]\n" ) );
     od;
     
     Append( str, "}\n" );
@@ -492,7 +493,8 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     Append( str, "digraph sub_decorated_quiver{\n" );
     Append( str, "rankdir=\"LR\"\n" );
     Append( str, "minlen=0\n" );
-    Append( str, "node [shape=circle width=0 height=0]\n" );
+    Append( str, "node [shape=circle width=0 height=0 fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
+    Append( str, "edge [arrowsize=0.5 fontsize=10 fontname=\"DejaVu Serif,serif\"]\n" );
     
     for i in AsList( decorated_quiver.V ) do
         Append( str, String( i ) );
@@ -506,7 +508,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
             Append( str, " fontcolor=\"azure3\"" );
             Append( str, " color=\"azure3\"" );
         fi;
-        Append( str, " fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
+        Append( str, "]\n" );
     od;
     
     arrows_as_pairs := Arrows( decorated_quiver );
@@ -522,12 +524,12 @@ InstallOtherMethod( DotVertexLabelledDigraph,
                         String( i ),
                         "\" color=\"",
                         decoration_of_arrows[1 + morphism.A( i )],
-                        "\" arrowsize=0.5 fontsize=10" ) );
+                        "\"" ) );
         if not i in arrows then
             Append( str, " fontcolor=\"azure3\"" );
             Append( str, " color=\"azure3\"" );
         fi;
-        Append( str, " fontname=\"DejaVu Serif,serif\"]\n" );
+        Append( str, "]\n" );
     od;
     
     Append( str, "}\n" );

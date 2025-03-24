@@ -138,3 +138,10 @@ DeclareOperation( "DigraphOfChildren",
 #! @Returns nothing
 DeclareOperation( "Visualize",
         [ IsDatastructureForConstructibleObjects ] );
+
+#! @Description
+#!  Opens a PDF with the graph of the datastructure of a finite thin cateogry <A>C</A>.
+#! @Arguments C
+#! @Returns nothing
+DeclareOperation( "Visualize",
+        [ IsCapCategory ] );

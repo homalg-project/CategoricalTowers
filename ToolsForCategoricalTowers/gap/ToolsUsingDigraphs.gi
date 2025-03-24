@@ -61,13 +61,13 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     
     Append( str, "digraph doctrines{\n" );
     Append( str, "rankdir=LR\n" );
-    Append( str, "node [shape=rect]\n" );
+    Append( str, "node [shape=rect fontsize=12]\n" );
     
     for i in DigraphVertices( D ) do
         Append( str, String(i) );
         Append( str, " [label=\"" );
         Append( str, String( DigraphVertexLabel( D, i ) ) );
-        Append( str, "\" fontsize=12]\n" );
+        Append( str, "\"]\n" );
     od;
     
     out := OutNeighbours(D);
@@ -75,7 +75,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     for i in DigraphVertices( D ) do
         l := Length( out[i] );
         for j in [ 1 .. l ] do
-            Append( str, Concatenation( String(out[i][j]), " -> ", String(i), " \n" ) );
+            Append( str, Concatenation( String(out[i][j]), " -> ", String(i), "\n" ) );
         od;
     od;
     

@@ -154,11 +154,11 @@ InstallOtherMethod( DotVertexLabelledDigraph,
         l := Length( parents );
         if l > 1 and Length( Set( parents ) ) > 1 then
             for j in [ 1 .. l ] do
-                Append( str, Concatenation( String(parents[j]), " -> ", String(i), " [ label=\"", String(j), "\" ]\n" ) );
+                Append( str, Concatenation( String(parents[j]), " -> ", String(i), " [label=\"", String(j), "\"]\n" ) );
             od;
         else
             for j in [ 1 .. l ] do
-                Append( str, Concatenation( String(parents[j]), " -> ", String(i), " \n" ) );
+                Append( str, Concatenation( String(parents[j]), " -> ", String(i), "\n" ) );
             od;
         fi;
     od;

@@ -181,18 +181,19 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     Append( str, "digraph subobject_lattice{\n" );
     Append( str, "rankdir=\"TB\"\n" );
     Append( str, "minlen=0\n" );
-    Append( str, "node [shape=circle width=0 height=0]\n" );
+    Append( str, "node [shape=circle width=0 height=0 fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
+    Append( str, "edge [arrowsize=0.5]\n" );
     
     for i in DigraphVertices( D ) do
         Append( str, String( i ) );
         Append( str, " [label=\"" );
         Append( str, String( DigraphVertexLabel( D, i ) ) );
-        Append( str, "\" fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
+        Append( str, "\"]\n" );
     od;
     
   for i in DigraphVertices( D ) do
       for j in out[i] do
-          Append( str, Concatenation( String( i ), " -> ", String( j ), " [arrowsize=0.5]\n" ) );
+          Append( str, Concatenation( String( i ), " -> ", String( j ), "\n" ) );
       od;
   od;
   
@@ -236,5 +237,16 @@ InstallMethod( Visualize,
   function( C )
     
     Splash( DotVertexLabelledDigraph( C ) );
+    
+end );
+
+##
+InstallMethod( Visualize,
+        "for a proset",
+        [ IsThinCategory and IsFiniteCategory ],
+        
+  function( C )
+    
+    Splash( DotVertexLabelledDigraph( DigraphOfPoset( C ) ) );
     
 end );
