@@ -31,24 +31,25 @@ Display( Dist );
 #! * IsBiHeytingAlgebra
 Length( SetOfObjects( Dist ) );
 #! 6
-Display( DotVertexLabelledDigraph( DigraphOfPoset( Dist : offset := 0 ) ) );
+Print( DotVertexLabelledDigraph( DigraphOfPoset( Dist : offset := 0 ) ) );
 #! //dot
 #! digraph subobject_lattice{
 #! rankdir="BT"
 #! minlen=0
-#! node [shape=circle width=0 height=0]
-#! 1 [label="0" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"]
-#! 2 [label="1" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"]
-#! 3 [label="2" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"]
-#! 4 [label="3" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"]
-#! 5 [label="4" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"]
-#! 6 [label="5" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"]
-#! 1 -> 5 [arrowsize=0.5]
-#! 3 -> 6 [arrowsize=0.5]
-#! 4 -> 6 [arrowsize=0.5]
-#! 5 -> 3 [arrowsize=0.5]
-#! 5 -> 4 [arrowsize=0.5]
-#! 6 -> 2 [arrowsize=0.5]
+#! node [shape=circle width=0 height=0 fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"]
+#! edge [arrowsize=0.5]
+#! 1 [label="0"]
+#! 2 [label="1"]
+#! 3 [label="2"]
+#! 4 [label="3"]
+#! 5 [label="4"]
+#! 6 [label="5"]
+#! 1 -> 5
+#! 3 -> 6
+#! 4 -> 6
+#! 5 -> 3
+#! 5 -> 4
+#! 6 -> 2
 #! }
 DiffbCSL := MeetSemilatticeOfSingleDifferences( Dist );
 #! MeetSemilatticeOfSingleDifferences( FreeDistributiveCompletion(

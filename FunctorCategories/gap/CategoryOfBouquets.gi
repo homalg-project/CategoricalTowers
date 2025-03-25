@@ -443,13 +443,14 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     Append( str, "digraph quiver{\n" );
     Append( str, "rankdir=\"LR\"\n" );
     Append( str, "minlen=0\n" );
-    Append( str, "node [shape=circle width=0 height=0]\n" );
+    Append( str, "node [shape=circle width=0 height=0 fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
+    Append( str, "edge [arrowhead=none arrowsize=0.5 fontsize=10 fontname=\"DejaVu Serif,serif\"]\n" );
     
     for i in AsList( bouquet.P ) do
         Append( str, String( i ) );
         Append( str, " [label=\"" );
         Append( str, String( i ) );
-        Append( str, "\" fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
+        Append( str, "\"]\n" );
     od;
     
     loops := Loops( bouquet );
@@ -463,7 +464,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
                         String( loops[1 + i] ),
                         " [label=\"",
                         String( i ),
-                        "\" arrowhead=none arrowsize=0.5 fontsize=10 fontname=\"DejaVu Serif,serif\"]\n" ) );
+                        "\"]\n" ) );
     od;
     
     Append( str, "}\n" );
@@ -491,7 +492,8 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     Append( str, "digraph subbouquet{\n" );
     Append( str, "rankdir=\"LR\"\n" );
     Append( str, "minlen=0\n" );
-    Append( str, "node [shape=circle width=0 height=0]\n" );
+    Append( str, "node [shape=circle width=0 height=0 fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
+    Append( str, "edge [arrowhead=none arrowsize=0.5 fontsize=10 fontname=\"DejaVu Serif,serif\"]\n" );
     
     for i in AsList( bouquet.P ) do
         Append( str, String( i ) );
@@ -503,7 +505,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
             Append( str, " fontcolor=\"azure3\"" );
             Append( str, " color=\"azure3\"" );
         fi;
-        Append( str, " fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
+        Append( str, "]\n" );
     od;
     
     vertices_of_loops := Loops( bouquet );
@@ -517,12 +519,12 @@ InstallOtherMethod( DotVertexLabelledDigraph,
                         String( vertices_of_loops[1 + i] ),
                         " [label=\"",
                         String( i ),
-                        "\" arrowhead=none arrowsize=0.5 fontsize=10" ) );
+                        "\"" ) );
         if not i in loops then
             Append( str, " fontcolor=\"azure3\"" );
             Append( str, " color=\"azure3\"" );
         fi;
-        Append( str, " fontname=\"DejaVu Serif,serif\"]\n" );
+        Append( str, "]\n" );
     od;
     
     Append( str, "}\n" );
