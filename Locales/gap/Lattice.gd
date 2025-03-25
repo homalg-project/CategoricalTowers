@@ -20,8 +20,8 @@ AddCategoricalProperty( [ "IsCartesianProset", "IsCocartesianProset" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianProset :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory ) );
+          ListOfDefiningOperations( "IsThinCategory" ),
+          ListOfDefiningOperations( "IsCartesianCategory" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a meet semi-lattice.
@@ -33,8 +33,8 @@ AddCategoricalProperty( [ "IsMeetSemiLattice", "IsJoinSemiLattice" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMeetSemiLattice :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianProset,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory ) );
+          ListOfDefiningOperations( "IsCartesianProset" ),
+          ListOfDefiningOperations( "IsPosetCategory" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a finite cocomplete proset.
@@ -46,8 +46,8 @@ AddCategoricalProperty( [ "IsCocartesianProset", "IsCartesianProset" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianProset :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) );
+          ListOfDefiningOperations( "IsThinCategory" ),
+          ListOfDefiningOperations( "IsCocartesianCategory" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a join semi-lattice.
@@ -59,8 +59,8 @@ AddCategoricalProperty( [ "IsJoinSemiLattice", "IsMeetSemiLattice" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsJoinSemiLattice :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianProset,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory ) );
+          ListOfDefiningOperations( "IsCocartesianProset" ),
+          ListOfDefiningOperations( "IsPosetCategory" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a finite complete and cocomplete proset.
@@ -72,8 +72,8 @@ AddCategoricalProperty( [ "IsBicartesianProset", "IsBicartesianProset" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBicartesianProset :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianProset,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianProset ) );
+          ListOfDefiningOperations( "IsCartesianProset" ),
+          ListOfDefiningOperations( "IsCocartesianProset" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a lattice.
@@ -85,8 +85,8 @@ AddCategoricalProperty( [ "IsLattice", "IsLattice" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLattice :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMeetSemiLattice,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsJoinSemiLattice ) );
+          ListOfDefiningOperations( "IsMeetSemiLattice" ),
+          ListOfDefiningOperations( "IsJoinSemiLattice" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a distributive (and automatically codistributive) bicartesian proset.
@@ -98,9 +98,9 @@ AddCategoricalProperty( [ "IsDistributiveBicartesianProset", "IsDistributiveBica
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveBicartesianProset :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBicartesianProset,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCodistributiveCategory ) );
+          ListOfDefiningOperations( "IsBicartesianProset" ),
+          ListOfDefiningOperations( "IsDistributiveCategory" ),
+          ListOfDefiningOperations( "IsCodistributiveCategory" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a distributive (and automatically codistributive) lattice.
@@ -112,9 +112,9 @@ AddCategoricalProperty( [ "IsDistributiveLattice", "IsDistributiveLattice" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveLattice :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLattice,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCodistributiveCategory ) );
+          ListOfDefiningOperations( "IsLattice" ),
+          ListOfDefiningOperations( "IsDistributiveCategory" ),
+          ListOfDefiningOperations( "IsCodistributiveCategory" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a monoidal lattice.
@@ -126,8 +126,8 @@ AddCategoricalProperty( [ "IsMonoidalLattice", "IsMonoidalLattice" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalLattice :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLattice,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory ) );
+          ListOfDefiningOperations( "IsLattice" ),
+          ListOfDefiningOperations( "IsMonoidalCategory" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a closed monoidal lattice.
@@ -139,8 +139,8 @@ AddCategoricalProperty( [ "IsClosedMonoidalLattice", "IsCoclosedMonoidalLattice"
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalLattice :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalLattice,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalCategory ) );
+          ListOfDefiningOperations( "IsMonoidalLattice" ),
+          ListOfDefiningOperations( "IsClosedMonoidalCategory" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a coclosed monoidal lattice.
@@ -152,8 +152,8 @@ AddCategoricalProperty( [ "IsCoclosedMonoidalLattice", "IsClosedMonoidalLattice"
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalLattice :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalLattice,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalCategory ) );
+          ListOfDefiningOperations( "IsMonoidalLattice" ),
+          ListOfDefiningOperations( "IsCoclosedMonoidalCategory" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a symmetric monoidal lattice.
@@ -165,8 +165,8 @@ AddCategoricalProperty( [ "IsSymmetricMonoidalLattice", "IsSymmetricMonoidalLatt
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalLattice :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLattice,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalCategory ) );
+          ListOfDefiningOperations( "IsLattice" ),
+          ListOfDefiningOperations( "IsSymmetricMonoidalCategory" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a symmetric closed monoidal lattice.
@@ -178,8 +178,8 @@ AddCategoricalProperty( [ "IsSymmetricClosedMonoidalLattice", "IsSymmetricCoclos
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricClosedMonoidalLattice :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalLattice,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricClosedMonoidalCategory ) );
+          ListOfDefiningOperations( "IsSymmetricMonoidalLattice" ),
+          ListOfDefiningOperations( "IsSymmetricClosedMonoidalCategory" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a symmetric coclosed monoidal lattice.
@@ -191,8 +191,8 @@ AddCategoricalProperty( [ "IsSymmetricCoclosedMonoidalLattice", "IsSymmetricClos
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricCoclosedMonoidalLattice :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalLattice,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricCoclosedMonoidalCategory ) );
+          ListOfDefiningOperations( "IsSymmetricMonoidalLattice" ),
+          ListOfDefiningOperations( "IsSymmetricCoclosedMonoidalCategory" ) ) );
 
 #! @Section Attributes
 

@@ -18,8 +18,8 @@ AddCategoricalProperty( [ "IsCoHeytingAlgebroid", "IsHeytingAlgebroid" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoHeytingAlgebroid :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveBicartesianProset,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCoclosedCategory ) );
+          ListOfDefiningOperations( "IsDistributiveBicartesianProset" ),
+          ListOfDefiningOperations( "IsCocartesianCoclosedCategory" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a co-Heyting algebra.
@@ -31,8 +31,8 @@ AddCategoricalProperty( [ "IsCoHeytingAlgebra", "IsHeytingAlgebra" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoHeytingAlgebra :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoHeytingAlgebroid ) );
+          ListOfDefiningOperations( "IsPosetCategory" ),
+          ListOfDefiningOperations( "IsCoHeytingAlgebroid" ) ) );
 
 #! @Section Operations
 

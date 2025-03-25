@@ -13,7 +13,7 @@ InstallGlobalFunction( DigraphOfKnownDoctrines,
       function( a, b )
         local bool;
         
-        bool := IsSubset( ListMethodsOfDoctrine( a ), ListMethodsOfDoctrine( b ) );
+        bool := IsSubset( ListOfDefiningOperations( a ), ListOfDefiningOperations( b ) );
         
         if IsBoundGlobal( a ) then
             return ( b in ListImpliedFilters( ValueGlobal( a ) ) ) or bool;

@@ -134,9 +134,9 @@ AddCategoricalProperty( [ "IsElementaryTopos", fail ] );
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsElementaryTopos :=
   DuplicateFreeList(
           Concatenation(
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteBicompleteCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory,
+                  ListOfDefiningOperations( "IsCartesianClosedCategory" ),
+                  ListOfDefiningOperations( "IsFiniteBicompleteCategory" ),
+                  ListOfDefiningOperations( "IsDistributiveCategory" ),
                   [ "SubobjectClassifier",
                     "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
                     #"TruthMorphismOfTrueWithGivenObjects", ## derived from SubobjectClassifier & ClassifyingMorphismOfSubobjectWithGiven... & IdentityMorphism

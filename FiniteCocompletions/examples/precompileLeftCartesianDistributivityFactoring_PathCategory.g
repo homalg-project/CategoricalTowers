@@ -196,7 +196,7 @@ T := DummyCategory( rec( name := "A placeholder distributive category",
        properties := [ "IsDistributiveCategory" ],
        list_of_operations_to_install :=
        Concatenation( [ "ObjectConstructor", "MorphismConstructor" ],
-       CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory ) ) );
+       ListOfDefiningOperations( "IsDistributiveCategory" ) ) ) );
 #! A placeholder distributive category
 
 StartTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );

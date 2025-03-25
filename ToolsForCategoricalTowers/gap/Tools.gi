@@ -11,14 +11,6 @@ InstallTrueMethod( IsObjectFiniteCategory, IsFiniteCategory );
 InstallTrueMethod( IsEquivalentToFiniteCategory, IsFiniteCategory );
 
 ##
-InstallGlobalFunction( ListMethodsOfDoctrine,
-  function( doctrine_name )
-    
-    return DuplicateFreeList( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.(doctrine_name) );
-    
-end );
-
-##
 InstallMethod( DummyCategoryInDoctrines,
         "for a list of string",
         [ IsList ],
@@ -44,7 +36,7 @@ InstallMethod( DummyCategoryInDoctrines,
       function( b, a )
         local bool;
         
-        bool := IsSubset( ListMethodsOfDoctrine( a ), ListMethodsOfDoctrine( b ) );
+        bool := IsSubset( ListOfDefiningOperations( a ), ListOfDefiningOperations( b ) );
         
         if minimal = true and IsBoundGlobal( a ) and IsBoundGlobal( b ) then
             return IsSpecializationOfFilter( ValueGlobal( b ), ValueGlobal( a ) ) or bool;
@@ -62,11 +54,11 @@ InstallMethod( DummyCategoryInDoctrines,
     
     options.name := name;
     
-    options.properties := Difference( doctrine_names, [ "EveryCategory" ] );
+    options.properties := Difference( doctrine_names, [ "IsCapCategory" ] );
     
     options.list_of_operations_to_install :=
       Set( Concatenation(
-              Concatenation( List( doctrine_names, ListMethodsOfDoctrine ) ),
+              Concatenation( List( doctrine_names, ListOfDefiningOperations ) ),
               additional_operations,
               [ "ObjectConstructor", "ObjectDatum",
                 "MorphismConstructor", "MorphismDatum",
