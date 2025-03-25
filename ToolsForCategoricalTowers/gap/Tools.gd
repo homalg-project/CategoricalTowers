@@ -40,6 +40,7 @@ DeclareOperation( "SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE",
 #!  The function takes no arguments and returns the list of known doctrines.
 #! @Returns a list
 DeclareGlobalFunction( "ListKnownDoctrines" );
+#! @InsertChunk ListKnownDoctrines
 
 #! @Description
 #!  The argument is a nonempty list <A>doctrine_names</A> of strings of doctrine names and the output
