@@ -197,24 +197,25 @@
     [4X[28X* IsBiHeytingAlgebra[128X[104X
     [4X[25Xgap>[125X [27XLength( SetOfObjects( Dist ) );[127X[104X
     [4X[28X6[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( DotVertexLabelledDigraph( DigraphOfPoset( Dist : offset := 0 ) ) );[127X[104X
+    [4X[25Xgap>[125X [27XPrint( DotVertexLabelledDigraph( DigraphOfPoset( Dist : offset := 0 ) ) );[127X[104X
     [4X[28X//dot[128X[104X
     [4X[28Xdigraph subobject_lattice{[128X[104X
     [4X[28Xrankdir="BT"[128X[104X
     [4X[28Xminlen=0[128X[104X
-    [4X[28Xnode [shape=circle width=0 height=0][128X[104X
-    [4X[28X1 [label="0" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"][128X[104X
-    [4X[28X2 [label="1" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"][128X[104X
-    [4X[28X3 [label="2" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"][128X[104X
-    [4X[28X4 [label="3" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"][128X[104X
-    [4X[28X5 [label="4" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"][128X[104X
-    [4X[28X6 [label="5" fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"][128X[104X
-    [4X[28X1 -> 5 [arrowsize=0.5][128X[104X
-    [4X[28X3 -> 6 [arrowsize=0.5][128X[104X
-    [4X[28X4 -> 6 [arrowsize=0.5][128X[104X
-    [4X[28X5 -> 3 [arrowsize=0.5][128X[104X
-    [4X[28X5 -> 4 [arrowsize=0.5][128X[104X
-    [4X[28X6 -> 2 [arrowsize=0.5][128X[104X
+    [4X[28Xnode [shape=circle width=0 height=0 fontsize=12 margin=0.01 fontname="DejaVu Serif,serif"][128X[104X
+    [4X[28Xedge [arrowsize=0.5][128X[104X
+    [4X[28X1 [label="0"][128X[104X
+    [4X[28X2 [label="1"][128X[104X
+    [4X[28X3 [label="2"][128X[104X
+    [4X[28X4 [label="3"][128X[104X
+    [4X[28X5 [label="4"][128X[104X
+    [4X[28X6 [label="5"][128X[104X
+    [4X[28X1 -> 5[128X[104X
+    [4X[28X3 -> 6[128X[104X
+    [4X[28X4 -> 6[128X[104X
+    [4X[28X5 -> 3[128X[104X
+    [4X[28X5 -> 4[128X[104X
+    [4X[28X6 -> 2[128X[104X
     [4X[28X}[128X[104X
     [4X[25Xgap>[125X [27XDiffbCSL := MeetSemilatticeOfSingleDifferences( Dist );[127X[104X
     [4X[28XMeetSemilatticeOfSingleDifferences( FreeDistributiveCompletion([128X[104X
