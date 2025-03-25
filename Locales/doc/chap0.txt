@@ -7,10 +7,10 @@
                   and Boolean algebras of constructible sets [101X
   
   
-                                   2025.03-02
+                                   2025.03-03
   
   
-                                 12 March 2025
+                                 25 March 2025
   
   
                                 Mohamed Barakat
@@ -321,6 +321,7 @@
       14.3-10 DigraphOfParents
       14.3-11 DigraphOfChildren
       14.3-12 Visualize
+      14.3-13 Visualize
     14.4 [33X[0;0YGAP categories[133X
       14.4-1 IsDatastructureForConstructibleObjects
       14.4-2 IsNodeInDatastructureOfConstructibleObjects

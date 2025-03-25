@@ -110,6 +110,13 @@
   
   [33X[0;0YOpens a PDF with the graph of the datastructure of a constructible object [3XA[103X.[133X
   
+  [1X14.3-13 Visualize[101X
+  
+  [33X[1;0Y[29X[2XVisualize[102X( [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YOpens a PDF with the graph of the datastructure of a finite thin cateogry [3XC[103X.[133X
+  
   
   [1X14.4 [33X[0;0YGAP categories[133X[101X
   

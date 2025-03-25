@@ -221,7 +221,8 @@
   [2XUnionOfDifferencesOfNormalizedObjects[102X 12.1-4 
   [2XUnionOfMultipleDifferences[102X 12.1-2 
   [2XUniqueMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.2-1 
-  [2XVisualize[102X, for IsDatastructureForConstructibleObjects 14.3-12 
+  [2XVisualize[102X, for IsCapCategory 14.3-13 
+      for IsDatastructureForConstructibleObjects 14.3-12 
   
   
   -------------------------------------------------------
