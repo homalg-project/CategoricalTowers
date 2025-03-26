@@ -40,13 +40,7 @@ DeclareOperation( "SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE",
 #!  The function takes no arguments and returns the list of known doctrines.
 #! @Returns a list
 DeclareGlobalFunction( "ListKnownDoctrines" );
-
-#! @Description
-#!  The argument <A>doctrine_name</A> is a string which is a name of a valid doctrine
-#!  in the <C>ListKnownDoctrines</C>().
-#! @Returns a list
-#! @Arguments doctrine_name
-DeclareGlobalFunction( "ListMethodsOfDoctrine" );
+#! @InsertChunk ListKnownDoctrines
 
 #! @Description
 #!  The argument is a nonempty list <A>doctrine_names</A> of strings of doctrine names and the output
@@ -73,10 +67,10 @@ DeclareProperty( "IsObjectFiniteCategory",
 AddCategoricalProperty( [ "IsObjectFiniteCategory", "IsObjectFiniteCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsObjectFiniteCategory :=
-  DuplicateFreeList( Concatenation( [
-          "SetOfObjectsOfCategory",
-          ],
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory ) );
+  DuplicateFreeList(
+          Concatenation(
+                  ListOfDefiningOperations( "IsCapCategory" ),
+                  [ "SetOfObjectsOfCategory" ] ) );
 
 #! @Description
 #!  The (evil) property of <A>C</A> being a finite category.
@@ -87,10 +81,11 @@ DeclareProperty( "IsFiniteCategory",
 AddCategoricalProperty( [ "IsFiniteCategory", "IsFiniteCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCategory :=
-  DuplicateFreeList( Concatenation( [
-          "SetOfMorphismsOfFiniteCategory",
-          ],
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsObjectFiniteCategory ) );
+  DuplicateFreeList(
+          Concatenation(
+                  ListOfDefiningOperations( "IsObjectFiniteCategory" ),
+                  [ "SetOfMorphismsOfFiniteCategory" ] ) );
+
 
 #! @Description
 #!  The property of <A>C</A> being equivalent to a finite category.

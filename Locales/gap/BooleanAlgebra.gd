@@ -20,8 +20,8 @@ AddCategoricalProperty( [ "IsBiHeytingAlgebroid", "IsBiHeytingAlgebroid" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebroid :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsHeytingAlgebroid,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoHeytingAlgebroid ) );
+          ListOfDefiningOperations( "IsHeytingAlgebroid" ),
+          ListOfDefiningOperations( "IsCoHeytingAlgebroid" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a bi-Heyting algebra.
@@ -33,8 +33,8 @@ AddCategoricalProperty( [ "IsBiHeytingAlgebra", "IsBiHeytingAlgebra" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebra :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebroid ) );
+          ListOfDefiningOperations( "IsPosetCategory" ),
+          ListOfDefiningOperations( "IsBiHeytingAlgebroid" ) ) );
 
 #! @Description
 #!  The property of <A>C</A> being a Boolean algebroid.
@@ -46,7 +46,7 @@ AddCategoricalProperty( [ "IsBooleanAlgebroid", "IsBooleanAlgebroid" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebroid :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebroid,
+          ListOfDefiningOperations( "IsBiHeytingAlgebroid" ),
           [ "MorphismFromDoubleNegationWithGivenDoubleNegation",
             "MorphismToDoubleConegationWithGivenDoubleConegation",
             ] ) );
@@ -61,8 +61,8 @@ AddCategoricalProperty( [ "IsBooleanAlgebra", "IsBooleanAlgebra" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebra :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebroid ) );
+          ListOfDefiningOperations( "IsPosetCategory" ),
+          ListOfDefiningOperations( "IsBooleanAlgebroid" ) ) );
 
 #! @Section Operations
 

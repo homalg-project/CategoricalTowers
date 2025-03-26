@@ -13,9 +13,9 @@ gap> LoadPackage( "Locales", false );
 true
 gap> LoadPackage( "FinSetsForCAP", false );
 true
-gap> LoadPackage( "SubcategoriesForCAP", false );
-true
 gap> LoadPackage( "FreydCategoriesForCAP", false );
+true
+gap> LoadPackage( "SubcategoriesForCAP", false );
 true
 gap> LoadPackage( "ToolsForCategoricalTowers", false );
 true
@@ -26,9 +26,9 @@ gap> LoadPackage( "Locales" );
 true
 gap> LoadPackage( "FinSetsForCAP" );
 true
-gap> LoadPackage( "SubcategoriesForCAP" );
-true
 gap> LoadPackage( "FreydCategoriesForCAP" );
+true
+gap> LoadPackage( "SubcategoriesForCAP" );
 true
 gap> LoadPackage( "ToolsForCategoricalTowers" );
 true

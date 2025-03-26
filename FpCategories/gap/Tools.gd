@@ -21,10 +21,10 @@ DeclareProperty( "IsFinitelyPresentedCategory",
 AddCategoricalProperty( [ "IsFinitelyPresentedCategory", "IsFinitelyPresentedCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFinitelyPresentedCategory :=
-  DuplicateFreeList( Concatenation( [
-          "SetOfGeneratingMorphismsOfCategory",
-          ],
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsObjectFiniteCategory ) );
+  DuplicateFreeList(
+          Concatenation(
+                  ListOfDefiningOperations( "IsObjectFiniteCategory" ),
+                  [ "SetOfGeneratingMorphismsOfCategory" ] ) );
 
 ####################################
 ##

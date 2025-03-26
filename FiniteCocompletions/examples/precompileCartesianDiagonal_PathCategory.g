@@ -53,7 +53,7 @@ Assert( 0, delta = EvalString( delta_reconstructed ) );
 
 T := DummyCategory( rec( name := "A placeholder cartesian category",
              properties := [ "IsCartesianCategory" ],
-             list_of_operations_to_install := CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory ) );;
+             list_of_operations_to_install := ListOfDefiningOperations( "IsCartesianCategory" ) ) );;
 
 ReadPackage( "FiniteCocompletions",
         "examples/precompileCartesianDiagonal_func.g" );
