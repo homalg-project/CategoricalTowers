@@ -1,7 +1,7 @@
 name: Locales
-version: "2025.03-03"
+version: "2025.03-04"
 license: "GPL-2.0-or-later"
-date: 2025-03-25
+date: 2025-03-26
 description: |
     Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets
 
@@ -29,22 +29,22 @@ needed-pkgs:
       version: ">= 2021.12-02"
       url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
     - name: "CAP"
-      version: ">= 2024.11-01"
+      version: ">= 2025.03-04"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "CompilerForCAP"
       version: ">= 2022.08-10"
       url: "https://homalg-project.github.io/pkg/CompilerForCAP"
     - name: "MonoidalCategories"
-      version: ">= 2024.02-02"
+      version: ">= 2025.03-02"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
     - name: "CartesianCategories"
-      version: ">= 2024.02-02"
+      version: ">= 2025.03-03"
       url: "https://homalg-project.github.io/pkg/CartesianCategories"
     - name: "ToolsForCategoricalTowers"
-      version: ">= 2024.02-05"
+      version: ">= 2025.03-02"
       url: "https://homalg-project.github.io/pkg/ToolsForCategoricalTowers"
     - name: "Toposes"
-      version: ">= 2024.11-01"
+      version: ">= 2025.03-02"
       url: "https://homalg-project.github.io/pkg/Toposes"
     - name: "FpCategories"
       version: ">= 2024.02-11"
@@ -61,11 +61,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/Locales/PackageI
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2025.03-03/Locales-2025.03-03.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2025.03-04/Locales-2025.03-04.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2025.03-03/Locales-2025.03-03.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2025.03-04/Locales-2025.03-04.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2025.03-03/Locales-2025.03-03-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2025.03-04/Locales-2025.03-04-manual.pdf
 
 abstract: |
 
@@ -76,10 +76,10 @@ keywords: |
     locale, frame, coframe, locally closed, constructible.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BLK25</span>]   <b class='BibAuthor'>Barakat, M., Lange-Hegermann, M. and Kuhmichel, T.</b>,
+    [<span class='BibKey'>BLK26</span>]   <b class='BibAuthor'>Barakat, M., Lange-Hegermann, M. and Kuhmichel, T.</b>,
      <i class='BibTitle'>Locales, Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets,
-             Version 2025.03-03</i>
-     (<span class='BibYear'>3-25</span>)<br />
+             Version 2025.03-04</i>
+     (<span class='BibYear'>3-26</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/Locales">https://homalg-project.github.io/pkg/Locales</a></span>.
     </p>
@@ -92,15 +92,15 @@ bibtex: |
       title =            {{Locales},    {Locales,    frames,    coframes,   meet
                           semi\texttt{\symbol{45}}lattices   of  locally  closed
                           subsets,  and Boolean algebras of constructible sets},
-                          {V}ersion 2025.03\texttt{\symbol{45}}03},
+                          {V}ersion 2025.03\texttt{\symbol{45}}04},
       month =            {5\texttt{\symbol{45}}},
-      year =             {3\texttt{\symbol{45}}25},
+      year =             {3\texttt{\symbol{45}}26},
       note =             {GAP package},
       howpublished =     {\href   {https://homalg-project.github.io/pkg/Locales}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{Locales}}},
       keywords =         {locale, frame, coframe, locally closed, constructible},
-      printedkey =       {BLK25}
+      printedkey =       {BLK26}
     }
 
