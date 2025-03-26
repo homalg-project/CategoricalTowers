@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "Toposes",
 Subtitle := "Elementary toposes",
-Version := "2025.03-01",
-Date := "2025-03-25",
-Date := "2025-03-25",
+Version := "2025.03-02",
+Date := "2025-03-26",
+Date := "2025-03-26",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -113,11 +113,11 @@ Dependencies := rec(
   GAP := ">= 4.13.0",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2024.09-12" ],
-                   [ "CartesianCategories", ">= 2024.06-01" ],
+                   [ "CAP", ">= 2025.03-04" ],
+                   [ "CartesianCategories", ">= 2025.03-03" ],
                    ],
   SuggestedOtherPackages := [
-                   [ "ToolsForCategoricalTowers", ">= 2023.11-03" ],
+                   [ "ToolsForCategoricalTowers", ">= 2025.03-02" ],
                    [ "Digraphs", ">= 1.3.1" ], ## needed for DigraphOfSubobjects in Tools.gi
                    ],
   ExternalConditions := [ ],
