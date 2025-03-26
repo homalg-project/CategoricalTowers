@@ -101,8 +101,8 @@
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
-    [4X[28X* IsFiniteBicompleteCategory[128X[104X
     [4X[28X* IsDistributiveCategory[128X[104X
+    [4X[28X* IsFiniteBicompleteCategory[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[25Xgap>[125X [27Xo0 := MapOfFinSets( B, [ 1, 1 ], B ) / S;[127X[104X
