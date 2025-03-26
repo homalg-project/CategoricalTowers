@@ -254,7 +254,7 @@
     [4X[25X>[125X [27X       properties := [ "IsDistributiveCategory" ],[127X[104X
     [4X[25X>[125X [27X       list_of_operations_to_install :=[127X[104X
     [4X[25X>[125X [27X       Concatenation( [ "ObjectConstructor", "MorphismConstructor" ],[127X[104X
-    [4X[25X>[125X [27X       CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory ) ) );[127X[104X
+    [4X[25X>[125X [27X       ListOfDefiningOperations( "IsDistributiveCategory" ) ) ) );[127X[104X
     [4X[28XA placeholder distributive category[128X[104X
     [4X[25Xgap>[125X [27XStartTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
     [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( T );[127X[104X
@@ -478,7 +478,7 @@
     [4X[25X>[125X [27X       properties := [ "IsDistributiveCategory" ],[127X[104X
     [4X[25X>[125X [27X       list_of_operations_to_install :=[127X[104X
     [4X[25X>[125X [27X       Concatenation( [ "ObjectConstructor", "MorphismConstructor" ],[127X[104X
-    [4X[25X>[125X [27X       CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory ) ) );[127X[104X
+    [4X[25X>[125X [27X       ListOfDefiningOperations( "IsDistributiveCategory" ) ) ) );[127X[104X
     [4X[28XA placeholder distributive category[128X[104X
     [4X[25Xgap>[125X [27XStartTimer( "LeftCartesianDistributivityFactoringWithGivenObjects" );[127X[104X
     [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( T );[127X[104X
