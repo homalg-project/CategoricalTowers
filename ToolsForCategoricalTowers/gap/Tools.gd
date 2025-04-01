@@ -7,6 +7,14 @@
 #! @Chapter Tools
 
 ####################################
+#
+# @Section Global variables
+#
+####################################
+
+DeclareGlobalVariable( "RECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS" );
+
+####################################
 ##
 #! @Section Tools
 ##
@@ -19,6 +27,8 @@ DeclareGlobalFunction( "RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION" );
 DeclareGlobalFunction( "UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUCT_PREFUNCTION" );
 
 DeclareGlobalFunction( "CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD" );
+
+DeclareGlobalFunction( "CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION" );
 
 #! @Description
 #!  The input are two categories <A>C</A> and <A>H</A>.
