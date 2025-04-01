@@ -42,15 +42,6 @@ DeclareCategory( "IsMorphismInLazyCategory",
 
 ####################################
 #
-#! @Section Global variables
-#
-####################################
-
-#!
-DeclareGlobalVariable( "RECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS" );
-
-####################################
-#
 #! @Section Attributes
 #
 ####################################
@@ -158,5 +149,3 @@ DeclareOperation( "PositionsOfParentsOfALazyCell",
 
 DeclareOperation( "PositionsOfParentsOfALazyCell",
         [ IsList, IsList ] );
-
-DeclareGlobalFunction( "CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION" );
