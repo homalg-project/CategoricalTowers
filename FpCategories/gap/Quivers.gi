@@ -404,7 +404,7 @@ InstallMethod( SetOfObjects,
   function ( q )
     
     return List( [ 1 .. NumberOfObjects( q ) ],
-              i -> CreateCapCategoryObjectWithAttributes( q, ObjectIndex, i, UnderlyingFinQuiver, q ) );
+              i -> CreateCapCategoryObjectWithAttributes( q, ObjectIndex, i ) );
     
 end );
 
@@ -418,8 +418,7 @@ InstallMethod( SetOfMorphisms,
               j -> CreateCapCategoryMorphismWithAttributes( q,
                         ObjectConstructor( q, IndicesOfSources( q )[j] ),
                         ObjectConstructor( q, IndicesOfTargets( q )[j] ),
-                        MorphismIndex, j,
-                        UnderlyingFinQuiver, q ) );
+                        MorphismIndex, j ) );
     
 end );
 
@@ -501,21 +500,21 @@ end );
 InstallMethod( ObjectLabel,
           [ IsFinQuiverObject ],
   
-  obj -> LabelsOfObjects( UnderlyingFinQuiver( obj ) )[ObjectIndex( obj )]
+  obj -> LabelsOfObjects( CapCategory( obj ) )[ObjectIndex( obj )]
 );
 
 ##
 InstallMethod( LaTeXOutput,
           [ IsFinQuiverObject ],
   
-  obj -> LaTeXStringsOfObjects( UnderlyingFinQuiver( obj ) )[ObjectIndex( obj )]
+  obj -> LaTeXStringsOfObjects( CapCategory( obj ) )[ObjectIndex( obj )]
 );
 
 ##
 InstallMethod( MorphismLabel,
           [ IsFinQuiverMorphism ],
   
-  mor -> LabelsOfMorphisms( UnderlyingFinQuiver( mor ) )[MorphismIndex( mor )]
+  mor -> LabelsOfMorphisms( CapCategory( mor ) )[MorphismIndex( mor )]
 );
 
 ##
@@ -525,7 +524,7 @@ InstallMethod( LaTeXOutput,
   function ( mor )
     local str;
     
-    str := LaTeXStringsOfMorphisms( UnderlyingFinQuiver( mor ) )[MorphismIndex( mor )];
+    str := LaTeXStringsOfMorphisms( CapCategory( mor ) )[MorphismIndex( mor )];
     
     if ValueOption( "OnlyDatum" ) = true then
       
@@ -555,7 +554,7 @@ InstallMethod( ViewString,
   function ( obj )
     local colors;
     
-    colors := UnderlyingFinQuiver( obj )!.colors;
+    colors := CapCategory( obj )!.colors;
     
     return Concatenation( colors.obj, "(", ObjectLabel( obj ), ")", colors.reset );
     
@@ -578,7 +577,7 @@ InstallMethod( ViewString,
   function ( mor )
     local colors;
     
-    colors := UnderlyingFinQuiver( mor )!.colors;
+    colors := CapCategory( mor )!.colors;
     
     return
       Concatenation(

@@ -191,12 +191,6 @@ DeclareAttribute( "ObjectIndex", IsFinQuiverObject );
 DeclareAttribute( "ObjectLabel", IsFinQuiverObject );
 
 #! @Description
-#!  Returns the quiver containing the object <A>v</A>.
-#! @Arguments v
-#! @Returns a &CAP; quiver
-DeclareAttribute( "UnderlyingFinQuiver", IsFinQuiverObject );
-
-#! @Description
 #!  Returns the index of the morphism <A>alpha</A>.
 #! @Arguments alpha
 #! @Returns a positive integer
@@ -207,9 +201,3 @@ DeclareAttribute( "MorphismIndex", IsFinQuiverMorphism );
 #! @Arguments alpha
 #! @Returns a string
 DeclareAttribute( "MorphismLabel", IsFinQuiverMorphism );
-
-#! @Description
-#!  Returns the quiver containing the morphism <A>alpha</A>.
-#! @Arguments alpha
-#! @Returns a &CAP; quiver
-DeclareAttribute( "UnderlyingFinQuiver", IsFinQuiverMorphism );
