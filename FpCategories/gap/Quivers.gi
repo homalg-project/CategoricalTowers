@@ -238,7 +238,6 @@ InstallMethod( FinQuiver,
     
     ##
     AddIsWellDefinedForObjects( q,
-      
       function ( q, obj )
         
         return true;
@@ -279,7 +278,6 @@ InstallMethod( FinQuiver,
     
     ##
     AddIsWellDefinedForMorphisms( q,
-      
       function ( q, mor )
         
         return true;
@@ -288,7 +286,6 @@ InstallMethod( FinQuiver,
     
     ##
     AddIsEqualForMorphisms( q,
-      
       function ( q, mor_1, mor_2 )
         
         return IsIdenticalObj( mor_1, mor_2 );
@@ -297,7 +294,6 @@ InstallMethod( FinQuiver,
     
     ##
     AddIsCongruentForMorphisms( q,
-      
       function ( q, mor_1, mor_2 )
         
         return IsIdenticalObj( mor_1, mor_2 );
@@ -306,7 +302,6 @@ InstallMethod( FinQuiver,
     
     ##
     AddMorphismsOfExternalHom( q,
-      
       function ( q, obj_1, obj_2 )
         local s, t;
         
