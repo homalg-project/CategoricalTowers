@@ -6,10 +6,10 @@
       [1X Finitely presented categories by generating quivers and relations [101X
   
   
-                                   2025.03-04
+                                   2025.04-02
   
   
-                                 26 March 2025
+                                  2 April 2025
   
   
                                 Mohamed Barakat
@@ -65,10 +65,8 @@
       1.2-15 OppositeQuiver
       1.2-16 ObjectIndex
       1.2-17 ObjectLabel
-      1.2-18 UnderlyingFinQuiver
-      1.2-19 MorphismIndex
-      1.2-20 MorphismLabel
-      1.2-21 UnderlyingFinQuiver
+      1.2-18 MorphismIndex
+      1.2-19 MorphismLabel
     1.3 [33X[0;0YGAP categories[133X
       1.3-1 IsFinQuiver
       1.3-2 IsFinQuiverObject

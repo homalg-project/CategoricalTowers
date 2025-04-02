@@ -50,9 +50,9 @@
   [2XMacaulayMorphisms[102X, for IsPathCategory, IsDenseList 6.4-12 
   [2XMorphismConstructor[102X, for IsFinQuiver, IsFinQuiverObject, IsInt, IsFinQuiverObject 1.1-3 
       for IsPathCategory, IsPathCategoryObject, IsInt, IsDenseList, IsPathCategoryObject 6.3-3 
-  [2XMorphismIndex[102X, for IsFinQuiverMorphism 1.2-19 
+  [2XMorphismIndex[102X, for IsFinQuiverMorphism 1.2-18 
   [2XMorphismIndices[102X, for IsPathCategoryMorphism 6.4-8 
-  [2XMorphismLabel[102X, for IsFinQuiverMorphism 1.2-20 
+  [2XMorphismLabel[102X, for IsFinQuiverMorphism 1.2-19 
       for IsPathCategoryMorphism 6.4-9 
   [2XMorphismLength[102X, for IsPathCategoryMorphism 6.4-6 
   [2XMorphismSupport[102X, for IsPathCategoryMorphism 6.4-7 
@@ -91,8 +91,6 @@
   [2XSize[102X, for IsCapCategory 3.2-3 
       for IsCategoryFromNerveData 5.2-2 
   [2XTensorProductOfFinQuivers[102X, for IsFinQuiver, IsFinQuiver 1.1-5 
-  [2XUnderlyingFinQuiver[102X, for IsFinQuiverMorphism 1.2-21 
-      for IsFinQuiverObject 1.2-18 
   [2XUnderlyingQuiver[102X, for IsPathCategory 6.4-3 
   [2XYonedaCompositionAsNaturalEpimorphism[102X, for IsCapCategory 3.3-9 
   [2XYonedaFibrationAsNaturalTransformation[102X, for IsCapCategory 3.3-7 

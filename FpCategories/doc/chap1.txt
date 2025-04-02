@@ -253,33 +253,19 @@
   
   [33X[0;0YReturns the label of the object [3Xv[103X.[133X
   
-  [1X1.2-18 UnderlyingFinQuiver[101X
-  
-  [33X[1;0Y[29X[2XUnderlyingFinQuiver[102X( [3Xv[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X quiver[133X
-  
-  [33X[0;0YReturns the quiver containing the object [3Xv[103X.[133X
-  
-  [1X1.2-19 MorphismIndex[101X
+  [1X1.2-18 MorphismIndex[101X
   
   [33X[1;0Y[29X[2XMorphismIndex[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya positive integer[133X
   
   [33X[0;0YReturns the index of the morphism [3Xalpha[103X.[133X
   
-  [1X1.2-20 MorphismLabel[101X
+  [1X1.2-19 MorphismLabel[101X
   
   [33X[1;0Y[29X[2XMorphismLabel[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya string[133X
   
   [33X[0;0YReturns the label of the morphism [3Xalpha[103X.[133X
-  
-  [1X1.2-21 UnderlyingFinQuiver[101X
-  
-  [33X[1;0Y[29X[2XUnderlyingFinQuiver[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X quiver[133X
-  
-  [33X[0;0YReturns the quiver containing the morphism [3Xalpha[103X.[133X
   
   
   [1X1.3 [33X[0;0YGAP categories[133X[101X
