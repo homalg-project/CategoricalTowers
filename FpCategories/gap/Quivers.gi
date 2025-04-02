@@ -220,16 +220,25 @@ InstallMethod( FinQuiver,
     fi;
     
     ##
+    AddSetOfObjectsOfCategory( q,
+      function ( q )
+        
+        return List( [ 1 .. NumberOfObjects( q ) ], i ->
+                     CreateCapCategoryObjectWithAttributes( q,
+                             ObjectIndex, i ) );
+        
+    end );
+    
+    ##
     AddObjectConstructor( q,
       function ( q, i )
         
-        return SetOfObjects( q )[i];
+        return SetOfObjectsOfCategory( q )[i];
         
     end );
     
     ##
     AddObjectDatum( q,
-      
       function ( q, obj )
         
         return ObjectIndex( obj );
@@ -238,7 +247,6 @@ InstallMethod( FinQuiver,
     
     ##
     AddIsWellDefinedForObjects( q,
-      
       function ( q, obj )
         
         return true;
@@ -247,10 +255,29 @@ InstallMethod( FinQuiver,
     
     ##
     AddIsEqualForObjects( q,
-      
       function ( q, obj_1, obj_2 )
         
         return IsIdenticalObj( obj_1, obj_2 );
+        
+    end );
+    
+    ##
+    AddSetOfMorphismsOfFiniteCategory( q,
+      function ( q )
+        
+        return List( [ 1 .. NumberOfMorphisms( q ) ], j ->
+                     CreateCapCategoryMorphismWithAttributes( q,
+                             ObjectConstructor( q, IndicesOfSources( q )[j] ),
+                             ObjectConstructor( q, IndicesOfTargets( q )[j] ),
+                             MorphismIndex, j ) );
+        
+    end );
+    
+    ##
+    AddSetOfGeneratingMorphismsOfCategory( q,
+      function ( q )
+        
+        return SetOfMorphismsOfFiniteCategory( q );
         
     end );
     
@@ -264,13 +291,12 @@ InstallMethod( FinQuiver,
             
         fi;
         
-        return SetOfMorphisms( q )[i];
+        return SetOfMorphismsOfFiniteCategory( q )[i];
         
     end );
     
     ##
     AddMorphismDatum( q,
-      
       function ( q, mor )
         
         return MorphismIndex( mor );
@@ -279,7 +305,6 @@ InstallMethod( FinQuiver,
     
     ##
     AddIsWellDefinedForMorphisms( q,
-      
       function ( q, mor )
         
         return true;
@@ -288,7 +313,6 @@ InstallMethod( FinQuiver,
     
     ##
     AddIsEqualForMorphisms( q,
-      
       function ( q, mor_1, mor_2 )
         
         return IsIdenticalObj( mor_1, mor_2 );
@@ -297,7 +321,6 @@ InstallMethod( FinQuiver,
     
     ##
     AddIsCongruentForMorphisms( q,
-      
       function ( q, mor_1, mor_2 )
         
         return IsIdenticalObj( mor_1, mor_2 );
@@ -306,7 +329,6 @@ InstallMethod( FinQuiver,
     
     ##
     AddMorphismsOfExternalHom( q,
-      
       function ( q, obj_1, obj_2 )
         local s, t;
         
@@ -408,8 +430,7 @@ InstallMethod( SetOfObjects,
   
   function ( q )
     
-    return List( [ 1 .. NumberOfObjects( q ) ],
-              i -> CreateCapCategoryObjectWithAttributes( q, ObjectIndex, i, UnderlyingFinQuiver, q ) );
+    return SetOfObjectsOfCategory( q );
     
 end );
 
@@ -419,12 +440,7 @@ InstallMethod( SetOfMorphisms,
   
   function ( q )
     
-    return List( [ 1 .. NumberOfMorphisms( q ) ],
-              j -> CreateCapCategoryMorphismWithAttributes( q,
-                        ObjectConstructor( q, IndicesOfSources( q )[j] ),
-                        ObjectConstructor( q, IndicesOfTargets( q )[j] ),
-                        MorphismIndex, j,
-                        UnderlyingFinQuiver, q ) );
+    return SetOfMorphismsOfFiniteCategory( q );
     
 end );
 
@@ -506,21 +522,21 @@ end );
 InstallMethod( ObjectLabel,
           [ IsFinQuiverObject ],
   
-  obj -> LabelsOfObjects( UnderlyingFinQuiver( obj ) )[ObjectIndex( obj )]
+  obj -> LabelsOfObjects( CapCategory( obj ) )[ObjectIndex( obj )]
 );
 
 ##
 InstallMethod( LaTeXOutput,
           [ IsFinQuiverObject ],
   
-  obj -> LaTeXStringsOfObjects( UnderlyingFinQuiver( obj ) )[ObjectIndex( obj )]
+  obj -> LaTeXStringsOfObjects( CapCategory( obj ) )[ObjectIndex( obj )]
 );
 
 ##
 InstallMethod( MorphismLabel,
           [ IsFinQuiverMorphism ],
   
-  mor -> LabelsOfMorphisms( UnderlyingFinQuiver( mor ) )[MorphismIndex( mor )]
+  mor -> LabelsOfMorphisms( CapCategory( mor ) )[MorphismIndex( mor )]
 );
 
 ##
@@ -530,7 +546,7 @@ InstallMethod( LaTeXOutput,
   function ( mor )
     local str;
     
-    str := LaTeXStringsOfMorphisms( UnderlyingFinQuiver( mor ) )[MorphismIndex( mor )];
+    str := LaTeXStringsOfMorphisms( CapCategory( mor ) )[MorphismIndex( mor )];
     
     if ValueOption( "OnlyDatum" ) = true then
       
@@ -560,7 +576,7 @@ InstallMethod( ViewString,
   function ( obj )
     local colors;
     
-    colors := UnderlyingFinQuiver( obj )!.colors;
+    colors := CapCategory( obj )!.colors;
     
     return Concatenation( colors.obj, "(", ObjectLabel( obj ), ")", colors.reset );
     
@@ -583,7 +599,7 @@ InstallMethod( ViewString,
   function ( mor )
     local colors;
     
-    colors := UnderlyingFinQuiver( mor )!.colors;
+    colors := CapCategory( mor )!.colors;
     
     return
       Concatenation(
