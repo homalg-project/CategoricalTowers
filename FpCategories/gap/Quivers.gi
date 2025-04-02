@@ -220,16 +220,25 @@ InstallMethod( FinQuiver,
     fi;
     
     ##
+    AddSetOfObjectsOfCategory( q,
+      function ( q )
+        
+        return List( [ 1 .. NumberOfObjects( q ) ], i ->
+                     CreateCapCategoryObjectWithAttributes( q,
+                             ObjectIndex, i ) );
+        
+    end );
+    
+    ##
     AddObjectConstructor( q,
       function ( q, i )
         
-        return SetOfObjects( q )[i];
+        return SetOfObjectsOfCategory( q )[i];
         
     end );
     
     ##
     AddObjectDatum( q,
-      
       function ( q, obj )
         
         return ObjectIndex( obj );
@@ -246,10 +255,29 @@ InstallMethod( FinQuiver,
     
     ##
     AddIsEqualForObjects( q,
-      
       function ( q, obj_1, obj_2 )
         
         return IsIdenticalObj( obj_1, obj_2 );
+        
+    end );
+    
+    ##
+    AddSetOfMorphismsOfFiniteCategory( q,
+      function ( q )
+        
+        return List( [ 1 .. NumberOfMorphisms( q ) ], j ->
+                     CreateCapCategoryMorphismWithAttributes( q,
+                             ObjectConstructor( q, IndicesOfSources( q )[j] ),
+                             ObjectConstructor( q, IndicesOfTargets( q )[j] ),
+                             MorphismIndex, j ) );
+        
+    end );
+    
+    ##
+    AddSetOfGeneratingMorphismsOfCategory( q,
+      function ( q )
+        
+        return SetOfMorphismsOfFiniteCategory( q );
         
     end );
     
@@ -263,13 +291,12 @@ InstallMethod( FinQuiver,
             
         fi;
         
-        return SetOfMorphisms( q )[i];
+        return SetOfMorphismsOfFiniteCategory( q )[i];
         
     end );
     
     ##
     AddMorphismDatum( q,
-      
       function ( q, mor )
         
         return MorphismIndex( mor );
@@ -403,8 +430,7 @@ InstallMethod( SetOfObjects,
   
   function ( q )
     
-    return List( [ 1 .. NumberOfObjects( q ) ],
-              i -> CreateCapCategoryObjectWithAttributes( q, ObjectIndex, i ) );
+    return SetOfObjectsOfCategory( q );
     
 end );
 
@@ -414,11 +440,7 @@ InstallMethod( SetOfMorphisms,
   
   function ( q )
     
-    return List( [ 1 .. NumberOfMorphisms( q ) ],
-              j -> CreateCapCategoryMorphismWithAttributes( q,
-                        ObjectConstructor( q, IndicesOfSources( q )[j] ),
-                        ObjectConstructor( q, IndicesOfTargets( q )[j] ),
-                        MorphismIndex, j ) );
+    return SetOfMorphismsOfFiniteCategory( q );
     
 end );
 
