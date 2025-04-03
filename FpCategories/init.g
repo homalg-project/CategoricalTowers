@@ -12,3 +12,7 @@ ReadPackage( "FpCategories", "gap/CategoryFromNerveData.gd");
 ReadPackage( "FpCategories", "gap/Tools.gd");
 ReadPackage( "FpCategories", "gap/ToolsMethodRecordDeclarations.autogen.gd");
 ReadPackage( "FpCategories", "gap/SimplicialCategory.gd");
+
+if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
+    ReadPackage( "FpCategories", "gap/ToolsUsingDigraphs.gd");
+fi;

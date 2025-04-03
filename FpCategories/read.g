@@ -18,6 +18,10 @@ ReadPackage( "FpCategories", "gap/ToolsMethodRecordInstallations.autogen.gi");
 ReadPackage( "FpCategories", "gap/ToolsDerivedMethods.gi");
 ReadPackage( "FpCategories", "gap/SimplicialCategory.gi");
 
+if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
+    ReadPackage( "FpCategories", "gap/ToolsUsingDigraphs.gi");
+fi;
+
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "FpCategories", "gap/Julia.gi" );
 fi;
