@@ -1181,7 +1181,7 @@ InstallValue( RECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS,
 ##
 InstallGlobalFunction( CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION,
   function( name )
-    local l, posUniv, posCaps, posWith, posFrom, posInto, i, posOf, posHom, cname;
+    local l, posUniv, posCaps, posWith, posFrom, posInto, posOfCommutativeRing, i, posOf, posHom, cname;
     
     if IsBound( RECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS.(name) ) then
         return RECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS.(name);
@@ -1194,6 +1194,8 @@ InstallGlobalFunction( CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION,
     posWith := PositionSublist( name, "WithGiven" );
     posFrom := PositionSublist( name, "From" );
     posInto := PositionSublist( name, "Into" );
+    posOfCommutativeRing := PositionSublist( name, "OfCommutativeRing" );
+    
     # find last occurrence of "Of"
     posOf := fail;
     for i in [ Length( name ) - 2 .. 0 ] do
@@ -1246,6 +1248,8 @@ InstallGlobalFunction( CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION,
         cname := Concatenation( name{[ 1 .. posFrom - 1 ]}, "\n", name{[ posFrom .. l ]} );
     elif IsInt( posInto ) then
         cname := Concatenation( name{[ 1 .. posInto - 1 ]}, "\n", name{[ posInto .. l ]} );
+    elif IsInt( posOfCommutativeRing ) then
+        cname := Concatenation( name{[ 1 .. posOfCommutativeRing - 1 ]}, "\n", name{[ posOfCommutativeRing .. posOfCommutativeRing + 16 ]}, "\n", name{[ posOfCommutativeRing + 17 .. l ]} );
     elif IsInt( posCaps ) and posCaps / l >= 1/3 and posCaps / l <= 2/3 then
         cname := Concatenation(
                          name{[ 1 .. posCaps - 1 ]}, "\n", name{[ posCaps .. l ]} );
