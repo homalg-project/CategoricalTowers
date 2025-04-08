@@ -46,7 +46,9 @@
     [4X[28X  "IsCategoryWithZeroObject", \[128X[104X
     [4X[28X  "IsAdditiveCategory", \[128X[104X
     [4X[28X  "IsCategoryWithCoequalizers", \[128X[104X
+    [4X[28X  "IsCategoryWithCokernels", \[128X[104X
     [4X[28X  "IsCategoryWithEqualizers",[128X[104X
+    [4X[28X  "IsCategoryWithKernels", \[128X[104X
     [4X[28X  "IsFiniteCocompleteCategory", \[128X[104X
     [4X[28X  "IsFiniteCompleteCategory", \[128X[104X
     [4X[28X  "IsFiniteBicompleteCategory", \[128X[104X
