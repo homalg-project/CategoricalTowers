@@ -33,7 +33,7 @@ Display( C_hat );
 #! and not yet algorithmically
 #! * IsFiniteCocompleteCategory
 MissingOperationsForConstructivenessOfCategory( C_hat, "IsFiniteCocompleteCategory" );
-#! [ "UniversalMorphismFromCoequalizerWithGivenCoequalizer" ]
+#! [ "UniversalMorphismFromCoequalizer" ]
 P := C_hat.P;
 #! <A projective object in FiniteColimitCompletionWithStrictCoproducts(
 #!  PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )>

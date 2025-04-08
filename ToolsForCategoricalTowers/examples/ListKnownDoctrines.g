@@ -15,7 +15,9 @@ ListKnownDoctrines( );
 #!   "IsCategoryWithZeroObject", \
 #!   "IsAdditiveCategory", \
 #!   "IsCategoryWithCoequalizers", \
+#!   "IsCategoryWithCokernels", \
 #!   "IsCategoryWithEqualizers",
+#!   "IsCategoryWithKernels", \
 #!   "IsFiniteCocompleteCategory", \
 #!   "IsFiniteCompleteCategory", \
 #!   "IsFiniteBicompleteCategory", \
