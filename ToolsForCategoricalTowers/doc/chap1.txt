@@ -145,7 +145,7 @@
     [4X[25Xgap>[125X [27XDisplay( D2 );[127X[104X
     [4X[28XA CAP category with name DummyCategoryInDoctrines( [ "IsAbelianCategory" ] ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X32 primitive operations were used to derive 291 operations for this category[128X[104X
+    [4X[28X33 primitive operations were used to derive 291 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsAbelianCategory[128X[104X
     [4X[25Xgap>[125X [27XD3 := DummyCategoryInDoctrines([127X[104X
