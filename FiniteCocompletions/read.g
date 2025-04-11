@@ -14,6 +14,9 @@ ReadPackage( "FiniteCocompletions", "gap/precompiled_categories/SkeletalCategory
 ReadPackage( "FiniteCocompletions", "gap/FiniteStrictCoproductCompletion.gi" );
 
 ##
+ReadPackage( "FiniteCocompletions", "gap/FiniteStrictCoproductCompletionOfObjectFiniteCategory.gi" );
+
+##
 ReadPackage( "FiniteCocompletions", "gap/FiniteStrictProductCompletion.gi" );
 
 ##

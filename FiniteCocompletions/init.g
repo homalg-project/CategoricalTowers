@@ -11,6 +11,9 @@ ReadPackage( "FiniteCocompletions", "gap/FiniteStrictCoproductCompletion.gd" );
 ReadPackage( "FiniteCocompletions", "gap/FiniteStrictProductCompletion.gd" );
 
 ##
+ReadPackage( "FiniteCocompletions", "gap/FiniteStrictCoproductCompletionOfObjectFiniteCategory.gd" );
+
+##
 ReadPackage( "FiniteCocompletions", "gap/FreeDistributiveCategoryWithStrictProductAndCoproducts.gd" );
 
 ##
