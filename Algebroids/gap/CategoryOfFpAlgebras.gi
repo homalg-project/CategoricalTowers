@@ -336,16 +336,14 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddDirectProduct( FpAlg_k,
       function( FpAlg_k, diagram )
-        local data, nrsgens, nrgens, ambients, l, var, nmgens, quiver, F, k, L, o, gens, ambient,
-              mors, functors_on_mors, idem, orth_idem, central_idem, GB, sum, nrsrels, rels;
+        local data, nrsgens, nrgens, l, var, nmgens, quiver, F, k, L, o, gens, ambient,
+              idem, orth_idem, central_idem, GB, sum, nrsrels, ambients, mors, functors_on_mors, rels;
         
         data := List( diagram, algebra -> ObjectDatum( FpAlg_k, algebra ) );
         
         nrsgens := List( data, datum -> datum[3] );
         
         nrgens := Sum( nrsgens );
-        
-        ambients := List( diagram, AmbientAlgebra );
         
         l := Length( diagram );
         
@@ -384,10 +382,6 @@ InstallMethod( CategoryOfFpAlgebras,
         
         gens := List( [ 1 .. l ], m -> gens{[ m + Sum( nrsgens{[ 1 .. m - 1 ]} ) .. m + Sum( nrsgens{[ 1 .. m ]} ) ]} );
         
-        mors := List( [ 1 .. l ], m -> MorphismConstructor( FpAlg_k, ambients[m], gens[m]{[ 1 .. nrsgens[m] ]}, ambient ) );
-        
-        functors_on_mors := List( [ 1 .. l ], m -> AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mors[m] )[2][2] );
-        
         ## e_m⋅e_m = e_m
         idem := List( [ 1 .. l ], m ->
                       SubtractionForMorphisms( L,
@@ -420,6 +414,12 @@ InstallMethod( CategoryOfFpAlgebras,
                        SumOfMorphisms( o, List( [ 1 .. l ], m -> gens[m][nrsgens[m] + 1] ), o ) );
         
         nrsrels := List( [ 1 .. l ], m -> data[m][5] );
+        
+        ambients := List( diagram, AmbientAlgebra );
+        
+        mors := List( [ 1 .. l ], m -> MorphismConstructor( FpAlg_k, ambients[m], gens[m]{[ 1 .. nrsgens[m] ]}, ambient ) );
+        
+        functors_on_mors := List( [ 1 .. l ], m -> AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mors[m] )[2][2] );
         
         rels := List( [ 1 .. l ], m ->
                       List( data[m][6], rel ->
