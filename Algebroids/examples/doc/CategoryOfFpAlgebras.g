@@ -144,19 +144,22 @@ IsOne( PreCompose( alpha, alpha_i ) );
 #! true
 IsOne( PreCompose( alpha_i, alpha ) );
 #! true
-A1p2 := DirectProduct( A1, A2 );
+A1xA2 := DirectProduct( A1, A2 );
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
-Dimension( A1p2 );
+Dimension( A1xA2 );
 #! 12
-pr1 := ProjectionInFactorOfDirectProduct( [ A1, A2 ], 1 );
+diagram := [ A1, A2 ];
+#! [ <An object in CategoryOfFpAlgebras( GF(2) )>,
+#!   <An object in CategoryOfFpAlgebras( GF(2) )> ]
+pr1 := ProjectionInFactorOfDirectProduct( diagram, 1 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
 IsWellDefined( pr1 );
 #! true
-pr2 := ProjectionInFactorOfDirectProduct( [ A1, A2 ], 2 );
+pr2 := ProjectionInFactorOfDirectProduct( diagram, 2 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
 IsWellDefined( pr2 );
 #! true
-u := UniversalMorphismIntoDirectProduct( [ A1, A2 ], A1p2, [ pr1, pr2 ] );
+u := UniversalMorphismIntoDirectProduct( diagram, A1xA2, [ pr1, pr2 ] );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
 IsWellDefined( u );
 #! true
