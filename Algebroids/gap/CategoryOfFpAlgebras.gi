@@ -336,12 +336,14 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddDirectProduct( FpAlg_k,
       function( FpAlg_k, diagram )
-        local data, nrsgens, nrgens, l, var, nmgens, quiver, F, k, L, o, gens, ambient,
+        local l, data, nrsgens, nrgens, var, nmgens, quiver, F, k, L, o, gens, ambient,
               idem, orth_idem, central_idem, GB, sum, nrsrels, ambients, mors, functors_on_mors, rels;
         
-        data := List( diagram, algebra -> ObjectDatum( FpAlg_k, algebra ) );
+        l := Length( diagram );
         
-        nrsgens := List( data, datum -> datum[3] );
+        data := List( [ 1 .. l ], m -> ObjectDatum( FpAlg_k, diagram[m] ) );
+        
+        nrsgens := List( [ 1 .. l ], m -> data[m][3] );
         
         nrgens := Sum( nrsgens );
         
@@ -415,7 +417,7 @@ InstallMethod( CategoryOfFpAlgebras,
         
         nrsrels := List( [ 1 .. l ], m -> data[m][5] );
         
-        ambients := List( diagram, AmbientAlgebra );
+        ambients := List( [ 1 .. l ], m -> AmbientAlgebra( diagram[m] ) );
         
         mors := List( [ 1 .. l ], m -> MorphismConstructor( FpAlg_k, ambients[m], gens[m]{[ 1 .. nrsgens[m] ]}, ambient ) );
         
@@ -448,9 +450,11 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddProjectionInFactorOfDirectProductWithGivenDirectProduct( FpAlg_k,
       function( FpAlg_k, diagram, p, product )
-        local nrsgens, target, datum, L, o, gens, id, zero, func, images;
+        local l, nrsgens, target, datum, L, o, gens, id, zero, func, images;
         
-        nrsgens := List( diagram, algebra -> ObjectDatum( FpAlg_k, algebra )[3] );
+        l := Length( diagram );
+        
+        nrsgens := List( [ 1 .. l ], m -> ObjectDatum( FpAlg_k, diagram[m] )[3] );
         
         target := diagram[p];
         
@@ -474,7 +478,7 @@ InstallMethod( CategoryOfFpAlgebras,
             
         end;
         
-        images := List( [ 1 .. Length( diagram ) ], func );
+        images := List( [ 1 .. l ], func );
 
         images := Concatenation( images );
         
@@ -488,22 +492,22 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( FpAlg_k,
       function( FpAlg_k, diagram, source, tau, product )
-        local data, nrsgens, nrgens, ambients, ambient, datum, L, l, gens,
+        local l, data, nrsgens, nrgens, ambients, ambient, datum, L, gens,
               mors, functors_on_mors, idem, orth_idem, central_idem, GB, o, images;
         
-        data := List( diagram, algebra -> ObjectDatum( FpAlg_k, algebra ) );
+        l := Length( diagram );
         
-        nrsgens := List( data, datum -> datum[3] );
+        data := List( [ 1 .. l ], m -> ObjectDatum( FpAlg_k, diagram[m] ) );
         
-        ambients := List( diagram, AmbientAlgebra );
+        nrsgens := List( [ 1 .. l ], m -> data[m][3] );
+        
+        ambients := List( [ 1 .. l ], m -> AmbientAlgebra( diagram[m] ) );
         
         ambient := AmbientAlgebra( product );
         
         datum := ObjectDatum( FpAlg_k, product );
-
-        nrgens := datum[3];
         
-        l := Length( diagram );
+        nrgens := datum[3];
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0, nrgens = Sum( nrsgens ) + l );
@@ -835,7 +839,7 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddCoequalizer( FpAlg_k,
       function( FpAlg_k, target, diagram )
-        local datum, L, data, l, rels, all_rels;
+        local datum, L, l, data, rels, all_rels;
         
         ## if the diagram is empty there is no source
         
@@ -843,11 +847,11 @@ InstallMethod( CategoryOfFpAlgebras,
         
         L := datum[1];
         
-        data := List( diagram, morphism -> MorphismDatum( FpAlg_k, morphism ) );
-        
         l := Length( diagram );
         
-        rels := Concatenation( List( [ 1 .. l - 1 ], i -> data[i] - data[i + 1] ) );
+        data := List( [ 1 .. l ], m -> MorphismDatum( FpAlg_k, diagram[m] ) );
+        
+        rels := Concatenation( List( [ 1 .. l - 1 ], m -> data[m] - data[m + 1] ) );
         
         all_rels := Concatenation( rels, datum[6] );
         
