@@ -1165,7 +1165,7 @@ InstallMethod( Comultiplication,
         
     functor1_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mor1 )[2][2];
     functor2_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mor2 )[2][2];
-        
+    
     o := SetOfObjects( L )[1];
     
     return MorphismConstructor( FpAlg_k,
