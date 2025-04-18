@@ -10,10 +10,10 @@ Alg_F2 := CategoryOfFpAlgebras( F2 );
 Display( Alg_F2 );
 #! A CAP category with name CategoryOfFpAlgebras( GF(2) ):
 #! 
-#! 30 primitive operations were used to derive 85 operations for this category \
+#! 31 primitive operations were used to derive 130 operations for this category \
 #! which algorithmically
-#! * IsCategoryWithInitialObject
-#! * IsCartesianCategory
+#! * IsFiniteCocompleteCategory
+#! * IsBicartesianCategory
 #! * IsSymmetricMonoidalCategory
 T := TerminalObject( Alg_F2 );
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
@@ -70,7 +70,7 @@ Display( unit1 );
 #!  |
 #! GF(2) / [  ]
 counit1 := Counit( A1, [ 1, 0 ] );
-#! <A morphism in CategoryOfFpAlgebras( GF(2) )>
+#! <A split epimorphism in CategoryOfFpAlgebras( GF(2) )>
 IsWellDefined( counit1 );
 #! true
 Display( counit1 );
@@ -168,6 +168,30 @@ IsOne( u );
 v := TensorProduct( pr1, pr2 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
 IsWellDefined( v );
+#! true
+A1uA2 := Coproduct( A1, A2 );
+#! <An object in CategoryOfFpAlgebras( GF(2) )>
+i1 := InjectionOfCofactorOfCoproduct( diagram, 1 );
+#! <A morphism in CategoryOfFpAlgebras( GF(2) )>
+IsWellDefined( i1 );
+#! true
+i2 := InjectionOfCofactorOfCoproduct( diagram, 2 );
+#! <A morphism in CategoryOfFpAlgebras( GF(2) )>
+IsWellDefined( i2 );
+#! true
+w := UniversalMorphismFromCoproduct( diagram, A1uA2, [ i1, i2 ] );
+#! <A morphism in CategoryOfFpAlgebras( GF(2) )>
+IsWellDefined( w );
+#! true
+IsOne( w );
+#! true
+cart_fact := LeftCartesianDistributivityFactoring( A1, [ A1, A2 ] );
+#! <A morphism in CategoryOfFpAlgebras( GF(2) )>
+IsWellDefined( cart_fact );
+#! true
+cocart_expand := LeftCocartesianCodistributivityExpanding( A1, [ A1, A2 ] );
+#! <A morphism in CategoryOfFpAlgebras( GF(2) )>
+IsWellDefined( cocart_expand );
 #! true
 #! @EndExample
 
