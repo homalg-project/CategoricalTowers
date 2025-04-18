@@ -492,8 +492,8 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( FpAlg_k,
       function( FpAlg_k, diagram, source, tau, product )
-        local l, data, nrsgens, nrgens, ambients, ambient, datum, L, gens,
-              mors, functors_on_mors, idem, orth_idem, central_idem, GB, o, images;
+        local l, data, nrsgens, ambients, ambient, datum, L, gens,
+              mors, functors_on_mors, idem, orth_idem, central_idem, GB, o, images, nrgens_source;
         
         l := Length( diagram );
         
@@ -507,10 +507,8 @@ InstallMethod( CategoryOfFpAlgebras,
         
         datum := ObjectDatum( FpAlg_k, product );
         
-        nrgens := datum[3];
-        
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0, nrgens = Sum( nrsgens ) + l );
+        Assert( 0, datum[3] = Sum( nrsgens ) + l );
         
         L := datum[1];
         
@@ -557,7 +555,9 @@ InstallMethod( CategoryOfFpAlgebras,
                                       functors_on_mors[m]( o, image, o ),
                                       gens[m][nrsgens[m] + 1] ) ) ); ## project into the m-th factor
         
-        images := List( [ 1 .. nrgens ], i -> SumOfMorphisms( o, List( [ 1 .. l ], m -> images[m][i] ), o ) );
+        nrgens_source := ObjectDatum( FpAlg_k, source )[3];
+        
+        images := List( [ 1 .. nrgens_source ], i -> SumOfMorphisms( o, List( [ 1 .. l ], m -> images[m][i] ), o ) );
         
         ## get rid of the unnecessary central idempotents in the various summands,
         ## for the images in the result to resemble the relations of the factors
