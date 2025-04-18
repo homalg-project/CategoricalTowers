@@ -345,21 +345,21 @@ InstallMethod( CategoryOfFpAlgebras,
         
         nrsgens := List( [ 1 .. l ], m -> data[m][3] );
         
-        nrgens := Sum( nrsgens );
+        nrgens := Sum( nrsgens ) + l;
         
         l := Length( diagram );
         
         var := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "variable_name", "a" );
         
-        nmgens := ParseListOfIndeterminates( [ Concatenation( var, "1..", String( nrgens + l ) ) ] );
+        nmgens := ParseListOfIndeterminates( [ Concatenation( var, "1..", String( nrgens ) ) ] );
         
         quiver := FinQuiver(
                           Triple( "q",
                                   Pair( 1, [ "o" ] ),
                                   NTuple( 4,
-                                          nrgens + l,
-                                          ListWithIdenticalEntries( nrgens + l, 1 ),
-                                          ListWithIdenticalEntries( nrgens + l, 1 ),
+                                          nrgens,
+                                          ListWithIdenticalEntries( nrgens, 1 ),
+                                          ListWithIdenticalEntries( nrgens, 1 ),
                                           nmgens ) ) );
         
         F := PathCategory( quiver );
@@ -376,7 +376,7 @@ InstallMethod( CategoryOfFpAlgebras,
                            NTuple( 7,
                                    L,
                                    o,
-                                   nrgens + l,
+                                   nrgens,
                                    gens,
                                    0,
                                    CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( L ) ) ),
@@ -439,9 +439,9 @@ InstallMethod( CategoryOfFpAlgebras,
                        NTuple( 7,
                                L,
                                o,
-                               nrgens + l,
+                               nrgens,
                                Concatenation( gens ),
-                               2 * ( l + nrgens ) + Sum( nrsrels ) + 1,
+                               Sum( nrsrels ) + 2 * nrgens + 1,
                                Concatenation( rels, idem, orth_idem, central_idem, [ sum ] ),
                                nmgens ) );
         
