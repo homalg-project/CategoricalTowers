@@ -492,18 +492,14 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( FpAlg_k,
       function( FpAlg_k, diagram, source, tau, product )
-        local l, data, nrsgens, ambients, ambient, datum, L, gens,
-              mors, functors_on_mors, idem, orth_idem, central_idem, GB, o, images, nrgens_source;
+        local l, data, nrsgens, datum, L, gens, idem, orth_idem, central_idem, GB,
+              o, ambient, ambients, mors, functors_on_mors, images, nrgens_source;
         
         l := Length( diagram );
         
         data := List( [ 1 .. l ], m -> ObjectDatum( FpAlg_k, diagram[m] ) );
         
         nrsgens := List( [ 1 .. l ], m -> data[m][3] );
-        
-        ambients := List( [ 1 .. l ], m -> AmbientAlgebra( diagram[m] ) );
-        
-        ambient := AmbientAlgebra( product );
         
         datum := ObjectDatum( FpAlg_k, product );
         
@@ -515,10 +511,6 @@ InstallMethod( CategoryOfFpAlgebras,
         gens := datum[4];
         
         gens := List( [ 1 .. l ], m -> gens{[ m + Sum( nrsgens{[ 1 .. m - 1 ]} ) .. m + Sum( nrsgens{[ 1 .. m ]} ) ]} );
-        
-        mors := List( [ 1 .. l ], m -> MorphismConstructor( FpAlg_k, ambients[m], gens[m]{[ 1 .. nrsgens[m] ]}, ambient ) );
-        
-        functors_on_mors := List( [ 1 .. l ], m -> AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mors[m] )[2][2] );
         
         ## e_m⋅e_m = e_m
         idem := List( [ 1 .. l ], m ->
@@ -548,6 +540,14 @@ InstallMethod( CategoryOfFpAlgebras,
         GB := ReducedGroebnerBasis( L, Concatenation( idem, orth_idem, central_idem ) );
         
         o := datum[2];
+        
+        ambient := AmbientAlgebra( product );
+        
+        ambients := List( [ 1 .. l ], m -> AmbientAlgebra( diagram[m] ) );
+        
+        mors := List( [ 1 .. l ], m -> MorphismConstructor( FpAlg_k, ambients[m], gens[m]{[ 1 .. nrsgens[m] ]}, ambient ) );
+        
+        functors_on_mors := List( [ 1 .. l ], m -> AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mors[m] )[2][2] );
         
         images := List( [ 1 .. l ], m ->
                         List( MorphismDatum( FpAlg_k, tau[m] ), image ->
