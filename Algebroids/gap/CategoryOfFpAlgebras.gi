@@ -972,7 +972,7 @@ end );
 
 ##
 InstallOtherMethodForCompilerForCAP( AmbientAlgebra,
-        "for a category of finitely presented algebras and an finitely presented algebra therein",
+        "for a category of finitely presented algebras and an algebra therein",
         [ IsCategoryOfFinitelyPresentedAlgebras, IsObjectInCategoryOfFpAlgebras ],
         
   function( FpAlg_k, algebra )
