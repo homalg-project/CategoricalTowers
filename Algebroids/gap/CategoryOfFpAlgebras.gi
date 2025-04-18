@@ -47,19 +47,19 @@ InstallMethod( CategoryOfFpAlgebras,
         
         L := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[1];
         
-        unique_object := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[2];
-        
-        #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0,
-                IsLinearClosureObject( unique_object ) and
-                IsIdenticalObj( L, CapCategory( unique_object ) ) );
-        
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0,
                 IsLinearClosure( L ) and
                 IsPathCategory( UnderlyingCategory( L ) ) and
                 HasCommutativeRingOfLinearCategory( L ) and
                 IsIdenticalObj( k, CommutativeRingOfLinearCategory( L ) ) );
+        
+        unique_object := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[2];
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0,
+                IsLinearClosureObject( unique_object ) and
+                IsIdenticalObj( L, CapCategory( unique_object ) ) );
         
         nr_of_generators := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[3];
         generators := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[4];
