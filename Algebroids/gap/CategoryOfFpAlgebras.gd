@@ -122,3 +122,12 @@ CapJitAddTypeSignature( "CategoryOfFpAlgebras", [ IsHomalgRing ], function ( inp
     return CapJitDataTypeOfCategory( CategoryOfFpAlgebras( input_types[1].category ) );
     
 end );
+
+####################################
+##
+## Tools
+##
+####################################
+
+DeclareOperation( "CreateAmbientLinearClosureOfFpAlgebra",
+        [ IsHomalgRing, IsInt, IsString ] );

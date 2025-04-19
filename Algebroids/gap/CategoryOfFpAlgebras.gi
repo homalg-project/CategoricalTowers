@@ -5,6 +5,30 @@
 #
 
 ##
+InstallMethodWithCrispCache( CreateAmbientLinearClosureOfFpAlgebra,
+        [ IsHomalgRing, IsInt, IsString ],
+        
+  function( k, nrgens, var_name )
+    local nmgens, quiver, F;
+    
+    nmgens := ParseListOfIndeterminates( [ Concatenation( var_name, "1..", String( nrgens ) ) ] );
+    
+    quiver := FinQuiver(
+                      Triple( "q",
+                              Pair( 1, [ "o" ] ),
+                              NTuple( 4,
+                                      nrgens,
+                                      ListWithIdenticalEntries( nrgens, 1 ),
+                                      ListWithIdenticalEntries( nrgens, 1 ),
+                                      nmgens ) ) );
+    
+    F := PathCategory( quiver );
+    
+    return LinearClosure( k, F );
+    
+end );
+
+##
 InstallMethod( CategoryOfFpAlgebras,
         "for a commutative homalg ring",
         [ IsHomalgRing and IsCommutative ],
@@ -299,7 +323,7 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddDirectProduct( FpAlg_k,
       function( FpAlg_k, diagram )
-        local l, data, nrsgens, nrgens, var, nmgens, quiver, F, k, L, o, gens, ambient,
+        local l, data, nrsgens, nrgens, var, nmgens, k, L, o, gens, ambient,
               idem, orth_idem, central_idem, GB, sum, nrsrels, ambients, mors, functors_on_mors, rels;
         
         l := Length( diagram );
@@ -310,26 +334,13 @@ InstallMethod( CategoryOfFpAlgebras,
         
         nrgens := Sum( nrsgens ) + l;
         
-        l := Length( diagram );
-        
         var := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "variable_name", "a" );
         
         nmgens := ParseListOfIndeterminates( [ Concatenation( var, "1..", String( nrgens ) ) ] );
         
-        quiver := FinQuiver(
-                          Triple( "q",
-                                  Pair( 1, [ "o" ] ),
-                                  NTuple( 4,
-                                          nrgens,
-                                          ListWithIdenticalEntries( nrgens, 1 ),
-                                          ListWithIdenticalEntries( nrgens, 1 ),
-                                          nmgens ) ) );
-        
-        F := PathCategory( quiver );
-        
         k := CoefficientsRing( FpAlg_k );
         
-        L := LinearClosure( k, F );
+        L := CreateAmbientLinearClosureOfFpAlgebra( k, nrgens, var );
         
         o := SetOfObjects( L )[1];
         
@@ -536,7 +547,7 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddCoproduct( FpAlg_k,
       function( FpAlg_k, diagram )
-        local l, data, nrsgens, nrgens, ambients, var, nmgens, quiver, F, k, L, o, gens,
+        local l, data, nrsgens, nrgens, ambients, var, nmgens, k, L, o, gens,
               ambient, mors, functors_on_mors, nrsrels, rels;
         
         l := Length( diagram );
@@ -551,20 +562,9 @@ InstallMethod( CategoryOfFpAlgebras,
         
         nmgens := ParseListOfIndeterminates( [ Concatenation( var, "1..", String( nrgens ) ) ] );
         
-        quiver := FinQuiver(
-                          Triple( "q",
-                                  Pair( 1, [ "o" ] ),
-                                  NTuple( 4,
-                                          nrgens,
-                                          ListWithIdenticalEntries( nrgens, 1 ),
-                                          ListWithIdenticalEntries( nrgens, 1 ),
-                                          nmgens ) ) );
-        
-        F := PathCategory( quiver );
-        
         k := CoefficientsRing( FpAlg_k );
         
-        L := LinearClosure( k, F );
+        L := CreateAmbientLinearClosureOfFpAlgebra( k, nrgens, var );
         
         o := SetOfObjects( L )[1];
         
@@ -657,7 +657,7 @@ InstallMethod( CategoryOfFpAlgebras,
     AddTensorProductOnObjects( FpAlg_k,
       function( FpAlg_k, algebra1, algebra2 )
         local datum1, datum2, nrgens1, nrgens2, nrgens, ambient1, ambient2,
-              var, nmgens, quiver, F, k, L, o, gens, gens1, gens2, ambient,
+              var, nmgens, k, L, o, gens, gens1, gens2, ambient,
               mor1, mor2, functor1_on_mors, functor2_on_mors, nrrels, rels1, rels2, rels, mixed;
         
         datum1 := ObjectDatum( FpAlg_k, algebra1 );
@@ -675,20 +675,9 @@ InstallMethod( CategoryOfFpAlgebras,
         
         nmgens := ParseListOfIndeterminates( [ Concatenation( var, "1..", String( nrgens ) ) ] );
         
-        quiver := FinQuiver(
-                          Triple( "q",
-                                  Pair( 1, [ "o" ] ),
-                                  NTuple( 4,
-                                          nrgens,
-                                          ListWithIdenticalEntries( nrgens, 1 ),
-                                          ListWithIdenticalEntries( nrgens, 1 ),
-                                          nmgens ) ) );
-        
-        F := PathCategory( quiver );
-        
         k := CoefficientsRing( FpAlg_k );
         
-        L := LinearClosure( k, F );
+        L := CreateAmbientLinearClosureOfFpAlgebra( k, nrgens, var );
         
         o := SetOfObjects( L )[1];
         
