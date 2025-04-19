@@ -404,7 +404,7 @@ InstallMethod( CategoryOfFpAlgebras,
                                o,
                                nrgens,
                                Concatenation( gens ),
-                               Sum( nrsrels ) + 2 * nrgens + 1,
+                               Sum( nrsrels ) + 2 * nrgens + (l - 1)^2,
                                Concatenation( rels, idem, orth_idem, central_idem, [ sum ] ),
                                nmgens ) );
         
