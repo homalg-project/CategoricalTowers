@@ -386,8 +386,8 @@ InstallMethod( CategoryOfFpAlgebras,
         GB := ReducedGroebnerBasis( L, Concatenation( idem, orth_idem, central_idem ) );
         
         sum := SubtractionForMorphisms( L,
-                       IdentityMorphism( L, o ),
-                       SumOfMorphisms( o, List( [ 1 .. l ], m -> gens[m][nrsgens[m] + 1] ), o ) );
+                       SumOfMorphisms( o, List( [ 1 .. l ], m -> gens[m][nrsgens[m] + 1] ), o ),
+                       IdentityMorphism( L, o ) );
         
         nrsrels := List( [ 1 .. l ], m -> data[m][5] );
         
