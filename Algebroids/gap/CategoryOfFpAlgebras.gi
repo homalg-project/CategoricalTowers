@@ -963,7 +963,7 @@ end );
 
 ##
 InstallMethod( NrGenerators,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -974,7 +974,7 @@ end );
 
 ##
 InstallMethod( Generators,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -985,7 +985,7 @@ end );
 
 ##
 InstallMethod( AssociatedLinearClosureOfPathCategory,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -996,7 +996,7 @@ end );
 
 ##
 InstallMethod( DefiningRelations,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -1007,7 +1007,7 @@ end );
 
 ##
 InstallMethod( AssociatedQuotientCategoryOfLinearClosureOfPathCategory,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -1018,7 +1018,7 @@ end );
 
 ##
 InstallMethod( GroebnerBasisOfDefiningRelations,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -1029,12 +1029,33 @@ end );
 
 ##
 InstallMethod( Dimension,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
+    local k, quotient;
     
-    return Dimension( AssociatedQuotientCategoryOfLinearClosureOfPathCategory( algebra ) );
+    k := CommutativeRingOfLinearCategory( AssociatedLinearClosureOfPathCategory( algebra ) );
+    
+    if not ( HasIsFieldForHomalg( k ) and IsFieldForHomalg( k ) ) then
+        Error( "the underlying commutative ring `k` is either not a field or not yet marked as a field\n" );
+    fi;
+    
+    quotient := AssociatedQuotientCategoryOfLinearClosureOfPathCategory( algebra );
+    
+    if HasIsEquippedWithHomomorphismStructure( quotient ) and IsEquippedWithHomomorphismStructure( quotient ) and
+       HasRangeCategoryOfHomomorphismStructure( quotient ) and
+       MissingOperationsForConstructivenessOfCategory( quotient, "IsEquippedWithHomomorphismStructure" ) = [ ]  then
+        
+        ## there are finitely many Macaulay morphisms
+        return Dimension( quotient );
+        
+    else
+        
+        ## there are infinitely many Macaulay morphisms
+        return infinity;
+        
+    fi;
     
 end );
 
@@ -1062,7 +1083,7 @@ end );
 
 ##
 InstallMethod( AmbientAlgebra,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -1251,7 +1272,7 @@ end );
 
 ##
 InstallMethod( DisplayString,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
