@@ -963,7 +963,7 @@ end );
 
 ##
 InstallMethod( NrGenerators,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -974,7 +974,7 @@ end );
 
 ##
 InstallMethod( Generators,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -985,7 +985,7 @@ end );
 
 ##
 InstallMethod( AssociatedLinearClosureOfPathCategory,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -996,7 +996,7 @@ end );
 
 ##
 InstallMethod( DefiningRelations,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -1007,7 +1007,7 @@ end );
 
 ##
 InstallMethod( AssociatedQuotientCategoryOfLinearClosureOfPathCategory,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -1018,7 +1018,7 @@ end );
 
 ##
 InstallMethod( GroebnerBasisOfDefiningRelations,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -1029,7 +1029,7 @@ end );
 
 ##
 InstallMethod( Dimension,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -1062,7 +1062,7 @@ end );
 
 ##
 InstallMethod( AmbientAlgebra,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
@@ -1251,7 +1251,7 @@ end );
 
 ##
 InstallMethod( DisplayString,
-        "for an finitely presented algebra",
+        "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
