@@ -1033,8 +1033,29 @@ InstallMethod( Dimension,
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( algebra )
+    local k, quotient;
     
-    return Dimension( AssociatedQuotientCategoryOfLinearClosureOfPathCategory( algebra ) );
+    k := CommutativeRingOfLinearCategory( AssociatedLinearClosureOfPathCategory( algebra ) );
+    
+    if not ( HasIsFieldForHomalg( k ) and IsFieldForHomalg( k ) ) then
+        Error( "the underlying commutative ring `k` is either not a field or not yet marked as a field\n" );
+    fi;
+    
+    quotient := AssociatedQuotientCategoryOfLinearClosureOfPathCategory( algebra );
+    
+    if HasIsEquippedWithHomomorphismStructure( quotient ) and IsEquippedWithHomomorphismStructure( quotient ) and
+       HasRangeCategoryOfHomomorphismStructure( quotient ) and
+       MissingOperationsForConstructivenessOfCategory( quotient, "IsEquippedWithHomomorphismStructure" ) = [ ]  then
+        
+        ## there are finitely many Macaulay morphisms
+        return Dimension( quotient );
+        
+    else
+        
+        ## there are infinitely many Macaulay morphisms
+        return infinity;
+        
+    fi;
     
 end );
 
