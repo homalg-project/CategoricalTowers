@@ -1038,7 +1038,7 @@ InstallMethod( Dimension,
     k := CommutativeRingOfLinearCategory( AssociatedLinearClosureOfPathCategory( algebra ) );
     
     if not ( HasIsFieldForHomalg( k ) and IsFieldForHomalg( k ) ) then
-        Error( "the underlying commutative ring `k` is either not a field or not yet marked as a field\n" );
+        Print( "WARNING: the underlying commutative ring `k` is either not a field or not yet marked as a field\n" );
     fi;
     
     quotient := AssociatedQuotientCategoryOfLinearClosureOfPathCategory( algebra );
