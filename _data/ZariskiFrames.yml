@@ -1,7 +1,7 @@
 name: ZariskiFrames
-version: "2025.03-01"
+version: "2025.05-01"
 license: "GPL-2.0-or-later"
-date: 2025-03-12
+date: 2025-05-03
 description: |
     (Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties
 
@@ -69,11 +69,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/ZariskiFrames/Pa
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ZariskiFrames-2025.03-01/ZariskiFrames-2025.03-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ZariskiFrames-2025.05-01/ZariskiFrames-2025.05-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ZariskiFrames-2025.03-01/ZariskiFrames-2025.03-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ZariskiFrames-2025.05-01/ZariskiFrames-2025.05-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/ZariskiFrames-2025.03-01/ZariskiFrames-2025.03-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/ZariskiFrames-2025.05-01/ZariskiFrames-2025.05-01-manual.pdf
 
 abstract: |
 
@@ -84,10 +84,10 @@ keywords: |
     Zariski coframe, Zariski frame, locale, affine spectrum, projective spectrum, toric spectrum.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BKL12</span>]   <b class='BibAuthor'>Barakat, M., Kuhmichel, T. and Lange-Hegermann, M.</b>,
+    [<span class='BibKey'>BKL03</span>]   <b class='BibAuthor'>Barakat, M., Kuhmichel, T. and Lange-Hegermann, M.</b>,
      <i class='BibTitle'>ZariskiFrames, (Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties,
-             Version 2025.03-01</i>
-     (<span class='BibYear'>3-12</span>)<br />
+             Version 2025.05-01</i>
+     (<span class='BibYear'>5-03</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ZariskiFrames">https://homalg-project.github.io/pkg/ZariskiFrames</a></span>.
     </p>
@@ -99,9 +99,9 @@ bibtex: |
                           Lange\texttt{\symbol{45}}Hegermann, M.},
       title =            {{ZariskiFrames},    {(Co)frames/Locales   of   Zariski
                           closed/open  subsets  of  affine, projective, or toric
-                          varieties}, {V}ersion 2025.03\texttt{\symbol{45}}01},
+                          varieties}, {V}ersion 2025.05\texttt{\symbol{45}}01},
       month =            {5\texttt{\symbol{45}}},
-      year =             {3\texttt{\symbol{45}}12},
+      year =             {5\texttt{\symbol{45}}03},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/ZariskiFrames}
@@ -110,6 +110,6 @@ bibtex: |
                           {}{}{}\texttt{ZariskiFrames}}},
       keywords =         {Zariski   coframe;   Zariski   frame;  locale;  affine
                           spectrum; projective spectrum; toric spectrum},
-      printedkey =       {BKL12}
+      printedkey =       {BKL03}
     }
 
