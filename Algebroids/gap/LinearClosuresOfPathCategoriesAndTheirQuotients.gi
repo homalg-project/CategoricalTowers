@@ -87,6 +87,8 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
     
     if CanCompute( C, "MorphismsOfExternalHom" ) then
         
+        SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( kC, true );
+        
         ##
         AddBasisOfExternalHom( kC,
           
