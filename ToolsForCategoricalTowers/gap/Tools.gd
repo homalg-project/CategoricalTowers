@@ -113,6 +113,7 @@ AddCategoricalProperty( [ "IsEquivalentToFiniteCategory", "IsEquivalentToFiniteC
 
 #! @Description
 #!  Return a duplicate free list of objects of the category <A>C</A>.
+#!  The ordering of the returned list must always be the same.
 #! @Arguments C
 #! @Returns a list of &CAP; category objects
 DeclareAttribute( "SetOfObjectsOfCategory",
@@ -120,6 +121,7 @@ DeclareAttribute( "SetOfObjectsOfCategory",
 
 #! @Description
 #!  Return a duplicate free list of objects of the category <A>C</A>.
+#!  The ordering of the returned list must always be the same.
 #!  The corresponding &CAP; operation is <C>SetOfObjectsOfCategory</C>.
 #! @Arguments C
 #! @Returns a list of &CAP; category objects
