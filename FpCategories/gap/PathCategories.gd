@@ -57,7 +57,7 @@ DeclareOperation( "ObjectConstructor", [ IsPathCategory, IsInt ] );
 #!  consisting of morphisms in $q$ where the target of each morphism is equal to the source of the next morphism.
 #!  The output is the morphism in <A>C</A> whose length is <A>l</A> and whose support is <A>support</A>.
 #! @Arguments C, s, l, support, t
-#! @Returns a &CAP; category object
+#! @Returns a &CAP; category morphism
 DeclareOperation( "MorphismConstructor", [ IsPathCategory, IsPathCategoryObject, IsInt, IsDenseList, IsPathCategoryObject ] );
 fi;
 

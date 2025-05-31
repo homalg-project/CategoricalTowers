@@ -60,7 +60,7 @@ DeclareOperation( "ObjectConstructor", [ IsFinQuiver, IsInt ] );
 #!  The input is a &CAP; quiver $q$, an object <A>s</A>, a positive integer <A>i</A> and an object <A>t</A>.
 #!  The output is the <A>i</A>'th morphism in <A>q</A> (whose source is <A>s</A> and target is <A>t</A>).
 #! @Arguments C, s, i, t
-#! @Returns a &CAP; category object
+#! @Returns a &CAP; category morphism
 DeclareOperation( "MorphismConstructor", [ IsFinQuiver, IsFinQuiverObject, IsInt, IsFinQuiverObject ] );
 fi;
 
