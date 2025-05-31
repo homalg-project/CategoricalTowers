@@ -109,7 +109,7 @@
   [1X1.1-3 MorphismConstructor[101X
   
   [33X[1;0Y[29X[2XMorphismConstructor[102X( [3XC[103X, [3Xs[103X, [3Xi[103X, [3Xt[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category object[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category morphism[133X
   
   [33X[0;0YThe input is a [5XCAP[105X quiver [23Xq[123X, an object [3Xs[103X, a positive integer [3Xi[103X and an object
   [3Xt[103X. The output is the [3Xi[103X'th morphism in [3Xq[103X (whose source is [3Xs[103X and target is [3Xt[103X).[133X

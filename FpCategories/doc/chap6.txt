@@ -113,7 +113,7 @@
   [1X6.3-3 MorphismConstructor[101X
   
   [33X[1;0Y[29X[2XMorphismConstructor[102X( [3XC[103X, [3Xs[103X, [3Xl[103X, [3Xsupport[103X, [3Xt[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category object[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category morphism[133X
   
   [33X[0;0YThe  input  is  a  path  category  [3XC[103X  of  [5XCAP[105X  quiver  [23Xq[123X, two objects [3Xs[103X, [3Xt[103X a
   nonnegative  integer  [3Xlength[103X  and  a  list [3Xsupport[103X of length [3Xl[103X consisting of
