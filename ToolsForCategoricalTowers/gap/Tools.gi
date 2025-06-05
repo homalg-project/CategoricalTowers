@@ -6,9 +6,6 @@
 
 ##
 InstallTrueMethod( IsFiniteCategory, IsInitialCategory );
-InstallTrueMethod( IsFinite, IsFiniteCategory );
-InstallTrueMethod( IsObjectFiniteCategory, IsFiniteCategory );
-InstallTrueMethod( IsEquivalentToFiniteCategory, IsFiniteCategory );
 
 ##
 InstallMethod( DummyCategoryInDoctrines,
@@ -99,38 +96,12 @@ InstallMethod( SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE,
 end );
 
 ##
-InstallMethod( SetOfObjectsAsUnresolvableAttribute,
-        [ IsCapCategory ],
-        
-  SetOfObjectsOfCategory );
-
-##
 InstallMethod( SetOfObjects,
         [ IsInitialCategory ],
         
   function( I )
     
     return [ ];
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( SetOfObjects,
-        [ IsCapCategory and HasOppositeCategory ],
-        
-  function( cat_op )
-    
-    return List( SetOfObjects( OppositeCategory( cat_op ) ), obj -> ObjectConstructor( cat_op, obj ) );
-    
-end );
-
-##
-InstallMethod( SetOfMorphisms,
-        [ IsCapCategory ],
-        
-  function( cat )
-    
-    return SetOfMorphismsOfFiniteCategory( cat );
     
 end );
 
