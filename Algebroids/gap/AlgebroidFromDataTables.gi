@@ -36,7 +36,7 @@ InstallMethod( DataTablesOfCategory,
                 List( gmors, m -> SafePosition( objs, Source( m ) ) ),
                 List( gmors, m -> SafePosition( objs, Target( m ) ) ),
                 List( gmors, m -> Label( m ) ),
-                List( gmors, m -> LabelAsLaTeXString( First( Paths( Representative( UnderlyingQuiverAlgebraElement( m ) ) ) ) ) ) ) ) ),
+                List( gmors, m -> LabelAsLaTeXString( First( Paths( UnderlyingQuiverAlgebraElement( m ) ) ) ) ) ) ) ),
         
         List( objs, s -> List( objs, t -> List( BasisOfExternalHom( B, s, t ), m ->
           Concatenation( List( DecompositionOfMorphismInAlgebroid( m ),
