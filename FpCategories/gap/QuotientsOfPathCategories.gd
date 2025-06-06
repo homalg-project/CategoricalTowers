@@ -71,6 +71,22 @@ DeclareAttribute( "ObjectIndex", IsQuotientOfPathCategoryObject );
 #! @Returns a &CAP; morphism
 DeclareAttribute( "CanonicalRepresentative", IsQuotientOfPathCategoryMorphism );
 
+#! @Description
+#!  Assigns the objects of <A>qC</A> to global variables.
+#!  Names of the variables are the concatenation of <A>str</A> with the labels of the objects.
+#!  The default value of <A>str</A> is the empty string.
+#! @Arguments qC [, str]
+#! @Returns nothing
+DeclareOperation( "AssignSetOfObjects", [ IsQuotientOfPathCategory, IsString ] );
+
+#! @Description
+#!  Assigns the generating morphisms of <A>qC</A> to global variables.
+#!  Names of the variables are the concatenation of <A>str</A> with the labels of the generating morphisms.
+#!  The default value of <A>str</A> is the empty string.
+#! @Arguments qC [, str]
+#! @Returns nothing
+DeclareOperation( "AssignSetOfGeneratingMorphisms", [ IsQuotientOfPathCategory, IsString ] );
+
 DeclareAttribute( "DecompositionIndicesOfMorphism",
         IsQuotientOfPathCategoryMorphism );
 

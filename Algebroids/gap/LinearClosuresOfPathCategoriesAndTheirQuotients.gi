@@ -205,6 +205,96 @@ InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
 end );
 
 ##
+InstallOtherMethod( AssignSetOfObjects,
+        [ IsLinearClosure, IsString ],
+        
+  function( A, label )
+    local names, objects, func;
+    
+    if not ( IsPathCategory( UnderlyingCategory( A ) ) or IsQuotientOfPathCategory( UnderlyingCategory( A ) ) ) then
+        TryNextMethod( );
+    fi;
+    
+    names := LabelsOfObjects( UnderlyingQuiver( A ) );
+    
+    objects := SetOfObjects( A );
+    
+    func := function( name, o )
+              
+              if Int( name ) <> fail and label = "" then
+                  Error( "The second argument should be a non-empty string" );
+              fi;
+              
+              name := Concatenation( label, ReplacedString( name, "-", "m" ) );
+              
+              MakeReadWriteGlobal( name );
+              
+              DeclareSynonym( name, o );
+              
+              return 1;
+              
+            end;
+            
+    ListN( names, objects, func );
+    
+end );
+
+##
+InstallOtherMethod( AssignSetOfObjects,
+        [ IsLinearClosure ],
+        
+  function( A )
+    
+    AssignSetOfObjects( A, "" );
+    
+end );
+
+##
+InstallOtherMethod( AssignSetOfGeneratingMorphisms,
+        [ IsLinearClosure, IsString ],
+        
+  function( A, label )
+    local names, morphisms, func;
+    
+    if not ( IsPathCategory( UnderlyingCategory( A ) ) or IsQuotientOfPathCategory( UnderlyingCategory( A ) ) ) then
+        TryNextMethod( );
+    fi;
+    
+    names := LabelsOfMorphisms( UnderlyingQuiver( A ) );
+    
+    morphisms := SetOfGeneratingMorphisms( A );
+    
+    func := function( name, m )
+              
+              if Int( name ) <> fail and label = "" then
+                  Error( "The second argument should be a non-empty string" );
+              fi;
+              
+              name := Concatenation( label, ReplacedString( name, "-", "m" ) );
+              
+              MakeReadWriteGlobal( name );
+              
+              DeclareSynonym( name, m );
+              
+              return 1;
+              
+            end;
+            
+    ListN( names, morphisms, func );
+    
+end );
+
+##
+InstallOtherMethod( AssignSetOfGeneratingMorphisms,
+        [ IsLinearClosure ],
+        
+  function( A )
+    
+    AssignSetOfGeneratingMorphisms( A, "" );
+    
+end );
+
+##
 InstallGlobalFunction( "INSTALL_VIEW_AND_DISPLAY_METHODS_IN_LINEAR_CLOSURES_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
   
   function ( kC )

@@ -116,6 +116,82 @@ InstallOtherMethod( QuotientCategory,
 end );
 
 ##
+InstallMethod( AssignSetOfObjects,
+        [ IsQuotientOfPathCategory, IsString ],
+  
+  function ( C, label )
+    local names, func;
+    
+    names := LabelsOfObjects( UnderlyingQuiver( C ) );
+    
+    if label = "" and ForAny( names, name -> Int( name ) <> fail ) then
+        Error( "the <label> passed to 'AssignSetOfObjects' must be a non-empty string!\n" );
+    fi;
+    
+    func :=
+      function ( name, o )
+        
+        name := Concatenation( label, ReplacedString( name, "-", "m" ) );
+        MakeReadWriteGlobal( name );
+        DeclareSynonym( name, o );
+        return true;
+        
+    end;
+    
+    ListN( names, SetOfObjects( C ), func );
+    
+end );
+
+##
+InstallOtherMethod( AssignSetOfObjects,
+        [ IsQuotientOfPathCategory ],
+  
+  function ( C )
+    
+    AssignSetOfObjects( C, "" );
+    
+end );
+
+##
+InstallMethod( AssignSetOfGeneratingMorphisms,
+        [ IsQuotientOfPathCategory, IsString ],
+  
+  function ( C, label )
+    local names, morphisms, func;
+    
+    names := LabelsOfMorphisms( UnderlyingQuiver( C ) );
+    
+    if label = "" and ForAny( names, name -> Int( name ) <> fail ) then
+        Error( "the <label> passed to 'AssignSetOfGeneratingMorphisms' must be a non-empty string!\n" );
+    fi;
+    
+    morphisms := SetOfGeneratingMorphisms( C );
+    
+    func :=
+      function ( name, m )
+        
+        name := Concatenation( label, ReplacedString( name, "-", "m" ) );
+        MakeReadWriteGlobal( name );
+        DeclareSynonym( name, m );
+        return true;
+        
+    end;
+    
+    ListN( names, morphisms, func );
+    
+end );
+
+##
+InstallOtherMethod( AssignSetOfGeneratingMorphisms,
+        [ IsQuotientOfPathCategory ],
+  
+  function ( C )
+    
+    AssignSetOfGeneratingMorphisms( C, "" );
+    
+end );
+
+##
 InstallOtherMethod( \/,
         [ IsPathCategory, IsDenseList ],
   
