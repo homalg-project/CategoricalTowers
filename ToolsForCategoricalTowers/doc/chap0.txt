@@ -6,10 +6,10 @@
                          [1X Tools for CategoricalTowers [101X
   
   
-                                   2025.05-02
+                                   2025.06-01
   
   
-                                  31 May 2025
+                                  10 June 2025
   
   
                                 Mohamed Barakat
@@ -35,21 +35,12 @@
       1.1-1 SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE
       1.1-2 ListKnownDoctrines
       1.1-3 DummyCategoryInDoctrines
-    1.2 [33X[0;0YProperties[133X
-      1.2-1 IsObjectFiniteCategory
-      1.2-2 IsFiniteCategory
-      1.2-3 IsEquivalentToFiniteCategory
-    1.3 [33X[0;0YAttributes[133X
-      1.3-1 SetOfObjectsOfCategory
-      1.3-2 SetOfObjects
-      1.3-3 SetOfMorphismsOfFiniteCategory
-      1.3-4 SetOfMorphisms
-    1.4 [33X[0;0YFunctors[133X
-      1.4-1 CovariantHomFunctor
-      1.4-2 GlobalSectionFunctor
-    1.5 [33X[0;0YCell as evaluatable string[133X
-      1.5-1 DatumOfCellAsEvaluatableString
-      1.5-2 CellAsEvaluatableString
+    1.2 [33X[0;0YFunctors[133X
+      1.2-1 CovariantHomFunctor
+      1.2-2 GlobalSectionFunctor
+    1.3 [33X[0;0YCell as evaluatable string[133X
+      1.3-1 DatumOfCellAsEvaluatableString
+      1.3-2 CellAsEvaluatableString
   2 [33X[0;0YFuther CAP operations[133X
     2.1 [33X[0;0YMorphismBetweenCoproducts and MorphismBetweenDirectProducts[133X
       2.1-1 MorphismBetweenCoproducts
@@ -117,15 +108,13 @@
       2.10-20 AddProjectionOfBiasedRelativeWeakFiberProduct
       2.10-21 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
       2.10-22 AddRelativeLift
-      2.10-23 AddSetOfMorphismsOfFiniteCategory
-      2.10-24 AddSetOfObjectsOfCategory
-      2.10-25 AddSumOfImagesOfAllMorphisms
-      2.10-26 AddUniversalMorphismFromColimit
-      2.10-27 AddUniversalMorphismFromColimitWithGivenColimit
-      2.10-28 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct
-      2.10-29 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
-      2.10-30 AddUniversalMorphismIntoLimit
-      2.10-31 AddUniversalMorphismIntoLimitWithGivenLimit
+      2.10-23 AddSumOfImagesOfAllMorphisms
+      2.10-24 AddUniversalMorphismFromColimit
+      2.10-25 AddUniversalMorphismFromColimitWithGivenColimit
+      2.10-26 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct
+      2.10-27 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
+      2.10-28 AddUniversalMorphismIntoLimit
+      2.10-29 AddUniversalMorphismIntoLimitWithGivenLimit
   3 [33X[0;0YToolsForCategoricalTowers automatic generated documentation[133X
     3.1 [33X[0;0YToolsForCategoricalTowers automatic generated documentation of global
     functions[133X

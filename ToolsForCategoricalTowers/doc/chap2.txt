@@ -1192,33 +1192,7 @@
   less   complex  =  faster  execution).  [23XF:  (  beta,  alpha,  nu  )  \mapsto
   \mathtt{RelativeLift}(beta, alpha, nu)[123X.[133X
   
-  [1X2.10-23 AddSetOfMorphismsOfFiniteCategory[101X
-  
-  [33X[1;0Y[29X[2XAddSetOfMorphismsOfFiniteCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [33X[1;0Y[29X[2XAddSetOfMorphismsOfFiniteCategory[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XSetOfMorphismsOfFiniteCategory[110X.  Optionally,  a weight (default: 100) can be
-  specified which should roughly correspond to the computational complexity of
-  the  function  (lower  weight  =  less  complex  = faster execution). [23XF: ( )
-  \mapsto \mathtt{SetOfMorphismsOfFiniteCategory}()[123X.[133X
-  
-  [1X2.10-24 AddSetOfObjectsOfCategory[101X
-  
-  [33X[1;0Y[29X[2XAddSetOfObjectsOfCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [33X[1;0Y[29X[2XAddSetOfObjectsOfCategory[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XSetOfObjectsOfCategory[110X. Optionally, a weight (default: 100) can be specified
-  which  should  roughly  correspond  to  the  computational complexity of the
-  function  (lower  weight  = less complex = faster execution). [23XF: ( ) \mapsto
-  \mathtt{SetOfObjectsOfCategory}()[123X.[133X
-  
-  [1X2.10-25 AddSumOfImagesOfAllMorphisms[101X
+  [1X2.10-23 AddSumOfImagesOfAllMorphisms[101X
   
   [33X[1;0Y[29X[2XAddSumOfImagesOfAllMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSumOfImagesOfAllMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1231,7 +1205,7 @@
   the  function  (lower  weight = less complex = faster execution). [23XF: ( arg2,
   arg3 ) \mapsto \mathtt{SumOfImagesOfAllMorphisms}(arg2, arg3)[123X.[133X
   
-  [1X2.10-26 AddUniversalMorphismFromColimit[101X
+  [1X2.10-24 AddUniversalMorphismFromColimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromColimit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1245,7 +1219,7 @@
   decorated_morphisms,           T,           tau           )          \mapsto
   \mathtt{UniversalMorphismFromColimit}(objects, decorated_morphisms, T, tau)[123X.[133X
   
-  [1X2.10-27 AddUniversalMorphismFromColimitWithGivenColimit[101X
+  [1X2.10-25 AddUniversalMorphismFromColimitWithGivenColimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromColimitWithGivenColimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromColimitWithGivenColimit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1260,7 +1234,7 @@
   \mathtt{UniversalMorphismFromColimitWithGivenColimit}(objects,
   decorated_morphisms, T, tau, P)[123X.[133X
   
-  [1X2.10-28 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct[101X
+  [1X2.10-26 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1274,7 +1248,7 @@
   faster     execution).     [23XF:     (     a,     b,    c,    t    )    \mapsto
   \mathtt{UniversalMorphismIntoBiasedRelativeWeakFiberProduct}(a, b, c, t)[123X.[133X
   
-  [1X2.10-29 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
+  [1X2.10-27 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1289,7 +1263,7 @@
   \mathtt{UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct}(a,
   b, c, t, P)[123X.[133X
   
-  [1X2.10-30 AddUniversalMorphismIntoLimit[101X
+  [1X2.10-28 AddUniversalMorphismIntoLimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoLimit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1303,7 +1277,7 @@
   decorated_morphisms,           T,           tau           )          \mapsto
   \mathtt{UniversalMorphismIntoLimit}(objects, decorated_morphisms, T, tau)[123X.[133X
   
-  [1X2.10-31 AddUniversalMorphismIntoLimitWithGivenLimit[101X
+  [1X2.10-29 AddUniversalMorphismIntoLimitWithGivenLimit[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoLimitWithGivenLimit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoLimitWithGivenLimit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X

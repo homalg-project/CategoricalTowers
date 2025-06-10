@@ -178,68 +178,9 @@
   [4X[32X[104X
   
   
-  [1X1.2 [33X[0;0YProperties[133X[101X
+  [1X1.2 [33X[0;0YFunctors[133X[101X
   
-  [1X1.2-1 IsObjectFiniteCategory[101X
-  
-  [33X[1;0Y[29X[2XIsObjectFiniteCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe (evil) property of [3XC[103X being a category with finitely many objects.[133X
-  
-  [1X1.2-2 IsFiniteCategory[101X
-  
-  [33X[1;0Y[29X[2XIsFiniteCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe (evil) property of [3XC[103X being a finite category.[133X
-  
-  [1X1.2-3 IsEquivalentToFiniteCategory[101X
-  
-  [33X[1;0Y[29X[2XIsEquivalentToFiniteCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe property of [3XC[103X being equivalent to a finite category.[133X
-  
-  
-  [1X1.3 [33X[0;0YAttributes[133X[101X
-  
-  [1X1.3-1 SetOfObjectsOfCategory[101X
-  
-  [33X[1;0Y[29X[2XSetOfObjectsOfCategory[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X category objects[133X
-  
-  [33X[0;0YReturn  a  duplicate free list of objects of the category [3XC[103X. The ordering of
-  the returned list must always be the same.[133X
-  
-  [1X1.3-2 SetOfObjects[101X
-  
-  [33X[1;0Y[29X[2XSetOfObjects[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X category objects[133X
-  
-  [33X[0;0YReturn  a  duplicate free list of objects of the category [3XC[103X. The ordering of
-  the  returned  list must always be the same. The corresponding [5XCAP[105X operation
-  is [10XSetOfObjectsOfCategory[110X.[133X
-  
-  [1X1.3-3 SetOfMorphismsOfFiniteCategory[101X
-  
-  [33X[1;0Y[29X[2XSetOfMorphismsOfFiniteCategory[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of a [5XCAP[105X category morphisms[133X
-  
-  [33X[0;0YReturn a duplicate free list of morphisms of the finite category [3XC[103X.[133X
-  
-  [1X1.3-4 SetOfMorphisms[101X
-  
-  [33X[1;0Y[29X[2XSetOfMorphisms[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X category objects[133X
-  
-  [33X[0;0YReturn  a  duplicate  free  list  of morphisms of the finite category [3XC[103X. The
-  corresponding [5XCAP[105X operation is [10XSetOfMorphismsOfFiniteCategory[110X.[133X
-  
-  
-  [1X1.4 [33X[0;0YFunctors[133X[101X
-  
-  [1X1.4-1 CovariantHomFunctor[101X
+  [1X1.2-1 CovariantHomFunctor[101X
   
   [33X[1;0Y[29X[2XCovariantHomFunctor[102X( [3Xo[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
@@ -248,7 +189,7 @@
   functor      [23X\mathrm{Hom}[123X([3Xo[103X,-)      from      the      category     [23XC[123X     to
   [10XRangeCategoryOfHomomorphismStructure[110X( [3XC[103X ).[133X
   
-  [1X1.4-2 GlobalSectionFunctor[101X
+  [1X1.2-2 GlobalSectionFunctor[101X
   
   [33X[1;0Y[29X[2XGlobalSectionFunctor[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
@@ -257,9 +198,9 @@
   with terminal object [23X1[123X to [10XRangeCategoryOfHomomorphismStructure[110X( [3XC[103X ).[133X
   
   
-  [1X1.5 [33X[0;0YCell as evaluatable string[133X[101X
+  [1X1.3 [33X[0;0YCell as evaluatable string[133X[101X
   
-  [1X1.5-1 DatumOfCellAsEvaluatableString[101X
+  [1X1.3-1 DatumOfCellAsEvaluatableString[101X
   
   [33X[1;0Y[29X[2XDatumOfCellAsEvaluatableString[102X( [3Xc[103X, [3Xlist_of_evaluatable_strings[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya string[133X
@@ -276,7 +217,7 @@
   substrings  "[10XObjectConstructor[110X",  "[10XMorphismConstructor[110X"  and  the  string in
   [3Xlist_of_evaluatable_strings[103X.[133X
   
-  [1X1.5-2 CellAsEvaluatableString[101X
+  [1X1.3-2 CellAsEvaluatableString[101X
   
   [33X[1;0Y[29X[2XCellAsEvaluatableString[102X( [3Xc[103X, [3Xlist_of_evaluatable_strings[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya string[133X

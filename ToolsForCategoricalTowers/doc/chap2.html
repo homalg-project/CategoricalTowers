@@ -116,15 +116,13 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X839B0DEF83FD843A">2.10-20 AddProjectionOfBiasedRelativeWeakFiberProduct</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X838F991C7F040105">2.10-21 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EB1827186E0F720">2.10-22 AddRelativeLift</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X802E75BC780B365B">2.10-23 AddSetOfMorphismsOfFiniteCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X836997AC786FEA72">2.10-24 AddSetOfObjectsOfCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CBC2437861BB234">2.10-25 AddSumOfImagesOfAllMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X861531B98207C048">2.10-26 AddUniversalMorphismFromColimit</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X80F992A78669A564">2.10-27 AddUniversalMorphismFromColimitWithGivenColimit</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8615089884EAF14F">2.10-28 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X84D280F87AA473DE">2.10-29 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79CE392E795E5B4A">2.10-30 AddUniversalMorphismIntoLimit</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X824251F280C5B8E0">2.10-31 AddUniversalMorphismIntoLimitWithGivenLimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CBC2437861BB234">2.10-23 AddSumOfImagesOfAllMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X861531B98207C048">2.10-24 AddUniversalMorphismFromColimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X80F992A78669A564">2.10-25 AddUniversalMorphismFromColimitWithGivenColimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8615089884EAF14F">2.10-26 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X84D280F87AA473DE">2.10-27 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79CE392E795E5B4A">2.10-28 AddUniversalMorphismIntoLimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X824251F280C5B8E0">2.10-29 AddUniversalMorphismIntoLimitWithGivenLimit</a></span>
 </div></div>
 </div>
 
@@ -1353,29 +1351,9 @@ true
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RelativeLift</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="Math">F: ( beta, alpha, nu ) \mapsto \mathtt{RelativeLift}(beta, alpha, nu)</span>.</p>
 
-<p><a id="X802E75BC780B365B" name="X802E75BC780B365B"></a></p>
-
-<h5>2.10-23 AddSetOfMorphismsOfFiniteCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSetOfMorphismsOfFiniteCategory</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSetOfMorphismsOfFiniteCategory</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
-
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SetOfMorphismsOfFiniteCategory</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="Math">F: ( ) \mapsto \mathtt{SetOfMorphismsOfFiniteCategory}()</span>.</p>
-
-<p><a id="X836997AC786FEA72" name="X836997AC786FEA72"></a></p>
-
-<h5>2.10-24 AddSetOfObjectsOfCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSetOfObjectsOfCategory</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSetOfObjectsOfCategory</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
-
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SetOfObjectsOfCategory</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="Math">F: ( ) \mapsto \mathtt{SetOfObjectsOfCategory}()</span>.</p>
-
 <p><a id="X7CBC2437861BB234" name="X7CBC2437861BB234"></a></p>
 
-<h5>2.10-25 AddSumOfImagesOfAllMorphisms</h5>
+<h5>2.10-23 AddSumOfImagesOfAllMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSumOfImagesOfAllMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSumOfImagesOfAllMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
@@ -1385,7 +1363,7 @@ true
 
 <p><a id="X861531B98207C048" name="X861531B98207C048"></a></p>
 
-<h5>2.10-26 AddUniversalMorphismFromColimit</h5>
+<h5>2.10-24 AddUniversalMorphismFromColimit</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromColimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromColimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
@@ -1395,7 +1373,7 @@ true
 
 <p><a id="X80F992A78669A564" name="X80F992A78669A564"></a></p>
 
-<h5>2.10-27 AddUniversalMorphismFromColimitWithGivenColimit</h5>
+<h5>2.10-25 AddUniversalMorphismFromColimitWithGivenColimit</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromColimitWithGivenColimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromColimitWithGivenColimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
@@ -1405,7 +1383,7 @@ true
 
 <p><a id="X8615089884EAF14F" name="X8615089884EAF14F"></a></p>
 
-<h5>2.10-28 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct</h5>
+<h5>2.10-26 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
@@ -1415,7 +1393,7 @@ true
 
 <p><a id="X84D280F87AA473DE" name="X84D280F87AA473DE"></a></p>
 
-<h5>2.10-29 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</h5>
+<h5>2.10-27 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
@@ -1425,7 +1403,7 @@ true
 
 <p><a id="X79CE392E795E5B4A" name="X79CE392E795E5B4A"></a></p>
 
-<h5>2.10-30 AddUniversalMorphismIntoLimit</h5>
+<h5>2.10-28 AddUniversalMorphismIntoLimit</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoLimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoLimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
@@ -1435,7 +1413,7 @@ true
 
 <p><a id="X824251F280C5B8E0" name="X824251F280C5B8E0"></a></p>
 
-<h5>2.10-31 AddUniversalMorphismIntoLimitWithGivenLimit</h5>
+<h5>2.10-29 AddUniversalMorphismIntoLimitWithGivenLimit</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoLimitWithGivenLimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoLimitWithGivenLimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
