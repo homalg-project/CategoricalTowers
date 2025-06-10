@@ -6,18 +6,6 @@
 
 BindGlobal( "CATEGORICAL_TOWERS_METHOD_NAME_RECORD", rec(
 
-SetOfObjectsOfCategory := rec(
-  filter_list := [ "category" ],
-  return_type := "list_of_objects",
-  dual_operation := "SetOfObjectsOfCategory",
-),
-
-SetOfMorphismsOfFiniteCategory := rec(
-  filter_list := [ "category" ],
-  return_type := "list_of_morphisms",
-  dual_operation := "SetOfMorphismsOfFiniteCategory",
-),
-
 MorphismBetweenCoproducts := rec(
   filter_list := [ "category", "list_of_objects", "list_of_integers_and_list_of_morphisms", "list_of_objects" ],
   input_arguments_names := [ "cat", "source_diagram", "pair", "range_diagram" ],
