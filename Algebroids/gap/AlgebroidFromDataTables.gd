@@ -56,8 +56,6 @@ DeclareCategory( "IsMorphismInAlgebroidFromDataTables",
 DeclareOperation( "AlgebroidFromDataTables", [ IsDenseList ] );
 #! @InsertChunk AlgebroidFromDataTables
 
-DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidFromDataTables" );
-
 ####################################
 #
 #! @Section Attributes

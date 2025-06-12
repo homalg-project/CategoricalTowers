@@ -287,7 +287,7 @@ InstallMethod( AlgebroidFromDataTables,
             precompiled_towers := [
             rec(
                 remaining_constructors_in_tower := [ "AdditiveClosure" ],
-                precompiled_functions_adder := ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidFromDataTables ),
+                precompiled_functions_adder := ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidFromDataTablesPrecompiled ),
             ] );
     
     # Similar to Algebroids
@@ -297,6 +297,7 @@ InstallMethod( AlgebroidFromDataTables,
     
     SetIsAbCategory( A, true );
     SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( A, true );
+    SetIsObjectFiniteCategory( A, true );
     
     SetCategoryDatum( A, input_data );
     SetCommutativeRingOfLinearCategory( A, input_data[1] );
@@ -1306,55 +1307,6 @@ InstallOtherMethod( CapFunctor,
     
     return F;
     
-end );
-
-####################################
-#
-# Additive Closure Of Algebroids
-#
-####################################
-
-InstallGlobalFunction( ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidFromDataTables,
-    function ( A )
-      
-      AddWeakKernelEmbedding( A,
-        
-        function ( A, alpha )
-          local objs, tau, diagram, S;
-          
-          objs := List( SetOfObjects( UnderlyingCategory( A ) ), o -> ObjectConstructor( A, [ o ] ) );
-          
-          tau := Concatenation( List( objs,
-                    o -> Concatenation( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory( A, [ [  IdentityMorphism( A, o ) ] ], [ [ alpha ] ] ) ) ) );
-          
-          diagram := List( tau, m -> Source( m ) );
-          
-          S := DirectSum( A, diagram );
-          
-          return UniversalMorphismFromDirectSumWithGivenDirectSum( A, diagram, Source( alpha ), tau, S );
-          
-      end );
-      
-      AddWeakCokernelProjection( A,
-        
-        function ( A, alpha )
-          local objs, tau, diagram, S;
-          
-          objs := List( SetOfObjects( UnderlyingCategory( A ) ), o -> ObjectConstructor( A, [ o ] ) );
-          
-          tau := Concatenation( List( objs,
-                    o -> Concatenation( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory( A, [ [ alpha ] ], [ [  IdentityMorphism( A, o ) ] ]  ) ) ) );
-          
-          diagram := List( tau, m -> Target( m ) );
-          
-          S := DirectSum( A, diagram );
-          
-          return UniversalMorphismIntoDirectSumWithGivenDirectSum( A, diagram, Target( alpha ), tau, S );
-          
-      end );
-      
-      ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidFromDataTablesPrecompiled( A );
-      
 end );
 
 ####################################
