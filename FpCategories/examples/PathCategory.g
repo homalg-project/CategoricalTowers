@@ -38,6 +38,23 @@ SetOfObjects( C );
 SetOfGeneratingMorphisms( C );
 #! [ x:(0) -≻ (0), s:(0) -≻ (1), a:(1) -≻ (2), c:(1) -≻ (3), e:(1) -≻ (4),
 #!   b:(2) -≻ (4), d:(3) -≻ (4), t:(4) -≻ (5), y:(5) -≻ (5) ]
+AssignSetOfObjects( C, "v_" );
+#! #I  MakeReadWriteGlobal: v_0 already read-write
+#! #I  MakeReadWriteGlobal: v_1 already read-write
+#! #I  MakeReadWriteGlobal: v_2 already read-write
+#! #I  MakeReadWriteGlobal: v_3 already read-write
+#! #I  MakeReadWriteGlobal: v_4 already read-write
+#! #I  MakeReadWriteGlobal: v_5 already read-write
+AssignSetOfGeneratingMorphisms( C, "m_" );
+#! #I  MakeReadWriteGlobal: m_x already read-write
+#! #I  MakeReadWriteGlobal: m_s already read-write
+#! #I  MakeReadWriteGlobal: m_a already read-write
+#! #I  MakeReadWriteGlobal: m_c already read-write
+#! #I  MakeReadWriteGlobal: m_e already read-write
+#! #I  MakeReadWriteGlobal: m_b already read-write
+#! #I  MakeReadWriteGlobal: m_d already read-write
+#! #I  MakeReadWriteGlobal: m_t already read-write
+#! #I  MakeReadWriteGlobal: m_y already read-write
 C.5;
 #! (5)
 ObjectIndex( C.5 );
