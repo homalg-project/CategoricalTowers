@@ -6,10 +6,10 @@
                          [1X Tools for CategoricalTowers [101X
   
   
-                                   2025.06-01
+                                   2025.06-02
   
   
-                                  10 June 2025
+                                  12 June 2025
   
   
                                 Mohamed Barakat
@@ -64,11 +64,6 @@
       2.6-2 EmbeddingOfSumOfImagesOfAllMorphisms
       2.6-3 SumOfImagesOfAllMorphisms
     2.7 [33X[0;0YSystems of homogeneous linear equations in linear categories[133X
-      2.7-1 MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory
-      2.7-2 MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory
-      2.7-3 BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory
-      2.7-4 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory
-      2.7-5 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory
     2.8 [33X[0;0YLimit[133X
       2.8-1 LimitPair
       2.8-2 Limit
@@ -86,35 +81,31 @@
       2.9-7 PositionsOfSublist
       2.9-8 AllCoproducts
     2.10 [33X[0;0YAdd-methods[133X
-      2.10-1 AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory
-      2.10-2 AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory
-      2.10-3 AddBiasedRelativeWeakFiberProduct
-      2.10-4 AddColimit
-      2.10-5 AddEmbeddingOfSumOfImagesOfAllMorphisms
-      2.10-6 AddInjectionOfCofactorOfColimit
-      2.10-7 AddInjectionOfCofactorOfColimitWithGivenColimit
-      2.10-8 AddIsWeakInitial
-      2.10-9 AddIsWeakTerminal
-      2.10-10 AddLimit
-      2.10-11 AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory
-      2.10-12 AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory
-      2.10-13 AddMorphismBetweenCoproducts
-      2.10-14 AddMorphismBetweenCoproductsWithGivenCoproducts
-      2.10-15 AddMorphismBetweenDirectProducts
-      2.10-16 AddMorphismBetweenDirectProductsWithGivenDirectProducts
-      2.10-17 AddMorphismOntoSumOfImagesOfAllMorphisms
-      2.10-18 AddProjectionInFactorOfLimit
-      2.10-19 AddProjectionInFactorOfLimitWithGivenLimit
-      2.10-20 AddProjectionOfBiasedRelativeWeakFiberProduct
-      2.10-21 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
-      2.10-22 AddRelativeLift
-      2.10-23 AddSumOfImagesOfAllMorphisms
-      2.10-24 AddUniversalMorphismFromColimit
-      2.10-25 AddUniversalMorphismFromColimitWithGivenColimit
-      2.10-26 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct
-      2.10-27 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
-      2.10-28 AddUniversalMorphismIntoLimit
-      2.10-29 AddUniversalMorphismIntoLimitWithGivenLimit
+      2.10-1 AddBiasedRelativeWeakFiberProduct
+      2.10-2 AddColimit
+      2.10-3 AddEmbeddingOfSumOfImagesOfAllMorphisms
+      2.10-4 AddInjectionOfCofactorOfColimit
+      2.10-5 AddInjectionOfCofactorOfColimitWithGivenColimit
+      2.10-6 AddIsWeakInitial
+      2.10-7 AddIsWeakTerminal
+      2.10-8 AddLimit
+      2.10-9 AddMorphismBetweenCoproducts
+      2.10-10 AddMorphismBetweenCoproductsWithGivenCoproducts
+      2.10-11 AddMorphismBetweenDirectProducts
+      2.10-12 AddMorphismBetweenDirectProductsWithGivenDirectProducts
+      2.10-13 AddMorphismOntoSumOfImagesOfAllMorphisms
+      2.10-14 AddProjectionInFactorOfLimit
+      2.10-15 AddProjectionInFactorOfLimitWithGivenLimit
+      2.10-16 AddProjectionOfBiasedRelativeWeakFiberProduct
+      2.10-17 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
+      2.10-18 AddRelativeLift
+      2.10-19 AddSumOfImagesOfAllMorphisms
+      2.10-20 AddUniversalMorphismFromColimit
+      2.10-21 AddUniversalMorphismFromColimitWithGivenColimit
+      2.10-22 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct
+      2.10-23 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct
+      2.10-24 AddUniversalMorphismIntoLimit
+      2.10-25 AddUniversalMorphismIntoLimitWithGivenLimit
   3 [33X[0;0YToolsForCategoricalTowers automatic generated documentation[133X
     3.1 [33X[0;0YToolsForCategoricalTowers automatic generated documentation of global
     functions[133X
