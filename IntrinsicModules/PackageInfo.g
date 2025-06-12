@@ -11,9 +11,9 @@ SetPackageInfo( rec(
 PackageName := "IntrinsicModules",
 Subtitle := "Finitely presented modules over computable rings allowing multiple presentations and the notion of elements",
 
-Version := "2024.09-01",
-Date := "2024-09-04",
-Date := "2024-09-04",
+Version := "2025.06-01",
+Date := "2025-06-12",
+Date := "2025-06-12",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -87,7 +87,7 @@ Dependencies := rec(
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                    [ "MatricesForHomalg", ">= 2023.10-01" ],
                    [ "Modules", ">= 2021.04-01" ],
-                   [ "CAP", ">= 2023.12-02" ],
+                   [ "CAP", ">= 2025.06-05" ],
                    [ "MonoidalCategories", ">= 2024.02-02" ],
                    [ "CartesianCategories", ">= 2024.02-02" ],
                    [ "GeneralizedMorphismsForCAP", ">= 2020.10-01" ],
