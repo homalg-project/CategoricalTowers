@@ -255,40 +255,48 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     
     SetBaseObject( Slice_over_B, B );
     
-    AddIsWellDefinedForObjects( Slice_over_B,
-      function( cat, a )
-        local C, m;
+    if CanCompute( C, "IsEqualForObjects" ) and CanCompute( C, "IsWellDefinedForMorphisms" ) then
         
-        C := AmbientCategory( cat );
+        AddIsWellDefinedForObjects( Slice_over_B,
+          function( cat, a )
+            local C, m;
+            
+            C := AmbientCategory( cat );
+            
+            m := UnderlyingMorphism( a );
+            
+            return IsEqualForObjects( C, Target( m ), BaseObject( cat ) ) and
+                   IsWellDefinedForMorphisms( C, m );
+            
+        end, OperationWeight( C, "IsEqualForObjects" ) + OperationWeight( C, "IsWellDefinedForMorphisms" ) );
         
-        m := UnderlyingMorphism( a );
-        
-        return IsEqualForObjects( C, Target( m ), BaseObject( cat ) ) and
-               IsWellDefinedForMorphisms( C, m );
-        
-    end, OperationWeight( C, "IsEqualForObjects" ) + OperationWeight( C, "IsWellDefinedForMorphisms" ) );
+    fi;
     
-    AddIsWellDefinedForMorphisms( Slice_over_B,
-      function( cat, phi )
-        local C, mS, mT, phi_underlying;
+    if ForAll( [ "IsEqualForObjects", "IsWellDefinedForMorphisms", "PreCompose", "IsCongruentForMorphisms" ], oper -> CanCompute( C, oper ) ) then
         
-        C := AmbientCategory( cat );
+        AddIsWellDefinedForMorphisms( Slice_over_B,
+          function( cat, phi )
+            local C, mS, mT, phi_underlying;
+            
+            C := AmbientCategory( cat );
+            
+            mS := UnderlyingMorphism( Source( phi ) );
+            mT := UnderlyingMorphism( Target( phi ) );
+            
+            phi_underlying := UnderlyingCell( phi );
+            
+            return IsEqualForObjects( C, Source( mS ), Source( phi_underlying ) ) and
+                   IsEqualForObjects( C, Source( mT ), Target( phi_underlying ) ) and
+                   IsWellDefinedForMorphisms( C, phi_underlying ) and
+                   IsCongruentForMorphisms( C, mS, PreCompose( C, phi_underlying, mT ) );
+            
+        end,
+          2 * OperationWeight( C, "IsEqualForObjects" ) +
+          OperationWeight( C, "IsWellDefinedForMorphisms" ) +
+          OperationWeight( C, "PreCompose" ) +
+          OperationWeight( C, "IsCongruentForMorphisms" ) );
         
-        mS := UnderlyingMorphism( Source( phi ) );
-        mT := UnderlyingMorphism( Target( phi ) );
-        
-        phi_underlying := UnderlyingCell( phi );
-        
-        return IsEqualForObjects( C, Source( mS ), Source( phi_underlying ) ) and
-               IsEqualForObjects( C, Source( mT ), Target( phi_underlying ) ) and
-               IsWellDefinedForMorphisms( C, phi_underlying ) and
-               IsCongruentForMorphisms( C, mS, PreCompose( C, phi_underlying, mT ) );
-        
-    end,
-      2 * OperationWeight( C, "IsEqualForObjects" ) +
-      OperationWeight( C, "IsWellDefinedForMorphisms" ) +
-      OperationWeight( C, "PreCompose" ) +
-      OperationWeight( C, "IsCongruentForMorphisms" ) );
+    fi;
     
     AddIsEqualForObjects( Slice_over_B,
       function( cat, a, b )
@@ -303,19 +311,27 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     end, OperationWeight( C, "IsEqualForObjects" ) + OperationWeight( C, "IsEqualForMorphisms" ) );
     
-    AddIsEqualForMorphisms( Slice_over_B,
-      function( cat, phi, psi )
+    if CanCompute( C, "IsEqualForMorphisms" ) then
         
-        return IsEqualForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        AddIsEqualForMorphisms( Slice_over_B,
+          function( cat, phi, psi )
+            
+            return IsEqualForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+            
+        end, OperationWeight( C, "IsEqualForMorphisms" ) );
         
-    end, OperationWeight( C, "IsEqualForMorphisms" ) );
+    fi;
     
-    AddIsCongruentForMorphisms( Slice_over_B,
-      function( cat, phi, psi )
+    if CanCompute( C, "IsCongruentForMorphisms" ) then
         
-        return IsCongruentForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        AddIsCongruentForMorphisms( Slice_over_B,
+          function( cat, phi, psi )
+            
+            return IsCongruentForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+            
+        end, OperationWeight( C, "IsCongruentForMorphisms" ) );
         
-    end, OperationWeight( C, "IsCongruentForMorphisms" ) );
+    fi;
     
     if CanCompute( C, "IsEqualForCacheForMorphisms" ) then
         
@@ -335,33 +351,49 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     fi;
     
-    AddInitialObject( Slice_over_B,
-      function( cat )
+    if CanCompute( C, "UniversalMorphismFromInitialObject" ) then
         
-        return ObjectConstructor( cat, UniversalMorphismFromInitialObject( AmbientCategory( cat ), BaseObject( cat ) ) );
+        AddInitialObject( Slice_over_B,
+          function( cat )
+            
+            return ObjectConstructor( cat, UniversalMorphismFromInitialObject( AmbientCategory( cat ), BaseObject( cat ) ) );
+            
+        end, OperationWeight( C, "UniversalMorphismFromInitialObject" ) );
         
-    end, OperationWeight( C, "UniversalMorphismFromInitialObject" ) );
+    fi;
     
-    AddTerminalObject( Slice_over_B,
-      function( cat )
+    if CanCompute( C, "IdentityMorphism" ) then
         
-        return ObjectConstructor( cat, IdentityMorphism( AmbientCategory( cat ), BaseObject( cat ) ) );
+        AddTerminalObject( Slice_over_B,
+          function( cat )
+            
+            return ObjectConstructor( cat, IdentityMorphism( AmbientCategory( cat ), BaseObject( cat ) ) );
+            
+        end, OperationWeight( C, "IdentityMorphism" ) );
         
-    end, OperationWeight( C, "IdentityMorphism" ) );
+    fi;
     
-    AddIsTerminal( Slice_over_B,
-      function( cat, M )
+    if CanCompute( C, "IsIsomorphism" ) then
         
-        return IsIsomorphism( AmbientCategory( cat ), UnderlyingMorphism( M ) );
+        AddIsTerminal( Slice_over_B,
+          function( cat, M )
+            
+            return IsIsomorphism( AmbientCategory( cat ), UnderlyingMorphism( M ) );
+            
+        end, OperationWeight( C, "IsIsomorphism" ) );
         
-    end, OperationWeight( C, "IsIsomorphism" ) );
+    fi;
     
-    AddUniversalMorphismIntoTerminalObject( Slice_over_B,
-      function( cat, M )
+    if CanCompute( C, "TerminalObject" ) then
         
-        return MorphismConstructor( cat, M, UnderlyingMorphism( M ), TerminalObject( cat ) );
+        AddUniversalMorphismIntoTerminalObject( Slice_over_B,
+          function( cat, M )
+            
+            return MorphismConstructor( cat, M, UnderlyingMorphism( M ), TerminalObject( cat ) );
+            
+        end, OperationWeight( Slice_over_B, "TerminalObject" ) );
         
-    end, OperationWeight( Slice_over_B, "TerminalObject" ) );
+    fi;
     
     if CanCompute( C, "ZeroObject" ) and CanCompute( C, "IsZeroForMorphisms" ) then
         
