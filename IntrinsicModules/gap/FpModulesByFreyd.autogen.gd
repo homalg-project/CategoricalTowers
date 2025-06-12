@@ -247,7 +247,7 @@
 #! * <Ref BookName="CAP" Func="LiftAlongMonomorphism" Label="for Is" />
 #! * <Ref BookName="ToolsForCategoricalTowers" Func="Limit" Label="for Is" />
 #! * <Ref BookName="CAP" Func="LinearCombinationOfMorphisms" Label="for Is" />
-#! * <Ref BookName="ToolsForCategoricalTowers" Func="MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory" Label="for Is" />
+#! * <Ref BookName="CAP" Func="MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MonoidalPostComposeMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MonoidalPostComposeMorphismWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MonoidalPreComposeMorphism" Label="for Is" />
