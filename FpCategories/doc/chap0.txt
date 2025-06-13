@@ -6,10 +6,10 @@
       [1X Finitely presented categories by generating quivers and relations [101X
   
   
-                                   2025.05-01
+                                   2025.06-01
   
   
-                                  31 May 2025
+                                  13 June 2025
   
   
                                 Mohamed Barakat
@@ -81,6 +81,8 @@
       2.2-4 GroebnerBasisOfDefiningRelations
       2.2-5 ObjectIndex
       2.2-6 CanonicalRepresentative
+      2.2-7 AssignSetOfObjects
+      2.2-8 AssignSetOfGeneratingMorphisms
     2.3 [33X[0;0YGAP categories[133X
       2.3-1 IsQuotientOfPathCategory
       2.3-2 IsQuotientOfPathCategoryObject

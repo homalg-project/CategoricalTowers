@@ -35,6 +35,23 @@
     [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( C );[127X[104X
     [4X[28X[ x:(0) -≻ (0), s:(0) -≻ (1), a:(1) -≻ (2), c:(1) -≻ (3), e:(1) -≻ (4),[128X[104X
     [4X[28X  b:(2) -≻ (4), d:(3) -≻ (4), t:(4) -≻ (5), y:(5) -≻ (5) ][128X[104X
+    [4X[25Xgap>[125X [27XAssignSetOfObjects( C, "v_" );[127X[104X
+    [4X[28X#I  MakeReadWriteGlobal: v_0 already read-write[128X[104X
+    [4X[28X#I  MakeReadWriteGlobal: v_1 already read-write[128X[104X
+    [4X[28X#I  MakeReadWriteGlobal: v_2 already read-write[128X[104X
+    [4X[28X#I  MakeReadWriteGlobal: v_3 already read-write[128X[104X
+    [4X[28X#I  MakeReadWriteGlobal: v_4 already read-write[128X[104X
+    [4X[28X#I  MakeReadWriteGlobal: v_5 already read-write[128X[104X
+    [4X[25Xgap>[125X [27XAssignSetOfGeneratingMorphisms( C, "m_" );[127X[104X
+    [4X[28X#I  MakeReadWriteGlobal: m_x already read-write[128X[104X
+    [4X[28X#I  MakeReadWriteGlobal: m_s already read-write[128X[104X
+    [4X[28X#I  MakeReadWriteGlobal: m_a already read-write[128X[104X
+    [4X[28X#I  MakeReadWriteGlobal: m_c already read-write[128X[104X
+    [4X[28X#I  MakeReadWriteGlobal: m_e already read-write[128X[104X
+    [4X[28X#I  MakeReadWriteGlobal: m_b already read-write[128X[104X
+    [4X[28X#I  MakeReadWriteGlobal: m_d already read-write[128X[104X
+    [4X[28X#I  MakeReadWriteGlobal: m_t already read-write[128X[104X
+    [4X[28X#I  MakeReadWriteGlobal: m_y already read-write[128X[104X
     [4X[25Xgap>[125X [27XC.5;[127X[104X
     [4X[28X(5)[128X[104X
     [4X[25Xgap>[125X [27XObjectIndex( C.5 );[127X[104X
@@ -235,6 +252,24 @@
   [33X[0;0YThe input is a morphism [3Xalpha[103X in the quotient category [3XqC[103X of a path category
   [10XC[110X.  The  output is a canonical representative of [3Xalpha[103X in [10XC[110X. Equal morphisms
   in [3XqC[103X have the same canonical representative.[133X
+  
+  [1X2.2-7 AssignSetOfObjects[101X
+  
+  [33X[1;0Y[29X[2XAssignSetOfObjects[102X( [3XqC[103X[, [3Xstr[103X] ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YAssigns  the  objects  of [3XqC[103X to global variables. Names of the variables are
+  the  concatenation  of [3Xstr[103X with the labels of the objects. The default value
+  of [3Xstr[103X is the empty string.[133X
+  
+  [1X2.2-8 AssignSetOfGeneratingMorphisms[101X
+  
+  [33X[1;0Y[29X[2XAssignSetOfGeneratingMorphisms[102X( [3XqC[103X[, [3Xstr[103X] ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YAssigns  the  generating  morphisms  of [3XqC[103X to global variables. Names of the
+  variables  are  the  concatenation  of [3Xstr[103X with the labels of the generating
+  morphisms. The default value of [3Xstr[103X is the empty string.[133X
   
   
   [1X2.3 [33X[0;0YGAP categories[133X[101X
