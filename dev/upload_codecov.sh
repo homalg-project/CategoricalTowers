@@ -21,85 +21,92 @@ curl -O https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig
 gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
 shasum -a 256 -c codecov.SHA256SUM
 
+# read the token
+if [ -z "$CODECOV_TOKEN" ]; then
+  echo -e "\033[0;33mCODECOV_TOKEN is not set. Proceeding without token.\033[0m"
+else
+  echo -e "\033[0;32mUsing CODECOV_TOKEN from environment variable.\033[0m"
+fi
+
 # execute
 chmod +x codecov
-while ! ./codecov -Z -v -s ../ -F Algebroids; do
+while ! ./codecov -Z -v -s ../ -F Algebroids -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects; do
+while ! ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F CatReps; do
+while ! ./codecov -Z -v -s ../ -F CatReps -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F ExteriorPowersCategories; do
+while ! ./codecov -Z -v -s ../ -F ExteriorPowersCategories -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F FiniteCocompletions; do
+while ! ./codecov -Z -v -s ../ -F FiniteCocompletions -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F FpCategories; do
+while ! ./codecov -Z -v -s ../ -F FpCategories -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F FunctorCategories; do
+while ! ./codecov -Z -v -s ../ -F FunctorCategories -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F GradedCategories; do
+while ! ./codecov -Z -v -s ../ -F GradedCategories -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F InternalModules; do
+while ! ./codecov -Z -v -s ../ -F InternalModules -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F IntrinsicCategories; do
+while ! ./codecov -Z -v -s ../ -F IntrinsicCategories -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F IntrinsicGradedModules; do
+while ! ./codecov -Z -v -s ../ -F IntrinsicGradedModules -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F IntrinsicModules; do
+while ! ./codecov -Z -v -s ../ -F IntrinsicModules -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F LazyCategories; do
+while ! ./codecov -Z -v -s ../ -F LazyCategories -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F Locales; do
+while ! ./codecov -Z -v -s ../ -F Locales -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F PreSheaves; do
+while ! ./codecov -Z -v -s ../ -F PreSheaves -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F QuotientCategories; do
+while ! ./codecov -Z -v -s ../ -F QuotientCategories -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F SubcategoriesForCAP; do
+while ! ./codecov -Z -v -s ../ -F SubcategoriesForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F ToolsForCategoricalTowers; do
+while ! ./codecov -Z -v -s ../ -F ToolsForCategoricalTowers -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F Toposes; do
+while ! ./codecov -Z -v -s ../ -F Toposes -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F ZariskiFrames; do
+while ! ./codecov -Z -v -s ../ -F ZariskiFrames -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
