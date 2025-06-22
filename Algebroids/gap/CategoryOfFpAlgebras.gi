@@ -259,7 +259,7 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddIsWellDefinedForMorphisms( FpAlg_k,
       function( FpAlg_k, algebra_morphism )
-        local S, T, datumS, datumT, datum, L, o, functor_on_mors, image_of_source_relations, GB, reds;
+        local S, T, datumS, datumT, datum, L, o, functor_on_mors, image_of_source_relations, GB, reds, bool, extract_datum, obstruction;
         
         S := Source( algebra_morphism );
         T := Target( algebra_morphism );
@@ -289,7 +289,26 @@ InstallMethod( CategoryOfFpAlgebras,
         
         reds := List( image_of_source_relations, image -> ReductionOfMorphism( L, image, GB ) );
         
-        return ForAll( reds, red -> IsZeroForMorphisms( L, red ) );
+        reds := Filtered( reds, red -> not IsZeroForMorphisms( L, red ) );
+        
+        bool := IsEmpty( reds );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        extract_datum :=
+          function( mor )
+            return MorphismDatum( mor )[1];
+        end;
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        obstruction := ValueOption( "obstruction" );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        if not bool and not obstruction = fail then
+            Add( obstruction, Pair( Concatenation( List( reds, extract_datum ) ), "IsWellDefinedForMorphisms" ) );
+            return true;
+        fi;
+        
+        return bool;
         
     end );
     
@@ -307,16 +326,26 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddPreCompose( FpAlg_k,
       function( FpAlg_k, pre_morphism, post_morphism )
-        local o, post_functor_on_mors;
+        local o, post_functor_on_mors, target, L, GB, images;
         
         o := ObjectDatum( Target( post_morphism ) )[2];
         
         post_functor_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, post_morphism )[2][2];
         
+        target := Target( post_morphism );
+        
+        L := AssociatedLinearClosureOfPathCategory( target );
+        
+        GB := GroebnerBasisOfDefiningRelations( target );
+        
+        images := List( MorphismDatum( FpAlg_k, pre_morphism ), image -> post_functor_on_mors( o, image, o ) );
+        
+        images := List( images, image -> ReductionOfMorphism( L, image, GB ) );
+        
         return MorphismConstructor( FpAlg_k,
                        Source( pre_morphism ),
-                       List( MorphismDatum( FpAlg_k, pre_morphism ), image -> post_functor_on_mors( o, image, o ) ),
-                       Target( post_morphism ) );
+                       images,
+                       target );
         
     end );
     
@@ -1098,24 +1127,24 @@ InstallMethod( \/,
         [ IsCapCategory and IsLinearCategoryOverCommutativeRing, IsCategoryOfFinitelyPresentedAlgebras ],
         
   function( cat, FpAlg_k )
-    local k, A, relations, object, generators, get_labels;
+    local k, L, relations, object, generators, get_labels;
     
     k := CommutativeRingOfLinearCategory( cat );
     
     if IsQuotientCategory( cat ) then
         Assert( 0, HasDefiningRelations( cat ) );
-        A := UnderlyingCategory( cat );
+        L := UnderlyingCategory( cat );
         relations := DefiningRelations( cat );
     elif IsLinearClosure( cat ) then
-        A := cat;
+        L := cat;
         relations := [ ];
     else
         Error( "the first argument `cat` should either be an `IsQuotientCategory` or an `IsLinearClosure`\n" );
     fi;
 
-    object := SetOfObjects( A )[1];
+    object := SetOfObjects( L )[1];
     
-    generators := SetOfGeneratingMorphisms( A );
+    generators := SetOfGeneratingMorphisms( L );
     
     get_labels :=
       function( gen )
@@ -1133,7 +1162,53 @@ InstallMethod( \/,
     
     return ObjectConstructor( FpAlg_k,
                    NTuple( 7,
-                           A,
+                           L,
+                           object,
+                           Length( generators ),
+                           generators,
+                           Length( relations ),
+                           relations,
+                           List( generators, get_labels ) ) );
+    
+end );
+
+##
+InstallOtherMethod( \/,
+        "for a for a finitely presented algebra and a list",
+        [ IsObjectInCategoryOfFpAlgebras, IsList ],
+        
+  function( A, relations )
+    local FpAlg_k, L, k, object, generators, get_labels;
+    
+    FpAlg_k := CapCategory( A );
+    
+    L := AssociatedLinearClosureOfPathCategory( A );
+    
+    Assert( 0, Length( DefiningRelations( A ) ) = 0 );
+    
+    k := CommutativeRingOfLinearCategory( L );
+    
+    object := SetOfObjects( L )[1];
+    
+    generators := SetOfGeneratingMorphisms( L );
+    
+    get_labels :=
+      function( gen )
+        local coef, supp, g;
+        
+        coef := CoefficientsList( gen );
+        supp := SupportMorphisms( gen );
+        
+        Assert( 0, Length( coef ) = 1 and coef[1] in k and IsOne( coef[1] ) );
+        Assert( 0, Length( supp ) = 1 );
+        
+        return MorphismLabel( supp[1] );
+        
+    end;
+    
+    return ObjectConstructor( FpAlg_k,
+                   NTuple( 7,
+                           L,
                            object,
                            Length( generators ),
                            generators,
