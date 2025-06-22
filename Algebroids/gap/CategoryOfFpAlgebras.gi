@@ -307,16 +307,26 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddPreCompose( FpAlg_k,
       function( FpAlg_k, pre_morphism, post_morphism )
-        local o, post_functor_on_mors;
+        local o, post_functor_on_mors, target, L, GB, images;
         
         o := ObjectDatum( Target( post_morphism ) )[2];
         
         post_functor_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, post_morphism )[2][2];
         
+        target := Target( post_morphism );
+        
+        L := AssociatedLinearClosureOfPathCategory( target );
+        
+        GB := GroebnerBasisOfDefiningRelations( target );
+        
+        images := List( MorphismDatum( FpAlg_k, pre_morphism ), image -> post_functor_on_mors( o, image, o ) );
+        
+        images := List( images, image -> ReductionOfMorphism( L, image, GB ) );
+        
         return MorphismConstructor( FpAlg_k,
                        Source( pre_morphism ),
-                       List( MorphismDatum( FpAlg_k, pre_morphism ), image -> post_functor_on_mors( o, image, o ) ),
-                       Target( post_morphism ) );
+                       images,
+                       target );
         
     end );
     
