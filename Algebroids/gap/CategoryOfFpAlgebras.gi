@@ -1098,24 +1098,24 @@ InstallMethod( \/,
         [ IsCapCategory and IsLinearCategoryOverCommutativeRing, IsCategoryOfFinitelyPresentedAlgebras ],
         
   function( cat, FpAlg_k )
-    local k, A, relations, object, generators, get_labels;
+    local k, L, relations, object, generators, get_labels;
     
     k := CommutativeRingOfLinearCategory( cat );
     
     if IsQuotientCategory( cat ) then
         Assert( 0, HasDefiningRelations( cat ) );
-        A := UnderlyingCategory( cat );
+        L := UnderlyingCategory( cat );
         relations := DefiningRelations( cat );
     elif IsLinearClosure( cat ) then
-        A := cat;
+        L := cat;
         relations := [ ];
     else
         Error( "the first argument `cat` should either be an `IsQuotientCategory` or an `IsLinearClosure`\n" );
     fi;
 
-    object := SetOfObjects( A )[1];
+    object := SetOfObjects( L )[1];
     
-    generators := SetOfGeneratingMorphisms( A );
+    generators := SetOfGeneratingMorphisms( L );
     
     get_labels :=
       function( gen )
@@ -1133,7 +1133,7 @@ InstallMethod( \/,
     
     return ObjectConstructor( FpAlg_k,
                    NTuple( 7,
-                           A,
+                           L,
                            object,
                            Length( generators ),
                            generators,
