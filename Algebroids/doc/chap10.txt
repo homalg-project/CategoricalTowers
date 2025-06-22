@@ -99,7 +99,10 @@
     [4X[25Xgap>[125X [27XL1 := F2[P1];[127X[104X
     [4X[28XGF(2)-LinearClosure( PathCategory( \[128X[104X
     [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XQ1 := L1 / [ L1.x^2 - L1.x,  L1.y^3 - L1.y,  L1.xy - L1.y * (L1.x+L1.id_o) ];[127X[104X
+    [4X[25Xgap>[125X [27Xrelations1 := [ L1.x^2 - L1.x,  L1.y^3 - L1.y,  L1.xy - L1.y * (L1.x+L1.id_o) ];[127X[104X
+    [4X[28X[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o),\[128X[104X
+    [4X[28X  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ][128X[104X
+    [4X[25Xgap>[125X [27XQ1 := L1 / relations1;[127X[104X
     [4X[28XGF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) / \[128X[104X
     [4X[28X[ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
     [4X[25Xgap>[125X [27XDimension( Q1 );[127X[104X
@@ -111,6 +114,8 @@
     [4X[28X6[128X[104X
     [4X[25Xgap>[125X [27XA1 := Q1 / Alg_F2;[127X[104X
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XA1 = ( L1 / Alg_F2 ) / relations1;[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( A1 );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDimension( A1 );[127X[104X

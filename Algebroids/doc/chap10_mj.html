@@ -179,7 +179,10 @@ PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L1 := F2[P1];</span>
 GF(2)-LinearClosure( PathCategory( \
 FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q1 := L1 / [ L1.x^2 - L1.x,  L1.y^3 - L1.y,  L1.xy - L1.y * (L1.x+L1.id_o) ];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">relations1 := [ L1.x^2 - L1.x,  L1.y^3 - L1.y,  L1.xy - L1.y * (L1.x+L1.id_o) ];</span>
+[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o),\
+  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q1 := L1 / relations1;</span>
 GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) / \
 [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( Q1 );</span>
@@ -191,6 +194,8 @@ relations
 6
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A1 := Q1 / Alg_F2;</span>
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A1 = ( L1 / Alg_F2 ) / relations1;</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( A1 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( A1 );</span>
