@@ -1173,6 +1173,52 @@ InstallMethod( \/,
 end );
 
 ##
+InstallOtherMethod( \/,
+        "for a for a finitely presented algebra and a list",
+        [ IsObjectInCategoryOfFpAlgebras, IsList ],
+        
+  function( A, relations )
+    local FpAlg_k, L, k, object, generators, get_labels;
+    
+    FpAlg_k := CapCategory( A );
+    
+    L := AssociatedLinearClosureOfPathCategory( A );
+    
+    Assert( 0, Length( DefiningRelations( A ) ) = 0 );
+    
+    k := CommutativeRingOfLinearCategory( L );
+    
+    object := SetOfObjects( L )[1];
+    
+    generators := SetOfGeneratingMorphisms( L );
+    
+    get_labels :=
+      function( gen )
+        local coef, supp, g;
+        
+        coef := CoefficientsList( gen );
+        supp := SupportMorphisms( gen );
+        
+        Assert( 0, Length( coef ) = 1 and coef[1] in k and IsOne( coef[1] ) );
+        Assert( 0, Length( supp ) = 1 );
+        
+        return MorphismLabel( supp[1] );
+        
+    end;
+    
+    return ObjectConstructor( FpAlg_k,
+                   NTuple( 7,
+                           L,
+                           object,
+                           Length( generators ),
+                           generators,
+                           Length( relations ),
+                           relations,
+                           List( generators, get_labels ) ) );
+    
+end );
+
+##
 InstallMethod( \.,
         "for a finitely presented algebra and a positive integer",
         [ IsObjectInCategoryOfFpAlgebras, IsPosInt ],

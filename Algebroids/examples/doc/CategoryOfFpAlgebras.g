@@ -36,7 +36,10 @@ P1 := PathCategory( q1 );
 L1 := F2[P1];
 #! GF(2)-LinearClosure( PathCategory( \
 #! FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
-Q1 := L1 / [ L1.x^2 - L1.x,  L1.y^3 - L1.y,  L1.xy - L1.y * (L1.x+L1.id_o) ];
+relations1 := [ L1.x^2 - L1.x,  L1.y^3 - L1.y,  L1.xy - L1.y * (L1.x+L1.id_o) ];
+#! [ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o),\
+#!   1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
+Q1 := L1 / relations1;
 #! GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) / \
 #! [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 Dimension( Q1 );
@@ -48,6 +51,8 @@ Dimension( AQ1 );
 #! 6
 A1 := Q1 / Alg_F2;
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
+A1 = ( L1 / Alg_F2 ) / relations1;
+#! true
 IsWellDefined( A1 );
 #! true
 Dimension( A1 );
