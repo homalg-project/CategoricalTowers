@@ -41,11 +41,21 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     FpAlg_k :=
-      CreateCapCategory( name,
+      CreateCapCategoryWithDataTypes( name,
               IsCategoryOfFinitelyPresentedAlgebras,
               IsObjectInCategoryOfFpAlgebras,
               IsMorphismInCategoryOfFpAlgebras,
-              IsCapCategoryTwoCell );
+              IsCapCategoryTwoCell,
+              CapJitDataTypeOfNTupleOf( 7,
+                      rec( category := false, filter := IsLinearClosure ),
+                      rec( category := false, filter := IsLinearClosureObject ),
+                      IsBigInt,
+                      CapJitDataTypeOfListOf( rec( category := false, filter := IsLinearClosureMorphism ) ),
+                      IsBigInt,
+                      CapJitDataTypeOfListOf( rec( category := false, filter := IsLinearClosureMorphism ) ),
+                      CapJitDataTypeOfListOf( IsStringRep ) ),
+              CapJitDataTypeOfListOf( rec( category := false, filter := IsLinearClosureMorphism ) ),
+              fail );
     
     FpAlg_k!.supports_empty_limits := true;
     
@@ -65,16 +75,10 @@ InstallMethod( CategoryOfFpAlgebras,
       function( FpAlg_k, septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens )
         local L, unique_object, nr_of_generators, generators, nr_of_relations, relations, names_of_generators;
         
-        #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0,
-                IsList( septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens ) and
-                Length( septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens ) = 7 );
-        
         L := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[1];
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0,
-                IsLinearClosure( L ) and
                 IsPathCategory( UnderlyingCategory( L ) ) and
                 HasCommutativeRingOfLinearCategory( L ) and
                 IsIdenticalObj( k, CommutativeRingOfLinearCategory( L ) ) );
@@ -82,37 +86,24 @@ InstallMethod( CategoryOfFpAlgebras,
         unique_object := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[2];
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0,
-                IsLinearClosureObject( unique_object ) and
-                IsIdenticalObj( L, CapCategory( unique_object ) ) );
+        Assert( 0, IsIdenticalObj( L, CapCategory( unique_object ) ) );
         
         nr_of_generators := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[3];
         generators := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[4];
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0,
-                IsInt( nr_of_generators ) and
-                IsList( generators ) and
-                Length( generators ) = nr_of_generators and
-                ForAll( generators, IsLinearClosureMorphism ) );
+        Assert( 0, Length( generators ) = nr_of_generators );
         
         nr_of_relations := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[5];
         relations := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[6];
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0,
-                IsInt( nr_of_relations ) and
-                IsList( relations ) and
-                Length( relations ) = nr_of_relations and
-                ForAll( relations, IsLinearClosureMorphism ) );
+        Assert( 0, Length( relations ) = nr_of_relations );
         
         names_of_generators := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[7];
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0,
-                IsList( names_of_generators ) and
-                Length( names_of_generators ) = nr_of_generators and
-                ForAll( names_of_generators, IsStringRep ) );
+        Assert( 0, Length( names_of_generators ) = nr_of_generators );
         
         return CreateCapCategoryObjectWithAttributes( FpAlg_k,
                        DefiningSeptupleOfFinitelyPresentedAlgebra, septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens );
@@ -130,11 +121,6 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddMorphismConstructor( FpAlg_k,
       function( FpAlg_k, source, list_of_images, target )
-        
-        #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0,
-                IsList( list_of_images ) and
-                ForAll( list_of_images, IsLinearClosureMorphism ) );
         
         return CreateCapCategoryMorphismWithAttributes( FpAlg_k,
                        source,
@@ -219,36 +205,21 @@ InstallMethod( CategoryOfFpAlgebras,
         
         datum := ObjectDatum( FpAlg_k, algebra );
         
-        if not IsList( datum ) then
-            return false;
-        elif not Length( datum ) = 7 then
-            return false;
-        elif not ( IsLinearClosure( datum[1] ) and
-                IsPathCategory( UnderlyingCategory( datum[1] ) ) and
-                HasCommutativeRingOfLinearCategory( datum[1] ) and
-                IsIdenticalObj( k, CommutativeRingOfLinearCategory( datum[1] ) ) ) then
-            return false;
-        elif not IsLinearClosureObject( datum[2] ) then
+        if not IsPathCategory( UnderlyingCategory( datum[1] ) ) and
+           HasCommutativeRingOfLinearCategory( datum[1] ) and
+           IsIdenticalObj( k, CommutativeRingOfLinearCategory( datum[1] ) ) then
             return false;
         elif not IsIdenticalObj( CapCategory( datum[2] ), datum[1] ) then
             return false;
-        elif not IsInt( datum[3] ) then
-            return false;
-        elif not ( IsList( datum[4] ) and Length( datum[4] ) = datum[3] ) then
-            return false;
-        elif not ForAll( datum[4], IsLinearClosureMorphism ) then
+        elif not Length( datum[4] ) = datum[3] then
             return false;
         elif not ForAll( datum[4], gen -> IsIdenticalObj( CapCategory( gen ), datum[1] ) ) then
             return false;
-        elif not IsInt( datum[5] ) then
-            return false;
-        elif not ( IsList( datum[6] ) and Length( datum[6] ) = datum[5] ) then
+        elif not Length( datum[6] ) = datum[5] then
             return false;
         elif not ForAll( datum[6], rel -> IsIdenticalObj( CapCategory( rel ), datum[1] ) ) then
             return false;
-        elif not ( IsList( datum[7] ) and Length( datum[7] ) = datum[3] ) then
-            return false;
-        elif not ForAll( datum[7], IsStringRep ) then
+        elif not Length( datum[7] ) = datum[3] then
             return false;
         fi;
         
