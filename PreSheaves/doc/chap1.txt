@@ -157,6 +157,8 @@
     [4X[28X* IsStrictCartesianCategory[128X[104X
     [4X[28X* IsStrictCocartesianCategory[128X[104X
     [4X[28X* IsStrictMonoidalCategory[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategoryStructureGivenByCoproduct[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategoryStructureGivenByDirectProduct[128X[104X
     [4X[28X* IsTerminalCategory[128X[104X
     [4X[25Xgap>[125X [27Xi := InitialObject( T );[127X[104X
     [4X[28X<An object in PreSheaves( InitialCategory( ), InitialCategory( ) )>[128X[104X
