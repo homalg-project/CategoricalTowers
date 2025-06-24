@@ -262,6 +262,40 @@
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
+  [33X[0;0YThe  category  of  (finitely  presented)  algebras is not codistributive. An
+  example   was  suggested  by  a  referee  in  the  paper  the  paper  titled
+  "Distributivity  ot  coproducts over products" by B. A. Davey and H. Werner,
+  Algebra Universalis, 12 (1981) 387-394.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XF2 := HomalgRingOfIntegers( 2 );[127X[104X
+    [4X[28XGF(2)[128X[104X
+    [4X[25Xgap>[125X [27XAlg_F2 := CategoryOfFpAlgebras( F2 );[127X[104X
+    [4X[28XCategoryOfFpAlgebras( GF(2) )[128X[104X
+    [4X[25Xgap>[125X [27XF0 := InitialObject( Alg_F2 );[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( F0 );[127X[104X
+    [4X[28XGF(2) / [  ][128X[104X
+    [4X[25Xgap>[125X [27XA := DirectProduct( F0, F0 );[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDimension( A );[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XB := F0;[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XC := F0;[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27Xeta := LeftCocartesianCodistributivityExpanding( A, [ B, C ] );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( eta );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDimension( Source( eta ) );[127X[104X
+    [4X[28Xinfinity[128X[104X
+    [4X[25Xgap>[125X [27XDimension( Target( eta ) );[127X[104X
+    [4X[28X4[128X[104X
+  [4X[32X[104X
+  
   
   [1X10.3 [33X[0;0YGAP categories[133X[101X
   

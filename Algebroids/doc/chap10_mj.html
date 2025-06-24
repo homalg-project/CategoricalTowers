@@ -342,6 +342,38 @@ true
 true
 </pre></div>
 
+<p>The category of (finitely presented) algebras is not codistributive. An example was suggested by a referee in the paper the paper titled "Distributivity ot coproducts over products" by B. A. Davey and H. Werner, Algebra Universalis, 12 (1981) 387-394.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F2 := HomalgRingOfIntegers( 2 );</span>
+GF(2)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Alg_F2 := CategoryOfFpAlgebras( F2 );</span>
+CategoryOfFpAlgebras( GF(2) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F0 := InitialObject( Alg_F2 );</span>
+&lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F0 );</span>
+GF(2) / [  ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := DirectProduct( F0, F0 );</span>
+&lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( A );</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := F0;</span>
+&lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := F0;</span>
+&lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eta := LeftCocartesianCodistributivityExpanding( A, [ B, C ] );</span>
+&lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( eta );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( Source( eta ) );</span>
+infinity
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( Target( eta ) );</span>
+4
+</pre></div>
+
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
 <h4>10.3 <span class="Heading">GAP categories</span></h4>
