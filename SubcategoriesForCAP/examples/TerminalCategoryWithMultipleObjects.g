@@ -31,6 +31,8 @@ InfoOfInstalledOperationsOfCategory( T );
 #! * IsLocallyOfFiniteInjectiveDimension
 #! * IsLocallyOfFiniteProjectiveDimension
 #! * IsStableProset
+#! * IsSymmetricMonoidalCategoryStructureGivenByCoproduct
+#! * IsSymmetricMonoidalCategoryStructureGivenByDirectProduct
 #! * IsTerminalCategory
 a := "a" / T;
 #! <An object in TerminalCategoryWithMultipleObjects( )>

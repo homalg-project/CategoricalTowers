@@ -116,6 +116,7 @@ DeclareOperation( "Comultiplication",
 #!
 DeclareAttribute( "CategoryOfFpAlgebras", IsHomalgRing );
 #! @InsertChunk CategoryOfFpAlgebras
+#! @InsertChunk NonCodistributivityOfCategoryOfFpAlgebras
 
 CapJitAddTypeSignature( "CategoryOfFpAlgebras", [ IsHomalgRing ], function ( input_types )
     
