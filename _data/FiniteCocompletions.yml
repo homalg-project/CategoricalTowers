@@ -1,7 +1,7 @@
 name: FiniteCocompletions
-version: "2025.05-01"
+version: "2025.06-01"
 license: "GPL-2.0-or-later"
-date: 2025-05-03
+date: 2025-06-25
 description: |
     Finite (co)product/(co)limit (co)completions
 
@@ -26,7 +26,7 @@ needed-pkgs:
       version: ">= 2025.03-02"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
     - name: "CartesianCategories"
-      version: ">= 2025.03-03"
+      version: ">= 2025.06-01"
       url: "https://homalg-project.github.io/pkg/CartesianCategories"
     - name: "Toposes"
       version: ">= 2024.02-08"
@@ -62,11 +62,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FiniteCocompleti
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.05-01/FiniteCocompletions-2025.05-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.06-01/FiniteCocompletions-2025.06-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.05-01/FiniteCocompletions-2025.05-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.06-01/FiniteCocompletions-2025.06-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.05-01/FiniteCocompletions-2025.05-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.06-01/FiniteCocompletions-2025.06-01-manual.pdf
 
 abstract: |
 
@@ -77,10 +77,10 @@ keywords: |
     finite coproduct cocompletions, finite product completions, finite colimit cocompletions, finite limit completions.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Bar03</span>]   <b class='BibAuthor'>Barakat, M.</b>,
+    [<span class='BibKey'>Bar25</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>FiniteCocompletions, Finite (co)product/(co)limit (co)completions,
-             Version 2025.05-01</i>
-     (<span class='BibYear'>5-03</span>)<br />
+             Version 2025.06-01</i>
+     (<span class='BibYear'>6-25</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FiniteCocompletions">https://homalg-project.github.io/pkg/FiniteCocompletions</a></span>.
     </p>
@@ -91,9 +91,9 @@ bibtex: |
       author =           {Barakat, M.},
       title =            {{FiniteCocompletions},  {Finite  (co)product/(co)limit
                           (co)completions},                            {V}ersion
-                          2025.05\texttt{\symbol{45}}01},
+                          2025.06\texttt{\symbol{45}}01},
       month =            {5\texttt{\symbol{45}}},
-      year =             {5\texttt{\symbol{45}}03},
+      year =             {6\texttt{\symbol{45}}25},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/FiniteCocompletions}
@@ -103,6 +103,6 @@ bibtex: |
       keywords =         {finite   coproduct   cocompletions,   finite   product
                           completions,   finite  colimit  cocompletions,  finite
                           limit completions},
-      printedkey =       {Bar03}
+      printedkey =       {Bar25}
     }
 
