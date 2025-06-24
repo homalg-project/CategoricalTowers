@@ -62,8 +62,12 @@ InstallMethod( CategoryOfFpAlgebras,
     SetCoefficientsRing( FpAlg_k, k );
     SetIsFiniteCocompleteCategory( FpAlg_k, true );
     SetIsBicartesianCategory( FpAlg_k, true );
-    #SetIsCodistributiveCategory( FpAlg_k, true );
     SetIsSymmetricMonoidalCategory( FpAlg_k, true );
+
+    ## see counterexample to codistributivity
+    ## in examples/NonCodistributivityOfCategoryOfFpAlgebras.g;
+    ## note that the category of (f.p.) *commutative* algebras is codistributive
+    SetIsCodistributiveCategory( FpAlg_k, false );
     
     FpAlg_k!.compiler_hints :=
       rec( category_attribute_names :=
