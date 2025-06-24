@@ -36,6 +36,8 @@ Display( T );
 #! * IsLinearClosureOfACategory
 #! * IsLocallyOfFiniteInjectiveDimension
 #! * IsLocallyOfFiniteProjectiveDimension
+#! * IsSymmetricMonoidalCategoryStructureGivenByCoproduct
+#! * IsSymmetricMonoidalCategoryStructureGivenByDirectProduct
 #! * IsTerminalCategory
 #! * IsTotalOrderCategory
 i := InitialObject( T );

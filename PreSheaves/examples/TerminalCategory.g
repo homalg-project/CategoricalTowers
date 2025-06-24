@@ -38,6 +38,8 @@ Display( T );
 #! * IsStrictCartesianCategory
 #! * IsStrictCocartesianCategory
 #! * IsStrictMonoidalCategory
+#! * IsSymmetricMonoidalCategoryStructureGivenByCoproduct
+#! * IsSymmetricMonoidalCategoryStructureGivenByDirectProduct
 #! * IsTerminalCategory
 i := InitialObject( T );
 #! <An object in PreSheaves( InitialCategory( ), InitialCategory( ) )>
