@@ -257,7 +257,8 @@ InstallMethod( Subobject,
         
   function ( decorated_quiver, images_of_vertices, images_of_arrows )
     local DecoratedQuivers, decoration_of_vertices, decoration_of_arrows,
-          arrows, arrows_as_pairs, vertices, decoration_v, decoration_a,
+          arrows, arrows_as_pairs, vertices, decoration_v_func, decoration_a_func,
+          decoration_v, decoration_a,
           source, sub_decorated_quiver;
     
     DecoratedQuivers := CapCategory( decorated_quiver );
@@ -272,16 +273,18 @@ InstallMethod( Subobject,
     
     vertices := AsList( decorated_quiver.V ){1 + Set( Concatenation( images_of_vertices, Concatenation( arrows_as_pairs ) ) )};
     
-    decoration_v := decoration_of_vertices{1 + vertices};
-    decoration_a := decoration_of_arrows{1 + arrows};
+    decoration_v_func := UnderlyingMorphism( ModelingObject( DecoratedQuivers, decorated_quiver ) ).V;
+    decoration_a_func := UnderlyingMorphism( ModelingObject( DecoratedQuivers, decorated_quiver ) ).A;
+    
+    decoration_v := decoration_of_vertices{1 + List( vertices, decoration_v_func )};
+    decoration_a := decoration_of_arrows{1 + List( arrows, decoration_a_func )};
     
     source := CreateDecoratedQuiver( DecoratedQuivers,
-                      List( [ 1 .. Length( vertices ) ],
-                            i -> -1 + SafePosition( decoration_of_vertices, decoration_v[i] ) ),
+                      List( vertices, decoration_v_func ),
                       List( [ 1 .. Length( arrows ) ],
-                            i -> [ -1 + SafePosition( vertices, arrows_as_pairs[i][1] ),
-                                   -1 + SafePosition( vertices, arrows_as_pairs[i][2] ),
-                                   -1 + SafePosition( decoration_of_arrows, decoration_a[i] ) ] ) );
+                            i -> Triple( -1 + SafePosition( vertices, arrows_as_pairs[i][1] ),
+                                    -1 + SafePosition( vertices, arrows_as_pairs[i][2] ),
+                                    decoration_a_func( arrows[i] ) ) ) );
     
     sub_decorated_quiver := CreateDecoratedQuiverMorphism( source, vertices, arrows, decorated_quiver );
     
