@@ -2263,6 +2263,10 @@ InstallMethodWithCache( PreSheaves,
         
   function ( B, D )
     
+    if not CanCompute( B, "SetOfGeneratingMorphismsOfCategory" ) then
+        TryNextMethod( );
+    fi;
+    
     return PreSheavesOfFpEnrichedCategory( B, D );
     
 end );
