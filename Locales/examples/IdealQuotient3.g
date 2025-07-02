@@ -3,7 +3,7 @@
 LoadPackage( "Locales" );
 
 #! @Example
-LoadPackage( "FreydCategoriesForCAP" );
+LoadPackage( "AdditiveClosuresForCAP", ">= 2025.07-02" );
 #! true
 LoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );
 #! true

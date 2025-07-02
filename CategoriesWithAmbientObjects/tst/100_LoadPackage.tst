@@ -7,6 +7,8 @@
 gap> PushOptions( rec( OnlyNeeded := true ) );
 gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
+gap> LoadPackage( "AdditiveClosuresForCAP", false );
+true
 gap> LoadPackage( "ModulePresentationsForCAP", false );
 true
 gap> LoadPackage( "HomologicalAlgebraForCAP", false );
@@ -18,6 +20,8 @@ true
 gap> LoadPackage( "CategoriesWithAmbientObjects", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
+gap> LoadPackage( "AdditiveClosuresForCAP" );
+true
 gap> LoadPackage( "ModulePresentationsForCAP" );
 true
 gap> LoadPackage( "HomologicalAlgebraForCAP" );
