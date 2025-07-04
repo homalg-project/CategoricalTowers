@@ -12,7 +12,7 @@ LoadPackage( "FunctorCategories", false );
 LoadPackage( "CompilerForCAP", ">= 2023.12-20", false );
 #! true
 
-ReadPackageOnce( "FreydCategoriesForCAP", "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory_CompilerLogic.gi" );
+ReadPackageOnce( "AdditiveClosuresForCAP", "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory_CompilerLogic.gi" );
 #! true
 
 ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );

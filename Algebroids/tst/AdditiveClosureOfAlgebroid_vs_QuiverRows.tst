@@ -1,5 +1,5 @@
 #@if ValueOption( "no_precompiled_code" ) = fail
-gap> LoadPackage( "FreydCategoriesForCAP", false );
+gap> LoadPackage( "AdditiveClosuresForCAP", false );
 true
 gap> LoadPackage( "Algebroids", false );
 true

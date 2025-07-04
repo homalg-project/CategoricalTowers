@@ -1,5 +1,4 @@
 LoadPackage( "CompilerForCAP", false );
-LoadPackage( "FreydCategoriesForCAP", false );
 LoadPackage( "Algebroids", false );
 
 orig_CAP_JIT_LOGIC_TEMPLATES := ShallowCopy( CAP_JIT_LOGIC_TEMPLATES );

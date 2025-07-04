@@ -2,9 +2,11 @@
 
 #! @Example
 
+#! #@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"
+
 LoadPackage( "SubcategoriesForCAP" );
 #! true
-LoadPackage( "FreydCategoriesForCAP", ">= 2024.08-01" );
+LoadPackage( "AdditiveClosuresForCAP", ">= 2025.07-02" );
 #! true
 
 ZZZ := HomalgRingOfIntegers( );;
@@ -50,5 +52,7 @@ CapJitPrecompileCategoryAndCompareResult(
     number_of_objectified_objects_in_data_structure_of_morphism := 6,
     number_of_objectified_morphisms_in_data_structure_of_morphism := 4
 );
+
+#! #@fi
 
 #! @EndExample

@@ -6,7 +6,7 @@ LoadPackage( "Locales", false );
 #! true
 LoadPackage( "SubcategoriesForCAP", false );
 #! true
-LoadPackage( "FreydCategoriesForCAP", ">= 2024.08-07", false );
+LoadPackage( "AdditiveClosuresForCAP", ">= 2025.07-02", false );
 #! true
 
 zz := HomalgRingOfIntegers( );;
