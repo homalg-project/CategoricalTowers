@@ -137,7 +137,7 @@
   [1X8.4-1 [33X[0;0YIdeal quotient[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "AdditiveClosuresForCAP", ">= 2025.07-02" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -186,7 +186,7 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "AdditiveClosuresForCAP", ">= 2025.07-02" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -235,7 +235,7 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "AdditiveClosuresForCAP", ">= 2025.07-02" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );[127X[104X
     [4X[28Xtrue[128X[104X
