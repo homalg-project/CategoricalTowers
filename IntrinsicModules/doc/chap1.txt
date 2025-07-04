@@ -66,10 +66,10 @@
         AstrictionToCoimageWithGivenCoimageObject  for  IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XBiasedWeakFiberProduct[102X  ([14XFreydCategoriesForCAP: BiasedWeakFiberProduct
+  [30X    [33X[0;6Y[2XBiasedWeakFiberProduct[102X ([14XAdditiveClosuresForCAP: BiasedWeakFiberProduct
         for IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XBiasedWeakPushout[102X    ([14XFreydCategoriesForCAP:   BiasedWeakPushout   for
+  [30X    [33X[0;6Y[2XBiasedWeakPushout[102X   ([14XAdditiveClosuresForCAP:   BiasedWeakPushout   for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XBraiding[102X   ([14XMonoidalCategories:   Braiding   for  IsCapCategoryObject,
@@ -384,7 +384,7 @@
         DirectSumFunctorialWithGivenDirectSums     for    IsCapCategoryObject,
         IsList, IsList, IsList, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XDirectSumMorphismToWeakBiPushout[102X               ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XDirectSumMorphismToWeakBiPushout[102X              ([14XAdditiveClosuresForCAP:
         DirectSumMorphismToWeakBiPushout       for      IsCapCategoryMorphism,
         IsCapCategoryMorphism[114X)[133X
   
@@ -496,12 +496,12 @@
         InitialObjectFunctorialWithGivenInitialObjects                     for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfBiasedWeakPushout[102X                   ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XInjectionOfBiasedWeakPushout[102X                  ([14XAdditiveClosuresForCAP:
         InjectionOfBiasedWeakPushout         for        IsCapCategoryMorphism,
         IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout[102X
-        ([14XFreydCategoriesForCAP:
+        ([14XAdditiveClosuresForCAP:
         InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout             for
         IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
@@ -534,21 +534,21 @@
         InjectionOfCofactorOfPushoutWithGivenPushout    for   IsList,   IsInt,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfFirstCofactorOfWeakBiPushout[102X        ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XInjectionOfFirstCofactorOfWeakBiPushout[102X       ([14XAdditiveClosuresForCAP:
         InjectionOfFirstCofactorOfWeakBiPushout   for   IsCapCategoryMorphism,
         IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout[102X
-        ([14XFreydCategoriesForCAP:
+        ([14XAdditiveClosuresForCAP:
         InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout      for
         IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfSecondCofactorOfWeakBiPushout[102X       ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XInjectionOfSecondCofactorOfWeakBiPushout[102X      ([14XAdditiveClosuresForCAP:
         InjectionOfSecondCofactorOfWeakBiPushout   for  IsCapCategoryMorphism,
         IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout[102X
-        ([14XFreydCategoriesForCAP:
+        ([14XAdditiveClosuresForCAP:
         InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout     for
         IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
@@ -1030,30 +1030,30 @@
         ProjectionInFactorOfLimitWithGivenLimit  for  IsList,  IsList,  IsInt,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionInFirstFactorOfWeakBiFiberProduct[102X    ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XProjectionInFirstFactorOfWeakBiFiberProduct[102X   ([14XAdditiveClosuresForCAP:
         ProjectionInFirstFactorOfWeakBiFiberProduct for IsCapCategoryMorphism,
         IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[102X
-        ([14XFreydCategoriesForCAP:
+        ([14XAdditiveClosuresForCAP:
         ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
         for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionInSecondFactorOfWeakBiFiberProduct[102X   ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XProjectionInSecondFactorOfWeakBiFiberProduct[102X  ([14XAdditiveClosuresForCAP:
         ProjectionInSecondFactorOfWeakBiFiberProduct                       for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[102X
-        ([14XFreydCategoriesForCAP:
+        ([14XAdditiveClosuresForCAP:
         ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
         for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionOfBiasedWeakFiberProduct[102X             ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XProjectionOfBiasedWeakFiberProduct[102X            ([14XAdditiveClosuresForCAP:
         ProjectionOfBiasedWeakFiberProduct      for     IsCapCategoryMorphism,
         IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct[102X
-        ([14XFreydCategoriesForCAP:
+        ([14XAdditiveClosuresForCAP:
         ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct  for
         IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
@@ -1198,12 +1198,12 @@
         TerminalObjectFunctorialWithGivenTerminalObjects                   for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromBiasedWeakPushout[102X         ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismFromBiasedWeakPushout[102X        ([14XAdditiveClosuresForCAP:
         UniversalMorphismFromBiasedWeakPushout    for   IsCapCategoryMorphism,
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout[102X
-        ([14XFreydCategoriesForCAP:
+        ([14XAdditiveClosuresForCAP:
         UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout   for
         IsCapCategoryMorphism,  IsCapCategoryMorphism,  IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
@@ -1261,12 +1261,12 @@
         UniversalMorphismFromPushoutWithGivenPushout        for        IsList,
         IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromWeakBiPushout[102X             ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismFromWeakBiPushout[102X            ([14XAdditiveClosuresForCAP:
         UniversalMorphismFromWeakBiPushout      for     IsCapCategoryMorphism,
         IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout[102X
-        ([14XFreydCategoriesForCAP:
+        ([14XAdditiveClosuresForCAP:
         UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout           for
         IsCapCategoryMorphism,  IsCapCategoryMorphism,  IsCapCategoryMorphism,
         IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
@@ -1278,12 +1278,12 @@
         UniversalMorphismFromZeroObjectWithGivenZeroObject                 for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoBiasedWeakFiberProduct[102X    ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoBiasedWeakFiberProduct[102X   ([14XAdditiveClosuresForCAP:
         UniversalMorphismIntoBiasedWeakFiberProduct for IsCapCategoryMorphism,
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct[102X
-        ([14XFreydCategoriesForCAP:
+        ([14XAdditiveClosuresForCAP:
         UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
         for            IsCapCategoryMorphism,           IsCapCategoryMorphism,
         IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
@@ -1342,12 +1342,12 @@
         UniversalMorphismIntoTerminalObjectWithGivenTerminalObject         for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoWeakBiFiberProduct[102X        ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoWeakBiFiberProduct[102X       ([14XAdditiveClosuresForCAP:
         UniversalMorphismIntoWeakBiFiberProduct   for   IsCapCategoryMorphism,
         IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct[102X
-        ([14XFreydCategoriesForCAP:
+        ([14XAdditiveClosuresForCAP:
         UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct for
         IsCapCategoryMorphism,  IsCapCategoryMorphism,  IsCapCategoryMorphism,
         IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
@@ -1362,49 +1362,49 @@
   [30X    [33X[0;6Y[2XUniversalPropertyOfDual[102X  ([14XMonoidalCategories:  UniversalPropertyOfDual
         for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakBiFiberProduct[102X   ([14XFreydCategoriesForCAP:   WeakBiFiberProduct  for
+  [30X    [33X[0;6Y[2XWeakBiFiberProduct[102X   ([14XAdditiveClosuresForCAP:  WeakBiFiberProduct  for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakBiFiberProductMorphismToDirectSum[102X          ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XWeakBiFiberProductMorphismToDirectSum[102X         ([14XAdditiveClosuresForCAP:
         WeakBiFiberProductMorphismToDirectSum    for    IsCapCategoryMorphism,
         IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakBiPushout[102X      ([14XFreydCategoriesForCAP:      WeakBiPushout      for
+  [30X    [33X[0;6Y[2XWeakBiPushout[102X      ([14XAdditiveClosuresForCAP:      WeakBiPushout     for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakCokernelColift[102X   ([14XFreydCategoriesForCAP:   WeakCokernelColift  for
+  [30X    [33X[0;6Y[2XWeakCokernelColift[102X   ([14XAdditiveClosuresForCAP:  WeakCokernelColift  for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakCokernelColiftWithGivenWeakCokernelObject[102X  ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XWeakCokernelColiftWithGivenWeakCokernelObject[102X ([14XAdditiveClosuresForCAP:
         WeakCokernelColiftWithGivenWeakCokernelObject                      for
         IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakCokernelObject[102X   ([14XFreydCategoriesForCAP:   WeakCokernelObject  for
+  [30X    [33X[0;6Y[2XWeakCokernelObject[102X   ([14XAdditiveClosuresForCAP:  WeakCokernelObject  for
         IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakCokernelProjection[102X  ([14XFreydCategoriesForCAP: WeakCokernelProjection
+  [30X    [33X[0;6Y[2XWeakCokernelProjection[102X ([14XAdditiveClosuresForCAP: WeakCokernelProjection
         for IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XWeakCokernelProjectionWithGivenWeakCokernelObject[102X
-        ([14XFreydCategoriesForCAP:
+        ([14XAdditiveClosuresForCAP:
         WeakCokernelProjectionWithGivenWeakCokernelObject                  for
         IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakKernelEmbedding[102X  ([14XFreydCategoriesForCAP:  WeakKernelEmbedding  for
+  [30X    [33X[0;6Y[2XWeakKernelEmbedding[102X  ([14XAdditiveClosuresForCAP:  WeakKernelEmbedding for
         IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakKernelEmbeddingWithGivenWeakKernelObject[102X   ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XWeakKernelEmbeddingWithGivenWeakKernelObject[102X  ([14XAdditiveClosuresForCAP:
         WeakKernelEmbeddingWithGivenWeakKernelObject                       for
         IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakKernelLift[102X      ([14XFreydCategoriesForCAP:     WeakKernelLift     for
+  [30X    [33X[0;6Y[2XWeakKernelLift[102X     ([14XAdditiveClosuresForCAP:     WeakKernelLift     for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakKernelLiftWithGivenWeakKernelObject[102X        ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XWeakKernelLiftWithGivenWeakKernelObject[102X       ([14XAdditiveClosuresForCAP:
         WeakKernelLiftWithGivenWeakKernelObject   for   IsCapCategoryMorphism,
         IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakKernelObject[102X    ([14XFreydCategoriesForCAP:    WeakKernelObject    for
+  [30X    [33X[0;6Y[2XWeakKernelObject[102X    ([14XAdditiveClosuresForCAP:    WeakKernelObject   for
         IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XZeroMorphism[102X     ([14XCAP:     ZeroMorphism    for    IsCapCategoryObject,
