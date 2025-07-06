@@ -33,7 +33,10 @@ InstallMethod( CategoryOfFpAlgebras,
         "for a commutative homalg ring",
         [ IsHomalgRing and IsCommutative ],
         
-  function( k )
+  FunctionWithNamedArguments(
+  [ [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, k )
     local name, FpAlg_k;
     
     ##
@@ -57,9 +60,6 @@ InstallMethod( CategoryOfFpAlgebras,
               CapJitDataTypeOfListOf( rec( category := false, filter := IsLinearClosureMorphism ) ),
               fail );
     
-    FpAlg_k!.supports_empty_limits := true;
-    
-    SetCoefficientsRing( FpAlg_k, k );
     SetIsFiniteCocompleteCategory( FpAlg_k, true );
     SetIsBicartesianCategory( FpAlg_k, true );
     SetIsSymmetricMonoidalCategory( FpAlg_k, true );
@@ -68,6 +68,10 @@ InstallMethod( CategoryOfFpAlgebras,
     ## in examples/NonCodistributivityOfCategoryOfFpAlgebras.g;
     ## note that the category of (f.p.) *commutative* algebras is codistributive
     SetIsCodistributiveCategory( FpAlg_k, false );
+    
+    FpAlg_k!.supports_empty_limits := true;
+    
+    SetCoefficientsRing( FpAlg_k, k );
     
     FpAlg_k!.compiler_hints :=
       rec( category_attribute_names :=
@@ -116,9 +120,9 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     AddObjectDatum( FpAlg_k,
-      function( FpAlg_k, algebra )
+      function( FpAlg_k, fp_algebra )
         
-        return DefiningSeptupleOfFinitelyPresentedAlgebra( algebra );
+        return DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra );
         
     end );
     
@@ -135,19 +139,19 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     AddMorphismDatum( FpAlg_k,
-      function( FpAlg_k, algebra_morphism )
+      function( FpAlg_k, fp_algebra_morphism )
         
-        return ListOfImages( algebra_morphism );
+        return ListOfImages( fp_algebra_morphism );
         
     end );
     
     ##
     AddIsEqualForObjects( FpAlg_k,
-      function( FpAlg_k, algebra1, algebra2 )
+      function( FpAlg_k, fp_algebra1, fp_algebra2 )
         local datum1, datum2, L;
         
-        datum1 := ObjectDatum( FpAlg_k, algebra1 );
-        datum2 := ObjectDatum( FpAlg_k, algebra2 );
+        datum1 := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra1 );
+        datum2 := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra2 );
         
         L := datum1[1];
         
@@ -155,6 +159,7 @@ InstallMethod( CategoryOfFpAlgebras,
                IsEqualForObjects( L, datum1[2], datum2[2] ) and
                datum1[3] = datum2[3] and
                ForAll( [ 1 .. datum1[3] ], i -> IsEqualForMorphisms( L, datum1[4][i], datum2[4][i] ) ) and
+               ForAll( [ 1 .. datum1[3] ], i -> datum1[7][i] = datum2[7][i] ) and
                datum1[5] = datum2[5] and
                ForAll( [ 1 .. datum1[5] ], i -> IsEqualForMorphisms( L, datum1[6][i], datum2[6][i] ) );
         
@@ -162,35 +167,35 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     AddIsEqualForMorphisms( FpAlg_k,
-      function( FpAlg_k, morphism1, morphism2 )
-        local datum1, datum2, L;
+      function( FpAlg_k, fp_algebra_morphism1, fp_algebra_morphism2 )
+        local list_of_images1, list_of_images2, L;
         
-        datum1 := MorphismDatum( FpAlg_k, morphism1 );
-        datum2 := MorphismDatum( FpAlg_k, morphism2 );
+        list_of_images1 := ListOfImages( fp_algebra_morphism1 );
+        list_of_images2 := ListOfImages( fp_algebra_morphism2 );
         
-        L := ObjectDatum( FpAlg_k, Source( morphism1 ) )[1];
+        L := DefiningSeptupleOfFinitelyPresentedAlgebra( Source( fp_algebra_morphism1 ) )[1];
         
-        return Length( datum1 ) = Length( datum2 ) and
-               ForAll( [ 1 .. Length( datum1 ) ], i -> IsEqualForMorphisms( L, datum1[i], datum2[i] ) );
+        return Length( list_of_images1 ) = Length( list_of_images2 ) and
+               ForAll( [ 1 .. Length( list_of_images1 ) ], i -> IsEqualForMorphisms( L, list_of_images1[i], list_of_images2[i] ) );
         
     end );
     
     ##
     AddIsCongruentForMorphisms( FpAlg_k,
-      function( FpAlg_k, morphism1, morphism2 )
-        local S, T, nrgens, L, datum1, datum2, diffs, GB, reds;
+      function( FpAlg_k, fp_algebra_morphism1, fp_algebra_morphism2 )
+        local S, T, nrgens, L, list_of_images1, list_of_images2, diffs, GB, reds;
         
-        S := Source( morphism1 );
-        T := Target( morphism1 );
+        S := Source( fp_algebra_morphism1 );
+        T := Target( fp_algebra_morphism1 );
         
-        nrgens := ObjectDatum( FpAlg_k, S )[3];
+        nrgens := DefiningSeptupleOfFinitelyPresentedAlgebra( S )[3];
         
-        L := ObjectDatum( FpAlg_k, T )[1];
+        L := DefiningSeptupleOfFinitelyPresentedAlgebra( T )[1];
         
-        datum1 := MorphismDatum( FpAlg_k, morphism1 );
-        datum2 := MorphismDatum( FpAlg_k, morphism2 );
+        list_of_images1 := ListOfImages( fp_algebra_morphism1 );
+        list_of_images2 := ListOfImages( fp_algebra_morphism2 );
         
-        diffs := List( [ 1 .. nrgens ], i -> SubtractionForMorphisms( L, datum1[i], datum2[i] ) );
+        diffs := List( [ 1 .. nrgens ], i -> SubtractionForMorphisms( L, list_of_images1[i], list_of_images2[i] ) );
         
         GB := GroebnerBasisOfDefiningRelations( T );
         
@@ -202,12 +207,12 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     AddIsWellDefinedForObjects( FpAlg_k,
-      function( FpAlg_k, algebra )
+      function( FpAlg_k, fp_algebra )
         local k, datum;
         
         k := CoefficientsRing( FpAlg_k );
         
-        datum := ObjectDatum( FpAlg_k, algebra );
+        datum := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra );
         
         if not IsPathCategory( UnderlyingCategory( datum[1] ) ) and
            HasCommutativeRingOfLinearCategory( datum[1] ) and
@@ -233,22 +238,21 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     AddIsWellDefinedForMorphisms( FpAlg_k,
-      function( FpAlg_k, algebra_morphism )
-        local S, T, datumS, datumT, datum, L, o, functor_on_mors, image_of_source_relations, GB, reds, bool, extract_datum, obstruction;
+      function( FpAlg_k, fp_algebra_morphism )
+        local S, T, datumS, datumT, list_of_images, L, o, functor_on_mors, image_of_source_relations, GB, reds, bool, extract_datum, obstruction;
         
-        S := Source( algebra_morphism );
-        T := Target( algebra_morphism );
+        S := Source( fp_algebra_morphism );
+        T := Target( fp_algebra_morphism );
         
-        datumS := ObjectDatum( FpAlg_k, S );
-        datumT := ObjectDatum( FpAlg_k, T );
+        datumS := DefiningSeptupleOfFinitelyPresentedAlgebra( S );
+        datumT := DefiningSeptupleOfFinitelyPresentedAlgebra( T );
         
-        datum := MorphismDatum( FpAlg_k, algebra_morphism );
+        list_of_images := ListOfImages( fp_algebra_morphism );
         
-        if not IsList( datum ) then
+        if not ForAll( list_of_images, image ->
+                IsIdenticalObj( CapCategory( image ), DefiningSeptupleOfFinitelyPresentedAlgebra( Target( fp_algebra_morphism ) )[1] ) ) then
             return false;
-        elif not ForAll( datum, image -> IsIdenticalObj( CapCategory( image ), ObjectDatum( FpAlg_k, Target( algebra_morphism ) )[1] ) ) then
-            return false;
-        elif not Length( datum ) = ObjectDatum( FpAlg_k, Source( algebra_morphism ) )[3] then
+        elif not Length( list_of_images ) = DefiningSeptupleOfFinitelyPresentedAlgebra( Source( fp_algebra_morphism ) )[3] then
             return false;
         fi;
         
@@ -256,7 +260,7 @@ InstallMethod( CategoryOfFpAlgebras,
         
         o := datumT[2];
         
-        functor_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, algebra_morphism )[2][2];
+        functor_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, fp_algebra_morphism )[2][2];
         
         image_of_source_relations := List( datumS[6], rel -> functor_on_mors( o, rel, o ) );
         
@@ -289,12 +293,12 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     AddIdentityMorphism( FpAlg_k,
-      function( FpAlg_k, algebra )
+      function( FpAlg_k, fp_algebra )
         
         return MorphismConstructor( FpAlg_k,
-                       algebra,
-                       ObjectDatum( FpAlg_k, algebra )[4],
-                       algebra );
+                       fp_algebra,
+                       DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra )[4],
+                       fp_algebra );
         
     end );
     
@@ -303,7 +307,7 @@ InstallMethod( CategoryOfFpAlgebras,
       function( FpAlg_k, pre_morphism, post_morphism )
         local o, post_functor_on_mors, target, L, GB, images;
         
-        o := ObjectDatum( Target( post_morphism ) )[2];
+        o := DefiningSeptupleOfFinitelyPresentedAlgebra( Target( post_morphism ) )[2];
         
         post_functor_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, post_morphism )[2][2];
         
@@ -313,7 +317,7 @@ InstallMethod( CategoryOfFpAlgebras,
         
         GB := GroebnerBasisOfDefiningRelations( target );
         
-        images := List( MorphismDatum( FpAlg_k, pre_morphism ), image -> post_functor_on_mors( o, image, o ) );
+        images := List( ListOfImages( pre_morphism ), image -> post_functor_on_mors( o, image, o ) );
         
         images := List( images, image -> ReductionOfMorphism( L, image, GB ) );
         
@@ -332,7 +336,7 @@ InstallMethod( CategoryOfFpAlgebras,
         
         l := Length( diagram );
         
-        data := List( [ 1 .. l ], m -> ObjectDatum( FpAlg_k, diagram[m] ) );
+        data := List( [ 1 .. l ], m -> DefiningSeptupleOfFinitelyPresentedAlgebra( diagram[m] ) );
         
         nrsgens := List( [ 1 .. l ], m -> data[m][3] );
         
@@ -432,11 +436,11 @@ InstallMethod( CategoryOfFpAlgebras,
         
         l := Length( diagram );
         
-        nrsgens := List( [ 1 .. l ], m -> ObjectDatum( FpAlg_k, diagram[m] )[3] );
+        nrsgens := List( [ 1 .. l ], m -> DefiningSeptupleOfFinitelyPresentedAlgebra( diagram[m] )[3] );
         
         target := diagram[p];
         
-        datum := ObjectDatum( FpAlg_k, target );
+        datum := DefiningSeptupleOfFinitelyPresentedAlgebra( target );
         
         L := datum[1];
         o := datum[2];
@@ -475,11 +479,11 @@ InstallMethod( CategoryOfFpAlgebras,
         
         l := Length( diagram );
         
-        data := List( [ 1 .. l ], m -> ObjectDatum( FpAlg_k, diagram[m] ) );
+        data := List( [ 1 .. l ], m -> DefiningSeptupleOfFinitelyPresentedAlgebra( diagram[m] ) );
         
         nrsgens := List( [ 1 .. l ], m -> data[m][3] );
         
-        datum := ObjectDatum( FpAlg_k, product );
+        datum := DefiningSeptupleOfFinitelyPresentedAlgebra( product );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0, datum[3] = Sum( nrsgens ) + l );
@@ -528,12 +532,12 @@ InstallMethod( CategoryOfFpAlgebras,
         functors_on_mors := List( [ 1 .. l ], m -> AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mors[m] )[2][2] );
         
         images := List( [ 1 .. l ], m ->
-                        List( MorphismDatum( FpAlg_k, tau[m] ), image ->
+                        List( ListOfImages( tau[m] ), image ->
                               PreCompose( L,
                                       functors_on_mors[m]( o, image, o ),
                                       gens[m][nrsgens[m] + 1] ) ) ); ## project into the m-th factor
         
-        nrgens_source := ObjectDatum( FpAlg_k, source )[3];
+        nrgens_source := DefiningSeptupleOfFinitelyPresentedAlgebra( source )[3];
         
         images := List( [ 1 .. nrgens_source ], i -> SumOfMorphisms( o, List( [ 1 .. l ], m -> images[m][i] ), o ) );
         
@@ -556,7 +560,7 @@ InstallMethod( CategoryOfFpAlgebras,
         
         l := Length( diagram );
         
-        data := List( [ 1 .. l ], m -> ObjectDatum( FpAlg_k, diagram[m] ) );
+        data := List( [ 1 .. l ], m -> DefiningSeptupleOfFinitelyPresentedAlgebra( diagram[m] ) );
         
         nrsgens := List( [ 1 .. l ], m -> data[m][3] );
         
@@ -618,11 +622,11 @@ InstallMethod( CategoryOfFpAlgebras,
         
         l := Length( diagram );
         
-        data := List( [ 1 .. l ], m -> ObjectDatum( FpAlg_k, diagram[m] ) );
+        data := List( [ 1 .. l ], m -> DefiningSeptupleOfFinitelyPresentedAlgebra( diagram[m] ) );
         
         nrsgens := List( [ 1 .. l ], m -> data[m][3] );
         
-        gens := ObjectDatum( FpAlg_k, coproduct )[4];
+        gens := DefiningSeptupleOfFinitelyPresentedAlgebra( coproduct )[4];
         
         images := gens{[ 1 + Sum( nrsgens{[ 1 .. p - 1 ]} ) .. Sum( nrsgens{[ 1 .. p ]} ) ]};
         
@@ -640,7 +644,7 @@ InstallMethod( CategoryOfFpAlgebras,
         
         l := Length( diagram );
         
-        images := List( [ 1 .. l ], m -> MorphismDatum( FpAlg_k, tau[m] ) );
+        images := List( [ 1 .. l ], m -> ListOfImages( tau[m] ) );
         
         return MorphismConstructor( FpAlg_k,
                        coproduct,
@@ -659,21 +663,21 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     AddTensorProductOnObjects( FpAlg_k,
-      function( FpAlg_k, algebra1, algebra2 )
+      function( FpAlg_k, fp_algebra1, fp_algebra2 )
         local datum1, datum2, nrgens1, nrgens2, nrgens, ambient1, ambient2,
               var, nmgens, k, L, o, gens, gens1, gens2, ambient,
               mor1, mor2, functor1_on_mors, functor2_on_mors, nrrels, rels1, rels2, rels, mixed;
         
-        datum1 := ObjectDatum( FpAlg_k, algebra1 );
-        datum2 := ObjectDatum( FpAlg_k, algebra2 );
+        datum1 := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra1 );
+        datum2 := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra2 );
         
         nrgens1 := datum1[3];
         nrgens2 := datum2[3];
         
         nrgens := nrgens1 + nrgens2;
         
-        ambient1 := AmbientAlgebra( algebra1 );
-        ambient2 := AmbientAlgebra( algebra2 );
+        ambient1 := AmbientAlgebra( fp_algebra1 );
+        ambient2 := AmbientAlgebra( fp_algebra2 );
         
         var := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "variable_name", "a" );
         
@@ -735,24 +739,24 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     AddTensorProductOnMorphismsWithGivenTensorProducts( FpAlg_k,
-      function( FpAlg_k, source, algebra_morphism1, algebra_morphism2, target )
+      function( FpAlg_k, source, fp_algebra_morphism1, fp_algebra_morphism2, target )
         local target1, target2, ambient_target1, ambient_target2, ngens1, ngens2,
               ambient_target, datum, ngens, gens, gens1, gens2, mor1, mor2,
-              functor1_on_mors, functor2_on_mors, o, datum_morphism1, datum_morphism2,
+              functor1_on_mors, functor2_on_mors, o, list_of_images1, list_of_images2,
               list_of_images;
         
-        target1 := Target( algebra_morphism1 );
-        target2 := Target( algebra_morphism2 );
+        target1 := Target( fp_algebra_morphism1 );
+        target2 := Target( fp_algebra_morphism2 );
         
         ambient_target1 := AmbientAlgebra( target1 );
         ambient_target2 := AmbientAlgebra( target2 );
         
-        ngens1 := ObjectDatum( FpAlg_k, ambient_target1 )[3];
-        ngens2 := ObjectDatum( FpAlg_k, ambient_target2 )[3];
+        ngens1 := DefiningSeptupleOfFinitelyPresentedAlgebra( ambient_target1 )[3];
+        ngens2 := DefiningSeptupleOfFinitelyPresentedAlgebra( ambient_target2 )[3];
         
         ambient_target := AmbientAlgebra( target );
         
-        datum := ObjectDatum( FpAlg_k, ambient_target );
+        datum := DefiningSeptupleOfFinitelyPresentedAlgebra( ambient_target );
         
         ngens := datum[3];
         gens := datum[4];
@@ -778,12 +782,12 @@ InstallMethod( CategoryOfFpAlgebras,
         
         o := datum[2];
         
-        datum_morphism1 := MorphismDatum( FpAlg_k, algebra_morphism1 );
-        datum_morphism2 := MorphismDatum( FpAlg_k, algebra_morphism2 );
+        list_of_images1 := ListOfImages( fp_algebra_morphism1 );
+        list_of_images2 := ListOfImages( fp_algebra_morphism2 );
         
         list_of_images := Concatenation(
-                                  List( datum_morphism1, image -> functor1_on_mors( o, image, o ) ),
-                                  List( datum_morphism2, image -> functor2_on_mors( o, image, o ) ) );
+                                  List( list_of_images1, image -> functor1_on_mors( o, image, o ) ),
+                                  List( list_of_images2, image -> functor2_on_mors( o, image, o ) ) );
         
         return MorphismConstructor( FpAlg_k,
                        source,
@@ -794,79 +798,79 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     AddLeftUnitorWithGivenTensorProduct( FpAlg_k,
-      function( FpAlg_k, algebra, source )
+      function( FpAlg_k, fp_algebra, source )
         
         return MorphismConstructor( FpAlg_k,
                        source,
-                       ObjectDatum( FpAlg_k, algebra )[4],
-                       algebra );
+                       DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra )[4],
+                       fp_algebra );
         
     end );
     
     ##
     AddLeftUnitorInverseWithGivenTensorProduct( FpAlg_k,
-      function( FpAlg_k, algebra, target )
+      function( FpAlg_k, fp_algebra, target )
         
         return MorphismConstructor( FpAlg_k,
-                       algebra,
-                       ObjectDatum( FpAlg_k, target )[4],
+                       fp_algebra,
+                       DefiningSeptupleOfFinitelyPresentedAlgebra( target )[4],
                        target );
         
     end );
     
     ##
     AddRightUnitorWithGivenTensorProduct( FpAlg_k,
-      function( FpAlg_k, algebra, source )
+      function( FpAlg_k, fp_algebra, source )
         
         return MorphismConstructor( FpAlg_k,
                        source,
-                       ObjectDatum( FpAlg_k, algebra )[4],
-                       algebra );
+                       DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra )[4],
+                       fp_algebra );
         
     end );
     
     ##
     AddRightUnitorInverseWithGivenTensorProduct( FpAlg_k,
-      function( FpAlg_k, algebra, target )
+      function( FpAlg_k, fp_algebra, target )
         
         return MorphismConstructor( FpAlg_k,
-                       algebra,
-                       ObjectDatum( FpAlg_k, target )[4],
+                       fp_algebra,
+                       DefiningSeptupleOfFinitelyPresentedAlgebra( target )[4],
                        target );
         
     end );
     
     ##
     AddAssociatorLeftToRightWithGivenTensorProducts( FpAlg_k,
-      function( FpAlg_k, source, algebra1, algebra2, algebra3, target )
+      function( FpAlg_k, source, fp_algebra1, fp_algebra2, fp_algebra3, target )
         
         return MorphismConstructor( FpAlg_k,
                        source,
-                       ObjectDatum( FpAlg_k, target )[4],
+                       DefiningSeptupleOfFinitelyPresentedAlgebra( target )[4],
                        target );
         
     end );
     
     ##
     AddAssociatorRightToLeftWithGivenTensorProducts( FpAlg_k,
-      function( FpAlg_k, source, algebra1, algebra2, algebra3, target )
+      function( FpAlg_k, source, fp_algebra1, fp_algebra2, fp_algebra3, target )
         
         return MorphismConstructor( FpAlg_k,
                        source,
-                       ObjectDatum( FpAlg_k, target )[4],
+                       DefiningSeptupleOfFinitelyPresentedAlgebra( target )[4],
                        target );
         
     end );
     
     ##
     AddBraidingWithGivenTensorProducts( FpAlg_k,
-      function( FpAlg_k, source, algebra1, algebra2, target )
+      function( FpAlg_k, source, fp_algebra1, fp_algebra2, target )
         local nrgens1, nrgens2, datum, nrgens, gens;
         
-        nrgens1 := ObjectDatum( FpAlg_k, algebra1 )[3];
-        nrgens2 := ObjectDatum( FpAlg_k, algebra2 )[3];
+        nrgens1 := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra1 )[3];
+        nrgens2 := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra2 )[3];
         
-        datum := ObjectDatum( FpAlg_k, target );
+        datum := DefiningSeptupleOfFinitelyPresentedAlgebra( target );
         
         nrgens := datum[3];
         gens := datum[4];
@@ -883,13 +887,13 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     AddBraidingInverseWithGivenTensorProducts( FpAlg_k,
-      function( FpAlg_k, source, algebra1, algebra2, target )
+      function( FpAlg_k, source, fp_algebra1, fp_algebra2, target )
         local nrgens1, nrgens2, datum, nrgens, gens;
         
-        nrgens1 := ObjectDatum( FpAlg_k, algebra1 )[3];
-        nrgens2 := ObjectDatum( FpAlg_k, algebra2 )[3];
+        nrgens1 := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra1 )[3];
+        nrgens2 := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra2 )[3];
         
-        datum := ObjectDatum( FpAlg_k, target );
+        datum := DefiningSeptupleOfFinitelyPresentedAlgebra( target );
         
         nrgens := datum[3];
         gens := datum[4];
@@ -911,13 +915,13 @@ InstallMethod( CategoryOfFpAlgebras,
         
         ## if the diagram is empty there is no source
         
-        datum := ObjectDatum( FpAlg_k, target );
+        datum := DefiningSeptupleOfFinitelyPresentedAlgebra( target );
         
         L := datum[1];
         
         l := Length( diagram );
         
-        data := List( [ 1 .. l ], m -> MorphismDatum( FpAlg_k, diagram[m] ) );
+        data := List( [ 1 .. l ], m -> ListOfImages( diagram[m] ) );
         
         rels := Concatenation( List( [ 1 .. l - 1 ], m -> data[m] - data[m + 1] ) );
         
@@ -943,7 +947,7 @@ InstallMethod( CategoryOfFpAlgebras,
         
         return MorphismConstructor( FpAlg_k,
                        target,
-                       ObjectDatum( FpAlg_k, coequalizer )[4],
+                       DefiningSeptupleOfFinitelyPresentedAlgebra( coequalizer )[4],
                        coequalizer );
         
     end );
@@ -954,7 +958,7 @@ InstallMethod( CategoryOfFpAlgebras,
         
         return MorphismConstructor( FpAlg_k,
                        coequalizer,
-                       MorphismDatum( FpAlg_k, tau ),
+                       ListOfImages( tau ),
                        T );
         
     end );
@@ -963,16 +967,16 @@ InstallMethod( CategoryOfFpAlgebras,
     
     return FpAlg_k;
     
-end );
+end ) );
 
 ##
 InstallMethod( NrGenerators,
         "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
-  function( algebra )
+  function( fp_algebra )
     
-    return ObjectDatum( algebra )[3];
+    return DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra )[3];
     
 end );
 
@@ -981,9 +985,9 @@ InstallMethod( Generators,
         "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
-  function( algebra )
+  function( fp_algebra )
     
-    return ObjectDatum( algebra )[4];
+    return DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra )[4];
     
 end );
 
@@ -992,9 +996,9 @@ InstallMethod( AssociatedLinearClosureOfPathCategory,
         "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
-  function( algebra )
+  function( fp_algebra )
     
-    return ObjectDatum( algebra )[1];
+    return DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra )[1];
     
 end );
 
@@ -1003,9 +1007,9 @@ InstallMethod( DefiningRelations,
         "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
-  function( algebra )
+  function( fp_algebra )
     
-    return ObjectDatum( algebra )[6];
+    return DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra )[6];
     
 end );
 
@@ -1014,9 +1018,9 @@ InstallMethod( AssociatedQuotientCategoryOfLinearClosureOfPathCategory,
         "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
-  function( algebra )
+  function( fp_algebra )
     
-    return AssociatedLinearClosureOfPathCategory( algebra ) / DefiningRelations( algebra );
+    return AssociatedLinearClosureOfPathCategory( fp_algebra ) / DefiningRelations( fp_algebra );
     
 end );
 
@@ -1025,9 +1029,9 @@ InstallMethod( GroebnerBasisOfDefiningRelations,
         "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
-  function( algebra )
+  function( fp_algebra )
     
-    return GroebnerBasis( AssociatedLinearClosureOfPathCategory( algebra ), DefiningRelations( algebra ) );
+    return GroebnerBasis( AssociatedLinearClosureOfPathCategory( fp_algebra ), DefiningRelations( fp_algebra ) );
     
 end );
 
@@ -1036,16 +1040,16 @@ InstallMethod( Dimension,
         "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
-  function( algebra )
+  function( fp_algebra )
     local k, quotient;
     
-    k := CommutativeRingOfLinearCategory( AssociatedLinearClosureOfPathCategory( algebra ) );
+    k := CommutativeRingOfLinearCategory( AssociatedLinearClosureOfPathCategory( fp_algebra ) );
     
     if not ( HasIsFieldForHomalg( k ) and IsFieldForHomalg( k ) ) then
         Print( "WARNING: the underlying commutative ring `k` is either not a field or not yet marked as a field\n" );
     fi;
     
-    quotient := AssociatedQuotientCategoryOfLinearClosureOfPathCategory( algebra );
+    quotient := AssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_algebra );
     
     if HasIsEquippedWithHomomorphismStructure( quotient ) and IsEquippedWithHomomorphismStructure( quotient ) and
        HasRangeCategoryOfHomomorphismStructure( quotient ) and
@@ -1068,10 +1072,10 @@ InstallOtherMethodForCompilerForCAP( AmbientAlgebra,
         "for a category of finitely presented algebras and an algebra therein",
         [ IsCategoryOfFinitelyPresentedAlgebras, IsObjectInCategoryOfFpAlgebras ],
         
-  function( FpAlg_k, algebra )
+  function( FpAlg_k, fp_algebra )
     local datum;
     
-    datum := ObjectDatum( FpAlg_k, algebra );
+    datum := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra );
     
     return ObjectConstructor( FpAlg_k,
                    NTuple( 7,
@@ -1090,9 +1094,9 @@ InstallMethod( AmbientAlgebra,
         "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
-  function( algebra )
+  function( fp_algebra )
     
-    return AmbientAlgebra( CapCategory( algebra ), algebra );
+    return AmbientAlgebra( CapCategory( fp_algebra ), fp_algebra );
     
 end );
 
@@ -1212,16 +1216,16 @@ InstallOtherMethodForCompilerForCAP( AssociatedFunctorOfLinearClosuresOfPathCate
         "for a category of finitely presented algebras and a finitely presented algebra morphism therein",
         [ IsCategoryOfFinitelyPresentedAlgebras, IsMorphismInCategoryOfFpAlgebras ],
         
-  function( FpAlg_k, algebra_morphism )
+  function( FpAlg_k, fp_algebra_morphism )
     local S, T, path_cat, image_of_unique_object, images_of_generating_morphism;
     
-    S := ObjectDatum( FpAlg_k, Source( algebra_morphism ) )[1];
-    T := ObjectDatum( FpAlg_k, Target( algebra_morphism ) )[1];
+    S := DefiningSeptupleOfFinitelyPresentedAlgebra( Source( fp_algebra_morphism ) )[1];
+    T := DefiningSeptupleOfFinitelyPresentedAlgebra( Target( fp_algebra_morphism ) )[1];
     
     path_cat := UnderlyingCategory( S );
     
     image_of_unique_object := SetOfObjects( T );
-    images_of_generating_morphism := MorphismDatum( FpAlg_k, algebra_morphism );
+    images_of_generating_morphism := ListOfImages( fp_algebra_morphism );
     
     return ExtendFunctorToAlgebroidData(
                    S,
@@ -1240,9 +1244,9 @@ InstallMethod( AssociatedFunctorOfLinearClosuresOfPathCategoriesData,
         "for a finitely presented algebra morphism",
         [ IsMorphismInCategoryOfFpAlgebras ],
         
-  function( algebra_morphism )
+  function( fp_algebra_morphism )
     
-    return AssociatedFunctorOfLinearClosuresOfPathCategoriesData( CapCategory( algebra_morphism ), algebra_morphism );
+    return AssociatedFunctorOfLinearClosuresOfPathCategoriesData( CapCategory( fp_algebra_morphism ), fp_algebra_morphism );
     
 end );
 
@@ -1251,17 +1255,17 @@ InstallMethod( Counit,
         "for a finitely presented algebra and a list",
         [ IsObjectInCategoryOfFpAlgebras, IsList ],
         
-  function( algebra, list_of_images_of_counit )
+  function( fp_algebra, list_of_images_of_counit )
     local FpAlg_k, U, id;
     
-    FpAlg_k := CapCategory( algebra );
+    FpAlg_k := CapCategory( fp_algebra );
     
     U := TensorUnit( FpAlg_k );
     
     id := U.id_o;
     
     return MorphismConstructor( FpAlg_k,
-                   algebra,
+                   fp_algebra,
                    List( list_of_images_of_counit, r -> r * id ),
                    U );
     
@@ -1272,32 +1276,32 @@ InstallMethod( Comultiplication,
         "for a finitely presented algebra and a list",
         [ IsObjectInCategoryOfFpAlgebras, IsList ],
         
-  function( algebra, list_of_images_of_comult )
-    local FpAlg_k, algebra2, nrgens, nrgens2, L, gens, gens1, gens2,
+  function( fp_algebra, list_of_images_of_comult )
+    local FpAlg_k, fp_algebra2, nrgens, nrgens2, L, gens, gens1, gens2,
           ambient, ambient2, mor1, mor2, functor1_on_mors, functor2_on_mors, o;
     
-    FpAlg_k := CapCategory( algebra );
+    FpAlg_k := CapCategory( fp_algebra );
     
-    algebra2 := TensorProductOnObjects( FpAlg_k, algebra, algebra );
+    fp_algebra2 := TensorProductOnObjects( FpAlg_k, fp_algebra, fp_algebra );
     
-    nrgens := NrGenerators( algebra );
+    nrgens := NrGenerators( fp_algebra );
     
     Assert( 0, nrgens = Length( list_of_images_of_comult ) and ForAll( list_of_images_of_comult, IsList ) );
     Assert( 0, ForAll( list_of_images_of_comult, list -> ForAll( list, pair -> Length( pair ) = 2 and ForAll( pair, IsLinearClosureMorphism ) ) ) );
     
-    nrgens2 := NrGenerators( algebra2 );
+    nrgens2 := NrGenerators( fp_algebra2 );
     
     Assert( 0, 2 * nrgens = nrgens2 );
     
-    L := AssociatedLinearClosureOfPathCategory( algebra2 );
+    L := AssociatedLinearClosureOfPathCategory( fp_algebra2 );
     
-    gens := Generators( algebra2 );
+    gens := Generators( fp_algebra2 );
     
     gens1 := gens{[ 1 .. nrgens ]};
     gens2 := gens{[ nrgens + 1 .. nrgens2 ]};
         
-    ambient := AmbientAlgebra( algebra );
-    ambient2 := AmbientAlgebra( algebra2 );
+    ambient := AmbientAlgebra( fp_algebra );
+    ambient2 := AmbientAlgebra( fp_algebra2 );
     
     mor1 := MorphismConstructor( FpAlg_k, ambient, gens1, ambient2 );
     mor2 := MorphismConstructor( FpAlg_k, ambient, gens2, ambient2 );
@@ -1308,9 +1312,9 @@ InstallMethod( Comultiplication,
     o := SetOfObjects( L )[1];
     
     return MorphismConstructor( FpAlg_k,
-                   algebra,
+                   fp_algebra,
                    List( list_of_images_of_comult, list -> Sum( list, pair -> functor1_on_mors( o, pair[1], o ) * functor2_on_mors( o, pair[2], o ) ) ),
-                   algebra2 );
+                   fp_algebra2 );
     
 end );
 
@@ -1325,12 +1329,12 @@ InstallMethod( DisplayString,
         "for a finitely presented algebra",
         [ IsObjectInCategoryOfFpAlgebras ],
         
-  function( algebra )
+  function( fp_algebra )
     local k, datum, gens, q, str, rels;
     
-    k := CoefficientsRing( CapCategory( algebra ) );
+    k := CoefficientsRing( CapCategory( fp_algebra ) );
     
-    datum := ObjectDatum( algebra );
+    datum := ObjectDatum( fp_algebra );
     
     if datum[3] > 0 then
         gens := Concatenation( "<", JoinStringsWithSeparator( datum[7] ), ">" );
@@ -1361,20 +1365,20 @@ InstallMethod( DisplayString,
         "for a finitely presented algebra morphism",
         [ IsMorphismInCategoryOfFpAlgebras ],
         
-  function( algebra_morphism )
+  function( fp_algebra_morphism )
     local q, images;
     
-    q := UnderlyingQuiver( AssociatedLinearClosureOfPathCategory( Source( algebra_morphism ) ) );
+    q := UnderlyingQuiver( AssociatedLinearClosureOfPathCategory( Source( fp_algebra_morphism ) ) );
     
-    images := MorphismDatum( algebra_morphism );
+    images := MorphismDatum( fp_algebra_morphism );
     
     images := Concatenation( "[ ", JoinStringsWithSeparator( List( images, image -> CAP_INTERNAL_EXTRACT_STRING_OF_PATH( q, image ) ), ", " ), " ]\n" );
     
     return Concatenation(
-                   DisplayString( Target( algebra_morphism ) ),
+                   DisplayString( Target( fp_algebra_morphism ) ),
                    " ^\n |\n",
                    images,
                    " |\n",
-                   DisplayString( Source( algebra_morphism ) ) );
+                   DisplayString( Source( fp_algebra_morphism ) ) );
     
 end );
