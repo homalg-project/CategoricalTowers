@@ -517,6 +517,17 @@ InstallMethod( Generators,
 end );
 
 ##
+InstallMethod( MatrixGenerators,
+        "for a finitely presented matrix algebra",
+        [ IsObjectInCategoryOfFpMatrixAlgebras ],
+        
+  function( fp_matrix_algebra )
+    
+    return DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[2][2];
+    
+end );
+
+##
 InstallMethod( AssociatedLinearClosureOfPathCategory,
         "for a finitely presented matrix algebra",
         [ IsObjectInCategoryOfFpMatrixAlgebras ],
@@ -568,5 +579,19 @@ InstallMethod( Dimension,
   function( fp_matrix_algebra )
     
     return Dimension( DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1] );
+    
+end );
+
+##
+InstallMethod( \.,
+        "for a finitely presented algebra and a positive integer",
+        [ IsObjectInCategoryOfFpMatrixAlgebras, IsPosInt ],
+        
+  function( fp_matrix_algebra, string_as_int )
+    local name;
+    
+    name := NameRNam( string_as_int );
+    
+    return AssociatedLinearClosureOfPathCategory( fp_matrix_algebra ).(name);
     
 end );

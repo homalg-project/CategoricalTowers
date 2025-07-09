@@ -14,21 +14,25 @@
 
 #! @Description
 #!  The &GAP; category of categories from data tables.
+#! @Arguments category
 DeclareCategory( "IsCategoryFromDataTables",
         IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of cells in a category from data tables.
+#! @Arguments cell
 DeclareCategory( "IsCellInCategoryFromDataTables",
         IsCapCategoryCell );
 
 #! @Description
 #!  The &GAP; category of objects in a category from data tables.
+#! @Arguments object
 DeclareCategory( "IsObjectInCategoryFromDataTables",
         IsCellInCategoryFromDataTables and IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a category from data tables.
+#! @Arguments morphism
 DeclareCategory( "IsMorphismInCategoryFromDataTables",
         IsCellInCategoryFromDataTables and IsCapCategoryMorphism );
 

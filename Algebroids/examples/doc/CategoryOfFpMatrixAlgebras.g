@@ -29,73 +29,79 @@ Display( Alg_F2 );
 #! * IsSymmetricMonoidalCategory
 Mat_F2 := UnderlyingCategoryOfMatrices( MatAlg_F2 );
 #! Rows( GF(2) )
-q1 := FinQuiver( "q(o)[x:o->o,y:o->o]" );
+q := FinQuiver( "q(o)[x:o->o,y:o->o]" );
 #! FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )
-P1 := PathCategory( q1 );
+P := PathCategory( q );
 #! PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )
-L1 := F2[P1];
+L := F2[P];
 #! GF(2)-LinearClosure( PathCategory( \
 #! FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
-relations1 := [ L1.x^2 - L1.x,  L1.y^3 - L1.y,  L1.xy - L1.y * (L1.x+L1.id_o) ];
+relations := [ L.x^2 - L.x,  L.y^3 - L.y,  L.xy - L.y * (L.x+L.id_o) ];
 #! [ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o),\
 #!   1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
-Q1 := L1 / relations1;
+Q := L / relations;
 #! GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) / \
 #! [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
-Dimension( Q1 );
+Dimension( Q );
 #! 6
-A1 := Q1 / Alg_F2;
+A := Q / Alg_F2;
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
-A1 = ( L1 / Alg_F2 ) / relations1;
+A = ( L / Alg_F2 ) / relations;
 #! true
-IsWellDefined( A1 );
+IsWellDefined( A );
 #! true
-Dimension( A1 );
+Dimension( A );
 #! 6
-Display( A1 );
+Display( A );
 #! GF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
-xx := HomalgDiagonalMatrix( [ 1, 0, 1, 0 ], F2 ) / Mat_F2;
+mx := HomalgDiagonalMatrix( [ 1, 0, 1, 0 ], F2 ) / Mat_F2;
 #! <A morphism in Rows( GF(2) )>
-yy := DiagMat( [
+my := DiagMat( [
               HomalgZeroMatrix( 2, 2, F2 ),
               CertainRows( HomalgIdentityMatrix( 2, F2 ), [ 2, 1 ] ) ] ) / Mat_F2;
 #! <A morphism in Rows( GF(2) )>
-MA1 := Pair( A1, Pair( 4 / Mat_F2, [ xx, yy ] ) ) / MatAlg_F2;
+M := ObjectConstructor( MatAlg_F2, Pair( A, Pair( 4 / Mat_F2, [ mx, my ] ) ) );
 #! <An object in CategoryOfFpMatrixAlgebras( GF(2) )>
-IsWellDefined( MA1 );
+IsWellDefined( M );
 #! true
-Dimension( MA1 );
+M.x;
+#! 1*x:(o) -≻ (o)
+M.y;
+#! 1*y:(o) -≻ (o)
+Dimension( M );
 #! 6
-NrGenerators( MA1 );
+NrGenerators( M );
 #! 2
-Generators( MA1 );
+Generators( M );
 #! [ 1*x:(o) -≻ (o), 1*y:(o) -≻ (o) ]
-AssociatedLinearClosureOfPathCategory( MA1 );
+MatrixGenerators( M ) = [ mx, my ];
+#! true
+AssociatedLinearClosureOfPathCategory( M );
 #! GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
-DefiningRelations( MA1 );
+DefiningRelations( M );
 #! [ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \
 #!   1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
-AssociatedQuotientCategoryOfLinearClosureOfPathCategory( MA1 );
+AssociatedQuotientCategoryOfLinearClosureOfPathCategory( M );
 #! GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) \
 #! / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
-GroebnerBasisOfDefiningRelations( MA1 );
+GroebnerBasisOfDefiningRelations( M );
 #! [ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \
 #!   1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
-IsOne( PreCompose( LeftUnitor( MA1 ), LeftUnitorInverse( MA1 ) ) );
+IsOne( PreCompose( LeftUnitor( M ), LeftUnitorInverse( M ) ) );
 #! true
-IsOne( PreCompose( LeftUnitorInverse( MA1 ), LeftUnitor( MA1 ) ) );
+IsOne( PreCompose( LeftUnitorInverse( M ), LeftUnitor( M ) ) );
 #! true
-IsOne( PreCompose( RightUnitor( MA1 ), RightUnitorInverse( MA1 ) ) );
+IsOne( PreCompose( RightUnitor( M ), RightUnitorInverse( M ) ) );
 #! true
-IsOne( PreCompose( RightUnitorInverse( MA1 ), RightUnitor( MA1 ) ) );
+IsOne( PreCompose( RightUnitorInverse( M ), RightUnitor( M ) ) );
 #! true
-TestMonoidalPentagonIdentity( MA1, MA1, MA1, MA1 );
+TestMonoidalPentagonIdentity( M, M, M, M );
 #! true
-Braiding( MA1, MA1 ) = BraidingInverse( MA1, MA1 );
+Braiding( M, M ) = BraidingInverse( M, M );
 #! true
-TestBraidingCompatability( MA1, MA1, MA1 );
+TestBraidingCompatability( M, M, M );
 #! true
-iota1 := UniversalMorphismFromInitialObject( MA1 );
+iota1 := UniversalMorphismFromInitialObject( M );
 #! <A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>
 IsWellDefined( iota1 );
 #! true
