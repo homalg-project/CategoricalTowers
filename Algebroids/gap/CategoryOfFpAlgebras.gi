@@ -1202,12 +1202,12 @@ InstallMethod( \.,
         "for a finitely presented algebra and a positive integer",
         [ IsObjectInCategoryOfFpAlgebras, IsPosInt ],
         
-  function( A, string_as_int )
+  function( fp_algebra, string_as_int )
     local name;
     
     name := NameRNam( string_as_int );
     
-    return AssociatedLinearClosureOfPathCategory( A ).(name);
+    return AssociatedLinearClosureOfPathCategory( fp_algebra ).(name);
     
 end );
 

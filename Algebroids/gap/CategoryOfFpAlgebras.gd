@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Category of finitely presented algebras
+#! @Chapter Category of finitely presented associative unital algebras
 
 ####################################
 ##
@@ -12,15 +12,19 @@
 ##
 ####################################
 
-## categories
-
-#!
+#! @Description
+#!  The &GAP; category of categories of finitely presented associative unital algebras.
+#! @Arguments category
 DeclareCategory( "IsCategoryOfFinitelyPresentedAlgebras", IsCapCategory );
 
-#!
+#! @Description
+#!  The &GAP; category of finitely presented associative unital algebras.
+#! @Arguments object
 DeclareCategory( "IsObjectInCategoryOfFpAlgebras", IsCapCategoryObject );
 
-#!
+#! @Description
+#!  The &GAP; category of morphisms of finitely presented associative unital algebras.
+#! @Arguments morphism
 DeclareCategory( "IsMorphismInCategoryOfFpAlgebras", IsCapCategoryMorphism );
 
 ####################################
@@ -29,7 +33,10 @@ DeclareCategory( "IsMorphismInCategoryOfFpAlgebras", IsCapCategoryMorphism );
 ##
 ####################################
 
-#!
+#! @Description
+#!  The input is a category of finitely presented associative unital $k$-algebras.
+#!  The output is the underlying commutative ring $k$ of coefficients.
+#! @Arguments Alg_k
 DeclareAttribute( "CoefficientsRing", IsCategoryOfFinitelyPresentedAlgebras );
 
 CapJitAddTypeSignature( "CoefficientsRing", [ IsCategoryOfFinitelyPresentedAlgebras ],
@@ -39,7 +46,10 @@ CapJitAddTypeSignature( "CoefficientsRing", [ IsCategoryOfFinitelyPresentedAlgeb
     
 end );
 
-#!
+#! @Description
+#!  The input is a finitely presented associative unital $k$-algebras.
+#!  The output is the underlying commutative ring $k$ of coefficients.
+#! @Arguments fp_algebra
 DeclareAttribute( "CoefficientsRing", IsObjectInCategoryOfFpAlgebras );
 
 CapJitAddTypeSignature( "CoefficientsRing", [ IsObjectInCategoryOfFpAlgebras ],
@@ -49,47 +59,73 @@ CapJitAddTypeSignature( "CoefficientsRing", [ IsObjectInCategoryOfFpAlgebras ],
     
 end );
 
-#!
+#! @Arguments fp_algebra
 DeclareAttribute( "DefiningSeptupleOfFinitelyPresentedAlgebra",
         IsObjectInCategoryOfFpAlgebras );
 
-#!
+#! @Arguments fp_algebra_morphism
 DeclareAttribute( "ListOfImages",
         IsMorphismInCategoryOfFpAlgebras );
 
-#!
+#! @Description
+#!  The input is a finitely presented associative unital algebra.
+#!  The output is the number of generators.
+#! @Arguments fp_algebra
 DeclareOperation( "NrGenerators",
         [ IsObjectInCategoryOfFpAlgebras ] );
 
-#!
+#! @Description
+#!  The input is a finitely presented associative unital algebra.
+#!  The output is the list of generators of the underlying finitely presented associative unital algebra.
+#! @Arguments fp_algebra
 DeclareAttribute( "Generators",
         IsObjectInCategoryOfFpAlgebras );
 
-#!
+#! @Description
+#!  The input is a finitely presented associative unital $k$-algebra.
+#!  The output is the corresponding ambient free $k$-algebra
+#!  as a $k$-linear closure of a path category of loops on a single vertex.
+#! @Arguments fp_algebra
 DeclareAttribute( "AssociatedLinearClosureOfPathCategory",
         IsObjectInCategoryOfFpAlgebras );
 
-#!
+#! @Description
+#!  The input is a finitely presented associative unital algebra.
+#!  The output its list of defining relations.
+#! @Arguments fp_algebra
 DeclareAttribute( "DefiningRelations",
         IsObjectInCategoryOfFpAlgebras );
 
-#!
-DeclareAttribute( "AssociatedQuotientCategoryOfLinearClosureOfPathCategory",
-        IsObjectInCategoryOfFpAlgebras );
-
-#!
-DeclareAttribute( "Dimension",
-        IsObjectInCategoryOfFpAlgebras );
-
-#!
+#! @Description
+#!  The input is a finitely presented associative unital algebra.
+#!  The output is the Gröbner basis of its list of defining relations.
+#! @Arguments fp_algebra
 DeclareAttribute( "GroebnerBasisOfDefiningRelations",
         IsObjectInCategoryOfFpAlgebras );
 
-#!
+#! @Description
+#!  The input is a finitely presented associative unital $k$-algebra.
+#!  The output is the corresponding underlying finitely presented associative unital $k$-algebra
+#!  as a quotient of a $k$-linear closure of a path category of loops on a single vertex.
+#! @Arguments fp_algebra
+DeclareAttribute( "AssociatedQuotientCategoryOfLinearClosureOfPathCategory",
+        IsObjectInCategoryOfFpAlgebras );
+
+#! @Description
+#!  The input is a finitely presented associative unital $k$-algebra.
+#!  The output its $k$-dimension.
+#! @Arguments fp_algebra
+DeclareAttribute( "Dimension",
+        IsObjectInCategoryOfFpAlgebras );
+
+#! @Description
+#!  The input is a finitely presented associative unital algebra.
+#!  The output is the corresponding ambient free algebra.
+#! @Arguments fp_algebra
 DeclareAttribute( "AmbientAlgebra",
         IsObjectInCategoryOfFpAlgebras );
 
-#!
+#! @Arguments fp_algebra_morphism
 DeclareAttribute( "AssociatedFunctorOfLinearClosuresOfPathCategoriesData",
         IsMorphismInCategoryOfFpAlgebras );
 
@@ -99,11 +135,11 @@ DeclareAttribute( "AssociatedFunctorOfLinearClosuresOfPathCategoriesData",
 ##
 ####################################
 
-#!
+#! @Arguments fp_algebra, list
 DeclareOperation( "Counit",
         [ IsObjectInCategoryOfFpAlgebras, IsList ] );
 
-#!
+#! @Arguments fp_algebra, list
 DeclareOperation( "Comultiplication",
         [ IsObjectInCategoryOfFpAlgebras, IsList ] );
 
@@ -113,7 +149,10 @@ DeclareOperation( "Comultiplication",
 ##
 ####################################
 
-#!
+#! @Description
+#!  The input is a commutative ring <A>k</A>.
+#!  The output is the category of finitely presented associative unital algebras over $k$.
+#! @Arguments k
 DeclareAttribute( "CategoryOfFpAlgebras", IsHomalgRing );
 #! @InsertChunk CategoryOfFpAlgebras
 #! @InsertChunk NonCodistributivityOfCategoryOfFpAlgebras

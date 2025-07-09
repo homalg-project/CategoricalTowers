@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Category of finitely presented matrix algebras
+#! @Chapter Category of finitely presented associative unital matrix algebras
 
 ####################################
 ##
@@ -12,15 +12,19 @@
 ##
 ####################################
 
-## categories
-
-#!
+#! @Description
+#!  The &GAP; category of categories of finitely presented associative unital matrix algebras.
+#! @Arguments category
 DeclareCategory( "IsCategoryOfFinitelyPresentedMatrixAlgebras", IsCapCategory );
 
-#!
+#! @Description
+#!  The &GAP; category of finitely presented associative unital matrix algebras.
+#! @Arguments object
 DeclareCategory( "IsObjectInCategoryOfFpMatrixAlgebras", IsCapCategoryObject );
 
-#!
+#! @Description
+#!  The &GAP; category of morphisms of finitely presented associative unital matrix algebras.
+#! @Arguments morphism
 DeclareCategory( "IsMorphismInCategoryOfFpMatrixAlgebras", IsCapCategoryMorphism );
 
 ####################################
@@ -29,7 +33,10 @@ DeclareCategory( "IsMorphismInCategoryOfFpMatrixAlgebras", IsCapCategoryMorphism
 ##
 ####################################
 
-#!
+#! @Description
+#!  The input is a category of finitely presented associative unital matrix algebras.
+#!  The output is the underlying category of finitely presented algebras.
+#! @Arguments MatAlg_k
 DeclareAttribute( "UnderlyingCategoryOfFpAlgebras", IsCategoryOfFinitelyPresentedMatrixAlgebras );
 
 CapJitAddTypeSignature( "UnderlyingCategoryOfFpAlgebras", [ IsCategoryOfFinitelyPresentedMatrixAlgebras ],
@@ -39,7 +46,10 @@ CapJitAddTypeSignature( "UnderlyingCategoryOfFpAlgebras", [ IsCategoryOfFinitely
     
 end );
 
-#!
+#! @Description
+#!  The input is a category of finitely presented associative unital matrix $k$-algebras.
+#!  The output is the underlying category of $k$-matrices.
+#! @Arguments MatAlg_k
 DeclareAttribute( "UnderlyingCategoryOfMatrices", IsCategoryOfFinitelyPresentedMatrixAlgebras );
 
 CapJitAddTypeSignature( "UnderlyingCategoryOfMatrices", [ IsCategoryOfFinitelyPresentedMatrixAlgebras ],
@@ -49,7 +59,10 @@ CapJitAddTypeSignature( "UnderlyingCategoryOfMatrices", [ IsCategoryOfFinitelyPr
     
 end );
 
-#!
+#! @Description
+#!  The input is a category of finitely presented associative unital matrix $k$-algebras.
+#!  The output is the underlying commutative ring $k$ of coefficients.
+#! @Arguments MatAlg_k
 DeclareAttribute( "CoefficientsRing", IsCategoryOfFinitelyPresentedMatrixAlgebras );
 
 CapJitAddTypeSignature( "CoefficientsRing", [ IsCategoryOfFinitelyPresentedMatrixAlgebras ],
@@ -59,7 +72,10 @@ CapJitAddTypeSignature( "CoefficientsRing", [ IsCategoryOfFinitelyPresentedMatri
     
 end );
 
-#!
+#! @Description
+#!  The input is a finitely presented associative unital matrix $k$-algebras.
+#!  The output is the underlying commutative ring $k$ of coefficients.
+#! @Arguments fp_matrix_algebra
 DeclareAttribute( "CoefficientsRing", IsObjectInCategoryOfFpMatrixAlgebras );
 
 CapJitAddTypeSignature( "CoefficientsRing", [ IsObjectInCategoryOfFpMatrixAlgebras ],
@@ -69,53 +85,90 @@ CapJitAddTypeSignature( "CoefficientsRing", [ IsObjectInCategoryOfFpMatrixAlgebr
     
 end );
 
-#!
+#! @Description
+#!  The input is a finitely presented associative unital matrix $k$-algebras.
+#!  The output is a pair.
+#!  Its first entry is the underlying finitely presented $k$-algebra
+#!  Its second entry is a pair with first entry an object in the
+#!  the underlying category $V$ of $k$-matrices and
+#!  a list of morphisms in $V$.
+#! @Arguments fp_matrix_algebra
 DeclareAttribute( "DefiningPairOfFinitelyPresentedMatrixAlgebra",
         IsObjectInCategoryOfFpMatrixAlgebras );
 
-#!
+#! @Description
+#!  The input is a finitely presented associative unital matrix algebra.
+#!  The output is the underlying morphism between the underlying
+#!  finitely presented algebras.
+#! @Arguments fp_matrix_algebra_morphism
 DeclareAttribute( "UnderlyingMorphismInCategoryOfFpAlgebras",
         IsMorphismInCategoryOfFpMatrixAlgebras );
 
-#!
+#! @Description
+#!  The input is a finitely presented associative unital matrix algebra.
+#!  The output is the number of generators.
+#! @Arguments fp_matrix_algebra
 DeclareOperation( "NrGenerators",
         [ IsObjectInCategoryOfFpMatrixAlgebras ] );
 
-#!
+#! @Description
+#!  The input is a finitely presented associative unital matrix algebra.
+#!  The output is the list of generators of the underlying finitely presented algebra.
+#! @Arguments fp_matrix_algebra
 DeclareAttribute( "Generators",
         IsObjectInCategoryOfFpMatrixAlgebras );
 
-#!
+#! @Description
+#!  The input is a finitely presented associative unital matrix $k$-algebra.
+#!  The output is the list of matrix generators as morphisms in the
+#!  underlying category of $k$-matrices.
+#! @Arguments fp_matrix_algebra
 DeclareAttribute( "MatrixGenerators",
         IsObjectInCategoryOfFpMatrixAlgebras );
 
-#!
+#! @Description
+#!  The input is a finitely presented associative unital matrix $k$-algebra.
+#!  The output is the corresponding ambient free $k$-algebra
+#!  as a $k$-linear closure of a path category of loops on a single vertex.
+#! @Arguments fp_matrix_algebra
 DeclareAttribute( "AssociatedLinearClosureOfPathCategory",
         IsObjectInCategoryOfFpMatrixAlgebras );
 
-#!
+#! @Description
+#!  The input is a finitely presented associative unital matrix algebra.
+#!  The output its list of defining relations.
+#! @Arguments fp_matrix_algebra
 DeclareAttribute( "DefiningRelations",
         IsObjectInCategoryOfFpMatrixAlgebras );
 
-#!
-DeclareAttribute( "AssociatedQuotientCategoryOfLinearClosureOfPathCategory",
-        IsObjectInCategoryOfFpMatrixAlgebras );
-
-#!
-DeclareAttribute( "Dimension",
-        IsObjectInCategoryOfFpMatrixAlgebras );
-
-#!
+#! @Description
+#!  The input is a finitely presented associative unital matrix algebra.
+#!  The output is the Gröbner basis of its list of defining relations.
+#! @Arguments fp_matrix_algebra
 DeclareAttribute( "GroebnerBasisOfDefiningRelations",
         IsObjectInCategoryOfFpMatrixAlgebras );
 
-#!
-DeclareAttribute( "AmbientAlgebra",
+#! @Description
+#!  The input is a finitely presented associative unital matrix $k$-algebra.
+#!  The output is the corresponding underlying finitely presented $k$-algebra
+#!  as a quotient of a $k$-linear closure of a path category of loops on a single vertex.
+#! @Arguments fp_matrix_algebra
+DeclareAttribute( "AssociatedQuotientCategoryOfLinearClosureOfPathCategory",
         IsObjectInCategoryOfFpMatrixAlgebras );
 
-#!
-DeclareAttribute( "AssociatedFunctorOfLinearClosuresOfPathCategoriesData",
-        IsMorphismInCategoryOfFpMatrixAlgebras );
+#! @Description
+#!  The input is a finitely presented associative unital matrix $k$-algebra.
+#!  The output its $k$-dimension.
+#! @Arguments fp_matrix_algebra
+DeclareAttribute( "Dimension",
+        IsObjectInCategoryOfFpMatrixAlgebras );
+
+#! @Description
+#!  The input is a finitely presented associative unital matrix $k$-algebra.
+#!  The output is the corresponding ambient free $k$-algebra.
+#! @Arguments fp_matrix_algebra
+DeclareAttribute( "AmbientAlgebra",
+        IsObjectInCategoryOfFpMatrixAlgebras );
 
 ####################################
 ##
@@ -123,11 +176,11 @@ DeclareAttribute( "AssociatedFunctorOfLinearClosuresOfPathCategoriesData",
 ##
 ####################################
 
-#!
+#! @Arguments fp_matrix_algebra, list
 DeclareOperation( "Counit",
         [ IsObjectInCategoryOfFpMatrixAlgebras, IsList ] );
 
-#!
+#! @Arguments fp_matrix_algebra, list
 DeclareOperation( "Comultiplication",
         [ IsObjectInCategoryOfFpMatrixAlgebras, IsList ] );
 
@@ -137,12 +190,19 @@ DeclareOperation( "Comultiplication",
 ##
 ####################################
 
-#!
+#! @Description
+#!  The input is a category <A>Alg_k</A> of finitely presented $k$-algebras and
+#!  a category <A>V</A> of $k$-matrices.
+#!  The output is the category of finitely presented associative unital matrix algebras over $k$.
+#! @Arguments Alg_k, V
 DeclareOperation( "CategoryOfFpMatrixAlgebras",
         [ IsCategoryOfFinitelyPresentedAlgebras, IsCapCategory ] );
 #! @InsertChunk CategoryOfFpMatrixAlgebras
 
-#!
+#! @Description
+#!  The input is a commutative ring <A>k</A>.
+#!  The output is the category of finitely presented associative unital matrix algebras over $k$.
+#! @Arguments k
 DeclareAttribute( "CategoryOfFpMatrixAlgebras",
         IsHomalgRing );
 

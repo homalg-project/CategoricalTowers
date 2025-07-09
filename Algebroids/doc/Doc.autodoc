@@ -100,10 +100,18 @@
 
 @Section Constructors
 
-@Chapter Category of finitely presented algebras
+@Chapter Category of finitely presented associative unital algebras
 
 @Section Attributes
 @Section Constructors
+@Section Operations
+@Section GAP categories
+
+@Chapter Category of finitely presented associative unital matrix algebras
+
+@Section Attributes
+@Section Constructors
+@Section Operations
 @Section GAP categories
 
 @Chapter Tools
