@@ -1,211 +1,191 @@
   
-  [1X13 [33X[0;0YCategory of finitely presented matrix algebras[133X[101X
-  
-  
-  [1X13.1 [33X[0;0YGAP categories[133X[101X
-  
-  [1X13.1-1 IsCategoryOfFinitelyPresentedMatrixAlgebras[101X
-  
-  [33X[1;0Y[29X[2XIsCategoryOfFinitelyPresentedMatrixAlgebras[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [1X13.1-2 IsObjectInCategoryOfFpMatrixAlgebras[101X
-  
-  [33X[1;0Y[29X[2XIsObjectInCategoryOfFpMatrixAlgebras[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [1X13.1-3 IsMorphismInCategoryOfFpMatrixAlgebras[101X
-  
-  [33X[1;0Y[29X[2XIsMorphismInCategoryOfFpMatrixAlgebras[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  
-  [1X13.2 [33X[0;0YAttributes[133X[101X
-  
-  [1X13.2-1 UnderlyingCategoryOfFpAlgebras[101X
-  
-  [33X[1;0Y[29X[2XUnderlyingCategoryOfFpAlgebras[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X13.2-2 UnderlyingCategoryOfMatrices[101X
-  
-  [33X[1;0Y[29X[2XUnderlyingCategoryOfMatrices[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X13.2-3 CoefficientsRing[101X
-  
-  [33X[1;0Y[29X[2XCoefficientsRing[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X13.2-4 CoefficientsRing[101X
-  
-  [33X[1;0Y[29X[2XCoefficientsRing[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X13.2-5 DefiningPairOfFinitelyPresentedMatrixAlgebra[101X
-  
-  [33X[1;0Y[29X[2XDefiningPairOfFinitelyPresentedMatrixAlgebra[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X13.2-6 UnderlyingMorphismInCategoryOfFpAlgebras[101X
-  
-  [33X[1;0Y[29X[2XUnderlyingMorphismInCategoryOfFpAlgebras[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X13.2-7 NrGenerators[101X
-  
-  [33X[1;0Y[29X[2XNrGenerators[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [1X13.2-8 Generators[101X
-  
-  [33X[1;0Y[29X[2XGenerators[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X13.2-9 MatrixGenerators[101X
-  
-  [33X[1;0Y[29X[2XMatrixGenerators[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X13.2-10 AssociatedLinearClosureOfPathCategory[101X
-  
-  [33X[1;0Y[29X[2XAssociatedLinearClosureOfPathCategory[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X13.2-11 DefiningRelations[101X
-  
-  [33X[1;0Y[29X[2XDefiningRelations[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X13.2-12 AssociatedQuotientCategoryOfLinearClosureOfPathCategory[101X
-  
-  [33X[1;0Y[29X[2XAssociatedQuotientCategoryOfLinearClosureOfPathCategory[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X13.2-13 Dimension[101X
-  
-  [33X[1;0Y[29X[2XDimension[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X13.2-14 GroebnerBasisOfDefiningRelations[101X
-  
-  [33X[1;0Y[29X[2XGroebnerBasisOfDefiningRelations[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X13.2-15 AmbientAlgebra[101X
-  
-  [33X[1;0Y[29X[2XAmbientAlgebra[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  [1X13.2-16 AssociatedFunctorOfLinearClosuresOfPathCategoriesData[101X
-  
-  [33X[1;0Y[29X[2XAssociatedFunctorOfLinearClosuresOfPathCategoriesData[102X( [3Xarg[103X ) [32X attribute[133X
-  
-  
-  [1X13.3 [33X[0;0YOperations[133X[101X
-  
-  [1X13.3-1 Counit[101X
-  
-  [33X[1;0Y[29X[2XCounit[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
-  
-  [1X13.3-2 Comultiplication[101X
-  
-  [33X[1;0Y[29X[2XComultiplication[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
-  
-  
-  [1X13.4 [33X[0;0YConstructors[133X[101X
-  
-  [1X13.4-1 CategoryOfFpMatrixAlgebras[101X
-  
-  [33X[1;0Y[29X[2XCategoryOfFpMatrixAlgebras[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  [1X13 [33X[0;0YPrecompilation[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XF2 := HomalgRingOfIntegersInSingular( 2 );[127X[104X
-    [4X[28XGF(2)[128X[104X
-    [4X[25Xgap>[125X [27XMatAlg_F2 := CategoryOfFpMatrixAlgebras( F2 );[127X[104X
-    [4X[28XCategoryOfFpMatrixAlgebras( GF(2) )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( MatAlg_F2 );[127X[104X
-    [4X[28XA CAP category with name CategoryOfFpMatrixAlgebras( GF(2) ):[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X24 primitive operations were used to derive 45 operations for this category \[128X[104X
-    [4X[28Xwhich algorithmically[128X[104X
-    [4X[28X* IsCategoryWithInitialObject[128X[104X
-    [4X[28X* IsSymmetricMonoidalCategory[128X[104X
-    [4X[28Xand not yet algorithmically[128X[104X
-    [4X[28X* IsCategoryWithCoequalizers[128X[104X
-    [4X[28X* IsCartesianCategory[128X[104X
-    [4X[25Xgap>[125X [27XAlg_F2 := UnderlyingCategoryOfFpAlgebras( MatAlg_F2 );[127X[104X
-    [4X[28XCategoryOfFpAlgebras( GF(2) )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( Alg_F2 );[127X[104X
-    [4X[28XA CAP category with name CategoryOfFpAlgebras( GF(2) ):[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X31 primitive operations were used to derive 130 operations for this category \[128X[104X
-    [4X[28Xwhich algorithmically[128X[104X
-    [4X[28X* IsFiniteCocompleteCategory[128X[104X
-    [4X[28X* IsBicartesianCategory[128X[104X
-    [4X[28X* IsSymmetricMonoidalCategory[128X[104X
-    [4X[25Xgap>[125X [27XMat_F2 := UnderlyingCategoryOfMatrices( MatAlg_F2 );[127X[104X
-    [4X[28XRows( GF(2) )[128X[104X
-    [4X[25Xgap>[125X [27Xq1 := FinQuiver( "q(o)[x:o->o,y:o->o]" );[127X[104X
-    [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )[128X[104X
-    [4X[25Xgap>[125X [27XP1 := PathCategory( q1 );[127X[104X
-    [4X[28XPathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )[128X[104X
-    [4X[25Xgap>[125X [27XL1 := F2[P1];[127X[104X
-    [4X[28XGF(2)-LinearClosure( PathCategory( \[128X[104X
-    [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27Xrelations1 := [ L1.x^2 - L1.x,  L1.y^3 - L1.y,  L1.xy - L1.y * (L1.x+L1.id_o) ];[127X[104X
-    [4X[28X[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o),\[128X[104X
-    [4X[28X  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ][128X[104X
-    [4X[25Xgap>[125X [27XQ1 := L1 / relations1;[127X[104X
-    [4X[28XGF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) / \[128X[104X
-    [4X[28X[ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
-    [4X[25Xgap>[125X [27XDimension( Q1 );[127X[104X
-    [4X[28X6[128X[104X
-    [4X[25Xgap>[125X [27XA1 := Q1 / Alg_F2;[127X[104X
-    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XA1 = ( L1 / Alg_F2 ) / relations1;[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2024.07-09", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( A1 );[127X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
+    [4X[25Xgap>[125X [27XA := PathAlgebra( QQ, snake_quiver );;[127X[104X
+    [4X[25Xgap>[125X [27XSetRingFilter( A, IsQuiverAlgebra );[127X[104X
+    [4X[25Xgap>[125X [27XSetRingElementFilter( A, IsQuiverAlgebraElement );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDimension( A1 );[127X[104X
-    [4X[28X6[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( A1 );[127X[104X
-    [4X[28XGF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
-    [4X[25Xgap>[125X [27Xxx := HomalgDiagonalMatrix( [ 1, 0, 1, 0 ], F2 ) / Mat_F2;[127X[104X
-    [4X[28X<A morphism in Rows( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27Xyy := DiagMat( [[127X[104X
-    [4X[25X>[125X [27X              HomalgZeroMatrix( 2, 2, F2 ),[127X[104X
-    [4X[25X>[125X [27X              CertainRows( HomalgIdentityMatrix( 2, F2 ), [ 2, 1 ] ) ] ) / Mat_F2;[127X[104X
-    [4X[28X<A morphism in Rows( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XMA1 := Pair( A1, Pair( 4 / Mat_F2, [ xx, yy ] ) ) / MatAlg_F2;[127X[104X
-    [4X[28X<An object in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( MA1 );[127X[104X
+    [4X[25Xgap>[125X [27X# only valid for the construction above[127X[104X
+    [4X[25X>[125X [27X# FIXME: IsInt should be IsRat, but specializations of types are not yet supported by CompilerForCAP[127X[104X
+    [4X[25X>[125X [27XCapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], CapJitDataTypeOfListOf( IsInt ) );[127X[104X
+    [4X[25Xgap>[125X [27XCapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsAlgebroid ], function ( input_types )[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    return CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                   CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                           CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                   CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                           CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                                   CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                                           CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                                                   CapJitDataTypeOfListOf( IsInt ) ) ) ) ) ) ) ); end );[127X[104X
+    [4X[25Xgap>[125X [27X# EXPERIMENTAL[127X[104X
+    [4X[25X>[125X [27XAdd( CAP_JIT_EXPENSIVE_FUNCTION_NAMES, "CoefficientsOfPaths" );[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_AdditiveClosureOfAlgebroid :=[127X[104X
+    [4X[25X>[125X [27X  function( Rq, over_Z, ring )[127X[104X
+    [4X[25X>[125X [27X    CapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X        EvalString( ReplacedString( """Rq -> AdditiveClosure( Algebroid([127X[104X
+    [4X[25X>[125X [27X            Rq, over_Z : FinalizeCategory := true[127X[104X
+    [4X[25X>[125X [27X        ) )""", "over_Z", String( over_Z ) ) ),[127X[104X
+    [4X[25X>[125X [27X        [ Rq ],[127X[104X
+    [4X[25X>[125X [27X        "Algebroids",[127X[104X
+    [4X[25X>[125X [27X        Concatenation([127X[104X
+    [4X[25X>[125X [27X            "AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOver",[127X[104X
+    [4X[25X>[125X [27X            ring,[127X[104X
+    [4X[25X>[125X [27X            "Precompiled"[127X[104X
+    [4X[25X>[125X [27X        ) :[127X[104X
+    [4X[25X>[125X [27X        operations := "primitive"[127X[104X
+    [4X[25X>[125X [27X    ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_AdditiveClosureOfAlgebroid( A, false, "Field" );[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_AdditiveClosureOfAlgebroid( A, true, "Z" );[127X[104X
+    [4X[25Xgap>[125X [27XAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled( A );[127X[104X
+    [4X[28XAdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver([128X[104X
+    [4X[28X"q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XAdditiveClosure( Algebroid( A, false ) )!.precompiled_functions_added;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDimension( MA1 );[127X[104X
-    [4X[28X6[128X[104X
-    [4X[25Xgap>[125X [27XNrGenerators( MA1 );[127X[104X
-    [4X[28X2[128X[104X
-    [4X[25Xgap>[125X [27XGenerators( MA1 );[127X[104X
-    [4X[28X[ 1*x:(o) -≻ (o), 1*y:(o) -≻ (o) ][128X[104X
-    [4X[25Xgap>[125X [27XAssociatedLinearClosureOfPathCategory( MA1 );[127X[104X
-    [4X[28XGF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XDefiningRelations( MA1 );[127X[104X
-    [4X[28X[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \[128X[104X
-    [4X[28X  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ][128X[104X
-    [4X[25Xgap>[125X [27XAssociatedQuotientCategoryOfLinearClosureOfPathCategory( MA1 );[127X[104X
-    [4X[28XGF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) \[128X[104X
-    [4X[28X/ [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
-    [4X[25Xgap>[125X [27XGroebnerBasisOfDefiningRelations( MA1 );[127X[104X
-    [4X[28X[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \[128X[104X
-    [4X[28X  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ][128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( LeftUnitor( MA1 ), LeftUnitorInverse( MA1 ) ) );[127X[104X
+    [4X[25Xgap>[125X [27XAdditiveClosure( Algebroid( A, true ) )!.precompiled_functions_added;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( LeftUnitorInverse( MA1 ), LeftUnitor( MA1 ) ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( RightUnitor( MA1 ), RightUnitorInverse( MA1 ) ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( RightUnitorInverse( MA1 ), RightUnitor( MA1 ) ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestMonoidalPentagonIdentity( MA1, MA1, MA1, MA1 );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XBraiding( MA1, MA1 ) = BraidingInverse( MA1, MA1 );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestBraidingCompatability( MA1, MA1, MA1 );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xiota1 := UniversalMorphismFromInitialObject( MA1 );[127X[104X
-    [4X[28X<A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( iota1 );[127X[104X
-    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
-  [1X13.4-2 CategoryOfFpMatrixAlgebras[101X
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2024.07-09", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], input_types -> input_types[1] );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
+    [4X[25X>[125X [27X  data_tables -> AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRows_as_AdditiveClosure_RingAsCategory( data_tables[1] : FinalizeCategory := true ), FinalizeCategory := true ) );;[127X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular();;[127X[104X
+    [4X[25Xgap>[125X [27Xq := FinQuiver( "q(*)[x:*->*]" );;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments :=[127X[104X
+    [4X[25X>[125X [27X  [ NTuple( 5,[127X[104X
+    [4X[25X>[125X [27X      # coefficients_ring[127X[104X
+    [4X[25X>[125X [27X      Q,[127X[104X
+    [4X[25X>[125X [27X      # quiver[127X[104X
+    [4X[25X>[125X [27X      q,[127X[104X
+    [4X[25X>[125X [27X      # decomposition_indices_of_bases_elements[127X[104X
+    [4X[25X>[125X [27X      [ [ [ [ ], [ 1 ], [ 1, 1 ] ] ] ],[127X[104X
+    [4X[25X>[125X [27X      # hom_structure_gmors_objs[127X[104X
+    [4X[25X>[125X [27X      [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ],[127X[104X
+    [4X[25X>[125X [27X      # hom_structure_objs_gmors[127X[104X
+    [4X[25X>[125X [27X      [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ] ) ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "AdditiveClosureOfAlgebroidFromDataTablesPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "Algebroids";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name[127X[104X
+    [4X[25X>[125X [27X    : operations := "primitive"[127X[104X
+    [4X[25X>[125X [27X    );;[127X[104X
+    [4X[25Xgap>[125X [27XA := AdditiveClosureOfAlgebroidFromDataTablesPrecompiled( given_arguments[1] );;[127X[104X
+    [4X[25Xgap>[125X [27XA!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
   
-  [33X[1;0Y[29X[2XCategoryOfFpMatrixAlgebras[102X( [3Xarg[103X ) [32X attribute[133X
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2024.07-09", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
+    [4X[25Xgap>[125X [27XA := PathAlgebra( QQ, snake_quiver );;[127X[104X
+    [4X[25Xgap>[125X [27XSetRingFilter( A, IsQuiverAlgebra );[127X[104X
+    [4X[25Xgap>[125X [27XSetRingElementFilter( A, IsQuiverAlgebraElement );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# only valid for the construction above[127X[104X
+    [4X[25X>[125X [27X# FIXME: IsInt should be IsRat, but specializations of types are not yet supported by CompilerForCAP[127X[104X
+    [4X[25X>[125X [27X# this might already have been added by PrecompileAdditiveClosureOfAlgebroid.g[127X[104X
+    [4X[25X>[125X [27Xif not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.CoefficientsOfPaths ) then CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], CapJitDataTypeOfListOf( IsInt ) ); fi;[127X[104X
+    [4X[25Xgap>[125X [27Xif not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.HomStructureOnBasisPaths ) then[127X[104X
+    [4X[25X>[125X [27X    CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsAlgebroid ], function ( input_types )[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        return CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                       CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                               CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                       CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                               CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                                       CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                                               CapJitDataTypeOfListOf([127X[104X
+    [4X[25X>[125X [27X                                                                       CapJitDataTypeOfListOf( IsInt ) ) ) ) ) ) ) ); end ); fi;[127X[104X
+    [4X[25Xgap>[125X [27X# EXPERIMENTAL[127X[104X
+    [4X[25X>[125X [27XAdd( CAP_JIT_EXPENSIVE_FUNCTION_NAMES, "CoefficientsOfPaths" );[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_AdelmanCategoryOfAdditiveClosureOfAlgebroid := function( Rq, over_Z, ring )[127X[104X
+    [4X[25X>[125X [27X    CapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X        EvalString( ReplacedString( """Rq -> AdelmanCategory( AdditiveClosure( Algebroid([127X[104X
+    [4X[25X>[125X [27X            Rq, over_Z : FinalizeCategory := true[127X[104X
+    [4X[25X>[125X [27X        ) : FinalizeCategory := true ) )""", "over_Z", String( over_Z ) ) ),[127X[104X
+    [4X[25X>[125X [27X        [ Rq ],[127X[104X
+    [4X[25X>[125X [27X        "Algebroids",[127X[104X
+    [4X[25X>[125X [27X        Concatenation([127X[104X
+    [4X[25X>[125X [27X            "AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOver",[127X[104X
+    [4X[25X>[125X [27X            ring,[127X[104X
+    [4X[25X>[125X [27X            "Precompiled"[127X[104X
+    [4X[25X>[125X [27X        ) :[127X[104X
+    [4X[25X>[125X [27X        operations := [[127X[104X
+    [4X[25X>[125X [27X            "IsZeroForMorphisms",[127X[104X
+    [4X[25X>[125X [27X            "CokernelProjection",[127X[104X
+    [4X[25X>[125X [27X            "IsDominating",[127X[104X
+    [4X[25X>[125X [27X            "IsEqualAsSubobjects",[127X[104X
+    [4X[25X>[125X [27X        ][127X[104X
+    [4X[25X>[125X [27X    ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_AdelmanCategoryOfAdditiveClosureOfAlgebroid( A, false, "Field" );[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_AdelmanCategoryOfAdditiveClosureOfAlgebroid( A, true, "Z" );[127X[104X
+    [4X[25Xgap>[125X [27XAdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled( A );[127X[104X
+    [4X[28XAdelman category( AdditiveClosure( Algebroid( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XAdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverZPrecompiled( A );[127X[104X
+    [4X[28XAdelman category( AdditiveClosure( Algebroid( Z, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XAdelmanCategory( AdditiveClosure( Algebroid( A, false ) ) )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XAdelmanCategory( AdditiveClosure( Algebroid( A, true ) ) )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2024.07-09", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
+    [4X[25X>[125X [27X  function( quiver )[127X[104X
+    [4X[25X>[125X [27X    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ); return CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ RightQuiver( "q(a,b)[m:a->b]" ) ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "CategoryFromDataTablesPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "Algebroids";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name[127X[104X
+    [4X[25X>[125X [27X        : operations := "primitive" );;[127X[104X
+    [4X[25Xgap>[125X [27XCategoryFromDataTablesPrecompiled( given_arguments[1] );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(a,b)[m:a->b]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XCategoryFromDataTables( FreeCategory( given_arguments[1] ) )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
   

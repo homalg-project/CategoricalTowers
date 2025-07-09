@@ -264,28 +264,28 @@
   
   [1X4.3-1 IsCategoryFromDataTables[101X
   
-  [33X[1;0Y[29X[2XIsCategoryFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryFromDataTables[102X( [3Xcategory[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of categories from data tables.[133X
   
   [1X4.3-2 IsCellInCategoryFromDataTables[101X
   
-  [33X[1;0Y[29X[2XIsCellInCategoryFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInCategoryFromDataTables[102X( [3Xcell[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in a category from data tables.[133X
   
   [1X4.3-3 IsObjectInCategoryFromDataTables[101X
   
-  [33X[1;0Y[29X[2XIsObjectInCategoryFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInCategoryFromDataTables[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a category from data tables.[133X
   
   [1X4.3-4 IsMorphismInCategoryFromDataTables[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInCategoryFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInCategoryFromDataTables[102X( [3Xmorphism[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in a category from data tables.[133X

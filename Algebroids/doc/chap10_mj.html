@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (Algebroids) - Chapter 10: Category of finitely presented algebras</title>
+<title>GAP (Algebroids) - Chapter 10: Category of finitely presented associative unital algebras</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -23,8 +23,8 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap9_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap11_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap10.html">[MathJax off]</a></p>
-<p><a id="X78E05D2F821619E7" name="X78E05D2F821619E7"></a></p>
-<div class="ChapSects"><a href="chap10_mj.html#X78E05D2F821619E7">10 <span class="Heading">Category of finitely presented algebras</span></a>
+<p><a id="X84B7308F7A731485" name="X84B7308F7A731485"></a></p>
+<div class="ChapSects"><a href="chap10_mj.html#X84B7308F7A731485">10 <span class="Heading">Category of finitely presented associative unital algebras</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10_mj.html#X7C701DBF7BAE649A">10.1 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
@@ -36,9 +36,9 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X8129969B82A5EB7A">10.1-6 Generators</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X78AAF5A68184D8FA">10.1-7 AssociatedLinearClosureOfPathCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X7E2EFA91789716E7">10.1-8 DefiningRelations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X78595AB37C34E356">10.1-9 AssociatedQuotientCategoryOfLinearClosureOfPathCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X7DC1081E78CB3B4D">10.1-10 Dimension</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X7889263B7E907229">10.1-11 GroebnerBasisOfDefiningRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X7889263B7E907229">10.1-9 GroebnerBasisOfDefiningRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X78595AB37C34E356">10.1-10 AssociatedQuotientCategoryOfLinearClosureOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X7DC1081E78CB3B4D">10.1-11 Dimension</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X840843EA80A97492">10.1-12 AmbientAlgebra</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X80BD12C17E2F9920">10.1-13 AssociatedFunctorOfLinearClosuresOfPathCategoriesData</a></span>
 </div></div>
@@ -47,22 +47,22 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X8548F8827D9CEF8C">10.2-1 CategoryOfFpAlgebras</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10_mj.html#X7D03633A7D98026B">10.3 <span class="Heading">GAP categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10_mj.html#X7DE8E16C7C2D387B">10.3 <span class="Heading">Operations</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X81E9B32A80E447C9">10.3-1 IsCategoryOfFinitelyPresentedAlgebras</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X80DEB82E821C5566">10.3-2 IsObjectInCategoryOfFpAlgebras</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X7FACD84C82E40088">10.3-3 IsMorphismInCategoryOfFpAlgebras</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X7E044B5486534D5E">10.3-1 Counit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X7A0E856E80032D84">10.3-2 Comultiplication</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10_mj.html#X7DE8E16C7C2D387B">10.4 <span class="Heading">Operations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10_mj.html#X7D03633A7D98026B">10.4 <span class="Heading">GAP categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X7E044B5486534D5E">10.4-1 Counit</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X7A0E856E80032D84">10.4-2 Comultiplication</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X81E9B32A80E447C9">10.4-1 IsCategoryOfFinitelyPresentedAlgebras</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X80DEB82E821C5566">10.4-2 IsObjectInCategoryOfFpAlgebras</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10_mj.html#X7FACD84C82E40088">10.4-3 IsMorphismInCategoryOfFpAlgebras</a></span>
 </div></div>
 </div>
 
-<h3>10 <span class="Heading">Category of finitely presented algebras</span></h3>
+<h3>10 <span class="Heading">Category of finitely presented associative unital algebras</span></h3>
 
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
@@ -72,67 +72,87 @@
 
 <h5>10.1-1 CoefficientsRing</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsRing</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsRing</code>( <var class="Arg">Alg_k</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a category of finitely presented associative unital <span class="SimpleMath">\(k\)</span>-algebras. The output is the underlying commutative ring <span class="SimpleMath">\(k\)</span> of coefficients.</p>
+
 <p><a id="X85F2E8FA82A5789E" name="X85F2E8FA82A5789E"></a></p>
 
 <h5>10.1-2 CoefficientsRing</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsRing</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsRing</code>( <var class="Arg">fp_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital <span class="SimpleMath">\(k\)</span>-algebras. The output is the underlying commutative ring <span class="SimpleMath">\(k\)</span> of coefficients.</p>
+
 <p><a id="X860C5D608715C326" name="X860C5D608715C326"></a></p>
 
 <h5>10.1-3 DefiningSeptupleOfFinitelyPresentedAlgebra</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningSeptupleOfFinitelyPresentedAlgebra</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningSeptupleOfFinitelyPresentedAlgebra</code>( <var class="Arg">fp_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p><a id="X792FED407F8C65AF" name="X792FED407F8C65AF"></a></p>
 
 <h5>10.1-4 ListOfImages</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ListOfImages</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ListOfImages</code>( <var class="Arg">fp_algebra_morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p><a id="X810094937AFF53E7" name="X810094937AFF53E7"></a></p>
 
 <h5>10.1-5 NrGenerators</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NrGenerators</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NrGenerators</code>( <var class="Arg">fp_algebra</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital algebra. The output is the number of generators.</p>
+
 <p><a id="X8129969B82A5EB7A" name="X8129969B82A5EB7A"></a></p>
 
 <h5>10.1-6 Generators</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Generators</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Generators</code>( <var class="Arg">fp_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital algebra. The output is the list of generators of the underlying finitely presented associative unital algebra.</p>
+
 <p><a id="X78AAF5A68184D8FA" name="X78AAF5A68184D8FA"></a></p>
 
 <h5>10.1-7 AssociatedLinearClosureOfPathCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedLinearClosureOfPathCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedLinearClosureOfPathCategory</code>( <var class="Arg">fp_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital <span class="SimpleMath">\(k\)</span>-algebra. The output is the corresponding ambient free <span class="SimpleMath">\(k\)</span>-algebra as a <span class="SimpleMath">\(k\)</span>-linear closure of a path category of loops on a single vertex.</p>
+
 <p><a id="X7E2EFA91789716E7" name="X7E2EFA91789716E7"></a></p>
 
 <h5>10.1-8 DefiningRelations</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningRelations</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X78595AB37C34E356" name="X78595AB37C34E356"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningRelations</code>( <var class="Arg">fp_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital algebra. The output its list of defining relations.</p>
 
-<h5>10.1-9 AssociatedQuotientCategoryOfLinearClosureOfPathCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedQuotientCategoryOfLinearClosureOfPathCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7DC1081E78CB3B4D" name="X7DC1081E78CB3B4D"></a></p>
-
-<h5>10.1-10 Dimension</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dimension</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p><a id="X7889263B7E907229" name="X7889263B7E907229"></a></p>
 
-<h5>10.1-11 GroebnerBasisOfDefiningRelations</h5>
+<h5>10.1-9 GroebnerBasisOfDefiningRelations</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GroebnerBasisOfDefiningRelations</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GroebnerBasisOfDefiningRelations</code>( <var class="Arg">fp_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital algebra. The output is the Gröbner basis of its list of defining relations.</p>
+
+<p><a id="X78595AB37C34E356" name="X78595AB37C34E356"></a></p>
+
+<h5>10.1-10 AssociatedQuotientCategoryOfLinearClosureOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedQuotientCategoryOfLinearClosureOfPathCategory</code>( <var class="Arg">fp_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital <span class="SimpleMath">\(k\)</span>-algebra. The output is the corresponding underlying finitely presented associative unital <span class="SimpleMath">\(k\)</span>-algebra as a quotient of a <span class="SimpleMath">\(k\)</span>-linear closure of a path category of loops on a single vertex.</p>
+
+<p><a id="X7DC1081E78CB3B4D" name="X7DC1081E78CB3B4D"></a></p>
+
+<h5>10.1-11 Dimension</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dimension</code>( <var class="Arg">fp_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital <span class="SimpleMath">\(k\)</span>-algebra. The output its <span class="SimpleMath">\(k\)</span>-dimension.</p>
+
 <p><a id="X840843EA80A97492" name="X840843EA80A97492"></a></p>
 
 <h5>10.1-12 AmbientAlgebra</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AmbientAlgebra</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AmbientAlgebra</code>( <var class="Arg">fp_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital algebra. The output is the corresponding ambient free algebra.</p>
+
 <p><a id="X80BD12C17E2F9920" name="X80BD12C17E2F9920"></a></p>
 
 <h5>10.1-13 AssociatedFunctorOfLinearClosuresOfPathCategoriesData</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedFunctorOfLinearClosuresOfPathCategoriesData</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedFunctorOfLinearClosuresOfPathCategoriesData</code>( <var class="Arg">fp_algebra_morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
 <h4>10.2 <span class="Heading">Constructors</span></h4>
@@ -141,7 +161,9 @@
 
 <h5>10.2-1 CategoryOfFpAlgebras</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfFpAlgebras</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfFpAlgebras</code>( <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a commutative ring <var class="Arg">k</var>. The output is the category of finitely presented associative unital algebras over <span class="SimpleMath">\(k\)</span>.</p>
+
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
@@ -374,45 +396,51 @@ infinity
 4
 </pre></div>
 
-<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
-
-<h4>10.3 <span class="Heading">GAP categories</span></h4>
-
-<p><a id="X81E9B32A80E447C9" name="X81E9B32A80E447C9"></a></p>
-
-<h5>10.3-1 IsCategoryOfFinitelyPresentedAlgebras</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryOfFinitelyPresentedAlgebras</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p><a id="X80DEB82E821C5566" name="X80DEB82E821C5566"></a></p>
-
-<h5>10.3-2 IsObjectInCategoryOfFpAlgebras</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInCategoryOfFpAlgebras</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p><a id="X7FACD84C82E40088" name="X7FACD84C82E40088"></a></p>
-
-<h5>10.3-3 IsMorphismInCategoryOfFpAlgebras</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInCategoryOfFpAlgebras</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
 <p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
 
-<h4>10.4 <span class="Heading">Operations</span></h4>
+<h4>10.3 <span class="Heading">Operations</span></h4>
 
 <p><a id="X7E044B5486534D5E" name="X7E044B5486534D5E"></a></p>
 
-<h5>10.4-1 Counit</h5>
+<h5>10.3-1 Counit</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Counit</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Counit</code>( <var class="Arg">fp_algebra</var>, <var class="Arg">list</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X7A0E856E80032D84" name="X7A0E856E80032D84"></a></p>
 
-<h5>10.4-2 Comultiplication</h5>
+<h5>10.3-2 Comultiplication</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Comultiplication</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Comultiplication</code>( <var class="Arg">fp_algebra</var>, <var class="Arg">list</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>10.4 <span class="Heading">GAP categories</span></h4>
+
+<p><a id="X81E9B32A80E447C9" name="X81E9B32A80E447C9"></a></p>
+
+<h5>10.4-1 IsCategoryOfFinitelyPresentedAlgebras</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryOfFinitelyPresentedAlgebras</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of categories of finitely presented associative unital algebras.</p>
+
+<p><a id="X80DEB82E821C5566" name="X80DEB82E821C5566"></a></p>
+
+<h5>10.4-2 IsObjectInCategoryOfFpAlgebras</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInCategoryOfFpAlgebras</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of finitely presented associative unital algebras.</p>
+
+<p><a id="X7FACD84C82E40088" name="X7FACD84C82E40088"></a></p>
+
+<h5>10.4-3 IsMorphismInCategoryOfFpAlgebras</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInCategoryOfFpAlgebras</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms of finitely presented associative unital algebras.</p>
+
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap9_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap11_mj.html">[Next Chapter]</a>&nbsp;  </div>
 

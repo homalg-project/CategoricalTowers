@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (Algebroids) - Chapter 11: Tools</title>
+<title>GAP (Algebroids) - Chapter 11: Category of finitely presented associative unital matrix algebras</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -23,57 +23,329 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap10_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap12_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap11.html">[MathJax off]</a></p>
-<p><a id="X8508AEF8845565A1" name="X8508AEF8845565A1"></a></p>
-<div class="ChapSects"><a href="chap11_mj.html#X8508AEF8845565A1">11 <span class="Heading">Tools</span></a>
+<p><a id="X7D46181985CA0B7C" name="X7D46181985CA0B7C"></a></p>
+<div class="ChapSects"><a href="chap11_mj.html#X7D46181985CA0B7C">11 <span class="Heading">Category of finitely presented associative unital matrix algebras</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X7C701DBF7BAE649A">11.1 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X8077FCEB82720B59">11.1-1 Dimension</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X85995D2E7B45D882">11.1-1 UnderlyingCategoryOfFpAlgebras</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X79190FC3836B439A">11.1-2 UnderlyingCategoryOfMatrices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X8514C65878E9857C">11.1-3 CoefficientsRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7BBADB917D0A3E17">11.1-4 CoefficientsRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X851B480A86AA037D">11.1-5 DefiningPairOfFinitelyPresentedMatrixAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7F0797F1849EFC84">11.1-6 UnderlyingMorphismInCategoryOfFpAlgebras</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X81D2CAD48742BC17">11.1-7 NrGenerators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7B7C570F7AC5D5BF">11.1-8 Generators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X85E4AA8479BB8931">11.1-9 MatrixGenerators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X812F820C78806ECF">11.1-10 AssociatedLinearClosureOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X86A05E648775F816">11.1-11 DefiningRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7FDFF83B7FD080BD">11.1-12 GroebnerBasisOfDefiningRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7D8E75FE802F7702">11.1-13 AssociatedQuotientCategoryOfLinearClosureOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X87ED655F85C8D380">11.1-14 Dimension</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X84FF507F78B20327">11.1-15 AmbientAlgebra</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X839DC59F790B90DE">11.2 <span class="Heading">Tools for quivers</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X86EC0F0A78ECBC10">11.2 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7ECD9D7C7A4B626E">11.2-1 DefiningTripleOfAQuiver</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7DEACD417F635C4A">11.2-1 CategoryOfFpMatrixAlgebras</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X814513758254A3A1">11.2-2 CategoryOfFpMatrixAlgebras</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X7DE8E16C7C2D387B">11.3 <span class="Heading">Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X81FCD1A1840E0E0A">11.3-1 Counit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X79816EF2814F76F2">11.3-2 Comultiplication</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X7D03633A7D98026B">11.4 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7B691B7A8446BEBB">11.4-1 IsCategoryOfFinitelyPresentedMatrixAlgebras</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X838C35317A836FF9">11.4-2 IsObjectInCategoryOfFpMatrixAlgebras</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X81A5194A7A07284B">11.4-3 IsMorphismInCategoryOfFpMatrixAlgebras</a></span>
 </div></div>
 </div>
 
-<h3>11 <span class="Heading">Tools</span></h3>
+<h3>11 <span class="Heading">Category of finitely presented associative unital matrix algebras</span></h3>
 
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
 <h4>11.1 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X8077FCEB82720B59" name="X8077FCEB82720B59"></a></p>
+<p><a id="X85995D2E7B45D882" name="X85995D2E7B45D882"></a></p>
 
-<h5>11.1-1 Dimension</h5>
+<h5>11.1-1 UnderlyingCategoryOfFpAlgebras</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dimension</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: an integer</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategoryOfFpAlgebras</code>( <var class="Arg">MatAlg_k</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a category of finitely presented associative unital matrix algebras. The output is the underlying category of finitely presented algebras.</p>
 
-<p>Return the dimension of the object-finite linear category C with free external Homs of finite rank.</p>
+<p><a id="X79190FC3836B439A" name="X79190FC3836B439A"></a></p>
 
-<p><a id="X839DC59F790B90DE" name="X839DC59F790B90DE"></a></p>
+<h5>11.1-2 UnderlyingCategoryOfMatrices</h5>
 
-<h4>11.2 <span class="Heading">Tools for quivers</span></h4>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategoryOfMatrices</code>( <var class="Arg">MatAlg_k</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a category of finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebras. The output is the underlying category of <span class="SimpleMath">\(k\)</span>-matrices.</p>
 
-<p><a id="X7ECD9D7C7A4B626E" name="X7ECD9D7C7A4B626E"></a></p>
+<p><a id="X8514C65878E9857C" name="X8514C65878E9857C"></a></p>
 
-<h5>11.2-1 DefiningTripleOfAQuiver</h5>
+<h5>11.1-3 CoefficientsRing</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningTripleOfAQuiver</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a triple</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsRing</code>( <var class="Arg">MatAlg_k</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a category of finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebras. The output is the underlying commutative ring <span class="SimpleMath">\(k\)</span> of coefficients.</p>
 
-<p>Return a triple consisting of the number of vertices of the quiver <var class="Arg">q</var>, the number of arrows of the quiver <var class="Arg">q</var>, and a list of pairs of integers encoding the arrows of <var class="Arg">q</var>.</p>
+<p><a id="X7BBADB917D0A3E17" name="X7BBADB917D0A3E17"></a></p>
+
+<h5>11.1-4 CoefficientsRing</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsRing</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebras. The output is the underlying commutative ring <span class="SimpleMath">\(k\)</span> of coefficients.</p>
+
+<p><a id="X851B480A86AA037D" name="X851B480A86AA037D"></a></p>
+
+<h5>11.1-5 DefiningPairOfFinitelyPresentedMatrixAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningPairOfFinitelyPresentedMatrixAlgebra</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebras. The output is a pair. Its first entry is the underlying finitely presented <span class="SimpleMath">\(k\)</span>-algebra Its second entry is a pair with first entry an object in the the underlying category <span class="SimpleMath">\(V\)</span> of <span class="SimpleMath">\(k\)</span>-matrices and a list of morphisms in <span class="SimpleMath">\(V\)</span>.</p>
+
+<p><a id="X7F0797F1849EFC84" name="X7F0797F1849EFC84"></a></p>
+
+<h5>11.1-6 UnderlyingMorphismInCategoryOfFpAlgebras</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingMorphismInCategoryOfFpAlgebras</code>( <var class="Arg">fp_matrix_algebra_morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital matrix algebra. The output is the underlying morphism between the underlying finitely presented algebras.</p>
+
+<p><a id="X81D2CAD48742BC17" name="X81D2CAD48742BC17"></a></p>
+
+<h5>11.1-7 NrGenerators</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NrGenerators</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital matrix algebra. The output is the number of generators.</p>
+
+<p><a id="X7B7C570F7AC5D5BF" name="X7B7C570F7AC5D5BF"></a></p>
+
+<h5>11.1-8 Generators</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Generators</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital matrix algebra. The output is the list of generators of the underlying finitely presented algebra.</p>
+
+<p><a id="X85E4AA8479BB8931" name="X85E4AA8479BB8931"></a></p>
+
+<h5>11.1-9 MatrixGenerators</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixGenerators</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebra. The output is the list of matrix generators as morphisms in the underlying category of <span class="SimpleMath">\(k\)</span>-matrices.</p>
+
+<p><a id="X812F820C78806ECF" name="X812F820C78806ECF"></a></p>
+
+<h5>11.1-10 AssociatedLinearClosureOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedLinearClosureOfPathCategory</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebra. The output is the corresponding ambient free <span class="SimpleMath">\(k\)</span>-algebra as a <span class="SimpleMath">\(k\)</span>-linear closure of a path category of loops on a single vertex.</p>
+
+<p><a id="X86A05E648775F816" name="X86A05E648775F816"></a></p>
+
+<h5>11.1-11 DefiningRelations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningRelations</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital matrix algebra. The output its list of defining relations.</p>
+
+<p><a id="X7FDFF83B7FD080BD" name="X7FDFF83B7FD080BD"></a></p>
+
+<h5>11.1-12 GroebnerBasisOfDefiningRelations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GroebnerBasisOfDefiningRelations</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital matrix algebra. The output is the Gröbner basis of its list of defining relations.</p>
+
+<p><a id="X7D8E75FE802F7702" name="X7D8E75FE802F7702"></a></p>
+
+<h5>11.1-13 AssociatedQuotientCategoryOfLinearClosureOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedQuotientCategoryOfLinearClosureOfPathCategory</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebra. The output is the corresponding underlying finitely presented <span class="SimpleMath">\(k\)</span>-algebra as a quotient of a <span class="SimpleMath">\(k\)</span>-linear closure of a path category of loops on a single vertex.</p>
+
+<p><a id="X87ED655F85C8D380" name="X87ED655F85C8D380"></a></p>
+
+<h5>11.1-14 Dimension</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dimension</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebra. The output its <span class="SimpleMath">\(k\)</span>-dimension.</p>
+
+<p><a id="X84FF507F78B20327" name="X84FF507F78B20327"></a></p>
+
+<h5>11.1-15 AmbientAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AmbientAlgebra</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebra. The output is the corresponding ambient free <span class="SimpleMath">\(k\)</span>-algebra.</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>11.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X7DEACD417F635C4A" name="X7DEACD417F635C4A"></a></p>
+
+<h5>11.2-1 CategoryOfFpMatrixAlgebras</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfFpMatrixAlgebras</code>( <var class="Arg">Alg_k</var>, <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>The input is a category <var class="Arg">Alg_k</var> of finitely presented <span class="SimpleMath">\(k\)</span>-algebras and a category <var class="Arg">V</var> of <span class="SimpleMath">\(k\)</span>-matrices. The output is the category of finitely presented associative unital matrix algebras over <span class="SimpleMath">\(k\)</span>.</p>
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(0..4)[a:0-&gt;0,s:0-&gt;1,t:0-&gt;1,m:3-&gt;0]" );</span>
-q(0,1,2,3,4)[a:0-&gt;0,s:0-&gt;1,t:0-&gt;1,m:3-&gt;0]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DefiningTripleOfAQuiver( q );</span>
-[ 5, 4, [ [ 0, 0 ], [ 0, 1 ], [ 0, 1 ], [ 3, 0 ] ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F2 := HomalgRingOfIntegersInSingular( 2 );</span>
+GF(2)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatAlg_F2 := CategoryOfFpMatrixAlgebras( F2 );</span>
+CategoryOfFpMatrixAlgebras( GF(2) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( MatAlg_F2 );</span>
+A CAP category with name CategoryOfFpMatrixAlgebras( GF(2) ):
+
+24 primitive operations were used to derive 45 operations for this category \
+which algorithmically
+* IsCategoryWithInitialObject
+* IsSymmetricMonoidalCategory
+and not yet algorithmically
+* IsCategoryWithCoequalizers
+* IsCartesianCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Alg_F2 := UnderlyingCategoryOfFpAlgebras( MatAlg_F2 );</span>
+CategoryOfFpAlgebras( GF(2) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Alg_F2 );</span>
+A CAP category with name CategoryOfFpAlgebras( GF(2) ):
+
+31 primitive operations were used to derive 130 operations for this category \
+which algorithmically
+* IsFiniteCocompleteCategory
+* IsBicartesianCategory
+* IsSymmetricMonoidalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Mat_F2 := UnderlyingCategoryOfMatrices( MatAlg_F2 );</span>
+Rows( GF(2) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "q(o)[x:o-&gt;o,y:o-&gt;o]" );</span>
+FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PathCategory( q );</span>
+PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := F2[P];</span>
+GF(2)-LinearClosure( PathCategory( \
+FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">relations := [ L.x^2 - L.x,  L.y^3 - L.y,  L.xy - L.y * (L.x+L.id_o) ];</span>
+[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o),\
+  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := L / relations;</span>
+GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) / \
+[ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( Q );</span>
+6
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := Q / Alg_F2;</span>
+&lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A = ( L / Alg_F2 ) / relations;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( A );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( A );</span>
+6
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
+GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mx := HomalgDiagonalMatrix( [ 1, 0, 1, 0 ], F2 ) / Mat_F2;</span>
+&lt;A morphism in Rows( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">my := DiagMat( [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              HomalgZeroMatrix( 2, 2, F2 ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              CertainRows( HomalgIdentityMatrix( 2, F2 ), [ 2, 1 ] ) ] ) / Mat_F2;</span>
+&lt;A morphism in Rows( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := ObjectConstructor( MatAlg_F2, Pair( A, Pair( 4 / Mat_F2, [ mx, my ] ) ) );</span>
+&lt;An object in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( M );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M.x;</span>
+1*x:(o) -≻ (o)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M.y;</span>
+1*y:(o) -≻ (o)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( M );</span>
+6
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NrGenerators( M );</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Generators( M );</span>
+[ 1*x:(o) -≻ (o), 1*y:(o) -≻ (o) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixGenerators( M ) = [ mx, my ];</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AssociatedLinearClosureOfPathCategory( M );</span>
+GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DefiningRelations( M );</span>
+[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \
+  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AssociatedQuotientCategoryOfLinearClosureOfPathCategory( M );</span>
+GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) \
+/ [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">GroebnerBasisOfDefiningRelations( M );</span>
+[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \
+  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( LeftUnitor( M ), LeftUnitorInverse( M ) ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( LeftUnitorInverse( M ), LeftUnitor( M ) ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( RightUnitor( M ), RightUnitorInverse( M ) ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( RightUnitorInverse( M ), RightUnitor( M ) ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestMonoidalPentagonIdentity( M, M, M, M );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Braiding( M, M ) = BraidingInverse( M, M );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestBraidingCompatability( M, M, M );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota1 := UniversalMorphismFromInitialObject( M );</span>
+&lt;A morphism in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iota1 );</span>
+true
 </pre></div>
+
+<p><a id="X814513758254A3A1" name="X814513758254A3A1"></a></p>
+
+<h5>11.2-2 CategoryOfFpMatrixAlgebras</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfFpMatrixAlgebras</code>( <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a commutative ring <var class="Arg">k</var>. The output is the category of finitely presented associative unital matrix algebras over <span class="SimpleMath">\(k\)</span>.</p>
+
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>11.3 <span class="Heading">Operations</span></h4>
+
+<p><a id="X81FCD1A1840E0E0A" name="X81FCD1A1840E0E0A"></a></p>
+
+<h5>11.3-1 Counit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Counit</code>( <var class="Arg">fp_matrix_algebra</var>, <var class="Arg">list</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X79816EF2814F76F2" name="X79816EF2814F76F2"></a></p>
+
+<h5>11.3-2 Comultiplication</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Comultiplication</code>( <var class="Arg">fp_matrix_algebra</var>, <var class="Arg">list</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>11.4 <span class="Heading">GAP categories</span></h4>
+
+<p><a id="X7B691B7A8446BEBB" name="X7B691B7A8446BEBB"></a></p>
+
+<h5>11.4-1 IsCategoryOfFinitelyPresentedMatrixAlgebras</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryOfFinitelyPresentedMatrixAlgebras</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of categories of finitely presented associative unital matrix algebras.</p>
+
+<p><a id="X838C35317A836FF9" name="X838C35317A836FF9"></a></p>
+
+<h5>11.4-2 IsObjectInCategoryOfFpMatrixAlgebras</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInCategoryOfFpMatrixAlgebras</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of finitely presented associative unital matrix algebras.</p>
+
+<p><a id="X81A5194A7A07284B" name="X81A5194A7A07284B"></a></p>
+
+<h5>11.4-3 IsMorphismInCategoryOfFpMatrixAlgebras</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInCategoryOfFpMatrixAlgebras</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms of finitely presented associative unital matrix algebras.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap10_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap12_mj.html">[Next Chapter]</a>&nbsp;  </div>
