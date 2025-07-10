@@ -13,8 +13,8 @@ Display( srepG );
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
-#! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsAbelianCategory
+#! * IsRigidSymmetricClosedMonoidalCategory
 #! and furthermore mathematically
 #! * IsSkeletalCategory
 G := UnderlyingGroupForRepresentationCategory( srepG );
