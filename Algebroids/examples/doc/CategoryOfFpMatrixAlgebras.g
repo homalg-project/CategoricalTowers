@@ -95,11 +95,13 @@ IsOne( PreCompose( RightUnitor( M ), RightUnitorInverse( M ) ) );
 #! true
 IsOne( PreCompose( RightUnitorInverse( M ), RightUnitor( M ) ) );
 #! true
-TestMonoidalPentagonIdentity( M, M, M, M );
+TestMonoidalTriangleIdentity( MatAlg_F2, M, M );
+#! true
+TestMonoidalPentagonIdentity( MatAlg_F2, M, M, M, M );
 #! true
 Braiding( M, M ) = BraidingInverse( M, M );
 #! true
-TestBraidingCompatability( M, M, M );
+TestBraidingCompatibility( MatAlg_F2, M, M, M );
 #! true
 iota1 := UniversalMorphismFromInitialObject( M );
 #! <A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>
