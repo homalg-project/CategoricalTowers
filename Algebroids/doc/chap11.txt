@@ -224,11 +224,13 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( PreCompose( RightUnitorInverse( M ), RightUnitor( M ) ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestMonoidalPentagonIdentity( M, M, M, M );[127X[104X
+    [4X[25Xgap>[125X [27XTestMonoidalTriangleIdentity( MatAlg_F2, M, M );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XTestMonoidalPentagonIdentity( MatAlg_F2, M, M, M, M );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XBraiding( M, M ) = BraidingInverse( M, M );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestBraidingCompatability( M, M, M );[127X[104X
+    [4X[25Xgap>[125X [27XTestBraidingCompatibility( MatAlg_F2, M, M, M );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xiota1 := UniversalMorphismFromInitialObject( M );[127X[104X
     [4X[28X<A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X

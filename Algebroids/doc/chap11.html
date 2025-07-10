@@ -280,11 +280,13 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( RightUnitorInverse( M ), RightUnitor( M ) ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestMonoidalPentagonIdentity( M, M, M, M );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestMonoidalTriangleIdentity( MatAlg_F2, M, M );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestMonoidalPentagonIdentity( MatAlg_F2, M, M, M, M );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Braiding( M, M ) = BraidingInverse( M, M );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestBraidingCompatability( M, M, M );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestBraidingCompatibility( MatAlg_F2, M, M, M );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota1 := UniversalMorphismFromInitialObject( M );</span>
 &lt;A morphism in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
