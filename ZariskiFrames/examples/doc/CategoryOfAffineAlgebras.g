@@ -41,6 +41,14 @@ Display( iota );
 #! Z/( 0 )
 IsWellDefined( iota );
 #! true
+terminal := Source( iota );
+#! <An object in CategoryOfAffineAlgebras( Z )>
+Dimension( terminal );
+#! 1
+initial := Target( iota );
+#! <An object in CategoryOfAffineAlgebras( Z )>
+Dimension( initial );
+#! -1
 uniq := UniversalMorphismIntoTerminalObject( InitialObject( AffAlg_Z ) );
 #! <A morphism in CategoryOfAffineAlgebras( Z )>
 Display( uniq );
@@ -59,18 +67,24 @@ W := ( zz["e"] / "e^2-e" ) / AffAlg_Z;
 #! <An object in CategoryOfAffineAlgebras( Z )>
 Display( W );
 #! Z[e]/( e^2-e )
+Dimension( W );
+#! 1
 IsWellDefined( W );
 #! true
 S := zz["x,y,z"] / AffAlg_Z;
 #! <An object in CategoryOfAffineAlgebras( Z )>
 Display( S );
 #! Z[x,y,z]/( 0 )
+Dimension( S );
+#! 4
 IsWellDefined( S );
 #! true
 T := zz["u"] / AffAlg_Z;
 #! <An object in CategoryOfAffineAlgebras( Z )>
 Display( T );
 #! Z[u]/( 0 )
+Dimension( T );
+#! 2
 IsWellDefined( T );
 #! true
 ExportVariables( ObjectDatum( T )[1] );
@@ -91,6 +105,8 @@ coimage := CoimageObject( phi );
 #! <An object in CategoryOfAffineAlgebras( Z )>
 Display( coimage );
 #! Z[x,y,z]/( y^2-x*z, x*y-z, x^2-y )
+Dimension( coimage );
+#! 2
 IsWellDefined( coimage );
 #! true
 prj := CoimageProjection( phi );

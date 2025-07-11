@@ -968,13 +968,14 @@ InstallMethod( Dimension,
     
     k := CoefficientsRing( CapCategory( affine_algebra ) );
     
-    if not ( HasIsFieldForHomalg( k ) and IsFieldForHomalg( k ) ) then
-        Error( "the underlying commutative ring `k` is either not a field or not yet marked as a field\n" );
+    if not ( ( HasIsFieldForHomalg( k ) and IsFieldForHomalg( k ) ) or
+             ( HasIsIntegersForHomalg( k ) or IsIntegersForHomalg( k ) ) ) then
+        Error( "the underlying commutative ring `k` is either not the ring of integers or a field or not yet marked as such\n" );
     fi;
     
     quotient := AssociatedHomalgRing( affine_algebra );
     
-    return AffineDegree( DefiningIdeal( quotient ) );
+    return AffineDimension( DefiningIdeal( quotient ) );
     
 end );
 
