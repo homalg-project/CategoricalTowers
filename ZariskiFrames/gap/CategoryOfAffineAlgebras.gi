@@ -182,23 +182,13 @@ InstallMethod( CategoryOfAffineAlgebras,
         
         datum := DefiningSextupleOfAffineAlgebra( affine_algebra );
         
-        if not ( IsIdenticalObj( datum[1], k ) or HasCoefficientsRing( datum[1] ) ) then
-            return false;
-        elif not IsIdenticalObj( k, CoefficientsRing( datum[1] ) ) then
-            return false;
-        elif not ( NrColumns( datum[3] ) = 1 and NrRows( datum[3] ) = datum[2] ) then
-            return false;
-        elif not IsIdenticalObj( HomalgRing( datum[3] ), datum[1] ) then
-            return false;
-        elif not ( NrColumns( datum[5] ) = 1 and NrRows( datum[5] ) = datum[4] ) then
-            return false;
-        elif not IsIdenticalObj( HomalgRing( datum[5] ), datum[1] ) then
-            return false;
-        elif not Length( datum[6] ) = datum[2] then
-            return false;
-        fi;
-        
-        return true;
+        return ( IsIdenticalObj( datum[1], k ) or HasCoefficientsRing( datum[1] ) ) and
+               IsIdenticalObj( k, CoefficientsRing( datum[1] ) ) and
+               NrColumns( datum[3] ) = 1 and NrRows( datum[3] ) = datum[2] and
+               IsIdenticalObj( HomalgRing( datum[3] ), datum[1] ) and
+               NrColumns( datum[5] ) = 1 and NrRows( datum[5] ) = datum[4] and
+               IsIdenticalObj( HomalgRing( datum[5] ), datum[1] ) and
+               Length( datum[6] ) = datum[2];
         
     end );
     
