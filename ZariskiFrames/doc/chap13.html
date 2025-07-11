@@ -138,6 +138,14 @@ Z/( 1 )
 Z/( 0 )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iota );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">terminal := Source( iota );</span>
+&lt;An object in CategoryOfAffineAlgebras( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( terminal );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">initial := Target( iota );</span>
+&lt;An object in CategoryOfAffineAlgebras( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( initial );</span>
+-1
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">uniq := UniversalMorphismIntoTerminalObject( InitialObject( AffAlg_Z ) );</span>
 &lt;A morphism in CategoryOfAffineAlgebras( Z )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( uniq );</span>
@@ -156,18 +164,24 @@ true
 &lt;An object in CategoryOfAffineAlgebras( Z )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( W );</span>
 Z[e]/( e^2-e )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( W );</span>
+1
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( W );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := zz["x,y,z"] / AffAlg_Z;</span>
 &lt;An object in CategoryOfAffineAlgebras( Z )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( S );</span>
 Z[x,y,z]/( 0 )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( S );</span>
+4
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( S );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := zz["u"] / AffAlg_Z;</span>
 &lt;An object in CategoryOfAffineAlgebras( Z )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 Z[u]/( 0 )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( T );</span>
+2
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( T );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ExportVariables( ObjectDatum( T )[1] );</span>
@@ -188,6 +202,8 @@ true
 &lt;An object in CategoryOfAffineAlgebras( Z )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( coimage );</span>
 Z[x,y,z]/( y^2-x*z, x*y-z, x^2-y )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( coimage );</span>
+2
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( coimage );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">prj := CoimageProjection( phi );</span>
@@ -236,6 +252,24 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( inv, ast ) );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := CoordinateAlgebraOfGraph( phi );</span>
+&lt;An object in CategoryOfAffineAlgebras( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( G );</span>
+Z[c1,c2,c3,c4]/( -c1+c4, c4^2-c2, c4^3-c3 )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">simplify_by_linear_equations :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  NaturalTransformationFromIdenitityFunctorToSimplificationOfAffineAlgebrasByLinearEquations;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eta := simplify_by_linear_equations( AffAlg_Z );</span>
+NaturalTransformationFromIdenitityFunctorToSimplificationOfAffineAlgebrasByLinearEquations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := eta( G );</span>
+&lt;A morphism in CategoryOfAffineAlgebras( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( psi );</span>
+Z[c1,c2,c3]/( c1^2-c2, c1^3-c3 )
+  ^
+  |
+[ |[ c1 ]|, |[ c2 ]|, |[ c3 ]|, |[ c1 ]| ]
+  |
+  |
+Z[c1,c2,c3,c4]/( -c1+c4, c4^2-c2, c4^3-c3 )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">diagram := [ coimage, coimage ];</span>
 [ &lt;An object in CategoryOfAffineAlgebras( Z )&gt;,\
   &lt;An object in CategoryOfAffineAlgebras( Z )&gt; ]
