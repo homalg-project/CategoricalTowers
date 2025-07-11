@@ -607,7 +607,7 @@ InstallMethod( CategoryOfAffineAlgebras,
     ##
     AddCoequalizer( AffAlg_k,
       function( AffAlg_k, target, diagram )
-        local l, datum, data, rels, ring;
+        local l, datum, data, ring, rels;
         
         l := Length( diagram );
         
@@ -615,17 +615,19 @@ InstallMethod( CategoryOfAffineAlgebras,
         
         data := List( diagram, affine_algebra_morphism -> MatrixOfImages( affine_algebra_morphism ) );
         
+        ring := datum[1];
+        
         rels := List( [ 1 .. l - 1 ], i -> data[i] - data[i + 1] );
         
-        ring := datum[1];
+        rels := UnionOfRows( ring, 1, Concatenation( rels, [ datum[5] ] ) );
         
         return ObjectConstructor( AffAlg_k,
                        NTuple( 6,
                                ring,
                                datum[2],
                                datum[3],
-                               datum[4] + l - 1,
-                               UnionOfRows( ring, 1, Concatenation( rels, [ datum[5] ] ) ),
+                               NrRows( rels ),
+                               rels,
                                datum[6] ) );
         
     end );
