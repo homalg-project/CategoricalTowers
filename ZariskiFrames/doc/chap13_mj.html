@@ -282,6 +282,30 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( UniversalMorphismIntoDirectProduct( List( [ 1, 2 ], i -&gt;</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        ProjectionInFactorOfDirectProduct( diagram, i ) ) ) );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi := MorphismConstructor( S, [ u^2, u^3, u^4 ], T );</span>
+&lt;A morphism in CategoryOfAffineAlgebras( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( chi );</span>
+Z[u]/( 0 )
+  ^
+  |
+[ |[ u^2 ]|, |[ u^3 ]|, |[ u^4 ]| ]
+  |
+  |
+Z[x,y,z]/( 0 )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( chi );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coeq := Coequalizer( phi, chi );</span>
+&lt;An object in CategoryOfAffineAlgebras( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( coeq );</span>
+Z[u]/( -u^2+u, -u^3+u^2, -u^4+u^3 )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( coeq );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( coeq );</span>
+Z[u]/( u^2-u )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi := ProjectionOntoCoequalizer( [ phi, chi ] );</span>
+&lt;An epimorphism in CategoryOfAffineAlgebras( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( UniversalMorphismFromCoequalizer( [ phi, chi ], pi ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestMonoidalTriangleIdentity( AffAlg_Z, S, T );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestMonoidalPentagonIdentity( AffAlg_Z, S, T, W, coimage );</span>

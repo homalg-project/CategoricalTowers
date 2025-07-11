@@ -225,6 +225,30 @@
     [4X[25Xgap>[125X [27XIsOne( UniversalMorphismIntoDirectProduct( List( [ 1, 2 ], i ->[127X[104X
     [4X[25X>[125X [27X        ProjectionInFactorOfDirectProduct( diagram, i ) ) ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xchi := MorphismConstructor( S, [ u^2, u^3, u^4 ], T );[127X[104X
+    [4X[28X<A morphism in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( chi );[127X[104X
+    [4X[28XZ[u]/( 0 )[128X[104X
+    [4X[28X  ^[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X[ |[ u^2 ]|, |[ u^3 ]|, |[ u^4 ]| ][128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28XZ[x,y,z]/( 0 )[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( chi );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcoeq := Coequalizer( phi, chi );[127X[104X
+    [4X[28X<An object in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( coeq );[127X[104X
+    [4X[28XZ[u]/( -u^2+u, -u^3+u^2, -u^4+u^3 )[128X[104X
+    [4X[25Xgap>[125X [27XDimension( coeq );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( coeq );[127X[104X
+    [4X[28XZ[u]/( u^2-u )[128X[104X
+    [4X[25Xgap>[125X [27Xpi := ProjectionOntoCoequalizer( [ phi, chi ] );[127X[104X
+    [4X[28X<An epimorphism in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( UniversalMorphismFromCoequalizer( [ phi, chi ], pi ) );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XTestMonoidalTriangleIdentity( AffAlg_Z, S, T );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XTestMonoidalPentagonIdentity( AffAlg_Z, S, T, W, coimage );[127X[104X
