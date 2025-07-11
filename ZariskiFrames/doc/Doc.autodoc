@@ -22,6 +22,12 @@
 
 @Chapter Constructible image
 
+@Chapter Category of affine algebras
+
+@Section Attributes
+@Section Constructors
+@Section GAP categories
+
 @Chapter Further examples
 
 @InsertChunk OpenKxy
