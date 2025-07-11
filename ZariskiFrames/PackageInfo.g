@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "ZariskiFrames",
 Subtitle := "(Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties",
-Version := "2025.07-02",
-Date := "2025-07-10",
-Date := "2025-07-10",
+Version := "2025.07-03",
+Date := "2025-07-11",
+Date := "2025-07-11",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -102,6 +102,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2023.08-18" ],
+                   [ "CartesianCategories", ">= 2025.06-01" ],
                    [ "Toposes", ">= 2024.02-02" ],
                    [ "ToolsForCategoricalTowers", ">= 2023.11-03" ],
                    [ "Locales", ">= 2024.09-03" ],

@@ -7,11 +7,13 @@
   [2XAClosedSingleton[102X, for IsObjectInThinCategory 1.5-11 
   [2XAClosedSuperset[102X, for IsObjectInThinCategory 1.5-1 
   [2XAffineApproximation[102X, for IsObjectInThinCategory 1.4-12 
+  [2XAmbientAlgebra[102X, for IsObjectInCategoryOfAffineAlgebras 13.1-5 
   [2XAsDifferenceOfClosed[102X, for IsObjectInZariskiFrame 2.2-4 
   [2XBaseOfFibration[102X, for IsObjectInZariskiFrameOrCoframe 1.4-3 
       for IsZariskiFrameOrCoframe 1.4-2 
   [2XBestUnderlyingColumn[102X, for IsObjectInZariskiFrameOrCoframe 1.5-2 
   [2XCanonicalObject[102X, for IsObjectInZariskiFrameOrCoframe 1.4-13 
+  [2XCategoryOfAffineAlgebras[102X, for IsHomalgRing 13.2-1 
   [2XClosedSubsetOfBaseWithFreeFibersOverComplement[102X, for IsObjectInZariskiCoframeOfAnAffineVariety 7.2-13 
   [2XClosedSubsetOfBaseWithFreeFibersOverComplementOrEmpty[102X, for IsObjectInZariskiCoframeOfAnAffineVariety 7.2-12 
   [2XClosedSubsetOfProj[102X, for IsHomalgMatrix 10.3-2 
@@ -37,12 +39,15 @@
   [2XClosure[102X, for IsObjectInZariskiFrameOrCoframe 1.4-4 
   [2XClosureOfImage[102X, for IsHomalgRingMap 7.1-4 
   [2XClosureOfProjection[102X, for IsObjectInZariskiCoframeOfAnAffineVariety 7.1-3 
+  [2XCoefficientsRing[102X, for IsCategoryOfAffineAlgebras 13.1-1 
   [2XComplementAsClosedSubset[102X, for IsObjectInZariskiFrame 2.2-3 
   [2XConstructibleImage[102X, for IsHomalgRingMap 12.2-8 
   [2XConstructibleProjection[102X, for IsObjectInThinCategory 12.2-7 
   [2XDecreaseCodimensionByFixingVariables[102X, for IsObjectInZariskiCoframe 12.2-1 
+  [2XDefiningSextupleOfAffineAlgebra[102X, for IsObjectInCategoryOfAffineAlgebras 13.1-2 
   [2XDegreeOfComplement[102X, for IsObjectInZariskiFrame 2.2-2 
-  [2XDimension[102X, for IsObjectInZariskiCoframe 3.3-1 
+  [2XDimension[102X, for IsObjectInCategoryOfAffineAlgebras 13.1-4 
+      for IsObjectInZariskiCoframe 3.3-1 
   [2XDimensionOfComplement[102X, for IsObjectInZariskiFrame 2.2-1 
   [2XDimensionsOfFibrationAtClosedPoint[102X, for IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix 7.2-7 
       for IsObjectInZariskiCoframeOfAnAffineVariety, IsList, IsList 7.2-8 
@@ -68,8 +73,10 @@
   [2XInfoConstructibleImage[102X 12.1-1 
   [2XInfoZariskiFrames[102X 1.1-1 
   [2XIrreducibleComponents[102X, for IsObjectInZariskiCoframe 3.3-3 
+  [2XIsCategoryOfAffineAlgebras[102X, for IsCapCategory 13.4-1 
   [2XIsClosed[102X, for IsObjectInZariskiFrameOrCoframe 1.3-2 
   [2XIsIrreducibleObjectInZariskiCoframe[102X, for IsObjectInZariskiCoframe 3.2-1 
+  [2XIsMorphismInCategoryOfAffineAlgebras[102X, for IsCapCategoryMorphism 13.4-3 
   [2XIsMorphismInZariskiCoframe[102X, for IsMorphismInZariskiFrameOrCoframe 3.1-3 
   [2XIsMorphismInZariskiCoframeOfAnAffineVariety[102X, for IsMorphismInZariskiCoframe andIsMorphismInZariskiFrameOrCoframeOfAnAffineVariety 6.1-3 
   [2XIsMorphismInZariskiCoframeOfAProjectiveVariety[102X, for IsMorphismInZariskiCoframe andIsMorphismInZariskiFrameOrCoframeOfAProjectiveVariety 10.1-3 
@@ -79,6 +86,7 @@
   [2XIsMorphismInZariskiFrameOrCoframe[102X, for IsMorphismInThinCategory 1.2-3 
   [2XIsMorphismInZariskiFrameOrCoframeOfAnAffineVariety[102X, for IsMorphismInZariskiFrameOrCoframe 4.1-2 
   [2XIsMorphismInZariskiFrameOrCoframeOfAProjectiveVariety[102X, for IsMorphismInZariskiFrameOrCoframe 8.1-2 
+  [2XIsObjectInCategoryOfAffineAlgebras[102X, for IsCapCategoryObject 13.4-2 
   [2XIsObjectInZariskiCoframe[102X, for IsObjectInZariskiFrameOrCoframe and IsClosedSubobject 3.1-2 
   [2XIsObjectInZariskiCoframeOfAnAffineVariety[102X, for IsObjectInZariskiCoframe andIsObjectInZariskiFrameOrCoframeOfAnAffineVariety 6.1-2 
   [2XIsObjectInZariskiCoframeOfAProjectiveVariety[102X, for IsObjectInZariskiCoframe andIsObjectInZariskiFrameOrCoframeOfAProjectiveVariety 10.1-2 
@@ -103,6 +111,7 @@
   [2XLocallyClosedApproximationOfProjection[102X, for IsObjectInZariskiCoframe 12.2-3 
   [2XLocallyClosedApproximationOfProjectionViaGenericFreeness[102X, for IsObjectInZariskiCoframe 12.2-5 
   [2XLocallyClosedPart[102X, for IsObjectInZariskiFrameOrCoframe 1.4-8 
+  [2XMatrixOfImages[102X, for IsMorphismInCategoryOfAffineAlgebras 13.1-3 
   [2XNormalizeObject[102X, for IsObjectInZariskiFrameOrCoframe 1.5-3 
   [2XOpenSubsetOfProj[102X, for IsHomalgMatrix 9.2-2 
       for IsString, IsHomalgRing 9.2-2 

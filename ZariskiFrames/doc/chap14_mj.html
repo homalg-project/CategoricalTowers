@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (ZariskiFrames) - Chapter 14: Further examples</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap14"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap13_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap14.html">[MathJax off]</a></p>
+<p><a id="X82912A0B81F7ABC2" name="X82912A0B81F7ABC2"></a></p>
+<div class="ChapSects"><a href="chap14_mj.html#X82912A0B81F7ABC2">14 <span class="Heading">Further examples</span></a>
+</div>
+
+<h3>14 <span class="Heading">Further examples</span></h3>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgFieldOfRationalsInSingular( ) * "x,y";</span>
+Q[x,y]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZF := ZariskiFrameOfAffineSpectrum( R );</span>
+The frame of Zariski open subsets of the affine spectrum of Q[x,y]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := OpenSubsetOfSpecByRadicalColumn( HomalgMatrix( "[ x ]", 1, 1, R ) );</span>
+D_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := OpenSubsetOfSpec( "[ x^2 ]", R );</span>
+D_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A = B;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := OpenSubsetOfSpecByRadicalColumn( "[ y ]", R );</span>
+D_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := OpenSubsetOfSpec( "[ x^2*y^3 ]", R );</span>
+D_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A * C = D;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalObject( ZF );</span>
+D_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := InitialObject( ZF );</span>
+D_{Q[x,y]}( &lt;...&gt; )
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgFieldOfRationalsInSingular( ) * "x,y";</span>
+Q[x,y]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZC := ZariskiCoframeOfAffineSpectrum( R );</span>
+The coframe of Zariski closed subsets of the affine spectrum of Q[x,y]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := ClosedSubsetOfSpecByRadicalColumn( HomalgMatrix( "[ x ]", 1, 1, R ) );</span>
+V_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := ClosedSubsetOfSpec( "[ x^2 ]", R );</span>
+V_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A = B;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := ClosedSubsetOfSpecByRadicalColumn( "[ y ]", R );</span>
+V_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := ClosedSubsetOfSpec( "[ x^2*y^3 ]", R );</span>
+V_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A + C = D;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalObject( ZC );</span>
+V_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( T );</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := InitialObject( ZC );</span>
+V_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( I );</span>
+-1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := DistinguishedLocallyClosedPart( -( A * C ) );</span>
+V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F );</span>
+V( &lt;&gt; ) \ V( &lt;y&gt; )
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular( );</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q * "x,y";</span>
+Q[x,y]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := HomalgMatrix( "y", 1, 1, R );</span>
+&lt;A 1 x 1 matrix over an external ring&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := ClosedSubsetOfSpec( I );</span>
+V_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( x );</span>
+V( &lt;y&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsClosed( x );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( x );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">y := ClosedSubsetOfSpec( "x", R );</span>
+V_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := ClosedSubsetOfSpec( "x+y-1", R );</span>
+V_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">xuy := x + y;</span>
+V_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( xuy );</span>
+{ V( &lt;y&gt; ) ∪ V( &lt;x&gt; ) }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsClosed( xuy );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mxuy := -xuy;</span>
+V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( mxuy );</span>
+V( &lt;&gt; )
+
+\ { V( &lt;y&gt; ) ∪ V( &lt;x&gt; ) }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsClosed( mxuy );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOpen( mxuy );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">xmy := x - y;</span>
+V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( xmy );</span>
+V( &lt;y&gt; )
+
+\ V( &lt;x&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">xmy2 := xmy - y;</span>
+V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( xmy2 );</span>
+V( &lt;y&gt; )
+
+\ V( &lt;x&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lc := xuy - d;</span>
+V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lc0 := lc - 0;</span>
+V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( lc, lc0 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLocallyClosed( lc );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsClosed( lc );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( lc );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tp := d * xuy;</span>
+V_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( tp );</span>
+0
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := lc + tp;</span>
+( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) ) ∪ ( V_{Q[x,y]}( I2 ) \ V_{Q[x,y]}( J2 ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c0 := c - 0;</span>
+( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) ) ∪ ( V_{Q[x,y]}( I2 ) \ V_{Q[x,y]}( J2 ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( c, c0 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c[1];</span>
+V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c[2];</span>
+V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( c );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c = xuy;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cc := CanonicalObject( c );</span>
+V_{Q[x,y]}( &lt;...&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cc = xuy;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := c - lc;</span>
+( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
+( V( &lt;x+y-1,y^2-y,x+y-1,x*y&gt; )
+
+\ ∅ )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsClosed( t );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := c - c;</span>
+( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
+( V( &lt;x*y&gt; )
+
+\ { V( &lt;x+y-1,y^2-y&gt; ) ∪ V( &lt;x*y&gt; ) } )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := StandardizedObject( z );</span>
+∅
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
+( ∅
+
+\ ∅ )
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap13_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

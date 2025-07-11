@@ -1,0 +1,160 @@
+  
+  [1X14 [33X[0;0YFurther examples[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular( ) * "x,y";[127X[104X
+    [4X[28XQ[x,y][128X[104X
+    [4X[25Xgap>[125X [27XZF := ZariskiFrameOfAffineSpectrum( R );[127X[104X
+    [4X[28XThe frame of Zariski open subsets of the affine spectrum of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpecByRadicalColumn( HomalgMatrix( "[ x ]", 1, 1, R ) );[127X[104X
+    [4X[28XD_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XB := OpenSubsetOfSpec( "[ x^2 ]", R );[127X[104X
+    [4X[28XD_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XA = B;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XC := OpenSubsetOfSpecByRadicalColumn( "[ y ]", R );[127X[104X
+    [4X[28XD_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XD := OpenSubsetOfSpec( "[ x^2*y^3 ]", R );[127X[104X
+    [4X[28XD_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XA * C = D;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XT := TerminalObject( ZF );[127X[104X
+    [4X[28XD_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XI := InitialObject( ZF );[127X[104X
+    [4X[28XD_{Q[x,y]}( <...> )[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular( ) * "x,y";[127X[104X
+    [4X[28XQ[x,y][128X[104X
+    [4X[25Xgap>[125X [27XZC := ZariskiCoframeOfAffineSpectrum( R );[127X[104X
+    [4X[28XThe coframe of Zariski closed subsets of the affine spectrum of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27XA := ClosedSubsetOfSpecByRadicalColumn( HomalgMatrix( "[ x ]", 1, 1, R ) );[127X[104X
+    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XB := ClosedSubsetOfSpec( "[ x^2 ]", R );[127X[104X
+    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XA = B;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XC := ClosedSubsetOfSpecByRadicalColumn( "[ y ]", R );[127X[104X
+    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XD := ClosedSubsetOfSpec( "[ x^2*y^3 ]", R );[127X[104X
+    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XA + C = D;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XT := TerminalObject( ZC );[127X[104X
+    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDimension( T );[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XI := InitialObject( ZC );[127X[104X
+    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDimension( I );[127X[104X
+    [4X[28X-1[128X[104X
+    [4X[25Xgap>[125X [27XF := DistinguishedLocallyClosedPart( -( A * C ) );[127X[104X
+    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( F );[127X[104X
+    [4X[28XV( <> ) \ V( <y> )[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XR := Q * "x,y";[127X[104X
+    [4X[28XQ[x,y][128X[104X
+    [4X[25Xgap>[125X [27XI := HomalgMatrix( "y", 1, 1, R );[127X[104X
+    [4X[28X<A 1 x 1 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27Xx := ClosedSubsetOfSpec( I );[127X[104X
+    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( x );[127X[104X
+    [4X[28XV( <y> )[128X[104X
+    [4X[25Xgap>[125X [27XIsClosed( x );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDimension( x );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27Xy := ClosedSubsetOfSpec( "x", R );[127X[104X
+    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27Xd := ClosedSubsetOfSpec( "x+y-1", R );[127X[104X
+    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27Xxuy := x + y;[127X[104X
+    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( xuy );[127X[104X
+    [4X[28X{ V( <y> ) ∪ V( <x> ) }[128X[104X
+    [4X[25Xgap>[125X [27XIsClosed( xuy );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xmxuy := -xuy;[127X[104X
+    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( mxuy );[127X[104X
+    [4X[28XV( <> )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X\ { V( <y> ) ∪ V( <x> ) }[128X[104X
+    [4X[25Xgap>[125X [27XIsClosed( mxuy );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsOpen( mxuy );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xxmy := x - y;[127X[104X
+    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( xmy );[127X[104X
+    [4X[28XV( <y> )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X\ V( <x> )[128X[104X
+    [4X[25Xgap>[125X [27Xxmy2 := xmy - y;[127X[104X
+    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( xmy2 );[127X[104X
+    [4X[28XV( <y> )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X\ V( <x> )[128X[104X
+    [4X[25Xgap>[125X [27Xlc := xuy - d;[127X[104X
+    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
+    [4X[25Xgap>[125X [27Xlc0 := lc - 0;[127X[104X
+    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( lc, lc0 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsLocallyClosed( lc );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsClosed( lc );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XDimension( lc );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27Xtp := d * xuy;[127X[104X
+    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDimension( tp );[127X[104X
+    [4X[28X0[128X[104X
+    [4X[25Xgap>[125X [27Xc := lc + tp;[127X[104X
+    [4X[28X( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) ) ∪ ( V_{Q[x,y]}( I2 ) \ V_{Q[x,y]}( J2 ) )[128X[104X
+    [4X[25Xgap>[125X [27Xc0 := c - 0;[127X[104X
+    [4X[28X( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) ) ∪ ( V_{Q[x,y]}( I2 ) \ V_{Q[x,y]}( J2 ) )[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( c, c0 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xc[1];[127X[104X
+    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
+    [4X[25Xgap>[125X [27Xc[2];[127X[104X
+    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
+    [4X[25Xgap>[125X [27XDimension( c );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27Xc = xuy;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcc := CanonicalObject( c );[127X[104X
+    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27Xcc = xuy;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xt := c - lc;[127X[104X
+    [4X[28X( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
+    [4X[28X( V( <x+y-1,y^2-y,x+y-1,x*y> )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X\ ∅ )[128X[104X
+    [4X[25Xgap>[125X [27XIsClosed( t );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xz := c - c;[127X[104X
+    [4X[28X( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
+    [4X[28X( V( <x*y> )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X\ { V( <x+y-1,y^2-y> ) ∪ V( <x*y> ) } )[128X[104X
+    [4X[25Xgap>[125X [27Xz := StandardizedObject( z );[127X[104X
+    [4X[28X∅[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
+    [4X[28X( ∅[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X\ ∅ )[128X[104X
+  [4X[32X[104X
+  

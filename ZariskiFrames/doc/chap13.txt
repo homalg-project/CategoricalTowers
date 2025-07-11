@@ -1,160 +1,249 @@
   
-  [1X13 [33X[0;0YFurther examples[133X[101X
+  [1X13 [33X[0;0YCategory of affine algebras[133X[101X
+  
+  
+  [1X13.1 [33X[0;0YAttributes[133X[101X
+  
+  [1X13.1-1 CoefficientsRing[101X
+  
+  [33X[1;0Y[29X[2XCoefficientsRing[102X( [3XAffAlg_k[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe input is a category of finitely presented associative commutative unital
+  [23Xk[123X-algebras. The output is the underlying commutative ring [23Xk[123X of coefficients.[133X
+  
+  [1X13.1-2 DefiningSextupleOfAffineAlgebra[101X
+  
+  [33X[1;0Y[29X[2XDefiningSextupleOfAffineAlgebra[102X( [3Xaffine_algebra[103X ) [32X attribute[133X
+  
+  [1X13.1-3 MatrixOfImages[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfImages[102X( [3Xaffine_algebra_morphism[103X ) [32X attribute[133X
+  
+  [1X13.1-4 Dimension[101X
+  
+  [33X[1;0Y[29X[2XDimension[102X( [3Xaffine_algebra[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe  input  is  a finitely presented associative commutative unital algebra.
+  The output is the corresponding ambient (free) polynomial algebra.[133X
+  
+  [1X13.1-5 AmbientAlgebra[101X
+  
+  [33X[1;0Y[29X[2XAmbientAlgebra[102X( [3Xaffine_algebra[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe  input  is  a finitely presented associative commutative unital algebra.
+  The output is the corresponding ambient (free) polynomial algebra.[133X
+  
+  
+  [1X13.2 [33X[0;0YConstructors[133X[101X
+  
+  [1X13.2-1 CategoryOfAffineAlgebras[101X
+  
+  [33X[1;0Y[29X[2XCategoryOfAffineAlgebras[102X( [3Xk[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe  input  is  a commutative ring [3Xk[103X. The output is the category of finitely
+  presented associative commutative unital algebras over [23Xk[123X.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular( ) * "x,y";[127X[104X
-    [4X[28XQ[x,y][128X[104X
-    [4X[25Xgap>[125X [27XZF := ZariskiFrameOfAffineSpectrum( R );[127X[104X
-    [4X[28XThe frame of Zariski open subsets of the affine spectrum of Q[x,y][128X[104X
-    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpecByRadicalColumn( HomalgMatrix( "[ x ]", 1, 1, R ) );[127X[104X
-    [4X[28XD_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XB := OpenSubsetOfSpec( "[ x^2 ]", R );[127X[104X
-    [4X[28XD_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XA = B;[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "ZariskiFrames", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XC := OpenSubsetOfSpecByRadicalColumn( "[ y ]", R );[127X[104X
-    [4X[28XD_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XD := OpenSubsetOfSpec( "[ x^2*y^3 ]", R );[127X[104X
-    [4X[28XD_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XA * C = D;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XT := TerminalObject( ZF );[127X[104X
-    [4X[28XD_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XI := InitialObject( ZF );[127X[104X
-    [4X[28XD_{Q[x,y]}( <...> )[128X[104X
-  [4X[32X[104X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular( ) * "x,y";[127X[104X
-    [4X[28XQ[x,y][128X[104X
-    [4X[25Xgap>[125X [27XZC := ZariskiCoframeOfAffineSpectrum( R );[127X[104X
-    [4X[28XThe coframe of Zariski closed subsets of the affine spectrum of Q[x,y][128X[104X
-    [4X[25Xgap>[125X [27XA := ClosedSubsetOfSpecByRadicalColumn( HomalgMatrix( "[ x ]", 1, 1, R ) );[127X[104X
-    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XB := ClosedSubsetOfSpec( "[ x^2 ]", R );[127X[104X
-    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XA = B;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XC := ClosedSubsetOfSpecByRadicalColumn( "[ y ]", R );[127X[104X
-    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XD := ClosedSubsetOfSpec( "[ x^2*y^3 ]", R );[127X[104X
-    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XA + C = D;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XT := TerminalObject( ZC );[127X[104X
-    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XDimension( T );[127X[104X
-    [4X[28X2[128X[104X
-    [4X[25Xgap>[125X [27XI := InitialObject( ZC );[127X[104X
-    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XDimension( I );[127X[104X
-    [4X[28X-1[128X[104X
-    [4X[25Xgap>[125X [27XF := DistinguishedLocallyClosedPart( -( A * C ) );[127X[104X
-    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( F );[127X[104X
-    [4X[28XV( <> ) \ V( <y> )[128X[104X
-  [4X[32X[104X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
-    [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XR := Q * "x,y";[127X[104X
-    [4X[28XQ[x,y][128X[104X
-    [4X[25Xgap>[125X [27XI := HomalgMatrix( "y", 1, 1, R );[127X[104X
-    [4X[28X<A 1 x 1 matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27Xx := ClosedSubsetOfSpec( I );[127X[104X
-    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( x );[127X[104X
-    [4X[28XV( <y> )[128X[104X
-    [4X[25Xgap>[125X [27XIsClosed( x );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDimension( x );[127X[104X
-    [4X[28X1[128X[104X
-    [4X[25Xgap>[125X [27Xy := ClosedSubsetOfSpec( "x", R );[127X[104X
-    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27Xd := ClosedSubsetOfSpec( "x+y-1", R );[127X[104X
-    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27Xxuy := x + y;[127X[104X
-    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( xuy );[127X[104X
-    [4X[28X{ V( <y> ) ∪ V( <x> ) }[128X[104X
-    [4X[25Xgap>[125X [27XIsClosed( xuy );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xmxuy := -xuy;[127X[104X
-    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( mxuy );[127X[104X
-    [4X[28XV( <> )[128X[104X
+    [4X[25Xgap>[125X [27Xzz := HomalgRingOfIntegersInSingular( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XAffAlg_Z := CategoryOfAffineAlgebras( zz );[127X[104X
+    [4X[28XCategoryOfAffineAlgebras( Z )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AffAlg_Z );[127X[104X
+    [4X[28XA CAP category with name CategoryOfAffineAlgebras( Z ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X\ { V( <y> ) ∪ V( <x> ) }[128X[104X
-    [4X[25Xgap>[125X [27XIsClosed( mxuy );[127X[104X
+    [4X[28X27 primitive operations were used to derive 154 operations for this category \[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsFiniteCocompleteCategory[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategory[128X[104X
+    [4X[28X* IsCodistributiveCategory[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategoryStructureGivenByCoproduct[128X[104X
+    [4X[25Xgap>[125X [27XAffSch_Z := Opposite( AffAlg_Z : only_primitive_operations := true );[127X[104X
+    [4X[28XOpposite( CategoryOfAffineAlgebras( Z ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AffSch_Z );[127X[104X
+    [4X[28XA CAP category with name Opposite( CategoryOfAffineAlgebras( Z ) ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X27 primitive operations were used to derive 160 operations for this category \[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsFiniteCompleteCategory[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategory[128X[104X
+    [4X[28X* IsDistributiveCategory[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategoryStructureGivenByDirectProduct[128X[104X
+    [4X[25Xgap>[125X [27Xiota := UniversalMorphismFromInitialObject( TerminalObject( AffAlg_Z ) );[127X[104X
+    [4X[28X<A morphism in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iota );[127X[104X
+    [4X[28XZ/( 1 )[128X[104X
+    [4X[28X  ^[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28XZ/( 0 )[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( iota );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xuniq := UniversalMorphismIntoTerminalObject( InitialObject( AffAlg_Z ) );[127X[104X
+    [4X[28X<A morphism in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( uniq );[127X[104X
+    [4X[28XZ/( 1 )[128X[104X
+    [4X[28X  ^[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28XZ/( 0 )[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( uniq );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xiota = uniq;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XW := ( zz["e"] / "e^2-e" ) / AffAlg_Z;[127X[104X
+    [4X[28X<An object in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
+    [4X[28XZ[e]/( e^2-e )[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( W );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XS := zz["x,y,z"] / AffAlg_Z;[127X[104X
+    [4X[28X<An object in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( S );[127X[104X
+    [4X[28XZ[x,y,z]/( 0 )[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( S );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XT := zz["u"] / AffAlg_Z;[127X[104X
+    [4X[28X<An object in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
+    [4X[28XZ[u]/( 0 )[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( T );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExportVariables( ObjectDatum( T )[1] );[127X[104X
+    [4X[28X[ u ][128X[104X
+    [4X[25Xgap>[125X [27Xphi := MorphismConstructor( S, [ u, u^2, u^3 ], T );[127X[104X
+    [4X[28X<A morphism in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( phi );[127X[104X
+    [4X[28XZ[u]/( 0 )[128X[104X
+    [4X[28X  ^[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X[ |[ u ]|, |[ u^2 ]|, |[ u^3 ]| ][128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28XZ[x,y,z]/( 0 )[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( phi );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcoimage := CoimageObject( phi );[127X[104X
+    [4X[28X<An object in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( coimage );[127X[104X
+    [4X[28XZ[x,y,z]/( y^2-x*z, x*y-z, x^2-y )[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( coimage );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xprj := CoimageProjection( phi );[127X[104X
+    [4X[28X<A morphism in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( prj );[127X[104X
+    [4X[28XZ[x,y,z]/( y^2-x*z, x*y-z, x^2-y )[128X[104X
+    [4X[28X  ^[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X[ |[ x ]|, |[ y ]|, |[ z ]| ][128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28XZ[x,y,z]/( 0 )[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( prj );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( prj );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( prj );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsOpen( mxuy );[127X[104X
+    [4X[25Xgap>[125X [27Xast := AstrictionToCoimage( phi );[127X[104X
+    [4X[28X<A morphism in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( ast );[127X[104X
+    [4X[28XZ[u]/( 0 )[128X[104X
+    [4X[28X  ^[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X[ |[ u ]|, |[ u^2 ]|, |[ u^3 ]| ][128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28XZ[x,y,z]/( y^2-x*z, x*y-z, x^2-y )[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( ast );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xxmy := x - y;[127X[104X
-    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( xmy );[127X[104X
-    [4X[28XV( <y> )[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X\ V( <x> )[128X[104X
-    [4X[25Xgap>[125X [27Xxmy2 := xmy - y;[127X[104X
-    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( xmy2 );[127X[104X
-    [4X[28XV( <y> )[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X\ V( <x> )[128X[104X
-    [4X[25Xgap>[125X [27Xlc := xuy - d;[127X[104X
-    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
-    [4X[25Xgap>[125X [27Xlc0 := lc - 0;[127X[104X
-    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
-    [4X[25Xgap>[125X [27XIsIdenticalObj( lc, lc0 );[127X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( ast );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsLocallyClosed( lc );[127X[104X
+    [4X[25Xgap>[125X [27Xinv := InverseForMorphisms( ast );[127X[104X
+    [4X[28X<An isomorphism in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( inv );[127X[104X
+    [4X[28XZ[x,y,z]/( y^2-x*z, x*y-z, x^2-y )[128X[104X
+    [4X[28X  ^[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X[ |[ x ]| ][128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28XZ[u]/( 0 )[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( inv );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsClosed( lc );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XDimension( lc );[127X[104X
-    [4X[28X1[128X[104X
-    [4X[25Xgap>[125X [27Xtp := d * xuy;[127X[104X
-    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27XDimension( tp );[127X[104X
-    [4X[28X0[128X[104X
-    [4X[25Xgap>[125X [27Xc := lc + tp;[127X[104X
-    [4X[28X( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) ) ∪ ( V_{Q[x,y]}( I2 ) \ V_{Q[x,y]}( J2 ) )[128X[104X
-    [4X[25Xgap>[125X [27Xc0 := c - 0;[127X[104X
-    [4X[28X( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) ) ∪ ( V_{Q[x,y]}( I2 ) \ V_{Q[x,y]}( J2 ) )[128X[104X
-    [4X[25Xgap>[125X [27XIsIdenticalObj( c, c0 );[127X[104X
+    [4X[25Xgap>[125X [27XIsOne( PreCompose( ast, inv ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xc[1];[127X[104X
-    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
-    [4X[25Xgap>[125X [27Xc[2];[127X[104X
-    [4X[28XV_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )[128X[104X
-    [4X[25Xgap>[125X [27XDimension( c );[127X[104X
-    [4X[28X1[128X[104X
-    [4X[25Xgap>[125X [27Xc = xuy;[127X[104X
+    [4X[25Xgap>[125X [27XIsOne( PreCompose( inv, ast ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcc := CanonicalObject( c );[127X[104X
-    [4X[28XV_{Q[x,y]}( <...> )[128X[104X
-    [4X[25Xgap>[125X [27Xcc = xuy;[127X[104X
+    [4X[25Xgap>[125X [27Xdiagram := [ coimage, coimage ];[127X[104X
+    [4X[28X[ <An object in CategoryOfAffineAlgebras( Z )>,\[128X[104X
+    [4X[28X  <An object in CategoryOfAffineAlgebras( Z )> ][128X[104X
+    [4X[25Xgap>[125X [27XIsOne( UniversalMorphismFromCoproduct( List( [ 1, 2 ], i ->[127X[104X
+    [4X[25X>[125X [27X        InjectionOfCofactorOfCoproduct( diagram, i ) ) ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xt := c - lc;[127X[104X
-    [4X[28X( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
-    [4X[28X( V( <x+y-1,y^2-y,x+y-1,x*y> )[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X\ ∅ )[128X[104X
-    [4X[25Xgap>[125X [27XIsClosed( t );[127X[104X
+    [4X[25Xgap>[125X [27XIsOne( UniversalMorphismIntoDirectProduct( List( [ 1, 2 ], i ->[127X[104X
+    [4X[25X>[125X [27X        ProjectionInFactorOfDirectProduct( diagram, i ) ) ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xz := c - c;[127X[104X
-    [4X[28X( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
-    [4X[28X( V( <x*y> )[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X\ { V( <x+y-1,y^2-y> ) ∪ V( <x*y> ) } )[128X[104X
-    [4X[25Xgap>[125X [27Xz := StandardizedObject( z );[127X[104X
-    [4X[28X∅[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
-    [4X[28X( ∅[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X\ ∅ )[128X[104X
+    [4X[25Xgap>[125X [27XTestMonoidalTriangleIdentity( AffAlg_Z, S, T );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XTestMonoidalPentagonIdentity( AffAlg_Z, S, T, W, coimage );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XTestBraidingCompatibility( AffAlg_Z, S, T, coimage );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XBraiding( S, T ) = BraidingInverse( T, S );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XTestCartesianTriangleIdentity( AffAlg_Z, S, T );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XTestCartesianPentagonIdentity( AffAlg_Z, S, T, W, coimage );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XTestCartesianBraidingCompatibility( AffAlg_Z, S, T, coimage );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCartesianBraiding( S, T ) = CartesianBraidingInverse( T, S );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XTestCocartesianTriangleIdentity( AffAlg_Z, S, T );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XTestCocartesianPentagonIdentity( AffAlg_Z, S, T, W, coimage );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XTestCocartesianBraidingCompatibility( AffAlg_Z, S, T, coimage );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCocartesianBraiding( S, T ) = CocartesianBraidingInverse( T, S );[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
+  
+  
+  [1X13.3 [33X[0;0YGAP categories[133X[101X
+  
+  
+  [1X13.4 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X13.4-1 IsCategoryOfAffineAlgebras[101X
+  
+  [33X[1;0Y[29X[2XIsCategoryOfAffineAlgebras[102X( [3Xcategory[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of categories of finitely presented associative commutative
+  unital algebras.[133X
+  
+  [1X13.4-2 IsObjectInCategoryOfAffineAlgebras[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInCategoryOfAffineAlgebras[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  [5XGAP[105X  category  of  finitely  presented  associative  commutative unital
+  algebras.[133X
+  
+  [1X13.4-3 IsMorphismInCategoryOfAffineAlgebras[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInCategoryOfAffineAlgebras[102X( [3Xmorphism[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  [5XGAP[105X category of morphisms of finitely presented associative commutative
+  unital algebras.[133X
   
