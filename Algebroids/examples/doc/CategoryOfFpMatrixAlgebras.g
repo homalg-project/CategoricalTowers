@@ -160,6 +160,37 @@ Display( P );
 #! ... ]
 #!
 #! f.p. matrix algebra with the above matrix generators
+counit := Counit( M, [ 1, 0 ] );
+#! <A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>
+Display( counit );
+#! GF(2) / [  ]
+#!  ^
+#!  |
+#! [ 1*id(o), 0 ]
+#!  |
+#! GF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
+IsWellDefined( counit );
+#! true
+o := M.id_o;
+#! 1*id(o):(o) -≻ (o)
+x := M.x;
+#! 1*x:(o) -≻ (o)
+y := M.y;
+#! 1*y:(o) -≻ (o)
+comult := Comultiplication( M,
+                  [ [ [ o, x ], [ x, o ], [ o, o ], [ y^2, y^2 ] ],
+                    [ [ o, y ], [ y, o + y^2 ] ] ] );
+#! <A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>
+Display( comult );
+#! GF(2)<a1,a2,a3,a4> / [ 1*a1^2 + 1*a1, 1*a2^3 + 1*a2, 1*a2⋅a1 + 1*a1⋅a2 + 1*a2, \
+#! ... ]
+#!  ^
+#!  |
+#! [ 1*a2^2⋅a4^2 + 1*a1 + 1*a3 + 1*id(o), 1*a2⋅a4^2 + 1*a2 + 1*a4 ]
+#!  |
+#! GF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
+IsWellDefined( comult );
+#! true
 #! @EndExample
 
 #! @EndChunk
