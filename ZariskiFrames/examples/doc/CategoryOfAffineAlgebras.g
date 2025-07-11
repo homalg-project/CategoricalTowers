@@ -182,6 +182,30 @@ IsOne( UniversalMorphismFromCoproduct( List( [ 1, 2 ], i ->
 IsOne( UniversalMorphismIntoDirectProduct( List( [ 1, 2 ], i ->
         ProjectionInFactorOfDirectProduct( diagram, i ) ) ) );
 #! true
+chi := MorphismConstructor( S, [ u^2, u^3, u^4 ], T );
+#! <A morphism in CategoryOfAffineAlgebras( Z )>
+Display( chi );
+#! Z[u]/( 0 )
+#!   ^
+#!   |
+#! [ |[ u^2 ]|, |[ u^3 ]|, |[ u^4 ]| ]
+#!   |
+#!   |
+#! Z[x,y,z]/( 0 )
+IsWellDefined( chi );
+#! true
+coeq := Coequalizer( phi, chi );
+#! <An object in CategoryOfAffineAlgebras( Z )>
+Display( coeq );
+#! Z[u]/( -u^2+u, -u^3+u^2, -u^4+u^3 )
+Dimension( coeq );
+#! 1
+Display( coeq );
+#! Z[u]/( u^2-u )
+pi := ProjectionOntoCoequalizer( [ phi, chi ] );
+#! <An epimorphism in CategoryOfAffineAlgebras( Z )>
+IsOne( UniversalMorphismFromCoequalizer( [ phi, chi ], pi ) );
+#! true
 TestMonoidalTriangleIdentity( AffAlg_Z, S, T );
 #! true
 TestMonoidalPentagonIdentity( AffAlg_Z, S, T, W, coimage );
