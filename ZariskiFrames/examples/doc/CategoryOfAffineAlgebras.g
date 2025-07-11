@@ -139,6 +139,24 @@ IsOne( PreCompose( ast, inv ) );
 #! true
 IsOne( PreCompose( inv, ast ) );
 #! true
+G := CoordinateAlgebraOfGraph( phi );
+#! <An object in CategoryOfAffineAlgebras( Z )>
+Display( G );
+#! Z[c1,c2,c3,c4]/( -c1+c4, c4^2-c2, c4^3-c3 )
+simplify_by_linear_equations :=
+  NaturalTransformationFromIdenitityFunctorToSimplificationOfAffineAlgebrasByLinearEquations;;
+eta := simplify_by_linear_equations( AffAlg_Z );
+#! NaturalTransformationFromIdenitityFunctorToSimplificationOfAffineAlgebrasByLinearEquations
+psi := eta( G );
+#! <A morphism in CategoryOfAffineAlgebras( Z )>
+Display( psi );
+#! Z[c1,c2,c3]/( c1^2-c2, c1^3-c3 )
+#!   ^
+#!   |
+#! [ |[ c1 ]|, |[ c2 ]|, |[ c3 ]|, |[ c1 ]| ]
+#!   |
+#!   |
+#! Z[c1,c2,c3,c4]/( -c1+c4, c4^2-c2, c4^3-c3 )
 diagram := [ coimage, coimage ];
 #! [ <An object in CategoryOfAffineAlgebras( Z )>,\
 #!   <An object in CategoryOfAffineAlgebras( Z )> ]
