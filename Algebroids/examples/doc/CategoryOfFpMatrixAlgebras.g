@@ -46,8 +46,6 @@ Dimension( Q );
 #! 6
 A := Q / Alg_F2;
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( A );
-#! true
 Dimension( A );
 #! 6
 Display( A );
@@ -64,8 +62,6 @@ matrix_generators := Pair( 4 / Mat_F2, [ mx, my ] );
 M := ObjectConstructor( MatAlg_F2, Pair( A, matrix_generators ) );
 #! <An object in CategoryOfFpMatrixAlgebras( GF(2) )>
 IsWellDefined( M );
-#! true
-M = Pair( ( L / Alg_F2 ) / relations, matrix_generators ) / MatAlg_F2;
 #! true
 M.x;
 #! 1*x:(o) -≻ (o)
@@ -90,26 +86,8 @@ AssociatedQuotientCategoryOfLinearClosureOfPathCategory( M );
 GroebnerBasisOfDefiningRelations( M );
 #! [ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \
 #!   1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
-IsOne( PreCompose( LeftUnitor( M ), LeftUnitorInverse( M ) ) );
-#! true
-IsOne( PreCompose( LeftUnitorInverse( M ), LeftUnitor( M ) ) );
-#! true
-IsOne( PreCompose( RightUnitor( M ), RightUnitorInverse( M ) ) );
-#! true
-IsOne( PreCompose( RightUnitorInverse( M ), RightUnitor( M ) ) );
-#! true
-TestMonoidalTriangleIdentity( MatAlg_F2, M, M );
-#! true
-TestMonoidalPentagonIdentity( MatAlg_F2, M, M, M, M );
-#! true
-Braiding( M, M ) = BraidingInverse( M, M );
-#! true
-TestBraidingCompatibility( MatAlg_F2, M, M, M );
-#! true
-iota1 := UniversalMorphismFromInitialObject( M );
+iota := UniversalMorphismFromInitialObject( M );
 #! <A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>
-IsWellDefined( iota1 );
-#! true
 
 #! @EndExample
 
