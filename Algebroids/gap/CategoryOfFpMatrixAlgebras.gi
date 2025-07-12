@@ -162,11 +162,8 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         rep_obj := pair[2][1];
         rep_mors := pair[2][2];
         
-        if not Length( rep_mors ) = nr_gens then
-            return false;
-        fi;
-        
-        return ForAll( [ 1 .. nr_rels ], i ->
+        return Length( rep_mors ) = nr_gens and
+               ForAll( [ 1 .. nr_rels ], i ->
                        IsZeroForMorphisms( V,
                                SumOfMorphisms( V,
                                        rep_obj,

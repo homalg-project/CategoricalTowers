@@ -46,8 +46,6 @@ Dimension( Q );
 #! 6
 A := Q / Alg_F2;
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
-A = ( L / Alg_F2 ) / relations;
-#! true
 IsWellDefined( A );
 #! true
 Dimension( A );
@@ -60,9 +58,14 @@ my := DiagMat( [
               HomalgZeroMatrix( 2, 2, F2 ),
               CertainRows( HomalgIdentityMatrix( 2, F2 ), [ 2, 1 ] ) ] ) / Mat_F2;
 #! <A morphism in Rows( GF(2) )>
-M := ObjectConstructor( MatAlg_F2, Pair( A, Pair( 4 / Mat_F2, [ mx, my ] ) ) );
+matrix_generators := Pair( 4 / Mat_F2, [ mx, my ] );
+#! [ <A row module over GF(2) of rank 4>,\
+#!   [ <A morphism in Rows( GF(2) )>, <A morphism in Rows( GF(2) )> ] ]
+M := ObjectConstructor( MatAlg_F2, Pair( A, matrix_generators ) );
 #! <An object in CategoryOfFpMatrixAlgebras( GF(2) )>
 IsWellDefined( M );
+#! true
+M = Pair( ( L / Alg_F2 ) / relations, matrix_generators ) / MatAlg_F2;
 #! true
 M.x;
 #! 1*x:(o) -≻ (o)

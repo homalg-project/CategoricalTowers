@@ -65,6 +65,8 @@ IsWellDefined( id1 );
 #! true
 ProjectionOntoCoequalizer( [ id1, id1 ] ) = id1;
 #! true
+IsOne( UniversalMorphismFromCoequalizer( [ id1, id1 ], id1 ) );
+#! true
 unit1 := UniversalMorphismFromInitialObject( A1 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
 Display( unit1 );
