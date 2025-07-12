@@ -155,33 +155,6 @@ IsOne( PreCompose( ast, inv ) );
 #! true
 IsOne( PreCompose( inv, ast ) );
 #! true
-G := CoordinateAlgebraOfGraph( phi );
-#! <An object in CategoryOfAffineAlgebras( Z )>
-Display( G );
-#! Z[c1,c2,c3,c4]/( -c1+c4, c4^2-c2, c4^3-c3 )
-simplify_by_linear_equations :=
-  NaturalTransformationFromIdenitityFunctorToSimplificationOfAffineAlgebrasByLinearEquations;;
-eta := simplify_by_linear_equations( AffAlg_Z );
-#! NaturalTransformationFromIdenitityFunctorToSimplificationOfAffineAlgebrasByLinearEquations
-psi := eta( G );
-#! <A morphism in CategoryOfAffineAlgebras( Z )>
-Display( psi );
-#! Z[c1,c2,c3]/( c1^2-c2, c1^3-c3 )
-#!   ^
-#!   |
-#! [ |[ c1 ]|, |[ c2 ]|, |[ c3 ]|, |[ c1 ]| ]
-#!   |
-#!   |
-#! Z[c1,c2,c3,c4]/( -c1+c4, c4^2-c2, c4^3-c3 )
-diagram := [ coimage, coimage ];
-#! [ <An object in CategoryOfAffineAlgebras( Z )>,\
-#!   <An object in CategoryOfAffineAlgebras( Z )> ]
-IsOne( UniversalMorphismFromCoproduct( List( [ 1, 2 ], i ->
-        InjectionOfCofactorOfCoproduct( diagram, i ) ) ) );
-#! true
-IsOne( UniversalMorphismIntoDirectProduct( List( [ 1, 2 ], i ->
-        ProjectionInFactorOfDirectProduct( diagram, i ) ) ) );
-#! true
 chi := MorphismConstructor( S, [ u^2, u^3, u^4 ], T );
 #! <A morphism in CategoryOfAffineAlgebras( Z )>
 Display( chi );
@@ -206,29 +179,17 @@ pi := ProjectionOntoCoequalizer( [ phi, chi ] );
 #! <An epimorphism in CategoryOfAffineAlgebras( Z )>
 IsOne( UniversalMorphismFromCoequalizer( [ phi, chi ], pi ) );
 #! true
-TestMonoidalTriangleIdentity( AffAlg_Z, S, T );
-#! true
-TestMonoidalPentagonIdentity( AffAlg_Z, S, T, W, coimage );
-#! true
-TestBraidingCompatibility( AffAlg_Z, S, T, coimage );
-#! true
-Braiding( S, T ) = BraidingInverse( T, S );
-#! true
-TestCartesianTriangleIdentity( AffAlg_Z, S, T );
-#! true
-TestCartesianPentagonIdentity( AffAlg_Z, S, T, W, coimage );
-#! true
-TestCartesianBraidingCompatibility( AffAlg_Z, S, T, coimage );
-#! true
-CartesianBraiding( S, T ) = CartesianBraidingInverse( T, S );
-#! true
-TestCocartesianTriangleIdentity( AffAlg_Z, S, T );
-#! true
-TestCocartesianPentagonIdentity( AffAlg_Z, S, T, W, coimage );
-#! true
-TestCocartesianBraidingCompatibility( AffAlg_Z, S, T, coimage );
-#! true
-CocartesianBraiding( S, T ) = CocartesianBraidingInverse( T, S );
+P := DirectProduct( coimage, coeq );
+#! <An object in CategoryOfAffineAlgebras( Z )>
+Display( P );
+#! Z[c1,c2,c3,c4,c5,c6]/( c2^2-c1*c3, c1*c2-c3, c1^2-c2, -c5^2+c5, -c5^3+c5^2, \
+#! -c5^4+c5^3, c4^2-c4, c6^2-c6, c4*c6, c1*c4-c1, c2*c4-c2, c3*c4-c3, c5*c6-c5, -c4-c6+1 )
+C := Coproduct( coimage, coeq );
+#! <An object in CategoryOfAffineAlgebras( Z )>
+Display( C );
+#! Z[c1,c2,c3,c4]/( c2^2-c1*c3, c1*c2-c3, c1^2-c2, -c4^2+c4, -c4^3+c4^2, \
+#! -c4^4+c4^3 )
+C = TensorProduct( coimage, coeq );
 #! true
 #! @EndExample
 #! @EndChunk

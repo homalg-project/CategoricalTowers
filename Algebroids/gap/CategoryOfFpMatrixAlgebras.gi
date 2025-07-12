@@ -592,3 +592,41 @@ InstallMethod( \.,
     return AssociatedLinearClosureOfPathCategory( fp_matrix_algebra ).(name);
     
 end );
+
+####################################
+#
+# View, Print, Display and LaTeX methods:
+#
+####################################
+
+##
+InstallMethod( DisplayString,
+        "for a finitely presented matrix algebra",
+        [ IsObjectInCategoryOfFpMatrixAlgebras ],
+        
+  function( fp_matrix_algebra )
+    local pair, string;
+    
+    pair := ObjectDatum( fp_matrix_algebra );
+    
+    string := Concatenation( List( pair[2][2], mor ->
+                      Concatenation( StringDisplay( UnderlyingMatrix( mor ) ), "\n" ) ) );
+    
+    string := Concatenation( string, DisplayString( pair[1] ) );
+    
+    string := Concatenation( string, "\nwith the above matrix generators\n" );
+    
+    return string;
+    
+end );
+
+##
+InstallMethod( DisplayString,
+        "for a finitely presented matrix algebra morphism",
+        [ IsMorphismInCategoryOfFpMatrixAlgebras ],
+        
+  function( fp_matrix_algebra_morphism )
+    
+    return DisplayString( MorphismDatum( fp_matrix_algebra_morphism ) );
+    
+end );

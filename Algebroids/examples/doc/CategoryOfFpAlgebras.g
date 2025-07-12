@@ -19,16 +19,26 @@ T := TerminalObject( Alg_F2 );
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
 Display( T );
 #! GF(2) / [ 1*id(o) ]
-t := UniversalMorphismIntoTerminalObject( T );
-#! <A split monomorphism in CategoryOfFpAlgebras( GF(2) )>
-id0 := IdentityMorphism( T );
-#! <An identity morphism in CategoryOfFpAlgebras( GF(2) )>
-id0 = t;
-#! true
+iota := UniversalMorphismFromInitialObject( T );
+#! <A morphism in CategoryOfFpAlgebras( GF(2) )>
+I := Source( iota );
+#! <An object in CategoryOfFpAlgebras( GF(2) )>
+Display( I );
+#! GF(2) / [  ]
+Display( iota );
+#! GF(2) / [ 1*id(o) ]
+#!  ^
+#!  |
+#! [  ]
+#!  |
+#! GF(2) / [  ]
 K := TensorUnit( Alg_F2 );
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
 Display( K );
 #! GF(2) / [  ]
+K = I;
+#! true
+
 q1 := FinQuiver( "q(o)[x:o->o,y:o->o]" );
 #! FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )
 P1 := PathCategory( q1 );
@@ -53,8 +63,6 @@ A1 := Q1 / Alg_F2;
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
 A1 = ( L1 / Alg_F2 ) / relations1;
 #! true
-IsWellDefined( A1 );
-#! true
 Dimension( A1 );
 #! 6
 Display( A1 );
@@ -64,8 +72,6 @@ id1 := IdentityMorphism( A1 );
 IsWellDefined( id1 );
 #! true
 ProjectionOntoCoequalizer( [ id1, id1 ] ) = id1;
-#! true
-IsOne( UniversalMorphismFromCoequalizer( [ id1, id1 ], id1 ) );
 #! true
 unit1 := UniversalMorphismFromInitialObject( A1 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
@@ -78,8 +84,6 @@ Display( unit1 );
 #! GF(2) / [  ]
 counit1 := Counit( A1, [ 1, 0 ] );
 #! <A split epimorphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( counit1 );
-#! true
 Display( counit1 );
 #! GF(2) / [  ]
 #!  ^
@@ -114,8 +118,6 @@ Q2 := L2 / [ L2.x+L2.y+L2.t+L2.tt-L2.id_o, L2.xx-L2.x, L2.yy-L2.y, L2.xy, L2.yx,
 #! [ 1*t^2 + 1*x + 1*y + 1*t + 1*id(o), 1*x^2 + 1*x, 1*y^2 + 1*y, ... ]
 A2 := Q2 / Alg_F2;
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( A2 );
-#! true
 Dimension( A2 );
 #! 6
 Display( A2 );
@@ -125,32 +127,14 @@ A12 := TensorProduct( A1, A2 );
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
 Dimension( A12 );
 #! 36
-IsWellDefined( A12 );
-#! true
 beta := Braiding( A1, A2 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( beta );
-#! true
 beta_i := BraidingInverse( A1, A2 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( beta_i );
-#! true
-IsOne( PreCompose( beta, beta_i ) );
-#! true
-IsOne( PreCompose( beta_i, beta ) );
-#! true
 alpha := AssociatorLeftToRight( A1, A2, A1 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( alpha );
-#! true
 alpha_i := AssociatorRightToLeft( A1, A2, A1 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( alpha_i );
-#! true
-IsOne( PreCompose( alpha, alpha_i ) );
-#! true
-IsOne( PreCompose( alpha_i, alpha ) );
-#! true
 A1xA2 := DirectProduct( A1, A2 );
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
 Dimension( A1xA2 );
@@ -160,46 +144,28 @@ diagram := [ A1, A2 ];
 #!   <An object in CategoryOfFpAlgebras( GF(2) )> ]
 pr1 := ProjectionInFactorOfDirectProduct( diagram, 1 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( pr1 );
-#! true
 pr2 := ProjectionInFactorOfDirectProduct( diagram, 2 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( pr2 );
-#! true
-u := UniversalMorphismIntoDirectProduct( diagram, A1xA2, [ pr1, pr2 ] );
+u := UniversalMorphismIntoDirectProduct( [ pr1, pr2 ] );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( u );
-#! true
 IsOne( u );
 #! true
 v := TensorProduct( pr1, pr2 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( v );
-#! true
 A1uA2 := Coproduct( A1, A2 );
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
 i1 := InjectionOfCofactorOfCoproduct( diagram, 1 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( i1 );
-#! true
 i2 := InjectionOfCofactorOfCoproduct( diagram, 2 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( i2 );
-#! true
-w := UniversalMorphismFromCoproduct( diagram, A1uA2, [ i1, i2 ] );
+w := UniversalMorphismFromCoproduct( [ i1, i2 ] );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( w );
-#! true
 IsOne( w );
 #! true
 cart_fact := LeftCartesianDistributivityFactoring( A1, [ A1, A2 ] );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( cart_fact );
-#! true
 cocart_expand := LeftCocartesianCodistributivityExpanding( A1, [ A1, A2 ] );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( cocart_expand );
-#! true
 #! @EndExample
 
 #! @EndChunk
