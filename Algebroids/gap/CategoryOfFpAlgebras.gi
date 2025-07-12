@@ -214,25 +214,15 @@ InstallMethod( CategoryOfFpAlgebras,
         
         datum := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra );
         
-        if not IsPathCategory( UnderlyingCategory( datum[1] ) ) and
-           HasCommutativeRingOfLinearCategory( datum[1] ) and
-           IsIdenticalObj( k, CommutativeRingOfLinearCategory( datum[1] ) ) then
-            return false;
-        elif not IsIdenticalObj( CapCategory( datum[2] ), datum[1] ) then
-            return false;
-        elif not Length( datum[4] ) = datum[3] then
-            return false;
-        elif not ForAll( datum[4], gen -> IsIdenticalObj( CapCategory( gen ), datum[1] ) ) then
-            return false;
-        elif not Length( datum[6] ) = datum[5] then
-            return false;
-        elif not ForAll( datum[6], rel -> IsIdenticalObj( CapCategory( rel ), datum[1] ) ) then
-            return false;
-        elif not Length( datum[7] ) = datum[3] then
-            return false;
-        fi;
-        
-        return true;
+        return IsPathCategory( UnderlyingCategory( datum[1] ) ) and
+               HasCommutativeRingOfLinearCategory( datum[1] ) and
+               IsIdenticalObj( k, CommutativeRingOfLinearCategory( datum[1] ) ) and
+               IsIdenticalObj( CapCategory( datum[2] ), datum[1] ) and
+               Length( datum[4] ) = datum[3] and
+               ForAll( datum[4], gen -> IsIdenticalObj( CapCategory( gen ), datum[1] ) ) and
+               Length( datum[6] ) = datum[5] and
+               ForAll( datum[6], rel -> IsIdenticalObj( CapCategory( rel ), datum[1] ) ) and
+               Length( datum[7] ) = datum[3];
         
     end );
     
