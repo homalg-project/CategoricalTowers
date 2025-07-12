@@ -61,6 +61,20 @@ matrix_generators := Pair( 4 / Mat_F2, [ mx, my ] );
 #!   [ <A morphism in Rows( GF(2) )>, <A morphism in Rows( GF(2) )> ] ]
 M := ObjectConstructor( MatAlg_F2, Pair( A, matrix_generators ) );
 #! <An object in CategoryOfFpMatrixAlgebras( GF(2) )>
+Display( M );
+#! 1,0,0,0,
+#! 0,0,0,0,
+#! 0,0,1,0,
+#! 0,0,0,0
+#! 
+#! 0,0,0,0,
+#! 0,0,0,0,
+#! 0,0,0,1,
+#! 0,0,1,0
+#! 
+#! GF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
+#! 
+#! with the above matrix generators
 IsWellDefined( M );
 #! true
 M.x;
