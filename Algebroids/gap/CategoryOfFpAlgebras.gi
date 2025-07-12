@@ -463,7 +463,7 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( FpAlg_k,
-      function( FpAlg_k, diagram, source, tau, product )
+      function( FpAlg_k, diagram, source, test_morphisms, product )
         local l, data, nrsgens, datum, L, gens, idem, orth_idem, central_idem, GB,
               o, ambient, ambients, mors, functors_on_mors, images, nrgens_source;
         
@@ -522,7 +522,7 @@ InstallMethod( CategoryOfFpAlgebras,
         functors_on_mors := List( [ 1 .. l ], m -> AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mors[m] )[2][2] );
         
         images := List( [ 1 .. l ], m ->
-                        List( ListOfImages( tau[m] ), image ->
+                        List( ListOfImages( test_morphisms[m] ), image ->
                               PreCompose( L,
                                       functors_on_mors[m]( o, image, o ),
                                       gens[m][nrsgens[m] + 1] ) ) ); ## project into the m-th factor
@@ -629,12 +629,12 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     AddUniversalMorphismFromCoproductWithGivenCoproduct( FpAlg_k,
-      function( FpAlg_k, diagram, target, tau, coproduct )
+      function( FpAlg_k, diagram, target, test_morphisms, coproduct )
         local l, images;
         
         l := Length( diagram );
         
-        images := List( [ 1 .. l ], m -> ListOfImages( tau[m] ) );
+        images := List( [ 1 .. l ], m -> ListOfImages( test_morphisms[m] ) );
         
         return MorphismConstructor( FpAlg_k,
                        coproduct,
@@ -944,11 +944,11 @@ InstallMethod( CategoryOfFpAlgebras,
     
     ##
     AddUniversalMorphismFromCoequalizerWithGivenCoequalizer( FpAlg_k,
-      function( FpAlg_k, target, diagram, T, tau, coequalizer )
+      function( FpAlg_k, target, diagram, T, test_morphisms, coequalizer )
         
         return MorphismConstructor( FpAlg_k,
                        coequalizer,
-                       ListOfImages( tau ),
+                       ListOfImages( test_morphisms ),
                        T );
         
     end );

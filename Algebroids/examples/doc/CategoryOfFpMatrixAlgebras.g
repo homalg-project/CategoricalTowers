@@ -10,13 +10,42 @@ MatAlg_F2 := CategoryOfFpMatrixAlgebras( F2 );
 Display( MatAlg_F2 );
 #! A CAP category with name CategoryOfFpMatrixAlgebras( GF(2) ):
 #! 
-#! 24 primitive operations were used to derive 45 operations for this category \
+#! 27 primitive operations were used to derive 76 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithInitialObject
+#! * IsCartesianCategory
 #! * IsSymmetricMonoidalCategory
 #! and not yet algorithmically
 #! * IsCategoryWithCoequalizers
-#! * IsCartesianCategory
+T := TerminalObject( MatAlg_F2 );
+#! <An object in CategoryOfFpMatrixAlgebras( GF(2) )>
+Display( T );
+#! GF(2) / [ 1*id(o) ]
+#!
+#! f.p. matrix algebra with an empty list of matrix generators
+iota := UniversalMorphismFromInitialObject( T );
+#! <A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>
+I := Source( iota );
+#! <An object in CategoryOfFpMatrixAlgebras( GF(2) )>
+Display( I );
+#! GF(2) / [  ]
+#! 
+#! f.p. matrix algebra with an empty list of matrix generators
+Display( iota );
+#! GF(2) / [ 1*id(o) ]
+#!  ^
+#!  |
+#! [  ]
+#!  |
+#! GF(2) / [  ]
+K := TensorUnit( MatAlg_F2 );
+#! <An object in CategoryOfFpMatrixAlgebras( GF(2) )>
+Display( K );
+#! GF(2) / [  ]
+#! 
+#! f.p. matrix algebra with an empty list of matrix generators
+K = I;
+#! true
 Alg_F2 := UnderlyingCategoryOfFpAlgebras( MatAlg_F2 );
 #! CategoryOfFpAlgebras( GF(2) )
 Display( Alg_F2 );
@@ -100,9 +129,37 @@ AssociatedQuotientCategoryOfLinearClosureOfPathCategory( M );
 GroebnerBasisOfDefiningRelations( M );
 #! [ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \
 #!   1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
-iota := UniversalMorphismFromInitialObject( M );
-#! <A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>
-
+P := DirectProduct( I, M );
+#! <An object in CategoryOfFpMatrixAlgebras( GF(2) )>
+Display( P );
+#! 1,0,0,0,0,
+#! 0,0,0,0,0,
+#! 0,0,0,0,0,
+#! 0,0,0,0,0,
+#! 0,0,0,0,0
+#! 
+#! 0,0,0,0,0,
+#! 0,1,0,0,0,
+#! 0,0,0,0,0,
+#! 0,0,0,1,0,
+#! 0,0,0,0,0
+#! 
+#! 0,0,0,0,0,
+#! 0,0,0,0,0,
+#! 0,0,0,0,0,
+#! 0,0,0,0,1,
+#! 0,0,0,1,0
+#! 
+#! 0,0,0,0,0,
+#! 0,1,0,0,0,
+#! 0,0,1,0,0,
+#! 0,0,0,1,0,
+#! 0,0,0,0,1
+#! 
+#! GF(2)<a1,a2,a3,a4> / [ 1*a2^2 + 1*a2, 1*a3^3 + 1*a3, 1*a3⋅a2 + 1*a2⋅a3 + 1*a3, \
+#! ... ]
+#!
+#! f.p. matrix algebra with the above matrix generators
 #! @EndExample
 
 #! @EndChunk

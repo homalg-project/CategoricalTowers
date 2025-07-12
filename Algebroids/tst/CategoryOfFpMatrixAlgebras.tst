@@ -7,6 +7,28 @@ gap> F2 := HomalgRingOfIntegersInSingular( 2 );
 GF(2)
 gap> MatAlg_F2 := CategoryOfFpMatrixAlgebras( F2 );
 CategoryOfFpMatrixAlgebras( GF(2) )
+gap> T := TerminalObject( MatAlg_F2 );
+<An object in CategoryOfFpMatrixAlgebras( GF(2) )>
+gap> iota := UniversalMorphismFromInitialObject( T );
+<A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>
+gap> I := Source( iota );
+<An object in CategoryOfFpMatrixAlgebras( GF(2) )>
+gap> T := TerminalObject( MatAlg_F2 );
+<An object in CategoryOfFpMatrixAlgebras( GF(2) )>
+gap> IsWellDefined( T );
+true
+gap> iota := UniversalMorphismFromInitialObject( T );
+<A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>
+gap> IsWellDefined( iota );
+true
+gap> I := Source( iota );
+<An object in CategoryOfFpMatrixAlgebras( GF(2) )>
+gap> K := TensorUnit( MatAlg_F2 );
+<An object in CategoryOfFpMatrixAlgebras( GF(2) )>
+gap> IsWellDefined( K );
+true
+gap> K = I;
+true
 gap> Alg_F2 := UnderlyingCategoryOfFpAlgebras( MatAlg_F2 );
 CategoryOfFpAlgebras( GF(2) )
 gap> Mat_F2 := UnderlyingCategoryOfMatrices( MatAlg_F2 );
@@ -70,10 +92,6 @@ GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) \
 gap> GroebnerBasisOfDefiningRelations( M );
 [ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \
   1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
-gap> iota := UniversalMorphismFromInitialObject( M );
-<A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>
-gap> IsWellDefined( iota );
-true
 gap> TestMonoidalUnitorsForInvertibility( MatAlg_F2, M );
 true
 gap> TestMonoidalTriangleIdentity( MatAlg_F2, M, M );
@@ -87,6 +105,18 @@ true
 gap> TestBraidingCompatibility( MatAlg_F2, M, M, M );
 true
 gap> BraidingInverse( M, M ) = Braiding( M, M );
+true
+gap> TestCartesianTriangleIdentity( MatAlg_F2, M, I );
+true
+gap> TestCartesianAssociatorForInvertibility( MatAlg_F2, M, I, T );
+true
+gap> TestCartesianPentagonIdentity( MatAlg_F2, I, M, I, T );
+true
+gap> TestCartesianBraidingForInvertibility( MatAlg_F2, M, I );
+true
+gap> TestCartesianBraidingCompatibility( MatAlg_F2, I, M, T );
+true
+gap> CartesianBraidingInverse( M, I ) = CartesianBraiding( I, M );
 true
 
 #

@@ -225,6 +225,84 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
     end );
     
     ##
+    AddDirectProduct( FpMatAlg_k,
+            function( FpMatAlg_k, diagram )
+        local FpAlg_k, V, l, pairs, fp_algebras, data, reps, reps_obj, reps_mors,
+              sum_rep, prjs, injs, idems, mgens;
+        
+        FpAlg_k := UnderlyingCategoryOfFpAlgebras( FpMatAlg_k );
+        V := UnderlyingCategoryOfMatrices( FpMatAlg_k );
+        
+        l := Length( diagram );
+        
+        pairs := List( [ 1 .. l ], o -> DefiningPairOfFinitelyPresentedMatrixAlgebra( diagram[o] ) );
+        
+        fp_algebras := List( [ 1 .. l ], p -> pairs[p][1] );
+        
+        data := List( [ 1 .. l ], a -> DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebras[a] ) );
+        
+        reps := List( [ 1 .. l ], p -> pairs[p][2] );
+        
+        reps_obj := List( [ 1 .. l ], p -> reps[p][1] );
+        reps_mors := List( [ 1 .. l ], p -> reps[p][2] );
+        
+        sum_rep := DirectSum( V, reps_obj );
+        
+        prjs := List( [ 1 .. l ], i -> ProjectionInFactorOfDirectSumWithGivenDirectSum( V, reps_obj, i, sum_rep ) );
+        injs := List( [ 1 .. l ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( V, reps_obj, i, sum_rep ) );
+        
+        idems := List( [ 1 .. l ], i -> [ PreCompose( V, prjs[i], injs[i] ) ] );
+        
+        mgens := List( [ 1 .. l ], i -> List( reps_mors[i], mor -> PreComposeList( V, sum_rep, [ prjs[i], mor, injs[i] ], sum_rep ) ) );
+        
+        mgens := List( [ 1 .. l ], i -> Concatenation( mgens[i], idems[i] ) );
+        
+        return ObjectConstructor( FpMatAlg_k,
+                       Pair( DirectProduct( FpAlg_k, fp_algebras ),
+                             Pair( sum_rep, Concatenation( mgens ) ) ) );
+        
+    end );
+    
+    ##
+    AddProjectionInFactorOfDirectProductWithGivenDirectProduct( FpMatAlg_k,
+      function( FpMatAlg_k, diagram, p, product )
+        local FpAlg_k, l;
+        
+        FpAlg_k := UnderlyingCategoryOfFpAlgebras( FpMatAlg_k );
+        
+        l := Length( diagram );
+        
+        return MorphismConstructor( FpMatAlg_k,
+                       product,
+                       ProjectionInFactorOfDirectProductWithGivenDirectProduct( FpAlg_k,
+                               List( [ 1 .. l ], o -> DefiningPairOfFinitelyPresentedMatrixAlgebra( diagram[o] )[1] ),
+                               p,
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( product )[1] ),
+                       diagram[p] );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( FpMatAlg_k,
+      function( FpMatAlg_k, diagram, source, test_morphisms, product )
+        local FpAlg_k, l;
+        
+        FpAlg_k := UnderlyingCategoryOfFpAlgebras( FpMatAlg_k );
+        
+        l := Length( diagram );
+        
+        return MorphismConstructor( FpMatAlg_k,
+                       source,
+                       UniversalMorphismIntoDirectProductWithGivenDirectProduct( FpAlg_k,
+                               List( [ 1 .. l ], o -> DefiningPairOfFinitelyPresentedMatrixAlgebra( diagram[o] )[1] ),
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( source )[1],
+                               List( [ 1 .. l ], m -> UnderlyingMorphismInCategoryOfFpAlgebras( test_morphisms[m] ) ),
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( product )[1] ),
+                       product );
+        
+    end );
+    
+    ##
     AddInitialObject( FpMatAlg_k,
       function( FpMatAlg_k )
         local FpAlg_k, V;
