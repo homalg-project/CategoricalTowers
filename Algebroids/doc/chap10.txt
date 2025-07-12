@@ -165,6 +165,8 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XProjectionOntoCoequalizer( [ id1, id1 ] ) = id1;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( UniversalMorphismFromCoequalizer( [ id1, id1 ], id1 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xunit1 := UniversalMorphismFromInitialObject( A1 );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( unit1 );[127X[104X
