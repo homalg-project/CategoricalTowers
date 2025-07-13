@@ -252,33 +252,6 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( inv, ast ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := CoordinateAlgebraOfGraph( phi );</span>
-&lt;An object in CategoryOfAffineAlgebras( Z )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( G );</span>
-Z[c1,c2,c3,c4]/( -c1+c4, c4^2-c2, c4^3-c3 )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">simplify_by_linear_equations :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  NaturalTransformationFromIdenitityFunctorToSimplificationOfAffineAlgebrasByLinearEquations;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eta := simplify_by_linear_equations( AffAlg_Z );</span>
-NaturalTransformationFromIdenitityFunctorToSimplificationOfAffineAlgebrasByLinearEquations
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := eta( G );</span>
-&lt;A morphism in CategoryOfAffineAlgebras( Z )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( psi );</span>
-Z[c1,c2,c3]/( c1^2-c2, c1^3-c3 )
-  ^
-  |
-[ |[ c1 ]|, |[ c2 ]|, |[ c3 ]|, |[ c1 ]| ]
-  |
-  |
-Z[c1,c2,c3,c4]/( -c1+c4, c4^2-c2, c4^3-c3 )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">diagram := [ coimage, coimage ];</span>
-[ &lt;An object in CategoryOfAffineAlgebras( Z )&gt;,\
-  &lt;An object in CategoryOfAffineAlgebras( Z )&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( UniversalMorphismFromCoproduct( List( [ 1, 2 ], i -&gt;</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        InjectionOfCofactorOfCoproduct( diagram, i ) ) ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( UniversalMorphismIntoDirectProduct( List( [ 1, 2 ], i -&gt;</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ProjectionInFactorOfDirectProduct( diagram, i ) ) ) );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi := MorphismConstructor( S, [ u^2, u^3, u^4 ], T );</span>
 &lt;A morphism in CategoryOfAffineAlgebras( Z )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( chi );</span>
@@ -303,29 +276,17 @@ Z[u]/( u^2-u )
 &lt;An epimorphism in CategoryOfAffineAlgebras( Z )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( UniversalMorphismFromCoequalizer( [ phi, chi ], pi ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestMonoidalTriangleIdentity( AffAlg_Z, S, T );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestMonoidalPentagonIdentity( AffAlg_Z, S, T, W, coimage );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestBraidingCompatibility( AffAlg_Z, S, T, coimage );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Braiding( S, T ) = BraidingInverse( T, S );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestCartesianTriangleIdentity( AffAlg_Z, S, T );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestCartesianPentagonIdentity( AffAlg_Z, S, T, W, coimage );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestCartesianBraidingCompatibility( AffAlg_Z, S, T, coimage );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CartesianBraiding( S, T ) = CartesianBraidingInverse( T, S );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestCocartesianTriangleIdentity( AffAlg_Z, S, T );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestCocartesianPentagonIdentity( AffAlg_Z, S, T, W, coimage );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestCocartesianBraidingCompatibility( AffAlg_Z, S, T, coimage );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CocartesianBraiding( S, T ) = CocartesianBraidingInverse( T, S );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := DirectProduct( coimage, coeq );</span>
+&lt;An object in CategoryOfAffineAlgebras( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
+Z[c1,c2,c3,c4,c5,c6]/( c2^2-c1*c3, c1*c2-c3, c1^2-c2, -c5^2+c5, -c5^3+c5^2, \
+-c5^4+c5^3, c4^2-c4, c6^2-c6, c4*c6, c1*c4-c1, c2*c4-c2, c3*c4-c3, c5*c6-c5, -c4-c6+1 )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := Coproduct( coimage, coeq );</span>
+&lt;An object in CategoryOfAffineAlgebras( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( C );</span>
+Z[c1,c2,c3,c4]/( c2^2-c1*c3, c1*c2-c3, c1^2-c2, -c4^2+c4, -c4^3+c4^2, \
+-c4^4+c4^3 )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C = TensorProduct( coimage, coeq );</span>
 true
 </pre></div>
 

@@ -198,33 +198,6 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( PreCompose( inv, ast ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XG := CoordinateAlgebraOfGraph( phi );[127X[104X
-    [4X[28X<An object in CategoryOfAffineAlgebras( Z )>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( G );[127X[104X
-    [4X[28XZ[c1,c2,c3,c4]/( -c1+c4, c4^2-c2, c4^3-c3 )[128X[104X
-    [4X[25Xgap>[125X [27Xsimplify_by_linear_equations :=[127X[104X
-    [4X[25X>[125X [27X  NaturalTransformationFromIdenitityFunctorToSimplificationOfAffineAlgebrasByLinearEquations;;[127X[104X
-    [4X[25Xgap>[125X [27Xeta := simplify_by_linear_equations( AffAlg_Z );[127X[104X
-    [4X[28XNaturalTransformationFromIdenitityFunctorToSimplificationOfAffineAlgebrasByLinearEquations[128X[104X
-    [4X[25Xgap>[125X [27Xpsi := eta( G );[127X[104X
-    [4X[28X<A morphism in CategoryOfAffineAlgebras( Z )>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( psi );[127X[104X
-    [4X[28XZ[c1,c2,c3]/( c1^2-c2, c1^3-c3 )[128X[104X
-    [4X[28X  ^[128X[104X
-    [4X[28X  |[128X[104X
-    [4X[28X[ |[ c1 ]|, |[ c2 ]|, |[ c3 ]|, |[ c1 ]| ][128X[104X
-    [4X[28X  |[128X[104X
-    [4X[28X  |[128X[104X
-    [4X[28XZ[c1,c2,c3,c4]/( -c1+c4, c4^2-c2, c4^3-c3 )[128X[104X
-    [4X[25Xgap>[125X [27Xdiagram := [ coimage, coimage ];[127X[104X
-    [4X[28X[ <An object in CategoryOfAffineAlgebras( Z )>,\[128X[104X
-    [4X[28X  <An object in CategoryOfAffineAlgebras( Z )> ][128X[104X
-    [4X[25Xgap>[125X [27XIsOne( UniversalMorphismFromCoproduct( List( [ 1, 2 ], i ->[127X[104X
-    [4X[25X>[125X [27X        InjectionOfCofactorOfCoproduct( diagram, i ) ) ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( UniversalMorphismIntoDirectProduct( List( [ 1, 2 ], i ->[127X[104X
-    [4X[25X>[125X [27X        ProjectionInFactorOfDirectProduct( diagram, i ) ) ) );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xchi := MorphismConstructor( S, [ u^2, u^3, u^4 ], T );[127X[104X
     [4X[28X<A morphism in CategoryOfAffineAlgebras( Z )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( chi );[127X[104X
@@ -249,29 +222,17 @@
     [4X[28X<An epimorphism in CategoryOfAffineAlgebras( Z )>[128X[104X
     [4X[25Xgap>[125X [27XIsOne( UniversalMorphismFromCoequalizer( [ phi, chi ], pi ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestMonoidalTriangleIdentity( AffAlg_Z, S, T );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestMonoidalPentagonIdentity( AffAlg_Z, S, T, W, coimage );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestBraidingCompatibility( AffAlg_Z, S, T, coimage );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XBraiding( S, T ) = BraidingInverse( T, S );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestCartesianTriangleIdentity( AffAlg_Z, S, T );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestCartesianPentagonIdentity( AffAlg_Z, S, T, W, coimage );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestCartesianBraidingCompatibility( AffAlg_Z, S, T, coimage );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCartesianBraiding( S, T ) = CartesianBraidingInverse( T, S );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestCocartesianTriangleIdentity( AffAlg_Z, S, T );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestCocartesianPentagonIdentity( AffAlg_Z, S, T, W, coimage );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestCocartesianBraidingCompatibility( AffAlg_Z, S, T, coimage );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCocartesianBraiding( S, T ) = CocartesianBraidingInverse( T, S );[127X[104X
+    [4X[25Xgap>[125X [27XP := DirectProduct( coimage, coeq );[127X[104X
+    [4X[28X<An object in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
+    [4X[28XZ[c1,c2,c3,c4,c5,c6]/( c2^2-c1*c3, c1*c2-c3, c1^2-c2, -c5^2+c5, -c5^3+c5^2, \[128X[104X
+    [4X[28X-c5^4+c5^3, c4^2-c4, c6^2-c6, c4*c6, c1*c4-c1, c2*c4-c2, c3*c4-c3, c5*c6-c5, -c4-c6+1 )[128X[104X
+    [4X[25Xgap>[125X [27XC := Coproduct( coimage, coeq );[127X[104X
+    [4X[28X<An object in CategoryOfAffineAlgebras( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( C );[127X[104X
+    [4X[28XZ[c1,c2,c3,c4]/( c2^2-c1*c3, c1*c2-c3, c1^2-c2, -c4^2+c4, -c4^3+c4^2, \[128X[104X
+    [4X[28X-c4^4+c4^3 )[128X[104X
+    [4X[25Xgap>[125X [27XC = TensorProduct( coimage, coeq );[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
