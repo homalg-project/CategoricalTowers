@@ -74,7 +74,7 @@ Display( M );
 #! 
 #! GF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 #! 
-#! with the above matrix generators
+#! f.p. matrix algebra with the above matrix generators
 IsWellDefined( M );
 #! true
 M.x;

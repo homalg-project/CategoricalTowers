@@ -614,7 +614,11 @@ InstallMethod( DisplayString,
     
     string := Concatenation( string, DisplayString( pair[1] ) );
     
-    string := Concatenation( string, "\nwith the above matrix generators\n" );
+    if NrGenerators( fp_matrix_algebra ) > 0 then
+        string := Concatenation( string, "\nf.p. matrix algebra with the above matrix generators\n" );
+    else
+        string := Concatenation( string, "\nf.p. matrix algebra with an empty list of matrix generators\n" );
+    fi;
     
     return string;
     
