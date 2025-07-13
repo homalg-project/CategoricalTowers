@@ -239,10 +239,9 @@ InstallMethod( CategoryOfFpAlgebras,
         
         list_of_images := ListOfImages( fp_algebra_morphism );
         
-        if not ForAll( list_of_images, image ->
-                IsIdenticalObj( CapCategory( image ), DefiningSeptupleOfFinitelyPresentedAlgebra( Target( fp_algebra_morphism ) )[1] ) ) then
+        if not Length( list_of_images ) = datumS[3] then
             return false;
-        elif not Length( list_of_images ) = DefiningSeptupleOfFinitelyPresentedAlgebra( Source( fp_algebra_morphism ) )[3] then
+        elif not ForAll( list_of_images, image -> IsIdenticalObj( CapCategory( image ), datumT[1] ) ) then
             return false;
         fi;
         

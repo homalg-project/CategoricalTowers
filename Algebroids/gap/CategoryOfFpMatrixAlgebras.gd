@@ -106,6 +106,13 @@ DeclareAttribute( "UnderlyingMorphismInCategoryOfFpAlgebras",
 
 #! @Description
 #!  The input is a finitely presented associative unital matrix algebra.
+#!  The output is the list of matrix images of the generators of the source algebra.
+#! @Arguments fp_matrix_algebra_morphism
+DeclareAttribute( "ListOfMatrixImages",
+        IsMorphismInCategoryOfFpMatrixAlgebras );
+
+#! @Description
+#!  The input is a finitely presented associative unital matrix algebra.
 #!  The output is the number of generators.
 #! @Arguments fp_matrix_algebra
 DeclareOperation( "NrGenerators",

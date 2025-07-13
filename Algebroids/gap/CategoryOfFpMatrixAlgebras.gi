@@ -181,16 +181,85 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
     ##
     AddIsWellDefinedForMorphisms( FpMatAlg_k,
       function( FpMatAlg_k, fp_matrix_algebra_morphism )
-        local FpAlg_k, fp_algebra_morphism;
+        local FpAlg_k, V, fp_algebra_morphism, S, T, datumS, datumT, list_of_images, pairS, pairT,
+              list_of_matrix_images, nr_rels_source, rels_source, coefs, smors, rep_target_obj,
+              matrix_images_of_source_relations, nonzero, bool, extract_datum, obstruction;
         
         FpAlg_k := UnderlyingCategoryOfFpAlgebras( FpMatAlg_k );
+        V := UnderlyingCategoryOfMatrices( FpMatAlg_k );
         
         fp_algebra_morphism := UnderlyingMorphismInCategoryOfFpAlgebras( fp_matrix_algebra_morphism );
         
-        return IsWellDefinedForMorphismsWithGivenSourceAndRange( FpAlg_k,
-                       DefiningPairOfFinitelyPresentedMatrixAlgebra( Source( fp_matrix_algebra_morphism ) )[1],
-                       fp_algebra_morphism,
-                       DefiningPairOfFinitelyPresentedMatrixAlgebra( Target( fp_matrix_algebra_morphism ) )[1] );
+        S := Source( fp_algebra_morphism );
+        T := Target( fp_algebra_morphism );
+        
+        datumS := DefiningSeptupleOfFinitelyPresentedAlgebra( S );
+        datumT := DefiningSeptupleOfFinitelyPresentedAlgebra( T );
+        
+        list_of_images := ListOfImages( fp_algebra_morphism );
+        
+        if not Length( list_of_images ) = datumS[3] then
+            return false;
+        elif not ForAll( list_of_images, image -> IsIdenticalObj( CapCategory( image ), datumT[1] ) ) then
+            return false;
+        fi;
+        
+        pairS := DefiningPairOfFinitelyPresentedMatrixAlgebra( Source( fp_matrix_algebra_morphism ) );
+        pairT := DefiningPairOfFinitelyPresentedMatrixAlgebra( Target( fp_matrix_algebra_morphism ) );
+        
+        if not ( IsEqualForObjects( FpAlg_k, S, pairS[1] ) and
+                 IsEqualForObjects( FpAlg_k, T, pairT[1] ) ) then
+            
+            return false;
+            
+        fi;
+        
+        list_of_matrix_images := ListOfMatrixImages( FpMatAlg_k, fp_matrix_algebra_morphism );
+        
+        nr_rels_source := datumS[5];
+        
+        rels_source := datumS[6];
+        
+        coefs := List( [ 1 .. nr_rels_source ], i -> CoefficientsList( rels_source[i] ) );
+        smors := List( [ 1 .. nr_rels_source ], i -> List( SupportMorphisms( rels_source[i] ), MorphismIndices ) );
+        
+        rep_target_obj := pairT[2][1];
+        
+        matrix_images_of_source_relations :=
+          List( [ 1 .. nr_rels_source ], i ->
+                SumOfMorphisms( V,
+                        rep_target_obj,
+                        List( [ 1 .. Length( coefs[i] ) ], j ->
+                              MultiplyWithElementOfCommutativeRingForMorphisms( V,
+                                      coefs[i][j],
+                                      PreComposeList( V,
+                                              rep_target_obj,
+                                              list_of_matrix_images{smors[i][j]},
+                                              rep_target_obj ) ) ),
+                        rep_target_obj ) );
+        
+        nonzero := Filtered( matrix_images_of_source_relations, mor -> not IsZeroForMorphisms( V, mor ) );
+        
+        ## instead of checking that the relations of the source algebra are mapped to zero modulo the relations of the target algebra,
+        ## check that the matrix images in the target algebra of the generators of the source algebra satisfy the relations of the *source* algebra
+        bool := IsEmpty( nonzero );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        extract_datum :=
+          function( mor )
+            return MorphismDatum( mor )[1];
+        end;
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        obstruction := ValueOption( "obstruction" );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        if not bool and not obstruction = fail then
+            Add( obstruction, Pair( Concatenation( List( nonzero, extract_datum ) ), "IsWellDefinedForMorphisms" ) );
+            return true;
+        fi;
+        
+        return bool;
         
     end );
     
@@ -599,6 +668,60 @@ InstallMethod( MatrixGenerators,
   function( fp_matrix_algebra )
     
     return DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[2][2];
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( ListOfMatrixImages,
+        "for a category of finitely presented algebras and morphism therein",
+        [ IsCategoryOfFinitelyPresentedMatrixAlgebras, IsMorphismInCategoryOfFpMatrixAlgebras ],
+        
+  function( FpMatAlg_k, fp_matrix_algebra_morphism )
+    local FpAlg_k, V, fp_algebra_morphism, pairS, pairT, datumS, nr_gens_source, images, coefs, smors,
+          rep_target_obj, rep_target_mors;
+    
+    FpAlg_k := UnderlyingCategoryOfFpAlgebras( FpMatAlg_k );
+    V := UnderlyingCategoryOfMatrices( FpMatAlg_k );
+    
+    fp_algebra_morphism := UnderlyingMorphismInCategoryOfFpAlgebras( fp_matrix_algebra_morphism );
+    
+    pairS := DefiningPairOfFinitelyPresentedMatrixAlgebra( Source( fp_matrix_algebra_morphism ) );
+    pairT := DefiningPairOfFinitelyPresentedMatrixAlgebra( Target( fp_matrix_algebra_morphism ) );
+    
+    datumS := DefiningSeptupleOfFinitelyPresentedAlgebra( pairS[1] );
+    
+    nr_gens_source := datumS[3];
+    
+    images := ListOfImages( fp_algebra_morphism );
+    
+    coefs := List( [ 1 .. nr_gens_source ], i -> CoefficientsList( images[i] ) );
+    smors := List( [ 1 .. nr_gens_source ], i -> List( SupportMorphisms( images[i] ), MorphismIndices ) );
+    
+    rep_target_obj := pairT[2][1];
+    rep_target_mors := pairT[2][2];
+    
+    return List( [ 1 .. nr_gens_source ], i ->
+                 SumOfMorphisms( V,
+                         rep_target_obj,
+                         List( [ 1 .. Length( coefs[i] ) ], j ->
+                               MultiplyWithElementOfCommutativeRingForMorphisms( V,
+                                       coefs[i][j],
+                                       PreComposeList( V,
+                                               rep_target_obj,
+                                               rep_target_mors{smors[i][j]},
+                                               rep_target_obj ) ) ),
+                         rep_target_obj ) );
+    
+end );
+
+##
+InstallMethod( ListOfMatrixImages,
+        "for a morphism of finitely presented algebras",
+        [ IsMorphismInCategoryOfFpMatrixAlgebras ],
+        
+  function( fp_matrix_algebra_morphism )
+    
+    return ListOfMatrixImages( CapCategory( fp_matrix_algebra_morphism ), fp_matrix_algebra_morphism );
     
 end );
 
