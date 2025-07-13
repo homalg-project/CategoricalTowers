@@ -139,13 +139,42 @@
     [4X[25Xgap>[125X [27XDisplay( MatAlg_F2 );[127X[104X
     [4X[28XA CAP category with name CategoryOfFpMatrixAlgebras( GF(2) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X24 primitive operations were used to derive 45 operations for this category \[128X[104X
+    [4X[28X27 primitive operations were used to derive 76 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithInitialObject[128X[104X
+    [4X[28X* IsCartesianCategory[128X[104X
     [4X[28X* IsSymmetricMonoidalCategory[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
     [4X[28X* IsCategoryWithCoequalizers[128X[104X
-    [4X[28X* IsCartesianCategory[128X[104X
+    [4X[25Xgap>[125X [27XT := TerminalObject( MatAlg_F2 );[127X[104X
+    [4X[28X<An object in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
+    [4X[28XGF(2) / [ 1*id(o) ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xf.p. matrix algebra with an empty list of matrix generators[128X[104X
+    [4X[25Xgap>[125X [27Xiota := UniversalMorphismFromInitialObject( T );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XI := Source( iota );[127X[104X
+    [4X[28X<An object in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( I );[127X[104X
+    [4X[28XGF(2) / [  ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xf.p. matrix algebra with an empty list of matrix generators[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iota );[127X[104X
+    [4X[28XGF(2) / [ 1*id(o) ][128X[104X
+    [4X[28X ^[128X[104X
+    [4X[28X |[128X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X |[128X[104X
+    [4X[28XGF(2) / [  ][128X[104X
+    [4X[25Xgap>[125X [27XK := TensorUnit( MatAlg_F2 );[127X[104X
+    [4X[28X<An object in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( K );[127X[104X
+    [4X[28XGF(2) / [  ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xf.p. matrix algebra with an empty list of matrix generators[128X[104X
+    [4X[25Xgap>[125X [27XK = I;[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XAlg_F2 := UnderlyingCategoryOfFpAlgebras( MatAlg_F2 );[127X[104X
     [4X[28XCategoryOfFpAlgebras( GF(2) )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( Alg_F2 );[127X[104X
@@ -203,7 +232,7 @@
     [4X[28X[128X[104X
     [4X[28XGF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
     [4X[28X[128X[104X
-    [4X[28Xwith the above matrix generators[128X[104X
+    [4X[28Xf.p. matrix algebra with the above matrix generators[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( M );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XM.x;[127X[104X
@@ -229,8 +258,37 @@
     [4X[25Xgap>[125X [27XGroebnerBasisOfDefiningRelations( M );[127X[104X
     [4X[28X[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \[128X[104X
     [4X[28X  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ][128X[104X
-    [4X[25Xgap>[125X [27Xiota := UniversalMorphismFromInitialObject( M );[127X[104X
-    [4X[28X<A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XP := DirectProduct( I, M );[127X[104X
+    [4X[28X<An object in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
+    [4X[28X1,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X0,0,0,0,0,[128X[104X
+    [4X[28X0,1,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,1,0,[128X[104X
+    [4X[28X0,0,0,0,0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,1,[128X[104X
+    [4X[28X0,0,0,1,0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X0,0,0,0,0,[128X[104X
+    [4X[28X0,1,0,0,0,[128X[104X
+    [4X[28X0,0,1,0,0,[128X[104X
+    [4X[28X0,0,0,1,0,[128X[104X
+    [4X[28X0,0,0,0,1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XGF(2)<a1,a2,a3,a4> / [ 1*a2^2 + 1*a2, 1*a3^3 + 1*a3, 1*a3⋅a2 + 1*a2⋅a3 + 1*a3, \[128X[104X
+    [4X[28X... ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xf.p. matrix algebra with the above matrix generators[128X[104X
   [4X[32X[104X
   
   [1X11.2-2 CategoryOfFpMatrixAlgebras[101X

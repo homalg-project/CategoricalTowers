@@ -198,13 +198,42 @@ CategoryOfFpMatrixAlgebras( GF(2) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( MatAlg_F2 );</span>
 A CAP category with name CategoryOfFpMatrixAlgebras( GF(2) ):
 
-24 primitive operations were used to derive 45 operations for this category \
+27 primitive operations were used to derive 76 operations for this category \
 which algorithmically
 * IsCategoryWithInitialObject
+* IsCartesianCategory
 * IsSymmetricMonoidalCategory
 and not yet algorithmically
 * IsCategoryWithCoequalizers
-* IsCartesianCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalObject( MatAlg_F2 );</span>
+&lt;An object in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
+GF(2) / [ 1*id(o) ]
+
+f.p. matrix algebra with an empty list of matrix generators
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := UniversalMorphismFromInitialObject( T );</span>
+&lt;A morphism in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := Source( iota );</span>
+&lt;An object in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( I );</span>
+GF(2) / [  ]
+
+f.p. matrix algebra with an empty list of matrix generators
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota );</span>
+GF(2) / [ 1*id(o) ]
+ ^
+ |
+[  ]
+ |
+GF(2) / [  ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := TensorUnit( MatAlg_F2 );</span>
+&lt;An object in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( K );</span>
+GF(2) / [  ]
+
+f.p. matrix algebra with an empty list of matrix generators
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K = I;</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Alg_F2 := UnderlyingCategoryOfFpAlgebras( MatAlg_F2 );</span>
 CategoryOfFpAlgebras( GF(2) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Alg_F2 );</span>
@@ -262,7 +291,7 @@ GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 
 GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 
-with the above matrix generators
+f.p. matrix algebra with the above matrix generators
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( M );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M.x;</span>
@@ -288,8 +317,37 @@ GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) \
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">GroebnerBasisOfDefiningRelations( M );</span>
 [ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \
   1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := UniversalMorphismFromInitialObject( M );</span>
-&lt;A morphism in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := DirectProduct( I, M );</span>
+&lt;An object in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
+1,0,0,0,0,
+0,0,0,0,0,
+0,0,0,0,0,
+0,0,0,0,0,
+0,0,0,0,0
+
+0,0,0,0,0,
+0,1,0,0,0,
+0,0,0,0,0,
+0,0,0,1,0,
+0,0,0,0,0
+
+0,0,0,0,0,
+0,0,0,0,0,
+0,0,0,0,0,
+0,0,0,0,1,
+0,0,0,1,0
+
+0,0,0,0,0,
+0,1,0,0,0,
+0,0,1,0,0,
+0,0,0,1,0,
+0,0,0,0,1
+
+GF(2)&lt;a1,a2,a3,a4&gt; / [ 1*a2^2 + 1*a2, 1*a3^3 + 1*a3, 1*a3⋅a2 + 1*a2⋅a3 + 1*a3, \
+... ]
+
+f.p. matrix algebra with the above matrix generators
 </pre></div>
 
 <p><a id="X814513758254A3A1" name="X814513758254A3A1"></a></p>
