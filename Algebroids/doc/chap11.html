@@ -231,8 +231,6 @@ GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) / 
 6
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := Q / Alg_F2;</span>
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( A );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( A );</span>
 6
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
@@ -248,9 +246,21 @@ GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
   [ &lt;A morphism in Rows( GF(2) )&gt;, &lt;A morphism in Rows( GF(2) )&gt; ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := ObjectConstructor( MatAlg_F2, Pair( A, matrix_generators ) );</span>
 &lt;An object in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( M );</span>
+1,0,0,0,
+0,0,0,0,
+0,0,1,0,
+0,0,0,0
+
+0,0,0,0,
+0,0,0,0,
+0,0,0,1,
+0,0,1,0
+
+GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
+
+with the above matrix generators
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( M );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M = Pair( ( L / Alg_F2 ) / relations, matrix_generators ) / MatAlg_F2;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M.x;</span>
 1*x:(o) -≻ (o)
@@ -275,26 +285,8 @@ GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) \
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">GroebnerBasisOfDefiningRelations( M );</span>
 [ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \
   1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( LeftUnitor( M ), LeftUnitorInverse( M ) ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( LeftUnitorInverse( M ), LeftUnitor( M ) ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( RightUnitor( M ), RightUnitorInverse( M ) ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( RightUnitorInverse( M ), RightUnitor( M ) ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestMonoidalTriangleIdentity( MatAlg_F2, M, M );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestMonoidalPentagonIdentity( MatAlg_F2, M, M, M, M );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Braiding( M, M ) = BraidingInverse( M, M );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TestBraidingCompatibility( MatAlg_F2, M, M, M );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota1 := UniversalMorphismFromInitialObject( M );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := UniversalMorphismFromInitialObject( M );</span>
 &lt;A morphism in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iota1 );</span>
-true
 </pre></div>
 
 <p><a id="X814513758254A3A1" name="X814513758254A3A1"></a></p>

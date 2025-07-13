@@ -181,16 +181,25 @@ which algorithmically
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 GF(2) / [ 1*id(o) ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := UniversalMorphismIntoTerminalObject( T );</span>
-&lt;A split monomorphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id0 := IdentityMorphism( T );</span>
-&lt;An identity morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id0 = t;</span>
-true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := UniversalMorphismFromInitialObject( T );</span>
+&lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := Source( iota );</span>
+&lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( I );</span>
+GF(2) / [  ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota );</span>
+GF(2) / [ 1*id(o) ]
+ ^
+ |
+[  ]
+ |
+GF(2) / [  ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := TensorUnit( Alg_F2 );</span>
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( K );</span>
 GF(2) / [  ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K = I;</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q1 := FinQuiver( "q(o)[x:o-&gt;o,y:o-&gt;o]" );</span>
 FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P1 := PathCategory( q1 );</span>
@@ -215,8 +224,6 @@ relations
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A1 = ( L1 / Alg_F2 ) / relations1;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( A1 );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( A1 );</span>
 6
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A1 );</span>
@@ -226,8 +233,6 @@ GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( id1 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ProjectionOntoCoequalizer( [ id1, id1 ] ) = id1;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( UniversalMorphismFromCoequalizer( [ id1, id1 ], id1 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">unit1 := UniversalMorphismFromInitialObject( A1 );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
@@ -240,8 +245,6 @@ GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 GF(2) / [  ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">counit1 := Counit( A1, [ 1, 0 ] );</span>
 &lt;A split epimorphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( counit1 );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( counit1 );</span>
 GF(2) / [  ]
  ^
@@ -275,8 +278,6 @@ FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) ) ) / \
 [ 1*t^2 + 1*x + 1*y + 1*t + 1*id(o), 1*x^2 + 1*x, 1*y^2 + 1*y, ... ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A2 := Q2 / Alg_F2;</span>
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( A2 );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( A2 );</span>
 6
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A2 );</span>
@@ -286,32 +287,14 @@ GF(2)&lt;x,y,z,t&gt; / [ 1*t^2 + 1*x + 1*y + 1*t + 1*id(o), 1*x^2 + 1*x, \
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( A12 );</span>
 36
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( A12 );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := Braiding( A1, A2 );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( beta );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta_i := BraidingInverse( A1, A2 );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( beta_i );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( beta, beta_i ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( beta_i, beta ) );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := AssociatorLeftToRight( A1, A2, A1 );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( alpha );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha_i := AssociatorRightToLeft( A1, A2, A1 );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( alpha_i );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( alpha, alpha_i ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( alpha_i, alpha ) );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A1xA2 := DirectProduct( A1, A2 );</span>
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( A1xA2 );</span>
@@ -321,46 +304,28 @@ true
   &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pr1 := ProjectionInFactorOfDirectProduct( diagram, 1 );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( pr1 );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pr2 := ProjectionInFactorOfDirectProduct( diagram, 2 );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( pr2 );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := UniversalMorphismIntoDirectProduct( diagram, A1xA2, [ pr1, pr2 ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := UniversalMorphismIntoDirectProduct( [ pr1, pr2 ] );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( u );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( u );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := TensorProduct( pr1, pr2 );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( v );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A1uA2 := Coproduct( A1, A2 );</span>
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i1 := InjectionOfCofactorOfCoproduct( diagram, 1 );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( i1 );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i2 := InjectionOfCofactorOfCoproduct( diagram, 2 );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( i2 );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">w := UniversalMorphismFromCoproduct( diagram, A1uA2, [ i1, i2 ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">w := UniversalMorphismFromCoproduct( [ i1, i2 ] );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( w );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( w );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cart_fact := LeftCartesianDistributivityFactoring( A1, [ A1, A2 ] );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( cart_fact );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cocart_expand := LeftCocartesianCodistributivityExpanding( A1, [ A1, A2 ] );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( cocart_expand );</span>
-true
 </pre></div>
 
 <p>The category of (finitely presented) algebras is not codistributive. An example was suggested by a referee in the paper the paper titled "Distributivity ot coproducts over products" by B. A. Davey and H. Werner, Algebra Universalis, 12 (1981) 387-394.</p>

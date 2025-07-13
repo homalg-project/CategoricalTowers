@@ -175,8 +175,6 @@
     [4X[28X6[128X[104X
     [4X[25Xgap>[125X [27XA := Q / Alg_F2;[127X[104X
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( A );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDimension( A );[127X[104X
     [4X[28X6[128X[104X
     [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
@@ -192,9 +190,21 @@
     [4X[28X  [ <A morphism in Rows( GF(2) )>, <A morphism in Rows( GF(2) )> ] ][128X[104X
     [4X[25Xgap>[125X [27XM := ObjectConstructor( MatAlg_F2, Pair( A, matrix_generators ) );[127X[104X
     [4X[28X<An object in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28X1,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,[128X[104X
+    [4X[28X0,0,1,0,[128X[104X
+    [4X[28X0,0,0,0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,[128X[104X
+    [4X[28X0,0,0,1,[128X[104X
+    [4X[28X0,0,1,0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XGF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xwith the above matrix generators[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( M );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XM = Pair( ( L / Alg_F2 ) / relations, matrix_generators ) / MatAlg_F2;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XM.x;[127X[104X
     [4X[28X1*x:(o) -≻ (o)[128X[104X
@@ -219,26 +229,8 @@
     [4X[25Xgap>[125X [27XGroebnerBasisOfDefiningRelations( M );[127X[104X
     [4X[28X[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \[128X[104X
     [4X[28X  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ][128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( LeftUnitor( M ), LeftUnitorInverse( M ) ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( LeftUnitorInverse( M ), LeftUnitor( M ) ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( RightUnitor( M ), RightUnitorInverse( M ) ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( RightUnitorInverse( M ), RightUnitor( M ) ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestMonoidalTriangleIdentity( MatAlg_F2, M, M );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestMonoidalPentagonIdentity( MatAlg_F2, M, M, M, M );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XBraiding( M, M ) = BraidingInverse( M, M );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XTestBraidingCompatibility( MatAlg_F2, M, M, M );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xiota1 := UniversalMorphismFromInitialObject( M );[127X[104X
+    [4X[25Xgap>[125X [27Xiota := UniversalMorphismFromInitialObject( M );[127X[104X
     [4X[28X<A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( iota1 );[127X[104X
-    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   [1X11.2-2 CategoryOfFpMatrixAlgebras[101X

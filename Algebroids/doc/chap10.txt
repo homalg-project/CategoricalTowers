@@ -119,16 +119,25 @@
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XGF(2) / [ 1*id(o) ][128X[104X
-    [4X[25Xgap>[125X [27Xt := UniversalMorphismIntoTerminalObject( T );[127X[104X
-    [4X[28X<A split monomorphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27Xid0 := IdentityMorphism( T );[127X[104X
-    [4X[28X<An identity morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27Xid0 = t;[127X[104X
-    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xiota := UniversalMorphismFromInitialObject( T );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XI := Source( iota );[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( I );[127X[104X
+    [4X[28XGF(2) / [  ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iota );[127X[104X
+    [4X[28XGF(2) / [ 1*id(o) ][128X[104X
+    [4X[28X ^[128X[104X
+    [4X[28X |[128X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X |[128X[104X
+    [4X[28XGF(2) / [  ][128X[104X
     [4X[25Xgap>[125X [27XK := TensorUnit( Alg_F2 );[127X[104X
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( K );[127X[104X
     [4X[28XGF(2) / [  ][128X[104X
+    [4X[25Xgap>[125X [27XK = I;[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xq1 := FinQuiver( "q(o)[x:o->o,y:o->o]" );[127X[104X
     [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )[128X[104X
     [4X[25Xgap>[125X [27XP1 := PathCategory( q1 );[127X[104X
@@ -153,8 +162,6 @@
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XA1 = ( L1 / Alg_F2 ) / relations1;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( A1 );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDimension( A1 );[127X[104X
     [4X[28X6[128X[104X
     [4X[25Xgap>[125X [27XDisplay( A1 );[127X[104X
@@ -164,8 +171,6 @@
     [4X[25Xgap>[125X [27XIsWellDefined( id1 );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XProjectionOntoCoequalizer( [ id1, id1 ] ) = id1;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( UniversalMorphismFromCoequalizer( [ id1, id1 ], id1 ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xunit1 := UniversalMorphismFromInitialObject( A1 );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
@@ -178,8 +183,6 @@
     [4X[28XGF(2) / [  ][128X[104X
     [4X[25Xgap>[125X [27Xcounit1 := Counit( A1, [ 1, 0 ] );[127X[104X
     [4X[28X<A split epimorphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( counit1 );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDisplay( counit1 );[127X[104X
     [4X[28XGF(2) / [  ][128X[104X
     [4X[28X ^[128X[104X
@@ -213,8 +216,6 @@
     [4X[28X[ 1*t^2 + 1*x + 1*y + 1*t + 1*id(o), 1*x^2 + 1*x, 1*y^2 + 1*y, ... ][128X[104X
     [4X[25Xgap>[125X [27XA2 := Q2 / Alg_F2;[127X[104X
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( A2 );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDimension( A2 );[127X[104X
     [4X[28X6[128X[104X
     [4X[25Xgap>[125X [27XDisplay( A2 );[127X[104X
@@ -224,32 +225,14 @@
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XDimension( A12 );[127X[104X
     [4X[28X36[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( A12 );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xbeta := Braiding( A1, A2 );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( beta );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xbeta_i := BraidingInverse( A1, A2 );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( beta_i );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( beta, beta_i ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( beta_i, beta ) );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xalpha := AssociatorLeftToRight( A1, A2, A1 );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( alpha );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xalpha_i := AssociatorRightToLeft( A1, A2, A1 );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( alpha_i );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( alpha, alpha_i ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( alpha_i, alpha ) );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA1xA2 := DirectProduct( A1, A2 );[127X[104X
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XDimension( A1xA2 );[127X[104X
@@ -259,46 +242,28 @@
     [4X[28X  <An object in CategoryOfFpAlgebras( GF(2) )> ][128X[104X
     [4X[25Xgap>[125X [27Xpr1 := ProjectionInFactorOfDirectProduct( diagram, 1 );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( pr1 );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xpr2 := ProjectionInFactorOfDirectProduct( diagram, 2 );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( pr2 );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xu := UniversalMorphismIntoDirectProduct( diagram, A1xA2, [ pr1, pr2 ] );[127X[104X
+    [4X[25Xgap>[125X [27Xu := UniversalMorphismIntoDirectProduct( [ pr1, pr2 ] );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( u );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( u );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xv := TensorProduct( pr1, pr2 );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( v );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA1uA2 := Coproduct( A1, A2 );[127X[104X
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27Xi1 := InjectionOfCofactorOfCoproduct( diagram, 1 );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( i1 );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xi2 := InjectionOfCofactorOfCoproduct( diagram, 2 );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( i2 );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xw := UniversalMorphismFromCoproduct( diagram, A1uA2, [ i1, i2 ] );[127X[104X
+    [4X[25Xgap>[125X [27Xw := UniversalMorphismFromCoproduct( [ i1, i2 ] );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( w );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( w );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xcart_fact := LeftCartesianDistributivityFactoring( A1, [ A1, A2 ] );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( cart_fact );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xcocart_expand := LeftCocartesianCodistributivityExpanding( A1, [ A1, A2 ] );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( cocart_expand );[127X[104X
-    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   [33X[0;0YThe  category  of  (finitely  presented)  algebras is not codistributive. An
