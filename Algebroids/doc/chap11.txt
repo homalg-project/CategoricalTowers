@@ -50,14 +50,21 @@
   output  is the underlying morphism between the underlying finitely presented
   algebras.[133X
   
-  [1X11.1-7 NrGenerators[101X
+  [1X11.1-7 ListOfMatrixImages[101X
+  
+  [33X[1;0Y[29X[2XListOfMatrixImages[102X( [3Xfp_matrix_algebra_morphism[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe  input  is  a  finitely presented associative unital matrix algebra. The
+  output is the list of matrix images of the generators of the source algebra.[133X
+  
+  [1X11.1-8 NrGenerators[101X
   
   [33X[1;0Y[29X[2XNrGenerators[102X( [3Xfp_matrix_algebra[103X ) [32X operation[133X
   
   [33X[0;0YThe  input  is  a  finitely presented associative unital matrix algebra. The
   output is the number of generators.[133X
   
-  [1X11.1-8 Generators[101X
+  [1X11.1-9 Generators[101X
   
   [33X[1;0Y[29X[2XGenerators[102X( [3Xfp_matrix_algebra[103X ) [32X attribute[133X
   
@@ -65,7 +72,7 @@
   output  is  the  list  of  generators  of  the underlying finitely presented
   algebra.[133X
   
-  [1X11.1-9 MatrixGenerators[101X
+  [1X11.1-10 MatrixGenerators[101X
   
   [33X[1;0Y[29X[2XMatrixGenerators[102X( [3Xfp_matrix_algebra[103X ) [32X attribute[133X
   
@@ -73,7 +80,7 @@
   output  is  the  list  of  matrix  generators as morphisms in the underlying
   category of [23Xk[123X-matrices.[133X
   
-  [1X11.1-10 AssociatedLinearClosureOfPathCategory[101X
+  [1X11.1-11 AssociatedLinearClosureOfPathCategory[101X
   
   [33X[1;0Y[29X[2XAssociatedLinearClosureOfPathCategory[102X( [3Xfp_matrix_algebra[103X ) [32X attribute[133X
   
@@ -81,21 +88,21 @@
   output  is the corresponding ambient free [23Xk[123X-algebra as a [23Xk[123X-linear closure of
   a path category of loops on a single vertex.[133X
   
-  [1X11.1-11 DefiningRelations[101X
+  [1X11.1-12 DefiningRelations[101X
   
   [33X[1;0Y[29X[2XDefiningRelations[102X( [3Xfp_matrix_algebra[103X ) [32X attribute[133X
   
   [33X[0;0YThe  input  is  a  finitely presented associative unital matrix algebra. The
   output its list of defining relations.[133X
   
-  [1X11.1-12 GroebnerBasisOfDefiningRelations[101X
+  [1X11.1-13 GroebnerBasisOfDefiningRelations[101X
   
   [33X[1;0Y[29X[2XGroebnerBasisOfDefiningRelations[102X( [3Xfp_matrix_algebra[103X ) [32X attribute[133X
   
   [33X[0;0YThe  input  is  a  finitely presented associative unital matrix algebra. The
   output is the Gröbner basis of its list of defining relations.[133X
   
-  [1X11.1-13 AssociatedQuotientCategoryOfLinearClosureOfPathCategory[101X
+  [1X11.1-14 AssociatedQuotientCategoryOfLinearClosureOfPathCategory[101X
   
   [33X[1;0Y[29X[2XAssociatedQuotientCategoryOfLinearClosureOfPathCategory[102X( [3Xfp_matrix_algebra[103X ) [32X attribute[133X
   
@@ -104,14 +111,14 @@
   quotient  of  a  [23Xk[123X-linear  closure  of  a path category of loops on a single
   vertex.[133X
   
-  [1X11.1-14 Dimension[101X
+  [1X11.1-15 Dimension[101X
   
   [33X[1;0Y[29X[2XDimension[102X( [3Xfp_matrix_algebra[103X ) [32X attribute[133X
   
   [33X[0;0YThe  input  is a finitely presented associative unital matrix [23Xk[123X-algebra. The
   output its [23Xk[123X-dimension.[133X
   
-  [1X11.1-15 AmbientAlgebra[101X
+  [1X11.1-16 AmbientAlgebra[101X
   
   [33X[1;0Y[29X[2XAmbientAlgebra[102X( [3Xfp_matrix_algebra[103X ) [32X attribute[133X
   
@@ -320,6 +327,57 @@
     [4X[28XGF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( comult );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XPerform( ListOfMatrixImages( comult ), Display );[127X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over GF(2) of rank 16[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over GF(2) of rank 16[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( GF(2) )[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over GF(2) of rank 16[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,[128X[104X
+    [4X[28X0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over GF(2) of rank 16[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( GF(2) )[128X[104X
   [4X[32X[104X
   
   [1X11.2-2 CategoryOfFpMatrixAlgebras[101X

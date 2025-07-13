@@ -34,15 +34,16 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7BBADB917D0A3E17">11.1-4 CoefficientsRing</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X851B480A86AA037D">11.1-5 DefiningPairOfFinitelyPresentedMatrixAlgebra</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7F0797F1849EFC84">11.1-6 UnderlyingMorphismInCategoryOfFpAlgebras</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X81D2CAD48742BC17">11.1-7 NrGenerators</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7B7C570F7AC5D5BF">11.1-8 Generators</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X85E4AA8479BB8931">11.1-9 MatrixGenerators</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X812F820C78806ECF">11.1-10 AssociatedLinearClosureOfPathCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X86A05E648775F816">11.1-11 DefiningRelations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7FDFF83B7FD080BD">11.1-12 GroebnerBasisOfDefiningRelations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7D8E75FE802F7702">11.1-13 AssociatedQuotientCategoryOfLinearClosureOfPathCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X87ED655F85C8D380">11.1-14 Dimension</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X84FF507F78B20327">11.1-15 AmbientAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7816B3A1791B69A1">11.1-7 ListOfMatrixImages</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X81D2CAD48742BC17">11.1-8 NrGenerators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7B7C570F7AC5D5BF">11.1-9 Generators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X85E4AA8479BB8931">11.1-10 MatrixGenerators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X812F820C78806ECF">11.1-11 AssociatedLinearClosureOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X86A05E648775F816">11.1-12 DefiningRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7FDFF83B7FD080BD">11.1-13 GroebnerBasisOfDefiningRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7D8E75FE802F7702">11.1-14 AssociatedQuotientCategoryOfLinearClosureOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X87ED655F85C8D380">11.1-15 Dimension</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X84FF507F78B20327">11.1-16 AmbientAlgebra</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X86EC0F0A78ECBC10">11.2 <span class="Heading">Constructors</span></a>
 </span>
@@ -113,65 +114,72 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingMorphismInCategoryOfFpAlgebras</code>( <var class="Arg">fp_matrix_algebra_morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>The input is a finitely presented associative unital matrix algebra. The output is the underlying morphism between the underlying finitely presented algebras.</p>
 
+<p><a id="X7816B3A1791B69A1" name="X7816B3A1791B69A1"></a></p>
+
+<h5>11.1-7 ListOfMatrixImages</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ListOfMatrixImages</code>( <var class="Arg">fp_matrix_algebra_morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a finitely presented associative unital matrix algebra. The output is the list of matrix images of the generators of the source algebra.</p>
+
 <p><a id="X81D2CAD48742BC17" name="X81D2CAD48742BC17"></a></p>
 
-<h5>11.1-7 NrGenerators</h5>
+<h5>11.1-8 NrGenerators</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NrGenerators</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>The input is a finitely presented associative unital matrix algebra. The output is the number of generators.</p>
 
 <p><a id="X7B7C570F7AC5D5BF" name="X7B7C570F7AC5D5BF"></a></p>
 
-<h5>11.1-8 Generators</h5>
+<h5>11.1-9 Generators</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Generators</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>The input is a finitely presented associative unital matrix algebra. The output is the list of generators of the underlying finitely presented algebra.</p>
 
 <p><a id="X85E4AA8479BB8931" name="X85E4AA8479BB8931"></a></p>
 
-<h5>11.1-9 MatrixGenerators</h5>
+<h5>11.1-10 MatrixGenerators</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixGenerators</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebra. The output is the list of matrix generators as morphisms in the underlying category of <span class="SimpleMath">\(k\)</span>-matrices.</p>
 
 <p><a id="X812F820C78806ECF" name="X812F820C78806ECF"></a></p>
 
-<h5>11.1-10 AssociatedLinearClosureOfPathCategory</h5>
+<h5>11.1-11 AssociatedLinearClosureOfPathCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedLinearClosureOfPathCategory</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebra. The output is the corresponding ambient free <span class="SimpleMath">\(k\)</span>-algebra as a <span class="SimpleMath">\(k\)</span>-linear closure of a path category of loops on a single vertex.</p>
 
 <p><a id="X86A05E648775F816" name="X86A05E648775F816"></a></p>
 
-<h5>11.1-11 DefiningRelations</h5>
+<h5>11.1-12 DefiningRelations</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningRelations</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>The input is a finitely presented associative unital matrix algebra. The output its list of defining relations.</p>
 
 <p><a id="X7FDFF83B7FD080BD" name="X7FDFF83B7FD080BD"></a></p>
 
-<h5>11.1-12 GroebnerBasisOfDefiningRelations</h5>
+<h5>11.1-13 GroebnerBasisOfDefiningRelations</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GroebnerBasisOfDefiningRelations</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>The input is a finitely presented associative unital matrix algebra. The output is the Gröbner basis of its list of defining relations.</p>
 
 <p><a id="X7D8E75FE802F7702" name="X7D8E75FE802F7702"></a></p>
 
-<h5>11.1-13 AssociatedQuotientCategoryOfLinearClosureOfPathCategory</h5>
+<h5>11.1-14 AssociatedQuotientCategoryOfLinearClosureOfPathCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedQuotientCategoryOfLinearClosureOfPathCategory</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebra. The output is the corresponding underlying finitely presented <span class="SimpleMath">\(k\)</span>-algebra as a quotient of a <span class="SimpleMath">\(k\)</span>-linear closure of a path category of loops on a single vertex.</p>
 
 <p><a id="X87ED655F85C8D380" name="X87ED655F85C8D380"></a></p>
 
-<h5>11.1-14 Dimension</h5>
+<h5>11.1-15 Dimension</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dimension</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebra. The output its <span class="SimpleMath">\(k\)</span>-dimension.</p>
 
 <p><a id="X84FF507F78B20327" name="X84FF507F78B20327"></a></p>
 
-<h5>11.1-15 AmbientAlgebra</h5>
+<h5>11.1-16 AmbientAlgebra</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AmbientAlgebra</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebra. The output is the corresponding ambient free <span class="SimpleMath">\(k\)</span>-algebra.</p>
@@ -379,6 +387,57 @@ GF(2)&lt;a1,a2,a3,a4&gt; / [ 1*a1^2 + 1*a1, 1*a2^3 + 1*a2, 1*a2⋅a1 + 1*a1⋅a2
 GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( comult );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( ListOfMatrixImages( comult ), Display );</span>
+Source:
+A row module over GF(2) of rank 16
+
+Matrix:
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+
+Range:
+A row module over GF(2) of rank 16
+
+A morphism in Rows( GF(2) )
+Source:
+A row module over GF(2) of rank 16
+
+Matrix:
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,
+0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,
+0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+
+Range:
+A row module over GF(2) of rank 16
+
+A morphism in Rows( GF(2) )
 </pre></div>
 
 <p><a id="X814513758254A3A1" name="X814513758254A3A1"></a></p>

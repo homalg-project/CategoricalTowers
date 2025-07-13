@@ -7,7 +7,7 @@
                                     quivers [101X
   
   
-                                   2025.07-12
+                                   2025.07-13
   
   
                                   13 July 2025
@@ -310,15 +310,16 @@
       11.1-4 CoefficientsRing
       11.1-5 DefiningPairOfFinitelyPresentedMatrixAlgebra
       11.1-6 UnderlyingMorphismInCategoryOfFpAlgebras
-      11.1-7 NrGenerators
-      11.1-8 Generators
-      11.1-9 MatrixGenerators
-      11.1-10 AssociatedLinearClosureOfPathCategory
-      11.1-11 DefiningRelations
-      11.1-12 GroebnerBasisOfDefiningRelations
-      11.1-13 AssociatedQuotientCategoryOfLinearClosureOfPathCategory
-      11.1-14 Dimension
-      11.1-15 AmbientAlgebra
+      11.1-7 ListOfMatrixImages
+      11.1-8 NrGenerators
+      11.1-9 Generators
+      11.1-10 MatrixGenerators
+      11.1-11 AssociatedLinearClosureOfPathCategory
+      11.1-12 DefiningRelations
+      11.1-13 GroebnerBasisOfDefiningRelations
+      11.1-14 AssociatedQuotientCategoryOfLinearClosureOfPathCategory
+      11.1-15 Dimension
+      11.1-16 AmbientAlgebra
     11.2 [33X[0;0YConstructors[133X
       11.2-1 CategoryOfFpMatrixAlgebras
       11.2-2 CategoryOfFpMatrixAlgebras
