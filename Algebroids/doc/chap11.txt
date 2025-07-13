@@ -289,6 +289,37 @@
     [4X[28X... ][128X[104X
     [4X[28X[128X[104X
     [4X[28Xf.p. matrix algebra with the above matrix generators[128X[104X
+    [4X[25Xgap>[125X [27Xcounit := Counit( M, [ 1, 0 ] );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( counit );[127X[104X
+    [4X[28XGF(2) / [  ][128X[104X
+    [4X[28X ^[128X[104X
+    [4X[28X |[128X[104X
+    [4X[28X[ 1*id(o), 0 ][128X[104X
+    [4X[28X |[128X[104X
+    [4X[28XGF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( counit );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xo := M.id_o;[127X[104X
+    [4X[28X1*id(o):(o) -≻ (o)[128X[104X
+    [4X[25Xgap>[125X [27Xx := M.x;[127X[104X
+    [4X[28X1*x:(o) -≻ (o)[128X[104X
+    [4X[25Xgap>[125X [27Xy := M.y;[127X[104X
+    [4X[28X1*y:(o) -≻ (o)[128X[104X
+    [4X[25Xgap>[125X [27Xcomult := Comultiplication( M,[127X[104X
+    [4X[25X>[125X [27X                  [ [ [ o, x ], [ x, o ], [ o, o ], [ y^2, y^2 ] ],[127X[104X
+    [4X[25X>[125X [27X                    [ [ o, y ], [ y, o + y^2 ] ] ] );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( comult );[127X[104X
+    [4X[28XGF(2)<a1,a2,a3,a4> / [ 1*a1^2 + 1*a1, 1*a2^3 + 1*a2, 1*a2⋅a1 + 1*a1⋅a2 + 1*a2, \[128X[104X
+    [4X[28X... ][128X[104X
+    [4X[28X ^[128X[104X
+    [4X[28X |[128X[104X
+    [4X[28X[ 1*a2^2⋅a4^2 + 1*a1 + 1*a3 + 1*id(o), 1*a2⋅a4^2 + 1*a2 + 1*a4 ][128X[104X
+    [4X[28X |[128X[104X
+    [4X[28XGF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( comult );[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   [1X11.2-2 CategoryOfFpMatrixAlgebras[101X

@@ -345,6 +345,37 @@ GF(2)&lt;a1,a2,a3,a4&gt; / [ 1*a2^2 + 1*a2, 1*a3^3 + 1*a3, 1*a3⋅a2 + 1*a2⋅a3
 ... ]
 
 f.p. matrix algebra with the above matrix generators
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">counit := Counit( M, [ 1, 0 ] );</span>
+&lt;A morphism in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( counit );</span>
+GF(2) / [  ]
+ ^
+ |
+[ 1*id(o), 0 ]
+ |
+GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( counit );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o := M.id_o;</span>
+1*id(o):(o) -≻ (o)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := M.x;</span>
+1*x:(o) -≻ (o)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">y := M.y;</span>
+1*y:(o) -≻ (o)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">comult := Comultiplication( M,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  [ [ [ o, x ], [ x, o ], [ o, o ], [ y^2, y^2 ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    [ [ o, y ], [ y, o + y^2 ] ] ] );</span>
+&lt;A morphism in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( comult );</span>
+GF(2)&lt;a1,a2,a3,a4&gt; / [ 1*a1^2 + 1*a1, 1*a2^3 + 1*a2, 1*a2⋅a1 + 1*a1⋅a2 + 1*a2, \
+... ]
+ ^
+ |
+[ 1*a2^2⋅a4^2 + 1*a1 + 1*a3 + 1*id(o), 1*a2⋅a4^2 + 1*a2 + 1*a4 ]
+ |
+GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( comult );</span>
+true
 </pre></div>
 
 <p><a id="X814513758254A3A1" name="X814513758254A3A1"></a></p>

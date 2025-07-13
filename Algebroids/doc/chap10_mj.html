@@ -231,12 +231,6 @@ true
 6
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A1 );</span>
 GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id1 := IdentityMorphism( A1 );</span>
-&lt;An identity morphism in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( id1 );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ProjectionOntoCoequalizer( [ id1, id1 ] ) = id1;</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">unit1 := UniversalMorphismFromInitialObject( A1 );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( unit1 );</span>
