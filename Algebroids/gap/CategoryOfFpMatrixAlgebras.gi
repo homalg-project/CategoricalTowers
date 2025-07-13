@@ -671,6 +671,48 @@ InstallMethod( \.,
     
 end );
 
+##
+InstallMethod( Counit,
+        "for a finitely presented matrix algebra and a list",
+        [ IsObjectInCategoryOfFpMatrixAlgebras, IsList ],
+        
+  function( fp_matrix_algebra, list_of_images_of_counit )
+    local FpMatAlg_k, U, fp_algebra;
+    
+    FpMatAlg_k := CapCategory( fp_matrix_algebra );
+    
+    U := TensorUnit( FpMatAlg_k );
+    
+    fp_algebra := DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1];
+    
+    return MorphismConstructor( FpMatAlg_k,
+                   fp_matrix_algebra,
+                   Counit( fp_algebra, list_of_images_of_counit ),
+                   U );
+    
+end );
+
+##
+InstallMethod( Comultiplication,
+        "for a finitely presented matrix algebra and a list",
+        [ IsObjectInCategoryOfFpMatrixAlgebras, IsList ],
+        
+  function( fp_matrix_algebra, list_of_images_of_comult )
+    local FpMatAlg_k, fp_matrix_algebra2, fp_algebra;
+    
+    FpMatAlg_k := CapCategory( fp_matrix_algebra );
+    
+    fp_matrix_algebra2 := TensorProductOnObjects( FpMatAlg_k, fp_matrix_algebra, fp_matrix_algebra );
+    
+    fp_algebra := DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1];
+    
+    return MorphismConstructor( FpMatAlg_k,
+                   fp_matrix_algebra,
+                   Comultiplication( fp_algebra, list_of_images_of_comult ),
+                   fp_matrix_algebra2 );
+    
+end );
+
 ####################################
 #
 # View, Print, Display and LaTeX methods:

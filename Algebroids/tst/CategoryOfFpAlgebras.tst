@@ -57,6 +57,8 @@ gap> IsWellDefined( id1 );
 true
 gap> ProjectionOntoCoequalizer( [ id1, id1 ] ) = id1;
 true
+gap> IsOne( UniversalMorphismFromCoequalizer( [ id1, id1 ], id1 ) );
+true
 gap> unit1 := UniversalMorphismFromInitialObject( A1 );
 <A morphism in CategoryOfFpAlgebras( GF(2) )>
 gap> counit1 := Counit( A1, [ 1, 0 ] );

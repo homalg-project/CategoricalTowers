@@ -67,12 +67,6 @@ Dimension( A1 );
 #! 6
 Display( A1 );
 #! GF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
-id1 := IdentityMorphism( A1 );
-#! <An identity morphism in CategoryOfFpAlgebras( GF(2) )>
-IsWellDefined( id1 );
-#! true
-ProjectionOntoCoequalizer( [ id1, id1 ] ) = id1;
-#! true
 unit1 := UniversalMorphismFromInitialObject( A1 );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
 Display( unit1 );
