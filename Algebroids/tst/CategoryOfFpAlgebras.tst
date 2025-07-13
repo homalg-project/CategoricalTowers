@@ -181,17 +181,17 @@ gap> TestMonoidalPentagonIdentity( Alg_F2, A1, A2, I, A1 );
 true
 gap> TestBraidingForInvertibility( Alg_F2, A1, A2 );
 true
-gap> TestBraidingCompatibility( Alg_F2, A1, A2, A1 );
+gap> TestBraidingCompatibility( Alg_F2, I, A2, T );
 true
 gap> BraidingInverse( A1, A2 ) = Braiding( A2, A1 );
 true
-gap> TestCartesianTriangleIdentity( Alg_F2, A1, A2 );
+gap> TestCartesianTriangleIdentity( Alg_F2, A1, I );
 true
-gap> TestCartesianAssociatorForInvertibility( Alg_F2, A1, A2, A1 );
+gap> TestCartesianAssociatorForInvertibility( Alg_F2, A1, I, T );
 true
-gap> TestCartesianPentagonIdentity( Alg_F2, I, A1, T, A1 );
+gap> TestCartesianPentagonIdentity( Alg_F2, I, A1, I, T );
 true
-gap> TestCartesianBraidingForInvertibility( Alg_F2, A1, A2 );
+gap> TestCartesianBraidingForInvertibility( Alg_F2, A2, I );
 true
 gap> TestCartesianBraidingCompatibility( Alg_F2, I, A1, T );
 true
