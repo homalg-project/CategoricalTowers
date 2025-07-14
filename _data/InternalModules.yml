@@ -1,7 +1,7 @@
 name: InternalModules
-version: "2025.07-01"
+version: "2025.07-02"
 license: "GPL-2.0-or-later"
-date: 2025-07-10
+date: 2025-07-14
 description: |
     Modules over internal algebras
 
@@ -63,11 +63,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/InternalModules/
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/InternalModules-2025.07-01/InternalModules-2025.07-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/InternalModules-2025.07-02/InternalModules-2025.07-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/InternalModules-2025.07-01/InternalModules-2025.07-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/InternalModules-2025.07-02/InternalModules-2025.07-02.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/InternalModules-2025.07-01/InternalModules-2025.07-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/InternalModules-2025.07-02/InternalModules-2025.07-02-manual.pdf
 
 abstract: |
 
@@ -78,10 +78,10 @@ keywords: |
     internalized algebras, modules over internalized algebras, internalized symmetric algebra.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BZ10</span>]   <b class='BibAuthor'>Barakat, M. and Zickgraf, F.</b>,
+    [<span class='BibKey'>BZ14</span>]   <b class='BibAuthor'>Barakat, M. and Zickgraf, F.</b>,
      <i class='BibTitle'>InternalModules, Modules over internal algebras,
-             Version 2025.07-01</i>
-     (<span class='BibYear'>7-10</span>)<br />
+             Version 2025.07-02</i>
+     (<span class='BibYear'>7-14</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/InternalModules">https://homalg-project.github.io/pkg/InternalModules</a></span>.
     </p>
@@ -91,9 +91,9 @@ bibtex: |
     @misc{ InternalModules,
       author =           {Barakat, M. and Zickgraf, F.},
       title =            {{InternalModules},  {Modules  over internal algebras},
-                          {V}ersion 2025.07\texttt{\symbol{45}}01},
+                          {V}ersion 2025.07\texttt{\symbol{45}}02},
       month =            {5\texttt{\symbol{45}}},
-      year =             {7\texttt{\symbol{45}}10},
+      year =             {7\texttt{\symbol{45}}14},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/InternalModules}
@@ -102,6 +102,6 @@ bibtex: |
                           {}{}{}\texttt{InternalModules}}},
       keywords =         {internalized   algebras,   modules  over  internalized
                           algebras, internalized symmetric algebra},
-      printedkey =       {BZ10}
+      printedkey =       {BZ14}
     }
 
