@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "ZariskiFrames",
 Subtitle := "(Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties",
-Version := "2025.07-06",
-Date := "2025-07-13",
-Date := "2025-07-13",
+Version := "2025.07-07",
+Date := "2025-07-14",
+Date := "2025-07-14",
 License := "GPL-2.0-or-later",
 
 Persons := [
