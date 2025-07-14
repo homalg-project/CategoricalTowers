@@ -133,9 +133,9 @@ DeclareOperation( "ProsetAsCategory",
 #!  * the &GAP;-filter <C>ValueGlobal</C>( <A>object_datum_filter_string</A> ) of the underlying objects.
 #! @Arguments object_datum_filter_string
 #! @Returns a &CAP; category
-DeclareOperation( "DiscreteSkeletalCategory",
+DeclareOperation( "SkeletalDiscreteCategory",
         [ IsString ] );
-#! @InsertChunk DiscreteSkeletalCategory
+#! @InsertChunk SkeletalDiscreteCategory
 
 #! @Description
 #!  Construct a totol order category out of
