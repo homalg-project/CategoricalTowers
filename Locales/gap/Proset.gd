@@ -60,15 +60,6 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory :=
             ] ) );
 
 #! @Description
-#!  The property of <A>C</A> being a discrete &CAP; category,
-#!  i.e., equivalent to a category in which any morphism is an identity.
-#! @Arguments C
-DeclareProperty( "IsDiscreteCategory",
-        IsCapCategory );
-
-AddCategoricalProperty( [ "IsDiscreteCategory", "IsDiscreteCategory" ] );
-
-#! @Description
 #!  The property of <A>C</A> being a monoidal thin category.
 #! @Arguments C
 DeclareProperty( "IsMonoidalProset",
