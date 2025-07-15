@@ -175,14 +175,14 @@ InstallMethodWithCache( ProsetAsCategory,
 end );
 
 ##
-InstallMethodWithCache( DiscreteSkeletalCategory,
+InstallMethodWithCache( SkeletalDiscreteCategory,
         "for a string",
         [ IsString ],
         
   function ( object_datum_filter_string )
     
     return ProsetAsCategory(
-                   rec( name := Concatenation( "DiscreteSkeletalCategory( \"", object_datum_filter_string, "\" )" ),
+                   rec( name := Concatenation( "SkeletalDiscreteCategory( \"", object_datum_filter_string, "\" )" ),
                         object_datum_filter_string := object_datum_filter_string,
                         properties := [ IsSkeletalCategory, IsDiscreteCategory ] ) );
     

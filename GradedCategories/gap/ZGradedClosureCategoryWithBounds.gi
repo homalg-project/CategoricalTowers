@@ -127,7 +127,7 @@ InstallMethod( ZGradedClosureCategoryWithBounds,
     morphism_datum := { ZC, m } -> UnderlyingZFunction( m );
     
     ## building the categorical tower:
-    ZZ := DiscreteSkeletalCategory( "IsInt" : FinalizeCategory := true );
+    ZZ := SkeletalDiscreteCategory( "IsInt" : FinalizeCategory := true );
     
     PSh_b := PreSheavesWithBounds( ZZ, C, str : additional_properties := additional_properties, FinalizeCategory := true );
     
