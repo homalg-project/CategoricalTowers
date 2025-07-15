@@ -142,7 +142,7 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
     ##
     AddIsWellDefinedForObjects( FpMatAlg_k,
       function( FpMatAlg_k, fp_matrix_algebra )
-        local FpAlg_k, V, pair, datum, nr_gens, nr_rels, rels, coefs, smors, rep_obj, rep_mors;
+        local FpAlg_k, V, pair, datum, nr_gens, nr_rels, rels, rep, rep_obj, rep_mors, coefs, smors;
         
         FpAlg_k := UnderlyingCategoryOfFpAlgebras( FpMatAlg_k );
         V := UnderlyingCategoryOfMatrices( FpMatAlg_k );
@@ -156,24 +156,25 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         rels := datum[6];
         
-        coefs := List( [ 1 .. nr_rels ], i -> CoefficientsList( rels[i] ) );
-        smors := List( [ 1 .. nr_rels ], i -> List( SupportMorphisms( rels[i] ), MorphismIndices ) );
+        rep := pair[2];
+        rep_obj := rep[1];
+        rep_mors := rep[2];
         
-        rep_obj := pair[2][1];
-        rep_mors := pair[2][2];
+        coefs := List( [ 1 .. nr_rels ], i -> CoefficientsList( rels[i] ) );
+        smors := List( [ 1 .. nr_rels ], i ->
+                       List( SupportMorphisms( rels[i] ), mor ->
+                             PreComposeList( V,
+                                     rep_obj,
+                                     rep_mors{MorphismIndices( mor )},
+                                     rep_obj ) ) );
         
         return Length( rep_mors ) = nr_gens and
                ForAll( [ 1 .. nr_rels ], i ->
                        IsZeroForMorphisms( V,
-                               SumOfMorphisms( V,
+                               LinearCombinationOfMorphisms( V,
                                        rep_obj,
-                                       List( [ 1 .. Length( coefs[i] ) ], j ->
-                                             MultiplyWithElementOfCommutativeRingForMorphisms( V,
-                                                     coefs[i][j],
-                                                     PreComposeList( V,
-                                                             rep_obj,
-                                                             rep_mors{smors[i][j]},
-                                                             rep_obj ) ) ),
+                                       coefs[i],
+                                       smors[i],
                                        rep_obj ) ) );
         
     end );
@@ -182,7 +183,7 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
     AddIsWellDefinedForMorphisms( FpMatAlg_k,
       function( FpMatAlg_k, fp_matrix_algebra_morphism )
         local FpAlg_k, V, fp_algebra_morphism, S, T, datumS, datumT, list_of_images, pairS, pairT,
-              list_of_matrix_images, nr_rels_source, rels_source, coefs, smors, rep_target_obj,
+              list_of_matrix_images, nr_rels_source, rels_source, rep_target_obj, coefs, smors,
               matrix_images_of_source_relations, nonzero, bool, extract_datum, obstruction;
         
         FpAlg_k := UnderlyingCategoryOfFpAlgebras( FpMatAlg_k );
@@ -220,22 +221,22 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         rels_source := datumS[6];
         
-        coefs := List( [ 1 .. nr_rels_source ], i -> CoefficientsList( rels_source[i] ) );
-        smors := List( [ 1 .. nr_rels_source ], i -> List( SupportMorphisms( rels_source[i] ), MorphismIndices ) );
-        
         rep_target_obj := pairT[2][1];
+        
+        coefs := List( [ 1 .. nr_rels_source ], i -> CoefficientsList( rels_source[i] ) );
+        smors := List( [ 1 .. nr_rels_source ], i ->
+                       List( SupportMorphisms( rels_source[i] ), mor ->
+                             PreComposeList( V,
+                                     rep_target_obj,
+                                     list_of_matrix_images{MorphismIndices( mor )},
+                                     rep_target_obj ) ) );
         
         matrix_images_of_source_relations :=
           List( [ 1 .. nr_rels_source ], i ->
-                SumOfMorphisms( V,
+                LinearCombinationOfMorphisms( V,
                         rep_target_obj,
-                        List( [ 1 .. Length( coefs[i] ) ], j ->
-                              MultiplyWithElementOfCommutativeRingForMorphisms( V,
-                                      coefs[i][j],
-                                      PreComposeList( V,
-                                              rep_target_obj,
-                                              list_of_matrix_images{smors[i][j]},
-                                              rep_target_obj ) ) ),
+                        coefs[i],
+                        smors[i],
                         rep_target_obj ) );
         
         nonzero := Filtered( matrix_images_of_source_relations, mor -> not IsZeroForMorphisms( V, mor ) );
