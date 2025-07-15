@@ -41,9 +41,9 @@
   
   [30X    [33X[0;6YIf [3Xproperties[103X is missing it defaults to the empty list.[133X
   
-  [1X7.1-2 DiscreteSkeletalCategory[101X
+  [1X7.1-2 SkeletalDiscreteCategory[101X
   
-  [33X[1;0Y[29X[2XDiscreteSkeletalCategory[102X( [3Xobject_datum_filter_string[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XSkeletalDiscreteCategory[102X( [3Xobject_datum_filter_string[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
   [33X[0;0YConstruct a discrete category out of[133X
@@ -54,10 +54,10 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Locales" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XD := DiscreteSkeletalCategory( "IsPosInt" );[127X[104X
-    [4X[28XDiscreteSkeletalCategory( "IsPosInt" )[128X[104X
+    [4X[25Xgap>[125X [27XD := SkeletalDiscreteCategory( "IsPosInt" );[127X[104X
+    [4X[28XSkeletalDiscreteCategory( "IsPosInt" )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( D );[127X[104X
-    [4X[28XA CAP category with name DiscreteSkeletalCategory( "IsPosInt" ):[128X[104X
+    [4X[28XA CAP category with name SkeletalDiscreteCategory( "IsPosInt" ):[128X[104X
     [4X[28X[128X[104X
     [4X[28X8 primitive operations were used to derive 75 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
@@ -68,17 +68,17 @@
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsDiscreteCategory[128X[104X
     [4X[25Xgap>[125X [27Xone := 1 / D;[127X[104X
-    [4X[28X<An object in DiscreteSkeletalCategory( "IsPosInt" )>[128X[104X
+    [4X[28X<An object in SkeletalDiscreteCategory( "IsPosInt" )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( one );[127X[104X
     [4X[28X1[128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in DiscreteSkeletalCategory( "IsPosInt" ) given by the above data[128X[104X
+    [4X[28XAn object in SkeletalDiscreteCategory( "IsPosInt" ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( one );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xtwo := 2 / D;[127X[104X
-    [4X[28X<An object in DiscreteSkeletalCategory( "IsPosInt" )>[128X[104X
+    [4X[28X<An object in SkeletalDiscreteCategory( "IsPosInt" )>[128X[104X
     [4X[25Xgap>[125X [27Xid_one := IdentityMorphism( one );[127X[104X
-    [4X[28X<An identity morphism in DiscreteSkeletalCategory( "IsPosInt" )>[128X[104X
+    [4X[28X<An identity morphism in SkeletalDiscreteCategory( "IsPosInt" )>[128X[104X
     [4X[25Xgap>[125X [27XMorphismDatum( id_one );[127X[104X
     [4X[28Xfail[128X[104X
     [4X[25Xgap>[125X [27XIsOne( PreCompose( id_one, id_one ) );[127X[104X

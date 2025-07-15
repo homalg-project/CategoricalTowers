@@ -29,7 +29,7 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X85B69E1B8178059D">7.1-1 ProsetAsCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X872C9E9280BEEE9C">7.1-2 DiscreteSkeletalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8782E4457AAF4CF0">7.1-2 SkeletalDiscreteCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8245E8C37C2F304A">7.1-3 TotalOrderAsCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7C701DBF7BAE649A">7.2 <span class="Heading">Attributes</span></a>
@@ -102,11 +102,11 @@
 
 </li>
 </ul>
-<p><a id="X872C9E9280BEEE9C" name="X872C9E9280BEEE9C"></a></p>
+<p><a id="X8782E4457AAF4CF0" name="X8782E4457AAF4CF0"></a></p>
 
-<h5>7.1-2 DiscreteSkeletalCategory</h5>
+<h5>7.1-2 SkeletalDiscreteCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DiscreteSkeletalCategory</code>( <var class="Arg">object_datum_filter_string</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SkeletalDiscreteCategory</code>( <var class="Arg">object_datum_filter_string</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
 <p>Construct a discrete category out of</p>
@@ -121,10 +121,10 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := DiscreteSkeletalCategory( "IsPosInt" );</span>
-DiscreteSkeletalCategory( "IsPosInt" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := SkeletalDiscreteCategory( "IsPosInt" );</span>
+SkeletalDiscreteCategory( "IsPosInt" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( D );</span>
-A CAP category with name DiscreteSkeletalCategory( "IsPosInt" ):
+A CAP category with name SkeletalDiscreteCategory( "IsPosInt" ):
 
 8 primitive operations were used to derive 75 operations for this category
 which algorithmically
@@ -135,17 +135,17 @@ which algorithmically
 and furthermore mathematically
 * IsDiscreteCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">one := 1 / D;</span>
-&lt;An object in DiscreteSkeletalCategory( "IsPosInt" )&gt;
+&lt;An object in SkeletalDiscreteCategory( "IsPosInt" )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( one );</span>
 1
 
-An object in DiscreteSkeletalCategory( "IsPosInt" ) given by the above data
+An object in SkeletalDiscreteCategory( "IsPosInt" ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( one );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">two := 2 / D;</span>
-&lt;An object in DiscreteSkeletalCategory( "IsPosInt" )&gt;
+&lt;An object in SkeletalDiscreteCategory( "IsPosInt" )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_one := IdentityMorphism( one );</span>
-&lt;An identity morphism in DiscreteSkeletalCategory( "IsPosInt" )&gt;
+&lt;An identity morphism in SkeletalDiscreteCategory( "IsPosInt" )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( id_one );</span>
 fail
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( id_one, id_one ) );</span>
