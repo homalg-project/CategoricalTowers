@@ -151,6 +151,7 @@
     [4X[28Xand not yet algorithmically[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsDiscreteCategory[128X[104X
     [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
     [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
