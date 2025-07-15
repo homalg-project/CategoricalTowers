@@ -184,7 +184,7 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
       function( FpMatAlg_k, fp_matrix_algebra_morphism )
         local FpAlg_k, V, fp_algebra_morphism, S, T, datumS, datumT, list_of_images, pairS, pairT,
               list_of_matrix_images, nr_rels_source, rels_source, rep_target_obj, coefs, smors,
-              matrix_images_of_source_relations, nonzero, bool, extract_datum, obstruction;
+              matrix_images_of_source_relations, nonzero, bool, extract_datum, obstruction, obs;
         
         FpAlg_k := UnderlyingCategoryOfFpAlgebras( FpMatAlg_k );
         V := UnderlyingCategoryOfMatrices( FpMatAlg_k );
@@ -246,17 +246,20 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         bool := IsEmpty( nonzero );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        extract_datum :=
-          function( mor )
-            return MorphismDatum( mor )[1];
-        end;
-        
-        #% CAP_JIT_DROP_NEXT_STATEMENT
         obstruction := ValueOption( "obstruction" );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         if not bool and not obstruction = fail then
-            Add( obstruction, Pair( Concatenation( List( nonzero, extract_datum ) ), "IsWellDefinedForMorphisms" ) );
+            
+            extract_datum :=
+              function( mor )
+                return ConvertMatrixToColumn( MorphismDatum( mor ) );
+            end;
+            
+            obs := UnionOfRows( List( nonzero, extract_datum ) );
+            obs := CertainRows( obs, NonZeroRows( obs ) );
+            
+            Add( obstruction, Pair( obs, "IsWellDefinedForMorphisms" ) );
             return true;
         fi;
         
