@@ -92,7 +92,6 @@
     [4X[28X* IsSymmetricCoclosedMonoidalLattice[128X[104X
     [4X[28X* IsBooleanAlgebra[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
-    [4X[28X* IsDiscreteCategory[128X[104X
     [4X[28X* IsFinitelyPresentedLinearCategory[128X[104X
     [4X[28X* IsLinearClosureOfACategory[128X[104X
     [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
