@@ -27,7 +27,6 @@ Display( T );
 #! and not yet algorithmically
 #! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 #! and furthermore mathematically
-#! * IsDiscreteCategory
 #! * IsFinitelyPresentedLinearCategory
 #! * IsLinearClosureOfACategory
 #! * IsLocallyOfFiniteInjectiveDimension

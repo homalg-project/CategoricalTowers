@@ -31,7 +31,6 @@ Display( T );
 #! * IsSymmetricCoclosedMonoidalLattice
 #! * IsBooleanAlgebra
 #! and furthermore mathematically
-#! * IsDiscreteCategory
 #! * IsFinitelyPresentedLinearCategory
 #! * IsLinearClosureOfACategory
 #! * IsLocallyOfFiniteInjectiveDimension

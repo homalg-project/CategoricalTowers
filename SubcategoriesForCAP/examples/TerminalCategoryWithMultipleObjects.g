@@ -27,7 +27,6 @@ InfoOfInstalledOperationsOfCategory( T );
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
 #! and furthermore mathematically
-#! * IsDiscreteCategory
 #! * IsLocallyOfFiniteInjectiveDimension
 #! * IsLocallyOfFiniteProjectiveDimension
 #! * IsStableProset
