@@ -14,23 +14,23 @@
 
 #! @Description
 #!  The &GAP; category of free distributive closure categories with strict products and coproducts of a category.
-DeclareCategory( "IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure",
+DeclareCategory( "IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure",
         IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of cells in the free distributive closure category with strict products and coproducts of a category.
-DeclareCategory( "IsCellInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure",
+DeclareCategory( "IsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure",
         IsCapCategoryCell );
 
 #! @Description
 #!  The &GAP; category of objects in the free distributive closure category with strict products and coproducts of a category.
-DeclareCategory( "IsObjectInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure",
-        IsCellInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure and IsCapCategoryObject  );
+DeclareCategory( "IsObjectInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure",
+        IsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsCapCategoryObject  );
 
 #! @Description
 #!  The &GAP; category of morphisms in the free distributive closure category with strict products and coproducts of a category.
-DeclareCategory( "IsMorphismInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure",
-        IsCellInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure and IsCapCategoryMorphism );
+DeclareCategory( "IsMorphismInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure",
+        IsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsCapCategoryMorphism );
 
 ####################################
 #
@@ -40,12 +40,12 @@ DeclareCategory( "IsMorphismInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreyd
 
 #! @Description
 #!  Return the category $C$ underlying the abelian closure with strict direct sums
-#!  category <A>DC</A> := <C>AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure</C>( $C$ ).
+#!  category <A>DC</A> := <C>AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure</C>( $C$ ).
 #! @Arguments DC
 DeclareAttribute( "UnderlyingCategory",
-        IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure );
+        IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure );
 
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure ],
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
@@ -62,12 +62,12 @@ end );
 #!  Construct the free distributive closure category with strict products and coproducts of a category <A>C</A>.
 #! @Arguments C
 #! @Returns a &CAP; category
-DeclareAttribute( "AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure",
+DeclareAttribute( "AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure",
         IsCapCategory );
 #! @InsertChunk SnakeInFreeAbelian
 
 DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
-        IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure );
+        IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure );
 
 #! @Description
 #!  The full embedding functor from the category $C$ underlying
@@ -75,9 +75,9 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
 #! @Arguments UC
 #! @Returns a &CAP; functor
 DeclareAttribute( "EmbeddingOfUnderlyingCategory",
-        IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure );
+        IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure );
 
-DeclareOperation( "ExtendFunctorToAbelianClosureWithStrictDirectSumsData",
+DeclareOperation( "ExtendFunctorToAbelianClosureData",
         [ IsCapCategory, IsList, IsCapCategory ] );
 
 #! @Description
@@ -85,5 +85,5 @@ DeclareOperation( "ExtendFunctorToAbelianClosureWithStrictDirectSumsData",
 #!  the free distributive closure category <A>DC</A> with strict products and coproducts into <A>DC</A>.
 #! @Arguments DC
 #! @Returns a &CAP; functor
-DeclareAttribute( "ExtendFunctorToAbelianClosureWithStrictDirectSums",
+DeclareAttribute( "ExtendFunctorToAbelianClosure",
         IsCapFunctor );

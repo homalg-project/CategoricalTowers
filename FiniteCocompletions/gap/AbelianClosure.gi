@@ -5,7 +5,7 @@
 #
 
 ##
-InstallMethod( AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure,
+InstallMethod( AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure,
         [ IsAbCategory ],
         
   function( C )
@@ -25,10 +25,10 @@ InstallMethod( AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiv
     ## FKSC is a model for the abelian closure category with strict direct sums of the category C:
     AC :=
       WrapperCategory( FKSC,
-              rec( name := Concatenation( "AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure( ", Name( C ), " )" ),
-                   category_filter := IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure and IsWrapperCapCategory,
-                   category_object_filter := IsObjectInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure and IsWrapperCapCategoryObject,
-                   category_morphism_filter := IsMorphismInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure and IsWrapperCapCategoryMorphism,
+              rec( name := Concatenation( "AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure( ", Name( C ), " )" ),
+                   category_filter := IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsWrapperCapCategory,
+                   category_object_filter := IsObjectInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsWrapperCapCategoryObject,
+                   category_morphism_filter := IsMorphismInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsWrapperCapCategoryMorphism,
                    only_primitive_operations := true )
               : FinalizeCategory := true );
     
@@ -44,7 +44,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
         "for the free abelian closure category with strict direct sums of a category",
-        [ IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure ],
+        [ IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure ],
         
   function( AC )
     local FKSC, KSC, SC;
@@ -67,7 +67,7 @@ end );
 ##
 InstallMethod( EmbeddingOfUnderlyingCategory,
         "for the free abelian closure category with strict direct sums of a category",
-        [ IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure ],
+        [ IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure ],
         
   function( AC )
     local data, Y;
@@ -87,7 +87,7 @@ end );
 ##
 InstallMethod( \.,
         "for the free abelian closure category with strict direct sums of a category and a positive integer",
-        [ IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure, IsPosInt ],
+        [ IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure, IsPosInt ],
         
   function( AC, string_as_int )
     local name, C, Y, Yc;
@@ -136,9 +136,9 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ExtendFunctorToAbelianClosureWithStrictDirectSumsData,
+InstallMethodForCompilerForCAP( ExtendFunctorToAbelianClosureData,
         "for a two categories and a pair of functions",
-        [ IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure, IsList, IsAbelianCategory ], ## IsStrict(Co)cartesianCategory would exclude the lazy category
+        [ IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure, IsList, IsAbelianCategory ], ## IsStrict(Co)cartesianCategory would exclude the lazy category
         
   function( AC, pair_of_funcs, abelian_category_with_strict_direct_sums )
     local FKSC, KSC, SC;
@@ -164,7 +164,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToAbelianClosureWithStrictDirectSum
 end );
 
 ##
-InstallMethod( ExtendFunctorToAbelianClosureWithStrictDirectSums,
+InstallMethod( ExtendFunctorToAbelianClosure,
         "for a functor",
         [ IsCapFunctor ],
         
@@ -174,14 +174,14 @@ InstallMethod( ExtendFunctorToAbelianClosureWithStrictDirectSums,
     C := SourceOfFunctor( F );
     D := RangeOfFunctor( F );
     
-    AC := AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure( C );
+    AC := AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure( C );
     
-    data := ExtendFunctorToAbelianClosureWithStrictDirectSumsData(
+    data := ExtendFunctorToAbelianClosureData(
                     AC,
                     Pair( FunctorObjectOperation( F ), FunctorMorphismOperation( F ) ),
                     D );
     
-    DF := CapFunctor( Concatenation( "Extension to AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure( Source( ", Name( F ), " ) )" ), AC, D );
+    DF := CapFunctor( Concatenation( "Extension to AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure( Source( ", Name( F ), " ) )" ), AC, D );
     
     AddObjectFunction( DF,
             data[2][1] );
@@ -201,7 +201,7 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsObjectInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure ],
+        [ IsObjectInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure ],
         
   function ( a )
     
@@ -213,7 +213,7 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsMorphismInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure ],
+        [ IsMorphismInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure ],
         
   function ( phi )
     local sFinSets;
