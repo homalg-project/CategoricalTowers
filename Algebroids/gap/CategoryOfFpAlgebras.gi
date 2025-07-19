@@ -1240,6 +1240,35 @@ InstallMethod( AssociatedFunctorOfLinearClosuresOfPathCategoriesData,
 end );
 
 ##
+InstallMethodForCompilerForCAP( EvaluateFpAlgebraMorphism,
+        "for a category of finitely presented algebras, a morphism therein, a linear category, an object therein, and a list of endomorphisms thereof",
+        [ IsCategoryOfFinitelyPresentedAlgebras, IsMorphismInCategoryOfFpAlgebras, IsCapCategory, IsCapCategoryObject, IsList ],
+        
+  function( FpAlg_k, fp_algebra_morphism, V, rep_obj, rep_mors )
+    local nr_gens_source, images, coefs, smors;
+    
+    nr_gens_source := DefiningSeptupleOfFinitelyPresentedAlgebra( Source( fp_algebra_morphism ) )[3];
+    
+    images := ListOfImages( fp_algebra_morphism );
+    
+    coefs := List( [ 1 .. nr_gens_source ], i -> CoefficientsList( images[i] ) );
+    smors := List( [ 1 .. nr_gens_source ], i ->
+                   List( SupportMorphisms( images[i] ), mor ->
+                         PreComposeList( V,
+                                 rep_obj,
+                                 rep_mors{MorphismIndices( mor )},
+                                 rep_obj ) ) );
+    
+    return List( [ 1 .. nr_gens_source ], i ->
+                 LinearCombinationOfMorphisms( V,
+                         rep_obj,
+                         coefs[i],
+                         smors[i],
+                         rep_obj ) );
+    
+end );
+
+##
 InstallMethod( Counit,
         "for a finitely presented algebra and a list",
         [ IsObjectInCategoryOfFpAlgebras, IsList ],
