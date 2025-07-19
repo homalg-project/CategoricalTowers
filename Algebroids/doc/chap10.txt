@@ -297,11 +297,15 @@
   
   [1X10.3 [33X[0;0YOperations[133X[101X
   
-  [1X10.3-1 Counit[101X
+  [1X10.3-1 EvaluateFpAlgebraMorphism[101X
+  
+  [33X[1;0Y[29X[2XEvaluateFpAlgebraMorphism[102X( [3XFpAlg_k[103X, [3Xfp_algebra_morphism[103X, [3XV[103X, [3Xobj[103X, [3Xlist_of_morphisms[103X ) [32X operation[133X
+  
+  [1X10.3-2 Counit[101X
   
   [33X[1;0Y[29X[2XCounit[102X( [3Xfp_algebra[103X, [3Xlist[103X ) [32X operation[133X
   
-  [1X10.3-2 Comultiplication[101X
+  [1X10.3-3 Comultiplication[101X
   
   [33X[1;0Y[29X[2XComultiplication[102X( [3Xfp_algebra[103X, [3Xlist[103X ) [32X operation[133X
   

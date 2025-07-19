@@ -75,10 +75,10 @@
       for IsObjectInCategoryOfFpAlgebras 10.1-2 
       for IsObjectInCategoryOfFpMatrixAlgebras 11.1-4 
   [2XComultiplication[102X, for IsAlgebroid 8.2-2 
-      for IsObjectInCategoryOfFpAlgebras, IsList 10.3-2 
+      for IsObjectInCategoryOfFpAlgebras, IsList 10.3-3 
       for IsObjectInCategoryOfFpMatrixAlgebras, IsList 11.3-2 
   [2XCounit[102X, for IsAlgebroid 8.2-1 
-      for IsObjectInCategoryOfFpAlgebras, IsList 10.3-1 
+      for IsObjectInCategoryOfFpAlgebras, IsList 10.3-2 
       for IsObjectInCategoryOfFpMatrixAlgebras, IsList 11.3-1 
   [2XCreateMorphism[102X, for IsCategoryFromDataTables, IsInt 4.2-7 
       for IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables 4.2-7 
@@ -107,6 +107,7 @@
       for IsObjectInAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables, IsAlgebroidFromDataTables 6.3-13 
       for IsObjectInFpCategory, IsMorphismInFpCategory, IsFpCategory 2.3-4 
       for IsObjectInFpCategory, IsObjectInFpCategory, IsFpCategory 2.3-3 
+  [2XEvaluateFpAlgebraMorphism[102X, for IsCategoryOfFinitelyPresentedAlgebras, IsMorphismInCategoryOfFpAlgebras, IsCapCategory, IsCapCategoryObject, IsList 10.3-1 
   [2XFreeCategory[102X, for IsQuiver 2.4-1 
   [2XGenerators[102X, for IsObjectInCategoryOfFpAlgebras 10.1-6 
       for IsObjectInCategoryOfFpMatrixAlgebras 11.1-9 
@@ -212,7 +213,7 @@
       for IsFpCategory 2.2-17 
   [2XUnderlyingCategoryOfFpAlgebras[102X, for IsCategoryOfFinitelyPresentedMatrixAlgebras 11.1-1 
   [2XUnderlyingCategoryOfMatrices[102X, for IsCategoryOfFinitelyPresentedMatrixAlgebras 11.1-2 
-  [2XUnderlyingMorphismInCategoryOfFpAlgebras[102X, for IsMorphismInCategoryOfFpMatrixAlgebras 11.1-6 
+  [2XUnderlyingListOfMorphismsInCategoryOfFpAlgebras[102X, for IsMorphismInCategoryOfFpMatrixAlgebras 11.1-6 
   [2XUnderlyingQuiver[102X, for IsAlgebroid 5.2-1 
       for IsFpCategory 2.2-1 
   [2XUnderlyingQuiverAlgebra[102X, for IsAlgebroid 5.2-2 
