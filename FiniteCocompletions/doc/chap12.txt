@@ -9,16 +9,14 @@
   [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3XDC[103X ) [32X attribute[133X
   
   [33X[0;0YReturn the category [23XC[123X underlying the abelian closure with strict direct sums
-  category                                [3XDC[103X                                :=
-  [10XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure[110X( [23XC[123X
-  ).[133X
+  category [3XDC[103X := [10XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[110X( [23XC[123X ).[133X
   
   
   [1X12.2 [33X[0;0YConstructors[133X[101X
   
-  [1X12.2-1 AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure[101X
+  [1X12.2-1 AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[101X
   
-  [33X[1;0Y[29X[2XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure[102X( [3XC[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
   [33X[0;0YConstruct  the  free  distributive closure category with strict products and
@@ -41,146 +39,146 @@
     [4X[25Xgap>[125X [27XL := Qq / [ Qq.abc ];[127X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X/ relations[128X[104X
-    [4X[25Xgap>[125X [27XA := AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure( L );[127X[104X
-    [4X[28XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[25Xgap>[125X [27XA := AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure( L );[127X[104X
+    [4X[28XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X/ relations )[128X[104X
     [4X[25Xgap>[125X [27Xa := A.a;[127X[104X
     [4X[28X<A morphism in[128X[104X
-    [4X[28XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X/ relations )>[128X[104X
     [4X[25Xgap>[125X [27Xb := A.b;[127X[104X
     [4X[28X<A morphism in[128X[104X
-    [4X[28XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X/ relations )>[128X[104X
     [4X[25Xgap>[125X [27Xc := A.c;[127X[104X
     [4X[28X<A morphism in[128X[104X
-    [4X[28XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X/ relations )>[128X[104X
     [4X[25Xgap>[125X [27XIsZero( PreCompose( [ a, b, c ] ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xd := CokernelProjection( a );[127X[104X
     [4X[28X<An epimorphism in[128X[104X
-    [4X[28XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X/ relations )>[128X[104X
     [4X[25Xgap>[125X [27Xe := CokernelColift( a, PreCompose( b, c ) );[127X[104X
     [4X[28X<A morphism in[128X[104X
-    [4X[28XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X/ relations )>[128X[104X
     [4X[25Xgap>[125X [27Xf := KernelEmbedding( e );[127X[104X
     [4X[28X<A monomorphism in[128X[104X
-    [4X[28XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X/ relations )>[128X[104X
     [4X[25Xgap>[125X [27Xg := KernelEmbedding( c );[127X[104X
     [4X[28X<A monomorphism in[128X[104X
-    [4X[28XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X/ relations )>[128X[104X
     [4X[25Xgap>[125X [27Xh := KernelLift( c, PreCompose( a, b ) );[127X[104X
     [4X[28X<A morphism in[128X[104X
-    [4X[28XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X/ relations )>[128X[104X
     [4X[25Xgap>[125X [27Xi := CokernelProjection( h );[127X[104X
     [4X[28X<An epimorphism in[128X[104X
-    [4X[28XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X/ relations )>[128X[104X
     [4X[25Xgap>[125X [27Xker := Source( f );[127X[104X
     [4X[28X<An object in[128X[104X
-    [4X[28XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X/ relations )>[128X[104X
     [4X[25Xgap>[125X [27Xcoker := Target( i );[127X[104X
     [4X[28X<An object in[128X[104X
-    [4X[28XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X/ relations )>[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( ker, coker );[127X[104X
     [4X[28X<A row module over Q of rank 1>[128X[104X
     [4X[25Xgap>[125X [27Xhom_ker_coker := BasisOfExternalHom( ker, coker );[127X[104X
     [4X[28X[ <A morphism in[128X[104X
-    [4X[28X   AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28X   AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28X   Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X   / relations )> ][128X[104X
     [4X[25Xgap>[125X [27Xs := hom_ker_coker[1];[127X[104X
     [4X[28X<A morphism in[128X[104X
-    [4X[28X AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28X AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28X Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations )>[128X[104X
     [4X[25Xgap>[125X [27Xj := KernelObjectFunctorial( b, d, e );[127X[104X
     [4X[28X<A morphism in[128X[104X
-    [4X[28X AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28X AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28X Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations )>[128X[104X
     [4X[25Xgap>[125X [27Xk := CokernelObjectFunctorial( h, g, b );[127X[104X
     [4X[28X<A morphism in[128X[104X
-    [4X[28X AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28X AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28X Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations )>[128X[104X
     [4X[25Xgap>[125X [27XHK := HomologyObject( j, s );[127X[104X
     [4X[28X<An object in[128X[104X
-    [4X[28X AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28X AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28X Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations )>[128X[104X
     [4X[25Xgap>[125X [27XIsZero( HK );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XHC := HomologyObject( s, k );[127X[104X
     [4X[28X<An object in[128X[104X
-    [4X[28X AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28X AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28X Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations )>[128X[104X
     [4X[25Xgap>[125X [27XIsZero( HC );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xff := AsGeneralizedMorphism( f );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of[128X[104X
-    [4X[28X AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28X AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28X Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations )>[128X[104X
     [4X[25Xgap>[125X [27Xdd := AsGeneralizedMorphism( d );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of[128X[104X
-    [4X[28X AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28X AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28X Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations )>[128X[104X
     [4X[25Xgap>[125X [27Xbb := AsGeneralizedMorphism( b );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of[128X[104X
-    [4X[28X AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28X AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28X Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations )>[128X[104X
     [4X[25Xgap>[125X [27Xgg := AsGeneralizedMorphism( g );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of[128X[104X
-    [4X[28X AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28X AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28X Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations )>[128X[104X
     [4X[25Xgap>[125X [27Xii := AsGeneralizedMorphism( i );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of[128X[104X
-    [4X[28X AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28X AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28X Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations )>[128X[104X
     [4X[25Xgap>[125X [27Xss := PreCompose( [ ff, PseudoInverse( dd ), bb, PseudoInverse( gg ), ii ] );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of[128X[104X
-    [4X[28X AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28X AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28X Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations )>[128X[104X
     [4X[25Xgap>[125X [27XIsHonest( ss );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xs = HonestRepresentative( ss );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XId := ExtendFunctorToAbelianClosureWithStrictDirectSums([127X[104X
+    [4X[25Xgap>[125X [27XId := ExtendFunctorToAbelianClosure([127X[104X
     [4X[25X>[125X [27X              EmbeddingOfUnderlyingCategory( A ) );[127X[104X
     [4X[28XExtension to[128X[104X
-    [4X[28XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28XSource( Embedding functor into an abelian closure category[128X[104X
     [4X[28X        with strict direct sums ) )[128X[104X
     [4X[25Xgap>[125X [27XId( s );[127X[104X
     [4X[28X<A morphism in[128X[104X
-    [4X[28X AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28X AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28X Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X / relations )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( Id( s ) );[127X[104X
@@ -335,7 +333,7 @@
     [4X[28XRightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations ) ) )[128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
-    [4X[28XAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
+    [4X[28XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure([128X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )[128X[104X
     [4X[28X/ relations ) given by the above data[128X[104X
     [4X[28X#@fi[128X[104X
@@ -350,9 +348,9 @@
   distributive  closure  category  [3XDC[103X with strict products and coproducts into
   [3XDC[103X.[133X
   
-  [1X12.2-3 ExtendFunctorToAbelianClosureWithStrictDirectSums[101X
+  [1X12.2-3 ExtendFunctorToAbelianClosure[101X
   
-  [33X[1;0Y[29X[2XExtendFunctorToAbelianClosureWithStrictDirectSums[102X( [3XDC[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XExtendFunctorToAbelianClosure[102X( [3XDC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
   
   [33X[0;0YThe  full  embedding  functor  from  the  category  [23XC[123X  underlying  the  free
@@ -362,33 +360,33 @@
   
   [1X12.3 [33X[0;0YGAP categories[133X[101X
   
-  [1X12.3-1 IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure[101X
+  [1X12.3-1 IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[101X
   
-  [33X[1;0Y[29X[2XIsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  [5XGAP[105X  category  of  free  distributive  closure  categories  with strict
   products and coproducts of a category.[133X
   
-  [1X12.3-2 IsCellInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure[101X
+  [1X12.3-2 IsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[101X
   
-  [33X[1;0Y[29X[2XIsCellInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  [5XGAP[105X  category  of  cells in the free distributive closure category with
   strict products and coproducts of a category.[133X
   
-  [1X12.3-3 IsObjectInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure[101X
+  [1X12.3-3 IsObjectInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[101X
   
-  [33X[1;0Y[29X[2XIsObjectInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  [5XGAP[105X  category of objects in the free distributive closure category with
   strict products and coproducts of a category.[133X
   
-  [1X12.3-4 IsMorphismInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure[101X
+  [1X12.3-4 IsMorphismInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in the free distributive closure category with

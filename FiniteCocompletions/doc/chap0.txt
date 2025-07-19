@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2025.07-04
+                                   2025.07-05
   
   
-                                  16 July 2025
+                                  19 July 2025
   
   
                                 Mohamed Barakat
@@ -184,14 +184,14 @@
     12.1 [33X[0;0YAttributes[133X
       12.1-1 UnderlyingCategory
     12.2 [33X[0;0YConstructors[133X
-      12.2-1 AbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure
+      12.2-1 AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
       12.2-2 EmbeddingOfUnderlyingCategory
-      12.2-3 ExtendFunctorToAbelianClosureWithStrictDirectSums
+      12.2-3 ExtendFunctorToAbelianClosure
     12.3 [33X[0;0YGAP categories[133X
-      12.3-1 IsAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure
-      12.3-2 IsCellInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure
-      12.3-3 IsObjectInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure
-      12.3-4 IsMorphismInAbelianClosureWithStrictDirectSumsAsFreydOfCoFreydOfStrictAdditiveClosure
+      12.3-1 IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
+      12.3-2 IsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
+      12.3-3 IsObjectInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
+      12.3-4 IsMorphismInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
   13 [33X[0;0YTools[133X
     13.1 [33X[0;0YOperations[133X
       13.1-1 TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure
