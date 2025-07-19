@@ -669,7 +669,7 @@ InstallMethod( CharacteristicSetAsList,
 end );
 
 ##
-InstallOtherMethod( DotVertexLabelledDigraph,
+InstallMethod( DotVertexLabelledDigraph,
         "for a constructible object",
         [ IsConstructibleObject ],
         

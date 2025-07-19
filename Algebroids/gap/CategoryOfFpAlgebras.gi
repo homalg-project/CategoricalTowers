@@ -229,7 +229,7 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddIsWellDefinedForMorphisms( FpAlg_k,
       function( FpAlg_k, fp_algebra_morphism )
-        local S, T, datumS, datumT, list_of_images, L, o, functor_on_mors, image_of_source_relations, GB, reds, bool, obstruction, extract_datum;
+        local S, T, datumS, datumT, list_of_images, L, o, functor_on_mors, image_of_source_relations, GB, reds, bool, obstruction;
         
         S := Source( fp_algebra_morphism );
         T := Target( fp_algebra_morphism );
@@ -266,13 +266,7 @@ InstallMethod( CategoryOfFpAlgebras,
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         if not bool and not obstruction = fail then
-            
-            extract_datum :=
-              function( mor )
-                return MorphismDatum( mor )[1];
-            end;
-            
-            Add( obstruction, Pair( Concatenation( List( reds, extract_datum ) ), "IsWellDefinedForMorphisms" ) );
+            Add( obstruction, Pair( reds, "IsWellDefinedForMorphisms" ) );
             return true;
         fi;
         
