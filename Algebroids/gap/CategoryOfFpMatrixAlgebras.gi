@@ -34,7 +34,7 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
                       CapJitDataTypeOfNTupleOf( 2,
                               CapJitDataTypeOfObjectOfCategory( V ),
                               CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( V ) ) ) ),
-              CapJitDataTypeOfMorphismOfCategory( FpAlg_k ),
+              CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( FpAlg_k ) ),
               fail );
     
     SetIsCartesianCategory( FpMatAlg_k, true );
@@ -75,12 +75,15 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
     
     ##
     AddMorphismConstructor( FpMatAlg_k,
-      function( FpMatAlg_k, source, fp_algebra_morphism, target )
+      function( FpMatAlg_k, source, list_of_fp_algebra_morphisms, target )
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, not IsEmpty( list_of_fp_algebra_morphisms ) );
         
         return CreateCapCategoryMorphismWithAttributes( FpMatAlg_k,
                        source,
                        target,
-                       UnderlyingMorphismInCategoryOfFpAlgebras, fp_algebra_morphism );
+                       UnderlyingListOfMorphismsInCategoryOfFpAlgebras, list_of_fp_algebra_morphisms );
         
     end );
     
@@ -88,7 +91,7 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
     AddMorphismDatum( FpMatAlg_k,
       function( FpMatAlg_k, fp_matrix_algebra_morphism )
         
-        return UnderlyingMorphismInCategoryOfFpAlgebras( fp_matrix_algebra_morphism );
+        return UnderlyingListOfMorphismsInCategoryOfFpAlgebras( fp_matrix_algebra_morphism );
         
     end );
     
@@ -114,28 +117,32 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
     ##
     AddIsEqualForMorphisms( FpMatAlg_k,
       function( FpMatAlg_k, fp_matrix_algebra_morphism1, fp_matrix_algebra_morphism2 )
-        local FpAlg_k, fp_algebra_morphism1, fp_algebra_morphism2;
+        local V, nr_gens, images1, images2;
         
-        FpAlg_k := UnderlyingCategoryOfFpAlgebras( FpMatAlg_k );
+        V := UnderlyingCategoryOfMatrices( FpMatAlg_k );
         
-        fp_algebra_morphism1 := UnderlyingMorphismInCategoryOfFpAlgebras( fp_matrix_algebra_morphism1 );
-        fp_algebra_morphism2 := UnderlyingMorphismInCategoryOfFpAlgebras( fp_matrix_algebra_morphism2 );
+        nr_gens := DefiningSeptupleOfFinitelyPresentedAlgebra( DefiningPairOfFinitelyPresentedMatrixAlgebra( Source( fp_matrix_algebra_morphism1 ) )[1] )[3];
         
-        return IsEqualForMorphisms( FpAlg_k, fp_algebra_morphism1, fp_algebra_morphism2 );
+        images1 := ListOfMatrixImages( FpMatAlg_k, fp_matrix_algebra_morphism1 );
+        images2 := ListOfMatrixImages( FpMatAlg_k, fp_matrix_algebra_morphism2 );
+        
+        return ForAll( [ 1 .. nr_gens ], i -> IsEqualForMorphisms( V, images1[i], images2[i] ) );
         
     end );
     
     ##
     AddIsCongruentForMorphisms( FpMatAlg_k,
       function( FpMatAlg_k, fp_matrix_algebra_morphism1, fp_matrix_algebra_morphism2 )
-        local FpAlg_k, fp_algebra_morphism1, fp_algebra_morphism2;
+        local V, nr_gens, images1, images2;
         
-        FpAlg_k := UnderlyingCategoryOfFpAlgebras( FpMatAlg_k );
+        V := UnderlyingCategoryOfMatrices( FpMatAlg_k );
         
-        fp_algebra_morphism1 := UnderlyingMorphismInCategoryOfFpAlgebras( fp_matrix_algebra_morphism1 );
-        fp_algebra_morphism2 := UnderlyingMorphismInCategoryOfFpAlgebras( fp_matrix_algebra_morphism2 );
+        nr_gens := DefiningSeptupleOfFinitelyPresentedAlgebra( DefiningPairOfFinitelyPresentedMatrixAlgebra( Source( fp_matrix_algebra_morphism1 ) )[1] )[3];
         
-        return IsCongruentForMorphisms( FpAlg_k, fp_algebra_morphism1, fp_algebra_morphism2 );
+        images1 := ListOfMatrixImages( FpMatAlg_k, fp_matrix_algebra_morphism1 );
+        images2 := ListOfMatrixImages( FpMatAlg_k, fp_matrix_algebra_morphism2 );
+        
+        return ForAll( [ 1 .. nr_gens ], i -> IsCongruentForMorphisms( V, images1[i], images2[i] ) );
         
     end );
     
@@ -182,37 +189,34 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
     ##
     AddIsWellDefinedForMorphisms( FpMatAlg_k,
       function( FpMatAlg_k, fp_matrix_algebra_morphism )
-        local FpAlg_k, V, fp_algebra_morphism, S, T, datumS, datumT, list_of_images, pairS, pairT,
+        local FpAlg_k, V, list_of_fp_algebra_morphisms, S, T, datumS, datumT, lists_of_images, pairS, pairT,
               list_of_matrix_images, nr_rels_source, rels_source, rep_target_obj, coefs, smors,
               matrix_images_of_source_relations, nonzero, bool, extract_datum, obstruction, obs;
         
         FpAlg_k := UnderlyingCategoryOfFpAlgebras( FpMatAlg_k );
         V := UnderlyingCategoryOfMatrices( FpMatAlg_k );
         
-        fp_algebra_morphism := UnderlyingMorphismInCategoryOfFpAlgebras( fp_matrix_algebra_morphism );
+        list_of_fp_algebra_morphisms := UnderlyingListOfMorphismsInCategoryOfFpAlgebras( fp_matrix_algebra_morphism );
         
-        S := Source( fp_algebra_morphism );
-        T := Target( fp_algebra_morphism );
+        S := Source( First( list_of_fp_algebra_morphisms ) );
+        T := Target( Last( list_of_fp_algebra_morphisms ) );
         
         datumS := DefiningSeptupleOfFinitelyPresentedAlgebra( S );
         datumT := DefiningSeptupleOfFinitelyPresentedAlgebra( T );
         
-        list_of_images := ListOfImages( fp_algebra_morphism );
-        
-        if not Length( list_of_images ) = datumS[3] then
-            return false;
-        elif not ForAll( list_of_images, image -> IsIdenticalObj( CapCategory( image ), datumT[1] ) ) then
-            return false;
-        fi;
+        lists_of_images := ListOfImages( PreComposeList( FpAlg_k, S, list_of_fp_algebra_morphisms, T ) );
         
         pairS := DefiningPairOfFinitelyPresentedMatrixAlgebra( Source( fp_matrix_algebra_morphism ) );
         pairT := DefiningPairOfFinitelyPresentedMatrixAlgebra( Target( fp_matrix_algebra_morphism ) );
         
-        if not ( IsEqualForObjects( FpAlg_k, S, pairS[1] ) and
-                 IsEqualForObjects( FpAlg_k, T, pairT[1] ) ) then
-            
+        if IsEmpty( list_of_fp_algebra_morphisms ) then
             return false;
-            
+        elif not Length( lists_of_images ) = datumS[3] then
+            return false;
+        elif not ForAll( lists_of_images, image -> IsIdenticalObj( CapCategory( image ), datumT[1] ) ) then
+            return false;
+        elif not ( IsEqualForObjects( FpAlg_k, S, pairS[1] ) and IsEqualForObjects( FpAlg_k, T, pairT[1] ) ) then
+            return false;
         fi;
         
         list_of_matrix_images := ListOfMatrixImages( FpMatAlg_k, fp_matrix_algebra_morphism );
@@ -276,7 +280,7 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         return MorphismConstructor( FpMatAlg_k,
                        fp_matrix_algebra,
-                       IdentityMorphism( FpAlg_k, DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1] ),
+                       [ IdentityMorphism( FpAlg_k, DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1] ) ],
                        fp_matrix_algebra );
         
     end );
@@ -290,16 +294,16 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         return MorphismConstructor( FpMatAlg_k,
                        Source( pre_morphism ),
-                       PreCompose( FpAlg_k,
-                               UnderlyingMorphismInCategoryOfFpAlgebras( pre_morphism ),
-                               UnderlyingMorphismInCategoryOfFpAlgebras( post_morphism ) ),
+                       Concatenation(
+                               UnderlyingListOfMorphismsInCategoryOfFpAlgebras( pre_morphism ),
+                               UnderlyingListOfMorphismsInCategoryOfFpAlgebras( post_morphism ) ),
                        Target( post_morphism ) );
         
     end );
     
     ##
     AddDirectProduct( FpMatAlg_k,
-            function( FpMatAlg_k, diagram )
+      function( FpMatAlg_k, diagram )
         local FpAlg_k, V, l, pairs, fp_algebras, data, reps, reps_obj, reps_mors,
               sum_rep, prjs, injs, idems, mgens;
         
@@ -347,10 +351,10 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         return MorphismConstructor( FpMatAlg_k,
                        product,
-                       ProjectionInFactorOfDirectProductWithGivenDirectProduct( FpAlg_k,
+                       [ ProjectionInFactorOfDirectProductWithGivenDirectProduct( FpAlg_k,
                                List( [ 1 .. l ], o -> DefiningPairOfFinitelyPresentedMatrixAlgebra( diagram[o] )[1] ),
                                p,
-                               DefiningPairOfFinitelyPresentedMatrixAlgebra( product )[1] ),
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( product )[1] ) ],
                        diagram[p] );
         
     end );
@@ -366,11 +370,11 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         return MorphismConstructor( FpMatAlg_k,
                        source,
-                       UniversalMorphismIntoDirectProductWithGivenDirectProduct( FpAlg_k,
+                       [ UniversalMorphismIntoDirectProductWithGivenDirectProduct( FpAlg_k,
                                List( [ 1 .. l ], o -> DefiningPairOfFinitelyPresentedMatrixAlgebra( diagram[o] )[1] ),
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( source )[1],
-                               List( [ 1 .. l ], m -> UnderlyingMorphismInCategoryOfFpAlgebras( test_morphisms[m] ) ),
-                               DefiningPairOfFinitelyPresentedMatrixAlgebra( product )[1] ),
+                               List( [ 1 .. l ], m -> PreComposeList( FpAlg_k, UnderlyingListOfMorphismsInCategoryOfFpAlgebras( test_morphisms[m] ) ) ),
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( product )[1] ) ],
                        product );
         
     end );
@@ -399,9 +403,9 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         return MorphismConstructor( FpMatAlg_k,
                        k,
-                       UniversalMorphismFromInitialObjectWithGivenInitialObject( FpAlg_k,
+                       [ UniversalMorphismFromInitialObjectWithGivenInitialObject( FpAlg_k,
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1],
-                               DefiningPairOfFinitelyPresentedMatrixAlgebra( k )[1] ),
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( k )[1] ) ],
                        fp_matrix_algebra );
         
     end );
@@ -474,11 +478,11 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         return MorphismConstructor( FpMatAlg_k,
                        source,
-                       TensorProductOnMorphismsWithGivenTensorProducts( FpAlg_k,
+                       [ TensorProductOnMorphismsWithGivenTensorProducts( FpAlg_k,
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( source )[1],
-                               UnderlyingMorphismInCategoryOfFpAlgebras( fp_matrix_algebra_morphism1 ),
-                               UnderlyingMorphismInCategoryOfFpAlgebras( fp_matrix_algebra_morphism2 ),
-                               DefiningPairOfFinitelyPresentedMatrixAlgebra( target )[1] ),
+                               PreComposeList( FpAlg_k, UnderlyingListOfMorphismsInCategoryOfFpAlgebras( fp_matrix_algebra_morphism1 ) ),
+                               PreComposeList( FpAlg_k, UnderlyingListOfMorphismsInCategoryOfFpAlgebras( fp_matrix_algebra_morphism2 ) ),
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( target )[1] ) ],
                        target );
         
     end );
@@ -492,9 +496,9 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         return MorphismConstructor( FpMatAlg_k,
                        source,
-                       LeftUnitorWithGivenTensorProduct( FpAlg_k,
+                       [ LeftUnitorWithGivenTensorProduct( FpAlg_k,
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1],
-                               DefiningPairOfFinitelyPresentedMatrixAlgebra( source )[1] ),
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( source )[1] ) ],
                        fp_matrix_algebra );
         
     end );
@@ -508,9 +512,9 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         return MorphismConstructor( FpMatAlg_k,
                        fp_matrix_algebra,
-                       LeftUnitorInverseWithGivenTensorProduct( FpAlg_k,
+                       [ LeftUnitorInverseWithGivenTensorProduct( FpAlg_k,
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1],
-                               DefiningPairOfFinitelyPresentedMatrixAlgebra( target )[1] ),
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( target )[1] ) ],
                        target );
         
     end );
@@ -524,9 +528,9 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         return MorphismConstructor( FpMatAlg_k,
                        source,
-                       RightUnitorWithGivenTensorProduct( FpAlg_k,
+                       [ RightUnitorWithGivenTensorProduct( FpAlg_k,
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1],
-                               DefiningPairOfFinitelyPresentedMatrixAlgebra( source )[1] ),
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( source )[1] ) ],
                        fp_matrix_algebra );
         
     end );
@@ -540,9 +544,9 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         return MorphismConstructor( FpMatAlg_k,
                        fp_matrix_algebra,
-                       RightUnitorInverseWithGivenTensorProduct( FpAlg_k,
+                       [ RightUnitorInverseWithGivenTensorProduct( FpAlg_k,
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1],
-                               DefiningPairOfFinitelyPresentedMatrixAlgebra( target )[1] ),
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( target )[1] ) ],
                        target );
         
     end );
@@ -556,12 +560,12 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         return MorphismConstructor( FpMatAlg_k,
                        source,
-                       AssociatorLeftToRightWithGivenTensorProducts( FpAlg_k,
+                       [ AssociatorLeftToRightWithGivenTensorProducts( FpAlg_k,
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( source )[1],
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra1 )[1],
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra2 )[1],
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra3 )[1],
-                               DefiningPairOfFinitelyPresentedMatrixAlgebra( target )[1] ),
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( target )[1] ) ],
                        target );
         
     end );
@@ -575,12 +579,12 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         return MorphismConstructor( FpMatAlg_k,
                        source,
-                       AssociatorRightToLeftWithGivenTensorProducts( FpAlg_k,
+                       [ AssociatorRightToLeftWithGivenTensorProducts( FpAlg_k,
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( source )[1],
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra1 )[1],
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra2 )[1],
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra3 )[1],
-                               DefiningPairOfFinitelyPresentedMatrixAlgebra( target )[1] ),
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( target )[1] ) ],
                        target );
         
     end );
@@ -594,11 +598,11 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         return MorphismConstructor( FpMatAlg_k,
                        source,
-                       BraidingWithGivenTensorProducts( FpAlg_k,
+                       [ BraidingWithGivenTensorProducts( FpAlg_k,
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( source )[1],
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra1 )[1],
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra2 )[1],
-                               DefiningPairOfFinitelyPresentedMatrixAlgebra( target )[1] ),
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( target )[1] ) ],
                        target );
         
     end );
@@ -612,11 +616,11 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
         
         return MorphismConstructor( FpMatAlg_k,
                        source,
-                       BraidingInverseWithGivenTensorProducts( FpAlg_k,
+                       [ BraidingInverseWithGivenTensorProducts( FpAlg_k,
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( source )[1],
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra1 )[1],
                                DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra2 )[1],
-                               DefiningPairOfFinitelyPresentedMatrixAlgebra( target )[1] ),
+                               DefiningPairOfFinitelyPresentedMatrixAlgebra( target )[1] ) ],
                        target );
         
     end );
@@ -677,50 +681,36 @@ end );
 
 ##
 InstallOtherMethodForCompilerForCAP( ListOfMatrixImages,
-        "for a category of finitely presented algebras and morphism therein",
+        "for a category of finitely presented matrix algebras and a morphism therein",
         [ IsCategoryOfFinitelyPresentedMatrixAlgebras, IsMorphismInCategoryOfFpMatrixAlgebras ],
         
   function( FpMatAlg_k, fp_matrix_algebra_morphism )
-    local FpAlg_k, V, fp_algebra_morphism, pairS, pairT, datumS, nr_gens_source, images, coefs, smors,
-          rep_target_obj, rep_target_mors;
+    local FpAlg_k, V, list_of_fp_algebra_morphisms, pairT, rep_target_obj, rep_target_mors, func;
     
     FpAlg_k := UnderlyingCategoryOfFpAlgebras( FpMatAlg_k );
     V := UnderlyingCategoryOfMatrices( FpMatAlg_k );
     
-    fp_algebra_morphism := UnderlyingMorphismInCategoryOfFpAlgebras( fp_matrix_algebra_morphism );
+    list_of_fp_algebra_morphisms := UnderlyingListOfMorphismsInCategoryOfFpAlgebras( fp_matrix_algebra_morphism );
     
-    pairS := DefiningPairOfFinitelyPresentedMatrixAlgebra( Source( fp_matrix_algebra_morphism ) );
     pairT := DefiningPairOfFinitelyPresentedMatrixAlgebra( Target( fp_matrix_algebra_morphism ) );
-    
-    datumS := DefiningSeptupleOfFinitelyPresentedAlgebra( pairS[1] );
-    
-    nr_gens_source := datumS[3];
-    
-    images := ListOfImages( fp_algebra_morphism );
-    
-    coefs := List( [ 1 .. nr_gens_source ], i -> CoefficientsList( images[i] ) );
-    smors := List( [ 1 .. nr_gens_source ], i -> List( SupportMorphisms( images[i] ), MorphismIndices ) );
     
     rep_target_obj := pairT[2][1];
     rep_target_mors := pairT[2][2];
     
-    return List( [ 1 .. nr_gens_source ], i ->
-                 SumOfMorphisms( V,
-                         rep_target_obj,
-                         List( [ 1 .. Length( coefs[i] ) ], j ->
-                               MultiplyWithElementOfCommutativeRingForMorphisms( V,
-                                       coefs[i][j],
-                                       PreComposeList( V,
-                                               rep_target_obj,
-                                               rep_target_mors{smors[i][j]},
-                                               rep_target_obj ) ) ),
-                         rep_target_obj ) );
+    func :=
+      function( list_of_endomorphisms, fp_algebra_morphisms )
+        
+        return EvaluateFpAlgebraMorphism( FpAlg_k, fp_algebra_morphisms, V, rep_target_obj, list_of_endomorphisms );
+        
+    end;
+    
+    return Iterated( Reversed( list_of_fp_algebra_morphisms ), func, rep_target_mors );
     
 end );
 
 ##
 InstallMethod( ListOfMatrixImages,
-        "for a morphism of finitely presented algebras",
+        "for a morphism of finitely presented matrix algebras",
         [ IsMorphismInCategoryOfFpMatrixAlgebras ],
         
   function( fp_matrix_algebra_morphism )
@@ -814,7 +804,7 @@ InstallMethod( Counit,
     
     return MorphismConstructor( FpMatAlg_k,
                    fp_matrix_algebra,
-                   Counit( fp_algebra, list_of_images_of_counit ),
+                   [ Counit( fp_algebra, list_of_images_of_counit ) ],
                    U );
     
 end );
@@ -835,7 +825,7 @@ InstallMethod( Comultiplication,
     
     return MorphismConstructor( FpMatAlg_k,
                    fp_matrix_algebra,
-                   Comultiplication( fp_algebra, list_of_images_of_comult ),
+                   [ Comultiplication( fp_algebra, list_of_images_of_comult ) ],
                    fp_matrix_algebra2 );
     
 end );
@@ -878,6 +868,6 @@ InstallMethod( DisplayString,
         
   function( fp_matrix_algebra_morphism )
     
-    return DisplayString( MorphismDatum( fp_matrix_algebra_morphism ) );
+    return DisplayString( PreComposeList( MorphismDatum( fp_matrix_algebra_morphism ) ) );
     
 end );

@@ -135,6 +135,10 @@ DeclareAttribute( "AssociatedFunctorOfLinearClosuresOfPathCategoriesData",
 ##
 ####################################
 
+#! @Arguments FpAlg_k, fp_algebra_morphism, V, obj, list_of_morphisms
+DeclareOperation( "EvaluateFpAlgebraMorphism",
+        [ IsCategoryOfFinitelyPresentedAlgebras, IsMorphismInCategoryOfFpAlgebras, IsCapCategory, IsCapCategoryObject, IsList ] );
+
 #! @Arguments fp_algebra, list
 DeclareOperation( "Counit",
         [ IsObjectInCategoryOfFpAlgebras, IsList ] );
