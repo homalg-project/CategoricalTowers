@@ -7,7 +7,7 @@
 ##
 InstallMethod( CategoryOfFpMatrixAlgebras,
         "for a category of finitely presented algebras and an additive category",
-        [ IsCategoryOfFinitelyPresentedAlgebras, IsCapCategory ],
+        [ IsCategoryOfFpAlgebras, IsCapCategory ],
 
   FunctionWithNamedArguments(
   [ [ "FinalizeCategory", true ],
@@ -25,7 +25,7 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
     ##
     FpMatAlg_k :=
       CreateCapCategoryWithDataTypes( name,
-              IsCategoryOfFinitelyPresentedMatrixAlgebras,
+              IsCategoryOfFpMatrixAlgebras,
               IsObjectInCategoryOfFpMatrixAlgebras,
               IsMorphismInCategoryOfFpMatrixAlgebras,
               IsCapCategoryTwoCell,
@@ -673,7 +673,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( ListOfMatrixImages,
         "for a category of finitely presented matrix algebras and a morphism therein",
-        [ IsCategoryOfFinitelyPresentedMatrixAlgebras, IsMorphismInCategoryOfFpMatrixAlgebras ],
+        [ IsCategoryOfFpMatrixAlgebras, IsMorphismInCategoryOfFpMatrixAlgebras ],
         
   function( FpMatAlg_k, fp_matrix_algebra_morphism )
     local FpAlg_k, V, list_of_fp_algebra_morphisms, pairT, rep_target_obj, rep_target_mors, func;

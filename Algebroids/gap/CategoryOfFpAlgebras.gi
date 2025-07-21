@@ -45,7 +45,7 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     FpAlg_k :=
       CreateCapCategoryWithDataTypes( name,
-              IsCategoryOfFinitelyPresentedAlgebras,
+              IsCategoryOfFpAlgebras,
               IsObjectInCategoryOfFpAlgebras,
               IsMorphismInCategoryOfFpAlgebras,
               IsCapCategoryTwoCell,
@@ -1053,7 +1053,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( AmbientAlgebra,
         "for a category of finitely presented algebras and an algebra therein",
-        [ IsCategoryOfFinitelyPresentedAlgebras, IsObjectInCategoryOfFpAlgebras ],
+        [ IsCategoryOfFpAlgebras, IsObjectInCategoryOfFpAlgebras ],
         
   function( FpAlg_k, fp_algebra )
     local datum;
@@ -1086,7 +1086,7 @@ end );
 ##
 InstallMethod( \/,
         "for a linear category and a category of finitely presented algebras",
-        [ IsCapCategory and IsLinearCategoryOverCommutativeRing, IsCategoryOfFinitelyPresentedAlgebras ],
+        [ IsCapCategory and IsLinearCategoryOverCommutativeRing, IsCategoryOfFpAlgebras ],
         
   function( cat, FpAlg_k )
     local k, L, relations, object, generators, get_labels;
@@ -1197,7 +1197,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( AssociatedFunctorOfLinearClosuresOfPathCategoriesData,
         "for a category of finitely presented algebras and a finitely presented algebra morphism therein",
-        [ IsCategoryOfFinitelyPresentedAlgebras, IsMorphismInCategoryOfFpAlgebras ],
+        [ IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras ],
         
   function( FpAlg_k, fp_algebra_morphism )
     local S, T, path_cat, image_of_unique_object, images_of_generating_morphism;
@@ -1236,7 +1236,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( EvaluateFpAlgebraMorphism,
         "for a category of finitely presented algebras, a morphism therein, a linear category, an object therein, and a list of endomorphisms thereof",
-        [ IsCategoryOfFinitelyPresentedAlgebras, IsMorphismInCategoryOfFpAlgebras, IsCapCategory, IsCapCategoryObject, IsList ],
+        [ IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsCapCategory, IsCapCategoryObject, IsList ],
         
   function( FpAlg_k, fp_algebra_morphism, V, rep_obj, rep_mors )
     local nr_gens_source, images, coefs, smors;

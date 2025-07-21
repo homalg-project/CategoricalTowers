@@ -15,7 +15,7 @@
 #! @Description
 #!  The &GAP; category of categories of finitely presented associative unital algebras.
 #! @Arguments category
-DeclareCategory( "IsCategoryOfFinitelyPresentedAlgebras", IsCapCategory );
+DeclareCategory( "IsCategoryOfFpAlgebras", IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of finitely presented associative unital algebras.
@@ -37,9 +37,9 @@ DeclareCategory( "IsMorphismInCategoryOfFpAlgebras", IsCapCategoryMorphism );
 #!  The input is a category of finitely presented associative unital $k$-algebras.
 #!  The output is the underlying commutative ring $k$ of coefficients.
 #! @Arguments Alg_k
-DeclareAttribute( "CoefficientsRing", IsCategoryOfFinitelyPresentedAlgebras );
+DeclareAttribute( "CoefficientsRing", IsCategoryOfFpAlgebras );
 
-CapJitAddTypeSignature( "CoefficientsRing", [ IsCategoryOfFinitelyPresentedAlgebras ],
+CapJitAddTypeSignature( "CoefficientsRing", [ IsCategoryOfFpAlgebras ],
   function ( input_types )
     
     return CapJitDataTypeOfRing( CoefficientsRing( input_types[1].category ) );
@@ -137,7 +137,7 @@ DeclareAttribute( "AssociatedFunctorOfLinearClosuresOfPathCategoriesData",
 
 #! @Arguments FpAlg_k, fp_algebra_morphism, V, obj, list_of_morphisms
 DeclareOperation( "EvaluateFpAlgebraMorphism",
-        [ IsCategoryOfFinitelyPresentedAlgebras, IsMorphismInCategoryOfFpAlgebras, IsCapCategory, IsCapCategoryObject, IsList ] );
+        [ IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsCapCategory, IsCapCategoryObject, IsList ] );
 
 #! @Arguments fp_algebra, list
 DeclareOperation( "Counit",
