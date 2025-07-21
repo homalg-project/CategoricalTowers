@@ -1026,7 +1026,7 @@ InstallMethodWithCrispCache( NaturalTransformationFromIdenitityFunctorToSimplifi
         [ IsCategoryOfAffineAlgebras, IsObjectInCategoryOfAffineAlgebras ],
         
   function( AffAlg_k, affine_algebra )
-    local datum, R, nrrels, rels, nmgens, pos, lin, k, indets, A, b, S, x, steps, sorted_steps,
+    local datum, R, nrrels, rels, nmgens, pos, lin, indets, A, k, b, S, x, steps, sorted_steps,
           h, nm, var, nmparams, T, params, images, phi, new_rels;
     
     datum := ObjectDatum( affine_algebra );
@@ -1042,7 +1042,9 @@ InstallMethodWithCrispCache( NaturalTransformationFromIdenitityFunctorToSimplifi
     
     lin := BasisOfRows( lin );
     
-    k := CoefficientsRing( AffAlg_k );
+    if IsOne( lin ) then
+        return Pair( MorphismDatum( UniversalMorphismIntoTerminalObject( affine_algebra ) ), TerminalObject( AffAlg_k ) );
+    fi;
     
     indets := datum[3];
     
@@ -1051,6 +1053,8 @@ InstallMethodWithCrispCache( NaturalTransformationFromIdenitityFunctorToSimplifi
     fi;
     
     A := Diff( Involution( indets ), lin );
+    
+    k := CoefficientsRing( AffAlg_k );
     
     b := k * ( A * indets - lin );
     
@@ -1074,7 +1078,11 @@ InstallMethodWithCrispCache( NaturalTransformationFromIdenitityFunctorToSimplifi
     ## in case S is anti-triangular (i.e., with reversed columns) we want to enforce it to become triangular, i.e., in RCEF
     S := CertainColumns( S, List( sorted_steps, i -> Position( steps, i ) ) );
     
-    Assert( 0, IsDiagonalMatrix( CertainRows( S, sorted_steps ) ) );
+    if HasIsFieldForHomalg( k ) and IsFieldForHomalg( k ) then
+        Assert( 0, IsOne( CertainRows( S, sorted_steps ) ) );
+    else
+        Assert( 0, IsDiagonalMatrix( CertainRows( S, sorted_steps ) ) );
+    fi;
     
     h := NrColumns( S );
     
@@ -1083,7 +1091,7 @@ InstallMethodWithCrispCache( NaturalTransformationFromIdenitityFunctorToSimplifi
     nm :=
       function( j )
         if IsOne( S[sorted_steps[j], j] ) then
-            return nmgens[j];
+            return nmgens[sorted_steps[j]];
         else
             return Concatenation( var, String( j ) );
         fi;
@@ -1140,6 +1148,8 @@ InstallMethod( NaturalTransformationFromIdenitityFunctorToSimplificationOfAffine
     end;
     
     AddObjectFunction( F, obj_func );
+    
+    ## TODO: AddMorphismFunction
     
     eta := NaturalTransformation( "NaturalTransformationFromIdenitityFunctorToSimplificationOfAffineAlgebrasByLinearEquations", Id, F );
     
