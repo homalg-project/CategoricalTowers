@@ -767,7 +767,7 @@ end );
 
 ##
 InstallMethod( \.,
-        "for a finitely presented algebra and a positive integer",
+        "for a finitely presented matrix algebra and a positive integer",
         [ IsObjectInCategoryOfFpMatrixAlgebras, IsPosInt ],
         
   function( fp_matrix_algebra, string_as_int )
