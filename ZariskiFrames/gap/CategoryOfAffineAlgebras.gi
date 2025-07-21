@@ -773,6 +773,28 @@ InstallMethod( \/,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( AssociatedAmbientHomalgRing,
+        "for a category of affine algebras and an affine algebra therein",
+        [ IsCategoryOfAffineAlgebras, IsObjectInCategoryOfAffineAlgebras ],
+        
+  function( AffAlg_k, affine_algebra )
+    
+    return DefiningSextupleOfAffineAlgebra( affine_algebra )[1];
+    
+end );
+
+##
+InstallMethod( AssociatedAmbientHomalgRing,
+        "for an affine algebra",
+        [ IsObjectInCategoryOfAffineAlgebras ],
+        
+  function( affine_algebra )
+    
+    return AssociatedAmbientHomalgRing( CapCategory( affine_algebra ), affine_algebra );
+    
+end );
+
+##
 InstallOtherMethodForCompilerForCAP( AssociatedHomalgRing,
         "for a category of affine algebras and an affine algebra therein",
         [ IsCategoryOfAffineAlgebras, IsObjectInCategoryOfAffineAlgebras ],

@@ -70,6 +70,9 @@ DeclareAttribute( "Dimension",
 DeclareAttribute( "AmbientAlgebra",
         IsObjectInCategoryOfAffineAlgebras );
 
+DeclareAttribute( "AssociatedAmbientHomalgRing",
+        IsObjectInCategoryOfAffineAlgebras );
+
 DeclareAttribute( "AssociatedHomalgRing",
         IsObjectInCategoryOfAffineAlgebras );
 
