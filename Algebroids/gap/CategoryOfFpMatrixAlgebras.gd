@@ -15,7 +15,7 @@
 #! @Description
 #!  The &GAP; category of categories of finitely presented associative unital matrix algebras.
 #! @Arguments category
-DeclareCategory( "IsCategoryOfFinitelyPresentedMatrixAlgebras", IsCapCategory );
+DeclareCategory( "IsCategoryOfFpMatrixAlgebras", IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of finitely presented associative unital matrix algebras.
@@ -37,9 +37,9 @@ DeclareCategory( "IsMorphismInCategoryOfFpMatrixAlgebras", IsCapCategoryMorphism
 #!  The input is a category of finitely presented associative unital matrix algebras.
 #!  The output is the underlying category of finitely presented algebras.
 #! @Arguments MatAlg_k
-DeclareAttribute( "UnderlyingCategoryOfFpAlgebras", IsCategoryOfFinitelyPresentedMatrixAlgebras );
+DeclareAttribute( "UnderlyingCategoryOfFpAlgebras", IsCategoryOfFpMatrixAlgebras );
 
-CapJitAddTypeSignature( "UnderlyingCategoryOfFpAlgebras", [ IsCategoryOfFinitelyPresentedMatrixAlgebras ],
+CapJitAddTypeSignature( "UnderlyingCategoryOfFpAlgebras", [ IsCategoryOfFpMatrixAlgebras ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( UnderlyingCategoryOfFpAlgebras( input_types[1].category ) );
@@ -50,9 +50,9 @@ end );
 #!  The input is a category of finitely presented associative unital matrix $k$-algebras.
 #!  The output is the underlying category of $k$-matrices.
 #! @Arguments MatAlg_k
-DeclareAttribute( "UnderlyingCategoryOfMatrices", IsCategoryOfFinitelyPresentedMatrixAlgebras );
+DeclareAttribute( "UnderlyingCategoryOfMatrices", IsCategoryOfFpMatrixAlgebras );
 
-CapJitAddTypeSignature( "UnderlyingCategoryOfMatrices", [ IsCategoryOfFinitelyPresentedMatrixAlgebras ],
+CapJitAddTypeSignature( "UnderlyingCategoryOfMatrices", [ IsCategoryOfFpMatrixAlgebras ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( UnderlyingCategoryOfMatrices( input_types[1].category ) );
@@ -63,9 +63,9 @@ end );
 #!  The input is a category of finitely presented associative unital matrix $k$-algebras.
 #!  The output is the underlying commutative ring $k$ of coefficients.
 #! @Arguments MatAlg_k
-DeclareAttribute( "CoefficientsRing", IsCategoryOfFinitelyPresentedMatrixAlgebras );
+DeclareAttribute( "CoefficientsRing", IsCategoryOfFpMatrixAlgebras );
 
-CapJitAddTypeSignature( "CoefficientsRing", [ IsCategoryOfFinitelyPresentedMatrixAlgebras ],
+CapJitAddTypeSignature( "CoefficientsRing", [ IsCategoryOfFpMatrixAlgebras ],
   function ( input_types )
     
     return CapJitDataTypeOfRing( CoefficientsRing( input_types[1].category ) );
@@ -203,7 +203,7 @@ DeclareOperation( "Comultiplication",
 #!  The output is the category of finitely presented associative unital matrix algebras over $k$.
 #! @Arguments Alg_k, V
 DeclareOperation( "CategoryOfFpMatrixAlgebras",
-        [ IsCategoryOfFinitelyPresentedAlgebras, IsCapCategory ] );
+        [ IsCategoryOfFpAlgebras, IsCapCategory ] );
 #! @InsertChunk CategoryOfFpMatrixAlgebras
 
 #! @Description
@@ -213,7 +213,7 @@ DeclareOperation( "CategoryOfFpMatrixAlgebras",
 DeclareAttribute( "CategoryOfFpMatrixAlgebras",
         IsHomalgRing );
 
-CapJitAddTypeSignature( "CategoryOfFpMatrixAlgebras", [ IsCategoryOfFinitelyPresentedAlgebras ], function ( input_types )
+CapJitAddTypeSignature( "CategoryOfFpMatrixAlgebras", [ IsCategoryOfFpAlgebras ], function ( input_types )
     
     return CapJitDataTypeOfCategory( CategoryOfFpMatrixAlgebras( input_types[1].category ) );
     

@@ -70,6 +70,9 @@ DeclareAttribute( "Dimension",
 DeclareAttribute( "AmbientAlgebra",
         IsObjectInCategoryOfAffineAlgebras );
 
+DeclareAttribute( "AssociatedAmbientHomalgRing",
+        IsObjectInCategoryOfAffineAlgebras );
+
 DeclareAttribute( "AssociatedHomalgRing",
         IsObjectInCategoryOfAffineAlgebras );
 
@@ -81,6 +84,9 @@ DeclareOperation( "AssociatedHomalgRingOfCoproduct",
 
 DeclareAttribute( "CoordinateAlgebraOfGraph",
         IsMorphismInCategoryOfAffineAlgebras );
+
+DeclareAttribute( "DecompositionByDegree2Polynomials",
+        IsObjectInCategoryOfAffineAlgebras );
 
 DeclareAttribute( "NaturalTransformationFromIdenitityFunctorToSimplificationOfAffineAlgebrasByLinearEquations",
         IsCategoryOfAffineAlgebras );

@@ -9,6 +9,8 @@ gap> AffAlg_Z := CategoryOfAffineAlgebras( zz );
 CategoryOfAffineAlgebras( Z )
 gap> W := ( zz["e"] / "e^2-e" ) / AffAlg_Z;
 <An object in CategoryOfAffineAlgebras( Z )>
+gap> AssociatedAmbientHomalgRing( W );
+Z[e]
 gap> Dimension( W );
 1
 gap> IsWellDefined( W );
