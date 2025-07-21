@@ -85,6 +85,9 @@ DeclareOperation( "AssociatedHomalgRingOfCoproduct",
 DeclareAttribute( "CoordinateAlgebraOfGraph",
         IsMorphismInCategoryOfAffineAlgebras );
 
+DeclareAttribute( "DecompositionByDegree2Polynomials",
+        IsObjectInCategoryOfAffineAlgebras );
+
 DeclareAttribute( "NaturalTransformationFromIdenitityFunctorToSimplificationOfAffineAlgebrasByLinearEquations",
         IsCategoryOfAffineAlgebras );
 

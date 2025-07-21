@@ -1021,6 +1021,37 @@ InstallMethod( Dimension,
 end );
 
 ##
+InstallMethod( DecompositionByDegree2Polynomials,
+        "for a finitely presented algebra",
+        [ IsObjectInCategoryOfAffineAlgebras ],
+        
+  function( affine_algebra )
+    local AffAlg_k, datum, nrrels, rels, linind, lin, radicals, nonlinind, nonlin;
+    
+    AffAlg_k := CapCategory( affine_algebra );
+    
+    datum := ObjectDatum( affine_algebra );
+    
+    nrrels := datum[4];
+    rels := datum[5];
+    
+    linind := Filtered( [ 1 .. nrrels ], i -> Degree( rels[i,1] ) = 2 and Length( Factors( rels[i,1] ) ) > 1 );
+    
+    lin := CertainRows( rels, linind );
+    
+    radicals := RadicalDecompositionOp( lin );
+    
+    List( radicals, NrRows );
+    
+    nonlinind := Difference( [ 1 .. nrrels ], linind );
+    
+    nonlin := CertainRows( rels, nonlinind );
+    
+    return List( radicals, rad -> UnionOfRows( rad, rels ) / AffAlg_k );
+    
+end );
+
+##
 InstallMethodWithCrispCache( NaturalTransformationFromIdenitityFunctorToSimplificationOfAffineAlgebrasByLinearEquationsData,
         "for a category of affine algebras and an affine algebra therein",
         [ IsCategoryOfAffineAlgebras, IsObjectInCategoryOfAffineAlgebras ],
