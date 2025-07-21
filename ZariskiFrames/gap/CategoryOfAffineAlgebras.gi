@@ -726,19 +726,18 @@ end );
 
 ##
 InstallMethod( \/,
-        "for a homalg ring and a category of affine algebras",
-        [ IsHomalgRing, IsCategoryOfAffineAlgebras ],
+        "for a homalg matrix and a category of affine algebras",
+        [ IsHomalgMatrix, IsCategoryOfAffineAlgebras ],
         
-  function( ring, AffAlg_k )
-    local A, relations, generators, n;
+  function( relations, AffAlg_k )
+    local A, generators, n;
     
-    if HasAmbientRing( ring ) then
-        A := AmbientRing( ring );
-        relations := MatrixOfRelations( ring );
-    else
-        A := ring;
-        relations := HomalgZeroMatrix( 0, 1, A );
-    fi;
+    A := HomalgRing( relations );
+    
+    Assert( 0, not HasAmbientRing( A ) );
+    Assert( 0, HasCoefficientsRing( A ) );
+    Assert( 0, IsIdenticalObj( CoefficientsRing( A ), CoefficientsRing( AffAlg_k ) ) );
+    Assert( 0, NumberColumns( relations ) = 1 );
     
     generators := Indeterminates( A );
     
@@ -752,6 +751,24 @@ InstallMethod( \/,
                            NrRows( relations ),
                            relations,
                            List( generators, String ) ) );
+    
+end );
+
+##
+InstallMethod( \/,
+        "for a homalg ring and a category of affine algebras",
+        [ IsHomalgRing, IsCategoryOfAffineAlgebras ],
+        
+  function( ring, AffAlg_k )
+    local relations;
+    
+    if HasAmbientRing( ring ) then
+        relations := MatrixOfRelations( ring );
+    else
+        relations := HomalgZeroMatrix( 0, 1, ring );
+    fi;
+    
+    return relations / AffAlg_k;
     
 end );
 
