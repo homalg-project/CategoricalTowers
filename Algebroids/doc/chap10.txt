@@ -312,9 +312,9 @@
   
   [1X10.4 [33X[0;0YGAP categories[133X[101X
   
-  [1X10.4-1 IsCategoryOfFinitelyPresentedAlgebras[101X
+  [1X10.4-1 IsCategoryOfFpAlgebras[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfFinitelyPresentedAlgebras[102X( [3Xcategory[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryOfFpAlgebras[102X( [3Xcategory[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  [5XGAP[105X  category  of  categories  of finitely presented associative unital
