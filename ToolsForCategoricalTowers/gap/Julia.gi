@@ -27,17 +27,6 @@ InstallOtherMethod( PreComposeList,
 end );
 
 ##
-InstallOtherMethod( CanCompute,
-        "for a julia object",
-        [ IsCapCategory, IsJuliaObject ],
-        
-  function( C, oper )
-    
-    return CanCompute( C, ConvertJuliaToGAP( oper ) );
-    
-end );
-
-##
 InstallOtherMethod( ProjectionInFactorOfFiberProduct,
         "for a julia object and an integer",
         [ IsJuliaObject, IsInt ],
@@ -122,5 +111,16 @@ InstallOtherMethod( Colimit,
   function( D1, D2 )
     
     return Colimit( ConvertJuliaToGAP( D1 ), ConvertJuliaToGAP( D2 ) );
+    
+end );
+
+##
+InstallOtherMethod( CanCompute,
+        "for a julia object",
+        [ IsCapCategory, IsJuliaObject ],
+        
+  function( C, oper )
+    
+    return CanCompute( C, ConvertJuliaToGAP( oper ) );
     
 end );
