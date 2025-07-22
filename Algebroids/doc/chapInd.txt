@@ -111,7 +111,7 @@
   [2XFreeCategory[102X, for IsQuiver 2.4-1 
   [2XGenerators[102X, for IsObjectInCategoryOfFpAlgebras 10.1-6 
       for IsObjectInCategoryOfFpMatrixAlgebras 11.1-9 
-  [2XGroebnerBasis[102X, for IsLinearClosure, IsDenseList 9.1-2 
+  [2XGroebnerBasis[102X, for IsLinearClosure, IsDenseList 9.2-1 
   [2XGroebnerBasisOfDefiningRelations[102X, for IsObjectInCategoryOfFpAlgebras 10.1-9 
       for IsObjectInCategoryOfFpMatrixAlgebras 11.1-13 
   [2XHomStructureOnBasisPaths[102X, for IsAlgebroid 5.2-6 
@@ -190,8 +190,8 @@
   [2XQuotientCategory[102X, for IsAlgebroid, IsList 5.4-1 
       for IsAlgebroidFromDataTables, IsDenseList 6.2-4 
       for IsFpCategory, IsList 2.4-1 
-      for IsLinearClosure, IsDenseList 9.1-4 
-  [2XReducedGroebnerBasis[102X, for IsLinearClosure, IsDenseList 9.1-3 
+      for IsLinearClosure, IsDenseList 9.1-2 
+  [2XReducedGroebnerBasis[102X, for IsLinearClosure, IsDenseList 9.2-2 
   [2XRelationsOfAlgebroid[102X, for IsAlgebroid 5.2-12 
   [2XRelationsOfFpCategory[102X, for IsFpCategory 2.2-12 
   [2XSetOfGeneratingMorphisms[102X, for IsAlgebroid, IsInt, IsInt 5.2-10 
