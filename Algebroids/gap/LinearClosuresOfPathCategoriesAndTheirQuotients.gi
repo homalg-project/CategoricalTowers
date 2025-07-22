@@ -450,6 +450,38 @@ InstallMethod( DataTablesOfCategory,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( EvaluateLinearClosureMorphism,
+        "for a linear closure category, a morphism therein, a linear category, an object therein, and a list of endomorphisms thereof",
+        [ IsLinearClosure, IsLinearClosureMorphism, IsCapCategory, IsCapCategoryObject, IsList ],
+        
+  function( linear_closure, morphism, V, rep_obj, rep_mors )
+    local coefs, smors;
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( linear_closure, CapCategory( morphism ) ) );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, HasIsLinearCategoryOverCommutativeRing( V ) and IsLinearCategoryOverCommutativeRing( V ) );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( V, CapCategory( rep_obj ) ) );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, ForAll( rep_mors, mor -> IsIdenticalObj( V, CapCategory( mor ) ) ) );
+    
+    coefs := CoefficientsList( morphism );
+    smors := List( SupportMorphisms( morphism ), mor ->
+                   PreComposeList( V,
+                           rep_obj,
+                           rep_mors{MorphismIndices( mor )},
+                           rep_obj ) );
+    
+    return LinearCombinationOfMorphisms( V,
+                   rep_obj,
+                   coefs,
+                   smors,
+                   rep_obj );
+    
+end );
+
+##
 InstallMethod( DatumOfCellAsEvaluatableString,
         [ IsLinearClosureMorphism, IsList ],
         
