@@ -124,3 +124,14 @@ InstallOtherMethod( CanCompute,
     return CanCompute( C, ConvertJuliaToGAP( oper ) );
     
 end );
+
+##
+InstallOtherMethod( MissingOperationsForConstructivenessOfCategory,
+        "for a julia object",
+        [ IsCapCategory, IsJuliaObject ],
+        
+  function( C, doctrine )
+    
+    return MissingOperationsForConstructivenessOfCategory( C, ConvertJuliaToGAP( doctrine ) );
+    
+end );
