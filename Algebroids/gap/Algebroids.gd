@@ -74,14 +74,6 @@ DeclareProperty( "IsFinitelyPresentedLinearCategory",
 AddCategoricalProperty( [ "IsFinitelyPresentedLinearCategory", "IsFinitelyPresentedLinearCategory" ] );
 
 #! @Description
-#!  The property of <A>C</A> being a linear closure of a category.
-#! @Arguments C
-DeclareProperty( "IsLinearClosureOfACategory",
-        IsCapCategory );
-
-AddCategoricalProperty( [ "IsLinearClosureOfACategory", "IsLinearClosureOfACategory" ] );
-
-#! @Description
 #!  Check whether the algebroid <A>A</A> is commutative.
 #! @Arguments A
 #! @Returns true or false
