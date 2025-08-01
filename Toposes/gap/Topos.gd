@@ -138,7 +138,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsElementaryTopos :=
                   ListOfDefiningOperations( "IsFiniteBicompleteCategory" ),
                   ListOfDefiningOperations( "IsDistributiveCategory" ),
                   [ "SubobjectClassifier",
-                    "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
+                    "ClassifyingMorphismOfSubobject",
                     #"TruthMorphismOfTrueWithGivenObjects", ## derived from SubobjectClassifier & ClassifyingMorphismOfSubobjectWithGiven... & IdentityMorphism
                     "SubobjectOfClassifyingMorphism", ## can be derived from SubobjectClassifier & TruthMorphismOfTrueWithGivenObjects & ProjectionInFactorOfFiberProduct
                     ] ) );

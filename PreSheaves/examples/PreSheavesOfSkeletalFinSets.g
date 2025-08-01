@@ -3,9 +3,9 @@
 #! @Example
 LoadPackage( "PreSheaves" );
 #! true
-LoadPackage( "Toposes", ">= 2025.02-02", fail );
+LoadPackage( "Toposes", ">= 2025.08-02", fail );
 #! true
-LoadPackage( "FinSetsForCAP" );
+LoadPackage( "FinSetsForCAP", fail );
 #! true
 PSh := PreSheaves( SkeletalFinSets, SkeletalFinSets );
 #! PreSheaves( SkeletalFinSets, SkeletalFinSets )
@@ -17,12 +17,10 @@ Display( PSh );
 #! * IsElementaryTopos
 MissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" );
 #! [ "IsEqualForObjects", "IsEqualForMorphisms", "IsCongruentForMorphisms",
-#!   "ExponentialOnObjects", "ExponentialOnMorphismsWithGivenExponentials",
-#!   "CartesianRightEvaluationMorphismWithGivenSource",
-#!   "CartesianRightCoevaluationMorphismWithGivenRange",
-#!   "CartesianLeftEvaluationMorphismWithGivenSource",
-#!   "CartesianLeftCoevaluationMorphismWithGivenRange", "SubobjectClassifier",
-#!   "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
+#!   "ExponentialOnObjects", "ExponentialOnMorphisms",
+#!   "CartesianRightEvaluationMorphism", "CartesianRightCoevaluationMorphism",
+#!   "CartesianLeftEvaluationMorphism", "CartesianLeftCoevaluationMorphism",
+#!   "SubobjectClassifier", "ClassifyingMorphismOfSubobject",
 #!   "SubobjectOfClassifyingMorphism" ]
 Y := YonedaEmbeddingOfSourceCategory( PSh );
 #! Yoneda embedding functor

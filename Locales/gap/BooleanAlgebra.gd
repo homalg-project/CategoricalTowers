@@ -47,8 +47,8 @@ AddCategoricalProperty( [ "IsBooleanAlgebroid", "IsBooleanAlgebroid" ] );
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebroid :=
   DuplicateFreeList( Concatenation(
           ListOfDefiningOperations( "IsBiHeytingAlgebroid" ),
-          [ "MorphismFromDoubleNegationWithGivenDoubleNegation",
-            "MorphismToDoubleConegationWithGivenDoubleConegation",
+          [ "MorphismFromDoubleNegation",
+            "MorphismToDoubleConegation",
             ] ) );
 
 #! @Description
