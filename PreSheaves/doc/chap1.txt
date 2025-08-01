@@ -201,9 +201,9 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "PreSheaves" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2025.02-02", fail );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2025.08-02", fail );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", fail );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XPSh := PreSheaves( SkeletalFinSets, SkeletalFinSets );[127X[104X
     [4X[28XPreSheaves( SkeletalFinSets, SkeletalFinSets )[128X[104X
@@ -215,12 +215,10 @@
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[25Xgap>[125X [27XMissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" );[127X[104X
     [4X[28X[ "IsEqualForObjects", "IsEqualForMorphisms", "IsCongruentForMorphisms",[128X[104X
-    [4X[28X  "ExponentialOnObjects", "ExponentialOnMorphismsWithGivenExponentials",[128X[104X
-    [4X[28X  "CartesianRightEvaluationMorphismWithGivenSource",[128X[104X
-    [4X[28X  "CartesianRightCoevaluationMorphismWithGivenRange",[128X[104X
-    [4X[28X  "CartesianLeftEvaluationMorphismWithGivenSource",[128X[104X
-    [4X[28X  "CartesianLeftCoevaluationMorphismWithGivenRange", "SubobjectClassifier",[128X[104X
-    [4X[28X  "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",[128X[104X
+    [4X[28X  "ExponentialOnObjects", "ExponentialOnMorphisms",[128X[104X
+    [4X[28X  "CartesianRightEvaluationMorphism", "CartesianRightCoevaluationMorphism",[128X[104X
+    [4X[28X  "CartesianLeftEvaluationMorphism", "CartesianLeftCoevaluationMorphism",[128X[104X
+    [4X[28X  "SubobjectClassifier", "ClassifyingMorphismOfSubobject",[128X[104X
     [4X[28X  "SubobjectOfClassifyingMorphism" ][128X[104X
     [4X[25Xgap>[125X [27XY := YonedaEmbeddingOfSourceCategory( PSh );[127X[104X
     [4X[28XYoneda embedding functor[128X[104X
