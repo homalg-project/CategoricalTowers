@@ -576,6 +576,9 @@ DeclareOperation( "ExtendFunctorToWrapperCategoryData",
 DeclareOperation( "ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperationsAreReplacedWithCorrespondingObjectAndWithGivenOperations",
         [ IsCapCategory ] );
 
+DeclareOperation( "ListOfDefiningWithGivenOperations",
+        [ IsString ] );
+
 ##
 DeclareAttribute( "YonedaEmbeddingData",
         IsCapCategory );

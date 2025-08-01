@@ -904,7 +904,7 @@ InstallOtherMethod( ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOpe
         
     od;
     
-    return SortedList( list_of_replaced_primitively_installed_operations );
+    return DuplicateFreeList( list_of_replaced_primitively_installed_operations );
     
 end );
 
@@ -922,6 +922,19 @@ InstallMethod( ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperatio
     return ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperationsAreReplacedWithCorrespondingObjectAndWithGivenOperations(
                    ListPrimitivelyInstalledOperationsOfCategory( C ),
                    ListInstalledOperationsOfCategory( C ) );
+    
+end );
+
+##
+InstallMethod( ListOfDefiningWithGivenOperations,
+        "for a string",
+        [ IsString ],
+        
+  function( doctrine_name )
+    
+    return ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperationsAreReplacedWithCorrespondingObjectAndWithGivenOperations(
+                   ListOfDefiningOperations( doctrine_name ),
+                   RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) );
     
 end );
 
