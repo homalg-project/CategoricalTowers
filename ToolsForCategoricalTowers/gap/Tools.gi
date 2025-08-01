@@ -926,6 +926,19 @@ InstallMethod( ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperatio
 end );
 
 ##
+InstallMethod( ListOfDefiningWithGivenOperations,
+        "for a string",
+        [ IsString ],
+        
+  function( doctrine_name )
+    
+    return ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperationsAreReplacedWithCorrespondingObjectAndWithGivenOperations(
+                   ListOfDefiningOperations( doctrine_name ),
+                   RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) );
+    
+end );
+
+##
 InstallGlobalFunction( PositionsOfSublist,
   
   function ( arg )
