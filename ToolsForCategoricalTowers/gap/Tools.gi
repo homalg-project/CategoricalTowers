@@ -904,7 +904,7 @@ InstallOtherMethod( ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOpe
         
     od;
     
-    return SortedList( list_of_replaced_primitively_installed_operations );
+    return DuplicateFreeList( list_of_replaced_primitively_installed_operations );
     
 end );
 
