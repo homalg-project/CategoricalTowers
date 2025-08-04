@@ -12,7 +12,7 @@ sFinSets := SkeletalCategoryOfFiniteSets( );
 Display( sFinSets );
 #! A CAP category with name SkeletalFinSets:
 #! 
-#! 58 primitive operations were used to derive 348 operations for this category
+#! 58 primitive operations were used to derive 348 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
@@ -34,8 +34,7 @@ id_a := IdentityMorphism( a );
 #! |2| → |2|
 id_b := IdentityMorphism( b );
 #! |3| → |3|
-f := Pair( [ 1, 0 ], [ id_b, id_a ] );
-#! [ [ 1, 0 ], [ |3| → |3|, |2| → |2| ] ]
+f := Pair( [ 1, 0 ], [ id_b, id_a ] );;
 beta2 := MorphismBetweenDirectProducts( [ a, b ], f, [ b, a ] );
 #! |6| → |6|
 beta2 = beta;
@@ -46,7 +45,7 @@ W := WrapperCategory( sFinSets,
 Display( W );
 #! A CAP category with name WrapperCategory( SkeletalFinSets ):
 #! 
-#! 324 primitive operations were used to derive 338 operations for this category
+#! 324 primitive operations were used to derive 338 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
@@ -78,7 +77,7 @@ O := Opposite( sFinSets );
 Display( O );
 #! A CAP category with name Opposite( SkeletalFinSets ):
 #! 
-#! 257 primitive operations were used to derive 273 operations for this category
+#! 257 primitive operations were used to derive 273 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
