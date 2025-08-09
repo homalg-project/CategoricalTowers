@@ -174,9 +174,9 @@ func := function ( dummy, a_dummy, b_dummy, c_dummy, abc_dummy )
     pi := MorphismConstructor( add,
         ObjectConstructor( add, [ a_L, b_L, c_L ] ),
         [
-            [ MorphismConstructor( L, a_L, Pair( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) ), CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( F ) ) ) ), b_L ) ],
-            [ MorphismConstructor( L, b_L, Pair( [ 1 ], [ id_b_F ] ), b_L ) ],
-            [ MorphismConstructor( L, c_L, Pair( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) ), CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( F ) ) ) ), b_L ) ]
+            [ LinearClosureMorphismNC( L, a_L, CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) ), CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( F ) ) ), b_L ) ],
+            [ LinearClosureMorphismNC( L, b_L, [ 1 ], [ id_b_F ], b_L ) ],
+            [ LinearClosureMorphismNC( L, c_L, CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) ), CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( F ) ) ), b_L ) ]
         ],
         ObjectConstructor( add, [ b_L ] )
     );
