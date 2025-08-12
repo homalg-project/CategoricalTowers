@@ -56,8 +56,6 @@ Display( Alg_F2 );
 #! * IsFiniteCocompleteCategory
 #! * IsBicartesianCategory
 #! * IsSymmetricMonoidalCategory
-Mat_F2 := UnderlyingCategoryOfMatrices( MatAlg_F2 );
-#! Rows( GF(2) )
 q := FinQuiver( "q(o)[x:o->o,y:o->o]" );
 #! FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )
 P := PathCategory( q );
@@ -79,6 +77,9 @@ Dimension( A );
 #! 6
 Display( A );
 #! GF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
+
+Mat_F2 := UnderlyingCategoryOfMatrices( MatAlg_F2 );
+#! Rows( GF(2) )
 mx := HomalgDiagonalMatrix( [ 1, 0, 1, 0 ], F2 ) / Mat_F2;
 #! <A morphism in Rows( GF(2) )>
 my := DiagMat( [
