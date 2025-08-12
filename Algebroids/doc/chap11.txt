@@ -192,8 +192,6 @@
     [4X[28X* IsFiniteCocompleteCategory[128X[104X
     [4X[28X* IsBicartesianCategory[128X[104X
     [4X[28X* IsSymmetricMonoidalCategory[128X[104X
-    [4X[25Xgap>[125X [27XMat_F2 := UnderlyingCategoryOfMatrices( MatAlg_F2 );[127X[104X
-    [4X[28XRows( GF(2) )[128X[104X
     [4X[25Xgap>[125X [27Xq := FinQuiver( "q(o)[x:o->o,y:o->o]" );[127X[104X
     [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )[128X[104X
     [4X[25Xgap>[125X [27XP := PathCategory( q );[127X[104X
@@ -215,6 +213,8 @@
     [4X[28X6[128X[104X
     [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
     [4X[28XGF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
+    [4X[25Xgap>[125X [27XMat_F2 := UnderlyingCategoryOfMatrices( MatAlg_F2 );[127X[104X
+    [4X[28XRows( GF(2) )[128X[104X
     [4X[25Xgap>[125X [27Xmx := HomalgDiagonalMatrix( [ 1, 0, 1, 0 ], F2 ) / Mat_F2;[127X[104X
     [4X[28X<A morphism in Rows( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27Xmy := DiagMat( [[127X[104X
