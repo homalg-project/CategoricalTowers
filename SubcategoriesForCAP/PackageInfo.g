@@ -102,7 +102,7 @@ Dependencies := rec(
                    [ "MonoidalCategories", ">= 2025.03-02" ],
                    [ "CartesianCategories", ">= 2025.06-01" ],
                    [ "ToolsForCategoricalTowers", ">= 2025.03-02" ],
-                   [ "Toposes", ">= 2024.02-08" ],
+                   [ "Toposes", ">= 2025.08-03" ],
                    [ "Locales", ">= 2024.02-21" ],
                    [ "FpCategories", ">= 2023.11-02" ],
                   ],
