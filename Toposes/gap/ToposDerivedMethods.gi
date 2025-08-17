@@ -1675,7 +1675,7 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
     H := RangeCategoryOfHomomorphismStructure( cat );
     
     return ObjectConstructor( H,
-                   Length( MorphismsOfExternalHom( cat, a, b ) ) );
+                   BigInt( Length( MorphismsOfExternalHom( cat, a, b ) ) ) );
     
   end
 ],
@@ -1697,7 +1697,7 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
     s_mors := MorphismsOfExternalHom( cat, Target( alpha ), Source( gamma ) );
     r_mors := MorphismsOfExternalHom( cat, Source( alpha ), Target( gamma ) );
     
-    images := List( s_mors, s_mor -> -1 + SafePosition( r_mors, PreComposeList( cat, source_alpha, [ alpha, s_mor, gamma ], range_gamma ) ) );
+    images := List( s_mors, s_mor -> -1 + BigInt( SafePosition( r_mors, PreComposeList( cat, source_alpha, [ alpha, s_mor, gamma ], range_gamma ) ) ) );
     
     return MorphismConstructor( H,
                    s,
@@ -1719,7 +1719,7 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
     
     return MorphismConstructor( H,
                    t,
-                   [ -1 + SafePosition( mors, alpha ) ],
+                   [ -1 + BigInt( SafePosition( mors, alpha ) ) ],
                    r );
     
   end
