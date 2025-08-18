@@ -463,19 +463,19 @@ function ( cat_1, arg2_1, arg3_1 )
                     return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
                 end );
         end );
-    return CreateCapCategoryObjectWithAttributes( Target( cat_1 ), Length, Length( Filtered( deduped_41_1, function ( x_2 )
-                local deduped_1_2;
-                deduped_1_2 := 1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 );
-                return CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_40_1, function ( j_3 )
-                            local deduped_1_3;
-                            deduped_1_3 := 1 + j_3;
-                            return hoisted_31_1[deduped_1_3][deduped_1_2] * deduped_33_1[deduped_1_3];
-                        end ) ) = CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_40_1, function ( j_3 )
-                            local deduped_1_3;
-                            deduped_1_3 := 1 + j_3;
-                            return hoisted_39_1[deduped_1_3][deduped_1_2] * deduped_33_1[deduped_1_3];
-                        end ) );
-            end ) ) );
+    return CreateCapCategoryObjectWithAttributes( Target( cat_1 ), Length, BigInt( Length( Filtered( deduped_41_1, function ( x_2 )
+                  local deduped_1_2;
+                  deduped_1_2 := 1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 );
+                  return CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_40_1, function ( j_3 )
+                              local deduped_1_3;
+                              deduped_1_3 := 1 + j_3;
+                              return hoisted_31_1[deduped_1_3][deduped_1_2] * deduped_33_1[deduped_1_3];
+                          end ) ) = CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_40_1, function ( j_3 )
+                              local deduped_1_3;
+                              deduped_1_3 := 1 + j_3;
+                              return hoisted_39_1[deduped_1_3][deduped_1_2] * deduped_33_1[deduped_1_3];
+                          end ) );
+              end ) ) ) );
 end
 ########
         
@@ -750,11 +750,11 @@ function ( cat_1, arg2_1, arg3_1 )
                     return hoisted_31_1[deduped_1_3][hoisted_1_2] * deduped_33_1[deduped_1_3];
                 end );
         end );
-    return CreateCapCategoryObjectWithAttributes( Target( cat_1 ), Length, Length( Filtered( deduped_43_1, function ( x_2 )
-                local deduped_1_2;
-                deduped_1_2 := 1 + x_2;
-                return hoisted_35_1[deduped_1_2] = hoisted_41_1[deduped_1_2];
-            end ) ) );
+    return CreateCapCategoryObjectWithAttributes( Target( cat_1 ), Length, BigInt( Length( Filtered( deduped_43_1, function ( x_2 )
+                  local deduped_1_2;
+                  deduped_1_2 := 1 + x_2;
+                  return hoisted_35_1[deduped_1_2] = hoisted_41_1[deduped_1_2];
+              end ) ) ) );
 end
 ########
         
@@ -2920,7 +2920,7 @@ function ( cat_1, arg2_1, arg3_1 )
                     return RemIntWithDomain( QuoIntWithDomain( i_3, deduped_4_2, deduped_53_1 ), deduped_5_2, hoisted_3_2 );
                 end );
         end );
-    return List( [ 0 .. Length( deduped_49_1 ) - 1 ], function ( i_2 )
+    return List( [ 0 .. BigInt( Length( deduped_49_1 ) ) - 1 ], function ( i_2 )
             local hoisted_1_2;
             hoisted_1_2 := 1 + deduped_49_1[(1 + i_2)];
             return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, ValuesOnAllObjects, List( deduped_59_1, function ( i_3 )
@@ -3231,7 +3231,7 @@ function ( cat_1, arg2_1, arg3_1 )
                     return RemIntWithDomain( QuoIntWithDomain( i_3, deduped_4_2, deduped_55_1 ), deduped_5_2, hoisted_3_2 );
                 end );
         end );
-    return List( [ 0 .. Length( deduped_51_1 ) - 1 ], function ( i_2 )
+    return List( [ 0 .. BigInt( Length( deduped_51_1 ) ) - 1 ], function ( i_2 )
             local hoisted_1_2;
             hoisted_1_2 := 1 + deduped_51_1[(1 + i_2)];
             return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, ValuesOnAllObjects, List( deduped_61_1, function ( i_3 )
