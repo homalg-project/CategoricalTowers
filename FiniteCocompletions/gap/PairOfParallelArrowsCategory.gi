@@ -229,7 +229,7 @@ end );
 ####################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in the pair of parallel arrows category of a category",
         [ IsObjectInPairOfParallelArrowsCategory ],
         
@@ -238,14 +238,12 @@ InstallMethod( Display,
     
     ParallelPairs := CapCategory( parallel_pair );
     
-    Display( ModelingObject( ParallelPairs, parallel_pair ) );
-    
-    Print( "\nAn object in ", Name( ParallelPairs ), " given by the above data\n" );
+    return Concatenation( DisplayString( ModelingObject( ParallelPairs, parallel_pair ) ), "\nAn object in ", Name( ParallelPairs ), " given by the above data\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a morphism in the pair of parallel arrows category of a category",
         [ IsMorphismInPairOfParallelArrowsCategory ],
         
@@ -254,8 +252,6 @@ InstallMethod( Display,
     
     ParallelPairs := CapCategory( parallel_pair_morphism );
     
-    Display( ModelingMorphism( ParallelPairs, parallel_pair_morphism ) );
-    
-    Print( "\nA morphism in ", Name( ParallelPairs ), " given by the above data\n" );
+    return Concatenation( DisplayString( ModelingMorphism( ParallelPairs, parallel_pair_morphism ) ), "\nA morphism in ", Name( ParallelPairs ), " given by the above data\n" );
     
 end );
