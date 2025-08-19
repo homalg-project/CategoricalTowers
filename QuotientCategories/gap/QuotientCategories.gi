@@ -74,7 +74,11 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY,
 InstallMethod( QuotientCategory,
         [ IsRecord ],
         
-  function( record )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, record )
     local congruence_func, ambient_cat, name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
@@ -99,7 +103,7 @@ InstallMethod( QuotientCategory,
       
       record.congruence_func := { alpha, beta } -> congruence_func( SubtractionForMorphisms( alpha, beta ) );
       
-      return QuotientCategory( record );
+      return QuotientCategory( record : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
       
     fi;
     
@@ -133,7 +137,7 @@ InstallMethod( QuotientCategory,
     
     object_datum := { quotient_cat, o } -> UnderlyingCell( o );
     
-    morphism_constructor := { quotient_cat, S, datum, R }  -> CreateCapCategoryMorphismWithAttributes( quotient_cat, S, R, UnderlyingCell, datum );
+    morphism_constructor := { quotient_cat, S, datum, R } -> CreateCapCategoryMorphismWithAttributes( quotient_cat, S, R, UnderlyingCell, datum );
     
     morphism_datum := { quotient_cat, m } -> UnderlyingCell( m );
     
@@ -155,11 +159,11 @@ InstallMethod( QuotientCategory,
                     "IsAdditiveCategory",
                     ];
     
-    if ( HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms and
-         IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms and
-         HasCommutativeRingOfLinearCategory )( ambient_cat ) then
+    if HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( ambient_cat ) and
+         IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( ambient_cat ) and
+         HasCommutativeRingOfLinearCategory( ambient_cat ) then
         
-        if ( HasIsFieldForHomalg and IsFieldForHomalg )( CommutativeRingOfLinearCategory( ambient_cat ) ) then
+        if HasIsFieldForHomalg( commutative_ring ) and IsFieldForHomalg( commutative_ring ) then
             Add( properties, "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms" );
         fi;
         
@@ -173,42 +177,40 @@ InstallMethod( QuotientCategory,
     
     create_func_bool :=
           function ( name, quotient_cat )
-            return
-              Pair( """
-              function( input_arguments... )
-                
-                return CallFuncList( operation_name, List( NTuple( number_of_arguments, input_arguments... ){[2 .. number_of_arguments]}, UnderlyingCell ) );
-                
-              end
-              """, OperationWeight( ambient_cat, name ) );
+            return Pair( """
+                    function( input_arguments... )
+                      
+                      return CallFuncList( operation_name, List( NTuple( number_of_arguments, input_arguments... ){ [ 2 .. number_of_arguments ] }, UnderlyingCell ) );
+                      
+                    end
+                    """, OperationWeight( ambient_cat, name ) );
           end;
     
     create_func_object :=
           function ( name, quotient_cat )
             
             if name in [ "TerminalObject", "InitialObject", "ZeroObject" ] then
-              return
-                Pair( """
-                function( input_arguments... )
-                  
-                  return ObjectConstructor( cat, operation_name( UnderlyingCategory( cat ) ) );
-                  
-                end
-                """, OperationWeight( ambient_cat, name ) );
+              return Pair( """
+                      function( input_arguments... )
+                        
+                        return ObjectConstructor( cat, operation_name( UnderlyingCategory( cat ) ) );
+                        
+                      end
+                      """, OperationWeight( ambient_cat, name ) );
             
             elif name in [ "DirectProduct", "Coproduct", "DirectSum" ] then
               
-              return ## a constructor for universal objects: DirectSum
-                Pair( """
-                function ( input_arguments... )
-                  local i_arg;
-                  
-                  i_arg := NTuple( number_of_arguments, input_arguments... );
-                  
-                  return ObjectConstructor( cat, operation_name( UnderlyingCategory( cat ), List( i_arg[2], UnderlyingCell ) ) );
-                  
-                end
-                """, OperationWeight( ambient_cat, name ) );
+              ## a constructor for universal objects: DirectSum
+              return Pair( """
+                      function ( input_arguments... )
+                        local i_arg;
+                        
+                        i_arg := NTuple( number_of_arguments, input_arguments... );
+                        
+                        return ObjectConstructor( cat, operation_name( UnderlyingCategory( cat ), List( i_arg[2], UnderlyingCell ) ) );
+                        
+                      end
+                      """, OperationWeight( ambient_cat, name ) );
             
             else
               
@@ -225,18 +227,17 @@ InstallMethod( QuotientCategory,
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
-        return
-          Pair( ReplacedStringViaRecord(
-          """
-          function ( input_arguments... )
-            local underlying_cat, i_arg;
-            
-            underlying_cat := UnderlyingCategory( cat );
-            
-            i_arg := NTuple( number_of_arguments, input_arguments... );
-            
-            return MorphismConstructor( cat, top_source, operation_name( underlying_cat, sequence_of_arguments... ), top_range );
-            
+        return Pair( ReplacedStringViaRecord(
+                """
+                function ( input_arguments... )
+                  local underlying_cat, i_arg;
+                  
+                  underlying_cat := UnderlyingCategory( cat );
+                  
+                  i_arg := NTuple( number_of_arguments, input_arguments... );
+                  
+                  return MorphismConstructor( cat, top_source, operation_name( underlying_cat, sequence_of_arguments... ), top_range );
+        
         end
         """,
         rec( sequence_of_arguments :=
@@ -270,7 +271,7 @@ InstallMethod( QuotientCategory,
     
     quotient_cat :=
       CategoryConstructor(
-              rec( name := name,
+        rec( name := name,
                    category_filter := category_filter,
                    category_object_filter := category_object_filter,
                    category_morphism_filter := category_morphism_filter,
@@ -334,11 +335,15 @@ InstallMethod( QuotientCategory,
     
     ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY( quotient_cat );
     
-    Finalize( quotient_cat );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+      
+      Finalize( quotient_cat );
+      
+    fi;
     
     return quotient_cat;
     
-end );
+end ) );
 
 
 InstallGlobalFunction( ADD_FUNCTIONS_OF_RANDOM_METHODS_TO_QUOTIENT_CATEGORY,
@@ -465,25 +470,27 @@ InstallMethodForCompilerForCAP( SetOfObjects,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( \.,
         [ IsQuotientCategory, IsPosInt ],
   
   { quotient_cat, string_as_int } -> UnderlyingCategory( quotient_cat ).( NameRNam( string_as_int ) ) / quotient_cat
 );
-
-##
-InstallOtherMethod( \/,
-            [ IsCapCategoryObject, IsQuotientCategory ],
-  
-  { o, quotient_cat } -> ObjectConstructor( quotient_cat, o )
-);
+# =#
 
 ##
 InstallOtherMethod( \/,
             [ IsCapCategoryMorphism, IsQuotientCategory ],
   
   { alpha, quotient_cat } -> MorphismConstructor( quotient_cat, Source( alpha ) / quotient_cat, alpha, Target( alpha ) / quotient_cat )
+);
+
+##
+InstallOtherMethod( \/,
+            [ IsString, IsQuotientCategory ],
+  
+  { str, quotient_cat } -> (str / UnderlyingCategory( quotient_cat )) / quotient_cat
 );
 
 ##
@@ -533,26 +540,22 @@ end );
 ##################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsQuotientCategoryObject ],
         
   function ( a )
     
-    Display( ObjectDatum( a ) );
-    
-    Print( "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
+    return Concatenation( DisplayString( ObjectDatum( a ) ), "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsQuotientCategoryMorphism ],
         
   function ( phi )
     
-    Display( MorphismDatum( phi ) );
-    
-    Print( "\nA morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
+    return Concatenation( DisplayString( MorphismDatum( phi ) ), "\nA morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
     
 end );
 

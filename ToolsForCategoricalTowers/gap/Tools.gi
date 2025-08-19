@@ -11,23 +11,29 @@ InstallTrueMethod( IsFiniteCategory, IsInitialCategory );
 InstallMethod( DummyCategoryInDoctrines,
         "for a list of string",
         [ IsList ],
-
-  function( doctrine_names )
-    local additional_operations, minimal, compare, options, name, all_operations;
+  
+  FunctionWithNamedArguments(
+  [
+    [ "name", fail ],
+    [ "minimal", false ],
+    [ "additional_operations", Immutable( [ ] ) ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, doctrine_names )
+    local compare, options, all_operations;
     
     if IsEmpty( doctrine_names ) then
         Error( "the list of doctrine names is empty\n" );
+    #= comment for Julia
     elif IsStringRep( doctrine_names ) then
         doctrine_names := [ doctrine_names ];
+    # =#
     fi;
-    
+   
+    #= comment for Julia (ListKnownDoctrines depends on Digraphs)
     if not IsSubset( ListKnownDoctrines( ), doctrine_names ) then
         Error( "the following entries are not supported doctrines: ", String( Difference( doctrine_names, ListKnownDoctrines( ) ) ), "\n" );
     fi;
-    
-    additional_operations := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "additional_operations", [ ] );
-    
-    minimal := ValueOption( "minimal" );
+    # =#
     
     compare :=
       function( b, a )
@@ -35,7 +41,7 @@ InstallMethod( DummyCategoryInDoctrines,
         
         bool := IsSubset( ListOfDefiningOperations( a ), ListOfDefiningOperations( b ) );
         
-        if minimal = true and IsBoundGlobal( a ) and IsBoundGlobal( b ) then
+        if CAP_NAMED_ARGUMENTS.minimal and IsBoundGlobal( a ) and IsBoundGlobal( b ) then
             return IsSpecializationOfFilter( ValueGlobal( b ), ValueGlobal( a ) ) or bool;
         else
             return bool;
@@ -47,16 +53,18 @@ InstallMethod( DummyCategoryInDoctrines,
     
     options := rec( );
     
-    name := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "name", Concatenation( "DummyCategoryInDoctrines( ", String( doctrine_names ), " )" ) );
-    
-    options.name := name;
+    if CAP_NAMED_ARGUMENTS.name = fail then
+      options.name := Concatenation( "DummyCategoryInDoctrines( ", String( doctrine_names ), " )" );
+    else
+      options.name := CAP_NAMED_ARGUMENTS.name;
+    fi;
     
     options.properties := Difference( doctrine_names, [ "IsCapCategory" ] );
     
     options.list_of_operations_to_install :=
       Set( Concatenation(
               Concatenation( List( doctrine_names, ListOfDefiningOperations ) ),
-              additional_operations,
+              CAP_NAMED_ARGUMENTS.additional_operations,
               [ "ObjectConstructor", "ObjectDatum",
                 "MorphismConstructor", "MorphismDatum",
                 "IsWellDefinedForObjects", "IsWellDefinedForMorphisms" ] ) );
@@ -69,7 +77,7 @@ InstallMethod( DummyCategoryInDoctrines,
     
     return DummyCategory( options );
     
-end );
+end ) );
 
 ##
 InstallMethod( SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE,
@@ -95,6 +103,7 @@ InstallMethod( SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( SetOfObjects,
         [ IsInitialCategory ],
@@ -104,6 +113,7 @@ InstallMethod( SetOfObjects,
     return [ ];
     
 end );
+# =#
 
 ##
 InstallMethod( CallFuncList,
@@ -132,12 +142,14 @@ InstallOtherMethod( Subobject,
     
 end );
 
+#= comment for Julia
 ##
 InstallOtherMethod( Subobject,
         "for a morphism in a category",
         [ IsCapCategoryMorphism and IsMonomorphism ],
         
   IdFunc );
+# =#
 
 ##
 InstallMethodForCompilerForCAP( CovariantHomFunctorData,
@@ -179,6 +191,7 @@ InstallMethod( CovariantHomFunctor,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethodForCompilerForCAP( GlobalSectionFunctorData,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
@@ -207,6 +220,7 @@ InstallMethod( GlobalSectionFunctor,
     return Hom1;
     
 end );
+# =#
 
 ## fallback method
 InstallMethod( DatumOfCellAsEvaluatableString,
@@ -760,10 +774,9 @@ InstallMethodForCompilerForCAP( PreComposeFunctorsByData,
         
     end;
     
-    return
-      Triple( A,
-              Pair( composed_functor_on_objects, composed_functor_on_morphisms ),
-              C );
+    return Triple( A,
+                   Pair( composed_functor_on_objects, composed_functor_on_morphisms ),
+                   C );
     
 end );
 
@@ -789,8 +802,7 @@ InstallMethodForCompilerForCAP( PreComposeWithWrappingFunctorData,
               Pair( wrapping_functor_on_objects, wrapping_functor_on_morphisms ),
               C );
     
-    return
-      PreComposeFunctorsByData( C,
+    return PreComposeFunctorsByData( C,
               functor_data,
               wrapping_functor_data );
     
@@ -844,7 +856,6 @@ InstallGlobalFunction( CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD,
              IsList( info.with_given_without_given_name_pair ) and
              Length( info.with_given_without_given_name_pair ) = 2 and
              name_of_cap_operation = info.with_given_without_given_name_pair[1] and
-             IsBound( info.with_given_without_given_name_pair[2] ) and
              IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name ) ) then
         
         return [ name_of_cap_operation ];
@@ -956,7 +967,7 @@ InstallGlobalFunction( PositionsOfSublist,
     len := Length( suplist );
     positions := [];
     
-    repeat
+    while true do
       
       pos := PositionSublist( suplist, sublist, pos );
       
@@ -964,12 +975,17 @@ InstallGlobalFunction( PositionsOfSublist,
             Add( positions, pos );
       fi;
       
-    until pos = fail or pos >= len;
+      if (pos = fail) or (pos >= len) then
+        break;
+      fi;
+      
+    od;
     
     return positions;
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( \.,
         "for an opposite category and a positive integer",
@@ -1159,3 +1175,4 @@ InstallGlobalFunction( CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION,
     return cname;
     
 end );
+# =#

@@ -86,4 +86,5 @@ ListKnownDoctrines( );
 #!   "IsSymmetricCoclosedMonoidalProset", \
 #!   "IsSymmetricCoclosedMonoidalPoset", \
 #!   "IsSymmetricCoclosedMonoidalLattice" ]
+# @drop_example_in_Julia
 #! @EndExample
