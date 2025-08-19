@@ -117,6 +117,7 @@
     [4X[28X  "IsSymmetricCoclosedMonoidalProset", \[128X[104X
     [4X[28X  "IsSymmetricCoclosedMonoidalPoset", \[128X[104X
     [4X[28X  "IsSymmetricCoclosedMonoidalLattice" ][128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [1X1.1-3 DummyCategoryInDoctrines[101X
@@ -132,12 +133,12 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "ToolsForCategoricalTowers", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XD1 := DummyCategoryInDoctrines( "IsAbCategory" );[127X[104X
+    [4X[25Xgap>[125X [27XD1 := DummyCategoryInDoctrines( [ "IsAbCategory" ] );[127X[104X
     [4X[28XDummyCategoryInDoctrines( [ "IsAbCategory" ] )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( D1 );[127X[104X
     [4X[28XA CAP category with name DummyCategoryInDoctrines( [ "IsAbCategory" ] ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X16 primitive operations were used to derive 28 operations for this category[128X[104X
+    [4X[28X16 primitive operations were used to derive 28 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsAbCategory[128X[104X
     [4X[25Xgap>[125X [27XD2 := DummyCategoryInDoctrines( [ "IsAbCategory", "IsAbelianCategory" ] );[127X[104X
@@ -145,23 +146,20 @@
     [4X[25Xgap>[125X [27XDisplay( D2 );[127X[104X
     [4X[28XA CAP category with name DummyCategoryInDoctrines( [ "IsAbelianCategory" ] ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X33 primitive operations were used to derive 291 operations for this category[128X[104X
+    [4X[28X33 primitive operations were used to derive 291 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsAbelianCategory[128X[104X
     [4X[25Xgap>[125X [27XD3 := DummyCategoryInDoctrines([127X[104X
     [4X[25X>[125X [27X              [ "IsCategoryWithInitialObject",[127X[104X
     [4X[25X>[125X [27X                "IsCategoryWithTerminalObject",[127X[104X
     [4X[25X>[125X [27X                "IsCategoryWithZeroObject" ] );[127X[104X
-    [4X[28XDummyCategoryInDoctrines([128X[104X
-    [4X[28X[ "IsCategoryWithInitialObject", "IsCategoryWithTerminalObject",[128X[104X
-    [4X[28X  "IsCategoryWithZeroObject" ] )[128X[104X
+    [4X[28XDummyCategoryInDoctrines( \[128X[104X
+    [4X[28X[ "IsCategoryWithInitialObject", "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject" ] )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( D3 );[127X[104X
-    [4X[28XA CAP category with name DummyCategoryInDoctrines([128X[104X
-    [4X[28X[ "IsCategoryWithInitialObject", "IsCategoryWithTerminalObject",[128X[104X
-    [4X[28X  "IsCategoryWithZeroObject" ] ):[128X[104X
+    [4X[28XA CAP category with name DummyCategoryInDoctrines( \[128X[104X
+    [4X[28X[ "IsCategoryWithInitialObject", "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject" ] ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X18 primitive operations were used to derive 41 operations for this category[128X[104X
-    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X18 primitive operations were used to derive 41 operations for this category which algorithmically[128X[104X
     [4X[28X* IsCategoryWithZeroObject[128X[104X
     [4X[25Xgap>[125X [27XD4 := DummyCategoryInDoctrines([127X[104X
     [4X[25X>[125X [27X              [ "IsCategoryWithInitialObject",[127X[104X
@@ -169,10 +167,10 @@
     [4X[25X>[125X [27X                "IsCategoryWithZeroObject" ] : minimal := true );[127X[104X
     [4X[28XDummyCategoryInDoctrines( [ "IsCategoryWithZeroObject" ] )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( D4 );[127X[104X
-    [4X[28XA CAP category with name DummyCategoryInDoctrines([128X[104X
+    [4X[28XA CAP category with name DummyCategoryInDoctrines( \[128X[104X
     [4X[28X[ "IsCategoryWithZeroObject" ] ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X14 primitive operations were used to derive 41 operations for this category[128X[104X
+    [4X[28X14 primitive operations were used to derive 41 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithZeroObject[128X[104X
   [4X[32X[104X

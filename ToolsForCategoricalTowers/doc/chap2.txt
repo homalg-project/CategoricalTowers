@@ -35,7 +35,7 @@
     [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
     [4X[28XA CAP category with name SkeletalFinSets:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X58 primitive operations were used to derive 348 operations for this category[128X[104X
+    [4X[28X58 primitive operations were used to derive 348 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -57,8 +57,7 @@
     [4X[28X|2| → |2|[128X[104X
     [4X[25Xgap>[125X [27Xid_b := IdentityMorphism( b );[127X[104X
     [4X[28X|3| → |3|[128X[104X
-    [4X[25Xgap>[125X [27Xf := Pair( [ 1, 0 ], [ id_a, id_b ] );[127X[104X
-    [4X[28X[ [ 1, 0 ], [ |2| → |2|, |3| → |3| ] ][128X[104X
+    [4X[25Xgap>[125X [27Xf := Pair( [ 1, 0 ], [ id_a, id_b ] );;[127X[104X
     [4X[25Xgap>[125X [27Xbeta2 := MorphismBetweenCoproducts( [ a, b ], f, [ b, a ] );[127X[104X
     [4X[28X|5| → |5|[128X[104X
     [4X[25Xgap>[125X [27Xbeta2 = beta;[127X[104X
@@ -69,7 +68,7 @@
     [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
     [4X[28XA CAP category with name WrapperCategory( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X324 primitive operations were used to derive 338 operations for this category[128X[104X
+    [4X[28X324 primitive operations were used to derive 338 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -101,7 +100,7 @@
     [4X[25Xgap>[125X [27XDisplay( O );[127X[104X
     [4X[28XA CAP category with name Opposite( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X257 primitive operations were used to derive 273 operations for this category[128X[104X
+    [4X[28X257 primitive operations were used to derive 273 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -185,7 +184,7 @@
     [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
     [4X[28XA CAP category with name SkeletalFinSets:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X58 primitive operations were used to derive 348 operations for this category[128X[104X
+    [4X[28X58 primitive operations were used to derive 348 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -207,8 +206,7 @@
     [4X[28X|2| → |2|[128X[104X
     [4X[25Xgap>[125X [27Xid_b := IdentityMorphism( b );[127X[104X
     [4X[28X|3| → |3|[128X[104X
-    [4X[25Xgap>[125X [27Xf := Pair( [ 1, 0 ], [ id_b, id_a ] );[127X[104X
-    [4X[28X[ [ 1, 0 ], [ |3| → |3|, |2| → |2| ] ][128X[104X
+    [4X[25Xgap>[125X [27Xf := Pair( [ 1, 0 ], [ id_b, id_a ] );;[127X[104X
     [4X[25Xgap>[125X [27Xbeta2 := MorphismBetweenDirectProducts( [ a, b ], f, [ b, a ] );[127X[104X
     [4X[28X|6| → |6|[128X[104X
     [4X[25Xgap>[125X [27Xbeta2 = beta;[127X[104X
@@ -219,7 +217,7 @@
     [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
     [4X[28XA CAP category with name WrapperCategory( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X324 primitive operations were used to derive 338 operations for this category[128X[104X
+    [4X[28X324 primitive operations were used to derive 338 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -251,7 +249,7 @@
     [4X[25Xgap>[125X [27XDisplay( O );[127X[104X
     [4X[28XA CAP category with name Opposite( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X257 primitive operations were used to derive 273 operations for this category[128X[104X
+    [4X[28X257 primitive operations were used to derive 273 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
