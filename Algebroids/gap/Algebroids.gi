@@ -284,8 +284,12 @@ InstallMethod( AssociatedAlgebroid,
     if not IsPathCategory( P ) then
         TryNextMethod( );
     fi;
-    
-    return Algebroid( CommutativeRingOfLinearCategory( lin_closure_of_path_cat ), AssociatedFreeCategory( P ) );
+
+    if HasRangeCategoryOfHomomorphismStructure( lin_closure_of_path_cat ) then
+        return Algebroid( AssociatedFreeCategory( P ), RangeCategoryOfHomomorphismStructure( lin_closure_of_path_cat ) );
+    else
+        return Algebroid( CommutativeRingOfLinearCategory( lin_closure_of_path_cat ), AssociatedFreeCategory( P ) );
+    fi;
     
 end );
 
@@ -335,7 +339,12 @@ InstallMethod( AssociatedAlgebroid,
         
     end;
     
-    return A / List( rels, func );
+    if HasRangeCategoryOfHomomorphismStructure( quot_of_lin_closure_of_path_cat ) then
+        return QuotientCategory( A, List( rels, func )
+                       : range_of_HomStructure := RangeCategoryOfHomomorphismStructure( quot_of_lin_closure_of_path_cat ) );
+    else
+        return A / List( rels, func );
+    fi;
     
 end );
 

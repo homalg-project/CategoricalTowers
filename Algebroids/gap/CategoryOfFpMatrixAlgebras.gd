@@ -98,8 +98,9 @@ DeclareAttribute( "DefiningPairOfFinitelyPresentedMatrixAlgebra",
 
 #! @Description
 #!  The input is a finitely presented associative unital matrix algebra.
-#!  The output is the underlying list of morphisms connecting the underlying
-#!  finitely presented algebras.
+#!  The output is the underlying nonempty list of morphisms connecting the underlying
+#!  finitely presented algebras, where connecting means that their (eventually expensive)
+#!  composition yields a morphism the underlying finitely presented algebras
 #! @Arguments fp_matrix_algebra_morphism
 DeclareAttribute( "UnderlyingListOfMorphismsInCategoryOfFpAlgebras",
         IsMorphismInCategoryOfFpMatrixAlgebras );
