@@ -1,7 +1,7 @@
 name: QuotientCategories
-version: "2025.03-03"
+version: "2025.08-01"
 license: "GPL-2.0-or-later"
-date: 2025-03-08
+date: 2025-08-19
 description: |
     Quotient categories
 
@@ -32,11 +32,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/QuotientCategori
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2025.03-03/QuotientCategories-2025.03-03.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2025.08-01/QuotientCategories-2025.08-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2025.03-03/QuotientCategories-2025.03-03.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2025.08-01/QuotientCategories-2025.08-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2025.03-03/QuotientCategories-2025.03-03-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/QuotientCategories-2025.08-01/QuotientCategories-2025.08-01-manual.pdf
 
 abstract: |
 
@@ -45,10 +45,10 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Sal08</span>]   <b class='BibAuthor'>Saleh, K.</b>,
+    [<span class='BibKey'>Sal19</span>]   <b class='BibAuthor'>Saleh, K.</b>,
      <i class='BibTitle'>QuotientCategories, Quotient categories,
-             Version 2025.03-03</i>
-     (<span class='BibYear'>3-08</span>)<br />
+             Version 2025.08-01</i>
+     (<span class='BibYear'>8-19</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/QuotientCategories">https://homalg-project.github.io/pkg/QuotientCategories</a></span>.
     </p>
@@ -58,15 +58,15 @@ bibtex: |
     @misc{ QuotientCategories,
       author =           {Saleh, K.},
       title =            {{QuotientCategories}, {Quotient categories}, {V}ersion
-                          2025.03\texttt{\symbol{45}}03},
+                          2025.08\texttt{\symbol{45}}01},
       month =            {5\texttt{\symbol{45}}},
-      year =             {3\texttt{\symbol{45}}08},
+      year =             {8\texttt{\symbol{45}}19},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/QuotientCategories}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{QuotientCategories}}},
-      printedkey =       {Sal08}
+      printedkey =       {Sal19}
     }
 

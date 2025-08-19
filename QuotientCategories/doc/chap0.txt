@@ -6,10 +6,10 @@
                              [1X Quotient categories [101X
   
   
-                                   2025.03-03
+                                   2025.08-01
   
   
-                                  8 March 2025
+                                 19 August 2025
   
   
                                   Kamal Saleh
@@ -32,8 +32,9 @@
   
   [1XContents (QuotientCategories)[101X
   
+  1 [33X[0;0YExamples and Tests[133X
+    1.1 [33X[0;0YThe Stable Category of Left-Presentations Category by Projective
+    Objects[133X
   
   
   [32X
-  [33X[0;0Y [133X
-  

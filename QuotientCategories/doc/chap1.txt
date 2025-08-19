@@ -1,0 +1,35 @@
+  
+  [1X1 [33X[0;0YExamples and Tests[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YThe Stable Category of Left-Presentations Category by Projective Objects[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "ModulePresentationsForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "QuotientCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xzz := HomalgRingOfIntegers( );;[127X[104X
+    [4X[25Xgap>[125X [27Xzz_pres := LeftPresentations( zz );[127X[104X
+    [4X[28XCategory of left presentations of Z[128X[104X
+    [4X[25Xgap>[125X [27Xcongruence_func := phi -> IsLiftable( phi, EpimorphismFromSomeProjectiveObject( Target( phi ) ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xquotient_cat := QuotientCategory( rec( underlying_category := zz_pres, congruence_func := congruence_func, nr_arguments_of_congruence_func := 1 ) );[127X[104X
+    [4X[28XQuotientCategory( Category of left presentations of Z ) defined by the congruence function unknown[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( quotient_cat );[127X[104X
+    [4X[28XA CAP category with name QuotientCategory( Category of left presentations of Z)[128X[104X
+    [4X[28Xdefined by the congruence function unknown:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X23 primitive operations were used to derive 134 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
+    [4X[28X* IsAdditiveCategory[128X[104X
+    [4X[25Xgap>[125X [27Xm := HomalgMatrix( [ [ -2, 0, 0, -1 ], [ 8, 0, 0, 4 ], [ -43, 2, 1, -17 ], [ 6, 0, 0, 3 ] ], 4, 4, zz );;[127X[104X
+    [4X[25Xgap>[125X [27XM := AsLeftPresentation( m );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsProjective( M );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xquotient_M := M / quotient_cat;;[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForObjects( quotient_M );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
