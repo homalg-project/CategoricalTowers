@@ -37,6 +37,19 @@ DeclareCategory( "IsMorphismInCategoryOfFpAlgebras", IsCapCategoryMorphism );
 #!  The input is a category of finitely presented associative unital $k$-algebras.
 #!  The output is the underlying commutative ring $k$ of coefficients.
 #! @Arguments Alg_k
+DeclareAttribute( "UnderlyingCategory", IsCategoryOfFpAlgebras );
+
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsCategoryOfFpAlgebras ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
+#! @Description
+#!  The input is a category of finitely presented associative unital $k$-algebras.
+#!  The output is the underlying commutative ring $k$ of coefficients.
+#! @Arguments Alg_k
 DeclareAttribute( "CoefficientsRing", IsCategoryOfFpAlgebras );
 
 CapJitAddTypeSignature( "CoefficientsRing", [ IsCategoryOfFpAlgebras ],
@@ -154,18 +167,24 @@ DeclareOperation( "Comultiplication",
 ####################################
 
 #! @Description
-#!  The input is a commutative ring <A>k</A>.
+#!  The input is a $k$-linear category <A>lin_cat</A>.
 #!  The output is the category of finitely presented associative unital algebras over $k$.
-#! @Arguments k
-DeclareAttribute( "CategoryOfFpAlgebras", IsHomalgRing );
+#! @Arguments lin_cat
+DeclareAttribute( "CategoryOfFpAlgebras", IsCapCategory );
 #! @InsertChunk CategoryOfFpAlgebras
-#! @InsertChunk NonCodistributivityOfCategoryOfFpAlgebras
-
-CapJitAddTypeSignature( "CategoryOfFpAlgebras", [ IsHomalgRing ], function ( input_types )
+CapJitAddTypeSignature( "CategoryOfFpAlgebras", [ IsCapCategory ], function ( input_types )
     
     return CapJitDataTypeOfCategory( CategoryOfFpAlgebras( input_types[1].category ) );
     
 end );
+
+
+#! @Description
+#!  The input is a commutative ring <A>k</A>.
+#!  The output is the category of finitely presented associative unital algebras over $k$.
+#! @Arguments k
+DeclareAttribute( "CategoryOfFpAlgebras", IsHomalgRing );
+#! @InsertChunk NonCodistributivityOfCategoryOfFpAlgebras
 
 ####################################
 ##
@@ -174,4 +193,4 @@ end );
 ####################################
 
 DeclareOperation( "CreateAmbientLinearClosureOfFpAlgebra",
-        [ IsHomalgRing, IsInt, IsString ] );
+        [ IsCategoryOfRows, IsInt, IsString ] );

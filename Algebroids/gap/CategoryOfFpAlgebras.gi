@@ -6,9 +6,9 @@
 
 ##
 InstallMethodWithCrispCache( CreateAmbientLinearClosureOfFpAlgebra,
-        [ IsHomalgRing, IsInt, IsString ],
+        [ IsCategoryOfRows, IsInt, IsString ],
         
-  function( k, nrgens, var_name )
+  function( B, nrgens, var_name )
     local nmgens, quiver, F;
     
     nmgens := ParseListOfIndeterminates( [ Concatenation( var_name, "1..", String( nrgens ) ) ] );
@@ -24,20 +24,22 @@ InstallMethodWithCrispCache( CreateAmbientLinearClosureOfFpAlgebra,
     
     F := PathCategory( quiver );
     
-    return LinearClosure( k, F );
+    return LinearClosure( B, F );
     
 end );
 
 ##
 InstallMethod( CategoryOfFpAlgebras,
-        "for a commutative homalg ring",
-        [ IsHomalgRing and IsCommutative ],
+        "for a linear category",
+        [ IsCapCategory ],
         
   FunctionWithNamedArguments(
   [ [ "FinalizeCategory", true ],
   ],
-  function( CAP_NAMED_ARGUMENTS, k )
-    local name, FpAlg_k;
+  function( CAP_NAMED_ARGUMENTS, linear_category )
+    local name, k, FpAlg_k;
+    
+    k := CommutativeRingOfLinearCategory( linear_category );
     
     ##
     name := Concatenation( "CategoryOfFpAlgebras( ", RingName( k ), " )" );
@@ -71,11 +73,13 @@ InstallMethod( CategoryOfFpAlgebras,
     
     FpAlg_k!.supports_empty_limits := true;
     
+    SetUnderlyingCategory( FpAlg_k, linear_category );
     SetCoefficientsRing( FpAlg_k, k );
     
     FpAlg_k!.compiler_hints :=
       rec( category_attribute_names :=
-           [ "CoefficientsRing",
+           [ "UnderlyingCategory",
+             "CoefficientsRing",
              ] );
     
     ##
@@ -314,7 +318,7 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddDirectProduct( FpAlg_k,
       function( FpAlg_k, diagram )
-        local l, data, nrsgens, nrgens, var, nmgens, k, L, o, gens, ambient,
+        local l, data, nrsgens, nrgens, var, nmgens, B, L, o, gens, ambient,
               idem, orth_idem, central_idem, GB, sum, nrsrels, ambients, mors, functors_on_mors, rels;
         
         l := Length( diagram );
@@ -329,9 +333,9 @@ InstallMethod( CategoryOfFpAlgebras,
         
         nmgens := ParseListOfIndeterminates( [ Concatenation( var, "1..", String( nrgens ) ) ] );
         
-        k := CoefficientsRing( FpAlg_k );
+        B := UnderlyingCategory( FpAlg_k );
         
-        L := CreateAmbientLinearClosureOfFpAlgebra( k, nrgens, var );
+        L := CreateAmbientLinearClosureOfFpAlgebra( B, nrgens, var );
         
         o := SetOfObjects( L )[1];
         
@@ -538,7 +542,7 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddCoproduct( FpAlg_k,
       function( FpAlg_k, diagram )
-        local l, data, nrsgens, nrgens, ambients, var, nmgens, k, L, o, gens,
+        local l, data, nrsgens, nrgens, ambients, var, nmgens, B, L, o, gens,
               ambient, mors, functors_on_mors, nrsrels, rels;
         
         l := Length( diagram );
@@ -553,9 +557,9 @@ InstallMethod( CategoryOfFpAlgebras,
         
         nmgens := ParseListOfIndeterminates( [ Concatenation( var, "1..", String( nrgens ) ) ] );
         
-        k := CoefficientsRing( FpAlg_k );
+        B := UnderlyingCategory( FpAlg_k );
         
-        L := CreateAmbientLinearClosureOfFpAlgebra( k, nrgens, var );
+        L := CreateAmbientLinearClosureOfFpAlgebra( B, nrgens, var );
         
         o := SetOfObjects( L )[1];
         
@@ -648,7 +652,7 @@ InstallMethod( CategoryOfFpAlgebras,
     AddTensorProductOnObjects( FpAlg_k,
       function( FpAlg_k, fp_algebra1, fp_algebra2 )
         local datum1, datum2, nrgens1, nrgens2, nrgens, ambient1, ambient2,
-              var, nmgens, k, L, o, gens, gens1, gens2, ambient,
+              var, nmgens, B, L, o, gens, gens1, gens2, ambient,
               mor1, mor2, functor1_on_mors, functor2_on_mors, nrrels, rels1, rels2, rels, mixed;
         
         datum1 := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra1 );
@@ -666,9 +670,9 @@ InstallMethod( CategoryOfFpAlgebras,
         
         nmgens := ParseListOfIndeterminates( [ Concatenation( var, "1..", String( nrgens ) ) ] );
         
-        k := CoefficientsRing( FpAlg_k );
+        B := UnderlyingCategory( FpAlg_k );
         
-        L := CreateAmbientLinearClosureOfFpAlgebra( k, nrgens, var );
+        L := CreateAmbientLinearClosureOfFpAlgebra( B, nrgens, var );
         
         o := SetOfObjects( L )[1];
         
@@ -946,11 +950,26 @@ InstallMethod( CategoryOfFpAlgebras,
         
     end );
     
-    Finalize( FpAlg_k );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        Finalize( FpAlg_k );
+    fi;
     
     return FpAlg_k;
     
 end ) );
+
+##
+InstallMethod( CategoryOfFpAlgebras,
+        "for a homalg ring",
+        [ IsHomalgRing ],
+        
+  function( k )
+    
+    Assert( 0, HasIsCommutative( k ) and IsCommutative( k ) );
+    
+    return CategoryOfFpAlgebras( CategoryOfRows( k ) );
+    
+end );
 
 ##
 InstallMethod( NrGenerators,
@@ -1002,8 +1021,12 @@ InstallMethod( AssociatedQuotientCategoryOfLinearClosureOfPathCategory,
         [ IsObjectInCategoryOfFpAlgebras ],
         
   function( fp_algebra )
+    local FpAlg_k;
     
-    return AssociatedLinearClosureOfPathCategory( fp_algebra ) / DefiningRelations( fp_algebra );
+    FpAlg_k := CapCategory( fp_algebra );
+    
+    return QuotientCategory( AssociatedLinearClosureOfPathCategory( fp_algebra ), DefiningRelations( fp_algebra )
+                   : range_of_HomStructure := UnderlyingCategory( FpAlg_k ) );
     
 end );
 
@@ -1088,17 +1111,17 @@ InstallMethod( \/,
         "for a linear category and a category of finitely presented algebras",
         [ IsCapCategory and IsLinearCategoryOverCommutativeRing, IsCategoryOfFpAlgebras ],
         
-  function( cat, FpAlg_k )
-    local k, L, relations, object, generators, get_labels;
+  function( fp_linear_category_on_one_object, FpAlg_k )
+    local k, L, relations, object, generators, get_labels, fp_algebra;
     
-    k := CommutativeRingOfLinearCategory( cat );
+    k := CommutativeRingOfLinearCategory( fp_linear_category_on_one_object );
     
-    if IsQuotientCategory( cat ) then
-        Assert( 0, HasDefiningRelations( cat ) );
-        L := UnderlyingCategory( cat );
-        relations := DefiningRelations( cat );
-    elif IsLinearClosure( cat ) then
-        L := cat;
+    if IsQuotientCategory( fp_linear_category_on_one_object ) then
+        Assert( 0, HasDefiningRelations( fp_linear_category_on_one_object ) );
+        L := UnderlyingCategory( fp_linear_category_on_one_object );
+        relations := DefiningRelations( fp_linear_category_on_one_object );
+    elif IsLinearClosure( fp_linear_category_on_one_object ) then
+        L := fp_linear_category_on_one_object;
         relations := [ ];
     else
         Error( "the first argument `cat` should either be an `IsQuotientCategory` or an `IsLinearClosure`\n" );
@@ -1122,15 +1145,24 @@ InstallMethod( \/,
         
     end;
     
-    return ObjectConstructor( FpAlg_k,
-                   NTuple( 7,
-                           L,
-                           object,
-                           Length( generators ),
-                           generators,
-                           Length( relations ),
-                           relations,
-                           List( generators, get_labels ) ) );
+    fp_algebra := ObjectConstructor( FpAlg_k,
+                          NTuple( 7,
+                                  L,
+                                  object,
+                                  Length( generators ),
+                                  generators,
+                                  Length( relations ),
+                                  relations,
+                                  List( generators, get_labels ) ) );
+    
+    if HasRangeCategoryOfHomomorphismStructure( fp_linear_category_on_one_object ) and
+       IsIdenticalObj( RangeCategoryOfHomomorphismStructure( fp_linear_category_on_one_object ), UnderlyingCategory( FpAlg_k ) ) then
+        
+        SetAssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_algebra, fp_linear_category_on_one_object );
+        
+    fi;
+    
+    return fp_algebra;
     
 end );
 
@@ -1278,44 +1310,78 @@ InstallMethod( Comultiplication,
         [ IsObjectInCategoryOfFpAlgebras, IsList ],
         
   function( fp_algebra, list_of_images_of_comult )
-    local FpAlg_k, fp_algebra2, nrgens, nrgens2, L, gens, gens1, gens2,
-          ambient, ambient2, mor1, mor2, functor1_on_mors, functor2_on_mors, o;
+    local FpAlg_k, fp_algebra_square, nrgens, nrgens2, Q, Qo, basis, d, basis_pairs, normalize_input, gens, gens1, gens2,
+          ambient, ambient_square, mor1, mor2, functor1_on_mors, functor2_on_mors, o_square;
     
     FpAlg_k := CapCategory( fp_algebra );
     
-    fp_algebra2 := TensorProductOnObjects( FpAlg_k, fp_algebra, fp_algebra );
+    fp_algebra_square := TensorProductOnObjects( FpAlg_k, fp_algebra, fp_algebra );
     
     nrgens := NrGenerators( fp_algebra );
+    
+    nrgens2 := NrGenerators( fp_algebra_square );
+    
+    Assert( 0, 2 * nrgens = nrgens2 );
+    
+    if ForAny( list_of_images_of_comult, image -> ForAny( image, IsRingElement ) ) then
+        
+        Q := AssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_algebra );
+        
+        Qo := SetOfObjects( Q )[1];
+        
+        if CanCompute( Q, "BasisOfExternalHom" ) then
+            
+            basis := List( BasisOfExternalHom( Qo, Qo ), MorphismDatum );
+            
+            d := Length( basis );
+            
+            ## must be compatible with corresponding line in method LinearCategoryOnOneObjectAsInternalMonoid (or \/ above it)
+            basis_pairs := List( basis, l ->
+                                 List( basis, r ->
+                                       Pair( l, r ) ) );
+            
+            basis_pairs := Concatenation( basis_pairs );
+            
+            normalize_input :=
+              function( image )
+                if IsList( image ) and Length( image ) = d^2 and ForAll( image, IsRingElement ) then
+                    return List( [ 1 .. d^2 ], i -> Pair( image[i] * basis_pairs[i][1], basis_pairs[i][2] ) );
+                else
+                    return image;
+                fi;
+            end;
+            
+            list_of_images_of_comult := List( list_of_images_of_comult, normalize_input );
+            
+        fi;
+        
+    fi;
     
     Assert( 0, nrgens = Length( list_of_images_of_comult ) and ForAll( list_of_images_of_comult, IsList ) );
     Assert( 0, ForAll( list_of_images_of_comult, list -> ForAll( list, pair -> Length( pair ) = 2 and ForAll( pair, IsLinearClosureMorphism ) ) ) );
     
-    nrgens2 := NrGenerators( fp_algebra2 );
-    
-    Assert( 0, 2 * nrgens = nrgens2 );
-    
-    L := AssociatedLinearClosureOfPathCategory( fp_algebra2 );
-    
-    gens := Generators( fp_algebra2 );
+    gens := Generators( fp_algebra_square );
     
     gens1 := gens{[ 1 .. nrgens ]};
     gens2 := gens{[ nrgens + 1 .. nrgens2 ]};
         
     ambient := AmbientAlgebra( fp_algebra );
-    ambient2 := AmbientAlgebra( fp_algebra2 );
+    ambient_square := AmbientAlgebra( fp_algebra_square );
     
-    mor1 := MorphismConstructor( FpAlg_k, ambient, gens1, ambient2 );
-    mor2 := MorphismConstructor( FpAlg_k, ambient, gens2, ambient2 );
+    mor1 := MorphismConstructor( FpAlg_k, ambient, gens1, ambient_square );
+    mor2 := MorphismConstructor( FpAlg_k, ambient, gens2, ambient_square );
         
     functor1_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mor1 )[2][2];
     functor2_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mor2 )[2][2];
     
-    o := SetOfObjects( L )[1];
+    o_square := SetOfObjects( AssociatedLinearClosureOfPathCategory( fp_algebra_square ) )[1];
     
     return MorphismConstructor( FpAlg_k,
                    fp_algebra,
-                   List( list_of_images_of_comult, list -> Sum( list, pair -> functor1_on_mors( o, pair[1], o ) * functor2_on_mors( o, pair[2], o ) ) ),
-                   fp_algebra2 );
+                   List( list_of_images_of_comult, list ->
+                         Sum( list, pair ->
+                              functor1_on_mors( o_square, pair[1], o_square ) * functor2_on_mors( o_square, pair[2], o_square ) ) ),
+                   fp_algebra_square );
     
 end );
 

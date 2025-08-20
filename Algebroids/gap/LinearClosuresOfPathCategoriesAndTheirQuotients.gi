@@ -6,8 +6,10 @@
 
 BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
   
-  function ( k, C )
-    local admissible_order, colors, sorting_func, kC;
+  function ( rows, C )
+    local k, admissible_order, colors, sorting_func, kC;
+    
+    k := CommutativeRingOfLinearCategory( rows );
     
     admissible_order := ValueOption( "admissible_order" );
     
@@ -47,7 +49,7 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
         
     fi;
     
-    kC := LinearClosure( k, C, sorting_func : FinalizeCategory := false ); # every morphism starts by its maximum monomial
+    kC := LinearClosure( rows, C, sorting_func : FinalizeCategory := false ); # every morphism starts by its maximum monomial
     
     SetIsObjectFiniteCategory( kC, true );
     
@@ -150,10 +152,23 @@ end );
 
 ##
 InstallOtherMethod( LinearClosure,
+          [ IsCategoryOfRows, IsPathCategory ],
+        
+  function ( rows, C )
+    
+    return LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS( rows, C );
+    
+end );
+
+##
+InstallOtherMethod( LinearClosure,
           [ IsHomalgRing, IsPathCategory ],
-  
-  LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS
-);
+        
+  function ( k, C )
+    
+    return LinearClosure( CategoryOfRows( k ), C );
+    
+end );
 
 ##
 InstallOtherMethod( \[\],
@@ -167,10 +182,23 @@ end );
 
 ##
 InstallOtherMethod( LinearClosure,
+          [ IsCategoryOfRows, IsQuotientOfPathCategory ],
+  
+  function ( rows, C )
+    
+    return LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS( rows, C );
+    
+end );
+
+##
+InstallOtherMethod( LinearClosure,
           [ IsHomalgRing, IsQuotientOfPathCategory ],
   
-  LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS
-);
+  function ( k, C )
+    
+    return LinearClosure( CategoryOfRows( k ), C );
+    
+end );
 
 ##
 InstallOtherMethod( \[\],

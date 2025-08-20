@@ -9,7 +9,7 @@ InstallMethod( QuotientCategory,
         [ IsLinearClosure, IsDenseList ],
   
   function ( kC, relations )
-    local C, q, reduced_gb, leading_monomials, congruence_func, name, quo_kC, FinalizeCategory, homQ, range_cat;
+    local C, q, reduced_gb, leading_monomials, congruence_func, name, quo_kC, FinalizeCategory, homQ, range_cat, k;
     
     C := UnderlyingCategory( kC );
     
@@ -77,7 +77,7 @@ InstallMethod( QuotientCategory,
         
         range_cat := ValueOption( "range_of_HomStructure" );
         
-        if range_cat = fail and (HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure)( kC ) then
+        if range_cat = fail and HasRangeCategoryOfHomomorphismStructure( kC ) then
             
             range_cat := RangeCategoryOfHomomorphismStructure( kC );
             
@@ -89,7 +89,12 @@ InstallMethod( QuotientCategory,
         
         SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( quo_kC, range_cat );
         
-        SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( quo_kC, true );
+        
+        k := CommutativeRingOfLinearCategory( kC );
+        
+        if HasIsFieldForHomalg( k ) and IsFieldForHomalg( k ) then
+            SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( quo_kC, true );
+        fi;
         
         ##
         AddBasisOfExternalHom( quo_kC,
