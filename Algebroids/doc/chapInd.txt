@@ -19,7 +19,7 @@
       for IsQuiverAlgebra 5.4-1 
       for IsQuiverAlgebra, IsList 5.4-1 
   [2XAlgebroidFromDataTables[102X, for IsDenseList 6.4-1 
-  [2XAmbientAlgebra[102X, for IsObjectInCategoryOfFpAlgebras 10.1-12 
+  [2XAmbientAlgebra[102X, for IsObjectInCategoryOfFpAlgebras 10.1-13 
       for IsObjectInCategoryOfFpMatrixAlgebras 11.1-16 
   [2XAntipode[102X, for IsAlgebroid 5.2-14 
       for IsFpCategory 2.2-14 
@@ -33,10 +33,10 @@
   [2XAssignSetOfObjects[102X, for IsAlgebroid, IsString 5.2-7 
       for IsAlgebroidFromDataTables, IsString 6.3-1 
       for IsFpCategory, IsString 2.2-7 
-  [2XAssociatedFunctorOfLinearClosuresOfPathCategoriesData[102X, for IsMorphismInCategoryOfFpAlgebras 10.1-13 
-  [2XAssociatedLinearClosureOfPathCategory[102X, for IsObjectInCategoryOfFpAlgebras 10.1-7 
+  [2XAssociatedFunctorOfLinearClosuresOfPathCategoriesData[102X, for IsMorphismInCategoryOfFpAlgebras 10.1-14 
+  [2XAssociatedLinearClosureOfPathCategory[102X, for IsObjectInCategoryOfFpAlgebras 10.1-8 
       for IsObjectInCategoryOfFpMatrixAlgebras 11.1-11 
-  [2XAssociatedQuotientCategoryOfLinearClosureOfPathCategory[102X, for IsObjectInCategoryOfFpAlgebras 10.1-10 
+  [2XAssociatedQuotientCategoryOfLinearClosureOfPathCategory[102X, for IsObjectInCategoryOfFpAlgebras 10.1-11 
       for IsObjectInCategoryOfFpMatrixAlgebras 11.1-14 
   [2XBasesElements[102X, for IsAlgebroidFromDataTables 6.2-6 
   [2XBasisMorphismsByVertexIndex[102X, for IsAlgebroid 5.2-5 
@@ -65,14 +65,15 @@
   [2XCategoryOfAlgebroidsMorphism[102X, for IsAlgebroidMorphism 7.4-4 
       for IsCategoryOfAlgebroidsObject, IsAlgebroidMorphism, IsCategoryOfAlgebroidsObject 7.4-3 
   [2XCategoryOfAlgebroidsObject[102X, for IsAlgebroid 7.4-2 
-  [2XCategoryOfFpAlgebras[102X, for IsHomalgRing 10.2-1 
+  [2XCategoryOfFpAlgebras[102X, for IsCapCategory 10.2-1 
+      for IsHomalgRing 10.2-2 
   [2XCategoryOfFpMatrixAlgebras[102X, for IsCategoryOfFpAlgebras, IsCapCategory 11.2-1 
       for IsHomalgRing 11.2-2 
   [2XCoefficientsList[102X, for IsMorphismInAlgebroidFromDataTables 6.3-4 
   [2XCoefficientsOfSupportMorphisms[102X, for IsMorphismInAlgebroidFromDataTables 6.3-6 
-  [2XCoefficientsRing[102X, for IsCategoryOfFpAlgebras 10.1-1 
+  [2XCoefficientsRing[102X, for IsCategoryOfFpAlgebras 10.1-2 
       for IsCategoryOfFpMatrixAlgebras 11.1-3 
-      for IsObjectInCategoryOfFpAlgebras 10.1-2 
+      for IsObjectInCategoryOfFpAlgebras 10.1-3 
       for IsObjectInCategoryOfFpMatrixAlgebras 11.1-4 
   [2XComultiplication[102X, for IsAlgebroid 8.2-2 
       for IsObjectInCategoryOfFpAlgebras, IsList 10.3-3 
@@ -90,14 +91,14 @@
   [2XDecompositionIndicesOfMorphismInAlgebroid[102X, for IsMorphismInAlgebroidFromDataTables 6.3-9 
   [2XDecompositionOfMorphismInAlgebroid[102X, for IsMorphismInAlgebroidFromDataTables 6.3-8 
   [2XDefiningPairOfFinitelyPresentedMatrixAlgebra[102X, for IsObjectInCategoryOfFpMatrixAlgebras 11.1-5 
-  [2XDefiningRelations[102X, for IsObjectInCategoryOfFpAlgebras 10.1-8 
+  [2XDefiningRelations[102X, for IsObjectInCategoryOfFpAlgebras 10.1-9 
       for IsObjectInCategoryOfFpMatrixAlgebras 11.1-12 
-  [2XDefiningSeptupleOfFinitelyPresentedAlgebra[102X, for IsObjectInCategoryOfFpAlgebras 10.1-3 
+  [2XDefiningSeptupleOfFinitelyPresentedAlgebra[102X, for IsObjectInCategoryOfFpAlgebras 10.1-4 
   [2XDefiningTripleOfAQuiver[102X, for IsQuiver 12.2-1 
   [2XDescentToZDefinedByBasisPaths[102X, for IsAlgebroid 5.4-2 
   [2XDimension[102X, for IsAlgebroid 5.2-3 
       for IsCapCategory and IsObjectFiniteCategory and IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms 12.1-1 
-      for IsObjectInCategoryOfFpAlgebras 10.1-11 
+      for IsObjectInCategoryOfFpAlgebras 10.1-12 
       for IsObjectInCategoryOfFpMatrixAlgebras 11.1-15 
   [2XElementaryTensor[102X, for IsMorphismInAlgebroid, IsObjectInAlgebroid, IsAlgebroid 5.3-7 
       for IsMorphismInAlgebroidFromDataTables, IsMorphismInAlgebroidFromDataTables, IsAlgebroidFromDataTables 6.3-14 
@@ -109,10 +110,10 @@
       for IsObjectInFpCategory, IsObjectInFpCategory, IsFpCategory 2.3-3 
   [2XEvaluateFpAlgebraMorphism[102X, for IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsCapCategory, IsCapCategoryObject, IsList 10.3-1 
   [2XFreeCategory[102X, for IsQuiver 2.4-1 
-  [2XGenerators[102X, for IsObjectInCategoryOfFpAlgebras 10.1-6 
+  [2XGenerators[102X, for IsObjectInCategoryOfFpAlgebras 10.1-7 
       for IsObjectInCategoryOfFpMatrixAlgebras 11.1-9 
   [2XGroebnerBasis[102X, for IsLinearClosure, IsDenseList 9.2-1 
-  [2XGroebnerBasisOfDefiningRelations[102X, for IsObjectInCategoryOfFpAlgebras 10.1-9 
+  [2XGroebnerBasisOfDefiningRelations[102X, for IsObjectInCategoryOfFpAlgebras 10.1-10 
       for IsObjectInCategoryOfFpMatrixAlgebras 11.1-13 
   [2XHomStructureOnBasisPaths[102X, for IsAlgebroid 5.2-6 
       for IsFpCategory 2.2-6 
@@ -163,14 +164,14 @@
   [2XLabelsOfBasesElements[102X, for IsAlgebroidFromDataTables 6.2-8 
   [2XLaTeXStringsOfBasesElements[102X, for IsAlgebroidFromDataTables 6.2-9 
   [2XLinearClosure[102X, for IsHomalgRing, IsPathCategory 9.1-1 
-  [2XListOfImages[102X, for IsMorphismInCategoryOfFpAlgebras 10.1-4 
+  [2XListOfImages[102X, for IsMorphismInCategoryOfFpAlgebras 10.1-5 
   [2XListOfMatrixImages[102X, for IsMorphismInCategoryOfFpMatrixAlgebras 11.1-7 
   [2XMatrixGenerators[102X, for IsObjectInCategoryOfFpMatrixAlgebras 11.1-10 
   [2XMorphismInAlgebroid[102X, for IsAlgebroid, IsQuiverAlgebraElement 5.4-6 
       for IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid 5.4-6 
   [2XMorphismInFpCategory[102X, for IsFpCategory, IsPath 2.4-3 
       for IsObjectInFpCategory, IsPath, IsObjectInFpCategory 2.4-3 
-  [2XNrGenerators[102X, for IsObjectInCategoryOfFpAlgebras 10.1-5 
+  [2XNrGenerators[102X, for IsObjectInCategoryOfFpAlgebras 10.1-6 
       for IsObjectInCategoryOfFpMatrixAlgebras 11.1-8 
   [2XObjectInAlgebroid[102X, for IsAlgebroid, IsQuiverVertex 5.4-4 
   [2XObjectIndex[102X, for IsObjectInAlgebroidFromDataTables 6.3-3 
@@ -210,6 +211,7 @@
   [2XTwist[102X, for IsAlgebroid, IsAlgebroid 7.3-1 
   [2XUnderlyingAlgebra[102X, for IsAlgebroid 5.2-17 
       for IsFpCategory 2.2-17 
+  [2XUnderlyingCategory[102X, for IsCategoryOfFpAlgebras 10.1-1 
   [2XUnderlyingCategoryOfFpAlgebras[102X, for IsCategoryOfFpMatrixAlgebras 11.1-1 
   [2XUnderlyingCategoryOfMatrices[102X, for IsCategoryOfFpMatrixAlgebras 11.1-2 
   [2XUnderlyingListOfMorphismsInCategoryOfFpAlgebras[102X, for IsMorphismInCategoryOfFpMatrixAlgebras 11.1-6 

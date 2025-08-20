@@ -4,36 +4,43 @@
   
   [1X10.1 [33X[0;0YAttributes[133X[101X
   
-  [1X10.1-1 CoefficientsRing[101X
+  [1X10.1-1 UnderlyingCategory[101X
   
-  [33X[1;0Y[29X[2XCoefficientsRing[102X( [3XAlg_k[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3XAlg_k[103X ) [32X attribute[133X
   
   [33X[0;0YThe input is a category of finitely presented associative unital [23Xk[123X-algebras.
   The output is the underlying commutative ring [23Xk[123X of coefficients.[133X
   
   [1X10.1-2 CoefficientsRing[101X
   
+  [33X[1;0Y[29X[2XCoefficientsRing[102X( [3XAlg_k[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe input is a category of finitely presented associative unital [23Xk[123X-algebras.
+  The output is the underlying commutative ring [23Xk[123X of coefficients.[133X
+  
+  [1X10.1-3 CoefficientsRing[101X
+  
   [33X[1;0Y[29X[2XCoefficientsRing[102X( [3Xfp_algebra[103X ) [32X attribute[133X
   
   [33X[0;0YThe  input is a finitely presented associative unital [23Xk[123X-algebras. The output
   is the underlying commutative ring [23Xk[123X of coefficients.[133X
   
-  [1X10.1-3 DefiningSeptupleOfFinitelyPresentedAlgebra[101X
+  [1X10.1-4 DefiningSeptupleOfFinitelyPresentedAlgebra[101X
   
   [33X[1;0Y[29X[2XDefiningSeptupleOfFinitelyPresentedAlgebra[102X( [3Xfp_algebra[103X ) [32X attribute[133X
   
-  [1X10.1-4 ListOfImages[101X
+  [1X10.1-5 ListOfImages[101X
   
   [33X[1;0Y[29X[2XListOfImages[102X( [3Xfp_algebra_morphism[103X ) [32X attribute[133X
   
-  [1X10.1-5 NrGenerators[101X
+  [1X10.1-6 NrGenerators[101X
   
   [33X[1;0Y[29X[2XNrGenerators[102X( [3Xfp_algebra[103X ) [32X operation[133X
   
   [33X[0;0YThe  input is a finitely presented associative unital algebra. The output is
   the number of generators.[133X
   
-  [1X10.1-6 Generators[101X
+  [1X10.1-7 Generators[101X
   
   [33X[1;0Y[29X[2XGenerators[102X( [3Xfp_algebra[103X ) [32X attribute[133X
   
@@ -41,7 +48,7 @@
   the  list  of  generators  of  the underlying finitely presented associative
   unital algebra.[133X
   
-  [1X10.1-7 AssociatedLinearClosureOfPathCategory[101X
+  [1X10.1-8 AssociatedLinearClosureOfPathCategory[101X
   
   [33X[1;0Y[29X[2XAssociatedLinearClosureOfPathCategory[102X( [3Xfp_algebra[103X ) [32X attribute[133X
   
@@ -49,21 +56,21 @@
   is  the corresponding ambient free [23Xk[123X-algebra as a [23Xk[123X-linear closure of a path
   category of loops on a single vertex.[133X
   
-  [1X10.1-8 DefiningRelations[101X
+  [1X10.1-9 DefiningRelations[101X
   
   [33X[1;0Y[29X[2XDefiningRelations[102X( [3Xfp_algebra[103X ) [32X attribute[133X
   
   [33X[0;0YThe input is a finitely presented associative unital algebra. The output its
   list of defining relations.[133X
   
-  [1X10.1-9 GroebnerBasisOfDefiningRelations[101X
+  [1X10.1-10 GroebnerBasisOfDefiningRelations[101X
   
   [33X[1;0Y[29X[2XGroebnerBasisOfDefiningRelations[102X( [3Xfp_algebra[103X ) [32X attribute[133X
   
   [33X[0;0YThe  input is a finitely presented associative unital algebra. The output is
   the Gröbner basis of its list of defining relations.[133X
   
-  [1X10.1-10 AssociatedQuotientCategoryOfLinearClosureOfPathCategory[101X
+  [1X10.1-11 AssociatedQuotientCategoryOfLinearClosureOfPathCategory[101X
   
   [33X[1;0Y[29X[2XAssociatedQuotientCategoryOfLinearClosureOfPathCategory[102X( [3Xfp_algebra[103X ) [32X attribute[133X
   
@@ -72,21 +79,21 @@
   [23Xk[123X-algebra as a quotient of a [23Xk[123X-linear closure of a path category of loops on
   a single vertex.[133X
   
-  [1X10.1-11 Dimension[101X
+  [1X10.1-12 Dimension[101X
   
   [33X[1;0Y[29X[2XDimension[102X( [3Xfp_algebra[103X ) [32X attribute[133X
   
   [33X[0;0YThe  input  is a finitely presented associative unital [23Xk[123X-algebra. The output
   its [23Xk[123X-dimension.[133X
   
-  [1X10.1-12 AmbientAlgebra[101X
+  [1X10.1-13 AmbientAlgebra[101X
   
   [33X[1;0Y[29X[2XAmbientAlgebra[102X( [3Xfp_algebra[103X ) [32X attribute[133X
   
   [33X[0;0YThe  input is a finitely presented associative unital algebra. The output is
   the corresponding ambient free algebra.[133X
   
-  [1X10.1-13 AssociatedFunctorOfLinearClosuresOfPathCategoriesData[101X
+  [1X10.1-14 AssociatedFunctorOfLinearClosuresOfPathCategoriesData[101X
   
   [33X[1;0Y[29X[2XAssociatedFunctorOfLinearClosuresOfPathCategoriesData[102X( [3Xfp_algebra_morphism[103X ) [32X attribute[133X
   
@@ -95,10 +102,10 @@
   
   [1X10.2-1 CategoryOfFpAlgebras[101X
   
-  [33X[1;0Y[29X[2XCategoryOfFpAlgebras[102X( [3Xk[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCategoryOfFpAlgebras[102X( [3Xlin_cat[103X ) [32X attribute[133X
   
-  [33X[0;0YThe  input  is  a commutative ring [3Xk[103X. The output is the category of finitely
-  presented associative unital algebras over [23Xk[123X.[133X
+  [33X[0;0YThe  input  is  a  [23Xk[123X-linear  category [3Xlin_cat[103X. The output is the category of
+  finitely presented associative unital algebras over [23Xk[123X.[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
@@ -259,6 +266,13 @@
     [4X[25Xgap>[125X [27Xcocart_expand := LeftCocartesianCodistributivityExpanding( A1, [ A1, A2 ] );[127X[104X
     [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
   [4X[32X[104X
+  
+  [1X10.2-2 CategoryOfFpAlgebras[101X
+  
+  [33X[1;0Y[29X[2XCategoryOfFpAlgebras[102X( [3Xk[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe  input  is  a commutative ring [3Xk[103X. The output is the category of finitely
+  presented associative unital algebras over [23Xk[123X.[133X
   
   [33X[0;0YThe  category  of  (finitely  presented)  algebras is not codistributive. An
   example   was  suggested  by  a  referee  in  the  paper  the  paper  titled
