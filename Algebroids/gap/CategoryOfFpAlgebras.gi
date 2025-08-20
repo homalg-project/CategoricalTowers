@@ -134,6 +134,9 @@ InstallMethod( CategoryOfFpAlgebras,
     AddMorphismConstructor( FpAlg_k,
       function( FpAlg_k, source, list_of_images, target )
         
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, NrGenerators( source ) = Length( list_of_images ) );
+        
         return CreateCapCategoryMorphismWithAttributes( FpAlg_k,
                        source,
                        target,

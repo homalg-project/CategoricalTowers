@@ -35,7 +35,7 @@ DeclareCategory( "IsMorphismInCategoryOfFpAlgebras", IsCapCategoryMorphism );
 
 #! @Description
 #!  The input is a category of finitely presented associative unital $k$-algebras.
-#!  The output is the underlying commutative ring $k$ of coefficients.
+#!  The output is an underlying category of $k$-modules.
 #! @Arguments Alg_k
 DeclareAttribute( "UnderlyingCategory", IsCategoryOfFpAlgebras );
 
@@ -60,7 +60,7 @@ CapJitAddTypeSignature( "CoefficientsRing", [ IsCategoryOfFpAlgebras ],
 end );
 
 #! @Description
-#!  The input is a finitely presented associative unital $k$-algebras.
+#!  The input is a finitely presented associative unital $k$-algebra.
 #!  The output is the underlying commutative ring $k$ of coefficients.
 #! @Arguments fp_algebra
 DeclareAttribute( "CoefficientsRing", IsObjectInCategoryOfFpAlgebras );
@@ -167,7 +167,7 @@ DeclareOperation( "Comultiplication",
 ####################################
 
 #! @Description
-#!  The input is a $k$-linear category <A>lin_cat</A>.
+#!  The input is a $k$-linear category <A>lin_cat</A> of $k$-modules.
 #!  The output is the category of finitely presented associative unital algebras over $k$.
 #! @Arguments lin_cat
 DeclareAttribute( "CategoryOfFpAlgebras", IsCapCategory );
@@ -177,7 +177,6 @@ CapJitAddTypeSignature( "CategoryOfFpAlgebras", [ IsCapCategory ], function ( in
     return CapJitDataTypeOfCategory( CategoryOfFpAlgebras( input_types[1].category ) );
     
 end );
-
 
 #! @Description
 #!  The input is a commutative ring <A>k</A>.
