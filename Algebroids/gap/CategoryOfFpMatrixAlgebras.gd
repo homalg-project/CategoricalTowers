@@ -73,7 +73,7 @@ CapJitAddTypeSignature( "CoefficientsRing", [ IsCategoryOfFpMatrixAlgebras ],
 end );
 
 #! @Description
-#!  The input is a finitely presented associative unital matrix $k$-algebras.
+#!  The input is a finitely presented associative unital matrix $k$-algebra.
 #!  The output is the underlying commutative ring $k$ of coefficients.
 #! @Arguments fp_matrix_algebra
 DeclareAttribute( "CoefficientsRing", IsObjectInCategoryOfFpMatrixAlgebras );
