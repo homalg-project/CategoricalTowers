@@ -30,7 +30,7 @@
   
   [33X[1;0Y[29X[2XCoefficientsRing[102X( [3Xfp_matrix_algebra[103X ) [32X attribute[133X
   
-  [33X[0;0YThe  input is a finitely presented associative unital matrix [23Xk[123X-algebras. The
+  [33X[0;0YThe  input  is a finitely presented associative unital matrix [23Xk[123X-algebra. The
   output is the underlying commutative ring [23Xk[123X of coefficients.[133X
   
   [1X11.1-5 DefiningPairOfFinitelyPresentedMatrixAlgebra[101X

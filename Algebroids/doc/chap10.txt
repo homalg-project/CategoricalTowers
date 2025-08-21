@@ -9,7 +9,7 @@
   [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3XAlg_k[103X ) [32X attribute[133X
   
   [33X[0;0YThe input is a category of finitely presented associative unital [23Xk[123X-algebras.
-  The output is the underlying commutative ring [23Xk[123X of coefficients.[133X
+  The output is an underlying category of [23Xk[123X-modules.[133X
   
   [1X10.1-2 CoefficientsRing[101X
   
@@ -22,7 +22,7 @@
   
   [33X[1;0Y[29X[2XCoefficientsRing[102X( [3Xfp_algebra[103X ) [32X attribute[133X
   
-  [33X[0;0YThe  input is a finitely presented associative unital [23Xk[123X-algebras. The output
+  [33X[0;0YThe  input  is a finitely presented associative unital [23Xk[123X-algebra. The output
   is the underlying commutative ring [23Xk[123X of coefficients.[133X
   
   [1X10.1-4 DefiningSeptupleOfFinitelyPresentedAlgebra[101X
@@ -104,8 +104,8 @@
   
   [33X[1;0Y[29X[2XCategoryOfFpAlgebras[102X( [3Xlin_cat[103X ) [32X attribute[133X
   
-  [33X[0;0YThe  input  is  a  [23Xk[123X-linear  category [3Xlin_cat[103X. The output is the category of
-  finitely presented associative unital algebras over [23Xk[123X.[133X
+  [33X[0;0YThe  input  is  a  [23Xk[123X-linear category [3Xlin_cat[103X of [23Xk[123X-modules. The output is the
+  category of finitely presented associative unital algebras over [23Xk[123X.[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
