@@ -43,18 +43,22 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz_pres := LeftPresentations( zz );</span>
 Category of left presentations of Z
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">congruence_func := phi -&gt; IsLiftable( phi, EpimorphismFromSomeProjectiveObject( Target( phi ) ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quotient_cat := QuotientCategory( rec( underlying_category := zz_pres, congruence_func := congruence_func, nr_arguments_of_congruence_func := 1 ) );</span>
-QuotientCategory( Category of left presentations of Z ) defined by the congruence function unknown
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">name := "QuotientCategory( Category of left presentations of Z ) by projectives";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quotient_cat := QuotientCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  rec( underlying_category := zz_pres,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    name := name,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    congruence_func := congruence_func,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    nr_arguments_of_congruence_func := 1 ) );</span>
+QuotientCategory( Category of left presentations of Z ) by projectives
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( quotient_cat );</span>
-A CAP category with name QuotientCategory( Category of left presentations of Z)
-defined by the congruence function unknown:
+A CAP category with name QuotientCategory( Category of left presentations of Z ) by projectives:
 
 23 primitive operations were used to derive 134 operations for this category
 which algorithmically
 * IsLinearCategoryOverCommutativeRing
 * IsAdditiveCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := HomalgMatrix( [ [ -2, 0, 0, -1 ], [ 8, 0, 0, 4 ], [ -43, 2, 1, -17 ], [ 6, 0, 0, 3 ] ], 4, 4, zz );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := AsLeftPresentation( m );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := AsLeftPresentation( zz_pres, m );</span>
 &lt;An object in Category of left presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsProjective( M );</span>
 true
