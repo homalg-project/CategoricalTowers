@@ -156,7 +156,7 @@ Display( coeq );
 #! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
-#! / relations ) ) ) defined by the congruence function unknown
+#! / relations ) ) )
 #! given by the above data
 #! 
 #! An object in CoequalizerCompletion(
@@ -205,7 +205,7 @@ Display( proj );
 #! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
-#! / relations ) ) ) defined by the congruence function unknown
+#! / relations ) ) )
 #! given by the above data
 #! 
 #! A morphism in CoequalizerCompletion(
