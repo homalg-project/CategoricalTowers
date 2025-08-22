@@ -192,7 +192,7 @@
     [4X[28XAdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)[128X[104X
     [4X[28X[sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,[128X[104X
     [4X[28X m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )[128X[104X
-    [4X[28X/ relations ) ) ) defined by the congruence function unknown[128X[104X
+    [4X[28X/ relations ) ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in CoequalizerCompletion([128X[104X
@@ -241,7 +241,7 @@
     [4X[28XAdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)[128X[104X
     [4X[28X[sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,[128X[104X
     [4X[28X m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )[128X[104X
-    [4X[28X/ relations ) ) ) defined by the congruence function unknown[128X[104X
+    [4X[28X/ relations ) ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in CoequalizerCompletion([128X[104X
