@@ -95,24 +95,24 @@ InstallMethod( QuotientCategory,
     
     record := ShallowCopy( record );
     
+    ambient_cat := record.underlying_category;
+    
     if record.nr_arguments_of_congruence_func = 1 then
       
       record.nr_arguments_of_congruence_func := 2;
       
       congruence_func := record.congruence_func;
       
-      record.congruence_func := { alpha, beta } -> congruence_func( SubtractionForMorphisms( alpha, beta ) );
+      record.congruence_func := { alpha, beta } -> congruence_func( SubtractionForMorphisms( ambient_cat, alpha, beta ) );
       
       return QuotientCategory( record : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
       
     fi;
-    
-    ambient_cat := record.underlying_category;
-    
+     
     if IsBound( record.name ) then
       name := record.name;
     else
-      name := Concatenation( "QuotientCategory( ", Name( ambient_cat ), " ) defined by the congruence function ", NameFunction( record.congruence_func ) );
+      name := Concatenation( "QuotientCategory( ", Name( ambient_cat ), " )" );
     fi;
     
     if IsBound( record.category_filter ) then
