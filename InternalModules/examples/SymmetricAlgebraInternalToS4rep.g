@@ -15,6 +15,7 @@ Display( srepG );
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsAbelianCategory
 #! * IsRigidSymmetricClosedMonoidalCategory
+#! * IsAdditiveMonoidalCategory
 #! and furthermore mathematically
 #! * IsSkeletalCategory
 G := UnderlyingGroupForRepresentationCategory( srepG );
