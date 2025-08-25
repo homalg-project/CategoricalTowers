@@ -154,23 +154,25 @@
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Toposes", "&gt;= 2024.02-08", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP", "&gt;= 2024.02-09", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP", "&gt;= 2025.08-05", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalCategoryOfFiniteSets( );</span>
 SkeletalFinSets
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( sFinSets );</span>
 A CAP category with name SkeletalFinSets:
 
-58 primitive operations were used to derive 348 operations for this category \
+58 primitive operations were used to derive 368 operations for this category \
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
 * IsEquippedWithHomomorphismStructure
+* IsSymmetricMonoidalCategory
 * IsElementaryTopos
 and furthermore mathematically
 * IsSkeletalCategory
 * IsStrictCartesianCategory
 * IsStrictCocartesianCategory
+* IsSymmetricMonoidalCategoryStructureGivenByDirectProduct
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := FinSet( sFinSets, 2 );</span>
 |2|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := FinSet( sFinSets, 3 );</span>
@@ -194,16 +196,18 @@ WrapperCategory( SkeletalFinSets )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( W );</span>
 A CAP category with name WrapperCategory( SkeletalFinSets ):
 
-324 primitive operations were used to derive 338 operations for this category \
+344 primitive operations were used to derive 358 operations for this category \
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
 * IsEquippedWithHomomorphismStructure
+* IsSymmetricMonoidalCategory
 * IsElementaryTopos
 and furthermore mathematically
 * IsSkeletalCategory
 * IsStrictCartesianCategory
 * IsStrictCocartesianCategory
+* IsSymmetricMonoidalCategoryStructureGivenByDirectProduct
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W_a := a / W;</span>
 &lt;An object in WrapperCategory( SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W_b := b / W;</span>
@@ -226,17 +230,19 @@ Opposite( SkeletalFinSets )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( O );</span>
 A CAP category with name Opposite( SkeletalFinSets ):
 
-257 primitive operations were used to derive 273 operations for this category \
+277 primitive operations were used to derive 293 operations for this category \
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
 * IsEquippedWithHomomorphismStructure
+* IsSymmetricMonoidalCategory
 * IsBicartesianCoclosedCategory
 * IsFiniteBicompleteCategory
 and furthermore mathematically
 * IsSkeletalCategory
 * IsStrictCartesianCategory
 * IsStrictCocartesianCategory
+* IsSymmetricMonoidalCategoryStructureGivenByCoproduct
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">O_a := a / O;</span>
 &lt;An object in Opposite( SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">O_b := b / O;</span>
@@ -314,23 +320,25 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Toposes", "&gt;= 2024.02-08", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP", "&gt;= 2024.02-09", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP", "&gt;= 2025.08-05", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalCategoryOfFiniteSets( );</span>
 SkeletalFinSets
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( sFinSets );</span>
 A CAP category with name SkeletalFinSets:
 
-58 primitive operations were used to derive 348 operations for this category \
+58 primitive operations were used to derive 368 operations for this category \
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
 * IsEquippedWithHomomorphismStructure
+* IsSymmetricMonoidalCategory
 * IsElementaryTopos
 and furthermore mathematically
 * IsSkeletalCategory
 * IsStrictCartesianCategory
 * IsStrictCocartesianCategory
+* IsSymmetricMonoidalCategoryStructureGivenByDirectProduct
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := FinSet( sFinSets, 2 );</span>
 |2|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := FinSet( sFinSets, 3 );</span>
@@ -354,16 +362,18 @@ WrapperCategory( SkeletalFinSets )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( W );</span>
 A CAP category with name WrapperCategory( SkeletalFinSets ):
 
-324 primitive operations were used to derive 338 operations for this category \
+344 primitive operations were used to derive 358 operations for this category \
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
 * IsEquippedWithHomomorphismStructure
+* IsSymmetricMonoidalCategory
 * IsElementaryTopos
 and furthermore mathematically
 * IsSkeletalCategory
 * IsStrictCartesianCategory
 * IsStrictCocartesianCategory
+* IsSymmetricMonoidalCategoryStructureGivenByDirectProduct
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W_a := a / W;</span>
 &lt;An object in WrapperCategory( SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W_b := b / W;</span>
@@ -386,17 +396,19 @@ Opposite( SkeletalFinSets )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( O );</span>
 A CAP category with name Opposite( SkeletalFinSets ):
 
-257 primitive operations were used to derive 273 operations for this category \
+277 primitive operations were used to derive 293 operations for this category \
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
 * IsEquippedWithHomomorphismStructure
+* IsSymmetricMonoidalCategory
 * IsBicartesianCoclosedCategory
 * IsFiniteBicompleteCategory
 and furthermore mathematically
 * IsSkeletalCategory
 * IsStrictCartesianCategory
 * IsStrictCocartesianCategory
+* IsSymmetricMonoidalCategoryStructureGivenByCoproduct
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">O_a := a / O;</span>
 &lt;An object in Opposite( SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">O_b := b / O;</span>

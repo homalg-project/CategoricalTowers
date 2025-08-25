@@ -28,23 +28,25 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2024.02-08", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2024.02-09", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2025.08-05", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalCategoryOfFiniteSets( );[127X[104X
     [4X[28XSkeletalFinSets[128X[104X
     [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
     [4X[28XA CAP category with name SkeletalFinSets:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X58 primitive operations were used to derive 348 operations for this category \[128X[104X
+    [4X[28X58 primitive operations were used to derive 368 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategory[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
     [4X[28X* IsStrictCartesianCategory[128X[104X
     [4X[28X* IsStrictCocartesianCategory[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategoryStructureGivenByDirectProduct[128X[104X
     [4X[25Xgap>[125X [27Xa := FinSet( sFinSets, 2 );[127X[104X
     [4X[28X|2|[128X[104X
     [4X[25Xgap>[125X [27Xb := FinSet( sFinSets, 3 );[127X[104X
@@ -68,16 +70,18 @@
     [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
     [4X[28XA CAP category with name WrapperCategory( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X324 primitive operations were used to derive 338 operations for this category \[128X[104X
+    [4X[28X344 primitive operations were used to derive 358 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategory[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
     [4X[28X* IsStrictCartesianCategory[128X[104X
     [4X[28X* IsStrictCocartesianCategory[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategoryStructureGivenByDirectProduct[128X[104X
     [4X[25Xgap>[125X [27XW_a := a / W;[127X[104X
     [4X[28X<An object in WrapperCategory( SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XW_b := b / W;[127X[104X
@@ -100,17 +104,19 @@
     [4X[25Xgap>[125X [27XDisplay( O );[127X[104X
     [4X[28XA CAP category with name Opposite( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X257 primitive operations were used to derive 273 operations for this category \[128X[104X
+    [4X[28X277 primitive operations were used to derive 293 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategory[128X[104X
     [4X[28X* IsBicartesianCoclosedCategory[128X[104X
     [4X[28X* IsFiniteBicompleteCategory[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
     [4X[28X* IsStrictCartesianCategory[128X[104X
     [4X[28X* IsStrictCocartesianCategory[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategoryStructureGivenByCoproduct[128X[104X
     [4X[25Xgap>[125X [27XO_a := a / O;[127X[104X
     [4X[28X<An object in Opposite( SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XO_b := b / O;[127X[104X
@@ -177,23 +183,25 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2024.02-08", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2024.02-09", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP", ">= 2025.08-05", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalCategoryOfFiniteSets( );[127X[104X
     [4X[28XSkeletalFinSets[128X[104X
     [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
     [4X[28XA CAP category with name SkeletalFinSets:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X58 primitive operations were used to derive 348 operations for this category \[128X[104X
+    [4X[28X58 primitive operations were used to derive 368 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategory[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
     [4X[28X* IsStrictCartesianCategory[128X[104X
     [4X[28X* IsStrictCocartesianCategory[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategoryStructureGivenByDirectProduct[128X[104X
     [4X[25Xgap>[125X [27Xa := FinSet( sFinSets, 2 );[127X[104X
     [4X[28X|2|[128X[104X
     [4X[25Xgap>[125X [27Xb := FinSet( sFinSets, 3 );[127X[104X
@@ -217,16 +225,18 @@
     [4X[25Xgap>[125X [27XDisplay( W );[127X[104X
     [4X[28XA CAP category with name WrapperCategory( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X324 primitive operations were used to derive 338 operations for this category \[128X[104X
+    [4X[28X344 primitive operations were used to derive 358 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategory[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
     [4X[28X* IsStrictCartesianCategory[128X[104X
     [4X[28X* IsStrictCocartesianCategory[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategoryStructureGivenByDirectProduct[128X[104X
     [4X[25Xgap>[125X [27XW_a := a / W;[127X[104X
     [4X[28X<An object in WrapperCategory( SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XW_b := b / W;[127X[104X
@@ -249,17 +259,19 @@
     [4X[25Xgap>[125X [27XDisplay( O );[127X[104X
     [4X[28XA CAP category with name Opposite( SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X257 primitive operations were used to derive 273 operations for this category \[128X[104X
+    [4X[28X277 primitive operations were used to derive 293 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategory[128X[104X
     [4X[28X* IsBicartesianCoclosedCategory[128X[104X
     [4X[28X* IsFiniteBicompleteCategory[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
     [4X[28X* IsStrictCartesianCategory[128X[104X
     [4X[28X* IsStrictCocartesianCategory[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategoryStructureGivenByCoproduct[128X[104X
     [4X[25Xgap>[125X [27XO_a := a / O;[127X[104X
     [4X[28X<An object in Opposite( SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XO_b := b / O;[127X[104X

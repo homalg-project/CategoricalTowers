@@ -35,88 +35,45 @@
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XListKnownDoctrines( );[127X[104X
-    [4X[28X[ "IsCapCategory", \[128X[104X
-    [4X[28X  "IsEnrichedOverCommutativeRegularSemigroup", \[128X[104X
-    [4X[28X  "IsAbCategory", \[128X[104X
-    [4X[28X  "IsCategoryWithTerminalObject", \[128X[104X
-    [4X[28X  "IsCartesianCategory", \[128X[104X
-    [4X[28X  "IsCategoryWithInitialObject",[128X[104X
-    [4X[28X  "IsCocartesianCategory", \[128X[104X
-    [4X[28X  "IsBicartesianCategory", \[128X[104X
-    [4X[28X  "IsCategoryWithZeroObject", \[128X[104X
-    [4X[28X  "IsAdditiveCategory", \[128X[104X
-    [4X[28X  "IsCategoryWithCoequalizers", \[128X[104X
-    [4X[28X  "IsCategoryWithCokernels", \[128X[104X
-    [4X[28X  "IsCategoryWithEqualizers",[128X[104X
-    [4X[28X  "IsCategoryWithKernels", \[128X[104X
-    [4X[28X  "IsFiniteCocompleteCategory", \[128X[104X
-    [4X[28X  "IsFiniteCompleteCategory", \[128X[104X
-    [4X[28X  "IsFiniteBicompleteCategory", \[128X[104X
-    [4X[28X  "IsPreAbelianCategory", \[128X[104X
-    [4X[28X  "IsAbelianCategory",[128X[104X
-    [4X[28X  "IsAbelianCategoryWithEnoughInjectives", \[128X[104X
-    [4X[28X  "IsAbelianCategoryWithEnoughProjectives", \[128X[104X
-    [4X[28X  "IsCartesianClosedCategory", \[128X[104X
-    [4X[28X  "IsDistributiveCategory",[128X[104X
-    [4X[28X  "IsBicartesianClosedCategory", \[128X[104X
-    [4X[28X  "IsCocartesianCoclosedCategory", \[128X[104X
-    [4X[28X  "IsCodistributiveCategory", \[128X[104X
-    [4X[28X  "IsBicartesianCoclosedCategory", \[128X[104X
-    [4X[28X  "IsThinCategory", \[128X[104X
-    [4X[28X  "IsCartesianProset",[128X[104X
-    [4X[28X  "IsCocartesianProset", \[128X[104X
-    [4X[28X  "IsBicartesianProset", \[128X[104X
-    [4X[28X  "IsDistributiveBicartesianProset", \[128X[104X
-    [4X[28X  "IsCoHeytingAlgebroid", \[128X[104X
-    [4X[28X  "IsHeytingAlgebroid", \[128X[104X
-    [4X[28X  "IsBiHeytingAlgebroid",[128X[104X
-    [4X[28X  "IsPosetCategory", \[128X[104X
-    [4X[28X  "IsJoinSemiLattice", \[128X[104X
-    [4X[28X  "IsMeetSemiLattice", \[128X[104X
-    [4X[28X  "IsLattice", \[128X[104X
-    [4X[28X  "IsDistributiveLattice", \[128X[104X
-    [4X[28X  "IsCoHeytingAlgebra", \[128X[104X
-    [4X[28X  "IsHeytingAlgebra", \[128X[104X
-    [4X[28X  "IsBiHeytingAlgebra",[128X[104X
-    [4X[28X  "IsBooleanAlgebroid", \[128X[104X
-    [4X[28X  "IsBooleanAlgebra", \[128X[104X
-    [4X[28X  "IsMonoidalCategory", \[128X[104X
-    [4X[28X  "IsSymmetricMonoidalCategory", \[128X[104X
-    [4X[28X  "IsCategoryWithDecidableColifts", \[128X[104X
-    [4X[28X  "IsCategoryWithDecidableLifts",[128X[104X
-    [4X[28X  "IsClosedMonoidalCategory", \[128X[104X
-    [4X[28X  "IsMonoidalProset", \[128X[104X
-    [4X[28X  "IsClosedMonoidalProset", \[128X[104X
-    [4X[28X  "IsMonoidalPoset", \[128X[104X
-    [4X[28X  "IsClosedMonoidalPoset", \[128X[104X
-    [4X[28X  "IsMonoidalLattice", \[128X[104X
-    [4X[28X  "IsClosedMonoidalLattice",[128X[104X
-    [4X[28X  "IsCoclosedMonoidalCategory", \[128X[104X
-    [4X[28X  "IsCoclosedMonoidalProset", \[128X[104X
-    [4X[28X  "IsCoclosedMonoidalPoset", \[128X[104X
-    [4X[28X  "IsCoclosedMonoidalLattice", \[128X[104X
-    [4X[28X  "IsElementaryTopos",[128X[104X
-    [4X[28X  "IsEquippedWithHomomorphismStructure", \[128X[104X
-    [4X[28X  "IsObjectFiniteCategory", \[128X[104X
-    [4X[28X  "IsFinitelyPresentedCategory", \[128X[104X
-    [4X[28X  "IsFiniteCategory", \[128X[104X
-    [4X[28X  "IsLeftClosedMonoidalCategory",[128X[104X
-    [4X[28X  "IsLeftCoclosedMonoidalCategory", \[128X[104X
-    [4X[28X  "IsLinearCategoryOverCommutativeRing", \[128X[104X
+    [4X[28X[ "IsCapCategory", "IsEnrichedOverCommutativeRegularSemigroup",[128X[104X
+    [4X[28X  "IsAbCategory", "IsCategoryWithTerminalObject", "IsCartesianCategory",[128X[104X
+    [4X[28X  "IsCategoryWithInitialObject", "IsCocartesianCategory",[128X[104X
+    [4X[28X  "IsBicartesianCategory", "IsCategoryWithZeroObject", "IsAdditiveCategory",[128X[104X
+    [4X[28X  "IsCategoryWithCoequalizers", "IsCategoryWithCokernels",[128X[104X
+    [4X[28X  "IsCategoryWithEqualizers", "IsCategoryWithKernels",[128X[104X
+    [4X[28X  "IsFiniteCocompleteCategory", "IsFiniteCompleteCategory",[128X[104X
+    [4X[28X  "IsFiniteBicompleteCategory", "IsPreAbelianCategory", "IsAbelianCategory",[128X[104X
+    [4X[28X  "IsAbelianCategoryWithEnoughInjectives",[128X[104X
+    [4X[28X  "IsAbelianCategoryWithEnoughProjectives", "IsMonoidalCategory",[128X[104X
+    [4X[28X  "IsAdditiveMonoidalCategory", "IsCartesianClosedCategory",[128X[104X
+    [4X[28X  "IsDistributiveCategory", "IsBicartesianClosedCategory",[128X[104X
+    [4X[28X  "IsCocartesianCoclosedCategory", "IsCodistributiveCategory",[128X[104X
+    [4X[28X  "IsBicartesianCoclosedCategory", "IsThinCategory", "IsCartesianProset",[128X[104X
+    [4X[28X  "IsCocartesianProset", "IsBicartesianProset",[128X[104X
+    [4X[28X  "IsDistributiveBicartesianProset", "IsCoHeytingAlgebroid",[128X[104X
+    [4X[28X  "IsHeytingAlgebroid", "IsBiHeytingAlgebroid", "IsPosetCategory",[128X[104X
+    [4X[28X  "IsJoinSemiLattice", "IsMeetSemiLattice", "IsLattice",[128X[104X
+    [4X[28X  "IsDistributiveLattice", "IsCoHeytingAlgebra", "IsHeytingAlgebra",[128X[104X
+    [4X[28X  "IsBiHeytingAlgebra", "IsBooleanAlgebroid", "IsBooleanAlgebra",[128X[104X
+    [4X[28X  "IsSymmetricMonoidalCategory", "IsCategoryWithDecidableColifts",[128X[104X
+    [4X[28X  "IsCategoryWithDecidableLifts", "IsClosedMonoidalCategory",[128X[104X
+    [4X[28X  "IsMonoidalProset", "IsClosedMonoidalProset", "IsMonoidalPoset",[128X[104X
+    [4X[28X  "IsClosedMonoidalPoset", "IsMonoidalLattice", "IsClosedMonoidalLattice",[128X[104X
+    [4X[28X  "IsCoclosedMonoidalCategory", "IsCoclosedMonoidalProset",[128X[104X
+    [4X[28X  "IsCoclosedMonoidalPoset", "IsCoclosedMonoidalLattice", "IsElementaryTopos",[128X[104X
+    [4X[28X  "IsEquippedWithHomomorphismStructure", "IsObjectFiniteCategory",[128X[104X
+    [4X[28X  "IsFinitelyPresentedCategory", "IsFiniteCategory",[128X[104X
+    [4X[28X  "IsLeftClosedMonoidalCategory", "IsLeftCoclosedMonoidalCategory",[128X[104X
+    [4X[28X  "IsLinearCategoryOverCommutativeRing",[128X[104X
     [4X[28X  "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms",[128X[104X
-    [4X[28X  "IsSymmetricClosedMonoidalCategory", \[128X[104X
-    [4X[28X  "IsRigidSymmetricClosedMonoidalCategory", \[128X[104X
-    [4X[28X  "IsSymmetricCoclosedMonoidalCategory", \[128X[104X
-    [4X[28X  "IsRigidSymmetricCoclosedMonoidalCategory",[128X[104X
-    [4X[28X  "IsSymmetricMonoidalProset", \[128X[104X
-    [4X[28X  "IsSymmetricClosedMonoidalProset", \[128X[104X
-    [4X[28X  "IsSymmetricMonoidalPoset", \[128X[104X
-    [4X[28X  "IsSymmetricClosedMonoidalPoset", \[128X[104X
-    [4X[28X  "IsSymmetricMonoidalLattice",[128X[104X
-    [4X[28X  "IsSymmetricClosedMonoidalLattice", \[128X[104X
-    [4X[28X  "IsSymmetricCoclosedMonoidalProset", \[128X[104X
-    [4X[28X  "IsSymmetricCoclosedMonoidalPoset", \[128X[104X
-    [4X[28X  "IsSymmetricCoclosedMonoidalLattice" ][128X[104X
+    [4X[28X  "IsSymmetricClosedMonoidalCategory",[128X[104X
+    [4X[28X  "IsRigidSymmetricClosedMonoidalCategory",[128X[104X
+    [4X[28X  "IsSymmetricCoclosedMonoidalCategory",[128X[104X
+    [4X[28X  "IsRigidSymmetricCoclosedMonoidalCategory", "IsSymmetricMonoidalProset",[128X[104X
+    [4X[28X  "IsSymmetricClosedMonoidalProset", "IsSymmetricMonoidalPoset",[128X[104X
+    [4X[28X  "IsSymmetricClosedMonoidalPoset", "IsSymmetricMonoidalLattice",[128X[104X
+    [4X[28X  "IsSymmetricClosedMonoidalLattice", "IsSymmetricCoclosedMonoidalProset",[128X[104X
+    [4X[28X  "IsSymmetricCoclosedMonoidalPoset", "IsSymmetricCoclosedMonoidalLattice" ][128X[104X
     [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
