@@ -22,6 +22,7 @@ Display( A );
 #! * IsEquippedWithHomomorphismStructure
 #! * IsSymmetricClosedMonoidalCategory
 #! * IsAbelianCategoryWithEnoughProjectives
+#! * IsAdditiveMonoidalCategory
 #! and not yet algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts

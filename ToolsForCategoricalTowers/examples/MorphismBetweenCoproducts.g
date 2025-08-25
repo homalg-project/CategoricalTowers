@@ -6,23 +6,25 @@ LoadPackage( "ToolsForCategoricalTowers" );
 #! true
 LoadPackage( "Toposes", ">= 2024.02-08", false );
 #! true
-LoadPackage( "FinSetsForCAP", ">= 2024.02-09", false );
+LoadPackage( "FinSetsForCAP", ">= 2025.08-05", false );
 #! true
 sFinSets := SkeletalCategoryOfFiniteSets( );
 #! SkeletalFinSets
 Display( sFinSets );
 #! A CAP category with name SkeletalFinSets:
 #! 
-#! 58 primitive operations were used to derive 348 operations for this category \
+#! 58 primitive operations were used to derive 368 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
+#! * IsSymmetricMonoidalCategory
 #! * IsElementaryTopos
 #! and furthermore mathematically
 #! * IsSkeletalCategory
 #! * IsStrictCartesianCategory
 #! * IsStrictCocartesianCategory
+#! * IsSymmetricMonoidalCategoryStructureGivenByDirectProduct
 a := FinSet( sFinSets, 2 );
 #! |2|
 b := FinSet( sFinSets, 3 );
@@ -46,16 +48,18 @@ W := WrapperCategory( sFinSets,
 Display( W );
 #! A CAP category with name WrapperCategory( SkeletalFinSets ):
 #! 
-#! 324 primitive operations were used to derive 338 operations for this category \
+#! 344 primitive operations were used to derive 358 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
+#! * IsSymmetricMonoidalCategory
 #! * IsElementaryTopos
 #! and furthermore mathematically
 #! * IsSkeletalCategory
 #! * IsStrictCartesianCategory
 #! * IsStrictCocartesianCategory
+#! * IsSymmetricMonoidalCategoryStructureGivenByDirectProduct
 W_a := a / W;
 #! <An object in WrapperCategory( SkeletalFinSets )>
 W_b := b / W;
@@ -78,17 +82,19 @@ O := Opposite( sFinSets );
 Display( O );
 #! A CAP category with name Opposite( SkeletalFinSets ):
 #! 
-#! 257 primitive operations were used to derive 273 operations for this category \
+#! 277 primitive operations were used to derive 293 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
+#! * IsSymmetricMonoidalCategory
 #! * IsBicartesianCoclosedCategory
 #! * IsFiniteBicompleteCategory
 #! and furthermore mathematically
 #! * IsSkeletalCategory
 #! * IsStrictCartesianCategory
 #! * IsStrictCocartesianCategory
+#! * IsSymmetricMonoidalCategoryStructureGivenByCoproduct
 O_a := a / O;
 #! <An object in Opposite( SkeletalFinSets )>
 O_b := b / O;
