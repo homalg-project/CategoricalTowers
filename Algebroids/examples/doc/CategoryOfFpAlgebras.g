@@ -86,16 +86,27 @@ Display( counit1 );
 #!  |
 #! GF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, \
 #! 1*y⋅x + 1*x⋅y + 1*y ]
+IsWellDefined( counit1 );
+#! true
 o := A1.id_o;
-#! 1*id(o):(o) -≻ (o)
+#! [1*id(o)]:(o) -≻ (o)
 x := A1.x;
-#! 1*x:(o) -≻ (o)
+#! [1*x]:(o) -≻ (o)
 y := A1.y;
-#! 1*y:(o) -≻ (o)
+#! [1*y]:(o) -≻ (o)
 comult1 := Comultiplication( A1,
                    [ [ [ o, x ], [ x, o ], [ o, o ], [ y^2, y^2 ] ],
                      [ [ o, y ], [ y, o + y^2 ] ] ] );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
+Display( comult1 );
+#! GF(2)<a1,a2,a3,a4> / [ 1*a1^2 + 1*a1, 1*a2^3 + 1*a2, 1*a2⋅a1 + 1*a1⋅a2 + 1*a2, ... ]
+#!  ^
+#!  |
+#! [ 1*a2^2⋅a4^2 + 1*a1 + 1*a3 + 1*id(o), 1*a2⋅a4^2 + 1*a2 + 1*a4 ]
+#!  |
+#! GF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
+IsWellDefined( comult1 );
+#! true
 
 q2 := FinQuiver( "q(o)[x:o->o,y:o->o,z:o->o,t:o->o]" );
 #! FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" )

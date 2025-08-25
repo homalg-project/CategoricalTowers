@@ -70,9 +70,9 @@ true
 gap> M = Pair( ( L / Alg_F2 ) / relations, matrix_generators ) / MatAlg_F2;
 true
 gap> M.x;
-1*x:(o) -≻ (o)
+[1*x]:(o) -≻ (o)
 gap> M.y;
-1*y:(o) -≻ (o)
+[1*y]:(o) -≻ (o)
 gap> Dimension( M );
 6
 gap> NrGenerators( M );

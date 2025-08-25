@@ -66,11 +66,11 @@ gap> counit1 := Counit( A1, [ 1, 0 ] );
 gap> IsWellDefined( counit1 );
 true
 gap> o := A1.id_o;
-1*id(o):(o) -≻ (o)
+[1*id(o)]:(o) -≻ (o)
 gap> x := A1.x;
-1*x:(o) -≻ (o)
+[1*x]:(o) -≻ (o)
 gap> y := A1.y;
-1*y:(o) -≻ (o)
+[1*y]:(o) -≻ (o)
 gap> comult1 := Comultiplication( A1,
 >                    [ [ [ o, x ], [ x, o ], [ o, o ], [ y^2, y^2 ] ],
 >                      [ [ o, y ], [ y, o + y^2 ] ] ] );

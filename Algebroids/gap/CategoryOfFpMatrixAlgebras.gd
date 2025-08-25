@@ -88,12 +88,19 @@ end );
 #! @Description
 #!  The input is a finitely presented associative unital matrix $k$-algebras.
 #!  The output is a pair.
-#!  Its first entry is the underlying finitely presented $k$-algebra
+#!  Its first entry is the underlying finitely presented $k$-algebra.
 #!  Its second entry is a pair with first entry an object in the
 #!  the underlying category $V$ of $k$-matrices and
 #!  a list of morphisms in $V$.
 #! @Arguments fp_matrix_algebra
 DeclareAttribute( "DefiningPairOfFinitelyPresentedMatrixAlgebra",
+        IsObjectInCategoryOfFpMatrixAlgebras );
+
+#! @Description
+#!  The input is a finitely presented associative unital matrix $k$-algebras.
+#!  The output is is the underlying finitely presented $k$-algebra.
+#! @Arguments fp_matrix_algebra
+DeclareAttribute( "UnderlyingFpAlgebra",
         IsObjectInCategoryOfFpMatrixAlgebras );
 
 #! @Description
