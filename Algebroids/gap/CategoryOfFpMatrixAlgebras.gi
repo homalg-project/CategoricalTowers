@@ -786,7 +786,7 @@ InstallMethod( \.,
     
     name := NameRNam( string_as_int );
     
-    return AssociatedLinearClosureOfPathCategory( fp_matrix_algebra ).(name);
+    return AssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_matrix_algebra ).(name);
     
 end );
 
