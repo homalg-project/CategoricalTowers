@@ -97,6 +97,13 @@ DeclareAttribute( "DefiningPairOfFinitelyPresentedMatrixAlgebra",
         IsObjectInCategoryOfFpMatrixAlgebras );
 
 #! @Description
+#!  The input is a finitely presented associative unital matrix $k$-algebras.
+#!  The output is is the underlying finitely presented $k$-algebra.
+#! @Arguments fp_matrix_algebra
+DeclareAttribute( "UnderlyingFpAlgebra",
+        IsObjectInCategoryOfFpMatrixAlgebras );
+
+#! @Description
 #!  The input is a finitely presented associative unital matrix algebra.
 #!  The output is the underlying nonempty list of morphisms connecting the underlying
 #!  finitely presented algebras, where connecting means that their (eventually expensive)

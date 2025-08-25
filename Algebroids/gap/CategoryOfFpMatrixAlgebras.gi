@@ -638,13 +638,24 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
 end );
 
 ##
+InstallMethod( UnderlyingFpAlgebra,
+        "for a finitely presented matrix algebra",
+        [ IsObjectInCategoryOfFpMatrixAlgebras ],
+        
+  function( fp_matrix_algebra )
+    
+    return DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1];
+    
+end );
+
+##
 InstallMethod( NrGenerators,
         "for a finitely presented matrix algebra",
         [ IsObjectInCategoryOfFpMatrixAlgebras ],
         
   function( fp_matrix_algebra )
     
-    return NrGenerators( DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1] );
+    return NrGenerators( UnderlyingFpAlgebra( fp_matrix_algebra ) );
     
 end );
 
@@ -655,7 +666,7 @@ InstallMethod( Generators,
         
   function( fp_matrix_algebra )
     
-    return Generators( DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1] );
+    return Generators( UnderlyingFpAlgebra( fp_matrix_algebra ) );
     
 end );
 
@@ -717,7 +728,7 @@ InstallMethod( AssociatedLinearClosureOfPathCategory,
         
   function( fp_matrix_algebra )
     
-    return AssociatedLinearClosureOfPathCategory( DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1] );
+    return AssociatedLinearClosureOfPathCategory( UnderlyingFpAlgebra( fp_matrix_algebra ) );
     
 end );
 
@@ -728,7 +739,7 @@ InstallMethod( DefiningRelations,
         
   function( fp_matrix_algebra )
     
-    return DefiningRelations( DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1] );
+    return DefiningRelations( UnderlyingFpAlgebra( fp_matrix_algebra ) );
     
 end );
 
@@ -739,7 +750,7 @@ InstallMethod( AssociatedQuotientCategoryOfLinearClosureOfPathCategory,
         
   function( fp_matrix_algebra )
     
-    return AssociatedQuotientCategoryOfLinearClosureOfPathCategory( DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1] );
+    return AssociatedQuotientCategoryOfLinearClosureOfPathCategory( UnderlyingFpAlgebra( fp_matrix_algebra ) );
     
 end );
 
@@ -750,7 +761,7 @@ InstallMethod( GroebnerBasisOfDefiningRelations,
         
   function( fp_matrix_algebra )
     
-    return GroebnerBasisOfDefiningRelations( DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1] );
+    return GroebnerBasisOfDefiningRelations( UnderlyingFpAlgebra( fp_matrix_algebra ) );
     
 end );
 
@@ -761,7 +772,7 @@ InstallMethod( Dimension,
         
   function( fp_matrix_algebra )
     
-    return Dimension( DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1] );
+    return Dimension( UnderlyingFpAlgebra( fp_matrix_algebra ) );
     
 end );
 
@@ -791,7 +802,7 @@ InstallMethod( Counit,
     
     U := TensorUnit( FpMatAlg_k );
     
-    fp_algebra := DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1];
+    fp_algebra := UnderlyingFpAlgebra( fp_matrix_algebra );
     
     return MorphismConstructor( FpMatAlg_k,
                    fp_matrix_algebra,
@@ -812,7 +823,7 @@ InstallMethod( Comultiplication,
     
     fp_matrix_algebra2 := TensorProductOnObjects( FpMatAlg_k, fp_matrix_algebra, fp_matrix_algebra );
     
-    fp_algebra := DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1];
+    fp_algebra := UnderlyingFpAlgebra( fp_matrix_algebra );
     
     return MorphismConstructor( FpMatAlg_k,
                    fp_matrix_algebra,
