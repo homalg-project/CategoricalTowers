@@ -1225,7 +1225,7 @@ InstallMethod( \.,
     
     name := NameRNam( string_as_int );
     
-    return AssociatedLinearClosureOfPathCategory( fp_algebra ).(name);
+    return AssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_algebra ).(name);
     
 end );
 
@@ -1302,7 +1302,7 @@ InstallMethod( Counit,
     
     return MorphismConstructor( FpAlg_k,
                    fp_algebra,
-                   List( list_of_images_of_counit, r -> r * id ),
+                   List( list_of_images_of_counit, r -> r * MorphismDatum( id ) ),
                    U );
     
 end );
@@ -1313,7 +1313,7 @@ InstallMethod( Comultiplication,
         [ IsObjectInCategoryOfFpAlgebras, IsList ],
         
   function( fp_algebra, list_of_images_of_comult )
-    local FpAlg_k, fp_algebra_square, nrgens, nrgens2, Q, Qo, basis, d, basis_pairs, normalize_input, gens, gens1, gens2,
+    local FpAlg_k, fp_algebra_square, nrgens, nrgens2, o, basis, d, basis_pairs, normalize_input, gens, gens1, gens2,
           ambient, ambient_square, mor1, mor2, functor1_on_mors, functor2_on_mors, o_square;
     
     FpAlg_k := CapCategory( fp_algebra );
@@ -1328,13 +1328,11 @@ InstallMethod( Comultiplication,
     
     if ForAny( list_of_images_of_comult, image -> ForAny( image, IsRingElement ) ) then
         
-        Q := AssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_algebra );
+        o := fp_algebra.o;
         
-        Qo := SetOfObjects( Q )[1];
-        
-        if CanCompute( Q, "BasisOfExternalHom" ) then
+        if CanCompute( CapCategory( o ), "BasisOfExternalHom" ) then
             
-            basis := List( BasisOfExternalHom( Qo, Qo ), MorphismDatum );
+            basis := List( BasisOfExternalHom( o, o ), MorphismDatum );
             
             d := Length( basis );
             
@@ -1359,6 +1357,8 @@ InstallMethod( Comultiplication,
         fi;
         
     fi;
+    
+    list_of_images_of_comult := List( list_of_images_of_comult, list -> List( list, pair -> Pair( MorphismDatum( pair[1] ), MorphismDatum( pair[2] ) ) ) );
     
     Assert( 0, nrgens = Length( list_of_images_of_comult ) and ForAll( list_of_images_of_comult, IsList ) );
     Assert( 0, ForAll( list_of_images_of_comult, list -> ForAll( list, pair -> Length( pair ) = 2 and ForAll( pair, IsLinearClosureMorphism ) ) ) );
