@@ -29,7 +29,7 @@ gap> IsWellDefined( K );
 true
 gap> K = I;
 true
-gap> Alg_F2 := UnderlyingCategoryOfFpAlgebras( MatAlg_F2 );
+gap> Alg_F2 := UnderlyingCategory( MatAlg_F2 );
 CategoryOfFpAlgebras( GF(2) )
 gap> Mat_F2 := UnderlyingCategoryOfMatrices( MatAlg_F2 );
 Rows( GF(2) )

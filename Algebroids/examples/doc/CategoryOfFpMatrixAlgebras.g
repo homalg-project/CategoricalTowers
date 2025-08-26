@@ -46,7 +46,7 @@ Display( K );
 #! a finitely presented matrix algebra with an empty list of matrix generators
 K = I;
 #! true
-Alg_F2 := UnderlyingCategoryOfFpAlgebras( MatAlg_F2 );
+Alg_F2 := UnderlyingCategory( MatAlg_F2 );
 #! CategoryOfFpAlgebras( GF(2) )
 Display( Alg_F2 );
 #! A CAP category with name CategoryOfFpAlgebras( GF(2) ):

@@ -35,14 +35,14 @@ DeclareCategory( "IsMorphismInCategoryOfFpAlgebras", IsCapCategoryMorphism );
 
 #! @Description
 #!  The input is a category of finitely presented associative unital $k$-algebras.
-#!  The output is an underlying category of $k$-modules.
+#!  The output is an underlying category of $k$-matrices.
 #! @Arguments FpAlg_k
-DeclareAttribute( "UnderlyingCategory", IsCategoryOfFpAlgebras );
+DeclareAttribute( "UnderlyingCategoryOfMatrices", IsCategoryOfFpAlgebras );
 
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsCategoryOfFpAlgebras ],
+CapJitAddTypeSignature( "UnderlyingCategoryOfMatrices", [ IsCategoryOfFpAlgebras ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( UnderlyingCategoryOfMatrices( input_types[1].category ) );
     
 end );
 

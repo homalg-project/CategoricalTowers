@@ -73,12 +73,12 @@ InstallMethod( CategoryOfFpAlgebras,
     
     FpAlg_k!.supports_empty_limits := true;
     
-    SetUnderlyingCategory( FpAlg_k, linear_category );
+    SetUnderlyingCategoryOfMatrices( FpAlg_k, linear_category );
     SetCoefficientsRing( FpAlg_k, k );
     
     FpAlg_k!.compiler_hints :=
       rec( category_attribute_names :=
-           [ "UnderlyingCategory",
+           [ "UnderlyingCategoryOfMatrices",
              "CoefficientsRing",
              ] );
     
@@ -336,7 +336,7 @@ InstallMethod( CategoryOfFpAlgebras,
         
         nmgens := ParseListOfIndeterminates( [ Concatenation( var, "1..", String( nrgens ) ) ] );
         
-        B := UnderlyingCategory( FpAlg_k );
+        B := UnderlyingCategoryOfMatrices( FpAlg_k );
         
         L := CreateAmbientLinearClosureOfFpAlgebra( B, nrgens, var );
         
@@ -560,7 +560,7 @@ InstallMethod( CategoryOfFpAlgebras,
         
         nmgens := ParseListOfIndeterminates( [ Concatenation( var, "1..", String( nrgens ) ) ] );
         
-        B := UnderlyingCategory( FpAlg_k );
+        B := UnderlyingCategoryOfMatrices( FpAlg_k );
         
         L := CreateAmbientLinearClosureOfFpAlgebra( B, nrgens, var );
         
@@ -673,7 +673,7 @@ InstallMethod( CategoryOfFpAlgebras,
         
         nmgens := ParseListOfIndeterminates( [ Concatenation( var, "1..", String( nrgens ) ) ] );
         
-        B := UnderlyingCategory( FpAlg_k );
+        B := UnderlyingCategoryOfMatrices( FpAlg_k );
         
         L := CreateAmbientLinearClosureOfFpAlgebra( B, nrgens, var );
         
@@ -1029,7 +1029,7 @@ InstallMethod( AssociatedQuotientCategoryOfLinearClosureOfPathCategory,
     FpAlg_k := CapCategory( fp_algebra );
     
     return QuotientCategory( AssociatedLinearClosureOfPathCategory( fp_algebra ), DefiningRelations( fp_algebra )
-                   : range_of_HomStructure := UnderlyingCategory( FpAlg_k ) );
+                   : range_of_HomStructure := UnderlyingCategoryOfMatrices( FpAlg_k ) );
     
 end );
 
@@ -1159,7 +1159,7 @@ InstallMethod( \/,
                                   List( generators, get_labels ) ) );
     
     if HasRangeCategoryOfHomomorphismStructure( fp_linear_category_on_one_object ) and
-       IsIdenticalObj( RangeCategoryOfHomomorphismStructure( fp_linear_category_on_one_object ), UnderlyingCategory( FpAlg_k ) ) then
+       IsIdenticalObj( RangeCategoryOfHomomorphismStructure( fp_linear_category_on_one_object ), UnderlyingCategoryOfMatrices( FpAlg_k ) ) then
         
         SetAssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_algebra, fp_linear_category_on_one_object );
         
