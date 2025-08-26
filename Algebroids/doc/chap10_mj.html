@@ -260,16 +260,27 @@ GF(2) / [  ]
  |
 GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, \
 1*y⋅x + 1*x⋅y + 1*y ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( counit1 );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o := A1.id_o;</span>
-1*id(o):(o) -≻ (o)
+[1*id(o)]:(o) -≻ (o)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := A1.x;</span>
-1*x:(o) -≻ (o)
+[1*x]:(o) -≻ (o)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">y := A1.y;</span>
-1*y:(o) -≻ (o)
+[1*y]:(o) -≻ (o)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">comult1 := Comultiplication( A1,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                   [ [ [ o, x ], [ x, o ], [ o, o ], [ y^2, y^2 ] ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                     [ [ o, y ], [ y, o + y^2 ] ] ] );</span>
 &lt;A morphism in CategoryOfFpAlgebras( GF(2) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( comult1 );</span>
+GF(2)&lt;a1,a2,a3,a4&gt; / [ 1*a1^2 + 1*a1, 1*a2^3 + 1*a2, 1*a2⋅a1 + 1*a1⋅a2 + 1*a2, ... ]
+ ^
+ |
+[ 1*a2^2⋅a4^2 + 1*a1 + 1*a3 + 1*id(o), 1*a2⋅a4^2 + 1*a2 + 1*a4 ]
+ |
+GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( comult1 );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q2 := FinQuiver( "q(o)[x:o-&gt;o,y:o-&gt;o,z:o-&gt;o,t:o-&gt;o]" );</span>
 FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P2 := PathCategory( q2 );</span>
