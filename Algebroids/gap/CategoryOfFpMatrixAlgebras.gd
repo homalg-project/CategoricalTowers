@@ -36,7 +36,7 @@ DeclareCategory( "IsMorphismInCategoryOfFpMatrixAlgebras", IsCapCategoryMorphism
 #! @Description
 #!  The input is a category of finitely presented associative unital matrix algebras.
 #!  The output is the underlying category of finitely presented algebras.
-#! @Arguments MatAlg_k
+#! @Arguments FpMatAlg_k
 DeclareAttribute( "UnderlyingCategoryOfFpAlgebras", IsCategoryOfFpMatrixAlgebras );
 
 CapJitAddTypeSignature( "UnderlyingCategoryOfFpAlgebras", [ IsCategoryOfFpMatrixAlgebras ],
@@ -49,7 +49,7 @@ end );
 #! @Description
 #!  The input is a category of finitely presented associative unital matrix $k$-algebras.
 #!  The output is the underlying category of $k$-matrices.
-#! @Arguments MatAlg_k
+#! @Arguments FpMatAlg_k
 DeclareAttribute( "UnderlyingCategoryOfMatrices", IsCategoryOfFpMatrixAlgebras );
 
 CapJitAddTypeSignature( "UnderlyingCategoryOfMatrices", [ IsCategoryOfFpMatrixAlgebras ],
@@ -62,7 +62,7 @@ end );
 #! @Description
 #!  The input is a category of finitely presented associative unital matrix $k$-algebras.
 #!  The output is the underlying commutative ring $k$ of coefficients.
-#! @Arguments MatAlg_k
+#! @Arguments FpMatAlg_k
 DeclareAttribute( "CoefficientsRing", IsCategoryOfFpMatrixAlgebras );
 
 CapJitAddTypeSignature( "CoefficientsRing", [ IsCategoryOfFpMatrixAlgebras ],

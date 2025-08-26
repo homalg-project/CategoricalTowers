@@ -1326,13 +1326,13 @@ InstallMethod( Comultiplication,
     
     Assert( 0, 2 * nrgens = nrgens2 );
     
-    if ForAny( list_of_images_of_comult, image -> ForAny( image, IsRingElement ) ) then
+    if ForAny( list_of_images_of_comult, image -> IsList( image ) and ForAny( image, IsRingElement ) ) then
         
         o := fp_algebra.o;
         
         if CanCompute( CapCategory( o ), "BasisOfExternalHom" ) then
             
-            basis := List( BasisOfExternalHom( o, o ), MorphismDatum );
+            basis := BasisOfExternalHom( o, o );
             
             d := Length( basis );
             
@@ -1360,8 +1360,7 @@ InstallMethod( Comultiplication,
     
     list_of_images_of_comult := List( list_of_images_of_comult, list -> List( list, pair -> Pair( MorphismDatum( pair[1] ), MorphismDatum( pair[2] ) ) ) );
     
-    Assert( 0, nrgens = Length( list_of_images_of_comult ) and ForAll( list_of_images_of_comult, IsList ) );
-    Assert( 0, ForAll( list_of_images_of_comult, list -> ForAll( list, pair -> Length( pair ) = 2 and ForAll( pair, IsLinearClosureMorphism ) ) ) );
+    Assert( 0, ForAll( list_of_images_of_comult, list -> ForAll( list, pair -> IsList( pair ) and Length( pair ) = 2 and ForAll( pair, IsLinearClosureMorphism ) ) ) );
     
     gens := Generators( fp_algebra_square );
     
@@ -1373,7 +1372,7 @@ InstallMethod( Comultiplication,
     
     mor1 := MorphismConstructor( FpAlg_k, ambient, gens1, ambient_square );
     mor2 := MorphismConstructor( FpAlg_k, ambient, gens2, ambient_square );
-        
+    
     functor1_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mor1 )[2][2];
     functor2_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mor2 )[2][2];
     
