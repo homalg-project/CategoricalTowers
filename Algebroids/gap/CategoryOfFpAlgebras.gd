@@ -36,7 +36,7 @@ DeclareCategory( "IsMorphismInCategoryOfFpAlgebras", IsCapCategoryMorphism );
 #! @Description
 #!  The input is a category of finitely presented associative unital $k$-algebras.
 #!  The output is an underlying category of $k$-modules.
-#! @Arguments Alg_k
+#! @Arguments FpAlg_k
 DeclareAttribute( "UnderlyingCategory", IsCategoryOfFpAlgebras );
 
 CapJitAddTypeSignature( "UnderlyingCategory", [ IsCategoryOfFpAlgebras ],
@@ -49,7 +49,7 @@ end );
 #! @Description
 #!  The input is a category of finitely presented associative unital $k$-algebras.
 #!  The output is the underlying commutative ring $k$ of coefficients.
-#! @Arguments Alg_k
+#! @Arguments FpAlg_k
 DeclareAttribute( "CoefficientsRing", IsCategoryOfFpAlgebras );
 
 CapJitAddTypeSignature( "CoefficientsRing", [ IsCategoryOfFpAlgebras ],
