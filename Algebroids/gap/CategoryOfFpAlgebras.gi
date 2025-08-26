@@ -1225,7 +1225,9 @@ InstallMethod( \.,
     
     name := NameRNam( string_as_int );
     
-    return AssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_algebra ).(name);
+    ## never use AssociatedQuotientCategoryOfLinearClosureOfPathCategory below since it
+    ## will trigger a GB computation followed by a HasFiniteNumberOfMacaulayMorphisms/MacaulayMorphisms:
+    return AssociatedLinearClosureOfPathCategory( fp_algebra ).(name);
     
 end );
 
@@ -1302,7 +1304,7 @@ InstallMethod( Counit,
     
     return MorphismConstructor( FpAlg_k,
                    fp_algebra,
-                   List( list_of_images_of_counit, r -> r * MorphismDatum( id ) ),
+                   List( list_of_images_of_counit, r -> r * id ),
                    U );
     
 end );
@@ -1313,7 +1315,7 @@ InstallMethod( Comultiplication,
         [ IsObjectInCategoryOfFpAlgebras, IsList ],
         
   function( fp_algebra, list_of_images_of_comult )
-    local FpAlg_k, fp_algebra_square, nrgens, nrgens2, o, basis, d, basis_pairs, normalize_input, gens, gens1, gens2,
+    local FpAlg_k, fp_algebra_square, nrgens, nrgens2, Q, basis, d, basis_pairs, normalize_input, gens, gens1, gens2,
           ambient, ambient_square, mor1, mor2, functor1_on_mors, functor2_on_mors, o_square;
     
     FpAlg_k := CapCategory( fp_algebra );
@@ -1328,37 +1330,33 @@ InstallMethod( Comultiplication,
     
     if ForAny( list_of_images_of_comult, image -> IsList( image ) and ForAny( image, IsRingElement ) ) then
         
-        o := fp_algebra.o;
+        Q := AssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_algebra );
         
-        if CanCompute( CapCategory( o ), "BasisOfExternalHom" ) then
-            
-            basis := BasisOfExternalHom( o, o );
-            
-            d := Length( basis );
-            
-            ## must be compatible with corresponding line in method LinearCategoryOnOneObjectAsInternalMonoid (or \/ above it)
-            basis_pairs := List( basis, l ->
-                                 List( basis, r ->
-                                       Pair( l, r ) ) );
-            
-            basis_pairs := Concatenation( basis_pairs );
-            
-            normalize_input :=
-              function( image )
-                if IsList( image ) and Length( image ) = d^2 and ForAll( image, IsRingElement ) then
-                    return List( [ 1 .. d^2 ], i -> Pair( image[i] * basis_pairs[i][1], basis_pairs[i][2] ) );
-                else
-                    return image;
-                fi;
-            end;
-            
-            list_of_images_of_comult := List( list_of_images_of_comult, normalize_input );
-            
-        fi;
+        Assert( 0, CanCompute( Q, "BasisOfExternalHom" ) );
+        
+        basis := List( BasisOfExternalHom( Q.o, Q.o ), MorphismDatum );
+        
+        d := Length( basis );
+        
+        ## must be compatible with corresponding line in method LinearCategoryOnOneObjectAsInternalMonoid (or \/ above it)
+        basis_pairs := List( basis, l ->
+                             List( basis, r ->
+                                   Pair( l, r ) ) );
+        
+        basis_pairs := Concatenation( basis_pairs );
+        
+        normalize_input :=
+          function( image )
+            if IsList( image ) and Length( image ) = d^2 and ForAll( image, IsRingElement ) then
+                return List( [ 1 .. d^2 ], i -> Pair( image[i] * basis_pairs[i][1], basis_pairs[i][2] ) );
+            else
+                return image;
+            fi;
+        end;
+        
+        list_of_images_of_comult := List( list_of_images_of_comult, normalize_input );
         
     fi;
-    
-    list_of_images_of_comult := List( list_of_images_of_comult, list -> List( list, pair -> Pair( MorphismDatum( pair[1] ), MorphismDatum( pair[2] ) ) ) );
     
     Assert( 0, ForAll( list_of_images_of_comult, list -> ForAll( list, pair -> IsList( pair ) and Length( pair ) = 2 and ForAll( pair, IsLinearClosureMorphism ) ) ) );
     
@@ -1366,7 +1364,7 @@ InstallMethod( Comultiplication,
     
     gens1 := gens{[ 1 .. nrgens ]};
     gens2 := gens{[ nrgens + 1 .. nrgens2 ]};
-        
+    
     ambient := AmbientAlgebra( fp_algebra );
     ambient_square := AmbientAlgebra( fp_algebra_square );
     

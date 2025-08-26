@@ -786,7 +786,9 @@ InstallMethod( \.,
     
     name := NameRNam( string_as_int );
     
-    return AssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_matrix_algebra ).(name);
+    ## never use AssociatedQuotientCategoryOfLinearClosureOfPathCategory below since it
+    ## will trigger a GB computation followed by a HasFiniteNumberOfMacaulayMorphisms/MacaulayMorphisms:
+    return AssociatedLinearClosureOfPathCategory( fp_matrix_algebra ).(name);
     
 end );
 
