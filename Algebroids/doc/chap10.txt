@@ -6,14 +6,14 @@
   
   [1X10.1-1 UnderlyingCategory[101X
   
-  [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3XAlg_k[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3XFpAlg_k[103X ) [32X attribute[133X
   
   [33X[0;0YThe input is a category of finitely presented associative unital [23Xk[123X-algebras.
   The output is an underlying category of [23Xk[123X-modules.[133X
   
   [1X10.1-2 CoefficientsRing[101X
   
-  [33X[1;0Y[29X[2XCoefficientsRing[102X( [3XAlg_k[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCoefficientsRing[102X( [3XFpAlg_k[103X ) [32X attribute[133X
   
   [33X[0;0YThe input is a category of finitely presented associative unital [23Xk[123X-algebras.
   The output is the underlying commutative ring [23Xk[123X of coefficients.[133X
