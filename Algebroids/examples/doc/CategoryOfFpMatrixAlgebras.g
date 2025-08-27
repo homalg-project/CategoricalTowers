@@ -22,7 +22,7 @@ T := TerminalObject( MatAlg_F2 );
 Display( T );
 #! GF(2) / [ 1*id(o) ]
 #!
-#! a finitely presented matrix algebra with an empty list of matrix generators
+#! A finitely presented matrix algebra with an empty list of matrix generators
 iota := UniversalMorphismFromInitialObject( T );
 #! <A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>
 I := Source( iota );
@@ -30,7 +30,7 @@ I := Source( iota );
 Display( I );
 #! GF(2) / [  ]
 #! 
-#! a finitely presented matrix algebra with an empty list of matrix generators
+#! A finitely presented matrix algebra with an empty list of matrix generators
 Display( iota );
 #! GF(2) / [ 1*id(o) ]
 #!  ^
@@ -43,7 +43,7 @@ K := TensorUnit( MatAlg_F2 );
 Display( K );
 #! GF(2) / [  ]
 #! 
-#! a finitely presented matrix algebra with an empty list of matrix generators
+#! A finitely presented matrix algebra with an empty list of matrix generators
 K = I;
 #! true
 Alg_F2 := UnderlyingCategory( MatAlg_F2 );
@@ -104,7 +104,7 @@ Display( M );
 #! 
 #! GF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 #! 
-#! a finitely presented matrix algebra with the above matrix generators
+#! A finitely presented matrix algebra with the above matrix generators
 IsWellDefined( M );
 #! true
 M.x;
@@ -160,7 +160,7 @@ Display( P );
 #! GF(2)<a1,a2,a3,a4> / [ 1*a2^2 + 1*a2, 1*a3^3 + 1*a3, 1*a3⋅a2 + 1*a2⋅a3 + 1*a3, \
 #! ... ]
 #!
-#! a finitely presented matrix algebra with the above matrix generators
+#! A finitely presented matrix algebra with the above matrix generators
 counit := Counit( M, [ 1, 0 ] );
 #! <A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>
 Display( counit );

@@ -37,12 +37,12 @@ DeclareCategory( "IsMorphismInCategoryOfFpMatrixAlgebras", IsCapCategoryMorphism
 #!  The input is a category of finitely presented associative unital matrix algebras.
 #!  The output is the underlying category of finitely presented algebras.
 #! @Arguments FpMatAlg_k
-DeclareAttribute( "UnderlyingCategoryOfFpAlgebras", IsCategoryOfFpMatrixAlgebras );
+DeclareAttribute( "UnderlyingCategory", IsCategoryOfFpMatrixAlgebras );
 
-CapJitAddTypeSignature( "UnderlyingCategoryOfFpAlgebras", [ IsCategoryOfFpMatrixAlgebras ],
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsCategoryOfFpMatrixAlgebras ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( UnderlyingCategoryOfFpAlgebras( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
     
 end );
 
