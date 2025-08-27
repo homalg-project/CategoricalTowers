@@ -37,7 +37,7 @@
   
   [33X[1;0Y[29X[2XDefiningPairOfFinitelyPresentedMatrixAlgebra[102X( [3Xfp_matrix_algebra[103X ) [32X attribute[133X
   
-  [33X[0;0YThe  input is a finitely presented associative unital matrix [23Xk[123X-algebras. The
+  [33X[0;0YThe  input  is a finitely presented associative unital matrix [23Xk[123X-algebra. The
   output  is  a  pair.  Its  first  entry is the underlying finitely presented
   [23Xk[123X-algebra.  Its second entry is a pair with first entry an object in the the
   underlying category [23XV[123X of [23Xk[123X-matrices and a list of morphisms in [23XV[123X.[133X
@@ -46,7 +46,7 @@
   
   [33X[1;0Y[29X[2XUnderlyingFpAlgebra[102X( [3Xfp_matrix_algebra[103X ) [32X attribute[133X
   
-  [33X[0;0YThe  input is a finitely presented associative unital matrix [23Xk[123X-algebras. The
+  [33X[0;0YThe  input  is a finitely presented associative unital matrix [23Xk[123X-algebra. The
   output is is the underlying finitely presented [23Xk[123X-algebra.[133X
   
   [1X11.1-7 UnderlyingListOfMorphismsInCategoryOfFpAlgebras[101X
@@ -139,11 +139,11 @@
   
   [1X11.2-1 CategoryOfFpMatrixAlgebras[101X
   
-  [33X[1;0Y[29X[2XCategoryOfFpMatrixAlgebras[102X( [3XAlg_k[103X, [3XV[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCategoryOfFpMatrixAlgebras[102X( [3XAlg_k[103X ) [32X attribute[133X
   
-  [33X[0;0YThe  input  is  a  category  [3XAlg_k[103X  of  finitely  presented [23Xk[123X-algebras and a
-  category  [3XV[103X  of [23Xk[123X-matrices. The output is the category of finitely presented
-  associative unital matrix algebras over [23Xk[123X.[133X
+  [33X[0;0YThe  input  is a category [3XAlg_k[103X of finitely presented [23Xk[123X-algebras. The output
+  is  the  category  of  finitely presented associative unital matrix algebras
+  over [23Xk[123X.[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
@@ -191,7 +191,7 @@
     [4X[28Xa finitely presented matrix algebra with an empty list of matrix generators[128X[104X
     [4X[25Xgap>[125X [27XK = I;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XAlg_F2 := UnderlyingCategoryOfFpAlgebras( MatAlg_F2 );[127X[104X
+    [4X[25Xgap>[125X [27XAlg_F2 := UnderlyingCategory( MatAlg_F2 );[127X[104X
     [4X[28XCategoryOfFpAlgebras( GF(2) )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( Alg_F2 );[127X[104X
     [4X[28XA CAP category with name CategoryOfFpAlgebras( GF(2) ):[128X[104X
@@ -252,9 +252,9 @@
     [4X[25Xgap>[125X [27XIsWellDefined( M );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XM.x;[127X[104X
-    [4X[28X[1*x]:(o) -≻ (o)[128X[104X
+    [4X[28X1*x:(o) -≻ (o)[128X[104X
     [4X[25Xgap>[125X [27XM.y;[127X[104X
-    [4X[28X[1*y]:(o) -≻ (o)[128X[104X
+    [4X[28X1*y:(o) -≻ (o)[128X[104X
     [4X[25Xgap>[125X [27XDimension( M );[127X[104X
     [4X[28X6[128X[104X
     [4X[25Xgap>[125X [27XNrGenerators( M );[127X[104X
@@ -317,11 +317,11 @@
     [4X[25Xgap>[125X [27XIsWellDefined( counit );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xo := M.id_o;[127X[104X
-    [4X[28X[1*id(o)]:(o) -≻ (o)[128X[104X
+    [4X[28X1*id(o):(o) -≻ (o)[128X[104X
     [4X[25Xgap>[125X [27Xx := M.x;[127X[104X
-    [4X[28X[1*x]:(o) -≻ (o)[128X[104X
+    [4X[28X1*x:(o) -≻ (o)[128X[104X
     [4X[25Xgap>[125X [27Xy := M.y;[127X[104X
-    [4X[28X[1*y]:(o) -≻ (o)[128X[104X
+    [4X[28X1*y:(o) -≻ (o)[128X[104X
     [4X[25Xgap>[125X [27Xcomult := Comultiplication( M,[127X[104X
     [4X[25X>[125X [27X                  [ [ [ o, x ], [ x, o ], [ o, o ], [ y^2, y^2 ] ],[127X[104X
     [4X[25X>[125X [27X                    [ [ o, y ], [ y, o + y^2 ] ] ] );[127X[104X

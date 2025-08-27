@@ -49,7 +49,7 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X86EC0F0A78ECBC10">11.2 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X85686DA57AB4FD8B">11.2-1 CategoryOfFpMatrixAlgebras</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7C7002357E96EA9D">11.2-1 CategoryOfFpMatrixAlgebras</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X814513758254A3A1">11.2-2 CategoryOfFpMatrixAlgebras</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X7DE8E16C7C2D387B">11.3 <span class="Heading">Operations</span></a>
@@ -106,14 +106,14 @@
 <h5>11.1-5 DefiningPairOfFinitelyPresentedMatrixAlgebra</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningPairOfFinitelyPresentedMatrixAlgebra</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebras. The output is a pair. Its first entry is the underlying finitely presented <span class="SimpleMath">\(k\)</span>-algebra. Its second entry is a pair with first entry an object in the the underlying category <span class="SimpleMath">\(V\)</span> of <span class="SimpleMath">\(k\)</span>-matrices and a list of morphisms in <span class="SimpleMath">\(V\)</span>.</p>
+<p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebra. The output is a pair. Its first entry is the underlying finitely presented <span class="SimpleMath">\(k\)</span>-algebra. Its second entry is a pair with first entry an object in the the underlying category <span class="SimpleMath">\(V\)</span> of <span class="SimpleMath">\(k\)</span>-matrices and a list of morphisms in <span class="SimpleMath">\(V\)</span>.</p>
 
 <p><a id="X79A6434A7C3AB582" name="X79A6434A7C3AB582"></a></p>
 
 <h5>11.1-6 UnderlyingFpAlgebra</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingFpAlgebra</code>( <var class="Arg">fp_matrix_algebra</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebras. The output is is the underlying finitely presented <span class="SimpleMath">\(k\)</span>-algebra.</p>
+<p>The input is a finitely presented associative unital matrix <span class="SimpleMath">\(k\)</span>-algebra. The output is is the underlying finitely presented <span class="SimpleMath">\(k\)</span>-algebra.</p>
 
 <p><a id="X7F08C7B482604C75" name="X7F08C7B482604C75"></a></p>
 
@@ -196,12 +196,12 @@
 
 <h4>11.2 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X85686DA57AB4FD8B" name="X85686DA57AB4FD8B"></a></p>
+<p><a id="X7C7002357E96EA9D" name="X7C7002357E96EA9D"></a></p>
 
 <h5>11.2-1 CategoryOfFpMatrixAlgebras</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfFpMatrixAlgebras</code>( <var class="Arg">Alg_k</var>, <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>The input is a category <var class="Arg">Alg_k</var> of finitely presented <span class="SimpleMath">\(k\)</span>-algebras and a category <var class="Arg">V</var> of <span class="SimpleMath">\(k\)</span>-matrices. The output is the category of finitely presented associative unital matrix algebras over <span class="SimpleMath">\(k\)</span>.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfFpMatrixAlgebras</code>( <var class="Arg">Alg_k</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The input is a category <var class="Arg">Alg_k</var> of finitely presented <span class="SimpleMath">\(k\)</span>-algebras. The output is the category of finitely presented associative unital matrix algebras over <span class="SimpleMath">\(k\)</span>.</p>
 
 
 <div class="example"><pre>
@@ -250,7 +250,7 @@ GF(2) / [  ]
 a finitely presented matrix algebra with an empty list of matrix generators
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K = I;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Alg_F2 := UnderlyingCategoryOfFpAlgebras( MatAlg_F2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Alg_F2 := UnderlyingCategory( MatAlg_F2 );</span>
 CategoryOfFpAlgebras( GF(2) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Alg_F2 );</span>
 A CAP category with name CategoryOfFpAlgebras( GF(2) ):
@@ -311,9 +311,9 @@ a finitely presented matrix algebra with the above matrix generators
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( M );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M.x;</span>
-[1*x]:(o) -≻ (o)
+1*x:(o) -≻ (o)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M.y;</span>
-[1*y]:(o) -≻ (o)
+1*y:(o) -≻ (o)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( M );</span>
 6
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NrGenerators( M );</span>
@@ -376,11 +376,11 @@ GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( counit );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o := M.id_o;</span>
-[1*id(o)]:(o) -≻ (o)
+1*id(o):(o) -≻ (o)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := M.x;</span>
-[1*x]:(o) -≻ (o)
+1*x:(o) -≻ (o)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">y := M.y;</span>
-[1*y]:(o) -≻ (o)
+1*y:(o) -≻ (o)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">comult := Comultiplication( M,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                  [ [ [ o, x ], [ x, o ], [ o, o ], [ y^2, y^2 ] ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                    [ [ o, y ], [ y, o + y^2 ] ] ] );</span>

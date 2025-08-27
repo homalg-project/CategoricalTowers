@@ -67,7 +67,7 @@
   [2XCategoryOfAlgebroidsObject[102X, for IsAlgebroid 7.4-2 
   [2XCategoryOfFpAlgebras[102X, for IsCapCategory 10.2-1 
       for IsHomalgRing 10.2-2 
-  [2XCategoryOfFpMatrixAlgebras[102X, for IsCategoryOfFpAlgebras, IsCapCategory 11.2-1 
+  [2XCategoryOfFpMatrixAlgebras[102X, for IsCategoryOfFpAlgebras 11.2-1 
       for IsHomalgRing 11.2-2 
   [2XCoefficientsList[102X, for IsMorphismInAlgebroidFromDataTables 6.3-4 
   [2XCoefficientsOfSupportMorphisms[102X, for IsMorphismInAlgebroidFromDataTables 6.3-6 
@@ -211,9 +211,9 @@
   [2XTwist[102X, for IsAlgebroid, IsAlgebroid 7.3-1 
   [2XUnderlyingAlgebra[102X, for IsAlgebroid 5.2-17 
       for IsFpCategory 2.2-17 
-  [2XUnderlyingCategory[102X, for IsCategoryOfFpAlgebras 10.1-1 
   [2XUnderlyingCategoryOfFpAlgebras[102X, for IsCategoryOfFpMatrixAlgebras 11.1-1 
-  [2XUnderlyingCategoryOfMatrices[102X, for IsCategoryOfFpMatrixAlgebras 11.1-2 
+  [2XUnderlyingCategoryOfMatrices[102X, for IsCategoryOfFpAlgebras 10.1-1 
+      for IsCategoryOfFpMatrixAlgebras 11.1-2 
   [2XUnderlyingFpAlgebra[102X, for IsObjectInCategoryOfFpMatrixAlgebras 11.1-6 
   [2XUnderlyingListOfMorphismsInCategoryOfFpAlgebras[102X, for IsMorphismInCategoryOfFpMatrixAlgebras 11.1-7 
   [2XUnderlyingQuiver[102X, for IsAlgebroid 5.2-1 
