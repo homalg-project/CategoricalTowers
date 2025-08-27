@@ -4,9 +4,9 @@
   
   [1X11.1 [33X[0;0YAttributes[133X[101X
   
-  [1X11.1-1 UnderlyingCategoryOfFpAlgebras[101X
+  [1X11.1-1 UnderlyingCategory[101X
   
-  [33X[1;0Y[29X[2XUnderlyingCategoryOfFpAlgebras[102X( [3XFpMatAlg_k[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3XFpMatAlg_k[103X ) [32X attribute[133X
   
   [33X[0;0YThe  input  is  a  category  of finitely presented associative unital matrix
   algebras.  The  output  is  the  underlying  category  of finitely presented
@@ -167,7 +167,7 @@
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XGF(2) / [ 1*id(o) ][128X[104X
     [4X[28X[128X[104X
-    [4X[28Xa finitely presented matrix algebra with an empty list of matrix generators[128X[104X
+    [4X[28XA finitely presented matrix algebra with an empty list of matrix generators[128X[104X
     [4X[25Xgap>[125X [27Xiota := UniversalMorphismFromInitialObject( T );[127X[104X
     [4X[28X<A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XI := Source( iota );[127X[104X
@@ -175,7 +175,7 @@
     [4X[25Xgap>[125X [27XDisplay( I );[127X[104X
     [4X[28XGF(2) / [  ][128X[104X
     [4X[28X[128X[104X
-    [4X[28Xa finitely presented matrix algebra with an empty list of matrix generators[128X[104X
+    [4X[28XA finitely presented matrix algebra with an empty list of matrix generators[128X[104X
     [4X[25Xgap>[125X [27XDisplay( iota );[127X[104X
     [4X[28XGF(2) / [ 1*id(o) ][128X[104X
     [4X[28X ^[128X[104X
@@ -188,7 +188,7 @@
     [4X[25Xgap>[125X [27XDisplay( K );[127X[104X
     [4X[28XGF(2) / [  ][128X[104X
     [4X[28X[128X[104X
-    [4X[28Xa finitely presented matrix algebra with an empty list of matrix generators[128X[104X
+    [4X[28XA finitely presented matrix algebra with an empty list of matrix generators[128X[104X
     [4X[25Xgap>[125X [27XK = I;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XAlg_F2 := UnderlyingCategory( MatAlg_F2 );[127X[104X
@@ -248,7 +248,7 @@
     [4X[28X[128X[104X
     [4X[28XGF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
     [4X[28X[128X[104X
-    [4X[28Xa finitely presented matrix algebra with the above matrix generators[128X[104X
+    [4X[28XA finitely presented matrix algebra with the above matrix generators[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( M );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XM.x;[127X[104X
@@ -304,7 +304,7 @@
     [4X[28XGF(2)<a1,a2,a3,a4> / [ 1*a2^2 + 1*a2, 1*a3^3 + 1*a3, 1*a3⋅a2 + 1*a2⋅a3 + 1*a3, \[128X[104X
     [4X[28X... ][128X[104X
     [4X[28X[128X[104X
-    [4X[28Xa finitely presented matrix algebra with the above matrix generators[128X[104X
+    [4X[28XA finitely presented matrix algebra with the above matrix generators[128X[104X
     [4X[25Xgap>[125X [27Xcounit := Counit( M, [ 1, 0 ] );[127X[104X
     [4X[28X<A morphism in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( counit );[127X[104X
