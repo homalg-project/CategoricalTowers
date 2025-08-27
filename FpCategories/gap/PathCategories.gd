@@ -194,6 +194,9 @@ DeclareAttribute( "RelationsAmongGeneratingMorphisms",
 DeclareOperation( "ExtendFunctorToFpCategoryData",
         [ IsPathCategory, IsList, IsCapCategory ] );
 
+DeclareOperation( "ExtendContravariantFunctorToFpCategoryData",
+        [ IsPathCategory, IsList, IsCapCategory ] );
+
 DeclareGlobalFunction( "FpCategories_SORT_MORPHISMS_LIKE_QPA" );
 
 DeclareGlobalFunction( "CAP_INTERNAL_EXTRACT_STRING_OF_PATH" );
