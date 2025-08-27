@@ -1041,8 +1041,8 @@ InstallMethod( GroebnerBasisOfDefiningRelations,
   function( fp_algebra )
     
     ## using GroebnerBasisOfDefiningRelations( AssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_algebra ) )
-    ## would trigger the expensive HasFiniteNumberOfMacaulayMorphisms
-    return GroebnerBasis( AssociatedLinearClosureOfPathCategory( fp_algebra ), DefiningRelations( fp_algebra ) );
+    ## would trigger the more expensive HasFiniteNumberOfMacaulayMorphisms
+    return ReducedGroebnerBasis( AssociatedLinearClosureOfPathCategory( fp_algebra ), DefiningRelations( fp_algebra ) );
     
 end );
 
