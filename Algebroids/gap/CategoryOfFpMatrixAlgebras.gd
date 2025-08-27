@@ -86,7 +86,7 @@ CapJitAddTypeSignature( "CoefficientsRing", [ IsObjectInCategoryOfFpMatrixAlgebr
 end );
 
 #! @Description
-#!  The input is a finitely presented associative unital matrix $k$-algebras.
+#!  The input is a finitely presented associative unital matrix $k$-algebra.
 #!  The output is a pair.
 #!  Its first entry is the underlying finitely presented $k$-algebra.
 #!  Its second entry is a pair with first entry an object in the
@@ -97,7 +97,7 @@ DeclareAttribute( "DefiningPairOfFinitelyPresentedMatrixAlgebra",
         IsObjectInCategoryOfFpMatrixAlgebras );
 
 #! @Description
-#!  The input is a finitely presented associative unital matrix $k$-algebras.
+#!  The input is a finitely presented associative unital matrix $k$-algebra.
 #!  The output is is the underlying finitely presented $k$-algebra.
 #! @Arguments fp_matrix_algebra
 DeclareAttribute( "UnderlyingFpAlgebra",
@@ -206,12 +206,11 @@ DeclareOperation( "Comultiplication",
 ####################################
 
 #! @Description
-#!  The input is a category <A>Alg_k</A> of finitely presented $k$-algebras and
-#!  a category <A>V</A> of $k$-matrices.
+#!  The input is a category <A>Alg_k</A> of finitely presented $k$-algebras.
 #!  The output is the category of finitely presented associative unital matrix algebras over $k$.
-#! @Arguments Alg_k, V
-DeclareOperation( "CategoryOfFpMatrixAlgebras",
-        [ IsCategoryOfFpAlgebras, IsCapCategory ] );
+#! @Arguments Alg_k
+DeclareAttribute( "CategoryOfFpMatrixAlgebras",
+        IsCategoryOfFpAlgebras );
 #! @InsertChunk CategoryOfFpMatrixAlgebras
 
 #! @Description

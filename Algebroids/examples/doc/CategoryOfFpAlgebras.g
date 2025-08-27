@@ -89,11 +89,11 @@ Display( counit1 );
 IsWellDefined( counit1 );
 #! true
 o := A1.id_o;
-#! [1*id(o)]:(o) -≻ (o)
+#! 1*id(o):(o) -≻ (o)
 x := A1.x;
-#! [1*x]:(o) -≻ (o)
+#! 1*x:(o) -≻ (o)
 y := A1.y;
-#! [1*y]:(o) -≻ (o)
+#! 1*y:(o) -≻ (o)
 comult1 := Comultiplication( A1,
                    [ [ [ o, x ], [ x, o ], [ o, o ], [ y^2, y^2 ] ],
                      [ [ o, y ], [ y, o + y^2 ] ] ] );

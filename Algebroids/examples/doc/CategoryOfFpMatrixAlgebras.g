@@ -46,7 +46,7 @@ Display( K );
 #! a finitely presented matrix algebra with an empty list of matrix generators
 K = I;
 #! true
-Alg_F2 := UnderlyingCategoryOfFpAlgebras( MatAlg_F2 );
+Alg_F2 := UnderlyingCategory( MatAlg_F2 );
 #! CategoryOfFpAlgebras( GF(2) )
 Display( Alg_F2 );
 #! A CAP category with name CategoryOfFpAlgebras( GF(2) ):
@@ -108,9 +108,9 @@ Display( M );
 IsWellDefined( M );
 #! true
 M.x;
-#! [1*x]:(o) -≻ (o)
+#! 1*x:(o) -≻ (o)
 M.y;
-#! [1*y]:(o) -≻ (o)
+#! 1*y:(o) -≻ (o)
 Dimension( M );
 #! 6
 NrGenerators( M );
@@ -173,11 +173,11 @@ Display( counit );
 IsWellDefined( counit );
 #! true
 o := M.id_o;
-#! [1*id(o)]:(o) -≻ (o)
+#! 1*id(o):(o) -≻ (o)
 x := M.x;
-#! [1*x]:(o) -≻ (o)
+#! 1*x:(o) -≻ (o)
 y := M.y;
-#! [1*y]:(o) -≻ (o)
+#! 1*y:(o) -≻ (o)
 comult := Comultiplication( M,
                   [ [ [ o, x ], [ x, o ], [ o, o ], [ y^2, y^2 ] ],
                     [ [ o, y ], [ y, o + y^2 ] ] ] );
