@@ -74,9 +74,11 @@ jobs:
           if [ -d "CategoricalTowers/Toposes" ]; then make -C "CategoricalTowers/Toposes" doc; fi
       - name: Test CategoricalTowers
         run: |
+          export GAP_PRINT_BANNER=false
           make -C CategoricalTowers --trace -j $(nproc) --output-sync ci-test
       - name: Test MatroidGeneration
         run: |
+          export GAP_PRINT_BANNER=false
           make -C MatroidGeneration --trace -j $(nproc) --output-sync ci-test
       - name: Release package or simulate release
         run: |
