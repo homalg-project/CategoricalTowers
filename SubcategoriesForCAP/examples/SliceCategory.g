@@ -15,14 +15,17 @@ S := SliceCategory( B );
 Display( S );
 #! A CAP category with name A slice category of SkeletalFinSets:
 #! 
-#! 50 primitive operations were used to derive 314 operations for this category which algorithmically
+#! 50 primitive operations were used to derive 334 operations for this category which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
+#! * IsSymmetricMonoidalCategory
 #! * IsDistributiveCategory
 #! * IsFiniteBicompleteCategory
 #! and not yet algorithmically
 #! * IsElementaryTopos
+#! and furthermore mathematically
+#! * IsSymmetricMonoidalCategoryStructureGivenByDirectProduct
 o0 := MapOfFinSets( B, [ 1, 1 ], B ) / S;
 #! An object in the slice category given by: |2| → |2|
 o1 := MapOfFinSets( FinSet( 3 ), [ 0, 1, 0 ], B ) / S;

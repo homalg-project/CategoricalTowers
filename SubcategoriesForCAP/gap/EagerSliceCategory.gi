@@ -157,6 +157,10 @@ InstallMethod( SliceCategory,
         
         SetIsCartesianCategory( S, true );
         
+        if HasIsSymmetricMonoidalCategoryStructureGivenByDirectProduct( C ) and IsSymmetricMonoidalCategoryStructureGivenByDirectProduct( C ) then
+            SetIsSymmetricMonoidalCategoryStructureGivenByDirectProduct( S, true );
+        fi;
+        
         ##
         AddDirectProduct( S,
           function( cat, L )
@@ -195,6 +199,10 @@ InstallMethod( SliceCategory,
     if CanCompute( C, "UniversalMorphismFromCoproduct" ) then
         
         SetIsCocartesianCategory( S, true );
+        
+        if HasIsSymmetricMonoidalCategoryStructureGivenByCoproduct( C ) and IsSymmetricMonoidalCategoryStructureGivenByCoproduct( C ) then
+            SetIsSymmetricMonoidalCategoryStructureGivenByCoproduct( S, true );
+        fi;
         
         ##
         AddCoproduct( S,
