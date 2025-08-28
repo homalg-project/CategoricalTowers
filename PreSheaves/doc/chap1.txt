@@ -211,9 +211,12 @@
     [4X[25Xgap>[125X [27XDisplay( PSh );[127X[104X
     [4X[28XA CAP category with name PreSheaves( SkeletalFinSets, SkeletalFinSets ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X28 primitive operations were used to derive 172 operations for this category[128X[104X
+    [4X[28X28 primitive operations were used to derive 192 operations for this category[128X[104X
     [4X[28Xwhich not yet algorithmically[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategory[128X[104X
     [4X[28X* IsElementaryTopos[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategoryStructureGivenByDirectProduct[128X[104X
     [4X[25Xgap>[125X [27XMissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" );[127X[104X
     [4X[28X[ "IsEqualForObjects", "IsEqualForMorphisms", "IsCongruentForMorphisms",[128X[104X
     [4X[28X  "ExponentialOnObjects", "ExponentialOnMorphisms",[128X[104X
