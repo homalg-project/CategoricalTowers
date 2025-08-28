@@ -1123,7 +1123,7 @@ InstallMethod( \/,
     
     if IsQuotientCategory( fp_linear_category_on_one_object ) then
         Assert( 0, HasDefiningRelations( fp_linear_category_on_one_object ) );
-        L := UnderlyingCategory( fp_linear_category_on_one_object );
+        L := AmbientCategory( fp_linear_category_on_one_object );
         relations := DefiningRelations( fp_linear_category_on_one_object );
     elif IsLinearClosure( fp_linear_category_on_one_object ) then
         L := fp_linear_category_on_one_object;

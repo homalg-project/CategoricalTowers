@@ -45,7 +45,7 @@ InstallOtherMethod( QuotientCategory,
 
         objects := SetOfObjects( quo_C );
         
-        return List( SetOfGeneratingMorphisms( UnderlyingCategory( quo_C ) ),
+        return List( SetOfGeneratingMorphisms( AmbientCategory( quo_C ) ),
                      m -> MorphismConstructor( quo_C,
                              objects[ObjectIndex( Source( m ) )],
                              m,
@@ -207,7 +207,7 @@ InstallMethod( CanonicalRepresentative,
     
     qC := CapCategory( mor );
     
-    return ReductionOfMorphism( UnderlyingCategory( qC ), MorphismDatum( qC, mor ), GroebnerBasisOfDefiningRelations( qC ) );
+    return ReductionOfMorphism( AmbientCategory( qC ), MorphismDatum( qC, mor ), GroebnerBasisOfDefiningRelations( qC ) );
     
 end );
 
@@ -227,7 +227,7 @@ InstallMethod( ExternalHomsWithGivenLengthOp,
   function ( quo_C, len )
     local C, mors;
     
-    C := UnderlyingCategory( quo_C );
+    C := AmbientCategory( quo_C );
     
     mors := ExternalHomsWithGivenLength( C, len );
     
@@ -250,7 +250,7 @@ InstallMethod( OppositeQuotientOfPathCategory,
   function( quo_C )
     local C, C_op, relations_op, quo_C_op;
     
-    C := UnderlyingCategory( quo_C );
+    C := AmbientCategory( quo_C );
     
     C_op := OppositePathCategory( C );
     
@@ -339,7 +339,7 @@ InstallOtherMethod( DecompositionIndicesOfMorphism,
         
   function( C, mor )
     
-    return DecompositionIndicesOfMorphism( UnderlyingCategory( C ), MorphismDatum( C, mor ) );
+    return DecompositionIndicesOfMorphism( AmbientCategory( C ), MorphismDatum( C, mor ) );
     
 end );
 
@@ -470,7 +470,7 @@ InstallMethod( ViewString,
   function ( mor )
     local colors, str;
     
-    colors := UnderlyingQuiver( UnderlyingCategory( CapCategory( mor ) ) )!.colors;
+    colors := UnderlyingQuiver( AmbientCategory( CapCategory( mor ) ) )!.colors;
     
     str := ViewString( CanonicalRepresentative( mor ) );
     

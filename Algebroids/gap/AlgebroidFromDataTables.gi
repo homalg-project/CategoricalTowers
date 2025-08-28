@@ -71,7 +71,7 @@ InstallMethod( DataTablesOfCategory,
         TryNextMethod();
     fi;
     
-    A := UnderlyingCategory( qA );
+    A := AmbientCategory( qA );
     
     if not IsAlgebroidFromDataTables( A ) then
         TryNextMethod( );

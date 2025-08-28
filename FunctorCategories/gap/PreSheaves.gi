@@ -1066,7 +1066,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
 
                 F := ValuesOfPreSheaf( F );
                 
-                F := CapFunctor( UnderlyingCategory( OppositeOfSource( PSh ) ), F[1], F[2], Target( PSh ) );
+                F := CapFunctor( AmbientCategory( OppositeOfSource( PSh ) ), F[1], F[2], Target( PSh ) );
                 
                 return ForAll( relations, m -> IsCongruentForMorphisms( D, F( m[1] ), F( m[2] ) ) );
                 

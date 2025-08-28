@@ -16,9 +16,11 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
     if admissible_order = fail then
         
         if IsPathCategory( C ) then
-          admissible_order := C!.admissible_order;
+            admissible_order := C!.admissible_order;
+        elif IsQuotientCategory( C ) then
+            admissible_order := AmbientCategory( C )!.admissible_order;
         else
-          admissible_order := UnderlyingCategory( C )!.admissible_order;
+            Error( "the category `C` is neither IsPathCategory nor IsQuotientCategory" );
         fi;
         
     elif not admissible_order in [ "Dp", "dp" ] then
@@ -45,7 +47,7 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
         
     else
         
-        sorting_func := { mor_1, mor_2 } -> IsDescendingForMorphisms( UnderlyingCategory( C ), CanonicalRepresentative( mor_1 ), CanonicalRepresentative( mor_2 ), admissible_order );
+        sorting_func := { mor_1, mor_2 } -> IsDescendingForMorphisms( AmbientCategory( C ), CanonicalRepresentative( mor_1 ), CanonicalRepresentative( mor_2 ), admissible_order );
         
     fi;
     
@@ -332,7 +334,7 @@ InstallGlobalFunction( "INSTALL_VIEW_AND_DISPLAY_METHODS_IN_LINEAR_CLOSURES_OF_P
     
     if IsQuotientOfPathCategory( C ) then
         
-        C := UnderlyingCategory( C );
+        C := AmbientCategory( C );
         
     fi;
     
