@@ -736,6 +736,8 @@ InstallMethodWithCache( PreSheaves,
                     "IsFiniteCompleteCategory",
                     "IsFiniteCocompleteCategory",
                     "IsElementaryTopos",
+                    "IsSymmetricMonoidalCategoryStructureGivenByDirectProduct",
+                    "IsSymmetricMonoidalCategoryStructureGivenByCoproduct",
                     ];
     
     Append( properties, CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "properties", [ ] ) );

@@ -1,19 +1,22 @@
 #! @BeginChunk FiniteColimitCompletionWithStrictCoproducts
 
 #! @Example
-LoadPackage( "FunctorCategories", ">= 2024.11-03", false );
+LoadPackage( "FunctorCategories", ">= 2025.08-03", false );
 #! true
 FinBouquets;
 #! FinBouquets
 Display( FinBouquets );
 #! A CAP category with name FinBouquets:
 #! 
-#! 52 primitive operations were used to derive 336 operations for this category
+#! 52 primitive operations were used to derive 356 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
+#! * IsSymmetricMonoidalCategory
 #! * IsElementaryTopos
+#! and furthermore mathematically
+#! * IsSymmetricMonoidalCategoryStructureGivenByDirectProduct
 C := UnderlyingCategory( FinBouquets );
 #! PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) )
 C_hat := FiniteColimitCompletionWithStrictCoproducts( C );

@@ -747,6 +747,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     "IsFiniteCompleteCategory",
                     "IsFiniteCocompleteCategory",
                     "IsElementaryTopos",
+                    "IsSymmetricMonoidalCategoryStructureGivenByDirectProduct",
+                    "IsSymmetricMonoidalCategoryStructureGivenByCoproduct",
                     ];
     
     if ( HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms and
