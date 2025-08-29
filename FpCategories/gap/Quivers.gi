@@ -494,30 +494,48 @@ InstallMethod( ExternalHoms,
 end );
 
 ##
-InstallMethod( \.,
-        "for a cap-quiver and a label of an object or morphism",
-        [ IsFinQuiver, IsPosInt ],
+InstallOtherMethod( \/,
+        [ IsString, IsFinQuiver ],
   
-  function ( q, string_as_int )
-    local name, i;
+  function ( label, q )
+    local i;
     
-    name := NameRNam( string_as_int );
-    
-    i := Position( LabelsOfObjects( q ), name );
+    i := Position( LabelsOfObjects( q ), label );
     
     if i <> fail then
         return SetOfObjects( q )[i];
     fi;
     
-    i := Position( LabelsOfMorphisms( q ), name );
+    i := Position( LabelsOfMorphisms( q ), label );
     
     if i <> fail then
         return SetOfMorphisms( q )[i];
     fi;
     
-    Error( "the label '", name, "' can't be recognized!\n" );
+    Error( "the label '", label, "' can't be recognized!\n" );
     
 end );
+
+#= comment for Julia
+##
+InstallGlobalFunction( INSTALL_DOT_METHOD,
+  function ( category_filter )
+    
+    ##
+    InstallMethod( \.,
+            [ category_filter, IsPosInt ],
+      
+      function ( C, string_as_int )
+        
+        return NameRNam( string_as_int ) / C;
+        
+    end );
+    
+end );
+
+##
+INSTALL_DOT_METHOD( IsFinQuiver );
+# =#
 
 ##
 InstallMethod( ObjectLabel,

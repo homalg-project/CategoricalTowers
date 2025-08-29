@@ -675,110 +675,117 @@ InstallOtherMethod( \/,
 end );
 
 ##
-InstallMethod( \.,
-        "for an algebroid from data table and a positive integer",
-        [ IsPathCategory, IsPosInt ],
+InstallMethod( \/,
+        [ IsString, IsPathCategory ],
   
-  function ( C, string_as_int )
-    local name, q, objs_labels, mors_labels, p, id_mors_labels, label, labels, l, m, power;
-    
-    name := NameRNam( string_as_int );
+  function ( label, C )
+    local q, objs_labels, gmors_labels, p, id_mors_labels, sub_labels, gmor_label, l, m, power;
     
     q := UnderlyingQuiver( C );
     
     objs_labels := LabelsOfObjects( q );
-    mors_labels := LabelsOfMorphisms( q );
+    gmors_labels := LabelsOfMorphisms( q );
     
-    p := Position( objs_labels, name );
+    p := Position( objs_labels, label );
     
     if p <> fail then
-        return SetOfObjects( C )[p];
+        
+        return SetOfObjectsOfCategory( C )[p];
+        
     fi;
     
     id_mors_labels := List( objs_labels, obj -> Concatenation( "id(", obj, ")" ) );
     
-    if name in id_mors_labels then
+    if label in id_mors_labels then
         
-        label := name{[4 .. Length(name) - 1]};
+        label := label{ [ 4 .. Length( label ) - 1 ] };
         
         if label in objs_labels then
-            return IdentityMorphism( C, C.(label) );
+            
+            return IdentityMorphism( C, label / C );
+            
         fi;
         
     fi;
     
     id_mors_labels := List( objs_labels, obj -> Concatenation( "id_", obj ) );
     
-    if name in id_mors_labels then
+    if label in id_mors_labels then
         
-        label := name{[4 .. Length(name)]};
+        label := label{ [ 4 .. Length( label ) ] };
         
         if label in objs_labels then
-            return IdentityMorphism( C, C.(label) );
+            
+            return IdentityMorphism( C, label / C );
+            
         fi;
         
     fi;
     
-    p := Position( mors_labels, name );
+    p := Position( gmors_labels, label );
     
     if p <> fail then
-        return SetOfGeneratingMorphisms( C )[p];
+        
+        return SetOfGeneratingMorphismsOfCategory( C )[p];
+        
     fi;
     
-    if ForAny( [ "⋅", "*" ], s -> PositionSublist( name, s ) <> fail ) then
+    if ForAny( [ "⋅", "*" ], s -> PositionSublist( label, s ) <> fail ) then
       
-      labels := SplitString( ReplacedString( name, "⋅", "*" ), "*" );
+      sub_labels := SplitString( ReplacedString( label, "⋅", "*" ), "*" );
       
-      return PreComposeList( C, List( labels, label -> C.(label) ) );
+      return PreComposeList( C, List( sub_labels, sub_label -> sub_label / C ) );
       
     else
       
-      # starting matching at the end is usually less error prone
-      p := PositionProperty( mors_labels, label -> Length( name ) >= Length( label ) and IsMatchingSublist( name, label, Length( name ) - Length( label ) + 1 ) );
+      p := PositionProperty( gmors_labels, gmor_label -> EndsWith( label, gmor_label ) );
       
       if p <> fail then
           
-          label := mors_labels[p];
+          gmor_label := gmors_labels[p];
           
-          l := Length( name ) - Length( label );
+          l := Length( label ) - Length( gmor_label );
           
-          m := SetOfGeneratingMorphisms( C )[p];
+          m := SetOfGeneratingMorphismsOfCategory( C )[p];
           
           if l = 0 then
+              
               return m;
+              
           else
-              return PreCompose( C, C.(name{[1 .. l]}), m );
+              
+              return PreCompose( C, label{[ 1 .. l ]} / C, m );
+              
           fi;
           
       else
           
-          p := Positions( name, '^' );
+          p := Positions( label, '^' );
           
           if p <> [ ] then
               
               p := Last( p );
               
-              power := Int( name{[ p + 1 .. Length( name ) ]} );
+              power := Int( label{[ p + 1 .. Length( label ) ]} );
               
               if power <> fail then
                     
-                    name := name{[ 1 .. p - 1 ]};
+                    label := label{[ 1 .. p - 1 ]};
                     
-                    p := PositionProperty( mors_labels,
-                                  label -> Length( name ) >= Length( label ) and IsMatchingSublist( name, label, Length( name ) - Length( label ) + 1 ) );
+                    p := PositionProperty( gmors_labels, gmor_label -> EndsWith( label, gmor_label ) );
                     
                     if p <> fail then
                         
-                        label := mors_labels[p];
+                        gmor_label := gmors_labels[p];
                         
-                        l := Length( name ) - Length( label );
+                        l := Length( label ) - Length( gmor_label );
                         
-                        m := PreComposeList( C, ListWithIdenticalEntries( power, SetOfGeneratingMorphisms( C )[p] ) );
+                        m := PreComposeList( C, ListWithIdenticalEntries( power, SetOfGeneratingMorphismsOfCategory( C )[p] ) );
                         
                         if l = 0 then
                             return m;
                         else
-                            return PreCompose( C, C.(name{[1 .. l]}), m );
+                            return PreCompose( C, label{[ 1 .. l ]} / C, m );
                         fi;
                         
                     fi;
@@ -791,9 +798,14 @@ InstallMethod( \.,
       
     fi;
     
-    Error( "the label '", name, "' can't be recognized! please try 'f*g' (or 'f⋅g') instead of 'fg'; and 'f*f' (or 'f⋅f') instead of 'f^2'\n" );
+    Error( "the label '", label, "' can't be recognized! please try 'f*g' (or 'f⋅g') instead of 'fg'; and 'f*f' (or 'f⋅f') instead of 'f^2'\n" );
     
 end );
+
+#= comment for Julia
+##
+INSTALL_DOT_METHOD( IsPathCategory );
+# =#
 
 ##
 InstallMethod( OppositePathCategory,
