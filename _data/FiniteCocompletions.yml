@@ -1,5 +1,5 @@
 name: FiniteCocompletions
-version: "2025.08-05"
+version: "2025.08-06"
 license: "GPL-2.0-or-later"
 date: 2025-08-29
 description: |
@@ -44,16 +44,16 @@ needed-pkgs:
       version: ">= 2024.03-04"
       url: "https://homalg-project.github.io/pkg/Locales"
     - name: "QuotientCategories"
-      version: ">= 2025.08-02"
+      version: ">= 2025.08-03"
       url: "https://homalg-project.github.io/pkg/QuotientCategories"
     - name: "FpCategories"
-      version: ">= 2024.09-06"
+      version: ">= 2025.08-03"
       url: "https://homalg-project.github.io/pkg/FpCategories"
     - name: "Algebroids"
       version: ">= 2024.09-04"
       url: "https://homalg-project.github.io/pkg/Algebroids"
     - name: "PreSheaves"
-      version: ">= 2024.11-02"
+      version: ">= 2025.08-03"
       url: "https://homalg-project.github.io/pkg/PreSheaves"
 
 www: https://homalg-project.github.io/pkg/FiniteCocompletions
@@ -62,11 +62,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FiniteCocompleti
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.08-05/FiniteCocompletions-2025.08-05.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.08-06/FiniteCocompletions-2025.08-06.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.08-05/FiniteCocompletions-2025.08-05.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.08-06/FiniteCocompletions-2025.08-06.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.08-05/FiniteCocompletions-2025.08-05-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.08-06/FiniteCocompletions-2025.08-06-manual.pdf
 
 abstract: |
 
@@ -79,7 +79,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Bar29</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>FiniteCocompletions, Finite (co)product/(co)limit (co)completions,
-             Version 2025.08-05</i>
+             Version 2025.08-06</i>
      (<span class='BibYear'>8-29</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FiniteCocompletions">https://homalg-project.github.io/pkg/FiniteCocompletions</a></span>.
@@ -91,7 +91,7 @@ bibtex: |
       author =           {Barakat, M.},
       title =            {{FiniteCocompletions},  {Finite  (co)product/(co)limit
                           (co)completions},                            {V}ersion
-                          2025.08\texttt{\symbol{45}}05},
+                          2025.08\texttt{\symbol{45}}06},
       month =            {5\texttt{\symbol{45}}},
       year =             {8\texttt{\symbol{45}}29},
       note =             {GAP package},
