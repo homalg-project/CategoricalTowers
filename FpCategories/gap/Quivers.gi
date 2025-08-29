@@ -4,38 +4,41 @@
 # Implementations
 #
 BindGlobal( "PARSE_CAP_QUIVER_DATUM_FROM_STRING",
-  function ( data )
-    local p, name, objs, mors, q_datum, g, s, t, mor;
+  function ( data_string )
+    local data, p, name, objs, min, max, mors, q_datum, g, s, t, mor;
     
-    data := ShallowCopy( data );
+    data := data_string;
     
-    p := Position( data, '(' );
+    data := ReplacedString( data, "→", "->" );
+    
+    p := PositionSublist( data, "(" );
     
     if p <> fail and p > 1 then
-        name := data{[1 .. p-1]};
+        name := data{ [ 1 .. p-1 ] };
     else
         Error( "please use the format \"q(A,B)[x:A->B,y:B->A]\"\n" );
     fi;
     
-    data := data{[p .. Length( data )]};
-    Remove( data, 1 );
-    Remove( data, Length( data ) );
+    data := data{ [ p + 1 .. Length( data ) - 1 ] };
     
-    data := ReplacedString( data, "≻", ">" );
-    data := ReplacedString( data, "→", "->" );
     data := ReplacedString( data, ")[", "|" );
     data := SplitString( data, "|" );
     
     if Int( data[1] ) <> fail then
         objs := List( [ 1 .. Int( data[1] ) ], String );
     elif PositionSublist( data[1], ".." ) <> fail then
-        p := PositionSublist( data[1], ".." );
-        objs := List( [ Int( data[1]{[ 1 .. p-1 ]} ) .. Int( data[1]{[ p+2 .. Length( data[1] ) ]} ) ], String );
+        data[1] := ReplacedString( data[1], " ", "" );
+        objs := SplitString( ReplacedString( data[1], "..", "," ), "," );
+        min := Int( objs[1] );
+        max := Int( objs[2] );
+        objs := List( [ min .. max  ], String );
     else
         objs := SplitString( data[1], "," );
     fi;
     
-    if Length( data ) > 1 then
+    Assert( 0, Length( data ) in [ 1, 2 ] );
+    
+    if ( Length( data ) = 2 ) and ( data[2] <> "" ) then
         mors := SplitString( data[2], "," );
     else
         mors := [ ];
