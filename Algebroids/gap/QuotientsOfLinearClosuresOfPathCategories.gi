@@ -45,7 +45,7 @@ InstallMethod( QuotientCategory,
       function( quo_kC )
         local kC;
         
-        kC := UnderlyingCategory( quo_kC );
+        kC := AmbientCategory( quo_kC );
         
         return List( SetOfGeneratingMorphisms( kC ), m ->
                      MorphismConstructor( quo_kC,
@@ -101,7 +101,7 @@ InstallMethod( QuotientCategory,
           function ( quo_kC, source, target )
             local kC, s, t;
             
-            kC := UnderlyingCategory( quo_kC );
+            kC := AmbientCategory( quo_kC );
             
             s := ObjectIndex( ObjectDatum( kC, ObjectDatum( quo_kC, source ) ) );
             t := ObjectIndex( ObjectDatum( kC, ObjectDatum( quo_kC, target ) ) );
@@ -115,7 +115,7 @@ InstallMethod( QuotientCategory,
           function ( quo_kC, mor )
             local kC, s, t, support_mor;
             
-            kC := UnderlyingCategory( quo_kC );
+            kC := AmbientCategory( quo_kC );
             
             s := ObjectIndex( ObjectDatum( kC, ObjectDatum( quo_kC, Source( mor ) ) ) );
             t := ObjectIndex( ObjectDatum( kC, ObjectDatum( quo_kC, Target( mor ) ) ) );
@@ -166,7 +166,7 @@ InstallMethod( QuotientCategory,
     
     k := UnderlyingRing( k_quo_C );
     
-    C := UnderlyingCategory( quo_C );
+    C := AmbientCategory( quo_C );
     
     q := UnderlyingQuiver( C );
     
@@ -205,7 +205,7 @@ InstallMethod( QuotientCategory,
       function ( quo_k_quo_C, obj_datum )
         local k_quo_C, quo_C, quo_kC;
         
-        k_quo_C := UnderlyingCategory( quo_k_quo_C );
+        k_quo_C := AmbientCategory( quo_k_quo_C );
         
         quo_C := UnderlyingCategory( k_quo_C );
         
@@ -220,11 +220,11 @@ InstallMethod( QuotientCategory,
       function ( quo_k_quo_C, obj )
         local k_quo_C, quo_kC, kC;
         
-        k_quo_C := UnderlyingCategory( quo_k_quo_C );
+        k_quo_C := AmbientCategory( quo_k_quo_C );
         
         quo_kC := ModelingCategory( quo_k_quo_C );
         
-        kC := UnderlyingCategory( quo_kC );
+        kC := AmbientCategory( quo_kC );
         
         return SetOfObjects( k_quo_C )[ObjectIndex( ObjectDatum( kC, ObjectDatum( quo_kC, obj ) ) )];
         
@@ -237,7 +237,7 @@ InstallMethod( QuotientCategory,
         
         quo_kC := ModelingCategory( quo_k_quo_C );
         
-        kC := UnderlyingCategory( quo_kC );
+        kC := AmbientCategory( quo_kC );
         
         coeffs := CoefficientsList( mor_datum );
         suppor := List( SupportMorphisms( mor_datum ), CanonicalRepresentative );
@@ -256,9 +256,9 @@ InstallMethod( QuotientCategory,
         
         quo_kC := ModelingCategory( quo_k_quo_C );
         
-        kC := UnderlyingCategory( quo_kC );
+        kC := AmbientCategory( quo_kC );
         
-        k_quo_C := UnderlyingCategory( quo_k_quo_C );
+        k_quo_C := AmbientCategory( quo_k_quo_C );
         
         quo_C := UnderlyingCategory( k_quo_C );
         
@@ -315,7 +315,7 @@ InstallMethod( QuotientCategory,
     
     quo_k_quo_C!.is_computable := true;
     
-    SetUnderlyingCategory( quo_k_quo_C, k_quo_C );
+    SetAmbientCategory( quo_k_quo_C, k_quo_C );
     SetDefiningRelations( quo_k_quo_C, relations );
     
     AddSetOfObjectsOfCategory( quo_k_quo_C,
@@ -375,7 +375,7 @@ InstallOtherMethod( DataTablesOfCategory,
         Error( "the linear closure category passed to 'DataTablesOfCategory' must be hom-finite!" );
     fi;
     
-    kC := UnderlyingCategory( quo_kC );
+    kC := AmbientCategory( quo_kC );
     
     if not IsLinearClosure( kC ) then
         
@@ -447,7 +447,7 @@ InstallGlobalFunction( INSTALL_CANONICAL_REPRESENTATIVE_METHODS_IN_QUOTIENT_CATE
   
   function ( quo_cat )
     
-    if IsPathCategory( UnderlyingCategory( UnderlyingCategory( quo_cat ) ) ) then
+    if IsPathCategory( UnderlyingCategory( AmbientCategory( quo_cat ) ) ) then
         
         ##
         InstallOtherMethod( CanonicalRepresentative,
@@ -458,7 +458,7 @@ InstallGlobalFunction( INSTALL_CANONICAL_REPRESENTATIVE_METHODS_IN_QUOTIENT_CATE
             
             quo_kC := CapCategory( mor );
             
-            kC := UnderlyingCategory( quo_kC );
+            kC := AmbientCategory( quo_kC );
             
             return ReductionOfMorphism( kC, MorphismDatum( quo_kC, mor ), GroebnerBasisOfDefiningRelations( quo_kC ) );
             
@@ -495,11 +495,11 @@ InstallGlobalFunction( INSTALL_VIEW_AND_DISPLAY_METHODS_IN_QUOTIENT_CATEGORIES_O
   function ( quo_cat )
     local q, C;
     
-    C := UnderlyingCategory( UnderlyingCategory( quo_cat ) );
+    C := UnderlyingCategory( AmbientCategory( quo_cat ) );
     
     if IsQuotientOfPathCategory( C ) then
       
-      C := UnderlyingCategory( C );
+      C := AmbientCategory( C );
       
     fi;
     

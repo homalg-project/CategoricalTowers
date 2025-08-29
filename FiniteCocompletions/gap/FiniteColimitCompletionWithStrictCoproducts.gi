@@ -383,7 +383,7 @@ InstallMethod( Display,
     
     C_hat := CapCategory( parallel_pair );
     
-    PSh := ModelingCategory( UnderlyingCategory( ModelingCategory( ModelingCategory( C_hat ) ) ) );
+    PSh := ModelingCategory( AmbientCategory( ModelingCategory( ModelingCategory( C_hat ) ) ) );
     
     Display( ObjectConstructor( PSh, ObjectDatum( parallel_pair ) ) );
     
@@ -401,7 +401,7 @@ InstallMethod( Display,
     
     C_hat := CapCategory( parallel_pair_morphism );
     
-    PSh := ModelingCategory( UnderlyingCategory( ModelingCategory( ModelingCategory( C_hat ) ) ) );
+    PSh := ModelingCategory( AmbientCategory( ModelingCategory( ModelingCategory( C_hat ) ) ) );
     
     source := ObjectConstructor( PSh, ObjectDatum( Source( parallel_pair_morphism ) ) );
     target := ObjectConstructor( PSh, ObjectDatum( Target( parallel_pair_morphism ) ) );

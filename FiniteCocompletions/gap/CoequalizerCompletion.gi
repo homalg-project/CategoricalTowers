@@ -86,7 +86,7 @@ InstallMethod( CoequalizerCompletion,
               : FinalizeCategory := false );
     
     AddCoequalizer( CoequalizerPairs,
-      function( cat, target, parallel_morphisms )
+      function( CoequalizerPairs, target, parallel_morphisms )
         local n, ParallelPairs, C, target_VAst, target_V, target_A, target_s, target_t,
               parallel_morphisms_V, diagram_nS, nS, S, id_S,
               diagram_V, diagram_A, V, A, ones, mors, s, t;
@@ -97,11 +97,11 @@ InstallMethod( CoequalizerCompletion,
             return target;
         fi;
         
-        ParallelPairs := UnderlyingCategory( cat );
+        ParallelPairs := AmbientCategory( CoequalizerPairs );
         
         C := UnderlyingCategory( ParallelPairs );
         
-        target_VAst := ObjectDatum( ParallelPairs, ObjectDatum( cat, target ) );
+        target_VAst := ObjectDatum( ParallelPairs, ObjectDatum( CoequalizerPairs, target ) );
         
         target_V := target_VAst[1][1];
         target_A := target_VAst[1][2];
@@ -110,7 +110,7 @@ InstallMethod( CoequalizerCompletion,
         
         parallel_morphisms_V := List( parallel_morphisms, mor ->
                                       MorphismDatum( ParallelPairs,
-                                              MorphismDatum( cat, mor ) )[1] );
+                                              MorphismDatum( CoequalizerPairs, mor ) )[1] );
         
         diagram_nS := List( parallel_morphisms_V, Source );
         nS := Coproduct( C, diagram_nS );
@@ -154,35 +154,35 @@ InstallMethod( CoequalizerCompletion,
                              1,
                              V ) );
         
-        return ObjectConstructor( cat,
+        return ObjectConstructor( CoequalizerPairs,
                        ObjectConstructor( ParallelPairs,
                                Pair( Pair( V, A ), Pair( s, t ) ) ) );
         
     end );
     
     AddProjectionOntoCoequalizerWithGivenCoequalizer( CoequalizerPairs,
-      function( cat, target, parallel_morphisms, coequalizer )
+      function( CoequalizerPairs, target, parallel_morphisms, coequalizer )
         local n, ParallelPairs, C, target_VAst, target_V, target_A, parallel_morphisms_V, diagram_nS, nS, S,
               diagram_V, diagram_A, coequalizer_VAst, coequalizer_V, coequalizer_A, V, A;
         
         n := Length( parallel_morphisms );
         
         if n = 0 then
-            return IdentityMorphism( cat, target );
+            return IdentityMorphism( CoequalizerPairs, target );
         fi;
         
-        ParallelPairs := UnderlyingCategory( cat );
+        ParallelPairs := AmbientCategory( CoequalizerPairs );
         
         C := UnderlyingCategory( ParallelPairs );
         
-        target_VAst := ObjectDatum( ParallelPairs, ObjectDatum( cat, target ) );
+        target_VAst := ObjectDatum( ParallelPairs, ObjectDatum( CoequalizerPairs, target ) );
         
         target_V := target_VAst[1][1];
         target_A := target_VAst[1][2];
         
         parallel_morphisms_V := List( parallel_morphisms, mor ->
                                       MorphismDatum( ParallelPairs,
-                                              MorphismDatum( cat, mor ) )[1] );
+                                              MorphismDatum( CoequalizerPairs, mor ) )[1] );
         
         diagram_nS := List( parallel_morphisms_V, Source );
         nS := Coproduct( C, diagram_nS );
@@ -192,7 +192,7 @@ InstallMethod( CoequalizerCompletion,
         diagram_V := [ target_V, S ];
         diagram_A := [ target_A, nS ];
         
-        coequalizer_VAst := ObjectDatum( ParallelPairs, ObjectDatum( cat, coequalizer ) );
+        coequalizer_VAst := ObjectDatum( ParallelPairs, ObjectDatum( CoequalizerPairs, coequalizer ) );
         
         coequalizer_V := coequalizer_VAst[1][1];
         coequalizer_A := coequalizer_VAst[1][2];
@@ -207,12 +207,12 @@ InstallMethod( CoequalizerCompletion,
                      1,
                      coequalizer_A );
         
-        return MorphismConstructor( cat,
+        return MorphismConstructor( CoequalizerPairs,
                        target,
                        MorphismConstructor( ParallelPairs,
-                               ObjectDatum( cat, target ),
+                               ObjectDatum( CoequalizerPairs, target ),
                                Pair( V, A ),
-                               ObjectDatum( cat, coequalizer ) ),
+                               ObjectDatum( CoequalizerPairs, coequalizer ) ),
                        coequalizer );
         
     end );
@@ -226,7 +226,7 @@ InstallMethod( CoequalizerCompletion,
         
         CoequalizerPairs := ModelingCategory( CoequalizerCompletion );
         
-        ParallelPairs := UnderlyingCategory( CoequalizerPairs );
+        ParallelPairs := AmbientCategory( CoequalizerPairs );
         
         return ObjectConstructor( CoequalizerPairs,
                        ObjectConstructor( ParallelPairs,
@@ -241,7 +241,7 @@ InstallMethod( CoequalizerCompletion,
         
         CoequalizerPairs := ModelingCategory( CoequalizerCompletion );
         
-        ParallelPairs := UnderlyingCategory( CoequalizerPairs );
+        ParallelPairs := AmbientCategory( CoequalizerPairs );
         
         return ObjectDatum( ParallelPairs,
                        ObjectDatum( CoequalizerPairs,
@@ -256,7 +256,7 @@ InstallMethod( CoequalizerCompletion,
         
         CoequalizerPairs := ModelingCategory( CoequalizerCompletion );
         
-        ParallelPairs := UnderlyingCategory( CoequalizerPairs );
+        ParallelPairs := AmbientCategory( CoequalizerPairs );
         
         return MorphismConstructor( CoequalizerPairs,
                        source,
@@ -275,7 +275,7 @@ InstallMethod( CoequalizerCompletion,
         
         CoequalizerPairs := ModelingCategory( CoequalizerCompletion );
         
-        ParallelPairs := UnderlyingCategory( CoequalizerPairs );
+        ParallelPairs := AmbientCategory( CoequalizerPairs );
         
         return MorphismDatum( ParallelPairs,
                        MorphismDatum( CoequalizerPairs,

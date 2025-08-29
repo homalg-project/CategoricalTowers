@@ -301,7 +301,7 @@ InstallMethod( AssociatedAlgebroid,
   function( quot_of_lin_closure_of_path_cat )
     local L, A, objs, mors, rels, func;
     
-    L := UnderlyingCategory( quot_of_lin_closure_of_path_cat );
+    L := AmbientCategory( quot_of_lin_closure_of_path_cat );
     
     if not IsLinearClosure( L ) then
         TryNextMethod( );
