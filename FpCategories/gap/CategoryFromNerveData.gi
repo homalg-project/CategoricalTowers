@@ -657,21 +657,19 @@ InstallMethodForCompilerForCAP( CreateMorphism,
 end );
 
 ##
-InstallMethod( \.,
-        "for a category from nerve data and a positive integer",
-        [ IsCategoryFromNerveData, IsPosInt ],
+InstallMethod( \/,
+        "for a string and category from nerve data",
+        [ IsString, IsCategoryFromNerveData ],
         
-  function( C, string_as_int )
-    local name, labels;
-    
-    name := NameRNam( string_as_int );
+  function( name, C )
+    local labels;
     
     labels := C!.labels;
     
     if name in labels[1] then
         return CreateObject( C, -1 + SafePosition( labels[1], name ) );
     elif name in labels[2] then
-        return CreateMorphism( C, IndicesOfGeneratingMorphisms( C )[SafePosition( labels[2], name )] );
+        return CreateMorphism( C, Int( IndicesOfGeneratingMorphisms( C )[SafePosition( labels[2], name )] ) );
     elif name[1] in [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ] then
         return CreateMorphism( C, Int( name ) );
     fi;
@@ -679,6 +677,11 @@ InstallMethod( \.,
     Error( "no object or morphism of name ", name, "\n" );
     
 end );
+
+#= comment for Julia
+##
+INSTALL_DOT_METHOD( IsCategoryFromNerveData );
+# =#
 
 ##
 InstallMethod( OppositeNerveData,
