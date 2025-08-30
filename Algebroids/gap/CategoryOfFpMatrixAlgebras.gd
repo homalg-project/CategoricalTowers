@@ -208,7 +208,7 @@ DeclareOperation( "Comultiplication",
 #! @Description
 #!  The input is a category <A>Alg_k</A> of finitely presented $k$-algebras.
 #!  The output is the category of finitely presented associative unital matrix algebras over $k$.
-#! @Arguments Alg_k
+#! @Arguments FpAlg_k
 DeclareAttribute( "CategoryOfFpMatrixAlgebras",
         IsCategoryOfFpAlgebras );
 #! @InsertChunk CategoryOfFpMatrixAlgebras
