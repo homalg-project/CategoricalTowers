@@ -964,13 +964,22 @@ end ) );
 ##
 InstallMethod( CategoryOfFpAlgebras,
         "for a homalg ring",
-        [ IsHomalgRing ],
+        [ IsHomalgRing and IsCommutative ],
         
   function( k )
     
-    Assert( 0, HasIsCommutative( k ) and IsCommutative( k ) );
-    
     return CategoryOfFpAlgebras( CategoryOfRows( k ) );
+    
+end );
+
+##
+InstallMethod( CoefficientsRing,
+        "for a finitely presented algebra",
+        [ IsObjectInCategoryOfFpAlgebras ],
+        
+  function( fp_algebra )
+    
+    return CoefficientsRing( CapCategory( fp_algebra ) );
     
 end );
 
