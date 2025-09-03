@@ -145,6 +145,7 @@ Dependencies := rec(
                    [ "QPA", ">= 2.0" ],
                    [ "LinearClosuresForCAP", ">= 2025.07-03" ],
                    [ "FreydCategoriesForCAP", ">= 2025.06-04" ],
+                   [ "InternalModules", ">= 2025.07-02" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
