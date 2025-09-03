@@ -31,7 +31,7 @@ end );
 ##
 InstallMethod( CategoryOfFpAlgebras,
         "for a linear category",
-        [ IsCapCategory ],
+        [ IsCapCategory and IsLinearCategoryOverCommutativeRing ],
         
   FunctionWithNamedArguments(
   [ [ "FinalizeCategory", true ],
