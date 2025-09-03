@@ -1295,7 +1295,7 @@ InstallMethod( Counit,
         "for a finitely presented algebra and a list",
         [ IsObjectInCategoryOfFpAlgebras, IsList ],
         
-  function( fp_algebra, list_of_images_of_counit )
+  function( fp_algebra, counit_on_generators )
     local FpAlg_k, U, id;
     
     FpAlg_k := CapCategory( fp_algebra );
@@ -1306,7 +1306,7 @@ InstallMethod( Counit,
     
     return MorphismConstructor( FpAlg_k,
                    fp_algebra,
-                   List( list_of_images_of_counit, r -> r * id ),
+                   List( counit_on_generators, r -> r * id ),
                    U );
     
 end );
