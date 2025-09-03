@@ -1119,19 +1119,19 @@ InstallMethod( \/,
   function( fp_linear_category_on_one_object, FpAlg_k )
     local k, L, relations, object, generators, get_labels, fp_algebra;
     
+    Assert( 0, IsLinearClosure( fp_linear_category_on_one_object ) or IsQuotientCategory( fp_linear_category_on_one_object ) );
+    
     k := CommutativeRingOfLinearCategory( fp_linear_category_on_one_object );
     
-    if IsQuotientCategory( fp_linear_category_on_one_object ) then
-        Assert( 0, HasDefiningRelations( fp_linear_category_on_one_object ) );
-        L := AmbientCategory( fp_linear_category_on_one_object );
-        relations := DefiningRelations( fp_linear_category_on_one_object );
-    elif IsLinearClosure( fp_linear_category_on_one_object ) then
+    if IsLinearClosure( fp_linear_category_on_one_object ) then
         L := fp_linear_category_on_one_object;
         relations := [ ];
     else
-        Error( "the first argument `cat` should either be an `IsQuotientCategory` or an `IsLinearClosure`\n" );
+        Assert( 0, HasAmbientCategory( fp_linear_category_on_one_object ) and HasDefiningRelations( fp_linear_category_on_one_object ) );
+        L := AmbientCategory( fp_linear_category_on_one_object );
+        relations := DefiningRelations( fp_linear_category_on_one_object );
     fi;
-
+    
     object := SetOfObjects( L )[1];
     
     generators := SetOfGeneratingMorphisms( L );
