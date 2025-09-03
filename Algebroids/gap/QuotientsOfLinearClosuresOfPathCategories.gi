@@ -38,6 +38,7 @@ InstallMethod( QuotientCategory,
                            underlying_category := kC )
                       : FinalizeCategory := false );
     
+    SetUnderlyingQuiver( quo_kC, UnderlyingQuiver( C ) );
     SetDefiningRelations( quo_kC, relations );
     SetGroebnerBasisOfDefiningRelations( quo_kC, reduced_gb );
     
@@ -315,6 +316,7 @@ InstallMethod( QuotientCategory,
     
     quo_k_quo_C!.is_computable := true;
     
+    SetUnderlyingQuiver( quo_k_quo_C, UnderlyingQuiver( C ) );
     SetAmbientCategory( quo_k_quo_C, k_quo_C );
     SetDefiningRelations( quo_k_quo_C, relations );
     
