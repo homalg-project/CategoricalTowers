@@ -139,7 +139,7 @@
   
   [1X11.2-1 CategoryOfFpMatrixAlgebras[101X
   
-  [33X[1;0Y[29X[2XCategoryOfFpMatrixAlgebras[102X( [3XAlg_k[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCategoryOfFpMatrixAlgebras[102X( [3XFpAlg_k[103X ) [32X attribute[133X
   
   [33X[0;0YThe  input  is a category [3XAlg_k[103X of finitely presented [23Xk[123X-algebras. The output
   is  the  category  of  finitely presented associative unital matrix algebras

@@ -65,8 +65,8 @@
   [2XCategoryOfAlgebroidsMorphism[102X, for IsAlgebroidMorphism 7.4-4 
       for IsCategoryOfAlgebroidsObject, IsAlgebroidMorphism, IsCategoryOfAlgebroidsObject 7.4-3 
   [2XCategoryOfAlgebroidsObject[102X, for IsAlgebroid 7.4-2 
-  [2XCategoryOfFpAlgebras[102X, for IsCapCategory 10.2-1 
-      for IsHomalgRing 10.2-2 
+  [2XCategoryOfFpAlgebras[102X, for IsCapCategory and IsLinearCategoryOverCommutativeRing 10.2-1 
+      for IsHomalgRing and IsCommutative 10.2-2 
   [2XCategoryOfFpMatrixAlgebras[102X, for IsCategoryOfFpAlgebras 11.2-1 
       for IsHomalgRing 11.2-2 
   [2XCoefficientsList[102X, for IsMorphismInAlgebroidFromDataTables 6.3-4 
