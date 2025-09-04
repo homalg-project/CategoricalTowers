@@ -31,7 +31,7 @@ end );
 ##
 InstallMethod( CategoryOfFpAlgebras,
         "for a linear category",
-        [ IsCapCategory ],
+        [ IsCapCategory and IsLinearCategoryOverCommutativeRing ],
         
   FunctionWithNamedArguments(
   [ [ "FinalizeCategory", true ],
@@ -964,13 +964,22 @@ end ) );
 ##
 InstallMethod( CategoryOfFpAlgebras,
         "for a homalg ring",
-        [ IsHomalgRing ],
+        [ IsHomalgRing and IsCommutative ],
         
   function( k )
     
-    Assert( 0, HasIsCommutative( k ) and IsCommutative( k ) );
-    
     return CategoryOfFpAlgebras( CategoryOfRows( k ) );
+    
+end );
+
+##
+InstallMethod( CoefficientsRing,
+        "for a finitely presented algebra",
+        [ IsObjectInCategoryOfFpAlgebras ],
+        
+  function( fp_algebra )
+    
+    return CoefficientsRing( CapCategory( fp_algebra ) );
     
 end );
 
@@ -1119,19 +1128,19 @@ InstallMethod( \/,
   function( fp_linear_category_on_one_object, FpAlg_k )
     local k, L, relations, object, generators, get_labels, fp_algebra;
     
+    Assert( 0, IsLinearClosure( fp_linear_category_on_one_object ) or IsQuotientCategory( fp_linear_category_on_one_object ) );
+    
     k := CommutativeRingOfLinearCategory( fp_linear_category_on_one_object );
     
-    if IsQuotientCategory( fp_linear_category_on_one_object ) then
-        Assert( 0, HasDefiningRelations( fp_linear_category_on_one_object ) );
-        L := AmbientCategory( fp_linear_category_on_one_object );
-        relations := DefiningRelations( fp_linear_category_on_one_object );
-    elif IsLinearClosure( fp_linear_category_on_one_object ) then
+    if IsLinearClosure( fp_linear_category_on_one_object ) then
         L := fp_linear_category_on_one_object;
         relations := [ ];
     else
-        Error( "the first argument `cat` should either be an `IsQuotientCategory` or an `IsLinearClosure`\n" );
+        Assert( 0, HasAmbientCategory( fp_linear_category_on_one_object ) and HasDefiningRelations( fp_linear_category_on_one_object ) );
+        L := AmbientCategory( fp_linear_category_on_one_object );
+        relations := DefiningRelations( fp_linear_category_on_one_object );
     fi;
-
+    
     object := SetOfObjects( L )[1];
     
     generators := SetOfGeneratingMorphisms( L );
@@ -1295,7 +1304,7 @@ InstallMethod( Counit,
         "for a finitely presented algebra and a list",
         [ IsObjectInCategoryOfFpAlgebras, IsList ],
         
-  function( fp_algebra, list_of_images_of_counit )
+  function( fp_algebra, counit_on_generators )
     local FpAlg_k, U, id;
     
     FpAlg_k := CapCategory( fp_algebra );
@@ -1306,7 +1315,7 @@ InstallMethod( Counit,
     
     return MorphismConstructor( FpAlg_k,
                    fp_algebra,
-                   List( list_of_images_of_counit, r -> r * id ),
+                   List( counit_on_generators, r -> r * id ),
                    U );
     
 end );

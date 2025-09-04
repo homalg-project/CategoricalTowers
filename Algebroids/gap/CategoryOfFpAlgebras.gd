@@ -170,7 +170,7 @@ DeclareOperation( "Comultiplication",
 #!  The input is a $k$-linear category <A>lin_cat</A> of $k$-modules.
 #!  The output is the category of finitely presented associative unital algebras over $k$.
 #! @Arguments lin_cat
-DeclareAttribute( "CategoryOfFpAlgebras", IsCapCategory );
+DeclareAttribute( "CategoryOfFpAlgebras", IsCapCategory and IsLinearCategoryOverCommutativeRing );
 #! @InsertChunk CategoryOfFpAlgebras
 CapJitAddTypeSignature( "CategoryOfFpAlgebras", [ IsCapCategory ], function ( input_types )
     
@@ -182,7 +182,7 @@ end );
 #!  The input is a commutative ring <A>k</A>.
 #!  The output is the category of finitely presented associative unital algebras over $k$.
 #! @Arguments k
-DeclareAttribute( "CategoryOfFpAlgebras", IsHomalgRing );
+DeclareAttribute( "CategoryOfFpAlgebras", IsHomalgRing and IsCommutative );
 #! @InsertChunk NonCodistributivityOfCategoryOfFpAlgebras
 
 ####################################

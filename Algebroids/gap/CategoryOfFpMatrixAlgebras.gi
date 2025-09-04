@@ -640,6 +640,17 @@ InstallMethod( CategoryOfFpMatrixAlgebras,
 end );
 
 ##
+InstallMethod( CoefficientsRing,
+        "for a finitely presented matrix algebra",
+        [ IsObjectInCategoryOfFpMatrixAlgebras ],
+        
+  function( fp_matrix_algebra )
+    
+    return CoefficientsRing( CapCategory( fp_matrix_algebra ) );
+    
+end );
+
+##
 InstallMethod( UnderlyingFpAlgebra,
         "for a finitely presented matrix algebra",
         [ IsObjectInCategoryOfFpMatrixAlgebras ],
