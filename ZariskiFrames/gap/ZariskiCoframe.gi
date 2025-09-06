@@ -281,6 +281,10 @@ InstallMethod( IrreducibleComponents,
         return [ A ];
     fi;
     
+    if HasParametrizedObject( A ) then
+        Perform( components, function( component ) SetParametrizedObject( component, ParametrizedObject( A ) ); end );
+    fi;
+    
     return components;
     
 end );
