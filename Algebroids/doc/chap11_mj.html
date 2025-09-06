@@ -207,11 +207,11 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F2 := HomalgRingOfIntegersInSingular( 2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := HomalgRingOfIntegersInSingular( 2 );</span>
 GF(2)
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatAlg_F2 := CategoryOfFpMatrixAlgebras( F2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatAlg_F := CategoryOfFpMatrixAlgebras( F );</span>
 CategoryOfFpMatrixAlgebras( GF(2) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( MatAlg_F2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( MatAlg_F );</span>
 A CAP category with name CategoryOfFpMatrixAlgebras( GF(2) ):
 
 27 primitive operations were used to derive 76 operations for this category \
@@ -221,7 +221,7 @@ which algorithmically
 * IsSymmetricMonoidalCategory
 and not yet algorithmically
 * IsCategoryWithCoequalizers
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalObject( MatAlg_F2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalObject( MatAlg_F );</span>
 &lt;An object in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 GF(2) / [ 1*id(o) ]
@@ -242,7 +242,7 @@ GF(2) / [ 1*id(o) ]
 [  ]
  |
 GF(2) / [  ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := TensorUnit( MatAlg_F2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := TensorUnit( MatAlg_F );</span>
 &lt;An object in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( K );</span>
 GF(2) / [  ]
@@ -250,9 +250,9 @@ GF(2) / [  ]
 A finitely presented matrix algebra with an empty list of matrix generators
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K = I;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Alg_F2 := UnderlyingCategory( MatAlg_F2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Alg_F := UnderlyingCategory( MatAlg_F );</span>
 CategoryOfFpAlgebras( GF(2) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Alg_F2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Alg_F );</span>
 A CAP category with name CategoryOfFpAlgebras( GF(2) ):
 
 31 primitive operations were used to derive 130 operations for this category \
@@ -264,7 +264,7 @@ which algorithmically
 FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PathCategory( q );</span>
 PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := F2[P];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := F[P];</span>
 GF(2)-LinearClosure( PathCategory( \
 FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">relations := [ L.x^2 - L.x,  L.y^3 - L.y,  L.xy - L.y * (L.x+L.id_o) ];</span>
@@ -275,24 +275,24 @@ GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) / 
 [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( Q );</span>
 6
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := Q / Alg_F2;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := Q / Alg_F;</span>
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( A );</span>
 6
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
 GF(2)&lt;x,y&gt; / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Mat_F2 := UnderlyingCategoryOfMatrices( MatAlg_F2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Mat_F := UnderlyingCategoryOfMatrices( MatAlg_F );</span>
 Rows( GF(2) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mx := HomalgDiagonalMatrix( [ 1, 0, 1, 0 ], F2 ) / Mat_F2;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mx := HomalgDiagonalMatrix( [ 1, 0, 1, 0 ], F ) / Mat_F;</span>
 &lt;A morphism in Rows( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">my := DiagMat( [</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">              HomalgZeroMatrix( 2, 2, F2 ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">              CertainRows( HomalgIdentityMatrix( 2, F2 ), [ 2, 1 ] ) ] ) / Mat_F2;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              HomalgZeroMatrix( 2, 2, F ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              CertainRows( HomalgIdentityMatrix( 2, F ), [ 2, 1 ] ) ] ) / Mat_F;</span>
 &lt;A morphism in Rows( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">matrix_generators := Pair( 4 / Mat_F2, [ mx, my ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">matrix_generators := Pair( 4 / Mat_F, [ mx, my ] );</span>
 [ &lt;A row module over GF(2) of rank 4&gt;,\
   [ &lt;A morphism in Rows( GF(2) )&gt;, &lt;A morphism in Rows( GF(2) )&gt; ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := ObjectConstructor( MatAlg_F2, Pair( A, matrix_generators ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := ObjectConstructor( MatAlg_F, Pair( A, matrix_generators ) );</span>
 &lt;An object in CategoryOfFpMatrixAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( M );</span>
 1,0,0,0,

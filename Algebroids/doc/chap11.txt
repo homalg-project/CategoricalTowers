@@ -148,11 +148,11 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XF2 := HomalgRingOfIntegersInSingular( 2 );[127X[104X
+    [4X[25Xgap>[125X [27XF := HomalgRingOfIntegersInSingular( 2 );[127X[104X
     [4X[28XGF(2)[128X[104X
-    [4X[25Xgap>[125X [27XMatAlg_F2 := CategoryOfFpMatrixAlgebras( F2 );[127X[104X
+    [4X[25Xgap>[125X [27XMatAlg_F := CategoryOfFpMatrixAlgebras( F );[127X[104X
     [4X[28XCategoryOfFpMatrixAlgebras( GF(2) )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( MatAlg_F2 );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( MatAlg_F );[127X[104X
     [4X[28XA CAP category with name CategoryOfFpMatrixAlgebras( GF(2) ):[128X[104X
     [4X[28X[128X[104X
     [4X[28X27 primitive operations were used to derive 76 operations for this category \[128X[104X
@@ -162,7 +162,7 @@
     [4X[28X* IsSymmetricMonoidalCategory[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
     [4X[28X* IsCategoryWithCoequalizers[128X[104X
-    [4X[25Xgap>[125X [27XT := TerminalObject( MatAlg_F2 );[127X[104X
+    [4X[25Xgap>[125X [27XT := TerminalObject( MatAlg_F );[127X[104X
     [4X[28X<An object in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XGF(2) / [ 1*id(o) ][128X[104X
@@ -183,7 +183,7 @@
     [4X[28X[  ][128X[104X
     [4X[28X |[128X[104X
     [4X[28XGF(2) / [  ][128X[104X
-    [4X[25Xgap>[125X [27XK := TensorUnit( MatAlg_F2 );[127X[104X
+    [4X[25Xgap>[125X [27XK := TensorUnit( MatAlg_F );[127X[104X
     [4X[28X<An object in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( K );[127X[104X
     [4X[28XGF(2) / [  ][128X[104X
@@ -191,9 +191,9 @@
     [4X[28XA finitely presented matrix algebra with an empty list of matrix generators[128X[104X
     [4X[25Xgap>[125X [27XK = I;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XAlg_F2 := UnderlyingCategory( MatAlg_F2 );[127X[104X
+    [4X[25Xgap>[125X [27XAlg_F := UnderlyingCategory( MatAlg_F );[127X[104X
     [4X[28XCategoryOfFpAlgebras( GF(2) )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( Alg_F2 );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( Alg_F );[127X[104X
     [4X[28XA CAP category with name CategoryOfFpAlgebras( GF(2) ):[128X[104X
     [4X[28X[128X[104X
     [4X[28X31 primitive operations were used to derive 130 operations for this category \[128X[104X
@@ -205,7 +205,7 @@
     [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )[128X[104X
     [4X[25Xgap>[125X [27XP := PathCategory( q );[127X[104X
     [4X[28XPathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )[128X[104X
-    [4X[25Xgap>[125X [27XL := F2[P];[127X[104X
+    [4X[25Xgap>[125X [27XL := F[P];[127X[104X
     [4X[28XGF(2)-LinearClosure( PathCategory( \[128X[104X
     [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27Xrelations := [ L.x^2 - L.x,  L.y^3 - L.y,  L.xy - L.y * (L.x+L.id_o) ];[127X[104X
@@ -216,24 +216,24 @@
     [4X[28X[ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
     [4X[25Xgap>[125X [27XDimension( Q );[127X[104X
     [4X[28X6[128X[104X
-    [4X[25Xgap>[125X [27XA := Q / Alg_F2;[127X[104X
+    [4X[25Xgap>[125X [27XA := Q / Alg_F;[127X[104X
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XDimension( A );[127X[104X
     [4X[28X6[128X[104X
     [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
     [4X[28XGF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
-    [4X[25Xgap>[125X [27XMat_F2 := UnderlyingCategoryOfMatrices( MatAlg_F2 );[127X[104X
+    [4X[25Xgap>[125X [27XMat_F := UnderlyingCategoryOfMatrices( MatAlg_F );[127X[104X
     [4X[28XRows( GF(2) )[128X[104X
-    [4X[25Xgap>[125X [27Xmx := HomalgDiagonalMatrix( [ 1, 0, 1, 0 ], F2 ) / Mat_F2;[127X[104X
+    [4X[25Xgap>[125X [27Xmx := HomalgDiagonalMatrix( [ 1, 0, 1, 0 ], F ) / Mat_F;[127X[104X
     [4X[28X<A morphism in Rows( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27Xmy := DiagMat( [[127X[104X
-    [4X[25X>[125X [27X              HomalgZeroMatrix( 2, 2, F2 ),[127X[104X
-    [4X[25X>[125X [27X              CertainRows( HomalgIdentityMatrix( 2, F2 ), [ 2, 1 ] ) ] ) / Mat_F2;[127X[104X
+    [4X[25X>[125X [27X              HomalgZeroMatrix( 2, 2, F ),[127X[104X
+    [4X[25X>[125X [27X              CertainRows( HomalgIdentityMatrix( 2, F ), [ 2, 1 ] ) ] ) / Mat_F;[127X[104X
     [4X[28X<A morphism in Rows( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27Xmatrix_generators := Pair( 4 / Mat_F2, [ mx, my ] );[127X[104X
+    [4X[25Xgap>[125X [27Xmatrix_generators := Pair( 4 / Mat_F, [ mx, my ] );[127X[104X
     [4X[28X[ <A row module over GF(2) of rank 4>,\[128X[104X
     [4X[28X  [ <A morphism in Rows( GF(2) )>, <A morphism in Rows( GF(2) )> ] ][128X[104X
-    [4X[25Xgap>[125X [27XM := ObjectConstructor( MatAlg_F2, Pair( A, matrix_generators ) );[127X[104X
+    [4X[25Xgap>[125X [27XM := ObjectConstructor( MatAlg_F, Pair( A, matrix_generators ) );[127X[104X
     [4X[28X<An object in CategoryOfFpMatrixAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
     [4X[28X1,0,0,0,[128X[104X

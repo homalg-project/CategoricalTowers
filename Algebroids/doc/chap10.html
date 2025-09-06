@@ -175,11 +175,11 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F2 := HomalgRingOfIntegersInSingular( 2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := HomalgRingOfIntegersInSingular( 2 );</span>
 GF(2)
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Alg_F2 := CategoryOfFpAlgebras( F2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Alg_F := CategoryOfFpAlgebras( F );</span>
 CategoryOfFpAlgebras( GF(2) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Alg_F2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Alg_F );</span>
 A CAP category with name CategoryOfFpAlgebras( GF(2) ):
 
 31 primitive operations were used to derive 130 operations for this category \
@@ -187,7 +187,7 @@ which algorithmically
 * IsFiniteCocompleteCategory
 * IsBicartesianCategory
 * IsSymmetricMonoidalCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalObject( Alg_F2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalObject( Alg_F );</span>
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 GF(2) / [ 1*id(o) ]
@@ -204,7 +204,7 @@ GF(2) / [ 1*id(o) ]
 [  ]
  |
 GF(2) / [  ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := TensorUnit( Alg_F2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := TensorUnit( Alg_F );</span>
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( K );</span>
 GF(2) / [  ]
@@ -214,7 +214,7 @@ true
 FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P1 := PathCategory( q1 );</span>
 PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L1 := F2[P1];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L1 := F[P1];</span>
 GF(2)-LinearClosure( PathCategory( \
 FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">relations1 := [ L1.x^2 - L1.x,  L1.y^3 - L1.y,  L1.xy - L1.y * (L1.x+L1.id_o) ];</span>
@@ -230,9 +230,9 @@ Algebra( GF(2), FreeCategory( RightQuiver( "q(o)[x:o-&gt;o,y:o-&gt;o]" ) ) ) / \
 relations
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( AQ1 );</span>
 6
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A1 := Q1 / Alg_F2;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A1 := Q1 / Alg_F;</span>
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A1 = ( L1 / Alg_F2 ) / relations1;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A1 = ( L1 / Alg_F ) / relations1;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( A1 );</span>
 6
@@ -282,7 +282,7 @@ true
 FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P2 := PathCategory( q2 );</span>
 PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L2 := F2[P2];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L2 := F[P2];</span>
 GF(2)-LinearClosure( PathCategory( \
 FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q2 := L2 / [ L2.x+L2.y+L2.t+L2.tt-L2.id_o, L2.xx-L2.x, L2.yy-L2.y, L2.xy, L2.yx,</span>
@@ -291,7 +291,7 @@ FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) ) )
 GF(2)-LinearClosure( PathCategory( \
 FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) ) ) / \
 [ 1*t^2 + 1*x + 1*y + 1*t + 1*id(o), 1*x^2 + 1*x, 1*y^2 + 1*y, ... ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A2 := Q2 / Alg_F2;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A2 := Q2 / Alg_F;</span>
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( A2 );</span>
 6
@@ -356,11 +356,11 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F2 := HomalgRingOfIntegers( 2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := HomalgRingOfIntegers( 2 );</span>
 GF(2)
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Alg_F2 := CategoryOfFpAlgebras( F2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Alg_F := CategoryOfFpAlgebras( F );</span>
 CategoryOfFpAlgebras( GF(2) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F0 := InitialObject( Alg_F2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F0 := InitialObject( Alg_F );</span>
 &lt;An object in CategoryOfFpAlgebras( GF(2) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F0 );</span>
 GF(2) / [  ]

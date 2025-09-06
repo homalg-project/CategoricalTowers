@@ -110,11 +110,11 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XF2 := HomalgRingOfIntegersInSingular( 2 );[127X[104X
+    [4X[25Xgap>[125X [27XF := HomalgRingOfIntegersInSingular( 2 );[127X[104X
     [4X[28XGF(2)[128X[104X
-    [4X[25Xgap>[125X [27XAlg_F2 := CategoryOfFpAlgebras( F2 );[127X[104X
+    [4X[25Xgap>[125X [27XAlg_F := CategoryOfFpAlgebras( F );[127X[104X
     [4X[28XCategoryOfFpAlgebras( GF(2) )[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( Alg_F2 );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( Alg_F );[127X[104X
     [4X[28XA CAP category with name CategoryOfFpAlgebras( GF(2) ):[128X[104X
     [4X[28X[128X[104X
     [4X[28X31 primitive operations were used to derive 130 operations for this category \[128X[104X
@@ -122,7 +122,7 @@
     [4X[28X* IsFiniteCocompleteCategory[128X[104X
     [4X[28X* IsBicartesianCategory[128X[104X
     [4X[28X* IsSymmetricMonoidalCategory[128X[104X
-    [4X[25Xgap>[125X [27XT := TerminalObject( Alg_F2 );[127X[104X
+    [4X[25Xgap>[125X [27XT := TerminalObject( Alg_F );[127X[104X
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XGF(2) / [ 1*id(o) ][128X[104X
@@ -139,7 +139,7 @@
     [4X[28X[  ][128X[104X
     [4X[28X |[128X[104X
     [4X[28XGF(2) / [  ][128X[104X
-    [4X[25Xgap>[125X [27XK := TensorUnit( Alg_F2 );[127X[104X
+    [4X[25Xgap>[125X [27XK := TensorUnit( Alg_F );[127X[104X
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( K );[127X[104X
     [4X[28XGF(2) / [  ][128X[104X
@@ -149,7 +149,7 @@
     [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )[128X[104X
     [4X[25Xgap>[125X [27XP1 := PathCategory( q1 );[127X[104X
     [4X[28XPathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )[128X[104X
-    [4X[25Xgap>[125X [27XL1 := F2[P1];[127X[104X
+    [4X[25Xgap>[125X [27XL1 := F[P1];[127X[104X
     [4X[28XGF(2)-LinearClosure( PathCategory( \[128X[104X
     [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27Xrelations1 := [ L1.x^2 - L1.x,  L1.y^3 - L1.y,  L1.xy - L1.y * (L1.x+L1.id_o) ];[127X[104X
@@ -165,9 +165,9 @@
     [4X[28Xrelations[128X[104X
     [4X[25Xgap>[125X [27XDimension( AQ1 );[127X[104X
     [4X[28X6[128X[104X
-    [4X[25Xgap>[125X [27XA1 := Q1 / Alg_F2;[127X[104X
+    [4X[25Xgap>[125X [27XA1 := Q1 / Alg_F;[127X[104X
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
-    [4X[25Xgap>[125X [27XA1 = ( L1 / Alg_F2 ) / relations1;[127X[104X
+    [4X[25Xgap>[125X [27XA1 = ( L1 / Alg_F ) / relations1;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDimension( A1 );[127X[104X
     [4X[28X6[128X[104X
@@ -217,7 +217,7 @@
     [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" )[128X[104X
     [4X[25Xgap>[125X [27XP2 := PathCategory( q2 );[127X[104X
     [4X[28XPathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) )[128X[104X
-    [4X[25Xgap>[125X [27XL2 := F2[P2];[127X[104X
+    [4X[25Xgap>[125X [27XL2 := F[P2];[127X[104X
     [4X[28XGF(2)-LinearClosure( PathCategory( \[128X[104X
     [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XQ2 := L2 / [ L2.x+L2.y+L2.t+L2.tt-L2.id_o, L2.xx-L2.x, L2.yy-L2.y, L2.xy, L2.yx,[127X[104X
@@ -226,7 +226,7 @@
     [4X[28XGF(2)-LinearClosure( PathCategory( \[128X[104X
     [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) ) ) / \[128X[104X
     [4X[28X[ 1*t^2 + 1*x + 1*y + 1*t + 1*id(o), 1*x^2 + 1*x, 1*y^2 + 1*y, ... ][128X[104X
-    [4X[25Xgap>[125X [27XA2 := Q2 / Alg_F2;[127X[104X
+    [4X[25Xgap>[125X [27XA2 := Q2 / Alg_F;[127X[104X
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XDimension( A2 );[127X[104X
     [4X[28X6[128X[104X
@@ -293,11 +293,11 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XF2 := HomalgRingOfIntegers( 2 );[127X[104X
+    [4X[25Xgap>[125X [27XF := HomalgRingOfIntegers( 2 );[127X[104X
     [4X[28XGF(2)[128X[104X
-    [4X[25Xgap>[125X [27XAlg_F2 := CategoryOfFpAlgebras( F2 );[127X[104X
+    [4X[25Xgap>[125X [27XAlg_F := CategoryOfFpAlgebras( F );[127X[104X
     [4X[28XCategoryOfFpAlgebras( GF(2) )[128X[104X
-    [4X[25Xgap>[125X [27XF0 := InitialObject( Alg_F2 );[127X[104X
+    [4X[25Xgap>[125X [27XF0 := InitialObject( Alg_F );[127X[104X
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( F0 );[127X[104X
     [4X[28XGF(2) / [  ][128X[104X
