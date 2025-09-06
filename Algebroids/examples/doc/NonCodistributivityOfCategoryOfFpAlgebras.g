@@ -8,11 +8,11 @@
 #! @Example
 LoadPackage( "Algebroids", false );
 #! true
-F2 := HomalgRingOfIntegers( 2 );
+F := HomalgRingOfIntegers( 2 );
 #! GF(2)
-Alg_F2 := CategoryOfFpAlgebras( F2 );
+Alg_F := CategoryOfFpAlgebras( F );
 #! CategoryOfFpAlgebras( GF(2) )
-F0 := InitialObject( Alg_F2 );
+F0 := InitialObject( Alg_F );
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
 Display( F0 );
 #! GF(2) / [  ]

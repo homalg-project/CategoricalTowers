@@ -3,11 +3,11 @@
 #! @Example
 LoadPackage( "Algebroids", false );
 #! true
-F2 := HomalgRingOfIntegersInSingular( 2 );
+F := HomalgRingOfIntegersInSingular( 2 );
 #! GF(2)
-Alg_F2 := CategoryOfFpAlgebras( F2 );
+Alg_F := CategoryOfFpAlgebras( F );
 #! CategoryOfFpAlgebras( GF(2) )
-Display( Alg_F2 );
+Display( Alg_F );
 #! A CAP category with name CategoryOfFpAlgebras( GF(2) ):
 #! 
 #! 31 primitive operations were used to derive 130 operations for this category \
@@ -15,7 +15,7 @@ Display( Alg_F2 );
 #! * IsFiniteCocompleteCategory
 #! * IsBicartesianCategory
 #! * IsSymmetricMonoidalCategory
-T := TerminalObject( Alg_F2 );
+T := TerminalObject( Alg_F );
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
 Display( T );
 #! GF(2) / [ 1*id(o) ]
@@ -32,7 +32,7 @@ Display( iota );
 #! [  ]
 #!  |
 #! GF(2) / [  ]
-K := TensorUnit( Alg_F2 );
+K := TensorUnit( Alg_F );
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
 Display( K );
 #! GF(2) / [  ]
@@ -43,7 +43,7 @@ q1 := FinQuiver( "q(o)[x:o->o,y:o->o]" );
 #! FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )
 P1 := PathCategory( q1 );
 #! PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )
-L1 := F2[P1];
+L1 := F[P1];
 #! GF(2)-LinearClosure( PathCategory( \
 #! FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
 relations1 := [ L1.x^2 - L1.x,  L1.y^3 - L1.y,  L1.xy - L1.y * (L1.x+L1.id_o) ];
@@ -59,9 +59,9 @@ AQ1 := AssociatedAlgebroid( Q1 );
 #! relations
 Dimension( AQ1 );
 #! 6
-A1 := Q1 / Alg_F2;
+A1 := Q1 / Alg_F;
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
-A1 = ( L1 / Alg_F2 ) / relations1;
+A1 = ( L1 / Alg_F ) / relations1;
 #! true
 Dimension( A1 );
 #! 6
@@ -112,7 +112,7 @@ q2 := FinQuiver( "q(o)[x:o->o,y:o->o,z:o->o,t:o->o]" );
 #! FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" )
 P2 := PathCategory( q2 );
 #! PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) )
-L2 := F2[P2];
+L2 := F[P2];
 #! GF(2)-LinearClosure( PathCategory( \
 #! FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) ) )
 Q2 := L2 / [ L2.x+L2.y+L2.t+L2.tt-L2.id_o, L2.xx-L2.x, L2.yy-L2.y, L2.xy, L2.yx,
@@ -121,7 +121,7 @@ Q2 := L2 / [ L2.x+L2.y+L2.t+L2.tt-L2.id_o, L2.xx-L2.x, L2.yy-L2.y, L2.xy, L2.yx,
 #! GF(2)-LinearClosure( PathCategory( \
 #! FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) ) ) / \
 #! [ 1*t^2 + 1*x + 1*y + 1*t + 1*id(o), 1*x^2 + 1*x, 1*y^2 + 1*y, ... ]
-A2 := Q2 / Alg_F2;
+A2 := Q2 / Alg_F;
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
 Dimension( A2 );
 #! 6
