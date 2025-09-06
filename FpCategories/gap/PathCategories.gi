@@ -837,7 +837,7 @@ InstallOtherMethod( CapFunctor,
     AddMorphismFunction( F,
       function ( F_s, mor, F_t )
         
-        return PreComposeList( D, F_s, imgs_of_gmors{MorphismIndices( mor )}, F_t );
+        return PreComposeList( D, F_s, ListOfValues( imgs_of_gmors{MorphismIndices( mor )} ), F_t );
         
     end );
     
@@ -1264,10 +1264,10 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( ExtendContravariantFunctorToFpCategoryData,
-        "for a path category, a pair of functions, and a category",
-        [ IsPathCategory, IsList, IsCapCategory ],
+        "for a path category, a pair of functions, a category, and a list",
+        [ IsPathCategory, IsList, IsCapCategory, IsList ],
         
-  function( PQ, pair_of_funcs, category )
+  function( PQ, pair_of_funcs, category, contravariant_indices )
     local Q, functor_on_objects, functor_on_morphisms,
           extended_functor_on_objects, extended_functor_on_morphisms;
     
@@ -1290,16 +1290,22 @@ InstallMethodForCompilerForCAP( ExtendContravariantFunctorToFpCategoryData,
     
     extended_functor_on_morphisms :=
       function( source, morPQ, target )
-        local s, t, morsQ;
+        local s, t, morsQ, contravariant_positions, covariant_positions, positions;
         
         s := ObjectDatum( PQ, Source( morPQ ) );
         t := ObjectDatum( PQ, Range( morPQ ) );
         
-        morsQ := MorphismDatum( PQ, morPQ )[2];
+        morsQ := MorphismIndices( morPQ );
         
-        return PostComposeList( category,
+        contravariant_positions := PositionsProperty( morsQ, i -> i in contravariant_indices );
+        covariant_positions := Difference( [ 1 .. MorphismLength( morPQ ) ], contravariant_positions );
+        
+        ## we assume that the covariant indices commute with the contravariant indices
+        positions := Concatenation( covariant_positions, Reversed( contravariant_positions ) );
+        
+        return PreComposeList( category,
                        source,
-                       List( morsQ, morQ -> functor_on_morphisms( morQ ) ),
+                       List( morsQ{positions}, morQ -> functor_on_morphisms( morQ ) ),
                        target );
         
     end;
