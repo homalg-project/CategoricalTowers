@@ -214,26 +214,26 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( underlying_object, AmbientCategory( cat ), {} -> "the object datum given to the object constructor of <cat>" );
         
         return CreateCapCategoryObjectWithAttributes( cat,
-                       UnderlyingObject, underlying_object );
+                       UnderlyingGapObject, underlying_object );
         
     end;
     
-    object_datum := { cat, object } -> UnderlyingObject( object );
+    object_datum := { cat, object } -> UnderlyingGapObject( object );
     
     morphism_constructor := function( cat, source, underlying_morphism, target )
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), {} -> "the morphism datum given to the morphism constructor of <cat>" );
         
-        if IsEqualForObjects( AmbientCategory( cat ), Source( underlying_morphism ), UnderlyingObject( source ) ) = false then
+        if IsEqualForObjects( AmbientCategory( cat ), Source( underlying_morphism ), UnderlyingGapObject( source ) ) = false then
             
-            Error( "the source of the morphism datum must be equal to <UnderlyingObject( source )>" );
+            Error( "the source of the morphism datum must be equal to <UnderlyingGapObject( source )>" );
             
         fi;
         
-        if IsEqualForObjects( AmbientCategory( cat ), Target( underlying_morphism ), UnderlyingObject( target ) ) = false then
+        if IsEqualForObjects( AmbientCategory( cat ), Target( underlying_morphism ), UnderlyingGapObject( target ) ) = false then
             
-            Error( "the target of the morphism datum must be equal to <UnderlyingObject( target )>" );
+            Error( "the target of the morphism datum must be equal to <UnderlyingGapObject( target )>" );
             
         fi;
         
@@ -317,7 +317,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddIsEqualForObjects( P,
           function( P, S, T )
             
-            return IsEqualForObjects( AmbientCategory( P ), UnderlyingObject( S ), UnderlyingObject( T ) );
+            return IsEqualForObjects( AmbientCategory( P ), UnderlyingGapObject( S ), UnderlyingGapObject( T ) );
             
         end );
         
@@ -355,8 +355,8 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             local mors;
             
             mors := MorphismsOfExternalHom( AmbientCategory( P ),
-                            UnderlyingObject( S ),
-                            UnderlyingObject( T ) );
+                            UnderlyingGapObject( S ),
+                            UnderlyingGapObject( T ) );
             
             ## a trick to avoid an if/else statement (see ?CompilerForCAP:Requirements):
             mors := mors{[ 1 .. 1 - 0 ^ Length( mors ) ]};
@@ -391,7 +391,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddIsTerminal( P,
           function( P, S )
             
-            return IsWeakTerminal( AmbientCategory( P ), UnderlyingObject( S ) );
+            return IsWeakTerminal( AmbientCategory( P ), UnderlyingGapObject( S ) );
             
         end );
         
@@ -402,7 +402,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddIsInitial( P,
           function( P, S )
             
-            return IsWeakInitial( AmbientCategory( P ), UnderlyingObject( S ) );
+            return IsWeakInitial( AmbientCategory( P ), UnderlyingGapObject( S ) );
             
         end );
         
@@ -421,7 +421,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             AddInternalHomOnObjects( P,
               function( P, S, T )
                 
-                return ObjectConstructor( P, StableInternalHom( AmbientCategory( P ), UnderlyingObject( S ), UnderlyingObject( T ) ) );
+                return ObjectConstructor( P, StableInternalHom( AmbientCategory( P ), UnderlyingGapObject( S ), UnderlyingGapObject( T ) ) );
                 
             end );
             
@@ -446,7 +446,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             AddInternalCoHomOnObjects( P,
               function( P, S, T )
                 
-                return ObjectConstructor( P, StableInternalCoHom( AmbientCategory( P ), UnderlyingObject( S ), UnderlyingObject( T ) ) );
+                return ObjectConstructor( P, StableInternalCoHom( AmbientCategory( P ), UnderlyingGapObject( S ), UnderlyingGapObject( T ) ) );
                 
             end );
             
@@ -584,7 +584,7 @@ InstallMethod( ViewString,
   function( a )
     
     return Concatenation( "An object in the proset given by: ",
-                   StringView( UnderlyingObject( a ) ) );
+                   StringView( UnderlyingGapObject( a ) ) );
     
 end );
 
@@ -618,7 +618,7 @@ InstallMethod( ViewString,
   function( a )
     
     return Concatenation( "An object in the stable proset given by: ",
-                   StringView( UnderlyingObject( a ) ) );
+                   StringView( UnderlyingGapObject( a ) ) );
     
 end );
 
@@ -639,7 +639,7 @@ InstallMethod( DisplayString,
         
   function( a )
     
-    return Concatenation( StringDisplay( UnderlyingObject( a ) ),
+    return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
                    "\nAn object in the proset given by the above data" );
     
 end );
@@ -650,7 +650,7 @@ InstallMethod( DisplayString,
         
   function( a )
     
-    return Concatenation( StringDisplay( UnderlyingObject( a ) ),
+    return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
                    "\nAn object in the stable proset given by the above data" );
     
 end );
@@ -662,7 +662,7 @@ InstallMethod( ViewString,
   function( a )
     
     return Concatenation( "An object in the poset given by: ",
-                   StringView( UnderlyingObject( a ) ) );
+                   StringView( UnderlyingGapObject( a ) ) );
     
 end );
 
@@ -696,7 +696,7 @@ InstallMethod( ViewString,
   function( a )
     
     return Concatenation( "An object in the stable poset given by: ",
-                   StringView( UnderlyingObject( a ) ) );
+                   StringView( UnderlyingGapObject( a ) ) );
     
 end );
 
@@ -717,7 +717,7 @@ InstallMethod( DisplayString,
         
   function( a )
     
-    return Concatenation( StringDisplay( UnderlyingObject( a ) ),
+    return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
                    "\nAn object in the poset given by the above data" );
     
 end );
@@ -728,7 +728,7 @@ InstallMethod( DisplayString,
         
   function( a )
     
-    return Concatenation( StringDisplay( UnderlyingObject( a ) ),
+    return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
                    "\nAn object in the stable poset given by the above data" );
     
 end );

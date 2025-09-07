@@ -88,16 +88,16 @@ InstallMethodWithCache( ProsetAsCategory,
     P!.supports_empty_limits := false;
     
     SetIsThinCategory( P, true );
-    SetUnderlyingObjectFilter( P, ValueGlobal( input_record.object_datum_filter_string ) );
-    SetUnderlyingObjectMembershipFunction( P, input_record.object_datum_membership_func );
-    SetUnderlyingObjectEqualityFunction( P, input_record.object_datum_equality_func );
+    SetUnderlyingGapObjectFilter( P, ValueGlobal( input_record.object_datum_filter_string ) );
+    SetUnderlyingGapObjectMembershipFunction( P, input_record.object_datum_membership_func );
+    SetUnderlyingGapObjectEqualityFunction( P, input_record.object_datum_equality_func );
     SetUnderlyingPreorderFunction( P, input_record.object_datum_preorder_func );
     
     P!.compiler_hints :=
       rec( category_attribute_names :=
            [ "UnderlyingFilter",
-             "UnderlyingObjectMembershipFunction",
-             "UnderlyingObjectEqualityFunction",
+             "UnderlyingGapObjectMembershipFunction",
+             "UnderlyingGapObjectEqualityFunction",
              "UnderlyingPreorderFunction",
              ] );
     
@@ -141,14 +141,14 @@ InstallMethodWithCache( ProsetAsCategory,
     AddIsWellDefinedForObjects( P,
       function( cat, obj )
         
-        return UnderlyingObjectMembershipFunction( cat )( ObjectDatum( cat, obj ) );
+        return UnderlyingGapObjectMembershipFunction( cat )( ObjectDatum( cat, obj ) );
         
     end );
     
     AddIsEqualForObjects( P,
       function( cat, a, b )
         
-        return UnderlyingObjectEqualityFunction( ObjectDatum( cat, a ), ObjectDatum( cat, b ) );
+        return UnderlyingGapObjectEqualityFunction( ObjectDatum( cat, a ), ObjectDatum( cat, b ) );
         
     end );
     
