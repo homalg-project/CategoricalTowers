@@ -32,9 +32,9 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X7C701DBF7BAE649A">7.2 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X79EAEAF77DC505F1">7.2-1 UnderlyingObjectFilter</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X825BE79D7E86AABA">7.2-2 UnderlyingObjectMembershipFunction</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7BC903C378490711">7.2-3 UnderlyingObjectEqualityFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7CD84B0A7B30FAD0">7.2-1 UnderlyingGapObjectFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X820324067C78406F">7.2-2 UnderlyingGapObjectMembershipFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X801440868212AD89">7.2-3 UnderlyingGapObjectEqualityFunction</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7A67D58582A8CDAF">7.2-4 UnderlyingPreorderFunction</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7F38182285854088">7.2-5 UnderlyingDatum</a></span>
 </div></div>
@@ -238,33 +238,33 @@ true
 
 <h4>7.2 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X79EAEAF77DC505F1" name="X79EAEAF77DC505F1"></a></p>
+<p><a id="X7CD84B0A7B30FAD0" name="X7CD84B0A7B30FAD0"></a></p>
 
-<h5>7.2-1 UnderlyingObjectFilter</h5>
+<h5>7.2-1 UnderlyingGapObjectFilter</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingObjectFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingGapObjectFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>The object-membership function used to define the thin category <var class="Arg">C</var>.</p>
 
-<p><a id="X825BE79D7E86AABA" name="X825BE79D7E86AABA"></a></p>
+<p><a id="X820324067C78406F" name="X820324067C78406F"></a></p>
 
-<h5>7.2-2 UnderlyingObjectMembershipFunction</h5>
+<h5>7.2-2 UnderlyingGapObjectMembershipFunction</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingObjectMembershipFunction</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>The underlying-object-membership function used to define the thin category <var class="Arg">C</var>. This function accepts two arguments in the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>(<code class="code">UnderlyingObjectFilter</code>(<var class="Arg">C</var>)) and returns <var class="Arg">true</var> if the underlying objects are equal <var class="Arg">false</var>.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingGapObjectMembershipFunction</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The underlying-object-membership function used to define the thin category <var class="Arg">C</var>. This function accepts two arguments in the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>(<code class="code">UnderlyingGapObjectFilter</code>(<var class="Arg">C</var>)) and returns <var class="Arg">true</var> if the underlying objects are equal <var class="Arg">false</var>.</p>
 
-<p><a id="X7BC903C378490711" name="X7BC903C378490711"></a></p>
+<p><a id="X801440868212AD89" name="X801440868212AD89"></a></p>
 
-<h5>7.2-3 UnderlyingObjectEqualityFunction</h5>
+<h5>7.2-3 UnderlyingGapObjectEqualityFunction</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingObjectEqualityFunction</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>The underlying-object-equality function used to define the thin category <var class="Arg">C</var>. This function accepts two arguments in the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>(<code class="code">UnderlyingObjectFilter</code>(<var class="Arg">C</var>)) and returns <var class="Arg">true</var> if the underlying objects are equal <var class="Arg">false</var>.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingGapObjectEqualityFunction</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The underlying-object-equality function used to define the thin category <var class="Arg">C</var>. This function accepts two arguments in the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>(<code class="code">UnderlyingGapObjectFilter</code>(<var class="Arg">C</var>)) and returns <var class="Arg">true</var> if the underlying objects are equal <var class="Arg">false</var>.</p>
 
 <p><a id="X7A67D58582A8CDAF" name="X7A67D58582A8CDAF"></a></p>
 
 <h5>7.2-4 UnderlyingPreorderFunction</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingPreorderFunction</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>The preorder function used to define the thin category <var class="Arg">C</var>. This function accepts two arguments in the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>(<code class="code">UnderlyingObjectFilter</code>(<var class="Arg">C</var>)) and returns <var class="Arg">true</var> or <var class="Arg">false</var>.</p>
+<p>The preorder function used to define the thin category <var class="Arg">C</var>. This function accepts two arguments in the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>(<code class="code">UnderlyingGapObjectFilter</code>(<var class="Arg">C</var>)) and returns <var class="Arg">true</var> or <var class="Arg">false</var>.</p>
 
 <p><a id="X7F38182285854088" name="X7F38182285854088"></a></p>
 

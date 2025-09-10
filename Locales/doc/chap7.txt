@@ -166,28 +166,28 @@
   
   [1X7.2 [33X[0;0YAttributes[133X[101X
   
-  [1X7.2-1 UnderlyingObjectFilter[101X
+  [1X7.2-1 UnderlyingGapObjectFilter[101X
   
-  [33X[1;0Y[29X[2XUnderlyingObjectFilter[102X( [3XC[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XUnderlyingGapObjectFilter[102X( [3XC[103X ) [32X attribute[133X
   
   [33X[0;0YThe object-membership function used to define the thin category [3XC[103X.[133X
   
-  [1X7.2-2 UnderlyingObjectMembershipFunction[101X
+  [1X7.2-2 UnderlyingGapObjectMembershipFunction[101X
   
-  [33X[1;0Y[29X[2XUnderlyingObjectMembershipFunction[102X( [3XC[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XUnderlyingGapObjectMembershipFunction[102X( [3XC[103X ) [32X attribute[133X
   
   [33X[0;0YThe  underlying-object-membership  function used to define the thin category
   [3XC[103X.    This    function    accepts    two   arguments   in   the   [5XGAP[105X-filter
-  [10XValueGlobal[110X([10XUnderlyingObjectFilter[110X([3XC[103X))  and  returns  [3Xtrue[103X if the underlying
+  [10XValueGlobal[110X([10XUnderlyingGapObjectFilter[110X([3XC[103X)) and returns [3Xtrue[103X if the underlying
   objects are equal [3Xfalse[103X.[133X
   
-  [1X7.2-3 UnderlyingObjectEqualityFunction[101X
+  [1X7.2-3 UnderlyingGapObjectEqualityFunction[101X
   
-  [33X[1;0Y[29X[2XUnderlyingObjectEqualityFunction[102X( [3XC[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XUnderlyingGapObjectEqualityFunction[102X( [3XC[103X ) [32X attribute[133X
   
   [33X[0;0YThe  underlying-object-equality function used to define the thin category [3XC[103X.
   This     function     accepts    two    arguments    in    the    [5XGAP[105X-filter
-  [10XValueGlobal[110X([10XUnderlyingObjectFilter[110X([3XC[103X))  and  returns  [3Xtrue[103X if the underlying
+  [10XValueGlobal[110X([10XUnderlyingGapObjectFilter[110X([3XC[103X)) and returns [3Xtrue[103X if the underlying
   objects are equal [3Xfalse[103X.[133X
   
   [1X7.2-4 UnderlyingPreorderFunction[101X
@@ -196,7 +196,7 @@
   
   [33X[0;0YThe  preorder  function  used  to  define the thin category [3XC[103X. This function
   accepts         two         arguments        in        the        [5XGAP[105X-filter
-  [10XValueGlobal[110X([10XUnderlyingObjectFilter[110X([3XC[103X)) and returns [3Xtrue[103X or [3Xfalse[103X.[133X
+  [10XValueGlobal[110X([10XUnderlyingGapObjectFilter[110X([3XC[103X)) and returns [3Xtrue[103X or [3Xfalse[103X.[133X
   
   [1X7.2-5 UnderlyingDatum[101X
   

@@ -210,11 +210,11 @@
   [2XUnderlyingCategory[102X, for IsBooleanAlgebraOfConstructibleObjects 12.3-1 
       for IsMeetSemilatticeOfDifferences 9.2-1 
   [2XUnderlyingDatum[102X, for IsObjectInThinCategory 7.2-5 
+  [2XUnderlyingGapObject[102X, for IsObjectInProsetOfCategory 8.3-2 
+  [2XUnderlyingGapObjectEqualityFunction[102X, for IsProsetAsCategory 7.2-3 
+  [2XUnderlyingGapObjectFilter[102X, for IsProsetAsCategory 7.2-1 
+  [2XUnderlyingGapObjectMembershipFunction[102X, for IsProsetAsCategory 7.2-2 
   [2XUnderlyingMorphism[102X, for IsMorphismInPosetOfCategory 8.3-3 
-  [2XUnderlyingObject[102X, for IsObjectInProsetOfCategory 8.3-2 
-  [2XUnderlyingObjectEqualityFunction[102X, for IsProsetAsCategory 7.2-3 
-  [2XUnderlyingObjectFilter[102X, for IsProsetAsCategory 7.2-1 
-  [2XUnderlyingObjectMembershipFunction[102X, for IsProsetAsCategory 7.2-2 
   [2XUnderlyingPreorderFunction[102X, for IsProsetAsCategory 7.2-4 
   [2XUnionOfDifferences[102X 12.1-4 
   [2XUnionOfDifferencesOfNormalizedObjects[102X 12.1-4 
