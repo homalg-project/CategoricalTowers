@@ -172,7 +172,7 @@ InstallMethod( GroebnerBasis,
         Sort( gb[i], { g1, g2 } -> IsAscendingForMorphisms( C, g2, g1 ) );
     od;
     
-    indices := UnorderedTuples( [ 1 .. Length( gb ) ], 2 );
+    indices := UnorderedTuples( [ 1 .. Length( gb ) ], BigInt( 2 ) );
     
     rels := Concatenation( List( indices,
                               i -> List( OverlappingCoefficients( C, gb[i[1]][1], gb[i[2]][1] ),

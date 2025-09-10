@@ -194,7 +194,7 @@ InstallMethod( PathCategory,
         return List( [ 1 .. NumberOfMorphisms( q ) ], mor ->
                      MorphismConstructor( C,
                              SetOfObjects( C )[s[mor]],
-                             Pair( BigInt( 1 ), [ mor ] ),
+                             Pair( BigInt( 1 ), [ BigInt( mor ) ] ),
                              SetOfObjects( C )[t[mor]] ) );
         
     end );
@@ -355,7 +355,7 @@ end );
 
 ##
 InstallMethod( ExternalHomsWithGivenLengthDataOp,
-        [ IsPathCategory, IsInt ],
+        [ IsPathCategory, IsBigInt ],
   
   function ( C, len )
     local q, nr_objs, nr_gmors, gmors, data, prev_data, r, j, s;
@@ -407,7 +407,7 @@ end );
 
 ##
 InstallMethod( ExternalHomsWithGivenLengthOp,
-        [ IsPathCategory, IsInt ],
+        [ IsPathCategory, IsBigInt ],
   
   function ( C, len )
     local q, supports;
@@ -429,7 +429,7 @@ end );
 ##
 InstallOtherMethod( ExternalHomsWithGivenLength,
             "for path categories",
-        [ IsCapCategory, IsInt, IsInt ],
+        [ IsCapCategory, IsBigInt, IsBigInt ],
   
   function ( C, l, u )
     local nr_objs;
@@ -1032,9 +1032,9 @@ InstallMethod( HasFiniteNumberOfMacaulayMorphisms,
     
     monomials := List( monomials, m -> [ ObjectIndex( Source( m ) ), MorphismIndices( m ), ObjectIndex( Target( m ) ) ] );
     
-    len := Maximum( Concatenation( [ 1 ], List( monomials, mono -> Length( mono[2] ) ) ) );
+    len := Maximum( Concatenation( [ BigInt( 1 ) ], List( monomials, mono -> Length( mono[2] ) ) ) );
     
-    repeat
+    while true do
       
       # Hypothesis: the category is finite & all loops of length 'len' are divisible by the set 'monomials'
       is_finite := true;
@@ -1145,7 +1145,7 @@ InstallMethod( MacaulayMorphisms,
     
     supports := List( [ 1 .. nr_objs ], s -> List( [ 1 .. nr_objs ], t -> [ ] ) );
     
-    len := 0;
+    len := BigInt( 0 );
     
     repeat
         
@@ -1192,9 +1192,9 @@ InstallMethod( MacaulayMorphisms,
                    LazyHList( [ 1 .. nr_objs ], t ->
                            List( supports[s][t], supp ->
                                  MorphismConstructor( C,
-                                         SetOfObjects( C )[s],
-                                         Pair( Length( supp ), supp ),
-                                         SetOfObjects( C )[t] ) ) ) );
+                                         SetOfObjectsOfCategory( C )[s],
+                                         Pair( Length( supp ), List( supp, BigInt ) ),
+                                         SetOfObjectsOfCategory( C )[t] ) ) ) );
     
 end );
 

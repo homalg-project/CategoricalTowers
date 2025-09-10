@@ -237,7 +237,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     B0 := SetOfObjects( B );
-    N0 := ObjectConstructor( sFinSets, Length( B0 ) );
+    N0 := ObjectConstructor( sFinSets, BigInt( Length( B0 ) ) );
     
     ## N0 × N0
     D00 := [ N0, N0 ];
@@ -269,15 +269,15 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     id := MorphismConstructor( sFinSets,
                   N0,
                   List( N0, i ->
-                        AsList(
-                               PreCompose( sFinSets,
+                            ( AsList(
+                                  PreCompose( sFinSets,
                                        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
                                                IdentityMorphism( B,
                                                        B0[1 + i] ) ),
                                        InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                B1,
-                                               1 + AsList( d )[1 + i],
-                                               N1 ) ) )[1 + 0] ),
+                                               Int( 1 + AsList( d )[1 + i] ),
+                                               N1 ) ) )[1 + 0] ) ),
                   N1 );
     
     ## N1 -> N0 × N0
@@ -338,7 +338,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                [ LiftAlongMonomorphism( sFinSets,
                                                        InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                                B1,
-                                                               1 + AsList( pi2 )[1 + i],
+                                                               Int( 1 + AsList( pi2 )[1 + i] ),
                                                                N1 ),
                                                        N1_elements[1 + i] ),
                                                  InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
@@ -346,7 +346,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                                  B0[1 + AsList( t )[1 + i]] ) ) ] ),
                                        InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                B2,
-                                               1 + AsList( ds )[1 + i],
+                                               Int( 1 + AsList( ds )[1 + i] ),
                                                N2 ) ) )[1 + 0] ),
                   N2 );
     
@@ -368,16 +368,16 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                        DirectProductFunctorial( sFinSets,
                                                [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
                                                        IdentityMorphism( B,
-                                                               B0[1 + AsList( s )[1 + i]] ) ),
+                                                                 B0[1 + AsList( s )[1 + i]] ) ),
                                                  LiftAlongMonomorphism( sFinSets,
                                                          InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                                  B1,
-                                                                 1 + AsList( pi2 )[1 + i],
+                                                                 Int( 1 + AsList( pi2 )[1 + i] ),
                                                                  N1 ),
                                                          N1_elements[1 + i] ) ] ),
                                        InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                B2,
-                                               1 + AsList( dt )[1 + i],
+                                               Int( 1 + AsList( dt )[1 + i] ),
                                                N2 ) ) )[1 + 0] ),
                   N2 );
     
@@ -416,7 +416,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                        [ LiftAlongMonomorphism( sFinSets,
                                                InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                        B2,
-                                                       1 + AsList( pi3 )[1 + i],
+                                                       Int( 1 + AsList( pi3 )[1 + i] ),
                                                        N2 ),
                                                N2_elements[1 + i] ),
                                          ProjectionInFactorOfDirectProduct( sFinSets,
@@ -425,7 +425,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                  1 ),
                                          InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                  B1,
-                                                 1 + AsList( pi312 )[1 + i],
+                                                 Int( 1 + AsList( pi312 )[1 + i] ),
                                                  N1 ) ],
                                        N1 ) )[1 + 0] ),
                   N1 );
@@ -440,7 +440,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                        [ LiftAlongMonomorphism( sFinSets,
                                                InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                        B2,
-                                                       1 + AsList( pi3 )[ 1 + i],
+                                                       Int( 1 + AsList( pi3 )[ 1 + i] ),
                                                        N2 ),
                                                N2_elements[1 + i] ),
                                          ProjectionInFactorOfDirectProduct( sFinSets,
@@ -449,7 +449,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                  2 ),
                                          InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                  B1,
-                                                 1 + AsList( pi323 )[1 + i],
+                                                 Int( 1 + AsList( pi323 )[1 + i] ),
                                                  N1 ) ],
                                        N1 ) )[1 + 0] ),
                   N1 );
@@ -516,13 +516,13 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                        [ LiftAlongMonomorphism( sFinSets,
                                                InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                        B2,
-                                                       1 + AsList( pi3 )[1 + i],
+                                                       Int( 1 + AsList( pi3 )[1 + i] ),
                                                        N2 ),
                                                N2_elements[1 + i] ),
                                          mus3[1 + AsList( pi3 )[1 + i]],
                                          InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                  B1,
-                                                 1 + AsList( pi313 )[1 + i],
+                                                 Int( 1 + AsList( pi313 )[1 + i] ),
                                                  N1 ) ],
                                        N1 ) )[1 + 0] ),
                   N1 );
@@ -580,7 +580,7 @@ InstallMethod( IndicesOfGeneratingMorphismsFromHomStructure,
     Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     C0 := SetOfObjects( C );
-    N0 := ObjectConstructor( sFinSets, Length( C0 ) );
+    N0 := ObjectConstructor( sFinSets, BigInt( Length( C0 ) ) );
     
     D00 := [ N0, N0 ];
     
@@ -599,14 +599,18 @@ InstallMethod( IndicesOfGeneratingMorphismsFromHomStructure,
                 UniversalMorphismIntoDirectProduct( sFinSets,
                         D00,
                         T,
-                        [ MorphismConstructor( sFinSets, T, [ pair[1] ], N0 ),
-                          MorphismConstructor( sFinSets, T, [ pair[2] ], N0 ) ] ) );
+                        [ MorphismConstructor( sFinSets, T, [ BigInt( pair[1] ) ], N0 ),
+                          MorphismConstructor( sFinSets, T, [ BigInt( pair[2] ) ], N0 ) ] ) );
     
     mors := SetOfGeneratingMorphisms( C );
     
-    return List( [ 1 .. Length( st ) ], i ->
-                 Sum( C1{[ 1 .. AsList( st[i] )[1 + 0] ]}, Length ) +
-                 AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, mors[i] ) )[1 + 0] );
+    return List( [ 1 .. Length( st ) ],
+              function ( i )
+                local k, index;
+                k := AsList( st[i] )[1 + 0];
+                index := Sum( C1{ [ 1 .. k ] }, Length ) + AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, mors[i] ) )[1 + 0];
+                return Int( index );
+              end );
     
 end );
 
@@ -699,7 +703,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
                           emb2[c] ) );
     
     ## The constant functor of 0-cells B → sFinSets, c ↦ B_0, ψ ↦ id_{B_0}
-    B0 := ObjectConstructor( sFinSets, o );
+    B0 := ObjectConstructor( sFinSets, BigInt( o ) );
     
     N0 := Pair( ListWithIdenticalEntries( o, B0 ),
                 ListWithIdenticalEntries( m, IdentityMorphism( sFinSets, B0 ) ) );
@@ -771,7 +775,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
                           
                           ## reinterpret the composition m as a morphism D → Hom(a, c),
                           ## then get its number as an element in Hom(a, c):
-                          return AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B, m ) )[1 + 0];
+                          return BigInt( AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B, m ) )[1 + 0] );
                           
                       end ),
                   Hom2[c][a] ); # = Hom(a, c)
