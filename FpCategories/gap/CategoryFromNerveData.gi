@@ -807,9 +807,9 @@ InstallMethod( OppositeCategoryFromNerveData,
     C_op := CategoryFromNerveData(
                     rec( name := Name( Cop ),
                          ## now the "normalized" data tables
-                         nerve_data := NerveTruncatedInDegree2Data( Cop ),
-                         indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( Cop ),
-                         decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphisms( Cop ),
+                         nerve_data := CallFuncListAtRuntime( NerveTruncatedInDegree2Data, [ Cop ] ),
+                         indices_of_generating_morphisms := CallFuncListAtRuntime( IndicesOfGeneratingMorphismsFromHomStructure, [ Cop ] ),
+                         decomposition_of_all_morphisms := CallFuncListAtRuntime( DecompositionIndicesOfAllMorphisms, [ Cop ] ),
                          relations := RelationsAmongGeneratingMorphisms( Cop ),
                          labels := Cop!.labels,
                          properties := ListKnownCategoricalProperties( Cop ) ) );
