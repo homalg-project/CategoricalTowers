@@ -109,10 +109,10 @@ end );
 #!  The object in the ambient category underlying <A>obj</A>.
 #! @Arguments obj
 #! @Returns a &CAP; category object
-DeclareAttribute( "UnderlyingObject",
+DeclareAttribute( "UnderlyingGapObject",
         IsObjectInProsetOfCategory );
 
-CapJitAddTypeSignature( "UnderlyingObject", [ IsObjectInPosetOfCategory ], function ( input_types )
+CapJitAddTypeSignature( "UnderlyingGapObject", [ IsObjectInPosetOfCategory ], function ( input_types )
     
     Assert( 0, IsProsetOrPosetOfCapCategory( input_types[1].category ) );
     

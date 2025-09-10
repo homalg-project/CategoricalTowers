@@ -27,24 +27,24 @@ DeclareCategory( "IsProsetAsCategory",
 #! @Description
 #!  The object-membership function used to define the thin category <A>C</A>.
 #! @Arguments C
-DeclareAttribute( "UnderlyingObjectFilter",
+DeclareAttribute( "UnderlyingGapObjectFilter",
         IsProsetAsCategory );
 
 #! @Description
 #!  The underlying-object-membership function used to define the thin category <A>C</A>.
 #!  This function accepts two arguments in the &GAP;-filter
-#!  <C>ValueGlobal</C>(<C>UnderlyingObjectFilter</C>(<A>C</A>))
+#!  <C>ValueGlobal</C>(<C>UnderlyingGapObjectFilter</C>(<A>C</A>))
 #!  and returns <A>true</A> if the underlying objects are equal  <A>false</A>.
 #! @Arguments C
-DeclareAttribute( "UnderlyingObjectMembershipFunction",
+DeclareAttribute( "UnderlyingGapObjectMembershipFunction",
         IsProsetAsCategory );
 
-CapJitAddTypeSignature( "UnderlyingObjectMembershipFunction", [ IsProsetAsCategory ],
+CapJitAddTypeSignature( "UnderlyingGapObjectMembershipFunction", [ IsProsetAsCategory ],
   function ( input_types )
     
     return rec( filter := IsFunction,
                 signature :=
-                [ [ rec( filter := UnderlyingObjectFilter( input_types[1].source_category ) ) ],
+                [ [ rec( filter := UnderlyingGapObjectFilter( input_types[1].source_category ) ) ],
                   rec( filter := IsBool ) ] );
     
 end );
@@ -52,19 +52,19 @@ end );
 #! @Description
 #!  The underlying-object-equality function used to define the thin category <A>C</A>.
 #!  This function accepts two arguments in the &GAP;-filter
-#!  <C>ValueGlobal</C>(<C>UnderlyingObjectFilter</C>(<A>C</A>))
+#!  <C>ValueGlobal</C>(<C>UnderlyingGapObjectFilter</C>(<A>C</A>))
 #!  and returns <A>true</A> if the underlying objects are equal  <A>false</A>.
 #! @Arguments C
-DeclareAttribute( "UnderlyingObjectEqualityFunction",
+DeclareAttribute( "UnderlyingGapObjectEqualityFunction",
         IsProsetAsCategory );
 
-CapJitAddTypeSignature( "UnderlyingObjectEqualityFunction", [ IsProsetAsCategory ],
+CapJitAddTypeSignature( "UnderlyingGapObjectEqualityFunction", [ IsProsetAsCategory ],
   function ( input_types )
     
     return rec( filter := IsFunction,
                 signature :=
-                [ [ rec( filter := UnderlyingObjectFilter( input_types[1].source_category ) ),
-                    rec( filter := UnderlyingObjectFilter( input_types[1].source_category ) ) ],
+                [ [ rec( filter := UnderlyingGapObjectFilter( input_types[1].source_category ) ),
+                    rec( filter := UnderlyingGapObjectFilter( input_types[1].source_category ) ) ],
                   rec( filter := IsBool ) ] );
     
 end );
@@ -72,7 +72,7 @@ end );
 #! @Description
 #!  The preorder function used to define the thin category <A>C</A>.
 #!  This function accepts two arguments in the &GAP;-filter
-#!  <C>ValueGlobal</C>(<C>UnderlyingObjectFilter</C>(<A>C</A>))
+#!  <C>ValueGlobal</C>(<C>UnderlyingGapObjectFilter</C>(<A>C</A>))
 #!  and returns <A>true</A> or <A>false</A>.
 #! @Arguments C
 DeclareAttribute( "UnderlyingPreorderFunction",
@@ -83,8 +83,8 @@ CapJitAddTypeSignature( "UnderlyingPreorderFunction", [ IsProsetAsCategory ],
     
     return rec( filter := IsFunction,
                 signature :=
-                [ [ rec( filter := UnderlyingObjectFilter( input_types[1].source_category ) ),
-                    rec( filter := UnderlyingObjectFilter( input_types[1].source_category ) ) ],
+                [ [ rec( filter := UnderlyingGapObjectFilter( input_types[1].source_category ) ),
+                    rec( filter := UnderlyingGapObjectFilter( input_types[1].source_category ) ) ],
                   rec( filter := IsBool ) ] );
     
 end );
@@ -98,7 +98,7 @@ CapJitAddTypeSignature( "UnderlyingDatum", [ IsObjectInThinCategory ],
     
     Assert( 0, IsProsetAsCategory( input_types[1].category ) );
     
-    return rec( filter := UnderlyingObjectFilter( input_types[1].category ) );
+    return rec( filter := UnderlyingGapObjectFilter( input_types[1].category ) );
     
 end );
 
