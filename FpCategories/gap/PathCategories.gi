@@ -8,21 +8,14 @@
 InstallMethod( PathCategory,
           [ IsFinQuiver ],
   
-  function ( q )
-    local admissible_order, name, C, range_of_HomStructure;
-    
-    admissible_order := ValueOption( "admissible_order" );
-    
-    if admissible_order = fail then
-        
-        ## like QPA
-        admissible_order := "dp";
-        
-    elif not admissible_order in [ "dp", "Dp" ] then
-        
-        Error( "only \"dp\" and \"Dp\" admissible orders are supported!\n" );
-        
-    fi;
+  FunctionWithNamedArguments(
+  [
+    [ "admissible_order", fail ],
+    [ "FinalizeCategory", false ],
+    [ "range_of_HomStructure", fail ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, q )
+    local name, C, range_cat;
     
     name := Concatenation( "PathCategory( ", Name( q ), " )" );
     
@@ -40,7 +33,15 @@ InstallMethod( PathCategory,
     
     C!.category_as_first_argument := true;
     
-    C!.admissible_order := admissible_order;
+    if CAP_NAMED_ARGUMENTS.admissible_order = fail then
+      
+      C!.admissible_order := "dp";
+      
+    else
+      
+      C!.admissible_order := CAP_NAMED_ARGUMENTS.admissible_order;
+      
+    fi;
     
     SetIsFinitelyPresentedCategory( C, true );
     
@@ -266,15 +267,15 @@ InstallMethod( PathCategory,
         
         SetIsFiniteCategory( C, true );
         
-        range_of_HomStructure := ValueOption( "range_of_HomStructure" );
+        range_cat := CAP_NAMED_ARGUMENTS.range_of_HomStructure;
         
-        if not IsSkeletalCategoryOfFiniteSets( range_of_HomStructure ) then
-            range_of_HomStructure := SkeletalFinSets;
+        if not IsSkeletalCategoryOfFiniteSets( range_cat ) then
+            range_cat := SkeletalFinSets;
         fi;
         
-        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( C, range_of_HomStructure );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( C, range_cat );
         
-        Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( C ), range_of_HomStructure ) );
+        Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( C ), range_cat ) );
         
         AddMorphismsOfExternalHom( C,
           function ( C, obj_1, obj_2 )
@@ -287,13 +288,17 @@ InstallMethod( PathCategory,
             
         end );
         
+    else
+        
+        SetIsFiniteCategory( C, false );
+        
     fi;
     
     Finalize( C );
     
     return C;
     
-end );
+end ) );
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
