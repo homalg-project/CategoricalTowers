@@ -592,7 +592,7 @@ InstallMethodForCompilerForCAP( CreateObject,
     
     obj_map := MorphismConstructor( V,
                        DistinguishedObjectOfHomomorphismStructure( C ),
-                       [ o ],
+                       [ BigInt( o ) ],
                        C0 );
     
     return ObjectConstructor( C, obj_map );
@@ -626,7 +626,7 @@ InstallMethodForCompilerForCAP( CreateMorphism,
     
     mor_map := MorphismConstructor( V,
                        DistinguishedObjectOfHomomorphismStructure( C ),
-                       [ m ],
+                       [ BigInt( m ) ],
                        C1 );
     
     return MorphismConstructor( C,
@@ -650,9 +650,9 @@ InstallMethodForCompilerForCAP( CreateMorphism,
     t := mors[3];
     
     return CreateMorphism(
-                   CreateObject( C, s( m ) ),
+                   CreateObject( C, Int( s( m ) ) ),
                    m,
-                   CreateObject( C, t( m ) ) );
+                   CreateObject( C, Int( t( m ) ) ) );
     
 end );
 
