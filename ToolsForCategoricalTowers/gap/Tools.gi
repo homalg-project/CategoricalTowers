@@ -71,9 +71,13 @@ InstallMethod( DummyCategoryInDoctrines,
     
     all_operations := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
     
-    options.list_of_operations_to_install :=
-      Concatenation( List( options.list_of_operations_to_install, operation_name ->
-            CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD( operation_name, all_operations ) ) );
+    if IsIdenticalObj( ValueOption( "with_given_objects_methods" ), true ) then
+        
+        options.list_of_operations_to_install :=
+          Concatenation( List( options.list_of_operations_to_install, operation_name ->
+                  CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD( operation_name, all_operations ) ) );
+        
+    fi;
     
     return DummyCategory( options );
     
