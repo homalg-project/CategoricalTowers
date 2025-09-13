@@ -135,3 +135,14 @@ InstallOtherMethod( MissingOperationsForConstructivenessOfCategory,
     return MissingOperationsForConstructivenessOfCategory( C, ConvertJuliaToGAP( doctrine ) );
     
 end );
+
+##
+InstallOtherMethod( DummyCategoryInDoctrines,
+        "for a julia object",
+        [ IsJuliaObject ],
+        
+  function( doctrines )
+    
+    return DummyCategoryInDoctrines( ConvertJuliaToGAP( doctrines ) );
+    
+end );
