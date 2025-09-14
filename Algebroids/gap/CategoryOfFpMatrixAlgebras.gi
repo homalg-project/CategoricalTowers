@@ -5,6 +5,70 @@
 #
 
 ##
+InstallOtherMethodForCompilerForCAP( LongMorphismOfLeftAntipodeLawOfHopfMonoid,
+        "for a category of finitely presented matrix algebras, one object, and three morphisms therein",
+        [ IsCategoryOfFpMatrixAlgebras,
+          IsObjectInCategoryOfFpMatrixAlgebras, IsMorphismInCategoryOfFpMatrixAlgebras, IsMorphismInCategoryOfFpMatrixAlgebras, IsMorphismInCategoryOfFpMatrixAlgebras ],
+        
+  function( FpMatAlg_k, fp_matrix_algebra, mult, comult, antipode )
+    local FpAlg_k, fp_algebra, mult_fp_algebra, comult_fp_algebra, antipode_fp_algebra, fp_algebra_morphism;
+    
+    FpAlg_k := UnderlyingCategory( FpMatAlg_k );
+    
+    fp_algebra := DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1];
+    mult_fp_algebra := UnderlyingListOfMorphismsInCategoryOfFpAlgebras( mult );
+    comult_fp_algebra := UnderlyingListOfMorphismsInCategoryOfFpAlgebras( comult );
+    antipode_fp_algebra := UnderlyingListOfMorphismsInCategoryOfFpAlgebras( antipode );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, Length( mult_fp_algebra ) = 1 );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, Length( comult_fp_algebra ) = 1 );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, Length( antipode_fp_algebra ) = 1 );
+    
+    fp_algebra_morphism := LongMorphismOfLeftAntipodeLawOfHopfMonoid( FpAlg_k, fp_algebra, mult_fp_algebra[1], comult_fp_algebra[1], antipode_fp_algebra[1] );
+    
+    return MorphismConstructor( FpMatAlg_k,
+                   fp_matrix_algebra,
+                   [ fp_algebra_morphism ],
+                   fp_matrix_algebra );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( LongMorphismOfRightAntipodeLawOfHopfMonoid,
+        "for a category of finitely presented matrix algebras, one object, and three morphisms therein",
+        [ IsCategoryOfFpMatrixAlgebras,
+          IsObjectInCategoryOfFpMatrixAlgebras, IsMorphismInCategoryOfFpMatrixAlgebras, IsMorphismInCategoryOfFpMatrixAlgebras, IsMorphismInCategoryOfFpMatrixAlgebras ],
+        
+  function( FpMatAlg_k, fp_matrix_algebra, mult, comult, antipode )
+    local FpAlg_k, fp_algebra, mult_fp_algebra, comult_fp_algebra, antipode_fp_algebra, fp_algebra_morphism;
+    
+    FpAlg_k := UnderlyingCategory( FpMatAlg_k );
+    
+    fp_algebra := DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra )[1];
+    mult_fp_algebra := UnderlyingListOfMorphismsInCategoryOfFpAlgebras( mult );
+    comult_fp_algebra := UnderlyingListOfMorphismsInCategoryOfFpAlgebras( comult );
+    antipode_fp_algebra := UnderlyingListOfMorphismsInCategoryOfFpAlgebras( antipode );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, Length( mult_fp_algebra ) = 1 );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, Length( comult_fp_algebra ) = 1 );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, Length( antipode_fp_algebra ) = 1 );
+    
+    fp_algebra_morphism := LongMorphismOfRightAntipodeLawOfHopfMonoid( FpAlg_k, fp_algebra, mult_fp_algebra[1], comult_fp_algebra[1], antipode_fp_algebra[1] );
+    
+    return MorphismConstructor( FpMatAlg_k,
+                   fp_matrix_algebra,
+                   [ fp_algebra_morphism ],
+                   fp_matrix_algebra );
+    
+end );
+
+##
 InstallMethod( CategoryOfFpMatrixAlgebras,
         "for a category of finitely presented algebras",
         [ IsCategoryOfFpAlgebras ],
@@ -806,6 +870,319 @@ InstallMethod( \.,
 end );
 
 ##
+InstallMethod( \/,
+        "for a finitely presented matrix algebra and a category of internal monoids",
+        [ IsObjectInCategoryOfFpMatrixAlgebras, IsCategoryOfInternalMonoids ],
+        
+  function( fp_matrix_algebra, MonB )
+    local fp_algebra, monoid;
+    
+    fp_algebra := UnderlyingFpAlgebra( fp_matrix_algebra );
+    
+    monoid := fp_algebra / MonB;
+    
+    SetUnderlyingFpMatrixAlgebra( monoid, fp_matrix_algebra );
+    
+    return monoid;
+    
+end );
+
+##
+InstallOtherMethod( FpMatrixAlgebraAsInternalMonoid,
+        "for a finitely presented algebra",
+        [ IsObjectInCategoryOfFpMatrixAlgebras ],
+        
+  function( fp_matrix_algebra )
+    local FpMatAlg_k, B;
+    
+    FpMatAlg_k := CapCategory( fp_matrix_algebra );
+    
+    B := UnderlyingCategoryOfMatrices( FpMatAlg_k );
+    
+    return fp_matrix_algebra / CategoryOfMonoids( B );
+    
+end );
+
+##
+InstallMethod( \.,
+        "for an internal monoid",
+        [ IsObjectInCategoryOfInternalMonoids and HasUnderlyingFpMatrixAlgebra, IsPosInt ],
+        
+  function ( monoid, string_as_int )
+    local name, datum;
+    
+    name := NameRNam( string_as_int );
+    
+    datum := ObjectDatum( monoid );
+    
+    if name = "object" then
+        return datum[1];
+    elif name = "unit" then
+        return datum[2];
+    elif name = "mult" or name = "multiplication" then
+        return datum[3];
+    else
+        return UnderlyingFpMatrixAlgebra( monoid ).(name);
+    fi;
+    
+end );
+
+##
+InstallMethod( \/,
+        "for a finitely presented algebra and a category of finitely presented matrix algebras",
+        [ IsObjectInCategoryOfFpAlgebras, IsCategoryOfFpMatrixAlgebras ],
+        
+  function( fp_algebra, FpMatAlg_k )
+    local Func, o;
+    
+    Func := AssociatedFunctorCategory( fp_algebra );
+    
+    o := Func.o;
+    
+    o := ObjectDatum( Func, o );
+    
+    return ObjectConstructor( FpMatAlg_k,
+                   Pair( fp_algebra,
+                         Pair( o[1][1], o[2] ) ) );
+    
+end );
+
+##
+InstallMethod( YonedaFpMatrixAlgebra,
+        "for a finitely presented algebra",
+        [ IsObjectInCategoryOfFpAlgebras ],
+        
+  function( fp_algebra )
+    local FpMatAlg_k;
+    
+    FpMatAlg_k := CategoryOfFpMatrixAlgebras( CapCategory( fp_algebra ) );
+    
+    return fp_algebra / FpMatAlg_k;
+    
+end );
+
+##
+InstallMethod( Pullback,
+        "for a category of finitely presented matrix algebras, a ring map, and a finitely presented matrix algebra",
+        [ IsCategoryOfFpMatrixAlgebras, IsHomalgRingMap, IsObjectInCategoryOfFpMatrixAlgebras ],
+        
+  function( FpMatAlg_R, ring_map, fp_matrix_algebra )
+    local FpAlg_R, B, R, pair, fp_algebra, reps;
+    
+    FpAlg_R := UnderlyingCategory( FpMatAlg_R );
+    
+    B := UnderlyingCategoryOfMatrices( FpMatAlg_R );
+    
+    R := CommutativeRingOfLinearCategory( B );
+    
+    pair := DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra );
+    
+    fp_algebra := pair[1];
+    
+    reps := pair[2];
+    
+    return ObjectConstructor( FpMatAlg_R,
+                   Pair( Pullback( FpAlg_R, ring_map, pair[1] ),
+                         Pair( RankOfObject( reps[1] ) / B,
+                               List( reps[2], mor -> ( R * UnderlyingMatrix( mor ) ) / B ) ) ) );
+    
+end );
+
+##
+InstallMethod( Pullback,
+        "for a ring map, and a finitely presented matrix algebra",
+        [ IsHomalgRingMap, IsObjectInCategoryOfFpMatrixAlgebras ],
+        
+  function( ring_map, fp_matrix_algebra )
+    local FpMatAlg_R;
+    
+    FpMatAlg_R := CategoryOfFpMatrixAlgebras( Range( ring_map ) );
+    
+    return Pullback( FpMatAlg_R, ring_map, fp_matrix_algebra );
+    
+end );
+
+##
+InstallMethod( \/,
+        "for a finitely presented matrix algebra and a category of finitely presented matrix algebras",
+        [ IsObjectInCategoryOfFpMatrixAlgebras, IsCategoryOfFpMatrixAlgebras ],
+        
+  function( fp_matrix_algebra, FpMatAlg_R )
+    local FpAlg_R, B, R, pair, fp_algebra, reps;
+    
+    FpAlg_R := UnderlyingCategory( FpMatAlg_R );
+    
+    B := UnderlyingCategoryOfMatrices( FpMatAlg_R );
+    
+    R := CommutativeRingOfLinearCategory( B );
+    
+    pair := DefiningPairOfFinitelyPresentedMatrixAlgebra( fp_matrix_algebra );
+    
+    fp_algebra := pair[1];
+    
+    reps := pair[2];
+    
+    return ObjectConstructor( FpMatAlg_R,
+                   Pair( pair[1] / FpAlg_R,
+                         Pair( RankOfObject( reps[1] ) / B,
+                               List( reps[2], mor -> ( R * UnderlyingMatrix( mor ) ) / B ) ) ) );
+    
+end );
+
+##
+InstallMethod( \*,
+        "for a homalg ring and a finitely presented matrix algebra",
+        [ IsHomalgRing, IsObjectInCategoryOfFpMatrixAlgebras ],
+        
+  function( R, fp_matrix_algebra )
+    local FpMatAlg_R;
+    
+    FpMatAlg_R := CategoryOfFpMatrixAlgebras( R );
+    
+    return fp_matrix_algebra / FpMatAlg_R;
+    
+end );
+
+##
+InstallMethod( BaseChangeToDifferentCategoryOfFpMatrixAlgebras,
+        "for a category of finitely presented matrix algebras, a ring map, two finitely presented matrix algebras, and a morphism of finitely presented matrix algebras",
+        [ IsCategoryOfFpMatrixAlgebras, IsHomalgRingMap,
+          IsObjectInCategoryOfFpMatrixAlgebras, IsMorphismInCategoryOfFpMatrixAlgebras, IsObjectInCategoryOfFpMatrixAlgebras ],
+        
+  function( FpMatAlg_R, ring_map, source, fp_matrix_algebra_morphism, target )
+    local FpAlg_R, list_of_fp_algebra_morphisms, l, s, t, func;
+    
+    FpAlg_R := UnderlyingCategory( FpMatAlg_R );
+    
+    list_of_fp_algebra_morphisms := UnderlyingListOfMorphismsInCategoryOfFpAlgebras( fp_matrix_algebra_morphism );
+    
+    l := Length( list_of_fp_algebra_morphisms );
+    
+    s := UnderlyingFpAlgebra( source );
+    t := UnderlyingFpAlgebra( target );
+    
+    func :=
+      function( i )
+        if i = 1 and i = l then
+            return BaseChangeToDifferentCategoryOfFpAlgebras( FpAlg_R, ring_map, s, list_of_fp_algebra_morphisms[i], t );
+        elif i = 1 then
+            return BaseChangeToDifferentCategoryOfFpAlgebras( FpAlg_R, ring_map,
+                           s, list_of_fp_algebra_morphisms[i], Pullback( FpAlg_R, ring_map, Target( list_of_fp_algebra_morphisms[i] ) ) );
+        elif i = l then
+            return BaseChangeToDifferentCategoryOfFpAlgebras( FpAlg_R, ring_map,
+                           Pullback( FpAlg_R, ring_map, Source( list_of_fp_algebra_morphisms[i] ) ), list_of_fp_algebra_morphisms[i], t );
+        else
+            return BaseChangeToDifferentCategoryOfFpAlgebras( FpAlg_R,
+                           Pullback( FpAlg_R, ring_map, Source( list_of_fp_algebra_morphisms[i] ) ),
+                           list_of_fp_algebra_morphisms[i],
+                           Pullback( FpAlg_R, ring_map, Target( list_of_fp_algebra_morphisms[i] ) ) );
+        fi;
+    end;
+    
+    return MorphismConstructor( FpMatAlg_R,
+                   source,
+                   List( [ 1 .. l ], func ),
+                   target );
+    
+end );
+
+##
+InstallMethod( BaseChangeToDifferentCategoryOfFpMatrixAlgebras,
+        "for a category of finitely presented matrix algebras, two finitely presented matrix algebras, and a morphism of finitely presented matrix algebras",
+        [ IsCategoryOfFpMatrixAlgebras,
+          IsObjectInCategoryOfFpMatrixAlgebras, IsMorphismInCategoryOfFpMatrixAlgebras, IsObjectInCategoryOfFpMatrixAlgebras ],
+        
+  function( FpMatAlg_R, source, fp_matrix_algebra_morphism, target )
+    local FpAlg_R, list_of_fp_algebra_morphisms, l, s, t, func;
+    
+    FpAlg_R := UnderlyingCategory( FpMatAlg_R );
+    
+    list_of_fp_algebra_morphisms := UnderlyingListOfMorphismsInCategoryOfFpAlgebras( fp_matrix_algebra_morphism );
+    
+    l := Length( list_of_fp_algebra_morphisms );
+    
+    s := UnderlyingFpAlgebra( source );
+    t := UnderlyingFpAlgebra( target );
+    
+    func :=
+      function( i )
+        if i = 1 and i = l then
+            return BaseChangeToDifferentCategoryOfFpAlgebras( FpAlg_R, s, list_of_fp_algebra_morphisms[i], t );
+        elif i = 1 then
+            return BaseChangeToDifferentCategoryOfFpAlgebras( FpAlg_R, s, list_of_fp_algebra_morphisms[i], Target( list_of_fp_algebra_morphisms[i] ) / FpAlg_R );
+        elif i = l then
+            return BaseChangeToDifferentCategoryOfFpAlgebras( FpAlg_R, Source( list_of_fp_algebra_morphisms[i] ) / FpAlg_R, list_of_fp_algebra_morphisms[i], t );
+        else
+            return BaseChangeToDifferentCategoryOfFpAlgebras( FpAlg_R,
+                           Source( list_of_fp_algebra_morphisms[i] ) / FpAlg_R,
+                           list_of_fp_algebra_morphisms[i],
+                           Target( list_of_fp_algebra_morphisms[i] ) / FpAlg_R );
+        fi;
+    end;
+    
+    return MorphismConstructor( FpMatAlg_R,
+                   source,
+                   List( [ 1 .. l ], func ),
+                   target );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( Unit,
+        "for a category of finitely presented matrix algebras and an algebra therein",
+        [ IsCategoryOfFpMatrixAlgebras, IsObjectInCategoryOfFpMatrixAlgebras ],
+        
+  function( FpMatAlg_k, fp_matrix_algebra )
+    
+    return UniversalMorphismFromInitialObject( FpMatAlg_k, fp_matrix_algebra );
+    
+end );
+
+##
+InstallMethod( Unit,
+        "for a finitely presented matrix algebra",
+        [ IsObjectInCategoryOfFpMatrixAlgebras ],
+        
+  function( fp_matrix_algebra )
+    
+    return Unit( CapCategory( fp_matrix_algebra ), fp_matrix_algebra );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( Multiplication,
+        "for a category of finitely presented matrix algebras and an algebra therein",
+        [ IsCategoryOfFpMatrixAlgebras, IsObjectInCategoryOfFpMatrixAlgebras ],
+        
+  function( FpMatAlg_k, fp_matrix_algebra )
+    local FpAlg_k, fp_matrix_algebra2, fp_algebra;
+    
+    FpAlg_k := UnderlyingCategory( FpMatAlg_k );
+    
+    fp_matrix_algebra2 := TensorProductOnObjects( FpMatAlg_k, fp_matrix_algebra, fp_matrix_algebra );
+    
+    fp_algebra := UnderlyingFpAlgebra( fp_matrix_algebra );
+    
+    ## this is an algebra morphism iff the algebra is commutative
+    return MorphismConstructor( FpMatAlg_k,
+                   fp_matrix_algebra2,
+                   [ Multiplication( FpAlg_k, fp_algebra ) ],
+                   fp_matrix_algebra );
+    
+end );
+
+##
+InstallMethod( Multiplication,
+        "for a finitely presented matrix algebra",
+        [ IsObjectInCategoryOfFpMatrixAlgebras ],
+        
+  function( fp_matrix_algebra )
+    
+    return Multiplication( CapCategory( fp_matrix_algebra ), fp_matrix_algebra );
+    
+end );
+
+##
 InstallMethod( Counit,
         "for a finitely presented matrix algebra and a list",
         [ IsObjectInCategoryOfFpMatrixAlgebras, IsList ],
@@ -844,6 +1221,24 @@ InstallMethod( Comultiplication,
                    fp_matrix_algebra,
                    [ Comultiplication( fp_algebra, list_of_images_of_comult ) ],
                    fp_matrix_algebra2 );
+    
+end );
+
+##
+InstallMethod( Antipode,
+        "for a finitely presented matrix algebra and a list",
+        [ IsObjectInCategoryOfFpMatrixAlgebras, IsList ],
+        
+  function( fp_matrix_algebra, antipode_on_generators )
+    local fp_algebra;
+    
+    fp_algebra := UnderlyingFpAlgebra( fp_matrix_algebra );
+    
+    ## this is an algebra morphism if algebra is commutative
+    return MorphismConstructor(
+                   fp_matrix_algebra,
+                   [ Antipode( fp_algebra, antipode_on_generators ) ],
+                   fp_matrix_algebra );
     
 end );
 
