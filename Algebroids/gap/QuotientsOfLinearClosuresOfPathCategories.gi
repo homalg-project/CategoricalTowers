@@ -93,8 +93,11 @@ InstallMethod( QuotientCategory,
         
         k := CommutativeRingOfLinearCategory( kC );
         
-        if HasIsFieldForHomalg( k ) and IsFieldForHomalg( k ) then
+        if ( HasIsFieldForHomalg( k ) and IsFieldForHomalg( k ) ) or
+           ForAll( relations, rel -> ForAll( CoefficientsList( rel ), coef -> IsUnit( k, coef ) ) ) then
+            
             SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( quo_kC, true );
+            
         fi;
         
         ##
