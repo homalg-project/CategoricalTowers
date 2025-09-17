@@ -1,5 +1,5 @@
 name: FunctorCategories
-version: "2025.09-02"
+version: "2025.09-03"
 license: "GPL-2.0-or-later"
 date: 2025-09-17
 description: |
@@ -81,11 +81,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FunctorCategorie
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.09-02/FunctorCategories-2025.09-02.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.09-03/FunctorCategories-2025.09-03.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.09-02/FunctorCategories-2025.09-02.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.09-03/FunctorCategories-2025.09-03.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.09-02/FunctorCategories-2025.09-02-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.09-03/FunctorCategories-2025.09-03-manual.pdf
 
 abstract: |
 
@@ -98,7 +98,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BS17</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FunctorCategories, Categories of functors,
-             Version 2025.09-02</i>
+             Version 2025.09-03</i>
      (<span class='BibYear'>9-17</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FunctorCategories">https://homalg-project.github.io/pkg/FunctorCategories</a></span>.
@@ -109,7 +109,7 @@ bibtex: |
     @misc{ FunctorCategories,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FunctorCategories},    {Categories    of   functors},
-                          {V}ersion 2025.09\texttt{\symbol{45}}02},
+                          {V}ersion 2025.09\texttt{\symbol{45}}03},
       month =            {5\texttt{\symbol{45}}},
       year =             {9\texttt{\symbol{45}}17},
       note =             {GAP package},
