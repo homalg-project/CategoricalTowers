@@ -492,11 +492,11 @@ Q
 Algebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1-&gt;1,a:1-&gt;2,b:2-&gt;4,c:1-&gt;3,d:3-&gt;4,
 y:4-&gt;4]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( kF / [ kF.x^3, kF.y^2 ] );</span>
-Q-algebroid( {1,2,3,4}[x:1-≻1,a:1-≻2,b:2-≻4,c:1-≻3,d:3-≻4,y:4-≻4] ) defined by 4 objects
+Q-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4] ) defined by 4 objects
 and 6 generating morphisms
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsAdmissibleAlgebroid( A, true );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( A );</span>
-PreSheaves( Q-algebroid( {1,2,3,4}[x:1-≻1,a:1-≻2,b:2-≻4,c:1-≻3,d:3-≻4,y:4-≻4] ) defined
+PreSheaves( Q-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4] ) defined
 by 4 objects and 6 generating morphisms, Rows( Q ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PSh.4;</span>
 &lt;(1)-&gt;12, (2)-&gt;2, (3)-&gt;2, (4)-&gt;2; (x)-&gt;12x12, (a)-&gt;2x12, (b)-&gt;2x2,
@@ -516,7 +516,7 @@ A row module over Q of rank 2
 Image of &lt;(4)&gt;:
 A row module over Q of rank 2
 
-Image of &lt;1*x:(1) -≻ (1)&gt;:
+Image of &lt;1*x:(1) → (1)&gt;:
 Source:
 A row module over Q of rank 12
 
@@ -539,7 +539,7 @@ A row module over Q of rank 12
 
 A morphism in Rows( Q )
 
-Image of &lt;1*a:(1) -≻ (2)&gt;:
+Image of &lt;1*a:(1) → (2)&gt;:
 Source:
 A row module over Q of rank 2
 
@@ -552,7 +552,7 @@ A row module over Q of rank 12
 
 A morphism in Rows( Q )
 
-Image of &lt;1*b:(2) -≻ (4)&gt;:
+Image of &lt;1*b:(2) → (4)&gt;:
 Source:
 A row module over Q of rank 2
 
@@ -565,7 +565,7 @@ A row module over Q of rank 2
 
 A morphism in Rows( Q )
 
-Image of &lt;1*c:(1) -≻ (3)&gt;:
+Image of &lt;1*c:(1) → (3)&gt;:
 Source:
 A row module over Q of rank 2
 
@@ -578,7 +578,7 @@ A row module over Q of rank 12
 
 A morphism in Rows( Q )
 
-Image of &lt;1*d:(3) -≻ (4)&gt;:
+Image of &lt;1*d:(3) → (4)&gt;:
 Source:
 A row module over Q of rank 2
 
@@ -591,7 +591,7 @@ A row module over Q of rank 2
 
 A morphism in Rows( Q )
 
-Image of &lt;1*y:(4) -≻ (4)&gt;:
+Image of &lt;1*y:(4) → (4)&gt;:
 Source:
 A row module over Q of rank 2
 
@@ -604,8 +604,8 @@ A row module over Q of rank 2
 
 A morphism in Rows( Q )
 
-An object in PreSheaves( Q-algebroid( {1,2,3,4}[x:1-≻1,a:1-≻2,b:2-≻4,c:1-≻3,d:3-≻4,
-y:4-≻4] ) defined by 4 objects and 6 generating morphisms, Rows( Q ) ) given by
+An object in PreSheaves( Q-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,
+y:4→4] ) defined by 4 objects and 6 generating morphisms, Rows( Q ) ) given by
 the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( MonomorphismIntoSomeInjectiveObject( P ) );</span>
 true
@@ -626,30 +626,30 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2 := SimplicialCategoryTruncatedInDegree( 2 );</span>
 PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,
-                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,
+                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DefiningRelations( Delta2 );</span>
-[ [ s⋅id:(C0) -≻ (C0), id(C0):(C0) -≻ (C0) ],
-  [ t⋅id:(C0) -≻ (C0), id(C0):(C0) -≻ (C0) ],
-  [ ps⋅is:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],
-  [ pt⋅it:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],
-  [ is⋅id:(C2) -≻ (C0), it⋅id:(C2) -≻ (C0) ],
-  [ pt⋅is:(C1) -≻ (C1), id⋅t:(C1) -≻ (C1) ],
-  [ ps⋅it:(C1) -≻ (C1), id⋅s:(C1) -≻ (C1) ],
-  [ s⋅pt:(C0) -≻ (C2), t⋅ps:(C0) -≻ (C2) ],
-  [ s⋅mu:(C0) -≻ (C2), s⋅ps:(C0) -≻ (C2) ],
-  [ t⋅mu:(C0) -≻ (C2), t⋅pt:(C0) -≻ (C2) ],
-  [ mu⋅is:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],
-  [ mu⋅it:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ] ]
+[ [ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],
+  [ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],
+  [ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],
+  [ pt⋅it:(C1) → (C1), id(C1):(C1) → (C1) ],
+  [ is⋅id:(C2) → (C0), it⋅id:(C2) → (C0) ],
+  [ pt⋅is:(C1) → (C1), id⋅t:(C1) → (C1) ],
+  [ ps⋅it:(C1) → (C1), id⋅s:(C1) → (C1) ],
+  [ s⋅pt:(C0) → (C2), t⋅ps:(C0) → (C2) ],
+  [ s⋅mu:(C0) → (C2), s⋅ps:(C0) → (C2) ],
+  [ t⋅mu:(C0) → (C2), t⋅pt:(C0) → (C2) ],
+  [ mu⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],
+  [ mu⋅it:(C1) → (C1), id(C1):(C1) → (C1) ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( Delta2 );</span>
 31
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := NerveTruncatedInDegree2( Delta2 );</span>
 &lt;An object in PreSheaves( PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,
-                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,
+                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],
  SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( N );</span>
@@ -674,9 +674,9 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                  RangeCategoryOfHomomorphismStructure( Delta2 ) );</span>
 FullSubcategoryByObjectMembershipFunction(
 PreSheaves( PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,
-                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,
+                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],
 SkeletalFinSets ), ObjectMembershipFunction )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( N / IntCat );</span>
@@ -689,15 +689,15 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2 := CategoryFromNerveData( SimplicialCategoryTruncatedInDegree( 2 ) );</span>
 PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,
-                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,
+                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := NerveTruncatedInDegree2( Delta2 );</span>
 &lt;An object in PreSheaves( PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,
-                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,
+                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],
  SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( N );</span>
@@ -727,13 +727,13 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta1 := UnderlyingCategory( FinReflexiveQuivers );</span>
-PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := NerveTruncatedInDegree2( Delta1 );</span>
 &lt;An object in PreSheaves( PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,
-                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,
+                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],
  SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( N );</span>
@@ -760,9 +760,9 @@ true
 { 0,..., 6 } ⱶ[ 0, 4, 7, 8, 17, 20, 23 ]→ { 0,..., 25 }
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2 := Source( N );</span>
 PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,
-                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,
+                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N( Delta2.it ) = N.it;</span>
 true
@@ -1432,15 +1432,15 @@ Q
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QC := Q[C];</span>
 Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) ) ) / relations
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QC := AlgebroidFromDataTables( QC );</span>
-Q-algebroid( {o}[x:o-≻o] ) defined by 1 object and 1 generating morphism
+Q-algebroid( {o}[x:o→o] ) defined by 1 object and 1 generating morphism
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := QC.x;</span>
-&lt;1*x:(o) -≻ (o)&gt;
+&lt;1*x:(o) → (o)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( x );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( x );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( QC );</span>
-PreSheaves( Q-algebroid( {o}[x:o-≻o] )
+PreSheaves( Q-algebroid( {o}[x:o→o] )
 defined by 1 object and 1 generating morphism, Rows( Q ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := Target( PSh );</span>
 Rows( Q )
@@ -1483,7 +1483,7 @@ false
 Image of &lt;(o)&gt;:
 A row module over Q of rank 8
 
-Image of &lt;1*x:(o) -≻ (o)&gt;:
+Image of &lt;1*x:(o) → (o)&gt;:
 Source:
 A row module over Q of rank 8
 
@@ -1502,14 +1502,14 @@ A row module over Q of rank 8
 
 A morphism in Rows( Q )
 
-An object in PreSheaves( Q-algebroid( {o}[x:o-≻o] )
+An object in PreSheaves( Q-algebroid( {o}[x:o→o] )
 defined by 1 object and 1 generating morphism, Rows( Q ) )
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CoimageObject( pi ) );</span>
 Image of &lt;(o)&gt;:
 A row module over Q of rank 8
 
-Image of &lt;1*x:(o) -≻ (o)&gt;:
+Image of &lt;1*x:(o) → (o)&gt;:
 Source:
 A row module over Q of rank 8
 
@@ -1528,7 +1528,7 @@ A row module over Q of rank 8
 
 A morphism in Rows( Q )
 
-An object in PreSheaves( Q-algebroid( {o}[x:o-≻o] )
+An object in PreSheaves( Q-algebroid( {o}[x:o→o] )
 defined by 1 object and 1 generating morphism, Rows( Q ) )
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ps := EpimorphismFromSomeProjectiveObjectUsingSplits( G );</span>
@@ -1541,7 +1541,7 @@ false
 Image of &lt;(o)&gt;:
 A row module over Q of rank 8
 
-Image of &lt;1*x:(o) -≻ (o)&gt;:
+Image of &lt;1*x:(o) → (o)&gt;:
 Source:
 A row module over Q of rank 8
 
@@ -1560,35 +1560,35 @@ A row module over Q of rank 8
 
 A morphism in Rows( Q )
 
-An object in PreSheaves( Q-algebroid( {o}[x:o-≻o] )
+An object in PreSheaves( Q-algebroid( {o}[x:o→o] )
 defined by 1 object and 1 generating morphism, Rows( Q ) )
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">section := SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( G );</span>
-&lt;A morphism in AdditiveClosure( Q-algebroid( {o}[x:o-≻o] )
+&lt;A morphism in AdditiveClosure( Q-algebroid( {o}[x:o→o] )
  defined by 1 object and 1 generating morphism )
  defined by a 2 x 8 matrix of underlying morphisms&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( section );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( section );</span>
-A 2 x 8 matrix with entries in Q-algebroid( {o}[x:o-≻o] )
+A 2 x 8 matrix with entries in Q-algebroid( {o}[x:o→o] )
 defined by 1 object and 1 generating morphism
 
-[1,1]: &lt;0:(o) -≻ (o)&gt;
-[1,2]: &lt;0:(o) -≻ (o)&gt;
-[1,3]: &lt;0:(o) -≻ (o)&gt;
-[1,4]: &lt;0:(o) -≻ (o)&gt;
-[1,5]: &lt;0:(o) -≻ (o)&gt;
-[1,6]: &lt;0:(o) -≻ (o)&gt;
-[1,7]: &lt;0:(o) -≻ (o)&gt;
-[1,8]: &lt;1*id(o):(o) -≻ (o)&gt;
-[2,1]: &lt;0:(o) -≻ (o)&gt;
-[2,2]: &lt;0:(o) -≻ (o)&gt;
-[2,3]: &lt;0:(o) -≻ (o)&gt;
-[2,4]: &lt;0:(o) -≻ (o)&gt;
-[2,5]: &lt;0:(o) -≻ (o)&gt;
-[2,6]: &lt;0:(o) -≻ (o)&gt;
-[2,7]: &lt;1*id(o):(o) -≻ (o)&gt;
-[2,8]: &lt;0:(o) -≻ (o)&gt;
+[1,1]: &lt;0:(o) → (o)&gt;
+[1,2]: &lt;0:(o) → (o)&gt;
+[1,3]: &lt;0:(o) → (o)&gt;
+[1,4]: &lt;0:(o) → (o)&gt;
+[1,5]: &lt;0:(o) → (o)&gt;
+[1,6]: &lt;0:(o) → (o)&gt;
+[1,7]: &lt;0:(o) → (o)&gt;
+[1,8]: &lt;1*id(o):(o) → (o)&gt;
+[2,1]: &lt;0:(o) → (o)&gt;
+[2,2]: &lt;0:(o) → (o)&gt;
+[2,3]: &lt;0:(o) → (o)&gt;
+[2,4]: &lt;0:(o) → (o)&gt;
+[2,5]: &lt;0:(o) → (o)&gt;
+[2,6]: &lt;0:(o) → (o)&gt;
+[2,7]: &lt;1*id(o):(o) → (o)&gt;
+[2,8]: &lt;0:(o) → (o)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Emb := EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheaves( PSh );</span>
 The embedding functor of the finite coproduct completion into f.p. presheaves
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ip := PreCompose( Emb( section ), cy );</span>
@@ -1600,31 +1600,31 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoimageObject( ip ) = CoimageObject( pi );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">retraction := RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( G );</span>
-&lt;A morphism in AdditiveClosure( Q-algebroid( {o}[x:o-≻o] )
+&lt;A morphism in AdditiveClosure( Q-algebroid( {o}[x:o→o] )
  defined by 1 object and 1 generating morphism )
  defined by a 8 x 2 matrix of underlying morphisms&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( retraction );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( retraction );</span>
-A 8 x 2 matrix with entries in Q-algebroid( {o}[x:o-≻o] )
+A 8 x 2 matrix with entries in Q-algebroid( {o}[x:o→o] )
 defined by 1 object and 1 generating morphism
 
-[1,1]: &lt;0:(o) -≻ (o)&gt;
-[1,2]: &lt;1*x^3:(o) -≻ (o)&gt;
-[2,1]: &lt;0:(o) -≻ (o)&gt;
-[2,2]: &lt;1*x^2:(o) -≻ (o)&gt;
-[3,1]: &lt;1*x:(o) -≻ (o)&gt;
-[3,2]: &lt;0:(o) -≻ (o)&gt;
-[4,1]: &lt;0:(o) -≻ (o)&gt;
-[4,2]: &lt;1*x:(o) -≻ (o)&gt;
-[5,1]: &lt;0:(o) -≻ (o)&gt;
-[5,2]: &lt;1*x^5:(o) -≻ (o)&gt;
-[6,1]: &lt;0:(o) -≻ (o)&gt;
-[6,2]: &lt;1*x^4:(o) -≻ (o)&gt;
-[7,1]: &lt;0:(o) -≻ (o)&gt;
-[7,2]: &lt;1*id(o):(o) -≻ (o)&gt;
-[8,1]: &lt;1*id(o):(o) -≻ (o)&gt;
-[8,2]: &lt;0:(o) -≻ (o)&gt;
+[1,1]: &lt;0:(o) → (o)&gt;
+[1,2]: &lt;1*x^3:(o) → (o)&gt;
+[2,1]: &lt;0:(o) → (o)&gt;
+[2,2]: &lt;1*x^2:(o) → (o)&gt;
+[3,1]: &lt;1*x:(o) → (o)&gt;
+[3,2]: &lt;0:(o) → (o)&gt;
+[4,1]: &lt;0:(o) → (o)&gt;
+[4,2]: &lt;1*x:(o) → (o)&gt;
+[5,1]: &lt;0:(o) → (o)&gt;
+[5,2]: &lt;1*x^5:(o) → (o)&gt;
+[6,1]: &lt;0:(o) → (o)&gt;
+[6,2]: &lt;1*x^4:(o) → (o)&gt;
+[7,1]: &lt;0:(o) → (o)&gt;
+[7,2]: &lt;1*id(o):(o) → (o)&gt;
+[8,1]: &lt;1*id(o):(o) → (o)&gt;
+[8,2]: &lt;0:(o) → (o)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( section, retraction ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">co := ProjectionOntoCoequalizer( OptimizedCoYonedaLemmaCoequalizerPair( G )[2] );</span>
@@ -1862,30 +1862,30 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", "&gt;= 2024.03-13", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "q(a,l,r,i,c,b)[ac:a-&gt;c,lc:l-&gt;c,ri:r-&gt;i,ic:i-&gt;c,cb:c-&gt;b]" );</span>
-FinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" )
+FinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PathCategory( q );</span>
 PathCategory(
-FinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) )
+FinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( F );</span>
 16
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PosetOfCategory( F );</span>
 PosetOfCategory( PathCategory(
-FinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) )
+FinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( P );</span>
 16
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( P );</span>
 PreSheaves( PosetOfCategory( PathCategory(
-FinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ),
+FinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ),
 IntervalCategory )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := PSh.c;</span>
 &lt;A projective object in PreSheaves( PosetOfCategory( PathCategory(
- FinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ),
+ FinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ),
  IntervalCategory )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">section :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( c );</span>
 &lt;A split monomorphism in FiniteStrictCoproductCompletion(
  PosetOfCategory( PathCategory(
- FinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ) )&gt;
+ FinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( section );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( section );</span>
@@ -1894,7 +1894,7 @@ true
 [ 1, [ An object in the poset given by: (c) ] ]
 
 An object in FiniteStrictCoproductCompletion( PosetOfCategory( PathCategory(
-FinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ) )
+FinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ) )
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Target( section ) );</span>
 [ 5, [ An object in the poset given by: (a),
@@ -1904,7 +1904,7 @@ given by the above data
        An object in the poset given by: (c) ] ]
 
 An object in FiniteStrictCoproductCompletion( PosetOfCategory( PathCategory(
-FinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ) )
+FinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ) )
 given by the above data
 </pre></div>
 

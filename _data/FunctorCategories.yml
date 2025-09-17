@@ -1,5 +1,5 @@
 name: FunctorCategories
-version: "2025.09-04"
+version: "2025.09-05"
 license: "GPL-2.0-or-later"
 date: 2025-09-17
 description: |
@@ -39,10 +39,10 @@ needed-pkgs:
       version: ">= 2024.11-03"
       url: "https://homalg-project.github.io/pkg/ToolsForCategoricalTowers"
     - name: "FpCategories"
-      version: ">= 2024.09-06"
+      version: ">= 2025.09-01"
       url: "https://homalg-project.github.io/pkg/FpCategories"
     - name: "Algebroids"
-      version: ">= 2024.09-04"
+      version: ">= 2025.09-05"
       url: "https://homalg-project.github.io/pkg/Algebroids"
     - name: "FiniteCocompletions"
       version: ">= 2024.03-12"
@@ -81,11 +81,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FunctorCategorie
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.09-04/FunctorCategories-2025.09-04.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.09-05/FunctorCategories-2025.09-05.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.09-04/FunctorCategories-2025.09-04.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.09-05/FunctorCategories-2025.09-05.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.09-04/FunctorCategories-2025.09-04-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.09-05/FunctorCategories-2025.09-05-manual.pdf
 
 abstract: |
 
@@ -98,7 +98,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BS17</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FunctorCategories, Categories of functors,
-             Version 2025.09-04</i>
+             Version 2025.09-05</i>
      (<span class='BibYear'>9-17</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FunctorCategories">https://homalg-project.github.io/pkg/FunctorCategories</a></span>.
@@ -109,7 +109,7 @@ bibtex: |
     @misc{ FunctorCategories,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FunctorCategories},    {Categories    of   functors},
-                          {V}ersion 2025.09\texttt{\symbol{45}}04},
+                          {V}ersion 2025.09\texttt{\symbol{45}}05},
       month =            {5\texttt{\symbol{45}}},
       year =             {9\texttt{\symbol{45}}17},
       note =             {GAP package},

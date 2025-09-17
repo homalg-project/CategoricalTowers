@@ -39,25 +39,25 @@
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xq := FinQuiver( "q(0,1,2,3)[a:0->1,b:1->3,c:0->2,d:2->3,e:3->3]" );[127X[104X
-    [4X[28XFinQuiver( "q(0,1,2,3)[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3]" )[128X[104X
+    [4X[28XFinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" )[128X[104X
     [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals();[127X[104X
     [4X[28XQ[128X[104X
     [4X[25Xgap>[125X [27XC := PathCategory( q );[127X[104X
-    [4X[28XPathCategory( FinQuiver( "q(0,1,2,3)[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3]" ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) )[128X[104X
     [4X[25Xgap>[125X [27XkC := k[C];[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0-≻1,b:1-≻3,c:0-≻2,[128X[104X
-    [4X[28Xd:2-≻3,e:3-≻3]" ) ) )[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,[128X[104X
+    [4X[28Xd:2→3,e:3→3]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27Xquo_kC := kC / [ kC.e^3 ];[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0-≻1,b:1-≻3,c:0-≻2,[128X[104X
-    [4X[28Xd:2-≻3,e:3-≻3]" ) ) ) / [ 1*e^3 ][128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,[128X[104X
+    [4X[28Xd:2→3,e:3→3]" ) ) ) / [ 1*e^3 ][128X[104X
     [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( quo_kC );[127X[104X
-    [4X[28XQ-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] ) defined by[128X[104X
+    [4X[28XQ-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] ) defined by[128X[104X
     [4X[28X4 objects and 5 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27Xe := AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory( A.("e") );;[127X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( e );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XqA := QuotientCategory( A, [ A.ab - A.cd, 2*A.be ] );[127X[104X
-    [4X[28XQuotientCategory( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )[128X[104X
+    [4X[28XQuotientCategory( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] )[128X[104X
     [4X[28Xdefined by 4 objects and 5 generating morphisms, 2-sided ideal generated[128X[104X
     [4X[28Xby 2 morphisms )[128X[104X
     [4X[25Xgap>[125X [27XqA.0;[127X[104X
@@ -70,7 +70,7 @@
     [4X[25Xgap>[125X [27X1/2 * HomStructure( Source( f ), Target( f ), 2 * HomStructure( f ) ) = f;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XqA := QuotientCategory( A, [ A.id_0, A.id_1, A.id_2 ] );[127X[104X
-    [4X[28XQuotientCategory( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )[128X[104X
+    [4X[28XQuotientCategory( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] )[128X[104X
     [4X[28Xdefined by 4 objects and 5 generating morphisms, 2-sided ideal generated[128X[104X
     [4X[28Xby 3 morphisms )[128X[104X
     [4X[25Xgap>[125X [27XForAll( [ qA.0, qA.1, qA.2 ], IsZeroForObjects );[127X[104X
@@ -78,19 +78,19 @@
     [4X[25Xgap>[125X [27XIsZero( qA.3 );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XD := AlgebroidFromDataTables( qA );[127X[104X
-    [4X[28XQ-algebroid( {3}[e:3-≻3] ) defined by 1 object and 1 generating morphism[128X[104X
+    [4X[28XQ-algebroid( {3}[e:3→3] ) defined by 1 object and 1 generating morphism[128X[104X
     [4X[25Xgap>[125X [27XBasisOfExternalHom( D.3, D.3 );[127X[104X
-    [4X[28X[ <1*id(3):(3) -≻ (3)>, <1*e:(3) -≻ (3)>, <1*e^2:(3) -≻ (3)> ][128X[104X
+    [4X[28X[ <1*id(3):(3) → (3)>, <1*e:(3) → (3)>, <1*e^2:(3) → (3)> ][128X[104X
     [4X[25Xgap>[125X [27Xdata_tables := DataTablesOfCategory( quo_kC );;[127X[104X
     [4X[25Xgap>[125X [27Xdata_tables_Z := ShallowCopy( data_tables );;[127X[104X
     [4X[25Xgap>[125X [27Xdata_tables_Z[1] := HomalgRingOfIntegers();;[127X[104X
     [4X[25Xgap>[125X [27XB := AlgebroidFromDataTables( data_tables_Z );[127X[104X
-    [4X[28XZ-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] ) defined by[128X[104X
+    [4X[28XZ-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] ) defined by[128X[104X
     [4X[28X4 objects and 5 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XRangeCategoryOfHomomorphismStructure( B );[127X[104X
     [4X[28XRows( Z )[128X[104X
     [4X[25Xgap>[125X [27XqB := QuotientCategory( B, [ B.ab - B.cd, 2*B.be ] );[127X[104X
-    [4X[28XQuotientCategory( Z-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )[128X[104X
+    [4X[28XQuotientCategory( Z-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] )[128X[104X
     [4X[28Xdefined by 4 objects and 5 generating morphisms, 2-sided ideal generated by[128X[104X
     [4X[28X2 morphisms )[128X[104X
     [4X[25Xgap>[125X [27XRangeCategoryOfHomomorphismStructure( qB );[127X[104X
@@ -100,8 +100,8 @@
     [4X[25Xgap>[125X [27XIsZero( 2*qB.cde );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xadd_qB := AdditiveClosure( qB );[127X[104X
-    [4X[28XAdditiveClosure( QuotientCategory( Z-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,[128X[104X
-    [4X[28Xc:0-≻2,d:2-≻3,e:3-≻3] ) defined by 4 objects and 5 generating morphisms,[128X[104X
+    [4X[28XAdditiveClosure( QuotientCategory( Z-algebroid( {0,1,2,3}[a:0→1,b:1→3,[128X[104X
+    [4X[28Xc:0→2,d:2→3,e:3→3] ) defined by 4 objects and 5 generating morphisms,[128X[104X
     [4X[28X2-sided ideal generated by 2 morphisms ) )[128X[104X
     [4X[25Xgap>[125X [27XT := RandomObject( add_qB, [[10],[1]] );;[127X[104X
     [4X[25Xgap>[125X [27Xu := RandomMorphism( T, T, 5 );;[127X[104X
@@ -118,40 +118,40 @@
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xq := FinQuiver( "q(0,1,2)[x:0->1,y:1->2,z:0->2]" );[127X[104X
-    [4X[28XFinQuiver( "q(0,1,2)[x:0-≻1,y:1-≻2,z:0-≻2]" )[128X[104X
+    [4X[28XFinQuiver( "q(0,1,2)[x:0→1,y:1→2,z:0→2]" )[128X[104X
     [4X[25Xgap>[125X [27XC := PathCategory( q );[127X[104X
-    [4X[28XPathCategory( FinQuiver( "q(0,1,2)[x:0-≻1,y:1-≻2,z:0-≻2]" ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(0,1,2)[x:0→1,y:1→2,z:0→2]" ) )[128X[104X
     [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals( );[127X[104X
     [4X[28XQ[128X[104X
     [4X[25Xgap>[125X [27XkC := k[C];[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2)[x:0-≻1,[128X[104X
-    [4X[28Xy:1-≻2,z:0-≻2]" ) ) )[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2)[x:0→1,[128X[104X
+    [4X[28Xy:1→2,z:0→2]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XA := kC / [ kC.xy - kC.z ];[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2)[x:0-≻1,[128X[104X
-    [4X[28Xy:1-≻2,z:0-≻2]" ) ) ) / [ 1*x⋅y - 1*z ][128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2)[x:0→1,[128X[104X
+    [4X[28Xy:1→2,z:0→2]" ) ) ) / [ 1*x⋅y - 1*z ][128X[104X
     [4X[25Xgap>[125X [27XB := AlgebroidFromDataTables( A );[127X[104X
-    [4X[28XQ-algebroid( {0,1,2}[x:0-≻1,y:1-≻2,z:0-≻2] ) defined by 3 objects[128X[104X
+    [4X[28XQ-algebroid( {0,1,2}[x:0→1,y:1→2,z:0→2] ) defined by 3 objects[128X[104X
     [4X[28Xand 3 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( B );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xq := FinQuiver( "q(o)[x:o->o,y:o->o]" );[127X[104X
-    [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )[128X[104X
+    [4X[28XFinQuiver( "q(o)[x:o→o,y:o→o]" )[128X[104X
     [4X[25Xgap>[125X [27XC := PathCategory( q );[127X[104X
-    [4X[28XPathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) )[128X[104X
     [4X[25Xgap>[125X [27XkC := k[C];[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XA := kC / [ kC.xy - kC.yx, kC.x^3, kC.y^3 ];[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )[128X[104X
     [4X[28X/ [ -1*y⋅x + 1*x⋅y, 1*x^3, 1*y^3 ][128X[104X
     [4X[25Xgap>[125X [27XB := AlgebroidFromDataTables( A );[127X[104X
-    [4X[28XQ-algebroid( {o}[x:o-≻o,y:o-≻o] ) defined by 1 object and 2 generating morphisms[128X[104X
+    [4X[28XQ-algebroid( {o}[x:o→o,y:o→o] ) defined by 1 object and 2 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( B );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA := kC / [ kC.xy - kC.yx, kC.x^3 - kC.x, kC.y^3 ];[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )[128X[104X
     [4X[28X/ [ -1*y⋅x + 1*x⋅y, 1*x^3 - 1*x, 1*y^3 ][128X[104X
     [4X[25Xgap>[125X [27XB := AlgebroidFromDataTables( A );[127X[104X
-    [4X[28XQ-algebroid( {o}[x:o-≻o,y:o-≻o] ) defined by 1 object and 2 generating morphisms[128X[104X
+    [4X[28XQ-algebroid( {o}[x:o→o,y:o→o] ) defined by 1 object and 2 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( B );[127X[104X
     [4X[28Xfalse[128X[104X
   [4X[32X[104X

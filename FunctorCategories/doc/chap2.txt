@@ -358,11 +358,11 @@
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,[128X[104X
     [4X[28Xy:4->4]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( kF / [ kF.x^3, kF.y^2 ] );[127X[104X
-    [4X[28XQ-algebroid( {1,2,3,4}[x:1-≻1,a:1-≻2,b:2-≻4,c:1-≻3,d:3-≻4,y:4-≻4] ) defined by 4 objects[128X[104X
+    [4X[28XQ-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4] ) defined by 4 objects[128X[104X
     [4X[28Xand 6 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XSetIsAdmissibleAlgebroid( A, true );[127X[104X
     [4X[25Xgap>[125X [27XPSh := PreSheaves( A );[127X[104X
-    [4X[28XPreSheaves( Q-algebroid( {1,2,3,4}[x:1-≻1,a:1-≻2,b:2-≻4,c:1-≻3,d:3-≻4,y:4-≻4] ) defined[128X[104X
+    [4X[28XPreSheaves( Q-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4] ) defined[128X[104X
     [4X[28Xby 4 objects and 6 generating morphisms, Rows( Q ) )[128X[104X
     [4X[25Xgap>[125X [27XP := PSh.4;[127X[104X
     [4X[28X<(1)->12, (2)->2, (3)->2, (4)->2; (x)->12x12, (a)->2x12, (b)->2x2,[128X[104X
@@ -382,7 +382,7 @@
     [4X[28XImage of <(4)>:[128X[104X
     [4X[28XA row module over Q of rank 2[128X[104X
     [4X[28X[128X[104X
-    [4X[28XImage of <1*x:(1) -≻ (1)>:[128X[104X
+    [4X[28XImage of <1*x:(1) → (1)>:[128X[104X
     [4X[28XSource:[128X[104X
     [4X[28XA row module over Q of rank 12[128X[104X
     [4X[28X[128X[104X
@@ -405,7 +405,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in Rows( Q )[128X[104X
     [4X[28X[128X[104X
-    [4X[28XImage of <1*a:(1) -≻ (2)>:[128X[104X
+    [4X[28XImage of <1*a:(1) → (2)>:[128X[104X
     [4X[28XSource:[128X[104X
     [4X[28XA row module over Q of rank 2[128X[104X
     [4X[28X[128X[104X
@@ -418,7 +418,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in Rows( Q )[128X[104X
     [4X[28X[128X[104X
-    [4X[28XImage of <1*b:(2) -≻ (4)>:[128X[104X
+    [4X[28XImage of <1*b:(2) → (4)>:[128X[104X
     [4X[28XSource:[128X[104X
     [4X[28XA row module over Q of rank 2[128X[104X
     [4X[28X[128X[104X
@@ -431,7 +431,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in Rows( Q )[128X[104X
     [4X[28X[128X[104X
-    [4X[28XImage of <1*c:(1) -≻ (3)>:[128X[104X
+    [4X[28XImage of <1*c:(1) → (3)>:[128X[104X
     [4X[28XSource:[128X[104X
     [4X[28XA row module over Q of rank 2[128X[104X
     [4X[28X[128X[104X
@@ -444,7 +444,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in Rows( Q )[128X[104X
     [4X[28X[128X[104X
-    [4X[28XImage of <1*d:(3) -≻ (4)>:[128X[104X
+    [4X[28XImage of <1*d:(3) → (4)>:[128X[104X
     [4X[28XSource:[128X[104X
     [4X[28XA row module over Q of rank 2[128X[104X
     [4X[28X[128X[104X
@@ -457,7 +457,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in Rows( Q )[128X[104X
     [4X[28X[128X[104X
-    [4X[28XImage of <1*y:(4) -≻ (4)>:[128X[104X
+    [4X[28XImage of <1*y:(4) → (4)>:[128X[104X
     [4X[28XSource:[128X[104X
     [4X[28XA row module over Q of rank 2[128X[104X
     [4X[28X[128X[104X
@@ -470,8 +470,8 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in Rows( Q )[128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in PreSheaves( Q-algebroid( {1,2,3,4}[x:1-≻1,a:1-≻2,b:2-≻4,c:1-≻3,d:3-≻4,[128X[104X
-    [4X[28Xy:4-≻4] ) defined by 4 objects and 6 generating morphisms, Rows( Q ) ) given by[128X[104X
+    [4X[28XAn object in PreSheaves( Q-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,[128X[104X
+    [4X[28Xy:4→4] ) defined by 4 objects and 6 generating morphisms, Rows( Q ) ) given by[128X[104X
     [4X[28Xthe above data[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( MonomorphismIntoSomeInjectiveObject( P ) );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -494,30 +494,30 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XDelta2 := SimplicialCategoryTruncatedInDegree( 2 );[127X[104X
     [4X[28XPathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,[128X[104X
-    [4X[28X                   is:C2-≻C1,it:C2-≻C1,[128X[104X
-    [4X[28X                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )[128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
+    [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
+    [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
     [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ][128X[104X
     [4X[25Xgap>[125X [27XDefiningRelations( Delta2 );[127X[104X
-    [4X[28X[ [ s⋅id:(C0) -≻ (C0), id(C0):(C0) -≻ (C0) ],[128X[104X
-    [4X[28X  [ t⋅id:(C0) -≻ (C0), id(C0):(C0) -≻ (C0) ],[128X[104X
-    [4X[28X  [ ps⋅is:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],[128X[104X
-    [4X[28X  [ pt⋅it:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],[128X[104X
-    [4X[28X  [ is⋅id:(C2) -≻ (C0), it⋅id:(C2) -≻ (C0) ],[128X[104X
-    [4X[28X  [ pt⋅is:(C1) -≻ (C1), id⋅t:(C1) -≻ (C1) ],[128X[104X
-    [4X[28X  [ ps⋅it:(C1) -≻ (C1), id⋅s:(C1) -≻ (C1) ],[128X[104X
-    [4X[28X  [ s⋅pt:(C0) -≻ (C2), t⋅ps:(C0) -≻ (C2) ],[128X[104X
-    [4X[28X  [ s⋅mu:(C0) -≻ (C2), s⋅ps:(C0) -≻ (C2) ],[128X[104X
-    [4X[28X  [ t⋅mu:(C0) -≻ (C2), t⋅pt:(C0) -≻ (C2) ],[128X[104X
-    [4X[28X  [ mu⋅is:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],[128X[104X
-    [4X[28X  [ mu⋅it:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ] ][128X[104X
+    [4X[28X[ [ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],[128X[104X
+    [4X[28X  [ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],[128X[104X
+    [4X[28X  [ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],[128X[104X
+    [4X[28X  [ pt⋅it:(C1) → (C1), id(C1):(C1) → (C1) ],[128X[104X
+    [4X[28X  [ is⋅id:(C2) → (C0), it⋅id:(C2) → (C0) ],[128X[104X
+    [4X[28X  [ pt⋅is:(C1) → (C1), id⋅t:(C1) → (C1) ],[128X[104X
+    [4X[28X  [ ps⋅it:(C1) → (C1), id⋅s:(C1) → (C1) ],[128X[104X
+    [4X[28X  [ s⋅pt:(C0) → (C2), t⋅ps:(C0) → (C2) ],[128X[104X
+    [4X[28X  [ s⋅mu:(C0) → (C2), s⋅ps:(C0) → (C2) ],[128X[104X
+    [4X[28X  [ t⋅mu:(C0) → (C2), t⋅pt:(C0) → (C2) ],[128X[104X
+    [4X[28X  [ mu⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],[128X[104X
+    [4X[28X  [ mu⋅it:(C1) → (C1), id(C1):(C1) → (C1) ] ][128X[104X
     [4X[25Xgap>[125X [27XSize( Delta2 );[127X[104X
     [4X[28X31[128X[104X
     [4X[25Xgap>[125X [27XN := NerveTruncatedInDegree2( Delta2 );[127X[104X
     [4X[28X<An object in PreSheaves( PathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,[128X[104X
-    [4X[28X                   is:C2-≻C1,it:C2-≻C1,[128X[104X
-    [4X[28X                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )[128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
+    [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
+    [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
     [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],[128X[104X
     [4X[28X SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( N );[127X[104X
@@ -542,9 +542,9 @@
     [4X[25X>[125X [27X                  RangeCategoryOfHomomorphismStructure( Delta2 ) );[127X[104X
     [4X[28XFullSubcategoryByObjectMembershipFunction([128X[104X
     [4X[28XPreSheaves( PathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,[128X[104X
-    [4X[28X                   is:C2-≻C1,it:C2-≻C1,[128X[104X
-    [4X[28X                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )[128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
+    [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
+    [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
     [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],[128X[104X
     [4X[28XSkeletalFinSets ), ObjectMembershipFunction )[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( N / IntCat );[127X[104X
@@ -557,15 +557,15 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XDelta2 := CategoryFromNerveData( SimplicialCategoryTruncatedInDegree( 2 ) );[127X[104X
     [4X[28XPathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,[128X[104X
-    [4X[28X                   is:C2-≻C1,it:C2-≻C1,[128X[104X
-    [4X[28X                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )[128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
+    [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
+    [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
     [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ][128X[104X
     [4X[25Xgap>[125X [27XN := NerveTruncatedInDegree2( Delta2 );[127X[104X
     [4X[28X<An object in PreSheaves( PathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,[128X[104X
-    [4X[28X                   is:C2-≻C1,it:C2-≻C1,[128X[104X
-    [4X[28X                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )[128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
+    [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
+    [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
     [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],[128X[104X
     [4X[28X SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( N );[127X[104X
@@ -595,13 +595,13 @@
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDelta1 := UnderlyingCategory( FinReflexiveQuivers );[127X[104X
-    [4X[28XPathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )[128X[104X
     [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0) ][128X[104X
     [4X[25Xgap>[125X [27XN := NerveTruncatedInDegree2( Delta1 );[127X[104X
     [4X[28X<An object in PreSheaves( PathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,[128X[104X
-    [4X[28X                   is:C2-≻C1,it:C2-≻C1,[128X[104X
-    [4X[28X                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )[128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
+    [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
+    [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
     [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],[128X[104X
     [4X[28X SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( N );[127X[104X
@@ -628,9 +628,9 @@
     [4X[28X{ 0,..., 6 } ⱶ[ 0, 4, 7, 8, 17, 20, 23 ]→ { 0,..., 25 }[128X[104X
     [4X[25Xgap>[125X [27XDelta2 := Source( N );[127X[104X
     [4X[28XPathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,[128X[104X
-    [4X[28X                   is:C2-≻C1,it:C2-≻C1,[128X[104X
-    [4X[28X                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )[128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
+    [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
+    [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
     [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ][128X[104X
     [4X[25Xgap>[125X [27XN( Delta2.it ) = N.it;[127X[104X
     [4X[28Xtrue[128X[104X
@@ -1283,15 +1283,15 @@
     [4X[25Xgap>[125X [27XQC := Q[C];[127X[104X
     [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations[128X[104X
     [4X[25Xgap>[125X [27XQC := AlgebroidFromDataTables( QC );[127X[104X
-    [4X[28XQ-algebroid( {o}[x:o-≻o] ) defined by 1 object and 1 generating morphism[128X[104X
+    [4X[28XQ-algebroid( {o}[x:o→o] ) defined by 1 object and 1 generating morphism[128X[104X
     [4X[25Xgap>[125X [27Xx := QC.x;[127X[104X
-    [4X[28X<1*x:(o) -≻ (o)>[128X[104X
+    [4X[28X<1*x:(o) → (o)>[128X[104X
     [4X[25Xgap>[125X [27XIsMonomorphism( x );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsEpimorphism( x );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XPSh := PreSheaves( QC );[127X[104X
-    [4X[28XPreSheaves( Q-algebroid( {o}[x:o-≻o] )[128X[104X
+    [4X[28XPreSheaves( Q-algebroid( {o}[x:o→o] )[128X[104X
     [4X[28Xdefined by 1 object and 1 generating morphism, Rows( Q ) )[128X[104X
     [4X[25Xgap>[125X [27XH := Target( PSh );[127X[104X
     [4X[28XRows( Q )[128X[104X
@@ -1334,7 +1334,7 @@
     [4X[28XImage of <(o)>:[128X[104X
     [4X[28XA row module over Q of rank 8[128X[104X
     [4X[28X[128X[104X
-    [4X[28XImage of <1*x:(o) -≻ (o)>:[128X[104X
+    [4X[28XImage of <1*x:(o) → (o)>:[128X[104X
     [4X[28XSource:[128X[104X
     [4X[28XA row module over Q of rank 8[128X[104X
     [4X[28X[128X[104X
@@ -1353,14 +1353,14 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in Rows( Q )[128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in PreSheaves( Q-algebroid( {o}[x:o-≻o] )[128X[104X
+    [4X[28XAn object in PreSheaves( Q-algebroid( {o}[x:o→o] )[128X[104X
     [4X[28Xdefined by 1 object and 1 generating morphism, Rows( Q ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XDisplay( CoimageObject( pi ) );[127X[104X
     [4X[28XImage of <(o)>:[128X[104X
     [4X[28XA row module over Q of rank 8[128X[104X
     [4X[28X[128X[104X
-    [4X[28XImage of <1*x:(o) -≻ (o)>:[128X[104X
+    [4X[28XImage of <1*x:(o) → (o)>:[128X[104X
     [4X[28XSource:[128X[104X
     [4X[28XA row module over Q of rank 8[128X[104X
     [4X[28X[128X[104X
@@ -1379,7 +1379,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in Rows( Q )[128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in PreSheaves( Q-algebroid( {o}[x:o-≻o] )[128X[104X
+    [4X[28XAn object in PreSheaves( Q-algebroid( {o}[x:o→o] )[128X[104X
     [4X[28Xdefined by 1 object and 1 generating morphism, Rows( Q ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xps := EpimorphismFromSomeProjectiveObjectUsingSplits( G );[127X[104X
@@ -1392,7 +1392,7 @@
     [4X[28XImage of <(o)>:[128X[104X
     [4X[28XA row module over Q of rank 8[128X[104X
     [4X[28X[128X[104X
-    [4X[28XImage of <1*x:(o) -≻ (o)>:[128X[104X
+    [4X[28XImage of <1*x:(o) → (o)>:[128X[104X
     [4X[28XSource:[128X[104X
     [4X[28XA row module over Q of rank 8[128X[104X
     [4X[28X[128X[104X
@@ -1411,35 +1411,35 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in Rows( Q )[128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in PreSheaves( Q-algebroid( {o}[x:o-≻o] )[128X[104X
+    [4X[28XAn object in PreSheaves( Q-algebroid( {o}[x:o→o] )[128X[104X
     [4X[28Xdefined by 1 object and 1 generating morphism, Rows( Q ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xsection := SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( G );[127X[104X
-    [4X[28X<A morphism in AdditiveClosure( Q-algebroid( {o}[x:o-≻o] )[128X[104X
+    [4X[28X<A morphism in AdditiveClosure( Q-algebroid( {o}[x:o→o] )[128X[104X
     [4X[28X defined by 1 object and 1 generating morphism )[128X[104X
     [4X[28X defined by a 2 x 8 matrix of underlying morphisms>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( section );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDisplay( section );[127X[104X
-    [4X[28XA 2 x 8 matrix with entries in Q-algebroid( {o}[x:o-≻o] )[128X[104X
+    [4X[28XA 2 x 8 matrix with entries in Q-algebroid( {o}[x:o→o] )[128X[104X
     [4X[28Xdefined by 1 object and 1 generating morphism[128X[104X
     [4X[28X[128X[104X
-    [4X[28X[1,1]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[1,2]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[1,3]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[1,4]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[1,5]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[1,6]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[1,7]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[1,8]: <1*id(o):(o) -≻ (o)>[128X[104X
-    [4X[28X[2,1]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[2,2]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[2,3]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[2,4]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[2,5]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[2,6]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[2,7]: <1*id(o):(o) -≻ (o)>[128X[104X
-    [4X[28X[2,8]: <0:(o) -≻ (o)>[128X[104X
+    [4X[28X[1,1]: <0:(o) → (o)>[128X[104X
+    [4X[28X[1,2]: <0:(o) → (o)>[128X[104X
+    [4X[28X[1,3]: <0:(o) → (o)>[128X[104X
+    [4X[28X[1,4]: <0:(o) → (o)>[128X[104X
+    [4X[28X[1,5]: <0:(o) → (o)>[128X[104X
+    [4X[28X[1,6]: <0:(o) → (o)>[128X[104X
+    [4X[28X[1,7]: <0:(o) → (o)>[128X[104X
+    [4X[28X[1,8]: <1*id(o):(o) → (o)>[128X[104X
+    [4X[28X[2,1]: <0:(o) → (o)>[128X[104X
+    [4X[28X[2,2]: <0:(o) → (o)>[128X[104X
+    [4X[28X[2,3]: <0:(o) → (o)>[128X[104X
+    [4X[28X[2,4]: <0:(o) → (o)>[128X[104X
+    [4X[28X[2,5]: <0:(o) → (o)>[128X[104X
+    [4X[28X[2,6]: <0:(o) → (o)>[128X[104X
+    [4X[28X[2,7]: <1*id(o):(o) → (o)>[128X[104X
+    [4X[28X[2,8]: <0:(o) → (o)>[128X[104X
     [4X[25Xgap>[125X [27XEmb := EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheaves( PSh );[127X[104X
     [4X[28XThe embedding functor of the finite coproduct completion into f.p. presheaves[128X[104X
     [4X[25Xgap>[125X [27Xip := PreCompose( Emb( section ), cy );[127X[104X
@@ -1451,31 +1451,31 @@
     [4X[25Xgap>[125X [27XCoimageObject( ip ) = CoimageObject( pi );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xretraction := RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject( G );[127X[104X
-    [4X[28X<A morphism in AdditiveClosure( Q-algebroid( {o}[x:o-≻o] )[128X[104X
+    [4X[28X<A morphism in AdditiveClosure( Q-algebroid( {o}[x:o→o] )[128X[104X
     [4X[28X defined by 1 object and 1 generating morphism )[128X[104X
     [4X[28X defined by a 8 x 2 matrix of underlying morphisms>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( retraction );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDisplay( retraction );[127X[104X
-    [4X[28XA 8 x 2 matrix with entries in Q-algebroid( {o}[x:o-≻o] )[128X[104X
+    [4X[28XA 8 x 2 matrix with entries in Q-algebroid( {o}[x:o→o] )[128X[104X
     [4X[28Xdefined by 1 object and 1 generating morphism[128X[104X
     [4X[28X[128X[104X
-    [4X[28X[1,1]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[1,2]: <1*x^3:(o) -≻ (o)>[128X[104X
-    [4X[28X[2,1]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[2,2]: <1*x^2:(o) -≻ (o)>[128X[104X
-    [4X[28X[3,1]: <1*x:(o) -≻ (o)>[128X[104X
-    [4X[28X[3,2]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[4,1]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[4,2]: <1*x:(o) -≻ (o)>[128X[104X
-    [4X[28X[5,1]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[5,2]: <1*x^5:(o) -≻ (o)>[128X[104X
-    [4X[28X[6,1]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[6,2]: <1*x^4:(o) -≻ (o)>[128X[104X
-    [4X[28X[7,1]: <0:(o) -≻ (o)>[128X[104X
-    [4X[28X[7,2]: <1*id(o):(o) -≻ (o)>[128X[104X
-    [4X[28X[8,1]: <1*id(o):(o) -≻ (o)>[128X[104X
-    [4X[28X[8,2]: <0:(o) -≻ (o)>[128X[104X
+    [4X[28X[1,1]: <0:(o) → (o)>[128X[104X
+    [4X[28X[1,2]: <1*x^3:(o) → (o)>[128X[104X
+    [4X[28X[2,1]: <0:(o) → (o)>[128X[104X
+    [4X[28X[2,2]: <1*x^2:(o) → (o)>[128X[104X
+    [4X[28X[3,1]: <1*x:(o) → (o)>[128X[104X
+    [4X[28X[3,2]: <0:(o) → (o)>[128X[104X
+    [4X[28X[4,1]: <0:(o) → (o)>[128X[104X
+    [4X[28X[4,2]: <1*x:(o) → (o)>[128X[104X
+    [4X[28X[5,1]: <0:(o) → (o)>[128X[104X
+    [4X[28X[5,2]: <1*x^5:(o) → (o)>[128X[104X
+    [4X[28X[6,1]: <0:(o) → (o)>[128X[104X
+    [4X[28X[6,2]: <1*x^4:(o) → (o)>[128X[104X
+    [4X[28X[7,1]: <0:(o) → (o)>[128X[104X
+    [4X[28X[7,2]: <1*id(o):(o) → (o)>[128X[104X
+    [4X[28X[8,1]: <1*id(o):(o) → (o)>[128X[104X
+    [4X[28X[8,2]: <0:(o) → (o)>[128X[104X
     [4X[25Xgap>[125X [27XIsOne( PreCompose( section, retraction ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xco := ProjectionOntoCoequalizer( OptimizedCoYonedaLemmaCoequalizerPair( G )[2] );[127X[104X
@@ -1709,30 +1709,30 @@
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", ">= 2024.03-13", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xq := FinQuiver( "q(a,l,r,i,c,b)[ac:a->c,lc:l->c,ri:r->i,ic:i->c,cb:c->b]" );[127X[104X
-    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" )[128X[104X
+    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" )[128X[104X
     [4X[25Xgap>[125X [27XF := PathCategory( q );[127X[104X
     [4X[28XPathCategory([128X[104X
-    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) )[128X[104X
+    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) )[128X[104X
     [4X[25Xgap>[125X [27XSize( F );[127X[104X
     [4X[28X16[128X[104X
     [4X[25Xgap>[125X [27XP := PosetOfCategory( F );[127X[104X
     [4X[28XPosetOfCategory( PathCategory([128X[104X
-    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) )[128X[104X
+    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XSize( P );[127X[104X
     [4X[28X16[128X[104X
     [4X[25Xgap>[125X [27XPSh := PreSheaves( P );[127X[104X
     [4X[28XPreSheaves( PosetOfCategory( PathCategory([128X[104X
-    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ),[128X[104X
+    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ),[128X[104X
     [4X[28XIntervalCategory )[128X[104X
     [4X[25Xgap>[125X [27Xc := PSh.c;[127X[104X
     [4X[28X<A projective object in PreSheaves( PosetOfCategory( PathCategory([128X[104X
-    [4X[28X FinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ),[128X[104X
+    [4X[28X FinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ),[128X[104X
     [4X[28X IntervalCategory )>[128X[104X
     [4X[25Xgap>[125X [27Xsection :=[127X[104X
     [4X[25X>[125X [27X  SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject( c );[127X[104X
     [4X[28X<A split monomorphism in FiniteStrictCoproductCompletion([128X[104X
     [4X[28X PosetOfCategory( PathCategory([128X[104X
-    [4X[28X FinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ) )>[128X[104X
+    [4X[28X FinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( section );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsIsomorphism( section );[127X[104X
@@ -1741,7 +1741,7 @@
     [4X[28X[ 1, [ An object in the poset given by: (c) ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in FiniteStrictCoproductCompletion( PosetOfCategory( PathCategory([128X[104X
-    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ) )[128X[104X
+    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XDisplay( Target( section ) );[127X[104X
     [4X[28X[ 5, [ An object in the poset given by: (a),[128X[104X
@@ -1751,7 +1751,7 @@
     [4X[28X       An object in the poset given by: (c) ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in FiniteStrictCoproductCompletion( PosetOfCategory( PathCategory([128X[104X
-    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a-≻c,lc:l-≻c,ri:r-≻i,ic:i-≻c,cb:c-≻b]" ) ) ) )[128X[104X
+    [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
   [4X[32X[104X
   
