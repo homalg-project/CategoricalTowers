@@ -106,7 +106,7 @@ Display( Mphi_as_coequqlizer_pair );
 #! [3,1]: (o)-[{ 0 }]->(o)
 #! [3,2]: (o)-[{ 0 }]->(o)
 #! [3,3]: (o)-[{ 1*(x) }]->(o)
-#! An object in PreSheaves( PathCategory( FinQuiver( "q(V,A)[s:V-≻A,t:V-≻A]" ) ),
+#! An object in PreSheaves( PathCategory( FinQuiver( "q(V,A)[s:V→A,t:V→A]" ) ),
 #! AdditiveClosure( Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) /
 #! relations ) ) given by the above data
 #! 

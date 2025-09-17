@@ -4,12 +4,12 @@
 LoadPackage( "Algebroids" );
 #! true
 Delta1 := SimplicialCategoryTruncatedInDegree( 1 );
-#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ]
 Size( Delta1 );
 #! 7
 C := CategoryFromNerveData( Delta1 );
-#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ]
 Size( C );
 #! 7
@@ -18,10 +18,10 @@ NerveTruncatedInDegree2Data( C ) = NerveTruncatedInDegree2Data( Delta1 );
 IndicesOfGeneratingMorphisms( C );
 #! [ 1, 2, 3 ]
 SetOfGeneratingMorphisms( C );
-#! [ (C1)-[(id)]-≻(C0), (C0)-[(s)]-≻(C1), (C0)-[(t)]-≻(C1) ]
+#! [ (C1)-[(id)]→(C0), (C0)-[(s)]→(C1), (C0)-[(t)]→(C1) ]
 Display( C );
 #! A CAP category with name
-#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ]:
 #! 
 #! 19 primitive operations were used to derive 55 operations for this category
@@ -41,29 +41,29 @@ IsWellDefined( C1 );
 IsWellDefined( 2 / C );
 #! false
 idC0 := CreateMorphism( C0, 0, C0 );
-#! (C0)-[(C0)]-≻(C0)
+#! (C0)-[(C0)]→(C0)
 CreateMorphism( C, 0 ) = idC0;
 #! true
 IsOne( idC0 );
 #! true
 id := CreateMorphism( C, 1 );
-#! (C1)-[(id)]-≻(C0)
+#! (C1)-[(id)]→(C0)
 s := CreateMorphism( C, 2 );
-#! (C0)-[(s)]-≻(C1)
+#! (C0)-[(s)]→(C1)
 t := CreateMorphism( C, 3 );
-#! (C0)-[(t)]-≻(C1)
+#! (C0)-[(t)]→(C1)
 idC1 := CreateMorphism( C, 4 );
-#! (C1)-[(C1)]-≻(C1)
+#! (C1)-[(C1)]→(C1)
 IsOne( idC1 );
 #! true
 sigma := CreateMorphism( C, 5 );
-#! (C1)-[(id⋅s)]-≻(C1)
+#! (C1)-[(id⋅s)]→(C1)
 IsEndomorphism( sigma );
 #! true
 IsOne( sigma );
 #! false
 tau := CreateMorphism( C, 6 );
-#! (C1)-[(id⋅t)]-≻(C1)
+#! (C1)-[(id⋅t)]→(C1)
 IsEndomorphism( tau );
 #! true
 IsOne( tau );
@@ -116,7 +116,7 @@ Display( HomStructure( idC1, idC1 ) );
 #! { 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }
 C_op := OppositeCategoryFromNerveData( C );
 #! Opposite(
-#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ] )
 NerveData( C_op ) = NerveTruncatedInDegree2Data( C_op );
 #! true
@@ -125,6 +125,6 @@ IsIdenticalObj( OppositeCategoryFromNerveData( C_op ), C );
 IndicesOfGeneratingMorphisms( C_op );
 #! [ 3, 1, 2 ]
 SetOfGeneratingMorphisms( C_op );
-#! [ (C0)-[(id)]-≻(C1), (C1)-[(s)]-≻(C0), (C1)-[(t)]-≻(C0) ]
+#! [ (C0)-[(id)]→(C1), (C1)-[(s)]→(C0), (C1)-[(t)]→(C0) ]
 #! @EndExample
 #! @EndChunk

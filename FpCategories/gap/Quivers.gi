@@ -22,6 +22,7 @@ BindGlobal( "PARSE_CAP_QUIVER_DATUM_FROM_STRING",
     Remove( data, Length( data ) );
     
     data := ReplacedString( data, "≻", ">" );
+    data := ReplacedString( data, "→", "->" );
     data := ReplacedString( data, ")[", "|" );
     data := SplitString( data, "|" );
     
@@ -181,7 +182,7 @@ InstallMethod( FinQuiver,
                 JoinStringsWithSeparator( q_datum[2][2], "," ),
                 ")[",
                 JoinStringsWithSeparator( List( [ 1 .. q_datum[3][1] ],
-                    j -> Concatenation( q_datum[3][4][j], ":", q_datum[2][2][q_datum[3][2][j]],"-≻",q_datum[2][2][q_datum[3][3][j]] ) ), "," ),
+                    j -> Concatenation( q_datum[3][4][j], ":", q_datum[2][2][q_datum[3][2][j]],"→",q_datum[2][2][q_datum[3][3][j]] ) ), "," ),
                 "]\" )" );
     
     name := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "name", name );
@@ -610,7 +611,7 @@ InstallMethod( ViewString,
           ":",
           ViewString( Source( mor ) ),
           colors.other,
-          " -≻ ",
+          " → ",
           ViewString( Target( mor ) ) );
     
 end );

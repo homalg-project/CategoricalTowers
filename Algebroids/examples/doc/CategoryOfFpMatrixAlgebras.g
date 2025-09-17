@@ -57,17 +57,17 @@ Display( Alg_F );
 #! * IsBicartesianCategory
 #! * IsSymmetricMonoidalCategory
 q := FinQuiver( "q(o)[x:o->o,y:o->o]" );
-#! FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )
+#! FinQuiver( "q(o)[x:o→o,y:o→o]" )
 P := PathCategory( q );
-#! PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )
+#! PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) )
 L := F[P];
 #! GF(2)-LinearClosure( PathCategory( \
-#! FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
+#! FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )
 relations := [ L.x^2 - L.x,  L.y^3 - L.y,  L.xy - L.y * (L.x+L.id_o) ];
-#! [ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o),\
-#!   1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
+#! [ 1*x^2 + 1*x:(o) → (o), 1*y^3 + 1*y:(o) → (o),\
+#!   1*y⋅x + 1*x⋅y + 1*y:(o) → (o) ]
 Q := L / relations;
-#! GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) / \
+#! GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) ) / \
 #! [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 Dimension( Q );
 #! 6
@@ -108,28 +108,28 @@ Display( M );
 IsWellDefined( M );
 #! true
 M.x;
-#! 1*x:(o) -≻ (o)
+#! 1*x:(o) → (o)
 M.y;
-#! 1*y:(o) -≻ (o)
+#! 1*y:(o) → (o)
 Dimension( M );
 #! 6
 NrGenerators( M );
 #! 2
 Generators( M );
-#! [ 1*x:(o) -≻ (o), 1*y:(o) -≻ (o) ]
+#! [ 1*x:(o) → (o), 1*y:(o) → (o) ]
 MatrixGenerators( M ) = [ mx, my ];
 #! true
 AssociatedLinearClosureOfPathCategory( M );
-#! GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
+#! GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )
 DefiningRelations( M );
-#! [ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \
-#!   1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
+#! [ 1*x^2 + 1*x:(o) → (o), 1*y^3 + 1*y:(o) → (o), \
+#!   1*y⋅x + 1*x⋅y + 1*y:(o) → (o) ]
 AssociatedQuotientCategoryOfLinearClosureOfPathCategory( M );
-#! GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) \
+#! GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) ) \
 #! / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 GroebnerBasisOfDefiningRelations( M );
-#! [ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \
-#!   1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
+#! [ 1*x^2 + 1*x:(o) → (o), 1*y^3 + 1*y:(o) → (o), \
+#!   1*y⋅x + 1*x⋅y + 1*y:(o) → (o) ]
 P := DirectProduct( I, M );
 #! <An object in CategoryOfFpMatrixAlgebras( GF(2) )>
 Display( P );
@@ -173,11 +173,11 @@ Display( counit );
 IsWellDefined( counit );
 #! true
 o := M.id_o;
-#! 1*id(o):(o) -≻ (o)
+#! 1*id(o):(o) → (o)
 x := M.x;
-#! 1*x:(o) -≻ (o)
+#! 1*x:(o) → (o)
 y := M.y;
-#! 1*y:(o) -≻ (o)
+#! 1*y:(o) → (o)
 comult := Comultiplication( M,
                   [ [ [ o, x ], [ x, o ], [ o, o ], [ y^2, y^2 ] ],
                     [ [ o, y ], [ y, o + y^2 ] ] ] );

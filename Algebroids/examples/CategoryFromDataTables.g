@@ -4,19 +4,19 @@
 LoadPackage( "Algebroids", false );
 #! true
 Delta1 := SimplicialCategoryTruncatedInDegree( 1 );
-#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ]
 Size( Delta1 );
 #! 7
 mors := SetOfMorphisms( Delta1 );
-#! [ [id(C0)]:(C0) -≻ (C0), [id]:(C1) -≻ (C0), [s]:(C0) -≻ (C1), [t]:(C0) -≻ (C1),
-#!   [id(C1)]:(C1) -≻ (C1), [id⋅s]:(C1) -≻ (C1), [id⋅t]:(C1) -≻ (C1) ]
+#! [ [id(C0)]:(C0) → (C0), [id]:(C1) → (C0), [s]:(C0) → (C1), [t]:(C0) → (C1),
+#!   [id(C1)]:(C1) → (C1), [id⋅s]:(C1) → (C1), [id⋅t]:(C1) → (C1) ]
 List( mors, DecompositionOfMorphismInCategory );
-#! [ [  ], [ [id]:(C1) -≻ (C0) ], [ [s]:(C0) -≻ (C1) ], [ [t]:(C0) -≻ (C1) ],
-#!   [  ], [ [id]:(C1) -≻ (C0), [s]:(C0) -≻ (C1) ],
-#!   [ [id]:(C1) -≻ (C0), [t]:(C0) -≻ (C1) ] ]
+#! [ [  ], [ [id]:(C1) → (C0) ], [ [s]:(C0) → (C1) ], [ [t]:(C0) → (C1) ],
+#!   [  ], [ [id]:(C1) → (C0), [s]:(C0) → (C1) ],
+#!   [ [id]:(C1) → (C0), [t]:(C0) → (C1) ] ]
 C := CategoryFromDataTables( Delta1 );
-#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ]
 Size( C );
 #! 7
@@ -35,7 +35,7 @@ SetOfGeneratingMorphisms( C );
 #! [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1) ]
 Display( C );
 #! A CAP category with name
-#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ]:
 #! 
 #! 19 primitive operations were used to derive 55 operations for this category
@@ -161,7 +161,7 @@ List( mors, DecompositionOfMorphismInCategory );
 #!   [ (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ] ]
 C_op := OppositeCategoryFromDataTables( C );
 #! Opposite(
-#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ] )
 IsIdenticalObj( OppositeCategoryFromDataTables( C_op ), C );
 #! true

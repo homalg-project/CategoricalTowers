@@ -4,18 +4,18 @@
 LoadPackage( "Locales", false );
 #! true
 q := FinQuiver( "q(a,b)[f:a->b,g:b->a]" );
-#! FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" )
+#! FinQuiver( "q(a,b)[f:a→b,g:b→a]" )
 F := PathCategory( q );
-#! PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
+#! PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )
 C := F / [ [ F.fg, F.id_a ], [ F.gf, F.id_b ] ];
-#! PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
+#! PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )
 #! / [ f⋅g = id(a), g⋅f = id(b) ]
 P := ProsetOfCategory( C );
-#! ProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
+#! ProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )
 #! / [ f⋅g = id(a), g⋅f = id(b) ] )
 Display( P );
 #! A CAP category with name
-#! ProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
+#! ProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )
 #! / [ f⋅g = id(a), g⋅f = id(b) ] ):
 #! 
 #! 11 primitive operations were used to derive 76 operations for this category
@@ -34,6 +34,6 @@ Length( SetOfMorphisms( P ) );
 Size( P );
 #! 4
 SetOfGeneratingMorphisms( P );
-#! [ A morphism in the proset given by: [f]:(a) -≻ (b),
-#!   A morphism in the proset given by: [g]:(b) -≻ (a) ]
+#! [ A morphism in the proset given by: [f]:(a) → (b),
+#!   A morphism in the proset given by: [g]:(b) → (a) ]
 #! @EndExample

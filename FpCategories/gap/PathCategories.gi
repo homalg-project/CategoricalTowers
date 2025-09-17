@@ -1427,7 +1427,7 @@ InstallMethod( ViewString,
           ":",
           ViewString( Source( alpha ) ),
           colors.other,
-          " -≻ ",
+          " → ",
           ViewString( Target( alpha ) ) );
 
 end );

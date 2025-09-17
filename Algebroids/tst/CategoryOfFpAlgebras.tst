@@ -24,17 +24,17 @@ true
 gap> K := TensorUnit( Alg_F2 );
 <An object in CategoryOfFpAlgebras( GF(2) )>
 gap> q1 := FinQuiver( "q(o)[x:o->o,y:o->o]" );
-FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )
+FinQuiver( "q(o)[x:o→o,y:o→o]" )
 gap> P1 := PathCategory( q1 );
-PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )
+PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) )
 gap> L1 := F2[P1];
 GF(2)-LinearClosure( PathCategory( \
-FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
+FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )
 gap> relations1 := [ L1.x^2 - L1.x,  L1.y^3 - L1.y,  L1.xy - L1.y * (L1.x+L1.id_o) ];
-[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o),\
-  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
+[ 1*x^2 + 1*x:(o) → (o), 1*y^3 + 1*y:(o) → (o),\
+  1*y⋅x + 1*x⋅y + 1*y:(o) → (o) ]
 gap> Q1 := L1 / relations1;
-GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) / \
+GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) ) / \
 [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 gap> Dimension( Q1 );
 6
@@ -66,27 +66,27 @@ gap> counit1 := Counit( A1, [ 1, 0 ] );
 gap> IsWellDefined( counit1 );
 true
 gap> o := A1.id_o;
-1*id(o):(o) -≻ (o)
+1*id(o):(o) → (o)
 gap> x := A1.x;
-1*x:(o) -≻ (o)
+1*x:(o) → (o)
 gap> y := A1.y;
-1*y:(o) -≻ (o)
+1*y:(o) → (o)
 gap> comult1 := Comultiplication( A1,
 >                    [ [ [ o, x ], [ x, o ], [ o, o ], [ y^2, y^2 ] ],
 >                      [ [ o, y ], [ y, o + y^2 ] ] ] );
 <A morphism in CategoryOfFpAlgebras( GF(2) )>
 gap> q2 := FinQuiver( "q(o)[x:o->o,y:o->o,z:o->o,t:o->o]" );
-FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" )
+FinQuiver( "q(o)[x:o→o,y:o→o,z:o→o,t:o→o]" )
 gap> P2 := PathCategory( q2 );
-PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) )
+PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o,z:o→o,t:o→o]" ) )
 gap> L2 := F2[P2];
 GF(2)-LinearClosure( PathCategory( \
-FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) ) )
+FinQuiver( "q(o)[x:o→o,y:o→o,z:o→o,t:o→o]" ) ) )
 gap> Q2 := L2 / [ L2.x+L2.y+L2.t+L2.tt-L2.id_o, L2.xx-L2.x, L2.yy-L2.y, L2.xy, L2.yx,
 >              L2.zz-L2.t-L2.tt, L2.zz-L2.ttt, L2.zt-L2.ttz, L2.zt+L2.ztt-L2.z,
 >              L2.xt+L2.yt, L2.tx+L2.ty ];
 GF(2)-LinearClosure( PathCategory( \
-FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) ) ) / \
+FinQuiver( "q(o)[x:o→o,y:o→o,z:o→o,t:o→o]" ) ) ) / \
 [ 1*t^2 + 1*x + 1*y + 1*t + 1*id(o), 1*x^2 + 1*x, 1*y^2 + 1*y, ... ]
 gap> A2 := Q2 / Alg_F2;
 <An object in CategoryOfFpAlgebras( GF(2) )>

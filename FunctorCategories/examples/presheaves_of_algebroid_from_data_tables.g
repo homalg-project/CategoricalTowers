@@ -22,11 +22,11 @@ kF := k[F];
 #! Algebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,
 #! y:4->4]" ) ) )
 A := AlgebroidFromDataTables( kF / [ kF.x^3, kF.y^2 ] );
-#! Q-algebroid( {1,2,3,4}[x:1-≻1,a:1-≻2,b:2-≻4,c:1-≻3,d:3-≻4,y:4-≻4] ) defined by 4 objects
+#! Q-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4] ) defined by 4 objects
 #! and 6 generating morphisms
 SetIsAdmissibleAlgebroid( A, true );
 PSh := PreSheaves( A );
-#! PreSheaves( Q-algebroid( {1,2,3,4}[x:1-≻1,a:1-≻2,b:2-≻4,c:1-≻3,d:3-≻4,y:4-≻4] ) defined
+#! PreSheaves( Q-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4] ) defined
 #! by 4 objects and 6 generating morphisms, Rows( Q ) )
 P := PSh.4;
 #! <(1)->12, (2)->2, (3)->2, (4)->2; (x)->12x12, (a)->2x12, (b)->2x2,
@@ -46,7 +46,7 @@ Display( P );
 #! Image of <(4)>:
 #! A row module over Q of rank 2
 #!
-#! Image of <1*x:(1) -≻ (1)>:
+#! Image of <1*x:(1) → (1)>:
 #! Source:
 #! A row module over Q of rank 12
 #!
@@ -69,7 +69,7 @@ Display( P );
 #!
 #! A morphism in Rows( Q )
 #!
-#! Image of <1*a:(1) -≻ (2)>:
+#! Image of <1*a:(1) → (2)>:
 #! Source:
 #! A row module over Q of rank 2
 #!
@@ -82,7 +82,7 @@ Display( P );
 #!
 #! A morphism in Rows( Q )
 #!
-#! Image of <1*b:(2) -≻ (4)>:
+#! Image of <1*b:(2) → (4)>:
 #! Source:
 #! A row module over Q of rank 2
 #!
@@ -95,7 +95,7 @@ Display( P );
 #!
 #! A morphism in Rows( Q )
 #!
-#! Image of <1*c:(1) -≻ (3)>:
+#! Image of <1*c:(1) → (3)>:
 #! Source:
 #! A row module over Q of rank 2
 #!
@@ -108,7 +108,7 @@ Display( P );
 #!
 #! A morphism in Rows( Q )
 #!
-#! Image of <1*d:(3) -≻ (4)>:
+#! Image of <1*d:(3) → (4)>:
 #! Source:
 #! A row module over Q of rank 2
 #!
@@ -121,7 +121,7 @@ Display( P );
 #!
 #! A morphism in Rows( Q )
 #!
-#! Image of <1*y:(4) -≻ (4)>:
+#! Image of <1*y:(4) → (4)>:
 #! Source:
 #! A row module over Q of rank 2
 #!
@@ -134,8 +134,8 @@ Display( P );
 #!
 #! A morphism in Rows( Q )
 #!
-#! An object in PreSheaves( Q-algebroid( {1,2,3,4}[x:1-≻1,a:1-≻2,b:2-≻4,c:1-≻3,d:3-≻4,
-#! y:4-≻4] ) defined by 4 objects and 6 generating morphisms, Rows( Q ) ) given by
+#! An object in PreSheaves( Q-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,
+#! y:4→4] ) defined by 4 objects and 6 generating morphisms, Rows( Q ) ) given by
 #! the above data
 IsWellDefined( MonomorphismIntoSomeInjectiveObject( P ) );
 #! true

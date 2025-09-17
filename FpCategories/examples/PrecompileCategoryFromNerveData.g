@@ -30,7 +30,7 @@ CapJitPrecompileCategoryAndCompareResult(
                                 [ "HomomorphismStructureOnMorphismsWithGivenObjects" ] ) );;
 
 CategoryFromNerveDataPrecompiled( given_arguments[1] );
-#! PathCategory( FinQuiver( "q(a,b)[m:a-≻b]" ) )
+#! PathCategory( FinQuiver( "q(a,b)[m:a→b]" ) )
 
 CategoryFromNerveData( PathCategory( given_arguments[1] ) )!.precompiled_functions_added;
 #! true
