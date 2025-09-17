@@ -145,33 +145,33 @@
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2 := SimplicialCategoryTruncatedInDegree( 2 );</span>
 PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DefiningRelations( Delta2 );</span>
-[ [ s⋅id:(C0) -≻ (C0), id(C0):(C0) -≻ (C0) ],
-  [ t⋅id:(C0) -≻ (C0), id(C0):(C0) -≻ (C0) ],
-  [ ps⋅is:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],
-  [ pt⋅it:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],
-  [ is⋅id:(C2) -≻ (C0), it⋅id:(C2) -≻ (C0) ],
-  [ pt⋅is:(C1) -≻ (C1), id⋅t:(C1) -≻ (C1) ],
-  [ ps⋅it:(C1) -≻ (C1), id⋅s:(C1) -≻ (C1) ],
-  [ s⋅pt:(C0) -≻ (C2), t⋅ps:(C0) -≻ (C2) ],
-  [ s⋅mu:(C0) -≻ (C2), s⋅ps:(C0) -≻ (C2) ],
-  [ t⋅mu:(C0) -≻ (C2), t⋅pt:(C0) -≻ (C2) ],
-  [ mu⋅is:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],
-  [ mu⋅it:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ] ]
+[ [ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],
+  [ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],
+  [ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],
+  [ pt⋅it:(C1) → (C1), id(C1):(C1) → (C1) ],
+  [ is⋅id:(C2) → (C0), it⋅id:(C2) → (C0) ],
+  [ pt⋅is:(C1) → (C1), id⋅t:(C1) → (C1) ],
+  [ ps⋅it:(C1) → (C1), id⋅s:(C1) → (C1) ],
+  [ s⋅pt:(C0) → (C2), t⋅ps:(C0) → (C2) ],
+  [ s⋅mu:(C0) → (C2), s⋅ps:(C0) → (C2) ],
+  [ t⋅mu:(C0) → (C2), t⋅pt:(C0) → (C2) ],
+  [ mu⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],
+  [ mu⋅it:(C1) → (C1), id(C1):(C1) → (C1) ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( Delta2 );</span>
 31
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := NerveTruncatedInDegree2AsFunctor( Delta2 );</span>
 Functor from PathCategory( FinQuiver(
-  "Delta_op(C0,C1,C2)[id:C0-≻C1,s:C1-≻C0,t:C1-≻C0,
-                      is:C1-≻C2,it:C1-≻C2,ps:C2-≻C1,pt:C2-≻C1,mu:C2-≻C1]" ) )
+  "Delta_op(C0,C1,C2)[id:C0→C1,s:C1→C0,t:C1→C0,
+                      is:C1→C2,it:C1→C2,ps:C2→C1,pt:C2→C1,mu:C2→C1]" ) )
 / [ id⋅s = id(C0), id⋅t = id(C0), is⋅ps = id(C1), ... ] -&gt; SkeletalFinSets
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2op := SourceOfFunctor( N );</span>
 PathCategory( FinQuiver(
-  "Delta_op(C0,C1,C2)[id:C0-≻C1,s:C1-≻C0,t:C1-≻C0,
-                      is:C1-≻C2,it:C1-≻C2,ps:C2-≻C1,pt:C2-≻C1,mu:C2-≻C1]" ) )
+  "Delta_op(C0,C1,C2)[id:C0→C1,s:C1→C0,t:C1→C0,
+                      is:C1→C2,it:C1→C2,ps:C2→C1,pt:C2→C1,mu:C2→C1]" ) )
 / [ id⋅s = id(C0), id⋅t = id(C0), is⋅ps = id(C1), ... ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N( Delta2op.C0 );</span>
 |3|
@@ -193,15 +193,15 @@ PathCategory( FinQuiver(
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := NerveTruncatedInDegree2( Delta2 );</span>
 &lt;An object in PreSheaves( PathCategory( FinQuiver(
- "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                  is:C2-≻C1,it:C2-≻C1,ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+ "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                  is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
  / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ], SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IntCat := CategoryOfInternalCategories(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                  RangeCategoryOfHomomorphismStructure( Delta2 ) );</span>
 FullSubcategoryByObjectMembershipFunction(
 PreSheaves( PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ], SkeletalFinSets ),
 ObjectMembershipFunction )
 </pre></div>
@@ -257,63 +257,63 @@ ObjectMembershipFunction )
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2 := SimplicialCategoryTruncatedInDegree( 2 );</span>
 PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,
-                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,
+                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DefiningRelations( Delta2 );</span>
-[ [ s⋅id:(C0) -≻ (C0), id(C0):(C0) -≻ (C0) ],
-  [ t⋅id:(C0) -≻ (C0), id(C0):(C0) -≻ (C0) ],
-  [ ps⋅is:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],
-  [ pt⋅it:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],
-  [ is⋅id:(C2) -≻ (C0), it⋅id:(C2) -≻ (C0) ],
-  [ pt⋅is:(C1) -≻ (C1), id⋅t:(C1) -≻ (C1) ],
-  [ ps⋅it:(C1) -≻ (C1), id⋅s:(C1) -≻ (C1) ],
-  [ s⋅pt:(C0) -≻ (C2), t⋅ps:(C0) -≻ (C2) ],
-  [ s⋅mu:(C0) -≻ (C2), s⋅ps:(C0) -≻ (C2) ],
-  [ t⋅mu:(C0) -≻ (C2), t⋅pt:(C0) -≻ (C2) ],
-  [ mu⋅is:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ],
-  [ mu⋅it:(C1) -≻ (C1), id(C1):(C1) -≻ (C1) ] ]
+[ [ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],
+  [ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],
+  [ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],
+  [ pt⋅it:(C1) → (C1), id(C1):(C1) → (C1) ],
+  [ is⋅id:(C2) → (C0), it⋅id:(C2) → (C0) ],
+  [ pt⋅is:(C1) → (C1), id⋅t:(C1) → (C1) ],
+  [ ps⋅it:(C1) → (C1), id⋅s:(C1) → (C1) ],
+  [ s⋅pt:(C0) → (C2), t⋅ps:(C0) → (C2) ],
+  [ s⋅mu:(C0) → (C2), s⋅ps:(C0) → (C2) ],
+  [ t⋅mu:(C0) → (C2), t⋅pt:(C0) → (C2) ],
+  [ mu⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],
+  [ mu⋅it:(C1) → (C1), id(C1):(C1) → (C1) ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( Delta2 );</span>
 31
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ymu := YonedaCompositionAsNaturalEpimorphism( Delta2 );</span>
 Natural transformation from
 Functor from PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,
-                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,
+                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -&gt; SkeletalFinSets
 -&gt;
 Functor from PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,
-                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,
+                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -&gt; SkeletalFinSets
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ymu := YonedaProjectionAsNaturalEpimorphism( Delta2 );</span>
 Natural transformation from
 Functor from PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,
-                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,
+                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -&gt; SkeletalFinSets
 -&gt;
 Functor from PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,
-                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,
+                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -&gt; SkeletalFinSets
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ys := YonedaFibrationAsNaturalTransformation( Delta2 );</span>
 Natural transformation from
 Functor from PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,
-                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,
+                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -&gt; SkeletalFinSets
 -&gt;
 Functor from PathCategory( FinQuiver(
-  "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-                   is:C2-≻C1,it:C2-≻C1,
-                   ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,
+                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -&gt; SkeletalFinSets
 </pre></div>
 
@@ -343,7 +343,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := "q(1,2,3,4)[m_1_2:1-&gt;2,m_1_3:1-&gt;3,m_2_4:2-&gt;4,m_3_4:3-&gt;4]";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PathCategory( FinQuiver( q ) );</span>
 PathCategory( FinQuiver(
-"q(1,2,3,4)[m_1_2:1-≻2,m_1_3:1-≻3,m_2_4:2-≻4,m_3_4:3-≻4]" ) )
+"q(1,2,3,4)[m_1_2:1→2,m_1_3:1→3,m_2_4:2→4,m_3_4:3→4]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">digraph := DigraphReflexiveTransitiveReduction(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                   Digraph( SetOfObjects( F ), IsHomSetInhabited ) );</span>
 &lt;immutable digraph with 4 vertices, 4 edges&gt;

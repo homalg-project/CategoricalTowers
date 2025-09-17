@@ -162,12 +162,12 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta1 := SimplicialCategoryTruncatedInDegree( 1 );</span>
-PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( Delta1 );</span>
 7
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := CategoryFromNerveData( Delta1 );</span>
-PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( C );</span>
 7
@@ -176,10 +176,10 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IndicesOfGeneratingMorphisms( C );</span>
 [ 1, 2, 3 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( C );</span>
-[ (C1)-[(id)]-≻(C0), (C0)-[(s)]-≻(C1), (C0)-[(t)]-≻(C1) ]
+[ (C1)-[(id)]→(C0), (C0)-[(s)]→(C1), (C0)-[(t)]→(C1) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( C );</span>
 A CAP category with name
-PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0) ]:
 
 19 primitive operations were used to derive 55 operations for this category
@@ -199,29 +199,29 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( 2 / C );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">idC0 := CreateMorphism( C0, 0, C0 );</span>
-(C0)-[(C0)]-≻(C0)
+(C0)-[(C0)]→(C0)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CreateMorphism( C, 0 ) = idC0;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( idC0 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := CreateMorphism( C, 1 );</span>
-(C1)-[(id)]-≻(C0)
+(C1)-[(id)]→(C0)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := CreateMorphism( C, 2 );</span>
-(C0)-[(s)]-≻(C1)
+(C0)-[(s)]→(C1)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := CreateMorphism( C, 3 );</span>
-(C0)-[(t)]-≻(C1)
+(C0)-[(t)]→(C1)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">idC1 := CreateMorphism( C, 4 );</span>
-(C1)-[(C1)]-≻(C1)
+(C1)-[(C1)]→(C1)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( idC1 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sigma := CreateMorphism( C, 5 );</span>
-(C1)-[(id⋅s)]-≻(C1)
+(C1)-[(id⋅s)]→(C1)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEndomorphism( sigma );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( sigma );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tau := CreateMorphism( C, 6 );</span>
-(C1)-[(id⋅t)]-≻(C1)
+(C1)-[(id⋅t)]→(C1)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEndomorphism( tau );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( tau );</span>
@@ -274,7 +274,7 @@ true
 { 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C_op := OppositeCategoryFromNerveData( C );</span>
 Opposite(
-PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0) ] )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NerveData( C_op ) = NerveTruncatedInDegree2Data( C_op );</span>
 true
@@ -283,7 +283,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IndicesOfGeneratingMorphisms( C_op );</span>
 [ 3, 1, 2 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( C_op );</span>
-[ (C0)-[(id)]-≻(C1), (C1)-[(s)]-≻(C0), (C1)-[(t)]-≻(C0) ]
+[ (C0)-[(id)]→(C1), (C1)-[(s)]→(C0), (C1)-[(t)]→(C0) ]
 </pre></div>
 
 <p><a id="X7AAC960D78EE093A" name="X7AAC960D78EE093A"></a></p>

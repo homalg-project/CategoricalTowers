@@ -73,14 +73,14 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">str :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  "q(0..5)[x:0-&gt;0,s:0-&gt;1,a:1-&gt;2,c:1-&gt;3,e:1-&gt;4,b:2-&gt;4,d:3-&gt;4,t:4-&gt;5,y:5-&gt;5]";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( str );</span>
-FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,
-t:4-≻5,y:5-≻5]" )
+FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,
+t:4→5,y:5→5]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := PathCategory( q : admissible_order := "Dp" );</span>
-PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,
-b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) )
+PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,
+b:2→4,d:3→4,t:4→5,y:5→5]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( C );</span>
-A CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,
-a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ):
+A CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,
+a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ):
 
 17 primitive operations were used to derive 32 operations for this category
 which algorithmically
@@ -88,8 +88,8 @@ which algorithmically
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjects( C );</span>
 [ (0), (1), (2), (3), (4), (5) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( C );</span>
-[ x:(0) -≻ (0), s:(0) -≻ (1), a:(1) -≻ (2), c:(1) -≻ (3), e:(1) -≻ (4),
-  b:(2) -≻ (4), d:(3) -≻ (4), t:(4) -≻ (5), y:(5) -≻ (5) ]
+[ x:(0) → (0), s:(0) → (1), a:(1) → (2), c:(1) → (3), e:(1) → (4),
+  b:(2) → (4), d:(3) → (4), t:(4) → (5), y:(5) → (5) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AssignSetOfObjects( C, "v_" );</span>
 #I  MakeReadWriteGlobal: v_0 already read-write
 #I  MakeReadWriteGlobal: v_1 already read-write
@@ -112,13 +112,13 @@ which algorithmically
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectIndex( C.5 );</span>
 6
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C.id_5;</span>
-id(5):(5) -≻ (5)
+id(5):(5) → (5)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C.("id(5)");</span>
-id(5):(5) -≻ (5)
+id(5):(5) → (5)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := C.("x^2*s*a*b*t*y^2");</span>
-x^2⋅s⋅a⋅b⋅t⋅y^2:(0) -≻ (5)
+x^2⋅s⋅a⋅b⋅t⋅y^2:(0) → (5)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := C.("x^2sabty^2");</span>
-x^2⋅s⋅a⋅b⋅t⋅y^2:(0) -≻ (5)
+x^2⋅s⋅a⋅b⋅t⋅y^2:(0) → (5)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( m );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismLength( m );</span>
@@ -126,18 +126,18 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismIndices( m );</span>
 [ 1, 1, 2, 3, 6, 8, 9, 9 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismSupport( m );</span>
-[ x:(0) -≻ (0), x:(0) -≻ (0), s:(0) -≻ (1), a:(1) -≻ (2), b:(2) -≻ (4),
-t:(4) -≻ (5), y:(5) -≻ (5), y:(5) -≻ (5) ]
+[ x:(0) → (0), x:(0) → (0), s:(0) → (1), a:(1) → (2), b:(2) → (4),
+t:(4) → (5), y:(5) → (5), y:(5) → (5) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">relations := [ [ C.x^5, C.x ], [ C.y^5, C.y^2 ] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m = MorphismConstructor( C,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        Source( m ), MorphismLength( m ), MorphismSupport( m ), Target( m ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qC := QuotientCategory( C, relations );</span>
-PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,
-b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ]
+PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,
+b:2→4,d:3→4,t:4→5,y:5→5]" ) ) / [ x^5 = x, y^5 = y^2 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( qC );</span>
-A CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,
-a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ]:
+A CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,
+a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) / [ x^5 = x, y^5 = y^2 ]:
 
 24 primitive operations were used to derive 65 operations for this category
 which algorithmically
@@ -150,9 +150,9 @@ which algorithmically
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectIndex( qC.0 );</span>
 1
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qC.x^7;</span>
-[x^3]:(0) -≻ (0)
+[x^3]:(0) → (0)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CanonicalRepresentative( qC.x^7 );</span>
-x^3:(0) -≻ (0)
+x^3:(0) → (0)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnObjects( qC.0, qC.5 );</span>
 |75|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( SetOfGeneratingMorphisms( qC ), IsMonomorphism );</span>
@@ -164,33 +164,33 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals();</span>
 Q
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kC := k[C]; # or LinearClosure( k, C );</span>
-Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,
-c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) )
+Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,
+c:1→3,e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kC.x + kC.x^2;</span>
-1*x^2 + 1*x:(0) -≻ (0)
+1*x^2 + 1*x:(0) → (0)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kqC := k[qC];</span>
-Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,
-c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^5 = x, y^5 = y^2 ] )
+Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,
+c:1→3,e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) / [ x^5 = x, y^5 = y^2 ] )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnObjects( kqC.0, kqC.5 );</span>
 &lt;A row module over Q of rank 75&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kqC.x + kqC.x^2;</span>
-1*[x^2] + 1*[x]:(0) -≻ (0)
+1*[x^2] + 1*[x]:(0) → (0)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( SetOfGeneratingMorphisms( kqC ), IsMonomorphism );</span>
 [ false, true, true, true, true, true, true, true, false ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( SetOfGeneratingMorphisms( kqC ), IsEpimorphism );</span>
 [ false, true, true, true, true, true, true, true, false ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homs := BasisOfExternalHom( kqC.0, kqC.5 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := 2 * homs[1] - 3 * homs[4] + homs[75];</span>
-2*[x^4⋅s⋅a⋅b⋅t⋅y^4] - 3*[x^4⋅s⋅c⋅d⋅t⋅y^3] + 1*[s⋅e⋅t]:(0) -≻ (5)
+2*[x^4⋅s⋅a⋅b⋅t⋅y^4] - 3*[x^4⋅s⋅c⋅d⋅t⋅y^3] + 1*[s⋅e⋅t]:(0) → (5)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EvalString( CellAsEvaluatableString( mor, [ "kqC", "qC", "C" ] ) ) = mor;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( kqC );</span>
-Q-algebroid( {0,1,2,3,4,5}[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,
-t:4-≻5,y:5-≻5] ) defined by 6 objects and 9 generating morphisms
+Q-algebroid( {0,1,2,3,4,5}[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,
+t:4→5,y:5→5] ) defined by 6 objects and 9 generating morphisms
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnObjects( A.0, A.5 );</span>
 &lt;A row module over Q of rank 75&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.x + A.x^2;</span>
-&lt;1*x^2 + 1*x:(0) -≻ (0)&gt;
+&lt;1*x^2 + 1*x:(0) → (0)&gt;
 </pre></div>
 
 
@@ -199,13 +199,13 @@ t:4-≻5,y:5-≻5] ) defined by 6 objects and 9 generating morphisms
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">str := "q(0,1,2,3,4,5)[s:0-&gt;1,a:1-&gt;2,c:1-&gt;3,e:1-&gt;4,b:2-&gt;4,d:3-&gt;4,t:4-&gt;5]";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := FinQuiver( str );</span>
-FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" )
+FinQuiver( "q(0,1,2,3,4,5)[s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,t:4→5]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PathCategory( quiver : admissible_order := "Dp" );</span>
-PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,
-d:3-≻4,t:4-≻5]" ) )
+PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,
+d:3→4,t:4→5]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
-A CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,
-c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" ) ):
+A CAP category with name PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0→1,a:1→2,
+c:1→3,e:1→4,b:2→4,d:3→4,t:4→5]" ) ):
 
 18 primitive operations were used to derive 65 operations for this category
 which algorithmically
@@ -218,12 +218,12 @@ which algorithmically
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );</span>
 Q
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kP := k[P];</span>
-Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0-≻1,a:1-≻2,c:1-≻3,
-e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5]" ) ) )
+Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[s:0→1,a:1→2,c:1→3,
+e:1→4,b:2→4,d:3→4,t:4→5]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( kP.0, kP.5 );</span>
 &lt;A row module over Q of rank 3&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := AlgebroidFromDataTables( kP );</span>
-Q-algebroid( {0,1,2,3,4,5}[s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5] )
+Q-algebroid( {0,1,2,3,4,5}[s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,t:4→5] )
 defined by 6 objects and 7 generating morphisms
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( T.0, T.5 );</span>
 &lt;A row module over Q of rank 3&gt;
@@ -235,25 +235,25 @@ defined by 6 objects and 7 generating morphisms
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">str := "q(o)[x:o-&gt;o,y:o-&gt;o,z:o-&gt;o]";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := PathCategory( FinQuiver( str ) );</span>
-PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o]" ) )
+PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o,z:o→o]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeCategory( RightQuiver( str ) );</span>
 FreeCategory( RightQuiver( "q(o)[x:o-&gt;o,y:o-&gt;o,z:o-&gt;o]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qC := C / [ [C.x^3, C.x], [C.y^3, C.y], [C.z^3, C.z],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            [C.xy, C.yx], [C.xz, C.zx], [C.yz, C.zy] ];</span>
-PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o]" ) ) /
+PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o,z:o→o]" ) ) /
            [ x^3 = x, y^3 = y, z^3 = z, ... ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qF := F / [ [F.x^3, F.x], [F.y^3, F.y], [F.z^3, F.z],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            [F.xy, F.yx], [F.xz, F.zx], [F.yz, F.zy] ];</span>
 FreeCategory( RightQuiver( "q(o)[x:o-&gt;o,y:o-&gt;o,z:o-&gt;o]" ) ) / relations
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismsOfExternalHom( qC.o, qC.o );</span>
-[ [id(o)]:(o) -≻ (o), [x]:(o) -≻ (o), [y]:(o) -≻ (o), [z]:(o) -≻ (o),
-  [x^2]:(o) -≻ (o), [x⋅y]:(o) -≻ (o), [x⋅z]:(o) -≻ (o), [y^2]:(o) -≻ (o),
-  [y⋅z]:(o) -≻ (o), [z^2]:(o) -≻ (o), [x^2⋅y]:(o) -≻ (o), [x^2⋅z]:(o) -≻ (o),
-  [x⋅y^2]:(o) -≻ (o), [x⋅y⋅z]:(o) -≻ (o), [x⋅z^2]:(o) -≻ (o),
-  [y^2⋅z]:(o) -≻ (o), [y⋅z^2]:(o) -≻ (o), [x^2⋅y^2]:(o) -≻ (o),
-  [x^2⋅y⋅z]:(o) -≻ (o), [x^2⋅z^2]:(o) -≻ (o), [x⋅y^2⋅z]:(o) -≻ (o),
-  [x⋅y⋅z^2]:(o) -≻ (o), [y^2⋅z^2]:(o) -≻ (o), [x^2⋅y^2⋅z]:(o) -≻ (o),
-  [x^2⋅y⋅z^2]:(o) -≻ (o), [x⋅y^2⋅z^2]:(o) -≻ (o), [x^2⋅y^2⋅z^2]:(o) -≻ (o) ]
+[ [id(o)]:(o) → (o), [x]:(o) → (o), [y]:(o) → (o), [z]:(o) → (o),
+  [x^2]:(o) → (o), [x⋅y]:(o) → (o), [x⋅z]:(o) → (o), [y^2]:(o) → (o),
+  [y⋅z]:(o) → (o), [z^2]:(o) → (o), [x^2⋅y]:(o) → (o), [x^2⋅z]:(o) → (o),
+  [x⋅y^2]:(o) → (o), [x⋅y⋅z]:(o) → (o), [x⋅z^2]:(o) → (o),
+  [y^2⋅z]:(o) → (o), [y⋅z^2]:(o) → (o), [x^2⋅y^2]:(o) → (o),
+  [x^2⋅y⋅z]:(o) → (o), [x^2⋅z^2]:(o) → (o), [x⋅y^2⋅z]:(o) → (o),
+  [x⋅y⋅z^2]:(o) → (o), [y^2⋅z^2]:(o) → (o), [x^2⋅y^2⋅z]:(o) → (o),
+  [x^2⋅y⋅z^2]:(o) → (o), [x⋅y^2⋅z^2]:(o) → (o), [x^2⋅y^2⋅z^2]:(o) → (o) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismsOfExternalHom( qF.o, qF.o );</span>
 [ (o)-[(o)]-&gt;(o), (o)-[(x)]-&gt;(o), (o)-[(y)]-&gt;(o), (o)-[(z)]-&gt;(o),
   (o)-[(x*x)]-&gt;(o), (o)-[(x*y)]-&gt;(o), (o)-[(x*z)]-&gt;(o), (o)-[(y*y)]-&gt;(o),

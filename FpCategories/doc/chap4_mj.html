@@ -54,7 +54,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        : operations := Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( given_arguments[1] : no_precompiled_code := true ) ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                                [ "HomomorphismStructureOnMorphismsWithGivenObjects" ] ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryFromNerveDataPrecompiled( given_arguments[1] );</span>
-PathCategory( FinQuiver( "q(a,b)[m:a-≻b]" ) )
+PathCategory( FinQuiver( "q(a,b)[m:a→b]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryFromNerveData( PathCategory( given_arguments[1] ) )!.precompiled_functions_added;</span>
 true
 #@fi
