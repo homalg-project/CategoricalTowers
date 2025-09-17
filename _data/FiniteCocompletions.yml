@@ -1,5 +1,5 @@
 name: FiniteCocompletions
-version: "2025.09-02"
+version: "2025.09-03"
 license: "GPL-2.0-or-later"
 date: 2025-09-17
 description: |
@@ -62,11 +62,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FiniteCocompleti
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.09-02/FiniteCocompletions-2025.09-02.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.09-03/FiniteCocompletions-2025.09-03.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.09-02/FiniteCocompletions-2025.09-02.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.09-03/FiniteCocompletions-2025.09-03.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.09-02/FiniteCocompletions-2025.09-02-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2025.09-03/FiniteCocompletions-2025.09-03-manual.pdf
 
 abstract: |
 
@@ -79,7 +79,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Bar17</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>FiniteCocompletions, Finite (co)product/(co)limit (co)completions,
-             Version 2025.09-02</i>
+             Version 2025.09-03</i>
      (<span class='BibYear'>9-17</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FiniteCocompletions">https://homalg-project.github.io/pkg/FiniteCocompletions</a></span>.
@@ -91,7 +91,7 @@ bibtex: |
       author =           {Barakat, M.},
       title =            {{FiniteCocompletions},  {Finite  (co)product/(co)limit
                           (co)completions},                            {V}ersion
-                          2025.09\texttt{\symbol{45}}02},
+                          2025.09\texttt{\symbol{45}}03},
       month =            {5\texttt{\symbol{45}}},
       year =             {9\texttt{\symbol{45}}17},
       note =             {GAP package},
