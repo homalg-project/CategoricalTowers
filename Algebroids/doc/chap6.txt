@@ -285,7 +285,7 @@
     [4X[25Xgap>[125X [27Xdata_tables[1];[127X[104X
     [4X[28XQ[128X[104X
     [4X[25Xgap>[125X [27Xdata_tables[2];[127X[104X
-    [4X[28XFinQuiver( "q(0,1,2,3)[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3]" )[128X[104X
+    [4X[28XFinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" )[128X[104X
     [4X[25Xgap>[125X [27Xdata_tables[3];[127X[104X
     [4X[28X[[[ [] ], [ [1] ], [ [3] ], [ [1,2],[3,4],[1,2,5],[3,4,5],[1,2,5,5],[3,4,5,5]]],[128X[104X
     [4X[28X [[  ], [ [] ], [  ], [ [2],[2,5],[2,5,5] ]],[128X[104X
@@ -297,7 +297,7 @@
     [4X[28X[ [ 1, 0, 0, 0, 0, 0 ], [ 0, 0, 1, 0, 0, 0 ], [ 0, 0, 0, 0, 1, 0 ] ][128X[104X
     [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( data_tables );; # alternatively,[127X[104X
     [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( B );[127X[104X
-    [4X[28XQ-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] ) defined by[128X[104X
+    [4X[28XQ-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] ) defined by[128X[104X
     [4X[28X4 objects and 5 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XAssignSetOfObjects( A, "V_" );[127X[104X
     [4X[28X#I  MakeReadWriteGlobal: V_0 already read-write[128X[104X
@@ -321,9 +321,9 @@
     [4X[25Xgap>[125X [27XObjectConstructor( A, 1 ) = A.("0");[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( A );[127X[104X
-    [4X[28X[ <1*a:(0) -≻ (1)>, <1*b:(1) -≻ (3)>,[128X[104X
-    [4X[28X  <1*c:(0) -≻ (2)>, <1*d:(2) -≻ (3)>,[128X[104X
-    [4X[28X  <1*e:(3) -≻ (3)> ][128X[104X
+    [4X[28X[ <1*a:(0) → (1)>, <1*b:(1) → (3)>,[128X[104X
+    [4X[28X  <1*c:(0) → (2)>, <1*d:(2) → (3)>,[128X[104X
+    [4X[28X  <1*e:(3) → (3)> ][128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( A.("a"), a );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XPerform( [ "V_0", "V_1", "V_2", "V_3" ], MakeReadWriteGlobal );[127X[104X
@@ -331,11 +331,11 @@
     [4X[25Xgap>[125X [27XHomStructure( A.("0"), A.("3") );[127X[104X
     [4X[28X<A row module over Q of rank 6>[128X[104X
     [4X[25Xgap>[125X [27Xhom_03 := BasisOfExternalHom( A.("0"), A.("3") );[127X[104X
-    [4X[28X[ <1*a⋅b:(0) -≻ (3)>, <1*c⋅d:(0) -≻ (3)>,[128X[104X
-    [4X[28X  <1*a⋅b⋅e:(0) -≻ (3)>, <1*c⋅d⋅e:(0) -≻ (3)>,[128X[104X
-    [4X[28X  <1*a⋅b⋅e^2:(0) -≻ (3)>, <1*c⋅d⋅e^2:(0) -≻ (3)> ][128X[104X
+    [4X[28X[ <1*a⋅b:(0) → (3)>, <1*c⋅d:(0) → (3)>,[128X[104X
+    [4X[28X  <1*a⋅b⋅e:(0) → (3)>, <1*c⋅d⋅e:(0) → (3)>,[128X[104X
+    [4X[28X  <1*a⋅b⋅e^2:(0) → (3)>, <1*c⋅d⋅e^2:(0) → (3)> ][128X[104X
     [4X[25Xgap>[125X [27Xalpha := 2*hom_03[1] + 3*hom_03[6];[127X[104X
-    [4X[28X<2*a⋅b + 3*c⋅d⋅e^2:(0) -≻ (3)>[128X[104X
+    [4X[28X<2*a⋅b + 3*c⋅d⋅e^2:(0) → (3)>[128X[104X
     [4X[25Xgap>[125X [27XLaTeXOutput( alpha );[127X[104X
     [4X[28X"{0}-\\left({2\\cdot {a}{b} + 3\\cdot {c}{d}{e}^{2}}\\right)\\rightarrow{3}"[128X[104X
     [4X[25Xgap>[125X [27Xalpha = MorphismConstructor( A, A.("0"), [ 2, 0, 0, 0, 0, 3 ], A.("3") );[127X[104X
@@ -347,17 +347,17 @@
     [4X[25Xgap>[125X [27XCoefficientsOfSupportMorphisms( alpha );[127X[104X
     [4X[28X[ 2, 3 ][128X[104X
     [4X[25Xgap>[125X [27XSupportMorphisms( alpha );[127X[104X
-    [4X[28X[ <1*a⋅b:(0) -≻ (3)>, <1*c⋅d⋅e^2:(0) -≻ (3)> ][128X[104X
+    [4X[28X[ <1*a⋅b:(0) → (3)>, <1*c⋅d⋅e^2:(0) → (3)> ][128X[104X
     [4X[25Xgap>[125X [27XDecompositionIndicesOfMorphismInAlgebroid( alpha );[127X[104X
     [4X[28X[ [ 2, [ 1, 2 ] ], [ 3, [ 3, 4, 5, 5 ] ] ][128X[104X
     [4X[25Xgap>[125X [27XDecompositionOfMorphismInAlgebroid( alpha );[127X[104X
-    [4X[28X[ [ 2, [ <1*a:(0) -≻ (1)>, <1*b:(1) -≻ (3)> ] ],[128X[104X
-    [4X[28X  [ 3, [ <1*c:(0) -≻ (2)>, <1*d:(2) -≻ (3)>,[128X[104X
-    [4X[28X         <1*e:(3) -≻ (3)>, <1*e:(3) -≻ (3)> ] ] ][128X[104X
+    [4X[28X[ [ 2, [ <1*a:(0) → (1)>, <1*b:(1) → (3)> ] ],[128X[104X
+    [4X[28X  [ 3, [ <1*c:(0) → (2)>, <1*d:(2) → (3)>,[128X[104X
+    [4X[28X         <1*e:(3) → (3)>, <1*e:(3) → (3)> ] ] ][128X[104X
     [4X[25Xgap>[125X [27XA.("a⋅b⋅e");[127X[104X
-    [4X[28X<1*a⋅b⋅e:(0) -≻ (3)>[128X[104X
+    [4X[28X<1*a⋅b⋅e:(0) → (3)>[128X[104X
     [4X[25Xgap>[125X [27XA.("abe");[127X[104X
-    [4X[28X<1*a⋅b⋅e:(0) -≻ (3)>[128X[104X
+    [4X[28X<1*a⋅b⋅e:(0) → (3)>[128X[104X
     [4X[25Xgap>[125X [27XPreCompose( A.("a"), A.("b") ) = A.("ab");[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XU := IsomorphismOntoAlgebroidFromDataTables( B, A );[127X[104X
@@ -371,7 +371,7 @@
     [4X[28XExtension of Isomorphism functor from algebroid from data tables to[128X[104X
     [4X[28Xadditive closures[128X[104X
     [4X[25Xgap>[125X [27Xadd_A := SourceOfFunctor( V );[127X[104X
-    [4X[28XAdditiveClosure( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )[128X[104X
+    [4X[28XAdditiveClosure( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] )[128X[104X
     [4X[28Xdefined by 4 objects and 5 generating morphisms )[128X[104X
     [4X[25Xgap>[125X [27XIsBound( add_A!.precompiled_functions_added );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -401,22 +401,22 @@
     [4X[25Xgap>[125X [27XIsZero( PreCompose( WeakKernelEmbedding( f ), f ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xfreyd_B := FreydCategory( add_A );[127X[104X
-    [4X[28XFreyd( AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,[128X[104X
-    [4X[28Xe:3-≻3] ) defined by 4 objects and 5 generating morphisms ) )[128X[104X
+    [4X[28XFreyd( AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,[128X[104X
+    [4X[28Xe:3→3] ) defined by 4 objects and 5 generating morphisms ) )[128X[104X
     [4X[25Xgap>[125X [27XIsAbelianCategory( freyd_B );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[28X#@fi[128X[104X
     [4X[25Xgap>[125X [27XA_op := OppositeAlgebroid( A );[127X[104X
-    [4X[28XQ-algebroid( {0,1,2,3}[a:1-≻0,b:3-≻1,c:2-≻0,d:3-≻2,e:3-≻3] ) defined by[128X[104X
+    [4X[28XQ-algebroid( {0,1,2,3}[a:1→0,b:3→1,c:2→0,d:3→2,e:3→3] ) defined by[128X[104X
     [4X[28X4 objects and 5 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XA_op.("ba");[127X[104X
-    [4X[28X<1*b⋅a:(3) -≻ (0)>[128X[104X
+    [4X[28X<1*b⋅a:(3) → (0)>[128X[104X
     [4X[25Xgap>[125X [27Xadd_A := AdditiveClosure( A );[127X[104X
-    [4X[28XAdditiveClosure( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,d:2-≻3,e:3-≻3] )[128X[104X
+    [4X[28XAdditiveClosure( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] )[128X[104X
     [4X[28Xdefined by 4 objects and 5 generating morphisms )[128X[104X
     [4X[25Xgap>[125X [27XT := DirectSum( List( SetOfObjects( A ), o -> o / add_A ) );[127X[104X
-    [4X[28X<An object in AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0-≻1,b:1-≻3,c:0-≻2,[128X[104X
-    [4X[28Xd:2-≻3,e:3-≻3] ) defined by 4 objects and 5 generating morphisms ) defined[128X[104X
+    [4X[28X<An object in AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,[128X[104X
+    [4X[28Xd:2→3,e:3→3] ) defined by 4 objects and 5 generating morphisms ) defined[128X[104X
     [4X[28Xby 4 underlying objects>[128X[104X
     [4X[25Xgap>[125X [27Xu := RandomMorphism( T, T, 5 );;[127X[104X
     [4X[25Xgap>[125X [27Xv := RandomMorphism( T, T, 5 );;[127X[104X
@@ -425,21 +425,21 @@
     [4X[25X>[125X [27X      = PreCompose( HomStructure( v ), HomStructure( u, w ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XAA := TensorProductOfAlgebroids( A, A );[127X[104X
-    [4X[28XQ-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[0⊗a:0⊗0-≻0⊗1,0⊗b:0⊗1-≻0⊗3,[128X[104X
-    [4X[28X0⊗c:0⊗0-≻0⊗2,..,e⊗1:3⊗1-≻3⊗1,e⊗2:3⊗2-≻3⊗2,e⊗3:3⊗3-≻3⊗3] ) defined[128X[104X
+    [4X[28XQ-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[0⊗a:0⊗0→0⊗1,0⊗b:0⊗1→0⊗3,[128X[104X
+    [4X[28X0⊗c:0⊗0→0⊗2,..,e⊗1:3⊗1→3⊗1,e⊗2:3⊗2→3⊗2,e⊗3:3⊗3→3⊗3] ) defined[128X[104X
     [4X[28Xby 16 objects and 40 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XElementaryTensor( A.0, A.1 );[127X[104X
     [4X[28X<(0⊗1)>[128X[104X
     [4X[25Xgap>[125X [27XElementaryTensor( A.a, A.b );[127X[104X
-    [4X[28X<1*a⊗b:(0⊗1) -≻ (1⊗3)>[128X[104X
+    [4X[28X<1*a⊗b:(0⊗1) → (1⊗3)>[128X[104X
     [4X[25Xgap>[125X [27XElementaryTensor( A.0, A.b );[127X[104X
-    [4X[28X<1*id(0)⊗b:(0⊗1) -≻ (0⊗3)>[128X[104X
+    [4X[28X<1*id(0)⊗b:(0⊗1) → (0⊗3)>[128X[104X
     [4X[25Xgap>[125X [27XElementaryTensor( A.a, A.1 );[127X[104X
-    [4X[28X<1*a⊗id(1):(0⊗1) -≻ (1⊗1)>[128X[104X
+    [4X[28X<1*a⊗id(1):(0⊗1) → (1⊗1)>[128X[104X
     [4X[25Xgap>[125X [27X3x3 := AA.("3⊗3");[127X[104X
     [4X[28X<(3⊗3)>[128X[104X
     [4X[25Xgap>[125X [27XAA.("e⊗1");[127X[104X
-    [4X[28X<1*e⊗id(1):(3⊗1) -≻ (3⊗1)>[128X[104X
+    [4X[28X<1*e⊗id(1):(3⊗1) → (3⊗1)>[128X[104X
     [4X[25Xgap>[125X [27Xu := RandomMorphism( 3x3, 3x3, 15 );;[127X[104X
     [4X[25Xgap>[125X [27Xv := RandomMorphism( 3x3, 3x3, 15 );;[127X[104X
     [4X[25Xgap>[125X [27Xw := RandomMorphism( 3x3, 3x3, 15 );;[127X[104X

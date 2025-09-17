@@ -122,19 +122,19 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta1 := SimplicialCategoryTruncatedInDegree( 1 );</span>
-PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( Delta1 );</span>
 7
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mors := SetOfMorphisms( Delta1 );</span>
-[ [id(C0)]:(C0) -≻ (C0), [id]:(C1) -≻ (C0), [s]:(C0) -≻ (C1), [t]:(C0) -≻ (C1),
-  [id(C1)]:(C1) -≻ (C1), [id⋅s]:(C1) -≻ (C1), [id⋅t]:(C1) -≻ (C1) ]
+[ [id(C0)]:(C0) → (C0), [id]:(C1) → (C0), [s]:(C0) → (C1), [t]:(C0) → (C1),
+  [id(C1)]:(C1) → (C1), [id⋅s]:(C1) → (C1), [id⋅t]:(C1) → (C1) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( mors, DecompositionOfMorphismInCategory );</span>
-[ [  ], [ [id]:(C1) -≻ (C0) ], [ [s]:(C0) -≻ (C1) ], [ [t]:(C0) -≻ (C1) ],
-  [  ], [ [id]:(C1) -≻ (C0), [s]:(C0) -≻ (C1) ],
-  [ [id]:(C1) -≻ (C0), [t]:(C0) -≻ (C1) ] ]
+[ [  ], [ [id]:(C1) → (C0) ], [ [s]:(C0) → (C1) ], [ [t]:(C0) → (C1) ],
+  [  ], [ [id]:(C1) → (C0), [s]:(C0) → (C1) ],
+  [ [id]:(C1) → (C0), [t]:(C0) → (C1) ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := CategoryFromDataTables( Delta1 );</span>
-PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( C );</span>
 7
@@ -153,7 +153,7 @@ true
 [ (C1)-[(id)]-&gt;(C0), (C0)-[(s)]-&gt;(C1), (C0)-[(t)]-&gt;(C1) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( C );</span>
 A CAP category with name
-PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0) ]:
 
 19 primitive operations were used to derive 55 operations for this category
@@ -279,7 +279,7 @@ true
   [ (C1)-[(id)]-&gt;(C0), (C0)-[(t)]-&gt;(C1) ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C_op := OppositeCategoryFromDataTables( C );</span>
 Opposite(
-PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0) ] )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( OppositeCategoryFromDataTables( C_op ), C );</span>
 true

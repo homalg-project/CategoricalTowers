@@ -146,17 +146,17 @@
     [4X[25Xgap>[125X [27XK = I;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xq1 := FinQuiver( "q(o)[x:o->o,y:o->o]" );[127X[104X
-    [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )[128X[104X
+    [4X[28XFinQuiver( "q(o)[x:o→o,y:o→o]" )[128X[104X
     [4X[25Xgap>[125X [27XP1 := PathCategory( q1 );[127X[104X
-    [4X[28XPathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) )[128X[104X
     [4X[25Xgap>[125X [27XL1 := F[P1];[127X[104X
     [4X[28XGF(2)-LinearClosure( PathCategory( \[128X[104X
-    [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )[128X[104X
+    [4X[28XFinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27Xrelations1 := [ L1.x^2 - L1.x,  L1.y^3 - L1.y,  L1.xy - L1.y * (L1.x+L1.id_o) ];[127X[104X
-    [4X[28X[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o),\[128X[104X
-    [4X[28X  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ][128X[104X
+    [4X[28X[ 1*x^2 + 1*x:(o) → (o), 1*y^3 + 1*y:(o) → (o),\[128X[104X
+    [4X[28X  1*y⋅x + 1*x⋅y + 1*y:(o) → (o) ][128X[104X
     [4X[25Xgap>[125X [27XQ1 := L1 / relations1;[127X[104X
-    [4X[28XGF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) / \[128X[104X
+    [4X[28XGF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) ) / \[128X[104X
     [4X[28X[ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
     [4X[25Xgap>[125X [27XDimension( Q1 );[127X[104X
     [4X[28X6[128X[104X
@@ -195,11 +195,11 @@
     [4X[25Xgap>[125X [27XIsWellDefined( counit1 );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xo := A1.id_o;[127X[104X
-    [4X[28X1*id(o):(o) -≻ (o)[128X[104X
+    [4X[28X1*id(o):(o) → (o)[128X[104X
     [4X[25Xgap>[125X [27Xx := A1.x;[127X[104X
-    [4X[28X1*x:(o) -≻ (o)[128X[104X
+    [4X[28X1*x:(o) → (o)[128X[104X
     [4X[25Xgap>[125X [27Xy := A1.y;[127X[104X
-    [4X[28X1*y:(o) -≻ (o)[128X[104X
+    [4X[28X1*y:(o) → (o)[128X[104X
     [4X[25Xgap>[125X [27Xcomult1 := Comultiplication( A1,[127X[104X
     [4X[25X>[125X [27X                   [ [ [ o, x ], [ x, o ], [ o, o ], [ y^2, y^2 ] ],[127X[104X
     [4X[25X>[125X [27X                     [ [ o, y ], [ y, o + y^2 ] ] ] );[127X[104X
@@ -214,17 +214,17 @@
     [4X[25Xgap>[125X [27XIsWellDefined( comult1 );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xq2 := FinQuiver( "q(o)[x:o->o,y:o->o,z:o->o,t:o->o]" );[127X[104X
-    [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" )[128X[104X
+    [4X[28XFinQuiver( "q(o)[x:o→o,y:o→o,z:o→o,t:o→o]" )[128X[104X
     [4X[25Xgap>[125X [27XP2 := PathCategory( q2 );[127X[104X
-    [4X[28XPathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(o)[x:o→o,y:o→o,z:o→o,t:o→o]" ) )[128X[104X
     [4X[25Xgap>[125X [27XL2 := F[P2];[127X[104X
     [4X[28XGF(2)-LinearClosure( PathCategory( \[128X[104X
-    [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) ) )[128X[104X
+    [4X[28XFinQuiver( "q(o)[x:o→o,y:o→o,z:o→o,t:o→o]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XQ2 := L2 / [ L2.x+L2.y+L2.t+L2.tt-L2.id_o, L2.xx-L2.x, L2.yy-L2.y, L2.xy, L2.yx,[127X[104X
     [4X[25X>[125X [27X             L2.zz-L2.t-L2.tt, L2.zz-L2.ttt, L2.zt-L2.ttz, L2.zt+L2.ztt-L2.z,[127X[104X
     [4X[25X>[125X [27X             L2.xt+L2.yt, L2.tx+L2.ty ];[127X[104X
     [4X[28XGF(2)-LinearClosure( PathCategory( \[128X[104X
-    [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o,z:o-≻o,t:o-≻o]" ) ) ) / \[128X[104X
+    [4X[28XFinQuiver( "q(o)[x:o→o,y:o→o,z:o→o,t:o→o]" ) ) ) / \[128X[104X
     [4X[28X[ 1*t^2 + 1*x + 1*y + 1*t + 1*id(o), 1*x^2 + 1*x, 1*y^2 + 1*y, ... ][128X[104X
     [4X[25Xgap>[125X [27XA2 := Q2 / Alg_F;[127X[104X
     [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X

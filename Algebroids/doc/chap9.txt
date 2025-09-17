@@ -26,16 +26,16 @@
     [4X[25Xgap>[125X [27Xstr :=[127X[104X
     [4X[25X>[125X [27X  "q(0..5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;[127X[104X
     [4X[25Xgap>[125X [27Xq := FinQuiver( str );[127X[104X
-    [4X[28XFinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,[128X[104X
-    [4X[28Xt:4-≻5,y:5-≻5]" )[128X[104X
+    [4X[28XFinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,[128X[104X
+    [4X[28Xt:4→5,y:5→5]" )[128X[104X
     [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals( );[127X[104X
     [4X[28XQ[128X[104X
     [4X[25Xgap>[125X [27XC := PathCategory( q : admissible_order := "Dp" );[127X[104X
-    [4X[28XPathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,[128X[104X
-    [4X[28Xb:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,[128X[104X
+    [4X[28Xb:2→4,d:3→4,t:4→5,y:5→5]" ) )[128X[104X
     [4X[25Xgap>[125X [27XkC := LinearClosure( k, C ); # or k[C];[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,[128X[104X
-    [4X[28Xc:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) )[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,[128X[104X
+    [4X[28Xc:1→3,e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XAssignSetOfObjects( kC, "v_" );[127X[104X
     [4X[28X#I  MakeReadWriteGlobal: v_0 already read-write[128X[104X
     [4X[28X#I  MakeReadWriteGlobal: v_1 already read-write[128X[104X
@@ -54,41 +54,41 @@
     [4X[28X#I  MakeReadWriteGlobal: m_t already read-write[128X[104X
     [4X[28X#I  MakeReadWriteGlobal: m_y already read-write[128X[104X
     [4X[25Xgap>[125X [27Xrels := [ kC.x^10 - kC.x^5, kC.abt - kC.et, kC.y^10 - kC.y^5, kC.x^5, kC.y^5 ];[127X[104X
-    [4X[28X[ 1*x^10 - 1*x^5:(0) -≻ (0), 1*a⋅b⋅t - 1*e⋅t:(1) -≻ (5),[128X[104X
-    [4X[28X  1*y^10 - 1*y^5:(5) -≻ (5), 1*x^5:(0) -≻ (0), 1*y^5:(5) -≻ (5) ][128X[104X
+    [4X[28X[ 1*x^10 - 1*x^5:(0) → (0), 1*a⋅b⋅t - 1*e⋅t:(1) → (5),[128X[104X
+    [4X[28X  1*y^10 - 1*y^5:(5) → (5), 1*x^5:(0) → (0), 1*y^5:(5) → (5) ][128X[104X
     [4X[25Xgap>[125X [27Xquo_kC := QuotientCategory( kC, rels ); # or kC / rels;[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,[128X[104X
-    [4X[28Xc:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) ) / [ 1*x^10 - 1*x^5,[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,[128X[104X
+    [4X[28Xc:1→3,e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) ) / [ 1*x^10 - 1*x^5,[128X[104X
     [4X[28X1*a⋅b⋅t - 1*e⋅t, 1*y^10 - 1*y^5, ... ][128X[104X
     [4X[25Xgap>[125X [27XHomStructure( quo_kC.0, quo_kC.5 );[127X[104X
     [4X[28X<A row module over Q of rank 50>[128X[104X
     [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( quo_kC );[127X[104X
-    [4X[28XQ-algebroid( {0,1,2,3,4,5}[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,[128X[104X
-    [4X[28Xt:4-≻5,y:5-≻5] ) defined by 6 objects and 9 generating morphisms[128X[104X
+    [4X[28XQ-algebroid( {0,1,2,3,4,5}[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,[128X[104X
+    [4X[28Xt:4→5,y:5→5] ) defined by 6 objects and 9 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( A.0, A.5 );[127X[104X
     [4X[28X<A row module over Q of rank 50>[128X[104X
     [4X[25Xgap>[125X [27Xquo_C := C / [ [ C.x^10, C.x^5 ], [ C.abt, C.et ], [ C.y^10, C.y^5 ] ];[127X[104X
-    [4X[28XPathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,[128X[104X
-    [4X[28Xb:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^10 = x^5, a⋅b⋅t = e⋅t, y^10 = y^5 ][128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,[128X[104X
+    [4X[28Xb:2→4,d:3→4,t:4→5,y:5→5]" ) ) / [ x^10 = x^5, a⋅b⋅t = e⋅t, y^10 = y^5 ][128X[104X
     [4X[25Xgap>[125X [27Xk_quo_C := k[quo_C];[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,[128X[104X
-    [4X[28Xc:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^10 = x^5, a⋅b⋅t = e⋅t,[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,[128X[104X
+    [4X[28Xc:1→3,e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) / [ x^10 = x^5, a⋅b⋅t = e⋅t,[128X[104X
     [4X[28Xy^10 = y^5 ] )[128X[104X
     [4X[25Xgap>[125X [27Xquo_k_quo_C := k_quo_C / [ k_quo_C.x^5, k_quo_C.y^5 ];[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,[128X[104X
-    [4X[28Xc:1-≻3, e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) / [ x^10 = x^5, a⋅b⋅t = e⋅t,[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,[128X[104X
+    [4X[28Xc:1→3, e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) / [ x^10 = x^5, a⋅b⋅t = e⋅t,[128X[104X
     [4X[28Xy^10 = y^5 ] ) / [ 1*[x^5], 1*[y^5] ][128X[104X
     [4X[25Xgap>[125X [27XHomStructure( quo_k_quo_C.0, quo_k_quo_C.5 );[127X[104X
     [4X[28X<A row module over Q of rank 50>[128X[104X
     [4X[25Xgap>[125X [27XDimension( quo_k_quo_C );[127X[104X
     [4X[28X126[128X[104X
     [4X[25Xgap>[125X [27XModelingCategory( quo_k_quo_C );[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0-≻0,s:0-≻1,a:1-≻2,[128X[104X
-    [4X[28Xc:1-≻3, e:1-≻4,b:2-≻4,d:3-≻4,t:4-≻5,y:5-≻5]" ) ) ) / [ 1*x^10 - 1*x^5,[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,[128X[104X
+    [4X[28Xc:1→3, e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) ) / [ 1*x^10 - 1*x^5,[128X[104X
     [4X[28X1*a⋅b⋅t - 1*e⋅t, 1*y^10 - 1*y^5, ... ][128X[104X
     [4X[25Xgap>[125X [27XB := AlgebroidFromDataTables( quo_k_quo_C );[127X[104X
-    [4X[28XQ-algebroid( {0,1,2,3,4,5}[x:0-≻0,s:0-≻1,a:1-≻2,c:1-≻3,e:1-≻4,b:2-≻4,d:3-≻4,[128X[104X
-    [4X[28Xt:4-≻5,y:5-≻5] ) defined by 6 objects and 9 generating morphisms[128X[104X
+    [4X[28XQ-algebroid( {0,1,2,3,4,5}[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,[128X[104X
+    [4X[28Xt:4→5,y:5→5] ) defined by 6 objects and 9 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( B.0, B.5 );[127X[104X
     [4X[28X<A row module over Q of rank 50>[128X[104X
   [4X[32X[104X
@@ -99,27 +99,27 @@
     [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals( );[127X[104X
     [4X[28XQ[128X[104X
     [4X[25Xgap>[125X [27Xq := FinQuiver( "q(o)[x:o->o,y:o->o]" );[127X[104X
-    [4X[28XFinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )[128X[104X
+    [4X[28XFinQuiver( "q(o)[x:o→o,y:o→o]" )[128X[104X
     [4X[25Xgap>[125X [27XC := PathCategory( q );[127X[104X
-    [4X[28XPathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) )[128X[104X
     [4X[25Xgap>[125X [27XkC := k[C];[127X[104X
-    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27Xrels := [ kC.xy - kC.yx, ( kC.x^2 + kC.y^2 ) * ( kC.x + kC.xy ),[127X[104X
     [4X[25X>[125X [27X                ( kC.x^2+kC.y^2 ) * ( kC.yy+kC.x^3 ) ];[127X[104X
-    [4X[28X[ -1*y⋅x + 1*x⋅y:(o) -≻ (o), 1*x^3⋅y + 1*y^2⋅x⋅y + 1*x^3 + 1*y^2⋅x:(o) -≻ (o),[128X[104X
-    [4X[28X  1*x^5 + 1*y^2⋅x^3 + 1*x^2⋅y^2 + 1*y^4:(o) -≻ (o) ][128X[104X
+    [4X[28X[ -1*y⋅x + 1*x⋅y:(o) → (o), 1*x^3⋅y + 1*y^2⋅x⋅y + 1*x^3 + 1*y^2⋅x:(o) → (o),[128X[104X
+    [4X[28X  1*x^5 + 1*y^2⋅x^3 + 1*x^2⋅y^2 + 1*y^4:(o) → (o) ][128X[104X
     [4X[25Xgap>[125X [27Xgb := ReducedGroebnerBasis( kC, rels );[127X[104X
-    [4X[28X[ -1*y⋅x + 1*x⋅y:(o) -≻ (o),[128X[104X
-    [4X[28X  1*x^3⋅y + 1*x⋅y^3 + 1*x^3 + 1*x⋅y^2:(o) -≻ (o),[128X[104X
-    [4X[28X  1*x^5 - 1*x⋅y^4 + 1*x^2⋅y^2 + 1*y^4 + 1*x^3 + 1*x⋅y^2:(o) -≻ (o),[128X[104X
-    [4X[28X  1*x^2⋅y^3 + 1*y^5 + 1*x^2⋅y^2 + 1*y^4:(o) -≻ (o) ][128X[104X
+    [4X[28X[ -1*y⋅x + 1*x⋅y:(o) → (o),[128X[104X
+    [4X[28X  1*x^3⋅y + 1*x⋅y^3 + 1*x^3 + 1*x⋅y^2:(o) → (o),[128X[104X
+    [4X[28X  1*x^5 - 1*x⋅y^4 + 1*x^2⋅y^2 + 1*y^4 + 1*x^3 + 1*x⋅y^2:(o) → (o),[128X[104X
+    [4X[28X  1*x^2⋅y^3 + 1*y^5 + 1*x^2⋅y^2 + 1*y^4:(o) → (o) ][128X[104X
     [4X[25Xgap>[125X [27Xf := Sum( gb );[127X[104X
     [4X[28X1*x^5 + 1*x^2⋅y^3 - 1*x⋅y^4 + 1*y^5 + 1*x^3⋅y + 2*x^2⋅y^2 + 1*x⋅y^3 +[128X[104X
-    [4X[28X2*y^4 + 2*x^3 + 2*x⋅y^2 - 1*y⋅x + 1*x⋅y:(o) -≻ (o)[128X[104X
+    [4X[28X2*y^4 + 2*x^3 + 2*x⋅y^2 - 1*y⋅x + 1*x⋅y:(o) → (o)[128X[104X
     [4X[25Xgap>[125X [27XReductionOfMorphism( kC, f, rels );[127X[104X
-    [4X[28X1*x^2⋅y^3 + 1*y^5 + 1*x^2⋅y^2 + 1*y^4:(o) -≻ (o)[128X[104X
+    [4X[28X1*x^2⋅y^3 + 1*y^5 + 1*x^2⋅y^2 + 1*y^4:(o) → (o)[128X[104X
     [4X[25Xgap>[125X [27XReductionOfMorphism( kC, f, gb );[127X[104X
-    [4X[28X0:(o) -≻ (o)[128X[104X
+    [4X[28X0:(o) → (o)[128X[104X
   [4X[32X[104X
   
   
