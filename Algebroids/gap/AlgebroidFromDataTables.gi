@@ -185,20 +185,20 @@ BindGlobal( "CREATE_NAME_FOR_ALGEBROID_FROM_DATA_TABLES",
         
         gm_string := JoinStringsWithSeparator(
                           ListN( LabelsOfMorphisms( q ), IndicesOfSources( q ), IndicesOfTargets( q ),
-                              { l, i, j } -> Concatenation( l, ":", LabelsOfObjects( q )[i], "-≻", LabelsOfObjects( q )[j] ) ), "," );
+                              { l, i, j } -> Concatenation( l, ":", LabelsOfObjects( q )[i], "→", LabelsOfObjects( q )[j] ) ), "," );
         
     else
         
         gm_string := Concatenation(
                               JoinStringsWithSeparator(
                                   ListN( LabelsOfMorphisms( q ){[1..3]}, IndicesOfSources( q ){[1..3]}, IndicesOfTargets( q ){[1..3]},
-                                    { l, i, j } -> Concatenation( l, ":", LabelsOfObjects( q )[i], "-≻", LabelsOfObjects( q )[j] ) ), "," ),
+                                    { l, i, j } -> Concatenation( l, ":", LabelsOfObjects( q )[i], "→", LabelsOfObjects( q )[j] ) ), "," ),
                               ",..,",
                               JoinStringsWithSeparator(
                                   ListN( LabelsOfMorphisms( q ){[NumberOfMorphisms( q ) - 2 .. NumberOfMorphisms( q )]},
                                          IndicesOfSources( q ){[NumberOfMorphisms( q ) - 2 .. NumberOfMorphisms( q )]},
                                          IndicesOfTargets( q ){[NumberOfMorphisms( q ) - 2 .. NumberOfMorphisms( q )]},
-                                            { l, i, j } -> Concatenation( l, ":", LabelsOfObjects( q )[i], "-≻", LabelsOfObjects( q )[j] ) ), "," ) );
+                                            { l, i, j } -> Concatenation( l, ":", LabelsOfObjects( q )[i], "→", LabelsOfObjects( q )[j] ) ), "," ) );
         
     fi;
     
@@ -1628,7 +1628,7 @@ InstallMethod( ViewString,
           colors.reset,
           ") ",
           colors.other,
-          "-≻",
+          "→",
           colors.reset,
           " (",
           colors.obj,

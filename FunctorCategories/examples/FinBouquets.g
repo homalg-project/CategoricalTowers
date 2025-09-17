@@ -8,7 +8,7 @@ LoadPackage( "FunctorCategories" );
 FinBouquets;
 #! FinBouquets
 C := UnderlyingCategory( FinBouquets );
-#! PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) )
+#! PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) )
 P := FinBouquets.P;
 #! <A projective object in FinBouquets>
 Display( P );

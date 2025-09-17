@@ -34,17 +34,17 @@ CategoryOfFpAlgebras( GF(2) )
 gap> Mat_F2 := UnderlyingCategoryOfMatrices( MatAlg_F2 );
 Rows( GF(2) )
 gap> q := FinQuiver( "q(o)[x:o->o,y:o->o]" );
-FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" )
+FinQuiver( "q(o)[x:o→o,y:o→o]" )
 gap> P := PathCategory( q );
-PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) )
+PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) )
 gap> L := F2[P];
 GF(2)-LinearClosure( PathCategory( \
-FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
+FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )
 gap> relations := [ L.x^2 - L.x,  L.y^3 - L.y,  L.xy - L.y * (L.x+L.id_o) ];
-[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o),\
-  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
+[ 1*x^2 + 1*x:(o) → (o), 1*y^3 + 1*y:(o) → (o),\
+  1*y⋅x + 1*x⋅y + 1*y:(o) → (o) ]
 gap> Q := L / relations;
-GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) / \
+GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) ) / \
 [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 gap> Dimension( Q );
 6
@@ -70,28 +70,28 @@ true
 gap> M = Pair( ( L / Alg_F2 ) / relations, matrix_generators ) / MatAlg_F2;
 true
 gap> M.x;
-1*x:(o) -≻ (o)
+1*x:(o) → (o)
 gap> M.y;
-1*y:(o) -≻ (o)
+1*y:(o) → (o)
 gap> Dimension( M );
 6
 gap> NrGenerators( M );
 2
 gap> Generators( M );
-[ 1*x:(o) -≻ (o), 1*y:(o) -≻ (o) ]
+[ 1*x:(o) → (o), 1*y:(o) → (o) ]
 gap> MatrixGenerators( M ) = [ mx, my ];
 true
 gap> AssociatedLinearClosureOfPathCategory( M );
-GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) )
+GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )
 gap> DefiningRelations( M );
-[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \
-  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
+[ 1*x^2 + 1*x:(o) → (o), 1*y^3 + 1*y:(o) → (o), \
+  1*y⋅x + 1*x⋅y + 1*y:(o) → (o) ]
 gap> AssociatedQuotientCategoryOfLinearClosureOfPathCategory( M );
-GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o-≻o,y:o-≻o]" ) ) ) \
+GF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) ) \
 / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
 gap> GroebnerBasisOfDefiningRelations( M );
-[ 1*x^2 + 1*x:(o) -≻ (o), 1*y^3 + 1*y:(o) -≻ (o), \
-  1*y⋅x + 1*x⋅y + 1*y:(o) -≻ (o) ]
+[ 1*x^2 + 1*x:(o) → (o), 1*y^3 + 1*y:(o) → (o), \
+  1*y⋅x + 1*x⋅y + 1*y:(o) → (o) ]
 gap> TestMonoidalUnitorsForInvertibility( MatAlg_F2, M );
 true
 gap> TestMonoidalTriangleIdentity( MatAlg_F2, M, M );

@@ -997,7 +997,7 @@ InstallMethod( ViewString,
     
     return Concatenation(
                    "(", labels[1][1 + s], ")",
-                   "-[(", pos, ")]-≻",
+                   "-[(", pos, ")]→",
                    "(", labels[1][1 + t], ")" );
     
 end );

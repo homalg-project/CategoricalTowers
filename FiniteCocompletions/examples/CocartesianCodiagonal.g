@@ -60,13 +60,13 @@ IsWellDefined( delta );
 Display( delta );
 #! { 0, 1 } ⱶ[ 0, 0 ]→ { 0 }
 #! 
-#! [ id(a):C.a -≻ C.a, id(a):C.a -≻ C.a ]
+#! [ id(a):C.a → C.a, id(a):C.a → C.a ]
 #! 
 #! A morphism in
 #! FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )
 #! given by the above data
 id_a := IdentityMorphism( C.a );
-#! id(a):C.a -≻ C.a
+#! id(a):C.a → C.a
 delta = CocartesianCodiagonal( a, 2 );
 #! true
 CellAsEvaluatableString( delta, [ "C", "UC" ] );

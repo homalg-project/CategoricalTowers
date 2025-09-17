@@ -387,7 +387,7 @@ InstallGlobalFunction( "INSTALL_VIEW_AND_DISPLAY_METHODS_IN_LINEAR_CLOSURES_OF_P
               ":",
               ViewString( UnderlyingOriginalObject( Source( alpha ) ) ),
               Q!.colors.other,
-              " -≻ ",
+              " → ",
               ViewString( UnderlyingOriginalObject( Target( alpha ) ) ) );
           
     end );

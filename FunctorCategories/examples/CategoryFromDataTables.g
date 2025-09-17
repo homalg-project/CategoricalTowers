@@ -6,13 +6,13 @@
 LoadPackage( "FunctorCategories", false );
 #! true
 Delta1 := UnderlyingCategory( FinReflexiveQuivers );
-#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1]" ) )
+#! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ]
 N := NerveTruncatedInDegree2( Delta1 );
 #! <An object in PreSheaves( PathCategory( FinQuiver(
-#!   "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-#!                    is:C2-≻C1,it:C2-≻C1,
-#!                    ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+#!   "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+#!                    is:C2→C1,it:C2→C1,
+#!                    ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],
 #!  SkeletalFinSets )>
 IsWellDefined( N );
@@ -39,9 +39,9 @@ Display( N.it );
 #! { 0,..., 6 } ⱶ[ 0, 4, 7, 8, 17, 20, 23 ]→ { 0,..., 25 }
 Delta2 := Source( N );
 #! PathCategory( FinQuiver(
-#!   "Delta(C0,C1,C2)[id:C1-≻C0,s:C0-≻C1,t:C0-≻C1,
-#!                    is:C2-≻C1,it:C2-≻C1,
-#!                    ps:C1-≻C2,pt:C1-≻C2,mu:C1-≻C2]" ) )
+#!   "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+#!                    is:C2→C1,it:C2→C1,
+#!                    ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
 N( Delta2.it ) = N.it;
 #! true
