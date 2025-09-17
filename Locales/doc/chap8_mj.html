@@ -104,18 +104,18 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "q(a,b)[f:a-&gt;b,g:b-&gt;a]" );</span>
-FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" )
+FinQuiver( "q(a,b)[f:a→b,g:b→a]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PathCategory( q );</span>
-PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
+PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := F / [ [ F.fg, F.id_a ], [ F.gf, F.id_b ] ];</span>
-PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
+PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )
 / [ f⋅g = id(a), g⋅f = id(b) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := ProsetOfCategory( C );</span>
-ProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
+ProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )
 / [ f⋅g = id(a), g⋅f = id(b) ] )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
 A CAP category with name
-ProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
+ProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )
 / [ f⋅g = id(a), g⋅f = id(b) ] ):
 
 11 primitive operations were used to derive 76 operations for this category
@@ -134,8 +134,8 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( P );</span>
 4
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( P );</span>
-[ A morphism in the proset given by: [f]:(a) -≻ (b),
-  A morphism in the proset given by: [g]:(b) -≻ (a) ]
+[ A morphism in the proset given by: [f]:(a) → (b),
+  A morphism in the proset given by: [g]:(b) → (a) ]
 </pre></div>
 
 <p><a id="X8752F6307A2CC7FF" name="X8752F6307A2CC7FF"></a></p>
@@ -153,18 +153,18 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "q(a,b)[f:a-&gt;b,g:b-&gt;a]" );</span>
-FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" )
+FinQuiver( "q(a,b)[f:a→b,g:b→a]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PathCategory( q );</span>
-PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
+PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := F / [ [ F.fg, F.id_a ], [ F.gf, F.id_b ] ];</span>
-PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
+PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )
 / [ f⋅g = id(a), g⋅f = id(b) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PosetOfCategory( C );</span>
-PosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
+PosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )
 / [ f⋅g = id(a), g⋅f = id(b) ] )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
 A CAP category with name
-PosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )
+PosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )
 / [ f⋅g = id(a), g⋅f = id(b) ] ):
 
 9 primitive operations were used to derive 78 operations for this category

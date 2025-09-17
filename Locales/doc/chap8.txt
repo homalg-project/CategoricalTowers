@@ -23,18 +23,18 @@
     [4X[25Xgap>[125X [27XLoadPackage( "Locales", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xq := FinQuiver( "q(a,b)[f:a->b,g:b->a]" );[127X[104X
-    [4X[28XFinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" )[128X[104X
+    [4X[28XFinQuiver( "q(a,b)[f:a→b,g:b→a]" )[128X[104X
     [4X[25Xgap>[125X [27XF := PathCategory( q );[127X[104X
-    [4X[28XPathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )[128X[104X
     [4X[25Xgap>[125X [27XC := F / [ [ F.fg, F.id_a ], [ F.gf, F.id_b ] ];[127X[104X
-    [4X[28XPathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )[128X[104X
     [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ][128X[104X
     [4X[25Xgap>[125X [27XP := ProsetOfCategory( C );[127X[104X
-    [4X[28XProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[28XProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )[128X[104X
     [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ] )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
     [4X[28XA CAP category with name[128X[104X
-    [4X[28XProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[28XProsetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )[128X[104X
     [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ] ):[128X[104X
     [4X[28X[128X[104X
     [4X[28X11 primitive operations were used to derive 76 operations for this category[128X[104X
@@ -53,8 +53,8 @@
     [4X[25Xgap>[125X [27XSize( P );[127X[104X
     [4X[28X4[128X[104X
     [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( P );[127X[104X
-    [4X[28X[ A morphism in the proset given by: [f]:(a) -≻ (b),[128X[104X
-    [4X[28X  A morphism in the proset given by: [g]:(b) -≻ (a) ][128X[104X
+    [4X[28X[ A morphism in the proset given by: [f]:(a) → (b),[128X[104X
+    [4X[28X  A morphism in the proset given by: [g]:(b) → (a) ][128X[104X
   [4X[32X[104X
   
   [1X8.2-3 StableProsetOfCategory[101X
@@ -69,18 +69,18 @@
     [4X[25Xgap>[125X [27XLoadPackage( "Locales", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xq := FinQuiver( "q(a,b)[f:a->b,g:b->a]" );[127X[104X
-    [4X[28XFinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" )[128X[104X
+    [4X[28XFinQuiver( "q(a,b)[f:a→b,g:b→a]" )[128X[104X
     [4X[25Xgap>[125X [27XF := PathCategory( q );[127X[104X
-    [4X[28XPathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )[128X[104X
     [4X[25Xgap>[125X [27XC := F / [ [ F.fg, F.id_a ], [ F.gf, F.id_b ] ];[127X[104X
-    [4X[28XPathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )[128X[104X
     [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ][128X[104X
     [4X[25Xgap>[125X [27XP := PosetOfCategory( C );[127X[104X
-    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )[128X[104X
     [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ] )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
     [4X[28XA CAP category with name[128X[104X
-    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a-≻b,g:b-≻a]" ) )[128X[104X
+    [4X[28XPosetOfCategory( PathCategory( FinQuiver( "q(a,b)[f:a→b,g:b→a]" ) )[128X[104X
     [4X[28X/ [ f⋅g = id(a), g⋅f = id(b) ] ):[128X[104X
     [4X[28X[128X[104X
     [4X[28X9 primitive operations were used to derive 78 operations for this category[128X[104X
