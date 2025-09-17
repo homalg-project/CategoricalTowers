@@ -393,6 +393,7 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
     return Y;
     
 end );
+
 ##
 InstallMethod( \.,
         "for a coequalizer completion category and a positive integer",
