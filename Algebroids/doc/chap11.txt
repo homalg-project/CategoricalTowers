@@ -208,7 +208,10 @@
     [4X[25Xgap>[125X [27XL := F[P];[127X[104X
     [4X[28XGF(2)-LinearClosure( PathCategory( \[128X[104X
     [4X[28XFinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27Xrelations := [ L.x^2 - L.x,  L.y^3 - L.y,  L.xy - L.y * (L.x+L.id_o) ];[127X[104X
+    [4X[25Xgap>[125X [27Xone := L.id_o;;[127X[104X
+    [4X[25Xgap>[125X [27Xx := L.x;;[127X[104X
+    [4X[25Xgap>[125X [27Xy := L.y;;[127X[104X
+    [4X[25Xgap>[125X [27Xrelations := [ x^2-x,  y^3-y,  x*y-y*(x+one) ];[127X[104X
     [4X[28X[ 1*x^2 + 1*x:(o) → (o), 1*y^3 + 1*y:(o) → (o),\[128X[104X
     [4X[28X  1*y⋅x + 1*x⋅y + 1*y:(o) → (o) ][128X[104X
     [4X[25Xgap>[125X [27XQ := L / relations;[127X[104X

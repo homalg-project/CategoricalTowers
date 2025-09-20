@@ -220,7 +220,10 @@ PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L1 := F[P1];</span>
 GF(2)-LinearClosure( PathCategory( \
 FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">relations1 := [ L1.x^2 - L1.x,  L1.y^3 - L1.y,  L1.xy - L1.y * (L1.x+L1.id_o) ];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">one := L1.id_o;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := L1.x;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">y := L1.y;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">relations1 := [ x^2-x,  y^3-y,  x*y-y*(x+one) ];</span>
 [ 1*x^2 + 1*x:(o) → (o), 1*y^3 + 1*y:(o) → (o),\
   1*y⋅x + 1*x⋅y + 1*y:(o) → (o) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q1 := L1 / relations1;</span>
