@@ -63,7 +63,10 @@ P := PathCategory( q );
 L := F[P];
 #! GF(2)-LinearClosure( PathCategory( \
 #! FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )
-relations := [ L.x^2 - L.x,  L.y^3 - L.y,  L.xy - L.y * (L.x+L.id_o) ];
+one := L.id_o;;
+x := L.x;;
+y := L.y;;
+relations := [ x^2-x,  y^3-y,  x*y-y*(x+one) ];
 #! [ 1*x^2 + 1*x:(o) → (o), 1*y^3 + 1*y:(o) → (o),\
 #!   1*y⋅x + 1*x⋅y + 1*y:(o) → (o) ]
 Q := L / relations;

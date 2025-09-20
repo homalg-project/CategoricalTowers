@@ -40,7 +40,10 @@ PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) )
 gap> L := F2[P];
 GF(2)-LinearClosure( PathCategory( \
 FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )
-gap> relations := [ L.x^2 - L.x,  L.y^3 - L.y,  L.xy - L.y * (L.x+L.id_o) ];
+gap> one := L.id_o;;
+gap> x := L.x;;
+gap> y := L.y;;
+gap> relations := [ x^2-x,  y^3-y,  x*y-y*(x+one) ];
 [ 1*x^2 + 1*x:(o) → (o), 1*y^3 + 1*y:(o) → (o),\
   1*y⋅x + 1*x⋅y + 1*y:(o) → (o) ]
 gap> Q := L / relations;
