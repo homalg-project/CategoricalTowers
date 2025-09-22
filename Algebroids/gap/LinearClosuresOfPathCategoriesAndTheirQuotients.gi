@@ -480,7 +480,7 @@ InstallMethod( DataTablesOfCategory,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( EvaluateLinearClosureMorphism,
+InstallOtherMethodForCompilerForCAP( EvaluateLinearClosureEndomorphism,
         "for a linear closure category, a morphism therein, a linear category, an object therein, and a list of endomorphisms thereof",
         [ IsLinearClosure, IsLinearClosureMorphism, IsCapCategory, IsCapCategoryObject, IsList ],
         

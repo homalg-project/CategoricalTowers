@@ -295,13 +295,13 @@ InstallMethod( CategoryOfFpAlgebras,
     ##
     AddPreCompose( FpAlg_k,
       function( FpAlg_k, pre_morphism, post_morphism )
-        local o, post_functor_on_mors, target, L, GB, images;
-        
-        o := DefiningSeptupleOfFinitelyPresentedAlgebra( Target( post_morphism ) )[2];
-        
-        post_functor_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, post_morphism )[2][2];
+        local target, o, post_functor_on_mors, L, GB, images;
         
         target := Target( post_morphism );
+        
+        o := DefiningSeptupleOfFinitelyPresentedAlgebra( target )[2];
+        
+        post_functor_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, post_morphism )[2][2];
         
         L := AssociatedLinearClosureOfPathCategory( target );
         
@@ -767,8 +767,8 @@ InstallMethod( CategoryOfFpAlgebras,
                         gens2,
                         ambient_target );
         
-        functor1_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( mor1 )[2][2];
-        functor2_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( mor2 )[2][2];
+        functor1_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mor1 )[2][2];
+        functor2_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mor2 )[2][2];
         
         o := datum[2];
         
@@ -1243,7 +1243,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( AssociatedFunctorOfLinearClosuresOfPathCategoriesData,
+InstallMethodForCompilerForCAP( AssociatedFunctorOfLinearClosuresOfPathCategoriesData,
         "for a category of finitely presented algebras and a finitely presented algebra morphism therein",
         [ IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras ],
         
@@ -1271,17 +1271,6 @@ InstallOtherMethodForCompilerForCAP( AssociatedFunctorOfLinearClosuresOfPathCate
 end );
 
 ##
-InstallMethod( AssociatedFunctorOfLinearClosuresOfPathCategoriesData,
-        "for a finitely presented algebra morphism",
-        [ IsMorphismInCategoryOfFpAlgebras ],
-        
-  function( fp_algebra_morphism )
-    
-    return AssociatedFunctorOfLinearClosuresOfPathCategoriesData( CapCategory( fp_algebra_morphism ), fp_algebra_morphism );
-    
-end );
-
-##
 InstallMethodForCompilerForCAP( EvaluateFpAlgebraMorphism,
         "for a category of finitely presented algebras, a morphism therein, a linear category, an object therein, and a list of endomorphisms thereof",
         [ IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsCapCategory, IsCapCategoryObject, IsList ],
@@ -1295,7 +1284,7 @@ InstallMethodForCompilerForCAP( EvaluateFpAlgebraMorphism,
     
     images := ListOfImages( fp_algebra_morphism );
     
-    return List( [ 1 .. nr_gens_source ], i -> EvaluateLinearClosureMorphism( L, images[i], V, rep_obj, rep_mors ) );
+    return List( [ 1 .. nr_gens_source ], i -> EvaluateLinearClosureEndomorphism( L, images[i], V, rep_obj, rep_mors ) );
     
 end );
 
