@@ -138,11 +138,69 @@ DeclareAttribute( "Dimension",
 DeclareAttribute( "AmbientAlgebra",
         IsObjectInCategoryOfFpAlgebras );
 
+#! @Arguments fp_algebra
+DeclareAttribute( "Unit",
+        IsObjectInCategoryOfFpAlgebras );
+
+#! @Arguments fp_algebra
+DeclareAttribute( "Multiplication",
+        IsObjectInCategoryOfFpAlgebras );
+
+#! @Arguments fp_algebra
+DeclareAttribute( "OppositeAlgebra",
+        IsObjectInCategoryOfFpAlgebras );
+
+#! @Arguments monoid
+DeclareAttribute( "UnderlyingFpAlgebra",
+        IsObjectInCategoryOfInternalMonoids );
+
+#! @Arguments fp_algebra
+DeclareAttribute( "FpAlgebraAsInternalMonoid",
+        IsObjectInCategoryOfFpAlgebras );
+
+#! @Arguments fp_algebra_morphism
+DeclareAttribute( "MorphismOfFpAlgebrasAsLinearMap",
+        IsMorphismInCategoryOfFpAlgebras );
+
+#! @Arguments fp_algebra_morphism
+DeclareAttribute( "AntiMorphismOfFpAlgebrasAsLinearMap",
+        IsMorphismInCategoryOfFpAlgebras );
+
+#! @Arguments fp_algebra
+DeclareAttribute( "TransformationExpressingSquareOfMacaulayBasisInMacaulayBasisOfSquare",
+        IsObjectInCategoryOfFpAlgebras );
+
+#! @Arguments fp_algebra
+DeclareAttribute( "AssociatedFunctorCategory",
+        IsObjectInCategoryOfFpAlgebras );
+
 ####################################
 ##
 #! @Section Operations
 ##
 ####################################
+
+if false then
+#! @Arguments fp_algebra, MonB
+DeclareOperation( "/",
+        [ IsObjectInCategoryOfFpAlgebras, IsCategoryOfInternalMonoids ] );
+fi;
+
+#! @Arguments L, ring_map, mor
+DeclareOperation( "BaseChangeToDifferentLinearClosure",
+        [ IsLinearClosure, IsHomalgRingMap, IsLinearClosureMorphism ] );
+
+#! @Arguments fp_algebra, ring_map, mor
+DeclareOperation( "BaseChangeToDifferentLinearClosure",
+        [ IsObjectInCategoryOfFpAlgebras, IsHomalgRingMap, IsLinearClosureMorphism ] );
+
+#! @Arguments L, mor
+DeclareOperation( "BaseChangeToDifferentLinearClosure",
+        [ IsLinearClosure, IsLinearClosureMorphism ] );
+
+#! @Arguments mor, fp_algebra
+DeclareOperation( "/",
+        [ IsLinearClosureMorphism, IsObjectInCategoryOfFpAlgebras ] );
 
 #! @Arguments FpAlg_k, fp_algebra_morphism, V, obj, list_of_morphisms
 DeclareOperation( "EvaluateFpAlgebraMorphism",
@@ -156,9 +214,21 @@ DeclareOperation( "Counit",
 DeclareOperation( "Comultiplication",
         [ IsObjectInCategoryOfFpAlgebras, IsList ] );
 
+#! @Arguments fp_algebra, list
+DeclareOperation( "Antipode",
+        [ IsObjectInCategoryOfFpAlgebras, IsList ] );
+
 #! @Arguments FpAlg_k, fp_algebra_morphism
 DeclareOperation( "AssociatedFunctorOfLinearClosuresOfPathCategoriesData",
         [ IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras ] );
+
+#! @Arguments FpAlg_k, fp_algebra_morphism, contravariant_indices
+DeclareOperation( "AssociatedContravariantFunctorOfLinearClosuresOfPathCategoriesData",
+        [ IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsList ] );
+
+#! @Arguments FpAlg_k, pre_morphism, post_morphism, contravariant_indices
+DeclareOperation( "PreComposeWithPartiallyContravariantFpAlgebraMorphism",
+        [ IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsList ] );
 
 ####################################
 ##
@@ -184,6 +254,32 @@ end );
 #! @Arguments k
 DeclareAttribute( "CategoryOfFpAlgebras", IsHomalgRing and IsCommutative );
 #! @InsertChunk NonCodistributivityOfCategoryOfFpAlgebras
+
+#! @Arguments FpAlg_R, ring_map, fp_algebra
+DeclareOperation( "Pullback",
+        [ IsCategoryOfFpAlgebras, IsHomalgRingMap, IsObjectInCategoryOfFpAlgebras ] );
+
+#! @Arguments ring_map, fp_algebra
+DeclareOperation( "Pullback",
+        [ IsHomalgRingMap, IsObjectInCategoryOfFpAlgebras ] );
+
+if false then
+#! @Arguments fp_algebra, FpAlg_R
+DeclareOperation( "/",
+        [ IsObjectInCategoryOfFpAlgebras, IsCategoryOfFpAlgebras ] );
+fi;
+
+#! @Arguments R, fp_algebra
+DeclareOperation( "*",
+        [ IsHomalgRing, IsObjectInCategoryOfFpAlgebras ] );
+
+#! @Arguments FpAlg_R, ring_map, source_R, fp_algebra_morphism, target_R
+DeclareOperation( "BaseChangeToDifferentCategoryOfFpAlgebras",
+        [ IsCategoryOfFpAlgebras, IsHomalgRingMap, IsObjectInCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsObjectInCategoryOfFpAlgebras ] );
+
+#! @Arguments FpAlg_R, source_R, fp_algebra_morphism, target_R
+DeclareOperation( "BaseChangeToDifferentCategoryOfFpAlgebras",
+        [ IsCategoryOfFpAlgebras, IsObjectInCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsObjectInCategoryOfFpAlgebras ] );
 
 ####################################
 ##

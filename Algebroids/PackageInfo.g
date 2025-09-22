@@ -132,7 +132,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "ToolsForHomalg", ">= 2022.12-01" ],
-                   [ "MatricesForHomalg", ">= 2021.12-01" ],
+                   [ "MatricesForHomalg", ">= 2025.09-01" ],
                    [ "RingsForHomalg", ">= 2018.12.02" ],
                    [ "CAP", ">= 2025.06-08" ],
                    [ "MonoidalCategories", ">= 2025.07-06" ],
@@ -145,6 +145,7 @@ Dependencies := rec(
                    [ "QPA", ">= 2.0" ],
                    [ "LinearClosuresForCAP", ">= 2025.07-03" ],
                    [ "FreydCategoriesForCAP", ">= 2025.06-04" ],
+                   [ "InternalModules", ">= 2025.07-02" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
