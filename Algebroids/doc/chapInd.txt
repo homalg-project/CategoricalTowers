@@ -33,7 +33,7 @@
   [2XAssignSetOfObjects[102X, for IsAlgebroid, IsString 5.2-7 
       for IsAlgebroidFromDataTables, IsString 6.3-1 
       for IsFpCategory, IsString 2.2-7 
-  [2XAssociatedFunctorOfLinearClosuresOfPathCategoriesData[102X, for IsMorphismInCategoryOfFpAlgebras 10.1-14 
+  [2XAssociatedFunctorOfLinearClosuresOfPathCategoriesData[102X, for IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras 10.3-4 
   [2XAssociatedLinearClosureOfPathCategory[102X, for IsObjectInCategoryOfFpAlgebras 10.1-8 
       for IsObjectInCategoryOfFpMatrixAlgebras 11.1-12 
   [2XAssociatedQuotientCategoryOfLinearClosureOfPathCategory[102X, for IsObjectInCategoryOfFpAlgebras 10.1-11 

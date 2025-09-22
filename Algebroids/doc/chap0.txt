@@ -7,10 +7,10 @@
                                     quivers [101X
   
   
-                                   2025.09-06
+                                   2025.09-07
   
   
-                               20 September 2025
+                               22 September 2025
   
   
                                 Mohamed Barakat
@@ -293,7 +293,6 @@
       10.1-11 AssociatedQuotientCategoryOfLinearClosureOfPathCategory
       10.1-12 Dimension
       10.1-13 AmbientAlgebra
-      10.1-14 AssociatedFunctorOfLinearClosuresOfPathCategoriesData
     10.2 [33X[0;0YConstructors[133X
       10.2-1 CategoryOfFpAlgebras
       10.2-2 CategoryOfFpAlgebras
@@ -301,6 +300,7 @@
       10.3-1 EvaluateFpAlgebraMorphism
       10.3-2 Counit
       10.3-3 Comultiplication
+      10.3-4 AssociatedFunctorOfLinearClosuresOfPathCategoriesData
     10.4 [33X[0;0YGAP categories[133X
       10.4-1 IsCategoryOfFpAlgebras
       10.4-2 IsObjectInCategoryOfFpAlgebras
