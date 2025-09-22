@@ -138,10 +138,6 @@ DeclareAttribute( "Dimension",
 DeclareAttribute( "AmbientAlgebra",
         IsObjectInCategoryOfFpAlgebras );
 
-#! @Arguments fp_algebra_morphism
-DeclareAttribute( "AssociatedFunctorOfLinearClosuresOfPathCategoriesData",
-        IsMorphismInCategoryOfFpAlgebras );
-
 ####################################
 ##
 #! @Section Operations
@@ -159,6 +155,10 @@ DeclareOperation( "Counit",
 #! @Arguments fp_algebra, list
 DeclareOperation( "Comultiplication",
         [ IsObjectInCategoryOfFpAlgebras, IsList ] );
+
+#! @Arguments FpAlg_k, fp_algebra_morphism
+DeclareOperation( "AssociatedFunctorOfLinearClosuresOfPathCategoriesData",
+        [ IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras ] );
 
 ####################################
 ##
