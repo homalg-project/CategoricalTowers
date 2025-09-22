@@ -1284,7 +1284,7 @@ InstallMethodForCompilerForCAP( EvaluateFpAlgebraMorphism,
     
     images := ListOfImages( fp_algebra_morphism );
     
-    return List( [ 1 .. nr_gens_source ], i -> EvaluateLinearClosureMorphism( L, images[i], V, rep_obj, rep_mors ) );
+    return List( [ 1 .. nr_gens_source ], i -> EvaluateLinearClosureEndomorphism( L, images[i], V, rep_obj, rep_mors ) );
     
 end );
 
