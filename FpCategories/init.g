@@ -13,6 +13,8 @@ ReadPackage( "FpCategories", "gap/Tools.gd");
 ReadPackage( "FpCategories", "gap/ToolsMethodRecordDeclarations.autogen.gd");
 ReadPackage( "FpCategories", "gap/SimplicialCategory.gd");
 
+#= comment for Julia
 if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
     ReadPackage( "FpCategories", "gap/ToolsUsingDigraphs.gd");
 fi;
+# =#
