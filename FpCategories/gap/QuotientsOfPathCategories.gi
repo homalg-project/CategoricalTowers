@@ -8,8 +8,13 @@
 InstallOtherMethod( QuotientCategory,
         [ IsPathCategory, IsDenseList ],
   
-  function ( C, relations )
-    local reduced_gb, congruence_func, name, quo_C, q, leading_monomials, hom_quo_C, range_of_HomStructure;
+  FunctionWithNamedArguments(
+  [
+    [ "range_of_HomStructure", fail ],
+    [ "FinalizeCategory", true ],
+  ],
+  function ( CAP_NAMED_ARGUMENTS, C, relations )
+    local reduced_gb, congruence_func, name, quo_C, q, leading_monomials, hom_quo_C, range_HomStructure;
     
     reduced_gb := ReducedGroebnerBasis( C, relations );
     
@@ -34,7 +39,7 @@ InstallOtherMethod( QuotientCategory,
                      category_morphism_filter := IsQuotientOfPathCategoryMorphism,
                      nr_arguments_of_congruence_func := 2,
                      congruence_func := congruence_func,
-                     underlying_category := C ) : FinalizeCategory := false, overhead := false );
+                     underlying_category := C ) : FinalizeCategory := false );
     
     SetIsFinitelyPresentedCategory( quo_C, true );
     
@@ -69,26 +74,15 @@ InstallOtherMethod( QuotientCategory,
         
         SetIsFiniteCategory( quo_C, true );
         
-        hom_quo_C := MacaulayMorphisms( C, leading_monomials );
+        range_HomStructure := CAP_NAMED_ARGUMENTS.range_of_HomStructure;
         
-        SetExternalHoms( quo_C,
-              LazyHList( [ 1 .. NumberOfObjects( q ) ],
-                s -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
-                  t -> List( hom_quo_C[s][t],
-                    m -> MorphismConstructor( quo_C,
-                              SetOfObjects( quo_C )[s],
-                              m,
-                              SetOfObjects( quo_C )[t] ) ) ) ) );
-        
-        range_of_HomStructure := ValueOption( "range_of_HomStructure" );
-        
-        if not IsSkeletalCategoryOfFiniteSets( range_of_HomStructure ) then
-            range_of_HomStructure := SkeletalFinSets;
+        if not IsSkeletalCategoryOfFiniteSets( range_HomStructure ) then
+            range_HomStructure := SkeletalFinSets;
         fi;
         
-        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( quo_C, range_of_HomStructure );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( quo_C, range_HomStructure );
         
-        Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( quo_C ), range_of_HomStructure ) );
+        Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( quo_C ), range_HomStructure ) );
         
         ##
         AddMorphismsOfExternalHom( quo_C,
@@ -102,6 +96,10 @@ InstallOtherMethod( QuotientCategory,
             
         end );
         
+    else
+        
+        SetIsFiniteCategory( quo_C, false );
+        
     fi;
     
     quo_C!.compiler_hints.category_attribute_names :=
@@ -109,12 +107,50 @@ InstallOtherMethod( QuotientCategory,
         "DefiningTripleOfUnderlyingQuiver",
         ];
     
-    Finalize( quo_C );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+      
+      Finalize( quo_C );
+
+    fi;
     
     return quo_C;
     
+end ) );
+
+##
+InstallOtherMethod( ExternalHoms,
+          [ IsQuotientOfPathCategory ],
+  
+  function ( quo_C )
+    local C, q, reduced_gb, leading_monomials, hom_quo_C;
+    
+    if not ( HasIsFiniteCategory( quo_C ) and IsFiniteCategory( quo_C ) ) then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    C := UnderlyingCategory( quo_C );
+    
+    q := UnderlyingQuiver( C );
+    
+    reduced_gb := GroebnerBasisOfDefiningRelations( quo_C );
+    
+    leading_monomials := List( reduced_gb, g -> g[1] );
+    
+    hom_quo_C := MacaulayMorphisms( C, leading_monomials );
+    
+    return LazyHList( [ 1 .. NumberOfObjects( q ) ],
+              s -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
+                t -> List( hom_quo_C[s][t],
+                  m -> MorphismConstructor( quo_C,
+                          SetOfObjectsOfCategory( quo_C )[s],
+                          m,
+                          SetOfObjectsOfCategory( quo_C )[t] ) ) ) );
+
 end );
 
+#= comment for Julia
 ##
 InstallMethod( AssignSetOfObjects,
         [ IsQuotientOfPathCategory, IsString ],
@@ -190,6 +226,7 @@ InstallOtherMethod( AssignSetOfGeneratingMorphisms,
     AssignSetOfGeneratingMorphisms( C, "" );
     
 end );
+# =#
 
 ##
 InstallOtherMethod( \/,
@@ -319,18 +356,23 @@ InstallOtherMethod( CapFunctor,
     
     AddObjectFunction( F,
       function ( obj )
+        local label;
         
-        return imgs_of_objs.(ObjectLabel( ObjectDatum( obj ) ));
+        label := ObjectLabel( ObjectDatum( obj ) );
+        
+        return imgs_of_objs.(label);
         
     end );
     
     AddMorphismFunction( F,
       function ( F_s, mor, F_t )
+        local labels;
+        
+        labels := List( MorphismSupport( MorphismDatum( mor ) ), m -> MorphismLabel( m ) );
         
         return PreComposeList( D,
                        F_s,
-                       List( MorphismSupport( MorphismDatum( mor ) ), m ->
-                             imgs_of_gmors.(MorphismLabel( m )) ),
+                       List( labels, label -> imgs_of_gmors.(label) ),
                        F_t );
         
     end );
@@ -373,10 +415,14 @@ end );
 ##
 InstallMethod( DecompositionIndicesOfAllMorphismsFromHomStructure,
         "for a quotient of a path category",
-        [ IsQuotientOfPathCategory and IsFinite ],
+        [ IsQuotientOfPathCategory ],
         
   function( C )
     local objs;
+    
+    if not ( HasIsFiniteCategory( C ) and IsFiniteCategory( C ) ) then
+        TryNextMethod( );
+    fi;
     
     objs := SetOfObjects( C );
     
@@ -402,9 +448,13 @@ end );
 ##
 InstallMethod( CategoryFromNerveData,
         "for a quotient of a path category",
-        [ IsQuotientOfPathCategory and IsFinite ],
+        [ IsQuotientOfPathCategory ],
         
   function( C )
+    
+    if not ( HasIsFiniteCategory( C ) and IsFiniteCategory( C ) ) then
+        TryNextMethod( );
+    fi;
     
     return CategoryFromNerveData(
                    rec( name := Name( C ),
