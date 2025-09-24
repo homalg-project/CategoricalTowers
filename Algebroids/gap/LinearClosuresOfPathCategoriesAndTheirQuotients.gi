@@ -480,38 +480,6 @@ InstallMethod( DataTablesOfCategory,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( EvaluateLinearClosureEndomorphism,
-        "for a linear closure category, a morphism therein, a linear category, an object therein, and a list of endomorphisms thereof",
-        [ IsLinearClosure, IsLinearClosureMorphism, IsCapCategory, IsCapCategoryObject, IsList ],
-        
-  function( linear_closure, morphism, V, rep_obj, rep_mors )
-    local coefs, smors;
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, IsIdenticalObj( linear_closure, CapCategory( morphism ) ) );
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, HasIsLinearCategoryOverCommutativeRing( V ) and IsLinearCategoryOverCommutativeRing( V ) );
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, IsIdenticalObj( V, CapCategory( rep_obj ) ) );
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, ForAll( rep_mors, mor -> IsIdenticalObj( V, CapCategory( mor ) ) ) );
-    
-    coefs := CoefficientsList( morphism );
-    smors := List( SupportMorphisms( morphism ), mor ->
-                   PreComposeList( V,
-                           rep_obj,
-                           rep_mors{MorphismIndices( mor )},
-                           rep_obj ) );
-    
-    return LinearCombinationOfMorphisms( V,
-                   rep_obj,
-                   coefs,
-                   smors,
-                   rep_obj );
-    
-end );
-
-##
 InstallMethod( DatumOfCellAsEvaluatableString,
         [ IsLinearClosureMorphism, IsList ],
         
@@ -573,5 +541,35 @@ InstallMethodForCompilerForCAP( ExtendFunctorToAlgebroidData,
     return Triple( LC,
                    Pair( extended_functor_on_objects, extended_functor_on_morphisms ),
                    category );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( EvaluateLinearClosureEndomorphism,
+        "for a linear closure category, a morphism therein, a linear category, an object therein, and a list of endomorphisms thereof",
+        [ IsLinearClosure, IsLinearClosureMorphism, IsCapCategory, IsCapCategoryObject, IsList ],
+        
+  function( linear_closure, morphism, V, rep_obj, rep_mors )
+    local functor_on_obj, functor_on_mors, functor;
+    
+    functor_on_obj :=
+      function( objC )
+        
+        return rep_obj;
+        
+    end;
+    
+    functor_on_mors :=
+      function( source, morC, target )
+        
+        return PreComposeList( source, rep_mors{MorphismIndices( morC )}, target );
+        
+    end;
+    
+    functor := ExtendFunctorToAlgebroidData( linear_closure,
+                       Pair( functor_on_obj, functor_on_mors ),
+                       V );
+    
+    return functor[2][2]( rep_obj, morphism, rep_obj );
     
 end );

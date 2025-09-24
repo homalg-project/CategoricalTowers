@@ -60,8 +60,8 @@ DeclareGlobalFunction( "INSTALL_VIEW_AND_DISPLAY_METHODS_IN_LINEAR_CLOSURES_OF_P
 DeclareGlobalFunction( "INSTALL_VIEW_AND_DISPLAY_METHODS_IN_QUOTIENT_CATEGORIES_OF_LINEAR_CLOSURES_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS" );
 DeclareGlobalFunction( "INSTALL_CANONICAL_REPRESENTATIVE_METHODS_IN_QUOTIENT_CATEGORIES_OF_LINEAR_CLOSURES_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS" );
 
-DeclareOperation( "EvaluateLinearClosureEndomorphism",
-        [ IsLinearClosure, IsLinearClosureMorphism, IsCapCategory, IsCapCategoryObject, IsList ] );
-
 DeclareOperation( "ExtendFunctorToAlgebroidData",
         [ IsLinearClosure, IsList, IsCapCategory ] );
+
+DeclareOperation( "EvaluateLinearClosureEndomorphism",
+        [ IsLinearClosure, IsLinearClosureMorphism, IsCapCategory, IsCapCategoryObject, IsList ] );
