@@ -128,7 +128,7 @@
     [4X[28Xy:1→2,z:0→2]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XA := kC / [ kC.xy - kC.z ];[127X[104X
     [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2)[x:0→1,[128X[104X
-    [4X[28Xy:1→2,z:0→2]" ) ) ) / [ 1*x⋅y - 1*z ][128X[104X
+    [4X[28Xy:1→2,z:0→2]" ) ) ) / [ 1*x⋅y + (-1)*z ][128X[104X
     [4X[25Xgap>[125X [27XB := AlgebroidFromDataTables( A );[127X[104X
     [4X[28XQ-algebroid( {0,1,2}[x:0→1,y:1→2,z:0→2] ) defined by 3 objects[128X[104X
     [4X[28Xand 3 generating morphisms[128X[104X
@@ -142,14 +142,14 @@
     [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XA := kC / [ kC.xy - kC.yx, kC.x^3, kC.y^3 ];[127X[104X
     [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )[128X[104X
-    [4X[28X/ [ -1*y⋅x + 1*x⋅y, 1*x^3, 1*y^3 ][128X[104X
+    [4X[28X/ [ (-1)*y⋅x + 1*x⋅y, 1*x^3, 1*y^3 ][128X[104X
     [4X[25Xgap>[125X [27XB := AlgebroidFromDataTables( A );[127X[104X
     [4X[28XQ-algebroid( {o}[x:o→o,y:o→o] ) defined by 1 object and 2 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( B );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA := kC / [ kC.xy - kC.yx, kC.x^3 - kC.x, kC.y^3 ];[127X[104X
     [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )[128X[104X
-    [4X[28X/ [ -1*y⋅x + 1*x⋅y, 1*x^3 - 1*x, 1*y^3 ][128X[104X
+    [4X[28X/ [ (-1)*y⋅x + 1*x⋅y, 1*x^3 + (-1)*x, 1*y^3 ][128X[104X
     [4X[25Xgap>[125X [27XB := AlgebroidFromDataTables( A );[127X[104X
     [4X[28XQ-algebroid( {o}[x:o→o,y:o→o] ) defined by 1 object and 2 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( B );[127X[104X
