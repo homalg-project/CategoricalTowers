@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2025.09-05",
+Version := "2025.09-06",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
@@ -94,7 +94,7 @@ Dependencies := rec(
                    [ "CartesianCategories", ">= 2025.07-03" ],
                    [ "ToolsForCategoricalTowers", ">= 2024.11-03" ],
                    [ "FpCategories", ">= 2025.09-01" ],
-                   [ "Algebroids", ">= 2025.09-05" ],
+                   [ "Algebroids", ">= 2025.09-09" ],
                    [ "FiniteCocompletions", ">= 2024.03-12" ],
                    [ "PreSheaves", ">= 2025.08-03" ],
                    [ "RingsForHomalg", ">= 2020.02.04" ],

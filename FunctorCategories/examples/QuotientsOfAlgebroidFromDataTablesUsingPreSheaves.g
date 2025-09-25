@@ -93,7 +93,7 @@ kC := k[C];
 #! y:1→2,z:0→2]" ) ) )
 A := kC / [ kC.xy - kC.z ];
 #! Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2)[x:0→1,
-#! y:1→2,z:0→2]" ) ) ) / [ 1*x⋅y - 1*z ]
+#! y:1→2,z:0→2]" ) ) ) / [ 1*x⋅y + (-1)*z ]
 B := AlgebroidFromDataTables( A );
 #! Q-algebroid( {0,1,2}[x:0→1,y:1→2,z:0→2] ) defined by 3 objects
 #! and 3 generating morphisms
@@ -107,14 +107,14 @@ kC := k[C];
 #! Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )
 A := kC / [ kC.xy - kC.yx, kC.x^3, kC.y^3 ];
 #! Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )
-#! / [ -1*y⋅x + 1*x⋅y, 1*x^3, 1*y^3 ]
+#! / [ (-1)*y⋅x + 1*x⋅y, 1*x^3, 1*y^3 ]
 B := AlgebroidFromDataTables( A );
 #! Q-algebroid( {o}[x:o→o,y:o→o] ) defined by 1 object and 2 generating morphisms
 IsAdmissibleAlgebroid( B );
 #! true
 A := kC / [ kC.xy - kC.yx, kC.x^3 - kC.x, kC.y^3 ];
 #! Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )
-#! / [ -1*y⋅x + 1*x⋅y, 1*x^3 - 1*x, 1*y^3 ]
+#! / [ (-1)*y⋅x + 1*x⋅y, 1*x^3 + (-1)*x, 1*y^3 ]
 B := AlgebroidFromDataTables( A );
 #! Q-algebroid( {o}[x:o→o,y:o→o] ) defined by 1 object and 2 generating morphisms
 IsAdmissibleAlgebroid( B );
