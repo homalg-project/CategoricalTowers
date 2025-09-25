@@ -693,13 +693,13 @@ InstallMethod( Pullback,
     
     if HasIsIsomorphism( phi ) and IsIsomorphism( phi ) then
         if HasUnderlyingStandardColumn( A ) then
-            return C!.ConstructorByStandardColumn( B );
+            B := C!.ConstructorByStandardColumn( B );
         elif HasUnderlyingRadicalColumn( A ) then
-            return C!.ConstructorByRadicalColumn( B );
+            B := C!.ConstructorByRadicalColumn( B );
         fi;
+    else
+        B := C!.Constructor( B );
     fi;
-    
-    B := C!.Constructor( B );
     
     if HasParametrizedObject( A ) then
         SetParametrizedObject( B, Pullback( RingEpimorphismOntoResidueClassRingOfClosedSuperset( B ), Pullback( phi, ParametrizedObject( A ) ) ) );

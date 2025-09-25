@@ -360,13 +360,22 @@ InstallGlobalFunction( "INSTALL_VIEW_AND_DISPLAY_METHODS_IN_LINEAR_CLOSURES_OF_P
               [ MorphismFilter( kC ) ],
       
       function ( alpha )
-        local kC, Q, coeffs, labels, datum_string;
+        local kC, Q, bracket, coeffs, labels, datum_string;
         
         kC := CapCategory( alpha );
         
         Q := UnderlyingQuiver( C );
         
-        coeffs := List( CoefficientsList( alpha ), c -> Concatenation( kC!.colors.coeff, String( c ), kC!.colors.reset ) );
+        bracket :=
+          function( str )
+            if Position( str, '+' ) = fail and Position( str, '-' ) = fail then
+                return str;
+            else
+                return Concatenation( "(", str, ")" );
+            fi;
+        end;
+        
+        coeffs := List( CoefficientsList( alpha ), c -> bracket( Concatenation( kC!.colors.coeff, String( c ), kC!.colors.reset ) ) );
         
         labels := List( SupportMorphisms( alpha ), m -> ( str -> str{[1 .. PositionSublist( str, Concatenation( Q!.colors.other, ":" ) ) - 1]} )( ViewString( m ) ) );
         
@@ -377,7 +386,7 @@ InstallGlobalFunction( "INSTALL_VIEW_AND_DISPLAY_METHODS_IN_LINEAR_CLOSURES_OF_P
         else
             
             datum_string := JoinStringsWithSeparator( ListN( coeffs, labels, { c, l } -> Concatenation( c, "*", l ) ), Concatenation( kC!.colors.reset, " + " ) );
-            datum_string := ReplacedString( datum_string, Concatenation( "+ ", kC!.colors.coeff, "-" ), Concatenation( "- ", kC!.colors.coeff ) );
+            
         fi;
         
         return
