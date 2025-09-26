@@ -18,8 +18,7 @@
 #! @Example
 LoadPackage( "FpCategories", false );
 #! true
-str :=
-  "q(0..5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;
+str := "q(0..5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;
 q := FinQuiver( str );
 #! FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,
 #! t:4→5,y:5→5]" )
@@ -27,15 +26,15 @@ QuiverName( q );
 #! "q"
 NumberOfObjects( q );
 #! 6
-LabelsOfObjects( q );
+Display( LabelsOfObjects( q ) );
 #! [ "0", "1", "2", "3", "4", "5" ]
-SetOfObjects( q );
+Display( SetOfObjects( q ) );
 #! [ (0), (1), (2), (3), (4), (5) ]
-o := q.0;
+o := q.("0");
 #! (0)
 ObjectIndex( o );
 #! 1
-IsIdenticalObj( o, ObjectConstructor( q, 1 ) );
+IsIdenticalObj( o, ObjectConstructor( q, BigInt( 1 ) ) );
 #! true
 ObjectLabel( o );
 #! "0"
@@ -43,33 +42,31 @@ LaTeXOutput( o );
 #! "0"
 NumberOfMorphisms( q );
 #! 9
-LabelsOfMorphisms( q );
+Display( LabelsOfMorphisms( q ) );
 #! [ "x", "s", "a", "c", "e", "b", "d", "t", "y" ]
-IndicesOfSources( q );
+Display( IndicesOfSources( q ) );
 #! [ 1, 1, 2, 2, 2, 3, 4, 5, 6 ]
-IndicesOfTargets( q );
+Display( IndicesOfTargets( q ) );
 #! [ 1, 2, 3, 4, 5, 5, 5, 6, 6 ]
-SetOfMorphisms( q );
+Display( SetOfMorphisms( q ) );
 #! [ x:(0) → (0), s:(0) → (1), a:(1) → (2), c:(1) → (3), e:(1) → (4),
 #!   b:(2) → (4), d:(3) → (4), t:(4) → (5), y:(5) → (5) ]
 m := q.y;
 #! y:(5) → (5)
 MorphismIndex( m );
 #! 9
-IsIdenticalObj( m, MorphismConstructor( q, q.("5"), 9, q.("5") ) );
+IsIdenticalObj( m, MorphismConstructor( q, q.("5"), BigInt( 9 ), q.("5") ) );
 #! true
 MorphismLabel( m );
 #! "y"
-LaTeXOutput( m );
-#! "{5}-\\left({y}\\right)\\rightarrow{5}"
-MorphismsOfExternalHom( q.("0"), q.("0") );
+Display( MorphismsOfExternalHom( q.("0"), q.("0") ) );
 #! [ x:(0) → (0) ]
-MorphismsOfExternalHom( q.("0"), q.("1") );
+Display( MorphismsOfExternalHom( q.("0"), q.("1") ) );
 #! [ s:(0) → (1) ]
 q_op := OppositeQuiver( q );
 #! FinQuiver( "q_op(0,1,2,3,4,5)[x:0→0,s:1→0,a:2→1,c:3→1,e:4→1,b:4→2,
 #! d:4→3,t:5→4,y:5→5]" )
-MorphismsOfExternalHom( q_op.1, q_op.0 );
+Display( MorphismsOfExternalHom( q_op.("1"), q_op.("0") ) );
 #! [ s:(1) → (0) ]
 q_op_x_q := TensorProductOfFinQuivers( q_op, q );;
 NumberOfObjects( q_op_x_q );

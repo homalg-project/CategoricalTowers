@@ -130,7 +130,7 @@ InstallOtherMethod( ExternalHoms,
         
     fi;
     
-    C := UnderlyingCategory( quo_C );
+    C := AmbientCategory( quo_C );
     
     q := UnderlyingQuiver( C );
     
