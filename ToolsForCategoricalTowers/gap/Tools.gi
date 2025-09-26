@@ -16,6 +16,7 @@ InstallMethod( DummyCategoryInDoctrines,
   [
     [ "name", fail ],
     [ "minimal", false ],
+    [ "with_given_objects_methods", false ],
     [ "additional_operations", Immutable( [ ] ) ],
   ],
   function( CAP_NAMED_ARGUMENTS, doctrine_names )
@@ -71,7 +72,7 @@ InstallMethod( DummyCategoryInDoctrines,
     
     all_operations := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
     
-    if IsIdenticalObj( ValueOption( "with_given_objects_methods" ), true ) then
+    if CAP_NAMED_ARGUMENTS.with_given_objects_methods then
         
         options.list_of_operations_to_install :=
           Concatenation( List( options.list_of_operations_to_install, operation_name ->
