@@ -201,3 +201,7 @@ DeclareAttribute( "MorphismIndex", IsFinQuiverMorphism );
 #! @Arguments alpha
 #! @Returns a string
 DeclareAttribute( "MorphismLabel", IsFinQuiverMorphism );
+
+#= comment for Julia
+DeclareGlobalFunction( "INSTALL_DOT_METHOD" );
+# =#

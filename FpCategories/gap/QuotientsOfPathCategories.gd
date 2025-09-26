@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Path categories
+#! @Chapter Quotients of path categories
 
 ####################################
 #
@@ -107,4 +107,5 @@ if false then
 DeclareOperation( "QuotientCategory", [ IsPathCategory, IsDenseList ] );
 fi;
 
-#! @InsertChunk PathCategories
+#! @InsertChunk PathCategory
+#! @InsertChunk LinearClosureOfPathCategory

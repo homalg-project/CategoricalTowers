@@ -411,13 +411,11 @@ InstallGlobalFunction( "INSTALL_VIEW_AND_DISPLAY_METHODS_IN_LINEAR_CLOSURES_OF_P
 end );
 
 ##
-InstallMethod( \.,
-          [ IsLinearClosure, IsPosInt ],
+InstallOtherMethod( \/,
+          [ IsString, IsLinearClosure ],
   
-  function ( kC, string_as_int )
-    local name, cell;
-    
-    name := NameRNam( string_as_int );
+  function ( name, kC )
+    local cell;
     
     cell := UnderlyingCategory( kC ).( name );
     
@@ -435,6 +433,12 @@ InstallMethod( \.,
     fi;
     
 end );
+
+##
+#= comment for Julia
+##
+INSTALL_DOT_METHOD( IsLinearClosure );
+# =#
 
 ##
 InstallMethod( DataTablesOfCategory,

@@ -4,22 +4,20 @@
 # Implementations
 #
 BindGlobal( "PARSE_CAP_QUIVER_DATUM_FROM_STRING",
-  function ( data )
-    local p, name, objs, mors, q_datum, g, s, t, mor;
+  function ( data_string )
+    local data, p, name, objs, min, max, mors, q_datum, g, s, t, mor;
     
-    data := ShallowCopy( data );
+    data := data_string;
     
-    p := Position( data, '(' );
+    p := PositionSublist( data, "(" );
     
     if p <> fail and p > 1 then
-        name := data{[1 .. p-1]};
+        name := data{ [ 1 .. p-1 ] };
     else
         Error( "please use the format \"q(A,B)[x:A->B,y:B->A]\"\n" );
     fi;
     
-    data := data{[p .. Length( data )]};
-    Remove( data, 1 );
-    Remove( data, Length( data ) );
+    data := data{ [ p + 1 .. Length( data ) - 1 ] };
     
     data := ReplacedString( data, "≻", ">" );
     data := ReplacedString( data, "→", "->" );
@@ -29,13 +27,18 @@ BindGlobal( "PARSE_CAP_QUIVER_DATUM_FROM_STRING",
     if Int( data[1] ) <> fail then
         objs := List( [ 1 .. Int( data[1] ) ], String );
     elif PositionSublist( data[1], ".." ) <> fail then
-        p := PositionSublist( data[1], ".." );
-        objs := List( [ Int( data[1]{[ 1 .. p-1 ]} ) .. Int( data[1]{[ p+2 .. Length( data[1] ) ]} ) ], String );
+        data[1] := ReplacedString( data[1], " ", "" );
+        objs := SplitString( ReplacedString( data[1], "..", "," ), "," );
+        min := Int( objs[1] );
+        max := Int( objs[2] );
+        objs := List( [ min .. max  ], String );
     else
         objs := SplitString( data[1], "," );
     fi;
     
-    if Length( data ) > 1 then
+    Assert( 0, Length( data ) in [ 1, 2 ] );
+    
+    if ( Length( data ) = 2 ) and ( data[2] <> "" ) then
         mors := SplitString( data[2], "," );
     else
         mors := [ ];
@@ -76,17 +79,8 @@ end );
 
 InstallGlobalFunction( RandomFinQuiver,
   
-  function ( arg ) # nr_objs, nr_gmors, is_cyclic
-    local nr_objs, nr_gmors, is_cyclic, datum, mors, labels, latex, s, t, p, j, triple;
-    
-    nr_objs := arg[1];
-    nr_gmors := arg[2];
-    
-    if Length( arg ) = 3 then
-      is_cyclic := arg[3];
-    else
-      is_cyclic := ValueOption( "cyclic" );
-    fi;
+  function ( nr_objs, nr_gmors, is_cyclic )
+    local datum, mors, labels, latex, s, t, p, j, triple;
     
     datum := [ "q", [ ], [ ] ];
     
@@ -125,7 +119,7 @@ InstallGlobalFunction( RandomFinQuiver,
         
     od;
     
-    Sort( mors );
+    mors := SortedList( mors );
     
     for triple in mors do
       
@@ -135,10 +129,10 @@ InstallGlobalFunction( RandomFinQuiver,
       
       if s <> t then
         Add( labels, Concatenation( "m", String( s ), "_", String( t ), "_", String( p ) ) );
-        Add(  latex, Concatenation( "m_{", String( s ), ",", String( t ), ",", String( p ), "}" ) );
+        Add( latex, Concatenation( "m_{", String( s ), ",", String( t ), ",", String( p ), "}" ) );
       else
         Add( labels, Concatenation( "l", String( s ), "_", String( p ) ) );
-        Add(  latex, Concatenation( "l_{", String( s ), ",", String( p ), "}" ) );
+        Add( latex, Concatenation( "l_{", String( s ), ",", String( p ), "}" ) );
       fi;
       
     od;
@@ -155,39 +149,37 @@ end );
 ##
 InstallMethod( FinQuiver,
         [ IsList ],
-  
-  function ( q_datum )
-    local colors, name, q;
+        
+  FunctionWithNamedArguments(
+  [
+    [ "colors", false ],
+    [ "name", fail ],
+  ],
+  function ( CAP_NAMED_ARGUMENTS, q_datum )
+    local nr_gmors, q_name, q;
     
-    if IsString( q_datum ) then
-        q_datum := PARSE_CAP_QUIVER_DATUM_FROM_STRING( q_datum );
+    # for Julia
+    nr_gmors := q_datum[3][1];
+    
+    if CAP_NAMED_ARGUMENTS.name = fail then
+      
+      q_name := Concatenation(
+                    "FinQuiver( \"",
+                    q_datum[1],
+                    "(",
+                    JoinStringsWithSeparator( q_datum[2][2], "," ),
+                    ")[",
+                    JoinStringsWithSeparator( List( [ 1 .. nr_gmors ],
+                        j -> Concatenation( q_datum[3][4][j], ":", q_datum[2][2][q_datum[3][2][j]],"→",q_datum[2][2][q_datum[3][3][j]] ) ), "," ),
+                    "]\" )" );
+      
+    else
+      
+      q_name := CAP_NAMED_ARGUMENTS.name;
+      
     fi;
     
-    colors := ValueOption( "colors" );
-    
-    if colors = fail then
-          
-          colors := rec( obj := "", mor := "", other := "", reset := "" );
-          
-    elif colors = true then
-          
-          colors := rec( obj := TextAttr.4, mor := TextAttr.2, other := TextAttr.1, reset := TextAttr.reset );
-          
-    fi;
-    
-    name := Concatenation(
-                "FinQuiver( \"",
-                q_datum[1],
-                "(",
-                JoinStringsWithSeparator( q_datum[2][2], "," ),
-                ")[",
-                JoinStringsWithSeparator( List( [ 1 .. q_datum[3][1] ],
-                    j -> Concatenation( q_datum[3][4][j], ":", q_datum[2][2][q_datum[3][2][j]],"→",q_datum[2][2][q_datum[3][3][j]] ) ), "," ),
-                "]\" )" );
-    
-    name := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "name", name );
-    
-    q := CreateCapCategoryWithDataTypes( name,
+    q := CreateCapCategoryWithDataTypes( q_name,
                  IsFinQuiver,
                  IsFinQuiverObject,
                  IsFinQuiverMorphism,
@@ -197,17 +189,20 @@ InstallMethod( FinQuiver,
                  fail
                  : overhead := false );
     
+    if CAP_NAMED_ARGUMENTS.colors = true then
+        q!.colors := rec( obj := "\033[34m", mor := "\033[32m", other := "\033[31m", reset := "\033[0m" );
+    else
+        q!.colors := rec( obj := "", mor := "", other := "", reset := "" );
+    fi;
+    
     q!.category_as_first_argument := true;
     
-    q!.colors := colors;
-    
     SetQuiverDatum( q, q_datum );
-    
     SetQuiverName( q, q_datum[1] );
     SetNumberOfObjects( q, q_datum[2][1] );
     SetLabelsOfObjects( q, q_datum[2][2] );
     
-    if IsBound( q_datum[2][3] ) then
+    if Length( q_datum[2] ) >= 3 then
         SetLaTeXStringsOfObjects( q, q_datum[2][3] );
     fi;
     
@@ -216,7 +211,7 @@ InstallMethod( FinQuiver,
     SetIndicesOfTargets( q, q_datum[3][3] );
     SetLabelsOfMorphisms( q, q_datum[3][4] );
     
-    if IsBound( q_datum[3][5] ) then
+    if Length( q_datum[3] ) >= 5 then
         SetLaTeXStringsOfMorphisms( q, q_datum[3][5] );
     fi;
     
@@ -268,8 +263,8 @@ InstallMethod( FinQuiver,
         
         return List( [ 1 .. NumberOfMorphisms( q ) ], j ->
                      CreateCapCategoryMorphismWithAttributes( q,
-                             ObjectConstructor( q, IndicesOfSources( q )[j] ),
-                             ObjectConstructor( q, IndicesOfTargets( q )[j] ),
+                             SetOfObjectsOfCategory( q )[IndicesOfSources( q )[j]],
+                             SetOfObjectsOfCategory( q )[IndicesOfTargets( q )[j]],
                              MorphismIndex, j ) );
         
     end );
@@ -344,8 +339,26 @@ InstallMethod( FinQuiver,
     
     return q;
     
-end );
+end ) );
 
+##
+InstallOtherMethod( FinQuiver,
+          [ IsString ],
+          
+  FunctionWithNamedArguments(
+  [
+    [ "colors", false ],
+    [ "name", fail ],
+  ],
+  function ( CAP_NAMED_ARGUMENTS, q_datum )
+    
+    q_datum := PARSE_CAP_QUIVER_DATUM_FROM_STRING( q_datum );
+    
+    return FinQuiver( q_datum : colors := CAP_NAMED_ARGUMENTS.colors, name := CAP_NAMED_ARGUMENTS.name );
+    
+end ) );
+
+##
 InstallMethod( OppositeQuiver,
           [ IsFinQuiver ],
   
@@ -408,20 +421,19 @@ InstallMethod( TensorProductOfFinQuivers,
             [ Concatenation( List( [ 1 .. NumberOfObjects( q1 ) ], l -> List( IndicesOfTargets( q2 ), r -> (l-1) * NumberOfObjects( q2 ) + r ) ) ),
               Concatenation( List( IndicesOfTargets( q1 ), l -> List( [ 1 .. NumberOfObjects( q2 ) ], r -> (l-1) * NumberOfObjects( q2 ) + r ) ) ) ] );
     
-    return
-      FinQuiver(
-         NTuple( 3,
-           Concatenation( QuiverName( q1 ), "⊗", QuiverName( q2 ) ),
-           NTuple( 3,
-             nr_objs,
-             labels_objs,
-             latex_strings_objs ),
-           NTuple( 5,
-             nr_gmors,
-             sources_gmors,
-             targets_gmors,
-             labels_gmors,
-             latex_strings_gmors ) ) : colors := q1!.colors );
+    return FinQuiver(
+               NTuple( 3,
+                 Concatenation( QuiverName( q1 ), "⊗", QuiverName( q2 ) ),
+                 NTuple( 3,
+                   nr_objs,
+                   labels_objs,
+                   latex_strings_objs ),
+                 NTuple( 5,
+                   nr_gmors,
+                   sources_gmors,
+                   targets_gmors,
+                   labels_gmors,
+                   latex_strings_gmors ) ) : colors := q1!.colors );
 
 end );
 
@@ -494,30 +506,48 @@ InstallMethod( ExternalHoms,
 end );
 
 ##
-InstallMethod( \.,
-        "for a cap-quiver and a label of an object or morphism",
-        [ IsFinQuiver, IsPosInt ],
+InstallOtherMethod( \/,
+        [ IsString, IsFinQuiver ],
   
-  function ( q, string_as_int )
-    local name, i;
+  function ( label, q )
+    local i;
     
-    name := NameRNam( string_as_int );
-    
-    i := Position( LabelsOfObjects( q ), name );
+    i := Position( LabelsOfObjects( q ), label );
     
     if i <> fail then
         return SetOfObjects( q )[i];
     fi;
     
-    i := Position( LabelsOfMorphisms( q ), name );
+    i := Position( LabelsOfMorphisms( q ), label );
     
     if i <> fail then
         return SetOfMorphisms( q )[i];
     fi;
     
-    Error( "the label '", name, "' can't be recognized!\n" );
+    Error( "the label '", label, "' can't be recognized!\n" );
     
 end );
+
+#= comment for Julia
+##
+InstallGlobalFunction( INSTALL_DOT_METHOD,
+  function ( category_filter )
+    
+    ##
+    InstallMethod( \.,
+            [ category_filter, IsPosInt ],
+      
+      function ( C, string_as_int )
+        
+        return NameRNam( string_as_int ) / C;
+        
+    end );
+    
+end );
+
+##
+INSTALL_DOT_METHOD( IsFinQuiver );
+# =#
 
 ##
 InstallMethod( ObjectLabel,
@@ -594,6 +624,13 @@ InstallMethod( DisplayString,
 end );
 
 ##
+InstallMethod( String,
+          [ IsFinQuiverObject ],
+  
+  ViewString
+);
+
+##
 InstallMethod( ViewString,
           [ IsFinQuiverMorphism ],
   
@@ -602,17 +639,16 @@ InstallMethod( ViewString,
     
     colors := CapCategory( mor )!.colors;
     
-    return
-      Concatenation(
-          colors.mor,
-          MorphismLabel( mor ),
-          colors.reset,
-          colors.other,
-          ":",
-          ViewString( Source( mor ) ),
-          colors.other,
-          " → ",
-          ViewString( Target( mor ) ) );
+    return Concatenation(
+              colors.mor,
+              MorphismLabel( mor ),
+              colors.reset,
+              colors.other,
+              ":",
+              ViewString( Source( mor ) ),
+              colors.other,
+              " → ",
+              ViewString( Target( mor ) ) );
     
 end );
 
@@ -625,3 +661,10 @@ InstallMethod( DisplayString,
     return Concatenation( ViewString( mor ), "\n" );
     
 end );
+
+##
+InstallMethod( String,
+          [ IsFinQuiverMorphism ],
+  
+  ViewString
+);
