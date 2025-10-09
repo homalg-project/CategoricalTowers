@@ -195,7 +195,7 @@ DeclareOperation( "ExtendFunctorToFpCategoryData",
         [ IsPathCategory, IsList, IsCapCategory ] );
 
 DeclareOperation( "ExtendContravariantFunctorToFpCategoryData",
-        [ IsPathCategory, IsList, IsCapCategory ] );
+        [ IsPathCategory, IsList, IsCapCategory, IsList ] );
 
 DeclareGlobalFunction( "FpCategories_SORT_MORPHISMS_LIKE_QPA" );
 

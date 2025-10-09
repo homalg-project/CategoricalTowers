@@ -174,6 +174,53 @@ cart_fact := LeftCartesianDistributivityFactoring( A1, [ A1, A2 ] );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
 cocart_expand := LeftCocartesianCodistributivityExpanding( A1, [ A1, A2 ] );
 #! <A morphism in CategoryOfFpAlgebras( GF(2) )>
+
+Bialg_F := CategoryOfFpBialgebras( Alg_F );
+#! CategoryOfFpBialgebras( GF(2) )
+B1 := Bimonoid( Bialg_F, A1, counit1, comult1 );
+#! <An object in CategoryOfFpBialgebras( GF(2) )>
+IsWellDefined( B1 );
+#! true
+Display( B1 );
+#! GF(2) / [  ]
+#!  ^
+#!  |
+#! [ 1*id(o), 0 ]
+#!  |
+#! GF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
+#! 
+#! Counit given by the above morphism
+#! 
+#! GF(2)<a1,a2,a3,a4> / [ 1*a1^2 + 1*a1, 1*a2^3 + 1*a2, \
+#! 1*a2⋅a1 + 1*a1⋅a2 + 1*a2, ... ]
+#!  ^
+#!  |
+#! [ 1*a2^2⋅a4^2 + 1*a1 + 1*a3 + 1*id(o), 1*a2⋅a4^2 + 1*a2 + 1*a4 ]
+#!  |
+#! GF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ]
+#! 
+#! Comultiplication given by the above morphism
+#! 
+#! A finitely presented bialgebra given by the above data
+a1 := FpAlgebraAsInternalMonoid( A1 );
+#! <An object in CategoryOfMonoids( Rows( GF(2) ) )>
+IsWellDefined( a1 );
+#! true
+b1 := FpBialgebraAsInternalBimonoid( B1 );
+#! <An object in CategoryOfBimonoids( Rows( GF(2) ) )>
+IsWellDefined( b1 );
+#! true
+
+LoadPackage( "FunctorCategories", false );
+#! true
+YA1 := YonedaFpMatrixAlgebra( A1 );
+#! <An object in CategoryOfFpMatrixAlgebras( GF(2) )>
+IsWellDefined( YA1 );
+#! true
+YB1 := YonedaFpMatrixBialgebra( B1 );
+#! <An object in CategoryOfFpMatrixBialgebras( GF(2) )>
+IsWellDefined( YB1 );
+#! true
 #! @EndExample
 
 #! @EndChunk

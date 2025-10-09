@@ -5,6 +5,75 @@
 #
 
 ##
+InstallMethodForCompilerForCAP( PreComposeWithPartiallyContravariantFpAlgebraMorphism,
+        "for a category of finitely presented algebras, two morphisms therein, and a list of integers",
+        [ IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsList ],
+        
+  function( FpAlg_k, pre_morphism, post_morphism, contravariant_indices )
+        local target, o, post_functor_on_mors, images;
+        
+        target := Target( post_morphism );
+        
+        o := DefiningSeptupleOfFinitelyPresentedAlgebra( target )[2];
+        
+        post_functor_on_mors := AssociatedContravariantFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, post_morphism, contravariant_indices )[2][2];
+        
+        images := List( ListOfImages( pre_morphism ), image -> post_functor_on_mors( o, image, o ) );
+        
+        return MorphismConstructor( FpAlg_k,
+                       Source( pre_morphism ),
+                       images,
+                       target );
+        
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( LongMorphismOfLeftAntipodeLawOfHopfMonoid,
+        "for a category of finitely presented algebras, one object, and three morphisms therein",
+        [ IsCategoryOfFpAlgebras, IsObjectInCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras ],
+        
+  function( FpAlg_k, fp_algebra, mult, comult, antipode )
+    local nrgens, contravariant_indices;
+    
+    nrgens := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra )[3];
+    
+    contravariant_indices := [ 1 .. nrgens ];
+    
+    return PreCompose( FpAlg_k,
+                   PreComposeWithPartiallyContravariantFpAlgebraMorphism( FpAlg_k,
+                           comult,
+                           TensorProductOnMorphisms( FpAlg_k,
+                                   antipode,
+                                   IdentityMorphism( FpAlg_k, fp_algebra ) ),
+                           contravariant_indices ),
+                   mult );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( LongMorphismOfRightAntipodeLawOfHopfMonoid,
+        "for a category of finitely presented algebras, one object, and three morphisms therein",
+        [ IsCategoryOfFpAlgebras, IsObjectInCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras ],
+        
+  function( FpAlg_k, fp_algebra, mult, comult, antipode )
+    local nrgens, contravariant_indices;
+    
+    nrgens := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra )[3];
+    
+    contravariant_indices := [ nrgens + 1 .. 2 * nrgens ];
+    
+    return PreCompose( FpAlg_k,
+                   PreComposeWithPartiallyContravariantFpAlgebraMorphism( FpAlg_k,
+                           comult,
+                           TensorProductOnMorphisms( FpAlg_k,
+                                   IdentityMorphism( FpAlg_k, fp_algebra ),
+                                   antipode ),
+                           contravariant_indices ),
+                   mult );
+    
+end );
+
+##
 InstallMethodWithCrispCache( CreateAmbientLinearClosureOfFpAlgebra,
         [ IsCategoryOfRows, IsInt, IsString ],
         
@@ -1270,6 +1339,296 @@ InstallMethodForCompilerForCAP( AssociatedFunctorOfLinearClosuresOfPathCategorie
     
 end );
 
+InstallMethodForCompilerForCAP( AssociatedContravariantFunctorOfLinearClosuresOfPathCategoriesData,
+        "for a category of finitely presented algebras, a finitely presented algebra morphism therein, and a list of integers",
+        [ IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsList ],
+        
+  function( FpAlg_k, fp_algebra_morphism, contravariant_indices )
+    local S, T, path_cat, image_of_unique_object, images_of_generating_morphism;
+    
+    S := DefiningSeptupleOfFinitelyPresentedAlgebra( Source( fp_algebra_morphism ) )[1];
+    T := DefiningSeptupleOfFinitelyPresentedAlgebra( Target( fp_algebra_morphism ) )[1];
+    
+    path_cat := UnderlyingCategory( S );
+    
+    image_of_unique_object := SetOfObjects( T );
+    images_of_generating_morphism := ListOfImages( fp_algebra_morphism );
+    
+    return ExtendFunctorToAlgebroidData(
+                   S,
+                   ExtendContravariantFunctorToFpCategoryData(
+                           path_cat,
+                           ## quiver_of_S → T
+                           Pair( obj_in_quiver_S -> image_of_unique_object[obj_in_quiver_S],
+                                 mor_in_quiver_S -> images_of_generating_morphism[mor_in_quiver_S] ),
+                           T,
+                           contravariant_indices )[2],
+                   T );
+    
+end );
+
+##
+InstallMethod( BaseChangeToDifferentLinearClosure,
+        "for a linear closure category on one object, a ring map, and an endomorphism in a linear closure category",
+        [ IsLinearClosure, IsHomalgRingMap, IsLinearClosureMorphism ],
+        
+  function( L, ring_map, mor )
+    local Lo, k, C, Co;
+    
+    Assert( 0, IsEndomorphism( mor ) and CanCompute( L, "SetOfObjectsOfCategory" ) and Length( SetOfObjectsOfCategory( L ) ) = 1 );
+    
+    Lo := L.o;
+    
+    C := UnderlyingCategory( L );
+    
+    Co := C.o;
+    
+    k := CommutativeRingOfLinearCategory( L );
+    
+    Assert( 0, IsIdenticalObj( Range( ring_map ), k ) );
+    
+    return MorphismConstructor( L,
+                   Lo,
+                   Pair( List( CoefficientsList( mor ), r -> Pullback( ring_map, r ) ),
+                         List( SupportMorphisms( mor ), m ->
+                               MorphismConstructor( C,
+                                       Co,
+                                       Pair( MorphismLength( m ), MorphismIndices( m ) ),
+                                       Co ) ) ),
+                   Lo );
+    
+end );
+
+##
+InstallMethod( BaseChangeToDifferentLinearClosure,
+        "for a finitely presented algebra, a ring map, and an endomorphism in a linear closure category",
+        [ IsObjectInCategoryOfFpAlgebras, IsHomalgRingMap, IsLinearClosureMorphism ],
+        
+  function( fp_algebra, ring_map, mor )
+    
+    return BaseChangeToDifferentLinearClosure( AssociatedLinearClosureOfPathCategory( fp_algebra ), ring_map, mor );
+    
+end );
+
+##
+InstallMethod( BaseChangeToDifferentLinearClosure,
+        "for a linear closure category on one object and an endomorphism in a linear closure category",
+        [ IsLinearClosure, IsLinearClosureMorphism ],
+        
+  function( L, mor )
+    local Lo, k, C, Co;
+    
+    Assert( 0, IsEndomorphism( mor ) and CanCompute( L, "SetOfObjectsOfCategory" ) and Length( SetOfObjectsOfCategory( L ) ) = 1 );
+    
+    Lo := L.o;
+    
+    C := UnderlyingCategory( L );
+    
+    Co := C.o;
+    
+    k := CommutativeRingOfLinearCategory( L );
+    
+    return MorphismConstructor( L,
+                   Lo,
+                   Pair( List( CoefficientsList( mor ), r -> r / k ),
+                         List( SupportMorphisms( mor ), m ->
+                               MorphismConstructor( C,
+                                       Co,
+                                       Pair( MorphismLength( m ), MorphismIndices( m ) ),
+                                       Co ) ) ),
+                   Lo );
+    
+end );
+
+##
+InstallOtherMethod( \/,
+        "for an endomorphism of linear closures and a finitely presented algebra",
+        [ IsLinearClosureMorphism, IsObjectInCategoryOfFpAlgebras ],
+        
+  function( mor, fp_algebra )
+    
+    return BaseChangeToDifferentLinearClosure( AssociatedLinearClosureOfPathCategory( fp_algebra ), mor );
+    
+end );
+
+##
+InstallMethod( Pullback,
+        "for a category of finitely presented algebras, a ring map, and a finitely presented algebra",
+        [ IsCategoryOfFpAlgebras, IsHomalgRingMap, IsObjectInCategoryOfFpAlgebras ],
+        
+  function( FpAlg_R, ring_map, fp_algebra )
+    local R, B, septuple, P, L, gens, rels;
+    
+    B := UnderlyingCategoryOfMatrices( FpAlg_R );
+    
+    R := UnderlyingRing( B );
+    
+    Assert( 0, IsIdenticalObj( Range( ring_map ), R ) );
+    
+    septuple := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra );
+    
+    P := UnderlyingCategory( septuple[1] );
+    
+    L := LinearClosure( B, P );
+    
+    gens := List( septuple[4], gen -> BaseChangeToDifferentLinearClosure( L, ring_map, gen ) );
+    
+    rels := List( septuple[6], rel -> BaseChangeToDifferentLinearClosure( L, ring_map, rel ) );
+    
+    return ObjectConstructor( FpAlg_R,
+                   NTuple( 7,
+                           L,
+                           L.o,
+                           septuple[3],
+                           gens,
+                           septuple[5],
+                           rels,
+                           ShallowCopy( septuple[7] ) ) );
+    
+end );
+
+##
+InstallMethod( Pullback,
+        "for a ring map, and a finitely presented algebra",
+        [ IsHomalgRingMap, IsObjectInCategoryOfFpAlgebras ],
+        
+  function( ring_map, fp_algebra )
+    local FpAlg_R;
+    
+    FpAlg_R := CategoryOfFpAlgebras( Range( ring_map ) );
+    
+    return Pullback( FpAlg_R, ring_map, fp_algebra );
+    
+end );
+
+##
+InstallMethod( \/,
+        "for a finitely presented algebra and a category of finitely presented algebras",
+        [ IsObjectInCategoryOfFpAlgebras, IsCategoryOfFpAlgebras ],
+        
+  function( fp_algebra, FpAlg_R )
+    local B, R, septuple, P, L, gens, rels;
+    
+    B := UnderlyingCategoryOfMatrices( FpAlg_R );
+    
+    R := CommutativeRingOfLinearCategory( B );
+    
+    septuple := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra );
+    
+    P := UnderlyingCategory( septuple[1] );
+    
+    L := LinearClosure( B, P );
+    
+    gens := List( septuple[4], gen -> BaseChangeToDifferentLinearClosure( L, gen ) );
+    
+    rels := List( septuple[6], rel -> BaseChangeToDifferentLinearClosure( L, rel ) );
+    
+    return ObjectConstructor( FpAlg_R,
+                   NTuple( 7,
+                           L,
+                           L.o,
+                           septuple[3],
+                           gens,
+                           septuple[5],
+                           rels,
+                           ShallowCopy( septuple[7] ) ) );
+    
+end );
+
+##
+InstallMethod( \*,
+        "for a homalg ring and a finitely presented algebra",
+        [ IsHomalgRing, IsObjectInCategoryOfFpAlgebras ],
+        
+  function( R, fp_algebra )
+    local FpAlg_R;
+    
+    FpAlg_R := CategoryOfFpAlgebras( R );
+    
+    return fp_algebra / FpAlg_R;
+    
+end );
+
+##
+InstallMethod( BaseChangeToDifferentCategoryOfFpAlgebras,
+        "for a category of finitely presented algebras, a ring map, two finitely presented algebras, and a morphism of finitely presented algebras",
+        [ IsCategoryOfFpAlgebras, IsHomalgRingMap, IsObjectInCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsObjectInCategoryOfFpAlgebras ],
+        
+  function( FpAlg_R, ring_map, source, fp_algebra_morphism, target )
+    
+    return MorphismConstructor( FpAlg_R,
+                   source,
+                   List( ListOfImages( fp_algebra_morphism ), mor -> BaseChangeToDifferentLinearClosure( target, ring_map, mor ) ),
+                   target );
+    
+end );
+
+##
+InstallMethod( BaseChangeToDifferentCategoryOfFpAlgebras,
+        "for a category of finitely presented algebras, two finitely presented algebras, and a morphism of finitely presented algebras",
+        [ IsCategoryOfFpAlgebras, IsObjectInCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsObjectInCategoryOfFpAlgebras ],
+        
+  function( FpAlg_R, source, fp_algebra_morphism, target )
+    
+    return MorphismConstructor( FpAlg_R,
+                   source,
+                   List( ListOfImages( fp_algebra_morphism ), mor -> mor / target ),
+                   target );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( Unit,
+        "for a category of finitely presented algebras and an algebra therein",
+        [ IsCategoryOfFpAlgebras, IsObjectInCategoryOfFpAlgebras ],
+        
+  function( FpAlg_k, fp_algebra )
+    
+    return UniversalMorphismFromInitialObject( FpAlg_k, fp_algebra );
+    
+end );
+
+InstallMethod( Unit,
+        "for a finitely presented algebra",
+        [ IsObjectInCategoryOfFpAlgebras ],
+        
+  function( fp_algebra )
+    
+    return Unit( CapCategory( fp_algebra ), fp_algebra );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( Multiplication,
+        "for a category of finitely presented algebras and an algebra therein",
+        [ IsCategoryOfFpAlgebras, IsObjectInCategoryOfFpAlgebras ],
+        
+  function( FpAlg_k, fp_algebra )
+    local fp_algebra_square, gens;
+    
+    fp_algebra_square := TensorProductOnObjects( FpAlg_k, fp_algebra, fp_algebra );
+    
+    gens := Generators( fp_algebra );
+    
+    ## this is an algebra morphism iff the algebra is commutative
+    return MorphismConstructor( FpAlg_k,
+                   fp_algebra_square,
+                   Concatenation( gens, gens ),
+                   fp_algebra );
+    
+end );
+
+##
+InstallMethod( Multiplication,
+        "for a finitely presented algebra",
+        [ IsObjectInCategoryOfFpAlgebras ],
+        
+  function( fp_algebra )
+    
+    return Multiplication( CapCategory( fp_algebra ), fp_algebra );
+    
+end );
+
 ##
 InstallMethodForCompilerForCAP( EvaluateFpAlgebraMorphism,
         "for a category of finitely presented algebras, a morphism therein, a linear category, an object therein, and a list of endomorphisms thereof",
@@ -1314,9 +1673,9 @@ InstallMethod( Comultiplication,
         "for a finitely presented algebra and a list",
         [ IsObjectInCategoryOfFpAlgebras, IsList ],
         
-  function( fp_algebra, list_of_images_of_comult )
-    local FpAlg_k, fp_algebra_square, nrgens, nrgens2, Q, basis, d, basis_pairs, normalize_input, gens, gens1, gens2,
-          ambient, ambient_square, mor1, mor2, functor1_on_mors, functor2_on_mors, o_square;
+  function( fp_algebra, comult_on_generators )
+    local FpAlg_k, L, fp_algebra_square, nrgens, nrgens2, k, normalize_summand, comult, gens, gens1, gens2,
+          ambient, ambient_square, mor1, mor2, functor1_on_mors, functor2_on_mors, L_square, o_square;
     
     FpAlg_k := CapCategory( fp_algebra );
     
@@ -1328,37 +1687,35 @@ InstallMethod( Comultiplication,
     
     Assert( 0, 2 * nrgens = nrgens2 );
     
-    if ForAny( list_of_images_of_comult, image -> IsList( image ) and ForAny( image, IsRingElement ) ) then
-        
-        Q := AssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_algebra );
-        
-        Assert( 0, CanCompute( Q, "BasisOfExternalHom" ) );
-        
-        basis := List( BasisOfExternalHom( Q.o, Q.o ), MorphismDatum );
-        
-        d := Length( basis );
-        
-        ## must be compatible with corresponding line in method LinearCategoryOnOneObjectAsInternalMonoid (or \/ above it)
-        basis_pairs := List( basis, l ->
-                             List( basis, r ->
-                                   Pair( l, r ) ) );
-        
-        basis_pairs := Concatenation( basis_pairs );
-        
-        normalize_input :=
-          function( image )
-            if IsList( image ) and Length( image ) = d^2 and ForAll( image, IsRingElement ) then
-                return List( [ 1 .. d^2 ], i -> Pair( image[i] * basis_pairs[i][1], basis_pairs[i][2] ) );
-            else
-                return image;
-            fi;
-        end;
-        
-        list_of_images_of_comult := List( list_of_images_of_comult, normalize_input );
-        
-    fi;
+    k := CoefficientsRing( fp_algebra );
     
-    Assert( 0, ForAll( list_of_images_of_comult, list -> ForAll( list, pair -> IsList( pair ) and Length( pair ) = 2 and ForAll( pair, IsLinearClosureMorphism ) ) ) );
+    normalize_summand :=
+      function( summand )
+        local r;
+        
+        Assert( 0, IsList( summand ) and Length( summand ) = 2 );
+        
+        if IsList( summand[2] ) then
+            
+            Assert( 0, IsRingElement( summand[1] ) and Length( summand[2] ) = 2 );
+            
+            r := summand[1] / k;
+            
+            summand := summand[2];
+            
+        else
+            
+            r := One( k );
+            
+        fi;
+        
+        return [ r * ( summand[1] / fp_algebra ), summand[2] / fp_algebra ];
+        
+    end;
+    
+    comult := List( comult_on_generators, image -> List( image, normalize_summand ) );
+    
+    Assert( 0, ForAll( comult, list -> ForAll( list, pair -> IsList( pair ) and Length( pair ) = 2 and ForAll( pair, IsLinearClosureMorphism ) ) ) );
     
     gens := Generators( fp_algebra_square );
     
@@ -1374,14 +1731,367 @@ InstallMethod( Comultiplication,
     functor1_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mor1 )[2][2];
     functor2_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mor2 )[2][2];
     
-    o_square := SetOfObjects( AssociatedLinearClosureOfPathCategory( fp_algebra_square ) )[1];
+    L_square := AssociatedLinearClosureOfPathCategory( fp_algebra_square );
+    
+    o_square := L_square.o;
     
     return MorphismConstructor( FpAlg_k,
                    fp_algebra,
-                   List( list_of_images_of_comult, list ->
-                         Sum( list, pair ->
-                              functor1_on_mors( o_square, pair[1], o_square ) * functor2_on_mors( o_square, pair[2], o_square ) ) ),
+                   List( comult, list ->
+                         SumOfMorphisms( L_square,
+                                 o_square,
+                                 List( list, pair ->
+                                       functor1_on_mors( o_square, pair[1], o_square ) * functor2_on_mors( o_square, pair[2], o_square ) ),
+                                 o_square ) ),
                    fp_algebra_square );
+    
+end );
+
+##
+InstallMethod( Antipode,
+        "for a finitely presented algebra and a list",
+        [ IsObjectInCategoryOfFpAlgebras, IsList ],
+        
+  function( fp_algebra, antipode_on_generators )
+    local k, normalize_summand, normalize_image, antipode, L, o;
+    
+    k := CoefficientsRing( fp_algebra );
+    
+    normalize_summand :=
+      function( summand )
+        local r;
+        
+        if IsList( summand ) then
+            
+            Assert( 0, Length( summand ) = 2 and IsRingElement( summand[1] ) );
+            
+            r := summand[1] / k;
+            
+            summand := summand[2];
+            
+        else
+            
+            r := One( k );
+            
+        fi;
+        
+        return r * ( summand / fp_algebra );
+        
+    end;
+    
+    normalize_image :=
+      function( image )
+        
+        if IsList( image ) then
+            return List( image, normalize_summand );
+        else
+            return [ image ];
+        fi;
+        
+    end;
+    
+    antipode := List( antipode_on_generators, normalize_image );
+    
+    Assert( 0, ForAll( antipode, list -> ForAll( list, IsLinearClosureMorphism ) ) );
+    
+    L := AssociatedLinearClosureOfPathCategory( fp_algebra );
+    
+    o := L.o;
+    
+    ## this is an algebra morphism if the algebra is commutative
+    return MorphismConstructor(
+                   fp_algebra,
+                   List( antipode, list -> SumOfMorphisms( L, o, list, o ) ),
+                   fp_algebra );
+    
+end );
+
+##
+InstallMethod( OppositeAlgebra,
+        "for a finitely presented algebra",
+        [ IsObjectInCategoryOfFpAlgebras ],
+        
+  function( fp_algebra )
+    local FpAlg_k, datum, L, L_o, P, P_o, opposite;
+    
+    FpAlg_k := CapCategory( fp_algebra );
+    
+    datum := ObjectDatum( FpAlg_k, fp_algebra );
+    
+    L := datum[1];
+    L_o := datum[2];
+    
+    P := UnderlyingCategory( L );
+    P_o := ObjectDatum( L, L_o );
+    
+    opposite :=
+      function( rel )
+        local pair, op;
+        
+        pair := MorphismDatum( L, rel );
+        
+        op := length_indices -> Pair( length_indices[1], Reversed( length_indices[2] ) );
+        
+        return Pair( pair[1],
+                     List( pair[2], mor ->
+                           MorphismConstructor( P,
+                                   P_o,
+                                   op( MorphismDatum( P, mor ) ),
+                                   P_o ) ) );
+        
+    end;
+    
+    return ObjectConstructor( FpAlg_k,
+                   NTuple( 7,
+                           L,
+                           L_o,
+                           datum[3],
+                           datum[4],
+                           datum[5],
+                           List( datum[6], rel ->
+                                 MorphismConstructor( L,
+                                         L_o,
+                                         opposite( rel ),
+                                         L_o ) ),
+                           datum[7] ) );
+    
+end );
+
+##
+InstallMethod( \/,
+        "for a finitely presented algebra and a category of internal monoids",
+        [ IsObjectInCategoryOfFpAlgebras, IsCategoryOfInternalMonoids ],
+        
+  function( fp_algebra, MonB )
+    local FpAlg_k, B, Q, o, object, unit, basis, basis_pairs, mult, monoid;
+    
+    FpAlg_k := CapCategory( fp_algebra );
+    
+    B := UnderlyingCategory( MonB );
+    
+    Q := AssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_algebra );
+    
+    Assert( 0, IsIdenticalObj( B, UnderlyingCategoryOfMatrices( FpAlg_k ) ) );
+    Assert( 0, IsIdenticalObj( B, RangeCategoryOfHomomorphismStructure( Q ) ) );
+    
+    monoid := Q / MonB;
+    
+    SetUnderlyingFpAlgebra( monoid, fp_algebra );
+    
+    return monoid;
+    
+end );
+
+##
+InstallOtherMethod( FpAlgebraAsInternalMonoid,
+        "for a finitely presented algebra",
+        [ IsObjectInCategoryOfFpAlgebras ],
+        
+  function( fp_algebra )
+    local FpAlg_k, B;
+    
+    FpAlg_k := CapCategory( fp_algebra );
+    
+    B := UnderlyingCategoryOfMatrices( FpAlg_k );
+    
+    return fp_algebra / CategoryOfMonoids( B );
+    
+end );
+
+##
+InstallMethod( \.,
+        "for an internal monoid",
+        [ IsObjectInCategoryOfInternalMonoids and HasUnderlyingFpAlgebra, IsPosInt ],
+        
+  function ( monoid, string_as_int )
+    local name, datum;
+    
+    name := NameRNam( string_as_int );
+    
+    datum := ObjectDatum( monoid );
+    
+    if name = "object" then
+        return datum[1];
+    elif name = "unit" then
+        return datum[2];
+    elif name = "mult" or name = "multiplication" then
+        return datum[3];
+    else
+        return UnderlyingFpAlgebra( monoid ).(name);
+    fi;
+    
+end );
+
+##
+InstallOtherMethod( MorphismOfFpAlgebrasAsLinearMap,
+        "for a linear category and an morphism of finitely presented algebras",
+        [ IsCapCategory and IsLinearCategoryOverCommutativeRing and HasCommutativeRingOfLinearCategory, IsMorphismInCategoryOfFpAlgebras, IsFunction ],
+        
+  function( B, fp_algebra_morphism, functor_on_mors )
+    local source, target, Q_source, Q_target, o_source, o_t, source_basis, images_source_basis;
+    
+    source := Source( fp_algebra_morphism );
+    target := Target( fp_algebra_morphism );
+    
+    Q_source := AssociatedQuotientCategoryOfLinearClosureOfPathCategory( source );
+    Q_target := AssociatedQuotientCategoryOfLinearClosureOfPathCategory( target );
+    
+    Assert( 0, IsIdenticalObj( B, RangeCategoryOfHomomorphismStructure( Q_target ) ) );
+    
+    o_source := Q_source.o;
+    o_t := ObjectDatum( Q_target.o );
+    
+    Assert( 0, CanCompute( Q_source, "BasisOfExternalHom" ) );
+    
+    source_basis := List( BasisOfExternalHom( o_source, o_source ), MorphismDatum );
+    
+    images_source_basis := List( source_basis, bas -> functor_on_mors( o_t, bas, o_t ) / Q_target );
+    
+    return UniversalMorphismFromDirectSum( B, List( images_source_basis, HomStructure ) );
+    
+end );
+
+##
+InstallMethod( \/,
+        "for a morphism of finitely presented algebras and a linear category",
+        [ IsMorphismInCategoryOfFpAlgebras, IsCapCategory and IsLinearCategoryOverCommutativeRing and HasCommutativeRingOfLinearCategory ],
+        
+  function( fp_algebra_morphism, B )
+    local FpAlg_k, functor_on_mors;
+    
+    FpAlg_k := CapCategory( fp_algebra_morphism );
+    
+    functor_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, fp_algebra_morphism )[2][2];
+    
+    return MorphismOfFpAlgebrasAsLinearMap( B, fp_algebra_morphism, functor_on_mors );
+    
+end );
+
+##
+InstallMethod( MorphismOfFpAlgebrasAsLinearMap,
+        "for an morphism of finitely presented algebras",
+        [ IsMorphismInCategoryOfFpAlgebras ],
+        
+  function( fp_algebra_anti_morphism )
+    local B;
+    
+    B := UnderlyingCategory( CapCategory( fp_algebra_anti_morphism ) );
+    
+    return fp_algebra_anti_morphism / B;
+    
+end );
+
+##
+InstallOtherMethod( AntiMorphismOfFpAlgebrasAsLinearMap,
+        "for a linear category and an anti-morphism of finitely presented algebras",
+        [ IsCapCategory and IsLinearCategoryOverCommutativeRing and HasCommutativeRingOfLinearCategory, IsMorphismInCategoryOfFpAlgebras ],
+        
+  function( B, fp_algebra_anti_morphism )
+    local FpAlg_k, contravariant_indices, functor_on_mors;
+    
+    FpAlg_k := CapCategory( fp_algebra_anti_morphism );
+    
+    contravariant_indices := [ 1 .. DefiningSeptupleOfFinitelyPresentedAlgebra( Target( fp_algebra_anti_morphism ) )[3] ];
+    
+    functor_on_mors := AssociatedContravariantFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, fp_algebra_anti_morphism, contravariant_indices )[2][2];
+    
+    return MorphismOfFpAlgebrasAsLinearMap( B, fp_algebra_anti_morphism, functor_on_mors );
+    
+end );
+
+##
+InstallMethod( AntiMorphismOfFpAlgebrasAsLinearMap,
+        "for a anti-morphism of finitely presented algebras",
+        [ IsMorphismInCategoryOfFpAlgebras ],
+        
+  function( fp_algebra_anti_morphism )
+    local B;
+    
+    B := UnderlyingCategory( CapCategory( fp_algebra_anti_morphism ) );
+    
+    return AntiMorphismOfFpAlgebrasAsLinearMap( B, fp_algebra_anti_morphism );
+    
+end );
+
+##
+InstallOtherMethod( TransformationExpressingSquareOfMacaulayBasisInMacaulayBasisOfSquare,
+        "for a category of finitely presented algebras and an object therein",
+        [ IsCategoryOfFpAlgebras, IsObjectInCategoryOfFpAlgebras ],
+        
+  function( FpAlg_k, fp_algebra )
+    local Q, B, basis, basis_pairs, fp_algebra_square, nrgens, gens, gens1, gens2,
+          ambient, ambient_square, mor1, mor2, functor1_on_mors, functor2_on_mors,
+          o_square, Q_square, basis_square, trafo;
+    
+    B := UnderlyingCategoryOfMatrices( FpAlg_k );
+    
+    Q := AssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_algebra );
+    
+    Assert( 0, CanCompute( Q, "BasisOfExternalHom" ) );
+    
+    basis := List( BasisOfExternalHom( Q.o, Q.o ), MorphismDatum );
+    
+    ## must be compatible with corresponding line in method LinearCategoryOnOneObjectAsInternalMonoid (or \/ above it)
+    basis_pairs := List( basis, l ->
+                         List( basis, r ->
+                               Pair( l, r ) ) );
+    
+    basis_pairs := Concatenation( basis_pairs );
+    
+    fp_algebra_square := TensorProductOnObjects( FpAlg_k, fp_algebra, fp_algebra );
+    
+    nrgens := NrGenerators( fp_algebra );
+    
+    gens := Generators( fp_algebra_square );
+    
+    gens1 := gens{[ 1 .. nrgens ]};
+    gens2 := gens{[ nrgens + 1 .. 2 * nrgens ]};
+    
+    ambient := AmbientAlgebra( fp_algebra );
+    ambient_square := AmbientAlgebra( fp_algebra_square );
+    
+    mor1 := MorphismConstructor( FpAlg_k, ambient, gens1, ambient_square );
+    mor2 := MorphismConstructor( FpAlg_k, ambient, gens2, ambient_square );
+    
+    functor1_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mor1 )[2][2];
+    functor2_on_mors := AssociatedFunctorOfLinearClosuresOfPathCategoriesData( FpAlg_k, mor2 )[2][2];
+    
+    o_square := SetOfObjects( AssociatedLinearClosureOfPathCategory( fp_algebra_square ) )[1];
+    
+    Q_square := AssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_algebra_square );
+    
+    basis_square := List( basis_pairs, pair ->
+                          functor1_on_mors( o_square, pair[1], o_square ) * functor2_on_mors( o_square, pair[2], o_square ) );
+    
+    basis_square := List( basis_square, bas -> bas / Q_square );
+    
+    trafo := UniversalMorphismFromDirectSum( B, List( basis_square, HomStructure ) );
+    
+    Assert( 0, IsIsomorphism( B, trafo ) );
+    
+    return trafo;
+    
+end );
+
+##
+InstallMethod( TransformationExpressingSquareOfMacaulayBasisInMacaulayBasisOfSquare,
+        "for a finitely presented algebra",
+        [ IsObjectInCategoryOfFpAlgebras ],
+        
+  function( fp_algebra )
+    
+    return TransformationExpressingSquareOfMacaulayBasisInMacaulayBasisOfSquare( CapCategory( fp_algebra ), fp_algebra );
+    
+end );
+
+##
+InstallMethod( AssociatedFunctorCategory,
+        "for a finitely presented algebra",
+        [ IsObjectInCategoryOfFpAlgebras ],
+        
+  function( fp_algebra )
+    
+    return ValueGlobal( "FunctorCategory" )( AssociatedAlgebroid( AssociatedQuotientCategoryOfLinearClosureOfPathCategory( fp_algebra ) ) );
     
 end );
 

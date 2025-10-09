@@ -158,3 +158,82 @@ InstallMethod( QuiverRowsMorphism,
     
 end );
 
+##
+InstallMethod( Counit,
+        [ IsObject, IsJuliaObject ],
+        
+  function( A, counit )
+    
+    return Counit( A, ConvertJuliaToGAP( counit ) );
+    
+end );
+
+##
+InstallMethod( Comultiplication,
+        [ IsObject, IsJuliaObject ],
+        
+  function( A, comult )
+    
+    return Comultiplication( A, ConvertJuliaToGAP( comult ) );
+    
+end );
+
+##
+InstallMethod( Antipode,
+        [ IsObject, IsJuliaObject ],
+        
+  function( A, antipode )
+    
+    return Antipode( A, ConvertJuliaToGAP( antipode ) );
+    
+end );
+
+##
+InstallOtherMethod( Bimonoid,
+        [ IsObjectInCategoryOfFpAlgebras, IsJuliaObject, IsJuliaObject ],
+        
+  function ( monoid, counit_list, comult_list )
+    
+    return Bimonoid( monoid, ConvertJuliaToGAP( counit_list ), ConvertJuliaToGAP( comult_list ) );
+    
+end );
+
+##
+InstallOtherMethod( HopfMonoid,
+        [ IsObjectInCategoryOfFpAlgebras, IsJuliaObject, IsJuliaObject, IsJuliaObject ],
+        
+  function ( monoid, counit_list, comult_list, antipode_list )
+    
+    return HopfMonoid( monoid, ConvertJuliaToGAP( counit_list ), ConvertJuliaToGAP( comult_list ), ConvertJuliaToGAP( antipode_list ) );
+    
+end );
+
+##
+InstallOtherMethod( Bimonoid,
+        [ IsObjectInCategoryOfFpMatrixAlgebras, IsJuliaObject, IsJuliaObject ],
+        
+  function ( monoid, counit_list, comult_list )
+    
+    return Bimonoid( monoid, ConvertJuliaToGAP( counit_list ), ConvertJuliaToGAP( comult_list ) );
+    
+end );
+
+##
+InstallOtherMethod( HopfMonoid,
+        [ IsObjectInCategoryOfFpMatrixAlgebras, IsJuliaObject, IsJuliaObject, IsJuliaObject ],
+        
+  function ( monoid, counit_list, comult_list, antipode_list )
+    
+    return HopfMonoid( monoid, ConvertJuliaToGAP( counit_list ), ConvertJuliaToGAP( comult_list ), ConvertJuliaToGAP( antipode_list ) );
+    
+end );
+
+##
+InstallOtherMethod( \/,
+        [ IsJuliaObject, IsCategoryOfFpMatrixAlgebras ],
+        
+  function ( pair, MatAlg_F )
+    
+    return ConvertJuliaToGAP( pair ) / MatAlg_F;
+    
+end );
