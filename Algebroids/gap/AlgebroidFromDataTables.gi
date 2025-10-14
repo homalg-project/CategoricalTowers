@@ -6,58 +6,6 @@
 
 ##
 InstallMethod( DataTablesOfCategory,
-          [ IsAlgebroid ],
-  
-  function ( B )
-    local all_objs, support_objs, objs, all_gmors, support_gmors, gmors;
-    
-    all_objs := SetOfObjects( B );
-    support_objs := PositionsProperty( all_objs, o -> not IsZero( o ) );
-    objs := all_objs{support_objs};
-    
-    all_gmors := SetOfGeneratingMorphisms( B );
-    support_gmors := PositionsProperty( all_gmors, m -> not IsZero( m ) );
-    gmors := all_gmors{support_gmors};
-    
-    return
-      NTuple( 5,
-        
-        CommutativeRingOfLinearCategory( B ),
-        
-        FinQuiver(
-            NTuple( 3,
-              "q",
-              NTuple( 3,
-                Length( support_objs ),
-                List( objs, o -> Label( o ) ),
-                List( objs, o -> LaTeXOutput( o ) ) ),
-              NTuple( 5,
-                Length( support_gmors ),
-                List( gmors, m -> SafePosition( objs, Source( m ) ) ),
-                List( gmors, m -> SafePosition( objs, Target( m ) ) ),
-                List( gmors, m -> Label( m ) ),
-                List( gmors, m -> LabelAsLaTeXString( First( Paths( UnderlyingQuiverAlgebraElement( m ) ) ) ) ) ) ) ),
-        
-        List( objs, s -> List( objs, t -> List( BasisOfExternalHom( B, s, t ), m ->
-          Concatenation( List( DecompositionOfMorphismInAlgebroid( m ),
-            function ( dec )
-              if Length( dec[2] ) = 1 and IsEqualToIdentityMorphism( dec[2][1] ) then
-                  return CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) );
-              else
-                  return List( dec[2], gmor -> Position( gmors, gmor ) );
-              fi;
-            end  ) ) ) ) ),
-        
-        List( objs, o -> List( gmors, m ->
-          EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( B, IdentityMorphism( B, o ), m ) ) ) ) ),
-        
-        List( objs, o -> List( gmors, m ->
-          EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( B, m, IdentityMorphism( B, o ) ) ) ) ) ) );
-        
-end );
-
-##
-InstallMethod( DataTablesOfCategory,
           [ IsQuotientCategory ],
   
   function ( qA )
@@ -1229,52 +1177,6 @@ InstallMethod( IsAdmissibleAlgebroid,
     SetIsAdmissibleAlgebroid( A_op, bool );
     
     return bool;
-    
-end );
-
-##
-InstallMethod( IsomorphismOntoAlgebroidFromDataTables,
-          [ IsAlgebroid, IsAlgebroidFromDataTables ],
-  
-  function ( B, A )
-    local eta;
-    
-    eta := CapFunctor( "Isomorphism functor onto algebroid from data tables", B, A );
-    
-    AddObjectFunction( eta,
-      
-      o -> ObjectConstructor( A, VertexIndex( UnderlyingVertex( o ) ) )
-    );
-    
-    AddMorphismFunction( eta,
-      
-      { s, alpha, r } -> MorphismConstructor( A, s, CoefficientsOfMorphism( B, alpha ), r )
-    );
-    
-    return eta;
-    
-end );
-
-##
-InstallMethod( IsomorphismFromAlgebroidFromDataTables,
-          [ IsAlgebroidFromDataTables, IsAlgebroid ],
-  
-  function ( A, B )
-    local eta;
-    
-    eta := CapFunctor( "Isomorphism functor from algebroid from data tables", A, B );
-    
-    AddObjectFunction( eta,
-      
-      o -> ObjectInAlgebroid( B, Vertex( UnderlyingQuiver( B ), ObjectIndex( o ) ) )
-    );
-    
-    AddMorphismFunction( eta,
-      
-      { s, alpha, r } -> LinearCombinationOfMorphisms( B, s, CoefficientsOfSupportMorphisms( alpha ), BasisOfExternalHom( B, s, r ){IndicesOfSupportMorphisms( alpha )}, r )
-    );
-    
-    return eta;
     
 end );
 
