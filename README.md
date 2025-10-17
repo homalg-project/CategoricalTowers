@@ -18,6 +18,7 @@
 | [ExteriorPowersCategories](ExteriorPowersCategories#readme) | The graded category of exterior powers of objects of a given Ab-category | [![HTML stable documentation][html-ExteriorPowersCategories-img]][html-ExteriorPowersCategories-url] [![PDF stable documentation][pdf-ExteriorPowersCategories-img]][pdf-ExteriorPowersCategories-url] |
 | [FiniteCocompletions](FiniteCocompletions#readme) | Finite (co)product/(co)limit (co)completions | [![HTML stable documentation][html-FiniteCocompletions-img]][html-FiniteCocompletions-url] [![PDF stable documentation][pdf-FiniteCocompletions-img]][pdf-FiniteCocompletions-url] |
 | [FpCategories](FpCategories#readme) | Finitely presented categories by generating quivers and relations | [![HTML stable documentation][html-FpCategories-img]][html-FpCategories-url] [![PDF stable documentation][pdf-FpCategories-img]][pdf-FpCategories-url] |
+| [FpLinearCategories](FpLinearCategories#readme) | Finitely presented linear categories by generating quivers and relations | [![HTML stable documentation][html-FpLinearCategories-img]][html-FpLinearCategories-url] [![PDF stable documentation][pdf-FpLinearCategories-img]][pdf-FpLinearCategories-url] |
 | [FunctorCategories](FunctorCategories#readme) | Categories of functors | [![HTML stable documentation][html-FunctorCategories-img]][html-FunctorCategories-url] [![PDF stable documentation][pdf-FunctorCategories-img]][pdf-FunctorCategories-url] |
 | [GradedCategories](GradedCategories#readme) | Graded closures of categories | [![HTML stable documentation][html-GradedCategories-img]][html-GradedCategories-url] [![PDF stable documentation][pdf-GradedCategories-img]][pdf-GradedCategories-url] |
 | [InternalModules](InternalModules#readme) | Modules over internal algebras | [![HTML stable documentation][html-InternalModules-img]][html-InternalModules-url] [![PDF stable documentation][pdf-InternalModules-img]][pdf-InternalModules-url] |
@@ -73,6 +74,13 @@
 
 [pdf-FpCategories-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-FpCategories-url]: https://homalg-project.github.io/CategoricalTowers/FpCategories/download_pdf.html
+
+
+[html-FpLinearCategories-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-FpLinearCategories-url]: https://homalg-project.github.io/CategoricalTowers/FpLinearCategories/doc/chap0_mj.html
+
+[pdf-FpLinearCategories-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-FpLinearCategories-url]: https://homalg-project.github.io/CategoricalTowers/FpLinearCategories/download_pdf.html
 
 
 [html-FunctorCategories-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg

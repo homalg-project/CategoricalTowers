@@ -44,6 +44,13 @@ git subtree split --prefix=FpCategories -b FpCategories-split
 git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/FpCategories FpCategories-split:master
 echo ""
 
+# FpLinearCategories
+echo "Release FpLinearCategories"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/FpLinearCategories" --webdir "$PWD/gh-pages/FpLinearCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
+git subtree split --prefix=FpLinearCategories -b FpLinearCategories-split
+git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/FpLinearCategories FpLinearCategories-split:master
+echo ""
+
 # FunctorCategories
 echo "Release FunctorCategories"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/FunctorCategories" --webdir "$PWD/gh-pages/FunctorCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"

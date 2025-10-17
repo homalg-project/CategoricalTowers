@@ -54,6 +54,10 @@ while ! ./codecov -Z -v -s ../ -F FpCategories -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
+while ! ./codecov -Z -v -s ../ -F FpLinearCategories -t $CODECOV_TOKEN; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
 while ! ./codecov -Z -v -s ../ -F FunctorCategories -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
