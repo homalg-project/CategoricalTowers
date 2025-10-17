@@ -1,7 +1,7 @@
 #! @BeginChunk GroebnerBasisForLinearClosuresOfPathCategories
 
 #! @Example
-LoadPackage( "Algebroids", false );
+LoadPackage( "FpLinearCategories", false );
 #! true
 k := HomalgFieldOfRationals( );
 #! Q

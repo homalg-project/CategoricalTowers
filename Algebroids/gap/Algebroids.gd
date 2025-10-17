@@ -309,6 +309,7 @@ DeclareOperation( "IsomorphismOntoAlgebroidFromDataTables",
 #! @Returns a &CAP; functor
 DeclareOperation( "IsomorphismFromAlgebroidFromDataTables",
         [ IsAlgebroidFromDataTables, IsAlgebroid ] );
+#! @InsertChunk Functors_Between_QPA_Algebroid_and_AlgebroidFromDataTables
 
 ####################################
 #

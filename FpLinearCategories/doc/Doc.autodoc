@@ -1,0 +1,13 @@
+@Chapter Algebroids from data tables
+
+@Section Properties
+@Section Attributes
+@Section Operations
+@Section Constructors
+@Section GAP categories
+
+@Chapter Linear closures of path categories and their quotients
+@Section Constructors
+
+@Chapter Precompilation
+@InsertChunk PrecompileAdditiveClosureOfAlgebroidFromDataTables

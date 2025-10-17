@@ -1,0 +1,115 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# FpLinearCategories: Finitely presented linear categories by generating quivers and relations
+#
+# This file contains package meta data. For additional information on
+# the meaning and correct usage of these fields, please consult the
+# manual of the "Example" package as well as the comments in its
+# PackageInfo.g file.
+#
+SetPackageInfo( rec(
+
+PackageName := "FpLinearCategories",
+Subtitle := "Finitely presented linear categories by generating quivers and relations",
+Version := "2025.10-01",
+Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
+License := "GPL-2.0-or-later",
+
+Persons := [
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Mohamed",
+    LastName := "Barakat",
+    WWWHome := "https://mohamed-barakat.github.io/",
+    Email := "mohamed.barakat@uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Walter-Flex-Str. 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
+  ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Kamal",
+    LastName := "Saleh",
+    WWWHome := "https://github.com/kamalsaleh",
+    Email := "kamal.saleh@uni-siegen.de",
+    PostalAddress := Concatenation(
+                       "Department Mathematik\n",
+                       "Universität Siegen\n",
+                       "Walter-Flex-Straße 3\n",
+                       "57072 Siegen\n",
+                       "Germany" ),
+    Place := "Siegen",
+    Institution := "Universität Siegen",
+  ),
+],
+
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://homalg-project.github.io/pkg/FpLinearCategories",
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/FpLinearCategories/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/FpLinearCategories/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/FpLinearCategories-", ~.Version, "/FpLinearCategories-", ~.Version ),
+# END URLS
+
+ArchiveFormats := ".tar.gz .zip",
+
+##  Status information. Currently the following cases are recognized:
+##    "accepted"      for successfully refereed packages
+##    "submitted"     for packages submitted for the refereeing
+##    "deposited"     for packages for which the GAP developers agreed
+##                    to distribute them with the core GAP system
+##    "dev"           for development versions of packages
+##    "other"         for all other packages
+##
+Status := "dev",
+
+AbstractHTML   :=  "",
+
+PackageDoc := rec(
+  BookName  := "FpLinearCategories",
+  ArchiveURLSubset := ["doc"],
+  HTMLStart := "doc/chap0.html",
+  PDFFile   := "doc/manual.pdf",
+  SixFile   := "doc/manual.six",
+  LongTitle := "Finitely presented linear categories by generating quivers and relations",
+),
+
+Dependencies := rec(
+  GAP := ">= 4.13.0",
+  NeededOtherPackages := [ [ "CAP", ">= 2025.06-05" ],
+                           [ "FpCategories", ">= 2025.07-01" ],
+                           [ "QuotientCategories", ">= 2025.08-03" ],
+                           [ "LinearClosuresForCAP", ">= 2025.07-01" ],
+                           [ "AdditiveClosuresForCAP", ">= 2025.07-03" ],
+                           [ "FreydCategoriesForCAP", "2025.08-02" ],
+                         ],
+  SuggestedOtherPackages := [
+#    [ "PreSheaves", ">= 2023.07-03" ],
+   ],
+  ExternalConditions := [ ],
+),
+
+Extensions := [
+#  rec(
+#    needed := [ [ "FinSetsForCAP", ">= 2023.07-03" ] ],
+#    filename := "gap/HomomorphismStructure.gi",
+#  ),
+],
+
+AvailabilityTest := function()
+        return true;
+    end,
+
+Keywords := [ "Algebroid", "finitely presented linear categories", "quiver with relations" ],
+
+TestFile := "tst/testall.g",
+
+));

@@ -5,20 +5,6 @@
 #
 
 ##
-InstallMethod( Dimension,
-        "for an algebroid",
-        [ IsCapCategory and IsObjectFiniteCategory and IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms ],
-        
-  function( A )
-    local objects;
-    
-    objects := SetOfObjects( A );
-    
-    return Sum( objects, s -> Sum( objects, t -> ObjectDatum( HomomorphismStructureOnObjects( s, t ) ) ) );
-    
-end );
-
-##
 InstallMethod( AssociatedRightQuiver,
         "for a finite quiver",
         [ IsFinQuiver ],

@@ -4,12 +4,12 @@
 
 #! #@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"
 
-LoadPackage( "Algebroids", false );
+LoadPackage( "FpLinearCategories", false );
 #! true
 LoadPackage( "CompilerForCAP", ">= 2024.07-09", false );
 #! true
 
-ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
+ReadPackageOnce( "FpLinearCategories", "gap/CompilerLogic.gi" );
 #! true
 
 CapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], input_types -> input_types[1] );;
@@ -35,7 +35,7 @@ given_arguments :=
 
 compiled_category_name := "AdditiveClosureOfAlgebroidFromDataTablesPrecompiled";;
 
-package_name := "Algebroids";;
+package_name := "FpLinearCategories";;
 
 CapJitPrecompileCategoryAndCompareResult(
     category_constructor,
