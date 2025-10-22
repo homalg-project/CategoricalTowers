@@ -52,51 +52,51 @@
     [4X[25Xgap>[125X [27XFinBouquets;[127X[104X
     [4X[28XFinBouquets[128X[104X
     [4X[25Xgap>[125X [27XChat := ModelingCategory( FinBouquets );[127X[104X
-    [4X[28XFiniteCocompletion( PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )[128X[104X
+    [4X[28XFiniteCocompletion( PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XColimitQuiversC := CategoryOfColimitQuivers([127X[104X
     [4X[25X>[125X [27X                 UnderlyingCategory( FinBouquets ) );[127X[104X
     [4X[28XCategoryOfColimitQuivers([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XP := ColimitQuiversC.P;[127X[104X
     [4X[28X<A projective object in CategoryOfColimitQuivers([128X[104X
-    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )>[128X[104X
+    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
     [4X[28X[ [ <(P)> ], [  ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in CategoryOfColimitQuivers([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27XL := ColimitQuiversC.L;[127X[104X
     [4X[28X<A projective object in CategoryOfColimitQuivers([128X[104X
-    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )>[128X[104X
+    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( L );[127X[104X
     [4X[28X[ [ <(L)> ], [  ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in CategoryOfColimitQuivers([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27Xb := ColimitQuiversC.b;[127X[104X
     [4X[28X<A morphism in CategoryOfColimitQuivers([128X[104X
-    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )>[128X[104X
+    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( b );[127X[104X
     [4X[28XSource: [ [ <(P)> ], [  ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in CategoryOfColimitQuivers([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
     [4X[28X[128X[104X
     [4X[28XDatum:  [ [ [ 0 ], [ (P)-[(b)]->(L) ] ], [  ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XRange:  [ [ <(L)> ], [  ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in CategoryOfColimitQuivers([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in CategoryOfColimitQuivers([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27XF := CreateBouquet( 3, [ 0, 0, 0, 2 ] );[127X[104X
     [4X[28X<An object in FinBouquets>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( F );[127X[104X
     [4X[28X( { 0, 1, 2 }, { 0 ↦ 0, 1 ↦ 0, 2 ↦ 0, 3 ↦ 2 } )[128X[104X
     [4X[25Xgap>[125X [27XF_as_presheaf := ModelingObject( Chat, ModelingObject( FinBouquets, F ) );[127X[104X
-    [4X[28X<An object in PreSheaves( PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ),[128X[104X
+    [4X[28X<An object in PreSheaves( PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ),[128X[104X
     [4X[28X SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( F_as_presheaf );[127X[104X
     [4X[28XImage of <(P)>:[128X[104X
@@ -108,18 +108,18 @@
     [4X[28XImage of (P)-[(b)]->(L):[128X[104X
     [4X[28X{ 0,..., 3 } ⱶ[ 0, 0, 0, 2 ]→ { 0, 1, 2 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in PreSheaves( PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ),[128X[104X
+    [4X[28XAn object in PreSheaves( PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ),[128X[104X
     [4X[28XSkeletalFinSets ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27XF_as_coequalizer_object := CoYonedaLemmaOnObjects( F_as_presheaf );[127X[104X
     [4X[28X<An object in FiniteColimitCompletionWithStrictCoproducts([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )>[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XColimitCompletionC := CapCategory( F_as_coequalizer_object );[127X[104X
     [4X[28XFiniteColimitCompletionWithStrictCoproducts([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( ColimitCompletionC );[127X[104X
     [4X[28XA CAP category with name[128X[104X
     [4X[28XFiniteColimitCompletionWithStrictCoproducts([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ):[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ):[128X[104X
     [4X[28X[128X[104X
     [4X[28X18 primitive operations were used to derive 63 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
@@ -131,13 +131,13 @@
     [4X[28X[ 7, [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)> ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in FiniteStrictCoproductCompletion( PathCategory([128X[104X
-    [4X[28XFinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data[128X[104X
+    [4X[28XFinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
     [4X[28X[128X[104X
     [4X[28XImage of <(A)>:[128X[104X
     [4X[28X[ 4, [ <(P)>, <(P)>, <(P)>, <(P)> ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in FiniteStrictCoproductCompletion( PathCategory([128X[104X
-    [4X[28XFinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data[128X[104X
+    [4X[28XFinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
     [4X[28X[128X[104X
     [4X[28XImage of (V)-[(s)]->(A):[128X[104X
     [4X[28X{ 0,..., 3 } ⱶ[ 0, 0, 0, 2 ]→ { 0,..., 6 }[128X[104X
@@ -145,7 +145,7 @@
     [4X[28X[ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P) ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in FiniteStrictCoproductCompletion( PathCategory([128X[104X
-    [4X[28XFinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data[128X[104X
+    [4X[28XFinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
     [4X[28X[128X[104X
     [4X[28XImage of (V)-[(t)]->(A):[128X[104X
     [4X[28X{ 0,..., 3 } ⱶ[ 3, 4, 5, 6 ]→ { 0,..., 6 }[128X[104X
@@ -153,27 +153,27 @@
     [4X[28X[ (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L) ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in FiniteStrictCoproductCompletion( PathCategory([128X[104X
-    [4X[28XFinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data[128X[104X
+    [4X[28XFinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in PreSheaves( PathCategory( FinQuiver( "q(V,A)[s:V-≻A,t:V-≻A]" ) ),[128X[104X
+    [4X[28XAn object in PreSheaves( PathCategory( FinQuiver( "q(V,A)[s:V→A,t:V→A]" ) ),[128X[104X
     [4X[28XFiniteStrictCoproductCompletion([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) ) given by the above data[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) ) given by the above data[128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in FiniteColimitCompletionWithStrictCoproducts([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27XF_as_presheaf =[127X[104X
     [4X[25X>[125X [27X  Coequalizer( AssociatedCoequalizerPairInPreSheaves( F_as_coequalizer_object )[2] );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XF_as_colimit_quiver := AssociatedColimitQuiver( F_as_coequalizer_object );[127X[104X
     [4X[28X<An object in CategoryOfColimitQuivers([128X[104X
-    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )>[128X[104X
+    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( F_as_colimit_quiver );[127X[104X
     [4X[28X[ [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)> ],[128X[104X
     [4X[28X  [ [ 0, (P)-[(b)]->(L), 3 ], [ 0, (P)-[(b)]->(L), 4 ],[128X[104X
     [4X[28X    [ 0, (P)-[(b)]->(L), 5 ], [ 2, (P)-[(b)]->(L), 6 ] ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in CategoryOfColimitQuivers([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27XF_as_presheaf =[127X[104X
     [4X[25X>[125X [27X  Coequalizer( AssociatedCoequalizerPairInPreSheaves( F_as_colimit_quiver )[2] );[127X[104X
     [4X[28Xtrue[128X[104X

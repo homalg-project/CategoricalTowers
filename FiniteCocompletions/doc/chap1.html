@@ -212,44 +212,44 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FinBouquets;</span>
 FinBouquets
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Chat := ModelingCategory( FinBouquets );</span>
-FiniteCocompletion( PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )
+FiniteCocompletion( PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UC := FiniteStrictCoproductCompletion(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                 UnderlyingCategory( FinBouquets ) );</span>
 FiniteStrictCoproductCompletion(
-PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )
+PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := UC.P;</span>
 &lt;An object in FiniteStrictCoproductCompletion(
- PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )&gt;
+ PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
 [ 1, [ &lt;(P)&gt; ] ]
 
 An object in FiniteStrictCoproductCompletion(
-PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
+PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := UC.L;</span>
 &lt;An object in FiniteStrictCoproductCompletion(
- PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )&gt;
+ PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( L );</span>
 [ 1, [ &lt;(L)&gt; ] ]
 
 An object in FiniteStrictCoproductCompletion(
-PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
+PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := UC.b;</span>
 &lt;A morphism in FiniteStrictCoproductCompletion(
- PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )&gt;
+ PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( b );</span>
 { 0 } ⱶ[ 0 ]→ { 0 }
 
 [ (P)-[(b)]-&gt;(L) ]
 
 A morphism in FiniteStrictCoproductCompletion(
-PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
+PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( UC );</span>
 |1|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( P, L );</span>
 |1|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homPL := MorphismsOfExternalHom( P, L );</span>
 [ &lt;A morphism in FiniteStrictCoproductCompletion(
-   PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )&gt; ]
+   PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( homPL, m -&gt; HomStructure( P, L, HomStructure( m ) ) = m );</span>
 [ true ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( b, b );</span>
@@ -260,10 +260,10 @@ PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data
 |1| → |1|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := Coproduct( P, L, P );</span>
 &lt;An object in FiniteStrictCoproductCompletion(
- PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )&gt;
+ PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := Coproduct( L, P, L );</span>
 &lt;An object in FiniteStrictCoproductCompletion(
- PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )&gt;
+ PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( M, N );</span>
 |18|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( P, L );</span>
@@ -595,13 +595,13 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( delta );</span>
 { 0, 1 } ⱶ[ 0, 0 ]→ { 0 }
 
-[ id(a):C.a -≻ C.a, id(a):C.a -≻ C.a ]
+[ id(a):C.a → C.a, id(a):C.a → C.a ]
 
 A morphism in
 FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_a := IdentityMorphism( C.a );</span>
-id(a):C.a -≻ C.a
+id(a):C.a → C.a
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta = CocartesianCodiagonal( a, 2 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CellAsEvaluatableString( delta, [ "C", "UC" ] );</span>

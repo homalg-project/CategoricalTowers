@@ -142,44 +142,44 @@
     [4X[25Xgap>[125X [27XFinBouquets;[127X[104X
     [4X[28XFinBouquets[128X[104X
     [4X[25Xgap>[125X [27XChat := ModelingCategory( FinBouquets );[127X[104X
-    [4X[28XFiniteCocompletion( PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )[128X[104X
+    [4X[28XFiniteCocompletion( PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XUC := FiniteStrictCoproductCompletion([127X[104X
     [4X[25X>[125X [27X                 UnderlyingCategory( FinBouquets ) );[127X[104X
     [4X[28XFiniteStrictCoproductCompletion([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XP := UC.P;[127X[104X
     [4X[28X<An object in FiniteStrictCoproductCompletion([128X[104X
-    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )>[128X[104X
+    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
     [4X[28X[ 1, [ <(P)> ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in FiniteStrictCoproductCompletion([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27XL := UC.L;[127X[104X
     [4X[28X<An object in FiniteStrictCoproductCompletion([128X[104X
-    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )>[128X[104X
+    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( L );[127X[104X
     [4X[28X[ 1, [ <(L)> ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in FiniteStrictCoproductCompletion([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27Xb := UC.b;[127X[104X
     [4X[28X<A morphism in FiniteStrictCoproductCompletion([128X[104X
-    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )>[128X[104X
+    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( b );[127X[104X
     [4X[28X{ 0 } ⱶ[ 0 ]→ { 0 }[128X[104X
     [4X[28X[128X[104X
     [4X[28X[ (P)-[(b)]->(L) ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in FiniteStrictCoproductCompletion([128X[104X
-    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) ) given by the above data[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( UC );[127X[104X
     [4X[28X|1|[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( P, L );[127X[104X
     [4X[28X|1|[128X[104X
     [4X[25Xgap>[125X [27XhomPL := MorphismsOfExternalHom( P, L );[127X[104X
     [4X[28X[ <A morphism in FiniteStrictCoproductCompletion([128X[104X
-    [4X[28X   PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )> ][128X[104X
+    [4X[28X   PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )> ][128X[104X
     [4X[25Xgap>[125X [27XList( homPL, m -> HomStructure( P, L, HomStructure( m ) ) = m );[127X[104X
     [4X[28X[ true ][128X[104X
     [4X[25Xgap>[125X [27XHomStructure( b, b );[127X[104X
@@ -190,10 +190,10 @@
     [4X[28X|1| → |1|[128X[104X
     [4X[25Xgap>[125X [27XM := Coproduct( P, L, P );[127X[104X
     [4X[28X<An object in FiniteStrictCoproductCompletion([128X[104X
-    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )>[128X[104X
+    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XN := Coproduct( L, P, L );[127X[104X
     [4X[28X<An object in FiniteStrictCoproductCompletion([128X[104X
-    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P-≻L]" ) ) )>[128X[104X
+    [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( M, N );[127X[104X
     [4X[28X|18|[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( P, L );[127X[104X
@@ -509,13 +509,13 @@
     [4X[25Xgap>[125X [27XDisplay( delta );[127X[104X
     [4X[28X{ 0, 1 } ⱶ[ 0, 0 ]→ { 0 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28X[ id(a):C.a -≻ C.a, id(a):C.a -≻ C.a ][128X[104X
+    [4X[28X[ id(a):C.a → C.a, id(a):C.a → C.a ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xid_a := IdentityMorphism( C.a );[127X[104X
-    [4X[28Xid(a):C.a -≻ C.a[128X[104X
+    [4X[28Xid(a):C.a → C.a[128X[104X
     [4X[25Xgap>[125X [27Xdelta = CocartesianCodiagonal( a, 2 );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XCellAsEvaluatableString( delta, [ "C", "UC" ] );[127X[104X

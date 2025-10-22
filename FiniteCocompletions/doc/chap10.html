@@ -50,43 +50,43 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-&gt;SG,rhoT:TR-&gt;TG,phi:SG-&gt;TG,chi:SR-&gt;TR]" );</span>
-FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" )
+FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PathCategory( q );</span>
 PathCategory(
-FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )
+FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := P / [ [ P.rhoS * P.phi, P.chi * P.rhoT ] ];</span>
 PathCategory(
-FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )
+FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
 / [ rhoS⋅phi = chi⋅rhoT ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz := HomalgRingOfIntegers( );</span>
 Z
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := LinearClosure( zz, C );</span>
 Z-LinearClosure( PathCategory(
-FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )
+FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
 / [ rhoS⋅phi = chi⋅rhoT ] )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AdditiveClosure( L );</span>
 AdditiveClosure( Z-LinearClosure( PathCategory(
-FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )
+FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
 / [ rhoS⋅phi = chi⋅rhoT ] ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := CoFreydCategory( A );</span>
 CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory(
-FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )
+FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
 / [ rhoS⋅phi = chi⋅rhoT ] ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreydCategory( K );</span>
 Freyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory(
-FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )
+FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
 / [ rhoS⋅phi = chi⋅rhoT ] ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := CokernelObject( F.rhoS );</span>
 &lt;An object in Freyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory(
- FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )
+ FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
  / [ rhoS⋅phi = chi⋅rhoT ] ) ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := CokernelObject( F.rhoT );</span>
 &lt;An object in Freyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory(
- FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )
+ FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
  / [ rhoS⋅phi = chi⋅rhoT ] ) ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MorphismConstructor( S, K.phi, T );</span>
 &lt;A morphism in Freyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory(
- FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )
+ FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
  / [ rhoS⋅phi = chi⋅rhoT ] ) ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
 true

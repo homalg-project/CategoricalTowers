@@ -16,43 +16,43 @@
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xq := FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR->SG,rhoT:TR->TG,phi:SG->TG,chi:SR->TR]" );[127X[104X
-    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" )[128X[104X
+    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" )[128X[104X
     [4X[25Xgap>[125X [27XP := PathCategory( q );[127X[104X
     [4X[28XPathCategory([128X[104X
-    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )[128X[104X
     [4X[25Xgap>[125X [27XC := P / [ [ P.rhoS * P.phi, P.chi * P.rhoT ] ];[127X[104X
     [4X[28XPathCategory([128X[104X
-    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )[128X[104X
     [4X[28X/ [ rhoS⋅phi = chi⋅rhoT ][128X[104X
     [4X[25Xgap>[125X [27Xzz := HomalgRingOfIntegers( );[127X[104X
     [4X[28XZ[128X[104X
     [4X[25Xgap>[125X [27XL := LinearClosure( zz, C );[127X[104X
     [4X[28XZ-LinearClosure( PathCategory([128X[104X
-    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )[128X[104X
     [4X[28X/ [ rhoS⋅phi = chi⋅rhoT ] )[128X[104X
     [4X[25Xgap>[125X [27XA := AdditiveClosure( L );[127X[104X
     [4X[28XAdditiveClosure( Z-LinearClosure( PathCategory([128X[104X
-    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )[128X[104X
     [4X[28X/ [ rhoS⋅phi = chi⋅rhoT ] ) )[128X[104X
     [4X[25Xgap>[125X [27XK := CoFreydCategory( A );[127X[104X
     [4X[28XCoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory([128X[104X
-    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )[128X[104X
     [4X[28X/ [ rhoS⋅phi = chi⋅rhoT ] ) ) )[128X[104X
     [4X[25Xgap>[125X [27XF := FreydCategory( K );[127X[104X
     [4X[28XFreyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory([128X[104X
-    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28XFinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )[128X[104X
     [4X[28X/ [ rhoS⋅phi = chi⋅rhoT ] ) ) ) )[128X[104X
     [4X[25Xgap>[125X [27XS := CokernelObject( F.rhoS );[127X[104X
     [4X[28X<An object in Freyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory([128X[104X
-    [4X[28X FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28X FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )[128X[104X
     [4X[28X / [ rhoS⋅phi = chi⋅rhoT ] ) ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XT := CokernelObject( F.rhoT );[127X[104X
     [4X[28X<An object in Freyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory([128X[104X
-    [4X[28X FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28X FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )[128X[104X
     [4X[28X / [ rhoS⋅phi = chi⋅rhoT ] ) ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xpsi := MorphismConstructor( S, K.phi, T );[127X[104X
     [4X[28X<A morphism in Freyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory([128X[104X
-    [4X[28X FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-≻SG,rhoT:TR-≻TG,phi:SG-≻TG,chi:SR-≻TR]" ) )[128X[104X
+    [4X[28X FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )[128X[104X
     [4X[28X / [ rhoS⋅phi = chi⋅rhoT ] ) ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
     [4X[28Xtrue[128X[104X

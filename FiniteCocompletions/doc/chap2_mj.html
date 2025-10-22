@@ -420,13 +420,13 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( delta );</span>
 { 0, 1 } ⱶ[ 0, 0 ]→ { 0 }
 
-[ id(a):C.a -≻ C.a, id(a):C.a -≻ C.a ]
+[ id(a):C.a → C.a, id(a):C.a → C.a ]
 
 A morphism in
 FiniteStrictProductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_a := IdentityMorphism( C.a );</span>
-id(a):C.a -≻ C.a
+id(a):C.a → C.a
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta = CartesianDiagonal( a, 2 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CellAsEvaluatableString( delta, [ "C", "PC" ] );</span>

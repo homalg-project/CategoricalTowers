@@ -341,13 +341,13 @@
     [4X[25Xgap>[125X [27XDisplay( delta );[127X[104X
     [4X[28X{ 0, 1 } ⱶ[ 0, 0 ]→ { 0 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28X[ id(a):C.a -≻ C.a, id(a):C.a -≻ C.a ][128X[104X
+    [4X[28X[ id(a):C.a → C.a, id(a):C.a → C.a ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictProductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xid_a := IdentityMorphism( C.a );[127X[104X
-    [4X[28Xid(a):C.a -≻ C.a[128X[104X
+    [4X[28Xid(a):C.a → C.a[128X[104X
     [4X[25Xgap>[125X [27Xdelta = CartesianDiagonal( a, 2 );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XCellAsEvaluatableString( delta, [ "C", "PC" ] );[127X[104X

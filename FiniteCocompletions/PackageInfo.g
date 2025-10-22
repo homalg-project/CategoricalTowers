@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "FiniteCocompletions",
 Subtitle := "Finite (co)product/(co)limit (co)completions",
-Version := "2025.09-03",
-Date := "2025-09-17",
-Date := "2025-09-17",
+Version := "2025.10-01",
+Date := "2025-10-22",
+Date := "2025-10-22",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -80,8 +80,8 @@ Dependencies := rec(
                    [ "FinSetsForCAP", ">= 2024.03-01" ],
                    [ "Locales", ">= 2024.03-04" ],
                    [ "QuotientCategories", ">= 2025.08-03" ],
-                   [ "FpCategories", ">= 2025.08-03" ],
-                   [ "Algebroids", ">= 2024.09-04" ],
+                   [ "FpCategories", ">= 2025.09-01" ],
+                   [ "Algebroids", ">= 2025.09-05" ],
                    [ "PreSheaves", ">= 2025.08-03" ],
                    ],
   SuggestedOtherPackages := [ ],
