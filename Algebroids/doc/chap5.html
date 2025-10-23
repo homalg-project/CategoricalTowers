@@ -52,6 +52,9 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X79688A6682922CAA">5.2-17 UnderlyingAlgebra</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7B4BFB5E866D8D5C">5.2-18 Parity</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7A7CCE0F813E6C2C">5.2-19 POW</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X8559D56E79671079">5.2-20 DataTablesOfCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7BD4E09283053F67">5.2-21 IsomorphismOntoAlgebroidFromDataTables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7F19F2B081F85621">5.2-22 IsomorphismFromAlgebroidFromDataTables</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X7DE8E16C7C2D387B">5.3 <span class="Heading">Operations</span></a>
 </span>
@@ -304,6 +307,92 @@
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
 <p>The <var class="Arg">n</var>-th power of the algebroid <var class="Arg">A</var>. Admissible values for <var class="Arg">n</var> are <span class="Math">0,1,2</span>.</p>
+
+<p><a id="X8559D56E79671079" name="X8559D56E79671079"></a></p>
+
+<h5>5.2-20 DataTablesOfCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DataTablesOfCategory</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>The argument is a <span class="Math">k</span>-algebroid <var class="Arg">A</var> defined by a finite dimensional quiver-algebra. This operation extracts a data-tables record from <var class="Arg">A</var> which can be used to construct an algebroid <span class="Math">A</span>, that is isomorphic to <var class="Arg">A</var>.</p>
+
+<p><a id="X7BD4E09283053F67" name="X7BD4E09283053F67"></a></p>
+
+<h5>5.2-21 IsomorphismOntoAlgebroidFromDataTables</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismOntoAlgebroidFromDataTables</code>( <var class="Arg">A</var>, <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>The isomorphism from an algebroid <code class="code">A</code> onto the algebroid <code class="code">D</code> defined by data tables extracted from <code class="code">A</code>.</p>
+
+<p><a id="X7F19F2B081F85621" name="X7F19F2B081F85621"></a></p>
+
+<h5>5.2-22 IsomorphismFromAlgebroidFromDataTables</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromAlgebroidFromDataTables</code>( <var class="Arg">D</var>, <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>The isomorphism onto an algebroid <code class="code">A</code> from the algebroid <code class="code">D</code> defined by data tables extracted from <code class="code">A</code>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(0,1,2,3)[a:0-&gt;1,b:1-&gt;3,c:0-&gt;2,d:2-&gt;3,e:3-&gt;3]" );</span>
+q(0,1,2,3)[a:0-&gt;1,b:1-&gt;3,c:0-&gt;2,d:2-&gt;3,e:3-&gt;3]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeCategory( q );</span>
+FreeCategory( RightQuiver( "q(0,1,2,3)[a:0-&gt;1,b:1-&gt;3,c:0-&gt;2,d:2-&gt;3,e:3-&gt;3]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kF := k[F];</span>
+Algebroid( Q, FreeCategory( RightQuiver( "q(0,1,2,3)[a:0-&gt;1,b:1-&gt;3,c:0-&gt;2,d:2-&gt;3,
+e:3-&gt;3]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := kF / [ kF.e^3 ];</span>
+Algebroid( Q, FreeCategory( RightQuiver( "q(0,1,2,3)[a:0-&gt;1,b:1-&gt;3,c:0-&gt;2,d:2-&gt;3,
+e:3-&gt;3]" ) ) ) / relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( B );</span>
+Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] ) defined by
+4 objects and 5 generating morphisms
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := IsomorphismOntoAlgebroidFromDataTables( B, A );</span>
+Isomorphism functor onto algebroid from data tables
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := IsomorphismFromAlgebroidFromDataTables( A, B );</span>
+Isomorphism functor from algebroid from data tables
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := RandomMorphism( A, 10 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( PreCompose( V, U ), alpha ) = alpha;</span>
+true
+#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ExtendFunctorToAdditiveClosures( V );</span>
+Extension of Isomorphism functor from algebroid from data tables to
+additive closures
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">add_A := SourceOfFunctor( V );</span>
+AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] )
+defined by 4 objects and 5 generating morphisms )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsBound( add_A!.precompiled_functions_added );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">add_B := RangeOfFunctor( V );</span>
+AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(0,1,2,3)[a:0-&gt;1,
+b:1-&gt;3,c:0-&gt;2,d:2-&gt;3,e:3-&gt;3]" ) ) ) / relations )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsBound( add_B!.precompiled_functions_added );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o1 :=  RandomObject( add_A, [ [ 5 ], [ 1 ] ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o2 :=  RandomObject( add_A, [ [ 5 ], [ 1 ] ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V_o1 := V( o1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V_o2 := V( o2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s1 := Sum( BasisOfExternalHom( o1, o2 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s2 := Sum( BasisOfExternalHom( V_o1, V_o2 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V( s1 ) = s2;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := RandomMorphism( o1, o2, 20 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := RandomMorphism( o1, o2, 20 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V_f := V( f );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V_g := V( g );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m1 := UnderlyingMatrix( HomStructure( f, g ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m2 := UnderlyingMatrix( HomStructure( V_f, V_g ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m1 = m2;</span>
+true
+#@fi
+</pre></div>
 
 <p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
 

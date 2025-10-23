@@ -188,6 +188,89 @@
   
   [33X[0;0YThe [3Xn[103X-th power of the algebroid [3XA[103X. Admissible values for [3Xn[103X are [23X0,1,2[123X.[133X
   
+  [1X5.2-20 DataTablesOfCategory[101X
+  
+  [33X[1;0Y[29X[2XDataTablesOfCategory[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YThe   argument   is   a  [23Xk[123X-algebroid  [3XA[103X  defined  by  a  finite  dimensional
+  quiver-algebra.  This  operation  extracts a data-tables record from [3XA[103X which
+  can be used to construct an algebroid [23XA[123X, that is isomorphic to [3XA[103X.[133X
+  
+  [1X5.2-21 IsomorphismOntoAlgebroidFromDataTables[101X
+  
+  [33X[1;0Y[29X[2XIsomorphismOntoAlgebroidFromDataTables[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YThe  isomorphism  from  an  algebroid [10XA[110X onto the algebroid [10XD[110X defined by data
+  tables extracted from [10XA[110X.[133X
+  
+  [1X5.2-22 IsomorphismFromAlgebroidFromDataTables[101X
+  
+  [33X[1;0Y[29X[2XIsomorphismFromAlgebroidFromDataTables[102X( [3XD[103X, [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YThe  isomorphism  onto  an  algebroid [10XA[110X from the algebroid [10XD[110X defined by data
+  tables extracted from [10XA[110X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(0,1,2,3)[a:0->1,b:1->3,c:0->2,d:2->3,e:3->3]" );[127X[104X
+    [4X[28Xq(0,1,2,3)[a:0->1,b:1->3,c:0->2,d:2->3,e:3->3][128X[104X
+    [4X[25Xgap>[125X [27XF := FreeCategory( q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(0,1,2,3)[a:0->1,b:1->3,c:0->2,d:2->3,e:3->3]" ) )[128X[104X
+    [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XkF := k[F];[127X[104X
+    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(0,1,2,3)[a:0->1,b:1->3,c:0->2,d:2->3,[128X[104X
+    [4X[28Xe:3->3]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XB := kF / [ kF.e^3 ];[127X[104X
+    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(0,1,2,3)[a:0->1,b:1->3,c:0->2,d:2->3,[128X[104X
+    [4X[28Xe:3->3]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( B );[127X[104X
+    [4X[28XQ-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] ) defined by[128X[104X
+    [4X[28X4 objects and 5 generating morphisms[128X[104X
+    [4X[25Xgap>[125X [27XU := IsomorphismOntoAlgebroidFromDataTables( B, A );[127X[104X
+    [4X[28XIsomorphism functor onto algebroid from data tables[128X[104X
+    [4X[25Xgap>[125X [27XV := IsomorphismFromAlgebroidFromDataTables( A, B );[127X[104X
+    [4X[28XIsomorphism functor from algebroid from data tables[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := RandomMorphism( A, 10 );;[127X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( PreCompose( V, U ), alpha ) = alpha;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
+    [4X[25Xgap>[125X [27XV := ExtendFunctorToAdditiveClosures( V );[127X[104X
+    [4X[28XExtension of Isomorphism functor from algebroid from data tables to[128X[104X
+    [4X[28Xadditive closures[128X[104X
+    [4X[25Xgap>[125X [27Xadd_A := SourceOfFunctor( V );[127X[104X
+    [4X[28XAdditiveClosure( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] )[128X[104X
+    [4X[28Xdefined by 4 objects and 5 generating morphisms )[128X[104X
+    [4X[25Xgap>[125X [27XIsBound( add_A!.precompiled_functions_added );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xadd_B := RangeOfFunctor( V );[127X[104X
+    [4X[28XAdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(0,1,2,3)[a:0->1,[128X[104X
+    [4X[28Xb:1->3,c:0->2,d:2->3,e:3->3]" ) ) ) / relations )[128X[104X
+    [4X[25Xgap>[125X [27XIsBound( add_B!.precompiled_functions_added );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xo1 :=  RandomObject( add_A, [ [ 5 ], [ 1 ] ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xo2 :=  RandomObject( add_A, [ [ 5 ], [ 1 ] ] );;[127X[104X
+    [4X[25Xgap>[125X [27XV_o1 := V( o1 );;[127X[104X
+    [4X[25Xgap>[125X [27XV_o2 := V( o2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xs1 := Sum( BasisOfExternalHom( o1, o2 ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xs2 := Sum( BasisOfExternalHom( V_o1, V_o2 ) );;[127X[104X
+    [4X[25Xgap>[125X [27XV( s1 ) = s2;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xf := RandomMorphism( o1, o2, 20 );;[127X[104X
+    [4X[25Xgap>[125X [27Xg := RandomMorphism( o1, o2, 20 );;[127X[104X
+    [4X[25Xgap>[125X [27XV_f := V( f );;[127X[104X
+    [4X[25Xgap>[125X [27XV_g := V( g );;[127X[104X
+    [4X[25Xgap>[125X [27Xm1 := UnderlyingMatrix( HomStructure( f, g ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xm2 := UnderlyingMatrix( HomStructure( V_f, V_g ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xm1 = m2;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
   
   [1X5.3 [33X[0;0YOperations[133X[101X
   
