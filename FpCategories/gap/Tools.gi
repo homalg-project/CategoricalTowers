@@ -4,13 +4,15 @@
 # Implementations
 #
 
+
 ##
 InstallTrueMethod( IsObjectFiniteCategory, IsFinitelyPresentedCategory );
 InstallTrueMethod( IsFinitelyPresentedCategory, IsFiniteCategory );
 
+#= comment for Julia
 ##
 InstallMethod( SetOfGeneratingMorphisms,
-        [ IsInitialCategory ],
+        [ IsCapCategory and IsInitialCategory ],
         
   function( I )
     
@@ -31,6 +33,7 @@ InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
                          ObjectConstructor( cat_op, Source( mor ) ) ) );
     
 end );
+# =#
 
 ##
 InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
@@ -53,10 +56,14 @@ InstallMethod( SetOfGeneratingMorphismsAsUnresolvableAttribute,
 ## leads to a no-method-found-error when executing
 ## FunctorCategories/examples/PrecompilePreSheavesOfAlgebroidFromDataTablesInCategoryOfRows.g
 InstallMethod( DefiningTripleOfUnderlyingQuiver,
-        [ IsCapCategory and IsFinitelyPresentedCategory ],
+        [ IsCapCategory ],
         
   function( cat )
     local objs, mors;
+    
+    if not ( HasIsFinitelyPresentedCategory( cat ) and IsFinitelyPresentedCategory( cat ) ) then
+        TryNextMethod( );
+    fi;
     
     objs := SetOfObjectsOfCategory( cat );
     mors := SetOfGeneratingMorphismsOfCategory( cat );
@@ -72,10 +79,14 @@ end );
 ##
 InstallOtherMethod( Size,
         "for a finite category",
-        [ IsCapCategory and IsFiniteCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function( C )
     local H, objs;
+    
+    if not ( HasIsFiniteCategory( C ) and IsFiniteCategory( C ) and HasRangeCategoryOfHomomorphismStructure( C ) ) then
+        TryNextMethod( );
+    fi;
     
     H := RangeCategoryOfHomomorphismStructure( C );
     
@@ -102,12 +113,11 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
 );
 
 ##
-InstallMethodForCompilerForCAP( YonedaEmbeddingData,
-        [ IsCapCategory and HasDefiningTripleOfUnderlyingQuiver and HasRangeCategoryOfHomomorphismStructure ],
-        
-  function ( C )
+BindGlobal( "YONEDA_EMBEDDING_DATA",
+  function( C )
     local defining_triple, nr_objs, nr_mors, arrows, objs, mors, Yoneda_on_objs, Yoneda_on_mors;
     
+    #% CAP_JIT_RESOLVE_FUNCTION
     defining_triple := DefiningTripleOfUnderlyingQuiver( C );
     
     nr_objs := defining_triple[1];
@@ -156,6 +166,32 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingData,
     
 end );
 
+#= comment for Julia
+##
+InstallMethodForCompilerForCAP( YonedaEmbeddingData,
+        [ IsCapCategory and HasDefiningTripleOfUnderlyingQuiver and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( C )
+    
+    return YONEDA_EMBEDDING_DATA( C );
+    
+end );
+# =#
+
+##
+InstallMethod( YonedaEmbeddingData,
+        [ IsCapCategory ],
+        
+  function ( C )
+    
+    if not ( HasDefiningTripleOfUnderlyingQuiver( C ) and HasRangeCategoryOfHomomorphismStructure( C ) ) then
+        TryNextMethod( );
+    fi;
+    
+    return YONEDA_EMBEDDING_DATA( C );
+    
+end );
+
 ##
 CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
         rec(
@@ -167,12 +203,11 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
 );
 
 ##
-InstallMethodForCompilerForCAP( CoYonedaEmbeddingData,
-        [ IsCapCategory and HasDefiningTripleOfUnderlyingQuiver and HasRangeCategoryOfHomomorphismStructure ],
-        
+BindGlobal( "COYONEDA_EMBEDDING_DATA",
   function ( C )
     local defining_triple, nr_objs, nr_mors, arrows, objs, mors, coYoneda_on_objs, coYoneda_on_mors;
     
+    #% CAP_JIT_RESOLVE_FUNCTION
     defining_triple := DefiningTripleOfUnderlyingQuiver( C );
     
     nr_objs := defining_triple[1];
@@ -221,15 +256,40 @@ InstallMethodForCompilerForCAP( CoYonedaEmbeddingData,
     
 end );
 
+#= comment for Julia
 ##
-InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
-        [ IsCapCategory and IsFiniteCategory ],
+InstallMethodForCompilerForCAP( CoYonedaEmbeddingData,
+        [ IsCapCategory and HasDefiningTripleOfUnderlyingQuiver and HasRangeCategoryOfHomomorphismStructure ],
         
+  function ( C )
+    
+    return COYONEDA_EMBEDDING_DATA( C );
+    
+end );
+# =#
+
+##
+InstallMethod( CoYonedaEmbeddingData,
+        [ IsCapCategory ],
+        
+  function ( C )
+    
+    if not ( HasDefiningTripleOfUnderlyingQuiver( C ) and HasRangeCategoryOfHomomorphismStructure( C ) ) then
+        TryNextMethod( );
+    fi;
+    
+    return COYONEDA_EMBEDDING_DATA( C );
+    
+end );
+
+##
+BindGlobal( "NERVE_TRUNCATED_IN_DEGREE2_DATA",
   function ( B )
     local A, sFinSets, B0, N0, D00, N0N0, p21, p22, B1, N1, N1_elements, d, id, pi2, s, t,
           D000, N0N0N0, p31, p32, p33, B2, N2, N2_elements, T, ds, is, dt, it,
           p312, p323, p313, pi3, pi312, pi323, pi313, ps, pt, mus, mus1, mus2, mus3, mu;
     
+    #% CAP_JIT_RESOLVE_FUNCTION
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
@@ -237,7 +297,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     B0 := SetOfObjects( B );
-    N0 := ObjectConstructor( sFinSets, Length( B0 ) );
+    N0 := ObjectConstructor( sFinSets, BigInt( Length( B0 ) ) );
     
     ## N0 × N0
     D00 := [ N0, N0 ];
@@ -269,15 +329,15 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     id := MorphismConstructor( sFinSets,
                   N0,
                   List( N0, i ->
-                        AsList(
-                               PreCompose( sFinSets,
+                            ( AsList(
+                                  PreCompose( sFinSets,
                                        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
                                                IdentityMorphism( B,
                                                        B0[1 + i] ) ),
                                        InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                B1,
-                                               1 + AsList( d )[1 + i],
-                                               N1 ) ) )[1 + 0] ),
+                                               Int( 1 + AsList( d )[1 + i] ),
+                                               N1 ) ) )[1 + 0] ) ),
                   N1 );
     
     ## N1 -> N0 × N0
@@ -338,7 +398,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                [ LiftAlongMonomorphism( sFinSets,
                                                        InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                                B1,
-                                                               1 + AsList( pi2 )[1 + i],
+                                                               Int( 1 + AsList( pi2 )[1 + i] ),
                                                                N1 ),
                                                        N1_elements[1 + i] ),
                                                  InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
@@ -346,7 +406,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                                  B0[1 + AsList( t )[1 + i]] ) ) ] ),
                                        InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                B2,
-                                               1 + AsList( ds )[1 + i],
+                                               Int( 1 + AsList( ds )[1 + i] ),
                                                N2 ) ) )[1 + 0] ),
                   N2 );
     
@@ -368,16 +428,16 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                        DirectProductFunctorial( sFinSets,
                                                [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
                                                        IdentityMorphism( B,
-                                                               B0[1 + AsList( s )[1 + i]] ) ),
+                                                                 B0[1 + AsList( s )[1 + i]] ) ),
                                                  LiftAlongMonomorphism( sFinSets,
                                                          InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                                  B1,
-                                                                 1 + AsList( pi2 )[1 + i],
+                                                                 Int( 1 + AsList( pi2 )[1 + i] ),
                                                                  N1 ),
                                                          N1_elements[1 + i] ) ] ),
                                        InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                B2,
-                                               1 + AsList( dt )[1 + i],
+                                               Int( 1 + AsList( dt )[1 + i] ),
                                                N2 ) ) )[1 + 0] ),
                   N2 );
     
@@ -416,7 +476,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                        [ LiftAlongMonomorphism( sFinSets,
                                                InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                        B2,
-                                                       1 + AsList( pi3 )[1 + i],
+                                                       Int( 1 + AsList( pi3 )[1 + i] ),
                                                        N2 ),
                                                N2_elements[1 + i] ),
                                          ProjectionInFactorOfDirectProduct( sFinSets,
@@ -425,7 +485,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                  1 ),
                                          InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                  B1,
-                                                 1 + AsList( pi312 )[1 + i],
+                                                 Int( 1 + AsList( pi312 )[1 + i] ),
                                                  N1 ) ],
                                        N1 ) )[1 + 0] ),
                   N1 );
@@ -440,7 +500,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                        [ LiftAlongMonomorphism( sFinSets,
                                                InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                        B2,
-                                                       1 + AsList( pi3 )[ 1 + i],
+                                                       Int( 1 + AsList( pi3 )[ 1 + i] ),
                                                        N2 ),
                                                N2_elements[1 + i] ),
                                          ProjectionInFactorOfDirectProduct( sFinSets,
@@ -449,7 +509,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                  2 ),
                                          InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                  B1,
-                                                 1 + AsList( pi323 )[1 + i],
+                                                 Int( 1 + AsList( pi323 )[1 + i] ),
                                                  N1 ) ],
                                        N1 ) )[1 + 0] ),
                   N1 );
@@ -516,13 +576,13 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                        [ LiftAlongMonomorphism( sFinSets,
                                                InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                        B2,
-                                                       1 + AsList( pi3 )[1 + i],
+                                                       Int( 1 + AsList( pi3 )[1 + i] ),
                                                        N2 ),
                                                N2_elements[1 + i] ),
                                          mus3[1 + AsList( pi3 )[1 + i]],
                                          InjectionOfCofactorOfCoproductWithGivenCoproduct( sFinSets,
                                                  B1,
-                                                 1 + AsList( pi313 )[1 + i],
+                                                 Int( 1 + AsList( pi313 )[1 + i] ),
                                                  N1 ) ],
                                        N1 ) )[1 + 0] ),
                   N1 );
@@ -532,12 +592,42 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     
 end );
 
+#= comment for Julia
+##
+InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
+        [ IsCapCategory and IsFiniteCategory ],
+        
+  function ( B )
+    
+    return CallFuncListAtRuntime( NERVE_TRUNCATED_IN_DEGREE2_DATA, [ B ] );
+    
+end );
+# =#
+
+##
+InstallMethod( NerveTruncatedInDegree2Data,
+        [ IsCapCategory ],
+        
+  function ( B )
+    
+    if not ( HasIsFiniteCategory( B ) and IsFiniteCategory( B ) ) then
+        TryNextMethod( );
+    fi;
+    
+    return CallFuncListAtRuntime( NERVE_TRUNCATED_IN_DEGREE2_DATA, [ B ] );
+    
+end );
+
 ##
 InstallMethod( NerveTruncatedInDegree2AsFunctor,
-        [ IsCapCategory and IsFiniteCategory ],
+        [ IsCapCategory ],
         
   function ( C )
     local nerve, nerve_ValuesOnAllObjects, nerve_ValuesOnAllGeneratingMorphisms, name, Delta2, Delta2op;
+    
+    if not ( HasIsFiniteCategory( C ) and IsFiniteCategory( C ) ) then
+        TryNextMethod( );
+    fi;
     
     nerve := NerveTruncatedInDegree2Data( C );
     
@@ -569,10 +659,14 @@ end );
 ##
 InstallMethod( IndicesOfGeneratingMorphismsFromHomStructure,
         "for a finite category",
-        [ IsCapCategory and IsFiniteCategory ],
+        [ IsCapCategory ],
         
   function( C )
     local sFinSets, C0, N0, D00, N0N0, p21, p22, C1, T, st, mors;
+    
+    if not ( HasIsFiniteCategory( C ) and IsFiniteCategory( C ) ) then
+        TryNextMethod( );
+    fi;
     
     sFinSets := RangeCategoryOfHomomorphismStructure( C );
     
@@ -580,7 +674,7 @@ InstallMethod( IndicesOfGeneratingMorphismsFromHomStructure,
     Assert( 0, IsSkeletalCategoryOfFiniteSets( sFinSets ) );
     
     C0 := SetOfObjects( C );
-    N0 := ObjectConstructor( sFinSets, Length( C0 ) );
+    N0 := ObjectConstructor( sFinSets, BigInt( Length( C0 ) ) );
     
     D00 := [ N0, N0 ];
     
@@ -599,24 +693,32 @@ InstallMethod( IndicesOfGeneratingMorphismsFromHomStructure,
                 UniversalMorphismIntoDirectProduct( sFinSets,
                         D00,
                         T,
-                        [ MorphismConstructor( sFinSets, T, [ pair[1] ], N0 ),
-                          MorphismConstructor( sFinSets, T, [ pair[2] ], N0 ) ] ) );
+                        [ MorphismConstructor( sFinSets, T, [ BigInt( pair[1] ) ], N0 ),
+                          MorphismConstructor( sFinSets, T, [ BigInt( pair[2] ) ], N0 ) ] ) );
     
     mors := SetOfGeneratingMorphisms( C );
     
-    return List( [ 1 .. Length( st ) ], i ->
-                 Sum( C1{[ 1 .. AsList( st[i] )[1 + 0] ]}, Length ) +
-                 AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, mors[i] ) )[1 + 0] );
+    return List( [ 1 .. Length( st ) ],
+              function ( i )
+                local k, index;
+                k := AsList( st[i] )[1 + 0];
+                index := Sum( C1{ [ 1 .. k ] }, Length ) + AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, mors[i] ) )[1 + 0];
+                return Int( index );
+              end );
     
 end );
 
 ##
 InstallMethod( OppositeFiniteCategory,
         "for a finite category",
-        [ IsCapCategory and IsFiniteCategory ],
+        [ IsCapCategory ],
         
   function( C )
     local C_op, defining_triple;
+    
+    if not ( HasIsFiniteCategory( C ) and IsFiniteCategory( C ) ) then
+        TryNextMethod( );
+    fi;
     
     C_op := Opposite( C );
     
@@ -633,13 +735,12 @@ InstallMethod( OppositeFiniteCategory,
 end );
 
 ##
-InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
-        [ IsCapCategory and IsFiniteCategory ],
-        
+BindGlobal( "YONEDA_NATURAL_EPIMORPHISMS",
   function ( B )
     local sFinSets, objs, mors, o, m, Hom2, hom3, Hom3, tum2, emb2, sum2, iso2,
           B0, N0, N1, N2, D, precompose, pt, mu, s;
     
+    #% CAP_JIT_RESOLVE_FUNCTION
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
@@ -699,7 +800,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
                           emb2[c] ) );
     
     ## The constant functor of 0-cells B → sFinSets, c ↦ B_0, ψ ↦ id_{B_0}
-    B0 := ObjectConstructor( sFinSets, o );
+    B0 := ObjectConstructor( sFinSets, BigInt( o ) );
     
     N0 := Pair( ListWithIdenticalEntries( o, B0 ),
                 ListWithIdenticalEntries( m, IdentityMorphism( sFinSets, B0 ) ) );
@@ -744,8 +845,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
     ## mu_{a,b,c}: Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
     precompose :=
       function ( a, b, c )
-        return
-          MorphismConstructor( sFinSets,
+        return MorphismConstructor( sFinSets,
                   Hom3[c][a][b], # = Hom(a, b) × Hom(b, c)
                   List( Hom3[c][a][b],
                         function ( i )
@@ -771,7 +871,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
                           
                           ## reinterpret the composition m as a morphism D → Hom(a, c),
                           ## then get its number as an element in Hom(a, c):
-                          return AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B, m ) )[1 + 0];
+                          return BigInt( AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B, m ) )[1 + 0] );
                           
                       end ),
                   Hom2[c][a] ); # = Hom(a, c)
@@ -824,12 +924,42 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
     
 end );
 
+#= comment for Julia
+##
+InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
+        [ IsCapCategory and IsFiniteCategory ],
+        
+  function ( C )
+    
+    return YONEDA_NATURAL_EPIMORPHISMS( C );
+    
+end );
+# =#
+
+##
+InstallMethod( YonedaNaturalEpimorphisms,
+        [ IsCapCategory ],
+        
+  function ( C )
+    
+    if not ( HasIsFiniteCategory( C ) and IsFiniteCategory( C ) ) then
+        TryNextMethod( );
+    fi;
+    
+    return YONEDA_NATURAL_EPIMORPHISMS( C );
+    
+end );
+
 ##
 InstallMethod( YonedaProjectionAsNaturalEpimorphism,
-        [ IsCapCategory and IsFiniteCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function ( B )
     local Yepis, sFinSets, N1, N2, pt;
+    
+    if not (HasIsFiniteCategory( B ) and IsFiniteCategory( B ) and HasRangeCategoryOfHomomorphismStructure( B )) then
+        TryNextMethod( );
+    fi;
     
     Yepis := YonedaNaturalEpimorphisms( B );
     
@@ -864,10 +994,14 @@ end );
 
 ##
 InstallMethod( YonedaCompositionAsNaturalEpimorphism,
-        [ IsCapCategory and IsFiniteCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function ( B )
     local Yepis, sFinSets, N1, N2, mu;
+    
+    if not (HasIsFiniteCategory( B ) and IsFiniteCategory( B ) and HasRangeCategoryOfHomomorphismStructure( B )) then
+        TryNextMethod( );
+    fi;
     
     Yepis := YonedaNaturalEpimorphisms( B );
     
@@ -902,10 +1036,14 @@ end );
 
 ##
 InstallMethod( YonedaFibrationAsNaturalTransformation,
-        [ IsCapCategory and IsFiniteCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function ( B )
     local Yepis, sFinSets, N0, N1;
+    
+    if not (HasIsFiniteCategory( B ) and IsFiniteCategory( B ) and HasRangeCategoryOfHomomorphismStructure( B )) then
+        TryNextMethod( );
+    fi;
     
     Yepis := YonedaNaturalEpimorphisms( B );
     
@@ -932,15 +1070,14 @@ InstallMethod( YonedaFibrationAsNaturalTransformation,
 end );
 
 ##
-InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
-        [ IsCapCategory and IsFiniteCategory ],
-        
+BindGlobal( "TRUTH_MORPHISM_OF_TRUE_TO_SIEVE_FUNCTOR_AND_EMBEDDING",
   function ( B )
     local sFinSets, D, Omega, Yepis, Ymu, Ypt, sieves, defining_triple, lobjs, lmors, arrows, id, N1,
           Sieves, Sieves_emb, Sieves_maximal,
           HomHomOmega_objects, HomHomOmega_morphisms, Sieves_objects, Sieves_morphisms,
           Constant_functor, Sieves_functor, HomHomOmega_functor;
     
+    #% CAP_JIT_RESOLVE_FUNCTION
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
@@ -1059,6 +1196,32 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
                          HomHomOmega_morphisms ),
                    Sieves_maximal,
                    Sieves_emb  );
+    
+end );
+
+#= comment for Julia
+##
+InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
+        [ IsCapCategory and IsFiniteCategory ],
+        
+  function ( B )
+    
+    return TRUTH_MORPHISM_OF_TRUE_TO_SIEVE_FUNCTOR_AND_EMBEDDING( B );
+    
+end );
+# =#
+
+##
+InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
+        [ IsCapCategory ],
+        
+  function ( B )
+    
+    if not ( HasIsFiniteCategory( B ) and IsFiniteCategory( B ) ) then
+        TryNextMethod( );
+    fi;
+    
+    return TRUTH_MORPHISM_OF_TRUE_TO_SIEVE_FUNCTOR_AND_EMBEDDING( B );
     
 end );
 

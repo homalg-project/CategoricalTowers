@@ -8,21 +8,14 @@
 InstallMethod( PathCategory,
           [ IsFinQuiver ],
   
-  function ( q )
-    local admissible_order, name, C, range_of_HomStructure;
-    
-    admissible_order := ValueOption( "admissible_order" );
-    
-    if admissible_order = fail then
-        
-        ## like QPA
-        admissible_order := "dp";
-        
-    elif not admissible_order in [ "dp", "Dp" ] then
-        
-        Error( "only \"dp\" and \"Dp\" admissible orders are supported!\n" );
-        
-    fi;
+  FunctionWithNamedArguments(
+  [
+    [ "admissible_order", fail ],
+    [ "FinalizeCategory", false ],
+    [ "range_of_HomStructure", fail ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, q )
+    local name, C, range_cat;
     
     name := Concatenation( "PathCategory( ", Name( q ), " )" );
     
@@ -40,7 +33,15 @@ InstallMethod( PathCategory,
     
     C!.category_as_first_argument := true;
     
-    C!.admissible_order := admissible_order;
+    if CAP_NAMED_ARGUMENTS.admissible_order = fail then
+      
+      C!.admissible_order := "dp";
+      
+    else
+      
+      C!.admissible_order := CAP_NAMED_ARGUMENTS.admissible_order;
+      
+    fi;
     
     SetIsFinitelyPresentedCategory( C, true );
     
@@ -134,10 +135,10 @@ InstallMethod( PathCategory,
     AddIsEqualForMorphisms( C,
       function ( C, mor_1, mor_2 )
         
-        return IsEqualForObjects( C, Source( mor_1 ), Source( mor_2 ) )
-                and IsEqualForObjects( C, Target( mor_1 ), Target( mor_2 ) )
-                and MorphismLength( mor_1 ) = MorphismLength( mor_2 )
-                and MorphismIndices( mor_1 ) = MorphismIndices( mor_2 );
+        return IsEqualForObjects( C, Source( mor_1 ), Source( mor_2 ) ) and
+                IsEqualForObjects( C, Target( mor_1 ), Target( mor_2 ) ) and
+                MorphismLength( mor_1 ) = MorphismLength( mor_2 ) and
+                MorphismIndices( mor_1 ) = MorphismIndices( mor_2 );
         
     end );
     
@@ -193,7 +194,7 @@ InstallMethod( PathCategory,
         return List( [ 1 .. NumberOfMorphisms( q ) ], mor ->
                      MorphismConstructor( C,
                              SetOfObjects( C )[s[mor]],
-                             Pair( BigInt( 1 ), [ mor ] ),
+                             Pair( BigInt( 1 ), [ BigInt( mor ) ] ),
                              SetOfObjects( C )[t[mor]] ) );
         
     end );
@@ -214,9 +215,9 @@ InstallMethod( PathCategory,
         s := ObjectIndex( obj );
         t := Random( [ 1 .. NumberOfObjects( UnderlyingQuiver( C ) ) ] );
         
-        m := ExternalHomsWithGivenLength( C, 0, n )[s][t];
+        m := ExternalHomsWithGivenLength( C, BigInt( 0 ), BigInt( n ) )[s][t];
         
-        if m = [ ] then
+        if IsEmpty( m ) then
               return IdentityMorphism( C, obj );
         else
               return Random( m );
@@ -232,9 +233,9 @@ InstallMethod( PathCategory,
         s := Random( [ 1 .. NumberOfObjects( UnderlyingQuiver( C ) ) ] );
         t := ObjectIndex( obj );
         
-        m := ExternalHomsWithGivenLength( C, 0, n )[s][t];
+        m := ExternalHomsWithGivenLength( C, BigInt( 0 ), BigInt( n ) )[s][t];
         
-        if m = [ ] then
+        if IsEmpty( m ) then
               return IdentityMorphism( C, obj );
         else
               return Random( m );
@@ -250,12 +251,12 @@ InstallMethod( PathCategory,
         s := ObjectIndex( obj_1 );
         t := ObjectIndex( obj_2 );
         
-        p := PositionProperty( [ 1 .. n + 1 ], i -> ExternalHomsWithGivenLength( C, n + 1 - i )[s][t] <> [ ] );
+        p := PositionProperty( [ 1 .. n + 1 ], i -> not IsEmpty( ExternalHomsWithGivenLength( C, BigInt( n + 1 - i ) )[s][t] ) );
         
         if p = fail then
-              return fail;
+              Error( "The Hom-set between the specified source and target objects is empty!\n" );
         else
-              return Random( ExternalHomsWithGivenLength( C, n + 1 - p )[s][t] );
+              return Random( ExternalHomsWithGivenLength( C, BigInt( n + 1 - p ) )[s][t] );
         fi;
         
     end );
@@ -266,15 +267,15 @@ InstallMethod( PathCategory,
         
         SetIsFiniteCategory( C, true );
         
-        range_of_HomStructure := ValueOption( "range_of_HomStructure" );
+        range_cat := CAP_NAMED_ARGUMENTS.range_of_HomStructure;
         
-        if not IsSkeletalCategoryOfFiniteSets( range_of_HomStructure ) then
-            range_of_HomStructure := SkeletalFinSets;
+        if not IsSkeletalCategoryOfFiniteSets( range_cat ) then
+            range_cat := SkeletalFinSets;
         fi;
         
-        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( C, range_of_HomStructure );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( C, range_cat );
         
-        Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( C ), range_of_HomStructure ) );
+        Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( C ), range_cat ) );
         
         AddMorphismsOfExternalHom( C,
           function ( C, obj_1, obj_2 )
@@ -287,13 +288,17 @@ InstallMethod( PathCategory,
             
         end );
         
+    else
+        
+        SetIsFiniteCategory( C, false );
+        
     fi;
     
     Finalize( C );
     
     return C;
     
-end );
+end ) );
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
@@ -350,7 +355,7 @@ end );
 
 ##
 InstallMethod( ExternalHomsWithGivenLengthDataOp,
-        [ IsPathCategory, IsInt ],
+        [ IsPathCategory, IsBigInt ],
   
   function ( C, len )
     local q, nr_objs, nr_gmors, gmors, data, prev_data, r, j, s;
@@ -402,7 +407,7 @@ end );
 
 ##
 InstallMethod( ExternalHomsWithGivenLengthOp,
-        [ IsPathCategory, IsInt ],
+        [ IsPathCategory, IsBigInt ],
   
   function ( C, len )
     local q, supports;
@@ -416,7 +421,7 @@ InstallMethod( ExternalHomsWithGivenLengthOp,
                        List( supports[s][t], supp ->
                              MorphismConstructor( C,
                                      SetOfObjects( C )[s],
-                                     Pair( len, supp ),
+                                     Pair( len, List( supp, i -> BigInt( i ) ) ),
                                      SetOfObjects( C )[t] ) ) ) );
     
 end );
@@ -424,7 +429,7 @@ end );
 ##
 InstallOtherMethod( ExternalHomsWithGivenLength,
             "for path categories",
-        [ IsCapCategory, IsInt, IsInt ],
+        [ IsCapCategory, IsBigInt, IsBigInt ],
   
   function ( C, l, u )
     local nr_objs;
@@ -588,6 +593,7 @@ InstallMethod( LaTeXOutput,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( AssignSetOfObjects,
         [ IsPathCategory, IsString ],
@@ -663,6 +669,7 @@ InstallOtherMethod( AssignSetOfGeneratingMorphisms,
     AssignSetOfGeneratingMorphisms( C, "" );
     
 end );
+# =#
 
 ##
 InstallOtherMethod( \/,
@@ -675,110 +682,117 @@ InstallOtherMethod( \/,
 end );
 
 ##
-InstallMethod( \.,
-        "for an algebroid from data table and a positive integer",
-        [ IsPathCategory, IsPosInt ],
+InstallMethod( \/,
+        [ IsString, IsPathCategory ],
   
-  function ( C, string_as_int )
-    local name, q, objs_labels, mors_labels, p, id_mors_labels, label, labels, l, m, power;
-    
-    name := NameRNam( string_as_int );
+  function ( label, C )
+    local q, objs_labels, gmors_labels, p, id_mors_labels, sub_labels, gmor_label, l, m, power;
     
     q := UnderlyingQuiver( C );
     
     objs_labels := LabelsOfObjects( q );
-    mors_labels := LabelsOfMorphisms( q );
+    gmors_labels := LabelsOfMorphisms( q );
     
-    p := Position( objs_labels, name );
+    p := Position( objs_labels, label );
     
     if p <> fail then
-        return SetOfObjects( C )[p];
+        
+        return SetOfObjectsOfCategory( C )[p];
+        
     fi;
     
     id_mors_labels := List( objs_labels, obj -> Concatenation( "id(", obj, ")" ) );
     
-    if name in id_mors_labels then
+    if label in id_mors_labels then
         
-        label := name{[4 .. Length(name) - 1]};
+        label := label{ [ 4 .. Length( label ) - 1 ] };
         
         if label in objs_labels then
-            return IdentityMorphism( C, C.(label) );
+            
+            return IdentityMorphism( C, label / C );
+            
         fi;
         
     fi;
     
     id_mors_labels := List( objs_labels, obj -> Concatenation( "id_", obj ) );
     
-    if name in id_mors_labels then
+    if label in id_mors_labels then
         
-        label := name{[4 .. Length(name)]};
+        label := label{ [ 4 .. Length( label ) ] };
         
         if label in objs_labels then
-            return IdentityMorphism( C, C.(label) );
+            
+            return IdentityMorphism( C, label / C );
+            
         fi;
         
     fi;
     
-    p := Position( mors_labels, name );
+    p := Position( gmors_labels, label );
     
     if p <> fail then
-        return SetOfGeneratingMorphisms( C )[p];
+        
+        return SetOfGeneratingMorphismsOfCategory( C )[p];
+        
     fi;
     
-    if ForAny( [ "⋅", "*" ], s -> PositionSublist( name, s ) <> fail ) then
+    if ForAny( [ "⋅", "*" ], s -> PositionSublist( label, s ) <> fail ) then
       
-      labels := SplitString( ReplacedString( name, "⋅", "*" ), "*" );
+      sub_labels := SplitString( ReplacedString( label, "⋅", "*" ), "*" );
       
-      return PreComposeList( C, List( labels, label -> C.(label) ) );
+      return PreComposeList( C, List( sub_labels, sub_label -> sub_label / C ) );
       
     else
       
-      # starting matching at the end is usually less error prone
-      p := PositionProperty( mors_labels, label -> Length( name ) >= Length( label ) and IsMatchingSublist( name, label, Length( name ) - Length( label ) + 1 ) );
+      p := PositionProperty( gmors_labels, gmor_label -> EndsWith( label, gmor_label ) );
       
       if p <> fail then
           
-          label := mors_labels[p];
+          gmor_label := gmors_labels[p];
           
-          l := Length( name ) - Length( label );
+          l := Length( label ) - Length( gmor_label );
           
-          m := SetOfGeneratingMorphisms( C )[p];
+          m := SetOfGeneratingMorphismsOfCategory( C )[p];
           
           if l = 0 then
+              
               return m;
+              
           else
-              return PreCompose( C, C.(name{[1 .. l]}), m );
+              
+              return PreCompose( C, label{[ 1 .. l ]} / C, m );
+              
           fi;
           
       else
           
-          p := Positions( name, '^' );
+          p := Positions( label, '^' );
           
           if p <> [ ] then
               
               p := Last( p );
               
-              power := Int( name{[ p + 1 .. Length( name ) ]} );
+              power := Int( label{[ p + 1 .. Length( label ) ]} );
               
               if power <> fail then
                     
-                    name := name{[ 1 .. p - 1 ]};
+                    label := label{[ 1 .. p - 1 ]};
                     
-                    p := PositionProperty( mors_labels,
-                                  label -> Length( name ) >= Length( label ) and IsMatchingSublist( name, label, Length( name ) - Length( label ) + 1 ) );
+                    p := PositionProperty( gmors_labels, gmor_label -> EndsWith( label, gmor_label ) );
                     
                     if p <> fail then
                         
-                        label := mors_labels[p];
+                        gmor_label := gmors_labels[p];
                         
-                        l := Length( name ) - Length( label );
+                        l := Length( label ) - Length( gmor_label );
                         
-                        m := PreComposeList( C, ListWithIdenticalEntries( power, SetOfGeneratingMorphisms( C )[p] ) );
+                        m := PreComposeList( C, ListWithIdenticalEntries( power, SetOfGeneratingMorphismsOfCategory( C )[p] ) );
                         
                         if l = 0 then
                             return m;
                         else
-                            return PreCompose( C, C.(name{[1 .. l]}), m );
+                            return PreCompose( C, label{[ 1 .. l ]} / C, m );
                         fi;
                         
                     fi;
@@ -791,9 +805,14 @@ InstallMethod( \.,
       
     fi;
     
-    Error( "the label '", name, "' can't be recognized! please try 'f*g' (or 'f⋅g') instead of 'fg'; and 'f*f' (or 'f⋅f') instead of 'f^2'\n" );
+    Error( "the label '", label, "' can't be recognized! please try 'f*g' (or 'f⋅g') instead of 'fg'; and 'f*f' (or 'f⋅f') instead of 'f^2'\n" );
     
 end );
+
+#= comment for Julia
+##
+INSTALL_DOT_METHOD( IsPathCategory );
+# =#
 
 ##
 InstallMethod( OppositePathCategory,
@@ -930,7 +949,7 @@ InstallMethod( IsAscendingForMorphisms,
       
     fi;
     
-    Error ( "the passed admissible_order is unknown, it should be 'Dp', 'dp' or 't-lex'!\n" );
+    Error( "the passed admissible_order is unknown, it should be 'Dp', 'dp' or 't-lex'!\n" );
     
 end );
 
@@ -1015,9 +1034,9 @@ InstallMethod( HasFiniteNumberOfMacaulayMorphisms,
     
     monomials := List( monomials, m -> [ ObjectIndex( Source( m ) ), MorphismIndices( m ), ObjectIndex( Target( m ) ) ] );
     
-    len := Maximum( Concatenation( [ 1 ], List( monomials, mono -> Length( mono[2] ) ) ) );
+    len := Maximum( Concatenation( [ BigInt( 1 ) ], List( monomials, mono -> Length( mono[2] ) ) ) );
     
-    repeat
+    while true do
       
       # Hypothesis: the category is finite & all loops of length 'len' are divisible by the set 'monomials'
       is_finite := true;
@@ -1044,18 +1063,26 @@ InstallMethod( HasFiniteNumberOfMacaulayMorphisms,
           fi;
           
           # if the category is not finite then break the current for-loop
-          if is_finite = false then break; fi;
+          if is_finite = false then
+            break;
+          fi;
           
         od;
         
         # if the category is not finite then break the current for-loop
-        if is_finite = false then break; fi;
+        if is_finite = false then
+            break;
+        fi;
         
       od;
       
       len := len + 1;
       
-    until is_finite = false or ( is_finite = true and len > 2 * nr_objs );
+      if (is_finite = false) or (is_finite = true and len > 2 * nr_objs) then
+          break;
+      fi;
+      
+    od;
     
     return is_finite;
     
@@ -1093,7 +1120,7 @@ InstallGlobalFunction( FpCategories_SORT_MORPHISMS_LIKE_QPA,
     for s in [ 1 .. nr_objs ] do
       for t in [ 1 .. nr_objs ] do
         
-        Sort( supports[s][t], sort_function );
+        supports[s][t] := SortedList( supports[s][t], sort_function );
         
       od;
     od;
@@ -1128,42 +1155,46 @@ InstallMethod( MacaulayMorphisms,
     
     supports := List( [ 1 .. nr_objs ], s -> List( [ 1 .. nr_objs ], t -> [ ] ) );
     
-    len := 0;
+    len := BigInt( 0 );
     
-    repeat
-        
-        homC_deg := ExternalHomsWithGivenLengthData( C, len );
-        
-        # Hypothesis: all morphisms of length 'len' are multiples of 'monomials'
-        hypothesis := true;
-        
-        for s in rel_objs do
-          for t in rel_objs do
-            
-            homQ_len_st := [ ];
-            
-            homC_len_st := Filtered( homC_deg[s][t], mor -> not ForAny( irr_mors, i -> i in mor ) );
-            
-            for m in homC_len_st do
-                
-                if ForAll( non_id_mons, datum -> PositionSublist( m, datum ) = fail ) then
-                    
-                    Add( homQ_len_st, m );
-                    
-                    hypothesis := false;
-                    
-                fi;
-                
-            od;
-            
-            supports[s][t] := Concatenation( homQ_len_st, supports[s][t] );
-            
+    while true do
+      
+      homC_deg := ExternalHomsWithGivenLengthData( C, len );
+      
+      # Hypothesis: all morphisms of length 'len' are multiples of 'monomials'
+      hypothesis := true;
+      
+      for s in rel_objs do
+        for t in rel_objs do
+          
+          homQ_len_st := [ ];
+          
+          homC_len_st := Filtered( homC_deg[s][t], mor -> not ForAny( irr_mors, i -> i in mor ) );
+          
+          for m in homC_len_st do
+              
+              if ForAll( non_id_mons, datum -> PositionSublist( m, datum ) = fail ) then
+                  
+                  Add( homQ_len_st, m );
+                  
+                  hypothesis := false;
+                  
+              fi;
+              
           od;
+          
+          supports[s][t] := Concatenation( homQ_len_st, supports[s][t] );
+          
         od;
-        
-        len := len + 1;
-        
-    until hypothesis;
+      od;
+      
+      len := len + 1;
+      
+      if hypothesis then
+          break;
+      fi;
+      
+    od;
     
     if C!.admissible_order = "dp" then
         
@@ -1175,9 +1206,9 @@ InstallMethod( MacaulayMorphisms,
                    LazyHList( [ 1 .. nr_objs ], t ->
                            List( supports[s][t], supp ->
                                  MorphismConstructor( C,
-                                         SetOfObjects( C )[s],
-                                         Pair( Length( supp ), supp ),
-                                         SetOfObjects( C )[t] ) ) ) );
+                                         SetOfObjectsOfCategory( C )[s],
+                                         Pair( Length( supp ), List( supp, BigInt ) ),
+                                         SetOfObjectsOfCategory( C )[t] ) ) ) );
     
 end );
 
@@ -1313,10 +1344,14 @@ end );
 ##
 InstallMethod( DecompositionIndicesOfAllMorphismsFromHomStructure,
         "for a path category",
-        [ IsPathCategory and IsFinite ],
+        [ IsPathCategory ],
         
   function( C )
     local objs;
+    
+    if not (HasIsFiniteCategory( C ) and IsFiniteCategory( C )) then
+        TryNextMethod( );
+    fi;
     
     objs := SetOfObjects( C );
     
@@ -1340,9 +1375,13 @@ end );
 ##
 InstallMethod( CategoryFromNerveData,
         "for a path category",
-        [ IsPathCategory and IsFinite ],
+        [ IsPathCategory ],
         
   function( C )
+    
+    if not IsFiniteCategory( C ) then
+        TryNextMethod( );
+    fi;
     
     return CategoryFromNerveData(
                    rec( name := Name( C ),
@@ -1418,17 +1457,16 @@ InstallMethod( ViewString,
     
     colors := UnderlyingQuiver( CapCategory( alpha ) )!.colors;
     
-    return
-      Concatenation(
-          colors.mor,
-          MorphismLabel( alpha ),
-          colors.reset,
-          colors.other,
-          ":",
-          ViewString( Source( alpha ) ),
-          colors.other,
-          " → ",
-          ViewString( Target( alpha ) ) );
+    return Concatenation(
+              colors.mor,
+              MorphismLabel( alpha ),
+              colors.reset,
+              colors.other,
+              ":",
+              ViewString( Source( alpha ) ),
+              colors.other,
+              " → ",
+              ViewString( Target( alpha ) ) );
 
 end );
 

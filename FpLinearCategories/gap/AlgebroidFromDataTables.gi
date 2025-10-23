@@ -860,14 +860,11 @@ InstallOtherMethod( AssignSetOfGeneratingMorphisms,
 end );
 
 ##
-InstallMethod( \.,
-        "for an algebroid from data table and a positive integer",
-        [ IsAlgebroidFromDataTables, IsPosInt ],
+InstallOtherMethod( \/,
+        [ IsString, IsAlgebroidFromDataTables ],
   
-  function ( A, string_as_int )
-    local name, q, objs_labels, mors_labels, p, id_mors_labels, label, labels, l, m, power;
-    
-    name := NameRNam( string_as_int );
+  function ( name, A )
+    local q, objs_labels, mors_labels, p, id_mors_labels, label, labels, l, m, power;
     
     q := UnderlyingQuiver( A );
     
@@ -887,7 +884,9 @@ InstallMethod( \.,
         label := name{[4 .. Length(name) - 1]};
         
         if label in objs_labels then
-            return IdentityMorphism( A, A.(label) );
+            
+            return IdentityMorphism( A, label / A );
+            
         fi;
         
     fi;
@@ -899,7 +898,9 @@ InstallMethod( \.,
         label := name{[4 .. Length(name)]};
         
         if label in objs_labels then
-            return IdentityMorphism( A, A.(label) );
+            
+            return IdentityMorphism( A, label / A );
+            
         fi;
         
     fi;
@@ -907,14 +908,16 @@ InstallMethod( \.,
     p := Position( mors_labels, name );
     
     if p <> fail then
+        
         return SetOfGeneratingMorphisms( A )[p];
+        
     fi;
     
     if ForAny( [ "⋅", "*" ], s -> PositionSublist( name, s ) <> fail ) then
       
       labels := SplitString( ReplacedString( name, "⋅", "*" ), "*" );
       
-      return PreComposeList( A, List( labels, label -> A.(label) ) );
+      return PreComposeList( A, List( labels, label -> label / A ) );
       
     else
       
@@ -932,7 +935,7 @@ InstallMethod( \.,
           if l = 0 then
               return m;
           else
-              return PreCompose( A, A.(name{[1 .. l]}), m );
+              return PreCompose( A, name{[1 .. l]} / A, m );
           fi;
           
       else
@@ -963,7 +966,7 @@ InstallMethod( \.,
                         if l = 0 then
                             return m;
                         else
-                            return PreCompose( A, A.(name{[1 .. l]}), m );
+                            return PreCompose( A, name{[1 .. l]} / A, m );
                         fi;
                         
                     fi;
@@ -979,6 +982,9 @@ InstallMethod( \.,
     Error( "the label '", name, "' can't be recognized!\n" );
     
 end );
+
+##
+INSTALL_DOT_METHOD( IsAlgebroidFromDataTables );
 
 ##
 InstallMethod( DecompositionIndicesOfMorphismInAlgebroid,

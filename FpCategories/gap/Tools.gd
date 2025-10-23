@@ -128,6 +128,7 @@ DeclareAttribute( "NerveTruncatedInDegree2Data",
 DeclareAttribute( "NerveTruncatedInDegree2AsFunctor",
         IsCapCategory );
 #! @InsertChunk NerveTruncatedInDegree2AsFunctor
+#! @InsertChunk CategoryOfInternalCategories
 
 #! @Description
 #!  The normalized indices of the generating morphisms of the finite category <A>C</A>.
