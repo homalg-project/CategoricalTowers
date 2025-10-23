@@ -1,4 +1,4 @@
-LoadPackage( "Algebroids" );
+LoadPackage( "FpLinearCategories" );
 
 k := HomalgFieldOfRationals();
 q := FinQuiver( "q(o)[a:o->o,b:o->o]" );

@@ -121,6 +121,5 @@
 
 @Chapter Precompilation
 @InsertChunk PrecompileAdditiveClosureOfAlgebroid
-@InsertChunk PrecompileAdditiveClosureOfAlgebroidFromDataTables
 @InsertChunk PrecompileAdelmanCategoryOfAdditiveClosureOfAlgebroid
 @InsertChunk PrecompileCategoryFromDataTables

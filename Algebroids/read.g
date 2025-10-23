@@ -10,7 +10,6 @@ ReadPackage( "Algebroids", "gap/precompiled_categories/CategoryFromDataTablesPre
 
 ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled.gi" );
 ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverZPrecompiled.gi" );
-ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidFromDataTablesPrecompiled.gi" );
 
 ReadPackage( "Algebroids", "gap/precompiled_categories/AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled.gi" );
 ReadPackage( "Algebroids", "gap/precompiled_categories/AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverZPrecompiled.gi" );
@@ -20,16 +19,11 @@ ReadPackage( "Algebroids", "gap/Algebroids.gi");
 ReadPackage( "Algebroids", "gap/QPA2.gi");
 ReadPackage( "Algebroids", "gap/Functors.gi");
 ReadPackage( "Algebroids", "gap/CategoryFromDataTables.gi");
-ReadPackage( "Algebroids", "gap/LinearClosuresOfPathCategoriesAndTheirQuotients.gi" );
 ReadPackage( "Algebroids", "gap/CategoryOfFpAlgebras.gi" );
 ReadPackage( "Algebroids", "gap/CategoryOfFpMatrixAlgebras.gi" );
-ReadPackage( "Algebroids", "gap/AlgebroidFromDataTables.gi");
 ReadPackage( "Algebroids", "gap/CategoryOfAlgebroids.gi");
 ReadPackage( "Algebroids", "gap/Bialgebroids.gi");
 ReadPackage( "Algebroids", "gap/Tools.gi");
-ReadPackage( "Algebroids", "gap/GroebnerBasesForLinearClosuresOfPathCategories.gi" );
-ReadPackage( "Algebroids", "gap/QuotientsOfLinearClosuresOfPathCategories.gi" );
-ReadPackage( "Algebroids", "gap/QuotientsOfAlgebroidsFromDataTables.gi" );
 
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "Algebroids", "gap/Julia.gi" );
