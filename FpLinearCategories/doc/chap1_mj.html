@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (FpLinearCategories) - Chapter 1: Algebroids from data tables</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1.html">[MathJax off]</a></p>
+<p><a id="X85561B8E7F007C4B" name="X85561B8E7F007C4B"></a></p>
+<div class="ChapSects"><a href="chap1_mj.html#X85561B8E7F007C4B">1 <span class="Heading">Algebroids from data tables</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X871597447BB998A1">1.1 <span class="Heading">Properties</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X83174B7E84624406">1.1-1 IsAdmissibleAlgebroid</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7C701DBF7BAE649A">1.2 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A5EEA5480FF24B1">1.2-1 QuotientCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87CEC0497DF5B25D">1.2-2 CategoryDatum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C9D36287B948BE7">1.2-3 BasesElements</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X831681057B040EEC">1.2-4 DecompositionIndicesOfBasesElements</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X782C22717A5A45F8">1.2-5 LabelsOfBasesElements</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X787C9B687D9B02C8">1.2-6 LaTeXStringsOfBasesElements</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7BA120267C85DB18">1.2-7 PowerOfArrowIdeal</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7DE8E16C7C2D387B">1.3 <span class="Heading">Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X821DFF538376FFC6">1.3-1 AssignSetOfObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CC9D637849C77D1">1.3-2 AssignSetOfGeneratingMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85BC7107831F46C0">1.3-3 ObjectIndex</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87539DFC7E1459E4">1.3-4 CoefficientsList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X840D86037FA3D3D4">1.3-5 IndicesOfSupportMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X866CD18D7E18F81A">1.3-6 CoefficientsOfSupportMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7FA1D0517F9DFDA9">1.3-7 SupportMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8431DACE7B80F06C">1.3-8 DecompositionOfMorphismInAlgebroid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85141312783D19BB">1.3-9 DecompositionIndicesOfMorphismInAlgebroid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78F3294482D413A3">1.3-10 OppositeAlgebroid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DD9A91578D68E0A">1.3-11 TensorProductOfAlgebroids</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X816FDB3783C17B55"><code>1.3-12 \*</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X864884B780B4CB98">1.3-13 ElementaryTensor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D5479C97C172F64">1.3-14 ElementaryTensor</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X86EC0F0A78ECBC10">1.4 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86014629860F9E38">1.4-1 AlgebroidFromDataTables</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7D03633A7D98026B">1.5 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8517A59E7E8477C0">1.5-1 IsAlgebroidFromDataTables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X871C3D3C7B92DA8C">1.5-2 IsCellInAlgebroidFromDataTables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78E265F684A31C9B">1.5-3 IsObjectInAlgebroidFromDataTables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87BFB2E97868272A">1.5-4 IsMorphismInAlgebroidFromDataTables</a></span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">Algebroids from data tables</span></h3>
+
+<p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
+
+<h4>1.1 <span class="Heading">Properties</span></h4>
+
+<p><a id="X83174B7E84624406" name="X83174B7E84624406"></a></p>
+
+<h5>1.1-1 IsAdmissibleAlgebroid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAdmissibleAlgebroid</code>( <var class="Arg">A</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The arguments are an algebroid <var class="Arg">A</var> linear over a field <span class="SimpleMath">\(k\)</span>. This output is <code class="code">true</code> iff the following two conditions hold: (1) the union of all identity morphisms and all generating morphism remain linear independent in the quotient category <span class="SimpleMath">\(C/\mathfrak{m}^2\)</span>; (2) <span class="SimpleMath">\(\mathfrak{m}^i=0\)</span> for some <span class="SimpleMath">\(i\in\mathbb{N}\)</span>, where <span class="SimpleMath">\(\mathfrak{m}^i=\)</span><code class="code">PowerOfArrowIdeal</code>(<var class="Arg">A</var>,<span class="SimpleMath">\(i\)</span>).</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>1.2 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7A5EEA5480FF24B1" name="X7A5EEA5480FF24B1"></a></p>
+
+<h5>1.2-1 QuotientCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; QuotientCategory</code>( <var class="Arg">A</var>, <var class="Arg">I</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>The arguments are an algebroid <span class="SimpleMath">\(A\)</span> and a list <var class="Arg">I</var> of morphisms in <span class="SimpleMath">\(A\)</span>. The output is the quotient category <span class="SimpleMath">\(A/I\)</span> of <span class="SimpleMath">\(A\)</span> modulo the two-sided ideal of morphisms generated by <var class="Arg">I</var>.</p>
+
+<p><a id="X87CEC0497DF5B25D" name="X87CEC0497DF5B25D"></a></p>
+
+<h5>1.2-2 CategoryDatum</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryDatum</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>The data tables used to define <span class="SimpleMath">\(A\)</span>.</p>
+
+<p><a id="X7C9D36287B948BE7" name="X7C9D36287B948BE7"></a></p>
+
+<h5>1.2-3 BasesElements</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BasesElements</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists</p>
+
+<p>The argument is an algebroid <var class="Arg">A</var>. The output is a list of lists <span class="SimpleMath">\(L\)</span> where <span class="SimpleMath">\(L[i][j]\)</span> is the basis of the external hom <span class="SimpleMath">\(\mathrm{Hom}_B(u,v)\)</span> where <span class="SimpleMath">\(u\)</span> and <span class="SimpleMath">\(v\)</span> are <span class="SimpleMath">\(i\)</span>'th resp. <span class="SimpleMath">\(j\)</span>'th objects in <span class="SimpleMath">\(A\)</span>.</p>
+
+<p><a id="X831681057B040EEC" name="X831681057B040EEC"></a></p>
+
+<h5>1.2-4 DecompositionIndicesOfBasesElements</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DecompositionIndicesOfBasesElements</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists</p>
+
+<p>The argument is an algebroid <var class="Arg">A</var>. The output is a list of lists <span class="SimpleMath">\(L\)</span> where <span class="SimpleMath">\(L[i][j]\)</span> is the decomposition indices of the basis elements of <span class="SimpleMath">\(\mathrm{Hom}_B(u,v)\)</span> where <span class="SimpleMath">\(u\)</span> and <span class="SimpleMath">\(v\)</span> are <span class="SimpleMath">\(i\)</span>'th resp. <span class="SimpleMath">\(j\)</span>'th objects in <span class="SimpleMath">\(A\)</span>. In other words, it is the third entry in the underlying defining data tables.</p>
+
+<p><a id="X782C22717A5A45F8" name="X782C22717A5A45F8"></a></p>
+
+<h5>1.2-5 LabelsOfBasesElements</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LabelsOfBasesElements</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists</p>
+
+<p>The argument is an algebroid <var class="Arg">A</var>. The output is a list of lists <span class="SimpleMath">\(L\)</span> where <span class="SimpleMath">\(L[i][j]\)</span> is the labels of the basis elements of <span class="SimpleMath">\(\mathrm{Hom}_B(u,v)\)</span> where <span class="SimpleMath">\(u\)</span> and <span class="SimpleMath">\(v\)</span> are <span class="SimpleMath">\(i\)</span>'th resp. <span class="SimpleMath">\(j\)</span>'th objects in <span class="SimpleMath">\(A\)</span>.</p>
+
+<p><a id="X787C9B687D9B02C8" name="X787C9B687D9B02C8"></a></p>
+
+<h5>1.2-6 LaTeXStringsOfBasesElements</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LaTeXStringsOfBasesElements</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists</p>
+
+<p>The argument is an algebroid <var class="Arg">A</var>. The output is a list of lists <span class="SimpleMath">\(L\)</span> where <span class="SimpleMath">\(L[i][j]\)</span> is the latex strings of the basis elements of <span class="SimpleMath">\(\mathrm{Hom}_B(u,v)\)</span> where <span class="SimpleMath">\(u\)</span> and <span class="SimpleMath">\(v\)</span> are <span class="SimpleMath">\(i\)</span>'th resp. <span class="SimpleMath">\(j\)</span>'th objects in <span class="SimpleMath">\(A\)</span>.</p>
+
+<p><a id="X7BA120267C85DB18" name="X7BA120267C85DB18"></a></p>
+
+<h5>1.2-7 PowerOfArrowIdeal</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PowerOfArrowIdeal</code>( <var class="Arg">A</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The arguments are an algebroid <var class="Arg">A</var> and a non-negative integer <var class="Arg">i</var>. The output is a generating set for <span class="SimpleMath">\(\mathfrak{m}^i\)</span> where <span class="SimpleMath">\(\mathfrak{m}\)</span> is the ideal generated by all generating morphisms in <var class="Arg">A</var>.</p>
+
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>1.3 <span class="Heading">Operations</span></h4>
+
+<p><a id="X821DFF538376FFC6" name="X821DFF538376FFC6"></a></p>
+
+<h5>1.3-1 AssignSetOfObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssignSetOfObjects</code>( <var class="Arg">A</var>[, <var class="Arg">optional_string</var>] )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are an algebroid <var class="Arg">A</var> and a string <var class="Arg">optional_string</var>. This operation assigns the objects of <var class="Arg">A</var> to global variables. Names of the variables are the concatenation of the labels of the objects of <var class="Arg">A</var> with <var class="Arg">optional_string</var>. The default value of <var class="Arg">optional_string</var> is the empty string.</p>
+
+<p><a id="X7CC9D637849C77D1" name="X7CC9D637849C77D1"></a></p>
+
+<h5>1.3-2 AssignSetOfGeneratingMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssignSetOfGeneratingMorphisms</code>( <var class="Arg">A</var>[, <var class="Arg">optional_string</var>] )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are an algebroid <var class="Arg">A</var> and a string <var class="Arg">optional_string</var>. This operation assigns the generating morphisms of <var class="Arg">A</var> to global variables. Names of the variables are the concatenation of the labels of the generating morphisms of <var class="Arg">A</var> with <var class="Arg">optional_string</var>. The default value of <var class="Arg">optional_string</var> is the empty string.</p>
+
+<p><a id="X85BC7107831F46C0" name="X85BC7107831F46C0"></a></p>
+
+<h5>1.3-3 ObjectIndex</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectIndex</code>( <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>The argument is an object <var class="Arg">v</var> in an algebroid <var class="Arg">A</var>. The output is the index of <var class="Arg">v</var> in <code class="code">SetOfObjects</code>(<var class="Arg">A</var>).</p>
+
+<p><a id="X87539DFC7E1459E4" name="X87539DFC7E1459E4"></a></p>
+
+<h5>1.3-4 CoefficientsList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsList</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+
+<p>The argument is a morphism <var class="Arg">alpha</var> in an algebroid <var class="Arg">A</var>. The output is the list of coefficients of <var class="Arg">alpha</var> with respect to the basis of external hom <span class="SimpleMath">\(\mathrm{Hom}_B(u,v)\)</span> where <span class="SimpleMath">\(u\)</span> and <span class="SimpleMath">\(v\)</span> are source resp. target of <var class="Arg">alpha</var>.</p>
+
+<p><a id="X840D86037FA3D3D4" name="X840D86037FA3D3D4"></a></p>
+
+<h5>1.3-5 IndicesOfSupportMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IndicesOfSupportMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+
+<p>The argument is a morphism <var class="Arg">alpha</var> in an algebroid <var class="Arg">A</var>. The output is the indices of the non-zero entries of <code class="code">CoefficientsList</code>(<var class="Arg">alpha</var>).</p>
+
+<p><a id="X866CD18D7E18F81A" name="X866CD18D7E18F81A"></a></p>
+
+<h5>1.3-6 CoefficientsOfSupportMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsOfSupportMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+
+<p>The argument is a morphism <var class="Arg">alpha</var> in an algebroid <var class="Arg">A</var>. The output is the list of elements in <code class="code">CoefficientsList</code>(<var class="Arg">alpha</var>) that correspond to <code class="code">IndicesOfSupportMorphisms</code>(<var class="Arg">alpha</var>).</p>
+
+<p><a id="X7FA1D0517F9DFDA9" name="X7FA1D0517F9DFDA9"></a></p>
+
+<h5>1.3-7 SupportMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SupportMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+
+<p>The argument is a morphism <var class="Arg">alpha</var> from <var class="Arg">u</var> to <var class="Arg">v</var> in an algebroid <var class="Arg">A</var>. The output is the list of elements in <code class="code">BasisOfExternalHom</code>(<var class="Arg">u,v</var>) that correspond to <code class="code">IndicesOfSupportMorphisms</code>(<var class="Arg">alpha</var>).</p>
+
+<p><a id="X8431DACE7B80F06C" name="X8431DACE7B80F06C"></a></p>
+
+<h5>1.3-8 DecompositionOfMorphismInAlgebroid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DecompositionOfMorphismInAlgebroid</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of pairs</p>
+
+<p>The argument is a morphism <var class="Arg">alpha</var> in an algebroid <span class="SimpleMath">\(A\)</span> (over a commutative ring <span class="SimpleMath">\(k\)</span>). The output is a list of pairs <span class="SimpleMath">\(L=[[c_1,l_1],..,[c_n,l_n]]\)</span> where for each <span class="SimpleMath">\(i=1,\dots,n\)</span>, <span class="SimpleMath">\(c_i\)</span> is a non-zero element in <span class="SimpleMath">\(k\)</span> and <span class="SimpleMath">\(l_i\)</span> is either a list containing an identity morphism or a list of (precomposable) generating morphisms such that <var class="Arg">alpha</var> = <span class="SimpleMath">\(c_1\cdot\mathrm{PreCompose}(l_1)+..+c_n\cdot\mathrm{PreCompose}(l_n)\)</span>.</p>
+
+<p><a id="X85141312783D19BB" name="X85141312783D19BB"></a></p>
+
+<h5>1.3-9 DecompositionIndicesOfMorphismInAlgebroid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DecompositionIndicesOfMorphismInAlgebroid</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of pairs</p>
+
+<p>The argument is a morphism <var class="Arg">alpha</var> in an algebroid <span class="SimpleMath">\(A\)</span> (over a commutative ring <span class="SimpleMath">\(k\)</span>). The output is a list of pairs <span class="SimpleMath">\(L=[[c_1,l_1],..,[c_n,l_n]]\)</span> where for each <span class="SimpleMath">\(i=1,\dots,n\)</span>, <span class="SimpleMath">\(c_i\)</span> is a non-zero element in <span class="SimpleMath">\(k\)</span> and <span class="SimpleMath">\(l_i\)</span> is either the empty-list or a list of <em>indices</em> of (precomposable) generating morphisms. The output can be used to compute <code class="code">DecompositionOfMorphismInAlgebroid</code>(<var class="Arg">alpha</var>).</p>
+
+<p><a id="X78F3294482D413A3" name="X78F3294482D413A3"></a></p>
+
+<h5>1.3-10 OppositeAlgebroid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OppositeAlgebroid</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>The argument is an algebroid <var class="Arg">A</var>. The ouput is the opposite algebroid <span class="SimpleMath">\(A^{\mathrm{op}}\)</span> constructed as an algebroid from data tables.</p>
+
+<p><a id="X7DD9A91578D68E0A" name="X7DD9A91578D68E0A"></a></p>
+
+<h5>1.3-11 TensorProductOfAlgebroids</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductOfAlgebroids</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>The arguments are two algebroids <var class="Arg">A</var> and <var class="Arg">B</var>. The output is the tensor product algebroid <var class="Arg">A</var><span class="SimpleMath">\(\otimes\)</span><var class="Arg">B</var>.</p>
+
+<p><a id="X816FDB3783C17B55" name="X816FDB3783C17B55"></a></p>
+
+<h5><code>1.3-12 \*</code></h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \*</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Delegates to <code class="code">TensorProductOfAlgebroids</code>(<var class="Arg">A</var>,<var class="Arg">B</var>).</p>
+
+<p><a id="X864884B780B4CB98" name="X864884B780B4CB98"></a></p>
+
+<h5>1.3-13 ElementaryTensor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ElementaryTensor</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category object</p>
+
+<p>The arguments are two objects <var class="Arg">a</var>, <var class="Arg">b</var> and a tensor product algebroid <var class="Arg">T</var><span class="SimpleMath">\(=A\otimes B\)</span> where <var class="Arg">a</var> and <var class="Arg">b</var> belong to <span class="SimpleMath">\(A\)</span> resp. <span class="SimpleMath">\(B\)</span>. The output is the object <span class="SimpleMath">\(a\otimes b\)</span> in <var class="Arg">T</var>.</p>
+
+<p><a id="X7D5479C97C172F64" name="X7D5479C97C172F64"></a></p>
+
+<h5>1.3-14 ElementaryTensor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ElementaryTensor</code>( <var class="Arg">f</var>, <var class="Arg">g</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+
+<p>The arguments are two morphisms <var class="Arg">f</var>, <var class="Arg">g</var> and a tensor product algebroid <var class="Arg">T</var><span class="SimpleMath">\(=A\otimes B\)</span> where <var class="Arg">f</var> and <var class="Arg">g</var> belong to <span class="SimpleMath">\(A\)</span> resp. <span class="SimpleMath">\(B\)</span>. The output is the morphism <span class="SimpleMath">\(f\otimes g\)</span> in <var class="Arg">T</var>.</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>1.4 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X86014629860F9E38" name="X86014629860F9E38"></a></p>
+
+<h5>1.4-1 AlgebroidFromDataTables</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AlgebroidFromDataTables</code>( <var class="Arg">data_tables</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Construct an enrichted algebroid <span class="SimpleMath">\(A\)</span> out of the <var class="Arg">data_tables</var> consisting of <span class="SimpleMath">\(7\)</span> entries:</p>
+
+
+<ul>
+<li><p><var class="Arg">data_tables</var>[1] is the commutative ring <span class="SimpleMath">\(k\)</span> over which <span class="SimpleMath">\(A\)</span> is linear.</p>
+
+</li>
+<li><p><var class="Arg">data_tables</var>[2] is the underlying quiver or a string that can be used to constructe a CAP quiver. Suppose the number of objects is <code class="code">nr_objs</code> and the number of morphisms is <code class="code">nr_mors</code>.</p>
+
+</li>
+<li><p><var class="Arg">data_tables</var>[3]: an array <span class="SimpleMath">\(L\)</span> containing <code class="code">nr_objs</code> rows and <code class="code">nr_objs</code> columns. The entry <span class="SimpleMath">\(L[i][j]\)</span> is the list of the indices of the basis elements of <span class="SimpleMath">\(\mathrm{Hom}_{A}(v_i,v_j)\)</span> where <span class="SimpleMath">\(v_i\)</span> and <span class="SimpleMath">\(v_j\)</span> are the <span class="SimpleMath">\(i\)</span>'th resp. <span class="SimpleMath">\(j\)</span>'th objects.</p>
+
+</li>
+<li><p><var class="Arg">data_tables</var>[4]: an array <span class="SimpleMath">\(L\)</span> containing <code class="code">nr_objs</code> rows and <code class="code">nr_mors</code> columns. The entry <span class="SimpleMath">\(L[i][j]\)</span> contains the matrices of the <span class="SimpleMath">\(k\)</span>-linear maps <span class="SimpleMath">\(\mathrm{Hom}_{A}(v_i,m_j)\)</span> where <span class="SimpleMath">\(u_i\)</span> and <span class="SimpleMath">\(m_j\)</span> are the <span class="SimpleMath">\(i\)</span>'th object and the <span class="SimpleMath">\(j\)</span>'th generating morphism.</p>
+
+</li>
+<li><p><var class="Arg">data_tables</var>[5]: an array <span class="SimpleMath">\(L\)</span> containing <code class="code">nr_objs</code> rows and <code class="code">nr_mors</code> columns. The entry <span class="SimpleMath">\(L[i][j]\)</span> contains the matrices of the <span class="SimpleMath">\(k\)</span>-linear maps <span class="SimpleMath">\(\mathrm{Hom}_{A}(m_j,v_i)\)</span> where <span class="SimpleMath">\(u_i\)</span> and <span class="SimpleMath">\(m_j\)</span> are the <span class="SimpleMath">\(i\)</span>'th object and the <span class="SimpleMath">\(j\)</span>'th generating morphism.</p>
+
+</li>
+</ul>
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FpLinearCategories", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "q(0,1,2,3)[a:0-&gt;1,b:1-&gt;3,c:0-&gt;2,d:2-&gt;3,e:3-&gt;3]" );</span>
+FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PathCategory( q );</span>
+PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kF := k[F];</span>
+Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := kF / [ kF.e^3 ];</span>
+Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) ) ) / [ 1*e^3 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables := DataTablesOfCategory( B );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables[1];</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables[2];</span>
+FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables[3];</span>
+[[[ [] ], [ [1] ], [ [3] ], [ [1,2],[3,4],[1,2,5],[3,4,5],[1,2,5,5],[3,4,5,5]]],
+ [[  ], [ [] ], [  ], [ [2],[2,5],[2,5,5] ]],
+ [[  ], [  ], [ [] ], [ [4],[4,5],[4,5,5] ]],
+ [[  ], [  ], [  ], [ [],[5],[5,5] ]]]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables[4][2][5];</span>
+[ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables[5][4][1];</span>
+[ [ 1, 0, 0, 0, 0, 0 ], [ 0, 0, 1, 0, 0, 0 ], [ 0, 0, 0, 0, 1, 0 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( data_tables );; # alternatively,</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( B );</span>
+Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] ) defined by
+4 objects and 5 generating morphisms
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AssignSetOfObjects( A, "V_" );</span>
+#I  MakeReadWriteGlobal: V_0 already read-write
+#I  MakeReadWriteGlobal: V_1 already read-write
+#I  MakeReadWriteGlobal: V_2 already read-write
+#I  MakeReadWriteGlobal: V_3 already read-write
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AssignSetOfGeneratingMorphisms( A );</span>
+#I  MakeReadWriteGlobal: a already read-write
+#I  MakeReadWriteGlobal: b already read-write
+#I  MakeReadWriteGlobal: c already read-write
+#I  MakeReadWriteGlobal: d already read-write
+#I  MakeReadWriteGlobal: e already read-write
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjects( A );</span>
+[ &lt;(0)&gt;, &lt;(1)&gt;, &lt;(2)&gt;, &lt;(3)&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.("0");</span>
+&lt;(0)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V_0;</span>
+&lt;(0)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( A.("0"), V_0 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectConstructor( A, 1 ) = A.("0");</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( A );</span>
+[ &lt;1*a:(0) → (1)&gt;, &lt;1*b:(1) → (3)&gt;,
+  &lt;1*c:(0) → (2)&gt;, &lt;1*d:(2) → (3)&gt;,
+  &lt;1*e:(3) → (3)&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( A.("a"), a );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( [ "V_0", "V_1", "V_2", "V_3" ], MakeReadWriteGlobal );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( [ "a", "b", "c", "d", "e" ], MakeReadWriteGlobal );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( A.("0"), A.("3") );</span>
+&lt;A row module over Q of rank 6&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_03 := BasisOfExternalHom( A.("0"), A.("3") );</span>
+[ &lt;1*a⋅b:(0) → (3)&gt;, &lt;1*c⋅d:(0) → (3)&gt;,
+  &lt;1*a⋅b⋅e:(0) → (3)&gt;, &lt;1*c⋅d⋅e:(0) → (3)&gt;,
+  &lt;1*a⋅b⋅e^2:(0) → (3)&gt;, &lt;1*c⋅d⋅e^2:(0) → (3)&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := 2*hom_03[1] + 3*hom_03[6];</span>
+&lt;2*a⋅b + 3*c⋅d⋅e^2:(0) → (3)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LaTeXOutput( alpha );</span>
+"{0}-\\left({2\\cdot {a}{b} + 3\\cdot {c}{d}{e}^{2}}\\right)\\rightarrow{3}"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha = MorphismConstructor( A, A.("0"), [ 2, 0, 0, 0, 0, 3 ], A.("3") );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoefficientsList( alpha );</span>
+[ 2, 0, 0, 0, 0, 3 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IndicesOfSupportMorphisms( alpha );</span>
+[ 1, 6 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoefficientsOfSupportMorphisms( alpha );</span>
+[ 2, 3 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SupportMorphisms( alpha );</span>
+[ &lt;1*a⋅b:(0) → (3)&gt;, &lt;1*c⋅d⋅e^2:(0) → (3)&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecompositionIndicesOfMorphismInAlgebroid( alpha );</span>
+[ [ 2, [ 1, 2 ] ], [ 3, [ 3, 4, 5, 5 ] ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecompositionOfMorphismInAlgebroid( alpha );</span>
+[ [ 2, [ &lt;1*a:(0) → (1)&gt;, &lt;1*b:(1) → (3)&gt; ] ],
+  [ 3, [ &lt;1*c:(0) → (2)&gt;, &lt;1*d:(2) → (3)&gt;,
+         &lt;1*e:(3) → (3)&gt;, &lt;1*e:(3) → (3)&gt; ] ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.("a⋅b⋅e");</span>
+&lt;1*a⋅b⋅e:(0) → (3)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.("abe");</span>
+&lt;1*a⋅b⋅e:(0) → (3)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( A.("a"), A.("b") ) = A.("ab");</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">add_A := AdditiveClosure( A );</span>
+AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] )
+defined by 4 objects and 5 generating morphisms )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o1 :=  RandomObject( add_A, [ [ 5 ], [ 1 ] ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o2 :=  RandomObject( add_A, [ [ 5 ], [ 1 ] ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := RandomMorphism( o1, o2, 20 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( o1, o2, HomStructure( f ) ) = f;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( PreCompose( f, WeakCokernelProjection( f ) ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( PreCompose( WeakKernelEmbedding( f ), f ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">freyd_B := FreydCategory( add_A );</span>
+Freyd( AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,
+e:3→3] ) defined by 4 objects and 5 generating morphisms ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAbelianCategory( freyd_B );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_op := OppositeAlgebroid( A );</span>
+Q-algebroid( {0,1,2,3}[a:1→0,b:3→1,c:2→0,d:3→2,e:3→3] ) defined by
+4 objects and 5 generating morphisms
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_op.("ba");</span>
+&lt;1*b⋅a:(3) → (0)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := DirectSum( List( SetOfObjects( A ), o -&gt; o / add_A ) );</span>
+&lt;An object in AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,
+d:2→3,e:3→3] ) defined by 4 objects and 5 generating morphisms ) defined
+by 4 underlying objects&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RandomMorphism( T, T, 5 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := RandomMorphism( T, T, 5 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">w := RandomMorphism( T, T, 5 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( PreCompose( [ u, v, w ] ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      = PreCompose( HomStructure( v ), HomStructure( u, w ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AA := TensorProductOfAlgebroids( A, A );</span>
+Q-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[0⊗a:0⊗0→0⊗1,0⊗b:0⊗1→0⊗3,
+0⊗c:0⊗0→0⊗2,..,e⊗1:3⊗1→3⊗1,e⊗2:3⊗2→3⊗2,e⊗3:3⊗3→3⊗3] ) defined
+by 16 objects and 40 generating morphisms
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( A.0, A.1 );</span>
+&lt;(0⊗1)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( A.a, A.b );</span>
+&lt;1*a⊗b:(0⊗1) → (1⊗3)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( A.0, A.b );</span>
+&lt;1*id(0)⊗b:(0⊗1) → (0⊗3)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( A.a, A.1 );</span>
+&lt;1*a⊗id(1):(0⊗1) → (1⊗1)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">3x3 := AA.("3⊗3");</span>
+&lt;(3⊗3)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AA.("e⊗1");</span>
+&lt;1*e⊗id(1):(3⊗1) → (3⊗1)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RandomMorphism( 3x3, 3x3, 15 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := RandomMorphism( 3x3, 3x3, 15 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">w := RandomMorphism( 3x3, 3x3, 15 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( PreCompose( [ u, v, w ] ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      = PreCompose( HomStructure( v ), HomStructure( u, w ) );</span>
+true
+</pre></div>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>1.5 <span class="Heading">GAP categories</span></h4>
+
+<p><a id="X8517A59E7E8477C0" name="X8517A59E7E8477C0"></a></p>
+
+<h5>1.5-1 IsAlgebroidFromDataTables</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAlgebroidFromDataTables</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in an algebroid from data tables.</p>
+
+<p><a id="X871C3D3C7B92DA8C" name="X871C3D3C7B92DA8C"></a></p>
+
+<h5>1.5-2 IsCellInAlgebroidFromDataTables</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInAlgebroidFromDataTables</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in an algebroid from data tables.</p>
+
+<p><a id="X78E265F684A31C9B" name="X78E265F684A31C9B"></a></p>
+
+<h5>1.5-3 IsObjectInAlgebroidFromDataTables</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInAlgebroidFromDataTables</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of algebroids from data tables.</p>
+
+<p><a id="X87BFB2E97868272A" name="X87BFB2E97868272A"></a></p>
+
+<h5>1.5-4 IsMorphismInAlgebroidFromDataTables</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInAlgebroidFromDataTables</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in an algebroid from data tables.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+  
+  [1X3 [33X[0;0YPrecompilation[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FpLinearCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2024.07-09", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FpLinearCategories", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCapJitAddTypeSignature( "\*", [ IsHomalgRingElement, IsInt ], input_types -> input_types[1] );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
+    [4X[25X>[125X [27X  data_tables -> AdditiveClosure( AlgebroidFromDataTables( ShallowCopy( data_tables ) : range_of_HomStructure := CategoryOfRows_as_AdditiveClosure_RingAsCategory( data_tables[1] : FinalizeCategory := true ), FinalizeCategory := true ) );;[127X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular();;[127X[104X
+    [4X[25Xgap>[125X [27Xq := FinQuiver( "q(*)[x:*->*]" );;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments :=[127X[104X
+    [4X[25X>[125X [27X  [ NTuple( 5,[127X[104X
+    [4X[25X>[125X [27X      # coefficients_ring[127X[104X
+    [4X[25X>[125X [27X      Q,[127X[104X
+    [4X[25X>[125X [27X      # quiver[127X[104X
+    [4X[25X>[125X [27X      q,[127X[104X
+    [4X[25X>[125X [27X      # decomposition_indices_of_bases_elements[127X[104X
+    [4X[25X>[125X [27X      [ [ [ [ ], [ 1 ], [ 1, 1 ] ] ] ],[127X[104X
+    [4X[25X>[125X [27X      # hom_structure_gmors_objs[127X[104X
+    [4X[25X>[125X [27X      [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ],[127X[104X
+    [4X[25X>[125X [27X      # hom_structure_objs_gmors[127X[104X
+    [4X[25X>[125X [27X      [ [ [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ] ] ) ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "AdditiveClosureOfAlgebroidFromDataTablesPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "FpLinearCategories";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name[127X[104X
+    [4X[25X>[125X [27X    : operations := "primitive"[127X[104X
+    [4X[25X>[125X [27X    );;[127X[104X
+    [4X[25Xgap>[125X [27XA := AdditiveClosureOfAlgebroidFromDataTablesPrecompiled( given_arguments[1] );;[127X[104X
+    [4X[25Xgap>[125X [27XA!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
