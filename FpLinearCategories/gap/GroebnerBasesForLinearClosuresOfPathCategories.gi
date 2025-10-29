@@ -112,7 +112,7 @@ InstallMethod( GroebnerBasis,
     
     gb := ShallowCopy( relations );
     
-    indices := Concatenation( List( [ 1 .. Length( gb ) ], i -> [ i, i ] ), Combinations( [ 1 .. Length( gb ) ], 2 ) );
+    indices := UnorderedTuples( [ 1 .. Length( gb ) ], 2 );
     
     rels := Concatenation(
               List( indices, i ->
