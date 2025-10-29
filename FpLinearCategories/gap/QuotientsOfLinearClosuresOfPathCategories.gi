@@ -199,17 +199,13 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_QUOTIENT_OF_PATH_CATEGORY",
     
     quo_kC := QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY( kC, Concatenation( rel_1, rel_2 ) );
     
-    object_constructor :=
-      { quo_k_quo_C, obj } -> CreateCapCategoryObjectWithAttributes( quo_k_quo_C, UnderlyingCell, obj );
+    object_constructor := { quo_k_quo_C, obj } -> CreateCapCategoryObjectWithAttributes( quo_k_quo_C, UnderlyingCell, obj );
     
-    object_datum :=
-      { quo_k_quo_C, obj } -> UnderlyingCell( obj );
+    object_datum := { quo_k_quo_C, obj } -> UnderlyingCell( obj );
     
-    morphism_constructor :=
-      { quo_k_quo_C, S, mor, T } -> CreateCapCategoryMorphismWithAttributes( quo_k_quo_C, S, T, UnderlyingCell, mor );
+    morphism_constructor := { quo_k_quo_C, S, mor, T } -> CreateCapCategoryMorphismWithAttributes( quo_k_quo_C, S, T, UnderlyingCell, mor );
     
-    morphism_datum :=
-      { quo_k_quo_C, mor } -> UnderlyingCell( mor );
+    morphism_datum := { quo_k_quo_C, mor } -> UnderlyingCell( mor );
     
     ## from the raw object data to the object in the highest stage of the tower
     modeling_tower_object_constructor :=
@@ -291,13 +287,13 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_QUOTIENT_OF_PATH_CATEGORY",
         
     end;
     
-    name := List( relations{[ 1 .. Minimum( 3, Length( relations ) )]},
+    name := List( relations{ [ 1 .. Minimum( 3, Length( relations ) ) ] },
                   function ( rel )
                     local str;
                     
                     str := ViewString( rel );
                     
-                    return str{[ 1 .. PositionSublist( str, ":" ) - Length( q!.colors.other ) - 1 ]};
+                    return str{ [ 1 .. PositionSublist( str, ":" ) - Length( q!.colors.other ) - 1 ] };
                     
                   end );
     
@@ -308,8 +304,7 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_QUOTIENT_OF_PATH_CATEGORY",
     name := Concatenation( Name( k_quo_C ), " / [ ", JoinStringsWithSeparator( name, ", " ), " ]" );
     
     ##
-    quo_k_quo_C :=
-        ReinterpretationOfCategory( quo_kC,
+    quo_k_quo_C := ReinterpretationOfCategory( quo_kC,
           rec( name := name,
                category_filter := IsQuotientCategory,
                category_object_filter := IsQuotientCategoryObject,
