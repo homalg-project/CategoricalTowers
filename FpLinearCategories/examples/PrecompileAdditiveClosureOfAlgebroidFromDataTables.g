@@ -50,5 +50,6 @@ A!.precompiled_functions_added;
 #! true
 #! #@fi
 
+# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk
