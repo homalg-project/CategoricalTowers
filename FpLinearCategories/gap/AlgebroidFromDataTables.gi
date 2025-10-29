@@ -1129,7 +1129,17 @@ InstallMethod( IsAdmissibleAlgebroid,
         return false;
     fi;
     
-    repeat i := i + 1; until dim[i] = dim[i-1];
+    while true do
+      
+      i := i + 1;
+      
+      if dim[i] = dim[i-1] then
+        
+        break;
+
+      fi;
+      
+    od;
     
     bool := dim[i] = Dimension( A );
     
