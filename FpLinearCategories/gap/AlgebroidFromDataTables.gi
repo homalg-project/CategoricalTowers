@@ -569,13 +569,14 @@ InstallMethod( AlgebroidFromDataTables,
         
         s := ObjectIndex( obj );
         
-        indices := Shuffle( [ 1 .. NumberOfObjects( UnderlyingQuiver( A ) ) ] );
+        # in Julia: Shuffle(1:n) raises error, hence this workaround
+        indices := Shuffle( List( [ 1 .. NumberOfObjects( UnderlyingQuiver( A ) ) ], i -> i ) );
         
         t := indices[SafePositionProperty( indices, p -> HomomorphismStructureOnObjectsRanks( A )[s][p] <> 0 )];
         
         basis := BasesElements( A )[s][t];
         
-        return SumOfMorphisms( A, obj, List( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( basis ) ), SetOfObjects( A )[t] );
+        return SumOfMorphisms( A, obj, List( [ 0 .. AbsInt( n ) ], i -> Random( [ MinusOne( ring ), One( ring ) ] ) * Random( basis ) ), SetOfObjects( A )[t] );
         
     end );
     
@@ -589,13 +590,14 @@ InstallMethod( AlgebroidFromDataTables,
         
         t := ObjectIndex( obj );
         
-        indices := Shuffle( [ 1 .. NumberOfObjects( UnderlyingQuiver( A ) ) ] );
+        # in Julia: Shuffle(1:n) raises error, hence this workaround
+        indices := Shuffle( List( [ 1 .. NumberOfObjects( UnderlyingQuiver( A ) ) ], i -> i ) );
         
         s := indices[SafePositionProperty( indices, p -> HomomorphismStructureOnObjectsRanks( A )[p][t] <> 0 )];
         
         basis := BasesElements( A )[s][t];
         
-        return SumOfMorphisms( A, SetOfObjects( A )[s], List( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( basis ) ), obj );
+        return SumOfMorphisms( A, SetOfObjects( A )[s], List( [ 0 .. AbsInt( n ) ], i -> Random( [ MinusOne( ring ), One( ring ) ] ) * Random( basis ) ), obj );
         
     end );
     
@@ -609,7 +611,7 @@ InstallMethod( AlgebroidFromDataTables,
         
         morphisms := Concatenation( [ ZeroMorphism( A, obj_1, obj_2 ) ], BasesElements( A )[ObjectIndex( obj_1 )][ObjectIndex( obj_2 )] );
         
-        return SumOfMorphisms( A, obj_1, List( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( morphisms ) ), obj_2 );
+        return SumOfMorphisms( A, obj_1, List( [ 0 .. AbsInt( n ) ], i -> Random( [ MinusOne( ring ), One( ring ) ] ) * Random( morphisms ) ), obj_2 );
         
     end );
     
