@@ -4,73 +4,6 @@
 # Implementations
 #
 
-##
-InstallMethod( DataTablesOfCategory,
-          [ IsQuotientCategory ],
-  
-  function ( qA )
-    local A, all_objs, support_objs, objs, all_gmors, support_gmors, gmors, q;
-    
-    if not HasRangeCategoryOfHomomorphismStructure( qA ) then
-        Error( "the quotient category passed to 'DataTablesOfCategory' must be hom-finite!" );
-    fi;
-    
-    if not IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( qA ) ) then
-        TryNextMethod();
-    fi;
-    
-    A := AmbientCategory( qA );
-    
-    if not IsAlgebroidFromDataTables( A ) then
-        TryNextMethod( );
-    fi;
-    
-    all_objs := List( SetOfObjects( A ), o -> ObjectConstructor( qA, o ) );
-    support_objs := PositionsProperty( all_objs, o -> not IsZero( o ) );
-    objs := all_objs{support_objs};
-    
-    all_gmors := List( SetOfGeneratingMorphisms( A ), m -> MorphismConstructor( qA, ObjectConstructor( qA, Source( m ) ), m, ObjectConstructor( qA, Target( m ) ) ) );
-    support_gmors := PositionsProperty( all_gmors, m -> not IsZero( m ) );
-    gmors := all_gmors{support_gmors};
-    
-    q := UnderlyingQuiver( A );
-    
-    if Length( objs ) <> Length( all_objs ) or Length( gmors ) <> Length( all_gmors ) then
-      
-      q := FinQuiver(
-              NTuple( 3,
-                "q",
-                NTuple( 3,
-                  Length( support_objs ),
-                  LabelsOfObjects( q ){support_objs},
-                  LaTeXStringsOfObjects( q ){support_objs} ),
-                NTuple( 5,
-                  Length( support_gmors ),
-                  List( IndicesOfSources( q ){support_gmors}, s -> SafePosition( support_objs, s ) ),
-                  List( IndicesOfTargets( q ){support_gmors}, t -> SafePosition( support_objs, t ) ),
-                  LabelsOfMorphisms( q ){support_gmors},
-                  LaTeXStringsOfMorphisms( q ){support_gmors} ) ) );
-      
-    fi;
-    
-    return
-      NTuple( 5,
-        
-        CommutativeRingOfLinearCategory( A ),
-        
-        q,
-        
-        List( objs, s -> List( objs, t -> List( BasisOfExternalHom( qA, s, t ), m ->
-          List( DecompositionIndicesOfMorphismInAlgebroid( MorphismDatum( m ) )[1][2], index -> SafePosition( support_gmors, index ) ) ) ) ),
-          
-        List( objs, o -> List( gmors, gm ->
-          EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( qA, IdentityMorphism( qA, o ), gm ) ) ) ) ),
-          
-        List( objs, o -> List( gmors, gm ->
-          EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( qA, gm, IdentityMorphism( qA, o ) ) ) ) ) ) );
-    
-end );
-
 ############################
 #
 # Auxiliary Functions
@@ -690,9 +623,10 @@ InstallOtherMethod( AlgebroidFromDataTables,
   
   function ( C )
     
-    return AlgebroidFromDataTables( DataTablesOfCategory( C ) );
+    return AlgebroidFromDataTables( DataTablesOfLinearCategory( C ) );
     
 end );
+
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,

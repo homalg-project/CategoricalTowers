@@ -49,6 +49,13 @@ DeclareCategory( "IsMorphismInAlgebroidFromDataTables",
 DeclareOperation( "AlgebroidFromDataTables", [ IsDenseList ] );
 #! @InsertChunk AlgebroidFromDataTables
 
+#! @Description
+#!  Returns the 5-tuple data tables of a linear category.
+#! The output can be passed to the constructor <C>AlgebroidFromDataTables</C>.
+#! @Arguments A
+#! @Returns a list
+DeclareAttribute( "DataTablesOfLinearCategory", IsCapCategory );
+
 ####################################
 #
 #! @Section Attributes
