@@ -5,61 +5,63 @@
 #
 
 BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
-  
-  function ( rows, C )
-    local k, admissible_order, colors, sorting_func, kC;
+  FunctionWithNamedArguments(
+  [
+    [ "admissible_order", fail ],
+    [ "colors", fail ],
+  ],
+  function ( CAP_NAMED_ARGUMENTS, rows, C )
+    local k, sorting_func, order, kC;
     
     k := CommutativeRingOfLinearCategory( rows );
     
-    admissible_order := ValueOption( "admissible_order" );
+    if CAP_NAMED_ARGUMENTS.colors = fail then
+        
+        CAP_NAMED_ARGUMENTS.colors := rec( coeff := "", other := "", reset := "" );
+        
+    elif CAP_NAMED_ARGUMENTS.colors = true then
+        
+        CAP_NAMED_ARGUMENTS.colors := rec( coeff := "\033[35m", other := "\033[31m", reset := "\033[0m" );
+        
+    fi;
     
-    if admissible_order = fail then
+    if CAP_NAMED_ARGUMENTS.admissible_order = fail then
         
         if IsPathCategory( C ) then
-            admissible_order := C!.admissible_order;
+            CAP_NAMED_ARGUMENTS.admissible_order := C!.admissible_order;
         elif IsQuotientCategory( C ) then
-            admissible_order := AmbientCategory( C )!.admissible_order;
+            CAP_NAMED_ARGUMENTS.admissible_order := AmbientCategory( C )!.admissible_order;
         else
             Error( "the category `C` is neither IsPathCategory nor IsQuotientCategory" );
         fi;
         
-    elif not admissible_order in [ "Dp", "dp" ] then
+    else
         
-        Error( "only \"Dp\" and \"dp\" admissible orders are supported!\n" );
+        Assert( 0, CAP_NAMED_ARGUMENTS.admissible_order in [ "Dp", "dp" ] );
         
     fi;
     
-    colors := ValueOption( "colors" );
-    
-    if colors = fail then
-        
-        colors := rec( coeff := "", other := "", reset := "" );
-        
-    elif colors = true then
-        
-        colors := rec( coeff := TextAttr.5, other := TextAttr.1, reset := TextAttr.reset );
-        
-    fi;
+    order := CAP_NAMED_ARGUMENTS.admissible_order;
     
     if IsPathCategory( C ) then
         
-        sorting_func := { mor_1, mor_2 } -> IsDescendingForMorphisms( C, mor_1, mor_2, admissible_order );
+        sorting_func := { mor_1, mor_2 } -> IsDescendingForMorphisms( C, mor_1, mor_2, order );
         
     else
         
-        sorting_func := { mor_1, mor_2 } -> IsDescendingForMorphisms( AmbientCategory( C ), CanonicalRepresentative( mor_1 ), CanonicalRepresentative( mor_2 ), admissible_order );
+        sorting_func := { mor_1, mor_2 } -> IsDescendingForMorphisms( AmbientCategory( C ), CanonicalRepresentative( mor_1 ), CanonicalRepresentative( mor_2 ), order );
         
     fi;
     
-    kC := LinearClosure( rows, C, sorting_func : FinalizeCategory := false ); # every morphism starts by its maximum monomial
+    kC := LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows( rows, C, sorting_func : FinalizeCategory := false ); # every morphism starts by its maximum monomial
     
     SetIsObjectFiniteCategory( kC, true );
     
+    kC!.admissible_order := order;
+    
+    kC!.colors := CAP_NAMED_ARGUMENTS.colors;
+    
     kC!.Name := Concatenation( RingName( k ), "-", kC!.Name );
-    
-    kC!.admissible_order := admissible_order;
-    
-    kC!.colors := colors;
     
     SetUnderlyingQuiver( kC, UnderlyingQuiver( C ) );
     
@@ -150,27 +152,41 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
     
     return kC;
     
-end );
+end ) );
 
 ##
 InstallOtherMethod( LinearClosure,
           [ IsCategoryOfRows, IsPathCategory ],
-        
-  function ( rows, C )
+          
+  FunctionWithNamedArguments(
+  [
+    [ "admissible_order", fail ],
+    [ "colors", fail ]
+  ],
+  function ( CAP_NAMED_ARGUMENTS, rows, C )
     
-    return LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS( rows, C );
+    return LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS( rows, C :
+                admissible_order := CAP_NAMED_ARGUMENTS.admissible_order,
+                colors := CAP_NAMED_ARGUMENTS.colors );
     
-end );
+end ) );
 
 ##
 InstallOtherMethod( LinearClosure,
           [ IsHomalgRing, IsPathCategory ],
-        
-  function ( k, C )
+          
+  FunctionWithNamedArguments(
+  [
+    [ "admissible_order", fail ],
+    [ "colors", fail ]
+  ],
+  function ( CAP_NAMED_ARGUMENTS, k, C )
     
-    return LinearClosure( CategoryOfRows( k ), C );
+    return LinearClosure( CategoryOfRows( k ), C :
+                admissible_order := CAP_NAMED_ARGUMENTS.admissible_order,
+                colors := CAP_NAMED_ARGUMENTS.colors );
     
-end );
+end ) );
 
 ##
 InstallOtherMethod( \[\],
