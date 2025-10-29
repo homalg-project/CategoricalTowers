@@ -105,9 +105,14 @@ end );
 ##
 InstallMethod( AlgebroidFromDataTables,
           [ IsDenseList ],
-  
-  function ( input_data )
-    local ring, q, name, A, colors, eager, ranks, hom_structure_objs_gmors, hom_structure_objs_mors, hom_structure_gmors_objs, hom_structure_mors_objs,
+  FunctionWithNamedArguments(
+  [
+    [ "colors", fail ],
+    [ "range_of_HomStructure", fail ],
+    [ "eager", false ],
+  ],
+  function ( CAP_NAMED_ARGUMENTS, input_data )
+    local ring, q, name, A, ranks, hom_structure_objs_gmors, hom_structure_objs_mors, hom_structure_gmors_objs, hom_structure_mors_objs,
     hom_structure_matrices, range_category_of_hom_structure;
     
     ring := input_data[1];
@@ -131,23 +136,19 @@ InstallMethod( AlgebroidFromDataTables,
              CapJitDataTypeOfListOf( CapJitDataTypeOfElementOfRing( ring ) ),
              fail );
     
-    colors := ValueOption( "colors" );
+    if CAP_NAMED_ARGUMENTS.colors = fail then
     
-    if colors = fail then
+        A!.colors := rec( obj := "", coeff := "", basis_elm := "", other := "", reset := "" );
         
-        colors := rec( obj := "", coeff := "", basis_elm := "", other := "", reset := "" );
+    elif CAP_NAMED_ARGUMENTS.colors = true then
         
-    elif colors = true then
+        A!.colors := rec( obj := "\033[34m", coeff := "\033[35m", basis_elm := "\033[32m", other := "\033[31m", reset := "\033[0m" );
         
-        colors := rec( obj := TextAttr.4, coeff := TextAttr.5, basis_elm := TextAttr.2, other := TextAttr.1, reset := TextAttr.reset );
+    else
         
-    elif not IsRecord( colors ) then
-        
-        Error( "the passed 'colors' option is not supported!\n" );
+        A!.colors := CAP_NAMED_ARGUMENTS.colors;
         
     fi;
-    
-    A!.colors := colors;
     
     A!.compiler_hints :=
       rec( category_attribute_names :=
@@ -191,27 +192,30 @@ InstallMethod( AlgebroidFromDataTables,
               NumberOfMorphisms( q ),
               ListN( IndicesOfSources( q ), IndicesOfTargets( q ), { s, t } -> [ -1 + s, -1 + t ] ) ) );
     
-    #= comment for Julia
-    eager := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "eager", true );
-    # =#
-    
     # homomorphism structure
     
-    range_category_of_hom_structure :=
-        CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure",
-            CategoryOfRows( ring : overhead := false, FinalizeCategory := true ) );
+    range_category_of_hom_structure := CAP_NAMED_ARGUMENTS.range_of_HomStructure;
+    
+    if range_category_of_hom_structure = fail then
+      
+      range_category_of_hom_structure := CategoryOfRows( ring :
+            FinalizeCategory := true,
+            #= comment for Julia
+            overhead := false
+            # =#
+            );
+      
+    fi;
     
     SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( A, range_category_of_hom_structure );
     
     ranks := List( input_data[3], s -> List( s, Length ) );
     
-    #= comment for Julia
-    if eager then
+    if CAP_NAMED_ARGUMENTS.eager then
         
         ranks := List( ListOfValues( ranks ), ListOfValues );
         
     fi;
-    # =#
     
     SetHomomorphismStructureOnObjectsRanks( A, ranks );
     
@@ -249,8 +253,7 @@ InstallMethod( AlgebroidFromDataTables,
                     l -> LazyHList( hom_structure_objs_mors[j][p][q],
                       r -> r * l ) ) ) ) ) );
     
-    #= comment for Julia
-    if eager then
+    if CAP_NAMED_ARGUMENTS.eager then
        
        hom_structure_matrices :=
           List( ListOfValues( hom_structure_matrices ),
@@ -261,7 +264,6 @@ InstallMethod( AlgebroidFromDataTables,
                     e -> ListOfValues( e ) ) ) ) ) );
       
     fi;
-    # =#
     
     SetHomomorphismStructureOnMorphismsMatrices( A, hom_structure_matrices );
     
@@ -615,17 +617,21 @@ InstallMethod( AlgebroidFromDataTables,
     
     return A;
     
-end );
+end ) );
 
 ##
 InstallOtherMethod( AlgebroidFromDataTables,
           [ IsCapCategory ],
   
-  function ( C )
+  FunctionWithNamedArguments(
+  [
+    [ "colors", fail ]
+  ],
+  function ( CAP_NAMED_ARGUMENTS, C )
     
-    return AlgebroidFromDataTables( DataTablesOfLinearCategory( C ) );
+    return AlgebroidFromDataTables( DataTablesOfLinearCategory( C ) : colors := CAP_NAMED_ARGUMENTS.colors );
     
-end );
+end ) );
 
 
 ##
