@@ -44,85 +44,84 @@ q := FinQuiver( "q(0,1,2,3)[a:0->1,b:1->3,c:0->2,d:2->3,e:3->3]" );
 #! FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" )
 F := PathCategory( q );
 #! PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) )
-k := HomalgFieldOfRationals( );
-#! Q
+k := HomalgFieldOfRationals( );;
 kF := k[F];
 #! Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) ) )
 B := kF / [ kF.e^3 ];
 #! Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) ) ) / [ 1*e^3 ]
 data_tables := DataTablesOfLinearCategory( B );;
-data_tables[1];
-#! Q
+IsIdenticalObj( data_tables[1], CommutativeRingOfLinearCategory( B ) );
+#! true
 data_tables[2];
 #! FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" )
-data_tables[3];
-#! [[[ [] ], [ [1] ], [ [3] ], [ [1,2],[3,4],[1,2,5],[3,4,5],[1,2,5,5],[3,4,5,5]]],
-#!  [[  ], [ [] ], [  ], [ [2],[2,5],[2,5,5] ]],
-#!  [[  ], [  ], [ [] ], [ [4],[4,5],[4,5,5] ]],
-#!  [[  ], [  ], [  ], [ [],[5],[5,5] ]]]
-data_tables[4][2][5];
-#! [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ]
-data_tables[5][4][1];
-#! [ [ 1, 0, 0, 0, 0, 0 ], [ 0, 0, 1, 0, 0, 0 ], [ 0, 0, 0, 0, 1, 0 ] ]
-A := AlgebroidFromDataTables( data_tables );; # alternatively,
-A := AlgebroidFromDataTables( B );
+Perform( data_tables[3], Display );
+#! [ [ [  ] ], [ [ 1 ] ], [ [ 3 ] ], [ [ 1, 2 ], [ 3, 4 ], [ 1, 2, 5 ], [ 3, 4, 5 ], [ 1, 2, 5, 5 ], [ 3, 4, 5, 5 ] ] ]
+#! [ [  ], [ [  ] ], [  ], [ [ 2 ], [ 2, 5 ], [ 2, 5, 5 ] ] ]
+#! [ [  ], [  ], [ [  ] ], [ [ 4 ], [ 4, 5 ], [ 4, 5, 5 ] ] ]
+#! [ [  ], [  ], [  ], [ [  ], [ 5 ], [ 5, 5 ] ] ]
+Perform( data_tables[4], Display );
+#! [ [ [ 1 ] ], [ [ 1, 0, 0, 0, 0, 0 ] ], [ [ 1 ] ], [ [ 0, 1, 0, 0, 0, 0 ] ],
+#!   [ [ 0, 0, 1, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0 ],
+#!     [ 0, 0, 0, 0, 1, 0 ], [ 0, 0, 0, 0, 0, 1 ], [ 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0 ] ] ]
+#! [ [  ], [ [ 1, 0, 0 ] ], [  ], [  ], [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ]
+#! [ [  ], [  ], [  ], [ [ 1, 0, 0 ] ], [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ]
+#! [ [  ], [  ], [  ], [  ], [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ]
+A := AlgebroidFromDataTables( data_tables );
 #! Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] ) defined by
 #! 4 objects and 5 generating morphisms
-AssignSetOfObjects( A, "V_" );
-#! #I  MakeReadWriteGlobal: V_0 already read-write
-#! #I  MakeReadWriteGlobal: V_1 already read-write
-#! #I  MakeReadWriteGlobal: V_2 already read-write
-#! #I  MakeReadWriteGlobal: V_3 already read-write
-AssignSetOfGeneratingMorphisms( A );
-#! #I  MakeReadWriteGlobal: a already read-write
-#! #I  MakeReadWriteGlobal: b already read-write
-#! #I  MakeReadWriteGlobal: c already read-write
-#! #I  MakeReadWriteGlobal: d already read-write
-#! #I  MakeReadWriteGlobal: e already read-write
-SetOfObjects( A );
-#! [ <(0)>, <(1)>, <(2)>, <(3)> ]
+Perform( SetOfObjects( A ), Display );
+#! <(0)>
+#! <(1)>
+#! <(2)>
+#! <(3)>
 A.("0");
 #! <(0)>
-V_0;
-#! <(0)>
-IsEqualForObjects( A.("0"), V_0 );
-#! true
 ObjectConstructor( A, 1 ) = A.("0");
 #! true
-SetOfGeneratingMorphisms( A );
-#! [ <1*a:(0) → (1)>, <1*b:(1) → (3)>,
-#!   <1*c:(0) → (2)>, <1*d:(2) → (3)>,
-#!   <1*e:(3) → (3)> ]
-IsCongruentForMorphisms( A.("a"), a );
-#! true
-Perform( [ "V_0", "V_1", "V_2", "V_3" ], MakeReadWriteGlobal );
-Perform( [ "a", "b", "c", "d", "e" ], MakeReadWriteGlobal );
+Perform( SetOfGeneratingMorphisms( A ), Display );
+#! <1*a:(0) → (1)>
+#! <1*b:(1) → (3)>
+#! <1*c:(0) → (2)>
+#! <1*d:(2) → (3)>
+#! <1*e:(3) → (3)>
 HomStructure( A.("0"), A.("3") );
 #! <A row module over Q of rank 6>
-hom_03 := BasisOfExternalHom( A.("0"), A.("3") );
-#! [ <1*a⋅b:(0) → (3)>, <1*c⋅d:(0) → (3)>,
-#!   <1*a⋅b⋅e:(0) → (3)>, <1*c⋅d⋅e:(0) → (3)>,
-#!   <1*a⋅b⋅e^2:(0) → (3)>, <1*c⋅d⋅e^2:(0) → (3)> ]
+hom_03 := BasisOfExternalHom( A.("0"), A.("3") );;
+Perform( hom_03, Display );
+#! <1*a⋅b:(0) → (3)>
+#! <1*c⋅d:(0) → (3)>
+#! <1*a⋅b⋅e:(0) → (3)>
+#! <1*c⋅d⋅e:(0) → (3)>
+#! <1*a⋅b⋅e^2:(0) → (3)>
+#! <1*c⋅d⋅e^2:(0) → (3)>
 alpha := 2*hom_03[1] + 3*hom_03[6];
 #! <2*a⋅b + 3*c⋅d⋅e^2:(0) → (3)>
-LaTeXOutput( alpha );
-#! "{0}-\\left({2\\cdot {a}{b} + 3\\cdot {c}{d}{e}^{2}}\\right)\\rightarrow{3}"
 alpha = MorphismConstructor( A, A.("0"), [ 2, 0, 0, 0, 0, 3 ], A.("3") );
 #! true
-CoefficientsList( alpha );
+Display( CoefficientsList( alpha ) );
 #! [ 2, 0, 0, 0, 0, 3 ]
-IndicesOfSupportMorphisms( alpha );
+Display( IndicesOfSupportMorphisms( alpha ) );
 #! [ 1, 6 ]
-CoefficientsOfSupportMorphisms( alpha );
+Display( CoefficientsOfSupportMorphisms( alpha ) );
 #! [ 2, 3 ]
-SupportMorphisms( alpha );
-#! [ <1*a⋅b:(0) → (3)>, <1*c⋅d⋅e^2:(0) → (3)> ]
-DecompositionIndicesOfMorphismInAlgebroid( alpha );
+Perform( SupportMorphisms( alpha ), Display );
+#! <1*a⋅b:(0) → (3)>
+#! <1*c⋅d⋅e^2:(0) → (3)>
+Display( DecompositionIndicesOfMorphismInAlgebroid( alpha ) );
 #! [ [ 2, [ 1, 2 ] ], [ 3, [ 3, 4, 5, 5 ] ] ]
-DecompositionOfMorphismInAlgebroid( alpha );
-#! [ [ 2, [ <1*a:(0) → (1)>, <1*b:(1) → (3)> ] ],
-#!   [ 3, [ <1*c:(0) → (2)>, <1*d:(2) → (3)>,
-#!          <1*e:(3) → (3)>, <1*e:(3) → (3)> ] ] ]
+d := DecompositionOfMorphismInAlgebroid( alpha );;
+d[1][1];
+#! 2
+Perform( d[1][2], Display );
+#! <1*a:(0) → (1)>
+#! <1*b:(1) → (3)>
+d[2][1];
+#! 3
+Perform( d[2][2], Display );
+#! <1*c:(0) → (2)>
+#! <1*d:(2) → (3)>
+#! <1*e:(3) → (3)>
+#! <1*e:(3) → (3)>
 A.("a⋅b⋅e");
 #! <1*a⋅b⋅e:(0) → (3)>
 A.("abe");
@@ -137,9 +136,9 @@ o2 :=  RandomObject( add_A, [ [ 5 ], [ 1 ] ] );;
 f := RandomMorphism( o1, o2, 20 );;
 HomStructure( o1, o2, HomStructure( f ) ) = f;
 #! true
-IsZero( PreCompose( f, WeakCokernelProjection( f ) ) );
+IsZeroForMorphisms( PreCompose( f, WeakCokernelProjection( f ) ) );
 #! true
-IsZero( PreCompose( WeakKernelEmbedding( f ), f ) );
+IsZeroForMorphisms( PreCompose( WeakKernelEmbedding( f ), f ) );
 #! true
 freyd_B := FreydCategory( add_A );
 #! Freyd( AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,
@@ -158,30 +157,28 @@ T := DirectSum( List( SetOfObjects( A ), o -> o / add_A ) );
 u := RandomMorphism( T, T, 5 );;
 v := RandomMorphism( T, T, 5 );;
 w := RandomMorphism( T, T, 5 );;
-HomStructure( PreCompose( [ u, v, w ] ) )
-      = PreCompose( HomStructure( v ), HomStructure( u, w ) );
+HomStructure( PreCompose( [ u, v, w ] ) ) = PreCompose( HomStructure( v ), HomStructure( u, w ) );
 #! true
 AA := TensorProductOfAlgebroids( A, A );
 #! Q-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[0⊗a:0⊗0→0⊗1,0⊗b:0⊗1→0⊗3,
 #! 0⊗c:0⊗0→0⊗2,..,e⊗1:3⊗1→3⊗1,e⊗2:3⊗2→3⊗2,e⊗3:3⊗3→3⊗3] ) defined
 #! by 16 objects and 40 generating morphisms
-ElementaryTensor( A.0, A.1 );
+ElementaryTensor( A.("0"), A.("1") );
 #! <(0⊗1)>
-ElementaryTensor( A.a, A.b );
+ElementaryTensor( A.("a"), A.("b") );
 #! <1*a⊗b:(0⊗1) → (1⊗3)>
-ElementaryTensor( A.0, A.b );
+ElementaryTensor( A.("0"), A.("b") );
 #! <1*id(0)⊗b:(0⊗1) → (0⊗3)>
-ElementaryTensor( A.a, A.1 );
+ElementaryTensor( A.("a"), A.("1") );
 #! <1*a⊗id(1):(0⊗1) → (1⊗1)>
-3x3 := AA.("3⊗3");
+o := AA.("3⊗3");
 #! <(3⊗3)>
 AA.("e⊗1");
 #! <1*e⊗id(1):(3⊗1) → (3⊗1)>
-u := RandomMorphism( 3x3, 3x3, 15 );;
-v := RandomMorphism( 3x3, 3x3, 15 );;
-w := RandomMorphism( 3x3, 3x3, 15 );;
-HomStructure( PreCompose( [ u, v, w ] ) )
-      = PreCompose( HomStructure( v ), HomStructure( u, w ) );
+u := RandomMorphism( o, o, 15 );;
+v := RandomMorphism( o, o, 15 );;
+w := RandomMorphism( o, o, 15 );;
+HomStructure( PreCompose( [ u, v, w ] ) ) = PreCompose( HomStructure( v ), HomStructure( u, w ) );
 #! true
 #! @EndExample
 #! @EndChunk
