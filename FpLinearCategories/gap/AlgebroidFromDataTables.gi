@@ -229,7 +229,7 @@ InstallMethod( AlgebroidFromDataTables,
                                   s -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
                                     i -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
                                        j ->  LazyHList( input_data[3][i][j],
-                                          indices -> Iterated( _ConcatenationLazyHLists_( [ LazyHList( [ 1 ], r -> HomalgIdentityMatrix( ranks[s][i], ring ) ), hom_structure_objs_gmors[s]{indices} ] ), \*  ) ) ) ) );
+                                          indices -> Iterated( _ConcatenationLazyHLists_( [ LazyHList( [ 1 ], r -> HomalgIdentityMatrix( ranks[s][i], ring ) ), hom_structure_objs_gmors[s]{indices} ] ), {a, b} -> a * b  ) ) ) ) );
     
     # [ [ hom(m_h:s_h -> t_h, o_t): hom(t_h, o_t) -> hom(s_h, o_t) ] ]_{t,h}
     hom_structure_gmors_objs := LazyHList( [ 1 .. NumberOfObjects( q ) ],
@@ -241,7 +241,7 @@ InstallMethod( AlgebroidFromDataTables,
                                   t -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
                                     i -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
                                        j ->  LazyHList( input_data[3][i][j],
-                                          indices -> Iterated( _ConcatenationLazyHLists_( [ LazyHList( [ 1 ], r -> HomalgIdentityMatrix( ranks[j][t], ring ) ), hom_structure_gmors_objs[t]{Reversed(indices)} ] ), \* ) ) ) ) );
+                                          indices -> Iterated( _ConcatenationLazyHLists_( [ LazyHList( [ 1 ], r -> HomalgIdentityMatrix( ranks[j][t], ring ) ), hom_structure_gmors_objs[t]{Reversed(indices)} ] ), {a, b} -> a * b ) ) ) ) );
     
     # H(l:i->j, r:p->q) = H( l⋅id_j, r⋅id_q ) = H(id_j, r)⋅H(l, id_q)
     hom_structure_matrices := LazyHList( [ 1 .. NumberOfObjects( q ) ],
