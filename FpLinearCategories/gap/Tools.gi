@@ -6,11 +6,18 @@
 
 ##
 InstallOtherMethod( Dimension,
-        "for an algebroid",
-        [ IsCapCategory and IsObjectFiniteCategory and IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms ],
+        "for a linear category with finite objects and free external homs",
+        [ IsCapCategory ],
         
   function( A )
     local objects;
+    
+    if not ( HasIsObjectFiniteCategory( A ) and IsObjectFiniteCategory( A ) and
+              HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( A ) and
+              IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( A ) ) then
+
+        TryNextMethod( );
+    fi;
     
     objects := SetOfObjects( A );
     
