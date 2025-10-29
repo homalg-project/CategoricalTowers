@@ -443,58 +443,6 @@ INSTALL_DOT_METHOD( IsLinearClosure );
 # =#
 
 ##
-InstallMethod( DataTablesOfCategory,
-            "for hom-finite k-linear closures of path categories",
-          [ IsLinearClosure ],
-  
-  function ( kC )
-    local C, q, objs, gmors, external_homs;
-    
-    if not HasRangeCategoryOfHomomorphismStructure( kC ) then
-        Error( "the linear closure category passed to 'DataTablesOfCategory' must be hom-finite!" );
-    fi;
-    
-    C := UnderlyingCategory( kC );
-    
-    if not (IsPathCategory( C ) or IsQuotientOfPathCategory( C ))  then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    q := UnderlyingQuiver( C );
-    
-    objs := SetOfObjects( kC );
-    gmors := SetOfGeneratingMorphisms( kC );
-    
-    external_homs :=  List( objs, s -> List( objs, t -> BasisOfExternalHom( kC, s, t ) ) );
-    
-    return
-      NTuple( 5,
-      
-      #coefficients_ring,
-      UnderlyingRing( kC ),
-      
-      #quiver
-      q,
-      
-      #decomposition_indices_of_bases_elements
-      List( external_homs,
-        s -> List( s, hom_st -> List( hom_st, m -> MorphismIndices( CanonicalRepresentative( SupportMorphisms( m )[1] ) ) ) ) ),
-      
-      # hom_structure_objs_gmors
-      List( objs,
-        o -> List( gmors,
-          gm -> EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( kC, IdentityMorphism( kC, o ), gm ) ) ) ) ),
-      
-      #hom_structure_gmors_objs
-      List( objs,
-        o -> List( gmors,
-          gm -> EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( kC, gm, IdentityMorphism( kC, o ) ) ) ) ) ) );
-    
-end );
-
-##
 InstallMethod( DatumOfCellAsEvaluatableString,
         [ IsLinearClosureMorphism, IsList ],
         

@@ -46,7 +46,7 @@ D := AlgebroidFromDataTables( qA );
 #! Q-algebroid( {3}[e:3→3] ) defined by 1 object and 1 generating morphism
 BasisOfExternalHom( D.3, D.3 );
 #! [ <1*id(3):(3) → (3)>, <1*e:(3) → (3)>, <1*e^2:(3) → (3)> ]
-data_tables := DataTablesOfCategory( quo_kC );;
+data_tables := DataTablesOfLinearCategory( quo_kC );;
 data_tables_Z := ShallowCopy( data_tables );;
 data_tables_Z[1] := HomalgRingOfIntegers();;
 B := AlgebroidFromDataTables( data_tables_Z );
