@@ -116,11 +116,12 @@
   
   [1X1.1-4 RandomFinQuiver[101X
   
-  [33X[1;0Y[29X[2XRandomFinQuiver[102X( [3Xnr_objs[103X, [3Xnr_mors[103X, [3Xhas_loops[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XRandomFinQuiver[102X( [3Xnr_objs[103X, [3Xnr_mors[103X, [3Xis_cyclic[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya CAP quiver[133X
   
   [33X[0;0YThe  outout  is  a  random  quiver consisting of [3Xnr_objs[103X objects and [3Xnr_mors[103X
-  morphisms and has loops only if [3Xhas_loops[103X = [10Xtrue[110X.[133X
+  morphisms.  If  [3Xis_cyclic[103X was omitted, the output quiver will be acyclic (no
+  loops).[133X
   
   [1X1.1-5 TensorProductOfFinQuivers[101X
   

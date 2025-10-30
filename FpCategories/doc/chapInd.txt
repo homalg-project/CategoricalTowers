@@ -82,7 +82,7 @@
   [2XQuiverName[102X, for IsFinQuiver 1.2-2 
   [2XQuiverStringOfDigraph[102X, for IsDigraph, IsString, IsString 3.3-11 
   [2XQuotientCategory[102X, for IsPathCategory, IsDenseList 2.1-1 
-  [2XRandomFinQuiver[102X 1.1-4 
+  [2XRandomFinQuiver[102X, for IsInt, IsInt, IsBool 1.1-4 
   [2XReducedGroebnerBasis[102X, for IsPathCategory, IsDenseList 6.1-3 
   [2XReducedGroebnerBasisWithGivenGroebnerBasis[102X, for IsPathCategory, IsDenseList 6.1-2 
   [2XSetOfGeneratingMorphisms[102X, for IsCapCategory 3.2-2 
