@@ -12,26 +12,35 @@
 
 ##
 InstallGlobalFunction( SimplicialCategoryTruncatedInDegree,
-  function( n )
-    local F, Delta;
+  
+  FunctionWithNamedArguments(
+  [
+    [ "range_of_HomStructure", fail ],
+    [ "FinalizeCategory", true ],
+  ],
+  function ( CAP_NAMED_ARGUMENTS, n )
+    local F, rels, Delta;
     
     if n = 0 then
         
-        F := PathCategory( FinQuiver( "Delta(C0)[]" ) );
+        F := PathCategory( FinQuiver( "Delta(C0)[]" ) : range_of_HomStructure := CAP_NAMED_ARGUMENTS.range_of_HomStructure, FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
+        
         Delta := F;
         
     elif n = 1 then
         
         F := PathCategory( FinQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) );
-        Delta := F /
-                 [ [ PreCompose( F.s, F.id ), IdentityMorphism( F.C0 ) ],
-                   [ PreCompose( F.t, F.id ), IdentityMorphism( F.C0 ) ] ];
+        
+        rels := [ [ PreCompose( F.s, F.id ), IdentityMorphism( F.C0 ) ],
+                  [ PreCompose( F.t, F.id ), IdentityMorphism( F.C0 ) ] ];
+        
+        Delta := QuotientCategory( F, rels: range_of_HomStructure := CAP_NAMED_ARGUMENTS.range_of_HomStructure, FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
         
     elif n = 2 then
         
         F := PathCategory( FinQuiver( "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,is:C2->C1,it:C2->C1,ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) );
-        Delta := F /
-                 [ [ PreCompose( F.s, F.id ), IdentityMorphism( F.C0 ) ],
+        
+        rels :=  [ [ PreCompose( F.s, F.id ), IdentityMorphism( F.C0 ) ],
                    [ PreCompose( F.t, F.id ), IdentityMorphism( F.C0 ) ],
                    [ PreCompose( F.ps, F.is ), IdentityMorphism( F.C1 ) ],
                    [ PreCompose( F.pt, F.it ), IdentityMorphism( F.C1 ) ],
@@ -44,6 +53,8 @@ InstallGlobalFunction( SimplicialCategoryTruncatedInDegree,
                    [ PreCompose( F.mu, F.is ), IdentityMorphism( F.C1 ) ],
                    [ PreCompose( F.mu, F.it ), IdentityMorphism( F.C1 ) ] ];
         
+        Delta := QuotientCategory( F, rels : range_of_HomStructure := CAP_NAMED_ARGUMENTS.range_of_HomStructure, FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
+        
     else
         
         Error( "the case n > 2 is not implemented yet\n" );
@@ -52,7 +63,7 @@ InstallGlobalFunction( SimplicialCategoryTruncatedInDegree,
     
     return Delta;
     
-end );
+end ) );
 
 ##
 BindGlobal( "SimplicialCategoryTruncatedInDegree2",
