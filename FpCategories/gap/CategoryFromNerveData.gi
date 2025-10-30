@@ -988,7 +988,7 @@ InstallMethod( ViewString,
     if IsInt( pos ) then
         pos := labels[2][pos];
     else
-        pos := Position( AsList( NerveTruncatedInDegree2Data( C )[2][1] ), i );
+        pos := Position( AsList( NerveData( C )[2][1] ), i );
         if IsInt( pos ) then
             pos := labels[1][pos];
         else
