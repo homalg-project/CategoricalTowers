@@ -77,19 +77,12 @@ BindGlobal( "PARSE_CAP_QUIVER_DATUM_FROM_STRING",
     
 end );
 
-InstallGlobalFunction( RandomFinQuiver,
-  
-  function ( arg ) # nr_objs, nr_gmors, is_cyclic
-    local nr_objs, nr_gmors, is_cyclic, datum, mors, labels, latex, s, t, p, j, triple;
-    
-    nr_objs := arg[1];
-    nr_gmors := arg[2];
-    
-    if Length( arg ) = 3 then
-      is_cyclic := arg[3];
-    else
-      is_cyclic := ValueOption( "cyclic" );
-    fi;
+##
+InstallMethod( RandomFinQuiver,
+          [ IsInt, IsInt, IsBool ],
+          
+  function ( nr_objs, nr_gmors, is_cyclic )
+    local datum, mors, labels, latex, s, t, p, j, triple;
     
     datum := [ "q", [ ], [ ] ];
     
@@ -101,7 +94,6 @@ InstallGlobalFunction( RandomFinQuiver,
     mors := [ ];
     labels := [ ];
     latex := [ ];
-    
     
     for j in [ 1 .. nr_gmors ] do
         
@@ -138,10 +130,10 @@ InstallGlobalFunction( RandomFinQuiver,
       
       if s <> t then
         Add( labels, Concatenation( "m", String( s ), "_", String( t ), "_", String( p ) ) );
-        Add(  latex, Concatenation( "m_{", String( s ), ",", String( t ), ",", String( p ), "}" ) );
+        Add( latex, Concatenation( "m_{", String( s ), ",", String( t ), ",", String( p ), "}" ) );
       else
         Add( labels, Concatenation( "l", String( s ), "_", String( p ) ) );
-        Add(  latex, Concatenation( "l_{", String( s ), ",", String( p ), "}" ) );
+        Add( latex, Concatenation( "l_{", String( s ), ",", String( p ), "}" ) );
       fi;
       
     od;
@@ -154,6 +146,12 @@ InstallGlobalFunction( RandomFinQuiver,
     return FinQuiver( datum );
     
 end );
+
+##
+InstallOtherMethod( RandomFinQuiver,
+          [ IsInt, IsInt ],
+          
+  { nr_objs, nr_gmors } -> RandomFinQuiver( nr_objs, nr_gmors, false ) );
 
 ##
 InstallMethod( FinQuiver,

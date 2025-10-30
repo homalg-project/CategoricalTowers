@@ -65,10 +65,11 @@ DeclareOperation( "MorphismConstructor", [ IsFinQuiver, IsFinQuiverObject, IsInt
 fi;
 
 #! @Description
-#!  The outout is a random quiver consisting of <A>nr_objs</A> objects and <A>nr_mors</A> morphisms and has loops only if <A>has_loops</A> = <C>true</C>.
-#! @Arguments nr_objs, nr_mors, has_loops
+#!  The outout is a random quiver consisting of <A>nr_objs</A> objects and <A>nr_mors</A> morphisms.
+#!  If <A>is_cyclic</A> was omitted, the output quiver will be acyclic (no loops).
+#! @Arguments nr_objs, nr_mors, is_cyclic
 #! @Returns a CAP quiver
-DeclareGlobalFunction( "RandomFinQuiver" );
+DeclareOperation( "RandomFinQuiver", [ IsInt, IsInt, IsBool ] );
 
 #! @Description
 #!  Returns the tensor product of <A>q1</A> and <A>q2</A>.
