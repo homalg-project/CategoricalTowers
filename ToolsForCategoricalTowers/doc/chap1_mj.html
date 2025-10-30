@@ -28,9 +28,10 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X8508AEF8845565A1">1.1 <span class="Heading">Tools</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8494A3737D0883C4">1.1-1 SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X868634747975A5E1">1.1-2 ListKnownDoctrines</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8377969F81B7BA25">1.1-3 DummyCategoryInDoctrines</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A71FE36863F998F">1.1-1 INSTALL_DOT_METHOD</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8494A3737D0883C4">1.1-2 SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X868634747975A5E1">1.1-3 ListKnownDoctrines</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8377969F81B7BA25">1.1-4 DummyCategoryInDoctrines</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X78D1062D78BE08C1">1.2 <span class="Heading">Functors</span></a>
 </span>
@@ -52,9 +53,16 @@
 
 <h4>1.1 <span class="Heading">Tools</span></h4>
 
+<p><a id="X7A71FE36863F998F" name="X7A71FE36863F998F"></a></p>
+
+<h5>1.1-1 INSTALL_DOT_METHOD</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; INSTALL_DOT_METHOD</code>( <var class="Arg">gap_filter</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>When applied on a filter <var class="Arg">gap_filter</var>, then for any instance <code class="code">C</code> of <var class="Arg">gap_filter</var> <code class="code">C.string</code> falls back to <code class="code">"string" / C</code>.</p>
+
 <p><a id="X8494A3737D0883C4" name="X8494A3737D0883C4"></a></p>
 
-<h5>1.1-1 SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE</h5>
+<h5>1.1-2 SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE</code>( <var class="Arg">C</var>, <var class="Arg">H</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>The input are two categories <var class="Arg">C</var> and <var class="Arg">H</var>. There is not output but the following side effects are applied to <var class="Arg">C</var>:</p>
@@ -83,7 +91,7 @@
 
 <p><a id="X868634747975A5E1" name="X868634747975A5E1"></a></p>
 
-<h5>1.1-2 ListKnownDoctrines</h5>
+<h5>1.1-3 ListKnownDoctrines</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ListKnownDoctrines</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
@@ -139,7 +147,7 @@ true
 
 <p><a id="X8377969F81B7BA25" name="X8377969F81B7BA25"></a></p>
 
-<h5>1.1-3 DummyCategoryInDoctrines</h5>
+<h5>1.1-4 DummyCategoryInDoctrines</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DummyCategoryInDoctrines</code>( <var class="Arg">doctrine_names</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
