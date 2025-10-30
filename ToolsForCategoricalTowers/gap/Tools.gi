@@ -992,6 +992,22 @@ end );
 
 #= comment for Julia
 ##
+InstallGlobalFunction( INSTALL_DOT_METHOD,
+  function ( category_filter )
+    
+    ##
+    InstallMethod( \.,
+            [ category_filter, IsPosInt ],
+      
+      function ( C, string_as_int )
+        
+        return NameRNam( string_as_int ) / C;
+        
+    end );
+    
+end );
+
+##
 InstallMethod( \.,
         "for an opposite category and a positive integer",
         [ IsCapCategory and WasCreatedAsOppositeCategory, IsPosInt ],
