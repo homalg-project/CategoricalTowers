@@ -31,6 +31,12 @@ DeclareGlobalFunction( "CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD" );
 DeclareGlobalFunction( "CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION" );
 
 #! @Description
+#! When applied on a filter <A>gap_filter</A>, then for any instance <C>C</C> of <A>gap_filter</A>
+#! <C>C.string</C> falls back to <C>"string" / C</C>.
+#! @Arguments gap_filter
+DeclareGlobalFunction( "INSTALL_DOT_METHOD" );
+
+#! @Description
 #!  The input are two categories <A>C</A> and <A>H</A>.
 #!  There is not output but the following side effects are applied to <A>C</A>:
 #!  * <C>SetRangeCategoryOfHomomorphismStructure</C>( <A>C</A>, <A>H</A> )
