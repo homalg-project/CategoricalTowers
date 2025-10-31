@@ -312,18 +312,23 @@ InstallOtherMethod( CapFunctor,
     
     AddObjectFunction( F,
       function ( obj )
+        local label;
         
-        return imgs_of_objs.(ObjectLabel( ObjectDatum( obj ) ));
+        label := ObjectLabel( ObjectDatum( obj ) );
+        
+        return imgs_of_objs.(label);
         
     end );
     
     AddMorphismFunction( F,
       function ( F_s, mor, F_t )
+        local labels;
+        
+        labels := List( MorphismSupport( MorphismDatum( mor ) ), m -> MorphismLabel( m ) );
         
         return PreComposeList( D,
                        F_s,
-                       List( MorphismSupport( MorphismDatum( mor ) ), m ->
-                             imgs_of_gmors.(MorphismLabel( m )) ),
+                       List( labels, label -> imgs_of_gmors.(label) ),
                        F_t );
         
     end );

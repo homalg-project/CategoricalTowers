@@ -47,8 +47,8 @@ InstallOtherMethod( ReductionOfMorphism,
           
           return MorphismConstructor( C,
                          Source( f ),
-                         Pair( f_datum[1] - g_datum[1] + MorphismLength( G[i][2] ),
-                               Concatenation( f_datum[2]{[ 1 .. j - 1 ]}, MorphismIndices( G[i][2] ), f_datum[2]{[ j + g_datum[1] .. f_datum[1] ]} ) ),
+                         Pair( First( f_datum ) - First( g_datum ) + MorphismLength( G[i][2] ),
+                               Concatenation( f_datum[2]{ [ 1 .. j - 1 ] }, MorphismIndices( G[i][2] ), f_datum[2]{ [ j + First( g_datum ) .. First( f_datum ) ] } ) ),
                          Target( f ) );
           
         fi;
@@ -169,7 +169,7 @@ InstallMethod( GroebnerBasis,
     gb := List( [ 1 .. Length( relations ) ], i -> List( [ 1, 2 ], j -> relations[i][j] ) );
     
     for i in [ 1 .. Length( gb ) ] do
-        Sort( gb[i], { g1, g2 } -> IsAscendingForMorphisms( C, g2, g1 ) );
+        gb[i] := SortedList( gb[i], { g1, g2 } -> IsAscendingForMorphisms( C, g2, g1 ) );
     od;
     
     indices := UnorderedTuples( [ 1 .. Length( gb ) ], 2 );
