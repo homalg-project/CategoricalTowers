@@ -1342,10 +1342,14 @@ end );
 ##
 InstallMethod( DecompositionIndicesOfAllMorphismsFromHomStructure,
         "for a path category",
-        [ IsPathCategory and IsFinite ],
+        [ IsPathCategory ],
         
   function( C )
     local objs;
+    
+    if not (HasIsFiniteCategory( C ) and IsFiniteCategory( C )) then
+        TryNextMethod( );
+    fi;
     
     objs := SetOfObjects( C );
     
@@ -1369,9 +1373,13 @@ end );
 ##
 InstallMethod( CategoryFromNerveData,
         "for a path category",
-        [ IsPathCategory and IsFinite ],
+        [ IsPathCategory ],
         
   function( C )
+    
+    if not IsFiniteCategory( C ) then
+        TryNextMethod( );
+    fi;
     
     return CategoryFromNerveData(
                    rec( name := Name( C ),
