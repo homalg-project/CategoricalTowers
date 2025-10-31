@@ -993,7 +993,7 @@ InstallMethod( ViewString,
             pos := labels[1][pos];
         else
             pos := JoinStringsWithSeparator(
-                           List( DecompositionIndicesOfAllMorphisms( C )[1+t, 1+s][1 + HomStructure( mor )(0)], i -> labels[2][1 + i] ),
+                           List( DecompositionIndicesOfAllMorphisms( C )[1+t][1+s][1 + HomStructure( mor )(0)], i -> labels[2][1 + i] ),
                            "⋅" );
         fi;
     fi;

@@ -1034,7 +1034,7 @@ InstallMethod( HasFiniteNumberOfMacaulayMorphisms,
     
     len := Maximum( Concatenation( [ 1 ], List( monomials, mono -> Length( mono[2] ) ) ) );
     
-    repeat
+    while true do
       
       # Hypothesis: the category is finite & all loops of length 'len' are divisible by the set 'monomials'
       is_finite := true;
@@ -1061,18 +1061,26 @@ InstallMethod( HasFiniteNumberOfMacaulayMorphisms,
           fi;
           
           # if the category is not finite then break the current for-loop
-          if is_finite = false then break; fi;
+          if is_finite = false then
+            break;
+          fi;
           
         od;
         
         # if the category is not finite then break the current for-loop
-        if is_finite = false then break; fi;
+        if is_finite = false then
+            break;
+        fi;
         
       od;
       
       len := len + 1;
       
-    until is_finite = false or ( is_finite = true and len > 2 * nr_objs );
+      if (is_finite = false) or (is_finite = true and len > 2 * nr_objs) then
+          break;
+      fi;
+      
+    od;
     
     return is_finite;
     
@@ -1110,7 +1118,7 @@ InstallGlobalFunction( FpCategories_SORT_MORPHISMS_LIKE_QPA,
     for s in [ 1 .. nr_objs ] do
       for t in [ 1 .. nr_objs ] do
         
-        Sort( supports[s][t], sort_function );
+        supports[s][t] := SortedList( supports[s][t], sort_function );
         
       od;
     od;
@@ -1147,40 +1155,44 @@ InstallMethod( MacaulayMorphisms,
     
     len := 0;
     
-    repeat
-        
-        homC_deg := ExternalHomsWithGivenLengthData( C, len );
-        
-        # Hypothesis: all morphisms of length 'len' are multiples of 'monomials'
-        hypothesis := true;
-        
-        for s in rel_objs do
-          for t in rel_objs do
-            
-            homQ_len_st := [ ];
-            
-            homC_len_st := Filtered( homC_deg[s][t], mor -> not ForAny( irr_mors, i -> i in mor ) );
-            
-            for m in homC_len_st do
-                
-                if ForAll( non_id_mons, datum -> PositionSublist( m, datum ) = fail ) then
-                    
-                    Add( homQ_len_st, m );
-                    
-                    hypothesis := false;
-                    
-                fi;
-                
-            od;
-            
-            supports[s][t] := Concatenation( homQ_len_st, supports[s][t] );
-            
+    while true do
+      
+      homC_deg := ExternalHomsWithGivenLengthData( C, len );
+      
+      # Hypothesis: all morphisms of length 'len' are multiples of 'monomials'
+      hypothesis := true;
+      
+      for s in rel_objs do
+        for t in rel_objs do
+          
+          homQ_len_st := [ ];
+          
+          homC_len_st := Filtered( homC_deg[s][t], mor -> not ForAny( irr_mors, i -> i in mor ) );
+          
+          for m in homC_len_st do
+              
+              if ForAll( non_id_mons, datum -> PositionSublist( m, datum ) = fail ) then
+                  
+                  Add( homQ_len_st, m );
+                  
+                  hypothesis := false;
+                  
+              fi;
+              
           od;
+          
+          supports[s][t] := Concatenation( homQ_len_st, supports[s][t] );
+          
         od;
-        
-        len := len + 1;
-        
-    until hypothesis;
+      od;
+      
+      len := len + 1;
+      
+      if hypothesis then
+          break;
+      fi;
+      
+    od;
     
     if C!.admissible_order = "dp" then
         

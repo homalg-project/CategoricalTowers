@@ -120,7 +120,7 @@ InstallMethod( RandomFinQuiver,
         
     od;
     
-    Sort( mors );
+    mors := SortedList( mors );
     
     for triple in mors do
       
@@ -209,7 +209,7 @@ InstallMethod( FinQuiver,
     SetNumberOfObjects( q, q_datum[2][1] );
     SetLabelsOfObjects( q, q_datum[2][2] );
     
-    if IsBound( q_datum[2][3] ) then
+    if Length( q_datum[2] ) >= 3 then
         SetLaTeXStringsOfObjects( q, q_datum[2][3] );
     fi;
     
@@ -218,7 +218,7 @@ InstallMethod( FinQuiver,
     SetIndicesOfTargets( q, q_datum[3][3] );
     SetLabelsOfMorphisms( q, q_datum[3][4] );
     
-    if IsBound( q_datum[3][5] ) then
+    if Length( q_datum[3] ) >= 5 then
         SetLaTeXStringsOfMorphisms( q, q_datum[3][5] );
     fi;
     
