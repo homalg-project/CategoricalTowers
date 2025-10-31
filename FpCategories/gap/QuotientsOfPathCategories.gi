@@ -69,17 +69,6 @@ InstallOtherMethod( QuotientCategory,
         
         SetIsFiniteCategory( quo_C, true );
         
-        hom_quo_C := MacaulayMorphisms( C, leading_monomials );
-        
-        SetExternalHoms( quo_C,
-              LazyHList( [ 1 .. NumberOfObjects( q ) ],
-                s -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
-                  t -> List( hom_quo_C[s][t],
-                    m -> MorphismConstructor( quo_C,
-                              SetOfObjects( quo_C )[s],
-                              m,
-                              SetOfObjects( quo_C )[t] ) ) ) ) );
-        
         range_of_HomStructure := ValueOption( "range_of_HomStructure" );
         
         if not IsSkeletalCategoryOfFiniteSets( range_of_HomStructure ) then
@@ -115,6 +104,36 @@ InstallOtherMethod( QuotientCategory,
     
 end );
 
+##
+InstallOtherMethod( ExternalHoms,
+          [ IsQuotientOfPathCategory ],
+  
+  function ( quo_C )
+    local C, q, reduced_gb, leading_monomials, hom_quo_C;
+    
+    if not ( HasIsFiniteCategory( quo_C ) and IsFiniteCategory( quo_C ) ) then
+        TryNextMethod( );
+    fi;
+    
+    C := AmbientCategory( quo_C );
+    
+    q := UnderlyingQuiver( C );
+    
+    reduced_gb := GroebnerBasisOfDefiningRelations( quo_C );
+    
+    leading_monomials := List( reduced_gb, g -> g[1] );
+    
+    hom_quo_C := MacaulayMorphisms( C, leading_monomials );
+    
+    return LazyHList( [ 1 .. NumberOfObjects( q ) ],
+              s -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
+                t -> List( hom_quo_C[s][t],
+                  m -> MorphismConstructor( quo_C,
+                          SetOfObjectsOfCategory( quo_C )[s],
+                          m,
+                          SetOfObjectsOfCategory( quo_C )[t] ) ) ) );
+
+end );
 ##
 InstallMethod( AssignSetOfObjects,
         [ IsQuotientOfPathCategory, IsString ],
