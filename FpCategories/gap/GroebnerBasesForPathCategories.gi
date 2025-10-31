@@ -230,7 +230,7 @@ InstallMethod( ReducedGroebnerBasisWithGivenGroebnerBasis,
     
     while i <= Length( reduced_gb ) do
       
-      H := Concatenation( reduced_gb{[1 .. i-1]}, reduced_gb{[i+1 .. Length( reduced_gb )]} );
+      H := Concatenation( reduced_gb{ [ 1 .. i-1 ] }, reduced_gb{ [ i+1 .. Length( reduced_gb ) ] } );
       
       r1 := ReductionOfMorphism( C, reduced_gb[i][1], H );
       r2 := ReductionOfMorphism( C, reduced_gb[i][2], H );

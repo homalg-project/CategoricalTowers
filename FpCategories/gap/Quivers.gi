@@ -428,20 +428,19 @@ InstallMethod( TensorProductOfFinQuivers,
             [ Concatenation( List( [ 1 .. NumberOfObjects( q1 ) ], l -> List( IndicesOfTargets( q2 ), r -> (l-1) * NumberOfObjects( q2 ) + r ) ) ),
               Concatenation( List( IndicesOfTargets( q1 ), l -> List( [ 1 .. NumberOfObjects( q2 ) ], r -> (l-1) * NumberOfObjects( q2 ) + r ) ) ) ] );
     
-    return
-      FinQuiver(
-         NTuple( 3,
-           Concatenation( QuiverName( q1 ), "⊗", QuiverName( q2 ) ),
-           NTuple( 3,
-             nr_objs,
-             labels_objs,
-             latex_strings_objs ),
-           NTuple( 5,
-             nr_gmors,
-             sources_gmors,
-             targets_gmors,
-             labels_gmors,
-             latex_strings_gmors ) ) : colors := q1!.colors );
+    return FinQuiver(
+               NTuple( 3,
+                 Concatenation( QuiverName( q1 ), "⊗", QuiverName( q2 ) ),
+                 NTuple( 3,
+                   nr_objs,
+                   labels_objs,
+                   latex_strings_objs ),
+                 NTuple( 5,
+                   nr_gmors,
+                   sources_gmors,
+                   targets_gmors,
+                   labels_gmors,
+                   latex_strings_gmors ) ) : colors := q1!.colors );
 
 end );
 
@@ -623,17 +622,16 @@ InstallMethod( ViewString,
     
     colors := CapCategory( mor )!.colors;
     
-    return
-      Concatenation(
-          colors.mor,
-          MorphismLabel( mor ),
-          colors.reset,
-          colors.other,
-          ":",
-          ViewString( Source( mor ) ),
-          colors.other,
-          " → ",
-          ViewString( Target( mor ) ) );
+    return Concatenation(
+              colors.mor,
+              MorphismLabel( mor ),
+              colors.reset,
+              colors.other,
+              ":",
+              ViewString( Source( mor ) ),
+              colors.other,
+              " → ",
+              ViewString( Target( mor ) ) );
     
 end );
 

@@ -744,8 +744,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
     ## mu_{a,b,c}: Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
     precompose :=
       function ( a, b, c )
-        return
-          MorphismConstructor( sFinSets,
+        return MorphismConstructor( sFinSets,
                   Hom3[c][a][b], # = Hom(a, b) × Hom(b, c)
                   List( Hom3[c][a][b],
                         function ( i )

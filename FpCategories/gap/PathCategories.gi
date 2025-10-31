@@ -135,10 +135,10 @@ InstallMethod( PathCategory,
     AddIsEqualForMorphisms( C,
       function ( C, mor_1, mor_2 )
         
-        return IsEqualForObjects( C, Source( mor_1 ), Source( mor_2 ) )
-                and IsEqualForObjects( C, Target( mor_1 ), Target( mor_2 ) )
-                and MorphismLength( mor_1 ) = MorphismLength( mor_2 )
-                and MorphismIndices( mor_1 ) = MorphismIndices( mor_2 );
+        return IsEqualForObjects( C, Source( mor_1 ), Source( mor_2 ) ) and
+                IsEqualForObjects( C, Target( mor_1 ), Target( mor_2 ) ) and
+                MorphismLength( mor_1 ) = MorphismLength( mor_2 ) and
+                MorphismIndices( mor_1 ) = MorphismIndices( mor_2 );
         
     end );
     
@@ -947,7 +947,7 @@ InstallMethod( IsAscendingForMorphisms,
       
     fi;
     
-    Error ( "the passed admissible_order is unknown, it should be 'Dp', 'dp' or 't-lex'!\n" );
+    Error( "the passed admissible_order is unknown, it should be 'Dp', 'dp' or 't-lex'!\n" );
     
 end );
 
@@ -1435,17 +1435,16 @@ InstallMethod( ViewString,
     
     colors := UnderlyingQuiver( CapCategory( alpha ) )!.colors;
     
-    return
-      Concatenation(
-          colors.mor,
-          MorphismLabel( alpha ),
-          colors.reset,
-          colors.other,
-          ":",
-          ViewString( Source( alpha ) ),
-          colors.other,
-          " → ",
-          ViewString( Target( alpha ) ) );
+    return Concatenation(
+              colors.mor,
+              MorphismLabel( alpha ),
+              colors.reset,
+              colors.other,
+              ":",
+              ViewString( Source( alpha ) ),
+              colors.other,
+              " → ",
+              ViewString( Target( alpha ) ) );
 
 end );
 
