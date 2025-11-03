@@ -8,8 +8,13 @@
 InstallOtherMethod( QuotientCategory,
         [ IsPathCategory, IsDenseList ],
   
-  function ( C, relations )
-    local reduced_gb, congruence_func, name, quo_C, q, leading_monomials, hom_quo_C, range_of_HomStructure;
+  FunctionWithNamedArguments(
+  [
+    [ "range_of_HomStructure", fail ],
+    [ "FinalizeCategory", true ],
+  ],
+  function ( CAP_NAMED_ARGUMENTS, C, relations )
+    local reduced_gb, congruence_func, name, quo_C, q, leading_monomials, hom_quo_C, range_HomStructure;
     
     reduced_gb := ReducedGroebnerBasis( C, relations );
     
@@ -34,7 +39,11 @@ InstallOtherMethod( QuotientCategory,
                      category_morphism_filter := IsQuotientOfPathCategoryMorphism,
                      nr_arguments_of_congruence_func := 2,
                      congruence_func := congruence_func,
-                     underlying_category := C ) : FinalizeCategory := false, overhead := false );
+                     underlying_category := C ) : FinalizeCategory := false
+                     #= comment for Julia
+                     , overhead := false
+                     # =#
+                    );
     
     SetIsFinitelyPresentedCategory( quo_C, true );
     
@@ -69,15 +78,15 @@ InstallOtherMethod( QuotientCategory,
         
         SetIsFiniteCategory( quo_C, true );
         
-        range_of_HomStructure := ValueOption( "range_of_HomStructure" );
+        range_HomStructure := CAP_NAMED_ARGUMENTS.range_of_HomStructure;
         
-        if not IsSkeletalCategoryOfFiniteSets( range_of_HomStructure ) then
-            range_of_HomStructure := SkeletalFinSets;
+        if not IsSkeletalCategoryOfFiniteSets( range_HomStructure ) then
+            range_HomStructure := SkeletalFinSets;
         fi;
         
-        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( quo_C, range_of_HomStructure );
+        SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( quo_C, range_HomStructure );
         
-        Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( quo_C ), range_of_HomStructure ) );
+        Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( quo_C ), range_HomStructure ) );
         
         ##
         AddMorphismsOfExternalHom( quo_C,
@@ -91,6 +100,10 @@ InstallOtherMethod( QuotientCategory,
             
         end );
         
+    else
+        
+        SetIsFiniteCategory( quo_C, false );
+        
     fi;
     
     quo_C!.compiler_hints.category_attribute_names :=
@@ -98,11 +111,15 @@ InstallOtherMethod( QuotientCategory,
         "DefiningTripleOfUnderlyingQuiver",
         ];
     
-    Finalize( quo_C );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+      
+      Finalize( quo_C );
+
+    fi;
     
     return quo_C;
     
-end );
+end ) );
 
 ##
 InstallOtherMethod( ExternalHoms,
