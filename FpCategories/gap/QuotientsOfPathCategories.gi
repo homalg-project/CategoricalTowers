@@ -151,6 +151,8 @@ InstallOtherMethod( ExternalHoms,
                           SetOfObjectsOfCategory( quo_C )[t] ) ) ) );
 
 end );
+
+#= comment for Julia
 ##
 InstallMethod( AssignSetOfObjects,
         [ IsQuotientOfPathCategory, IsString ],
@@ -226,6 +228,7 @@ InstallOtherMethod( AssignSetOfGeneratingMorphisms,
     AssignSetOfGeneratingMorphisms( C, "" );
     
 end );
+# =#
 
 ##
 InstallOtherMethod( \/,

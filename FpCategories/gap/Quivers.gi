@@ -535,6 +535,7 @@ InstallOtherMethod( \/,
     
 end );
 
+#= comment for Julia
 ##
 INSTALL_DOT_METHOD( IsFinQuiver );
 # =#
