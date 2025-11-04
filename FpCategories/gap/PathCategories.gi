@@ -593,6 +593,7 @@ InstallMethod( LaTeXOutput,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( AssignSetOfObjects,
         [ IsPathCategory, IsString ],
@@ -668,6 +669,7 @@ InstallOtherMethod( AssignSetOfGeneratingMorphisms,
     AssignSetOfGeneratingMorphisms( C, "" );
     
 end );
+# =#
 
 ##
 InstallOtherMethod( \/,
