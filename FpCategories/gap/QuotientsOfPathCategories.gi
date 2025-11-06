@@ -294,16 +294,21 @@ InstallMethod( OppositeQuotientOfPathCategory,
     C_op := OppositePathCategory( C );
     
     relations_op :=  List( DefiningRelations( quo_C ), pair ->
-                           Pair( MorphismConstructor( C_op,
-                                   SetOfObjects( C_op )[ObjectIndex( Target( pair[1] ) )],
-                                   Pair( MorphismLength( pair[1] ), Reversed( MorphismIndices( pair[1] ) ) ),
-                                   SetOfObjects( C_op )[ObjectIndex( Source( pair[1] ) )] ),
-                                 MorphismConstructor( C_op,
-                                   SetOfObjects( C_op )[ObjectIndex( Target( pair[2] ) )],
-                                   Pair( MorphismLength( pair[2] ), Reversed( MorphismIndices( pair[2] ) ) ),
-                                   SetOfObjects( C_op )[ObjectIndex( Source( pair[2] ) )] ) ) );
+                              Pair(
+                               CallFuncListAtRuntime(
+                                 MorphismConstructor,
+                                     [ C_op,
+                                       CallFuncListAtRuntime( SetOfObjectsOfCategory, [ C_op ] )[ObjectIndex( Target( pair[1] ) )],
+                                       Pair( MorphismLength( pair[1] ), Reversed( MorphismIndices( pair[1] ) ) ),
+                                       CallFuncListAtRuntime( SetOfObjectsOfCategory, [ C_op ] )[ObjectIndex( Source( pair[1] ) )] ] ),
+                               CallFuncListAtRuntime(
+                                 MorphismConstructor,
+                                     [ C_op,
+                                       CallFuncListAtRuntime( SetOfObjectsOfCategory, [ C_op ] )[ObjectIndex( Target( pair[2] ) )],
+                                       Pair( MorphismLength( pair[2] ), Reversed( MorphismIndices( pair[2] ) ) ),
+                                       CallFuncListAtRuntime( SetOfObjectsOfCategory, [ C_op ] )[ObjectIndex( Source( pair[2] ) )] ] ) ) );
     
-    quo_C_op := QuotientCategory( C_op, relations_op );
+    quo_C_op := CallFuncListAtRuntime( QuotientCategory, [ C_op, relations_op ] );
     
     SetOppositeQuotientOfPathCategory( quo_C_op, quo_C );
     
