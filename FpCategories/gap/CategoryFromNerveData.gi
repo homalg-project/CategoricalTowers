@@ -581,7 +581,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( CreateObject,
         "for a category from nerve data and an integer",
-        [ IsCategoryFromNerveData, IsInt ],
+        [ IsCategoryFromNerveData, IsBigInt ],
         
   function( C, o )
     local V, C0, obj_map;
@@ -602,7 +602,7 @@ end );
 ##
 InstallMethod( \/,
         "for an integer and a category from nerve data",
-        [ IsInt, IsCategoryFromNerveData ],
+        [ IsBigInt, IsCategoryFromNerveData ],
         
   function( o, C )
     
@@ -613,7 +613,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( CreateMorphism,
         "for two objects in a category from nerve data and an integer",
-        [ IsObjectInCategoryFromNerveData, IsInt, IsObjectInCategoryFromNerveData ],
+        [ IsObjectInCategoryFromNerveData, IsBigInt, IsObjectInCategoryFromNerveData ],
         
   function( source, m, range )
     local C, V, C1, mor_map;
@@ -639,7 +639,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( CreateMorphism,
         "for a category from nerve data and an integer",
-        [ IsCategoryFromNerveData, IsInt ],
+        [ IsCategoryFromNerveData, IsBigInt ],
         
   function( C, m )
     local mors, s, t;
