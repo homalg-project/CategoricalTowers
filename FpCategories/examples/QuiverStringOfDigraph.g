@@ -12,4 +12,5 @@ digraph := DigraphReflexiveTransitiveReduction(
 #! <immutable digraph with 4 vertices, 4 edges>
 QuiverStringOfDigraph( digraph, "q", "m" ) = q;
 #! true
+# @drop_example_in_Julia
 #! @EndExample
