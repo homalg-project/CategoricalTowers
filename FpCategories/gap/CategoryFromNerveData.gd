@@ -81,7 +81,7 @@ DeclareAttribute( "IndicesOfGeneratingMorphisms",
 CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromNerveData ],
   function ( input_types )
     
-    return CapJitDataTypeOfListOf( IsInt );
+    return CapJitDataTypeOfListOf( IsBigInt );
     
 end );
 
@@ -195,7 +195,7 @@ fi;
 #! @Arguments C, o
 #! @Returns a &CAP; category
 DeclareOperation( "CreateObject",
-        [ IsCategoryFromNerveData, IsInt ] );
+        [ IsCategoryFromNerveData, IsBigInt ] );
 
 #! @Description
 #!  Construct the <A>m</A>-th morphism <A>source</A>$\to$<A>range</A>
@@ -204,9 +204,9 @@ DeclareOperation( "CreateObject",
 #! @Returns a &CAP; category
 #! @Group CreateMorphism
 DeclareOperation( "CreateMorphism",
-        [ IsCategoryFromNerveData, IsInt ] );
+        [ IsCategoryFromNerveData, IsBigInt ] );
 
 #! @Arguments source, m, range
 #! @Group CreateMorphism
 DeclareOperation( "CreateMorphism",
-        [ IsObjectInCategoryFromNerveData, IsInt, IsObjectInCategoryFromNerveData ] );
+        [ IsObjectInCategoryFromNerveData, IsBigInt, IsObjectInCategoryFromNerveData ] );
