@@ -18,19 +18,12 @@ DeclareCategory( "IsCategoryFromNerveData",
         IsCapCategory );
 
 #! @Description
-#!  The &GAP; category of cells in a category from nerve data.
-DeclareCategory( "IsCellInCategoryFromNerveData",
-        IsCapCategoryCell );
-
-#! @Description
 #!  The &GAP; category of objects in a category from nerve data.
-DeclareCategory( "IsObjectInCategoryFromNerveData",
-        IsCellInCategoryFromNerveData and IsCapCategoryObject );
+DeclareCategory( "IsObjectInCategoryFromNerveData", IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a category from nerve data.
-DeclareCategory( "IsMorphismInCategoryFromNerveData",
-        IsCellInCategoryFromNerveData and IsCapCategoryMorphism );
+DeclareCategory( "IsMorphismInCategoryFromNerveData", IsCapCategoryMorphism );
 
 ####################################
 #
