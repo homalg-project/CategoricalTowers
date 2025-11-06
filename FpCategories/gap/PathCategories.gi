@@ -194,7 +194,7 @@ InstallMethod( PathCategory,
         return List( [ 1 .. NumberOfMorphisms( q ) ], mor ->
                      MorphismConstructor( C,
                              SetOfObjects( C )[s[mor]],
-                             Pair( BigInt( 1 ), [ mor ] ),
+                             Pair( BigInt( 1 ), [ BigInt( mor ) ] ),
                              SetOfObjects( C )[t[mor]] ) );
         
     end );
@@ -215,9 +215,9 @@ InstallMethod( PathCategory,
         s := ObjectIndex( obj );
         t := Random( [ 1 .. NumberOfObjects( UnderlyingQuiver( C ) ) ] );
         
-        m := ExternalHomsWithGivenLength( C, 0, n )[s][t];
+        m := ExternalHomsWithGivenLength( C, BigInt( 0 ), BigInt( n ) )[s][t];
         
-        if m = [ ] then
+        if m = [] then
               return IdentityMorphism( C, obj );
         else
               return Random( m );
@@ -233,9 +233,9 @@ InstallMethod( PathCategory,
         s := Random( [ 1 .. NumberOfObjects( UnderlyingQuiver( C ) ) ] );
         t := ObjectIndex( obj );
         
-        m := ExternalHomsWithGivenLength( C, 0, n )[s][t];
+        m := ExternalHomsWithGivenLength( C, BigInt( 0 ), BigInt( n ) )[s][t];
         
-        if m = [ ] then
+        if m = [] then
               return IdentityMorphism( C, obj );
         else
               return Random( m );
@@ -251,12 +251,12 @@ InstallMethod( PathCategory,
         s := ObjectIndex( obj_1 );
         t := ObjectIndex( obj_2 );
         
-        p := PositionProperty( [ 1 .. n + 1 ], i -> ExternalHomsWithGivenLength( C, n + 1 - i )[s][t] <> [ ] );
+        p := PositionProperty( [ 1 .. n + 1 ], i -> ExternalHomsWithGivenLength( C, BigInt( n + 1 - i ) )[s][t] <> [] );
         
         if p = fail then
-              return fail;
+              Error( "The Hom-set between the specified source and target objects is empty!\n" );
         else
-              return Random( ExternalHomsWithGivenLength( C, n + 1 - p )[s][t] );
+              return Random( ExternalHomsWithGivenLength( C, BigInt( n + 1 - p ) )[s][t] );
         fi;
         
     end );
@@ -355,7 +355,7 @@ end );
 
 ##
 InstallMethod( ExternalHomsWithGivenLengthDataOp,
-        [ IsPathCategory, IsInt ],
+        [ IsPathCategory, IsBigInt ],
   
   function ( C, len )
     local q, nr_objs, nr_gmors, gmors, data, prev_data, r, j, s;
@@ -407,7 +407,7 @@ end );
 
 ##
 InstallMethod( ExternalHomsWithGivenLengthOp,
-        [ IsPathCategory, IsInt ],
+        [ IsPathCategory, IsBigInt ],
   
   function ( C, len )
     local q, supports;
@@ -421,7 +421,7 @@ InstallMethod( ExternalHomsWithGivenLengthOp,
                        List( supports[s][t], supp ->
                              MorphismConstructor( C,
                                      SetOfObjects( C )[s],
-                                     Pair( len, supp ),
+                                     Pair( len, List( supp, i -> BigInt( i ) ) ),
                                      SetOfObjects( C )[t] ) ) ) );
     
 end );
@@ -429,7 +429,7 @@ end );
 ##
 InstallOtherMethod( ExternalHomsWithGivenLength,
             "for path categories",
-        [ IsCapCategory, IsInt, IsInt ],
+        [ IsCapCategory, IsBigInt, IsBigInt ],
   
   function ( C, l, u )
     local nr_objs;
@@ -1034,7 +1034,7 @@ InstallMethod( HasFiniteNumberOfMacaulayMorphisms,
     
     monomials := List( monomials, m -> [ ObjectIndex( Source( m ) ), MorphismIndices( m ), ObjectIndex( Target( m ) ) ] );
     
-    len := Maximum( Concatenation( [ 1 ], List( monomials, mono -> Length( mono[2] ) ) ) );
+    len := Maximum( Concatenation( [ BigInt( 1 ) ], List( monomials, mono -> Length( mono[2] ) ) ) );
     
     while true do
       
@@ -1155,7 +1155,7 @@ InstallMethod( MacaulayMorphisms,
     
     supports := List( [ 1 .. nr_objs ], s -> List( [ 1 .. nr_objs ], t -> [ ] ) );
     
-    len := 0;
+    len := BigInt( 0 );
     
     while true do
       
@@ -1207,7 +1207,7 @@ InstallMethod( MacaulayMorphisms,
                            List( supports[s][t], supp ->
                                  MorphismConstructor( C,
                                          SetOfObjects( C )[s],
-                                         Pair( Length( supp ), supp ),
+                                         Pair( Length( supp ), List( supp, BigInt ) ),
                                          SetOfObjects( C )[t] ) ) ) );
     
 end );

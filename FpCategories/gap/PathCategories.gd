@@ -49,7 +49,7 @@ if false then
 #!  The output is the <A>i</A>'th object in <A>C</A>.
 #! @Arguments C, i
 #! @Returns a &CAP; category object
-DeclareOperation( "ObjectConstructor", [ IsPathCategory, IsInt ] );
+DeclareOperation( "ObjectConstructor", [ IsPathCategory, IsBigInt ] );
 
 #! @Description
 #!  The input is a path category <A>C</A> of &CAP; quiver $q$, two objects <A>s</A>, <A>t</A>
@@ -58,7 +58,7 @@ DeclareOperation( "ObjectConstructor", [ IsPathCategory, IsInt ] );
 #!  The output is the morphism in <A>C</A> whose length is <A>l</A> and whose support is <A>support</A>.
 #! @Arguments C, s, l, support, t
 #! @Returns a &CAP; category morphism
-DeclareOperation( "MorphismConstructor", [ IsPathCategory, IsPathCategoryObject, IsInt, IsDenseList, IsPathCategoryObject ] );
+DeclareOperation( "MorphismConstructor", [ IsPathCategory, IsPathCategoryObject, IsBigInt, IsDenseList, IsPathCategoryObject ] );
 fi;
 
 #! @Description
@@ -178,8 +178,8 @@ DeclareOperation( "HasFiniteNumberOfMacaulayMorphisms", [ IsPathCategory, IsDens
 #! @Returns a boolean
 DeclareOperation( "MacaulayMorphisms", [ IsPathCategory, IsDenseList ] );
 
-KeyDependentOperation( "ExternalHomsWithGivenLengthData", IsPathCategory, IsInt, ReturnTrue );
-KeyDependentOperation( "ExternalHomsWithGivenLength", IsCapCategory, IsInt, ReturnTrue );
+KeyDependentOperation( "ExternalHomsWithGivenLengthData", IsPathCategory, IsBigInt, ReturnTrue );
+KeyDependentOperation( "ExternalHomsWithGivenLength", IsCapCategory, IsBigInt, ReturnTrue );
 DeclareAttribute( "ExternalHoms", IsPathCategory );
 
 DeclareAttribute( "RelationsAmongGeneratingMorphisms",
