@@ -174,7 +174,11 @@ InstallMethod( QuotientCategory,
     
     q := UnderlyingQuiver( C );
     
-    kC := LinearClosure( k, C : overhead := false );
+    kC := LinearClosure( k, C
+            #= comment for Julia
+            : overhead := false
+            # =#
+            );
     
     rel_1 :=
       List( GroebnerBasisOfDefiningRelations( quo_C ), m ->

@@ -285,12 +285,14 @@ DeclareAttribute( "OppositeAlgebroid",
 DeclareOperation( "TensorProductOfAlgebroids",
             [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTables ] );
 
+#= comment for Julia
 #! @Description
 #!  Delegates to <C>TensorProductOfAlgebroids</C>(<A>A</A>,<A>B</A>).
 #! @Arguments A, B
 #! @Returns a &CAP; category
 DeclareOperation( "\*",
             [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTables ] );
+# =#
 
 #! @Description
 #!  The arguments are two objects <A>a</A>, <A>b</A> and a tensor product algebroid <A>T</A>$=A\otimes B$ where <A>a</A> and <A>b</A> belong to $A$ resp. $B$.
