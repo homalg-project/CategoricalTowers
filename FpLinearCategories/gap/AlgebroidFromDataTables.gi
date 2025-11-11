@@ -258,7 +258,9 @@ InstallMethod( AlgebroidFromDataTables,
               NumberOfMorphisms( q ),
               ListN( IndicesOfSources( q ), IndicesOfTargets( q ), { s, t } -> [ -1 + s, -1 + t ] ) ) );
     
+    #= comment for Julia
     eager := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "eager", true );
+    # =#
     
     # homomorphism structure
     
@@ -270,11 +272,13 @@ InstallMethod( AlgebroidFromDataTables,
     
     ranks := List( input_data[3], s -> List( s, Length ) );
     
+    #= comment for Julia
     if eager then
         
         ranks := List( ListOfValues( ranks ), ListOfValues );
         
     fi;
+    # =#
     
     SetHomomorphismStructureOnObjectsRanks( A, ranks );
     
@@ -312,6 +316,7 @@ InstallMethod( AlgebroidFromDataTables,
                     l -> LazyHList( hom_structure_objs_mors[j][p][q],
                       r -> r * l ) ) ) ) ) );
     
+    #= comment for Julia
     if eager then
        
        hom_structure_matrices :=
@@ -323,6 +328,7 @@ InstallMethod( AlgebroidFromDataTables,
                     e -> ListOfValues( e ) ) ) ) ) );
       
     fi;
+    # =#
     
     SetHomomorphismStructureOnMorphismsMatrices( A, hom_structure_matrices );
     
@@ -783,6 +789,7 @@ InstallMethod( CoefficientsOfSupportMorphisms,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( AssignSetOfObjects,
         [ IsAlgebroidFromDataTables, IsString ],
@@ -858,6 +865,7 @@ InstallOtherMethod( AssignSetOfGeneratingMorphisms,
     AssignSetOfGeneratingMorphisms( A, "" );
     
 end );
+# =#
 
 ##
 InstallOtherMethod( \/,
@@ -983,8 +991,10 @@ InstallOtherMethod( \/,
     
 end );
 
+#= comment for Julia
 ##
 INSTALL_DOT_METHOD( IsAlgebroidFromDataTables );
+# =#
 
 ##
 InstallMethod( DecompositionIndicesOfMorphismInAlgebroid,
@@ -1140,6 +1150,7 @@ InstallMethod( PowerOfArrowIdealOp,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( IsAdmissibleAlgebroid,
           [ IsAlgebroidFromDataTables ],
@@ -1185,6 +1196,7 @@ InstallMethod( IsAdmissibleAlgebroid,
     return bool;
     
 end );
+# =#
 
 ##
 InstallOtherMethod( CapFunctor,
@@ -1391,7 +1403,11 @@ end );
 InstallMethod( \*,
           [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTables ],
   
-  { A_1, A_2 } -> TensorProductOfAlgebroids( A_1, A_2 : eager := false )
+  { A_1, A_2 } -> TensorProductOfAlgebroids( A_1, A_2 :
+                      #= comment for Julia
+                      eager := false
+                      # =#
+                      )
 );
 
 ##
