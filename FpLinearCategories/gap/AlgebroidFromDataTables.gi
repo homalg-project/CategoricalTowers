@@ -1384,14 +1384,14 @@ end );
 InstallOtherMethod( ElementaryTensor,
         [ IsObjectInAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables ],
   
-  { obj_1, obj_2 } -> ElementaryTensor( obj_1, obj_2, TensorProductOfAlgebroids( CapCategory( obj_1 ), CapCategory( obj_2 ) ) )
+  { obj_1, obj_2 } -> CallFuncListAtRuntime( ElementaryTensor, [ obj_1, obj_2, TensorProductOfAlgebroids( CapCategory( obj_1 ), CapCategory( obj_2 ) ) ] )
 );
 
 ##
 InstallOtherMethod( ElementaryTensor,
         [ IsMorphismInAlgebroidFromDataTables, IsMorphismInAlgebroidFromDataTables ],
   
-  { mor_1, mor_2 } -> ElementaryTensor( mor_1, mor_2, TensorProductOfAlgebroids( CapCategory( mor_1 ), CapCategory( mor_2 ) ) )
+  { mor_1, mor_2 } -> CallFuncListAtRuntime( ElementaryTensor,  [ mor_1, mor_2, TensorProductOfAlgebroids( CapCategory( mor_1 ), CapCategory( mor_2 ) ) ] )
 );
 
 ##

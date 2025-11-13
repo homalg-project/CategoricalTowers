@@ -70,13 +70,15 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY",
               LazyHList( [ 1 .. NumberOfObjects( q ) ],
                 s -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
                   t -> List( homQ[s][t],
-                    m -> MorphismConstructor( quo_kC,
-                              SetOfObjects( quo_kC )[s],
-                              MorphismConstructor( kC,
+                    m -> CallFuncListAtRuntime( MorphismConstructor,
+                              [ quo_kC,
+                                CallFuncListAtRuntime( SetOfObjects, [ quo_kC ] )[s],
+                                MorphismConstructor( kC,
                                   SetOfObjects( kC )[s],
                                   Pair( [ One( UnderlyingRing( kC ) ) ], [ m ] ),
                                   SetOfObjects( kC )[t] ),
-                              SetOfObjects( quo_kC )[t] ) ) ) ) );
+                                CallFuncListAtRuntime( SetOfObjects, [ quo_kC ] )[t]
+                              ] ) ) ) ) );
         
         range_HomStructure := CAP_NAMED_ARGUMENTS.range_of_HomStructure;
         
@@ -183,21 +185,23 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_QUOTIENT_OF_PATH_CATEGORY",
             # =#
             );
     
-    rel_1 :=
-      List( GroebnerBasisOfDefiningRelations( quo_C ), m ->
-                MorphismConstructor( kC,
-                      SetOfObjects( kC )[ObjectIndex( Source( m[1] ) )],
+    rel_1 := List( GroebnerBasisOfDefiningRelations( quo_C ), m ->
+              CallFuncListAtRuntime(
+                MorphismConstructor,
+                    [ kC,
+                      CallFuncListAtRuntime( SetOfObjects, [ kC ] )[ObjectIndex( Source( m[1] ) )],
                       Pair( [ One( k ), MinusOne( k ) ], m ),
-                      SetOfObjects( kC )[ObjectIndex( Target( m[1] ) )] ) );
+                      CallFuncListAtRuntime( SetOfObjects, [ kC ] )[ObjectIndex( Target( m[1] ) )] ] ) );
 
-    rel_2 :=
-      List( relations, m ->
-                MorphismConstructor( kC,
-                      SetOfObjects( kC )[ObjectIndex( ObjectDatum( quo_C, ObjectDatum( k_quo_C, Source( m ) ) ) )],
+    rel_2 := List( relations, m ->
+              CallFuncListAtRuntime(
+                MorphismConstructor,
+                    [ kC,
+                      CallFuncListAtRuntime( SetOfObjects, [ kC ] )[ObjectIndex( ObjectDatum( quo_C, ObjectDatum( k_quo_C, Source( m ) ) ) )],
                       Pair( CoefficientsList( m ), List( SupportMorphisms( m ), CanonicalRepresentative ) ),
-                      SetOfObjects( kC )[ObjectIndex( ObjectDatum( quo_C, ObjectDatum( k_quo_C, Target( m ) ) ) )] ) );
+                      CallFuncListAtRuntime( SetOfObjects, [ kC ] )[ObjectIndex( ObjectDatum( quo_C, ObjectDatum( k_quo_C, Target( m ) ) ) )] ] ) );
     
-    quo_kC := QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY( kC, Concatenation( rel_1, rel_2 ) );
+    quo_kC := CallFuncListAtRuntime( QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY,  [ kC, Concatenation( rel_1, rel_2 ) ] );
     
     object_constructor := { quo_k_quo_C, obj } -> CreateCapCategoryObjectWithAttributes( quo_k_quo_C, UnderlyingCell, obj );
     
