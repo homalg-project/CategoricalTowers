@@ -9,7 +9,7 @@ InstallOtherMethod( ReductionOfMorphism,
           [ IsLinearClosure, IsLinearClosureMorphism, IsDenseList ],
   
   function ( kC, f, G )
-    local C, one, leading_coeffs_G, leading_morphs_G, leading_morphs_G_datum, r, leading_coeff_f, leading_morph_f, leading_morph_f_datum, i, p, c_i, u_i, v_i, t, leading_term_f;
+    local C, one, leading_coeffs_G, leading_morphs_G, leading_morphs_G_datum, leading_morphs_G_datum_i, r, leading_coeff_f, leading_morph_f, leading_morph_f_datum, i, p, c_i, u_i, v_i, t, leading_term_f;
     
     C := UnderlyingCategory( kC );
     
@@ -32,7 +32,9 @@ InstallOtherMethod( ReductionOfMorphism,
         
         if i <> fail then
             
-            p := PositionSublist( leading_morph_f_datum[2], leading_morphs_G_datum[i][2] );
+            leading_morphs_G_datum_i := leading_morphs_G_datum[i];
+            
+            p := PositionSublist( leading_morph_f_datum[2], leading_morphs_G_datum_i[2] );
             
             c_i := leading_coeff_f / leading_coeffs_G[i];
             
@@ -45,8 +47,8 @@ InstallOtherMethod( ReductionOfMorphism,
             
             v_i := MorphismConstructor( C,
                             ObjectDatum( kC, Target( G[i] ) ),
-                            Pair( leading_morph_f_datum[1] - p - leading_morphs_G_datum[i][1] + 1,
-                                  leading_morph_f_datum[2]{[ p + leading_morphs_G_datum[i][1] .. leading_morph_f_datum[1] ]} ),
+                            Pair( leading_morph_f_datum[1] - p - leading_morphs_G_datum_i[1] + 1,
+                                  leading_morph_f_datum[2]{ [ p + First( leading_morphs_G_datum_i ) .. First( leading_morph_f_datum ) ] } ),
                             ObjectDatum( kC, Target( f ) ) );
             
             v_i := MorphismConstructor( kC, Target( G[i] ), Pair( [ one ], [ v_i ] ), Target( f ) );
