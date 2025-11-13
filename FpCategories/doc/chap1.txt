@@ -25,8 +25,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FpCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xstr :=[127X[104X
-    [4X[25X>[125X [27X  "q(0..5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;[127X[104X
+    [4X[25Xgap>[125X [27Xstr := "q(0..5)[x:0->0,s:0->1,a:1->2,c:1->3,e:1->4,b:2->4,d:3->4,t:4->5,y:5->5]";;[127X[104X
     [4X[25Xgap>[125X [27Xq := FinQuiver( str );[127X[104X
     [4X[28XFinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,[128X[104X
     [4X[28Xt:4→5,y:5→5]" )[128X[104X
@@ -34,11 +33,11 @@
     [4X[28X"q"[128X[104X
     [4X[25Xgap>[125X [27XNumberOfObjects( q );[127X[104X
     [4X[28X6[128X[104X
-    [4X[25Xgap>[125X [27XLabelsOfObjects( q );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( LabelsOfObjects( q ) );[127X[104X
     [4X[28X[ "0", "1", "2", "3", "4", "5" ][128X[104X
-    [4X[25Xgap>[125X [27XSetOfObjects( q );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( SetOfObjects( q ) );[127X[104X
     [4X[28X[ (0), (1), (2), (3), (4), (5) ][128X[104X
-    [4X[25Xgap>[125X [27Xo := q.0;[127X[104X
+    [4X[25Xgap>[125X [27Xo := q.("0");[127X[104X
     [4X[28X(0)[128X[104X
     [4X[25Xgap>[125X [27XObjectIndex( o );[127X[104X
     [4X[28X1[128X[104X
@@ -50,13 +49,13 @@
     [4X[28X"0"[128X[104X
     [4X[25Xgap>[125X [27XNumberOfMorphisms( q );[127X[104X
     [4X[28X9[128X[104X
-    [4X[25Xgap>[125X [27XLabelsOfMorphisms( q );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( LabelsOfMorphisms( q ) );[127X[104X
     [4X[28X[ "x", "s", "a", "c", "e", "b", "d", "t", "y" ][128X[104X
-    [4X[25Xgap>[125X [27XIndicesOfSources( q );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( IndicesOfSources( q ) );[127X[104X
     [4X[28X[ 1, 1, 2, 2, 2, 3, 4, 5, 6 ][128X[104X
-    [4X[25Xgap>[125X [27XIndicesOfTargets( q );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( IndicesOfTargets( q ) );[127X[104X
     [4X[28X[ 1, 2, 3, 4, 5, 5, 5, 6, 6 ][128X[104X
-    [4X[25Xgap>[125X [27XSetOfMorphisms( q );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( SetOfMorphisms( q ) );[127X[104X
     [4X[28X[ x:(0) → (0), s:(0) → (1), a:(1) → (2), c:(1) → (3), e:(1) → (4),[128X[104X
     [4X[28X  b:(2) → (4), d:(3) → (4), t:(4) → (5), y:(5) → (5) ][128X[104X
     [4X[25Xgap>[125X [27Xm := q.y;[127X[104X
@@ -67,16 +66,14 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XMorphismLabel( m );[127X[104X
     [4X[28X"y"[128X[104X
-    [4X[25Xgap>[125X [27XLaTeXOutput( m );[127X[104X
-    [4X[28X"{5}-\\left({y}\\right)\\rightarrow{5}"[128X[104X
-    [4X[25Xgap>[125X [27XMorphismsOfExternalHom( q.("0"), q.("0") );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( MorphismsOfExternalHom( q.("0"), q.("0") ) );[127X[104X
     [4X[28X[ x:(0) → (0) ][128X[104X
-    [4X[25Xgap>[125X [27XMorphismsOfExternalHom( q.("0"), q.("1") );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( MorphismsOfExternalHom( q.("0"), q.("1") ) );[127X[104X
     [4X[28X[ s:(0) → (1) ][128X[104X
     [4X[25Xgap>[125X [27Xq_op := OppositeQuiver( q );[127X[104X
     [4X[28XFinQuiver( "q_op(0,1,2,3,4,5)[x:0→0,s:1→0,a:2→1,c:3→1,e:4→1,b:4→2,[128X[104X
     [4X[28Xd:4→3,t:5→4,y:5→5]" )[128X[104X
-    [4X[25Xgap>[125X [27XMorphismsOfExternalHom( q_op.1, q_op.0 );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( MorphismsOfExternalHom( q_op.("1"), q_op.("0") ) );[127X[104X
     [4X[28X[ s:(1) → (0) ][128X[104X
     [4X[25Xgap>[125X [27Xq_op_x_q := TensorProductOfFinQuivers( q_op, q );;[127X[104X
     [4X[25Xgap>[125X [27XNumberOfObjects( q_op_x_q );[127X[104X
@@ -86,8 +83,8 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xq1 := RandomFinQuiver( 2, 4, false );; # without loops[127X[104X
-    [4X[25Xgap>[125X [27Xq2 := RandomFinQuiver( 2, 4, true );;  # with loops[127X[104X
+    [4X[25Xgap>[125X [27Xq1 := RandomFinQuiver( 2, 4, false );;[127X[104X
+    [4X[25Xgap>[125X [27Xq2 := RandomFinQuiver( 2, 4, true );;[127X[104X
     [4X[25Xgap>[125X [27XAssert( 0, NumberOfObjects( q1 ) = 2 );[127X[104X
     [4X[25Xgap>[125X [27XAssert( 0, NumberOfMorphisms( q1 ) = 4 );[127X[104X
     [4X[25Xgap>[125X [27XAssert( 0, Length( Filtered( SetOfMorphisms( q1 ), IsEndomorphism ) ) = 0 );[127X[104X

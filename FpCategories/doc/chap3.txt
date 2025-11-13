@@ -82,19 +82,19 @@
     [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
     [4X[28X                   is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
     [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ][128X[104X
-    [4X[25Xgap>[125X [27XDefiningRelations( Delta2 );[127X[104X
-    [4X[28X[ [ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],[128X[104X
-    [4X[28X  [ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],[128X[104X
-    [4X[28X  [ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],[128X[104X
-    [4X[28X  [ pt⋅it:(C1) → (C1), id(C1):(C1) → (C1) ],[128X[104X
-    [4X[28X  [ is⋅id:(C2) → (C0), it⋅id:(C2) → (C0) ],[128X[104X
-    [4X[28X  [ pt⋅is:(C1) → (C1), id⋅t:(C1) → (C1) ],[128X[104X
-    [4X[28X  [ ps⋅it:(C1) → (C1), id⋅s:(C1) → (C1) ],[128X[104X
-    [4X[28X  [ s⋅pt:(C0) → (C2), t⋅ps:(C0) → (C2) ],[128X[104X
-    [4X[28X  [ s⋅mu:(C0) → (C2), s⋅ps:(C0) → (C2) ],[128X[104X
-    [4X[28X  [ t⋅mu:(C0) → (C2), t⋅pt:(C0) → (C2) ],[128X[104X
-    [4X[28X  [ mu⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],[128X[104X
-    [4X[28X  [ mu⋅it:(C1) → (C1), id(C1):(C1) → (C1) ] ][128X[104X
+    [4X[25Xgap>[125X [27XPerform( DefiningRelations( Delta2 ), Display );[127X[104X
+    [4X[28X[ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ][128X[104X
+    [4X[28X[ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ][128X[104X
+    [4X[28X[ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
+    [4X[28X[ pt⋅it:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
+    [4X[28X[ is⋅id:(C2) → (C0), it⋅id:(C2) → (C0) ][128X[104X
+    [4X[28X[ pt⋅is:(C1) → (C1), id⋅t:(C1) → (C1) ][128X[104X
+    [4X[28X[ ps⋅it:(C1) → (C1), id⋅s:(C1) → (C1) ][128X[104X
+    [4X[28X[ s⋅pt:(C0) → (C2), t⋅ps:(C0) → (C2) ][128X[104X
+    [4X[28X[ s⋅mu:(C0) → (C2), s⋅ps:(C0) → (C2) ][128X[104X
+    [4X[28X[ t⋅mu:(C0) → (C2), t⋅pt:(C0) → (C2) ][128X[104X
+    [4X[28X[ mu⋅is:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
+    [4X[28X[ mu⋅it:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
     [4X[25Xgap>[125X [27XSize( Delta2 );[127X[104X
     [4X[28X31[128X[104X
     [4X[25Xgap>[125X [27XN := NerveTruncatedInDegree2AsFunctor( Delta2 );[127X[104X
@@ -107,24 +107,32 @@
     [4X[28X  "Delta_op(C0,C1,C2)[id:C0→C1,s:C1→C0,t:C1→C0,[128X[104X
     [4X[28X                      is:C1→C2,it:C1→C2,ps:C2→C1,pt:C2→C1,mu:C2→C1]" ) )[128X[104X
     [4X[28X/ [ id⋅s = id(C0), id⋅t = id(C0), is⋅ps = id(C1), ... ][128X[104X
-    [4X[25Xgap>[125X [27XN( Delta2op.C0 );[127X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( N, Delta2op.C0 );[127X[104X
     [4X[28X|3|[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( N( Delta2op.C0 ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ApplyFunctor( N, Delta2op.C0 ) );[127X[104X
     [4X[28X{ 0, 1, 2 }[128X[104X
-    [4X[25Xgap>[125X [27XN( Delta2op.C1 );[127X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( N, Delta2op.C1 );[127X[104X
     [4X[28X|31|[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( N( Delta2op.C1 ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ApplyFunctor( N, Delta2op.C1 ) );[127X[104X
     [4X[28X{ 0,..., 30 }[128X[104X
-    [4X[25Xgap>[125X [27XN( Delta2op.C2 );[127X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( N, Delta2op.C2 );[127X[104X
     [4X[28X|393|[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( N( Delta2op.C2 ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ApplyFunctor( N, Delta2op.C2 ) );[127X[104X
     [4X[28X{ 0,..., 392 }[128X[104X
-    [4X[25Xgap>[125X [27XN( Delta2op.id );[127X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( N, Delta2op.id );[127X[104X
     [4X[28X|3| → |31|[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( N( Delta2op.id ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ApplyFunctor( N, Delta2op.id ) );[127X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDelta2 := SimplicialCategoryTruncatedInDegree( 2 );[127X[104X
+    [4X[28XPathCategory( FinQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
+    [4X[28X                   is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
+    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ][128X[104X
     [4X[25Xgap>[125X [27XN := NerveTruncatedInDegree2( Delta2 );[127X[104X
     [4X[28X<An object in PreSheaves( PathCategory( FinQuiver([128X[104X
     [4X[28X "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
@@ -138,6 +146,7 @@
     [4X[28X                   is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
     [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ], SkeletalFinSets ),[128X[104X
     [4X[28XObjectMembershipFunction )[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [1X3.3-5 IndicesOfGeneratingMorphismsFromHomStructure[101X
@@ -199,19 +208,19 @@
     [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
     [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
     [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ][128X[104X
-    [4X[25Xgap>[125X [27XDefiningRelations( Delta2 );[127X[104X
-    [4X[28X[ [ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],[128X[104X
-    [4X[28X  [ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],[128X[104X
-    [4X[28X  [ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],[128X[104X
-    [4X[28X  [ pt⋅it:(C1) → (C1), id(C1):(C1) → (C1) ],[128X[104X
-    [4X[28X  [ is⋅id:(C2) → (C0), it⋅id:(C2) → (C0) ],[128X[104X
-    [4X[28X  [ pt⋅is:(C1) → (C1), id⋅t:(C1) → (C1) ],[128X[104X
-    [4X[28X  [ ps⋅it:(C1) → (C1), id⋅s:(C1) → (C1) ],[128X[104X
-    [4X[28X  [ s⋅pt:(C0) → (C2), t⋅ps:(C0) → (C2) ],[128X[104X
-    [4X[28X  [ s⋅mu:(C0) → (C2), s⋅ps:(C0) → (C2) ],[128X[104X
-    [4X[28X  [ t⋅mu:(C0) → (C2), t⋅pt:(C0) → (C2) ],[128X[104X
-    [4X[28X  [ mu⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],[128X[104X
-    [4X[28X  [ mu⋅it:(C1) → (C1), id(C1):(C1) → (C1) ] ][128X[104X
+    [4X[25Xgap>[125X [27XPerform( DefiningRelations( Delta2 ), Display );[127X[104X
+    [4X[28X[ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ][128X[104X
+    [4X[28X[ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ][128X[104X
+    [4X[28X[ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
+    [4X[28X[ pt⋅it:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
+    [4X[28X[ is⋅id:(C2) → (C0), it⋅id:(C2) → (C0) ][128X[104X
+    [4X[28X[ pt⋅is:(C1) → (C1), id⋅t:(C1) → (C1) ][128X[104X
+    [4X[28X[ ps⋅it:(C1) → (C1), id⋅s:(C1) → (C1) ][128X[104X
+    [4X[28X[ s⋅pt:(C0) → (C2), t⋅ps:(C0) → (C2) ][128X[104X
+    [4X[28X[ s⋅mu:(C0) → (C2), s⋅ps:(C0) → (C2) ][128X[104X
+    [4X[28X[ t⋅mu:(C0) → (C2), t⋅pt:(C0) → (C2) ][128X[104X
+    [4X[28X[ mu⋅is:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
+    [4X[28X[ mu⋅it:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
     [4X[25Xgap>[125X [27XSize( Delta2 );[127X[104X
     [4X[28X31[128X[104X
     [4X[25Xgap>[125X [27XYmu := YonedaCompositionAsNaturalEpimorphism( Delta2 );[127X[104X
@@ -285,5 +294,6 @@
     [4X[28X<immutable digraph with 4 vertices, 4 edges>[128X[104X
     [4X[25Xgap>[125X [27XQuiverStringOfDigraph( digraph, "q", "m" ) = q;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   

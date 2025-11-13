@@ -11,21 +11,14 @@
   
   [33X[0;0YThe [5XGAP[105X category of categories from nerve data.[133X
   
-  [1X5.1-2 IsCellInCategoryFromNerveData[101X
-  
-  [33X[1;0Y[29X[2XIsCellInCategoryFromNerveData[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of cells in a category from nerve data.[133X
-  
-  [1X5.1-3 IsObjectInCategoryFromNerveData[101X
+  [1X5.1-2 IsObjectInCategoryFromNerveData[101X
   
   [33X[1;0Y[29X[2XIsObjectInCategoryFromNerveData[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a category from nerve data.[133X
   
-  [1X5.1-4 IsMorphismInCategoryFromNerveData[101X
+  [1X5.1-3 IsMorphismInCategoryFromNerveData[101X
   
   [33X[1;0Y[29X[2XIsMorphismInCategoryFromNerveData[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
@@ -83,7 +76,7 @@
   [30X    [33X[0;6Yproperties[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FpCategories" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDelta1 := SimplicialCategoryTruncatedInDegree( 1 );[127X[104X
     [4X[28XPathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )[128X[104X
@@ -97,10 +90,12 @@
     [4X[28X7[128X[104X
     [4X[25Xgap>[125X [27XNerveTruncatedInDegree2Data( C ) = NerveTruncatedInDegree2Data( Delta1 );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIndicesOfGeneratingMorphisms( C );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( IndicesOfGeneratingMorphisms( C ) );[127X[104X
     [4X[28X[ 1, 2, 3 ][128X[104X
-    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( C );[127X[104X
-    [4X[28X[ (C1)-[(id)]→(C0), (C0)-[(s)]→(C1), (C0)-[(t)]→(C1) ][128X[104X
+    [4X[25Xgap>[125X [27XPerform( SetOfGeneratingMorphisms( C ), Display );[127X[104X
+    [4X[28X(C1)-[(id)]→(C0)[128X[104X
+    [4X[28X(C0)-[(s)]→(C1)[128X[104X
+    [4X[28X(C0)-[(t)]→(C1)[128X[104X
     [4X[25Xgap>[125X [27XDisplay( C );[127X[104X
     [4X[28XA CAP category with name[128X[104X
     [4X[28XPathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )[128X[104X
@@ -204,10 +199,12 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsIdenticalObj( OppositeCategoryFromNerveData( C_op ), C );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIndicesOfGeneratingMorphisms( C_op );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( IndicesOfGeneratingMorphisms( C_op ) );[127X[104X
     [4X[28X[ 3, 1, 2 ][128X[104X
-    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( C_op );[127X[104X
-    [4X[28X[ (C0)-[(id)]→(C1), (C1)-[(s)]→(C0), (C1)-[(t)]→(C0) ][128X[104X
+    [4X[25Xgap>[125X [27XPerform( SetOfGeneratingMorphisms( C_op ), Display );[127X[104X
+    [4X[28X(C0)-[(id)]→(C1)[128X[104X
+    [4X[28X(C1)-[(s)]→(C0)[128X[104X
+    [4X[28X(C1)-[(t)]→(C0)[128X[104X
   [4X[32X[104X
   
   [1X5.3-2 CategoryFromNerveData[101X

@@ -148,19 +148,19 @@ PathCategory( FinQuiver(
   "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
                    is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DefiningRelations( Delta2 );</span>
-[ [ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],
-  [ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],
-  [ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],
-  [ pt⋅it:(C1) → (C1), id(C1):(C1) → (C1) ],
-  [ is⋅id:(C2) → (C0), it⋅id:(C2) → (C0) ],
-  [ pt⋅is:(C1) → (C1), id⋅t:(C1) → (C1) ],
-  [ ps⋅it:(C1) → (C1), id⋅s:(C1) → (C1) ],
-  [ s⋅pt:(C0) → (C2), t⋅ps:(C0) → (C2) ],
-  [ s⋅mu:(C0) → (C2), s⋅ps:(C0) → (C2) ],
-  [ t⋅mu:(C0) → (C2), t⋅pt:(C0) → (C2) ],
-  [ mu⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],
-  [ mu⋅it:(C1) → (C1), id(C1):(C1) → (C1) ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( DefiningRelations( Delta2 ), Display );</span>
+[ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ]
+[ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ]
+[ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ]
+[ pt⋅it:(C1) → (C1), id(C1):(C1) → (C1) ]
+[ is⋅id:(C2) → (C0), it⋅id:(C2) → (C0) ]
+[ pt⋅is:(C1) → (C1), id⋅t:(C1) → (C1) ]
+[ ps⋅it:(C1) → (C1), id⋅s:(C1) → (C1) ]
+[ s⋅pt:(C0) → (C2), t⋅ps:(C0) → (C2) ]
+[ s⋅mu:(C0) → (C2), s⋅ps:(C0) → (C2) ]
+[ t⋅mu:(C0) → (C2), t⋅pt:(C0) → (C2) ]
+[ mu⋅is:(C1) → (C1), id(C1):(C1) → (C1) ]
+[ mu⋅it:(C1) → (C1), id(C1):(C1) → (C1) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( Delta2 );</span>
 31
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := NerveTruncatedInDegree2AsFunctor( Delta2 );</span>
@@ -173,24 +173,33 @@ PathCategory( FinQuiver(
   "Delta_op(C0,C1,C2)[id:C0→C1,s:C1→C0,t:C1→C0,
                       is:C1→C2,it:C1→C2,ps:C2→C1,pt:C2→C1,mu:C2→C1]" ) )
 / [ id⋅s = id(C0), id⋅t = id(C0), is⋅ps = id(C1), ... ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N( Delta2op.C0 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( N, Delta2op.C0 );</span>
 |3|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N( Delta2op.C0 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ApplyFunctor( N, Delta2op.C0 ) );</span>
 { 0, 1, 2 }
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N( Delta2op.C1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( N, Delta2op.C1 );</span>
 |31|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N( Delta2op.C1 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ApplyFunctor( N, Delta2op.C1 ) );</span>
 { 0,..., 30 }
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N( Delta2op.C2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( N, Delta2op.C2 );</span>
 |393|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N( Delta2op.C2 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ApplyFunctor( N, Delta2op.C2 ) );</span>
 { 0,..., 392 }
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N( Delta2op.id );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( N, Delta2op.id );</span>
 |3| → |31|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N( Delta2op.id ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ApplyFunctor( N, Delta2op.id ) );</span>
 { 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }
+</pre></div>
+
+
+<div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2 := SimplicialCategoryTruncatedInDegree( 2 );</span>
+PathCategory( FinQuiver(
+  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
+                   is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
+/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := NerveTruncatedInDegree2( Delta2 );</span>
 &lt;An object in PreSheaves( PathCategory( FinQuiver(
  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,
@@ -204,6 +213,7 @@ PreSheaves( PathCategory( FinQuiver(
                    is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ], SkeletalFinSets ),
 ObjectMembershipFunction )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 <p><a id="X83BB7A397CA3C0D8" name="X83BB7A397CA3C0D8"></a></p>
@@ -261,19 +271,19 @@ PathCategory( FinQuiver(
                    is:C2→C1,it:C2→C1,
                    ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DefiningRelations( Delta2 );</span>
-[ [ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],
-  [ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],
-  [ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],
-  [ pt⋅it:(C1) → (C1), id(C1):(C1) → (C1) ],
-  [ is⋅id:(C2) → (C0), it⋅id:(C2) → (C0) ],
-  [ pt⋅is:(C1) → (C1), id⋅t:(C1) → (C1) ],
-  [ ps⋅it:(C1) → (C1), id⋅s:(C1) → (C1) ],
-  [ s⋅pt:(C0) → (C2), t⋅ps:(C0) → (C2) ],
-  [ s⋅mu:(C0) → (C2), s⋅ps:(C0) → (C2) ],
-  [ t⋅mu:(C0) → (C2), t⋅pt:(C0) → (C2) ],
-  [ mu⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],
-  [ mu⋅it:(C1) → (C1), id(C1):(C1) → (C1) ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( DefiningRelations( Delta2 ), Display );</span>
+[ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ]
+[ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ]
+[ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ]
+[ pt⋅it:(C1) → (C1), id(C1):(C1) → (C1) ]
+[ is⋅id:(C2) → (C0), it⋅id:(C2) → (C0) ]
+[ pt⋅is:(C1) → (C1), id⋅t:(C1) → (C1) ]
+[ ps⋅it:(C1) → (C1), id⋅s:(C1) → (C1) ]
+[ s⋅pt:(C0) → (C2), t⋅ps:(C0) → (C2) ]
+[ s⋅mu:(C0) → (C2), s⋅ps:(C0) → (C2) ]
+[ t⋅mu:(C0) → (C2), t⋅pt:(C0) → (C2) ]
+[ mu⋅is:(C1) → (C1), id(C1):(C1) → (C1) ]
+[ mu⋅it:(C1) → (C1), id(C1):(C1) → (C1) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( Delta2 );</span>
 31
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ymu := YonedaCompositionAsNaturalEpimorphism( Delta2 );</span>
@@ -349,6 +359,7 @@ PathCategory( FinQuiver(
 &lt;immutable digraph with 4 vertices, 4 edges&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QuiverStringOfDigraph( digraph, "q", "m" ) = q;</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 

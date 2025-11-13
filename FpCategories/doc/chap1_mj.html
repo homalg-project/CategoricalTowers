@@ -97,8 +97,7 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FpCategories", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">str :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  "q(0..5)[x:0-&gt;0,s:0-&gt;1,a:1-&gt;2,c:1-&gt;3,e:1-&gt;4,b:2-&gt;4,d:3-&gt;4,t:4-&gt;5,y:5-&gt;5]";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">str := "q(0..5)[x:0-&gt;0,s:0-&gt;1,a:1-&gt;2,c:1-&gt;3,e:1-&gt;4,b:2-&gt;4,d:3-&gt;4,t:4-&gt;5,y:5-&gt;5]";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( str );</span>
 FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,
 t:4→5,y:5→5]" )
@@ -106,11 +105,11 @@ t:4→5,y:5→5]" )
 "q"
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NumberOfObjects( q );</span>
 6
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LabelsOfObjects( q );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( LabelsOfObjects( q ) );</span>
 [ "0", "1", "2", "3", "4", "5" ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjects( q );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SetOfObjects( q ) );</span>
 [ (0), (1), (2), (3), (4), (5) ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o := q.0;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o := q.("0");</span>
 (0)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectIndex( o );</span>
 1
@@ -122,13 +121,13 @@ true
 "0"
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NumberOfMorphisms( q );</span>
 9
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LabelsOfMorphisms( q );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( LabelsOfMorphisms( q ) );</span>
 [ "x", "s", "a", "c", "e", "b", "d", "t", "y" ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IndicesOfSources( q );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( IndicesOfSources( q ) );</span>
 [ 1, 1, 2, 2, 2, 3, 4, 5, 6 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IndicesOfTargets( q );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( IndicesOfTargets( q ) );</span>
 [ 1, 2, 3, 4, 5, 5, 5, 6, 6 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfMorphisms( q );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SetOfMorphisms( q ) );</span>
 [ x:(0) → (0), s:(0) → (1), a:(1) → (2), c:(1) → (3), e:(1) → (4),
   b:(2) → (4), d:(3) → (4), t:(4) → (5), y:(5) → (5) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := q.y;</span>
@@ -139,16 +138,14 @@ y:(5) → (5)
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismLabel( m );</span>
 "y"
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LaTeXOutput( m );</span>
-"{5}-\\left({y}\\right)\\rightarrow{5}"
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismsOfExternalHom( q.("0"), q.("0") );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( MorphismsOfExternalHom( q.("0"), q.("0") ) );</span>
 [ x:(0) → (0) ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismsOfExternalHom( q.("0"), q.("1") );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( MorphismsOfExternalHom( q.("0"), q.("1") ) );</span>
 [ s:(0) → (1) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q_op := OppositeQuiver( q );</span>
 FinQuiver( "q_op(0,1,2,3,4,5)[x:0→0,s:1→0,a:2→1,c:3→1,e:4→1,b:4→2,
 d:4→3,t:5→4,y:5→5]" )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismsOfExternalHom( q_op.1, q_op.0 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( MorphismsOfExternalHom( q_op.("1"), q_op.("0") ) );</span>
 [ s:(1) → (0) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q_op_x_q := TensorProductOfFinQuivers( q_op, q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NumberOfObjects( q_op_x_q );</span>
@@ -159,8 +156,8 @@ d:4→3,t:5→4,y:5→5]" )
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q1 := RandomFinQuiver( 2, 4, false );; # without loops</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q2 := RandomFinQuiver( 2, 4, true );;  # with loops</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q1 := RandomFinQuiver( 2, 4, false );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q2 := RandomFinQuiver( 2, 4, true );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Assert( 0, NumberOfObjects( q1 ) = 2 );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Assert( 0, NumberOfMorphisms( q1 ) = 4 );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Assert( 0, Length( Filtered( SetOfMorphisms( q1 ), IsEndomorphism ) ) = 0 );</span>
