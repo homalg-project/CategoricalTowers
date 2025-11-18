@@ -48,7 +48,6 @@ jobs:
       - name: Prepare environment
         run: |
           cp ./CategoricalTowers/dev/ci_gaprc /home/gap/.gap/gaprc
-          git clone --depth 1 -vv https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 -vv https://github.com/homalg-project/homalg_project.git
           git clone --depth 1 -vv https://github.com/homalg-project/CAP_project.git
           git clone --depth 1 -vv https://github.com/homalg-project/HigherHomologicalAlgebra.git
@@ -74,11 +73,9 @@ jobs:
           if [ -d "CategoricalTowers/Toposes" ]; then make -C "CategoricalTowers/Toposes" doc; fi
       - name: Test CategoricalTowers
         run: |
-          export GAP_PRINT_BANNER=false
           make -C CategoricalTowers --trace -j $(nproc) --output-sync ci-test
       - name: Test MatroidGeneration
         run: |
-          export GAP_PRINT_BANNER=false
           make -C MatroidGeneration --trace -j $(nproc) --output-sync ci-test
       - name: Release package or simulate release
         run: |
