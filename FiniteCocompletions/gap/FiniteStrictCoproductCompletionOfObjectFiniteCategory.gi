@@ -10,9 +10,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         [ IsCapCategory ],
         
   function( C )
-    local UCm, objectsC, l, H,
-          corresponding_list_of_objects_in_C, modeling_tower_object_datum,
-          object_func, morphism_func, object_func_inverse, morphism_func_inverse, extended;
+    local UCm, objectsC, l, H;
     
     Assert( 0, HasIsObjectFiniteCategory( C ) and IsObjectFiniteCategory( C ) and CanCompute( C, "SetOfObjectsOfCategory" ) );
     
@@ -226,7 +224,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
     ##
     AddIsEqualForObjects( UCm,
       function ( UCm, object1, object2 )
-        local pair1, pair2, C;
+        local pair1, pair2;
         
         pair1 := ObjectDatum( UCm, object1 );
         pair2 := ObjectDatum( UCm, object2 );
