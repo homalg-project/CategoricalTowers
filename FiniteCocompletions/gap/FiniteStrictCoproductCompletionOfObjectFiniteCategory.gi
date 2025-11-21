@@ -421,6 +421,201 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
     end );
     
+    if CanCompute( C, "Equalizer" ) then
+        
+        AddEqualizer( UCm,
+          function( UCm, common_source, list_of_parallel_morphisms )
+            local l, n, s, data, maps, mors, pos_eq, flat_pos_eq, lists_of_parallel_morphisms_in_C,
+                  C, objectsC, eq, eq_index_in_C, sort_index_eq;
+            
+            l := NumberOfObjectsOfUnderlyingCategory( UCm );
+            n := Length( list_of_parallel_morphisms );
+            
+            s := PairOfIntAndList(common_source)[2];
+            
+            data := List( list_of_parallel_morphisms, mor -> PairOfLists( mor ) );
+            
+            maps := List( data, datum -> datum[1] );
+            
+            mors := List( data, datum -> datum[2] );
+            
+            pos_eq := List( [ 1 .. l ], o ->
+                            Filtered( [ 0 .. s[o] - 1 ], x ->
+                                    ForAll( [ 1 .. n - 1 ], j ->
+                                            maps[j][o][1][ x + 1 ] = maps[j + 1][o][1][ x + 1 ] and
+                                            maps[j][o][2][ x + 1 ] = maps[j + 1][o][2][ x + 1 ] ) ) );
+            
+            flat_pos_eq := Concatenation( List( [ 1 .. l ], o -> List( pos_eq[o], i -> [ -1 + o , i ] ) ) );
+            
+            lists_of_parallel_morphisms_in_C := List( flat_pos_eq , x ->
+                                                      List( [ 1 .. n ], j -> mors[j][ 1 + x[1] ][ 1 + x[2] ] ) );
+            
+            ##
+            C := UnderlyingCategory( UCm );
+            
+            objectsC := SetOfObjects( C );
+            
+            eq := Length( flat_pos_eq );
+            
+            eq_index_in_C := List( [ 1 .. eq ], i ->
+                                   Position( objectsC,
+                                           Equalizer( C,
+                                                   objectsC[ 1 + flat_pos_eq[i][1] ],
+                                                   lists_of_parallel_morphisms_in_C[i] ) ) );
+            
+            sort_index_eq := List( [ 1 .. l ], o -> Positions( eq_index_in_C, o ) );
+            
+            return ObjectConstructor( UCm, Pair( eq, List( sort_index_eq, l -> Length(l) ) ) );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "EmbeddingOfEqualizerWithGivenEqualizer" ) then
+        
+        AddEmbeddingOfEqualizer( UCm,
+          function( UCm, common_source, list_of_parallel_morphisms )
+            local l, n, s, data, maps, mors, pos_eq, flat_pos_eq_block, flat_pos_eq_i, eq,
+                  lists_of_parallel_morphisms_in_C, C, objectsC, eq_index_in_C, sort_index_eq,
+                  Eq, equalizer, emb_maps, emb_mors;
+            
+            l := NumberOfObjectsOfUnderlyingCategory( UCm );
+            n := Length( list_of_parallel_morphisms );
+            
+            s := PairOfIntAndList(common_source)[2];
+            
+            data := List( list_of_parallel_morphisms, mor -> PairOfLists( mor ) );
+            
+            maps := List( data, datum -> datum[1] );
+            
+            mors := List( data, datum -> datum[2] );
+            
+            pos_eq := List( [ 1 .. l ], o ->
+                            Filtered( [ 0 .. s[o] - 1 ], x ->
+                                    ForAll( [ 1 .. n - 1 ], j ->
+                                            maps[j][o][1][ x + 1 ] = maps[j + 1][o][1][ x + 1 ] and
+                                            maps[j][o][2][ x + 1 ] = maps[j + 1][o][2][ x + 1 ] ) ) );
+            
+            flat_pos_eq_block := Concatenation( List( [ 1 .. l ], o ->
+                                         ListWithIdenticalEntries( Length( pos_eq[o] ), -1 + o ) ) );
+            
+            flat_pos_eq_i := Concatenation( pos_eq );
+            
+            eq := Length( flat_pos_eq_block );
+            
+            lists_of_parallel_morphisms_in_C := List( [ 1 .. eq ] , i ->
+                                                      List( [ 1 .. n ], j ->
+                                                            mors[j][ 1 + flat_pos_eq_block[i] ][ 1 + flat_pos_eq_i[i] ] ) );
+            C := UnderlyingCategory( UCm );
+            
+            objectsC := SetOfObjects( C );
+            
+            eq_index_in_C := List( [ 1 .. eq ], i ->
+                                   Position( objectsC,
+                                           Equalizer( C,
+                                                   objectsC[ 1 + flat_pos_eq_block[i] ],
+                                                   lists_of_parallel_morphisms_in_C[i] ) ) );
+            
+            sort_index_eq := List( [ 1 .. l ], o -> Positions( eq_index_in_C, o ) );
+            
+            Eq := List( sort_index_eq, l -> Length(l) );
+            
+            equalizer := ObjectConstructor( UCm, Pair( eq, Eq ) );
+            
+            emb_maps := List( [ 1 .. l ], o -> Pair( flat_pos_eq_block{sort_index_eq[o]}, flat_pos_eq_i{sort_index_eq[o]} ) );
+            
+            emb_mors := List( [ 1 .. l ], o ->
+                              List( [ 1 .. Eq[o] ], i ->
+                                    EmbeddingOfEqualizerWithGivenEqualizer( C,
+                                            objectsC[ 1 + flat_pos_eq_block[ sort_index_eq[o][i] ] ],
+                                            lists_of_parallel_morphisms_in_C[ sort_index_eq[o][i] ],
+                                            objectsC[o] ) ) );
+            
+            return MorphismConstructor( UCm, equalizer, Pair( emb_maps, emb_mors ), common_source );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "UniversalMorphismIntoEqualizerWithGivenEqualizer" ) then
+        
+        AddUniversalMorphismIntoEqualizer( UCm,
+                function( UCm, common_source, list_of_parallel_morphisms, test_object, test_morphism )
+            local l, n, s, data, maps, mors, pos_eq, flat_pos_eq, lists_of_parallel_morphisms_in_C,
+                  C, objectsC, eq, eq_index_in_C, sort_index_eq, equalizer, offset, test_data,
+                  test_maps, test_mors, t, pos_test_maps, univ_maps, univ_mors;
+            
+            l := NumberOfObjectsOfUnderlyingCategory( UCm );
+            n := Length( list_of_parallel_morphisms );
+            
+            s := PairOfIntAndList(common_source)[2];
+            
+            data := List( list_of_parallel_morphisms, mor -> PairOfLists( mor ) );
+            
+            maps := List( data, datum -> datum[1] );
+            
+            mors := List( data, datum -> datum[2] );
+            
+            pos_eq := List( [ 1 .. l ], o ->
+                            Filtered( [ 0 .. s[o] - 1 ], x ->
+                                    ForAll( [ 1 .. n - 1 ], j ->
+                                            maps[j][o][1][ x + 1 ] = maps[j + 1][o][1][ x + 1 ] and
+                                            maps[j][o][2][ x + 1 ] = maps[j + 1][o][2][ x + 1 ] ) ) );
+            
+            flat_pos_eq := Concatenation( List( [ 1 .. l ], o -> List( pos_eq[o], i -> [ -1 + o , i ] ) ) );
+            
+            lists_of_parallel_morphisms_in_C := List( flat_pos_eq , x ->
+                                                      List( [ 1 .. n ], j -> mors[j][ 1 + x[1] ][ 1 + x[2] ] ) );
+            
+            C := UnderlyingCategory( UCm );
+            
+            objectsC := SetOfObjects( C );
+            
+            eq := Length( flat_pos_eq );
+            
+            eq_index_in_C := List( [ 1 .. eq ], i ->
+                                   Position( objectsC,
+                                           Equalizer( C,
+                                                   objectsC[ 1 + flat_pos_eq[i][1] ],
+                                                   lists_of_parallel_morphisms_in_C[i] ) ) );
+            
+            sort_index_eq := List( [ 1 .. l ], o -> Positions( eq_index_in_C, o ) );
+            
+            equalizer := ObjectConstructor( UCm, Pair( eq, List( sort_index_eq, l -> Length(l) ) ) );
+            
+            offset := List( [ 1 .. eq ], i -> Position( sort_index_eq[ eq_index_in_C[i] ] , i ) );
+            
+            ##offset := List( [ 1 .. teq ], i -> 1 + Length( Positions( eq_index_in_C{[ 1 .. i ]}, eq_index_in_C[i] ) ) );
+            
+            test_data := PairOfLists( test_morphism );
+            
+            test_maps := test_data[1];
+            
+            test_mors := test_data[2];
+            
+            t := PairOfIntAndList( test_object )[2];
+            
+            pos_test_maps := List( [ 1 .. l ], o ->
+                                   List( [ 1 .. t[o] ], i ->
+                                         Position( flat_pos_eq, [ test_maps[o][1][i], test_maps[o][2][i] ] ) ) );
+            
+            univ_maps := List( [ 1 .. l ], o -> Pair( -1 + eq_index_in_C{pos_test_maps[o]} , -1 + offset{pos_test_maps[o]} ) );
+            
+            univ_mors := List( [ 1 .. l ], o ->
+                               List( [ 1 .. t[o] ], i ->
+                                     UniversalMorphismIntoEqualizerWithGivenEqualizer( C,
+                                             objectsC[ 1 + flat_pos_eq[ pos_test_maps[o][i] ][1] ],
+                                             lists_of_parallel_morphisms_in_C[ pos_test_maps[o][i] ],
+                                             objectsC[o],
+                                             test_mors[o][i],
+                                             objectsC[ eq_index_in_C[ pos_test_maps[o][i] ] ] ) ) );
+            
+            return MorphismConstructor( UCm, test_object, Pair( univ_maps, univ_mors ), equalizer );
+            
+        end );
+        
+    fi;
+    
     Finalize( UCm );
     
     return UCm;
