@@ -322,7 +322,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         l := NumberOfObjectsOfUnderlyingCategory( UCm );
         
         maps_cmp := List( [ 1 .. l ], o ->
-                          Pair( List( [ 1 .. s[o] ], i -> maps_post[1 + maps_pre[o][1][i]][1][i] ),
+                          Pair( List( [ 1 .. s[o] ], i -> maps_post[1 + maps_pre[o][1][i]][1][1 + maps_pre[o][2][i]] ),
                                 List( [ 1 .. s[o] ], i -> maps_post[1 + maps_pre[o][1][i]][2][1 + maps_pre[o][2][i]] ) ) );
         
         mors_pre := pair_of_lists_pre[2];
