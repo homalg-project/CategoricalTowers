@@ -10,7 +10,6 @@ ReadPackage( "FpCategories", "gap/GroebnerBasesForPathCategories.gd");
 ReadPackage( "FpCategories", "gap/QuotientsOfPathCategories.gd");
 ReadPackage( "FpCategories", "gap/CategoryFromNerveData.gd");
 ReadPackage( "FpCategories", "gap/Tools.gd");
-ReadPackage( "FpCategories", "gap/ToolsMethodRecordDeclarations.autogen.gd");
 ReadPackage( "FpCategories", "gap/SimplicialCategory.gd");
 
 #= comment for Julia

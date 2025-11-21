@@ -8,62 +8,6 @@
 
 ####################################
 #
-#! @Section Properties
-#
-####################################
-
-#! @Description
-#!  The (evil) property of <A>C</A> being a finitely presented.
-#! @Arguments C
-DeclareProperty( "IsFinitelyPresentedCategory",
-        IsCapCategory );
-
-AddCategoricalProperty( [ "IsFinitelyPresentedCategory", "IsFinitelyPresentedCategory" ] );
-
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFinitelyPresentedCategory :=
-  DuplicateFreeList(
-          Concatenation(
-                  ListOfDefiningOperations( "IsObjectFiniteCategory" ),
-                  [ "SetOfGeneratingMorphismsOfCategory" ] ) );
-
-####################################
-##
-#! @Section Attributes
-##
-####################################
-
-#! @Description
-#!  Return a list of generating morphisms of the finitely generated category <A>C</A>.
-#! @Arguments C
-#! @Returns a list of a &CAP; category morphisms
-DeclareAttribute( "SetOfGeneratingMorphismsOfCategory",
-        IsCapCategory );
-
-#! @Description
-#!  Return a list of generating morphisms of the finitely generated category <A>C</A>.
-#!  The corresponding &CAP; operation is <C>SetOfGeneratingMorphismsOfCategory</C>.
-#! @Arguments C
-#! @Returns a list of a &CAP; category morphisms
-DeclareAttribute( "SetOfGeneratingMorphisms", IsCapCategory );
-
-CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsCapCategory ],
-  function ( input_types )
-
-    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
-
-end );
-
-DeclareAttribute( "SetOfGeneratingMorphismsAsUnresolvableAttribute", IsCapCategory );
-
-CapJitAddTypeSignature( "SetOfGeneratingMorphismsAsUnresolvableAttribute", [ IsCapCategory ],
-  function ( input_types )
-
-    return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
-
-end );
-
-####################################
-#
 #! @Section Attributes
 #
 ####################################
