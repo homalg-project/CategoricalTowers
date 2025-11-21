@@ -31,6 +31,7 @@ Display( T );
 #! * IsAdditiveMonoidalCategory
 #! * IsElementaryTopos
 #! and not yet algorithmically
+#! * IsFinitelyPresentedCategory
 #! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 #! and furthermore mathematically
 #! * IsLocallyOfFiniteInjectiveDimension
