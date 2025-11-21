@@ -47,14 +47,12 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
              ],
            );
     
+    ##
     SetUnderlyingCategory( UCm, C );
     
     if HasIsSkeletalCategory( C ) and IsSkeletalCategory( C ) then
         SetIsSkeletalCategory( UCm, true );
     fi;
-    
-    ##
-    SetUnderlyingCategory( UCm, C );
     
     objectsC := SetOfObjects( C );
     
@@ -95,20 +93,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         fi;
         
     fi;
-    
-    corresponding_list_of_objects_in_C :=
-      function( UCm, multiplicities )
-        local objects, l;
-        
-        objects := SetOfObjectsOfCategory( UnderlyingCategory( UCm ) );
-        
-        l := NumberOfObjectsOfUnderlyingCategory( UCm );
-        
-        return Concatenation( List( [ 1 .. l ], i ->
-                       ListWithIdenticalEntries( multiplicities[i], objects[i] ) ) );
-        
-    end;
-    
+
     ##
     AddObjectConstructor( UCm,
       function( UCm, pair_of_int_and_list_of_multiplicities )
