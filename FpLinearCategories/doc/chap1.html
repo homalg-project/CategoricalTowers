@@ -60,14 +60,14 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86014629860F9E38">1.4-1 AlgebroidFromDataTables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X81CDEC228408F122">1.4-2 DataTablesOfLinearCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7D03633A7D98026B">1.5 <span class="Heading">GAP categories</span></a>
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8517A59E7E8477C0">1.5-1 IsAlgebroidFromDataTables</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X871C3D3C7B92DA8C">1.5-2 IsCellInAlgebroidFromDataTables</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X78E265F684A31C9B">1.5-3 IsObjectInAlgebroidFromDataTables</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87BFB2E97868272A">1.5-4 IsMorphismInAlgebroidFromDataTables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X857089FB78FB3CA8">1.5-2 IsObjectInAlgebroidFromDataTables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F17A30A7D467150">1.5-3 IsMorphismInAlgebroidFromDataTables</a></span>
 </div></div>
 </div>
 
@@ -322,85 +322,84 @@ true
 FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PathCategory( q );</span>
 PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );</span>
-Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kF := k[F];</span>
 Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := kF / [ kF.e^3 ];</span>
 Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) ) ) / [ 1*e^3 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables := DataTablesOfCategory( B );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables[1];</span>
-Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables := DataTablesOfLinearCategory( B );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( data_tables[1], CommutativeRingOfLinearCategory( B ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables[2];</span>
 FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables[3];</span>
-[[[ [] ], [ [1] ], [ [3] ], [ [1,2],[3,4],[1,2,5],[3,4,5],[1,2,5,5],[3,4,5,5]]],
- [[  ], [ [] ], [  ], [ [2],[2,5],[2,5,5] ]],
- [[  ], [  ], [ [] ], [ [4],[4,5],[4,5,5] ]],
- [[  ], [  ], [  ], [ [],[5],[5,5] ]]]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables[4][2][5];</span>
-[ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables[5][4][1];</span>
-[ [ 1, 0, 0, 0, 0, 0 ], [ 0, 0, 1, 0, 0, 0 ], [ 0, 0, 0, 0, 1, 0 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( data_tables );; # alternatively,</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( B );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( data_tables[3], Display );</span>
+[ [ [  ] ], [ [ 1 ] ], [ [ 3 ] ], [ [ 1, 2 ], [ 3, 4 ], [ 1, 2, 5 ], [ 3, 4, 5 ], [ 1, 2, 5, 5 ], [ 3, 4, 5, 5 ] ] ]
+[ [  ], [ [  ] ], [  ], [ [ 2 ], [ 2, 5 ], [ 2, 5, 5 ] ] ]
+[ [  ], [  ], [ [  ] ], [ [ 4 ], [ 4, 5 ], [ 4, 5, 5 ] ] ]
+[ [  ], [  ], [  ], [ [  ], [ 5 ], [ 5, 5 ] ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( data_tables[4], Display );</span>
+[ [ [ 1 ] ], [ [ 1, 0, 0, 0, 0, 0 ] ], [ [ 1 ] ], [ [ 0, 1, 0, 0, 0, 0 ] ],
+  [ [ 0, 0, 1, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0 ],
+    [ 0, 0, 0, 0, 1, 0 ], [ 0, 0, 0, 0, 0, 1 ], [ 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0 ] ] ]
+[ [  ], [ [ 1, 0, 0 ] ], [  ], [  ], [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ]
+[ [  ], [  ], [  ], [ [ 1, 0, 0 ] ], [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ]
+[ [  ], [  ], [  ], [  ], [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( data_tables );</span>
 Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] ) defined by
 4 objects and 5 generating morphisms
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AssignSetOfObjects( A, "V_" );</span>
-#I  MakeReadWriteGlobal: V_0 already read-write
-#I  MakeReadWriteGlobal: V_1 already read-write
-#I  MakeReadWriteGlobal: V_2 already read-write
-#I  MakeReadWriteGlobal: V_3 already read-write
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AssignSetOfGeneratingMorphisms( A );</span>
-#I  MakeReadWriteGlobal: a already read-write
-#I  MakeReadWriteGlobal: b already read-write
-#I  MakeReadWriteGlobal: c already read-write
-#I  MakeReadWriteGlobal: d already read-write
-#I  MakeReadWriteGlobal: e already read-write
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjects( A );</span>
-[ &lt;(0)&gt;, &lt;(1)&gt;, &lt;(2)&gt;, &lt;(3)&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( SetOfObjects( A ), Display );</span>
+&lt;(0)&gt;
+&lt;(1)&gt;
+&lt;(2)&gt;
+&lt;(3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.("0");</span>
 &lt;(0)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V_0;</span>
-&lt;(0)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( A.("0"), V_0 );</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectConstructor( A, 1 ) = A.("0");</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( A );</span>
-[ &lt;1*a:(0) → (1)&gt;, &lt;1*b:(1) → (3)&gt;,
-  &lt;1*c:(0) → (2)&gt;, &lt;1*d:(2) → (3)&gt;,
-  &lt;1*e:(3) → (3)&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( A.("a"), a );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( [ "V_0", "V_1", "V_2", "V_3" ], MakeReadWriteGlobal );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( [ "a", "b", "c", "d", "e" ], MakeReadWriteGlobal );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( SetOfGeneratingMorphisms( A ), Display );</span>
+&lt;1*a:(0) → (1)&gt;
+&lt;1*b:(1) → (3)&gt;
+&lt;1*c:(0) → (2)&gt;
+&lt;1*d:(2) → (3)&gt;
+&lt;1*e:(3) → (3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( A.("0"), A.("3") );</span>
 &lt;A row module over Q of rank 6&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_03 := BasisOfExternalHom( A.("0"), A.("3") );</span>
-[ &lt;1*a⋅b:(0) → (3)&gt;, &lt;1*c⋅d:(0) → (3)&gt;,
-  &lt;1*a⋅b⋅e:(0) → (3)&gt;, &lt;1*c⋅d⋅e:(0) → (3)&gt;,
-  &lt;1*a⋅b⋅e^2:(0) → (3)&gt;, &lt;1*c⋅d⋅e^2:(0) → (3)&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_03 := BasisOfExternalHom( A.("0"), A.("3") );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( hom_03, Display );</span>
+&lt;1*a⋅b:(0) → (3)&gt;
+&lt;1*c⋅d:(0) → (3)&gt;
+&lt;1*a⋅b⋅e:(0) → (3)&gt;
+&lt;1*c⋅d⋅e:(0) → (3)&gt;
+&lt;1*a⋅b⋅e^2:(0) → (3)&gt;
+&lt;1*c⋅d⋅e^2:(0) → (3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := 2*hom_03[1] + 3*hom_03[6];</span>
 &lt;2*a⋅b + 3*c⋅d⋅e^2:(0) → (3)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LaTeXOutput( alpha );</span>
-"{0}-\\left({2\\cdot {a}{b} + 3\\cdot {c}{d}{e}^{2}}\\right)\\rightarrow{3}"
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha = MorphismConstructor( A, A.("0"), [ 2, 0, 0, 0, 0, 3 ], A.("3") );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoefficientsList( alpha );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CoefficientsList( alpha ) );</span>
 [ 2, 0, 0, 0, 0, 3 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IndicesOfSupportMorphisms( alpha );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( IndicesOfSupportMorphisms( alpha ) );</span>
 [ 1, 6 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoefficientsOfSupportMorphisms( alpha );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CoefficientsOfSupportMorphisms( alpha ) );</span>
 [ 2, 3 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SupportMorphisms( alpha );</span>
-[ &lt;1*a⋅b:(0) → (3)&gt;, &lt;1*c⋅d⋅e^2:(0) → (3)&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecompositionIndicesOfMorphismInAlgebroid( alpha );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( SupportMorphisms( alpha ), Display );</span>
+&lt;1*a⋅b:(0) → (3)&gt;
+&lt;1*c⋅d⋅e^2:(0) → (3)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( DecompositionIndicesOfMorphismInAlgebroid( alpha ) );</span>
 [ [ 2, [ 1, 2 ] ], [ 3, [ 3, 4, 5, 5 ] ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecompositionOfMorphismInAlgebroid( alpha );</span>
-[ [ 2, [ &lt;1*a:(0) → (1)&gt;, &lt;1*b:(1) → (3)&gt; ] ],
-  [ 3, [ &lt;1*c:(0) → (2)&gt;, &lt;1*d:(2) → (3)&gt;,
-         &lt;1*e:(3) → (3)&gt;, &lt;1*e:(3) → (3)&gt; ] ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := DecompositionOfMorphismInAlgebroid( alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d[1][1];</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( d[1][2], Display );</span>
+&lt;1*a:(0) → (1)&gt;
+&lt;1*b:(1) → (3)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d[2][1];</span>
+3
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( d[2][2], Display );</span>
+&lt;1*c:(0) → (2)&gt;
+&lt;1*d:(2) → (3)&gt;
+&lt;1*e:(3) → (3)&gt;
+&lt;1*e:(3) → (3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.("a⋅b⋅e");</span>
 &lt;1*a⋅b⋅e:(0) → (3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A.("abe");</span>
@@ -415,9 +414,9 @@ defined by 4 objects and 5 generating morphisms )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := RandomMorphism( o1, o2, 20 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( o1, o2, HomStructure( f ) ) = f;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( PreCompose( f, WeakCokernelProjection( f ) ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( PreCompose( f, WeakCokernelProjection( f ) ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( PreCompose( WeakKernelEmbedding( f ), f ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( PreCompose( WeakKernelEmbedding( f ), f ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">freyd_B := FreydCategory( add_A );</span>
 Freyd( AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,
@@ -436,32 +435,39 @@ by 4 underlying objects&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RandomMorphism( T, T, 5 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := RandomMorphism( T, T, 5 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">w := RandomMorphism( T, T, 5 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( PreCompose( [ u, v, w ] ) )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">      = PreCompose( HomStructure( v ), HomStructure( u, w ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( PreCompose( [ u, v, w ] ) ) = PreCompose( HomStructure( v ), HomStructure( u, w ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AA := TensorProductOfAlgebroids( A, A );</span>
 Q-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[0⊗a:0⊗0→0⊗1,0⊗b:0⊗1→0⊗3,
 0⊗c:0⊗0→0⊗2,..,e⊗1:3⊗1→3⊗1,e⊗2:3⊗2→3⊗2,e⊗3:3⊗3→3⊗3] ) defined
 by 16 objects and 40 generating morphisms
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( A.0, A.1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( A.("0"), A.("1") );</span>
 &lt;(0⊗1)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( A.a, A.b );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( A.("a"), A.("b") );</span>
 &lt;1*a⊗b:(0⊗1) → (1⊗3)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( A.0, A.b );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( A.("0"), A.("b") );</span>
 &lt;1*id(0)⊗b:(0⊗1) → (0⊗3)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( A.a, A.1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ElementaryTensor( A.("a"), A.("1") );</span>
 &lt;1*a⊗id(1):(0⊗1) → (1⊗1)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">3x3 := AA.("3⊗3");</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o := AA.("3⊗3");</span>
 &lt;(3⊗3)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AA.("e⊗1");</span>
 &lt;1*e⊗id(1):(3⊗1) → (3⊗1)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RandomMorphism( 3x3, 3x3, 15 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := RandomMorphism( 3x3, 3x3, 15 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">w := RandomMorphism( 3x3, 3x3, 15 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( PreCompose( [ u, v, w ] ) )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">      = PreCompose( HomStructure( v ), HomStructure( u, w ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RandomMorphism( o, o, 15 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := RandomMorphism( o, o, 15 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">w := RandomMorphism( o, o, 15 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( PreCompose( [ u, v, w ] ) ) = PreCompose( HomStructure( v ), HomStructure( u, w ) );</span>
 true
 </pre></div>
+
+<p><a id="X81CDEC228408F122" name="X81CDEC228408F122"></a></p>
+
+<h5>1.4-2 DataTablesOfLinearCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DataTablesOfLinearCategory</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Returns the 5-tuple data tables of a linear category. The output can be passed to the constructor <code class="code">AlgebroidFromDataTables</code>.</p>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
@@ -476,27 +482,18 @@ true
 
 <p>The <strong class="pkg">GAP</strong> category of objects in an algebroid from data tables.</p>
 
-<p><a id="X871C3D3C7B92DA8C" name="X871C3D3C7B92DA8C"></a></p>
+<p><a id="X857089FB78FB3CA8" name="X857089FB78FB3CA8"></a></p>
 
-<h5>1.5-2 IsCellInAlgebroidFromDataTables</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInAlgebroidFromDataTables</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of cells in an algebroid from data tables.</p>
-
-<p><a id="X78E265F684A31C9B" name="X78E265F684A31C9B"></a></p>
-
-<h5>1.5-3 IsObjectInAlgebroidFromDataTables</h5>
+<h5>1.5-2 IsObjectInAlgebroidFromDataTables</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInAlgebroidFromDataTables</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of algebroids from data tables.</p>
 
-<p><a id="X87BFB2E97868272A" name="X87BFB2E97868272A"></a></p>
+<p><a id="X7F17A30A7D467150" name="X7F17A30A7D467150"></a></p>
 
-<h5>1.5-4 IsMorphismInAlgebroidFromDataTables</h5>
+<h5>1.5-3 IsMorphismInAlgebroidFromDataTables</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInAlgebroidFromDataTables</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>

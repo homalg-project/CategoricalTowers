@@ -64,49 +64,34 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FpLinearCategories", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">str :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  "q(0..5)[x:0-&gt;0,s:0-&gt;1,a:1-&gt;2,c:1-&gt;3,e:1-&gt;4,b:2-&gt;4,d:3-&gt;4,t:4-&gt;5,y:5-&gt;5]";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">str := "q(0..5)[x:0-&gt;0,s:0-&gt;1,a:1-&gt;2,c:1-&gt;3,e:1-&gt;4,b:2-&gt;4,d:3-&gt;4,t:4-&gt;5,y:5-&gt;5]";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( str );</span>
 FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,
 t:4→5,y:5→5]" )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );</span>
-Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := PathCategory( q : admissible_order := "Dp" );</span>
 PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,
 b:2→4,d:3→4,t:4→5,y:5→5]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kC := LinearClosure( k, C ); # or k[C];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kC := LinearClosure( k, C );</span>
 Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,
 c:1→3,e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AssignSetOfObjects( kC, "v_" );</span>
-#I  MakeReadWriteGlobal: v_0 already read-write
-#I  MakeReadWriteGlobal: v_1 already read-write
-#I  MakeReadWriteGlobal: v_2 already read-write
-#I  MakeReadWriteGlobal: v_3 already read-write
-#I  MakeReadWriteGlobal: v_4 already read-write
-#I  MakeReadWriteGlobal: v_5 already read-write
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AssignSetOfGeneratingMorphisms( kC, "m_" );</span>
-#I  MakeReadWriteGlobal: m_x already read-write
-#I  MakeReadWriteGlobal: m_s already read-write
-#I  MakeReadWriteGlobal: m_a already read-write
-#I  MakeReadWriteGlobal: m_c already read-write
-#I  MakeReadWriteGlobal: m_e already read-write
-#I  MakeReadWriteGlobal: m_b already read-write
-#I  MakeReadWriteGlobal: m_d already read-write
-#I  MakeReadWriteGlobal: m_t already read-write
-#I  MakeReadWriteGlobal: m_y already read-write
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rels := [ kC.x^10 - kC.x^5, kC.abt - kC.et, kC.y^10 - kC.y^5, kC.x^5, kC.y^5 ];</span>
-[ 1*x^10 + (-1)*x^5:(0) → (0), 1*a⋅b⋅t + (-1)*e⋅t:(1) → (5),
-  1*y^10 + (-1)*y^5:(5) → (5), 1*x^5:(0) → (0), 1*y^5:(5) → (5) ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quo_kC := QuotientCategory( kC, rels ); # or kC / rels;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rels := [ kC.x^10 - kC.x^5, kC.abt - kC.et, kC.y^10 - kC.y^5, kC.x^5, kC.y^5 ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( rels, Display );</span>
+1*x^10 + (-1)*x^5:(0) → (0)
+1*a⋅b⋅t + (-1)*e⋅t:(1) → (5)
+1*y^10 + (-1)*y^5:(5) → (5)
+1*x^5:(0) → (0)
+1*y^5:(5) → (5)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quo_kC := QuotientCategory( kC, rels );</span>
 Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,
 c:1→3,e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) ) / [ 1*x^10 + (-1)*x^5,
 1*a⋅b⋅t + (-1)*e⋅t, 1*y^10 + (-1)*y^5, ... ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( quo_kC.0, quo_kC.5 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( quo_kC.("0"), quo_kC.("5") );</span>
 &lt;A row module over Q of rank 50&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( quo_kC );</span>
 Q-algebroid( {0,1,2,3,4,5}[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,
 t:4→5,y:5→5] ) defined by 6 objects and 9 generating morphisms
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( A.0, A.5 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( A.("0"), A.("5") );</span>
 &lt;A row module over Q of rank 50&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quo_C := C / [ [ C.x^10, C.x^5 ], [ C.abt, C.et ], [ C.y^10, C.y^5 ] ];</span>
 PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,
@@ -119,7 +104,7 @@ y^10 = y^5 ] )
 Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,
 c:1→3, e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) / [ x^10 = x^5, a⋅b⋅t = e⋅t,
 y^10 = y^5 ] ) / [ 1*[x^5], 1*[y^5] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( quo_k_quo_C.0, quo_k_quo_C.5 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( quo_k_quo_C.("0"), quo_k_quo_C.("5") );</span>
 &lt;A row module over Q of rank 50&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( quo_k_quo_C );</span>
 126
@@ -130,7 +115,7 @@ c:1→3, e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) ) / [ 1*x^10 + (-1)*x^5,
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AlgebroidFromDataTables( quo_k_quo_C );</span>
 Q-algebroid( {0,1,2,3,4,5}[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,d:3→4,
 t:4→5,y:5→5] ) defined by 6 objects and 9 generating morphisms
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( B.0, B.5 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( B.("0"), B.("5") );</span>
 &lt;A row module over Q of rank 50&gt;
 </pre></div>
 
@@ -160,29 +145,35 @@ t:4→5,y:5→5] ) defined by 6 objects and 9 generating morphisms
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FpLinearCategories", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );</span>
-Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "q(o)[x:o-&gt;o,y:o-&gt;o]" );</span>
 FinQuiver( "q(o)[x:o→o,y:o→o]" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := PathCategory( q );</span>
 PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kC := k[C];</span>
 Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := kC.x;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">y := kC.y;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rels := [ x*y-y*x, (x^2+y^2)*(x+x*y), (x^2+y^2)*(y^2+x^3) ];</span>
-[ (-1)*y⋅x + 1*x⋅y:(o) → (o), 1*x^3⋅y + 1*y^2⋅x⋅y + 1*x^3 + 1*y^2⋅x:(o) → (o),
-  1*x^5 + 1*y^2⋅x^3 + 1*x^2⋅y^2 + 1*y^4:(o) → (o) ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gb := ReducedGroebnerBasis( kC, rels );</span>
-[ (-1)*y⋅x + 1*x⋅y:(o) → (o),
-  1*x^3⋅y + 1*x⋅y^3 + 1*x^3 + 1*x⋅y^2:(o) → (o),
-  1*x^5 + (-1)*x⋅y^4 + 1*x^2⋅y^2 + 1*y^4 + 1*x^3 + 1*x⋅y^2:(o) → (o),
-  1*x^2⋅y^3 + 1*y^5 + 1*x^2⋅y^2 + 1*y^4:(o) → (o) ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := Sum( gb );</span>
-1*x^5 + 1*x^2⋅y^3 + (-1)*x⋅y^4 + 1*y^5 + 1*x^3⋅y + 2*x^2⋅y^2 + 1*x⋅y^3 +
-2*y^4 + 2*x^3 + 2*x⋅y^2 + (-1)*y⋅x + 1*x⋅y:(o) → (o)
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReductionOfMorphism( kC, f, rels );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := kC.x;</span>
+1*x:(o) → (o)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">y := kC.y;</span>
+1*y:(o) → (o)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rels := [ x*y-y*x, (x^2+y^2)*(x+x*y), (x^2+y^2)*(y^2+x^3) ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( rels, Display );</span>
+(-1)*y⋅x + 1*x⋅y:(o) → (o)
+1*x^3⋅y + 1*y^2⋅x⋅y + 1*x^3 + 1*y^2⋅x:(o) → (o)
+1*x^5 + 1*y^2⋅x^3 + 1*x^2⋅y^2 + 1*y^4:(o) → (o)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gb := ReducedGroebnerBasis( kC, rels );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( gb, Display );</span>
+(-1)*y⋅x + 1*x⋅y:(o) → (o)
+1*x^3⋅y + 1*x⋅y^3 + 1*x^3 + 1*x⋅y^2:(o) → (o)
+1*x^5 + (-1)*x⋅y^4 + 1*x^2⋅y^2 + 1*y^4 + 1*x^3 + 1*x⋅y^2:(o) → (o)
 1*x^2⋅y^3 + 1*y^5 + 1*x^2⋅y^2 + 1*y^4:(o) → (o)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := (x-y)*gb[1] + (x^2-y)*gb[2] + y^3*gb[3] + (x-y^3)*gb[4];</span>
+1*y^3⋅x^5 + (-1)*y^3⋅x^2⋅y^3 + (-1)*y^3⋅x⋅y^4 + (-1)*y^8 + 1*y^3⋅x^3
++ 1*x^5⋅y + 1*y^3⋅x⋅y^2 + 2*x^3⋅y^3 + 1*x⋅y^5 + 1*x^5 + (-1)*y⋅x^3⋅y
++ 2*x^3⋅y^2 + (-1)*y⋅x⋅y^3 + 1*x⋅y^4 + (-1)*y⋅x^3 + (-1)*y⋅x⋅y^2
++ (-1)*x⋅y⋅x + 1*y^2⋅x + 1*x^2⋅y + (-1)*y⋅x⋅y:(o) → (o)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReductionOfMorphism( kC, f, rels );</span>
+(-1)*x^2⋅y^6 + (-1)*y^8 + 1*x^2⋅y^2 + 1*y^4:(o) → (o)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReductionOfMorphism( kC, f, gb );</span>
 0:(o) → (o)
 </pre></div>

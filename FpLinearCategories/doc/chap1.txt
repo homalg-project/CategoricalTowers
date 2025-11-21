@@ -250,85 +250,84 @@
     [4X[28XFinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" )[128X[104X
     [4X[25Xgap>[125X [27XF := PathCategory( q );[127X[104X
     [4X[28XPathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) )[128X[104X
-    [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals( );[127X[104X
-    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals( );;[127X[104X
     [4X[25Xgap>[125X [27XkF := k[F];[127X[104X
     [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XB := kF / [ kF.e^3 ];[127X[104X
     [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) ) ) / [ 1*e^3 ][128X[104X
-    [4X[25Xgap>[125X [27Xdata_tables := DataTablesOfCategory( B );;[127X[104X
-    [4X[25Xgap>[125X [27Xdata_tables[1];[127X[104X
-    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27Xdata_tables := DataTablesOfLinearCategory( B );;[127X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( data_tables[1], CommutativeRingOfLinearCategory( B ) );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xdata_tables[2];[127X[104X
     [4X[28XFinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" )[128X[104X
-    [4X[25Xgap>[125X [27Xdata_tables[3];[127X[104X
-    [4X[28X[[[ [] ], [ [1] ], [ [3] ], [ [1,2],[3,4],[1,2,5],[3,4,5],[1,2,5,5],[3,4,5,5]]],[128X[104X
-    [4X[28X [[  ], [ [] ], [  ], [ [2],[2,5],[2,5,5] ]],[128X[104X
-    [4X[28X [[  ], [  ], [ [] ], [ [4],[4,5],[4,5,5] ]],[128X[104X
-    [4X[28X [[  ], [  ], [  ], [ [],[5],[5,5] ]]][128X[104X
-    [4X[25Xgap>[125X [27Xdata_tables[4][2][5];[127X[104X
-    [4X[28X[ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ][128X[104X
-    [4X[25Xgap>[125X [27Xdata_tables[5][4][1];[127X[104X
-    [4X[28X[ [ 1, 0, 0, 0, 0, 0 ], [ 0, 0, 1, 0, 0, 0 ], [ 0, 0, 0, 0, 1, 0 ] ][128X[104X
-    [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( data_tables );; # alternatively,[127X[104X
-    [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( B );[127X[104X
+    [4X[25Xgap>[125X [27XPerform( data_tables[3], Display );[127X[104X
+    [4X[28X[ [ [  ] ], [ [ 1 ] ], [ [ 3 ] ], [ [ 1, 2 ], [ 3, 4 ], [ 1, 2, 5 ], [ 3, 4, 5 ], [ 1, 2, 5, 5 ], [ 3, 4, 5, 5 ] ] ][128X[104X
+    [4X[28X[ [  ], [ [  ] ], [  ], [ [ 2 ], [ 2, 5 ], [ 2, 5, 5 ] ] ][128X[104X
+    [4X[28X[ [  ], [  ], [ [  ] ], [ [ 4 ], [ 4, 5 ], [ 4, 5, 5 ] ] ][128X[104X
+    [4X[28X[ [  ], [  ], [  ], [ [  ], [ 5 ], [ 5, 5 ] ] ][128X[104X
+    [4X[25Xgap>[125X [27XPerform( data_tables[4], Display );[127X[104X
+    [4X[28X[ [ [ 1 ] ], [ [ 1, 0, 0, 0, 0, 0 ] ], [ [ 1 ] ], [ [ 0, 1, 0, 0, 0, 0 ] ],[128X[104X
+    [4X[28X  [ [ 0, 0, 1, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0 ],[128X[104X
+    [4X[28X    [ 0, 0, 0, 0, 1, 0 ], [ 0, 0, 0, 0, 0, 1 ], [ 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0 ] ] ][128X[104X
+    [4X[28X[ [  ], [ [ 1, 0, 0 ] ], [  ], [  ], [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ][128X[104X
+    [4X[28X[ [  ], [  ], [  ], [ [ 1, 0, 0 ] ], [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ][128X[104X
+    [4X[28X[ [  ], [  ], [  ], [  ], [ [ 0, 1, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ] ] ][128X[104X
+    [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( data_tables );[127X[104X
     [4X[28XQ-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3] ) defined by[128X[104X
     [4X[28X4 objects and 5 generating morphisms[128X[104X
-    [4X[25Xgap>[125X [27XAssignSetOfObjects( A, "V_" );[127X[104X
-    [4X[28X#I  MakeReadWriteGlobal: V_0 already read-write[128X[104X
-    [4X[28X#I  MakeReadWriteGlobal: V_1 already read-write[128X[104X
-    [4X[28X#I  MakeReadWriteGlobal: V_2 already read-write[128X[104X
-    [4X[28X#I  MakeReadWriteGlobal: V_3 already read-write[128X[104X
-    [4X[25Xgap>[125X [27XAssignSetOfGeneratingMorphisms( A );[127X[104X
-    [4X[28X#I  MakeReadWriteGlobal: a already read-write[128X[104X
-    [4X[28X#I  MakeReadWriteGlobal: b already read-write[128X[104X
-    [4X[28X#I  MakeReadWriteGlobal: c already read-write[128X[104X
-    [4X[28X#I  MakeReadWriteGlobal: d already read-write[128X[104X
-    [4X[28X#I  MakeReadWriteGlobal: e already read-write[128X[104X
-    [4X[25Xgap>[125X [27XSetOfObjects( A );[127X[104X
-    [4X[28X[ <(0)>, <(1)>, <(2)>, <(3)> ][128X[104X
+    [4X[25Xgap>[125X [27XPerform( SetOfObjects( A ), Display );[127X[104X
+    [4X[28X<(0)>[128X[104X
+    [4X[28X<(1)>[128X[104X
+    [4X[28X<(2)>[128X[104X
+    [4X[28X<(3)>[128X[104X
     [4X[25Xgap>[125X [27XA.("0");[127X[104X
     [4X[28X<(0)>[128X[104X
-    [4X[25Xgap>[125X [27XV_0;[127X[104X
-    [4X[28X<(0)>[128X[104X
-    [4X[25Xgap>[125X [27XIsEqualForObjects( A.("0"), V_0 );[127X[104X
-    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XObjectConstructor( A, 1 ) = A.("0");[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( A );[127X[104X
-    [4X[28X[ <1*a:(0) → (1)>, <1*b:(1) → (3)>,[128X[104X
-    [4X[28X  <1*c:(0) → (2)>, <1*d:(2) → (3)>,[128X[104X
-    [4X[28X  <1*e:(3) → (3)> ][128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( A.("a"), a );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XPerform( [ "V_0", "V_1", "V_2", "V_3" ], MakeReadWriteGlobal );[127X[104X
-    [4X[25Xgap>[125X [27XPerform( [ "a", "b", "c", "d", "e" ], MakeReadWriteGlobal );[127X[104X
+    [4X[25Xgap>[125X [27XPerform( SetOfGeneratingMorphisms( A ), Display );[127X[104X
+    [4X[28X<1*a:(0) → (1)>[128X[104X
+    [4X[28X<1*b:(1) → (3)>[128X[104X
+    [4X[28X<1*c:(0) → (2)>[128X[104X
+    [4X[28X<1*d:(2) → (3)>[128X[104X
+    [4X[28X<1*e:(3) → (3)>[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( A.("0"), A.("3") );[127X[104X
     [4X[28X<A row module over Q of rank 6>[128X[104X
-    [4X[25Xgap>[125X [27Xhom_03 := BasisOfExternalHom( A.("0"), A.("3") );[127X[104X
-    [4X[28X[ <1*a⋅b:(0) → (3)>, <1*c⋅d:(0) → (3)>,[128X[104X
-    [4X[28X  <1*a⋅b⋅e:(0) → (3)>, <1*c⋅d⋅e:(0) → (3)>,[128X[104X
-    [4X[28X  <1*a⋅b⋅e^2:(0) → (3)>, <1*c⋅d⋅e^2:(0) → (3)> ][128X[104X
+    [4X[25Xgap>[125X [27Xhom_03 := BasisOfExternalHom( A.("0"), A.("3") );;[127X[104X
+    [4X[25Xgap>[125X [27XPerform( hom_03, Display );[127X[104X
+    [4X[28X<1*a⋅b:(0) → (3)>[128X[104X
+    [4X[28X<1*c⋅d:(0) → (3)>[128X[104X
+    [4X[28X<1*a⋅b⋅e:(0) → (3)>[128X[104X
+    [4X[28X<1*c⋅d⋅e:(0) → (3)>[128X[104X
+    [4X[28X<1*a⋅b⋅e^2:(0) → (3)>[128X[104X
+    [4X[28X<1*c⋅d⋅e^2:(0) → (3)>[128X[104X
     [4X[25Xgap>[125X [27Xalpha := 2*hom_03[1] + 3*hom_03[6];[127X[104X
     [4X[28X<2*a⋅b + 3*c⋅d⋅e^2:(0) → (3)>[128X[104X
-    [4X[25Xgap>[125X [27XLaTeXOutput( alpha );[127X[104X
-    [4X[28X"{0}-\\left({2\\cdot {a}{b} + 3\\cdot {c}{d}{e}^{2}}\\right)\\rightarrow{3}"[128X[104X
     [4X[25Xgap>[125X [27Xalpha = MorphismConstructor( A, A.("0"), [ 2, 0, 0, 0, 0, 3 ], A.("3") );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCoefficientsList( alpha );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CoefficientsList( alpha ) );[127X[104X
     [4X[28X[ 2, 0, 0, 0, 0, 3 ][128X[104X
-    [4X[25Xgap>[125X [27XIndicesOfSupportMorphisms( alpha );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( IndicesOfSupportMorphisms( alpha ) );[127X[104X
     [4X[28X[ 1, 6 ][128X[104X
-    [4X[25Xgap>[125X [27XCoefficientsOfSupportMorphisms( alpha );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CoefficientsOfSupportMorphisms( alpha ) );[127X[104X
     [4X[28X[ 2, 3 ][128X[104X
-    [4X[25Xgap>[125X [27XSupportMorphisms( alpha );[127X[104X
-    [4X[28X[ <1*a⋅b:(0) → (3)>, <1*c⋅d⋅e^2:(0) → (3)> ][128X[104X
-    [4X[25Xgap>[125X [27XDecompositionIndicesOfMorphismInAlgebroid( alpha );[127X[104X
+    [4X[25Xgap>[125X [27XPerform( SupportMorphisms( alpha ), Display );[127X[104X
+    [4X[28X<1*a⋅b:(0) → (3)>[128X[104X
+    [4X[28X<1*c⋅d⋅e^2:(0) → (3)>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( DecompositionIndicesOfMorphismInAlgebroid( alpha ) );[127X[104X
     [4X[28X[ [ 2, [ 1, 2 ] ], [ 3, [ 3, 4, 5, 5 ] ] ][128X[104X
-    [4X[25Xgap>[125X [27XDecompositionOfMorphismInAlgebroid( alpha );[127X[104X
-    [4X[28X[ [ 2, [ <1*a:(0) → (1)>, <1*b:(1) → (3)> ] ],[128X[104X
-    [4X[28X  [ 3, [ <1*c:(0) → (2)>, <1*d:(2) → (3)>,[128X[104X
-    [4X[28X         <1*e:(3) → (3)>, <1*e:(3) → (3)> ] ] ][128X[104X
+    [4X[25Xgap>[125X [27Xd := DecompositionOfMorphismInAlgebroid( alpha );;[127X[104X
+    [4X[25Xgap>[125X [27Xd[1][1];[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XPerform( d[1][2], Display );[127X[104X
+    [4X[28X<1*a:(0) → (1)>[128X[104X
+    [4X[28X<1*b:(1) → (3)>[128X[104X
+    [4X[25Xgap>[125X [27Xd[2][1];[127X[104X
+    [4X[28X3[128X[104X
+    [4X[25Xgap>[125X [27XPerform( d[2][2], Display );[127X[104X
+    [4X[28X<1*c:(0) → (2)>[128X[104X
+    [4X[28X<1*d:(2) → (3)>[128X[104X
+    [4X[28X<1*e:(3) → (3)>[128X[104X
+    [4X[28X<1*e:(3) → (3)>[128X[104X
     [4X[25Xgap>[125X [27XA.("a⋅b⋅e");[127X[104X
     [4X[28X<1*a⋅b⋅e:(0) → (3)>[128X[104X
     [4X[25Xgap>[125X [27XA.("abe");[127X[104X
@@ -343,9 +342,9 @@
     [4X[25Xgap>[125X [27Xf := RandomMorphism( o1, o2, 20 );;[127X[104X
     [4X[25Xgap>[125X [27XHomStructure( o1, o2, HomStructure( f ) ) = f;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( PreCompose( f, WeakCokernelProjection( f ) ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( PreCompose( f, WeakCokernelProjection( f ) ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( PreCompose( WeakKernelEmbedding( f ), f ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( PreCompose( WeakKernelEmbedding( f ), f ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xfreyd_B := FreydCategory( add_A );[127X[104X
     [4X[28XFreyd( AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,[128X[104X
@@ -364,32 +363,38 @@
     [4X[25Xgap>[125X [27Xu := RandomMorphism( T, T, 5 );;[127X[104X
     [4X[25Xgap>[125X [27Xv := RandomMorphism( T, T, 5 );;[127X[104X
     [4X[25Xgap>[125X [27Xw := RandomMorphism( T, T, 5 );;[127X[104X
-    [4X[25Xgap>[125X [27XHomStructure( PreCompose( [ u, v, w ] ) )[127X[104X
-    [4X[25X>[125X [27X      = PreCompose( HomStructure( v ), HomStructure( u, w ) );[127X[104X
+    [4X[25Xgap>[125X [27XHomStructure( PreCompose( [ u, v, w ] ) ) = PreCompose( HomStructure( v ), HomStructure( u, w ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XAA := TensorProductOfAlgebroids( A, A );[127X[104X
     [4X[28XQ-algebroid( {0⊗0,0⊗1,0⊗2,..,3⊗1,3⊗2,3⊗3}[0⊗a:0⊗0→0⊗1,0⊗b:0⊗1→0⊗3,[128X[104X
     [4X[28X0⊗c:0⊗0→0⊗2,..,e⊗1:3⊗1→3⊗1,e⊗2:3⊗2→3⊗2,e⊗3:3⊗3→3⊗3] ) defined[128X[104X
     [4X[28Xby 16 objects and 40 generating morphisms[128X[104X
-    [4X[25Xgap>[125X [27XElementaryTensor( A.0, A.1 );[127X[104X
+    [4X[25Xgap>[125X [27XElementaryTensor( A.("0"), A.("1") );[127X[104X
     [4X[28X<(0⊗1)>[128X[104X
-    [4X[25Xgap>[125X [27XElementaryTensor( A.a, A.b );[127X[104X
+    [4X[25Xgap>[125X [27XElementaryTensor( A.("a"), A.("b") );[127X[104X
     [4X[28X<1*a⊗b:(0⊗1) → (1⊗3)>[128X[104X
-    [4X[25Xgap>[125X [27XElementaryTensor( A.0, A.b );[127X[104X
+    [4X[25Xgap>[125X [27XElementaryTensor( A.("0"), A.("b") );[127X[104X
     [4X[28X<1*id(0)⊗b:(0⊗1) → (0⊗3)>[128X[104X
-    [4X[25Xgap>[125X [27XElementaryTensor( A.a, A.1 );[127X[104X
+    [4X[25Xgap>[125X [27XElementaryTensor( A.("a"), A.("1") );[127X[104X
     [4X[28X<1*a⊗id(1):(0⊗1) → (1⊗1)>[128X[104X
-    [4X[25Xgap>[125X [27X3x3 := AA.("3⊗3");[127X[104X
+    [4X[25Xgap>[125X [27Xo := AA.("3⊗3");[127X[104X
     [4X[28X<(3⊗3)>[128X[104X
     [4X[25Xgap>[125X [27XAA.("e⊗1");[127X[104X
     [4X[28X<1*e⊗id(1):(3⊗1) → (3⊗1)>[128X[104X
-    [4X[25Xgap>[125X [27Xu := RandomMorphism( 3x3, 3x3, 15 );;[127X[104X
-    [4X[25Xgap>[125X [27Xv := RandomMorphism( 3x3, 3x3, 15 );;[127X[104X
-    [4X[25Xgap>[125X [27Xw := RandomMorphism( 3x3, 3x3, 15 );;[127X[104X
-    [4X[25Xgap>[125X [27XHomStructure( PreCompose( [ u, v, w ] ) )[127X[104X
-    [4X[25X>[125X [27X      = PreCompose( HomStructure( v ), HomStructure( u, w ) );[127X[104X
+    [4X[25Xgap>[125X [27Xu := RandomMorphism( o, o, 15 );;[127X[104X
+    [4X[25Xgap>[125X [27Xv := RandomMorphism( o, o, 15 );;[127X[104X
+    [4X[25Xgap>[125X [27Xw := RandomMorphism( o, o, 15 );;[127X[104X
+    [4X[25Xgap>[125X [27XHomStructure( PreCompose( [ u, v, w ] ) ) = PreCompose( HomStructure( v ), HomStructure( u, w ) );[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
+  
+  [1X1.4-2 DataTablesOfLinearCategory[101X
+  
+  [33X[1;0Y[29X[2XDataTablesOfLinearCategory[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YReturns  the  5-tuple  data  tables  of a linear category. The output can be
+  passed to the constructor [10XAlgebroidFromDataTables[110X.[133X
   
   
   [1X1.5 [33X[0;0YGAP categories[133X[101X
@@ -401,21 +406,14 @@
   
   [33X[0;0YThe [5XGAP[105X category of objects in an algebroid from data tables.[133X
   
-  [1X1.5-2 IsCellInAlgebroidFromDataTables[101X
-  
-  [33X[1;0Y[29X[2XIsCellInAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of cells in an algebroid from data tables.[133X
-  
-  [1X1.5-3 IsObjectInAlgebroidFromDataTables[101X
+  [1X1.5-2 IsObjectInAlgebroidFromDataTables[101X
   
   [33X[1;0Y[29X[2XIsObjectInAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of algebroids from data tables.[133X
   
-  [1X1.5-4 IsMorphismInAlgebroidFromDataTables[101X
+  [1X1.5-3 IsMorphismInAlgebroidFromDataTables[101X
   
   [33X[1;0Y[29X[2XIsMorphismInAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
