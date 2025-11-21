@@ -2,8 +2,6 @@
   
   [1XIndex[101X
   
-  [2XAddSetOfGeneratingMorphismsOfCategory[102X, for IsCapCategory, IsFunction 8.1-1 
-      for IsCapCategory, IsFunction, IsInt 8.1-1 
   [2XAssignSetOfGeneratingMorphisms[102X, for IsPathCategory, IsString 2.1-5 
       for IsQuotientOfPathCategory, IsString 6.2-8 
   [2XAssignSetOfObjects[102X, for IsPathCategory, IsString 2.1-4 
@@ -16,22 +14,21 @@
   [2XCreateMorphism[102X, for IsCategoryFromNerveData, IsBigInt 5.3-4 
       for IsObjectInCategoryFromNerveData, IsBigInt, IsObjectInCategoryFromNerveData 5.3-4 
   [2XCreateObject[102X, for IsCategoryFromNerveData, IsBigInt 5.3-3 
-  [2XDataTablesOfCategory[102X, for IsCapCategory 3.3-2 
+  [2XDataTablesOfCategory[102X, for IsCapCategory 3.2-2 
   [2XDefiningRelations[102X, for IsQuotientOfPathCategory 6.2-3 
-  [2XDefiningTripleOfUnderlyingQuiver[102X, for IsCapCategory 3.3-1 
+  [2XDefiningTripleOfUnderlyingQuiver[102X, for IsCapCategory 3.2-1 
   [2XExternalHoms[102X, for IsFinQuiver 1.2-14 
   [2XFinQuiver[102X, for IsList 1.1-1 
   [2XGroebnerBasis[102X, for IsPathCategory, IsDenseList 2.4-1 
   [2XGroebnerBasisOfDefiningRelations[102X, for IsQuotientOfPathCategory 6.2-4 
   [2XHasFiniteNumberOfMacaulayMorphisms[102X, for IsPathCategory, IsDenseList 2.2-11 
-  [2XIndicesOfGeneratingMorphismsFromHomStructure[102X, for IsCapCategory 3.3-5 
+  [2XIndicesOfGeneratingMorphismsFromHomStructure[102X, for IsCapCategory 3.2-5 
   [2XIndicesOfSources[102X, for IsFinQuiver 1.2-9 
   [2XIndicesOfTargets[102X, for IsFinQuiver 1.2-10 
   [2XIndicesPairsOfCompatibleMorphisms[102X, for IsFinQuiver 1.2-11 
   [2XIsAscendingForMorphisms[102X, for IsPathCategory, IsPathCategoryMorphism, IsPathCategoryMorphism, IsString 2.4-5 
   [2XIsCategoryFromNerveData[102X, for IsCapCategory 5.1-1 
   [2XIsDescendingForMorphisms[102X, for IsPathCategory, IsPathCategoryMorphism, IsPathCategoryMorphism, IsString 2.4-4 
-  [2XIsFinitelyPresentedCategory[102X, for IsCapCategory 3.1-1 
   [2XIsFinitePathCategory[102X, for IsPathCategory 2.2-10 
   [2XIsFinQuiver[102X, for IsCapCategory 1.3-1 
   [2XIsFinQuiverMorphism[102X, for IsCapCategoryMorphism 1.3-3 
@@ -57,11 +54,11 @@
       for IsPathCategoryMorphism 2.2-9 
   [2XMorphismLength[102X, for IsPathCategoryMorphism 2.2-6 
   [2XMorphismSupport[102X, for IsPathCategoryMorphism 2.2-7 
-  [2XNaturalTransformation[102X, for IsCapFunctor, IsList, IsCapFunctor 3.3-10 
-      for IsRecord, IsCapFunctor, IsCapFunctor 3.3-10 
+  [2XNaturalTransformation[102X, for IsCapFunctor, IsList, IsCapFunctor 3.2-10 
+      for IsRecord, IsCapFunctor, IsCapFunctor 3.2-10 
   [2XNerveData[102X, for IsCategoryFromNerveData 5.2-1 
-  [2XNerveTruncatedInDegree2AsFunctor[102X, for IsCapCategory 3.3-4 
-  [2XNerveTruncatedInDegree2Data[102X, for IsCapCategory 3.3-3 
+  [2XNerveTruncatedInDegree2AsFunctor[102X, for IsCapCategory 3.2-4 
+  [2XNerveTruncatedInDegree2Data[102X, for IsCapCategory 3.2-3 
   [2XNumberOfMorphisms[102X, for IsFinQuiver 1.2-6 
   [2XNumberOfObjects[102X, for IsFinQuiver 1.2-3 
   [2XObjectConstructor[102X, for IsFinQuiver, IsInt 1.1-2 
@@ -72,30 +69,28 @@
   [2XObjectLabel[102X, for IsFinQuiverObject 1.2-17 
       for IsPathCategoryObject 2.2-5 
   [2XOppositeCategoryFromNerveData[102X, for IsCategoryFromNerveData 5.2-3 
-  [2XOppositeFiniteCategory[102X, for IsCapCategory 3.3-6 
+  [2XOppositeFiniteCategory[102X, for IsCapCategory 3.2-6 
   [2XOppositePathCategory[102X, for IsPathCategory 2.2-1 
   [2XOppositeQuiver[102X, for IsFinQuiver 1.2-15 
   [2XOppositeQuotientOfPathCategory[102X, for IsQuotientOfPathCategory 6.2-1 
   [2XPathCategory[102X, for IsFinQuiver 2.1-1 
   [2XQuiverDatum[102X, for IsFinQuiver 1.2-1 
   [2XQuiverName[102X, for IsFinQuiver 1.2-2 
-  [2XQuiverStringOfDigraph[102X, for IsDigraph, IsString, IsString 3.3-11 
+  [2XQuiverStringOfDigraph[102X, for IsDigraph, IsString, IsString 3.2-11 
   [2XQuotientCategory[102X, for IsPathCategory, IsDenseList 6.3-1 
   [2XRandomFinQuiver[102X, for IsInt, IsInt, IsBool 1.1-4 
   [2XReducedGroebnerBasis[102X, for IsPathCategory, IsDenseList 2.4-3 
   [2XReducedGroebnerBasisWithGivenGroebnerBasis[102X, for IsPathCategory, IsDenseList 2.4-2 
-  [2XSetOfGeneratingMorphisms[102X, for IsCapCategory 3.2-2 
-  [2XSetOfGeneratingMorphismsOfCategory[102X, for IsCapCategory 3.2-1 
   [2XSetOfMorphisms[102X, for IsFinQuiver 1.2-13 
   [2XSetOfObjects[102X, for IsFinQuiver 1.2-12 
   [2XSimplicialCategoryTruncatedInDegree[102X 7.1-1 
-  [2XSize[102X, for IsCapCategory 3.2-3 
+  [2XSize[102X, for IsCapCategory 3.1-1 
       for IsCategoryFromNerveData 5.2-2 
   [2XTensorProductOfFinQuivers[102X, for IsFinQuiver, IsFinQuiver 1.1-5 
   [2XUnderlyingQuiver[102X, for IsPathCategory 2.2-3 
-  [2XYonedaCompositionAsNaturalEpimorphism[102X, for IsCapCategory 3.3-9 
-  [2XYonedaFibrationAsNaturalTransformation[102X, for IsCapCategory 3.3-7 
-  [2XYonedaProjectionAsNaturalEpimorphism[102X, for IsCapCategory 3.3-8 
+  [2XYonedaCompositionAsNaturalEpimorphism[102X, for IsCapCategory 3.2-9 
+  [2XYonedaFibrationAsNaturalTransformation[102X, for IsCapCategory 3.2-7 
+  [2XYonedaProjectionAsNaturalEpimorphism[102X, for IsCapCategory 3.2-8 
   
   
   -------------------------------------------------------

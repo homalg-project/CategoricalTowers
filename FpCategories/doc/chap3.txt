@@ -2,34 +2,9 @@
   [1X3 [33X[0;0YTools[133X[101X
   
   
-  [1X3.1 [33X[0;0YProperties[133X[101X
+  [1X3.1 [33X[0;0YAttributes[133X[101X
   
-  [1X3.1-1 IsFinitelyPresentedCategory[101X
-  
-  [33X[1;0Y[29X[2XIsFinitelyPresentedCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe (evil) property of [3XC[103X being a finitely presented.[133X
-  
-  
-  [1X3.2 [33X[0;0YAttributes[133X[101X
-  
-  [1X3.2-1 SetOfGeneratingMorphismsOfCategory[101X
-  
-  [33X[1;0Y[29X[2XSetOfGeneratingMorphismsOfCategory[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of a [5XCAP[105X category morphisms[133X
-  
-  [33X[0;0YReturn a list of generating morphisms of the finitely generated category [3XC[103X.[133X
-  
-  [1X3.2-2 SetOfGeneratingMorphisms[101X
-  
-  [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of a [5XCAP[105X category morphisms[133X
-  
-  [33X[0;0YReturn  a list of generating morphisms of the finitely generated category [3XC[103X.
-  The corresponding [5XCAP[105X operation is [10XSetOfGeneratingMorphismsOfCategory[110X.[133X
-  
-  [1X3.2-3 Size[101X
+  [1X3.1-1 Size[101X
   
   [33X[1;0Y[29X[2XSize[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya nonnegative integer[133X
@@ -37,9 +12,9 @@
   [33X[0;0YReturn the number of morphisms in the finite category [3XC[103X.[133X
   
   
-  [1X3.3 [33X[0;0YOperations[133X[101X
+  [1X3.2 [33X[0;0YOperations[133X[101X
   
-  [1X3.3-1 DefiningTripleOfUnderlyingQuiver[101X
+  [1X3.2-1 DefiningTripleOfUnderlyingQuiver[101X
   
   [33X[1;0Y[29X[2XDefiningTripleOfUnderlyingQuiver[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya pair[133X
@@ -47,21 +22,21 @@
   [33X[0;0YThe defining triple of the quiver underlying the finitely presented category
   [3XC[103X.[133X
   
-  [1X3.3-2 DataTablesOfCategory[101X
+  [1X3.2-2 DataTablesOfCategory[101X
   
   [33X[1;0Y[29X[2XDataTablesOfCategory[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya pair of lists[133X
   
   [33X[0;0YThe data tables of the category [3XC[103X.[133X
   
-  [1X3.3-3 NerveTruncatedInDegree2Data[101X
+  [1X3.2-3 NerveTruncatedInDegree2Data[101X
   
   [33X[1;0Y[29X[2XNerveTruncatedInDegree2Data[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya pair consisting of a triple and an 8-tuple[133X
   
   [33X[0;0YThe nerve data of the category [3XC[103X.[133X
   
-  [1X3.3-4 NerveTruncatedInDegree2AsFunctor[101X
+  [1X3.2-4 NerveTruncatedInDegree2AsFunctor[101X
   
   [33X[1;0Y[29X[2XNerveTruncatedInDegree2AsFunctor[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
@@ -149,21 +124,21 @@
     [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
-  [1X3.3-5 IndicesOfGeneratingMorphismsFromHomStructure[101X
+  [1X3.2-5 IndicesOfGeneratingMorphismsFromHomStructure[101X
   
   [33X[1;0Y[29X[2XIndicesOfGeneratingMorphismsFromHomStructure[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of integers[133X
   
   [33X[0;0YThe normalized indices of the generating morphisms of the finite category [3XC[103X.[133X
   
-  [1X3.3-6 OppositeFiniteCategory[101X
+  [1X3.2-6 OppositeFiniteCategory[101X
   
   [33X[1;0Y[29X[2XOppositeFiniteCategory[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
   [33X[0;0YThe opposite category of a finite category [3XC[103X.[133X
   
-  [1X3.3-7 YonedaFibrationAsNaturalTransformation[101X
+  [1X3.2-7 YonedaFibrationAsNaturalTransformation[101X
   
   [33X[1;0Y[29X[2XYonedaFibrationAsNaturalTransformation[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X natural transformation[133X
@@ -174,7 +149,7 @@
   targe  is  the  constant  functor  of  [23X0[123X-cells  [23XB \to H, c \mapsto B_0, \psi
   \mapsto \mathrm{id}_{B_0}[123X.[133X
   
-  [1X3.3-8 YonedaProjectionAsNaturalEpimorphism[101X
+  [1X3.2-8 YonedaProjectionAsNaturalEpimorphism[101X
   
   [33X[1;0Y[29X[2XYonedaProjectionAsNaturalEpimorphism[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X natural transformation[133X
@@ -186,7 +161,7 @@
   [23XB   \to  H,  c  \mapsto  \sqcup_{a\in  B}  \mathrm{Hom}(a,c),  \psi  \mapsto
   \sqcup_{a\in B} \mathrm{Hom}(a,\psi)[123X.[133X
   
-  [1X3.3-9 YonedaCompositionAsNaturalEpimorphism[101X
+  [1X3.2-9 YonedaCompositionAsNaturalEpimorphism[101X
   
   [33X[1;0Y[29X[2XYonedaCompositionAsNaturalEpimorphism[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X natural transformation[133X
@@ -264,7 +239,7 @@
     [4X[28X/ [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -> SkeletalFinSets[128X[104X
   [4X[32X[104X
   
-  [1X3.3-10 NaturalTransformation[101X
+  [1X3.2-10 NaturalTransformation[101X
   
   [33X[1;0Y[29X[2XNaturalTransformation[102X( [3Xeta[103X, [3XF[103X, [3XG[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XNaturalTransformation[102X( [3XF[103X, [3Xeta[103X, [3XG[103X ) [32X operation[133X
@@ -273,7 +248,7 @@
   [33X[0;0YConstruct,   using   the   record   (or  list)  of  images  [3Xeta[103X,  a  natural
   transformation from the functor [3XF[103X to the parallel functor [3XG[103X.[133X
   
-  [1X3.3-11 QuiverStringOfDigraph[101X
+  [1X3.2-11 QuiverStringOfDigraph[101X
   
   [33X[1;0Y[29X[2XQuiverStringOfDigraph[102X( [3XD[103X, [3Xname_of_quiver[103X, [3Xprefix_of_name_of_morphisms[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya string[133X
