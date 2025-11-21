@@ -4,73 +4,6 @@
 # Implementations
 #
 
-##
-InstallMethod( DataTablesOfCategory,
-          [ IsQuotientCategory ],
-  
-  function ( qA )
-    local A, all_objs, support_objs, objs, all_gmors, support_gmors, gmors, q;
-    
-    if not HasRangeCategoryOfHomomorphismStructure( qA ) then
-        Error( "the quotient category passed to 'DataTablesOfCategory' must be hom-finite!" );
-    fi;
-    
-    if not IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( qA ) ) then
-        TryNextMethod();
-    fi;
-    
-    A := AmbientCategory( qA );
-    
-    if not IsAlgebroidFromDataTables( A ) then
-        TryNextMethod( );
-    fi;
-    
-    all_objs := List( SetOfObjects( A ), o -> ObjectConstructor( qA, o ) );
-    support_objs := PositionsProperty( all_objs, o -> not IsZero( o ) );
-    objs := all_objs{support_objs};
-    
-    all_gmors := List( SetOfGeneratingMorphisms( A ), m -> MorphismConstructor( qA, ObjectConstructor( qA, Source( m ) ), m, ObjectConstructor( qA, Target( m ) ) ) );
-    support_gmors := PositionsProperty( all_gmors, m -> not IsZero( m ) );
-    gmors := all_gmors{support_gmors};
-    
-    q := UnderlyingQuiver( A );
-    
-    if Length( objs ) <> Length( all_objs ) or Length( gmors ) <> Length( all_gmors ) then
-      
-      q := FinQuiver(
-              NTuple( 3,
-                "q",
-                NTuple( 3,
-                  Length( support_objs ),
-                  LabelsOfObjects( q ){support_objs},
-                  LaTeXStringsOfObjects( q ){support_objs} ),
-                NTuple( 5,
-                  Length( support_gmors ),
-                  List( IndicesOfSources( q ){support_gmors}, s -> SafePosition( support_objs, s ) ),
-                  List( IndicesOfTargets( q ){support_gmors}, t -> SafePosition( support_objs, t ) ),
-                  LabelsOfMorphisms( q ){support_gmors},
-                  LaTeXStringsOfMorphisms( q ){support_gmors} ) ) );
-      
-    fi;
-    
-    return
-      NTuple( 5,
-        
-        CommutativeRingOfLinearCategory( A ),
-        
-        q,
-        
-        List( objs, s -> List( objs, t -> List( BasisOfExternalHom( qA, s, t ), m ->
-          List( DecompositionIndicesOfMorphismInAlgebroid( MorphismDatum( m ) )[1][2], index -> SafePosition( support_gmors, index ) ) ) ) ),
-          
-        List( objs, o -> List( gmors, gm ->
-          EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( qA, IdentityMorphism( qA, o ), gm ) ) ) ) ),
-          
-        List( objs, o -> List( gmors, gm ->
-          EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( qA, gm, IdentityMorphism( qA, o ) ) ) ) ) ) );
-    
-end );
-
 ############################
 #
 # Auxiliary Functions
@@ -124,9 +57,9 @@ BindGlobal( "CREATE_NAME_FOR_ALGEBROID_FROM_DATA_TABLES",
             o_string := JoinStringsWithSeparator( LabelsOfObjects( q ), "," );
     else
             o_string := Concatenation(
-                              JoinStringsWithSeparator( LabelsOfObjects( q ){[1..3]}, "," ),
+                              JoinStringsWithSeparator( LabelsOfObjects( q ){ [ 1 .. 3 ] }, "," ),
                               ",..,",
-                              JoinStringsWithSeparator( LabelsOfObjects( q ){[NumberOfObjects( q ) - 2 .. NumberOfObjects( q )]}, "," ) );
+                              JoinStringsWithSeparator( LabelsOfObjects( q ){ [ NumberOfObjects( q ) - 2 .. NumberOfObjects( q ) ] }, "," ) );
     fi;
     
     if NumberOfMorphisms( q ) < 10 then
@@ -139,13 +72,13 @@ BindGlobal( "CREATE_NAME_FOR_ALGEBROID_FROM_DATA_TABLES",
         
         gm_string := Concatenation(
                               JoinStringsWithSeparator(
-                                  ListN( LabelsOfMorphisms( q ){[1..3]}, IndicesOfSources( q ){[1..3]}, IndicesOfTargets( q ){[1..3]},
+                                  ListN( LabelsOfMorphisms( q ){ [ 1 .. 3 ] }, IndicesOfSources( q ){ [ 1 .. 3 ] }, IndicesOfTargets( q ){ [ 1 .. 3 ] },
                                     { l, i, j } -> Concatenation( l, ":", LabelsOfObjects( q )[i], "→", LabelsOfObjects( q )[j] ) ), "," ),
                               ",..,",
                               JoinStringsWithSeparator(
-                                  ListN( LabelsOfMorphisms( q ){[NumberOfMorphisms( q ) - 2 .. NumberOfMorphisms( q )]},
-                                         IndicesOfSources( q ){[NumberOfMorphisms( q ) - 2 .. NumberOfMorphisms( q )]},
-                                         IndicesOfTargets( q ){[NumberOfMorphisms( q ) - 2 .. NumberOfMorphisms( q )]},
+                                  ListN( LabelsOfMorphisms( q ){ [ NumberOfMorphisms( q ) - 2 .. NumberOfMorphisms( q ) ] },
+                                         IndicesOfSources( q ){ [ NumberOfMorphisms( q ) - 2 .. NumberOfMorphisms( q ) ] },
+                                         IndicesOfTargets( q ){ [ NumberOfMorphisms( q ) - 2 .. NumberOfMorphisms( q ) ] },
                                             { l, i, j } -> Concatenation( l, ":", LabelsOfObjects( q )[i], "→", LabelsOfObjects( q )[j] ) ), "," ) );
         
     fi;
@@ -172,9 +105,14 @@ end );
 ##
 InstallMethod( AlgebroidFromDataTables,
           [ IsDenseList ],
-  
-  function ( input_data )
-    local ring, q, name, A, colors, eager, ranks, hom_structure_objs_gmors, hom_structure_objs_mors, hom_structure_gmors_objs, hom_structure_mors_objs,
+  FunctionWithNamedArguments(
+  [
+    [ "colors", fail ],
+    [ "range_of_HomStructure", fail ],
+    [ "eager", false ],
+  ],
+  function ( CAP_NAMED_ARGUMENTS, input_data )
+    local ring, q, name, A, ranks, hom_structure_objs_gmors, hom_structure_objs_mors, hom_structure_gmors_objs, hom_structure_mors_objs,
     hom_structure_matrices, range_category_of_hom_structure;
     
     ring := input_data[1];
@@ -198,23 +136,19 @@ InstallMethod( AlgebroidFromDataTables,
              CapJitDataTypeOfListOf( CapJitDataTypeOfElementOfRing( ring ) ),
              fail );
     
-    colors := ValueOption( "colors" );
+    if CAP_NAMED_ARGUMENTS.colors = fail then
     
-    if colors = fail then
+        A!.colors := rec( obj := "", coeff := "", basis_elm := "", other := "", reset := "" );
         
-        colors := rec( obj := "", coeff := "", basis_elm := "", other := "", reset := "" );
+    elif CAP_NAMED_ARGUMENTS.colors = true then
         
-    elif colors = true then
+        A!.colors := rec( obj := "\033[34m", coeff := "\033[35m", basis_elm := "\033[32m", other := "\033[31m", reset := "\033[0m" );
         
-        colors := rec( obj := TextAttr.4, coeff := TextAttr.5, basis_elm := TextAttr.2, other := TextAttr.1, reset := TextAttr.reset );
+    else
         
-    elif not IsRecord( colors ) then
-        
-        Error( "the passed 'colors' option is not supported!\n" );
+        A!.colors := CAP_NAMED_ARGUMENTS.colors;
         
     fi;
-    
-    A!.colors := colors;
     
     A!.compiler_hints :=
       rec( category_attribute_names :=
@@ -258,19 +192,26 @@ InstallMethod( AlgebroidFromDataTables,
               NumberOfMorphisms( q ),
               ListN( IndicesOfSources( q ), IndicesOfTargets( q ), { s, t } -> [ -1 + s, -1 + t ] ) ) );
     
-    eager := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "eager", true );
-    
     # homomorphism structure
     
-    range_category_of_hom_structure :=
-        CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure",
-            CategoryOfRows( ring : overhead := false, FinalizeCategory := true ) );
+    range_category_of_hom_structure := CAP_NAMED_ARGUMENTS.range_of_HomStructure;
+    
+    if range_category_of_hom_structure = fail then
+      
+      range_category_of_hom_structure := CategoryOfRows( ring :
+            FinalizeCategory := true,
+            #= comment for Julia
+            overhead := false
+            # =#
+            );
+      
+    fi;
     
     SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( A, range_category_of_hom_structure );
     
     ranks := List( input_data[3], s -> List( s, Length ) );
     
-    if eager then
+    if CAP_NAMED_ARGUMENTS.eager then
         
         ranks := List( ListOfValues( ranks ), ListOfValues );
         
@@ -288,7 +229,7 @@ InstallMethod( AlgebroidFromDataTables,
                                   s -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
                                     i -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
                                        j ->  LazyHList( input_data[3][i][j],
-                                          indices -> Iterated( _ConcatenationLazyHLists_( [ LazyHList( [ 1 ], r -> HomalgIdentityMatrix( ranks[s][i], ring ) ), hom_structure_objs_gmors[s]{indices} ] ), \*  ) ) ) ) );
+                                          indices -> Iterated( _ConcatenationLazyHLists_( [ LazyHList( [ 1 ], r -> HomalgIdentityMatrix( ranks[s][i], ring ) ), hom_structure_objs_gmors[s]{indices} ] ), {a, b} -> a * b  ) ) ) ) );
     
     # [ [ hom(m_h:s_h -> t_h, o_t): hom(t_h, o_t) -> hom(s_h, o_t) ] ]_{t,h}
     hom_structure_gmors_objs := LazyHList( [ 1 .. NumberOfObjects( q ) ],
@@ -300,27 +241,25 @@ InstallMethod( AlgebroidFromDataTables,
                                   t -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
                                     i -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
                                        j ->  LazyHList( input_data[3][i][j],
-                                          indices -> Iterated( _ConcatenationLazyHLists_( [ LazyHList( [ 1 ], r -> HomalgIdentityMatrix( ranks[j][t], ring ) ), hom_structure_gmors_objs[t]{Reversed(indices)} ] ), \* ) ) ) ) );
+                                          indices -> Iterated( _ConcatenationLazyHLists_( [ LazyHList( [ 1 ], r -> HomalgIdentityMatrix( ranks[j][t], ring ) ), hom_structure_gmors_objs[t]{Reversed(indices)} ] ), {a, b} -> a * b ) ) ) ) );
     
     # H(l:i->j, r:p->q) = H( l⋅id_j, r⋅id_q ) = H(id_j, r)⋅H(l, id_q)
-    hom_structure_matrices :=
-          LazyHList( [ 1 .. NumberOfObjects( q ) ],
-            i -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
-              j -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
-                p -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
-                  q -> LazyHList( hom_structure_mors_objs[q][i][j],
-                    l -> LazyHList( hom_structure_objs_mors[j][p][q],
-                      r -> r * l ) ) ) ) ) );
+    hom_structure_matrices := LazyHList( [ 1 .. NumberOfObjects( q ) ],
+                                i -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
+                                  j -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
+                                    p -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
+                                      q -> LazyHList( hom_structure_mors_objs[q][i][j],
+                                        l -> LazyHList( hom_structure_objs_mors[j][p][q],
+                                          r -> r * l ) ) ) ) ) );
     
-    if eager then
+    if CAP_NAMED_ARGUMENTS.eager then
        
-       hom_structure_matrices :=
-          List( ListOfValues( hom_structure_matrices ),
-            a -> List( ListOfValues( a ),
-              b -> List( ListOfValues( b ),
-                c -> List( ListOfValues( c ),
-                  d -> List( ListOfValues( d ),
-                    e -> ListOfValues( e ) ) ) ) ) );
+       hom_structure_matrices := List( ListOfValues( hom_structure_matrices ),
+                                    a -> List( ListOfValues( a ),
+                                      b -> List( ListOfValues( b ),
+                                        c -> List( ListOfValues( c ),
+                                          d -> List( ListOfValues( d ),
+                                            e -> ListOfValues( e ) ) ) ) ) );
       
     fi;
     
@@ -377,8 +316,7 @@ InstallMethod( AlgebroidFromDataTables,
         
         q := UnderlyingQuiver( A );
         
-        return
-          ListN( [ 1 .. NumberOfMorphisms( q ) ], IndicesOfSources( q ), IndicesOfTargets( q ),
+        return ListN( [ 1 .. NumberOfMorphisms( q ) ], IndicesOfSources( q ), IndicesOfTargets( q ),
                  { index, i, j } -> BasesElements( A )[i][j][SafePosition( DecompositionIndicesOfBasesElements( A )[i][j], [ index ] )] );
         
     end );
@@ -628,13 +566,14 @@ InstallMethod( AlgebroidFromDataTables,
         
         s := ObjectIndex( obj );
         
-        indices := Shuffle( [ 1 .. NumberOfObjects( UnderlyingQuiver( A ) ) ] );
+        # in Julia: Shuffle(1:n) raises error, hence this workaround
+        indices := Shuffle( List( [ 1 .. NumberOfObjects( UnderlyingQuiver( A ) ) ], i -> i ) );
         
         t := indices[SafePositionProperty( indices, p -> HomomorphismStructureOnObjectsRanks( A )[s][p] <> 0 )];
         
         basis := BasesElements( A )[s][t];
         
-        return SumOfMorphisms( A, obj, List( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( basis ) ), SetOfObjects( A )[t] );
+        return SumOfMorphisms( A, obj, List( [ 0 .. AbsInt( n ) ], i -> Random( [ MinusOne( ring ), One( ring ) ] ) * Random( basis ) ), SetOfObjects( A )[t] );
         
     end );
     
@@ -648,13 +587,14 @@ InstallMethod( AlgebroidFromDataTables,
         
         t := ObjectIndex( obj );
         
-        indices := Shuffle( [ 1 .. NumberOfObjects( UnderlyingQuiver( A ) ) ] );
+        # in Julia: Shuffle(1:n) raises error, hence this workaround
+        indices := Shuffle( List( [ 1 .. NumberOfObjects( UnderlyingQuiver( A ) ) ], i -> i ) );
         
         s := indices[SafePositionProperty( indices, p -> HomomorphismStructureOnObjectsRanks( A )[p][t] <> 0 )];
         
         basis := BasesElements( A )[s][t];
         
-        return SumOfMorphisms( A, SetOfObjects( A )[s], List( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( basis ) ), obj );
+        return SumOfMorphisms( A, SetOfObjects( A )[s], List( [ 0 .. AbsInt( n ) ], i -> Random( [ MinusOne( ring ), One( ring ) ] ) * Random( basis ) ), obj );
         
     end );
     
@@ -668,7 +608,7 @@ InstallMethod( AlgebroidFromDataTables,
         
         morphisms := Concatenation( [ ZeroMorphism( A, obj_1, obj_2 ) ], BasesElements( A )[ObjectIndex( obj_1 )][ObjectIndex( obj_2 )] );
         
-        return SumOfMorphisms( A, obj_1, List( [ 0 .. AbsInt( n ) ], i -> Random( ring ) * Random( morphisms ) ), obj_2 );
+        return SumOfMorphisms( A, obj_1, List( [ 0 .. AbsInt( n ) ], i -> Random( [ MinusOne( ring ), One( ring ) ] ) * Random( morphisms ) ), obj_2 );
         
     end );
     
@@ -676,17 +616,22 @@ InstallMethod( AlgebroidFromDataTables,
     
     return A;
     
-end );
+end ) );
 
 ##
 InstallOtherMethod( AlgebroidFromDataTables,
           [ IsCapCategory ],
   
-  function ( C )
+  FunctionWithNamedArguments(
+  [
+    [ "colors", fail ]
+  ],
+  function ( CAP_NAMED_ARGUMENTS, C )
     
-    return AlgebroidFromDataTables( DataTablesOfCategory( C ) );
+    return AlgebroidFromDataTables( DataTablesOfLinearCategory( C ) : colors := CAP_NAMED_ARGUMENTS.colors );
     
-end );
+end ) );
+
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
@@ -783,6 +728,7 @@ InstallMethod( CoefficientsOfSupportMorphisms,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( AssignSetOfObjects,
         [ IsAlgebroidFromDataTables, IsString ],
@@ -858,6 +804,7 @@ InstallOtherMethod( AssignSetOfGeneratingMorphisms,
     AssignSetOfGeneratingMorphisms( A, "" );
     
 end );
+# =#
 
 ##
 InstallOtherMethod( \/,
@@ -881,7 +828,7 @@ InstallOtherMethod( \/,
     
     if name in id_mors_labels then
         
-        label := name{[4 .. Length(name) - 1]};
+        label := name{ [ 4 .. Length(name) - 1 ] };
         
         if label in objs_labels then
             
@@ -895,7 +842,7 @@ InstallOtherMethod( \/,
     
     if name in id_mors_labels then
         
-        label := name{[4 .. Length(name)]};
+        label := name{ [ 4 .. Length(name) ] };
         
         if label in objs_labels then
             
@@ -935,7 +882,7 @@ InstallOtherMethod( \/,
           if l = 0 then
               return m;
           else
-              return PreCompose( A, name{[1 .. l]} / A, m );
+              return PreCompose( A, name{ [ 1 .. l ] } / A, m );
           fi;
           
       else
@@ -946,11 +893,11 @@ InstallOtherMethod( \/,
               
               p := Last( p );
               
-              power := Int( name{[ p + 1 .. Length( name ) ]} );
+              power := Int( name{ [ p + 1 .. Length( name )  ] } );
               
               if power <> fail then
                     
-                    name := name{[ 1 .. p - 1 ]};
+                    name := name{ [ 1 .. p - 1  ] };
                     
                     p := PositionProperty( mors_labels,
                                   label -> Length( name ) >= Length( label ) and IsMatchingSublist( name, label, Length( name ) - Length( label ) + 1 ) );
@@ -966,7 +913,7 @@ InstallOtherMethod( \/,
                         if l = 0 then
                             return m;
                         else
-                            return PreCompose( A, name{[1 .. l]} / A, m );
+                            return PreCompose( A, name{ [ 1 .. l ] } / A, m );
                         fi;
                         
                     fi;
@@ -983,8 +930,10 @@ InstallOtherMethod( \/,
     
 end );
 
+#= comment for Julia
 ##
 INSTALL_DOT_METHOD( IsAlgebroidFromDataTables );
+# =#
 
 ##
 InstallMethod( DecompositionIndicesOfMorphismInAlgebroid,
@@ -1018,7 +967,7 @@ InstallMethod( DecompositionOfMorphismInAlgebroid,
                       if IsEmpty( p[2] ) then
                         return Pair( p[1], [ IdentityMorphism( A, Source( mor ) ) ] );
                       else
-                        return Pair( p[1], SetOfGeneratingMorphisms( A ){p[2]} );
+                        return Pair( p[1], SetOfGeneratingMorphisms( A ){ p[2] } );
                       fi;
                     end );
     
@@ -1035,8 +984,7 @@ InstallOtherMethod( BasesElements,
     
     ranks := HomomorphismStructureOnObjectsRanks( A );
     
-    return
-      LazyHList( [ 1 .. NumberOfObjects( q ) ],
+    return LazyHList( [ 1 .. NumberOfObjects( q ) ],
           i -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
             j -> ListN( IdentityMat( ranks[i][j], CommutativeRingOfLinearCategory( A ) ), [ 1 .. ranks[i][j] ],
               { coeff, index } -> MorphismConstructor( A, SetOfObjects( A )[i], coeff, [ index ], SetOfObjects( A )[j] ) ) ) );
@@ -1054,8 +1002,7 @@ InstallMethod( LabelsOfBasesElements,
     
     dec := DecompositionIndicesOfBasesElements( A );
     
-    return
-      LazyHList( [ 1 .. NumberOfObjects( q ) ],
+    return LazyHList( [ 1 .. NumberOfObjects( q ) ],
           i -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
               j -> List( dec[i][j],
                   function ( indices )
@@ -1093,8 +1040,7 @@ InstallMethod( LaTeXStringsOfBasesElements,
     
     indices := DecompositionIndicesOfBasesElements( A );
     
-    return
-      LazyHList( [ 1 .. NumberOfObjects( q ) ],
+    return  LazyHList( [ 1 .. NumberOfObjects( q ) ],
           i -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
               j -> List( indices[i][j],
                   function ( indices )
@@ -1140,6 +1086,7 @@ InstallMethod( PowerOfArrowIdealOp,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( IsAdmissibleAlgebroid,
           [ IsAlgebroidFromDataTables ],
@@ -1157,8 +1104,7 @@ InstallMethod( IsAdmissibleAlgebroid,
         
     fi;
     
-    dim :=
-      AsZFunction(
+    dim := AsZFunction(
         function ( i )
           local C, objs;
           
@@ -1176,7 +1122,17 @@ InstallMethod( IsAdmissibleAlgebroid,
         return false;
     fi;
     
-    repeat i := i + 1; until dim[i] = dim[i-1];
+    while true do
+      
+      i := i + 1;
+      
+      if dim[i] = dim[i-1] then
+        
+        break;
+
+      fi;
+      
+    od;
     
     bool := dim[i] = Dimension( A );
     
@@ -1185,6 +1141,7 @@ InstallMethod( IsAdmissibleAlgebroid,
     return bool;
     
 end );
+# =#
 
 ##
 InstallOtherMethod( CapFunctor,
@@ -1208,7 +1165,7 @@ InstallOtherMethod( CapFunctor,
         
         return SumOfMorphisms( C,
                   F_s,
-                  List( DecompositionIndicesOfMorphismInAlgebroid( mor ), p -> p[1] * PreComposeList( C, F_s, ListOfValues( imgs_of_gmors ){p[2]}, F_t ) ),
+                  List( DecompositionIndicesOfMorphismInAlgebroid( mor ), p -> p[1] * PreComposeList( C, F_s, ListOfValues( imgs_of_gmors ){ p[2] }, F_t ) ),
                   F_t );
         
     end );
@@ -1230,13 +1187,12 @@ InstallOtherMethod( OppositeAlgebroid,
   function ( A )
     local data_tables, A_op;
     
-    data_tables :=
-      NTuple( 5,
-        CategoryDatum( A )[1],
-        OppositeQuiver( UnderlyingQuiver( A ) ),
-        TransposedMat( List( CategoryDatum( A )[3], s -> List( s, hom_st -> List( hom_st, indices -> Reversed( indices ) ) ) ) ),
-        CategoryDatum( A )[5],
-        CategoryDatum( A )[4] );
+    data_tables := NTuple( 5,
+                    CategoryDatum( A )[1],
+                    OppositeQuiver( UnderlyingQuiver( A ) ),
+                    TransposedMat( List( CategoryDatum( A )[3], s -> List( s, hom_st -> List( hom_st, indices -> Reversed( indices ) ) ) ) ),
+                    CategoryDatum( A )[5],
+                    CategoryDatum( A )[4] );
     
     A_op := AlgebroidFromDataTables( data_tables : colors := A!.colors, range_of_HomStructure := RangeCategoryOfHomomorphismStructure( A ) );
     
@@ -1272,10 +1228,8 @@ InstallMethodWithCache( TensorProductOfAlgebroids,
     q1 := UnderlyingQuiver( A_1 );
     q2 := UnderlyingQuiver( A_2 );
     
-    data_tables :=
-      NTuple( 5,
+    data_tables := NTuple( 5,
         ring,
-        
         ## quiver
         TensorProductOfFinQuivers( q1, q2 ),
         
@@ -1298,8 +1252,7 @@ InstallMethodWithCache( TensorProductOfAlgebroids,
               indices_hom_st := DecompositionIndicesOfBasesElements( A_1 )[s][t];
               indices_hom_uv := DecompositionIndicesOfBasesElements( A_2 )[u][v];
               
-              return
-                Concatenation(
+              return Concatenation(
                     List( indices_hom_st,
                       indices_l -> List( indices_hom_uv,
                         indices_r -> Concatenation(
@@ -1360,8 +1313,7 @@ InstallMethodWithCache( TensorProductOfAlgebroids,
                                                 IdentityMat( HomomorphismStructureOnObjectsRanks( A_2 )[q][p], ring ),
                                                 HomomorphismStructureOnObjectsRanks( A_2 )[q][p] ) ) ) ) ] ) ) ) ) );
     
-    labels_of_bases_elements :=
-        LazyHList( [ 1 .. NumberOfObjects( q1 ) * NumberOfObjects( q2 ) ],
+    labels_of_bases_elements := LazyHList( [ 1 .. NumberOfObjects( q1 ) * NumberOfObjects( q2 ) ],
           s_u -> LazyHList( [ 1 .. NumberOfObjects( q1 ) * NumberOfObjects( q2 ) ],
             function( t_v )
               local s, u, t, v;
@@ -1371,8 +1323,7 @@ InstallMethodWithCache( TensorProductOfAlgebroids,
               t := 1 + QuoInt( t_v - 1, NumberOfObjects( q2 ) );
               v := 1 + RemInt( t_v - 1, NumberOfObjects( q2 ) );
               
-              return
-                Concatenation(
+              return Concatenation(
                     List( LabelsOfBasesElements( A_1 )[s][t],
                       label_l -> List( LabelsOfBasesElements( A_2 )[u][v],
                         label_r -> Concatenation( label_l, "⊗", label_r ) ) ) );
@@ -1391,7 +1342,11 @@ end );
 InstallMethod( \*,
           [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTables ],
   
-  { A_1, A_2 } -> TensorProductOfAlgebroids( A_1, A_2 : eager := false )
+  { A_1, A_2 } -> TensorProductOfAlgebroids( A_1, A_2 :
+                      #= comment for Julia
+                      eager := false
+                      # =#
+                      )
 );
 
 ##
@@ -1429,14 +1384,14 @@ end );
 InstallOtherMethod( ElementaryTensor,
         [ IsObjectInAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables ],
   
-  { obj_1, obj_2 } -> ElementaryTensor( obj_1, obj_2, TensorProductOfAlgebroids( CapCategory( obj_1 ), CapCategory( obj_2 ) ) )
+  { obj_1, obj_2 } -> CallFuncListAtRuntime( ElementaryTensor, [ obj_1, obj_2, TensorProductOfAlgebroids( CapCategory( obj_1 ), CapCategory( obj_2 ) ) ] )
 );
 
 ##
 InstallOtherMethod( ElementaryTensor,
         [ IsMorphismInAlgebroidFromDataTables, IsMorphismInAlgebroidFromDataTables ],
   
-  { mor_1, mor_2 } -> ElementaryTensor( mor_1, mor_2, TensorProductOfAlgebroids( CapCategory( mor_1 ), CapCategory( mor_2 ) ) )
+  { mor_1, mor_2 } -> CallFuncListAtRuntime( ElementaryTensor,  [ mor_1, mor_2, TensorProductOfAlgebroids( CapCategory( mor_1 ), CapCategory( mor_2 ) ) ] )
 );
 
 ##
@@ -1470,8 +1425,11 @@ InstallMethod( ViewString,
           [ IsObjectInAlgebroidFromDataTables ],
   
   function ( obj )
+    local A;
     
-    return Concatenation( "<", ViewString( SetOfObjects( UnderlyingQuiver( CapCategory( obj ) ) )[ObjectIndex( obj )] ), ">" );
+    A := CapCategory( obj );
+    
+    return Concatenation( "<(", A!.colors.obj, LabelsOfObjects( UnderlyingQuiver( A ) )[ObjectIndex( obj )], A!.colors.reset, ")>");
     
 end );
 
@@ -1523,8 +1481,7 @@ InstallMethod( ViewString,
         datum_string := ReplacedString( datum_string, Concatenation( "+ ", colors.coeff, "-" ), Concatenation( "- ", colors.coeff ) );
     fi;
     
-    return
-      Concatenation(
+    return Concatenation(
           "<",
           datum_string,
           colors.other,

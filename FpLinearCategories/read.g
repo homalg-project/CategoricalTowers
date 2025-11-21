@@ -12,5 +12,6 @@ ReadPackage( "FpLinearCategories", "gap/QuotientsOfAlgebroidsFromDataTables.gi" 
 
 ReadPackage( "FpLinearCategories", "gap/precompiled_categories/AdditiveClosureOfAlgebroidFromDataTablesPrecompiled.gi" );
 ReadPackage( "FpLinearCategories", "gap/AlgebroidFromDataTables.gi");
+ReadPackage( "FpLinearCategories", "gap/DataTablesOfLinearCategories.gi" );
 
 ReadPackage( "FpLinearCategories", "gap/Tools.gi");

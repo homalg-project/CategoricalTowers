@@ -18,20 +18,13 @@ DeclareCategory( "IsAlgebroidFromDataTables",
         IsCapCategory );
 
 #! @Description
-#!  The &GAP; category of cells in an algebroid from data tables.
-DeclareCategory( "IsCellInAlgebroidFromDataTables",
-        IsCapCategoryCell );
-
-#! @Description
 #!  The &GAP; category of algebroids from data tables.
 DeclareCategory( "IsObjectInAlgebroidFromDataTables",
-        IsCellInAlgebroidFromDataTables and
         IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in an algebroid from data tables.
 DeclareCategory( "IsMorphismInAlgebroidFromDataTables",
-        IsCellInAlgebroidFromDataTables and
         IsCapCategoryMorphism );
 
 ####################################
@@ -55,6 +48,13 @@ DeclareCategory( "IsMorphismInAlgebroidFromDataTables",
 #! @Returns a &CAP; category
 DeclareOperation( "AlgebroidFromDataTables", [ IsDenseList ] );
 #! @InsertChunk AlgebroidFromDataTables
+
+#! @Description
+#!  Returns the 5-tuple data tables of a linear category.
+#! The output can be passed to the constructor <C>AlgebroidFromDataTables</C>.
+#! @Arguments A
+#! @Returns a list
+DeclareAttribute( "DataTablesOfLinearCategory", IsCapCategory );
 
 ####################################
 #
@@ -292,12 +292,14 @@ DeclareAttribute( "OppositeAlgebroid",
 DeclareOperation( "TensorProductOfAlgebroids",
             [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTables ] );
 
+#= comment for Julia
 #! @Description
 #!  Delegates to <C>TensorProductOfAlgebroids</C>(<A>A</A>,<A>B</A>).
 #! @Arguments A, B
 #! @Returns a &CAP; category
 DeclareOperation( "\*",
             [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTables ] );
+# =#
 
 #! @Description
 #!  The arguments are two objects <A>a</A>, <A>b</A> and a tensor product algebroid <A>T</A>$=A\otimes B$ where <A>a</A> and <A>b</A> belong to $A$ resp. $B$.

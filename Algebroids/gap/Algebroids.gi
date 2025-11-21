@@ -2393,7 +2393,7 @@ InstallMethod( CellAsEvaluatableString,
 ## DataTables of Algebroids
 
 ##
-InstallMethod( DataTablesOfCategory,
+InstallMethod( DataTablesOfLinearCategory,
           [ IsAlgebroid ],
   
   function ( B )
