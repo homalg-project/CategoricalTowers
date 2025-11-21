@@ -101,7 +101,7 @@ false
 Q-algebroid( {3}[e:3→3] ) defined by 1 object and 1 generating morphism
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BasisOfExternalHom( D.3, D.3 );</span>
 [ &lt;1*id(3):(3) → (3)&gt;, &lt;1*e:(3) → (3)&gt;, &lt;1*e^2:(3) → (3)&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables := DataTablesOfCategory( quo_kC );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables := DataTablesOfLinearCategory( quo_kC );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables_Z := ShallowCopy( data_tables );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables_Z[1] := HomalgRingOfIntegers();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AlgebroidFromDataTables( data_tables_Z );</span>

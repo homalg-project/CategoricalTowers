@@ -81,7 +81,7 @@
     [4X[28XQ-algebroid( {3}[e:3→3] ) defined by 1 object and 1 generating morphism[128X[104X
     [4X[25Xgap>[125X [27XBasisOfExternalHom( D.3, D.3 );[127X[104X
     [4X[28X[ <1*id(3):(3) → (3)>, <1*e:(3) → (3)>, <1*e^2:(3) → (3)> ][128X[104X
-    [4X[25Xgap>[125X [27Xdata_tables := DataTablesOfCategory( quo_kC );;[127X[104X
+    [4X[25Xgap>[125X [27Xdata_tables := DataTablesOfLinearCategory( quo_kC );;[127X[104X
     [4X[25Xgap>[125X [27Xdata_tables_Z := ShallowCopy( data_tables );;[127X[104X
     [4X[25Xgap>[125X [27Xdata_tables_Z[1] := HomalgRingOfIntegers();;[127X[104X
     [4X[25Xgap>[125X [27XB := AlgebroidFromDataTables( data_tables_Z );[127X[104X
