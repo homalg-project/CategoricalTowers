@@ -5,10 +5,10 @@
   [1X17.1 [33X[0;0YPrecompiling the category of finite quivers[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2024.07-09", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2025.11-01", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -48,10 +48,10 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2024.07-09", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2025.11-01", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -94,10 +94,10 @@
   [1X17.2 [33X[0;0YPrecompiling the category of finite reflexive quivers[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2024.07-09", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2025.11-01", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -141,10 +141,10 @@
   [1Xwith values in a category of rows[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2022.09-20", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2025.11-01", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "AdditiveClosuresForCAP", "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory_CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -204,10 +204,10 @@
   [1Xcategory of rows[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2023.12-20", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2025.11-01", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "AdditiveClosuresForCAP", "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory_CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -275,10 +275,10 @@
   [1X17.5 [33X[0;0YPrecompiling the category of presheaves with values in SkeletalFinSets[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2024.07-09", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2025.11-01", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -321,10 +321,10 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2024.07-09", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2025.11-01", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
