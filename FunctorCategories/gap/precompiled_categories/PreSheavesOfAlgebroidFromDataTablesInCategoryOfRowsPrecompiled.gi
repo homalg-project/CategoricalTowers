@@ -118,7 +118,7 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_21_1 := List( [ 1 .. Length( deduped_35_1 ) ], function ( i_2 )
             local hoisted_1_2, deduped_2_2;
             deduped_2_2 := deduped_11_1[i_2];
-            hoisted_1_2 := deduped_26_1 * UnionOfRows( deduped_37_1, deduped_2_2, [ HomalgZeroMatrix( Sum( deduped_11_1{[ 1 .. (i_2 - 1) ]} ), deduped_2_2, deduped_37_1 ), HomalgIdentityMatrix( deduped_2_2, deduped_37_1 ), HomalgZeroMatrix( Sum( deduped_11_1{[ (i_2 + 1) .. deduped_30_1 ]} ), deduped_2_2, deduped_37_1 ) ] );
+            hoisted_1_2 := deduped_26_1 * UnionOfRows( deduped_37_1, deduped_2_2, [ HomalgZeroMatrix( Sum( deduped_11_1{[ 1 .. i_2 - 1 ]} ), deduped_2_2, deduped_37_1 ), HomalgIdentityMatrix( deduped_2_2, deduped_37_1 ), HomalgZeroMatrix( Sum( deduped_11_1{[ i_2 + 1 .. deduped_30_1 ]} ), deduped_2_2, deduped_37_1 ) ] );
             return List( deduped_24_1, function ( i_3 )
                     return ConvertRowToMatrix( CertainRows( hoisted_16_1, [ i_3 ] ), 1, deduped_25_1 ) * hoisted_1_2;
                 end );
@@ -291,7 +291,7 @@ function ( cat_1, arg2_1 )
             end ), LazyHList( [ 1 .. deduped_6_1[2] ], function ( m_2 )
                 local morphism_attr_1_2, deduped_2_2;
                 deduped_2_2 := hoisted_3_1[m_2];
-                morphism_attr_1_2 := UniqueLeftDivide( deduped_4_1[1 + deduped_2_2[2]], hoisted_5_1[m_2] * deduped_4_1[(1 + deduped_2_2[1])] );
+                morphism_attr_1_2 := UniqueLeftDivide( deduped_4_1[1 + deduped_2_2[2]], hoisted_5_1[m_2] * deduped_4_1[1 + deduped_2_2[1]] );
                 return CreateCapCategoryMorphismWithAttributes( deduped_8_1, CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberRows( morphism_attr_1_2 ) ), CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberColumns( morphism_attr_1_2 ) ), UnderlyingMatrix, morphism_attr_1_2 );
             end ) ) );
 end
@@ -426,7 +426,7 @@ function ( cat_1, alpha_1 )
             end ), LazyHList( [ 1 .. deduped_7_1[2] ], function ( m_2 )
                 local morphism_attr_1_2, deduped_2_2;
                 deduped_2_2 := hoisted_4_1[m_2];
-                morphism_attr_1_2 := UniqueLeftDivide( deduped_5_1[1 + deduped_2_2[2]], hoisted_6_1[m_2] * deduped_5_1[(1 + deduped_2_2[1])] );
+                morphism_attr_1_2 := UniqueLeftDivide( deduped_5_1[1 + deduped_2_2[2]], hoisted_6_1[m_2] * deduped_5_1[1 + deduped_2_2[1]] );
                 return CreateCapCategoryMorphismWithAttributes( deduped_9_1, CreateCapCategoryObjectWithAttributes( deduped_9_1, RankOfObject, NumberRows( morphism_attr_1_2 ) ), CreateCapCategoryObjectWithAttributes( deduped_9_1, RankOfObject, NumberColumns( morphism_attr_1_2 ) ), UnderlyingMatrix, morphism_attr_1_2 );
             end ) ) );
 end
@@ -821,15 +821,15 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                     deduped_1_2 := deduped_32_1[i_2];
                     return UnionOfColumns( deduped_38_1, deduped_5_2 * deduped_6_2, List( deduped_25_1, function ( j_3 )
                               local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3;
-                              deduped_4_3 := (deduped_1_2 = deduped_7_1[j_3]);
-                              deduped_3_3 := (deduped_1_2 = deduped_6_1[j_3]);
+                              deduped_4_3 := deduped_1_2 = deduped_7_1[j_3];
+                              deduped_3_3 := deduped_1_2 = deduped_6_1[j_3];
                               deduped_2_3 := KroneckerMat( hoisted_8_1[j_3], hoisted_2_2 );
-                              deduped_1_3 := (- KroneckerMat( hoisted_3_2, hoisted_10_1[j_3] ));
-                              if (deduped_3_3 and deduped_4_3) then
-                                  return (deduped_2_3 + deduped_1_3);
-                              elif (not deduped_3_3 and deduped_4_3) then
+                              deduped_1_3 := - KroneckerMat( hoisted_3_2, hoisted_10_1[j_3] );
+                              if deduped_3_3 and deduped_4_3 then
+                                  return deduped_2_3 + deduped_1_3;
+                              elif not deduped_3_3 and deduped_4_3 then
                                   return deduped_1_3;
-                              elif (deduped_3_3 and not deduped_4_3) then
+                              elif deduped_3_3 and not deduped_4_3 then
                                   return deduped_2_3;
                               else
                                   return HomalgZeroMatrix( hoisted_4_2, deduped_23_1[j_3], deduped_38_1 );
@@ -1040,15 +1040,15 @@ function ( cat_1, arg2_1, arg3_1 )
                     deduped_1_2 := deduped_18_1[i_2];
                     return UnionOfColumns( deduped_23_1, deduped_5_2 * deduped_6_2, List( deduped_17_1, function ( j_3 )
                               local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3;
-                              deduped_4_3 := (deduped_1_2 = hoisted_7_1[j_3]);
-                              deduped_3_3 := (deduped_1_2 = hoisted_6_1[j_3]);
+                              deduped_4_3 := deduped_1_2 = hoisted_7_1[j_3];
+                              deduped_3_3 := deduped_1_2 = hoisted_6_1[j_3];
                               deduped_2_3 := KroneckerMat( hoisted_8_1[j_3], hoisted_2_2 );
-                              deduped_1_3 := (- KroneckerMat( hoisted_3_2, hoisted_10_1[j_3] ));
-                              if (deduped_3_3 and deduped_4_3) then
-                                  return (deduped_2_3 + deduped_1_3);
-                              elif (not deduped_3_3 and deduped_4_3) then
+                              deduped_1_3 := - KroneckerMat( hoisted_3_2, hoisted_10_1[j_3] );
+                              if deduped_3_3 and deduped_4_3 then
+                                  return deduped_2_3 + deduped_1_3;
+                              elif not deduped_3_3 and deduped_4_3 then
                                   return deduped_1_3;
-                              elif (deduped_3_3 and not deduped_4_3) then
+                              elif deduped_3_3 and not deduped_4_3 then
                                   return deduped_2_3;
                               else
                                   return HomalgZeroMatrix( hoisted_4_2, deduped_15_1[j_3], deduped_23_1 );
@@ -1125,7 +1125,7 @@ function ( cat_1, arg2_1 )
             end ), LazyHList( [ 1 .. deduped_6_1[2] ], function ( m_2 )
                 local morphism_attr_1_2, deduped_2_2;
                 deduped_2_2 := hoisted_3_1[m_2];
-                morphism_attr_1_2 := UniqueRightDivide( deduped_4_1[(1 + deduped_2_2[2])] * hoisted_5_1[m_2], deduped_4_1[1 + deduped_2_2[1]] );
+                morphism_attr_1_2 := UniqueRightDivide( deduped_4_1[1 + deduped_2_2[2]] * hoisted_5_1[m_2], deduped_4_1[1 + deduped_2_2[1]] );
                 return CreateCapCategoryMorphismWithAttributes( deduped_8_1, CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberRows( morphism_attr_1_2 ) ), CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberColumns( morphism_attr_1_2 ) ), UnderlyingMatrix, morphism_attr_1_2 );
             end ) ) );
 end
@@ -1404,17 +1404,17 @@ function ( cat_1, source_1, range_1, alpha_1 )
                   hoisted_3_2 := TransposedMatrix( HomalgIdentityMatrix( deduped_5_2, deduped_33_1 ) );
                   hoisted_2_2 := HomalgIdentityMatrix( deduped_6_2, deduped_33_1 );
                   deduped_1_2 := deduped_24_1[i_2];
-                  return UnionOfColumns( deduped_33_1, (deduped_5_2 * deduped_6_2), List( deduped_22_1, function ( j_3 )
+                  return UnionOfColumns( deduped_33_1, deduped_5_2 * deduped_6_2, List( deduped_22_1, function ( j_3 )
                             local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3;
-                            deduped_4_3 := (deduped_1_2 = hoisted_9_1[j_3]);
-                            deduped_3_3 := (deduped_1_2 = hoisted_8_1[j_3]);
+                            deduped_4_3 := deduped_1_2 = hoisted_9_1[j_3];
+                            deduped_3_3 := deduped_1_2 = hoisted_8_1[j_3];
                             deduped_2_3 := KroneckerMat( hoisted_10_1[j_3], hoisted_2_2 );
-                            deduped_1_3 := (- KroneckerMat( hoisted_3_2, hoisted_12_1[j_3] ));
-                            if (deduped_3_3 and deduped_4_3) then
-                                return (deduped_2_3 + deduped_1_3);
-                            elif (not deduped_3_3 and deduped_4_3) then
+                            deduped_1_3 := - KroneckerMat( hoisted_3_2, hoisted_12_1[j_3] );
+                            if deduped_3_3 and deduped_4_3 then
+                                return deduped_2_3 + deduped_1_3;
+                            elif not deduped_3_3 and deduped_4_3 then
                                 return deduped_1_3;
-                            elif (deduped_3_3 and not deduped_4_3) then
+                            elif deduped_3_3 and not deduped_4_3 then
                                 return deduped_2_3;
                             else
                                 return HomalgZeroMatrix( hoisted_4_2, deduped_20_1[j_3], deduped_33_1 );
@@ -1425,7 +1425,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     hoisted_18_1 := List( deduped_21_1, function ( i_2 )
             local deduped_1_2;
             deduped_1_2 := deduped_13_1[i_2];
-            return hoisted_17_1 * UnionOfRows( deduped_33_1, deduped_1_2, [ HomalgZeroMatrix( Sum( deduped_13_1{[ 1 .. (i_2 - 1) ]} ), deduped_1_2, deduped_33_1 ), HomalgIdentityMatrix( deduped_1_2, deduped_33_1 ), HomalgZeroMatrix( Sum( deduped_13_1{[ (i_2 + 1) .. deduped_23_1 ]} ), deduped_1_2, deduped_33_1 ) ] );
+            return hoisted_17_1 * UnionOfRows( deduped_33_1, deduped_1_2, [ HomalgZeroMatrix( Sum( deduped_13_1{[ 1 .. i_2 - 1 ]} ), deduped_1_2, deduped_33_1 ), HomalgIdentityMatrix( deduped_1_2, deduped_33_1 ), HomalgZeroMatrix( Sum( deduped_13_1{[ i_2 + 1 .. deduped_23_1 ]} ), deduped_1_2, deduped_33_1 ) ] );
         end );
     return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, ValuesOnAllObjects, LazyHList( deduped_21_1, function ( i_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_19_1, deduped_25_1[i_2], deduped_26_1[i_2], UnderlyingMatrix, ConvertRowToMatrix( hoisted_18_1[i_2], deduped_5_1[i_2], deduped_6_1[i_2] ) );
@@ -1542,7 +1542,7 @@ function ( cat_1, alpha_1 )
               deduped_3_2 := hoisted_1_1( m_2 );
               deduped_2_2 := alpha_1( Target( m_2 ) );
               deduped_1_2 := alpha_1( Source( m_2 ) );
-              return (RankOfObject( Target( deduped_3_2 ) ) = RankOfObject( Source( deduped_1_2 ) ) and RankOfObject( Target( deduped_2_2 ) ) = RankOfObject( Source( deduped_4_2 ) ) and UnderlyingMatrix( deduped_3_2 ) * UnderlyingMatrix( deduped_1_2 ) = UnderlyingMatrix( deduped_2_2 ) * UnderlyingMatrix( deduped_4_2 ));
+              return RankOfObject( Target( deduped_3_2 ) ) = RankOfObject( Source( deduped_1_2 ) ) and RankOfObject( Target( deduped_2_2 ) ) = RankOfObject( Source( deduped_4_2 ) ) and UnderlyingMatrix( deduped_3_2 ) * UnderlyingMatrix( deduped_1_2 ) = UnderlyingMatrix( deduped_2_2 ) * UnderlyingMatrix( deduped_4_2 );
           end );
 end
 ########
@@ -1668,7 +1668,7 @@ function ( cat_1, alpha_1 )
             end ), LazyHList( [ 1 .. deduped_7_1[2] ], function ( m_2 )
                 local morphism_attr_1_2, deduped_2_2;
                 deduped_2_2 := hoisted_4_1[m_2];
-                morphism_attr_1_2 := UniqueRightDivide( deduped_5_1[(1 + deduped_2_2[2])] * hoisted_6_1[m_2], deduped_5_1[1 + deduped_2_2[1]] );
+                morphism_attr_1_2 := UniqueRightDivide( deduped_5_1[1 + deduped_2_2[2]] * hoisted_6_1[m_2], deduped_5_1[1 + deduped_2_2[1]] );
                 return CreateCapCategoryMorphismWithAttributes( deduped_9_1, CreateCapCategoryObjectWithAttributes( deduped_9_1, RankOfObject, NumberRows( morphism_attr_1_2 ) ), CreateCapCategoryObjectWithAttributes( deduped_9_1, RankOfObject, NumberColumns( morphism_attr_1_2 ) ), UnderlyingMatrix, morphism_attr_1_2 );
             end ) ) );
 end
