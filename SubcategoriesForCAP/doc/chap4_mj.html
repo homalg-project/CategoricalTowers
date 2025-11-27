@@ -638,10 +638,11 @@ A morphism in the slice category given by the above data
 
 
 <div class="example"><pre>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true and String({}-&gt;1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2025.11-01", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "AdditiveClosuresForCAP", "&gt;= 2025.07-02" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "AdditiveClosuresForCAP", "&gt;= 2025.07-02", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZZ := HomalgRingOfIntegers( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># HomalgIdentityMatrix( size, ring ) * matrix -&gt; matrix</span>
@@ -681,7 +682,6 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_morphism := 6,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_morphism := 4</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
-#@fi
 </pre></div>
 
 
