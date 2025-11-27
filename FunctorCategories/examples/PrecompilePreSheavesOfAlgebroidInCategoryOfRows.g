@@ -4,12 +4,12 @@
 
 #! @Example
 
-#! #@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"
+#! #@if ValueOption( "no_precompiled_code" ) <> true
 
 LoadPackage( "FunctorCategories", false );
 #! true
 
-LoadPackage( "CompilerForCAP", ">= 2023.12-20", false );
+LoadPackage( "CompilerForCAP", ">= 2025.11-01", false );
 #! true
 
 ReadPackageOnce( "AdditiveClosuresForCAP", "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory_CompilerLogic.gi" );

@@ -832,7 +832,7 @@ function ( cat_1, alpha_1 )
     if not (IsList( deduped_16_1 ) and Length( deduped_16_1 ) = deduped_12_1) then
         return false;
     elif not ForAll( deduped_11_1, function ( i_2 )
-                 return (hoisted_1_1[i_2] and hoisted_2_1[i_2] = deduped_13_1);
+                 return hoisted_1_1[i_2] and hoisted_2_1[i_2] = deduped_13_1;
              end ) then
         return false;
     elif not ForAll( deduped_11_1, function ( i_2 )
@@ -845,7 +845,7 @@ function ( cat_1, alpha_1 )
                          local deduped_1_3, deduped_2_3;
                          deduped_2_3 := hoisted_3_2[j_3];
                          deduped_1_3 := hoisted_2_2[j_3];
-                         return (hoisted_1_2[j_3] = hoisted_6_1[deduped_1_3][deduped_2_3] and deduped_1_3 = hoisted_4_2 and deduped_2_3 = hoisted_9_1[j_3]);
+                         return hoisted_1_2[j_3] = hoisted_6_1[deduped_1_3][deduped_2_3] and deduped_1_3 = hoisted_4_2 and deduped_2_3 = hoisted_9_1[j_3];
                      end );
              end ) then
         return false;
@@ -894,7 +894,7 @@ function ( cat_1, alpha_1 )
     if not (IsList( deduped_16_1 ) and Length( deduped_16_1 ) = deduped_12_1) then
         return false;
     elif not ForAll( deduped_11_1, function ( i_2 )
-                 return (hoisted_1_1[i_2] and hoisted_2_1[i_2] = deduped_13_1);
+                 return hoisted_1_1[i_2] and hoisted_2_1[i_2] = deduped_13_1;
              end ) then
         return false;
     elif not ForAll( deduped_11_1, function ( i_2 )
@@ -907,7 +907,7 @@ function ( cat_1, alpha_1 )
                          local deduped_1_3, deduped_2_3;
                          deduped_2_3 := hoisted_3_2[j_3];
                          deduped_1_3 := hoisted_2_2[j_3];
-                         return (hoisted_1_2[j_3] = hoisted_6_1[deduped_1_3][deduped_2_3] and deduped_1_3 = hoisted_4_2 and deduped_2_3 = hoisted_9_1[j_3]);
+                         return hoisted_1_2[j_3] = hoisted_6_1[deduped_1_3][deduped_2_3] and deduped_1_3 = hoisted_4_2 and deduped_2_3 = hoisted_9_1[j_3];
                      end );
              end ) then
         return false;

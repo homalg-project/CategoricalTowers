@@ -4,12 +4,12 @@
 
 #! @Example
 
-#! #@if ValueOption( "no_precompiled_code" ) <> true and String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"
+#! #@if ValueOption( "no_precompiled_code" ) <> true
 
 LoadPackage( "FiniteCocompletions", false );
 #! true
 
-LoadPackage( "CompilerForCAP", ">= 2024.07-09", false );
+LoadPackage( "CompilerForCAP", ">= 2025.11-01", false );
 #! true
 
 ReadPackageOnce( "FiniteCocompletions", "gap/CompilerLogic.gi" );

@@ -1,4 +1,4 @@
-LoadPackage( "CompilerForCAP", false );
+LoadPackage( "CompilerForCAP", ">= 2025.11-01", false );
 LoadPackage( "Algebroids", false );
 
 orig_CAP_JIT_LOGIC_TEMPLATES := ShallowCopy( CAP_JIT_LOGIC_TEMPLATES );
