@@ -1,5 +1,5 @@
-LoadPackage( "Toposes" );
-LoadPackage( "CompilerForCAP" );
+LoadPackage( "Toposes", false );
+LoadPackage( "CompilerForCAP", ">= 2025.11-01", false );
 
 has_pushout_complement := function( cat, f, x )
     local Rel, xx, x_i, A, Omega_A, ff, f_i, Omega_X, x_i_Omega_A, rpc, Omega_D, PC1, PC2;
