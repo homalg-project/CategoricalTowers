@@ -7,6 +7,14 @@
 InstallTrueMethod( IsFiniteBicompleteCategory, IsElementaryTopos );
 InstallTrueMethod( IsBicartesianClosedCategory, IsElementaryTopos );
 
+#= comment for Julia
+CATEGORIES_LOGIC_FILES!.Propositions.IsElementaryTopos :=
+  [ Filename( DirectoriesPackageLibrary( "Toposes", "LogicForToposes" ), "PropositionsForToposes.tex" ) ];
+
+CATEGORIES_LOGIC_FILES!.Predicates.IsElementaryTopos :=
+  [  ];
+# =#
+
 ## MacLane-Moerdijk, Proof of Thm IV.7.1, page 192, diagram (5)
 InstallOtherMethodForCompilerForCAP( IntersectWithPreimagesWithGivenObjects,
         "for a category, two objects, and a morphism",
