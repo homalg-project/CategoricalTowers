@@ -102,7 +102,7 @@ IsProjective( Omega2 );
 IsReflexive( Omega2 );
 #! false
 true2 := TruthMorphismOfTrue( PShM2 );
-#! <A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
+#! <A monomorphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #!  / [ a*a*a = a*a ], SkeletalFinSets )>
 Display( true2 );
 #! Image of <(1)>:
@@ -112,7 +112,7 @@ Display( true2 );
 #! / [ a*a*a = a*a ], SkeletalFinSets )
 #! given by the above data
 false2 := TruthMorphismOfFalse( PShM2 );
-#! <A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
+#! <A monomorphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #!  / [ a*a*a = a*a ], SkeletalFinSets )>
 Display( false2 );
 #! Image of <(1)>:
