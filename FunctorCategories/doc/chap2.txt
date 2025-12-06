@@ -868,7 +868,7 @@
     [4X[25Xgap>[125X [27XIsReflexive( Omega2 );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xtrue2 := TruthMorphismOfTrue( PShM2 );[127X[104X
-    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X<A monomorphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
     [4X[28X / [ a*a*a = a*a ], SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( true2 );[127X[104X
     [4X[28XImage of <(1)>:[128X[104X
@@ -878,7 +878,7 @@
     [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xfalse2 := TruthMorphismOfFalse( PShM2 );[127X[104X
-    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X<A monomorphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
     [4X[28X / [ a*a*a = a*a ], SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( false2 );[127X[104X
     [4X[28XImage of <(1)>:[128X[104X
