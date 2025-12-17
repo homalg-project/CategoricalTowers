@@ -4,6 +4,7 @@
 # Reading the declaration part of the package.
 #
 
-ReadPackage( "FpLinearCategories", "gap/LinearClosuresOfPathCategoriesAndTheirQuotients.gd");
+ReadPackage( "FpLinearCategories", "gap/LinearClosuresOfPathCategoriesAndTheirQuotients.gd" );
+ReadPackage( "FpLinearCategories", "gap/GroebnerBasesForLinearClosuresOfPathCategories.gd" );
 
-ReadPackage( "FpLinearCategories", "gap/AlgebroidFromDataTables.gd");
+ReadPackage( "FpLinearCategories", "gap/AlgebroidFromDataTables.gd" );
