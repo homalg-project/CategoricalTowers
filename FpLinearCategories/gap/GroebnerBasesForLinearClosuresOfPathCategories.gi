@@ -5,7 +5,7 @@
 #
 
 ##
-InstallOtherMethod( ReductionOfMorphism,
+InstallMethod( ReductionOfMorphism,
           [ IsLinearClosure, IsLinearClosureMorphism, IsDenseList ],
   
   function ( kC, f, G )
