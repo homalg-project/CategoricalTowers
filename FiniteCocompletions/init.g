@@ -5,40 +5,40 @@
 #
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/FiniteStrictCoproductCompletion.gd");
+ReadPackage( "FiniteCocompletions", "gap/FiniteStrictCoproductCompletion.gd" );
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/FiniteStrictProductCompletion.gd");
+ReadPackage( "FiniteCocompletions", "gap/FiniteStrictProductCompletion.gd" );
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/FreeDistributiveCategoryWithStrictProductAndCoproducts.gd");
+ReadPackage( "FiniteCocompletions", "gap/FreeDistributiveCategoryWithStrictProductAndCoproducts.gd" );
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/SkeletalFinSets.gd");
+ReadPackage( "FiniteCocompletions", "gap/SkeletalFinSets.gd" );
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/PairOfParallelArrowsCategory.gd");
+ReadPackage( "FiniteCocompletions", "gap/PairOfParallelArrowsCategory.gd" );
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/CoequalizerCompletion.gd");
+ReadPackage( "FiniteCocompletions", "gap/CoequalizerCompletion.gd" );
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/CategoryOfColimitQuivers.gd");
+ReadPackage( "FiniteCocompletions", "gap/CategoryOfColimitQuivers.gd" );
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/FiniteColimitCompletionWithStrictCoproducts.gd");
+ReadPackage( "FiniteCocompletions", "gap/FiniteColimitCompletionWithStrictCoproducts.gd" );
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/AdditiveClosure.gd");
+ReadPackage( "FiniteCocompletions", "gap/AdditiveClosure.gd" );
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/FreydCategory.gd");
+ReadPackage( "FiniteCocompletions", "gap/FreydCategory.gd" );
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/CoFreydCategory.gd");
+ReadPackage( "FiniteCocompletions", "gap/CoFreydCategory.gd" );
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/AbelianClosure.gd");
+ReadPackage( "FiniteCocompletions", "gap/AbelianClosure.gd" );
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/Tools.gd");
+ReadPackage( "FiniteCocompletions", "gap/Tools.gd" );
