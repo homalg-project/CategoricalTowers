@@ -10,8 +10,9 @@ InstallMethod( PathCategory,
   
   FunctionWithNamedArguments(
   [
-    [ "admissible_order", fail ],
-    [ "FinalizeCategory", false ],
+    [ "admissible_order", Immutable( "dp" ) ], ## like QPA
+    [ "skeletal", fail ],
+    [ "FinalizeCategory", true ],
     [ "range_of_HomStructure", fail ],
   ],
   function( CAP_NAMED_ARGUMENTS, q )
@@ -33,15 +34,13 @@ InstallMethod( PathCategory,
     
     C!.category_as_first_argument := true;
     
-    if CAP_NAMED_ARGUMENTS.admissible_order = fail then
-      
-      C!.admissible_order := "dp";
-      
-    else
-      
-      C!.admissible_order := CAP_NAMED_ARGUMENTS.admissible_order;
-      
+    if not CAP_NAMED_ARGUMENTS.admissible_order in [ "dp", "Dp" ] then
+        
+        Error( "only \"dp\" and \"Dp\" admissible orders are supported!\n" );
+        
     fi;
+    
+    C!.admissible_order := CAP_NAMED_ARGUMENTS.admissible_order;
     
     SetIsFinitelyPresentedCategory( C, true );
     
@@ -51,6 +50,10 @@ InstallMethod( PathCategory,
             Triple( NumberOfObjects( q ),
                     NumberOfMorphisms( q ),
                     ListN( IndicesOfSources( q ), IndicesOfTargets( q ), { s, t } -> Pair( -1 + s, -1 + t ) ) ) );
+    
+    if CAP_NAMED_ARGUMENTS.skeletal = true then
+        SetIsSkeletalCategory( C, true );
+    fi;
     
     C!.compiler_hints :=
       rec( category_attribute_names :=

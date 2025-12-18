@@ -79,6 +79,12 @@ InstallMethod( FiniteStrictCoproductCompletion,
     AddObjectConstructor( UC,
       function ( UC, pair_of_int_and_list )
         
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0,
+                IsInt( pair_of_int_and_list[1] ) and
+                pair_of_int_and_list[1] = Length( pair_of_int_and_list[2] ) and
+                ForAll( pair_of_int_and_list[2], obj -> IsCapCategoryObject( obj ) and IsIdenticalObj( UnderlyingCategory( UC ), CapCategory( obj ) ) ) );
+        
         return CreateCapCategoryObjectWithAttributes( UC,
                        PairOfIntAndList, pair_of_int_and_list );
         
