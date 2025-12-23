@@ -87,7 +87,7 @@
   [1X1.1-4 DummyCategoryInDoctrines[101X
   
   [33X[1;0Y[29X[2XDummyCategoryInDoctrines[102X( [3Xdoctrine_names[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe  argument is a nonempty list [3Xdoctrine_names[103X of strings of doctrine names
   and the output is a dummy category created using [10XDummyCategory[110X which lies in
@@ -145,7 +145,7 @@
   [1X1.2-1 CovariantHomFunctor[101X
   
   [33X[1;0Y[29X[2XCovariantHomFunctor[102X( [3Xo[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   [33X[0;0YThe  input  is  an object [3Xo[103X in a category [23XC[123X. The output is the covariant Hom
   functor      [23X\mathrm{Hom}[123X([3Xo[103X,-)      from      the      category     [23XC[123X     to
@@ -154,7 +154,7 @@
   [1X1.2-2 GlobalSectionFunctor[101X
   
   [33X[1;0Y[29X[2XGlobalSectionFunctor[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   [33X[0;0YReturns  the  global  section  functor [23X\mathrm{Hom}(1,-)[123X from the category [3XC[103X
   with terminal object [23X1[123X to [10XRangeCategoryOfHomomorphismStructure[110X( [3XC[103X ).[133X
