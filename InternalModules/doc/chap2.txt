@@ -12,7 +12,7 @@
   [33X[1;0Y[29X[2XInternalElement[102X( [3Xphi[103X, [3XM[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XInternalElement[102X( [3XM[103X, [3Xchi[103X, [3Xdegree[103X, [3Xi[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XInternalElement[102X( [3XM[103X, [3Xchi[103X, [3Xi[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X
   
   
   [1X2.2 [33X[0;0YAttributes[133X[101X
@@ -20,7 +20,7 @@
   [1X2.2-1 UnderlyingEmbedding[101X
   
   [33X[1;0Y[29X[2XUnderlyingEmbedding[102X( [3Xp[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya                [5XCAP[105X               category               morphism
+  [6XReturns:[106X  [33X[0;10Ya                CAP               category               morphism
             ([10XIsMorphismInZGradedClosureCategoryWithBounds[110X)[133X
   
   [1X2.2-2 NonZeroDegrees[101X
@@ -51,7 +51,7 @@
   [1X2.2-7 UniversalMorphismFromFreeModule[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismFromFreeModule[102X( [3Xe[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X
   
   
   [1X2.3 [33X[0;0YOperations[133X[101X

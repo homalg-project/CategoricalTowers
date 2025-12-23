@@ -60,10 +60,10 @@
   [1X9.2-1 CategoryOfLeftEModules[101X
   
   [33X[1;0Y[29X[2XCategoryOfLeftEModules[102X( [3XV[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category in the filter [10XIsCategoryOfLeftEModules[110X[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category in the filter [10XIsCategoryOfLeftEModules[110X[133X
   
   [1X9.2-2 CategoryOfRightEModules[101X
   
   [33X[1;0Y[29X[2XCategoryOfRightEModules[102X( [3XV[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category in the filter [10XIsCategoryOfRightEModules[110X[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category in the filter [10XIsCategoryOfRightEModules[110X[133X
   

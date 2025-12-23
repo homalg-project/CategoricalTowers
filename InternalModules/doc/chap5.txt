@@ -7,5 +7,5 @@
   [1X5.1-1 ExteriorOrSymmetricAlgebraMultiplication[101X
   
   [33X[1;0Y[29X[2XExteriorOrSymmetricAlgebraMultiplication[102X( [3XC[103X, [3XV[103X, [3Xi[103X, [3Xj[103X, [3Xstr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category morphism[133X
   

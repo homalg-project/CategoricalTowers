@@ -7,7 +7,7 @@
   [1X3.1-1 InternalModule[101X
   
   [33X[1;0Y[29X[2XInternalModule[102X( [3Xalpha[103X, [3XAMod[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category object in filter [10XIsInternalModule[110X[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category object in filter [10XIsInternalModule[110X[133X
   
   [1X3.1-2 FreeInternalModule[101X
   
@@ -17,7 +17,7 @@
   [1X3.1-3 InternalModuleMorphism[101X
   
   [33X[1;0Y[29X[2XInternalModuleMorphism[102X( [3XM[103X, [3Xphi[103X, [3XN[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category morphism in filter [10XIsInternalModuleMorphism[110X[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category morphism in filter [10XIsInternalModuleMorphism[110X[133X
   
   
   [1X3.2 [33X[0;0YOperations[133X[101X
@@ -34,19 +34,19 @@
   [33X[1;0Y[29X[2XUniversalMorphismFromFreeModule[102X( [3XM[103X, [3Xchi[103X, [3Xdegree[103X, [3Xi[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XUniversalMorphismFromFreeModule[102X( [3XM[103X, [3Xchi[103X, [3Xi[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XUniversalMorphismFromFreeModule[102X( [3XM[103X, [3Xdegree[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X
   
   [1X3.2-3 [][101X
   
   [33X[1;0Y[29X[2X[][102X( [3Xc[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe [3Xi[103X-th degree part of the cell (=object or morphism) [3Xc[103X.[133X
   
   [1X3.2-4 Sublist[101X
   
   [33X[1;0Y[29X[2XSublist[102X( [3Xc[103X, [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe [3XL[103X-th sublist of the cell (=object or morphism) [3Xc[103X.[133X
   
