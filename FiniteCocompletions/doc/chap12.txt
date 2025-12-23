@@ -17,7 +17,7 @@
   [1X12.2-1 AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[101X
   
   [33X[1;0Y[29X[2XAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YConstruct  the  free  distributive closure category with strict products and
   coproducts of a category [3XC[103X.[133X
@@ -342,7 +342,7 @@
   [1X12.2-2 EmbeddingOfUnderlyingCategory[101X
   
   [33X[1;0Y[29X[2XEmbeddingOfUnderlyingCategory[102X( [3XUC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   [33X[0;0YThe  full  embedding  functor  from  the  category  [23XC[123X  underlying  the  free
   distributive  closure  category  [3XDC[103X with strict products and coproducts into
@@ -351,7 +351,7 @@
   [1X12.2-3 ExtendFunctorToAbelianClosure[101X
   
   [33X[1;0Y[29X[2XExtendFunctorToAbelianClosure[102X( [3XDC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   [33X[0;0YThe  full  embedding  functor  from  the  category  [23XC[123X  underlying  the  free
   distributive  closure  category  [3XDC[103X with strict products and coproducts into

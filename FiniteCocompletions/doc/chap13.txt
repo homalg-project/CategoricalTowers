@@ -7,7 +7,7 @@
   [1X13.1-1 TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure[101X
   
   [33X[1;0Y[29X[2XTensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure[102X( [3XobjC[103X, [3XobjH[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP object[133X
   
   [33X[0;0YThe  arguments are an ojbect [3XobjC[103X in a category [23XC[123X and an object [3XobjH[103X in [23XH :=[123X
   [10XRangeCategoryOfHomomorphismStructure[110X(  [23XC[123X  ).  The  output  is  an  object in
@@ -18,7 +18,7 @@
   [1X13.1-2 TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure[101X
   
   [33X[1;0Y[29X[2XTensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure[102X( [3XobjC[103X, [3XmorH[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X
   
   [33X[0;0YThe  arguments are an ojbect [3XobjC[103X in a cocartesian category [23XC[123X and a morphism
   [3XmorH[103X  in  [23XH  :=[123X  [10XRangeCategoryOfHomomorphismStructure[110X(  [23XC[123X ). The output is a
@@ -31,7 +31,7 @@
   [1X13.1-3 TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure[101X
   
   [33X[1;0Y[29X[2XTensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure[102X( [3XmorC[103X, [3XobjH[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X
   
   [33X[0;0YThe  arguments are a morphism [3XmorC[103X in a cocartesian category [23XC[123X and an object
   [3XobjH[103X  in  [23XH  :=[123X  [10XRangeCategoryOfHomomorphismStructure[110X(  [23XC[123X ). The output is a

@@ -7,7 +7,7 @@
   [1X9.1-1 EmbeddingOfUnderlyingCategory[101X
   
   [33X[1;0Y[29X[2XEmbeddingOfUnderlyingCategory[102X( [3XSC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   [33X[0;0YThe  full  embedding  functor from the pre-abelian category [23XC[123X underlying the
   strict additive closure category [3XSC[103X into [3XSC[103X.[133X
@@ -15,7 +15,7 @@
   [1X9.1-2 ExtendFunctorToStrictAdditiveClosure[101X
   
   [33X[1;0Y[29X[2XExtendFunctorToStrictAdditiveClosure[102X( [3XSC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   [33X[0;0YThe  full  embedding  functor from the preadditive category [23XC[123X underlying the
   strict additive closure category [3XSC[103X into [3XSC[103X.[133X
