@@ -52,7 +52,7 @@
   [1X1.3-1 UnderlyingCell[101X
   
   [33X[1;0Y[29X[2XUnderlyingCell[102X( [3Xcell[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X cell[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP cell[133X
   
   [33X[0;0YThe cell in the ambient category underlying [3Xcell[103X.[133X
   

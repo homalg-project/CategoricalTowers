@@ -80,21 +80,21 @@
   [1X3.3-2 BaseObject[101X
   
   [33X[1;0Y[29X[2XBaseObject[102X( [3XS[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP object[133X
   
   [33X[0;0YThe base object of the slice category [3XS[103X.[133X
   
   [1X3.3-3 BaseObject[101X
   
   [33X[1;0Y[29X[2XBaseObject[102X( [3Xcell[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP object[133X
   
   [33X[0;0YThe base object underlying [3Xcell[103X.[133X
   
   [1X3.3-4 UnderlyingMorphism[101X
   
   [33X[1;0Y[29X[2XUnderlyingMorphism[102X( [3Xobj[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X
   
   [33X[0;0YThe  morphism  in  the ambient category underlying the slice category object
   [3Xobj[103X.[133X
@@ -102,7 +102,7 @@
   [1X3.3-5 SourceOfUnderlyingMorphism[101X
   
   [33X[1;0Y[29X[2XSourceOfUnderlyingMorphism[102X( [3Xobj[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP object[133X
   
   [33X[0;0YThe  source  of  the  morphism  in the ambient category underlying the slice
   category object [3Xobj[103X.[133X
@@ -110,7 +110,7 @@
   [1X3.3-6 UnderlyingCell[101X
   
   [33X[1;0Y[29X[2XUnderlyingCell[102X( [3Xmor[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X mor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP mor[133X
   
   [33X[0;0YThe cell in the ambient category underlying the slice category morphism [3Xmor[103X.[133X
   
@@ -124,7 +124,7 @@
   [1X3.3-8 DualOverTensorUnit[101X
   
   [33X[1;0Y[29X[2XDualOverTensorUnit[102X( [3XJ[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X
   
   [33X[0;0YThe  argument  is an object [23XJ \colon j \rightarrow 1[123X in the slice category [3XS[103X
   over  the  tensor  unit.  The  output  is  the dual morphism [23XJ^\vee \colon 1
