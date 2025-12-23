@@ -192,7 +192,7 @@
 <h5>1.3-4 CoefficientsList</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsList</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+<p>Returns: a CAP category morphism</p>
 
 <p>The argument is a morphism <var class="Arg">alpha</var> in an algebroid <var class="Arg">A</var>. The output is the list of coefficients of <var class="Arg">alpha</var> with respect to the basis of external hom <span class="SimpleMath">\(\mathrm{Hom}_B(u,v)\)</span> where <span class="SimpleMath">\(u\)</span> and <span class="SimpleMath">\(v\)</span> are source resp. target of <var class="Arg">alpha</var>.</p>
 
@@ -201,7 +201,7 @@
 <h5>1.3-5 IndicesOfSupportMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IndicesOfSupportMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+<p>Returns: a CAP category morphism</p>
 
 <p>The argument is a morphism <var class="Arg">alpha</var> in an algebroid <var class="Arg">A</var>. The output is the indices of the non-zero entries of <code class="code">CoefficientsList</code>(<var class="Arg">alpha</var>).</p>
 
@@ -210,7 +210,7 @@
 <h5>1.3-6 CoefficientsOfSupportMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsOfSupportMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+<p>Returns: a CAP category morphism</p>
 
 <p>The argument is a morphism <var class="Arg">alpha</var> in an algebroid <var class="Arg">A</var>. The output is the list of elements in <code class="code">CoefficientsList</code>(<var class="Arg">alpha</var>) that correspond to <code class="code">IndicesOfSupportMorphisms</code>(<var class="Arg">alpha</var>).</p>
 
@@ -219,7 +219,7 @@
 <h5>1.3-7 SupportMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SupportMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+<p>Returns: a CAP category morphism</p>
 
 <p>The argument is a morphism <var class="Arg">alpha</var> from <var class="Arg">u</var> to <var class="Arg">v</var> in an algebroid <var class="Arg">A</var>. The output is the list of elements in <code class="code">BasisOfExternalHom</code>(<var class="Arg">u,v</var>) that correspond to <code class="code">IndicesOfSupportMorphisms</code>(<var class="Arg">alpha</var>).</p>
 
@@ -246,7 +246,7 @@
 <h5>1.3-10 OppositeAlgebroid</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OppositeAlgebroid</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a CAP category</p>
 
 <p>The argument is an algebroid <var class="Arg">A</var>. The ouput is the opposite algebroid <span class="SimpleMath">\(A^{\mathrm{op}}\)</span> constructed as an algebroid from data tables.</p>
 
@@ -255,7 +255,7 @@
 <h5>1.3-11 TensorProductOfAlgebroids</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductOfAlgebroids</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a CAP category</p>
 
 <p>The arguments are two algebroids <var class="Arg">A</var> and <var class="Arg">B</var>. The output is the tensor product algebroid <var class="Arg">A</var><span class="SimpleMath">\(\otimes\)</span><var class="Arg">B</var>.</p>
 
@@ -264,7 +264,7 @@
 <h5><code>1.3-12 \*</code></h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \*</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a CAP category</p>
 
 <p>Delegates to <code class="code">TensorProductOfAlgebroids</code>(<var class="Arg">A</var>,<var class="Arg">B</var>).</p>
 
@@ -273,7 +273,7 @@
 <h5>1.3-13 ElementaryTensor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ElementaryTensor</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category object</p>
+<p>Returns: a CAP category object</p>
 
 <p>The arguments are two objects <var class="Arg">a</var>, <var class="Arg">b</var> and a tensor product algebroid <var class="Arg">T</var><span class="SimpleMath">\(=A\otimes B\)</span> where <var class="Arg">a</var> and <var class="Arg">b</var> belong to <span class="SimpleMath">\(A\)</span> resp. <span class="SimpleMath">\(B\)</span>. The output is the object <span class="SimpleMath">\(a\otimes b\)</span> in <var class="Arg">T</var>.</p>
 
@@ -282,7 +282,7 @@
 <h5>1.3-14 ElementaryTensor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ElementaryTensor</code>( <var class="Arg">f</var>, <var class="Arg">g</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+<p>Returns: a CAP category morphism</p>
 
 <p>The arguments are two morphisms <var class="Arg">f</var>, <var class="Arg">g</var> and a tensor product algebroid <var class="Arg">T</var><span class="SimpleMath">\(=A\otimes B\)</span> where <var class="Arg">f</var> and <var class="Arg">g</var> belong to <span class="SimpleMath">\(A\)</span> resp. <span class="SimpleMath">\(B\)</span>. The output is the morphism <span class="SimpleMath">\(f\otimes g\)</span> in <var class="Arg">T</var>.</p>
 
@@ -295,7 +295,7 @@
 <h5>1.4-1 AlgebroidFromDataTables</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AlgebroidFromDataTables</code>( <var class="Arg">data_tables</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a CAP category</p>
 
 <p>Construct an enrichted algebroid <span class="SimpleMath">\(A\)</span> out of the <var class="Arg">data_tables</var> consisting of <span class="SimpleMath">\(7\)</span> entries:</p>
 

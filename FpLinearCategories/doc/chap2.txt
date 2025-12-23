@@ -7,7 +7,7 @@
   [1X2.1-1 LinearClosure[101X
   
   [33X[1;0Y[29X[2XLinearClosure[102X( [3Xk[103X, [3XC[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YReturns the [23Xk[123X-linear closure category of [3XC[103X.[133X
   
