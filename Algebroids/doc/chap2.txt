@@ -31,14 +31,14 @@
   [1X2.2-1 UnderlyingQuiver[101X
   
   [33X[1;0Y[29X[2XUnderlyingQuiver[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XQPA[105X quiver[133X
+  [6XReturns:[106X  [33X[0;10Ya QPA quiver[133X
   
   [33X[0;0YThe quiver underlying the finitely presented category [3XC[103X.[133X
   
   [1X2.2-2 UnderlyingQuiverAlgebra[101X
   
   [33X[1;0Y[29X[2XUnderlyingQuiverAlgebra[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XQPA[105X path algebra[133X
+  [6XReturns:[106X  [33X[0;10Ya QPA path algebra[133X
   
   [33X[0;0YThe  quiver  algebra  (=path algebra with relations) underlying the finitely
   presented category [3XC[103X.[133X
@@ -53,7 +53,7 @@
   [1X2.2-4 BasisPathsByVertexIndex[101X
   
   [33X[1;0Y[29X[2XBasisPathsByVertexIndex[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya matrix of basis paths of a [5XQPA[105X path algebra[133X
+  [6XReturns:[106X  [33X[0;10Ya matrix of basis paths of a QPA path algebra[133X
   
   [33X[0;0YThe  matrix  of  basis  paths  of  the canonical basis of the quiver algebra
   (=path  algebra  with  relations) underlying the f.p. category [3XC[103X, indexed by
@@ -125,7 +125,7 @@
   [1X2.2-12 RelationsOfFpCategory[101X
   
   [33X[1;0Y[29X[2XRelationsOfFpCategory[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XQPA[105X path algebra[133X
+  [6XReturns:[106X  [33X[0;10Ya QPA path algebra[133X
   
   [33X[0;0YThe  relations  of  the  finitely  presented  category  [3XC[103X  corresponding  to
   [10XRelationsOfAlgebra( UnderlyingQuiverAlgebra( [3XC[103X[10X ) )[110X.[133X
@@ -133,7 +133,7 @@
   [1X2.2-13 OppositeFpCategory[101X
   
   [33X[1;0Y[29X[2XOppositeFpCategory[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe  finitely  presented  category defined by the opposite of the underlying
   quiver with relations.[133X
@@ -141,14 +141,14 @@
   [1X2.2-14 Antipode[101X
   
   [33X[1;0Y[29X[2XAntipode[102X( [3XB[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   [33X[0;0YThe antipode of the Hopf finitely presented category [3XB[103X.[133X
   
   [1X2.2-15 UnderlyingVertex[101X
   
   [33X[1;0Y[29X[2XUnderlyingVertex[102X( [3Xobj[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya vertex in a [5XQPA[105X quiver[133X
+  [6XReturns:[106X  [33X[0;10Ya vertex in a QPA quiver[133X
   
   [33X[0;0YThe  vertex  of the quiver underlying the object [3Xobj[103X in a finitely presented
   category.[133X
@@ -156,7 +156,7 @@
   [1X2.2-16 UnderlyingQuiverAlgebraElement[101X
   
   [33X[1;0Y[29X[2XUnderlyingQuiverAlgebraElement[102X( [3Xmor[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Yan element in a [5XQPA[105X path algebra[133X
+  [6XReturns:[106X  [33X[0;10Yan element in a QPA path algebra[133X
   
   [33X[0;0YThe  quiver  algebra  element  underlying  the  morphism  [3Xmor[103X  in a finitely
   presented category.[133X
@@ -178,7 +178,7 @@
   [1X2.2-19 POW[101X
   
   [33X[1;0Y[29X[2XPOW[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe [3Xn[103X-th power of the finitely presented category [3XC[103X. Admissible values for [3Xn[103X
   are [23X0,1,2[123X.[133X
@@ -190,7 +190,7 @@
   [1X2.2-21 TruthMorphismOfTrueToSieveFunctor[101X
   
   [33X[1;0Y[29X[2XTruthMorphismOfTrueToSieveFunctor[102X( [3XB[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   [33X[0;0YReturn  the  truth  morphism of true from terminal functor to the functor of
   sieves from [10XOppositeFpCategory[110X( [3XB[103X ) to [10XRangeCategoryOfHomomorphismStructure[110X(
@@ -273,7 +273,7 @@
   [1X2.2-22 SieveFunctor[101X
   
   [33X[1;0Y[29X[2XSieveFunctor[102X( [3XB[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   [33X[0;0YReturn   the   functor   of   sieves   from   [10XOppositeFpCategory[110X(   [3XB[103X  )  to
   [10XRangeCategoryOfHomomorphismStructure[110X( [3XB[103X ).[133X
@@ -366,7 +366,7 @@
   [1X2.3-3 ElementaryTensor[101X
   
   [33X[1;0Y[29X[2XElementaryTensor[102X( [3Xa[103X, [3Xb[103X, [3XT[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in a [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a CAP category[133X
   
   [33X[0;0YGiven  an  object  [3Xa[103X in a finitely presented category A and an object [3Xb[103X in a
   finitely  presented  category  B and the tensor product [3XT[103X of A and B, return
@@ -375,7 +375,7 @@
   [1X2.3-4 ElementaryTensor[101X
   
   [33X[1;0Y[29X[2XElementaryTensor[102X( [3Xa[103X, [3Xg[103X, [3XT[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in a [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a CAP category[133X
   
   [33X[0;0YGiven  an  object [3Xa[103X in a finitely presented category A and a morphism [3Xg[103X in a
   finitely  presented  category  B and the tensor product [3XT[103X of A and B, return
@@ -384,7 +384,7 @@
   [1X2.3-5 ElementaryTensor[101X
   
   [33X[1;0Y[29X[2XElementaryTensor[102X( [3Xf[103X, [3Xb[103X, [3XT[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in a [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a CAP category[133X
   
   [33X[0;0YGiven  a  morphism [3Xf[103X in a finitely presented category A and an object [3Xb[103X in a
   finitely  presented  category  B and the tensor product [3XT[103X of A and B, return
@@ -406,7 +406,7 @@
   [33X[1;0Y[29X[2XCategory[102X( [3Xq[103X, [3XL[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XQuotientCategory[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
   [33X[1;0Y[29X[2X/[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YConstruct  the  finitely  presented  category  generated  by  the  quiver [3Xq[103X,
   possibly modulo the relations [3XL[103X.[133X
@@ -414,7 +414,7 @@
   [1X2.4-2 ObjectInFpCategory[101X
   
   [33X[1;0Y[29X[2XObjectInFpCategory[102X( [3XA[103X, [3XV[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Yan object in a [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a CAP category[133X
   
   [33X[0;0YThe constructor of objects in a finitely presented category [3XC[103X given a vertex
   [3XV[103X in the underlying quiver.[133X
@@ -423,7 +423,7 @@
   
   [33X[1;0Y[29X[2XMorphismInFpCategory[102X( [3XS[103X, [3Xpath[103X, [3XT[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XMorphismInFpCategory[102X( [3XA[103X, [3Xpath[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Yan object in a [5XCAP[105X category a morphism in a [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a CAP category a morphism in a CAP category[133X
   
   [33X[0;0YDelegates  to  [10XObjectInFpCategory[110X( [3XC[103X, [3XV[103X ). The constructor of morphisms in a
   finitely  presented  category  [3XC[103X  given  the source [3XS[103X, the target [3XT[103X, and the
@@ -433,7 +433,7 @@
   [1X2.4-4 \/[101X
   
   [33X[1;0Y[29X[2X\/[102X( [3Xpath[103X, [3XA[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in a [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a CAP category[133X
   
   [33X[0;0YDelegates to [10XMorphismInFpCategory[110X( [3Xpath[103X ).[133X
   

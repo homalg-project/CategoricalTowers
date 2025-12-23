@@ -22,7 +22,7 @@
   [1X4.1-3 OppositeCategoryFromDataTables[101X
   
   [33X[1;0Y[29X[2XOppositeCategoryFromDataTables[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe opposite category of the category [3XC[103X defined by nerve data.[133X
   
@@ -32,7 +32,7 @@
   [1X4.2-1 CategoryFromDataTables[101X
   
   [33X[1;0Y[29X[2XCategoryFromDataTables[102X( [3Xinput_record[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YConstruct  an enriched finite category out of the [3Xinput_record[103X consisting of
   values to the keys:[133X
@@ -246,7 +246,7 @@
   [1X4.2-6 CreateObject[101X
   
   [33X[1;0Y[29X[2XCreateObject[102X( [3XC[103X, [3Xo[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YConstruct the [3Xo[103X-th object in the category [3XC[103X created from data tables.[133X
   
@@ -254,7 +254,7 @@
   
   [33X[1;0Y[29X[2XCreateMorphism[102X( [3XC[103X, [3Xm[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XCreateMorphism[102X( [3Xsource[103X, [3Xm[103X, [3Xrange[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YConstruct  the  [3Xm[103X-th  morphism [3Xsource[103X[23X\to[123X[3Xrange[103X in the category [3XC[103X created from
   data tables.[133X

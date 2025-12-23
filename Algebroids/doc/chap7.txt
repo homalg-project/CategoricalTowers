@@ -42,7 +42,7 @@
   [1X7.3-1 Twist[101X
   
   [33X[1;0Y[29X[2XTwist[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   [33X[0;0YConstruct the canonical twist from [3XA[103X [23X\otimes[123X [3XB[103X to [3XB[103X [23X\otimes[123X [3XA[103X[133X
   
