@@ -76,27 +76,27 @@
 <h5>2.1-1 PathCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PathCategory</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a CAP category</p>
 
-<p>The input is a <strong class="pkg">CAP</strong> quiver <var class="Arg">q</var>. The output is the path category of <var class="Arg">q</var>, i.e., the category whose objects are the objects of <var class="Arg">q</var> and whose morphisms are lists of morphisms in <var class="Arg">q</var>, in which the target of any morphism is equal to the source of the next morphism.</p>
+<p>The input is a CAP quiver <var class="Arg">q</var>. The output is the path category of <var class="Arg">q</var>, i.e., the category whose objects are the objects of <var class="Arg">q</var> and whose morphisms are lists of morphisms in <var class="Arg">q</var>, in which the target of any morphism is equal to the source of the next morphism.</p>
 
 <p><a id="X7DED60C980856184" name="X7DED60C980856184"></a></p>
 
 <h5>2.1-2 ObjectConstructor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectConstructor</code>( <var class="Arg">C</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category object</p>
+<p>Returns: a CAP category object</p>
 
-<p>The input is a path category <var class="Arg">C</var> of <strong class="pkg">CAP</strong> quiver <span class="Math">q</span> and a positive integer <var class="Arg">i</var>. The output is the <var class="Arg">i</var>'th object in <var class="Arg">C</var>.</p>
+<p>The input is a path category <var class="Arg">C</var> of CAP quiver <span class="Math">q</span> and a positive integer <var class="Arg">i</var>. The output is the <var class="Arg">i</var>'th object in <var class="Arg">C</var>.</p>
 
 <p><a id="X7B719DC18588EFCD" name="X7B719DC18588EFCD"></a></p>
 
 <h5>2.1-3 MorphismConstructor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismConstructor</code>( <var class="Arg">C</var>, <var class="Arg">s</var>, <var class="Arg">l</var>, <var class="Arg">support</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+<p>Returns: a CAP category morphism</p>
 
-<p>The input is a path category <var class="Arg">C</var> of <strong class="pkg">CAP</strong> quiver <span class="Math">q</span>, two objects <var class="Arg">s</var>, <var class="Arg">t</var> a nonnegative integer <var class="Arg">length</var> and a list <var class="Arg">support</var> of length <var class="Arg">l</var> consisting of morphisms in <span class="Math">q</span> where the target of each morphism is equal to the source of the next morphism. The output is the morphism in <var class="Arg">C</var> whose length is <var class="Arg">l</var> and whose support is <var class="Arg">support</var>.</p>
+<p>The input is a path category <var class="Arg">C</var> of CAP quiver <span class="Math">q</span>, two objects <var class="Arg">s</var>, <var class="Arg">t</var> a nonnegative integer <var class="Arg">length</var> and a list <var class="Arg">support</var> of length <var class="Arg">l</var> consisting of morphisms in <span class="Math">q</span> where the target of each morphism is equal to the source of the next morphism. The output is the morphism in <var class="Arg">C</var> whose length is <var class="Arg">l</var> and whose support is <var class="Arg">support</var>.</p>
 
 <p><a id="X85737767821A3E20" name="X85737767821A3E20"></a></p>
 
@@ -139,7 +139,7 @@
 <h5>2.2-3 UnderlyingQuiver</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingQuiver</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list of <strong class="pkg">CAP</strong> category objects</p>
+<p>Returns: a list of CAP category objects</p>
 
 <p>Returns the defining quiver of the path category <var class="Arg">C</var>.</p>
 
@@ -175,7 +175,7 @@
 <h5>2.2-7 MorphismSupport</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismSupport</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a dense-list of <strong class="pkg">CAP</strong> quiver morphisms</p>
+<p>Returns: a dense-list of CAP quiver morphisms</p>
 
 <p>Returns the list of morphisms in the underlying quiver which defines <var class="Arg">alpha</var>.</p>
 
