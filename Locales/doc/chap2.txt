@@ -16,7 +16,7 @@
   [33X[1;0Y[29X[2XIsTotalOrderCategory[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe property of [3XC[103X being a total order [5XCAP[105X category.[133X
+  [33X[0;0YThe property of [3XC[103X being a total order CAP category.[133X
   
   [1X2.1-3 IsMonoidalPoset[101X
   

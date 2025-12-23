@@ -67,7 +67,7 @@
   [1X4.3-1 StableInternalHom[101X
   
   [33X[1;0Y[29X[2XStableInternalHom[102X( [3XJ[103X, [3XI[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP object[133X
   
   [33X[0;0YReturn             the            stable            internal            Hom:
   [23X\mathrm{\underline{Hom}}(J,\mathrm{\underline{Hom}}(J,...\mathrm{\underline{Hom}}(J,I)...))[123X.[133X

@@ -7,14 +7,14 @@
   [1X11.1-1 MeetSemilatticeOfMultipleDifferences[101X
   
   [33X[1;0Y[29X[2XMeetSemilatticeOfMultipleDifferences[102X( [3XL[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YConstruct the meet-semilattice of multiple differences from the lattice [3XL[103X.[133X
   
   [1X11.1-2 AsMultipleDifference[101X
   
   [33X[1;0Y[29X[2XAsMultipleDifference[102X( [3XD1[103X, [3XD2[103X, [3X...[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Yan object in a [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a CAP category[133X
   
   [33X[0;0YIf  [3XD1[103X=[22XA1-B1[122X,  [3XD2[103X=[22XA2-B2[122X,  ..., then the output is [10XDirectProduct[110X[22X(A1,A2,...)[122X -
   [10XCoproduct[110X[22X(B1,B2,...)[122X.[133X
@@ -32,7 +32,7 @@
   [1X11.3-1 ListOfSingleDifferences[101X
   
   [33X[1;0Y[29X[2XListOfSingleDifferences[102X( [3XA[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya list of CAP morphism[133X
   
   [33X[0;0YA  list  of formal single differences in the underlying lattice representing
   the formal multiple difference [3XA[103X.[133X

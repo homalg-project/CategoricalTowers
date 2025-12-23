@@ -119,14 +119,14 @@
   [1X8.3-2 UnderlyingGapObject[101X
   
   [33X[1;0Y[29X[2XUnderlyingGapObject[102X( [3Xobj[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category object[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category object[133X
   
   [33X[0;0YThe object in the ambient category underlying [3Xobj[103X.[133X
   
   [1X8.3-3 UnderlyingMorphism[101X
   
   [33X[1;0Y[29X[2XUnderlyingMorphism[102X( [3Xmor[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category morphism[133X
   
   [33X[0;0YThe morphism in the ambient category underlying [3Xmor[103X.[133X
   
