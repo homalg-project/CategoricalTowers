@@ -7,18 +7,18 @@
   [1X1.1-1 LeftPresentationWithDegrees[101X
   
   [33X[1;0Y[29X[2XLeftPresentationWithDegrees[102X( [3Xmat[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5Xhomalg[105X graded left module[133X
+  [6XReturns:[106X  [33X[0;10Ya homalg graded left module[133X
   
   [33X[0;0YThis constructor returns the finitely presented left module with homogeneous
-  relations given by the rows of the [5Xhomalg[105X matrix [3Xmat[103X.[133X
+  relations given by the rows of the homalg matrix [3Xmat[103X.[133X
   
   [1X1.1-2 RightPresentationWithDegrees[101X
   
   [33X[1;0Y[29X[2XRightPresentationWithDegrees[102X( [3Xmat[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5Xhomalg[105X graded right module[133X
+  [6XReturns:[106X  [33X[0;10Ya homalg graded right module[133X
   
   [33X[0;0YThis   constructor   returns   the  finitely  presented  right  module  with
-  homogeneous relations given by the columns of the [5Xhomalg[105X matrix [3Xmat[103X.[133X
+  homogeneous relations given by the columns of the homalg matrix [3Xmat[103X.[133X
   
   [1X1.1-3 CategoryOfHomalgFinitelyPresentedGradedLeftModules[101X
   
