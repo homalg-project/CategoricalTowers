@@ -38,7 +38,7 @@
   [1X1.2-1 UnderlyingCell[101X
   
   [33X[1;0Y[29X[2XUnderlyingCell[102X( [3Xc[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category object or listlist[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category object or listlist[133X
   
   [33X[0;0YThe CAP category object or listlist of CAP category morphisms underlying the
   cell (=object or morphism) [3Xc[103X.[133X
@@ -63,7 +63,7 @@
   [1X1.3-1 ExteriorPowersCategory[101X
   
   [33X[1;0Y[29X[2XExteriorPowersCategory[102X( [3Xl[103X, [3XC[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YConstruct  the  category  of  exterior  powers of [3Xl[103X copies of objects in the
   category [3XC[103X.[133X
@@ -71,21 +71,21 @@
   [1X1.3-2 ObjectInExteriorPowersCategory[101X
   
   [33X[1;0Y[29X[2XObjectInExteriorPowersCategory[102X( [3XM[103X, [3Xdegree[103X, [3XEC[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP object[133X
   
   [33X[0;0YConstruct an object in an exterior powers category[133X
   
   [1X1.3-3 *[101X
   
   [33X[1;0Y[29X[2X*[102X( [3XR[103X, [3Xcell[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X cell[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP cell[133X
   
   [33X[0;0YTensorize [3Xcell[103X with the ring [3XR[103X.[133X
   
   [1X1.3-4 MorphismInExteriorPowersCategory[101X
   
   [33X[1;0Y[29X[2XMorphismInExteriorPowersCategory[102X( [3XS[103X, [3XL[103X, [3XT[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X
   
   [33X[0;0YConstruct a morphism in an exterior powers category[133X
   
