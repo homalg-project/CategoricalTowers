@@ -38,35 +38,35 @@
   [1X12.2-1 Source[101X
   
   [33X[1;0Y[29X[2XSource[102X( [3XcoPSh[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe source category of the copresheaf category [3XcoPSh[103X.[133X
   
   [1X12.2-2 Target[101X
   
   [33X[1;0Y[29X[2XTarget[102X( [3XcoPSh[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe target category of the copresheaf category [3XcoPSh[103X.[133X
   
   [1X12.2-3 Source[101X
   
   [33X[1;0Y[29X[2XSource[102X( [3XF[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe source of the functor underlying functor object [3XF[103X.[133X
   
   [1X12.2-4 Target[101X
   
   [33X[1;0Y[29X[2XTarget[102X( [3XF[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe target of the functor underlying the functor object [3XF[103X.[133X
   
   [1X12.2-5 OppositeOfSource[101X
   
   [33X[1;0Y[29X[2XOppositeOfSource[102X( [3XcoPSh[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe opposite of the source category of the copresheaf category [3XcoPSh[103X.[133X
   
@@ -93,17 +93,17 @@
   [1X12.2-8 UnderlyingCapTwoCategoryCell[101X
   
   [33X[1;0Y[29X[2XUnderlyingCapTwoCategoryCell[102X( [3XF_or_eta[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor or natural transformation[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor or natural transformation[133X
   
   [1X12.2-9 CoYonedaEmbedding[101X
   
   [33X[1;0Y[29X[2XCoYonedaEmbedding[102X( [3XB[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   [1X12.2-10 CoYonedaEmbeddingOfSourceCategory[101X
   
   [33X[1;0Y[29X[2XCoYonedaEmbeddingOfSourceCategory[102X( [3XcoPSh[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   
   [1X12.3 [33X[0;0YOperations[133X[101X
@@ -111,21 +111,21 @@
   [1X12.3-1 ApplyObjectInCoPreSheafCategoryToObject[101X
   
   [33X[1;0Y[29X[2XApplyObjectInCoPreSheafCategoryToObject[102X( [3XF[103X, [3Xobj[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP object[133X
   
   [33X[0;0YApply the presheaf [3XF[103X to the object [3Xobj[103X. The shorthand is [3XF[103X([3Xobj[103X).[133X
   
   [1X12.3-2 ApplyObjectInCoPreSheafCategoryToMorphism[101X
   
   [33X[1;0Y[29X[2XApplyObjectInCoPreSheafCategoryToMorphism[102X( [3XF[103X, [3Xmor[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X
   
   [33X[0;0YApply the presheaf [3XF[103X to the morphism [3Xmor[103X. The shorthand is [3XF[103X([3Xmor[103X).[133X
   
   [1X12.3-3 ApplyMorphismInCoPreSheafCategoryToObject[101X
   
   [33X[1;0Y[29X[2XApplyMorphismInCoPreSheafCategoryToObject[102X( [3Xeta[103X, [3Xobj[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X
   
   [33X[0;0YApply the presheaf morphism [3Xeta[103X to the object [3Xobj[103X. The shorthand is [3Xeta[103X([3Xo[103X).[133X
   
@@ -137,7 +137,7 @@
   [33X[1;0Y[29X[2XCoPreSheaves[102X( [3XB[103X, [3XD[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XCoPreSheaves[102X( [3XB[103X, [3Xk[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XCoPreSheaves[102X( [3XB[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YConstruct  the  category [10XCoPreSheaves([110X [3XB[103X, [3XD[103X [10X)[110X= [10XFunctorCategory([110X [3XB[103X, [3XD[103X [10X)^op[110X of
   copresheaves  from  the  small  category  [3XB[103X to the category [3XD[103X as objects and
@@ -148,7 +148,7 @@
   [33X[1;0Y[29X[2XCreateCoPreSheaf[102X( [3XF[103X ) [32X attribute[133X
   [33X[1;0Y[29X[2XCreateCoPreSheaf[102X( [3XB[103X, [3Xrec_images_of_objects[103X, [3Xrec_images_of_morphisms[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XCreateCoPreSheaf[102X( [3XB[103X, [3Ximages_of_objects[103X, [3Ximages_of_morphisms[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Yan object in a [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a CAP category[133X
   
   [33X[0;0YTurn  the functor [10X[3XF[103X[10X:[3XB[103X[10X[110X [23X\to[123X [10XD[110X into an object in the category of functors [10X[3XcoPSh[103X[10X
   :=  CoPreSheaves(  [3XB[103X[10X, D )[110X. An alternative input is the source category [3XB[103X and
@@ -170,7 +170,7 @@
   [33X[1;0Y[29X[2XCreateCoPreSheafMorphism[102X( [3XU[103X, [3Xe[103X, [3XV[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XCreateCoPreSheafMorphism[102X( [3XU[103X, [3Xe[103X, [3XV[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XCreateCoPreSheafMorphism[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in a [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a CAP category[133X
   
   [33X[0;0YTurn   the  natrual  transformation  [3Xeta[103X:[23XF  \to  G[123X  into  a  morphism  [10X[3XU[103X[10X  :=
   CreateCoPreSheaf(  F  )[110X  [23X\to[123X  [10X[3XV[103X[10X  := CreateCoPreSheaf( G )[110X in the category of

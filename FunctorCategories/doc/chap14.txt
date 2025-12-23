@@ -8,7 +8,7 @@
   [1X14.1-1 AlgebroidAsObjectInPreSheavesCategory[101X
   
   [33X[1;0Y[29X[2XAlgebroidAsObjectInPreSheavesCategory[102X( [3XA[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category morphism[133X
   
   [33X[0;0YThe  argument is an algebroid [23XA[123X over a commutative ring [23Xk[123X. The output is the
   presheaf  object  [23XF_{A}\in \mathrm{PSh}(A^{\mathrm{op}}\otimes A)[123X which maps
@@ -22,7 +22,7 @@
   [1X14.1-2 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[101X
   
   [33X[1;0Y[29X[2XAssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category morphism[133X
   
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  t  \to  u[123X  in an algebroid [23XA[123X over a
   commutative      ring      [23Xk[123X.     The     output     is     the     morphism

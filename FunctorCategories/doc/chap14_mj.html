@@ -44,7 +44,7 @@
 <h5>14.1-1 AlgebroidAsObjectInPreSheavesCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AlgebroidAsObjectInPreSheavesCategory</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+<p>Returns: a CAP category morphism</p>
 
 <p>The argument is an algebroid <span class="SimpleMath">\(A\)</span> over a commutative ring <span class="SimpleMath">\(k\)</span>. The output is the presheaf object <span class="SimpleMath">\(F_{A}\in \mathrm{PSh}(A^{\mathrm{op}}\otimes A)\)</span> which maps an object <span class="SimpleMath">\(u^{\mathrm{op}}\otimes t \in A^{\mathrm{op}}\otimes A\)</span> to <span class="SimpleMath">\(\mathrm{Hom}_B(t,u) \in k\mbox{-}\mathrm{rows}\)</span> and maps a morphism <span class="SimpleMath">\(g^{\mathrm{op}}\otimes f : v^{\mathrm{op}}\otimes s \to u^{\mathrm{op}}\otimes t \in A^{\mathrm{op}}\otimes A\)</span> to <span class="SimpleMath">\(f\bullet(-)\bullet g =\mathrm{Hom}_B(f,g): \mathrm{Hom}_B(t,u) \to \mathrm{Hom}_B(s,v) \in k\mbox{-}\mathrm{rows}\)</span>.</p>
 
@@ -53,7 +53,7 @@
 <h5>14.1-2 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category morphism</p>
+<p>Returns: a CAP category morphism</p>
 
 <p>The argument is a morphism <span class="SimpleMath">\(\alpha: t \to u\)</span> in an algebroid <span class="SimpleMath">\(A\)</span> over a commutative ring <span class="SimpleMath">\(k\)</span>. The output is the morphism <span class="SimpleMath">\(\lambda_{\alpha}:P_{u^{\mathrm{op}}\otimes t} \to F_{A}\)</span> where <span class="SimpleMath">\(P_{u^{\mathrm{op}}\otimes t}\)</span> is the image of <span class="SimpleMath">\(u^{\mathrm{op}}\otimes t\)</span> under the Yoneda embdding <span class="SimpleMath">\(A^{\mathrm{op}}\otimes A \hookrightarrow \mathrm{PSh}(A^{\mathrm{op}}\otimes A)\)</span>; and <span class="SimpleMath">\(\lambda_{\alpha}\)</span> the image of <span class="SimpleMath">\(\alpha\)</span> under the natural isomorphism <span class="SimpleMath">\(\mathrm{Hom}_{A}(t,u) = F_{A}(u^{\mathrm{op}}\otimes t) \simeq \mathrm{Hom}_{\mathrm{PSh}(A^{\mathrm{op}}\otimes A)}(P_{u^{\mathrm{op}}\otimes t},F_{A})\)</span>.</p>
 

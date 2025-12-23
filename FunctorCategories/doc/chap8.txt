@@ -7,7 +7,7 @@
   [1X8.1-1 CategoryOfDecoratedQuivers[101X
   
   [33X[1;0Y[29X[2XCategoryOfDecoratedQuivers[102X( [3Xquiver[103X, [3Xdecoration_of_vertices[103X, [3Xdecoration_of_arrows[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YConstruct  the  category  of  decorated  quivers  over the decorating quiver
   [3Xquiver[103X   and   the   two   lists   of   colors   [3Xdecoration_of_vertices[103X  and

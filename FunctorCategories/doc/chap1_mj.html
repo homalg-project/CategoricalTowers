@@ -93,7 +93,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctorCategory</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Hom</code>( <var class="Arg">B</var>, <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Hom</code>( <var class="Arg">B</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a CAP category</p>
 
 <p>Construct the category <code class="code">FunctorCategory(</code> <var class="Arg">B</var>, <var class="Arg">D</var> <code class="code">)</code>= <code class="code">Hom(</code> <var class="Arg">B</var>, <var class="Arg">D</var> <code class="code">)</code> of functors from the small category <var class="Arg">B</var> to the category <var class="Arg">D</var> as objects and their natural transformations as morphisms.</p>
 
@@ -104,7 +104,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsObjectInFunctorCategory</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsObjectInFunctorCategory</code>( <var class="Arg">B</var>, <var class="Arg">rec_images_of_objects</var>, <var class="Arg">rec_images_of_morphisms</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsObjectInFunctorCategory</code>( <var class="Arg">B</var>, <var class="Arg">images_of_objects</var>, <var class="Arg">images_of_morphisms</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: an object in a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: an object in a CAP category</p>
 
 <p>Turn the functor <code class="code"><var class="Arg">F</var>:<var class="Arg">B</var></code> <span class="SimpleMath">\(\to\)</span> <code class="code">D</code> into an object in the category of functors <code class="code"><var class="Arg">Hom</var> := Hom( <var class="Arg">B</var>, D )</code>. An alternative input is the source category <var class="Arg">B</var> and two defining records <var class="Arg">rec_images_of_objects</var> and <var class="Arg">rec_images_of_morphisms</var> of <var class="Arg">F</var>. Another alternative input is the source category <var class="Arg">B</var> and two defining lists <var class="Arg">images_of_objects</var> and <var class="Arg">images_of_morphisms</var> of <var class="Arg">F</var>. The order of their entries must correspond to that of the vertices and arrows of the underlying quiver.</p>
 
@@ -119,7 +119,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsMorphismInFunctorCategory</code>( <var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsMorphismInFunctorCategory</code>( <var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsMorphismInFunctorCategory</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a morphism in a CAP category</p>
 
 <p>Turn the natrual transformation <var class="Arg">eta</var>:<span class="SimpleMath">\(F \to G\)</span> into a morphism <code class="code"><var class="Arg">U</var> := AsObjectInFunctorCategory( F )</code> <span class="SimpleMath">\(\to\)</span> <code class="code"><var class="Arg">V</var> := AsObjectInFunctorCategory( G )</code> in the category of functors <code class="code"><var class="Arg">Hom</var> := Hom( B, D )</code>, where <code class="code">B := Source( F ) = Source( G )</code> and <code class="code">C := Target( F ) = Target( G )</code>.</p>
 
@@ -136,7 +136,7 @@
 <h5>1.2-1 Source</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Source</code>( <var class="Arg">Hom</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a CAP category</p>
 
 <p>The source category of the functor category <var class="Arg">Hom</var>.</p>
 
@@ -145,7 +145,7 @@
 <h5>1.2-2 Target</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Target</code>( <var class="Arg">Hom</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a CAP category</p>
 
 <p>The target category of the functor category <var class="Arg">Hom</var>.</p>
 
@@ -154,7 +154,7 @@
 <h5>1.2-3 Source</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Source</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a CAP category</p>
 
 <p>The source of the functor underlying functor object <var class="Arg">F</var>.</p>
 
@@ -163,7 +163,7 @@
 <h5>1.2-4 Target</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Target</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a CAP category</p>
 
 <p>The target of the functor underlying the functor object <var class="Arg">F</var>.</p>
 
@@ -172,7 +172,7 @@
 <h5>1.2-5 OppositeOfSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OppositeOfSource</code>( <var class="Arg">Hom</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a CAP category</p>
 
 <p>The opposite of the source category of the functor category <var class="Arg">Hom</var>.</p>
 
@@ -201,28 +201,28 @@
 <h5>1.2-8 UnderlyingCapTwoCategoryCell</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCapTwoCategoryCell</code>( <var class="Arg">F_or_eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> functor or natural transformation</p>
+<p>Returns: a CAP functor or natural transformation</p>
 
 <p><a id="X7D44A7D7812A9AA5" name="X7D44A7D7812A9AA5"></a></p>
 
 <h5>1.2-9 YonedaEmbeddingInFunctorCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaEmbeddingInFunctorCategory</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+<p>Returns: a CAP functor</p>
 
 <p><a id="X860DF3247E4FF4C5" name="X860DF3247E4FF4C5"></a></p>
 
 <h5>1.2-10 YonedaEmbeddingOfOppositeOfSourceCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaEmbeddingOfOppositeOfSourceCategory</code>( <var class="Arg">Hom</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+<p>Returns: a CAP functor</p>
 
 <p><a id="X81A950BF7D4B9E65" name="X81A950BF7D4B9E65"></a></p>
 
 <h5>1.2-11 YonedaFibration</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaFibration</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a morphism in a CAP category</p>
 
 <p>The input is a finitely presented category <var class="Arg">B</var>. The output is an epimorphism in the category of functors from <var class="Arg">B</var> into <span class="SimpleMath">\(H :=\)</span><code class="code">RangeCategoryOfHomomorphismStructure</code>( <var class="Arg">B</var> ). Its source is the functor <span class="SimpleMath">\(B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c), \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)\)</span>. Its target is the constant functor of <span class="SimpleMath">\(0\)</span>-cells <span class="SimpleMath">\(B \to H, c \mapsto B_0, \psi \mapsto \mathrm{id}_{B_0}\)</span>.</p>
 
@@ -231,7 +231,7 @@
 <h5>1.2-12 YonedaProjection</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaProjection</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a morphism in a CAP category</p>
 
 <p>The input is a finitely presented category <var class="Arg">B</var>. The output is an epimorphism in the category of functors from <var class="Arg">B</var> into <span class="SimpleMath">\(H :=\)</span><code class="code">RangeCategoryOfHomomorphismStructure</code>( <var class="Arg">B</var> ). Its source is the functor <span class="SimpleMath">\(B \to H, c \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(a,b) \times \mathrm{Hom}(b,c), \psi \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(1_a,1_b) \times \mathrm{Hom}(b,\psi)\)</span>. Its target is the functor <span class="SimpleMath">\(B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c), \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)\)</span>.</p>
 
@@ -240,7 +240,7 @@
 <h5>1.2-13 YonedaComposition</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaComposition</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a morphism in a CAP category</p>
 
 <p>The input is a finitely presented category <var class="Arg">B</var>. The output is an epimorphism in the category of functors from <var class="Arg">B</var> into <span class="SimpleMath">\(H :=\)</span><code class="code">RangeCategoryOfHomomorphismStructure</code>( <var class="Arg">B</var> ). Its source is the functor <span class="SimpleMath">\(B \to H, c \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(a,b) \times \mathrm{Hom}(b,c), \psi \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(1_a,1_b) \times \mathrm{Hom}(b,\psi)\)</span>. Its target is the functor <span class="SimpleMath">\(B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c), \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)\)</span>.</p>
 
@@ -342,7 +342,7 @@ SkeletalFinSets ) given by the above data
 <h5>1.3-3 ApplyObjectInFunctorCategoryToObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyObjectInFunctorCategoryToObject</code>( <var class="Arg">F</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> object</p>
+<p>Returns: a CAP object</p>
 
 <p>Apply the functor <var class="Arg">F</var> to the object <var class="Arg">obj</var>. The shorthand is <var class="Arg">F</var>(<var class="Arg">obj</var>).</p>
 
@@ -351,7 +351,7 @@ SkeletalFinSets ) given by the above data
 <h5>1.3-4 ApplyObjectInFunctorCategoryToMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyObjectInFunctorCategoryToMorphism</code>( <var class="Arg">F</var>, <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+<p>Returns: a CAP morphism</p>
 
 <p>Apply the functor <var class="Arg">F</var> to the morphism <var class="Arg">mor</var>. The shorthand is <var class="Arg">F</var>(<var class="Arg">mor</var>).</p>
 
@@ -360,7 +360,7 @@ SkeletalFinSets ) given by the above data
 <h5>1.3-5 ApplyMorphismInFunctorCategoryToObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyMorphismInFunctorCategoryToObject</code>( <var class="Arg">eta</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+<p>Returns: a CAP morphism</p>
 
 <p>Apply the natural transformation <var class="Arg">eta</var> to the object <var class="Arg">obj</var>. The shorthand is <var class="Arg">eta</var>(<var class="Arg">o</var>).</p>
 
