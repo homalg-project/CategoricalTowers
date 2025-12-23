@@ -7,7 +7,7 @@
   [1X1.1-1 ZGradedClosureCategoryWithBounds[101X
   
   [33X[1;0Y[29X[2XZGradedClosureCategoryWithBounds[102X( [3XC[103X, [3Xstr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YConstruct  the  [23X\mathbb{Z}[123X-graded closure of the category [3XC[103X with bounds. The
   string [3Xstr[103X can be either "lower", "upper", or "both", implementing the three
@@ -28,7 +28,7 @@
   [33X[1;0Y[29X[2XObjectInZGradedClosureCategoryWithBounds[102X( [3XZC[103X, [3XM[103X, [3Xdegree[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XObjectInZGradedClosureCategoryWithBounds[102X( [3XZC[103X, [3XM[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XObjectInZGradedClosureCategoryWithBounds[102X( [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP object[133X
   
   [33X[0;0YConstruct  an  object in the bounded [23X\mathbb{Z}[123X-graded category [3XZC[103X using the
   Z-function [3XL[103X.[133X
@@ -38,7 +38,7 @@
   [33X[1;0Y[29X[2XMorphismInZGradedClosureCategoryWithBounds[102X( [3XS[103X, [3XL[103X, [3XT[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XMorphismInZGradedClosureCategoryWithBounds[102X( [3XS[103X, [3Xf[103X, [3XT[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XMorphismInZGradedClosureCategoryWithBounds[102X( [3XS[103X, [3Xphi[103X, [3Xdegree[103X, [3XT[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X
   
   [33X[0;0YConstruct a morphism in a bounded [23X\mathbb{Z}[123X-graded category.[133X
   
@@ -47,7 +47,7 @@
   [33X[1;0Y[29X[2XComponentInclusionMorphism[102X( [3XM[103X, [3Xchi[103X, [3Xdegree[103X, [3Xi[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XComponentInclusionMorphism[102X( [3XM[103X, [3Xchi[103X, [3Xi[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XComponentInclusionMorphism[102X( [3XM[103X, [3Xdegree[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X
   
   [1X1.1-5 DiagonalEmbeddingWithGivenDegrees[101X
   
@@ -111,7 +111,7 @@
   [1X1.2-7 [][101X
   
   [33X[1;0Y[29X[2X[][102X( [3Xc[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe  [3Xi[103X-th  object  of  the  infinite  list  underlying  the cell (=object or
   morphism) [3Xc[103X.[133X
@@ -119,14 +119,14 @@
   [1X1.2-8 CertainDegreePart[101X
   
   [33X[1;0Y[29X[2XCertainDegreePart[102X( [3Xc[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe [3Xi[103X-th object of the infinite list(s) underlying the cell resp. list [3Xc[103X.[133X
   
   [1X1.2-9 Sublist[101X
   
   [33X[1;0Y[29X[2XSublist[102X( [3Xc[103X, [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe  [3XL[103X-th  sublist  of  the  infinite  list  underlying the cell (=object or
   morphism) [3Xc[103X.[133X
