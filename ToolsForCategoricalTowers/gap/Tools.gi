@@ -849,6 +849,43 @@ InstallMethodForCompilerForCAP( ExtendFunctorToWrapperCategoryData,
 end );
 
 ##
+InstallMethodForCompilerForCAP( ExtendFunctorToReinterpretedCategoryData,
+        "for a two categories and a pair of functions",
+        [ IsCapCategory, IsList, IsCapCategory ],
+        
+  function( reinterpretation_category, pair_of_funcs, range_category )
+    local functor_on_objects, functor_on_morphisms,
+          extended_functor_on_objects, extended_functor_on_morphisms;
+    
+    Assert( 0, HasModelingCategory( reinterpretation_category ) );
+    
+    functor_on_objects := pair_of_funcs[1];
+    functor_on_morphisms := pair_of_funcs[2];
+    
+    extended_functor_on_objects :=
+      function( obj_in_reinterpretation_category )
+        
+        return functor_on_objects( ModelingObject( reinterpretation_category, obj_in_reinterpretation_category ) );
+        
+    end;
+    
+    extended_functor_on_morphisms :=
+      function( source, mor_in_reinterpretation_category, range )
+        
+        return functor_on_morphisms(
+                       source,
+                       ModelingMorphism( reinterpretation_category, mor_in_reinterpretation_category ),
+                       range );
+        
+    end;
+    
+    return Triple( reinterpretation_category,
+                   Pair( extended_functor_on_objects, extended_functor_on_morphisms ),
+                   range_category );
+    
+end );
+
+##
 InstallGlobalFunction( CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD,
   function( name_of_cap_operation, list_of_installed_operations )
     local info, with_given_operation_name, info_of_with_given, with_given_object_name, pair, list;
