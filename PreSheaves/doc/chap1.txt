@@ -7,21 +7,21 @@
   [1X1.1-1 Source[101X
   
   [33X[1;0Y[29X[2XSource[102X( [3XPSh[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe source category [23XC[123X of the presheaf category [3XPSh[103X=[10XPSh[110X([23XC, D[123X).[133X
   
   [1X1.1-2 Target[101X
   
   [33X[1;0Y[29X[2XTarget[102X( [3XPSh[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe target category [23XD[123X of the presheaf category [3XPSh[103X=[10XPSh[110X([23XC, D[123X).[133X
   
   [1X1.1-3 OppositeOfSource[101X
   
   [33X[1;0Y[29X[2XOppositeOfSource[102X( [3XHom[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe opposite [23XC^\mathrm{op}[123X of the source category [23XC[123X of the presheaf category
   [3XPSh[103X=[10XPSh[110X([23XC, D[123X).[133X
@@ -29,21 +29,21 @@
   [1X1.1-4 Source[101X
   
   [33X[1;0Y[29X[2XSource[102X( [3XF[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe source of the presheaf [3XF[103X.[133X
   
   [1X1.1-5 Target[101X
   
   [33X[1;0Y[29X[2XTarget[102X( [3XF[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YThe target of the presheaf [3XF[103X.[133X
   
   [1X1.1-6 YonedaEmbeddingOfSourceCategory[101X
   
   [33X[1;0Y[29X[2XYonedaEmbeddingOfSourceCategory[102X( [3XPSh[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   
   [1X1.2 [33X[0;0YConstructors[133X[101X
@@ -52,7 +52,7 @@
   
   [33X[1;0Y[29X[2XPreSheaves[102X( [3XB[103X, [3XD[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XPreSheaves[102X( [3XB[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YConstruct  the  category [10XHom( [3XB[103X[10X^op, [3XD[103X[10X )[110X of functors from the opposite of the
   small   category   [3XB[103X  to  the  category  [3XD[103X  as  objects  and  their  natural
@@ -64,21 +64,21 @@
   [1X1.3-1 ApplyObjectInPreSheafCategoryToObject[101X
   
   [33X[1;0Y[29X[2XApplyObjectInPreSheafCategoryToObject[102X( [3XF[103X, [3Xobj[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP object[133X
   
   [33X[0;0YApply the presheaf [3XF[103X to the object [3Xobj[103X. The shorthand is [3XF[103X([3Xobj[103X).[133X
   
   [1X1.3-2 ApplyObjectInPreSheafCategoryToMorphism[101X
   
   [33X[1;0Y[29X[2XApplyObjectInPreSheafCategoryToMorphism[102X( [3XF[103X, [3Xmor[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X
   
   [33X[0;0YApply the presheaf [3XF[103X to the morphism [3Xmor[103X. The shorthand is [3XF[103X([3Xmor[103X).[133X
   
   [1X1.3-3 ApplyMorphismInPreSheafCategoryToObject[101X
   
   [33X[1;0Y[29X[2XApplyMorphismInPreSheafCategoryToObject[102X( [3Xeta[103X, [3Xobj[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP morphism[133X
   
   [33X[0;0YApply the presheaf morphism [3Xeta[103X to the object [3Xobj[103X. The shorthand is [3Xeta[103X([3Xo[103X).[133X
   
