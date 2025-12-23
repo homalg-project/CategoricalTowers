@@ -7,27 +7,27 @@
   [1X1.1-1 TurnAutoequivalenceIntoIdentityFunctorForHomalg[101X
   
   [33X[1;0Y[29X[2XTurnAutoequivalenceIntoIdentityFunctorForHomalg[102X( [3Xnatiso[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   [33X[0;0YTurn a natural isomorphism from the identity functor to and endo-equivalence
-  on  the  underlying  [5XCAP[105X  category into an identity rewriting functor on the
-  [5Xhomalg[105X category.[133X
+  on  the  underlying  CAP  category into an identity rewriting functor on the
+  homalg category.[133X
   
   [1X1.1-2 CategoryOfHomalgFinitelyPresentedLeftModules[101X
   
   [33X[1;0Y[29X[2XCategoryOfHomalgFinitelyPresentedLeftModules[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan intrinsic cateogry of left modules[133X
   
-  [33X[0;0YConstruct  the  category  of finitely presented left [5Xhomalg[105X modules over the
-  computable [5Xhomalg[105X ring [3XR[103X.[133X
+  [33X[0;0YConstruct  the  category  of finitely presented left homalg modules over the
+  computable homalg ring [3XR[103X.[133X
   
   [1X1.1-3 CategoryOfHomalgFinitelyPresentedRightModules[101X
   
   [33X[1;0Y[29X[2XCategoryOfHomalgFinitelyPresentedRightModules[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan intrinsic cateogry of right modules[133X
   
-  [33X[0;0YConstruct  the  category of finitely presented right [5Xhomalg[105X modules over the
-  computable [5Xhomalg[105X ring [3XR[103X.[133X
+  [33X[0;0YConstruct  the  category of finitely presented right homalg modules over the
+  computable homalg ring [3XR[103X.[133X
   
   
   [1X1.2 [33X[0;0YSupported CAP operations[133X[101X
@@ -1424,30 +1424,30 @@
   [1X1.3-1 ImageEmbeddingForFpLeftModulesByFreyd[101X
   
   [33X[1;0Y[29X[2XImageEmbeddingForFpLeftModulesByFreyd[102X( [3Xmorphism[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya left [5Xhomalg[105X module map[133X
+  [6XReturns:[106X  [33X[0;10Ya left homalg module map[133X
   
-  [33X[0;0YThe image-embedding method used for [5Xhomalg[105X left modules.[133X
+  [33X[0;0YThe image-embedding method used for homalg left modules.[133X
   
   [1X1.3-2 ImageEmbeddingForFpRightModulesByFreyd[101X
   
   [33X[1;0Y[29X[2XImageEmbeddingForFpRightModulesByFreyd[102X( [3Xmorphism[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya right [5Xhomalg[105X module map[133X
+  [6XReturns:[106X  [33X[0;10Ya right homalg module map[133X
   
-  [33X[0;0YThe image-embedding method used for [5Xhomalg[105X right modules.[133X
+  [33X[0;0YThe image-embedding method used for homalg right modules.[133X
   
   [1X1.3-3 ImageEmbeddingForFpLeftModulesByPresentations[101X
   
   [33X[1;0Y[29X[2XImageEmbeddingForFpLeftModulesByPresentations[102X( [3Xmorphism[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya left [5Xhomalg[105X module map[133X
+  [6XReturns:[106X  [33X[0;10Ya left homalg module map[133X
   
-  [33X[0;0YThe image-embedding method used for [5Xhomalg[105X left modules.[133X
+  [33X[0;0YThe image-embedding method used for homalg left modules.[133X
   
   [1X1.3-4 ImageEmbeddingForFpRightModulesByPresentations[101X
   
   [33X[1;0Y[29X[2XImageEmbeddingForFpRightModulesByPresentations[102X( [3Xmorphism[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya right [5Xhomalg[105X module map[133X
+  [6XReturns:[106X  [33X[0;10Ya right homalg module map[133X
   
-  [33X[0;0YThe image-embedding method used for [5Xhomalg[105X right modules.[133X
+  [33X[0;0YThe image-embedding method used for homalg right modules.[133X
   
   
   [1X1.4 [33X[0;0YGAP categories[133X[101X

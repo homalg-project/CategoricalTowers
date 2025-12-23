@@ -35,14 +35,14 @@
 
 <h3>4 <span class="Heading">Modules</span></h3>
 
-<p>A <strong class="pkg">homalg</strong> module is a data structure for a finitely presented module. A presentation is given by a set of generators and a set of relations among these generators. The data structure for modules in <strong class="pkg">homalg</strong> has two novel features:</p>
+<p>A homalg module is a data structure for a finitely presented module. A presentation is given by a set of generators and a set of relations among these generators. The data structure for modules in homalg has two novel features:</p>
 
 
 <ul>
-<li><p>The data structure allows several presentations linked with so-called transition matrices. One of the presentations is marked as the default presentation, which is usually the last added one. A new presentation can always be added provided it is linked to the default presentation by a transition matrix. If needed, the user can reset the default presentation by choosing one of the other presentations saved in the data structure of the <strong class="pkg">homalg</strong> module. Effectively, a module is then given by <q>all</q> its presentations (as <q>coordinates</q>) together with isomorphisms between them (as <q>coordinate changes</q>). Being able to <q>change coordinates</q> makes the realization of a module in <strong class="pkg">homalg</strong> <em>intrinsic</em> (or <q>coordinate free</q>).</p>
+<li><p>The data structure allows several presentations linked with so-called transition matrices. One of the presentations is marked as the default presentation, which is usually the last added one. A new presentation can always be added provided it is linked to the default presentation by a transition matrix. If needed, the user can reset the default presentation by choosing one of the other presentations saved in the data structure of the homalg module. Effectively, a module is then given by <q>all</q> its presentations (as <q>coordinates</q>) together with isomorphisms between them (as <q>coordinate changes</q>). Being able to <q>change coordinates</q> makes the realization of a module in homalg <em>intrinsic</em> (or <q>coordinate free</q>).</p>
 
 </li>
-<li><p>To present a left/right module it suffices to take a matrix <var class="Arg">M</var> and interpret its rows/columns as relations among <span class="SimpleMath">\(n\)</span> <em>abstract</em> generators, where <span class="SimpleMath">\(n\)</span> is the number of columns/rows of <var class="Arg">M</var>. Only that these abstract generators are useless when it comes to specific modules like modules of homomorphisms, where one expects the generators to be maps between modules. For this reason a presentation of a module in <strong class="pkg">homalg</strong> is not merely a matrix of relations, but together with a set of generators.</p>
+<li><p>To present a left/right module it suffices to take a matrix <var class="Arg">M</var> and interpret its rows/columns as relations among <span class="SimpleMath">\(n\)</span> <em>abstract</em> generators, where <span class="SimpleMath">\(n\)</span> is the number of columns/rows of <var class="Arg">M</var>. Only that these abstract generators are useless when it comes to specific modules like modules of homomorphisms, where one expects the generators to be maps between modules. For this reason a presentation of a module in homalg is not merely a matrix of relations, but together with a set of generators.</p>
 
 </li>
 </ul>
@@ -55,9 +55,9 @@
 <h5>4.1-1 LeftPresentation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftPresentation</code>( <var class="Arg">mat</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">homalg</strong> left module</p>
+<p>Returns: a homalg left module</p>
 
-<p>This constructor returns the finitely presented left module with relations given by the rows of the <strong class="pkg">homalg</strong> matrix <var class="Arg">mat</var>.</p>
+<p>This constructor returns the finitely presented left module with relations given by the rows of the homalg matrix <var class="Arg">mat</var>.</p>
 
 
 <div class="example"><pre>
@@ -102,9 +102,9 @@ Z/&lt; 3 &gt; + Z^(1 x 1)
 <h5>4.1-2 RightPresentation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightPresentation</code>( <var class="Arg">mat</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">homalg</strong> right module</p>
+<p>Returns: a homalg right module</p>
 
-<p>This constructor returns the finitely presented right module with relations given by the columns of the <strong class="pkg">homalg</strong> matrix <var class="Arg">mat</var>.</p>
+<p>This constructor returns the finitely presented right module with relations given by the columns of the homalg matrix <var class="Arg">mat</var>.</p>
 
 
 <div class="example"><pre>
