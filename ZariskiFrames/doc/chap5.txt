@@ -31,10 +31,10 @@
   [1X5.2-1 ZariskiFrameOfAffineSpectrum[101X
   
   [33X[1;0Y[29X[2XZariskiFrameOfAffineSpectrum[102X( [3XR[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YConstruct the Zariski frame of open sets in an affine variety defined as the
-  complements of vanishing loci of (radical) ideals of a [5Xhomalg[105X ring [3XR[103X.[133X
+  complements of vanishing loci of (radical) ideals of a homalg ring [3XR[103X.[133X
   
   [1X5.2-2 OpenSubsetOfSpec[101X
   
@@ -42,7 +42,7 @@
   [33X[1;0Y[29X[2XOpenSubsetOfSpec[102X( [3Xstr[103X, [3XR[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XOpenSubsetOfSpec[102X( [3Xr[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XOpenSubsetOfSpecByListOfColumns[102X( [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP object[133X
   
   [33X[0;0YConstruct  a  Zariski open subset (as an object in the Zariski frame of open
   subsets  in  an  affine  variety)  from  a  matrix  [3Xmat[103X.  The  result is the

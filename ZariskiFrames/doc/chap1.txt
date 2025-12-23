@@ -105,7 +105,7 @@
   [1X1.4-14 RabinowitschCover[101X
   
   [33X[1;0Y[29X[2XRabinowitschCover[102X( [3XA[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP object[133X
   
   [33X[0;0YThe  argument  [3XA[103X  is  a  locally  closed subset of some ambient space [23XX[123X. The
   result  is  a closed subset of the ambient space [23XX \times \mathbb{A}^1 \to X[123X
@@ -125,7 +125,7 @@
   [1X1.5-2 BestUnderlyingColumn[101X
   
   [33X[1;0Y[29X[2XBestUnderlyingColumn[102X( [3XA[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5Xhomalg[105X matrix[133X
+  [6XReturns:[106X  [33X[0;10Ya homalg matrix[133X
   
   [33X[0;0YThe column matrix of generators of the defining ideal of [3XA[103X.[133X
   

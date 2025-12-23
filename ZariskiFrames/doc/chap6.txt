@@ -31,10 +31,10 @@
   [1X6.2-1 ZariskiCoframeOfAffineSpectrum[101X
   
   [33X[1;0Y[29X[2XZariskiCoframeOfAffineSpectrum[102X( [3XR[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YConstruct the Zariski coframe of closed sets in an affine variety defined as
-  the vanishing loci of (radical) ideals of a [5Xhomalg[105X ring [3XR[103X.[133X
+  the vanishing loci of (radical) ideals of a homalg ring [3XR[103X.[133X
   
   [1X6.2-2 ClosedSubsetOfSpec[101X
   
@@ -43,7 +43,7 @@
   [33X[1;0Y[29X[2XClosedSubsetOfSpec[102X( [3Xr[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XClosedSubsetOfSpecByListOfColumns[102X( [3XL[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XClosedSubsetOfSpecByListOfRadicalColumns[102X( [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP object[133X
   
   [33X[0;0YConstruct  a  Zariski  closed subset (as an object in the Zariski coframe of
   closed  subsets  in  an affine variety) from a matrix [3Xmat[103X. The result is the
