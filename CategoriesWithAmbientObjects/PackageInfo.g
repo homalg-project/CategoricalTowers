@@ -11,9 +11,9 @@ SetPackageInfo( rec(
 
 PackageName := "CategoriesWithAmbientObjects",
 Subtitle := "Categories with objects having ambient objects",
-Version := "2025.07-01",
-Date := "2025-07-04",
-Date := "2025-07-04",
+Version := "2025.12-01",
+Date := "2025-12-23",
+Date := "2025-12-23",
 License := "GPL-2.0-or-later",
 
 

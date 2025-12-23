@@ -25,14 +25,14 @@
   [33X[1;0Y[29X[2XIsCapCategoryObjectWithAmbientObject[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of objects with ambient objects in a [5XCAP[105X category.[133X
+  [33X[0;0YThe [5XGAP[105X category of objects with ambient objects in a CAP category.[133X
   
   [1X1.1-4 IsCapCategoryMorphismWithAmbientObject[101X
   
   [33X[1;0Y[29X[2XIsCapCategoryMorphismWithAmbientObject[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe  [5XGAP[105X category of morphisms between objects with ambient objects in a [5XCAP[105X
+  [33X[0;0YThe  [5XGAP[105X category of morphisms between objects with ambient objects in a CAP
   category.[133X
   
   
@@ -47,14 +47,14 @@
   [1X1.2-2 GeneralizedEmbeddingInAmbientObject[101X
   
   [33X[1;0Y[29X[2XGeneralizedEmbeddingInAmbientObject[102X( [3XM[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X generalized monomorphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP generalized monomorphism[133X
   
   [33X[0;0YThe generalized embedding of the object [3XM[103X into its ambient object.[133X
   
   [1X1.2-3 EmbeddingInAmbientObject[101X
   
   [33X[1;0Y[29X[2XEmbeddingInAmbientObject[102X( [3Xgen[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X monomorphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP monomorphism[133X
   
   [33X[0;0YThe  embedding of the object [3XM[103X into its ambient object modulo the aid, i.e.,
   the   output   is  the  associated  monomorphism  of  the  lazy  generalized
@@ -117,7 +117,7 @@
   [1X1.3-7 CategoryWithAmbientObjects[101X
   
   [33X[1;0Y[29X[2XCategoryWithAmbientObjects[102X( [3XA[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [1X1.3-8 DisplayEmbeddingInAmbientObject[101X
   
@@ -132,18 +132,18 @@
   [33X[1;0Y[29X[2XWithAmbientObject[102X( [3XF[103X, [3XA[103X, [3XB[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XWithAmbientObject[102X( [3XF[103X, [3Xname[103X, [3XA[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XWithAmbientObject[102X( [3XF[103X, [3XA[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
-  [33X[0;0YWrap the [5XCAP[105X functor [3XF[103X:[10XUnderlyingCategory[110X([3XA[103X)[22X->[122X[10XUnderlyingCategory[110X([3XB[103X), where [3XA[103X
+  [33X[0;0YWrap the CAP functor [3XF[103X:[10XUnderlyingCategory[110X([3XA[103X)[22X->[122X[10XUnderlyingCategory[110X([3XB[103X), where [3XA[103X
   and [3XB[103X are categories with ambient objects.[133X
   
   [1X1.3-10 WithAmbientObject[101X
   
   [33X[1;0Y[29X[2XWithAmbientObject[102X( [3Xeta[103X, [3Xname[103X, [3XF[103X, [3XG[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XWithAmbientObject[102X( [3Xeta[103X, [3XF[103X, [3XG[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X natural transformation[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP natural transformation[133X
   
-  [33X[0;0YWrap            the           [5XCAP[105X           natural           transformation
+  [33X[0;0YWrap            the           CAP           natural           transformation
   [3Xeta[103X:[3XF[103X[10X!.UnderlyingFunctor[110X[22X->[122X[3XG[103X[10X!.UnderlyingFunctor[110X,  where  [3XF[103X and [3XG[103X are functors
   between categories with ambient objects.[133X
   
