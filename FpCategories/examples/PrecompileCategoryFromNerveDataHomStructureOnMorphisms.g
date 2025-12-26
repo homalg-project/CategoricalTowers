@@ -21,7 +21,7 @@ given_arguments := [ FinQuiver( "q(a,b)[m:a->b]" ) ];;
 compiled_category_name := "CategoryFromNerveDataHomStructureOnMorphismsPrecompiled";;
 package_name := "FpCategories";;
 
-CapJitEnableStepByStepCompilation();
+#CapJitEnableStepByStepCompilation();
 
 CapJitPrecompileCategoryAndCompareResult(
     category_constructor,
