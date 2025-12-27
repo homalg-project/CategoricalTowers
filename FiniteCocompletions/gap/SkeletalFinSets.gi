@@ -108,7 +108,7 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
         
     end;
     
-    ## from the raw morphism data to the morphism in the modeling category
+    ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
       function( sFinSets, mor )
         local UT;
