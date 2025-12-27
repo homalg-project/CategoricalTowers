@@ -40,13 +40,13 @@ DeclareCategory( "IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproduc
 
 #! @Description
 #!  The integer defining the skeletal finite set <A>M</A>, i.e.,
-#!  <C>Length( FinSet( n ) ) = n</C>.
+#!  <C>Cardinality( FinSet( n ) ) = n</C>.
 #! @Arguments M
 #! @Returns an integer
-DeclareAttribute( "Length",
+DeclareAttribute( "Cardinality",
         IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory );
 
-CapJitAddTypeSignature( "Length", [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ], IsBigInt );
+CapJitAddTypeSignature( "Cardinality", [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ], IsBigInt );
 
 #! @Description
 #!  The list associated to a skeletal finite set, i.e.,

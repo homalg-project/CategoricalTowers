@@ -10,7 +10,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_SkeletalCategoryOfFiniteSetsAsFiniteStrictCoprodu
         
 ########
 function ( cat_1, objects_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Length, Sum( List( objects_1, Length ) ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Cardinality, Sum( List( objects_1, Cardinality ) ) );
 end
 ########
         
@@ -21,7 +21,7 @@ end
         
 ########
 function ( cat_1, objects_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Length, Product( List( objects_1, Length ) ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Cardinality, Product( List( objects_1, Cardinality ) ) );
 end
 ########
         
@@ -32,7 +32,7 @@ end
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Length, BigInt( 1 ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Cardinality, BigInt( 1 ) );
 end
 ########
         
@@ -46,7 +46,7 @@ function ( cat_1, Y_1, morphisms_1, P_1 )
     local deduped_1_1, hoisted_2_1;
     hoisted_2_1 := [ 1 .. Length( morphisms_1 ) - 1 ];
     deduped_1_1 := List( morphisms_1, AsList );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Y_1, AsList, Filtered( [ 0 .. Length( Y_1 ) - 1 ], function ( x_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Y_1, AsList, Filtered( [ 0 .. Cardinality( Y_1 ) - 1 ], function ( x_2 )
               local deduped_1_2;
               deduped_1_2 := 1 + x_2;
               return ForAll( hoisted_2_1, function ( j_3 )
@@ -66,7 +66,7 @@ function ( cat_1, Y_1, morphisms_1 )
     local deduped_1_1, hoisted_2_1;
     hoisted_2_1 := [ 1 .. Length( morphisms_1 ) - 1 ];
     deduped_1_1 := List( morphisms_1, AsList );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Length, Length( Filtered( [ 0 .. Length( Y_1 ) - 1 ], function ( x_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Cardinality, Length( Filtered( [ 0 .. Cardinality( Y_1 ) - 1 ], function ( x_2 )
                 local deduped_1_2;
                 deduped_1_2 := 1 + x_2;
                 return ForAll( hoisted_2_1, function ( j_3 )
@@ -84,13 +84,13 @@ end
 ########
 function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     local deduped_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1;
-    hoisted_6_1 := [ 0 .. Length( Source( alpha_1 ) ) - 1 ];
-    hoisted_5_1 := Length( Range( beta_1 ) );
+    hoisted_6_1 := [ 0 .. Cardinality( Source( alpha_1 ) ) - 1 ];
+    hoisted_5_1 := Cardinality( Range( beta_1 ) );
     hoisted_4_1 := AsList( beta_1 );
     hoisted_3_1 := AsList( alpha_1 );
-    hoisted_2_1 := [ 0 .. Length( Range( alpha_1 ) ) - 1 ];
-    deduped_1_1 := Length( Source( beta_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( gg_2 )
+    hoisted_2_1 := [ 0 .. Cardinality( Range( alpha_1 ) ) - 1 ];
+    deduped_1_1 := Cardinality( Source( beta_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, List( [ 0 .. Cardinality( source_1 ) - 1 ], function ( gg_2 )
               local hoisted_1_2;
               hoisted_1_2 := List( hoisted_2_1, function ( i_3 )
                       return REM_INT( QUO_INT( gg_2, deduped_1_1 ^ i_3 ), deduped_1_1 );
@@ -110,13 +110,13 @@ end
 ########
 function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     local deduped_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, hoisted_6_1;
-    hoisted_6_1 := Length( Range( beta_1 ) );
-    deduped_5_1 := [ 0 .. Length( Source( alpha_1 ) ) - 1 ];
+    hoisted_6_1 := Cardinality( Range( beta_1 ) );
+    deduped_5_1 := [ 0 .. Cardinality( Source( alpha_1 ) ) - 1 ];
     hoisted_4_1 := AsList( beta_1 );
     hoisted_3_1 := AsList( alpha_1 );
-    hoisted_2_1 := [ 0 .. Length( Range( alpha_1 ) ) - 1 ];
-    deduped_1_1 := Length( Source( beta_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( gg_2 )
+    hoisted_2_1 := [ 0 .. Cardinality( Range( alpha_1 ) ) - 1 ];
+    deduped_1_1 := Cardinality( Source( beta_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, List( [ 0 .. Cardinality( source_1 ) - 1 ], function ( gg_2 )
               local hoisted_1_2, hoisted_2_2;
               hoisted_1_2 := List( hoisted_2_1, function ( i_3 )
                       return REM_INT( QUO_INT( gg_2, deduped_1_1 ^ i_3 ), deduped_1_1 );
@@ -138,7 +138,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Length, Length( arg3_1 ) ^ Length( arg2_1 ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Cardinality, Cardinality( arg3_1 ) ^ Cardinality( arg2_1 ) );
 end
 ########
         
@@ -149,7 +149,7 @@ end
         
 ########
 function ( cat_1, a_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, AsList, [ 0 .. Length( a_1 ) - 1 ] );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, AsList, [ 0 .. Cardinality( a_1 ) - 1 ] );
 end
 ########
         
@@ -160,7 +160,7 @@ end
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Length, BigInt( 0 ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Cardinality, BigInt( 0 ) );
 end
 ########
         
@@ -172,7 +172,7 @@ end
 ########
 function ( cat_1, objects_1, k_1, P_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_2_1 := List( objects_1, Length );
+    deduped_2_1 := List( objects_1, Cardinality );
     deduped_1_1 := Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} );
     return CreateCapCategoryMorphismWithAttributes( cat_1, objects_1[k_1], P_1, AsList, [ deduped_1_1 .. deduped_1_1 + deduped_2_1[k_1] - 1 ] );
 end
@@ -187,8 +187,8 @@ end
 function ( cat_1, iota_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := Range( iota_1 );
-    deduped_1_1 := Length( deduped_2_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Length, deduped_1_1 - Length( Source( iota_1 ) ) ), deduped_2_1, AsList, Difference( [ 0 .. deduped_1_1 - 1 ], AsList( iota_1 ) ) );
+    deduped_1_1 := Cardinality( deduped_2_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Cardinality, deduped_1_1 - Cardinality( Source( iota_1 ) ) ), deduped_2_1, AsList, Difference( [ 0 .. deduped_1_1 - 1 ], AsList( iota_1 ) ) );
 end
 ########
         
@@ -200,9 +200,9 @@ end
 ########
 function ( cat_1, source_1, alpha_1, range_1 )
     local hoisted_1_1, hoisted_2_1;
-    hoisted_2_1 := Length( Range( alpha_1 ) );
+    hoisted_2_1 := Cardinality( Range( alpha_1 ) );
     hoisted_1_1 := AsList( alpha_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, ListWithIdenticalEntries( Length( source_1 ), Sum( [ 0 .. Length( Source( alpha_1 ) ) - 1 ], function ( i_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, ListWithIdenticalEntries( Cardinality( source_1 ), Sum( [ 0 .. Cardinality( Source( alpha_1 ) ) - 1 ], function ( i_2 )
                 return hoisted_1_1[1 + i_2] * hoisted_2_1 ^ i_2;
             end ) ) );
 end
@@ -217,8 +217,8 @@ end
 function ( cat_1, source_1, range_1, alpha_1 )
     local deduped_1_1, hoisted_2_1;
     hoisted_2_1 := AsList( alpha_1 )[1];
-    deduped_1_1 := Length( range_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( i_2 )
+    deduped_1_1 := Cardinality( range_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, List( [ 0 .. Cardinality( source_1 ) - 1 ], function ( i_2 )
               return REM_INT( QUO_INT( hoisted_2_1, deduped_1_1 ^ i_2 ), deduped_1_1 );
           end ) );
 end
@@ -263,7 +263,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    if not Length( arg2_1 ) = Length( arg3_1 ) then
+    if not Cardinality( arg2_1 ) = Cardinality( arg3_1 ) then
         return false;
     else
         return true;
@@ -279,7 +279,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return Length( arg2_1 ) = 0;
+    return Cardinality( arg2_1 ) = 0;
 end
 ########
         
@@ -293,7 +293,7 @@ function ( cat_1, arg2_1, arg3_1 )
     local hoisted_1_1, hoisted_2_1;
     hoisted_2_1 := AsList( arg3_1 );
     hoisted_1_1 := AsList( arg2_1 );
-    return ForAll( [ 0 .. Length( Source( arg2_1 ) ) - 1 ], function ( b_2 )
+    return ForAll( [ 0 .. Cardinality( Source( arg2_1 ) ) - 1 ], function ( b_2 )
             return hoisted_1_1[1 + b_2] in hoisted_2_1;
         end );
 end
@@ -306,7 +306,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return Length( arg2_1 ) = BigInt( 1 );
+    return Cardinality( arg2_1 ) = BigInt( 1 );
 end
 ########
         
@@ -320,8 +320,8 @@ function ( cat_1, alpha_1 )
     local hoisted_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
     deduped_4_1 := AsList( alpha_1 );
     deduped_3_1 := Length( deduped_4_1 );
-    deduped_2_1 := Length( Source( alpha_1 ) );
-    hoisted_1_1 := Length( Range( alpha_1 ) );
+    deduped_2_1 := Cardinality( Source( alpha_1 ) );
+    hoisted_1_1 := Cardinality( Range( alpha_1 ) );
     if not ForAll( deduped_4_1, function ( a_2 )
                  return IsBigInt( a_2 ) and a_2 >= 0;
              end ) then
@@ -349,7 +349,7 @@ end
 ########
 function ( cat_1, arg2_1 )
     local deduped_1_1;
-    deduped_1_1 := Length( arg2_1 );
+    deduped_1_1 := Cardinality( arg2_1 );
     return IsBigInt( deduped_1_1 ) and deduped_1_1 >= 0;
 end
 ########
@@ -365,7 +365,7 @@ function ( cat_1, alpha_1, beta_1 )
     deduped_3_1 := Source( alpha_1 );
     hoisted_2_1 := AsList( beta_1 );
     hoisted_1_1 := AsList( alpha_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_3_1, Source( beta_1 ), AsList, List( [ 0 .. Length( deduped_3_1 ) - 1 ], function ( b_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_3_1, Source( beta_1 ), AsList, List( [ 0 .. Cardinality( deduped_3_1 ) - 1 ], function ( b_2 )
               return -1 + BigInt( SafePosition( hoisted_2_1, hoisted_1_1[1 + b_2] ) );
           end ) );
 end
@@ -401,8 +401,8 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1 )
     local hoisted_3_1, deduped_4_1, deduped_5_1;
-    deduped_5_1 := Length( arg2_1 );
-    deduped_4_1 := Length( arg3_1 );
+    deduped_5_1 := Cardinality( arg2_1 );
+    deduped_4_1 := Cardinality( arg3_1 );
     hoisted_3_1 := [ 0 .. deduped_5_1 - 1 ];
     return Concatenation( List( [ 0 .. deduped_4_1 ^ deduped_5_1 - 1 ], function ( m_2 )
               local hoisted_1_2;
@@ -422,8 +422,8 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1 )
     local hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
-    deduped_7_1 := Length( arg2_1 );
-    deduped_6_1 := Length( arg3_1 );
+    deduped_7_1 := Cardinality( arg2_1 );
+    deduped_6_1 := Cardinality( arg3_1 );
     deduped_5_1 := [ 0 .. deduped_6_1 ^ deduped_7_1 - 1 ];
     hoisted_3_1 := [ 0 .. deduped_7_1 - 1 ];
     hoisted_4_1 := List( deduped_5_1, function ( m_2 )
@@ -444,7 +444,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Length, arg2_1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Cardinality, arg2_1 );
 end
 ########
         
@@ -455,7 +455,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return Length( arg2_1 );
+    return Cardinality( arg2_1 );
 end
 ########
         
@@ -470,7 +470,7 @@ function ( cat_1, alpha_1, beta_1 )
     deduped_3_1 := Source( alpha_1 );
     hoisted_2_1 := AsList( beta_1 );
     hoisted_1_1 := AsList( alpha_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_3_1, Range( beta_1 ), AsList, List( [ 0 .. Length( deduped_3_1 ) - 1 ], function ( i_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_3_1, Range( beta_1 ), AsList, List( [ 0 .. Cardinality( deduped_3_1 ) - 1 ], function ( i_2 )
               return hoisted_2_1[1 + hoisted_1_1[1 + i_2]];
           end ) );
 end
@@ -484,10 +484,10 @@ end
 ########
 function ( cat_1, objects_1, k_1, P_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1;
-    deduped_3_1 := List( objects_1, Length );
+    deduped_3_1 := List( objects_1, Cardinality );
     hoisted_2_1 := deduped_3_1[k_1];
     hoisted_1_1 := Product( deduped_3_1{[ 1 .. k_1 - 1 ]} );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, objects_1[k_1], AsList, List( [ 0 .. Length( P_1 ) - 1 ], function ( i_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, objects_1[k_1], AsList, List( [ 0 .. Cardinality( P_1 ) - 1 ], function ( i_2 )
               return REM_INT( QUO_INT( i_2, hoisted_1_1 ), hoisted_2_1 );
           end ) );
 end
@@ -500,7 +500,7 @@ end
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Length, BigInt( 1 ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Cardinality, BigInt( 1 ) );
 end
 ########
         
@@ -540,12 +540,12 @@ end
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_5_1;
     deduped_5_1 := [ 0 .. Length( objects_1 ) - 1 ];
-    hoisted_2_1 := List( objects_1, Length );
+    hoisted_2_1 := List( objects_1, Cardinality );
     hoisted_3_1 := List( deduped_5_1, function ( j_2 )
             return Product( hoisted_2_1{[ 1 .. j_2 ]} );
         end );
     hoisted_1_1 := List( tau_1, AsList );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, AsList, List( [ 0 .. Length( T_1 ) - 1 ], function ( i_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, AsList, List( [ 0 .. Cardinality( T_1 ) - 1 ], function ( i_2 )
               local hoisted_1_2;
               hoisted_1_2 := 1 + i_2;
               return Sum( deduped_5_1, function ( j_3 )
@@ -567,7 +567,7 @@ function ( cat_1, Y_1, morphisms_1, T_1, tau_1, P_1 )
     local deduped_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1;
     hoisted_2_1 := [ 1 .. Length( morphisms_1 ) - 1 ];
     deduped_1_1 := List( morphisms_1, AsList );
-    hoisted_4_1 := Filtered( [ 0 .. Length( Y_1 ) - 1 ], function ( x_2 )
+    hoisted_4_1 := Filtered( [ 0 .. Cardinality( Y_1 ) - 1 ], function ( x_2 )
             local deduped_1_2;
             deduped_1_2 := 1 + x_2;
             return ForAll( hoisted_2_1, function ( j_3 )
@@ -575,7 +575,7 @@ function ( cat_1, Y_1, morphisms_1, T_1, tau_1, P_1 )
                 end );
         end );
     hoisted_3_1 := AsList( tau_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, AsList, List( [ 0 .. Length( T_1 ) - 1 ], function ( x_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, AsList, List( [ 0 .. Cardinality( T_1 ) - 1 ], function ( x_2 )
               return -1 + BigInt( SafePosition( hoisted_4_1, hoisted_3_1[1 + x_2] ) );
           end ) );
 end
@@ -588,7 +588,7 @@ end
         
 ########
 function ( cat_1, T_1, P_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, AsList, ListWithIdenticalEntries( Length( T_1 ), BigInt( 0 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, AsList, ListWithIdenticalEntries( Cardinality( T_1 ), BigInt( 0 ) ) );
 end
 ########
         

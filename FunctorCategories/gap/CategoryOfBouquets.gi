@@ -144,8 +144,8 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
         
         values_of_functor := ObjectDatum( PSh, F );
         
-        return Triple( Length( values_of_functor[1][1] ),
-                       Length( values_of_functor[1][2] ),
+        return Triple( Cardinality( values_of_functor[1][1] ),
+                       Cardinality( values_of_functor[1][2] ),
                        AsList( values_of_functor[2][1] ) );
         
     end;
@@ -314,7 +314,7 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
     U := CapFunctor( "UnwrappingFunctor", RangeOfFunctor( Y ), category_of_bouquets );
     
     AddObjectFunction( U,
-            F -> CreateBouquet( category_of_bouquets, Triple( Length( F.P ), Length( F.L ), AsList( F.b ) ) ) );
+            F -> CreateBouquet( category_of_bouquets, Triple( Cardinality( F.P ), Cardinality( F.L ), AsList( F.b ) ) ) );
     
     AddMorphismFunction( U,
             { source, eta, range } -> CreateBouquetMorphism( category_of_bouquets, source, Pair( AsList( eta.P ), AsList( eta.L ) ), range ) );

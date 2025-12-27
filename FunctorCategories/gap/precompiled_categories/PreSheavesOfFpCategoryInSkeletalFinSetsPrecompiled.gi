@@ -13,7 +13,7 @@ function ( cat_1 )
     local hoisted_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
     deduped_6_1 := Target( cat_1 );
     deduped_5_1 := Source( cat_1 );
-    deduped_4_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, Length, BigInt( 0 ) );
+    deduped_4_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, Cardinality, BigInt( 0 ) );
     deduped_3_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
     hoisted_2_1 := CreateCapCategoryMorphismWithAttributes( deduped_6_1, deduped_4_1, deduped_4_1, AsList, CapJitTypedExpression( [  ], function (  )
               return rec(
@@ -43,28 +43,28 @@ function ( cat_1, objects_1 )
     hoisted_3_1 := [ 1 .. Length( objects_1 ) ];
     hoisted_2_1 := deduped_4_1[3];
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Target, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
-                return CreateCapCategoryObjectWithAttributes( deduped_6_1, Length, Sum( List( objects_1, function ( F_3 )
-                            return CAP_JIT_INCOMPLETE_LOGIC( Length( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[1][o_2] ) ) );
+                return CreateCapCategoryObjectWithAttributes( deduped_6_1, Cardinality, Sum( List( objects_1, function ( F_3 )
+                            return CAP_JIT_INCOMPLETE_LOGIC( Cardinality( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[1][o_2] ) ) );
                         end ) ) );
             end ), LazyHList( [ 1 .. deduped_4_1[2] ], function ( m_2 )
                 local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2;
                 deduped_4_2 := hoisted_2_1[m_2];
                 deduped_3_2 := List( objects_1, function ( F_3 )
-                        return CAP_JIT_INCOMPLETE_LOGIC( Length( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[2][m_2] ) ) ) );
+                        return CAP_JIT_INCOMPLETE_LOGIC( Cardinality( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[2][m_2] ) ) ) );
                     end );
                 hoisted_2_2 := 1 + deduped_4_2[1];
                 hoisted_1_2 := 1 + deduped_4_2[2];
-                return CreateCapCategoryMorphismWithAttributes( deduped_6_1, CreateCapCategoryObjectWithAttributes( deduped_6_1, Length, Sum( List( objects_1, function ( F_3 )
-                              return CAP_JIT_INCOMPLETE_LOGIC( Length( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[1][hoisted_1_2] ) ) );
-                          end ) ) ), CreateCapCategoryObjectWithAttributes( deduped_6_1, Length, Sum( List( objects_1, function ( F_3 )
-                              return CAP_JIT_INCOMPLETE_LOGIC( Length( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[1][hoisted_2_2] ) ) );
+                return CreateCapCategoryMorphismWithAttributes( deduped_6_1, CreateCapCategoryObjectWithAttributes( deduped_6_1, Cardinality, Sum( List( objects_1, function ( F_3 )
+                              return CAP_JIT_INCOMPLETE_LOGIC( Cardinality( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[1][hoisted_1_2] ) ) );
+                          end ) ) ), CreateCapCategoryObjectWithAttributes( deduped_6_1, Cardinality, Sum( List( objects_1, function ( F_3 )
+                              return CAP_JIT_INCOMPLETE_LOGIC( Cardinality( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[1][hoisted_2_2] ) ) );
                           end ) ) ), AsList, Concatenation( List( hoisted_3_1, function ( i_3 )
                             local hoisted_1_3, hoisted_2_3, deduped_3_3, deduped_4_3;
                             deduped_4_3 := Sum( deduped_3_2{[ 1 .. i_3 - 1 ]} );
                             deduped_3_3 := CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( CAP_JIT_INCOMPLETE_LOGIC( objects_1[i_3] ) )[2][m_2] );
                             hoisted_2_3 := [ deduped_4_3 .. deduped_4_3 + deduped_3_2[i_3] - 1 ];
                             hoisted_1_3 := CAP_JIT_INCOMPLETE_LOGIC( AsList( deduped_3_3 ) );
-                            return List( [ 0 .. CAP_JIT_INCOMPLETE_LOGIC( Length( Source( deduped_3_3 ) ) ) - 1 ], function ( i_4 )
+                            return List( [ 0 .. CAP_JIT_INCOMPLETE_LOGIC( Cardinality( Source( deduped_3_3 ) ) ) - 1 ], function ( i_4 )
                                     return hoisted_2_3[1 + hoisted_1_3[1 + i_4]];
                                 end );
                         end ) ) );
@@ -86,8 +86,8 @@ function ( cat_1, objects_1 )
     hoisted_3_1 := [ 1 .. Length( objects_1 ) ];
     hoisted_2_1 := deduped_4_1[3];
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Target, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
-                return CreateCapCategoryObjectWithAttributes( deduped_6_1, Length, Sum( List( objects_1, function ( F_3 )
-                            return List( ValuesOfPreSheaf( F_3 )[1], Length )[o_2];
+                return CreateCapCategoryObjectWithAttributes( deduped_6_1, Cardinality, Sum( List( objects_1, function ( F_3 )
+                            return List( ValuesOfPreSheaf( F_3 )[1], Cardinality )[o_2];
                         end ) ) );
             end ), LazyHList( [ 1 .. deduped_4_1[2] ], function ( m_2 )
                 local hoisted_1_2, hoisted_2_2, hoisted_3_2, deduped_4_2, hoisted_5_2, deduped_6_2;
@@ -97,20 +97,20 @@ function ( cat_1, objects_1 )
                     end );
                 deduped_4_2 := List( objects_1, function ( F_3 )
                         return List( ValuesOfPreSheaf( F_3 )[2], function ( logic_new_func_x_4 )
-                                  return Length( Range( logic_new_func_x_4 ) );
+                                  return Cardinality( Range( logic_new_func_x_4 ) );
                               end )[m_2];
                     end );
                 hoisted_3_2 := List( objects_1, function ( F_3 )
                         return List( ValuesOfPreSheaf( F_3 )[2], function ( logic_new_func_x_4 )
-                                  return Length( Source( logic_new_func_x_4 ) );
+                                  return Cardinality( Source( logic_new_func_x_4 ) );
                               end )[m_2];
                     end );
                 hoisted_2_2 := 1 + deduped_6_2[1];
                 hoisted_1_2 := 1 + deduped_6_2[2];
-                return CreateCapCategoryMorphismWithAttributes( deduped_6_1, CreateCapCategoryObjectWithAttributes( deduped_6_1, Length, Sum( List( objects_1, function ( F_3 )
-                              return List( ValuesOfPreSheaf( F_3 )[1], Length )[hoisted_1_2];
-                          end ) ) ), CreateCapCategoryObjectWithAttributes( deduped_6_1, Length, Sum( List( objects_1, function ( F_3 )
-                              return List( ValuesOfPreSheaf( F_3 )[1], Length )[hoisted_2_2];
+                return CreateCapCategoryMorphismWithAttributes( deduped_6_1, CreateCapCategoryObjectWithAttributes( deduped_6_1, Cardinality, Sum( List( objects_1, function ( F_3 )
+                              return List( ValuesOfPreSheaf( F_3 )[1], Cardinality )[hoisted_1_2];
+                          end ) ) ), CreateCapCategoryObjectWithAttributes( deduped_6_1, Cardinality, Sum( List( objects_1, function ( F_3 )
+                              return List( ValuesOfPreSheaf( F_3 )[1], Cardinality )[hoisted_2_2];
                           end ) ) ), AsList, Concatenation( List( hoisted_3_1, function ( i_3 )
                             local hoisted_1_3, hoisted_2_3, deduped_3_3;
                             deduped_3_3 := Sum( deduped_4_2{[ 1 .. i_3 - 1 ]} );
@@ -140,7 +140,7 @@ function ( cat_1, objects_1, k_1, P_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_5_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2;
               deduped_2_2 := List( objects_1, function ( F_3 )
-                      return CAP_JIT_INCOMPLETE_LOGIC( Length( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[1][o_2] ) ) );
+                      return CAP_JIT_INCOMPLETE_LOGIC( Cardinality( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[1][o_2] ) ) );
                   end );
               deduped_1_2 := Sum( deduped_2_2{hoisted_3_1} );
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, CAP_JIT_INCOMPLETE_LOGIC( hoisted_1_1[o_2] ), hoisted_2_1[o_2], AsList, [ deduped_1_2 .. deduped_1_2 + deduped_2_2[k_1] - 1 ] );
@@ -162,7 +162,7 @@ function ( cat_1, objects_1, k_1, P_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, objects_1[k_1], P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2;
               deduped_2_2 := List( objects_1, function ( F_3 )
-                      return List( ValuesOfPreSheaf( F_3 )[1], Length )[o_2];
+                      return List( ValuesOfPreSheaf( F_3 )[1], Cardinality )[o_2];
                   end );
               deduped_1_2 := Sum( deduped_2_2{hoisted_2_1} );
               return CreateCapCategoryMorphismWithAttributes( hoisted_3_1, List( objects_1, function ( F_3 )
@@ -226,7 +226,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_44_1 := DefiningTripleOfUnderlyingQuiver( deduped_47_1 );
     deduped_43_1 := [ 0 .. deduped_44_1[2] - 1 ];
     deduped_42_1 := [ 0 .. deduped_44_1[1] - 1 ];
-    deduped_1_1 := List( deduped_48_1[1], Length );
+    deduped_1_1 := List( deduped_48_1[1], Cardinality );
     deduped_41_1 := List( deduped_42_1, function ( o_2 )
             return deduped_1_1[1 + o_2];
         end );
@@ -246,7 +246,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_40_1 := [ 0 .. Sum( List( deduped_43_1, function ( i_2 )
                     return deduped_8_1[1 + i_2][1];
                 end ) ) - 1 ];
-    deduped_4_1 := List( deduped_49_1[1], Length );
+    deduped_4_1 := List( deduped_49_1[1], Cardinality );
     deduped_2_1 := List( deduped_45_1, UnderlyingVertex );
     deduped_39_1 := Concatenation( List( deduped_42_1, function ( o_2 )
               local hoisted_1_2, deduped_2_2;
@@ -379,7 +379,7 @@ function ( cat_1, arg2_1, arg3_1 )
             return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
     hoisted_17_1 := List( deduped_46_1, function ( logic_new_func_x_2 )
-            return Length( Source( logic_new_func_x_2 ) );
+            return Cardinality( Source( logic_new_func_x_2 ) );
         end );
     hoisted_16_1 := List( deduped_46_1, AsList );
     deduped_19_1 := List( deduped_43_1, function ( m_2 )
@@ -473,7 +473,7 @@ function ( cat_1, arg2_1, arg3_1 )
                     return hoisted_2_2[1 + hoisted_1_2[1 + i_3]];
                 end );
         end );
-    return CreateCapCategoryObjectWithAttributes( Target( cat_1 ), Length, BigInt( Length( Filtered( deduped_36_1, function ( x_2 )
+    return CreateCapCategoryObjectWithAttributes( Target( cat_1 ), Cardinality, BigInt( Length( Filtered( deduped_36_1, function ( x_2 )
                   local deduped_1_2;
                   deduped_1_2 := 1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 );
                   return CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_38_1, function ( j_3 )
@@ -505,7 +505,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_46_1 := DefiningTripleOfUnderlyingQuiver( deduped_49_1 );
     deduped_45_1 := [ 0 .. deduped_46_1[2] - 1 ];
     deduped_44_1 := [ 0 .. deduped_46_1[1] - 1 ];
-    deduped_1_1 := List( deduped_50_1[1], Length );
+    deduped_1_1 := List( deduped_50_1[1], Cardinality );
     deduped_43_1 := List( deduped_44_1, function ( o_2 )
             return deduped_1_1[1 + o_2];
         end );
@@ -525,7 +525,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_42_1 := [ 0 .. Sum( List( deduped_45_1, function ( i_2 )
                     return deduped_8_1[1 + i_2][1];
                 end ) ) - 1 ];
-    deduped_4_1 := List( deduped_51_1[1], Length );
+    deduped_4_1 := List( deduped_51_1[1], Cardinality );
     deduped_2_1 := List( deduped_47_1, UnderlyingVertex );
     deduped_41_1 := Concatenation( List( deduped_44_1, function ( o_2 )
               local hoisted_1_2, deduped_2_2;
@@ -667,7 +667,7 @@ function ( cat_1, arg2_1, arg3_1 )
             return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
     hoisted_17_1 := List( deduped_48_1, function ( logic_new_func_x_2 )
-            return Length( Source( logic_new_func_x_2 ) );
+            return Cardinality( Source( logic_new_func_x_2 ) );
         end );
     hoisted_16_1 := List( deduped_48_1, AsList );
     deduped_19_1 := List( deduped_45_1, function ( m_2 )
@@ -770,7 +770,7 @@ function ( cat_1, arg2_1, arg3_1 )
                     return hoisted_27_1[deduped_1_3][hoisted_1_2] * deduped_29_1[deduped_1_3];
                 end );
         end );
-    return CreateCapCategoryObjectWithAttributes( Target( cat_1 ), Length, BigInt( Length( Filtered( deduped_38_1, function ( x_2 )
+    return CreateCapCategoryObjectWithAttributes( Target( cat_1 ), Cardinality, BigInt( Length( Filtered( deduped_38_1, function ( x_2 )
                   local deduped_1_2;
                   deduped_1_2 := 1 + x_2;
                   return hoisted_31_1[deduped_1_2] = hoisted_37_1[deduped_1_2];
@@ -800,11 +800,11 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_101_1 := [ 1 .. deduped_102_1 ];
     deduped_100_1 := [ 0 .. deduped_102_1 - 1 ];
     deduped_99_1 := [ 0 .. deduped_108_1[2] - 1 ];
-    deduped_36_1 := List( deduped_109_1[1], Length );
+    deduped_36_1 := List( deduped_109_1[1], Cardinality );
     deduped_98_1 := List( deduped_100_1, function ( o_2 )
             return deduped_36_1[1 + o_2];
         end );
-    deduped_1_1 := List( deduped_105_1[1], Length );
+    deduped_1_1 := List( deduped_105_1[1], Cardinality );
     deduped_97_1 := List( deduped_100_1, function ( o_2 )
             return deduped_1_1[1 + o_2];
         end );
@@ -835,7 +835,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_93_1 := [ 0 .. Sum( List( deduped_99_1, function ( i_2 )
                     return deduped_8_1[1 + i_2][1];
                 end ) ) - 1 ];
-    deduped_37_1 := List( deduped_110_1[1], Length );
+    deduped_37_1 := List( deduped_110_1[1], Cardinality );
     deduped_2_1 := List( deduped_106_1, UnderlyingVertex );
     deduped_92_1 := Concatenation( List( deduped_100_1, function ( o_2 )
               local hoisted_1_2, deduped_2_2;
@@ -853,7 +853,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                          return UnderlyingVertex( obj_3 ) = hoisted_1_2;
                      end )] );
           end ) );
-    deduped_4_1 := List( deduped_107_1[1], Length );
+    deduped_4_1 := List( deduped_107_1[1], Cardinality );
     deduped_90_1 := Concatenation( List( deduped_100_1, function ( o_2 )
               local hoisted_1_2, deduped_2_2;
               deduped_2_2 := 1 + o_2;
@@ -991,7 +991,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
             return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
     hoisted_17_1 := List( deduped_103_1, function ( logic_new_func_x_2 )
-            return Length( Source( logic_new_func_x_2 ) );
+            return Cardinality( Source( logic_new_func_x_2 ) );
         end );
     hoisted_16_1 := List( deduped_103_1, AsList );
     deduped_19_1 := List( deduped_99_1, function ( m_2 )
@@ -1134,7 +1134,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
         end );
     deduped_56_1 := Sum( deduped_98_1 );
     hoisted_50_1 := List( deduped_111_1, function ( logic_new_func_x_2 )
-            return Length( Source( logic_new_func_x_2 ) );
+            return Cardinality( Source( logic_new_func_x_2 ) );
         end );
     hoisted_49_1 := List( deduped_111_1, AsList );
     deduped_51_1 := List( deduped_100_1, function ( o_2 )
@@ -1343,7 +1343,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
             return Product( hoisted_71_1{[ 1 .. j_2 ]} );
         end );
     hoisted_66_1 := List( deduped_104_1, function ( logic_new_func_x_2 )
-            return Length( Source( logic_new_func_x_2 ) );
+            return Cardinality( Source( logic_new_func_x_2 ) );
         end );
     hoisted_65_1 := List( deduped_104_1, AsList );
     deduped_67_1 := List( deduped_99_1, function ( m_2 )
@@ -1450,7 +1450,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                         return hoisted_78_1[deduped_1_3][deduped_1_2] * deduped_72_1[deduped_1_3];
                     end ) );
         end );
-    return CreateCapCategoryMorphismWithAttributes( Target( cat_1 ), source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( x_2 )
+    return CreateCapCategoryMorphismWithAttributes( Target( cat_1 ), source_1, range_1, AsList, List( [ 0 .. Cardinality( source_1 ) - 1 ], function ( x_2 )
               return -1 + BigInt( SafePosition( hoisted_81_1, CAP_JIT_INCOMPLETE_LOGIC( hoisted_80_1[1 + hoisted_79_1[1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 )]] ) ) );
           end ) );
 end
@@ -1472,18 +1472,18 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_113_1 := ValuesOfPreSheaf( Target( beta_1 ) );
     deduped_112_1 := SetOfObjectsAsUnresolvableAttribute( deduped_118_1 );
     deduped_111_1 := ValuesOfPreSheaf( Source( alpha_1 ) );
-    deduped_110_1 := [ 0 .. Length( source_1 ) - 1 ];
+    deduped_110_1 := [ 0 .. Cardinality( source_1 ) - 1 ];
     deduped_109_1 := deduped_115_1[2];
     deduped_108_1 := deduped_111_1[2];
     deduped_107_1 := deduped_114_1[1];
     deduped_106_1 := [ 1 .. deduped_107_1 ];
     deduped_105_1 := [ 0 .. deduped_107_1 - 1 ];
     deduped_104_1 := [ 0 .. deduped_114_1[2] - 1 ];
-    deduped_38_1 := List( deduped_115_1[1], Length );
+    deduped_38_1 := List( deduped_115_1[1], Cardinality );
     deduped_103_1 := List( deduped_105_1, function ( o_2 )
             return deduped_38_1[1 + o_2];
         end );
-    deduped_1_1 := List( deduped_111_1[1], Length );
+    deduped_1_1 := List( deduped_111_1[1], Cardinality );
     deduped_102_1 := List( deduped_105_1, function ( o_2 )
             return deduped_1_1[1 + o_2];
         end );
@@ -1514,7 +1514,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_98_1 := [ 0 .. Sum( List( deduped_104_1, function ( i_2 )
                     return deduped_8_1[1 + i_2][1];
                 end ) ) - 1 ];
-    deduped_39_1 := List( deduped_116_1[1], Length );
+    deduped_39_1 := List( deduped_116_1[1], Cardinality );
     deduped_2_1 := List( deduped_112_1, UnderlyingVertex );
     deduped_97_1 := Concatenation( List( deduped_105_1, function ( o_2 )
               local hoisted_1_2, deduped_2_2;
@@ -1532,7 +1532,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                          return UnderlyingVertex( obj_3 ) = hoisted_1_2;
                      end )] );
           end ) );
-    deduped_4_1 := List( deduped_113_1[1], Length );
+    deduped_4_1 := List( deduped_113_1[1], Cardinality );
     deduped_95_1 := Concatenation( List( deduped_105_1, function ( o_2 )
               local hoisted_1_2, deduped_2_2;
               deduped_2_2 := 1 + o_2;
@@ -1679,7 +1679,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
             return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
     hoisted_17_1 := List( deduped_108_1, function ( logic_new_func_x_2 )
-            return Length( Source( logic_new_func_x_2 ) );
+            return Cardinality( Source( logic_new_func_x_2 ) );
         end );
     hoisted_16_1 := List( deduped_108_1, AsList );
     deduped_19_1 := List( deduped_104_1, function ( m_2 )
@@ -1823,7 +1823,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
         end );
     deduped_58_1 := Sum( deduped_103_1 );
     hoisted_52_1 := List( deduped_117_1, function ( logic_new_func_x_2 )
-            return Length( Source( logic_new_func_x_2 ) );
+            return Cardinality( Source( logic_new_func_x_2 ) );
         end );
     hoisted_51_1 := List( deduped_117_1, AsList );
     deduped_53_1 := List( deduped_105_1, function ( o_2 )
@@ -2041,7 +2041,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                 end );
         end );
     hoisted_68_1 := List( deduped_109_1, function ( logic_new_func_x_2 )
-            return Length( Source( logic_new_func_x_2 ) );
+            return Cardinality( Source( logic_new_func_x_2 ) );
         end );
     hoisted_67_1 := List( deduped_109_1, AsList );
     deduped_69_1 := List( deduped_104_1, function ( m_2 )
@@ -2179,7 +2179,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_51_1 := [ 1 .. deduped_52_1 ];
     deduped_50_1 := [ 0 .. deduped_52_1 - 1 ];
     deduped_49_1 := [ 0 .. deduped_54_1[2] - 1 ];
-    deduped_4_1 := List( deduped_55_1, Length );
+    deduped_4_1 := List( deduped_55_1, Cardinality );
     deduped_48_1 := List( deduped_50_1, function ( o_2 )
             return deduped_4_1[1 + o_2];
         end );
@@ -2199,7 +2199,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_47_1 := [ 0 .. Sum( List( deduped_49_1, function ( i_2 )
                     return deduped_11_1[1 + i_2][1];
                 end ) ) - 1 ];
-    deduped_7_1 := List( deduped_56_1, Length );
+    deduped_7_1 := List( deduped_56_1, Cardinality );
     deduped_5_1 := List( deduped_57_1, UnderlyingVertex );
     deduped_46_1 := Concatenation( List( deduped_50_1, function ( o_2 )
               local hoisted_1_2, deduped_2_2;
@@ -2333,7 +2333,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
             return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
     hoisted_20_1 := List( deduped_58_1, function ( logic_new_func_x_2 )
-            return Length( Source( logic_new_func_x_2 ) );
+            return Cardinality( Source( logic_new_func_x_2 ) );
         end );
     hoisted_19_1 := List( deduped_58_1, AsList );
     deduped_22_1 := List( deduped_49_1, function ( m_2 )
@@ -2439,8 +2439,8 @@ function ( cat_1, source_1, range_1, alpha_1 )
                             deduped_1_3 := 1 + j_3;
                             return hoisted_38_1[deduped_1_3][deduped_1_2] * deduped_32_1[deduped_1_3];
                         end ) );
-            end )[1 + AsList( alpha_1 )[1 + CAP_JIT_INCOMPLETE_LOGIC( [ 0 .. Length( Source( alpha_1 ) ) - 1 ][1] )]] );
-    deduped_3_1 := List( deduped_53_1, Length );
+            end )[1 + AsList( alpha_1 )[1 + CAP_JIT_INCOMPLETE_LOGIC( [ 0 .. Cardinality( Source( alpha_1 ) ) - 1 ][1] )]] );
+    deduped_3_1 := List( deduped_53_1, Cardinality );
     deduped_39_1 := List( deduped_51_1, function ( i_2 )
             return Product( deduped_46_1{[ 1 + Sum( deduped_3_1{[ 1 .. i_2 - 1 ]} ) .. Sum( deduped_3_1{[ 1 .. i_2 ]} ) ]} );
         end );
@@ -2480,7 +2480,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_56_1 := [ 1 .. deduped_57_1 ];
     deduped_55_1 := [ 0 .. deduped_59_1[2] - 1 ];
     deduped_54_1 := [ 0 .. deduped_57_1 - 1 ];
-    deduped_4_1 := List( deduped_60_1, Length );
+    deduped_4_1 := List( deduped_60_1, Cardinality );
     deduped_53_1 := List( deduped_54_1, function ( o_2 )
             return deduped_4_1[1 + o_2];
         end );
@@ -2500,7 +2500,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_52_1 := [ 0 .. Sum( List( deduped_55_1, function ( i_2 )
                     return deduped_17_1[1 + i_2][1];
                 end ) ) - 1 ];
-    deduped_7_1 := List( deduped_61_1, Length );
+    deduped_7_1 := List( deduped_61_1, Cardinality );
     deduped_5_1 := List( deduped_62_1, UnderlyingVertex );
     deduped_51_1 := Concatenation( List( deduped_54_1, function ( o_2 )
               local hoisted_1_2, deduped_2_2;
@@ -2516,7 +2516,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_49_1 := Product( deduped_51_1 );
     deduped_48_1 := [ 0 .. deduped_49_1 - 1 ];
     hoisted_47_1 := Target( cat_1 );
-    hoisted_46_1 := [ 0 .. Length( Source( alpha_1 ) ) - 1 ];
+    hoisted_46_1 := [ 0 .. Cardinality( Source( alpha_1 ) ) - 1 ];
     deduped_28_1 := SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_64_1 );
     deduped_39_1 := List( deduped_55_1, function ( m_2 )
             local deduped_1_2, deduped_2_2;
@@ -2644,7 +2644,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
             return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
     hoisted_25_1 := List( deduped_63_1, function ( logic_new_func_x_2 )
-            return Length( Source( logic_new_func_x_2 ) );
+            return Cardinality( Source( logic_new_func_x_2 ) );
         end );
     hoisted_24_1 := List( deduped_63_1, AsList );
     deduped_27_1 := List( deduped_55_1, function ( m_2 )
@@ -2753,7 +2753,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
             return hoisted_37_1[deduped_1_2] = hoisted_43_1[deduped_1_2];
         end );
     hoisted_44_1 := AsList( alpha_1 );
-    deduped_3_1 := List( deduped_58_1, Length );
+    deduped_3_1 := List( deduped_58_1, Cardinality );
     deduped_9_1 := List( deduped_56_1, function ( i_2 )
             return Product( deduped_51_1{[ 1 + Sum( deduped_3_1{[ 1 .. i_2 - 1 ]} ) .. Sum( deduped_3_1{[ 1 .. i_2 ]} ) ]} );
         end );
@@ -2802,7 +2802,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_54_1 := [ 1 .. deduped_55_1 ];
     deduped_53_1 := [ 0 .. deduped_57_1[2] - 1 ];
     deduped_52_1 := [ 0 .. deduped_55_1 - 1 ];
-    deduped_1_1 := List( deduped_58_1, Length );
+    deduped_1_1 := List( deduped_58_1, Cardinality );
     deduped_51_1 := List( deduped_52_1, function ( o_2 )
             return deduped_1_1[1 + o_2];
         end );
@@ -2822,7 +2822,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_50_1 := [ 0 .. Sum( List( deduped_53_1, function ( i_2 )
                     return deduped_8_1[1 + i_2][1];
                 end ) ) - 1 ];
-    deduped_4_1 := List( deduped_60_1, Length );
+    deduped_4_1 := List( deduped_60_1, Cardinality );
     deduped_2_1 := List( deduped_59_1, UnderlyingVertex );
     deduped_49_1 := Concatenation( List( deduped_52_1, function ( o_2 )
               local hoisted_1_2, deduped_2_2;
@@ -2955,7 +2955,7 @@ function ( cat_1, arg2_1, arg3_1 )
             return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
     hoisted_17_1 := List( deduped_61_1, function ( logic_new_func_x_2 )
-            return Length( Source( logic_new_func_x_2 ) );
+            return Cardinality( Source( logic_new_func_x_2 ) );
         end );
     hoisted_16_1 := List( deduped_61_1, AsList );
     deduped_19_1 := List( deduped_53_1, function ( m_2 )
@@ -3063,7 +3063,7 @@ function ( cat_1, arg2_1, arg3_1 )
                     end ) );
         end );
     hoisted_43_1 := Target( cat_1 );
-    deduped_38_1 := List( deduped_56_1, Length );
+    deduped_38_1 := List( deduped_56_1, Cardinality );
     deduped_39_1 := List( deduped_54_1, function ( i_2 )
             return Product( deduped_49_1{[ 1 + Sum( deduped_38_1{[ 1 .. i_2 - 1 ]} ) .. Sum( deduped_38_1{[ 1 .. i_2 ]} ) ]} );
         end );
@@ -3113,7 +3113,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_56_1 := [ 1 .. deduped_57_1 ];
     deduped_55_1 := [ 0 .. deduped_59_1[2] - 1 ];
     deduped_54_1 := [ 0 .. deduped_57_1 - 1 ];
-    deduped_1_1 := List( deduped_60_1, Length );
+    deduped_1_1 := List( deduped_60_1, Cardinality );
     deduped_53_1 := List( deduped_54_1, function ( o_2 )
             return deduped_1_1[1 + o_2];
         end );
@@ -3133,7 +3133,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_52_1 := [ 0 .. Sum( List( deduped_55_1, function ( i_2 )
                     return deduped_8_1[1 + i_2][1];
                 end ) ) - 1 ];
-    deduped_4_1 := List( deduped_62_1, Length );
+    deduped_4_1 := List( deduped_62_1, Cardinality );
     deduped_2_1 := List( deduped_61_1, UnderlyingVertex );
     deduped_51_1 := Concatenation( List( deduped_54_1, function ( o_2 )
               local hoisted_1_2, deduped_2_2;
@@ -3275,7 +3275,7 @@ function ( cat_1, arg2_1, arg3_1 )
             return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
     hoisted_17_1 := List( deduped_63_1, function ( logic_new_func_x_2 )
-            return Length( Source( logic_new_func_x_2 ) );
+            return Cardinality( Source( logic_new_func_x_2 ) );
         end );
     hoisted_16_1 := List( deduped_63_1, AsList );
     deduped_19_1 := List( deduped_55_1, function ( m_2 )
@@ -3384,7 +3384,7 @@ function ( cat_1, arg2_1, arg3_1 )
             return hoisted_31_1[deduped_1_2] = hoisted_37_1[deduped_1_2];
         end );
     hoisted_45_1 := Target( cat_1 );
-    deduped_40_1 := List( deduped_58_1, Length );
+    deduped_40_1 := List( deduped_58_1, Cardinality );
     deduped_41_1 := List( deduped_56_1, function ( i_2 )
             return Product( deduped_51_1{[ 1 + Sum( deduped_40_1{[ 1 .. i_2 - 1 ]} ) .. Sum( deduped_40_1{[ 1 .. i_2 ]} ) ]} );
         end );

@@ -42,10 +42,10 @@ DeclareCategory( "IsMorphismInIntervalCategory",
 #!  It is either $0$ for false or $1$ for true.
 #! @Arguments a
 #! @Returns an integer
-DeclareAttribute( "Length",
+DeclareAttribute( "Cardinality",
         IsObjectInIntervalCategory );
 
-CapJitAddTypeSignature( "Length", [ IsIntervalCategory ],
+CapJitAddTypeSignature( "Cardinality", [ IsIntervalCategory ],
   function ( input_types )
     
     return rec( filter := IsBigInt );

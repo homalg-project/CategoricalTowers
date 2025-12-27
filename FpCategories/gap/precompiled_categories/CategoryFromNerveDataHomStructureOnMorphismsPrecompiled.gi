@@ -22,13 +22,13 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_88_1 := deduped_90_1[2];
     deduped_87_1 := deduped_90_1[6];
     deduped_86_1 := deduped_90_1[7];
-    deduped_85_1 := Length( Source( deduped_89_1 ) );
-    deduped_84_1 := Length( Source( deduped_88_1 ) );
-    deduped_83_1 := Length( Source( deduped_86_1 ) );
+    deduped_85_1 := Cardinality( Source( deduped_89_1 ) );
+    deduped_84_1 := Cardinality( Source( deduped_88_1 ) );
+    deduped_83_1 := Cardinality( Source( deduped_86_1 ) );
     deduped_82_1 := deduped_85_1 * deduped_84_1;
-    deduped_81_1 := deduped_85_1 * Length( Source( deduped_92_1 ) );
-    deduped_80_1 := deduped_84_1 * Length( Source( deduped_91_1 ) );
-    deduped_79_1 := deduped_83_1 * Length( Source( deduped_87_1 ) );
+    deduped_81_1 := deduped_85_1 * Cardinality( Source( deduped_92_1 ) );
+    deduped_80_1 := deduped_84_1 * Cardinality( Source( deduped_91_1 ) );
+    deduped_79_1 := deduped_83_1 * Cardinality( Source( deduped_87_1 ) );
     deduped_78_1 := [ 0 .. deduped_81_1 - 1 ];
     deduped_77_1 := [ 0 .. deduped_80_1 - 1 ];
     deduped_76_1 := [ 0 .. deduped_79_1 - 1 ];
@@ -62,8 +62,8 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_70_1 := BigInt( Length( deduped_73_1 ) );
     deduped_69_1 := BigInt( Length( deduped_72_1 ) );
     deduped_68_1 := deduped_70_1 * deduped_71_1;
-    deduped_67_1 := deduped_69_1 * Length( Source( deduped_96_1 ) );
-    deduped_66_1 := deduped_69_1 * Length( Source( deduped_95_1 ) );
+    deduped_67_1 := deduped_69_1 * Cardinality( Source( deduped_96_1 ) );
+    deduped_66_1 := deduped_69_1 * Cardinality( Source( deduped_95_1 ) );
     deduped_65_1 := [ 0 .. deduped_69_1 - 1 ];
     deduped_64_1 := [ 0 .. deduped_68_1 - 1 ];
     deduped_63_1 := [ 0 .. deduped_67_1 - 1 ];
@@ -138,7 +138,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     hoisted_51_1 := List( [ 0 .. deduped_58_1 - 1 ], function ( i_2 )
             return deduped_37_1[1 + hoisted_42_1[1 + deduped_61_1[1 + i_2]]];
         end );
-    hoisted_45_1 := List( [ 0 .. Length( deduped_94_1[1][3] ) - 1 ], function ( x_2 )
+    hoisted_45_1 := List( [ 0 .. Cardinality( deduped_94_1[1][3] ) - 1 ], function ( x_2 )
             local deduped_1_2;
             deduped_1_2 := 1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 );
             return -1 + BigInt( SafePosition( deduped_75_1, CAP_JIT_INCOMPLETE_LOGIC( deduped_6_1[deduped_1_2] + deduped_5_1[deduped_1_2] * deduped_85_1 ) ) );
@@ -155,7 +155,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     hoisted_49_1 := List( deduped_54_1, function ( i_2 )
             return RemIntWithDomain( i_2, deduped_56_1, deduped_55_1 );
         end );
-    return CreateCapCategoryMorphismWithAttributes( deduped_93_1, CreateCapCategoryObjectWithAttributes( deduped_93_1, Length, deduped_52_1 ), CreateCapCategoryObjectWithAttributes( deduped_93_1, Length, deduped_58_1 ), AsList, List( [ 0 .. deduped_52_1 - 1 ], function ( x_2 )
+    return CreateCapCategoryMorphismWithAttributes( deduped_93_1, CreateCapCategoryObjectWithAttributes( deduped_93_1, Cardinality, deduped_52_1 ), CreateCapCategoryObjectWithAttributes( deduped_93_1, Cardinality, deduped_58_1 ), AsList, List( [ 0 .. deduped_52_1 - 1 ], function ( x_2 )
               return -1 + BigInt( SafePosition( hoisted_51_1, CAP_JIT_INCOMPLETE_LOGIC( hoisted_50_1[1 + deduped_21_1[1 + hoisted_49_1[1 + deduped_53_1[1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 )]]]] ) ) );
           end ) );
 end
@@ -180,14 +180,14 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_112_1 := deduped_114_1[2];
     deduped_111_1 := deduped_114_1[6];
     deduped_110_1 := deduped_114_1[7];
-    deduped_109_1 := Length( Source( deduped_113_1 ) );
-    deduped_108_1 := Length( Source( deduped_112_1 ) );
-    deduped_107_1 := Length( Source( deduped_110_1 ) );
-    deduped_106_1 := [ 0 .. Length( deduped_118_1[1][3] ) - 1 ];
+    deduped_109_1 := Cardinality( Source( deduped_113_1 ) );
+    deduped_108_1 := Cardinality( Source( deduped_112_1 ) );
+    deduped_107_1 := Cardinality( Source( deduped_110_1 ) );
+    deduped_106_1 := [ 0 .. Cardinality( deduped_118_1[1][3] ) - 1 ];
     deduped_105_1 := deduped_109_1 * deduped_108_1;
-    deduped_104_1 := deduped_109_1 * Length( Source( deduped_116_1 ) );
-    deduped_103_1 := deduped_108_1 * Length( Source( deduped_115_1 ) );
-    deduped_102_1 := deduped_107_1 * Length( Source( deduped_111_1 ) );
+    deduped_104_1 := deduped_109_1 * Cardinality( Source( deduped_116_1 ) );
+    deduped_103_1 := deduped_108_1 * Cardinality( Source( deduped_115_1 ) );
+    deduped_102_1 := deduped_107_1 * Cardinality( Source( deduped_111_1 ) );
     deduped_101_1 := [ 0 .. deduped_105_1 - 1 ];
     deduped_100_1 := [ 0 .. deduped_104_1 - 1 ];
     deduped_99_1 := [ 0 .. deduped_103_1 - 1 ];
@@ -246,8 +246,8 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_92_1 := BigInt( Length( deduped_95_1 ) );
     deduped_91_1 := BigInt( Length( deduped_94_1 ) );
     deduped_90_1 := deduped_92_1 * deduped_93_1;
-    deduped_89_1 := deduped_91_1 * Length( Source( deduped_120_1 ) );
-    deduped_88_1 := deduped_91_1 * Length( Source( deduped_119_1 ) );
+    deduped_89_1 := deduped_91_1 * Cardinality( Source( deduped_120_1 ) );
+    deduped_88_1 := deduped_91_1 * Cardinality( Source( deduped_119_1 ) );
     deduped_87_1 := [ 0 .. deduped_91_1 - 1 ];
     deduped_86_1 := [ 0 .. deduped_90_1 - 1 ];
     deduped_85_1 := [ 0 .. deduped_89_1 - 1 ];
@@ -379,7 +379,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     hoisted_71_1 := List( deduped_73_1, function ( i_2 )
             return hoisted_70_1[1 + deduped_27_1[1 + hoisted_69_1[1 + deduped_75_1[1 + i_2]]]];
         end );
-    return CreateCapCategoryMorphismWithAttributes( deduped_117_1, CreateCapCategoryObjectWithAttributes( deduped_117_1, Length, deduped_74_1 ), CreateCapCategoryObjectWithAttributes( deduped_117_1, Length, deduped_80_1 ), AsList, List( deduped_73_1, function ( x_2 )
+    return CreateCapCategoryMorphismWithAttributes( deduped_117_1, CreateCapCategoryObjectWithAttributes( deduped_117_1, Cardinality, deduped_74_1 ), CreateCapCategoryObjectWithAttributes( deduped_117_1, Cardinality, deduped_80_1 ), AsList, List( deduped_73_1, function ( x_2 )
               return -1 + BigInt( SafePosition( hoisted_72_1, hoisted_71_1[1 + x_2] ) );
           end ) );
 end

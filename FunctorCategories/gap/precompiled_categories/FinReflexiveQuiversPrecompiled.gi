@@ -143,7 +143,7 @@ end
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, BigInt( 1 ) );
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Cardinality, BigInt( 1 ) );
 end
 ########
         
@@ -288,7 +288,7 @@ function ( cat_1, arg2_1, arg3_1 )
                     return hoisted_2_2[1 + hoisted_1_2[1 + i_3]];
                 end );
         end );
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, BigInt( Length( Filtered( deduped_20_1, function ( x_2 )
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Cardinality, BigInt( Length( Filtered( deduped_20_1, function ( x_2 )
                   local deduped_1_2;
                   deduped_1_2 := 1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 );
                   return CAP_JIT_INCOMPLETE_LOGIC( Sum( deduped_22_1, function ( j_3 )
@@ -463,7 +463,7 @@ function ( cat_1, arg2_1, arg3_1 )
                     return hoisted_12_1[deduped_1_3][hoisted_1_2] * deduped_14_1[deduped_1_3];
                 end );
         end );
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, BigInt( Length( Filtered( deduped_22_1, function ( x_2 )
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Cardinality, BigInt( Length( Filtered( deduped_22_1, function ( x_2 )
                   local deduped_1_2;
                   deduped_1_2 := 1 + x_2;
                   return hoisted_16_1[deduped_1_2] = hoisted_20_1[deduped_1_2];
@@ -625,7 +625,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
                             deduped_1_3 := 1 + j_3;
                             return hoisted_18_1[deduped_1_3][deduped_1_2] * deduped_14_1[deduped_1_3];
                         end ) );
-            end )[1 + AsList( alpha_1 )[1 + CAP_JIT_INCOMPLETE_LOGIC( [ 0 .. Length( Source( alpha_1 ) ) - 1 ][1] )]] );
+            end )[1 + AsList( alpha_1 )[1 + CAP_JIT_INCOMPLETE_LOGIC( [ 0 .. Cardinality( Source( alpha_1 ) ) - 1 ][1] )]] );
     hoisted_22_1 := CAP_JIT_INCOMPLETE_LOGIC( QuoIntWithDomain( deduped_25_1, deduped_29_1, deduped_31_1 ) );
     hoisted_19_1 := CAP_JIT_INCOMPLETE_LOGIC( RemIntWithDomain( deduped_25_1, deduped_29_1, deduped_31_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, DefiningPairOfReflexiveQuiverMorphismEnrichedOverSkeletalFinSets, NTuple( 2, List( deduped_36_1, function ( i_2 )
@@ -657,7 +657,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_46_1 := deduped_54_1[1];
     deduped_45_1 := ListWithIdenticalEntries( deduped_47_1, deduped_48_1 );
     deduped_44_1 := deduped_46_1 + deduped_47_1;
-    deduped_43_1 := [ 0 .. Length( Source( alpha_1 ) ) - 1 ];
+    deduped_43_1 := [ 0 .. Cardinality( Source( alpha_1 ) ) - 1 ];
     deduped_42_1 := [ 0 .. deduped_47_1 - 1 ];
     deduped_41_1 := [ 0 .. deduped_46_1 - 1 ];
     deduped_40_1 := [ CreateCapCategoryMorphismWithAttributes( deduped_56_1, deduped_52_1, deduped_53_1, IndexOfMorphism, 1 ), CreateCapCategoryMorphismWithAttributes( deduped_56_1, deduped_53_1, deduped_52_1, IndexOfMorphism, 2 ), CreateCapCategoryMorphismWithAttributes( deduped_56_1, deduped_53_1, deduped_52_1, IndexOfMorphism, 3 ) ];

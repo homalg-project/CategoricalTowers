@@ -41,7 +41,7 @@ ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory( PC );
 
 hom_a_aa := MorphismsOfExternalHom( PC, a, aa );
 
-Assert( 0, Length( hom_a_aa ) = 1 );
+Assert( 0, Cardinality( hom_a_aa ) = 1 );
 
 delta := hom_a_aa[1];
 

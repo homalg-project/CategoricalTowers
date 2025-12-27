@@ -153,8 +153,8 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
         
         values_of_functor := ObjectDatum( PSh, F );
         
-        return Triple( Length( values_of_functor[1][1] ),
-                       Length( values_of_functor[1][2] ),
+        return Triple( Cardinality( values_of_functor[1][1] ),
+                       Cardinality( values_of_functor[1][2] ),
                        ListN( AsList( values_of_functor[2][1] ), AsList( values_of_functor[2][2] ), { s, t } -> Pair( s, t ) ) );
         
     end;
@@ -323,7 +323,7 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
     U := CapFunctor( "UnwrappingFunctor", RangeOfFunctor( Y ), category_of_quivers );
     
     AddObjectFunction( U,
-            F -> CreateQuiver( category_of_quivers, Triple( Length( F.V ), Length( F.A ), ListN( AsList( F.s ), AsList( F.t ), { s, t } -> Pair( s, t ) ) ) ) );
+            F -> CreateQuiver( category_of_quivers, Triple( Cardinality( F.V ), Cardinality( F.A ), ListN( AsList( F.s ), AsList( F.t ), { s, t } -> Pair( s, t ) ) ) ) );
     
     AddMorphismFunction( U,
             { source, eta, range } -> CreateQuiverMorphism( category_of_quivers, source, Pair( AsList( eta.V ), AsList( eta.A ) ), range ) );

@@ -19,7 +19,7 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_5_1 := List( deduped_9_1[2], IndexOfObject );
     hoisted_2_1 := DataTables( UnderlyingCategory( cat_1 ) )[2][5];
     hoisted_1_1 := List( deduped_10_1[2], IndexOfObject );
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, Sum( List( [ 0 .. deduped_7_1 ^ deduped_8_1 - 1 ], function ( m_2 )
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Cardinality, Sum( List( [ 0 .. deduped_7_1 ^ deduped_8_1 - 1 ], function ( m_2 )
                 return Product( List( hoisted_6_1, function ( i_3 )
                           return hoisted_2_1[1 + hoisted_1_1[1 + i_3]][1 + hoisted_5_1[1 + CAP_JIT_INCOMPLETE_LOGIC( DigitInPositionalNotation( m_2, CAP_JIT_INCOMPLETE_LOGIC( i_3 ), deduped_8_1, deduped_7_1 ) )]];
                       end ) );
@@ -43,7 +43,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_5_1 := [ 0 .. deduped_8_1 - 1 ];
     hoisted_2_1 := DataTables( UnderlyingCategory( cat_1 ) )[2][5];
     hoisted_1_1 := List( deduped_10_1[2], IndexOfObject );
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, Sum( List( [ 0 .. deduped_7_1 ^ deduped_8_1 - 1 ], function ( m_2 )
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Cardinality, Sum( List( [ 0 .. deduped_7_1 ^ deduped_8_1 - 1 ], function ( m_2 )
                 local hoisted_1_2;
                 hoisted_1_2 := List( deduped_5_1, function ( i_3 )
                         return DigitInPositionalNotation( m_2, i_3, deduped_8_1, deduped_7_1 );
@@ -130,7 +130,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       return deduped_2_1[1 + deduped_7_1[1 + i_3]][1 + deduped_10_1[1 + CAP_JIT_INCOMPLETE_LOGIC( DigitInPositionalNotation( m_2, CAP_JIT_INCOMPLETE_LOGIC( i_3 ), deduped_38_1, deduped_39_1 ) )]];
                   end ) );
         end );
-    return CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, range_1, AsList, Concatenation( List( [ 0 .. Length( source_1 ) - 1 ], function ( i_2 )
+    return CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, range_1, AsList, Concatenation( List( [ 0 .. Cardinality( source_1 ) - 1 ], function ( i_2 )
                 local deduped_2_2, deduped_3_2, deduped_4_2, hoisted_5_2, hoisted_7_2, hoisted_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2, deduped_14_2, deduped_15_2;
                 deduped_13_2 := BigInt( SafeFirst( deduped_30_1, function ( i_3 )
                           return Sum( deduped_12_1{[ 1 .. 1 + i_3 ]} ) > i_2;
@@ -266,7 +266,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                       return deduped_2_1[1 + deduped_7_1[deduped_1_3]][1 + deduped_11_1[1 + hoisted_1_2[deduped_1_3]]];
                   end ) );
         end );
-    return CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, range_1, AsList, Concatenation( List( [ 0 .. Length( source_1 ) - 1 ], function ( i_2 )
+    return CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, range_1, AsList, Concatenation( List( [ 0 .. Cardinality( source_1 ) - 1 ], function ( i_2 )
                 local deduped_2_2, deduped_3_2, deduped_4_2, hoisted_6_2, hoisted_7_2, hoisted_8_2, hoisted_9_2, hoisted_10_2, hoisted_11_2, hoisted_12_2, hoisted_13_2, hoisted_14_2, deduped_15_2, deduped_16_2, deduped_17_2, deduped_18_2, deduped_19_2, deduped_20_2, deduped_21_2;
                 deduped_19_2 := BigInt( SafeFirst( deduped_30_1, function ( i_3 )
                           return Sum( deduped_12_1{[ 1 .. 1 + i_3 ]} ) > i_2;
@@ -371,7 +371,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
             deduped_1_2 := 1 + i_2;
             return CreateCapCategoryMorphismWithAttributes( deduped_32_1, CreateCapCategoryObjectWithAttributes( deduped_32_1, IndexOfObject, hoisted_10_1[deduped_1_2] ), CreateCapCategoryObjectWithAttributes( deduped_32_1, IndexOfObject, hoisted_12_1[deduped_1_2] ), IndexOfMorphism, i_2 );
         end );
-    hoisted_17_1 := CAP_JIT_INCOMPLETE_LOGIC( [ 0 .. deduped_21_1 - 1 ][BigInt( SafePosition( [ deduped_20_1 .. deduped_20_1 + deduped_21_1 - 1 ], deduped_34_1[1 + CAP_JIT_INCOMPLETE_LOGIC( [ 0 .. Length( Source( alpha_1 ) ) - 1 ][1] )] ) )] );
+    hoisted_17_1 := CAP_JIT_INCOMPLETE_LOGIC( [ 0 .. deduped_21_1 - 1 ][BigInt( SafePosition( [ deduped_20_1 .. deduped_20_1 + deduped_21_1 - 1 ], deduped_34_1[1 + CAP_JIT_INCOMPLETE_LOGIC( [ 0 .. Cardinality( Source( alpha_1 ) ) - 1 ][1] )] ) )] );
     hoisted_15_1 := CAP_JIT_INCOMPLETE_LOGIC( deduped_23_1 );
     deduped_16_1 := CAP_JIT_INCOMPLETE_LOGIC( List( deduped_26_1, function ( i_2 )
               return deduped_2_1[1 + deduped_1_1[1 + i_2]][1 + deduped_5_1[1 + CAP_JIT_INCOMPLETE_LOGIC( DigitInPositionalNotation( hoisted_15_1, CAP_JIT_INCOMPLETE_LOGIC( i_2 ), deduped_28_1, deduped_30_1 ) )]];
@@ -436,7 +436,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
             deduped_1_2 := 1 + i_2;
             return CreateCapCategoryMorphismWithAttributes( deduped_35_1, CreateCapCategoryObjectWithAttributes( deduped_35_1, IndexOfObject, hoisted_10_1[deduped_1_2] ), CreateCapCategoryObjectWithAttributes( deduped_35_1, IndexOfObject, hoisted_12_1[deduped_1_2] ), IndexOfMorphism, i_2 );
         end );
-    hoisted_20_1 := [ 0 .. Length( Source( alpha_1 ) ) - 1 ];
+    hoisted_20_1 := [ 0 .. Cardinality( Source( alpha_1 ) ) - 1 ];
     hoisted_19_1 := [ deduped_22_1 .. deduped_22_1 + deduped_23_1 - 1 ];
     hoisted_17_1 := [ 0 .. deduped_23_1 - 1 ];
     deduped_15_1 := List( deduped_28_1, function ( m_2 )
