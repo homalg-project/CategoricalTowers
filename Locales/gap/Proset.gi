@@ -60,7 +60,7 @@ InstallOtherMethod( Size,
     
     return Sum( objs, s ->
                 Sum( objs, t ->
-                     Length( HomomorphismStructureOnObjects( P, s, t ) ) ) );
+                     Cardinality( HomomorphismStructureOnObjects( P, s, t ) ) ) );
     
 end );
 

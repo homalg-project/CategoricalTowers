@@ -1314,7 +1314,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
                 value := MorphismDatum( H, morphism )[1];
                 
-                number := BigInt( SafeFirst( [ 0 .. t ^ s - 1 ], i -> Sum( List( homs{[ 1 .. 1 + i ]}, Length ) ) > value ) );
+                number := BigInt( SafeFirst( [ 0 .. t ^ s - 1 ], i -> Sum( List( homs{[ 1 .. 1 + i ]}, Cardinality ) ) > value ) );
                 
                 ## number -> map
                 map := List( [ 0 .. s - 1 ], i -> DigitInPositionalNotation( number, i, s, t ) );

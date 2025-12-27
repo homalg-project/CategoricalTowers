@@ -11,7 +11,7 @@ InstallMethod( AsList,
         
   function ( s )
     
-    return [ 0 .. Length( s ) - 1 ];
+    return [ 0 .. Cardinality( s ) - 1 ];
     
 end );
 
@@ -31,10 +31,10 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
     ##
     object_constructor := { sFinSets, cardinality } ->
                           CreateCapCategoryObjectWithAttributes( sFinSets,
-                                  Length, cardinality );
+                                  Cardinality, cardinality );
     
     ##
-    object_datum := { sFinSets, M } -> Length( M );
+    object_datum := { sFinSets, M } -> Cardinality( M );
     
     ##
     morphism_datum_type := CapJitDataTypeOfListOf( IsBigInt );
@@ -170,7 +170,7 @@ InstallMethod( ViewObj,
         [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( s )
-    Print( "|", Length( s ), "|" );
+    Print( "|", Cardinality( s ), "|" );
 end );
 
 ##
@@ -179,7 +179,7 @@ InstallMethod( ViewObj,
         [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( phi )
-    Print( "|", Length( Source( phi ) ), "| → |", Length( Target( phi ) ), "|" );
+    Print( "|", Cardinality( Source( phi ) ), "| → |", Cardinality( Target( phi ) ), "|" );
 end );
 
 ##
@@ -188,7 +188,7 @@ InstallMethod( ViewObj,
         [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsMonomorphism ],
         
   function ( phi )
-    Print( "|", Length( Source( phi ) ), "| ↪ |", Length( Target( phi ) ), "|" );
+    Print( "|", Cardinality( Source( phi ) ), "| ↪ |", Cardinality( Target( phi ) ), "|" );
 end );
 
 ##
@@ -197,7 +197,7 @@ InstallMethod( ViewObj,
         [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsEpimorphism ],
         
   function ( phi )
-    Print( "|", Length( Source( phi ) ), "| ↠ |", Length( Target( phi ) ), "|" );
+    Print( "|", Cardinality( Source( phi ) ), "| ↠ |", Cardinality( Target( phi ) ), "|" );
 end );
 
 ##
@@ -206,7 +206,7 @@ InstallMethod( ViewObj,
         [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsIsomorphism ],
         
   function ( phi )
-    Print( "|", Length( Source( phi ) ), "| ⭇ |", Length( Target( phi ) ), "|" );
+    Print( "|", Cardinality( Source( phi ) ), "| ⭇ |", Cardinality( Target( phi ) ), "|" );
 end );
 
 # We want lists of skeletal finite sets and maps to be displayed in a "fancy" way.
@@ -221,7 +221,7 @@ InstallMethod( PrintString,
   function ( s )
     local l, string;
     
-    l := Length( s );
+    l := Cardinality( s );
     
     if l = 0 then
         return "∅";

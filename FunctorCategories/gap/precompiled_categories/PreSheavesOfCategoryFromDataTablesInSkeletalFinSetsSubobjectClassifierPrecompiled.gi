@@ -188,7 +188,7 @@ function ( cat_1 )
             hoisted_4_2 := deduped_14_1[c_2];
             deduped_3_2 := deduped_9_1[c_2];
             deduped_2_2 := [ 0 .. deduped_6_2 - 1 ];
-            return CreateCapCategoryObjectWithAttributes( deduped_45_1, Length, Length( Filtered( [ 0 .. deduped_6_1 ^ deduped_6_2 - 1 ], function ( x_3 )
+            return CreateCapCategoryObjectWithAttributes( deduped_45_1, Cardinality, Length( Filtered( [ 0 .. deduped_6_1 ^ deduped_6_2 - 1 ], function ( x_3 )
                         local hoisted_1_3, hoisted_5_3, deduped_6_3, deduped_7_3, deduped_8_3;
                         hoisted_1_3 := CAP_JIT_INCOMPLETE_LOGIC( x_3 );
                         deduped_8_3 := Filtered( deduped_2_2, function ( x_4 )

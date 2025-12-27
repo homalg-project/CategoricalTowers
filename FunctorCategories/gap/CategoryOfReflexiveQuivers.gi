@@ -165,8 +165,8 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
         
         values_of_functor := ObjectDatum( PSh, F );
         
-        return NTuple( 4, Length( values_of_functor[1][1] ),
-                       Length( values_of_functor[1][2] ),
+        return NTuple( 4, Cardinality( values_of_functor[1][1] ),
+                       Cardinality( values_of_functor[1][2] ),
                        AsList( values_of_functor[2][1] ),
                        ListN( AsList( values_of_functor[2][2] ), AsList( values_of_functor[2][3] ), { s, t } -> Pair( s, t ) ) );
         
@@ -347,7 +347,7 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
     U := CapFunctor( "UnwrappingFunctor", RangeOfFunctor( Y ), category_of_quivers );
     
     AddObjectFunction( U,
-            F -> CreateReflexiveQuiver( category_of_quivers, NTuple( 4, Length( F.C0 ), Length( F.C1 ), AsList( F.id ), ListN( AsList( F.s ), AsList( F.t ), { s, t } -> Pair( s, t ) ) ) ) );
+            F -> CreateReflexiveQuiver( category_of_quivers, NTuple( 4, Cardinality( F.C0 ), Cardinality( F.C1 ), AsList( F.id ), ListN( AsList( F.s ), AsList( F.t ), { s, t } -> Pair( s, t ) ) ) ) );
     
     AddMorphismFunction( U,
             { source, eta, range } -> CreateReflexiveQuiverMorphism( category_of_quivers, source, Pair( AsList( eta.C0 ), AsList( eta.C1 ) ), range ) );

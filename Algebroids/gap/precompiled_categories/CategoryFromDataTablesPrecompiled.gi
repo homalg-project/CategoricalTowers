@@ -10,7 +10,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_CategoryFromDataTablesPrecompiled", function ( ca
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, BigInt( 1 ) );
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Cardinality, BigInt( 1 ) );
 end
 ########
         
@@ -32,7 +32,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, DataTables( cat_1 )[2][5][1 + IndexOfObject( arg2_1 )][1 + IndexOfObject( arg3_1 )] );
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Cardinality, DataTables( cat_1 )[2][5][1 + IndexOfObject( arg2_1 )][1 + IndexOfObject( arg3_1 )] );
 end
 ########
         

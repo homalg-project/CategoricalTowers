@@ -197,7 +197,7 @@ function ( cat_1 )
                     return REM_INT( logic_new_func_x_3, deduped_12_2 );
                 end );
             hoisted_2_2 := CAP_JIT_INCOMPLETE_LOGIC( deduped_12_2 * GeometricSumDiff1( deduped_12_2, deduped_12_2 ) );
-            return CreateCapCategoryObjectWithAttributes( deduped_37_1, Length, Length( Filtered( [ 0 .. deduped_11_2 - 1 ], function ( x_3 )
+            return CreateCapCategoryObjectWithAttributes( deduped_37_1, Cardinality, Length( Filtered( [ 0 .. deduped_11_2 - 1 ], function ( x_3 )
                         local hoisted_1_3, hoisted_4_3, hoisted_6_3, deduped_7_3, deduped_8_3, deduped_9_3;
                         hoisted_1_3 := CAP_JIT_INCOMPLETE_LOGIC( x_3 );
                         deduped_9_3 := Filtered( deduped_10_2, function ( x_4 )

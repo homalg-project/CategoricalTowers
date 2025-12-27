@@ -84,7 +84,7 @@ InstallMethod( CategoryFromNerveData,
     t := nerve_data[2][3];
     
     SetDefiningTripleOfUnderlyingQuiver( C,
-            Triple( Length( C0 ),
+            Triple( Cardinality( C0 ),
                     Length( input_record.indices_of_generating_morphisms ),
                     List( input_record.indices_of_generating_morphisms, i -> Pair( s( i ), t( i ) ) ) ) );
     
@@ -137,7 +137,7 @@ InstallMethod( CategoryFromNerveData,
     AddSetOfObjectsOfCategory( C,
       function( C )
         
-        return List( [ 0 .. Length( NerveData( C )[1][1] ) - 1 ], i -> CreateObject( C, i ) );
+        return List( [ 0 .. Cardinality( NerveData( C )[1][1] ) - 1 ], i -> CreateObject( C, i ) );
         
     end );
     
@@ -145,7 +145,7 @@ InstallMethod( CategoryFromNerveData,
     AddSetOfMorphismsOfFiniteCategory( C,
       function( C )
         
-        return List( [ 0 .. Length( NerveData( C )[1][2] ) - 1 ], i -> CreateMorphism( C, i ) );
+        return List( [ 0 .. Cardinality( NerveData( C )[1][2] ) - 1 ], i -> CreateMorphism( C, i ) );
         
     end );
     
@@ -574,7 +574,7 @@ InstallMethod( Size,
         
   function( C )
     
-    return Length( NerveData( C )[1][2] );
+    return Cardinality( NerveData( C )[1][2] );
     
 end );
 
@@ -866,8 +866,8 @@ InstallMethod( DataTablesOfCategory,
     end;
     
     precompose_data :=
-      List( [ 0 .. Length( C1 ) - 1 ], i ->
-            List( [ 0 .. Length( C1 ) - 1 ], j ->
+      List( [ 0 .. Cardinality( C1 ) - 1 ], i ->
+            List( [ 0 .. Cardinality( C1 ) - 1 ], j ->
                   precompose( i, j ) ) );
     
     hom_on_objs :=
@@ -881,8 +881,8 @@ InstallMethod( DataTablesOfCategory,
     end;
     
     hom_on_objs_data :=
-      List( [ 0 .. Length( C0 ) - 1 ], i ->
-            List( [ 0 .. Length( C0 ) - 1 ], j ->
+      List( [ 0 .. Cardinality( C0 ) - 1 ], i ->
+            List( [ 0 .. Cardinality( C0 ) - 1 ], j ->
                   hom_on_objs( i, j ) ) );
     
     hom_on_mors :=
@@ -896,8 +896,8 @@ InstallMethod( DataTablesOfCategory,
     end;
     
     hom_on_mors_data :=
-      List( [ 0 .. Length( C1 ) - 1 ], i ->
-            List( [ 0 .. Length( C1 ) - 1 ], j ->
+      List( [ 0 .. Cardinality( C1 ) - 1 ], i ->
+            List( [ 0 .. Cardinality( C1 ) - 1 ], j ->
                   hom_on_mors( i, j ) ) );
     
     introduction :=
@@ -910,7 +910,7 @@ InstallMethod( DataTablesOfCategory,
     end;
     
     introduction_data :=
-      List( [ 0 .. Length( C1 ) - 1 ], i ->
+      List( [ 0 .. Cardinality( C1 ) - 1 ], i ->
             introduction( i ) );
     
     elimination :=
@@ -929,14 +929,14 @@ InstallMethod( DataTablesOfCategory,
     end;
     
     elimination_data :=
-      List( [ 0 .. Length( C0 ) - 1 ], i ->
-            List( [ 0 .. Length( C0 ) - 1 ], j ->
+      List( [ 0 .. Cardinality( C0 ) - 1 ], i ->
+            List( [ 0 .. Cardinality( C0 ) - 1 ], j ->
                   List( [ 0 .. hom_on_objs( i, j ) - 1 ], k ->
                   elimination( i, j, k ) ) ) );
     
     return Pair( Pair(
-                   Length( C0 ),
-                   Length( C1 ) ),
+                   Cardinality( C0 ),
+                   Cardinality( C1 ) ),
                  NTuple( 8,
                          identity_data,
                          AsList( s ),

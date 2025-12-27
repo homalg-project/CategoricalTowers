@@ -1478,7 +1478,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh,
                   function ( PSh, F, G, iota )
                     local D, H, hom_equalizer_diagram, hom_F_V_G, emb, mor,
-                          F_vals, F_lengths, nr_objs, hom_F_V_G_diagrams, hom_F_V_G_diagram_collected, hom_F_V_G_diagram, prjs, G_vals, etas;
+                          F_vals, F_cardinalities, nr_objs, hom_F_V_G_diagrams, hom_F_V_G_diagram_collected, hom_F_V_G_diagram, prjs, G_vals, etas;
                     
                     D := Target( PSh );
                     
@@ -1500,11 +1500,11 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     
                     F_vals := ListOfValues( ValuesOfPreSheaf( F )[1] );
                     
-                    F_lengths := List( F_vals, Length );
+                    F_cardinalities := List( F_vals, Cardinality );
                     
                     nr_objs := DefiningTripleOfUnderlyingQuiver( Source( PSh ) )[1];
                     
-                    hom_F_V_G_diagrams := List( [ 1 .. nr_objs ], i -> hom_F_V_G_diagram{[ 1 + Sum( F_lengths{[ 1 .. i - 1 ]} ) .. Sum( F_lengths{[ 1 .. i ]} ) ]} );
+                    hom_F_V_G_diagrams := List( [ 1 .. nr_objs ], i -> hom_F_V_G_diagram{[ 1 + Sum( F_cardinalities{[ 1 .. i - 1 ]} ) .. Sum( F_cardinalities{[ 1 .. i ]} ) ]} );
                     
                     hom_F_V_G_diagram_collected := List( hom_F_V_G_diagrams, L -> DirectProduct( H, L ) );
                     
@@ -3689,7 +3689,7 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
     
     ## compute all Hom(-, objC) to order them by their cardinalities/dimension below
     homs := List( objs, objC ->
-                  Sum( List( objs, srcC -> Length( HomomorphismStructureOnObjects( C, srcC, objC ) ) ) ) );
+                  Sum( List( objs, srcC -> Cardinality( HomomorphismStructureOnObjects( C, srcC, objC ) ) ) ) );
     
     predicate :=
       function( pi_data, pi_data_new )

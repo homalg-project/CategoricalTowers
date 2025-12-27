@@ -43,7 +43,7 @@ InstallGlobalFunction( "CreateIntervalCategory",
       function( cat, truth_value )
         
         return CreateCapCategoryObjectWithAttributes( cat,
-                       Length, truth_value );
+                       Cardinality, truth_value );
         
     end );
     
@@ -51,7 +51,7 @@ InstallGlobalFunction( "CreateIntervalCategory",
     AddObjectDatum( IntervalCategory,
       function( cat, obj )
         
-        return Length( obj );
+        return Cardinality( obj );
         
     end );
     
@@ -80,7 +80,7 @@ InstallGlobalFunction( "CreateIntervalCategory",
         
         return MorphismConstructor( cat,
                        source,
-                       [ 0 .. Length( source ) - 1 ],
+                       [ 0 .. Cardinality( source ) - 1 ],
                        range );
         
     end );
