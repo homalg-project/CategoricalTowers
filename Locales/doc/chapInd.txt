@@ -52,6 +52,7 @@
   [2XCanonicalObject[102X, for IsConstructibleObject 12.3-3 
       for IsObjectInMeetSemilatticeOfDifferences 9.2-3 
   [2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY[102X 8.1-1 
+  [2XCardinality[102X, for IsObjectInIntervalCategory 13.2-1 
   [2XClosure[102X, for IsConstructibleObject 12.3-7 
       for IsObjectInMeetSemilatticeOfDifferences 9.2-5 
   [2XClosureAsConstructibleObject[102X, for IsConstructibleObject 12.3-8 
@@ -165,7 +166,6 @@
   [2XIsTotalOrderCategory[102X, for IsCapCategory 2.1-2 
   [2XIterator[102X, for IsConstructibleObject 12.4-5 
   [2XLength[102X, for IsConstructibleObject 12.4-3 
-      for IsObjectInIntervalCategory 13.2-1 
   [2XListOfObjectsInMeetSemilatticeOfDifferences[102X, for IsConstructibleObjectAsUnionOfSingleDifferences 12.4-9 
   [2XListOfObjectsInMeetSemilatticeOfMultipleDifferences[102X, for IsConstructibleObjectAsUnionOfMultipleDifferences 12.4-8 
   [2XListOfSingleDifferences[102X, for IsObjectInMeetSemilatticeOfMultipleDifferences 11.3-1 

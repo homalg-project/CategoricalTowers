@@ -7,10 +7,10 @@
                   and Boolean algebras of constructible sets [101X
   
   
-                                   2025.12-02
+                                   2025.12-04
   
   
-                                23 December 2025
+                                28 December 2025
   
   
                                 Mohamed Barakat
@@ -294,7 +294,7 @@
       13.1-1 CreateIntervalCategory
       13.1-2 IntervalCategory
     13.2 [33X[0;0YAttributes[133X
-      13.2-1 Length
+      13.2-1 Cardinality
     13.3 [33X[0;0YGAP categories[133X
       13.3-1 IsIntervalCategory
       13.3-2 IsCellInIntervalCategory

@@ -135,9 +135,9 @@
   
   [1X13.2 [33X[0;0YAttributes[133X[101X
   
-  [1X13.2-1 Length[101X
+  [1X13.2-1 Cardinality[101X
   
-  [33X[1;0Y[29X[2XLength[102X( [3Xa[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCardinality[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan integer[133X
   
   [33X[0;0YThe truth value of the object [3Xa[103X in the interval category. It is either [23X0[123X for
