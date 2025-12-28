@@ -1,7 +1,7 @@
 name: FunctorCategories
-version: "2025.12-06"
+version: "2025.12-07"
 license: "GPL-2.0-or-later"
-date: 2025-12-23
+date: 2025-12-28
 description: |
     Categories of functors
 
@@ -26,6 +26,9 @@ needed-pkgs:
     - name: "ToolsForHomalg"
       version: ">= 2022.12-01"
       url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
+    - name: "RingsForHomalg"
+      version: ">= 2020.02.04"
+      url: "https://homalg-project.github.io/pkg/RingsForHomalg"
     - name: "CAP"
       version: ">= 2025.07-04"
       url: "https://homalg-project.github.io/pkg/CAP"
@@ -35,42 +38,39 @@ needed-pkgs:
     - name: "CartesianCategories"
       version: ">= 2025.07-03"
       url: "https://homalg-project.github.io/pkg/CartesianCategories"
-    - name: "ToolsForCategoricalTowers"
-      version: ">= 2024.11-03"
-      url: "https://homalg-project.github.io/pkg/ToolsForCategoricalTowers"
-    - name: "FpCategories"
-      version: ">= 2025.09-01"
-      url: "https://homalg-project.github.io/pkg/FpCategories"
-    - name: "Algebroids"
-      version: ">= 2025.11-01"
-      url: "https://homalg-project.github.io/pkg/Algebroids"
-    - name: "FiniteCocompletions"
-      version: ">= 2024.03-12"
-      url: "https://homalg-project.github.io/pkg/FiniteCocompletions"
-    - name: "PreSheaves"
-      version: ">= 2025.08-03"
-      url: "https://homalg-project.github.io/pkg/PreSheaves"
-    - name: "RingsForHomalg"
-      version: ">= 2020.02.04"
-      url: "https://homalg-project.github.io/pkg/RingsForHomalg"
     - name: "LinearAlgebraForCAP"
       version: ">= 2024.08-07"
       url: "https://homalg-project.github.io/pkg/LinearAlgebraForCAP"
     - name: "FreydCategoriesForCAP"
       version: ">= 2025.02-01"
       url: "https://homalg-project.github.io/pkg/FreydCategoriesForCAP"
-    - name: "SubcategoriesForCAP"
-      version: ">= 2025.08-02"
-      url: "https://homalg-project.github.io/pkg/SubcategoriesForCAP"
+    - name: "ToolsForCategoricalTowers"
+      version: ">= 2024.11-03"
+      url: "https://homalg-project.github.io/pkg/ToolsForCategoricalTowers"
     - name: "Toposes"
       version: ">= 2025.12-02"
       url: "https://homalg-project.github.io/pkg/Toposes"
+    - name: "FinSetsForCAP"
+      version: ">= 2025.12-03"
+      url: "https://homalg-project.github.io/pkg/FinSetsForCAP"
+    - name: "FpCategories"
+      version: ">= 2025.12-05"
+      url: "https://homalg-project.github.io/pkg/FpCategories"
     - name: "Locales"
       version: ">= 2025.02-04"
       url: "https://homalg-project.github.io/pkg/Locales"
-    - name: "FinSetsForCAP"
-      version: ">= 2025.08-01"
-      url: "https://homalg-project.github.io/pkg/FinSetsForCAP"
+    - name: "PreSheaves"
+      version: ">= 2025.08-03"
+      url: "https://homalg-project.github.io/pkg/PreSheaves"
+    - name: "FiniteCocompletions"
+      version: ">= 2025.12-08"
+      url: "https://homalg-project.github.io/pkg/FiniteCocompletions"
+    - name: "Algebroids"
+      version: ">= 2025.12-02"
+      url: "https://homalg-project.github.io/pkg/Algebroids"
+    - name: "SubcategoriesForCAP"
+      version: ">= 2025.08-02"
+      url: "https://homalg-project.github.io/pkg/SubcategoriesForCAP"
     - name: "ToolsForHigherHomologicalAlgebra"
       version: ">= 2023.03-01"
       url: "https://homalg-project.github.io/pkg/ToolsForHigherHomologicalAlgebra"
@@ -81,11 +81,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FunctorCategorie
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.12-06/FunctorCategories-2025.12-06.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.12-07/FunctorCategories-2025.12-07.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.12-06/FunctorCategories-2025.12-06.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.12-07/FunctorCategories-2025.12-07.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.12-06/FunctorCategories-2025.12-06-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2025.12-07/FunctorCategories-2025.12-07-manual.pdf
 
 abstract: |
 
@@ -96,10 +96,10 @@ keywords: |
     functors, natural transformations, finitely presented categories, functors into categories, functors into pre-additive categories, functors into additive categories, functors into pre-abelian categories, functors into abelian categories.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BS23</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+    [<span class='BibKey'>BS28</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FunctorCategories, Categories of functors,
-             Version 2025.12-06</i>
-     (<span class='BibYear'>2-23</span>)<br />
+             Version 2025.12-07</i>
+     (<span class='BibYear'>2-28</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FunctorCategories">https://homalg-project.github.io/pkg/FunctorCategories</a></span>.
     </p>
@@ -109,9 +109,9 @@ bibtex: |
     @misc{ FunctorCategories,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FunctorCategories},    {Categories    of   functors},
-                          {V}ersion 2025.12\texttt{\symbol{45}}06},
+                          {V}ersion 2025.12\texttt{\symbol{45}}07},
       month =            {5\texttt{\symbol{45}}},
-      year =             {2\texttt{\symbol{45}}23},
+      year =             {2\texttt{\symbol{45}}28},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/FunctorCategories}
@@ -124,6 +124,6 @@ bibtex: |
                           into     additive     categories;     functors    into
                           pre\texttt{\symbol{45}}abelian   categories;  functors
                           into abelian categories},
-      printedkey =       {BS23}
+      printedkey =       {BS28}
     }
 
