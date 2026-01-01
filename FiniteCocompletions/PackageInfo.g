@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "FiniteCocompletions",
 Subtitle := "Finite (co)product/(co)limit (co)completions",
-Version := "2025.12-08",
-Date := "2025-12-28",
-Date := "2025-12-28",
+Version := "2025.12-09",
+Date := "2026-01-01",
+Date := "2026-01-01",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -77,7 +77,7 @@ Dependencies := rec(
                    [ "Toposes", ">= 2024.02-08" ],
                    [ "ToolsForCategoricalTowers", ">= 2025.08-01" ],
                    [ "Toposes", ">= 2024.01-02" ],
-                   [ "FinSetsForCAP", ">= 2025.12-03" ],
+                   [ "FinSetsForCAP", ">= 2025.12-08" ],
                    [ "QuotientCategories", ">= 2025.08-03" ],
                    [ "Locales", ">= 2025.12-04" ],
                    [ "FpCategories", ">= 2025.12-05" ],
