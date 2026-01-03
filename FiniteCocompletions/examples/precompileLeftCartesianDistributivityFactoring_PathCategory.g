@@ -176,6 +176,7 @@ IsOne( lexpand );
 
 Inverse( lfactor ) = lexpand;
 #! true
+
 lexpand_reconstructed :=
   CellAsEvaluatableString( lexpand, [ "DC", "UPC", "PC", "C" ] );;
 
