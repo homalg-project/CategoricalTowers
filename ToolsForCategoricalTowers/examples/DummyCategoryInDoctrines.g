@@ -23,13 +23,15 @@ D3 := DummyCategoryInDoctrines(
               [ "IsCategoryWithInitialObject",
                 "IsCategoryWithTerminalObject",
                 "IsCategoryWithZeroObject" ] );
-#! DummyCategoryInDoctrines( \
-#! [ "IsCategoryWithInitialObject", "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject" ] )
+#! DummyCategoryInDoctrines( [ "IsCategoryWithInitialObject", \
+#! "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject" ] )
 Display( D3 );
-#! A CAP category with name DummyCategoryInDoctrines( \
-#! [ "IsCategoryWithInitialObject", "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject" ] ):
+#! A CAP category with name \
+#! DummyCategoryInDoctrines( [ "IsCategoryWithInitialObject", \
+#! "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject" ] ):
 #! 
-#! 18 primitive operations were used to derive 41 operations for this category which algorithmically
+#! 18 primitive operations were used to derive 41 operations for this category \
+#! which algorithmically
 #! * IsCategoryWithZeroObject
 D4 := DummyCategoryInDoctrines(
               [ "IsCategoryWithInitialObject",
@@ -37,8 +39,8 @@ D4 := DummyCategoryInDoctrines(
                 "IsCategoryWithZeroObject" ] : minimal := true );
 #! DummyCategoryInDoctrines( [ "IsCategoryWithZeroObject" ] )
 Display( D4 );
-#! A CAP category with name DummyCategoryInDoctrines( \
-#! [ "IsCategoryWithZeroObject" ] ):
+#! A CAP category with name \
+#! DummyCategoryInDoctrines( [ "IsCategoryWithZeroObject" ] ):
 #! 
 #! 14 primitive operations were used to derive 41 operations for this category \
 #! which algorithmically
