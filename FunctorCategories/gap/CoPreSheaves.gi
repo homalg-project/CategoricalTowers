@@ -419,7 +419,11 @@ InstallMethodWithCache( CoPreSheaves,
         "for a CAP category",
         [ IsCapCategory, IsCapCategory ],
         
-  function( B, D )
+  FunctionWithNamedArguments(
+  [ [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ]
+  ],
+  function ( CAP_NAMED_ARGUMENTS, B, D )
     local object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           Hom, O,
@@ -541,7 +545,7 @@ InstallMethodWithCache( CoPreSheaves,
                    modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                    modeling_tower_morphism_datum := modeling_tower_morphism_datum,
                    only_primitive_operations := true )
-              );
+              : FinalizeCategory := false );
     
     SetSource( coPSh, B );
     SetTarget( coPSh, D );
@@ -551,9 +555,13 @@ InstallMethodWithCache( CoPreSheaves,
               "Target",
               ] );
     
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+       Finalize( coPSh );
+    fi;
+    
     return coPSh;
     
-end );
+end ) );
 
 ##
 InstallMethodWithCache( CoPreSheaves,

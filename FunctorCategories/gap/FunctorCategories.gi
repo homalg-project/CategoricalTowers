@@ -269,7 +269,7 @@ InstallMethod( AsObjectInFunctorCategory,
     
     if dims = [ ] then
         Error( "the list of dimensions is empty\n" );
-    elif not IsInt( dims[1] ) then
+    elif not ForAll( dims, IsInt ) then
         Error( "expecting a list of integers as the second argument but received ", dims, "\n" );
     fi;
     
@@ -288,6 +288,10 @@ InstallMethod( AsObjectInFunctorCategory,
     mat :=
       function ( m )
         local source, target;
+        
+        if MorphismFilter( kmat )( matrices[m] ) then
+            return matrices[m];
+        fi;
         
         source := VertexIndex( UnderlyingVertex( Source( morphisms[m] ) ) );
         target := VertexIndex( UnderlyingVertex( Target( morphisms[m] ) ) );
@@ -419,7 +423,11 @@ InstallMethodWithCache( FunctorCategory,
         "for a CAP category",
         [ IsCapCategory, IsCapCategory ],
         
-  function( B, D )
+  FunctionWithNamedArguments(
+  [ [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ]
+  ],
+  function ( CAP_NAMED_ARGUMENTS, B, D )
     local object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           B_op, defining_triple, PSh,
@@ -680,11 +688,13 @@ InstallMethodWithCache( FunctorCategory,
               "OppositeOfSource",
               ] );
     
-    Finalize( Hom );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+       Finalize( Hom );
+    fi;
     
     return Hom;
     
-end );
+end ) );
 
 ##
 InstallMethodWithCache( FunctorCategory,
