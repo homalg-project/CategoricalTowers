@@ -812,17 +812,17 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                           category_filter := IsPreSheafCategoryOfFpEnrichedCategory,
                           category_object_filter := IsObjectInPreSheafCategoryOfFpEnrichedCategory,
                           category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
-                          supports_empty_limits := supports_empty_limits,
-                          list_of_operations_to_install := list_of_operations_to_install,
                           properties := properties,
                           object_constructor := object_constructor,
                           object_datum := object_datum,
                           morphism_constructor := morphism_constructor,
                           morphism_datum := morphism_datum,
+                          list_of_operations_to_install := list_of_operations_to_install,
+                          supports_empty_limits := supports_empty_limits,
+                          underlying_category_getter_string := "Target",
                           create_func_bool := create_func_bool,
                           create_func_object := create_func_object,
                           create_func_morphism := create_func_morphism,
-                          underlying_category_getter_string := "Target"
                           );
     
     if not commutative_ring = fail then
