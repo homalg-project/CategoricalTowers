@@ -305,7 +305,11 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         "for two CAP categories",
         [ IsCapCategory, IsCapCategory ],
         
-  function ( B, D )
+  FunctionWithNamedArguments(
+  [ [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ]
+  ],
+  function ( CAP_NAMED_ARGUMENTS, B, D )
     local B_op, kq, A, relations, name,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
@@ -2172,7 +2176,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     AddToToDoList( ToDoListEntry( [ [ PSh, "IsFinalized", true ] ], function ( ) IdentityFunctor( PSh )!.UnderlyingFunctor := IdentityFunctor( D ); end ) );
     
     #if false then
-    if ValueOption( "no_precompiled_code" ) <> true then
+    if CAP_NAMED_ARGUMENTS.no_precompiled_code <> true then
         
         if IsFpCategory( B ) and IsSkeletalCategoryOfFiniteSets( D ) then
             
@@ -2208,11 +2212,13 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    Finalize( PSh );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        Finalize( PSh );
+    fi;
     
     return PSh;
     
-end );
+end ) );
 
 ##
 InstallMethodWithCache( PreSheaves,

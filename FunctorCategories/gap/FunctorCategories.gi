@@ -419,7 +419,11 @@ InstallMethodWithCache( FunctorCategory,
         "for a CAP category",
         [ IsCapCategory, IsCapCategory ],
         
-  function( B, D )
+  FunctionWithNamedArguments(
+  [ [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ]
+  ],
+  function ( CAP_NAMED_ARGUMENTS, B, D )
     local object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           B_op, defining_triple, PSh,
@@ -680,11 +684,13 @@ InstallMethodWithCache( FunctorCategory,
               "OppositeOfSource",
               ] );
     
-    Finalize( Hom );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+       Finalize( Hom );
+    fi;
     
     return Hom;
     
-end );
+end ) );
 
 ##
 InstallMethodWithCache( FunctorCategory,

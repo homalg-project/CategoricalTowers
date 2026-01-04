@@ -110,6 +110,7 @@ InstallMethod( AlgebroidFromDataTables,
     [ "colors", fail ],
     [ "range_of_HomStructure", fail ],
     [ "eager", false ],
+    [ "FinalizeCategory", true ],
   ],
   function ( CAP_NAMED_ARGUMENTS, input_data )
     local ring, q, name, A, ranks, hom_structure_objs_gmors, hom_structure_objs_mors, hom_structure_gmors_objs, hom_structure_mors_objs,
@@ -612,7 +613,9 @@ InstallMethod( AlgebroidFromDataTables,
         
     end );
     
-    Finalize( A );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+       Finalize( A );
+    fi;
     
     return A;
     
