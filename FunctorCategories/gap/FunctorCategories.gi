@@ -269,7 +269,7 @@ InstallMethod( AsObjectInFunctorCategory,
     
     if dims = [ ] then
         Error( "the list of dimensions is empty\n" );
-    elif not IsInt( dims[1] ) then
+    elif not ForAll( dims, IsInt ) then
         Error( "expecting a list of integers as the second argument but received ", dims, "\n" );
     fi;
     
@@ -288,6 +288,10 @@ InstallMethod( AsObjectInFunctorCategory,
     mat :=
       function ( m )
         local source, target;
+        
+        if MorphismFilter( kmat )( matrices[m] ) then
+            return matrices[m];
+        fi;
         
         source := VertexIndex( UnderlyingVertex( Source( morphisms[m] ) ) );
         target := VertexIndex( UnderlyingVertex( Target( morphisms[m] ) ) );
