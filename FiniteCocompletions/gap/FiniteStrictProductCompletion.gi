@@ -189,8 +189,19 @@ InstallMethod( FiniteStrictProductCompletion,
 end );
 
 ##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a finite product completion category",
+        [ IsFiniteStrictProductCompletion ],
+        
+  function( UC )
+    
+    return SetOfObjectsOfCategory( UC );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
-        "for a finite coproduct cocompletion category",
+        "for a finite product completion category",
         [ IsFiniteStrictProductCompletion ],
         
   function( PC )
@@ -210,7 +221,7 @@ end );
 
 ##
 InstallMethod( EmbeddingOfUnderlyingCategory,
-        "for a finite coproduct cocompletion category",
+        "for a finite product completion category",
         [ IsFiniteStrictProductCompletion ],
         
   function( PC )

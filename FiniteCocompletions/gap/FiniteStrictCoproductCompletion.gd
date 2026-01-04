@@ -46,6 +46,7 @@ DeclareAttribute( "FiniteStrictCoproductCompletion",
         IsCapCategory );
 #! @InsertChunk TerminalCategory_as_FiniteStrictCoproductCompletion
 #! @InsertChunk FiniteStrictCoproductCompletion
+#! @InsertChunk FiniteStrictCoproductCompletion_poset
 
 CapJitAddTypeSignature( "FiniteStrictCoproductCompletion", [ IsCapCategory ], function ( input_types )
     

@@ -44,6 +44,7 @@ DeclareCategory( "IsMorphismInFiniteStrictProductCompletion",
 #! @Arguments cat
 DeclareAttribute( "FiniteStrictProductCompletion",
         IsCapCategory );
+#! @InsertChunk FiniteStrictProductCompletion_poset
 #! @InsertChunk TerminalCategory_as_FiniteStrictProductCompletion
 
 CapJitAddTypeSignature( "FiniteStrictProductCompletion", [ IsCapCategory ], function ( input_types )

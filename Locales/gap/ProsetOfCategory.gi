@@ -718,7 +718,7 @@ InstallMethod( DisplayString,
   function( a )
     
     return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
-                   "\nAn object in the poset given by the above data" );
+                   "\nAn object in the poset given by the above data\n" );
     
 end );
 
@@ -729,6 +729,6 @@ InstallMethod( DisplayString,
   function( a )
     
     return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
-                   "\nAn object in the stable poset given by the above data" );
+                   "\nAn object in the stable poset given by the above data\n" );
     
 end );

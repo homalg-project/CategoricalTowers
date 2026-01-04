@@ -310,12 +310,23 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     [ "FinalizeCategory", true ]
   ],
   function ( CAP_NAMED_ARGUMENTS, B, D )
-    local B_op, kq, A, relations, name,
+    local object_datum_type, morphism_datum_type, is_computable,
+          B_op, kq, A, relations, name,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations, list_of_operations_to_always_install_primitively, list_of_operations_to_install,
           skip, commutative_ring, properties, supports_empty_limits, prop, option_record,
           PSh, H, auxiliary_indices;
+    
+    object_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( D ) ),
+              CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) ) );
+    
+    morphism_datum_type :=
+      CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) );
+    
+    is_computable := IsBound( D!.is_computable ) and D!.is_computable = true;
     
     if IsFpCategory( B ) then
         B_op := OppositeFpCategory( B : FinalizeCategory := true );
@@ -335,6 +346,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         B_op := OppositeCategoryFromNerveData( B : FinalizeCategory := true );
     elif IsCategoryFromDataTables( B ) then
         B_op := OppositeCategoryFromDataTables( B : FinalizeCategory := true );
+    elif WasCreatedAsOppositeCategory( B ) then
+        B_op := OppositeCategory( B );
     elif HasIsFiniteCategory( B ) and IsFiniteCategory( B ) then
         B_op := OppositeFiniteCategory( B : FinalizeCategory := true );
     elif IsAlgebroid( B ) then
@@ -812,17 +825,20 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                           category_filter := IsPreSheafCategoryOfFpEnrichedCategory,
                           category_object_filter := IsObjectInPreSheafCategoryOfFpEnrichedCategory,
                           category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
-                          supports_empty_limits := supports_empty_limits,
-                          list_of_operations_to_install := list_of_operations_to_install,
+                          #object_datum_type := object_datum_type, ## ObjectDatum will trigger ListOfValues and destroy laziness
+                          #morphism_datum_type := morphism_datum_type, ## MorphismDatum will trigger ListOfValues and destroy laziness
                           properties := properties,
                           object_constructor := object_constructor,
                           object_datum := object_datum,
                           morphism_constructor := morphism_constructor,
                           morphism_datum := morphism_datum,
+                          list_of_operations_to_install := list_of_operations_to_install,
+                          is_computable := is_computable,
+                          supports_empty_limits := supports_empty_limits,
+                          underlying_category_getter_string := "Target",
                           create_func_bool := create_func_bool,
                           create_func_object := create_func_object,
                           create_func_morphism := create_func_morphism,
-                          underlying_category_getter_string := "Target"
                           );
     
     if not commutative_ring = fail then
@@ -2933,6 +2949,13 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
                            OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( morB ) ),
                            SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Source( morB ) ) )] );
         
+    elif WasCreatedAsOppositeCategory( B ) then
+        
+        morB_op := MorphismConstructor( B_op,
+                           SetOfObjects( B_op )[SafeUniquePositionProperty( SetOfObjects( B ), obj -> IsEqualForObjects( B, obj, Target( morB ) ) )],
+                           MorphismDatum( B_op, MorphismDatum( B, morB ) ),
+                           SetOfObjects( B_op )[SafeUniquePositionProperty( SetOfObjects( B ), obj -> IsEqualForObjects( B, obj, Source( morB ) ) )] );
+        
     else
         
         morB_op := MorphismConstructor( B_op,
@@ -4815,7 +4838,7 @@ InstallMethod( ViewString,
     
     vertices := LabelsOfObjects( UnderlyingQuiver( B ) );
     
-    v_dim := List( ValuesOfPreSheaf( F )[1], ObjectDatum );
+    v_dim := List( ListOfValues( ValuesOfPreSheaf( F )[1] ), ObjectDatum );
     
     v_string := ListN( vertices, v_dim, { vertex, dim } -> Concatenation( "(", String( vertex ), ")->", String( dim ) ) );
     
@@ -4855,7 +4878,7 @@ InstallMethod( ViewString,
     
     vertices := List( SetOfObjects( B ), UnderlyingVertex );
     
-    v_dim := List( ValuesOfPreSheaf( F )[1], ObjectDatum );
+    v_dim := List( ListOfValues( ValuesOfPreSheaf( F )[1] ), ObjectDatum );
     
     v_string := ListN( vertices, v_dim, { vertex, dim } -> Concatenation( "(", String( vertex ), ")->", String( dim ) ) );
     

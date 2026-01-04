@@ -371,9 +371,9 @@ InstallMethod( Display,
     [ IsObjectInAFullSubcategory ],
   function( a )
     
-    Print( "An object in full subcategory given by: " );
-    
     Display( UnderlyingCell( a ) );
+    
+    Display( "\nAn object in full subcategory given by the above data" );
     
 end );
 
@@ -382,8 +382,8 @@ InstallMethod( Display,
     [ IsMorphismInAFullSubcategory ],
   function( phi )
     
-    Print( "A morphism in full subcategory given by: " );
-    
     Display( UnderlyingCell( phi ) );
+    
+    Display( "\nA morphism in full subcategory given by the above data" );
     
 end );
