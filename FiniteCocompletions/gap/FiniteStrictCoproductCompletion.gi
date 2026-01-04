@@ -893,6 +893,29 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     fi;
     
+    if HasIsFiniteCategory( C ) and IsFiniteCategory( C ) and
+       CanCompute( C, "SetOfObjectsOfCategory" ) and
+       HasIsThinCategory( UC ) and IsThinCategory( UC ) then
+        
+        ##
+        AddSetOfObjectsOfCategory( UC,
+          function( UC )
+            local C, Yoneda, representables, joins;
+            
+            C := UnderlyingCategory( UC );
+            
+            Yoneda := EmbeddingOfUnderlyingCategoryData( UC )[2];
+            
+            representables := List( SetOfObjects( C ), Yoneda[1] );
+            
+            joins := AllCoproducts( UC, representables );
+            
+            return List( Concatenation( joins ), entry -> entry[2] );
+            
+        end );
+        
+    fi;
+    
     if HasIsEquippedWithHomomorphismStructure( C ) and IsEquippedWithHomomorphismStructure( C ) and
        MissingOperationsForConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
        IsBound( H ) and
@@ -1593,6 +1616,17 @@ InstallMethod( FiniteStrictCoproductCompletion,
     Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( UI, "IsEquippedWithHomomorphismStructure" ) );
     
     return UI;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a finite coproduct cocompletion category",
+        [ IsFiniteStrictCoproductCompletion ],
+        
+  function( UC )
+    
+    return SetOfObjectsOfCategory( UC );
     
 end );
 
