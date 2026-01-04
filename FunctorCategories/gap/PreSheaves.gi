@@ -2192,7 +2192,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
         elif IsAlgebroid( B ) then
             
-            if IsCategoryOfRows( D ) then
+            if IsCategoryOfRows( D ) and
+               IsHomalgRing( commutative_ring ) and
+               HasIsFieldForHomalg( commutative_ring ) and IsFieldForHomalg( commutative_ring ) and
+               not B!.over_Z then
                 
                 if IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( B ) ) or
                    ( HasIsMonoidalCategory( D ) and IsMonoidalCategory( D ) and
