@@ -310,12 +310,15 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     [ "FinalizeCategory", true ]
   ],
   function ( CAP_NAMED_ARGUMENTS, B, D )
-    local B_op, kq, A, relations, name,
+    local is_computable,
+          B_op, kq, A, relations, name,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations, list_of_operations_to_always_install_primitively, list_of_operations_to_install,
           skip, commutative_ring, properties, supports_empty_limits, prop, option_record,
           PSh, H, auxiliary_indices;
+    
+    is_computable := IsBound( D!.is_computable ) and D!.is_computable = true;
     
     if IsFpCategory( B ) then
         B_op := OppositeFpCategory( B : FinalizeCategory := true );
@@ -818,6 +821,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                           morphism_constructor := morphism_constructor,
                           morphism_datum := morphism_datum,
                           list_of_operations_to_install := list_of_operations_to_install,
+                          is_computable := is_computable,
                           supports_empty_limits := supports_empty_limits,
                           underlying_category_getter_string := "Target",
                           create_func_bool := create_func_bool,
