@@ -338,6 +338,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         B_op := OppositeCategoryFromNerveData( B : FinalizeCategory := true );
     elif IsCategoryFromDataTables( B ) then
         B_op := OppositeCategoryFromDataTables( B : FinalizeCategory := true );
+    elif WasCreatedAsOppositeCategory( B ) then
+        B_op := OppositeCategory( B );
     elif HasIsFiniteCategory( B ) and IsFiniteCategory( B ) then
         B_op := OppositeFiniteCategory( B : FinalizeCategory := true );
     elif IsAlgebroid( B ) then
@@ -2936,6 +2938,13 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
                            SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Target( morB ) ) )],
                            OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( morB ) ),
                            SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Source( morB ) ) )] );
+        
+    elif WasCreatedAsOppositeCategory( B ) then
+        
+        morB_op := MorphismConstructor( B_op,
+                           SetOfObjects( B_op )[SafeUniquePositionProperty( SetOfObjects( B ), obj -> IsEqualForObjects( B, obj, Target( morB ) ) )],
+                           MorphismDatum( B_op, MorphismDatum( B, morB ) ),
+                           SetOfObjects( B_op )[SafeUniquePositionProperty( SetOfObjects( B ), obj -> IsEqualForObjects( B, obj, Source( morB ) ) )] );
         
     else
         
