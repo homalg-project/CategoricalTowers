@@ -310,13 +310,21 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     [ "FinalizeCategory", true ]
   ],
   function ( CAP_NAMED_ARGUMENTS, B, D )
-    local is_computable,
+    local object_datum_type, morphism_datum_type, is_computable,
           B_op, kq, A, relations, name,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations, list_of_operations_to_always_install_primitively, list_of_operations_to_install,
           skip, commutative_ring, properties, supports_empty_limits, prop, option_record,
           PSh, H, auxiliary_indices;
+    
+    object_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( D ) ),
+              CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) ) );
+    
+    morphism_datum_type :=
+      CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) );
     
     is_computable := IsBound( D!.is_computable ) and D!.is_computable = true;
     
@@ -817,6 +825,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                           category_filter := IsPreSheafCategoryOfFpEnrichedCategory,
                           category_object_filter := IsObjectInPreSheafCategoryOfFpEnrichedCategory,
                           category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
+                          #object_datum_type := object_datum_type, ## ObjectDatum will trigger ListOfValues and destroy laziness
+                          #morphism_datum_type := morphism_datum_type, ## MorphismDatum will trigger ListOfValues and destroy laziness
                           properties := properties,
                           object_constructor := object_constructor,
                           object_datum := object_datum,
