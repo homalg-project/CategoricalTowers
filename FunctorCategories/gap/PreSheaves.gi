@@ -4838,7 +4838,7 @@ InstallMethod( ViewString,
     
     vertices := LabelsOfObjects( UnderlyingQuiver( B ) );
     
-    v_dim := List( ValuesOfPreSheaf( F )[1], ObjectDatum );
+    v_dim := List( ListOfValues( ValuesOfPreSheaf( F )[1] ), ObjectDatum );
     
     v_string := ListN( vertices, v_dim, { vertex, dim } -> Concatenation( "(", String( vertex ), ")->", String( dim ) ) );
     
@@ -4878,7 +4878,7 @@ InstallMethod( ViewString,
     
     vertices := List( SetOfObjects( B ), UnderlyingVertex );
     
-    v_dim := List( ValuesOfPreSheaf( F )[1], ObjectDatum );
+    v_dim := List( ListOfValues( ValuesOfPreSheaf( F )[1] ), ObjectDatum );
     
     v_string := ListN( vertices, v_dim, { vertex, dim } -> Concatenation( "(", String( vertex ), ")->", String( dim ) ) );
     
