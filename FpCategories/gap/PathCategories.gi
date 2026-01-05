@@ -93,7 +93,7 @@ InstallMethod( PathCategory,
     AddIsEqualForObjects( C,
       function ( C, obj_1, obj_2 )
         
-        return IsIdenticalObj( obj_1, obj_2 );
+        return ObjectIndex( obj_1 ) = ObjectIndex( obj_2 );
         
     end );
     
