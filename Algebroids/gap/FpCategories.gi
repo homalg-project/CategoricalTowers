@@ -674,9 +674,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
             
             basis_b_bp := basis_paths_by_vertex_index[b][bp];
             
-            alpha_index := SafePosition( basis_ap_a, BasisPathOfPathAlgebraBasisElement( elem_alpha ) );
+            alpha_index := SafeUniquePositionProperty( basis_ap_a, path -> path = BasisPathOfPathAlgebraBasisElement( elem_alpha ) );
             
-            beta_index := SafePosition( basis_b_bp, BasisPathOfPathAlgebraBasisElement( elem_beta ) );
+            beta_index := SafeUniquePositionProperty( basis_b_bp, path -> path = BasisPathOfPathAlgebraBasisElement( elem_beta ) );
             
             ## hom_structure_on_basis_paths[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] =
             ## [ Hom(v,w) -> Hom(v',w'): x -> basis_path_1 * x * basis_path_2 ]
@@ -716,7 +716,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
             
             return MorphismConstructor( RangeCategoryOfHomomorphismStructure( fpcategory ),
                            source,
-                           [ -1 + SafePosition( basis_elements, BasisPathOfPathAlgebraBasisElement( element ) ) ],
+                           [ -1 + SafeUniquePositionProperty( basis_elements, path -> path = BasisPathOfPathAlgebraBasisElement( element ) ) ],
                            range );
             
         end );

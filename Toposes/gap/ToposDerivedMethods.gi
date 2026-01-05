@@ -1641,7 +1641,9 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
           [ MorphismsOfExternalHom, 2 ],
           [ MorphismsOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
           [ ObjectConstructor, 1, RangeCategoryOfHomomorphismStructure ],
-          [ PreComposeList, 2 ],
+          [ PreComposeList, 4 ],
+          [ IsCongruentForMorphisms, 4 ],
+          [ IsCongruentForMorphisms, 2, RangeCategoryOfHomomorphismStructure ],
           [ MorphismConstructor, 1, RangeCategoryOfHomomorphismStructure ],
           ],
         [ DistinguishedObjectOfHomomorphismStructure,
@@ -1682,7 +1684,8 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
 [
   HomomorphismStructureOnMorphismsWithGivenObjects,
   [ [ MorphismsOfExternalHom, 2 ],
-    [ PreComposeList, 2 ],
+    [ PreComposeList, 4 ],
+    [ IsCongruentForMorphisms, 4 ],
     [ MorphismConstructor, 1, RangeCategoryOfHomomorphismStructure ] ],
   function( cat, s, alpha, gamma, t )
     local H, source_alpha, target_gamma, s_mors, t_mors, images;
@@ -1697,7 +1700,11 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
     s_mors := MorphismsOfExternalHom( cat, Target( alpha ), Source( gamma ) );
     t_mors := MorphismsOfExternalHom( cat, Source( alpha ), Target( gamma ) );
     
-    images := List( s_mors, s_mor -> -1 + BigInt( SafePosition( t_mors, PreComposeList( cat, source_alpha, [ alpha, s_mor, gamma ], target_gamma ) ) ) );
+    images := List( s_mors, s_mor ->
+                    -1 + BigInt( SafeUniquePositionProperty( t_mors, t_mor ->
+                            IsCongruentForMorphisms( cat,
+                                    t_mor,
+                                    PreComposeList( cat, source_alpha, [ alpha, s_mor, gamma ], target_gamma ) ) ) ) );
     
     return MorphismConstructor( H,
                    s,
@@ -1709,6 +1716,7 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
 [
   InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects,
   [ [ MorphismsOfExternalHom, 1 ],
+    [ IsCongruentForMorphisms, 2 ],
     [ MorphismConstructor, 1, RangeCategoryOfHomomorphismStructure ] ],
   function( cat, t, alpha, r )
     local H, mors;
@@ -1719,15 +1727,16 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
     
     return MorphismConstructor( H,
                    t,
-                   [ -1 + BigInt( SafePosition( mors, alpha ) ) ],
+                   [ -1 + BigInt( SafeUniquePositionProperty( mors, mor -> IsCongruentForMorphisms( cat, mor, alpha ) ) ) ],
                    r );
     
   end
 ],
 [
   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
-  [ [ MorphismsOfExternalHom, 1 ],
-    [ MorphismsOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ] ],
+  [ [ MorphismsOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
+    [ IsCongruentForMorphisms, 2, RangeCategoryOfHomomorphismStructure ],
+    [ MorphismsOfExternalHom, 1 ] ],
   function( cat, a, b, iota )
     local H, mors_H, pos;
     
@@ -1736,7 +1745,7 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
     # 1_H -> Hom( a, b )
     mors_H := MorphismsOfExternalHom( H, Source( iota ), Target( iota ) );
     
-    pos := SafePosition( mors_H, iota );
+    pos := SafeUniquePositionProperty( mors_H, mor -> IsCongruentForMorphisms( H, mor, iota ) );
     
     return MorphismsOfExternalHom( cat, a, b )[pos];
     
