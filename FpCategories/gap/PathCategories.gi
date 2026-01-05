@@ -278,8 +278,6 @@ InstallMethod( PathCategory,
         
         SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( C, range_cat );
         
-        Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( C ), range_cat ) );
-        
         AddMorphismsOfExternalHom( C,
           function ( C, obj_1, obj_2 )
             local s, t;
