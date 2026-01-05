@@ -139,9 +139,9 @@ InstallMethod( PathCategory,
       function ( C, mor_1, mor_2 )
         
         return IsEqualForObjects( C, Source( mor_1 ), Source( mor_2 ) ) and
-                IsEqualForObjects( C, Target( mor_1 ), Target( mor_2 ) ) and
-                MorphismLength( mor_1 ) = MorphismLength( mor_2 ) and
-                MorphismIndices( mor_1 ) = MorphismIndices( mor_2 );
+               IsEqualForObjects( C, Target( mor_1 ), Target( mor_2 ) ) and
+               MorphismLength( mor_1 ) = MorphismLength( mor_2 ) and
+               MorphismIndices( mor_1 ) = MorphismIndices( mor_2 );
         
     end );
     
