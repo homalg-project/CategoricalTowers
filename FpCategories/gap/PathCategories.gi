@@ -264,11 +264,11 @@ InstallMethod( PathCategory,
         
     end );
     
+    SetIsFiniteCategory( C, IsFinitePathCategory( C ) );
+    
     # Homomorphism Structure - Only for path categories with underlying acyclic quivers
     
-    if IsFinitePathCategory( C )  then
-        
-        SetIsFiniteCategory( C, true );
+    if IsFiniteCategory( C )  then
         
         range_cat := CAP_NAMED_ARGUMENTS.range_of_HomStructure;
         
@@ -277,8 +277,6 @@ InstallMethod( PathCategory,
         fi;
         
         SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( C, range_cat );
-        
-        Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( C ), range_cat ) );
         
         AddMorphismsOfExternalHom( C,
           function ( C, obj_1, obj_2 )
@@ -290,10 +288,6 @@ InstallMethod( PathCategory,
             return ExternalHoms( C )[s][t];
             
         end );
-        
-    else
-        
-        SetIsFiniteCategory( C, false );
         
     fi;
     
