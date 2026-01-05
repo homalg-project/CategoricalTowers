@@ -218,6 +218,59 @@ true
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "q(M,A,B,J)[a:M-&gt;A,b:M-&gt;B,i:A-&gt;J,j:B-&gt;J]" );</span>
+FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := PathCategory( q );</span>
+PathCategory( FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := PosetOfCategory( D );</span>
+PosetOfCategory( PathCategory( \
+FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L.ai = L.bj;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( SetOfObjects( L ), Display );</span>
+(M)
+
+An object in the poset given by the above data
+(A)
+
+An object in the poset given by the above data
+(B)
+
+An object in the poset given by the above data
+(J)
+
+An object in the poset given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ltilde := FiniteStrictProductCompletion( L );</span>
+FiniteStrictProductCompletion( PosetOfCategory( PathCategory( \
+FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfObjects( Ltilde ) );</span>
+16
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lhat := PosetOfCategory( Ltilde );</span>
+PosetOfCategory( FiniteStrictProductCompletion( PosetOfCategory( \
+PathCategory( FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lhat_objs := SetOfObjects( Lhat );; Length( Lhat_objs );</span>
+6
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := Lhat.M;</span>
+An object in the poset given by: \
+&lt;An object in FiniteStrictProductCompletion( PosetOfCategory( \
+PathCategory( FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := Lhat.A;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := Lhat.B;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := Lhat.J;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := DirectProduct( Lhat.A, Lhat.B );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalObject( Lhat );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P = M;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T = J;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lhat_objs = [ T, M, A, B, J, P ];</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := FiniteStrictProductCompletion( InitialCategory( ) );</span>
