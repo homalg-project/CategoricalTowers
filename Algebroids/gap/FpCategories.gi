@@ -826,14 +826,14 @@ InstallMethodWithCache( Category,
     
     C!.compiler_hints :=
       rec( category_attribute_names :=
-           [ "SetOfObjectsAsUnresolvableAttribute",
-             "SetOfGeneratingMorphismsAsUnresolvableAttribute",
-             "UnderlyingQuiver",
+           [ "UnderlyingQuiver",
+             "DefiningTripleOfUnderlyingQuiver",
              "UnderlyingQuiverAlgebra",
+             "SetOfObjectsAsUnresolvableAttribute",
+             "SetOfGeneratingMorphismsAsUnresolvableAttribute",
              "BasisPathsByVertexIndex",
              "BasisMorphismsByVertexIndex",
              "HomStructureOnBasisPaths",
-             "DefiningTripleOfUnderlyingQuiver",
              ],
            );
     
