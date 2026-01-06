@@ -113,11 +113,18 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
 );
 
 ##
-BindGlobal( "YONEDA_EMBEDDING_DATA",
+InstallMethodForCompilerForCAP( YonedaEmbeddingData,
+        [ IsCapCategory ],
+        
   function( C )
     local defining_triple, nr_objs, nr_mors, arrows, objs, mors, Yoneda_on_objs, Yoneda_on_mors;
     
-    #% CAP_JIT_RESOLVE_FUNCTION
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, HasDefiningTripleOfUnderlyingQuiver( C ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, HasRangeCategoryOfHomomorphismStructure( C ) );
+    
     defining_triple := DefiningTripleOfUnderlyingQuiver( C );
     
     nr_objs := defining_triple[1];
@@ -166,32 +173,6 @@ BindGlobal( "YONEDA_EMBEDDING_DATA",
     
 end );
 
-#= comment for Julia
-##
-InstallMethodForCompilerForCAP( YonedaEmbeddingData,
-        [ IsCapCategory and HasDefiningTripleOfUnderlyingQuiver and HasRangeCategoryOfHomomorphismStructure ],
-        
-  function ( C )
-    
-    return YONEDA_EMBEDDING_DATA( C );
-    
-end );
-# =#
-
-##
-InstallMethod( YonedaEmbeddingData,
-        [ IsCapCategory ],
-        
-  function ( C )
-    
-    if not ( HasDefiningTripleOfUnderlyingQuiver( C ) and HasRangeCategoryOfHomomorphismStructure( C ) ) then
-        TryNextMethod( );
-    fi;
-    
-    return YONEDA_EMBEDDING_DATA( C );
-    
-end );
-
 ##
 CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
         rec(
@@ -203,11 +184,18 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
 );
 
 ##
-BindGlobal( "COYONEDA_EMBEDDING_DATA",
+InstallMethodForCompilerForCAP( CoYonedaEmbeddingData,
+        [ IsCapCategory ],
+        
   function ( C )
     local defining_triple, nr_objs, nr_mors, arrows, objs, mors, coYoneda_on_objs, coYoneda_on_mors;
     
-    #% CAP_JIT_RESOLVE_FUNCTION
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, HasDefiningTripleOfUnderlyingQuiver( C ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, HasRangeCategoryOfHomomorphismStructure( C ) );
+    
     defining_triple := DefiningTripleOfUnderlyingQuiver( C );
     
     nr_objs := defining_triple[1];
@@ -253,32 +241,6 @@ BindGlobal( "COYONEDA_EMBEDDING_DATA",
     end;
     
     return Pair( coYoneda_on_objs, coYoneda_on_mors );
-    
-end );
-
-#= comment for Julia
-##
-InstallMethodForCompilerForCAP( CoYonedaEmbeddingData,
-        [ IsCapCategory and HasDefiningTripleOfUnderlyingQuiver and HasRangeCategoryOfHomomorphismStructure ],
-        
-  function ( C )
-    
-    return COYONEDA_EMBEDDING_DATA( C );
-    
-end );
-# =#
-
-##
-InstallMethod( CoYonedaEmbeddingData,
-        [ IsCapCategory ],
-        
-  function ( C )
-    
-    if not ( HasDefiningTripleOfUnderlyingQuiver( C ) and HasRangeCategoryOfHomomorphismStructure( C ) ) then
-        TryNextMethod( );
-    fi;
-    
-    return COYONEDA_EMBEDDING_DATA( C );
     
 end );
 
@@ -593,6 +555,8 @@ BindGlobal( "NERVE_TRUNCATED_IN_DEGREE2_DATA",
 end );
 
 #= comment for Julia
+if true then
+
 ##
 InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
         [ IsCapCategory and IsFiniteCategory ],
@@ -602,6 +566,8 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     return CallFuncListAtRuntime( NERVE_TRUNCATED_IN_DEGREE2_DATA, [ B ] );
     
 end );
+
+else
 # =#
 
 ##
@@ -617,6 +583,10 @@ InstallMethod( NerveTruncatedInDegree2Data,
     return CallFuncListAtRuntime( NERVE_TRUNCATED_IN_DEGREE2_DATA, [ B ] );
     
 end );
+
+#= comment for Julia
+fi;
+# =#
 
 ##
 InstallMethod( NerveTruncatedInDegree2AsFunctor,
@@ -735,12 +705,19 @@ InstallMethod( OppositeFiniteCategory,
 end );
 
 ##
-BindGlobal( "YONEDA_NATURAL_EPIMORPHISMS",
+InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
+        [ IsCapCategory ],
+        
   function ( B )
     local sFinSets, objs, mors, o, m, Hom2, hom3, Hom3, tum2, emb2, sum2, iso2,
           B0, N0, N1, N2, D, precompose, pt, mu, s;
     
-    #% CAP_JIT_RESOLVE_FUNCTION
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, HasIsFiniteCategory( B ) and IsFiniteCategory( B ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, HasRangeCategoryOfHomomorphismStructure( B ) );
+    
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
@@ -924,32 +901,6 @@ BindGlobal( "YONEDA_NATURAL_EPIMORPHISMS",
     
 end );
 
-#= comment for Julia
-##
-InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
-        [ IsCapCategory and IsFiniteCategory ],
-        
-  function ( C )
-    
-    return YONEDA_NATURAL_EPIMORPHISMS( C );
-    
-end );
-# =#
-
-##
-InstallMethod( YonedaNaturalEpimorphisms,
-        [ IsCapCategory ],
-        
-  function ( C )
-    
-    if not ( HasIsFiniteCategory( C ) and IsFiniteCategory( C ) ) then
-        TryNextMethod( );
-    fi;
-    
-    return YONEDA_NATURAL_EPIMORPHISMS( C );
-    
-end );
-
 ##
 InstallMethod( YonedaProjectionAsNaturalEpimorphism,
         [ IsCapCategory ],
@@ -1070,14 +1021,21 @@ InstallMethod( YonedaFibrationAsNaturalTransformation,
 end );
 
 ##
-BindGlobal( "TRUTH_MORPHISM_OF_TRUE_TO_SIEVE_FUNCTOR_AND_EMBEDDING",
+InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
+        [ IsCapCategory ],
+        
   function ( B )
     local sFinSets, D, Omega, Yepis, Ymu, Ypt, sieves, defining_triple, lobjs, lmors, arrows, id, N1,
           Sieves, Sieves_emb, Sieves_maximal,
           HomHomOmega_objects, HomHomOmega_morphisms, Sieves_objects, Sieves_morphisms,
           Constant_functor, Sieves_functor, HomHomOmega_functor;
     
-    #% CAP_JIT_RESOLVE_FUNCTION
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, HasIsFiniteCategory( B ) and IsFiniteCategory( B ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, HasRangeCategoryOfHomomorphismStructure( B ) );
+    
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
     ## sFinSets must be the category skeletal finite sets
@@ -1196,32 +1154,6 @@ BindGlobal( "TRUTH_MORPHISM_OF_TRUE_TO_SIEVE_FUNCTOR_AND_EMBEDDING",
                          HomHomOmega_morphisms ),
                    Sieves_maximal,
                    Sieves_emb  );
-    
-end );
-
-#= comment for Julia
-##
-InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
-        [ IsCapCategory and IsFiniteCategory ],
-        
-  function ( B )
-    
-    return TRUTH_MORPHISM_OF_TRUE_TO_SIEVE_FUNCTOR_AND_EMBEDDING( B );
-    
-end );
-# =#
-
-##
-InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
-        [ IsCapCategory ],
-        
-  function ( B )
-    
-    if not ( HasIsFiniteCategory( B ) and IsFiniteCategory( B ) ) then
-        TryNextMethod( );
-    fi;
-    
-    return TRUTH_MORPHISM_OF_TRUE_TO_SIEVE_FUNCTOR_AND_EMBEDDING( B );
     
 end );
 

@@ -260,7 +260,7 @@ InstallMethod( FinQuiver,
     AddIsEqualForObjects( q,
       function ( q, obj_1, obj_2 )
         
-        return IsIdenticalObj( obj_1, obj_2 );
+        return ObjectIndex( obj_1 ) = ObjectIndex( obj_2 );
         
     end );
     
@@ -318,7 +318,7 @@ InstallMethod( FinQuiver,
     AddIsEqualForMorphisms( q,
       function ( q, mor_1, mor_2 )
         
-        return IsIdenticalObj( mor_1, mor_2 );
+        return MorphismIndex( mor_1 ) = MorphismIndex( mor_2 );
         
     end );
     
@@ -326,7 +326,7 @@ InstallMethod( FinQuiver,
     AddIsCongruentForMorphisms( q,
       function ( q, mor_1, mor_2 )
         
-        return IsIdenticalObj( mor_1, mor_2 );
+        return IsEqualForMorphisms( q, mor_1, mor_2 );
         
     end );
     

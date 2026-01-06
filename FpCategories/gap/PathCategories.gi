@@ -59,6 +59,9 @@ InstallMethod( PathCategory,
       rec( category_attribute_names :=
            [ "UnderlyingQuiver",
              "DefiningTripleOfUnderlyingQuiver",
+             "SetOfObjectsAsUnresolvableAttribute",
+             "SetOfGeneratingMorphismsAsUnresolvableAttribute",
+             "ExternalHoms",
              ],
            );
     
@@ -66,7 +69,7 @@ InstallMethod( PathCategory,
     AddObjectConstructor( C,
       function ( C, obj_index )
         
-        return SetOfObjects( C )[obj_index];
+        return SetOfObjectsOfCategory( C )[obj_index];
         
     end );
     
@@ -90,7 +93,7 @@ InstallMethod( PathCategory,
     AddIsEqualForObjects( C,
       function ( C, obj_1, obj_2 )
         
-        return IsIdenticalObj( obj_1, obj_2 );
+        return ObjectIndex( obj_1 ) = ObjectIndex( obj_2 );
         
     end );
     
@@ -139,9 +142,9 @@ InstallMethod( PathCategory,
       function ( C, mor_1, mor_2 )
         
         return IsEqualForObjects( C, Source( mor_1 ), Source( mor_2 ) ) and
-                IsEqualForObjects( C, Target( mor_1 ), Target( mor_2 ) ) and
-                MorphismLength( mor_1 ) = MorphismLength( mor_2 ) and
-                MorphismIndices( mor_1 ) = MorphismIndices( mor_2 );
+               IsEqualForObjects( C, Target( mor_1 ), Target( mor_2 ) ) and
+               MorphismLength( mor_1 ) = MorphismLength( mor_2 ) and
+               MorphismIndices( mor_1 ) = MorphismIndices( mor_2 );
         
     end );
     
@@ -304,7 +307,7 @@ InstallMethodForCompilerForCAP( SetOfObjects,
         
   function( cat )
     
-    return SetOfObjectsOfCategory( cat );
+    return SetOfObjectsAsUnresolvableAttribute( cat );
     
 end );
 
@@ -315,7 +318,7 @@ InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
         
   function( cat )
     
-    return SetOfGeneratingMorphismsOfCategory( cat );
+    return SetOfGeneratingMorphismsAsUnresolvableAttribute( cat );
     
 end );
 
