@@ -929,8 +929,8 @@ InstallMethod( FiniteStrictCoproductCompletion,
        HasIsCartesianCategory( H ) and IsCartesianCategory( H ) and
        MissingOperationsForConstructivenessOfCategory( H, "IsCartesianCategory" ) = [ ] then
         
-        if ( HasIsTerminalCategory and IsTerminalCategory )( H ) or
-           not ( HasIsCocartesianCategory and IsCocartesianCategory )( H ) then
+        if ( HasIsTerminalCategory( H ) and IsTerminalCategory( H ) ) or
+           not ( HasIsCocartesianCategory( H ) and IsCocartesianCategory( H ) ) then
             
             if IsIdenticalObj( C, H ) then
                 
