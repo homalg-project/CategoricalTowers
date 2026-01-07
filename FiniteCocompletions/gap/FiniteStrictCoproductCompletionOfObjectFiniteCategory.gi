@@ -9,7 +9,11 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         "for a CAP category",
         [ IsCapCategory ],
         
-  function( C )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C )
     local UCm, objectsC, l, H;
     
     Assert( 0, HasIsObjectFiniteCategory( C ) and IsObjectFiniteCategory( C ) and CanCompute( C, "SetOfObjectsOfCategory" ) );
@@ -616,7 +620,9 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
     fi;
     
-    Finalize( UCm );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        Finalize( UCm );
+    fi;
     
     return UCm;
     

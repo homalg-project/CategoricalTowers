@@ -9,7 +9,11 @@ InstallMethod( FiniteStrictProductCompletion,
         "for a CAP category",
         [ IsCapCategory ],
         
-  function( C )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C )
     local object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           opC, UopC, opUopC,
@@ -173,12 +177,16 @@ InstallMethod( FiniteStrictProductCompletion,
                    modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                    modeling_tower_morphism_datum := modeling_tower_morphism_datum,
                    only_primitive_operations := true )
-              );
+              : FinalizeCategory := false );
     
     SetUnderlyingCategory( PC, C );
     
     Append( PC!.compiler_hints.category_attribute_names,
             [ "UnderlyingCategory" ] );
+    
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        Finalize( PC );
+    fi;
     
     if HasIsInitialCategory( C ) and IsInitialCategory( C ) then
         Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( PC, "IsEquippedWithHomomorphismStructure" ) );
@@ -186,7 +194,7 @@ InstallMethod( FiniteStrictProductCompletion,
     
     return PC;
     
-end );
+end ) );
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
