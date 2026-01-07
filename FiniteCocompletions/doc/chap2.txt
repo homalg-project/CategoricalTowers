@@ -133,6 +133,53 @@
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xq := FinQuiver( "q(M,A,B,J)[a:M->A,b:M->B,i:A->J,j:B->J]" );[127X[104X
+    [4X[28XFinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" )[128X[104X
+    [4X[25Xgap>[125X [27XD := PathCategory( q );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XL := PosetOfCategory( D );[127X[104X
+    [4X[28XPosetOfCategory( PathCategory( \[128X[104X
+    [4X[28XFinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XL.ai = L.bj;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XPerform( SetOfObjects( L ), Display );[127X[104X
+    [4X[28X(M)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the poset given by the above data[128X[104X
+    [4X[28X(A)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the poset given by the above data[128X[104X
+    [4X[28X(B)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the poset given by the above data[128X[104X
+    [4X[28X(J)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the poset given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XLtilde := FiniteStrictCoproductCompletionOfObjectFiniteCategory( L );[127X[104X
+    [4X[28XFiniteStrictCoproductCompletionOfObjectFiniteCategory( PosetOfCategory( \[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XLength( SetOfObjects( Ltilde ) );[127X[104X
+    [4X[28X16[128X[104X
+    [4X[25Xgap>[125X [27XLhat := PosetOfCategory( Ltilde );[127X[104X
+    [4X[28XPosetOfCategory( FiniteStrictCoproductCompletionOfObjectFiniteCategory( \[128X[104X
+    [4X[28XPosetOfCategory( PathCategory( \[128X[104X
+    [4X[28XFinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Lhat );[127X[104X
+    [4X[28XA CAP category with name PosetOfCategory( \[128X[104X
+    [4X[28XFiniteStrictCoproductCompletionOfObjectFiniteCategory( PosetOfCategory( \[128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) ) ) ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X10 primitive operations were used to derive 98 operations for this category which not yet algorithmically[128X[104X
+    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
+    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
+    [4X[28X* IsFiniteCategory[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsJoinSemiLattice[128X[104X
+  [4X[32X[104X
+  
   [1X2.2-2 FiniteStrictProductCompletion[101X
   
   [33X[1;0Y[29X[2XFiniteStrictProductCompletion[102X( [3Xcat[103X ) [32X attribute[133X
