@@ -83,7 +83,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83EB1F678026F370">2.9-5 UniversalMorphismFromColimit</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BF4ED2F7A33C7D4">2.9-6 UniversalMorphismFromColimitWithGivenColimit</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EECADD181D183AD">2.9-7 PositionsOfSublist</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X843609CC7A3B1E09">2.9-8 AllCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D1D6DDB7E650BD2">2.9-8 AllCoproducts</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X85C8C80F785AEB5E">2.10 <span class="Heading">Add-methods</span></a>
 </span>
@@ -964,14 +964,14 @@ true
 
 <p>returns all indices <span class="Math">1 \leq i \leq</span> <code class="code">Length</code>(<var class="Arg">superlist</var>) at which a sublist (of <var class="Arg">superlist</var>) equal to <var class="Arg">sublist</var> starts. If <var class="Arg">sublist</var> does not occur the output is the empty-list. The version with given <var class="Arg">from</var> starts searching after the position <var class="Arg">from</var>.</p>
 
-<p><a id="X843609CC7A3B1E09" name="X843609CC7A3B1E09"></a></p>
+<p><a id="X7D1D6DDB7E650BD2" name="X7D1D6DDB7E650BD2"></a></p>
 
 <h5>2.9-8 AllCoproducts</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllCoproducts</code>( <var class="Arg">cat</var>, <var class="Arg">objects</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllCoproducts</code>( <var class="Arg">cat</var>, <var class="Arg">objs</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list of objects</p>
 
-<p>The input is a category <var class="Arg">cat</var> and a list of objects therein, such that the list <span class="Math">L</span> of all possible finite coproducts is finite. The output is the list <span class="Math">L</span>.</p>
+<p>The input is a cocartesian category <var class="Arg">cat</var> and a list <var class="Arg">objs</var> of objects therein of length <span class="Math">l</span>, such that the list of all possible finite coproducts is finite. The output is a list of lists of pairs. Each pair consists of a sublist <span class="Math">I</span> of <code class="code">[ 1 .. l ]</code> and the coproduct of the sublist objs{I}.</p>
 
 <p><a id="X85C8C80F785AEB5E" name="X85C8C80F785AEB5E"></a></p>
 

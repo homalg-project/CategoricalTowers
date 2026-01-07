@@ -712,12 +712,13 @@
   
   [1X2.9-8 AllCoproducts[101X
   
-  [33X[1;0Y[29X[2XAllCoproducts[102X( [3Xcat[103X, [3Xobjects[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAllCoproducts[102X( [3Xcat[103X, [3Xobjs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of objects[133X
   
-  [33X[0;0YThe  input  is  a  category [3Xcat[103X and a list of objects therein, such that the
-  list  [23XL[123X  of all possible finite coproducts is finite. The output is the list
-  [23XL[123X.[133X
+  [33X[0;0YThe  input  is a cocartesian category [3Xcat[103X and a list [3Xobjs[103X of objects therein
+  of length [23Xl[123X, such that the list of all possible finite coproducts is finite.
+  The output is a list of lists of pairs. Each pair consists of a sublist [23XI[123X of
+  [10X[ 1 .. l ][110X and the coproduct of the sublist objs{I}.[133X
   
   
   [1X2.10 [33X[0;0YAdd-methods[133X[101X
