@@ -897,6 +897,8 @@ InstallMethod( FiniteStrictCoproductCompletion,
        CanCompute( C, "SetOfObjectsOfCategory" ) and
        HasIsThinCategory( UC ) and IsThinCategory( UC ) then
         
+        SetIsFiniteCategory( UC, true );
+        
         ##
         AddSetOfObjectsOfCategory( UC,
           function( UC )
