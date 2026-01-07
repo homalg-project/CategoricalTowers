@@ -23,6 +23,71 @@ BindGlobal( "TheTypeNodeInDatastructureForConstructibleObjects",
 SetInfoLevel( InfoSquashDatastructureForConstructibleObjects, 1 );
 
 ##
+InstallMethod( AllCoproducts,
+        "for a CAP category and a list of objects",
+        [ IsCapCategory and IsCocartesianCategory and IsThinCategory, IsList ],
+        
+  function( cat, objects )
+    local l, predicate, func, coproducts_initial_value;
+    
+    l := Length( objects );
+    
+    predicate :=
+      function( coproducts, coproducts_new )
+        
+        return Length( Last( coproducts_new ) ) = 0 or
+               Length( coproducts ) = l + 1;
+        
+    end;
+    
+    func :=
+      function( coproducts )
+        local i, largest_coproducts, new_coproducts, coproducts_new, r, pair, coproduct, m, pos;
+        
+        i := Length( coproducts );
+        
+        largest_coproducts := Last( coproducts );
+        
+        new_coproducts := [ ];
+        
+        coproducts_new := Concatenation( coproducts, [ new_coproducts ] );
+        
+        for r in [ i .. l ] do
+            for pair in largest_coproducts do
+                if r > Maximum( pair[1] ) then
+                    
+                    coproduct := BinaryCoproduct( cat, pair[2], objects[r] );
+                    
+                    for m in [ 2 .. i + 1 ] do
+                        pos := PositionProperty( coproducts_new[m], entry -> IsEqualForObjects( cat, entry[2], coproduct ) );
+                        
+                        if IsInt( pos ) then
+                            Add( coproducts_new[m][pos][1], r );
+                            break;
+                        fi;
+                        
+                    od;
+                    
+                    if pos = fail then
+                        Add( new_coproducts, Pair( Concatenation( pair[1], [ r ] ), coproduct ) );
+                    fi;
+                    
+                fi;
+            od;
+        od;
+        
+        return coproducts_new;
+        
+    end;
+    
+    coproducts_initial_value := [ [ Pair( [ ], InitialObject( cat ) ) ],
+                                  List( [ 1 .. l ], i -> Pair( [ i ], objects[i] ) ) ];
+    
+    return CapFixpoint( predicate, func, coproducts_initial_value );
+    
+end );
+
+##
 InstallGlobalFunction( DatastructureForConstructibleObject,
   function( )
     local C;

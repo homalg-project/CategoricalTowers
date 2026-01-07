@@ -137,17 +137,10 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
         C := UnderlyingCategory( UC );
         
-        return #IsList( pair ) and
-               #Length( pair ) = 2 and
-               IsBigInt( pair[1] ) and
+        return IsBigInt( pair[1] ) and
                pair[1] >= 0 and
-               #IsList( pair[2] ) and
                Length( pair[2] ) = pair[1] and
-               ForAll( pair[2],
-                       obj ->
-                       IsCapCategoryObject( obj ) and
-                       IsIdenticalObj( CapCategory( obj ), C ) and
-                       IsWellDefinedForObjects( C, obj ) );
+               ForAll( pair[2], obj -> IsWellDefinedForObjects( C, obj ) );
         
     end );
     
@@ -175,23 +168,13 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
         mors := pair_of_lists[2];
         
-        if not ForAll( map, a -> IsBigInt( a ) and a >= 0 ) then
-            return false;
-        elif not s = Length( map ) then
-            return false;
-        elif not ForAll( map, a -> a < t ) then
-            return false;
-        elif not ( Length( map ) = Length( mors ) ) then
-            return false;
-        else
-            return ForAll( [ 1 .. Length( mors ) ],
-                           i ->
-                           IsCapCategoryMorphism( mors[i] ) and
-                           IsIdenticalObj( CapCategory( mors[i] ), C ) and
-                           IsEqualForObjects( C, Source( mors[i] ), S[i] ) and
-                           IsEqualForObjects( C, Target( mors[i] ), T[1 + map[i]] ) and
-                           IsWellDefinedForMorphisms( C, mors[i] ) );
-        fi;
+        return s = Length( map ) and
+               s = Length( mors ) and
+               ForAll( [ 1 .. s ], i -> map[i] >= 0 and map[i] < t ) and
+               ForAll( [ 1 .. s ], i ->
+                       IsEqualForObjects( C, Source( mors[i] ), S[i] ) and
+                       IsEqualForObjects( C, Target( mors[i] ), T[1 + map[i]] ) and
+                       IsWellDefinedForMorphisms( C, mors[i] ) );
         
     end );
     
@@ -929,8 +912,8 @@ InstallMethod( FiniteStrictCoproductCompletion,
        HasIsCartesianCategory( H ) and IsCartesianCategory( H ) and
        MissingOperationsForConstructivenessOfCategory( H, "IsCartesianCategory" ) = [ ] then
         
-        if ( HasIsTerminalCategory and IsTerminalCategory )( H ) or
-           not ( HasIsCocartesianCategory and IsCocartesianCategory )( H ) then
+        if ( HasIsTerminalCategory( H ) and IsTerminalCategory( H ) ) or
+           not ( HasIsCocartesianCategory( H ) and IsCocartesianCategory( H ) ) then
             
             if IsIdenticalObj( C, H ) then
                 

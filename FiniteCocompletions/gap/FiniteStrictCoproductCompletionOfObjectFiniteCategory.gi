@@ -54,10 +54,6 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
     ##
     SetUnderlyingCategory( UCm, C );
     
-    if HasIsSkeletalCategory( C ) and IsSkeletalCategory( C ) then
-        SetIsSkeletalCategory( UCm, true );
-    fi;
-    
     objectsC := SetOfObjects( C );
     
     l := Length( objectsC );
@@ -98,6 +94,18 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
     fi;
 
+    if HasIsSkeletalCategory( C ) and IsSkeletalCategory( C ) and
+       ( not IsBound( H ) or
+         ( IsBound( H ) and
+           ## list the bases of enrichment for which we know that the result is again skeletal, a nonexample would be InternvalCategory
+           ( IsSkeletalCategoryOfFiniteSets( H ) or
+             IsSkeletalCategoryOfFiniteSetsWithCountingStartingAt1( H ) or
+             IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( H ) ) ) ) then
+        
+        SetIsSkeletalCategory( UCm, true );
+        
+    fi;
+    
     ##
     AddObjectConstructor( UCm,
       function( UCm, pair_of_int_and_list_of_multiplicities )
@@ -185,28 +193,17 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
         mors := pair_of_lists[2];
         
-        if not l = Length( maps ) then
-            return false;
-        elif not l = Length( mors ) then
-            return false;
-        elif not ForAll( [ 1 .. l ], o -> Length( maps[o][1] ) = s[o] ) then
-            return false;
-        elif not ForAll( [ 1 .. l ], o -> Length( maps[o][2] ) = s[o] ) then
-            return false;
-        elif not ForAll( [ 1 .. l ], o -> ForAll( [ 1 .. s[o] ], j -> maps[o][1][j] >= 0 ) ) then
-            return false;
-        elif not ForAll( [ 1 .. l ], o -> ForAll( [ 1 .. s[o] ], j -> maps[o][2][j] >= 0 ) ) then
-            return false;
-        elif not ForAll( [ 1 .. l ], o -> ForAll( [ 1 .. s[o] ], j -> maps[o][1][j] < l ) ) then
-            return false;
-        elif not ForAll( [ 1 .. l ], o -> ForAll( [ 1 .. s[o] ], j -> maps[o][2][j] < t[1 + maps[o][1][j]] ) ) then
-            return false;
-        else
-            return ForAll( [ 1 .. l ], o ->
-                           ForAll( [ 1 .. s[o] ], j -> IsEqualForObjects( C, Source( mors[o][j] ), objectsC[o] ) ) and
-                           ForAll( [ 1 .. s[o] ], j -> IsEqualForObjects( C, Target( mors[o][j] ), objectsC[1 + maps[o][1][j]] ) ) and
-                           ForAll( [ 1 .. s[o] ], j -> IsWellDefinedForMorphisms( C, mors[o][j] ) ) );
-        fi;
+        return l = Length( maps ) and
+               l = Length( mors ) and
+               ForAll( [ 1 .. l ], o -> Length( maps[o][1] ) = s[o] ) and
+               ForAll( [ 1 .. l ], o -> Length( maps[o][2] ) = s[o] ) and
+               ForAll( [ 1 .. l ], o -> ForAll( [ 1 .. s[o] ], j -> maps[o][1][j] >= 0 and maps[o][1][j] < l ) ) and
+               ForAll( [ 1 .. l ], o -> ForAll( [ 1 .. s[o] ], j -> maps[o][2][j] >= 0 and maps[o][2][j] < t[1 + maps[o][1][j]] ) ) and
+               ForAll( [ 1 .. l ], o -> Length( mors[o] ) = s[o] ) and
+               ForAll( [ 1 .. l ], o ->
+                       ForAll( [ 1 .. s[o] ], j -> IsEqualForObjects( C, Source( mors[o][j] ), objectsC[o] ) ) and
+                       ForAll( [ 1 .. s[o] ], j -> IsEqualForObjects( C, Target( mors[o][j] ), objectsC[1 + maps[o][1][j]] ) ) and
+                       ForAll( [ 1 .. s[o] ], j -> IsWellDefinedForMorphisms( C, mors[o][j] ) ) );
         
     end );
     
