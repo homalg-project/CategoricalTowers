@@ -620,11 +620,47 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
     fi;
     
+    if HasIsFiniteCategory( C ) and IsFiniteCategory( C ) and
+       CanCompute( C, "SetOfObjectsOfCategory" ) and
+       HasIsThinCategory( UCm ) and IsThinCategory( UCm ) then
+        
+        SetIsFiniteCategory( UCm, true );
+        
+        ##
+        AddSetOfObjectsOfCategory( UCm,
+          function( UCm )
+            local C, Yoneda, representables, joins;
+            
+            C := UnderlyingCategory( UCm );
+            
+            Yoneda := EmbeddingOfUnderlyingCategoryData( UCm )[2];
+            
+            representables := List( SetOfObjects( C ), Yoneda[1] );
+            
+            joins := AllCoproducts( UCm, representables );
+            
+            return List( Concatenation( joins ), entry -> entry[2] );
+            
+        end );
+        
+    fi;
+    
     if CAP_NAMED_ARGUMENTS.FinalizeCategory then
         Finalize( UCm );
     fi;
     
     return UCm;
+    
+end ) );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        "for a finite coproduct cocompletion category",
+        [ IsFiniteStrictCoproductCompletionOfObjectFiniteCategory ],
+        
+  function( UCm )
+    
+    return SetOfObjectsOfCategory( UCm );
     
 end );
 

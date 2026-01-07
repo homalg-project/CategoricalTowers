@@ -45,6 +45,7 @@ DeclareCategory( "IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCateg
 DeclareAttribute( "FiniteStrictCoproductCompletionOfObjectFiniteCategory",
         IsCapCategory );
 #! @InsertChunk FiniteStrictCoproductCompletionOfObjectFiniteCategory
+#! @InsertChunk FiniteStrictCoproductCompletionOfObjectFiniteCategory_poset
 
 CapJitAddTypeSignature( "FiniteStrictCoproductCompletionOfObjectFiniteCategory", [ IsCapCategory ], function ( input_types )
     
