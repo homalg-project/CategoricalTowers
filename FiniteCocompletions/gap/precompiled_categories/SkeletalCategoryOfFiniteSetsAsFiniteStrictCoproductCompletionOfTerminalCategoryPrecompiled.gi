@@ -317,27 +317,15 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local hoisted_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
+    local hoisted_2_1, deduped_3_1, deduped_4_1;
     deduped_4_1 := AsList( alpha_1 );
-    deduped_3_1 := Length( deduped_4_1 );
-    deduped_2_1 := Cardinality( Source( alpha_1 ) );
-    hoisted_1_1 := Cardinality( Range( alpha_1 ) );
-    if not ForAll( deduped_4_1, function ( a_2 )
-                 return IsBigInt( a_2 ) and a_2 >= 0;
-             end ) then
-        return false;
-    elif not deduped_2_1 = deduped_3_1 then
-        return false;
-    elif not ForAll( deduped_4_1, function ( a_2 )
-                 return a_2 < hoisted_1_1;
-             end ) then
-        return false;
-    elif not deduped_3_1 = deduped_2_1 then
-        return false;
-    else
-        return true;
-    fi;
-    return;
+    deduped_3_1 := Cardinality( Source( alpha_1 ) );
+    hoisted_2_1 := Cardinality( Range( alpha_1 ) );
+    return deduped_3_1 = Length( deduped_4_1 ) and ForAll( [ 1 .. deduped_3_1 ], function ( i_2 )
+              local deduped_1_2;
+              deduped_1_2 := deduped_4_1[i_2];
+              return deduped_1_2 >= 0 and deduped_1_2 < hoisted_2_1;
+          end );
 end
 ########
         

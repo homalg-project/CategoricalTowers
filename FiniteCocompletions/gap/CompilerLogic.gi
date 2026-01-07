@@ -88,30 +88,6 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "cat", "list" ],
-        src_template := "IsCapCategoryObject( CreateCapCategoryObjectWithAttributes( cat, PairOfIntAndList, list ) )",
-        dst_template := "true",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "obj" ],
-        src_template := "IS_IDENTICAL_OBJ( obj, obj )",
-        dst_template := "true",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "cat", "obj", "list" ],
-        src_template := "IsCapCategoryMorphism( CreateCapCategoryMorphismWithAttributes( cat, obj, obj, PairOfLists, list ) )",
-        dst_template := "true",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
         variable_names := [ "length", "entry", "y" ],
         src_template := "ListWithIdenticalEntries( length, entry )[y]",
         dst_template := "entry",
