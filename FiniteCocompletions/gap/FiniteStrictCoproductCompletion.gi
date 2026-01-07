@@ -44,7 +44,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
     SetIsCocartesianCategory( UC, true );
     
     SetIsStrictCocartesianCategory( UC, true );
-
+    
     if HasIsCartesianCategory( C ) and IsCartesianCategory( C ) then
         if HasIsStrictCartesianCategory( C ) and IsStrictCartesianCategory( C ) then
             SetIsStrictCartesianCategory( UC, true );
