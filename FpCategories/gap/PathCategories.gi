@@ -294,7 +294,9 @@ InstallMethod( PathCategory,
         
     fi;
     
-    Finalize( C );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        Finalize( C );
+    fi;
     
     return C;
     

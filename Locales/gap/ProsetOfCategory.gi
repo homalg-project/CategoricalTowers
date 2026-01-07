@@ -68,13 +68,19 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         "for a CAP category",
         [ IsCapCategory ],
         
-  function( C )
+  FunctionWithNamedArguments(
+  [
+    [ "skeletal", false ],
+    [ "stable", false ],
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C )
     local skeletal, stable, category_filter, category_object_filter, category_morphism_filter,
           name, create_func_morphism,
           list_of_operations_to_install, skip, func, pos,
           properties, P, object_constructor, object_datum, morphism_constructor, morphism_datum;
     
-    skeletal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "skeletal", false );
+    skeletal := CAP_NAMED_ARGUMENTS.skeletal;
     
     if IsIdenticalObj( skeletal, true ) then
         name := "PosetOfCategory";
@@ -88,7 +94,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         category_morphism_filter := IsMorphismInProsetOfCategory;
     fi;
     
-    stable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "stable", false );
+    stable := CAP_NAMED_ARGUMENTS.stable;
     
     if IsIdenticalObj( stable, true ) then
         
@@ -461,11 +467,13 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
     fi;
     
-    Finalize( P );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        Finalize( P );
+    fi;
     
     return P;
     
-end );
+end ) );
 
 ##
 InstallMethod( ProsetOfCategory,

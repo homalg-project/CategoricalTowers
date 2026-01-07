@@ -9,7 +9,12 @@ InstallMethod( FiniteStrictCoproductCompletion,
         "for a CAP category",
         [ IsCapCategory ],
         
-  function ( C )
+  FunctionWithNamedArguments(
+  [
+    [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C )
     local UC, H,
           object_func, morphism_func, object_func_inverse, morphism_func_inverse, extended;
     
@@ -44,7 +49,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
     SetIsCocartesianCategory( UC, true );
     
     SetIsStrictCocartesianCategory( UC, true );
-
+    
     if HasIsCartesianCategory( C ) and IsCartesianCategory( C ) then
         if HasIsStrictCartesianCategory( C ) and IsStrictCartesianCategory( C ) then
             SetIsStrictCartesianCategory( UC, true );
@@ -897,6 +902,8 @@ InstallMethod( FiniteStrictCoproductCompletion,
        CanCompute( C, "SetOfObjectsOfCategory" ) and
        HasIsThinCategory( UC ) and IsThinCategory( UC ) then
         
+        SetIsFiniteCategory( UC, true );
+        
         ##
         AddSetOfObjectsOfCategory( UC,
           function( UC )
@@ -1372,7 +1379,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
     fi;
     
     #if false then
-    if ValueOption( "no_precompiled_code" ) <> true and
+    if CAP_NAMED_ARGUMENTS.no_precompiled_code <> true and
        HasRangeCategoryOfHomomorphismStructure( C ) then
         
         if IsFpCategory( C ) and IsSkeletalCategoryOfFiniteSets( H ) then
@@ -1387,18 +1394,24 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     fi;
     
-    Finalize( UC );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        Finalize( UC );
+    fi;
     
     return UC;
     
-end );
+end ) );
 
 ##
 InstallMethod( FiniteStrictCoproductCompletion,
         "for a CAP category",
         [ IsCapCategory and IsInitialCategory ],
         
-  function ( I )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, I )
     local name, category_filter, category_object_filter, category_morphism_filter,
           create_func_object, create_func_morphism,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
@@ -1611,13 +1624,15 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     end );
     
-    Finalize( UI );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        Finalize( UI );
+    fi;
     
     Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( UI, "IsEquippedWithHomomorphismStructure" ) );
     
     return UI;
     
-end );
+end ) );
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
