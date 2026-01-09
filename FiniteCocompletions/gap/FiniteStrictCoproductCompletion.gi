@@ -147,24 +147,24 @@ InstallMethod( FiniteStrictCoproductCompletion,
     ##
     AddIsWellDefinedForMorphisms( UC,
       function ( UC, morphism )
-        local pairS, pairT, pair_of_lists, s, t, map, S, T, mors, C;
+        local source_pair, target_pair, pair_of_lists, s, t, map, S, T, mors, C;
         
-        pairS := ObjectDatum( UC, Source( morphism ) );
-        pairT := ObjectDatum( UC, Target( morphism ) );
+        source_pair := ObjectDatum( UC, Source( morphism ) );
+        target_pair := ObjectDatum( UC, Target( morphism ) );
         
         pair_of_lists := MorphismDatum( UC, morphism );
         
         ## SkeletalFinSets code:
-        s := pairS[1];
-        t := pairT[1];
+        s := source_pair[1];
+        t := target_pair[1];
         
         map := pair_of_lists[1];
         
         ## FiniteStrictCoproductCompletion code:
         C := UnderlyingCategory( UC );
         
-        S := pairS[2];
-        T := pairT[2];
+        S := source_pair[2];
+        T := target_pair[2];
         
         mors := pair_of_lists[2];
         
@@ -644,7 +644,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         ##
         AddProjectionInFactorOfDirectProductWithGivenDirectProduct( UC,
           function ( UC, D, k, P )
-            local data, pair, d, pk, dk, p, map, C, LP, cartesian, mor;
+            local data, pair, d, pk, dk, p, map, C, product_objects, cartesian, mor;
             
             data := List( D, Di -> ObjectDatum( UC, Di ) );
             
@@ -664,11 +664,11 @@ InstallMethod( FiniteStrictCoproductCompletion,
             ## FiniteStrictCoproductCompletion code:
             C := UnderlyingCategory( UC );
             
-            LP := pair[2];
+            product_objects := pair[2];
             
             cartesian := List( Cartesian( List( Reversed( data ), datum -> datum[2] ) ), Reversed );
             
-            mor := List( [ 0 .. p - 1 ], i -> ProjectionInFactorOfDirectProductWithGivenDirectProduct( C, cartesian[1 + i], k, LP[1 + i] ) );
+            mor := List( [ 0 .. p - 1 ], i -> ProjectionInFactorOfDirectProductWithGivenDirectProduct( C, cartesian[1 + i], k, product_objects[1 + i] ) );
             
             return MorphismConstructor( UC, P, Pair( map, mor ), D[k] );
             
@@ -681,11 +681,11 @@ InstallMethod( FiniteStrictCoproductCompletion,
         ##
         AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( UC,
           function ( UC, D, T, tau, P )
-            local data, pairT, pairP, l, d, dd, tau_maps, m, map, C, cartesian, tau_mors, LT, LP, mor;
+            local data, target_pair, pairP, l, d, dd, tau_maps, m, map, C, cartesian, tau_mors, target_objects, product_objects, mor;
             
             data := List( D, Di -> ObjectDatum( UC, Di ) );
             
-            pairT := ObjectDatum( UC, T );
+            target_pair := ObjectDatum( UC, T );
             
             pairP := ObjectDatum( UC, P );
             
@@ -698,7 +698,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             tau_maps := List( tau, t -> MorphismDatum( UC, t )[1] );
             
-            m := [ 0 .. pairT[1] - 1 ];
+            m := [ 0 .. target_pair[1] - 1 ];
             
             map := List( m, i -> Sum( [ 0 .. l - 1 ], j -> tau_maps[1 + j][1 + i] * dd[1 + j] ) );
             
@@ -709,16 +709,16 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             tau_mors := List( tau, t -> MorphismDatum( UC, t )[2] );
             
-            LT := pairT[2];
+            target_objects := target_pair[2];
             
-            LP := pairP[2];
+            product_objects := pairP[2];
             
             mor := List( m,
                          i -> UniversalMorphismIntoDirectProductWithGivenDirectProduct( C,
                                  cartesian[1 + map[1 + i]],
-                                 LT[1 + i],
+                                 target_objects[1 + i],
                                  List( [ 1 .. l ], j -> tau_mors[j][1 + i] ),
-                                 LP[1 + map[1 + i]] ) );
+                                 product_objects[1 + map[1 + i]] ) );
             
             return MorphismConstructor( UC, T, Pair( map, mor ), P );
             
@@ -927,6 +927,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             fi;
             
             # prepare for ExtendRangeOfHomomorphismStructureByFullEmbedding
+            
             object_func := function ( C, H, object )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
@@ -951,7 +952,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 datum := ObjectDatum( H, object );
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
-                Assert( 0, Length( datum ) = 2 and IsBigInt( datum[1] ) and Length( datum[2] ) = datum[1] );
+                Assert( 0, Length( datum ) = 2 and IsBigInt( datum[1] ) and datum[1] = BigInt( 1 ) and Length( datum[2] ) = datum[1] );
                 
                 return datum[2][1];
                 
@@ -1007,19 +1008,19 @@ InstallMethod( FiniteStrictCoproductCompletion,
         ##
         AddHomomorphismStructureOnObjects( UC,
           function( UC, S, T )
-            local C, H, pairS, pairT, LS, LT, s, t, maps;
+            local C, H, source_pair, target_pair, s, t, source_objects, target_objects, maps;
             
             C := UnderlyingCategory( UC );
             H := RangeCategoryOfHomomorphismStructure( UC );
             
-            pairS := ObjectDatum( UC, S );
-            pairT := ObjectDatum( UC, T );
+            source_pair := ObjectDatum( UC, S );
+            target_pair := ObjectDatum( UC, T );
             
-            s := pairS[1];
-            t := pairT[1];
+            s := source_pair[1];
+            t := target_pair[1];
             
-            LS := pairS[2];
-            LT := pairT[2];
+            source_objects := source_pair[2];
+            target_objects := target_pair[2];
             
             maps := List( [ 0 .. t ^ s - 1 ], m ->
                           List( [ 0 .. s - 1 ], i ->
@@ -1030,35 +1031,35 @@ InstallMethod( FiniteStrictCoproductCompletion,
                                  DirectProduct( H,
                                          List( [ 0 .. s - 1 ], i ->
                                                HomomorphismStructureOnObjectsExtendedByFullEmbedding( C, H,
-                                                       LS[1 + i], LT[1 + map[1 + i]] ) ) ) ) );
+                                                       source_objects[1 + i], target_objects[1 + map[1 + i]] ) ) ) ) );
             
         end );
         
         ##
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( UC,
           function( UC, distinguished_object, phi, target )
-            local C, H, pairS, pairT, s, t, maps, LS, LT, Homs, homs, pair_of_lists, map, mor, number, intros, intro;
+            local C, H, source_pair, target_pair, s, t, maps, source_objects, target_objects, Homs, homs, pair_of_lists, map, mor, number, intros, intro;
             
             C := UnderlyingCategory( UC );
             H := RangeCategoryOfHomomorphismStructure( UC );
             
-            pairS := ObjectDatum( UC, Source( phi ) );
-            pairT := ObjectDatum( UC, Target( phi ) );
+            source_pair := ObjectDatum( UC, Source( phi ) );
+            target_pair := ObjectDatum( UC, Target( phi ) );
             
-            s := pairS[1];
-            t := pairT[1];
+            s := source_pair[1];
+            t := target_pair[1];
             
             maps := List( [ 0 .. t ^ s - 1 ], m ->
                           List( [ 0 .. s - 1 ], i ->
                                 DigitInPositionalNotation( m, i, s, t ) ) );
             
-            LS := pairS[2];
-            LT := pairT[2];
+            source_objects := source_pair[2];
+            target_objects := target_pair[2];
             
             Homs := List( maps, map ->
                           List( [ 0 .. s - 1 ], i ->
                                 HomomorphismStructureOnObjectsExtendedByFullEmbedding( C, H,
-                                        LS[1 + i], LT[1 + map[1 + i]] ) ) );
+                                        source_objects[1 + i], target_objects[1 + map[1 + i]] ) ) );
             
             homs := List( Homs, L -> DirectProduct( H, L ) );
             
@@ -1189,29 +1190,29 @@ InstallMethod( FiniteStrictCoproductCompletion,
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UC,
               function( UC, S, T, morphism )
-                local C, UV, H, pairS, pairT, s, t, maps, LS, LT, Homs, homs, pair_of_lists, number, map, m, mor;
+                local C, UV, H, source_pair, target_pair, s, t, maps, source_objects, target_objects, Homs, homs, pair_of_lists, number, map, m, mor;
                 
                 C := UnderlyingCategory( UC );
                 UV := RangeCategoryOfHomomorphismStructure( UC );
                 H := UnderlyingCategory( UV );
                 
-                pairS := ObjectDatum( UC, S );
-                pairT := ObjectDatum( UC, T );
+                source_pair := ObjectDatum( UC, S );
+                target_pair := ObjectDatum( UC, T );
                 
-                s := pairS[1];
-                t := pairT[1];
+                s := source_pair[1];
+                t := target_pair[1];
                 
                 maps := List( [ 0 .. t ^ s - 1 ], m ->
                               List( [ 0 .. s - 1 ], i ->
                                     DigitInPositionalNotation( m, i, s, t ) ) );
                 
-                LS := pairS[2];
-                LT := pairT[2];
+                source_objects := source_pair[2];
+                target_objects := target_pair[2];
                 
                 Homs := List( maps, map ->
                               List( [ 0 .. s - 1 ], i ->
                                     HomomorphismStructureOnObjects( C,
-                                            LS[1 + i], LT[1 + map[1 + i]] ) ) );
+                                            source_objects[1 + i], target_objects[1 + map[1 + i]] ) ) );
                 
                 homs := List( Homs, L -> DirectProduct( H, L ) );
                 
@@ -1232,8 +1233,8 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
                 mor := List( [ 0 .. s - 1 ], i ->
                              InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
-                                     LS[1 + i],
-                                     LT[1 + map[1 + i]],
+                                     source_objects[1 + i],
+                                     target_objects[1 + map[1 + i]],
                                      PreCompose( H,
                                              m,
                                              ProjectionInFactorOfDirectProductWithGivenDirectProduct( H,
@@ -1253,25 +1254,25 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 ##
                 AddMorphismsOfExternalHom( UC,
                   function ( UC, source, target )
-                    local C, source_datum, target_datum, s, t, source_objects, target_objects, maps, mors, L;
+                    local C, source_pair, target_pair, s, t, maps, source_objects, target_objects, mors, L;
                     
                     C := UnderlyingCategory( UC );
                     
-                    source_datum := ObjectDatum( UC, source );
-                    target_datum := ObjectDatum( UC, target );
+                    source_pair := ObjectDatum( UC, source );
+                    target_pair := ObjectDatum( UC, target );
                     
                     ## SkeletalFinSets code:
                     
-                    s := source_datum[1];
-                    t := target_datum[1];
+                    s := source_pair[1];
+                    t := target_pair[1];
                     
                     maps := List( [ 0 .. t ^ s - 1 ], m ->
                                   List( [ 0 .. s - 1 ], i ->
                                         DigitInPositionalNotation( m, i, s, t ) ) );
                     ## FiniteStrictCoproductCompletion code:
                     
-                    source_objects := source_datum[2];
-                    target_objects := target_datum[2];
+                    source_objects := source_pair[2];
+                    target_objects := target_pair[2];
                     
                     mors := List( maps, map ->
                                   List( Cartesian( Reversed(
@@ -1300,28 +1301,28 @@ InstallMethod( FiniteStrictCoproductCompletion,
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UC,
               function( UC, S, T, morphism )
-                local C, UV, H, pairS, pairT, s, t, maps, LS, LT, Homs, homs, value, number, map, m, mor;
+                local C, UV, H, source_pair, target_pair, s, t, maps, source_objects, target_objects, Homs, homs, value, number, map, m, mor;
                 
                 C := UnderlyingCategory( UC );
                 H := RangeCategoryOfHomomorphismStructure( UC );
                 
-                pairS := ObjectDatum( UC, S );
-                pairT := ObjectDatum( UC, T );
+                source_pair := ObjectDatum( UC, S );
+                target_pair := ObjectDatum( UC, T );
                 
-                s := pairS[1];
-                t := pairT[1];
+                s := source_pair[1];
+                t := target_pair[1];
                 
                 maps := List( [ 0 .. t ^ s - 1 ], m ->
                               List( [ 0 .. s - 1 ], i ->
                                     DigitInPositionalNotation( m, i, s, t ) ) );
                 
-                LS := pairS[2];
-                LT := pairT[2];
+                source_objects := source_pair[2];
+                target_objects := target_pair[2];
                 
                 Homs := List( maps, map ->
                               List( [ 0 .. s - 1 ], i ->
                                     HomomorphismStructureOnObjects( C,
-                                            LS[1 + i], LT[1 + map[1 + i]] ) ) );
+                                            source_objects[1 + i], target_objects[1 + map[1 + i]] ) ) );
                 
                 homs := List( Homs, L -> DirectProduct( H, L ) );
                 
@@ -1337,8 +1338,8 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
                 mor := List( [ 0 .. s - 1 ], i ->
                              InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
-                                     LS[1 + i],
-                                     LT[1 + map[1 + i]],
+                                     source_objects[1 + i],
+                                     target_objects[1 + map[1 + i]],
                                      PreCompose( H,
                                              Lift( H,
                                                    morphism,
@@ -1775,16 +1776,16 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionDa
 
     extended_functor_on_morphisms :=
       function( source, morUC, target )
-        local pairS, pairT, s, t, S, T, source_diagram, target_diagram, pair_of_lists, map, mor, functor_on_mor;
+        local source_pair, target_pair, s, t, S, T, source_diagram, target_diagram, pair_of_lists, map, mor, functor_on_mor;
         
-        pairS := ObjectDatum( UC, Source( morUC ) );
-        pairT := ObjectDatum( UC, Target( morUC ) );
+        source_pair := ObjectDatum( UC, Source( morUC ) );
+        target_pair := ObjectDatum( UC, Target( morUC ) );
         
-        s := pairS[1];
-        t := pairT[1];
+        s := source_pair[1];
+        t := target_pair[1];
         
-        S := pairS[2];
-        T := pairT[2];
+        S := source_pair[2];
+        T := target_pair[2];
         
         source_diagram := List( [ 0 .. s - 1 ], i -> functor_on_objects( S[1 + i] ) );
         target_diagram := List( [ 0 .. t - 1 ], i -> functor_on_objects( T[1 + i] ) );
