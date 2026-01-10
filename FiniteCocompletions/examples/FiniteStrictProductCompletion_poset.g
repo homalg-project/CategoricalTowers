@@ -28,6 +28,8 @@ Perform( SetOfObjects( L ), Display );
 Ltilde := FiniteStrictProductCompletion( L );
 #! FiniteStrictProductCompletion( PosetOfCategory( PathCategory( \
 #! FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) ) )
+Ltilde.ai = Ltilde.bj;
+#! true
 Length( SetOfObjects( Ltilde ) );
 #! 16
 Lhat := PosetOfCategory( Ltilde );
