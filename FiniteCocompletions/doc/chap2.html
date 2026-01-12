@@ -293,6 +293,8 @@ An object in the poset given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ltilde := FiniteStrictProductCompletion( L );</span>
 FiniteStrictProductCompletion( PosetOfCategory( PathCategory( \
 FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ltilde.ai = Ltilde.bj;</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfObjects( Ltilde ) );</span>
 16
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lhat := PosetOfCategory( Ltilde );</span>
