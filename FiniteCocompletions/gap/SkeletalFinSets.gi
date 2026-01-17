@@ -144,6 +144,8 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
                    only_primitive_operations := true )
               : FinalizeCategory := false );
     
+    SetIsElementaryTopos( sFinSets, true );
+    
     # this is a workhorse category -> no logic and caching only via IsIdenticalObj
     CapCategorySwitchLogicOff( sFinSets );
     

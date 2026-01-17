@@ -17,6 +17,8 @@ Display( sFinSets );
 #! * IsEquippedWithHomomorphismStructure
 #! * IsFiniteCompleteCategory
 #! * IsDistributiveCategory
+#! and not yet algorithmically
+#! * IsElementaryTopos
 #! and furthermore mathematically
 #! * IsStrictCartesianCategory
 #! * IsStrictCocartesianCategory
