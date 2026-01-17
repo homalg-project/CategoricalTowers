@@ -25,7 +25,7 @@ function ( cat_1, objects_1 )
 end
 ########
         
-    , 100 );
+    , 200 );
     
     ##
     AddDistinguishedObjectOfHomomorphismStructure( cat,
@@ -56,7 +56,7 @@ function ( cat_1, Y_1, morphisms_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 200 );
     
     ##
     AddEqualizer( cat,
@@ -76,7 +76,7 @@ function ( cat_1, Y_1, morphisms_1 )
 end
 ########
         
-    , 100 );
+    , 200 );
     
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
@@ -153,7 +153,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 100 );
+    , 200 );
     
     ##
     AddInitialObject( cat,
@@ -256,7 +256,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 200 );
     
     ##
     AddIsEqualForObjects( cat,
@@ -272,7 +272,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 6 );
     
     ##
     AddIsInitial( cat,
@@ -310,7 +310,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 102 );
     
     ##
     AddIsWellDefinedForMorphisms( cat,
@@ -329,7 +329,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 100 );
+    , 212 );
     
     ##
     AddIsWellDefinedForObjects( cat,
@@ -464,7 +464,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    , 100 );
+    , 200 );
     
     ##
     AddProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
@@ -481,7 +481,7 @@ function ( cat_1, objects_1, k_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 200 );
     
     ##
     AddTerminalObject( cat,
@@ -545,7 +545,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 200 );
     
     ##
     AddUniversalMorphismIntoEqualizerWithGivenEqualizer( cat,
@@ -569,7 +569,7 @@ function ( cat_1, Y_1, morphisms_1, T_1, tau_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 200 );
     
     ##
     AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat,
@@ -580,7 +580,7 @@ function ( cat_1, T_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 200 );
     
     if IsBound( cat!.precompiled_functions_added ) then
         

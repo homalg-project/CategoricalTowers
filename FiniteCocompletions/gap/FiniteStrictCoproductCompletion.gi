@@ -146,104 +146,121 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     end );
     
-    ##
-    AddIsWellDefinedForObjects( UC,
-      function ( UC, object )
-        local pair, C;
+    if CanCompute( C, "IsWellDefinedForObjects" ) then
         
-        pair := ObjectDatum( UC, object );
+        ##
+        AddIsWellDefinedForObjects( UC,
+          function ( UC, object )
+            local pair, C;
+            
+            pair := ObjectDatum( UC, object );
+            
+            C := UnderlyingCategory( UC );
+            
+            return IsBigInt( pair[1] ) and
+                   pair[1] >= 0 and
+                   Length( pair[2] ) = pair[1] and
+                   ForAll( pair[2], obj -> IsWellDefinedForObjects( C, obj ) );
+            
+        end, OperationWeight( C, "IsWellDefinedForObjects" ) );
         
-        C := UnderlyingCategory( UC );
-        
-        return IsBigInt( pair[1] ) and
-               pair[1] >= 0 and
-               Length( pair[2] ) = pair[1] and
-               ForAll( pair[2], obj -> IsWellDefinedForObjects( C, obj ) );
-        
-    end );
+    fi;
     
-    ##
-    AddIsWellDefinedForMorphisms( UC,
-      function ( UC, morphism )
-        local source_pair, target_pair, pair_of_lists, s, t, map, C, S, T, mors;
+    if CanCompute( C, "IsEqualForObjects" ) and
+       CanCompute( C, "IsWellDefinedForMorphisms" ) then
         
-        source_pair := ObjectDatum( UC, Source( morphism ) );
-        target_pair := ObjectDatum( UC, Target( morphism ) );
+        ##
+        AddIsWellDefinedForMorphisms( UC,
+          function ( UC, morphism )
+            local source_pair, target_pair, pair_of_lists, s, t, map, C, S, T, mors;
+            
+            source_pair := ObjectDatum( UC, Source( morphism ) );
+            target_pair := ObjectDatum( UC, Target( morphism ) );
+            
+            pair_of_lists := MorphismDatum( UC, morphism );
+            
+            ## SkeletalFinSets code:
+            s := source_pair[1];
+            t := target_pair[1];
+            
+            map := pair_of_lists[1];
+            
+            ## FiniteStrictCoproductCompletion code:
+            C := UnderlyingCategory( UC );
+            
+            S := source_pair[2];
+            T := target_pair[2];
+            
+            mors := pair_of_lists[2];
+            
+            return s = Length( map ) and
+                   s = Length( mors ) and
+                   ForAll( [ 1 .. s ], i -> map[i] >= 0 and map[i] < t ) and
+                   ForAll( [ 1 .. s ], i ->
+                           IsEqualForObjects( C, Source( mors[i] ), S[i] ) and
+                           IsEqualForObjects( C, Target( mors[i] ), T[1 + map[i]] ) and
+                           IsWellDefinedForMorphisms( C, mors[i] ) );
+            
+        end, 4 * OperationWeight( C, "IsEqualForObjects" ) + 2 * OperationWeight( C, "IsWellDefinedForMorphisms" ) );
         
-        pair_of_lists := MorphismDatum( UC, morphism );
-        
-        ## SkeletalFinSets code:
-        s := source_pair[1];
-        t := target_pair[1];
-        
-        map := pair_of_lists[1];
-        
-        ## FiniteStrictCoproductCompletion code:
-        C := UnderlyingCategory( UC );
-        
-        S := source_pair[2];
-        T := target_pair[2];
-        
-        mors := pair_of_lists[2];
-        
-        return s = Length( map ) and
-               s = Length( mors ) and
-               ForAll( [ 1 .. s ], i -> map[i] >= 0 and map[i] < t ) and
-               ForAll( [ 1 .. s ], i ->
-                       IsEqualForObjects( C, Source( mors[i] ), S[i] ) and
-                       IsEqualForObjects( C, Target( mors[i] ), T[1 + map[i]] ) and
-                       IsWellDefinedForMorphisms( C, mors[i] ) );
-        
-    end );
+    fi;
     
-    ##
-    AddIsEqualForObjects( UC,
-      function ( UC, object1, object2 )
-        local pair1, pair2, C, L1, L2;
+    if CanCompute( C, "IsEqualForObjects" ) then
         
-        pair1 := ObjectDatum( UC, object1 );
-        pair2 := ObjectDatum( UC, object2 );
+        ##
+        AddIsEqualForObjects( UC,
+          function ( UC, object1, object2 )
+            local pair1, pair2, C, L1, L2;
+            
+            pair1 := ObjectDatum( UC, object1 );
+            pair2 := ObjectDatum( UC, object2 );
+            
+            ## SkeletalFinSets code:
+            if not pair1[1] = pair2[1] then
+                return false;
+            fi;
+            
+            ## FiniteStrictCoproductCompletion code:
+            C := UnderlyingCategory( UC );
+            
+            L1 := pair1[2];
+            L2 := pair2[2];
+            
+            return ForAll( [ 1 .. pair1[1] ], i -> IsEqualForObjects( C, L1[i], L2[i] ) );
+            
+        end, 2 * OperationWeight( C, "IsEqualForObjects" ) );
         
-        ## SkeletalFinSets code:
-        if not pair1[1] = pair2[1] then
-            return false;
-        fi;
-        
-        ## FiniteStrictCoproductCompletion code:
-        C := UnderlyingCategory( UC );
-        
-        L1 := pair1[2];
-        L2 := pair2[2];
-        
-        return ForAll( [ 1 .. pair1[1] ], i -> IsEqualForObjects( C, L1[i], L2[i] ) );
-        
-    end );
+    fi;
     
-    ##
-    AddIsEqualForMorphisms( UC,
-      function ( UC, morphism1, morphism2 )
-        local pair_of_lists1, pair_of_lists2, C, s, m1, m2;
+    if CanCompute( C, "IsEqualForMorphisms" ) then
         
-        pair_of_lists1 := MorphismDatum( UC, morphism1 );
-        pair_of_lists2 := MorphismDatum( UC, morphism2 );
+        ##
+        AddIsEqualForMorphisms( UC,
+          function ( UC, morphism1, morphism2 )
+            local pair_of_lists1, pair_of_lists2, C, s, m1, m2;
+            
+            pair_of_lists1 := MorphismDatum( UC, morphism1 );
+            pair_of_lists2 := MorphismDatum( UC, morphism2 );
+            
+            ## SkeletalFinSets code:
+            if not pair_of_lists1[1] = pair_of_lists2[1] then
+                return false;
+            fi;
+            
+            ## FiniteStrictCoproductCompletion code:
+            C := UnderlyingCategory( UC );
+            
+            s := ObjectDatum( UC, Source( morphism1 ) )[1];
+            
+            m1 := pair_of_lists1[2];
+            m2 := pair_of_lists2[2];
+            
+            return ForAll( [ 1 .. s ], i -> IsEqualForMorphisms( C, m1[i], m2[i] ) );
+            
+        end, 2 * OperationWeight( C, "IsEqualForMorphisms" ) );
         
-        ## SkeletalFinSets code:
-        if not pair_of_lists1[1] = pair_of_lists2[1] then
-            return false;
-        fi;
-        
-        ## FiniteStrictCoproductCompletion code:
-        C := UnderlyingCategory( UC );
-        
-        s := ObjectDatum( UC, Source( morphism1 ) )[1];
-        
-        m1 := pair_of_lists1[2];
-        m2 := pair_of_lists2[2];
-        
-        return ForAll( [ 1 .. s ], i -> IsEqualForMorphisms( C, m1[i], m2[i] ) );
-        
-    end );
-
+    fi;
+    
     if not ( IsBound( H ) and IsIntervalCategory( H ) ) then
         
         ##
@@ -268,66 +285,75 @@ InstallMethod( FiniteStrictCoproductCompletion,
             m2 := pair_of_lists2[2];
             
             return ForAll( [ 1 .. s ], i -> IsCongruentForMorphisms( C, m1[i], m2[i] ) );
-            
+
         end );
+        #end, 2 * OperationWeight( C, "IsCongruentForMorphisms" ) );
         
     fi;
     
-    ##
-    AddIdentityMorphism( UC,
-      function ( UC, object )
-        local pair, map, C, mor;
+    if CanCompute( C, "IdentityMorphism" ) then
         
-        pair := ObjectDatum( UC, object );
+        ##
+        AddIdentityMorphism( UC,
+          function ( UC, object )
+            local pair, map, C, mor;
+            
+            pair := ObjectDatum( UC, object );
+            
+            ## SkeletalFinSets code:
+            map := [ 0 .. pair[1] - 1 ];
+            
+            ## FiniteStrictCoproductCompletion code:
+            C := UnderlyingCategory( UC );
+            
+            mor := List( pair[2], objC -> IdentityMorphism( C, objC ) );
+            
+            return MorphismConstructor( UC, object, Pair( map, mor ), object );
+            
+        end, 2 * OperationWeight( C, "IdentityMorphism" ) );
         
-        ## SkeletalFinSets code:
-        map := [ 0 .. pair[1] - 1 ];
+    fi;
+
+    if CanCompute( C, "PreCompose" ) then
         
-        ## FiniteStrictCoproductCompletion code:
-        C := UnderlyingCategory( UC );
+        ##
+        AddPreCompose( UC,
+          function ( UC, pre_morphism, post_morphism )
+            local S, T, pair_of_lists_pre, pair_of_lists_post,
+                  maps_pre, maps_post, s, maps_cmp,
+                  C, mors_pre, mors_post, mors_cmp;
+            
+            S := Source( pre_morphism );
+            T := Target( post_morphism );
+            
+            pair_of_lists_pre := MorphismDatum( UC, pre_morphism );
+            pair_of_lists_post := MorphismDatum( UC, post_morphism );
+            
+            ## SkeletalFinSets code:
+            maps_pre := pair_of_lists_pre[1];
+            maps_post := pair_of_lists_post[1];
+            
+            s := [ 0 .. ObjectDatum( UC, S )[1] - 1 ];
+            
+            maps_cmp := List( s, i ->
+                              maps_post[1 + maps_pre[1 + i]] );
+            
+            ## FiniteStrictCoproductCompletion code:
+            C := UnderlyingCategory( UC );
+            
+            mors_pre := pair_of_lists_pre[2];
+            mors_post := pair_of_lists_post[2];
+            
+            mors_cmp := List( s, i ->
+                              PreCompose( C,
+                                      mors_pre[1 + i],
+                                      mors_post[1 + maps_pre[1 + i]] ) );
+            
+            return MorphismConstructor( UC, S, Pair( maps_cmp, mors_cmp ), T );
+            
+        end, 2 * OperationWeight( C, "PreCompose" ) );
         
-        mor := List( pair[2], objC -> IdentityMorphism( C, objC ) );
-        
-        return MorphismConstructor( UC, object, Pair( map, mor ), object );
-        
-    end );
-    
-    ##
-    AddPreCompose( UC,
-      function ( UC, pre_morphism, post_morphism )
-        local S, T, pair_of_lists_pre, pair_of_lists_post,
-              maps_pre, maps_post, s, maps_cmp,
-              C, mors_pre, mors_post, mors_cmp;
-        
-        S := Source( pre_morphism );
-        T := Target( post_morphism );
-        
-        pair_of_lists_pre := MorphismDatum( UC, pre_morphism );
-        pair_of_lists_post := MorphismDatum( UC, post_morphism );
-        
-        ## SkeletalFinSets code:
-        maps_pre := pair_of_lists_pre[1];
-        maps_post := pair_of_lists_post[1];
-        
-        s := [ 0 .. ObjectDatum( UC, S )[1] - 1 ];
-        
-        maps_cmp := List( s, i ->
-                          maps_post[1 + maps_pre[1 + i]] );
-        
-        ## FiniteStrictCoproductCompletion code:
-        C := UnderlyingCategory( UC );
-        
-        mors_pre := pair_of_lists_pre[2];
-        mors_post := pair_of_lists_post[2];
-        
-        mors_cmp := List( s, i ->
-                          PreCompose( C,
-                                  mors_pre[1 + i],
-                                  mors_post[1 + maps_pre[1 + i]] ) );
-        
-        return MorphismConstructor( UC, S, Pair( maps_cmp, mors_cmp ), T );
-        
-    end );
+    fi;
     
     if not ( IsBound( H ) and IsIntervalCategory( H ) ) then
         
@@ -369,6 +395,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 return ForAll( [ 0 .. s - 1 ], b -> is_liftable( b ) );
                 
             end );
+            #end, 2 * OperationWeight( C, "IsLiftable" ) ); ## for this to work add OperationWeight in Hom-structure
             
         fi;
         
@@ -421,6 +448,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                                T );
                 
             end );
+            #end, 2 * OperationWeight( C, "IsLiftable" ) + 2 * OperationWeight( C, "Lift" ) ); ## for this to work add OperationWeight in Hom-structure
             
         fi;
         
@@ -471,7 +499,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             return pair[1] = BigInt( 1 ) and ## SkeletalFinSets code
                    IsTerminal( UnderlyingCategory( UC ), pair[2][1] ); ## FiniteStrictCoproductCompletion code
             
-        end );
+        end, OperationWeight( C, "IsTerminal" ) );
         
     fi;
     
@@ -487,7 +515,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                                  ## FiniteStrictCoproductCompletion code
                                  [ TerminalObject( UnderlyingCategory( UC ) ) ] ) );
             
-        end );
+        end, OperationWeight( C, "TerminalObject" ) );
         
     fi;
     
@@ -513,7 +541,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             return MorphismConstructor( UC, object, Pair( map, mor ), T );
             
-        end );
+        end, 2 * OperationWeight( C, "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject" ) );
         
     fi;
     
@@ -657,7 +685,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                            Pair( Product( List( data, datum -> datum[1] ) ), ## SkeletalFinSets code
                                  List( cartesian, L -> DirectProduct( C, L ) ) ) ); ## FiniteStrictCoproductCompletion code
             
-        end );
+        end, 2 * OperationWeight( C, "DirectProduct" ) );
         
     fi;
     
@@ -694,7 +722,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             return MorphismConstructor( UC, P, Pair( map, mor ), D[k] );
             
-        end );
+        end, 2 * OperationWeight( C, "ProjectionInFactorOfDirectProductWithGivenDirectProduct" ) );
         
     fi;
     
@@ -744,7 +772,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             return MorphismConstructor( UC, T, Pair( map, mor ), P );
             
-        end );
+        end, 2 * OperationWeight( C, "UniversalMorphismIntoDirectProductWithGivenDirectProduct" ) );
         
     fi;
     
@@ -786,7 +814,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             return ObjectConstructor( UC, Pair( eq, Eq ) );
             
-        end );
+        end, 2 * OperationWeight( C, "Equalizer" ) );
         
     fi;
     
@@ -835,7 +863,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             return MorphismConstructor( UC, equalizer, Pair( emb, mor ), common_source );
             
-        end );
+        end, 2 * OperationWeight( C, "EmbeddingOfEqualizerWithGivenEqualizer" ) );
         
     fi;
     
@@ -899,13 +927,13 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             return MorphismConstructor( UC, test_object, Pair( map, mor ), equalizer );
             
-        end );
+        end, 2 * OperationWeight( C, "UniversalMorphismIntoEqualizerWithGivenEqualizer" ) );
         
     fi;
     
     if HasIsFiniteCategory( C ) and IsFiniteCategory( C ) and
-       CanCompute( C, "SetOfObjectsOfCategory" ) and
-       HasIsThinCategory( UC ) and IsThinCategory( UC ) then
+       IsBound( H ) and IsIntervalCategory( H ) and
+       CanCompute( C, "SetOfObjectsOfCategory" ) then
         
         SetIsFiniteCategory( UC, true );
         
@@ -924,7 +952,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
             
             return List( Concatenation( joins ), entry -> entry[2] );
             
-        end );
+        end, 2 * OperationWeight( C, "SetOfObjectsOfCategory" ) );
         
     fi;
     

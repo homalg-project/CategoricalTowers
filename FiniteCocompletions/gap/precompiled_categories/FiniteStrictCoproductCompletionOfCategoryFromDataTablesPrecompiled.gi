@@ -172,7 +172,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
 end
 ########
         
-    , 1503 : IsPrecompiledDerivation := true );
+    , 2303 : IsPrecompiledDerivation := true );
     
     ##
     cat!.cached_precompiled_functions.HomomorphismStructureOnMorphismsWithGivenObjects :=
