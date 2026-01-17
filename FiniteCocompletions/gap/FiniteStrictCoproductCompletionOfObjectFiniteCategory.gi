@@ -69,6 +69,8 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             SetIsStrictCartesianCategory( UCm, true );
         fi;
         SetIsDistributiveCategory( UCm, true );
+    elif HasIsCategoryWithTerminalObject( C ) and IsCategoryWithTerminalObject( C ) then
+        SetIsCategoryWithTerminalObject( UCm, true );
     fi;
     
     if HasIsFiniteCompleteCategory( C ) and IsFiniteCompleteCategory( C ) then
@@ -427,6 +429,62 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
                        test_object );
         
     end );
+    
+    if CanCompute( C, "TerminalObject" ) then
+        
+        ##
+        AddTerminalObject( UCm,
+          function ( UCm )
+            local C, objectsC, l, t, multiplicities;
+            
+            C := UnderlyingCategory( UCm );
+            
+            objectsC := SetOfObjects( C );
+            
+            l := NumberOfObjectsOfUnderlyingCategory( UCm );
+            
+            t := TerminalObject( C );
+            
+            multiplicities := List( [ 1 .. l ], o -> Length( PositionsProperty( [ t ], obj -> IsEqualForObjects( C, obj, objectsC[o] ) ) ) );
+            
+            return ObjectConstructor( UCm,
+                           Pair( BigInt( 1 ), ## SkeletalFinSets code
+                                 multiplicities ) ); ## FiniteStrictCoproductCompletionOfObjectFiniteCategory code
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject" ) then
+        
+        ##
+        AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( UCm,
+          function ( UCm, object, terminal_object )
+            local C, objectsC, l, t, pos, mult;
+            
+            C := UnderlyingCategory( UCm );
+            
+            objectsC := SetOfObjects( C );
+            
+            l := NumberOfObjectsOfUnderlyingCategory( UCm );
+            
+            t := TerminalObject( C );
+            
+            pos := -1 + SafeUniquePositionProperty( objectsC, obj -> IsEqualForObjects( C, obj, t ) );
+            
+            mult := PairOfIntAndList( object )[2];
+            
+            return MorphismConstructor( UCm,
+                           object,
+                           Pair( List( [ 1 .. l ], o ->
+                                       Pair( ListWithIdenticalEntries( mult[o], pos ), ListWithIdenticalEntries( mult[o], BigInt( 0 ) ) ) ),
+                                 List( [ 1 .. l ], o ->
+                                       ListWithIdenticalEntries( mult[o], UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( C, objectsC[o], t ) ) ) ),
+                           terminal_object );
+            
+        end );
+        
+    fi;
     
     if CanCompute( C, "Equalizer" ) then
         
