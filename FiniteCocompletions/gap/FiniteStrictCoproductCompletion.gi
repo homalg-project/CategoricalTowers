@@ -165,7 +165,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
     ##
     AddIsWellDefinedForMorphisms( UC,
       function ( UC, morphism )
-        local source_pair, target_pair, pair_of_lists, s, t, map, S, T, mors, C;
+        local source_pair, target_pair, pair_of_lists, s, t, map, C, S, T, mors;
         
         source_pair := ObjectDatum( UC, Source( morphism ) );
         target_pair := ObjectDatum( UC, Target( morphism ) );
