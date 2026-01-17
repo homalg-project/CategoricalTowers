@@ -357,6 +357,36 @@ InstallMethod( FiniteStrictCoproductCompletion,
     
     if not ( IsBound( H ) and IsIntervalCategory( H ) ) then
         
+        if CanCompute( C, "IsMonomorphism" ) then
+            
+            ##
+            AddIsMonomorphism( UC,
+              function ( UC, morphism )
+                local source_pair, target_pair, pair_of_lists, s, t, map, C, mors;
+                
+                source_pair := ObjectDatum( UC, Source( morphism ) );
+                target_pair := ObjectDatum( UC, Target( morphism ) );
+                
+                pair_of_lists := MorphismDatum( UC, morphism );
+                
+                ## SkeletalFinSets code:
+                s := source_pair[1];
+                t := target_pair[1];
+                
+                map := pair_of_lists[1];
+                
+                ## FiniteStrictCoproductCompletion code:
+                C := UnderlyingCategory( UC );
+                
+                mors := pair_of_lists[2];
+                
+                return SKELETAL_CATEGORY_OF_FINITE_SETS_IsMonomorphism( map, t ) and
+                       ForAll( [ 1 .. s ], i -> IsMonomorphism( C, mors[i] ) );
+                
+            end, 2 * OperationWeight( C, "IsMonomorphism" ) );
+            
+        fi;
+        
         if CanCompute( C, "IsLiftable" ) then
             
             ## is β liftable along α?

@@ -54,3 +54,10 @@ DeclareOperation( "TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStruc
 DeclareOperation( "TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure",
         [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 #! @InsertChunk CharacteristicMatrix
+
+# Technical functions
+DeclareGlobalFunction( "SKELETAL_CATEGORY_OF_FINITE_SETS_IsMonomorphism" );
+CapJitAddTypeSignature( "SKELETAL_CATEGORY_OF_FINITE_SETS_IsMonomorphism", [ IsList, IsBigInt ], IsBool );
+
+DeclareGlobalFunction( "SKELETAL_CATEGORY_OF_FINITE_SETS_IsEpimorphism" );
+CapJitAddTypeSignature( "SKELETAL_CATEGORY_OF_FINITE_SETS_IsEpimorphism", [ IsList, IsBigInt ], CapJitDataTypeOfListOf( IsBool ) );

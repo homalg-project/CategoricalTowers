@@ -302,6 +302,17 @@ end
     , 100 );
     
     ##
+    AddIsMonomorphism( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return SKELETAL_CATEGORY_OF_FINITE_SETS_IsMonomorphism( AsList( arg2_1 ), Cardinality( Range( arg2_1 ) ) );
+end
+########
+        
+    , 2 );
+    
+    ##
     AddIsTerminal( cat,
         
 ########

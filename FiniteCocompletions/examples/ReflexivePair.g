@@ -34,10 +34,10 @@ Display( B );
 #! FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )
 #! given by the above data
 f := UC.f;
-#! <A morphism in FiniteStrictCoproductCompletion(
+#! <A monomorphism in FiniteStrictCoproductCompletion(
 #!  FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )>
 g := UC.g;
-#! <A morphism in FiniteStrictCoproductCompletion(
+#! <A monomorphism in FiniteStrictCoproductCompletion(
 #!  FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )>
 MorphismDatum( f );
 #! [ [ 0 ], [ (A)-[(f)]->(B) ] ]
