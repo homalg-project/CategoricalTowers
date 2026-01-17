@@ -222,7 +222,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
     ##
     AddIsEqualForMorphisms( UC,
       function ( UC, morphism1, morphism2 )
-        local pair_of_lists1, pair_of_lists2, C, m1, m2;
+        local pair_of_lists1, pair_of_lists2, C, s, m1, m2;
         
         pair_of_lists1 := MorphismDatum( UC, morphism1 );
         pair_of_lists2 := MorphismDatum( UC, morphism2 );
@@ -235,10 +235,12 @@ InstallMethod( FiniteStrictCoproductCompletion,
         ## FiniteStrictCoproductCompletion code:
         C := UnderlyingCategory( UC );
         
+        s := ObjectDatum( UC, Source( morphism1 ) )[1];
+        
         m1 := pair_of_lists1[2];
         m2 := pair_of_lists2[2];
         
-        return ForAll( [ 1 .. Length( m1 ) ], i -> IsEqualForMorphisms( C, m1[i], m2[i] ) );
+        return ForAll( [ 1 .. s ], i -> IsEqualForMorphisms( C, m1[i], m2[i] ) );
         
     end );
 
@@ -247,7 +249,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         ##
         AddIsCongruentForMorphisms( UC,
           function ( UC, morphism1, morphism2 )
-            local pair_of_lists1, pair_of_lists2, C, m1, m2;
+            local pair_of_lists1, pair_of_lists2, C, s, m1, m2;
             
             pair_of_lists1 := MorphismDatum( UC, morphism1 );
             pair_of_lists2 := MorphismDatum( UC, morphism2 );
@@ -260,10 +262,12 @@ InstallMethod( FiniteStrictCoproductCompletion,
             ## FiniteStrictCoproductCompletion code:
             C := UnderlyingCategory( UC );
             
+            s := ObjectDatum( UC, Source( morphism1 ) )[1];
+            
             m1 := pair_of_lists1[2];
             m2 := pair_of_lists2[2];
             
-            return ForAll( [ 1 .. Length( m1 ) ], i -> IsCongruentForMorphisms( C, m1[i], m2[i] ) );
+            return ForAll( [ 1 .. s ], i -> IsCongruentForMorphisms( C, m1[i], m2[i] ) );
             
         end );
         
