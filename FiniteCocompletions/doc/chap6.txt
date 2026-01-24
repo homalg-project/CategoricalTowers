@@ -179,17 +179,7 @@
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
-  [1X6.2-2 CreateColimitQuiver[101X
-  
-  [33X[1;0Y[29X[2XCreateColimitQuiver[102X( [3XColimitQuivers[103X, [3Xlist[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya colimit quiver[133X
-  
-  [1X6.2-3 CreateMorphismOfColimitQuivers[101X
-  
-  [33X[1;0Y[29X[2XCreateMorphismOfColimitQuivers[102X( [3Xsource[103X, [3Xlist_of_images[103X, [3Xtarget[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya colimit quiver morphism[133X
-  
-  [1X6.2-4 CategoryOfPreSheavesOfUnderlyingCategory[101X
+  [1X6.2-2 CategoryOfPreSheavesOfUnderlyingCategory[101X
   
   [33X[1;0Y[29X[2XCategoryOfPreSheavesOfUnderlyingCategory[102X( [3XColimitQuiversC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya CAP category[133X

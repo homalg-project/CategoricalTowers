@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2026.01-10
+                                   2026.01-11
   
   
-                                17 January 2026
+                                24 January 2026
   
   
                                 Mohamed Barakat
@@ -138,9 +138,7 @@
       6.1-5 FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory
     6.2 [33X[0;0YConstructors[133X
       6.2-1 CategoryOfColimitQuivers
-      6.2-2 CreateColimitQuiver
-      6.2-3 CreateMorphismOfColimitQuivers
-      6.2-4 CategoryOfPreSheavesOfUnderlyingCategory
+      6.2-2 CategoryOfPreSheavesOfUnderlyingCategory
     6.3 [33X[0;0YGAP categories[133X
       6.3-1 IsCategoryOfColimitQuivers
       6.3-2 IsCellInCategoryOfColimitQuivers
