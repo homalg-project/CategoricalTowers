@@ -10,19 +10,29 @@ InstallMethodWithCache( FiniteCocompletion,
         [ IsCapCategory, IsCapCategory ],
         
   function( fp_category, range_category_of_hom_structure )
-    local PSh,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          PSh,
           finite_cocompletion;
     
+    ##
+    name := Concatenation( "FiniteCocompletion( ", Name( fp_category ), " )" );
+    
+    ##
+    category_filter := IsFiniteCocompletion and IsWrapperCapCategory;
+    category_object_filter := IsObjectInFiniteCocompletion and IsWrapperCapCategoryObject;
+    category_morphism_filter := IsMorphismInFiniteCocompletion and IsWrapperCapCategoryMorphism;
+    
     ## building the categorical tower:
+    
     PSh := PreSheaves( fp_category, range_category_of_hom_structure : FinalizeCategory := true, overhead := false );
     
     ##
     finite_cocompletion :=
       WrapperCategory( PSh,
-              rec( name := Concatenation( "FiniteCocompletion( ", Name( fp_category ), " )" ),
-                   category_filter := IsWrapperCapCategory and IsFiniteCocompletion,
-                   category_object_filter := IsWrapperCapCategoryObject and IsObjectInFiniteCocompletion,
-                   category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInFiniteCocompletion,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    only_primitive_operations := true )
               );
     

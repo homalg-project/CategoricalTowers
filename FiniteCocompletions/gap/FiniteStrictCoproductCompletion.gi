@@ -15,23 +15,41 @@ InstallMethod( FiniteStrictCoproductCompletion,
     [ "FinalizeCategory", true ],
   ],
   function( CAP_NAMED_ARGUMENTS, C )
-    local UC, H,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          object_datum_type, morphism_datum_type,
+          UC, H,
           object_func, morphism_func, object_func_inverse, morphism_func_inverse, extended;
     
+    name := Concatenation( "FiniteStrictCoproductCompletion( ", Name( C ), " )" );
+    
     ##
-    UC := CreateCapCategoryWithDataTypes(
-                  Concatenation( "FiniteStrictCoproductCompletion( ", Name( C ), " )" ),
-                  IsFiniteStrictCoproductCompletion,
-                  IsObjectInFiniteStrictCoproductCompletion,
-                  IsMorphismInFiniteStrictCoproductCompletion,
-                  IsCapCategoryTwoCell,
-                  CapJitDataTypeOfNTupleOf( 2,
-                          IsBigInt,
-                          CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( C ) ) ),
-                  CapJitDataTypeOfNTupleOf( 2,
-                          CapJitDataTypeOfListOf( IsBigInt ),
-                          CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) ),
-                  fail );
+    category_filter := IsFiniteStrictCoproductCompletion;
+    category_object_filter := IsObjectInFiniteStrictCoproductCompletion;
+    category_morphism_filter := IsMorphismInFiniteStrictCoproductCompletion;
+    
+    ##
+    object_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              IsBigInt,
+              CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( C ) ) );
+    
+    ##
+    morphism_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              CapJitDataTypeOfListOf( IsBigInt ),
+              CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) );
+    
+    ##
+    UC :=
+      CreateCapCategoryWithDataTypes(
+              name,
+              category_filter,
+              category_object_filter,
+              category_morphism_filter,
+              IsCapCategoryTwoCell,
+              object_datum_type,
+              morphism_datum_type,
+              fail );
     
     ## UC supports empty limits, regardless of C
     UC!.supports_empty_limits := true;

@@ -5,53 +5,26 @@
 #
 
 ##
-InstallOtherMethodForCompilerForCAP( CreateColimitQuiver,
-        "for the category of colimit quivers in a category and a pair",
-        [ IsCategoryOfColimitQuivers, IsList ],
-        
-  function ( ColimitQuivers, pair )
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0,
-            Length( pair ) = 2 and
-            IsList( pair[1] ) and
-            ForAll( pair[1], IsCapCategoryObject ) and
-            IsList( pair[2] ) and
-            ForAll( pair[2], IsList ) and
-            ForAll( pair[2], e -> IsInt( e[1] ) and IsInt( e[3] ) ) and
-            ForAll( pair[2], e -> IsCapCategoryMorphism( e[2] ) ) );
-    
-    return CreateCapCategoryObjectWithAttributes( ColimitQuivers,
-                   DefiningPairOfColimitQuiver, pair );
-    
-end );
-
-##
-InstallOtherMethodForCompilerForCAP( CreateMorphismOfColimitQuivers,
-        "for a category of quivers, two objects in a category of quivers, and a pair",
-        [ IsCategoryOfColimitQuivers, IsObjectInCategoryOfColimitQuivers, IsList, IsObjectInCategoryOfColimitQuivers ],
-        
-  function ( ColimitQuivers, source, images, target )
-    
-    return CreateCapCategoryMorphismWithAttributes( ColimitQuivers,
-                   source,
-                   target,
-                   DefiningPairOfColimitQuiverMorphism, images );
-    
-end );
-
-##
 InstallMethod( CategoryOfColimitQuivers,
         "for a category",
         [ IsCapCategory ],
         
   function ( C )
-    local object_datum_type, object_constructor, object_datum,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           UC, ParallelPairsUC,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           ColimitQuivers;
+    
+    ##
+    name := Concatenation( "CategoryOfColimitQuivers( ", Name( C ), " )" );
+    
+    ##
+    category_filter := IsCategoryOfColimitQuivers;
+    category_object_filter := IsObjectInCategoryOfColimitQuivers;
+    category_morphism_filter := IsMorphismInCategoryOfColimitQuivers;
     
     ##
     object_datum_type :=
@@ -63,10 +36,14 @@ InstallMethod( CategoryOfColimitQuivers,
                               CapJitDataTypeOfMorphismOfCategory( C ),
                               IsInt ) ) );
     
-    ##
-    object_constructor := CreateColimitQuiver;
+    object_constructor :=
+      function ( ColimitQuivers, pair )
+        
+        return CreateCapCategoryObjectWithAttributes( ColimitQuivers,
+                       DefiningPairOfColimitQuiver, pair );
+        
+    end;
     
-    ##
     object_datum := { ColimitQuivers, o } -> DefiningPairOfColimitQuiver( o );
     
     ##
@@ -77,10 +54,16 @@ InstallMethod( CategoryOfColimitQuivers,
                       CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( C ) ) ),
               CapJitDataTypeOfListOf( IsInt ) );
     
-    ##
-    morphism_constructor := CreateMorphismOfColimitQuivers;
+    morphism_constructor :=
+      function ( ColimitQuivers, source, images, target )
+        
+        return CreateCapCategoryMorphismWithAttributes( ColimitQuivers,
+                       source,
+                       target,
+                       DefiningPairOfColimitQuiverMorphism, images );
+        
+    end;
     
-    ##
     morphism_datum := { ColimitQuivers, m } -> DefiningPairOfColimitQuiverMorphism( m );
     
     ## building the categorical tower:
@@ -220,16 +203,13 @@ InstallMethod( CategoryOfColimitQuivers,
         
     end;
     
-    ## the wrapper category interacts with the user through the raw data but uses
-    ## the tower to derive the algorithms turning the category into a constructive topos;
-    ## after compilation the tower is gone and the only reminiscent which hints to the tower
-    ## is the attribute ModelingCategory:
+    ##
     ColimitQuivers :=
       ReinterpretationOfCategory( ParallelPairsUC,
-              rec( name := Concatenation( "CategoryOfColimitQuivers( ", Name( C ), " )" ),
-                   category_filter := IsCategoryOfColimitQuivers,
-                   category_object_filter := IsObjectInCategoryOfColimitQuivers,
-                   category_morphism_filter := IsMorphismInCategoryOfColimitQuivers,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    object_datum_type := object_datum_type,
                    morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,

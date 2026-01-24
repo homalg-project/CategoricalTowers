@@ -285,15 +285,14 @@ InstallMethodWithCache( PreSheaves,
         [ IsCapCategory, IsCapCategory ],
         
   function ( B, D )
-    local B_op, name,
+    local name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           is_computable, list_of_operations, list_of_operations_to_always_install_primitively, list_of_operations_to_install,
           skip, func, supports_empty_limits, properties, category_constructor_options,
-          PSh;
+          PSh, B_op;
     
-    B_op := Opposite( B : FinalizeCategory := true );
-    
+    ##
     name := "PreSheaves( ";
     
     if HasName( B ) and HasName( D ) then
@@ -302,7 +301,10 @@ InstallMethodWithCache( PreSheaves,
         name := Concatenation( name, "..., ... )" );
     fi;
     
-    is_computable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_computable", false );
+    ##
+    category_filter := IsPreSheafCategory;
+    category_object_filter := IsObjectInPreSheafCategory;
+    category_morphism_filter := IsMorphismInPreSheafCategory;
     
     ##
     object_constructor := function( cat, pair_of_functions_of_presheaf )
@@ -316,6 +318,7 @@ InstallMethodWithCache( PreSheaves,
     
     object_datum := { cat, object } -> PairOfFunctionsOfPreSheaf( object );
     
+    ##
     morphism_constructor := function( cat, source, func_of_presheaf_morphism, range )
         
         return CreateCapCategoryMorphismWithAttributes( cat,
@@ -326,6 +329,8 @@ InstallMethodWithCache( PreSheaves,
     end;
     
     morphism_datum := { cat, morphism } -> FunctionOfPreSheafMorphism( morphism );
+    
+    is_computable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_computable", false );
     
     create_func_bool := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_bool", "default" );
     
@@ -748,9 +753,9 @@ InstallMethodWithCache( PreSheaves,
     
     category_constructor_options :=
       rec( name := name,
-           category_filter := IsPreSheafCategory,
-           category_object_filter := IsObjectInPreSheafCategory,
-           category_morphism_filter := IsMorphismInPreSheafCategory,
+           category_filter := category_filter,
+           category_object_filter := category_object_filter,
+           category_morphism_filter := category_morphism_filter,
            supports_empty_limits := supports_empty_limits,
            list_of_operations_to_install := list_of_operations_to_install,
            is_computable := is_computable,
@@ -793,6 +798,9 @@ InstallMethodWithCache( PreSheaves,
     
     SetSource( PSh, B );
     SetTarget( PSh, D );
+    
+    B_op := Opposite( B : FinalizeCategory := true );
+    
     SetOppositeOfSource( PSh, B_op );
     
     PSh!.compiler_hints.category_attribute_names :=

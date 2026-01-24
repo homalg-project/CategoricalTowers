@@ -51,12 +51,12 @@ DeclareCategory( "IsMorphismInCategoryOfColimitQuivers",
 DeclareAttribute( "UnderlyingCategory",
         IsCategoryOfColimitQuivers );
 
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsCategoryOfColimitQuivers ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
-    
-end );
+# CapJitAddTypeSignature( "UnderlyingCategory", [ IsCategoryOfColimitQuivers ],
+#   function ( input_types )
+#     
+#     return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+#     
+# end );
 
 #! @Description
 #!  The full embedding functor from the category $C$ underlying
@@ -71,37 +71,33 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategory",
 DeclareAttribute( "DefiningPairOfColimitQuiver",
         IsObjectInCategoryOfColimitQuivers );
 
-CapJitAddTypeSignature( "DefiningPairOfColimitQuiver", [ IsObjectInCategoryOfColimitQuivers ],
-  function ( input_types )
-    
-    Assert( 0, IsCategoryOfColimitQuivers( input_types[1].category ) );
-    
-    return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ),
-                   CapJitDataTypeOfListOf(
-                           CapJitDataTypeOfNTupleOf( 3,
-                                   IsInt,
-                                   CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ),
-                                   IsInt ) ) );
-    
-end );
+# CapJitAddTypeSignature( "DefiningPairOfColimitQuiver", [ IsObjectInCategoryOfColimitQuivers ],
+#   function ( input_types )
+#     
+#     return CapJitDataTypeOfNTupleOf( 2,
+#                    CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ),
+#                    CapJitDataTypeOfListOf(
+#                            CapJitDataTypeOfNTupleOf( 3,
+#                                    IsInt,
+#                                    CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ),
+#                                    IsInt ) ) );
+#     
+# end );
 
 #! @Arguments colimit_quiver_morphism
 DeclareAttribute( "DefiningPairOfColimitQuiverMorphism",
         IsMorphismInCategoryOfColimitQuivers );
 
-CapJitAddTypeSignature( "DefiningPairOfColimitQuiverMorphism", [ IsMorphismInCategoryOfColimitQuivers ],
-  function ( input_types )
-    
-    Assert( 0, IsCategoryOfColimitQuivers( input_types[1].category ) );
-    
-    return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfNTupleOf( 2,
-                           CapJitDataTypeOfListOf( IsInt ),
-                           CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ),
-                   CapJitDataTypeOfListOf( IsInt ) );
-    
-end );
+# CapJitAddTypeSignature( "DefiningPairOfColimitQuiverMorphism", [ IsMorphismInCategoryOfColimitQuivers ],
+#   function ( input_types )
+#     
+#     return CapJitDataTypeOfNTupleOf( 2,
+#                    CapJitDataTypeOfNTupleOf( 2,
+#                            CapJitDataTypeOfListOf( IsInt ),
+#                            CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ),
+#                    CapJitDataTypeOfListOf( IsInt ) );
+#     
+# end );
 
 #! @Description
 #!  Given the presheaf category <A>PSh</A>=<C>PreSheaves</C>( $C$, $V$ ), return
@@ -111,12 +107,12 @@ end );
 DeclareAttribute( "FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory",
         IsCategoryOfColimitQuivers );
 
-CapJitAddTypeSignature( "FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory", [ IsCategoryOfColimitQuivers ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory( input_types[1].category ) );
-    
-end );
+# CapJitAddTypeSignature( "FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory", [ IsCategoryOfColimitQuivers ],
+#   function ( input_types )
+#     
+#     return CapJitDataTypeOfCategory( FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory( input_types[1].category ) );
+#     
+# end );
 
 ####################################
 #
@@ -132,21 +128,11 @@ DeclareAttribute( "CategoryOfColimitQuivers",
         IsCapCategory );
 #! @InsertChunk CategoryOfColimitQuivers
 
-CapJitAddTypeSignature( "CategoryOfColimitQuivers", [ IsCapCategory ], function ( input_types )
-    
-    return CapJitDataTypeOfCategory( CategoryOfColimitQuivers( input_types[1].category ) );
-    
-end );
-
-#! @Arguments ColimitQuivers, list
-#! @Returns a colimit quiver
-DeclareOperation( "CreateColimitQuiver",
-        [ IsCategoryOfColimitQuivers, IsList ] );
-
-#! @Arguments source, list_of_images, target
-#! @Returns a colimit quiver morphism
-DeclareOperation( "CreateMorphismOfColimitQuivers",
-        [ IsObjectInCategoryOfColimitQuivers, IsList, IsObjectInCategoryOfColimitQuivers ] );
+#CapJitAddTypeSignature( "CategoryOfColimitQuivers", [ IsCapCategory ], function ( input_types )
+#    
+#    return CapJitDataTypeOfCategory( CategoryOfColimitQuivers( input_types[1].category ) );
+#    
+#end );
 
 #! @Description
 #!  Given the category <A>ColimitQuiversC</A>=<C>CategoryOfColimitQuivers</C>( $C$ ) of colimit quivers
@@ -156,9 +142,8 @@ DeclareOperation( "CreateMorphismOfColimitQuivers",
 DeclareAttribute( "CategoryOfPreSheavesOfUnderlyingCategory",
         IsCategoryOfColimitQuivers );
 
-CapJitAddTypeSignature( "CategoryOfPreSheavesOfUnderlyingCategory", [ IsCategoryOfColimitQuivers ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( CategoryOfPreSheavesOfUnderlyingCategory( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "CategoryOfPreSheavesOfUnderlyingCategory", [ IsCategoryOfColimitQuivers ], function ( input_types )
+#    
+#    return CapJitDataTypeOfCategory( CategoryOfPreSheavesOfUnderlyingCategory( input_types[1].category ) );
+#    
+#end );

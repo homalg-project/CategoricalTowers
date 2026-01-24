@@ -18,7 +18,8 @@ end );
 ##
 InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory,
   function( )
-    local object_datum_type, object_constructor, object_datum,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           I, T, UT,
           modeling_tower_object_constructor, modeling_tower_object_datum,
@@ -26,20 +27,25 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
           sFinSets;
     
     ##
-    object_datum_type := IsBigInt;
+    name := "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory";
     
     ##
+    category_filter := IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;
+    category_object_filter := IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;
+    category_morphism_filter := IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;
+    
+    ##
+    object_datum_type := IsBigInt;
+    
     object_constructor := { sFinSets, cardinality } ->
                           CreateCapCategoryObjectWithAttributes( sFinSets,
                                   Cardinality, cardinality );
     
-    ##
     object_datum := { sFinSets, M } -> Cardinality( M );
     
     ##
     morphism_datum_type := CapJitDataTypeOfListOf( IsBigInt );
     
-    ##
     morphism_constructor :=
       function( sFinSets, source, images, target )
         
@@ -50,7 +56,6 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
         
     end;
     
-    ##
     morphism_datum := { sFinSets, phi } -> AsList( phi );
     
     ## building the categorical tower:
@@ -122,10 +127,10 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
     ##
     sFinSets :=
       ReinterpretationOfCategory( UT,
-              rec( name := "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory",
-                   category_filter := IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory,
-                   category_object_filter := IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory,
-                   category_morphism_filter := IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    object_datum_type := object_datum_type,
                    morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,

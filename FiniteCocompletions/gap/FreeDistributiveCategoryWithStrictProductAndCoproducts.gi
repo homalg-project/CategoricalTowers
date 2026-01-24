@@ -9,7 +9,17 @@ InstallMethod( FreeDistributiveCategoryWithStrictProductAndCoproducts,
         [ IsCapCategory ],
         
   function( C )
-    local PC, UPC, DC;
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          PC, UPC,
+          DC;
+    
+    ##
+    name := Concatenation( "FreeDistributiveCategoryWithStrictProductAndCoproducts( ", Name( C ), " )" );
+    
+    ##
+    category_filter := IsFreeDistributiveCategoryWithStrictProductAndCoproducts and IsWrapperCapCategory;
+    category_object_filter := IsObjectInFreeDistributiveCategoryWithStrictProductAndCoproducts and IsWrapperCapCategoryObject;
+    category_morphism_filter := IsMorphismInFreeDistributiveCategoryWithStrictProductAndCoproducts and IsWrapperCapCategoryMorphism;
     
     ## building the categorical tower:
     
@@ -22,10 +32,10 @@ InstallMethod( FreeDistributiveCategoryWithStrictProductAndCoproducts,
     ## UPC is a model for the free distributive closure category with strict products and coproducts of the category C:
     DC :=
       WrapperCategory( UPC,
-              rec( name := Concatenation( "FreeDistributiveCategoryWithStrictProductAndCoproducts( ", Name( C ), " )" ),
-                   category_filter := IsFreeDistributiveCategoryWithStrictProductAndCoproducts and IsWrapperCapCategory,
-                   category_object_filter := IsObjectInFreeDistributiveCategoryWithStrictProductAndCoproducts and IsWrapperCapCategoryObject,
-                   category_morphism_filter := IsMorphismInFreeDistributiveCategoryWithStrictProductAndCoproducts and IsWrapperCapCategoryMorphism,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    only_primitive_operations := true )
               );
     

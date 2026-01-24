@@ -38,6 +38,7 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
         
   function ( decorating_quiver, decoration_of_vertices, decoration_of_arrows )
     local defining_triple,
+          name, category_filter, category_object_filter, category_morphism_filter,
           object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           Quivers, Slice,
@@ -66,6 +67,14 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
     fi;
     
     ##
+    name := "CategoryOfDecoratedQuivers( decorating_quiver )";
+    
+    ##
+    category_filter := IsCategoryOfDecoratedQuivers;
+    category_object_filter := IsObjectInCategoryOfDecoratedQuivers;
+    category_morphism_filter := IsMorphismInCategoryOfDecoratedQuivers;
+    
+    ##
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
               CapJitDataTypeOfNTupleOf( 3,
@@ -79,10 +88,8 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
                       CapJitDataTypeOfListOf( IsInt ),
                       CapJitDataTypeOfListOf( IsInt ) ) );
     
-    ##
     object_constructor := CreateDecoratedQuiver;
     
-    ##
     object_datum := { Quivers, o } -> DefiningPairOfDecoratedQuiver( o );
     
     ##
@@ -91,10 +98,8 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
               CapJitDataTypeOfListOf( IsInt ),
               CapJitDataTypeOfListOf( IsInt ) );
     
-    ##
     morphism_constructor := CreateDecoratedQuiverMorphism;
     
-    ##
     morphism_datum := { Quivers, m } -> DefiningPairOfDecoratedQuiverMorphism( m );
     
     ## building the categorical tower:
@@ -169,16 +174,13 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
         
     end;
     
-    ## the wrapper category interacts with the user through the raw data but uses
-    ## the tower to derive the algorithms turning the category into a constructive topos;
-    ## after compilation the tower is gone and the only reminiscent which hints to the tower
-    ## is the attribute ModelingCategory:
+    ##
     DecoratedQuivers :=
       ReinterpretationOfCategory( Slice,
-              rec( name := "CategoryOfDecoratedQuivers( decorating_quiver )",
-                   category_filter := IsCategoryOfDecoratedQuivers,
-                   category_object_filter := IsObjectInCategoryOfDecoratedQuivers,
-                   category_morphism_filter := IsMorphismInCategoryOfDecoratedQuivers,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    object_datum_type := object_datum_type,
                    morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,

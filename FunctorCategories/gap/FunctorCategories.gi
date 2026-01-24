@@ -428,12 +428,21 @@ InstallMethodWithCache( FunctorCategory,
     [ "FinalizeCategory", true ]
   ],
   function ( CAP_NAMED_ARGUMENTS, B, D )
-    local object_datum_type, object_constructor, object_datum,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           B_op, defining_triple, PSh,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
-          Hom, properties, doctrines, name;
+          Hom, properties, doctrines;
+    
+    ##
+    name := Concatenation( "FunctorCategory( ", Name( B ), ", ", Name( D ), " )" );
+    
+    ##
+    category_filter := IsFunctorCategory;
+    category_object_filter := IsObjectInFunctorCategory;
+    category_morphism_filter := IsMorphismInFunctorCategory;
     
     ##
     object_datum_type :=
@@ -441,20 +450,16 @@ InstallMethodWithCache( FunctorCategory,
               CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( D ) ),
               CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) ) );
     
-    ##
     object_constructor := AsObjectInFunctorCategoryByValues;
     
-    ##
     object_datum := { Hom, o } -> ValuesOfFunctor( o );
     
     ##
     morphism_datum_type :=
       CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) );
     
-    ##
     morphism_constructor := AsMorphismInFunctorCategoryByValues;
     
-    ##
     morphism_datum := { Hom, m } -> ValuesOnAllObjects( m );
     
     ## building the categorical tower:
@@ -528,10 +533,10 @@ InstallMethodWithCache( FunctorCategory,
     ##
     Hom :=
       ReinterpretationOfCategory( PSh,
-              rec( name := Concatenation( "FunctorCategory( ", Name( B ), ", ", Name( D ), " )" ),
-                   category_filter := IsFunctorCategory,
-                   category_object_filter := IsObjectInFunctorCategory,
-                   category_morphism_filter := IsMorphismInFunctorCategory,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    object_datum_type := object_datum_type,
                    morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,

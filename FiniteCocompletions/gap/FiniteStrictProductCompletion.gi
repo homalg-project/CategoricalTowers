@@ -14,12 +14,20 @@ InstallMethod( FiniteStrictProductCompletion,
     [ "FinalizeCategory", true ],
   ],
   function( CAP_NAMED_ARGUMENTS, C )
-    local object_datum_type, object_constructor, object_datum,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           opC, UopC, opUopC,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           PC;
+    
+    name := Concatenation( "FiniteStrictProductCompletion( ", Name( C ), " )" );
+    
+    ##
+    category_filter := IsFiniteStrictProductCompletion;
+    category_object_filter := IsObjectInFiniteStrictProductCompletion;
+    category_morphism_filter := IsMorphismInFiniteStrictProductCompletion;
     
     ##
     object_datum_type :=
@@ -162,10 +170,10 @@ InstallMethod( FiniteStrictProductCompletion,
     ##
     PC :=
       ReinterpretationOfCategory( opUopC,
-              rec( name := Concatenation( "FiniteStrictProductCompletion( ", Name( C ), " )" ),
-                   category_filter := IsFiniteStrictProductCompletion,
-                   category_object_filter := IsObjectInFiniteStrictProductCompletion,
-                   category_morphism_filter := IsMorphismInFiniteStrictProductCompletion,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    object_datum_type := object_datum_type,
                    morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,
