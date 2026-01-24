@@ -90,15 +90,11 @@ InstallOtherMethod( Size,
     
     H := RangeCategoryOfHomomorphismStructure( C );
     
-    if not IsSkeletalCategoryOfFiniteSets( H ) then
-        TryNextMethod( );
-    fi;
-    
     objs := SetOfObjects( C );
     
     return Sum( objs, s ->
                 Sum( objs, t ->
-                     Length( HomomorphismStructureOnObjects( C, s, t ) ) ) );
+                     Cardinality( HomomorphismStructureOnObjects( C, s, t ) ) ) );
     
 end );
 
