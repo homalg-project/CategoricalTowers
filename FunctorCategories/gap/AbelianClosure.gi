@@ -10,19 +10,31 @@ InstallMethodWithCache( AbelianClosure,
         [ IsAlgebroid, IsCapCategory and IsAbCategory ],
         
   function( algebroid, range_category_of_hom_structure )
-    local L, A,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          L, A,
           abelian_closure;
+    
+    ##
+    name := Concatenation( "AbelianClosure( ", Name( algebroid ), " )" );
+    
+    ##
+    category_filter := IsAbelianClosure and IsWrapperCapCategory;
+    category_object_filter := IsObjectInAbelianClosure and IsWrapperCapCategoryObject;
+    category_morphism_filter := IsMorphismInAbelianClosure and IsWrapperCapCategoryMorphism;
+    
+    ## building the categorical tower:
     
     L := FiniteCompletion( algebroid, range_category_of_hom_structure : FinalizeCategory := true, overhead := false );
     
     A := FreydCategory( L : FinalizeCategory := true );
     
+    ##
     abelian_closure :=
       WrapperCategory( A,
-              rec( name := Concatenation( "AbelianClosure( ", Name( algebroid ), " )" ),
-                   category_filter := IsWrapperCapCategory and IsAbelianClosure,
-                   category_object_filter := IsWrapperCapCategoryObject and IsObjectInAbelianClosure,
-                   category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInAbelianClosure,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    only_primitive_operations := true ) );
     
     SetUnderlyingCategory( abelian_closure, algebroid );

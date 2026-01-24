@@ -79,12 +79,21 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
         [ IsSkeletalCategoryOfFiniteSets ],
         
   function ( category_of_skeletal_finsets )
-    local object_datum_type, object_constructor, object_datum,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           F, F_hat,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           Quivers;
+    
+    ##
+    name := Concatenation( "CategoryOfReflexiveQuiversEnrichedOver( ", Name( category_of_skeletal_finsets ), " )" );
+    
+    ##
+    category_filter := IsCategoryOfReflexiveQuivers;
+    category_object_filter := IsObjectInCategoryOfReflexiveQuivers;
+    category_morphism_filter := IsMorphismInCategoryOfReflexiveQuivers;
     
     ##
     object_datum_type :=
@@ -97,10 +106,8 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
                               IsInt,
                               IsInt ) ) );
     
-    ##
     object_constructor := CreateReflexiveQuiver;
     
-    ##
     object_datum := { Quivers, o } -> DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( o );
     
     ##
@@ -109,13 +116,12 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
               CapJitDataTypeOfListOf( IsInt ),
               CapJitDataTypeOfListOf( IsInt ) );
     
-    ##
     morphism_constructor := CreateReflexiveQuiverMorphism;
     
-    ##
     morphism_datum := { Quivers, m } -> DefiningPairOfReflexiveQuiverMorphismEnrichedOverSkeletalFinSets( m );
     
     ## building the categorical tower:
+    
     F := SimplicialCategoryTruncatedInDegree( 1 : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );
     
     F := CategoryFromDataTables( F : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
@@ -217,16 +223,13 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
         
     end;
     
-    ## the wrapper category interacts with the user through the raw data but uses
-    ## the tower to derive the algorithms turning the category into a constructive topos;
-    ## after compilation the tower is gone and the only reminiscent which hints to the tower
-    ## is the attribute ModelingCategory:
+    ##
     Quivers :=
       ReinterpretationOfCategory( F_hat,
-              rec( name := Concatenation( "CategoryOfReflexiveQuiversEnrichedOver( ", Name( category_of_skeletal_finsets ), " )" ),
-                   category_filter := IsCategoryOfReflexiveQuivers,
-                   category_object_filter := IsObjectInCategoryOfReflexiveQuivers,
-                   category_morphism_filter := IsMorphismInCategoryOfReflexiveQuivers,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    object_datum_type := object_datum_type,
                    morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,

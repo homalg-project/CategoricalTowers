@@ -373,19 +373,26 @@ InstallMethod( LazyCategory,
         [ IsCapCategory ],
         
   function( C )
-    local name, object_constructor, object_datum, morphism_constructor, morphism_datum,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object,
           create_func_morphism, create_func_universal_morphism,
           create_func_list_of_objects, primitive_operations, list_of_operations_to_install, skip, func, pos,
           commutative_ring, properties, ignore, supports_empty_limits, category_constructor_options,
           D, optimize, show_evaluation, cache, print, list, lazify_range_of_hom_structure, HC;
     
+    ##
     if HasName( C ) then
         name := Concatenation( "LazyCategory( ", Name( C ), " )" );
     else
         name := "lazy category";
     fi;
-
+    
+    ##
+    category_filter := IsLazyCategory;
+    category_object_filter := IsObjectInLazyCategory;
+    category_morphism_filter := IsMorphismInLazyCategory;
+    
     ##
     object_constructor :=
       function( D, object_operation_and_arguments_genesis_pair )
@@ -534,9 +541,9 @@ InstallMethod( LazyCategory,
     
     category_constructor_options :=
       rec( name := name,
-           category_filter := IsLazyCategory,
-           category_object_filter := IsObjectInLazyCategory,
-           category_morphism_filter := IsMorphismInLazyCategory,
+           category_filter := category_filter,
+           category_object_filter := category_object_filter,
+           category_morphism_filter := category_morphism_filter,
            properties := properties,
            object_constructor := object_constructor,
            object_datum := object_datum,

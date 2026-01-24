@@ -10,26 +10,37 @@ InstallMethodWithCache( FreeDistributiveCompletion,
         [ IsCapCategory, IsCapCategory ],
         
   function( fp_category, range_category_of_hom_structure )
-    local finite_completion, finite_cocompletion,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          finite_completion, finite_cocompletion,
           free_distributive_completion;
     
+    ##
+    name := Concatenation( "FreeDistributiveCompletion( ", Name( fp_category ), " )" );
+    
+    ##
+    category_filter := IsFreeDistributiveCompletion and IsWrapperCapCategory;
+    category_object_filter := IsObjectInFreeDistributiveCompletion and IsWrapperCapCategoryObject;
+    category_morphism_filter := IsMorphismInFreeDistributiveCompletion and IsWrapperCapCategoryMorphism;
+    
     ## building the categorical tower:
+    
     finite_completion := FiniteCompletion( fp_category, range_category_of_hom_structure : overhead := false, FinalizeCategory := true );
     
     finite_cocompletion := FiniteCocompletion( finite_completion, range_category_of_hom_structure : overhead := false, FinalizeCategory := true );
     
+    ##
     free_distributive_completion :=
       WrapperCategory( finite_cocompletion,
-              rec( name := Concatenation( "FreeDistributiveCompletion( ", Name( fp_category ), " )" ),
-                   category_filter := IsWrapperCapCategory and IsFreeDistributiveCompletion,
-                   category_object_filter := IsWrapperCapCategoryObject and IsObjectInFreeDistributiveCompletion,
-                   category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInFreeDistributiveCompletion,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    only_primitive_operations := true )
               );
     
     SetUnderlyingCategory( free_distributive_completion, fp_category );
     
-    if (HasIsInitialCategory and IsInitialCategory)( fp_category ) then
+    if HasIsInitialCategory( fp_category ) and IsInitialCategory( fp_category ) then
         Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( free_distributive_completion, "IsEquippedWithHomomorphismStructure" ) );
     fi;
     

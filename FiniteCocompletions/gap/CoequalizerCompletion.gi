@@ -10,7 +10,8 @@ InstallMethod( CoequalizerCompletion,
         [ IsCapCategory and IsCocartesianCategory ],
         
   function ( C )
-    local object_datum_type, object_constructor, object_datum,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           ParallelPairs, CoequalizerPairs, congruence_func,
           modeling_tower_object_constructor, modeling_tower_object_datum,
@@ -22,6 +23,14 @@ InstallMethod( CoequalizerCompletion,
     fi;
     
     ##
+    name := Concatenation( "CoequalizerCompletion( ", Name( C ), " )" );
+    
+    ##
+    category_filter := IsCoequalizerCompletion;
+    category_object_filter := IsObjectInCoequalizerCompletion;
+    category_morphism_filter := IsMorphismInCoequalizerCompletion;
+    
+    ##
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
               CapJitDataTypeOfNTupleOf( 2,
@@ -31,7 +40,6 @@ InstallMethod( CoequalizerCompletion,
                       CapJitDataTypeOfMorphismOfCategory( C ),
                       CapJitDataTypeOfMorphismOfCategory( C ) ) );
     
-    ##
     object_constructor :=
       function( CoequalizerCompletion, pair_of_pairs )
         
@@ -40,7 +48,6 @@ InstallMethod( CoequalizerCompletion,
         
     end;
     
-    ##
     object_datum := { CoequalizerCompletion, o } -> PairOfObjectsAndPairOfParallelMorphisms( o );
     
     ##
@@ -49,7 +56,6 @@ InstallMethod( CoequalizerCompletion,
               CapJitDataTypeOfMorphismOfCategory( C ),
               CapJitDataTypeOfMorphismOfCategory( C ) );
     
-    ##
     morphism_constructor :=
       function( CoequalizerCompletion, source, pair_of_morphisms, target )
         
@@ -60,10 +66,10 @@ InstallMethod( CoequalizerCompletion,
         
     end;
     
-    ##
     morphism_datum := { CoequalizerCompletion, m } -> DefiningPairOfMorphismBetweenCoequalizerPairs( m );
     
     ## building the categorical tower:
+    
     ParallelPairs := PairOfParallelArrowsCategory( C : FinalizeCategory := true );
     
     congruence_func :=
@@ -283,16 +289,13 @@ InstallMethod( CoequalizerCompletion,
         
     end;
     
-    ## the wrapper category interacts with the user through the raw data but uses
-    ## the tower to derive the algorithms turning the category into a constructive topos;
-    ## after compilation the tower is gone and the only reminiscent which hints to the tower
-    ## is the attribute ModelingCategory:
+    ##
     CoequalizerCompletion :=
       ReinterpretationOfCategory( CoequalizerPairs,
-              rec( name := Concatenation( "CoequalizerCompletion( ", Name( C ), " )" ),
-                   category_filter := IsCoequalizerCompletion,
-                   category_object_filter := IsObjectInCoequalizerCompletion,
-                   category_morphism_filter := IsMorphismInCoequalizerCompletion,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    object_datum_type := object_datum_type,
                    morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,

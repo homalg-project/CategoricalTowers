@@ -14,7 +14,9 @@ InstallOtherMethod( QuotientCategory,
     [ "FinalizeCategory", true ],
   ],
   function ( CAP_NAMED_ARGUMENTS, C, relations )
-    local reduced_gb, congruence_func, name, quo_C, q, leading_monomials, hom_quo_C, range_HomStructure;
+    local reduced_gb, congruence_func,
+          name, category_filter, category_object_filter, category_morphism_filter,
+          quo_C, q, leading_monomials, hom_quo_C, range_HomStructure;
     
     reduced_gb := ReducedGroebnerBasis( C, relations );
     
@@ -23,6 +25,7 @@ InstallOtherMethod( QuotientCategory,
                               ReductionOfMorphism( C, mor_1, reduced_gb ),
                               ReductionOfMorphism( C, mor_2, reduced_gb ) );
     
+    ##
     name := List( relations{[ 1 .. Minimum( 3, Length( relations ) ) ]},
               rel -> Concatenation( MorphismLabel( rel[1] ), " = ", MorphismLabel( rel[2] ) ) );
     
@@ -32,18 +35,26 @@ InstallOtherMethod( QuotientCategory,
     
     name := Concatenation( Name( C ), " / [ ", JoinStringsWithSeparator( name, ", " ), " ]" );
     
-    quo_C := QuotientCategory(
-                rec( name := name,
-                     category_filter := IsQuotientOfPathCategory,
-                     category_object_filter := IsQuotientOfPathCategoryObject,
-                     category_morphism_filter := IsQuotientOfPathCategoryMorphism,
-                     nr_arguments_of_congruence_func := 2,
-                     congruence_func := congruence_func,
-                     underlying_category := C ) : FinalizeCategory := false
-                     #= comment for Julia
-                     , overhead := false
-                     # =#
-                    );
+    ##
+    category_filter := IsQuotientOfPathCategory;
+    category_object_filter := IsQuotientOfPathCategoryObject;
+    category_morphism_filter := IsQuotientOfPathCategoryMorphism;
+    
+    ##
+    quo_C :=
+      QuotientCategory(
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
+                   nr_arguments_of_congruence_func := 2,
+                   congruence_func := congruence_func,
+                   underlying_category := C )
+              : FinalizeCategory := false,
+              #= comment for Julia
+              overhead := false
+              # =#
+              );
     
     SetIsFinitelyPresentedCategory( quo_C, true );
     
@@ -51,7 +62,7 @@ InstallOtherMethod( QuotientCategory,
     AddSetOfGeneratingMorphismsOfCategory( quo_C,
       function( quo_C )
         local objects;
-
+        
         objects := SetOfObjects( quo_C );
         
         return List( SetOfGeneratingMorphisms( AmbientCategory( quo_C ) ),
@@ -112,9 +123,7 @@ InstallOtherMethod( QuotientCategory,
         ];
     
     if CAP_NAMED_ARGUMENTS.FinalizeCategory then
-      
-      Finalize( quo_C );
-
+        Finalize( quo_C );
     fi;
     
     return quo_C;

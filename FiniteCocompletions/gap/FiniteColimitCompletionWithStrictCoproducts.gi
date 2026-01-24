@@ -11,6 +11,7 @@ InstallMethod( FiniteColimitCompletionWithStrictCoproducts,
         
   function ( C )
     local UC, CoequalizerPairs,
+          name, category_filter, category_object_filter, category_morphism_filter,
           object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           modeling_tower_object_constructor, modeling_tower_object_datum,
@@ -18,9 +19,18 @@ InstallMethod( FiniteColimitCompletionWithStrictCoproducts,
           ColimitCompletion;
     
     ## building the categorical tower:
+    
     UC := EnrichmentSpecificFiniteStrictCoproductCompletion( C : FinalizeCategory := true );
     
     CoequalizerPairs := CoequalizerCompletion( UC : FinalizeCategory := true );
+    
+    ##
+    name := Concatenation( "FiniteColimitCompletionWithStrictCoproducts( ", Name( C ), " )" );
+    
+    ##
+    category_filter := IsFiniteColimitCompletionWithStrictCoproducts;
+    category_object_filter := IsObjectInFiniteColimitCompletionWithStrictCoproducts;
+    category_morphism_filter := IsMorphismInFiniteColimitCompletionWithStrictCoproducts;
     
     ##
     object_datum_type :=
@@ -114,16 +124,13 @@ InstallMethod( FiniteColimitCompletionWithStrictCoproducts,
         
     end;
     
-    ## the wrapper category interacts with the user through the raw data but uses
-    ## the tower to derive the algorithms turning the category into a constructive topos;
-    ## after compilation the tower is gone and the only reminiscent which hints to the tower
-    ## is the attribute ModelingCategory:
+    ##
     ColimitCompletion :=
       ReinterpretationOfCategory( CoequalizerPairs,
-              rec( name := Concatenation( "FiniteColimitCompletionWithStrictCoproducts( ", Name( C ), " )" ),
-                   category_filter := IsFiniteColimitCompletionWithStrictCoproducts,
-                   category_object_filter := IsObjectInFiniteColimitCompletionWithStrictCoproducts,
-                   category_morphism_filter := IsMorphismInFiniteColimitCompletionWithStrictCoproducts,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    object_datum_type := object_datum_type,
                    morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,

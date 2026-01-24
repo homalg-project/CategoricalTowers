@@ -14,12 +14,21 @@ InstallMethod( PairOfParallelArrowsCategory,
         [ IsCapCategory and IsCocartesianCategory ],
         
   function ( C )
-    local object_datum_type, object_constructor, object_datum,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           F, PSh_VA,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           ParallelPairs;
+    
+    ##
+    name := Concatenation( "PairOfParallelArrowsCategory( ", Name( C ), " )" );
+    
+    ##
+    category_filter := IsPairOfParallelArrowsCategory;
+    category_object_filter := IsObjectInPairOfParallelArrowsCategory;
+    category_morphism_filter := IsMorphismInPairOfParallelArrowsCategory;
     
     ##
     object_datum_type :=
@@ -31,7 +40,6 @@ InstallMethod( PairOfParallelArrowsCategory,
                       CapJitDataTypeOfMorphismOfCategory( C ),
                       CapJitDataTypeOfMorphismOfCategory( C ) ) );
     
-    ##
     object_constructor :=
       function( ParallelPairs, pair_of_pairs )
         
@@ -40,7 +48,6 @@ InstallMethod( PairOfParallelArrowsCategory,
         
     end;
     
-    ##
     object_datum := { ParallelPairs, o } -> PairOfObjectsAndPairOfParallelMorphisms( o );
     
     ##
@@ -49,7 +56,6 @@ InstallMethod( PairOfParallelArrowsCategory,
               CapJitDataTypeOfMorphismOfCategory( C ),
               CapJitDataTypeOfMorphismOfCategory( C ) );
     
-    ##
     morphism_constructor :=
       function( ParallelPairs, source, pair_of_morphisms, target )
         
@@ -60,10 +66,10 @@ InstallMethod( PairOfParallelArrowsCategory,
         
     end;
     
-    ##
     morphism_datum := { ParallelPairs, m } -> DefiningPairOfMorphismBetweenParallelPairs( m );
     
     ## building the categorical tower:
+    
     F := PathCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := SkeletalFinSets, FinalizeCategory := true );
     
     F := CategoryFromDataTables( F : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
@@ -135,16 +141,13 @@ InstallMethod( PairOfParallelArrowsCategory,
         
     end;
     
-    ## the wrapper category interacts with the user through the raw data but uses
-    ## the tower to derive the algorithms turning the category into a constructive topos;
-    ## after compilation the tower is gone and the only reminiscent which hints to the tower
-    ## is the attribute ModelingCategory:
+    ##
     ParallelPairs :=
       ReinterpretationOfCategory( PSh_VA,
-              rec( name := Concatenation( "PairOfParallelArrowsCategory( ", Name( C ), " )" ),
-                   category_filter := IsPairOfParallelArrowsCategory,
-                   category_object_filter := IsObjectInPairOfParallelArrowsCategory,
-                   category_morphism_filter := IsMorphismInPairOfParallelArrowsCategory,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    object_datum_type := object_datum_type,
                    morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,

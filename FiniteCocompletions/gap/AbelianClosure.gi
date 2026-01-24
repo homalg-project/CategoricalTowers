@@ -9,7 +9,17 @@ InstallMethod( AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure,
         [ IsAbCategory ],
         
   function( C )
-    local SC, KSC, FKSC, AC;
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          SC, KSC, FKSC,
+          AC;
+    
+    ##
+    name := Concatenation( "AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure( ", Name( C ), " )" );
+    
+    ##
+    category_filter := IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsWrapperCapCategory;
+    category_object_filter := IsObjectInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsWrapperCapCategoryObject;
+    category_morphism_filter := IsMorphismInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsWrapperCapCategoryMorphism;
     
     ## building the categorical tower:
     
@@ -25,10 +35,10 @@ InstallMethod( AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure,
     ## FKSC is a model for the abelian closure category with strict direct sums of the category C:
     AC :=
       WrapperCategory( FKSC,
-              rec( name := Concatenation( "AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure( ", Name( C ), " )" ),
-                   category_filter := IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsWrapperCapCategory,
-                   category_object_filter := IsObjectInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsWrapperCapCategoryObject,
-                   category_morphism_filter := IsMorphismInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsWrapperCapCategoryMorphism,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    only_primitive_operations := true )
               : FinalizeCategory := true );
     

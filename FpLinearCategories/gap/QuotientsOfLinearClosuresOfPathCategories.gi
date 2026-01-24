@@ -11,34 +11,40 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY",
     [ "range_of_HomStructure", fail ],
   ],
   function ( CAP_NAMED_ARGUMENTS, kC, relations )
-    local C, q, reduced_gb, leading_monomials, congruence_func, name, quo_kC, FinalizeCategory, homQ, range_HomStructure, k;
+    local C, q, name,
+          reduced_gb, leading_monomials, congruence_func,
+          quo_kC, homQ, range_HomStructure, k;
     
     C := UnderlyingCategory( kC );
     
-    q := UnderlyingQuiver( C );
-    
     if not IsPathCategory( C ) then
-        Error( "The first argument must be a linear closure of path category!\n" );
+        Error( "the first argument must be a linear closure of path category\n" );
     fi;
     
-    reduced_gb := ReducedGroebnerBasis( kC, relations );
+    q := UnderlyingQuiver( C );
     
-    congruence_func := m -> IsZeroForMorphisms( kC, ReductionOfMorphism( kC, m, reduced_gb ) );
-    
+    ##
     name := List( relations{ [ 1 .. Minimum( 3, Length( relations ) ) ] }, rel -> CAP_INTERNAL_EXTRACT_STRING_OF_PATH( q, rel ) );
     
     if Length( relations ) > 3 then
-      Add( name, "..." );
+        Add( name, "..." );
     fi;
     
     name := Concatenation( Name( kC ), " / [ ", JoinStringsWithSeparator( name, ", " ), " ]" );
     
-    quo_kC := QuotientCategory(
-                      rec( name := name,
-                           nr_arguments_of_congruence_func := 1,
-                           congruence_func := congruence_func,
-                           underlying_category := kC )
-                      : FinalizeCategory := false );
+    ##
+    reduced_gb := ReducedGroebnerBasis( kC, relations );
+    
+    congruence_func := m -> IsZeroForMorphisms( kC, ReductionOfMorphism( kC, m, reduced_gb ) );
+    
+    ##
+    quo_kC :=
+      QuotientCategory(
+              rec( name := name,
+                   nr_arguments_of_congruence_func := 1,
+                   congruence_func := congruence_func,
+                   underlying_category := kC )
+              : FinalizeCategory := false );
     
     SetUnderlyingQuiver( quo_kC, UnderlyingQuiver( C ) );
     SetDefiningRelations( quo_kC, relations );
@@ -67,32 +73,31 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY",
         homQ := MacaulayMorphisms( C, leading_monomials );
         
         SetExternalHoms( quo_kC,
-              LazyHList( [ 1 .. NumberOfObjects( q ) ],
-                s -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
-                  t -> List( homQ[s][t],
-                    m -> CallFuncListAtRuntime( MorphismConstructor,
-                              [ quo_kC,
-                                CallFuncListAtRuntime( SetOfObjects, [ quo_kC ] )[s],
-                                MorphismConstructor( kC,
-                                  SetOfObjects( kC )[s],
-                                  Pair( [ One( UnderlyingRing( kC ) ) ], [ m ] ),
-                                  SetOfObjects( kC )[t] ),
-                                CallFuncListAtRuntime( SetOfObjects, [ quo_kC ] )[t]
-                              ] ) ) ) ) );
+                LazyHList( [ 1 .. NumberOfObjects( q ) ],
+                        s -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
+                                t -> List( homQ[s][t],
+                                        m -> CallFuncListAtRuntime( MorphismConstructor,
+                                                [ quo_kC,
+                                                  CallFuncListAtRuntime( SetOfObjects, [ quo_kC ] )[s],
+                                                  MorphismConstructor( kC,
+                                                          SetOfObjects( kC )[s],
+                                                          Pair( [ One( UnderlyingRing( kC ) ) ], [ m ] ),
+                                                          SetOfObjects( kC )[t] ),
+                                                  CallFuncListAtRuntime( SetOfObjects, [ quo_kC ] )[t] ] ) ) ) ) );
         
         range_HomStructure := CAP_NAMED_ARGUMENTS.range_of_HomStructure;
         
         if range_HomStructure = fail then
-          
-          if HasRangeCategoryOfHomomorphismStructure( kC ) then
             
-            range_HomStructure := RangeCategoryOfHomomorphismStructure( kC );
-            
-          else
-            
-            range_HomStructure := CategoryOfRows( UnderlyingRing( kC ) );
-            
-          fi;
+            if HasRangeCategoryOfHomomorphismStructure( kC ) then
+                
+                range_HomStructure := RangeCategoryOfHomomorphismStructure( kC );
+                
+            else
+                
+                range_HomStructure := CategoryOfRows( UnderlyingRing( kC ) );
+                
+            fi;
             
         fi;
         
@@ -124,7 +129,7 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY",
         ##
         AddCoefficientsOfMorphism( quo_kC,
           function ( quo_kC, mor )
-            local kC, s, t, support_mor;
+            local kC, s, t, support_mor, coeffs;
             
             kC := AmbientCategory( quo_kC );
             
@@ -135,21 +140,24 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY",
             
             support_mor := SupportMorphisms( mor );
             
-            return List( ExternalHoms( quo_kC )[s][t],
-                                function ( m )
-                                  local p;
-                                  
-                                  p := Position( support_mor, SupportMorphisms( MorphismDatum( quo_kC, m ) )[1] );
-                                  
-                                  if p = fail then
-                                      return Zero( UnderlyingRing( kC ) );
-                                  else
-                                      return CoefficientsList( mor )[p];
-                                  fi;
-                                  
-                                end );
+            coeffs :=
+              function ( m )
+                local p;
+                
+                p := Position( support_mor, SupportMorphisms( MorphismDatum( quo_kC, m ) )[1] );
+                
+                if p = fail then
+                    return Zero( UnderlyingRing( kC ) );
+                else
+                    return CoefficientsList( mor )[p];
+                fi;
+                
+            end;
+            
+            return List( ExternalHoms( quo_kC )[s][t], coeffs );
             
         end );
+        
     fi;
     
     INSTALL_CANONICAL_REPRESENTATIVE_METHODS_IN_QUOTIENT_CATEGORIES_OF_LINEAR_CLOSURES_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS( quo_kC );
@@ -164,13 +172,17 @@ end ) );
 BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_QUOTIENT_OF_PATH_CATEGORY",
   
   function ( k_quo_C, relations )
-    local quo_C, k, C, q, kC, overhead, rel_1, rel_2, quo_kC, object_constructor, object_datum, morphism_constructor, morphism_datum,
-      modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_constructor, modeling_tower_morphism_datum, name, quo_k_quo_C;
+    local quo_C, k, C, q, str_func,
+          name, category_filter, category_object_filter, category_morphism_filter,
+          object_constructor, object_datum, morphism_constructor, morphism_datum,
+          kC, overhead, rel_1, rel_2, quo_kC,
+          modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
+          quo_k_quo_C;
     
     quo_C := UnderlyingCategory( k_quo_C );
     
     if not IsQuotientOfPathCategory( quo_C ) then
-        Error( "The passed category must be a linear closure of a quotient category of a path category!\n" );
+        Error( "the passed category must be a linear closure of a quotient category of a path category\n" );
     fi;
     
     k := UnderlyingRing( k_quo_C );
@@ -179,37 +191,79 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_QUOTIENT_OF_PATH_CATEGORY",
     
     q := UnderlyingQuiver( C );
     
-    kC := LinearClosure( k, C
-            #= comment for Julia
-            : overhead := false
-            # =#
-            );
+    str_func :=
+      function ( rel )
+        local str;
+        
+        str := ViewString( rel );
+        
+        return str{ [ 1 .. PositionSublist( str, ":" ) - Length( q!.colors.other ) - 1 ] };
+        
+    end;
     
-    rel_1 := List( GroebnerBasisOfDefiningRelations( quo_C ), m ->
-              CallFuncListAtRuntime(
-                MorphismConstructor,
-                    [ kC,
-                      CallFuncListAtRuntime( SetOfObjects, [ kC ] )[ObjectIndex( Source( m[1] ) )],
-                      Pair( [ One( k ), MinusOne( k ) ], m ),
-                      CallFuncListAtRuntime( SetOfObjects, [ kC ] )[ObjectIndex( Target( m[1] ) )] ] ) );
-
-    rel_2 := List( relations, m ->
-              CallFuncListAtRuntime(
-                MorphismConstructor,
-                    [ kC,
-                      CallFuncListAtRuntime( SetOfObjects, [ kC ] )[ObjectIndex( ObjectDatum( quo_C, ObjectDatum( k_quo_C, Source( m ) ) ) )],
-                      Pair( CoefficientsList( m ), List( SupportMorphisms( m ), CanonicalRepresentative ) ),
-                      CallFuncListAtRuntime( SetOfObjects, [ kC ] )[ObjectIndex( ObjectDatum( quo_C, ObjectDatum( k_quo_C, Target( m ) ) ) )] ] ) );
+    ##
+    name := List( relations{ [ 1 .. Minimum( 3, Length( relations ) ) ] }, str_func );
     
-    quo_kC := CallFuncListAtRuntime( QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY,  [ kC, Concatenation( rel_1, rel_2 ) ] );
+    if Length( relations ) > 3 then
+        Add( name, "..." );
+    fi;
     
-    object_constructor := { quo_k_quo_C, obj } -> CreateCapCategoryObjectWithAttributes( quo_k_quo_C, UnderlyingCell, obj );
+    name := Concatenation( Name( k_quo_C ), " / [ ", JoinStringsWithSeparator( name, ", " ), " ]" );
+    
+    ##
+    category_filter := IsQuotientCategory;
+    category_object_filter := IsQuotientCategoryObject;
+    category_morphism_filter := IsQuotientCategoryMorphism;
+    
+    ##
+    object_constructor :=
+      function ( quo_k_quo_C, obj )
+        
+        return CreateCapCategoryObjectWithAttributes( quo_k_quo_C,
+                       UnderlyingCell, obj );
+        
+    end;
     
     object_datum := { quo_k_quo_C, obj } -> UnderlyingCell( obj );
     
-    morphism_constructor := { quo_k_quo_C, S, mor, T } -> CreateCapCategoryMorphismWithAttributes( quo_k_quo_C, S, T, UnderlyingCell, mor );
+    ##
+    morphism_constructor :=
+      function ( quo_k_quo_C, S, mor, T )
+        
+        return CreateCapCategoryMorphismWithAttributes( quo_k_quo_C,
+                       S,
+                       T,
+                       UnderlyingCell, mor );
+
+    end;
     
     morphism_datum := { quo_k_quo_C, mor } -> UnderlyingCell( mor );
+    
+    ## building the categorical tower:
+    
+    kC := LinearClosure( k, C
+                  #= comment for Julia
+                  : overhead := false
+                  # =#
+                  );
+    
+    rel_1 := List( GroebnerBasisOfDefiningRelations( quo_C ), m ->
+                   CallFuncListAtRuntime(
+                           MorphismConstructor,
+                           [ kC,
+                             CallFuncListAtRuntime( SetOfObjects, [ kC ] )[ObjectIndex( Source( m[1] ) )],
+                             Pair( [ One( k ), MinusOne( k ) ], m ),
+                             CallFuncListAtRuntime( SetOfObjects, [ kC ] )[ObjectIndex( Target( m[1] ) )] ] ) );
+    
+    rel_2 := List( relations, m ->
+                   CallFuncListAtRuntime(
+                           MorphismConstructor,
+                           [ kC,
+                             CallFuncListAtRuntime( SetOfObjects, [ kC ] )[ObjectIndex( ObjectDatum( quo_C, ObjectDatum( k_quo_C, Source( m ) ) ) )],
+                             Pair( CoefficientsList( m ), List( SupportMorphisms( m ), CanonicalRepresentative ) ),
+                             CallFuncListAtRuntime( SetOfObjects, [ kC ] )[ObjectIndex( ObjectDatum( quo_C, ObjectDatum( k_quo_C, Target( m ) ) ) )] ] ) );
+    
+    quo_kC := CallFuncListAtRuntime( QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY,  [ kC, Concatenation( rel_1, rel_2 ) ] );
     
     ## from the raw object data to the object in the highest stage of the tower
     modeling_tower_object_constructor :=
@@ -254,9 +308,9 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_QUOTIENT_OF_PATH_CATEGORY",
         suppor := List( SupportMorphisms( mor_datum ), CanonicalRepresentative );
         
         return MorphismConstructor( quo_kC,
-                      source,
-                      MorphismConstructor( kC, ObjectDatum( quo_kC, source ), Pair( coeffs, suppor ), ObjectDatum( quo_kC, target ) ),
-                      target );
+                       source,
+                       MorphismConstructor( kC, ObjectDatum( quo_kC, source ), Pair( coeffs, suppor ), ObjectDatum( quo_kC, target ) ),
+                       target );
         
     end;
     
@@ -279,49 +333,35 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_QUOTIENT_OF_PATH_CATEGORY",
         coeffs := CoefficientsList( MorphismDatum( quo_kC, mor ) );
         
         suppor := List( SupportMorphisms( MorphismDatum( quo_kC, mor ) ), m ->
-                              MorphismConstructor( quo_C,
-                                  SetOfObjects( quo_C )[s],
-                                  m,
-                                  SetOfObjects( quo_C )[t] ) );
+                        MorphismConstructor( quo_C,
+                                SetOfObjects( quo_C )[s],
+                                m,
+                                SetOfObjects( quo_C )[t] ) );
         
         return MorphismConstructor( k_quo_C,
-                    SetOfObjects( k_quo_C )[s],
-                    Pair( coeffs, suppor ),
-                    SetOfObjects( k_quo_C )[t] );
+                       SetOfObjects( k_quo_C )[s],
+                       Pair( coeffs, suppor ),
+                       SetOfObjects( k_quo_C )[t] );
         
     end;
     
-    name := List( relations{ [ 1 .. Minimum( 3, Length( relations ) ) ] },
-                  function ( rel )
-                    local str;
-                    
-                    str := ViewString( rel );
-                    
-                    return str{ [ 1 .. PositionSublist( str, ":" ) - Length( q!.colors.other ) - 1 ] };
-                    
-                  end );
-    
-    if Length( relations ) > 3 then
-      Add( name, "..." );
-    fi;
-    
-    name := Concatenation( Name( k_quo_C ), " / [ ", JoinStringsWithSeparator( name, ", " ), " ]" );
-    
     ##
-    quo_k_quo_C := ReinterpretationOfCategory( quo_kC,
-          rec( name := name,
-               category_filter := IsQuotientCategory,
-               category_object_filter := IsQuotientCategoryObject,
-               category_morphism_filter := IsQuotientCategoryMorphism,
-               object_constructor := object_constructor,
-               object_datum := object_datum,
-               morphism_datum := morphism_datum,
-               morphism_constructor := morphism_constructor,
-               modeling_tower_object_constructor := modeling_tower_object_constructor,
-               modeling_tower_object_datum := modeling_tower_object_datum,
-               modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
-               modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-               only_primitive_operations := true ) : FinalizeCategory := false );
+    quo_k_quo_C :=
+      ReinterpretationOfCategory( quo_kC,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_datum := morphism_datum,
+                   morphism_constructor := morphism_constructor,
+                   modeling_tower_object_constructor := modeling_tower_object_constructor,
+                   modeling_tower_object_datum := modeling_tower_object_datum,
+                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+                   only_primitive_operations := true )
+              : FinalizeCategory := false );
     
     quo_k_quo_C!.is_computable := true;
     
@@ -341,9 +381,11 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_QUOTIENT_OF_PATH_CATEGORY",
     
     AddSetOfGeneratingMorphismsOfCategory( quo_k_quo_C,
       function( quo_k_quo_C )
-        local quo_kC;
+        local quo_kC, q;
         
         quo_kC := ModelingCategory( quo_k_quo_C );
+        
+        q := UnderlyingQuiver( quo_kC );
         
         return ListN( IndicesOfSources( q ), SetOfGeneratingMorphisms( quo_kC ), IndicesOfTargets( q ), { s, m, t } ->
                       ReinterpretationOfMorphism( quo_k_quo_C,
@@ -372,8 +414,7 @@ end );
 InstallOtherMethod( \/,
         [ IsLinearClosure, IsDenseList ],
   
-  QuotientCategory
-);
+  QuotientCategory );
 
 InstallOtherMethod( QuotientCategory,
         [ IsLinearClosure, IsDenseList ],
@@ -384,17 +425,17 @@ InstallOtherMethod( QuotientCategory,
     C := UnderlyingCategory( kC );
     
     if IsPathCategory( C ) then
-      
-      return QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY( kC, relations );
-      
+        
+        return QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY( kC, relations );
+        
     elif IsQuotientOfPathCategory( C ) then
-      
-      return QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_QUOTIENT_OF_PATH_CATEGORY( kC, relations );
-      
+        
+        return QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_QUOTIENT_OF_PATH_CATEGORY( kC, relations );
+        
     else
-      
-      TryNextMethod( );
-      
+        
+        TryNextMethod( );
+        
     fi;
     
 end );

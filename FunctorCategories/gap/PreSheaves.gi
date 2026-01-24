@@ -310,24 +310,71 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     [ "FinalizeCategory", true ]
   ],
   function ( CAP_NAMED_ARGUMENTS, B, D )
-    local object_datum_type, morphism_datum_type, is_computable,
-          B_op, kq, A, relations, name,
-          object_constructor, object_datum, morphism_constructor, morphism_datum,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          object_datum_type, object_constructor, object_datum,
+          morphism_datum_type, morphism_constructor, morphism_datum,
+          is_computable, B_op, kq, A, relations,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations, list_of_operations_to_always_install_primitively, list_of_operations_to_install,
           skip, commutative_ring, properties, supports_empty_limits, prop, option_record,
           PSh, H, auxiliary_indices;
     
+    ##
+    name := "PreSheaves( ";
+    
+    if HasName( B ) and HasName( D ) then
+        name := Concatenation( name, Name( B ), ", ", Name( D ), " )" );
+    else
+        name := Concatenation( name, "..., ... )" );
+    fi;
+    
+    ##
+    category_filter := IsPreSheafCategoryOfFpEnrichedCategory;
+    category_object_filter := IsObjectInPreSheafCategoryOfFpEnrichedCategory;
+    category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory;
+    
+    ##
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
               CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( D ) ),
               CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) ) );
     
+    object_constructor :=
+      function( cat, pair )
+        
+        return CreatePreSheafByValues( cat, pair );
+        
+    end;
+    
+    object_datum :=
+      function( cat, object )
+        
+        return ValuesOfPreSheaf( object );
+        
+    end;
+    
+    ##
     morphism_datum_type :=
       CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) );
     
+    morphism_constructor :=
+      function( cat, source, list, range )
+        
+        return CreatePreSheafMorphismByValues( cat, source, list, range );
+        
+    end;
+    
+    morphism_datum :=
+      function( cat, morphism )
+        
+        return ValuesOnAllObjects( morphism );
+        
+    end;
+    
+    ##
     is_computable := IsBound( D!.is_computable ) and D!.is_computable = true;
     
+    ##
     if IsFpCategory( B ) then
         B_op := OppositeFpCategory( B : FinalizeCategory := true );
         kq := UnderlyingQuiverAlgebra( B_op );
@@ -360,31 +407,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     else
         Error( "the first argument must be in { IsFpCategory, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsAlgebroid }\n" );
     fi;
-    
-    name := "PreSheaves( ";
-    
-    if HasName( B ) and HasName( D ) then
-        name := Concatenation( name, Name( B ), ", ", Name( D ), " )" );
-    else
-        name := Concatenation( name, "..., ... )" );
-    fi;
-    
-    ##
-    object_constructor := function( cat, pair )
-        
-        return CreatePreSheafByValues( cat, pair );
-        
-    end;
-    
-    object_datum := { cat, object } -> ValuesOfPreSheaf( object );
-    
-    morphism_constructor := function( cat, source, list, range )
-        
-        return CreatePreSheafMorphismByValues( cat, source, list, range );
-        
-    end;
-    
-    morphism_datum := { cat, morphism } -> ValuesOnAllObjects( morphism );
     
     ##
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
@@ -821,25 +843,26 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    option_record := rec( name := name,
-                          category_filter := IsPreSheafCategoryOfFpEnrichedCategory,
-                          category_object_filter := IsObjectInPreSheafCategoryOfFpEnrichedCategory,
-                          category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
-                          #object_datum_type := object_datum_type, ## ObjectDatum will trigger ListOfValues and destroy laziness
-                          #morphism_datum_type := morphism_datum_type, ## MorphismDatum will trigger ListOfValues and destroy laziness
-                          properties := properties,
-                          object_constructor := object_constructor,
-                          object_datum := object_datum,
-                          morphism_constructor := morphism_constructor,
-                          morphism_datum := morphism_datum,
-                          list_of_operations_to_install := list_of_operations_to_install,
-                          is_computable := is_computable,
-                          supports_empty_limits := supports_empty_limits,
-                          underlying_category_getter_string := "Target",
-                          create_func_bool := create_func_bool,
-                          create_func_object := create_func_object,
-                          create_func_morphism := create_func_morphism,
-                          );
+    option_record :=
+      rec( name := name,
+           category_filter := category_filter,
+           category_object_filter := category_object_filter,
+           category_morphism_filter := category_morphism_filter,
+           #object_datum_type := object_datum_type, ## ObjectDatum will trigger ListOfValues and destroy laziness
+           #morphism_datum_type := morphism_datum_type, ## MorphismDatum will trigger ListOfValues and destroy laziness
+           properties := properties,
+           object_constructor := object_constructor,
+           object_datum := object_datum,
+           morphism_constructor := morphism_constructor,
+           morphism_datum := morphism_datum,
+           list_of_operations_to_install := list_of_operations_to_install,
+           is_computable := is_computable,
+           supports_empty_limits := supports_empty_limits,
+           underlying_category_getter_string := "Target",
+           create_func_bool := create_func_bool,
+           create_func_object := create_func_object,
+           create_func_morphism := create_func_morphism,
+           );
     
     if not commutative_ring = fail then
         option_record.commutative_ring_of_linear_category := commutative_ring;

@@ -1120,7 +1120,7 @@ InstallMethod( IntrinsicCategory,
         [ IsCapCategory ],
         
   function( C )
-    local name, filter_obj, filter_mor,
+    local name, filter_obj, filter_mor, category_filter, category_object_filter, category_morphism_filter,
           list_of_operations_to_install, func, pos, skip, properties, supports_empty_limits,
           create_func_morphism,
           category_constructor_options, IC, todo_func, strict, filter_end,
@@ -1130,12 +1130,14 @@ InstallMethod( IntrinsicCategory,
         Error( "the underlying category must be finalized" );
     fi;
     
+    ##
     if HasName( C ) then
         name := Concatenation( "IntrinsicCategory( ", Name( C ), " )" );
     else
         name := "IntrinsicCategory( ... )";
     fi;
     
+    ##
     filter_obj := ValueOption( "filter_obj" );
     
     if filter_obj = fail or not IsFilter( filter_obj ) then
@@ -1147,6 +1149,11 @@ InstallMethod( IntrinsicCategory,
     if filter_mor = fail or not IsFilter( filter_mor ) then
         filter_mor := IsCapCategoryIntrinsicMorphism;
     fi;
+    
+    ##
+    category_filter := IsIntrinsicCategory;
+    category_object_filter := IsCapCategoryIntrinsicObject and filter_obj;
+    category_morphism_filter := IsCapCategoryIntrinsicMorphism and filter_mor;
     
     ## TODO: remove `Primitively' for performance?
     list_of_operations_to_install := SortedList( ListPrimitivelyInstalledOperationsOfCategory( C ) );
@@ -1205,9 +1212,9 @@ InstallMethod( IntrinsicCategory,
     
     category_constructor_options :=
       rec( name := name,
-           category_filter := IsIntrinsicCategory,
-           category_object_filter := IsCapCategoryIntrinsicObject and filter_obj,
-           category_morphism_filter := IsCapCategoryIntrinsicMorphism and filter_mor,
+           category_filter := category_filter,
+           category_object_filter := category_object_filter,
+           category_morphism_filter := category_morphism_filter,
            properties := properties,
            list_of_operations_to_install := list_of_operations_to_install,
            supports_empty_limits := supports_empty_limits,

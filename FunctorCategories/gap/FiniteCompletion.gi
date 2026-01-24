@@ -10,24 +10,35 @@ InstallMethodWithCache( FiniteCompletion,
         [ IsCapCategory, IsCapCategory ],
         
   function( fp_category, range_category_of_hom_structure )
-    local coPSh,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          coPSh,
           finite_completion;
     
+    ##
+    name := Concatenation( "FiniteCompletion( ", Name( fp_category ), " )" );
+    
+    ##
+    category_filter := IsFiniteCompletion and IsWrapperCapCategory;
+    category_object_filter := IsObjectInFiniteCompletion and IsWrapperCapCategoryObject;
+    category_morphism_filter := IsMorphismInFiniteCompletion and IsWrapperCapCategoryMorphism;
+    
     ## building the categorical tower:
+    
     coPSh := CoPreSheaves( fp_category, range_category_of_hom_structure : FinalizeCategory := true, overhead := false );
     
+    ##
     finite_completion :=
       WrapperCategory( coPSh,
-              rec( name := Concatenation( "FiniteCompletion( ", Name( fp_category ), " )" ),
-                   category_filter := IsWrapperCapCategory and IsFiniteCompletion,
-                   category_object_filter := IsWrapperCapCategoryObject and IsObjectInFiniteCompletion,
-                   category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInFiniteCompletion,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    only_primitive_operations := true )
               );
     
     SetUnderlyingCategory( finite_completion, fp_category );
     
-    if (HasIsInitialCategory and IsInitialCategory)( fp_category ) then
+    if HasIsInitialCategory( fp_category ) and IsInitialCategory( fp_category ) then
         Assert( 0, [ ] = MissingOperationsForConstructivenessOfCategory( finite_completion, "IsEquippedWithHomomorphismStructure" ) );
     fi;
     

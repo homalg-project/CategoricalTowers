@@ -424,12 +424,21 @@ InstallMethodWithCache( CoPreSheaves,
     [ "FinalizeCategory", true ]
   ],
   function ( CAP_NAMED_ARGUMENTS, B, D )
-    local object_datum_type, object_constructor, object_datum,
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
           Hom, O,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
-          coPSh, properties, name;
+          coPSh, properties;
+    
+    ##
+    name := Concatenation( "CoPreSheaves( ", Name( B ), ", ", Name( D ), " )" );
+    
+    ##
+    category_filter := IsCoPreSheafCategory;
+    category_object_filter := IsObjectInCoPreSheafCategory;
+    category_morphism_filter := IsMorphismInCoPreSheafCategory;
     
     ##
     object_datum_type :=
@@ -437,20 +446,16 @@ InstallMethodWithCache( CoPreSheaves,
               CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( D ) ),
               CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) ) );
     
-    ##
     object_constructor := CreateCoPreSheafByValues;
     
-    ##
     object_datum := { coPSh, o } -> ValuesOfCoPreSheaf( o );
     
     ##
     morphism_datum_type :=
       CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) );
     
-    ##
     morphism_constructor := CreateCoPreSheafMorphismByValues;
     
-    ##
     morphism_datum := { coPSh, m } -> ValuesOnAllObjects( m );
     
     ## building the categorical tower:
@@ -530,10 +535,10 @@ InstallMethodWithCache( CoPreSheaves,
     ##
     coPSh :=
       ReinterpretationOfCategory( O,
-              rec( name := Concatenation( "CoPreSheaves( ", Name( B ), ", ", Name( D ), " )" ),
-                   category_filter := IsCoPreSheafCategory,
-                   category_object_filter := IsObjectInCoPreSheafCategory,
-                   category_morphism_filter := IsMorphismInCoPreSheafCategory,
+              rec( name := name,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter,
                    object_datum_type := object_datum_type,
                    morphism_datum_type := morphism_datum_type,
                    object_constructor := object_constructor,
@@ -556,7 +561,7 @@ InstallMethodWithCache( CoPreSheaves,
               ] );
     
     if CAP_NAMED_ARGUMENTS.FinalizeCategory then
-       Finalize( coPSh );
+        Finalize( coPSh );
     fi;
     
     return coPSh;
