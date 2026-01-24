@@ -1,7 +1,7 @@
 name: FpCategories
-version: "2026.01-06"
+version: "2026.01-07"
 license: "GPL-2.0-or-later"
-date: 2026-01-07
+date: 2026-01-24
 description: |
     Finitely presented categories by generating quivers and relations
 
@@ -45,11 +45,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FpCategories/Pac
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2026.01-06/FpCategories-2026.01-06.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2026.01-07/FpCategories-2026.01-07.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2026.01-06/FpCategories-2026.01-06.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2026.01-07/FpCategories-2026.01-07.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2026.01-06/FpCategories-2026.01-06-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FpCategories-2026.01-07/FpCategories-2026.01-07-manual.pdf
 
 abstract: |
 
@@ -60,10 +60,10 @@ keywords: |
     Exterior power categories.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BS07</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+    [<span class='BibKey'>BS24</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FpCategories, Finitely presented categories by generating quivers and relations,
-             Version 2026.01-06</i>
-     (<span class='BibYear'>1-07</span>)<br />
+             Version 2026.01-07</i>
+     (<span class='BibYear'>1-24</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FpCategories">https://homalg-project.github.io/pkg/FpCategories</a></span>.
     </p>
@@ -74,9 +74,9 @@ bibtex: |
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FpCategories},   {Finitely  presented  categories  by
                           generating    quivers    and   relations},   {V}ersion
-                          2026.01\texttt{\symbol{45}}06},
+                          2026.01\texttt{\symbol{45}}07},
       month =            {6\texttt{\symbol{45}}},
-      year =             {1\texttt{\symbol{45}}07},
+      year =             {1\texttt{\symbol{45}}24},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/FpCategories}
@@ -84,6 +84,6 @@ bibtex: |
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{FpCategories}}},
       keywords =         {Exterior power categories},
-      printedkey =       {BS07}
+      printedkey =       {BS24}
     }
 
