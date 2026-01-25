@@ -461,12 +461,14 @@ InstallMethod( ListOp,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( Iterator,
         "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfSingleDifferences ],
         
   A -> Iterator( List( A ) ) );
+# =#
 
 ##
 InstallMethod( ForAllOp,

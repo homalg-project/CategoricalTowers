@@ -67,6 +67,7 @@ DeclareOperation( "ListOp",
 DeclareOperation( "ListOp",
         [ IsConstructibleObjectAsUnionOfSingleDifferences, IsFunction ] );
 
+#= comment for Julia
 CapJitAddTypeSignature( "List", [ IsConstructibleObjectAsUnionOfSingleDifferences, IsFunction ], function ( args, func_stack )
     
     args := ShallowCopy( args );
@@ -86,6 +87,7 @@ CapJitAddTypeSignature( "List", [ IsConstructibleObjectAsUnionOfSingleDifference
     return rec( args := args, output_type := CapJitDataTypeOfListOf( args.2.data_type.signature[2] ) );
     
 end );
+# =#
 
 DeclareOperation( "IsHomSetInhabitedWithTypeCast",
         [ IsMeetSemilatticeOfSingleDifferences, IsObjectInMeetSemilatticeOfSingleDifferences, IsConstructibleObjectAsUnionOfSingleDifferences ] );
@@ -111,11 +113,13 @@ DeclareGlobalFunction( "UnionOfDifferences" );
 DeclareOperation( "UnionOfListOfDifferences",
         [ IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences, IsList ] );
 
+#= comment for Julia
 DeclareOperation( "\+",
         [ IsObjectInThinCategory, IsInt ] );
 
 DeclareOperation( "\+",
         [ IsInt, IsObjectInThinCategory ] );
+# =#
 
 #! @Description
 #!  <C>AsFormalDifferenceOfNormalizedMorphisms</C> assumes that the input is normalized.

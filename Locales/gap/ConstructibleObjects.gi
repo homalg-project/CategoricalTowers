@@ -260,12 +260,14 @@ InstallMethod( ListOp,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( Iterator,
         "for a constructible object",
         [ IsConstructibleObject ],
         
   A -> Iterator( List( A ) ) );
+# =#
 
 ##
 InstallMethod( ForAllOp,

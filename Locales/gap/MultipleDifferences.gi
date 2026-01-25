@@ -617,12 +617,14 @@ InstallMethod( ListOp,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( Iterator,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   A -> Iterator( List( A ) ) );
+# =#
 
 ##
 InstallMethod( ForAllOp,

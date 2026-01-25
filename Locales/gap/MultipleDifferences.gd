@@ -93,8 +93,10 @@ DeclareOperation( "ListOp",
 DeclareOperation( "ListOp",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsFunction ] );
 
+#= comment for Julia
 DeclareOperation( "Iterator",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ] );
+# =#
 
 DeclareOperation( "ForAllOp",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsFunction ] );
@@ -102,9 +104,11 @@ DeclareOperation( "ForAllOp",
 DeclareOperation( "ForAnyOp",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsFunction ] );
 
+#= comment for Julia
 #!
 DeclareOperation( "\[\]",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsInt ] );
+# =#
 
 #! @Section Constructors
 

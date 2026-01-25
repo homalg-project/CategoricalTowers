@@ -50,6 +50,7 @@ ReadPackage( "Locales", "gap/IntervalCategory.gi");
 
 ReadPackage( "Locales", "gap/ProsetAsCategory.gi");
 
+#= comment for Julia
 if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
     ReadPackage( "Locales", "gap/ToolsUsingDigraphs.gi");
 fi;
@@ -57,3 +58,4 @@ fi;
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) and IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
     ReadPackage( "Locales", "gap/JuliaWithDigraphs.gi");
 fi;
+# =#
