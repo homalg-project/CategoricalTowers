@@ -383,7 +383,7 @@ end
     
 end
 ] : CategoryFilter := function( cat )
-      return ( HasIsThinCategory and IsThinCategory )( cat ) and
+      return HasIsThinCategory( cat ) and IsThinCategory( cat ) and
              HasRangeCategoryOfHomomorphismStructure( cat ) and
              IsIntervalCategory( RangeCategoryOfHomomorphismStructure( cat ) );
     end,

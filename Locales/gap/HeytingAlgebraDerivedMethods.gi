@@ -21,7 +21,7 @@ AddDerivationToCAP( IsHomSetInhabited,
     
     return IsTerminal( cat, ExponentialOnObjects( cat, S, T ) );
     
-end : CategoryFilter := IsThinCategory and IsCartesianClosedCategory );
+end : CategoryFilter := cat -> HasIsThinCategory( cat ) and IsThinCategory( cat ) and HasIsCartesianClosedCategory( cat ) and IsCartesianClosedCategory( cat ) );
 
 #####################################
 # Heyting algebroids

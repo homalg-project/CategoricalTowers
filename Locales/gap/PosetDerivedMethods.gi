@@ -83,6 +83,6 @@ AddDerivationToCAP( SetOfGeneratingMorphismsOfCategory,
                    List( OutNeighborsOfVertex( digraph, s ), t ->
                          UniqueMorphism( cat, objects[s], objects[t] ) ) ) );
     
-end : CategoryFilter := IsPosetCategory and IsFiniteCategory );
+end : CategoryFilter := cat -> HasIsPosetCategory( cat ) and IsPosetCategory( cat ) and HasIsFiniteCategory( cat ) and IsFiniteCategory( cat ) );
 
 fi;

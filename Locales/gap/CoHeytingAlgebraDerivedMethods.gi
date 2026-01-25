@@ -22,7 +22,7 @@ AddDerivationToCAP( IsHomSetInhabited,
     
     return IsInitial( cat, CoexponentialOnObjects( cat, S, T ) );
     
-end : CategoryFilter := IsThinCategory and IsCocartesianCoclosedCategory );
+end : CategoryFilter := cat -> HasIsThinCategory( cat ) and IsThinCategory( cat ) and HasIsCocartesianCoclosedCategory( cat ) and IsCocartesianCoclosedCategory( cat ) );
 
 #####################################
 # Coheyting algebroids
