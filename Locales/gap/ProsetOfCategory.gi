@@ -193,6 +193,9 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
         Add( properties, "IsSkeletalCategory" );
         
+        # IsThinCategory and IsSkeletalCategory imply IsPosetCategory
+        Add( properties, "IsPosetCategory" );
+        
         if HasIsCartesianCategory( C ) and IsCartesianCategory( C ) then
             Add( properties, "IsStrictCartesianCategory" );
         fi;
@@ -273,8 +276,6 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  create_func_object := "default",
                  create_func_morphism := create_func_morphism,
                  ) );
-    
-    SetIsThinCategory( P, true );
     
     if ( HasIsObjectFiniteCategory and IsObjectFiniteCategory )( C ) then
         SetIsFiniteCategory( P, true );
