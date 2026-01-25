@@ -57,28 +57,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
 end );
 
 ##
-InstallOtherMethod( Size,
-        "for finite prosets",
-        [ IsCapCategory and IsThinCategory and IsFiniteCategory and HasRangeCategoryOfHomomorphismStructure ],
-        
-  function( P )
-    local H, objs;
-    
-    H := RangeCategoryOfHomomorphismStructure( P );
-    
-    if not IsIntervalCategory( H ) then
-        TryNextMethod( );
-    fi;
-    
-    objs := SetOfObjects( P );
-    
-    return Sum( objs, s ->
-                Sum( objs, t ->
-                     Cardinality( HomomorphismStructureOnObjects( P, s, t ) ) ) );
-    
-end );
-
-##
 InstallOtherMethod( CapFunctor,
         "for a thin category, two lists, and the interval category",
         [ IsThinCategory and IsFiniteCategory, IsList, IsList, IsIntervalCategory ],
