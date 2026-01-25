@@ -35,4 +35,5 @@ Size( P );
 #! 1
 SetOfGeneratingMorphisms( P );
 #! [  ]
+# @drop_in_Julia (the operation SetOfGeneratingMorphisms requires Digraphs)
 #! @EndExample

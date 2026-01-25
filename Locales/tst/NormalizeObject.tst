@@ -41,4 +41,5 @@ D( <y,x> )
 \ D( <y> )
 gap> AD = -Oxy - (-Oy);
 true
+gap> #@drop_in_Julia (requires ZariskiFrames)
 gap> STOP_TEST("NormalizeObject.tst");
