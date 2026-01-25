@@ -572,7 +572,7 @@ InstallMethod( Squash,
     
     Info( InfoSquashDatastructureForConstructibleObjects, 2, "----------------------------------------" );
     
-    repeat
+    while true do
         
         l := Length( C!.act_nodes );
         
@@ -580,7 +580,11 @@ InstallMethod( Squash,
         
         RemoveObsoleteSubtrahends( C );
         
-    until l = Length( C!.act_nodes );
+        if l = Length( C!.act_nodes ) then
+            break;
+        fi;
+        
+    od;
     
     return C;
     
