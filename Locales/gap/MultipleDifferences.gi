@@ -693,36 +693,25 @@ InstallMethod( ViewString,
     
     str := ViewString( A[1].I : Locales_name := "I", Locales_number := n );
     
-    Append( str, " \\\ " );
+    str := Concatenation( str, " \\ " );
     
-    Append( str, ViewString( A[1].J : Locales_name := "J", Locales_number := n, Locales_counter := 1 ) );
+    str := Concatenation( str, ViewString( A[1].J : Locales_name := "J", Locales_number := n, Locales_counter := 1 ) );
     
     j := Length( A );
     
     if j > 1 then
         
-        Append( str, " \\\ " );
+        str := Concatenation( str, " \\ " );
         
         if j > 2 then
-            Append( str, ".. \\\ " );
+            str := Concatenation( str, ".. \\ " );
         fi;
         
-        Append( str, ViewString( A[1].J : Locales_name := "J", Locales_number := n, Locales_counter := j ) );
+        str := Concatenation( str, ViewString( A[1].J : Locales_name := "J", Locales_number := n, Locales_counter := j ) );
         
     fi;
     
     return str;
-    
-end );
-
-##
-InstallMethod( ViewObj,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
-        
-  function( A )
-    
-    Print( ViewString( A ) );
     
 end );
 
@@ -746,20 +735,9 @@ InstallMethod( DisplayString,
     A := List( A );
     
     for i in [ 1 .. Length( A ) ] do
-        Append( str, Concatenation( "\n\n\\ ", DisplayString( A[i].J ) ) );
+        str := Concatenation( str, Concatenation( "\n\n\\ ", DisplayString( A[i].J ) ) );
     od;
     
-    return str;
-    
-end );
-
-##
-InstallMethod( Display,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
-        
-  function( A )
-    
-    Display( DisplayString( A ) );
+    return Concatenation( str, "\n" );
     
 end );

@@ -95,14 +95,15 @@ InstallOtherMethod( CapFunctor,
 end );
 
 ##
-InstallMethod( Display,
-        "for an object in a proset",
+InstallMethod( DisplayString,
+        "for a morphism in a proset",
         [ IsMorphismInThinCategory ],
 
   function( u )
     
-    Display( Target( u ) );
-    Print( " ^\n |\n |\n" );
-    Display( Source( u ) );
+    return Concatenation(
+              DisplayString( Target( u ) ),
+              " ^\n |\n |\n",
+              DisplayString( Source( u ) ) );
     
 end );

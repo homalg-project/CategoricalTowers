@@ -414,29 +414,29 @@ InstallMethod( PrintString,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for an object in an interval category",
         [ IsObjectInIntervalCategory ],
         
   function( obj )
     
-    Print( PrintString( obj ) );
+    return PrintString( obj );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in an interval category",
         [ IsObjectInIntervalCategory ],
         
   function( obj )
     
-    Print( PrintString( obj ), "\n" );
+    return Concatenation( ViewString( obj ), "\n" );
     
 end );
 
 ##
-InstallMethod( PrintString,
+InstallMethod( ViewString,
         "for a morphism in an interval category",
         [ IsMorphismInIntervalCategory ],
         
@@ -461,23 +461,19 @@ InstallMethod( PrintString,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( PrintString,
         "for a morphism in an interval category",
         [ IsMorphismInIntervalCategory ],
         
-  function( mor )
-    
-    Print( PrintString( mor ) );
-    
-end );
+  ViewString );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a morphism in an interval category",
         [ IsMorphismInIntervalCategory ],
         
   function( mor )
     
-    Print( PrintString( mor ), "\n" );
+    return Concatenation( ViewString( mor ), "\n" );
     
 end );

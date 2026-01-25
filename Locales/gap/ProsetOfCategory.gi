@@ -594,8 +594,15 @@ InstallMethod( ViewString,
         
   function( a )
     
-    return Concatenation( "An object in the proset given by: ",
+    if IsCellInStableProsetOrPosetOfCategory( a ) then
+      
+      return Concatenation( "An object in the stable proset given by: ",
                    StringView( UnderlyingGapObject( a ) ) );
+    else
+      
+      return Concatenation( "An object in the proset given by: ",
+                   StringView( UnderlyingGapObject( a ) ) );
+    fi;
     
 end );
 
@@ -607,12 +614,21 @@ InstallMethod( PrintString,
 
 ##
 InstallMethod( ViewString,
-        [ IsMorphismInProsetOfCategory and HasUnderlyingMorphism ],
+        [ IsMorphismInProsetOfCategory ],
         
   function( mor )
     
-    return Concatenation( "A morphism in the proset given by: ",
+    if not HasUnderlyingMorphism( mor ) then
+        TryNextMethod( );
+    fi;
+    
+    if IsCellInStableProsetOrPosetOfCategory( mor ) then
+      return Concatenation( "A morphism in the stable proset given by: ",
                    StringView( UnderlyingMorphism( mor ) ) );
+    else
+      return Concatenation( "A morphism in the proset given by: ",
+                   StringView( UnderlyingMorphism( mor ) ) );
+    fi;
     
 end );
 
@@ -623,46 +639,20 @@ InstallMethod( PrintString,
   StringView );
 
 ##
-InstallMethod( ViewString,
-        [ IsObjectInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
-        
-  function( a )
-    
-    return Concatenation( "An object in the stable proset given by: ",
-                   StringView( UnderlyingGapObject( a ) ) );
-    
-end );
-
-##
-InstallMethod( ViewString,
-        [ IsMorphismInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory and HasUnderlyingMorphism ],
-        
-  function( mor )
-    
-    return Concatenation( "A morphism in the stable proset given by: ",
-                   StringView( UnderlyingMorphism( mor ) ) );
-    
-end );
-
-##
 InstallMethod( DisplayString,
         [ IsObjectInProsetOfCategory ],
         
   function( a )
     
-    return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
-                   "\nAn object in the proset given by the above data" );
-    
-end );
-
-##
-InstallMethod( DisplayString,
-        [ IsObjectInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
-        
-  function( a )
-    
-    return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
-                   "\nAn object in the stable proset given by the above data" );
+    if IsCellInStableProsetOrPosetOfCategory( a ) then
+      
+      return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
+                   "\nAn object in the stable proset given by the above data\n" );
+    else
+      
+      return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
+                   "\nAn object in the proset given by the above data\n" );
+    fi;
     
 end );
 
@@ -672,8 +662,15 @@ InstallMethod( ViewString,
         
   function( a )
     
-    return Concatenation( "An object in the poset given by: ",
+    if IsCellInStableProsetOrPosetOfCategory( a ) then
+      
+      return Concatenation( "An object in the stable poset given by: ",
                    StringView( UnderlyingGapObject( a ) ) );
+    else
+    
+      return Concatenation( "An object in the poset given by: ",
+                   StringView( UnderlyingGapObject( a ) ) );
+    fi;
     
 end );
 
@@ -685,12 +682,23 @@ InstallMethod( PrintString,
 
 ##
 InstallMethod( ViewString,
-        [ IsMorphismInPosetOfCategory and HasUnderlyingMorphism ],
+        [ IsMorphismInPosetOfCategory ],
         
   function( mor )
     
-    return Concatenation( "A morphism in the poset given by: ",
+    if not HasUnderlyingMorphism( mor ) then
+        TryNextMethod( );
+    fi;
+    
+    if IsCellInStableProsetOrPosetOfCategory( mor ) then
+      
+      return Concatenation( "A morphism in the stable poset given by: ",
                    StringView( UnderlyingMorphism( mor ) ) );
+    else
+    
+      return Concatenation( "A morphism in the poset given by: ",
+                   StringView( UnderlyingMorphism( mor ) ) );
+    fi;
     
 end );
 
@@ -701,45 +709,21 @@ InstallMethod( PrintString,
   StringView );
 
 ##
-InstallMethod( ViewString,
-        [ IsObjectInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
-        
-  function( a )
-    
-    return Concatenation( "An object in the stable poset given by: ",
-                   StringView( UnderlyingGapObject( a ) ) );
-    
-end );
-
-##
-InstallMethod( ViewString,
-        [ IsMorphismInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory and HasUnderlyingMorphism ],
-        
-  function( mor )
-    
-    return Concatenation( "A morphism in the stable poset given by: ",
-                   StringView( UnderlyingMorphism( mor ) ) );
-    
-end );
-
-##
 InstallMethod( DisplayString,
         [ IsObjectInPosetOfCategory ],
         
   function( a )
     
-    return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
-                   "\nAn object in the poset given by the above data\n" );
-    
-end );
-
-##
-InstallMethod( DisplayString,
-        [ IsObjectInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
-        
-  function( a )
-    
-    return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
+    if IsCellInStableProsetOrPosetOfCategory( a ) then
+      
+      return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
                    "\nAn object in the stable poset given by the above data\n" );
+      
+    else
+      
+      return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
+                   "\nAn object in the poset given by the above data\n" );
+      
+    fi;
     
 end );

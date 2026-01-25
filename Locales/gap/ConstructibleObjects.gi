@@ -321,17 +321,6 @@ InstallMethod( ViewString,
 end );
 
 ##
-InstallMethod( ViewObj,
-        "for a constructible object",
-        [ IsConstructibleObject ],
-        
-  function( A )
-    
-    Print( ViewString( A ) );
-    
-end );
-
-##
 InstallMethod( String,
         "for a constructible object",
         [ IsConstructibleObject ],
@@ -344,34 +333,29 @@ InstallMethod( DisplayString,
         [ IsConstructibleObject ],
 
   function( A )
-    local n, display, i;
+    local n, display, s, i;
     
     A := List( A );
     
     n := Length( A );
     
     if n = 0 then
-        return "( ∅\n\n\\ ∅ )";
+        return "( ∅\n\n\\ ∅ )\n";
     fi;
     
-    display := Concatenation( "( ", DisplayString( A[1] ), " )" );
+    s := DisplayString( A[1] );
+    if Length( s ) > 0 and s[Length( s )] = '\n' then s := s{[1 .. Length( s ) - 1]}; fi;
+    display := Concatenation( "( ", s, " )" );
     
     for i in [ 2 .. n ] do
         Append( display, "\n\n∪\n\n" );
-        Append( display, Concatenation( "( ", DisplayString( A[i] ), " )" ) );
+        s := DisplayString( A[i] );
+        if Length( s ) > 0 and s[Length( s )] = '\n' then s := s{[1 .. Length( s ) - 1]}; fi;
+        Append( display, Concatenation( "( ", s, " )" ) );
     od;
     
+    Append( display, "\n" );
+    
     return display;
-    
-end );
-
-##
-InstallMethod( Display,
-        "for a constructible object",
-        [ IsConstructibleObject ],
-
-  function( A )
-    
-    Display( DisplayString( A ) );
     
 end );

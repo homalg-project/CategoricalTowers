@@ -635,21 +635,10 @@ InstallMethod( ViewString,
     fi;
     
     str := ViewString( A[1] : Locales_name := "I", Locales_number := n );
-    Append( str, " \\\ " );
-    Append( str, ViewString( A[2] : Locales_name := "J", Locales_number := n ) );
+    str := Concatenation( str, " \\ " );
+    str := Concatenation( str, ViewString( A[2] : Locales_name := "J", Locales_number := n ) );
     
     return str;
-    
-end );
-
-##
-InstallMethod( ViewObj,
-        "for an object in a meet-semilattice of formal single differences",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
-        
-  function( A )
-    
-    Print( ViewString( A ) );
     
 end );
 
@@ -671,18 +660,8 @@ InstallMethod( DisplayString,
     
     return Concatenation(
                    DisplayString( A[1] ),
-                   "\n\n\\\ ",
-                   DisplayString( A[2] ) );
-    
-end );
-
-##
-InstallMethod( Display,
-        "for an object in a meet-semilattice of formal single differences",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
-        
-  function( A )
-    
-    Display( DisplayString( A ) );
+                   "\n\n\\ ",
+                   DisplayString( A[2] ),
+                   "\n" );
     
 end );
