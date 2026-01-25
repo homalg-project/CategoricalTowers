@@ -654,14 +654,11 @@ InstallMethod( \[\],
 end );
 
 ##
-InstallMethod( \.,
-        "for an object in a meet-semilattice of formal multiple differences and a positive integer",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and an object in a meet-semilattice of formal multiple differences",
+        [ IsString, IsObjectInMeetSemilatticeOfMultipleDifferences ],
 
-  function( A, string_as_int )
-    local name;
-    
-    name := NameRNam( string_as_int );
+  function( name, A )
     
     if name[1] = 'I' then
         return A[1].I;
@@ -672,6 +669,11 @@ InstallMethod( \.,
     Error( "no component with this name available\n" );
     
 end );
+
+#= comment for Julia
+##
+INSTALL_DOT_METHOD( IsObjectInMeetSemilatticeOfMultipleDifferences );
+# =#
 
 ##
 InstallMethod( ViewString,

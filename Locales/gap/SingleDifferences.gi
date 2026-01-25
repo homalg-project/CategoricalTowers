@@ -576,16 +576,13 @@ InstallMethod( \=,
 end );
 
 ##
-InstallMethod( \.,
+InstallOtherMethod( \/,
         "for an object in a meet-semilattice of formal single differences and a positive integer",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsPosInt ],
+        [ IsString, IsObjectInMeetSemilatticeOfSingleDifferences ],
 
-  function( A, string_as_int )
-    local name;
+  function( name, A )
     
     A := MinuendAndSubtrahendInUnderlyingLattice( A );
-    
-    name := NameRNam( string_as_int );
     
     if name[1] = 'I' then
         return A[1];
@@ -597,21 +594,29 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
 ##
-InstallMethod( \.,
-        "for a meet-semilattice of formal single differences and a positive integer",
-        [ IsMeetSemilatticeOfSingleDifferences, IsPosInt ],
+INSTALL_DOT_METHOD( IsObjectInMeetSemilatticeOfSingleDifferences );
+# =#
 
-  function( D, string_as_int )
-    local Dist, name;
+##
+InstallOtherMethod( \/,
+        "for a meet-semilattice of formal single differences and a positive integer",
+        [ IsString, IsMeetSemilatticeOfSingleDifferences ],
+
+  function( name, D )
+    local Dist;
     
     Dist := UnderlyingCategory( D );
-    
-    name := NameRNam( string_as_int );
     
     return SingleDifference( D, Pair( Dist.(name), InitialObject( Dist ) ) );
     
 end );
+
+#= comment for Julia
+##
+INSTALL_DOT_METHOD( IsMeetSemilatticeOfSingleDifferences );
+# =#
 
 ##
 InstallMethod( ViewString,

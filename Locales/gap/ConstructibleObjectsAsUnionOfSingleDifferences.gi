@@ -673,16 +673,14 @@ InstallMethod( \=,
 end );
 
 ##
-InstallMethod( \.,
-        "for a constructible object as a union of formal single differences and a positive integer",
-        [ IsConstructibleObjectAsUnionOfSingleDifferences, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a constructible object as a union of formal single differences",
+        [ IsString, IsConstructibleObjectAsUnionOfSingleDifferences ],
         
-  function( A, string_as_int )
-    local name, n;
+  function( name, A )
+    local n;
     
     A := ListOfObjectsInMeetSemilatticeOfDifferences( A );
-    
-    name := NameRNam( string_as_int );
     
     n := EvalString( name{[ 2 .. Length( name ) ]} );
     
@@ -695,3 +693,8 @@ InstallMethod( \.,
     Error( "no component with this name available\n" );
     
 end );
+
+#=
+##
+INSTALL_DOT_METHOD( IsConstructibleObjectAsUnionOfSingleDifferences );
+# =#

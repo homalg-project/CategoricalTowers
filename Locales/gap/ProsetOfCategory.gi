@@ -538,14 +538,12 @@ InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
 end );
 
 ##
-InstallMethod( \.,
-        "for a proset or poset of a CAP category and a positive integer",
-        [ IsProsetOrPosetOfCapCategory, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a proset or poset of a CAP category",
+        [ IsString, IsProsetOrPosetOfCapCategory ],
         
-  function( P, string_as_int )
-    local name, C, cell;
-    
-    name := NameRNam( string_as_int );
+  function( name, P )
+    local C, cell;
     
     C := AmbientCategory( P );
     
@@ -567,6 +565,11 @@ InstallMethod( \.,
     Error( "<cell> is neither an object nor a morphism in the ambient category <C>" );
     
 end );
+
+#= comment for Julia
+##
+INSTALL_DOT_METHOD( IsProsetOrPosetOfCapCategory );
+# =#
 
 ##
 InstallMethod( DefiningTripleOfUnderlyingQuiver,
