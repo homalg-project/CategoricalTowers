@@ -25,7 +25,7 @@ SetInfoLevel( InfoSquashDatastructureForConstructibleObjects, 1 );
 ##
 InstallMethod( AllCoproducts,
         "for a CAP category and a list of objects",
-        [ IsCapCategory and IsCocartesianCategory and IsThinCategory, IsList ],
+        [ FilterIntersection( IsCapCategory, IsCocartesianCategory, IsThinCategory ), IsList ],
         
   function( cat, objects )
     local l, predicate, func, coproducts_initial_value;

@@ -57,8 +57,10 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "LocallyClosedPart",
         IsConstructibleObject );
 
+#= comment for Julia
 DeclareOperation( "CanonicalObjectOp",
         [ IsConstructibleObject ] );
+# =#
 
 #! @Arguments A
 DeclareAttribute( "CanonicalObject",

@@ -26,7 +26,7 @@ end );
 ##
 InstallMethod( MeetSemilatticeOfMultipleDifferences,
         "for a CAP category",
-        [ IsCapCategory and IsThinCategory ],
+        [ FilterIntersection( IsCapCategory, IsThinCategory ) ],
         
   function( P )
     local name, D, SD;
@@ -322,21 +322,21 @@ InstallMethod( ListOfSingleDifferences,
 ##
 InstallMethod( ListOfSingleDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfNormalizedObjectsInMeetSemilatticeOfDifferences ],
+        [ FilterIntersection( IsObjectInMeetSemilatticeOfMultipleDifferences, HasListOfNormalizedObjectsInMeetSemilatticeOfDifferences ) ],
         
   ListOfNormalizedObjectsInMeetSemilatticeOfDifferences );
 
 ##
 InstallMethod( ListOfSingleDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfStandardObjectsInMeetSemilatticeOfDifferences ],
+        [ FilterIntersection( IsObjectInMeetSemilatticeOfMultipleDifferences, HasListOfStandardObjectsInMeetSemilatticeOfDifferences ) ],
         
   ListOfStandardObjectsInMeetSemilatticeOfDifferences );
 
 ##
 InstallMethod( EquivalenceToMeetSemilatticeOfDifferences,
         "for a CAP category",
-        [ IsCapCategory and IsThinCategory ],
+        [ FilterIntersection( IsCapCategory, IsThinCategory ) ],
         
   function( P )
     local S, T, squash;

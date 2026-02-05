@@ -54,8 +54,11 @@ DeclareAttribute( "ListOfNormalizedObjectsInMeetSemilatticeOfDifferences",
 DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfDifferences",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 
+#= comment for Julia
 DeclareAttribute( "EquivalenceToMeetSemilatticeOfDifferences",
         IsCapCategory );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "EquivalenceToMeetSemilatticeOfDifferences" );
 
 #! @Arguments A
 DeclareAttribute( "AsSingleDifference",
@@ -71,12 +74,15 @@ end );
 
 #! @Section Operations
 
+#= comment for Julia
 #! @Description
 #!  A list of formal single differences in the underlying lattice representing the formal multiple difference <A>A</A>.
 #! @Arguments A
 #! @Returns a list of &CAP; morphism
 DeclareOperation( "ListOfSingleDifferences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ] );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "ListOfSingleDifferences" );
 
 CapJitAddTypeSignature( "ListOfSingleDifferences", [ IsObjectInMeetSemilatticeOfMultipleDifferences ], function ( input_types )
     
@@ -112,12 +118,15 @@ DeclareOperation( "\[\]",
 
 #! @Section Constructors
 
+#= comment for Julia
 #! @Description
 #!  Construct the meet-semilattice of multiple differences from the lattice <A>L</A>.
 #! @Arguments L
 #! @Returns a &CAP; category
 DeclareAttribute( "MeetSemilatticeOfMultipleDifferences",
         IsCapCategory );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "MeetSemilatticeOfMultipleDifferences" );
 
 DeclareOperation( "MultipleDifference",
         [ IsList ] );

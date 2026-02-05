@@ -128,48 +128,28 @@ InstallMethod( \+,
 
 ##
 InstallMethod( \=,
-        "for an object in a thin category and the integer one",
-        [ IsObjectInThinCategory, IsPosInt ],
+        "for an object in a thin category and the integer zero/one",
+        [ IsObjectInThinCategory, IsInt ],
         
   function( A, T )
     
-    if not T = 1 then
-        TryNextMethod( );
+    if T = 1 then
+        return IsTerminal( A );
+    elif T = 0 then
+        return IsInitial( A );
     fi;
     
-    return IsTerminal( A );
+    Error( "The second argument must be either 0 or 1." );
     
 end );
 
 ##
 InstallMethod( \=,
         "for the integer one and an object in a thin category",
-        [ IsPosInt, IsObjectInThinCategory ],
+        [ IsInt, IsObjectInThinCategory ],
         
   function( T, A )
     
     return A = T;
-    
-end );
-
-##
-InstallMethod( \=,
-        "for an object in a thin category and the zero integer",
-        [ IsObjectInThinCategory, IsInt and IsZero ],
-        
-  function( A, I )
-    
-    return IsInitial( A );
-    
-end );
-
-##
-InstallMethod( \=,
-        "for the zero integer and an object in a thin category",
-        [ IsInt and IsZero, IsObjectInThinCategory ],
-        
-  function( I, A )
-    
-    return A = I;
     
 end );

@@ -57,9 +57,9 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
 end );
 
 ##
-InstallOtherMethod( CapFunctor,
+InstallOtherMethod( CreateFunctor,
         "for a thin category, two lists, and the interval category",
-        [ IsThinCategory and IsFiniteCategory, IsList, IsList, IsIntervalCategory ],
+        [ FilterIntersection(IsCapCategory, IsThinCategory, IsFiniteCategory), IsList, IsList, IsIntervalCategory ],
         
   function( P, imgs_of_objs, imgs_of_gmors, interval_category )
     local F;
@@ -85,6 +85,15 @@ InstallOtherMethod( CapFunctor,
     return F;
     
 end );
+
+#= comment for Julia
+##
+InstallOtherMethod( CapFunctor,
+        "for a thin category, two lists, and the interval category",
+        [ FilterIntersection(IsCapCategory, IsThinCategory, IsFiniteCategory), IsList, IsList, IsIntervalCategory ],
+
+  CreateFunctor );
+# =#
 
 ##
 InstallMethod( DisplayString,

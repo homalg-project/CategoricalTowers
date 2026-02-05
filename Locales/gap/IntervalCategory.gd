@@ -24,12 +24,12 @@ DeclareCategory( "IsCellInIntervalCategory",
 #! @Description
 #!  The &GAP; category of objects in an interval category.
 DeclareCategory( "IsObjectInIntervalCategory",
-        IsCellInIntervalCategory and IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInIntervalCategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in an interval category.
 DeclareCategory( "IsMorphismInIntervalCategory",
-        IsCellInIntervalCategory and IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInIntervalCategory ) );
 
 ####################################
 #

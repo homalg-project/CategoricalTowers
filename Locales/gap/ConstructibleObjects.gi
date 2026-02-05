@@ -7,9 +7,13 @@
 ##
 InstallMethod( \-,
         "for a constructible object and the zero integer",
-        [ IsConstructibleObject, IsInt and IsZero ],
+        [ IsConstructibleObject, IsInt ],
         
   function( A, B )
+    
+    if not ( HasIsZero( B ) and IsZero( B ) ) then
+        TryNextMethod( );
+    fi;
     
     return A;
     
@@ -131,7 +135,7 @@ end );
 ##
 InstallOtherMethod( CanonicalObjectOp,
         "for a constructible object",
-        [ IsConstructibleObject and IsLocallyClosed ],
+        [ FilterIntersection( IsConstructibleObject, IsLocallyClosed ) ],
         
   LocallyClosedPart );
 

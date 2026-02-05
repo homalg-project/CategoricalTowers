@@ -37,7 +37,8 @@ DeclareCategory( "IsObjectInThinCategory",
 #!  The &GAP; category of morphisms in a thin &CAP; category.
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInThinCategory",
-        IsCapCategoryMorphism and IsMonomorphism and IsEpimorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsMonomorphism , IsEpimorphism )
+);
 
 ####################################
 #
@@ -164,6 +165,12 @@ DeclareOperation( "AreIsomorphicForObjectsIfIsHomSetInhabited",
 #! @Returns a &CAP; morphism
 DeclareOperation( "UniqueMorphism",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#= comment for Julia
+DeclareOperation( "CreateFunctor",
+        [ IsCapCategory, IsList, IsList, IsCapCategory ] );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "CreateFunctor" );
 
 # @Section Tools
 

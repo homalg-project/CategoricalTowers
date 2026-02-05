@@ -45,20 +45,27 @@ DeclareAttribute( "NormalizedDistinguishedSubtrahend",
 DeclareAttribute( "PreMinuendAndSubtrahendInUnderlyingLattice",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
 
+#= comment for Julia
 DeclareAttribute( "NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedAttribute( "NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid", IsObjectInMeetSemilatticeOfSingleDifferences );
 
 DeclareAttribute( "StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
 
 #! @Section Operations
 
+#= comment for Julia
 #! @Description
 #!  A pair in the underlying lattice representing the formal single difference <A>A</A>.
 #! @Arguments A
 #! @Returns a pair of objects in a thin category
 DeclareOperation( "MinuendAndSubtrahendInUnderlyingLattice",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ] );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "MinuendAndSubtrahendInUnderlyingLattice" );
 
 CapJitAddTypeSignature( "MinuendAndSubtrahendInUnderlyingLattice", [ IsObjectInMeetSemilatticeOfSingleDifferences ], function ( input_types )
     
@@ -70,6 +77,7 @@ CapJitAddTypeSignature( "MinuendAndSubtrahendInUnderlyingLattice", [ IsObjectInM
     
 end );
 
+#= comment for Julia
 #! @Description
 #!  The output <C>S</C> should satisfy <A>A</A>.I - <C>S</C> = <A>A</A>.
 #!  The standard method returns <C>NormalizedDistinguishedSubtrahend</C>( <A>A</A> )
@@ -81,15 +89,20 @@ end );
 #! @Returns an object in a thin category
 DeclareOperation( "DistinguishedSubtrahend",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ] );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "DistinguishedSubtrahend" );
 
 #! @Section Constructors
 
+#= comment for Julia
 #! @Description
 #!  Construct the meet-semilattice of differences from the lattice <A>L</A>.
 #! @Arguments L
 #! @Returns a &CAP; category
 DeclareAttribute( "MeetSemilatticeOfSingleDifferences",
         IsCapCategory );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "MeetSemilatticeOfSingleDifferences" );
 
 DeclareOperation( "SingleDifference",
         [ IsList ] );

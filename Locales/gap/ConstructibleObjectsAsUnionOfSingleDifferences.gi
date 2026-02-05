@@ -51,7 +51,7 @@ end );
 ##
 InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         "for a CAP category",
-        [ IsCapCategory and IsThinCategory ],
+        [ FilterIntersection( IsCapCategory, IsThinCategory ) ],
         
   function( P )
     local name, C, D, BinaryDirectProduct;
@@ -342,9 +342,13 @@ end );
 ##
 InstallMethod( \+,
         "for an object in a meet-semilattice of formal single differences and the zero integer",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsInt and IsZero ],
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsInt ],
         
   function( A, B )
+    
+    if not ( HasIsZero( B ) and IsZero( B ) ) then
+        TryNextMethod( );
+    fi;
     
     return A + InitialObject( CapCategory( A ) );
     
@@ -353,9 +357,13 @@ end );
 ##
 InstallMethod( \+,
         "for the zero integer and an object in a meet-semilattice of formal single differences",
-        [ IsInt and IsZero, IsObjectInMeetSemilatticeOfSingleDifferences ],
+        [ IsInt, IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A, B )
+    
+    if not ( HasIsZero( A ) and IsZero( A ) ) then
+        TryNextMethod( );
+    fi;
     
     return B + InitialObject( CapCategory( B ) );
     
@@ -364,9 +372,13 @@ end );
 ##
 InstallMethod( \+,
         "for an object in a thin category and the zero integer",
-        [ IsObjectInThinCategory, IsInt and IsZero ],
+        [ IsObjectInThinCategory, IsInt ],
         
   function( A, B )
+    
+    if not ( HasIsZero( B ) and IsZero( B ) ) then
+        TryNextMethod( );
+    fi;
     
     return ( A - 0 ) + 0;
     
@@ -375,9 +387,13 @@ end );
 ##
 InstallMethod( \+,
         "for the zero integer and an object in a thin category",
-        [ IsInt and IsZero, IsObjectInThinCategory ],
+        [ IsInt, IsObjectInThinCategory ],
         
   function( A, B )
+    
+    if not ( HasIsZero( A ) and IsZero( A ) ) then
+        TryNextMethod( );
+    fi;
     
     return ( B - 0 ) + 0;
     
@@ -432,14 +448,14 @@ InstallMethod( ListOfObjectsInMeetSemilatticeOfDifferences,
 ##
 InstallMethod( ListOfObjectsInMeetSemilatticeOfDifferences,
         "for a constructible object as a union of formal single differences",
-        [ IsConstructibleObjectAsUnionOfSingleDifferences and HasListOfNormalizedObjectsInMeetSemilatticeOfDifferences ],
+        [ FilterIntersection( IsConstructibleObjectAsUnionOfSingleDifferences, HasListOfNormalizedObjectsInMeetSemilatticeOfDifferences ) ],
         
   ListOfNormalizedObjectsInMeetSemilatticeOfDifferences );
 
 ##
 InstallMethod( ListOfObjectsInMeetSemilatticeOfDifferences,
         "for a constructible object as a union of formal single differences",
-        [ IsConstructibleObjectAsUnionOfSingleDifferences and HasListOfStandardObjectsInMeetSemilatticeOfDifferences ],
+        [ FilterIntersection( IsConstructibleObjectAsUnionOfSingleDifferences, HasListOfStandardObjectsInMeetSemilatticeOfDifferences ) ],
         
   ListOfStandardObjectsInMeetSemilatticeOfDifferences );
 
