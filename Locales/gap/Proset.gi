@@ -8,29 +8,43 @@ SetInfoLevel( InfoLocales, 1 );
 
 InstallTrueMethod( IsThinCategory, IsDiscreteCategory );
 
+#= comment for Julia
 InstallTrueMethod( IsFiniteCategory, IsThinCategory and IsObjectFiniteCategory );
+# =#
 
+#= comment for Julia
 InstallTrueMethod( IsMonoidalProset, IsThinCategory and IsMonoidalCategory );
+# =#
 InstallTrueMethod( IsThinCategory, IsMonoidalProset );
 InstallTrueMethod( IsMonoidalCategory, IsMonoidalProset );
 
+#= comment for Julia
 InstallTrueMethod( IsClosedMonoidalProset, IsMonoidalProset and IsClosedMonoidalCategory );
+# =#
 InstallTrueMethod( IsMonoidalProset, IsClosedMonoidalProset );
 InstallTrueMethod( IsClosedMonoidalCategory, IsClosedMonoidalProset );
 
+#= comment for Julia
 InstallTrueMethod( IsCoclosedMonoidalProset, IsMonoidalProset and IsCoclosedMonoidalCategory );
+# =#
 InstallTrueMethod( IsMonoidalProset, IsCoclosedMonoidalProset );
 InstallTrueMethod( IsCoclosedMonoidalCategory, IsCoclosedMonoidalProset );
 
+#= comment for Julia
 InstallTrueMethod( IsSymmetricMonoidalProset, IsThinCategory and IsSymmetricMonoidalCategory );
+# =#
 InstallTrueMethod( IsThinCategory, IsSymmetricMonoidalProset );
 InstallTrueMethod( IsSymmetricMonoidalCategory, IsSymmetricMonoidalProset );
 
+#= comment for Julia
 InstallTrueMethod( IsSymmetricClosedMonoidalProset, IsSymmetricMonoidalProset and IsSymmetricClosedMonoidalCategory );
+# =#
 InstallTrueMethod( IsSymmetricMonoidalProset, IsSymmetricClosedMonoidalProset );
 InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsSymmetricClosedMonoidalProset );
 
+#= comment for Julia
 InstallTrueMethod( IsSymmetricCoclosedMonoidalProset, IsSymmetricMonoidalProset and IsSymmetricCoclosedMonoidalCategory );
+# =#
 InstallTrueMethod( IsSymmetricMonoidalProset, IsSymmetricCoclosedMonoidalProset );
 InstallTrueMethod( IsSymmetricCoclosedMonoidalCategory, IsSymmetricCoclosedMonoidalProset );
 

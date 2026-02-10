@@ -4,34 +4,48 @@
 # Implementations
 #
 
+#= comment for Julia
 InstallTrueMethod( IsPosetCategory, IsThinCategory and IsSkeletalCategory );
+# =#
 InstallTrueMethod( IsThinCategory, IsPosetCategory );
 InstallTrueMethod( IsSkeletalCategory, IsPosetCategory );
 
 InstallTrueMethod( IsPosetCategory, IsTotalOrderCategory );
 
+#= comment for Julia
 InstallTrueMethod( IsMonoidalPoset, IsPosetCategory and IsStrictMonoidalCategory );
+# =#
 InstallTrueMethod( IsPosetCategory, IsMonoidalPoset );
 InstallTrueMethod( IsStrictMonoidalCategory, IsMonoidalPoset );
 
+#= comment for Julia
 InstallTrueMethod( IsClosedMonoidalPoset, IsMonoidalPoset and IsClosedMonoidalCategory );
+# =#
 InstallTrueMethod( IsMonoidalPoset, IsClosedMonoidalPoset );
 InstallTrueMethod( IsClosedMonoidalCategory, IsClosedMonoidalPoset );
 
+#= comment for Julia
 InstallTrueMethod( IsCoclosedMonoidalPoset, IsMonoidalPoset and IsCoclosedMonoidalCategory );
+# =#
 InstallTrueMethod( IsMonoidalPoset, IsCoclosedMonoidalPoset );
 InstallTrueMethod( IsCoclosedMonoidalCategory, IsCoclosedMonoidalPoset );
 
+#= comment for Julia
 InstallTrueMethod( IsSymmetricMonoidalPoset, IsPosetCategory and IsStrictMonoidalCategory and IsSymmetricMonoidalCategory );
+# =#
 InstallTrueMethod( IsPosetCategory, IsSymmetricMonoidalPoset );
 InstallTrueMethod( IsStrictMonoidalCategory, IsSymmetricMonoidalPoset );
 InstallTrueMethod( IsSymmetricMonoidalCategory, IsSymmetricMonoidalPoset );
 
+#= comment for Julia
 InstallTrueMethod( IsSymmetricClosedMonoidalPoset, IsSymmetricMonoidalPoset and IsSymmetricClosedMonoidalCategory );
+# =#
 InstallTrueMethod( IsSymmetricMonoidalPoset, IsSymmetricClosedMonoidalPoset );
 InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsSymmetricClosedMonoidalPoset );
 
+#= comment for Julia
 InstallTrueMethod( IsSymmetricCoclosedMonoidalPoset, IsSymmetricMonoidalPoset and IsSymmetricCoclosedMonoidalCategory );
+# =#
 InstallTrueMethod( IsSymmetricMonoidalPoset, IsSymmetricCoclosedMonoidalPoset );
 InstallTrueMethod( IsSymmetricCoclosedMonoidalCategory, IsSymmetricCoclosedMonoidalPoset );
 

@@ -6,13 +6,17 @@
 
 ## thin
 
+#= comment for Julia
 InstallTrueMethod( IsCoHeytingAlgebroid, IsBicartesianProset and IsCocartesianCoclosedCategory );
+# =#
 InstallTrueMethod( IsBicartesianProset, IsCoHeytingAlgebroid );
 InstallTrueMethod( IsCocartesianCoclosedCategory, IsCoHeytingAlgebroid );
 
 ## thin & skeletal
 
+#= comment for Julia
 InstallTrueMethod( IsCoHeytingAlgebra, IsCoHeytingAlgebroid and IsSkeletalCategory );
+# =#
 InstallTrueMethod( IsCoHeytingAlgebroid, IsCoHeytingAlgebra );
 InstallTrueMethod( IsSkeletalCategory, IsCoHeytingAlgebra );
 
