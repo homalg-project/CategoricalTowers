@@ -1549,13 +1549,13 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     end );
     
-    ##
-    AddIsEqualForObjects( UI,
-      function( UI, object1, object2 )
-        
-        return true;
-        
-    end );
+    ## will be derived using IsHomSetInhabited in an Ab-category
+    #AddIsEqualForObjects( UI,
+    #  function( UI, object1, object2 )
+    #    
+    #    return true;
+    #    
+    #end );
     
     ##
     AddIsEqualForMorphisms( UI,
