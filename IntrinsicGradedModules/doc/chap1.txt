@@ -222,7 +222,7 @@
     [4X[28XIntrinsicCategory( CategoryWithAmbientObjects([128X[104X
     [4X[28XFreyd( GradedRows( Q[x,y,z] (with weights [ 1, 1, 1 ]) ) ) ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X184 primitive operations were used to derive 376 operations for this category[128X[104X
+    [4X[28X184 primitive operations were used to derive 377 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsSymmetricClosedMonoidalCategory[128X[104X
@@ -905,6 +905,9 @@
   
   [30X    [33X[0;6Y[2XIsEqualToZeroMorphism[102X       ([14XCAP:       IsEqualToZeroMorphism      for
         IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsHomSetInhabited[102X  ([14XCAP:  IsHomSetInhabited  for  IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XIsIdempotent[102X ([14XCAP: IsIdempotent for IsCapCategoryMorphism[114X)[133X
   
