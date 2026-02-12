@@ -1,7 +1,7 @@
 name: PreSheaves
-version: "2026.01-01"
+version: "2026.02-01"
 license: "GPL-2.0-or-later"
-date: 2026-01-24
+date: 2026-02-12
 description: |
     Categories of (co)presheaves
 
@@ -27,7 +27,7 @@ needed-pkgs:
       version: ">= 2023.11-02"
       url: "https://homalg-project.github.io/pkg/MatricesForHomalg"
     - name: "CAP"
-      version: ">= 2025.11-03"
+      version: ">= 2026.02-01"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
       version: ">= 2025.08-01"
@@ -45,11 +45,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/PreSheaves/Packa
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PreSheaves-2026.01-01/PreSheaves-2026.01-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PreSheaves-2026.02-01/PreSheaves-2026.02-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PreSheaves-2026.01-01/PreSheaves-2026.01-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PreSheaves-2026.02-01/PreSheaves-2026.02-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/PreSheaves-2026.01-01/PreSheaves-2026.01-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/PreSheaves-2026.02-01/PreSheaves-2026.02-01-manual.pdf
 
 abstract: |
 
@@ -60,10 +60,10 @@ keywords: |
     finite coproduct cocompletions, finite product completions, finite colimit cocompletions, finite limit completions.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BS24</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+    [<span class='BibKey'>BS12</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>PreSheaves, Categories of (co)presheaves,
-             Version 2026.01-01</i>
-     (<span class='BibYear'>1-24</span>)<br />
+             Version 2026.02-01</i>
+     (<span class='BibYear'>2-12</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/PreSheaves">https://homalg-project.github.io/pkg/PreSheaves</a></span>.
     </p>
@@ -73,9 +73,9 @@ bibtex: |
     @misc{ PreSheaves,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{PreSheaves},    {Categories    of    (co)presheaves},
-                          {V}ersion 2026.01\texttt{\symbol{45}}01},
+                          {V}ersion 2026.02\texttt{\symbol{45}}01},
       month =            {6\texttt{\symbol{45}}},
-      year =             {1\texttt{\symbol{45}}24},
+      year =             {2\texttt{\symbol{45}}12},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/PreSheaves}
@@ -85,6 +85,6 @@ bibtex: |
       keywords =         {finite   coproduct   cocompletions,   finite   product
                           completions,   finite  colimit  cocompletions,  finite
                           limit completions},
-      printedkey =       {BS24}
+      printedkey =       {BS12}
     }
 
