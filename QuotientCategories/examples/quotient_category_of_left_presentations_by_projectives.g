@@ -21,7 +21,7 @@ quotient_cat := QuotientCategory(
 Display( quotient_cat );
 #! A CAP category with name QuotientCategory( Category of left presentations of Z ) by projectives:
 #! 
-#! 23 primitive operations were used to derive 134 operations for this category
+#! 23 primitive operations were used to derive 135 operations for this category
 #! which algorithmically
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsAdditiveCategory
