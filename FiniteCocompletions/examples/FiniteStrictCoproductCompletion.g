@@ -28,7 +28,7 @@ Display( L );
 #! An object in FiniteStrictCoproductCompletion(
 #! PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data
 b := UC.b;
-#! <A morphism in FiniteStrictCoproductCompletion(
+#! <A monomorphism in FiniteStrictCoproductCompletion(
 #!  PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )>
 Display( b );
 #! { 0 } ⱶ[ 0 ]→ { 0 }

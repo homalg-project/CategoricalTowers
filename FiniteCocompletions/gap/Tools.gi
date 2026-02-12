@@ -70,3 +70,36 @@ InstallMethod( TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure
                    TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC, Target( phi ), h ) );
     
 end );
+
+##
+InstallGlobalFunction( SKELETAL_CATEGORY_OF_FINITE_SETS_IsMonomorphism,
+  function ( imgs, t )
+    local testList, img;
+    
+    testList := ListWithIdenticalEntries( t, false );
+    
+    for img in imgs do
+        if testList[1 + img] then
+            return false;
+        fi;
+        testList[1 + img] := true;
+    od;
+    
+    return true;
+    
+end );
+
+##
+InstallGlobalFunction( SKELETAL_CATEGORY_OF_FINITE_SETS_IsEpimorphism,
+  function ( imgs, t )
+    local testList, img;
+    
+    testList := ListWithIdenticalEntries( t, false );
+    
+    for img in imgs do
+        testList[1 + img] := true;
+    od;
+    
+    return testList;
+    
+end );

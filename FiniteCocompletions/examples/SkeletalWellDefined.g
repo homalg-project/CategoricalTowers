@@ -10,14 +10,17 @@ Display( sFinSets );
 #! A CAP category with name
 #! SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory:
 #! 
-#! 35 primitive operations were used to derive 165 operations for this category
+#! 36 primitive operations were used to derive 167 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsFiniteCompleteCategory
 #! * IsDistributiveCategory
+#! and not yet algorithmically
+#! * IsElementaryTopos
 #! and furthermore mathematically
+#! * IsSkeletalCategory
 #! * IsStrictCartesianCategory
 #! * IsStrictCocartesianCategory
 s := ObjectConstructor( sFinSets, 7 );

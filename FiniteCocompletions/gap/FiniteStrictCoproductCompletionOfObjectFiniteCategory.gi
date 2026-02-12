@@ -18,6 +18,12 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
     
     Assert( 0, HasIsObjectFiniteCategory( C ) and IsObjectFiniteCategory( C ) and CanCompute( C, "SetOfObjectsOfCategory" ) );
     
+    if CanCompute( C, "IsWellDefinedForObjects" ) then
+        
+        Assert( 0, ForAll( SetOfObjectsOfCategory( C ), obj -> IsWellDefinedForObjects( C, obj ) ) );
+        
+    fi;
+    
     ##
     UCm :=
       CreateCapCategoryWithDataTypes(
@@ -158,100 +164,117 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
     end );
     
-    ##
-    AddIsWellDefinedForObjects( UCm,
-      function ( UCm, object )
-        local l, pair_of_int_and_list_of_multiplicities;
+    if CanCompute( C, "IsWellDefinedForObjects" ) then
         
-        l := NumberOfObjectsOfUnderlyingCategory( UCm );
+        ##
+        AddIsWellDefinedForObjects( UCm,
+          function ( UCm, object )
+            local l, pair_of_int_and_list_of_multiplicities;
+            
+            l := NumberOfObjectsOfUnderlyingCategory( UCm );
+            
+            pair_of_int_and_list_of_multiplicities := ObjectDatum( UCm, object );
+            
+            return l = Length( pair_of_int_and_list_of_multiplicities[2] ) and
+                   ForAll( pair_of_int_and_list_of_multiplicities[2], m -> m >= 0 ) and
+                   pair_of_int_and_list_of_multiplicities[1] = Sum( pair_of_int_and_list_of_multiplicities[2] );
+            
+        end );
         
-        pair_of_int_and_list_of_multiplicities := ObjectDatum( UCm, object );
-        
-        return l = Length( pair_of_int_and_list_of_multiplicities[2] ) and
-               ForAll( pair_of_int_and_list_of_multiplicities[2], m -> m >= 0 ) and
-               pair_of_int_and_list_of_multiplicities[1] = Sum( pair_of_int_and_list_of_multiplicities[2] );
-        
-    end );
+    fi;
     
-    ##
-    AddIsWellDefinedForMorphisms( UCm,
-      function ( UCm, morphism )
-        local C, objectsC, l, source_pair, target_pair, pair_of_lists, s, t, maps, mors;
+    if CanCompute( C, "IsEqualForObjects" ) and
+       CanCompute( C, "IsWellDefinedForMorphisms" ) then
         
-        C := UnderlyingCategory( UCm );
+        ##
+        AddIsWellDefinedForMorphisms( UCm,
+          function ( UCm, morphism )
+            local C, objectsC, l, source_pair, target_pair, pair_of_lists, s, t, maps, mors;
+            
+            C := UnderlyingCategory( UCm );
+            
+            objectsC := SetOfObjects( C );
+            
+            l := NumberOfObjectsOfUnderlyingCategory( UCm );
+            
+            source_pair := ObjectDatum( UCm, Source( morphism ) );
+            target_pair := ObjectDatum( UCm, Target( morphism ) );
+            
+            pair_of_lists := MorphismDatum( UCm, morphism );
+            
+            s := source_pair[2];
+            t := target_pair[2];
+            
+            maps := pair_of_lists[1];
+            
+            mors := pair_of_lists[2];
+            
+            return l = Length( maps ) and
+                   l = Length( mors ) and
+                   ForAll( [ 1 .. l ], o -> Length( maps[o][1] ) = s[o] ) and
+                   ForAll( [ 1 .. l ], o -> Length( maps[o][2] ) = s[o] ) and
+                   ForAll( [ 1 .. l ], o -> ForAll( [ 1 .. s[o] ], j -> maps[o][1][j] >= 0 and maps[o][1][j] < l ) ) and
+                   ForAll( [ 1 .. l ], o -> ForAll( [ 1 .. s[o] ], j -> maps[o][2][j] >= 0 and maps[o][2][j] < t[1 + maps[o][1][j]] ) ) and
+                   ForAll( [ 1 .. l ], o -> Length( mors[o] ) = s[o] ) and
+                   ForAll( [ 1 .. l ], o ->
+                           ForAll( [ 1 .. s[o] ], j -> IsEqualForObjects( C, Source( mors[o][j] ), objectsC[o] ) ) and
+                           ForAll( [ 1 .. s[o] ], j -> IsEqualForObjects( C, Target( mors[o][j] ), objectsC[1 + maps[o][1][j]] ) ) and
+                           ForAll( [ 1 .. s[o] ], j -> IsWellDefinedForMorphisms( C, mors[o][j] ) ) );
+            
+        end, 4 * OperationWeight( C, "IsEqualForObjects" ) + 2 * OperationWeight( C, "IsWellDefinedForMorphisms" ) );
         
-        objectsC := SetOfObjects( C );
-        
-        l := NumberOfObjectsOfUnderlyingCategory( UCm );
-        
-        source_pair := ObjectDatum( UCm, Source( morphism ) );
-        target_pair := ObjectDatum( UCm, Target( morphism ) );
-        
-        pair_of_lists := MorphismDatum( UCm, morphism );
-        
-        s := source_pair[2];
-        t := target_pair[2];
-        
-        maps := pair_of_lists[1];
-        
-        mors := pair_of_lists[2];
-        
-        return l = Length( maps ) and
-               l = Length( mors ) and
-               ForAll( [ 1 .. l ], o -> Length( maps[o][1] ) = s[o] ) and
-               ForAll( [ 1 .. l ], o -> Length( maps[o][2] ) = s[o] ) and
-               ForAll( [ 1 .. l ], o -> ForAll( [ 1 .. s[o] ], j -> maps[o][1][j] >= 0 and maps[o][1][j] < l ) ) and
-               ForAll( [ 1 .. l ], o -> ForAll( [ 1 .. s[o] ], j -> maps[o][2][j] >= 0 and maps[o][2][j] < t[1 + maps[o][1][j]] ) ) and
-               ForAll( [ 1 .. l ], o -> Length( mors[o] ) = s[o] ) and
-               ForAll( [ 1 .. l ], o ->
-                       ForAll( [ 1 .. s[o] ], j -> IsEqualForObjects( C, Source( mors[o][j] ), objectsC[o] ) ) and
-                       ForAll( [ 1 .. s[o] ], j -> IsEqualForObjects( C, Target( mors[o][j] ), objectsC[1 + maps[o][1][j]] ) ) and
-                       ForAll( [ 1 .. s[o] ], j -> IsWellDefinedForMorphisms( C, mors[o][j] ) ) );
-        
-    end );
+    fi;
     
-    ##
-    AddIsEqualForObjects( UCm,
-      function ( UCm, object1, object2 )
-        local pair1, pair2;
+    if CanCompute( C, "IsEqualForObjects" ) then
         
-        pair1 := ObjectDatum( UCm, object1 );
-        pair2 := ObjectDatum( UCm, object2 );
+        ##
+        AddIsEqualForObjects( UCm,
+          function ( UCm, object1, object2 )
+            local pair1, pair2;
+            
+            pair1 := ObjectDatum( UCm, object1 );
+            pair2 := ObjectDatum( UCm, object2 );
+            
+            if not pair1[1] = pair2[1] then
+                return false;
+            fi;
+            
+            return pair1[2] = pair2[2];
+            
+        end );
         
-        if not pair1[1] = pair2[1] then
-            return false;
-        fi;
-        
-        return pair1[2] = pair2[2];
-        
-    end );
+    fi;
     
-    ##
-    AddIsEqualForMorphisms( UCm,
-      function ( UCm, morphism1, morphism2 )
-        local C, l, pair_of_lists1, pair_of_lists2, m1, m2, s;
+    if CanCompute( C, "IsEqualForMorphisms" ) then
         
-        C := UnderlyingCategory( UCm );
-        
-        l := NumberOfObjectsOfUnderlyingCategory( UCm );
-        
-        pair_of_lists1 := MorphismDatum( UCm, morphism1 );
-        pair_of_lists2 := MorphismDatum( UCm, morphism2 );
-        
-        if not pair_of_lists1[1] = pair_of_lists2[1] then
-            return false;
-        fi;
-        
-        m1 := pair_of_lists1[2];
-        m2 := pair_of_lists2[2];
-        
-        s := ObjectDatum( UCm, Source( morphism1 ) )[2];
-        
-        return ForAll( [ 1 .. l ], o ->
+        ##
+        AddIsEqualForMorphisms( UCm,
+          function ( UCm, morphism1, morphism2 )
+            local C, l, pair_of_lists1, pair_of_lists2, m1, m2, s;
+            
+            C := UnderlyingCategory( UCm );
+            
+            l := NumberOfObjectsOfUnderlyingCategory( UCm );
+            
+            pair_of_lists1 := MorphismDatum( UCm, morphism1 );
+            pair_of_lists2 := MorphismDatum( UCm, morphism2 );
+            
+            if not pair_of_lists1[1] = pair_of_lists2[1] then
+                return false;
+            fi;
+            
+            m1 := pair_of_lists1[2];
+            m2 := pair_of_lists2[2];
+            
+            s := ObjectDatum( UCm, Source( morphism1 ) )[2];
+            
+            return ForAll( [ 1 .. l ], o ->
                        ForAll( [ 1 .. s[o] ], i ->
                                IsEqualForMorphisms( C, m1[o][i], m2[o][i] ) ) );
+            
+        end, 2 * OperationWeight( C, "IsEqualForMorphisms" ) );
         
-    end );
+    fi;
     
     if not ( IsBound( H ) and IsIntervalCategory( H ) ) then
         
@@ -284,70 +307,78 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
     fi;
     
-    ##
-    AddIdentityMorphism( UCm,
-      function ( UCm, object )
-        local C, objectsC, l, pair, multiplicities, map, mor;
+    if CanCompute( C, "IdentityMorphism" ) then
         
-        C := UnderlyingCategory( UCm );
+        ##
+        AddIdentityMorphism( UCm,
+          function ( UCm, object )
+            local C, objectsC, l, pair, multiplicities, map, mor;
+            
+            C := UnderlyingCategory( UCm );
+            
+            objectsC := SetOfObjects( C );
+            
+            l := NumberOfObjectsOfUnderlyingCategory( UCm );
+            
+            pair := ObjectDatum( UCm, object );
+            
+            multiplicities := pair[2];
+            
+            map := List( [ 1 .. l ], o ->
+                         Pair( ListWithIdenticalEntries( multiplicities[o], -1 + o ), [ 0 .. multiplicities[o] - 1 ] ) );
+            
+            mor := List( [ 1 .. l ], o ->
+                         ListWithIdenticalEntries( multiplicities[o], IdentityMorphism( C, objectsC[o] ) ) );
+            
+            return MorphismConstructor( UCm, object, Pair( map, mor ), object );
+            
+        end, 2 * OperationWeight( C, "IdentityMorphism" ) );
         
-        objectsC := SetOfObjects( C );
-        
-        l := NumberOfObjectsOfUnderlyingCategory( UCm );
-        
-        pair := ObjectDatum( UCm, object );
-        
-        multiplicities := pair[2];
-        
-        map := List( [ 1 .. l ], o ->
-                     Pair( ListWithIdenticalEntries( multiplicities[o], -1 + o ), [ 0 .. multiplicities[o] - 1 ] ) );
-        
-        mor := List( [ 1 .. l ], o ->
-                     ListWithIdenticalEntries( multiplicities[o], IdentityMorphism( C, objectsC[o] ) ) );
-        
-        return MorphismConstructor( UCm, object, Pair( map, mor ), object );
-        
-    end );
+    fi;
     
-    ##
-    AddPreCompose( UCm,
-      function ( UCm, pre_morphism, post_morphism )
-        local C, l, S, s, pair_of_lists_pre, pair_of_lists_post,
-              maps_pre, maps_post, maps_cmp,
-              mors_pre, mors_post, mors_cmp;
+    if CanCompute( C, "PreCompose" ) then
         
-        C := UnderlyingCategory( UCm );
+        ##
+        AddPreCompose( UCm,
+          function ( UCm, pre_morphism, post_morphism )
+            local C, l, S, s, pair_of_lists_pre, pair_of_lists_post,
+                  maps_pre, maps_post, maps_cmp,
+                  mors_pre, mors_post, mors_cmp;
+            
+            C := UnderlyingCategory( UCm );
+            
+            l := NumberOfObjectsOfUnderlyingCategory( UCm );
+            
+            S := Source( pre_morphism );
+            s := ObjectDatum( S )[2];
+            
+            pair_of_lists_pre := MorphismDatum( UCm, pre_morphism );
+            pair_of_lists_post := MorphismDatum( UCm, post_morphism );
+            
+            maps_pre := pair_of_lists_pre[1];
+            maps_post := pair_of_lists_post[1];
+            
+            maps_cmp := List( [ 1 .. l ], o ->
+                              Pair( List( [ 1 .. s[o] ], i -> maps_post[1 + maps_pre[o][1][i]][1][1 + maps_pre[o][2][i]] ),
+                                    List( [ 1 .. s[o] ], i -> maps_post[1 + maps_pre[o][1][i]][2][1 + maps_pre[o][2][i]] ) ) );
+            
+            mors_pre := pair_of_lists_pre[2];
+            mors_post := pair_of_lists_post[2];
+            
+            mors_cmp := List( [ 1 .. l ], o ->
+                              List( [ 1 .. s[o] ], i ->
+                                    PreCompose( C,
+                                            mors_pre[o][i],
+                                            mors_post[1 + maps_pre[o][1][i]][1 + maps_pre[o][2][i]] ) ) );
+            
+            return MorphismConstructor( UCm,
+                           S,
+                           Pair( maps_cmp, mors_cmp ),
+                           Target( post_morphism ) );
+            
+        end, 2 * OperationWeight( C, "PreCompose" ) );
         
-        l := NumberOfObjectsOfUnderlyingCategory( UCm );
-        
-        S := Source( pre_morphism );
-        s := ObjectDatum( S )[2];
-        
-        pair_of_lists_pre := MorphismDatum( UCm, pre_morphism );
-        pair_of_lists_post := MorphismDatum( UCm, post_morphism );
-        
-        maps_pre := pair_of_lists_pre[1];
-        maps_post := pair_of_lists_post[1];
-        
-        maps_cmp := List( [ 1 .. l ], o ->
-                          Pair( List( [ 1 .. s[o] ], i -> maps_post[1 + maps_pre[o][1][i]][1][1 + maps_pre[o][2][i]] ),
-                                List( [ 1 .. s[o] ], i -> maps_post[1 + maps_pre[o][1][i]][2][1 + maps_pre[o][2][i]] ) ) );
-        
-        mors_pre := pair_of_lists_pre[2];
-        mors_post := pair_of_lists_post[2];
-        
-        mors_cmp := List( [ 1 .. l ], o ->
-                          List( [ 1 .. s[o] ], i ->
-                                PreCompose( C,
-                                        mors_pre[o][i],
-                                        mors_post[1 + maps_pre[o][1][i]][1 + maps_pre[o][2][i]] ) ) );
-        
-        return MorphismConstructor( UCm,
-                       S,
-                       Pair( maps_cmp, mors_cmp ),
-                       Target( post_morphism ) );
-        
-    end );
+    fi;
     
     ##
     AddIsInitial( UCm,
@@ -685,8 +716,8 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
     fi;
     
     if HasIsFiniteCategory( C ) and IsFiniteCategory( C ) and
-       CanCompute( C, "SetOfObjectsOfCategory" ) and
-       HasIsThinCategory( UCm ) and IsThinCategory( UCm ) then
+       IsBound( H ) and IsIntervalCategory( H ) and
+       CanCompute( C, "SetOfObjectsOfCategory" ) then
         
         SetIsFiniteCategory( UCm, true );
         
@@ -705,7 +736,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             return List( Concatenation( joins ), entry -> entry[2] );
             
-        end );
+        end, 2 * OperationWeight( C, "SetOfObjectsOfCategory" ) );
         
     fi;
     

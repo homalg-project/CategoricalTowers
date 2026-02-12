@@ -28,7 +28,7 @@ Display( L );
 #! An object in CategoryOfColimitQuivers(
 #! PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data
 b := ColimitQuiversC.b;
-#! <A morphism in CategoryOfColimitQuivers(
+#! <A monomorphism in CategoryOfColimitQuivers(
 #!  PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )>
 Display( b );
 #! Source: [ [ <(P)> ], [  ] ]
