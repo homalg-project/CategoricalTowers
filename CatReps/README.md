@@ -58,7 +58,7 @@ The supported categorical doctrine of the category of representations is
 
 ```gap
 gap> Display( CatReps );
-68 primitive operations were used to derive 360 operations for this category
+68 primitive operations were used to derive 361 operations for this category
 which constructively
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
