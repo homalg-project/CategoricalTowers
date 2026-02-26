@@ -4,7 +4,7 @@
 
 LoadPackage( "CompilerForCAP", ">= 2025.11-01", false );
 #! true
-LoadPackage( "SubcategoriesForCAP", false );
+LoadPackage( "SliceCategoriesForCAP", false );
 #! true
 LoadPackage( "AdditiveClosuresForCAP", ">= 2025.07-02", false );
 #! true
@@ -39,7 +39,7 @@ category_constructor := ring ->
 
 given_arguments := [ ZZZ ];;
 compiled_category_name := "SliceCategoryOfCategoryOfRowsOfRingOfIntegersOverTensorUnitPrecompiled";;
-package_name := "SubcategoriesForCAP";;
+package_name := "SliceCategoriesForCAP";;
 
 CapJitPrecompileCategoryAndCompareResult(
     category_constructor,

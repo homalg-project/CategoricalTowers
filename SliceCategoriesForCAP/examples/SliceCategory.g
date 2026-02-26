@@ -2,7 +2,7 @@
 
 #! @Example
 #! #@if ValueOption( "no_precompiled_code" ) <> true
-LoadPackage( "SubcategoriesForCAP", false );
+LoadPackage( "SliceCategoriesForCAP", false );
 #! true
 LoadPackage( "Toposes", ">= 2024.02-04", false );
 #! true

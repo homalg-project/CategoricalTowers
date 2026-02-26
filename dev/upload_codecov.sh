@@ -98,6 +98,10 @@ while ! ./codecov -Z -v -s ../ -F QuotientCategories -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
+while ! ./codecov -Z -v -s ../ -F SliceCategoriesForCAP -t $CODECOV_TOKEN; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
 while ! ./codecov -Z -v -s ../ -F SubcategoriesForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60

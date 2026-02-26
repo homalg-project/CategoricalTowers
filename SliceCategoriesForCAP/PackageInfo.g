@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# SubcategoriesForCAP: Subcategory and other related constructors for CAP categories
+# SliceCategoriesForCAP: Slice categories for CAP
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -8,8 +8,8 @@
 #
 SetPackageInfo( rec(
 
-PackageName := "SubcategoriesForCAP",
-Subtitle := "Subcategory and other related constructors for CAP categories",
+PackageName := "SliceCategoriesForCAP",
+Subtitle := "Slice categories for CAP",
 Version := "2026.03-01",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
@@ -43,20 +43,6 @@ Persons := [
     Place := "Siegen",
     Institution := "University of Siegen",
   ),
-  rec(
-    IsAuthor := true,
-    IsMaintainer := true,
-    FirstNames := "Kamal",
-    LastName := "Saleh",
-    WWWHome := "https://github.com/kamalsaleh/",
-    Email := "kamal.saleh@uni-siegen.de",
-    PostalAddress := Concatenation(
-               "Walter-Flex-Str. 3\n",
-               "57072 Siegen\n",
-               "Germany" ),
-    Place := "Siegen",
-    Institution := "University of Siegen",
-  ),
 ],
 
 # BEGIN URLS
@@ -65,10 +51,10 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/pkg/SubcategoriesForCAP",
-PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/SubcategoriesForCAP/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/CategoricalTowers/SubcategoriesForCAP/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/SubcategoriesForCAP-", ~.Version, "/SubcategoriesForCAP-", ~.Version ),
+PackageWWWHome  := "https://homalg-project.github.io/pkg/SliceCategoriesForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/SliceCategoriesForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/SliceCategoriesForCAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/SliceCategoriesForCAP-", ~.Version, "/SliceCategoriesForCAP-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
@@ -86,22 +72,30 @@ Status := "dev",
 AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "SubcategoriesForCAP",
+  BookName  := "SliceCategoriesForCAP",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Subcategory and other related constructors for CAP categories",
+  LongTitle := "Slice categories for CAP",
 ),
 
 Dependencies := rec(
   GAP := ">= 4.13.0",
   NeededOtherPackages := [
+                   [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2025.07-04" ],
+                   [ "MonoidalCategories", ">= 2025.03-02" ],
+                   [ "CartesianCategories", ">= 2025.06-01" ],
                    [ "ToolsForCategoricalTowers", ">= 2025.03-02" ],
+                   [ "Toposes", ">= 2025.08-03" ],
                    [ "Locales", ">= 2024.02-21" ],
+                   [ "FpCategories", ">= 2023.11-02" ],
+                   [ "FreydCategoriesForCAP", ">= 2025.06-02" ],
                   ],
-  SuggestedOtherPackages := [ ],
+  SuggestedOtherPackages := [
+                   [ "CompilerForCAP", ">= 2022.10-05" ],
+                  ],
   ExternalConditions := [ ],
 ),
 

@@ -121,6 +121,13 @@ GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/Quotien
 #git subtree split --prefix=QuotientCategories -b QuotientCategories-split
 echo ""
 
+# SliceCategoriesForCAP
+echo "Simulate release of SliceCategoriesForCAP"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/SliceCategoriesForCAP" --webdir "$PWD/gh-pages/SliceCategoriesForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
+# creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
+#git subtree split --prefix=SliceCategoriesForCAP -b SliceCategoriesForCAP-split
+echo ""
+
 # SubcategoriesForCAP
 echo "Simulate release of SubcategoriesForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/SubcategoriesForCAP" --webdir "$PWD/gh-pages/SubcategoriesForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
