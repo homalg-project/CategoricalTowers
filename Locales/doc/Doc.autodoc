@@ -104,5 +104,6 @@
 
 @Chapter Tests
 
-@Subsection Precompilation
+@Section Precompilation
+@Subsection Precompilation of stable poset
 @InsertChunk StablePosetOfCategoryOfPosetOfCategoryOfSliceCategoryOverTensorUnitOfCategoryOfRowsOfCommutativeRingPrecompiled

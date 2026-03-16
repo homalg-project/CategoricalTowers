@@ -40,10 +40,6 @@
 
 @InsertChunk SubobjectClassifier
 
-@Subsection PreSheaves of non-f.p. categories (experimental)
-
-@InsertChunk PreSheavesOfSkeletalFinSets
-
 @Subsection The colimit completion of a cyclic monoid
 
 @InsertChunk StreamVortexSystem
@@ -61,6 +57,10 @@
 @Subsection Optimized co-Yoneda lemma for posets
 
 @InsertChunk OptimizedCoYoneda
+
+@Subsection The group algebra of S3
+
+@InsertChunk QS3
 
 @Chapter Finite cocompletion of a finitely presented (linear) category
 
@@ -162,20 +162,38 @@
 
 @Section Attributes
 
-@Section &GAP; Categories
-
 @Section Examples
 
 @Subsection Proof of the snake lemma in a free Abelian category
 
 @InsertChunk SnakeInFreeAbelian
 
+@Section &GAP; Categories
+
+@Chapter Free distributive completion of a finitely presented category
+
+@Section Constructors
+
+@Section Attributes
+
+@Section &GAP; Categories
+
+@Section Examples
+
+@Subsection Second Dedekind number
+
+@InsertChunk Dedekind2ndNumber
+
 @Chapter Functors between the various categories
+
+@Section Isbell adjunction
 
 @Subsection The reflexive completion of the one object category $C_2$
 
 @InsertChunk C2
 
+@Subsection Reflexive nonprojective
+
 @InsertChunk ReflexiveModules
 
-@InsertChunk Dedekind2ndNumber
+@Subsection Reflexive nonprojective
