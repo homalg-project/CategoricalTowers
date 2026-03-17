@@ -1,4 +1,4 @@
-#! @Chunk NakayamaRightAdjoint
+#! @Chunk NakayamaLeftAdjoint
 
 #! @Example
 LoadPackage( "FunctorCategories", false );
