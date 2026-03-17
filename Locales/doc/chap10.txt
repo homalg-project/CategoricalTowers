@@ -48,21 +48,21 @@
   
   [1X10.3-1 IsMeetSemilatticeOfSingleDifferences[101X
   
-  [33X[1;0Y[29X[2XIsMeetSemilatticeOfSingleDifferences[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMeetSemilatticeOfSingleDifferences[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of a meet-semilattice of single differences.[133X
   
   [1X10.3-2 IsObjectInMeetSemilatticeOfSingleDifferences[101X
   
-  [33X[1;0Y[29X[2XIsObjectInMeetSemilatticeOfSingleDifferences[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInMeetSemilatticeOfSingleDifferences[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a meet-semilattice of differences.[133X
   
   [1X10.3-3 IsMorphismInMeetSemilatticeOfSingleDifferences[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInMeetSemilatticeOfSingleDifferences[102X( [3Xmorphism[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInMeetSemilatticeOfSingleDifferences[102X( [3Xmorphism[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in a meet-semilattice of differences.[133X

@@ -148,7 +148,7 @@
   
   [1X13.3-1 IsIntervalCategory[101X
   
-  [33X[1;0Y[29X[2XIsIntervalCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsIntervalCategory[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of an interval category.[133X
@@ -157,19 +157,19 @@
   
   [1X13.3-2 IsCellInIntervalCategory[101X
   
-  [33X[1;0Y[29X[2XIsCellInIntervalCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInIntervalCategory[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X13.3-3 IsObjectInIntervalCategory[101X
   
-  [33X[1;0Y[29X[2XIsObjectInIntervalCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInIntervalCategory[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in an interval category.[133X
   
   [1X13.3-4 IsMorphismInIntervalCategory[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInIntervalCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInIntervalCategory[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in an interval category.[133X
