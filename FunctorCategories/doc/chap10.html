@@ -33,19 +33,19 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X85EF505278CFF5F8">10.2-1 UnderlyingCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X8550D0128752931D">10.2-2 EmbeddingOfUnderlyingCategory</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X7D03633A7D98026B">10.3 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X7A489A5D79DA9E5C">10.3 <span class="Heading">Examples</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X809048F787428952">10.3-1 IsAbelianClosure</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X8266DE2C84896FC8">10.3-2 IsCellInAbelianClosure</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X80040ACD7DB0C6DD">10.3-3 IsObjectInAbelianClosure</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7C5928647B152795">10.3-4 IsMorphismInAbelianClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7F77AB6C8486994A">10.3-1 <span class="Heading">Proof of the snake lemma in a free Abelian category</span></a>
+</span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X7A489A5D79DA9E5C">10.4 <span class="Heading">Examples</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X7D03633A7D98026B">10.4 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7F77AB6C8486994A">10.4-1 <span class="Heading">Proof of the snake lemma in a free Abelian category</span></a>
-</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X809048F787428952">10.4-1 IsAbelianClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X8266DE2C84896FC8">10.4-2 IsCellInAbelianClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X80040ACD7DB0C6DD">10.4-3 IsObjectInAbelianClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap10.html#X7C5928647B152795">10.4-4 IsMorphismInAbelianClosure</a></span>
 </div></div>
 </div>
 
@@ -80,53 +80,13 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnderlyingCategory</code>( <var class="Arg">abelian_closure</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP functor</p>
 
-<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
-
-<h4>10.3 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></h4>
-
-<p><a id="X809048F787428952" name="X809048F787428952"></a></p>
-
-<h5>10.3-1 IsAbelianClosure</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAbelianClosure</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of an Abelian closure category.</p>
-
-<p><a id="X8266DE2C84896FC8" name="X8266DE2C84896FC8"></a></p>
-
-<h5>10.3-2 IsCellInAbelianClosure</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInAbelianClosure</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of cells in an Abelian closure category.</p>
-
-<p><a id="X80040ACD7DB0C6DD" name="X80040ACD7DB0C6DD"></a></p>
-
-<h5>10.3-3 IsObjectInAbelianClosure</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInAbelianClosure</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of objects in an Abelian closure category.</p>
-
-<p><a id="X7C5928647B152795" name="X7C5928647B152795"></a></p>
-
-<h5>10.3-4 IsMorphismInAbelianClosure</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInAbelianClosure</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of morphisms in an Abelian closure category.</p>
-
 <p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
 
-<h4>10.4 <span class="Heading">Examples</span></h4>
+<h4>10.3 <span class="Heading">Examples</span></h4>
 
 <p><a id="X7F77AB6C8486994A" name="X7F77AB6C8486994A"></a></p>
 
-<h5>10.4-1 <span class="Heading">Proof of the snake lemma in a free Abelian category</span></h5>
+<h5>10.3-1 <span class="Heading">Proof of the snake lemma in a free Abelian category</span></h5>
 
 
 <div class="example"><pre>
@@ -219,6 +179,46 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( HC );</span>
 true
 </pre></div>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>10.4 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></h4>
+
+<p><a id="X809048F787428952" name="X809048F787428952"></a></p>
+
+<h5>10.4-1 IsAbelianClosure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAbelianClosure</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of an Abelian closure category.</p>
+
+<p><a id="X8266DE2C84896FC8" name="X8266DE2C84896FC8"></a></p>
+
+<h5>10.4-2 IsCellInAbelianClosure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInAbelianClosure</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in an Abelian closure category.</p>
+
+<p><a id="X80040ACD7DB0C6DD" name="X80040ACD7DB0C6DD"></a></p>
+
+<h5>10.4-3 IsObjectInAbelianClosure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInAbelianClosure</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in an Abelian closure category.</p>
+
+<p><a id="X7C5928647B152795" name="X7C5928647B152795"></a></p>
+
+<h5>10.4-4 IsMorphismInAbelianClosure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInAbelianClosure</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in an Abelian closure category.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap9.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap11.html">[Next Chapter]</a>&nbsp;  </div>

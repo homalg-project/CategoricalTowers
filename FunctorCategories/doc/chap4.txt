@@ -78,28 +78,28 @@
   
   [1X4.5-1 IsCategoryOfBouquets[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfBouquets[102X( [3Xcategory[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryOfBouquets[102X( [3Xcategory[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of the category of bouquets.[133X
   
   [1X4.5-2 IsCellInCategoryOfBouquets[101X
   
-  [33X[1;0Y[29X[2XIsCellInCategoryOfBouquets[102X( [3Xcell[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInCategoryOfBouquets[102X( [3Xcell[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in the category of bouquets.[133X
   
   [1X4.5-3 IsObjectInCategoryOfBouquets[101X
   
-  [33X[1;0Y[29X[2XIsObjectInCategoryOfBouquets[102X( [3Xobj[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInCategoryOfBouquets[102X( [3Xobj[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in the category of bouquets.[133X
   
   [1X4.5-4 IsMorphismInCategoryOfBouquets[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInCategoryOfBouquets[102X( [3Xmor[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInCategoryOfBouquets[102X( [3Xmor[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in the category of bouquets.[133X

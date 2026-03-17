@@ -727,7 +727,7 @@
   
   [1X2.4-1 IsPreSheafCategoryOfFpEnrichedCategory[101X
   
-  [33X[1;0Y[29X[2XIsPreSheafCategoryOfFpEnrichedCategory[102X( [3Xcategory[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsPreSheafCategoryOfFpEnrichedCategory[102X( [3Xcategory[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  [5XGAP[105X  category  of  a presheaf category of a finitely presented enriched
@@ -735,7 +735,7 @@
   
   [1X2.4-2 IsCellInPreSheafCategoryOfFpEnrichedCategory[101X
   
-  [33X[1;0Y[29X[2XIsCellInPreSheafCategoryOfFpEnrichedCategory[102X( [3Xcell[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInPreSheafCategoryOfFpEnrichedCategory[102X( [3Xcell[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  [5XGAP[105X  category  of  cells in a presheaf category of a finitely presented
@@ -743,7 +743,7 @@
   
   [1X2.4-3 IsObjectInPreSheafCategoryOfFpEnrichedCategory[101X
   
-  [33X[1;0Y[29X[2XIsObjectInPreSheafCategoryOfFpEnrichedCategory[102X( [3Xobj[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInPreSheafCategoryOfFpEnrichedCategory[102X( [3Xobj[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  [5XGAP[105X  category of objects in a presheaf category of a finitely presented
@@ -751,7 +751,7 @@
   
   [1X2.4-4 IsMorphismInPreSheafCategoryOfFpEnrichedCategory[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInPreSheafCategoryOfFpEnrichedCategory[102X( [3Xmor[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInPreSheafCategoryOfFpEnrichedCategory[102X( [3Xmor[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in a presheaf category of a finitely presented
@@ -986,10 +986,7 @@
   [4X[32X[104X
   
   
-  [1X2.6-2 [33X[0;0YPreSheaves of non-f.p. categories (experimental)[133X[101X
-  
-  
-  [1X2.6-3 [33X[0;0YThe colimit completion of a cyclic monoid[133X[101X
+  [1X2.6-2 [33X[0;0YThe colimit completion of a cyclic monoid[133X[101X
   
   [33X[0;0YStream-vortex-system: Study the colimit completion of a cyclic monoid[133X
   
@@ -1263,7 +1260,7 @@
   [4X[32X[104X
   
   
-  [1X2.6-4 [33X[0;0YThe linearization of the colimit completion of a cyclic monoid[133X[101X
+  [1X2.6-3 [33X[0;0YThe linearization of the colimit completion of a cyclic monoid[133X[101X
   
   [33X[0;0YStream-vortex-system: Study the linearization of the colimit completion of a
   cyclic monoid[133X
@@ -1489,7 +1486,7 @@
   [4X[32X[104X
   
   
-  [1X2.6-5 [33X[0;0YThe Weierstrass normal form[133X[101X
+  [1X2.6-4 [33X[0;0YThe Weierstrass normal form[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", ">= 2023.10-06", false );[127X[104X
@@ -1703,7 +1700,7 @@
   [4X[32X[104X
   
   
-  [1X2.6-6 [33X[0;0YOptimized co-Yoneda lemma for posets[133X[101X
+  [1X2.6-5 [33X[0;0YOptimized co-Yoneda lemma for posets[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", ">= 2024.03-13", false );[127X[104X
@@ -1752,6 +1749,69 @@
     [4X[28X[128X[104X
     [4X[28XAn object in FiniteStrictCoproductCompletion( PosetOfCategory( PathCategory([128X[104X
     [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.6-6 [33X[0;0YThe group algebra of S3[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(1)[a:1->1,b:1->1]" );[127X[104X
+    [4X[28Xq(1)[a:1->1,b:1->1][128X[104X
+    [4X[25Xgap>[125X [27XS3 := Category( q, [ [ q.a^2, q.1 ], [ q.b^3, q.1 ], [ q.bab, q.a ] ] );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(1)[a:1->1,b:1->1]" ) ) / \[128X[104X
+    [4X[28X[ a*a = 1, b*b*b = 1, b*a*b = a ][128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQS3 := Q[S3];[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[a:1->1,b:1->1]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XPSh := PreSheaves( QS3 );[127X[104X
+    [4X[28XPreSheaves( Algebra( Q, FreeCategory( \[128X[104X
+    [4X[28XRightQuiver( "q(1)[a:1->1,b:1->1]" ) ) ) / relations, Rows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27XY1 := PSh.1;[127X[104X
+    [4X[28X<(1)->6; (a)->6x6, (b)->6x6>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Y1 );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA row module over Q of rank 6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ 1*(a) }]->(1):[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  0,  1,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  1,  0,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  1,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  1,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  1 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  1,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ 1*(b) }]->(1):[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  0,  0,  1,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  1 ],[128X[104X
+    [4X[28X  [  0,  1,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  1,  0,  0 ],[128X[104X
+    [4X[28X  [  1,  0,  0,  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves( Algebra( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(1)[a:1->1,b:1->1]" ) ) ) / relations, Rows( Q ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
   [4X[32X[104X
   

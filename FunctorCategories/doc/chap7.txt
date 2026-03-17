@@ -82,28 +82,28 @@
   
   [1X7.5-1 IsCategoryOfReflexiveQuivers[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfReflexiveQuivers[102X( [3Xcategory[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryOfReflexiveQuivers[102X( [3Xcategory[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of the category of reflexive quivers.[133X
   
   [1X7.5-2 IsCellInCategoryOfReflexiveQuivers[101X
   
-  [33X[1;0Y[29X[2XIsCellInCategoryOfReflexiveQuivers[102X( [3Xcell[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInCategoryOfReflexiveQuivers[102X( [3Xcell[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in the category of reflexive quivers.[133X
   
   [1X7.5-3 IsObjectInCategoryOfReflexiveQuivers[101X
   
-  [33X[1;0Y[29X[2XIsObjectInCategoryOfReflexiveQuivers[102X( [3Xobj[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInCategoryOfReflexiveQuivers[102X( [3Xobj[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in the category of reflexive quivers.[133X
   
   [1X7.5-4 IsMorphismInCategoryOfReflexiveQuivers[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInCategoryOfReflexiveQuivers[102X( [3Xmor[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInCategoryOfReflexiveQuivers[102X( [3Xmor[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in the category of reflexive quivers.[133X

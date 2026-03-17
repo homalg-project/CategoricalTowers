@@ -24,41 +24,10 @@
   [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   
-  [1X10.3 [33X[0;0Y[5XGAP[105X[101X[1X Categories[133X[101X
-  
-  [1X10.3-1 IsAbelianClosure[101X
-  
-  [33X[1;0Y[29X[2XIsAbelianClosure[102X( [3Xcategory[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of an Abelian closure category.[133X
-  
-  [1X10.3-2 IsCellInAbelianClosure[101X
-  
-  [33X[1;0Y[29X[2XIsCellInAbelianClosure[102X( [3Xcell[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of cells in an Abelian closure category.[133X
-  
-  [1X10.3-3 IsObjectInAbelianClosure[101X
-  
-  [33X[1;0Y[29X[2XIsObjectInAbelianClosure[102X( [3Xobj[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of objects in an Abelian closure category.[133X
-  
-  [1X10.3-4 IsMorphismInAbelianClosure[101X
-  
-  [33X[1;0Y[29X[2XIsMorphismInAbelianClosure[102X( [3Xmor[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of morphisms in an Abelian closure category.[133X
+  [1X10.3 [33X[0;0YExamples[133X[101X
   
   
-  [1X10.4 [33X[0;0YExamples[133X[101X
-  
-  
-  [1X10.4-1 [33X[0;0YProof of the snake lemma in a free Abelian category[133X[101X
+  [1X10.3-1 [33X[0;0YProof of the snake lemma in a free Abelian category[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xq := RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" );[127X[104X
@@ -150,4 +119,35 @@
     [4X[25Xgap>[125X [27XIsZero( HC );[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
+  
+  
+  [1X10.4 [33X[0;0Y[5XGAP[105X[101X[1X Categories[133X[101X
+  
+  [1X10.4-1 IsAbelianClosure[101X
+  
+  [33X[1;0Y[29X[2XIsAbelianClosure[102X( [3Xcategory[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of an Abelian closure category.[133X
+  
+  [1X10.4-2 IsCellInAbelianClosure[101X
+  
+  [33X[1;0Y[29X[2XIsCellInAbelianClosure[102X( [3Xcell[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of cells in an Abelian closure category.[133X
+  
+  [1X10.4-3 IsObjectInAbelianClosure[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInAbelianClosure[102X( [3Xobj[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in an Abelian closure category.[133X
+  
+  [1X10.4-4 IsMorphismInAbelianClosure[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInAbelianClosure[102X( [3Xmor[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in an Abelian closure category.[133X
   

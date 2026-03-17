@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (FunctorCategories) - Chapter 11: Functors between the various categories</title>
+<title>GAP (FunctorCategories) - Chapter 11: Free distributive completion of a finitely presented category</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -20,198 +20,114 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap10.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap12.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap11_mj.html">[MathJax on]</a></p>
-<p><a id="X865310497C9FF1C6" name="X865310497C9FF1C6"></a></p>
-<div class="ChapSects"><a href="chap11.html#X865310497C9FF1C6">11 <span class="Heading">Functors between the various categories</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X7A489A5D79DA9E5C">11.1 <span class="Heading">Examples</span></a>
+<p><a id="X7EEFD60E7C2E597F" name="X7EEFD60E7C2E597F"></a></p>
+<div class="ChapSects"><a href="chap11.html#X7EEFD60E7C2E597F">11 <span class="Heading">Free distributive completion of a finitely presented category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X86EC0F0A78ECBC10">11.1 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X80E594F57D29609F">11.1-1 <span class="Heading">The reflexive completion of the one object category $C 2$</span></a>
-</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X826680AC87B93936">11.1-1 FreeDistributiveCompletion</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X7C701DBF7BAE649A">11.2 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X786A8F6E83B5B0EF">11.2-1 NakayamaLeftAdjoint</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X7C515ADC841875EB">11.2-2 NakayamaRightAdjoint</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X866BBC6C8138F441">11.2-3 IsbellLeftAdjoint</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X7F72DD2187F4AF22">11.2-4 IsbellRightAdjoint</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X82CFAE0E811F1A9D">11.2-5 IsbellAdjunctionMonad</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X7A2C26EC814AD684">11.2-6 UnitOfIsbellAdjunction</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X80F133577F2A5EC0">11.2-7 IsomorphismFromSourceIntoImageOfYonedaEmbeddingOfSource</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X817B4C2B78E963F2">11.2-8 IsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X8190CDAC795D595D">11.2-9 EquivalenceFromFullSubcategoryOfProjectivesObjectsIntoAdditiveClosureOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X819E39678256945B">11.2-1 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X85C6C5EC8101500B">11.2-2 EmbeddingOfUnderlyingCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X7D03633A7D98026B">11.3 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X7DC406DF873C6B7C">11.3-1 IsFreeDistributiveCompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X79702DFC86779871">11.3-2 IsCellInFreeDistributiveCompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X7EC85A29827A9BDC">11.3-3 IsObjectInFreeDistributiveCompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X7C0705C678138B61">11.3-4 IsMorphismInFreeDistributiveCompletion</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X7A489A5D79DA9E5C">11.4 <span class="Heading">Examples</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11.html#X87DCD549834F15CF">11.4-1 <span class="Heading">Second Dedekind number</span></a>
+</span>
 </div></div>
 </div>
 
-<h3>11 <span class="Heading">Functors between the various categories</span></h3>
+<h3>11 <span class="Heading">Free distributive completion of a finitely presented category</span></h3>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>11.1 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X826680AC87B93936" name="X826680AC87B93936"></a></p>
+
+<h5>11.1-1 FreeDistributiveCompletion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FreeDistributiveCompletion</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FreeDistributiveCompletion</code>( <var class="Arg">B</var>, <var class="Arg">H</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP category</p>
+
+<p>Construct a free distributive completion category.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>11.2 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X819E39678256945B" name="X819E39678256945B"></a></p>
+
+<h5>11.2-1 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">finite_completion</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X85C6C5EC8101500B" name="X85C6C5EC8101500B"></a></p>
+
+<h5>11.2-2 EmbeddingOfUnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnderlyingCategory</code>( <var class="Arg">finite_completion</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP functor</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>11.3 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></h4>
+
+<p><a id="X7DC406DF873C6B7C" name="X7DC406DF873C6B7C"></a></p>
+
+<h5>11.3-1 IsFreeDistributiveCompletion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFreeDistributiveCompletion</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of a free distributive completion category.</p>
+
+<p><a id="X79702DFC86779871" name="X79702DFC86779871"></a></p>
+
+<h5>11.3-2 IsCellInFreeDistributiveCompletion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInFreeDistributiveCompletion</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in a free distributive completion category.</p>
+
+<p><a id="X7EC85A29827A9BDC" name="X7EC85A29827A9BDC"></a></p>
+
+<h5>11.3-3 IsObjectInFreeDistributiveCompletion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInFreeDistributiveCompletion</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in a free distributive completion category.</p>
+
+<p><a id="X7C0705C678138B61" name="X7C0705C678138B61"></a></p>
+
+<h5>11.3-4 IsMorphismInFreeDistributiveCompletion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInFreeDistributiveCompletion</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a free distributive completion category.</p>
 
 <p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
 
-<h4>11.1 <span class="Heading">Examples</span></h4>
+<h4>11.4 <span class="Heading">Examples</span></h4>
 
-<p><a id="X80E594F57D29609F" name="X80E594F57D29609F"></a></p>
+<p><a id="X87DCD549834F15CF" name="X87DCD549834F15CF"></a></p>
 
-<h5>11.1-1 <span class="Heading">The reflexive completion of the one object category $C 2$</span></h5>
-
-<p>The reflexive completion of the one object category <span class="Math">C_2</span> has four isomorphism classes of objects:</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(1)[a:1-&gt;1]" );</span>
-q(1)[a:1-&gt;1]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C2 := Category( q, [ [ q.a^2, q.1 ] ] );</span>
-FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) ) / [ a*a = 1 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( C2 );</span>
-PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )/ [ a*a = 1 ],
-SkeletalFinSets )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsReflexive( TerminalObject( PSh ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsReflexive( InitialObject( PSh ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := PSh.1;</span>
-&lt;A projective object in PreSheaves( FreeCategory(
- RightQuiver( "q(1)[a:1-&gt;1]" ) ) / [ a*a = 1 ], SkeletalFinSets )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsReflexive( L );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := DirectProduct( L, L );</span>
-&lt;An object in PreSheaves( FreeCategory(
- RightQuiver( "q(1)[a:1-&gt;1]" ) ) / [ a*a = 1 ], SkeletalFinSets )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsReflexive( P );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := UnitOfIsbellAdjunction( PSh );</span>
-A natural transformation from Identity functor of PreSheaves(
-FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) ) / [ a*a = 1 ], SkeletalFinSets )
-to Precomposition of Isbell left adjoint functor and Isbell right adjoint functor
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iotaP := iota( P );</span>
-&lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
- / [ a*a = 1 ], SkeletalFinSets )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iotaP );</span>
-Image of &lt;(1)&gt;:
-{ 0,..., 3 } ⱶ[ 0, 1, 2, 3 ]→ { 0,..., 3 }
-
-A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
-/ [ a*a = 1 ], SkeletalFinSets ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( iotaP );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := Coproduct( L, L );</span>
-&lt;An object in PreSheaves( FreeCategory(
- RightQuiver( "q(1)[a:1-&gt;1]" ) ) / [ a*a = 1 ], SkeletalFinSets )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsReflexive( C );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iotaC := iota( C );</span>
-&lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
- / [ a*a = 1 ], SkeletalFinSets )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iotaC );</span>
-Image of &lt;(1)&gt;:
-{ 0,..., 3 } ⱶ[ 1, 2, 0, 3 ]→ { 0,..., 3 }
-
-A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
-/ [ a*a = 1 ], SkeletalFinSets ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( iotaC );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( iotaC ) = C;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Target( iotaC ) = P;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L3 := Coproduct( L, L, L );</span>
-&lt;An object in PreSheaves( FreeCategory(
- RightQuiver( "q(1)[a:1-&gt;1]" ) ) / [ a*a = 1 ], SkeletalFinSets )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsProjective( L3 );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsReflexive( L3 );</span>
-false
-</pre></div>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(1)[t:1-&gt;1]" );</span>
-q(1)[t:1-&gt;1]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeCategory( q );</span>
-FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );</span>
-Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qq := Q[F];</span>
-Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := Qq / [ Qq.t^3 ];</span>
-Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) ) / relations
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( A );</span>
-PreSheaves(
-Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) ) / relations,
-Rows( Q ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CommutativeRingOfLinearCategory( PSh );</span>
-Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( PSh.1 );</span>
-Image of &lt;(1)&gt;:
-A row module over Q of rank 3
-
-Image of (1)-[{ 1*(t) }]-&gt;(1):
-Source:
-A row module over Q of rank 3
-
-Matrix:
-[ [  0,  1,  0 ],
-  [  0,  0,  1 ],
-  [  0,  0,  0 ] ]
-
-Range:
-A row module over Q of rank 3
-
-A morphism in Rows( Q )
-
-An object in PreSheaves(
-Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) ) / relations,
-Rows( Q ) ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( PSh.t );</span>
-Image of &lt;(1)&gt;:
-Source:
-A row module over Q of rank 3
-
-Matrix:
-[ [  0,  1,  0 ],
-  [  0,  0,  1 ],
-  [  0,  0,  0 ] ]
-
-Range:
-A row module over Q of rank 3
-
-A morphism in Rows( Q )
-
-A morphism in PreSheaves(
-Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) ) / relations,
-Rows( Q ) ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi := PreCompose( PSh.t, PSh.t );</span>
-&lt;(1)-&gt;3x3&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := DirectSum( [ PSh.1, KernelObject( phi ), ImageObject( phi ) ] );</span>
-&lt;(1)-&gt;6; (t)-&gt;6x6&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( V );</span>
-Image of &lt;(1)&gt;:
-A row module over Q of rank 6
-
-Image of (1)-[{ 1*(t) }]-&gt;(1):
-Source:
-A row module over Q of rank 6
-
-Matrix:
-[ [  0,  1,  0,  0,  0,  0 ],
-  [  0,  0,  1,  0,  0,  0 ],
-  [  0,  0,  0,  0,  0,  0 ],
-  [  0,  0,  0,  0,  1,  0 ],
-  [  0,  0,  0,  0,  0,  0 ],
-  [  0,  0,  0,  0,  0,  0 ] ]
-
-Range:
-A row module over Q of rank 6
-
-A morphism in Rows( Q )
-
-An object in PreSheaves(
-Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) ) / relations,
-Rows( Q ) ) given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsProjective( V );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsReflexive( V );</span>
-true
-</pre></div>
+<h5>11.4-1 <span class="Heading">Second Dedekind number</span></h5>
 
 <p>The category of presheaves with values in the interval category of the boolean algebra 2^2 has 6 distinct objects. This is the free distributive lattice generated by a discrete category with two objects.</p>
 
@@ -269,218 +185,6 @@ PosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfObjects( DiffbCSL ) );</span>
 13
 </pre></div>
-
-<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
-
-<h4>11.2 <span class="Heading">Attributes</span></h4>
-
-<p><a id="X786A8F6E83B5B0EF" name="X786A8F6E83B5B0EF"></a></p>
-
-<h5>11.2-1 NakayamaLeftAdjoint</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NakayamaLeftAdjoint</code>( <var class="Arg">PSh</var>, <var class="Arg">coPSh</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NakayamaLeftAdjoint</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP functor</p>
-
-<p>Returns the Nakayama left adjoint functor from <var class="Arg">PSh</var> = <code class="code">PreSheaves</code>( <var class="Arg">B</var> ) <span class="Math">\to</span> <var class="Arg">coPSh</var> = <code class="code">CoPreSheaves</code>( <var class="Arg">B</var> ).</p>
-
-<p><a id="X7C515ADC841875EB" name="X7C515ADC841875EB"></a></p>
-
-<h5>11.2-2 NakayamaRightAdjoint</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NakayamaRightAdjoint</code>( <var class="Arg">coPSh</var>, <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NakayamaRightAdjoint</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP functor</p>
-
-<p>Returns the Nakayama right adjoint functor from <var class="Arg">coPSh</var> = <code class="code">CoPreSheaves</code>( <var class="Arg">B</var> ) <span class="Math">\to</span> <var class="Arg">PSh</var> = <code class="code">PreSheaves</code>( <var class="Arg">B</var> ).</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeCategory( RightQuiver( "q(1,2,3)[a:1-&gt;2,b:2-&gt;3]" ) );</span>
-FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );</span>
-Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QF := Q[F];</span>
-Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A3 := QF / [ QF.ab ];</span>
-Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) ) / relations
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( A3 );</span>
-PreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) )
-/ relations, Rows( Q ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">prj := IndecomposableProjectiveObjects( PSh );</span>
-[ &lt;(1)-&gt;1, (2)-&gt;0, (3)-&gt;0; (a)-&gt;0x1, (b)-&gt;0x0&gt;,
-  &lt;(1)-&gt;1, (2)-&gt;1, (3)-&gt;0; (a)-&gt;1x1, (b)-&gt;0x1&gt;,
-  &lt;(1)-&gt;0, (2)-&gt;1, (3)-&gt;1; (a)-&gt;1x0, (b)-&gt;1x1&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( prj, IsInjective );</span>
-[ false, true, true ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P1 := prj[1];</span>
-&lt;(1)-&gt;1, (2)-&gt;0, (3)-&gt;0; (a)-&gt;0x1, (b)-&gt;0x0&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota0 := MonomorphismIntoInjectiveEnvelopeObject( P1 );</span>
-&lt;(1)-&gt;1x1, (2)-&gt;0x1, (3)-&gt;0x0&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">epsilon1 := CokernelProjection( iota0 );</span>
-&lt;(1)-&gt;1x0, (2)-&gt;1x1, (3)-&gt;0x0&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sigma1 := Target( epsilon1 );</span>
-&lt;(1)-&gt;0, (2)-&gt;1, (3)-&gt;0; (a)-&gt;1x0, (b)-&gt;0x1&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota1 := MonomorphismIntoInjectiveEnvelopeObject( Sigma1 );</span>
-&lt;(1)-&gt;0x0, (2)-&gt;1x1, (3)-&gt;0x1&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d1 := PreCompose( epsilon1, iota1 );</span>
-&lt;(1)-&gt;1x0, (2)-&gt;1x1, (3)-&gt;0x1&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IR := IsbellRightAdjoint( A3 );</span>
-Isbell right adjoint functor
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( IR );</span>
-Isbell right adjoint functor:
-
-CoPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) )
-/ relations, Rows( Q ) )
-  |
-  V
-PreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) )
-/ relations, Rows( Q ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NL := NakayamaLeftAdjoint( A3 );</span>
-Nakayama left adjoint
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( NL );</span>
-Nakayama left adjoint:
-
-PreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) )
-/ relations, Rows( Q ) )
-  |
-  V
-CoPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) )
-/ relations, Rows( Q ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tau_P1 := CokernelObject( IR( NL( d1 ) ) );</span>
-&lt;(1)-&gt;0, (2)-&gt;1, (3)-&gt;0; (a)-&gt;1x0, (b)-&gt;0x1&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tau_P1 = SimpleObjects( PSh )[2];</span>
-true
-</pre></div>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeCategory( RightQuiver( "q(1,2,3)[a:1-&gt;2,b:2-&gt;3]" ) );</span>
-FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );</span>
-Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QF := Q[F];</span>
-Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A3 := QF / [ QF.ab ];</span>
-Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) ) / relations
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( A3 );</span>
-PreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) )
-/ relations, Rows( Q ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj := IndecomposableInjectiveObjects( PSh );</span>
-[ &lt;(1)-&gt;1, (2)-&gt;1, (3)-&gt;0; (a)-&gt;1x1, (b)-&gt;0x1&gt;,
-  &lt;(1)-&gt;0, (2)-&gt;1, (3)-&gt;1; (a)-&gt;1x0, (b)-&gt;1x1&gt;,
-  &lt;(1)-&gt;0, (2)-&gt;0, (3)-&gt;1; (a)-&gt;0x0, (b)-&gt;1x0&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( inj, IsProjective );</span>
-[ true, true, false ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I3 := inj[3];</span>
-&lt;(1)-&gt;0, (2)-&gt;0, (3)-&gt;1; (a)-&gt;0x0, (b)-&gt;1x0&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi0 := EpimorphismFromProjectiveCoverObject( I3 );</span>
-&lt;(1)-&gt;0x0, (2)-&gt;1x0, (3)-&gt;1x1&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kappa1 := KernelEmbedding( pi0 );</span>
-&lt;(1)-&gt;0x0, (2)-&gt;1x1, (3)-&gt;0x1&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Omega1 := Source( kappa1 );</span>
-&lt;(1)-&gt;0, (2)-&gt;1, (3)-&gt;0; (a)-&gt;1x0, (b)-&gt;0x1&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := EpimorphismFromProjectiveCoverObject( Omega1 );</span>
-&lt;(1)-&gt;1x0, (2)-&gt;1x1, (3)-&gt;0x0&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d1 := PreCompose( pi1, kappa1 );</span>
-&lt;(1)-&gt;1x0, (2)-&gt;1x1, (3)-&gt;0x1&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IL := IsbellLeftAdjoint( A3 );</span>
-Isbell left adjoint functor
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( IL );</span>
-Isbell left adjoint functor:
-
-PreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) )
-/ relations, Rows( Q ) )
-  |
-  V
-CoPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) )
-/ relations, Rows( Q ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NR := NakayamaRightAdjoint( A3 );</span>
-Nakayama right adjoint
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( NR );</span>
-Nakayama right adjoint:
-
-CoPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) )
-/ relations, Rows( Q ) )
-  |
-  V
-PreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) )
-/ relations, Rows( Q ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tauI3 := KernelObject( NR( IL( d1 ) ) );</span>
-&lt;(1)-&gt;0, (2)-&gt;1, (3)-&gt;0; (a)-&gt;1x0, (b)-&gt;0x1&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tauI3 = SimpleObjects( PSh )[2];</span>
-true
-</pre></div>
-
-<p><a id="X866BBC6C8138F441" name="X866BBC6C8138F441"></a></p>
-
-<h5>11.2-3 IsbellLeftAdjoint</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsbellLeftAdjoint</code>( <var class="Arg">PSh</var>, <var class="Arg">coPSh</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsbellLeftAdjoint</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP functor</p>
-
-<p>Returns the Isbell left adjoint functor from <var class="Arg">PSh</var> = <code class="code">PreSheaves</code>( <var class="Arg">B</var> ) <span class="Math">\to</span> <var class="Arg">coPSh</var> = <code class="code">CoPreSheaves</code>( <var class="Arg">B</var> ).</p>
-
-<p><a id="X7F72DD2187F4AF22" name="X7F72DD2187F4AF22"></a></p>
-
-<h5>11.2-4 IsbellRightAdjoint</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsbellRightAdjoint</code>( <var class="Arg">coPSh</var>, <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsbellRightAdjoint</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP functor</p>
-
-<p>Returns the Isbell right adjoint functor from <var class="Arg">coPSh</var> = <code class="code">CoPreSheaves</code>( <var class="Arg">B</var> ) <span class="Math">\to</span> <var class="Arg">PSh</var> = <code class="code">PreSheaves</code>( <var class="Arg">B</var> ).</p>
-
-<p><a id="X82CFAE0E811F1A9D" name="X82CFAE0E811F1A9D"></a></p>
-
-<h5>11.2-5 IsbellAdjunctionMonad</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsbellAdjunctionMonad</code>( <var class="Arg">PSh</var>, <var class="Arg">coPSh</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsbellAdjunctionMonad</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP functor</p>
-
-<p>Returns the Isbell adjunction monad on the presheaf category <var class="Arg">PSh</var>.</p>
-
-<p><a id="X7A2C26EC814AD684" name="X7A2C26EC814AD684"></a></p>
-
-<h5>11.2-6 UnitOfIsbellAdjunction</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnitOfIsbellAdjunction</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP functor</p>
-
-<p>Returns the unit of the Isbell adjunction on the presheaf category <var class="Arg">PSh</var>.</p>
-
-<p><a id="X80F133577F2A5EC0" name="X80F133577F2A5EC0"></a></p>
-
-<h5>11.2-7 IsomorphismFromSourceIntoImageOfYonedaEmbeddingOfSource</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromSourceIntoImageOfYonedaEmbeddingOfSource</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP functor</p>
-
-<p>Returns the isomorphism functor from <code class="code">Source</code>(<var class="Arg">PSh</var>) to <code class="code">ImageOfYonedaEmbeddingOfSource</code>(<var class="Arg">PSh</var>) induced by the Yoneda embedding.</p>
-
-<p><a id="X817B4C2B78E963F2" name="X817B4C2B78E963F2"></a></p>
-
-<h5>11.2-8 IsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP functor</p>
-
-<p>Returns the isomorphism functor from <code class="code">ImageOfYonedaEmbeddingOfSource</code>(<var class="Arg">PSh</var>) to <code class="code">Source</code>(<var class="Arg">PSh</var>) induced by the Yoneda embedding.</p>
-
-<p><a id="X8190CDAC795D595D" name="X8190CDAC795D595D"></a></p>
-
-<h5>11.2-9 EquivalenceFromFullSubcategoryOfProjectivesObjectsIntoAdditiveClosureOfSource</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EquivalenceFromFullSubcategoryOfProjectivesObjectsIntoAdditiveClosureOfSource</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP functor</p>
-
-<p>Returns the equivalence functor from <code class="code">FullSubcategoryOfProjectiveObjects</code>(<var class="Arg">PSh</var>) to the additive closure category of <code class="code">Source</code>(<var class="Arg">PSh</var>).</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap10.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap12.html">[Next Chapter]</a>&nbsp;  </div>

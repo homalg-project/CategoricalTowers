@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (FunctorCategories) - Chapter 13: Free distributive completion of a finitely presented category</title>
+<title>GAP (FunctorCategories) - Chapter 13: Category of copresheaves of a finitely presented (linear) category</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -23,100 +23,253 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap12_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap14_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap13.html">[MathJax off]</a></p>
-<p><a id="X7EEFD60E7C2E597F" name="X7EEFD60E7C2E597F"></a></p>
-<div class="ChapSects"><a href="chap13_mj.html#X7EEFD60E7C2E597F">13 <span class="Heading">Free distributive completion of a finitely presented category</span></a>
+<p><a id="X7EBA4AF486E4BE94" name="X7EBA4AF486E4BE94"></a></p>
+<div class="ChapSects"><a href="chap13_mj.html#X7EBA4AF486E4BE94">13 <span class="Heading">Category of copresheaves of a finitely presented (linear) category</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13_mj.html#X7D03633A7D98026B">13.1 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7DC406DF873C6B7C">13.1-1 IsFreeDistributiveCompletion</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X79702DFC86779871">13.1-2 IsCellInFreeDistributiveCompletion</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7EC85A29827A9BDC">13.1-3 IsObjectInFreeDistributiveCompletion</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7C0705C678138B61">13.1-4 IsMorphismInFreeDistributiveCompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X84ABD3D48297B7CE">13.1-1 IsCoPreSheafCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X8703868580A3FA88">13.1-2 IsCellInCoPreSheafCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7C7AFA8B81E59606">13.1-3 IsObjectInCoPreSheafCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X8192BB517A3F6AA6">13.1-4 IsMorphismInCoPreSheafCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13_mj.html#X7C701DBF7BAE649A">13.2 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X819E39678256945B">13.2-1 UnderlyingCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X85C6C5EC8101500B">13.2-2 EmbeddingOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7D88A20C84672320">13.2-1 Source</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X85E449FE863D71F9">13.2-2 Target</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7ED7DF2D83A35A30">13.2-3 Source</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X846B289F81F908E9">13.2-4 Target</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X86B73C957B7979B5">13.2-5 OppositeOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7900AA8E7811E71D">13.2-6 ValuesOfCoPreSheaf</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X80DE332181751B34">13.2-7 ValuesOnAllObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X79010C787816D714">13.2-8 UnderlyingCapTwoCategoryCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X84703D9B7951CC4D">13.2-9 CoYonedaEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7C8CED1E7A18FB19">13.2-10 CoYonedaEmbeddingOfSourceCategory</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13_mj.html#X86EC0F0A78ECBC10">13.3 <span class="Heading">Constructors</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13_mj.html#X7DE8E16C7C2D387B">13.3 <span class="Heading">Operations</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X826680AC87B93936">13.3-1 FreeDistributiveCompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X82D9ACBF841454BE">13.3-1 ApplyObjectInCoPreSheafCategoryToObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X82668DE87DFBA69E">13.3-2 ApplyObjectInCoPreSheafCategoryToMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X81FA3BF77B233806">13.3-3 ApplyMorphismInCoPreSheafCategoryToObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13_mj.html#X86EC0F0A78ECBC10">13.4 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7D230F8F78704ED0">13.4-1 CoPreSheaves</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7E3B14BD784B37CD">13.4-2 CreateCoPreSheaf</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7E2A03EB7A33BD7C">13.4-3 CreateCoPreSheafMorphismByValues</a></span>
 </div></div>
 </div>
 
-<h3>13 <span class="Heading">Free distributive completion of a finitely presented category</span></h3>
+<h3>13 <span class="Heading">Category of copresheaves of a finitely presented (linear) category</span></h3>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
 <h4>13.1 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></h4>
 
-<p><a id="X7DC406DF873C6B7C" name="X7DC406DF873C6B7C"></a></p>
+<p><a id="X84ABD3D48297B7CE" name="X84ABD3D48297B7CE"></a></p>
 
-<h5>13.1-1 IsFreeDistributiveCompletion</h5>
+<h5>13.1-1 IsCoPreSheafCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFreeDistributiveCompletion</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCoPreSheafCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of a free distributive completion category.</p>
+<p>The <strong class="pkg">GAP</strong> category of copresheaf categories.</p>
 
-<p><a id="X79702DFC86779871" name="X79702DFC86779871"></a></p>
+<p><a id="X8703868580A3FA88" name="X8703868580A3FA88"></a></p>
 
-<h5>13.1-2 IsCellInFreeDistributiveCompletion</h5>
+<h5>13.1-2 IsCellInCoPreSheafCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInFreeDistributiveCompletion</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInCoPreSheafCategory</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of cells in a free distributive completion category.</p>
+<p>The <strong class="pkg">GAP</strong> category of cells in a copresheaf category.</p>
 
-<p><a id="X7EC85A29827A9BDC" name="X7EC85A29827A9BDC"></a></p>
+<p><a id="X7C7AFA8B81E59606" name="X7C7AFA8B81E59606"></a></p>
 
-<h5>13.1-3 IsObjectInFreeDistributiveCompletion</h5>
+<h5>13.1-3 IsObjectInCoPreSheafCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInFreeDistributiveCompletion</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInCoPreSheafCategory</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of objects in a free distributive completion category.</p>
+<p>The <strong class="pkg">GAP</strong> category of objects in a copresheaf category.</p>
 
-<p><a id="X7C0705C678138B61" name="X7C0705C678138B61"></a></p>
+<p><a id="X8192BB517A3F6AA6" name="X8192BB517A3F6AA6"></a></p>
 
-<h5>13.1-4 IsMorphismInFreeDistributiveCompletion</h5>
+<h5>13.1-4 IsMorphismInCoPreSheafCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInFreeDistributiveCompletion</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInCoPreSheafCategory</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of morphisms in a free distributive completion category.</p>
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a copresheaf category.</p>
 
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
 <h4>13.2 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X819E39678256945B" name="X819E39678256945B"></a></p>
+<p><a id="X7D88A20C84672320" name="X7D88A20C84672320"></a></p>
 
-<h5>13.2-1 UnderlyingCategory</h5>
+<h5>13.2-1 Source</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">finite_completion</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X85C6C5EC8101500B" name="X85C6C5EC8101500B"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Source</code>( <var class="Arg">coPSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP category</p>
 
-<h5>13.2-2 EmbeddingOfUnderlyingCategory</h5>
+<p>The source category of the copresheaf category <var class="Arg">coPSh</var>.</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnderlyingCategory</code>( <var class="Arg">finite_completion</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X85E449FE863D71F9" name="X85E449FE863D71F9"></a></p>
+
+<h5>13.2-2 Target</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Target</code>( <var class="Arg">coPSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP category</p>
+
+<p>The target category of the copresheaf category <var class="Arg">coPSh</var>.</p>
+
+<p><a id="X7ED7DF2D83A35A30" name="X7ED7DF2D83A35A30"></a></p>
+
+<h5>13.2-3 Source</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Source</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP category</p>
+
+<p>The source of the functor underlying functor object <var class="Arg">F</var>.</p>
+
+<p><a id="X846B289F81F908E9" name="X846B289F81F908E9"></a></p>
+
+<h5>13.2-4 Target</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Target</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP category</p>
+
+<p>The target of the functor underlying the functor object <var class="Arg">F</var>.</p>
+
+<p><a id="X86B73C957B7979B5" name="X86B73C957B7979B5"></a></p>
+
+<h5>13.2-5 OppositeOfSource</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OppositeOfSource</code>( <var class="Arg">coPSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP category</p>
+
+<p>The opposite of the source category of the copresheaf category <var class="Arg">coPSh</var>.</p>
+
+<p><a id="X7900AA8E7811E71D" name="X7900AA8E7811E71D"></a></p>
+
+<h5>13.2-6 ValuesOfCoPreSheaf</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ValuesOfCoPreSheaf</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a pair of lists</p>
+
+<p>The input is functor <var class="Arg">F</var> in a copresheaf category <var class="Arg">coPSh</var>. The output is pair of lists. The first is the list of values of the functor <var class="Arg">F</var> on all objects of the source category of <var class="Arg">coPSh</var>. The second is the list of values of the functor <var class="Arg">F</var> on all *generating* morphisms of the source category of <var class="Arg">coPSh</var>.</p>
+
+<p><a id="X80DE332181751B34" name="X80DE332181751B34"></a></p>
+
+<h5>13.2-7 ValuesOnAllObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ValuesOnAllObjects</code>( <var class="Arg">eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Returns the values of the natural transformation <var class="Arg">eta</var> in a copresheaf category <var class="Arg">coPSh</var> on all objects of the source category of <var class="Arg">coPSh</var>.</p>
+
+<p>The 2-cell underlying the functor object <var class="Arg">F_or_eta</var>.</p>
+
+<p><a id="X79010C787816D714" name="X79010C787816D714"></a></p>
+
+<h5>13.2-8 UnderlyingCapTwoCategoryCell</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCapTwoCategoryCell</code>( <var class="Arg">F_or_eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP functor or natural transformation</p>
+
+<p><a id="X84703D9B7951CC4D" name="X84703D9B7951CC4D"></a></p>
+
+<h5>13.2-9 CoYonedaEmbedding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoYonedaEmbedding</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP functor</p>
+
+<p><a id="X7C8CED1E7A18FB19" name="X7C8CED1E7A18FB19"></a></p>
+
+<h5>13.2-10 CoYonedaEmbeddingOfSourceCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoYonedaEmbeddingOfSourceCategory</code>( <var class="Arg">coPSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP functor</p>
+
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>13.3 <span class="Heading">Operations</span></h4>
+
+<p><a id="X82D9ACBF841454BE" name="X82D9ACBF841454BE"></a></p>
+
+<h5>13.3-1 ApplyObjectInCoPreSheafCategoryToObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyObjectInCoPreSheafCategoryToObject</code>( <var class="Arg">F</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP object</p>
+
+<p>Apply the presheaf <var class="Arg">F</var> to the object <var class="Arg">obj</var>. The shorthand is <var class="Arg">F</var>(<var class="Arg">obj</var>).</p>
+
+<p><a id="X82668DE87DFBA69E" name="X82668DE87DFBA69E"></a></p>
+
+<h5>13.3-2 ApplyObjectInCoPreSheafCategoryToMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyObjectInCoPreSheafCategoryToMorphism</code>( <var class="Arg">F</var>, <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP morphism</p>
+
+<p>Apply the presheaf <var class="Arg">F</var> to the morphism <var class="Arg">mor</var>. The shorthand is <var class="Arg">F</var>(<var class="Arg">mor</var>).</p>
+
+<p><a id="X81FA3BF77B233806" name="X81FA3BF77B233806"></a></p>
+
+<h5>13.3-3 ApplyMorphismInCoPreSheafCategoryToObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyMorphismInCoPreSheafCategoryToObject</code>( <var class="Arg">eta</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP morphism</p>
+
+<p>Apply the presheaf morphism <var class="Arg">eta</var> to the object <var class="Arg">obj</var>. The shorthand is <var class="Arg">eta</var>(<var class="Arg">o</var>).</p>
 
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
-<h4>13.3 <span class="Heading">Constructors</span></h4>
+<h4>13.4 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X826680AC87B93936" name="X826680AC87B93936"></a></p>
+<p><a id="X7D230F8F78704ED0" name="X7D230F8F78704ED0"></a></p>
 
-<h5>13.3-1 FreeDistributiveCompletion</h5>
+<h5>13.4-1 CoPreSheaves</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FreeDistributiveCompletion</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FreeDistributiveCompletion</code>( <var class="Arg">B</var>, <var class="Arg">H</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoPreSheaves</code>( <var class="Arg">B</var>, <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoPreSheaves</code>( <var class="Arg">B</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoPreSheaves</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP category</p>
 
-<p>Construct a free distributive completion category.</p>
+<p>Construct the category <code class="code">CoPreSheaves(</code> <var class="Arg">B</var>, <var class="Arg">D</var> <code class="code">)</code>= <code class="code">FunctorCategory(</code> <var class="Arg">B</var>, <var class="Arg">D</var> <code class="code">)^op</code> of copresheaves from the small category <var class="Arg">B</var> to the category <var class="Arg">D</var> as objects and their natural transformations as morphisms.</p>
+
+<p><a id="X7E3B14BD784B37CD" name="X7E3B14BD784B37CD"></a></p>
+
+<h5>13.4-2 CreateCoPreSheaf</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCoPreSheaf</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCoPreSheaf</code>( <var class="Arg">B</var>, <var class="Arg">rec_images_of_objects</var>, <var class="Arg">rec_images_of_morphisms</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCoPreSheaf</code>( <var class="Arg">B</var>, <var class="Arg">images_of_objects</var>, <var class="Arg">images_of_morphisms</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object in a CAP category</p>
+
+<p>Turn the functor <code class="code"><var class="Arg">F</var>:<var class="Arg">B</var></code> <span class="SimpleMath">\(\to\)</span> <code class="code">D</code> into an object in the category of functors <code class="code"><var class="Arg">coPSh</var> := CoPreSheaves( <var class="Arg">B</var>, D )</code>. An alternative input is the source category <var class="Arg">B</var> and two defining records <var class="Arg">rec_images_of_objects</var> and <var class="Arg">rec_images_of_morphisms</var> of <var class="Arg">F</var>. Another alternative input is the source category <var class="Arg">B</var> and two defining lists <var class="Arg">images_of_objects</var> and <var class="Arg">images_of_morphisms</var> of <var class="Arg">F</var>. The order of their entries must correspond to that of the vertices and arrows of the underlying quiver.</p>
+
+<p>For the convenience of the user the following input is also valid: If <var class="Arg">images_of_objects</var> is a list of nonnegative integers, <var class="Arg">images_of_morphisms</var> is a list of matrices, and <span class="SimpleMath">\(k:=\)</span> <code class="code">CommutativeRingOfLinearCategory</code>( B ) is a field then the two lists are interpreted as objects and morphisms in a matrix category or a category of rows over <span class="SimpleMath">\(k\)</span>, respectively.</p>
+
+<p><a id="X7E2A03EB7A33BD7C" name="X7E2A03EB7A33BD7C"></a></p>
+
+<h5>13.4-3 CreateCoPreSheafMorphismByValues</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCoPreSheafMorphismByValues</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var>, <var class="Arg">arg4</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCoPreSheafMorphism</code>( <var class="Arg">eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCoPreSheafMorphism</code>( <var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCoPreSheafMorphism</code>( <var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCoPreSheafMorphism</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a CAP category</p>
+
+<p>Turn the natrual transformation <var class="Arg">eta</var>:<span class="SimpleMath">\(F \to G\)</span> into a morphism <code class="code"><var class="Arg">U</var> := CreateCoPreSheaf( F )</code> <span class="SimpleMath">\(\to\)</span> <code class="code"><var class="Arg">V</var> := CreateCoPreSheaf( G )</code> in the category of functors <code class="code"><var class="Arg">coPSh</var> := CoPreSheaves( B, C )</code>, where <code class="code">B := Source( F ) = Source( G )</code> and <code class="code">C := Target( F ) = Target( G )</code>.</p>
+
+<p>An alternative input is the triple (<var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var>), where <var class="Arg">e</var> is a defining record of <var class="Arg">eta</var>.</p>
+
+<p>Another alternative input is the triple (<var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var>), where <var class="Arg">e</var> is a defining list of <var class="Arg">eta</var>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap12_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap14_mj.html">[Next Chapter]</a>&nbsp;  </div>

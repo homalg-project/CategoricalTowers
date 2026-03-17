@@ -287,14 +287,14 @@
   
   [1X1.4-1 IsFunctorCategory[101X
   
-  [33X[1;0Y[29X[2XIsFunctorCategory[102X( [3Xcategory[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsFunctorCategory[102X( [3Xcategory[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of Hom-categories of functors between two fixed categories.[133X
   
   [1X1.4-2 IsCellInFunctorCategory[101X
   
-  [33X[1;0Y[29X[2XIsCellInFunctorCategory[102X( [3Xcell[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInFunctorCategory[102X( [3Xcell[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  [5XGAP[105X  category  of cells in a Hom-category of functors between two fixed
@@ -302,7 +302,7 @@
   
   [1X1.4-3 IsObjectInFunctorCategory[101X
   
-  [33X[1;0Y[29X[2XIsObjectInFunctorCategory[102X( [3Xobj[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInFunctorCategory[102X( [3Xobj[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  [5XGAP[105X category of objects in a Hom-category of functors between two fixed
@@ -310,7 +310,7 @@
   
   [1X1.4-4 IsMorphismInFunctorCategory[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInFunctorCategory[102X( [3Xmor[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInFunctorCategory[102X( [3Xmor[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  [5XGAP[105X  category  of  morphisms  in a Hom-category of functors between two

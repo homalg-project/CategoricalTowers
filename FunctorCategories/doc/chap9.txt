@@ -29,28 +29,28 @@
   
   [1X9.3-1 IsFiniteCompletion[101X
   
-  [33X[1;0Y[29X[2XIsFiniteCompletion[102X( [3Xcategory[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsFiniteCompletion[102X( [3Xcategory[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of a finite completion category.[133X
   
   [1X9.3-2 IsCellInFiniteCompletion[101X
   
-  [33X[1;0Y[29X[2XIsCellInFiniteCompletion[102X( [3Xcell[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInFiniteCompletion[102X( [3Xcell[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in a finite completion category.[133X
   
   [1X9.3-3 IsObjectInFiniteCompletion[101X
   
-  [33X[1;0Y[29X[2XIsObjectInFiniteCompletion[102X( [3Xobj[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInFiniteCompletion[102X( [3Xobj[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a finite completion category.[133X
   
   [1X9.3-4 IsMorphismInFiniteCompletion[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInFiniteCompletion[102X( [3Xmor[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInFiniteCompletion[102X( [3Xmor[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in a finite completion category.[133X

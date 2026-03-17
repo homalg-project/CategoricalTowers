@@ -93,15 +93,15 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X84E9E37085A85D7B">2.6-1 <span class="Heading">The subobject classifier</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D24566D80D64552">2.6-2 <span class="Heading">PreSheaves of non-f.p. categories (experimental)</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X811C52E07B3BE2A4">2.6-2 <span class="Heading">The colimit completion of a cyclic monoid</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X811C52E07B3BE2A4">2.6-3 <span class="Heading">The colimit completion of a cyclic monoid</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EF1F1847C6C6973">2.6-3 <span class="Heading">The linearization of the colimit completion of a cyclic monoid</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EF1F1847C6C6973">2.6-4 <span class="Heading">The linearization of the colimit completion of a cyclic monoid</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X813922347AE64B28">2.6-4 <span class="Heading">The Weierstrass normal form</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X813922347AE64B28">2.6-5 <span class="Heading">The Weierstrass normal form</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83AF88FC800DB182">2.6-5 <span class="Heading">Optimized co-Yoneda lemma for posets</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83AF88FC800DB182">2.6-6 <span class="Heading">Optimized co-Yoneda lemma for posets</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X84C4B0777C30C29B">2.6-6 <span class="Heading">The group algebra of S3</span></a>
 </span>
 </div></div>
 </div>
@@ -868,7 +868,7 @@ true
 
 <h5>2.4-1 IsPreSheafCategoryOfFpEnrichedCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPreSheafCategoryOfFpEnrichedCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPreSheafCategoryOfFpEnrichedCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of a presheaf category of a finitely presented enriched category.</p>
@@ -877,7 +877,7 @@ true
 
 <h5>2.4-2 IsCellInPreSheafCategoryOfFpEnrichedCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInPreSheafCategoryOfFpEnrichedCategory</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInPreSheafCategoryOfFpEnrichedCategory</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of cells in a presheaf category of a finitely presented enriched category.</p>
@@ -886,7 +886,7 @@ true
 
 <h5>2.4-3 IsObjectInPreSheafCategoryOfFpEnrichedCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInPreSheafCategoryOfFpEnrichedCategory</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInPreSheafCategoryOfFpEnrichedCategory</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of objects in a presheaf category of a finitely presented enriched category.</p>
@@ -895,7 +895,7 @@ true
 
 <h5>2.4-4 IsMorphismInPreSheafCategoryOfFpEnrichedCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInPreSheafCategoryOfFpEnrichedCategory</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInPreSheafCategoryOfFpEnrichedCategory</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of morphisms in a presheaf category of a finitely presented enriched category.</p>
@@ -1129,13 +1129,9 @@ A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
 given by the above data
 </pre></div>
 
-<p><a id="X7D24566D80D64552" name="X7D24566D80D64552"></a></p>
-
-<h5>2.6-2 <span class="Heading">PreSheaves of non-f.p. categories (experimental)</span></h5>
-
 <p><a id="X811C52E07B3BE2A4" name="X811C52E07B3BE2A4"></a></p>
 
-<h5>2.6-3 <span class="Heading">The colimit completion of a cyclic monoid</span></h5>
+<h5>2.6-2 <span class="Heading">The colimit completion of a cyclic monoid</span></h5>
 
 <p>Stream-vortex-system: Study the colimit completion of a cyclic monoid</p>
 
@@ -1412,7 +1408,7 @@ given by the above data
 
 <p><a id="X7EF1F1847C6C6973" name="X7EF1F1847C6C6973"></a></p>
 
-<h5>2.6-4 <span class="Heading">The linearization of the colimit completion of a cyclic monoid</span></h5>
+<h5>2.6-3 <span class="Heading">The linearization of the colimit completion of a cyclic monoid</span></h5>
 
 <p>Stream-vortex-system: Study the linearization of the colimit completion of a cyclic monoid</p>
 
@@ -1639,7 +1635,7 @@ true
 
 <p><a id="X813922347AE64B28" name="X813922347AE64B28"></a></p>
 
-<h5>2.6-5 <span class="Heading">The Weierstrass normal form</span></h5>
+<h5>2.6-4 <span class="Heading">The Weierstrass normal form</span></h5>
 
 
 <div class="example"><pre>
@@ -1855,7 +1851,7 @@ true
 
 <p><a id="X83AF88FC800DB182" name="X83AF88FC800DB182"></a></p>
 
-<h5>2.6-6 <span class="Heading">Optimized co-Yoneda lemma for posets</span></h5>
+<h5>2.6-5 <span class="Heading">Optimized co-Yoneda lemma for posets</span></h5>
 
 
 <div class="example"><pre>
@@ -1905,6 +1901,71 @@ given by the above data
 
 An object in FiniteStrictCoproductCompletion( PosetOfCategory( PathCategory(
 FinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ) )
+given by the above data
+</pre></div>
+
+<p><a id="X84C4B0777C30C29B" name="X84C4B0777C30C29B"></a></p>
+
+<h5>2.6-6 <span class="Heading">The group algebra of S3</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(1)[a:1-&gt;1,b:1-&gt;1]" );</span>
+q(1)[a:1-&gt;1,b:1-&gt;1]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S3 := Category( q, [ [ q.a^2, q.1 ], [ q.b^3, q.1 ], [ q.bab, q.a ] ] );</span>
+FreeCategory( RightQuiver( "q(1)[a:1-&gt;1,b:1-&gt;1]" ) ) / \
+[ a*a = 1, b*b*b = 1, b*a*b = a ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QS3 := Q[S3];</span>
+Algebra( Q, FreeCategory( RightQuiver( "q(1)[a:1-&gt;1,b:1-&gt;1]" ) ) ) / relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( QS3 );</span>
+PreSheaves( Algebra( Q, FreeCategory( \
+RightQuiver( "q(1)[a:1-&gt;1,b:1-&gt;1]" ) ) ) / relations, Rows( Q ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y1 := PSh.1;</span>
+&lt;(1)-&gt;6; (a)-&gt;6x6, (b)-&gt;6x6&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Y1 );</span>
+Image of &lt;(1)&gt;:
+A row module over Q of rank 6
+
+Image of (1)-[{ 1*(a) }]-&gt;(1):
+Source:
+A row module over Q of rank 6
+
+Matrix:
+[ [  0,  1,  0,  0,  0,  0 ],
+  [  1,  0,  0,  0,  0,  0 ],
+  [  0,  0,  0,  1,  0,  0 ],
+  [  0,  0,  1,  0,  0,  0 ],
+  [  0,  0,  0,  0,  0,  1 ],
+  [  0,  0,  0,  0,  1,  0 ] ]
+
+Range:
+A row module over Q of rank 6
+
+A morphism in Rows( Q )
+
+Image of (1)-[{ 1*(b) }]-&gt;(1):
+Source:
+A row module over Q of rank 6
+
+Matrix:
+[ [  0,  0,  1,  0,  0,  0 ],
+  [  0,  0,  0,  0,  1,  0 ],
+  [  0,  0,  0,  0,  0,  1 ],
+  [  0,  1,  0,  0,  0,  0 ],
+  [  0,  0,  0,  1,  0,  0 ],
+  [  1,  0,  0,  0,  0,  0 ] ]
+
+Range:
+A row module over Q of rank 6
+
+A morphism in Rows( Q )
+
+An object in PreSheaves( Algebra( Q, FreeCategory(
+RightQuiver( "q(1)[a:1-&gt;1,b:1-&gt;1]" ) ) ) / relations, Rows( Q ) )
 given by the above data
 </pre></div>
 

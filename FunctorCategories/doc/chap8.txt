@@ -71,28 +71,28 @@
   
   [1X8.5-1 IsCategoryOfDecoratedQuivers[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfDecoratedQuivers[102X( [3Xcategory[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryOfDecoratedQuivers[102X( [3Xcategory[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of the category of quivers.[133X
   
   [1X8.5-2 IsCellInCategoryOfDecoratedQuivers[101X
   
-  [33X[1;0Y[29X[2XIsCellInCategoryOfDecoratedQuivers[102X( [3Xcell[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInCategoryOfDecoratedQuivers[102X( [3Xcell[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in the category of quivers.[133X
   
   [1X8.5-3 IsObjectInCategoryOfDecoratedQuivers[101X
   
-  [33X[1;0Y[29X[2XIsObjectInCategoryOfDecoratedQuivers[102X( [3Xobj[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInCategoryOfDecoratedQuivers[102X( [3Xobj[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in the category of quivers.[133X
   
   [1X8.5-4 IsMorphismInCategoryOfDecoratedQuivers[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInCategoryOfDecoratedQuivers[102X( [3Xmor[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInCategoryOfDecoratedQuivers[102X( [3Xmor[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in the category of quivers.[133X

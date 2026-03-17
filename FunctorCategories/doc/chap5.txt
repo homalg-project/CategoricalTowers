@@ -72,28 +72,28 @@
   
   [1X5.5-1 IsCategoryOfQuivers[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfQuivers[102X( [3Xcategory[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryOfQuivers[102X( [3Xcategory[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of the category of quivers.[133X
   
   [1X5.5-2 IsCellInCategoryOfQuivers[101X
   
-  [33X[1;0Y[29X[2XIsCellInCategoryOfQuivers[102X( [3Xcell[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInCategoryOfQuivers[102X( [3Xcell[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in the category of quivers.[133X
   
   [1X5.5-3 IsObjectInCategoryOfQuivers[101X
   
-  [33X[1;0Y[29X[2XIsObjectInCategoryOfQuivers[102X( [3Xobj[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInCategoryOfQuivers[102X( [3Xobj[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in the category of quivers.[133X
   
   [1X5.5-4 IsMorphismInCategoryOfQuivers[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInCategoryOfQuivers[102X( [3Xmor[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInCategoryOfQuivers[102X( [3Xmor[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in the category of quivers.[133X
