@@ -176,6 +176,16 @@
     [4X[28X[ false, true, true, true, true, true, true, true, false ][128X[104X
     [4X[25Xgap>[125X [27XDisplay( List( SetOfGeneratingMorphisms( qC ), IsEpimorphism ) );[127X[104X
     [4X[28X[ false, true, true, true, true, true, true, true, false ][128X[104X
+    [4X[25Xgap>[125X [27XC_op := OppositePathCategory( C );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q_op(0,1,2,3,4,5)[x:0→0,s:1→0,a:2→1,c:3→1,e:4→1,b:4→2,[128X[104X
+    [4X[28Xd:4→3,t:5→4,y:5→5]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( OppositePathCategory( C_op ), C );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XqC_op := OppositeQuotientOfPathCategory( qC );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q_op(0,1,2,3,4,5)[x:0→0,s:1→0,a:2→1,c:3→1,e:4→1,b:4→2,[128X[104X
+    [4X[28Xd:4→3,t:5→4,y:5→5]" ) ) / [ x^5 = x, y^5 = y^2 ][128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( OppositeQuotientOfPathCategory( qC_op ), qC );[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
