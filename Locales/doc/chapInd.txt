@@ -130,21 +130,21 @@
   [2XIsMorphismBetweenConstructibleObjects[102X, for IsMorphismInThinCategory 12.5-3 
   [2XIsMorphismBetweenConstructibleObjectsAsUnionOfDifferences[102X, for IsMorphismBetweenConstructibleObjects 12.5-9 
   [2XIsMorphismBetweenConstructibleObjectsAsUnionOfMultipleDifferences[102X, for IsMorphismBetweenConstructibleObjects 12.5-6 
-  [2XIsMorphismInIntervalCategory[102X, for IsCellInIntervalCategory and IsCapCategoryMorphism 13.3-4 
+  [2XIsMorphismInIntervalCategory[102X, for FilterIntersection( IsCapCategoryMorphism 13.3-4 
   [2XIsMorphismInMeetSemilatticeOfDifferences[102X, for IsMorphismInThinCategory 9.4-3 
   [2XIsMorphismInMeetSemilatticeOfMultipleDifferences[102X, for IsMorphismInMeetSemilatticeOfDifferences 11.4-3 
   [2XIsMorphismInMeetSemilatticeOfSingleDifferences[102X, for IsMorphismInMeetSemilatticeOfDifferences 10.3-3 
-  [2XIsMorphismInPosetOfCategory[102X, for IsCellInPosetOfCategory and IsMorphismInThinCategory 8.5-14 
-  [2XIsMorphismInProsetOfCategory[102X, for IsCellInProsetOfCategory and IsMorphismInThinCategory 8.5-10 
-  [2XIsMorphismInThinCategory[102X, for IsCapCategoryMorphism and IsMonomorphism and IsEpimorphism 1.5-3 
+  [2XIsMorphismInPosetOfCategory[102X, for FilterIntersection( IsMorphismInThinCategory 8.5-14 
+  [2XIsMorphismInProsetOfCategory[102X, for FilterIntersection( IsMorphismInThinCategory 8.5-10 
+  [2XIsMorphismInThinCategory[102X, for FilterIntersection( IsCapCategoryMorphism 1.5-3 
   [2XIsNodeInDatastructureOfConstructibleObjects[102X, for IsAttributeStoringRep 14.4-2 
-  [2XIsObjectInIntervalCategory[102X, for IsCellInIntervalCategory and IsCapCategoryObject 13.3-3 
+  [2XIsObjectInIntervalCategory[102X, for FilterIntersection( IsCapCategoryObject 13.3-3 
   [2XIsObjectInMeetSemilatticeOfDifferences[102X, for IsObjectInThinCategory 9.4-2 
   [2XIsObjectInMeetSemilatticeOfMultipleDifferences[102X, for IsObjectInMeetSemilatticeOfDifferences 11.4-2 
   [2XIsObjectInMeetSemilatticeOfSingleDifferences[102X, for IsObjectInMeetSemilatticeOfDifferences 10.3-2 
-  [2XIsObjectInPosetOfCategory[102X, for IsCellInPosetOfCategory and IsObjectInProsetOrPosetOfCategory 8.5-13 
-  [2XIsObjectInProsetOfCategory[102X, for IsCellInProsetOfCategory and IsObjectInProsetOrPosetOfCategory 8.5-9 
-  [2XIsObjectInProsetOrPosetOfCategory[102X, for IsCellInProsetOrPosetOfCategory and IsObjectInThinCategory 8.5-6 
+  [2XIsObjectInPosetOfCategory[102X, for FilterIntersection( IsObjectInProsetOrPosetOfCategory 8.5-13 
+  [2XIsObjectInProsetOfCategory[102X, for FilterIntersection( IsObjectInProsetOrPosetOfCategory 8.5-9 
+  [2XIsObjectInProsetOrPosetOfCategory[102X, for FilterIntersection( IsObjectInThinCategory 8.5-6 
   [2XIsObjectInThinCategory[102X, for IsCapCategoryObject 1.5-2 
   [2XIsOpen[102X, for IsConstructibleObject 12.2-1 
       for IsObjectInMeetSemilatticeOfDifferences 9.1-2 

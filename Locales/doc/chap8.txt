@@ -44,7 +44,7 @@
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsFiniteCategory[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
-    [4X[25Xgap>[125X [27XSetOfObjects( P );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( SetOfObjects( P ) );[127X[104X
     [4X[28X[ An object in the proset given by: (a), An object in the proset given by: (b) ][128X[104X
     [4X[25Xgap>[125X [27XP.a = P.b;[127X[104X
     [4X[28Xfalse[128X[104X
@@ -52,7 +52,7 @@
     [4X[28X4[128X[104X
     [4X[25Xgap>[125X [27XSize( P );[127X[104X
     [4X[28X4[128X[104X
-    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( P );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( SetOfGeneratingMorphisms( P ) );[127X[104X
     [4X[28X[ A morphism in the proset given by: [f]:(a) → (b),[128X[104X
     [4X[28X  A morphism in the proset given by: [g]:(b) → (a) ][128X[104X
   [4X[32X[104X
@@ -100,6 +100,7 @@
     [4X[28X1[128X[104X
     [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( P );[127X[104X
     [4X[28X[  ][128X[104X
+    [4X[25Xgap>[125X [27X# @drop_in_Julia (the operation SetOfGeneratingMorphisms requires Digraphs)[127X[104X
   [4X[32X[104X
   
   [1X8.2-5 StablePosetOfCategory[101X
