@@ -211,6 +211,7 @@ DeclareAttribute( "FactorsAttr",
 
 #! @Section Operations
 
+#= comment for Julia
 #! @Description
 #!  The meet <C>DirectProduct</C>(<A>A</A>, <A>B</A>) of <A>A</A> and <A>B</A>.
 #! @Arguments A, B
@@ -224,5 +225,6 @@ DeclareOperation( "\*",
 #! @Returns an object in a join semilattice
 DeclareOperation( "\+",
         [ IsObjectInThinCategory, IsObjectInThinCategory ] );
+# =#
 
 # @Section Tools

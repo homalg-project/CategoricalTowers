@@ -8,29 +8,43 @@ SetInfoLevel( InfoLocales, 1 );
 
 InstallTrueMethod( IsThinCategory, IsDiscreteCategory );
 
+#= comment for Julia
 InstallTrueMethod( IsFiniteCategory, IsThinCategory and IsObjectFiniteCategory );
+# =#
 
+#= comment for Julia
 InstallTrueMethod( IsMonoidalProset, IsThinCategory and IsMonoidalCategory );
+# =#
 InstallTrueMethod( IsThinCategory, IsMonoidalProset );
 InstallTrueMethod( IsMonoidalCategory, IsMonoidalProset );
 
+#= comment for Julia
 InstallTrueMethod( IsClosedMonoidalProset, IsMonoidalProset and IsClosedMonoidalCategory );
+# =#
 InstallTrueMethod( IsMonoidalProset, IsClosedMonoidalProset );
 InstallTrueMethod( IsClosedMonoidalCategory, IsClosedMonoidalProset );
 
+#= comment for Julia
 InstallTrueMethod( IsCoclosedMonoidalProset, IsMonoidalProset and IsCoclosedMonoidalCategory );
+# =#
 InstallTrueMethod( IsMonoidalProset, IsCoclosedMonoidalProset );
 InstallTrueMethod( IsCoclosedMonoidalCategory, IsCoclosedMonoidalProset );
 
+#= comment for Julia
 InstallTrueMethod( IsSymmetricMonoidalProset, IsThinCategory and IsSymmetricMonoidalCategory );
+# =#
 InstallTrueMethod( IsThinCategory, IsSymmetricMonoidalProset );
 InstallTrueMethod( IsSymmetricMonoidalCategory, IsSymmetricMonoidalProset );
 
+#= comment for Julia
 InstallTrueMethod( IsSymmetricClosedMonoidalProset, IsSymmetricMonoidalProset and IsSymmetricClosedMonoidalCategory );
+# =#
 InstallTrueMethod( IsSymmetricMonoidalProset, IsSymmetricClosedMonoidalProset );
 InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsSymmetricClosedMonoidalProset );
 
+#= comment for Julia
 InstallTrueMethod( IsSymmetricCoclosedMonoidalProset, IsSymmetricMonoidalProset and IsSymmetricCoclosedMonoidalCategory );
+# =#
 InstallTrueMethod( IsSymmetricMonoidalProset, IsSymmetricCoclosedMonoidalProset );
 InstallTrueMethod( IsSymmetricCoclosedMonoidalCategory, IsSymmetricCoclosedMonoidalProset );
 
@@ -43,31 +57,9 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
 end );
 
 ##
-InstallOtherMethod( Size,
-        "for finite prosets",
-        [ IsCapCategory and IsThinCategory and IsFiniteCategory and HasRangeCategoryOfHomomorphismStructure ],
-        
-  function( P )
-    local H, objs;
-    
-    H := RangeCategoryOfHomomorphismStructure( P );
-    
-    if not IsIntervalCategory( H ) then
-        TryNextMethod( );
-    fi;
-    
-    objs := SetOfObjects( P );
-    
-    return Sum( objs, s ->
-                Sum( objs, t ->
-                     Cardinality( HomomorphismStructureOnObjects( P, s, t ) ) ) );
-    
-end );
-
-##
-InstallOtherMethod( CapFunctor,
+InstallOtherMethod( CreateFunctor,
         "for a thin category, two lists, and the interval category",
-        [ IsThinCategory and IsFiniteCategory, IsList, IsList, IsIntervalCategory ],
+        [ FilterIntersection(IsCapCategory, IsThinCategory, IsFiniteCategory), IsList, IsList, IsIntervalCategory ],
         
   function( P, imgs_of_objs, imgs_of_gmors, interval_category )
     local F;
@@ -94,15 +86,25 @@ InstallOtherMethod( CapFunctor,
     
 end );
 
+#= comment for Julia
 ##
-InstallMethod( Display,
-        "for an object in a proset",
+InstallOtherMethod( CapFunctor,
+        "for a thin category, two lists, and the interval category",
+        [ FilterIntersection(IsCapCategory, IsThinCategory, IsFiniteCategory), IsList, IsList, IsIntervalCategory ],
+
+  CreateFunctor );
+# =#
+
+##
+InstallMethod( DisplayString,
+        "for a morphism in a proset",
         [ IsMorphismInThinCategory ],
 
   function( u )
     
-    Display( Target( u ) );
-    Print( " ^\n |\n |\n" );
-    Display( Source( u ) );
+    return Concatenation(
+              DisplayString( Target( u ) ),
+              " ^\n |\n |\n",
+              DisplayString( Source( u ) ) );
     
 end );

@@ -42,4 +42,5 @@ gap> Display( iM );
 \ ∅ )
 gap> IsInitial( iM );
 true
+gap> #@drop_in_Julia (requires ZariskiFrames)
 gap> STOP_TEST("NormalizeObject.tst");

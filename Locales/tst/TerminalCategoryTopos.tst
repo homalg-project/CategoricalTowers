@@ -5,7 +5,8 @@
 
 gap> START_TEST("TerminalCategoryTopos.tst");
 
-gap> LoadPackage("Locales", false);;
+gap> LoadPackage( "Locales", false );
+true
 
 gap> T := TerminalCategoryWithMultipleObjects( );;
 

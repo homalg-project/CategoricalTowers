@@ -30,7 +30,7 @@ DeclareCategory( "IsCellInStableProsetOrPosetOfCategory",
 #! @Description
 #!  The &GAP; category of objects in a proset or poset of a CAP category.
 DeclareCategory( "IsObjectInProsetOrPosetOfCategory",
-        IsCellInProsetOrPosetOfCategory and IsObjectInThinCategory );
+        FilterIntersection( IsObjectInThinCategory, IsCellInProsetOrPosetOfCategory ) );
 
 #! @Description
 #!  The &GAP; category of a proset of a CAP category.
@@ -45,12 +45,12 @@ DeclareCategory( "IsCellInProsetOfCategory",
 #! @Description
 #!  The &GAP; category of objects in a proset of a CAP category.
 DeclareCategory( "IsObjectInProsetOfCategory",
-        IsCellInProsetOfCategory and IsObjectInProsetOrPosetOfCategory );
+        FilterIntersection( IsObjectInProsetOrPosetOfCategory, IsCellInProsetOfCategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a proset of a CAP category.
 DeclareCategory( "IsMorphismInProsetOfCategory",
-        IsCellInProsetOfCategory and IsMorphismInThinCategory );
+        FilterIntersection( IsMorphismInThinCategory, IsCellInProsetOfCategory ) );
 
 #! @Description
 #!  The &GAP; category of a poset of a CAP category.
@@ -65,12 +65,12 @@ DeclareCategory( "IsCellInPosetOfCategory",
 #! @Description
 #!  The &GAP; category of objects in a poset of a CAP category.
 DeclareCategory( "IsObjectInPosetOfCategory",
-        IsCellInPosetOfCategory and IsObjectInProsetOrPosetOfCategory );
+        FilterIntersection( IsObjectInProsetOrPosetOfCategory, IsCellInPosetOfCategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a poset of a CAP category.
 DeclareCategory( "IsMorphismInPosetOfCategory",
-        IsCellInPosetOfCategory and IsMorphismInThinCategory );
+        FilterIntersection( IsMorphismInThinCategory, IsCellInPosetOfCategory ) );
 
 DeclareProperty( "IsStableProset",
         IsCapCategory );

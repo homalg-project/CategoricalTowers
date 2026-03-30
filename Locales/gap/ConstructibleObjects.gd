@@ -57,8 +57,10 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "LocallyClosedPart",
         IsConstructibleObject );
 
+#= comment for Julia
 DeclareOperation( "CanonicalObjectOp",
         [ IsConstructibleObject ] );
+# =#
 
 #! @Arguments A
 DeclareAttribute( "CanonicalObject",
@@ -118,6 +120,7 @@ DeclareOperation( "StandardizeObject",
 DeclareAttribute( "Length",
         IsConstructibleObject );
 
+#= comment for Julia
 #! @Arguments A, i
 DeclareOperation( "\[\]",
         [ IsConstructibleObject, IsInt ] );
@@ -125,6 +128,7 @@ DeclareOperation( "\[\]",
 #! @Arguments A
 DeclareOperation( "Iterator",
         [ IsConstructibleObject ] );
+# =#
 
 #! @Arguments A, f
 DeclareOperation( "ForAllOp",

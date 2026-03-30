@@ -26,7 +26,7 @@ end );
 ##
 InstallMethod( MeetSemilatticeOfMultipleDifferences,
         "for a CAP category",
-        [ IsCapCategory and IsThinCategory ],
+        [ FilterIntersection( IsCapCategory, IsThinCategory ) ],
         
   function( P )
     local name, D, SD;
@@ -258,7 +258,7 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
     
     T_new := DirectProduct( List( A, a -> a.I ) );
     
-    repeat
+    while true do
         
         T := T_new;
         
@@ -285,7 +285,11 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         
         T_new := DirectProduct( List( A, a -> a.I ) );
         
-    until AreIsomorphicForObjectsIfIsHomSetInhabited( T_new, T );
+        if AreIsomorphicForObjectsIfIsHomSetInhabited( T_new, T ) then
+            break;
+        fi;
+        
+    od;
     
     pos := PositionsOfMaximalObjects( List( A, d -> d.J ), IsHomSetInhabited );
     
@@ -318,21 +322,21 @@ InstallMethod( ListOfSingleDifferences,
 ##
 InstallMethod( ListOfSingleDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfNormalizedObjectsInMeetSemilatticeOfDifferences ],
+        [ FilterIntersection( IsObjectInMeetSemilatticeOfMultipleDifferences, HasListOfNormalizedObjectsInMeetSemilatticeOfDifferences ) ],
         
   ListOfNormalizedObjectsInMeetSemilatticeOfDifferences );
 
 ##
 InstallMethod( ListOfSingleDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfStandardObjectsInMeetSemilatticeOfDifferences ],
+        [ FilterIntersection( IsObjectInMeetSemilatticeOfMultipleDifferences, HasListOfStandardObjectsInMeetSemilatticeOfDifferences ) ],
         
   ListOfStandardObjectsInMeetSemilatticeOfDifferences );
 
 ##
 InstallMethod( EquivalenceToMeetSemilatticeOfDifferences,
         "for a CAP category",
-        [ IsCapCategory and IsThinCategory ],
+        [ FilterIntersection( IsCapCategory, IsThinCategory ) ],
         
   function( P )
     local S, T, squash;
@@ -613,12 +617,14 @@ InstallMethod( ListOp,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( Iterator,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   A -> Iterator( List( A ) ) );
+# =#
 
 ##
 InstallMethod( ForAllOp,
@@ -654,14 +660,11 @@ InstallMethod( \[\],
 end );
 
 ##
-InstallMethod( \.,
-        "for an object in a meet-semilattice of formal multiple differences and a positive integer",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and an object in a meet-semilattice of formal multiple differences",
+        [ IsString, IsObjectInMeetSemilatticeOfMultipleDifferences ],
 
-  function( A, string_as_int )
-    local name;
-    
-    name := NameRNam( string_as_int );
+  function( name, A )
     
     if name[1] = 'I' then
         return A[1].I;
@@ -672,6 +675,11 @@ InstallMethod( \.,
     Error( "no component with this name available\n" );
     
 end );
+
+#= comment for Julia
+##
+INSTALL_DOT_METHOD( IsObjectInMeetSemilatticeOfMultipleDifferences );
+# =#
 
 ##
 InstallMethod( ViewString,
@@ -691,36 +699,25 @@ InstallMethod( ViewString,
     
     str := ViewString( A[1].I : Locales_name := "I", Locales_number := n );
     
-    Append( str, " \\\ " );
+    str := Concatenation( str, " \\ " );
     
-    Append( str, ViewString( A[1].J : Locales_name := "J", Locales_number := n, Locales_counter := 1 ) );
+    str := Concatenation( str, ViewString( A[1].J : Locales_name := "J", Locales_number := n, Locales_counter := 1 ) );
     
     j := Length( A );
     
     if j > 1 then
         
-        Append( str, " \\\ " );
+        str := Concatenation( str, " \\ " );
         
         if j > 2 then
-            Append( str, ".. \\\ " );
+            str := Concatenation( str, ".. \\ " );
         fi;
         
-        Append( str, ViewString( A[1].J : Locales_name := "J", Locales_number := n, Locales_counter := j ) );
+        str := Concatenation( str, ViewString( A[1].J : Locales_name := "J", Locales_number := n, Locales_counter := j ) );
         
     fi;
     
     return str;
-    
-end );
-
-##
-InstallMethod( ViewObj,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
-        
-  function( A )
-    
-    Print( ViewString( A ) );
     
 end );
 
@@ -744,20 +741,9 @@ InstallMethod( DisplayString,
     A := List( A );
     
     for i in [ 1 .. Length( A ) ] do
-        Append( str, Concatenation( "\n\n\\ ", DisplayString( A[i].J ) ) );
+        str := Concatenation( str, Concatenation( "\n\n\\ ", DisplayString( A[i].J ) ) );
     od;
     
-    return str;
-    
-end );
-
-##
-InstallMethod( Display,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
-        
-  function( A )
-    
-    Display( DisplayString( A ) );
+    return Concatenation( str, "\n" );
     
 end );

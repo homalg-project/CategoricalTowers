@@ -63,8 +63,12 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "LocallyClosedPart",
         IsObjectInMeetSemilatticeOfDifferences );
 
+#= comment for Julia
 DeclareOperation( "CanonicalObjectOp",
         [ IsObjectInMeetSemilatticeOfDifferences ] );
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "CanonicalObjectOp" );
 
 #! @Arguments A
 DeclareAttribute( "CanonicalObject",

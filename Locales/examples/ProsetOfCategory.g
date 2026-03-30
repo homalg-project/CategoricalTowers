@@ -25,7 +25,7 @@ Display( P );
 #! * IsCategoryWithDecidableLifts
 #! * IsFiniteCategory
 #! * IsEquippedWithHomomorphismStructure
-SetOfObjects( P );
+Display( SetOfObjects( P ) );
 #! [ An object in the proset given by: (a), An object in the proset given by: (b) ]
 P.a = P.b;
 #! false
@@ -33,7 +33,7 @@ Length( SetOfMorphisms( P ) );
 #! 4
 Size( P );
 #! 4
-SetOfGeneratingMorphisms( P );
+Display( SetOfGeneratingMorphisms( P ) );
 #! [ A morphism in the proset given by: [f]:(a) → (b),
 #!   A morphism in the proset given by: [g]:(b) → (a) ]
 #! @EndExample

@@ -25,7 +25,7 @@ SetInfoLevel( InfoSquashDatastructureForConstructibleObjects, 1 );
 ##
 InstallMethod( AllCoproducts,
         "for a CAP category and a list of objects",
-        [ IsCapCategory and IsCocartesianCategory and IsThinCategory, IsList ],
+        [ FilterIntersection( IsCapCategory, IsCocartesianCategory, IsThinCategory ), IsList ],
         
   function( cat, objects )
     local l, predicate, func, coproducts_initial_value;
@@ -572,7 +572,7 @@ InstallMethod( Squash,
     
     Info( InfoSquashDatastructureForConstructibleObjects, 2, "----------------------------------------" );
     
-    repeat
+    while true do
         
         l := Length( C!.act_nodes );
         
@@ -580,7 +580,11 @@ InstallMethod( Squash,
         
         RemoveObsoleteSubtrahends( C );
         
-    until l = Length( C!.act_nodes );
+        if l = Length( C!.act_nodes ) then
+            break;
+        fi;
+        
+    od;
     
     return C;
     
@@ -624,49 +628,49 @@ InstallMethod( AsUnionOfMultipleDifferences,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for a datastructure of a constructible object",
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
     
-    Print( "<data structure for a constructible object: #pos=", Length( C!.pos_nodes ), ", #neg=", Length( C!.neg_nodes ), ">" );
+    return Concatenation( "<data structure for a constructible object: #pos=", Length( C!.pos_nodes ), ", #neg=", Length( C!.neg_nodes ), ">" );
     
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for a node in a datastructure of a constructible object",
         [ IsNodeInDatastructureOfConstructibleObjects ],
         
   function( N )
-    local parity;
+    local parity, str;
     
     parity := N!.parity;
     
     if parity = true then
-        Print( "Positive " );
+        str := "Positive ";
     elif parity = false then
-        Print( "Negative " );
+        str := "Negative ";
     else
-        Print( "Pre-" );
+        str := "Pre-";
     fi;
     
-    Print( "node number ",
-           N!.number,
+    str := Concatenation( "node number ",
+           String( N!.number ),
            " in a datastructure of a constructible object containing: " );
     
-    ViewObj( N!.object );
+    return Concatenation( str, DisplayString( N!.object ) );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a node in a datastructure of a constructible object",
         [ IsNodeInDatastructureOfConstructibleObjects ],
         
   function( N )
     
-    Display( N!.object );
+    return DisplayString( N!.object );
     
 end );

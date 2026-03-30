@@ -6,13 +6,17 @@
 
 ## thin
 
+#= comment for Julia
 InstallTrueMethod( IsCoHeytingAlgebroid, IsBicartesianProset and IsCocartesianCoclosedCategory );
+# =#
 InstallTrueMethod( IsBicartesianProset, IsCoHeytingAlgebroid );
 InstallTrueMethod( IsCocartesianCoclosedCategory, IsCoHeytingAlgebroid );
 
 ## thin & skeletal
 
+#= comment for Julia
 InstallTrueMethod( IsCoHeytingAlgebra, IsCoHeytingAlgebroid and IsSkeletalCategory );
+# =#
 InstallTrueMethod( IsCoHeytingAlgebroid, IsCoHeytingAlgebra );
 InstallTrueMethod( IsSkeletalCategory, IsCoHeytingAlgebra );
 
@@ -26,10 +30,15 @@ InstallMethod( StableInternalCoHom,
     
     V_W := V;
     
-    repeat
+    while true do
         V := V_W;
         V_W := InternalCoHomOnObjects( V_W, W );
-    until AreIsomorphicForObjectsIfIsHomSetInhabited( V_W, V );
+        
+        if AreIsomorphicForObjectsIfIsHomSetInhabited( V_W, V ) then
+            break;
+        fi;
+        
+    od;
     
     return V_W;
     

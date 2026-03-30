@@ -31,7 +31,7 @@ end );
 ##
 InstallMethod( MeetSemilatticeOfSingleDifferences,
         "for a CAP category",
-        [ IsCapCategory and IsThinCategory ],
+        [ FilterIntersection( IsCapCategory, IsThinCategory ) ],
         
   function( P )
     local name, D, L;
@@ -106,8 +106,7 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
         
         C := UnderlyingCategory( D );
         
-        return IsHomSetInhabited( C, A_pair[1], Coproduct( C, [ A_pair[2], B_pair[1] ] ) )
-               and
+        return IsHomSetInhabited( C, A_pair[1], Coproduct( C, [ A_pair[2], B_pair[1] ] ) ) and
                IsHomSetInhabited( C, DirectProduct( C, [ A_pair[1], B_pair[2] ] ), A_pair[2] );
         
     end );
@@ -278,9 +277,13 @@ end );
 ##
 InstallMethod( \-,
         "for an object in a thin category and the zero integer",
-        [ IsObjectInThinCategory, IsInt and IsZero ],
+        [ IsObjectInThinCategory, IsInt ],
         
   function( A, B )
+    
+    if not ( HasIsZero( B ) and IsZero( B ) ) then
+        TryNextMethod( );
+    fi;
     
     return A - InitialObject( CapCategory( A ) );
     
@@ -289,9 +292,13 @@ end );
 ##
 InstallMethod( \-,
         "for an object in a meet-semilattice of formal single differences and the zero integer",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsInt and IsZero ],
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsInt ],
         
   function( A, B )
+    
+    if not ( HasIsZero( B ) and IsZero( B ) ) then
+        TryNextMethod( );
+    fi;
     
     return A;
     
@@ -331,7 +338,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid,
         "for a Heyting algebroid and two objects in it",
-        [ IsCapCategory and IsHeytingAlgebroid, IsCapCategoryObject, IsCapCategoryObject ],
+        [ FilterIntersection( IsCapCategory, IsHeytingAlgebroid ), IsCapCategoryObject, IsCapCategoryObject ],
         
   function( L, minuend, subtrahend )
     local H;
@@ -347,7 +354,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid,
         "for a co-Heyting algebroid and two objects in it",
-        [ IsCapCategory and IsCoHeytingAlgebroid, IsCapCategoryObject, IsCapCategoryObject ],
+        [ FilterIntersection( IsCapCategory, IsCoHeytingAlgebroid ), IsCapCategoryObject, IsCapCategoryObject ],
         
   function( L, minuend, subtrahend )
     local H;
@@ -445,21 +452,21 @@ InstallMethod( MinuendAndSubtrahendInUnderlyingLattice,
 ##
 InstallMethod( MinuendAndSubtrahendInUnderlyingLattice,
         "for an object in a meet-semilattice of formal single differences",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasNormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid ],
+        [ FilterIntersection( IsObjectInMeetSemilatticeOfSingleDifferences, HasNormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid ) ],
         
   NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid );
 
 ##
 InstallMethod( MinuendAndSubtrahendInUnderlyingLattice,
         "for an object in a meet-semilattice of formal single differences",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasStandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid ],
+        [ FilterIntersection( IsObjectInMeetSemilatticeOfSingleDifferences, HasStandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid ) ],
         
   StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid );
 
 ##
 InstallMethod( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid,
         "for an object in a meet-semilattice of formal single differences",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasStandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid ],
+        [ FilterIntersection( IsObjectInMeetSemilatticeOfSingleDifferences, HasStandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid ) ],
         
   StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebroid );
 
@@ -473,7 +480,7 @@ InstallMethod( DistinguishedSubtrahend,
 ##
 InstallMethod( DistinguishedSubtrahend,
         "for an object in a meet-semilattice of formal single differences",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasNormalizedDistinguishedSubtrahend ],
+        [ FilterIntersection( IsObjectInMeetSemilatticeOfSingleDifferences, HasNormalizedDistinguishedSubtrahend ) ],
         
   NormalizedDistinguishedSubtrahend );
 
@@ -576,16 +583,13 @@ InstallMethod( \=,
 end );
 
 ##
-InstallMethod( \.,
+InstallOtherMethod( \/,
         "for an object in a meet-semilattice of formal single differences and a positive integer",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsPosInt ],
+        [ IsString, IsObjectInMeetSemilatticeOfSingleDifferences ],
 
-  function( A, string_as_int )
-    local name;
+  function( name, A )
     
     A := MinuendAndSubtrahendInUnderlyingLattice( A );
-    
-    name := NameRNam( string_as_int );
     
     if name[1] = 'I' then
         return A[1];
@@ -597,21 +601,29 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
 ##
-InstallMethod( \.,
-        "for a meet-semilattice of formal single differences and a positive integer",
-        [ IsMeetSemilatticeOfSingleDifferences, IsPosInt ],
+INSTALL_DOT_METHOD( IsObjectInMeetSemilatticeOfSingleDifferences );
+# =#
 
-  function( D, string_as_int )
-    local Dist, name;
+##
+InstallOtherMethod( \/,
+        "for a meet-semilattice of formal single differences and a positive integer",
+        [ IsString, IsMeetSemilatticeOfSingleDifferences ],
+
+  function( name, D )
+    local Dist;
     
     Dist := UnderlyingCategory( D );
-    
-    name := NameRNam( string_as_int );
     
     return SingleDifference( D, Pair( Dist.(name), InitialObject( Dist ) ) );
     
 end );
+
+#= comment for Julia
+##
+INSTALL_DOT_METHOD( IsMeetSemilatticeOfSingleDifferences );
+# =#
 
 ##
 InstallMethod( ViewString,
@@ -630,21 +642,10 @@ InstallMethod( ViewString,
     fi;
     
     str := ViewString( A[1] : Locales_name := "I", Locales_number := n );
-    Append( str, " \\\ " );
-    Append( str, ViewString( A[2] : Locales_name := "J", Locales_number := n ) );
+    str := Concatenation( str, " \\ " );
+    str := Concatenation( str, ViewString( A[2] : Locales_name := "J", Locales_number := n ) );
     
     return str;
-    
-end );
-
-##
-InstallMethod( ViewObj,
-        "for an object in a meet-semilattice of formal single differences",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
-        
-  function( A )
-    
-    Print( ViewString( A ) );
     
 end );
 
@@ -666,18 +667,8 @@ InstallMethod( DisplayString,
     
     return Concatenation(
                    DisplayString( A[1] ),
-                   "\n\n\\\ ",
-                   DisplayString( A[2] ) );
-    
-end );
-
-##
-InstallMethod( Display,
-        "for an object in a meet-semilattice of formal single differences",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
-        
-  function( A )
-    
-    Display( DisplayString( A ) );
+                   "\n\n\\ ",
+                   DisplayString( A[2] ),
+                   "\n" );
     
 end );

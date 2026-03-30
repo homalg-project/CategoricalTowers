@@ -75,14 +75,14 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     [ "FinalizeCategory", true ],
   ],
   function( CAP_NAMED_ARGUMENTS, C )
-    local skeletal, stable, category_filter, category_object_filter, category_morphism_filter,
+    local skeletal_, stable_, category_filter, category_object_filter, category_morphism_filter,
           name, create_func_morphism,
           list_of_operations_to_install, skip, func, pos,
           properties, P, object_constructor, object_datum, morphism_constructor, morphism_datum;
     
-    skeletal := CAP_NAMED_ARGUMENTS.skeletal;
+    skeletal_ := CAP_NAMED_ARGUMENTS.skeletal;
     
-    if IsIdenticalObj( skeletal, true ) then
+    if IsIdenticalObj( skeletal_, true ) then
         name := "PosetOfCategory";
         category_filter := IsPosetOfCapCategory;
         category_object_filter := IsObjectInPosetOfCategory;
@@ -94,9 +94,9 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         category_morphism_filter := IsMorphismInProsetOfCategory;
     fi;
     
-    stable := CAP_NAMED_ARGUMENTS.stable;
+    stable_ := CAP_NAMED_ARGUMENTS.stable;
     
-    if IsIdenticalObj( stable, true ) then
+    if IsIdenticalObj( stable_, true ) then
         
         if not (HasIsThinCategory( C ) and IsThinCategory( C )) then
             Error( "only compatible (co)closed monoidal structures of (co)cartesian *thin* categories can be stabilized\n" );
@@ -131,7 +131,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     skip := [ 
               ];
     
-    if IsIdenticalObj( stable, true ) then
+    if IsIdenticalObj( stable_, true ) then
         
         Append( list_of_operations_to_install, [ "IsTerminal" ] ); ## do not add "IsInitial"
         
@@ -179,7 +179,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     Add( properties, "IsThinCategory" );
     
-    if IsIdenticalObj( stable, true ) then
+    if IsIdenticalObj( stable_, true ) then
         Add( properties, "IsStableProset" );
         if CanCompute( C, "InternalHomOnObjects" ) then
             Add( properties, "IsCartesianClosedCategory" );
@@ -189,9 +189,12 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         fi;
     fi;
     
-    if IsIdenticalObj( skeletal, true ) then
+    if IsIdenticalObj( skeletal_, true ) then
         
         Add( properties, "IsSkeletalCategory" );
+        
+        # IsThinCategory and IsSkeletalCategory imply IsPosetCategory
+        Add( properties, "IsPosetCategory" );
         
         if HasIsCartesianCategory( C ) and IsCartesianCategory( C ) then
             Add( properties, "IsStrictCartesianCategory" );
@@ -274,9 +277,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  create_func_morphism := create_func_morphism,
                  ) );
     
-    SetIsThinCategory( P, true );
-    
-    if ( HasIsObjectFiniteCategory and IsObjectFiniteCategory )( C ) then
+    if HasIsObjectFiniteCategory( C ) and IsObjectFiniteCategory( C ) then
         SetIsFiniteCategory( P, true );
     fi;
     
@@ -318,7 +319,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
     fi;
     
-    if not skeletal and CanCompute( C, "IsEqualForObjects" ) then
+    if not skeletal_ and CanCompute( C, "IsEqualForObjects" ) then
         
         AddIsEqualForObjects( P,
           function( P, S, T )
@@ -331,7 +332,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     if CanCompute( C, "SetOfObjectsOfCategory" ) then
         
-        if skeletal then
+        if skeletal_ then
             
             AddSetOfObjectsOfCategory( P,
               function( P )
@@ -377,7 +378,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
     fi;
     
-    if not skeletal and CanCompute( C, "SetOfGeneratingMorphismsOfCategory" ) then
+    if not skeletal_ and CanCompute( C, "SetOfGeneratingMorphismsOfCategory" ) then
         
         AddSetOfGeneratingMorphismsOfCategory( P,
           function( P )
@@ -414,10 +415,10 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
     fi;
     
-    if IsIdenticalObj( stable, true ) then
+    if IsIdenticalObj( stable_, true ) then
         if CanCompute( C, "InternalHomOnObjects" ) then
             
-            if IsIdenticalObj( skeletal, true ) then
+            if IsIdenticalObj( skeletal_, true ) then
                 SetIsHeytingAlgebra( P, true );
             else
                 SetIsHeytingAlgebroid( P, true );
@@ -442,7 +443,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
         if CanCompute( C, "InternalCoHomOnObjects" ) then
             
-            if IsIdenticalObj( skeletal, true ) then
+            if IsIdenticalObj( skeletal_, true ) then
                 SetIsCoHeytingAlgebra( P, true );
             else
                 SetIsCoHeytingAlgebra( P, true );
@@ -538,14 +539,12 @@ InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
 end );
 
 ##
-InstallMethod( \.,
-        "for a proset or poset of a CAP category and a positive integer",
-        [ IsProsetOrPosetOfCapCategory, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a proset or poset of a CAP category",
+        [ IsString, IsProsetOrPosetOfCapCategory ],
         
-  function( P, string_as_int )
-    local name, C, cell;
-    
-    name := NameRNam( string_as_int );
+  function( name, P )
+    local C, cell;
     
     C := AmbientCategory( P );
     
@@ -567,6 +566,11 @@ InstallMethod( \.,
     Error( "<cell> is neither an object nor a morphism in the ambient category <C>" );
     
 end );
+
+#= comment for Julia
+##
+INSTALL_DOT_METHOD( IsProsetOrPosetOfCapCategory );
+# =#
 
 ##
 InstallMethod( DefiningTripleOfUnderlyingQuiver,
@@ -591,8 +595,15 @@ InstallMethod( ViewString,
         
   function( a )
     
-    return Concatenation( "An object in the proset given by: ",
+    if IsCellInStableProsetOrPosetOfCategory( a ) then
+      
+      return Concatenation( "An object in the stable proset given by: ",
                    StringView( UnderlyingGapObject( a ) ) );
+    else
+      
+      return Concatenation( "An object in the proset given by: ",
+                   StringView( UnderlyingGapObject( a ) ) );
+    fi;
     
 end );
 
@@ -604,12 +615,21 @@ InstallMethod( PrintString,
 
 ##
 InstallMethod( ViewString,
-        [ IsMorphismInProsetOfCategory and HasUnderlyingMorphism ],
+        [ IsMorphismInProsetOfCategory ],
         
   function( mor )
     
-    return Concatenation( "A morphism in the proset given by: ",
+    if not HasUnderlyingMorphism( mor ) then
+        TryNextMethod( );
+    fi;
+    
+    if IsCellInStableProsetOrPosetOfCategory( mor ) then
+      return Concatenation( "A morphism in the stable proset given by: ",
                    StringView( UnderlyingMorphism( mor ) ) );
+    else
+      return Concatenation( "A morphism in the proset given by: ",
+                   StringView( UnderlyingMorphism( mor ) ) );
+    fi;
     
 end );
 
@@ -620,46 +640,20 @@ InstallMethod( PrintString,
   StringView );
 
 ##
-InstallMethod( ViewString,
-        [ IsObjectInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
-        
-  function( a )
-    
-    return Concatenation( "An object in the stable proset given by: ",
-                   StringView( UnderlyingGapObject( a ) ) );
-    
-end );
-
-##
-InstallMethod( ViewString,
-        [ IsMorphismInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory and HasUnderlyingMorphism ],
-        
-  function( mor )
-    
-    return Concatenation( "A morphism in the stable proset given by: ",
-                   StringView( UnderlyingMorphism( mor ) ) );
-    
-end );
-
-##
 InstallMethod( DisplayString,
         [ IsObjectInProsetOfCategory ],
         
   function( a )
     
-    return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
-                   "\nAn object in the proset given by the above data" );
-    
-end );
-
-##
-InstallMethod( DisplayString,
-        [ IsObjectInProsetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
-        
-  function( a )
-    
-    return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
-                   "\nAn object in the stable proset given by the above data" );
+    if IsCellInStableProsetOrPosetOfCategory( a ) then
+      
+      return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
+                   "\nAn object in the stable proset given by the above data\n" );
+    else
+      
+      return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
+                   "\nAn object in the proset given by the above data\n" );
+    fi;
     
 end );
 
@@ -669,8 +663,15 @@ InstallMethod( ViewString,
         
   function( a )
     
-    return Concatenation( "An object in the poset given by: ",
+    if IsCellInStableProsetOrPosetOfCategory( a ) then
+      
+      return Concatenation( "An object in the stable poset given by: ",
                    StringView( UnderlyingGapObject( a ) ) );
+    else
+    
+      return Concatenation( "An object in the poset given by: ",
+                   StringView( UnderlyingGapObject( a ) ) );
+    fi;
     
 end );
 
@@ -682,12 +683,23 @@ InstallMethod( PrintString,
 
 ##
 InstallMethod( ViewString,
-        [ IsMorphismInPosetOfCategory and HasUnderlyingMorphism ],
+        [ IsMorphismInPosetOfCategory ],
         
   function( mor )
     
-    return Concatenation( "A morphism in the poset given by: ",
+    if not HasUnderlyingMorphism( mor ) then
+        TryNextMethod( );
+    fi;
+    
+    if IsCellInStableProsetOrPosetOfCategory( mor ) then
+      
+      return Concatenation( "A morphism in the stable poset given by: ",
                    StringView( UnderlyingMorphism( mor ) ) );
+    else
+    
+      return Concatenation( "A morphism in the poset given by: ",
+                   StringView( UnderlyingMorphism( mor ) ) );
+    fi;
     
 end );
 
@@ -698,45 +710,21 @@ InstallMethod( PrintString,
   StringView );
 
 ##
-InstallMethod( ViewString,
-        [ IsObjectInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
-        
-  function( a )
-    
-    return Concatenation( "An object in the stable poset given by: ",
-                   StringView( UnderlyingGapObject( a ) ) );
-    
-end );
-
-##
-InstallMethod( ViewString,
-        [ IsMorphismInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory and HasUnderlyingMorphism ],
-        
-  function( mor )
-    
-    return Concatenation( "A morphism in the stable poset given by: ",
-                   StringView( UnderlyingMorphism( mor ) ) );
-    
-end );
-
-##
 InstallMethod( DisplayString,
         [ IsObjectInPosetOfCategory ],
         
   function( a )
     
-    return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
-                   "\nAn object in the poset given by the above data\n" );
-    
-end );
-
-##
-InstallMethod( DisplayString,
-        [ IsObjectInPosetOfCategory and IsCellInStableProsetOrPosetOfCategory ],
-        
-  function( a )
-    
-    return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
+    if IsCellInStableProsetOrPosetOfCategory( a ) then
+      
+      return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
                    "\nAn object in the stable poset given by the above data\n" );
+      
+    else
+      
+      return Concatenation( StringDisplay( UnderlyingGapObject( a ) ),
+                   "\nAn object in the poset given by the above data\n" );
+      
+    fi;
     
 end );

@@ -54,7 +54,7 @@ end );
 ##
 InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         "for a CAP category",
-        [ IsCapCategory and IsThinCategory ],
+        [ FilterIntersection( IsCapCategory, IsThinCategory ) ],
         
   function( P )
     local name, C, D, BinaryDirectProduct;
@@ -288,9 +288,13 @@ end );
 ##
 InstallMethod( \+,
         "for an object in a meet-semilattice of formal multiple differences and the zero integer",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsInt and IsZero ],
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsInt ],
         
   function( A, B )
+    
+    if not ( HasIsZero( B ) and IsZero( B ) ) then
+        TryNextMethod( );
+    fi;
     
     return A + InitialObject( CapCategory( A ) );
     
@@ -299,9 +303,13 @@ end );
 ##
 InstallMethod( \+,
         "for the zero integer and an object in a meet-semilattice of formal multiple differences",
-        [ IsInt and IsZero, IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        [ IsInt, IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   function( A, B )
+    
+    if not ( HasIsZero( A ) and IsZero( A ) ) then
+        TryNextMethod( );
+    fi;
     
     return B + InitialObject( CapCategory( B ) );
     
@@ -339,14 +347,14 @@ InstallMethod( ListOfObjectsInMeetSemilatticeOfMultipleDifferences,
 ##
 InstallMethod( ListOfObjectsInMeetSemilatticeOfMultipleDifferences,
         "for a constructible object as a union of formal multiple differences",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences and HasListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences ],
+        [ FilterIntersection( IsConstructibleObjectAsUnionOfMultipleDifferences, HasListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences ) ],
         
   ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences );
 
 ##
 InstallMethod( ListOfObjectsInMeetSemilatticeOfMultipleDifferences,
         "for a constructible object as a union of formal multiple differences",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences and HasListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences ],
+        [ FilterIntersection( IsConstructibleObjectAsUnionOfMultipleDifferences, HasListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences ) ],
         
   ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences );
 

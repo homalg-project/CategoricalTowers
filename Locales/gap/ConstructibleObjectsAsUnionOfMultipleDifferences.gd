@@ -41,12 +41,15 @@ DeclareAttribute( "UnderlyingMeetSemilatticeOfMultipleDifferences",
 
 #! @Section Operations
 
+#= comment for Julia
 #! @Description
 #!  A list of morphisms in the underlying lattice representing the formal multiple difference <A>A</A>.
 #! @Arguments A
 #! @Returns a list of &CAP; morphism
 DeclareOperation( "ListOfObjectsInMeetSemilatticeOfMultipleDifferences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ] );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "ListOfObjectsInMeetSemilatticeOfMultipleDifferences" );
 
 DeclareOperation( "ListOp",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ] );
@@ -61,6 +64,7 @@ CapJitAddTypeSignature( "Length", [ IsConstructibleObjectAsUnionOfMultipleDiffer
 
 #! @Section Constructors
 
+#= comment for Julia
 #! @Description
 #!  Construct the Boolean algebra of constructible objects
 #!  as union of objects in the poset <A>D</A> of multiple differences.
@@ -68,6 +72,8 @@ CapJitAddTypeSignature( "Length", [ IsConstructibleObjectAsUnionOfMultipleDiffer
 #! @Returns a &CAP; category
 DeclareAttribute( "BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences",
         IsCapCategory );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences" );
 
 #! @Description
 #!  If <A>D1</A>=<M>A1-B1</M>, <A>D2</A>=<M>A2-B2</M>, ..., then

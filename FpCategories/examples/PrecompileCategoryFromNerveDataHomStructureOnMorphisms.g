@@ -38,7 +38,7 @@ CategoryFromNerveData( PathCategory( given_arguments[1] ) )!.precompiled_functio
 #! true
 
 #! #@fi
-# drop_example_in_Julia
+# @drop_example_in_Julia
 #! @EndExample
 
 #! @EndChunk
