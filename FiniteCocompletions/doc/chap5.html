@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (FiniteCocompletions) - Chapter 5: The pair of parallel arrows category of a category</title>
+<title>GAP (FiniteCocompletions) - Chapter 5: SkeletalFinSets</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -15,130 +15,610 @@
 <body class="chap5"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap4.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap6.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap5_mj.html">[MathJax on]</a></p>
-<p><a id="X85EFB7D878FD356E" name="X85EFB7D878FD356E"></a></p>
-<div class="ChapSects"><a href="chap5.html#X85EFB7D878FD356E">5 <span class="Heading">The pair of parallel arrows category of a category</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X7D9044767BEB1523">5.1 <span class="Heading">Global variables</span></a>
+<p><a id="X79D9465278E31286" name="X79D9465278E31286"></a></p>
+<div class="ChapSects"><a href="chap5.html#X79D9465278E31286">5 <span class="Heading">SkeletalFinSets</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X7C701DBF7BAE649A">5.1 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7F629078861AD91B">5.1-1 QuiverOfCategoryOfQuivers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X8465EFAF82B271DE">5.1-1 Cardinality</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X87064622874D910F">5.1-2 AsList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7F38AA4E7C371235">5.1-3 AsList</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X7C701DBF7BAE649A">5.2 <span class="Heading">Attributes</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X86EC0F0A78ECBC10">5.2 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7C50EB74807AF7EE">5.2-1 PairOfObjectsAndPairOfParallelMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X815A1C627CDDF107">5.2-2 DefiningPairOfMorphismBetweenParallelPairs</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X81A472EA7C1CD4FB">5.2-3 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X858033D179AAE126">5.2-1 SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X838CE44578BEE5C7">5.2-2 SkeletalFinSetsAsFreeElementaryToposOfInitialCategory</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X86EC0F0A78ECBC10">5.3 <span class="Heading">Constructors</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X7D03633A7D98026B">5.3 <span class="Heading">GAP categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7925411183EC110C">5.3-1 PairOfParallelArrowsCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X830CD89A849201D3">5.3-1 IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X83BACC83864531F7">5.3-2 IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X80FCEED27ECFBABB">5.3-3 IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X8055FE5D7CB00047">5.3-4 IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X7D03633A7D98026B">5.4 <span class="Heading">GAP categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X7A95C44F85102748">5.4 <span class="Heading">Skeletal Examples</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7D185BFF79B46FE6">5.4-1 IsPairOfParallelArrowsCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X838A82637B30F1FD">5.4-2 IsCellInPairOfParallelArrowsCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X87120D7278FC6D3F">5.4-3 IsObjectInPairOfParallelArrowsCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7C4086A07FA587FF">5.4-4 IsMorphismInPairOfParallelArrowsCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X786A58C886916831">5.4-1 <span class="Heading">Skeletal WellDefined</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X86100A35872E3E9F">5.4-2 <span class="Heading">Skeletal PreCompose</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7C31E02684CC5BE8">5.4-3 <span class="Heading">Skeletal Lift</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X87F287CE873DF50E">5.4-4 <span class="Heading">Morphisms of external Hom</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X8671AA4181FFF519">5.4-5 <span class="Heading">Skeletal Initial and Terminal Objects</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7F312766810A2F89">5.4-6 <span class="Heading">Skeletal Direct Product</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7ADD1E46831BEED2">5.4-7 <span class="Heading">Skeletal Coproduct</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7CB41F747E51F31D">5.4-8 <span class="Heading">Skeletal coproduct complement</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X8612F06E7F683F4C">5.4-9 <span class="Heading">Skeletal Equalizer</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7FAC0A93866676CE">5.4-10 <span class="Heading">Skeletal homomorphism structre</span></a>
+</span>
 </div></div>
 </div>
 
-<h3>5 <span class="Heading">The pair of parallel arrows category of a category</span></h3>
-
-<p><a id="X7D9044767BEB1523" name="X7D9044767BEB1523"></a></p>
-
-<h4>5.1 <span class="Heading">Global variables</span></h4>
-
-<p><a id="X7F629078861AD91B" name="X7F629078861AD91B"></a></p>
-
-<h5>5.1-1 QuiverOfCategoryOfQuivers</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; QuiverOfCategoryOfQuivers</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
-<p>The quiver generating the category of quivers.</p>
+<h3>5 <span class="Heading">SkeletalFinSets</span></h3>
 
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
-<h4>5.2 <span class="Heading">Attributes</span></h4>
+<h4>5.1 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X7C50EB74807AF7EE" name="X7C50EB74807AF7EE"></a></p>
+<p><a id="X8465EFAF82B271DE" name="X8465EFAF82B271DE"></a></p>
 
-<h5>5.2-1 PairOfObjectsAndPairOfParallelMorphisms</h5>
+<h5>5.1-1 Cardinality</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PairOfObjectsAndPairOfParallelMorphisms</code>( <var class="Arg">quiver</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X815A1C627CDDF107" name="X815A1C627CDDF107"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Cardinality</code>( <var class="Arg">M</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
 
-<h5>5.2-2 DefiningPairOfMorphismBetweenParallelPairs</h5>
+<p>The integer defining the skeletal finite set <var class="Arg">M</var>, i.e., <code class="code">Cardinality( FinSet( n ) ) = n</code>.</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningPairOfMorphismBetweenParallelPairs</code>( <var class="Arg">quiver_morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X81A472EA7C1CD4FB" name="X81A472EA7C1CD4FB"></a></p>
+<p><a id="X87064622874D910F" name="X87064622874D910F"></a></p>
 
-<h5>5.2-3 UnderlyingCategory</h5>
+<h5>5.1-2 AsList</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">PPAC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Return the category <span class="Math">C</span> underlying the category <var class="Arg">PPAC</var> := <code class="code">PairOfParallelArrowsCategory</code>( <span class="Math">C</span> ).</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsList</code>( <var class="Arg">M</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The list associated to a skeletal finite set, i.e., <code class="code">AsList( FinSet( n ) ) = [ 0 .. n - 1 ]</code>.</p>
+
+<p><a id="X7F38AA4E7C371235" name="X7F38AA4E7C371235"></a></p>
+
+<h5>5.1-3 AsList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsList</code>( <var class="Arg">phi</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a lazy array</p>
+
+<p>The lazy array of images between skeletal finite sets.</p>
 
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
-<h4>5.3 <span class="Heading">Constructors</span></h4>
+<h4>5.2 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X7925411183EC110C" name="X7925411183EC110C"></a></p>
+<p><a id="X858033D179AAE126" name="X858033D179AAE126"></a></p>
 
-<h5>5.3-1 PairOfParallelArrowsCategory</h5>
+<h5>5.2-1 SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PairOfParallelArrowsCategory</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Return the finite coequalizer closure of the coartesian category <var class="Arg">cat</var>.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP category</p>
+
+<p>Construct a category of skeletal finite sets as the finite coproduct cocompletion of the terminal category.</p>
+
+<p><a id="X838CE44578BEE5C7" name="X838CE44578BEE5C7"></a></p>
+
+<h5>5.2-2 SkeletalFinSetsAsFreeElementaryToposOfInitialCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SkeletalFinSetsAsFreeElementaryToposOfInitialCategory</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<p>The default instance of the category of skeletal finite sets. It is automatically created while loading this package.</p>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
-<h4>5.4 <span class="Heading">GAP categories</span></h4>
+<h4>5.3 <span class="Heading">GAP categories</span></h4>
 
-<p><a id="X7D185BFF79B46FE6" name="X7D185BFF79B46FE6"></a></p>
+<p><a id="X830CD89A849201D3" name="X830CD89A849201D3"></a></p>
 
-<h5>5.4-1 IsPairOfParallelArrowsCategory</h5>
+<h5>5.3-1 IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPairOfParallelArrowsCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of pair of parallel arrows categories.</p>
+<p>The <strong class="pkg">GAP</strong> category of a finite coproduct cocompletion category.</p>
 
-<p><a id="X838A82637B30F1FD" name="X838A82637B30F1FD"></a></p>
+<p><a id="X83BACC83864531F7" name="X83BACC83864531F7"></a></p>
 
-<h5>5.4-2 IsCellInPairOfParallelArrowsCategory</h5>
+<h5>5.3-2 IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInPairOfParallelArrowsCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of cells in the pair of parallel arrows category of a category.</p>
+<p>The <strong class="pkg">GAP</strong> category of cells in the category of skeletal finsets.</p>
 
-<p><a id="X87120D7278FC6D3F" name="X87120D7278FC6D3F"></a></p>
+<p><a id="X80FCEED27ECFBABB" name="X80FCEED27ECFBABB"></a></p>
 
-<h5>5.4-3 IsObjectInPairOfParallelArrowsCategory</h5>
+<h5>5.3-3 IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInPairOfParallelArrowsCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of objects in the pair of parallel arrows category of a category.</p>
+<p>The <strong class="pkg">GAP</strong> category of objects in the category of skeletal finsets.</p>
 
-<p><a id="X7C4086A07FA587FF" name="X7C4086A07FA587FF"></a></p>
+<p><a id="X8055FE5D7CB00047" name="X8055FE5D7CB00047"></a></p>
 
-<h5>5.4-4 IsMorphismInPairOfParallelArrowsCategory</h5>
+<h5>5.3-4 IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInPairOfParallelArrowsCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of morphisms in the pair of parallel arrows category of a category.</p>
+<p>The <strong class="pkg">GAP</strong> category of morphisms in the category of skeletal finsets.</p>
+
+<p><a id="X7A95C44F85102748" name="X7A95C44F85102748"></a></p>
+
+<h4>5.4 <span class="Heading">Skeletal Examples</span></h4>
+
+<p><a id="X786A58C886916831" name="X786A58C886916831"></a></p>
+
+<h5>5.4-1 <span class="Heading">Skeletal WellDefined</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;</span>
+SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( sFinSets );</span>
+A CAP category with name
+SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory:
+
+36 primitive operations were used to derive 167 operations for this category
+which algorithmically
+* IsCategoryWithDecidableColifts
+* IsCategoryWithDecidableLifts
+* IsEquippedWithHomomorphismStructure
+* IsFiniteCompleteCategory
+* IsDistributiveCategory
+and not yet algorithmically
+* IsElementaryTopos
+and furthermore mathematically
+* IsSkeletalCategory
+* IsStrictCartesianCategory
+* IsStrictCocartesianCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := ObjectConstructor( sFinSets, 7 );</span>
+|7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectDatum( s );</span>
+7
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := ObjectConstructor( sFinSets, 4 );</span>
+|4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectDatum( t );</span>
+4
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MorphismConstructor( s, [ 0, 2, 1, 2, 1, 3 ], t );</span>
+|7| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MorphismConstructor( s, [ 0, 2, 1, 2, 1, 3, -2 ], t );</span>
+|7| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MorphismConstructor( s, [ 1, 2, 1, 4, 2, 1, 3 ], t );</span>
+|7| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi:= MorphismConstructor( s, [ 0, 2, 1, 3, 2, 1, 3 ], t );</span>
+|7| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( psi );</span>
+{ 0,..., 6 } ⱶ[ 0, 2, 1, 3, 2, 1, 3 ]→ { 0,..., 3 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( psi );</span>
+[ 0, 2, 1, 3, 2, 1, 3 ]
+</pre></div>
+
+<p><a id="X86100A35872E3E9F" name="X86100A35872E3E9F"></a></p>
+
+<h5>5.4-2 <span class="Heading">Skeletal PreCompose</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;</span>
+SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := ObjectConstructor( sFinSets, 5 );</span>
+|5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := ObjectConstructor( sFinSets, 7 );</span>
+|7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MorphismConstructor( m, [ 1, 4, 2 ], n );</span>
+|3| → |5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi := MorphismConstructor( n, [ 0, 3, 5, 5, 2 ], p );</span>
+|5| → |7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := PreCompose( psi, phi );</span>
+|3| → |7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( alpha );</span>
+{ 0, 1, 2 } ⱶ[ 3, 2, 5 ]→ { 0,..., 6 }
+</pre></div>
+
+<p><a id="X7C31E02684CC5BE8" name="X7C31E02684CC5BE8"></a></p>
+
+<h5>5.4-3 <span class="Heading">Skeletal Lift</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;</span>
+SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := ObjectConstructor( sFinSets, 4 );</span>
+|4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := MorphismConstructor( m, [ 1, 1, 0 ], m );</span>
+|3| → |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := MorphismConstructor( n, [ 2, 1, 0, 1 ], m );</span>
+|4| → |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( f, g );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi := Lift( f, g );</span>
+|3| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( chi );</span>
+{ 0, 1, 2 } ⱶ[ 1, 1, 2 ]→ { 0,..., 3 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( Lift( f, g ), g ) = f;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( g, f );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := ObjectConstructor( sFinSets, 100000 );</span>
+|100000|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := ListWithIdenticalEntries( Cardinality( k ) - 3, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := Concatenation( h, [ 1, 0, 1 ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := MorphismConstructor( k, h, m );</span>
+|100000| → |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( f, h );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( h, f );</span>
+false
+</pre></div>
+
+<p><a id="X87F287CE873DF50E" name="X87F287CE873DF50E"></a></p>
+
+<h5>5.4-4 <span class="Heading">Morphisms of external Hom</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;</span>
+SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := ObjectConstructor( sFinSets, 0 );</span>
+|0|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := ObjectConstructor( sFinSets, 2 );</span>
+|2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := ObjectConstructor( sFinSets, 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( MorphismsOfExternalHom( L, L ) );</span>
+[ ∅ ⱶ[ ]→ ∅ ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( MorphismsOfExternalHom( M, L ) );</span>
+[  ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( MorphismsOfExternalHom( L, M ) );</span>
+[ ∅ ⱶ[ ]→ { 0, 1 } ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( MorphismsOfExternalHom( M, N ) );</span>
+[ { 0, 1 } ⱶ[ 0, 0 ]→ { 0, 1, 2 }, { 0, 1 } ⱶ[ 1, 0 ]→ { 0, 1, 2 },\
+ { 0, 1 } ⱶ[ 2, 0 ]→ { 0, 1, 2 }, { 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1, 2 },\
+ { 0, 1 } ⱶ[ 1, 1 ]→ { 0, 1, 2 }, { 0, 1 } ⱶ[ 2, 1 ]→ { 0, 1, 2 },\
+ { 0, 1 } ⱶ[ 0, 2 ]→ { 0, 1, 2 }, { 0, 1 } ⱶ[ 1, 2 ]→ { 0, 1, 2 },\
+ { 0, 1 } ⱶ[ 2, 2 ]→ { 0, 1, 2 } ]
+</pre></div>
+
+<p><a id="X8671AA4181FFF519" name="X8671AA4181FFF519"></a></p>
+
+<h5>5.4-5 <span class="Heading">Skeletal Initial and Terminal Objects</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;</span>
+SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 8 );</span>
+|8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( m );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminal( m );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := InitialObject( sFinSets );</span>
+|0|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsList( i );</span>
+[  ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i );</span>
+∅
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( i );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminal( i );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := UniversalMorphismFromInitialObject( m );</span>
+|0| → |8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ii := InitialObjectFunctorial( sFinSets );</span>
+|0| → |0|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ii );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ii;</span>
+|0| ⭇ |0|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TerminalObject( sFinSets );</span>
+|1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsList( t );</span>
+[ 0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
+{ 0 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( t );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminal( t );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi := UniversalMorphismIntoTerminalObject( m );</span>
+|8| → |1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( Target( pi ), t );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi_t := UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( m, t );</span>
+|8| → |1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( pi_t );</span>
+{ 0,..., 7 } ⱶ[ 0, 0, 0, 0, 0, 0, 0, 0 ]→ { 0 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi = pi_t;</span>
+true
+</pre></div>
+
+<p><a id="X7F312766810A2F89" name="X7F312766810A2F89"></a></p>
+
+<h5>5.4-6 <span class="Heading">Skeletal Direct Product</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;</span>
+SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 7 );</span>
+|7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := ObjectConstructor( sFinSets, 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := ObjectConstructor( sFinSets, 4 );</span>
+|4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := DirectProduct( [ m, n, p ] );</span>
+|84|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsList( d );</span>
+[ 0 .. 83 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := ProjectionInFactorOfDirectProduct( [ m, n, p ], 1 );</span>
+|84| → |7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( pi1 );</span>
+{ 0,..., 83 } ⱶ[ 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,
+                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,
+                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,
+                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,
+                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,
+                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6 ]→ { 0,..., 6 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := ProjectionInFactorOfDirectProduct( [ m, n, p ], 2 );</span>
+|84| → |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( pi2 );</span>
+{ 0,..., 83 } ⱶ[ 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,
+                 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0,
+                 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2,
+                 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,
+                 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0,
+                 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2 ]→ { 0, 1, 2 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi3 := ProjectionInFactorOfDirectProduct( [ m, n, p ], 3 );</span>
+|84| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( pi3 );</span>
+{ 0,..., 83 } ⱶ[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,
+                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+                 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3,
+                 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 ]→ { 0,..., 3 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := UniversalMorphismIntoDirectProduct( [ m, n, p ], [ pi1, pi2, pi3 ] );</span>
+|84| → |84|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi = IdentityMorphism( d );</span>
+true
+</pre></div>
+
+<p><a id="X7ADD1E46831BEED2" name="X7ADD1E46831BEED2"></a></p>
+
+<h5>5.4-7 <span class="Heading">Skeletal Coproduct</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;</span>
+SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 7 );</span>
+|7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := ObjectConstructor( sFinSets, 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := ObjectConstructor( sFinSets, 4 );</span>
+|4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := Coproduct( m, n, p );</span>
+|14|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsList( c );</span>
+[ 0 .. 13 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota1 := InjectionOfCofactorOfCoproduct( [ m, n, p ], 1 );</span>
+|7| → |14|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iota1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota1 );</span>
+{ 0,..., 6 } ⱶ[ 0 .. 6 ]→ { 0,..., 13 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota2 := InjectionOfCofactorOfCoproduct( [ m, n, p ], 2 );</span>
+|3| → |14|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iota2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota2 );</span>
+{ 0, 1, 2 } ⱶ[ 7 .. 9 ]→ { 0,..., 13 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota3 := InjectionOfCofactorOfCoproduct( [ m, n, p ], 3 );</span>
+|4| → |14|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iota3 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota3 );</span>
+{ 0,..., 3 } ⱶ[ 10 .. 13 ]→ { 0,..., 13 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := UniversalMorphismFromCoproduct(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ m, n, p ], [ iota1, iota2, iota3 ] );</span>
+|14| → |14|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := IdentityMorphism( Coproduct( [ m, n, p ] ) );</span>
+|14| → |14|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi = id;</span>
+true
+</pre></div>
+
+<p><a id="X7CB41F747E51F31D" name="X7CB41F747E51F31D"></a></p>
+
+<h5>5.4-8 <span class="Heading">Skeletal coproduct complement</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;</span>
+SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := ObjectConstructor( sFinSets, 5 );</span>
+|5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota:= MorphismConstructor( m, [ 1, 4, 2 ], n );</span>
+|3| → |5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota );</span>
+{ 0, 1, 2 } ⱶ[ 1, 4, 2 ]→ { 0,..., 4 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kappa := InjectionOfCoproductComplement( iota );</span>
+|2| → |5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( kappa );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( kappa );</span>
+{ 0, 1 } ⱶ[ 0, 3 ]→ { 0,..., 4 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iso := UniversalMorphismFromCoproduct( [ iota, kappa ] );</span>
+|5| → |5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iso );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iso );</span>
+{ 0,..., 4 } ⱶ[ 1, 4, 2, 0, 3 ]→ { 0,..., 4 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( iso );</span>
+true
+</pre></div>
+
+<p><a id="X8612F06E7F683F4C" name="X8612F06E7F683F4C"></a></p>
+
+<h5>5.4-9 <span class="Heading">Skeletal Equalizer</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;</span>
+SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := ObjectConstructor( sFinSets, 5 );</span>
+|5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := ObjectConstructor( sFinSets, 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f1 := MorphismConstructor( S, [ 2, 2, 0, 1, 1 ], T );</span>
+|5| → |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f2 := MorphismConstructor( S, [ 2, 1, 2, 0, 1 ], T );</span>
+|5| → |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f3 := MorphismConstructor( S, [ 2, 0, 1, 0, 1 ], T );</span>
+|5| → |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := [ f1, f2, f3 ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Eq := Equalizer( D );</span>
+|2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := EmbeddingOfEqualizer( D );</span>
+|2| → |5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota );</span>
+{ 0, 1 } ⱶ[ 0, 4 ]→ { 0,..., 4 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi := MorphismConstructor( ObjectConstructor( sFinSets, 2 ), [ 4, 0 ], S );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( phi );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := UniversalMorphismIntoEqualizer( D, phi );</span>
+|2| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( psi );</span>
+{ 0, 1 } ⱶ[ 1, 0 ]→ { 0, 1 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( psi, iota ) = phi;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := [ f2, f3 ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Eq := Equalizer( D );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := EmbeddingOfEqualizer( D );</span>
+|3| → |5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( psi );</span>
+{ 0, 1, 2 } ⱶ[ 0, 3, 4 ]→ { 0,..., 4 }
+</pre></div>
+
+<p><a id="X7FAC0A93866676CE" name="X7FAC0A93866676CE"></a></p>
+
+<h5>5.4-10 <span class="Heading">Skeletal homomorphism structre</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory;</span>
+SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := ObjectConstructor( sFinSets, 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
+{ 0, 1, 2 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := ObjectConstructor( sFinSets, 2 );</span>
+|2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A = B;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( B );</span>
+{ 0, 1 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomAB := HomStructure( A, B );</span>
+|8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := HomStructure( sFinSets );</span>
+|1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homAB := List( [ 0 .. Cardinality( HomAB ) - 1 ], i -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               MorphismConstructor( I, [ i ], HomAB ) );</span>
+[ |1| → |8|, |1| → |8|, |1| → |8|, |1| → |8|,
+  |1| → |8|, |1| → |8|, |1| → |8|, |1| → |8| ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( homAB, IsWellDefined );</span>
+[ true, true, true, true, true, true, true, true ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( homAB, m -&gt; HomStructure( HomStructure( A, B, m ) ) ) = homAB;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := HomStructure( A, B, homAB[6] );</span>
+|3| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( alpha );</span>
+{ 0, 1, 2 } ⱶ[ 1, 0, 1 ]→ { 0, 1 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := HomStructure( A, B, homAB[2] );</span>
+|3| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( gamma );</span>
+{ 0, 1, 2 } ⱶ[ 1, 0, 0 ]→ { 0, 1 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_alpha_gamma := HomStructure( alpha, gamma );</span>
+|9| → |8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( hom_alpha_gamma );</span>
+{ 0,..., 8 } ⱶ[ 7, 5, 5, 2, 0, 0, 2, 0, 0 ]→ { 0,..., 7 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( hom_alpha_gamma );</span>
+true
+</pre></div>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap4.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap6.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

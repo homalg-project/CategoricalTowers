@@ -261,28 +261,28 @@
   
   [1X1.3-1 IsFiniteStrictCoproductCompletion[101X
   
-  [33X[1;0Y[29X[2XIsFiniteStrictCoproductCompletion[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsFiniteStrictCoproductCompletion[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of finite coproduct cocompletion categories.[133X
   
   [1X1.3-2 IsCellInFiniteStrictCoproductCompletion[101X
   
-  [33X[1;0Y[29X[2XIsCellInFiniteStrictCoproductCompletion[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInFiniteStrictCoproductCompletion[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in a finite coproduct cocompletion category.[133X
   
   [1X1.3-3 IsObjectInFiniteStrictCoproductCompletion[101X
   
-  [33X[1;0Y[29X[2XIsObjectInFiniteStrictCoproductCompletion[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInFiniteStrictCoproductCompletion[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a finite coproduct cocompletion category.[133X
   
   [1X1.3-4 IsMorphismInFiniteStrictCoproductCompletion[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInFiniteStrictCoproductCompletion[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInFiniteStrictCoproductCompletion[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in a finite coproduct cocompletion category.[133X

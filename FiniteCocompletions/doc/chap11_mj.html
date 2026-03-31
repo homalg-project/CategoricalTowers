@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (FiniteCocompletions) - Chapter 11: Kernel closure</title>
+<title>GAP (FiniteCocompletions) - Chapter 11: Cokernel closure</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -18,50 +18,102 @@
 <body class="chap11"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap10_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap12_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap11.html">[MathJax off]</a></p>
-<p><a id="X82A82C707F3F3409" name="X82A82C707F3F3409"></a></p>
-<div class="ChapSects"><a href="chap11_mj.html#X82A82C707F3F3409">11 <span class="Heading">Kernel closure</span></a>
+<p><a id="X7DB668907CBAC977" name="X7DB668907CBAC977"></a></p>
+<div class="ChapSects"><a href="chap11_mj.html#X7DB668907CBAC977">11 <span class="Heading">Cokernel closure</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X86EC0F0A78ECBC10">11.1 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7F23B74E80714453">11.1-1 EmbeddingOfUnderlyingCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X813F95BD85E42D32">11.1-2 ExtendFunctorToCoFreydCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7E63153F7C67E0B1">11.1-1 EmbeddingOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X786CBC8C82888AE7">11.1-2 ExtendFunctorToFreydCategory</a></span>
 </div></div>
 </div>
 
-<h3>11 <span class="Heading">Kernel closure</span></h3>
+<h3>11 <span class="Heading">Cokernel closure</span></h3>
 
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
 <h4>11.1 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X7F23B74E80714453" name="X7F23B74E80714453"></a></p>
+<p><a id="X7E63153F7C67E0B1" name="X7E63153F7C67E0B1"></a></p>
 
 <h5>11.1-1 EmbeddingOfUnderlyingCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnderlyingCategory</code>( <var class="Arg">KC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnderlyingCategory</code>( <var class="Arg">FC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP functor</p>
 
-<p>The full embedding functor from the additive category <span class="SimpleMath">\(C\)</span> underlying the co-Freyd (=kernel closure) category <var class="Arg">KC</var> into <var class="Arg">KC</var>.</p>
+<p>The full embedding functor from the additive category <span class="SimpleMath">\(C\)</span> underlying the Freyd (=cokernel closure) category <var class="Arg">FC</var> into <var class="Arg">FC</var>.</p>
 
-<p><a id="X813F95BD85E42D32" name="X813F95BD85E42D32"></a></p>
 
-<h5>11.1-2 ExtendFunctorToCoFreydCategory</h5>
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-&gt;SG,rhoT:TR-&gt;TG,phi:SG-&gt;TG,chi:SR-&gt;TR]" );</span>
+FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PathCategory( q );</span>
+PathCategory(
+FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := P / [ [ P.rhoS * P.phi, P.chi * P.rhoT ] ];</span>
+PathCategory(
+FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
+/ [ rhoS⋅phi = chi⋅rhoT ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz := HomalgRingOfIntegers( );</span>
+Z
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := LinearClosure( zz, C );</span>
+Z-LinearClosure( PathCategory(
+FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
+/ [ rhoS⋅phi = chi⋅rhoT ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AdditiveClosure( L );</span>
+AdditiveClosure( Z-LinearClosure( PathCategory(
+FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
+/ [ rhoS⋅phi = chi⋅rhoT ] ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := CoFreydCategory( A );</span>
+CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory(
+FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
+/ [ rhoS⋅phi = chi⋅rhoT ] ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreydCategory( K );</span>
+Freyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory(
+FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
+/ [ rhoS⋅phi = chi⋅rhoT ] ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := CokernelObject( F.rhoS );</span>
+&lt;An object in Freyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory(
+ FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
+ / [ rhoS⋅phi = chi⋅rhoT ] ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := CokernelObject( F.rhoT );</span>
+&lt;An object in Freyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory(
+ FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
+ / [ rhoS⋅phi = chi⋅rhoT ] ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MorphismConstructor( S, K.phi, T );</span>
+&lt;A morphism in Freyd( CoFreyd( AdditiveClosure( Z-LinearClosure( PathCategory(
+ FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR→SG,rhoT:TR→TG,phi:SG→TG,chi:SR→TR]" ) )
+ / [ rhoS⋅phi = chi⋅rhoT ] ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CokernelObjectFunctorial( F.rhoS, F.phi, F.rhoT ) = psi;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi =</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  EvalString( CellAsEvaluatableString( psi, [ "F", "K", "A", "L", "C", "P" ] ) );</span>
+true
+</pre></div>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToCoFreydCategory</code>( <var class="Arg">AC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X786CBC8C82888AE7" name="X786CBC8C82888AE7"></a></p>
+
+<h5>11.1-2 ExtendFunctorToFreydCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToFreydCategory</code>( <var class="Arg">AC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP functor</p>
 
-<p>The full embedding functor from the additive category <span class="SimpleMath">\(C\)</span> underlying the kernel closure category <var class="Arg">FC</var> into <var class="Arg">FC</var>.</p>
+<p>The full embedding functor from the additive category <span class="SimpleMath">\(C\)</span> underlying the cokernel closure category <var class="Arg">FC</var> into <var class="Arg">FC</var>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap10_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap12_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

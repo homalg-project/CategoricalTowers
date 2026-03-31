@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2026.02-05
+                                   2026.03-01
   
   
-                                15 February 2026
+                                 31 March 2026
   
   
                                 Mohamed Barakat
@@ -56,162 +56,169 @@
       2.1-1 PairOfIntAndList
       2.1-2 PairOfLists
       2.1-3 UnderlyingCategory
-      2.1-4 NumberOfObjectsOfUnderlyingCategory
-      2.1-5 EmbeddingOfUnderlyingCategory
-      2.1-6 ExtendFunctorToFiniteStrictCoproductCompletionOfObjectFiniteCategory
-      2.1-7 PairOfIntAndList
-      2.1-8 PairOfLists
-      2.1-9 UnderlyingCategory
-      2.1-10 EmbeddingOfUnderlyingCategory
-      2.1-11 ExtendFunctorToFiniteStrictProductCompletion
+      2.1-4 EmbeddingOfUnderlyingCategory
+      2.1-5 ExtendFunctorToFiniteStrictProductCompletion
     2.2 [33X[0;0YConstructors[133X
-      2.2-1 FiniteStrictCoproductCompletionOfObjectFiniteCategory
-      2.2-2 FiniteStrictProductCompletion
+      2.2-1 FiniteStrictProductCompletion
     2.3 [33X[0;0YGAP categories[133X
-      2.3-1 IsFiniteStrictCoproductCompletionOfObjectFiniteCategory
-      2.3-2 IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory
-      2.3-3 IsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory
-      2.3-4 IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory
-      2.3-5 IsFiniteStrictProductCompletion
-      2.3-6 IsCellInFiniteStrictProductCompletion
-      2.3-7 IsObjectInFiniteStrictProductCompletion
-      2.3-8 IsMorphismInFiniteStrictProductCompletion
+      2.3-1 IsFiniteStrictProductCompletion
+      2.3-2 IsCellInFiniteStrictProductCompletion
+      2.3-3 IsObjectInFiniteStrictProductCompletion
+      2.3-4 IsMorphismInFiniteStrictProductCompletion
     2.4 [33X[0;0YExamples[133X
       2.4-1 [33X[0;0YCartesian braiding[133X
       2.4-2 [33X[0;0YCartesian diagonal[133X
-  3 [33X[0;0YFree distributive closure category with strict products and coproducts[133X
+  3 [33X[0;0YFinite strict coproduct completion of an object-finite category[133X
     3.1 [33X[0;0YAttributes[133X
-      3.1-1 UnderlyingCategory
+      3.1-1 PairOfIntAndList
+      3.1-2 PairOfLists
+      3.1-3 UnderlyingCategory
+      3.1-4 NumberOfObjectsOfUnderlyingCategory
+      3.1-5 EmbeddingOfUnderlyingCategory
+      3.1-6 ExtendFunctorToFiniteStrictCoproductCompletionOfObjectFiniteCategory
     3.2 [33X[0;0YConstructors[133X
-      3.2-1 FreeDistributiveCategoryWithStrictProductAndCoproducts
-      3.2-2 EmbeddingOfUnderlyingCategory
-      3.2-3 ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts
+      3.2-1 FiniteStrictCoproductCompletionOfObjectFiniteCategory
     3.3 [33X[0;0YGAP categories[133X
-      3.3-1 IsFreeDistributiveCategoryWithStrictProductAndCoproducts
-      3.3-2 IsCellInFreeDistributiveCategoryWithStrictProductAndCoproducts
-      3.3-3 IsObjectInFreeDistributiveCategoryWithStrictProductAndCoproducts
-      3.3-4 IsMorphismInFreeDistributiveCategoryWithStrictProductAndCoproducts
-  4 [33X[0;0YSkeletalFinSets[133X
+      3.3-1 IsFiniteStrictCoproductCompletionOfObjectFiniteCategory
+      3.3-2 IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory
+      3.3-3 IsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory
+      3.3-4 IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory
+    3.4 [33X[0;0YExamples[133X
+      3.4-1 [33X[0;0YColift along epimorphism[133X
+      3.4-2 [33X[0;0YEqualizer[133X
+  4 [33X[0;0YFree distributive closure category with strict products and coproducts[133X
     4.1 [33X[0;0YAttributes[133X
-      4.1-1 Cardinality
-      4.1-2 AsList
-      4.1-3 AsList
+      4.1-1 UnderlyingCategory
     4.2 [33X[0;0YConstructors[133X
-      4.2-1 SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
-      4.2-2 SkeletalFinSetsAsFreeElementaryToposOfInitialCategory
+      4.2-1 FreeDistributiveCategoryWithStrictProductAndCoproducts
+      4.2-2 EmbeddingOfUnderlyingCategory
+      4.2-3 ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts
     4.3 [33X[0;0YGAP categories[133X
-      4.3-1 IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
-      4.3-2 IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
-      4.3-3 IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
-      4.3-4 IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
-    4.4 [33X[0;0YSkeletal Examples[133X
-      4.4-1 [33X[0;0YSkeletal WellDefined[133X
-      4.4-2 [33X[0;0YSkeletal PreCompose[133X
-      4.4-3 [33X[0;0YSkeletal Lift[133X
-      4.4-4 [33X[0;0YMorphisms of external Hom[133X
-      4.4-5 [33X[0;0YSkeletal Initial and Terminal Objects[133X
-      4.4-6 [33X[0;0YSkeletal Direct Product[133X
-      4.4-7 [33X[0;0YSkeletal Coproduct[133X
-      4.4-8 [33X[0;0YSkeletal coproduct complement[133X
-      4.4-9 [33X[0;0YSkeletal Equalizer[133X
-      4.4-10 [33X[0;0YSkeletal homomorphism structre[133X
-  5 [33X[0;0YThe pair of parallel arrows category of a category[133X
-    5.1 [33X[0;0YGlobal variables[133X
-      5.1-1 QuiverOfCategoryOfQuivers
-    5.2 [33X[0;0YAttributes[133X
-      5.2-1 PairOfObjectsAndPairOfParallelMorphisms
-      5.2-2 DefiningPairOfMorphismBetweenParallelPairs
-      5.2-3 UnderlyingCategory
-    5.3 [33X[0;0YConstructors[133X
-      5.3-1 PairOfParallelArrowsCategory
-    5.4 [33X[0;0YGAP categories[133X
-      5.4-1 IsPairOfParallelArrowsCategory
-      5.4-2 IsCellInPairOfParallelArrowsCategory
-      5.4-3 IsObjectInPairOfParallelArrowsCategory
-      5.4-4 IsMorphismInPairOfParallelArrowsCategory
-  6 [33X[0;0YThe category of colimit quivers in a category[133X
-    6.1 [33X[0;0YAttributes[133X
-      6.1-1 UnderlyingCategory
-      6.1-2 EmbeddingOfUnderlyingCategory
-      6.1-3 DefiningPairOfColimitQuiver
-      6.1-4 DefiningPairOfColimitQuiverMorphism
-      6.1-5 FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory
-    6.2 [33X[0;0YConstructors[133X
-      6.2-1 CategoryOfColimitQuivers
-      6.2-2 CategoryOfPreSheavesOfUnderlyingCategory
-    6.3 [33X[0;0YGAP categories[133X
-      6.3-1 IsCategoryOfColimitQuivers
-      6.3-2 IsCellInCategoryOfColimitQuivers
-      6.3-3 IsObjectInCategoryOfColimitQuivers
-      6.3-4 IsMorphismInCategoryOfColimitQuivers
-  7 [33X[0;0YThe coequalizer completion of a category[133X
+      4.3-1 IsFreeDistributiveCategoryWithStrictProductAndCoproducts
+      4.3-2 IsCellInFreeDistributiveCategoryWithStrictProductAndCoproducts
+      4.3-3 IsObjectInFreeDistributiveCategoryWithStrictProductAndCoproducts
+      4.3-4 IsMorphismInFreeDistributiveCategoryWithStrictProductAndCoproducts
+  5 [33X[0;0YSkeletalFinSets[133X
+    5.1 [33X[0;0YAttributes[133X
+      5.1-1 Cardinality
+      5.1-2 AsList
+      5.1-3 AsList
+    5.2 [33X[0;0YConstructors[133X
+      5.2-1 SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+      5.2-2 SkeletalFinSetsAsFreeElementaryToposOfInitialCategory
+    5.3 [33X[0;0YGAP categories[133X
+      5.3-1 IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+      5.3-2 IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+      5.3-3 IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+      5.3-4 IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory
+    5.4 [33X[0;0YSkeletal Examples[133X
+      5.4-1 [33X[0;0YSkeletal WellDefined[133X
+      5.4-2 [33X[0;0YSkeletal PreCompose[133X
+      5.4-3 [33X[0;0YSkeletal Lift[133X
+      5.4-4 [33X[0;0YMorphisms of external Hom[133X
+      5.4-5 [33X[0;0YSkeletal Initial and Terminal Objects[133X
+      5.4-6 [33X[0;0YSkeletal Direct Product[133X
+      5.4-7 [33X[0;0YSkeletal Coproduct[133X
+      5.4-8 [33X[0;0YSkeletal coproduct complement[133X
+      5.4-9 [33X[0;0YSkeletal Equalizer[133X
+      5.4-10 [33X[0;0YSkeletal homomorphism structre[133X
+  6 [33X[0;0YThe pair of parallel arrows category of a category[133X
+    6.1 [33X[0;0YGlobal variables[133X
+      6.1-1 QuiverOfCategoryOfQuivers
+    6.2 [33X[0;0YAttributes[133X
+      6.2-1 PairOfObjectsAndPairOfParallelMorphisms
+      6.2-2 DefiningPairOfMorphismBetweenParallelPairs
+      6.2-3 UnderlyingCategory
+    6.3 [33X[0;0YConstructors[133X
+      6.3-1 PairOfParallelArrowsCategory
+    6.4 [33X[0;0YGAP categories[133X
+      6.4-1 IsPairOfParallelArrowsCategory
+      6.4-2 IsCellInPairOfParallelArrowsCategory
+      6.4-3 IsObjectInPairOfParallelArrowsCategory
+      6.4-4 IsMorphismInPairOfParallelArrowsCategory
+  7 [33X[0;0YThe category of colimit quivers in a category[133X
     7.1 [33X[0;0YAttributes[133X
-      7.1-1 PairOfObjectsAndPairOfParallelMorphisms
-      7.1-2 DefiningPairOfMorphismBetweenCoequalizerPairs
-      7.1-3 UnderlyingCategory
-      7.1-4 EmbeddingOfUnderlyingCategory
+      7.1-1 UnderlyingCategory
+      7.1-2 EmbeddingOfUnderlyingCategory
+      7.1-3 DefiningPairOfColimitQuiver
+      7.1-4 DefiningPairOfColimitQuiverMorphism
+      7.1-5 FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory
     7.2 [33X[0;0YConstructors[133X
-      7.2-1 CoequalizerCompletion
+      7.2-1 CategoryOfColimitQuivers
+      7.2-2 CategoryOfPreSheavesOfUnderlyingCategory
     7.3 [33X[0;0YGAP categories[133X
-      7.3-1 IsCoequalizerCompletion
-      7.3-2 IsCellInCoequalizerCompletion
-      7.3-3 IsObjectInCoequalizerCompletion
-      7.3-4 IsMorphismInCoequalizerCompletion
-  8 [33X[0;0YThe finite colimit completion of a category[133X
+      7.3-1 IsCategoryOfColimitQuivers
+      7.3-2 IsCellInCategoryOfColimitQuivers
+      7.3-3 IsObjectInCategoryOfColimitQuivers
+      7.3-4 IsMorphismInCategoryOfColimitQuivers
+  8 [33X[0;0YThe coequalizer completion of a category[133X
     8.1 [33X[0;0YAttributes[133X
-      8.1-1 UnderlyingCategory
-      8.1-2 FiniteStrictCoproductCompletionOfUnderlyingCategory
-      8.1-3 PairOfObjectsAndPairOfParallelMorphisms
-      8.1-4 DefiningPairOfMorphismBetweenCoequalizerPairs
-      8.1-5 CategoryOfColimitQuiversOfUnderlyingCategory
+      8.1-1 PairOfObjectsAndPairOfParallelMorphisms
+      8.1-2 DefiningPairOfMorphismBetweenCoequalizerPairs
+      8.1-3 UnderlyingCategory
+      8.1-4 EmbeddingOfUnderlyingCategory
     8.2 [33X[0;0YConstructors[133X
-      8.2-1 FiniteColimitCompletionWithStrictCoproducts
-      8.2-2 CategoryOfPreSheavesOfUnderlyingCategory
-      8.2-3 AssociatedColimitQuiver
+      8.2-1 CoequalizerCompletion
     8.3 [33X[0;0YGAP categories[133X
-      8.3-1 IsFiniteColimitCompletionWithStrictCoproducts
-      8.3-2 IsCellInFiniteColimitCompletionWithStrictCoproducts
-      8.3-3 IsObjectInFiniteColimitCompletionWithStrictCoproducts
-      8.3-4 IsMorphismInFiniteColimitCompletionWithStrictCoproducts
-    8.4 [33X[0;0YExamples[133X
-      8.4-1 [33X[0;0YFinBouquets as finite colimit completion[133X
-      8.4-2 [33X[0;0YFinReflexiveQuivers as finite colimit completion[133X
-      8.4-3 [33X[0;0YFree elementary topos on one object[133X
-  9 [33X[0;0YStrict additive closure[133X
-    9.1 [33X[0;0YConstructors[133X
-      9.1-1 EmbeddingOfUnderlyingCategory
-      9.1-2 ExtendFunctorToStrictAdditiveClosure
-  10 [33X[0;0YCokernel closure[133X
+      8.3-1 IsCoequalizerCompletion
+      8.3-2 IsCellInCoequalizerCompletion
+      8.3-3 IsObjectInCoequalizerCompletion
+      8.3-4 IsMorphismInCoequalizerCompletion
+  9 [33X[0;0YThe finite colimit completion of a category[133X
+    9.1 [33X[0;0YAttributes[133X
+      9.1-1 UnderlyingCategory
+      9.1-2 FiniteStrictCoproductCompletionOfUnderlyingCategory
+      9.1-3 PairOfObjectsAndPairOfParallelMorphisms
+      9.1-4 DefiningPairOfMorphismBetweenCoequalizerPairs
+      9.1-5 CategoryOfColimitQuiversOfUnderlyingCategory
+    9.2 [33X[0;0YConstructors[133X
+      9.2-1 FiniteColimitCompletionWithStrictCoproducts
+      9.2-2 CategoryOfPreSheavesOfUnderlyingCategory
+      9.2-3 AssociatedColimitQuiver
+    9.3 [33X[0;0YGAP categories[133X
+      9.3-1 IsFiniteColimitCompletionWithStrictCoproducts
+      9.3-2 IsCellInFiniteColimitCompletionWithStrictCoproducts
+      9.3-3 IsObjectInFiniteColimitCompletionWithStrictCoproducts
+      9.3-4 IsMorphismInFiniteColimitCompletionWithStrictCoproducts
+    9.4 [33X[0;0YExamples[133X
+      9.4-1 [33X[0;0YFinBouquets as finite colimit completion[133X
+      9.4-2 [33X[0;0YFinReflexiveQuivers as finite colimit completion[133X
+      9.4-3 [33X[0;0YFree elementary topos on one object[133X
+  10 [33X[0;0YStrict additive closure[133X
     10.1 [33X[0;0YConstructors[133X
       10.1-1 EmbeddingOfUnderlyingCategory
-      10.1-2 ExtendFunctorToFreydCategory
-  11 [33X[0;0YKernel closure[133X
+      10.1-2 ExtendFunctorToStrictAdditiveClosure
+  11 [33X[0;0YCokernel closure[133X
     11.1 [33X[0;0YConstructors[133X
       11.1-1 EmbeddingOfUnderlyingCategory
-      11.1-2 ExtendFunctorToCoFreydCategory
-  12 [33X[0;0YAbelian closure with strict direct sums[133X
-    12.1 [33X[0;0YAttributes[133X
-      12.1-1 UnderlyingCategory
-    12.2 [33X[0;0YConstructors[133X
-      12.2-1 AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
-      12.2-2 EmbeddingOfUnderlyingCategory
-      12.2-3 ExtendFunctorToAbelianClosure
-    12.3 [33X[0;0YGAP categories[133X
-      12.3-1 IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
-      12.3-2 IsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
-      12.3-3 IsObjectInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
-      12.3-4 IsMorphismInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
-  13 [33X[0;0YTools[133X
-    13.1 [33X[0;0YOperations[133X
-      13.1-1 TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure
-      13.1-2 TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure
-      13.1-3 TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure
-  14 [33X[0;0YPrecompilation[133X
-    14.1 [33X[0;0YPrecompiling the finite strict coproduct completion[133X
-    14.2 [33X[0;0YPrecompiling SkeletalFinSets[133X
-    14.3 [33X[0;0YExtracting LeftCartesianDistributivityFactoring from ur-algorithms
+      11.1-2 ExtendFunctorToFreydCategory
+  12 [33X[0;0YKernel closure[133X
+    12.1 [33X[0;0YConstructors[133X
+      12.1-1 EmbeddingOfUnderlyingCategory
+      12.1-2 ExtendFunctorToCoFreydCategory
+  13 [33X[0;0YAbelian closure with strict direct sums[133X
+    13.1 [33X[0;0YAttributes[133X
+      13.1-1 UnderlyingCategory
+    13.2 [33X[0;0YConstructors[133X
+      13.2-1 AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
+      13.2-2 EmbeddingOfUnderlyingCategory
+      13.2-3 ExtendFunctorToAbelianClosure
+    13.3 [33X[0;0YGAP categories[133X
+      13.3-1 IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
+      13.3-2 IsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
+      13.3-3 IsObjectInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
+      13.3-4 IsMorphismInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure
+  14 [33X[0;0YTools[133X
+    14.1 [33X[0;0YOperations[133X
+      14.1-1 TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure
+      14.1-2 TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure
+      14.1-3 TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure
+  15 [33X[0;0YPrecompilation[133X
+    15.1 [33X[0;0YPrecompiling the finite strict coproduct completion[133X
+    15.2 [33X[0;0YPrecompiling SkeletalFinSets[133X
+    15.3 [33X[0;0YExtracting LeftCartesianDistributivityFactoring from ur-algorithms
     using CategoryFromDataTables[133X
-    14.4 [33X[0;0YExtracting LeftCartesianDistributivityFactoring from ur-algorithms
+    15.4 [33X[0;0YExtracting LeftCartesianDistributivityFactoring from ur-algorithms
     using PathCategory[133X
   
   

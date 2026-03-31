@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (FiniteCocompletions) - Chapter 3: Free distributive closure category with strict products and coproducts</title>
+<title>GAP (FiniteCocompletions) - Chapter 3: Finite strict coproduct completion of an object-finite category</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -15,198 +15,537 @@
 <body class="chap3"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap3_mj.html">[MathJax on]</a></p>
-<p><a id="X7F01B8347B44AC37" name="X7F01B8347B44AC37"></a></p>
-<div class="ChapSects"><a href="chap3.html#X7F01B8347B44AC37">3 <span class="Heading">Free distributive closure category with strict products and coproducts</span></a>
+<p><a id="X8339CB4B87DB7FEC" name="X8339CB4B87DB7FEC"></a></p>
+<div class="ChapSects"><a href="chap3.html#X8339CB4B87DB7FEC">3 <span class="Heading">Finite strict coproduct completion of an object-finite category</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7C701DBF7BAE649A">3.1 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X822BCE2B81430FE6">3.1-1 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X849BF31781AB814D">3.1-1 PairOfIntAndList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X851AE46B7C603DFF">3.1-2 PairOfLists</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C72332C853BB940">3.1-3 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X79B7ADFC81DB2664">3.1-4 NumberOfObjectsOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8347FE427A599F92">3.1-5 EmbeddingOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87313D7C8282D2C2">3.1-6 ExtendFunctorToFiniteStrictCoproductCompletionOfObjectFiniteCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X86EC0F0A78ECBC10">3.2 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7981F83E83CA16FA">3.2-1 FreeDistributiveCategoryWithStrictProductAndCoproducts</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81B4C0DA7A6A685C">3.2-2 EmbeddingOfUnderlyingCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D733F4B82C012A5">3.2-3 ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B7C07B987F2F7B5">3.2-1 FiniteStrictCoproductCompletionOfObjectFiniteCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7D03633A7D98026B">3.3 <span class="Heading">GAP categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E5C652E7EFC3404">3.3-1 IsFreeDistributiveCategoryWithStrictProductAndCoproducts</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84DF5B5D812CA4C6">3.3-2 IsCellInFreeDistributiveCategoryWithStrictProductAndCoproducts</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A2CDBD07BEFA477">3.3-3 IsObjectInFreeDistributiveCategoryWithStrictProductAndCoproducts</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7CC1047C80091185">3.3-4 IsMorphismInFreeDistributiveCategoryWithStrictProductAndCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8698FCF17CA8865C">3.3-1 IsFiniteStrictCoproductCompletionOfObjectFiniteCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8261903A78289AD7">3.3-2 IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84063CC47AACDCA2">3.3-3 IsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X828A21A584D97F34">3.3-4 IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7A489A5D79DA9E5C">3.4 <span class="Heading">Examples</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D6FFC2B83CE812B">3.4-1 <span class="Heading">Colift along epimorphism</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X824FD8F786D2350D">3.4-2 <span class="Heading">Equalizer</span></a>
+</span>
 </div></div>
 </div>
 
-<h3>3 <span class="Heading">Free distributive closure category with strict products and coproducts</span></h3>
+<h3>3 <span class="Heading">Finite strict coproduct completion of an object-finite category</span></h3>
 
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
 <h4>3.1 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X822BCE2B81430FE6" name="X822BCE2B81430FE6"></a></p>
+<p><a id="X849BF31781AB814D" name="X849BF31781AB814D"></a></p>
 
-<h5>3.1-1 UnderlyingCategory</h5>
+<h5>3.1-1 PairOfIntAndList</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">DC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Return the category <span class="Math">C</span> underlying the distributive closure with strict products and coproducts category <var class="Arg">DC</var> := <code class="code">FreeDistributiveCategoryWithStrictProductAndCoproducts</code>( <span class="Math">C</span> ).</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PairOfIntAndList</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X851AE46B7C603DFF" name="X851AE46B7C603DFF"></a></p>
+
+<h5>3.1-2 PairOfLists</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PairOfLists</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7C72332C853BB940" name="X7C72332C853BB940"></a></p>
+
+<h5>3.1-3 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Return the object-finite category <span class="Math">C</span> underlying the finite coproduct completion category <var class="Arg">UC</var><code class="code"> := FiniteStrictCoproductCompletionOfObjectFiniteCategory(</code> <span class="Math">C</span> <code class="code">)</code>).</p>
+
+<p><a id="X79B7ADFC81DB2664" name="X79B7ADFC81DB2664"></a></p>
+
+<h5>3.1-4 NumberOfObjectsOfUnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberOfObjectsOfUnderlyingCategory</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Return the number of objects in the object-finite category <span class="Math">C</span> underlying the finite coproduct completion category <var class="Arg">UC</var><code class="code"> := FiniteStrictCoproductCompletionOfObjectFiniteCategory(</code> <span class="Math">C</span> <code class="code">)</code>).</p>
+
+<p><a id="X8347FE427A599F92" name="X8347FE427A599F92"></a></p>
+
+<h5>3.1-5 EmbeddingOfUnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnderlyingCategory</code>( <var class="Arg">PC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP functor</p>
+
+<p>The full embedding functor from the object-finite category <span class="Math">C</span> underlying the finite coproduct completion <var class="Arg">PC</var> into <var class="Arg">PC</var>.</p>
+
+<p><a id="X87313D7C8282D2C2" name="X87313D7C8282D2C2"></a></p>
+
+<h5>3.1-6 ExtendFunctorToFiniteStrictCoproductCompletionOfObjectFiniteCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToFiniteStrictCoproductCompletionOfObjectFiniteCategory</code>( <var class="Arg">PC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP functor</p>
+
+<p>The full embedding functor from the object-finite category <span class="Math">C</span> underlying the finite coproduct completion <var class="Arg">UC</var> into <var class="Arg">UC</var>.</p>
 
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
 <h4>3.2 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X7981F83E83CA16FA" name="X7981F83E83CA16FA"></a></p>
+<p><a id="X7B7C07B987F2F7B5" name="X7B7C07B987F2F7B5"></a></p>
 
-<h5>3.2-1 FreeDistributiveCategoryWithStrictProductAndCoproducts</h5>
+<h5>3.2-1 FiniteStrictCoproductCompletionOfObjectFiniteCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FreeDistributiveCategoryWithStrictProductAndCoproducts</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP category</p>
-
-<p>Construct the free distributive closure category with strict products and coproducts of a category <var class="Arg">C</var>.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FiniteStrictCoproductCompletionOfObjectFiniteCategory</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Return the finite coproduct completion of the object-finite category <var class="Arg">cat</var> in which the cocartesian associators are given by identities.</p>
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "q(a,b,c)[m:a-&gt;b,n:b-&gt;c]" );</span>
+FinQuiver( "q(a,b,c)[m:a→b,n:b→c]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PathCategory( q : skeletal := true );</span>
+PathCategory( FinQuiver( "q(a,b,c)[m:a→b,n:b→c]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mUP := FiniteStrictCoproductCompletionOfObjectFiniteCategory( P );</span>
+FiniteStrictCoproductCompletionOfObjectFiniteCategory(
+PathCategory( FinQuiver( "q(a,b,c)[m:a→b,n:b→c]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := mUP.a;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory(
+ PathCategory( FinQuiver( "q(a,b,c)[m:a→b,n:b→c]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := mUP.b;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory(
+ PathCategory( FinQuiver( "q(a,b,c)[m:a→b,n:b→c]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := mUP.c;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory(
+ PathCategory( FinQuiver( "q(a,b,c)[m:a→b,n:b→c]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := mUP.m;</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory(
+ PathCategory( FinQuiver( "q(a,b,c)[m:a→b,n:b→c]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := mUP.n;</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory(
+ PathCategory( FinQuiver( "q(a,b,c)[m:a→b,n:b→c]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( m, n );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory(
+ PathCategory( FinQuiver( "q(a,b,c)[m:a→b,n:b→c]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := [ 3, [ 1, 2, 0 ] ] / mUP;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory(
+ PathCategory( FinQuiver( "q(a,b,c)[m:a→b,n:b→c]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">y := [ 6, [ 3, 2, 1 ] ] / mUP;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory(
+ PathCategory( FinQuiver( "q(a,b,c)[m:a→b,n:b→c]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ix := InjectionOfCofactorOfCoproduct( [ x, y ], 1 );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory(
+ PathCategory( FinQuiver( "q(a,b,c)[m:a→b,n:b→c]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iy := InjectionOfCofactorOfCoproduct( [ x, y ], 2 );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory(
+ PathCategory( FinQuiver( "q(a,b,c)[m:a→b,n:b→c]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := UniversalMorphismFromCoproduct( [ ix, iy ] );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory(
+ PathCategory( FinQuiver( "q(a,b,c)[m:a→b,n:b→c]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( u );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(a,b,c)[]" );</span>
-Q(a,b,c)[]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := FreeCategory( Q );</span>
-FreeCategory( RightQuiver( "Q(a,b,c)[]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DC := FreeDistributiveCategoryWithStrictProductAndCoproducts( C );</span>
-FreeDistributiveCategoryWithStrictProductAndCoproducts(
-FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( DC );</span>
-A CAP category with name
-FreeDistributiveCategoryWithStrictProductAndCoproducts(
-FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ):
-
-30 primitive operations were used to derive 137 operations for this category
-which algorithmically
-* IsCategoryWithDecidableColifts
-* IsCategoryWithDecidableLifts
-* IsEquippedWithHomomorphismStructure
-* IsDistributiveCategory
-and furthermore mathematically
-* IsStrictCartesianCategory
-* IsStrictCocartesianCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := DC.a;</span>
-&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
- FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := DC.b;</span>
-&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
- FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := DC.c;</span>
-&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
- FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProduct( DirectProduct( a, b ), c ) =</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  DirectProduct( a, DirectProduct( b, c ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">axb_u_axc := Coproduct( DirectProduct( a, b ), DirectProduct( a, c ) );</span>
-&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
- FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a_x_buc := DirectProduct( a, Coproduct( b, c ) );</span>
-&lt;An object in FreeDistributiveCategoryWithStrictProductAndCoproducts(
- FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">axb_u_axc = a_x_buc;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( axb_u_axc, a_x_buc );</span>
-|1|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom := MorphismsOfExternalHom( a_x_buc, axb_u_axc );</span>
-[ &lt;A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts(
-   FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi := hom[1];</span>
-&lt;A morphism in FreeDistributiveCategoryWithStrictProductAndCoproducts(
- FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( phi );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( phi ) = axb_u_axc;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Target( phi ) = a_x_buc;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( phi );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi = LeftCartesianDistributivityFactoring( a, [ b, c ] );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Id := ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">              EmbeddingOfUnderlyingCategory( DC ) );</span>
-Extension to FreeDistributiveCategoryWithStrictProductAndCoproducts(
-Source( Embedding functor into a free distributive closure category
-        with strict products and coproducts ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Id( phi ) = phi;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( u );</span>
 true
 </pre></div>
 
-<p><a id="X81B4C0DA7A6A685C" name="X81B4C0DA7A6A685C"></a></p>
 
-<h5>3.2-2 EmbeddingOfUnderlyingCategory</h5>
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "q(M,A,B,J)[a:M-&gt;A,b:M-&gt;B,i:A-&gt;J,j:B-&gt;J]" );</span>
+FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := PathCategory( q );</span>
+PathCategory( FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := PosetOfCategory( D );</span>
+PosetOfCategory( PathCategory( \
+FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L.ai = L.bj;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( SetOfObjects( L ), Display );</span>
+(M)
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnderlyingCategory</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP functor</p>
+An object in the poset given by the above data
+(A)
 
-<p>The full embedding functor from the category <span class="Math">C</span> underlying the free distributive closure category <var class="Arg">DC</var> with strict products and coproducts into <var class="Arg">DC</var>.</p>
+An object in the poset given by the above data
+(B)
 
-<p><a id="X7D733F4B82C012A5" name="X7D733F4B82C012A5"></a></p>
+An object in the poset given by the above data
+(J)
 
-<h5>3.2-3 ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts</h5>
+An object in the poset given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ltilde := FiniteStrictCoproductCompletionOfObjectFiniteCategory( L );</span>
+FiniteStrictCoproductCompletionOfObjectFiniteCategory( PosetOfCategory( \
+PathCategory( FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfObjects( Ltilde ) );</span>
+16
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lhat := PosetOfCategory( Ltilde );</span>
+PosetOfCategory( FiniteStrictCoproductCompletionOfObjectFiniteCategory( \
+PosetOfCategory( PathCategory( \
+FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Lhat );</span>
+A CAP category with name PosetOfCategory( \
+FiniteStrictCoproductCompletionOfObjectFiniteCategory( PosetOfCategory( \
+PathCategory( FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) ) ) ):
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts</code>( <var class="Arg">DC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP functor</p>
-
-<p>The full embedding functor from the category <span class="Math">C</span> underlying the free distributive closure category <var class="Arg">DC</var> with strict products and coproducts into <var class="Arg">DC</var>.</p>
+10 primitive operations were used to derive 98 operations for this category which not yet algorithmically
+* IsCategoryWithDecidableColifts
+* IsCategoryWithDecidableLifts
+* IsFiniteCategory
+* IsEquippedWithHomomorphismStructure
+* IsJoinSemiLattice
+</pre></div>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
 <h4>3.3 <span class="Heading">GAP categories</span></h4>
 
-<p><a id="X7E5C652E7EFC3404" name="X7E5C652E7EFC3404"></a></p>
+<p><a id="X8698FCF17CA8865C" name="X8698FCF17CA8865C"></a></p>
 
-<h5>3.3-1 IsFreeDistributiveCategoryWithStrictProductAndCoproducts</h5>
+<h5>3.3-1 IsFiniteStrictCoproductCompletionOfObjectFiniteCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFreeDistributiveCategoryWithStrictProductAndCoproducts</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFiniteStrictCoproductCompletionOfObjectFiniteCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of free distributive closure categories with strict products and coproducts of a category.</p>
+<p>The <strong class="pkg">GAP</strong> category of finite coproduct completions of object-finite categories.</p>
 
-<p><a id="X84DF5B5D812CA4C6" name="X84DF5B5D812CA4C6"></a></p>
+<p><a id="X8261903A78289AD7" name="X8261903A78289AD7"></a></p>
 
-<h5>3.3-2 IsCellInFreeDistributiveCategoryWithStrictProductAndCoproducts</h5>
+<h5>3.3-2 IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInFreeDistributiveCategoryWithStrictProductAndCoproducts</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of cells in the free distributive closure category with strict products and coproducts of a category.</p>
+<p>The <strong class="pkg">GAP</strong> category of cells in a finite coproduct completion of an object-finite category.</p>
 
-<p><a id="X7A2CDBD07BEFA477" name="X7A2CDBD07BEFA477"></a></p>
+<p><a id="X84063CC47AACDCA2" name="X84063CC47AACDCA2"></a></p>
 
-<h5>3.3-3 IsObjectInFreeDistributiveCategoryWithStrictProductAndCoproducts</h5>
+<h5>3.3-3 IsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInFreeDistributiveCategoryWithStrictProductAndCoproducts</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of objects in the free distributive closure category with strict products and coproducts of a category.</p>
+<p>The <strong class="pkg">GAP</strong> category of objects in a finite coproduct completion of an object-finite category.</p>
 
-<p><a id="X7CC1047C80091185" name="X7CC1047C80091185"></a></p>
+<p><a id="X828A21A584D97F34" name="X828A21A584D97F34"></a></p>
 
-<h5>3.3-4 IsMorphismInFreeDistributiveCategoryWithStrictProductAndCoproducts</h5>
+<h5>3.3-4 IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInFreeDistributiveCategoryWithStrictProductAndCoproducts</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of morphisms in the free distributive closure category with strict products and coproducts of a category.</p>
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a finite coproduct completion of an object-finite category.</p>
+
+<p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
+
+<h4>3.4 <span class="Heading">Examples</span></h4>
+
+<p><a id="X7D6FFC2B83CE812B" name="X7D6FFC2B83CE812B"></a></p>
+
+<h5>3.4-1 <span class="Heading">Colift along epimorphism</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalCategoryWithSingleObject( );</span>
+TerminalCategoryWithSingleObject( )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_T := SetOfMorphisms( T )[1];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UTm := FiniteStrictCoproductCompletionOfObjectFiniteCategory( T );</span>
+FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalCategoryWithSin\
+gleObject( ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := Pair( 5, [ 5 ] ) / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">y := Pair( 3, [ 3 ] ) / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := Pair( 2, [ 2 ] ) / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              x,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              [ [ [ [ 0, 0, 0, 0, 0 ], [ 0, 0, 2, 1, 1 ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ [ id_T, id_T, id_T, id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              y );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               x,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ [ [ [ 0, 0, 0, 0, 0 ], [ 1, 1, 1, 0, 0 ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [ [ id_T, id_T, id_T, id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               t );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftableAlongEpimorphism( pi, phi );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := ColiftAlongEpimorphism( pi, phi );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( psi );</span>
+{ 0, 1, 2 } ⱶ[ [ [ 0, 0, 0 ], [ 1, 0, 1 ] ] ]→ { 0, 1 }
+
+[ [ A morphism in TerminalCategoryWithSingleObject( ), 
+    A morphism in TerminalCategoryWithSingleObject( ), 
+    A morphism in TerminalCategoryWithSingleObject( ) ] ]
+A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( pi, psi ) = phi;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := Pair( 4, [ 4 ] ) / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">y := Pair( 3, [ 3 ] ) / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              x,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              [ [ [ [ 0, 0, 0, 0 ], [ 1, 0, 1, 2 ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ [ id_T, id_T, id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              y );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftableAlongEpimorphism( pi, pi );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := ColiftAlongEpimorphism( pi, pi );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi = IdentityMorphism( y );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := Pair( 4, [ 4 ] ) / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">             x,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">             [ [ [ [ 0, 0, 0, 0 ], [ 1, 3, 0, 2 ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ [ id_T, id_T, id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">             x );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_x := IdentityMorphism( x );</span>
+&lt;An identity morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory\
+( TerminalCategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftableAlongEpimorphism( f, id_x );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f_inv := ColiftAlongEpimorphism( f, id_x );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( f, f_inv ) = IdentityMorphism( x );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x_1 := Pair( 4, [ 4 ] ) / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">y_1 := Pair( 3, [ 3 ] ) / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t_1 := Pair( 2, [ 2 ] ) / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi_1 := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                x_1,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ [ [ [ 0, 0, 0, 0 ], [ 0, 0, 1, 2 ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  [ [ id_T, id_T, id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                y_1 );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi_1 := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 x_1,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [ [ [ [ 0, 0, 0, 0 ], [ 1, 1, 0, 0 ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                   [ [ id_T, id_T, id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 t_1 );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi_1 := ColiftAlongEpimorphism( pi_1, phi_1 );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x_2 := Pair( 2, [ 2 ] ) / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi_2 := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                x_2,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ [ [ [ 0, 0 ], [ 1, 0 ] ] ], [ [ id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                x_2 );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi_2 := IdentityMorphism( x_2 );</span>
+&lt;An identity morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory\
+( TerminalCategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi_2 := ColiftAlongEpimorphism( pi_2, phi_2 );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi := CoproductFunctorial( [ x_1, x_2 ], [ pi_1, pi_2 ], [ y_1, x_2 ] );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi := CoproductFunctorial( [ x_1, x_2 ], [ phi_1, phi_2 ], [ t_1, x_2 ] );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi_to_be :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  CoproductFunctorial( [ y_1, x_2 ], [ psi_1, psi_2 ], [ t_1, x_2 ] );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi_to_be = ColiftAlongEpimorphism( pi, phi );</span>
+true
+</pre></div>
+
+<p><a id="X824FD8F786D2350D" name="X824FD8F786D2350D"></a></p>
+
+<h5>3.4-2 <span class="Heading">Equalizer</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalCategoryWithSingleObject( );</span>
+TerminalCategoryWithSingleObject( )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_T := SetOfMorphisms( T )[1];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UTm := FiniteStrictCoproductCompletionOfObjectFiniteCategory( T );</span>
+FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalCategoryWithSin\
+gleObject( ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := Pair( 3, [ 3 ] ) / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f_1 := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               x,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ [ [ [ 0, 0, 0 ], [ 1, 0, 2 ] ] ], [ [ id_T, id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               x );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f_2 := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               x,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ [ [ [ 0, 0, 0 ], [ 0, 2, 1 ] ] ], [ [ id_T, id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               x );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := [ f_1, f_2 ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eq := Equalizer( D );</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PairOfIntAndList( eq );</span>
+[ 0, [ 0 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( eq );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := EmbeddingOfEqualizer( x, D );</span>
+&lt;A monomorphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Term\
+inalCategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( i, UniversalMorphismFromInitialObject( x ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := Pair( 3, [ 3 ] ) / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f_1 := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               x,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ [ [ [ 0, 0, 0 ], [ 1, 0, 2 ] ] ], [ [ id_T, id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               x );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f_2 := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               x,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ [ [ [ 0, 0, 0 ], [ 1, 0, 1 ] ] ], [ [ id_T, id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               x );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := [ f_1, f_2 ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eq := Equalizer( D );</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PairOfIntAndList( eq );</span>
+[ 2, [ 2 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := EmbeddingOfEqualizer( x, D );</span>
+&lt;A monomorphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Term\
+inalCategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PairOfLists( i )[1];</span>
+[ [ [ 0, 0 ], [ 0, 1 ] ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := [ 1, [ 1 ] ] / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tau := MorphismConstructor( t, [ [ [ [ 0 ], [ 1 ] ] ], [ [ id_T ] ] ], x );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">l := UniversalMorphismIntoEqualizer( x, D, t, tau );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PairOfLists( l )[1];</span>
+[ [ [ 0 ], [ 1 ] ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( l, i ) = tau;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := [ 4, [ 4 ] ] / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">y := [ 3, [ 3 ] ] / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f_1 := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               x,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ [ [ [ 0, 0, 0, 0 ], [ 0, 0, 1, 2 ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [ [ id_T, id_T, id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               y );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f_2 := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               x,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ [ [ [ 0, 0, 0, 0 ], [ 0, 0, 2, 2 ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [ [ id_T, id_T, id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               y );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f_3 := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               x,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ [ [ [ 0, 0, 0, 0 ], [ 0, 0, 0, 2 ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [ [ id_T, id_T, id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               y );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := [ f_1, f_2, f_3 ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eq := Equalizer( D );</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PairOfIntAndList( eq );</span>
+[ 3, [ 3 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := EmbeddingOfEqualizer( x, D );</span>
+&lt;A monomorphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Term\
+inalCategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iD := List( D, m -&gt; PreCompose( i, m ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ForAll( iD, m -&gt; IsCongruentForMorphisms( m, First( iD ) ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := [ 2, [ 2 ] ] / UTm;</span>
+&lt;An object in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
+ategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tau := MorphismConstructor(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               t,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ [ [ [ 0, 0 ], [ 3, 1 ] ] ], [ [ id_T, id_T ] ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               x );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">l := UniversalMorphismIntoEqualizer( x, D, t, tau );</span>
+&lt;A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
+CategoryWithSingleObject( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PairOfLists( l )[1];</span>
+[ [ [ 0, 0 ], [ 2, 1 ] ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( l, i ) = tau;</span>
+true
+</pre></div>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
