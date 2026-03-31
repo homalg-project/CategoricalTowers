@@ -350,13 +350,17 @@ InstallMethod( DisplayString,
     fi;
     
     s := DisplayString( A[1] );
-    if Length( s ) > 0 and s[Length( s )] = '\n' then s := s{[1 .. Length( s ) - 1]}; fi;
+    if Length( s ) > 0 and s[Length( s )] = '\n' then
+        s := s{[1 .. Length( s ) - 1]};
+    fi;
     display := Concatenation( "( ", s, " )" );
     
     for i in [ 2 .. n ] do
         Append( display, "\n\n∪\n\n" );
         s := DisplayString( A[i] );
-        if Length( s ) > 0 and s[Length( s )] = '\n' then s := s{[1 .. Length( s ) - 1]}; fi;
+        if Length( s ) > 0 and s[Length( s )] = '\n' then
+            s := s{[1 .. Length( s ) - 1]};
+        fi;
         Append( display, Concatenation( "( ", s, " )" ) );
     od;
     
