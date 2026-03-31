@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Finite strict product completion
+#! @Chapter Finite strict coproduct completion of an object-finite category
 
 ####################################
 #
@@ -13,22 +13,22 @@
 ####################################
 
 #! @Description
-#!  The &GAP; category of finite product completion categories.
+#!  The &GAP; category of finite coproduct completions of object-finite categories.
 DeclareCategory( "IsFiniteStrictCoproductCompletionOfObjectFiniteCategory",
         IsCapCategory );
 
 #! @Description
-#!  The &GAP; category of cells in a finite product completion category.
+#!  The &GAP; category of cells in a finite coproduct completion of an object-finite category.
 DeclareCategory( "IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory",
         IsCapCategoryCell );
 
 #! @Description
-#!  The &GAP; category of objects in a finite product completion category.
+#!  The &GAP; category of objects in a finite coproduct completion of an object-finite category.
 DeclareCategory( "IsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory",
         IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory and IsCapCategoryObject  );
 
 #! @Description
-#!  The &GAP; category of morphisms in a finite product completion category.
+#!  The &GAP; category of morphisms in a finite coproduct completion of an object-finite category.
 DeclareCategory( "IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory",
         IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory and IsCapCategoryMorphism );
 
@@ -39,8 +39,8 @@ DeclareCategory( "IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCateg
 ####################################
 
 #! @Description
-#!  Return the finite product completion of the category <A>cat</A>
-#!  in which the cartesian associators are given by identities.
+#!  Return the finite coproduct completion of the object-finite category <A>cat</A>
+#!  in which the cocartesian associators are given by identities.
 #! @Arguments cat
 DeclareAttribute( "FiniteStrictCoproductCompletionOfObjectFiniteCategory",
         IsCapCategory );
@@ -90,7 +90,7 @@ CapJitAddTypeSignature( "PairOfLists", [ IsMorphismInFiniteStrictCoproductComple
 end );
 
 #! @Description
-#!  Return the category $C$ underlying the finite product completion
+#!  Return the object-finite category $C$ underlying the finite coproduct completion
 #!  category <A>UC</A><C> := FiniteStrictCoproductCompletionOfObjectFiniteCategory(</C> $C$ <C>)</C>).
 #! @Arguments UC
 DeclareAttribute( "UnderlyingCategory",
@@ -104,7 +104,7 @@ CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteStrictCoproductCompletio
 end );
 
 #! @Description
-#!  Return the number of objects in the category $C$ underlying the finite product completion
+#!  Return the number of objects in the object-finite category $C$ underlying the finite coproduct completion
 #!  category <A>UC</A><C> := FiniteStrictCoproductCompletionOfObjectFiniteCategory(</C> $C$ <C>)</C>).
 #! @Arguments UC
 DeclareAttribute( "NumberOfObjectsOfUnderlyingCategory",
@@ -121,8 +121,8 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
         IsFiniteStrictCoproductCompletionOfObjectFiniteCategory );
 
 #! @Description
-#!  The full embedding functor from the category $C$ underlying
-#!  the finite product completion <A>PC</A> into <A>PC</A>.
+#!  The full embedding functor from the object-finite category $C$ underlying
+#!  the finite coproduct completion <A>PC</A> into <A>PC</A>.
 #! @Arguments PC
 #! @Returns a &CAP; functor
 DeclareAttribute( "EmbeddingOfUnderlyingCategory",
@@ -132,8 +132,8 @@ DeclareOperation( "ExtendFunctorToFiniteStrictCoproductCompletionOfObjectFiniteC
         [ IsFiniteStrictCoproductCompletionOfObjectFiniteCategory, IsList, IsCocartesianCategory ] );
 
 #! @Description
-#!  The full embedding functor from the category $C$ underlying
-#!  the finite product completion <A>UC</A> into <A>UC</A>.
+#!  The full embedding functor from the object-finite category $C$ underlying
+#!  the finite coproduct completion <A>UC</A> into <A>UC</A>.
 #! @Arguments PC
 #! @Returns a &CAP; functor
 DeclareAttribute( "ExtendFunctorToFiniteStrictCoproductCompletionOfObjectFiniteCategory",
