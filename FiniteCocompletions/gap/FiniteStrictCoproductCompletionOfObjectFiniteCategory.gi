@@ -516,6 +516,126 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         end );
         
     fi;
+
+    if CanCompute( C, "IsColiftableAlongEpimorphism" ) and
+       CanCompute( C, "IsEpimorphism" ) and
+       CanCompute( C, "IsCongruentForMorphisms" ) and
+       CanCompute( C, "ColiftAlongEpimorphism" ) then
+
+        AddIsColiftableAlongEpimorphism( UCm,
+          function( UCm, pi, phi )
+            local C, l, target_pi, m_source, m_target, dphi, map_phi, mor_phi, dpi, map_pi, mor_pi, preim_o, preim, colifts;
+            
+            C := UnderlyingCategory( UCm );
+            l := NumberOfObjectsOfUnderlyingCategory( UCm );
+            
+            target_pi := Target( pi );
+            
+            m_source := PairOfIntAndList( Source( pi ) )[2];
+            m_target := PairOfIntAndList( target_pi )[2];
+            
+            dphi := PairOfLists( phi );
+            map_phi := dphi[1];
+            mor_phi := dphi[2];
+            dpi := PairOfLists( pi );
+            map_pi := dpi[1];
+            mor_pi := dpi[2];
+            
+            # all morphisms in pi need to be epimorphism:
+            if not ForAll( [ 1 .. l ], o -> ForAll( [ 1 .. m_source[o] ], i -> IsEpimorphism( C, mor_pi[o][i] ) ) ) then
+                return false;
+            fi;
+            
+            # the map underlying pi needs to be an epimorphism:
+            if not ForAll( [ 1 .. l ], o ->
+                       ForAll( [ 1 .. m_target[o] ], i ->
+                               ForAny( [ 1 .. l ], p ->
+                                       ForAny( [ 1 .. m_source[p]], j -> 1 + map_pi[p][1][j] = o and 1 + map_pi[p][2][j] = i ) ) ) ) then
+                
+                return false;
+                
+            fi;
+            
+            # if map_pi_o_i = map_pi_p_j then map_phi_o_i = map_phi_p_j:
+            if not ForAll( [ 1 .. l ], o ->
+                       ForAll( [ 1 .. m_source[o] ], i ->
+                               ForAll( [ 1 .. l ], p ->
+                                       ForAll( [ 1 .. m_source[p] ], j ->
+                                               not ( map_pi[o][1][i] = map_pi[p][1][j] and map_pi[o][2][i] = map_pi[p][2][j] ) or
+                                               ( map_phi[o][1][i] = map_phi[p][1][j] and map_phi[o][2][i] = map_phi[p][2][j] ) ) ) ) ) then
+                
+                return false;
+                
+            fi;
+            
+            # all the possible different choice need to lead to the same colift:
+            preim_o := List( [ 1 .. l ], o ->
+                             List( [ 1 .. m_target[o] ], i ->
+                                   Filtered( [ 1 .. l ], p ->
+                                           ForAny( [ 1 .. m_source[p]], j -> 1 + map_pi[p][1][j] = o and 1 + map_pi[p][2][j] = i ) ) ) );
+            
+            preim := List( [ 1 .. l ], o ->
+                           List( [ 1 .. m_target[o] ], i ->
+                                 Concatenation( List( preim_o[o][i], e ->
+                                         List( Filtered( [ 1 .. m_source[e] ], j -> 1 + map_pi[e][1][j] = o and 1 + map_pi[e][2][j] = i  ), f -> Pair( e, f ) ) ) ) ) );
+            
+            colifts := List( [ 1 .. l ], o ->
+                             List( [ 1 .. m_target[o] ], i ->
+                                   List( preim[o][i], c -> ColiftAlongEpimorphism( C, mor_pi[c[1]][c[2]], mor_phi[c[1]][c[2]] ) ) ) );
+            
+            return ForAll( [ 1 .. l ], o ->
+                           ForAll( [ 1 .. m_target[o] ], i ->
+                                   ForAll( colifts[o][i], mors -> IsCongruentForMorphisms( C, First(colifts[o][i]), mors ) ) ) );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "ColiftAlongEpimorphism" ) then
+        
+        AddColiftAlongEpimorphism( UCm,
+          function( UCm, pi, phi )
+            local C, l, target_pi, m_source, m_target, dphi, dpi, map_pi, mor_pi, preim_o, preim_i, map, mor;
+            
+            C := UnderlyingCategory( UCm );
+            
+            l := NumberOfObjectsOfUnderlyingCategory( UCm );
+            
+            target_pi := Target( pi );
+            
+            m_source := PairOfIntAndList( Source( pi ) )[2];
+            m_target := PairOfIntAndList( target_pi )[2];
+            
+            dphi := PairOfLists( phi );
+            dpi := PairOfLists( pi );
+            map_pi := dpi[1];
+            mor_pi := dpi[2];
+            
+            preim_o := List( [ 1 .. l ], o ->
+                             List( [ 1 .. m_target[o] ], i ->
+                                   SafeFirst( [ 1 .. l ], p ->
+                                           ForAny( [ 1 .. m_source[p]], j -> 1 + map_pi[p][1][j] = o and 1 + map_pi[p][2][j] = i ) ) ) );
+            
+            preim_i := List( [ 1 .. l ], o ->
+                             List( [ 1 .. m_target[o] ], i ->
+                                   SafeFirst( [ 1 .. m_source[preim_o[o][i]]], j -> 1 + map_pi[preim_o[o][i]][1][j] = o and 1 + map_pi[preim_o[o][i]][2][j] = i ) ) );
+            
+            map := List( [ 1 .. l ], o ->
+                         Pair( List( [ 1 .. m_target[o] ], i -> dphi[1][preim_o[o][i]][1][preim_i[o][i]] ),
+                               List( [ 1 .. m_target[o] ], i -> dphi[1][preim_o[o][i]][2][preim_i[o][i]] ) ) );
+            
+            mor := List( [ 1 .. l ], o ->
+                         List( [ 1 .. m_target[o] ], i ->
+                               ColiftAlongEpimorphism( C, mor_pi[preim_o[o][i]][preim_i[o][i]], dphi[2][preim_o[o][i]][preim_i[o][i]] ) ) );
+            
+            return MorphismConstructor( UCm,
+                           target_pi,
+                           Pair( map, mor ),
+                           Target( phi ) );
+            
+        end );
+        
+    fi;
     
     if CanCompute( C, "Equalizer" ) then
         

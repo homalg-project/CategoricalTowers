@@ -33,6 +33,19 @@
 @Subsection Cartesian diagonal
 @InsertChunk CartesianDiagonal
 
+@Chapter Finite strict coproduct completion of an object-finite category
+
+@Section Attributes
+@Section Constructors
+@Section GAP categories
+@Section Examples
+
+@Subsection Colift along epimorphism
+@InsertChunk FiniteStrictCoproductCompletionOfObjectFiniteCategory_ColiftAlongEpimorphism
+
+@Subsection Equalizer
+@InsertChunk FiniteStrictCoproductCompletionOfObjectFiniteCategory_Equalizer
+
 @Chapter Free distributive closure category with strict products and coproducts
 
 @Section Attributes
