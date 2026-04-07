@@ -3,6 +3,8 @@
 #! @Section Snake lemma second proof
 
 #! @Example
+
+#! # CI_SINGLE_JOB_ID:SnakeLemmaProof2
 LoadPackage( "Algebroids", false );
 #! true
 LoadPackage( "GeneralizedMorphismsForCAP", false );
