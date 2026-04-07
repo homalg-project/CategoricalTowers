@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "FiniteCocompletions",
 Subtitle := "Finite (co)product/(co)limit (co)completions",
-Version := "2026.03-01",
-Date := "2026-03-31",
-Date := "2026-03-31",
+Version := "2026.04-01",
+Date := "2026-04-07",
+Date := "2026-04-07",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -29,6 +29,23 @@ Persons := [
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
+  ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Marc",
+    LastName := "Talleux",
+    WWWHome := "https://mtalleux.pages.math.cnrs.fr/website/",
+    Email := "marc.talleux@u-picardie.fr",
+    PostalAddress := Concatenation(
+               "LAMFA\n",
+               "CNRS\n",
+               "Université de Picardie Jules Verne\n",
+               "33, rue Saint-Leu\n",
+               "80039 Amiens\n",
+               "France" ),
+    Place := "Amiens",
+    Institution := "Université de Picardie Jules Verne",
   ),
 ],
 

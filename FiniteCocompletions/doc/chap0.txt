@@ -6,13 +6,15 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2026.03-01
+                                   2026.04-01
   
   
-                                 31 March 2026
+                                  7 April 2026
   
   
                                 Mohamed Barakat
+  
+                                  Marc Talleux
   
   
   
@@ -22,6 +24,17 @@
       Address:  [33X[0;14YWalter-Flex-Str. 3[133X
                 [33X[0;14Y57068 Siegen[133X
                 [33X[0;14YGermany[133X
+  
+  
+  Marc Talleux
+      Email:    [7Xmailto:marc.talleux@u-picardie.fr[107X
+      Homepage: [7Xhttps://mtalleux.pages.math.cnrs.fr/website/[107X
+      Address:  [33X[0;14YLAMFA[133X
+                [33X[0;14YCNRS[133X
+                [33X[0;14YUniversité de Picardie Jules Verne[133X
+                [33X[0;14Y33, rue Saint-Leu[133X
+                [33X[0;14Y80039 Amiens[133X
+                [33X[0;14YFrance[133X
   
   
   
