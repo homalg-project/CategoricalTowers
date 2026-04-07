@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FiniteCocompletions",
 Subtitle := "Finite (co)product/(co)limit (co)completions",
-Version := "2026.03-01",
+Version := "2026.04-01",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
@@ -29,6 +29,23 @@ Persons := [
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
+  ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Marc",
+    LastName := "Talleux",
+    WWWHome := "https://mtalleux.pages.math.cnrs.fr/website/",
+    Email := "marc.talleux@u-picardie.fr",
+    PostalAddress := Concatenation(
+               "LAMFA\n",
+               "CNRS\n",
+               "Université de Picardie Jules Verne\n",
+               "33, rue Saint-Leu\n",
+               "80039 Amiens\n",
+               "France" ),
+    Place := "Amiens",
+    Institution := "Université de Picardie Jules Verne",
   ),
 ],
 
