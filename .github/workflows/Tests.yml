@@ -17,11 +17,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  # ── Clone packages and build reference documentation once per image ─────────────────────
+  prepare-deps:
     strategy:
       matrix:
         image: ["ghcr.io/homalg-project/gap-docker:latest", "ghcr.io/homalg-project/gap-docker-master:latest"]
       fail-fast: false
+    name: Build docs (${{ matrix.image == 'ghcr.io/homalg-project/gap-docker:latest' && 'stable' || 'master' }})
     runs-on: ubuntu-latest
     container:
       image: ${{ matrix.image }}
@@ -29,23 +31,17 @@ jobs:
       run:
         working-directory: /home/gap/.gap/pkg/
     env:
-      # HOME is already set in the docker container, but GitHub Actions overwrites it
       HOME: /home/gap
     steps:
-      - name: Keep workflow active even if repository has no activity for 60 days
-        if: github.event_name != 'pull_request'
-        run: |
-          curl --fail -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/Tests.yml/enable"
       - name: Check out repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          # the persisted token interferes with the subsplit token used below
           persist-credentials: false
           fetch-depth: 0
       - name: Move checked out repo to GAP user root dir
         run: |
           cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
-      - name: Prepare environment
+      - name: Clone dependencies
         run: |
           cp ./CategoricalTowers/dev/ci_gaprc /home/gap/.gap/gaprc
           git clone --depth 1 -vv https://github.com/homalg-project/homalg_project.git
@@ -71,16 +67,190 @@ jobs:
           if [ -d "homalg_project/Modules" ]; then make -C "homalg_project/Modules" doc; fi
           if [ -d "CategoricalTowers/ToolsForCategoricalTowers" ]; then make -C "CategoricalTowers/ToolsForCategoricalTowers" doc; fi
           if [ -d "CategoricalTowers/Toposes" ]; then make -C "CategoricalTowers/Toposes" doc; fi
-      - name: Test CategoricalTowers
+      - name: Package dependencies
         run: |
-          make -C CategoricalTowers --trace -j $(nproc) --output-sync ci-test
-      - name: Test MatroidGeneration
+          tar cf /tmp/deps.tar --exclude='.git' \
+            homalg_project/ \
+            CAP_project/ \
+            HigherHomologicalAlgebra/ \
+            QPA2/ \
+            FinSetsForCAP/ \
+            ArangoDBInterface/ \
+            ParallelizedIterators/ \
+            alcove/ \
+            MatroidGeneration/ \
+            CategoricalTowers/ToolsForCategoricalTowers/doc/ \
+            CategoricalTowers/Toposes/doc/
+      - name: Upload deps artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deps-${{ matrix.image == 'ghcr.io/homalg-project/gap-docker:latest' && 'stable' || 'master' }}
+          path: /tmp/deps.tar
+          retention-days: 1
+
+  # ── Per-package test jobs (run in parallel) ──────────────────────────
+  test:
+    needs: prepare-deps
+    strategy:
+      matrix:
+        image: ["ghcr.io/homalg-project/gap-docker:latest", "ghcr.io/homalg-project/gap-docker-master:latest"]
+        config:
+          - { package: FunctorCategories, targets: [PreSheavesOfCategoryPrecompiled] }
+          - { package: FunctorCategories, targets: [FinQuiversPrecompiled, FinBouquetsPrecompiled, FinReflexiveQuiversPrecompiled] }
+          - { package: FunctorCategories, targets: [PreSheavesOfAlgebroidPrecompiled, PreSheavesOfAlgebroidFromDataTablesPrecompiled, PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled] }
+          - { package: FunctorCategories, targets: [base] }
+          - { package: Algebroids, targets: [AdelmanCategoryVsQuiverRows, SnakeLemmaProof, SnakeLemmaProof2] }
+          - { package: Algebroids, targets: [CategoryOfFpAlgebras, CategoryOfFpMatrixAlgebras] }
+          - { package: Algebroids, targets: [base] }
+          - { packages: [FpCategories, FpLinearCategories, FiniteCocompletions, IntrinsicCategories, IntrinsicModules, IntrinsicGradedModules, GradedCategories, ExteriorPowersCategories, InternalModules] }
+          - { packages: [ToolsForCategoricalTowers, PreSheaves, QuotientCategories, LazyCategories, Toposes, Locales, SubcategoriesForCAP, ZariskiFrames, CategoriesWithAmbientObjects, CatReps] }
+      fail-fast: false
+    name: ${{ matrix.config.targets && format('{0}_{1}', matrix.config.package, join(matrix.config.targets, '_')) || matrix.config.package || join(matrix.config.packages, '_') }} (${{ matrix.image == 'ghcr.io/homalg-project/gap-docker:latest' && 'stable' || 'master' }})
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ matrix.image }}
+    defaults:
+      run:
+        working-directory: /home/gap/.gap/pkg/
+    env:
+      HOME: /home/gap
+    steps:
+      - name: Keep workflow active even if repository has no activity for 60 days
+        if: github.event_name != 'pull_request'
         run: |
-          make -C MatroidGeneration --trace -j $(nproc) --output-sync ci-test
-      - name: Release package or simulate release
+          curl --fail -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/Tests.yml/enable"
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Move checked out repo to GAP user root dir
+        run: |
+          cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
+      - name: Download pre-built dependencies
+        uses: actions/download-artifact@v4
+        with:
+          name: deps-${{ matrix.image == 'ghcr.io/homalg-project/gap-docker:latest' && 'stable' || 'master' }}
+          path: /tmp/
+      - name: Extract dependencies
+        run: |
+          tar xf /tmp/deps.tar
+          cp ./CategoricalTowers/dev/ci_gaprc /home/gap/.gap/gaprc
+      - name: Test ${{ matrix.config.targets && format('{0}_{1}', matrix.config.package, join(matrix.config.targets, '_')) || matrix.config.package || join(matrix.config.packages, '_') }}
+        run: |
+          PACKAGES="${{ matrix.config.package || join(matrix.config.packages, ' ') }}"
+          TARGETS="${{ join(matrix.config.targets, ' ') }}"
+          for pkg in $PACKAGES; do
+            if [ -z "$TARGETS" ]; then
+              make -C "CategoricalTowers/$pkg" --trace ci-test
+            else
+              for tgt in $TARGETS; do
+                if [ "$tgt" = "base" ]; then
+                  make -C "CategoricalTowers/$pkg" --trace ci-test-base
+                else
+                  make -C "CategoricalTowers/$pkg" --trace ci-test-single "TST_ID=$tgt"
+                fi
+              done
+            fi
+          done
+      - name: Process coverage files
+        if: always() && matrix.image == 'ghcr.io/homalg-project/gap-docker:latest'
         run: |
           cd CategoricalTowers
           python3 dev/process_coverage.py
+      - name: Collect coverage files
+        if: always() && github.event_name != 'schedule' && matrix.image == 'ghcr.io/homalg-project/gap-docker:latest'
+        run: |
+          mkdir -p /tmp/coverage-collect
+          for pkg in ${{ matrix.config.package || join(matrix.config.packages, ' ') }}; do
+            mkdir -p "/tmp/coverage-collect/$pkg"
+            cp "CategoricalTowers/$pkg"/coverage*.json "/tmp/coverage-collect/$pkg/" 2>/dev/null || true
+          done
+      - name: Upload coverage artifact
+        if: always() && github.event_name != 'schedule' && matrix.image == 'ghcr.io/homalg-project/gap-docker:latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.config.targets && format('{0}_{1}', matrix.config.package, join(matrix.config.targets, '_')) || matrix.config.package || join(matrix.config.packages, '_') }}
+          path: /tmp/coverage-collect/
+          if-no-files-found: ignore
+          retention-days: 1
+
+  # ── MatroidGeneration (tested separately) ──
+  test-additional:
+    needs: prepare-deps
+    strategy:
+      matrix:
+        image: ["ghcr.io/homalg-project/gap-docker:latest", "ghcr.io/homalg-project/gap-docker-master:latest"]
+      fail-fast: false
+    name: MatroidGeneration (${{ matrix.image == 'ghcr.io/homalg-project/gap-docker:latest' && 'stable' || 'master' }})
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ matrix.image }}
+    defaults:
+      run:
+        working-directory: /home/gap/.gap/pkg/
+    env:
+      HOME: /home/gap
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Move checked out repo to GAP user root dir
+        run: |
+          cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
+      - name: Download pre-built dependencies
+        uses: actions/download-artifact@v4
+        with:
+          name: deps-${{ matrix.image == 'ghcr.io/homalg-project/gap-docker:latest' && 'stable' || 'master' }}
+          path: /tmp/
+      - name: Extract dependencies
+        run: |
+          tar xf /tmp/deps.tar
+          cp ./CategoricalTowers/dev/ci_gaprc /home/gap/.gap/gaprc
+      - name: Test MatroidGeneration
+        run: |
+          make -C MatroidGeneration --trace -j $(nproc) --output-sync ci-test
+
+  # ── Release / simulate release ───────────────────────────────────────
+  release:
+    needs: [prepare-deps, test]
+    if: always() && !cancelled()
+    strategy:
+      matrix:
+        image: ["ghcr.io/homalg-project/gap-docker:latest", "ghcr.io/homalg-project/gap-docker-master:latest"]
+      fail-fast: false
+    name: Release (${{ matrix.image == 'ghcr.io/homalg-project/gap-docker:latest' && 'stable' || 'master' }})
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ matrix.image }}
+    defaults:
+      run:
+        working-directory: /home/gap/.gap/pkg/
+    env:
+      HOME: /home/gap
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Move checked out repo to GAP user root dir
+        run: |
+          cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
+      - name: Download pre-built dependencies
+        uses: actions/download-artifact@v4
+        with:
+          name: deps-${{ matrix.image == 'ghcr.io/homalg-project/gap-docker:latest' && 'stable' || 'master' }}
+          path: /tmp/
+      - name: Extract dependencies
+        run: |
+          tar xf /tmp/deps.tar
+          cp ./CategoricalTowers/dev/ci_gaprc /home/gap/.gap/gaprc
+      - name: Release package or simulate release
+        run: |
+          cd CategoricalTowers
           git config --global user.name "Bot"
           git config --global user.email "empty"
           CUR_SHA=$(git rev-parse --verify HEAD)
@@ -92,10 +262,3 @@ jobs:
           else \
             TOKEN="${{ secrets.GITHUB_TOKEN }}" ./dev/simulate_dist.sh; \
           fi
-      - name: Upload code coverage
-        if: github.event_name != 'schedule' && matrix.image == 'ghcr.io/homalg-project/gap-docker:latest'
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        run: |
-          cd CategoricalTowers
-          ./dev/upload_codecov.sh

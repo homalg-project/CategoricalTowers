@@ -31,6 +31,14 @@ test-with-coverage: doc
 	gap --quitonbreak --cover stats tst/testall.g
 	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");'
 
+test-with-coverage-base: doc
+	gap --quitonbreak --cover stats_base tst/testall_base.g
+	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats_base", "coverage_base.json");'
+
+test-with-coverage-single: doc
+	TST_ID="$(TST_ID)" gap --quitonbreak --cover stats_single_$(TST_ID) tst/testall_single.g
+	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats_single_$(TST_ID)", "coverage_single_$(TST_ID).json");'
+
 test-notebooks:
 	cd examples/notebooks/; \
 	for filename in *.ipynb; do \
@@ -73,3 +81,7 @@ test-spacing:
 	rm spacing_diff_no_blanks
 
 ci-test: test-basic-spacing test-with-coverage test-notebooks
+
+ci-test-base: test-basic-spacing test-with-coverage-base test-notebooks
+
+ci-test-single: test-with-coverage-single
