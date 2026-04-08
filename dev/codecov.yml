@@ -2,7 +2,7 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 21
+  after_n_builds: 22
 flags:
   Algebroids:
     paths:
@@ -55,6 +55,9 @@ flags:
   QuotientCategories:
     paths:
       - "QuotientCategories/"
+  SliceCategoriesForCAP:
+    paths:
+      - "SliceCategoriesForCAP/"
   SubcategoriesForCAP:
     paths:
       - "SubcategoriesForCAP/"

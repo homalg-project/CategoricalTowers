@@ -4,7 +4,7 @@
 #! over its subobject classifier.
 
 #! @Example
-LoadPackage( "SubcategoriesForCAP" );
+LoadPackage( "SliceCategoriesForCAP" );
 #! true
 omega := SubobjectClassifier( SkeletalFinSets );
 #! |2|

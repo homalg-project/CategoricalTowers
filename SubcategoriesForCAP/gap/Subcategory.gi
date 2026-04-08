@@ -97,13 +97,19 @@ InstallMethod( Subcategory,
     [ "properties", Immutable( [ ] ) ],
     [ "supports_empty_limits", false ],
     [ "FinalizeCategory", true ],
+    [ "category_filter", fail ],
+    [ "category_object_filter", fail ],
+    [ "category_morphism_filter", fail ],
   ],
   function( CAP_NAMED_ARGUMENTS, C, name )
-    local category_constructor_options, list_of_operations_to_install, is_full, is_additive, additional_operations_to_install,
-          skip, func, pos, properties, additional_properties, D;
+    local category_constructor_options, list_of_operations_to_install,
+          skip, func, pos, inherited_properties, additional_properties, D;
     
     category_constructor_options := rec(
          name := name,
+         category_filter := CAP_NAMED_ARGUMENTS.category_filter,
+         category_object_filter := CAP_NAMED_ARGUMENTS.category_object_filter,
+         category_morphism_filter := CAP_NAMED_ARGUMENTS.category_morphism_filter,
          object_constructor := { cat, obj } -> AsSubcategoryCell( cat, obj ),
          object_datum := { cat, obj } -> UnderlyingCell( obj ),
          morphism_constructor := { cat, source, mor, range } -> AsSubcategoryCell( source, mor, range ),
@@ -120,21 +126,14 @@ InstallMethod( Subcategory,
     );
     
     ## list_of_operations_to_install
-    list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY;
+    list_of_operations_to_install :=
+      DuplicateFreeList( Concatenation( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY, CAP_NAMED_ARGUMENTS.additional_operations_to_install ) );
     
-    is_full := CAP_NAMED_ARGUMENTS.is_full;
-    
-    is_additive := CAP_NAMED_ARGUMENTS.is_additive;
-    
-    additional_operations_to_install := CAP_NAMED_ARGUMENTS.additional_operations_to_install;
-    
-    list_of_operations_to_install := DuplicateFreeList( Concatenation( list_of_operations_to_install, additional_operations_to_install ) );
-    
-    if IsIdenticalObj( is_full, true ) then
+    if CAP_NAMED_ARGUMENTS.is_full then
         Append( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY );
     fi;
     
-    if IsIdenticalObj( is_additive, true ) then
+    if CAP_NAMED_ARGUMENTS.is_additive then
         Append( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEGORY );
     fi;
     
@@ -160,11 +159,21 @@ InstallMethod( Subcategory,
     fi;
     
     ## filters and properties
-    if is_full then
-        category_constructor_options.category_filter := IsCapFullSubcategory;
-        category_constructor_options.category_object_filter := IsObjectInAFullSubcategory;
-        category_constructor_options.category_morphism_filter := IsMorphismInAFullSubcategory;
-        properties := [ "IsEquippedWithHomomorphismStructure",
+    if CAP_NAMED_ARGUMENTS.is_full then
+        
+        if category_constructor_options.category_filter = fail then
+          category_constructor_options.category_filter := IsCapFullSubcategory;
+        fi;
+        
+        if category_constructor_options.category_object_filter = fail then
+          category_constructor_options.category_object_filter := IsObjectInAFullSubcategory;
+        fi;
+        
+        if category_constructor_options.category_morphism_filter = fail then
+          category_constructor_options.category_morphism_filter := IsMorphismInAFullSubcategory;
+        fi;
+        
+        inherited_properties := [ "IsEquippedWithHomomorphismStructure",
                         "IsSkeletalCategory",
                         "IsFiniteObjectCategory",
                         "IsFiniteCategory",
@@ -175,10 +184,20 @@ InstallMethod( Subcategory,
                         "IsLinearCategoryOverCommutativeRing"
                         ];
     else
-        category_constructor_options.category_filter := IsCapSubcategory;
-        category_constructor_options.category_object_filter := IsObjectInASubcategory;
-        category_constructor_options.category_morphism_filter := IsMorphismInASubcategory;
-        properties := [ "IsSkeletalCategory",
+        
+        if category_constructor_options.category_filter = fail then
+          category_constructor_options.category_filter := IsCapSubcategory;
+        fi;
+        
+        if category_constructor_options.category_object_filter = fail then
+          category_constructor_options.category_object_filter := IsObjectInASubcategory;
+        fi;
+        
+        if category_constructor_options.category_morphism_filter = fail then
+          category_constructor_options.category_morphism_filter := IsMorphismInASubcategory;
+        fi;
+        
+        inherited_properties := [ "IsSkeletalCategory",
                         "IsFiniteObjectCategory",
                         "IsFiniteCategory",
                         "IsThinCategory",
@@ -188,15 +207,15 @@ InstallMethod( Subcategory,
                         ];
     fi;
     
-    properties := Intersection( ListKnownCategoricalProperties( C ), properties );
+    inherited_properties := Intersection( ListKnownCategoricalProperties( C ), inherited_properties );
     
-    if IsIdenticalObj( is_additive, true ) then
-        Add( properties, "IsAdditiveCategory" );
+    if CAP_NAMED_ARGUMENTS.is_additive then
+        Add( inherited_properties, "IsAdditiveCategory" );
     fi;
     
     additional_properties := CAP_NAMED_ARGUMENTS.properties;
     
-    category_constructor_options.properties := DuplicateFreeList( Concatenation( properties, additional_properties ) );
+    category_constructor_options.properties := DuplicateFreeList( Concatenation( inherited_properties, additional_properties ) );
     
     category_constructor_options.supports_empty_limits := CAP_NAMED_ARGUMENTS.supports_empty_limits;
     
@@ -241,7 +260,9 @@ InstallMethod( Subcategory,
     fi;
     
     if CAP_NAMED_ARGUMENTS.FinalizeCategory then
-        Finalize( D );
+      
+      Finalize( D );
+      
     fi;
     
     return D;
@@ -250,7 +271,12 @@ end ) );
 
 ##
 InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
-  function( L )
+  FunctionWithNamedArguments(
+  [
+    [ "name_of_subcat_subcategory", fail ],
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, L )
     local C, name, subcat;
     
     if L = [ ] then
@@ -259,27 +285,23 @@ InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
     
     C := CapCategory( L[1] );
     
-    L := ShallowCopy( L );
+    L := Immutable( ShallowCopy( L ) );
     
-    MakeImmutable( L );
-    
-    name := ValueOption( "name_of_subcat_subcategory" );
+    name := CAP_NAMED_ARGUMENTS.name_of_subcat_subcategory;
     
     if name = fail then
       
       name := Name( C );
       
-      if Size( L ) > 1 then
-        name := Concatenation( "Subcategory generated by ", String( Size( L ) ), " objects in ", name );
+      if Length( L ) > 1 then
+        name := Concatenation( "Subcategory generated by ", String( Length( L ) ), " objects in ", name );
       else
         name := Concatenation( "Subcategory generated by 1 object in ", name );
       fi;
       
     fi;
     
-    subcat := Subcategory( C, name : FinalizeCategory := false );
-    
-    SetFilterObj( subcat, IsCapSubcategoryGeneratedByFiniteNumberOfMorphisms );
+    subcat := Subcategory( C, name : FinalizeCategory := false, category_filter := IsCapSubcategoryGeneratedByFiniteNumberOfMorphisms );
     
     subcat!.Objects := L;
     
@@ -305,25 +327,27 @@ InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
     
     SetSetOfKnownObjects( subcat, List( L, obj -> AsSubcategoryCell( subcat, obj ) ) );
     
-    Finalize( subcat );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+      
+      Finalize( subcat );
+      
+    fi;
     
     return subcat;
     
-end );
+end ) );
 
 ##
-InstallMethod( \.,
-        "for a subcategory and a positive integer",
-        [ IsCapSubcategory, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a subcategory",
+        [ IsString, IsCapSubcategory ],
         
-  function( subcategory, string_as_int )
-    local name, C, c;
-    
-    name := NameRNam( string_as_int );
+  function( name, subcategory )
+    local C, c;
     
     C := AmbientCategory( subcategory );
     
-    c := C.(name);
+    c := name / C;
     
     if ( IsCapCategoryObject( c ) or IsCapCategoryMorphism( c ) ) and
        IsIdenticalObj( CapCategory( c ), C ) then
@@ -337,6 +361,11 @@ InstallMethod( \.,
     fi;
     
 end );
+
+#= comment for Julia
+##
+INSTALL_DOT_METHOD( IsCapSubcategory );
+# =#
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
@@ -367,49 +396,41 @@ end );
 ##################################
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         [ IsObjectInASubcategory ],
         
   function( a )
     
-    Print( "An object in subcategory given by: " );
-    
-    ViewObj( UnderlyingCell( a ) );
+    return Concatenation( "An object in subcategory given by: ",  ViewString( UnderlyingCell( a ) ) );
     
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         [ IsMorphismInASubcategory ],
         
   function( phi )
     
-    Print( "A morphism in subcategory given by: " );
-    
-    ViewObj( UnderlyingCell( phi ) );
+    return Concatenation( "A morphism in subcategory given by: ",  ViewString( UnderlyingCell( phi ) ) );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsObjectInASubcategory ],
         
   function( a )
     
-    Print( "An object in subcategory given by: " );
-    
-    Display( UnderlyingCell( a ) );
+    return Concatenation( "An object in subcategory given by: \n\n", DisplayString( UnderlyingCell( a ) ) );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsMorphismInASubcategory ],
         
   function( phi )
-    
-    Print( "A morphism in subcategory given by: " );
-    
-    Display( UnderlyingCell( phi ) );
+     
+     return Concatenation( "A morphism in subcategory given by: \n\n", DisplayString( UnderlyingCell( phi ) ) );
     
 end );

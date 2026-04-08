@@ -3,7 +3,7 @@
 #! We type-check DualOverTensorUnit via LazyCategories.
 
 #! @Example
-LoadPackage( "SubcategoriesForCAP", false );
+LoadPackage( "SliceCategoriesForCAP", false );
 #! true
 LoadPackage( "LazyCategories", false );
 #! true
