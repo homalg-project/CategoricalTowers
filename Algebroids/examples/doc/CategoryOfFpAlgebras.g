@@ -1,6 +1,8 @@
 #! @BeginChunk CategoryOfFpAlgebras
 
 #! @Example
+
+#! # CI_SINGLE_JOB_ID:CategoryOfFpAlgebras
 LoadPackage( "Algebroids", false );
 #! true
 F := HomalgRingOfIntegersInSingular( 2 );

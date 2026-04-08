@@ -3,6 +3,7 @@
 #! @Section Adelman snake lemma
 
 #! @Example
+
 LoadPackage( "Algebroids", false );
 #! true
 LoadPackage( "GeneralizedMorphismsForCAP", false );
