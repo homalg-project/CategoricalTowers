@@ -159,7 +159,7 @@ InstallMethod( CreatePreSheaf,
     
     morphisms := SetOfGeneratingMorphisms( Source( PSh ) );
     
-    k := CommutativeRingOfLinearCategory( kmat );
+    k := CommutativeSemiringOfLinearCategory( kmat );
     
     mat :=
       function ( m )
@@ -316,7 +316,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           is_computable, B_op, kq, A, relations,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations, list_of_operations_to_always_install_primitively, list_of_operations_to_install,
-          skip, commutative_ring, properties, supports_empty_limits, prop, option_record,
+          skip, commutative_semiring, properties, supports_empty_limits, prop, option_record,
           PSh, H, auxiliary_indices;
     
     ##
@@ -748,7 +748,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
+    skip := [ "MultiplyWithElementOfCommutativeSemiringForMorphisms",
              ];
     
     if HasIsThinCategory( B ) and IsThinCategory( B ) and
@@ -763,10 +763,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     list_of_operations_to_install := Difference( list_of_operations_to_install, skip );
     
-    if HasCommutativeRingOfLinearCategory( D ) then
-        commutative_ring := CommutativeRingOfLinearCategory( D );
+    if HasCommutativeSemiringOfLinearCategory( D ) then
+        commutative_semiring := CommutativeSemiringOfLinearCategory( D );
     else
-        commutative_ring := fail;
+        commutative_semiring := fail;
     fi;
     
     properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
@@ -792,9 +792,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     if ( HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms and
          IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms and
-         HasCommutativeRingOfLinearCategory )( D ) then
+         HasCommutativeSemiringOfLinearCategory )( D ) then
         
-        if ( HasIsFieldForHomalg and IsFieldForHomalg )( CommutativeRingOfLinearCategory( D ) ) then
+        if ( HasIsFieldForHomalg and IsFieldForHomalg )( CommutativeSemiringOfLinearCategory( D ) ) then
             Add( properties, "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms" );
         fi;
         
@@ -864,8 +864,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
            create_func_morphism := create_func_morphism,
            );
     
-    if not commutative_ring = fail then
-        option_record.commutative_ring_of_linear_category := commutative_ring;
+    if not commutative_semiring = fail then
+        option_record.commutative_semiring_of_linear_category := commutative_semiring;
     fi;
     
     PSh := CategoryConstructor( option_record );
@@ -966,10 +966,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    if CanCompute( D, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
+    if CanCompute( D, "MultiplyWithElementOfCommutativeSemiringForMorphisms" ) then
         
         ##
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( PSh,
+        AddMultiplyWithElementOfCommutativeSemiringForMorphisms( PSh,
           function ( PSh, r, eta )
             local D, eta_o_vals, natural_transformation_on_objects;
             
@@ -980,7 +980,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             natural_transformation_on_objects :=
               function ( source, objB_index, range )
                 
-                return MultiplyWithElementOfCommutativeRingForMorphisms( D, r, eta_o_vals[objB_index] );
+                return MultiplyWithElementOfCommutativeSemiringForMorphisms( D, r, eta_o_vals[objB_index] );
                 
             end;
             
@@ -2232,8 +2232,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         elif IsAlgebroid( B ) then
             
             if IsCategoryOfRows( D ) and
-               IsHomalgRing( commutative_ring ) and
-               HasIsFieldForHomalg( commutative_ring ) and IsFieldForHomalg( commutative_ring ) and
+               IsHomalgRing( commutative_semiring ) and
+               HasIsFieldForHomalg( commutative_semiring ) and IsFieldForHomalg( commutative_semiring ) and
                not B!.over_Z then
                 
                 if IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( B ) ) or

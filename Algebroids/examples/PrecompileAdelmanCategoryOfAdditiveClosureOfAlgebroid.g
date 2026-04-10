@@ -15,8 +15,8 @@ QQ := HomalgFieldOfRationals( );;
 snake_quiver := RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" );;
 A := PathAlgebra( QQ, snake_quiver );;
 
-SetRingFilter( A, IsQuiverAlgebra );
-SetRingElementFilter( A, IsQuiverAlgebraElement );
+SetSemiringFilter( A, IsQuiverAlgebra );
+SetSemiringElementFilter( A, IsQuiverAlgebraElement );
 
 ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 #! true

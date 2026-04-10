@@ -75,7 +75,7 @@ FunCat := FunctorCategory( A, kmat );
 #! FunctorCategory( Bialgebroid( GF(3), FreeCategory(
 #! RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,
 #! Category of matrices over GF(3) )
-CommutativeRingOfLinearCategory( FunCat );
+CommutativeSemiringOfLinearCategory( FunCat );
 #! GF(3)
 zero := ZeroObject( FunCat );
 #! <(1)->0, (2)->0; (a)->0x0, (b)->0x0, (c)->0x0>

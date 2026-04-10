@@ -283,7 +283,7 @@ InstallMethod( AsObjectInFunctorCategory,
     
     morphisms := SetOfGeneratingMorphisms( Source( Hom ) );
     
-    k := CommutativeRingOfLinearCategory( kmat );
+    k := CommutativeSemiringOfLinearCategory( kmat );
     
     mat :=
       function ( m )

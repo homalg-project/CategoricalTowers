@@ -34,7 +34,7 @@ InstallMethod( CategoryOfAlgebroidsObject,
   function( A )
     local category;
 
-    category := CategoryOfAlgebroids( CommutativeRingOfLinearCategory( A ), Parity( A ) );
+    category := CategoryOfAlgebroids( CommutativeSemiringOfLinearCategory( A ), Parity( A ) );
     
     return CreateCapCategoryObjectWithAttributes( category,
                                                   AsCapCategory, A );

@@ -893,8 +893,8 @@ InstallMethod( Category,
     
     A := PathAlgebra( ALGEBROIDS.ring, quiver );
     
-    SetRingFilter( A, IsQuiverAlgebra );
-    SetRingElementFilter( A, IsQuiverAlgebraElement );
+    SetSemiringFilter( A, IsQuiverAlgebra );
+    SetSemiringElementFilter( A, IsQuiverAlgebraElement );
     
     return Category( A, L );
     

@@ -17,7 +17,7 @@ PSh := PreSheaves( A );
 #! PreSheaves(
 #! Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) ) / relations,
 #! Rows( Q ) )
-CommutativeRingOfLinearCategory( PSh );
+CommutativeSemiringOfLinearCategory( PSh );
 #! Q
 Display( PSh.1 );
 #! Image of <(1)>:

@@ -11,7 +11,7 @@ InstallMethod( PreSheavesWithBounds,
         
   function ( C, D, type_of_boundedness )
     local PSh, name, is_computable, category_filter, category_object_filter, category_morphism_filter,
-          object_datum_type, morphism_datum_type, commutative_ring_of_linear_category,
+          object_datum_type, morphism_datum_type, commutative_semiring_of_linear_category,
           additional_properties, properties,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           union_of_supports, list_of_operations, list_of_operations_to_always_install_primitively, list_of_operations_to_install,
@@ -43,10 +43,10 @@ InstallMethod( PreSheavesWithBounds,
     category_object_filter := IsObjectInPreSheafWithBoundsCategory;
     category_morphism_filter := IsMorphismInPreSheafWithBoundsCategory;
     
-    if HasCommutativeRingOfLinearCategory( PSh ) then
-        commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( PSh );
+    if HasCommutativeSemiringOfLinearCategory( PSh ) then
+        commutative_semiring_of_linear_category := CommutativeSemiringOfLinearCategory( PSh );
     else
-        commutative_ring_of_linear_category := fail;
+        commutative_semiring_of_linear_category := fail;
     fi;
     
     additional_properties := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "additional_properties", [ ] );
@@ -212,7 +212,7 @@ InstallMethod( PreSheavesWithBounds,
                      
                      if j = 1 and type = "category" then
                         return "PSh";
-                     elif type in [ "integer", "element_of_commutative_ring_of_linear_structure" ] then
+                     elif type in [ "integer", "element_of_commutative_semiring_of_linear_structure" ] then
                         return Concatenation( "i_arg[", String( j ), "]" );
                      elif type = "object" then
                         return Concatenation( "ObjectDatum( cat, i_arg[", String( j ), "] )[1]" );
@@ -248,7 +248,7 @@ InstallMethod( PreSheavesWithBounds,
                    category_morphism_filter := category_morphism_filter,
                    object_datum_type := object_datum_type,
                    morphism_datum_type := morphism_datum_type,
-                   commutative_ring_of_linear_category := commutative_ring_of_linear_category,
+                   commutative_semiring_of_linear_category := commutative_semiring_of_linear_category,
                    properties := properties,
                    object_constructor := object_constructor,
                    object_datum := object_datum,

@@ -39,7 +39,7 @@ InstallMethod( CategoryOfFpAlgebras,
   function( CAP_NAMED_ARGUMENTS, linear_category )
     local name, k, FpAlg_k;
     
-    k := CommutativeRingOfLinearCategory( linear_category );
+    k := CommutativeSemiringOfLinearCategory( linear_category );
     
     ##
     name := Concatenation( "CategoryOfFpAlgebras( ", RingName( k ), " )" );
@@ -92,8 +92,8 @@ InstallMethod( CategoryOfFpAlgebras,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0,
                 IsPathCategory( UnderlyingCategory( L ) ) and
-                HasCommutativeRingOfLinearCategory( L ) and
-                IsIdenticalObj( k, CommutativeRingOfLinearCategory( L ) ) );
+                HasCommutativeSemiringOfLinearCategory( L ) and
+                IsIdenticalObj( k, CommutativeSemiringOfLinearCategory( L ) ) );
         
         unique_object := septuple_lincat_uniqueobj_nrgens_gens_nrrels_rels_nmgens[2];
         
@@ -222,8 +222,8 @@ InstallMethod( CategoryOfFpAlgebras,
         datum := DefiningSeptupleOfFinitelyPresentedAlgebra( fp_algebra );
         
         return IsPathCategory( UnderlyingCategory( datum[1] ) ) and
-               HasCommutativeRingOfLinearCategory( datum[1] ) and
-               IsIdenticalObj( k, CommutativeRingOfLinearCategory( datum[1] ) ) and
+               HasCommutativeSemiringOfLinearCategory( datum[1] ) and
+               IsIdenticalObj( k, CommutativeSemiringOfLinearCategory( datum[1] ) ) and
                IsIdenticalObj( CapCategory( datum[2] ), datum[1] ) and
                Length( datum[4] ) = datum[3] and
                ForAll( datum[4], gen -> IsIdenticalObj( CapCategory( gen ), datum[1] ) ) and
@@ -1063,7 +1063,7 @@ InstallMethod( Dimension,
   function( fp_algebra )
     local k, quotient;
     
-    k := CommutativeRingOfLinearCategory( AssociatedLinearClosureOfPathCategory( fp_algebra ) );
+    k := CommutativeSemiringOfLinearCategory( AssociatedLinearClosureOfPathCategory( fp_algebra ) );
     
     if not ( HasIsFieldForHomalg( k ) and IsFieldForHomalg( k ) ) then
         Print( "WARNING: the underlying commutative ring `k` is either not a field or not yet marked as a field\n" );
@@ -1130,7 +1130,7 @@ InstallMethod( \/,
     
     Assert( 0, IsLinearClosure( fp_linear_category_on_one_object ) or IsQuotientCategory( fp_linear_category_on_one_object ) );
     
-    k := CommutativeRingOfLinearCategory( fp_linear_category_on_one_object );
+    k := CommutativeSemiringOfLinearCategory( fp_linear_category_on_one_object );
     
     if IsLinearClosure( fp_linear_category_on_one_object ) then
         L := fp_linear_category_on_one_object;
@@ -1194,7 +1194,7 @@ InstallOtherMethod( \/,
     
     Assert( 0, Length( DefiningRelations( A ) ) = 0 );
     
-    k := CommutativeRingOfLinearCategory( L );
+    k := CommutativeSemiringOfLinearCategory( L );
     
     object := SetOfObjects( L )[1];
     

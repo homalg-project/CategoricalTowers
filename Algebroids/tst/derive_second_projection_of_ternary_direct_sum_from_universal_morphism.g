@@ -13,8 +13,8 @@ c := quiver.c;
 #
 F := FreeCategory( quiver );
 
-SetRingFilter( UnderlyingQuiverAlgebra( F ), IsQuiverAlgebra );
-SetRingElementFilter( UnderlyingQuiverAlgebra( F ), IsQuiverAlgebraElement );
+SetSemiringFilter( UnderlyingQuiverAlgebra( F ), IsQuiverAlgebra );
+SetSemiringElementFilter( UnderlyingQuiverAlgebra( F ), IsQuiverAlgebraElement );
 
 a_F := SetOfObjects( F )[1];
 b_F := SetOfObjects( F )[2];
@@ -46,14 +46,14 @@ dummy := DummyCategory( rec(
         "IsCongruentForMorphisms",
         "ZeroMorphism",
         "IdentityMorphism",
-        "MultiplyWithElementOfCommutativeRingForMorphisms",
+        "MultiplyWithElementOfCommutativeSemiringForMorphisms",
         "SumOfMorphisms",
         "DirectSum",
         "UniversalMorphismIntoDirectSumWithGivenDirectSum",
         "UniversalMorphismFromDirectSumWithGivenDirectSum",
     ],
     properties := [ "IsLinearCategoryOverCommutativeRing", "IsAbCategory" ],
-    commutative_ring_of_linear_category := ZZZ,
+    commutative_semiring_of_linear_category := ZZZ,
 ) );
 
 StopCompilationAtPrimitivelyInstalledOperationsOfCategory( dummy );
@@ -306,7 +306,7 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "cat", "mor" ],
-        src_template := "MultiplyWithElementOfCommutativeRingForMorphisms( cat, 1, mor )",
+        src_template := "MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, 1, mor )",
         dst_template := "mor",
     )
 );

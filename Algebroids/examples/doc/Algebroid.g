@@ -51,7 +51,7 @@ SetOfGeneratingMorphisms( Ar );
 #! [ (u)-[1*(a)]->(v), (v)-[1*(b)]->(u), (v)-[1*(c)]->(u), (v)-[1*(d)]->(w) ]
 SetOfGeneratingMorphisms( Ar, Ar.u, Ar.v );
 #! [ (u)-[1*(a)]->(v) ]
-CommutativeRingOfLinearCategory( Al ) = Q;
+CommutativeSemiringOfLinearCategory( Al ) = Q;
 #! true
 ObjectInAlgebroid( Al, ql.u ) = Al.u;
 #! true

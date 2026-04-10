@@ -11,7 +11,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFini
 ########
 function ( cat_1, arg2_1 )
     local hoisted_1_1, deduped_2_1, hoisted_3_1, hoisted_5_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_13_1, hoisted_16_1, deduped_17_1, hoisted_18_1, hoisted_19_1, hoisted_21_1, hoisted_22_1, deduped_23_1, deduped_24_1, hoisted_25_1, hoisted_26_1, hoisted_27_1, deduped_28_1, deduped_29_1, hoisted_30_1, deduped_32_1, hoisted_33_1, deduped_34_1, hoisted_35_1, hoisted_36_1, hoisted_37_1, deduped_39_1, deduped_40_1, hoisted_41_1, hoisted_42_1, hoisted_43_1, deduped_45_1, deduped_46_1, deduped_47_1, deduped_48_1, deduped_49_1, deduped_50_1, deduped_51_1, deduped_52_1, deduped_53_1, deduped_54_1, deduped_55_1, deduped_56_1, deduped_57_1, deduped_58_1, deduped_59_1, deduped_60_1, deduped_61_1, deduped_62_1, deduped_63_1, deduped_64_1, deduped_65_1, deduped_66_1, deduped_67_1, deduped_68_1, deduped_69_1;
-    deduped_69_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_69_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_68_1 := UnderlyingMorphism( arg2_1 );
     deduped_67_1 := RelationMorphism( Range( arg2_1 ) );
     deduped_66_1 := UnderlyingCategory( UnderlyingCategory( cat_1 ) );
@@ -416,7 +416,7 @@ end
 ########
 function ( cat_1, arg2_1 )
     local hoisted_1_1, deduped_2_1, hoisted_3_1, hoisted_5_1, deduped_7_1, deduped_8_1, hoisted_9_1, deduped_10_1, deduped_11_1, hoisted_12_1, deduped_13_1, deduped_14_1, hoisted_15_1, deduped_16_1, hoisted_19_1, deduped_20_1, hoisted_21_1, hoisted_22_1, hoisted_24_1, hoisted_25_1, hoisted_26_1, hoisted_27_1, hoisted_28_1, hoisted_29_1, deduped_30_1, deduped_31_1, hoisted_32_1, hoisted_33_1, hoisted_34_1, deduped_35_1, hoisted_36_1, deduped_37_1, hoisted_38_1, hoisted_39_1, hoisted_40_1, hoisted_42_1, hoisted_43_1, hoisted_44_1, hoisted_45_1, hoisted_47_1, hoisted_48_1, deduped_49_1, deduped_50_1, deduped_51_1, deduped_52_1, deduped_53_1, deduped_54_1, deduped_55_1, deduped_56_1, deduped_57_1, deduped_58_1, deduped_59_1, deduped_60_1, deduped_61_1, deduped_62_1, deduped_63_1, deduped_64_1, deduped_65_1, deduped_66_1, deduped_67_1, deduped_68_1, deduped_69_1, deduped_70_1, deduped_71_1, deduped_72_1;
-    deduped_72_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_72_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_71_1 := UnderlyingMorphism( arg2_1 );
     deduped_70_1 := RelationMorphism( Range( arg2_1 ) );
     deduped_69_1 := UnderlyingCategory( UnderlyingCategory( cat_1 ) );
@@ -1085,7 +1085,7 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1 )
     local deduped_1_1, deduped_3_1, deduped_4_1, hoisted_5_1, hoisted_7_1, hoisted_11_1, hoisted_12_1, deduped_15_1, deduped_17_1, hoisted_19_1, deduped_20_1, hoisted_21_1, hoisted_22_1, hoisted_24_1, hoisted_25_1, deduped_28_1, deduped_30_1, hoisted_31_1, hoisted_32_1, hoisted_33_1, deduped_34_1, deduped_35_1, hoisted_36_1, deduped_38_1, hoisted_39_1, deduped_40_1, hoisted_41_1, hoisted_42_1, hoisted_43_1, deduped_44_1, deduped_45_1, hoisted_46_1, hoisted_47_1, hoisted_48_1, deduped_50_1, deduped_51_1, deduped_52_1, deduped_53_1, deduped_54_1, deduped_55_1, deduped_56_1, deduped_57_1, deduped_58_1, deduped_59_1, deduped_60_1, deduped_61_1, deduped_62_1, deduped_63_1, deduped_64_1, deduped_65_1, deduped_66_1, deduped_67_1, deduped_68_1, deduped_69_1, deduped_70_1, deduped_71_1, deduped_72_1, deduped_73_1, deduped_74_1, deduped_75_1, deduped_76_1, deduped_77_1, deduped_78_1, deduped_79_1, deduped_80_1, deduped_81_1, deduped_82_1, deduped_83_1, deduped_84_1, deduped_85_1, deduped_86_1;
-    deduped_86_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_86_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_85_1 := UnderlyingMorphism( arg2_1 );
     deduped_84_1 := MorphismMatrix( UnderlyingMorphism( arg3_1 ) );
     deduped_83_1 := UnderlyingCategory( UnderlyingCategory( cat_1 ) );
@@ -1541,7 +1541,7 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1 )
     local deduped_1_1, hoisted_3_1, deduped_4_1, deduped_5_1, hoisted_6_1, hoisted_8_1, hoisted_12_1, hoisted_13_1, hoisted_16_1, hoisted_17_1, deduped_18_1, deduped_19_1, hoisted_20_1, deduped_21_1, hoisted_23_1, deduped_24_1, hoisted_25_1, hoisted_26_1, hoisted_28_1, hoisted_29_1, hoisted_32_1, hoisted_34_1, hoisted_35_1, hoisted_36_1, deduped_37_1, deduped_38_1, hoisted_39_1, hoisted_40_1, hoisted_41_1, deduped_42_1, hoisted_43_1, deduped_44_1, hoisted_45_1, hoisted_46_1, hoisted_47_1, hoisted_48_1, hoisted_49_1, hoisted_50_1, hoisted_51_1, hoisted_53_1, hoisted_54_1, deduped_55_1, deduped_56_1, deduped_57_1, deduped_58_1, deduped_59_1, deduped_60_1, deduped_61_1, deduped_62_1, deduped_63_1, deduped_64_1, deduped_65_1, deduped_66_1, deduped_67_1, deduped_68_1, deduped_69_1, deduped_70_1, deduped_71_1, deduped_72_1, deduped_73_1, deduped_74_1, deduped_75_1, deduped_76_1, deduped_77_1, deduped_78_1, deduped_79_1, deduped_80_1, deduped_81_1, deduped_82_1, deduped_83_1, deduped_84_1, deduped_85_1, deduped_86_1, deduped_87_1, deduped_88_1, deduped_89_1, deduped_90_1;
-    deduped_90_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_90_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_89_1 := UnderlyingMorphism( arg2_1 );
     deduped_88_1 := MorphismMatrix( UnderlyingMorphism( arg3_1 ) );
     deduped_87_1 := UnderlyingCategory( UnderlyingCategory( cat_1 ) );
@@ -2029,7 +2029,7 @@ end
 function ( cat_1, arg2_1, arg3_1 )
     local deduped_1_1, deduped_3_1, deduped_4_1, hoisted_5_1, hoisted_11_1, hoisted_12_1, deduped_15_1, deduped_17_1, hoisted_19_1, deduped_20_1, hoisted_21_1, hoisted_22_1, hoisted_24_1, hoisted_25_1, deduped_28_1, deduped_30_1, hoisted_31_1, hoisted_32_1, hoisted_33_1, deduped_34_1, deduped_38_1, hoisted_39_1, deduped_40_1, hoisted_41_1, deduped_44_1, deduped_45_1, hoisted_47_1, hoisted_48_1, deduped_50_1, deduped_52_1, hoisted_53_1, hoisted_57_1, hoisted_58_1, deduped_60_1, deduped_62_1, hoisted_64_1, deduped_65_1, hoisted_66_1, hoisted_67_1, hoisted_69_1, hoisted_70_1, deduped_73_1, deduped_74_1, hoisted_75_1, hoisted_76_1, hoisted_77_1, deduped_80_1, hoisted_81_1, deduped_82_1, hoisted_83_1, deduped_86_1, deduped_87_1, hoisted_89_1, hoisted_90_1, deduped_92_1, deduped_93_1, deduped_94_1, deduped_95_1, deduped_96_1, deduped_97_1, deduped_98_1, deduped_99_1, deduped_100_1, deduped_101_1, deduped_102_1, deduped_103_1, deduped_104_1, deduped_105_1, deduped_106_1, deduped_107_1, deduped_108_1, deduped_109_1, deduped_110_1, deduped_111_1, deduped_112_1, deduped_113_1, deduped_114_1, deduped_115_1, deduped_116_1, deduped_117_1, deduped_118_1, deduped_119_1, deduped_120_1, deduped_121_1, deduped_122_1, deduped_123_1, deduped_124_1, deduped_125_1, deduped_126_1, deduped_127_1, deduped_128_1, deduped_129_1, deduped_130_1, deduped_131_1, deduped_132_1, deduped_133_1, deduped_134_1, deduped_135_1, deduped_136_1, deduped_137_1, deduped_138_1, deduped_139_1, deduped_140_1, deduped_141_1, deduped_142_1, deduped_143_1, deduped_144_1, deduped_145_1, deduped_146_1, deduped_147_1, deduped_148_1, deduped_149_1, deduped_150_1, deduped_151_1, deduped_152_1, deduped_153_1, deduped_154_1, deduped_155_1, deduped_156_1, deduped_157_1, deduped_158_1, deduped_159_1, deduped_160_1, deduped_161_1, deduped_162_1, deduped_163_1, deduped_164_1;
     deduped_164_1 := UnderlyingMorphism( arg3_1 );
-    deduped_163_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_163_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_162_1 := UnderlyingMorphism( arg2_1 );
     deduped_161_1 := RelationMorphism( Range( arg2_1 ) );
     deduped_160_1 := MorphismMatrix( deduped_164_1 );
@@ -2876,7 +2876,7 @@ end
 function ( cat_1, arg2_1, arg3_1 )
     local deduped_1_1, hoisted_3_1, deduped_4_1, deduped_5_1, hoisted_6_1, hoisted_12_1, hoisted_13_1, hoisted_16_1, hoisted_17_1, deduped_18_1, deduped_19_1, hoisted_20_1, deduped_21_1, hoisted_23_1, deduped_24_1, hoisted_25_1, hoisted_26_1, hoisted_28_1, hoisted_29_1, hoisted_32_1, hoisted_34_1, hoisted_35_1, hoisted_36_1, deduped_37_1, hoisted_39_1, deduped_42_1, hoisted_43_1, deduped_44_1, hoisted_45_1, hoisted_48_1, hoisted_49_1, hoisted_51_1, hoisted_53_1, hoisted_54_1, deduped_55_1, hoisted_57_1, deduped_58_1, hoisted_59_1, hoisted_63_1, hoisted_64_1, hoisted_66_1, hoisted_67_1, deduped_68_1, deduped_69_1, hoisted_70_1, deduped_71_1, hoisted_73_1, deduped_74_1, hoisted_75_1, hoisted_76_1, hoisted_78_1, hoisted_79_1, hoisted_82_1, hoisted_83_1, hoisted_84_1, hoisted_85_1, hoisted_86_1, deduped_89_1, hoisted_90_1, deduped_91_1, hoisted_92_1, hoisted_95_1, hoisted_96_1, hoisted_98_1, hoisted_100_1, hoisted_101_1, deduped_102_1, deduped_103_1, deduped_104_1, deduped_105_1, deduped_106_1, deduped_107_1, deduped_108_1, deduped_109_1, deduped_110_1, deduped_111_1, deduped_112_1, deduped_113_1, deduped_114_1, deduped_115_1, deduped_116_1, deduped_117_1, deduped_118_1, deduped_119_1, deduped_120_1, deduped_121_1, deduped_122_1, deduped_123_1, deduped_124_1, deduped_125_1, deduped_126_1, deduped_127_1, deduped_128_1, deduped_129_1, deduped_130_1, deduped_131_1, deduped_132_1, deduped_133_1, deduped_134_1, deduped_135_1, deduped_136_1, deduped_137_1, deduped_138_1, deduped_139_1, deduped_140_1, deduped_141_1, deduped_142_1, deduped_143_1, deduped_144_1, deduped_145_1, deduped_146_1, deduped_147_1, deduped_148_1, deduped_149_1, deduped_150_1, deduped_151_1, deduped_152_1, deduped_153_1, deduped_154_1, deduped_155_1, deduped_156_1, deduped_157_1, deduped_158_1, deduped_159_1, deduped_160_1, deduped_161_1, deduped_162_1, deduped_163_1, deduped_164_1, deduped_165_1, deduped_166_1, deduped_167_1, deduped_168_1, deduped_169_1, deduped_170_1, deduped_171_1, deduped_172_1;
     deduped_172_1 := UnderlyingMorphism( arg3_1 );
-    deduped_171_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_171_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_170_1 := UnderlyingMorphism( arg2_1 );
     deduped_169_1 := RelationMorphism( Range( arg2_1 ) );
     deduped_168_1 := MorphismMatrix( deduped_172_1 );

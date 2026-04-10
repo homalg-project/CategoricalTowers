@@ -31,7 +31,7 @@ InstallMethod( CategoryOfLeftEModules,
     
     EVMod!.AlgebraMultiplicationMorphism := structure_morphism;
     
-    SetCommutativeRingOfLinearCategory( EVMod, CommutativeRingOfLinearCategory( CapCategory( V ) ) );
+    SetCommutativeSemiringOfLinearCategory( EVMod, CommutativeSemiringOfLinearCategory( CapCategory( V ) ) );
     
     SetIsAbelianCategory( EVMod, true );
     
@@ -64,7 +64,7 @@ InstallMethod( CategoryOfRightEModules,
     
     ModEV!.AlgebraMultiplicationMorphism := structure_morphism;
     
-    SetCommutativeRingOfLinearCategory( ModEV, CommutativeRingOfLinearCategory( CapCategory( V ) ) );
+    SetCommutativeSemiringOfLinearCategory( ModEV, CommutativeSemiringOfLinearCategory( CapCategory( V ) ) );
     
     SetIsAbelianCategory( ModEV, true );
     

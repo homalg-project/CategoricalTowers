@@ -288,7 +288,7 @@ InstallMethod( AssociatedAlgebroid,
     if HasRangeCategoryOfHomomorphismStructure( lin_closure_of_path_cat ) then
         return Algebroid( AssociatedFreeCategory( P ), RangeCategoryOfHomomorphismStructure( lin_closure_of_path_cat ) );
     else
-        return Algebroid( CommutativeRingOfLinearCategory( lin_closure_of_path_cat ), AssociatedFreeCategory( P ) );
+        return Algebroid( CommutativeSemiringOfLinearCategory( lin_closure_of_path_cat ), AssociatedFreeCategory( P ) );
     fi;
     
 end );
@@ -666,7 +666,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     end );
     
     ##
-    AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+    AddMultiplyWithElementOfCommutativeSemiringForMorphisms( category,
       function( category, r, morphism )
         
         return MorphismInAlgebroid( category,
@@ -845,7 +845,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     Assert( 0, IsIdenticalObj( hom_structure_on_basis_paths, HomStructureOnBasisPaths( algebroid ) ) );
     
-    ring := CommutativeRingOfLinearCategory( algebroid );
+    ring := CommutativeSemiringOfLinearCategory( algebroid );
     
     if ValueOption( "no_precompiled_code" ) = true then
         
@@ -1292,9 +1292,9 @@ InstallMethod( Algebroid,
     SetParity( A, parity );
     
     if over_Z then
-        SetCommutativeRingOfLinearCategory( A, HomalgRingOfIntegers() );
+        SetCommutativeSemiringOfLinearCategory( A, HomalgRingOfIntegers() );
     else
-        SetCommutativeRingOfLinearCategory( A, LeftActingDomain( Rq ) );
+        SetCommutativeSemiringOfLinearCategory( A, LeftActingDomain( Rq ) );
     fi;
     A!.over_Z := over_Z;
     
@@ -1362,8 +1362,8 @@ InstallMethod( Algebroid,
     
     A := PathAlgebra( R, quiver );
     
-    SetRingFilter( A, IsQuiverAlgebra );
-    SetRingElementFilter( A, IsQuiverAlgebraElement );
+    SetSemiringFilter( A, IsQuiverAlgebra );
+    SetSemiringElementFilter( A, IsQuiverAlgebraElement );
     
     return Algebroid( A );
     
@@ -1392,8 +1392,8 @@ InstallMethodWithCache( Algebroid,
     
     kq := PathAlgebra( k, UnderlyingQuiver( C ) );
     
-    SetRingFilter( kq, IsQuiverAlgebra );
-    SetRingElementFilter( kq, IsQuiverAlgebraElement );
+    SetSemiringFilter( kq, IsQuiverAlgebra );
+    SetSemiringElementFilter( kq, IsQuiverAlgebraElement );
     
     relations := List( relations, a -> PathAsAlgebraElement( kq, a[1] ) - PathAsAlgebraElement( kq, a[2] ) );
     
@@ -1401,8 +1401,8 @@ InstallMethodWithCache( Algebroid,
     
     A := kq / GroebnerBasis( IdealOfQuotient( A ) );
     
-    SetRingFilter( A, IsQuiverAlgebra );
-    SetRingElementFilter( A, IsQuiverAlgebraElement );
+    SetSemiringFilter( A, IsQuiverAlgebra );
+    SetSemiringElementFilter( A, IsQuiverAlgebraElement );
     
     A := Algebroid( A, over_Z ); ## do not call the single argument method Algebroid as it is an attribute
     
@@ -1428,7 +1428,7 @@ InstallMethodWithCache( Algebroid,
         Error( "the underlying quiver algebra is not a path algebra, nevertheless the list of relations is empty\n" );
     fi;
     
-    k := CommutativeRingOfLinearCategory( H );
+    k := CommutativeSemiringOfLinearCategory( H );
     
     if HasIsIntegersForHomalg( k ) and IsIntegersForHomalg( k ) then
         k := HomalgFieldOfRationals( );
@@ -2182,7 +2182,7 @@ InstallMethod( OppositeAlgebroid,
   function( A )
     local ring, over_Z, range_category, A_op;
     
-    ring := CommutativeRingOfLinearCategory( A );
+    ring := CommutativeSemiringOfLinearCategory( A );
      
     if IsIntegers( ring ) or ( HasIsIntegersForHomalg( ring ) and IsIntegersForHomalg( ring ) ) then
         over_Z := true;
@@ -2374,7 +2374,7 @@ BindGlobal( "_MorphismInAlgebroid_CellAsEvaluatableString",
             
         fi;
         
-        return Concatenation( "MultiplyWithElementOfCommutativeRingForMorphisms( ", cat, ", ", String( decomp[1] ), ", ", cmp, " )" );
+        return Concatenation( "MultiplyWithElementOfCommutativeSemiringForMorphisms( ", cat, ", ", String( decomp[1] ), ", ", cmp, " )" );
         
     fi;
     
@@ -2410,7 +2410,7 @@ InstallMethod( DataTablesOfLinearCategory,
     return
       NTuple( 5,
         
-        CommutativeRingOfLinearCategory( B ),
+        CommutativeSemiringOfLinearCategory( B ),
         
         FinQuiver(
             NTuple( 3,

@@ -22,7 +22,7 @@ InstallMethod( DecomposeOnceByRandomEndomorphism,
     
     Add( endbas, ZeroMorphism( F, F ) );
     
-    k := CommutativeRingOfLinearCategory( CapCategory( F ) );
+    k := CommutativeSemiringOfLinearCategory( CapCategory( F ) );
     
     n := Int( Log2( Float( d ) ) ) + 1;
     

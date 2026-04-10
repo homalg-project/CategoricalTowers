@@ -25,7 +25,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY,
    "AdditiveInverseForMorphisms",
    "SubtractionForMorphisms",
    "ZeroMorphism",
-   #"MultiplyWithElementOfCommutativeRingForMorphisms",
+   #"MultiplyWithElementOfCommutativeSemiringForMorphisms",
    
    # IsCartesianCategory
    "DirectProduct",
@@ -82,7 +82,7 @@ InstallMethod( QuotientCategory,
     local congruence_func, ambient_cat, name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
-          list_of_operations_to_install, commutative_ring,
+          list_of_operations_to_install, commutative_semiring,
           properties, supports_empty_limits, quotient_cat;
     
     if not IsBound( record.congruence_func ) then
@@ -143,10 +143,10 @@ InstallMethod( QuotientCategory,
     
     list_of_operations_to_install := Intersection( ListPrimitivelyInstalledOperationsOfCategory( ambient_cat ), CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY );
     
-    if HasCommutativeRingOfLinearCategory( ambient_cat ) then
-        commutative_ring := CommutativeRingOfLinearCategory( ambient_cat );
+    if HasCommutativeSemiringOfLinearCategory( ambient_cat ) then
+        commutative_semiring := CommutativeSemiringOfLinearCategory( ambient_cat );
     else
-        commutative_ring := fail;
+        commutative_semiring := fail;
     fi;
     
     properties := [ "IsObjectFiniteCategory",
@@ -161,9 +161,9 @@ InstallMethod( QuotientCategory,
     
     if HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( ambient_cat ) and
          IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( ambient_cat ) and
-         HasCommutativeRingOfLinearCategory( ambient_cat ) then
+         HasCommutativeSemiringOfLinearCategory( ambient_cat ) then
         
-        if HasIsFieldForHomalg( commutative_ring ) and IsFieldForHomalg( commutative_ring ) then
+        if HasIsFieldForHomalg( commutative_semiring ) and IsFieldForHomalg( commutative_semiring ) then
             Add( properties, "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms" );
         fi;
         
@@ -275,7 +275,7 @@ InstallMethod( QuotientCategory,
                    category_filter := category_filter,
                    category_object_filter := category_object_filter,
                    category_morphism_filter := category_morphism_filter,
-                   #commutative_ring_of_linear_category := commutative_ring,
+                   #commutative_semiring_of_linear_category := commutative_semiring,
                    properties := properties,
                    object_constructor := object_constructor,
                    object_datum := object_datum,
@@ -310,8 +310,8 @@ InstallMethod( QuotientCategory,
     
     SetQuotientCategoryCongruenceFunction( quotient_cat, record.congruence_func );
     
-    if commutative_ring <> fail then
-        SetCommutativeRingOfLinearCategory( quotient_cat, commutative_ring );
+    if commutative_semiring <> fail then
+        SetCommutativeSemiringOfLinearCategory( quotient_cat, commutative_semiring );
     fi;
     
     AddIsCongruentForMorphisms( quotient_cat,
@@ -321,15 +321,15 @@ InstallMethod( QuotientCategory,
         
     end );
     
-    if CanCompute( ambient_cat, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
+    if CanCompute( ambient_cat, "MultiplyWithElementOfCommutativeSemiringForMorphisms" ) then
         
         ##
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( quotient_cat,
+        AddMultiplyWithElementOfCommutativeSemiringForMorphisms( quotient_cat,
           function( quotient_cat, r, phi )
             
-            return MorphismConstructor( quotient_cat, Source( phi ), MultiplyWithElementOfCommutativeRingForMorphisms( AmbientCategory( quotient_cat ), r, UnderlyingCell( phi ) ), Target( phi ) );
+            return MorphismConstructor( quotient_cat, Source( phi ), MultiplyWithElementOfCommutativeSemiringForMorphisms( AmbientCategory( quotient_cat ), r, UnderlyingCell( phi ) ), Target( phi ) );
             
-        end, OperationWeight( ambient_cat, "MultiplyWithElementOfCommutativeRingForMorphisms" ) );
+        end, OperationWeight( ambient_cat, "MultiplyWithElementOfCommutativeSemiringForMorphisms" ) );
     
     fi;
     

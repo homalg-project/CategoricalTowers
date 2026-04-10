@@ -283,7 +283,7 @@ InstallMethod( CreateCoPreSheaf,
     
     morphisms := SetOfGeneratingMorphisms( Source( coPSh ) );
     
-    k := CommutativeRingOfLinearCategory( kmat );
+    k := CommutativeSemiringOfLinearCategory( kmat );
     
     mat :=
       function ( m )

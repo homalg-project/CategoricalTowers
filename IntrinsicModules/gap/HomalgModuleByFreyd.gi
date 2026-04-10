@@ -74,7 +74,7 @@ InstallOtherMethod( HomalgModule,
     
     A := CapCategory( M );
     
-    R := CommutativeRingOfLinearCategory( A );
+    R := CommutativeSemiringOfLinearCategory( A );
     
     A := CategoryWithAmbientObjects( A );
     
@@ -102,7 +102,7 @@ InstallOtherMethod( HomalgModule,
     
     A := CapCategory( M );
     
-    R := CommutativeRingOfLinearCategory( A );
+    R := CommutativeSemiringOfLinearCategory( A );
     
     A := CategoryWithAmbientObjects( A );
     

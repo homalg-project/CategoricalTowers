@@ -304,7 +304,7 @@ DeclareOperation( "AsObjectInFunctorCategory",
 #!  For the convenience of the user the following input is also valid:
 #!  If <A>images_of_objects</A> is a list of nonnegative integers,
 #!  <A>images_of_morphisms</A> is a list of matrices, and
-#!  $k:=$ <C>CommutativeRingOfLinearCategory</C>( B ) is a field
+#!  $k:=$ <C>CommutativeSemiringOfLinearCategory</C>( B ) is a field
 #!  then the two lists are interpreted as objects and morphisms
 #!  in a matrix category or a category of rows over $k$, respectively.
 #! @Arguments B, images_of_objects, images_of_morphisms

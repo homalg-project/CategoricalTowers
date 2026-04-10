@@ -253,8 +253,8 @@ InstallMethod( ExteriorPowersCategory,
     
     SetCachingOfCategoryCrisp( EC );
     
-    if HasCommutativeRingOfLinearCategory( C ) then
-        SetCommutativeRingOfLinearCategory( EC, CommutativeRingOfLinearCategory( C ) );
+    if HasCommutativeSemiringOfLinearCategory( C ) then
+        SetCommutativeSemiringOfLinearCategory( EC, CommutativeSemiringOfLinearCategory( C ) );
     fi;
     
     properties := [ "IsEnrichedOverCommutativeRegularSemigroup",

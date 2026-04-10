@@ -251,7 +251,7 @@ InstallMethod( \*,
   function ( r, m )
     local iota;
     
-    r := r / CommutativeRingOfLinearCategory( CapCategory( Target( m ) ) );
+    r := r / CommutativeSemiringOfLinearCategory( CapCategory( Target( m ) ) );
     
     iota := r * UnderlyingEmbedding( m );
     

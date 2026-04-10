@@ -378,7 +378,7 @@ InstallMethod( LazyCategory,
           create_func_bool, create_func_object,
           create_func_morphism, create_func_universal_morphism,
           create_func_list_of_objects, primitive_operations, list_of_operations_to_install, skip, func, pos,
-          commutative_ring, properties, ignore, supports_empty_limits, category_constructor_options,
+          commutative_semiring, properties, ignore, supports_empty_limits, category_constructor_options,
           D, optimize, show_evaluation, cache, print, list, lazify_range_of_hom_structure, HC;
     
     ##
@@ -492,7 +492,7 @@ InstallMethod( LazyCategory,
               "IsEqualToZeroMorphism",
               "IsEqualForCacheForObjects",
               "IsEqualForCacheForMorphisms",
-              "MultiplyWithElementOfCommutativeRingForMorphisms",
+              "MultiplyWithElementOfCommutativeSemiringForMorphisms",
               ];
     
     for func in skip do
@@ -566,8 +566,8 @@ InstallMethod( LazyCategory,
            create_func_list_of_objects := create_func_list_of_objects,
            );
     
-    if HasCommutativeRingOfLinearCategory( C ) then
-        category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( C );
+    if HasCommutativeSemiringOfLinearCategory( C ) then
+        category_constructor_options.commutative_semiring_of_linear_category := CommutativeSemiringOfLinearCategory( C );
     fi;
     
     D := CategoryConstructor( category_constructor_options );
@@ -951,19 +951,19 @@ InstallMethod( LazyCategory,
         
     fi;
     
-    if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
+    if CanCompute( C, "MultiplyWithElementOfCommutativeSemiringForMorphisms" ) then
         
         if print then
-            Display( "MultiplyWithElementOfCommutativeRingForMorphisms" );
+            Display( "MultiplyWithElementOfCommutativeSemiringForMorphisms" );
         fi;
         
         ##
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
+        AddMultiplyWithElementOfCommutativeSemiringForMorphisms( D,
           function( D, r, phi )
             
-            return MorphismConstructor( D, Source( phi ), Pair( "MultiplyWithElementOfCommutativeRingForMorphisms", [ D, r, phi ] ), Target( phi ) );
+            return MorphismConstructor( D, Source( phi ), Pair( "MultiplyWithElementOfCommutativeSemiringForMorphisms", [ D, r, phi ] ), Target( phi ) );
             
-        end, OperationWeight( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) );
+        end, OperationWeight( C, "MultiplyWithElementOfCommutativeSemiringForMorphisms" ) );
         
     fi;
     
