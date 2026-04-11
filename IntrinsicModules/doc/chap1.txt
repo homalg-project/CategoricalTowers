@@ -983,9 +983,9 @@
         MorphismToBidualWithGivenBidual        for        IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMultiplyWithElementOfCommutativeRingForMorphisms[102X                 ([14XCAP:
-        MultiplyWithElementOfCommutativeRingForMorphisms   for  IsRingElement,
-        IsCapCategoryMorphism[114X)[133X
+  [30X    [33X[0;6Y[2XMultiplyWithElementOfCommutativeSemiringForMorphisms[102X             ([14XCAP:
+        MultiplyWithElementOfCommutativeSemiringForMorphisms               for
+        IsSemiringElement, IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XPostCompose[102X     ([14XCAP:     PostCompose    for    IsCapCategoryMorphism,
         IsCapCategoryMorphism[114X)[133X
@@ -1457,6 +1457,6 @@
   
   [1X1.4-1 IsCategoryOfHomalgModules[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfHomalgModules[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryOfHomalgModules[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
