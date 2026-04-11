@@ -71,7 +71,9 @@
     [4X[28X  "IsEquippedWithHomomorphismStructure", "IsObjectFiniteCategory",[128X[104X
     [4X[28X  "IsFinitelyPresentedCategory", "IsFiniteCategory",[128X[104X
     [4X[28X  "IsLeftClosedMonoidalCategory", "IsLeftCoclosedMonoidalCategory",[128X[104X
+    [4X[28X  "IsLinearCategoryOverCommutativeSemiring",[128X[104X
     [4X[28X  "IsLinearCategoryOverCommutativeRing",[128X[104X
+    [4X[28X  "IsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms",[128X[104X
     [4X[28X  "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms",[128X[104X
     [4X[28X  "IsSymmetricClosedMonoidalCategory",[128X[104X
     [4X[28X  "IsRigidSymmetricClosedMonoidalCategory",[128X[104X
