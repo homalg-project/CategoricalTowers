@@ -61,51 +61,51 @@
   
   [1X3.3-1 IsCategoryOfInternalModules[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfInternalModules[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryOfInternalModules[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X3.3-2 IsCategoryOfInternalLeftModules[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfInternalLeftModules[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryOfInternalLeftModules[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X3.3-3 IsCategoryOfInternalRightModules[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfInternalRightModules[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryOfInternalRightModules[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X3.3-4 IsInternalModuleCell[101X
   
-  [33X[1;0Y[29X[2XIsInternalModuleCell[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsInternalModuleCell[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X3.3-5 IsInternalModule[101X
   
-  [33X[1;0Y[29X[2XIsInternalModule[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsInternalModule[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X3.3-6 IsInternalLeftModule[101X
   
-  [33X[1;0Y[29X[2XIsInternalLeftModule[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsInternalLeftModule[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X3.3-7 IsInternalRightModule[101X
   
-  [33X[1;0Y[29X[2XIsInternalRightModule[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsInternalRightModule[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X3.3-8 IsInternalModuleMorphism[101X
   
-  [33X[1;0Y[29X[2XIsInternalModuleMorphism[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsInternalModuleMorphism[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X3.3-9 IsInternalLeftModuleMorphism[101X
   
-  [33X[1;0Y[29X[2XIsInternalLeftModuleMorphism[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsInternalLeftModuleMorphism[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X3.3-10 IsInternalRightModuleMorphism[101X
   
-  [33X[1;0Y[29X[2XIsInternalRightModuleMorphism[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsInternalRightModuleMorphism[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   

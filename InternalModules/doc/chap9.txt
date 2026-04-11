@@ -6,52 +6,52 @@
   
   [1X9.1-1 IsCategoryOfEModules[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfEModules[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryOfEModules[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X9.1-2 IsCategoryOfLeftEModules[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfLeftEModules[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryOfLeftEModules[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X9.1-3 IsCategoryOfRightEModules[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfRightEModules[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryOfRightEModules[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X9.1-4 IsEModuleCell[101X
   
-  [33X[1;0Y[29X[2XIsEModuleCell[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsEModuleCell[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X9.1-5 IsEModule[101X
   
-  [33X[1;0Y[29X[2XIsEModule[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsEModule[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X9.1-6 IsLeftEModule[101X
   
-  [33X[1;0Y[29X[2XIsLeftEModule[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsLeftEModule[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X9.1-7 IsRightEModule[101X
   
-  [33X[1;0Y[29X[2XIsRightEModule[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsRightEModule[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X9.1-8 IsEModuleMorphism[101X
   
-  [33X[1;0Y[29X[2XIsEModuleMorphism[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsEModuleMorphism[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X9.1-9 IsLeftEModuleMorphism[101X
   
-  [33X[1;0Y[29X[2XIsLeftEModuleMorphism[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsLeftEModuleMorphism[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X9.1-10 IsRightEModuleMorphism[101X
   
-  [33X[1;0Y[29X[2XIsRightEModuleMorphism[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsRightEModuleMorphism[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   

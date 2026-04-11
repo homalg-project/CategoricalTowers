@@ -15,16 +15,16 @@
   
   [1X4.2-1 IsElementInInternalModule[101X
   
-  [33X[1;0Y[29X[2XIsElementInInternalModule[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsElementInInternalModule[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X4.2-2 IsElementInInternalLeftModule[101X
   
-  [33X[1;0Y[29X[2XIsElementInInternalLeftModule[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsElementInInternalLeftModule[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X4.2-3 IsElementInInternalRightModule[101X
   
-  [33X[1;0Y[29X[2XIsElementInInternalRightModule[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsElementInInternalRightModule[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   

@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "InternalModules",
 Subtitle := "Modules over internal algebras",
-Version := "2026.02-03",
+Version := "2026.04-01",
 
-Date := "2026-02-15",
+Date := "2026-04-11",
 License := "GPL-2.0-or-later",
 
 
@@ -85,14 +85,14 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.13.0",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "ToolsForHomalg", ">= 2020.09.01" ],
-                           [ "MatricesForHomalg", ">= 2022.06-01" ],
+                           [ "ToolsForHomalg", ">= 2026.04-01" ],
+                           [ "MatricesForHomalg", ">= 2026.04-01" ],
                            [ "RingsForHomalg", ">= 2020.09.02" ],
-                           [ "CAP", ">= 2026.02-01" ],
+                           [ "CAP", ">= 2026.04-02" ],
                            [ "MonoidalCategories", ">= 2025.08-01" ],
                            [ "CartesianCategories", ">= 2024.06-03" ],
-                           [ "LinearAlgebraForCAP", ">= 2024.08-03" ],
-                           [ "AttributeCategoryForCAP", ">= 2023.02-03" ],
+                           [ "LinearAlgebraForCAP", ">= 2026.04-02" ],
+                           [ "AttributeCategoryForCAP", ">= 2026.04-01" ],
                            [ "ActionsForCAP", ">= 2020.04.27" ],
                            [ "ToolsForCategoricalTowers", ">= 2023.11-03" ],
                            [ "GradedCategories", ">= 2023.08-02" ],

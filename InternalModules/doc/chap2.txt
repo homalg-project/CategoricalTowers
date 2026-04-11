@@ -96,16 +96,16 @@
   
   [1X2.4-1 IsInternalAlgebra[101X
   
-  [33X[1;0Y[29X[2XIsInternalAlgebra[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsInternalAlgebra[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X2.4-2 IsElementInInternalAlgebraOrModule[101X
   
-  [33X[1;0Y[29X[2XIsElementInInternalAlgebraOrModule[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsElementInInternalAlgebraOrModule[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [1X2.4-3 IsElementInInternalAlgebra[101X
   
-  [33X[1;0Y[29X[2XIsElementInInternalAlgebra[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsElementInInternalAlgebra[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
