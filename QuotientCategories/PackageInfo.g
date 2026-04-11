@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "QuotientCategories",
 Subtitle := "Quotient categories",
-Version := "2026.02-01",
-Date := "2026-02-12",
+Version := "2026.04-01",
+Date := "2026-04-11",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -71,8 +71,8 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.13.0",
   NeededOtherPackages := [
-                [ "MatricesForHomalg", ">= 2023.11-02" ],
-                [ "CAP", ">= 2026.02-01" ],
+                [ "MatricesForHomalg", ">= 2026.04-01" ],
+                [ "CAP", ">= 2026.04-02" ],
                 [ "ToolsForCategoricalTowers", ">= 2024.02-03" ]
                 ],
   SuggestedOtherPackages := [ ],
