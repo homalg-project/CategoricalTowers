@@ -1,7 +1,7 @@
 name: FiniteCocompletions
-version: "2026.04-01"
+version: "2026.04-02"
 license: "GPL-2.0-or-later"
-date: 2026-04-07
+date: 2026-04-11
 description: |
     Finite (co)product/(co)limit (co)completions
 
@@ -24,7 +24,7 @@ needed-pkgs:
       version: ">= 1.5"
       url: "https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "CAP"
-      version: ">= 2026.02-01"
+      version: ">= 2026.04-02"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
       version: ">= 2025.08-01"
@@ -42,7 +42,7 @@ needed-pkgs:
       version: ">= 2025.12-08"
       url: "https://homalg-project.github.io/pkg/FinSetsForCAP"
     - name: "QuotientCategories"
-      version: ">= 2025.08-03"
+      version: ">= 2026.04-01"
       url: "https://homalg-project.github.io/pkg/QuotientCategories"
     - name: "Locales"
       version: ">= 2025.12-04"
@@ -51,10 +51,10 @@ needed-pkgs:
       version: ">= 2025.12-05"
       url: "https://homalg-project.github.io/pkg/FpCategories"
     - name: "Algebroids"
-      version: ">= 2025.12-02"
+      version: ">= 2026.04-01"
       url: "https://homalg-project.github.io/pkg/Algebroids"
     - name: "PreSheaves"
-      version: ">= 2025.08-03"
+      version: ">= 2026.04-01"
       url: "https://homalg-project.github.io/pkg/PreSheaves"
 
 www: https://homalg-project.github.io/pkg/FiniteCocompletions
@@ -63,11 +63,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FiniteCocompleti
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.04-01/FiniteCocompletions-2026.04-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.04-02/FiniteCocompletions-2026.04-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.04-01/FiniteCocompletions-2026.04-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.04-02/FiniteCocompletions-2026.04-02.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.04-01/FiniteCocompletions-2026.04-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.04-02/FiniteCocompletions-2026.04-02-manual.pdf
 
 abstract: |
 
@@ -78,10 +78,10 @@ keywords: |
     finite coproduct cocompletions, finite product completions, finite colimit cocompletions, finite limit completions.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BT07</span>]   <b class='BibAuthor'>Barakat, M. and Talleux, M.</b>,
+    [<span class='BibKey'>BT11</span>]   <b class='BibAuthor'>Barakat, M. and Talleux, M.</b>,
      <i class='BibTitle'>FiniteCocompletions, Finite (co)product/(co)limit (co)completions,
-             Version 2026.04-01</i>
-     (<span class='BibYear'>4-07</span>)<br />
+             Version 2026.04-02</i>
+     (<span class='BibYear'>4-11</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FiniteCocompletions">https://homalg-project.github.io/pkg/FiniteCocompletions</a></span>.
     </p>
@@ -92,9 +92,9 @@ bibtex: |
       author =           {Barakat, M. and Talleux, M.},
       title =            {{FiniteCocompletions},  {Finite  (co)product/(co)limit
                           (co)completions},                            {V}ersion
-                          2026.04\texttt{\symbol{45}}01},
+                          2026.04\texttt{\symbol{45}}02},
       month =            {6\texttt{\symbol{45}}},
-      year =             {4\texttt{\symbol{45}}07},
+      year =             {4\texttt{\symbol{45}}11},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/FiniteCocompletions}
@@ -104,6 +104,6 @@ bibtex: |
       keywords =         {finite   coproduct   cocompletions,   finite   product
                           completions,   finite  colimit  cocompletions,  finite
                           limit completions},
-      printedkey =       {BT07}
+      printedkey =       {BT11}
     }
 
