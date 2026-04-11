@@ -1,7 +1,7 @@
 name: FpLinearCategories
-version: "2026.01-02"
+version: "2026.04-01"
 license: "GPL-2.0-or-later"
-date: 2026-01-24
+date: 2026-04-11
 description: |
     Finitely presented linear categories by generating quivers and relations
 
@@ -21,22 +21,22 @@ GAP: ">= 4.13.0"
 
 needed-pkgs:
     - name: "CAP"
-      version: ">= 2025.06-05"
+      version: ">= 2026.04-02"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "FpCategories"
       version: ">= 2025.07-01"
       url: "https://homalg-project.github.io/pkg/FpCategories"
     - name: "QuotientCategories"
-      version: ">= 2025.08-03"
+      version: ">= 2026.04-01"
       url: "https://homalg-project.github.io/pkg/QuotientCategories"
     - name: "LinearClosuresForCAP"
-      version: ">= 2025.07-01"
+      version: ">= 2026.04-01"
       url: "https://homalg-project.github.io/pkg/LinearClosuresForCAP"
     - name: "AdditiveClosuresForCAP"
-      version: ">= 2025.07-03"
+      version: ">= 2026.04-02"
       url: "https://homalg-project.github.io/pkg/AdditiveClosuresForCAP"
     - name: "FreydCategoriesForCAP"
-      version: "2025.08-02"
+      version: ">= 2026.04-01"
       url: "https://homalg-project.github.io/pkg/FreydCategoriesForCAP"
 
 www: https://homalg-project.github.io/pkg/FpLinearCategories
@@ -45,11 +45,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FpLinearCategori
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpLinearCategories-2026.01-02/FpLinearCategories-2026.01-02.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpLinearCategories-2026.04-01/FpLinearCategories-2026.04-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpLinearCategories-2026.01-02/FpLinearCategories-2026.01-02.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpLinearCategories-2026.04-01/FpLinearCategories-2026.04-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FpLinearCategories-2026.01-02/FpLinearCategories-2026.01-02-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FpLinearCategories-2026.04-01/FpLinearCategories-2026.04-01-manual.pdf
 
 abstract: |
 
@@ -60,10 +60,10 @@ keywords: |
     Algebroid, finitely presented linear categories, quiver with relations.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BS24</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+    [<span class='BibKey'>BS11</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FpLinearCategories, Finitely presented linear categories by generating quivers and relations,
-             Version 2026.01-02</i>
-     (<span class='BibYear'>1-24</span>)<br />
+             Version 2026.04-01</i>
+     (<span class='BibYear'>4-11</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FpLinearCategories">https://homalg-project.github.io/pkg/FpLinearCategories</a></span>.
     </p>
@@ -74,9 +74,9 @@ bibtex: |
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FpLinearCategories},   {Finitely   presented   linear
                           categories   by  generating  quivers  and  relations},
-                          {V}ersion 2026.01\texttt{\symbol{45}}02},
+                          {V}ersion 2026.04\texttt{\symbol{45}}01},
       month =            {6\texttt{\symbol{45}}},
-      year =             {1\texttt{\symbol{45}}24},
+      year =             {4\texttt{\symbol{45}}11},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/FpLinearCategories}
@@ -85,6 +85,6 @@ bibtex: |
                           {}{}{}\texttt{FpLinearCategories}}},
       keywords =         {Algebroid;   finitely   presented  linear  categories;
                           quiver with relations},
-      printedkey =       {BS24}
+      printedkey =       {BS11}
     }
 

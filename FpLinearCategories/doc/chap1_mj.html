@@ -331,7 +331,7 @@ Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := kF / [ kF.e^3 ];</span>
 Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) ) ) / [ 1*e^3 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables := DataTablesOfLinearCategory( B );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( data_tables[1], CommutativeRingOfLinearCategory( B ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( data_tables[1], CommutativeSemiringOfLinearCategory( B ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data_tables[2];</span>
 FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" )
@@ -480,7 +480,7 @@ true
 
 <h5>1.5-1 IsAlgebroidFromDataTables</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAlgebroidFromDataTables</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAlgebroidFromDataTables</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of objects in an algebroid from data tables.</p>
@@ -489,7 +489,7 @@ true
 
 <h5>1.5-2 IsObjectInAlgebroidFromDataTables</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInAlgebroidFromDataTables</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInAlgebroidFromDataTables</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of algebroids from data tables.</p>
@@ -498,7 +498,7 @@ true
 
 <h5>1.5-3 IsMorphismInAlgebroidFromDataTables</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInAlgebroidFromDataTables</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInAlgebroidFromDataTables</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of morphisms in an algebroid from data tables.</p>
