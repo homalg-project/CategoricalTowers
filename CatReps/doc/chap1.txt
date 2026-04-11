@@ -53,7 +53,7 @@
     [4X[28X* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[128X[104X
     [4X[28X* IsSymmetricMonoidalCategory[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
-    [4X[25Xgap>[125X [27XCommutativeRingOfLinearCategory( CatReps );[127X[104X
+    [4X[25Xgap>[125X [27XCommutativeSemiringOfLinearCategory( CatReps );[127X[104X
     [4X[28XGF(3)[128X[104X
     [4X[25Xgap>[125X [27Xzero := ZeroObject( CatReps );[127X[104X
     [4X[28X<(1)->0, (2)->0; (a)->0x0, (b)->0x0, (c)->0x0>[128X[104X
@@ -1151,28 +1151,28 @@
   
   [1X1.2-1 IsFiniteConcreteCategory[101X
   
-  [33X[1;0Y[29X[2XIsFiniteConcreteCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsFiniteConcreteCategory[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of a finite concrete category[133X
   
   [1X1.2-2 IsCellInAFiniteConcreteCategory[101X
   
-  [33X[1;0Y[29X[2XIsCellInAFiniteConcreteCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInAFiniteConcreteCategory[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of cell in a finite concrete category[133X
   
   [1X1.2-3 IsObjectInAFiniteConcreteCategory[101X
   
-  [33X[1;0Y[29X[2XIsObjectInAFiniteConcreteCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInAFiniteConcreteCategory[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of objects in a finite concrete category[133X
   
   [1X1.2-4 IsMorphismInAFiniteConcreteCategory[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInAFiniteConcreteCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInAFiniteConcreteCategory[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of morphisms in a finite concrete category[133X

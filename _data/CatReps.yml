@@ -1,7 +1,7 @@
 name: CatReps
-version: "2026.02-03"
+version: "2026.04-01"
 license: "GPL-2.0-or-later"
-date: 2026-02-15
+date: 2026-04-11
 description: |
     Representations and cohomology of finite categories
 
@@ -28,13 +28,13 @@ needed-pkgs:
       version: ">= 1.5"
       url: "https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "CAP"
-      version: ">= 2026.02-01"
+      version: ">= 2026.04-02"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
       version: ">= 2021.08-01"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
     - name: "LinearAlgebraForCAP"
-      version: ">= 2021.07-01"
+      version: ">= 2026.04-02"
       url: "https://homalg-project.github.io/pkg/LinearAlgebraForCAP"
     - name: "FinSetsForCAP"
       version: ">= 2022.05-07"
@@ -43,19 +43,19 @@ needed-pkgs:
       version: ">= 2024.03-02"
       url: "https://homalg-project.github.io/pkg/ToolsForCategoricalTowers"
     - name: "SubcategoriesForCAP"
-      version: ">= 2020.06-01"
+      version: ">= 2026.04-01"
       url: "https://homalg-project.github.io/pkg/SubcategoriesForCAP"
     - name: "MatricesForHomalg"
-      version: ">= 2020.02.02"
+      version: ">= 2026.04-01"
       url: "https://homalg-project.github.io/pkg/MatricesForHomalg"
     - name: "Toposes"
       version: ">= 2022.05-07"
       url: "https://homalg-project.github.io/pkg/Toposes"
     - name: "Algebroids"
-      version: ">= 2024.02-02"
+      version: ">= 2026.04-01"
       url: "https://homalg-project.github.io/pkg/Algebroids"
     - name: "FunctorCategories"
-      version: ">= 2024.11-04"
+      version: ">= 2026.04-01"
       url: "https://homalg-project.github.io/pkg/FunctorCategories"
 
 www: https://homalg-project.github.io/pkg/CatReps
@@ -64,11 +64,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/CatReps/PackageI
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2026.02-03/CatReps-2026.02-03.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2026.04-01/CatReps-2026.04-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2026.02-03/CatReps-2026.02-03.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2026.04-01/CatReps-2026.04-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2026.02-03/CatReps-2026.02-03-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2026.04-01/CatReps-2026.04-01-manual.pdf
 
 abstract: |
 
@@ -79,10 +79,10 @@ keywords: |
     finite categories, concrete categories, representations of categories.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BGW15</span>]   <b class='BibAuthor'>Barakat, M., Grün, T. and Webb, P.</b>,
+    [<span class='BibKey'>BGW11</span>]   <b class='BibAuthor'>Barakat, M., Grün, T. and Webb, P.</b>,
      <i class='BibTitle'>CatReps, Representations and cohomology of finite categories,
-             Version 2026.02-03</i>
-     (<span class='BibYear'>2-15</span>)<br />
+             Version 2026.04-01</i>
+     (<span class='BibYear'>4-11</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CatReps">https://homalg-project.github.io/pkg/CatReps</a></span>.
     </p>
@@ -92,9 +92,9 @@ bibtex: |
     @misc{ CatReps,
       author =           {Barakat, M. and Gr{\"u}n, T. and Webb, P.},
       title =            {{CatReps},  {Representations  and cohomology of finite
-                          categories}, {V}ersion 2026.02\texttt{\symbol{45}}03},
+                          categories}, {V}ersion 2026.04\texttt{\symbol{45}}01},
       month =            {6\texttt{\symbol{45}}},
-      year =             {2\texttt{\symbol{45}}15},
+      year =             {4\texttt{\symbol{45}}11},
       note =             {GAP package},
       howpublished =     {\href   {https://homalg-project.github.io/pkg/CatReps}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
@@ -102,6 +102,6 @@ bibtex: |
                           {}{}{}\texttt{CatReps}}},
       keywords =         {finite      categories,      concrete      categories,
                           representations of categories},
-      printedkey =       {BGW15}
+      printedkey =       {BGW11}
     }
 
