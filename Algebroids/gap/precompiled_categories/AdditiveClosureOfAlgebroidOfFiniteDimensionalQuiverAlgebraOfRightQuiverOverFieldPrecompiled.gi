@@ -304,7 +304,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                             fi;
                             return;
                         end ) );
-              end ) ), RankOfObject( source_1 ), deduped_29_1, CommutativeRingOfLinearCategory( cat_1 ) ) );
+              end ) ), RankOfObject( source_1 ), deduped_29_1, CommutativeSemiringOfLinearCategory( cat_1 ) ) );
 end
 ########
         
@@ -469,7 +469,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                             fi;
                             return;
                         end ) );
-              end ) ), RankOfObject( source_1 ), deduped_29_1, CommutativeRingOfLinearCategory( cat_1 ) ) );
+              end ) ), RankOfObject( source_1 ), deduped_29_1, CommutativeSemiringOfLinearCategory( cat_1 ) ) );
 end
 ########
         
@@ -643,7 +643,7 @@ function ( cat_1, source_1, alpha_1, range_1 )
                             fi;
                             return;
                         end ) );
-              end ) ), deduped_9_1, RankOfObject( range_1 ), CommutativeRingOfLinearCategory( cat_1 ) ) );
+              end ) ), deduped_9_1, RankOfObject( range_1 ), CommutativeSemiringOfLinearCategory( cat_1 ) ) );
 end
 ########
         
@@ -1149,7 +1149,7 @@ end
     , 100 );
     
     ##
-    AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
+    AddMultiplyWithElementOfCommutativeSemiringForMorphisms( cat,
         
 ########
 function ( cat_1, r_1, alpha_1 )

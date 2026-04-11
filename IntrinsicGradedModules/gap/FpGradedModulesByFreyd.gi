@@ -43,7 +43,7 @@ BindGlobal( "FP_GRADED_MODULES",
         
         if HasIsCommutative( B ) and IsCommutative( B ) and
            Length( weights ) = 1 and IsZero( weights[1] ) then
-            SetCommutativeRingOfLinearCategory( P, UnderlyingNonGradedRing( B ) );
+            SetCommutativeSemiringOfLinearCategory( P, UnderlyingNonGradedRing( B ) );
         fi;
         
     fi;
@@ -216,10 +216,10 @@ InstallMethod( FpGradedLeftModules,
         
         if HasIsCommutative( B ) and IsCommutative( B ) and
            Length( weights ) = 1 and IsZero( weights[1] ) then
-            SetCommutativeRingOfLinearCategory( P, UnderlyingNonGradedRing( B ) );
+            SetCommutativeSemiringOfLinearCategory( P, UnderlyingNonGradedRing( B ) );
             
             ##
-            AddMultiplyWithElementOfCommutativeRingForMorphisms( P,
+            AddMultiplyWithElementOfCommutativeSemiringForMorphisms( P,
               function( P, r, alpha )
                 local mat;
                 
@@ -306,7 +306,7 @@ InstallMethod( FpGradedRightModules,
     end );
     
     ##
-    AddMultiplyWithElementOfCommutativeRingForMorphisms( P,
+    AddMultiplyWithElementOfCommutativeSemiringForMorphisms( P,
       function( P, r, alpha )
         local mat;
         

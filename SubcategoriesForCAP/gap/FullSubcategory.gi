@@ -19,7 +19,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY,
    "IsSplitMonomorphism",
    "IsZeroForMorphisms",
    "Lift",
-   "MultiplyWithElementOfCommutativeRingForMorphisms",
+   "MultiplyWithElementOfCommutativeSemiringForMorphisms",
    "SubtractionForMorphisms",
    "ZeroMorphism"
    ] );
@@ -66,13 +66,13 @@ InstallMethod( FullSubcategory,
     
     D := Subcategory( C, name : is_full := true, FinalizeCategory := false );
     
-    if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
+    if CanCompute( C, "MultiplyWithElementOfCommutativeSemiringForMorphisms" ) then
         
         ##
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
+        AddMultiplyWithElementOfCommutativeSemiringForMorphisms( D,
           function( cat, r, phi )
             
-            return AsSubcategoryCell( cat, MultiplyWithElementOfCommutativeRingForMorphisms( AmbientCategory( cat ), r, UnderlyingCell( phi ) ) );
+            return AsSubcategoryCell( cat, MultiplyWithElementOfCommutativeSemiringForMorphisms( AmbientCategory( cat ), r, UnderlyingCell( phi ) ) );
             
         end );
         

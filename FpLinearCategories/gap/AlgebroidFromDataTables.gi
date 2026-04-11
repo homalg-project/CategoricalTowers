@@ -156,7 +156,7 @@ InstallMethod( AlgebroidFromDataTables,
            [ "SetOfObjectsAsUnresolvableAttribute",
              "SetOfGeneratingMorphismsAsUnresolvableAttribute",
              "UnderlyingQuiver",
-             "CommutativeRingOfLinearCategory",
+             "CommutativeSemiringOfLinearCategory",
              "DefiningTripleOfUnderlyingQuiver",
              "HomomorphismStructureOnObjectsRanks",
              "HomomorphismStructureOnMorphismsMatrices",
@@ -183,7 +183,7 @@ InstallMethod( AlgebroidFromDataTables,
     SetIsObjectFiniteCategory( A, true );
     
     SetCategoryDatum( A, input_data );
-    SetCommutativeRingOfLinearCategory( A, input_data[1] );
+    SetCommutativeSemiringOfLinearCategory( A, input_data[1] );
     SetUnderlyingQuiver( A, q );
     SetDecompositionIndicesOfBasesElements( A, input_data[3] );
     
@@ -409,13 +409,13 @@ InstallMethod( AlgebroidFromDataTables,
                   obj_1,
                   ListWithIdenticalEntries(
                       HomomorphismStructureOnObjectsRanks( A )[ObjectIndex( obj_1 )][ObjectIndex( obj_2 )],
-                      ZeroImmutable( CommutativeRingOfLinearCategory( A ) ) ),
+                      ZeroImmutable( CommutativeSemiringOfLinearCategory( A ) ) ),
                   obj_2 );
         
     end );
     
     ##
-    AddMultiplyWithElementOfCommutativeRingForMorphisms( A,
+    AddMultiplyWithElementOfCommutativeSemiringForMorphisms( A,
       
       function ( A, r, alpha )
         
@@ -505,7 +505,7 @@ InstallMethod( AlgebroidFromDataTables,
         
         return MorphismConstructor( RangeCategoryOfHomomorphismStructure( A ),
                           distinguished_object,
-                          HomalgMatrixListList( [ CoefficientsList( alpha ) ], 1, RankOfObject( r ), CommutativeRingOfLinearCategory( A ) ),
+                          HomalgMatrixListList( [ CoefficientsList( alpha ) ], 1, RankOfObject( r ), CommutativeSemiringOfLinearCategory( A ) ),
                           r );
         
     end );
@@ -520,7 +520,7 @@ InstallMethod( AlgebroidFromDataTables,
         
         return MorphismConstructor( RangeCategoryOfHomomorphismStructure( A ),
                             DistinguishedObjectOfHomomorphismStructure( A ),
-                            HomalgMatrixListList( [ CoefficientsList( alpha ) ], 1, dim, CommutativeRingOfLinearCategory( A ) ),
+                            HomalgMatrixListList( [ CoefficientsList( alpha ) ], 1, dim, CommutativeSemiringOfLinearCategory( A ) ),
                             ObjectConstructor( RangeCategoryOfHomomorphismStructure( A ), dim ) );
     end );
     #
@@ -563,7 +563,7 @@ InstallMethod( AlgebroidFromDataTables,
       function ( A, obj, n )
         local ring, s, indices, t, basis;
         
-        ring := CommutativeRingOfLinearCategory( A );
+        ring := CommutativeSemiringOfLinearCategory( A );
         
         s := ObjectIndex( obj );
         
@@ -584,7 +584,7 @@ InstallMethod( AlgebroidFromDataTables,
       function ( A, obj, n )
         local ring, t, indices, s, basis;
         
-        ring := CommutativeRingOfLinearCategory( A );
+        ring := CommutativeSemiringOfLinearCategory( A );
         
         t := ObjectIndex( obj );
         
@@ -605,7 +605,7 @@ InstallMethod( AlgebroidFromDataTables,
       function ( A, obj_1, obj_2, n )
         local ring, morphisms;
         
-        ring := CommutativeRingOfLinearCategory( A );
+        ring := CommutativeSemiringOfLinearCategory( A );
         
         morphisms := Concatenation( [ ZeroMorphism( A, obj_1, obj_2 ) ], BasesElements( A )[ObjectIndex( obj_1 )][ObjectIndex( obj_2 )] );
         
@@ -989,7 +989,7 @@ InstallOtherMethod( BasesElements,
     
     return LazyHList( [ 1 .. NumberOfObjects( q ) ],
           i -> LazyHList( [ 1 .. NumberOfObjects( q ) ],
-            j -> ListN( IdentityMat( ranks[i][j], CommutativeRingOfLinearCategory( A ) ), [ 1 .. ranks[i][j] ],
+            j -> ListN( IdentityMat( ranks[i][j], CommutativeSemiringOfLinearCategory( A ) ), [ 1 .. ranks[i][j] ],
               { coeff, index } -> MorphismConstructor( A, SetOfObjects( A )[i], coeff, [ index ], SetOfObjects( A )[j] ) ) ) );
     
 end );
@@ -1222,11 +1222,11 @@ InstallMethodWithCache( TensorProductOfAlgebroids,
   function ( A_1, A_2 )
     local ring, q1, q2, data_tables, labels_of_bases_elements, T;
     
-    if not IsIdenticalObj( CommutativeRingOfLinearCategory( A_1 ), CommutativeRingOfLinearCategory( A_2 ) ) then
+    if not IsIdenticalObj( CommutativeSemiringOfLinearCategory( A_1 ), CommutativeSemiringOfLinearCategory( A_2 ) ) then
         Error( "the algebroids must be linear over the same commutative ring!" );
     fi;
     
-    ring := CommutativeRingOfLinearCategory( A_1 );
+    ring := CommutativeSemiringOfLinearCategory( A_1 );
     
     q1 := UnderlyingQuiver( A_1 );
     q2 := UnderlyingQuiver( A_2 );

@@ -29,7 +29,7 @@ quiver := RightQuiver( "q(3)[a:1->2,b:2->3]" );;
 kF := k[FreeCategory( quiver )];;
 A := AlgebroidFromDataTables( kF / [ kF.ab ] );;
 
-category_constructor := A -> PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;
+category_constructor := A -> PreSheaves( A, CategoryOfRows( CommutativeSemiringOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;
 
 precompile_PreSheavesOfAlgebroidFromDataTablesInCategoryOfRows :=
   function( A, compiled_category_name )

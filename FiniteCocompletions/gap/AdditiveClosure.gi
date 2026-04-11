@@ -212,7 +212,7 @@ InstallOtherMethodForCompilerForCAP( TensorizeObjectWithMorphismInRangeCategoryO
                    source,
                    List( [ 1 .. s ], i ->
                          List( [ 1 .. t ], j ->
-                               MultiplyWithElementOfCommutativeRingForMorphisms( L, nu_matrix[i, j], id_a ) ) ),
+                               MultiplyWithElementOfCommutativeSemiringForMorphisms( L, nu_matrix[i, j], id_a ) ) ),
                    target );
     
 end );

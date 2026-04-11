@@ -534,18 +534,18 @@ InstallMethod( CategoryWithAmbientObjects,
         SetIsAbelianCategory( category_with_ambient_objects, IsAbelianCategory( abelian_category ) );
     fi;
     
-    if HasCommutativeRingOfLinearCategory( abelian_category ) then
-        SetCommutativeRingOfLinearCategory( category_with_ambient_objects,
-                CommutativeRingOfLinearCategory( abelian_category ) );
+    if HasCommutativeSemiringOfLinearCategory( abelian_category ) then
+        SetCommutativeSemiringOfLinearCategory( category_with_ambient_objects,
+                CommutativeSemiringOfLinearCategory( abelian_category ) );
 
-        if CanCompute( abelian_category, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
+        if CanCompute( abelian_category, "MultiplyWithElementOfCommutativeSemiringForMorphisms" ) then
             
-            AddMultiplyWithElementOfCommutativeRingForMorphisms( category_with_ambient_objects,
+            AddMultiplyWithElementOfCommutativeSemiringForMorphisms( category_with_ambient_objects,
               function( cat, r, morphism )
                 
                 return MorphismWithAmbientObject(
                                Source( morphism ),
-                               MultiplyWithElementOfCommutativeRingForMorphisms( r, UnderlyingCell( morphism ) ),
+                               MultiplyWithElementOfCommutativeSemiringForMorphisms( r, UnderlyingCell( morphism ) ),
                                Target( morphism ) );
                 
             end );

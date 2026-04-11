@@ -28,7 +28,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
    # "IsZeroForObjects" does not make sense, since the morphism from the zero object in the ambient category only becomes an initial object (unless the category is terminal)
    "Lift",
    "LiftAlongMonomorphism",
-   #"MultiplyWithElementOfCommutativeRingForMorphisms", violates the commutativity of the defining triangle of morphisms
+   #"MultiplyWithElementOfCommutativeSemiringForMorphisms", violates the commutativity of the defining triangle of morphisms
    "PostCompose",
    "PreCompose",
    "UniversalMorphismFromInitialObject",

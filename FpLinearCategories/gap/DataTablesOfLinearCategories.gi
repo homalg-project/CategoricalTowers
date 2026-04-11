@@ -83,7 +83,7 @@ BindGlobal( "DATA_TABLES_OF_CATEGORY_FOR_QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_
     
     return NTuple( 5,
               #coefficients_ring,
-              CommutativeRingOfLinearCategory( quo_kC ),
+              CommutativeSemiringOfLinearCategory( quo_kC ),
               #quiver
               q,
               #decomposition_indices_of_bases_elements
@@ -147,7 +147,7 @@ BindGlobal( "DATA_TABLES_OF_CATEGORY_FOR_QUOTIENT_CATEGORY_OF_ALGEBROID_FROM_DAT
     fi;
     
     return NTuple( 5,
-              CommutativeRingOfLinearCategory( A ),
+              CommutativeSemiringOfLinearCategory( A ),
               q,
               List( objs, s -> List( objs, t -> List( BasisOfExternalHom( qA, s, t ), m ->
                 List( DecompositionIndicesOfMorphismInAlgebroid( MorphismDatum( m ) )[1][2], index -> SafePosition( support_gmors, index ) ) ) ) ),

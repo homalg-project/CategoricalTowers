@@ -54,7 +54,7 @@ function ( cat_1, s_1, a_1, b_1, c_1, r_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := ValuesOfPreSheaf( s_1 )[1];
     hoisted_4_1 := Target( cat_1 );
-    hoisted_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
@@ -74,7 +74,7 @@ function ( cat_1, s_1, a_1, b_1, c_1, r_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := ValuesOfPreSheaf( s_1 )[1];
     hoisted_4_1 := Target( cat_1 );
-    hoisted_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
@@ -95,7 +95,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_40_1 := ValuesOfPreSheaf( arg3_1 );
     deduped_39_1 := ValuesOfPreSheaf( arg2_1 );
     deduped_38_1 := Source( cat_1 );
-    deduped_37_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_37_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_36_1 := deduped_40_1[1];
     deduped_35_1 := deduped_39_1[1];
     deduped_34_1 := deduped_40_1[2];
@@ -183,7 +183,7 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
     hoisted_7_1 := Target( cat_1 );
     hoisted_6_1 := List( ValuesOfPreSheaf( b_1 )[1], RankOfObject );
     hoisted_5_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
-    hoisted_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_3_1 := List( deduped_8_1, RankOfObject );
     hoisted_2_1 := ValuesOfPreSheaf( r_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -212,7 +212,7 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
     hoisted_7_1 := Target( cat_1 );
     hoisted_6_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
     hoisted_5_1 := List( ValuesOfPreSheaf( b_1 )[1], RankOfObject );
-    hoisted_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_3_1 := List( deduped_8_1, RankOfObject );
     hoisted_2_1 := ValuesOfPreSheaf( r_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -615,7 +615,7 @@ function ( cat_1, objects_1 )
     deduped_5_1 := Target( cat_1 );
     deduped_4_1 := Source( cat_1 );
     deduped_3_1 := DefiningTripleOfUnderlyingQuiver( deduped_4_1 );
-    hoisted_2_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_2_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_4_1, Target, deduped_5_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_3_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( deduped_5_1, RankOfObject, Sum( List( objects_1, function ( F_3 )
                             return CAP_JIT_INCOMPLETE_LOGIC( RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( F_3 )[1][o_2] ) ) );
@@ -641,7 +641,7 @@ function ( cat_1, objects_1 )
     deduped_6_1 := Target( cat_1 );
     deduped_5_1 := Source( cat_1 );
     deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
-    hoisted_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_2_1 := deduped_4_1[3];
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Target, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( deduped_6_1, RankOfObject, Sum( List( objects_1, function ( F_3 )
@@ -672,7 +672,7 @@ end
 function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1;
     hoisted_4_1 := Target( cat_1 );
-    hoisted_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_2_1 := ValuesOfPreSheaf( Pp_1 )[1];
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -692,7 +692,7 @@ end
 function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1;
     hoisted_4_1 := Target( cat_1 );
-    hoisted_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_2_1 := ValuesOfPreSheaf( Pp_1 )[1];
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -723,7 +723,7 @@ end
 function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, deduped_6_1, deduped_7_1, hoisted_8_1, hoisted_10_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, deduped_17_1, deduped_18_1, hoisted_19_1, hoisted_20_1, deduped_22_1, deduped_23_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1, deduped_38_1, deduped_39_1;
     deduped_39_1 := Source( cat_1 );
-    deduped_38_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_38_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_37_1 := Target( cat_1 );
     deduped_36_1 := ValuesOfPreSheaf( Target( beta_1 ) );
     deduped_35_1 := ValuesOfPreSheaf( Source( alpha_1 ) );
@@ -841,7 +841,7 @@ end
 function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, deduped_6_1, deduped_7_1, hoisted_8_1, hoisted_10_1, hoisted_11_1, hoisted_14_1, hoisted_15_1, deduped_16_1, deduped_17_1, hoisted_18_1, hoisted_19_1, hoisted_20_1, hoisted_22_1, hoisted_23_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1, deduped_38_1, deduped_39_1, deduped_40_1, deduped_41_1, deduped_42_1;
     deduped_42_1 := Source( cat_1 );
-    deduped_41_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_41_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_40_1 := Target( cat_1 );
     deduped_39_1 := ValuesOfPreSheaf( Target( beta_1 ) );
     deduped_38_1 := ValuesOfPreSheaf( Source( alpha_1 ) );
@@ -965,7 +965,7 @@ function ( cat_1, arg2_1, arg3_1 )
     local deduped_1_1, deduped_2_1, hoisted_3_1, hoisted_4_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_10_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1, deduped_19_1, deduped_20_1, deduped_21_1, deduped_22_1, deduped_23_1, deduped_24_1, deduped_25_1;
     deduped_25_1 := ValuesOfPreSheaf( arg3_1 );
     deduped_24_1 := ValuesOfPreSheaf( arg2_1 );
-    deduped_23_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_23_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_22_1 := Source( cat_1 );
     deduped_21_1 := deduped_25_1[2];
     deduped_20_1 := deduped_24_1[2];
@@ -1032,7 +1032,7 @@ function ( cat_1, a_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := ValuesOfPreSheaf( a_1 )[1];
     hoisted_4_1 := Target( cat_1 );
-    hoisted_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
@@ -1137,7 +1137,7 @@ function ( cat_1, objects_1, k_1, P_1 )
     deduped_7_1 := objects_1[k_1];
     hoisted_6_1 := Target( cat_1 );
     hoisted_5_1 := [ k_1 + 1 .. Length( objects_1 ) ];
-    deduped_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_3_1 := [ 1 .. k_1 - 1 ];
     hoisted_2_1 := ValuesOfPreSheaf( P_1 )[1];
     hoisted_1_1 := ValuesOfPreSheaf( CAP_JIT_INCOMPLETE_LOGIC( deduped_7_1 ) )[1];
@@ -1162,7 +1162,7 @@ function ( cat_1, objects_1, k_1, P_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, hoisted_4_1, hoisted_5_1;
     hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := [ k_1 + 1 .. Length( objects_1 ) ];
-    deduped_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_2_1 := [ 1 .. k_1 - 1 ];
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, objects_1[k_1], P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -1187,7 +1187,7 @@ end
 function ( cat_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_10_1, deduped_13_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1, deduped_19_1, deduped_20_1, deduped_21_1, deduped_22_1, deduped_23_1, deduped_24_1;
     deduped_24_1 := Source( cat_1 );
-    deduped_23_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_23_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_22_1 := Target( cat_1 );
     deduped_21_1 := ValuesOfPreSheaf( Target( alpha_1 ) );
     deduped_20_1 := ValuesOfPreSheaf( Source( alpha_1 ) );
@@ -1255,7 +1255,7 @@ end
 function ( cat_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_10_1, hoisted_11_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1, deduped_19_1, deduped_20_1, deduped_21_1, deduped_22_1, deduped_23_1, deduped_24_1, deduped_25_1, deduped_26_1;
     deduped_26_1 := Source( cat_1 );
-    deduped_25_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_25_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_24_1 := Target( cat_1 );
     deduped_23_1 := ValuesOfPreSheaf( Target( alpha_1 ) );
     deduped_22_1 := ValuesOfPreSheaf( Source( alpha_1 ) );
@@ -1325,7 +1325,7 @@ end
 ########
 function ( cat_1, source_1, range_1, alpha_1 )
     local hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_12_1, deduped_13_1, hoisted_17_1, hoisted_18_1, hoisted_19_1, deduped_20_1, deduped_21_1, deduped_22_1, deduped_23_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1;
-    deduped_33_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_33_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_32_1 := ValuesOfPreSheaf( range_1 );
     deduped_31_1 := ValuesOfPreSheaf( source_1 );
     deduped_30_1 := Source( cat_1 );
@@ -1409,7 +1409,7 @@ function ( cat_1, alpha_1 )
     deduped_7_1 := ValuesOfPreSheaf( deduped_8_1 )[1];
     hoisted_6_1 := Target( cat_1 );
     hoisted_5_1 := List( deduped_9_1, UnderlyingMatrix );
-    hoisted_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_3_1 := List( deduped_7_1, RankOfObject );
     hoisted_2_1 := List( deduped_9_1, Source );
     return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_8_1, Source( alpha_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -1687,7 +1687,7 @@ function ( cat_1, s_1, a_1, L_1, r_1 )
     deduped_8_1 := ValuesOfPreSheaf( s_1 )[1];
     deduped_7_1 := Target( cat_1 );
     hoisted_6_1 := [ 1 .. deduped_9_1 ];
-    deduped_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_3_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
     hoisted_2_1 := List( deduped_8_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -1717,7 +1717,7 @@ function ( cat_1, s_1, a_1, L_1, r_1 )
     deduped_9_1 := Length( L_1 );
     deduped_8_1 := ValuesOfPreSheaf( s_1 )[1];
     hoisted_7_1 := [ 1 .. deduped_9_1 ];
-    deduped_5_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_5_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_4_1 := List( deduped_8_1, RankOfObject );
     deduped_3_1 := Target( cat_1 );
     hoisted_2_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
@@ -1751,7 +1751,7 @@ function ( cat_1, s_1, a_1, L_1, r_1 )
     deduped_8_1 := ValuesOfPreSheaf( r_1 )[1];
     deduped_6_1 := Target( cat_1 );
     hoisted_5_1 := [ 1 .. deduped_9_1 ];
-    deduped_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_2_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
     hoisted_1_1 := List( deduped_8_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -1781,7 +1781,7 @@ function ( cat_1, s_1, a_1, L_1, r_1 )
     deduped_9_1 := Length( L_1 );
     deduped_8_1 := ValuesOfPreSheaf( r_1 )[1];
     hoisted_7_1 := [ 1 .. deduped_9_1 ];
-    deduped_5_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_5_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_4_1 := List( deduped_8_1, RankOfObject );
     deduped_2_1 := Target( cat_1 );
     hoisted_1_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
@@ -1813,7 +1813,7 @@ function ( cat_1, a_1, r_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := ValuesOfPreSheaf( a_1 )[1];
     hoisted_4_1 := Target( cat_1 );
-    hoisted_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
@@ -1833,7 +1833,7 @@ function ( cat_1, a_1, s_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := ValuesOfPreSheaf( a_1 )[1];
     hoisted_4_1 := Target( cat_1 );
-    hoisted_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, a_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
@@ -1874,7 +1874,7 @@ function ( cat_1, S_1, source_diagram_1, mat_1, range_diagram_1, T_1 )
     local hoisted_1_1, hoisted_3_1, deduped_4_1, hoisted_5_1, deduped_6_1;
     deduped_6_1 := ValuesOfPreSheaf( T_1 )[1];
     hoisted_5_1 := Target( cat_1 );
-    deduped_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_1_1 := ValuesOfPreSheaf( S_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -1916,7 +1916,7 @@ end
     , 100 );
     
     ##
-    AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
+    AddMultiplyWithElementOfCommutativeSemiringForMorphisms( cat,
         
 ########
 function ( cat_1, r_1, alpha_1 )
@@ -1986,7 +1986,7 @@ function ( cat_1, objects_1, k_1, P_1 )
     deduped_7_1 := objects_1[k_1];
     hoisted_6_1 := Target( cat_1 );
     hoisted_5_1 := [ k_1 + 1 .. Length( objects_1 ) ];
-    deduped_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_3_1 := [ 1 .. k_1 - 1 ];
     hoisted_2_1 := ValuesOfPreSheaf( CAP_JIT_INCOMPLETE_LOGIC( deduped_7_1 ) )[1];
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
@@ -2011,7 +2011,7 @@ function ( cat_1, objects_1, k_1, P_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, hoisted_4_1, hoisted_5_1;
     hoisted_5_1 := Target( cat_1 );
     hoisted_4_1 := [ k_1 + 1 .. Length( objects_1 ) ];
-    deduped_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_2_1 := [ 1 .. k_1 - 1 ];
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, objects_1[k_1], ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -2040,7 +2040,7 @@ function ( cat_1, s_1, L_1, a_1, r_1 )
     deduped_7_1 := Target( cat_1 );
     hoisted_6_1 := [ 1 .. deduped_9_1 ];
     hoisted_5_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
-    deduped_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_2_1 := List( deduped_8_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, hoisted_2_2, deduped_3_2;
@@ -2069,7 +2069,7 @@ function ( cat_1, s_1, L_1, a_1, r_1 )
     deduped_9_1 := Length( L_1 );
     deduped_8_1 := ValuesOfPreSheaf( s_1 )[1];
     hoisted_7_1 := [ 1 .. deduped_9_1 ];
-    deduped_5_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_5_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_4_1 := List( deduped_8_1, RankOfObject );
     deduped_3_1 := Target( cat_1 );
     hoisted_2_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
@@ -2104,7 +2104,7 @@ function ( cat_1, s_1, L_1, a_1, r_1 )
     deduped_6_1 := Target( cat_1 );
     hoisted_5_1 := [ 1 .. deduped_9_1 ];
     hoisted_4_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
-    deduped_2_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_2_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_1_1 := List( deduped_8_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, hoisted_2_2, deduped_3_2;
@@ -2133,7 +2133,7 @@ function ( cat_1, s_1, L_1, a_1, r_1 )
     deduped_9_1 := Length( L_1 );
     deduped_8_1 := ValuesOfPreSheaf( r_1 )[1];
     hoisted_7_1 := [ 1 .. deduped_9_1 ];
-    deduped_5_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_5_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_4_1 := List( deduped_8_1, RankOfObject );
     deduped_2_1 := Target( cat_1 );
     hoisted_1_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
@@ -2165,7 +2165,7 @@ function ( cat_1, a_1, r_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := ValuesOfPreSheaf( a_1 )[1];
     hoisted_4_1 := Target( cat_1 );
-    hoisted_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
@@ -2185,7 +2185,7 @@ function ( cat_1, a_1, s_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := ValuesOfPreSheaf( a_1 )[1];
     hoisted_4_1 := Target( cat_1 );
-    hoisted_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, a_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
@@ -2292,7 +2292,7 @@ function ( cat_1 )
     deduped_5_1 := Source( cat_1 );
     deduped_4_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, RankOfObject, 1 );
     deduped_3_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
-    hoisted_2_1 := CreateCapCategoryMorphismWithAttributes( deduped_6_1, deduped_4_1, deduped_4_1, UnderlyingMatrix, HomalgIdentityMatrix( 1, CommutativeRingOfLinearCategory( cat_1 ) ) );
+    hoisted_2_1 := CreateCapCategoryMorphismWithAttributes( deduped_6_1, deduped_4_1, deduped_4_1, UnderlyingMatrix, HomalgIdentityMatrix( 1, CommutativeSemiringOfLinearCategory( cat_1 ) ) );
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Target, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_3_1[1] ], function ( o_2 )
                 return deduped_4_1;
             end ), LazyHList( [ 1 .. deduped_3_1[2] ], function ( m_2 )
@@ -2311,7 +2311,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local hoisted_1_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1;
     deduped_6_1 := ValuesOfPreSheaf( T_1 )[1];
     hoisted_5_1 := Target( cat_1 );
-    hoisted_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -2332,7 +2332,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local hoisted_1_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1;
     deduped_6_1 := ValuesOfPreSheaf( T_1 )[1];
     hoisted_5_1 := Target( cat_1 );
-    hoisted_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -2353,7 +2353,7 @@ function ( cat_1, T_1, P_1 )
     local hoisted_1_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1;
     deduped_6_1 := ValuesOfPreSheaf( T_1 )[1];
     hoisted_5_1 := Target( cat_1 );
-    hoisted_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -2372,7 +2372,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1;
     deduped_6_1 := ValuesOfPreSheaf( T_1 )[1];
     hoisted_5_1 := Target( cat_1 );
-    hoisted_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_2_1 := ValuesOfPreSheaf( P_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -2393,7 +2393,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1;
     deduped_6_1 := ValuesOfPreSheaf( T_1 )[1];
     hoisted_5_1 := Target( cat_1 );
-    hoisted_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_2_1 := ValuesOfPreSheaf( P_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -2414,7 +2414,7 @@ function ( cat_1, T_1, P_1 )
     local hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1;
     deduped_6_1 := ValuesOfPreSheaf( T_1 )[1];
     hoisted_5_1 := Target( cat_1 );
-    hoisted_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_2_1 := ValuesOfPreSheaf( P_1 )[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -2434,7 +2434,7 @@ function ( cat_1, a_1, b_1 )
     deduped_8_1 := ValuesOfPreSheaf( b_1 )[1];
     deduped_7_1 := ValuesOfPreSheaf( a_1 )[1];
     hoisted_6_1 := Target( cat_1 );
-    hoisted_5_1 := CommutativeRingOfLinearCategory( cat_1 );
+    hoisted_5_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     hoisted_4_1 := List( deduped_8_1, RankOfObject );
     hoisted_3_1 := List( deduped_7_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, b_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
@@ -2455,7 +2455,7 @@ function ( cat_1 )
     deduped_5_1 := Source( cat_1 );
     deduped_4_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, RankOfObject, 0 );
     deduped_3_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
-    hoisted_2_1 := CreateCapCategoryMorphismWithAttributes( deduped_6_1, deduped_4_1, deduped_4_1, UnderlyingMatrix, HomalgZeroMatrix( 0, 0, CommutativeRingOfLinearCategory( cat_1 ) ) );
+    hoisted_2_1 := CreateCapCategoryMorphismWithAttributes( deduped_6_1, deduped_4_1, deduped_4_1, UnderlyingMatrix, HomalgZeroMatrix( 0, 0, CommutativeSemiringOfLinearCategory( cat_1 ) ) );
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Target, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_3_1[1] ], function ( o_2 )
                 return deduped_4_1;
             end ), LazyHList( [ 1 .. deduped_3_1[2] ], function ( m_2 )
@@ -2484,7 +2484,7 @@ BindGlobal( "PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled", function ( A
         
         
         function ( A )
-    return PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true,
+    return PreSheaves( A, CategoryOfRows( CommutativeSemiringOfLinearCategory( A ) : FinalizeCategory := true,
           no_precompiled_code := false ) );
 end;
         

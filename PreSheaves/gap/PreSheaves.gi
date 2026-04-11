@@ -110,7 +110,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY,
           #"MorphismFromFiberProductToSinkWithGivenFiberProduct", # use their derivation
           "MorphismFromSourceToPushout",
           "MorphismFromSourceToPushoutWithGivenPushout",
-          "MultiplyWithElementOfCommutativeRingForMorphisms",
+          "MultiplyWithElementOfCommutativeSemiringForMorphisms",
           "PostCompose",
           "PreCompose",
           "ProjectionInFactorOfDirectProduct",
@@ -705,7 +705,7 @@ InstallMethodWithCache( PreSheaves,
     
     list_of_operations_to_install := Intersection( list_of_operations_to_install, list_of_operations );
     
-    skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
+    skip := [ "MultiplyWithElementOfCommutativeSemiringForMorphisms",
              ];
     
     if not IsFunction( create_func_bool ) then
@@ -769,15 +769,15 @@ InstallMethodWithCache( PreSheaves,
            create_func_morphism := create_func_morphism,
            );
     
-    if HasCommutativeRingOfLinearCategory( D ) then
+    if HasCommutativeSemiringOfLinearCategory( D ) then
         
-        category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( D );
+        category_constructor_options.commutative_semiring_of_linear_category := CommutativeSemiringOfLinearCategory( D );
         
         if HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms ( D ) and
            IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( D ) then
             
-            if HasIsFieldForHomalg( CommutativeRingOfLinearCategory( D ) ) and
-               IsFieldForHomalg( CommutativeRingOfLinearCategory( D ) ) then
+            if HasIsFieldForHomalg( CommutativeSemiringOfLinearCategory( D ) ) and
+               IsFieldForHomalg( CommutativeSemiringOfLinearCategory( D ) ) then
                 
                 Add( properties, "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms" );
                 
@@ -809,16 +809,16 @@ InstallMethodWithCache( PreSheaves,
         "OppositeOfSource",
         ];
     
-    if HasCommutativeRingOfLinearCategory( D ) then
+    if HasCommutativeSemiringOfLinearCategory( D ) then
         
-        SetCommutativeRingOfLinearCategory( PSh, CommutativeRingOfLinearCategory( D ) );
+        SetCommutativeSemiringOfLinearCategory( PSh, CommutativeSemiringOfLinearCategory( D ) );
         
     fi;
     
-    if CanCompute( D, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
+    if CanCompute( D, "MultiplyWithElementOfCommutativeSemiringForMorphisms" ) then
         
         ##
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( PSh,
+        AddMultiplyWithElementOfCommutativeSemiringForMorphisms( PSh,
           function ( PSh, r, eta )
             local D, source_eta, range_eta, eta_func, natural_transformation_on_objects;
             
@@ -831,7 +831,7 @@ InstallMethodWithCache( PreSheaves,
             natural_transformation_on_objects :=
               function ( source, objB, range )
                 
-                return MultiplyWithElementOfCommutativeRingForMorphisms( D, r,
+                return MultiplyWithElementOfCommutativeSemiringForMorphisms( D, r,
                                eta_func(
                                        source_eta( objB ),
                                        objB,
@@ -841,7 +841,7 @@ InstallMethodWithCache( PreSheaves,
             
             return MorphismConstructor( PSh, Source( eta ), natural_transformation_on_objects, Target( eta ) );
             
-        end, 2 * OperationWeight( D, "MultiplyWithElementOfCommutativeRingForMorphisms" ) );
+        end, 2 * OperationWeight( D, "MultiplyWithElementOfCommutativeSemiringForMorphisms" ) );
         
     fi;
     

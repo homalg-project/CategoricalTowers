@@ -290,7 +290,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                                       return;
                                   end ) );
                         end ) );
-              end ) ), RankOfObject( source_1 ), deduped_27_1, CommutativeRingOfLinearCategory( cat_1 ) ) );
+              end ) ), RankOfObject( source_1 ), deduped_27_1, CommutativeSemiringOfLinearCategory( cat_1 ) ) );
 end
 ########
         
@@ -446,7 +446,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                                       return;
                                   end ) );
                         end ) );
-              end ) ), RankOfObject( source_1 ), deduped_29_1, CommutativeRingOfLinearCategory( cat_1 ) ) );
+              end ) ), RankOfObject( source_1 ), deduped_29_1, CommutativeSemiringOfLinearCategory( cat_1 ) ) );
 end
 ########
         
@@ -515,7 +515,7 @@ function ( cat_1, a_1 )
     deduped_12_1 := UnderlyingCategory( cat_1 );
     deduped_11_1 := ObjectList( a_1 );
     deduped_10_1 := [ 1 .. Length( deduped_11_1 ) ];
-    hoisted_7_1 := ZeroImmutable( CommutativeRingOfLinearCategory( cat_1 ) );
+    hoisted_7_1 := ZeroImmutable( CommutativeSemiringOfLinearCategory( cat_1 ) );
     hoisted_6_1 := HomomorphismStructureOnObjectsRanks( deduped_12_1 );
     hoisted_4_1 := CapJitTypedExpression( [  ], function (  )
             return rec(
@@ -565,7 +565,7 @@ function ( cat_1, source_1, alpha_1, range_1 )
                   return UnionOfColumnsListList( deduped_4_1, List( hoisted_2_1, function ( s_3 )
                             return [ hoisted_1_2[s_3] ];
                         end ) );
-              end ) ), deduped_4_1, RankOfObject( range_1 ), CommutativeRingOfLinearCategory( cat_1 ) ) );
+              end ) ), deduped_4_1, RankOfObject( range_1 ), CommutativeSemiringOfLinearCategory( cat_1 ) ) );
 end
 ########
         
@@ -953,7 +953,7 @@ function ( cat_1, arg2_1 )
     hoisted_5_1 := List( deduped_7_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, CoefficientsList );
         end );
-    hoisted_4_1 := ZeroImmutable( CommutativeRingOfLinearCategory( cat_1 ) );
+    hoisted_4_1 := ZeroImmutable( CommutativeSemiringOfLinearCategory( cat_1 ) );
     hoisted_3_1 := List( deduped_7_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, function ( logic_new_func_x_3 )
                     return ObjectIndex( Range( logic_new_func_x_3 ) );
@@ -1002,7 +1002,7 @@ end
     , 100 );
     
     ##
-    AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
+    AddMultiplyWithElementOfCommutativeSemiringForMorphisms( cat,
         
 ########
 function ( cat_1, r_1, alpha_1 )
@@ -1067,7 +1067,7 @@ end
 ########
 function ( cat_1, alpha_1, beta_1 )
     local hoisted_5_1, deduped_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, deduped_19_1, hoisted_20_1, hoisted_21_1, hoisted_22_1, hoisted_23_1, hoisted_24_1, hoisted_25_1, hoisted_26_1, hoisted_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1;
-    deduped_37_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_37_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_36_1 := MorphismMatrix( beta_1 );
     deduped_35_1 := UnderlyingCategory( cat_1 );
     deduped_34_1 := MorphismMatrix( alpha_1 );
@@ -1230,7 +1230,7 @@ end
 ########
 function ( cat_1, alpha_1, beta_1 )
     local hoisted_5_1, deduped_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, deduped_18_1, hoisted_19_1, hoisted_20_1, hoisted_21_1, hoisted_22_1, hoisted_23_1, hoisted_24_1, hoisted_25_1, hoisted_26_1, hoisted_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1;
-    deduped_37_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_37_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_36_1 := MorphismMatrix( beta_1 );
     deduped_35_1 := UnderlyingCategory( cat_1 );
     deduped_34_1 := MorphismMatrix( alpha_1 );
@@ -1408,7 +1408,7 @@ function ( cat_1, source_1, list_of_morphisms_1, range_1 )
     deduped_9_1 := ObjectList( range_1 );
     deduped_8_1 := ObjectList( source_1 );
     hoisted_7_1 := [ 1 .. Length( deduped_9_1 ) ];
-    hoisted_5_1 := ZeroImmutable( CommutativeRingOfLinearCategory( cat_1 ) );
+    hoisted_5_1 := ZeroImmutable( CommutativeSemiringOfLinearCategory( cat_1 ) );
     hoisted_4_1 := List( deduped_9_1, ObjectIndex );
     hoisted_3_1 := HomomorphismStructureOnObjectsRanks( deduped_10_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, MorphismMatrix, List( [ 1 .. Length( deduped_8_1 ) ], function ( i_2 )
@@ -1438,7 +1438,7 @@ function ( cat_1, source_1, list_of_morphisms_1, range_1 )
     deduped_10_1 := ObjectList( range_1 );
     deduped_9_1 := ObjectList( source_1 );
     hoisted_8_1 := [ 1 .. Length( deduped_10_1 ) ];
-    hoisted_6_1 := ZeroImmutable( CommutativeRingOfLinearCategory( cat_1 ) );
+    hoisted_6_1 := ZeroImmutable( CommutativeSemiringOfLinearCategory( cat_1 ) );
     hoisted_5_1 := List( deduped_10_1, ObjectIndex );
     hoisted_4_1 := HomomorphismStructureOnObjectsRanks( deduped_11_1 );
     hoisted_3_1 := List( deduped_9_1, ObjectIndex );
@@ -1493,7 +1493,7 @@ function ( cat_1, a_1, b_1 )
     deduped_9_1 := ObjectList( b_1 );
     deduped_8_1 := ObjectList( a_1 );
     hoisted_7_1 := [ 1 .. Length( deduped_9_1 ) ];
-    hoisted_5_1 := ZeroImmutable( CommutativeRingOfLinearCategory( cat_1 ) );
+    hoisted_5_1 := ZeroImmutable( CommutativeSemiringOfLinearCategory( cat_1 ) );
     hoisted_4_1 := List( deduped_9_1, ObjectIndex );
     hoisted_3_1 := HomomorphismStructureOnObjectsRanks( deduped_10_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, b_1, MorphismMatrix, List( [ 1 .. Length( deduped_8_1 ) ], function ( i_2 )
@@ -1519,7 +1519,7 @@ function ( cat_1, a_1, b_1 )
     deduped_10_1 := ObjectList( b_1 );
     deduped_9_1 := ObjectList( a_1 );
     hoisted_8_1 := [ 1 .. Length( deduped_10_1 ) ];
-    hoisted_6_1 := ZeroImmutable( CommutativeRingOfLinearCategory( cat_1 ) );
+    hoisted_6_1 := ZeroImmutable( CommutativeSemiringOfLinearCategory( cat_1 ) );
     hoisted_5_1 := List( deduped_10_1, ObjectIndex );
     hoisted_4_1 := HomomorphismStructureOnObjectsRanks( deduped_11_1 );
     hoisted_3_1 := List( deduped_9_1, ObjectIndex );

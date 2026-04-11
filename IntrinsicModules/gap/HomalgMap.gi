@@ -141,7 +141,7 @@ InstallMethod( MulMorphism,
         "for a ring element and a homalg/CAP module map",
         [ IsRingElement, IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
-  MultiplyWithElementOfCommutativeRingForMorphisms );
+  MultiplyWithElementOfCommutativeSemiringForMorphisms );
 
 ##
 InstallMethod( CoproductMorphism,

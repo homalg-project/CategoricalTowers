@@ -1232,8 +1232,8 @@ InstallMethod( IntrinsicCategory,
            create_func_list_of_objects := "default"
            );
     
-    if HasCommutativeRingOfLinearCategory( C ) then
-        category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( C );
+    if HasCommutativeSemiringOfLinearCategory( C ) then
+        category_constructor_options.commutative_semiring_of_linear_category := CommutativeSemiringOfLinearCategory( C );
     fi;
     
     IC := CategoryConstructor( category_constructor_options );

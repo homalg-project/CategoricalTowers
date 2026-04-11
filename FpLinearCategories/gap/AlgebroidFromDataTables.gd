@@ -142,7 +142,7 @@ CapJitAddTypeSignature( "HomomorphismStructureOnMorphismsMatrices", [ IsAlgebroi
   function ( input_types )
     local ring;
     
-    ring := CommutativeRingOfLinearCategory( input_types[1].category );
+    ring := CommutativeSemiringOfLinearCategory( input_types[1].category );
     
     return CapJitDataTypeOfListOf(
               CapJitDataTypeOfListOf(

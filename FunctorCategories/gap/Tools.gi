@@ -6,10 +6,10 @@
 
 ##
 InstallOtherMethod( QUO,
-        [ IsMatrix, IsCapCategory and HasCommutativeRingOfLinearCategory ],
+        [ IsMatrix, IsCapCategory and HasCommutativeSemiringOfLinearCategory ],
         
   function ( mat, A )
     
-    return HomalgMatrix( mat, CommutativeRingOfLinearCategory( A ) ) / A;
+    return HomalgMatrix( mat, CommutativeSemiringOfLinearCategory( A ) ) / A;
     
 end );

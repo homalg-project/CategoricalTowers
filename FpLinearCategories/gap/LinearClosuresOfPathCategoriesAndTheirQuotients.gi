@@ -13,7 +13,7 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
   function ( CAP_NAMED_ARGUMENTS, rows, C )
     local k, sorting_func, order, kC;
     
-    k := CommutativeRingOfLinearCategory( rows );
+    k := CommutativeSemiringOfLinearCategory( rows );
     
     if CAP_NAMED_ARGUMENTS.colors = fail then
         

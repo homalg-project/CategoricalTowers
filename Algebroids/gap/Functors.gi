@@ -10,9 +10,9 @@ InstallMethod( IsomorphismFromQuiverRowsIntoAdditiveClosureOfAlgebroid,
   function( QRowsA, additive_closure )
     local ring_QRowsA, ring_additive_closure, is_rationals, is_integers, algebroid, name, F;
       
-    ring_QRowsA := CommutativeRingOfLinearCategory( QRowsA );
+    ring_QRowsA := CommutativeSemiringOfLinearCategory( QRowsA );
     
-    ring_additive_closure := CommutativeRingOfLinearCategory( additive_closure );
+    ring_additive_closure := CommutativeSemiringOfLinearCategory( additive_closure );
     
     is_rationals := k -> IsRationals( k ) or ( HasIsRationalsForHomalg( k ) and IsRationalsForHomalg( k ) );
     
@@ -87,9 +87,9 @@ InstallMethod( IsomorphismFromAdditiveClosureOfAlgebroidIntoQuiverRows,
   function( additive_closure, QRowsA )
     local ring_QRowsA, ring_additive_closure, is_rationals, is_integers, algebroid, name, F;
     
-    ring_QRowsA := CommutativeRingOfLinearCategory( QRowsA );
+    ring_QRowsA := CommutativeSemiringOfLinearCategory( QRowsA );
     
-    ring_additive_closure := CommutativeRingOfLinearCategory( additive_closure );
+    ring_additive_closure := CommutativeSemiringOfLinearCategory( additive_closure );
     
     is_rationals := k -> IsRationals( k ) or ( HasIsRationalsForHomalg( k ) and IsRationalsForHomalg( k ) );
     
@@ -155,7 +155,7 @@ InstallMethod( IsomorphismFromQuiverRows,
     
     A := UnderlyingQuiverAlgebra( algebroid );
     
-    ring := CommutativeRingOfLinearCategory( additive_closure );
+    ring := CommutativeSemiringOfLinearCategory( additive_closure );
     
     if IsIntegers( ring ) or ( HasIsIntegersForHomalg( ring ) and IsIntegersForHomalg( ring ) ) then
       
@@ -189,7 +189,7 @@ InstallMethod( IsomorphismOntoQuiverRows,
     
     A := UnderlyingQuiverAlgebra( algebroid );
     
-    ring := CommutativeRingOfLinearCategory( additive_closure );
+    ring := CommutativeSemiringOfLinearCategory( additive_closure );
     
     if IsIntegers( ring ) or ( HasIsIntegersForHomalg( ring ) and IsIntegersForHomalg( ring ) ) then
       
@@ -215,7 +215,7 @@ InstallMethod( IsomorphismFromAdditiveClosureOfAlgebroid,
     
     A := UnderlyingQuiverAlgebra( QRowsA );
     
-    ring := CommutativeRingOfLinearCategory( QRowsA );
+    ring := CommutativeSemiringOfLinearCategory( QRowsA );
     
     if IsIntegers( ring ) or ( HasIsIntegersForHomalg( ring ) and IsIntegersForHomalg( ring ) ) then
       
@@ -241,7 +241,7 @@ InstallMethod( IsomorphismOntoAdditiveClosureOfAlgebroid,
     
     A := UnderlyingQuiverAlgebra( QRowsA );
     
-    ring := CommutativeRingOfLinearCategory( QRowsA );
+    ring := CommutativeSemiringOfLinearCategory( QRowsA );
     
     if IsIntegers( ring ) or ( HasIsIntegersForHomalg( ring ) and IsIntegersForHomalg( ring ) ) then
       
@@ -269,8 +269,8 @@ InstallMethod( ProjectionFromAlgebroidOfPathAlgebra,
     
     kQ := PathAlgebra( A );
     
-    SetRingFilter( kQ, IsQuiverAlgebra );
-    SetRingElementFilter( kQ, IsQuiverAlgebraElement );
+    SetSemiringFilter( kQ, IsQuiverAlgebra );
+    SetSemiringElementFilter( kQ, IsQuiverAlgebraElement );
     
     if IsIdenticalObj( A, kQ ) then
       

@@ -90,7 +90,7 @@ BindGlobal( "INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_CATEGORY_OF_ROWS",
     end );
     
     ##
-    AddMultiplyWithElementOfCommutativeRingForMorphisms( P,
+    AddMultiplyWithElementOfCommutativeSemiringForMorphisms( P,
       function( category, r, alpha )
         
         return CategoryOfRowsMorphism( Source( alpha ), r * UnderlyingMatrix( alpha ), Target( alpha ) );
@@ -119,7 +119,7 @@ InstallMethod( CategoryOfFpLeftModules,
         B := BaseRing( R );
     fi;
     
-    SetCommutativeRingOfLinearCategory( P, B );
+    SetCommutativeSemiringOfLinearCategory( P, B );
     
     SetIsLinearCategoryOverCommutativeRing( P, true );
     
@@ -163,7 +163,7 @@ BindGlobal( "INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS",
     end );
     
     ##
-    AddMultiplyWithElementOfCommutativeRingForMorphisms( P,
+    AddMultiplyWithElementOfCommutativeSemiringForMorphisms( P,
       function( category, r, alpha )
         
         return CategoryOfColumnsMorphism( Source( alpha ), r * UnderlyingMatrix( alpha ), Target( alpha ) );
@@ -192,7 +192,7 @@ InstallMethod( CategoryOfFpRightModules,
         B := BaseRing( R );
     fi;
     
-    SetCommutativeRingOfLinearCategory( P, B );
+    SetCommutativeSemiringOfLinearCategory( P, B );
     
     SetIsLinearCategoryOverCommutativeRing( P, true );
     

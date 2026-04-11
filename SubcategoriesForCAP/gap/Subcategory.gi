@@ -140,7 +140,7 @@ InstallMethod( Subcategory,
     
     list_of_operations_to_install := Intersection( list_of_operations_to_install, ListPrimitivelyInstalledOperationsOfCategory( C ) );
     
-    skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
+    skip := [ "MultiplyWithElementOfCommutativeSemiringForMorphisms",
               ];
     
     for func in skip do
@@ -154,9 +154,9 @@ InstallMethod( Subcategory,
     
     category_constructor_options.list_of_operations_to_install := list_of_operations_to_install;
     
-    ## commutative_ring_of_linear_category
-    if HasCommutativeRingOfLinearCategory( C ) then
-        category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( C );
+    ## commutative_semiring_of_linear_category
+    if HasCommutativeSemiringOfLinearCategory( C ) then
+        category_constructor_options.commutative_semiring_of_linear_category := CommutativeSemiringOfLinearCategory( C );
     fi;
     
     ## filters and properties

@@ -50,7 +50,7 @@ kF := k[F];
 B := kF / [ kF.e^3 ];
 #! Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" ) ) ) / [ 1*e^3 ]
 data_tables := DataTablesOfLinearCategory( B );;
-IsIdenticalObj( data_tables[1], CommutativeRingOfLinearCategory( B ) );
+IsIdenticalObj( data_tables[1], CommutativeSemiringOfLinearCategory( B ) );
 #! true
 data_tables[2];
 #! FinQuiver( "q(0,1,2,3)[a:0→1,b:1→3,c:0→2,d:2→3,e:3→3]" )

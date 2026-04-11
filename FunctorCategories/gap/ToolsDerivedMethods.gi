@@ -20,7 +20,7 @@ end :
                     IsIdenticalObj( cat, RangeCategoryOfHomomorphismStructure( cat ) ) and
                     IsMatrixCategory( cat ) or
                     ( IsCategoryOfRows( cat ) and
-                      HasCommutativeRingOfLinearCategory( cat ) and
+                      HasCommutativeSemiringOfLinearCategory( cat ) and
                       ## a commutative ring has the invariant basis property iff it is not the zero ring:
-                      HasHasInvariantBasisProperty( CommutativeRingOfLinearCategory( cat ) ) and
-                      HasInvariantBasisProperty( CommutativeRingOfLinearCategory( cat ) ) ) );
+                      HasHasInvariantBasisProperty( CommutativeSemiringOfLinearCategory( cat ) ) and
+                      HasInvariantBasisProperty( CommutativeSemiringOfLinearCategory( cat ) ) ) );

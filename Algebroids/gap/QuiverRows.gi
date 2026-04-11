@@ -116,7 +116,7 @@ InstallMethod( QuiverRows,
     
     SetIsLinearCategoryOverCommutativeRing( category, true );
     
-    SetCommutativeRingOfLinearCategory( category, ring );
+    SetCommutativeSemiringOfLinearCategory( category, ring );
     
     SetUnderlyingQuiverAlgebra( category, underlying_quiver_algebra );
     
@@ -470,7 +470,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     algebra := UnderlyingQuiverAlgebra( category );
     
-    ring := CommutativeRingOfLinearCategory( category );
+    ring := CommutativeSemiringOfLinearCategory( category );
     
     quiver := UnderlyingQuiver( category );
     
@@ -837,7 +837,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     end );
     
     #
-    AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+    AddMultiplyWithElementOfCommutativeSemiringForMorphisms( category,
       function( cat, r, morphism )
         
         return QuiverRowsMorphism( Source( morphism ), r * MorphismMatrix( morphism ), Target( morphism ) );
