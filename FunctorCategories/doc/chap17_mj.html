@@ -207,7 +207,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kF := k[FreeCategory( quiver )];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( kF / [ kF.ab ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := A -&gt; PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := A -&gt; PreSheaves( A, CategoryOfRows( CommutativeSemiringOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesOfAlgebroidFromDataTablesInCategoryOfRows :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( A, compiled_category_name )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>
@@ -271,7 +271,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := QQ[FreeCategory( quiver )];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_bar := A / [ A.ab ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := A -&gt; PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := A -&gt; PreSheaves( A, CategoryOfRows( CommutativeSemiringOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesOfAlgebroidInCategoryOfRows :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( A, compiled_category_name )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>

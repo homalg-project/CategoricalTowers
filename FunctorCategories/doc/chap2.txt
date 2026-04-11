@@ -24,9 +24,9 @@
   
   [33X[0;0YFor  the  convenience  of  the  user  the  following input is also valid: If
   [3Ximages_of_objects[103X  is a list of nonnegative integers, [3Ximages_of_morphisms[103X is
-  a  list of matrices, and [23Xk:=[123X [10XCommutativeRingOfLinearCategory[110X( B ) is a field
-  then  the  two  lists  are  interpreted as objects and morphisms in a matrix
-  category or a category of rows over [23Xk[123X, respectively.[133X
+  a  list  of  matrices, and [23Xk:=[123X [10XCommutativeSemiringOfLinearCategory[110X( B ) is a
+  field  then  the  two  lists  are  interpreted as objects and morphisms in a
+  matrix category or a category of rows over [23Xk[123X, respectively.[133X
   
   [1X2.1-3 CreatePreSheafMorphismByValues[101X
   

@@ -94,7 +94,7 @@
     [4X[28XPreSheaves([128X[104X
     [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) ) / relations,[128X[104X
     [4X[28XRows( Q ) )[128X[104X
-    [4X[25Xgap>[125X [27XCommutativeRingOfLinearCategory( PSh );[127X[104X
+    [4X[25Xgap>[125X [27XCommutativeSemiringOfLinearCategory( PSh );[127X[104X
     [4X[28XQ[128X[104X
     [4X[25Xgap>[125X [27XDisplay( PSh.1 );[127X[104X
     [4X[28XImage of <(1)>:[128X[104X

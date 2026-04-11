@@ -158,7 +158,7 @@
     [4X[25Xgap>[125X [27Xquiver := RightQuiver( "q(3)[a:1->2,b:2->3]" );;[127X[104X
     [4X[25Xgap>[125X [27XkF := k[FreeCategory( quiver )];;[127X[104X
     [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( kF / [ kF.ab ] );;[127X[104X
-    [4X[25Xgap>[125X [27Xcategory_constructor := A -> PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := A -> PreSheaves( A, CategoryOfRows( CommutativeSemiringOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;[127X[104X
     [4X[25Xgap>[125X [27Xprecompile_PreSheavesOfAlgebroidFromDataTablesInCategoryOfRows :=[127X[104X
     [4X[25X>[125X [27X  function( A, compiled_category_name )[127X[104X
     [4X[25X>[125X [27X    CapJitPrecompileCategoryAndCompareResult([127X[104X
@@ -221,7 +221,7 @@
     [4X[25Xgap>[125X [27Xquiver := RightQuiver( "q(3)[a:1->2,b:2->3]" );;[127X[104X
     [4X[25Xgap>[125X [27XA := QQ[FreeCategory( quiver )];;[127X[104X
     [4X[25Xgap>[125X [27XA_bar := A / [ A.ab ];;[127X[104X
-    [4X[25Xgap>[125X [27Xcategory_constructor := A -> PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := A -> PreSheaves( A, CategoryOfRows( CommutativeSemiringOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;[127X[104X
     [4X[25Xgap>[125X [27Xprecompile_PreSheavesOfAlgebroidInCategoryOfRows :=[127X[104X
     [4X[25X>[125X [27X  function( A, compiled_category_name )[127X[104X
     [4X[25X>[125X [27X    CapJitPrecompileCategoryAndCompareResult([127X[104X
