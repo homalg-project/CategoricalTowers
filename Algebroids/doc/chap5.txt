@@ -443,42 +443,42 @@
   
   [1X5.5-1 IsCellInAlgebroid[101X
   
-  [33X[1;0Y[29X[2XIsCellInAlgebroid[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInAlgebroid[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in an algebroid.[133X
   
   [1X5.5-2 IsObjectInAlgebroid[101X
   
-  [33X[1;0Y[29X[2XIsObjectInAlgebroid[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInAlgebroid[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in an algebroid.[133X
   
   [1X5.5-3 IsMorphismInAlgebroid[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInAlgebroid[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInAlgebroid[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in an algebroid.[133X
   
   [1X5.5-4 IsAlgebroid[101X
   
-  [33X[1;0Y[29X[2XIsAlgebroid[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsAlgebroid[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of algebroids.[133X
   
   [1X5.5-5 IsAlgebraAsCategory[101X
   
-  [33X[1;0Y[29X[2XIsAlgebraAsCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsAlgebraAsCategory[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of algebras.[133X
   
   [1X5.5-6 IsAlgebroidMorphism[101X
   
-  [33X[1;0Y[29X[2XIsAlgebroidMorphism[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsAlgebroidMorphism[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms of algebroids.[133X

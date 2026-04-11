@@ -12,8 +12,8 @@
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
     [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
     [4X[25Xgap>[125X [27XA := PathAlgebra( QQ, snake_quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XSetRingFilter( A, IsQuiverAlgebra );[127X[104X
-    [4X[25Xgap>[125X [27XSetRingElementFilter( A, IsQuiverAlgebraElement );[127X[104X
+    [4X[25Xgap>[125X [27XSetSemiringFilter( A, IsQuiverAlgebra );[127X[104X
+    [4X[25Xgap>[125X [27XSetSemiringElementFilter( A, IsQuiverAlgebraElement );[127X[104X
     [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X# only valid for the construction above[127X[104X
