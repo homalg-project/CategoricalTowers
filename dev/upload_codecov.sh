@@ -28,89 +28,46 @@ else
   echo -e "\033[0;32mUsing CODECOV_TOKEN from environment variable.\033[0m"
 fi
 
+# build extra args for commit/branch/PR override (used by workflow_run context)
+EXTRA_ARGS=""
+if [ -n "$CODECOV_COMMIT_SHA" ]; then
+  EXTRA_ARGS="$EXTRA_ARGS -C $CODECOV_COMMIT_SHA"
+fi
+if [ -n "$CODECOV_BRANCH" ]; then
+  EXTRA_ARGS="$EXTRA_ARGS -B $CODECOV_BRANCH"
+fi
+if [ -n "$CODECOV_PR" ]; then
+  EXTRA_ARGS="$EXTRA_ARGS -P $CODECOV_PR"
+fi
+
 # execute
 chmod +x codecov
-while ! ./codecov -Z -v -s ../ -F Algebroids -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
+
+for pkg in \
+  Algebroids \
+  CategoriesWithAmbientObjects \
+  CatReps \
+  ExteriorPowersCategories \
+  FiniteCocompletions \
+  FpCategories \
+  FpLinearCategories \
+  FunctorCategories \
+  GradedCategories \
+  InternalModules \
+  IntrinsicCategories \
+  IntrinsicGradedModules \
+  IntrinsicModules \
+  LazyCategories \
+  Locales \
+  PreSheaves \
+  QuotientCategories \
+  SubcategoriesForCAP \
+  ToolsForCategoricalTowers \
+  Toposes \
+  ZariskiFrames \
+; do
+  while ! ./codecov -Z -v -s ../ -F "$pkg" -t $CODECOV_TOKEN $EXTRA_ARGS; do
+    echo "Codecov upload for $pkg failed, retrying in 60s"
     sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F CatReps -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F ExteriorPowersCategories -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F FiniteCocompletions -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F FpCategories -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F FpLinearCategories -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F FunctorCategories -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F GradedCategories -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F InternalModules -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F IntrinsicCategories -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F IntrinsicGradedModules -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F IntrinsicModules -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F LazyCategories -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F Locales -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F PreSheaves -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F QuotientCategories -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F SubcategoriesForCAP -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F ToolsForCategoricalTowers -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F Toposes -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
-while ! ./codecov -Z -v -s ../ -F ZariskiFrames -t $CODECOV_TOKEN; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
+  done
 done

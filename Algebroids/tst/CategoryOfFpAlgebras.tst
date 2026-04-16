@@ -1,5 +1,6 @@
 gap> START_TEST("CategoryOfFpAlgebras.tst");
 
+# CI_SINGLE_JOB_ID:CategoryOfFpAlgebras
 # doc/_Chunks.xml:1511-1708
 gap> LoadPackage( "Algebroids", false );
 true

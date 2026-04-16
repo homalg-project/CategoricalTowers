@@ -4,6 +4,8 @@
 
 #! @Example
 
+#! # CI_SINGLE_JOB_ID:FinQuiversPrecompiled
+
 #! #@if ValueOption( "no_precompiled_code" ) <> true
 
 LoadPackage( "FunctorCategories", false );

@@ -31,9 +31,25 @@ test-with-coverage: doc
 	gap --quitonbreak --cover stats tst/testall.g
 	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");'
 
+test-with-coverage-base: doc
+	gap --quitonbreak --cover stats_base tst/testall_base.g
+	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats_base", "coverage_base.json");'
+
+test-with-coverage-single: doc
+	TST_ID="$(TST_ID)" gap --quitonbreak --cover stats_single_$(TST_ID) tst/testall_single.g
+	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats_single_$(TST_ID)", "coverage_single_$(TST_ID).json");'
+
 test-with-coverage-without-precompiled-code: doc
 	gap --quitonbreak --cover stats_no_precompiled_code tst/testall_no_precompiled_code.g
 	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats_no_precompiled_code", "coverage_no_precompiled_code.json");'
+
+test-with-coverage-without-precompiled-code-base: doc
+	gap --quitonbreak --cover stats_no_precompiled_code_base tst/testall_no_precompiled_code_base.g
+	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats_no_precompiled_code_base", "coverage_no_precompiled_code_base.json");'
+
+test-with-coverage-single-without-precompiled-code: doc
+	TST_ID="$(TST_ID)" gap --quitonbreak --cover stats_single_no_precompiled_code_$(TST_ID) tst/testall_single_no_precompiled_code.g
+	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats_single_no_precompiled_code_$(TST_ID)", "coverage_single_no_precompiled_code_$(TST_ID).json");'
 
 test-spacing:
 	# exit code 1 means no match, which is what we want here (exit code 2 signals an error)
@@ -59,3 +75,7 @@ test-spacing:
 	rm spacing_diff_no_blanks
 
 ci-test: test-basic-spacing test-with-coverage test-with-coverage-without-precompiled-code
+
+ci-test-base: test-basic-spacing test-with-coverage-base test-with-coverage-without-precompiled-code-base
+
+ci-test-single: test-with-coverage-single test-with-coverage-single-without-precompiled-code
