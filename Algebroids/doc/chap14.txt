@@ -168,6 +168,7 @@
   [1XQuiverRows )[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X# CI_SINGLE_JOB_ID:AdelmanCategoryVsQuiverRows[128X[104X
     [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -578,6 +579,7 @@
   [1X14.10 [33X[0;0YSnake lemma first proof[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X# CI_SINGLE_JOB_ID:SnakeLemmaProof[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP", false );[127X[104X
@@ -649,6 +651,7 @@
   [1X14.11 [33X[0;0YSnake lemma second proof[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X# CI_SINGLE_JOB_ID:SnakeLemmaProof2[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP", false );[127X[104X
