@@ -5,7 +5,7 @@
 #! However, in this example it does.
 
 #! @Example
-LoadPackage( "SubcategoriesForCAP", false );
+LoadPackage( "SliceCategories", false );
 #! true
 Q := HomalgFieldOfRationalsInSingular( );
 #! Q

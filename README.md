@@ -29,6 +29,7 @@
 | [Locales](Locales#readme) | Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets | [![HTML stable documentation][html-Locales-img]][html-Locales-url] [![PDF stable documentation][pdf-Locales-img]][pdf-Locales-url] |
 | [PreSheaves](PreSheaves#readme) | Categories of (co)presheaves | [![HTML stable documentation][html-PreSheaves-img]][html-PreSheaves-url] [![PDF stable documentation][pdf-PreSheaves-img]][pdf-PreSheaves-url] |
 | [QuotientCategories](QuotientCategories#readme) | Quotient categories | [![HTML stable documentation][html-QuotientCategories-img]][html-QuotientCategories-url] [![PDF stable documentation][pdf-QuotientCategories-img]][pdf-QuotientCategories-url] |
+| [SliceCategories](SliceCategories#readme) | Slice categories | [![HTML stable documentation][html-SliceCategories-img]][html-SliceCategories-url] [![PDF stable documentation][pdf-SliceCategories-img]][pdf-SliceCategories-url] |
 | [SubcategoriesForCAP](SubcategoriesForCAP#readme) | Subcategory and other related constructors for CAP categories | [![HTML stable documentation][html-SubcategoriesForCAP-img]][html-SubcategoriesForCAP-url] [![PDF stable documentation][pdf-SubcategoriesForCAP-img]][pdf-SubcategoriesForCAP-url] |
 | [ToolsForCategoricalTowers](ToolsForCategoricalTowers#readme) | Tools for CategoricalTowers | [![HTML stable documentation][html-ToolsForCategoricalTowers-img]][html-ToolsForCategoricalTowers-url] [![PDF stable documentation][pdf-ToolsForCategoricalTowers-img]][pdf-ToolsForCategoricalTowers-url] |
 | [Toposes](Toposes#readme) | Elementary toposes | [![HTML stable documentation][html-Toposes-img]][html-Toposes-url] [![PDF stable documentation][pdf-Toposes-img]][pdf-Toposes-url] |
@@ -151,6 +152,13 @@
 
 [pdf-QuotientCategories-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-QuotientCategories-url]: https://homalg-project.github.io/CategoricalTowers/QuotientCategories/download_pdf.html
+
+
+[html-SliceCategories-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-SliceCategories-url]: https://homalg-project.github.io/CategoricalTowers/SliceCategories/doc/chap0_mj.html
+
+[pdf-SliceCategories-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-SliceCategories-url]: https://homalg-project.github.io/CategoricalTowers/SliceCategories/download_pdf.html
 
 
 [html-SubcategoriesForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg

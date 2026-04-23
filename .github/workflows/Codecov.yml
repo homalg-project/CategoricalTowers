@@ -11,6 +11,10 @@ jobs:
     if: >-
       github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.event != 'schedule'
+    permissions:
+      actions: read
+      contents: read
+      pull-requests: read
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
@@ -31,10 +35,22 @@ jobs:
               cp -v "$pkg_dir"*.json "$pkg/" 2>/dev/null || true
             fi
           done
+      - name: Resolve PR number on PR events
+        id: resolve_pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER=""
+          if [ "${{ github.event.workflow_run.event }}" = "pull_request" ]; then
+            HEAD="${{ github.event.workflow_run.head_repository.owner.login }}:${{ github.event.workflow_run.head_branch }}"
+            PR_NUMBER=$(gh api "repos/${{ github.repository }}/pulls?state=all&head=${HEAD}" --jq ".[0].number // empty")
+          fi
+          echo "pr_number=${PR_NUMBER}" >> "$GITHUB_OUTPUT"
+          echo "Resolved PR: ${PR_NUMBER:-(none)}"
       - name: Upload to Codecov
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
           CODECOV_COMMIT_SHA: ${{ github.event.workflow_run.head_sha }}
           CODECOV_BRANCH: ${{ github.event.workflow_run.head_branch }}
-          CODECOV_PR: ${{ github.event.workflow_run.pull_requests[0].number }}
+          CODECOV_PR: ${{ steps.resolve_pr.outputs.pr_number }}
         run: ./dev/upload_codecov.sh
