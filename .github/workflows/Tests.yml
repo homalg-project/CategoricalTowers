@@ -103,7 +103,7 @@ jobs:
           - { package: Algebroids, targets: [CategoryOfFpAlgebras, CategoryOfFpMatrixAlgebras] }
           - { package: Algebroids, targets: [base] }
           - { packages: [FpCategories, FpLinearCategories, FiniteCocompletions, IntrinsicCategories, IntrinsicModules, IntrinsicGradedModules, GradedCategories, ExteriorPowersCategories, InternalModules] }
-          - { packages: [ToolsForCategoricalTowers, PreSheaves, QuotientCategories, LazyCategories, Toposes, Locales, SubcategoriesForCAP, ZariskiFrames, CategoriesWithAmbientObjects, CatReps] }
+          - { packages: [ToolsForCategoricalTowers, PreSheaves, QuotientCategories, LazyCategories, Toposes, Locales, SliceCategories, SubcategoriesForCAP, ZariskiFrames, CategoriesWithAmbientObjects, CatReps] }
       fail-fast: false
     name: ${{ matrix.config.targets && format('{0}_{1}', matrix.config.package, join(matrix.config.targets, '_')) || matrix.config.package || join(matrix.config.packages, '_') }} (${{ matrix.image == 'ghcr.io/homalg-project/gap-docker:latest' && 'stable' || 'master' }})
     runs-on: ubuntu-latest

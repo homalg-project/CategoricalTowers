@@ -121,6 +121,13 @@ git subtree split --prefix=QuotientCategories -b QuotientCategories-split
 git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/QuotientCategories QuotientCategories-split:master
 echo ""
 
+# SliceCategories
+echo "Release SliceCategories"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/SliceCategories" --webdir "$PWD/gh-pages/SliceCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
+git subtree split --prefix=SliceCategories -b SliceCategories-split
+git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/SliceCategories SliceCategories-split:master
+echo ""
+
 # SubcategoriesForCAP
 echo "Release SubcategoriesForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/SubcategoriesForCAP" --webdir "$PWD/gh-pages/SubcategoriesForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"

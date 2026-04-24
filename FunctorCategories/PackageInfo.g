@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2026.04-02",
+Version := "2026.04-03",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
@@ -104,6 +104,7 @@ Dependencies := rec(
                    [ "FiniteCocompletions", ">= 2026.04-01" ],
                    [ "Algebroids", ">= 2026.04-01" ],
                    [ "SubcategoriesForCAP", ">= 2026.04-01" ],
+                   [ "SliceCategories", ">= 2026.04-01" ],
                    [ "ToolsForHigherHomologicalAlgebra", ">= 2023.03-01" ],
                    ],
   SuggestedOtherPackages := [ ],

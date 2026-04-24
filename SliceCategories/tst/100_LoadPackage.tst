@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# SubcategoriesForCAP: Subcategory and other related constructors for CAP categories
+# SliceCategories: Slice categories
 #
 # This file tests if the package can be loaded without errors or warnings.
 #
@@ -11,14 +11,22 @@ gap> LoadPackage( "IO_ForHomalg", false );
 true
 gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
-gap> LoadPackage( "SubcategoriesForCAP", false );
+gap> LoadPackage( "FinSetsForCAP", false );
+true
+gap> LoadPackage( "Locales", false );
+true
+gap> LoadPackage( "SliceCategories", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
 gap> LoadPackage( "IO_ForHomalg" );
 true
 gap> LoadPackage( "FreydCategoriesForCAP" );
 true
-gap> LoadPackage( "SubcategoriesForCAP" );
+gap> LoadPackage( "FinSetsForCAP" );
+true
+gap> LoadPackage( "Locales" );
+true
+gap> LoadPackage( "SliceCategories" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;
 gap> HOMALG_IO.show_banners := false;;

@@ -1,7 +1,7 @@
 #! @Chunk SliceCategoryOverTensorUnit
 
 #! @Example
-LoadPackage( "SubcategoriesForCAP", false );
+LoadPackage( "SliceCategories", false );
 #! true
 Q := HomalgFieldOfRationalsInSingular( );
 #! Q

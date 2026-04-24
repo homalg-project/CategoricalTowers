@@ -61,6 +61,7 @@ for pkg in \
   Locales \
   PreSheaves \
   QuotientCategories \
+  SliceCategories \
   SubcategoriesForCAP \
   ToolsForCategoricalTowers \
   Toposes \

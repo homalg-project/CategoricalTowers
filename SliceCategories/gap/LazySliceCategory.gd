@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# SubcategoriesForCAP: Subcategory and other related constructors for CAP categories
+# SliceCategories: Slice categories
 #
 # Declarations
 #
