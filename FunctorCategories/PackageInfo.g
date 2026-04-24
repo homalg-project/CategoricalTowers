@@ -10,10 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2026.04-02",
+Version := "2026.04-03",
 
-Date := "2026-04-20",
-Date := "2026-04-20",
+Date := "2026-04-24",
+Date := "2026-04-24",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -104,6 +104,7 @@ Dependencies := rec(
                    [ "FiniteCocompletions", ">= 2026.04-01" ],
                    [ "Algebroids", ">= 2026.04-01" ],
                    [ "SubcategoriesForCAP", ">= 2026.04-01" ],
+                   [ "SliceCategories", ">= 2026.04-01" ],
                    [ "ToolsForHigherHomologicalAlgebra", ">= 2023.03-01" ],
                    ],
   SuggestedOtherPackages := [ ],
