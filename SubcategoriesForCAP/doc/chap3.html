@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (SubcategoriesForCAP) - Chapter 3: Slice categories</title>
+<title>GAP (SubcategoriesForCAP) - Chapter 3: Examples</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -15,256 +15,50 @@
 <body class="chap3"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chapInd.html">Ind</a>  </div>
 
-<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4.html">[Next Chapter]</a>&nbsp;  </div>
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap3_mj.html">[MathJax on]</a></p>
-<p><a id="X7E9F453683E1B0B9" name="X7E9F453683E1B0B9"></a></p>
-<div class="ChapSects"><a href="chap3.html#X7E9F453683E1B0B9">3 <span class="Heading">Slice categories</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7D03633A7D98026B">3.1 <span class="Heading">GAP categories</span></a>
+<p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
+<div class="ChapSects"><a href="chap3.html#X7A489A5D79DA9E5C">3 <span class="Heading">Examples</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7D7774677F38B24A">3.1 <span class="Heading">Full subcategory of free abelian groups</span></a>
 </span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8624A403802FDB49">3.1-1 IsSliceCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82F450737D961304">3.1-2 IsCellInASliceCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D8D86A380731C43">3.1-3 IsObjectInASliceCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83F929018537DD4C">3.1-4 IsMorphismInASliceCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D59E37586B2EEB0">3.1-5 IsSliceCategoryOverTensorUnit</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C9125D87D86C3AA">3.1-6 IsCellInSliceCategoryOverTensorUnit</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7CD2B3B57CF3F92F">3.1-7 IsObjectInSliceCategoryOverTensorUnit</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7AFA615480FC9802">3.1-8 IsMorphismInSliceCategoryOverTensorUnit</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7D9044767BEB1523">3.2 <span class="Heading">Global variables</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F25DA2D825CA38A">3.2-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7C701DBF7BAE649A">3.3 <span class="Heading">Attributes</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BA55CC478BCD4A8">3.3-1 AmbientCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X78CF10AC82D9054B">3.3-2 BaseObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8291BFCA78521355">3.3-3 BaseObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B620AE8872CE95B">3.3-4 UnderlyingMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81C812107D467D72">3.3-5 SourceOfUnderlyingMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7CCE5F9D8572D424">3.3-6 UnderlyingCell</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84D83FBC86105D0A">3.3-7 InclusionFunctor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C8918638236B93E">3.3-8 DualOverTensorUnit</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X86EC0F0A78ECBC10">3.4 <span class="Heading">Constructors</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X80B9651E7DA61673">3.4-1 AsSliceCategoryCell</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84693C3D83FD387A">3.4-2 /</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D919F0F84E35BCA">3.4-3 AsSliceCategoryCell</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7DE8E16C7C2D387B">3.5 <span class="Heading">Operations</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8308FE117DC6F301">3.5-1 MorphismFromCovariantArgumentOfInternalHom</a></span>
-</div></div>
+</div>
 </div>
 
-<h3>3 <span class="Heading">Slice categories</span></h3>
+<h3>3 <span class="Heading">Examples</span></h3>
 
-<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+<p><a id="X7D7774677F38B24A" name="X7D7774677F38B24A"></a></p>
 
-<h4>3.1 <span class="Heading">GAP categories</span></h4>
+<h4>3.1 <span class="Heading">Full subcategory of free abelian groups</span></h4>
 
-<p><a id="X8624A403802FDB49" name="X8624A403802FDB49"></a></p>
 
-<h5>3.1-1 IsSliceCategory</h5>
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz := HomalgRingOfIntegers( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows( zz );</span>
+Rows( Z )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := FreydCategory( rows );</span>
+Freyd( Rows( Z ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Proj_A := FullSubcategoryOfProjectiveObjects( A );</span>
+FullSubcategoryOfProjectiveObjects( Freyd( Rows( Z ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M1 := HomalgMatrix( [ [ 1, 0 ], [ 0, 0 ] ], 2, 2, zz ) / rows / A / Proj_A;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M2 := HomalgMatrix( [ [ 2, 0 ], [ 0, 0 ] ], 2, 2, zz ) / rows / A / Proj_A;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefinedForObjects( M1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefinedForObjects( M2 );</span>
+false
+</pre></div>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of a slice category.</p>
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
 
-<p><a id="X82F450737D961304" name="X82F450737D961304"></a></p>
 
-<h5>3.1-2 IsCellInASliceCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInASliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of cells in a slice category.</p>
-
-<p><a id="X7D8D86A380731C43" name="X7D8D86A380731C43"></a></p>
-
-<h5>3.1-3 IsObjectInASliceCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInASliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of objects in a slice category.</p>
-
-<p><a id="X83F929018537DD4C" name="X83F929018537DD4C"></a></p>
-
-<h5>3.1-4 IsMorphismInASliceCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInASliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of morphisms in a slice category.</p>
-
-<p><a id="X7D59E37586B2EEB0" name="X7D59E37586B2EEB0"></a></p>
-
-<h5>3.1-5 IsSliceCategoryOverTensorUnit</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of a slice category over the tensor unit.</p>
-
-<p><a id="X7C9125D87D86C3AA" name="X7C9125D87D86C3AA"></a></p>
-
-<h5>3.1-6 IsCellInSliceCategoryOverTensorUnit</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInSliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of cells in a slice category over the tensor unit.</p>
-
-<p><a id="X7CD2B3B57CF3F92F" name="X7CD2B3B57CF3F92F"></a></p>
-
-<h5>3.1-7 IsObjectInSliceCategoryOverTensorUnit</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInSliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of objects in a slice category over the tensor unit.</p>
-
-<p><a id="X7AFA615480FC9802" name="X7AFA615480FC9802"></a></p>
-
-<h5>3.1-8 IsMorphismInSliceCategoryOverTensorUnit</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInSliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of morphisms in a slice category over the tensor unit.</p>
-
-<p><a id="X7D9044767BEB1523" name="X7D9044767BEB1523"></a></p>
-
-<h4>3.2 <span class="Heading">Global variables</span></h4>
-
-<p><a id="X7F25DA2D825CA38A" name="X7F25DA2D825CA38A"></a></p>
-
-<h5>3.2-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
-<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
-
-<h4>3.3 <span class="Heading">Attributes</span></h4>
-
-<p><a id="X7BA55CC478BCD4A8" name="X7BA55CC478BCD4A8"></a></p>
-
-<h5>3.3-1 AmbientCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AmbientCategory</code>( <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
-
-<p>The ambient category of the slice category <var class="Arg">S</var>.</p>
-
-<p><a id="X78CF10AC82D9054B" name="X78CF10AC82D9054B"></a></p>
-
-<h5>3.3-2 BaseObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BaseObject</code>( <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP object</p>
-
-<p>The base object of the slice category <var class="Arg">S</var>.</p>
-
-<p><a id="X8291BFCA78521355" name="X8291BFCA78521355"></a></p>
-
-<h5>3.3-3 BaseObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BaseObject</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP object</p>
-
-<p>The base object underlying <var class="Arg">cell</var>.</p>
-
-<p><a id="X7B620AE8872CE95B" name="X7B620AE8872CE95B"></a></p>
-
-<h5>3.3-4 UnderlyingMorphism</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingMorphism</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP morphism</p>
-
-<p>The morphism in the ambient category underlying the slice category object <var class="Arg">obj</var>.</p>
-
-<p><a id="X81C812107D467D72" name="X81C812107D467D72"></a></p>
-
-<h5>3.3-5 SourceOfUnderlyingMorphism</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SourceOfUnderlyingMorphism</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP object</p>
-
-<p>The source of the morphism in the ambient category underlying the slice category object <var class="Arg">obj</var>.</p>
-
-<p><a id="X7CCE5F9D8572D424" name="X7CCE5F9D8572D424"></a></p>
-
-<h5>3.3-6 UnderlyingCell</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCell</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP mor</p>
-
-<p>The cell in the ambient category underlying the slice category morphism <var class="Arg">mor</var>.</p>
-
-<p><a id="X84D83FBC86105D0A" name="X84D83FBC86105D0A"></a></p>
-
-<h5>3.3-7 InclusionFunctor</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InclusionFunctor</code>( <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a functor</p>
-
-<p>The natural embedding functor from <var class="Arg">S</var> to <code class="code">AmbientCategory</code>(<var class="Arg">S</var>).</p>
-
-<p><a id="X7C8918638236B93E" name="X7C8918638236B93E"></a></p>
-
-<h5>3.3-8 DualOverTensorUnit</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualOverTensorUnit</code>( <var class="Arg">J</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP morphism</p>
-
-<p>The argument is an object <span class="Math">J \colon j \rightarrow 1</span> in the slice category <var class="Arg">S</var> over the tensor unit. The output is the dual morphism <span class="Math">J^\vee \colon 1 \rightarrow \mathrm{\underline{Hom}}(j,1)</span> in the ambient category of <var class="Arg">S</var>.</p>
-
-<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
-
-<h4>3.4 <span class="Heading">Constructors</span></h4>
-
-<p><a id="X80B9651E7DA61673" name="X80B9651E7DA61673"></a></p>
-
-<h5>3.4-1 AsSliceCategoryCell</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsSliceCategoryCell</code>( <var class="Arg">mor</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X84693C3D83FD387A" name="X84693C3D83FD387A"></a></p>
-
-<h5>3.4-2 /</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; /</code>( <var class="Arg">mor</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X7D919F0F84E35BCA" name="X7D919F0F84E35BCA"></a></p>
-
-<h5>3.4-3 AsSliceCategoryCell</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsSliceCategoryCell</code>( <var class="Arg">A</var>, <var class="Arg">mor</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
-
-<h4>3.5 <span class="Heading">Operations</span></h4>
-
-<p><a id="X8308FE117DC6F301" name="X8308FE117DC6F301"></a></p>
-
-<h5>3.5-1 MorphismFromCovariantArgumentOfInternalHom</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromCovariantArgumentOfInternalHom</code>( <var class="Arg">J</var>, <var class="Arg">I</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism</p>
-
-<p>The natural morphism <span class="Math">I \to \mathrm{\underline{Hom}}(J,I)</span>, where <var class="Arg">I</var> and <var class="Arg">J</var> are objects in a slice category over the tensor unit.</p>
-
-
-<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4.html">[Next Chapter]</a>&nbsp;  </div>
-
-
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
