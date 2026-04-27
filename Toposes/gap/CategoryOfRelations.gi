@@ -500,6 +500,6 @@ InstallMethod( DisplayString,
         
   function( a )
     
-    return Concatenation( DisplayString( ObjectDatum( a ) ), "\nAn object in the category of relations given by the above data" );
+    return Concatenation( DisplayString( ObjectDatum( a ) ), "\nAn object in the category of relations given by the above data\n" );
     
 end );
