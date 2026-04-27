@@ -244,7 +244,7 @@
   
   [1X13.4-1 IsCategoryOfAffineAlgebras[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfAffineAlgebras[102X( [3Xcategory[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryOfAffineAlgebras[102X( [3Xcategory[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of categories of finitely presented associative commutative
@@ -252,7 +252,7 @@
   
   [1X13.4-2 IsObjectInCategoryOfAffineAlgebras[101X
   
-  [33X[1;0Y[29X[2XIsObjectInCategoryOfAffineAlgebras[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInCategoryOfAffineAlgebras[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  [5XGAP[105X  category  of  finitely  presented  associative  commutative unital
@@ -260,7 +260,7 @@
   
   [1X13.4-3 IsMorphismInCategoryOfAffineAlgebras[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInCategoryOfAffineAlgebras[102X( [3Xmorphism[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInCategoryOfAffineAlgebras[102X( [3Xmorphism[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  [5XGAP[105X category of morphisms of finitely presented associative commutative

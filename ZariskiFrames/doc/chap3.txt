@@ -6,21 +6,21 @@
   
   [1X3.1-1 IsZariskiCoframe[101X
   
-  [33X[1;0Y[29X[2XIsZariskiCoframe[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsZariskiCoframe[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of Zariski coframes.[133X
   
   [1X3.1-2 IsObjectInZariskiCoframe[101X
   
-  [33X[1;0Y[29X[2XIsObjectInZariskiCoframe[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInZariskiCoframe[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a Zariski coframe.[133X
   
   [1X3.1-3 IsMorphismInZariskiCoframe[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInZariskiCoframe[102X( [3Xmorphism[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInZariskiCoframe[102X( [3Xmorphism[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in a Zariski coframe.[133X
