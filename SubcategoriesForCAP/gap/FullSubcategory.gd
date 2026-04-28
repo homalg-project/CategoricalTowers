@@ -35,12 +35,12 @@ DeclareCategory( "IsCellInAFullSubcategory",
 #! @Description
 #!  The &GAP; category of objects in a full subcategory.
 DeclareCategory( "IsObjectInAFullSubcategory",
-        IsCellInAFullSubcategory and IsObjectInASubcategory );
+        FilterIntersection( IsObjectInASubcategory, IsCellInAFullSubcategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a full subcategory.
 DeclareCategory( "IsMorphismInAFullSubcategory",
-        IsCellInAFullSubcategory and IsMorphismInASubcategory );
+        FilterIntersection( IsMorphismInASubcategory, IsCellInAFullSubcategory ) );
 
 ####################################
 #
@@ -70,8 +70,10 @@ DeclareOperation( "FullSubcategory",
 #! @Returns CapFullSubcategory
 DeclareGlobalFunction( "FullSubcategoryGeneratedByListOfObjects" );
 
+#= comment for Julia
 DeclareOperation( "\[\]",
           [ IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects, IsInt ] );
+# =#
 
 #! @Description
 #!  The input is a category <A>C</A> in which the operation <C>IndecomposableProjectiveObjects</C> is computable.
