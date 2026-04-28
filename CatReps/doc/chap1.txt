@@ -1205,19 +1205,26 @@
     [4X[28X[ An object in subcategory given by: <An object in FinSets>,[128X[104X
     [4X[28X  An object in subcategory given by: <An object in FinSets> ][128X[104X
     [4X[25Xgap>[125X [27XPerform( objects, Display );[127X[104X
-    [4X[28XAn object in subcategory given by: [ 1, 2, 3 ][128X[104X
-    [4X[28XAn object in subcategory given by: [ 4, 5, 6 ][128X[104X
+    [4X[28X[ 1, 2, 3 ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in subcategory given by the above data[128X[104X
+    [4X[28X[ 4, 5, 6 ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in subcategory given by the above data[128X[104X
     [4X[25Xgap>[125X [27Xgmorphisms := SetOfGeneratingMorphisms( c3c3 );[127X[104X
     [4X[28X[ A morphism in subcategory given by: <A morphism in FinSets>,[128X[104X
     [4X[28X  A morphism in subcategory given by: <A morphism in FinSets>,[128X[104X
     [4X[28X  A morphism in subcategory given by: <A morphism in FinSets> ][128X[104X
     [4X[25Xgap>[125X [27XPerform( gmorphisms, Display );[127X[104X
-    [4X[28XA morphism in subcategory given by:[128X[104X
     [4X[28X[ [ 1, 2, 3 ], [ [ 1, 2 ], [ 2, 3 ], [ 3, 1 ] ], [ 1, 2, 3 ] ][128X[104X
-    [4X[28XA morphism in subcategory given by:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in subcategory given by the above data[128X[104X
     [4X[28X[ [ 1, 2, 3 ], [ [ 1, 4 ], [ 2, 5 ], [ 3, 6 ] ], [ 4, 5, 6 ] ][128X[104X
-    [4X[28XA morphism in subcategory given by:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in subcategory given by the above data[128X[104X
     [4X[28X[ [ 4, 5, 6 ], [ [ 4, 5 ], [ 5, 6 ], [ 6, 4 ] ], [ 4, 5, 6 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in subcategory given by the above data[128X[104X
   [4X[32X[104X
   
   [1X1.4-2 AsFpCategory[101X
