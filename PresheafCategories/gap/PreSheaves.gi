@@ -1006,14 +1006,6 @@ InstallMethodWithCache( PreSheaves,
         
     end, 1 );
     
-    ##
-    AddIsCongruentForMorphisms( PSh_I_I,
-      function( PSh_I_I, morphism1, morphism2 )
-        
-        return true;
-        
-    end, 1 );
-    
     if not H = "self" then
         
         ##
