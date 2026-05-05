@@ -16,28 +16,28 @@
   
   [1X2.2-1 IsPositivelyZGradedClosureCategory[101X
   
-  [33X[1;0Y[29X[2XIsPositivelyZGradedClosureCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsPositivelyZGradedClosureCategory[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of positively Z-graded categories.[133X
   
   [1X2.2-2 IsCellInPositivelyZGradedClosureCategory[101X
   
-  [33X[1;0Y[29X[2XIsCellInPositivelyZGradedClosureCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInPositivelyZGradedClosureCategory[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in a positively Z-graded category.[133X
   
   [1X2.2-3 IsObjectInPositivelyZGradedClosureCategory[101X
   
-  [33X[1;0Y[29X[2XIsObjectInPositivelyZGradedClosureCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInPositivelyZGradedClosureCategory[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a positively Z-graded category.[133X
   
   [1X2.2-4 IsMorphismInPositivelyZGradedClosureCategory[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInPositivelyZGradedClosureCategory[102X( [3Xmorphism[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInPositivelyZGradedClosureCategory[102X( [3Xmorphism[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in a positively Z-graded category.[133X

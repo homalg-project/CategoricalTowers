@@ -136,28 +136,28 @@
   
   [1X1.3-1 IsZGradedClosureCategoryWithBounds[101X
   
-  [33X[1;0Y[29X[2XIsZGradedClosureCategoryWithBounds[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsZGradedClosureCategoryWithBounds[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of Z-graded categories with bounds.[133X
   
   [1X1.3-2 IsCellInZGradedClosureCategoryWithBounds[101X
   
-  [33X[1;0Y[29X[2XIsCellInZGradedClosureCategoryWithBounds[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInZGradedClosureCategoryWithBounds[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in a Z-graded category with bounds.[133X
   
   [1X1.3-3 IsObjectInZGradedClosureCategoryWithBounds[101X
   
-  [33X[1;0Y[29X[2XIsObjectInZGradedClosureCategoryWithBounds[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInZGradedClosureCategoryWithBounds[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a Z-graded category with bounds.[133X
   
   [1X1.3-4 IsMorphismInZGradedClosureCategoryWithBounds[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInZGradedClosureCategoryWithBounds[102X( [3Xmorphism[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInZGradedClosureCategoryWithBounds[102X( [3Xmorphism[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in a Z-graded category with bounds.[133X

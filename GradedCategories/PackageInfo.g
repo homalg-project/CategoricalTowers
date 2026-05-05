@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "GradedCategories",
 Subtitle := "Graded closures of categories",
-Version := "2025.12-01",
-Date := "2025-12-23",
+Version := "2026.05-01",
+Date := "2026-05-05",
 License := "GPL-2.0-or-later",
 
 
@@ -87,7 +87,7 @@ Dependencies := rec(
                    [ "ToolsForHomalg", ">= 2023.02-01" ],
                    [ "CAP", ">= 2023.12-11" ],
                    [ "GroupRepresentationsForCAP", ">=2017.01.11" ],
-                   [ "PreSheaves", ">= 2023.08-06" ],
+                   [ "PresheafCategories", ">= 2026.05-01" ],
                    [ "Locales", ">= 2023.08-04" ],
                    ],
   SuggestedOtherPackages := [
