@@ -1,15 +1,15 @@
   
   
-                                  [1X PreSheaves [101X
+                              [1X PresheafCategories [101X
   
   
                          [1X Categories of (co)presheaves [101X
   
   
-                                   2026.04-01
+                                   2026.05-01
   
   
-                                 11 April 2026
+                                   5 May 2026
   
   
                                 Mohamed Barakat
@@ -40,7 +40,7 @@
   -------------------------------------------------------
   
   
-  [1XContents (PreSheaves)[101X
+  [1XContents (PresheafCategories)[101X
   
   1 [33X[0;0YCategory of presheaves of a (linear) category[133X
     1.1 [33X[0;0YAttributes[133X

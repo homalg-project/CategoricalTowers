@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# PreSheaves: Categories of (co)presheaves
+# PresheafCategories: Categories of (co)presheaves
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -8,11 +8,11 @@
 #
 SetPackageInfo( rec(
 
-PackageName := "PreSheaves",
+PackageName := "PresheafCategories",
 Subtitle := "Categories of (co)presheaves",
-Version := "2026.04-01",
-Date := "2026-04-11",
-Date := "2026-04-11",
+Version := "2026.05-01",
+Date := "2026-05-05",
+Date := "2026-05-05",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -54,10 +54,10 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/pkg/PreSheaves",
-PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/PreSheaves/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/CategoricalTowers/PreSheaves/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/PreSheaves-", ~.Version, "/PreSheaves-", ~.Version ),
+PackageWWWHome  := "https://homalg-project.github.io/pkg/PresheafCategories",
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/PresheafCategories/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/PresheafCategories/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/PresheafCategories-", ~.Version, "/PresheafCategories-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
@@ -75,7 +75,7 @@ Status := "dev",
 AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "PreSheaves",
+  BookName  := "PresheafCategories",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",

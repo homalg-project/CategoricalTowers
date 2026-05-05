@@ -120,7 +120,7 @@
   [1X1.5-1 [33X[0;0YThe terminal category[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "PreSheaves" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "PresheafCategories" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2024.06-03", fail );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -201,7 +201,7 @@
   [1X1.5-2 [33X[0;0YThe category of presheaves of [10XSkeletalFinSets[110X[101X[1X[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "PreSheaves" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "PreSheafCategories" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Toposes", ">= 2025.08-02", fail );[127X[104X
     [4X[28Xtrue[128X[104X
