@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "FpLinearCategories",
 Subtitle := "Finitely presented linear categories by generating quivers and relations",
-Version := "2026.04-02",
-Date := "2026-04-24",
+Version := "2026.05-01",
+Date := "2026-05-05",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -92,7 +92,7 @@ Dependencies := rec(
                            [ "FreydCategoriesForCAP", ">= 2026.04-01" ],
                          ],
   SuggestedOtherPackages := [
-#    [ "PreSheaves", ">= 2026.04-01" ],
+#    [ "PresheafCategories", ">= 2026.05-01" ],
    ],
   ExternalConditions := [ ],
 ),
