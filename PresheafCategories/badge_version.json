@@ -3,5 +3,5 @@
 {
   "schemaVersion": 1,
   "label": "to be overridden by url",
-  "message": "{{ site.data.PreSheaves.date }}"
+  "message": "{{ site.data.PresheafCategories.version }}"
 }
