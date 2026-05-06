@@ -11,7 +11,7 @@ InstallMethod( PreSheavesWithBounds,
         
   function ( C, D, type_of_boundedness )
     local PSh, name, is_computable, category_filter, category_object_filter, category_morphism_filter,
-          object_datum_type, morphism_datum_type, commutative_semiring_of_linear_category,
+          object_datum_type, morphism_datum_type, category_constructor_options,
           additional_properties, properties,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           union_of_supports, list_of_operations, list_of_operations_to_always_install_primitively, list_of_operations_to_install,
@@ -42,12 +42,6 @@ InstallMethod( PreSheavesWithBounds,
     category_filter := IsPreSheafWithBoundsCategory;
     category_object_filter := IsObjectInPreSheafWithBoundsCategory;
     category_morphism_filter := IsMorphismInPreSheafWithBoundsCategory;
-    
-    if HasCommutativeSemiringOfLinearCategory( PSh ) then
-        commutative_semiring_of_linear_category := CommutativeSemiringOfLinearCategory( PSh );
-    else
-        commutative_semiring_of_linear_category := fail;
-    fi;
     
     additional_properties := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "additional_properties", [ ] );
     
@@ -88,7 +82,7 @@ InstallMethod( PreSheavesWithBounds,
     morphism_datum := { xPSh, m } -> MorphismDatum( m );
     
     union_of_supports :=
-      function ( supports )
+      """(function ( supports )
         
         if supports = [ ] then
             return Pair( 0, -1 );
@@ -96,7 +90,7 @@ InstallMethod( PreSheavesWithBounds,
             return Pair( Minimum( List( supports, s -> s[1] ) ), Maximum( List( supports, s -> s[2] ) ) );
         fi;
         
-    end;
+    end)""";
     
     list_of_operations :=
       CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations",
@@ -123,8 +117,7 @@ InstallMethod( PreSheavesWithBounds,
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
-        return
-          Pair( ReplacedStringViaRecord(
+        return Pair( ReplacedStringViaRecord(
             """
             function( input_arguments... )
               local PSh, i_arg;
@@ -165,16 +158,21 @@ InstallMethod( PreSheavesWithBounds,
                   
                   types := info.filter_list;
                   
-                  if types = [ "category" ] then # e.g., ZeroObject, InitialObject, TerminalObject, ...
+                  # e.g., ZeroObject, InitialObject, TerminalObject, ...
+                  if types = [ "category" ] then
                       return "Pair( 0, -1 )";
-                  elif types[2] = "object" then # e.g., (Co)Equalizer, ...
+                  # e.g., (Co)Equalizer, ...
+                  elif types[2] = "object" then
                       return "ObjectDatum( cat, i_arg[2] )[2]";
-                  elif types[2] = "morphism" then # e.g., (Co)KernelObject, (Co)ImageObject, ...
-                      return Concatenation( String( union_of_supports ), "( List( [ Source( i_arg[2] ), Target( i_arg[2] ) ], c -> ObjectDatum( cat, c )[2] ) )" );
-                  elif types[2] = "list_of_objects" then # e.g., Coproduct, DirectProduct, DirectSum, ...
-                      return Concatenation( String( union_of_supports ), "( List( i_arg[2], c -> ObjectDatum( cat, c )[2] ) )" );
-                  elif types[2] = "list_of_morphisms" then # Pushout, FiberProduct, ...
-                      return Concatenation( String( union_of_supports ), "( List( Concatenation( List( i_arg[2], m -> Source( m ) ), List( i_arg[2], m -> Target( m ) ) ), c -> ObjectDatum( cat, c )[2] ) )" );
+                  # e.g., (Co)KernelObject, (Co)ImageObject, ...
+                  elif types[2] = "morphism" then
+                      return Concatenation( union_of_supports, "( List( [ Source( i_arg[2] ), Target( i_arg[2] ) ], c -> ObjectDatum( cat, c )[2] ) )" );
+                  # e.g., Coproduct, DirectProduct, DirectSum, ...
+                  elif types[2] = "list_of_objects" then
+                      return Concatenation( union_of_supports, "( List( i_arg[2], c -> ObjectDatum( cat, c )[2] ) )" );
+                  # Pushout, FiberProduct, ...
+                  elif types[2] = "list_of_morphisms" then
+                      return Concatenation( union_of_supports, "( List( Concatenation( List( i_arg[2], m -> Source( m ) ), List( i_arg[2], m -> Target( m ) ) ), c -> ObjectDatum( cat, c )[2] ) )" );
                   else
                       Error( "can only deal with \"object\", \"morphism\", \"list_of_objects\", \"list_of_morphisms\"" );
                   fi;
@@ -189,8 +187,7 @@ InstallMethod( PreSheavesWithBounds,
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
-        return
-          Pair( ReplacedStringViaRecord(
+        return Pair( ReplacedStringViaRecord(
           """
           function ( input_arguments... )
             local PSh, i_arg;
@@ -240,28 +237,31 @@ InstallMethod( PreSheavesWithBounds,
         supports_empty_limits := false;
     fi;
     
-    xPSh :=
-      CategoryConstructor(
-              rec( name := name,
-                   category_filter := category_filter,
-                   category_object_filter := category_object_filter,
-                   category_morphism_filter := category_morphism_filter,
-                   object_datum_type := object_datum_type,
-                   morphism_datum_type := morphism_datum_type,
-                   commutative_semiring_of_linear_category := commutative_semiring_of_linear_category,
-                   properties := properties,
-                   object_constructor := object_constructor,
-                   object_datum := object_datum,
-                   morphism_constructor := morphism_constructor,
-                   morphism_datum := morphism_datum,
-                   list_of_operations_to_install := list_of_operations_to_install,
-                   is_computable := is_computable,
-                   underlying_category_getter_string := "AmbientCategory",
-                   supports_empty_limits := supports_empty_limits,
-                   create_func_bool := create_func_bool,
-                   create_func_object := create_func_object,
-                   create_func_morphism := create_func_morphism )
-              : FinalizeCategory := false );
+    category_constructor_options :=
+      rec( name := name,
+        category_filter := category_filter,
+        category_object_filter := category_object_filter,
+        category_morphism_filter := category_morphism_filter,
+        object_datum_type := object_datum_type,
+        morphism_datum_type := morphism_datum_type,
+        properties := properties,
+        object_constructor := object_constructor,
+        object_datum := object_datum,
+        morphism_constructor := morphism_constructor,
+        morphism_datum := morphism_datum,
+        list_of_operations_to_install := list_of_operations_to_install,
+        is_computable := is_computable,
+        underlying_category_getter_string := "AmbientCategory",
+        supports_empty_limits := supports_empty_limits,
+        create_func_bool := create_func_bool,
+        create_func_object := create_func_object,
+        create_func_morphism := create_func_morphism );
+    
+    if HasCommutativeSemiringOfLinearCategory( PSh ) then
+        category_constructor_options.commutative_semiring_of_linear_category := CommutativeSemiringOfLinearCategory( PSh );
+    fi;
+    
+    xPSh := CategoryConstructor( category_constructor_options );
     
     SetSource( xPSh, C );
     SetTarget( xPSh, D );

@@ -289,8 +289,7 @@ InstallMethodWithCache( PreSheaves,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           is_computable, list_of_operations, list_of_operations_to_always_install_primitively, list_of_operations_to_install,
-          skip, func, supports_empty_limits, properties, category_constructor_options,
-          PSh, B_op;
+          skip, func, supports_empty_limits, properties, category_constructor_options, PSh;
     
     ##
     name := "PreSheaves( ";
@@ -349,8 +348,8 @@ InstallMethodWithCache( PreSheaves,
         
         if name in [ "TerminalObject", "InitialObject", "ZeroObject" ] then
             
-            return ## a constructor for universal objects: TerminalObject
-              Pair( ReplacedStringViaRecord(
+            ## a constructor for universal objects: TerminalObject
+            return Pair( ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, objD, presheaf_on_objects, presheaf_on_morphisms;
@@ -372,8 +371,8 @@ InstallMethodWithCache( PreSheaves,
             
         elif name in [ "FiberProduct", "Pushout" ] then
             
-            return ## a constructor for universal objects: FiberProduct
-              Pair( ReplacedStringViaRecord(
+            ## a constructor for universal objects: FiberProduct
+            return Pair( ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, i_arg, etas, presheaf_on_objects, presheaf_on_morphisms;
@@ -425,12 +424,11 @@ InstallMethodWithCache( PreSheaves,
                         Ssm := source_eta[1]( Source( morB ) );
                         Rsm := range_eta[1]( Source( morB ) );
                         
-                        return
-                          [ eta_func( Stm, Target( morB ), Rtm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Target( morB ) )
-                            source_eta[2]( Stm, morB, Ssm ),         ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                            range_eta[2]( Rtm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Target( eta ), morB )
-                            eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
-                            ];
+                        return [ eta_func( Stm, Target( morB ), Rtm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Target( morB ) )
+                                  source_eta[2]( Stm, morB, Ssm ),         ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
+                                  range_eta[2]( Rtm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Target( eta ), morB )
+                                  eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
+                              ];
                         
                     end;
                     
@@ -451,8 +449,8 @@ InstallMethodWithCache( PreSheaves,
             
         elif name in [ "Equalizer", "Coequalizer" ] then
             
-            return ## a constructor for universal objects: Equalizer
-              Pair( ReplacedStringViaRecord(
+            ## a constructor for universal objects: Equalizer
+            return Pair( ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, i_arg, object, etas, presheaf_on_objects, presheaf_on_morphisms;
@@ -507,12 +505,11 @@ InstallMethodWithCache( PreSheaves,
                         Ssm := source_eta[1]( Source( morB ) );
                         Rsm := range_eta[1]( Source( morB ) );
                         
-                        return
-                          [ eta_func( Stm, Target( morB ), Rtm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Target( morB ) )
-                            source_eta[2]( Stm, morB, Ssm ),         ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                            range_eta[2]( Rtm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Target( eta ), morB )
-                            eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
-                            ];
+                        return [ eta_func( Stm, Target( morB ), Rtm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Target( morB ) )
+                                  source_eta[2]( Stm, morB, Ssm ),         ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
+                                  range_eta[2]( Rtm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Target( eta ), morB )
+                                  eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
+                              ];
                         
                     end;
                     
@@ -533,8 +530,8 @@ InstallMethodWithCache( PreSheaves,
             
         elif name in [ "DirectProduct", "Coproduct", "DirectSum" ] then
             
-            return ## a constructor for universal objects: DirectSum
-              Pair( ReplacedStringViaRecord(
+            ## a constructor for universal objects: DirectSum
+            return Pair( ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, i_arg, Fs, presheaf_on_objects, presheaf_on_morphisms;
@@ -567,8 +564,8 @@ InstallMethodWithCache( PreSheaves,
             
         elif name in [ "KernelObject", "CokernelObject", "ImageObject", "CoimageObject" ] then
             
-            return ## a constructor for universal objects: KernelObject
-              Pair( ReplacedStringViaRecord(
+            ## a constructor for universal objects: KernelObject
+            return Pair( ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, i_arg, eta, presheaf_on_objects, presheaf_on_morphisms;
@@ -641,8 +638,7 @@ InstallMethodWithCache( PreSheaves,
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
-        return
-          Pair( ReplacedStringViaRecord(
+        return Pair( ReplacedStringViaRecord(
           """
           function ( input_arguments... )
             local D, i_arg, natural_transformation_on_objects;
@@ -773,7 +769,7 @@ InstallMethodWithCache( PreSheaves,
         
         category_constructor_options.commutative_semiring_of_linear_category := CommutativeSemiringOfLinearCategory( D );
         
-        if HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms ( D ) and
+        if HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( D ) and
            IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( D ) then
             
             if HasIsFieldForHomalg( CommutativeSemiringOfLinearCategory( D ) ) and
@@ -799,9 +795,7 @@ InstallMethodWithCache( PreSheaves,
     SetSource( PSh, B );
     SetTarget( PSh, D );
     
-    B_op := Opposite( B : FinalizeCategory := true );
-    
-    SetOppositeOfSource( PSh, B_op );
+    SetOppositeOfSource( PSh, Opposite( B ) );
     
     PSh!.compiler_hints.category_attribute_names :=
       [ "Source",
@@ -845,7 +839,9 @@ InstallMethodWithCache( PreSheaves,
         
     fi;
     
+    #= comment for Julia
     AddToToDoList( ToDoListEntry( [ [ PSh, "IsFinalized", true ] ], function ( ) IdentityFunctor( PSh )!.UnderlyingFunctor := IdentityFunctor( D ); end ) );
+    # =#
     
     Finalize( PSh );
     
@@ -853,10 +849,14 @@ InstallMethodWithCache( PreSheaves,
     
 end );
 
+# Filters can not be defined inside functions in Julia, hence we define it here and retrieve it in the function:
+#% G2J:julia-only @FilterIntersection( IsCapCategory, IsInitialCategory )
+#% G2J:julia-only @FilterIntersection( IsPreSheafCategory, IsTerminalCategory )
+
 ##
 InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
-        [ IsCapCategory and IsInitialCategory, IsCapCategory ],
+        [ FilterIntersection( IsCapCategory, IsInitialCategory ), IsCapCategory ],
         
   function ( I, D )
     local name, category_filter, category_object_filter, category_morphism_filter,
@@ -872,7 +872,7 @@ InstallMethodWithCache( PreSheaves,
         name := Concatenation( name, "..., ... )" );
     fi;
     
-    category_filter := IsPreSheafCategory and IsTerminalCategory;
+    category_filter := FilterIntersection( IsPreSheafCategory, IsTerminalCategory );
     
     category_object_filter := IsObjectInPreSheafCategory;
     
@@ -1076,7 +1076,7 @@ end );
 ##
 InstallMethod( PreSheaves,
         "for a CAP category",
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ FilterIntersection( IsCapCategory, HasRangeCategoryOfHomomorphismStructure ) ],
         
   function( B )
     
@@ -1156,12 +1156,16 @@ InstallMethod( YonedaEmbeddingOfSourceCategory,
 end );
 
 ##
-InstallOtherMethod( \.,
-        "for a presheaf and a positive integer",
-        [ IsPreSheafCategory, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and presheaf",
+        [ IsString, IsPreSheafCategory ],
   
-  { PSh, string_as_int } -> ApplyFunctor( YonedaEmbeddingOfSourceCategory( PSh ), Source( PSh ).( NameRNam( string_as_int ) ) )
+  { string, PSh } -> ApplyFunctor( YonedaEmbeddingOfSourceCategory( PSh ), string / Source( PSh ) )
 );
+
+#= comment for Julia
+INSTALL_DOT_METHOD( IsPreSheafCategory );
+# =#
 
 ##
 InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToObject,
@@ -1237,6 +1241,7 @@ InstallMethod( CallFuncList,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( CallFuncList,
         [ IsCapFunctor, IsList ],
@@ -1248,6 +1253,7 @@ InstallMethod( CallFuncList,
         [ IsCapNaturalTransformation, IsList ],
         
   { nat, a } -> ApplyNaturalTransformation( nat, a[ 1 ] ) );
+# =#
 
 ####################################
 #
