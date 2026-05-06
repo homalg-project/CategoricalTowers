@@ -73,10 +73,10 @@ CapJitAddTypeSignature( "PairOfIntAndList", [ IsObjectInFiniteStrictCoproductCom
 end );
 
 #!
-DeclareAttribute( "PairOfLists",
+DeclareAttribute( "TripleOfLists",
         IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory );
 
-CapJitAddTypeSignature( "PairOfLists", [ IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory ],
+CapJitAddTypeSignature( "TripleOfLists", [ IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory ],
   function ( input_types )
     
     Assert( 0, IsFiniteStrictCoproductCompletionOfObjectFiniteCategory( input_types[1].category ) );

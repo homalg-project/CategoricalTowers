@@ -39,13 +39,13 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
               IsBigInt,
               CapJitDataTypeOfListOf( IsBigInt ) );
     
-    ## Pair( [ Pair( [ ... ], [ ... ] ), ..., Pair( [ ... ], [ ... ] ) ], [ [ ... ], ..., [ ... ] ] )
+    ## Triple( [ [ ints ], ... , [ ints ] ], [ [ ints ], ... , [ ints ] ], [ [ mors ], ... , [ mors ] ]  )
     morphism_datum_type :=
-      CapJitDataTypeOfNTupleOf( 2,
+      CapJitDataTypeOfNTupleOf( 3,
               CapJitDataTypeOfListOf(
-                      CapJitDataTypeOfNTupleOf( 2,
-                              CapJitDataTypeOfListOf( IsBigInt ),
-                              CapJitDataTypeOfListOf( IsBigInt ) ) ),
+                      CapJitDataTypeOfListOf( IsBigInt ) ),
+              CapJitDataTypeOfListOf(
+                      CapJitDataTypeOfListOf(  IsBigInt ) ),
               CapJitDataTypeOfListOf(
                       CapJitDataTypeOfListOf(
                               CapJitDataTypeOfMorphismOfCategory( C ) ) ) );
@@ -156,20 +156,21 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
     
     ##
     AddMorphismConstructor( UCm,
-      function ( UCm, source, pair_of_lists, target )
+      function ( UCm, source, triple_of_lists, target )
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0,
-                Length( pair_of_lists[1] ) = NumberOfObjectsOfUnderlyingCategory( UCm ) and
-                Length( pair_of_lists[2] ) = NumberOfObjectsOfUnderlyingCategory( UCm ) and
-                List( pair_of_lists[1], pair -> Length( pair[1] ) ) = PairOfIntAndList( source )[2] and
-                List( pair_of_lists[1], pair -> Length( pair[2] ) ) = PairOfIntAndList( source )[2] and
-                List( pair_of_lists[2], Length ) = PairOfIntAndList( source )[2] );
+                Length( triple_of_lists[1] ) = NumberOfObjectsOfUnderlyingCategory( UCm ) and
+                Length( triple_of_lists[2] ) = NumberOfObjectsOfUnderlyingCategory( UCm ) and
+                Length( triple_of_lists[3] ) = NumberOfObjectsOfUnderlyingCategory( UCm ) and
+                List( triple_of_lists[1], Length ) = PairOfIntAndList( source )[2] and
+                List( triple_of_lists[2], Length ) = PairOfIntAndList( source )[2] and
+                List( triple_of_lists[3], Length ) = PairOfIntAndList( source )[2] );
         
         return CreateCapCategoryMorphismWithAttributes( UCm,
                        source,
                        target,
-                       PairOfLists, pair_of_lists );
+                       TripleOfLists, triple_of_lists );
         
     end );
     
@@ -177,7 +178,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
     AddMorphismDatum( UCm,
       function ( UCm, morphism )
         
-        return PairOfLists( morphism );
+        return TripleOfLists( morphism );
         
     end );
     
@@ -206,7 +207,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         ##
         AddIsWellDefinedForMorphisms( UCm,
           function ( UCm, morphism )
-            local C, objectsC, l, source_pair, target_pair, pair_of_lists, s, t, maps, mors;
+            local C, objectsC, l, source_pair, target_pair, triple_of_lists, s, t, coarse_maps, fine_maps, mors;
             
             C := UnderlyingCategory( UCm );
             
@@ -217,26 +218,27 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             source_pair := PairOfIntAndList( Source( morphism ) );
             target_pair := PairOfIntAndList( Target( morphism ) );
             
-            pair_of_lists := PairOfLists( morphism );
+            triple_of_lists := TripleOfLists( morphism );
             
             s := source_pair[2];
             t := target_pair[2];
             
-            maps := pair_of_lists[1];
+            coarse_maps := triple_of_lists[1];
+            fine_maps := triple_of_lists[2];
+            mors := triple_of_lists[3];
             
-            mors := pair_of_lists[2];
-            
-            return l = Length( maps ) and
+            return l = Length( coarse_maps ) and
+                   l = Length( fine_maps ) and
                    l = Length( mors ) and
-                   ForAll( [ 1 .. l ], o -> Length( maps[o][1] ) = s[o] ) and
-                   ForAll( [ 1 .. l ], o -> Length( maps[o][2] ) = s[o] ) and
-                   ForAll( [ 1 .. l ], o -> ForAll( [ 1 .. s[o] ], j -> maps[o][1][j] >= 0 and maps[o][1][j] < l ) ) and
-                   ForAll( [ 1 .. l ], o -> ForAll( [ 1 .. s[o] ], j -> maps[o][2][j] >= 0 and maps[o][2][j] < t[1 + maps[o][1][j]] ) ) and
-                   ForAll( [ 1 .. l ], o -> Length( mors[o] ) = s[o] ) and
-                   ForAll( [ 1 .. l ], o ->
-                           ForAll( [ 1 .. s[o] ], j -> IsEqualForObjects( C, Source( mors[o][j] ), objectsC[o] ) ) and
-                           ForAll( [ 1 .. s[o] ], j -> IsEqualForObjects( C, Target( mors[o][j] ), objectsC[1 + maps[o][1][j]] ) ) and
-                           ForAll( [ 1 .. s[o] ], j -> IsWellDefinedForMorphisms( C, mors[o][j] ) ) );
+                   ForAll( [ 1 .. l ], c -> Length( coarse_maps[c] ) = s[c] ) and
+                   ForAll( [ 1 .. l ], c -> Length( fine_maps[c] ) = s[c] ) and
+                   ForAll( [ 1 .. l ], c -> ForAll( [ 1 .. s[c] ], j -> coarse_maps[c][j] >= 0 and coarse_maps[c][j] < l ) ) and
+                   ForAll( [ 1 .. l ], c -> ForAll( [ 1 .. s[c] ], j -> fine_maps[c][j] >= 0 and fine_maps[c][j] < t[1 + coarse_maps[c][j]] ) ) and
+                   ForAll( [ 1 .. l ], c -> Length( mors[c] ) = s[c] ) and
+                   ForAll( [ 1 .. l ], c ->
+                           ForAll( [ 1 .. s[c] ], j -> IsEqualForObjects( C, Source( mors[c][j] ), objectsC[c] ) ) and
+                           ForAll( [ 1 .. s[c] ], j -> IsEqualForObjects( C, Target( mors[c][j] ), objectsC[1 + coarse_maps[c][j]] ) ) and
+                           ForAll( [ 1 .. s[c] ], j -> IsWellDefinedForMorphisms( C, mors[c][j] ) ) );
             
         end, 4 * OperationWeight( C, "IsEqualForObjects" ) + 2 * OperationWeight( C, "IsWellDefinedForMorphisms" ) );
         
@@ -267,27 +269,31 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         ##
         AddIsEqualForMorphisms( UCm,
           function ( UCm, morphism1, morphism2 )
-            local C, l, pair_of_lists1, pair_of_lists2, m1, m2, s;
+            local C, l, triple_of_lists1, triple_of_lists2, m1, m2, s;
             
             C := UnderlyingCategory( UCm );
             
             l := NumberOfObjectsOfUnderlyingCategory( UCm );
             
-            pair_of_lists1 := PairOfLists( morphism1 );
-            pair_of_lists2 := PairOfLists( morphism2 );
+            triple_of_lists1 := TripleOfLists( morphism1 );
+            triple_of_lists2 := TripleOfLists( morphism2 );
             
-            if not pair_of_lists1[1] = pair_of_lists2[1] then
+            if not triple_of_lists1[1] = triple_of_lists2[1] then
                 return false;
             fi;
             
-            m1 := pair_of_lists1[2];
-            m2 := pair_of_lists2[2];
+            if not triple_of_lists1[2] = triple_of_lists2[2] then
+                return false;
+            fi;
+            
+            m1 := triple_of_lists1[3];
+            m2 := triple_of_lists2[3];
             
             s := PairOfIntAndList( Source( morphism1 ) )[2];
             
-            return ForAll( [ 1 .. l ], o ->
-                       ForAll( [ 1 .. s[o] ], i ->
-                               IsEqualForMorphisms( C, m1[o][i], m2[o][i] ) ) );
+            return ForAll( [ 1 .. l ], c ->
+                       ForAll( [ 1 .. s[c] ], i ->
+                               IsEqualForMorphisms( C, m1[c][i], m2[c][i] ) ) );
             
         end, 2 * OperationWeight( C, "IsEqualForMorphisms" ) );
         
@@ -298,27 +304,31 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         ##
         AddIsCongruentForMorphisms( UCm,
           function ( UCm, morphism1, morphism2 )
-            local C, l, pair_of_lists1, pair_of_lists2, m1, m2, s;
+            local C, l, triple_of_lists1, triple_of_lists2, m1, m2, s;
             
             C := UnderlyingCategory( UCm );
             
             l := NumberOfObjectsOfUnderlyingCategory( UCm );
             
-            pair_of_lists1 := PairOfLists( morphism1 );
-            pair_of_lists2 := PairOfLists( morphism2 );
+            triple_of_lists1 := TripleOfLists( morphism1 );
+            triple_of_lists2 := TripleOfLists( morphism2 );
             
-            if not pair_of_lists1[1] = pair_of_lists2[1] then
+            if not triple_of_lists1[1] = triple_of_lists2[1] then
                 return false;
             fi;
-            
-            m1 := pair_of_lists1[2];
-            m2 := pair_of_lists2[2];
+
+            if not triple_of_lists1[2] = triple_of_lists2[2] then
+                return false;
+            fi;
+
+            m1 := triple_of_lists1[3];
+            m2 := triple_of_lists2[3];
             
             s := PairOfIntAndList( Source( morphism1 ) )[2];
             
-            return ForAll( [ 1 .. l ], o ->
-                           ForAll( [ 1 .. s[o] ], i ->
-                                   IsCongruentForMorphisms( C, m1[o][i], m2[o][i] ) ) );
+            return ForAll( [ 1 .. l ], c ->
+                           ForAll( [ 1 .. s[c] ], i ->
+                                   IsCongruentForMorphisms( C, m1[c][i], m2[c][i] ) ) );
             
         end );
         
@@ -329,7 +339,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         ##
         AddIdentityMorphism( UCm,
           function ( UCm, object )
-            local C, objectsC, l, pair, multiplicities, map, mor;
+            local C, objectsC, l, pair, multiplicities, coarse_maps, fine_maps, mor;
             
             C := UnderlyingCategory( UCm );
             
@@ -341,13 +351,14 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             multiplicities := pair[2];
             
-            map := List( [ 1 .. l ], o ->
-                         Pair( ListWithIdenticalEntries( multiplicities[o], -1 + o ), [ 0 .. multiplicities[o] - 1 ] ) );
+            coarse_maps := List( [ 1 .. l ], c -> ListWithIdenticalEntries( multiplicities[c], -1 + c ) );
+
+            fine_maps := List( [ 1 .. l ], c -> [ 0 .. multiplicities[c] - 1 ] );
+
+            mor := List( [ 1 .. l ], c ->
+                         ListWithIdenticalEntries( multiplicities[c], IdentityMorphism( C, objectsC[c] ) ) );
             
-            mor := List( [ 1 .. l ], o ->
-                         ListWithIdenticalEntries( multiplicities[o], IdentityMorphism( C, objectsC[o] ) ) );
-            
-            return MorphismConstructor( UCm, object, Pair( map, mor ), object );
+            return MorphismConstructor( UCm, object, Triple( coarse_maps, fine_maps, mor ), object );
             
         end, 2 * OperationWeight( C, "IdentityMorphism" ) );
         
@@ -358,8 +369,9 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         ##
         AddPreCompose( UCm,
           function ( UCm, pre_morphism, post_morphism )
-            local C, l, S, s, pair_of_lists_pre, pair_of_lists_post,
-                  maps_pre, maps_post, maps_cmp,
+            local C, l, S, s, triple_of_lists_pre, triple_of_lists_post,
+                  coarse_maps_pre, coarse_maps_post, coarse_maps_cmp,
+                  fine_maps_pre, fine_maps_post, fine_maps_cmp,
                   mors_pre, mors_post, mors_cmp;
             
             C := UnderlyingCategory( UCm );
@@ -369,28 +381,35 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             S := Source( pre_morphism );
             s := PairOfIntAndList( S )[2];
             
-            pair_of_lists_pre := PairOfLists( pre_morphism );
-            pair_of_lists_post := PairOfLists( post_morphism );
+            triple_of_lists_pre := TripleOfLists( pre_morphism );
+            triple_of_lists_post := TripleOfLists( post_morphism );
             
-            maps_pre := pair_of_lists_pre[1];
-            maps_post := pair_of_lists_post[1];
+            coarse_maps_pre := triple_of_lists_pre[1];
+            fine_maps_pre := triple_of_lists_pre[2];
+
+            coarse_maps_post := triple_of_lists_post[1];
+            fine_maps_post := triple_of_lists_post[2];
+
+            coarse_maps_cmp :=
+              List( [ 1 .. l ], c ->
+                    List( [ 1 .. s[c] ], i -> coarse_maps_post[1 + coarse_maps_pre[c][i]][1 + fine_maps_pre[c][i]] ) );
             
-            maps_cmp := List( [ 1 .. l ], o ->
-                              Pair( List( [ 1 .. s[o] ], i -> maps_post[1 + maps_pre[o][1][i]][1][1 + maps_pre[o][2][i]] ),
-                                    List( [ 1 .. s[o] ], i -> maps_post[1 + maps_pre[o][1][i]][2][1 + maps_pre[o][2][i]] ) ) );
+            fine_maps_cmp :=
+              List( [ 1 .. l ], c ->
+                    List( [ 1 .. s[c] ], i -> fine_maps_post[1 + coarse_maps_pre[c][i]][1 + fine_maps_pre[c][i]] ) );
+
+            mors_pre := triple_of_lists_pre[3];
+            mors_post := triple_of_lists_post[3];
             
-            mors_pre := pair_of_lists_pre[2];
-            mors_post := pair_of_lists_post[2];
-            
-            mors_cmp := List( [ 1 .. l ], o ->
-                              List( [ 1 .. s[o] ], i ->
+            mors_cmp := List( [ 1 .. l ], c ->
+                              List( [ 1 .. s[c] ], i ->
                                     PreCompose( C,
-                                            mors_pre[o][i],
-                                            mors_post[1 + maps_pre[o][1][i]][1 + maps_pre[o][2][i]] ) ) );
+                                            mors_pre[c][i],
+                                            mors_post[1 + coarse_maps_pre[c][i]][1 + fine_maps_pre[c][i]] ) ) );
             
             return MorphismConstructor( UCm,
                            S,
-                           Pair( maps_cmp, mors_cmp ),
+                           Triple( coarse_maps_cmp, fine_maps_cmp, mors_cmp ),
                            Target( post_morphism ) );
             
         end, 2 * OperationWeight( C, "PreCompose" ) );
@@ -423,7 +442,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
     ##
     AddInjectionOfCofactorOfCoproductWithGivenCoproduct( UCm,
       function ( UCm, diagram, k, coproduct )
-        local C, objectsC, l, data, multiplicities, multiplicity_k, offsets_k, maps, mors;
+        local C, objectsC, l, data, multiplicities, multiplicity_k, offsets_k, coarse_maps, fine_maps, mors;
         
         C := UnderlyingCategory( UCm );
         
@@ -439,15 +458,15 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
         offsets_k := ListWithIdenticalEntries( l, 0 ) + Sum( multiplicities{[ 1 .. k - 1 ]} );
         
-        maps := List( [ 1 .. l ], o ->
-                      Pair( ListWithIdenticalEntries( multiplicity_k[o], -1 + o ),
-                            offsets_k[o] + [ 0 .. multiplicity_k[o] - 1 ] ) );
+        coarse_maps := List( [ 1 .. l ], c -> ListWithIdenticalEntries( multiplicity_k[c], -1 + c ) );
         
-        mors := List( [ 1 .. l ], o -> ListWithIdenticalEntries( multiplicity_k[o], IdentityMorphism( C, objectsC[o] )  )  );
+        fine_maps := List( [ 1 .. l ], c -> offsets_k[c] + [ 0 .. multiplicity_k[c] - 1 ] );
+        
+        mors := List( [ 1 .. l ], c -> ListWithIdenticalEntries( multiplicity_k[c], IdentityMorphism( C, objectsC[c] )  )  );
         
         return MorphismConstructor( UCm,
                        diagram[k],
-                       Pair( maps, mors ),
+                       Triple( coarse_maps, fine_maps, mors ),
                        coproduct );
         
     end );
@@ -455,25 +474,26 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
     ##
     AddUniversalMorphismFromCoproductWithGivenCoproduct( UCm,
       function ( UCm, diagram, test_object, taus, S )
-        local l, data_taus, maps_taus, mors_taus, maps, mors;
+        local l, data_taus, maps_taus, coarse_maps_taus, fine_maps_taus, mors_taus,
+              coarse_maps, fine_maps, mors;
         
         l := NumberOfObjectsOfUnderlyingCategory( UCm );
         
-        data_taus := List( taus, PairOfLists );
+        data_taus := List( taus, TripleOfLists );
         
-        maps_taus := List( data_taus, data -> data[1] );
-        mors_taus := List( data_taus, data -> data[2] );
+        coarse_maps_taus := List( data_taus, data -> data[1] );
+        fine_maps_taus := List( data_taus, data -> data[2] );
+        mors_taus := List( data_taus, data -> data[3] );
+
+        coarse_maps := List( [ 1 .. l ], c -> Concatenation( List( coarse_maps_taus, coarse_maps -> coarse_maps[c] ) ) );
+
+        fine_maps := List( [ 1 .. l ], c -> Concatenation( List( fine_maps_taus, fine_maps -> fine_maps[c] ) ) );
         
-        maps := List( [ 1 .. l ], o ->
-                      Pair( Concatenation( List( maps_taus, maps -> maps[o][1] ) ),
-                            Concatenation( List( maps_taus, maps -> maps[o][2] ) ) ) );
-        
-        mors := List( [ 1 .. l ], o ->
-                      Concatenation( List( mors_taus, mors -> mors[o] ) ) );
+        mors := List( [ 1 .. l ], c -> Concatenation( List( mors_taus, mors -> mors[c] ) ) );
         
         return MorphismConstructor( UCm,
                        S,
-                       Pair( maps, mors ),
+                       Triple( coarse_maps, fine_maps, mors ),
                        test_object );
         
     end );
@@ -493,7 +513,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             t := TerminalObject( C );
             
-            multiplicities := List( [ 1 .. l ], o -> Length( PositionsProperty( [ t ], obj -> IsEqualForObjects( C, obj, objectsC[o] ) ) ) );
+            multiplicities := List( [ 1 .. l ], c -> Length( PositionsProperty( [ t ], obj -> IsEqualForObjects( C, obj, objectsC[c] ) ) ) );
             
             return ObjectConstructor( UCm,
                            Pair( BigInt( 1 ), ## SkeletalFinSets code
@@ -524,10 +544,12 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             return MorphismConstructor( UCm,
                            object,
-                           Pair( List( [ 1 .. l ], o ->
-                                       Pair( ListWithIdenticalEntries( mult[o], pos ), ListWithIdenticalEntries( mult[o], BigInt( 0 ) ) ) ),
-                                 List( [ 1 .. l ], o ->
-                                       ListWithIdenticalEntries( mult[o], UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( C, objectsC[o], t ) ) ) ),
+                           Triple( List( [ 1 .. l ], c ->
+                                         ListWithIdenticalEntries( mult[c], pos ) ),
+                                   List( [ 1 .. l ], c ->
+                                         ListWithIdenticalEntries( mult[c], BigInt( 0 ) ) ),
+                                   List( [ 1 .. l ], c ->
+                                         ListWithIdenticalEntries( mult[c], UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( C, objectsC[c], t ) ) ) ),
                            terminal_object );
             
         end );
@@ -541,7 +563,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
 
         AddIsColiftableAlongEpimorphism( UCm,
           function( UCm, pi, phi )
-            local C, l, target_pi, m_source, m_target, dphi, map_phi, mor_phi, dpi, map_pi, mor_pi, preim_o, preim, colifts;
+            local C, l, target_pi, m_source, m_target, dphi, cmap_phi, fmap_phi, mor_phi, dpi, cmap_pi, fmap_pi, mor_pi, preim_c, preim, colifts;
             
             C := UnderlyingCategory( UCm );
             l := NumberOfObjectsOfUnderlyingCategory( UCm );
@@ -551,58 +573,60 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             m_source := PairOfIntAndList( Source( pi ) )[2];
             m_target := PairOfIntAndList( target_pi )[2];
             
-            dphi := PairOfLists( phi );
-            map_phi := dphi[1];
-            mor_phi := dphi[2];
-            dpi := PairOfLists( pi );
-            map_pi := dpi[1];
-            mor_pi := dpi[2];
+            dphi := TripleOfLists( phi );
+            cmap_phi := dphi[1];
+            fmap_phi := dphi[2];
+            mor_phi := dphi[3];
+            dpi := TripleOfLists( pi );
+            cmap_pi := dpi[1];
+            fmap_pi := dpi[2];
+            mor_pi := dpi[3];
             
             # all morphisms in pi need to be epimorphism:
-            if not ForAll( [ 1 .. l ], o -> ForAll( [ 1 .. m_source[o] ], i -> IsEpimorphism( C, mor_pi[o][i] ) ) ) then
+            if not ForAll( [ 1 .. l ], c -> ForAll( [ 1 .. m_source[c] ], i -> IsEpimorphism( C, mor_pi[c][i] ) ) ) then
                 return false;
             fi;
             
             # the map underlying pi needs to be an epimorphism:
-            if not ForAll( [ 1 .. l ], o ->
-                       ForAll( [ 1 .. m_target[o] ], i ->
-                               ForAny( [ 1 .. l ], p ->
-                                       ForAny( [ 1 .. m_source[p]], j -> 1 + map_pi[p][1][j] = o and 1 + map_pi[p][2][j] = i ) ) ) ) then
+            if not ForAll( [ 1 .. l ], c ->
+                       ForAll( [ 1 .. m_target[c] ], i ->
+                               ForAny( [ 1 .. l ], d ->
+                                       ForAny( [ 1 .. m_source[d]], j -> 1 + cmap_pi[d][j] = c and 1 + fmap_pi[d][j] = i ) ) ) ) then
                 
                 return false;
                 
             fi;
             
             # if map_pi_o_i = map_pi_p_j then map_phi_o_i = map_phi_p_j:
-            if not ForAll( [ 1 .. l ], o ->
-                       ForAll( [ 1 .. m_source[o] ], i ->
-                               ForAll( [ 1 .. l ], p ->
-                                       ForAll( [ 1 .. m_source[p] ], j ->
-                                               not ( map_pi[o][1][i] = map_pi[p][1][j] and map_pi[o][2][i] = map_pi[p][2][j] ) or
-                                               ( map_phi[o][1][i] = map_phi[p][1][j] and map_phi[o][2][i] = map_phi[p][2][j] ) ) ) ) ) then
+            if not ForAll( [ 1 .. l ], c ->
+                       ForAll( [ 1 .. m_source[c] ], i ->
+                               ForAll( [ 1 .. l ], d ->
+                                       ForAll( [ 1 .. m_source[d] ], j ->
+                                               not ( cmap_pi[c][i] = cmap_pi[d][j] and fmap_pi[c][i] = fmap_pi[d][j] ) or
+                                               ( cmap_phi[c][i] = cmap_phi[d][j] and fmap_phi[c][i] = fmap_phi[d][j] ) ) ) ) ) then
                 
                 return false;
                 
             fi;
             
             # all the possible different choice need to lead to the same colift:
-            preim_o := List( [ 1 .. l ], o ->
-                             List( [ 1 .. m_target[o] ], i ->
-                                   Filtered( [ 1 .. l ], p ->
-                                           ForAny( [ 1 .. m_source[p]], j -> 1 + map_pi[p][1][j] = o and 1 + map_pi[p][2][j] = i ) ) ) );
+            preim_c := List( [ 1 .. l ], c ->
+                             List( [ 1 .. m_target[c] ], i ->
+                                   Filtered( [ 1 .. l ], d ->
+                                           ForAny( [ 1 .. m_source[d]], j -> 1 + cmap_pi[d][j] = c and 1 + fmap_pi[d][j] = i ) ) ) );
             
-            preim := List( [ 1 .. l ], o ->
-                           List( [ 1 .. m_target[o] ], i ->
-                                 Concatenation( List( preim_o[o][i], e ->
-                                         List( Filtered( [ 1 .. m_source[e] ], j -> 1 + map_pi[e][1][j] = o and 1 + map_pi[e][2][j] = i  ), f -> Pair( e, f ) ) ) ) ) );
+            preim := List( [ 1 .. l ], c ->
+                           List( [ 1 .. m_target[c] ], i ->
+                                 Concatenation( List( preim_c[c][i], e ->
+                                         List( Filtered( [ 1 .. m_source[e] ], j -> 1 + cmap_pi[e][j] = c and 1 + fmap_pi[e][j] = i  ), f -> Pair( e, f ) ) ) ) ) );
             
-            colifts := List( [ 1 .. l ], o ->
-                             List( [ 1 .. m_target[o] ], i ->
-                                   List( preim[o][i], c -> ColiftAlongEpimorphism( C, mor_pi[c[1]][c[2]], mor_phi[c[1]][c[2]] ) ) ) );
+            colifts := List( [ 1 .. l ], c ->
+                             List( [ 1 .. m_target[c] ], i ->
+                                   List( preim[c][i], c -> ColiftAlongEpimorphism( C, mor_pi[c[1]][c[2]], mor_phi[c[1]][c[2]] ) ) ) );
             
-            return ForAll( [ 1 .. l ], o ->
-                           ForAll( [ 1 .. m_target[o] ], i ->
-                                   ForAll( colifts[o][i], mors -> IsCongruentForMorphisms( C, First(colifts[o][i]), mors ) ) ) );
+            return ForAll( [ 1 .. l ], c ->
+                           ForAll( [ 1 .. m_target[c] ], i ->
+                                   ForAll( colifts[c][i], mors -> IsCongruentForMorphisms( C, First(colifts[c][i]), mors ) ) ) );
             
         end );
         
@@ -612,7 +636,8 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
         AddColiftAlongEpimorphism( UCm,
           function( UCm, pi, phi )
-            local C, l, target_pi, m_source, m_target, dphi, dpi, map_pi, mor_pi, preim_o, preim_i, map, mor;
+            local C, l, target_pi, m_source, m_target, dphi, dpi, cmap_pi, fmap_pi, mor_pi, preim_c, preim_i,
+                  coarse_maps, fine_maps, mors;
             
             C := UnderlyingCategory( UCm );
             
@@ -623,31 +648,32 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             m_source := PairOfIntAndList( Source( pi ) )[2];
             m_target := PairOfIntAndList( target_pi )[2];
             
-            dphi := PairOfLists( phi );
-            dpi := PairOfLists( pi );
-            map_pi := dpi[1];
-            mor_pi := dpi[2];
+            dphi := TripleOfLists( phi );
+            dpi := TripleOfLists( pi );
+            cmap_pi := dpi[1];
+            fmap_pi := dpi[2];
+            mor_pi := dpi[3];
             
-            preim_o := List( [ 1 .. l ], o ->
-                             List( [ 1 .. m_target[o] ], i ->
-                                   SafeFirst( [ 1 .. l ], p ->
-                                           ForAny( [ 1 .. m_source[p]], j -> 1 + map_pi[p][1][j] = o and 1 + map_pi[p][2][j] = i ) ) ) );
+            preim_c := List( [ 1 .. l ], c ->
+                             List( [ 1 .. m_target[c] ], i ->
+                                   SafeFirst( [ 1 .. l ], d ->
+                                           ForAny( [ 1 .. m_source[d]], j -> 1 + cmap_pi[d][j] = c and 1 + fmap_pi[d][j] = i ) ) ) );
             
-            preim_i := List( [ 1 .. l ], o ->
-                             List( [ 1 .. m_target[o] ], i ->
-                                   SafeFirst( [ 1 .. m_source[preim_o[o][i]]], j -> 1 + map_pi[preim_o[o][i]][1][j] = o and 1 + map_pi[preim_o[o][i]][2][j] = i ) ) );
+            preim_i := List( [ 1 .. l ], c ->
+                             List( [ 1 .. m_target[c] ], i ->
+                                   SafeFirst( [ 1 .. m_source[preim_c[c][i]]], j -> 1 + cmap_pi[preim_c[c][i]][j] = c and 1 + fmap_pi[preim_c[c][i]][j] = i ) ) );
             
-            map := List( [ 1 .. l ], o ->
-                         Pair( List( [ 1 .. m_target[o] ], i -> dphi[1][preim_o[o][i]][1][preim_i[o][i]] ),
-                               List( [ 1 .. m_target[o] ], i -> dphi[1][preim_o[o][i]][2][preim_i[o][i]] ) ) );
+            coarse_maps := List( [ 1 .. l ], c -> List( [ 1 .. m_target[c] ], i -> dphi[1][preim_c[c][i]][preim_i[c][i]] ) );
             
-            mor := List( [ 1 .. l ], o ->
-                         List( [ 1 .. m_target[o] ], i ->
-                               ColiftAlongEpimorphism( C, mor_pi[preim_o[o][i]][preim_i[o][i]], dphi[2][preim_o[o][i]][preim_i[o][i]] ) ) );
+            fine_maps := List( [ 1 .. l ], c -> List( [ 1 .. m_target[c] ], i -> dphi[2][preim_c[c][i]][preim_i[c][i]] ) );
+            
+            mors := List( [ 1 .. l ], c ->
+                         List( [ 1 .. m_target[c] ], i ->
+                               ColiftAlongEpimorphism( C, mor_pi[preim_c[c][i]][preim_i[c][i]], dphi[3][preim_c[c][i]][preim_i[c][i]] ) ) );
             
             return MorphismConstructor( UCm,
                            target_pi,
-                           Pair( map, mor ),
+                           Triple( coarse_maps, fine_maps, mors ),
                            Target( phi ) );
             
         end );
@@ -658,7 +684,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
         AddEqualizer( UCm,
           function( UCm, common_source, list_of_parallel_morphisms )
-            local C, objectsC, l, n, s, data, maps, mors, pos_eq, flat_pos_eq,
+            local C, objectsC, l, n, s, data, coarse_maps, fine_maps, mors, pos_eq, flat_pos_eq,
                   lists_of_parallel_morphisms_in_C, eq, eq_index_in_C, sort_index_eq;
             
             C := UnderlyingCategory( UCm );
@@ -671,19 +697,21 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             s := PairOfIntAndList(common_source)[2];
             
-            data := List( list_of_parallel_morphisms, mor -> PairOfLists( mor ) );
+            data := List( list_of_parallel_morphisms, TripleOfLists );
+
+            coarse_maps := List( data, datum -> datum[1] );
+
+            fine_maps := List( data, datum -> datum[2] );
             
-            maps := List( data, datum -> datum[1] );
+            mors := List( data, datum -> datum[3] );
             
-            mors := List( data, datum -> datum[2] );
-            
-            pos_eq := List( [ 1 .. l ], o ->
-                            Filtered( [ 0 .. s[o] - 1 ], x ->
+            pos_eq := List( [ 1 .. l ], c ->
+                            Filtered( [ 0 .. s[c] - 1 ], i ->
                                     ForAll( [ 1 .. n - 1 ], j ->
-                                            maps[j][o][1][ x + 1 ] = maps[j + 1][o][1][ x + 1 ] and
-                                            maps[j][o][2][ x + 1 ] = maps[j + 1][o][2][ x + 1 ] ) ) );
+                                            coarse_maps[j][c][ i + 1 ] = coarse_maps[j + 1][c][ i + 1 ] and
+                                            fine_maps[j][c][ i + 1 ] = fine_maps[j + 1][c][ i + 1 ] ) ) );
             
-            flat_pos_eq := Concatenation( List( [ 1 .. l ], o -> List( pos_eq[o], i -> [ -1 + o , i ] ) ) );
+            flat_pos_eq := Concatenation( List( [ 1 .. l ], c -> List( pos_eq[c], i -> [ -1 + c , i ] ) ) );
             
             lists_of_parallel_morphisms_in_C := List( flat_pos_eq , x ->
                                                       List( [ 1 .. n ], j -> mors[j][ 1 + x[1] ][ 1 + x[2] ] ) );
@@ -697,9 +725,9 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
                                                    objectsC[ 1 + flat_pos_eq[i][1] ],
                                                    lists_of_parallel_morphisms_in_C[i] ) ) );
             
-            sort_index_eq := List( [ 1 .. l ], o -> Positions( eq_index_in_C, o ) );
+            sort_index_eq := List( [ 1 .. l ], c -> Positions( eq_index_in_C, c ) );
             
-            return ObjectConstructor( UCm, Pair( eq, List( sort_index_eq, l -> Length(l) ) ) );
+            return ObjectConstructor( UCm, Pair( eq, List( sort_index_eq, pos -> Length( pos ) ) ) );
             
         end );
         
@@ -709,9 +737,9 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
         AddEmbeddingOfEqualizer( UCm,
           function( UCm, common_source, list_of_parallel_morphisms )
-            local C, objectsC, l, n, s, data, maps, mors, pos_eq, flat_pos_eq_block, flat_pos_eq_i, eq,
+            local C, objectsC, l, n, s, data, coarse_maps, fine_maps, mors, pos_eq, flat_pos_eq_coarse, flat_pos_eq_fine, eq,
                   lists_of_parallel_morphisms_in_C, eq_index_in_C, sort_index_eq,
-                  Eq, equalizer, emb_maps, emb_mors;
+                  Eq, equalizer, emb_coarse_maps, emb_fine_maps, emb_mors;
             
             C := UnderlyingCategory( UCm );
             
@@ -723,50 +751,54 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             s := PairOfIntAndList(common_source)[2];
             
-            data := List( list_of_parallel_morphisms, mor -> PairOfLists( mor ) );
+            data := List( list_of_parallel_morphisms, TripleOfLists );
             
-            maps := List( data, datum -> datum[1] );
+            coarse_maps := List( data, datum -> datum[1] );
+
+            fine_maps := List( data, datum -> datum[2] );
+
+            mors := List( data, datum -> datum[3] );
             
-            mors := List( data, datum -> datum[2] );
-            
-            pos_eq := List( [ 1 .. l ], o ->
-                            Filtered( [ 0 .. s[o] - 1 ], x ->
+            pos_eq := List( [ 1 .. l ], c ->
+                            Filtered( [ 0 .. s[c] - 1 ], i ->
                                     ForAll( [ 1 .. n - 1 ], j ->
-                                            maps[j][o][1][ x + 1 ] = maps[j + 1][o][1][ x + 1 ] and
-                                            maps[j][o][2][ x + 1 ] = maps[j + 1][o][2][ x + 1 ] ) ) );
+                                            coarse_maps[j][c][ i + 1 ] = coarse_maps[j + 1][c][ i + 1 ] and
+                                            fine_maps[j][c][ i + 1 ] = fine_maps[j + 1][c][ i + 1 ] ) ) );
             
-            flat_pos_eq_block := Concatenation( List( [ 1 .. l ], o ->
-                                         ListWithIdenticalEntries( Length( pos_eq[o] ), -1 + o ) ) );
+            flat_pos_eq_coarse := Concatenation( List( [ 1 .. l ], c ->
+                                         ListWithIdenticalEntries( Length( pos_eq[c] ), -1 + c ) ) );
             
-            flat_pos_eq_i := Concatenation( pos_eq );
+            flat_pos_eq_fine := Concatenation( pos_eq );
             
-            eq := Length( flat_pos_eq_block );
+            eq := Length( flat_pos_eq_coarse );
             
             lists_of_parallel_morphisms_in_C := List( [ 1 .. eq ] , i ->
                                                       List( [ 1 .. n ], j ->
-                                                            mors[j][ 1 + flat_pos_eq_block[i] ][ 1 + flat_pos_eq_i[i] ] ) );
+                                                            mors[j][ 1 + flat_pos_eq_coarse[i] ][ 1 + flat_pos_eq_fine[i] ] ) );
             eq_index_in_C := List( [ 1 .. eq ], i ->
                                    Position( objectsC,
                                            Equalizer( C,
-                                                   objectsC[ 1 + flat_pos_eq_block[i] ],
+                                                   objectsC[ 1 + flat_pos_eq_coarse[i] ],
                                                    lists_of_parallel_morphisms_in_C[i] ) ) );
             
-            sort_index_eq := List( [ 1 .. l ], o -> Positions( eq_index_in_C, o ) );
+            sort_index_eq := List( [ 1 .. l ], c -> Positions( eq_index_in_C, c ) );
             
             Eq := List( sort_index_eq, Length );
             
             equalizer := ObjectConstructor( UCm, Pair( eq, Eq ) );
             
-            emb_maps := List( [ 1 .. l ], o -> Pair( flat_pos_eq_block{sort_index_eq[o]}, flat_pos_eq_i{sort_index_eq[o]} ) );
+            emb_coarse_maps := List( [ 1 .. l ], c -> flat_pos_eq_coarse{sort_index_eq[c]} );
             
-            emb_mors := List( [ 1 .. l ], o ->
-                              List( [ 1 .. Eq[o] ], i ->
+            emb_fine_maps := List( [ 1 .. l ], c -> flat_pos_eq_fine{sort_index_eq[c]} );
+
+            emb_mors := List( [ 1 .. l ], c ->
+                              List( [ 1 .. Eq[c] ], i ->
                                     EmbeddingOfEqualizerWithGivenEqualizer( C,
-                                            objectsC[ 1 + flat_pos_eq_block[ sort_index_eq[o][i] ] ],
-                                            lists_of_parallel_morphisms_in_C[ sort_index_eq[o][i] ],
-                                            objectsC[o] ) ) );
+                                            objectsC[ 1 + flat_pos_eq_coarse[ sort_index_eq[c][i] ] ],
+                                            lists_of_parallel_morphisms_in_C[ sort_index_eq[c][i] ],
+                                            objectsC[c] ) ) );
             
-            return MorphismConstructor( UCm, equalizer, Pair( emb_maps, emb_mors ), common_source );
+            return MorphismConstructor( UCm, equalizer, Triple( emb_coarse_maps, emb_fine_maps, emb_mors ), common_source );
             
         end );
         
@@ -776,9 +808,9 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
         AddUniversalMorphismIntoEqualizer( UCm,
           function( UCm, common_source, list_of_parallel_morphisms, test_object, test_morphism )
-            local C, objectsC, l, n, s, data, maps, mors, pos_eq, flat_pos_eq, lists_of_parallel_morphisms_in_C,
-                  eq, eq_index_in_C, sort_index_eq, equalizer, offset, test_data,
-                  test_maps, test_mors, t, pos_test_maps, univ_maps, univ_mors;
+            local C, objectsC, l, n, s, data, coarse_maps, fine_maps, mors, pos_eq, flat_pos_eq, lists_of_parallel_morphisms_in_C,
+                  eq, eq_index_in_C, sort_index_eq, equalizer, offset, test_data, test_coarse_maps, test_fine_maps, test_mors,
+                  t, pos_test_maps, univ_coarse_maps, univ_fine_maps, univ_mors;
             
             C := UnderlyingCategory( UCm );
             
@@ -790,19 +822,21 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             s := PairOfIntAndList(common_source)[2];
             
-            data := List( list_of_parallel_morphisms, mor -> PairOfLists( mor ) );
+            data := List( list_of_parallel_morphisms, TripleOfLists );
             
-            maps := List( data, datum -> datum[1] );
+            coarse_maps := List( data, datum -> datum[1] );
+
+            fine_maps := List( data, datum -> datum[2] );
             
-            mors := List( data, datum -> datum[2] );
+            mors := List( data, datum -> datum[3] );
             
-            pos_eq := List( [ 1 .. l ], o ->
-                            Filtered( [ 0 .. s[o] - 1 ], x ->
+            pos_eq := List( [ 1 .. l ], c ->
+                            Filtered( [ 0 .. s[c] - 1 ], i ->
                                     ForAll( [ 1 .. n - 1 ], j ->
-                                            maps[j][o][1][ x + 1 ] = maps[j + 1][o][1][ x + 1 ] and
-                                            maps[j][o][2][ x + 1 ] = maps[j + 1][o][2][ x + 1 ] ) ) );
+                                            coarse_maps[j][c][ i + 1 ] = coarse_maps[j + 1][c][ i + 1 ] and
+                                            fine_maps[j][c][ i + 1 ] = fine_maps[j + 1][c][ i + 1 ] ) ) );
             
-            flat_pos_eq := Concatenation( List( [ 1 .. l ], o -> List( pos_eq[o], i -> [ -1 + o , i ] ) ) );
+            flat_pos_eq := Concatenation( List( [ 1 .. l ], c -> List( pos_eq[c], i -> [ -1 + c , i ] ) ) );
             
             lists_of_parallel_morphisms_in_C := List( flat_pos_eq , x ->
                                                       List( [ 1 .. n ], j -> mors[j][ 1 + x[1] ][ 1 + x[2] ] ) );
@@ -815,7 +849,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
                                                    objectsC[ 1 + flat_pos_eq[i][1] ],
                                                    lists_of_parallel_morphisms_in_C[i] ) ) );
             
-            sort_index_eq := List( [ 1 .. l ], o -> Positions( eq_index_in_C, o ) );
+            sort_index_eq := List( [ 1 .. l ], c -> Positions( eq_index_in_C, c ) );
             
             equalizer := ObjectConstructor( UCm, Pair( eq, List( sort_index_eq, l -> Length(l) ) ) );
             
@@ -823,30 +857,34 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             ##offset := List( [ 1 .. teq ], i -> 1 + Length( Positions( eq_index_in_C{[ 1 .. i ]}, eq_index_in_C[i] ) ) );
             
-            test_data := PairOfLists( test_morphism );
+            test_data := TripleOfLists( test_morphism );
             
-            test_maps := test_data[1];
+            test_coarse_maps := test_data[1];
             
-            test_mors := test_data[2];
+            test_fine_maps := test_data[2];
+
+            test_mors := test_data[3];
             
             t := PairOfIntAndList( test_object )[2];
             
-            pos_test_maps := List( [ 1 .. l ], o ->
-                                   List( [ 1 .. t[o] ], i ->
-                                         Position( flat_pos_eq, [ test_maps[o][1][i], test_maps[o][2][i] ] ) ) );
+            pos_test_maps := List( [ 1 .. l ], c ->
+                                   List( [ 1 .. t[c] ], i ->
+                                         Position( flat_pos_eq, [ test_coarse_maps[c][i], test_fine_maps[c][i] ] ) ) );
             
-            univ_maps := List( [ 1 .. l ], o -> Pair( -1 + eq_index_in_C{pos_test_maps[o]} , -1 + offset{pos_test_maps[o]} ) );
+            univ_coarse_maps := List( [ 1 .. l ], c -> -1 + eq_index_in_C{pos_test_maps[c]} );
             
-            univ_mors := List( [ 1 .. l ], o ->
-                               List( [ 1 .. t[o] ], i ->
+            univ_fine_maps := List( [ 1 .. l ], c -> -1 + offset{pos_test_maps[c]} );
+            
+            univ_mors := List( [ 1 .. l ], c ->
+                               List( [ 1 .. t[c] ], i ->
                                      UniversalMorphismIntoEqualizerWithGivenEqualizer( C,
-                                             objectsC[ 1 + flat_pos_eq[ pos_test_maps[o][i] ][1] ],
-                                             lists_of_parallel_morphisms_in_C[ pos_test_maps[o][i] ],
-                                             objectsC[o],
-                                             test_mors[o][i],
-                                             objectsC[ eq_index_in_C[ pos_test_maps[o][i] ] ] ) ) );
+                                             objectsC[ 1 + flat_pos_eq[ pos_test_maps[c][i] ][1] ],
+                                             lists_of_parallel_morphisms_in_C[ pos_test_maps[c][i] ],
+                                             objectsC[c],
+                                             test_mors[c][i],
+                                             objectsC[ eq_index_in_C[ pos_test_maps[c][i] ] ] ) ) );
             
-            return MorphismConstructor( UCm, test_object, Pair( univ_maps, univ_mors ), equalizer );
+            return MorphismConstructor( UCm, test_object, Triple( univ_coarse_maps, univ_fine_maps, univ_mors ), equalizer );
             
         end );
         
@@ -916,7 +954,7 @@ InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
         
         L := ListWithIdenticalEntries( l, 0 );
         
-        pos := PositionProperty( objectsC, o -> IsEqualForObjects( C, o, objC ) );
+        pos := PositionProperty( objectsC, c -> IsEqualForObjects( C, c, objC ) );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0, IsInt( pos ) );
@@ -929,18 +967,21 @@ InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
     
     func_mor :=
       function( morC )
-        local pos_s, pos_t, Lmaps, Lmors;
+        local pos_s, pos_t, L_coarse_maps, L_fine_maps, Lmors;
         
-        pos_s := PositionProperty( objectsC, o -> IsEqualForObjects( C, o, Source( morC ) ) );
-        pos_t := PositionProperty( objectsC, o -> IsEqualForObjects( C, o, Target( morC ) ) );
+        pos_s := PositionProperty( objectsC, c -> IsEqualForObjects( C, c, Source( morC ) ) );
+        pos_t := PositionProperty( objectsC, c -> IsEqualForObjects( C, c, Target( morC ) ) );
         
-        Lmaps := ListWithIdenticalEntries( l, Pair( [ ], [ ] ) );
-        Lmaps[pos_s] := Pair( [ -1 + pos_t ], [ BigInt( 0 ) ] );
-        
+        L_coarse_maps := ListWithIdenticalEntries( l, [] );
+        L_coarse_maps[pos_s] := [ -1 + pos_t ];
+
+        L_fine_maps := ListWithIdenticalEntries( l, [] );
+        L_fine_maps[pos_s] := [ BigInt( 0 ) ];
+
         Lmors := ListWithIdenticalEntries( l, [ ] );
         Lmors[pos_s] := [ morC ];
         
-        return Pair( Lmaps, Lmors );
+        return Triple( L_coarse_maps, L_fine_maps, Lmors );
         
     end;
     
@@ -1064,7 +1105,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionOf
         
         multiplicities := PairOfIntAndList( objUCm )[2];
         
-        diagram := Concatenation( List( [ 1 .. l ], o -> ListWithIdenticalEntries( multiplicities[o], objectsC[o] ) ) );
+        diagram := Concatenation( List( [ 1 .. l ], c -> ListWithIdenticalEntries( multiplicities[c], objectsC[c] ) ) );
         
         return Coproduct( category_with_strict_coproducts, List( diagram, functor_on_objects ) );
         
@@ -1073,7 +1114,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionOf
     extended_functor_on_morphisms :=
       function( source, morUCm, target )
         local C, objectsC, l, source_pair, target_pair, s, t, multiplicities_source, multiplicities_target, source_diagram, target_diagram, offsets,
-              pair_of_lists, maps, map, mor, functor_on_mor;
+              triple_of_lists, coarse_maps, fine_maps, map, mor, functor_on_mor;
         
         C := UnderlyingCategory( UCm );
         
@@ -1090,8 +1131,8 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionOf
         multiplicities_source := source_pair[2];
         multiplicities_target := target_pair[2];
         
-        source_diagram := Concatenation( List( [ 1 .. l ], o -> ListWithIdenticalEntries( multiplicities_source[o], functor_on_objects( objectsC[o] ) ) ) );
-        target_diagram := Concatenation( List( [ 1 .. l ], o -> ListWithIdenticalEntries( multiplicities_target[o], functor_on_objects( objectsC[o] ) ) ) );
+        source_diagram := Concatenation( List( [ 1 .. l ], c -> ListWithIdenticalEntries( multiplicities_source[c], functor_on_objects( objectsC[c] ) ) ) );
+        target_diagram := Concatenation( List( [ 1 .. l ], c -> ListWithIdenticalEntries( multiplicities_target[c], functor_on_objects( objectsC[c] ) ) ) );
         
         if not IsEqualForObjects( category_with_strict_coproducts, source, Coproduct( category_with_strict_coproducts, source_diagram ) ) then
             Error( "source and Coproduct( source_diagram ) do not coincide\n" );
@@ -1101,17 +1142,18 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionOf
             Error( "target and Coproduct( target_diagram ) do not coincide\n" );
         fi;
         
-        offsets := List( [ 1 .. l ], o -> Sum( multiplicities_target{[ 1 .. o - 1 ]} ) );
+        offsets := List( [ 1 .. l ], c -> Sum( multiplicities_target{[ 1 .. c - 1 ]} ) );
         
-        pair_of_lists := PairOfLists( morUCm );
+        triple_of_lists := TripleOfLists( morUCm );
         
-        maps := pair_of_lists[1];
+        coarse_maps := triple_of_lists[1];
+        fine_maps := triple_of_lists[2];
+
+        map := Concatenation( List( [ 1 .. l ], c ->
+                       List( [ 1 .. multiplicities_source[c] ], i ->
+                             offsets[1 + coarse_maps[c][i]] + fine_maps[c][i] ) ) );
         
-        map := Concatenation( List( [ 1 .. l ], o ->
-                       List( [ 1 .. multiplicities_source[o] ], i ->
-                             offsets[1 + maps[o][1][i]] + maps[o][2][i] ) ) );
-        
-        mor := Concatenation( pair_of_lists[2] );
+        mor := Concatenation( triple_of_lists[3] );
         
         functor_on_mor := List( [ 0 .. s - 1 ], i ->
                                 functor_on_morphisms( source_diagram[1 + i], mor[1 + i], target_diagram[1 + map[1 + i]] ) );
@@ -1173,7 +1215,7 @@ InstallMethod( Display,
         
   function ( a )
     
-    Display( ObjectDatum( a ) );
+    Display( PairOfIntAndList( a ) );
     
     Print( "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
     
@@ -1189,10 +1231,10 @@ InstallMethod( Display,
     sFinSets := ValueGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory" );
     
     Print( ObjectConstructor( sFinSets, PairOfIntAndList( Source( phi ) )[1] ) );
-    Print( " ⱶ", PairOfLists( phi )[1], "→ " );
+    Print( " ⱶ", TripleOfLists( phi ){[1,2]}, "→ " );
     Print( ObjectConstructor( sFinSets, PairOfIntAndList( Target( phi ) )[1] ), "\n\n" );
     
-    Print( PairOfLists( phi )[2], "\n\n" );
+    Print( TripleOfLists( phi )[3], "\n\n" );
     
     Print( "A morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
     
