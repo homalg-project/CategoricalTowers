@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "CatReps",
 Subtitle := "Representations and cohomology of finite categories",
-Version := "2026.05-02",
+Version := "2026.05-03",
 
 Date := "2026-05-10",
 Date := "2026-05-10",
@@ -101,7 +101,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "MatricesForHomalg", ">= 2026.04-01" ],
-                   [ "CAP", ">= 2026.04-02" ],
+                   [ "CAP", ">= 2026.05-02" ],
                    [ "MonoidalCategories", ">= 2026.05-01" ],
                    [ "LinearAlgebraForCAP", ">= 2026.04-02" ],
                    [ "ToolsForCategoricalTowers", ">= 2024.03-02" ],
