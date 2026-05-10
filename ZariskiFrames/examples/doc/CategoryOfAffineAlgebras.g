@@ -10,7 +10,7 @@ AffAlg_Z := CategoryOfAffineAlgebras( zz );
 Display( AffAlg_Z );
 #! A CAP category with name CategoryOfAffineAlgebras( Z ):
 #! 
-#! 27 primitive operations were used to derive 154 operations for this category \
+#! 27 primitive operations were used to derive 166 operations for this category \
 #! which algorithmically
 #! * IsFiniteCocompleteCategory
 #! * IsSymmetricMonoidalCategory
@@ -22,7 +22,7 @@ AffSch_Z := Opposite( AffAlg_Z : only_primitive_operations := true );
 Display( AffSch_Z );
 #! A CAP category with name Opposite( CategoryOfAffineAlgebras( Z ) ):
 #! 
-#! 27 primitive operations were used to derive 160 operations for this category \
+#! 27 primitive operations were used to derive 172 operations for this category \
 #! which algorithmically
 #! * IsFiniteCompleteCategory
 #! * IsSymmetricMonoidalCategory

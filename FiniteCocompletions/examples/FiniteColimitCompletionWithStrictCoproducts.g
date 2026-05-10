@@ -8,7 +8,7 @@ FinBouquets;
 Display( FinBouquets );
 #! A CAP category with name FinBouquets:
 #! 
-#! 52 primitive operations were used to derive 356 operations for this category \
+#! 52 primitive operations were used to derive 368 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
@@ -30,7 +30,7 @@ Display( C_hat );
 #! FiniteColimitCompletionWithStrictCoproducts(
 #! PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ):
 #! 
-#! 18 primitive operations were used to derive 63 operations for this category
+#! 18 primitive operations were used to derive 67 operations for this category
 #! which algorithmically
 #! * IsCocartesianCategory
 #! and not yet algorithmically

@@ -1,4 +1,4 @@
-#! @Chunk ClosedSubsetOfSpecQ
+#! @Chunk OpenSubsetOfSpecQ
 
 LoadPackage( "ZariskiFrames" );
 

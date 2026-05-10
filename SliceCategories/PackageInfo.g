@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "SliceCategories",
 Subtitle := "Slice categories",
-Version := "2026.04-01",
+Version := "2026.05-02",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -85,8 +85,8 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2025.07-04" ],
-                   [ "MonoidalCategories", ">= 2025.03-02" ],
-                   [ "CartesianCategories", ">= 2025.06-01" ],
+                   [ "MonoidalCategories", ">= 2026.05-01" ],
+                   [ "CartesianCategories", ">= 2026.05-01" ],
                    [ "ToolsForCategoricalTowers", ">= 2025.03-02" ],
                    [ "Toposes", ">= 2025.08-03" ],
                    [ "Locales", ">= 2024.02-21" ],

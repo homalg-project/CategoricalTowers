@@ -17,10 +17,12 @@ end;
 
 _ORIG_STOP_TEST_QUIET := STOP_TEST_QUIET;
 STOP_TEST_QUIET := function( args... )
-    CallFuncList( _ORIG_STOP_TEST_QUIET, args );
+    local result;
+    result := CallFuncList( _ORIG_STOP_TEST_QUIET, args );
     if ValueOption( "no_precompiled_code" ) <> true then
         PushOptions( rec( no_precompiled_code := true ) );
     fi;
+    return result;
 end;
 
 PushOptions(
