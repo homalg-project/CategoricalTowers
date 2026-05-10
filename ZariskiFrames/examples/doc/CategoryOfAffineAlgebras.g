@@ -10,7 +10,7 @@ AffAlg_Z := CategoryOfAffineAlgebras( zz );
 Display( AffAlg_Z );
 #! A CAP category with name CategoryOfAffineAlgebras( Z ):
 #! 
-#! 27 primitive operations were used to derive 166 operations for this category \
+#! 27 primitive operations were used to derive 175 operations for this category \
 #! which algorithmically
 #! * IsFiniteCocompleteCategory
 #! * IsSymmetricMonoidalCategory

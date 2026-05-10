@@ -75,6 +75,9 @@
 #! * <Ref BookName="CAP" Func="Coequalizer" Label="" />
 #! * <Ref BookName="CAP" Func="CoequalizerFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoequalizerFunctorialWithGivenCoequalizers" Label="for Is" />
+#! * <Ref BookName="CAP" Func="CoequalizerOfIdentityAndAutomorphisms" Label="" />
+#! * <Ref BookName="CAP" Func="CoequalizerOfIdentityAndAutomorphismsFunctorial" Label="for Is" />
+#! * <Ref BookName="CAP" Func="CoequalizerOfIdentityAndAutomorphismsFunctorialWithGivenCoequalizers" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageObjectFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageObjectFunctorialWithGivenCoimageObjects" Label="for Is" />
@@ -202,6 +205,8 @@
 #! * <Ref BookName="CAP" Func="IsZeroForMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsZeroForObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromCoequalizerOfCoproductDiagramToPushout" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromCoequalizerOfIdentityAndAutomorphismsToCoequalizer" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromCoequalizerToCoequalizerOfIdentityAndAutomorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromCoimageToCokernelOfKernel" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer" Label="for Is" />
@@ -307,6 +312,8 @@
 #! * <Ref BookName="AdditiveClosuresForCAP" Func="ProjectionOfBiasedWeakFiberProduct" Label="for Is" />
 #! * <Ref BookName="AdditiveClosuresForCAP" Func="ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ProjectionOntoCoequalizer" Label="for Is" />
+#! * <Ref BookName="CAP" Func="ProjectionOntoCoequalizerOfIdentityAndAutomorphisms" Label="for Is" />
+#! * <Ref BookName="CAP" Func="ProjectionOntoCoequalizerOfIdentityAndAutomorphismsWithGivenCoequalizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ProjectionOntoCoequalizerWithGivenCoequalizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ProjectiveLift" Label="for Is" />
 #! * <Ref BookName="CAP" Func="Pushout" Label="for Is" />
@@ -352,6 +359,8 @@
 #! * <Ref BookName="AdditiveClosuresForCAP" Func="UniversalMorphismFromBiasedWeakPushout" Label="for Is" />
 #! * <Ref BookName="AdditiveClosuresForCAP" Func="UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromCoequalizer" Label="for Is" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromCoequalizerOfIdentityAndAutomorphisms" Label="for Is" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromCoequalizerOfIdentityAndAutomorphismsWithGivenCoequalizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromCoequalizerWithGivenCoequalizer" Label="for Is" />
 #! * <Ref BookName="ToolsForCategoricalTowers" Func="UniversalMorphismFromColimit" Label="for Is" />
 #! * <Ref BookName="ToolsForCategoricalTowers" Func="UniversalMorphismFromColimitWithGivenColimit" Label="for Is" />

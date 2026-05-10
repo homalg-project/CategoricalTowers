@@ -8,7 +8,7 @@ FinBouquets;
 Display( FinBouquets );
 #! A CAP category with name FinBouquets:
 #! 
-#! 52 primitive operations were used to derive 368 operations for this category \
+#! 52 primitive operations were used to derive 377 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
@@ -36,7 +36,10 @@ Display( C_hat );
 #! and not yet algorithmically
 #! * IsFiniteCocompleteCategory
 MissingOperationsForConstructivenessOfCategory( C_hat, "IsFiniteCocompleteCategory" );
-#! [ "UniversalMorphismFromCoequalizer" ]
+#! [ "CoequalizerOfIdentityAndAutomorphisms",
+#!   "ProjectionOntoCoequalizerOfIdentityAndAutomorphisms",
+#!   "UniversalMorphismFromCoequalizerOfIdentityAndAutomorphisms",
+#!   "UniversalMorphismFromCoequalizer" ]
 P := C_hat.P;
 #! <A projective object in FiniteColimitCompletionWithStrictCoproducts(
 #!  PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )>

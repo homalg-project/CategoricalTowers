@@ -8,6 +8,7 @@ ListKnownDoctrines( );
 #!   "IsAbCategory", "IsCategoryWithTerminalObject", "IsCartesianCategory",
 #!   "IsCategoryWithInitialObject", "IsCocartesianCategory",
 #!   "IsBicartesianCategory", "IsCategoryWithZeroObject", "IsAdditiveCategory",
+#!   "IsCategoryWithCoequalizersOfIdentityAndAutomorphisms",
 #!   "IsCategoryWithCoequalizers", "IsCategoryWithCokernels",
 #!   "IsCategoryWithEqualizers", "IsCategoryWithKernels",
 #!   "IsFiniteCocompleteCategory", "IsFiniteCompleteCategory",
