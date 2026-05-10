@@ -17,7 +17,10 @@ Display( FreeTopos1 );
 #! and not yet algorithmically
 #! * IsFiniteCocompleteCategory
 MissingOperationsForConstructivenessOfCategory( FreeTopos1, "IsFiniteCocompleteCategory" );
-#! [ "UniversalMorphismFromCoequalizer" ]
+#! [ "CoequalizerOfIdentityAndAutomorphisms",
+#!   "ProjectionOntoCoequalizerOfIdentityAndAutomorphisms",
+#!   "UniversalMorphismFromCoequalizerOfIdentityAndAutomorphisms",
+#!   "UniversalMorphismFromCoequalizer" ]
 Poly := FiniteStrictCoproductCompletionOfUnderlyingCategory( FreeTopos1 );
 #! FiniteStrictCoproductCompletion( Opposite( SkeletalFinSets ) )
 Display( Poly );

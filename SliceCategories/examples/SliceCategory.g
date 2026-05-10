@@ -15,7 +15,7 @@ S := SliceCategory( B );
 Display( S );
 #! A CAP category with name A slice category of SkeletalFinSets:
 #! 
-#! 50 primitive operations were used to derive 346 operations for this category which algorithmically
+#! 50 primitive operations were used to derive 355 operations for this category which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
