@@ -350,12 +350,30 @@
         CoproductFunctorialWithGivenCoproducts     for    IsCapCategoryObject,
         IsList, IsList, IsList, IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XCoproductOnMorphismAndObject[102X                     ([14XCartesianCategories:
+        CoproductOnMorphismAndObject         for        IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoproductOnMorphismAndObjectWithGivenCoproducts[102X  ([14XCartesianCategories:
+        CoproductOnMorphismAndObjectWithGivenCoproducts                    for
+        IsCapCategoryObject,    IsCapCategoryMorphism,    IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XCoproductOnMorphisms[102X  ([14XCartesianCategories:  CoproductOnMorphisms  for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XCoproductOnMorphismsWithGivenCoproducts[102X          ([14XCartesianCategories:
         CoproductOnMorphismsWithGivenCoproducts    for    IsCapCategoryObject,
         IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoproductOnObjectAndMorphism[102X                     ([14XCartesianCategories:
+        CoproductOnObjectAndMorphism          for         IsCapCategoryObject,
+        IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoproductOnObjectAndMorphismWithGivenCoproducts[102X  ([14XCartesianCategories:
+        CoproductOnObjectAndMorphismWithGivenCoproducts                    for
+        IsCapCategoryObject,    IsCapCategoryObject,    IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XDirectProduct[102X ([14XCAP: DirectProduct[114X)[133X
   
@@ -366,6 +384,16 @@
         DirectProductFunctorialWithGivenDirectProducts                     for
         IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XDirectProductOnMorphismAndObject[102X                 ([14XCartesianCategories:
+        DirectProductOnMorphismAndObject       for      IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XDirectProductOnMorphismAndObjectWithGivenDirectProducts[102X
+        ([14XCartesianCategories:
+        DirectProductOnMorphismAndObjectWithGivenDirectProducts            for
+        IsCapCategoryObject,    IsCapCategoryMorphism,    IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XDirectProductOnMorphisms[102X                         ([14XCartesianCategories:
         DirectProductOnMorphisms           for          IsCapCategoryMorphism,
         IsCapCategoryMorphism[114X)[133X
@@ -373,6 +401,16 @@
   [30X    [33X[0;6Y[2XDirectProductOnMorphismsWithGivenDirectProducts[102X  ([14XCartesianCategories:
         DirectProductOnMorphismsWithGivenDirectProducts                    for
         IsCapCategoryObject,   IsCapCategoryMorphism,   IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XDirectProductOnObjectAndMorphism[102X                 ([14XCartesianCategories:
+        DirectProductOnObjectAndMorphism        for       IsCapCategoryObject,
+        IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XDirectProductOnObjectAndMorphismWithGivenDirectProducts[102X
+        ([14XCartesianCategories:
+        DirectProductOnObjectAndMorphismWithGivenDirectProducts            for
+        IsCapCategoryObject,    IsCapCategoryObject,    IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XDirectSum[102X ([14XCAP: DirectSum[114X)[133X
@@ -1159,12 +1197,32 @@
         TensorProductInternalHomCompatibilityMorphismWithGivenObjects      for
         IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XTensorProductOnMorphismAndObject[102X                  ([14XMonoidalCategories:
+        TensorProductOnMorphismAndObject       for      IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XTensorProductOnMorphismAndObjectWithGivenTensorProducts[102X
+        ([14XMonoidalCategories:
+        TensorProductOnMorphismAndObjectWithGivenTensorProducts            for
+        IsCapCategoryObject,    IsCapCategoryMorphism,    IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XTensorProductOnMorphisms[102X ([14XMonoidalCategories: TensorProductOnMorphisms
         for IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XTensorProductOnMorphismsWithGivenTensorProducts[102X   ([14XMonoidalCategories:
         TensorProductOnMorphismsWithGivenTensorProducts                    for
         IsCapCategoryObject,   IsCapCategoryMorphism,   IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XTensorProductOnObjectAndMorphism[102X                  ([14XMonoidalCategories:
+        TensorProductOnObjectAndMorphism        for       IsCapCategoryObject,
+        IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XTensorProductOnObjectAndMorphismWithGivenTensorProducts[102X
+        ([14XMonoidalCategories:
+        TensorProductOnObjectAndMorphismWithGivenTensorProducts            for
+        IsCapCategoryObject,    IsCapCategoryObject,    IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XTensorProductOnObjects[102X ([14XMonoidalCategories: TensorProductOnObjects for
