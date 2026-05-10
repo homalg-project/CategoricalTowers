@@ -114,7 +114,7 @@
     [4X[25Xgap>[125X [27XDisplay( Alg_F );[127X[104X
     [4X[28XA CAP category with name CategoryOfFpAlgebras( GF(2) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X31 primitive operations were used to derive 130 operations for this category \[128X[104X
+    [4X[28X31 primitive operations were used to derive 142 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsFiniteCocompleteCategory[128X[104X
     [4X[28X* IsBicartesianCategory[128X[104X
