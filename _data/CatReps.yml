@@ -1,5 +1,5 @@
 name: CatReps
-version: "2026.05-03"
+version: "2026.05-04"
 license: "GPL-2.0-or-later"
 date: 2026-05-10
 description: |
@@ -64,11 +64,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/CatReps/PackageI
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2026.05-03/CatReps-2026.05-03.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2026.05-04/CatReps-2026.05-04.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2026.05-03/CatReps-2026.05-03.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2026.05-04/CatReps-2026.05-04.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2026.05-03/CatReps-2026.05-03-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2026.05-04/CatReps-2026.05-04-manual.pdf
 
 abstract: |
 
@@ -81,7 +81,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BGW10</span>]   <b class='BibAuthor'>Barakat, M., Grün, T. and Webb, P.</b>,
      <i class='BibTitle'>CatReps, Representations and cohomology of finite categories,
-             Version 2026.05-03</i>
+             Version 2026.05-04</i>
      (<span class='BibYear'>5-10</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CatReps">https://homalg-project.github.io/pkg/CatReps</a></span>.
@@ -92,7 +92,7 @@ bibtex: |
     @misc{ CatReps,
       author =           {Barakat, M. and Gr{\"u}n, T. and Webb, P.},
       title =            {{CatReps},  {Representations  and cohomology of finite
-                          categories}, {V}ersion 2026.05\texttt{\symbol{45}}03},
+                          categories}, {V}ersion 2026.05\texttt{\symbol{45}}04},
       month =            {6\texttt{\symbol{45}}},
       year =             {5\texttt{\symbol{45}}10},
       note =             {GAP package},
