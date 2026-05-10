@@ -53,7 +53,7 @@
     [4X[25Xgap>[125X [27XDisplay( FinBouquets );[127X[104X
     [4X[28XA CAP category with name FinBouquets:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X52 primitive operations were used to derive 368 operations for this category \[128X[104X
+    [4X[28X52 primitive operations were used to derive 377 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -81,7 +81,10 @@
     [4X[28Xand not yet algorithmically[128X[104X
     [4X[28X* IsFiniteCocompleteCategory[128X[104X
     [4X[25Xgap>[125X [27XMissingOperationsForConstructivenessOfCategory( C_hat, "IsFiniteCocompleteCategory" );[127X[104X
-    [4X[28X[ "UniversalMorphismFromCoequalizer" ][128X[104X
+    [4X[28X[ "CoequalizerOfIdentityAndAutomorphisms",[128X[104X
+    [4X[28X  "ProjectionOntoCoequalizerOfIdentityAndAutomorphisms",[128X[104X
+    [4X[28X  "UniversalMorphismFromCoequalizerOfIdentityAndAutomorphisms",[128X[104X
+    [4X[28X  "UniversalMorphismFromCoequalizer" ][128X[104X
     [4X[25Xgap>[125X [27XP := C_hat.P;[127X[104X
     [4X[28X<A projective object in FiniteColimitCompletionWithStrictCoproducts([128X[104X
     [4X[28X PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )>[128X[104X
@@ -583,7 +586,10 @@
     [4X[28Xand not yet algorithmically[128X[104X
     [4X[28X* IsFiniteCocompleteCategory[128X[104X
     [4X[25Xgap>[125X [27XMissingOperationsForConstructivenessOfCategory( FreeTopos1, "IsFiniteCocompleteCategory" );[127X[104X
-    [4X[28X[ "UniversalMorphismFromCoequalizer" ][128X[104X
+    [4X[28X[ "CoequalizerOfIdentityAndAutomorphisms",[128X[104X
+    [4X[28X  "ProjectionOntoCoequalizerOfIdentityAndAutomorphisms",[128X[104X
+    [4X[28X  "UniversalMorphismFromCoequalizerOfIdentityAndAutomorphisms",[128X[104X
+    [4X[28X  "UniversalMorphismFromCoequalizer" ][128X[104X
     [4X[25Xgap>[125X [27XPoly := FiniteStrictCoproductCompletionOfUnderlyingCategory( FreeTopos1 );[127X[104X
     [4X[28XFiniteStrictCoproductCompletion( Opposite( SkeletalFinSets ) )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( Poly );[127X[104X
