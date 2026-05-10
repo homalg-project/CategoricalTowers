@@ -120,6 +120,5 @@
 @Section Tools for quivers
 
 @Chapter Precompilation
-@InsertChunk PrecompileAdditiveClosureOfAlgebroid
 @InsertChunk PrecompileAdelmanCategoryOfAdditiveClosureOfAlgebroid
 @InsertChunk PrecompileCategoryFromDataTables
