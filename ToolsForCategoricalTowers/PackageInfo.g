@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "ToolsForCategoricalTowers",
 Subtitle := "Tools for CategoricalTowers",
-Version := "2026.05-01",
+Version := "2026.05-02",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
@@ -71,8 +71,8 @@ Dependencies := rec(
   GAP := ">= 4.13.0",
   NeededOtherPackages := [
                    [ "CAP", ">= 2026.04-02" ],
-                   [ "MonoidalCategories", ">= 2025.08-01" ],
-                   [ "CartesianCategories", ">= 2025.03-03" ],
+                   [ "MonoidalCategories", ">= 2026.05-01" ],
+                   [ "CartesianCategories", ">= 2026.05-01" ],
                    [ "ToolsForHomalg", ">= 2026.04-01" ],
                    ],
   SuggestedOtherPackages := [

@@ -39,7 +39,7 @@ Display( Lhat );
 #! FiniteStrictCoproductCompletionOfObjectFiniteCategory( PosetOfCategory( \
 #! PathCategory( FinQuiver( "q(M,A,B,J)[a:M→A,b:M→B,i:A→J,j:B→J]" ) ) ) ) ):
 #! 
-#! 10 primitive operations were used to derive 98 operations for this category which not yet algorithmically
+#! 10 primitive operations were used to derive 102 operations for this category which not yet algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsFiniteCategory

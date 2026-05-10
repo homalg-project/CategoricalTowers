@@ -16,7 +16,7 @@ D2 := DummyCategoryInDoctrines( [ "IsAbCategory", "IsAbelianCategory" ] );
 Display( D2 );
 #! A CAP category with name DummyCategoryInDoctrines( [ "IsAbelianCategory" ] ):
 #! 
-#! 33 primitive operations were used to derive 292 operations for this category \
+#! 33 primitive operations were used to derive 300 operations for this category \
 #! which algorithmically
 #! * IsAbelianCategory
 D3 := DummyCategoryInDoctrines(

@@ -97,13 +97,21 @@
 #! * <Ref BookName="CAP" Func="Coproduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoproductFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoproductFunctorialWithGivenCoproducts" Label="for Is" />
+#! * <Ref BookName="CartesianCategories" Func="CoproductOnMorphismAndObject" Label="for Is" />
+#! * <Ref BookName="CartesianCategories" Func="CoproductOnMorphismAndObjectWithGivenCoproducts" Label="for Is" />
 #! * <Ref BookName="CartesianCategories" Func="CoproductOnMorphisms" Label="for Is" />
 #! * <Ref BookName="CartesianCategories" Func="CoproductOnMorphismsWithGivenCoproducts" Label="for Is" />
+#! * <Ref BookName="CartesianCategories" Func="CoproductOnObjectAndMorphism" Label="for Is" />
+#! * <Ref BookName="CartesianCategories" Func="CoproductOnObjectAndMorphismWithGivenCoproducts" Label="for Is" />
 #! * <Ref BookName="CAP" Func="DirectProduct" Label="" />
 #! * <Ref BookName="CAP" Func="DirectProductFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="DirectProductFunctorialWithGivenDirectProducts" Label="for Is" />
+#! * <Ref BookName="CartesianCategories" Func="DirectProductOnMorphismAndObject" Label="for Is" />
+#! * <Ref BookName="CartesianCategories" Func="DirectProductOnMorphismAndObjectWithGivenDirectProducts" Label="for Is" />
 #! * <Ref BookName="CartesianCategories" Func="DirectProductOnMorphisms" Label="for Is" />
 #! * <Ref BookName="CartesianCategories" Func="DirectProductOnMorphismsWithGivenDirectProducts" Label="for Is" />
+#! * <Ref BookName="CartesianCategories" Func="DirectProductOnObjectAndMorphism" Label="for Is" />
+#! * <Ref BookName="CartesianCategories" Func="DirectProductOnObjectAndMorphismWithGivenDirectProducts" Label="for Is" />
 #! * <Ref BookName="CAP" Func="DirectSum" Label="" />
 #! * <Ref BookName="CAP" Func="DirectSumFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="DirectSumFunctorialWithGivenDirectSums" Label="for Is" />
@@ -326,8 +334,12 @@
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductDualityCompatibilityMorphismWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphismWithGivenObjects" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductOnMorphismAndObject" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductOnMorphismAndObjectWithGivenTensorProducts" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductOnMorphisms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductOnMorphismsWithGivenTensorProducts" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductOnObjectAndMorphism" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductOnObjectAndMorphismWithGivenTensorProducts" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductOnObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomLeftAdjunctMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom" Label="for Is" />

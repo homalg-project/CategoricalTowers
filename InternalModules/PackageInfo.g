@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "InternalModules",
 Subtitle := "Modules over internal algebras",
-Version := "2026.05-01",
+Version := "2026.05-02",
 
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
@@ -89,8 +89,8 @@ Dependencies := rec(
                            [ "MatricesForHomalg", ">= 2026.04-01" ],
                            [ "RingsForHomalg", ">= 2020.09.02" ],
                            [ "CAP", ">= 2026.04-02" ],
-                           [ "MonoidalCategories", ">= 2025.08-01" ],
-                           [ "CartesianCategories", ">= 2024.06-03" ],
+                           [ "MonoidalCategories", ">= 2026.05-01" ],
+                           [ "CartesianCategories", ">= 2026.05-01" ],
                            [ "LinearAlgebraForCAP", ">= 2026.04-02" ],
                            [ "AttributeCategoryForCAP", ">= 2026.04-01" ],
                            [ "ActionsForCAP", ">= 2020.04.27" ],
