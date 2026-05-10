@@ -60,7 +60,6 @@ DeclareOperation( "ClosedSubsetOfProj",
 #! @Group ClosedSubsetOfProj
 DeclareOperation( "ClosedSubsetOfProj",
         [ IsString, IsHomalgRing ] );
-#! @InsertChunk ClosedSubsetOfProj
 
 #! @Arguments L
 #! @Group ClosedSubsetOfProj

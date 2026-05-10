@@ -54,7 +54,6 @@ DeclareOperation( "OpenSubsetOfProj",
 #! @Group OpenSubsetOfProj
 DeclareOperation( "OpenSubsetOfProj",
         [ IsString, IsHomalgRing ] );
-#! @InsertChunk OpenSubsetOfProj
 
 #! @Arguments L
 #! @Group OpenSubsetOfProj
