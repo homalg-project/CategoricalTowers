@@ -1,5 +1,5 @@
 name: FiniteCocompletions
-version: "2026.05-05"
+version: "2026.05-06"
 license: "GPL-2.0-or-later"
 date: 2026-05-10
 description: |
@@ -63,11 +63,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FiniteCocompleti
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.05-05/FiniteCocompletions-2026.05-05.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.05-06/FiniteCocompletions-2026.05-06.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.05-05/FiniteCocompletions-2026.05-05.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.05-06/FiniteCocompletions-2026.05-06.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.05-05/FiniteCocompletions-2026.05-05-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.05-06/FiniteCocompletions-2026.05-06-manual.pdf
 
 abstract: |
 
@@ -80,7 +80,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BT10</span>]   <b class='BibAuthor'>Barakat, M. and Talleux, M.</b>,
      <i class='BibTitle'>FiniteCocompletions, Finite (co)product/(co)limit (co)completions,
-             Version 2026.05-05</i>
+             Version 2026.05-06</i>
      (<span class='BibYear'>5-10</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FiniteCocompletions">https://homalg-project.github.io/pkg/FiniteCocompletions</a></span>.
@@ -92,7 +92,7 @@ bibtex: |
       author =           {Barakat, M. and Talleux, M.},
       title =            {{FiniteCocompletions},  {Finite  (co)product/(co)limit
                           (co)completions},                            {V}ersion
-                          2026.05\texttt{\symbol{45}}05},
+                          2026.05\texttt{\symbol{45}}06},
       month =            {6\texttt{\symbol{45}}},
       year =             {5\texttt{\symbol{45}}10},
       note =             {GAP package},
