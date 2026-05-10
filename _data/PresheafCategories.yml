@@ -1,5 +1,5 @@
 name: PresheafCategories
-version: "2026.05-02"
+version: "2026.05-03"
 license: "GPL-2.0-or-later"
 date: 2026-05-10
 description: |
@@ -27,7 +27,7 @@ needed-pkgs:
       version: ">= 2026.04-01"
       url: "https://homalg-project.github.io/pkg/MatricesForHomalg"
     - name: "CAP"
-      version: ">= 2026.04-02"
+      version: ">= 2026.05-02"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
       version: ">= 2026.05-01"
@@ -45,11 +45,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/PresheafCategori
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PresheafCategories-2026.05-02/PresheafCategories-2026.05-02.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PresheafCategories-2026.05-03/PresheafCategories-2026.05-03.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PresheafCategories-2026.05-02/PresheafCategories-2026.05-02.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PresheafCategories-2026.05-03/PresheafCategories-2026.05-03.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/PresheafCategories-2026.05-02/PresheafCategories-2026.05-02-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/PresheafCategories-2026.05-03/PresheafCategories-2026.05-03-manual.pdf
 
 abstract: |
 
@@ -62,7 +62,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BS10</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>PresheafCategories, Categories of (co)presheaves,
-             Version 2026.05-02</i>
+             Version 2026.05-03</i>
      (<span class='BibYear'>5-10</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/PresheafCategories">https://homalg-project.github.io/pkg/PresheafCategories</a></span>.
@@ -73,7 +73,7 @@ bibtex: |
     @misc{ PresheafCategories,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{PresheafCategories},  {Categories of (co)presheaves},
-                          {V}ersion 2026.05\texttt{\symbol{45}}02},
+                          {V}ersion 2026.05\texttt{\symbol{45}}03},
       month =            {6\texttt{\symbol{45}}},
       year =             {5\texttt{\symbol{45}}10},
       note =             {GAP package},
