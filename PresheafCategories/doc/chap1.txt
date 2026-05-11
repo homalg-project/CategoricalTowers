@@ -184,11 +184,10 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( z );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xid_z := IdentityMorphism( z );[127X[104X
-    [4X[28X<A zero, identity morphism in[128X[104X
-    [4X[28X PreSheaves( InitialCategory( ), InitialCategory( ) )>[128X[104X
-    [4X[25Xgap>[125X [27Xfn_z := ZeroObjectFunctorial( T );[127X[104X
-    [4X[28X<A zero, isomorphism in PreSheaves( InitialCategory( ), InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xid_z := IdentityMorphism( z );;[127X[104X
+    [4X[25Xgap>[125X [27Xfn_z := ZeroObjectFunctorial( T );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( id_z );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( fn_z );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsEqualForMorphisms( id_z, fn_z );[127X[104X
@@ -218,7 +217,7 @@
     [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSymmetricMonoidalCategoryStructureGivenByDirectProduct[128X[104X
-    [4X[25Xgap>[125X [27XMissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" );[127X[104X
+    [4X[25Xgap>[125X [27XView( MissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" ) );[127X[104X
     [4X[28X[ "IsEqualForObjects", "IsEqualForMorphisms", "IsCongruentForMorphisms",[128X[104X
     [4X[28X  "ExponentialOnObjects", "ExponentialOnMorphisms",[128X[104X
     [4X[28X  "CartesianRightEvaluationMorphism", "CartesianRightCoevaluationMorphism",[128X[104X
@@ -247,9 +246,9 @@
     [4X[28X<A projective object in PreSheaves( SkeletalFinSets, SkeletalFinSets )>[128X[104X
     [4X[25Xgap>[125X [27Xsix2 := DirectProduct( Y( FinSet( 2 ) ), Y( FinSet( 3 ) ) );[127X[104X
     [4X[28X<An object in PreSheaves( SkeletalFinSets, SkeletalFinSets )>[128X[104X
-    [4X[25Xgap>[125X [27XList( [ 0 .. 7 ], i -> six1( FinSet( i ) ) );[127X[104X
+    [4X[25Xgap>[125X [27XView( List( [ 0 .. 7 ], i -> six1( FinSet( i ) ) ) );[127X[104X
     [4X[28X[ |1|, |6|, |36|, |216|, |1296|, |7776|, |46656|, |279936| ][128X[104X
-    [4X[25Xgap>[125X [27XList( [ 0 .. 7 ], i -> six2( FinSet( i ) ) );[127X[104X
+    [4X[25Xgap>[125X [27XView( List( [ 0 .. 7 ], i -> six2( FinSet( i ) ) ) );[127X[104X
     [4X[28X[ |1|, |6|, |36|, |216|, |1296|, |7776|, |46656|, |279936| ][128X[104X
     [4X[25Xgap>[125X [27Xsix1_on_mor := six1( UniversalMorphismIntoTerminalObject( FinSet( 3 ) ) );[127X[104X
     [4X[28X|6| → |216|[128X[104X

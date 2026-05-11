@@ -49,8 +49,8 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X78BA10757D4A2D61">1.4-1 IsPreSheafCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87E694A77D44A1F0">1.4-2 IsCellInPreSheafCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X869BBAB986FFB5D6">1.4-3 IsObjectInPreSheafCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8727C26D7CD65307">1.4-4 IsMorphismInPreSheafCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D59889C7D21F0AE">1.4-3 IsObjectInPreSheafCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X84F2D4387D87D6D2">1.4-4 IsMorphismInPreSheafCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7A489A5D79DA9E5C">1.5 <span class="Heading">Examples</span></a>
 </span>
@@ -187,7 +187,7 @@
 
 <p>The <strong class="pkg">GAP</strong> category of cells in a presheaf category.</p>
 
-<p><a id="X869BBAB986FFB5D6" name="X869BBAB986FFB5D6"></a></p>
+<p><a id="X7D59889C7D21F0AE" name="X7D59889C7D21F0AE"></a></p>
 
 <h5>1.4-3 IsObjectInPreSheafCategory</h5>
 
@@ -196,7 +196,7 @@
 
 <p>The <strong class="pkg">GAP</strong> category of objects in a presheaf category.</p>
 
-<p><a id="X8727C26D7CD65307" name="X8727C26D7CD65307"></a></p>
+<p><a id="X84F2D4387D87D6D2" name="X84F2D4387D87D6D2"></a></p>
 
 <h5>1.4-4 IsMorphismInPreSheafCategory</h5>
 
@@ -279,11 +279,10 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( z );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_z := IdentityMorphism( z );</span>
-&lt;A zero, identity morphism in
- PreSheaves( InitialCategory( ), InitialCategory( ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fn_z := ZeroObjectFunctorial( T );</span>
-&lt;A zero, isomorphism in PreSheaves( InitialCategory( ), InitialCategory( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_z := IdentityMorphism( z );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fn_z := ZeroObjectFunctorial( T );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( id_z );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( fn_z );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( id_z, fn_z );</span>
@@ -315,7 +314,7 @@ which not yet algorithmically
 * IsElementaryTopos
 and furthermore mathematically
 * IsSymmetricMonoidalCategoryStructureGivenByDirectProduct
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">View( MissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" ) );</span>
 [ "IsEqualForObjects", "IsEqualForMorphisms", "IsCongruentForMorphisms",
   "ExponentialOnObjects", "ExponentialOnMorphisms",
   "CartesianRightEvaluationMorphism", "CartesianRightCoevaluationMorphism",
@@ -344,9 +343,9 @@ Yoneda embedding functor
 &lt;A projective object in PreSheaves( SkeletalFinSets, SkeletalFinSets )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">six2 := DirectProduct( Y( FinSet( 2 ) ), Y( FinSet( 3 ) ) );</span>
 &lt;An object in PreSheaves( SkeletalFinSets, SkeletalFinSets )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( [ 0 .. 7 ], i -&gt; six1( FinSet( i ) ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">View( List( [ 0 .. 7 ], i -&gt; six1( FinSet( i ) ) ) );</span>
 [ |1|, |6|, |36|, |216|, |1296|, |7776|, |46656|, |279936| ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( [ 0 .. 7 ], i -&gt; six2( FinSet( i ) ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">View( List( [ 0 .. 7 ], i -&gt; six2( FinSet( i ) ) ) );</span>
 [ |1|, |6|, |36|, |216|, |1296|, |7776|, |46656|, |279936| ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">six1_on_mor := six1( UniversalMorphismIntoTerminalObject( FinSet( 3 ) ) );</span>
 |6| → |216|
