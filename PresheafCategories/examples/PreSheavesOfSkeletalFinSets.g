@@ -18,7 +18,7 @@ Display( PSh );
 #! * IsElementaryTopos
 #! and furthermore mathematically
 #! * IsSymmetricMonoidalCategoryStructureGivenByDirectProduct
-MissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" );
+View( MissingOperationsForConstructivenessOfCategory( PSh, "IsElementaryTopos" ) );
 #! [ "IsEqualForObjects", "IsEqualForMorphisms", "IsCongruentForMorphisms",
 #!   "ExponentialOnObjects", "ExponentialOnMorphisms",
 #!   "CartesianRightEvaluationMorphism", "CartesianRightCoevaluationMorphism",
@@ -47,9 +47,9 @@ six1 := Y( FinSet( 6 ) );
 #! <A projective object in PreSheaves( SkeletalFinSets, SkeletalFinSets )>
 six2 := DirectProduct( Y( FinSet( 2 ) ), Y( FinSet( 3 ) ) );
 #! <An object in PreSheaves( SkeletalFinSets, SkeletalFinSets )>
-List( [ 0 .. 7 ], i -> six1( FinSet( i ) ) );
+View( List( [ 0 .. 7 ], i -> six1( FinSet( i ) ) ) );
 #! [ |1|, |6|, |36|, |216|, |1296|, |7776|, |46656|, |279936| ]
-List( [ 0 .. 7 ], i -> six2( FinSet( i ) ) );
+View( List( [ 0 .. 7 ], i -> six2( FinSet( i ) ) ) );
 #! [ |1|, |6|, |36|, |216|, |1296|, |7776|, |46656|, |279936| ]
 six1_on_mor := six1( UniversalMorphismIntoTerminalObject( FinSet( 3 ) ) );
 #! |6| → |216|

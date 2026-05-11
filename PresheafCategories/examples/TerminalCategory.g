@@ -65,11 +65,10 @@ IsEqualForObjects( t, z );
 #! true
 IsWellDefined( z );
 #! true
-id_z := IdentityMorphism( z );
-#! <A zero, identity morphism in
-#!  PreSheaves( InitialCategory( ), InitialCategory( ) )>
-fn_z := ZeroObjectFunctorial( T );
-#! <A zero, isomorphism in PreSheaves( InitialCategory( ), InitialCategory( ) )>
+id_z := IdentityMorphism( z );;
+fn_z := ZeroObjectFunctorial( T );;
+IsWellDefined( id_z );
+#! true
 IsWellDefined( fn_z );
 #! true
 IsEqualForMorphisms( id_z, fn_z );

@@ -28,15 +28,13 @@ DeclareCategory( "IsCellInPreSheafCategory",
 #!  The &GAP; category of objects in a presheaf category.
 #! @Arguments obj
 DeclareCategory( "IsObjectInPreSheafCategory",
-        IsCellInPreSheafCategory and
-        IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInPreSheafCategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a presheaf category.
 #! @Arguments mor
 DeclareCategory( "IsMorphismInPreSheafCategory",
-        IsCellInPreSheafCategory and
-        IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInPreSheafCategory ) );
 
 ####################################
 #
@@ -184,6 +182,7 @@ DeclareAttribute( "YonedaEmbeddingOfSourceCategory",
 #
 ####################################
 
+#= comment for Julia
 #! @Description
 #!  Construct the category <C>Hom( <A>B</A>^op, <A>D</A> )</C> of
 #!  functors from the opposite of the small category <A>B</A> to the category <A>D</A> as objects
@@ -202,6 +201,9 @@ DeclareOperationWithCache( "PreSheaves",
         [ IsCapCategory ] );
 
 CapJitAddTypeSignature( "PreSheaves", [ IsCapCategory ], IsPreSheafCategory );
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "PreSheaves" );
 
 DeclareOperationWithCache( "PreSheavesOfEnrichedCategory",
         [ IsCapCategory, IsCapCategory ] );

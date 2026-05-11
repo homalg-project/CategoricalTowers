@@ -31,15 +31,13 @@ DeclareCategory( "IsCellInPreSheafWithBoundsCategory",
 #!  The &GAP; category of objects in a presheaf category.
 #! @Arguments obj
 DeclareCategory( "IsObjectInPreSheafWithBoundsCategory",
-        IsCellInPreSheafWithBoundsCategory and
-        IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInPreSheafWithBoundsCategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a presheaf category.
 #! @Arguments mor
 DeclareCategory( "IsMorphismInPreSheafWithBoundsCategory",
-        IsCellInPreSheafWithBoundsCategory and
-        IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInPreSheafWithBoundsCategory ) );
 
 ####################################
 #
@@ -188,6 +186,7 @@ DeclareAttribute( "CoYonedaLemmaOnMorphisms",
 #
 ####################################
 
+#= comment for Julia
 #! @Description
 #!  Construct the category <C>Hom( <A>B</A>^op, <A>C</A> )</C> of
 #!  functors from the opposite of the small category <A>B</A> to the category <A>C</A> as objects
@@ -206,6 +205,9 @@ DeclareOperationWithCache( "PreSheavesWithBounds",
         [ IsCapCategory ] );
 
 CapJitAddTypeSignature( "PreSheavesWithBounds", [ IsCapCategory ], IsPreSheafWithBoundsCategory );
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "PreSheavesWithBounds" );
 
 ####################################
 #
