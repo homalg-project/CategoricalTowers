@@ -14,7 +14,9 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
     [ "FinalizeCategory", true ],
   ],
   function( CAP_NAMED_ARGUMENTS, C )
-    local UCm, objectsC, l, H;
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          object_datum_type, morphism_datum_type,
+          UCm, objectsC, l, H;
     
     Assert( 0, HasIsObjectFiniteCategory( C ) and IsObjectFiniteCategory( C ) and CanCompute( C, "SetOfObjectsOfCategory" ) );
     
@@ -24,26 +26,40 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
     fi;
     
+    name := Concatenation( "FiniteStrictCoproductCompletionOfObjectFiniteCategory( ", Name( C ), " )" );
+    
+    ##
+    category_filter := IsFiniteStrictCoproductCompletionOfObjectFiniteCategory;
+    category_object_filter := IsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory;
+    category_morphism_filter := IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory;
+    
+    ##
+    object_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              IsBigInt,
+              CapJitDataTypeOfListOf( IsBigInt ) );
+    
+    ## Pair( [ Pair( [ ... ], [ ... ] ), ..., Pair( [ ... ], [ ... ] ) ], [ [ ... ], ..., [ ... ] ] )
+    morphism_datum_type :=
+      CapJitDataTypeOfNTupleOf( 2,
+              CapJitDataTypeOfListOf(
+                      CapJitDataTypeOfNTupleOf( 2,
+                              CapJitDataTypeOfListOf( IsBigInt ),
+                              CapJitDataTypeOfListOf( IsBigInt ) ) ),
+              CapJitDataTypeOfListOf(
+                      CapJitDataTypeOfListOf(
+                              CapJitDataTypeOfMorphismOfCategory( C ) ) ) );
+    
     ##
     UCm :=
       CreateCapCategoryWithDataTypes(
-              Concatenation( "FiniteStrictCoproductCompletionOfObjectFiniteCategory( ", Name( C ), " )" ),
-              IsFiniteStrictCoproductCompletionOfObjectFiniteCategory,
-              IsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory,
-              IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory,
+              name,
+              category_filter,
+              category_object_filter,
+              category_morphism_filter,
               IsCapCategoryTwoCell,
-              CapJitDataTypeOfNTupleOf( 2,
-                      IsBigInt,
-                      CapJitDataTypeOfListOf( IsBigInt ) ),
-              # Pair( [ Pair( [ ... ], [ ... ] ), ..., Pair( [ ... ], [ ... ] ) ], [ [ ... ], ..., [ ... ] ] )
-              CapJitDataTypeOfNTupleOf( 2,
-                      CapJitDataTypeOfListOf(
-                              CapJitDataTypeOfNTupleOf( 2,
-                                      CapJitDataTypeOfListOf( IsBigInt ),
-                                      CapJitDataTypeOfListOf( IsBigInt ) ) ),
-                      CapJitDataTypeOfListOf(
-                              CapJitDataTypeOfListOf(
-                                      CapJitDataTypeOfMorphismOfCategory( C ) ) ) ),
+              object_datum_type,
+              morphism_datum_type,
               fail );
     
     ## UCm supports empty limits, regardless of C
