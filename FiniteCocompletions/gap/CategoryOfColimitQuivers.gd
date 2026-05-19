@@ -71,32 +71,26 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategory",
 DeclareAttribute( "DefiningPairOfColimitQuiver",
         IsObjectInCategoryOfColimitQuivers );
 
-# CapJitAddTypeSignature( "DefiningPairOfColimitQuiver", [ IsObjectInCategoryOfColimitQuivers ],
-#   function ( input_types )
-#     
-#     return CapJitDataTypeOfNTupleOf( 2,
-#                    CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ),
-#                    CapJitDataTypeOfListOf(
-#                            CapJitDataTypeOfNTupleOf( 3,
-#                                    IsInt,
-#                                    CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ),
-#                                    IsInt ) ) );
-#     
-# end );
+#CapJitAddTypeSignature( "DefiningPairOfColimitQuiver", [ IsObjectInCategoryOfColimitQuivers ],
+#  function ( input_types )
+#    
+#    Assert( 0, IsCategoryOfColimitQuivers( input_types[1].category ) );
+#    
+#    return ObjectDatumType( input_types[1].category );
+#    
+#end );
 
 #! @Arguments colimit_quiver_morphism
 DeclareAttribute( "DefiningPairOfColimitQuiverMorphism",
         IsMorphismInCategoryOfColimitQuivers );
 
-# CapJitAddTypeSignature( "DefiningPairOfColimitQuiverMorphism", [ IsMorphismInCategoryOfColimitQuivers ],
-#   function ( input_types )
-#     
-#     return CapJitDataTypeOfNTupleOf( 2,
-#                    CapJitDataTypeOfNTupleOf( 2,
-#                            CapJitDataTypeOfListOf( IsInt ),
-#                            CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ),
-#                    CapJitDataTypeOfListOf( IsInt ) );
-#     
+#CapJitAddTypeSignature( "DefiningPairOfColimitQuiverMorphism", [ IsMorphismInCategoryOfColimitQuivers ],
+#  function ( input_types )
+#    
+#    Assert( 0, IsCategoryOfColimitQuivers( input_types[1].category ) );
+#    
+#    return MorphismDatumType( input_types[1].category );
+#    
 # end );
 
 #! @Description

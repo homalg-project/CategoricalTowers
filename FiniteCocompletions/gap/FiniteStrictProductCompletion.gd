@@ -47,11 +47,11 @@ DeclareAttribute( "FiniteStrictProductCompletion",
 #! @InsertChunk FiniteStrictProductCompletion_poset
 #! @InsertChunk TerminalCategory_as_FiniteStrictProductCompletion
 
-CapJitAddTypeSignature( "FiniteStrictProductCompletion", [ IsCapCategory ], function ( input_types )
-    
-    return CapJitDataTypeOfCategory( FiniteStrictProductCompletion( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "FiniteStrictProductCompletion", [ IsCapCategory ], function ( input_types )
+#    
+#    return CapJitDataTypeOfCategory( FiniteStrictProductCompletion( input_types[1].category ) );
+#    
+#end );
 
 ####################################
 #
@@ -64,13 +64,11 @@ DeclareAttribute( "PairOfIntAndList",
         IsObjectInFiniteStrictProductCompletion );
 
 CapJitAddTypeSignature( "PairOfIntAndList", [ IsObjectInFiniteStrictProductCompletion ],
- function ( input_types )
+  function ( input_types )
     
     Assert( 0, IsFiniteStrictProductCompletion( input_types[1].category ) );
     
-    return CapJitDataTypeOfNTupleOf( 2,
-                   IsBigInt,
-                   CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ) );
+    return ObjectDatumType( input_types[1].category );
     
 end );
 
@@ -79,13 +77,11 @@ DeclareAttribute( "PairOfLists",
         IsMorphismInFiniteStrictProductCompletion );
 
 CapJitAddTypeSignature( "PairOfLists", [ IsMorphismInFiniteStrictProductCompletion ],
- function ( input_types )
+  function ( input_types )
     
     Assert( 0, IsFiniteStrictProductCompletion( input_types[1].category ) );
     
-    return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfListOf( IsBigInt ),
-                   CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) );
+    return MorphismDatumType( input_types[1].category );
     
 end );
 
@@ -96,12 +92,12 @@ end );
 DeclareAttribute( "UnderlyingCategory",
         IsFiniteStrictProductCompletion );
 
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteStrictProductCompletion ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
-
-end );
+#CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteStrictProductCompletion ],
+#  function ( input_types )
+#    
+#    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+#
+#end );
 
 DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
         IsFiniteStrictProductCompletion );

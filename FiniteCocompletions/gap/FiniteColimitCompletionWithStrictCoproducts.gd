@@ -45,12 +45,12 @@ DeclareCategory( "IsMorphismInFiniteColimitCompletionWithStrictCoproducts",
 DeclareAttribute( "UnderlyingCategory",
         IsFiniteColimitCompletionWithStrictCoproducts );
 
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteColimitCompletionWithStrictCoproducts ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteColimitCompletionWithStrictCoproducts ],
+#  function ( input_types )
+#    
+#    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+#    
+#end );
 
 #! @Description
 #!  Return the coproduct completion $UC :=$ <C>FiniteStrictCoproductCompletion</C>( $C$ )
@@ -73,20 +73,11 @@ DeclareAttribute( "PairOfObjectsAndPairOfParallelMorphisms",
         IsObjectInFiniteColimitCompletionWithStrictCoproducts );
 
 CapJitAddTypeSignature( "PairOfObjectsAndPairOfParallelMorphisms", [ IsObjectInFiniteColimitCompletionWithStrictCoproducts ],
- function ( input_types )
-    local UC;
+  function ( input_types )
     
     Assert( 0, IsFiniteColimitCompletionWithStrictCoproducts( input_types[1].category ) );
     
-    UC := FiniteStrictCoproductCompletionOfUnderlyingCategory( input_types[1].category );
-    
-    return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfNTupleOf( 2,
-                           CapJitDataTypeOfObjectOfCategory( UC ),
-                           CapJitDataTypeOfObjectOfCategory( UC ) ),
-                   CapJitDataTypeOfNTupleOf( 2,
-                           CapJitDataTypeOfMorphismOfCategory( UC ),
-                           CapJitDataTypeOfMorphismOfCategory( UC ) ) );
+    return ObjectDatumType( input_types[1].category );
     
 end );
 
@@ -95,16 +86,11 @@ DeclareAttribute( "DefiningPairOfMorphismBetweenCoequalizerPairs",
         IsMorphismInFiniteColimitCompletionWithStrictCoproducts );
 
 CapJitAddTypeSignature( "DefiningPairOfMorphismBetweenCoequalizerPairs", [ IsMorphismInFiniteColimitCompletionWithStrictCoproducts ],
- function ( input_types )
-    local UC;
+  function ( input_types )
     
     Assert( 0, IsFiniteColimitCompletionWithStrictCoproducts( input_types[1].category ) );
     
-    UC := FiniteStrictCoproductCompletionOfUnderlyingCategory( input_types[1].category );
-    
-    return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfMorphismOfCategory( UC ),
-                   CapJitDataTypeOfMorphismOfCategory( UC ) );
+    return MorphismDatumType( input_types[1].category );
     
 end );
 
@@ -116,12 +102,12 @@ end );
 DeclareAttribute( "CategoryOfColimitQuiversOfUnderlyingCategory",
         IsFiniteColimitCompletionWithStrictCoproducts );
 
-CapJitAddTypeSignature( "CategoryOfColimitQuiversOfUnderlyingCategory", [ IsFiniteColimitCompletionWithStrictCoproducts ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( CategoryOfColimitQuiversOfUnderlyingCategory( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "CategoryOfColimitQuiversOfUnderlyingCategory", [ IsFiniteColimitCompletionWithStrictCoproducts ],
+#  function ( input_types )
+#    
+#    return CapJitDataTypeOfCategory( CategoryOfColimitQuiversOfUnderlyingCategory( input_types[1].category ) );
+#    
+#end );
 
 ####################################
 #
@@ -150,12 +136,12 @@ DeclareOperation( "AsColimitCompletionMorphism",
 DeclareAttribute( "CategoryOfPreSheavesOfUnderlyingCategory",
         IsFiniteColimitCompletionWithStrictCoproducts );
 
-CapJitAddTypeSignature( "CategoryOfPreSheavesOfUnderlyingCategory", [ IsFiniteColimitCompletionWithStrictCoproducts ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( CategoryOfPreSheavesOfUnderlyingCategory( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "CategoryOfPreSheavesOfUnderlyingCategory", [ IsFiniteColimitCompletionWithStrictCoproducts ],
+#  function ( input_types )
+#    
+#    return CapJitDataTypeOfCategory( CategoryOfPreSheavesOfUnderlyingCategory( input_types[1].category ) );
+#    
+#end );
 
 #! @Description
 #!  The input is an object <A>coequalizer_object</A> in the category of finite colimit completion of a category.

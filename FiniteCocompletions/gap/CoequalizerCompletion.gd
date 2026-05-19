@@ -42,41 +42,27 @@ DeclareCategory( "IsMorphismInCoequalizerCompletion",
 DeclareAttribute( "PairOfObjectsAndPairOfParallelMorphisms",
         IsObjectInCoequalizerCompletion );
 
-CapJitAddTypeSignature( "PairOfObjectsAndPairOfParallelMorphisms", [ IsObjectInCoequalizerCompletion ],
- function ( input_types )
-    local C;
-    
-    Assert( 0, IsCoequalizerCompletion( input_types[1].category ) );
-    
-    C := UnderlyingCategory( input_types[1].category );
-    
-    return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfNTupleOf( 2,
-                           CapJitDataTypeOfObjectOfCategory( C ),
-                           CapJitDataTypeOfObjectOfCategory( C ) ),
-                   CapJitDataTypeOfNTupleOf( 2,
-                           CapJitDataTypeOfMorphismOfCategory( C ),
-                           CapJitDataTypeOfMorphismOfCategory( C ) ) );
-    
-end );
+#CapJitAddTypeSignature( "PairOfObjectsAndPairOfParallelMorphisms", [ IsObjectInCoequalizerCompletion ],
+#  function ( input_types )
+#    
+#    Assert( 0, IsCoequalizerCompletion( input_types[1].category ) );
+#    
+#    return ObjectDatumType( input_types[1].category );
+#    
+#end );
 
 #! @Arguments quiver_morphism
 DeclareAttribute( "DefiningPairOfMorphismBetweenCoequalizerPairs",
         IsMorphismInCoequalizerCompletion );
 
-CapJitAddTypeSignature( "DefiningPairOfMorphismBetweenCoequalizerPairs", [ IsMorphismInCoequalizerCompletion ],
- function ( input_types )
-    local C;
-    
-    Assert( 0, IsCoequalizerCompletion( input_types[1].category ) );
-    
-    C := UnderlyingCategory( input_types[1].category );
-    
-    return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfMorphismOfCategory( C ),
-                   CapJitDataTypeOfMorphismOfCategory( C ) );
-    
-end );
+#CapJitAddTypeSignature( "DefiningPairOfMorphismBetweenCoequalizerPairs", [ IsMorphismInCoequalizerCompletion ],
+#  function ( input_types )
+#    
+#    Assert( 0, IsCoequalizerCompletion( input_types[1].category ) );
+#    
+#    return MorphismDatumType( input_types[1].category );
+#    
+#end );
 
 #! @Description
 #!  Return the category $C$ underlying the category
@@ -85,12 +71,12 @@ end );
 DeclareAttribute( "UnderlyingCategory",
         IsCoequalizerCompletion );
 
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsCoequalizerCompletion ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "UnderlyingCategory", [ IsCoequalizerCompletion ],
+#  function ( input_types )
+#    
+#    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+#    
+#end );
 
 DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
         IsCoequalizerCompletion );

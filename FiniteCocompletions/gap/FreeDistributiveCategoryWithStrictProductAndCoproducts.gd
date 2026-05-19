@@ -45,12 +45,12 @@ DeclareCategory( "IsMorphismInFreeDistributiveCategoryWithStrictProductAndCoprod
 DeclareAttribute( "UnderlyingCategory",
         IsFreeDistributiveCategoryWithStrictProductAndCoproducts );
 
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsFreeDistributiveCategoryWithStrictProductAndCoproducts ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "UnderlyingCategory", [ IsFreeDistributiveCategoryWithStrictProductAndCoproducts ],
+#  function ( input_types )
+#    
+#    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+#    
+#end );
 
 ####################################
 #
